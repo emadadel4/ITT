@@ -18,8 +18,8 @@ Write-Output "||_____|_|  |_/_/   \_\____/  /_/   \_\____/|_____|_____||";
     Write-Host "================ $Title ============================"
     Write-Host "1: Microsoft Activation "
     Write-Host "2: Chris Titus Tech's Windows Utility"
-    Write-Host "3: Emad Adel Github Page"
-    Write-Host "4: Emad Adel Telgram"
+    Write-Host "3: Emad Adel [Github]"
+    Write-Host "4: Emad Adel [Telgram]"
     Write-Host "Q: Press 'Q' to quit"
 
    
@@ -29,7 +29,7 @@ do {
     Show-Menu -Title 'Emad Utility'
     $selection = Read-Host "Please make a selection"
     switch ($selection) {
-        '1' {irm https://massgrave.dev/get | Invoke-Expression}
+        '1' {irm https://massgrave.dev/get | iex}
         
         '2' {Invoke-WebRequest -useb https://christitus.com/win | Invoke-Expression}
 
