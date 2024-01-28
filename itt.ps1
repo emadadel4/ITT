@@ -18,9 +18,9 @@ Write-Output "||_____|_|  |_/_/   \_\____/  /_/   \_\____/|_____|_____||";
     Write-Host "================ $Title ============================"
     Write-Host "1: Microsoft Activation "
     Write-Host "2: Chris Titus Tech's Windows Utility"
-    Write-Host "3: Clean temp folder"
-    Write-Host "4: Emad Adel [Github]"
-    Write-Host "5: Emad Adel [Telgram]"
+    Write-Host "3: Emad Adel [Github]"
+    Write-Host "4: Emad Adel [Telgram]"
+    
     Write-Host "Q: Press 'Q' to quit"
 
    
@@ -34,11 +34,9 @@ do {
         
         '2' {Invoke-WebRequest -useb https://christitus.com/win | Invoke-Expression}
 
-        '3' {Remove-Item -Path $env:TEMP -Recurse -Force}
+        '3'  {Start-Process "https://www.github.com/emadadel4"}
 
-        '4'  {Start-Process "https://www.github.com/emadadel4"}
-
-        '5'  {Start-Process "https://t.me/emadadel4"}
+        '4'  {Start-Process "https://t.me/emadadel4"}
 
         'Q' {
             Write-Host "Exiting menu..."
