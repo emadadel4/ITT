@@ -29,7 +29,7 @@ do {
     Show-Menu -Title 'Emad Utility'
     $selection = Read-Host "Please make a selection"
     switch ($selection) {
-        '1' {irm https://massgrave.dev/get | iex}
+        '1' {irm https://massgrave.dev/get | Invoke-Expression}
         
         '2' {Invoke-WebRequest -useb https://christitus.com/win | Invoke-Expression}
 
