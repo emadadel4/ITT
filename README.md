@@ -1,5 +1,5 @@
 <h1>PowerShell (Recommended)</h1>
-<li><code>Set-ExecutionPolicy AllSigned</code></li>,<it>You can skip this step</it>
+<li><code>Set-ExecutionPolicy AllSigned</code> ! You can skip this step</li>
 
 <li>On Windows 8.1/10/11, right-click on the Windows start menu and select PowerShell or Terminal (Not CMD).</li>
 <li>Copy-paste the below code and press enter</li>
