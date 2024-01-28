@@ -36,11 +36,8 @@ do {
         '2' {Invoke-WebRequest -useb https://christitus.com/win | Invoke-Expression}
 
         '3' {
-
             Invoke-WebRequest "https://raw.githubusercontent.com/emadadel4/Fix-Stutter-in-Games/main/Fix%20Stutter%20Games%20%5Brun%20as%20administrator%5D.bat" -outfile "fix.bat"
             Start-Process -FilePath "fix.bat"
-            
-            cls
         }
 
 
