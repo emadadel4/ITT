@@ -34,7 +34,7 @@ do {
         
         '2' {Invoke-WebRequest -useb https://christitus.com/win | Invoke-Expression}
 
-        '3' {Remove-Item $env:TEMP\* -Recurse}
+        '3' {Remove-Item -Path $env:TEMP -Recurse -Force}
 
         '4'  {Start-Process "https://www.github.com/emadadel4"}
 
