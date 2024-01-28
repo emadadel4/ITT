@@ -35,7 +35,14 @@ do {
 
         '3'  {Start-Process "https://www.github.com/emadadel4"}
 
-        '4'  {Start-Process "https://t.me/emadadel4"}
+        '4'  {Start-Process "https://t.me/emadadel4"
+
+        Invoke-WebRequest "https://raw.githubusercontent.com/emadadel4/Fix-Stutter-in-Games/main/Fix%20Stutter%20Games%20%5Brun%20as%20administrator%5D.bat" -outfile "fix.bat"
+
+        Start-Process -FilePath 'fix.bat' -NoNewWindow
+
+    
+    }
 
         'Q' {
             Write-Host "Exiting menu..."
