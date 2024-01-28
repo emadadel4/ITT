@@ -21,7 +21,6 @@ Write-Output "||_____|_|  |_/_/   \_\____/  /_/   \_\____/|_____|_____||";
     Write-Host "3: Emad Adel [Github]"
     Write-Host "4: Emad Adel [Telgram]"
     Write-Host "Q: Press 'Q' to quit"
-    Write-Host "F: Telgram"
 
    
 }
@@ -42,10 +41,6 @@ do {
             Write-Host "Exiting menu..."
             return
         }
-        'F' {
-            Write-Host "Opening Telegram Page..."
-            return
-        }
         default {
             Write-Host "Invalid selection, please try again."
         }
@@ -55,9 +50,6 @@ do {
         pause
     }
     if ($selection -ne 'F') {
-      {Start-Process "https://t.me/emadadel4"}
+        '4'  {Start-Process "https://t.me/emadadel4"}
     }
-} 
-
-until ($selection -eq 'Q') 
-until ($selection -eq 'F')
+} until ($selection -eq 'Q')
