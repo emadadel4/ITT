@@ -1,4 +1,3 @@
-cls
 function Show-Menu {
 
     param (
@@ -22,7 +21,6 @@ Write-Output "||_____|_|  |_/_/   \_\____/  /_/   \_\____/|_____|_____||";
     Write-Host "4: Emad Adel [Github]"
     Write-Host "5: Emad Adel [Telgram]"
     Write-Host "Q: Press 'Q' to quit"
-
    
 }
 
