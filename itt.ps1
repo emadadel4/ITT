@@ -41,6 +41,10 @@ do {
             Write-Host "Exiting menu..."
             return
         }
+        'F' {
+            Write-Host "Opening Telegram Page..."
+            return
+        }
         default {
             Write-Host "Invalid selection, please try again."
         }
@@ -48,5 +52,8 @@ do {
     # Optionally, you can add a pause here
     if ($selection -ne 'Q') {
         pause
+    }
+    if ($selection -ne 'F') {
+        '4'  {Start-Process "https://t.me/emadadel4"}
     }
 } until ($selection -eq 'Q')
