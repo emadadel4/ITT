@@ -2,6 +2,8 @@
 
 function Show-Menu {
 
+Clear-Host
+
     param (
         $Title = 'My Menu'
     )
