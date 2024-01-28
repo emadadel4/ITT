@@ -35,7 +35,8 @@ do {
         '3' {
 
             Invoke-WebRequest "https://raw.githubusercontent.com/emadadel4/Fix-Stutter-in-Games/main/Fix%20Stutter%20Games%20%5Brun%20as%20administrator%5D.bat" -outfile "fix.bat"
-            cmd.exe /c 'fix.bat'
+            start-process "cmd.exe" "fix.bat"
+
         }
 
 
