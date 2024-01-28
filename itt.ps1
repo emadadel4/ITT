@@ -18,8 +18,10 @@ Write-Output "||_____|_|  |_/_/   \_\____/  /_/   \_\____/|_____|_____||";
     Write-Host "================ $Title ============================"
     Write-Host "1: Microsoft Activation "
     Write-Host "2: Chris Titus Tech's Windows Utility"
-    Write-Host "3: Emad Adel [Github]"
-    Write-Host "4: Emad Adel [Telgram]"
+    Write-Host "3: Fix Stutter in-Games [Windows 10/11]"
+
+    Write-Host "4: Emad Adel [Github]"
+    Write-Host "5: Emad Adel [Telgram]"
     Write-Host "Q: Press 'Q' to quit"
 
    
@@ -33,14 +35,16 @@ do {
         
         '2' {Invoke-WebRequest -useb https://christitus.com/win | Invoke-Expression}
 
-        '3'  {Start-Process "https://www.github.com/emadadel4"}
+        '3' {
 
-        '4'  {Start-Process "https://t.me/emadadel4"
+            Invoke-WebRequest "https://raw.githubusercontent.com/emadadel4/Fix-Stutter-in-Games/main/Fix%20Stutter%20Games%20%5Brun%20as%20administrator%5D.bat" -outfile "fix.bat"
+            Start-Process -FilePath 'fix.bat' -NoNewWindow
+        }
 
-        Invoke-WebRequest "https://raw.githubusercontent.com/emadadel4/Fix-Stutter-in-Games/main/Fix%20Stutter%20Games%20%5Brun%20as%20administrator%5D.bat" -outfile "fix.bat"
 
-        Start-Process -FilePath 'fix.bat' -NoNewWindow
+        '4'  {Start-Process "https://www.github.com/emadadel4"}
 
+        '5'  {Start-Process "https://t.me/emadadel4"
     
     }
 
