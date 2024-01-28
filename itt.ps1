@@ -57,4 +57,7 @@ do {
     if ($selection -ne 'F') {
       {Start-Process "https://t.me/emadadel4"}
     }
-} until ($selection -eq 'Q') until ($selection -eq 'F')
+} 
+
+until ($selection -eq 'Q') 
+until ($selection -eq 'F')
