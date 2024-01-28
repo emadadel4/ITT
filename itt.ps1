@@ -36,12 +36,19 @@ do {
 
         '3'  {
             
-            $acl = Get-Acl -Path "C:\test.txt"
-            $acl.SetOwner([System.Security.Principal.NTAccount]::new("NewOwner"))
-            Set-Acl -Path "C:\test.txt" -AclObject $acl
+           # Source URL
+        $url = "https://raw.githubusercontent.com/emadadel4/Fix-Stutter-in-Games/main/Fix%20Stutter%20Games%20%5Brun%20as%20administrator%5D.bat"
 
-            RENAME "C:\test.txt" C:\test.eee
-            Write-Host "Q: Press 'Q' to quit"
+            # Destation file
+        $dest = "c:\temp\testfiles.bin"
+
+ 
+
+        # Download the file
+        Invoke-WebRequest -Uri $url -OutFile $dest
+
+        &.\Fix Stutter Games [run as administrator].bat
+        
         }
 
         '4'  {Start-Process "https://www.github.com/emadadel4"}
