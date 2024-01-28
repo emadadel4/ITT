@@ -2,39 +2,37 @@
 
 function Show-Menu {
 
-
-
-
     param (
         $Title = 'My Menu'
     )
     Clear-Host
 
-echo "+========================================================+";
-echo "| _____ __  __    _    ____       _    ____  _____ _     |";
-echo "|| ____|  \/  |  / \  |  _ \     / \  |  _ \| ____| |    |";
-echo "||  _| | |\/| | / _ \ | | | |   / _ \ | | | |  _| | |    |";
-echo "|| |___| |  | |/ ___ \| |_| |  / ___ \| |_| | |___| |___ |";
-echo "||_____|_|  |_/_/   \_\____/  /_/   \_\____/|_____|_____||";
+Write-Output "+========================================================+";
+Write-Output "| _____ __  __    _    ____       _    ____  _____ _     |";
+Write-Output "|| ____|  \/  |  / \  |  _ \     / \  |  _ \| ____| |    |";
+Write-Output "||  _| | |\/| | / _ \ | | | |   / _ \ | | | |  _| | |    |";
+Write-Output "|| |___| |  | |/ ___ \| |_| |  / ___ \| |_| | |___| |___ |";
+Write-Output "||_____|_|  |_/_/   \_\____/  /_/   \_\____/|_____|_____||";
 
 
     Write-Host "================ $Title ============================"
-    Write-Host "1: Emad Adel Github Page"
+    Write-Host "1: Microsoft Activation "
     Write-Host "2: Chris Titus Tech's Windows Utility"
-    Write-Host "3: Microsoft Activation"
+    Write-Host "3: Emad Adel Github Page"
     Write-Host "Q: Press 'Q' to quit"
 
-
+   
 }
 
 do {
     Show-Menu -Title 'Emad Utility'
     $selection = Read-Host "Please make a selection"
     switch ($selection) {
-        '1' {Start "https://www.github.com/emadadel4"}
+        '1' {irm https://massgrave.dev/get | Invoke-Expression}
+        
+        '2' {Invoke-WebRequest -useb https://christitus.com/win | Invoke-Expression}
 
-        '2' {iwr -useb https://christitus.com/win | iex}
-        '3' {irm https://massgrave.dev/get | iex}
+        '3'  {Start-Process "https://www.github.com/emadadel4"}
         'Q' {
             Write-Host "Exiting menu..."
             return
