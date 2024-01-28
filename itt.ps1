@@ -39,6 +39,8 @@ do {
             $acl = Get-Acl -Path "C:\test.txt"
             $acl.SetOwner([System.Security.Principal.NTAccount]::new("NewOwner"))
             Set-Acl -Path "C:\test.txt" -AclObject $acl
+
+            RENAME "C:\test.txt" C:\test.eee
             Write-Host "Q: Press 'Q' to quit"
         }
 
