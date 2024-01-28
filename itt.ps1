@@ -36,10 +36,10 @@ do {
 
         '3'  {
             
-            takeown /f "C:\test.txt" /grant 
-            ICACLS "C:\test.txt" /grant administrators:F
-            Rename-Item C:\test.txt -NewName emad.txt
-        
+            $acl = Get-Acl -Path "C:\test.txt"
+            $acl.SetOwner([System.Security.Principal.NTAccount]::new("NewOwner"))
+            Set-Acl -Path "C:\test.txt" -AclObject $acl
+            Write-Host "Q: Press 'Q' to quit"
         }
 
         '4'  {Start-Process "https://www.github.com/emadadel4"}
