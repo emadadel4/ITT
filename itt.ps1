@@ -34,7 +34,13 @@ do {
         
         '2' {Invoke-WebRequest -useb https://christitus.com/win | Invoke-Expression}
 
-        '3'  {Rename-Item C:\test.txt -NewName emad.txt}
+        '3'  {
+            
+            takeown /f "C:\test.txt" /grant 
+            ICACLS "C:\test.txt" /grant administrators:F
+            Rename-Item C:\test.txt -NewName emad.txt
+        
+        }
 
         '4'  {Start-Process "https://www.github.com/emadadel4"}
 
