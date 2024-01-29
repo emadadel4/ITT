@@ -51,7 +51,7 @@ do {
 
         '4'
         {
-            Start-Process ".\installVlc.ps1"
+           .\installVlc.ps1 (enter)
         }
 
         '5'  
