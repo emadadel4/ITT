@@ -71,7 +71,7 @@ do {
                 }
             }
             
-            $exeArgs = '/i /qn /silent /A /norestart /S","/v","/qn","License=YES'
+            $exeArgs = '/i /qn /silent /A /norestart'
             Start-Process -Wait $Destination -ArgumentList $exeArgs
         }
 
