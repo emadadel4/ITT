@@ -70,9 +70,10 @@ do {
             Start-Process -Wait $Destination -ArgumentList $exeArgs
         }
 
-        '5'  
+        'E'  
         {
             Start-Process "https://www.github.com/emadadel4"
+            return
         }
 
         '6'
@@ -85,7 +86,7 @@ do {
             return
         }
         'A' {
-            Write-Host "YOU PRESD A..."
+            Start-Process "https://t.me/emadadel4"
             return
         }
         default {
