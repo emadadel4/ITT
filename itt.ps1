@@ -55,7 +55,7 @@ do {
         '4'
         {
             $FileUri = "https://t1.daumcdn.net/potplayer/PotPlayer/Version/Latest/PotPlayerSetup64.exe"
-            $Destination = "$env:temp\PotPlayerSetup64"
+            $Destination = "$env:temp\PotPlayerSetup64.exe"
             
             $bitsJobObj = Start-BitsTransfer $FileUri -Destination $Destination
             
