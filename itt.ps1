@@ -87,6 +87,7 @@ do {
             Write-Host "Invalid selection, please try again."
         }
     }
+    
     # Optionally, you can add a pause here
     if ($selection -ne 'Q') {
         pause
