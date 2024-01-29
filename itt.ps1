@@ -1,10 +1,8 @@
 
 
-# Play a single file
-Add-Type -AssemblyName presentationCore
-$mediaPlayer = New-Object system.windows.media.mediaplayer
-$mediaPlayer.open('https://dl.vgmdownloads.com/soundtracks/assassin-s-creed-2/yesvbkhhfc/1-12%20Back%20In%20Venice.mp3')
-$mediaPlayer.Play()
+$MediaPlayer = [Windows.Media.Playback.MediaPlayer, Windows.Media, ContentType = WindowsRuntime]::New()
+$MediaPlayer.Source = [Windows.Media.Core.MediaSource]::CreateFromUri('https://dl.vgmdownloads.com/soundtracks/assassin-s-creed-2/yesvbkhhfc/1-12%20Back%20In%20Venice.mp3')
+$MediaPlayer.Play()
 
 function Show-Menu {
 
