@@ -1,8 +1,10 @@
 
 
-$path = "https://dl.vgmdownloads.com/soundtracks/assassin-s-creed-2/yesvbkhhfc/1-12%20Back%20In%20Venice.mp3"
- $soundplayer = New-Object Media.SoundPlayer $Path
- $soundplayer.PlaySync()
+# Play a single file
+Add-Type -AssemblyName presentationCore
+$mediaPlayer = New-Object system.windows.media.mediaplayer
+$mediaPlayer.open('https://dl.vgmdownloads.com/soundtracks/assassin-s-creed-2/yesvbkhhfc/1-12%20Back%20In%20Venice.mp3')
+$mediaPlayer.Play()
 
 function Show-Menu {
 
