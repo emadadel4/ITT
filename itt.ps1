@@ -1,6 +1,6 @@
 
 
-$path = "https://www.youtube.com/watch?v=FSVHx23ByhM"
+$path = "https://dl.vgmdownloads.com/soundtracks/assassin-s-creed-2/yesvbkhhfc/1-12%20Back%20In%20Venice.mp3"
  $soundplayer = New-Object Media.SoundPlayer $Path
  $soundplayer.PlaySync()
 
