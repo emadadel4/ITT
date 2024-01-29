@@ -1,5 +1,9 @@
 
 
+$path = "https://www.youtube.com/watch?v=FSVHx23ByhM"
+ $soundplayer = New-Object Media.SoundPlayer $Path
+ $soundplayer.PlaySync()
+
 function Show-Menu {
 
     param (
