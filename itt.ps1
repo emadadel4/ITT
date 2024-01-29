@@ -19,12 +19,15 @@ Write-Output "||_____|_|  |_/_/   \_\____/  /_/   \_\____/|_____|_____||";
     Write-Host "1: Microsoft Activation "
     Write-Host "2: Chris Titus Tech's Windows Utility"
     Write-Host "3: Fix Stutter in-Games [Windows 10/11]"
+
     Write-Host "4: Download and Install VLC"
 
+    Write-Host "5: Download and Install Firefox"
 
 
-    Write-Host "5: Emad Adel [Github]"
-    Write-Host "6: Emad Adel [Telgram]"
+
+    Write-Host "6: Emad Adel [Github]"
+    Write-Host "7: Emad Adel [Telgram]"
     Write-Host "Q: Press 'Q' to quit"
    
 }
@@ -51,7 +54,29 @@ do {
 
         '4'
         {
+            $FileUri = "https://t1.daumcdn.net/potplayer/PotPlayer/Version/Latest/PotPlayerSetup64.exe"
+            $Destination = "$env:temp\PotPlayerSetup64"
             
+            $bitsJobObj = Start-BitsTransfer $FileUri -Destination $Destination
+            
+            switch ($bitsJobObj.JobState) {
+            
+                'Transferred' {
+                    Complete-BitsTransfer -BitsJob $bitsJobObj
+                    break
+                }
+            
+                'Error' {
+                    throw 'Error downloading'
+                }
+            }
+            
+            $exeArgs = '/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath'
+            Start-Process -Wait $Destination -ArgumentList $exeArgs
+        }
+
+        '5'
+        {
 
             $FileUri = "https://cdn.stubdownloader.services.mozilla.com/builds/firefox-stub/en-US/win/4f2b8e1a798f5e36c7a143cfab55666b09da95a8ba649cf364f8203efeefd7c3/Firefox Installer.exe"
             $Destination = "$env:temp\Firefox Installer"
@@ -74,12 +99,12 @@ do {
             Start-Process -Wait $Destination -ArgumentList $exeArgs
         }
 
-        '5'  
+        '6'  
         {
             Start-Process "https://www.github.com/emadadel4"
         }
 
-        '6'
+        '7'
         {
             Start-Process "https://t.me/emadadel4"
         }
