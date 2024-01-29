@@ -54,7 +54,7 @@ do {
             
 
             $FileUri = "https://cdn.stubdownloader.services.mozilla.com/builds/firefox-stub/en-US/win/4f2b8e1a798f5e36c7a143cfab55666b09da95a8ba649cf364f8203efeefd7c3/Firefox Installer.exe"
-            $Destination = "C:/Firefox Installer.exe"
+            $Destination = "$env:temp\Firefox Installer.exe"
             
             $bitsJobObj = Start-BitsTransfer $FileUri -Destination $Destination
             
