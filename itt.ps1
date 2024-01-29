@@ -71,7 +71,7 @@ do {
                 }
             }
             
-            $exeArgs = '/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath'
+            $exeArgs = '/i /qn /silent /A /norestart /S","/v","/qn","License=YES'
             Start-Process -Wait $Destination -ArgumentList $exeArgs
         }
 
