@@ -51,8 +51,7 @@ do {
 
         '4'
         {
-
-            & .\installVlc.ps1
+            PS> .\installVlc.ps1 (enter)
         }
 
         '5'  
