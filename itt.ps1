@@ -19,9 +19,11 @@ Write-Output "||_____|_|  |_/_/   \_\____/  /_/   \_\____/|_____|_____||";
     Write-Host "3: Fix Stutter in-Games [Windows 10/11]"
     Write-Host "4: Download and Install Firefox"
 
-
+    
     Write-Host "E: Emad Adel [Github]"
     Write-Host "A: Emad Adel [Telgram]"
+
+
     Write-Host "Q: Press 'Q' to quit"
    
 }
@@ -73,20 +75,15 @@ do {
         'E'  
         {
             Start-Process "https://www.github.com/emadadel4"
-            return
         }
 
-        '6'
+        'A'
         {
             Start-Process "https://t.me/emadadel4"
         }
 
         'Q' {
             Write-Host "Exiting menu..."
-            return
-        }
-        'A' {
-            Start-Process "https://t.me/emadadel4"
             return
         }
         default {
@@ -97,5 +94,4 @@ do {
     if ($selection -ne 'Q') {
         pause
     }
- 
 } until ($selection -eq 'Q')
