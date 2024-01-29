@@ -20,7 +20,7 @@ Write-Output "||_____|_|  |_/_/   \_\____/  /_/   \_\____/|_____|_____||";
     Write-Host "2: Chris Titus Tech's Windows Utility"
     Write-Host "3: Fix Stutter in-Games [Windows 10/11]"
 
-    Write-Host "4: Download and Install VLC"
+    Write-Host "4: Download and Install Potplayer"
 
     Write-Host "5: Download and Install Firefox"
 
