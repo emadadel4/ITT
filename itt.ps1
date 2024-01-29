@@ -52,7 +52,7 @@ do {
         '4'
         {
 
-            PS> cd installVlc (enter)
+            & .\installVlc.ps1
         }
 
         '5'  
