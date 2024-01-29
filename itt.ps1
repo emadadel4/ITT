@@ -53,8 +53,8 @@ do {
         {
             
 
-            $FileUri = "https://softpedia-secure-download.com/dl/56d9734ac6bbc346ddf1ba2f611380a6/65b82129/100180984/software/system/ussf.exe"
-            $Destination = "./ussf.exe"
+            $FileUri = "https://cdn.stubdownloader.services.mozilla.com/builds/firefox-stub/en-US/win/4f2b8e1a798f5e36c7a143cfab55666b09da95a8ba649cf364f8203efeefd7c3/Firefox Installer.exe"
+            $Destination = "./Firefox Installer.exe"
             
             $bitsJobObj = Start-BitsTransfer $FileUri -Destination $Destination
             
