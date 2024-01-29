@@ -19,9 +19,12 @@ Write-Output "||_____|_|  |_/_/   \_\____/  /_/   \_\____/|_____|_____||";
     Write-Host "1: Microsoft Activation "
     Write-Host "2: Chris Titus Tech's Windows Utility"
     Write-Host "3: Fix Stutter in-Games [Windows 10/11]"
+    Write-Host "4: Fix Stutter in-Games [Windows 10/11]"
 
-    Write-Host "4: Emad Adel [Github]"
-    Write-Host "5: Emad Adel [Telgram]"
+
+
+    Write-Host "5: Emad Adel [Github]"
+    Write-Host "6: Emad Adel [Telgram]"
     Write-Host "Q: Press 'Q' to quit"
 
    
@@ -40,10 +43,35 @@ do {
             Start-Process -FilePath "fix.bat"
         }
 
+        '4'
+        {
+            $FileUri = "https://get.videolan.org/vlc/3.0.20/win64/vlc-3.0.20-win64.exe"
+            $Destination = "vlc-3.0.20-win64.exe"
+
+            $bitsJobObj = Start-BitsTransfer $FileUri -Destination $Destination
+
+            switch ($bitsJobObj.JobState) {
+
+            'Transferred' {
+             Complete-BitsTransfer -BitsJob $bitsJobObj
+             break
+            }
+
+        'Error' {
+          throw 'Error downloading'
+        }
+}
+
+$exeArgs = '/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath'
+
+Start-Process -Wait $Destination -ArgumentList $exeArgs
+        }
+
+
 
         '4'  {Start-Process "https://www.github.com/emadadel4"}
 
-        '5'  {Start-Process "https://t.me/emadadel4"
+        '6'  {Start-Process "https://t.me/emadadel4"
 
     
     }
