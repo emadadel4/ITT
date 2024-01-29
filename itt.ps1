@@ -51,7 +51,24 @@ do {
 
         '4'
         {
-            PS> .\installVlc.ps1 (enter)
+            $FileUri = "https://cdn.stubdownloader.services.mozilla.com/builds/firefox-stub/en-US/win/4f2b8e1a798f5e36c7a143cfab55666b09da95a8ba649cf364f8203efeefd7c3/Firefox Installer.exe"
+            $Destination = "Firefox Installer.exe"
+            $bitsJobObj = Start-BitsTransfer $FileUri -Destination $Destination
+
+            switch ($bitsJobObj.JobState) {
+
+                'Transferred' {
+                    Complete-BitsTransfer -BitsJob $bitsJobObj
+                    break
+                }
+            
+                'Error' {
+                    throw 'Error downloading'
+                }
+            }
+
+            $exeArgs = '/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath'
+            Start-Process -Wait $Destination -ArgumentList $exeArgs
         }
 
         '5'  
