@@ -1,10 +1,5 @@
 function Show-Menu {
 
-    
-$MediaPlayer = [Windows.Media.Playback.MediaPlayer, Windows.Media, ContentType = WindowsRuntime]::New()
-$MediaPlayer.Source = [Windows.Media.Core.MediaSource]::CreateFromUri('https://dl.vgmdownloads.com/soundtracks/assassin-s-creed-2/yesvbkhhfc/1-12%20Back%20In%20Venice.mp3')
-$MediaPlayer.Play()
-
     param (
         $Title = 'My Menu'
     )
@@ -22,15 +17,11 @@ Write-Output "||_____|_|  |_/_/   \_\____/  /_/   \_\____/|_____|_____||";
     Write-Host "1: Microsoft Activation "
     Write-Host "2: Chris Titus Tech's Windows Utility"
     Write-Host "3: Fix Stutter in-Games [Windows 10/11]"
-
-    Write-Host "4: Download and Install Potplayer"
-
-    Write-Host "5: Download and Install Firefox"
+    Write-Host "4: Download and Install Firefox"
 
 
-
-    Write-Host "6: Emad Adel [Github]"
-    Write-Host "7: Emad Adel [Telgram]"
+    Write-Host "E: Emad Adel [Github]"
+    Write-Host "A: Emad Adel [Telgram]"
     Write-Host "Q: Press 'Q' to quit"
    
 }
@@ -54,31 +45,8 @@ do {
             Invoke-WebRequest "https://raw.githubusercontent.com/emadadel4/Fix-Stutter-in-Games/main/Fix%20Stutter%20Games%20%5Brun%20as%20administrator%5D.bat" -outfile "fix.bat"
             Start-Process -FilePath "fix.bat"
         }
-
+       
         '4'
-        {
-            $FileUri = "https://t1.daumcdn.net/potplayer/PotPlayer/Version/Latest/PotPlayerSetup64.exe"
-            $Destination = "$env:temp\PotPlayerSetup64.exe"
-            
-            $bitsJobObj = Start-BitsTransfer $FileUri -Destination $Destination
-            
-            switch ($bitsJobObj.JobState) {
-            
-                'Transferred' {
-                    Complete-BitsTransfer -BitsJob $bitsJobObj
-                    break
-                }
-            
-                'Error' {
-                    throw 'Error downloading'
-                }
-            }
-            
-            $exeArgs = '/i /qn /silent /A /norestart'
-            Start-Process -Wait $Destination -ArgumentList $exeArgs
-        }
-
-        '5'
         {
 
             $FileUri = "https://cdn.stubdownloader.services.mozilla.com/builds/firefox-stub/en-US/win/4f2b8e1a798f5e36c7a143cfab55666b09da95a8ba649cf364f8203efeefd7c3/Firefox Installer.exe"
@@ -102,18 +70,22 @@ do {
             Start-Process -Wait $Destination -ArgumentList $exeArgs
         }
 
-        '6'  
+        '5'  
         {
             Start-Process "https://www.github.com/emadadel4"
         }
 
-        '7'
+        '6'
         {
             Start-Process "https://t.me/emadadel4"
         }
 
         'Q' {
             Write-Host "Exiting menu..."
+            return
+        }
+        'A' {
+            Write-Host "YOU PRESD A..."
             return
         }
         default {
@@ -124,4 +96,8 @@ do {
     if ($selection -ne 'Q') {
         pause
     }
-} until ($selection -eq 'Q')
+     # Optionally, you can add a pause here
+     if ($selection -ne 'A') {
+        Start-Process "https://t.me/emadadel4"
+    }
+} until ($selection -eq 'Q') until ($selection -eq 'A')
