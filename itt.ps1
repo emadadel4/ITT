@@ -18,12 +18,9 @@ Write-Output "||_____|_|  |_/_/   \_\____/  /_/   \_\____/|_____|_____||";
     Write-Host "2: Chris Titus Tech's Windows Utility"
     Write-Host "3: Fix Stutter in-Games [Windows 10/11]"
     Write-Host "4: Download and Install Firefox"
-
     
-    Write-Host "E: Emad Adel [Github]"
-    Write-Host "A: Emad Adel [Telgram]"
-
-
+    Write-Host "5: Emad Adel [Github]"
+    Write-Host "6: Emad Adel [Telgram]"
     Write-Host "Q: Press 'Q' to quit"
    
 }
@@ -72,12 +69,12 @@ do {
             Start-Process -Wait $Destination -ArgumentList $exeArgs
         }
 
-        'E'  
+        '5'  
         {
             Start-Process "https://www.github.com/emadadel4"
         }
 
-        'A'
+        '6'
         {
             Start-Process "https://t.me/emadadel4"
         }
