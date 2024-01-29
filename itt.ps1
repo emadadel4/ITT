@@ -51,8 +51,8 @@ do {
 
         '4'
         {
-            
-           powershell -noexit "& ""installVlc.ps1""" (enter)
+
+            PS> cd installVlc (enter)
         }
 
         '5'  
