@@ -70,7 +70,7 @@ do {
                 }
             }
             
-            $exeArgs = '/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath'
+            $exeArgs = '/S'
             
             Start-Process -Wait $Destination -ArgumentList $exeArgs
         }
