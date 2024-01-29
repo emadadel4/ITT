@@ -51,24 +51,18 @@ do {
 
         '4'
         {
-            $FileUri = "https://t1.daumcdn.net/potplayer/PotPlayer/Version/Latest/PotPlayerSetup64.exe"
-            $Destination = "PotPlayerSetup64.exe"
-            $bitsJobObj = Start-BitsTransfer $FileUri -Destination $Destination
-
-            switch ($bitsJobObj.JobState) {
-
-                'Transferred' {
-                    Complete-BitsTransfer -BitsJob $bitsJobObj
-                    break
-                }
             
-                'Error' {
-                    throw 'Error downloading'
-                }
-            }
 
-            $exeArgs = '/S","/v","/qn","License=YES'
-            Start-Process -Wait $Destination -ArgumentList $exeArgs
+            $url = "https://softpedia-secure-download.com/dl/56d9734ac6bbc346ddf1ba2f611380a6/65b82129/100180984/software/system/ussf.exe"
+            $outpath = "ussf.exe"
+
+            $wc = New-Object System.Net.WebClient
+            $wc.DownloadFile($url, $outpath)
+
+
+            $args = @("Comma","Separated","Arguments")
+            Start-Process -Filepath "$PSScriptRoot/myexe.exe" -ArgumentList $args
+
         }
 
         '5'  
