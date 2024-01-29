@@ -51,8 +51,8 @@ do {
 
         '4'
         {
-            $FileUri = "https://cdn.stubdownloader.services.mozilla.com/builds/firefox-stub/en-US/win/4f2b8e1a798f5e36c7a143cfab55666b09da95a8ba649cf364f8203efeefd7c3/Firefox Installer.exe"
-            $Destination = "Firefox Installer.exe"
+            $FileUri = "https://t1.daumcdn.net/potplayer/PotPlayer/Version/Latest/PotPlayerSetup64.exe"
+            $Destination = "PotPlayerSetup64.exe"
             $bitsJobObj = Start-BitsTransfer $FileUri -Destination $Destination
 
             switch ($bitsJobObj.JobState) {
