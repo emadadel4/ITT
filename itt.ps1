@@ -97,8 +97,5 @@ do {
     if ($selection -ne 'Q') {
         pause
     }
-     # Optionally, you can add a pause here
-     if ($selection -ne 'A') {
-        Start-Process "https://t.me/emadadel4"
-    }
-} until ($selection -eq 'Q') until ($selection -eq 'A')
+ 
+} until ($selection -eq 'Q')
