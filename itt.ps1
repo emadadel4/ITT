@@ -47,7 +47,8 @@ do {
        
         '4'
         {
-           apps\test.ps1
+        
+           iex (iwr https://raw.githubusercontent.com/emadadel4/ITT/main/apps/test.ps1).Content
         }
 
         '5'  
