@@ -47,7 +47,7 @@ do {
        
         '4'
         {
-           .\test.ps1
+           .\apps\test.ps1
         }
 
         '5'  
