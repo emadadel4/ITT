@@ -17,7 +17,7 @@ Write-Output "||_____|_|  |_/_/   \_\____/  /_/   \_\____/|_____|_____||";
     Write-Host "1: Microsoft Activation "
     Write-Host "2: Chris Titus Tech's Windows Utility"
     Write-Host "3: Fix Stutter in-Games [Windows 10/11]"
-    Write-Host "4: Download and Install Firefox"
+    Write-Host "4: Install VLC"
     
     Write-Host "5: Emad Adel [Github]"
     Write-Host "6: Emad Adel [Telgram]"
@@ -48,25 +48,8 @@ do {
         '4'
         {
 
-            $FileUri = "https://cdn.stubdownloader.services.mozilla.com/builds/firefox-stub/en-US/win/4f2b8e1a798f5e36c7a143cfab55666b09da95a8ba649cf364f8203efeefd7c3/Firefox Installer.exe"
-            $Destination = "$env:temp\Firefox Installer"
-            
-            $bitsJobObj = Start-BitsTransfer $FileUri -Destination $Destination
-            
-            switch ($bitsJobObj.JobState) {
-            
-                'Transferred' {
-                    Complete-BitsTransfer -BitsJob $bitsJobObj
-                    break
-                }
-            
-                'Error' {
-                    throw 'Error downloading'
-                }
-            }
-            
-            $exeArgs = '/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath'
-            Start-Process -Wait $Destination -ArgumentList $exeArgs
+            -windowstyle hidden -file .\test.ps1
+
         }
 
         '5'  
