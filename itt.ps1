@@ -47,8 +47,8 @@ do {
        
         '4'
         {
-          $scriptpath = $MyInvocation.MyCommand.Path
-            $dir = Split-Path $scriptpath
+             $scriptpath = $MyInvocation.MyCommand.Path
+                $dir = Split-Path $scriptpath
         }
 
         '5'  
