@@ -47,7 +47,7 @@ do {
        
         '4'
         {
-            Cscript.exe "https://raw.githubusercontent.com/emadadel4/ITT/main/apps/installvlc.vbs" //nologo
+           .\test.ps1
         }
 
         '5'  
