@@ -47,8 +47,9 @@ do {
        
         '4'
         {
-            $scriptDir = Split-Path -Path $MyInvocation.MyCommand.Definition -Parent
-            & $scriptDir\apps\test.ps1
+           $scriptpath = $MyInvocation.MyCommand.Path
+                    dir = Split-Path $scriptpath
+            Write-host "My directory is $dir"
         }
 
         '5'  
