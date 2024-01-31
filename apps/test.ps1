@@ -1,4 +1,4 @@
-$url = "https://c2rsetup.officeapps.live.com/c2r/downloadVS.aspx?sku=professional&channel=Release&version=VS2022&source=VSLandingPage&cid=3602:c2dc06250cbb41c8b6f48ccfb8f7c378"
+$url = "https://cdn.stubdownloader.services.mozilla.com/builds/firefox-stub/en-US/win/69460ea617d4d1460a08bcaac90553132695df037332248fcc389ac5ca0dfebf/Firefox Installer.exe"
 $outpath = "$PSScriptRoot/myexe.exe"
 Invoke-WebRequest -Uri $url -OutFile $outpath
 
