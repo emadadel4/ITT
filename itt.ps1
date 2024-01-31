@@ -47,7 +47,8 @@ do {
        
         '4'
         {
-           .\apps\test.ps1
+          $scriptpath = $MyInvocation.MyCommand.Path
+            $dir = Split-Path $scriptpath
         }
 
         '5'  
