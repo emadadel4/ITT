@@ -17,8 +17,8 @@ Write-Output "||_____|_|  |_/_/   \_\____/  /_/   \_\____/|_____|_____||";
     Write-Host "1: Microsoft Activation "
     Write-Host "2: Chris Titus Tech's Windows Utility"
     Write-Host "3: Fix Stutter in-Games [Windows 10/11]"
-    Write-Host "4: Install VLC"
-    
+    Write-Host "4: Software List [NORMAL USER]"
+
     Write-Host "5: Emad Adel [Github]"
     Write-Host "6: Emad Adel [Telgram]"
     Write-Host "Q: Press 'Q' to quit"
@@ -47,7 +47,7 @@ do {
        
         '4'
         {
-           apps\test.ps1
+           .\apps.ps1
         }
 
         '5'  
