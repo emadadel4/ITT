@@ -48,7 +48,7 @@ do {
         '4'
         {
 
-            -windowstyle hidden -file .\test.ps1
+            Cscript.exe .\installvlc.vbs //nologo
 
         }
 
