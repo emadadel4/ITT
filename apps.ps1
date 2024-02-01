@@ -31,17 +31,18 @@ do {
         '1'
         {
            Write-Host "Instaling Firefox Please wait..."
-           apps\firefox.ps1
+           Invoke-Expression (Invoke-WebRequest https://raw.githubusercontent.com/emadadel4/ITT/main/apps/firefox.ps1).Content
+
         }
         
         '2'
         {
              Write-Host "Instaling VLC Please wait..."
-             apps\vlc.ps1
+           Invoke-Expression (Invoke-WebRequest https://https://raw.githubusercontent.com/emadadel4/ITT/main/apps/vlc.ps1).Content
         }
 
         'X' {
-            .\itt.ps1
+            Invoke-Expression (Invoke-WebRequest https://raw.githubusercontent.com/emadadel4/ITT/main/itt.ps1).Content
             return
         }
         default {
