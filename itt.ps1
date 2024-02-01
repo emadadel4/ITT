@@ -27,16 +27,23 @@ Write-Output "||_____|_|  |_/_/   \_\____/  /_/   \_\____/|_____|_____||";
     Write-Host "2: Chris Titus Tech's Windows Utility"
     Write-Host "3: Fix Stutter in-Games [Windows 10/11]"
     Write-Host "4: Software List [NORMAL USER]"
-
+    write-host "`n"
     Write-Host "5: Emad Adel [Github]"
     Write-Host "6: Emad Adel [Telgram]"
     Write-Host "Q: Press 'Q' to quit"
+    write-host "`n"
+
    
 }
 
 do {
     Show-Menu -Title 'IT Tools'
     $selection = Read-Host "Please make a selection"
+
+
+    Write-Host "This projects is open soruce you can open the link and edit it as you want"
+
+
     switch ($selection) {
         '1'
         {
