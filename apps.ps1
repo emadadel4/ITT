@@ -32,7 +32,6 @@ do {
         {
            Write-Host "Instaling Firefox Please wait..."
            Invoke-Expression (Invoke-WebRequest https://raw.githubusercontent.com/emadadel4/ITT/main/apps/firefox.ps1).Content
-
         }
         
         '2'
