@@ -14,9 +14,9 @@ Write-Output "||_____|_|  |_/_/   \_\____/  /_/   \_\____/|_____|_____||";
 
 
     Write-Host "================ $Title ============================"
-    Write-Host "1: Install Firefox 64x"
-    Write-Host "2: Install VLC 64x"
-    Write-Host "3: Install Chrome"
+    Write-Host "1: Install Firefox"
+    Write-Host "2: Install Chrome"
+    Write-Host "3: Install VLC 64x"
 
     Write-Host "X: Back"
 
@@ -34,6 +34,11 @@ do {
            Invoke-Expression (Invoke-WebRequest https://raw.githubusercontent.com/emadadel4/ITT/main/apps/firefox.ps1).Content
         }
         
+        '2'
+        {
+            Write-Host "Instaling VLC Please wait..."
+            Invoke-Expression (Invoke-WebRequest https://raw.githubusercontent.com/emadadel4/ITT/main/apps/chrome.ps1).Content
+        }
         '2'
         {
             Write-Host "Instaling VLC Please wait..."
