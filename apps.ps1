@@ -36,8 +36,8 @@ do {
         
         '2'
         {
-             Write-Host "Instaling VLC Please wait..."
-           Invoke-Expression (Invoke-WebRequest https://https://raw.githubusercontent.com/emadadel4/ITT/main/apps/vlc.ps1).Content
+            Write-Host "Instaling VLC Please wait..."
+            Invoke-Expression (Invoke-WebRequest https://raw.githubusercontent.com/emadadel4/ITT/main/apps/vlc.ps1).Content
         }
 
         'X' {
