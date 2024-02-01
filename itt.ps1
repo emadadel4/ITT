@@ -11,7 +11,7 @@ function Show-Menu {
     )
     Clear-Host
 
-Write-Host "Updated every day"
+Write-Host "Updated every day 2024"
 Write-Output "+========================================================+";
 Write-Output "| _____ __  __    _    ____       _    ____  _____ _     |";
 Write-Output "|| ____|  \/  |  / \  |  _ \     / \  |  _ \| ____| |    |";
