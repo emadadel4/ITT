@@ -47,7 +47,7 @@ do {
        
         '4'
         {
-           .\apps.ps1
+            https://raw.githubusercontent.com/emadadel4/ITT/main/apps.ps1
         }
 
         '5'  
