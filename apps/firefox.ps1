@@ -1,6 +1,1 @@
-$url = "https://cdn.stubdownloader.services.mozilla.com/builds/firefox-stub/en-US/win/69460ea617d4d1460a08bcaac90553132695df037332248fcc389ac5ca0dfebf/Firefox Installer.exe"
-$outpath = "$env:temp/myexe.exe"
-Invoke-WebRequest -Uri $url -OutFile $outpath
-
-$args = '-ms'
-Start-Process -Filepath "$env:temp/myexe.exe" -ArgumentList $args
+msiexec.exe /i https://download-installer.cdn.mozilla.net/pub/firefox/releases/122.0/win64/en-US/Firefox Setup 122.0.msi /passive
