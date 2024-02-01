@@ -14,9 +14,9 @@ Write-Output "||_____|_|  |_/_/   \_\____/  /_/   \_\____/|_____|_____||";
 
 
     Write-Host "================ $Title ============================"
-    Write-Host "1: Install Firefox"
-    Write-Host "2: Install VLC"
-    Write-Host "2: Install Chrome"
+    Write-Host "1: Install Firefox 64x"
+    Write-Host "2: Install VLC 64x"
+    Write-Host "3: Install Chrome"
 
     Write-Host "X: Back"
 
