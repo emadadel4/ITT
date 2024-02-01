@@ -1,8 +1,7 @@
 
 Invoke-Expression (Invoke-WebRequest https://raw.githubusercontent.com/emadadel4/ITT/main/quotes.ps1).Content   
 
-Start-Sleep -Seconds 6 
-
+Start-Sleep -Seconds 7 
 
 
 function Show-Menu {
@@ -12,6 +11,7 @@ function Show-Menu {
     )
     Clear-Host
 
+Write-Host "Updated every day"
 Write-Output "+========================================================+";
 Write-Output "| _____ __  __    _    ____       _    ____  _____ _     |";
 Write-Output "|| ____|  \/  |  / \  |  _ \     / \  |  _ \| ____| |    |";
@@ -34,6 +34,7 @@ Write-Output "||_____|_|  |_/_/   \_\____/  /_/   \_\____/|_____|_____||";
     write-host "`n"
 
    
+
 }
 
 do {
@@ -41,7 +42,6 @@ do {
     $selection = Read-Host "Please make a selection"
 
 
-    Write-Host "This projects is open soruce you can open the link and edit it as you want"
 
 
     switch ($selection) {
