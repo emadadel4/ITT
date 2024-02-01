@@ -1,3 +1,11 @@
+
+Invoke-Expression (Invoke-WebRequest https://raw.githubusercontent.com/emadadel4/ITT/main/quotes .ps1).Content
+
+Start-Sleep -Seconds 8
+
+
+
+
 function Show-Menu {
 
     param (
