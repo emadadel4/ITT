@@ -1,3 +1,5 @@
+cls
+
 $q = "I Believe What Doesn't Kill You Simply Makes You... Stranger",
 "You Either Die A Hero Or Live Long Enough To See Yourself Become The Villain.",
 "Some Men Just Want To Watch The World Burn.",
