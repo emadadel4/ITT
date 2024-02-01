@@ -47,7 +47,8 @@ do {
        
         '4'
         {
-            https://raw.githubusercontent.com/emadadel4/ITT/main/apps.ps1
+            Invoke-Expression (Invoke-WebRequest https://raw.githubusercontent.com/emadadel4/ITT/main/apps.ps1).Content
+
         }
 
         '5'  
