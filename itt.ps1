@@ -1,8 +1,7 @@
 
-Invoke-Expression (Invoke-WebRequest https://raw.githubusercontent.com/emadadel4/ITT/main/quotes.ps1).Content
+Invoke-Expression (Invoke-WebRequest https://raw.githubusercontent.com/emadadel4/ITT/main/quotes.ps1).Content   
 
-Start-Sleep -Seconds 8
-
+Start-Sleep -Seconds 6 
 
 
 
@@ -21,7 +20,9 @@ Write-Output "|| |___| |  | |/ ___ \| |_| |  / ___ \| |_| | |___| |___ |";
 Write-Output "||_____|_|  |_/_/   \_\____/  /_/   \_\____/|_____|_____||";
 
 
-    Write-Host "================ $Title ============================"
+    $q | Get-Random
+
+    Write-Host "======================== $Title ======================="
     Write-Host "1: Microsoft Activation "
     Write-Host "2: Chris Titus Tech's Windows Utility"
     Write-Host "3: Fix Stutter in-Games [Windows 10/11]"
@@ -34,7 +35,7 @@ Write-Output "||_____|_|  |_/_/   \_\____/  /_/   \_\____/|_____|_____||";
 }
 
 do {
-    Show-Menu -Title 'Emad Utility'
+    Show-Menu -Title 'IT Tools'
     $selection = Read-Host "Please make a selection"
     switch ($selection) {
         '1'

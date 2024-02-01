@@ -4,4 +4,4 @@ $q = "I Believe What Doesn't Kill You Simply Makes You... Stranger",
 "I'm Batman.",
 "You Always Fear What You Don't Understand",
 "You thought we could be decent men, in an indecent time. But you were wrong."
-$q | Get-Random
+$q | Get-Random 
