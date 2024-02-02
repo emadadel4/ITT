@@ -4,10 +4,9 @@ Invoke-Expression (Invoke-WebRequest https://raw.githubusercontent.com/emadadel4
 Start-Sleep -Seconds 5 
 
 
-Set-ConsoleFont 25 #Raster Fonts
-Set-ConsoleFont 24 #Raster Fonts
-Set-ConsoleFont 16 #Consolas
-Set-ConsoleFont 111 #Consolas
+$psISE.Options.FontName = 'Lucida Sans Console' 
+$psISE.Options.FontSize = 200
+
 function Show-Menu {
 
     param (
