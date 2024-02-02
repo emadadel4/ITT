@@ -1,10 +1,7 @@
 
-clear
-
+Clear-Host
 Invoke-Expression (Invoke-WebRequest https://raw.githubusercontent.com/emadadel4/ITT/main/quotes.ps1).Content   
-
 Start-Sleep -Seconds 5 
-
 
 function Show-Menu {
 
@@ -21,7 +18,6 @@ Write-Output "||  _| | |\/| | / _ \ | | | |   / _ \ | | | |  _| | |    |";
 Write-Output "|| |___| |  | |/ ___ \| |_| |  / ___ \| |_| | |___| |___ |";
 Write-Output "||_____|_|  |_/_/   \_\____/  /_/   \_\____/|_____|_____||";
 
-
     $q | Get-Random
 
     Write-Host "======================== $Title ======================="
@@ -34,17 +30,11 @@ Write-Output "||_____|_|  |_/_/   \_\____/  /_/   \_\____/|_____|_____||";
     Write-Host "6: Emad Adel [Telgram]"
     Write-Host "Q: Press 'Q' to quit"
     write-host "`n"
-
-   
-
 }
 
 do {
     Show-Menu -Title 'IT Tools'
     $selection = Read-Host "Please make a selection"
-
-
-
 
     switch ($selection) {
         '1'
