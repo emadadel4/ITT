@@ -1,3 +1,5 @@
+Invoke-Expression (Invoke-WebRequest https://raw.githubusercontent.com/emadadel4/ITT/main/quotes.ps1).Content   
+
 function Show-Menu {
 
     param (
@@ -12,7 +14,7 @@ Write-Output "||  _| | |\/| | / _ \ | | | |   / _ \ | | | |  _| | |    |";
 Write-Output "|| |___| |  | |/ ___ \| |_| |  / ___ \| |_| | |___| |___ |";
 Write-Output "||_____|_|  |_/_/   \_\____/  /_/   \_\____/|_____|_____||";
 
-
+    $q | Get-Random
     Write-Host "================ $Title ============================"
     Write-Host "1: Install Firefox"
     Write-Host "2: Install Chrome"
@@ -25,7 +27,7 @@ Write-Output "||_____|_|  |_/_/   \_\____/  /_/   \_\____/|_____|_____||";
 }
 
 do {
-    Show-Menu -Title 'Emad Utility'
+    Show-Menu -Title 'IT Tools'
     $selection = Read-Host "Please make a selection"
     switch ($selection) {
         '1'
