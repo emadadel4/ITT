@@ -20,7 +20,7 @@ Write-Output "||_____|_|  |_/_/   \_\____/  /_/   \_\____/|_____|_____||";
     Write-Host "2: Install Chrome"
     Write-Host "3: Install VLC"
 
-    Write-Host "X: Back"
+    Write-Host "0: Back"
 
     
    
@@ -47,7 +47,7 @@ do {
             Invoke-Expression (Invoke-WebRequest https://raw.githubusercontent.com/emadadel4/ITT/main/apps/vlc.ps1).Content
         }
 
-        'X' {
+        '0' {
             Invoke-Expression (Invoke-WebRequest https://raw.githubusercontent.com/emadadel4/ITT/main/itt.ps1).Content
             return
         }
@@ -57,7 +57,7 @@ do {
     }
     
     # Optionally, you can add a pause here
-    if ($selection -ne 'X') {
+    if ($selection -ne '0') {
         pause
     }
-} until ($selection -eq 'X')
+} until ($selection -eq '0')
