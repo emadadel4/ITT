@@ -4,8 +4,7 @@ Invoke-Expression (Invoke-WebRequest https://raw.githubusercontent.com/emadadel4
 Start-Sleep -Seconds 5 
 
 
-$psISE.Options.FontName = 'Lucida Sans Console' 
-$psISE.Options.FontSize = 200
+$psISE.Options.FontSize = 36
 
 function Show-Menu {
 
