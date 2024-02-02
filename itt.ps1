@@ -4,10 +4,10 @@ Invoke-Expression (Invoke-WebRequest https://raw.githubusercontent.com/emadadel4
 Start-Sleep -Seconds 5 
 
 
-Set-ConsoleFont 1 #Raster Fonts
-Set-ConsoleFont 9 #Raster Fonts
-Set-ConsoleFont 10 #Consolas
-Set-ConsoleFont 11 #Consolas
+Set-ConsoleFont 25 #Raster Fonts
+Set-ConsoleFont 24 #Raster Fonts
+Set-ConsoleFont 16 #Consolas
+Set-ConsoleFont 111 #Consolas
 function Show-Menu {
 
     param (
