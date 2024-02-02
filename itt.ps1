@@ -2,6 +2,7 @@
 Clear-Host
 Invoke-Expression (Invoke-WebRequest https://raw.githubusercontent.com/emadadel4/ITT/main/quotes.ps1).Content   
 Start-Sleep -Seconds 5 
+Set-ConsoleFont 200
 
 function Show-Menu {
 
