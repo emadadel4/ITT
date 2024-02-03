@@ -25,9 +25,12 @@ Write-Output "||_____|_|  |_/_/   \_\____/  /_/   \_\____/|_____|_____||";
     Write-Host "2: Chris Titus Tech's Windows Utility"
     Write-Host "3: Fix Stutter in-Games [Windows 10/11]"
     Write-Host "4: Software List [NORMAL USER]"
+    Write-Host "5: Windows 10/11 Tweeks"
+
+
     write-host "`n"
-    Write-Host "5: Emad Adel [Github]"
-    Write-Host "6: Emad Adel [Telgram]"
+    Write-Host "6: Emad Adel [Github]"
+    Write-Host "7: Emad Adel [Telgram]"
     Write-Host "Q: Press 'Q' to quit"
     write-host "`n"
 }
@@ -61,10 +64,15 @@ do {
 
         '5'  
         {
+            Invoke-Expression (Invoke-WebRequest https://raw.githubusercontent.com/Sycnex/Windows10Debloater/master/Windows10DebloaterGUI.ps1).Content
+        }
+
+        '6'  
+        {
             Start-Process "https://www.github.com/emadadel4"
         }
 
-        '6'
+        '7'
         {
             Start-Process "https://t.me/emadadel4"
         }
