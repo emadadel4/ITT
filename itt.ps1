@@ -1,7 +1,7 @@
 
 Clear-Host
 Invoke-Expression (Invoke-WebRequest https://raw.githubusercontent.com/emadadel4/ITT/main/quotes.ps1).Content   
-Start-Sleep -Seconds 5 
+Start-Sleep -Seconds 4 
 
 function Show-Menu {
 
@@ -24,8 +24,8 @@ Write-Output "||_____|_|  |_/_/   \_\____/  /_/   \_\____/|_____|_____||";
     Write-Host "1: Microsoft Activation "
     Write-Host "2: Chris Titus Tech's Windows Utility"
     Write-Host "3: Fix Stutter in-Games [Windows 10/11]"
-    Write-Host "4: Software List [NORMAL USER]"
-    Write-Host "5: Windows 10/11 Tweeks"
+    Write-Host "4: Windows 10/11 Tweeks"
+    Write-Host "5: Software List [NORMAL USER] >"
 
 
     write-host "`n"
@@ -58,13 +58,12 @@ do {
        
         '4'
         {
-            Invoke-Expression (Invoke-WebRequest https://raw.githubusercontent.com/emadadel4/ITT/main/apps.ps1).Content
-
+            Invoke-Expression (Invoke-WebRequest https://raw.githubusercontent.com/Sycnex/Windows10Debloater/master/Windows10DebloaterGUI.ps1).Content
         }
 
         '5'  
         {
-            Invoke-Expression (Invoke-WebRequest https://raw.githubusercontent.com/Sycnex/Windows10Debloater/master/Windows10DebloaterGUI.ps1).Content
+            Invoke-Expression (Invoke-WebRequest https://raw.githubusercontent.com/emadadel4/ITT/main/apps.ps1).Content
         }
 
         '6'  
