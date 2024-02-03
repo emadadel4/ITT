@@ -18,8 +18,6 @@ try {
     throw
 }
 
-$listview = $window.FindName("listview")
-
 $firefox = $window.FindName("firefox")
 $chrome = $window.FindName("chrome")
 $brave = $window.FindName("brave")
@@ -32,16 +30,20 @@ $handler_button1_Click=
     if ($firefox.IsChecked) 
     { 
         Invoke-Expression (Invoke-WebRequest https://raw.githubusercontent.com/emadadel4/ITT/main/apps/firefox.ps1).Content
+        Write-Host "install firefox"
+
     }
 
     if ($chrome.IsChecked) 
     { 
         Invoke-Expression (Invoke-WebRequest https://raw.githubusercontent.com/emadadel4/ITT/main/apps/chrome.ps1).Content
+        Write-Host "install chrome"
     }
 
     if ($brave.IsChecked) 
     { 
         Invoke-Expression (Invoke-WebRequest https://raw.githubusercontent.com/emadadel4/ITT/main/apps/brave.ps1).Content
+        Write-Host "install brave"
     }
 }
 
