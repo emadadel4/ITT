@@ -59,7 +59,6 @@ do {
         '4'
         {
             Invoke-Expression (Invoke-WebRequest https://raw.githubusercontent.com/Sycnex/Windows10Debloater/master/Windows10DebloaterGUI.ps1).Content
-            Clear-Host
         }
 
         '5'  
