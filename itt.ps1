@@ -5,7 +5,6 @@ function Show-Menu {
     param (
         $Title = 'My Menu'
     )
-    Clear-Host
 
 Write-Host "Updated every day 2024"
 Write-Output "+========================================================+";
@@ -23,13 +22,10 @@ Write-Output "||_____|_|  |_/_/   \_\____/  /_/   \_\____/|_____|_____||";
     Write-Host "3: Fix Stutter in-Games [Windows 10/11]"
     Write-Host "4: Windows 10/11 Tweeks"
     Write-Host "5: Software List [NORMAL USER] >"
-
-
     write-host "`n"
     Write-Host "6: Emad Adel [Github]"
     Write-Host "7: Emad Adel [Telgram]"
     Write-Host "Q: Press 'Q' to quit"
-    write-host "`n"
 }
 
 do {
