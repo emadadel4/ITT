@@ -1,3 +1,5 @@
+Clear-Host
+
 function Show-Menu {
 
     param (
