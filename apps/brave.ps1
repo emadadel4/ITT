@@ -1,9 +1,45 @@
+if ((Get-WmiObject win32_operatingsystem | select osarchitecture).osarchitecture -eq "64-bit")
+{
+    $FileUri = "https://github.com/brave/brave-browser/releases/download/v1.5.115/BraveBrowserSilentSetup.exe"
+    $Destination = "$env:temp/BraveBrowserSilentSetup.exe"
 
-$url = "https://referrals.brave.com/latest/BraveBrowserSetup-BRV029.exe"
-$outpath = "$env:temp/brave.exe"
-Invoke-WebRequest -Uri $url -OutFile $outpath
-$wc = New-Object System.Net.WebClient
-$wc.DownloadFile($url, $outpath)
+    $bitsJobObj = Start-BitsTransfer $FileUri -Destination $Destination
 
-$args = @("Comma","Separated","Arguments")
-Start-Process -Filepath "$env:temp/brave.exe" -ArgumentList $args
+    switch ($bitsJobObj.JobState) {
+
+    'Transferred' {
+        Complete-BitsTransfer -BitsJob $bitsJobObj
+        break
+    }
+
+    'Error' {
+        throw 'Error downloading'
+    }
+}
+
+$exeArgs = '/verysilent'
+Start-Process -Wait $Destination -ArgumentList $exeArgs
+     
+}
+else
+{
+   $FileUri = "https://github.com/brave/brave-browser/releases/download/v1.5.115/BraveBrowserSilentSetup32.exe"
+    $Destination = "$env:temp/BraveBrowserSilentSetup32.exe"
+
+    $bitsJobObj = Start-BitsTransfer $FileUri -Destination $Destination
+
+    switch ($bitsJobObj.JobState) {
+
+    'Transferred' {
+        Complete-BitsTransfer -BitsJob $bitsJobObj
+        break
+    }
+
+    'Error' {
+        throw 'Error downloading'
+    }
+}
+
+$exeArgs = '/verysilent'
+Start-Process -Wait $Destination -ArgumentList $exeArgs
+}
