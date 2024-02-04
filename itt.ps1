@@ -11,17 +11,13 @@ Write-Output "|| ____|  \/  |  / \  |  _ \     / \  |  _ \| ____| |    |";
 Write-Output "||  _| | |\/| | / _ \ | | | |   / _ \ | | | |  _| | |    |";
 Write-Output "|| |___| |  | |/ ___ \| |_| |  / ___ \| |_| | |___| |___ |";
 Write-Output "||_____|_|  |_/_/   \_\____/  /_/   \_\____/|_____|_____||";
-
     Invoke-Expression (Invoke-WebRequest https://raw.githubusercontent.com/emadadel4/ITT/main/quotes.ps1).Content   
-
     Write-Host "======================== $Title ======================="
     Write-Host "1: Microsoft Activation "
     Write-Host "2: Chris Titus Tech's Windows Utility"
     Write-Host "3: Fix Stutter in-Games [Windows 10/11]"
     Write-Host "4: Windows 10/11 Tweeks"
     Write-Host "5: Software List [NORMAL USER] >"
-
-
     write-host "`n"
     Write-Host "6: Emad Adel [Github]"
     Write-Host "7: Emad Adel [Telgram]"
