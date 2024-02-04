@@ -1,3 +1,4 @@
+Clear-Host
 function Show-Menu {
 
     param (
@@ -72,7 +73,7 @@ do {
         }
         default {
             Write-Host "Invalid selection, please try again."
-            cls
+            Clear-Host
         }
     }
     
