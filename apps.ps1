@@ -1,11 +1,8 @@
-Invoke-Expression (Invoke-WebRequest https://raw.githubusercontent.com/emadadel4/ITT/main/quotes.ps1).Content   
-
 function Show-Menu {
 
     param (
         $Title = 'Apps List'
     )
-    Clear-Host
 
 Write-Output "+========================================================+";
 Write-Output "| _____ __  __    _    ____       _    ____  _____ _     |";
@@ -14,16 +11,13 @@ Write-Output "||  _| | |\/| | / _ \ | | | |   / _ \ | | | |  _| | |    |";
 Write-Output "|| |___| |  | |/ ___ \| |_| |  / ___ \| |_| | |___| |___ |";
 Write-Output "||_____|_|  |_/_/   \_\____/  /_/   \_\____/|_____|_____||";
 
-    $q | Get-Random
+    Invoke-Expression (Invoke-WebRequest https://raw.githubusercontent.com/emadadel4/ITT/main/quotes.ps1).Content  
+
     Write-Host "================ $Title ============================"
     Write-Host "1: Install Firefox"
     Write-Host "2: Install Chrome"
     Write-Host "3: Install VLC"
-
     Write-Host "0: Back"
-
-    
-   
 }
 
 do {
