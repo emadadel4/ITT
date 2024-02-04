@@ -47,6 +47,7 @@ do {
         }
         default {
             Write-Host "Invalid selection, please try again."
+            Clear-Host
         }
     }
     
