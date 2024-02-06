@@ -40,7 +40,7 @@ function Get-MenuChoice
             )]
             [string]
 
-            $Prompt = 'Please enter a number from the above list or "x" to exit '
+            $Prompt = 'Please enter a number from the above list or "x" to back '
             
         )
 
@@ -73,7 +73,7 @@ function Get-MenuChoice
     # send it out to the caller
     if ($Choice -eq 'x')
         {
-        'Exit'
+            Invoke-Expression (Invoke-WebRequest https://raw.githubusercontent.com/emadadel4/ITT/main/itt.ps1).Content
         }
         else
         {
