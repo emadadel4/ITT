@@ -1,6 +1,8 @@
 Clear-Host
-function Install ($name) {
 
+
+
+function Install ($name) {
 
     Write-Host "Instaling $name Please wait..."
     $FileUri = "https://raw.githubusercontent.com/emadadel4/ITT/main/NiniteInstall.ps1"
@@ -19,7 +21,8 @@ function Install ($name) {
         throw 'Error downloading'
     }
 }
-    powershell.exe -ExecutionPolicy  bypass -file "NiniteInstall.ps1" -NiniteApp $name -Invoke Install
+    Get-NiniteExe -OutputExe "$env:temp\ninite.exe" -filezilla
+
 }
 
 Write-Output "+========================================================+";
