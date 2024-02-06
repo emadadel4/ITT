@@ -1,4 +1,4 @@
-<img src="https://github.com/emadadel4/ITT/blob/main/demo.jpg" style="max-width: 100%; display: inline-block;">
+<img src="https://github.com/emadadel4/ITT/blob/main/demo.GIF" style="max-width: 100%; display: inline-block;">
 
 <h1>PowerShell run as administrator (Recommended) </h1>
 
