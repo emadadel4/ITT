@@ -18,11 +18,7 @@ function Install ($name) {
         throw 'Error downloading'
     }
 }
-
-    $Args = '/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath'
-    Start-Process -Wait $Destination -ArgumentList $Args  
-
-
+    powershell.exe -executionpolicy bypass -file "NiniteInstall.ps1" -NiniteApp $name -Invoke Install
 }
 
 Write-Output "+========================================================+";
