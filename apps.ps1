@@ -15,14 +15,24 @@ Write-Output "||_____|_|  |_/_/   \_\____/  /_/   \_\____/|_____|_____||";
 
     Invoke-Expression (Invoke-WebRequest https://raw.githubusercontent.com/emadadel4/ITT/main/quotes.ps1).Content  
 
-    Write-Host "================ $Title ============================"
-    Write-Host "1: Install Firefox"
-    Write-Host "2: Install Chrome"
-    Write-Host "3: Install VLC"
-    Write-Host "4: Install Zip"
-    Write-Host "5: Install K-Lite Codecs"
+    write-host "================ Browser ============================"
+    Write-Host "1: Firefox"
+    Write-Host "2: Chrome"
 
-    Write-Host "6: Custom Install app"
+    write-host "`n"
+
+    write-host "================ Multimedia ============================"
+    Write-Host "3: VLC (Best Multimedia)"
+
+    write-host "`n"
+
+    write-host "================ Explorer ============================"
+    Write-Host "4: Zip"
+    Write-Host "5: FastStone"
+
+    write-host "`n"
+
+    Write-Host "6:Install Custom app"
     Write-Host "0: Back"
 }
 
@@ -56,11 +66,11 @@ do {
         }
         '5'
         {
-            Write-Host "Instaling Zip Please wait..."
+            Write-Host "Instaling FastStone Please wait..."
             $url = "https://raw.githubusercontent.com/emadadel4/ITT/main/NiniteInstall.ps1"
             $outpath = "$env:temp/NiniteInstall.ps1"
             Invoke-WebRequest -Uri $url -OutFile $outpath
-            powershell.exe -executionpolicy bypass -file "NiniteInstall.ps1" -NiniteApp K-Lite Codecs -Invoke Install
+            powershell.exe -executionpolicy bypass -file "NiniteInstall.ps1" -NiniteApp FastStone -Invoke Install
         }
         '6'
         {
