@@ -21,7 +21,7 @@ function Install ($name) {
         throw 'Error downloading'
     }
 }
-    Get-NiniteExe -OutputExe "$env:temp\ninite.exe" $name
+    Get-NiniteExe -OutputExe "$env:temp\ninite.exe" -"$name"
 
 }
 
@@ -116,5 +116,4 @@ if($MenuList[$Choice])
     Install($MenuList[$Choice])
 }
 
-'You chose [ {0} ] giving you [ {1} ].' -f $Choice, $MenuList[$Choice]
 

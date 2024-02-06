@@ -114,7 +114,7 @@ function Get-NiniteExe
     }) -join '-')
 
     if (-not [string]::IsNullOrWhiteSpace($programs)) {
-        $url = "https://ninite.com/{0}/ninite.exe" -f $programs
+        $url = "https://ninite.com/{0}/ninite.exe" $programs
         Invoke-WebRequest -Uri $url -OutFile "$OutputExe"
         Start-Process -FilePath "$OutputExe"
     } else {
