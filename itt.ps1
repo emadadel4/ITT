@@ -1,4 +1,3 @@
-Set-ExecutionPolicy AllSigned
 Clear-Host
 Set-ConsoleColor("black","green")
 function Set-ConsoleColor ($bc, $fc) {
