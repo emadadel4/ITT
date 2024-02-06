@@ -50,7 +50,7 @@ do {
             $url = "https://raw.githubusercontent.com/emadadel4/ITT/main/NiniteInstall.ps1"
             $outpath = "$env:temp/NiniteInstall.ps1"
             Invoke-WebRequest -Uri $url -OutFile $outpath
-            powershell.exe -executionpolicy bypass -file "NiniteInstall.ps1" -NiniteApp K-Lite Codecs -Invoke Install
+            powershell.exe -executionpolicy bypass -file "NiniteInstall.ps1" -NiniteApp WinRAR -Invoke Install
         }
         '5'
         {

@@ -31,6 +31,12 @@ $downloadlink = "https://ninite.com/7Zip/ninite.exe"
 $uninstallstring = '"C:\Program Files\7-Zip\Uninstall.exe" /S'
 $AppTimeout = "300"
 }
+if ($NiniteApp -eq "WinRAR")
+{
+$downloadlink = "https://ninite.com/WinRAR/ninite.exe"
+$uninstallstring = '"C:\Program Files\WinRAR\Uninstall.exe" /S'
+$AppTimeout = "300"
+}
 if ($NiniteApp -eq "Chrome")
 {
 $downloadlink = "https://ninite.com/chrome/ninite.exe"
@@ -66,12 +72,6 @@ if ($NiniteApp -eq "WinDirStat")
 {
 $downloadlink = "https://ninite.com/WinDirStat/ninite.exe"
 $uninstallstring = '"C:\Program Files (x86)\WinDirStat\Uninstall.exe" /S'
-$AppTimeout = "300"
-}
-if ($NiniteApp -eq "K-Lite Codecs")
-{
-$downloadlink = "https://ninite.com/K-Lite Codecs/ninite.exe"
-$uninstallstring = '"C:\Program Files\K-Lite Codecs\Uninstall.exe" /S'
 $AppTimeout = "300"
 }
 
