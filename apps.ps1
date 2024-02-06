@@ -47,7 +47,10 @@ do {
         '4'
         {
             Write-Host "Instaling Zip Please wait..."
-            powershell.exe -executionpolicy bypass -file "https://raw.githubusercontent.com/emadadel4/ITT/main/NiniteInstall.ps1" -NiniteApp 7Zip -Invoke Install
+            $url = "https://raw.githubusercontent.com/emadadel4/ITT/main/NiniteInstall.ps1"
+            $outpath = "$env:temp/NiniteInstall.ps1"
+            Invoke-WebRequest -Uri $url -OutFile $outpath
+            powershell.exe -executionpolicy bypass -file "NiniteInstall.ps1" -NiniteApp K-Lite Codecs -Invoke Install
         }
         '5'
         {

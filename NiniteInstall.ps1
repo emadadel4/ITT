@@ -68,6 +68,12 @@ $downloadlink = "https://ninite.com/WinDirStat/ninite.exe"
 $uninstallstring = '"C:\Program Files (x86)\WinDirStat\Uninstall.exe" /S'
 $AppTimeout = "300"
 }
+if ($NiniteApp -eq "K-Lite Codecs")
+{
+$downloadlink = "https://ninite.com/K-Lite Codecs/ninite.exe"
+$uninstallstring = '"C:\Program Files\K-Lite Codecs\Uninstall.exe" /S'
+$AppTimeout = "300"
+}
 
 if ($Invoke -eq "Install")
 {
