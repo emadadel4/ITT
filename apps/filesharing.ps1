@@ -1,10 +1,28 @@
 Clear-Host
+
+Invoke-Expression (Invoke-WebRequest https://raw.githubusercontent.com/emadadel4/ITT/main/NiniteInstall.ps1).Content
+
 function Install ($name) {
+
     Write-Host "Instaling $name Please wait..."
-    $url = "https://raw.githubusercontent.com/emadadel4/ITT/main/NiniteInstall.ps1"
-    $outpath = "$env:temp/NiniteInstall.ps1"
-    Invoke-WebRequest -Uri $url -OutFile $outpath
-    powershell.exe -executionpolicy bypass -file "NiniteInstall.ps1" -NiniteApp $name -Invoke Install
+    $FileUri = "https://raw.githubusercontent.com/emadadel4/ITT/main/NiniteInstall.ps1"
+    $Destination = "$env:temp/NiniteInstall.ps1"
+
+    $bitsJobObj = Start-BitsTransfer $FileUri -Destination $Destination
+
+    switch ($bitsJobObj.JobState) {
+
+    'Transferred' {
+        Complete-BitsTransfer -BitsJob $bitsJobObj
+        break
+    }
+
+    'Error' {
+        throw 'Error downloading'
+    }
+}
+    Get-NiniteExe -OutputExe "$env:temp\ninite.exe" -filezilla
+
 }
 
 Write-Output "+========================================================+";
