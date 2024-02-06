@@ -7,7 +7,7 @@ function Set-ConsoleColor ($bc, $fc) {
     Clear-Host
 }
 
-Set-ConsoleColor("black","green")
+Set-ConsoleColor 'black' 'green'
 
 function Show-Menu {
 
