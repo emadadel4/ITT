@@ -7,7 +7,7 @@
 Param(
 [Parameter(Mandatory=$true,Position=1,HelpMessage="Application")]
 [ValidateNotNullOrEmpty()]
-[ValidateSet("K-Lite", "WinRAR","7Zip", "Chrome", "FileZilla", "Firefox", "GreenShot", "VLC", "VSCode", "WinDirStat")]
+[ValidateSet("FastStone", "WinRAR","7Zip", "Chrome", "FileZilla", "Firefox", "GreenShot", "VLC", "VSCode", "WinDirStat")]
 [string]$NiniteApp,
  
     [Parameter(Mandatory=$true,Position=2,HelpMessage="Install or Uninstall")]
@@ -17,7 +17,7 @@ Param(
 )
 
 Write-Host $NiniteApp
-Write-Host $Invoke
+Write-Host $Invokes
 
 #Timeout if things are taking too long, odds are good something was too quick for process to monitor, so this is here to make sure it doesn't hang.  15 Minute Timeout, unless the app specifies otherwise.
 $AppTimeout = "901"
@@ -25,10 +25,10 @@ $AppTimeout = "901"
 #Set Information Per App to be used laster
 #Download & Process Info
 
-if ($NiniteApp -eq "K-Lite")
+if ($NiniteApp -eq "FastStone")
 {
-$downloadlink = "https://ninite.com/K-Lite/ninite.exe"
-$uninstallstring = '"C:\Program Files\K-Lite Codecs\Uninstall.exe" /S'
+$downloadlink = "https://ninite.com/FastStone/ninite.exe"
+$uninstallstring = '"C:\Program Files\FastStone\Uninstall.exe" /S'
 $AppTimeout = "300"
 }
 
