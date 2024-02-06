@@ -1,13 +1,12 @@
 Set-ExecutionPolicy AllSigned
 Clear-Host
+Set-ConsoleColor("black","green")
 
 function Set-ConsoleColor ($bc, $fc) {
     $Host.UI.RawUI.BackgroundColor = $bc
     $Host.UI.RawUI.ForegroundColor = $fc
     Clear-Host
 }
-
-Set-ConsoleColor("black","green")
 
 function Show-Menu {
 
