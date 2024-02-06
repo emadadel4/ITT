@@ -21,7 +21,7 @@ function Install ($name) {
         throw 'Error downloading'
     }
 }
-    Get-NiniteExe -OutputExe "$env:temp\ninite.exe" -$name
+    Get-NiniteExe -OutputExe "$env:temp\ninite.exe" -firefox
 
 }
 
@@ -69,7 +69,7 @@ function Get-MenuChoice
         Write-Host $Title
         foreach ($Index in 0..$MenuList.GetUpperBound(0))
             {
-            Write-Host ('{0} - {1}' -f $Index, $MenuList[$Index])
+            Write-Host ('{0} {1}' -f $Index, $MenuList[$Index])
             }
         $Choice = Read-Host -Prompt $Prompt
         Write-Host ''
@@ -104,7 +104,7 @@ function Get-MenuChoice
 write-host "================ $Page ============================"
 $MenuList = @(
     'chrome'
-    '-firefox'
+    'firefox'
     'opera'
     'edge'
     )
