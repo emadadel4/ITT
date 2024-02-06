@@ -93,9 +93,10 @@ $MenuList = @(
 
 $Choice = Get-MenuChoice -MenuList $MenuList
 
-'You chose [ {0} ] giving you [ {1} ].' -f $Choice, $MenuList[$Choice]
-
 if($MenuList[$Choice])
 {
     Install($MenuList[$Choice])
 }
+
+'You chose [ {0} ] giving you [ {1} ].' -f $Choice, $MenuList[$Choice]
+
