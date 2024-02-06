@@ -7,7 +7,7 @@
 Param(
 [Parameter(Mandatory=$true,Position=1,HelpMessage="Application")]
 [ValidateNotNullOrEmpty()]
-[ValidateSet("K-Lite Codecs", "WinRAR","7Zip", "Chrome", "FileZilla", "Firefox", "GreenShot", "VLC", "VSCode", "WinDirStat")]
+[ValidateSet("K-Lite", "WinRAR","7Zip", "Chrome", "FileZilla", "Firefox", "GreenShot", "VLC", "VSCode", "WinDirStat")]
 [string]$NiniteApp,
  
     [Parameter(Mandatory=$true,Position=2,HelpMessage="Install or Uninstall")]
@@ -25,9 +25,9 @@ $AppTimeout = "901"
 #Set Information Per App to be used laster
 #Download & Process Info
 
-if ($NiniteApp -eq "K-Lite Codecs")
+if ($NiniteApp -eq "K-Lite")
 {
-$downloadlink = "https://ninite.com/K-Lite Codecs/ninite.exe"
+$downloadlink = "https://ninite.com/K-Lite/ninite.exe"
 $uninstallstring = '"C:\Program Files\K-Lite Codecs\Uninstall.exe" /S'
 $AppTimeout = "300"
 }
