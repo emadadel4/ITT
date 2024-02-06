@@ -1,3 +1,5 @@
+<img src="https://github.com/emadadel4/ITT/blob/main/demo.JPG">
+
 <h1>PowerShell run as administrator (Recommended) </h1>
 
 <li>On Windows 8.1/10/11, right-click on the Windows start menu and select PowerShell or Terminal (Not CMD).</li>
