@@ -1,3 +1,5 @@
+Set-ExecutionPolicy AllSigned
+
 Clear-Host
 function Show-Menu {
 
