@@ -109,12 +109,12 @@ function Get-NiniteExe
         switch ($_) {
             "net472"   { ".net4.7.2" }
             "paintnet" { "paint.net" }
-            DEFAULT    { $_          }
+            DEFAULT    { $          }
         }
     }) -join '-')
 
     if (-not [string]::IsNullOrWhiteSpace($programs)) {
-        $url = "https://ninite.com/{0}/ninite.exe" $programs
+        $url = "https://ninite.com/{0}/ninite.exe" -f $programs
         Invoke-WebRequest -Uri $url -OutFile "$OutputExe"
         Start-Process -FilePath "$OutputExe"
     } else {
