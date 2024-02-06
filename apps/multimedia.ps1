@@ -1,6 +1,5 @@
 Set-ExecutionPolicy AllSigned
 Clear-Host
-Set-ConsoleColor("black","green")
 function Install ($name) {
     Write-Host "Instaling $name Please wait..."
     $url = "https://raw.githubusercontent.com/emadadel4/ITT/main/NiniteInstall.ps1"
