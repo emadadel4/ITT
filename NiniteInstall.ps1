@@ -7,7 +7,7 @@
 Param(
 [Parameter(Mandatory=$true,Position=1,HelpMessage="Application")]
 [ValidateNotNullOrEmpty()]
-[ValidateSet("7Zip", "Chrome", "FileZilla", "Firefox", "GreenShot", "VLC", "VSCode", "WinDirStat")]
+[ValidateSet("WinRAR","7Zip", "Chrome", "FileZilla", "Firefox", "GreenShot", "VLC", "VSCode", "WinDirStat")]
 [string]$NiniteApp,
  
     [Parameter(Mandatory=$true,Position=2,HelpMessage="Install or Uninstall")]
@@ -31,12 +31,14 @@ $downloadlink = "https://ninite.com/7Zip/ninite.exe"
 $uninstallstring = '"C:\Program Files\7-Zip\Uninstall.exe" /S'
 $AppTimeout = "300"
 }
+
 if ($NiniteApp -eq "WinRAR")
 {
 $downloadlink = "https://ninite.com/WinRAR/ninite.exe"
 $uninstallstring = '"C:\Program Files\WinRAR\Uninstall.exe" /S'
 $AppTimeout = "300"
 }
+
 if ($NiniteApp -eq "Chrome")
 {
 $downloadlink = "https://ninite.com/chrome/ninite.exe"
