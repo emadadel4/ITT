@@ -1,4 +1,4 @@
-<img src="https://github.com/emadadel4/ITT/blob/main/demo.JPG">
+<img src="https://github.com/emadadel4/ITT/blob/main/demo.jpg">
 
 <h1>PowerShell run as administrator (Recommended) </h1>
 
