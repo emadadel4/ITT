@@ -18,7 +18,8 @@ function Install ($name) {
         throw 'Error downloading'
     }
 }
-    powershell.exe -executionpolicy bypass -file "NiniteInstall.ps1" -NiniteApp $name -Invoke Install
+    Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Unrestricted
+    powershell.exe -file "NiniteInstall.ps1" -NiniteApp $name -Invoke Install
 }
 
 Write-Output "+========================================================+";
