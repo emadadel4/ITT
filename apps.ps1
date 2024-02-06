@@ -20,6 +20,7 @@ Write-Output "||_____|_|  |_/_/   \_\____/  /_/   \_\____/|_____|_____||";
     Write-Host "2: Install Chrome"
     Write-Host "3: Install VLC"
     Write-Host "4: Install Zip"
+    Write-Host "5: Custom Install app"
     Write-Host "0: Back"
 }
 
@@ -47,6 +48,10 @@ do {
         {
             Write-Host "Instaling Zip Please wait..."
             Get-executionpolicy bypass -file "https://raw.githubusercontent.com/emadadel4/ITT/main/NiniteInstall.ps1" -NiniteApp 7zip -Invoke Install
+        }
+        '5'
+        {
+            Write-Host "Testing..."
         }
 
         '0' {
