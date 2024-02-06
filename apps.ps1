@@ -20,7 +20,9 @@ Write-Output "||_____|_|  |_/_/   \_\____/  /_/   \_\____/|_____|_____||";
     Write-Host "2: Install Chrome"
     Write-Host "3: Install VLC"
     Write-Host "4: Install Zip"
-    Write-Host "5: Custom Install app"
+    Write-Host "5: Install K-Lite Codecs"
+
+    Write-Host "6: Custom Install app"
     Write-Host "0: Back"
 }
 
@@ -53,6 +55,14 @@ do {
             powershell.exe -executionpolicy bypass -file "NiniteInstall.ps1" -NiniteApp WinRAR -Invoke Install
         }
         '5'
+        {
+            Write-Host "Instaling Zip Please wait..."
+            $url = "https://raw.githubusercontent.com/emadadel4/ITT/main/NiniteInstall.ps1"
+            $outpath = "$env:temp/NiniteInstall.ps1"
+            Invoke-WebRequest -Uri $url -OutFile $outpath
+            powershell.exe -executionpolicy bypass -file "NiniteInstall.ps1" -NiniteApp K-Lite Codecs -Invoke Install
+        }
+        '6'
         {
             Write-Host "Testing..."
         }
