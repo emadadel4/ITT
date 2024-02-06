@@ -21,7 +21,7 @@ function Install ($name) {
         throw 'Error downloading'
     }
 }
-    Get-NiniteExe -OutputExe "$env:temp\ninite.exe" -firefox
+    Get-NiniteExe -OutputExe "$env:temp\ninite.exe" $name
 
 }
 
