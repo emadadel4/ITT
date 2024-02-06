@@ -7,7 +7,6 @@ function Show-Menu {
         $Title = 'My Menu'
     )
 
-Write-Host "Updated every day 2024"
 Write-Output "+========================================================+";
 Write-Output "| _____ __  __    _    ____       _    ____  _____ _     |";
 Write-Output "|| ____|  \/  |  / \  |  _ \     / \  |  _ \| ____| |    |";
