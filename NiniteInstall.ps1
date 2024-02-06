@@ -7,7 +7,7 @@ function Get-NiniteExe
         $OutputExe,
         # WEB BROWSERS
         [switch]$chrome,
-        [switch]$firefox,
+        [switch]$Firefox,
         [switch]$operaChromium,
         # UTILITIES
         [switch]$teamviewer13,
