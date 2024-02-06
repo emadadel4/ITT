@@ -1,3 +1,4 @@
+Set-ExecutionPolicy AllSigned
 Clear-Host
 function Go ($url) {
     Invoke-Expression (Invoke-WebRequest $url).Content
