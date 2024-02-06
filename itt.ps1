@@ -43,8 +43,7 @@ do {
 
         '3'
         {
-            Invoke-WebRequest "https://raw.githubusercontent.com/emadadel4/Fix-Stutter-in-Games/main/FixStutter.bat" -outfile "fix.bat"
-            Start-Process -FilePath "fix.bat"
+            Invoke-Expression (Invoke-WebRequest https://raw.githubusercontent.com/emadadel4/Fix-Stutter-in-Games/main/fix.ps1).Content
         }
        
         '4'
