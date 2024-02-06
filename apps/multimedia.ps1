@@ -1,4 +1,3 @@
-Set-ExecutionPolicy AllSigned
 Clear-Host
 function Install ($name) {
     Write-Host "Instaling $name Please wait..."
