@@ -104,7 +104,7 @@ function Get-MenuChoice
 write-host "================ $Page ============================"
 $MenuList = @(
     'chrome'
-    'firefox'
+    '-firefox'
     'opera'
     'edge'
     )
