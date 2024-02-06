@@ -15,7 +15,7 @@ Write-Output "|| |___| |  | |/ ___ \| |_| |  / ___ \| |_| | |___| |___ |";
 Write-Output "||_____|_|  |_/_/   \_\____/  /_/   \_\____/|_____|_____||";
 Invoke-Expression (Invoke-WebRequest https://raw.githubusercontent.com/emadadel4/ITT/main/quotes.ps1).Content  
 
-$page = "File Sharing"
+$page = "Web Browsers"
 
 function Get-MenuChoice
     {
@@ -85,7 +85,9 @@ function Get-MenuChoice
 
 write-host "================ $Page ============================"
 $MenuList = @(
-    'qBittorrent'
+    'VLC'
+    'Winamp'
+    'K-Lite Codecs'
     )
 
 $Choice = Get-MenuChoice -MenuList $MenuList
