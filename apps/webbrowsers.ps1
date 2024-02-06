@@ -103,10 +103,10 @@ function Get-MenuChoice
 
 write-host "================ $Page ============================"
 $MenuList = @(
-    'Chrome'
-    'Firefox'
-    'Opera'
-    'Edge'
+    'chrome'
+    'firefox'
+    'opera'
+    'edge'
     )
 
 $Choice = Get-MenuChoice -MenuList $MenuList
