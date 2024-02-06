@@ -1,6 +1,4 @@
 Clear-Host
-
-
 function Go ($url) {
     Invoke-Expression (Invoke-WebRequest $url).Content
     Clear-Host

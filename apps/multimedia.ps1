@@ -1,4 +1,3 @@
-Set-ExecutionPolicy AllSigned
 Clear-Host
 function Install ($name) {
     Write-Host "Instaling $name Please wait..."
@@ -7,7 +6,6 @@ function Install ($name) {
     Invoke-WebRequest -Uri $url -OutFile $outpath
     powershell.exe -executionpolicy bypass -file "NiniteInstall.ps1" -NiniteApp $name -Invoke Install
 }
-
 
 Write-Output "+========================================================+";
 Write-Output "| _____ __  __    _    ____       _    ____  _____ _     |";
