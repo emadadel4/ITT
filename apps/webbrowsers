@@ -85,9 +85,10 @@ function Get-MenuChoice
 
 write-host "================ $Page ============================"
 $MenuList = @(
-    'VLC'
-    'Winamp'
-    'K-Lite Codecs'
+    'Chrome'
+    'Firefox'
+    'Opera'
+    'Edge'
     )
 
 $Choice = Get-MenuChoice -MenuList $MenuList
