@@ -47,7 +47,7 @@ do {
         '4'
         {
             Write-Host "Instaling Zip Please wait..."
-            Get-executionpolicy bypass -file "https://raw.githubusercontent.com/emadadel4/ITT/main/NiniteInstall.ps1" -NiniteApp 7zip -Invoke Install
+            powershell.exe -executionpolicy bypass -file "https://raw.githubusercontent.com/emadadel4/ITT/main/NiniteInstall.ps1" -NiniteApp 7zip -Invoke Install
         }
         '5'
         {
