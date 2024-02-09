@@ -1,1 +1,4 @@
+*.psf
+*.csv
 *.exe
+*.log
