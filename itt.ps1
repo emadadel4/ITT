@@ -177,26 +177,17 @@ function Show-itt_psf {
 			Remove-Item -Verbose -Force $Destination
 		}
 		
-		if ($Link -eq "https://ninite.com//ninite.exe")
+		if ([System.Windows.Forms.MessageBox]::Show('Do you want install selected programes', 'ITTS', [System.Windows.Forms.MessageBoxButtons]::YesNo) -eq 'Yes')
 		{
-			[void][System.Windows.Forms.MessageBox]::Show('Select at least 1 item', 'ITT Emad Adel')
+			
+			Write-Host "Ninite Link: $($Link)"
+			Write-Host "Starting Installer Download"
+			wget $Link -OutFile $Destination
+			Write-Host "Done"
+			
+			Write-Host "Starting Installation"
+			Start-Process -Filepath $Destination
 		}
-		else
-		{
-			if ([System.Windows.Forms.MessageBox]::Show('Do you want install selected programes', 'ITTS', [System.Windows.Forms.MessageBoxButtons]::YesNo) -eq 'Yes')
-			{
-				
-				Write-Host "Ninite Link: $($Link)"
-				Write-Host "Starting Installer Download"
-				wget $Link -OutFile $Destination
-				Write-Host "Done"
-				
-				Write-Host "Starting Installation"
-				Start-Process -Filepath $Destination
-			}
-		}
-		
-		
 	}
 	
 	
