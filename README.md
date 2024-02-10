@@ -1,3 +1,4 @@
+[![Telgram Follow](https://img.shields.io/twitter/follow/juno_okyo.svg?label=Follow&maxAge=2592000)](https://twitter.com/emadadel04)
 
 <h1>PowerShell run as administrator (Recommended) </h1>
 <li>On Windows 8.1/10/11, right-click on the Windows start menu and select PowerShell or Terminal (Not CMD).</li>
@@ -8,4 +9,3 @@
 That's all.</li>
 
 
-[![Telgram Follow](https://img.shields.io/twitter/follow/juno_okyo.svg?label=Follow&maxAge=2592000)](https://twitter.com/emadadel04)
