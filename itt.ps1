@@ -44,9 +44,9 @@ function Show-itt_psf {
 	#----------------------------------------------
 	
 	$formITTSoftwareEmadAdel_Load={
-		$quotes.Text = RandomQuots
 		Start-Process powershell -verb runas -ArgumentList "-file fullpathofthescript"
-		InstallWinget
+		$quotes.Text = RandomQuots
+		#InstallWinget
 	}
 	
 	function RandomQuots
