@@ -65,21 +65,21 @@ function Show-itt_psf {
 	
 	function RandomQuots
 	{
-		$q = "I Believe What Doesn't Kill You Simply Makes You... Stranger أؤمن أن ما لا يقتلك ببساطة يجعلك...  شخصا غريب",
+		$q = "أؤمن أن ما لا يقتلك ببساطة يجعلك...  شخصا غريب",
 		
-		"You Either Die A Hero Or Live Long Enough To See Yourself Become The Villain.إما أن تموت بطلاً أو تعيش طويلاً بما يكفي لترى نفسك اصبحت الشرير",
+		".إما أن تموت بطلاً أو تعيش طويلاً بما يكفي لترى نفسك اصبحت الشرير",
 		
-		"Some Men Just Want To Watch The World Burn. بعض الرجال يريدون فقط مشاهدة العالم يحترق",
+		".بعض الرجال يريدون فقط مشاهدة العالم يحترق",
 		
-		"You Always Fear What You Don't Understand. أنت تخشى دائمًا ما لا تفهمه",
+		".أنت تخشى دائمًا ما لا تفهمه",
 		
-		"You thought we could be decent men, in an indecent time. ظننت أننا يمكن أن نكون رجالًا شرفاء، في زمن غير شريف",
+		"ظننت أننا يمكن أن نكون رجالًا شرفاء، في زمن غير شريف",
 		
-		"freedom is not given it is taken  الحرية لأ تعطى بألتؤخذ",
+		"الحرية لأ تعطى بألتؤخذ",
 		
-		"And Why Do We Fall, So That We Can Learn To Pick Ourselves Up. ولماذا نسقط ، حتى نتمكن من تعلم التقاط أنفسنا.",
+		"ولماذا نسقط ، حتى نتمكن من تعلم التقاط أنفسنا.",
 		
-		"Ah you think darkness is your ally? You merely adopted the dark. I was born in it. هل تعتقد أن الظلام حليفك؟ أنت فقط تبنيت الظلام. انا لقد ولدت فيه",
+		"هل تعتقد أن الظلام حليفك؟ أنت فقط تبنيت الظلام. انا لقد ولدت فيه",
 		
 		"المجد هو أن تنهض بعد كل مرة تسقط فيها والمجد لا يكون في عدم السقوط",
 		
