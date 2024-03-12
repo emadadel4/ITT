@@ -73,21 +73,29 @@ $Window = Import-Xaml
 
 
 
-#$json = Get-Content -Path '.\js\softwearlist.json' | ConvertFrom-Json
+function RandomQuotes 
+{
+	$url = "https://raw.githubusercontent.com/emadadel4/ITT/main/js/quotes.json"
+	$result = Invoke-WebRequest -Uri $url
+	$quotes = $result.Content | ConvertFrom-Json
+	$Q = $quotes.Q
+	$randomQuotes = Get-Random -InputObject $Q
+	return $randomQuotes
+}
 
 
-$json = Get-Content -Path '.\js\quotes.json' | ConvertFrom-Json
-$Q = $json.Q
-$randomQuotes = Get-Random -InputObject $Q
+function GetSoftwearList {
+	
+	$url = "https://raw.githubusercontent.com/emadadel4/ITT/main/js/softwearlist.json"
+	$result = Invoke-WebRequest -Uri $url
+	$json = $result.Content | ConvertFrom-Json
+	# Now $jsonContent contains the JSON data as a PowerShell object
+
+	return $json
+}
 
 
 
-
-
-$url = "https://raw.githubusercontent.com/emadadel4/ITT/main/js/softwearlist.json"
-$result = Invoke-WebRequest -Uri $url
-$json = $result.Content | ConvertFrom-Json
-# Now $jsonContent contains the JSON data as a PowerShell object
 
 
 #region Controls
@@ -100,10 +108,10 @@ $applyBtn = $Window.FindName('applybtn')
 
 
 
-$quotes.Content =  $randomQuotes
+$quotes.Content =  RandomQuotes 
 
 #region Generate names from json file
-foreach ($item in $json)
+foreach ($item in GetSoftwearList)
 {
 	$checkbox = New-Object System.Windows.Controls.CheckBox
 	$list.Items.Add($checkbox)
