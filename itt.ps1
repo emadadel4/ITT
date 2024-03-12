@@ -12,16 +12,19 @@
 
 	<Grid>
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height="25"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="100"/>
-        </Grid.RowDefinitions>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="25"/>
+			<RowDefinition Height="40"/>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="100"/>
+		</Grid.RowDefinitions>
 
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="200"/>
-        </Grid.ColumnDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="*"/>
+			<ColumnDefinition Width="200"/>
+		</Grid.ColumnDefinitions>
+
+
 
         <Menu Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Background="{x:Null}" >
             <MenuItem Header="File">
@@ -30,17 +33,21 @@
         </Menu>
 
 
-        <Grid Grid.Row="1" >
+		<Grid Grid.Row="1" Grid.Column="0" Margin="10">
+			<CheckBox x:Name="selectall" IsChecked="False" Content="Select all"/>
+		</Grid>
+
+
+        <Grid Grid.Row="2" >
             <ListView x:Name="list"  Background="{x:Null}" BorderBrush="{x:Null}">
-            
             </ListView>
         </Grid>
 
-        <Grid Grid.Row="2">
-            <Label x:Name="quotes" Content=".أنت تخشى دائمًا ما لا تفهمه" VerticalAlignment="Center"/>
+        <Grid Grid.Row="3">
+            <Label x:Name="quotes" Margin="20" Content=".أنت تخشى دائمًا ما لا تفهمه" VerticalAlignment="Center"/>
         </Grid>
 
-        <Grid Grid.Row="2" Grid.Column="2">
+        <Grid Grid.Row="4" Grid.Column="2">
             <Button x:Name="applybtn" Content="Apply" Width="100" Height="50" BorderBrush="{x:Null}"  Background="#FF67A1FF" Foreground="White" />
         </Grid>
 
@@ -84,6 +91,8 @@ $Window = Import-Xaml
 
 #region Controls
 #Controls
+
+$selectall = $Window.FindName("selectall")
 $list = $Window.FindName("list")
 $quotes = $Window.FindName("quotes")
 $Discription = $Window.FindName("Discription")
@@ -110,6 +119,7 @@ function Apps {
 	$json = $result.Content | ConvertFrom-Json
     return $json   
 }
+
 
 
 
@@ -162,6 +172,35 @@ $applyBtn.add_Click({
 		Start-Process -Filepath $Destination
 	}
 })
+
+$selectall.add_Checked({
+
+	if ($checkbox.IsChecked -eq $false)
+	{
+        # Code to execute when checkbox is unchecked
+		foreach ($item in $list.Items)
+		 {
+			$item.IsChecked = $true
+		 }
+	}
+
+})
+
+
+$selectall.add_Unchecked({
+
+	if ($checkbox.IsChecked -eq $true)
+	{
+        # Code to execute when checkbox is unchecked
+		foreach ($item in $list.Items)
+		 {
+			$item.IsChecked = $false
+		 }
+	}
+})
+
+
+
 #endregion
 
 
