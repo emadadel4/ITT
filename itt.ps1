@@ -70,18 +70,6 @@ function Import-Xaml {
 $Window = Import-Xaml 
 #endregion
 
-
-function GetSoftwearList {
-
-	$url = "https://raw.githubusercontent.com/emadadel4/ITT/main/js/softwearlist.json"
-	$result = Invoke-WebRequest -Uri $url
-	$json = $result.Content | ConvertFrom-Json
-	return $json
-	
-}
-
-
-
 $url = "https://raw.githubusercontent.com/emadadel4/ITT/main/js/quotes.json"
 $result = Invoke-WebRequest -Uri $url
 $quotes = $result.Content | ConvertFrom-Json
@@ -89,7 +77,9 @@ $Q = $quotes.Q
 $randomQuotes = Get-Random -InputObject $Q
 
 
-
+$url = "https://raw.githubusercontent.com/emadadel4/ITT/main/js/softwearlist.json"
+$result = Invoke-WebRequest -Uri $url
+$json = $result.Content | ConvertFrom-Json
 
 
 #region Controls
@@ -123,7 +113,7 @@ $applyBtn.add_Click({
 	{
 		if ($item.IsChecked)
 		{
-			foreach ($data in GetSoftwearList)
+			foreach ($data in $json)
 			{
 				if($item.Content -eq $data.name)
 				{
@@ -159,7 +149,7 @@ $applyBtn.add_Click({
 #region Show discription of item
 $list.Add_SelectionChanged({
 	
-	foreach($data in GetSoftwearList)
+	foreach($data in $json)
 	{
 		if( $list.SelectedItem.Content -eq $data.name)
 		{
