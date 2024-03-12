@@ -51,7 +51,7 @@
             <Button x:Name="applybtn" Content="Apply" Width="100" Height="50" BorderBrush="{x:Null}"  Background="#FF67A1FF" Foreground="White" />
         </Grid>
 
-        <Grid Grid.Row="1" Grid.Column="2" Margin="10">
+        <Grid Grid.Row="2" Grid.Column="2" Margin="15">
             <TextBlock x:Name="Discription" Text="Discription" TextWrapping="Wrap"/>
         </Grid>
 
