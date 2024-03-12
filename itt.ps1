@@ -80,11 +80,9 @@ $Q = $quotes.Q
 $randomQuotes = Get-Random -InputObject $Q
 
 
-
 $url = "https://raw.githubusercontent.com/emadadel4/ITT/main/js/softwearlist.json"
 $result = Invoke-WebRequest -Uri $url
 $json = $result.Content | ConvertFrom-Json
-# Now $jsonContent contains the JSON data as a PowerShell object
 
 
 #region Controls
