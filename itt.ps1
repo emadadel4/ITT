@@ -129,7 +129,7 @@ $applyBtn.add_Click({
 	{
 		if ($item.IsChecked)
 		{
-			foreach ($data in $json)
+			foreach ($data in GetSoftwearList)
 			{
 				if($item.Content -eq $data.name)
 				{
