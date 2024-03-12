@@ -27,7 +27,7 @@
 
 
         <Menu Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Background="{x:Null}" >
-            <MenuItem Header="File">
+            <MenuItem x:Name="aboutbtn" Header="About">
                 
             </MenuItem>
         </Menu>
