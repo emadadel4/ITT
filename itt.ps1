@@ -77,8 +77,8 @@ $Window = Import-Xaml
 
 
 $json = Get-Content -Path '.\js\quotes.json' | ConvertFrom-Json
-$names = $json.names
-$randomQuotes = Get-Random -InputObject $names
+$Q = $json.Q
+$randomQuotes = Get-Random -InputObject $Q
 
 
 
