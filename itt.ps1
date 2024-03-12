@@ -3,7 +3,6 @@
 [System.Reflection.Assembly]::LoadWithPartialName("PresentationFramework") | Out-Null
 [System.Reflection.Assembly]::LoadWithPartialName("System.Windows.Forms") | Out-Null
 
-#Build the GUI
 [xml]$xaml = @"
 <Window
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -58,8 +57,9 @@
 </Window>
 "@ 
 
+#endregion
 
-
+#region Load Xaml
 function Import-Xaml {
 	$manager = New-Object System.Xml.XmlNamespaceManager -ArgumentList $xaml.NameTable
 	$manager.AddNamespace("x", "http://schemas.microsoft.com/winfx/2006/xaml");
@@ -68,9 +68,20 @@ function Import-Xaml {
 }
 
 $Window = Import-Xaml 
+#endregion
+
+
 
 
 #$json = Get-Content -Path '.\js\softwearlist.json' | ConvertFrom-Json
+
+
+$json = Get-Content -Path '.\js\quotes.json' | ConvertFrom-Json
+$names = $json.names
+$randomQuotes = Get-Random -InputObject $names
+
+
+
 
 
 $url = "https://raw.githubusercontent.com/emadadel4/ITT/main/js/softwearlist.json"
@@ -79,35 +90,28 @@ $json = $result.Content | ConvertFrom-Json
 # Now $jsonContent contains the JSON data as a PowerShell object
 
 
-
-
+#region Controls
 #Controls
 $list = $Window.FindName("list")
-
-
-
-
-$label = $Window.FindName("quotes")
+$quotes = $Window.FindName("quotes")
 $Discription = $Window.FindName("Discription")
-
-
 $applyBtn = $Window.FindName('applybtn')
-#End of control
+#endregion
 
 
 
+$quotes.Content =  $randomQuotes
 
-#Generate names from json file
+#region Generate names from json file
 foreach ($item in $json)
 {
 	$checkbox = New-Object System.Windows.Controls.CheckBox
 	$list.Items.Add($checkbox)
 	$checkbox.Content = $item.name
 }
+#endregion
 
-
-
-#Select a program and install 
+#region Select a program and install 
 $applyBtn.add_Click({
 
 	$Link = "https://ninite.com/"
@@ -147,10 +151,10 @@ $applyBtn.add_Click({
 		Start-Process -Filepath $Destination
 	}
 })
+#endregion
 
 
-
-
+#region Show discription of item
 $list.Add_SelectionChanged({
 	
 	foreach($data in $json)
@@ -162,7 +166,7 @@ $list.Add_SelectionChanged({
 	}
 
 })
-
+#endregion
 
 #Finaly Show Window
 $Window.ShowDialog()
