@@ -98,11 +98,5 @@
         "name": "GIMP",
         "discription": "Free graphics editor GNU Image Manipulation Program, commonly known by its acronym GIMP, is a free and open-source raster graphics editor used for image manipulation and image editing, free-form drawing, transcoding betwe",
         "url": "gimp"
-    },
-    {
-        "id": "8",
-        "name": "Test",
-        "discription": "Free graphics editor GNU Image Manipulation Program, commonly known by its acronym GIMP, is a free and open-source raster graphics editor used for image manipulation and image editing, free-form drawing, transcoding betwe",
-        "url": "gimp"
     }
 ]
