@@ -112,7 +112,6 @@ function Apps {
 }
 
 
-$quotes.Content =  Quotes
 
 #region Generate names from json file
 foreach ($item in Apps)
@@ -179,6 +178,10 @@ $list.Add_SelectionChanged({
 
 })
 #endregion
+
+
+$quotes.Content =  Quotes
+
 
 #Finaly Show Window
 $Window.ShowDialog()
