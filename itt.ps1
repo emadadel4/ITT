@@ -70,6 +70,7 @@ function Import-Xaml {
 $Window = Import-Xaml 
 #endregion
 
+
 $url = "https://raw.githubusercontent.com/emadadel4/ITT/main/js/quotes.json"
 $result = Invoke-WebRequest -Uri $url
 $quotes = $result.Content | ConvertFrom-Json
@@ -77,9 +78,10 @@ $Q = $quotes.Q
 $randomQuotes = Get-Random -InputObject $Q
 
 
-$url = "https://raw.githubusercontent.com/emadadel4/ITT/main/js/softwearlist.json"
-$result = Invoke-WebRequest -Uri $url
-$json = $result.Content | ConvertFrom-Json
+
+#$url = "https://raw.githubusercontent.com/emadadel4/ITT/main/js/softwearlist.json"
+#$result = Invoke-WebRequest -Uri $url
+#$json = $result.Content | ConvertFrom-Json
 
 
 #region Controls
@@ -90,12 +92,21 @@ $Discription = $Window.FindName("Discription")
 $applyBtn = $Window.FindName('applybtn')
 #endregion
 
+function EE {
+
+	$url = "https://raw.githubusercontent.com/emadadel4/ITT/main/js/softwearlist.json"
+	$result = Invoke-WebRequest -Uri $url
+	$json = $result.Content | ConvertFrom-Json
+    return $json   
+}
+
+
 
 
 $quotes.Content =  $randomQuotes
 
 #region Generate names from json file
-foreach ($item in $json)
+foreach ($item in EE)
 {
 	$checkbox = New-Object System.Windows.Controls.CheckBox
 	$list.Items.Add($checkbox)
@@ -149,7 +160,7 @@ $applyBtn.add_Click({
 #region Show discription of item
 $list.Add_SelectionChanged({
 	
-	foreach($data in $json)
+	foreach($data in EE)
 	{
 		if( $list.SelectedItem.Content -eq $data.name)
 		{
