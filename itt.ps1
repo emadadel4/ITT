@@ -48,11 +48,11 @@
         </Grid>
 
         <Grid Grid.Row="4" Grid.Column="2">
-            <Button x:Name="applybtn" Content="Apply" Width="100" Height="50" BorderBrush="{x:Null}"  Background="#FF67A1FF" Foreground="White" />
+            <Button x:Name="applybtn" Content="Install" Width="100" Height="50" BorderBrush="{x:Null}"  Background="#FF67A1FF" Foreground="White" />
         </Grid>
 
         <Grid Grid.Row="2" Grid.Column="2" Margin="15">
-            <TextBlock x:Name="Discription" Text="Discription" TextWrapping="Wrap"/>
+            <TextBlock x:Name="Discription" Text="" TextWrapping="Wrap"/>
         </Grid>
 
 
