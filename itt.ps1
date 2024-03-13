@@ -135,6 +135,8 @@ foreach ($item in Apps)
 	$checkbox = New-Object System.Windows.Controls.CheckBox
 	$list.Items.Add($checkbox)
 	$checkbox.Content = $item.name
+
+
 }
 #endregion
 
