@@ -51,7 +51,7 @@
 
 
         <Grid Grid.Row="2">
-            <TextBlock Name="quotes" Margin="10" TextWrapping="Wrap" Text=".أنت تخشى دائمًا ما لا تفهمه.أنت تخشى دائمًا ما لا تفهمه.أنت تخشى دائمًا ما لا تفهمه.أنت تخشى دائمًا ما لا تفهمه.أنت تخشى دائمًا ما لا تفهمه.أنت تخشى دائمًا ما لا تفهمه.أنت تخشى دائمًا ما لا تفهمه.أنت تخشى دائمًا ما لا تفهمه.أنت تخشى دائمًا ما لا تفهمه" VerticalAlignment="Center"/>
+		<TextBlock Cursor="Pen" x:Name="quotes" Margin="10" TextWrapping="Wrap" Text="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magni commodi repellat similique velit harum. Odit ipsum aliquam laborum quisquam suscipit, dolore non blanditiis ut! Ut, quasi! Autem animi ad eaque."/>
         </Grid>
 
 
@@ -232,6 +232,10 @@ $aboutBtn.add_Click({
 	[System.Windows.MessageBox]::Show('Development by Emad Adel', 'ITTS', [System.Windows.Forms.MessageBoxButtons]::OK)
 })
 
+
+$quotes.add_MouseDown({
+	$quotes.Text =  Quotes
+})
 
 #Finaly Show Window
 $Window.ShowDialog()
