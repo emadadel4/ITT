@@ -62,8 +62,8 @@
 
         <Grid Grid.Row="1" Grid.Column="1" Margin="15">
 			<StackPanel Orientation="Vertical">
-				<TextBlock x:Name="Discription" Text="VLC media player is a free and open-source, portable, cross-platform media player software and streaming media server" TextWrapping="Wrap"/>
-				<TextBlock x:Name="itemLink" Text="Offical website" Cursor="Hand"  Margin="5" Foreground="#FF003EFF"/>
+				<TextBlock x:Name="Discription" Text="" TextWrapping="Wrap"/>
+				<TextBlock x:Name="itemLink" Visibility="Hidden"  Text="Offical website" Cursor="Hand"  Margin="5" Foreground="#FF003EFF"/>
 			</StackPanel>
         </Grid>
 
@@ -276,11 +276,14 @@ $selectall.add_Unchecked({
 #region Show discription of item
 $list.Add_SelectionChanged({
 	
+	$itemLink.Visibility = "Visible"
+
 	foreach($data in Apps)
 	{
 		if( $list.SelectedItem.Content -eq $data.name)
 		{
 			$Discription.Text = $data.discription
+
 		}
 	}
 
