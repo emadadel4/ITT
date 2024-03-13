@@ -104,6 +104,11 @@ $quotes = $Window.FindName("quotes")
 $Discription = $Window.FindName("Discription")
 $applyBtn = $Window.FindName('applybtn')
 $aboutBtn = $Window.FindName('aboutBtn')
+
+$myToolTip = New-Object System.Windows.Controls.ToolTip
+$myToolTip.Content = "Right Clcik to copy the quote"
+$quotes.ToolTip = $myToolTip
+
 #endregion
 
 
@@ -259,9 +264,7 @@ $aboutBtn.add_Click({
 })
 
 function QuotesHandle {
-	$myToolTip = New-Object System.Windows.Controls.ToolTip
-	$myToolTip.Content = "Right Clcik to copy the quote"
-	$quotes.ToolTip = $myToolTip
+
 
 
 
