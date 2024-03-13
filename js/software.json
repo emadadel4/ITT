@@ -5,7 +5,7 @@
         "discription": "Chrome: A Fast, Secure, and Customizable Browser Chrome is a popular web browser developed by Google and released in 2008.",
         "url": "chrome",
         "check": "true",
-        "website":"https://www.google.com/chrome/"
+        "website":"https://www.google.com/chrome"
     },
     {
         "id": "2",
