@@ -287,18 +287,10 @@ $list.Add_SelectionChanged({
 })
 #endregion
 
-
-
 handlersControlsEvents
 
 $quotes.Text =  Quotes
 QuotesHandle
 
-
-
-
-
-
 $Window.Showdialog() | Out-Null
-
 
