@@ -125,8 +125,6 @@ function Apps {
 }
 
 
-
-
 #region Generate names from json file
 foreach ($item in Apps)
 {
@@ -252,9 +250,6 @@ $aboutBtn.add_Click({
 
 function QuotesHandle {
 
-
-
-
 	# Add MouseEnter and MouseLeave event handlers
 	$quotes.Add_MouseEnter({
 		$myToolTip.IsOpen = $true
@@ -282,7 +277,6 @@ $quotes.add_MouseRightButtonDown({
 $quotes.Text =  Quotes
 QuotesHandle
 
-#Finaly Show Window
 $Window.Showdialog() | Out-Null
 
 
