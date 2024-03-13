@@ -1,14 +1,16 @@
+# Add required assemblies
+[System.Reflection.Assembly]::LoadWithPartialName('System.Windows.Forms')  	 | out-null
+[System.Reflection.Assembly]::LoadWithPartialName('presentationframework') 	 | out-null
+[System.Reflection.Assembly]::LoadWithPartialName('System.Drawing') 		 | out-null
+[System.Reflection.Assembly]::LoadWithPartialName('WindowsFormsIntegration') | out-null
 
-#region GUI
-[System.Reflection.Assembly]::LoadWithPartialName("PresentationFramework") | Out-Null
-[System.Reflection.Assembly]::LoadWithPartialName("System.Windows.Forms") | Out-Null
 
 [xml]$xaml = @"
 <Window
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     x:Name="Window" Title="ITT" WindowStartupLocation = "CenterScreen" 
-    Width = "800" Height = "600" ShowInTaskbar = "True">
+    Width = "800" Height = "600" ShowInTaskbar = "True" Topmost="True" Icon="$myIconPath">
 
 		    
     <Grid>
@@ -81,8 +83,29 @@ function Import-Xaml {
 	[Windows.Markup.XamlReader]::Load($xamlReader)
 }
 
+
+
 $Window = Import-Xaml 
 #endregion
+
+
+#
+# Get Local Script Path
+#
+$scriptPath = split-path -parent $MyInvocation.MyCommand.Definition
+
+#
+# Append our path and image filename together
+#
+$myIconPath = Join-Path $scriptPath 'icon.ico'
+
+#
+# Add a Loaded Event to load our custom icon and set the Icon property of our Window.
+#
+$Window.add_Loaded({
+})
+
+
 
 
 #region Controls
@@ -284,6 +307,6 @@ $quotes.Text =  Quotes
 QuotesHandle
 
 #Finaly Show Window
-$Window.ShowDialog()
+$Window.Showdialog() | Out-Null
 
 
