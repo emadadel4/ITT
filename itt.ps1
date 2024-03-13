@@ -137,7 +137,7 @@ function handlersControlsEvents {
 			{
 				if($item -eq $data.name)
 				{
-					Start-Process ($data.website)
+					Start-Process ( "https://duckduckgo.com/?hps=1&q=%5C" + $data.name)
 				}
 			}
 		}
