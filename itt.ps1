@@ -235,6 +235,9 @@ $aboutBtn.add_Click({
 
 $quotes.add_MouseDown({
 	$quotes.Text =  Quotes
+
+	$quotes.Text | Set-Clipboard
+
 })
 
 #Finaly Show Window
