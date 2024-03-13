@@ -10,51 +10,58 @@
     x:Name="Window" Title="ITT" WindowStartupLocation = "CenterScreen" 
     Width = "800" Height = "600" ShowInTaskbar = "True">
 
-	<Grid>
+		    
+    <Grid>
 
-		<Grid.RowDefinitions>
-			<RowDefinition Height="25"/>
-			<RowDefinition Height="40"/>
-			<RowDefinition Height="*"/>
-			<RowDefinition Height="100"/>
-		</Grid.RowDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="60"/>
+        </Grid.RowDefinitions>
 
-		<Grid.ColumnDefinitions>
-			<ColumnDefinition Width="*"/>
-			<ColumnDefinition Width="200"/>
-		</Grid.ColumnDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="155"/>
+        </Grid.ColumnDefinitions>
 
+        <Menu Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Background="{x:Null}">
+            <MenuItem x:Name="aboutBtn" Header="About">
 
-
-        <Menu Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Background="{x:Null}" >
-            <MenuItem x:Name="aboutbtn" Header="About">
-                
             </MenuItem>
         </Menu>
 
 
-		<Grid Grid.Row="1" Grid.Column="0" Margin="10">
-			<CheckBox x:Name="selectall" IsChecked="False" Content="Select all"/>
-		</Grid>
+        <TabControl TabStripPlacement="Left" Margin="0, 0, 0, 10" Grid.Row="1" BorderBrush="#FFC1C1C1">
+            <TabItem Header="Apps" BorderBrush="{x:Null}" Padding="16" Background="{x:Null}">
+                <TabItem.Content>
+                    <ListView x:Name="list" Margin="5" BorderBrush="{x:Null}">
+                        <CheckBox x:Name="selectall" Content="Select all"/>
+                    </ListView>
+                </TabItem.Content>
+            </TabItem>
+
+            <TabItem Header="Tweeks" Padding="16" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="Black">
+                <TabItem.Content>
+                    <TextBlock TextWrapping="WrapWithOverflow">
+                        Soon.
+                    </TextBlock>
+                </TabItem.Content>
+            </TabItem>
+        </TabControl>
 
 
-        <Grid Grid.Row="2" >
-            <ListView x:Name="list"  Background="{x:Null}" BorderBrush="{x:Null}">
-            </ListView>
+        <Grid Grid.Row="2">
+            <TextBlock Name="quotes" Margin="10" TextWrapping="Wrap" Text=".أنت تخشى دائمًا ما لا تفهمه.أنت تخشى دائمًا ما لا تفهمه.أنت تخشى دائمًا ما لا تفهمه.أنت تخشى دائمًا ما لا تفهمه.أنت تخشى دائمًا ما لا تفهمه.أنت تخشى دائمًا ما لا تفهمه.أنت تخشى دائمًا ما لا تفهمه.أنت تخشى دائمًا ما لا تفهمه.أنت تخشى دائمًا ما لا تفهمه" VerticalAlignment="Center"/>
         </Grid>
 
-        <Grid Grid.Row="3">
-            <Label x:Name="quotes" Margin="20" Content=".أنت تخشى دائمًا ما لا تفهمه" VerticalAlignment="Center"/>
+
+        <Grid Grid.Row="4" Grid.Column="3">
+            <Button x:Name="applybtn" Content="Apply" Width="100" Height="40" BorderBrush="{x:Null}"  Background="#FF2578FF" Foreground="White"/>
         </Grid>
 
-        <Grid Grid.Row="4" Grid.Column="2">
-            <Button x:Name="applybtn" Content="Install" Width="100" Height="50" BorderBrush="{x:Null}"  Background="#FF67A1FF" Foreground="White" />
+        <Grid Grid.Row="1" Grid.Column="1" Margin="10">
+            <TextBlock x:Name="Discription" Text="VLC media player is a free and open-source, portable, cross-platform media player software and streaming media server" TextWrapping="Wrap"/>
         </Grid>
-
-        <Grid Grid.Row="2" Grid.Column="2" Margin="15">
-            <TextBlock x:Name="Discription" Text="" TextWrapping="Wrap"/>
-        </Grid>
-
 
 
     </Grid>
@@ -90,13 +97,12 @@ $Window = Import-Xaml
 
 
 #region Controls
-#Controls
-
 $selectall = $Window.FindName("selectall")
 $list = $Window.FindName("list")
 $quotes = $Window.FindName("quotes")
 $Discription = $Window.FindName("Discription")
 $applyBtn = $Window.FindName('applybtn')
+$aboutBtn = $Window.FindName('aboutBtn')
 #endregion
 
 
@@ -219,7 +225,12 @@ $list.Add_SelectionChanged({
 #endregion
 
 
-$quotes.Content =  Quotes
+$quotes.Text =  Quotes
+
+$aboutBtn.add_Click({
+
+	[System.Windows.MessageBox]::Show('Development by Emad Adel', 'ITTS', [System.Windows.Forms.MessageBoxButtons]::OK)
+})
 
 
 #Finaly Show Window
