@@ -83,7 +83,7 @@
     {
          "id": "8",
         "name": "Avast",
-        "discription": "Malwarebytes is anti-malware software for Microsoft Windows, macOS, ChromeOS, Android, and iOS that finds and removes malware. Made by Malwarebytes Corporation, it was first released in January 2006",
+        "discription": "Avast Antivirus is a family of cross-platform internet security applications developed by Avast for Microsoft Windows, macOS, Android, and iOS. Avast offers free and paid products that provide computer security",
         "url": "avast",
         "check": "false"
     },
@@ -129,21 +129,21 @@
     {
         "id": "8",
         "name": "VSCode",
-        "discription": "Free graphics editor GNU Image Manipulation Program, commonly known by its acronym GIMP, is a free and open-source raster graphics editor used for image manipulation and image editing, free-form drawing, transcoding betwe",
+        "discription": "Visual Studio Code, also commonly referred to as VS Code, is a source-code editor developed by Microsoft for Windows, Linux and macOS. Features include support for debugging, syntax highlighting",
         "url": "vscode",
         "check": "false"
     },
     {
         "id": "8",
         "name": "QBittorrent",
-        "discription": "Free graphics editor GNU Image Manipulation Program, commonly known by its acronym GIMP, is a free and open-source raster graphics editor used for image manipulation and image editing, free-form drawing, transcoding betwe",
+        "discription": "Cross-platform BitTorrent client",
         "url": "qbittorrent",
         "check": "false"
     },
      {
         "id": "8",
         "name": "Discord",
-        "discription": "Free graphics editor GNU Image Manipulation Program, commonly known by its acronym GIMP, is a free and open-source raster graphics editor used for image manipulation and image editing, free-form drawing, transcoding betwe",
+        "discription": "Discord is a versatile communication platform that has evolved beyond its gaming origins. Initially designed for gamers, it now serves as a hub for various communities. Here are some key points about Discord",
         "url": "discord",
         "check": "false"
     }
