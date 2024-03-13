@@ -81,6 +81,13 @@
         "check": "false"
     },
     {
+         "id": "8",
+        "name": "Avast",
+        "discription": "Malwarebytes is anti-malware software for Microsoft Windows, macOS, ChromeOS, Android, and iOS that finds and removes malware. Made by Malwarebytes Corporation, it was first released in January 2006",
+        "url": "avast",
+        "check": "false"
+    },
+    {
         "id": "8",
         "name": "ImgBurn",
         "discription": "mgBurn–easily the most impressive free/donationware burning software I’ve run across. The program handles a host of image types including ISO, NRG, PDI, UDI, BIN/CUE, and CDI–obviating the need to buy several different imaging programs–and will also create data CDs, DVDs, and get this: Blu-ray data discs.",
@@ -118,6 +125,26 @@
         "discription": "Free graphics editor GNU Image Manipulation Program, commonly known by its acronym GIMP, is a free and open-source raster graphics editor used for image manipulation and image editing, free-form drawing, transcoding betwe",
         "url": "gimp",
         "check": "false"
-
+    },
+    {
+        "id": "8",
+        "name": "VSCode",
+        "discription": "Free graphics editor GNU Image Manipulation Program, commonly known by its acronym GIMP, is a free and open-source raster graphics editor used for image manipulation and image editing, free-form drawing, transcoding betwe",
+        "url": "vscode",
+        "check": "false"
+    },
+    {
+        "id": "8",
+        "name": "QBittorrent",
+        "discription": "Free graphics editor GNU Image Manipulation Program, commonly known by its acronym GIMP, is a free and open-source raster graphics editor used for image manipulation and image editing, free-form drawing, transcoding betwe",
+        "url": "qbittorrent",
+        "check": "false"
+    },
+     {
+        "id": "8",
+        "name": "Discord",
+        "discription": "Free graphics editor GNU Image Manipulation Program, commonly known by its acronym GIMP, is a free and open-source raster graphics editor used for image manipulation and image editing, free-form drawing, transcoding betwe",
+        "url": "discord",
+        "check": "false"
     }
 ]
