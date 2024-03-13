@@ -120,12 +120,39 @@ function Apps {
 	$url = "https://raw.githubusercontent.com/emadadel4/ITT/main/js/software.json"
 	$result = Invoke-WebRequest -Uri $url
 	$json = $result.Content | ConvertFrom-Json
-
 	#Offline
 	#$json = Get-Content -Path "./js/software.json" | ConvertFrom-Json
-
     return $json   
 }
+
+
+#region Show tooltip for qoutes 
+function QuotesHandle {
+
+	# Add MouseEnter and MouseLeave event handlers
+	$quotes.Add_MouseEnter({
+		$myToolTip.IsOpen = $true
+	})
+
+	$quotes.Add_MouseLeave({
+		$myToolTip.IsOpen = $false
+	})
+
+	$quotes.add_MouseLeftButtonDown({
+		$quotes.Text =  Quotes
+
+		$quotes.Text | Set-Clipboard
+
+})
+
+
+$quotes.add_MouseRightButtonDown({
+	$quotes.Text | Set-Clipboard
+})
+
+}
+#endregion
+
 function handlersControlsEvents {
 	
 
@@ -147,32 +174,7 @@ function handlersControlsEvents {
 	#endregion
 
 
-	#region Show tooltip for qoutes 
-	function QuotesHandle {
-
-		# Add MouseEnter and MouseLeave event handlers
-		$quotes.Add_MouseEnter({
-			$myToolTip.IsOpen = $true
-		})
 	
-		$quotes.Add_MouseLeave({
-			$myToolTip.IsOpen = $false
-		})
-	
-		$quotes.add_MouseLeftButtonDown({
-			$quotes.Text =  Quotes
-	
-			$quotes.Text | Set-Clipboard
-	
-	})
-	
-	
-	$quotes.add_MouseRightButtonDown({
-		$quotes.Text | Set-Clipboard
-	})
-	
-	}
-	#endregion
 
 	#region About click
 	$aboutBtn.add_Click({
@@ -182,9 +184,6 @@ function handlersControlsEvents {
 
 
 }
-
-handlersControlsEvents
-
 
 
 #region Generate names from json file
@@ -296,6 +295,7 @@ $list.Add_SelectionChanged({
 
 $quotes.Text =  Quotes
 QuotesHandle
+handlersControlsEvents
 
 
 $Window.Showdialog() | Out-Null
