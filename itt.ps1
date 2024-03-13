@@ -290,10 +290,12 @@ $list.Add_SelectionChanged({
 })
 #endregion
 
-handlersControlsEvents
 
 $quotes.Text =  Quotes
 QuotesHandle
+
+handlersControlsEvents
+
 
 $Window.Showdialog() | Out-Null
 
