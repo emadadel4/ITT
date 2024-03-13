@@ -60,7 +60,7 @@
         </Grid>
 
         <Grid Grid.Row="1" Grid.Column="1" Margin="10">
-            <TextBlock x:Name="Discription" Text="VLC media player is a free and open-source, portable, cross-platform media player software and streaming media server" TextWrapping="Wrap"/>
+            <TextBlock x:Name="Discription" Text="Recommended Apps" TextWrapping="Wrap"/>
         </Grid>
 
 
@@ -83,6 +83,7 @@ function Import-Xaml {
 
 $Window = Import-Xaml 
 #endregion
+
 
 
 
@@ -120,9 +121,14 @@ function Quotes {
 
 function Apps {
 
-	$url = "https://raw.githubusercontent.com/emadadel4/ITT/main/js/softwearlist.json"
-	$result = Invoke-WebRequest -Uri $url
-	$json = $result.Content | ConvertFrom-Json
+	#Online
+	#$url = "https://raw.githubusercontent.com/emadadel4/ITT/main/js/softwearlist.json"
+	#$result = Invoke-WebRequest -Uri $url
+	#$json = $result.Content | ConvertFrom-Json
+
+
+	#Offline
+	$json  = Get-Content -Path "./js/softwearlist.json" | ConvertFrom-Json
     return $json   
 }
 
@@ -135,6 +141,11 @@ foreach ($item in Apps)
 	$checkbox = New-Object System.Windows.Controls.CheckBox
 	$list.Items.Add($checkbox)
 	$checkbox.Content = $item.name
+
+	if($item.check -eq "true")
+	{
+		$checkbox.IsChecked = $true
+	}
 
 
 }
@@ -150,7 +161,7 @@ $applyBtn.add_Click({
 	{
 		if ($item.IsChecked)
 		{
-			foreach ($data in $json)
+			foreach ($data in Apps)
 			{
 				if($item.Content -eq $data.name)
 				{
@@ -189,6 +200,7 @@ $selectall.add_Checked({
 		foreach ($item in $list.Items)
 		 {
 			$item.IsChecked = $true
+			$Discription.Text =  $list.Items.Count -1
 		 }
 	}
 
@@ -225,6 +237,19 @@ $list.Add_SelectionChanged({
 
 })
 #endregion
+
+$checkbox.add_Click({
+
+	[System.Windows.MessageBox]::Show('Development by Emad Adel', 'ITTS', [System.Windows.Forms.MessageBoxButtons]::OK)
+
+	foreach($data in Apps)
+	{
+		if( $list.SelectedItem.Content -eq $data.name)
+		{
+			$Discription.Text = $data.discription
+		}
+	}
+})
 
 
 

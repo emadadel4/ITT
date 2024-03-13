@@ -4,7 +4,7 @@
         "name": "Chrome",
         "discription": "Chrome: A Fast, Secure, and Customizable Browser Chrome is a popular web browser developed by Google and released in 2008.",
         "url": "chrome",
-        "check": "false"
+        "check": "true"
     },
     {
         "id": "2",
@@ -27,14 +27,14 @@
         "name": "7zip",
         "discription": "7-Zip is a free and open-source file archiver1234. It is a utility used to place groups of files within compressed containers known as archives",
         "url": "7zip",
-        "check": "true"
+        "check": "false"
     },
     {
         "id": "5",
         "name": "WinRAR",
         "discription": "WinRAR is a powerful compression, archiving and archive managing software tool1234. It can create and view archives in RAR or ZIP file formats, and unpack numerous archive file formats",
         "url": "winrar",
-        "check": "false"
+        "check": "true"
 
     },
     {
