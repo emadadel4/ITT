@@ -60,8 +60,11 @@
             <Button x:Name="applybtn" Content="Apply" Width="100" Height="40" BorderBrush="{x:Null}"  Background="#FF2578FF" Foreground="White"/>
         </Grid>
 
-        <Grid Grid.Row="1" Grid.Column="1" Margin="10">
-            <TextBlock x:Name="Discription" Text="Recommended Apps" TextWrapping="Wrap"/>
+        <Grid Grid.Row="1" Grid.Column="1" Margin="15">
+			<StackPanel Orientation="Vertical">
+				<TextBlock x:Name="Discription" Text="VLC media player is a free and open-source, portable, cross-platform media player software and streaming media server" TextWrapping="Wrap"/>
+				<TextBlock x:Name="itemLink" Text="Offical website" Cursor="Hand"  Margin="5" Foreground="#FF003EFF"/>
+			</StackPanel>
         </Grid>
 
 
@@ -92,13 +95,12 @@ $quotes = $Window.FindName("quotes")
 $Discription = $Window.FindName("Discription")
 $applyBtn = $Window.FindName('applybtn')
 $aboutBtn = $Window.FindName('aboutBtn')
-
+$itemLink = $Window.FindName('itemLink')
 $myToolTip = New-Object System.Windows.Controls.ToolTip
 $myToolTip.Content = "Right Clcik to copy the quote"
 $quotes.ToolTip = $myToolTip
 
 #endregion
-
 
 
 function Quotes {
@@ -114,15 +116,72 @@ function Quotes {
 function Apps {
 
 	#Online
-	$url = "https://raw.githubusercontent.com/emadadel4/ITT/main/js/softwearlist.json"
-	$result = Invoke-WebRequest -Uri $url
-	$json = $result.Content | ConvertFrom-Json
+	#$url = "https://raw.githubusercontent.com/emadadel4/ITT/main/js/softwearlist.json"
+	#$result = Invoke-WebRequest -Uri $url
+	#$json = $result.Content | ConvertFrom-Json
 
 	#Offline
-	#json  = Get-Content -Path "./js/softwearlist.json" | ConvertFrom-Json
+	$json = Get-Content -Path "./js/softwearlist.json" | ConvertFrom-Json
 
     return $json   
 }
+function handlersControlsEvents {
+	
+
+	#region Get item website link from json file
+	$itemLink.add_MouseLeftButtonDown({
+
+		foreach ($item in $list.SelectedItem.Content)
+		{
+			foreach ($data in Apps)
+			{
+				if($item -eq $data.name)
+				{
+					Start-Process ($data.website)
+				}
+			}
+		}
+	
+	})
+	#endregion
+
+
+	#region Show tooltip for qoutes 
+	function QuotesHandle {
+
+		# Add MouseEnter and MouseLeave event handlers
+		$quotes.Add_MouseEnter({
+			$myToolTip.IsOpen = $true
+		})
+	
+		$quotes.Add_MouseLeave({
+			$myToolTip.IsOpen = $false
+		})
+	
+		$quotes.add_MouseLeftButtonDown({
+			$quotes.Text =  Quotes
+	
+			$quotes.Text | Set-Clipboard
+	
+	})
+	
+	
+	$quotes.add_MouseRightButtonDown({
+		$quotes.Text | Set-Clipboard
+	})
+	
+	}
+	#endregion
+
+	#region About click
+	$aboutBtn.add_Click({
+		[System.Windows.MessageBox]::Show('Development by Emad Adel', 'ITTS', [System.Windows.Forms.MessageBoxButtons]::OK)
+	})
+	#endregion
+
+
+}
+
 
 
 #region Generate names from json file
@@ -228,47 +287,17 @@ $list.Add_SelectionChanged({
 })
 #endregion
 
-$checkbox.add_Click({
 
 
-	
-})
-
-
-
-$aboutBtn.add_Click({
-
-	[System.Windows.MessageBox]::Show('Development by Emad Adel', 'ITTS', [System.Windows.Forms.MessageBoxButtons]::OK)
-})
-
-function QuotesHandle {
-
-	# Add MouseEnter and MouseLeave event handlers
-	$quotes.Add_MouseEnter({
-		$myToolTip.IsOpen = $true
-	})
-
-	$quotes.Add_MouseLeave({
-		$myToolTip.IsOpen = $false
-	})
-
-	$quotes.add_MouseLeftButtonDown({
-		$quotes.Text =  Quotes
-
-		$quotes.Text | Set-Clipboard
-
-})
-
-
-$quotes.add_MouseRightButtonDown({
-	$quotes.Text | Set-Clipboard
-})
-
-}
-
+handlersControlsEvents
 
 $quotes.Text =  Quotes
 QuotesHandle
+
+
+
+
+
 
 $Window.Showdialog() | Out-Null
 
