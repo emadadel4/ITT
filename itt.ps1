@@ -85,18 +85,6 @@ $Window = Import-Xaml
 #endregion
 
 
-
-
-
-
-
-
-
-#$url = "https://raw.githubusercontent.com/emadadel4/ITT/main/js/softwearlist.json"
-#$result = Invoke-WebRequest -Uri $url
-#$json = $result.Content | ConvertFrom-Json
-
-
 #region Controls
 $selectall = $Window.FindName("selectall")
 $list = $Window.FindName("list")
@@ -131,9 +119,9 @@ function Apps {
 	$result = Invoke-WebRequest -Uri $url
 	$json = $result.Content | ConvertFrom-Json
 
-
 	#Offline
 	#$json  = Get-Content -Path "./js/softwearlist.json" | ConvertFrom-Json
+
     return $json   
 }
 
