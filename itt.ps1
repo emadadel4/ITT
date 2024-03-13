@@ -225,20 +225,45 @@ $list.Add_SelectionChanged({
 #endregion
 
 
-$quotes.Text =  Quotes
 
 $aboutBtn.add_Click({
 
 	[System.Windows.MessageBox]::Show('Development by Emad Adel', 'ITTS', [System.Windows.Forms.MessageBoxButtons]::OK)
 })
 
+function QuotesHandle {
+	$myToolTip = New-Object System.Windows.Controls.ToolTip
+	$myToolTip.Content = "Right Clcik to copy the quote"
+	$quotes.ToolTip = $myToolTip
 
-$quotes.add_MouseDown({
-	$quotes.Text =  Quotes
 
-	$quotes.Text | Set-Clipboard
+
+	# Add MouseEnter and MouseLeave event handlers
+	$quotes.Add_MouseEnter({
+		$myToolTip.IsOpen = $true
+	})
+
+	$quotes.Add_MouseLeave({
+		$myToolTip.IsOpen = $false
+	})
+
+	$quotes.add_MouseLeftButtonDown({
+		$quotes.Text =  Quotes
+
+		$quotes.Text | Set-Clipboard
 
 })
+
+
+$quotes.add_MouseRightButtonDown({
+	$quotes.Text | Set-Clipboard
+})
+
+}
+
+
+$quotes.Text =  Quotes
+QuotesHandle
 
 #Finaly Show Window
 $Window.ShowDialog()
