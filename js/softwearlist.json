@@ -138,7 +138,7 @@
         "name": "qBittorrent",
         "discription": "Cross-platform BitTorrent client",
         "url": "qbittorrent",
-        "check": "false"
+        "check": "true"
     },
      {
         "id": "8",
