@@ -116,12 +116,12 @@ function Quotes {
 function Apps {
 
 	#Online
-	$url = "https://raw.githubusercontent.com/emadadel4/ITT/main/js/softwearlist.json"
+	$url = "https://raw.githubusercontent.com/emadadel4/ITT/main/js/software.json"
 	$result = Invoke-WebRequest -Uri $url
 	$json = $result.Content | ConvertFrom-Json
 
 	#Offline
-	#$json = Get-Content -Path "./js/softwearlist.json" | ConvertFrom-Json
+	#$json = Get-Content -Path "./js/software.json" | ConvertFrom-Json
 
     return $json   
 }
