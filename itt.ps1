@@ -4,13 +4,12 @@
 [System.Reflection.Assembly]::LoadWithPartialName('System.Drawing') 		 | out-null
 [System.Reflection.Assembly]::LoadWithPartialName('WindowsFormsIntegration') | out-null
 
-
 [xml]$xaml = @"
 <Window
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     x:Name="Window" Title="ITT" WindowStartupLocation = "CenterScreen" 
-    Width = "800" Height = "600" ShowInTaskbar = "True" Topmost="True" Icon="$myIconPath">
+    Width = "800" Height = "600" ShowInTaskbar = "True" Topmost="True" Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/icon.ico">
 
 		    
     <Grid>
@@ -83,30 +82,8 @@ function Import-Xaml {
 	[Windows.Markup.XamlReader]::Load($xamlReader)
 }
 
-
-
 $Window = Import-Xaml 
 #endregion
-
-
-#
-# Get Local Script Path
-#
-$scriptPath = split-path -parent $MyInvocation.MyCommand.Definition
-
-#
-# Append our path and image filename together
-#
-$myIconPath = Join-Path $scriptPath 'icon.ico'
-
-#
-# Add a Loaded Event to load our custom icon and set the Icon property of our Window.
-#
-$Window.add_Loaded({
-})
-
-
-
 
 #region Controls
 $selectall = $Window.FindName("selectall")
@@ -121,7 +98,6 @@ $myToolTip.Content = "Right Clcik to copy the quote"
 $quotes.ToolTip = $myToolTip
 
 #endregion
-
 
 
 
