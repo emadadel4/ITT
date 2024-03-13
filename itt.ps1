@@ -103,17 +103,6 @@ $quotes.ToolTip = $myToolTip
 #endregion
 
 
-
-function Quotes {
-
-	$url = "https://raw.githubusercontent.com/emadadel4/ITT/main/js/quotes.json"
-	$result = Invoke-WebRequest -Uri $url
-	$quotes = $result.Content | ConvertFrom-Json
-	$Q = $quotes.Q
-	$randomQuotes = Get-Random -InputObject $Q
-    return $randomQuotes   
-}
-
 function Apps {
 
 	#Online
@@ -125,6 +114,31 @@ function Apps {
     return $json   
 }
 
+function Quotes {
+
+	$url = "https://raw.githubusercontent.com/emadadel4/ITT/main/js/quotes.json"
+	$result = Invoke-WebRequest -Uri $url
+	$quotes = $result.Content | ConvertFrom-Json
+	$Q = $quotes.Q
+	$randomQuotes = Get-Random -InputObject $Q
+    return $randomQuotes   
+}
+
+#region Generate names from json file
+foreach ($item in Apps)
+{
+	$checkbox = New-Object System.Windows.Controls.CheckBox
+	$list.Items.Add($checkbox)
+	$checkbox.Content = $item.name
+
+
+	if($item.check -eq "true")
+	{
+		$checkbox.IsChecked = $true
+	}
+}
+
+#endregion
 
 #region Show tooltip for qoutes 
 function QuotesHandle {
@@ -153,9 +167,9 @@ $quotes.add_MouseRightButtonDown({
 }
 #endregion
 
+
 function handlersControlsEvents {
 	
-
 	#region Get item website link from json file
 	$itemLink.add_MouseLeftButtonDown({
 
@@ -173,125 +187,102 @@ function handlersControlsEvents {
 	})
 	#endregion
 
-
-	
-
 	#region About click
 	$aboutBtn.add_Click({
 		[System.Windows.MessageBox]::Show('Development by Emad Adel', 'ITTS', [System.Windows.Forms.MessageBoxButtons]::OK)
 	})
 	#endregion
 
+	#region Show discription of item
+	$list.Add_SelectionChanged({
+		
+		$itemLink.Visibility = "Visible"
 
-}
-
-
-#region Generate names from json file
-foreach ($item in Apps)
-{
-	$checkbox = New-Object System.Windows.Controls.CheckBox
-	$list.Items.Add($checkbox)
-	$checkbox.Content = $item.name
-
-
-	if($item.check -eq "true")
-	{
-		$checkbox.IsChecked = $true
-	}
-}
-
-#endregion
-
-#region Select a program and install 
-$applyBtn.add_Click({
-
-	$Link = "https://ninite.com/"
-
-
-	foreach ($item in $list.Items)
-	{
-		if ($item.IsChecked)
+		foreach($data in Apps)
 		{
-			foreach ($data in Apps)
+			if( $list.SelectedItem.Content -eq $data.name)
 			{
-				if($item.Content -eq $data.name)
+				$Discription.Text = $data.discription
+
+			}
+		}
+
+	})
+	#endregion
+
+	#region Select a program and install 
+	$applyBtn.add_Click({
+
+		$Link = "https://ninite.com/"
+
+
+		foreach ($item in $list.Items)
+		{
+			if ($item.IsChecked)
+			{
+				foreach ($data in Apps)
 				{
-					#Write-Host $data.url
-					$Link = $Link + $data.url + "-"
+					if($item.Content -eq $data.name)
+					{
+						#Write-Host $data.url
+						$Link = $Link + $data.url + "-"
+					}
 				}
 			}
 		}
-	}
 
 
-	$Link = $Link + "/ninite.exe"
-	$Destination = "$env:temp/Install.exe"
+		$Link = $Link + "/ninite.exe"
+		$Destination = "$env:temp/Install.exe"
 
-	if (Test-Path $Destination)
-	{
-		Remove-Item -Verbose -Force $Destination
-	}
-
-	if ([System.Windows.MessageBox]::Show('Do you want install selected programes', 'ITTS', [System.Windows.Forms.MessageBoxButtons]::YesNo) -eq 'Yes')
-	{
-		Write-Host "Ninite Link: $($Link)"
-		Write-Host "Starting Installer Download"
-		$Discription.Text = "Starting Installer Download"
-		Invoke-WebRequest $Link -OutFile $Destination
-		$Discription.Text = "Starting Installation"
-		Start-Process -Filepath $Destination
-	}
-})
-
-$selectall.add_Checked({
-
-	if ($checkbox.IsChecked -eq $false)
-	{
-        # Code to execute when checkbox is unchecked
-		foreach ($item in $list.Items)
-		 {
-			$item.IsChecked = $true
-			$Discription.Text =  $list.Items.Count -1
-		 }
-	}
-
-})
-
-
-$selectall.add_Unchecked({
-
-	if ($checkbox.IsChecked -eq $true)
-	{
-        # Code to execute when checkbox is unchecked
-		foreach ($item in $list.Items)
-		 {
-			$item.IsChecked = $false
-		 }
-	}
-})
-
-
-
-#endregion
-
-
-#region Show discription of item
-$list.Add_SelectionChanged({
-	
-	$itemLink.Visibility = "Visible"
-
-	foreach($data in Apps)
-	{
-		if( $list.SelectedItem.Content -eq $data.name)
+		if (Test-Path $Destination)
 		{
-			$Discription.Text = $data.discription
-
+			Remove-Item -Verbose -Force $Destination
 		}
-	}
 
-})
-#endregion
+		if ([System.Windows.MessageBox]::Show('Do you want install selected programes', 'ITTS', [System.Windows.Forms.MessageBoxButtons]::YesNo) -eq 'Yes')
+		{
+			Write-Host "Ninite Link: $($Link)"
+			Write-Host "Starting Installer Download"
+			$Discription.Text = "Starting Installer Download"
+			Invoke-WebRequest $Link -OutFile $Destination
+			$Discription.Text = "Starting Installation"
+			Start-Process -Filepath $Destination
+		}
+	})
 
+	$selectall.add_Checked({
+
+		if ($checkbox.IsChecked -eq $false)
+		{
+			# Code to execute when checkbox is unchecked
+			foreach ($item in $list.Items)
+			{
+				$item.IsChecked = $true
+				$Discription.Text =  $list.Items.Count -1
+			}
+		}
+
+	})
+
+
+	$selectall.add_Unchecked({
+
+		if ($checkbox.IsChecked -eq $true)
+		{
+			# Code to execute when checkbox is unchecked
+			foreach ($item in $list.Items)
+			{
+				$item.IsChecked = $false
+			}
+		}
+	})
+
+
+
+	#endregion
+
+}
 
 $quotes.Text =  Quotes
 QuotesHandle
