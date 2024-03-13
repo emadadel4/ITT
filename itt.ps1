@@ -119,7 +119,7 @@ function Apps {
 	$json = $result.Content | ConvertFrom-Json
 
 	#Offline
-	#$json  = Get-Content -Path "./js/softwearlist.json" | ConvertFrom-Json
+	#json  = Get-Content -Path "./js/softwearlist.json" | ConvertFrom-Json
 
     return $json   
 }
@@ -132,13 +132,13 @@ foreach ($item in Apps)
 	$list.Items.Add($checkbox)
 	$checkbox.Content = $item.name
 
+
 	if($item.check -eq "true")
 	{
 		$checkbox.IsChecked = $true
 	}
-
-
 }
+
 #endregion
 
 #region Select a program and install 
@@ -230,15 +230,8 @@ $list.Add_SelectionChanged({
 
 $checkbox.add_Click({
 
-	[System.Windows.MessageBox]::Show('Development by Emad Adel', 'ITTS', [System.Windows.Forms.MessageBoxButtons]::OK)
 
-	foreach($data in Apps)
-	{
-		if( $list.SelectedItem.Content -eq $data.name)
-		{
-			$Discription.Text = $data.discription
-		}
-	}
+	
 })
 
 
