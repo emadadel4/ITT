@@ -57,7 +57,7 @@
 
 
         <Grid Grid.Row="4" Grid.Column="3">
-            <Button x:Name="applybtn" Content="Apply" Width="100" Height="40" BorderBrush="{x:Null}"  Background="#FF2578FF" Foreground="White"/>
+            <Button x:Name="applybtn" Content="Install" Width="100" Height="40" BorderBrush="{x:Null}"  Background="#FF2578FF" Foreground="White"/>
         </Grid>
 
         <Grid Grid.Row="1" Grid.Column="1" Margin="15">
