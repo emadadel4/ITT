@@ -103,6 +103,7 @@ $quotes.ToolTip = $myToolTip
 #endregion
 
 
+
 function Quotes {
 
 	$url = "https://raw.githubusercontent.com/emadadel4/ITT/main/js/quotes.json"
@@ -181,6 +182,8 @@ function handlersControlsEvents {
 
 
 }
+
+handlersControlsEvents
 
 
 
@@ -293,8 +296,6 @@ $list.Add_SelectionChanged({
 
 $quotes.Text =  Quotes
 QuotesHandle
-
-handlersControlsEvents
 
 
 $Window.Showdialog() | Out-Null
