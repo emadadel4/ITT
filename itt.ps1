@@ -117,7 +117,7 @@ function Apps {
 function Quotes {
 
 	$url = "https://raw.githubusercontent.com/emadadel4/ITT/main/js/quotes.json"
-	$result = Invoke-WebRequest -Uri $url
+	$result = Invoke-WebRequest -Uri $url -UseBasicParsing
 	$quotes = $result.Content | ConvertFrom-Json
 	$Q = $quotes.Q
 	$randomQuotes = Get-Random -InputObject $Q
@@ -284,8 +284,10 @@ function handlersControlsEvents {
 
 }
 
-#$quotes.Text =  Quotes
-#QuotesHandle
+QuotesHandle
+
+
+$quotes.Text =  Quotes
 handlersControlsEvents
 
 
