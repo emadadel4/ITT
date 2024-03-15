@@ -1,5 +1,5 @@
 
-$tweekslist = $Window.FindName("tweekslist")
+$tweekslist = $Window.FindName('tweekslist')
 
 function Tweeks {
 
@@ -28,28 +28,31 @@ foreach ($item in Tweeks)
 	}
 }
 
-	#region Show discription of selected item in $list
-	$tweekslist.Add_SelectionChanged({
-		
-		$itemLink.Visibility = "Visible"
-
-		foreach($data in Tweeks)
-		{
-			if( $tweekslist.SelectedItem.Content -eq $data.name)
-			{
-				$Discription.Text = $data.discription
-			}
-		}
-	})
-	#endregion
+	
 
 #endregion
 
-#region Install selected item 
-$installbtn.add_Click({
 
-	if($currentTap  = "tweeks")
+#region Show discription of selected item in $list
+$tweekslist.Add_SelectionChanged({
+		
+	#$itemLink.Visibility = "Visible"
+	foreach($data in Tweeks)
 	{
+		if( $tweekslist.SelectedItem.Content -eq $data.name)
+		{
+			$Discription.Text = $data.discription
+		}
+	}
+})
+#endregion
+
+#region Install selected item 
+
+if($currentTap -eq "t")
+{
+		$installbtn.add_Click({
+
 		foreach ($item in $tweekslist.Items)
 		{
 			if ($item.IsChecked)
@@ -63,9 +66,9 @@ $installbtn.add_Click({
 				}
 			}
 		}
-	}
-})
-	#endregion
+	})
+}
+#endregion
 
 
 

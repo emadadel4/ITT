@@ -314,31 +314,12 @@ function NormalInstall($url) {
 
 }
 
-function Ninite($list,$url) {
-	
-
-	$Link = $Link + $url + "-"
-	$Link = $Link + "/ninite.exe"
-	$Destination = "$env:temp/Install.exe"
-	
-	if (Test-Path $Destination)
-	{
-		Remove-Item -Verbose -Force $Destination
-	}
-	Write-Host "Ninite Link: $($Link)"
-	$Discription.Text = "Starting Download"
-	Invoke-WebRequest $Link -OutFile $Destination
-	$Discription.Text = "Starting Installation"
-	Start-Process -Filepath $Destination
-	$Discription.Text = "Installed successfully "
-	
-}
-
 QuotesHandle
 
 
 $quotes.Text =  Quotes
 handlersControlsEvents
+
 
 
 #End Backend
