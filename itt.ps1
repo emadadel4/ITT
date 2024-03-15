@@ -107,8 +107,8 @@ function Apps {
 
 	#Online
 	$url = "https://raw.githubusercontent.com/emadadel4/ITT/main/js/software.json"
-	$result = Invoke-WebRequest -Uri $url
-	$json = $result.Content | ConvertFrom-Json
+	$result = Invoke-WebRequest -Uri $url -UseBasicParsing
+	$json = $result.Content | ConvertFrom-Json 
 	#Offline
 	#$json = Get-Content -Path "./js/software.json" | ConvertFrom-Json
     return $json   
@@ -284,8 +284,8 @@ function handlersControlsEvents {
 
 }
 
-$quotes.Text =  Quotes
-QuotesHandle
+#$quotes.Text =  Quotes
+#QuotesHandle
 handlersControlsEvents
 
 
