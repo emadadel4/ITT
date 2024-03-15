@@ -68,7 +68,7 @@
         "name": "LibreOffice",
         "discription": "LibreOffice is a free and open-source office productivity software suite12345. It is a project of The Document Foundation, and was forked in 2010 from OpenOffice.org, an open-sourced version of the earlier StarOffice",
         "url": "libreoffice",
-        "check": "true",
+        "check": "false",
         "website":"https://www.libreoffice.org/"
     },
     {
@@ -89,7 +89,7 @@
     },
     {
          "id": "8",
-        "name": "Avast",
+        "name": "Avast Antivirus",
         "discription": "Avast Antivirus is a family of cross-platform internet security applications developed by Avast for Microsoft Windows, macOS, Android, and iOS. Avast offers free and paid products that provide computer security",
         "url": "avast",
         "check": "false",
@@ -162,10 +162,10 @@
     {
         "id": "8",
         "name": "Neat Download",
-        "discription": "Downloader",
-        "url": "none",
-        "install": "normal",
-        "check": "false",
+        "discription": "Neat Download Manager is a free download manager and accelerator for macOS/Windows that downloads files using a dynamic segmentation algorithm. It supports HTTP, HTTPS and FTP protocols,",
+        "url": "https://www.neatdownloadmanager.com/file/NeatDM_setup.exe",
+        "silent": "false",
+        "check": "true",
         "website":"none"
     }
 ]

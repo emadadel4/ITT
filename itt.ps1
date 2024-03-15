@@ -107,11 +107,12 @@ $quotes.ToolTip = $myToolTip
 function Apps {
 
 	#Online
-	$url = "https://raw.githubusercontent.com/emadadel4/ITT/main/js/software.json"
-	$result = Invoke-WebRequest -Uri $url -UseBasicParsing
-	$json = $result.Content | ConvertFrom-Json 
+	#$url = "https://raw.githubusercontent.com/emadadel4/ITT/main/js/software.json"
+	#$result = Invoke-WebRequest -Uri $url -UseBasicParsing
+	#$json = $result.Content | ConvertFrom-Json 
+
 	#Offline
-	#$json = Get-Content -Path "./js/software.json" | ConvertFrom-Json
+	$json = Get-Content -Path "./js/software.json" | ConvertFrom-Json
     return $json   
 }
 
@@ -210,41 +211,32 @@ function handlersControlsEvents {
 	#region Install selected item 
 	$installbtn.add_Click({
 
-		$Link = "https://ninite.com/"
 
-		foreach ($item in $list.Items)
+	foreach ($item in $list.Items)
+	{
+		if ($item.IsChecked)
 		{
-			if ($item.IsChecked)
+			foreach ($data in Apps)
 			{
-				foreach ($data in Apps)
+				if($item.Content -eq $data.name)
 				{
-					if($item.Content -eq $data.name)
+					if ([System.Windows.MessageBox]::Show('Do you want install selected programes', 'ITT', [System.Windows.Forms.MessageBoxButtons]::YesNo) -eq 'Yes')
 					{
-						#Write-Host $data.url
-						$Link = $Link + $data.url + "-"
+						if($data.silent -eq "false")
+						{
+							NormalInstall($data.url)
+							
+						}else{
+	
+							Ninite($data.url)
+						}
 					}
 				}
 			}
 		}
+	}
 
-
-		$Link = $Link + "/ninite.exe"
-		$Destination = "$env:temp/Install.exe"
-
-		if (Test-Path $Destination)
-		{
-			Remove-Item -Verbose -Force $Destination
-		}
-
-		if ([System.Windows.MessageBox]::Show('Do you want install selected programes', 'ITTS', [System.Windows.Forms.MessageBoxButtons]::YesNo) -eq 'Yes')
-		{
-			Write-Host "Ninite Link: $($Link)"
-			$Discription.Text = "Starting Download"
-			Invoke-WebRequest $Link -OutFile $Destination
-			$Discription.Text = "Starting Installation"
-			Start-Process -Filepath $Destination
-			$Discription.Text = "Installed successfully "
-		}
+		
 	})
 	#endregion
 
@@ -277,6 +269,61 @@ function handlersControlsEvents {
 	})
 	#endregion
 
+}
+
+
+function NormalInstall($url) {
+
+	$Destination = "$env:temp/itt.exe"
+
+	$bitsJobObj = Start-BitsTransfer $url -Destination $Destination
+
+	switch ($bitsJobObj.JobState) {
+
+		'Transferred' {
+			Complete-BitsTransfer -BitsJob $bitsJobObj
+			break
+		}
+
+		'Error' {
+			throw 'Error downloading'
+		}
+	}
+
+	$exeArgs = '/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath'
+	Start-Process -Wait $Destination -ArgumentList $exeArgs
+
+
+	if (Test-Path $Destination)
+	{
+		Remove-Item -Verbose -Force $Destination
+	}
+
+}
+
+function Ninite($url) {
+	
+	$Link = "https://ninite.com/"
+
+	$Link = $Link + $url + "-"
+
+	$Link = $Link + "/ninite.exe"
+
+	$Destination = "$env:temp/Install.exe"
+
+	if (Test-Path $Destination)
+	{
+		Remove-Item -Verbose -Force $Destination
+	}
+
+	
+	Write-Host "Ninite Link: $($Link)"
+	$Discription.Text = "Starting Download"
+	Invoke-WebRequest $Link -OutFile $Destination
+	$Discription.Text = "Starting Installation"
+	Start-Process -Filepath $Destination
+	$Discription.Text = "Installed successfully "
+	
 }
 
 QuotesHandle
