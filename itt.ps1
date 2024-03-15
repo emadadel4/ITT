@@ -44,9 +44,8 @@
 
             <TabItem Header="Tweeks" Padding="16" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="Black">
                 <TabItem.Content>
-                    <TextBlock TextWrapping="WrapWithOverflow">
-                        Soon.
-                    </TextBlock>
+					<ListView x:Name="tweekslist" Margin="5" BorderBrush="{x:Null}">
+					</ListView>
                 </TabItem.Content>
             </TabItem>
         </TabControl>
@@ -107,12 +106,12 @@ $quotes.ToolTip = $myToolTip
 function Apps {
 
 	#Online
-	$url = "https://raw.githubusercontent.com/emadadel4/ITT/main/js/software.json"
-	$result = Invoke-WebRequest -Uri $url -UseBasicParsing
-	$json = $result.Content | ConvertFrom-Json 
+	#$url = "https://raw.githubusercontent.com/emadadel4/ITT/main/js/software.json"
+	#$result = Invoke-WebRequest -Uri $url -UseBasicParsing
+	#$json = $result.Content | ConvertFrom-Json 
 
 	#Offline
-	#$json = Get-Content -Path "./js/software.json" | ConvertFrom-Json
+	$json = Get-Content -Path "./js/software.json" | ConvertFrom-Json
     return $json   
 }
 
@@ -211,32 +210,47 @@ function handlersControlsEvents {
 	#region Install selected item 
 	$installbtn.add_Click({
 
+		$Link = "https://ninite.com/"
 
-	foreach ($item in $list.Items)
-	{
-		if ($item.IsChecked)
+		foreach ($item in $list.Items)
 		{
-			foreach ($data in Apps)
+			if ($item.IsChecked)
 			{
-				if($item.Content -eq $data.name)
+				foreach ($data in Apps)
 				{
-					if ([System.Windows.MessageBox]::Show('Do you want install selected programes', 'ITT', [System.Windows.Forms.MessageBoxButtons]::YesNo) -eq 'Yes')
+					if($item.Content -eq $data.name)
 					{
-						if($data.silent -eq "false")
+						if($data.silent -eq "true")
+						{
+							$Link = $Link + $data.url + "-"
+						}
+						else
 						{
 							NormalInstall($data.url)
-							
-						}else{
-	
-							Ninite($data.url)
 						}
 					}
 				}
 			}
 		}
+
+		if ([System.Windows.MessageBox]::Show('Do you want install selected programes', 'ITT', [System.Windows.Forms.MessageBoxButtons]::YesNo) -eq 'Yes')
+		{
+
+			$Link = $Link + "/ninite.exe"
+			$Destination = "$env:temp/Install.exe"
+			
+			if (Test-Path $Destination)
+			{
+				Remove-Item -Verbose -Force $Destination
+			}
+
+			Write-Host "Ninite Link: $($Link)"
+			$Discription.Text = "Starting Download"
+			Invoke-WebRequest $Link -OutFile $Destination
+			$Discription.Text = "Click yes to any popup window"
+			Start-Process -Filepath $Destination
 	}
 
-		
 	})
 	#endregion
 
@@ -268,7 +282,6 @@ function handlersControlsEvents {
 		}
 	})
 	#endregion
-
 }
 
 
@@ -301,22 +314,17 @@ function NormalInstall($url) {
 
 }
 
-function Ninite($url) {
+function Ninite($list,$url) {
 	
-	$Link = "https://ninite.com/"
 
 	$Link = $Link + $url + "-"
-
 	$Link = $Link + "/ninite.exe"
-
 	$Destination = "$env:temp/Install.exe"
-
+	
 	if (Test-Path $Destination)
 	{
 		Remove-Item -Verbose -Force $Destination
 	}
-
-	
 	Write-Host "Ninite Link: $($Link)"
 	$Discription.Text = "Starting Download"
 	Invoke-WebRequest $Link -OutFile $Destination
@@ -331,6 +339,7 @@ QuotesHandle
 
 $quotes.Text =  Quotes
 handlersControlsEvents
+
 
 #End Backend
 $Window.Showdialog() | Out-Null

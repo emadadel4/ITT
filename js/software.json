@@ -4,6 +4,7 @@
         "name": "Chrome",
         "discription": "Chrome: A Fast, Secure, and Customizable Browser Chrome is a popular web browser developed by Google and released in 2008.",
         "url": "chrome",
+        "silent": "true",
         "check": "true",
         "website":"https://www.google.com/chrome"
     },
@@ -12,6 +13,7 @@
         "name": "Firefox",
         "discription": "Mozilla Firefox, or simply Firefox, is a free and open-source web browser developed by the Mozilla Foundation and its subsidiary, the Mozilla Corporation",
         "url": "firefox",
+        "silent": "true",
         "check": "true",
         "website":"https://www.mozilla.org/en-US/firefox/new/"
     },
@@ -20,6 +22,7 @@
         "name": "Edge",
         "discription": "Microsoft Edge is Chromium based and is a faster, more secure, and more modern browsing experience than Internet Explorer and Microsoft Edge Legacy. For more information, see Microsoft Edge features for work. Additionally, Microsoft Edge will soon be the only Microsoft browser that supports Microsoft 365 web apps and services.",
         "url": "edge",
+        "silent": "true",
         "check": "false",
         "website":"https://www.microsoft.com/edge"
     },
@@ -28,6 +31,8 @@
         "name": "7zip",
         "discription": "7-Zip is a free and open-source file archiver1234. It is a utility used to place groups of files within compressed containers known as archives",
         "url": "7zip",
+        "silent": "true",
+
         "check": "false",
         "website":"https://7-zip.org/"
     },
@@ -36,6 +41,8 @@
         "name": "WinRAR",
         "discription": "WinRAR is a powerful compression, archiving and archive managing software tool1234. It can create and view archives in RAR or ZIP file formats, and unpack numerous archive file formats",
         "url": "winrar",
+        "silent": "true",
+
         "check": "true",
         "website":"https://www.rarlab.com"
     },
@@ -44,6 +51,8 @@
         "name": "VLC",
         "discription": "VLC media player is a free and open-source, portable, cross-platform media player software and streaming media server",
         "url": "vlc",
+        "silent": "true",
+
         "check": "true",
         "website":"https://www.videolan.org/vlc/"
     },
@@ -52,6 +61,8 @@
         "name": "K-Lite Codecs",
         "discription": "K-Lite Codec Pack Audio and video codec packThe K-Lite Codec Pack is a collection of audio and video codecs for Microsoft Windows DirectShow that enables an operating system and its software to play various audio and video formats",
         "url": "klitecodecs",
+        "silent": "true",
+
         "check": "false",
         "website":"https://www.codecguide.com/download_kl.htm"
     },
@@ -60,6 +71,8 @@
         "name": "Foxit Reader",
         "discription": "Foxit PDF Reader, formerly known as Foxit Reader, is a multilingual freemium PDF tool that can create, view, edit, digitally sign, and print PDF files",
         "url": "foxit",
+        "silent": "true",
+
         "check": "false",
         "website":"https://www.foxit.com/"
     },
@@ -68,6 +81,8 @@
         "name": "LibreOffice",
         "discription": "LibreOffice is a free and open-source office productivity software suite12345. It is a project of The Document Foundation, and was forked in 2010 from OpenOffice.org, an open-sourced version of the earlier StarOffice",
         "url": "libreoffice",
+        "silent": "true",
+
         "check": "false",
         "website":"https://www.libreoffice.org/"
     },
@@ -76,6 +91,8 @@
         "name": "SumatraPDF",
         "discription": "Sumatra PDF is a free and open-source document viewer that supports many document formats including: Portable Document Format (PDF), Microsoft Compiled HTML Help, DjVu, EPUB, FictionBook, MOBI, PRC etc",
         "url": "sumatrapdf",
+        "silent": "true",
+
         "check": "true",
         "website":"https://duckduckgo.com/?q=vlc"
     },
@@ -84,6 +101,8 @@
         "name": "Malwarebytes",
         "discription": "Malwarebytes is anti-malware software for Microsoft Windows, macOS, ChromeOS, Android, and iOS that finds and removes malware. Made by Malwarebytes Corporation, it was first released in January 2006",
         "url": "malwarebytes",
+        "silent": "true",
+
         "check": "false",
         "website":"none"
     },
@@ -92,6 +111,8 @@
         "name": "Avast Antivirus",
         "discription": "Avast Antivirus is a family of cross-platform internet security applications developed by Avast for Microsoft Windows, macOS, Android, and iOS. Avast offers free and paid products that provide computer security",
         "url": "avast",
+        "silent": "true",
+
         "check": "false",
         "website":"none"
     },
@@ -100,6 +121,8 @@
         "name": "ImgBurn",
         "discription": "mgBurn–easily the most impressive free/donationware burning software I’ve run across. The program handles a host of image types including ISO, NRG, PDI, UDI, BIN/CUE, and CDI–obviating the need to buy several different imaging programs–and will also create data CDs, DVDs, and get this: Blu-ray data discs.",
         "url": "imgburn",
+        "silent": "true",
+
         "check": "false",
         "website":"none"
     },
@@ -108,6 +131,8 @@
         "name": "Nodepad++",
         "discription": "Notepad++ is a text editor and source code editor for use under Microsoft Windows. It supports around 80 programming languages with syntax highlighting and code folding. It allows working with multiple open files in a single window, thanks to its tabbed editing interface.",
         "url": "notepadplusplus",
+        "silent": "true",
+
         "check": "false",
         "website":"none"
     },
@@ -116,6 +141,8 @@
         "name": "Revo uninstaller",
         "discription": "Revo Uninstaller is an uninstaller for Microsoft Windows. It uninstalls programs and additionally removes any files and Windows registry entries left behind by the program's uninstaller or by the Windows uninstall function.",
         "url": "Revo",
+        "silent": "true",
+
         "check": "false",
         "website":"none"
     },
@@ -124,6 +151,8 @@
         "name": "CCleaner",
         "discription": "CCleaner is a utility used to clean potentially unwanted files and invalid Windows Registry entries from a computer1. It was originally developed by Piriform and has been around since 200412. It started out as an optimization tool for PCs, but its developers rolled out iterations for macOS and Android in 2012 and 2014, respectivel",
         "url": "ccleaner",
+        "silent": "true",
+
         "check": "false",
         "website":"none"
     },
@@ -132,6 +161,8 @@
         "name": "GIMP",
         "discription": "Free graphics editor GNU Image Manipulation Program, commonly known by its acronym GIMP, is a free and open-source raster graphics editor used for image manipulation and image editing, free-form drawing, transcoding betwe",
         "url": "gimp",
+        "silent": "true",
+
         "check": "false",
         "website":"none"
     },
@@ -140,6 +171,8 @@
         "name": "VSCode",
         "discription": "Visual Studio Code, also commonly referred to as VS Code, is a source-code editor developed by Microsoft for Windows, Linux and macOS. Features include support for debugging, syntax highlighting",
         "url": "vscode",
+        "silent": "true",
+
         "check": "false",
         "website":"none"
     },
@@ -148,6 +181,8 @@
         "name": "qBittorrent",
         "discription": "Cross-platform BitTorrent client",
         "url": "qbittorrent",
+        "silent": "true",
+
         "check": "true",
         "website":"none"
     },
@@ -156,6 +191,8 @@
         "name": "Discord",
         "discription": "Discord is a versatile communication platform that has evolved beyond its gaming origins. Initially designed for gamers, it now serves as a hub for various communities. Here are some key points about Discord",
         "url": "discord",
+        "silent": "true",
+
         "check": "false",
         "website":"none"
     },

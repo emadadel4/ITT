@@ -1,0 +1,10 @@
+[
+    {
+        "name":"Fix stuter in games",
+        "discription":"Fix sutuer in games windows 10/11",
+        "script":"https://raw.githubusercontent.com/emadadel4/Fix-Stutter-in-Games/main/fix.ps1",
+        "check":"true",
+        "silent":"true",
+        "website":"none"
+    }
+]
