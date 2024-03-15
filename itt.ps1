@@ -58,7 +58,7 @@
 
 
         <Grid Grid.Row="4" Grid.Column="3">
-            <Button x:Name="applybtn" Content="Install" Width="100" Height="40" BorderBrush="{x:Null}"  Background="#FF2578FF" Foreground="White"/>
+            <Button x:Name="installbtn" Content="Install" Width="100" Height="40" BorderBrush="{x:Null}"  Background="#FF2578FF" Foreground="White"/>
         </Grid>
 
         <Grid Grid.Row="1" Grid.Column="1" Margin="15">
@@ -94,7 +94,7 @@ $selectall = $Window.FindName("selectall")
 $list = $Window.FindName("list")
 $quotes = $Window.FindName("quotes")
 $Discription = $Window.FindName("Discription")
-$applyBtn = $Window.FindName('applybtn')
+$installbtn = $Window.FindName('installbtn')
 $aboutBtn = $Window.FindName('aboutBtn')
 $itemLink = $Window.FindName('itemLink')
 $myToolTip = New-Object System.Windows.Controls.ToolTip
@@ -208,7 +208,7 @@ function handlersControlsEvents {
 	#endregion
 
 	#region Install selected item 
-	$applyBtn.add_Click({
+	$installbtn.add_Click({
 
 		$Link = "https://ninite.com/"
 
