@@ -192,7 +192,7 @@ function handlersControlsEvents {
 	})
 	#endregion
 
-	#region Show discription of item
+	#region Show discription of selected item in $list
 	$list.Add_SelectionChanged({
 		
 		$itemLink.Visibility = "Visible"
@@ -207,7 +207,7 @@ function handlersControlsEvents {
 	})
 	#endregion
 
-	#region Select a program and install 
+	#region Install selected item 
 	$applyBtn.add_Click({
 
 		$Link = "https://ninite.com/"
@@ -239,14 +239,16 @@ function handlersControlsEvents {
 		if ([System.Windows.MessageBox]::Show('Do you want install selected programes', 'ITTS', [System.Windows.Forms.MessageBoxButtons]::YesNo) -eq 'Yes')
 		{
 			Write-Host "Ninite Link: $($Link)"
-			Write-Host "Starting Installer Download"
-			$Discription.Text = "Starting Installer Download"
+			$Discription.Text = "Starting Download"
 			Invoke-WebRequest $Link -OutFile $Destination
 			$Discription.Text = "Starting Installation"
 			Start-Process -Filepath $Destination
+			$Discription.Text = "Installed successfully "
 		}
 	})
+	#endregion
 
+	#region select all in $list
 	$selectall.add_Checked({
 
 		if ($checkbox.IsChecked -eq $false)
@@ -255,13 +257,13 @@ function handlersControlsEvents {
 			foreach ($item in $list.Items)
 			{
 				$item.IsChecked = $true
-				$Discription.Text =  $list.Items.Count -1
+				#$Discription.Text =  $list.Items.Count -1
 			}
 		}
-
 	})
+	#endregion
 
-
+	#region Unchecked all checkbox $list
 	$selectall.add_Unchecked({
 
 		if ($checkbox.IsChecked -eq $true)
@@ -273,9 +275,6 @@ function handlersControlsEvents {
 			}
 		}
 	})
-
-
-
 	#endregion
 
 }
