@@ -4,6 +4,7 @@
 [System.Reflection.Assembly]::LoadWithPartialName('System.Drawing') 		 | out-null
 [System.Reflection.Assembly]::LoadWithPartialName('WindowsFormsIntegration') | out-null
 
+#region UI
 [xml]$xaml = @"
 <Window
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -99,10 +100,10 @@ $itemLink = $Window.FindName('itemLink')
 $myToolTip = New-Object System.Windows.Controls.ToolTip
 $myToolTip.Content = "Right Clcik to copy the quote"
 $quotes.ToolTip = $myToolTip
-
 #endregion
 
 
+#Start Backend
 function Apps {
 
 	#Online
@@ -131,7 +132,6 @@ foreach ($item in Apps)
 	$list.Items.Add($checkbox)
 	$checkbox.Content = $item.name
 
-
 	if($item.check -eq "true")
 	{
 		$checkbox.IsChecked = $true
@@ -154,7 +154,6 @@ function QuotesHandle {
 
 	$quotes.add_MouseLeftButtonDown({
 		$quotes.Text =  Quotes
-
 		$quotes.Text | Set-Clipboard
 
 })
@@ -203,10 +202,8 @@ function handlersControlsEvents {
 			if( $list.SelectedItem.Content -eq $data.name)
 			{
 				$Discription.Text = $data.discription
-
 			}
 		}
-
 	})
 	#endregion
 
@@ -214,7 +211,6 @@ function handlersControlsEvents {
 	$applyBtn.add_Click({
 
 		$Link = "https://ninite.com/"
-
 
 		foreach ($item in $list.Items)
 		{
@@ -290,6 +286,6 @@ QuotesHandle
 $quotes.Text =  Quotes
 handlersControlsEvents
 
-
+#End Backend
 $Window.Showdialog() | Out-Null
 
