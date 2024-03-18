@@ -167,7 +167,7 @@
 
             <TabItem Header="Tweeks" x:Name="tweeks" Padding="16" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="White">
                 <TabItem.Content>
-					<ListView x:Name="tweekslist" Margin="5" BorderBrush="{x:Null}" Background="#222831">
+					<ListView x:Name="tweekslist" ScrollViewer.VerticalScrollBarVisibility="Auto" BorderBrush="{x:Null}" Background="#222831">
 					</ListView>
                 </TabItem.Content>
             </TabItem>
