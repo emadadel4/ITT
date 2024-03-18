@@ -1,6 +1,3 @@
-
-$tweekslist = $Window.FindName('tweekslist')
-
 function Tweeks {
 
 	#Online
@@ -15,60 +12,60 @@ function Tweeks {
 
 
 
-#region Generate names from json file
-foreach ($item in Tweeks)
-{
-	$checkbox = New-Object System.Windows.Controls.CheckBox
-	$tweekslist.Items.Add($checkbox)
-	$checkbox.Content = $item.name
-
-	if($item.check -eq "true")
+	#region Generate names from json file
+	foreach ($item in Tweeks)
 	{
-		$checkbox.IsChecked = $true
-	}
-}
+		$tbox = New-Object System.Windows.Controls.CheckBox
+		$tweekslist.Items.Add($tbox)
+		$tbox.Foreground = "white"
 
-	
+		$tbox.Content = $item.name
 
-#endregion
-
-
-#region Show discription of selected item in $list
-$tweekslist.Add_SelectionChanged({
-		
-	#$itemLink.Visibility = "Visible"
-	foreach($data in Tweeks)
-	{
-		if( $tweekslist.SelectedItem.Content -eq $data.name)
+		if($item.check -eq "true")
 		{
-			$Discription.Text = $data.discription
+			$tbox.IsChecked = $true
 		}
 	}
-})
-#endregion
 
-#region Install selected item 
+		
 
-if($currentTap -eq "t")
-{
-		$installbtn.add_Click({
+	#endregion
 
-		foreach ($item in $tweekslist.Items)
+	#region Show discription of selected item in $list
+	$tweekslist.Add_SelectionChanged({
+			
+		$itemLink.Visibility = "Hidden"
+
+		foreach($data in Tweeks)
 		{
-			if ($item.IsChecked)
+			if( $tweekslist.SelectedItem.Content -eq $data.name)
 			{
-				foreach ($data in Tweeks)
-				{
-					if ([System.Windows.MessageBox]::Show('Do you want Apply selected Tweek', 'ITT', [System.Windows.Forms.MessageBoxButtons]::YesNo) -eq 'Yes')
-					{
-						Invoke-RestMethod $data.script | Invoke-Expression
-					}
-				}
+				$Discription.Text = $data.discription
 			}
 		}
 	})
-}
-#endregion
+	#endregion
+
+	#region Install selected item 
+
+		$applyBtn.add_Click({
+
+			foreach ($item in $tweekslist.Items)
+			{
+				if ($item.IsChecked)
+				{
+					foreach ($data in Tweeks)
+					{
+						if($item.Content -eq $data.name)
+						{
+							#Test
+							[System.Windows.MessageBox]::Show($data.name, 'ITTS', [System.Windows.Forms.MessageBoxButtons]::OK)
+						}
+					}
+				}
+			}
+	})
+	#endregion
 
 
 

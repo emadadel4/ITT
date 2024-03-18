@@ -2,20 +2,24 @@
     {
         "id": "1",
         "name": "Chrome",
-        "discription": "Chrome: A Fast, Secure, and Customizable Browser Chrome is a popular web browser developed by Google and released in 2008.",
+        "discription": "Chrome is a fast, simple, and secure web browser, built for the modern web.",
         "url": "chrome",
         "silent": "true",
         "check": "true",
-        "website":"https://www.google.com/chrome"
+        "website":"https://www.google.com/chrome",
+        "category":"app"
+
     },
     {
         "id": "2",
         "name": "Firefox",
-        "discription": "Mozilla Firefox, or simply Firefox, is a free and open-source web browser developed by the Mozilla Foundation and its subsidiary, the Mozilla Corporation",
+        "discription": "Mozilla Firefox, or simply Firefox, is a free and open-source web browser developed by the Mozilla Foundation.",
         "url": "firefox",
         "silent": "true",
         "check": "true",
-        "website":"https://www.mozilla.org/en-US/firefox/new/"
+        "website":"https://www.mozilla.org/en-US/firefox/new/",
+        "category":"app"
+
     },
     {
         "id": "3",
@@ -24,7 +28,9 @@
         "url": "edge",
         "silent": "true",
         "check": "false",
-        "website":"https://www.microsoft.com/edge"
+        "website":"https://www.microsoft.com/edge",
+        "category":"app"
+
     },
     {
         "id": "4",
@@ -34,7 +40,9 @@
         "silent": "true",
 
         "check": "false",
-        "website":"https://7-zip.org/"
+        "website":"https://7-zip.org/",
+        "category":"app"
+
     },
     {
         "id": "5",
@@ -44,7 +52,9 @@
         "silent": "true",
 
         "check": "true",
-        "website":"https://www.rarlab.com"
+        "website":"https://www.rarlab.com",
+        "category":"app"
+
     },
     {
         "id": "6",
@@ -54,7 +64,9 @@
         "silent": "true",
 
         "check": "true",
-        "website":"https://www.videolan.org/vlc/"
+        "website":"https://www.videolan.org/vlc/",
+        "category":"app"
+
     },
     {
         "id": "7",
@@ -64,7 +76,9 @@
         "silent": "true",
 
         "check": "false",
-        "website":"https://www.codecguide.com/download_kl.htm"
+        "website":"https://www.codecguide.com/download_kl.htm",
+        "category":"app"
+
     },
     {
         "id": "8",
@@ -74,7 +88,9 @@
         "silent": "true",
 
         "check": "false",
-        "website":"https://www.foxit.com/"
+        "website":"https://www.foxit.com/",
+        "category":"app"
+
     },
     {
         "id": "8",
@@ -84,7 +100,9 @@
         "silent": "true",
 
         "check": "false",
-        "website":"https://www.libreoffice.org/"
+        "website":"https://www.libreoffice.org/",
+        "category":"app"
+
     },
     {
         "id": "8",
@@ -94,7 +112,9 @@
         "silent": "true",
 
         "check": "true",
-        "website":"https://duckduckgo.com/?q=vlc"
+        "website":"https://duckduckgo.com/?q=vlc",
+        "category":"app"
+
     },
     {
         "id": "8",
@@ -104,7 +124,9 @@
         "silent": "true",
 
         "check": "false",
-        "website":"none"
+        "website":"none",
+        "category":"app"
+
     },
     {
          "id": "8",
@@ -114,7 +136,9 @@
         "silent": "true",
 
         "check": "false",
-        "website":"none"
+        "website":"none",
+        "category":"app"
+
     },
     {
         "id": "8",
@@ -124,7 +148,9 @@
         "silent": "true",
 
         "check": "false",
-        "website":"none"
+        "website":"none",
+        "category":"app"
+
     },
     {
         "id": "8",
@@ -134,7 +160,9 @@
         "silent": "true",
 
         "check": "false",
-        "website":"none"
+        "website":"none",
+        "category":"app"
+
     },
     {
         "id": "8",
@@ -144,7 +172,9 @@
         "silent": "true",
 
         "check": "false",
-        "website":"none"
+        "website":"none",
+        "category":"app"
+
     },
     {
         "id": "8",
@@ -154,7 +184,9 @@
         "silent": "true",
 
         "check": "false",
-        "website":"none"
+        "website":"none",
+        "category":"app"
+
     },
     {
         "id": "8",
@@ -164,7 +196,9 @@
         "silent": "true",
 
         "check": "false",
-        "website":"none"
+        "website":"none",
+        "category":"app"
+
     },
     {
         "id": "8",
@@ -174,7 +208,9 @@
         "silent": "true",
 
         "check": "false",
-        "website":"none"
+        "website":"none",
+        "category":"app"
+
     },
     {
         "id": "8",
@@ -182,9 +218,10 @@
         "discription": "Cross-platform BitTorrent client",
         "url": "qbittorrent",
         "silent": "true",
-
         "check": "true",
-        "website":"none"
+        "website":"none",
+        "category":"app"
+
     },
      {
         "id": "8",
@@ -192,9 +229,10 @@
         "discription": "Discord is a versatile communication platform that has evolved beyond its gaming origins. Initially designed for gamers, it now serves as a hub for various communities. Here are some key points about Discord",
         "url": "discord",
         "silent": "true",
-
         "check": "false",
-        "website":"none"
+        "website":"none",
+        "category":"app"
+
     },
     {
         "id": "8",
@@ -203,6 +241,8 @@
         "url": "https://www.neatdownloadmanager.com/file/NeatDM_setup.exe",
         "silent": "false",
         "check": "true",
-        "website":"none"
+        "website":"none",
+        "category":"app"
+
     }
 ]

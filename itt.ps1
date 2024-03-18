@@ -10,20 +10,102 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     x:Name="Window" Title="ITT" WindowStartupLocation = "CenterScreen" 
+	Background="#222831"
+
     Width = "800" Height = "600" ShowInTaskbar = "True" Topmost="True" Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/icon.ico">
 
 		    
+	
+    <Window.Resources>
+        <!--Scrollbar Thumbs-->
+        <Style x:Key="ScrollThumbs" TargetType="{x:Type Thumb}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Thumb}">
+                        <Grid x:Name="Grid">
+                            <Rectangle HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="Auto" Height="Auto" Fill="Transparent" />
+                            <Border x:Name="Rectangle1" CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="Auto" Height="Auto" Background="{TemplateBinding Background}" />
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="Tag" Value="Horizontal">
+                                <Setter TargetName="Rectangle1" Property="Width" Value="Auto" />
+                                <Setter TargetName="Rectangle1" Property="Height" Value="7" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <!--ScrollBars-->
+        <Style x:Key="{x:Type ScrollBar}" TargetType="{x:Type ScrollBar}">
+            <Setter Property="Stylus.IsFlicksEnabled" Value="false" />
+            <Setter Property="Foreground" Value="#8C8C8C" />
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Width" Value="8" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ScrollBar}">
+                        <Grid x:Name="GridRoot" Width="8" Background="{TemplateBinding Background}">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="0.00001*" />
+                            </Grid.RowDefinitions>
+                            <Track x:Name="PART_Track" Grid.Row="0" IsDirectionReversed="true" Focusable="false">
+                                <Track.Thumb>
+                                    <Thumb x:Name="Thumb" Background="{TemplateBinding Foreground}" Style="{DynamicResource ScrollThumbs}" />
+                                </Track.Thumb>
+                                <Track.IncreaseRepeatButton>
+                                    <RepeatButton x:Name="PageUp" Command="ScrollBar.PageDownCommand" Opacity="0" Focusable="false" />
+                                </Track.IncreaseRepeatButton>
+                                <Track.DecreaseRepeatButton>
+                                    <RepeatButton x:Name="PageDown" Command="ScrollBar.PageUpCommand" Opacity="0" Focusable="false" />
+                                </Track.DecreaseRepeatButton>
+                            </Track>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger SourceName="Thumb" Property="IsMouseOver" Value="true">
+                                <Setter Value="{DynamicResource ButtonSelectBrush}" TargetName="Thumb" Property="Background" />
+                            </Trigger>
+                            <Trigger SourceName="Thumb" Property="IsDragging" Value="true">
+                                <Setter Value="{DynamicResource DarkBrush}" TargetName="Thumb" Property="Background" />
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter TargetName="Thumb" Property="Visibility" Value="Collapsed" />
+                            </Trigger>
+                            <Trigger Property="Orientation" Value="Horizontal">
+                                <Setter TargetName="GridRoot" Property="LayoutTransform">
+                                    <Setter.Value>
+                                        <RotateTransform Angle="-90" />
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter TargetName="PART_Track" Property="LayoutTransform">
+                                    <Setter.Value>
+                                        <RotateTransform Angle="-90" />
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter Property="Width" Value="Auto" />
+                                <Setter Property="Height" Value="8" />
+                                <Setter TargetName="Thumb" Property="Tag" Value="Horizontal" />
+                                <Setter TargetName="PageDown" Property="Command" Value="ScrollBar.PageLeftCommand" />
+                                <Setter TargetName="PageUp" Property="Command" Value="ScrollBar.PageRightCommand" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
     <Grid>
 
         <Grid.RowDefinitions>
             <RowDefinition Height="25"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="60"/>
+            <RowDefinition Height="80"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="155"/>
+            <ColumnDefinition Width="188"/>
         </Grid.ColumnDefinitions>
 
         <Menu Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Background="{x:Null}">
@@ -33,18 +115,43 @@
         </Menu>
 
 
-        <TabControl TabStripPlacement="Left" Margin="0, 0, 0, 10" Grid.Row="1" BorderBrush="#FFC1C1C1">
-            <TabItem Header="Apps" BorderBrush="{x:Null}" Padding="16" Background="{x:Null}">
+        <TabControl x:Name="taps" TabStripPlacement="Left" Margin="0, 0, 0, 10" Grid.Row="1" BorderBrush="{x:Null}" Foreground="White" Background="#222831">
+            <TabControl.Resources>
+                <Style TargetType="TabItem">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="TabItem">
+                                <Border Name="Border" BorderThickness="0,0,0,0" Padding="5" BorderBrush="Gainsboro" CornerRadius="11,11,11,11" Margin="10,5">
+                                    <ContentPresenter x:Name="ContentSite"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Center"
+                                        ContentSource="Header"
+                                        Margin="10,2"/>
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter TargetName="Border" Property="Background" Value="#D21312" />
+                                    </Trigger>
+                                    <Trigger Property="IsSelected" Value="False">
+                                        <Setter TargetName="Border" Property="Background" Value="#31363F" />
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </TabControl.Resources>
+            <TabItem Header="Apps" x:Name="apps" BorderBrush="{x:Null}" Padding="16" Background="{x:Null}" Foreground="White">
                 <TabItem.Content>
-                    <ListView x:Name="list" Margin="5" BorderBrush="{x:Null}">
-                        <CheckBox x:Name="selectall" Content="Select all"/>
+                    <ListView ScrollViewer.VerticalScrollBarVisibility="Auto" x:Name="list" BorderBrush="{x:Null}" Background="#222831">
+                        <CheckBox x:Name="selectall" Content="Select all" Foreground="White" BorderBrush="{x:Null}"/>
                     </ListView>
                 </TabItem.Content>
             </TabItem>
 
-            <TabItem Header="Tweeks" Padding="16" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="Black">
+            <TabItem Header="Tweeks" x:Name="tweeks" Padding="16" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="White">
                 <TabItem.Content>
-					<ListView x:Name="tweekslist" Margin="5" BorderBrush="{x:Null}">
+					<ListView x:Name="tweekslist" Margin="5" BorderBrush="{x:Null}" Background="#222831">
 					</ListView>
                 </TabItem.Content>
             </TabItem>
@@ -52,24 +159,25 @@
 
 
         <Grid Grid.Row="2">
-		<TextBlock Cursor="Pen" x:Name="quotes" Margin="10" TextWrapping="Wrap" Text="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magni commodi repellat similique velit harum. Odit ipsum aliquam laborum quisquam suscipit, dolore non blanditiis ut! Ut, quasi! Autem animi ad eaque."/>
+		<TextBlock Cursor="Pen" x:Name="quotes"  HorizontalAlignment="Left" VerticalAlignment="Center" Padding="16" TextWrapping="Wrap" Text="المجد هو أن تنهض بعد كل مرة تسقط فيها والمجد لا يكون في عدم السقوط" Foreground="WhiteSmoke"/>
         </Grid>
 
 
         <Grid Grid.Row="4" Grid.Column="3">
-            <Button x:Name="installbtn" Content="Install" Width="100" Height="40" BorderBrush="{x:Null}"  Background="#FF2578FF" Foreground="White"/>
+			<Button x:Name="installbtn" VerticalAlignment="Top" Content="Install" Width="100" Height="40" BorderBrush="{x:Null}"  Background="#FF204E" Foreground="White"/>
+			<Button x:Name="applyBtn"  VerticalAlignment="Top" Content="Apply" Visibility="Hidden" Width="100" Height="40" BorderBrush="{x:Null}"  Background="#FF204E" Foreground="White"/>
         </Grid>
 
         <Grid Grid.Row="1" Grid.Column="1" Margin="15">
 			<StackPanel Orientation="Vertical">
-				<TextBlock x:Name="Discription" Text="" TextWrapping="Wrap"/>
-				<TextBlock x:Name="itemLink" Visibility="Hidden"  Text="Offical website" Cursor="Hand"  Margin="5" Foreground="#FF003EFF"/>
+                <TextBlock x:Name="Discription" Text="" TextWrapping="Wrap" Foreground="WhiteSmoke"/>
+                <TextBlock x:Name="itemLink" Visibility="Hidden"  Text="Offical website" Cursor="Hand"  Margin="5" Foreground="#FF204E"/>
 			</StackPanel>
         </Grid>
 
 
     </Grid>
-
+    
 
 
 </Window>
@@ -88,18 +196,58 @@ function Import-Xaml {
 $Window = Import-Xaml 
 #endregion
 
+
+
 #region Controls
 $selectall = $Window.FindName("selectall")
+
+#taps
+$taps = $Window.FindName('taps')
 $list = $Window.FindName("list")
+$tweekslist = $Window.FindName('tweekslist')
+$tweeksTap = $Window.FindName('tweeks')
+$appsTap = $Window.FindName('apps')
+#endtaps
+
 $quotes = $Window.FindName("quotes")
+
 $Discription = $Window.FindName("Discription")
+
+#Buttons
 $installbtn = $Window.FindName('installbtn')
 $aboutBtn = $Window.FindName('aboutBtn')
+$applyBtn = $Window.FindName('applyBtn')
 $itemLink = $Window.FindName('itemLink')
+#EndButtons
+
 $myToolTip = New-Object System.Windows.Controls.ToolTip
 $myToolTip.Content = "Right Clcik to copy the quote"
 $quotes.ToolTip = $myToolTip
+
+
+
+
+
 #endregion
+
+
+$taps.add_SelectionChanged({
+
+	if ($tweeksTap.IsSelected)
+	{
+		$installbtn.Visibility = 'Hidden'
+		$applyBtn.Visibility = 'Visible'
+	}
+   
+    if ($appsTap.IsSelected)
+	{
+		$applyBtn.Visibility = 'Hidden'
+		$installbtn.Visibility = 'Visible'
+	}
+    
+})
+
+./tweeks.ps1
 
 
 #Start Backend
@@ -130,6 +278,7 @@ foreach ($item in Apps)
 {
 	$checkbox = New-Object System.Windows.Controls.CheckBox
 	$list.Items.Add($checkbox)
+	$checkbox.Foreground = "white"
 	$checkbox.Content = $item.name
 
 	if($item.check -eq "true")
