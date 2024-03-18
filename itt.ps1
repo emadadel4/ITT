@@ -249,6 +249,7 @@ $quotes.ToolTip = $myToolTip
 #endregion
 
 
+#region Taps event
 $taps.add_SelectionChanged({
 
 	if ($tweeksTap.IsSelected)
@@ -264,10 +265,16 @@ $taps.add_SelectionChanged({
 	}
     
 })
+#endregion
 
+
+#region load tweeks listview
+#offline
 #./tweeks.ps1
-Invoke-RestMethod https://raw.githubusercontent.com/emadadel4/ITT/main/tweeks.ps1 | Invoke-Expression
 
+#online
+Invoke-RestMethod https://raw.githubusercontent.com/emadadel4/ITT/main/tweeks.ps1 | Invoke-Expression
+#endregion
 
 
 #Start Backend
@@ -293,7 +300,7 @@ function Quotes {
     return $randomQuotes   
 }
 
-#region Generate names from json file
+#region Generate items from json file
 foreach ($item in Apps)
 {
 	$checkbox = New-Object System.Windows.Controls.CheckBox
