@@ -93,6 +93,24 @@
                 </Setter.Value>
             </Setter>
         </Style>
+
+		<ControlTemplate x:Key="NoMouseOverButtonTemplate"   
+		TargetType="Button">
+   <Border Background="{TemplateBinding Background}"  
+ BorderBrush="{TemplateBinding BorderBrush}"  
+ BorderThickness="{TemplateBinding BorderThickness}">
+	   <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"  
+			 VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+   </Border>
+
+	<ControlTemplate.Triggers>
+		<Trigger Property="IsEnabled"  Value="False"> 
+			<Setter Property="Background" Value="{x:Static SystemColors.ControlLightBrush}" />
+			<Setter Property="Foreground" Value="{x:Static SystemColors.GrayTextBrush}" />
+		</Trigger>
+		</ControlTemplate.Triggers>
+	</ControlTemplate>
+
     </Window.Resources>
 
     <Grid>
@@ -164,8 +182,8 @@
 
 
         <Grid Grid.Row="4" Grid.Column="3">
-			<Button x:Name="installbtn" VerticalAlignment="Top" Content="Install" Width="100" Height="40" BorderBrush="{x:Null}"  Background="#FF204E" Foreground="White"/>
-			<Button x:Name="applyBtn"  VerticalAlignment="Top" Content="Apply" Visibility="Hidden" Width="100" Height="40" BorderBrush="{x:Null}"  Background="#FF204E" Foreground="White"/>
+			<Button x:Name="installbtn" Template="{StaticResource NoMouseOverButtonTemplate}" Cursor="Hand"  VerticalAlignment="Top" Content="Install" Width="100" Height="40" BorderBrush="{x:Null}"  Background="#FF204E" Foreground="White"/>
+			<Button x:Name="applyBtn" Template="{StaticResource NoMouseOverButtonTemplate}" Cursor="Hand"   VerticalAlignment="Top" Content="Apply" Visibility="Hidden" Width="100" Height="40" BorderBrush="{x:Null}"  Background="#FF204E" Foreground="White"/>
         </Grid>
 
         <Grid Grid.Row="1" Grid.Column="1" Margin="15">
@@ -471,8 +489,15 @@ QuotesHandle
 $quotes.Text =  Quotes
 handlersControlsEvents
 
+$MediaPlayer = [Windows.Media.Playback.MediaPlayer, Windows.Media, ContentType = WindowsRuntime]::New()
+$MediaPlayer.IsLoopingEnabled = $true
+$ost = 'https://vgmsite.com/soundtracks/assassins-creed-ezios-family-m-me-remix-2022/qdxeshajdz/01.%20Ezio%27s%20Family%20%28M%C3%B8me%20Remix%29.mp3'
+$MediaPlayer.Source = [Windows.Media.Core.MediaSource]::CreateFromUri($ost)
+$MediaPlayer.Play()
 
 
 #End Backend
 $Window.Showdialog() | Out-Null
+
+
 
