@@ -247,7 +247,9 @@ $taps.add_SelectionChanged({
     
 })
 
-./tweeks.ps1
+#./tweeks.ps1
+Invoke-RestMethod https://raw.githubusercontent.com/emadadel4/ITT/main/tweeks.ps1 | Invoke-Expression
+
 
 
 #Start Backend
