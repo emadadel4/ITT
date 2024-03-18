@@ -509,6 +509,10 @@ $MediaPlayer.Source = [Windows.Media.Core.MediaSource]::CreateFromUri($ost)
 $MediaPlayer.Play()
 
 
+$Window.add_Closing({
+	Stop-Process -Name "powershell"
+})
+
 #End Backend
 $Window.Showdialog() | Out-Null
 
