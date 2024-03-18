@@ -11,7 +11,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     x:Name="Window" Title="About | ITT" WindowStartupLocation = "CenterScreen" 
 	Background="#222831"
-    Height="266" Width="500" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Topmost="True" WindowStyle="ToolWindow" Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/icon.ico">
+    Height="266" Width="500" Topmost="True" WindowStyle="ToolWindow" Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/icon.ico">
 
     <Grid>
 
