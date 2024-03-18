@@ -357,16 +357,12 @@ function handlersControlsEvents {
 
 	#region About click
 	$aboutBtn.add_Click({
-		#[System.Windows.MessageBox]::Show('Development by Emad Adel', 'ITTS', [System.Windows.Forms.MessageBoxButtons]::OK)
 
-		
-		./about.ps1
+		#offline
+		#./about.ps1
 
-		#Start-Process -FilePath "./about.ps1"
-
-		#Start-Process PowerShell  ./about.ps1
-
-
+		#online
+		Invoke-RestMethod https://raw.githubusercontent.com/emadadel4/ITT/main/about.ps1 | Invoke-Expression
 	})
 	#endregion
 
