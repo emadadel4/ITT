@@ -127,7 +127,7 @@
         </Grid.ColumnDefinitions>
 
         <Menu Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Background="{x:Null}">
-            <MenuItem x:Name="aboutBtn" Header="About">
+			<MenuItem x:Name="aboutBtn" Header="About" Foreground="White">
 
             </MenuItem>
         </Menu>
@@ -357,7 +357,16 @@ function handlersControlsEvents {
 
 	#region About click
 	$aboutBtn.add_Click({
-		[System.Windows.MessageBox]::Show('Development by Emad Adel', 'ITTS', [System.Windows.Forms.MessageBoxButtons]::OK)
+		#[System.Windows.MessageBox]::Show('Development by Emad Adel', 'ITTS', [System.Windows.Forms.MessageBoxButtons]::OK)
+
+		
+		./about.ps1
+
+		#Start-Process -FilePath "./about.ps1"
+
+		#Start-Process PowerShell  ./about.ps1
+
+
 	})
 	#endregion
 
@@ -491,6 +500,7 @@ handlersControlsEvents
 
 $MediaPlayer = [Windows.Media.Playback.MediaPlayer, Windows.Media, ContentType = WindowsRuntime]::New()
 $MediaPlayer.IsLoopingEnabled = $true
+$MediaPlayer.Volume = 0.6
 $ost = 'https://vgmsite.com/soundtracks/assassins-creed-ezios-family-m-me-remix-2022/qdxeshajdz/01.%20Ezio%27s%20Family%20%28M%C3%B8me%20Remix%29.mp3'
 $MediaPlayer.Source = [Windows.Media.Core.MediaSource]::CreateFromUri($ost)
 $MediaPlayer.Play()
