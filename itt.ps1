@@ -126,10 +126,8 @@
             <ColumnDefinition Width="188"/>
         </Grid.ColumnDefinitions>
 
-        <Menu Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Background="{x:Null}">
-			<MenuItem x:Name="aboutBtn" Header="About" Foreground="White">
-
-            </MenuItem>
+        <Menu Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Background="{x:Null}" VerticalAlignment="Center">
+			<MenuItem x:Name="aboutBtn" Header="About" Foreground="White"/>
         </Menu>
 
 
