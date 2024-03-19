@@ -1,6 +1,5 @@
 [
     {
-        "id": "1",
         "name": "Chrome",
         "discription": "Chrome is a fast, simple, and secure web browser, built for the modern web.",
         "url": "chrome",
@@ -8,10 +7,8 @@
         "check": "true",
         "website":"https://www.google.com/chrome",
         "category":"app"
-
     },
     {
-        "id": "2",
         "name": "Firefox",
         "discription": "Mozilla Firefox, or simply Firefox, is a free and open-source web browser developed by the Mozilla Foundation.",
         "url": "firefox",
@@ -19,10 +16,8 @@
         "check": "true",
         "website":"https://www.mozilla.org/en-US/firefox/new/",
         "category":"app"
-
     },
     {
-        "id": "3",
         "name": "Edge",
         "discription": "Microsoft Edge is Chromium based and is a faster, more secure, and more modern browsing experience than Internet Explorer and Microsoft Edge Legacy. For more information, see Microsoft Edge features for work. Additionally, Microsoft Edge will soon be the only Microsoft browser that supports Microsoft 365 web apps and services.",
         "url": "edge",
@@ -30,58 +25,47 @@
         "check": "false",
         "website":"https://www.microsoft.com/edge",
         "category":"app"
-
     },
     {
-        "id": "4",
         "name": "7zip",
         "discription": "7-Zip is a free and open-source file archiver1234. It is a utility used to place groups of files within compressed containers known as archives",
         "url": "7zip",
         "silent": "true",
-
         "check": "false",
         "website":"https://7-zip.org/",
         "category":"app"
-
     },
     {
-        "id": "5",
         "name": "WinRAR",
         "discription": "WinRAR is a powerful compression, archiving and archive managing software tool1234. It can create and view archives in RAR or ZIP file formats, and unpack numerous archive file formats",
         "url": "winrar",
         "silent": "true",
-
         "check": "true",
         "website":"https://www.rarlab.com",
         "category":"app"
 
     },
     {
-        "id": "6",
         "name": "VLC",
         "discription": "VLC media player is a free and open-source, portable, cross-platform media player software and streaming media server",
         "url": "vlc",
         "silent": "true",
-
         "check": "true",
         "website":"https://www.videolan.org/vlc/",
         "category":"app"
 
     },
     {
-        "id": "7",
         "name": "K-Lite Codecs",
         "discription": "K-Lite Codec Pack Audio and video codec packThe K-Lite Codec Pack is a collection of audio and video codecs for Microsoft Windows DirectShow that enables an operating system and its software to play various audio and video formats",
         "url": "klitecodecs",
         "silent": "true",
-
         "check": "false",
         "website":"https://www.codecguide.com/download_kl.htm",
         "category":"app"
 
     },
     {
-        "id": "8",
         "name": "Foxit Reader",
         "discription": "Foxit PDF Reader, formerly known as Foxit Reader, is a multilingual freemium PDF tool that can create, view, edit, digitally sign, and print PDF files",
         "url": "foxit",
@@ -93,7 +77,6 @@
 
     },
     {
-        "id": "8",
         "name": "LibreOffice",
         "discription": "LibreOffice is a free and open-source office productivity software suite12345. It is a project of The Document Foundation, and was forked in 2010 from OpenOffice.org, an open-sourced version of the earlier StarOffice",
         "url": "libreoffice",
@@ -105,28 +88,33 @@
 
     },
     {
-        "id": "8",
         "name": "SumatraPDF",
         "discription": "Sumatra PDF is a free and open-source document viewer that supports many document formats including: Portable Document Format (PDF), Microsoft Compiled HTML Help, DjVu, EPUB, FictionBook, MOBI, PRC etc",
         "url": "sumatrapdf",
         "silent": "true",
-
         "check": "true",
         "website":"https://duckduckgo.com/?q=vlc",
         "category":"app"
 
     },
     {
-        "id": "8",
         "name": "Malwarebytes",
         "discription": "Malwarebytes is anti-malware software for Microsoft Windows, macOS, ChromeOS, Android, and iOS that finds and removes malware. Made by Malwarebytes Corporation, it was first released in January 2006",
         "url": "malwarebytes",
         "silent": "true",
-
         "check": "false",
         "website":"none",
         "category":"app"
 
+    },
+    {
+        "name": "USB Disk Security",
+        "discription": "USB Disk Security is free for use",
+        "url": "http://www.zbshareware.com/downloads/setup/USBGuardSetup6.9.exe",
+        "silent": "false",
+        "check": "false",
+        "website":"http://www.zbshareware.com/downloads",
+        "category":"app"
     },
     {
          "id": "8",
