@@ -4,7 +4,7 @@
         "discription": "Chrome is a fast, simple, and secure web browser, built for the modern web.",
         "url": "chrome",
         "silent": "true",
-        "check": "true",
+        "check": "false",
         "website":"https://www.google.com/chrome",
         "category":"app"
     },
@@ -13,7 +13,7 @@
         "discription": "Mozilla Firefox, or simply Firefox, is a free and open-source web browser developed by the Mozilla Foundation.",
         "url": "firefox",
         "silent": "true",
-        "check": "true",
+        "check": "false",
         "website":"https://www.mozilla.org/en-US/firefox/new/",
         "category":"app"
     },
@@ -40,7 +40,7 @@
         "discription": "WinRAR is a powerful compression, archiving and archive managing software tool1234. It can create and view archives in RAR or ZIP file formats, and unpack numerous archive file formats",
         "url": "winrar",
         "silent": "true",
-        "check": "true",
+        "check": "false",
         "website":"https://www.rarlab.com",
         "category":"app"
 
@@ -50,7 +50,7 @@
         "discription": "VLC media player is a free and open-source, portable, cross-platform media player software and streaming media server",
         "url": "vlc",
         "silent": "true",
-        "check": "true",
+        "check": "false",
         "website":"https://www.videolan.org/vlc/",
         "category":"app"
 
@@ -92,7 +92,7 @@
         "discription": "Sumatra PDF is a free and open-source document viewer that supports many document formats including: Portable Document Format (PDF), Microsoft Compiled HTML Help, DjVu, EPUB, FictionBook, MOBI, PRC etc",
         "url": "sumatrapdf",
         "silent": "true",
-        "check": "true",
+        "check": "false",
         "website":"https://duckduckgo.com/?q=vlc",
         "category":"app"
 
@@ -197,7 +197,7 @@
         "discription": "Cross-platform BitTorrent client",
         "url": "qbittorrent",
         "silent": "true",
-        "check": "true",
+        "check": "false",
         "website":"none",
         "category":"app"
 

@@ -1,5 +1,5 @@
 # Add required assemblies
-if (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) { Start-Process powershell.exe "-NoProfile -ExecutionPolicy Bypass -File `"$PSCommandPath`"" -Verb RunAs;}
+#if (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) { Start-Process powershell.exe "-NoProfile -ExecutionPolicy Bypass -File `"$PSCommandPath`"" -Verb RunAs;}
 
 [System.Reflection.Assembly]::LoadWithPartialName('System.Windows.Forms')  	 | out-null
 [System.Reflection.Assembly]::LoadWithPartialName('presentationframework') 	 | out-null
@@ -281,12 +281,12 @@ Invoke-RestMethod https://raw.githubusercontent.com/emadadel4/ITT/main/tweeks.ps
 function Apps {
 
 	#Online
-	$url = "https://raw.githubusercontent.com/emadadel4/ITT/main/js/software.json"
-	$result = Invoke-WebRequest -Uri $url -UseBasicParsing
-	$json = $result.Content | ConvertFrom-Json 
+	#$url = "https://raw.githubusercontent.com/emadadel4/ITT/main/js/software.json"
+	#$result = Invoke-WebRequest -Uri $url -UseBasicParsing
+	#$json = $result.Content | ConvertFrom-Json 
 
 	#Offline
-	#$json = Get-Content -Path "./js/software.json" | ConvertFrom-Json
+	$json = Get-Content -Path "./js/software.json" | ConvertFrom-Json
     return $json   
 }
 
@@ -392,6 +392,7 @@ function handlersControlsEvents {
 	$installbtn.add_Click({
 
 		$Link = "https://ninite.com/"
+		$url = ""
 
 		foreach ($item in $list.Items)
 		{
@@ -401,7 +402,8 @@ function handlersControlsEvents {
 				{
 					if($item.Content -eq $data.name)
 					{
-						$Link = $Link + $data.url + "-"
+						#$Link = $Link + $data.url + "-"
+						$url = $data.url
 					}
 				}
 			}
@@ -409,19 +411,23 @@ function handlersControlsEvents {
 
 		if ([System.Windows.MessageBox]::Show('Do you want install selected programes', 'ITT', [System.Windows.Forms.MessageBoxButtons]::YesNo) -eq 'Yes')
 		{
-			$Link = $Link + "/ninite.exe"
-			$Destination = "$env:temp/Install.exe"
-			
-			if (Test-Path $Destination)
-			{
-				Remove-Item -Verbose -Force $Destination
-			}
 
-			Write-Host "Ninite Link: $($Link)"
-			$Discription.Text = "Starting Download"
-			Invoke-WebRequest $Link -OutFile $Destination
-			$Discription.Text = "Click yes to any popup window"
-			Start-Process -Filepath $Destination
+
+			Start-Job -ScriptBlock {Write-Host "emad"}
+
+			#$Link = $Link + "/ninite.exe"
+			#$Destination = "$env:temp/Install.exe"
+			
+			#if (Test-Path $Destination)
+			#{
+				#Remove-Item -Verbose -Force $Destination
+			#}
+
+			#Write-Host "Ninite Link: $($Link)"
+			#$Discription.Text = "Starting Download"
+			#Invoke-WebRequest $Link -OutFile $Destination
+			#$Discription.Text = "Click yes to any popup window"
+			#Start-Process -Filepath $Destination
 		}
 
 	})
