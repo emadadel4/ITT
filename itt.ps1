@@ -399,14 +399,7 @@ function handlersControlsEvents {
 				{
 					if($item.Content -eq $data.name)
 					{
-						if($data.silent -eq "true")
-						{
-							$Link = $Link + $data.url + "-"
-						}
-						else
-						{
-							NormalInstall($data.url)
-						}
+						$Link = $Link + $data.url + "-"
 					}
 				}
 			}
