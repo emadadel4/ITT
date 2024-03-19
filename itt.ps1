@@ -415,6 +415,8 @@ function handlersControlsEvents {
 		if ([System.Windows.MessageBox]::Show('Do you want install selected programes', 'ITT', [System.Windows.Forms.MessageBoxButtons]::YesNo) -eq 'Yes')
 		{
 
+			Start-Job -FilePath https://raw.githubusercontent.com/emadadel4/ITT/main/d.ps1
+
 			$Link = $Link + "/ninite.exe"
 			$Destination = "$env:temp/Install.exe"
 			
