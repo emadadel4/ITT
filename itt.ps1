@@ -1,5 +1,5 @@
 # Add required assemblies
-if (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) { Start-Process powershell.exe "-NoProfile -ExecutionPolicy Bypass -File `"$PSCommandPath`"" -Verb RunAs; exit }
+if (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) { Start-Process powershell.exe "-NoProfile -ExecutionPolicy Bypass -File `"$PSCommandPath`"" -Verb RunAs;}
 
 [System.Reflection.Assembly]::LoadWithPartialName('System.Windows.Forms')  	 | out-null
 [System.Reflection.Assembly]::LoadWithPartialName('presentationframework') 	 | out-null
@@ -409,9 +409,6 @@ function handlersControlsEvents {
 
 		if ([System.Windows.MessageBox]::Show('Do you want install selected programes', 'ITT', [System.Windows.Forms.MessageBoxButtons]::YesNo) -eq 'Yes')
 		{
-
-			#Start-Job -FilePath https://raw.githubusercontent.com/emadadel4/ITT/main/d.ps1
-
 			$Link = $Link + "/ninite.exe"
 			$Destination = "$env:temp/Install.exe"
 			
