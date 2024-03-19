@@ -1,4 +1,4 @@
-$FileUri = ""
+$FileUri = "https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user"
 $Destination = "$env:temp/itt.exe"
 
 $bitsJobObj = Start-BitsTransfer $FileUri -Destination $Destination
@@ -19,7 +19,5 @@ switch ($bitsJobObj.JobState) {
 
 $exeArgs = '/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath'
 
-
 #$Discription.Text = "Starting Installing..."
 Start-Process -Wait $Destination -ArgumentList $exeArgs
-

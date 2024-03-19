@@ -1,5 +1,14 @@
 [
     {
+        "name": "USB Disk Security",
+        "discription": "USB Disk Security is free for use.",
+        "url": "http://www.zbshareware.com/downloads/setup/USBGuardSetup6.9.exe",
+        "silent": "false",
+        "check": "false",
+        "website":"https://www.google.com/chrome",
+        "category":"app"
+    },
+    {
         "name": "Chrome",
         "discription": "Chrome is a fast, simple, and secure web browser, built for the modern web.",
         "url": "chrome",

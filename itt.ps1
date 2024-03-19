@@ -409,25 +409,40 @@ function handlersControlsEvents {
 			}
 		}
 
+		$functions = {
+
+			function FOO
+			{ 
+				$FileUri = "https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user"
+				$Destination = "$env:temp/itt.exe"
+
+				$bitsJobObj = Start-BitsTransfer $FileUri -Destination $Destination
+				$Discription.Text = "Starting Download"
+
+
+				switch ($bitsJobObj.JobState) {
+
+					'Transferred' {
+						Complete-BitsTransfer -BitsJob $bitsJobObj
+						break
+					}
+
+					'Error' {
+						throw 'Error downloading'
+					}
+				}
+
+				$exeArgs = '/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath'
+
+				#$Discription.Text = "Starting Installing..."
+				Start-Process -Wait $Destination -ArgumentList $exeArgs
+
+		 	}
+		}
+
 		if ([System.Windows.MessageBox]::Show('Do you want install selected programes', 'ITT', [System.Windows.Forms.MessageBoxButtons]::YesNo) -eq 'Yes')
 		{
-
-
-			Start-Job -ScriptBlock {Write-Host "emad"}
-
-			#$Link = $Link + "/ninite.exe"
-			#$Destination = "$env:temp/Install.exe"
-			
-			#if (Test-Path $Destination)
-			#{
-				#Remove-Item -Verbose -Force $Destination
-			#}
-
-			#Write-Host "Ninite Link: $($Link)"
-			#$Discription.Text = "Starting Download"
-			#Invoke-WebRequest $Link -OutFile $Destination
-			#$Discription.Text = "Click yes to any popup window"
-			#Start-Process -Filepath $Destination
+			Start-Job -InitializationScript $functions -ScriptBlock {FOO}
 		}
 
 	})
@@ -505,10 +520,9 @@ handlersControlsEvents
 
 $MediaPlayer = [Windows.Media.Playback.MediaPlayer, Windows.Media, ContentType = WindowsRuntime]::New()
 $MediaPlayer.IsLoopingEnabled = $true
-$MediaPlayer.Volume = 0.6
 $ost = 'https://vgmsite.com/soundtracks/assassins-creed-ezios-family-m-me-remix-2022/qdxeshajdz/01.%20Ezio%27s%20Family%20%28M%C3%B8me%20Remix%29.mp3'
 $MediaPlayer.Source = [Windows.Media.Core.MediaSource]::CreateFromUri($ost)
-$MediaPlayer.Play()
+#$MediaPlayer.Play()
 
 
 $Window.add_Closing({
