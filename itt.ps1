@@ -1,12 +1,4 @@
 # Add required assemblies
-
-if (-NOT ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator"))  
-{  
-  $arguments = "& '" +$myinvocation.mycommand.definition + "'"
-  Start-Process powershell -Verb runAs -ArgumentList $arguments
-  Break
-}
-
 [System.Reflection.Assembly]::LoadWithPartialName('System.Windows.Forms')  	 | out-null
 [System.Reflection.Assembly]::LoadWithPartialName('presentationframework') 	 | out-null
 [System.Reflection.Assembly]::LoadWithPartialName('System.Drawing') 		 | out-null
