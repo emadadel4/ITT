@@ -108,15 +108,6 @@
 
     },
     {
-        "name": "USB Disk Security",
-        "discription": "USB Disk Security is free for use",
-        "url": "http://www.zbshareware.com/downloads/setup/USBGuardSetup6.9.exe",
-        "silent": "false",
-        "check": "false",
-        "website":"http://www.zbshareware.com/downloads",
-        "category":"app"
-    },
-    {
          "id": "8",
         "name": "Avast Antivirus",
         "discription": "Avast Antivirus is a family of cross-platform internet security applications developed by Avast for Microsoft Windows, macOS, Android, and iOS. Avast offers free and paid products that provide computer security",
@@ -218,17 +209,6 @@
         "url": "discord",
         "silent": "true",
         "check": "false",
-        "website":"none",
-        "category":"app"
-
-    },
-    {
-        "id": "8",
-        "name": "Neat Download",
-        "discription": "Neat Download Manager is a free download manager and accelerator for macOS/Windows that downloads files using a dynamic segmentation algorithm. It supports HTTP, HTTPS and FTP protocols,",
-        "url": "https://www.neatdownloadmanager.com/file/NeatDM_setup.exe",
-        "silent": "false",
-        "check": "true",
         "website":"none",
         "category":"app"
 
