@@ -1,14 +1,25 @@
-# Define the URL and the destination file path
-$url =  "http://www.zbshareware.com/downloads/setup/USBGuardSetup6.9.exe" 
-$dest = "$env:temp/itt.exe"
+$FileUri = ""
+$Destination = "$env:temp/itt.exe"
 
-# Start a job to download the file
-$job = Start-Job -ScriptBlock {
-    param($url, $dest)
-    Invoke-WebRequest -Uri $url -OutFile $dest
-} -ArgumentList $url, $dest
+$bitsJobObj = Start-BitsTransfer $FileUri -Destination $Destination
+$Discription.Text = "Starting Download"
 
-# Wait for the job to complete
-Wait-Job $job
 
-Start-Process -FilePath "$env:temp/itt.exe" -ArgumentList $dest
+switch ($bitsJobObj.JobState) {
+
+    'Transferred' {
+        Complete-BitsTransfer -BitsJob $bitsJobObj
+        break
+    }
+
+    'Error' {
+        throw 'Error downloading'
+    }
+}
+
+$exeArgs = '/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath'
+
+
+#$Discription.Text = "Starting Installing..."
+Start-Process -Wait $Destination -ArgumentList $exeArgs
+
