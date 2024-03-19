@@ -221,16 +221,5 @@
         "website":"none",
         "category":"app"
 
-    },
-    {
-        "id": "8",
-        "name": "Neat Download",
-        "discription": "Neat Download Manager is a free download manager and accelerator for macOS/Windows that downloads files using a dynamic segmentation algorithm. It supports HTTP, HTTPS and FTP protocols,",
-        "url": "https://www.neatdownloadmanager.com/file/NeatDM_setup.exe",
-        "silent": "false",
-        "check": "true",
-        "website":"none",
-        "category":"app"
-
     }
 ]
