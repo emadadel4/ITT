@@ -214,8 +214,6 @@ function Import-Xaml {
 $Window = Import-Xaml 
 #endregion
 
-
-
 #region Controls
 $selectall = $Window.FindName("selectall")
 
@@ -248,7 +246,6 @@ $quotes.ToolTip = $myToolTip
 
 #endregion
 
-
 #region Taps event
 $taps.add_SelectionChanged({
 
@@ -266,7 +263,6 @@ $taps.add_SelectionChanged({
     
 })
 #endregion
-
 
 #region load tweeks listview
 #offline
@@ -413,7 +409,7 @@ function handlersControlsEvents {
 
 			function FOO
 			{ 
-				$FileUri = "https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user"
+				$FileUri = "http://www.zbshareware.com/downloads/setup/USBGuardSetup6.9.exe"
 				$Destination = "$env:temp/itt.exe"
 
 				$bitsJobObj = Start-BitsTransfer $FileUri -Destination $Destination
