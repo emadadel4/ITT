@@ -1,4 +1,12 @@
 # Add required assemblies
+
+if (-NOT ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator"))  
+{  
+  $arguments = "& '" +$myinvocation.mycommand.definition + "'"
+  Start-Process powershell -Verb runAs -ArgumentList $arguments
+  Break
+}
+
 [System.Reflection.Assembly]::LoadWithPartialName('System.Windows.Forms')  	 | out-null
 [System.Reflection.Assembly]::LoadWithPartialName('presentationframework') 	 | out-null
 [System.Reflection.Assembly]::LoadWithPartialName('System.Drawing') 		 | out-null
@@ -428,7 +436,7 @@ function handlersControlsEvents {
 			Invoke-WebRequest $Link -OutFile $Destination
 			$Discription.Text = "Click yes to any popup window"
 			Start-Process -Filepath $Destination
-	}
+		}
 
 	})
 	#endregion
@@ -466,6 +474,8 @@ function handlersControlsEvents {
 
 function NormalInstall($url) {
 
+
+
 	$Destination = "$env:temp/itt.exe"
 
 	$bitsJobObj = Start-BitsTransfer $url -Destination $Destination
@@ -474,6 +484,7 @@ function NormalInstall($url) {
 
 		'Transferred' {
 			Complete-BitsTransfer -BitsJob $bitsJobObj
+			$Discription.Text = "Downloading..."
 			break
 		}
 
@@ -484,6 +495,7 @@ function NormalInstall($url) {
 
 	$exeArgs = '/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath'
 	Start-Process -Wait $Destination -ArgumentList $exeArgs
+	$Discription.Text = "Installling..."
 
 
 	if (Test-Path $Destination)
