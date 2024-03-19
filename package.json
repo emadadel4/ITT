@@ -1,5 +1,6 @@
 {
   "scripts": {
-    "start": "powershell.exe -Command ./itt.ps1"
+    "debug": "powershell.exe -Command ./itt.ps1",
+    "online": "powershell.exe -Command  irm https://raw.githubusercontent.com/emadadel4/ITT/debug/itt.ps1 | iex"
   }
 }
