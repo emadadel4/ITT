@@ -188,7 +188,7 @@
 
         <Grid Grid.Row="1" Grid.Column="1" Margin="15">
 			<StackPanel Orientation="Vertical">
-                <TextBlock x:Name="Discription" Text="" TextWrapping="Wrap" Foreground="WhiteSmoke"/>
+                <TextBlock x:Name="Discription" Text="EE" TextWrapping="Wrap" Foreground="WhiteSmoke"/>
                 <TextBlock x:Name="itemLink" Visibility="Hidden"  Text="Offical website" Cursor="Hand"  Margin="5" Foreground="#FF204E"/>
 			</StackPanel>
         </Grid>
@@ -201,52 +201,64 @@
 </Window>
 "@ 
 
-#endregion
+$Window = Import-Xaml 
 
-#region Load Xaml
 function Import-Xaml {
 	$manager = New-Object System.Xml.XmlNamespaceManager -ArgumentList $xaml.NameTable
 	$manager.AddNamespace("x", "http://schemas.microsoft.com/winfx/2006/xaml");
 	$xamlReader = New-Object System.Xml.XmlNodeReader $xaml
 	[Windows.Markup.XamlReader]::Load($xamlReader)
 }
-
-$Window = Import-Xaml 
 #endregion
 
-#region Controls
-$selectall = $Window.FindName("selectall")
+./func.ps1
 
-#taps
-$taps = $Window.FindName('taps')
+#region Loop each item in json file
 $list = $Window.FindName("list")
-$tweekslist = $Window.FindName('tweekslist')
+foreach ($item in Apps)
+{
+    #Create New-Object checkbox from System.Windows.Controls.CheckBox
+	$checkbox = New-Object System.Windows.Controls.CheckBox
+
+    #add checkbox to $list
+	$list.Items.Add($checkbox)
+
+    #change Foreground to white
+	$checkbox.Foreground = "white"
+
+    #name it to item name in $Apps array
+	$checkbox.Content = $item.name
+
+    #if any item has check = true in array then make it checked in listview $list
+	if($item.check -eq "true")
+	{
+		$checkbox.IsChecked = $true
+	}
+}
+
+#Show discription of selected item in $list
+$Discription = $Window.FindName("Discription")
+$list.Add_SelectionChanged({
+		
+    $itemLink.Visibility = "Visible"
+
+    foreach($data in Apps)
+    {
+        if( $list.SelectedItem.Content -eq $data.name)
+        {
+            $Discription.Text = $data.discription
+        }
+    }
+})
+#endregion
+
+
+#region Taps
+$taps = $Window.FindName('taps')
 $tweeksTap = $Window.FindName('tweeks')
 $appsTap = $Window.FindName('apps')
-#endtaps
-
-$quotes = $Window.FindName("quotes")
-
-$Discription = $Window.FindName("Discription")
-
-#Buttons
-$installbtn = $Window.FindName('installbtn')
-$aboutBtn = $Window.FindName('aboutBtn')
 $applyBtn = $Window.FindName('applyBtn')
 $itemLink = $Window.FindName('itemLink')
-#EndButtons
-
-$myToolTip = New-Object System.Windows.Controls.ToolTip
-$myToolTip.Content = "Right Clcik to copy the quote"
-$quotes.ToolTip = $myToolTip
-
-
-
-
-
-#endregion
-
-#region Taps event
 $taps.add_SelectionChanged({
 
 	if ($tweeksTap.IsSelected)
@@ -264,269 +276,31 @@ $taps.add_SelectionChanged({
 })
 #endregion
 
-#region load tweeks listview
-#offline
-#./tweeks.ps1
+#region Install button selected items event
+$installbtn = $Window.FindName('installbtn')
+$installbtn.add_Click({
 
-#online
-Invoke-RestMethod https://raw.githubusercontent.com/emadadel4/ITT/main/tweeks.ps1 | Invoke-Expression
+    #$Link = "https://ninite.com/"
+    #$url = ""
+
+    foreach ($item in $list.Items)
+    {
+        if ($item.IsChecked)
+        {
+            foreach ($data in Apps)
+            {
+                if($item.Content -eq $data.name)
+                {
+                    #$Link = $Link + $data.url + "-"
+                    #$url = $data.url
+                    ([System.Windows.MessageBox]::Show($data.url, $data.url, [System.Windows.Forms.MessageBoxButtons]::OK) -eq 'OK')
+                    
+                }
+            }
+        }
+    }
+})
 #endregion
 
 
-#Start Backend
-function Apps {
-
-	#Online
-	#$url = "https://raw.githubusercontent.com/emadadel4/ITT/main/js/software.json"
-	#$result = Invoke-WebRequest -Uri $url -UseBasicParsing
-	#$json = $result.Content | ConvertFrom-Json 
-
-	#Offline
-	$json = Get-Content -Path "./js/software.json" | ConvertFrom-Json
-    return $json   
-}
-
-function Quotes {
-
-	$url = "https://raw.githubusercontent.com/emadadel4/ITT/main/js/quotes.json"
-	$result = Invoke-WebRequest -Uri $url -UseBasicParsing
-	$quotes = $result.Content | ConvertFrom-Json
-	$Q = $quotes.Q
-	$randomQuotes = Get-Random -InputObject $Q
-    return $randomQuotes   
-}
-
-#region Generate items from json file
-foreach ($item in Apps)
-{
-	$checkbox = New-Object System.Windows.Controls.CheckBox
-	$list.Items.Add($checkbox)
-	$checkbox.Foreground = "white"
-	$checkbox.Content = $item.name
-
-	if($item.check -eq "true")
-	{
-		$checkbox.IsChecked = $true
-	}
-}
-
-#endregion
-
-#region Show tooltip for qoutes 
-function QuotesHandle {
-
-	# Add MouseEnter and MouseLeave event handlers
-	$quotes.Add_MouseEnter({
-		$myToolTip.IsOpen = $true
-	})
-
-	$quotes.Add_MouseLeave({
-		$myToolTip.IsOpen = $false
-	})
-
-	$quotes.add_MouseLeftButtonDown({
-		$quotes.Text =  Quotes
-		$quotes.Text | Set-Clipboard
-
-})
-
-
-$quotes.add_MouseRightButtonDown({
-	$quotes.Text | Set-Clipboard
-})
-
-}
-#endregion
-
-
-function handlersControlsEvents {
-	
-	#region Get item website link from json file
-	$itemLink.add_MouseLeftButtonDown({
-
-		foreach ($item in $list.SelectedItem.Content)
-		{
-			foreach ($data in Apps)
-			{
-				if($item -eq $data.name)
-				{
-					Start-Process ("https://duckduckgo.com/?hps=1&q=%5C" + $data.name)
-				}
-			}
-		}
-	
-	})
-	#endregion
-
-	#region About click
-	$aboutBtn.add_Click({
-
-		#offline
-		#./about.ps1
-
-		#online
-		Invoke-RestMethod https://raw.githubusercontent.com/emadadel4/ITT/main/about.ps1 | Invoke-Expression
-	})
-	#endregion
-
-	#region Show discription of selected item in $list
-	$list.Add_SelectionChanged({
-		
-		$itemLink.Visibility = "Visible"
-
-		foreach($data in Apps)
-		{
-			if( $list.SelectedItem.Content -eq $data.name)
-			{
-				$Discription.Text = $data.discription
-			}
-		}
-	})
-	#endregion
-
-	#region Install selected item 
-	$installbtn.add_Click({
-
-		$Link = "https://ninite.com/"
-		$url = ""
-
-		foreach ($item in $list.Items)
-		{
-			if ($item.IsChecked)
-			{
-				foreach ($data in Apps)
-				{
-					if($item.Content -eq $data.name)
-					{
-						#$Link = $Link + $data.url + "-"
-						$url = $data.url
-					}
-				}
-			}
-		}
-
-		$functions = {
-
-			function FOO
-			{ 
-				$FileUri = "http://www.zbshareware.com/downloads/setup/USBGuardSetup6.9.exe"
-				$Destination = "$env:temp/itt.exe"
-
-				$bitsJobObj = Start-BitsTransfer $FileUri -Destination $Destination
-				$Discription.Text = "Starting Download"
-
-
-				switch ($bitsJobObj.JobState) {
-
-					'Transferred' {
-						Complete-BitsTransfer -BitsJob $bitsJobObj
-						break
-					}
-
-					'Error' {
-						throw 'Error downloading'
-					}
-				}
-
-				$exeArgs = '/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath'
-
-				#$Discription.Text = "Starting Installing..."
-				Start-Process -Wait $Destination -ArgumentList $exeArgs
-
-		 	}
-		}
-
-		if ([System.Windows.MessageBox]::Show('Do you want install selected programes', 'ITT', [System.Windows.Forms.MessageBoxButtons]::YesNo) -eq 'Yes')
-		{
-			Start-Job -InitializationScript $functions -ScriptBlock {FOO}
-		}
-
-	})
-	#endregion
-
-	#region select all in $list
-	$selectall.add_Checked({
-
-		if ($checkbox.IsChecked -eq $false)
-		{
-			# Code to execute when checkbox is unchecked
-			foreach ($item in $list.Items)
-			{
-				$item.IsChecked = $true
-				#$Discription.Text =  $list.Items.Count -1
-			}
-		}
-	})
-	#endregion
-
-	#region Unchecked all checkbox $list
-	$selectall.add_Unchecked({
-
-		if ($checkbox.IsChecked -eq $true)
-		{
-			# Code to execute when checkbox is unchecked
-			foreach ($item in $list.Items)
-			{
-				$item.IsChecked = $false
-			}
-		}
-	})
-	#endregion
-}
-
-
-function NormalInstall($url) {
-
-
-
-	$Destination = "$env:temp/itt.exe"
-
-	$bitsJobObj = Start-BitsTransfer $url -Destination $Destination
-
-	switch ($bitsJobObj.JobState) {
-
-		'Transferred' {
-			Complete-BitsTransfer -BitsJob $bitsJobObj
-			$Discription.Text = "Downloading..."
-			break
-		}
-
-		'Error' {
-			throw 'Error downloading'
-		}
-	}
-
-	$exeArgs = '/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath'
-	Start-Process -Wait $Destination -ArgumentList $exeArgs
-	$Discription.Text = "Installling..."
-
-
-	if (Test-Path $Destination)
-	{
-		Remove-Item -Verbose -Force $Destination
-	}
-
-}
-
-QuotesHandle
-
-
-$quotes.Text =  Quotes
-handlersControlsEvents
-
-$MediaPlayer = [Windows.Media.Playback.MediaPlayer, Windows.Media, ContentType = WindowsRuntime]::New()
-$MediaPlayer.IsLoopingEnabled = $true
-$ost = 'https://vgmsite.com/soundtracks/assassins-creed-ezios-family-m-me-remix-2022/qdxeshajdz/01.%20Ezio%27s%20Family%20%28M%C3%B8me%20Remix%29.mp3'
-$MediaPlayer.Source = [Windows.Media.Core.MediaSource]::CreateFromUri($ost)
-#$MediaPlayer.Play()
-
-
-$Window.add_Closing({
-	Stop-Process -Name "powershell"
-})
-
-#End Backend
 $Window.Showdialog() | Out-Null
-
-
-

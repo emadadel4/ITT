@@ -1,0 +1,31 @@
+#region Controls
+$selectall = $Window.FindName("selectall")
+
+#taps
+$taps = $Window.FindName('taps')
+$list = $Window.FindName("list")
+$tweekslist = $Window.FindName('tweekslist')
+$tweeksTap = $Window.FindName('tweeks')
+$appsTap = $Window.FindName('apps')
+#endtaps
+
+$quotes = $Window.FindName("quotes")
+
+$Discription = $Window.FindName("Discription")
+
+#Buttons
+$installbtn = $Window.FindName('installbtn')
+$aboutBtn = $Window.FindName('aboutBtn')
+$applyBtn = $Window.FindName('applyBtn')
+$itemLink = $Window.FindName('itemLink')
+#EndButtons
+
+$myToolTip = New-Object System.Windows.Controls.ToolTip
+$myToolTip.Content = "Right Clcik to copy the quote"
+$quotes.ToolTip = $myToolTip
+
+
+
+
+
+#endregion
