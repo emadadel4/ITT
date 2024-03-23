@@ -159,7 +159,7 @@ if (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]:
                     </Setter>
                 </Style>
             </TabControl.Resources>
-            <TabItem Header="Apps" x:Name="apps" BorderBrush="{x:Null}" Padding="16" Background="{x:Null}" Foreground="White">
+            <TabItem Header="Install" x:Name="apps" BorderBrush="{x:Null}" Padding="16" Background="{x:Null}" Foreground="White">
                 <TabItem.Content>
                     <ListView ScrollViewer.VerticalScrollBarVisibility="Auto" x:Name="list" BorderBrush="{x:Null}" Background="#222831">
                         <CheckBox x:Name="selectall" Content="Select all" Foreground="White" BorderBrush="{x:Null}"/>
