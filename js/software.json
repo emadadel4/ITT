@@ -6,7 +6,7 @@
         "silent": "true",
         "check": "true",
         "website":"https://www.google.com/chrome",
-        "category":"app"
+        "category":"Web Browsers"
     },
     {
         "name": "Firefox",
@@ -15,7 +15,7 @@
         "silent": "true",
         "check": "true",
         "website":"https://www.mozilla.org/en-US/firefox/new/",
-        "category":"app"
+        "category":"Web Browsers"
     },
     {
         "name": "Edge",
@@ -24,7 +24,7 @@
         "silent": "true",
         "check": "false",
         "website":"https://www.microsoft.com/edge",
-        "category":"app"
+        "category":"Web Browsers"
     },
     {
         "name": "7zip",
@@ -33,7 +33,7 @@
         "silent": "true",
         "check": "false",
         "website":"https://7-zip.org/",
-        "category":"app"
+        "category":"Compression"
     },
     {
         "name": "WinRAR",
@@ -42,7 +42,7 @@
         "silent": "true",
         "check": "true",
         "website":"https://www.rarlab.com",
-        "category":"app"
+        "category":"Compression"
 
     },
     {
@@ -52,7 +52,7 @@
         "silent": "true",
         "check": "true",
         "website":"https://www.videolan.org/vlc/",
-        "category":"app"
+        "category":"Media"
 
     },
     {
@@ -62,7 +62,17 @@
         "silent": "true",
         "check": "false",
         "website":"https://www.codecguide.com/download_kl.htm",
-        "category":"app"
+        "category":"Media"
+
+    },
+    {
+        "name": "Audacity",
+        "discription": "Audacity is free and open-source digital audio editor and recording application software, available for Windows, macOS, Linux, and other Unix-like operating systems",
+        "url": "klitecodecs",
+        "silent": "true",
+        "check": "false",
+        "website":"#",
+        "category":"Media"
 
     },
     {
@@ -70,10 +80,9 @@
         "discription": "Foxit PDF Reader, formerly known as Foxit Reader, is a multilingual freemium PDF tool that can create, view, edit, digitally sign, and print PDF files",
         "url": "foxit",
         "silent": "true",
-
         "check": "false",
         "website":"https://www.foxit.com/",
-        "category":"app"
+        "category":"Documents"
 
     },
     {
@@ -84,7 +93,7 @@
 
         "check": "false",
         "website":"https://www.libreoffice.org/",
-        "category":"app"
+        "category":"Documents"
 
     },
     {
@@ -94,7 +103,7 @@
         "silent": "true",
         "check": "true",
         "website":"https://duckduckgo.com/?q=vlc",
-        "category":"app"
+        "category":"Documents"
 
     },
     {
@@ -104,7 +113,7 @@
         "silent": "true",
         "check": "false",
         "website":"none",
-        "category":"app"
+        "category":"Security"
 
     },
     {
@@ -113,10 +122,9 @@
         "discription": "Avast Antivirus is a family of cross-platform internet security applications developed by Avast for Microsoft Windows, macOS, Android, and iOS. Avast offers free and paid products that provide computer security",
         "url": "avast",
         "silent": "true",
-
         "check": "false",
         "website":"none",
-        "category":"app"
+        "category":"Security"
 
     },
     {
@@ -127,7 +135,7 @@
         "silent": "true",
         "check": "false",
         "website":"none",
-        "category":"app"
+        "category":"Other"
     },
     {
         "id": "8",
@@ -135,10 +143,9 @@
         "discription": "mgBurn–easily the most impressive free/donationware burning software I’ve run across. The program handles a host of image types including ISO, NRG, PDI, UDI, BIN/CUE, and CDI–obviating the need to buy several different imaging programs–and will also create data CDs, DVDs, and get this: Blu-ray data discs.",
         "url": "imgburn",
         "silent": "true",
-
         "check": "false",
         "website":"none",
-        "category":"app"
+        "category":"Utilities"
 
     },
     {
@@ -150,7 +157,7 @@
 
         "check": "false",
         "website":"none",
-        "category":"app"
+        "category":"Developer Tools"
 
     },
     {
@@ -162,7 +169,7 @@
 
         "check": "false",
         "website":"none",
-        "category":"app"
+        "category":"Utilities"
 
     },
     {
@@ -174,7 +181,7 @@
 
         "check": "false",
         "website":"none",
-        "category":"app"
+        "category":"Utilities"
 
     },
     {
@@ -185,7 +192,7 @@
         "silent": "true",
         "check": "false",
         "website":"none",
-        "category":"app"
+        "category":"Imaging"
 
     },
     {
@@ -196,7 +203,7 @@
         "silent": "true",
         "check": "false",
         "website":"none",
-        "category":"app"
+        "category":"Imaging"
 
     },
     {
@@ -217,7 +224,7 @@
         "silent": "true",
         "check": "false",
         "website":"none",
-        "category":"app"
+        "category":"Imaging"
     },
     {
         "id": "8",
@@ -227,7 +234,7 @@
         "silent": "true",
         "check": "true",
         "website":"none",
-        "category":"app"
+        "category":"File Sharing"
     },
      {
         "id": "8",
@@ -237,7 +244,7 @@
         "silent": "true",
         "check": "false",
         "website":"none",
-        "category":"Communications"
+        "category":"Messaging"
 
     },
     {
@@ -248,7 +255,7 @@
         "silent": "true",
         "check": "false",
         "website":"none",
-        "category":"Communications"
+        "category":"Messaging"
 
     },
     {
@@ -259,6 +266,6 @@
         "silent": "true",
         "check": "false",
         "website":"none",
-        "category":"Communications"
+        "category":"Messaging"
     }
 ]
