@@ -9,12 +9,12 @@
         "category": ""
     },
     {
-        "fileName": "Telgram",
-        "description": "USB Disk Security",
+        "fileName": "Download manager ",
+        "description": "Download manager",
         "url": "http://www.zbshareware.com/downloads/setup/USBGuardSetup6.9.exe",
         "installMode": "Winget",
-        "wingetInstall":"telgram",
-        "chocolateyInstall":"telgram",
+        "wingetInstall":"idm",
+        "chocolateyInstall":"idm",
         "check": "true",
         "category": ""
     }
