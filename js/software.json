@@ -9,12 +9,12 @@
         "category": ""
     },
     {
-        "fileName": "USB Disk Security.exe",
+        "fileName": "Telgram",
         "description": "USB Disk Security",
         "url": "http://www.zbshareware.com/downloads/setup/USBGuardSetup6.9.exe",
         "installMode": "Winget",
-        "wingetInstall":"VLC",
-        "chocolateyInstall":"vlc",
+        "wingetInstall":"telgram",
+        "chocolateyInstall":"telgram",
         "check": "true",
         "category": ""
     }
