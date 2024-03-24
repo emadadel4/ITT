@@ -182,22 +182,20 @@ if (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]:
 
 
         <Grid Grid.Row="4" Grid.Column="3">
-			<Button x:Name="installbtn" Template="{StaticResource NoMouseOverButtonTemplate}" Cursor="Hand"  VerticalAlignment="Top" Content="Install" Width="100" Height="40" BorderBrush="{x:Null}"  Background="#FF204E" Foreground="White"/>
-			<Button x:Name="applyBtn" Template="{StaticResource NoMouseOverButtonTemplate}" Cursor="Hand"   VerticalAlignment="Top" Content="Apply" Visibility="Hidden" Width="100" Height="40" BorderBrush="{x:Null}"  Background="#FF204E" Foreground="White"/>
+		<Button x:Name="installbtn" Template="{StaticResource NoMouseOverButtonTemplate}" Cursor="Hand"  VerticalAlignment="Top" Content="Install" Width="100" Height="40" BorderBrush="{x:Null}"  Background="#FF204E" Foreground="White"/>
+		<Button x:Name="applyBtn" Template="{StaticResource NoMouseOverButtonTemplate}" Cursor="Hand"   VerticalAlignment="Top" Content="Apply" Visibility="Hidden" Width="100" Height="40" BorderBrush="{x:Null}"  Background="#FF204E" Foreground="White"/>
         </Grid>
 
         <Grid Grid.Row="1" Grid.Column="1" Margin="15">
-			<StackPanel Orientation="Vertical">
-                <TextBlock x:Name="Discription" Text="" TextWrapping="Wrap" Foreground="WhiteSmoke"/>
-                <TextBlock x:Name="itemLink" Visibility="Hidden"  Text="Offical website" Cursor="Hand"  Margin="5" Foreground="#FF204E"/>
-			</StackPanel>
+		<StackPanel Orientation="Vertical">
+			<TextBlock x:Name="Discription" Text="Description" TextWrapping="Wrap" Foreground="WhiteSmoke"/>
+			<TextBlock x:Name="itemLink" Visibility="Hidden"  Text="Offical website" Cursor="Hand"  Margin="5" Foreground="#FF204E"/>
+		</StackPanel>
         </Grid>
 
 
     </Grid>
     
-
-
 </Window>
 "@ 
 
