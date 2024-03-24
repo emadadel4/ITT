@@ -120,6 +120,16 @@
 
     },
     {
+         "id": "8",
+        "name": "KeePass 2",
+        "discription": "KeePass Password Safe is a free and open-source password manager primarily for Windows. It officially supports macOS and Linux operating systems.",
+        "url": "keepass2",
+        "silent": "true",
+        "check": "false",
+        "website":"none",
+        "category":"app"
+    },
+    {
         "id": "8",
         "name": "ImgBurn",
         "discription": "mgBurn–easily the most impressive free/donationware burning software I’ve run across. The program handles a host of image types including ISO, NRG, PDI, UDI, BIN/CUE, and CDI–obviating the need to buy several different imaging programs–and will also create data CDs, DVDs, and get this: Blu-ray data discs.",
@@ -173,7 +183,17 @@
         "discription": "Free graphics editor GNU Image Manipulation Program, commonly known by its acronym GIMP, is a free and open-source raster graphics editor used for image manipulation and image editing, free-form drawing, transcoding betwe",
         "url": "gimp",
         "silent": "true",
+        "check": "false",
+        "website":"none",
+        "category":"app"
 
+    },
+    {
+        "id": "8",
+        "name": "FastStone Image Viewer",
+        "discription": "FastStone Image Viewer is an image viewer and organizer software for Microsoft Windows, provided free of charge for personal and educational use. The program also includes basic image editing tools, like cropping, color adjustment and red-eye removal.",
+        "url": "faststone",
+        "silent": "true",
         "check": "false",
         "website":"none",
         "category":"app"
@@ -185,11 +205,19 @@
         "discription": "Visual Studio Code, also commonly referred to as VS Code, is a source-code editor developed by Microsoft for Windows, Linux and macOS. Features include support for debugging, syntax highlighting",
         "url": "vscode",
         "silent": "true",
-
         "check": "false",
         "website":"none",
         "category":"app"
-
+    },
+    {
+        "id": "8",
+        "name": "Blender",
+        "discription": "Blender is a free and open-source 3D computer graphics software tool set used for creating animated films, visual effects, art, 3D-printed models, motion graphics, interactive 3D applications, virtual reality, and, formerly, video games.",
+        "url": "vscode",
+        "silent": "true",
+        "check": "false",
+        "website":"none",
+        "category":"app"
     },
     {
         "id": "8",
@@ -200,13 +228,23 @@
         "check": "true",
         "website":"none",
         "category":"app"
-
     },
      {
         "id": "8",
         "name": "Discord",
         "discription": "Discord is a versatile communication platform that has evolved beyond its gaming origins. Initially designed for gamers, it now serves as a hub for various communities. Here are some key points about Discord",
         "url": "discord",
+        "silent": "true",
+        "check": "false",
+        "website":"none",
+        "category":"Communications"
+
+    },
+    {
+        "id": "8",
+        "name": "Steam",
+        "discription": "Steam Video game store and digital distribution platform among other services",
+        "url": "steam",
         "silent": "true",
         "check": "false",
         "website":"none",
