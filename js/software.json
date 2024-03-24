@@ -4,7 +4,7 @@
         "discription": "Chrome is a fast, simple, and secure web browser, built for the modern web.",
         "url": "chrome",
         "silent": "true",
-        "check": "true",
+        "check": "false",
         "website":"https://www.google.com/chrome",
         "category":"Web Browsers"
     },
@@ -50,7 +50,7 @@
         "discription": "VLC media player is a free and open-source, portable, cross-platform media player software and streaming media server",
         "url": "vlc",
         "silent": "true",
-        "check": "true",
+        "check": "false",
         "website":"https://www.videolan.org/vlc/",
         "category":"Media"
 
@@ -60,7 +60,7 @@
         "discription": "K-Lite Codec Pack Audio and video codec packThe K-Lite Codec Pack is a collection of audio and video codecs for Microsoft Windows DirectShow that enables an operating system and its software to play various audio and video formats",
         "url": "klitecodecs",
         "silent": "true",
-        "check": "false",
+        "check": "true",
         "website":"https://www.codecguide.com/download_kl.htm",
         "category":"Media"
 
@@ -208,7 +208,7 @@
     },
     {
         "id": "8",
-        "name": "VSCode",
+        "name": "Visual Studio Code",
         "discription": "Visual Studio Code, also commonly referred to as VS Code, is a source-code editor developed by Microsoft for Windows, Linux and macOS. Features include support for debugging, syntax highlighting",
         "url": "vscode",
         "silent": "true",
