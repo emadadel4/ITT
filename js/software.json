@@ -210,7 +210,17 @@
         "silent": "true",
         "check": "false",
         "website":"none",
-        "category":"app"
+        "category":"Communications"
 
+    },
+    {
+        "id": "8",
+        "name": "Zoom",
+        "discription": "Zoom Video Communications",
+        "url": "zoom",
+        "silent": "true",
+        "check": "false",
+        "website":"none",
+        "category":"Communications"
     }
 ]
