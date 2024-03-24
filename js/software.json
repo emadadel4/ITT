@@ -4,16 +4,16 @@
         "description": "Neat download Manager",
         "url": "https://www.neatdownloadmanager.com/file/NeatDM_setup.exe",
         "installMode": "Winget",
-        "wingetInstall":"VLC",
-        "check": "true",
+        "wingetInstall": "VLC",
+        "check": "false",
         "category": ""
     },
     {
-        "fileName": "Download manager ",
+        "fileName": "Download manager",
         "description": "Download manager",
         "url": "http://www.zbshareware.com/downloads/setup/USBGuardSetup6.9.exe",
         "installMode": "Winget",
-        "wingetInstall":"idm",
+        "wingetInstall": "idm",
         "chocolateyInstall":"idm",
         "check": "true",
         "category": ""
