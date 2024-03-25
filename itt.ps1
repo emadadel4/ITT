@@ -24,17 +24,6 @@ if ($Debug) {
     $DebugPreference = "Continue"
 }
 
-if ($Config) {
-    $PARAM_CONFIG = $Config
-}
-
-$PARAM_RUN = $false
-# Handle the -Run switch
-if ($Run) {
-    Write-Host "Running config file tasks..."
-    $PARAM_RUN = $true
-}
-
 if (!(Test-Path -Path $ENV:TEMP)) {
     New-Item -ItemType Directory -Force -Path $ENV:TEMP
 }
@@ -72,10 +61,12 @@ else
 }
 Write-Host "hello world"
 Write-Host "hello world 2"
-$inputXML =  '<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+$inputXML =  '
+<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         Title="My WPF Window" Height="350" Width="525">
     <Grid>
-         
+         <Button Name="MyButton" Content="Click Me" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="10,10,0,0"/>
+
     </Grid>
 </Window>'
 # SPDX-License-Identifier: MIT

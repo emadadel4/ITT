@@ -26,8 +26,6 @@ Get-ChildItem .\functions -Recurse -File | ForEach-Object {
 
 $xaml = (Get-Content .\xaml\inputXML.xaml).replace("'","''")
 
-## Xaml Manipulation
-$tabColumns | Out-File -FilePath ".\xaml\inputApp.xaml" -Encoding ascii
 
 # Assuming inputApp.xaml is in the same directory as main.ps1
 $appXamlPath = Join-Path -Path $PSScriptRoot -ChildPath "xaml/inputApp.xaml"
