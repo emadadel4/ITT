@@ -17,22 +17,11 @@ if ($Debug) {
     $DebugPreference = "Continue"
 }
 
-if ($Config) {
-    $PARAM_CONFIG = $Config
-}
-
-$PARAM_RUN = $false
-# Handle the -Run switch
-if ($Run) {
-    Write-Host "Running config file tasks..."
-    $PARAM_RUN = $true
-}
-
 if (!(Test-Path -Path $ENV:TEMP)) {
     New-Item -ItemType Directory -Force -Path $ENV:TEMP
 }
 
-Start-Transcript $ENV:TEMP\Winutil.log -Append
+Start-Transcript $ENV:TEMP\itt.log -Append
 
 # Load DLLs
 Add-Type -AssemblyName PresentationFramework

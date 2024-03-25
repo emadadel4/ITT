@@ -9,15 +9,6 @@ $InitialSessionState = [System.Management.Automation.Runspaces.InitialSessionSta
 # Add the variable to the session state
 $InitialSessionState.Variables.Add($hashVars)
 
-# Get every private function and add them to the session state
-$functions = Get-ChildItem function:\ | Where-Object {$_.name -like "*winutil*" -or $_.name -like "*WPF*"}
-foreach ($function in $functions){
-    $functionDefinition = Get-Content function:\$($function.name)
-    $functionEntry = New-Object System.Management.Automation.Runspaces.SessionStateFunctionEntry -ArgumentList $($function.name), $functionDefinition
-
-    $initialSessionState.Commands.Add($functionEntry)
-}
-
 # Create the runspace pool
 $sync.runspace = [runspacefactory]::CreateRunspacePool(
     1,                      # Minimum thread count
@@ -29,30 +20,7 @@ $sync.runspace = [runspacefactory]::CreateRunspacePool(
 # Open the RunspacePool instance
 $sync.runspace.Open()
 
-# Create classes for different exceptions
-
-    class WingetFailedInstall : Exception {
-        [string] $additionalData
-
-        WingetFailedInstall($Message) : base($Message) {}
-    }
-
-    class ChocoFailedInstall : Exception {
-        [string] $additionalData
-
-        ChocoFailedInstall($Message) : base($Message) {}
-    }
-
-    class GenericException : Exception {
-        [string] $additionalData
-
-        GenericException($Message) : base($Message) {}
-    }
-
-
-$inputXML = $inputXML -replace 'mc:Ignorable="d"', '' -replace "x:N", 'N' -replace '^<Win.*', '<Window'
-
-$inputXML = Set-WinUtilUITheme -inputXML $inputXML -themeName $ctttheme
+#$inputXML = $inputXML -replace 'mc:Ignorable="d"', '' -replace "x:N", 'N' -replace '^<Win.*', '<Window'
 
 [void][System.Reflection.Assembly]::LoadWithPartialName('presentationframework')
 [xml]$XAML = $inputXML
@@ -67,9 +35,10 @@ catch [System.Management.Automation.MethodInvocationException] {
         write-warning "Ensure your &lt;button in the `$inputXML does NOT have a Click=ButtonClick property.  PS can't handle this`n`n`n`n"
     }
 }
-catch {
-    Write-Host "Unable to load Windows.Markup.XamlReader. Double-check syntax and ensure .net is installed."
-}
+    catch
+    {
+        Write-Host "Unable to load Windows.Markup.XamlReader. Double-check syntax and ensure .net is installed."
+    }
 
 $sync["Form"].ShowDialog() | out-null
 Stop-Transcript
