@@ -60,13 +60,32 @@ else
     break
 }
 Write-Host "hello world"
-Write-Host "hello world 2"
+function Buttons {
+
+    <#
+    .SYNOPSIS
+        Invokes the function associated with the clicked button
+    .PARAMETER Button
+        The name of the button that was clicked
+    #>
+    Param ([string]$Button)
+
+    # Use this to get the name of the button
+    #[System.Windows.MessageBox]::Show("$Button","Chris Titus Tech's Windows Utility","OK","Info")
+
+    Switch -Wildcard ($Button){
+
+        "installBtn" {Invoke-Install}
+    }
+}
+function Invoke-Install {
+    [System.Windows.MessageBox]::Show($msg, "Winutil", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
+}
 $inputXML =  '
 <Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         Title="My WPF Window" Height="350" Width="525">
     <Grid>
-         <Button Name="MyButton" Content="Click Me" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="10,10,0,0"/>
-
+         <Button Name="installBtn" Content=" Install/Upgrade Selected" Margin="2" />
     </Grid>
 </Window>'
 # SPDX-License-Identifier: MIT
