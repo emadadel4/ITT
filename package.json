@@ -1,6 +1,0 @@
-{
-  "scripts": {
-    "debug": "powershell.exe -Command ./itt.ps1",
-    "live": "powershell.exe -Command irm https://raw.githubusercontent.com/emadadel4/ITT/debug/itt.ps1 | iex"
-  }
-}
