@@ -79,7 +79,8 @@ function Buttons {
     }
 }
 function Invoke-Install {
-    [System.Windows.MessageBox]::Show($msg, "Winutil", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
+    #Test
+    ([System.Windows.MessageBox]::Show('Do you want install selected programes', 'ITT', [System.Windows.Forms.MessageBoxButtons]::OK) -eq 'OK')
 }
 $inputXML =  '
 <Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
