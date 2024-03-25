@@ -24,6 +24,14 @@ Get-ChildItem .\functions -Recurse -File | ForEach-Object {
     Get-Content $psitem.FullName | Out-File ./$scriptname -Append -Encoding ascii
 }
 
+
+Get-ChildItem .\config | Where-Object {$psitem.extension -eq ".json"} | ForEach-Object {
+    $json = (Get-Content $psitem.FullName).replace("'","''")
+    $sync.configs.$($psitem.BaseName) = $json | convertfrom-json
+    Write-output "`$sync.configs.$($psitem.BaseName) = '$json' `| convertfrom-json" | Out-File ./$scriptname -Append -Encoding ascii
+}
+
+
 $xaml = (Get-Content .\xaml\inputXML.xaml).replace("'","''")
 
 
@@ -35,6 +43,9 @@ $appXamlContent = Get-Content -Path $appXamlPath -Raw
 
 # Replace the placeholder in $inputXML with the content of inputApp.xaml
 $xaml = $xaml -replace "{{applications}}", $appXamlContent
+
+
+
 
 Write-output "`$inputXML =  '$xaml'" | Out-File ./$scriptname -Append -Encoding ascii
 

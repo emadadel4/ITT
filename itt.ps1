@@ -59,7 +59,55 @@ $sync.ProcessRunning = $false
 #     [System.Diagnostics.Process]::Start($newProcess);
 #     break
 # }
-Write-Host "hello world"
+function Invoke-WPFRunspace {
+
+    <#
+
+    .SYNOPSIS
+        Creates and invokes a runspace using the given scriptblock and argumentlist
+
+    .PARAMETER ScriptBlock
+        The scriptblock to invoke in the runspace
+
+    .PARAMETER ArgumentList
+        A list of arguments to pass to the runspace
+
+    .EXAMPLE
+        Invoke-WPFRunspace `
+            -ScriptBlock $sync.ScriptsInstallPrograms `
+            -ArgumentList "Installadvancedip,Installbitwarden" `
+
+    #>
+
+    [CmdletBinding()]
+    Param (
+        $ScriptBlock,
+        $ArgumentList,
+        $DebugPreference
+    )
+
+    # Create a PowerShell instance
+    $script:powershell = [powershell]::Create()
+
+    # Add Scriptblock and Arguments to runspace
+    $script:powershell.AddScript($ScriptBlock)
+    $script:powershell.AddArgument($ArgumentList)
+    $script:powershell.AddArgument($DebugPreference)  # Pass DebugPreference to the script block
+    $script:powershell.RunspacePool = $sync.runspace
+
+    # Execute the RunspacePool
+    $script:handle = $script:powershell.BeginInvoke()
+
+    # Clean up the RunspacePool threads when they are complete, and invoke the garbage collector to clean up the memory
+    if ($script:handle.IsCompleted)
+    {
+        $script:powershell.EndInvoke($script:handle)
+        $script:powershell.Dispose()
+        $sync.runspace.Dispose()
+        $sync.runspace.Close()
+        [System.GC]::Collect()
+    }
+}
 #region Buttons Events
 function Buttons {
 
@@ -81,18 +129,55 @@ function Buttons {
 }
 #endregion
 function Invoke-Install {
-    #Test
-    ([System.Windows.MessageBox]::Show('Do you want install selected programes', 'ITT', [System.Windows.Forms.MessageBoxButtons]::OK) -eq 'OK')
+ <#
+
+    .SYNOPSIS
+        Installs the selected programs using winget, if one or more of the selected programs are already installed on the system, winget will try and perform an upgrade if there's a newer version to install.
+
+    #>
+
+    if($sync.ProcessRunning){
+        $msg = "[Invoke-WPFInstall] An Install process is currently running."
+        [System.Windows.MessageBox]::Show($msg, "Winutil", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
+        return
+    }
+
+    Invoke-WPFRunspace -ArgumentList $WingetInstall -DebugPreference $DebugPreference -ScriptBlock {
+        param($WingetInstall, $DebugPreference)
+
+        try{
+            $sync.ProcessRunning = $true
+
+            #Install-WinUtilWinget
+            #Install-WinUtilProgramWinget -ProgramsToInstall $WingetInstall
+
+            Write-Host "==========================================="
+            Write-Host "--      Installs have finished          ---"
+            Write-Host "==========================================="
+        }
+        Catch {
+
+            Write-Host "==========================================="
+            Write-Host "Error: $_"
+            Write-Host "==========================================="
+        }
+
+        Start-Sleep -Seconds 5
+        $sync.ProcessRunning = $False
+    }
 }
+$sync.configs.applications = '{
+	"WPFInstall1password": {
+		"category": "Utilities",
+		"choco": "1password",
+		"content": "1Password",
+		"check": "false",
+		"description": "1Password is a password manager that allows you to store and manage your passwords securely.",
+		"link": "https://1password.com/",
+		"winget": "AgileBits.1Password"
+	}
+}' | convertfrom-json
 $inputXML =  '
-
-
-
-
-
-
-
-
 
 <Window
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -339,6 +424,30 @@ $sync.runspace.Open()
             }
         }
     }
+
+
+    #===========================================================================
+    # LOOPS
+    #===========================================================================
+
+    #region Generate items from json file
+    $sync.list = $sync["Form"].FindName("list")
+        foreach ($item in $sync.configs.applications.PSObject.Properties.Name)
+        {
+            $program = $sync.configs.applications.$item
+
+            $checkbox = New-Object System.Windows.Controls.CheckBox
+            $sync.list.Items.Add($checkbox)
+            $checkbox.Foreground = "white"
+            $checkbox.Content = $program.content
+
+        }
+
+        $sync.anyChecked = $sync.Items | ForEach-Object {
+            $checkBox = $_.Content
+            $checkBox.IsChecked
+        } | Where-Object { $_ }
+    #endregion
 
 
 $sync["Form"].ShowDialog() | out-null

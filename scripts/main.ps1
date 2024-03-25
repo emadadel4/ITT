@@ -56,5 +56,29 @@ $sync.runspace.Open()
     }
 
 
+    #===========================================================================
+    # LOOPS
+    #===========================================================================
+
+    #region Generate items from json file
+    $sync.list = $sync["Form"].FindName("list")
+        foreach ($item in $sync.configs.applications.PSObject.Properties.Name)
+        {
+            $program = $sync.configs.applications.$item
+
+            $checkbox = New-Object System.Windows.Controls.CheckBox
+            $sync.list.Items.Add($checkbox)
+            $checkbox.Foreground = "white"
+            $checkbox.Content = $program.content
+
+        }
+
+        $sync.anyChecked = $sync.Items | ForEach-Object {
+            $checkBox = $_.Content
+            $checkBox.IsChecked
+        } | Where-Object { $_ }
+    #endregion
+
+
 $sync["Form"].ShowDialog() | out-null
 Stop-Transcript
