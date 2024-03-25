@@ -1,3 +1,4 @@
+#region Buttons Events
 function Buttons {
 
     <#
@@ -16,3 +17,4 @@ function Buttons {
         "install-btn" {Invoke-Install}
     }
 }
+#endregion

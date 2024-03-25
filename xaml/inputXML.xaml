@@ -1,4 +1,3 @@
-
 <Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         Title="My WPF Window" Height="350" Width="525">
     <Grid>
