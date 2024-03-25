@@ -1,5 +1,5 @@
 $OFS = "`r`n"
-$scriptname = "winutil.ps1"
+$scriptname = "itt.ps1"
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
@@ -24,9 +24,7 @@ Get-ChildItem .\functions -Recurse -File | ForEach-Object {
     Get-Content $psitem.FullName | Out-File ./$scriptname -Append -Encoding ascii
 }
 
-
 $xaml = (Get-Content .\xaml\inputXML.xaml).replace("'","''")
-
 
 ## Xaml Manipulation
 $tabColumns | Out-File -FilePath ".\xaml\inputApp.xaml" -Encoding ascii
@@ -43,5 +41,3 @@ $xaml = $xaml -replace "{{InstallPanel_applications}}", $appXamlContent
 Write-output "`$inputXML =  '$xaml'" | Out-File ./$scriptname -Append -Encoding ascii
 
 Get-Content .\scripts\main.ps1 | Out-File ./$scriptname -Append -Encoding ascii
-
-pause
