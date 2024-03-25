@@ -1,1 +1,3 @@
-<Button Name="installBtn" Content=" Install/Upgrade Selected" Margin="2" />
+<ListView ScrollViewer.VerticalScrollBarVisibility="Auto" x:Name="list" BorderBrush="{x:Null}" Background="#222831">
+    <CheckBox Name="selectall" Content="Select all" Foreground="White" BorderBrush="{x:Null}"/>
+</ListView>

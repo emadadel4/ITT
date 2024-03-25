@@ -34,7 +34,7 @@ $appXamlPath = Join-Path -Path $PSScriptRoot -ChildPath "xaml/inputApp.xaml"
 $appXamlContent = Get-Content -Path $appXamlPath -Raw
 
 # Replace the placeholder in $inputXML with the content of inputApp.xaml
-$xaml = $xaml -replace "{{InstallPanel_applications}}", $appXamlContent
+$xaml = $xaml -replace "{{applications}}", $appXamlContent
 
 Write-output "`$inputXML =  '$xaml'" | Out-File ./$scriptname -Append -Encoding ascii
 
