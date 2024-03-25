@@ -20,25 +20,42 @@ $sync.runspace = [runspacefactory]::CreateRunspacePool(
 # Open the RunspacePool instance
 $sync.runspace.Open()
 
-#$inputXML = $inputXML -replace 'mc:Ignorable="d"', '' -replace "x:N", 'N' -replace '^<Win.*', '<Window'
+    [void][System.Reflection.Assembly]::LoadWithPartialName('presentationframework')
+    [xml]$XAML = $inputXML
 
-[void][System.Reflection.Assembly]::LoadWithPartialName('presentationframework')
-[xml]$XAML = $inputXML
-
-# Read the XAML file
-$reader = (New-Object System.Xml.XmlNodeReader $xaml)
-try { $sync["Form"] = [Windows.Markup.XamlReader]::Load( $reader ) }
-catch [System.Management.Automation.MethodInvocationException] {
-    Write-Warning "We ran into a problem with the XAML code.  Check the syntax for this control..."
-    Write-Host $error[0].Exception.Message -ForegroundColor Red
-    If ($error[0].Exception.Message -like "*button*") {
-        write-warning "Ensure your &lt;button in the `$inputXML does NOT have a Click=ButtonClick property.  PS can't handle this`n`n`n`n"
+    # Read the XAML file
+    $reader = (New-Object System.Xml.XmlNodeReader $xaml)
+    try { $sync["Form"] = [Windows.Markup.XamlReader]::Load( $reader ) }
+    catch [System.Management.Automation.MethodInvocationException] {
+        Write-Warning "We ran into a problem with the XAML code.  Check the syntax for this control..."
+        Write-Host $error[0].Exception.Message -ForegroundColor Red
+        If ($error[0].Exception.Message -like "*button*") {
+            write-warning "Ensure your &lt;button in the `$inputXML does NOT have a Click=ButtonClick property.  PS can't handle this`n`n`n`n"
+        }
     }
-}
     catch
     {
         Write-Host "Unable to load Windows.Markup.XamlReader. Double-check syntax and ensure .net is installed."
     }
+
+    #===========================================================================
+    # Add events to controls
+    #===========================================================================
+
+    $xaml.SelectNodes("//*[@Name]") | ForEach-Object {$sync["$("$($psitem.Name)")"] = $sync["Form"].FindName($psitem.Name)}
+
+    $sync.keys | ForEach-Object {
+        if($sync.$psitem)
+        {
+            if($($sync["$psitem"].GetType() | Select-Object -ExpandProperty Name) -eq "Button"){
+                $sync["$psitem"].Add_Click({
+                    [System.Object]$Sender = $args[0]
+                    Invoke-Install $Sender.name
+                })
+            }
+        }
+    }
+
 
 $sync["Form"].ShowDialog() | out-null
 Stop-Transcript

@@ -13,6 +13,6 @@ function Buttons {
 
     Switch -Wildcard ($Button){
 
-        "installBtn" {Invoke-Install}
+        "install-btn" {Invoke-Install}
     }
 }
