@@ -9,4 +9,5 @@ or
 <pre class="notranslate"><code> irm t.ly/MOV9r | iex </code></pre>
 <li>That's all.</li>
 
+Important: This not the final version. 
 
