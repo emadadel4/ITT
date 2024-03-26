@@ -11,7 +11,7 @@ if (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]:
 <Window
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    x:Name="Window" Title="ITT" WindowStartupLocation = "CenterScreen" 
+    x:Name="Window" Title="ITT @emadadel4" WindowStartupLocation = "CenterScreen" 
 	Background="#222831"
 
     Width = "800" Height = "600" ShowInTaskbar = "True" Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/icon.ico">
