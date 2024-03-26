@@ -1,20 +1,20 @@
 <!--TabControl-->
-<TabControl x:Name="taps" TabStripPlacement="Left" Margin="0, 0, 0, 10" Grid.Row="1" BorderBrush="{x:Null}" Foreground="White" Background="#222831">
+<TabControl x:Name="taps" TabStripPlacement="Left" Margin="0, 10, 0, 10" Grid.Row="0" BorderBrush="#FF262629" Foreground="White" Background="#FF191919">
     <TabControl.Resources>
         <Style TargetType="TabItem">
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="TabItem">
-                        <Border Name="Border" BorderThickness="0,0,0,0" Padding="5" BorderBrush="Gainsboro" CornerRadius="11,11,11,11" Margin="10,5">
+                        <Border Name="Border" BorderThickness="0,0,0,0" Padding="5" BorderBrush="Gainsboro"  Margin="10,5">
                             <ContentPresenter x:Name="ContentSite"
-                                VerticalAlignment="Center"
-                                HorizontalAlignment="Center"
-                                ContentSource="Header"
-                                Margin="10,2"/>
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center"
+                        ContentSource="Header"
+                        Margin="10,2"/>
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsSelected" Value="True">
-                                <Setter TargetName="Border" Property="Background" Value="#D21312" />
+                                <Setter TargetName="Border" Property="Background" Value="#462ec7" />
                             </Trigger>
                             <Trigger Property="IsSelected" Value="False">
                                 <Setter TargetName="Border" Property="Background" Value="#31363F" />
@@ -27,14 +27,14 @@
     </TabControl.Resources>
     <TabItem Header="Install" Name="apps" BorderBrush="{x:Null}" Padding="16" Background="{x:Null}" Foreground="White">
         <TabItem.Content>
-            <ListView ScrollViewer.VerticalScrollBarVisibility="Auto" x:Name="list" BorderBrush="{x:Null}" Background="#222831">
+            <ListView Margin="10" ScrollViewer.VerticalScrollBarVisibility="Auto" x:Name="list" BorderBrush="{x:Null}" Background="#FF191919">
                 <CheckBox Name="selectall" Content="Select all" Foreground="White" BorderBrush="{x:Null}"/>
             </ListView>
         </TabItem.Content>
     </TabItem>
     <TabItem Header="Tweeks" x:Name="tweeks" Padding="16" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="White">
         <TabItem.Content>
-            <ListView Name="tweekslist" ScrollViewer.VerticalScrollBarVisibility="Auto" BorderBrush="{x:Null}" Background="#222831">
+            <ListView Name="tweekslist" ScrollViewer.VerticalScrollBarVisibility="Auto" BorderBrush="{x:Null}" Background="#FF191919">
             </ListView>
         </TabItem.Content>
     </TabItem>
