@@ -14,7 +14,7 @@ if (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]:
     x:Name="Window" Title="ITT @emadadel4" WindowStartupLocation = "CenterScreen" 
 	Background="#222831"
 
-    Width = "800" Height = "600" ShowInTaskbar = "True" Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/icon.ico">
+    Height="450" MinHeight="450" MinWidth="800" Width="800" ShowInTaskbar = "True" Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/icon.ico">
 
 		    
 	
