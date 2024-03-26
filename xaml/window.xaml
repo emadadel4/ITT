@@ -8,7 +8,7 @@
 	
     <Window.Resources>
 
-           <FontFamily x:Key="FontAwesome">./itt.ttf</FontFamily>
+           <FontFamily x:Key="FontAwesome">https://github.com/emadadel4/ITT/raw/debug/itt.ttf</FontFamily>
 
         <!--Scrollbar Thumbs-->
             <Style x:Key="ScrollThumbs" TargetType="{x:Type Thumb}">
