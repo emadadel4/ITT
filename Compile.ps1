@@ -28,7 +28,7 @@ Get-ChildItem .\functions -Recurse -File | ForEach-Object {
 Get-ChildItem .\config | Where-Object {$psitem.extension -eq ".json"} | ForEach-Object {
     $json = (Get-Content $psitem.FullName).replace("'","''")
     $sync.configs.$($psitem.BaseName) = $json | convertfrom-json
-    Write-output "`$sync.configs.$($psitem.BaseName) = '$json' `| convertfrom-json" | Out-File ./$scriptname -Append -Encoding ascii
+    Write-output "`$sync.configs.$($psitem.BaseName) = '$json' `| convertfrom-json" "  "| Out-File ./$scriptname -Append -Encoding ascii
 }
 
 

@@ -47,3 +47,4 @@ function Invoke-WPFRunspace {
         [System.GC]::Collect()
     }
 }
+

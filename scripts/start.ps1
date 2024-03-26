@@ -1,7 +1,6 @@
 <#
 .NOTES
     Author         : Emad Adel @emadadel4
-    Runspace Author: @DeveloperDurp
     GitHub         : https://github.com/emadadel4
     Website        : https://eprojects.orgfree.com/
     Version        : #{replaceme}
@@ -52,3 +51,4 @@ $sync.ProcessRunning = $false
 #     [System.Diagnostics.Process]::Start($newProcess);
 #     break
 # }
+

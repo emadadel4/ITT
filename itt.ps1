@@ -8,7 +8,6 @@
 <#
 .NOTES
     Author         : Emad Adel @emadadel4
-    Runspace Author: @DeveloperDurp
     GitHub         : https://github.com/emadadel4
     Website        : https://eprojects.orgfree.com/
     Version        : 24.03.27
@@ -59,6 +58,7 @@ $sync.ProcessRunning = $false
 #     [System.Diagnostics.Process]::Start($newProcess);
 #     break
 # }
+
 function Invoke-WPFRunspace {
 
     <#
@@ -108,6 +108,7 @@ function Invoke-WPFRunspace {
         [System.GC]::Collect()
     }
 }
+
 #region Buttons Events
 function Buttons {
 
@@ -128,6 +129,7 @@ function Buttons {
     }
 }
 #endregion
+
 function Invoke-Install {
  <#
 
@@ -165,18 +167,21 @@ function Invoke-Install {
         $sync.ProcessRunning = $False
     }
 }
+
 $sync.configs.applications = '{
-	"WPFInstall1password": {
-		"category": "Utilities",
-		"choco": "1password",
-		"content": "1Password",
-		"check": "false",
-		"description": "1Password is a password manager that allows you to store and manage your passwords securely.",
-		"link": "https://1password.com/",
-		"winget": "AgileBits.1Password"
-	}
+  "WPFInstall1password": {
+    "category": "Utilities",
+    "choco": "1password",
+    "content": "1Password",
+    "check": "false",
+    "description": "1Password is a password manager that allows you to store and manage your passwords securely.",
+    "link": "https://1password.com/",
+    "winget": "AgileBits.1Password"
+  }
 }' | convertfrom-json
-$inputXML =  '<!--Window-->
+  
+$inputXML =  '
+<!--Window-->
 <Window
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
