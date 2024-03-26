@@ -32,17 +32,17 @@ Get-ChildItem .\config | Where-Object {$psitem.extension -eq ".json"} | ForEach-
 }
 
 
-$xaml = (Get-Content .\xaml\inputXML.xaml).replace("'","''")
+$xaml = (Get-Content .\xaml\window.xaml).replace("'","''")
 
 
-# Assuming inputApp.xaml is in the same directory as main.ps1
-$appXamlPath = Join-Path -Path $PSScriptRoot -ChildPath "xaml/inputApp.xaml"
+# Assuming taps.xaml is in the same directory as main.ps1
+$appXamlPath = Join-Path -Path $PSScriptRoot -ChildPath "xaml/controls/taps.xaml"
 
 # Load the XAML content from inputApp.xaml
 $appXamlContent = Get-Content -Path $appXamlPath -Raw
 
 # Replace the placeholder in $inputXML with the content of inputApp.xaml
-$xaml = $xaml -replace "{{applications}}", $appXamlContent
+$xaml = $xaml -replace "{{Taps}}", $appXamlContent
 
 
 
