@@ -181,7 +181,7 @@ $inputXML =  '<!--Window-->
 <Window
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    x:Name="Window" Title="ITT" WindowStartupLocation = "CenterScreen" 
+    x:Name="Window" Title="ITT @emadadel4" WindowStartupLocation = "CenterScreen" 
 	Background="#FF191919"
     Height="450" MinHeight="450" MinWidth="800" Width="800"  ShowInTaskbar = "True" Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/icon.ico">
 
@@ -300,109 +300,108 @@ $inputXML =  '<!--Window-->
             <ColumnDefinition Width="222"/>
         </Grid.ColumnDefinitions>
 
-
         <!--TabControl-->
-<TabControl x:Name="taps" TabStripPlacement="Left" Margin="0, 10, 0, 10" Grid.Row="0" BorderBrush="#FF262629" Foreground="White" Background="#FF191919">
-    <TabControl.Resources>
-        <Style TargetType="TabItem">
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="TabItem">
-                        <Border Name="Border" BorderThickness="0,0,0,0" Padding="5" BorderBrush="Gainsboro"  Margin="10,5">
-                            <ContentPresenter x:Name="ContentSite"
-                        VerticalAlignment="Center"
+            <TabControl x:Name="taps" TabStripPlacement="Left" Margin="0, 10, 0, 10" Grid.Row="0" BorderBrush="#FF262629" Foreground="White" Background="#FF191919">
+                <TabControl.Resources>
+                    <Style TargetType="TabItem">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="TabItem">
+                                    <Border Name="Border" BorderThickness="0,0,0,0" Padding="5" BorderBrush="Gainsboro"  Margin="10,5">
+                                        <ContentPresenter x:Name="ContentSite"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Center"
+                                    ContentSource="Header"
+                                    Margin="10,2"/>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsSelected" Value="True">
+                                            <Setter TargetName="Border" Property="Background" Value="#462ec7" />
+                                        </Trigger>
+                                        <Trigger Property="IsSelected" Value="False">
+                                            <Setter TargetName="Border" Property="Background" Value="#31363F" />
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </TabControl.Resources>
+                <TabItem Header="Install" Name="apps" BorderBrush="{x:Null}" Padding="16" Background="{x:Null}" Foreground="White">
+                    <TabItem.Content>
+                        <ListView Margin="10" ScrollViewer.VerticalScrollBarVisibility="Auto" x:Name="list" BorderBrush="{x:Null}" Background="#FF191919">
+                            <CheckBox Name="selectall" Content="Select all" Foreground="White" BorderBrush="{x:Null}"/>
+                        </ListView>
+                    </TabItem.Content>
+                </TabItem>
+                <TabItem Header="Tweeks" x:Name="tweeks" Padding="16" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="White">
+                    <TabItem.Content>
+                        <ListView Name="tweekslist" ScrollViewer.VerticalScrollBarVisibility="Auto" BorderBrush="{x:Null}" Background="#FF191919">
+                        </ListView>
+                    </TabItem.Content>
+                </TabItem>
+            </TabControl>
+        <!--End TabControl-->
+
+        <!--Main Section-->
+            <Grid  Grid.Row="0" Grid.Column="1"  >
+                <StackPanel Margin="15" Orientation="Vertical">
+                    <TextBlock Name="Discription" Text="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloremque, dolores? Sit tenetur quis nobis dolor iure necessitatibus odio repellendus quibusdam dolores nulla, dolore dicta nihil quasi natus. Ipsa, libero voluptatibus." TextWrapping="Wrap" Foreground="WhiteSmoke"/>
+                    <TextBlock Name="itemLink" Visibility="Hidden"  Text="Offical website" Cursor="Hand"  Margin="5" Foreground="#FF204E"/>
+                </StackPanel>
+
+                <!--Install Button-->
+                    <Button
+                        Name="installBtn"
+                        Content="Install"
                         HorizontalAlignment="Center"
-                        ContentSource="Header"
-                        Margin="10,2"/>
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsSelected" Value="True">
-                                <Setter TargetName="Border" Property="Background" Value="#462ec7" />
-                            </Trigger>
-                            <Trigger Property="IsSelected" Value="False">
-                                <Setter TargetName="Border" Property="Background" Value="#31363F" />
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-    </TabControl.Resources>
-    <TabItem Header="Install" Name="apps" BorderBrush="{x:Null}" Padding="16" Background="{x:Null}" Foreground="White">
-        <TabItem.Content>
-            <ListView Margin="10" ScrollViewer.VerticalScrollBarVisibility="Auto" x:Name="list" BorderBrush="{x:Null}" Background="#FF191919">
-                <CheckBox Name="selectall" Content="Select all" Foreground="White" BorderBrush="{x:Null}"/>
-            </ListView>
-        </TabItem.Content>
-    </TabItem>
-    <TabItem Header="Tweeks" x:Name="tweeks" Padding="16" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="White">
-        <TabItem.Content>
-            <ListView Name="tweekslist" ScrollViewer.VerticalScrollBarVisibility="Auto" BorderBrush="{x:Null}" Background="#FF191919">
-            </ListView>
-        </TabItem.Content>
-    </TabItem>
-</TabControl>
-<!--End TabControl-->
+                        VerticalAlignment="Bottom"
+                        BorderBrush="{x:Null}"
+                        Background="#462ec7"
+                        Foreground="White"
+                        Cursor="Hand"
+                        Template="{StaticResource NoMouseOverButtonTemplate}"
+                        Width="90" Height="44" Margin="16" Padding="10"
+                    />
+                <!--End Install Button-->
 
+                <!--Apply Button-->
+                    <Button
+                    Name="applyBtn"
+                    Content="Apply"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Bottom"
+                    BorderBrush="{x:Null}"
+                    Background="#462ec7"
+                    Foreground="White"
+                    Cursor="Hand"
+                    Visibility="Hidden"
+                    Template="{StaticResource NoMouseOverButtonTemplate}"
+                    Width="90" Height="44" Margin="16" Padding="10"/>
+                <!--End Apply Button-->
 
+            </Grid>
+        <!--End Main Section-->
 
-        <Grid  Grid.Row="0" Grid.Column="1"  >
-            <StackPanel Margin="15" Orientation="Vertical">
-                <TextBlock Name="Discription" Text="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloremque, dolores? Sit tenetur quis nobis dolor iure necessitatibus odio repellendus quibusdam dolores nulla, dolore dicta nihil quasi natus. Ipsa, libero voluptatibus." TextWrapping="Wrap" Foreground="WhiteSmoke"/>
-                <TextBlock Name="itemLink" Visibility="Hidden"  Text="Offical website" Cursor="Hand"  Margin="5" Foreground="#FF204E"/>
-            </StackPanel>
+        <!--Footer-->
+            <Grid Grid.Row="1" Grid.ColumnSpan="2">
+                <TextBlock Cursor="Pen" x:Name="quotes"  HorizontalAlignment="Left" VerticalAlignment="Center" Padding="16" TextWrapping="Wrap" Text="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloremque, dolores? Sit tenetur quis nobis dolor iure necessitatibus odio repellendus quibusdam dolores nulla, dolore dicta nihil quasi natus. Ipsa, libero voluptatibus." Foreground="WhiteSmoke"/>
+            </Grid>
+        <!--End Footer-->
 
-            <Button
-                Name="installBtn"
-                Content="Install"
-                HorizontalAlignment="Center"
+        <!--About label-->
+            <Label
+                Name="about"
+                Content="/Dev"
+                HorizontalAlignment="Left"
                 VerticalAlignment="Bottom"
                 BorderBrush="{x:Null}"
-                Background="#462ec7"
+                Background="{x:Null}"
                 Foreground="White"
+                Margin="15"
                 Cursor="Hand"
-                Template="{StaticResource NoMouseOverButtonTemplate}"
-                Width="90" Height="44" Margin="16" Padding="10"/>
-
-            <Button
-            Name="applyBtn"
-            Content="Apply"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Bottom"
-            BorderBrush="{x:Null}"
-            Background="#462ec7"
-            Foreground="White"
-            Cursor="Hand"
-            Visibility="Hidden"
-            Template="{StaticResource NoMouseOverButtonTemplate}"
-            Width="90" Height="44" Margin="16" Padding="10"/>
-
-        </Grid>
-
-
-
-        <Grid Grid.Row="1" Grid.ColumnSpan="2">
-            <TextBlock Cursor="Pen" x:Name="quotes"  HorizontalAlignment="Left" VerticalAlignment="Center" Padding="16" TextWrapping="Wrap" Text="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloremque, dolores? Sit tenetur quis nobis dolor iure necessitatibus odio repellendus quibusdam dolores nulla, dolore dicta nihil quasi natus. Ipsa, libero voluptatibus." Foreground="WhiteSmoke"/>
-        </Grid>
-
-
-
-
-
-        <Label
-            Name="about"
-            Content="/Dev"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Bottom"
-            BorderBrush="{x:Null}"
-            Background="{x:Null}"
-            Foreground="White"
-            Margin="15"
-            Cursor="Hand"
-            Width="auto" Height="auto"
-        />
-
-
+                Width="auto" Height="auto"/>
+        <!--End About label-->
 
     </Grid>
 

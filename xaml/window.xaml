@@ -121,68 +121,67 @@
             <ColumnDefinition Width="222"/>
         </Grid.ColumnDefinitions>
 
-
         {{Taps}}
 
+        <!--Main Section-->
+            <Grid  Grid.Row="0" Grid.Column="1"  >
+                <StackPanel Margin="15" Orientation="Vertical">
+                    <TextBlock Name="Discription" Text="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloremque, dolores? Sit tenetur quis nobis dolor iure necessitatibus odio repellendus quibusdam dolores nulla, dolore dicta nihil quasi natus. Ipsa, libero voluptatibus." TextWrapping="Wrap" Foreground="WhiteSmoke"/>
+                    <TextBlock Name="itemLink" Visibility="Hidden"  Text="Offical website" Cursor="Hand"  Margin="5" Foreground="#FF204E"/>
+                </StackPanel>
 
+                <!--Install Button-->
+                    <Button
+                        Name="installBtn"
+                        Content="Install"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Bottom"
+                        BorderBrush="{x:Null}"
+                        Background="#462ec7"
+                        Foreground="White"
+                        Cursor="Hand"
+                        Template="{StaticResource NoMouseOverButtonTemplate}"
+                        Width="90" Height="44" Margin="16" Padding="10"
+                    />
+                <!--End Install Button-->
 
-        <Grid  Grid.Row="0" Grid.Column="1"  >
-            <StackPanel Margin="15" Orientation="Vertical">
-                <TextBlock Name="Discription" Text="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloremque, dolores? Sit tenetur quis nobis dolor iure necessitatibus odio repellendus quibusdam dolores nulla, dolore dicta nihil quasi natus. Ipsa, libero voluptatibus." TextWrapping="Wrap" Foreground="WhiteSmoke"/>
-                <TextBlock Name="itemLink" Visibility="Hidden"  Text="Offical website" Cursor="Hand"  Margin="5" Foreground="#FF204E"/>
-            </StackPanel>
+                <!--Apply Button-->
+                    <Button
+                    Name="applyBtn"
+                    Content="Apply"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Bottom"
+                    BorderBrush="{x:Null}"
+                    Background="#462ec7"
+                    Foreground="White"
+                    Cursor="Hand"
+                    Visibility="Hidden"
+                    Template="{StaticResource NoMouseOverButtonTemplate}"
+                    Width="90" Height="44" Margin="16" Padding="10"/>
+                <!--End Apply Button-->
 
-            <Button
-                Name="installBtn"
-                Content="Install"
-                HorizontalAlignment="Center"
+            </Grid>
+        <!--End Main Section-->
+
+        <!--Footer-->
+            <Grid Grid.Row="1" Grid.ColumnSpan="2">
+                <TextBlock Cursor="Pen" x:Name="quotes"  HorizontalAlignment="Left" VerticalAlignment="Center" Padding="16" TextWrapping="Wrap" Text="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloremque, dolores? Sit tenetur quis nobis dolor iure necessitatibus odio repellendus quibusdam dolores nulla, dolore dicta nihil quasi natus. Ipsa, libero voluptatibus." Foreground="WhiteSmoke"/>
+            </Grid>
+        <!--End Footer-->
+
+        <!--About label-->
+            <Label
+                Name="about"
+                Content="/Dev"
+                HorizontalAlignment="Left"
                 VerticalAlignment="Bottom"
                 BorderBrush="{x:Null}"
-                Background="#462ec7"
+                Background="{x:Null}"
                 Foreground="White"
+                Margin="15"
                 Cursor="Hand"
-                Template="{StaticResource NoMouseOverButtonTemplate}"
-                Width="90" Height="44" Margin="16" Padding="10"/>
-
-            <Button
-            Name="applyBtn"
-            Content="Apply"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Bottom"
-            BorderBrush="{x:Null}"
-            Background="#462ec7"
-            Foreground="White"
-            Cursor="Hand"
-            Visibility="Hidden"
-            Template="{StaticResource NoMouseOverButtonTemplate}"
-            Width="90" Height="44" Margin="16" Padding="10"/>
-
-        </Grid>
-
-
-
-        <Grid Grid.Row="1" Grid.ColumnSpan="2">
-            <TextBlock Cursor="Pen" x:Name="quotes"  HorizontalAlignment="Left" VerticalAlignment="Center" Padding="16" TextWrapping="Wrap" Text="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloremque, dolores? Sit tenetur quis nobis dolor iure necessitatibus odio repellendus quibusdam dolores nulla, dolore dicta nihil quasi natus. Ipsa, libero voluptatibus." Foreground="WhiteSmoke"/>
-        </Grid>
-
-
-
-
-
-        <Label
-            Name="about"
-            Content="/Dev"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Bottom"
-            BorderBrush="{x:Null}"
-            Background="{x:Null}"
-            Foreground="White"
-            Margin="15"
-            Cursor="Hand"
-            Width="auto" Height="auto"
-        />
-
-
+                Width="auto" Height="auto"/>
+        <!--End About label-->
 
     </Grid>
 
