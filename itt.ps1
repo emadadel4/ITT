@@ -187,7 +187,7 @@ $inputXML =  '<!--Window-->
 	
     <Window.Resources>
 
-           <FontFamily x:Key="FontAwesome">./fonts/itt.ttf</FontFamily>
+           <FontFamily x:Key="FontAwesome">./itt</FontFamily>
 
         <!--Scrollbar Thumbs-->
             <Style x:Key="ScrollThumbs" TargetType="{x:Type Thumb}">
