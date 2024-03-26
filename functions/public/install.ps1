@@ -18,8 +18,7 @@ function Invoke-Install {
         try{
             $sync.ProcessRunning = $true
 
-            #Install-WinUtilWinget
-            #Install-WinUtilProgramWinget -ProgramsToInstall $WingetInstall
+            Start-Process -FilePath winget -ArgumentList "install 7zip.7zip -s winget --accept-package-agreements --silent" -NoNewWindow -Wait
 
             Write-Host "==========================================="
             Write-Host "--      Installs have finished          ---"

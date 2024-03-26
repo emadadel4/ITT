@@ -11,7 +11,7 @@
     Runspace Author: @DeveloperDurp
     GitHub         : https://github.com/emadadel4
     Website        : https://eprojects.orgfree.com/
-    Version        : 24.03.26
+    Version        : 24.03.27
 #>
 param (
     [switch]$Debug,
@@ -37,7 +37,7 @@ Add-Type -AssemblyName System.Windows.Forms
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "24.03.26"
+$sync.version = "24.03.27"
 $sync.configs = @{}
 $sync.ProcessRunning = $false
 
@@ -148,8 +148,7 @@ function Invoke-Install {
         try{
             $sync.ProcessRunning = $true
 
-            #Install-WinUtilWinget
-            #Install-WinUtilProgramWinget -ProgramsToInstall $WingetInstall
+            Start-Process -FilePath winget -ArgumentList "install 7zip.7zip -s winget --accept-package-agreements --silent" -NoNewWindow -Wait
 
             Write-Host "==========================================="
             Write-Host "--      Installs have finished          ---"
