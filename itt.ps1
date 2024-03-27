@@ -27,7 +27,6 @@ if (!(Test-Path -Path $ENV:TEMP)) {
     New-Item -ItemType Directory -Force -Path $ENV:TEMP
 }
 
-Start-Transcript $ENV:TEMP\itt.log -Append
 
 # Load DLLs
 Add-Type -AssemblyName PresentationFramework
@@ -495,4 +494,3 @@ $sync.runspace.Open()
 
 
 $sync["Form"].ShowDialog() | out-null
-Stop-Transcript
