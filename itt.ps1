@@ -40,9 +40,9 @@ $sync.version = "24.03.27"
 $sync.configs = @{}
 $sync.ProcessRunning = $false
 
-# $currentPid = [System.Security.Principal.WindowsIdentity]::GetCurrent()
-# $principal = new-object System.Security.Principal.WindowsPrincipal($currentPid)
-# $adminRole=[System.Security.Principal.WindowsBuiltInRole]::Administrator
+$currentPid = [System.Security.Principal.WindowsIdentity]::GetCurrent()
+$principal = new-object System.Security.Principal.WindowsPrincipal($currentPid)
+$adminRole=[System.Security.Principal.WindowsBuiltInRole]::Administrator
 
 
 if ($principal.IsInRole($adminRole))
