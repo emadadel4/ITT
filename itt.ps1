@@ -27,6 +27,7 @@ if (!(Test-Path -Path $ENV:TEMP)) {
     New-Item -ItemType Directory -Force -Path $ENV:TEMP
 }
 
+Start-Transcript $ENV:TEMP\itt.log -Append
 
 # Load DLLs
 Add-Type -AssemblyName PresentationFramework
@@ -44,19 +45,19 @@ $sync.ProcessRunning = $false
 # $adminRole=[System.Security.Principal.WindowsBuiltInRole]::Administrator
 
 
-# if ($principal.IsInRole($adminRole))
-# {
-#     $Host.UI.RawUI.WindowTitle = $myInvocation.MyCommand.Definition + "(Admin)"
-#     clear-host
-# }
-# else
-# {
-#     $newProcess = new-object System.Diagnostics.ProcessStartInfo "PowerShell";
-#     $newProcess.Arguments = $myInvocation.MyCommand.Definition;
-#     $newProcess.Verb = "runas";
-#     [System.Diagnostics.Process]::Start($newProcess);
-#     break
-# }
+if ($principal.IsInRole($adminRole))
+{
+    $Host.UI.RawUI.WindowTitle = $myInvocation.MyCommand.Definition + "(Admin)"
+    clear-host
+}
+else
+{
+    $newProcess = new-object System.Diagnostics.ProcessStartInfo "PowerShell";
+    $newProcess.Arguments = $myInvocation.MyCommand.Definition;
+    $newProcess.Verb = "runas";
+    [System.Diagnostics.Process]::Start($newProcess);
+    break
+}
 
 function Invoke-WPFRunspace {
 
@@ -494,3 +495,4 @@ $sync.runspace.Open()
 
 
 $sync["Form"].ShowDialog() | out-null
+Stop-Transcript
