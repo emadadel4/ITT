@@ -16,13 +16,19 @@
 ### 🏠 [Homepage](https://emadadel4.github.io/ITT/)
 
 ## Usage
+## On Windows 8.1/10/11 (Recommended)
+**PowerShell run as administrator**
+**Copy-paste the below code and press enter**
 
-**PowerShell run as administrator (Recommended)**
-**On Windows 8.1/10/11**
-
+```sh
+ irm t.ly/MOV9r | iex 
+```
+**or**
 ```sh
  iwr -useb t.ly/MOV9r | iex or  irm t.ly/MOV9r | iex 
 ```
+
+
 
 ## Author
 
