@@ -1,13 +1,38 @@
-[![Telgram Follow](https://img.shields.io/twitter/follow/juno_okyo.svg?label=Follow&maxAge=2592000)](https://twitter.com/emadadel04)
+<h1 align="center">Welcome to ITT 👋</h1>
+<p>
+  <img alt="Version" src="https://img.shields.io/badge/version-Beta-blue.svg?cacheSeconds=2592000" />
+  <a href="#" target="_blank">
+    <img alt="License: MTI" src="https://img.shields.io/badge/License-MTI-yellow.svg" />
+  </a>
+  <a href="https://twitter.com/emadadel04" target="_blank">
+    <img alt="Twitter: emadadel04" src="https://img.shields.io/twitter/follow/emadadel04.svg?style=social" />
+  </a>
+</p>
 
-<h1>PowerShell run as administrator (Recommended) </h1>
-<li>On Windows 8.1/10/11, right-click on the Windows start menu and select PowerShell or Terminal (Not CMD).</li>
+> IT Tools, included all useful software
 
-<li>Copy-paste the below code and press enter</li>
-<pre class="notranslate"><code> iwr -useb t.ly/MOV9r | iex</code></pre>
-or
-<pre class="notranslate"><code> irm t.ly/MOV9r | iex </code></pre>
-<li>That's all.</li>
+### 🏠 [Homepage](https://emadadel4.github.io/ITT/)
 
-Important: This not the final version. 
+## Usage
 
+**PowerShell run as administrator (Recommended)**
+**On Windows 8.1/10/11**
+
+```sh
+ iwr -useb t.ly/MOV9r | iex or  irm t.ly/MOV9r | iex 
+```
+
+## Author
+
+👤 **Emad Adel**
+
+* Website: http://eprojects.orgfree.com/
+* Twitter: [@emadadel04](https://twitter.com/emadadel04)
+* Github: [@emadadel4](https://github.com/emadadel4)
+
+## Show your support
+
+Give a ⭐️ if this project helped you!
+
+***
+_This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
