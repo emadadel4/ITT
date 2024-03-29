@@ -1,4 +1,4 @@
-<h1 align="center">Welcome to ITT 👋</h1>
+<h1 align="center">Welcome to ITT 🖥️💽 </h1>
 <p>
   <a href="#">
   <img alt="Version" src="https://img.shields.io/badge/version-Beta-blue.svg?cacheSeconds=2592000" />
