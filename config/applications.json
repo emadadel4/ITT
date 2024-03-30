@@ -1,0 +1,242 @@
+[
+  {
+    "name": "Chrome",
+    "description": "Chrome is a fast, simple, and secure web browser, built for the modern web.",
+    "url": "chrome",
+    "ninite": "chrome",
+    "check": "false",
+    "website": "https://www.google.com/chrome",
+    "category": "Web Browsers"
+  },
+  {
+    "name": "Firefox",
+    "description": "Mozilla Firefox, or simply Firefox, is a free and open-source web browser developed by the Mozilla Foundation.",
+    "url": "firefox",
+    "ninite": "firefox",
+    "check": "true",
+    "website": "https://www.mozilla.org/en-US/firefox/new/",
+    "category": "Web Browsers"
+  },
+  {
+    "name": "Edge",
+    "description": "Microsoft Edge is Chromium based and is a faster, more secure, and more modern browsing experience than Internet Explorer and Microsoft Edge Legacy. For more information, see Microsoft Edge features for work. Additionally, Microsoft Edge will soon be the only Microsoft browser that supports Microsoft 365 web apps and services.",
+    "url": "edge",
+    "ninite": "edge",
+    "check": "false",
+    "website": "https://www.microsoft.com/edge",
+    "category": "Web Browsers"
+  },
+  {
+    "name": "7zip",
+    "description": "7-Zip is a free and open-source file archiver1234. It is a utility used to place groups of files within compressed containers known as archives",
+    "url": "7zip",
+    "ninite": "7zip",
+    "check": "false",
+    "website": "https://7-zip.org/",
+    "category": "Compression"
+  },
+  {
+    "name": "WinRAR",
+    "description": "WinRAR is a powerful compression, archiving and archive managing software tool1234. It can create and view archives in RAR or ZIP file formats, and unpack numerous archive file formats",
+    "url": "winrar",
+    "ninite": "winrar",
+    "check": "true",
+    "website": "https://www.rarlab.com",
+    "category": "Compression"
+  },
+  {
+    "name": "VLC",
+    "description": "VLC media player is a free and open-source, portable, cross-platform media player software and streaming media server",
+    "url": "vlc",
+    "ninite": "vlc",
+    "check": "false",
+    "website": "https://www.videolan.org/vlc/",
+    "category": "Media"
+  },
+  {
+    "name": "K-Lite Codecs",
+    "description": "K-Lite Codec Pack Audio and video codec packThe K-Lite Codec Pack is a collection of audio and video codecs for Microsoft Windows DirectShow that enables an operating system and its software to play various audio and video formats",
+    "url": "klitecodecs",
+    "ninite": "klitecodecs",
+    "check": "true",
+    "website": "https://www.codecguide.com/download_kl.htm",
+    "category": "Media"
+  },
+  {
+    "name": "Audacity",
+    "description": "Audacity is free and open-source digital audio editor and recording application software, available for Windows, macOS, Linux, and other Unix-like operating systems",
+    "url": "audacity",
+    "ninite": "audacity",
+    "check": "false",
+    "website": "#",
+    "category": "Media"
+  },
+  {
+    "name": "Foxit Reader",
+    "description": "Foxit PDF Reader, formerly known as Foxit Reader, is a multilingual freemium PDF tool that can create, view, edit, digitally sign, and print PDF files",
+    "url": "foxit",
+    "ninite": "foxit",
+    "check": "false",
+    "website": "https://www.foxit.com/",
+    "category": "Documents"
+  },
+  {
+    "name": "LibreOffice",
+    "description": "LibreOffice is a free and open-source office productivity software suite12345. It is a project of The Document Foundation, and was forked in 2010 from OpenOffice.org, an open-sourced version of the earlier StarOffice",
+    "url": "libreoffice",
+    "ninite": "libreoffice",
+    "check": "false",
+    "website": "https://www.libreoffice.org/",
+    "category": "Documents"
+  },
+  {
+    "name": "SumatraPDF",
+    "description": "Sumatra PDF is a free and open-source document viewer that supports many document formats including: Portable Document Format (PDF), Microsoft Compiled HTML Help, DjVu, EPUB, FictionBook, MOBI, PRC etc",
+    "url": "sumatrapdf",
+    "ninite": "sumatrapdf",
+    "check": "true",
+    "website": "https://duckduckgo.com/?q=vlc",
+    "category": "Documents"
+  },
+  {
+    "name": "Malwarebytes",
+    "description": "Malwarebytes is anti-malware software for Microsoft Windows, macOS, ChromeOS, Android, and iOS that finds and removes malware. Made by Malwarebytes Corporation, it was first released in January 2006",
+    "url": "malwarebytes",
+    "ninite": "malwarebytes",
+    "check": "false",
+    "website": "none",
+    "category": "Security"
+  },
+  {
+    "id": "8",
+    "name": "Avast Antivirus",
+    "description": "Avast Antivirus is a family of cross-platform internet security applications developed by Avast for Microsoft Windows, macOS, Android, and iOS. Avast offers free and paid products that provide computer security",
+    "url": "avast",
+    "ninite": "avast",
+    "check": "false",
+    "website": "none",
+    "category": "Security"
+  },
+  {
+    "id": "8",
+    "name": "KeePass 2",
+    "description": "KeePass Password Safe is a free and open-source password manager primarily for Windows. It officially supports macOS and Linux operating systems.",
+    "url": "keepass2",
+    "ninite": "keepass2",
+    "check": "false",
+    "website": "none",
+    "category": "Other"
+  },
+  {
+    "id": "8",
+    "name": "ImgBurn",
+    "description": "mgBurn–easily the most impressive free/donationware burning software I’ve run across. The program handles a host of image types including ISO, NRG, PDI, UDI, BIN/CUE, and CDI–obviating the need to buy several different imaging programs–and will also create data CDs, DVDs, and get this: Blu-ray data discs.",
+    "url": "imgburn",
+    "ninite": "imgburn",
+    "check": "false",
+    "website": "none",
+    "category": "Utilities"
+  },
+  {
+    "name": "Nodepad++",
+    "description": "Notepad++ is a text editor and source code editor for use under Microsoft Windows. It supports around 80 programming languages with syntax highlighting and code folding. It allows working with multiple open files in a single window, thanks to its tabbed editing interface.",
+    "url": "notepadplusplus",
+    "ninite": "notepadplusplus",
+    "check": "false",
+    "website": "none",
+    "category": "Developer Tools"
+  },
+  {
+    "name": "Revo uninstaller",
+    "description": "Revo Uninstaller is an uninstaller for Microsoft Windows. It uninstalls programs and additionally removes any files and Windows registry entries left behind by the program's uninstaller or by the Windows uninstall function.",
+    "url": "Revo",
+    "ninite": "Revo",
+    "check": "false",
+    "website": "none",
+    "category": "Utilities"
+  },
+  {
+    "name": "CCleaner",
+    "description": "CCleaner is a utility used to clean potentially unwanted files and invalid Windows Registry entries from a computer1. It was originally developed by Piriform and has been around since 200412. It started out as an optimization tool for PCs, but its developers rolled out iterations for macOS and Android in 2012 and 2014, respectivel",
+    "url": "ccleaner",
+    "ninite": "ccleaner",
+    "check": "false",
+    "website": "none",
+    "category": "Utilities"
+  },
+  {
+    "name": "GIMP",
+    "description": "Free graphics editor GNU Image Manipulation Program, commonly known by its acronym GIMP, is a free and open-source raster graphics editor used for image manipulation and image editing, free-form drawing, transcoding betwe",
+    "url": "gimp",
+    "ninite": "gimp",
+    "check": "false",
+    "website": "none",
+    "category": "Imaging"
+  },
+  {
+    "name": "FastStone Image Viewer",
+    "description": "FastStone Image Viewer is an image viewer and organizer software for Microsoft Windows, provided free of charge for personal and educational use. The program also includes basic image editing tools, like cropping, color adjustment and red-eye removal.",
+    "url": "faststone",
+    "ninite": "faststone",
+    "check": "false",
+    "website": "none",
+    "category": "Imaging"
+  },
+  {
+    "name": "Visual Studio Code",
+    "description": "Visual Studio Code, also commonly referred to as VS Code, is a source-code editor developed by Microsoft for Windows, Linux and macOS. Features include support for debugging, syntax highlighting",
+    "url": "vscode",
+    "ninite": "vscode",
+    "check": "false",
+    "website": "none",
+    "category": "app"
+  },
+  {
+    "name": "Blender",
+    "description": "Blender is a free and open-source 3D computer graphics software tool set used for creating animated films, visual effects, art, 3D-printed models, motion graphics, interactive 3D applications, virtual reality, and, formerly, video games.",
+    "url": "#",
+    "ninite": "blender",
+    "check": "false",
+    "website": "none",
+    "category": "Imaging"
+  },
+  {
+    "id": "8",
+    "name": "qBittorrent",
+    "description": "Cross-platform BitTorrent client",
+    "url": "qbittorrent",
+    "ninite": "qbittorrent",
+    "check": "true",
+    "website": "none",
+    "category": "File Sharing"
+  },
+  {
+    "id": "8",
+    "name": "Discord",
+    "description": "Discord is a versatile communication platform that has evolved beyond its gaming origins. Initially designed for gamers, it now serves as a hub for various communities. Here are some key points about Discord",
+    "url": "discord",
+    "ninite": "discord",
+    "check": "false",
+    "website": "none",
+    "category": "Messaging"
+  },
+  {
+    "id": "8",
+    "name": "Steam",
+    "description": "Steam Video game store and digital distribution platform among other services",
+    "url": "steam",
+    "ninite": "steam",
+    "check": "false",
+    "website": "none",
+    "category": "Messaging"
+  },
+  {
+    "name": "Zoom",
+    "description": "Zoom Video Communications",
+    "url": "zoom",
+    "ninite": "zoom",
+    "check": "false",
+    "website": "none",
+    "category": "Messaging"
+  }
+]

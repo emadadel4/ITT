@@ -1,9 +1,7 @@
-<h1 align="center">Welcome to ITT 🖥️💽 </h1>
+<h1 align="center">Welcome to ITT 👋</h1>
 <p>
-  <a href="#">
   <img alt="Version" src="https://img.shields.io/badge/version-Beta-blue.svg?cacheSeconds=2592000" />
-  </a>
-  <a href="#">
+  <a href="#" target="_blank">
     <img alt="License: MTI" src="https://img.shields.io/badge/License-MTI-yellow.svg" />
   </a>
   <a href="https://twitter.com/emadadel04" target="_blank">
@@ -16,19 +14,10 @@
 ### 🏠 [Homepage](https://emadadel4.github.io/ITT/)
 
 ## Usage
-## On Windows 8.1/10/11 (Recommended)
-**PowerShell run as administrator**
-**Copy-paste the below code and press enter**
 
-```sh
- irm t.ly/MOV9r | iex 
-```
-**or**
 ```sh
  iwr -useb t.ly/MOV9r | iex or  irm t.ly/MOV9r | iex 
 ```
-
-
 
 ## Author
 
