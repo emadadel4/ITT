@@ -882,6 +882,8 @@ $itemLink.add_MouseLeftButtonDown({
 })
 #endregion
 
+Clear-Host
+
 #===========================================================================
 # End Loops 
 #===========================================================================
@@ -891,7 +893,6 @@ $itemLink.add_MouseLeftButtonDown({
 
 
 $window.FindName('installBtn').add_click({Nine})
-
 $window.FindName('about').add_MouseLeftButtonDown({about})
 
 $sync = $window.ShowDialog() | out-null
