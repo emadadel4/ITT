@@ -31,7 +31,7 @@
                         </ListView>
                     </TabItem.Content>
                 </TabItem>
-                <TabItem Header="Tweeks" x:Name="tweeksTap" Padding="16" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="White">
+                <TabItem Header="Tweeks" x:Name="tweeks" Padding="16" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="White">
                     <TabItem.Content>
                         <ListView Name="tweaks" ScrollViewer.VerticalScrollBarVisibility="Auto" BorderBrush="{x:Null}" Background="#FF191919">
                         </ListView>

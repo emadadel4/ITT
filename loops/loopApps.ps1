@@ -14,18 +14,7 @@ foreach ($item in $sync.configs.applications)
 
 }
 
-$sync.tweaks = $Window.FindName("tweaks")
-foreach ($item in $sync.configs.tweaks)
-{
-    $checkbox = New-Object System.Windows.Controls.CheckBox
-    $sync.tweaks.Items.Add($checkbox)
-    $checkbox.Foreground = "white"
-    $checkbox.Content = $item.name
-
-}
-#endregion
-
-#region Get Discription of selected item in $list
+# Get Discription of selected item in $list
 $discription = $Window.FindName("description")
 $itemLink = $Window.FindName('itemLink')
 $sync.list.Add_SelectionChanged({
@@ -41,19 +30,6 @@ $sync.list.Add_SelectionChanged({
         }
     }
 })
-
-$sync.tweaks.Add_SelectionChanged({
-		
-    foreach($data in $sync.configs.tweaks)
-    {
-        if($sync.tweaks.SelectedItem.Content -eq $data.name)
-        {
-            $discription.Text = $data.description
-
-        }
-    }
-})
-
 #endregion
 
 #region Get Selected item Website link from json file
@@ -72,13 +48,3 @@ $itemLink.add_MouseLeftButtonDown({
 
 })
 #endregion
-
-Clear-Host
-
-#===========================================================================
-# End Loops 
-#===========================================================================
-
-
-
-

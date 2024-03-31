@@ -36,33 +36,32 @@ $sync.author = "Emad Adel @emadadel4"
 $sync.configs = @{}
 $sync.ProcessRunning = $false
 
-$currentPid = [System.Security.Principal.WindowsIdentity]::GetCurrent()
-$principal = new-object System.Security.Principal.WindowsPrincipal($currentPid)
-$adminRole=[System.Security.Principal.WindowsBuiltInRole]::Administrator
+# $currentPid = [System.Security.Principal.WindowsIdentity]::GetCurrent()
+# $principal = new-object System.Security.Principal.WindowsPrincipal($currentPid)
+# $adminRole=[System.Security.Principal.WindowsBuiltInRole]::Administrator
 
 
-if ($principal.IsInRole($adminRole))
-{
-    $Host.UI.RawUI.WindowTitle = $myInvocation.MyCommand.Definition + "(Admin)"
-    clear-host
-}
-else
-{
-    $newProcess = new-object System.Diagnostics.ProcessStartInfo "PowerShell";
-    $newProcess.Arguments = $myInvocation.MyCommand.Definition;
-    $newProcess.Verb = "runas";
-    [System.Diagnostics.Process]::Start($newProcess);
-    break
-}
+# if ($principal.IsInRole($adminRole))
+# {
+#     $Host.UI.RawUI.WindowTitle = $myInvocation.MyCommand.Definition + "(Admin)"
+#     clear-host
+# }
+# else
+# {
+#     $newProcess = new-object System.Diagnostics.ProcessStartInfo "PowerShell";
+#     $newProcess.Arguments = $myInvocation.MyCommand.Definition;
+#     $newProcess.Verb = "runas";
+#     [System.Diagnostics.Process]::Start($newProcess);
+#     break
+# }
 
-function about
-{
+function about{
 
-$authorInfo = @"
-    Author   : $($sync.author)
-    GitHub   : $($sync.github)
-    Website  : $($sync.website)
-    Version  : $($sync.version)
+    $authorInfo = @"
+        Author   : $($sync.author)
+        GitHub   : $($sync.github)
+        Website  : $($sync.website)
+        Version  : $($sync.version)
 "@
 
     Show-CustomDialog -Message $authorInfo -Width 400
@@ -71,7 +70,7 @@ $authorInfo = @"
 #===========================================================================
 # function
 #===========================================================================
-function Nine
+function Install()
 {
     $Link = "https://ninite.com/"
 
@@ -114,6 +113,44 @@ function Nine
     else
     {
         [System.Windows.MessageBox]::Show("Please select the program(s) to install", "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
+    }
+}
+
+function ApplyTweaks() {
+
+    foreach ($item in $sync.tweaks.Items)
+    {
+        if ($item.IsChecked)
+        {
+            $result = $item
+
+            foreach ($data in $sync.configs.tweaks)
+            {
+                if($item.Content -eq $data.name)
+                {
+                    if($data.fromUrl -eq "true")
+                    {
+                        $url = $data.script
+                    }
+                    else
+                    {
+                        $script = $data.script
+                    }
+                }
+            }
+        }
+        
+    }
+
+    if($result)
+    {
+        irm $url | iex 
+        powershell.exe -Command  $script
+        
+    }
+    else
+    {
+        [System.Windows.MessageBox]::Show("Please select the Tweeak(s) to apply", "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
     }
 }
 function PlayMusic
@@ -274,6 +311,22 @@ function Show-CustomDialog {
 #===========================================================================
 # End Function
 #===========================================================================
+function ChangeTap() {
+    
+    if($window.FindName('apps').IsSelected)
+    {
+        Write-Host "Apps"
+        $window.FindName('installBtn').Visibility = "Visible"
+        $window.FindName('applyBtn').Visibility = "Hidden"
+    }
+
+    if($window.FindName('tweeks').IsSelected)
+    {
+        Write-Host "Tweaks"
+        $window.FindName('applyBtn').Visibility = "Visible"
+        $window.FindName('installBtn').Visibility = "Hidden"
+    }
+}
 $sync.configs.applications = '[
   {
     "name": "Chrome",
@@ -523,6 +576,16 @@ $sync.configs.tweaks = '[
     "description": "Fix Stutter in Games (Disable GameBarPresenceWriter). Windows 10/11",
     "website": "https://github.com/emadadel4/Fix-Stutter-in-Games",
     "script": "https://raw.githubusercontent.com/emadadel4/Fix-Stutter-in-Games/main/fix.ps1",
+    "fromUrl": "true",
+    "check": "true",
+    "category": "tweak"
+  },
+  {
+    "name": "Clean Space",
+    "description": "Clean Space",
+    "website": "#",
+    "script": "cleanmgr.exe /d C: /VERYLOWDISK Dism.exe /online /Cleanup-Image /StartComponentCleanup /ResetBase",
+    "fromUrl": "false",
     "check": "true",
     "category": "tweak"
   }
@@ -685,7 +748,7 @@ $inputXML =  '
                         </ListView>
                     </TabItem.Content>
                 </TabItem>
-                <TabItem Header="Tweeks" x:Name="tweeksTap" Padding="16" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="White">
+                <TabItem Header="Tweeks" x:Name="tweeks" Padding="16" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="White">
                     <TabItem.Content>
                         <ListView Name="tweaks" ScrollViewer.VerticalScrollBarVisibility="Auto" BorderBrush="{x:Null}" Background="#FF191919">
                         </ListView>
@@ -823,18 +886,7 @@ foreach ($item in $sync.configs.applications)
 
 }
 
-$sync.tweaks = $Window.FindName("tweaks")
-foreach ($item in $sync.configs.tweaks)
-{
-    $checkbox = New-Object System.Windows.Controls.CheckBox
-    $sync.tweaks.Items.Add($checkbox)
-    $checkbox.Foreground = "white"
-    $checkbox.Content = $item.name
-
-}
-#endregion
-
-#region Get Discription of selected item in $list
+# Get Discription of selected item in $list
 $discription = $Window.FindName("description")
 $itemLink = $Window.FindName('itemLink')
 $sync.list.Add_SelectionChanged({
@@ -850,19 +902,6 @@ $sync.list.Add_SelectionChanged({
         }
     }
 })
-
-$sync.tweaks.Add_SelectionChanged({
-		
-    foreach($data in $sync.configs.tweaks)
-    {
-        if($sync.tweaks.SelectedItem.Content -eq $data.name)
-        {
-            $discription.Text = $data.description
-
-        }
-    }
-})
-
 #endregion
 
 #region Get Selected item Website link from json file
@@ -881,6 +920,31 @@ $itemLink.add_MouseLeftButtonDown({
 
 })
 #endregion
+#region Generate tweaks from json file
+$sync.tweaks = $Window.FindName("tweaks")
+foreach ($item in $sync.configs.tweaks)
+{
+    $checkbox = New-Object System.Windows.Controls.CheckBox
+    $sync.tweaks.Items.Add($checkbox)
+    $checkbox.Foreground = "white"
+    $checkbox.Content = $item.name
+
+}
+
+# Get Discription of selected tweaks in $list
+$sync.tweaks.Add_SelectionChanged({
+		
+    foreach($data in $sync.configs.tweaks)
+    {
+        if($sync.tweaks.SelectedItem.Content -eq $data.name)
+        {
+            $discription.Text = $data.description
+
+        }
+    }
+})
+
+#endregion
 
 Clear-Host
 
@@ -888,12 +952,12 @@ Clear-Host
 # End Loops 
 #===========================================================================
 
-
-
-
-
-$window.FindName('installBtn').add_click({Nine})
+$window.FindName('installBtn').add_click({Install})
+$window.FindName('applyBtn').add_click({ApplyTweaks})
 $window.FindName('about').add_MouseLeftButtonDown({about})
+
+$window.FindName('taps').add_SelectionChanged({ChangeTap})
+
 
 $sync = $window.ShowDialog() | out-null
 #Stop-Transcript
