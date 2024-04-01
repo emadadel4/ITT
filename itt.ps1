@@ -761,7 +761,7 @@ $inputXML =  '
              </ListView>
          </TabItem.Content>
      </TabItem>
-     <TabItem Header="Tweeks" x:Name="tweeks" Padding="16" BorderBrush="{x:Null}" Background="{x:Null}">
+     <TabItem Header="Tweaks" x:Name="tweeks" Padding="16" BorderBrush="{x:Null}" Background="{x:Null}">
          <TabItem.Content>
              <ListView Name="tweaks"  Margin="10" ScrollViewer.VerticalScrollBarVisibility="Auto" BorderBrush="{x:Null}" Background="{x:Null}">
              </ListView>
