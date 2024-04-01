@@ -28,7 +28,7 @@ Add-Type -AssemblyName System.Windows.Forms
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "24.03.31"
+$sync.version = "24.04.01"
 $sync.github = "https://github.com/emadadel4"
 $sync.website = "https://eprojects.orgfree.com"
 $sync.author = "Emad Adel @emadadel4"
@@ -36,24 +36,24 @@ $sync.author = "Emad Adel @emadadel4"
 $sync.configs = @{}
 $sync.ProcessRunning = $false
 
-$currentPid = [System.Security.Principal.WindowsIdentity]::GetCurrent()
-$principal = new-object System.Security.Principal.WindowsPrincipal($currentPid)
-$adminRole=[System.Security.Principal.WindowsBuiltInRole]::Administrator
+# $currentPid = [System.Security.Principal.WindowsIdentity]::GetCurrent()
+# $principal = new-object System.Security.Principal.WindowsPrincipal($currentPid)
+# $adminRole=[System.Security.Principal.WindowsBuiltInRole]::Administrator
 
 
-if ($principal.IsInRole($adminRole))
-{
-    $Host.UI.RawUI.WindowTitle = $myInvocation.MyCommand.Definition + "(Admin)"
-    clear-host
-}
-else
-{
-    $newProcess = new-object System.Diagnostics.ProcessStartInfo "PowerShell";
-    $newProcess.Arguments = $myInvocation.MyCommand.Definition;
-    $newProcess.Verb = "runas";
-    [System.Diagnostics.Process]::Start($newProcess);
-    break
-}
+# if ($principal.IsInRole($adminRole))
+# {
+#     $Host.UI.RawUI.WindowTitle = $myInvocation.MyCommand.Definition + "(Admin)"
+#     clear-host
+# }
+# else
+# {
+#     $newProcess = new-object System.Diagnostics.ProcessStartInfo "PowerShell";
+#     $newProcess.Arguments = $myInvocation.MyCommand.Definition;
+#     $newProcess.Verb = "runas";
+#     [System.Diagnostics.Process]::Start($newProcess);
+#     break
+# }
 
 function about{
 
@@ -106,8 +106,8 @@ function Install()
         Write-Host "Ninite Link: $($Link)"
         $discription.Text = "Starting Download"
         Invoke-WebRequest $Link -OutFile $Destination
-        $discription.Text = "Click yes to any popup window"
         Start-Process -Filepath $Destination
+        $discription.Text = "Installing..."
 
     }
     else
@@ -144,7 +144,7 @@ function ApplyTweaks() {
 
     if($result)
     {
-        irm $url | iex 
+        Invoke-RestMethod $url | Invoke-Expression 
         powershell.exe -Command  $script
         
     }
@@ -595,9 +595,10 @@ $inputXML =  '
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         x:Name="Window" Title="ITT @emadadel4" WindowStartupLocation = "CenterScreen" 
-        Background="#FF191919"
+        Background="White"
         Height="450" MinHeight="450" MinWidth="800" Width="800"  ShowInTaskbar = "True" Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/icon.ico">
 
+    
         <Window.Resources>
 
             <!--Scrollbar Thumbs-->
@@ -677,145 +678,152 @@ $inputXML =  '
             </Style>
             <!--End Scrollbar Thumbs-->
 
+            <Style TargetType="Window" x:Key="MyBorderStyle">
+                <Setter Property="Background" Value="Wheat"/>
+            </Style>
 
             <!--Button Style-->
-            <ControlTemplate x:Key="NoMouseOverButtonTemplate"   
-                    TargetType="Button">
-                <Border Background="{TemplateBinding Background}"  
-                    BorderBrush="{TemplateBinding BorderBrush}"  
-                    BorderThickness="{TemplateBinding BorderThickness}">
-                    <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"  
-                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
-                </Border>
+                <Style TargetType="Button">
+                    <Setter Property="Background" Value="Black"/>
+                    <Setter Property="Foreground" Value="White"/>
+
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="Button">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"/>
+                                    
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#2F58CD"/>
+                        </Trigger>
+                    </Style.Triggers>
 
 
-                <ControlTemplate.Triggers>
-                    <Trigger Property="IsEnabled"  Value="False">
-                        <Setter Property="Background" Value="{x:Static SystemColors.ControlLightBrush}" />
-                        <Setter Property="Foreground" Value="{x:Static SystemColors.GrayTextBrush}" />
-                    </Trigger>
-                </ControlTemplate.Triggers>
-            </ControlTemplate>
+                </Style>
             <!--End Button Style-->
 
         </Window.Resources>
 
+    <Grid>
 
-        <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
 
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="auto"/>
-            </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="222"/>
+        </Grid.ColumnDefinitions>
 
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="222"/>
-            </Grid.ColumnDefinitions>
+         <!--TabControl-->
+ <TabControl x:Name="taps" TabStripPlacement="Left" Margin="0, 10, 0, 10" Grid.Row="0" BorderBrush="WhiteSmoke" Foreground="White" Background="WhiteSmoke">
+     <TabControl.Resources>
 
-            <!--TabControl-->
-            <TabControl x:Name="taps" TabStripPlacement="Left" Margin="0, 10, 0, 10" Grid.Row="0" BorderBrush="#FF262629" Foreground="White" Background="#FF191919">
-                <TabControl.Resources>
-                    <Style TargetType="TabItem">
-                        <Setter Property="Template">
-                            <Setter.Value>
-                                <ControlTemplate TargetType="TabItem">
-                                    <Border Name="Border" BorderThickness="0,0,0,0" Padding="5" BorderBrush="Gainsboro"  Margin="10,5">
-                                        <ContentPresenter x:Name="ContentSite"
-                                    VerticalAlignment="Center"
-                                    HorizontalAlignment="Center"
-                                    ContentSource="Header"
-                                    Margin="10,2"/>
-                                    </Border>
-                                    <ControlTemplate.Triggers>
-                                        <Trigger Property="IsSelected" Value="True">
-                                            <Setter TargetName="Border" Property="Background" Value="#462ec7" />
-                                        </Trigger>
-                                        <Trigger Property="IsSelected" Value="False">
-                                            <Setter TargetName="Border" Property="Background" Value="#31363F" />
-                                        </Trigger>
-                                    </ControlTemplate.Triggers>
-                                </ControlTemplate>
-                            </Setter.Value>
-                        </Setter>
-                    </Style>
-                </TabControl.Resources>
-                <TabItem Header="Install" Name="apps" BorderBrush="{x:Null}" Padding="16" Background="{x:Null}" Foreground="White">
-                    <TabItem.Content>
-                        <ListView Margin="10" ScrollViewer.VerticalScrollBarVisibility="Auto" x:Name="list" BorderBrush="{x:Null}" Background="#FF191919">
-                        </ListView>
-                    </TabItem.Content>
-                </TabItem>
-                <TabItem Header="Tweeks" x:Name="tweeks" Padding="16" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="White">
-                    <TabItem.Content>
-                        <ListView Name="tweaks" ScrollViewer.VerticalScrollBarVisibility="Auto" BorderBrush="{x:Null}" Background="#FF191919">
-                        </ListView>
-                    </TabItem.Content>
-                </TabItem>
-            </TabControl>
-        <!--End TabControl-->
 
-            <!--Main Section-->
-                <Grid  Grid.Row="0" Grid.Column="1"  >
-                    <StackPanel Margin="15" Orientation="Vertical">
-                        <TextBlock Name="description" Text="Description" TextWrapping="Wrap" Foreground="WhiteSmoke"/>
-                        <TextBlock Name="itemLink" Visibility="Hidden"  Text="Offical website" Cursor="Hand"  Margin="5" Foreground="#FF204E"/>
-                    </StackPanel>
+         <Style TargetType="TabItem">
+             <Setter Property="Template">
+                 <Setter.Value>
+                     <ControlTemplate TargetType="TabItem">
+                         <Border Name="Border" BorderThickness="0,0,0,0" Padding="5" BorderBrush="Gainsboro"  Margin="10,5">
+                             <ContentPresenter x:Name="ContentSite"
+                             VerticalAlignment="Center"
+                             HorizontalAlignment="Center"
+                             ContentSource="Header"
+                             Margin="10,2"/>
+                         </Border>
+                         <ControlTemplate.Triggers>
+                             <Trigger Property="IsSelected" Value="True">
+                                 <Setter TargetName="Border" Property="Background" Value="Black" />
+                                 <Setter Property="Foreground" Value="White" />
 
-                    <!--Install Button-->
-                        <Button
-                            Name="installBtn"
-                            Content="Install"
+                             </Trigger>
+                             <Trigger Property="IsSelected" Value="False">
+                                 <Setter TargetName="Border" Property="Background" Value="WhiteSmoke" />
+                                 <Setter Property="Foreground" Value="Black" />
+                             </Trigger>
+                         </ControlTemplate.Triggers>
+                     </ControlTemplate>
+                 </Setter.Value>
+             </Setter>
+         </Style>
+     </TabControl.Resources>
+     <TabItem Header="Install" Name="apps" BorderBrush="{x:Null}" Padding="16">
+         <TabItem.Content>
+             <ListView Margin="10" ScrollViewer.VerticalScrollBarVisibility="Auto" x:Name="list" BorderBrush="{x:Null}" Background="{x:Null}">
+             </ListView>
+         </TabItem.Content>
+     </TabItem>
+     <TabItem Header="Tweeks" x:Name="tweeks" Padding="16" BorderBrush="{x:Null}" Background="{x:Null}">
+         <TabItem.Content>
+             <ListView Name="tweaks"  Margin="10" ScrollViewer.VerticalScrollBarVisibility="Auto" BorderBrush="{x:Null}" Background="{x:Null}">
+             </ListView>
+         </TabItem.Content>
+     </TabItem>
+ </TabControl>
+ <!--End TabControl-->
+
+
+        <!--Main Section-->
+            <Grid  Grid.Row="0" Grid.Column="1"   Background="WhiteSmoke" Margin="10">
+                <StackPanel Margin="15" Orientation="Vertical">
+                    <TextBlock Name="description" Text="Description" TextWrapping="Wrap" Foreground="Black"/>
+                    <TextBlock Name="itemLink" Visibility="Hidden"  Text="Offical website" Cursor="Hand"  Margin="5" Foreground="blue"/>
+                </StackPanel>
+
+                <!--Install Button-->
+                <Button
+                                Name="installBtn"
+                                Content="Install"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Bottom"
+                                Cursor="Hand"
+                                Width="90" Height="44" Margin="16" Padding="10"
+                            />
+                <!--End Install Button-->
+
+                <!--Apply Button-->
+                <Button
+                            Name="applyBtn"
+                            Content="Apply"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Bottom"
-                            BorderBrush="{x:Null}"
-                            Background="#462ec7"
-                            Foreground="White"
                             Cursor="Hand"
-                            Template="{StaticResource NoMouseOverButtonTemplate}"
-                            Width="90" Height="44" Margin="16" Padding="10"
-                        />
-                    <!--End Install Button-->
+                            Visibility="Hidden"
+                            Width="90" Height="44" Margin="16" Padding="10"/>
+                <!--End Apply Button-->
 
-                    <!--Apply Button-->
-                        <Button
-                        Name="applyBtn"
-                        Content="Apply"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Bottom"
-                        BorderBrush="{x:Null}"
-                        Background="#462ec7"
-                        Foreground="White"
-                        Cursor="Hand"
-                        Visibility="Hidden"
-                        Template="{StaticResource NoMouseOverButtonTemplate}"
-                        Width="90" Height="44" Margin="16" Padding="10"/>
-                    <!--End Apply Button-->
+            </Grid>
+        <!--End Main Section-->
 
-                </Grid>
-            <!--End Main Section-->
+        <!--Footer-->
+            <Grid Grid.Row="1" Grid.ColumnSpan="2">
+                <TextBlock Cursor="Pen" x:Name="quotes"  HorizontalAlignment="Left" VerticalAlignment="Center" Padding="16" TextWrapping="Wrap" Text="Whoami?!" Foreground="Black"/>
+            </Grid>
+        <!--End Footer-->
 
-            <!--Footer-->
-                <Grid Grid.Row="1" Grid.ColumnSpan="2">
-                    <TextBlock Cursor="Pen" x:Name="quotes"  HorizontalAlignment="Left" VerticalAlignment="Center" Padding="16" TextWrapping="Wrap" Text="Whoami?!" Foreground="WhiteSmoke"/>
-                </Grid>
-            <!--End Footer-->
-
-            <!--About label-->
-                <Label
+        <!--About label-->
+            <Label
                     Name="about"
                     Content="/Dev"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Bottom"
                     BorderBrush="{x:Null}"
                     Background="{x:Null}"
-                    Foreground="White"
+                    Foreground="Bisque"
                     Margin="15"
                     Cursor="Hand"
                     Width="auto" Height="auto"/>
-            <!--End About label-->
+        <!--End About label-->
 
-        </Grid>
+    </Grid>
 
         
     </Window>
@@ -879,7 +887,6 @@ foreach ($item in $sync.configs.applications)
 {
     $checkbox = New-Object System.Windows.Controls.CheckBox
     $sync.list.Items.Add($checkbox)
-    $checkbox.Foreground = "white"
     $checkbox.Content = $item.name
 
 }
@@ -924,7 +931,6 @@ foreach ($item in $sync.configs.tweaks)
 {
     $checkbox = New-Object System.Windows.Controls.CheckBox
     $sync.tweaks.Items.Add($checkbox)
-    $checkbox.Foreground = "white"
     $checkbox.Content = $item.name
 
 }

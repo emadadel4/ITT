@@ -38,8 +38,8 @@ function Install()
         Write-Host "Ninite Link: $($Link)"
         $discription.Text = "Starting Download"
         Invoke-WebRequest $Link -OutFile $Destination
-        $discription.Text = "Click yes to any popup window"
         Start-Process -Filepath $Destination
+        $discription.Text = "Installing..."
 
     }
     else
@@ -76,7 +76,7 @@ function ApplyTweaks() {
 
     if($result)
     {
-        irm $url | iex 
+        Invoke-RestMethod $url | Invoke-Expression 
         powershell.exe -Command  $script
         
     }
