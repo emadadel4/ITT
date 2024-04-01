@@ -817,7 +817,7 @@ $inputXML =  '
                     VerticalAlignment="Bottom"
                     BorderBrush="{x:Null}"
                     Background="{x:Null}"
-                    Foreground="Bisque"
+                    Foreground="Black"
                     Margin="15"
                     Cursor="Hand"
                     Width="auto" Height="auto"/>
