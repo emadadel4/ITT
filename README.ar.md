@@ -1,9 +1,5 @@
 <h1 align="center">مرحبا بك في اداة ITT 🖥️ 🛠️ 📀 </h1>
 
-  <a href="https://github.com/emadadel4/ITT/blob/main/README.ar.md">
-    <img alt="Arabic" src="https://img.shields.io/badge/lang-ar-red.svg" />
-  </a>
-
 <p>
   <a href="#">
     <img alt="License: MTI" src="https://img.shields.io/badge/License-MTI-yellow.svg" />
@@ -13,7 +9,7 @@
   </a>
 </p>
 
-> هذا الاداة  يوجد فيها معظم البرامج المهمة و اشهر التحسينات
+> هذا الاداة يوجد فيها معظم البرامج المهمة و اشهر التحسينات
 
 ### 🏠 [Homepage](https://emadadel4.github.io/ITT)
 
