@@ -8,9 +8,9 @@
   </a>
 </p>
 
-> IT Tools, included all useful software
+> IT Tools, included all useful Software and Tweeaks
 
-### 🏠 [Homepage](https://emadadel4.github.io/ITT/)
+### 🏠 [Homepage](https://emadadel4.github.io/ITT)
 
 ## Usage
 
@@ -28,17 +28,16 @@ if for some reason this site is not reachable from your country please try runni
 
 ```sh
 irm https://raw.githubusercontent.com/emadadel4/ITT/main/itt.ps1 | iex
-
+```
 
 ## Author
 
 👤 **Emad Adel**
 
-* Website: http://eprojects.orgfree.com
-* Twitter: [@emadadel04](https://twitter.com/emadadel04)
-* Github: [@emadadel4](https://github.com/emadadel4)
+- Website: http://eprojects.orgfree.com
+- Twitter: [@emadadel04](https://twitter.com/emadadel04)
+- Github: [@emadadel4](https://github.com/emadadel4)
 
 ## Show your support
-Give a ⭐️ if this project helped you!
 
-```
+Give a ⭐️ if this project helped you!
