@@ -24,7 +24,7 @@
 irm bit.ly/emadadel | iex
 ```
 
-or
+او جرب
 
 ```sh
  iwr -useb bit.ly/emadadel | iex
