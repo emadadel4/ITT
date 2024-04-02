@@ -1,7 +1,6 @@
 <h1 align="center">Welcome to ITT 👋</h1>
 <p>
-  <img alt="Version" src="https://img.shields.io/badge/version-Beta-blue.svg?cacheSeconds=2592000" />
-  <a href="#" target="_blank">
+  <a href="#">
     <img alt="License: MTI" src="https://img.shields.io/badge/License-MTI-yellow.svg" />
   </a>
   <a href="https://twitter.com/emadadel04" target="_blank">
@@ -16,20 +15,22 @@
 ## Usage
 
 ```sh
- iwr -useb t.ly/MOV9r | iex or  irm t.ly/MOV9r | iex 
+ iwr -useb bit.ly/emadadel | iex 
+```
+or
+
+```sh
+irm bit.ly/emadadel | iex 
 ```
 
 ## Author
 
 👤 **Emad Adel**
 
-* Website: http://eprojects.orgfree.com/
+* Website: http://eprojects.orgfree.com
 * Twitter: [@emadadel04](https://twitter.com/emadadel04)
 * Github: [@emadadel4](https://github.com/emadadel4)
 
 ## Show your support
-
 Give a ⭐️ if this project helped you!
 
-***
-_This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
