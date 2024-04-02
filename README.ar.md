@@ -15,7 +15,6 @@
 <a target="_blank" rel="noopener noreferrer" href="https://github.com/emadadel4/ITT/blob/main/demo.PNG"><img src="https://github.com/emadadel4/ITT/blob/main/demo.PNG" alt="screen-install" style="max-width: 100%;"></a>
 </center>
 
-### 🏠 [موقع الاداة](https://emadadel4.github.io/ITT)
 
 ## ازاي تستخدم الاداة؟
 
