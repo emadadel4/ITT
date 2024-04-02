@@ -1,7 +1,9 @@
 <h1 align="center">Welcome to ITT 👋</h1>
 <p>
+    <a href="#">
   <img alt="Version" src="https://img.shields.io/badge/version-Beta-blue.svg?cacheSeconds=2592000" />
-  <a href="#" target="_blank">
+    </a>
+  <a href="#">
     <img alt="License: MTI" src="https://img.shields.io/badge/License-MTI-yellow.svg" />
   </a>
   <a href="https://twitter.com/emadadel04" target="_blank">
