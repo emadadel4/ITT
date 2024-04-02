@@ -1,6 +1,6 @@
 <h1 align="center">Welcome to ITT 🖥️ 🛠️ 📀 </h1>
 
-  <a href="https://twitter.com/emadadel04">
+  <a href="https://github.com/emadadel4/ITT/blob/main/README.ar.md">
     <img alt="Arabic" src="https://img.shields.io/badge/lang-ar-red.svg" />
   </a>
 
@@ -18,6 +18,15 @@
 ### 🏠 [Homepage](https://emadadel4.github.io/ITT)
 
 ## Usage
+
+<p dir="auto"><strong>Right-Click Method:</strong>
+
+Right-Click Method:
+
+    Right-click on the start menu.
+    Choose "PowerShell As Admin" (for Windows 10) or "Windows Terminal As Admin" (for Windows 11).
+
+</p>
 
 ```sh
 irm bit.ly/emadadel | iex
