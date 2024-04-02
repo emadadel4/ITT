@@ -15,13 +15,19 @@
 ## Usage
 
 ```sh
-irm bit.ly/emadadel | iex 
-```
-or
-```sh
- iwr -useb bit.ly/emadadel | iex 
+irm bit.ly/emadadel | iex
 ```
 
+or
+
+```sh
+ iwr -useb bit.ly/emadadel | iex
+```
+
+if for some reason this site is not reachable from your country please try running it directly from github
+
+```sh
+irm https://raw.githubusercontent.com/emadadel4/ITT/main/itt.ps1 | iex
 
 
 ## Author
@@ -35,3 +41,4 @@ or
 ## Show your support
 Give a ⭐️ if this project helped you!
 
+```
