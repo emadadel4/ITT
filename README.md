@@ -28,12 +28,10 @@ irm bit.ly/emadadel | iex
 
 👤 **Emad Adel**
 
-* Website: http://eprojects.orgfree.com/
+* Website: http://eprojects.orgfree.com
 * Twitter: [@emadadel04](https://twitter.com/emadadel04)
 * Github: [@emadadel4](https://github.com/emadadel4)
 
 ## Show your support
-
 Give a ⭐️ if this project helped you!
 
-***
