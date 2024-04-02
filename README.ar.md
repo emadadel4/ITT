@@ -46,4 +46,4 @@ irm https://raw.githubusercontent.com/emadadel4/ITT/main/itt.ps1 | iex
 
 ## ادعم المشروع
 
-لو عجبك البرنامج اعطه ⭐️ دا هيساعد جدا
+لو عجبك البرنامج اخبط ⭐️ دا هيساعد المشروع جدا
