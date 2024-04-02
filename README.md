@@ -14,7 +14,9 @@
   </a>
 </p>
 
+<center>
 <a target="_blank" rel="noopener noreferrer" href="https://github.com/emadadel4/ITT/blob/main/demo.PNG"><img src="https://github.com/emadadel4/ITT/blob/main/demo.PNG" alt="screen-install" style="max-width: 100%;"></a>
+</center>
 
 
 > IT Tools, included all useful Software and Tweeaks
