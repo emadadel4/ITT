@@ -1,4 +1,4 @@
-<h1 align="center">Welcome to ITT 🖥️ 🛠️ 📀 </h1>
+<h1 align="center">مرحبا بك في برنامج ITT 🖥️ 🛠️ 📀 </h1>
 
   <a href="https://github.com/emadadel4/ITT/blob/main/README.ar.md">
     <img alt="Arabic" src="https://img.shields.io/badge/lang-ar-red.svg" />
@@ -13,7 +13,7 @@
   </a>
 </p>
 
-> IT Tools, included all useful Software and Tweeaks
+> هذا البرنامج يتضمن معظم البرامج المهمة و اشهر التحسينات
 
 ### 🏠 [Homepage](https://emadadel4.github.io/ITT)
 
