@@ -21,7 +21,7 @@
 
 <p dir="auto"><strong>On Windows/10/11:</strong>
      Right-click on the start menu.
-    Choose "PowerShell and  paste any of these".
+    Choose "PowerShell" or "Terminal" and paste any command of these.
 </p>
 
 ```sh
