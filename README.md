@@ -19,13 +19,9 @@
 
 ## Usage
 
-<p dir="auto"><strong>Right-Click Method:</strong>
-
-Right-Click Method:
-
-    Right-click on the start menu.
-    Choose "PowerShell As Admin" (for Windows 10) or "Windows Terminal As Admin" (for Windows 11).
-
+<p dir="auto"><strong>On Windows/10/11:</strong>
+     Right-click on the start menu.
+    Choose "PowerShell and  paste any of these".
 </p>
 
 ```sh
