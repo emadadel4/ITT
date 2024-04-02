@@ -16,12 +16,12 @@
 ## Usage
 
 ```sh
- iwr -useb t.ly/MOV9r | iex 
+ iwr -useb bit.ly/emadadel | iex 
 ```
 or
 
 ```sh
-irm t.ly/MOV9r | iex 
+irm bit.ly/emadadel | iex 
 ```
 
 ## Author
