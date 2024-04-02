@@ -1,4 +1,9 @@
 <h1 align="center">Welcome to ITT 🖥️ 🛠️ 📀 </h1>
+
+  <a href="https://github.com/emadadel4/ITT/blob/main/README.ar.md">
+    <img alt="Arabic"/>
+  </a>
+
 <p>
   <a href="#">
     <img alt="License: MTI" src="https://img.shields.io/badge/License-MTI-yellow.svg" />
