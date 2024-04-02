@@ -15,13 +15,14 @@
 ## Usage
 
 ```sh
- iwr -useb bit.ly/emadadel | iex 
-```
-or
-
-```sh
 irm bit.ly/emadadel | iex 
 ```
+or
+```sh
+ iwr -useb bit.ly/emadadel | iex 
+```
+
+
 
 ## Author
 
