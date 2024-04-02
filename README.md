@@ -1,4 +1,4 @@
-<h1 align="center">Welcome to ITT 👋</h1>
+<h1 align="center">Welcome to ITT 🖥️ 🛠️ 📀 </h1>
 <p>
   <a href="#">
     <img alt="License: MTI" src="https://img.shields.io/badge/License-MTI-yellow.svg" />
