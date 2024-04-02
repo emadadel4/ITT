@@ -16,7 +16,12 @@
 ## Usage
 
 ```sh
- iwr -useb t.ly/MOV9r | iex or  irm t.ly/MOV9r | iex 
+ iwr -useb t.ly/MOV9r | iex 
+```
+or
+
+```sh
+irm t.ly/MOV9r | iex 
 ```
 
 ## Author
@@ -32,4 +37,3 @@
 Give a ⭐️ if this project helped you!
 
 ***
-_This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
