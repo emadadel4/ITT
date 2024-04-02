@@ -11,6 +11,10 @@
 
 > الاداة يوجد فيها معظم البرامج المهمة و اشهر التحسينات
 
+<center>
+<a target="_blank" rel="noopener noreferrer" href="https://github.com/emadadel4/ITT/blob/main/demo.PNG"><img src="https://github.com/emadadel4/ITT/blob/main/demo.PNG" alt="screen-install" style="max-width: 100%;"></a>
+</center>
+
 ### 🏠 [موقع الاداة](https://emadadel4.github.io/ITT)
 
 ## ازاي تستخدم البرنامج؟
@@ -24,7 +28,7 @@
 irm bit.ly/emadadel | iex
 ```
 
-او جرب
+or
 
 ```sh
  iwr -useb bit.ly/emadadel | iex
