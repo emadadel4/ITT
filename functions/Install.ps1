@@ -62,11 +62,11 @@ function ApplyTweaks() {
                 {
                     if($data.fromUrl -eq "true")
                     {
-                        $url = $data.script
+                        Invoke-RestMethod $data.script | Invoke-Expression 
                     }
                     else
                     {
-                        $script = $data.script
+                        powershell.exe -Command  $data.script
                     }
                 }
             }
@@ -76,8 +76,7 @@ function ApplyTweaks() {
 
     if($result)
     {
-        Invoke-RestMethod $url | Invoke-Expression 
-        powershell.exe -Command  $script
+     
         
     }
     else

@@ -28,7 +28,7 @@ Add-Type -AssemblyName System.Windows.Forms
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "24.04.01"
+$sync.version = "24.04.02"
 $sync.github = "https://github.com/emadadel4"
 $sync.website = "https://eprojects.orgfree.com"
 $sync.author = "Emad Adel @emadadel4"
@@ -36,24 +36,24 @@ $sync.author = "Emad Adel @emadadel4"
 $sync.configs = @{}
 $sync.ProcessRunning = $false
 
-$currentPid = [System.Security.Principal.WindowsIdentity]::GetCurrent()
-$principal = new-object System.Security.Principal.WindowsPrincipal($currentPid)
-$adminRole=[System.Security.Principal.WindowsBuiltInRole]::Administrator
+# $currentPid = [System.Security.Principal.WindowsIdentity]::GetCurrent()
+# $principal = new-object System.Security.Principal.WindowsPrincipal($currentPid)
+# $adminRole=[System.Security.Principal.WindowsBuiltInRole]::Administrator
 
 
-if ($principal.IsInRole($adminRole))
-{
-    $Host.UI.RawUI.WindowTitle = $myInvocation.MyCommand.Definition + "(Admin)"
-    clear-host
-}
-else
-{
-    $newProcess = new-object System.Diagnostics.ProcessStartInfo "PowerShell";
-    $newProcess.Arguments = $myInvocation.MyCommand.Definition;
-    $newProcess.Verb = "runas";
-    [System.Diagnostics.Process]::Start($newProcess);
-    break
-}
+# if ($principal.IsInRole($adminRole))
+# {
+#     $Host.UI.RawUI.WindowTitle = $myInvocation.MyCommand.Definition + "(Admin)"
+#     clear-host
+# }
+# else
+# {
+#     $newProcess = new-object System.Diagnostics.ProcessStartInfo "PowerShell";
+#     $newProcess.Arguments = $myInvocation.MyCommand.Definition;
+#     $newProcess.Verb = "runas";
+#     [System.Diagnostics.Process]::Start($newProcess);
+#     break
+# }
 
 function about{
 
@@ -130,11 +130,11 @@ function ApplyTweaks() {
                 {
                     if($data.fromUrl -eq "true")
                     {
-                        $url = $data.script
+                        Invoke-RestMethod $data.script | Invoke-Expression 
                     }
                     else
                     {
-                        $script = $data.script
+                        powershell.exe -Command  $data.script
                     }
                 }
             }
@@ -144,8 +144,7 @@ function ApplyTweaks() {
 
     if($result)
     {
-        Invoke-RestMethod $url | Invoke-Expression 
-        powershell.exe -Command  $script
+     
         
     }
     else
