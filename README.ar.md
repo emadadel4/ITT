@@ -36,7 +36,7 @@ or
 irm https://raw.githubusercontent.com/emadadel4/ITT/main/itt.ps1 | iex
 ```
 
-## الناشر
+## المطور
 
 👤 **Emad Adel**
 
