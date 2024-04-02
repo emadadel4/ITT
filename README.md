@@ -1,7 +1,7 @@
 <h1 align="center">Welcome to ITT 🖥️ 🛠️ 📀 </h1>
 
-  <a href="https://github.com/emadadel4/ITT/blob/main/README.ar.md">
-    <img alt="Arabic"/>
+  <a href="https://twitter.com/emadadel04">
+    <img alt="Arabic" src="https://img.shields.io/badge/lang-en-red.svg" />
   </a>
 
 <p>
