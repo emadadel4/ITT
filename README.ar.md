@@ -21,7 +21,7 @@
 
 <p dir="auto"><strong>من خلال ويندوز 10 او 11</strong>
      اضغط كلك يمين على قائمة ستارت
-    و اختار "Powershell" or "Terminal" ثم الصق اي امر من الاوامر الموجودة بالاسفل
+    و اختار "Powershell" او "Terminal" ثم الصق اي امر من الاوامر التالية 
 </p>
 
 ```sh
@@ -34,7 +34,7 @@ or
  iwr -useb bit.ly/emadadel | iex
 ```
 
-لو الاوامر اللى فوق مشتغلتش جرب هذا الامر
+لو الاوامر اللى فوق مشتغلتش جرب الامر التالي
 
 ```sh
 irm https://raw.githubusercontent.com/emadadel4/ITT/main/itt.ps1 | iex
