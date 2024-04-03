@@ -2,10 +2,11 @@
 #===========================================================================
 # function
 #===========================================================================
+
+
 function Install()
 {
     $Link = "https://ninite.com/"
-    $msg = [System.Windows.MessageBox]::Show("Are you sure you want to install selected programs", "ITT", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)
 
     foreach ($item in $sync.list.Items)
     {
@@ -27,6 +28,8 @@ function Install()
 
     if($result)
     {
+        $msg = [System.Windows.MessageBox]::Show("Are you sure you want to install selected programs", "ITT", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)
+
         if($msg -eq "Yes")
         {
             $Link = $Link + "/ninite.exe"
@@ -52,8 +55,13 @@ function Install()
 
 function ApplyTweaks() {
 
+    $1
+    $2
+
     foreach ($item in $sync.tweaks.Items)
     {
+       
+
         if ($item.IsChecked)
         {
             $result = $item
@@ -64,11 +72,14 @@ function ApplyTweaks() {
                 {
                     if($data.fromUrl -eq "true")
                     {
-                        Invoke-RestMethod $data.script | Invoke-Expression 
+                        #Invoke-RestMethod $data.script | Invoke-Expression 
+                        $1 = $data
                     }
                     else
                     {
-                        powershell.exe -Command  $data.script
+                        #powershell.exe -Command  $data.script
+                        $2 = $data
+
                     }
                 }
             }
@@ -78,8 +89,13 @@ function ApplyTweaks() {
 
     if($result)
     {
-     
-        
+        $msg = [System.Windows.MessageBox]::Show("Are you sure you want to apply selected tweeaks", "ITT", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)
+
+        if($msg -eq "Yes")
+        {
+            Invoke-RestMethod $1.script | Invoke-Expression 
+            powershell.exe -Command  $2.script
+        }
     }
     else
     {
