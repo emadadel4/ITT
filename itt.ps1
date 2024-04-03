@@ -389,6 +389,15 @@ $sync.configs.applications = '[
     "category": "Media"
   },
   {
+    "name": "Handbrake",
+    "description": "Convert Videos 1.7.3 (requires .NET 5).",
+    "url": "handbrake",
+    "ninite": "handbrake",
+    "check": "false",
+    "website": "#",
+    "category": "Media"
+  },
+  {
     "name": "Audacity",
     "description": "Audacity is free and open-source digital audio editor and recording application software, available for Windows, macOS, Linux, and other Unix-like operating systems",
     "url": "audacity",
@@ -420,7 +429,7 @@ $sync.configs.applications = '[
     "description": "Sumatra PDF is a free and open-source document viewer that supports many document formats including: Portable Document Format (PDF), Microsoft Compiled HTML Help, DjVu, EPUB, FictionBook, MOBI, PRC etc",
     "url": "sumatrapdf",
     "ninite": "sumatrapdf",
-    "check": "true",
+    "check": "false",
     "website": "https://duckduckgo.com/?q=vlc",
     "category": "Documents"
   },
@@ -579,6 +588,15 @@ $sync.configs.applications = '[
     "description": "Zoom Video Communications",
     "url": "zoom",
     "ninite": "zoom",
+    "check": "false",
+    "website": "none",
+    "category": "Messaging"
+  },
+  {
+    "name": "Skype",
+    "description": "Internet Telephone",
+    "url": "skype",
+    "ninite": "skype",
     "check": "false",
     "website": "none",
     "category": "Messaging"
@@ -905,6 +923,11 @@ foreach ($item in $sync.configs.applications)
     $checkbox = New-Object System.Windows.Controls.CheckBox
     $sync.list.Items.Add($checkbox)
     $checkbox.Content = $item.name
+
+    if($item.check -eq "true")
+    {
+        $checkbox.IsChecked = $true
+    }
 
 }
 

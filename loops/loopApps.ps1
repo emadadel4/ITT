@@ -11,6 +11,11 @@ foreach ($item in $sync.configs.applications)
     $sync.list.Items.Add($checkbox)
     $checkbox.Content = $item.name
 
+    if($item.check -eq "true")
+    {
+        $checkbox.IsChecked = $true
+    }
+
 }
 
 # Get Discription of selected item in $list
