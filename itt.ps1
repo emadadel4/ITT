@@ -73,6 +73,7 @@ function about{
 function Install()
 {
     $Link = "https://ninite.com/"
+    $msg = [System.Windows.MessageBox]::Show("Are you sure you want to install selected programs", "ITT", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)
 
     foreach ($item in $sync.list.Items)
     {
@@ -85,7 +86,6 @@ function Install()
                 if($item.Content -eq $data.name)
                 {
                     $Link = $Link + $data.ninite + "-"
-                    Write-Host $data.name
                     $Link = $Link + $data.url + "-"
                 }
             }
@@ -93,7 +93,7 @@ function Install()
         
     }
 
-    if($result)
+    if($result, $msg -eq "Yes")
     {
         $Link = $Link + "/ninite.exe"
         $Destination = "$env:temp/Install.exe"
@@ -108,7 +108,6 @@ function Install()
         Invoke-WebRequest $Link -OutFile $Destination
         Start-Process -Filepath $Destination
         $discription.Text = "Installing..."
-
     }
     else
     {

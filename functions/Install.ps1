@@ -5,6 +5,7 @@
 function Install()
 {
     $Link = "https://ninite.com/"
+    $msg = [System.Windows.MessageBox]::Show("Are you sure you want to install selected programs", "ITT", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)
 
     foreach ($item in $sync.list.Items)
     {
@@ -17,7 +18,6 @@ function Install()
                 if($item.Content -eq $data.name)
                 {
                     $Link = $Link + $data.ninite + "-"
-                    Write-Host $data.name
                     $Link = $Link + $data.url + "-"
                 }
             }
@@ -27,20 +27,22 @@ function Install()
 
     if($result)
     {
-        $Link = $Link + "/ninite.exe"
-        $Destination = "$env:temp/Install.exe"
-        
-        if (Test-Path $Destination)
+        if($msg -eq "Yes")
         {
-            Remove-Item -Verbose -Force $Destination
+            $Link = $Link + "/ninite.exe"
+            $Destination = "$env:temp/Install.exe"
+            
+            if (Test-Path $Destination)
+            {
+                Remove-Item -Verbose -Force $Destination
+            }
+
+            Write-Host "Ninite Link: $($Link)"
+            $discription.Text = "Starting Download"
+            Invoke-WebRequest $Link -OutFile $Destination
+            Start-Process -Filepath $Destination
+            $discription.Text = "Installing..."
         }
-
-        Write-Host "Ninite Link: $($Link)"
-        $discription.Text = "Starting Download"
-        Invoke-WebRequest $Link -OutFile $Destination
-        Start-Process -Filepath $Destination
-        $discription.Text = "Installing..."
-
     }
     else
     {
