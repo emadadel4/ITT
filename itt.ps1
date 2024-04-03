@@ -28,7 +28,7 @@ Add-Type -AssemblyName System.Windows.Forms
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "24.04.02"
+$sync.version = "24.04.03"
 $sync.github = "https://github.com/emadadel4"
 $sync.website = "https://eprojects.orgfree.com"
 $sync.author = "Emad Adel @emadadel4"
@@ -477,6 +477,15 @@ $sync.configs.applications = '[
     "description": "Revo Uninstaller is an uninstaller for Microsoft Windows. It uninstalls programs and additionally removes any files and Windows registry entries left behind by the program''s uninstaller or by the Windows uninstall function.",
     "url": "Revo",
     "ninite": "Revo",
+    "check": "false",
+    "website": "none",
+    "category": "Utilities"
+  },
+  {
+    "name": "WinDirStat",
+    "description": "Directory Statistics 1.1.2.80.",
+    "url": "windirstat",
+    "ninite": "windirstat",
     "check": "false",
     "website": "none",
     "category": "Utilities"

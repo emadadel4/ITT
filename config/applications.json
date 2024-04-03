@@ -156,6 +156,15 @@
     "category": "Utilities"
   },
   {
+    "name": "WinDirStat",
+    "description": "Directory Statistics 1.1.2.80.",
+    "url": "windirstat",
+    "ninite": "windirstat",
+    "check": "false",
+    "website": "none",
+    "category": "Utilities"
+  },
+  {
     "name": "CCleaner",
     "description": "CCleaner is a utility used to clean potentially unwanted files and invalid Windows Registry entries from a computer1. It was originally developed by Piriform and has been around since 200412. It started out as an optimization tool for PCs, but its developers rolled out iterations for macOS and Android in 2012 and 2014, respectivel",
     "url": "ccleaner",
