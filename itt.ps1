@@ -483,9 +483,18 @@ $sync.configs.applications = '[
   },
   {
     "name": "WinDirStat",
-    "description": "Directory Statistics 1.1.2.80.",
+    "description": "WinDirStat (Windows Directory Statistics) is a disk usage statistics viewer and cleanup tool for Windows. On start up, WinDirStat reads the whole directory tree once and then presents it in three useful views.",
     "url": "windirstat",
     "ninite": "windirstat",
+    "check": "false",
+    "website": "none",
+    "category": "Utilities"
+  },
+  {
+    "name": "Glary Utilities",
+    "description": "The No. 1 Free, Powerful and All-in-one utility for cleaning your PC. Boosts PC speed and fixes frustrating errors, crashes and freezes. Features one-click functionality and easy, automated options. Over 20 tools to maximize your Computer''s performance.",
+    "url": "glary",
+    "ninite": "glary",
     "check": "false",
     "website": "none",
     "category": "Utilities"
