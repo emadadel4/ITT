@@ -1,5 +1,7 @@
 function Install-WinWinget {
 
+    $isWingetInstalled = Test-WinUtilPackageManager -winget
+
     Try {
         if ($isWingetInstalled -eq "installed") {
             Write-Host "`nWinget is already installed.`r" -ForegroundColor Green
