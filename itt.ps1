@@ -124,6 +124,9 @@ $scriptBlock = {
 
 function Install()
 {
+
+    Install-WinWinget
+
     $packageIDs = @()
     foreach ($item in $list.Items)
     {
