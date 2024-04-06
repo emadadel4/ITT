@@ -137,11 +137,8 @@ function Install()
             {
                 if($item.Content -eq $program.name)
                 {
-                    Write-Host $program.name
                     $packageIDs += $program.winget
-
                     $prog = $program.name
-
                 }
             }
         }
@@ -547,112 +544,114 @@ $sync.configs.applications = '[
   },
   {
     "Name": "Internet Download Manager",
-    "description": "#",
     "winget": "Tonec.InternetDownloadManager",
     "catgory": "Browsers",
     "check": "false"
   },
   {
     "Name": "K-Lite Mega Codec Pack",
-    "description": "#",
     "winget": "CodecGuide.K-LiteCodecPack.Mega",
     "catgory": "Media",
     "check": "false"
   },
   {
+    "Name": "PotPlayer",
+    "winget": "Daum.PotPlayer",
+    "catgory": "Media",
+    "check": "false"
+  },
+  {
     "Name": "VLC",
-    "description": "Mozilla Firefox, or simply Firefox, is a free and open-source web browser developed by the Mozilla Foundation.",
     "winget": "VideoLAN.VLC",
     "catgory": "Media",
     "check": "false"
   },
   {
     "Name": "OpenOffice",
-    "description": "Mozilla Firefox, or simply Firefox, is a free and open-source web browser developed by the Mozilla Foundation.",
     "winget": "Apache.OpenOffice",
     "catgory": "Documents",
     "check": "false"
   },
   {
+    "Name": "FoxitReader",
+    "winget": "Foxit.FoxitReader",
+    "catgory": "Documents",
+    "check": "false"
+  },
+  {
     "Name": "LibreOffice",
-    "description": "Mozilla Firefox, or simply Firefox, is a free and open-source web browser developed by the Mozilla Foundation.",
     "winget": "TheDocumentFoundation.LibreOffice",
     "catgory": "Documents",
     "check": "false"
   },
   {
     "Name": "SumatraPDF",
-    "description": "Mozilla Firefox, or simply Firefox, is a free and open-source web browser developed by the Mozilla Foundation.",
     "winget": "SumatraPDF.SumatraPDF",
     "catgory": "Documents",
     "check": "false"
   },
   {
     "Name": "WinRAR",
-    "description": "Mozilla Firefox, or simply Firefox, is a free and open-source web browser developed by the Mozilla Foundation.",
     "winget": "RARLab.WinRAR",
     "catgory": "Compression",
     "check": "false"
   },
   {
     "Name": "7-Zip",
-    "description": "Mozilla Firefox, or simply Firefox, is a free and open-source web browser developed by the Mozilla Foundation.",
     "winget": "7zip.7zip",
     "catgory": "Compression",
     "check": "false"
   },
   {
     "Name": "WinZip",
-    "description": "Mozilla Firefox, or simply Firefox, is a free and open-source web browser developed by the Mozilla Foundation.",
     "winget": "Corel.WinZip",
     "catgory": "Compression",
     "check": "false"
   },
   {
     "Name": "QQPlayer",
-    "description": "Mozilla Firefox, or simply Firefox, is a free and open-source web browser developed by the Mozilla Foundation.",
     "winget": "Tencent.QQPlayer",
     "catgory": "Media",
     "check": "false"
   },
   {
     "Name": "Telegram Desktop",
-    "description": "Mozilla Firefox, or simply Firefox, is a free and open-source web browser developed by the Mozilla Foundation.",
     "winget": "Telegram.TelegramDesktop",
-    "catgory": "Messenger",
+    "catgory": "Communication",
+    "check": "false"
+  },
+  {
+    "Name": "WhatsApp",
+    "winget": "WhatsApp.WhatsApp",
+    "catgory": "Communication",
     "check": "false"
   },
   {
     "Name": "Skype",
-    "description": "Mozilla Firefox, or simply Firefox, is a free and open-source web browser developed by the Mozilla Foundation.",
     "winget": "Microsoft.Skype",
-    "catgory": "Messenger",
+    "catgory": "Communication",
     "check": "false"
   },
   {
     "Name": "Zoom",
-    "description": "Mozilla Firefox, or simply Firefox, is a free and open-source web browser developed by the Mozilla Foundation.",
     "winget": " Zoom.Zoom",
-    "catgory": "Messenger",
+    "catgory": "Communication",
     "check": "false"
   },
   {
     "Name": "Microsoft Teams",
-    "description": "Mozilla Firefox, or simply Firefox, is a free and open-source web browser developed by the Mozilla Foundation.",
     "winget": "Microsoft.Teams",
-    "catgory": "Messenger",
+    "catgory": "Communication",
     "check": "false"
   },
   {
     "Name": "TeamViewer",
-    "description": "Mozilla Firefox, or simply Firefox, is a free and open-source web browser developed by the Mozilla Foundation.",
     "winget": "TeamViewer.TeamViewer",
     "catgory": "File Sharing",
     "check": "false"
   },
   {
     "Name": "SHAREit",
-    "description": "Mozilla Firefox, or simply Firefox, is a free and open-source web browser developed by the Mozilla Foundation.",
     "winget": "XPFCDMX67W9PXL",
     "catgory": "File Sharing",
     "check": "false"
@@ -665,22 +664,80 @@ $sync.configs.applications = '[
   },
   {
     "Name": "GIMP",
-    "description": "Mozilla Firefox, or simply Firefox, is a free and open-source web browser developed by the Mozilla Foundation.",
     "winget": "GIMP.GIMP",
     "catgory": "Imaging",
     "check": "false"
   },
   {
-    "Name": "Microsoft Visual C++ 2022 Redistributable",
-    "description": "Mozilla Firefox, or simply Firefox, is a free and open-source web browser developed by the Mozilla Foundation.",
-    "winget": "Microsoft.VCRedist.2022.arm64",
+    "Name": "Microsoft Visual C++ 2005 (x86) Redistributable",
+    "winget": "Microsoft.VCRedist.2005.x86",
     "catgory": "Gaming",
     "check": "false"
   },
   {
-    "Name": "Microsoft Visual C++ 2019 Redistributable",
+    "Name": "Microsoft Visual C++ 2005 (x64) Redistributable",
+    "winget": "Microsoft.VCRedist.2005.x64",
+    "catgory": "Gaming",
+    "check": "false"
+  },
+  {
+    "Name": "Microsoft Visual C++ 2008 (x86) Redistributable",
+    "winget": "Microsoft.VCRedist.2008.x86",
+    "catgory": "Gaming",
+    "check": "false"
+  },
+  {
+    "Name": "Microsoft Visual C++ 2008 (x64) Redistributable",
+    "winget": "Microsoft.VCRedist.2008.x64",
+    "catgory": "Gaming",
+    "check": "false"
+  },
+  {
+    "Name": "Microsoft Visual C++ 2010 (x86) Redistributable",
+    "winget": "Microsoft.VCRedist.2010.x86",
+    "catgory": "Gaming",
+    "check": "false"
+  },
+  {
+    "Name": "Microsoft Visual C++ 2010 (x64) Redistributable",
+    "winget": "Microsoft.VCRedist.2010.x64",
+    "catgory": "Gaming",
+    "check": "false"
+  },
+  {
+    "Name": "Microsoft Visual C++ 2012 (x86) Redistributable",
+    "winget": "Microsoft.VCRedist.2012.x86",
+    "catgory": "Gaming",
+    "check": "false"
+  },
+  {
+    "Name": "Microsoft Visual C++ 2012 (x64) Redistributable",
+    "winget": "Microsoft.VCRedist.2012.x64",
+    "catgory": "Gaming",
+    "check": "false"
+  },
+  {
+    "Name": "Microsoft Visual C++ 2013 (x86) Redistributable",
+    "winget": "Microsoft.VCRedist.2013.x86",
+    "catgory": "Gaming",
+    "check": "false"
+  },
+  {
+    "Name": "Microsoft Visual C++ 2013 (x64) Redistributable",
+    "winget": "Microsoft.VCRedist.2013.x64",
+    "catgory": "Gaming",
+    "check": "false"
+  },
+  {
+    "Name": "Microsoft Visual C++ 2015-2022 (x64) Redistributable",
+    "winget": "Microsoft.VCRedist.2015+.x64",
+    "catgory": "Gaming",
+    "check": "false"
+  },
+  {
+    "Name": "Microsoft Visual C++ 2015-2022  (x86) Redistributable",
     "description": "Mozilla Firefox, or simply Firefox, is a free and open-source web browser developed by the Mozilla Foundation.",
-    "winget": "Microsoft Visual C++ 2019 Redistributable ??? Microsoft.VCRedist.2019.arm64",
+    "winget": "Microsoft.VCRedist.2015+.x86",
     "catgory": "Gaming",
     "check": "false"
   },
@@ -814,56 +871,56 @@ $sync.configs.applications = '[
   },
   {
     "Name": "FxSound",
-    "description": "Mozilla Firefox, or simply Firefox, is a free and open-source web browser developed by the Mozilla Foundation.",
     "winget": "FxSoundLLC.FxSound",
     "catgory": "Utilities",
     "check": "false"
   },
   {
     "Name": "AnyDesk",
-    "description": "Mozilla Firefox, or simply Firefox, is a free and open-source web browser developed by the Mozilla Foundation.",
     "winget": "AnyDeskSoftwareGmbH.AnyDesk",
     "catgory": "Utilities",
     "check": "false"
   },
   {
     "Name": "qBittorrent",
-    "description": "Mozilla Firefox, or simply Firefox, is a free and open-source web browser developed by the Mozilla Foundation.",
     "winget": "qBittorrent.qBittorrent",
     "catgory": "Utilities",
     "check": "false"
   },
   {
     "Name": "XAMPP",
-    "description": "Mozilla Firefox, or simply Firefox, is a free and open-source web browser developed by the Mozilla Foundation.",
     "winget": "XAMPP 8.2",
-    "catgory": "Dev",
+    "catgory": "Developer",
     "check": "false"
   },
   {
     "Name": "Visual Studio Professional 2022",
-    "description": "Mozilla Firefox, or simply Firefox, is a free and open-source web browser developed by the Mozilla Foundation.",
     "winget": "Microsoft.VisualStudio.2022.Professional",
-    "catgory": "Dev",
+    "catgory": "Developer",
     "check": "false"
   },
   {
     "Name": "Visual Studio Community 2022",
-    "description": "Mozilla Firefox, or simply Firefox, is a free and open-source web browser developed by the Mozilla Foundation.",
     "winget": "Microsoft.VisualStudio.2022.Community",
-    "catgory": "Dev",
+    "catgory": "Developer",
+    "check": "false"
+  },
+  {
+    "Name": "Windows Terminal",
+    "winget": "Microsoft.WindowsTerminal",
+    "catgory": "Developer",
     "check": "false"
   },
   {
     "Name": "GitHub Desktop",
     "winget": "GitHub.GitHubDesktop",
-    "catgory": "Dev",
+    "catgory": "Developer",
     "check": "false"
   },
   {
     "Name": "FL Studio",
     "winget": "ImageLine.FLStudio",
-    "catgory": "Dev",
+    "catgory": "Developer",
     "check": "false"
   }
 ]' | convertfrom-json
@@ -1029,14 +1086,17 @@ $inputXML =  '
 
 
         <Grid Margin="20" Grid.Row="0" Grid.ColumnSpan="2" >
-            <TextBlock Name="about"  Text="ITT" FontSize="20" Width="100" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            <TextBlock Name="about"  Text="ITT" FontSize="20" Width="auto" VerticalAlignment="Center" HorizontalAlignment="Left"/>
             <StackPanel Name="catg" Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button Name="all" Content="All" Height="20" Width="88" Margin="10"/>
-                <Button Name="m" Content="Media" Height="20" Width="88" Margin="10"/>
-                <Button Name="b" Content="Browsers" Height="20" Width="88" Margin="10"/>
-                <Button Name="g" Content="Gaming" Height="20" Width="88" Margin="10"/>
-                <Button Name="d" Content="Dev" Height="20" Width="88" Margin="10"/>
-                <Button Name="u" Content="Utilities" Height="20" Width="88" Margin="10"/>
+                <Button Name="all" Content="All" Height="20" Width="60" Margin="4"/>
+                <Button Name="m" Content="Media" Height="20" Width="60" Margin="4"/>
+                <Button Name="b" Content="Browsers" Height="20" Width="60" Margin="4"/>
+                <Button Name="g" Content="Gaming" Height="20" Width="60" Margin="4"/>
+                <Button Name="d" Content="Developer" Height="20" Width="60" Margin="4"/>
+                <Button Name="u" Content="Utilities" Height="20" Width="60" Margin="4"/>
+                <Button Name="c" Content="Communication" Height="20" Width="66" Margin="4"/>
+
+                
             </StackPanel>
         </Grid>
 
@@ -1301,6 +1361,7 @@ $window.FindName('d').add_click({Catgoray($window.FindName('d').Content)})
 $window.FindName('g').add_click({Catgoray($window.FindName('g').Content)})
 
 $window.FindName('u').add_click({Catgoray($window.FindName('u').Content)})
+$window.FindName('c').add_click({Catgoray($window.FindName('c').Content)})
 
 $window.FindName('all').add_click({ShowAll})
 

@@ -34,14 +34,17 @@
 
 
         <Grid Margin="20" Grid.Row="0" Grid.ColumnSpan="2" >
-            <TextBlock Name="about"  Text="ITT" FontSize="20" Width="100" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            <TextBlock Name="about"  Text="ITT" FontSize="20" Width="auto" VerticalAlignment="Center" HorizontalAlignment="Left"/>
             <StackPanel Name="catg" Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button Name="all" Content="All" Height="20" Width="88" Margin="10"/>
-                <Button Name="m" Content="Media" Height="20" Width="88" Margin="10"/>
-                <Button Name="b" Content="Browsers" Height="20" Width="88" Margin="10"/>
-                <Button Name="g" Content="Gaming" Height="20" Width="88" Margin="10"/>
-                <Button Name="d" Content="Dev" Height="20" Width="88" Margin="10"/>
-                <Button Name="u" Content="Utilities" Height="20" Width="88" Margin="10"/>
+                <Button Name="all" Content="All" Height="20" Width="60" Margin="4"/>
+                <Button Name="m" Content="Media" Height="20" Width="60" Margin="4"/>
+                <Button Name="b" Content="Browsers" Height="20" Width="60" Margin="4"/>
+                <Button Name="g" Content="Gaming" Height="20" Width="60" Margin="4"/>
+                <Button Name="d" Content="Developer" Height="20" Width="60" Margin="4"/>
+                <Button Name="u" Content="Utilities" Height="20" Width="60" Margin="4"/>
+                <Button Name="c" Content="Communication" Height="20" Width="66" Margin="4"/>
+
+                
             </StackPanel>
         </Grid>
 

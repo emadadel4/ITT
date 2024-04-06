@@ -14,6 +14,7 @@ $window.FindName('d').add_click({Catgoray($window.FindName('d').Content)})
 $window.FindName('g').add_click({Catgoray($window.FindName('g').Content)})
 
 $window.FindName('u').add_click({Catgoray($window.FindName('u').Content)})
+$window.FindName('c').add_click({Catgoray($window.FindName('c').Content)})
 
 $window.FindName('all').add_click({ShowAll})
 

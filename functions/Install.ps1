@@ -40,11 +40,8 @@ function Install()
             {
                 if($item.Content -eq $program.name)
                 {
-                    Write-Host $program.name
                     $packageIDs += $program.winget
-
                     $prog = $program.name
-
                 }
             }
         }
