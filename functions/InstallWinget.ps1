@@ -12,7 +12,7 @@ function Install-WinWinget {
         }
 
         # Install winget
-        Install-Module -Name winget -Force -AllowClobber -Scope CurrentUser -Repository PSGallery -Confirm:$false -ErrorAction SilentlyContinue
+        Install-Module -Name winget -Force -AllowClobber -Scope CurrentUser -Repository PSGallery -ErrorAction SilentlyContinue
 
         if (!(Get-Command winget -ErrorAction SilentlyContinue)) {
             Write-Output "Failed to install winget. Please download and install it manually."

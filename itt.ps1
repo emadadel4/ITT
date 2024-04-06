@@ -25,8 +25,6 @@ if (!(Test-Path -Path $ENV:TEMP)) {
 Add-Type -AssemblyName PresentationFramework
 Add-Type -AssemblyName System.Windows.Forms
 
-set-executionpolicy remotesigned
-
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
@@ -129,10 +127,6 @@ $scriptBlock = {
 
 function Install()
 {
-
-    Install-WinWinget
-    
-
     $prog = @()
 
     $packageIDs = @()
@@ -212,7 +206,7 @@ function Install-WinWinget {
         }
 
         # Install winget
-        Install-Module -Name winget -Force -AllowClobber -Scope CurrentUser -Repository PSGallery -Confirm:$false -ErrorAction SilentlyContinue
+        Install-Module -Name winget -Force -AllowClobber -Scope CurrentUser -Repository PSGallery -ErrorAction SilentlyContinue
 
         if (!(Get-Command winget -ErrorAction SilentlyContinue)) {
             Write-Output "Failed to install winget. Please download and install it manually."
@@ -1347,6 +1341,7 @@ $window.FindName('c').add_click({Catgoray($window.FindName('c').Content)})
 $window.FindName('all').add_click({ShowAll})
 
 
+Install-WinWinget
 
 
 

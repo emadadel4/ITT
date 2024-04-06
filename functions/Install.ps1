@@ -30,10 +30,6 @@ $scriptBlock = {
 
 function Install()
 {
-
-    Install-WinWinget
-    
-
     $prog = @()
 
     $packageIDs = @()
