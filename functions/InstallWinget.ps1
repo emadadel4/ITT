@@ -3,14 +3,25 @@ function Install-WinWinget {
     # Check if winget is installed
     $wingetInstalled = Get-Command winget -ErrorAction SilentlyContinue
 
-    if (-not $wingetInstalled) {
-        # Install winget
-        Write-Host "Winget is not installed. Installing..."
-        Invoke-WebRequest -Uri "https://github.com/microsoft/winget-cli/releases/download/v1.0.11451/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.appxbundle" -OutFile "$env:TEMP\Microsoft.DesktopAppInstaller.appxbundle"
-        Add-AppxPackage -Path "$env:TEMP\Microsoft.DesktopAppInstaller.appxbundle"
-        Write-Host "Winget installed successfully."
+    if ($wingetInstalled) {
+        Write-Host "winget is already installed."
     } else {
-        Write-Host "Winget is already installed."
+        Write-Host "winget is not installed. Installing it now..."
+        
+        # Download the latest winget package
+        $wingetUrl = "https://api.github.com/repos/microsoft/winget-cli/releases/latest"
+        $wingetDownloadUrl = (Invoke-WebRequest -Uri $wingetUrl).Content | ConvertFrom-Json | 
+            Where-Object { $_.assets.browser_download_url -match '.msixbundle' } | 
+            Select-Object -ExpandProperty browser_download_url
+        Invoke-WebRequest -Uri $wingetDownloadUrl -OutFile "winget.msixbundle" -UseBasicParsing
+        
+        # Install winget
+        Add-AppxPackage -Path ".\winget.msixbundle"
+        
+        # Clean up the downloaded file
+        Remove-Item "winget.msixbundle"
+        
+        Write-Host "winget has been installed successfully."
     }
-    
+
 }
