@@ -36,24 +36,24 @@ $sync.author = "Emad Adel @emadadel4"
 $sync.configs = @{}
 $sync.ProcessRunning = $false
 
-# $currentPid = [System.Security.Principal.WindowsIdentity]::GetCurrent()
-# $principal = new-object System.Security.Principal.WindowsPrincipal($currentPid)
-# $adminRole=[System.Security.Principal.WindowsBuiltInRole]::Administrator
+$currentPid = [System.Security.Principal.WindowsIdentity]::GetCurrent()
+$principal = new-object System.Security.Principal.WindowsPrincipal($currentPid)
+$adminRole=[System.Security.Principal.WindowsBuiltInRole]::Administrator
 
 
-# if ($principal.IsInRole($adminRole))
-# {
-#     $Host.UI.RawUI.WindowTitle = $myInvocation.MyCommand.Definition + "(Admin)"
-#     clear-host
-# }
-# else
-# {
-#     $newProcess = new-object System.Diagnostics.ProcessStartInfo "PowerShell";
-#     $newProcess.Arguments = $myInvocation.MyCommand.Definition;
-#     $newProcess.Verb = "runas";
-#     [System.Diagnostics.Process]::Start($newProcess);
-#     break
-# }
+if ($principal.IsInRole($adminRole))
+{
+    $Host.UI.RawUI.WindowTitle = $myInvocation.MyCommand.Definition + "(Admin)"
+    clear-host
+}
+else
+{
+    $newProcess = new-object System.Diagnostics.ProcessStartInfo "PowerShell";
+    $newProcess.Arguments = $myInvocation.MyCommand.Definition;
+    $newProcess.Verb = "runas";
+    [System.Diagnostics.Process]::Start($newProcess);
+    break
+}
 
 function about{
 
@@ -187,6 +187,15 @@ function ApplyTweaks() {
     }
 }
 
+function PlayMusic
+{
+    $MediaPlayer = [Windows.Media.Playback.MediaPlayer, Windows.Media, ContentType = WindowsRuntime]::New()
+    $MediaPlayer.IsLoopingEnabled = $true
+    $MediaPlayer.Volume = 0.6
+    $ost = 'https://vgmsite.com/soundtracks/assassins-creed-ezios-family-m-me-remix-2022/qdxeshajdz/01.%20Ezio%27s%20Family%20%28M%C3%B8me%20Remix%29.mp3'
+    $MediaPlayer.Source = [Windows.Media.Core.MediaSource]::CreateFromUri($ost)
+    $MediaPlayer.Play()   
+}
 #region Search in listview 
 function Search{
     
@@ -1099,6 +1108,36 @@ $itemLink.add_MouseLeftButtonDown({
 
 })
 #endregion
+#region Generate tweaks from json file
+$sync.tweaks = $Window.FindName("tweaks")
+foreach ($item in $sync.configs.tweaks)
+{
+    $checkbox = New-Object System.Windows.Controls.CheckBox
+    $sync.tweaks.Items.Add($checkbox)
+    $checkbox.Content = $item.name
+
+}
+
+# Get Discription of selected tweaks in $list
+$sync.tweaks.Add_SelectionChanged({
+		
+    foreach($data in $sync.configs.tweaks)
+    {
+        if($sync.tweaks.SelectedItem.Content -eq $data.name)
+        {
+            $discription.Text = $data.description
+
+        }
+    }
+})
+
+#endregion
+
+Clear-Host
+
+#===========================================================================
+# End Loops 
+#===========================================================================
 #region Generate tweaks from json file
 $sync.tweaks = $Window.FindName("tweaks")
 foreach ($item in $sync.configs.tweaks)
