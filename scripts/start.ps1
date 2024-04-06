@@ -21,7 +21,7 @@ Add-Type -AssemblyName System.Windows.Forms
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "#{ver}"
+$sync.version = "#{replaceme}"
 $sync.github = "https://github.com/emadadel4"
 $sync.website = "https://eprojects.orgfree.com"
 $sync.author = "Emad Adel @emadadel4"
