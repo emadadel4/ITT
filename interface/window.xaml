@@ -34,9 +34,8 @@
 
 
         <Grid Margin="20" Grid.Row="0" Grid.ColumnSpan="2" >
-            <TextBlock Text="ITT" FontSize="20" Width="100" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            <TextBlock Name="about"  Text="ITT" FontSize="20" Width="100" VerticalAlignment="Center" HorizontalAlignment="Left"/>
             <StackPanel Name="catg" Orientation="Horizontal" HorizontalAlignment="Center">
-
                 <Button Name="all" Content="All" Height="20" Width="88" Margin="10"/>
                 <Button Name="m" Content="Media" Height="20" Width="88" Margin="10"/>
                 <Button Name="b" Content="Browsers" Height="20" Width="88" Margin="10"/>
