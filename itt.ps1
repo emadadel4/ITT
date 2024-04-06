@@ -55,6 +55,9 @@ else
     break
 }
 
+#===========================================================================
+# Start functions
+#===========================================================================
 function about{
 
     $authorInfo = @"
@@ -92,10 +95,6 @@ function ShowAll{
             $checkbox.Content = $item.name
     }
 }
-
-#===========================================================================
-# Start functions
-#===========================================================================
 
 # Create a runspace to execute Winget command
 $runspace = [runspacefactory]::CreateRunspace()
@@ -242,15 +241,6 @@ function Install-WinWinget {
         }
     }
 }
-function PlayMusic
-{
-    $MediaPlayer = [Windows.Media.Playback.MediaPlayer, Windows.Media, ContentType = WindowsRuntime]::New()
-    $MediaPlayer.IsLoopingEnabled = $true
-    $MediaPlayer.Volume = 0.6
-    $ost = 'https://vgmsite.com/soundtracks/assassins-creed-ezios-family-m-me-remix-2022/qdxeshajdz/01.%20Ezio%27s%20Family%20%28M%C3%B8me%20Remix%29.mp3'
-    $MediaPlayer.Source = [Windows.Media.Core.MediaSource]::CreateFromUri($ost)
-    $MediaPlayer.Play()   
-}
 #region Search in listview 
 function Search{
     
@@ -262,7 +252,7 @@ function Search{
     }
 
 }
-
+#endregion
 # Show Custom Msg
 function Show-CustomDialog {
     
@@ -425,10 +415,6 @@ function ChangeTap() {
         $window.FindName('installBtn').Visibility = "Hidden"
     }
 }
-
-#===========================================================================
-# End Function
-#===========================================================================
 function Test-WinUtilPackageManager {
     <#
 
@@ -515,6 +501,9 @@ function Test-WinUtilPackageManager {
 
     return $status
 }
+#===========================================================================
+# End Functions
+#===========================================================================
 $sync.configs.applications = '[
   {
     "Name": "Thorium",

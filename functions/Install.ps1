@@ -1,8 +1,4 @@
 
-#===========================================================================
-# Start functions
-#===========================================================================
-
 # Create a runspace to execute Winget command
 $runspace = [runspacefactory]::CreateRunspace()
 $runspace.Open()
