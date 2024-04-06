@@ -34,7 +34,7 @@
 
 
         <Grid Margin="20" Grid.Row="0" Grid.ColumnSpan="2" >
-            <TextBlock Text="@emadadel4" FontSize="22" Width="100" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            <TextBlock Text="ITT" FontSize="20" Width="100" VerticalAlignment="Center" HorizontalAlignment="Left"/>
             <StackPanel Name="catg" Orientation="Horizontal" HorizontalAlignment="Center">
 
                 <Button Name="all" Content="All" Height="20" Width="88" Margin="10"/>
