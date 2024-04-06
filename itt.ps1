@@ -201,11 +201,13 @@ function Install-WinWinget {
         # Check if PowerShellGet module is installed
         if (!(Get-Module -Name PowerShellGet -ListAvailable)) {
             Write-Output "PowerShellGet module not found. Installing PowerShellGet module..."
-            Install-Module -Name PowerShellGet -Force -AllowClobber -Scope CurrentUser -Repository PSGallery -ErrorAction SilentlyContinue
+            
+            Install-PackageProvider -Name "NuGet" -Force
+            Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted
         }
 
         # Install winget
-        Install-Module -Name winget -Force -AllowClobber -Scope CurrentUser -Repository PSGallery -ErrorAction SilentlyContinue
+        Install-Script winget-install -Force
 
         if (!(Get-Command winget -ErrorAction SilentlyContinue)) {
             Write-Output "Failed to install winget. Please download and install it manually."
@@ -215,7 +217,6 @@ function Install-WinWinget {
     } else {
         Write-Output "winget is already installed."
     }
-    
 }
 #region Search in listview 
 function Search{
