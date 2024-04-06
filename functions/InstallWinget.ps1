@@ -1,50 +1,22 @@
 function Install-WinWinget {
 
-    Try {
-        if ($isWingetInstalled -eq "installed") {
-            Write-Host "`nWinget is already installed.`r" -ForegroundColor Green
-            return
-        } elseif ($isWingetInstalled -eq "outdated") {
-            Write-Host "`nWinget is Outdated. Continuing with install.`r" -ForegroundColor Yellow
-        } else {
-            Write-Host "`nWinget is not Installed. Continuing with install.`r" -ForegroundColor Red
-        }
+    # Check if winget is installed
+    $wingetInstalled = Get-Command winget -ErrorAction SilentlyContinue
 
-        # Gets the computer's information
-        if ($null -eq $sync.ComputerInfo){
-            $ComputerInfo = Get-ComputerInfo -ErrorAction Stop
-        } else {
-            $ComputerInfo = $sync.ComputerInfo
-        }
+    if (-not $wingetInstalled) {
+        # Download and install winget
+        $wingetInstallerUrl = "https://github.com/microsoft/winget-cli/releases/latest/download/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle"
+        $wingetInstallerPath = "$env:TEMP\winget.msixbundle"
 
-        if (($ComputerInfo.WindowsVersion) -lt "1809") {
-            # Checks if Windows Version is too old for Winget
-            Write-Host "Winget is not supported on this version of Windows (Pre-1809)" -ForegroundColor Red
-            return
-        }
+        Write-Host "Winget is not installed. Installing..."
 
-        # Install Winget via GitHub method.
-        # Used part of my own script with some modification: ruxunderscore/windows-initialization
-        Write-Host "Downloading Winget Prerequsites`n"
-        Get-WinUtilWingetPrerequisites
-        Write-Host "Downloading Winget and License File`r"
-        Get-WinUtilWingetLatest
-        Write-Host "Installing Winget w/ Prerequsites`r"
-        Add-AppxProvisionedPackage -Online -PackagePath $ENV:TEMP\Microsoft.DesktopAppInstaller.msixbundle -DependencyPackagePath $ENV:TEMP\Microsoft.VCLibs.x64.Desktop.appx, $ENV:TEMP\Microsoft.UI.Xaml.x64.appx -LicensePath $ENV:TEMP\License1.xml
-        Write-Host "Winget Installed" -ForegroundColor Green
-        # Winget only needs a refresh of the environment variables to be used.
-        Write-Output "Refreshing Environment Variables...`n"
-        $ENV:PATH = [System.Environment]::GetEnvironmentVariable("Path", "Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path", "User")
-    } Catch {
-        Write-Host "Failure detected while installing via GitHub method. Continuing with Chocolatey method as fallback." -ForegroundColor Red
-        # In case install fails via GitHub method.
-        Try {
-        Start-Process -Verb runas -FilePath powershell.exe -ArgumentList "choco install winget-cli"
-        Write-Host "Winget Installed" -ForegroundColor Green
-        Write-Output "Refreshing Environment Variables...`n"
-        $ENV:PATH = [System.Environment]::GetEnvironmentVariable("Path", "Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path", "User")
-        } Catch {
-            throw [WingetFailedInstall]::new('Failed to install!')
-        }
+        Invoke-WebRequest -Uri $wingetInstallerUrl -OutFile $wingetInstallerPath
+        Add-AppxPackage -Path $wingetInstallerPath
+
+        Write-Host "Winget installed successfully."
+    } else {
+        Write-Host "Winget is already installed."
     }
+
+
 }
