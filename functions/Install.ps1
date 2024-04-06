@@ -14,7 +14,7 @@ $scriptBlock = {
         
         # Update status label
         $window.Dispatcher.Invoke([Action]{
-            $window.FindName('description').Text = "Downloading $id..."
+            #$window.FindName('description').Text = "Downloading $id..."
         })
     }
 
@@ -29,6 +29,8 @@ function Install()
 
     Install-WinWinget
 
+    $prog = @()
+
     $packageIDs = @()
     foreach ($item in $list.Items)
     {
@@ -40,6 +42,9 @@ function Install()
                 {
                     Write-Host $program.name
                     $packageIDs += $program.winget
+
+                    $prog = $program.name
+
                 }
             }
         }
@@ -52,7 +57,7 @@ function Install()
     $handle = $ps.BeginInvoke()
     
     # Update status label
-    $window.FindName('description').Text = "Downloading..."
+    $window.FindName('description').Text = "Downloading... $prog"
 }
 
 function ApplyTweaks() {
