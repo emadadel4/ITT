@@ -4,24 +4,19 @@
 #===========================================================================
 
 #region Generate items from json file
-$sync.list = $Window.FindName("list")
+$list = $Window.FindName("list")
 foreach ($item in $sync.configs.applications)
 {
     $checkbox = New-Object System.Windows.Controls.CheckBox
-    $sync.list.Items.Add($checkbox)
+    $list.Items.Add($checkbox)
     $checkbox.Content = $item.name
-
-    if($item.check -eq "true")
-    {
-        $checkbox.IsChecked = $true
-    }
 
 }
 
 # Get Discription of selected item in $list
 $discription = $Window.FindName("description")
 $itemLink = $Window.FindName('itemLink')
-$sync.list.Add_SelectionChanged({
+$list.Add_SelectionChanged({
 		
     $itemLink.Visibility = "Visible"
 
@@ -34,9 +29,8 @@ $sync.list.Add_SelectionChanged({
         }
     }
 })
-#endregion
 
-#region Get Selected item Website link from json file
+# Get Selected item Website link from json file
 $itemLink.add_MouseLeftButtonDown({
 
     foreach ($item in $sync.list.SelectedItem.Content)

@@ -1,0 +1,344 @@
+[
+  {
+    "Name": "Thorium",
+    "description": "#",
+    "winget": "EDRLab.Thorium",
+    "catgory": "Browsers",
+    "check": "false"
+  },
+  {
+    "Name": "Firefox",
+    "description": "Mozilla Firefox, or simply Firefox, is a free and open-source web browser developed by the Mozilla Foundation.",
+    "winget": "Mozilla.Firefox",
+    "catgory": "Browsers",
+    "check": "false"
+  },
+  {
+    "Name": "Google Chrome",
+    "description": "Chrome is a fast, simple, and secure web browser, built for the modern web.",
+    "winget": "Google.Chrome",
+    "catgory": "Browsers",
+    "check": "false"
+  },
+  {
+    "Name": "Chromium",
+    "description": "chromium is a fast, simple, and secure web browser, built for the modern web.",
+    "winget": "eloston.ungoogled-chromium",
+    "catgory": "Browsers",
+    "check": "false"
+  },
+  {
+    "Name": "Brave",
+    "description": "#",
+    "winget": "Google.Chrome",
+    "catgory": "Brave.Brave",
+    "check": "false"
+  },
+  {
+    "Name": "Internet Download Manager",
+    "description": "#",
+    "winget": "Tonec.InternetDownloadManager",
+    "catgory": "Browsers",
+    "check": "false"
+  },
+  {
+    "Name": "K-Lite Mega Codec Pack",
+    "description": "#",
+    "winget": "CodecGuide.K-LiteCodecPack.Mega",
+    "catgory": "Media",
+    "check": "false"
+  },
+  {
+    "Name": "VLC",
+    "description": "Mozilla Firefox, or simply Firefox, is a free and open-source web browser developed by the Mozilla Foundation.",
+    "winget": "VideoLAN.VLC",
+    "catgory": "Media",
+    "check": "false"
+  },
+  {
+    "Name": "OpenOffice",
+    "description": "Mozilla Firefox, or simply Firefox, is a free and open-source web browser developed by the Mozilla Foundation.",
+    "winget": "Apache.OpenOffice",
+    "catgory": "Documents",
+    "check": "false"
+  },
+  {
+    "Name": "LibreOffice",
+    "description": "Mozilla Firefox, or simply Firefox, is a free and open-source web browser developed by the Mozilla Foundation.",
+    "winget": "TheDocumentFoundation.LibreOffice",
+    "catgory": "Documents",
+    "check": "false"
+  },
+  {
+    "Name": "SumatraPDF",
+    "description": "Mozilla Firefox, or simply Firefox, is a free and open-source web browser developed by the Mozilla Foundation.",
+    "winget": "SumatraPDF.SumatraPDF",
+    "catgory": "Documents",
+    "check": "false"
+  },
+  {
+    "Name": "WinRAR",
+    "description": "Mozilla Firefox, or simply Firefox, is a free and open-source web browser developed by the Mozilla Foundation.",
+    "winget": "RARLab.WinRAR",
+    "catgory": "Compression",
+    "check": "false"
+  },
+  {
+    "Name": "7-Zip",
+    "description": "Mozilla Firefox, or simply Firefox, is a free and open-source web browser developed by the Mozilla Foundation.",
+    "winget": "7zip.7zip",
+    "catgory": "Compression",
+    "check": "false"
+  },
+  {
+    "Name": "WinZip",
+    "description": "Mozilla Firefox, or simply Firefox, is a free and open-source web browser developed by the Mozilla Foundation.",
+    "winget": "Corel.WinZip",
+    "catgory": "Compression",
+    "check": "false"
+  },
+  {
+    "Name": "QQPlayer",
+    "description": "Mozilla Firefox, or simply Firefox, is a free and open-source web browser developed by the Mozilla Foundation.",
+    "winget": "Tencent.QQPlayer",
+    "catgory": "Media",
+    "check": "false"
+  },
+  {
+    "Name": "Telegram Desktop",
+    "description": "Mozilla Firefox, or simply Firefox, is a free and open-source web browser developed by the Mozilla Foundation.",
+    "winget": "Telegram.TelegramDesktop",
+    "catgory": "Messenger",
+    "check": "false"
+  },
+  {
+    "Name": "Skype",
+    "description": "Mozilla Firefox, or simply Firefox, is a free and open-source web browser developed by the Mozilla Foundation.",
+    "winget": "Microsoft.Skype",
+    "catgory": "Messenger",
+    "check": "false"
+  },
+  {
+    "Name": "Zoom",
+    "description": "Mozilla Firefox, or simply Firefox, is a free and open-source web browser developed by the Mozilla Foundation.",
+    "winget": " Zoom.Zoom",
+    "catgory": "Messenger",
+    "check": "false"
+  },
+  {
+    "Name": "Microsoft Teams",
+    "description": "Mozilla Firefox, or simply Firefox, is a free and open-source web browser developed by the Mozilla Foundation.",
+    "winget": "Microsoft.Teams",
+    "catgory": "Messenger",
+    "check": "false"
+  },
+  {
+    "Name": "TeamViewer",
+    "description": "Mozilla Firefox, or simply Firefox, is a free and open-source web browser developed by the Mozilla Foundation.",
+    "winget": "TeamViewer.TeamViewer",
+    "catgory": "File Sharing",
+    "check": "false"
+  },
+  {
+    "Name": "SHAREit",
+    "description": "Mozilla Firefox, or simply Firefox, is a free and open-source web browser developed by the Mozilla Foundation.",
+    "winget": "XPFCDMX67W9PXL",
+    "catgory": "File Sharing",
+    "check": "false"
+  },
+  {
+    "Name": "HiSuite",
+    "winget": "Huawei.HiSuite",
+    "catgory": "File Sharing",
+    "check": "false"
+  },
+  {
+    "Name": "GIMP",
+    "description": "Mozilla Firefox, or simply Firefox, is a free and open-source web browser developed by the Mozilla Foundation.",
+    "winget": "GIMP.GIMP",
+    "catgory": "Imaging",
+    "check": "false"
+  },
+  {
+    "Name": "NVIDIA GeForce NOW",
+    "description": "Mozilla Firefox, or simply Firefox, is a free and open-source web browser developed by the Mozilla Foundation.",
+    "winget": "Nvidia.GeForceNow",
+    "catgory": "Gaming",
+    "check": "false"
+  },
+  {
+    "Name": "NVIDIA PhysX",
+    "description": "Mozilla Firefox, or simply Firefox, is a free and open-source web browser developed by the Mozilla Foundation.",
+    "winget": "Nvidia.PhysX",
+    "catgory": "Gaming",
+    "check": "false"
+  },
+  {
+    "Name": "Steam",
+    "winget": "Valve.Steam",
+    "catgory": "Gaming",
+    "check": "false"
+  },
+  {
+    "Name": "Ubisoft Connect",
+    "winget": "Ubisoft.Connect",
+    "catgory": "Gaming",
+    "check": "false"
+  },
+  {
+    "Name": "GameSave Manager",
+    "winget": "InsaneMatt.GameSaveManager",
+    "catgory": "Gaming",
+    "check": "false"
+  },
+  {
+    "Name": "StreamlabsOBS",
+    "winget": "Streamlabs.StreamlabsOBS",
+    "catgory": "Gaming",
+    "check": "false"
+  },
+  {
+    "Name": "OBS Studio",
+    "winget": " OBSProject.OBSStudio",
+    "catgory": "Gaming",
+    "check": "false"
+  },
+  {
+    "Name": "Driver Easy",
+    "winget": "Easeware.DriverEasy",
+    "catgory": "Utilities",
+    "check": "false"
+  },
+  {
+    "Name": "Snappy Driver Installer",
+    "winget": "samlab-ws.SnappyDriverInstaller",
+    "catgory": "Utilities",
+    "check": "false"
+  },
+  {
+    "Name": "Active@ Partition Recovery",
+    "winget": "LSoftTechnologies.ActivePartitionRecovery",
+    "catgory": "Utilities",
+    "check": "false"
+  },
+  {
+    "Name": "AOMEI Backupper",
+    "winget": "AOMEI.Backupper.Standard",
+    "catgory": "Utilities",
+    "check": "false"
+  },
+  {
+    "Name": "Eassos Recovery",
+    "winget": "Eassos.EassosRecovery",
+    "catgory": "Utilities",
+    "check": "false"
+  },
+  {
+    "Name": "BCUninstaller",
+    "winget": "Klocman.BulkCrapUninstaller",
+    "catgory": "Utilities",
+    "check": "false"
+  },
+  {
+    "Name": "HWiNFO",
+    "winget": "REALiX.HWiNFO",
+    "catgory": "Utilities",
+    "check": "false"
+  },
+  {
+    "Name": "Speccy",
+    "winget": "Piriform.Speccy",
+    "catgory": "Utilities",
+    "check": "false"
+  },
+  {
+    "Name": "FurMark",
+    "winget": "Geeks3D.FurMark",
+    "catgory": "Utilities",
+    "check": "false"
+  },
+  {
+    "Name": "CPUID CPU-Z",
+    "winget": "CPUID.CPU-Z",
+    "catgory": "Utilities",
+    "check": "false"
+  },
+  {
+    "Name": "HandBrake",
+    "winget": "HandBrake.HandBrake",
+    "catgory": "Utilities",
+    "check": "false"
+  },
+  {
+    "Name": "Rufus",
+    "winget": "Rufus.Rufus",
+    "catgory": "Utilities",
+    "check": "false"
+  },
+  {
+    "Name": "Utilso",
+    "winget": "SerhiiSlieptsov.Utilso",
+    "catgory": "Utilities",
+    "check": "false"
+  },
+  {
+    "Name": "Ventoy",
+    "winget": "Ventoy.Ventoy",
+    "catgory": "Utilities",
+    "check": "false"
+  },
+  {
+    "Name": "FxSound",
+    "description": "Mozilla Firefox, or simply Firefox, is a free and open-source web browser developed by the Mozilla Foundation.",
+    "winget": "FxSoundLLC.FxSound",
+    "catgory": "Utilities",
+    "check": "false"
+  },
+  {
+    "Name": "AnyDesk",
+    "description": "Mozilla Firefox, or simply Firefox, is a free and open-source web browser developed by the Mozilla Foundation.",
+    "winget": "AnyDeskSoftwareGmbH.AnyDesk",
+    "catgory": "Utilities",
+    "check": "false"
+  },
+  {
+    "Name": "qBittorrent",
+    "description": "Mozilla Firefox, or simply Firefox, is a free and open-source web browser developed by the Mozilla Foundation.",
+    "winget": "qBittorrent.qBittorrent",
+    "catgory": "Utilities",
+    "check": "false"
+  },
+  {
+    "Name": "XAMPP",
+    "description": "Mozilla Firefox, or simply Firefox, is a free and open-source web browser developed by the Mozilla Foundation.",
+    "winget": "XAMPP 8.2",
+    "catgory": "Dev",
+    "check": "false"
+  },
+  {
+    "Name": "Visual Studio Professional 2022",
+    "description": "Mozilla Firefox, or simply Firefox, is a free and open-source web browser developed by the Mozilla Foundation.",
+    "winget": "Microsoft.VisualStudio.2022.Professional",
+    "catgory": "Dev",
+    "check": "false"
+  },
+  {
+    "Name": "Visual Studio Community 2022",
+    "description": "Mozilla Firefox, or simply Firefox, is a free and open-source web browser developed by the Mozilla Foundation.",
+    "winget": "Microsoft.VisualStudio.2022.Community",
+    "catgory": "Dev",
+    "check": "false"
+  },
+  {
+    "Name": "GitHub Desktop",
+    "winget": "GitHub.GitHubDesktop",
+    "catgory": "Dev",
+    "check": "false"
+  },
+  {
+    "Name": "FL Studio",
+    "winget": "ImageLine.FLStudio",
+    "catgory": "Dev",
+    "check": "false"
+  }
+]

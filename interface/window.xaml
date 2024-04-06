@@ -1,0 +1,125 @@
+
+<!--Window-->
+    <Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Name="Window" Title="ITT @emadadel4" WindowStartupLocation = "CenterScreen" 
+        Background="White"
+        Height="400" MinHeight="600" MinWidth="800" Width="800"  ShowInTaskbar = "True" Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/icon.ico">
+
+    
+        <Window.Resources>
+
+            {{ScrollbarStyle}}
+
+            {{ButtonStyle}}
+
+            {{Colors}}
+
+        </Window.Resources>
+
+    <Grid>
+     
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="199"/>
+        </Grid.ColumnDefinitions>
+
+
+
+        <Grid Margin="20" Grid.Row="0" Grid.ColumnSpan="2" >
+            <TextBlock Name="about" Text="ITT" FontSize="22"/>
+            <StackPanel Name="catg" Orientation="Horizontal" HorizontalAlignment="Center">
+
+                <Button Name="all" Content="All" Height="20" Width="88" Margin="10"/>
+                <Button Name="m" Content="Media" Height="20" Width="88" Margin="10"/>
+                <Button Name="b" Content="Browsers" Height="20" Width="88" Margin="10"/>
+                <Button Name="g" Content="Gaming" Height="20" Width="88" Margin="10"/>
+                <Button Name="d" Content="Dev" Height="20" Width="88" Margin="10"/>
+                <Button Name="u" Content="Utilities" Height="20" Width="88" Margin="10"/>
+            </StackPanel>
+        </Grid>
+
+
+        {{Taps}}
+
+
+        <!--Main Section-->
+        <Grid  Grid.Row="1" Grid.Column="1"  Grid.RowSpan="2" Margin="0">
+                <StackPanel Margin="15" Orientation="Vertical">
+                
+
+                <StackPanel Orientation="Horizontal" Margin="0">
+                    <Grid>
+                        <TextBox Width="144"  VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5" Text="{Binding Text_searchInput}"  x:Name="searchInput"/>
+
+                            <TextBlock IsHitTestVisible="False" Text="Search in list" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="DarkGray">
+
+                                <TextBlock.Style>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Text, ElementName=searchInput}" Value="">
+                                                <Setter Property="Visibility" Value="Visible"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                    </Grid>
+                </StackPanel>
+
+
+
+
+
+                    <TextBlock Name="description" Text="Status" TextWrapping="Wrap" Foreground="Black"/>
+                    <TextBlock Name="itemLink" Visibility="Hidden"  Text="Offical website" Cursor="Hand"  Margin="5" Foreground="blue"/>
+                </StackPanel>
+
+                <!--Install Button-->
+                <Button
+                                Name="installBtn"
+                                Content="Install"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Bottom"
+                                Cursor="Hand"
+                                Width="90" Height="44" Margin="16" Padding="10"
+                            />
+                <!--End Install Button-->
+
+                <!--Apply Button-->
+                <Button
+                            Name="applyBtn"
+                            Content="Apply"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Bottom"
+                            Cursor="Hand"
+                            Visibility="Hidden"
+                            Width="90" Height="44" Margin="16" Padding="10"/>
+                <!--End Apply Button-->
+
+            </Grid>
+        <!--End Main Section-->
+
+        <!--Footer-->
+        <Grid Grid.Row="2">
+                <TextBlock Cursor="Pen" x:Name="quotes"  HorizontalAlignment="Left" VerticalAlignment="Center" Padding="16" TextWrapping="Wrap" Text="Whoami?!" Foreground="Black"/>
+            </Grid>
+        <!--End Footer-->
+
+        
+
+    </Grid>
+
+        
+    </Window>
+<!--End Window-->
+
+

@@ -1,3 +1,4 @@
+# Show Custom Msg
 function Show-CustomDialog {
     
     param(
@@ -144,6 +145,4 @@ function Show-CustomDialog {
     # Show the custom dialog
     $dialog.ShowDialog()
 }
-#===========================================================================
-# End Function
-#===========================================================================
+

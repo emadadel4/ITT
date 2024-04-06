@@ -1,67 +1,65 @@
 
 #===========================================================================
-# function
+# Start functions
 #===========================================================================
 
+# Create a runspace to execute Winget command
+$runspace = [runspacefactory]::CreateRunspace()
+$runspace.Open()
+
+# Define script block for downloading software
+$scriptBlock = {
+    param($packageIDs, $window, $statusLabel)
+    
+    foreach ($id in $packageIDs) {
+
+        # Run Winget command to download software
+        start-Process -FilePath winget -ArgumentList "install -e -h --accept-source-agreements --accept-package-agreements --id $id" -NoNewWindow -Wait
+        
+        # Update status label
+        $window.Dispatcher.Invoke([Action]{
+            $window.FindName('description').Text = "Downloading $id..."
+        })
+    }
+
+    # Update status label after downloading all programs
+    $window.Dispatcher.Invoke([Action]{
+        $window.FindName('description').Text = "Download Complete"
+    })
+}
 
 function Install()
 {
-    $Link = "https://ninite.com/"
-
-    foreach ($item in $sync.list.Items)
+    $packageIDs = @()
+    foreach ($item in $list.Items)
     {
         if ($item.IsChecked)
         {
-            $result = $item
-
-            foreach ($data in $sync.configs.applications)
+            foreach ($program in $sync.configs.applications)
             {
-                if($item.Content -eq $data.name)
+                if($item.Content -eq $program.name)
                 {
-                    $Link = $Link + $data.ninite + "-"
-                    $Link = $Link + $data.url + "-"
+                    Write-Host $program.name
+                    $packageIDs += $program.winget
                 }
             }
         }
-        
     }
+    
 
-    if($result)
-    {
-        $msg = [System.Windows.MessageBox]::Show("Are you sure you want to install selected programs", "ITT", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)
-
-        if($msg -eq "Yes")
-        {
-            $Link = $Link + "/ninite.exe"
-            $Destination = "$env:temp/Install.exe"
-            
-            if (Test-Path $Destination)
-            {
-                Remove-Item -Verbose -Force $Destination
-            }
-
-            Write-Host "Ninite Link: $($Link)"
-            $discription.Text = "Starting Download"
-            Invoke-WebRequest $Link -OutFile $Destination
-            Start-Process -Filepath $Destination
-            $discription.Text = "Installing..."
-        }
-    }
-    else
-    {
-        [System.Windows.MessageBox]::Show("Please select the program(s) to install", "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
-    }
+    # Start asynchronous download using runspace
+    $ps = [powershell]::Create().AddScript($scriptBlock).AddArgument($packageIDs).AddArgument($Window).AddArgument($StatusLabel)
+    $ps.Runspace = $runspace
+    $handle = $ps.BeginInvoke()
+    
+    # Update status label
+    $window.FindName('description').Text = "Downloading..."
 }
 
 function ApplyTweaks() {
 
-    $1
-    $2
-
     foreach ($item in $sync.tweaks.Items)
     {
-       
-
         if ($item.IsChecked)
         {
             $result = $item
@@ -72,14 +70,11 @@ function ApplyTweaks() {
                 {
                     if($data.fromUrl -eq "true")
                     {
-                        #Invoke-RestMethod $data.script | Invoke-Expression 
-                        $1 = $data
+                        Invoke-RestMethod $data.script | Invoke-Expression 
                     }
                     else
                     {
-                        #powershell.exe -Command  $data.script
-                        $2 = $data
-
+                        powershell.exe -Command  $data.script
                     }
                 }
             }
@@ -89,16 +84,12 @@ function ApplyTweaks() {
 
     if($result)
     {
-        $msg = [System.Windows.MessageBox]::Show("Are you sure you want to apply selected tweeaks", "ITT", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)
-
-        if($msg -eq "Yes")
-        {
-            Invoke-RestMethod $1.script | Invoke-Expression 
-            powershell.exe -Command  $2.script
-        }
+     
+        
     }
     else
     {
         [System.Windows.MessageBox]::Show("Please select the Tweeak(s) to apply", "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
     }
 }
+

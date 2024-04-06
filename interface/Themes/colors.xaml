@@ -1,0 +1,7 @@
+<!--Light Theme-->
+        <SolidColorBrush Color="White" x:Key="primary"/>
+        <SolidColorBrush Color="#FFF1F1F1" x:Key="secondary"/>
+        <SolidColorBrush Color="#FF5059EA" x:Key="button"/>
+        <SolidColorBrush Color="Black" x:Key="text"/>
+
+        
