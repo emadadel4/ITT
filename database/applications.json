@@ -160,6 +160,20 @@
     "check": "false"
   },
   {
+    "Name": "Microsoft Visual C++ 2022 Redistributable",
+    "description": "Mozilla Firefox, or simply Firefox, is a free and open-source web browser developed by the Mozilla Foundation.",
+    "winget": "Microsoft.VCRedist.2022.arm64",
+    "catgory": "Gaming",
+    "check": "false"
+  },
+  {
+    "Name": "Microsoft Visual C++ 2019 Redistributable",
+    "description": "Mozilla Firefox, or simply Firefox, is a free and open-source web browser developed by the Mozilla Foundation.",
+    "winget": "Microsoft Visual C++ 2019 Redistributable … Microsoft.VCRedist.2019.arm64",
+    "catgory": "Gaming",
+    "check": "false"
+  },
+  {
     "Name": "NVIDIA GeForce NOW",
     "description": "Mozilla Firefox, or simply Firefox, is a free and open-source web browser developed by the Mozilla Foundation.",
     "winget": "Nvidia.GeForceNow",
