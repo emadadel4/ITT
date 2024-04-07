@@ -108,9 +108,6 @@ $scriptBlock = {
     param($packageIDs, $window, $statusLabel)
 
 
-    Install-WinWinget
-
-    
     foreach ($id in $packageIDs) {
 
         # Run Winget command to download software
@@ -1415,6 +1412,8 @@ catch [System.Management.Automation.MethodInvocationException] {
 #===========================================================================
 # End Load XMAL 
 #===========================================================================
+
+Install-WinWinget
 
 
 #===========================================================================
