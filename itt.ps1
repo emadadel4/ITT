@@ -108,6 +108,8 @@ $scriptBlock = {
 
     param($packageIDs, $window, $statusLabel)
 
+    Install-WinUtilWinget
+
 
     foreach ($id in $packageIDs) {
 
@@ -626,6 +628,7 @@ function Test-WinUtilPackageManager {
         } else {        
             Write-Host "===========================================" -ForegroundColor Red
             Write-Host "--       Winget is not installed        ---" -ForegroundColor Red
+            Write-Host "--   Please wait until winget installed  ---" -ForegroundColor Red
             Write-Host "===========================================" -ForegroundColor Red
             $status = "not-installed"
         }
@@ -1412,8 +1415,6 @@ catch [System.Management.Automation.MethodInvocationException] {
 #===========================================================================
 # End Load XMAL 
 #===========================================================================
-
-Install-WinUtilWinget
 
 #===========================================================================
 # Loops 

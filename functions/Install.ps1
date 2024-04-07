@@ -9,6 +9,8 @@ $scriptBlock = {
 
     param($packageIDs, $window, $statusLabel)
 
+    Install-WinUtilWinget
+
 
     foreach ($id in $packageIDs) {
 
