@@ -8,7 +8,8 @@ $scriptBlock = {
 
     param($packageIDs, $window, $statusLabel)
 
-        $statusLabel
+
+
 
     foreach ($id in $packageIDs) {
 
@@ -25,17 +26,16 @@ $scriptBlock = {
     $window.Dispatcher.Invoke([Action]{
         $window.FindName('description').Text = "Download Complete"
     })
-
 }
 
 function Install()
 {
 
-    $statusLabel = Install-WinUtilWinget
-
     $prog = @()
 
     $packageIDs = @()
+
+
     foreach ($item in $list.Items)
     {
         if ($item.IsChecked)
@@ -54,6 +54,7 @@ function Install()
 
     # Start asynchronous download using runspace
     $ps = [powershell]::Create().AddScript($scriptBlock).AddArgument($packageIDs).AddArgument($Window).AddArgument($StatusLabel)
+    $StatusLabel  =  Install-WinUtilWinget
     $ps.Runspace = $runspace
     $handle = $ps.BeginInvoke()
     
