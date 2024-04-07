@@ -88,9 +88,9 @@ function Emad
     
 
     # Start asynchronous download using runspace
-    $ps = [powershell]::Create().AddScript($scriptBlockEE).($Window)
-    $ps.Runspace = $runspace
-    $handle = $ps.BeginInvoke()
+    $ps2 = [powershell]::Create().AddScript($scriptBlockEE).($Window)
+    $ps2.Runspace = $runspace
+    $handle = $ps2.BeginInvoke()
     
     # Update status label
     $window.FindName('description').Text = "Downloading... $prog"
