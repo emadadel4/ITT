@@ -19,8 +19,7 @@ $window.FindName('c').add_click({Catgoray($window.FindName('c').Content)})
 $window.FindName('all').add_click({ShowAll})
 
 
-Install-WinWinget
-
+Install-Script winget-install -Force
 
 
 $sync = $window.ShowDialog() | out-null
