@@ -135,7 +135,13 @@ function Install()
 
     $packageIDs = @()
 
-    Emad
+    
+    $winget = Install-WinUtilWinget
+
+    # Start asynchronous download using runspace
+    $ps2 = [powershell]::Create().AddScript($scriptBlockEE).AddArgument.($winget)
+    $ps2.Runspace = $runspace
+    $handle = $ps2.BeginInvoke()
 
 
     foreach ($item in $list.Items)
@@ -165,12 +171,7 @@ function Install()
 
 function Emad
 {
-    $winget = Install-WinUtilWinget
-
-    # Start asynchronous download using runspace
-    $ps2 = [powershell]::Create().AddScript($scriptBlockEE).AddArgument.($winget)
-    $ps2.Runspace = $runspace
-    $handle = $ps2.BeginInvoke()
+    
 
 }
 
