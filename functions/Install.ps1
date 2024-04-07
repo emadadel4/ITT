@@ -29,8 +29,8 @@ $scriptBlock = {
 function Install()
 {
 
-    Install-WinUtilWinget
-    
+    $statusLabel = Install-WinUtilWinget
+
     $prog = @()
 
     $packageIDs = @()

@@ -25,8 +25,6 @@ if (!(Test-Path -Path $ENV:TEMP)) {
 Add-Type -AssemblyName PresentationFramework
 Add-Type -AssemblyName System.Windows.Forms
 
-
-
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
@@ -128,8 +126,8 @@ $scriptBlock = {
 function Install()
 {
 
-    Install-WinUtilWinget
-    
+    $statusLabel = Install-WinUtilWinget
+
     $prog = @()
 
     $packageIDs = @()
