@@ -8,9 +8,6 @@ $scriptBlock = {
 
     param($packageIDs, $window, $statusLabel)
 
-
-
-
     foreach ($id in $packageIDs) {
 
         # Run Winget command to download software
@@ -28,37 +25,26 @@ $scriptBlock = {
     })
 }
 
+$scriptBlockEE = {
 
-# Define the function you want to run in a runspace
-function MyFunction {
-    
+    param($packageIDs, $window, $statusLabel)
 
-    Install-WinUtilWinget
+    foreach ($id in $packageIDs) {
 
+        # Run Winget command to download software
+        start-Process -FilePath winget -ArgumentList "install -e -h --accept-source-agreements --accept-package-agreements --id $id" -NoNewWindow -Wait
+        
+        # Update status label
+        $window.Dispatcher.Invoke([Action]{
+            #$window.FindName('description').Text = "Downloading $id..."
+        })
+    }
+
+    # Update status label after downloading all programs
+    $window.Dispatcher.Invoke([Action]{
+        $window.FindName('description').Text = "Download Complete"
+    })
 }
-
-# Create a scriptblock for your function
-$scriptBlock = {
-    MyFunction
-}
-
-# Create a runspace
-$runspace = [runspacefactory]::CreateRunspace()
-$runspace.Open()
-
-# Create a PowerShell session within the runspace
-$ps = [powershell]::Create().AddScript($scriptBlock)
-$ps.Runspace = $runspace
-
-# Start the PowerShell session asynchronously
-$handle = $ps.BeginInvoke()
-
-# Wait for the asynchronous operation to complete
-$ps.EndInvoke($handle)
-
-# Close the runspace
-$runspace.Close()
-
 
 function Install()
 {
@@ -86,6 +72,21 @@ function Install()
 
     # Start asynchronous download using runspace
     $ps = [powershell]::Create().AddScript($scriptBlock).AddArgument($packageIDs).AddArgument($Window).AddArgument($StatusLabel)
+    $ps.Runspace = $runspace
+    $handle = $ps.BeginInvoke()
+    
+    # Update status label
+    $window.FindName('description').Text = "Downloading... $prog"
+}
+
+function Emad()
+{
+
+    Install-WinUtilWinget
+    
+
+    # Start asynchronous download using runspace
+    $ps = [powershell]::Create().AddScript($scriptBlockEE).($Window)
     $ps.Runspace = $runspace
     $handle = $ps.BeginInvoke()
     
@@ -129,6 +130,4 @@ function ApplyTweaks() {
         [System.Windows.MessageBox]::Show("Please select the Tweeak(s) to apply", "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
     }
 }
-
-
 
