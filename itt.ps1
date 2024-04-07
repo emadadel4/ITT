@@ -95,7 +95,6 @@ function ShowAll{
             $checkbox.Content = $item.name
     }
 }
-
 # Create a runspace to execute Winget command
 $runspace = [runspacefactory]::CreateRunspace()
 $runspace.Open()
@@ -103,7 +102,13 @@ $runspace.Open()
 # Define script block for downloading software
 $scriptBlock = {
 
-    param($packageIDs, $window, $winget)
+    param($packageIDs, $window,$winget)
+
+    function UpdateStatusLabel($text) {
+        $window.Dispatcher.Invoke([Action]{
+            $window.FindName('description').Text = $text
+        })
+    }
 
     foreach ($id in $packageIDs) {
 
@@ -111,42 +116,28 @@ $scriptBlock = {
         start-Process -FilePath winget -ArgumentList "install -e -h --accept-source-agreements --accept-package-agreements --id $id" -NoNewWindow -Wait
         
         # Update status label
-        $window.Dispatcher.Invoke([Action]{
-            #$window.FindName('description').Text = "Downloading $id..."
-        })
+        UpdateStatusLabel("Downloading $id...")
     }
 
     # Update status label after downloading all programs
-    $window.Dispatcher.Invoke([Action]{
-        $window.FindName('description').Text = "Download Complete"
-    })
+    UpdateStatusLabel("Download Complete")
+
 }
-function Install()
-{
 
+function Install() {
     $prog = @()
-
     $packageIDs = @()
 
-   
-    $winget = Install-WinUtilWinget
-
-
-    foreach ($item in $list.Items)
-    {
-        if ($item.IsChecked)
-        {
-            foreach ($program in $sync.configs.applications)
-            {
-                if($item.Content -eq $program.name)
-                {
+    foreach ($item in $list.Items) {
+        if ($item.IsChecked) {
+            foreach ($program in $sync.configs.applications) {
+                if($item.Content -eq $program.name) {
                     $packageIDs += $program.winget
                     $prog = $program.name
                 }
             }
         }
     }
-    
 
     # Start asynchronous download using runspace
     $ps = [powershell]::Create().AddScript($scriptBlock).AddArgument($packageIDs).AddArgument($Window).AddArgument($winget)
@@ -155,7 +146,9 @@ function Install()
     
     # Update status label
     $window.FindName('description').Text = "Downloading... $prog"
+
 }
+
 
 function ApplyTweaks() {
 
@@ -1511,6 +1504,8 @@ $window.FindName('c').add_click({Catgoray($window.FindName('c').Content)})
 
 $window.FindName('all').add_click({ShowAll})
 
+
+Install-WinUtilWinget
 
 $sync = $window.ShowDialog() | out-null
 #Stop-Transcript
