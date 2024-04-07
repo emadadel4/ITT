@@ -88,7 +88,7 @@ function Emad
     
 
     # Start asynchronous download using runspace
-    $ps2 = [powershell]::Create().AddScript($scriptBlockEE).($Window)
+    $ps2 = [powershell]::Create().AddScript($scriptBlockEE).AddArgument.($Window)
     $ps2.Runspace = $runspace
     $handle = $ps2.BeginInvoke()
     
