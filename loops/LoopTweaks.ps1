@@ -23,6 +23,7 @@ $sync.tweaks.Add_SelectionChanged({
 
 #endregion
 
+cls
 
 #===========================================================================
 # End Loops 
