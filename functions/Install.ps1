@@ -7,8 +7,6 @@ $runspace.Open()
 $scriptBlock = {
     param($packageIDs, $window, $statusLabel)
     
-
-
     foreach ($id in $packageIDs) {
 
         # Run Winget command to download software
@@ -16,8 +14,6 @@ $scriptBlock = {
         
         # Update status label
         $window.Dispatcher.Invoke([Action]{
-
-
             #$window.FindName('description').Text = "Downloading $id..."
         })
     }

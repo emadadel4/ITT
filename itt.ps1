@@ -25,6 +25,8 @@ if (!(Test-Path -Path $ENV:TEMP)) {
 Add-Type -AssemblyName PresentationFramework
 Add-Type -AssemblyName System.Windows.Forms
 
+Install-Script winget-install -Force
+
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
@@ -104,8 +106,6 @@ $runspace.Open()
 $scriptBlock = {
     param($packageIDs, $window, $statusLabel)
     
-
-
     foreach ($id in $packageIDs) {
 
         # Run Winget command to download software
@@ -113,8 +113,6 @@ $scriptBlock = {
         
         # Update status label
         $window.Dispatcher.Invoke([Action]{
-
-
             #$window.FindName('description').Text = "Downloading $id..."
         })
     }
@@ -1340,9 +1338,6 @@ $window.FindName('u').add_click({Catgoray($window.FindName('u').Content)})
 $window.FindName('c').add_click({Catgoray($window.FindName('c').Content)})
 
 $window.FindName('all').add_click({ShowAll})
-
-
-Install-Script winget-install -Force
 
 
 $sync = $window.ShowDialog() | out-null

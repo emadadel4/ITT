@@ -18,6 +18,8 @@ if (!(Test-Path -Path $ENV:TEMP)) {
 Add-Type -AssemblyName PresentationFramework
 Add-Type -AssemblyName System.Windows.Forms
 
+Install-Script winget-install -Force
+
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
