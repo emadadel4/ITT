@@ -125,10 +125,37 @@ $scriptBlock = {
     })
 }
 
-$scriptBlock2 = {
 
-    param($emad)
+# Define the function you want to run in a runspace
+function MyFunction {
+    
+
+    Install-WinUtilWinget
+
 }
+
+# Create a scriptblock for your function
+$scriptBlock = {
+    MyFunction
+}
+
+# Create a runspace
+$runspace = [runspacefactory]::CreateRunspace()
+$runspace.Open()
+
+# Create a PowerShell session within the runspace
+$ps = [powershell]::Create().AddScript($scriptBlock)
+$ps.Runspace = $runspace
+
+# Start the PowerShell session asynchronously
+$handle = $ps.BeginInvoke()
+
+# Wait for the asynchronous operation to complete
+$ps.EndInvoke($handle)
+
+# Close the runspace
+$runspace.Close()
+
 
 function Install()
 {
@@ -156,19 +183,11 @@ function Install()
 
     # Start asynchronous download using runspace
     $ps = [powershell]::Create().AddScript($scriptBlock).AddArgument($packageIDs).AddArgument($Window).AddArgument($StatusLabel)
-    $ps2 = [powershell]::Create().AddScript($scriptBlock2).AddArgument($emad)
-
-    $ps2.Runspace = $runspace
     $ps.Runspace = $runspace
-
     $handle = $ps.BeginInvoke()
-    $handle = $ps2.BeginInvoke()
-
     
     # Update status label
     $window.FindName('description').Text = "Downloading... $prog"
-    $emad = Install-WinUtilWinget
-
 }
 
 function ApplyTweaks() {
