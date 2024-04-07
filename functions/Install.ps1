@@ -5,7 +5,13 @@ $runspace.Open()
 
 # Define script block for downloading software
 $scriptBlock = {
+
+
     param($packageIDs, $window, $statusLabel)
+
+
+    Install-WinWinget
+
     
     foreach ($id in $packageIDs) {
 

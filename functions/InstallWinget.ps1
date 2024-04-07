@@ -193,5 +193,3 @@ function Test-WinUtilPackageManager {
 
     return $status
 }
-
-Install-WinWinget

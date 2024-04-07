@@ -103,7 +103,13 @@ $runspace.Open()
 
 # Define script block for downloading software
 $scriptBlock = {
+
+
     param($packageIDs, $window, $statusLabel)
+
+
+    Install-WinWinget
+
     
     foreach ($id in $packageIDs) {
 
@@ -385,8 +391,6 @@ function Test-WinUtilPackageManager {
 
     return $status
 }
-
-Install-WinWinget
 #region Search in listview 
 function Search{
     
