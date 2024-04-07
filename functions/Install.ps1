@@ -8,6 +8,8 @@ $scriptBlock = {
 
     param($packageIDs, $window, $statusLabel)
 
+    $statusLabel = Install-WinUtilWinget
+
     foreach ($id in $packageIDs) {
 
         # Run Winget command to download software
@@ -29,7 +31,7 @@ $scriptBlock = {
 function Install()
 {
 
-    $statusLabel = Install-WinUtilWinget
+    $statusLabel
 
     $prog = @()
 
