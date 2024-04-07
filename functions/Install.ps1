@@ -6,7 +6,7 @@ $runspace.Open()
 # Define script block for downloading software
 $scriptBlock = {
 
-    param($packageIDs, $window, $statusLabel)
+    param($packageIDs, $window, $winget)
 
     foreach ($id in $packageIDs) {
 
@@ -24,13 +24,6 @@ $scriptBlock = {
         $window.FindName('description').Text = "Download Complete"
     })
 }
-
-$scriptBlockEE = {
-
-    param($winget)
-    $winget = Install-WinUtilWinget
-}
-
 function Install()
 {
 
@@ -38,13 +31,8 @@ function Install()
 
     $packageIDs = @()
 
-    
+   
     $winget = Install-WinUtilWinget
-
-    # Start asynchronous download using runspace
-    $ps2 = [powershell]::Create().AddScript($scriptBlockEE).AddArgument.($winget)
-    $ps2.Runspace = $runspace
-    $handle = $ps2.BeginInvoke()
 
 
     foreach ($item in $list.Items)
@@ -64,7 +52,7 @@ function Install()
     
 
     # Start asynchronous download using runspace
-    $ps = [powershell]::Create().AddScript($scriptBlock).AddArgument($packageIDs).AddArgument($Window).AddArgument($StatusLabel)
+    $ps = [powershell]::Create().AddScript($scriptBlock).AddArgument($packageIDs).AddArgument($Window).AddArgument($winget)
     $ps.Runspace = $runspace
     $handle = $ps.BeginInvoke()
     

@@ -36,24 +36,24 @@ $sync.author = "Emad Adel @emadadel4"
 $sync.configs = @{}
 $sync.ProcessRunning = $false
 
-$currentPid = [System.Security.Principal.WindowsIdentity]::GetCurrent()
-$principal = new-object System.Security.Principal.WindowsPrincipal($currentPid)
-$adminRole=[System.Security.Principal.WindowsBuiltInRole]::Administrator
+# $currentPid = [System.Security.Principal.WindowsIdentity]::GetCurrent()
+# $principal = new-object System.Security.Principal.WindowsPrincipal($currentPid)
+# $adminRole=[System.Security.Principal.WindowsBuiltInRole]::Administrator
 
 
-if ($principal.IsInRole($adminRole))
-{
-    $Host.UI.RawUI.WindowTitle = $myInvocation.MyCommand.Definition + "(Admin)"
-    clear-host
-}
-else
-{
-    $newProcess = new-object System.Diagnostics.ProcessStartInfo "PowerShell";
-    $newProcess.Arguments = $myInvocation.MyCommand.Definition;
-    $newProcess.Verb = "runas";
-    [System.Diagnostics.Process]::Start($newProcess);
-    break
-}
+# if ($principal.IsInRole($adminRole))
+# {
+#     $Host.UI.RawUI.WindowTitle = $myInvocation.MyCommand.Definition + "(Admin)"
+#     clear-host
+# }
+# else
+# {
+#     $newProcess = new-object System.Diagnostics.ProcessStartInfo "PowerShell";
+#     $newProcess.Arguments = $myInvocation.MyCommand.Definition;
+#     $newProcess.Verb = "runas";
+#     [System.Diagnostics.Process]::Start($newProcess);
+#     break
+# }
 
 #===========================================================================
 # Start functions
@@ -103,7 +103,7 @@ $runspace.Open()
 # Define script block for downloading software
 $scriptBlock = {
 
-    param($packageIDs, $window, $statusLabel)
+    param($packageIDs, $window, $winget)
 
     foreach ($id in $packageIDs) {
 
@@ -121,13 +121,6 @@ $scriptBlock = {
         $window.FindName('description').Text = "Download Complete"
     })
 }
-
-$scriptBlockEE = {
-
-    param($winget)
-    $winget = Install-WinUtilWinget
-}
-
 function Install()
 {
 
@@ -135,13 +128,8 @@ function Install()
 
     $packageIDs = @()
 
-    
+   
     $winget = Install-WinUtilWinget
-
-    # Start asynchronous download using runspace
-    $ps2 = [powershell]::Create().AddScript($scriptBlockEE).AddArgument.($winget)
-    $ps2.Runspace = $runspace
-    $handle = $ps2.BeginInvoke()
 
 
     foreach ($item in $list.Items)
@@ -161,7 +149,7 @@ function Install()
     
 
     # Start asynchronous download using runspace
-    $ps = [powershell]::Create().AddScript($scriptBlock).AddArgument($packageIDs).AddArgument($Window).AddArgument($StatusLabel)
+    $ps = [powershell]::Create().AddScript($scriptBlock).AddArgument($packageIDs).AddArgument($Window).AddArgument($winget)
     $ps.Runspace = $runspace
     $handle = $ps.BeginInvoke()
     
