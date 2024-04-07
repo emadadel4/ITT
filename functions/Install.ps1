@@ -27,12 +27,8 @@ $scriptBlock = {
 
 $scriptBlockEE = {
 
-
     param($winget)
-
     $winget = Install-WinUtilWinget
-
-   
 }
 
 function Install()
@@ -72,16 +68,13 @@ function Install()
 
 function Emad
 {
-
-    
+    $winget = Install-WinUtilWinget
 
     # Start asynchronous download using runspace
     $ps2 = [powershell]::Create().AddScript($scriptBlockEE).AddArgument.($winget)
     $ps2.Runspace = $runspace
     $handle = $ps2.BeginInvoke()
-    
-    # Update status label
-    $winget = Install-WinUtilWinget
+
 }
 
 function ApplyTweaks() {
