@@ -53,6 +53,8 @@ function Install()
 
     $packageIDs = @()
 
+    Emad
+
 
     foreach ($item in $list.Items)
     {
@@ -79,7 +81,7 @@ function Install()
     $window.FindName('description').Text = "Downloading... $prog"
 }
 
-function Emad()
+function Emad
 {
 
     Install-WinUtilWinget
