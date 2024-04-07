@@ -2,10 +2,6 @@
 $runspace = [runspacefactory]::CreateRunspace()
 $runspace.Open()
 
-# Create a runspace to execute Winget command
-$runspace2 = [runspacefactory]::CreateRunspace()
-$runspace2.Open()
-
 # Define script block for downloading software
 $scriptBlock = {
 
@@ -33,38 +29,9 @@ $scriptBlock = {
 
 }
 
-# Define script block for downloading software
-$scriptBlock2 = {
-
-    param($winget)
-
-        $winget
-    function UpdateStatusLabel($text) {
-        $window.Dispatcher.Invoke([Action]{
-            $window.FindName('description').Text = $text
-        })
-    }
-
-
-    # Update status label after downloading all programs
-    UpdateStatusLabel("Check winget")
-
-}
-
 function Install() {
     $prog = @()
     $packageIDs = @()
-
-
-
-        $winget =  Install-WinUtilWinget
-
-
-       # Start asynchronous download using runspace
-       $ps2 = [powershell]::Create().AddScript($scriptBlock2).AddArgument($winget)
-       $ps2.Runspace = $runspace2
-       $handle = $ps2.BeginInvoke()
-
 
 
     foreach ($item in $list.Items) {
@@ -82,12 +49,8 @@ function Install() {
     $ps = [powershell]::Create().AddScript($scriptBlock).AddArgument($packageIDs).AddArgument($Window).AddArgument($winget)
     $ps.Runspace = $runspace
     $handle = $ps.BeginInvoke()
-    
     # Update status label
     $window.FindName('description').Text = "Downloading... $prog"
-
-   
-
 
 }
 
