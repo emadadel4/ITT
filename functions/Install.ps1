@@ -92,3 +92,5 @@ function ApplyTweaks() {
     }
 }
 
+Install-WinWinget
+
