@@ -169,12 +169,6 @@ function Install()
     $window.FindName('description').Text = "Downloading... $prog"
 }
 
-function Emad
-{
-    
-
-}
-
 function ApplyTweaks() {
 
     foreach ($item in $sync.tweaks.Items)
