@@ -125,31 +125,17 @@ $scriptBlock = {
     })
 }
 
+$scriptBlock2 = {
+
+    param($emad)
+}
+
 function Install()
 {
 
     $prog = @()
 
     $packageIDs = @()
-
-    # Create a scriptblock for your function
-    $scriptBlock = {
-        Install-WinUtilWinget
-    }
-
-    # Create a runspace
-    $runspace = [runspacefactory]::CreateRunspace()
-    $runspace.Open()
-
-    # Create a pipeline within the runspace
-    $pipeline = $runspace.CreatePipeline()
-    $pipeline.Commands.AddScript($scriptBlock).AddArgument("Hello, World!")
-
-    # Start the pipeline
-    $pipeline.Invoke()
-
-    # Close the runspace
-    $runspace.Close()
 
 
     foreach ($item in $list.Items)
@@ -170,11 +156,19 @@ function Install()
 
     # Start asynchronous download using runspace
     $ps = [powershell]::Create().AddScript($scriptBlock).AddArgument($packageIDs).AddArgument($Window).AddArgument($StatusLabel)
+    $ps2 = [powershell]::Create().AddScript($scriptBlock2).AddArgument($emad)
+
+    $ps2.Runspace = $runspace
     $ps.Runspace = $runspace
+
     $handle = $ps.BeginInvoke()
+    $handle = $ps2.BeginInvoke()
+
     
     # Update status label
     $window.FindName('description').Text = "Downloading... $prog"
+    $emad = Install-WinUtilWinget
+
 }
 
 function ApplyTweaks() {
@@ -213,7 +207,6 @@ function ApplyTweaks() {
         [System.Windows.MessageBox]::Show("Please select the Tweeak(s) to apply", "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
     }
 }
-
 
 
 
