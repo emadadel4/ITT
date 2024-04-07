@@ -8,11 +8,6 @@ $scriptBlock = {
 
     param($packageIDs, $window, $statusLabel)
 
-
-    $window.Dispatcher.Invoke([Action]{
-        Install-WinUtilWinget
-    })
-
     foreach ($id in $packageIDs) {
 
         # Run Winget command to download software
@@ -34,6 +29,8 @@ $scriptBlock = {
 function Install()
 {
 
+    Install-WinUtilWinget
+    
     $prog = @()
 
     $packageIDs = @()
