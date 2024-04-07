@@ -19,7 +19,6 @@ $window.FindName('c').add_click({Catgoray($window.FindName('c').Content)})
 $window.FindName('all').add_click({ShowAll})
 
 
-Install-WinUtilWinget
 
 $sync = $window.ShowDialog() | out-null
 #Stop-Transcript

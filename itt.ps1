@@ -112,8 +112,14 @@ $scriptBlock = {
 
     foreach ($id in $packageIDs) {
 
+
+        $winget
+
+
         # Run Winget command to download software
         start-Process -FilePath winget -ArgumentList "install -e -h --accept-source-agreements --accept-package-agreements --id $id" -NoNewWindow -Wait
+
+
         
         # Update status label
         UpdateStatusLabel("Downloading $id...")
@@ -127,6 +133,8 @@ $scriptBlock = {
 function Install() {
     $prog = @()
     $packageIDs = @()
+
+    $winget = Install-WinUtilWinget
 
     foreach ($item in $list.Items) {
         if ($item.IsChecked) {
@@ -146,6 +154,9 @@ function Install() {
     
     # Update status label
     $window.FindName('description').Text = "Downloading... $prog"
+
+   
+
 
 }
 
@@ -1505,7 +1516,6 @@ $window.FindName('c').add_click({Catgoray($window.FindName('c').Content)})
 $window.FindName('all').add_click({ShowAll})
 
 
-Install-WinUtilWinget
 
 $sync = $window.ShowDialog() | out-null
 #Stop-Transcript
