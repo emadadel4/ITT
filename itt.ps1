@@ -105,11 +105,12 @@ $runspace.Open()
 # Define script block for downloading software
 $scriptBlock = {
 
-
     param($packageIDs, $window, $statusLabel)
 
-    Install-WinUtilWinget
 
+    $window.Dispatcher.Invoke([Action]{
+        Install-WinUtilWinget
+    })
 
     foreach ($id in $packageIDs) {
 
@@ -126,6 +127,7 @@ $scriptBlock = {
     $window.Dispatcher.Invoke([Action]{
         $window.FindName('description').Text = "Download Complete"
     })
+
 }
 
 function Install()
