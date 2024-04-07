@@ -27,23 +27,12 @@ $scriptBlock = {
 
 $scriptBlockEE = {
 
-    param($packageIDs, $window, $statusLabel)
 
-    foreach ($id in $packageIDs) {
+    param($winget)
 
-        # Run Winget command to download software
-        start-Process -FilePath winget -ArgumentList "install -e -h --accept-source-agreements --accept-package-agreements --id $id" -NoNewWindow -Wait
-        
-        # Update status label
-        $window.Dispatcher.Invoke([Action]{
-            #$window.FindName('description').Text = "Downloading $id..."
-        })
-    }
+    $winget = Install-WinUtilWinget
 
-    # Update status label after downloading all programs
-    $window.Dispatcher.Invoke([Action]{
-        $window.FindName('description').Text = "Download Complete"
-    })
+   
 }
 
 function Install()
@@ -84,16 +73,15 @@ function Install()
 function Emad
 {
 
-    Install-WinUtilWinget
     
 
     # Start asynchronous download using runspace
-    $ps2 = [powershell]::Create().AddScript($scriptBlockEE).AddArgument.($Window)
+    $ps2 = [powershell]::Create().AddScript($scriptBlockEE).AddArgument.($winget)
     $ps2.Runspace = $runspace
     $handle = $ps2.BeginInvoke()
     
     # Update status label
-    $window.FindName('description').Text = "Downloading... $prog"
+    $winget = Install-WinUtilWinget
 }
 
 function ApplyTweaks() {
