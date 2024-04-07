@@ -36,24 +36,24 @@ $sync.author = "Emad Adel @emadadel4"
 $sync.configs = @{}
 $sync.ProcessRunning = $false
 
-# $currentPid = [System.Security.Principal.WindowsIdentity]::GetCurrent()
-# $principal = new-object System.Security.Principal.WindowsPrincipal($currentPid)
-# $adminRole=[System.Security.Principal.WindowsBuiltInRole]::Administrator
+$currentPid = [System.Security.Principal.WindowsIdentity]::GetCurrent()
+$principal = new-object System.Security.Principal.WindowsPrincipal($currentPid)
+$adminRole=[System.Security.Principal.WindowsBuiltInRole]::Administrator
 
 
-# if ($principal.IsInRole($adminRole))
-# {
-#     $Host.UI.RawUI.WindowTitle = $myInvocation.MyCommand.Definition + "(Admin)"
-#     clear-host
-# }
-# else
-# {
-#     $newProcess = new-object System.Diagnostics.ProcessStartInfo "PowerShell";
-#     $newProcess.Arguments = $myInvocation.MyCommand.Definition;
-#     $newProcess.Verb = "runas";
-#     [System.Diagnostics.Process]::Start($newProcess);
-#     break
-# }
+if ($principal.IsInRole($adminRole))
+{
+    $Host.UI.RawUI.WindowTitle = $myInvocation.MyCommand.Definition + "(Admin)"
+    clear-host
+}
+else
+{
+    $newProcess = new-object System.Diagnostics.ProcessStartInfo "PowerShell";
+    $newProcess.Arguments = $myInvocation.MyCommand.Definition;
+    $newProcess.Verb = "runas";
+    [System.Diagnostics.Process]::Start($newProcess);
+    break
+}
 
 #===========================================================================
 # Start functions
@@ -132,6 +132,25 @@ function Install()
 
     $packageIDs = @()
 
+    # Create a scriptblock for your function
+    $scriptBlock = {
+        Install-WinUtilWinget
+    }
+
+    # Create a runspace
+    $runspace = [runspacefactory]::CreateRunspace()
+    $runspace.Open()
+
+    # Create a pipeline within the runspace
+    $pipeline = $runspace.CreatePipeline()
+    $pipeline.Commands.AddScript($scriptBlock).AddArgument("Hello, World!")
+
+    # Start the pipeline
+    $pipeline.Invoke()
+
+    # Close the runspace
+    $runspace.Close()
+
 
     foreach ($item in $list.Items)
     {
@@ -151,7 +170,6 @@ function Install()
 
     # Start asynchronous download using runspace
     $ps = [powershell]::Create().AddScript($scriptBlock).AddArgument($packageIDs).AddArgument($Window).AddArgument($StatusLabel)
-    $StatusLabel  =  Install-WinUtilWinget
     $ps.Runspace = $runspace
     $handle = $ps.BeginInvoke()
     
@@ -195,6 +213,9 @@ function ApplyTweaks() {
         [System.Windows.MessageBox]::Show("Please select the Tweeak(s) to apply", "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
     }
 }
+
+
+
 
 function Get-WinUtilVariables {
 
