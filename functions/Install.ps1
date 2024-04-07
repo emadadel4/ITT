@@ -2,6 +2,10 @@
 $runspace = [runspacefactory]::CreateRunspace()
 $runspace.Open()
 
+# Create a runspace to execute Winget command
+$runspace2 = [runspacefactory]::CreateRunspace()
+$runspace2.Open()
+
 # Define script block for downloading software
 $scriptBlock = {
 
@@ -14,10 +18,6 @@ $scriptBlock = {
     }
 
     foreach ($id in $packageIDs) {
-
-
-        $winget
-
 
         # Run Winget command to download software
         start-Process -FilePath winget -ArgumentList "install -e -h --accept-source-agreements --accept-package-agreements --id $id" -NoNewWindow -Wait
@@ -33,11 +33,39 @@ $scriptBlock = {
 
 }
 
+# Define script block for downloading software
+$scriptBlock2 = {
+
+    param($winget)
+
+        $winget
+    function UpdateStatusLabel($text) {
+        $window.Dispatcher.Invoke([Action]{
+            $window.FindName('description').Text = $text
+        })
+    }
+
+
+    # Update status label after downloading all programs
+    UpdateStatusLabel("Check winget")
+
+}
+
 function Install() {
     $prog = @()
     $packageIDs = @()
 
-    $winget = Install-WinUtilWinget
+
+
+        $winget =  Install-WinUtilWinget
+
+
+       # Start asynchronous download using runspace
+       $ps2 = [powershell]::Create().AddScript($scriptBlock2).AddArgument($winget)
+       $ps2.Runspace = $runspace2
+       $handle = $ps2.BeginInvoke()
+
+
 
     foreach ($item in $list.Items) {
         if ($item.IsChecked) {
