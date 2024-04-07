@@ -44,5 +44,4 @@ catch [System.Management.Automation.MethodInvocationException] {
 # End Load XMAL 
 #===========================================================================
 
-Install-WinWinget
-
+Install-WinUtilWinget
