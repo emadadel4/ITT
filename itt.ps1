@@ -105,7 +105,7 @@ $scriptBlock = {
 
     param($packageIDs, $window, $statusLabel)
 
-    $statusLabel = Install-WinUtilWinget
+        $statusLabel
 
     foreach ($id in $packageIDs) {
 
@@ -128,7 +128,7 @@ $scriptBlock = {
 function Install()
 {
 
-    $statusLabel
+    $statusLabel = Install-WinUtilWinget
 
     $prog = @()
 
