@@ -1011,6 +1011,13 @@ $sync.configs.applications = '[
     "check": "false"
   },
   {
+    "Name": "CCleaner",
+    "winget": "Piriform.CCleaner",
+    "choco": "ccleaner",
+    "catgory": "Utilities",
+    "check": "false"
+  },
+  {
     "Name": "BCUninstaller",
     "winget": "Klocman.BulkCrapUninstaller",
     "choco": "bulk-crap-uninstaller",
