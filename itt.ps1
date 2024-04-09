@@ -13,7 +13,7 @@
     Author         : Emad Adel @emadadel4
     GitHub         : https://github.com/emadadel4
     Website        : https://eprojects.orgfree.com/
-    Version        : 24.04.07
+    Version        : 24.04.09
 #>
 
 if (!(Test-Path -Path $ENV:TEMP)) {
@@ -28,7 +28,7 @@ Add-Type -AssemblyName System.Windows.Forms
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "24.04.07"
+$sync.version = "24.04.09"
 $sync.github = "https://github.com/emadadel4"
 $sync.website = "https://eprojects.orgfree.com"
 $sync.author = "Emad Adel @emadadel4"
@@ -69,10 +69,21 @@ function about{
 
     Show-CustomDialog -Message $authorInfo -Width 400
 }
+<#
+.DESCRIPTION
+This function filters and populates a list of applications based on the specified category.
+
+.PARAMETER cat
+The category based on which the applications are filtered.
+
+.EXAMPLE
+Catgoray -cat "SomeCategory"
+
+.EXAMPLE
+ShowAll "Show all apps"
+#>
+
 function Catgoray($cat){
-
-    Write-Host $cat
-
     $list.Items.Clear()
 
     foreach ($item in $sync.configs.applications)
@@ -602,35 +613,30 @@ function Test-WinUtilPackageManager {
 $sync.configs.applications = '[
   {
     "Name": "Thorium",
-    "description": "#",
-    "winget": "EDRLab.Thorium",
+    "winget": "Alex313031.Thorium",
     "catgory": "Browsers",
     "check": "false"
   },
   {
     "Name": "Firefox",
-    "description": "Mozilla Firefox, or simply Firefox, is a free and open-source web browser developed by the Mozilla Foundation.",
     "winget": "Mozilla.Firefox",
     "catgory": "Browsers",
     "check": "false"
   },
   {
     "Name": "Google Chrome",
-    "description": "Chrome is a fast, simple, and secure web browser, built for the modern web.",
     "winget": "Google.Chrome",
     "catgory": "Browsers",
     "check": "false"
   },
   {
     "Name": "Chromium",
-    "description": "chromium is a fast, simple, and secure web browser, built for the modern web.",
     "winget": "eloston.ungoogled-chromium",
     "catgory": "Browsers",
     "check": "false"
   },
   {
     "Name": "Brave",
-    "description": "#",
     "winget": "Google.Chrome",
     "catgory": "Brave.Brave",
     "check": "false"
@@ -829,21 +835,18 @@ $sync.configs.applications = '[
   },
   {
     "Name": "Microsoft Visual C++ 2015-2022  (x86) Redistributable",
-    "description": "Mozilla Firefox, or simply Firefox, is a free and open-source web browser developed by the Mozilla Foundation.",
     "winget": "Microsoft.VCRedist.2015+.x86",
     "catgory": "Gaming",
     "check": "false"
   },
   {
     "Name": "NVIDIA GeForce NOW",
-    "description": "Mozilla Firefox, or simply Firefox, is a free and open-source web browser developed by the Mozilla Foundation.",
     "winget": "Nvidia.GeForceNow",
     "catgory": "Gaming",
     "check": "false"
   },
   {
     "Name": "NVIDIA PhysX",
-    "description": "Mozilla Firefox, or simply Firefox, is a free and open-source web browser developed by the Mozilla Foundation.",
     "winget": "Nvidia.PhysX",
     "catgory": "Gaming",
     "check": "false"
