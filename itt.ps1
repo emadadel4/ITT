@@ -1144,6 +1144,13 @@ $sync.configs.applications = '[
     "check": "false"
   },
   {
+    "Name": "Jetbrains Rider",
+    "winget": "JetBrains.Rider",
+    "choco": "jetbrains-rider",
+    "catgory": "Developer",
+    "check": "false"
+  },
+  {
     "Name": "Node.js",
     "winget": "OpenJS.NodeJS",
     "choco": "nodejs",
