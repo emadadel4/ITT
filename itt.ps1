@@ -106,6 +106,15 @@ function ShowAll{
             $checkbox.Content = $item.name
     }
 }
+<#
+.SYNOPSIS
+This script contains functions for installing software, applying tweaks, and managing asynchronous downloads.
+
+.DESCRIPTION
+The functions in this script are used to install software using Winget, apply tweaks, and manage asynchronous downloads.
+
+#>
+
 # Create a runspace to execute Winget command
 $runspace = [runspacefactory]::CreateRunspace()
 $runspace.Open()
@@ -161,7 +170,6 @@ function Install() {
     $window.FindName('description').Text = "Downloading... $prog"
 
 }
-
 
 function ApplyTweaks() {
 
