@@ -1,7 +1,7 @@
 
 $window.FindName('taps').add_SelectionChanged({ChangeTap})
 $window.FindName('installBtn').add_click({Install})
-$window.FindName('applyBtn').add_click({ApplyTweaks})
+#$window.FindName('applyBtn').add_click({ApplyTweaks})
 $window.FindName('searchInput').add_TextChanged({Search})
 $window.FindName('about').add_MouseLeftButtonDown({about})
 
@@ -18,8 +18,7 @@ $window.FindName('c').add_click({Catgoray($window.FindName('c').Content)})
 
 $window.FindName('all').add_click({ShowAll})
 
-Install-WinUtilWinget
-
+CheckChoco
 
 $sync = $window.ShowDialog() | out-null
 #Stop-Transcript

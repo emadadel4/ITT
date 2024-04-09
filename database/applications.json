@@ -14,6 +14,13 @@
     "check": "false"
   },
   {
+    "Name": "Microsoft Edge",
+    "winget": "Microsoft.Edge",
+    "choco": "microsoft-edge",
+    "catgory": "Browsers",
+    "check": "false"
+  },
+  {
     "Name": "Google Chrome",
     "winget": "Google.Chrome",
     "choco": "googlechrome",
@@ -31,6 +38,13 @@
     "Name": "Brave",
     "winget": "Brave.Brave",
     "choco": "brave",
+    "catgory": "Brave.Brave",
+    "check": "false"
+  },
+  {
+    "Name": "Tor Browser",
+    "winget": "TorProject.TorBrowser",
+    "choco": "tor-browser",
     "catgory": "Brave.Brave",
     "check": "false"
   },
@@ -315,9 +329,16 @@
     "check": "false"
   },
   {
-    "Name": "Active@ Partition Recovery",
-    "winget": "LSoftTechnologies.ActivePartitionRecovery",
-    "choco": "LSoftTechnologies.ActivePartitionRecovery",
+    "Name": "1Password",
+    "winget": "AgileBits.1Password",
+    "choco": "1password",
+    "catgory": "Utilities",
+    "check": "false"
+  },
+  {
+    "Name": "MiniTool Partition Wizard ",
+    "winget": "MiniTool.PartitionWizard.Free 12.8",
+    "choco": "partitionwizard",
     "catgory": "Utilities",
     "check": "false"
   },
@@ -329,16 +350,9 @@
     "check": "false"
   },
   {
-    "Name": "Eassos Recovery",
-    "winget": "Eassos.EassosRecovery",
-    "choco": "partitionmasterfree",
-    "catgory": "Utilities",
-    "check": "false"
-  },
-  {
     "Name": "BCUninstaller",
     "winget": "Klocman.BulkCrapUninstaller",
-    "choco": "Klocman.BulkCrapUninstaller",
+    "choco": "bulk-crap-uninstaller",
     "catgory": "Utilities",
     "check": "false"
   },
@@ -380,7 +394,7 @@
   {
     "Name": "Rufus",
     "winget": "Rufus.Rufus",
-    "choco": "Rufus.Rufus",
+    "choco": "rufus",
     "catgory": "Utilities",
     "check": "false"
   },
@@ -395,6 +409,13 @@
     "Name": "Ventoy",
     "winget": "Ventoy.Ventoy",
     "choco": "ventoy",
+    "catgory": "Utilities",
+    "check": "false"
+  },
+  {
+    "Name": "AutoHotkey",
+    "winget": "AutoHotkey.AutoHotkey",
+    "choco": "autohotkey",
     "catgory": "Utilities",
     "check": "false"
   },
@@ -441,6 +462,20 @@
     "check": "false"
   },
   {
+    "Name": "Microsoft Visual Studio Code",
+    "winget": "Microsoft.VisualStudioCode",
+    "choco": "vscode",
+    "catgory": "Developer",
+    "check": "false"
+  },
+  {
+    "Name": "Node.js",
+    "winget": "OpenJS.NodeJS",
+    "choco": "nodejs",
+    "catgory": "Developer",
+    "check": "false"
+  },
+  {
     "Name": "Notepad++",
     "winget": "notepadplusplus",
     "choco": "anydesk.install",
@@ -456,9 +491,23 @@
     "check": "false"
   },
   {
+    "Name": "Git",
+    "winget": "Git.Git",
+    "choco": "git",
+    "catgory": "Developer",
+    "check": "false"
+  },
+  {
     "Name": "GitHub Desktop",
     "winget": "GitHub.GitHubDesktop",
     "choco": "github-desktop",
+    "catgory": "Developer",
+    "check": "false"
+  },
+  {
+    "Name": "PowerToys",
+    "winget": "Microsoft.PowerToys",
+    "choco": "powertoys",
     "catgory": "Developer",
     "check": "false"
   },

@@ -25,8 +25,10 @@ $scriptBlock = {
     foreach ($id in $packageIDs) {
 
         # Run Winget command to download software
-        start-Process -FilePath winget -ArgumentList "install -e -h --accept-source-agreements --accept-package-agreements --id $id" -NoNewWindow -Wait
+        #start-Process -FilePath winget -ArgumentList "install -e -h --accept-source-agreements --accept-package-agreements --id $id" -NoNewWindow -Wait
 
+
+        start-Process -FilePath "choco" -ArgumentList "install $id" -NoNewWindow -Wait
 
         
         # Update status label
@@ -47,7 +49,7 @@ function Install() {
         if ($item.IsChecked) {
             foreach ($program in $sync.configs.applications) {
                 if($item.Content -eq $program.name) {
-                    $packageIDs += $program.winget
+                    $packageIDs += $program.choco
                     $prog = $program.name
                 }
             }

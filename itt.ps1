@@ -133,8 +133,10 @@ $scriptBlock = {
     foreach ($id in $packageIDs) {
 
         # Run Winget command to download software
-        start-Process -FilePath winget -ArgumentList "install -e -h --accept-source-agreements --accept-package-agreements --id $id" -NoNewWindow -Wait
+        #start-Process -FilePath winget -ArgumentList "install -e -h --accept-source-agreements --accept-package-agreements --id $id" -NoNewWindow -Wait
 
+
+        start-Process -FilePath "choco" -ArgumentList "install $id" -NoNewWindow -Wait
 
         
         # Update status label
@@ -155,7 +157,7 @@ function Install() {
         if ($item.IsChecked) {
             foreach ($program in $sync.configs.applications) {
                 if($item.Content -eq $program.name) {
-                    $packageIDs += $program.winget
+                    $packageIDs += $program.choco
                     $prog = $program.name
                 }
             }
@@ -208,6 +210,23 @@ function ApplyTweaks() {
     }
 }
 
+function CheckChoco {
+
+    # Check if Chocolatey is installed
+    if (-not (Test-Path 'C:\ProgramData\chocolatey\choco.exe')) {
+        # Chocolatey is not installed, so install it
+        Write-Host "Chocolatey is not installed. Installing Chocolatey..."
+        Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+        if ($LastExitCode -ne 0) {
+            Write-Host "Failed to install Chocolatey. Exiting..."
+            exit 1
+        }
+        Write-Host "Chocolatey installed successfully."
+    } else {
+        Write-Host "Chocolatey is already installed."
+    }
+    
+}
 function Get-WinUtilVariables {
 
     <#
@@ -636,6 +655,13 @@ $sync.configs.applications = '[
     "check": "false"
   },
   {
+    "Name": "Microsoft Edge",
+    "winget": "Microsoft.Edge",
+    "choco": "microsoft-edge",
+    "catgory": "Browsers",
+    "check": "false"
+  },
+  {
     "Name": "Google Chrome",
     "winget": "Google.Chrome",
     "choco": "googlechrome",
@@ -653,6 +679,13 @@ $sync.configs.applications = '[
     "Name": "Brave",
     "winget": "Brave.Brave",
     "choco": "brave",
+    "catgory": "Brave.Brave",
+    "check": "false"
+  },
+  {
+    "Name": "Tor Browser",
+    "winget": "TorProject.TorBrowser",
+    "choco": "tor-browser",
     "catgory": "Brave.Brave",
     "check": "false"
   },
@@ -937,9 +970,16 @@ $sync.configs.applications = '[
     "check": "false"
   },
   {
-    "Name": "Active@ Partition Recovery",
-    "winget": "LSoftTechnologies.ActivePartitionRecovery",
-    "choco": "LSoftTechnologies.ActivePartitionRecovery",
+    "Name": "1Password",
+    "winget": "AgileBits.1Password",
+    "choco": "1password",
+    "catgory": "Utilities",
+    "check": "false"
+  },
+  {
+    "Name": "MiniTool Partition Wizard ",
+    "winget": "MiniTool.PartitionWizard.Free 12.8",
+    "choco": "partitionwizard",
     "catgory": "Utilities",
     "check": "false"
   },
@@ -951,16 +991,9 @@ $sync.configs.applications = '[
     "check": "false"
   },
   {
-    "Name": "Eassos Recovery",
-    "winget": "Eassos.EassosRecovery",
-    "choco": "partitionmasterfree",
-    "catgory": "Utilities",
-    "check": "false"
-  },
-  {
     "Name": "BCUninstaller",
     "winget": "Klocman.BulkCrapUninstaller",
-    "choco": "Klocman.BulkCrapUninstaller",
+    "choco": "bulk-crap-uninstaller",
     "catgory": "Utilities",
     "check": "false"
   },
@@ -1002,7 +1035,7 @@ $sync.configs.applications = '[
   {
     "Name": "Rufus",
     "winget": "Rufus.Rufus",
-    "choco": "Rufus.Rufus",
+    "choco": "rufus",
     "catgory": "Utilities",
     "check": "false"
   },
@@ -1017,6 +1050,13 @@ $sync.configs.applications = '[
     "Name": "Ventoy",
     "winget": "Ventoy.Ventoy",
     "choco": "ventoy",
+    "catgory": "Utilities",
+    "check": "false"
+  },
+  {
+    "Name": "AutoHotkey",
+    "winget": "AutoHotkey.AutoHotkey",
+    "choco": "autohotkey",
     "catgory": "Utilities",
     "check": "false"
   },
@@ -1063,6 +1103,20 @@ $sync.configs.applications = '[
     "check": "false"
   },
   {
+    "Name": "Microsoft Visual Studio Code",
+    "winget": "Microsoft.VisualStudioCode",
+    "choco": "vscode",
+    "catgory": "Developer",
+    "check": "false"
+  },
+  {
+    "Name": "Node.js",
+    "winget": "OpenJS.NodeJS",
+    "choco": "nodejs",
+    "catgory": "Developer",
+    "check": "false"
+  },
+  {
     "Name": "Notepad++",
     "winget": "notepadplusplus",
     "choco": "anydesk.install",
@@ -1078,9 +1132,23 @@ $sync.configs.applications = '[
     "check": "false"
   },
   {
+    "Name": "Git",
+    "winget": "Git.Git",
+    "choco": "git",
+    "catgory": "Developer",
+    "check": "false"
+  },
+  {
     "Name": "GitHub Desktop",
     "winget": "GitHub.GitHubDesktop",
     "choco": "github-desktop",
+    "catgory": "Developer",
+    "check": "false"
+  },
+  {
+    "Name": "PowerToys",
+    "winget": "Microsoft.PowerToys",
+    "choco": "powertoys",
     "catgory": "Developer",
     "check": "false"
   },
@@ -1516,7 +1584,7 @@ cls
 
 $window.FindName('taps').add_SelectionChanged({ChangeTap})
 $window.FindName('installBtn').add_click({Install})
-$window.FindName('applyBtn').add_click({ApplyTweaks})
+#$window.FindName('applyBtn').add_click({ApplyTweaks})
 $window.FindName('searchInput').add_TextChanged({Search})
 $window.FindName('about').add_MouseLeftButtonDown({about})
 
@@ -1533,8 +1601,7 @@ $window.FindName('c').add_click({Catgoray($window.FindName('c').Content)})
 
 $window.FindName('all').add_click({ShowAll})
 
-Install-WinUtilWinget
-
+CheckChoco
 
 $sync = $window.ShowDialog() | out-null
 #Stop-Transcript
