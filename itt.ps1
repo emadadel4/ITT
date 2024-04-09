@@ -816,7 +816,7 @@ $sync.configs.applications = '[
   },
   {
     "Name": "Discord",
-    "winget": "discord",
+    "winget": "Discord.Discord",
     "choco": "discord",
     "catgory": "Communication",
     "check": "false"
@@ -1130,6 +1130,20 @@ $sync.configs.applications = '[
     "check": "false"
   },
   {
+    "Name": "PyCharm Community Edition",
+    "winget": "JetBrains.PyCharm.Community",
+    "choco": "pycharm-community",
+    "catgory": "Developer",
+    "check": "false"
+  },
+  {
+    "Name": "PyCharm Professional Edition",
+    "winget": "JetBrains.PyCharm.Professional",
+    "choco": "pycharm",
+    "catgory": "Developer",
+    "check": "false"
+  },
+  {
     "Name": "Node.js",
     "winget": "OpenJS.NodeJS",
     "choco": "nodejs",
@@ -1152,8 +1166,8 @@ $sync.configs.applications = '[
     "check": "false"
   },
   {
-    "Name": "Python 3.12.2",
-    "winget": "python",
+    "Name": "Python",
+    "winget": "Python.Python.3.9",
     "choco": "python",
     "catgory": "Developer",
     "check": "false"
