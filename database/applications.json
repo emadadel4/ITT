@@ -492,7 +492,7 @@
   },
   {
     "Name": "Python 3.12.2",
-    "winget": "Microsoft.WindowsTerminal",
+    "winget": "python",
     "choco": "python",
     "catgory": "Developer",
     "check": "false"
