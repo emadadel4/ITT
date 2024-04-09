@@ -354,9 +354,11 @@ function Install-WinUtilWinget {
         }
     }
 }
-#region Search in listview 
+#region Function to filter a list based on a search input
+
 function Search{
     
+    # Retrieves the search input, converts it to lowercase, and filters the list based on the input
     $filter = $window.FindName('searchInput').Text.ToLower()
     $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($list.Items)
     $collectionView.Filter = {
@@ -710,15 +712,15 @@ $sync.configs.applications = '[
     "check": "false"
   },
   {
-    "Name": "WinZip",
-    "winget": "Corel.WinZip",
-    "catgory": "Compression",
-    "check": "false"
-  },
-  {
     "Name": "QQPlayer",
     "winget": "Tencent.QQPlayer",
     "catgory": "Media",
+    "check": "false"
+  },
+  {
+    "Name": "Telegram Desktop",
+    "winget": "Telegram.TelegramDesktop",
+    "catgory": "Communication",
     "check": "false"
   },
   {

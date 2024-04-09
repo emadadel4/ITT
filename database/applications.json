@@ -90,15 +90,15 @@
     "check": "false"
   },
   {
-    "Name": "WinZip",
-    "winget": "Corel.WinZip",
-    "catgory": "Compression",
-    "check": "false"
-  },
-  {
     "Name": "QQPlayer",
     "winget": "Tencent.QQPlayer",
     "catgory": "Media",
+    "check": "false"
+  },
+  {
+    "Name": "Telegram Desktop",
+    "winget": "Telegram.TelegramDesktop",
+    "catgory": "Communication",
     "check": "false"
   },
   {
