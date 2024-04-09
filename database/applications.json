@@ -2,7 +2,7 @@
   {
     "Name": "Thorium",
     "description": "#",
-    "winget": "EDRLab.Thorium",
+    "winget": "Alex313031.Thorium",
     "catgory": "Browsers",
     "check": "false"
   },
