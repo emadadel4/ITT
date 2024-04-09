@@ -1131,8 +1131,8 @@ $sync.configs.applications = '[
   },
   {
     "Name": "Notepad++",
-    "winget": "notepadplusplus",
-    "choco": "anydesk.install",
+    "winget": "Notepad++.Notepad++",
+    "choco": "notepadplusplus",
 
     "catgory": "Developer",
     "check": "false"
