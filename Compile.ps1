@@ -64,9 +64,9 @@ $xaml = $xaml -replace "{{ScrollbarStyle}}", $scrollbarContent
 $xaml = $xaml -replace "{{Colors}}", $colorsContent
 
 
-Write-output "`$inputXML =  '$xaml'" | Out-File ./$scriptname -Append -Encoding utf8 
+Write-output "`$inputXML =  '$xaml'" | Out-File ./$scriptname -Append -Encoding ascii 
 
-Get-Content .\scripts\loadXmal.ps1 | Out-File ./$scriptname -Append -Encoding utf8
+Get-Content .\scripts\loadXmal.ps1 | Out-File ./$scriptname -Append -Encoding ascii
 
 Get-ChildItem .\loops -Recurse -File | ForEach-Object {
     

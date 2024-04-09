@@ -1498,7 +1498,7 @@ $inputXML =  '
 
         <!--Footer-->
         <Grid Grid.Row="2">
-                <TextBlock Cursor="Pen" x:Name="quotes"  HorizontalAlignment="Left" VerticalAlignment="Center" Padding="16" TextWrapping="Wrap" Text="ط­ظٹظ† ط§ظ†طھظ‡ظٹطھ ظ…ظ† ط¨ظ†ط§ط، ظ‚ط§ط±ط¨ظٹ ط¬ظپ ط§ظ„ط¨ط­ط±" Foreground="Black"/>
+                <TextBlock Cursor="Pen" x:Name="quotes"  HorizontalAlignment="Left" VerticalAlignment="Center" Padding="16" TextWrapping="Wrap" Text="?????? ???????????? ???? ???????? ?????????? ???? ??????????" Foreground="Black"/>
             </Grid>
         <!--End Footer-->
 
