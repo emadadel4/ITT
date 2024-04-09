@@ -16,7 +16,7 @@
                                     </Border>
                                     <ControlTemplate.Triggers>
                                         <Trigger Property="IsSelected" Value="True">
-                                            <Setter TargetName="Border" Property="Background" Value="Black" />
+                                            <Setter TargetName="Border" Property="Background" Value="{DynamicResource button}" />
                                             <Setter Property="Foreground" Value="White" />
 
                                         </Trigger>

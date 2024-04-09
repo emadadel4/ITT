@@ -1328,7 +1328,7 @@ $inputXML =  '
 
             <!--Button Style-->
                 <Style TargetType="Button">
-                    <Setter Property="Background" Value="Black"/>
+                    <Setter Property="Background" Value="{DynamicResource button}"/>
                     <Setter Property="Foreground" Value="White"/>
 
                     <Setter Property="Template">
@@ -1376,20 +1376,18 @@ $inputXML =  '
 
 
 
-        <Grid Margin="20" Grid.Row="0" Grid.ColumnSpan="2" >
-            <TextBlock Name="about"  Text="ITT" FontSize="20" Width="auto" VerticalAlignment="Center" HorizontalAlignment="Left"/>
-            <StackPanel Name="catg" Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button Name="all" Content="All" Height="20" Width="60" Margin="4"/>
-                <Button Name="m" Content="Media" Height="20" Width="60" Margin="4"/>
-                <Button Name="b" Content="Browsers" Height="20" Width="60" Margin="4"/>
-                <Button Name="g" Content="Gaming" Height="20" Width="60" Margin="4"/>
-                <Button Name="d" Content="Developer" Height="20" Width="60" Margin="4"/>
-                <Button Name="u" Content="Utilities" Height="20" Width="60" Margin="4"/>
-                <Button Name="c" Content="Communication" Height="20" Width="66" Margin="4"/>
-
-                
+        <StackPanel Margin="20" Orientation="Horizontal"  VerticalAlignment="Center" Grid.Row="0" Grid.ColumnSpan="2" >
+            <TextBlock Name="about"  Text="@emadadel" FontSize="18" Width="auto" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            <StackPanel Name="catg" Margin="20,0,0,0" Orientation="Horizontal" HorizontalAlignment="Left" Background="WhiteSmoke">
+                <Button Name="all" Cursor="Hand"  Content="All" Height="20" Width="60" Margin="4" Background="Transparent" Foreground="Black"/>
+                <Button Name="m" Cursor="Hand"  Content="Media" Height="20" Width="60" Margin="4" Background="Transparent" Foreground="Black"/>
+                <Button Name="b" Cursor="Hand"  Content="Browsers" Height="20" Width="60" Margin="4" Background="Transparent" Foreground="Black"/>
+                <Button Name="g" Cursor="Hand"  Content="Gaming" Height="20" Width="60" Margin="4" Background="Transparent" Foreground="Black"/>
+                <Button Name="d" Cursor="Hand"  Content="Developer" Height="20" Width="60" Margin="4" Background="Transparent" Foreground="Black"/>
+                <Button Name="u" Content="Utilities" Height="20" Width="60" Margin="4" Background="Transparent" Foreground="Black"/>
+                <Button Name="c" Cursor="Hand" Content="Communication" Height="20" Width="auto" Margin="4" Background="Transparent" Foreground="Black"/>
             </StackPanel>
-        </Grid>
+        </StackPanel>
 
 
         <!--TabControl-->
@@ -1410,7 +1408,7 @@ $inputXML =  '
                                     </Border>
                                     <ControlTemplate.Triggers>
                                         <Trigger Property="IsSelected" Value="True">
-                                            <Setter TargetName="Border" Property="Background" Value="Black" />
+                                            <Setter TargetName="Border" Property="Background" Value="{DynamicResource button}" />
                                             <Setter Property="Foreground" Value="White" />
 
                                         </Trigger>
@@ -1441,13 +1439,13 @@ $inputXML =  '
 
 
         <!--Main Section-->
-        <Grid  Grid.Row="1" Grid.Column="1"  Grid.RowSpan="2" Margin="0">
+            <Grid  Grid.Row="1" Grid.Column="1"  Grid.RowSpan="2" Margin="0">
                 <StackPanel Margin="15" Orientation="Vertical">
-                
 
-                <StackPanel Orientation="Horizontal" Margin="0">
-                    <Grid>
-                        <TextBox Width="144"  VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5" Text="{Binding Text_searchInput}"  x:Name="searchInput"/>
+
+                    <StackPanel Orientation="Horizontal" Margin="0" VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <Grid>
+                            <TextBox Width="144"  VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5" Text="{Binding Text_searchInput}"  x:Name="searchInput"/>
 
                             <TextBlock IsHitTestVisible="False" Text="Search in list" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="DarkGray">
 
@@ -1462,37 +1460,37 @@ $inputXML =  '
                                     </Style>
                                 </TextBlock.Style>
                             </TextBlock>
-                    </Grid>
-                </StackPanel>
+                        </Grid>
+                    </StackPanel>
 
 
 
 
 
-                    <TextBlock Name="description" Text="Status" TextWrapping="Wrap" Foreground="Black"/>
+                    <TextBlock Name="description" Margin="20" Text="Status" TextWrapping="Wrap" Foreground="Black"/>
                     <TextBlock Name="itemLink" Visibility="Hidden"  Text="Offical website" Cursor="Hand"  Margin="5" Foreground="blue"/>
                 </StackPanel>
 
                 <!--Install Button-->
                 <Button
-                                Name="installBtn"
-                                Content="Install"
-                                HorizontalAlignment="Center"
-                                VerticalAlignment="Bottom"
-                                Cursor="Hand"
-                                Width="90" Height="44" Margin="16" Padding="10"
-                            />
+                                    Name="installBtn"
+                                    Content="Install"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Bottom"
+                                    Cursor="Hand"
+                                    Width="90" Height="44" Margin="16" Padding="10"
+                                />
                 <!--End Install Button-->
 
                 <!--Apply Button-->
                 <Button
-                            Name="applyBtn"
-                            Content="Apply"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Bottom"
-                            Cursor="Hand"
-                            Visibility="Hidden"
-                            Width="90" Height="44" Margin="16" Padding="10"/>
+                                Name="applyBtn"
+                                Content="Apply"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Bottom"
+                                Cursor="Hand"
+                                Visibility="Hidden"
+                                Width="90" Height="44" Margin="16" Padding="10"/>
                 <!--End Apply Button-->
 
             </Grid>
@@ -1503,8 +1501,6 @@ $inputXML =  '
                 <TextBlock Cursor="Pen" x:Name="quotes"  HorizontalAlignment="Left" VerticalAlignment="Center" Padding="16" TextWrapping="Wrap" Text="Whoami?!" Foreground="Black"/>
             </Grid>
         <!--End Footer-->
-
-        
 
     </Grid>
 
@@ -1578,7 +1574,7 @@ $discription = $Window.FindName("description")
 $itemLink = $Window.FindName('itemLink')
 $list.Add_SelectionChanged({
 		
-    $itemLink.Visibility = "Visible"
+    #$itemLink.Visibility = "Visible"
 
     foreach($data in $sync.configs.applications)
     {

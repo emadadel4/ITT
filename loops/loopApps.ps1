@@ -18,7 +18,7 @@ $discription = $Window.FindName("description")
 $itemLink = $Window.FindName('itemLink')
 $list.Add_SelectionChanged({
 		
-    $itemLink.Visibility = "Visible"
+    #$itemLink.Visibility = "Visible"
 
     foreach($data in $sync.configs.applications)
     {

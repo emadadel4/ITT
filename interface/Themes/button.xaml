@@ -1,6 +1,6 @@
 <!--Button Style-->
                 <Style TargetType="Button">
-                    <Setter Property="Background" Value="Black"/>
+                    <Setter Property="Background" Value="{DynamicResource button}"/>
                     <Setter Property="Foreground" Value="White"/>
 
                     <Setter Property="Template">
