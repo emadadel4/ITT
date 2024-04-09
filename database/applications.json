@@ -1,35 +1,30 @@
 [
   {
     "Name": "Thorium",
-    "description": "#",
     "winget": "Alex313031.Thorium",
     "catgory": "Browsers",
     "check": "false"
   },
   {
     "Name": "Firefox",
-    "description": "Mozilla Firefox, or simply Firefox, is a free and open-source web browser developed by the Mozilla Foundation.",
     "winget": "Mozilla.Firefox",
     "catgory": "Browsers",
     "check": "false"
   },
   {
     "Name": "Google Chrome",
-    "description": "Chrome is a fast, simple, and secure web browser, built for the modern web.",
     "winget": "Google.Chrome",
     "catgory": "Browsers",
     "check": "false"
   },
   {
     "Name": "Chromium",
-    "description": "chromium is a fast, simple, and secure web browser, built for the modern web.",
     "winget": "eloston.ungoogled-chromium",
     "catgory": "Browsers",
     "check": "false"
   },
   {
     "Name": "Brave",
-    "description": "#",
     "winget": "Google.Chrome",
     "catgory": "Brave.Brave",
     "check": "false"
