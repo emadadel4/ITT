@@ -162,7 +162,7 @@
   },
   {
     "Name": "Discord",
-    "winget": "discord",
+    "winget": "Discord.Discord",
     "choco": "discord",
     "catgory": "Communication",
     "check": "false"
