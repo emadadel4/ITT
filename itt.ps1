@@ -1145,6 +1145,13 @@ $sync.configs.applications = '[
     "check": "false"
   },
   {
+    "Name": "Python 3.12.2",
+    "winget": "Microsoft.WindowsTerminal",
+    "choco": "python",
+    "catgory": "Developer",
+    "check": "false"
+  },
+  {
     "Name": "Git",
     "winget": "Git.Git",
     "choco": "git",
