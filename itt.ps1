@@ -724,12 +724,6 @@ $sync.configs.applications = '[
     "check": "false"
   },
   {
-    "Name": "Telegram Desktop",
-    "winget": "Telegram.TelegramDesktop",
-    "catgory": "Communication",
-    "check": "false"
-  },
-  {
     "Name": "WhatsApp",
     "winget": "WhatsApp.WhatsApp",
     "catgory": "Communication",
@@ -1008,6 +1002,12 @@ $sync.configs.applications = '[
   {
     "Name": "Visual Studio Community 2022",
     "winget": "Microsoft.VisualStudio.2022.Community",
+    "catgory": "Developer",
+    "check": "false"
+  },
+  {
+    "Name": "Notepad++",
+    "winget": "Notepad++.Notepad++",
     "catgory": "Developer",
     "check": "false"
   },
