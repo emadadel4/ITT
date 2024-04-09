@@ -1495,7 +1495,7 @@ $inputXML =  '
 
         <!--Footer-->
         <Grid Grid.Row="2">
-                <TextBlock Cursor="Pen" x:Name="quotes"  HorizontalAlignment="Left" VerticalAlignment="Center" Padding="16" TextWrapping="Wrap" Text="When I finished building my boat, the sea dried up." Foreground="Black"/>
+                <TextBlock Name="quotes"  HorizontalAlignment="Left" VerticalAlignment="Center" Padding="16" TextWrapping="Wrap" Text="When I finished building my boat, the sea dried up." Foreground="Black"/>
             </Grid>
         <!--End Footer-->
 
