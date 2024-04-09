@@ -161,6 +161,13 @@
     "check": "false"
   },
   {
+    "Name": "Discord",
+    "winget": "discord",
+    "choco": "discord",
+    "catgory": "Communication",
+    "check": "false"
+  },
+  {
     "Name": "TeamViewer",
     "winget": "TeamViewer.TeamViewer",
     "choco": "teamviewer",

@@ -815,6 +815,13 @@ $sync.configs.applications = '[
     "check": "false"
   },
   {
+    "Name": "Discord",
+    "winget": "discord",
+    "choco": "discord",
+    "catgory": "Communication",
+    "check": "false"
+  },
+  {
     "Name": "TeamViewer",
     "winget": "TeamViewer.TeamViewer",
     "choco": "teamviewer",
@@ -1146,7 +1153,7 @@ $sync.configs.applications = '[
   },
   {
     "Name": "Python 3.12.2",
-    "winget": "Microsoft.WindowsTerminal",
+    "winget": "python",
     "choco": "python",
     "catgory": "Developer",
     "check": "false"
