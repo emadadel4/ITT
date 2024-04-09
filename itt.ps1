@@ -1445,9 +1445,9 @@ $inputXML =  '
 
                     <StackPanel Orientation="Horizontal" Margin="0" VerticalAlignment="Center" HorizontalAlignment="Center">
                         <Grid>
-                            <TextBox Width="144"  VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5" Text="{Binding Text_searchInput}"  x:Name="searchInput"/>
+                            <TextBox Padding="5" BorderBrush="WhiteSmoke" Width="144"  VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5" Text="{Binding Text_searchInput}"  x:Name="searchInput"/>
 
-                            <TextBlock IsHitTestVisible="False" Text="Search in list" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="DarkGray">
+                            <TextBlock IsHitTestVisible="False" Text="Search in list" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="15,0,0,0" Foreground="DarkGray">
 
                                 <TextBlock.Style>
                                     <Style TargetType="{x:Type TextBlock}">
