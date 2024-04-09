@@ -223,8 +223,21 @@ function CheckChoco {
         }
         Write-Host "Chocolatey installed successfully."
     } else {
-        Write-Host "Chocolatey is already installed."
-    }
+
+Write-Host 
+"
+    ___ _____ _____     ____  _____ __  __    _    ____       _    ____  _____ _     
+    |_ _|_   _|_   _|   / __ \| ____|  \/  |  / \  |  _ \     / \  |  _ \| ____| |    
+    | |  | |   | |    / / _` |  _| | |\/| | / _ \ | | | |   / _ \ | | | |  _| | |    
+    | |  | |   | |   | | (_| | |___| |  | |/ ___ \| |_| |  / ___ \| |_| | |___| |___ 
+    |___| |_|   |_|    \ \__,_|_____|_|  |_/_/   \_\____/  /_/   \_\____/|_____|_____|
+                        \____/                                                        
+
+                    This is Emad adel an Binary
+    01000101 01001101 01000001 01000100  01000001 01000100 01000101 01001100      
+                Chocolatey is installed You Good to go                  
+"
+}
     
 }
 function Get-WinUtilVariables {
