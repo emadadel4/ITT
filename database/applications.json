@@ -223,21 +223,18 @@
   },
   {
     "Name": "Microsoft Visual C++ 2015-2022  (x86) Redistributable",
-    "description": "Mozilla Firefox, or simply Firefox, is a free and open-source web browser developed by the Mozilla Foundation.",
     "winget": "Microsoft.VCRedist.2015+.x86",
     "catgory": "Gaming",
     "check": "false"
   },
   {
     "Name": "NVIDIA GeForce NOW",
-    "description": "Mozilla Firefox, or simply Firefox, is a free and open-source web browser developed by the Mozilla Foundation.",
     "winget": "Nvidia.GeForceNow",
     "catgory": "Gaming",
     "check": "false"
   },
   {
     "Name": "NVIDIA PhysX",
-    "description": "Mozilla Firefox, or simply Firefox, is a free and open-source web browser developed by the Mozilla Foundation.",
     "winget": "Nvidia.PhysX",
     "catgory": "Gaming",
     "check": "false"
