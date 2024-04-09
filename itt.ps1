@@ -6,8 +6,6 @@
 ################################################################################################################
 
 
-#Start-Transcript $ENV:TEMP\itt.log -Append
-
 <#
 .Dev
     Author         : Emad Adel @emadadel4
@@ -19,7 +17,6 @@
 if (!(Test-Path -Path $ENV:TEMP)) {
     New-Item -ItemType Directory -Force -Path $ENV:TEMP
 }
-
 
 # Load DLLs
 Add-Type -AssemblyName PresentationFramework
