@@ -10,5 +10,5 @@ function about{
         Version  : $($sync.version)
 "@
 
-    Show-CustomDialog -Message $authorInfo -Width 400
+    Show-CustomDialog -Message $authorInfo -Width 400 
 }

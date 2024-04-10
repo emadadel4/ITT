@@ -10,10 +10,10 @@ function Show-CustomDialog {
     Add-Type -AssemblyName PresentationFramework
 
     # Define theme colors
-    $foregroundColor = [Windows.Media.Brushes]::White
-    $backgroundColor = [Windows.Media.Brushes]::Black
+    $foregroundColor = [Windows.Media.Brushes]::Black
+    $backgroundColor = [Windows.Media.Brushes]::White
     $font = New-Object Windows.Media.FontFamily("Consolas")
-    $borderColor = [Windows.Media.Brushes]::Green
+    $borderColor = [Windows.Media.Brushes]::Black
     $buttonBackgroundColor = [Windows.Media.Brushes]::Black
     $buttonForegroundColor = [Windows.Media.Brushes]::White
     $shadowColor = [Windows.Media.ColorConverter]::ConvertFromString("#AAAAAAAA")
@@ -35,14 +35,14 @@ function Show-CustomDialog {
     $border = New-Object Windows.Controls.Border
     $border.BorderBrush = $borderColor
     $border.BorderThickness = New-Object Windows.Thickness(1)  # Adjust border thickness as needed
-    $border.CornerRadius = New-Object Windows.CornerRadius(10)  # Adjust the radius for rounded corners
+    $border.CornerRadius = New-Object Windows.CornerRadius(0)  # Adjust the radius for rounded corners
 
     # Create a drop shadow effect
     $dropShadow = New-Object Windows.Media.Effects.DropShadowEffect
     $dropShadow.Color = $shadowColor
     $dropShadow.Direction = 270
     $dropShadow.ShadowDepth = 5
-    $dropShadow.BlurRadius = 10
+    $dropShadow.BlurRadius = 0
 
     # Apply drop shadow effect to the border
     $dialog.Effect = $dropShadow
@@ -126,6 +126,7 @@ function Show-CustomDialog {
     $okButton.Background = $buttonBackgroundColor
     $okButton.Foreground = $buttonForegroundColor
     $okButton.BorderBrush = $borderColor
+
     $okButton.Add_Click({
         $dialog.Close()
     })
