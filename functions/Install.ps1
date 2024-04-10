@@ -28,8 +28,7 @@ $scriptBlock = {
         #start-Process -FilePath winget -ArgumentList "install -e -h --accept-source-agreements --accept-package-agreements --id $id" -NoNewWindow -Wait
 
 
-        start-Process -FilePath "choco" -ArgumentList "install $id" -NoNewWindow -Wait
-
+        Start-Process -FilePath "choco" -ArgumentList "install $id -y" -NoNewWindow -Wait
         
         # Update status label
         UpdateStatusLabel("Downloading $id...")
