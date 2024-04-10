@@ -134,7 +134,7 @@ $scriptBlock = {
         Start-Process -FilePath "choco" -ArgumentList "install $id -y" -NoNewWindow -Wait
         
         # Update status label
-        UpdateStatusLabel("Downloading $id...")
+        UpdateStatusLabel("Downloading...")
     }
 
     # Update status label after downloading all programs
@@ -177,7 +177,7 @@ function Install() {
             $ps.Runspace = $runspace
             $handle = $ps.BeginInvoke()
             # Update status label
-            $window.FindName('description').Text = "Downloading... $prog"
+            $window.FindName('description').Text = "Downloading..."
         }
     }
     else
@@ -226,18 +226,10 @@ function ApplyTweaks() {
 
 function CheckChoco {
 
-    # Check if Chocolatey is installed
-    if (-not (Test-Path 'C:\ProgramData\chocolatey\choco.exe')) {
-        # Chocolatey is not installed, so install it
-        Write-Host "Chocolatey is not installed. Installing Chocolatey..."
-        Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
-        if ($LastExitCode -ne 0) {
-            Write-Host "Failed to install Chocolatey. Exiting..."
-            exit 1
-        }
-        Write-Host "Chocolatey installed successfully."
-    } else {
+    try {
 
+        if((Get-Command -Name choco -ErrorAction Ignore))
+        {
 Write-Host 
 "
     ___ _____ _____     ____  _____ __  __    _    ____       _    ____  _____ _     
@@ -251,8 +243,16 @@ Write-Host
     01000101 01001101 01000001 01000100  01000001 01000100 01000101 01001100      
                 Chocolatey is installed You Good to go                  
 "
-}
-    
+            return
+        }
+
+        Write-Host "Chocolatey is not installed, installing now"
+        Set-ExecutionPolicy Bypass -Scope Process -Force; Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1')) -ErrorAction Stop
+        powershell choco feature enable -n allowGlobalConfirmation
+    }
+    Catch {
+        Write-Host "--Chocolatey failed to install---"
+    }
 }
 function Get-WinUtilVariables {
 

@@ -29,7 +29,7 @@ $scriptBlock = {
         Start-Process -FilePath "choco" -ArgumentList "install $id -y" -NoNewWindow -Wait
         
         # Update status label
-        UpdateStatusLabel("Downloading $id...")
+        UpdateStatusLabel("Downloading...")
     }
 
     # Update status label after downloading all programs
@@ -72,7 +72,7 @@ function Install() {
             $ps.Runspace = $runspace
             $handle = $ps.BeginInvoke()
             # Update status label
-            $window.FindName('description').Text = "Downloading... $prog"
+            $window.FindName('description').Text = "Downloading..."
         }
     }
     else
