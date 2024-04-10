@@ -108,7 +108,7 @@ function ShowAll{
 This script contains functions for installing software, applying tweaks, and managing asynchronous downloads.
 
 .DESCRIPTION
-The functions in this script are used to install software using Winget, apply tweaks, and manage asynchronous downloads.
+The functions in this script are used to install software using choco, apply tweaks, and manage asynchronous downloads.
 
 #>
 
@@ -129,10 +129,8 @@ $scriptBlock = {
 
     foreach ($id in $packageIDs) {
 
+
         # Run Winget command to download software
-        #start-Process -FilePath winget -ArgumentList "install -e -h --accept-source-agreements --accept-package-agreements --id $id" -NoNewWindow -Wait
-
-
         Start-Process -FilePath "choco" -ArgumentList "install $id -y" -NoNewWindow -Wait
         
         # Update status label
@@ -148,25 +146,45 @@ function Install() {
     $prog = @()
     $packageIDs = @()
 
+    $result  
 
-    foreach ($item in $list.Items) {
-        if ($item.IsChecked) {
-            foreach ($program in $sync.configs.applications) {
-                if($item.Content -eq $program.name) {
+
+    foreach ($item in $list.Items)
+    {
+        if ($item.IsChecked)
+        {
+            foreach ($program in $sync.configs.applications)
+            {
+                if($item.Content -eq $program.name)
+                {
                     $packageIDs += $program.choco
                     $prog = $program.name
+
+                    $result  = $item.IsChecked
                 }
             }
         }
     }
 
-    # Start asynchronous download using runspace
-    $ps = [powershell]::Create().AddScript($scriptBlock).AddArgument($packageIDs).AddArgument($Window).AddArgument($winget)
-    $ps.Runspace = $runspace
-    $handle = $ps.BeginInvoke()
-    # Update status label
-    $window.FindName('description').Text = "Downloading... $prog"
+    if($result)
+    {
+        $msg = [System.Windows.MessageBox]::Show("Do you want to Install selected programs?", "ITT @emadadel", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)
 
+        if($msg -eq "Yes")
+        {
+            #Start asynchronous download using runspace
+            $ps = [powershell]::Create().AddScript($scriptBlock).AddArgument($packageIDs).AddArgument($Window).AddArgument($winget)
+            $ps.Runspace = $runspace
+            $handle = $ps.BeginInvoke()
+            # Update status label
+            $window.FindName('description').Text = "Downloading... $prog"
+        }
+    }
+    else
+    {
+        #show mesg
+        [System.Windows.MessageBox]::Show("Select at lest one program", "ITT @emadadel", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Question)
+    }
 }
 
 function ApplyTweaks() {
