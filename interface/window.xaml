@@ -90,8 +90,7 @@
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Bottom"
                                     Cursor="Hand"
-                                    Width="90" Height="44" Margin="16" Padding="10"
-                                />
+                                    Width="90" Height="33" Margin="50"/>
                 <!--End Install Button-->
 
                 <!--Apply Button-->
@@ -102,7 +101,7 @@
                                 VerticalAlignment="Bottom"
                                 Cursor="Hand"
                                 Visibility="Hidden"
-                                Width="90" Height="44" Margin="16" Padding="10"/>
+                                Width="90" Height="33" Margin="50"/>
                 <!--End Apply Button-->
 
             </Grid>

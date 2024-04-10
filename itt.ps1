@@ -11,8 +11,10 @@
     Author         : Emad Adel @emadadel4
     GitHub         : https://github.com/emadadel4
     Website        : https://eprojects.orgfree.com/
-    Version        : 24.04.10
+    Version        : 24.04.11
 #>
+
+
 
 if (!(Test-Path -Path $ENV:TEMP)) {
     New-Item -ItemType Directory -Force -Path $ENV:TEMP
@@ -25,7 +27,7 @@ Add-Type -AssemblyName System.Windows.Forms
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "24.04.10"
+$sync.version = "24.04.11"
 $sync.github = "https://github.com/emadadel4"
 $sync.website = "https://eprojects.orgfree.com"
 $sync.author = "Emad Adel @emadadel4"
@@ -36,6 +38,7 @@ $sync.ProcessRunning = $false
 $currentPid = [System.Security.Principal.WindowsIdentity]::GetCurrent()
 $principal = new-object System.Security.Principal.WindowsPrincipal($currentPid)
 $adminRole=[System.Security.Principal.WindowsBuiltInRole]::Administrator
+
 
 
 if ($principal.IsInRole($adminRole))
@@ -52,8 +55,6 @@ else
     break
 }
 
-
-
 #===========================================================================
 # Start functions
 #===========================================================================
@@ -68,6 +69,7 @@ function about{
 
     Show-CustomDialog -Message $authorInfo -Width 400
 }
+
 <#
 .DESCRIPTION
 This function filters and populates a list of applications based on the specified category.
@@ -105,6 +107,7 @@ function ShowAll{
             $checkbox.Content = $item.name
     }
 }
+
 <#
 .SYNOPSIS
 This script contains functions for installing software, applying tweaks, and managing asynchronous downloads.
@@ -1262,7 +1265,7 @@ $inputXML =  '
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate TargetType="Button">
-                                <Border Background="{TemplateBinding Background}">
+                                <Border CornerRadius="7" Background="{TemplateBinding Background}">
                                     <ContentPresenter HorizontalAlignment="Center"
                                                         VerticalAlignment="Center"/>
                                     
@@ -1406,8 +1409,7 @@ $inputXML =  '
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Bottom"
                                     Cursor="Hand"
-                                    Width="90" Height="44" Margin="16" Padding="10"
-                                />
+                                    Width="90" Height="33" Margin="50"/>
                 <!--End Install Button-->
 
                 <!--Apply Button-->
@@ -1418,7 +1420,7 @@ $inputXML =  '
                                 VerticalAlignment="Bottom"
                                 Cursor="Hand"
                                 Visibility="Hidden"
-                                Width="90" Height="44" Margin="16" Padding="10"/>
+                                Width="90" Height="33" Margin="50"/>
                 <!--End Apply Button-->
 
             </Grid>
@@ -1557,7 +1559,6 @@ $sync.tweaks.Add_SelectionChanged({
 #===========================================================================
 # End Loops 
 #===========================================================================
-
 Clear-Host
 CheckChoco
 
@@ -1581,6 +1582,6 @@ $window.FindName('c').add_click({Catgoray($window.FindName('c').Content)})
 $window.FindName('all').add_click({ShowAll})
 
 
-$sync = $window.ShowDialog() | out-null
+$window.ShowDialog() | out-null
 #Stop-Transcript
 

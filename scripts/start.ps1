@@ -31,6 +31,7 @@ $principal = new-object System.Security.Principal.WindowsPrincipal($currentPid)
 $adminRole=[System.Security.Principal.WindowsBuiltInRole]::Administrator
 
 
+
 if ($principal.IsInRole($adminRole))
 {
     $Host.UI.RawUI.WindowTitle = $myInvocation.MyCommand.Definition + "(Admin)"
@@ -44,6 +45,3 @@ else
     [System.Diagnostics.Process]::Start($newProcess);
     break
 }
-
-
-
