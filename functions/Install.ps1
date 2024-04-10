@@ -26,14 +26,14 @@ $scriptBlock = {
 
 
         # Run Winget command to download software
-        Start-Process -FilePath "choco" -ArgumentList "install $id -y" -NoNewWindow -Wait
+        Start-Process -FilePath "choco" -ArgumentList "install $id -y --force" -NoNewWindow -Wait
         
         # Update status label
         UpdateStatusLabel("Downloading...")
     }
 
     # Update status label after downloading all programs
-    UpdateStatusLabel("Download Complete")
+    UpdateStatusLabel("Downloaded and installed successfully")
 
 }
 

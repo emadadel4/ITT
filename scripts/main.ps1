@@ -18,7 +18,6 @@ $window.FindName('c').add_click({Catgoray($window.FindName('c').Content)})
 
 $window.FindName('all').add_click({ShowAll})
 
-CheckChoco
 
 $sync = $window.ShowDialog() | out-null
 #Stop-Transcript
