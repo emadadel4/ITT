@@ -1436,7 +1436,7 @@ $inputXML =  '
                         </Setter>
                     </Style>
                 </TabControl.Resources>
-                <TabItem Header="Install" Name="apps" BorderBrush="{x:Null}" Padding="16">
+                <TabItem Header="Apps" Name="apps" BorderBrush="{x:Null}" Padding="16">
                     <TabItem.Content>
                         <ListView Margin="10" ScrollViewer.VerticalScrollBarVisibility="Auto" x:Name="list" BorderBrush="{x:Null}" Background="{x:Null}">
                         </ListView>
