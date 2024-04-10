@@ -143,11 +143,9 @@ $scriptBlock = {
 }
 
 function Install() {
-    $prog = @()
+
     $packageIDs = @()
-
     $result  
-
 
     foreach ($item in $list.Items)
     {
@@ -158,8 +156,6 @@ function Install() {
                 if($item.Content -eq $program.name)
                 {
                     $packageIDs += $program.choco
-                    $prog = $program.name
-
                     $result  = $item.IsChecked
                 }
             }
