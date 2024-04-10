@@ -1,18 +1,19 @@
-<#
-.DESCRIPTION
-This function filters and populates a list of applications based on the specified category.
-
-.PARAMETER cat
-The category based on which the applications are filtered.
-
-.EXAMPLE
-Catgoray -cat "SomeCategory"
-
-.EXAMPLE
-ShowAll "Show all apps"
-#>
-
 function Catgoray($cat){
+
+    <#
+    .DESCRIPTION
+    This function filters and populates a list of applications based on the specified category.
+
+    .PARAMETER cat
+    The category based on which the applications are filtered.
+
+    .EXAMPLE
+    Catgoray -cat "SomeCategory"
+
+    .EXAMPLE
+    ShowAll "Show all apps"
+    #>
+
     $list.Items.Clear()
 
     foreach ($item in $sync.configs.applications)

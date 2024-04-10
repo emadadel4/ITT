@@ -1,12 +1,3 @@
-<#
-.SYNOPSIS
-This script contains functions for installing software, applying tweaks, and managing asynchronous downloads.
-
-.DESCRIPTION
-The functions in this script are used to install software using choco, apply tweaks, and manage asynchronous downloads.
-
-#>
-
 # Create a runspace to execute Winget command
 $runspace = [runspacefactory]::CreateRunspace()
 $runspace.Open()
@@ -38,6 +29,15 @@ $scriptBlock = {
 }
 
 function Install() {
+
+    <#
+    .SYNOPSIS
+    This script contains functions for installing software, applying tweaks, and managing asynchronous downloads.
+
+    .DESCRIPTION
+    The functions in this script are used to install software using choco, apply tweaks, and manage asynchronous downloads.
+
+    #>
 
     $packageIDs = @()
     $result  
