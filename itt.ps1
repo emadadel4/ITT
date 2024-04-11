@@ -606,9 +606,9 @@ $sync.configs.applications = '[
     "check": "false"
   },
   {
-    "Name": "WhatsApp",
+    "Name": "Meta Messenger",
     "winget": "WhatsApp.WhatsApp",
-    "choco": "WhatsApp.WhatsApp",
+    "choco": "messenger",
     "catgory": "Communication",
     "check": "false"
   },
