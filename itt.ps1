@@ -845,6 +845,13 @@ $sync.configs.applications = '[
     "check": "false"
   },
   {
+    "Name": "Lively Wallpaper ",
+    "winget": " #",
+    "choco": "lively",
+    "catgory": "Gaming",
+    "check": "false"
+  },
+  {
     "Name": "Driver Easy",
     "winget": "Easeware.DriverEasy",
     "choco": "drivereasyfree",
@@ -876,6 +883,13 @@ $sync.configs.applications = '[
     "Name": "AOMEI Backupper",
     "winget": "AOMEI.Backupper.Standard",
     "choco": "backupper-standard",
+    "catgory": "Utilities",
+    "check": "false"
+  },
+  {
+    "Name": "Recuva recover",
+    "winget": "#",
+    "choco": "recuva",
     "catgory": "Utilities",
     "check": "false"
   },
@@ -1009,6 +1023,13 @@ $sync.configs.applications = '[
     "Name": "Visual Studio Community 2022",
     "winget": "Microsoft.VisualStudio.2022.Community",
     "choco": "visualstudio2022community",
+    "catgory": "Developer",
+    "check": "false"
+  },
+  {
+    "Name": "Godot game engine",
+    "winget": "#",
+    "choco": "godot",
     "catgory": "Developer",
     "check": "false"
   },
