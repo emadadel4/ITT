@@ -14,6 +14,13 @@
     "check": "false"
   },
   {
+    "Name": "Add block extension [Firefox]",
+    "winget": "#",
+    "choco": "adblockplusfirefox",
+    "catgory": "Browsers",
+    "check": "false"
+  },
+  {
     "Name": "Microsoft Edge",
     "winget": "Microsoft.Edge",
     "choco": "microsoft-edge",
@@ -24,6 +31,13 @@
     "Name": "Google Chrome",
     "winget": "Google.Chrome",
     "choco": "googlechrome",
+    "catgory": "Browsers",
+    "check": "false"
+  },
+  {
+    "Name": "Add block extension [Chrome]",
+    "winget": "#",
+    "choco": "adblockpluschrome",
     "catgory": "Browsers",
     "check": "false"
   },
@@ -58,7 +72,7 @@
   {
     "Name": "K-Lite Mega Codec Pack",
     "winget": "CodecGuide.K-LiteCodecPack.Mega",
-    "choco": "k-litecodecpack-standard",
+    "choco": "k-litecodecpackfull",
     "catgory": "Media",
     "check": "false"
   },
@@ -269,6 +283,13 @@
     "Name": "Microsoft Visual C++ 2015-2022  (x86) Redistributable",
     "winget": "Microsoft.VCRedist.2015+.x86",
     "choco": "vcredist2015",
+    "catgory": "Gaming",
+    "check": "false"
+  },
+  {
+    "Name": "NET Framework All Versions",
+    "winget": "#",
+    "choco": "dotnet-all",
     "catgory": "Gaming",
     "check": "false"
   },
@@ -507,6 +528,13 @@
     "Name": "Node.js",
     "winget": "OpenJS.NodeJS",
     "choco": "nodejs",
+    "catgory": "Developer",
+    "check": "false"
+  },
+  {
+    "Name": "Electrum-ltc",
+    "winget": "#",
+    "choco": "electronim",
     "catgory": "Developer",
     "check": "false"
   },

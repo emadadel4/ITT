@@ -487,6 +487,13 @@ $sync.configs.applications = '[
     "check": "false"
   },
   {
+    "Name": "Add block extension [Firefox]",
+    "winget": "#",
+    "choco": "adblockplusfirefox",
+    "catgory": "Browsers",
+    "check": "false"
+  },
+  {
     "Name": "Microsoft Edge",
     "winget": "Microsoft.Edge",
     "choco": "microsoft-edge",
@@ -497,6 +504,13 @@ $sync.configs.applications = '[
     "Name": "Google Chrome",
     "winget": "Google.Chrome",
     "choco": "googlechrome",
+    "catgory": "Browsers",
+    "check": "false"
+  },
+  {
+    "Name": "Add block extension [Chrome]",
+    "winget": "#",
+    "choco": "adblockpluschrome",
     "catgory": "Browsers",
     "check": "false"
   },
@@ -746,6 +760,13 @@ $sync.configs.applications = '[
     "check": "false"
   },
   {
+    "Name": "NET Framework All Versions",
+    "winget": "#",
+    "choco": "dotnet-all",
+    "catgory": "Gaming",
+    "check": "false"
+  },
+  {
     "Name": "NVIDIA GeForce NOW",
     "winget": "Nvidia.GeForceNow",
     "choco": "nvidia-geforce-now",
@@ -984,6 +1005,13 @@ $sync.configs.applications = '[
     "check": "false"
   },
   {
+    "Name": "Electrum-ltc",
+    "winget": "#",
+    "choco": "electronim",
+    "catgory": "Developer",
+    "check": "false"
+  },
+  {
     "Name": "Notepad++",
     "winget": "Notepad++.Notepad++",
     "choco": "notepadplusplus",
@@ -999,7 +1027,7 @@ $sync.configs.applications = '[
     "check": "false"
   },
   {
-    "Name": "Powershell-core",
+    "Name": "Powershell core",
     "winget": "powershell-core",
     "choco": "powershell-core",
     "catgory": "Developer",
