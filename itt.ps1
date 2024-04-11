@@ -123,7 +123,7 @@ $scriptBlock = {
 
 
         # Run Winget command to download software
-        Start-Process -FilePath "choco" -ArgumentList "install $id -y --force" -NoNewWindow -Wait
+        Start-Process -FilePath "choco" -ArgumentList "install $id -y --force --ignore-checksums" -NoNewWindow -Wait
         
         # Update status label
         UpdateStatusLabel("Downloading...")
