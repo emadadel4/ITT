@@ -564,6 +564,35 @@ $sync.configs.applications = '[
     "check": "false"
   },
   {
+    "Name": "Kodi",
+    "winget": "#",
+    "choco": "kodi",
+    "catgory": "Media",
+    "check": "false"
+  },
+  {
+    "Name": "Jellyfin",
+    "winget": "#",
+    "choco": "jellyfin",
+    "catgory": "Media",
+    "check": "false"
+  },
+  {
+    "Name": "Winamp",
+    "winget": "#",
+    "choco": "winamp",
+    "catgory": "Media",
+    "check": "false"
+  },
+  {
+    "Name": "Aimp",
+    "winget": "#",
+    "choco": "aimp",
+    "catgory": "Media",
+    "check": "false"
+  },
+
+  {
     "Name": "OpenOffice",
     "winget": "Apache.OpenOffice",
     "choco": "openoffice",
@@ -907,6 +936,13 @@ $sync.configs.applications = '[
     "check": "false"
   },
   {
+    "Name": "Virtual CloneDrive",
+    "winget": "#",
+    "choco": "virtualclonedrive",
+    "catgory": "Utilities",
+    "check": "false"
+  },
+  {
     "Name": "Utilso",
     "winget": "SerhiiSlieptsov.Utilso",
     "choco": "ultraiso",
@@ -924,6 +960,13 @@ $sync.configs.applications = '[
     "Name": "AutoHotkey",
     "winget": "AutoHotkey.AutoHotkey",
     "choco": "autohotkey",
+    "catgory": "Utilities",
+    "check": "false"
+  },
+  {
+    "Name": "Rainmeter",
+    "winget": "#",
+    "choco": "rainmeter",
     "catgory": "Utilities",
     "check": "false"
   },
@@ -1005,7 +1048,7 @@ $sync.configs.applications = '[
     "check": "false"
   },
   {
-    "Name": "Electrum-ltc",
+    "Name": "Electrum-LTC",
     "winget": "#",
     "choco": "electronim",
     "catgory": "Developer",
