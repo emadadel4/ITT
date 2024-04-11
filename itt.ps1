@@ -545,7 +545,7 @@ $sync.configs.applications = '[
   {
     "Name": "K-Lite Mega Codec Pack",
     "winget": "CodecGuide.K-LiteCodecPack.Mega",
-    "choco": "k-litecodecpack-standard",
+    "choco": "k-litecodecpackfull",
     "catgory": "Media",
     "check": "false"
   },
