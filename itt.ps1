@@ -508,9 +508,9 @@ $sync.configs.applications = '[
     "check": "false"
   },
   {
-    "Name": "Add block extension [Chrome]",
+    "Name": "uBlock Origin extension [Chrome]",
     "winget": "#",
-    "choco": "adblockpluschrome",
+    "choco": "ublockorigin-chrome",
     "catgory": "Browsers",
     "check": "false"
   },
