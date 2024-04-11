@@ -2,6 +2,9 @@
 $runspace = [runspacefactory]::CreateRunspace()
 $runspace.Open()
 
+$runspace2 = [runspacefactory]::CreateRunspace()
+$runspace2.Open()
+
 # Define script block for downloading software
 $scriptBlock = {
 
@@ -25,6 +28,35 @@ $scriptBlock = {
 
     # Update status label after downloading all programs
     UpdateStatusLabel("Downloaded and installed successfully")
+
+}
+
+$scriptBlock2 = {
+
+    param($packageIDs2, $window,$winget)
+
+    function UpdateStatusLabel($text) {
+        $window.Dispatcher.Invoke([Action]{
+            $window.FindName('description').Text = $text
+        })
+    }
+
+    foreach ($id in $packageIDs2) {
+
+
+       #Start-Process Invoke-RestMethod $id | Invoke-Expression  -NoNewWindow -Wait
+
+       #Start-Process $id -NoNewWindow -Wait
+
+
+        powershell.exe -Command  $id 
+        
+        # Update status label
+        UpdateStatusLabel("Applying tweeaks...")
+    }
+
+    # Update status label after downloading all programs
+    UpdateStatusLabel("Successfully")
 
 }
 
@@ -80,6 +112,8 @@ function Install() {
 
 function ApplyTweaks() {
 
+    $packageIDs2 = @()
+
     foreach ($item in $sync.tweaks.Items)
     {
         if ($item.IsChecked)
@@ -90,14 +124,8 @@ function ApplyTweaks() {
             {
                 if($item.Content -eq $data.name)
                 {
-                    if($data.fromUrl -eq "true")
-                    {
-                        Invoke-RestMethod $data.script | Invoke-Expression 
-                    }
-                    else
-                    {
-                        powershell.exe -Command  $data.script
-                    }
+                    $packageIDs2 += $data.script
+                    
                 }
             }
         }
@@ -106,12 +134,22 @@ function ApplyTweaks() {
 
     if($result)
     {
-     
-        
+        $msg = [System.Windows.MessageBox]::Show("Do you want to apply selected tweeaks?", "ITT @emadadel", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)
+
+        if($msg -eq "Yes")
+        {
+            #Start asynchronous download using runspace
+            $ps2 = [powershell]::Create().AddScript($scriptBlock2).AddArgument($packageIDs2).AddArgument($Window).AddArgument($winget)
+            $ps2.Runspace = $runspace2
+            $handle2 = $ps2.BeginInvoke()
+            # Update status label
+            $window.FindName('description').Text = "Applying tweeaks..."
+        }
     }
     else
     {
-        [System.Windows.MessageBox]::Show("Please select the Tweeak(s) to apply", "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
+        #show mesg
+        [System.Windows.MessageBox]::Show("Select at lest one program", "ITT @emadadel", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Question)
     }
 }
 

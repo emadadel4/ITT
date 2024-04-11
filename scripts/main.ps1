@@ -1,7 +1,7 @@
 
 $window.FindName('taps').add_SelectionChanged({ChangeTap})
 $window.FindName('installBtn').add_click({Install})
-#$window.FindName('applyBtn').add_click({ApplyTweaks})
+$window.FindName('applyBtn').add_click({ApplyTweaks})
 $window.FindName('searchInput').add_TextChanged({Search})
 $window.FindName('about').add_MouseLeftButtonDown({about})
 
