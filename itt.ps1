@@ -999,6 +999,13 @@ $sync.configs.applications = '[
     "check": "false"
   },
   {
+    "Name": "Powershell-core",
+    "winget": "powershell-core",
+    "choco": "powershell-core",
+    "catgory": "Developer",
+    "check": "false"
+  },
+  {
     "Name": "Python",
     "winget": "Python.Python.3.9",
     "choco": "python",
