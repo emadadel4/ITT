@@ -589,14 +589,14 @@
     "check": "false"
   },
   {
-    "Name": "Node.js",
+    "Name": "Node.js LTS",
     "winget": "OpenJS.NodeJS",
-    "choco": "nodejs",
+    "choco": "nodejs-lts",
     "catgory": "Developer",
     "check": "false"
   },
   {
-    "Name": "Electrum-LTC",
+    "Name": "Electrum-LTS",
     "winget": "#",
     "choco": "electronim",
     "catgory": "Developer",
