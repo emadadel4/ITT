@@ -366,6 +366,7 @@ function Show-CustomDialog {
     $dialog.Title = "About"
     $dialog.Height = $Height
     $dialog.Width = $Width
+    $dialog.Topmost = $true
     $dialog.Margin = New-Object Windows.Thickness(10)  # Add margin to the entire dialog box
     $dialog.WindowStyle = [Windows.WindowStyle]::None  # Remove title bar and window controls
     $dialog.ResizeMode = [Windows.ResizeMode]::NoResize  # Disable resizing
