@@ -1332,16 +1332,22 @@ $inputXML =  '
 
 
         <StackPanel Margin="20" Orientation="Horizontal"  VerticalAlignment="Center" Grid.Row="0" Grid.ColumnSpan="2" >
-            <TextBlock Name="about" Foreground="{DynamicResource text}"  Text="ITT | @emadadel4" FontSize="14" Width="auto" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+
+            <Ellipse Name="about" Width="70" Height="70">
+                <Ellipse.Fill>
+                    <ImageBrush ImageSource="https://avatars.githubusercontent.com/u/19177373?v=4.png" />
+                </Ellipse.Fill>
+            </Ellipse>
+
             <StackPanel Name="catg" Margin="20,0,0,0" Orientation="Horizontal" HorizontalAlignment="Left">
-            <Button Name="all" Cursor="Hand"  Content="All" Height="20" Width="60" Margin="4"  Background="{DynamicResource button}" Foreground="{DynamicResource BtnForeground}"/>
-            <Button Name="r" Cursor="Hand" Content="Fresh Start" Height="auto" Width="100" Margin="4"  Background="{DynamicResource button}" Foreground="{DynamicResource BtnForeground}"/>
-            <Button Name="m" Cursor="Hand"  Content="Media" Height="auto" Width="60" Margin="4"  Background="{DynamicResource button}" Foreground="{DynamicResource BtnForeground}"/>
-            <Button Name="b" Cursor="Hand"  Content="Browsers" Height="auto" Width="60" Margin="4"  Background="{DynamicResource button}" Foreground="{DynamicResource BtnForeground}"/>
-            <Button Name="g" Cursor="Hand"  Content="Gaming" Height="auto" Width="60" Margin="4"  Background="{DynamicResource button}" Foreground="{DynamicResource BtnForeground}"/>
-            <Button Name="d" Cursor="Hand"  Content="Developer" Height="auto" Width="70" Margin="4"  Background="{DynamicResource button}" Foreground="{DynamicResource BtnForeground}"/>
-            <Button Name="u" Cursor="Hand"  Content="Utilities" Height="20" Width="60" Margin="4"  Background="{DynamicResource button}" Foreground="{DynamicResource BtnForeground}"/>
-            <Button Name="c" Cursor="Hand" Content="Communication" Height="auto" Width="100" Margin="4"  Background="{DynamicResource button}" Foreground="{DynamicResource BtnForeground}"/>
+            <Button Name="all" Cursor="Hand"  Content="All" Height="30" Width="60" Margin="4"  Background="{DynamicResource button}" Foreground="{DynamicResource BtnForeground}"/>
+            <Button Name="r" Cursor="Hand" Content="Fresh Start" Height="30" Width="100" Margin="4"  Background="{DynamicResource button}" Foreground="{DynamicResource BtnForeground}"/>
+            <Button Name="m" Cursor="Hand"  Content="Media" Height="30" Width="60" Margin="4"  Background="{DynamicResource button}" Foreground="{DynamicResource BtnForeground}"/>
+            <Button Name="b" Cursor="Hand"  Content="Browsers" Height="30" Width="60" Margin="4"  Background="{DynamicResource button}" Foreground="{DynamicResource BtnForeground}"/>
+            <Button Name="g" Cursor="Hand"  Content="Gaming" Height="30" Width="60" Margin="4"  Background="{DynamicResource button}" Foreground="{DynamicResource BtnForeground}"/>
+            <Button Name="d" Cursor="Hand"  Content="Developer" Height="30" Width="70" Margin="4"  Background="{DynamicResource button}" Foreground="{DynamicResource BtnForeground}"/>
+            <Button Name="u" Cursor="Hand"  Content="Utilities" Height="30" Width="60" Margin="4"  Background="{DynamicResource button}" Foreground="{DynamicResource BtnForeground}"/>
+            <Button Name="c" Cursor="Hand" Content="Communication" Height="30" Width="100" Margin="4"  Background="{DynamicResource button}" Foreground="{DynamicResource BtnForeground}"/>
             </StackPanel>
         </StackPanel>
 
