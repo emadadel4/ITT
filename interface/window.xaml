@@ -93,24 +93,24 @@
                 </StackPanel>
 
                 <!--Install Button-->
-                <Button
-                                    Name="installBtn"
-                                    Content="Install"
-                                    HorizontalAlignment="Center"
-                                    VerticalAlignment="Bottom"
-                                    Cursor="Hand"
-                                    Width="90" Height="33" Margin="50"/>
+                    <Button
+                        Name="installBtn"
+                        Content="Install"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Bottom"
+                        Cursor="Hand"
+                        Width="90" Height="33" Margin="50"/>
                 <!--End Install Button-->
 
                 <!--Apply Button-->
-                <Button
-                                Name="applyBtn"
-                                Content="Apply"
-                                HorizontalAlignment="Center"
-                                VerticalAlignment="Bottom"
-                                Cursor="Hand"
-                                Visibility="Hidden"
-                                Width="90" Height="33" Margin="50"/>
+                    <Button
+                        Name="applyBtn"
+                        Content="Apply"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Bottom"
+                        Cursor="Hand"
+                        Visibility="Hidden"
+                        Width="90" Height="33" Margin="50"/>
                 <!--End Apply Button-->
 
             </Grid>
