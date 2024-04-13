@@ -11,7 +11,7 @@
     "winget": "Mozilla.Firefox",
     "choco": "firefox",
     "catgory": "Browsers",
-    "check": "false"
+    "check": "true"
   },
   {
     "Name": "Add block extension [Firefox]",
@@ -32,7 +32,7 @@
     "winget": "Google.Chrome",
     "choco": "googlechrome",
     "catgory": "Browsers",
-    "check": "false"
+    "check": "true"
   },
   {
     "Name": "uBlock Origin extension [Chrome]",
@@ -67,14 +67,14 @@
     "winget": "Tonec.InternetDownloadManager",
     "choco": "internet-download-manager",
     "catgory": "Browsers",
-    "check": "false"
+    "check": "true"
   },
   {
     "Name": "K-Lite Mega Codec Pack",
     "winget": "CodecGuide.K-LiteCodecPack.Mega",
     "choco": "k-litecodecpackfull",
     "catgory": "Media",
-    "check": "false"
+    "check": "true"
   },
   {
     "Name": "PotPlayer",
@@ -109,7 +109,7 @@
     "winget": "#",
     "choco": "winamp",
     "catgory": "Media",
-    "check": "false"
+    "check": "true"
   },
   {
     "Name": "Aimp",
@@ -138,21 +138,21 @@
     "winget": "TheDocumentFoundation.LibreOffice",
     "choco": "libreoffice-fresh",
     "catgory": "Documents",
-    "check": "false"
+    "check": "true"
   },
   {
     "Name": "SumatraPDF",
     "winget": "SumatraPDF.SumatraPDF",
     "choco": "sumatrapdf.install",
     "catgory": "Documents",
-    "check": "false"
+    "check": "true"
   },
   {
     "Name": "WinRAR",
     "winget": "RARLab.WinRAR",
     "choco": "winrar",
     "catgory": "Compression",
-    "check": "false"
+    "check": "true"
   },
   {
     "Name": "7-Zip",
@@ -173,7 +173,7 @@
     "winget": "Telegram.TelegramDesktop",
     "choco": "telegram",
     "catgory": "Communication",
-    "check": "false"
+    "check": "true"
   },
   {
     "Name": "Meta Messenger",
@@ -194,7 +194,7 @@
     "winget": " Zoom.Zoom",
     "choco": "zoom",
     "catgory": "Communication",
-    "check": "false"
+    "check": "true"
   },
   {
     "Name": "Microsoft Teams",
@@ -236,84 +236,84 @@
     "winget": "Microsoft.VCRedist.2005.x86",
     "choco": "vcredist2005",
     "catgory": "Gaming",
-    "check": "false"
+    "check": "true"
   },
   {
     "Name": "Microsoft Visual C++ 2005 (x64) Redistributable",
     "winget": "Microsoft.VCRedist.2005.x64",
     "choco": "vcredist2005",
     "catgory": "Gaming",
-    "check": "false"
+    "check": "true"
   },
   {
     "Name": "Microsoft Visual C++ 2008 (x86) Redistributable",
     "winget": "Microsoft.VCRedist.2008.x86",
     "choco": "vcredist2008",
     "catgory": "Gaming",
-    "check": "false"
+    "check": "true"
   },
   {
     "Name": "Microsoft Visual C++ 2008 (x64) Redistributable",
     "winget": "Microsoft.VCRedist.2008.x64",
     "choco": "vcredist2008",
     "catgory": "Gaming",
-    "check": "false"
+    "check": "true"
   },
   {
     "Name": "Microsoft Visual C++ 2010 (x86) Redistributable",
     "winget": "Microsoft.VCRedist.2010.x86",
     "choco": "vcredist2010",
     "catgory": "Gaming",
-    "check": "false"
+    "check": "true"
   },
   {
     "Name": "Microsoft Visual C++ 2010 (x64) Redistributable",
     "winget": "Microsoft.VCRedist.2010.x64",
     "choco": "vcredist2010",
     "catgory": "Gaming",
-    "check": "false"
+    "check": "true"
   },
   {
     "Name": "Microsoft Visual C++ 2012 (x86) Redistributable",
     "winget": "Microsoft.VCRedist.2012.x86",
     "choco": "vcredist2012",
     "catgory": "Gaming",
-    "check": "false"
+    "check": "true"
   },
   {
     "Name": "Microsoft Visual C++ 2012 (x64) Redistributable",
     "winget": "Microsoft.VCRedist.2012.x64",
     "choco": "vcredist2012",
     "catgory": "Gaming",
-    "check": "false"
+    "check": "true"
   },
   {
     "Name": "Microsoft Visual C++ 2013 (x86) Redistributable",
     "winget": "Microsoft.VCRedist.2013.x86",
     "choco": "vcredist2013",
     "catgory": "Gaming",
-    "check": "false"
+    "check": "true"
   },
   {
     "Name": "Microsoft Visual C++ 2013 (x64) Redistributable",
     "winget": "Microsoft.VCRedist.2013.x64",
     "choco": "vcredist2013",
     "catgory": "Gaming",
-    "check": "false"
+    "check": "true"
   },
   {
     "Name": "Microsoft Visual C++ 2015-2022 (x64) Redistributable",
     "winget": "Microsoft.VCRedist.2015+.x64",
     "choco": "vcredist2015",
     "catgory": "Gaming",
-    "check": "false"
+    "check": "true"
   },
   {
     "Name": "Microsoft Visual C++ 2015-2022  (x86) Redistributable",
     "winget": "Microsoft.VCRedist.2015+.x86",
     "choco": "vcredist2015",
     "catgory": "Gaming",
-    "check": "false"
+    "check": "true"
   },
   {
     "Name": "NET Framework All Versions",
@@ -432,7 +432,7 @@
     "winget": "Klocman.BulkCrapUninstaller",
     "choco": "bulk-crap-uninstaller",
     "catgory": "Utilities",
-    "check": "false"
+    "check": "true"
   },
   {
     "Name": "HWiNFO",
@@ -460,7 +460,7 @@
     "winget": "CPUID.CPU-Z",
     "choco": "cpu-z.install",
     "catgory": "Utilities",
-    "check": "false"
+    "check": "true"
   },
   {
     "Name": "HandBrake",
@@ -530,7 +530,7 @@
     "winget": "qBittorrent.qBittorrent",
     "choco": "qbittorrent",
     "catgory": "Utilities",
-    "check": "false"
+    "check": "true"
   },
   {
     "Name": "XAMPP",

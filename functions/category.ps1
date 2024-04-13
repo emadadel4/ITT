@@ -27,6 +27,22 @@ function Catgoray($cat){
     }
 }
 
+function Recommended() {
+    
+
+    $list.Items.Clear()
+
+    foreach ($item in $sync.configs.applications)
+    {
+        if($item.check -eq 'true')
+        {
+            $checkbox = New-Object System.Windows.Controls.CheckBox
+            $list.Items.Add($checkbox)
+            $checkbox.Content = $item.name
+        }
+    }
+}
+
 function ShowAll{
     $list.Items.Clear()
     foreach ($item in $sync.configs.applications)
