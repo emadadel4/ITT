@@ -1195,7 +1195,7 @@ $inputXML =  '
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         x:Name="Window" Title="ITT @emadadel4" WindowStartupLocation = "CenterScreen" 
         Background="{DynamicResource primary}"
-        Height="600" Width="955" MinWidth="677" MinHeight="400"   ShowInTaskbar = "True" Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/icon.ico">
+        Height="600" Width="955" MinWidth="677" MinHeight="400" ShowInTaskbar = "True" Topmost="True" Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/icon.ico">
 
     
         <Window.Resources>
@@ -1436,24 +1436,24 @@ $inputXML =  '
                 </StackPanel>
 
                 <!--Install Button-->
-                <Button
-                                    Name="installBtn"
-                                    Content="Install"
-                                    HorizontalAlignment="Center"
-                                    VerticalAlignment="Bottom"
-                                    Cursor="Hand"
-                                    Width="90" Height="33" Margin="50"/>
+                    <Button
+                        Name="installBtn"
+                        Content="Install"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Bottom"
+                        Cursor="Hand"
+                        Width="90" Height="33" Margin="50"/>
                 <!--End Install Button-->
 
                 <!--Apply Button-->
-                <Button
-                                Name="applyBtn"
-                                Content="Apply"
-                                HorizontalAlignment="Center"
-                                VerticalAlignment="Bottom"
-                                Cursor="Hand"
-                                Visibility="Hidden"
-                                Width="90" Height="33" Margin="50"/>
+                    <Button
+                        Name="applyBtn"
+                        Content="Apply"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Bottom"
+                        Cursor="Hand"
+                        Visibility="Hidden"
+                        Width="90" Height="33" Margin="50"/>
                 <!--End Apply Button-->
 
             </Grid>
