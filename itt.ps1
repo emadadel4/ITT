@@ -21,7 +21,7 @@
     GitHub         : https://github.com/emadadel4
     Telgram        : https://t.me/emadadel4
     Website        : https://eprojects.orgfree.com/
-    Version        : 24.04.13
+    Version        : 24.04.14
 #>
 
 if (!(Test-Path -Path $ENV:TEMP)) {
@@ -36,7 +36,7 @@ Add-Type -AssemblyName System.Windows.Forms
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
 $sync.author =  "Emad Adel"
-$sync.version = "24.04.13"
+$sync.version = "24.04.14"
 $sync.github =  "github.com/emadadel4"
 $sync.telgram = "t.me/emadadel4"
 $sync.website = "eprojects.orgfree.com"
@@ -1330,27 +1330,29 @@ $inputXML =  '
         </Grid.ColumnDefinitions>
 
 
+        <!--Logo-->
+            <StackPanel Margin="20" Orientation="Horizontal"  VerticalAlignment="Center" Grid.Row="0" Grid.ColumnSpan="2" >
 
-        <StackPanel Margin="20" Orientation="Horizontal"  VerticalAlignment="Center" Grid.Row="0" Grid.ColumnSpan="2" >
+                <Ellipse Name="about" Width="80" Height="80">
+                    <Ellipse.Fill>
+                        <ImageBrush ImageSource="https://avatars.githubusercontent.com/u/19177373?v=4.png" />
+                    </Ellipse.Fill>
+                </Ellipse>
+        <!--End Logo-->
 
-            <Ellipse Name="about" Width="70" Height="70">
-                <Ellipse.Fill>
-                    <ImageBrush ImageSource="https://avatars.githubusercontent.com/u/19177373?v=4.png" />
-                </Ellipse.Fill>
-            </Ellipse>
-
-            <StackPanel Name="catg" Margin="20,0,0,0" Orientation="Horizontal" HorizontalAlignment="Left">
-            <Button Name="all" Cursor="Hand"  Content="All" Height="30" Width="60" Margin="4"  Background="{DynamicResource button}" Foreground="{DynamicResource BtnForeground}"/>
-            <Button Name="r" Cursor="Hand" Content="Fresh Start" Height="30" Width="100" Margin="4"  Background="{DynamicResource button}" Foreground="{DynamicResource BtnForeground}"/>
-            <Button Name="m" Cursor="Hand"  Content="Media" Height="30" Width="60" Margin="4"  Background="{DynamicResource button}" Foreground="{DynamicResource BtnForeground}"/>
-            <Button Name="b" Cursor="Hand"  Content="Browsers" Height="30" Width="60" Margin="4"  Background="{DynamicResource button}" Foreground="{DynamicResource BtnForeground}"/>
-            <Button Name="g" Cursor="Hand"  Content="Gaming" Height="30" Width="60" Margin="4"  Background="{DynamicResource button}" Foreground="{DynamicResource BtnForeground}"/>
-            <Button Name="d" Cursor="Hand"  Content="Developer" Height="30" Width="70" Margin="4"  Background="{DynamicResource button}" Foreground="{DynamicResource BtnForeground}"/>
-            <Button Name="u" Cursor="Hand"  Content="Utilities" Height="30" Width="60" Margin="4"  Background="{DynamicResource button}" Foreground="{DynamicResource BtnForeground}"/>
-            <Button Name="c" Cursor="Hand" Content="Communication" Height="30" Width="100" Margin="4"  Background="{DynamicResource button}" Foreground="{DynamicResource BtnForeground}"/>
+        <!--Catagory Section-->
+                <StackPanel Name="catg" Margin="20,0,0,0" Orientation="Horizontal" HorizontalAlignment="Left">
+                <Button Name="all" Cursor="Hand"  Content="All" Height="20" Width="60" Margin="4"  Background="{DynamicResource button}" Foreground="{DynamicResource BtnForeground}"/>
+                <Button Name="r" Cursor="Hand" Content="Fresh Start" Height="20" Width="100" Margin="4"  Background="{DynamicResource button}" Foreground="{DynamicResource BtnForeground}"/>
+                <Button Name="m" Cursor="Hand"  Content="Media" Height="20" Width="60" Margin="4"  Background="{DynamicResource button}" Foreground="{DynamicResource BtnForeground}"/>
+                <Button Name="b" Cursor="Hand"  Content="Browsers" Height="20" Width="60" Margin="4"  Background="{DynamicResource button}" Foreground="{DynamicResource BtnForeground}"/>
+                <Button Name="g" Cursor="Hand"  Content="Gaming" Height="20" Width="60" Margin="4"  Background="{DynamicResource button}" Foreground="{DynamicResource BtnForeground}"/>
+                <Button Name="d" Cursor="Hand"  Content="Developer" Height="20" Width="70" Margin="4"  Background="{DynamicResource button}" Foreground="{DynamicResource BtnForeground}"/>
+                <Button Name="u" Cursor="Hand"  Content="Utilities" Height="20" Width="60" Margin="4"  Background="{DynamicResource button}" Foreground="{DynamicResource BtnForeground}"/>
+                <Button Name="c" Cursor="Hand" Content="Communication" Height="20" Width="100" Margin="4"  Background="{DynamicResource button}" Foreground="{DynamicResource BtnForeground}"/>
+                </StackPanel>
             </StackPanel>
-        </StackPanel>
-
+        <!--End Catagory Section-->
 
         <!--TabControl-->
             <TabControl x:Name="taps" TabStripPlacement="Left" Margin="0, 10, 0, 10" Grid.Row="1" BorderBrush="{DynamicResource BorderBrush}" Foreground="White" Background="Transparent">
@@ -1398,7 +1400,6 @@ $inputXML =  '
                 </TabItem>
             </TabControl>
         <!--End TabControl-->
-
 
         <!--Main Section-->
             <Grid  Grid.Row="1" Grid.Column="1"  Grid.RowSpan="2" Margin="0">
@@ -1458,11 +1459,18 @@ $inputXML =  '
             </Grid>
         <!--End Main Section-->
 
-        <!--Footer-->
-        <Grid Grid.Row="2">
-            <TextBlock Name="quotes"  Cursor="Hand" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="16" TextWrapping="Wrap" Text="Freedom is not given its taken #Free_Palastine" Foreground="{DynamicResource label}"/>
-        </Grid>
-        <!--End Footer-->
+        <!--Footer Section-->
+            <Grid Grid.Row="2">
+                <TextBlock Name="quotes"
+                Cursor="Hand"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center" 
+                Padding="16" TextWrapping="Wrap" 
+                Text="Freedom is not given its taken #Free_Palastine"
+                Foreground="{DynamicResource label}"
+                />
+            </Grid>
+        <!--End Footer Section-->
 
     </Grid>
 
