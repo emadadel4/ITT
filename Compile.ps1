@@ -28,7 +28,7 @@ try {
     ###                01000101 01001101 01000001 01000100  01000001 01000100 01000101 01001100                  ###
     ###                                                                                                          ###
     ################################################################################################################
-    ' | Out-File ./$scriptname -Append -Encoding ascii
+    ' | Out-File ./$scriptname -Append -encoding utf8
 
     (Get-Content .\scripts\start.ps1).replace('#{replaceme}',"$(Get-Date -Format yy.MM.dd)") | Out-File ./$scriptname -Append -Encoding ascii 
 
@@ -71,7 +71,7 @@ try {
     $xaml = $xaml -replace "{{Colors}}", $colorsContent
 
 
-    Write-output "`$inputXML =  '$xaml'" | Out-File ./$scriptname -Append -Encoding ascii 
+    Write-output "`$inputXML =  '$xaml'" | Out-File ./$scriptname -Append -encoding utf8 
 
     Get-Content .\Scripts\loadXmal.ps1 | Out-File ./$scriptname -Append -Encoding ascii
 

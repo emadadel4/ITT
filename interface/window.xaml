@@ -119,11 +119,10 @@
         <!--Footer Section-->
             <Grid Grid.Row="2">
                 <TextBlock Name="quotes"
-                Cursor="Hand"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Center" 
                 Padding="16" TextWrapping="Wrap" 
-                Text="Freedom is not given its taken #Free_Palastine"
+                Text="عندما إنتهيت من بناء قاربي جف البحر"
                 Foreground="{DynamicResource label}"
                 />
             </Grid>
