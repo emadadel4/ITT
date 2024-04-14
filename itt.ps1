@@ -1439,7 +1439,7 @@ $inputXML =  '
                 <!--Install Button-->
                     <Button
                         Name="installBtn"
-                        Content="Install"
+                        Content="Install &#x2714;"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Bottom"
                         Cursor="Hand"
