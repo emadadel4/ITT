@@ -1582,32 +1582,43 @@ catch [System.Management.Automation.MethodInvocationException] {
     
     #region Generate tweaks from json file
 
-        $sync.tweaks = $Window.FindName("tweaks")
-        foreach ($item in $sync.configs.tweaks)
+    $sync.tweaks = $Window.FindName("tweaks")
+    foreach ($item in $sync.configs.tweaks)
+    {
+        $checkbox = New-Object System.Windows.Controls.CheckBox
+        $sync.tweaks.Items.Add($checkbox)
+        $checkbox.Content = $item.name
+    }
+
+    # Get Discription of selected tweaks in $list
+    $sync.tweaks.Add_SelectionChanged({
+            
+        foreach($data in $sync.configs.tweaks)
         {
-            $checkbox = New-Object System.Windows.Controls.CheckBox
-            $sync.tweaks.Items.Add($checkbox)
-            $checkbox.Content = $item.name
-        }
-
-        # Get Discription of selected tweaks in $list
-        $sync.tweaks.Add_SelectionChanged({
-                
-            foreach($data in $sync.configs.tweaks)
+            if($sync.tweaks.SelectedItem.Content -eq $data.name)
             {
-                if($sync.tweaks.SelectedItem.Content -eq $data.name)
-                {
-                    $discription.Text = $data.description
+                $discription.Text = $data.description
 
-                }
             }
-        })
+        }
+    })
 
     #endregion
 
 #===========================================================================
+# End Loops 
+#===========================================================================
+
+
+
+#Install Choco
+CheckChoco
+
+#===========================================================================
 # Events 
 #===========================================================================
+
+
 # Buttons
 $window.FindName('taps').add_SelectionChanged({ChangeTap})
 $window.FindName('installBtn').add_click({Invoke-Install})
@@ -1624,6 +1635,14 @@ $window.FindName('u').add_click({Catgoray($window.FindName('u').Content)})
 $window.FindName('c').add_click({Catgoray($window.FindName('c').Content)})
 $window.FindName('r').add_click({Recommended($window.FindName('r').Content)})
 $window.FindName('all').add_click({ShowAll})
+
+
+$window.FindName('quotes').add_MouseLeftButtonDown({
+    
+    Start-Process ("https://www.egyptianrc.org/Arabic/home")
+
+})
+
 #===========================================================================
 # End Events 
 #===========================================================================
