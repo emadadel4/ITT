@@ -20,8 +20,6 @@ if ($jsonContent -is [array])
 # End Loops 
 #===========================================================================
 
-Clear-Host
-
 #Install Choco
 CheckChoco
     
