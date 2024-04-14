@@ -77,7 +77,7 @@ try {
 
     Get-ChildItem .\Loops -Recurse -File | ForEach-Object{
         
-        Get-Content $psitem.FullName | Out-File ./$scriptname -Append -Encoding ascii 
+        Get-Content $psitem.FullName | Out-File ./$scriptname -Append -encoding utf8 
     }
 
     Get-Content .\scripts\main.ps1 | Out-File ./$scriptname -Append -Encoding ascii
