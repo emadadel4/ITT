@@ -15,4 +15,13 @@ if ($jsonContent -is [array])
     $Window.FindName('quotes').Text = "$($randomText)"
 
 }
+
+#===========================================================================
+# End Loops 
+#===========================================================================
+
+Clear-Host
+
+#Install Choco
+CheckChoco
     
