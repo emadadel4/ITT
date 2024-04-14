@@ -1168,6 +1168,15 @@ $sync.configs.applications = '[
   }
 ]' | convertfrom-json
   
+$sync.configs.quotes = '[
+  "“عندما إنتهيت من بناء قاربي جف البحر”",
+  "“أنت دائما تخشى ما لا تفهمه”",
+  "“أعتقد أن ما لا يقتلك ببساطة يجعلك... شخصا غريب”",
+  "“بعض الرجال يريدون فقط مشاهدة العالم يحترق”",
+  "“أنت تعتقد أن الظلام هو حليفك ، لكنك تبنت الظلام فقط.انا لقد ولدت في”",
+  "“إما أن تموت بطلا أو تعيش طويلا بما يكفي لترى نفسك تصبح الشرير"
+]' | convertfrom-json
+  
 $sync.configs.tweaks = '[
   {
     "name": "Fix stutter in games",
@@ -1605,6 +1614,24 @@ Clear-Host
 #Install Choco
 CheckChoco
 
+# Load the JSON content from file
+$jsonContent = $sync.configs.quotes
+
+    # Check if the JSON content is an array
+if ($jsonContent -is [array])
+{
+    # Select a random index
+    $randomIndex = Get-Random -Minimum 0 -Maximum ($jsonContent.Count)
+
+    # Get the random text
+    $randomText = $jsonContent[$randomIndex]
+
+    # Output the random text
+    $Window.FindName('quotes').Text = "$($randomText)"
+
+}
+    
+
 #===========================================================================
 # Events 
 #===========================================================================
@@ -1630,5 +1657,7 @@ $window.FindName('all').add_click({ShowAll})
 #===========================================================================
 # End Events 
 #===========================================================================
+
+
 
 $window.ShowDialog() | out-null
