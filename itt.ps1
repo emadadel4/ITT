@@ -1618,7 +1618,7 @@ if ($jsonContent -is [array])
     $randomText = $jsonContent[$randomIndex]
 
     # Output the random text
-    $Window.FindName('quotes').Text = "$($randomText)"
+    $Window.FindName('quotes').Text = $randomText
 
 }
 
