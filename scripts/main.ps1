@@ -20,6 +20,14 @@ $window.FindName('u').add_click({Catgoray($window.FindName('u').Content)})
 $window.FindName('c').add_click({Catgoray($window.FindName('c').Content)})
 $window.FindName('r').add_click({Recommended($window.FindName('r').Content)})
 $window.FindName('all').add_click({ShowAll})
+
+
+$window.FindName('quotes').add_MouseLeftButtonDown({
+    
+    Start-Process ("https://www.egyptianrc.org/Arabic/home")
+
+})
+
 #===========================================================================
 # End Events 
 #===========================================================================
