@@ -1,12 +1,9 @@
 
-# Load the JSON content from file
-$jsonContent = $sync.configs.quotes
-
-    # Check if the JSON content is an array
-if ($jsonContent -is [array])
+# Check if the JSON content is an array
+if ($sync.configs.quotes -is [array])
 {
     # Select a random index
-    $randomIndex = Get-Random -Minimum 0 -Maximum ($jsonContent.Count)
+    $randomIndex = Get-Random -Minimum 0 -Maximum ($sync.configs.quotes.Count)
 
     # Get the random text
     $randomText = $jsonContent[$randomIndex]
@@ -16,10 +13,12 @@ if ($jsonContent -is [array])
 
 }
 
+#Install Choco
+CheckChoco
+
 #===========================================================================
 # End Loops 
 #===========================================================================
 
-#Install Choco
-CheckChoco
+
     

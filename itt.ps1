@@ -1582,37 +1582,34 @@ catch [System.Management.Automation.MethodInvocationException] {
     
     #region Generate tweaks from json file
 
-    $sync.tweaks = $Window.FindName("tweaks")
-    foreach ($item in $sync.configs.tweaks)
-    {
-        $checkbox = New-Object System.Windows.Controls.CheckBox
-        $sync.tweaks.Items.Add($checkbox)
-        $checkbox.Content = $item.name
-    }
-
-    # Get Discription of selected tweaks in $list
-    $sync.tweaks.Add_SelectionChanged({
-            
-        foreach($data in $sync.configs.tweaks)
+        $sync.tweaks = $Window.FindName("tweaks")
+        foreach ($item in $sync.configs.tweaks)
         {
-            if($sync.tweaks.SelectedItem.Content -eq $data.name)
-            {
-                $discription.Text = $data.description
-
-            }
+            $checkbox = New-Object System.Windows.Controls.CheckBox
+            $sync.tweaks.Items.Add($checkbox)
+            $checkbox.Content = $item.name
         }
-    })
+
+        # Get Discription of selected tweaks in $list
+        $sync.tweaks.Add_SelectionChanged({
+                
+            foreach($data in $sync.configs.tweaks)
+            {
+                if($sync.tweaks.SelectedItem.Content -eq $data.name)
+                {
+                    $discription.Text = $data.description
+
+                }
+            }
+        })
 
     #endregion
 
-# Load the JSON content from file
-$jsonContent = $sync.configs.quotes
-
-    # Check if the JSON content is an array
-if ($jsonContent -is [array])
+# Check if the JSON content is an array
+if ($sync.configs.quotes -is [array])
 {
     # Select a random index
-    $randomIndex = Get-Random -Minimum 0 -Maximum ($jsonContent.Count)
+    $randomIndex = Get-Random -Minimum 0 -Maximum ($sync.configs.quotes.Count)
 
     # Get the random text
     $randomText = $jsonContent[$randomIndex]
@@ -1622,12 +1619,14 @@ if ($jsonContent -is [array])
 
 }
 
+#Install Choco
+CheckChoco
+
 #===========================================================================
 # End Loops 
 #===========================================================================
 
-#Install Choco
-CheckChoco
+
     
 
 #===========================================================================
