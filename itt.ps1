@@ -1632,8 +1632,6 @@ CheckChoco
 #===========================================================================
 # Events 
 #===========================================================================
-
-
 # Buttons
 $window.FindName('taps').add_SelectionChanged({ChangeTap})
 $window.FindName('installBtn').add_click({Invoke-Install})
