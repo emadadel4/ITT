@@ -1610,6 +1610,7 @@ catch [System.Management.Automation.MethodInvocationException] {
 #===========================================================================
 
 
+cls
 
 #Install Choco
 CheckChoco
