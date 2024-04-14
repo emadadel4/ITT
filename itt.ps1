@@ -66,7 +66,7 @@ else
 #===========================================================================
 # Start functions
 #===========================================================================
-function about{
+function About{
 
     $authorInfo = @"
         Developer : $($sync.author)
@@ -366,6 +366,7 @@ function Show-CustomDialog {
     $dialog.Title = "About"
     $dialog.Height = $Height
     $dialog.Width = $Width
+    $dialog.Topmost = $true
     $dialog.Margin = New-Object Windows.Thickness(10)  # Add margin to the entire dialog box
     $dialog.WindowStyle = [Windows.WindowStyle]::None  # Remove title bar and window controls
     $dialog.ResizeMode = [Windows.ResizeMode]::NoResize  # Disable resizing
@@ -1195,7 +1196,7 @@ $inputXML =  '
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         x:Name="Window" Title="ITT @emadadel4" WindowStartupLocation = "CenterScreen" 
         Background="{DynamicResource primary}"
-        Height="600" Width="955" MinWidth="677" MinHeight="400"   ShowInTaskbar = "True" Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/icon.ico">
+        Height="600" Width="955" MinWidth="677" MinHeight="400" ShowInTaskbar = "True" Topmost="True" Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/icon.ico">
 
     
         <Window.Resources>
@@ -1330,21 +1331,29 @@ $inputXML =  '
         </Grid.ColumnDefinitions>
 
 
+        <!--Logo-->
+            <StackPanel Margin="20" Orientation="Horizontal"  VerticalAlignment="Center" Grid.Row="0" Grid.ColumnSpan="2" >
 
-        <StackPanel Margin="20" Orientation="Horizontal"  VerticalAlignment="Center" Grid.Row="0" Grid.ColumnSpan="2" >
-            <TextBlock Name="about" Foreground="{DynamicResource text}"  Text="ITT | @emadadel4" FontSize="14" Width="auto" VerticalAlignment="Center" HorizontalAlignment="Left"/>
-            <StackPanel Name="catg" Margin="20,0,0,0" Orientation="Horizontal" HorizontalAlignment="Left">
-            <Button Name="all" Cursor="Hand"  Content="All" Height="20" Width="60" Margin="4"  Background="{DynamicResource button}" Foreground="{DynamicResource BtnForeground}"/>
-            <Button Name="r" Cursor="Hand" Content="Fresh Start" Height="auto" Width="100" Margin="4"  Background="{DynamicResource button}" Foreground="{DynamicResource BtnForeground}"/>
-            <Button Name="m" Cursor="Hand"  Content="Media" Height="auto" Width="60" Margin="4"  Background="{DynamicResource button}" Foreground="{DynamicResource BtnForeground}"/>
-            <Button Name="b" Cursor="Hand"  Content="Browsers" Height="auto" Width="60" Margin="4"  Background="{DynamicResource button}" Foreground="{DynamicResource BtnForeground}"/>
-            <Button Name="g" Cursor="Hand"  Content="Gaming" Height="auto" Width="60" Margin="4"  Background="{DynamicResource button}" Foreground="{DynamicResource BtnForeground}"/>
-            <Button Name="d" Cursor="Hand"  Content="Developer" Height="auto" Width="70" Margin="4"  Background="{DynamicResource button}" Foreground="{DynamicResource BtnForeground}"/>
-            <Button Name="u" Cursor="Hand"  Content="Utilities" Height="20" Width="60" Margin="4"  Background="{DynamicResource button}" Foreground="{DynamicResource BtnForeground}"/>
-            <Button Name="c" Cursor="Hand" Content="Communication" Height="auto" Width="100" Margin="4"  Background="{DynamicResource button}" Foreground="{DynamicResource BtnForeground}"/>
+                <Ellipse Name="about" Width="80" Height="80">
+                    <Ellipse.Fill>
+                        <ImageBrush ImageSource="https://avatars.githubusercontent.com/u/19177373?v=4.png" />
+                    </Ellipse.Fill>
+                </Ellipse>
+        <!--End Logo-->
+
+        <!--Catagory Section-->
+                <StackPanel Name="catg" Margin="20,0,0,0" Orientation="Horizontal" HorizontalAlignment="Left">
+                <Button Name="all" Cursor="Hand"  Content="All" Height="20" Width="60" Margin="4"  Background="{DynamicResource button}" Foreground="{DynamicResource BtnForeground}"/>
+                <Button Name="r" Cursor="Hand" Content="Fresh Start" Height="20" Width="100" Margin="4"  Background="{DynamicResource button}" Foreground="{DynamicResource BtnForeground}"/>
+                <Button Name="m" Cursor="Hand"  Content="Media" Height="20" Width="60" Margin="4"  Background="{DynamicResource button}" Foreground="{DynamicResource BtnForeground}"/>
+                <Button Name="b" Cursor="Hand"  Content="Browsers" Height="20" Width="60" Margin="4"  Background="{DynamicResource button}" Foreground="{DynamicResource BtnForeground}"/>
+                <Button Name="g" Cursor="Hand"  Content="Gaming" Height="20" Width="60" Margin="4"  Background="{DynamicResource button}" Foreground="{DynamicResource BtnForeground}"/>
+                <Button Name="d" Cursor="Hand"  Content="Developer" Height="20" Width="70" Margin="4"  Background="{DynamicResource button}" Foreground="{DynamicResource BtnForeground}"/>
+                <Button Name="u" Cursor="Hand"  Content="Utilities" Height="20" Width="60" Margin="4"  Background="{DynamicResource button}" Foreground="{DynamicResource BtnForeground}"/>
+                <Button Name="c" Cursor="Hand" Content="Communication" Height="20" Width="100" Margin="4"  Background="{DynamicResource button}" Foreground="{DynamicResource BtnForeground}"/>
+                </StackPanel>
             </StackPanel>
-        </StackPanel>
-
+        <!--End Catagory Section-->
 
         <!--TabControl-->
             <TabControl x:Name="taps" TabStripPlacement="Left" Margin="0, 10, 0, 10" Grid.Row="1" BorderBrush="{DynamicResource BorderBrush}" Foreground="White" Background="Transparent">
@@ -1393,7 +1402,6 @@ $inputXML =  '
             </TabControl>
         <!--End TabControl-->
 
-
         <!--Main Section-->
             <Grid  Grid.Row="1" Grid.Column="1"  Grid.RowSpan="2" Margin="0">
                 <StackPanel Margin="15" Orientation="Vertical">
@@ -1429,34 +1437,41 @@ $inputXML =  '
                 </StackPanel>
 
                 <!--Install Button-->
-                <Button
-                                    Name="installBtn"
-                                    Content="Install"
-                                    HorizontalAlignment="Center"
-                                    VerticalAlignment="Bottom"
-                                    Cursor="Hand"
-                                    Width="90" Height="33" Margin="50"/>
+                    <Button
+                        Name="installBtn"
+                        Content="Install &#x2714;"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Bottom"
+                        Cursor="Hand"
+                        Width="90" Height="33" Margin="50"/>
                 <!--End Install Button-->
 
                 <!--Apply Button-->
-                <Button
-                                Name="applyBtn"
-                                Content="Apply"
-                                HorizontalAlignment="Center"
-                                VerticalAlignment="Bottom"
-                                Cursor="Hand"
-                                Visibility="Hidden"
-                                Width="90" Height="33" Margin="50"/>
+                    <Button
+                        Name="applyBtn"
+                        Content="Apply"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Bottom"
+                        Cursor="Hand"
+                        Visibility="Hidden"
+                        Width="90" Height="33" Margin="50"/>
                 <!--End Apply Button-->
 
             </Grid>
         <!--End Main Section-->
 
-        <!--Footer-->
-        <Grid Grid.Row="2">
-            <TextBlock Name="quotes" FontFamily="Arial"  Cursor="Hand" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="16" TextWrapping="Wrap" Text="عندما إنتهيت من بناء قاربي جف البحر" Foreground="{DynamicResource label}"/>
-        </Grid>
-        <!--End Footer-->
+        <!--Footer Section-->
+            <Grid Grid.Row="2">
+                <TextBlock Name="quotes"
+                Cursor="Hand"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center" 
+                Padding="16" TextWrapping="Wrap" 
+                Text="Freedom is not given its taken #Free_Palastine"
+                Foreground="{DynamicResource label}"
+                />
+            </Grid>
+        <!--End Footer Section-->
 
     </Grid>
 
