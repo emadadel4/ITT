@@ -1620,8 +1620,6 @@ $jsonContent = $sync.configs.quotes
 $randomText = $jsonContent | Get-Random
 
 # Output the random text
-Write-Output $randomText
-
 $window.FindName('quotes').Text = $randomText
 
 #===========================================================================
@@ -1646,12 +1644,6 @@ $window.FindName('c').add_click({Catgoray($window.FindName('c').Content)})
 $window.FindName('r').add_click({Recommended($window.FindName('r').Content)})
 $window.FindName('all').add_click({ShowAll})
 
-
-$window.FindName('quotes').add_MouseLeftButtonDown({
-    
-    Start-Process ("https://www.egyptianrc.org/Arabic/home")
-
-})
 
 #===========================================================================
 # End Events 
