@@ -1270,7 +1270,7 @@ $inputXML =  '
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate TargetType="Button">
-                                <Border CornerRadius="0" Background="{TemplateBinding Background}">
+                                <Border CornerRadius="15" Background="{TemplateBinding Background}">
                                     <ContentPresenter HorizontalAlignment="Center"
                                                         VerticalAlignment="Center"/>
                                     
@@ -1428,7 +1428,7 @@ $inputXML =  '
                         <Setter Property="Template">
                             <Setter.Value>
                                 <ControlTemplate TargetType="TabItem">
-                                    <Border Name="Border" BorderThickness="0,0,0,0" Padding="5" BorderBrush="Gainsboro"  Margin="10,5">
+                                    <Border Name="Border" CornerRadius="15" BorderThickness="0,0,0,0" Padding="5" BorderBrush="Gainsboro"  Margin="10,5">
                                         <ContentPresenter x:Name="ContentSite"
                                         VerticalAlignment="Center"
                                         HorizontalAlignment="Center"
