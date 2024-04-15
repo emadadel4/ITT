@@ -1,6 +1,5 @@
 <h1 align="center">Welcome to ITT 🖥️ 🛠️ 📀 </h1>
 
-
   <a href="https://github.com/emadadel4/ITT/blob/main/README.ar.md">
     <img alt="Arabic" src="https://img.shields.io/badge/lang-ar-red.svg" />
   </a>
@@ -9,19 +8,13 @@
   <a href="#">
     <img alt="License: MTI" src="https://img.shields.io/badge/License-MTI-yellow.svg" />
   </a>
-  <a href="https://twitter.com/emadadel04" target="_blank">
-    <img alt="Twitter: emadadel04" src="https://img.shields.io/twitter/follow/emadadel04.svg?style=social" />
-  </a>
 </p>
 
->IT Tools, included all useful Software and Tweeaks
+> IT Tools, included all useful Software and Tweeaks
 
 <center>
 <a target="_blank" rel="noopener noreferrer" href="https://github.com/emadadel4/ITT/blob/main/demo.PNG"><img src="https://github.com/emadadel4/ITT/blob/main/demo.PNG" alt="screen-install" style="max-width: 100%;"></a>
 </center>
-
-
-
 
 ## Usage
 
