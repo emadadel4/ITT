@@ -126,7 +126,6 @@ $scriptBlock = {
 
     foreach ($id in $packageIDs) {
 
-
         # Run Winget command to download software
         Start-Process -FilePath "choco" -ArgumentList "install $id -y --force --ignore-checksums" -NoNewWindow -Wait
         
@@ -135,7 +134,7 @@ $scriptBlock = {
     }
 
     # Update status label after downloading all programs
-    UpdateStatusLabel("Downloaded and installed successfully")
+    UpdateStatusLabel("Installed successfully.")
 
 }
 
@@ -164,7 +163,7 @@ $scriptBlock2 = {
     }
 
     # Update status label after downloading all programs
-    UpdateStatusLabel("Successfully")
+    UpdateStatusLabel("Successfully applied.")
 
 }
 
