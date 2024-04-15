@@ -200,7 +200,7 @@ $scriptBlock2 = {
 
 }
 
-function Install() {
+function Invoke-Install() {
 
     <#
     .SYNOPSIS
