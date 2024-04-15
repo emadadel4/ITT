@@ -15,8 +15,7 @@ $sync.tweaks.Add_SelectionChanged({
     {
         if($sync.tweaks.SelectedItem.Content -eq $data.name)
         {
-            $discription.Text = $data.description
-
+            $Window.FindName('description').Text =  $data.description
         }
     }
 })

@@ -257,7 +257,7 @@ function ApplyTweaks() {
     else
     {
         #show mesg
-        [System.Windows.MessageBox]::Show("Select at lest one program", "ITT @emadadel", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Question)
+        [System.Windows.MessageBox]::Show("You have to select", "ITT @emadadel", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Question)
     }
 }
 
@@ -1507,8 +1507,23 @@ $inputXML =  '
                     </StackPanel>
 
 
-                    <TextBlock Name="description" Margin="15"  Text="" TextWrapping="Wrap" Foreground="{DynamicResource text}"/>
-                    <TextBlock Name="itemLink" Margin="15"  Foreground="{DynamicResource link}" Visibility="Hidden" TextWrapping="Wrap" Text="" Cursor="Hand"/>
+                    <TextBlock Name="description" 
+                    Margin="15"  
+                    Text="" TextWrapping="Wrap" 
+                    Foreground="{DynamicResource label}"
+                    
+                    />
+
+                    <TextBlock Name="itemLink" 
+                    Margin="15"  
+                    Foreground="{DynamicResource link}" 
+                    Visibility="Hidden" 
+                    TextWrapping="Wrap" 
+                    Text="" 
+                    Cursor="Hand"
+                    
+                    />
+
                 </StackPanel>
 
                 <!--Install Button-->
@@ -1666,8 +1681,7 @@ $sync.tweaks.Add_SelectionChanged({
     {
         if($sync.tweaks.SelectedItem.Content -eq $data.name)
         {
-            $discription.Text = $data.description
-
+            $Window.FindName('description').Text =  $data.description
         }
     }
 })

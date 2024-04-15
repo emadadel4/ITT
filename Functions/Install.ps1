@@ -149,7 +149,7 @@ function ApplyTweaks() {
     else
     {
         #show mesg
-        [System.Windows.MessageBox]::Show("Select at lest one program", "ITT @emadadel", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Question)
+        [System.Windows.MessageBox]::Show("You have to select", "ITT @emadadel", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Question)
     }
 }
 

@@ -177,8 +177,23 @@
                     </StackPanel>
 
 
-                    <TextBlock Name="description" Margin="15"  Text="" TextWrapping="Wrap" Foreground="{DynamicResource text}"/>
-                    <TextBlock Name="itemLink" Margin="15"  Foreground="{DynamicResource link}" Visibility="Hidden" TextWrapping="Wrap" Text="" Cursor="Hand"/>
+                    <TextBlock Name="description" 
+                    Margin="15"  
+                    Text="" TextWrapping="Wrap" 
+                    Foreground="{DynamicResource label}"
+                    
+                    />
+
+                    <TextBlock Name="itemLink" 
+                    Margin="15"  
+                    Foreground="{DynamicResource link}" 
+                    Visibility="Hidden" 
+                    TextWrapping="Wrap" 
+                    Text="" 
+                    Cursor="Hand"
+                    
+                    />
+
                 </StackPanel>
 
                 <!--Install Button-->
