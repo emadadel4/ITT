@@ -4,9 +4,6 @@
   <a href="#">
     <img alt="License: MTI" src="https://img.shields.io/badge/License-MTI-yellow.svg" />
   </a>
-  <a href="https://twitter.com/emadadel04" target="_blank">
-    <img alt="Twitter: emadadel04" src="https://img.shields.io/twitter/follow/emadadel04.svg?style=social" />
-  </a>
 </p>
 
 > الاداة يوجد فيها معظم البرامج المهمة و اشهر التحسينات
@@ -14,7 +11,6 @@
 <center>
 <a target="_blank" rel="noopener noreferrer" href="https://github.com/emadadel4/ITT/blob/main/demo.PNG"><img src="https://github.com/emadadel4/ITT/blob/main/demo.PNG" alt="screen-install" style="max-width: 100%;"></a>
 </center>
-
 
 ## ازاي تستخدم الاداة؟
 
