@@ -1543,7 +1543,7 @@ $inputXML =  '
                 HorizontalAlignment="Left"
                 VerticalAlignment="Center" 
                 Padding="16" TextWrapping="Wrap" 
-                Text="Test"
+                Text="When I finished building my boat, the sea dried up."
                 Foreground="{DynamicResource label}"
                 />
             </Grid>
