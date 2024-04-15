@@ -1,0 +1,662 @@
+[
+  {
+    "Name": "Thorium",
+    "winget": "Alex313031.Thorium",
+    "choco": "thorium",
+    "catgory": "Browsers",
+    "check": "false"
+  },
+  {
+    "Name": "Firefox",
+    "winget": "Mozilla.Firefox",
+    "choco": "firefox",
+    "catgory": "Browsers",
+    "check": "true"
+  },
+  {
+    "Name": "Add block extension [Firefox]",
+    "winget": "#",
+    "choco": "adblockplusfirefox",
+    "catgory": "Browsers",
+    "check": "false"
+  },
+  {
+    "Name": "Microsoft Edge",
+    "winget": "Microsoft.Edge",
+    "choco": "microsoft-edge",
+    "catgory": "Browsers",
+    "check": "false"
+  },
+  {
+    "Name": "Google Chrome",
+    "winget": "Google.Chrome",
+    "choco": "googlechrome",
+    "catgory": "Browsers",
+    "check": "false"
+  },
+  {
+    "Name": "uBlock Origin extension [Chrome]",
+    "winget": "#",
+    "choco": "ublockorigin-chrome",
+    "catgory": "Browsers",
+    "check": "false"
+  },
+  {
+    "Name": "Chromium",
+    "winget": "eloston.ungoogled-chromium",
+    "choco": "chromium",
+    "catgory": "Browsers",
+    "check": "false"
+  },
+  {
+    "Name": "Brave",
+    "winget": "Brave.Brave",
+    "choco": "brave",
+    "catgory": "Brave.Brave",
+    "check": "false"
+  },
+  {
+    "Name": "Tor Browser",
+    "winget": "TorProject.TorBrowser",
+    "choco": "tor-browser",
+    "catgory": "Brave.Brave",
+    "check": "false"
+  },
+  {
+    "Name": "Internet Download Manager",
+    "winget": "Tonec.InternetDownloadManager",
+    "choco": "internet-download-manager",
+    "catgory": "Browsers",
+    "check": "true"
+  },
+  {
+    "Name": "K-Lite Mega Codec Pack",
+    "winget": "CodecGuide.K-LiteCodecPack.Mega",
+    "choco": "k-litecodecpackfull",
+    "catgory": "Media",
+    "check": "true"
+  },
+  {
+    "Name": "PotPlayer",
+    "winget": "Daum.PotPlayer",
+    "choco": "potplayer",
+    "catgory": "Media",
+    "check": "false"
+  },
+  {
+    "Name": "VLC",
+    "winget": "VideoLAN.VLC",
+    "choco": "vlc",
+    "catgory": "Media",
+    "check": "false"
+  },
+  {
+    "Name": "Kodi",
+    "winget": "#",
+    "choco": "kodi",
+    "catgory": "Media",
+    "check": "false"
+  },
+  {
+    "Name": "Jellyfin",
+    "winget": "#",
+    "choco": "jellyfin",
+    "catgory": "Media",
+    "check": "false"
+  },
+  {
+    "Name": "Winamp",
+    "winget": "#",
+    "choco": "winamp",
+    "catgory": "Media",
+    "check": "false"
+  },
+  {
+    "Name": "Aimp",
+    "winget": "#",
+    "choco": "aimp",
+    "catgory": "Media",
+    "check": "false"
+  },
+
+  {
+    "Name": "OpenOffice",
+    "winget": "Apache.OpenOffice",
+    "choco": "openoffice",
+    "catgory": "Documents",
+    "check": "false"
+  },
+  {
+    "Name": "FoxitReader",
+    "winget": "Foxit.FoxitReader",
+    "choco": "foxitreader",
+    "catgory": "Documents",
+    "check": "false"
+  },
+  {
+    "Name": "LibreOffice",
+    "winget": "TheDocumentFoundation.LibreOffice",
+    "choco": "libreoffice-fresh",
+    "catgory": "Documents",
+    "check": "false"
+  },
+  {
+    "Name": "SumatraPDF",
+    "winget": "SumatraPDF.SumatraPDF",
+    "choco": "sumatrapdf.install",
+    "catgory": "Documents",
+    "check": "false"
+  },
+  {
+    "Name": "WinRAR",
+    "winget": "RARLab.WinRAR",
+    "choco": "winrar",
+    "catgory": "Compression",
+    "check": "false"
+  },
+  {
+    "Name": "7-Zip",
+    "winget": "7zip.7zip",
+    "choco": "7zip",
+    "catgory": "Compression",
+    "check": "false"
+  },
+  {
+    "Name": "QQPlayer",
+    "winget": "Tencent.QQPlayer",
+    "choco": "Tencent.QQPlayer",
+    "catgory": "Media",
+    "check": "false"
+  },
+  {
+    "Name": "Telegram Desktop",
+    "winget": "Telegram.TelegramDesktop",
+    "choco": "telegram",
+    "catgory": "Communication",
+    "check": "false"
+  },
+  {
+    "Name": "Meta Messenger",
+    "winget": "WhatsApp.WhatsApp",
+    "choco": "messenger",
+    "catgory": "Communication",
+    "check": "false"
+  },
+  {
+    "Name": "Skype",
+    "winget": "Microsoft.Skype",
+    "choco": "skype",
+    "catgory": "Communication",
+    "check": "false"
+  },
+  {
+    "Name": "Zoom",
+    "winget": " Zoom.Zoom",
+    "choco": "zoom",
+    "catgory": "Communication",
+    "check": "false"
+  },
+  {
+    "Name": "Microsoft Teams",
+    "winget": "Microsoft.Teams",
+    "choco": "microsoft-teams.install",
+    "catgory": "Communication",
+    "check": "false"
+  },
+  {
+    "Name": "Discord",
+    "winget": "Discord.Discord",
+    "choco": "discord",
+    "catgory": "Communication",
+    "check": "false"
+  },
+  {
+    "Name": "TeamViewer",
+    "winget": "TeamViewer.TeamViewer",
+    "choco": "teamviewer",
+    "catgory": "File Sharing",
+    "check": "false"
+  },
+  {
+    "Name": "HiSuite",
+    "winget": "Huawei.HiSuite",
+    "choco": "Huawei.HiSuite",
+    "catgory": "File Sharing",
+    "check": "false"
+  },
+  {
+    "Name": "GIMP",
+    "winget": "GIMP.GIMP",
+    "choco": "gimp",
+    "catgory": "Imaging",
+    "check": "false"
+  },
+  {
+    "Name": "Microsoft Visual C++ 2005 (x86) Redistributable",
+    "winget": "Microsoft.VCRedist.2005.x86",
+    "choco": "vcredist2005",
+    "catgory": "Gaming",
+    "check": "false"
+  },
+  {
+    "Name": "Microsoft Visual C++ 2005 (x64) Redistributable",
+    "winget": "Microsoft.VCRedist.2005.x64",
+    "choco": "vcredist2005",
+    "catgory": "Gaming",
+    "check": "false"
+  },
+  {
+    "Name": "Microsoft Visual C++ 2008 (x86) Redistributable",
+    "winget": "Microsoft.VCRedist.2008.x86",
+    "choco": "vcredist2008",
+    "catgory": "Gaming",
+    "check": "false"
+  },
+  {
+    "Name": "Microsoft Visual C++ 2008 (x64) Redistributable",
+    "winget": "Microsoft.VCRedist.2008.x64",
+    "choco": "vcredist2008",
+    "catgory": "Gaming",
+    "check": "false"
+  },
+  {
+    "Name": "Microsoft Visual C++ 2010 (x86) Redistributable",
+    "winget": "Microsoft.VCRedist.2010.x86",
+    "choco": "vcredist2010",
+    "catgory": "Gaming",
+    "check": "false"
+  },
+  {
+    "Name": "Microsoft Visual C++ 2010 (x64) Redistributable",
+    "winget": "Microsoft.VCRedist.2010.x64",
+    "choco": "vcredist2010",
+    "catgory": "Gaming",
+    "check": "false"
+  },
+  {
+    "Name": "Microsoft Visual C++ 2012 (x86) Redistributable",
+    "winget": "Microsoft.VCRedist.2012.x86",
+    "choco": "vcredist2012",
+    "catgory": "Gaming",
+    "check": "false"
+  },
+  {
+    "Name": "Microsoft Visual C++ 2012 (x64) Redistributable",
+    "winget": "Microsoft.VCRedist.2012.x64",
+    "choco": "vcredist2012",
+    "catgory": "Gaming",
+    "check": "false"
+  },
+  {
+    "Name": "Microsoft Visual C++ 2013 (x86) Redistributable",
+    "winget": "Microsoft.VCRedist.2013.x86",
+    "choco": "vcredist2013",
+    "catgory": "Gaming",
+    "check": "false"
+  },
+  {
+    "Name": "Microsoft Visual C++ 2013 (x64) Redistributable",
+    "winget": "Microsoft.VCRedist.2013.x64",
+    "choco": "vcredist2013",
+    "catgory": "Gaming",
+    "check": "false"
+  },
+  {
+    "Name": "Microsoft Visual C++ 2015-2022 (x64) Redistributable",
+    "winget": "Microsoft.VCRedist.2015+.x64",
+    "choco": "vcredist2015",
+    "catgory": "Gaming",
+    "check": "false"
+  },
+  {
+    "Name": "Microsoft Visual C++ 2015-2022  (x86) Redistributable",
+    "winget": "Microsoft.VCRedist.2015+.x86",
+    "choco": "vcredist2015",
+    "catgory": "Gaming",
+    "check": "false"
+  },
+  {
+    "Name": "NET Framework All Versions",
+    "winget": "#",
+    "choco": "dotnet-all",
+    "catgory": "Gaming",
+    "check": "false"
+  },
+  {
+    "Name": "NVIDIA GeForce NOW",
+    "winget": "Nvidia.GeForceNow",
+    "choco": "nvidia-geforce-now",
+    "catgory": "Gaming",
+    "check": "false"
+  },
+  {
+    "Name": "NVIDIA PhysX",
+    "winget": "Nvidia.PhysX",
+    "choco": "physx.legacy",
+    "catgory": "Gaming",
+    "check": "false"
+  },
+  {
+    "Name": "Steam",
+    "winget": "Valve.Steam",
+    "choco": "steam",
+    "catgory": "Gaming",
+    "check": "false"
+  },
+  {
+    "Name": "Ubisoft Connect",
+    "winget": "Ubisoft.Connect",
+    "choco": "ubisoft-connect",
+    "catgory": "Gaming",
+    "check": "false"
+  },
+  {
+    "Name": "GameSave Manager",
+    "winget": "InsaneMatt.GameSaveManager",
+    "choco": "gamesavemanager",
+    "catgory": "Gaming",
+    "check": "false"
+  },
+  {
+    "Name": "StreamlabsOBS",
+    "winget": "Streamlabs.StreamlabsOBS",
+    "choco": "streamlabs-obs",
+    "catgory": "Gaming",
+    "check": "false"
+  },
+  {
+    "Name": "OBS Studio",
+    "winget": " OBSProject.OBSStudio",
+    "choco": "obs-studio.install",
+    "catgory": "Gaming",
+    "check": "false"
+  },
+  {
+    "Name": "Lively Wallpaper ",
+    "winget": " #",
+    "choco": "lively",
+    "catgory": "Gaming",
+    "check": "false"
+  },
+  {
+    "Name": "Driver Easy",
+    "winget": "Easeware.DriverEasy",
+    "choco": "drivereasyfree",
+    "catgory": "Utilities",
+    "check": "false"
+  },
+  {
+    "Name": "Snappy Driver Installer",
+    "winget": "samlab-ws.SnappyDriverInstaller",
+    "choco": "snappy-driver-installer",
+    "catgory": "Utilities",
+    "check": "false"
+  },
+  {
+    "Name": "1Password",
+    "winget": "AgileBits.1Password",
+    "choco": "1password",
+    "catgory": "Utilities",
+    "check": "false"
+  },
+  {
+    "Name": "MiniTool Partition Wizard ",
+    "winget": "MiniTool.PartitionWizard.Free 12.8",
+    "choco": "partitionwizard",
+    "catgory": "Utilities",
+    "check": "false"
+  },
+  {
+    "Name": "AOMEI Backupper",
+    "winget": "AOMEI.Backupper.Standard",
+    "choco": "backupper-standard",
+    "catgory": "Utilities",
+    "check": "false"
+  },
+  {
+    "Name": "Recuva recover",
+    "winget": "#",
+    "choco": "recuva",
+    "catgory": "Utilities",
+    "check": "false"
+  },
+  {
+    "Name": "CCleaner",
+    "winget": "Piriform.CCleaner",
+    "choco": "ccleaner",
+    "catgory": "Utilities",
+    "check": "false"
+  },
+  {
+    "Name": "BCUninstaller",
+    "winget": "Klocman.BulkCrapUninstaller",
+    "choco": "bulk-crap-uninstaller",
+    "catgory": "Utilities",
+    "check": "false"
+  },
+  {
+    "Name": "HWiNFO",
+    "winget": "REALiX.HWiNFO",
+    "choco": "hwinfo.install",
+    "catgory": "Utilities",
+    "check": "false"
+  },
+  {
+    "Name": "Speccy",
+    "winget": "Piriform.Speccy",
+    "choco": "speccy",
+    "catgory": "Utilities",
+    "check": "false"
+  },
+  {
+    "Name": "FurMark",
+    "winget": "Geeks3D.FurMark",
+    "choco": "furmark",
+    "catgory": "Utilities",
+    "check": "false"
+  },
+  {
+    "Name": "CPUID CPU-Z",
+    "winget": "CPUID.CPU-Z",
+    "choco": "cpu-z.install",
+    "catgory": "Utilities",
+    "check": "false"
+  },
+  {
+    "Name": "HandBrake",
+    "winget": "HandBrake.HandBrake",
+    "choco": "handbrake.install",
+    "catgory": "Utilities",
+    "check": "false"
+  },
+  {
+    "Name": "Rufus",
+    "winget": "Rufus.Rufus",
+    "choco": "rufus",
+    "catgory": "Utilities",
+    "check": "false"
+  },
+  {
+    "Name": "Virtual CloneDrive",
+    "winget": "#",
+    "choco": "virtualclonedrive",
+    "catgory": "Utilities",
+    "check": "false"
+  },
+  {
+    "Name": "Utilso",
+    "winget": "SerhiiSlieptsov.Utilso",
+    "choco": "ultraiso",
+    "catgory": "Utilities",
+    "check": "false"
+  },
+  {
+    "Name": "Ventoy",
+    "winget": "Ventoy.Ventoy",
+    "choco": "ventoy",
+    "catgory": "Utilities",
+    "check": "false"
+  },
+  {
+    "Name": "AutoHotkey",
+    "winget": "AutoHotkey.AutoHotkey",
+    "choco": "autohotkey",
+    "catgory": "Utilities",
+    "check": "false"
+  },
+  {
+    "Name": "Rainmeter",
+    "winget": "#",
+    "choco": "rainmeter",
+    "catgory": "Utilities",
+    "check": "false"
+  },
+  {
+    "Name": "FxSound",
+    "winget": "FxSoundLLC.FxSound",
+    "choco": "fxsound",
+    "catgory": "Utilities",
+    "check": "false"
+  },
+  {
+    "Name": "AnyDesk",
+    "winget": "AnyDeskSoftwareGmbH.AnyDesk",
+    "choco": "anydesk.install",
+    "catgory": "Utilities",
+    "check": "false"
+  },
+  {
+    "Name": "qBittorrent",
+    "winget": "qBittorrent.qBittorrent",
+    "choco": "qbittorrent",
+    "catgory": "Utilities",
+    "check": "false"
+  },
+  {
+    "Name": "XAMPP",
+    "winget": "XAMPP 8.2",
+    "choco": "xampp-81",
+    "catgory": "Developer",
+    "check": "false"
+  },
+  {
+    "Name": "Visual Studio Professional 2022",
+    "winget": "Microsoft.VisualStudio.2022.Professional",
+    "choco": "visualstudio2022professional",
+    "catgory": "Developer",
+    "check": "false"
+  },
+  {
+    "Name": "Visual Studio Community 2022",
+    "winget": "Microsoft.VisualStudio.2022.Community",
+    "choco": "visualstudio2022community",
+    "catgory": "Developer",
+    "check": "false"
+  },
+  {
+    "Name": "Godot game engine",
+    "winget": "#",
+    "choco": "godot",
+    "catgory": "Developer",
+    "check": "false"
+  },
+  {
+    "Name": "Microsoft Visual Studio Code",
+    "winget": "Microsoft.VisualStudioCode",
+    "choco": "vscode",
+    "catgory": "Developer",
+    "check": "false"
+  },
+  {
+    "Name": "PyCharm Community Edition",
+    "winget": "JetBrains.PyCharm.Community",
+    "choco": "pycharm-community",
+    "catgory": "Developer",
+    "check": "false"
+  },
+  {
+    "Name": "PyCharm Professional Edition",
+    "winget": "JetBrains.PyCharm.Professional",
+    "choco": "pycharm",
+    "catgory": "Developer",
+    "check": "false"
+  },
+  {
+    "Name": "Jetbrains Rider",
+    "winget": "JetBrains.Rider",
+    "choco": "jetbrains-rider",
+    "catgory": "Developer",
+    "check": "false"
+  },
+  {
+    "Name": "Node.js LTS",
+    "winget": "OpenJS.NodeJS",
+    "choco": "nodejs-lts",
+    "catgory": "Developer",
+    "check": "false"
+  },
+  {
+    "Name": "Electrum-LTS",
+    "winget": "#",
+    "choco": "electronim",
+    "catgory": "Developer",
+    "check": "false"
+  },
+  {
+    "Name": "Notepad++",
+    "winget": "Notepad++.Notepad++",
+    "choco": "notepadplusplus",
+
+    "catgory": "Developer",
+    "check": "false"
+  },
+  {
+    "Name": "Windows Terminal",
+    "winget": "Microsoft.WindowsTerminal",
+    "choco": "microsoft-windows-terminal",
+    "catgory": "Developer",
+    "check": "false"
+  },
+  {
+    "Name": "Powershell core",
+    "winget": "powershell-core",
+    "choco": "powershell-core",
+    "catgory": "Developer",
+    "check": "false"
+  },
+  {
+    "Name": "Python",
+    "winget": "Python.Python.3.9",
+    "choco": "python",
+    "catgory": "Developer",
+    "check": "false"
+  },
+  {
+    "Name": "Git",
+    "winget": "Git.Git",
+    "choco": "git",
+    "catgory": "Developer",
+    "check": "false"
+  },
+  {
+    "Name": "GitHub Desktop",
+    "winget": "GitHub.GitHubDesktop",
+    "choco": "github-desktop",
+    "catgory": "Developer",
+    "check": "false"
+  },
+  {
+    "Name": "PowerToys",
+    "winget": "Microsoft.PowerToys",
+    "choco": "powertoys",
+    "catgory": "Developer",
+    "check": "false"
+  },
+  {
+    "Name": "FL Studio",
+    "winget": "ImageLine.FLStudio",
+    "choco": "ImageLine.FLStudio",
+    "catgory": "Developer",
+    "check": "false"
+  }
+]

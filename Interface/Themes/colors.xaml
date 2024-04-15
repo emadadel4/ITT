@@ -1,0 +1,10 @@
+<!--Light Theme-->
+        <SolidColorBrush Color="#121212" x:Key="primary"/>
+        <SolidColorBrush Color="#212121" x:Key="secondary"/>
+        <SolidColorBrush Color="#b3b3b3" x:Key="PlaceHolder"/>
+        <SolidColorBrush Color="#1DB954" x:Key="button"/>
+        <SolidColorBrush Color="White" x:Key="BtnForeground"/>
+        <SolidColorBrush Color="White" x:Key="label"/>
+        <SolidColorBrush Color="#b3b3b3" x:Key="link"/>
+        <SolidColorBrush Color="#212121" x:Key="BorderBrush"/>
+        

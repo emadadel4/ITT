@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Fix stutter in games",
+    "description": "Fix Stutter in Games (Disable GameBarPresenceWriter). Windows 10/11",
+    "website": "https://github.com/emadadel4/Fix-Stutter-in-Games",
+    "script": "Invoke-RestMethod https://raw.githubusercontent.com/emadadel4/Fix-Stutter-in-Games/main/fix.ps1 | Invoke-Expression",
+    "fromUrl": "true",
+    "check": "true",
+    "category": "tweak"
+  },
+  {
+    "name": "Disk Cleanup",
+    "description": "Clean temporary files that are not necessary",
+    "website": "#",
+    "script": "cleanmgr.exe /d C: /VERYLOWDISK Dism.exe /online /Cleanup-Image /StartComponentCleanup /ResetBase",
+    "fromUrl": "false",
+    "check": "true",
+    "category": "tweak"
+  }
+]
