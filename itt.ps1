@@ -1442,8 +1442,8 @@ $inputXML =  '
 
                                         </Trigger>
                                         <Trigger Property="IsSelected" Value="False">
-                                            <Setter TargetName="Border" Property="Background" Value="WhiteSmoke" />
-                                            <Setter Property="Foreground" Value="Black" />
+                                            <Setter TargetName="Border" Property="Background" Value="{DynamicResource secondary}" />
+                                            <Setter Property="Foreground" Value="{DynamicResource PlaceHolder}" />
                                         </Trigger>
                                     </ControlTemplate.Triggers>
                                 </ControlTemplate>
