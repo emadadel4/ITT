@@ -107,14 +107,15 @@ function ShowAll{
     }
 }
 
-function CheckChoco {
+function CheckChoco 
+{
 
     try {
 
-        if((Get-Command -Name choco -ErrorAction Ignore))
-        {
-Write-Host 
-"
+    if((Get-Command -Name choco -ErrorAction Ignore))
+    {
+    Write-Host 
+    "
     ___ _____ _____     ____  _____ __  __    _    ____       _    ____  _____ _     
     |_ _|_   _|_   _|   / __ \| ____|  \/  |  / \  |  _ \     / \  |  _ \| ____| |    
     | |  | |   | |    / / _` |  _| | |\/| | / _ \ | | | |   / _ \ | | | |  _| | |    
@@ -125,8 +126,8 @@ Write-Host
                     This is Emad adel an Binary
     01000101 01001101 01000001 01000100  01000001 01000100 01000101 01001100      
                 Chocolatey is installed You Good to go                  
-"
-            return
+    "
+        return
         }
 
         Write-Host "Chocolatey is not installed, installing now"
@@ -1691,6 +1692,7 @@ $sync.tweaks.Add_SelectionChanged({
 #===========================================================================
 Clear-Host
 CheckChoco
+
 #===========================================================================
 # Events 
 #===========================================================================

@@ -76,3 +76,4 @@ Get-ChildItem .\loops -Recurse -File | ForEach-Object {
 
 Get-Content .\scripts\main.ps1 | Out-File ./$scriptname -Append -Encoding ascii
 
+./itt.ps1
