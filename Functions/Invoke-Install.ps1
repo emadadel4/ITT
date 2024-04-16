@@ -42,13 +42,7 @@ $scriptBlock2 = {
 
     foreach ($id in $packageIDs2) {
 
-
-       #Start-Process Invoke-RestMethod $id | Invoke-Expression  -NoNewWindow -Wait
-
-       #Start-Process $id -NoNewWindow -Wait
-
-
-        powershell.exe -Command  $id 
+        Start-Process -FilePath "powershell.exe" -ArgumentList "-Command `"$id`"" -NoNewWindow -Wait
         
         # Update status label
         UpdateStatusLabel("Applying tweeaks...")

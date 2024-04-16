@@ -11,7 +11,7 @@
     Author         : Emad Adel @emadadel4
     GitHub         : https://github.com/emadadel4
     Website        : https://eprojects.orgfree.com/
-    Version        : 24.04.15
+    Version        : 24.04.16
 #>
 
 if (!(Test-Path -Path $ENV:TEMP)) {
@@ -25,7 +25,7 @@ Add-Type -AssemblyName System.Windows.Forms
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "24.04.15"
+$sync.version = "24.04.16"
 $sync.github = "https://github.com/emadadel4"
 $sync.website = "https://eprojects.orgfree.com"
 $sync.author = "Emad Adel @emadadel4"
@@ -184,13 +184,7 @@ $scriptBlock2 = {
 
     foreach ($id in $packageIDs2) {
 
-
-       #Start-Process Invoke-RestMethod $id | Invoke-Expression  -NoNewWindow -Wait
-
-       #Start-Process $id -NoNewWindow -Wait
-
-
-        powershell.exe -Command  $id 
+        Start-Process -FilePath "powershell.exe" -ArgumentList "-Command `"$id`"" -NoNewWindow -Wait
         
         # Update status label
         UpdateStatusLabel("Applying tweeaks...")
@@ -1156,20 +1150,38 @@ $sync.configs.applications = '[
   
 $sync.configs.tweaks = '[
   {
-    "name": "Fix stutter in games",
-    "description": "Fix Stutter in Games (Disable GameBarPresenceWriter). Windows 10/11",
-    "website": "https://github.com/emadadel4/Fix-Stutter-in-Games",
-    "script": "Invoke-RestMethod https://raw.githubusercontent.com/emadadel4/Fix-Stutter-in-Games/main/fix.ps1 | Invoke-Expression",
-    "fromUrl": "true",
-    "check": "true",
-    "category": "tweak"
-  },
-  {
     "name": "Disk Cleanup",
     "description": "Clean temporary files that are not necessary",
     "website": "#",
     "script": "cleanmgr.exe /d C: /VERYLOWDISK Dism.exe /online /Cleanup-Image /StartComponentCleanup /ResetBase",
     "fromUrl": "false",
+    "check": "true",
+    "category": "tweak"
+  },
+  {
+    "name": "Restore All Windows Services to Default",
+    "description": "Restore All Windows Services to Default",
+    "website": "#",
+    "script": "Invoke-RestMethod https://raw.githubusercontent.com/emadadel4/WindowsTweaks/main/restore.bat | Invoke-Expression",
+    "fromUrl": "false",
+    "check": "true",
+    "category": "tweak"
+  },
+  {
+    "name": "Remove Folder Shortcuts From Windows'' File Explorer",
+    "description": "Restore All Windows Services to Default",
+    "website": "#",
+    "script": "Invoke-RestMethod https://raw.githubusercontent.com/emadadel4/WindowsTweaks/main/rm.ps1 | Invoke-Expression",
+    "fromUrl": "false",
+    "check": "true",
+    "category": "tweak"
+  },
+  {
+    "name": "Fix stutter in games",
+    "description": "Fix Stutter in Games (Disable GameBarPresenceWriter). Windows 10/11",
+    "website": "https://github.com/emadadel4/Fix-Stutter-in-Games",
+    "script": "Invoke-RestMethod https://raw.githubusercontent.com/emadadel4/Fix-Stutter-in-Games/main/fix.ps1 | Invoke-Expression",
+    "fromUrl": "true",
     "check": "true",
     "category": "tweak"
   }
