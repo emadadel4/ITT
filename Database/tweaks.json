@@ -1,5 +1,14 @@
 [
   {
+    "name": "System File Checker",
+    "description": "Use the System File Checker tool to repair missing or corrupted system files",
+    "website": "#",
+    "script": "sfc /scannow",
+    "fromUrl": "false",
+    "check": "true",
+    "category": "tweak"
+  },
+  {
     "name": "Disk Cleanup",
     "description": "Clean temporary files that are not necessary",
     "website": "#",
@@ -19,7 +28,7 @@
   },
   {
     "name": "Remove Folder Shortcuts From Windows' File Explorer",
-    "description": "Restore All Windows Services to Default",
+    "description": "Remove Folder Shortcuts From Windows' File Explorer",
     "website": "#",
     "script": "Invoke-RestMethod https://raw.githubusercontent.com/emadadel4/WindowsTweaks/main/rm.ps1 | Invoke-Expression",
     "fromUrl": "false",
@@ -31,6 +40,15 @@
     "description": "Fix Stutter in Games (Disable GameBarPresenceWriter). Windows 10/11",
     "website": "https://github.com/emadadel4/Fix-Stutter-in-Games",
     "script": "Invoke-RestMethod https://raw.githubusercontent.com/emadadel4/Fix-Stutter-in-Games/main/fix.ps1 | Invoke-Expression",
+    "fromUrl": "true",
+    "check": "true",
+    "category": "tweak"
+  },
+  {
+    "name": "Remove Unnecessary Windows 10 Apps",
+    "description": "BingNews, GetHelp, Getstarted, Messaging, Microsoft3DViewer, MicrosoftOfficeHub, MicrosoftSolitaireCollection, News, Office.Lens, Office.OneNote, Office.Sway, OneConnect, People, Print3D, RemoteDesktop, SkypeApp, StorePurchaseApp, Office.Todo.List, Whiteboard, WindowsAlarms, WindowsCamera, windowscommunicationsapps, WindowsFeedbackHub, WindowsMaps, WindowsSoundRecorder, Xbox.TCUI, XboxApp, XboxGameOverlay, XboxIdentityProvider, XboxSpeechToTextOverlay, ZuneMusic, ZuneVideo, Windows.Cortana, MSPaint",
+    "website": "https://github.com/emadadel4/Fix-Stutter-in-Games",
+    "script": "Invoke-RestMethod https://raw.githubusercontent.com/emadadel4/WindowsTweaks/main/debloater.ps1 | Invoke-Expression",
     "fromUrl": "true",
     "check": "true",
     "category": "tweak"
