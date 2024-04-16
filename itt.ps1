@@ -91,7 +91,7 @@ function Catgoray($cat){
             $checkbox = New-Object System.Windows.Controls.CheckBox
             $list.Items.Add($checkbox)
             $checkbox.Content = $item.name
-            $checkbox.Foreground = "#b3b3b3"
+            $checkbox.Foreground = "White"
         }
     }
 }
@@ -103,7 +103,7 @@ function ShowAll{
             $checkbox = New-Object System.Windows.Controls.CheckBox
             $list.Items.Add($checkbox)
             $checkbox.Content = $item.name
-            $checkbox.Foreground = "#b3b3b3"
+            $checkbox.Foreground = "White"
     }
 }
 
@@ -303,7 +303,7 @@ function Recommended() {
             $checkbox = New-Object System.Windows.Controls.CheckBox
             $list.Items.Add($checkbox)
             $checkbox.Content = $item.name
-            $checkbox.Foreground = "#b3b3b3"
+            $checkbox.Foreground = "White"
         }
     }
 }
@@ -1509,7 +1509,7 @@ $inputXML =  '
                         <Grid>
                             <TextBox Padding="5"
                             BorderBrush="{x:Null}"
-                            Width="188" 
+                            Width="200" 
                             VerticalAlignment="Center"
                             HorizontalAlignment="Left" 
                             Foreground="{DynamicResource label}"
