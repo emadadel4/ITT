@@ -1179,7 +1179,7 @@ $sync.configs.tweaks = '[
   },
   {
     "name": "Remove Folder Shortcuts From Windows'' File Explorer",
-    "description": "Restore All Windows Services to Default",
+    "description": "Remove Folder Shortcuts From Windows'' File Explorer",
     "website": "#",
     "script": "Invoke-RestMethod https://raw.githubusercontent.com/emadadel4/WindowsTweaks/main/rm.ps1 | Invoke-Expression",
     "fromUrl": "false",
