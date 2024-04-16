@@ -31,7 +31,11 @@ function Catgoray($cat){
 }
 
 function ShowAll{
+
+    $window.FindName('apps').IsSelected = $true 
+
     $list.Items.Clear()
+
     foreach ($item in $sync.configs.applications)
     {
         $checkbox = New-Object System.Windows.Controls.CheckBox
@@ -46,6 +50,7 @@ function Recommended() {
     $window.FindName('apps').IsSelected = $true 
 
     #Clear Listview
+    
     $list.Items.Clear()
 
     # get items that has check = true in json file
