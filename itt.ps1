@@ -1151,6 +1151,15 @@ $sync.configs.applications = '[
   
 $sync.configs.tweaks = '[
   {
+    "name": "System File Checker",
+    "description": "Use the System File Checker tool to repair missing or corrupted system files",
+    "website": "#",
+    "script": "sfc /scannow",
+    "fromUrl": "false",
+    "check": "true",
+    "category": "tweak"
+  },
+  {
     "name": "Disk Cleanup",
     "description": "Clean temporary files that are not necessary",
     "website": "#",
@@ -1182,6 +1191,15 @@ $sync.configs.tweaks = '[
     "description": "Fix Stutter in Games (Disable GameBarPresenceWriter). Windows 10/11",
     "website": "https://github.com/emadadel4/Fix-Stutter-in-Games",
     "script": "Invoke-RestMethod https://raw.githubusercontent.com/emadadel4/Fix-Stutter-in-Games/main/fix.ps1 | Invoke-Expression",
+    "fromUrl": "true",
+    "check": "true",
+    "category": "tweak"
+  },
+  {
+    "name": "Remove Unnecessary Windows 10 Apps",
+    "description": "BingNews, GetHelp, Getstarted, Messaging, Microsoft3DViewer, MicrosoftOfficeHub, MicrosoftSolitaireCollection, News, Office.Lens, Office.OneNote, Office.Sway, OneConnect, People, Print3D, RemoteDesktop, SkypeApp, StorePurchaseApp, Office.Todo.List, Whiteboard, WindowsAlarms, WindowsCamera, windowscommunicationsapps, WindowsFeedbackHub, WindowsMaps, WindowsSoundRecorder, Xbox.TCUI, XboxApp, XboxGameOverlay, XboxIdentityProvider, XboxSpeechToTextOverlay, ZuneMusic, ZuneVideo, Windows.Cortana, MSPaint",
+    "website": "https://github.com/emadadel4/Fix-Stutter-in-Games",
+    "script": "Invoke-RestMethod https://raw.githubusercontent.com/emadadel4/WindowsTweaks/main/debloater.ps1 | Invoke-Expression",
     "fromUrl": "true",
     "check": "true",
     "category": "tweak"
@@ -1325,7 +1343,7 @@ $inputXML =  '
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="222"/>
         </Grid.ColumnDefinitions>
 
         <!--Header Section-->
@@ -1520,15 +1538,14 @@ $inputXML =  '
                     </StackPanel>
 
 
-                    <TextBlock Name="description" 
-                    Margin="15"  
-                    Text="" TextWrapping="Wrap" 
-                    Foreground="{DynamicResource label}"
-                    
-                    />
+                    <ScrollViewer VerticalScrollBarVisibility="Auto"  Height="233" Margin="10,18,0,0"   >
+                        <TextBlock Name="description" 
+                            Text=""
+                            TextWrapping="Wrap" 
+                            Foreground="{DynamicResource label}"/>
+                    </ScrollViewer>
 
                     <TextBlock Name="itemLink" 
-                    Margin="15"  
                     Foreground="{DynamicResource link}" 
                     Visibility="Hidden" 
                     TextWrapping="Wrap" 
