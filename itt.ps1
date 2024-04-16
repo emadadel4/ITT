@@ -1499,20 +1499,21 @@ $inputXML =  '
         <!--End TabControl-->
 
         <!--Main Section-->
-            <Grid  Grid.Row="1" Grid.Column="1"  Grid.RowSpan="2" Margin="0">
-                <StackPanel Margin="15" Orientation="Vertical">
+            <Grid  Grid.Row="1" Grid.Column="1"  Grid.RowSpan="2">
+
+                <StackPanel Orientation="Vertical">
 
 
-                    <StackPanel Orientation="Horizontal" Margin="0" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
 
                         <Grid>
                             <TextBox Padding="5"
                             BorderBrush="{x:Null}"
-                            Width="166" 
+                            Width="188" 
                             VerticalAlignment="Center"
                             HorizontalAlignment="Left" 
                             Foreground="{DynamicResource label}"
-                            Margin="0" Text="{Binding Text_searchInput}"
+                            Text="{Binding Text_searchInput}"
                             x:Name="searchInput" SelectionBrush="{x:Null}" 
                             Background="{DynamicResource secondary}"/>
 
@@ -1537,22 +1538,26 @@ $inputXML =  '
                         </Grid>
                     </StackPanel>
 
+                    <TextBlock Name="itemLink" 
+                        Foreground="{DynamicResource link}" 
+                        Visibility="Hidden" 
+                        TextWrapping="Wrap" 
+                        Text="" 
+                        Margin="20,15,15,0" 
+                        Cursor="Hand"
+                    />
 
-                    <ScrollViewer VerticalScrollBarVisibility="Auto"  Height="233" Margin="10,18,0,0"   >
+                    <ScrollViewer VerticalScrollBarVisibility="Auto"
+                        Height="233"
+                        Margin="20,15,15,0" 
+                    >
                         <TextBlock Name="description" 
                             Text=""
                             TextWrapping="Wrap" 
                             Foreground="{DynamicResource label}"/>
                     </ScrollViewer>
 
-                    <TextBlock Name="itemLink" 
-                    Foreground="{DynamicResource link}" 
-                    Visibility="Hidden" 
-                    TextWrapping="Wrap" 
-                    Text="" 
-                    Cursor="Hand"
                     
-                    />
 
                 </StackPanel>
 
