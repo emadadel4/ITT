@@ -23,7 +23,7 @@ function Catgoray($cat){
             $checkbox = New-Object System.Windows.Controls.CheckBox
             $list.Items.Add($checkbox)
             $checkbox.Content = $item.name
-            $checkbox.Foreground = "#b3b3b3"
+            $checkbox.Foreground = "White"
         }
     }
 }
@@ -35,6 +35,6 @@ function ShowAll{
             $checkbox = New-Object System.Windows.Controls.CheckBox
             $list.Items.Add($checkbox)
             $checkbox.Content = $item.name
-            $checkbox.Foreground = "#b3b3b3"
+            $checkbox.Foreground = "White"
     }
 }

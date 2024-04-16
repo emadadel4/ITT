@@ -5,7 +5,7 @@ foreach ($item in $sync.configs.tweaks)
     $checkbox = New-Object System.Windows.Controls.CheckBox
     $sync.tweaks.Items.Add($checkbox)
     $checkbox.Content = $item.name
-    $checkbox.Foreground = "#b3b3b3"
+    $checkbox.Foreground = "White"
 }
 
 # Get Discription of selected tweaks in $list
