@@ -11,7 +11,7 @@
     Author         : Emad Adel @emadadel4
     GitHub         : https://github.com/emadadel4
     Website        : https://eprojects.orgfree.com/
-    Version        : 24.04.16
+    Version        : 24.04.17
 #>
 
 if (!(Test-Path -Path $ENV:TEMP)) {
@@ -25,7 +25,7 @@ Add-Type -AssemblyName System.Windows.Forms
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "24.04.16"
+$sync.version = "24.04.17"
 $sync.github = "https://github.com/emadadel4"
 $sync.website = "https://eprojects.orgfree.com"
 $sync.author = "Emad Adel @emadadel4"
@@ -202,7 +202,7 @@ $DownloadScriptBlock = {
 
 $TweakScriptBlock = {
 
-    param($packageIDs2, $window,$winget)
+    param($packageIDs2, $window)
 
     function UpdateStatusLabel($text) {
         $window.Dispatcher.Invoke([Action]{
@@ -260,7 +260,7 @@ function Invoke-Install() {
         if($msg -eq "Yes")
         {
             #Start asynchronous download using runspace
-            $ps = [powershell]::Create().AddScript($DownloadScriptBlock).AddArgument($packageIDs).AddArgument($Window).AddArgument($winget)
+            $ps = [powershell]::Create().AddScript($DownloadScriptBlock).AddArgument($packageIDs).AddArgument($Window)
             $ps.Runspace = $runspace
             $handle = $ps.BeginInvoke()
             # Update status label
@@ -488,7 +488,7 @@ function ChangeTap() {
     {
         $window.FindName('installBtn').Visibility = "Visible"
         $window.FindName('applyBtn').Visibility = "Hidden"
-        $Window.FindName('description').Visibility =  "Hidden"
+        $Window.FindName('description').Text =  ""
         $Window.FindName('itemLink').Visibility = "Visible"
     }
 
@@ -497,7 +497,6 @@ function ChangeTap() {
         $window.FindName('applyBtn').Visibility = "Visible"
         $window.FindName('installBtn').Visibility = "Hidden"
         $Window.FindName('itemLink').Visibility = "Hidden"
-        $Window.FindName('description').Visibility =  "Visible"
     }
 }
 $sync.configs.applications = '[
