@@ -34,10 +34,10 @@ function ShowAll{
     $list.Items.Clear()
     foreach ($item in $sync.configs.applications)
     {
-            $checkbox = New-Object System.Windows.Controls.CheckBox
-            $list.Items.Add($checkbox)
-            $checkbox.Content = $item.name
-            $checkbox.Foreground = "White"
+        $checkbox = New-Object System.Windows.Controls.CheckBox
+        $list.Items.Add($checkbox)
+        $checkbox.Content = $item.name
+        $checkbox.Foreground = "White"
     }
 }
 

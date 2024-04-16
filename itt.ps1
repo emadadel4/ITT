@@ -102,10 +102,10 @@ function ShowAll{
     $list.Items.Clear()
     foreach ($item in $sync.configs.applications)
     {
-            $checkbox = New-Object System.Windows.Controls.CheckBox
-            $list.Items.Add($checkbox)
-            $checkbox.Content = $item.name
-            $checkbox.Foreground = "White"
+        $checkbox = New-Object System.Windows.Controls.CheckBox
+        $list.Items.Add($checkbox)
+        $checkbox.Content = $item.name
+        $checkbox.Foreground = "White"
     }
 }
 
@@ -1662,18 +1662,23 @@ catch [System.Management.Automation.MethodInvocationException] {
 
 #region Generate items from json file
 $list = $Window.FindName("list")
-foreach ($item in $sync.configs.applications)
-{
-    $checkbox = New-Object System.Windows.Controls.CheckBox
-    $list.Items.Add($checkbox)
-    $checkbox.Content = $item.name
-    $checkbox.Foreground = "White"
+$Window.FindName("apps").add_Loaded({
 
 
-}
+    foreach ($item in $sync.configs.applications)
+    {
+        $checkbox = New-Object System.Windows.Controls.CheckBox
+        $list.Items.Add($checkbox)
+        $checkbox.Content = $item.name
+        $checkbox.Foreground = "White"
 
-    # Get Discription of selected item in $list
-    $list.Add_SelectionChanged({
+
+    }
+
+
+
+     # Get Discription of selected item in $list
+     $list.Add_SelectionChanged({
             
         $Window.FindName('itemLink').Visibility = "Visible"
 
@@ -1688,49 +1693,60 @@ foreach ($item in $sync.configs.applications)
         }
     })
 
-# Get Selected item Website link from json file
-$Window.FindName('itemLink').add_MouseLeftButtonDown({
+    # Get Selected item Website link from json file
+    $Window.FindName('itemLink').add_MouseLeftButtonDown({
 
-    foreach ($item in $list.SelectedItem.Content)
-    {
-        foreach ($data in $sync.configs.applications)
+        foreach ($item in $list.SelectedItem.Content)
         {
-            if($item -eq $data.name)
+            foreach ($data in $sync.configs.applications)
             {
-                Start-Process ("https://duckduckgo.com/?hps=1&q=%5C" + $data.name)
+                if($item -eq $data.name)
+                {
+                    Start-Process ("https://duckduckgo.com/?hps=1&q=%5C" + $data.name)
+                }
             }
         }
-    }
+
+    })
+
+
 
 })
 #endregion
 #region Generate tweaks from json file
 $sync.tweaks = $Window.FindName("tweaks")
-foreach ($item in $sync.configs.tweaks)
-{
-    $checkbox = New-Object System.Windows.Controls.CheckBox
-    $sync.tweaks.Items.Add($checkbox)
-    $checkbox.Content = $item.name
-    $checkbox.Foreground = "White"
-}
+$Window.FindName("tweeks").add_Loaded({
 
-# Get Discription of selected tweaks in $list
-$sync.tweaks.Add_SelectionChanged({
-		
-    foreach($data in $sync.configs.tweaks)
+
+    foreach ($item in $sync.configs.tweaks)
     {
-        if($sync.tweaks.SelectedItem.Content -eq $data.name)
-        {
-            $Window.FindName('description').Text =  $data.description
-        }
+        $checkbox = New-Object System.Windows.Controls.CheckBox
+        $sync.tweaks.Items.Add($checkbox)
+        $checkbox.Content = $item.name
+        $checkbox.Foreground = "White"
     }
+
+    # Get Discription of selected tweaks in $list
+    $sync.tweaks.Add_SelectionChanged({
+            
+        foreach($data in $sync.configs.tweaks)
+        {
+            if($sync.tweaks.SelectedItem.Content -eq $data.name)
+            {
+                $Window.FindName('description').Text =  $data.description
+            }
+        }
+    })
+
+
+
 })
 
 #endregion
 #===========================================================================
 # End Loops 
 #===========================================================================
-Clear-Host
+
 CheckChoco
 
 #===========================================================================
