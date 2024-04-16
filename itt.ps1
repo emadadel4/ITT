@@ -1148,6 +1148,20 @@ $sync.configs.applications = '[
     "check": "false"
   },
   {
+    "Name": "Docker Desktop",
+    "winget": "#",
+    "choco": "docker-desktop",
+    "catgory": "Developer",
+    "check": "false"
+  },
+  {
+    "Name": "Docker Compose",
+    "winget": "#",
+    "choco": "docker-compose",
+    "catgory": "Developer",
+    "check": "false"
+  },
+  {
     "Name": "PowerToys",
     "winget": "Microsoft.PowerToys",
     "choco": "powertoys",
