@@ -148,7 +148,7 @@ $runspace2 = [runspacefactory]::CreateRunspace()
 $runspace2.Open()
 
 # Define script block for downloading software
-$scriptBlock = {
+$DownloadScriptBlock = {
 
     param($packageIDs, $window,$winget)
 
@@ -172,7 +172,7 @@ $scriptBlock = {
 
 }
 
-$scriptBlock2 = {
+$TweakScriptBlock = {
 
     param($packageIDs2, $window,$winget)
 
@@ -184,8 +184,9 @@ $scriptBlock2 = {
 
     foreach ($id in $packageIDs2) {
 
+        #powershell.exe  -Command  $id
+
         Start-Process -FilePath "powershell.exe" -ArgumentList "-Command `"$id`"" -NoNewWindow -Wait
-        
         # Update status label
         UpdateStatusLabel("Applying tweeaks...")
     }
@@ -231,7 +232,7 @@ function Invoke-Install() {
         if($msg -eq "Yes")
         {
             #Start asynchronous download using runspace
-            $ps = [powershell]::Create().AddScript($scriptBlock).AddArgument($packageIDs).AddArgument($Window).AddArgument($winget)
+            $ps = [powershell]::Create().AddScript($DownloadScriptBlock).AddArgument($packageIDs).AddArgument($Window).AddArgument($winget)
             $ps.Runspace = $runspace
             $handle = $ps.BeginInvoke()
             # Update status label
@@ -274,7 +275,7 @@ function ApplyTweaks() {
         if($msg -eq "Yes")
         {
             #Start asynchronous download using runspace
-            $ps2 = [powershell]::Create().AddScript($scriptBlock2).AddArgument($packageIDs2).AddArgument($Window).AddArgument($winget)
+            $ps2 = [powershell]::Create().AddScript($TweakScriptBlock).AddArgument($packageIDs2).AddArgument($Window).AddArgument($winget)
             $ps2.Runspace = $runspace2
             $handle2 = $ps2.BeginInvoke()
             # Update status label
@@ -1639,7 +1640,7 @@ foreach ($item in $sync.configs.applications)
     $checkbox = New-Object System.Windows.Controls.CheckBox
     $list.Items.Add($checkbox)
     $checkbox.Content = $item.name
-    $checkbox.Foreground = "#b3b3b3"
+    $checkbox.Foreground = "White"
 
 
 }
@@ -1683,7 +1684,7 @@ foreach ($item in $sync.configs.tweaks)
     $checkbox = New-Object System.Windows.Controls.CheckBox
     $sync.tweaks.Items.Add($checkbox)
     $checkbox.Content = $item.name
-    $checkbox.Foreground = "#b3b3b3"
+    $checkbox.Foreground = "White"
 }
 
 # Get Discription of selected tweaks in $list
