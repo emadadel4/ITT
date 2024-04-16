@@ -68,6 +68,8 @@ function About{
 }
 function Catgoray($cat){
 
+    $window.FindName('apps').IsSelected = $true 
+
     <#
     .DESCRIPTION
     This function filters and populates a list of applications based on the specified category.
