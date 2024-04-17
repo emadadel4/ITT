@@ -44,6 +44,14 @@ function Get-SelectedTweeaks {
 
 function Invoke-Install() {
 
+    # Check internet connection
+    if (Test-InternetConnection) {
+        Write-Host "Internet is available you good"
+    } else {
+        [System.Windows.MessageBox]::Show("Internet is not available.", "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
+        return
+    }
+
     if($sync.ProcessRunning)
     {
         $msg = "An Install process is currently running."
@@ -68,7 +76,7 @@ function Invoke-Install() {
                     $sync.ProcessRunning = $true
 
                     Write-Host "Installing the following programs $choco "
-                    Start-Process -FilePath "choco" -ArgumentList "install $choco -y --ignore-checksums" -NoNewWindow -Wait
+                    Start-Process -FilePath "choco" -ArgumentList "install $choco -y --force --ignore-checksums" -NoNewWindow -Wait
                     Write-Host "Installs have finished"
                     [System.Windows.MessageBox]::Show("Installs have finished", "ITT @emadadel4", "OK", "Information")
                 }
@@ -90,6 +98,15 @@ function Invoke-Install() {
 
 
 function ApplyTweaks() {
+
+
+    # Check internet connection
+    if (Test-InternetConnection) {
+        Write-Host "Internet is available you good"
+    } else {
+        [System.Windows.MessageBox]::Show("Internet is not available.", "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
+        return
+    }
 
     if($sync.ProcessRunning)
     {

@@ -19,7 +19,7 @@
   },
   {
     "name": "Restore All Windows Services to Default",
-    "description": "Restore All Windows Services to Default",
+    "description": "If you face a problem with some system services, you can restore all services to Default.",
     "website": "#",
     "script": "Invoke-RestMethod https://raw.githubusercontent.com/emadadel4/WindowsTweaks/main/restore.bat | Invoke-Expression",
     "fromUrl": "false",
@@ -28,7 +28,7 @@
   },
   {
     "name": "Remove Folder Shortcuts From Windows' File Explorer",
-    "description": "Remove Folder Shortcuts From Windows' File Explorer",
+    "description": "Remove Documents, Videos, Pictures, Desktop. Shortcuts from File Explorer ",
     "website": "#",
     "script": "Invoke-RestMethod https://raw.githubusercontent.com/emadadel4/WindowsTweaks/main/rm.ps1 | Invoke-Expression",
     "fromUrl": "false",

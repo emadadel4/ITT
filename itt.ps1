@@ -66,6 +66,19 @@ function About{
 
     Show-CustomDialog -Message $authorInfo -Width 400 
 }
+function Test-InternetConnection {
+    try {
+        $ping = New-Object System.Net.NetworkInformation.Ping
+        $response = $ping.Send("www.google.com")
+        if ($response.Status -eq "Success") {
+            return $true
+        } else {
+            return $false
+        }
+    } catch {
+        return $false
+    }
+}
 function Catgoray($cat){
 
     $window.FindName('apps').IsSelected = $true 
@@ -214,6 +227,14 @@ function Get-SelectedTweeaks {
 
 function Invoke-Install() {
 
+    # Check internet connection
+    if (Test-InternetConnection) {
+        Write-Host "Internet is available you good"
+    } else {
+        [System.Windows.MessageBox]::Show("Internet is not available.", "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
+        return
+    }
+
     if($sync.ProcessRunning)
     {
         $msg = "An Install process is currently running."
@@ -238,7 +259,7 @@ function Invoke-Install() {
                     $sync.ProcessRunning = $true
 
                     Write-Host "Installing the following programs $choco "
-                    Start-Process -FilePath "choco" -ArgumentList "install $choco -y --ignore-checksums" -NoNewWindow -Wait
+                    Start-Process -FilePath "choco" -ArgumentList "install $choco -y --force --ignore-checksums" -NoNewWindow -Wait
                     Write-Host "Installs have finished"
                     [System.Windows.MessageBox]::Show("Installs have finished", "ITT @emadadel4", "OK", "Information")
                 }
@@ -260,6 +281,15 @@ function Invoke-Install() {
 
 
 function ApplyTweaks() {
+
+
+    # Check internet connection
+    if (Test-InternetConnection) {
+        Write-Host "Internet is available you good"
+    } else {
+        [System.Windows.MessageBox]::Show("Internet is not available.", "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
+        return
+    }
 
     if($sync.ProcessRunning)
     {
@@ -1208,7 +1238,7 @@ $sync.configs.tweaks = '[
   },
   {
     "name": "Restore All Windows Services to Default",
-    "description": "Restore All Windows Services to Default",
+    "description": "If you face a problem with some system services, you can restore all services to Default.",
     "website": "#",
     "script": "Invoke-RestMethod https://raw.githubusercontent.com/emadadel4/WindowsTweaks/main/restore.bat | Invoke-Expression",
     "fromUrl": "false",
@@ -1217,7 +1247,7 @@ $sync.configs.tweaks = '[
   },
   {
     "name": "Remove Folder Shortcuts From Windows'' File Explorer",
-    "description": "Remove Folder Shortcuts From Windows'' File Explorer",
+    "description": "Remove Documents, Videos, Pictures, Desktop. Shortcuts from File Explorer ",
     "website": "#",
     "script": "Invoke-RestMethod https://raw.githubusercontent.com/emadadel4/WindowsTweaks/main/rm.ps1 | Invoke-Expression",
     "fromUrl": "false",
