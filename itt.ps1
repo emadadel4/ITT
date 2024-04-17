@@ -239,20 +239,16 @@ function Invoke-Install() {
 
                     Write-Host "Installing the following programs $choco "
                     Start-Process -FilePath "choco" -ArgumentList "install $choco -y --ignore-checksums" -NoNewWindow -Wait
-                    Write-Host "==========================================="
-                    Write-Host "--      Installs have finished          ---"
-                    Write-Host "==========================================="
+                    Write-Host "Installs have finished"
                     [System.Windows.MessageBox]::Show("Installs have finished", "ITT @emadadel4", "OK", "Information")
                 }
             }
             Catch
             {
-                Write-Host "==========================================="
                 Write-Host "Error: $_"
-                Write-Host "==========================================="
             }
 
-            Start-Sleep -Seconds 3
+            Start-Sleep -Seconds 1
             $sync.ProcessRunning = $False
         }
     }
@@ -287,26 +283,18 @@ function ApplyTweaks() {
                 if($msg -eq "Yes")
                 {
                     $sync.ProcessRunning = $true
-
                     Write-Host "Applying tweeak(s) $tweeaks "
-
                     Start-Process -FilePath "powershell.exe" -ArgumentList "-Command `"$tweeaks`"" -NoNewWindow -Wait
-
-                    Write-Host "==========================================="
-                    Write-Host "--      The operation was successful.          ---"
-                    Write-Host "==========================================="
-
+                    Write-Host "The operation was successful."    
                     [System.Windows.MessageBox]::Show("The operation was successful.", "ITT @emadadel4", "OK", "Information")
                 }
             }
             Catch
             {
-                Write-Host "==========================================="
                 Write-Host "Error: $_"
-                Write-Host "==========================================="
             }
 
-            Start-Sleep -Seconds 2
+            Start-Sleep -Seconds 1
             $sync.ProcessRunning = $False
         }
     }
