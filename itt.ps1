@@ -1278,7 +1278,6 @@ $sync.configs.tweaks = '[
     "description": "Use the System File Checker tool to repair missing or corrupted system files",
     "repo": "#",
     "script": "sfc /scannow",
-    "fromUrl": "false",
     "check": "true",
     "category": "tweak"
   },
@@ -1287,7 +1286,6 @@ $sync.configs.tweaks = '[
     "description": "Clean temporary files that are not necessary",
     "repo": "#",
     "script": "cleanmgr.exe /d C: /VERYLOWDISK Dism.exe /online /Cleanup-Image /StartComponentCleanup /ResetBase",
-    "fromUrl": "false",
     "check": "true",
     "category": "tweak"
   },
@@ -1296,7 +1294,6 @@ $sync.configs.tweaks = '[
     "description": "If you face a problem with some system services, you can restore all services to Default.",
     "repo": "#",
     "script": "Invoke-RestMethod https://raw.githubusercontent.com/emadadel4/WindowsTweaks/main/restore.bat | Invoke-Expression",
-    "fromUrl": "false",
     "check": "true",
     "category": "tweak"
   },
@@ -1305,7 +1302,6 @@ $sync.configs.tweaks = '[
     "description": "Remove Documents, Videos, Pictures, Desktop. Shortcuts from File Explorer ",
     "repo": "#",
     "script": "Invoke-RestMethod https://raw.githubusercontent.com/emadadel4/WindowsTweaks/main/rm.ps1 | Invoke-Expression",
-    "fromUrl": "false",
     "check": "true",
     "category": "tweak"
   },
@@ -1314,7 +1310,6 @@ $sync.configs.tweaks = '[
     "description": "Fix Stutter in Games (Disable GameBarPresenceWriter). Windows 10/11",
     "repo": "https://github.com/emadadel4/Fix-Stutter-in-Games",
     "script": "Invoke-RestMethod https://raw.githubusercontent.com/emadadel4/Fix-Stutter-in-Games/main/fix.ps1 | Invoke-Expression",
-    "fromUrl": "true",
     "check": "true",
     "category": "tweak"
   },
@@ -1323,16 +1318,22 @@ $sync.configs.tweaks = '[
     "description": "BingNews, GetHelp, Getstarted, Messaging, Microsoft3DViewer, MicrosoftOfficeHub, MicrosoftSolitaireCollection, News, Office.Lens, Office.OneNote, Office.Sway, OneConnect, People, Print3D, RemoteDesktop, SkypeApp, StorePurchaseApp, Office.Todo.List, Whiteboard, WindowsAlarms, WindowsCamera, windowscommunicationsapps, WindowsFeedbackHub, WindowsMaps, WindowsSoundRecorder, Xbox.TCUI, XboxApp, XboxGameOverlay, XboxIdentityProvider, XboxSpeechToTextOverlay, ZuneMusic, ZuneVideo, Windows.Cortana, MSPaint",
     "repo": "https://github.com/emadadel4/Fix-Stutter-in-Games",
     "script": "Invoke-RestMethod https://raw.githubusercontent.com/emadadel4/WindowsTweaks/main/debloater.ps1 | Invoke-Expression",
-    "fromUrl": "true",
     "check": "true",
     "category": "tweak"
   },
   {
     "name": "Enable the Ultimate Performance Power Plan",
-    "description": "BingNews, GetHelp, Getstarted, Messaging, Microsoft3DViewer, MicrosoftOfficeHub, MicrosoftSolitaireCollection, News, Office.Lens, Office.OneNote, Office.Sway, OneConnect, People, Print3D, RemoteDesktop, SkypeApp, StorePurchaseApp, Office.Todo.List, Whiteboard, WindowsAlarms, WindowsCamera, windowscommunicationsapps, WindowsFeedbackHub, WindowsMaps, WindowsSoundRecorder, Xbox.TCUI, XboxApp, XboxGameOverlay, XboxIdentityProvider, XboxSpeechToTextOverlay, ZuneMusic, ZuneVideo, Windows.Cortana, MSPaint",
-    "repo": "https://github.com/emadadel4/Fix-Stutter-in-Games",
+    "description": "Enable the Ultimate Performance Power Plan",
+    "repo": "#",
     "script": "powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61",
     "fromUrl": "true",
+    "category": "tweak"
+  },
+  {
+    "name": " Reset the TCP/IP Stack",
+    "description": "If you have an internet problem, Reset network configuration",
+    "repo": "#",
+    "script": "netsh int ip reset",
     "check": "true",
     "category": "tweak"
   }
