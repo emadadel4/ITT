@@ -86,7 +86,7 @@
   {
     "Name": "VLC",
     "winget": "VideoLAN.VLC",
-    "choco": "vlc",
+    "choco": "vlc.install",
     "catgory": "Media",
     "check": "false"
   },

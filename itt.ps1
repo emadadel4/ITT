@@ -168,75 +168,9 @@ function CheckChoco
 }
 
 
-# Create a runspace to execute Winget command
-$runspace = [runspacefactory]::CreateRunspace()
-$runspace.Open()
+function Get-SelectedApps {
 
-$runspace2 = [runspacefactory]::CreateRunspace()
-$runspace2.Open()
-
-# Define script block for downloading software
-$DownloadScriptBlock = {
-
-    param($packageIDs, $window,$winget)
-
-    function UpdateStatusLabel($text) {
-        $window.Dispatcher.Invoke([Action]{
-            $window.FindName('description').Text = $text
-        })
-    }
-
-    foreach ($id in $packageIDs) {
-
-        # Run Winget command to download software
-        Start-Process -FilePath "choco" -ArgumentList "install $id -y --force --ignore-checksums" -NoNewWindow -Wait
-        
-        # Update status label
-        UpdateStatusLabel("Downloading...")
-    }
-
-    # Update status label after downloading all programs
-    UpdateStatusLabel("Installed successfully.")
-
-}
-
-$TweakScriptBlock = {
-
-    param($packageIDs2, $window)
-
-    function UpdateStatusLabel($text) {
-        $window.Dispatcher.Invoke([Action]{
-            $window.FindName('description').Text = $text
-        })
-    }
-
-    foreach ($id in $packageIDs2) {
-
-        #powershell.exe  -Command  $id
-
-        Start-Process -FilePath "powershell.exe" -ArgumentList "-Command `"$id`"" -NoNewWindow -Wait
-        # Update status label
-        UpdateStatusLabel("Applying tweeaks...")
-    }
-
-    # Update status label after downloading all programs
-    UpdateStatusLabel("Successfully applied.")
-
-}
-
-function Invoke-Install() {
-
-    <#
-    .SYNOPSIS
-    This script contains functions for installing software, applying tweaks, and managing asynchronous downloads.
-
-    .DESCRIPTION
-    The functions in this script are used to install software using choco, apply tweaks, and manage asynchronous downloads.
-
-    #>
-
-    $packageIDs = @()
-    $result  
+    $items = @()
 
     foreach ($item in $list.Items)
     {
@@ -244,79 +178,168 @@ function Invoke-Install() {
         {
             foreach ($program in $sync.configs.applications)
             {
+
                 if($item.Content -eq $program.name)
                 {
-                    $packageIDs += $program.choco
-                    $result  = $item.IsChecked
+                    $items += $program.choco
                 }
             }
         }
     }
 
-    if($result)
-    {
-        $msg = [System.Windows.MessageBox]::Show("Do you want to Install selected programs?", "ITT @emadadel", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)
-
-        if($msg -eq "Yes")
-        {
-            #Start asynchronous download using runspace
-            $ps = [powershell]::Create().AddScript($DownloadScriptBlock).AddArgument($packageIDs).AddArgument($Window)
-            $ps.Runspace = $runspace
-            $handle = $ps.BeginInvoke()
-            # Update status label
-            $window.FindName('description').Text = "Downloading..."
-        }
-    }
-    else
-    {
-        #show mesg
-        [System.Windows.MessageBox]::Show("Select at lest one program", "ITT @emadadel", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Question)
-    }
+    return $items 
 }
 
-function ApplyTweaks() {
+function Get-SelectedTweeaks {
 
-    $packageIDs2 = @()
+    $items = @()
 
     foreach ($item in $sync.tweaks.Items)
     {
         if ($item.IsChecked)
         {
-            $result = $item
-
-            foreach ($data in $sync.configs.tweaks)
+            foreach ($tweeak in $sync.configs.tweaks)
             {
-                if($item.Content -eq $data.name)
+
+                if($item.Content -eq $tweeak.name)
                 {
-                    $packageIDs2 += $data.script
-                    
+                    $items += $tweeak.script
                 }
             }
         }
-        
     }
 
-    if($result)
-    {
-        $msg = [System.Windows.MessageBox]::Show("Do you want to apply selected tweeaks?", "ITT @emadadel", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)
+    return $items 
+}
 
-        if($msg -eq "Yes")
-        {
-            #Start asynchronous download using runspace
-            $ps2 = [powershell]::Create().AddScript($TweakScriptBlock).AddArgument($packageIDs2).AddArgument($Window).AddArgument($winget)
-            $ps2.Runspace = $runspace2
-            $handle2 = $ps2.BeginInvoke()
-            # Update status label
-            $window.FindName('description').Text = "Applying tweeaks..."
+function Invoke-Install() {
+
+    if($sync.ProcessRunning)
+    {
+        $msg = "An Install process is currently running."
+        [System.Windows.MessageBox]::Show($msg, "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
+        return
+    }
+  
+    $choco = Get-SelectedApps
+
+    if(Get-SelectedApps -ne $null)
+    {
+        Invoke-RunspaceWithScriptBlock -ArgumentList  $choco -ScriptBlock {
+
+            param($choco)
+            
+            try{
+
+                $msg = [System.Windows.MessageBox]::Show("Do you want to Install selected programs?", "ITT @emadadel", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)
+
+                if($msg -eq "Yes")
+                {
+                    $sync.ProcessRunning = $true
+
+                    Write-Host "Installing the following programs $choco "
+                    Start-Process -FilePath "choco" -ArgumentList "install $choco -y --ignore-checksums" -NoNewWindow -Wait
+                    Write-Host "==========================================="
+                    Write-Host "--      Installs have finished          ---"
+                    Write-Host "==========================================="
+                    [System.Windows.MessageBox]::Show("Installs have finished", "ITT @emadadel4", "OK", "Information")
+                }
+            }
+            Catch
+            {
+                Write-Host "==========================================="
+                Write-Host "Error: $_"
+                Write-Host "==========================================="
+            }
+
+            Start-Sleep -Seconds 3
+            $sync.ProcessRunning = $False
         }
     }
     else
     {
-        #show mesg
-        [System.Windows.MessageBox]::Show("You have to select", "ITT @emadadel", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Question)
+        [System.Windows.MessageBox]::Show("Select at lest one program", "ITT @emadadel", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Question)
     }
 }
 
+
+function ApplyTweaks() {
+
+    if($sync.ProcessRunning)
+    {
+        $msg = "An Install process is currently running."
+        [System.Windows.MessageBox]::Show($msg, "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
+        return
+    }
+  
+    $tweeaks = Get-SelectedTweeaks
+
+    if(Get-SelectedTweeaks -ne $null)
+    {
+        Invoke-RunspaceWithScriptBlock -ArgumentList  $tweeaks -ScriptBlock {
+
+            param($tweeaks)
+            
+            try{
+
+                $msg = [System.Windows.MessageBox]::Show("Do you want to apply selected tweeak(s) ?", "ITT @emadadel", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)
+
+                if($msg -eq "Yes")
+                {
+                    $sync.ProcessRunning = $true
+
+                    Write-Host "Applying tweeak(s) $tweeaks "
+
+                    Start-Process -FilePath "powershell.exe" -ArgumentList "-Command `"$tweeaks`"" -NoNewWindow -Wait
+
+                    Write-Host "==========================================="
+                    Write-Host "--      The operation was successful.          ---"
+                    Write-Host "==========================================="
+
+                    [System.Windows.MessageBox]::Show("The operation was successful.", "ITT @emadadel4", "OK", "Information")
+                }
+            }
+            Catch
+            {
+                Write-Host "==========================================="
+                Write-Host "Error: $_"
+                Write-Host "==========================================="
+            }
+
+            Start-Sleep -Seconds 2
+            $sync.ProcessRunning = $False
+        }
+    }
+    else
+    {
+        [System.Windows.MessageBox]::Show("Choose at least something from the list", "ITT @emadadel", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Question)
+    }
+}
+function Invoke-RunspaceWithScriptBlock {
+    param(
+        [scriptblock]$ScriptBlock,
+        [array]$ArgumentList
+    )
+
+        $script:powershell = [powershell]::Create()
+
+        # Add Scriptblock and Arguments to runspace
+        $script:powershell.AddScript($ScriptBlock)
+        $script:powershell.AddArgument($ArgumentList)
+        $script:powershell.RunspacePool = $sync.runspace
+
+        $script:handle = $script:powershell.BeginInvoke()
+
+        if ($script:handle.IsCompleted)
+        {
+            $script:powershell.EndInvoke($script:handle)
+            $script:powershell.Dispose()
+            $sync.runspace.Dispose()
+            $sync.runspace.Close()
+
+            [System.GC]::Collect()
+        }
+}
 #region Function to filter a list based on a search input
 
 function Search{
@@ -587,7 +610,7 @@ $sync.configs.applications = '[
   {
     "Name": "VLC",
     "winget": "VideoLAN.VLC",
-    "choco": "vlc",
+    "choco": "vlc.install",
     "catgory": "Media",
     "check": "false"
   },
