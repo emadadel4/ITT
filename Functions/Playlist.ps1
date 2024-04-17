@@ -10,7 +10,9 @@ function PlayMusic {
             "https://dl.vgmdownloads.com/soundtracks/assassins-creed-mirage-original-game-soundtrack-2023/axtwruyduh/01.%20Mirage%20Theme.mp3",
             "https://vgmsite.com/soundtracks/assassins-creed-ezios-family-m-me-remix-2022/qdxeshajdz/01.%20Ezio%27s%20Family%20%28M%C3%B8me%20Remix%29.mp3",
             "https://epsilon.vgmsite.com/soundtracks/assassin-s-creed-iv-black-flag/zxpesokhkg/1-02%20Pyrates%20Beware.mp3",
-            "https://vgmsite.com/soundtracks/battlefield-3/tabqykkp/01.%20Battlefield%203%20Main%20Theme.mp3"
+            "https://vgmsite.com/soundtracks/battlefield-3/tabqykkp/01.%20Battlefield%203%20Main%20Theme.mp3",
+            "https://archive.org/download/thedarkknight-originalmotionpicturesoundtrack/Hans%20Zimmer%20-%20The%20Dark%20Knight%20%28Original%20Motion%20Picture%20Soundtrack%29/14%20-%20A%20Dark%20Knight.mp3",
+            "https://archive.org/download/GrandTheftAuto4ThemeSong_201904/Grand%20Theft%20Auto%204%20Theme%20Song.mp3"
         )
     
         $mediaPlayer = New-Object -ComObject WMPlayer.OCX
