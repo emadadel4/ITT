@@ -20,7 +20,8 @@ if (!(Test-Path -Path $ENV:TEMP)) {
 
 # Load DLLs
 Add-Type -AssemblyName PresentationFramework
-Add-Type -AssemblyName System.Windows.Forms
+Add-Type -AssemblyName PresentationCore
+
 
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
@@ -358,6 +359,54 @@ function Invoke-RunspaceWithScriptBlock {
             [System.GC]::Collect()
         }
 }
+function PlayMusic {
+
+    Invoke-RunspaceWithScriptBlock -ScriptBlock {
+
+        $audioUrls = @(
+        "https://epsilon.vgmsite.com/soundtracks/far-cry-3/iqgdbfrhtw/17.%20Further%20%28feat.%20Serena%20McKinney%29.mp3",
+        "https://vgmsite.com/soundtracks/assassins-creed-ezios-family-m-me-remix-2022/qdxeshajdz/01.%20Ezio%27s%20Family%20%28M%C3%B8me%20Remix%29.mp3"
+
+        )
+    
+        $mediaPlayer = New-Object -ComObject WMPlayer.OCX
+    
+        Function PlayAudio($url) {
+            try {
+                $mediaItem = $mediaPlayer.newMedia($url)
+                $mediaPlayer.currentPlaylist.appendItem($mediaItem)
+                $mediaPlayer.controls.play() | Out-Null
+            }
+            catch {
+            }
+        }
+    
+        # Function to play the entire playlist
+        Function PlayPlaylist {
+            foreach ($url in $audioUrls) {
+                PlayAudio $url
+                
+            }
+        }
+    
+        # Play the playlist indefinitely
+        while ($true) {
+            PlayPlaylist
+    
+            # Wait for the playlist to finish
+            while ($mediaPlayer.playState -eq 3 -or $mediaPlayer.playState -eq 6) {
+                Start-Sleep -Milliseconds 100
+            }
+    
+            # Reset the playlist position to the beginning
+            $mediaPlayer.controls.currentPosition = 0
+        }
+    }
+
+    Clear-Host
+}
+
+PlayMusic
 #region Function to filter a list based on a search input
 
 function Search{
@@ -1832,6 +1881,12 @@ $window.FindName('u').add_click({Catgoray($window.FindName('u').Content)})
 $window.FindName('c').add_click({Catgoray($window.FindName('c').Content)})
 $window.FindName('r').add_click({Recommended($window.FindName('r').Content)})
 $window.FindName('all').add_click({ShowAll})
+
+
+# Define the event handler for the window's closing event
+$Window.Add_Closing({
+    Stop-Process -Name "powershell"
+})
 
 #===========================================================================
 # End Events 

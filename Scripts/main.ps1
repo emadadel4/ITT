@@ -22,6 +22,12 @@ $window.FindName('c').add_click({Catgoray($window.FindName('c').Content)})
 $window.FindName('r').add_click({Recommended($window.FindName('r').Content)})
 $window.FindName('all').add_click({ShowAll})
 
+
+# Define the event handler for the window's closing event
+$Window.Add_Closing({
+    Stop-Process -Name "powershell"
+})
+
 #===========================================================================
 # End Events 
 #===========================================================================

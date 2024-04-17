@@ -13,7 +13,8 @@ if (!(Test-Path -Path $ENV:TEMP)) {
 
 # Load DLLs
 Add-Type -AssemblyName PresentationFramework
-Add-Type -AssemblyName System.Windows.Forms
+Add-Type -AssemblyName PresentationCore
+
 
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
