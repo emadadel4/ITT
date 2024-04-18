@@ -1476,7 +1476,7 @@ $inputXML =  '
  </Style>
  <Style x:Key="{x:Type ScrollBar}" TargetType="{x:Type ScrollBar}">
      <Setter Property="Stylus.IsFlicksEnabled" Value="false" />
-     <Setter Property="Foreground" Value="{DynamicResource BGButtonColor}" />
+     <Setter Property="Foreground" Value="{DynamicResource FGColor}" />
      <Setter Property="Background" Value="Transparent" />
      <Setter Property="Width" Value="8" />
      <Setter Property="Template">
@@ -1702,9 +1702,9 @@ $inputXML =  '
         <!--Header Section-->
 
             <!--Logo-->
-                <StackPanel Margin="20" Orientation="Horizontal"  VerticalAlignment="Center" Grid.Row="1" Grid.ColumnSpan="3" >
+                <StackPanel Margin="20" Orientation="Horizontal" HorizontalAlignment="Left"  VerticalAlignment="Center" Grid.Row="1" Grid.ColumnSpan="3" >
 
-                    <Ellipse Name="about" Width="100" Height="100" Cursor="Hand">
+                    <Ellipse Name="about" Width="50" Height="50" Cursor="Hand">
                         <Ellipse.Fill>
                             <ImageBrush ImageSource="https://avatars.githubusercontent.com/u/19177373?v=4.png" />
                         </Ellipse.Fill>
@@ -1712,14 +1712,14 @@ $inputXML =  '
             <!--End Logo-->
 
             <!--Catagory Section-->
-                    <StackPanel Name="catg" Margin="20,0,0,0" Orientation="Horizontal" HorizontalAlignment="Left">
+                <StackPanel Name="catg" Margin="20,0,0,0" Orientation="Horizontal" HorizontalAlignment="Left">
 
                     <Button Name="all"
                     Cursor="Hand"  
                     Content="All" 
                     Height="20" Width="60" 
                     Margin="4"  
-                    Background="{DynamicResource primary}" 
+                    Background="{DynamicResource BGColor}" 
                     Foreground="{DynamicResource DefaultTextColor}"
                     
                     />
@@ -1729,7 +1729,7 @@ $inputXML =  '
                     Content="Fresh Start" 
                     Height="20" 
                     Width="100" Margin="4"  
-                    Background="{DynamicResource primary}" 
+                    Background="{DynamicResource BGColor}" 
                     Foreground="{DynamicResource DefaultTextColor}"
 
                     />
@@ -1740,7 +1740,7 @@ $inputXML =  '
                     Height="20" 
                     Width="60" 
                     Margin="4"  
-                    Background="{DynamicResource primary}" 
+                    Background="{DynamicResource BGColor}" 
                     Foreground="{DynamicResource DefaultTextColor}"
                     
                     />
@@ -1750,7 +1750,7 @@ $inputXML =  '
                     Content="Browsers" 
                     Height="20" Width="60" 
                     Margin="4"  
-                    Background="{DynamicResource primary}" 
+                    Background="{DynamicResource BGColor}" 
                     Foreground="{DynamicResource DefaultTextColor}"
                     
                     />
@@ -1761,7 +1761,7 @@ $inputXML =  '
                     Height="20" 
                     Width="60" 
                     Margin="4"  
-                    Background="{DynamicResource primary}" 
+                    Background="{DynamicResource BGColor}" 
                     Foreground="{DynamicResource DefaultTextColor}"
                     
                     />
@@ -1772,7 +1772,7 @@ $inputXML =  '
                     Height="20" 
                     Width="70" 
                     Margin="4"  
-                    Background="{DynamicResource primary}" 
+                    Background="{DynamicResource BGColor}" 
                     Foreground="{DynamicResource DefaultTextColor}"
 
                     />
@@ -1783,7 +1783,7 @@ $inputXML =  '
                     Height="20" 
                     Width="60" 
                     Margin="4"  
-                    Background="{DynamicResource primary}" 
+                    Background="{DynamicResource BGColor}" 
                     Foreground="{DynamicResource DefaultTextColor}"
                     
                     />
@@ -1793,7 +1793,7 @@ $inputXML =  '
                     Height="20" 
                     Width="100" 
                     Margin="4"  
-                    Background="{DynamicResource primary}" 
+                    Background="{DynamicResource BGColor}" 
                     Foreground="{DynamicResource DefaultTextColor}"
                     
                     />
@@ -1805,7 +1805,7 @@ $inputXML =  '
         <!--End Header Section-->
 
             <!--TabControl-->
-        <TabControl x:Name="taps" TabStripPlacement="Left" Margin="0, 10, 0, 10" Grid.Row="2" BorderBrush="{DynamicResource FGColor}" Foreground="White" Background="Transparent">
+        <TabControl x:Name="taps" TabStripPlacement="Left" Margin="0, 10, 0, 10" Grid.Row="2"  BorderBrush="Transparent" Foreground="White" Background="Transparent">
                 <TabControl.Resources>
 
 
@@ -1929,9 +1929,9 @@ $inputXML =  '
                     HorizontalAlignment="Center"
                     VerticalAlignment="Bottom"
                     Cursor="Hand"
-                    FontSize="17"
+                    FontSize="15"
                     Visibility="Hidden"
-                    Width="90" Height="33" Margin="50"/>
+                    Width="100" Height="40" Margin="50"/>
                 <!--End Apply Button-->
 
             </Grid>
