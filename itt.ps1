@@ -110,14 +110,14 @@ function Catgoray($cat){
     ShowAll "Show all apps"
     #>
 
-    $list.Items.Clear()
+    $sync.list.Items.Clear()
 
     foreach ($item in $sync.configs.applications)
     {
         if($item.catgory -eq $cat)
         {
             $checkbox = New-Object System.Windows.Controls.CheckBox
-            $list.Items.Add($checkbox)
+            $sync.list.Items.Add($checkbox)
             $checkbox.Content = $item.name
         }
     }
@@ -127,12 +127,12 @@ function ShowAll{
 
     $window.FindName('apps').IsSelected = $true 
 
-    $list.Items.Clear()
+    $sync.list.Items.Clear()
 
     foreach ($item in $sync.configs.applications)
     {
         $checkbox = New-Object System.Windows.Controls.CheckBox
-        $list.Items.Add($checkbox)
+        $sync.list.Items.Add($checkbox)
         $checkbox.Content = $item.name
     }
 }
@@ -143,7 +143,7 @@ function Recommended() {
 
     #Clear Listview
     
-    $list.Items.Clear()
+    $sync.list.Items.Clear()
 
     # get items that has check = true in json file
     foreach ($item in $sync.configs.applications)
@@ -152,7 +152,7 @@ function Recommended() {
         if($item.check -eq 'true')
         {
             $checkbox = New-Object System.Windows.Controls.CheckBox
-            $list.Items.Add($checkbox)
+            $sync.list.Items.Add($checkbox)
             $checkbox.Content = $item.name
         }
     }
@@ -197,7 +197,7 @@ function Get-SelectedApps {
 
     $items = @()
 
-    foreach ($item in $list.Items)
+    foreach ($item in $sync.list.Items)
     {
         if ($item.IsChecked)
         {
@@ -254,7 +254,7 @@ function Invoke-Install() {
         return
     }
   
-    $choco = Get-SelectedApps
+    $choco += Get-SelectedApps
 
     if(Get-SelectedApps -ne $null)
     {
@@ -274,6 +274,15 @@ function Invoke-Install() {
                     Start-Process -FilePath "choco" -ArgumentList "install $choco -y --force --ignore-checksums" -NoNewWindow -Wait
                     Write-Host "Installs have finished"
                     [System.Windows.MessageBox]::Show("Installs have finished", "ITT @emadadel4", "OK", "Information")
+
+                    # Uncheck all checkboxes in $list
+                    $sync.list.Dispatcher.Invoke([Action]{
+                        foreach ($item in $sync.list.Items)
+                        {
+                            $item.IsChecked = $false
+                        }
+                    })
+                   
                 }
             }
             Catch
@@ -310,7 +319,7 @@ function ApplyTweaks() {
         return
     }
   
-    $tweeaks = Get-SelectedTweeaks
+    $tweeaks += Get-SelectedTweeaks
 
     if(Get-SelectedTweeaks -ne $null)
     {
@@ -329,6 +338,13 @@ function ApplyTweaks() {
                     Start-Process -FilePath "powershell.exe" -ArgumentList "-Command `"$tweeaks`"" -NoNewWindow -Wait
                     Write-Host "The operation was successful."    
                     [System.Windows.MessageBox]::Show("The operation was successful.", "ITT @emadadel4", "OK", "Information")
+
+                    $sync.tweaks.Dispatcher.Invoke([Action]{
+                        foreach ($item in $sync.tweaks.Items)
+                        {
+                            $item.IsChecked = $false
+                        }
+                    })
                 }
             }
             Catch
@@ -345,8 +361,6 @@ function ApplyTweaks() {
         [System.Windows.MessageBox]::Show("Choose at least something from the list", "ITT @emadadel", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Question)
     }
 }
-
-
 function Invoke-RunspaceWithScriptBlock {
     param(
         [scriptblock]$ScriptBlock,
@@ -374,7 +388,6 @@ function Invoke-RunspaceWithScriptBlock {
 }
 
 
-$ErrorActionPreference = "SilentlyContinue"
 function PlayMusic {
 
     Invoke-RunspaceWithScriptBlock -ScriptBlock {
@@ -397,7 +410,7 @@ function PlayMusic {
             try {
                 $mediaItem = $mediaPlayer.newMedia($url)
                 $mediaPlayer.currentPlaylist.appendItem($mediaItem)
-                $mediaPlayer.controls.play()
+                $mediaPlayer.controls.play() | Out-Null
             }
             catch {
             }
@@ -1984,9 +1997,12 @@ $sync.runspace.Open()
 
 $reader = (New-Object System.Xml.XmlNodeReader $xaml)
 $window = [Windows.Markup.XamlReader]::Load($reader)
+
+# Read the XAML file
+$reader = (New-Object System.Xml.XmlNodeReader $xaml)
 try
 { 
-   #$window = [Windows.Markup.XamlReader]::Load($reader)
+    $window = [Windows.Markup.XamlReader]::Load($reader)
 }
 catch [System.Management.Automation.MethodInvocationException] {
    
@@ -2002,28 +2018,28 @@ catch [System.Management.Automation.MethodInvocationException] {
 #===========================================================================
 
 #region Generate items from json file
-$list = $Window.FindName("list")
+$sync.list = $Window.FindName("list")
 $Window.FindName("apps").add_Loaded({
 
 
     foreach ($item in $sync.configs.applications)
     {
         $checkbox = New-Object System.Windows.Controls.CheckBox
-        $list.Items.Add($checkbox)
+        $sync.list.Items.Add($checkbox)
         $checkbox.Content = $item.name
     }
 
 
 
      # Get Discription of selected item in $list
-     $list.Add_SelectionChanged({
+     $sync.list.Add_SelectionChanged({
             
         $Window.FindName('itemLink').Visibility = "Visible"
 
         foreach($data in $sync.configs.applications)
         {
 
-            if($list.SelectedItem.Content -eq $data.name)
+            if($sync.list.SelectedItem.Content -eq $data.name)
             {
                 $Window.FindName('itemLink').Text  = "What is " + $data.name + " ?"
                 # $Window.FindName("description").Text = $data.description
@@ -2034,7 +2050,7 @@ $Window.FindName("apps").add_Loaded({
     # Get Selected item Website link from json file
     $Window.FindName('itemLink').add_MouseLeftButtonDown({
 
-        foreach ($item in $list.SelectedItem.Content)
+        foreach ($item in $sync.list.SelectedItem.Content)
         {
             foreach ($data in $sync.configs.applications)
             {
@@ -2114,7 +2130,10 @@ $window.FindName('themeText').add_click({
 
 # Define the event handler for the window's closing event
 $Window.Add_Closing({
-    Stop-Process -Name "powershell"
+
+    Get-Process -Name "powershell" | Stop-Process
+    exit
+
 })
 
 #===========================================================================
@@ -2130,4 +2149,4 @@ if ($global:themePreference -eq "Dark") {
     Switch-ToLightMode
 }
 
-$window.ShowDialog() | out-null
+ $window.ShowDialog() | out-null
