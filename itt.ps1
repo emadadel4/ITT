@@ -380,7 +380,6 @@ function PlayMusic {
             "https://vgmsite.com/soundtracks/assassins-creed-ezios-family-m-me-remix-2022/qdxeshajdz/01.%20Ezio%27s%20Family%20%28M%C3%B8me%20Remix%29.mp3",
             "https://epsilon.vgmsite.com/soundtracks/assassin-s-creed-iv-black-flag/zxpesokhkg/1-02%20Pyrates%20Beware.mp3",
             "https://vgmsite.com/soundtracks/battlefield-3/tabqykkp/01.%20Battlefield%203%20Main%20Theme.mp3",
-            "https://archive.org/download/thedarkknight-originalmotionpicturesoundtrack/Hans%20Zimmer%20-%20The%20Dark%20Knight%20%28Original%20Motion%20Picture%20Soundtrack%29/14%20-%20A%20Dark%20Knight.mp3",
             "https://archive.org/download/GrandTheftAuto4ThemeSong_201904/Grand%20Theft%20Auto%204%20Theme%20Song.mp3"
         )
     
@@ -842,13 +841,6 @@ $sync.configs.applications = '[
     "check": "false"
   },
   {
-    "Name": "HiSuite",
-    "winget": "Huawei.HiSuite",
-    "choco": "Huawei.HiSuite",
-    "catgory": "File Sharing",
-    "check": "false"
-  },
-  {
     "Name": "GIMP",
     "winget": "GIMP.GIMP",
     "choco": "gimp",
@@ -1139,6 +1131,27 @@ $sync.configs.applications = '[
     "Name": "FxSound",
     "winget": "FxSoundLLC.FxSound",
     "choco": "fxsound",
+    "catgory": "Utilities",
+    "check": "false"
+  },
+  {
+    "Name": "HiSuite",
+    "winget": "Huawei.HiSuite",
+    "choco": "Huawei.HiSuite",
+    "catgory": "Utilities",
+    "check": "false"
+  },
+  {
+    "Name": "Vysor",
+    "winget": "#",
+    "choco": "vysor",
+    "catgory": "Utilities",
+    "check": "false"
+  },
+  {
+    "Name": "Unifiedremote",
+    "winget": "unifiedremote",
+    "choco": "unifiedremote",
     "catgory": "Utilities",
     "check": "false"
   },
