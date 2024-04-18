@@ -2113,7 +2113,9 @@ $window.FindName('taps').add_SelectionChanged({ChangeTap})
 $window.FindName('installBtn').add_click({Invoke-Install})
 $window.FindName('applyBtn').add_click({ApplyTweaks})
 $window.FindName('searchInput').add_TextChanged({Search})
+$window.FindName('searchInput').add_GotFocus({ShowAll})
 $window.FindName('about').add_MouseLeftButtonDown({About})
+$window.FindName('themeText').add_click({Toggle-Theme})
 
 # Catgoray bar buttons
 $window.FindName('b').add_click({Catgoray($window.FindName('b').Content)})
@@ -2125,21 +2127,8 @@ $window.FindName('c').add_click({Catgoray($window.FindName('c').Content)})
 $window.FindName('r').add_click({Recommended($window.FindName('r').Content)})
 $window.FindName('all').add_click({ShowAll})
 
-$window.FindName('searchInput').add_GotFocus({ShowAll})
-
-
-
-$window.FindName('themeText').add_click({
-
-    Toggle-Theme
-    
-})
-
-# Define the event handler for the window's closing event
 $Window.Add_Closing({
-
     Write-Host "Bye :)"
-
 })
 
 #===========================================================================
