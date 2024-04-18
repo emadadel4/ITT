@@ -1877,7 +1877,7 @@ $inputXML =  '
 
                         <Grid>
                             <TextBox Padding="8"
-                            Width="188" 
+                            Width="188"
                             VerticalAlignment="Center"
                             HorizontalAlignment="Left" 
                             Text="{Binding Text_searchInput}"
@@ -2124,6 +2124,10 @@ $window.FindName('u').add_click({Catgoray($window.FindName('u').Content)})
 $window.FindName('c').add_click({Catgoray($window.FindName('c').Content)})
 $window.FindName('r').add_click({Recommended($window.FindName('r').Content)})
 $window.FindName('all').add_click({ShowAll})
+
+$window.FindName('searchInput').add_GotFocus({ShowAll})
+
+
 
 $window.FindName('themeText').add_click({
 
