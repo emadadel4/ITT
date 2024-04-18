@@ -11,3 +11,4 @@ function Test-InternetConnection {
         return $false
     }
 }
+

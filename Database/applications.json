@@ -218,13 +218,6 @@
     "check": "false"
   },
   {
-    "Name": "HiSuite",
-    "winget": "Huawei.HiSuite",
-    "choco": "Huawei.HiSuite",
-    "catgory": "File Sharing",
-    "check": "false"
-  },
-  {
     "Name": "GIMP",
     "winget": "GIMP.GIMP",
     "choco": "gimp",
@@ -515,6 +508,27 @@
     "Name": "FxSound",
     "winget": "FxSoundLLC.FxSound",
     "choco": "fxsound",
+    "catgory": "Utilities",
+    "check": "false"
+  },
+  {
+    "Name": "HiSuite",
+    "winget": "Huawei.HiSuite",
+    "choco": "Huawei.HiSuite",
+    "catgory": "Utilities",
+    "check": "false"
+  },
+  {
+    "Name": "Vysor",
+    "winget": "#",
+    "choco": "vysor",
+    "catgory": "Utilities",
+    "check": "false"
+  },
+  {
+    "Name": "Unifiedremote",
+    "winget": "unifiedremote",
+    "choco": "unifiedremote",
     "catgory": "Utilities",
     "check": "false"
   },

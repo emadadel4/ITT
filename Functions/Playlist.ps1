@@ -11,7 +11,6 @@ function PlayMusic {
             "https://vgmsite.com/soundtracks/assassins-creed-ezios-family-m-me-remix-2022/qdxeshajdz/01.%20Ezio%27s%20Family%20%28M%C3%B8me%20Remix%29.mp3",
             "https://epsilon.vgmsite.com/soundtracks/assassin-s-creed-iv-black-flag/zxpesokhkg/1-02%20Pyrates%20Beware.mp3",
             "https://vgmsite.com/soundtracks/battlefield-3/tabqykkp/01.%20Battlefield%203%20Main%20Theme.mp3",
-            "https://archive.org/download/thedarkknight-originalmotionpicturesoundtrack/Hans%20Zimmer%20-%20The%20Dark%20Knight%20%28Original%20Motion%20Picture%20Soundtrack%29/14%20-%20A%20Dark%20Knight.mp3",
             "https://archive.org/download/GrandTheftAuto4ThemeSong_201904/Grand%20Theft%20Auto%204%20Theme%20Song.mp3"
         )
     
@@ -27,24 +26,35 @@ function PlayMusic {
             }
         }
     
-        # Function to play the entire playlist
-        Function PlayPlaylist {
-            $randomIndex = Get-Random -Minimum 0 -Maximum $audioUrls.Count
-            $randomUrl = $audioUrls[$randomIndex]
-            PlayAudio $randomUrl
+        # Function to shuffle the playlist
+        Function ShuffleArray {
+            param([array]$array)
+            $count = $array.Length
+            for ($i = 0; $i -lt $count; $i++) {
+                $randomIndex = Get-Random -Minimum $i -Maximum $count
+                $temp = $array[$i]
+                $array[$i] = $array[$randomIndex]
+                $array[$randomIndex] = $temp
+            }
         }
     
-        # Play the playlist indefinitely
-        while ($true) {
-            PlayPlaylist
+        # Shuffle the playlist
+        ShuffleArray -array $audioUrls
     
-            # Wait for the playlist to finish
-            while ($mediaPlayer.playState -eq 3 -or $mediaPlayer.playState -eq 6) {
-                Start-Sleep -Milliseconds 100
+        # Function to play the entire shuffled playlist
+        Function PlayShuffledPlaylist {
+            foreach ($url in $audioUrls) {
+                PlayAudio $url
+                # Wait for the track to finish playing
+                while ($mediaPlayer.playState -eq 3 -or $mediaPlayer.playState -eq 6) {
+                    Start-Sleep -Milliseconds 100
+                }
             }
+        }
     
-            # Reset the playlist position to the beginning
-            $mediaPlayer.controls.currentPosition = 0
+        # Play the shuffled playlist indefinitely
+        while ($true) {
+            PlayShuffledPlaylist
         }
     }
 
@@ -52,3 +62,4 @@ function PlayMusic {
 }
 
 PlayMusic
+

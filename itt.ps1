@@ -11,7 +11,7 @@
     Author         : Emad Adel @emadadel4
     GitHub         : https://github.com/emadadel4
     Website        : https://eprojects.orgfree.com/
-    Version        : 24.04.17
+    Version        : 24.04.18
 #>
 
 if (!(Test-Path -Path $ENV:TEMP)) {
@@ -26,7 +26,7 @@ Add-Type -AssemblyName PresentationCore
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "24.04.17"
+$sync.version = "24.04.18"
 $sync.github = "https://github.com/emadadel4"
 $sync.website = "https://eprojects.orgfree.com"
 $sync.author = "Emad Adel @emadadel4"
@@ -67,6 +67,7 @@ function About{
 
     Show-CustomDialog -Message $authorInfo -Width 400 
 }
+
 function Test-InternetConnection {
     try {
         $ping = New-Object System.Net.NetworkInformation.Ping
@@ -80,6 +81,7 @@ function Test-InternetConnection {
         return $false
     }
 }
+
 function Catgoray($cat){
 
     $window.FindName('apps').IsSelected = $true 
@@ -149,6 +151,7 @@ function Recommended() {
     }
 }
 
+
 function CheckChoco 
 {
 
@@ -156,19 +159,18 @@ function CheckChoco
 
     if((Get-Command -Name choco -ErrorAction Ignore))
     {
-    Write-Host 
-    "
-    ___ _____ _____     ____  _____ __  __    _    ____       _    ____  _____ _     
-    |_ _|_   _|_   _|   / __ \| ____|  \/  |  / \  |  _ \     / \  |  _ \| ____| |    
-    | |  | |   | |    / / _` |  _| | |\/| | / _ \ | | | |   / _ \ | | | |  _| | |    
-    | |  | |   | |   | | (_| | |___| |  | |/ ___ \| |_| |  / ___ \| |_| | |___| |___ 
-    |___| |_|   |_|    \ \__,_|_____|_|  |_/_/   \_\____/  /_/   \_\____/|_____|_____|
-                        \____/                                                        
-
-                    This is Emad adel an Binary
-    01000101 01001101 01000001 01000100  01000001 01000100 01000101 01001100      
-                Chocolatey is installed You Good to go                  
-    "
+ 
+        echo "  ___ _____ _____   _____ __  __    _    ____       _    ____  _____ _    _  _   ";
+        echo " |_ _|_   _|_   _| | ____|  \/  |  / \  |  _ \     / \  |  _ \| ____| |  | || |  ";
+        echo "  | |  | |   | |   |  _| | |\/| | / _ \ | | | |   / _ \ | | | |  _| | |  | || |_ ";
+        echo "  | |  | |   | |   | |___| |  | |/ ___ \| |_| |  / ___ \| |_| | |___| |__|__   _|";
+        echo " |___| |_|   |_|   |_____|_|  |_/_/   \_\____/  /_/   \_\____/|_____|_____| |_|  ";
+        echo "                                                                                 ";
+        
+        echo "This is Emad adel an Binary ";
+        echo "01000101 01001101 01000001 01000100  01000001 01000100 01000101 01001100      ";
+        echo "Chocolatey is installed You Good to go  ";
+                               
         return
         }
 
@@ -180,6 +182,8 @@ function CheckChoco
         Write-Host "--Chocolatey failed to install---"
     }
 }
+
+
 
 
 function Get-SelectedApps {
@@ -334,6 +338,8 @@ function ApplyTweaks() {
         [System.Windows.MessageBox]::Show("Choose at least something from the list", "ITT @emadadel", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Question)
     }
 }
+
+
 function Invoke-RunspaceWithScriptBlock {
     param(
         [scriptblock]$ScriptBlock,
@@ -359,6 +365,8 @@ function Invoke-RunspaceWithScriptBlock {
             [System.GC]::Collect()
         }
 }
+
+
 function PlayMusic {
 
     Invoke-RunspaceWithScriptBlock -ScriptBlock {
@@ -388,24 +396,35 @@ function PlayMusic {
             }
         }
     
-        # Function to play the entire playlist
-        Function PlayPlaylist {
-            $randomIndex = Get-Random -Minimum 0 -Maximum $audioUrls.Count
-            $randomUrl = $audioUrls[$randomIndex]
-            PlayAudio $randomUrl
+        # Function to shuffle the playlist
+        Function ShuffleArray {
+            param([array]$array)
+            $count = $array.Length
+            for ($i = 0; $i -lt $count; $i++) {
+                $randomIndex = Get-Random -Minimum $i -Maximum $count
+                $temp = $array[$i]
+                $array[$i] = $array[$randomIndex]
+                $array[$randomIndex] = $temp
+            }
         }
     
-        # Play the playlist indefinitely
-        while ($true) {
-            PlayPlaylist
+        # Shuffle the playlist
+        ShuffleArray -array $audioUrls
     
-            # Wait for the playlist to finish
-            while ($mediaPlayer.playState -eq 3 -or $mediaPlayer.playState -eq 6) {
-                Start-Sleep -Milliseconds 100
+        # Function to play the entire shuffled playlist
+        Function PlayShuffledPlaylist {
+            foreach ($url in $audioUrls) {
+                PlayAudio $url
+                # Wait for the track to finish playing
+                while ($mediaPlayer.playState -eq 3 -or $mediaPlayer.playState -eq 6) {
+                    Start-Sleep -Milliseconds 100
+                }
             }
+        }
     
-            # Reset the playlist position to the beginning
-            $mediaPlayer.controls.currentPosition = 0
+        # Play the shuffled playlist indefinitely
+        while ($true) {
+            PlayShuffledPlaylist
         }
     }
 
@@ -413,6 +432,7 @@ function PlayMusic {
 }
 
 PlayMusic
+
 #region Function to filter a list based on a search input
 
 function Search{
@@ -427,6 +447,8 @@ function Search{
 
 }
 #endregion
+
+
 
 
 # Show Custom Msg
@@ -578,6 +600,7 @@ function Show-CustomDialog {
     $dialog.ShowDialog()
 }
 
+
 function ChangeTap() {
     
     if($window.FindName('apps').IsSelected)
@@ -595,6 +618,10 @@ function ChangeTap() {
         $Window.FindName('itemLink').Visibility = "Hidden"
     }
 }
+
+#===========================================================================
+# End functions
+#===========================================================================
 $sync.configs.applications = '[
   {
     "Name": "Thorium",
