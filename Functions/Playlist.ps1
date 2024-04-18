@@ -1,3 +1,4 @@
+$ErrorActionPreference = "SilentlyContinue"
 function PlayMusic {
 
     Invoke-RunspaceWithScriptBlock -ScriptBlock {
@@ -20,7 +21,7 @@ function PlayMusic {
             try {
                 $mediaItem = $mediaPlayer.newMedia($url)
                 $mediaPlayer.currentPlaylist.appendItem($mediaItem)
-                $mediaPlayer.controls.play() | Out-Null
+                $mediaPlayer.controls.play()
             }
             catch {
             }
@@ -57,9 +58,7 @@ function PlayMusic {
             PlayShuffledPlaylist
         }
     }
-
-    Clear-Host
 }
 
-PlayMusic
+PlayMusic *> $null
 

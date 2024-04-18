@@ -13,9 +13,6 @@ $Window.FindName("apps").add_Loaded({
         $checkbox = New-Object System.Windows.Controls.CheckBox
         $list.Items.Add($checkbox)
         $checkbox.Content = $item.name
-        $checkbox.Foreground = "White"
-
-
     }
 
 

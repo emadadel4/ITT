@@ -12,4 +12,3 @@ function About{
 
     Show-CustomDialog -Message $authorInfo -Width 400 
 }
-

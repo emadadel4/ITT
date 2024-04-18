@@ -1,10 +1,27 @@
 <!--Light Theme-->
-        <SolidColorBrush Color="#121212" x:Key="primary"/>
-        <SolidColorBrush Color="#212121" x:Key="secondary"/>
-        <SolidColorBrush Color="#b3b3b3" x:Key="PlaceHolder"/>
-        <SolidColorBrush Color="#1DB954" x:Key="button"/>
-        <SolidColorBrush Color="White" x:Key="BtnForeground"/>
-        <SolidColorBrush Color="White" x:Key="label"/>
-        <SolidColorBrush Color="#b3b3b3" x:Key="link"/>
-        <SolidColorBrush Color="#212121" x:Key="BorderBrush"/>
+
+
+        <!-- Light mode styles -->
+        <ResourceDictionary x:Key="LightTheme">
+                <SolidColorBrush x:Key="BGColor" Color="White"/>
+                <SolidColorBrush x:Key="FGColor" Color="WhiteSmoke"/>
+                <SolidColorBrush x:Key="BGButtonColor" Color="#382bf0  " />
+                <SolidColorBrush x:Key="FGButtonColor" Color="White" />
+                <SolidColorBrush x:Key="FGTextColor" Color="Black" />
+                <SolidColorBrush x:Key="DefaultTextColor" Color="Black"/>
+                <SolidColorBrush x:Key="BorderBrush" Color="#212121"/>
+        </ResourceDictionary>
+
+        <!-- Dark mode styles -->
+        <ResourceDictionary x:Key="DarkTheme">
+                <SolidColorBrush x:Key="BGColor" Color="#121212 "/>
+                <SolidColorBrush x:Key="FGColor" Color="#282828"/>
+                <SolidColorBrush x:Key="BGButtonColor" Color="#1DB954" />
+                <SolidColorBrush x:Key="FGButtonColor" Color="White" />
+                <SolidColorBrush x:Key="FGTextColor" Color="WhiteSmoke" />
+                <SolidColorBrush x:Key="DefaultTextColor" Color="White"/>
+                <SolidColorBrush x:Key="BorderBrush" Color="WhiteSmoke" />
+        </ResourceDictionary>
+
+       
         

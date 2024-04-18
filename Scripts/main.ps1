@@ -1,4 +1,3 @@
-
 CheckChoco
 
 #===========================================================================
@@ -22,6 +21,11 @@ $window.FindName('c').add_click({Catgoray($window.FindName('c').Content)})
 $window.FindName('r').add_click({Recommended($window.FindName('r').Content)})
 $window.FindName('all').add_click({ShowAll})
 
+$window.FindName('themeText').add_click({
+
+    Toggle-Theme
+    
+})
 
 # Define the event handler for the window's closing event
 $Window.Add_Closing({
@@ -31,5 +35,14 @@ $Window.Add_Closing({
 #===========================================================================
 # End Events 
 #===========================================================================
+
+if ($global:themePreference -eq "Dark") {
+    Switch-ToDarkMode
+} elseif ($global:themePreference -eq "Light") {
+    Switch-ToLightMode
+} else {
+    # Default to light mode if preference not found
+    Switch-ToLightMode
+}
 
 $window.ShowDialog() | out-null

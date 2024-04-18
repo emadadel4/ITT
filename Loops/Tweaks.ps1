@@ -8,7 +8,6 @@ $Window.FindName("tweeks").add_Loaded({
         $checkbox = New-Object System.Windows.Controls.CheckBox
         $sync.tweaks.Items.Add($checkbox)
         $checkbox.Content = $item.name
-        $checkbox.Foreground = "White"
     }
 
     # Get Discription of selected tweaks in $list

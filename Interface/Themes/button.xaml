@@ -1,12 +1,11 @@
 <!--Button Style-->
                 <Style TargetType="Button">
-                    <Setter Property="Background" Value="{DynamicResource primary}"/>
-                    <Setter Property="Foreground" Value="{DynamicResource PlaceHolder}"/>
-
+                    <Setter Property="Background" Value="{DynamicResource BGButtonColor}"/>
+                    <Setter Property="Foreground" Value="{DynamicResource FGButtonColor}"/>
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate TargetType="Button">
-                                <Border CornerRadius="15" Background="{TemplateBinding Background}">
+                                <Border CornerRadius="20" Background="{TemplateBinding Background}">
                                     <ContentPresenter HorizontalAlignment="Center"
                                                         VerticalAlignment="Center"/>
                                     
@@ -17,9 +16,94 @@
 
                     <Style.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" Value="{DynamicResource button}"/>
-                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="Background" Value="{DynamicResource BGButtonColor}"/>
+                            <Setter Property="Foreground" Value="{DynamicResource FGButtonColor}"/>
                         </Trigger>
                     </Style.Triggers>
                 </Style>
             <!--End Button Style-->
+
+
+
+
+            <!--Textbox Style-->
+                <Style TargetType="TextBox">
+                    <Setter Property="Foreground" Value="{DynamicResource FGTextColor}"/>
+                    <Setter Property="Background" Value="{DynamicResource FGColor}"/>
+                    <Setter Property="BorderThickness" Value="0"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="TextBox">
+                                <Border Background="{TemplateBinding Background}"
+                                        BorderBrush="{TemplateBinding BorderBrush}"
+                                        BorderThickness="{TemplateBinding BorderThickness}"
+                                        CornerRadius="15"> <!-- Set CornerRadius here -->
+                                    <ScrollViewer x:Name="PART_ContentHost" />
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                            <Trigger Property="IsFocused" Value="True">
+                                <Setter Property="BorderThickness" Value="1"/>
+                                <Setter Property="BorderBrush" Value="{DynamicResource BGButtonColor}"/>
+                            </Trigger>
+                        </Style.Triggers>
+                </Style>
+            <!--End Textbox Style-->
+
+
+
+            <!--TextBlock Style-->
+                <Style TargetType="TextBlock">
+                    <Setter Property="Foreground" Value="{DynamicResource FGTextColor}"/>
+                </Style>
+            <!--End TextBlock Style-->
+
+
+
+
+            <!--CheckBox Style-->
+                <Style TargetType="CheckBox">
+                    <Setter Property="Foreground" Value="{DynamicResource FGTextColor}"/>
+                    <Setter Property="FontSize" Value="13"/>
+                </Style>
+            <!--End CheckBox Style-->
+
+
+            <Style TargetType="Menu">
+                <Setter Property="Background" Value="{DynamicResource BGColor}"/>
+            </Style>
+
+
+<!-- Define a style for the MenuItem -->
+<Style TargetType="MenuItem">
+    <Setter Property="Background" Value="{DynamicResource BGColor}"/>
+    <Setter Property="Foreground" Value="{DynamicResource DefaultTextColor}"/>
+    <Setter Property="OverridesDefaultStyle" Value="True"/>
+    <Setter Property="Template">
+        <Setter.Value>
+            <ControlTemplate TargetType="MenuItem">
+                <Border Background="{DynamicResource BGColor}"
+                        BorderThickness="0"> <!-- Set BorderThickness to 0 -->
+                    <Grid>
+                        <ContentPresenter Content="{TemplateBinding Header}"
+                                          Margin="6"/>
+                        <Popup IsOpen="{Binding IsSubmenuOpen, RelativeSource={RelativeSource TemplatedParent}}"
+                               AllowsTransparency="True"
+                               Focusable="False"
+                               PopupAnimation="Fade">
+                            <Border Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"
+                                    BorderThickness="0"> <!-- Set BorderThickness to 0 -->
+                                <ScrollViewer CanContentScroll="True"
+                                              Style="{DynamicResource {ComponentResourceKey ResourceId=MenuScrollViewer, TypeInTargetAssembly={x:Type FrameworkElement}}}">
+                                    <ItemsPresenter Margin="0"/>
+                                </ScrollViewer>
+                            </Border>
+                        </Popup>
+                    </Grid>
+                </Border>
+            </ControlTemplate>
+        </Setter.Value>
+    </Setter>
+</Style>

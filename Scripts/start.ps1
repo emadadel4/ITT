@@ -14,6 +14,7 @@ if (!(Test-Path -Path $ENV:TEMP)) {
 # Load DLLs
 Add-Type -AssemblyName PresentationFramework
 Add-Type -AssemblyName PresentationCore
+Add-Type -AssemblyName PresentationFramework.Aero
 
 
 # Variable to sync between runspaces
@@ -23,7 +24,9 @@ $sync.version = "#{replaceme}"
 $sync.github = "https://github.com/emadadel4"
 $sync.website = "https://eprojects.orgfree.com"
 $sync.author = "Emad Adel @emadadel4"
-
+$registryPath = "HKCU:\Software\ITTEmadadel"
+$propertyName = "Theme"
+$propertyValue = "Light"
 $sync.configs = @{}
 $sync.ProcessRunning = $false
 
@@ -45,4 +48,12 @@ else
     $newProcess.Verb = "runas";
     [System.Diagnostics.Process]::Start($newProcess);
     break
+}
+
+# Check if the registry path exists
+if (!(Test-Path $registryPath)) {
+    # If it doesn't exist, create it
+    New-Item -Path $registryPath -Force *> $null
+}else{
+    $global:themePreference = Get-ItemPropertyValue -Path "HKCU:\Software\ITTEmadadel" -Name "Theme"
 }

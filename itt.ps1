@@ -21,6 +21,7 @@ if (!(Test-Path -Path $ENV:TEMP)) {
 # Load DLLs
 Add-Type -AssemblyName PresentationFramework
 Add-Type -AssemblyName PresentationCore
+Add-Type -AssemblyName PresentationFramework.Aero
 
 
 # Variable to sync between runspaces
@@ -30,7 +31,9 @@ $sync.version = "24.04.18"
 $sync.github = "https://github.com/emadadel4"
 $sync.website = "https://eprojects.orgfree.com"
 $sync.author = "Emad Adel @emadadel4"
-
+$registryPath = "HKCU:\Software\ITTEmadadel"
+$propertyName = "Theme"
+$propertyValue = "Light"
 $sync.configs = @{}
 $sync.ProcessRunning = $false
 
@@ -53,6 +56,14 @@ else
     [System.Diagnostics.Process]::Start($newProcess);
     break
 }
+
+# Check if the registry path exists
+if (!(Test-Path $registryPath)) {
+    # If it doesn't exist, create it
+    New-Item -Path $registryPath -Force *> $null
+}else{
+    $global:themePreference = Get-ItemPropertyValue -Path "HKCU:\Software\ITTEmadadel" -Name "Theme"
+}
 #===========================================================================
 # Start functions
 #===========================================================================
@@ -67,7 +78,6 @@ function About{
 
     Show-CustomDialog -Message $authorInfo -Width 400 
 }
-
 function Test-InternetConnection {
     try {
         $ping = New-Object System.Net.NetworkInformation.Ping
@@ -109,7 +119,6 @@ function Catgoray($cat){
             $checkbox = New-Object System.Windows.Controls.CheckBox
             $list.Items.Add($checkbox)
             $checkbox.Content = $item.name
-            $checkbox.Foreground = "White"
         }
     }
 }
@@ -125,7 +134,6 @@ function ShowAll{
         $checkbox = New-Object System.Windows.Controls.CheckBox
         $list.Items.Add($checkbox)
         $checkbox.Content = $item.name
-        $checkbox.Foreground = "White"
     }
 }
 
@@ -146,7 +154,6 @@ function Recommended() {
             $checkbox = New-Object System.Windows.Controls.CheckBox
             $list.Items.Add($checkbox)
             $checkbox.Content = $item.name
-            $checkbox.Foreground = "White"
         }
     }
 }
@@ -367,6 +374,7 @@ function Invoke-RunspaceWithScriptBlock {
 }
 
 
+$ErrorActionPreference = "SilentlyContinue"
 function PlayMusic {
 
     Invoke-RunspaceWithScriptBlock -ScriptBlock {
@@ -389,7 +397,7 @@ function PlayMusic {
             try {
                 $mediaItem = $mediaPlayer.newMedia($url)
                 $mediaPlayer.currentPlaylist.appendItem($mediaItem)
-                $mediaPlayer.controls.play() | Out-Null
+                $mediaPlayer.controls.play()
             }
             catch {
             }
@@ -426,11 +434,9 @@ function PlayMusic {
             PlayShuffledPlaylist
         }
     }
-
-    Clear-Host
 }
 
-PlayMusic
+PlayMusic *> $null
 
 #region Function to filter a list based on a search input
 
@@ -450,7 +456,6 @@ function Search{
 
 
 
-# Show Custom Msg
 function Show-CustomDialog {
     
     param(
@@ -567,6 +572,16 @@ function Show-CustomDialog {
     $grid.Children.Add($messageTextBlock)
     [Windows.Controls.Grid]::SetRow($messageTextBlock, 1)  # Set the row to the second row (0-based index)
 
+    # Add textbox on top right
+    $textBox = New-Object Windows.Controls.TextBox
+    $textBox.Margin = New-Object Windows.Thickness(0, 10, 10, 0)  # Add margins around the text box (top right)
+    $textBox.HorizontalAlignment = [Windows.HorizontalAlignment]::Right  # Align to the right
+    $textBox.VerticalAlignment = [Windows.VerticalAlignment]::Top  # Align to the top
+    $textBox.Width = 100
+    $textBox.Height = 25
+    $grid.Children.Add($textBox)
+    [Windows.Controls.Grid]::SetRow($textBox, 0)  # Set the row to the first row (0-based index)
+
     # Add OK button
     $okButton = New-Object Windows.Controls.Button
     $okButton.Content = "OK"
@@ -598,6 +613,55 @@ function Show-CustomDialog {
     # Show the custom dialog
     $dialog.ShowDialog()
 }
+Set-ItemProperty -Path $registryPath -Name $propertyName -Value $propertyValue
+$global:isDarkMode = $False
+
+
+function Toggle-Theme {
+    
+    if ($global:isDarkMode)
+    {
+        Switch-ToLightMode
+    } 
+    else
+    {
+        Switch-ToDarkMode
+    }
+    
+    $global:isDarkMode = -not $global:isDarkMode
+}
+
+# Function to switch to dark mode
+function Switch-ToDarkMode {
+
+    try {
+
+        $window.FindName('themeText').Header = "Light mode"
+        $theme = $window.FindResource("DarkTheme")
+        $window.Resources.MergedDictionaries.Clear()
+        $window.Resources.MergedDictionaries.Add($theme)
+        Set-ItemProperty -Path "HKCU:\Software\ITTEmadadel" -Name "Theme" -Value "Dark" -Force
+
+    } catch {
+        Write-Host "Error: $_"
+    }
+}
+
+# Function to switch to light mode
+function Switch-ToLightMode {
+
+    try {
+       
+        $window.FindName('themeText').Header = "Dark mode"
+        $theme = $window.FindResource("LightTheme")
+        $window.Resources.MergedDictionaries.Clear()
+        $window.Resources.MergedDictionaries.Add($theme)
+        Set-ItemProperty -Path "HKCU:\Software\ITTEmadadel" -Name "Theme" -Value "Light"
+
+    } catch {
+        Write-Host "Error: $_"
+    }
+}
 
 
 function ChangeTap() {
@@ -607,14 +671,23 @@ function ChangeTap() {
         $window.FindName('installBtn').Visibility = "Visible"
         $window.FindName('applyBtn').Visibility = "Hidden"
         $Window.FindName('description').Text =  ""
+
+
+
         $Window.FindName('itemLink').Visibility = "Visible"
+
+        $Window.FindName('itemLink').IsEnabled = $true
+
     }
 
     if($window.FindName('tweeks').IsSelected)
     {
         $window.FindName('applyBtn').Visibility = "Visible"
         $window.FindName('installBtn').Visibility = "Hidden"
+
+
         $Window.FindName('itemLink').Visibility = "Hidden"
+        $Window.FindName('itemLink').IsEnabled = $false
     }
 }
 
@@ -1385,7 +1458,7 @@ $inputXML =  '
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         x:Name="Window" Title="ITT @emadadel4" WindowStartupLocation = "CenterScreen" 
-        Background="{DynamicResource primary}"
+        Background="{DynamicResource BGColor}"
         Height="600" Width="955" MinWidth="677" MinHeight="400" ShowInTaskbar = "True" Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/icon.ico">
     
         <Window.Resources>
@@ -1411,7 +1484,7 @@ $inputXML =  '
  </Style>
  <Style x:Key="{x:Type ScrollBar}" TargetType="{x:Type ScrollBar}">
      <Setter Property="Stylus.IsFlicksEnabled" Value="false" />
-     <Setter Property="Foreground" Value="{DynamicResource button}" />
+     <Setter Property="Foreground" Value="{DynamicResource BGButtonColor}" />
      <Setter Property="Background" Value="Transparent" />
      <Setter Property="Width" Value="8" />
      <Setter Property="Template">
@@ -1469,13 +1542,12 @@ $inputXML =  '
 
             <!--Button Style-->
                 <Style TargetType="Button">
-                    <Setter Property="Background" Value="{DynamicResource primary}"/>
-                    <Setter Property="Foreground" Value="{DynamicResource PlaceHolder}"/>
-
+                    <Setter Property="Background" Value="{DynamicResource BGButtonColor}"/>
+                    <Setter Property="Foreground" Value="{DynamicResource FGButtonColor}"/>
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate TargetType="Button">
-                                <Border CornerRadius="15" Background="{TemplateBinding Background}">
+                                <Border CornerRadius="20" Background="{TemplateBinding Background}">
                                     <ContentPresenter HorizontalAlignment="Center"
                                                         VerticalAlignment="Center"/>
                                     
@@ -1486,29 +1558,133 @@ $inputXML =  '
 
                     <Style.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" Value="{DynamicResource button}"/>
-                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="Background" Value="{DynamicResource BGButtonColor}"/>
+                            <Setter Property="Foreground" Value="{DynamicResource FGButtonColor}"/>
                         </Trigger>
                     </Style.Triggers>
                 </Style>
             <!--End Button Style-->
 
+
+
+
+            <!--Textbox Style-->
+                <Style TargetType="TextBox">
+                    <Setter Property="Foreground" Value="{DynamicResource FGTextColor}"/>
+                    <Setter Property="Background" Value="{DynamicResource FGColor}"/>
+                    <Setter Property="BorderThickness" Value="0"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="TextBox">
+                                <Border Background="{TemplateBinding Background}"
+                                        BorderBrush="{TemplateBinding BorderBrush}"
+                                        BorderThickness="{TemplateBinding BorderThickness}"
+                                        CornerRadius="15"> <!-- Set CornerRadius here -->
+                                    <ScrollViewer x:Name="PART_ContentHost" />
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                            <Trigger Property="IsFocused" Value="True">
+                                <Setter Property="BorderThickness" Value="1"/>
+                                <Setter Property="BorderBrush" Value="{DynamicResource BGButtonColor}"/>
+                            </Trigger>
+                        </Style.Triggers>
+                </Style>
+            <!--End Textbox Style-->
+
+
+
+            <!--TextBlock Style-->
+                <Style TargetType="TextBlock">
+                    <Setter Property="Foreground" Value="{DynamicResource FGTextColor}"/>
+                </Style>
+            <!--End TextBlock Style-->
+
+
+
+
+            <!--CheckBox Style-->
+                <Style TargetType="CheckBox">
+                    <Setter Property="Foreground" Value="{DynamicResource FGTextColor}"/>
+                    <Setter Property="FontSize" Value="13"/>
+                </Style>
+            <!--End CheckBox Style-->
+
+
+            <Style TargetType="Menu">
+                <Setter Property="Background" Value="{DynamicResource BGColor}"/>
+            </Style>
+
+
+<!-- Define a style for the MenuItem -->
+<Style TargetType="MenuItem">
+    <Setter Property="Background" Value="{DynamicResource BGColor}"/>
+    <Setter Property="Foreground" Value="{DynamicResource DefaultTextColor}"/>
+    <Setter Property="OverridesDefaultStyle" Value="True"/>
+    <Setter Property="Template">
+        <Setter.Value>
+            <ControlTemplate TargetType="MenuItem">
+                <Border Background="{DynamicResource BGColor}"
+                        BorderThickness="0"> <!-- Set BorderThickness to 0 -->
+                    <Grid>
+                        <ContentPresenter Content="{TemplateBinding Header}"
+                                          Margin="6"/>
+                        <Popup IsOpen="{Binding IsSubmenuOpen, RelativeSource={RelativeSource TemplatedParent}}"
+                               AllowsTransparency="True"
+                               Focusable="False"
+                               PopupAnimation="Fade">
+                            <Border Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"
+                                    BorderThickness="0"> <!-- Set BorderThickness to 0 -->
+                                <ScrollViewer CanContentScroll="True"
+                                              Style="{DynamicResource {ComponentResourceKey ResourceId=MenuScrollViewer, TypeInTargetAssembly={x:Type FrameworkElement}}}">
+                                    <ItemsPresenter Margin="0"/>
+                                </ScrollViewer>
+                            </Border>
+                        </Popup>
+                    </Grid>
+                </Border>
+            </ControlTemplate>
+        </Setter.Value>
+    </Setter>
+</Style>
+
+
             <!--Light Theme-->
-        <SolidColorBrush Color="#121212" x:Key="primary"/>
-        <SolidColorBrush Color="#212121" x:Key="secondary"/>
-        <SolidColorBrush Color="#b3b3b3" x:Key="PlaceHolder"/>
-        <SolidColorBrush Color="#1DB954" x:Key="button"/>
-        <SolidColorBrush Color="White" x:Key="BtnForeground"/>
-        <SolidColorBrush Color="White" x:Key="label"/>
-        <SolidColorBrush Color="#b3b3b3" x:Key="link"/>
-        <SolidColorBrush Color="#212121" x:Key="BorderBrush"/>
+
+
+        <!-- Light mode styles -->
+        <ResourceDictionary x:Key="LightTheme">
+                <SolidColorBrush x:Key="BGColor" Color="White"/>
+                <SolidColorBrush x:Key="FGColor" Color="WhiteSmoke"/>
+                <SolidColorBrush x:Key="BGButtonColor" Color="#382bf0  " />
+                <SolidColorBrush x:Key="FGButtonColor" Color="White" />
+                <SolidColorBrush x:Key="FGTextColor" Color="Black" />
+                <SolidColorBrush x:Key="DefaultTextColor" Color="Black"/>
+                <SolidColorBrush x:Key="BorderBrush" Color="#212121"/>
+        </ResourceDictionary>
+
+        <!-- Dark mode styles -->
+        <ResourceDictionary x:Key="DarkTheme">
+                <SolidColorBrush x:Key="BGColor" Color="#121212 "/>
+                <SolidColorBrush x:Key="FGColor" Color="#282828"/>
+                <SolidColorBrush x:Key="BGButtonColor" Color="#1DB954" />
+                <SolidColorBrush x:Key="FGButtonColor" Color="White" />
+                <SolidColorBrush x:Key="FGTextColor" Color="WhiteSmoke" />
+                <SolidColorBrush x:Key="DefaultTextColor" Color="White"/>
+                <SolidColorBrush x:Key="BorderBrush" Color="WhiteSmoke" />
+        </ResourceDictionary>
+
+       
         
 
         </Window.Resources>
 
     <Grid>
      
-        <Grid.RowDefinitions>
+       <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="auto"/>
@@ -1519,10 +1695,22 @@ $inputXML =  '
             <ColumnDefinition Width="222"/>
         </Grid.ColumnDefinitions>
 
+
+        <Menu Grid.Row="0" Grid.ColumnSpan="3" BorderBrush="Transparent" BorderThickness="0">
+            <MenuItem Header="File" BorderBrush="Transparent" BorderThickness="0">
+                <MenuItem Header="Load Preset"/>
+                <MenuItem Header="Save Preset"/>
+            </MenuItem>
+
+            <MenuItem Name="themeText" Header="Light Mode"/>
+
+
+        </Menu>
+
         <!--Header Section-->
 
             <!--Logo-->
-                <StackPanel Margin="20" Orientation="Horizontal"  VerticalAlignment="Center" Grid.Row="0" Grid.ColumnSpan="2" >
+                <StackPanel Margin="20" Orientation="Horizontal"  VerticalAlignment="Center" Grid.Row="1" Grid.ColumnSpan="3" >
 
                     <Ellipse Name="about" Width="100" Height="100" Cursor="Hand">
                         <Ellipse.Fill>
@@ -1540,7 +1728,7 @@ $inputXML =  '
                     Height="20" Width="60" 
                     Margin="4"  
                     Background="{DynamicResource primary}" 
-                    Foreground="{DynamicResource PlaceHolder}"
+                    Foreground="{DynamicResource DefaultTextColor}"
                     
                     />
 
@@ -1550,7 +1738,7 @@ $inputXML =  '
                     Height="20" 
                     Width="100" Margin="4"  
                     Background="{DynamicResource primary}" 
-                    Foreground="{DynamicResource PlaceHolder}"
+                    Foreground="{DynamicResource DefaultTextColor}"
 
                     />
 
@@ -1561,7 +1749,7 @@ $inputXML =  '
                     Width="60" 
                     Margin="4"  
                     Background="{DynamicResource primary}" 
-                    Foreground="{DynamicResource PlaceHolder}"
+                    Foreground="{DynamicResource DefaultTextColor}"
                     
                     />
 
@@ -1571,7 +1759,7 @@ $inputXML =  '
                     Height="20" Width="60" 
                     Margin="4"  
                     Background="{DynamicResource primary}" 
-                    Foreground="{DynamicResource PlaceHolder}"
+                    Foreground="{DynamicResource DefaultTextColor}"
                     
                     />
 
@@ -1582,7 +1770,7 @@ $inputXML =  '
                     Width="60" 
                     Margin="4"  
                     Background="{DynamicResource primary}" 
-                    Foreground="{DynamicResource PlaceHolder}"
+                    Foreground="{DynamicResource DefaultTextColor}"
                     
                     />
 
@@ -1593,7 +1781,7 @@ $inputXML =  '
                     Width="70" 
                     Margin="4"  
                     Background="{DynamicResource primary}" 
-                    Foreground="{DynamicResource PlaceHolder}"
+                    Foreground="{DynamicResource DefaultTextColor}"
 
                     />
 
@@ -1604,7 +1792,7 @@ $inputXML =  '
                     Width="60" 
                     Margin="4"  
                     Background="{DynamicResource primary}" 
-                    Foreground="{DynamicResource PlaceHolder}"
+                    Foreground="{DynamicResource DefaultTextColor}"
                     
                     />
                     <Button Name="c" 
@@ -1614,7 +1802,7 @@ $inputXML =  '
                     Width="100" 
                     Margin="4"  
                     Background="{DynamicResource primary}" 
-                    Foreground="{DynamicResource PlaceHolder}"
+                    Foreground="{DynamicResource DefaultTextColor}"
                     
                     />
 
@@ -1625,7 +1813,7 @@ $inputXML =  '
         <!--End Header Section-->
 
             <!--TabControl-->
-        <TabControl x:Name="taps" TabStripPlacement="Left" Margin="0, 10, 0, 10" Grid.Row="1" BorderBrush="{DynamicResource BorderBrush}" Foreground="White" Background="Transparent">
+        <TabControl x:Name="taps" TabStripPlacement="Left" Margin="0, 10, 0, 10" Grid.Row="2" BorderBrush="{DynamicResource FGColor}" Foreground="White" Background="Transparent">
                 <TabControl.Resources>
 
 
@@ -1642,13 +1830,13 @@ $inputXML =  '
                                     </Border>
                                     <ControlTemplate.Triggers>
                                         <Trigger Property="IsSelected" Value="True">
-                                            <Setter TargetName="Border" Property="Background" Value="{DynamicResource button}" />
-                                            <Setter Property="Foreground" Value="White" />
+                                            <Setter TargetName="Border" Property="Background" Value="{DynamicResource BGButtonColor}" />
+                                            <Setter Property="Foreground" Value="{DynamicResource FGButtonColor}" />
 
                                         </Trigger>
                                         <Trigger Property="IsSelected" Value="False">
-                                            <Setter TargetName="Border" Property="Background" Value="{DynamicResource secondary}" />
-                                            <Setter Property="Foreground" Value="{DynamicResource PlaceHolder}" />
+                                            <Setter TargetName="Border" Property="Background" Value="{DynamicResource FGColor}" />
+                                            <Setter Property="Foreground" Value="{DynamicResource FGTextColor}" />
                                         </Trigger>
                                     </ControlTemplate.Triggers>
                                 </ControlTemplate>
@@ -1672,7 +1860,7 @@ $inputXML =  '
         <!--End TabControl-->
 
         <!--Main Section-->
-            <Grid  Grid.Row="1" Grid.Column="1"  Grid.RowSpan="2">
+            <Grid  Grid.Row="2" Grid.Column="2"  Grid.RowSpan="2">
 
                 <StackPanel Orientation="Vertical">
 
@@ -1680,22 +1868,20 @@ $inputXML =  '
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
 
                         <Grid>
-                            <TextBox Padding="5"
-                            BorderBrush="{x:Null}"
-                            Width="200" 
+                            <TextBox Padding="8"
+                            Width="188" 
                             VerticalAlignment="Center"
                             HorizontalAlignment="Left" 
-                            Foreground="{DynamicResource label}"
                             Text="{Binding Text_searchInput}"
-                            x:Name="searchInput" SelectionBrush="{x:Null}" 
-                            Background="{DynamicResource secondary}"/>
+                            x:Name="searchInput" 
+                            />
 
                             <TextBlock IsHitTestVisible="False" 
                             Text="Search"
                             VerticalAlignment="Center" 
                             HorizontalAlignment="Left"
                             Margin="16,0,0,0"
-                            Foreground="{DynamicResource PlaceHolder}">
+                            Foreground="{DynamicResource FGTextColor}">
 
                             <TextBlock.Style>
                                     <Style TargetType="{x:Type TextBlock}">
@@ -1712,12 +1898,11 @@ $inputXML =  '
                     </StackPanel>
 
                     <TextBlock Name="itemLink" 
-                        Foreground="{DynamicResource link}" 
+                        Foreground="{DynamicResource BGButtonColor}" 
                         Visibility="Hidden" 
                         TextWrapping="Wrap" 
                         Text="" 
                         Margin="20,15,15,0" 
-                        Cursor="Hand"
                     />
 
                     <ScrollViewer VerticalScrollBarVisibility="Auto"
@@ -1727,7 +1912,7 @@ $inputXML =  '
                         <TextBlock Name="description" 
                             Text=""
                             TextWrapping="Wrap" 
-                            Foreground="{DynamicResource label}"/>
+                            Foreground="{DynamicResource DefaultTextColor}"/>
                     </ScrollViewer>
 
                     
@@ -1738,11 +1923,11 @@ $inputXML =  '
                     <Button
                     Name="installBtn"
                     Content="Install"
-                    FontSize="17"
+                    FontSize="15"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Bottom"
                     Cursor="Hand"
-                    Width="90" Height="33" Margin="50"/>
+                    Width="100" Height="40" Margin="50"/>
                 <!--End Install Button-->
 
                 <!--Apply Button-->
@@ -1761,13 +1946,12 @@ $inputXML =  '
         <!--End Main Section-->
 
         <!--Footer Section-->
-            <Grid Grid.Row="2">
+            <Grid Grid.Row="4">
                 <TextBlock Name="quotes"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Center" 
                 Padding="16" TextWrapping="Wrap" 
                 Text="When I finished building my boat, the sea dried up."
-                Foreground="{DynamicResource label}"
                 />
             </Grid>
         <!--End Footer Section-->
@@ -1808,12 +1992,9 @@ $sync.runspace.Open()
 
 $reader = (New-Object System.Xml.XmlNodeReader $xaml)
 $window = [Windows.Markup.XamlReader]::Load($reader)
-
-# Read the XAML file
-$reader = (New-Object System.Xml.XmlNodeReader $xaml)
 try
 { 
-    $window = [Windows.Markup.XamlReader]::Load($reader)
+   #$window = [Windows.Markup.XamlReader]::Load($reader)
 }
 catch [System.Management.Automation.MethodInvocationException] {
    
@@ -1838,9 +2019,6 @@ $Window.FindName("apps").add_Loaded({
         $checkbox = New-Object System.Windows.Controls.CheckBox
         $list.Items.Add($checkbox)
         $checkbox.Content = $item.name
-        $checkbox.Foreground = "White"
-
-
     }
 
 
@@ -1891,7 +2069,6 @@ $Window.FindName("tweeks").add_Loaded({
         $checkbox = New-Object System.Windows.Controls.CheckBox
         $sync.tweaks.Items.Add($checkbox)
         $checkbox.Content = $item.name
-        $checkbox.Foreground = "White"
     }
 
     # Get Discription of selected tweaks in $list
@@ -1914,7 +2091,6 @@ $Window.FindName("tweeks").add_Loaded({
 #===========================================================================
 # End Loops 
 #===========================================================================
-
 CheckChoco
 
 #===========================================================================
@@ -1938,6 +2114,11 @@ $window.FindName('c').add_click({Catgoray($window.FindName('c').Content)})
 $window.FindName('r').add_click({Recommended($window.FindName('r').Content)})
 $window.FindName('all').add_click({ShowAll})
 
+$window.FindName('themeText').add_click({
+
+    Toggle-Theme
+    
+})
 
 # Define the event handler for the window's closing event
 $Window.Add_Closing({
@@ -1947,5 +2128,14 @@ $Window.Add_Closing({
 #===========================================================================
 # End Events 
 #===========================================================================
+
+if ($global:themePreference -eq "Dark") {
+    Switch-ToDarkMode
+} elseif ($global:themePreference -eq "Light") {
+    Switch-ToLightMode
+} else {
+    # Default to light mode if preference not found
+    Switch-ToLightMode
+}
 
 $window.ShowDialog() | out-null
