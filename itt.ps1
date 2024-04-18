@@ -456,6 +456,7 @@ function Search{
 
 
 
+# Show Custom Msg
 function Show-CustomDialog {
     
     param(
@@ -572,16 +573,6 @@ function Show-CustomDialog {
     $grid.Children.Add($messageTextBlock)
     [Windows.Controls.Grid]::SetRow($messageTextBlock, 1)  # Set the row to the second row (0-based index)
 
-    # Add textbox on top right
-    $textBox = New-Object Windows.Controls.TextBox
-    $textBox.Margin = New-Object Windows.Thickness(0, 10, 10, 0)  # Add margins around the text box (top right)
-    $textBox.HorizontalAlignment = [Windows.HorizontalAlignment]::Right  # Align to the right
-    $textBox.VerticalAlignment = [Windows.VerticalAlignment]::Top  # Align to the top
-    $textBox.Width = 100
-    $textBox.Height = 25
-    $grid.Children.Add($textBox)
-    [Windows.Controls.Grid]::SetRow($textBox, 0)  # Set the row to the first row (0-based index)
-
     # Add OK button
     $okButton = New-Object Windows.Controls.Button
     $okButton.Content = "OK"
@@ -613,6 +604,7 @@ function Show-CustomDialog {
     # Show the custom dialog
     $dialog.ShowDialog()
 }
+
 Set-ItemProperty -Path $registryPath -Name $propertyName -Value $propertyValue
 $global:isDarkMode = $False
 
