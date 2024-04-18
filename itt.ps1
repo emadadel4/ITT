@@ -2131,9 +2131,7 @@ $window.FindName('themeText').add_click({
 # Define the event handler for the window's closing event
 $Window.Add_Closing({
 
-    Get-Process -Name "powershell" | Stop-Process
-    exit
-
+    Write-Host "Bye :)"
 })
 
 #===========================================================================
