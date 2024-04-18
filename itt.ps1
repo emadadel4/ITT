@@ -334,7 +334,7 @@ function ApplyTweaks() {
                 if($msg -eq "Yes")
                 {
                     $sync.ProcessRunning = $true
-                    Write-Host "Applying tweeak(s) $tweeaks "
+                    #Write-Host "Applying tweeak(s) $tweeaks "
                     Start-Process -FilePath "powershell.exe" -ArgumentList "-Command `"$tweeaks`"" -NoNewWindow -Wait
                     Write-Host "The operation was successful."    
                     [System.Windows.MessageBox]::Show("The operation was successful.", "ITT @emadadel4", "OK", "Information")
@@ -452,12 +452,11 @@ function PlayMusic {
 PlayMusic *> $null
 
 #region Function to filter a list based on a search input
-
 function Search{
     
     # Retrieves the search input, converts it to lowercase, and filters the list based on the input
     $filter = $window.FindName('searchInput').Text.ToLower()
-    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($list.Items)
+    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.list.Items)
     $collectionView.Filter = {
         param($item)
         $item -like "*$filter*"
@@ -618,6 +617,7 @@ function Show-CustomDialog {
     $dialog.ShowDialog()
 }
 
+#region theme function
 Set-ItemProperty -Path $registryPath -Name $propertyName -Value $propertyValue
 $global:isDarkMode = $False
 
@@ -667,6 +667,9 @@ function Switch-ToLightMode {
         Write-Host "Error: $_"
     }
 }
+#endregion
+
+
 
 
 function ChangeTap() {
@@ -2132,6 +2135,7 @@ $window.FindName('themeText').add_click({
 $Window.Add_Closing({
 
     Write-Host "Bye :)"
+
 })
 
 #===========================================================================
