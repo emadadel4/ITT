@@ -34,9 +34,7 @@ function FilterByCat {
     
 }
 
-function ShowALL {
-
-    Write-Host "clear"
+function ClearFilter {
     $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.list.Items)
     $collectionView.Filter = $null
 }

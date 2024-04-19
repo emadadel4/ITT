@@ -128,9 +128,7 @@ function FilterByCat {
     
 }
 
-function ShowALL {
-
-    Write-Host "clear"
+function ClearFilter {
     $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.list.Items)
     $collectionView.Filter = $null
 }
@@ -3211,8 +3209,7 @@ $window.FindName('about').add_MouseLeftButtonDown({About})
 $window.FindName('themeText').add_click({Toggle-Theme})
 
 # Catgoray bar buttons
-$window.FindName('all').add_click({ShowALL})
-
+$window.FindName('all').add_click({ClearFilter})
 $window.FindName('b').add_click({ FilterByCat($window.FindName('b').Content)})
 $window.FindName('m').add_click({FilterByCat($window.FindName('m').Content)})
 $window.FindName('d').add_click({ FilterByCat($window.FindName('d').Content)})
