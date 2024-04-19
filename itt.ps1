@@ -467,7 +467,7 @@ function PlayMusic {
 }
 
 
-#PlayMusic *> $null
+PlayMusic *> $null
 
 
 #region Function to filter a list based on a search input
@@ -642,17 +642,21 @@ $global:isDarkMode = $global:themePreference
 # Function to toggle between dark and light modes
 function Toggle-Theme {
 
-    $global:isDarkMode = -not $global:isDarkMode
 
     try {
     if ($global:isDarkMode -eq "Dark") {
         Switch-ToLightMode
+        $global:isDarkMode = -not $global:isDarkMode
+
     } else {
         Switch-ToDarkMode
+        $global:isDarkMode = -not $global:isDarkMode
     }
     } catch {
         Write-Host "Error toggling theme: $_"
     }
+
+
 }
 
 # Function to switch to dark mode
@@ -692,20 +696,14 @@ function ChangeTap() {
     {
         $window.FindName('installBtn').Visibility = "Visible"
         $window.FindName('applyBtn').Visibility = "Hidden"
-
-        $Window.FindName('itemLink').Visibility = "Visible"
+        #$Window.FindName('itemLink').Visibility = "Visible"
 
     }
-
-    $window.FindName('apps').add_LostFocus({$Window.FindName('description').Text =  ""})
-    $window.FindName('tweeks').add_LostFocus({$Window.FindName('description').Text =  ""})
-
 
     if($window.FindName('tweeks').IsSelected)
     {
         $window.FindName('applyBtn').Visibility = "Visible"
         $window.FindName('installBtn').Visibility = "Hidden"
-
         #$Window.FindName('itemLink').Visibility = "Visible"
 
     }
@@ -1705,115 +1703,117 @@ $inputXML =  '
  </Style>
  <!--End Scrollbar Thumbs-->
 
-            <!--Button Style-->
-                <Style TargetType="Button">
-                    <Setter Property="Background" Value="{DynamicResource BGButtonColor}"/>
-                    <Setter Property="Foreground" Value="{DynamicResource FGButtonColor}"/>
-                    <Setter Property="Template">
-                        <Setter.Value>
-                            <ControlTemplate TargetType="Button">
-                                <Border CornerRadius="20" Background="{TemplateBinding Background}">
-                                    <ContentPresenter HorizontalAlignment="Center"
-                                                        VerticalAlignment="Center"/>
-                                    
-                                </Border>
-                            </ControlTemplate>
-                        </Setter.Value>
-                    </Setter>
+                    <!--Button Style-->
+            <Style TargetType="Button">
+                <Setter Property="Background" Value="{DynamicResource BGButtonColor}"/>
+                <Setter Property="Foreground" Value="{DynamicResource FGButtonColor}"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Border CornerRadius="20" Background="{TemplateBinding Background}">
+                                <ContentPresenter HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"/>
+                                
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
 
-                    <Style.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" Value="{DynamicResource BGButtonColor}"/>
-                            <Setter Property="Foreground" Value="{DynamicResource FGButtonColor}"/>
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Background" Value="{DynamicResource BGButtonColor}"/>
+                        <Setter Property="Foreground" Value="{DynamicResource FGButtonColor}"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+        <!--End Button Style-->
+
+
+        <!--Textbox Style-->
+            <Style TargetType="TextBox">
+                <Setter Property="Foreground" Value="{DynamicResource FGTextColor}"/>
+                <Setter Property="Background" Value="{DynamicResource FGColor}"/>
+                <Setter Property="BorderThickness" Value="0"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="TextBox">
+                            <Border Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                    CornerRadius="15"> <!-- Set CornerRadius here -->
+                                <ScrollViewer x:Name="PART_ContentHost" />
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Style.Triggers>
+                        <Trigger Property="IsFocused" Value="True">
+                            <Setter Property="BorderThickness" Value="1"/>
+                            <Setter Property="BorderBrush" Value="{DynamicResource BGButtonColor}"/>
                         </Trigger>
                     </Style.Triggers>
-                </Style>
-            <!--End Button Style-->
+            </Style>
+        <!--End Textbox Style-->
 
+        <!--TextBlock Style-->
+            <Style TargetType="TextBlock">
+                <Setter Property="Foreground" Value="{DynamicResource FGTextColor}"/>
+            </Style>
+        <!--End TextBlock Style-->
 
+        <!--CheckBox Style-->
+            <Style TargetType="CheckBox">
+                <Setter Property="Foreground" Value="{DynamicResource FGTextColor}"/>
+                <Setter Property="Margin" Value="8"/>
 
+            </Style>
+        <!--End CheckBox Style-->
 
-            <!--Textbox Style-->
-                <Style TargetType="TextBox">
-                    <Setter Property="Foreground" Value="{DynamicResource FGTextColor}"/>
-                    <Setter Property="Background" Value="{DynamicResource FGColor}"/>
-                    <Setter Property="BorderThickness" Value="0"/>
-                    <Setter Property="Template">
-                        <Setter.Value>
-                            <ControlTemplate TargetType="TextBox">
-                                <Border Background="{TemplateBinding Background}"
-                                        BorderBrush="{TemplateBinding BorderBrush}"
-                                        BorderThickness="{TemplateBinding BorderThickness}"
-                                        CornerRadius="15"> <!-- Set CornerRadius here -->
-                                    <ScrollViewer x:Name="PART_ContentHost" />
-                                </Border>
-                            </ControlTemplate>
-                        </Setter.Value>
-                    </Setter>
-                    <Style.Triggers>
-                            <Trigger Property="IsFocused" Value="True">
-                                <Setter Property="BorderThickness" Value="1"/>
-                                <Setter Property="BorderBrush" Value="{DynamicResource BGButtonColor}"/>
-                            </Trigger>
-                        </Style.Triggers>
-                </Style>
-            <!--End Textbox Style-->
-
-
-
-            <!--TextBlock Style-->
-                <Style TargetType="TextBlock">
-                    <Setter Property="Foreground" Value="{DynamicResource FGTextColor}"/>
-                </Style>
-            <!--End TextBlock Style-->
-
-
-
-
-            <!--CheckBox Style-->
-                <Style TargetType="CheckBox">
-                    <Setter Property="Foreground" Value="{DynamicResource FGTextColor}"/>
-                    <Setter Property="FontSize" Value="13"/>
-                </Style>
-            <!--End CheckBox Style-->
-
-
+        <!--Menu Style-->
             <Style TargetType="Menu">
                 <Setter Property="Background" Value="{DynamicResource BGColor}"/>
             </Style>
+        <!--End Menu Style-->
 
 
-<!-- Define a style for the MenuItem -->
-<Style TargetType="MenuItem">
-    <Setter Property="Background" Value="{DynamicResource BGColor}"/>
-    <Setter Property="Foreground" Value="{DynamicResource DefaultTextColor}"/>
-    <Setter Property="OverridesDefaultStyle" Value="True"/>
-    <Setter Property="Template">
-        <Setter.Value>
-            <ControlTemplate TargetType="MenuItem">
-                <Border Background="{DynamicResource BGColor}"
-                        BorderThickness="0"> <!-- Set BorderThickness to 0 -->
-                    <Grid>
-                        <ContentPresenter Content="{TemplateBinding Header}"
-                                          Margin="6"/>
-                        <Popup IsOpen="{Binding IsSubmenuOpen, RelativeSource={RelativeSource TemplatedParent}}"
-                               AllowsTransparency="True"
-                               Focusable="False"
-                               PopupAnimation="Fade">
-                            <Border Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"
+        <!--MenuItem Style-->
+            <Style TargetType="MenuItem">
+                <Setter Property="Background" Value="{DynamicResource BGColor}"/>
+                <Setter Property="Foreground" Value="{DynamicResource DefaultTextColor}"/>
+                <Setter Property="OverridesDefaultStyle" Value="True"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="MenuItem">
+                            <Border Background="{DynamicResource BGColor}"
                                     BorderThickness="0"> <!-- Set BorderThickness to 0 -->
-                                <ScrollViewer CanContentScroll="True"
-                                              Style="{DynamicResource {ComponentResourceKey ResourceId=MenuScrollViewer, TypeInTargetAssembly={x:Type FrameworkElement}}}">
-                                    <ItemsPresenter Margin="0"/>
-                                </ScrollViewer>
+                                <Grid>
+                                    <ContentPresenter Content="{TemplateBinding Header}"
+                                                    Margin="6"/>
+                                    <Popup IsOpen="{Binding IsSubmenuOpen, RelativeSource={RelativeSource TemplatedParent}}"
+                                        AllowsTransparency="True"
+                                        Focusable="False"
+                                        PopupAnimation="Fade">
+                                        <Border Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"
+                                                BorderThickness="0"> <!-- Set BorderThickness to 0 -->
+                                            <ScrollViewer CanContentScroll="True"
+                                                        Style="{DynamicResource {ComponentResourceKey ResourceId=MenuScrollViewer, TypeInTargetAssembly={x:Type FrameworkElement}}}">
+                                                <ItemsPresenter Margin="0"/>
+                                            </ScrollViewer>
+                                        </Border>
+                                    </Popup>
+                                </Grid>
                             </Border>
-                        </Popup>
-                    </Grid>
-                </Border>
-            </ControlTemplate>
-        </Setter.Value>
-    </Setter>
-</Style>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        <!--End MenuItem Style-->
+
+        <!--ListViewItem Style-->
+            <Style TargetType="ListViewItem">
+            <Setter Property="Background" Value="{DynamicResource FGColor}"/>
+        </Style>
+        <!--End ListViewItem Style-->
 
 
             <!--Light Theme-->
@@ -1866,11 +1866,7 @@ $inputXML =  '
                 <MenuItem Header="Load Preset"/>
                 <MenuItem Header="Save Preset"/>
             </MenuItem>
-
             <MenuItem Name="themeText" Header="Light Mode"/>
-            <MenuItem Name="toggleMusic" Header="Mute"/>
-
-
         </Menu>
 
         <!--Header Section-->
@@ -2013,12 +2009,238 @@ $inputXML =  '
                 <TabItem Header="Apps" Name="apps" BorderBrush="{x:Null}" Padding="16">
                     <TabItem.Content>
                         <ListView Margin="10" ScrollViewer.VerticalScrollBarVisibility="Auto" x:Name="list" BorderBrush="{x:Null}" Background="{x:Null}">
+                                            <CheckBox Content="Thorium"/>
+
+                            <CheckBox Content="Firefox"/>
+
+                            <CheckBox Content="Add block extension [Firefox]"/>
+
+                            <CheckBox Content="Microsoft Edge"/>
+
+                            <CheckBox Content="Google Chrome"/>
+
+                            <CheckBox Content="uBlock Origin extension [Chrome]"/>
+
+                            <CheckBox Content="Chromium"/>
+
+                            <CheckBox Content="Brave"/>
+
+                            <CheckBox Content="Tor Browser"/>
+
+                            <CheckBox Content="Internet Download Manager"/>
+
+                            <CheckBox Content="K-Lite Mega Codec Pack"/>
+
+                            <CheckBox Content="PotPlayer"/>
+
+                            <CheckBox Content="VLC"/>
+
+                            <CheckBox Content="Kodi"/>
+
+                            <CheckBox Content="Jellyfin"/>
+
+                            <CheckBox Content="Winamp"/>
+
+                            <CheckBox Content="Aimp"/>
+
+                            <CheckBox Content="OpenOffice"/>
+
+                            <CheckBox Content="FoxitReader"/>
+
+                            <CheckBox Content="LibreOffice"/>
+
+                            <CheckBox Content="SumatraPDF"/>
+
+                            <CheckBox Content="WinRAR"/>
+
+                            <CheckBox Content="7-Zip"/>
+
+                            <CheckBox Content="QQPlayer"/>
+
+                            <CheckBox Content="Telegram Desktop"/>
+
+                            <CheckBox Content="Meta Messenger"/>
+
+                            <CheckBox Content="Skype"/>
+
+                            <CheckBox Content="Zoom"/>
+
+                            <CheckBox Content="Microsoft Teams"/>
+
+                            <CheckBox Content="Discord"/>
+
+                            <CheckBox Content="TeamViewer"/>
+
+                            <CheckBox Content="GIMP"/>
+
+                            <CheckBox Content="Microsoft Visual C++ 2005 (x86) Redistributable"/>
+
+                            <CheckBox Content="Microsoft Visual C++ 2005 (x64) Redistributable"/>
+
+                            <CheckBox Content="Microsoft Visual C++ 2008 (x86) Redistributable"/>
+
+                            <CheckBox Content="Microsoft Visual C++ 2008 (x64) Redistributable"/>
+
+                            <CheckBox Content="Microsoft Visual C++ 2010 (x86) Redistributable"/>
+
+                            <CheckBox Content="Microsoft Visual C++ 2010 (x64) Redistributable"/>
+
+                            <CheckBox Content="Microsoft Visual C++ 2012 (x86) Redistributable"/>
+
+                            <CheckBox Content="Microsoft Visual C++ 2012 (x64) Redistributable"/>
+
+                            <CheckBox Content="Microsoft Visual C++ 2013 (x86) Redistributable"/>
+
+                            <CheckBox Content="Microsoft Visual C++ 2013 (x64) Redistributable"/>
+
+                            <CheckBox Content="Microsoft Visual C++ 2015-2022 (x64) Redistributable"/>
+
+                            <CheckBox Content="Microsoft Visual C++ 2015-2022  (x86) Redistributable"/>
+
+                            <CheckBox Content="NET Framework All Versions"/>
+
+                            <CheckBox Content="NVidia Display Driver"/>
+
+                            <CheckBox Content="NVIDIA GeForce Now"/>
+
+                            <CheckBox Content="NVIDIA PhysX"/>
+
+                            <CheckBox Content="Steam"/>
+
+                            <CheckBox Content="Ubisoft Connect"/>
+
+                            <CheckBox Content="GameSave Manager"/>
+
+                            <CheckBox Content="StreamlabsOBS"/>
+
+                            <CheckBox Content="OBS Studio"/>
+
+                            <CheckBox Content="Lively Wallpaper"/>
+
+                            <CheckBox Content="Driver Easy"/>
+
+                            <CheckBox Content="Snappy Driver Installer"/>
+
+                            <CheckBox Content="1Password"/>
+
+                            <CheckBox Content="MiniTool Partition Wizard"/>
+
+                            <CheckBox Content="AOMEI Backupper"/>
+
+                            <CheckBox Content="Recuva recover"/>
+
+                            <CheckBox Content="CCleaner"/>
+
+                            <CheckBox Content="BCUninstaller"/>
+
+                            <CheckBox Content="HWiNFO"/>
+
+                            <CheckBox Content="Speccy"/>
+
+                            <CheckBox Content="FurMark"/>
+
+                            <CheckBox Content="Hard Disk Sentinel"/>
+
+                            <CheckBox Content="CPUID CPU-Z"/>
+
+                            <CheckBox Content="HandBrake"/>
+
+                            <CheckBox Content="Rufus"/>
+
+                            <CheckBox Content="Virtual CloneDrive"/>
+
+                            <CheckBox Content="Virtual CloneDrive"/>
+
+                            <CheckBox Content="Utilso"/>
+
+                            <CheckBox Content="Ventoy"/>
+
+                            <CheckBox Content="AutoHotkey"/>
+
+                            <CheckBox Content="Rainmeter"/>
+
+                            <CheckBox Content="FxSound"/>
+
+                            <CheckBox Content="HiSuite"/>
+
+                            <CheckBox Content="Vysor"/>
+
+                            <CheckBox Content="Unifiedremote"/>
+
+                            <CheckBox Content="AnyDesk"/>
+
+                            <CheckBox Content="qBittorrent"/>
+
+                            <CheckBox Content="XAMPP"/>
+
+                            <CheckBox Content="Visual Studio Professional 2022"/>
+
+                            <CheckBox Content="Visual Studio Community 2022"/>
+
+                            <CheckBox Content="Godot game engine"/>
+
+                            <CheckBox Content="Microsoft Visual Studio Code"/>
+
+                            <CheckBox Content="PyCharm Community Edition"/>
+
+                            <CheckBox Content="PyCharm Professional Edition"/>
+
+                            <CheckBox Content="Jetbrains Rider"/>
+
+                            <CheckBox Content="Node.js LTS"/>
+
+                            <CheckBox Content="Electrum-LTS"/>
+
+                            <CheckBox Content="Notepad++"/>
+
+                            <CheckBox Content="Windows Terminal"/>
+
+                            <CheckBox Content="Powershell core"/>
+
+                            <CheckBox Content="Python"/>
+
+                            <CheckBox Content="Git"/>
+
+                            <CheckBox Content="GitHub Desktop"/>
+
+                            <CheckBox Content="Docker Desktop"/>
+
+                            <CheckBox Content="Docker Compose"/>
+
+                            <CheckBox Content="PowerToys"/>
+
+                            <CheckBox Content="FL Studio"/>
+
+                            <CheckBox Content="Android Debug Bridge"/>
+
+                            <CheckBox Content="Universal ADB Drivers"/>
+
+                            <CheckBox Content="Scrcpy"/>
+
+            
                         </ListView>
                     </TabItem.Content>
                 </TabItem>
                 <TabItem Header="Tweaks" x:Name="tweeks" Padding="16" BorderBrush="{x:Null}" Background="{x:Null}">
                     <TabItem.Content>
                         <ListView Name="tweaks"  Margin="10" ScrollViewer.VerticalScrollBarVisibility="Auto" BorderBrush="{x:Null}" Background="{x:Null}">
+                                            <CheckBox Content="System File Checker"/>
+
+                            <CheckBox Content="Disk Cleanup"/>
+
+                            <CheckBox Content="Restore All Windows Services to Default"/>
+
+                            <CheckBox Content="Remove Folder Shortcuts From Windows'' File Explorer"/>
+
+                            <CheckBox Content="Fix stutter in games"/>
+
+                            <CheckBox Content="Remove Unnecessary Windows 10 Apps"/>
+
+                            <CheckBox Content="Enable the Ultimate Performance Power Plan"/>
+
+                            <CheckBox Content=" Reset the TCP/IP Stack"/>
+
+            
                         </ListView>
                     </TabItem.Content>
                 </TabItem>
@@ -2180,99 +2402,79 @@ catch [System.Management.Automation.MethodInvocationException] {
 
 #region Generate items from json file
 $sync.list = $Window.FindName("list")
-
-# Define a function to populate the list with checkboxes
-function PopulateList {
-    foreach ($app in $sync.configs.applications) {
-        $checkbox = New-Object System.Windows.Controls.CheckBox
-        $checkbox.Content = $app.name
-        $sync.list.Items.Add($checkbox)
-    }
-}
-
-# Define a function to update the description and link when an item is selected
-function UpdateDescriptionAndLink {
-    $selectedAppName = $sync.list.SelectedItem.Content.ToString()
-
-    foreach ($app in $sync.configs.applications) {
-        if ($app.name -eq $selectedAppName) {
-            $Window.FindName("description").Text = $app.description
-            $Window.FindName('itemLink').Text = "$($app.name) official website"
-            break
-        }
-    }
-}
-
-# Define a function to open the official website of the selected application
-function OpenOfficialWebsite {
-    $selectedAppName = $sync.list.SelectedItem.Content.ToString()
-
-    foreach ($app in $sync.configs.applications) {
-        if ($app.name -eq $selectedAppName) {
-            Start-Process ("https://duckduckgo.com/?hps=1&q=%5C" + $app.name)
-            break
-        }
-    }
-}
-
 # Add event handlers
 $Window.FindName("apps").add_Loaded({
-    PopulateList
-})
 
-$sync.list.Add_SelectionChanged({
-    $Window.FindName('itemLink').Visibility = "Visible"
-    UpdateDescriptionAndLink
-})
 
-$Window.FindName('itemLink').add_MouseLeftButtonDown({
-    OpenOfficialWebsite
-})
+    # Define a function to update the description and link when an item is selected
+    function UpdateDescriptionAndLink {
+        $selectedAppName = $sync.list.SelectedItem.Content.ToString()
 
+        foreach ($app in $sync.configs.applications) {
+            if ($app.name -eq $selectedAppName) {
+                $Window.FindName("description").Text = $app.description
+                $Window.FindName('itemLink').Text = "$($app.name) official website"
+                break
+            }
+        }
+    }
+
+    # Define a function to open the official website of the selected application
+    function OpenOfficialWebsite {
+        $selectedAppName = $sync.list.SelectedItem.Content.ToString()
+
+        foreach ($app in $sync.configs.applications) {
+            if ($app.name -eq $selectedAppName) {
+                Start-Process ("https://duckduckgo.com/?hps=1&q=%5C" + $app.name)
+                break
+            }
+        }
+    }
+
+
+    $sync.list.Add_SelectionChanged({
+        $Window.FindName('itemLink').Visibility = "Visible"
+        UpdateDescriptionAndLink
+    })
+    
+    $Window.FindName('itemLink').add_MouseLeftButtonDown({
+        OpenOfficialWebsite
+    })
+
+})
 
 #endregion
 #region Generate tweaks from json file
 $sync.tweaks = $Window.FindName("tweaks")
 
-# Function to add tweak checkboxes
-function Add-TweakCheckboxes {
-    foreach ($item in $sync.configs.tweaks) {
-        $checkbox = New-Object System.Windows.Controls.CheckBox
-        $checkbox.Content = $item.name
-        $sync.tweaks.Items.Add($checkbox)
-    }
-}
-
 # Add loaded event handler
 $Window.FindName("tweeks").add_Loaded({
-    Add-TweakCheckboxes
-})
-
-# Add selection changed event handler
-$sync.tweaks.Add_SelectionChanged({
-    $selectedItem = $sync.tweaks.SelectedItem.Content
-    foreach ($data in $sync.configs.tweaks) {
-        if ($data.name -eq $selectedItem) {
-            $Window.FindName('description').Text = $data.description
-            $Window.FindName('itemLink').Visibility = if ($data.repo -ne "null") { "Visible" } else { "Hidden" }
-            $Window.FindName('itemLink').Text = "Github repository"
-            break
+   
+    # Add selection changed event handler
+    $sync.tweaks.Add_SelectionChanged({
+        $selectedItem = $sync.tweaks.SelectedItem.Content
+        foreach ($data in $sync.configs.tweaks) {
+            if ($data.name -eq $selectedItem) {
+                $Window.FindName('description').Text = $data.description
+                $Window.FindName('itemLink').Visibility = if ($data.repo -ne "null") { "Visible" } else { "Hidden" }
+                $Window.FindName('itemLink').Text = "Github repository"
+                break
+            }
         }
-    }
-})
+    })
 
-# Add mouse left button down event handler for item link
-$Window.FindName('itemLink').add_MouseLeftButtonDown({
-    $selectedItem = $sync.tweaks.SelectedItem.Content
-    foreach ($data in $sync.configs.tweaks) {
-        if ($selectedItem -eq $data.name -and $data.repo -ne "null") {
-            Start-Process $data.repo
-            break
+    # Add mouse left button down event handler for item link
+    $Window.FindName('itemLink').add_MouseLeftButtonDown({
+        $selectedItem = $sync.tweaks.SelectedItem.Content
+        foreach ($data in $sync.configs.tweaks) {
+            if ($selectedItem -eq $data.name -and $data.repo -ne "null") {
+                Start-Process $data.repo
+                break
+            }
         }
-    }
+    })
+
 })
-
-
 
 #endregion
 #===========================================================================
@@ -2320,18 +2522,6 @@ Function ResumePlayback {
 }
 
 
-$window.FindName('toggleMusic').add_click({
-
-
-    Write-Host "emad"
-
-    $global:mediaPlayer.controls.pause()
-
-
-})
-
-
-
 # Catgoray bar buttons
 $window.FindName('b').add_click({FilterApplicationsByCategory($window.FindName('b').Content)})
 $window.FindName('m').add_click({FilterApplicationsByCategory($window.FindName('m').Content)})
@@ -2340,7 +2530,6 @@ $window.FindName('g').add_click({FilterApplicationsByCategory($window.FindName('
 $window.FindName('u').add_click({FilterApplicationsByCategory($window.FindName('u').Content)})
 $window.FindName('c').add_click({FilterApplicationsByCategory($window.FindName('c').Content)})
 $window.FindName('r').add_click({ShowRecommendedApplications($window.FindName('r').Content)})
-$window.FindName('all').add_click({ShowAllApplications})
 
 $Window.Add_Closing({
     Write-Host "Bye :)"
@@ -2358,5 +2547,6 @@ if ($global:themePreference -eq "Dark") {
     # Default to light mode if preference not found
     Switch-ToLightMode
 }
+
 
  $window.ShowDialog() | out-null
