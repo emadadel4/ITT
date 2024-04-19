@@ -59,12 +59,48 @@ $colorsContent = Get-Content -Path $colorsPath -Raw
 
 # Replace the placeholder in $inputXML with the content of inputApp.xaml
 $xaml = $xaml -replace "{{Taps}}", $appXamlContent
+
+
+
+
 $xaml = $xaml -replace "{{ButtonStyle}}", $buttonStyleContent
 $xaml = $xaml -replace "{{ScrollbarStyle}}", $scrollbarContent
 $xaml = $xaml -replace "{{Colors}}", $colorsContent
 
 
+
+# Create XAML content for checkboxes only
+$appCheckboxex = ""
+foreach ($a in $sync.configs.applications) {
+            $appCheckboxex += @"
+                <CheckBox Content="$($a.Name)"/>
+
+            
+"@
+}
+
+$tweeaksCheckboxex = ""
+foreach ($t in $sync.configs.tweaks) {
+            $tweeaksCheckboxex += @"
+                <CheckBox Content="$($t.Name)"/>
+
+            
+"@
+}
+
+$xaml = $xaml -replace "{{ee}}", $appCheckboxex
+$xaml = $xaml -replace "{{eee}}", $tweeaksCheckboxex
+
+
+
+
 Write-output "`$inputXML =  '$xaml'" | Out-File ./$scriptname -Append -Encoding ascii 
+
+
+
+
+
+
 
 Get-Content .\scripts\loadXmal.ps1 | Out-File ./$scriptname -Append -Encoding ascii
 
@@ -74,6 +110,14 @@ Get-ChildItem .\loops -Recurse -File | ForEach-Object {
 }
 
 
+
+
+
 Get-Content .\scripts\main.ps1 | Out-File ./$scriptname -Append -Encoding ascii
+
+
+
+
+
 
 ./itt.ps1
