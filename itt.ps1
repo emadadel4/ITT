@@ -2521,6 +2521,8 @@ Function TogglePlayback {
 }
 
 # Catgoray bar buttons
+
+$window.FindName('all').add_click({ShowAllApplications($window.FindName('b').Content)})
 $window.FindName('b').add_click({FilterApplicationsByCategory($window.FindName('b').Content)})
 $window.FindName('m').add_click({FilterApplicationsByCategory($window.FindName('m').Content)})
 $window.FindName('d').add_click({FilterApplicationsByCategory($window.FindName('d').Content)})
