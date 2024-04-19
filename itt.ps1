@@ -788,6 +788,14 @@ $sync.configs.applications = '[
     "check": "false"
   },
   {
+    "Name": "Opera",
+    "Description": "The Opera web browser makes the Web fast and fun, giving you a better web browser experience on any computer.",
+    "winget": "#",
+    "choco": "opera",
+    "category": "Brave.Brave",
+    "check": "false"
+  },
+  {
     "Name": "Internet Download Manager",
     "Description": "A popular download manager tool that accelerates downloads and allows users to organize and schedule downloads efficiently.",
     "winget": "Tonec.InternetDownloadManager",
@@ -852,6 +860,22 @@ $sync.configs.applications = '[
     "check": "false"
   },
   {
+    "Name": "Spotify",
+    "Description": "Spotify is a new way to listen to music.",
+    "winget": "#",
+    "choco": "spotify",
+    "category": "Media",
+    "check": "false"
+  },
+  {
+    "Name": "FastStone Image Viewer",
+    "Description": "FastStone Image Viewer is a fast, stable, user-friendly image browser, converter and editor ",
+    "winget": "#",
+    "choco": "fsviewer",
+    "category": "Media",
+    "check": "false"
+  },
+  {
     "Name": "OpenOffice",
     "Description": "An open-source office productivity suite offering word processing, spreadsheet, presentation, and other office tools, compatible with Microsoft Office formats.",
     "winget": "Apache.OpenOffice",
@@ -900,6 +924,14 @@ $sync.configs.applications = '[
     "check": "false"
   },
   {
+    "Name": "PeaZip",
+    "Description": " PeaZip is a free cross-platform file archiver.",
+    "winget": "7zip.7zip",
+    "choco": "peazip",
+    "category": "Compression",
+    "check": "false"
+  },
+  {
     "Name": "QQPlayer",
     "Description": "A multimedia player with support for a wide range of audio and video formats, featuring built-in codecs and additional functionalities such as screen capturing and video conversion.",
     "winget": "Tencent.QQPlayer",
@@ -912,6 +944,14 @@ $sync.configs.applications = '[
     "Description": "A cross-platform messaging app with a focus on speed and security, offering end-to-end encryption and a wide range of features such as group chats, file sharing, and stickers.",
     "winget": "Telegram.TelegramDesktop",
     "choco": "telegram",
+    "category": "Communication",
+    "check": "false"
+  },
+  {
+    "Name": "Signal",
+    "Description": "Fast, simple, secure. Privacy that fits in your pocket.",
+    "winget": "#",
+    "choco": "signal",
     "category": "Communication",
     "check": "false"
   },
@@ -969,6 +1009,22 @@ $sync.configs.applications = '[
     "winget": "GIMP.GIMP",
     "choco": "gimp",
     "category": "Imaging",
+    "check": "false"
+  },
+  {
+    "Name": "DirectX",
+    "Description": "DirectX is a collection of APIs for handling tasks related to games and videos.",
+    "winget": "#",
+    "choco": "directx",
+    "category": "Gaming",
+    "check": "false"
+  },
+  {
+    "Name": "Microsoft Visual C++ Runtime - all versions",
+    "Description": "Microsoft Visual C++ Redistributable installs run-time components of Visual C++ libraries. These components are required to run C++ applications that are developed using Visual Studio and link dynamically to Visual C++ libraries.",
+    "winget": "#",
+    "choco": "vcredist-all",
+    "category": "Gaming",
     "check": "false"
   },
   {
@@ -1076,6 +1132,14 @@ $sync.configs.applications = '[
     "check": "false"
   },
   {
+    "Name": "AMD Ryzen Chipset Drivers",
+    "Description": "Supports: AMD Ryzen Threadripper PRO Processor, AMD Ryzen 8000/7040/7000 Series Desktop & Mobile Processors, AMD Ryzen 5000/3rd Gen/2nd Gen Desktop & Threadripper Processors, AMD Ryzen Desktop Processor with Radeon Graphics & Mobile Processor with Radeon Graphics, 7th-Gen AMD A-Series Processors, AMD X670E/X670/B650E/B650/B350/A320/X370/X399/B450/X470/X570/B550/A520/A620/TRX40/TRX50/WRX80/WRX90 Chipsets",
+    "winget": "#",
+    "choco": "amd-ryzen-chipset",
+    "category": "Gaming",
+    "check": "true"
+  },
+  {
     "Name": "NVidia Display Driver",
     "Description": "The software component that allows the operating system and installed software to communicate with and control the NVIDIA graphics processing unit (GPU).",
     "winget": "#",
@@ -1084,10 +1148,18 @@ $sync.configs.applications = '[
     "check": "false"
   },
   {
-    "Name": "NVIDIA GeForce Now",
+    "Name": "NVIDIA GeForce",
     "Description": "A cloud-based gaming service provided by NVIDIA that allows users to play video games on supported devices via a remote gaming PC hosted on NVIDIA''s servers.",
     "winget": "Nvidia.GeForceNow",
     "choco": "nvidia-geforce-now",
+    "category": "Gaming",
+    "check": "false"
+  },
+  {
+    "Name": "Msi Afterburner",
+    "Description": "MSI Afterburner is the ultimate graphics card utility, co-developed by MSI and RivaTuner teams.",
+    "winget": "#",
+    "choco": "msiafterburner",
     "category": "Gaming",
     "check": "false"
   },
@@ -1108,10 +1180,34 @@ $sync.configs.applications = '[
     "check": "false"
   },
   {
+    "Name": "Epic Games Launcher ",
+    "Description": "Epic Games Launcher.",
+    "winget": "#",
+    "choco": "epicgameslauncher",
+    "category": "Gaming",
+    "check": "false"
+  },
+  {
+    "Name": "Origin",
+    "Description": "----------------",
+    "winget": "#",
+    "choco": "origin",
+    "category": "Developer",
+    "check": "false"
+  },
+  {
     "Name": "Ubisoft Connect",
     "Description": "A digital distribution, digital rights management, multiplayer, and communications service developed by Ubisoft, providing access to Ubisoft''s games, rewards, and social features.",
     "winget": "Ubisoft.Connect",
     "choco": "ubisoft-connect",
+    "category": "Gaming",
+    "check": "false"
+  },
+  {
+    "Name": "Rockstar Games Launcher",
+    "Description": "Download and play the latest Rockstar Games PC titles",
+    "winget": "rockstar-launcher",
+    "choco": "steam",
     "category": "Gaming",
     "check": "false"
   },
@@ -1140,10 +1236,26 @@ $sync.configs.applications = '[
     "check": "false"
   },
   {
+    "Name": "Logitech Gaming Software",
+    "Description": "Logitech Gaming Software lets you customize Logitech G gaming mice, keyboards, headsets and select wheels.",
+    "winget": "#",
+    "choco": "logitechgaming",
+    "category": "Gaming",
+    "check": "false"
+  },
+  {
     "Name": "Lively Wallpaper",
     "Description": "A software that allows users to set animated and interactive wallpapers on their Windows desktop, providing various customization options.",
     "winget": " #",
     "choco": "lively",
+    "category": "Gaming",
+    "check": "false"
+  },
+  {
+    "Name": "Playnite",
+    "Description": "Open source video game library manager and launcher with support for 3rd party libraries like Steam, GOG, Origin, Battle.net and Uplay.",
+    "winget": " #",
+    "choco": "playnite",
     "category": "Gaming",
     "check": "false"
   },
@@ -1160,6 +1272,38 @@ $sync.configs.applications = '[
     "Description": "A free and open-source tool for updating and installing device drivers on Windows, offering offline driver updates and wide hardware support.",
     "winget": "samlab-ws.SnappyDriverInstaller",
     "choco": "snappy-driver-installer",
+    "category": "Utilities",
+    "check": "false"
+  },
+  {
+    "Name": "Driver booster",
+    "Description": "Scans and identifies outdated drivers automatically, and downloads and installs the right update for you with just ONE click.",
+    "winget": "#",
+    "choco": "driverbooster",
+    "category": "Utilities",
+    "check": "false"
+  },
+  {
+    "Name": "Driver Genius",
+    "Description": "Professional driver management tool and hardware diagnostics.",
+    "winget": "#",
+    "choco": "drivergenius",
+    "category": "Utilities",
+    "check": "false"
+  },
+  {
+    "Name": "Display Driver Uninstaller",
+    "Description": "Utility to completely remove system drivers",
+    "winget": "#",
+    "choco": "ddu",
+    "category": "Utilities",
+    "check": "false"
+  },
+  {
+    "Name": "Driver Store Explorer",
+    "Description": " Windows driver store utility.",
+    "winget": "#",
+    "choco": "rapr",
     "category": "Utilities",
     "check": "false"
   },
@@ -1247,7 +1391,15 @@ $sync.configs.applications = '[
     "Name": "CPUID CPU-Z",
     "Description": "A system monitoring utility that provides detailed information about the CPU, motherboard, memory, and other hardware components of a computer system.",
     "winget": "CPUID.CPU-Z",
-    "choco": "cpu-z.install",
+    "choco": "cpu-z",
+    "category": "Utilities",
+    "check": "false"
+  },
+  {
+    "Name": "Mem Reduct",
+    "Description": "Lightweight real-time memory management application to monitor and clean system memory on your computer.",
+    "winget": "#",
+    "choco": "memreduct",
     "category": "Utilities",
     "check": "false"
   },
@@ -1265,6 +1417,14 @@ $sync.configs.applications = '[
     "winget": "Rufus.Rufus",
     "choco": "rufus",
     "category": "Utilities",
+    "check": "false"
+  },
+  {
+    "Name": "ImgBurn",
+    "Description": "Lightweight CD / DVD burning application ",
+    "winget": "#",
+    "choco": "imgburn",
+    "category": "Developer",
     "check": "false"
   },
   {
@@ -1295,6 +1455,14 @@ $sync.configs.applications = '[
     "Description": "An open-source tool for creating bootable USB drives with multiple ISO files, allowing users to boot various operating systems or utilities directly from a single USB drive.",
     "winget": "Ventoy.Ventoy",
     "choco": "ventoy",
+    "category": "Utilities",
+    "check": "false"
+  },
+  {
+    "Name": "iVentoy",
+    "Description": "With iVentoy you can boot and install OS on multiple machines at the same time through the network.",
+    "winget": "#",
+    "choco": "iventoy",
     "category": "Utilities",
     "check": "false"
   },
@@ -1355,10 +1523,34 @@ $sync.configs.applications = '[
     "check": "false"
   },
   {
+    "Name": "Airdroid",
+    "Description": "AirDroid is a free and fast Android device manager app that allows you to access Android phone/tablet from computer remotely and securely. Manage SMS, files, photos and videos, WhatsApp, Line, WeChat and more on computer.",
+    "winget": "#",
+    "choco": "airdroid",
+    "category": "Utilities",
+    "check": "false"
+  },
+  {
+    "Name": "UltraViewer",
+    "Description": "Remote control to support your clients / partners from everywhere.",
+    "winget": "#",
+    "choco": "ultraviewer",
+    "category": "Utilities",
+    "check": "false"
+  },
+  {
     "Name": "qBittorrent",
     "Description": "A free and open-source BitTorrent client for downloading and uploading files via the BitTorrent protocol, providing users with a lightweight and feature-rich torrenting experience.",
     "winget": "qBittorrent.qBittorrent",
     "choco": "qbittorrent",
+    "category": "Utilities",
+    "check": "false"
+  },
+  {
+    "Name": "Google Earth Pro",
+    "Description": "Google Earth Pro on desktop is free for users with advanced feature needs. Import and export GIS data, and go back in time with historical imagery.",
+    "winget": "#",
+    "choco": "googleearthpro",
     "category": "Utilities",
     "check": "false"
   },
@@ -1395,10 +1587,58 @@ $sync.configs.applications = '[
     "check": "false"
   },
   {
-    "Name": "Microsoft Visual Studio Code",
+    "Name": "Unity Hub",
+    "Description": "Unity is a cross-platform game creation system developed by Unity Technologies and used to develop video games for PC, consoles, mobile",
+    "winget": "#",
+    "choco": "unity-hub",
+    "category": "Developer",
+    "check": "false"
+  },
+  {
+    "Name": "Unity 3D",
+    "Description": "Unity is a cross-platform game creation system developed by Unity Technologies and used to develop video games for PC, consoles, mobile",
+    "winget": "#",
+    "choco": "unity",
+    "category": "Developer",
+    "check": "false"
+  },
+  {
+    "Name": "Blender",
+    "Description": "Blender is a free and open-source professional-grade 3D computer graphics and video compositing program.",
+    "winget": "#",
+    "choco": "blender",
+    "category": "Developer",
+    "check": "false"
+  },
+  {
+    "Name": "Visual Studio Code",
     "Description": "Visual Studio Code is a free source-code editor developed by Microsoft for Windows, Linux, and macOS. It includes support for debugging, embedded Git control, syntax highlighting, intelligent code completion, snippets, and code refactoring.",
     "winget": "Microsoft.VisualStudioCode",
     "choco": "vscode",
+    "category": "Developer",
+    "check": "false"
+  },
+  {
+    "Name": "Sublime Text 4",
+    "Description": "Sublime Text 4 - The sophisticated text editor for code, markup and prose. ",
+    "winget": "#",
+    "choco": "sublimetext4",
+    "category": "Developer",
+    "check": "false"
+  },
+  {
+    "Name": "Atom",
+    "Description": "Atom is a text editor that''s modern, approachable, yet hackable to the core???a tool you can customize to do anything but also use productively without ever touching a config file.",
+    "winget": "#",
+    "choco": "atom",
+    "category": "Developer",
+    "check": "false"
+  },
+  {
+    "Name": "InnoSetup",
+    "Description": "Inno Setup is a free installer for Windows programs. First introduced in 1997, Inno Setup today rivals and even surpasses many commercial installers in feature set and stability.",
+    "winget": "#",
+    "choco": "innosetup",
     "category": "Developer",
     "check": "false"
   },
@@ -1443,6 +1683,14 @@ $sync.configs.applications = '[
     "check": "false"
   },
   {
+    "Name": "Hugo",
+    "Description": "Hugo is one of the most popular open-source static site generators. With its amazing speed and flexibility, Hugo makes building websites f... Keep Reading ",
+    "winget": "#",
+    "choco": "hugo",
+    "category": "Developer",
+    "check": "false"
+  },
+  {
     "Name": "Notepad++",
     "Description": "Notepad++ is a free source code editor and Notepad replacement that supports several languages. It offers syntax highlighting, code folding, auto-completion, and other features for efficient code editing.",
     "winget": "Notepad++.Notepad++",
@@ -1463,6 +1711,30 @@ $sync.configs.applications = '[
     "Description": "PowerShell Core is a cross-platform (Windows, Linux, and macOS) automation and configuration tool/framework that works well with your existing tools and is optimized for dealing with structured data (e.g., JSON, CSV, XML, etc.), REST APIs, and object models.",
     "winget": "powershell-core",
     "choco": "powershell-core",
+    "category": "Developer",
+    "check": "false"
+  },
+  {
+    "Name": "x64dbg Portable",
+    "Description": "An open-source x64/x32 debugger for windows.",
+    "winget": "#",
+    "choco": "x64dbg.portable",
+    "category": "Developer",
+    "check": "false"
+  },
+  {
+    "Name": "dnSpy",
+    "Description": "dnSpy is a tool to reverse engineer .NET assemblies. It includes a decompiler, a debugger and an assembly editor (and more) and can be easily extended by writing your own extension. It uses dnlib to read and write assemblies so it can handle obfuscated assemblies (eg. malware) without crashing.",
+    "winget": "#",
+    "choco": "dnspy",
+    "category": "Developer",
+    "check": "false"
+  },
+  {
+    "Name": "Cheat Engine",
+    "Description": "Cheat Engine is an open source tool designed to help you modify single player games.",
+    "winget": "#",
+    "choco": "cheatengine",
     "category": "Developer",
     "check": "false"
   },
@@ -1515,6 +1787,14 @@ $sync.configs.applications = '[
     "check": "false"
   },
   {
+    "Name": "Notion",
+    "Description": "The all-in-one workspace for your notes, tasks, wikis, and databases.",
+    "winget": "#",
+    "choco": "notion",
+    "category": "Developer",
+    "check": "false"
+  },
+  {
     "Name": "FL Studio",
     "Description": "FL Studio is a digital audio workstation (DAW) developed by Image-Line. It allows you to compose, arrange, record, edit, mix, and master professional-quality music.",
     "winget": "ImageLine.FLStudio",
@@ -1544,6 +1824,70 @@ $sync.configs.applications = '[
     "winget": "#",
     "choco": "scrcpy",
     "category": "Developer",
+    "check": "false"
+  },
+  {
+    "Name": "VirtualBox",
+    "Description": "VirtualBox is a cross-platform virtualization application. It installs on existing Intel or AMD-based computers, whether they are running Windows, Mac, Linux or Solaris operating systems. It extends the capabilities of your existing computer so that it can run multiple operating systems (inside multiple virtual machines) at the same time.",
+    "winget": "#",
+    "choco": "virtualbox",
+    "category": "Developer",
+    "check": "false"
+  },
+  {
+    "Name": "UltraISO",
+    "Description": "UltraISO is an ISO CD/DVD image file creating/editing/converting tool and a bootable CD/DVD maker , it can directly edit the CD/DVD image file and extract files and folders from it, as well as directly make ISO files from your CD/DVD-ROM or hard disk. At the same time, you can maintain the ISO bootable information, thus creating your own bootable CD/DVDs.",
+    "winget": "#",
+    "choco": "ultraiso",
+    "category": "Developer",
+    "check": "false"
+  },
+  {
+    "Name": "Vmware Workstation",
+    "Description": "VMware Workstation Pro enables technical professionals to develop, test, demonstrate, and deploy software by running multiple x86-based Windows, Linux, and other operating systems simultaneously on the same PC.",
+    "winget": "#",
+    "choco": "vmwareworkstation",
+    "category": "Developer",
+    "check": "false"
+  },
+  {
+    "Name": "oh-my-posh",
+    "Description": " Oh my Posh is a custom prompt engine for any shell that has the ability to adjust the prompt string with a function or variable.",
+    "winget": "#",
+    "choco": "oh-my-posh",
+    "category": "Developer",
+    "check": "false"
+  },
+  {
+    "Name": "Malwarebytes",
+    "Description": "Multiple layers of malware-crushing tech, including virus protection. Thorough malware and spyware removal. Specialized ransomware protection.",
+    "winget": "#",
+    "choco": "malwarebytes",
+    "category": "Security",
+    "check": "false"
+  },
+  {
+    "Name": "Kaspersky Virus Removal Tool",
+    "Description": "Designed to remove different types of infections from an infected PC.",
+    "winget": "#",
+    "choco": "kvrt",
+    "category": "Security",
+    "check": "false"
+  },
+  {
+    "Name": "Kaspersky Anti-Virus",
+    "Description": "Antivirus protection from a range of IT threats and provides the basic tools needed to keep your PC secure.",
+    "winget": "#",
+    "choco": "kav",
+    "category": "Security",
+    "check": "false"
+  },
+  {
+    "Name": "Avast Free Antivirus",
+    "Description": "Avast Free Antivirus.",
+    "winget": "#",
+    "choco": "avastfreeantivirus",
+    "category": "Security",
     "check": "false"
   }
 ]' | convertfrom-json
@@ -2027,6 +2371,8 @@ $inputXML =  '
 
                             <CheckBox Content="Tor Browser"/>
 
+                            <CheckBox Content="Opera"/>
+
                             <CheckBox Content="Internet Download Manager"/>
 
                             <CheckBox Content="K-Lite Mega Codec Pack"/>
@@ -2043,6 +2389,10 @@ $inputXML =  '
 
                             <CheckBox Content="Aimp"/>
 
+                            <CheckBox Content="Spotify"/>
+
+                            <CheckBox Content="FastStone Image Viewer"/>
+
                             <CheckBox Content="OpenOffice"/>
 
                             <CheckBox Content="FoxitReader"/>
@@ -2055,9 +2405,13 @@ $inputXML =  '
 
                             <CheckBox Content="7-Zip"/>
 
+                            <CheckBox Content="PeaZip"/>
+
                             <CheckBox Content="QQPlayer"/>
 
                             <CheckBox Content="Telegram Desktop"/>
+
+                            <CheckBox Content="Signal"/>
 
                             <CheckBox Content="Meta Messenger"/>
 
@@ -2072,6 +2426,10 @@ $inputXML =  '
                             <CheckBox Content="TeamViewer"/>
 
                             <CheckBox Content="GIMP"/>
+
+                            <CheckBox Content="DirectX"/>
+
+                            <CheckBox Content="Microsoft Visual C++ Runtime - all versions"/>
 
                             <CheckBox Content="Microsoft Visual C++ 2005 (x86) Redistributable"/>
 
@@ -2099,15 +2457,25 @@ $inputXML =  '
 
                             <CheckBox Content="NET Framework All Versions"/>
 
+                            <CheckBox Content="AMD Ryzen Chipset Drivers"/>
+
                             <CheckBox Content="NVidia Display Driver"/>
 
-                            <CheckBox Content="NVIDIA GeForce Now"/>
+                            <CheckBox Content="NVIDIA GeForce"/>
+
+                            <CheckBox Content="Msi Afterburner"/>
 
                             <CheckBox Content="NVIDIA PhysX"/>
 
                             <CheckBox Content="Steam"/>
 
+                            <CheckBox Content="Epic Games Launcher "/>
+
+                            <CheckBox Content="Origin"/>
+
                             <CheckBox Content="Ubisoft Connect"/>
+
+                            <CheckBox Content="Rockstar Games Launcher"/>
 
                             <CheckBox Content="GameSave Manager"/>
 
@@ -2115,11 +2483,23 @@ $inputXML =  '
 
                             <CheckBox Content="OBS Studio"/>
 
+                            <CheckBox Content="Logitech Gaming Software"/>
+
                             <CheckBox Content="Lively Wallpaper"/>
+
+                            <CheckBox Content="Playnite"/>
 
                             <CheckBox Content="Driver Easy"/>
 
                             <CheckBox Content="Snappy Driver Installer"/>
+
+                            <CheckBox Content="Driver booster"/>
+
+                            <CheckBox Content="Driver Genius"/>
+
+                            <CheckBox Content="Display Driver Uninstaller"/>
+
+                            <CheckBox Content="Driver Store Explorer"/>
 
                             <CheckBox Content="1Password"/>
 
@@ -2143,9 +2523,13 @@ $inputXML =  '
 
                             <CheckBox Content="CPUID CPU-Z"/>
 
+                            <CheckBox Content="Mem Reduct"/>
+
                             <CheckBox Content="HandBrake"/>
 
                             <CheckBox Content="Rufus"/>
+
+                            <CheckBox Content="ImgBurn"/>
 
                             <CheckBox Content="Virtual CloneDrive"/>
 
@@ -2154,6 +2538,8 @@ $inputXML =  '
                             <CheckBox Content="Utilso"/>
 
                             <CheckBox Content="Ventoy"/>
+
+                            <CheckBox Content="iVentoy"/>
 
                             <CheckBox Content="AutoHotkey"/>
 
@@ -2169,7 +2555,13 @@ $inputXML =  '
 
                             <CheckBox Content="AnyDesk"/>
 
+                            <CheckBox Content="Airdroid"/>
+
+                            <CheckBox Content="UltraViewer"/>
+
                             <CheckBox Content="qBittorrent"/>
+
+                            <CheckBox Content="Google Earth Pro"/>
 
                             <CheckBox Content="XAMPP"/>
 
@@ -2179,7 +2571,19 @@ $inputXML =  '
 
                             <CheckBox Content="Godot game engine"/>
 
-                            <CheckBox Content="Microsoft Visual Studio Code"/>
+                            <CheckBox Content="Unity Hub"/>
+
+                            <CheckBox Content="Unity 3D"/>
+
+                            <CheckBox Content="Blender"/>
+
+                            <CheckBox Content="Visual Studio Code"/>
+
+                            <CheckBox Content="Sublime Text 4"/>
+
+                            <CheckBox Content="Atom"/>
+
+                            <CheckBox Content="InnoSetup"/>
 
                             <CheckBox Content="PyCharm Community Edition"/>
 
@@ -2191,11 +2595,19 @@ $inputXML =  '
 
                             <CheckBox Content="Electrum-LTS"/>
 
+                            <CheckBox Content="Hugo"/>
+
                             <CheckBox Content="Notepad++"/>
 
                             <CheckBox Content="Windows Terminal"/>
 
                             <CheckBox Content="Powershell core"/>
+
+                            <CheckBox Content="x64dbg Portable"/>
+
+                            <CheckBox Content="dnSpy"/>
+
+                            <CheckBox Content="Cheat Engine"/>
 
                             <CheckBox Content="Python"/>
 
@@ -2209,6 +2621,8 @@ $inputXML =  '
 
                             <CheckBox Content="PowerToys"/>
 
+                            <CheckBox Content="Notion"/>
+
                             <CheckBox Content="FL Studio"/>
 
                             <CheckBox Content="Android Debug Bridge"/>
@@ -2216,6 +2630,22 @@ $inputXML =  '
                             <CheckBox Content="Universal ADB Drivers"/>
 
                             <CheckBox Content="Scrcpy"/>
+
+                            <CheckBox Content="VirtualBox"/>
+
+                            <CheckBox Content="UltraISO"/>
+
+                            <CheckBox Content="Vmware Workstation"/>
+
+                            <CheckBox Content="oh-my-posh"/>
+
+                            <CheckBox Content="Malwarebytes"/>
+
+                            <CheckBox Content="Kaspersky Virus Removal Tool"/>
+
+                            <CheckBox Content="Kaspersky Anti-Virus"/>
+
+                            <CheckBox Content="Avast Free Antivirus"/>
 
             
                         </ListView>
