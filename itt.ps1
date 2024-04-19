@@ -1539,6 +1539,14 @@ $sync.configs.applications = '[
     "check": "false"
   },
   {
+    "Name": "Wireless Network Watcher Portable",
+    "Description": "Wireless Network Watcher is a small utility that scans your wireless network and displays the list of all computers and devices that are currently connected to your network.",
+    "winget": "#",
+    "choco": "wnetwatcher.portable",
+    "category": "Utilities",
+    "check": "false"
+  },
+  {
     "Name": "qBittorrent",
     "Description": "A free and open-source BitTorrent client for downloading and uploading files via the BitTorrent protocol, providing users with a lightweight and feature-rich torrenting experience.",
     "winget": "qBittorrent.qBittorrent",
@@ -2558,6 +2566,8 @@ $inputXML =  '
                             <CheckBox Content="Airdroid"/>
 
                             <CheckBox Content="UltraViewer"/>
+
+                            <CheckBox Content="Wireless Network Watcher Portable"/>
 
                             <CheckBox Content="qBittorrent"/>
 
