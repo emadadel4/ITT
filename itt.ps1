@@ -11,7 +11,7 @@
     Author         : Emad Adel @emadadel4
     GitHub         : https://github.com/emadadel4
     Website        : https://eprojects.orgfree.com/
-    Version        : 24.04.19
+    Version        : 24.04.20
 #>
 
 if (!(Test-Path -Path $ENV:TEMP)) {
@@ -27,7 +27,7 @@ Add-Type -AssemblyName PresentationFramework.Aero
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "24.04.19"
+$sync.version = "24.04.20"
 $sync.github = "https://github.com/emadadel4"
 $sync.website = "https://eprojects.orgfree.com"
 $sync.author = "Emad Adel @emadadel4"
@@ -93,6 +93,7 @@ function Test-InternetConnection {
 }
 
 #region Function to filter a list based on a search input
+
 function Search{
     
     # Retrieves the search input, converts it to lowercase, and filters the list based on the input
@@ -105,33 +106,37 @@ function Search{
 
 }
 
-
 function FilterByCat {
-    param (
-        $Cat
-    )
+    # param (
+    #     $Cat
+    # )
 
-    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.list.Items)
+    # $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.list.Items)
 
-    # Define the filter predicate
-    $filterPredicate = {
-        param($item)
-        # Define the tag you want to filter by
-        $tagToFilter =  $Cat
-        # Check if the item has the tag
-        $itemTag = $item.Tag
-        return $itemTag -eq $tagToFilter
-    }
+    # # Define the filter predicate
+    # $filterPredicate = {
+    #     param($item)
+    #     # Define the tag you want to filter by
+    #     $tagToFilter =  $Cat
+    #     # Check if the item has the tag
+    #     $itemTag = $item.Tag
+    #     return $itemTag -eq $tagToFilter
+    # }
 
-    # Apply the filter to the collection view
-    $collectionView.Filter = $filterPredicate
+    # $sync.list.Clear()
+    # # Apply the filter to the collection view
+    # $collectionView.Filter = $filterPredicate
     
 }
 
 function ClearFilter {
-    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.list.Items)
-    $collectionView.Filter = $null
+
+    # $sync.list.Clear()
+
+    # $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.list.Items)
+    # $collectionView.Filter = $null
 }
+
 #endregion
 
 
@@ -215,13 +220,6 @@ function Get-SelectedTweeaks {
 
 function Invoke-Install() {
 
-    # Check internet connection
-    if (Test-InternetConnection) {
-    } else {
-        [System.Windows.MessageBox]::Show("Internet is not available.", "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
-        return
-    }
-
     if($sync.ProcessRunning)
     {
         $msg = "An Install process is currently running."
@@ -258,6 +256,14 @@ function Invoke-Install() {
                         }
                     })
                    
+                }else{
+                    
+                    $sync.list.Dispatcher.Invoke([Action]{
+                        foreach ($item in $sync.list.Items)
+                        {
+                            $item.IsChecked = $false
+                        }
+                    })
                 }
             }
             Catch
@@ -278,13 +284,12 @@ function Invoke-Install() {
 
 function ApplyTweaks() {
 
-
-    # Check internet connection
-    if (Test-InternetConnection) {
-    } else {
-        [System.Windows.MessageBox]::Show("Internet is not available.", "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
-        return
-    }
+    # # Check internet connection
+    # if (Test-InternetConnection) {
+    # } else {
+    #     [System.Windows.MessageBox]::Show("Internet is not available.", "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
+    #     return
+    # }
 
     if($sync.ProcessRunning)
     {
@@ -447,7 +452,7 @@ function PlayMusic {
 }
 
 
-#PlayMusic *> $null
+PlayMusic *> $null
 
 
 # Show Custom Msg
@@ -1876,7 +1881,7 @@ $sync.configs.tweaks = '[
     "name": "System File Checker",
     "description": "Use the System File Checker tool to repair missing or corrupted system files",
     "repo": "null",
-    "script": "sfc /scannow",
+    "script": "sfc /scannow;",
     "check": "true",
     "category": "tweak"
   },
@@ -1884,7 +1889,7 @@ $sync.configs.tweaks = '[
     "name": "Disk Cleanup",
     "description": "Clean temporary files that are not necessary",
     "repo": "null",
-    "script": "cleanmgr.exe /d C: /VERYLOWDISK Dism.exe /online /Cleanup-Image /StartComponentCleanup /ResetBase",
+    "script": "cleanmgr.exe /d C: /VERYLOWDISK Dism.exe /online /Cleanup-Image /StartComponentCleanup /ResetBase;",
     "check": "true",
     "category": "tweak"
   },
@@ -1892,7 +1897,7 @@ $sync.configs.tweaks = '[
     "name": "Restore All Windows Services to Default",
     "description": "If you face a problem with some system services, you can restore all services to Default.",
     "repo": "null",
-    "script": "Invoke-RestMethod https://raw.githubusercontent.com/emadadel4/WindowsTweaks/main/restore.bat | Invoke-Expression",
+    "script": "Invoke-RestMethod https://raw.githubusercontent.com/emadadel4/WindowsTweaks/main/restore.bat | Invoke-Expression;",
     "check": "true",
     "category": "tweak"
   },
@@ -1900,7 +1905,7 @@ $sync.configs.tweaks = '[
     "name": "Remove Folder Shortcuts From Windows'' File Explorer",
     "description": "Remove Documents, Videos, Pictures, Desktop. Shortcuts from File Explorer ",
     "repo": "https://github.com/emadadel4/WindowsTweaks",
-    "script": "Invoke-RestMethod https://raw.githubusercontent.com/emadadel4/WindowsTweaks/main/rm.ps1 | Invoke-Expression",
+    "script": "Invoke-RestMethod https://raw.githubusercontent.com/emadadel4/WindowsTweaks/main/rm.ps1 | Invoke-Expression;",
     "check": "true",
     "category": "tweak"
   },
@@ -1908,7 +1913,7 @@ $sync.configs.tweaks = '[
     "name": "Fix stutter in games",
     "description": "Fix Stutter in Games (Disable GameBarPresenceWriter). Windows 10/11",
     "repo": "https://github.com/emadadel4/Fix-Stutter-in-Games",
-    "script": "Invoke-RestMethod https://raw.githubusercontent.com/emadadel4/Fix-Stutter-in-Games/main/fix.ps1 | Invoke-Expression",
+    "script": "Invoke-RestMethod https://raw.githubusercontent.com/emadadel4/Fix-Stutter-in-Games/main/fix.ps1 | Invoke-Expression;",
     "check": "true",
     "category": "tweak"
   },
@@ -1916,7 +1921,7 @@ $sync.configs.tweaks = '[
     "name": "Remove Unnecessary Windows 10 Apps",
     "description": "BingNews, GetHelp, Getstarted, Messaging, Microsoft3DViewer, MicrosoftOfficeHub, MicrosoftSolitaireCollection, News, Office.Lens, Office.OneNote, Office.Sway, OneConnect, People, Print3D, RemoteDesktop, SkypeApp, StorePurchaseApp, Office.Todo.List, Whiteboard, WindowsAlarms, WindowsCamera, windowscommunicationsapps, WindowsFeedbackHub, WindowsMaps, WindowsSoundRecorder, Xbox.TCUI, XboxApp, XboxGameOverlay, XboxIdentityProvider, XboxSpeechToTextOverlay, ZuneMusic, ZuneVideo, Windows.Cortana, MSPaint",
     "repo": "https://github.com/emadadel4/WindowsTweaks",
-    "script": "Invoke-RestMethod https://raw.githubusercontent.com/emadadel4/WindowsTweaks/main/debloater.ps1 | Invoke-Expression",
+    "script": "Invoke-RestMethod https://raw.githubusercontent.com/emadadel4/WindowsTweaks/main/debloater.ps1 | Invoke-Expression;",
     "check": "true",
     "category": "tweak"
   },
@@ -1924,7 +1929,7 @@ $sync.configs.tweaks = '[
     "name": "Enable the Ultimate Performance Power Plan",
     "description": "Enable the Ultimate Performance Power Plan",
     "repo": "https://github.com/emadadel4/WindowsTweaks",
-    "script": "powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61",
+    "script": "powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61;",
     "fromUrl": "true",
     "category": "tweak"
   },
@@ -1932,8 +1937,16 @@ $sync.configs.tweaks = '[
     "name": " Reset the TCP/IP Stack",
     "description": "If you have an internet problem, Reset network configuration",
     "repo": "null",
-    "script": "netsh int ip reset",
+    "script": "netsh int ip reset;",
     "check": "true",
+    "category": "tweak"
+  },
+  {
+    "name": "Setup Auto login",
+    "description": "If you have an internet problem, Reset network configuration",
+    "repo": "null",
+    "script": "curl.exe -ss \"https://live.sysinternals.com/Autologon.exe\" -o $env:temp\\autologin.exe ; cmd /c $env:temp\\autologin.exe /accepteula",
+    "check": true,
     "category": "tweak"
   }
 ]' | convertfrom-json
@@ -2940,6 +2953,8 @@ $inputXML =  '
 
                             <CheckBox Content=" Reset the TCP/IP Stack"/>
 
+                            <CheckBox Content="Setup Auto login"/>
+
             
                         </ListView>
                     </TabItem.Content>
@@ -3202,20 +3217,21 @@ $window.FindName('applyBtn').add_click({ApplyTweaks})
 
 $window.FindName('searchInput').add_TextChanged({Search})
 
-$window.FindName('searchInput').add_GotFocus({ClearFilter})
+#$window.FindName('searchInput').add_GotFocus({ClearFilter})
 
 $window.FindName('about').add_MouseLeftButtonDown({About})
 
 $window.FindName('themeText').add_click({Toggle-Theme})
 
 # Catgoray bar buttons
-$window.FindName('all').add_click({ClearFilter})
-$window.FindName('b').add_click({ FilterByCat($window.FindName('b').Content)})
-$window.FindName('m').add_click({FilterByCat($window.FindName('m').Content)})
-$window.FindName('d').add_click({ FilterByCat($window.FindName('d').Content)})
-$window.FindName('g').add_click({ FilterByCat($window.FindName('g').Content)})
-$window.FindName('u').add_click({ FilterByCat($window.FindName('u').Content)})
-$window.FindName('c').add_click({ FilterByCat($window.FindName('c').Content)})
+#$window.FindName('all').add_click({ClearFilter})
+
+# $window.FindName('b').add_click({ FilterByCat($window.FindName('b').Content)})
+# $window.FindName('m').add_click({FilterByCat($window.FindName('m').Content)})
+# $window.FindName('d').add_click({ FilterByCat($window.FindName('d').Content)})
+# $window.FindName('g').add_click({ FilterByCat($window.FindName('g').Content)})
+# $window.FindName('u').add_click({ FilterByCat($window.FindName('u').Content)})
+# $window.FindName('c').add_click({ FilterByCat($window.FindName('c').Content)})
 
 $Window.Add_Closing({
     Write-Host "Bye :)"
