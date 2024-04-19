@@ -62,17 +62,7 @@
                         Foreground="{DynamicResource DefaultTextColor}"
                         
                         />
-
-                        <Button Name="r" 
-                        Cursor="Hand" 
-                        Content="Fresh Start" 
-                        Height="20" 
-                        Width="100" Margin="4"  
-                        Background="{DynamicResource BGColor}" 
-                        Foreground="{DynamicResource DefaultTextColor}"
-
-                        />
-
+                       
                         <Button Name="m" 
                         Cursor="Hand"  
                         Content="Media" 

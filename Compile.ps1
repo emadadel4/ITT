@@ -67,7 +67,9 @@ $xaml = $xaml -replace "{{Colors}}", $colorsContent
 $appCheckboxex = ""
 foreach ($a in $sync.configs.applications) {
             $appCheckboxex += @"
-                <CheckBox Content="$($a.Name)"/>
+            
+                <CheckBox Content="$($a.Name)" Tag="$($a.category)"  />
+
 
             
 "@
@@ -114,4 +116,4 @@ Get-Content .\scripts\main.ps1 | Out-File ./$scriptname -Append -Encoding ascii
 
 
 
-#./itt.ps1
+./itt.ps1

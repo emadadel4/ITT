@@ -60,7 +60,7 @@
     "Description": "A privacy-focused web browser that blocks ads and trackers, offering faster and safer browsing experiences.",
     "winget": "Brave.Brave",
     "choco": "brave",
-    "category": "Brave.Brave",
+    "category": "Browsers",
     "check": "false"
   },
   {
@@ -68,7 +68,7 @@
     "Description": "A web browser that prioritizes user privacy by routing internet traffic through a global network of servers, enabling anonymous browsing.",
     "winget": "TorProject.TorBrowser",
     "choco": "tor-browser",
-    "category": "Brave.Brave",
+    "category": "Browsers",
     "check": "false"
   },
   {
@@ -76,7 +76,7 @@
     "Description": "The Opera web browser makes the Web fast and fun, giving you a better web browser experience on any computer.",
     "winget": "#",
     "choco": "opera",
-    "category": "Brave.Brave",
+    "category": "Browsers",
     "check": "false"
   },
   {

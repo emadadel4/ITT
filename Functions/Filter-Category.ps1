@@ -1,60 +1,44 @@
-function FilterApplicationsByCategory {
-    <#
-    .DESCRIPTION
-    This function filters and populates a list of applications based on the specified category.
+#region Function to filter a list based on a search input
+function Search{
+    
+    # Retrieves the search input, converts it to lowercase, and filters the list based on the input
+    $filter = $window.FindName('searchInput').Text.ToLower()
+    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.list.Items)
+    $collectionView.Filter = {
+        param($item)
+        $item -like "*$filter*"
+    }
 
-    .PARAMETER cat
-    The category based on which the applications are filtered.
-    #>
+}
+
+
+function FilterByCat {
     param (
-        [string]$Category
+        $Cat
     )
 
-    $window.FindName('apps').IsSelected = $true 
+    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.list.Items)
 
-    $sync.list.Items.Clear()
-
-    foreach ($item in $sync.configs.applications) {
-        if($item.category -eq $Category) {
-            $checkbox = New-Object System.Windows.Controls.CheckBox
-            $sync.list.Items.Add($checkbox) | Out-Null
-            $checkbox.Content = $item.name
-        }
+    # Define the filter predicate
+    $filterPredicate = {
+        param($item)
+        # Define the tag you want to filter by
+        $tagToFilter =  $Cat
+        # Check if the item has the tag
+        $itemTag = $item.Tag
+        return $itemTag -eq $tagToFilter
     }
+
+    # Apply the filter to the collection view
+    $collectionView.Filter = $filterPredicate
+    
 }
 
-function ShowAllApplications {
-    <#
-    .DESCRIPTION
-    This function populates the list with all available applications.
-    #>
+function ShowALL {
 
-    $window.FindName('apps').IsSelected = $true 
-
-    $sync.list.Items.Clear()
-
-    foreach ($item in $sync.configs.applications) {
-        $checkbox = New-Object System.Windows.Controls.CheckBox
-        $sync.list.Items.Add($checkbox) | Out-Null
-        $checkbox.Content = $item.name
-    }
+    Write-Host "clear"
+    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.list.Items)
+    $collectionView.Filter = $null
 }
+#endregion
 
-function ShowRecommendedApplications {
-    <#
-    .DESCRIPTION
-    This function populates the list with recommended applications.
-    #>
-
-    $window.FindName('apps').IsSelected = $true 
-
-    $sync.list.Items.Clear()
-
-    foreach ($item in $sync.configs.applications) {
-        if($item.check -eq 'true') {
-            $checkbox = New-Object System.Windows.Controls.CheckBox
-            $sync.list.Items.Add($checkbox) | Out-Null
-            $checkbox.Content = $item.name
-        }
-    }
-}
