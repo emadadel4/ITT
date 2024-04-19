@@ -3202,7 +3202,7 @@ $window.FindName('applyBtn').add_click({ApplyTweaks})
 
 $window.FindName('searchInput').add_TextChanged({Search})
 
-$window.FindName('searchInput').add_GotFocus({ShowAllApplications})
+$window.FindName('searchInput').add_GotFocus({ClearFilter})
 
 $window.FindName('about').add_MouseLeftButtonDown({About})
 
