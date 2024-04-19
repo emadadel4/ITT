@@ -608,6 +608,14 @@
     "check": "false"
   },
   {
+    "Name": "AOMEI Partition Assistant Standard",
+    "Description": "AOMEI Partition Assistant Standard allows you to realize disk upgrade/replacement, partition style conversion, OS migration and other disk managements without any difficulties.",
+    "winget": "#",
+    "choco": "partition-assistant-standard",
+    "category": "Utilities",
+    "check": "false"
+  },
+  {
     "Name": "AOMEI Backupper",
     "Description": "A backup and recovery software that enables users to create system backups, disk backups, partition backups, and file backups to protect data against system failures and data loss.",
     "winget": "AOMEI.Backupper.Standard",
