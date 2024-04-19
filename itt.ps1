@@ -11,7 +11,7 @@
     Author         : Emad Adel @emadadel4
     GitHub         : https://github.com/emadadel4
     Website        : https://eprojects.orgfree.com/
-    Version        : 24.04.18
+    Version        : 24.04.19
 #>
 
 if (!(Test-Path -Path $ENV:TEMP)) {
@@ -27,7 +27,7 @@ Add-Type -AssemblyName PresentationFramework.Aero
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "24.04.18"
+$sync.version = "24.04.19"
 $sync.github = "https://github.com/emadadel4"
 $sync.website = "https://eprojects.orgfree.com"
 $sync.author = "Emad Adel @emadadel4"
@@ -92,72 +92,66 @@ function Test-InternetConnection {
     }
 }
 
-function Catgoray($cat){
-
-    $window.FindName('apps').IsSelected = $true 
-
+function FilterApplicationsByCategory {
     <#
     .DESCRIPTION
     This function filters and populates a list of applications based on the specified category.
 
     .PARAMETER cat
     The category based on which the applications are filtered.
-
-    .EXAMPLE
-    Catgoray -cat "SomeCategory"
-
-    .EXAMPLE
-    ShowAll "Show all apps"
     #>
-
-    $sync.list.Items.Clear()
-
-    foreach ($item in $sync.configs.applications)
-    {
-        if($item.catgory -eq $cat)
-        {
-            $checkbox = New-Object System.Windows.Controls.CheckBox
-            $sync.list.Items.Add($checkbox)
-            $checkbox.Content = $item.name
-        }
-    }
-}
-
-function ShowAll{
+    param (
+        [string]$Category
+    )
 
     $window.FindName('apps').IsSelected = $true 
 
     $sync.list.Items.Clear()
 
-    foreach ($item in $sync.configs.applications)
-    {
+    foreach ($item in $sync.configs.applications) {
+        if($item.category -eq $Category) {
+            $checkbox = New-Object System.Windows.Controls.CheckBox
+            $sync.list.Items.Add($checkbox) | Out-Null
+            $checkbox.Content = $item.name
+        }
+    }
+}
+
+function ShowAllApplications {
+    <#
+    .DESCRIPTION
+    This function populates the list with all available applications.
+    #>
+
+    $window.FindName('apps').IsSelected = $true 
+
+    $sync.list.Items.Clear()
+
+    foreach ($item in $sync.configs.applications) {
         $checkbox = New-Object System.Windows.Controls.CheckBox
-        $sync.list.Items.Add($checkbox)
+        $sync.list.Items.Add($checkbox) | Out-Null
         $checkbox.Content = $item.name
     }
 }
 
-function Recommended() {
+function ShowRecommendedApplications {
+    <#
+    .DESCRIPTION
+    This function populates the list with recommended applications.
+    #>
 
     $window.FindName('apps').IsSelected = $true 
 
-    #Clear Listview
-    
     $sync.list.Items.Clear()
 
-    # get items that has check = true in json file
-    foreach ($item in $sync.configs.applications)
-    {
-        # $item.check = true
-        if($item.check -eq 'true')
-        {
+    foreach ($item in $sync.configs.applications) {
+        if($item.check -eq 'true') {
             $checkbox = New-Object System.Windows.Controls.CheckBox
-            $sync.list.Items.Add($checkbox)
+            $sync.list.Items.Add($checkbox) | Out-Null
             $checkbox.Content = $item.name
         }
     }
 }
-
 
 function CheckChoco 
 {
@@ -404,17 +398,19 @@ function PlayMusic {
             "https://archive.org/download/GrandTheftAuto4ThemeSong_201904/Grand%20Theft%20Auto%204%20Theme%20Song.mp3"
         )
     
-        $mediaPlayer = New-Object -ComObject WMPlayer.OCX
-    
+        $global:mediaPlayer = New-Object -ComObject WMPlayer.OCX
+        $global:playlistPaused = $false
+
         Function PlayAudio($url) {
             try {
-                $mediaItem = $mediaPlayer.newMedia($url)
-                $mediaPlayer.currentPlaylist.appendItem($mediaItem)
-                $mediaPlayer.controls.play() | Out-Null
+                $mediaItem = $global:mediaPlayer.newMedia($url)
+                $global:mediaPlayer.currentPlaylist.appendItem($mediaItem)
+                $global:mediaPlayer.controls.play()
             }
             catch {
             }
         }
+        
     
         # Function to shuffle the playlist
         Function ShuffleArray {
@@ -436,20 +432,43 @@ function PlayMusic {
             foreach ($url in $audioUrls) {
                 PlayAudio $url
                 # Wait for the track to finish playing
-                while ($mediaPlayer.playState -eq 3 -or $mediaPlayer.playState -eq 6) {
+                while ($global:mediaPlayer.playState -eq 3 -or $global:mediaPlayer.playState -eq 6) {
                     Start-Sleep -Milliseconds 100
                 }
             }
         }
+
+        
+
+        
     
         # Play the shuffled playlist indefinitely
-        while ($true) {
+        while ($true) 
+        {
             PlayShuffledPlaylist
         }
+
+
+        
     }
+
+
+    $window.FindName('toggleMusic').add_click({
+
+
+        Write-Host "emad"
+    
+        $global:mediaPlayer.controls.pause()
+    
+    
+    })
+    
+
 }
 
-PlayMusic *> $null
+
+#PlayMusic *> $null
+
 
 #region Function to filter a list based on a search input
 function Search{
@@ -617,87 +636,82 @@ function Show-CustomDialog {
     $dialog.ShowDialog()
 }
 
-#region theme function
-Set-ItemProperty -Path $registryPath -Name $propertyName -Value $propertyValue
-$global:isDarkMode = $False
+#region Theme Functions
+$global:isDarkMode = $global:themePreference
 
-
+# Function to toggle between dark and light modes
 function Toggle-Theme {
-    
-    if ($global:isDarkMode)
-    {
+
+    $global:isDarkMode = -not $global:isDarkMode
+
+    try {
+    if ($global:isDarkMode -eq "Dark") {
         Switch-ToLightMode
-    } 
-    else
-    {
+    } else {
         Switch-ToDarkMode
     }
-    
-    $global:isDarkMode = -not $global:isDarkMode
+    } catch {
+        Write-Host "Error toggling theme: $_"
+    }
 }
 
 # Function to switch to dark mode
 function Switch-ToDarkMode {
-
     try {
-
-        $window.FindName('themeText').Header = "Light mode"
+        $window.FindName('themeText').Header = "Light Mode"
         $theme = $window.FindResource("DarkTheme")
-        $window.Resources.MergedDictionaries.Clear()
-        $window.Resources.MergedDictionaries.Add($theme)
-        Set-ItemProperty -Path "HKCU:\Software\ITTEmadadel" -Name "Theme" -Value "Dark" -Force
-
+        Update-Theme $theme "Dark"
     } catch {
-        Write-Host "Error: $_"
+        Write-Host "Error switching to dark mode: $_"
     }
 }
 
 # Function to switch to light mode
 function Switch-ToLightMode {
-
     try {
-       
-        $window.FindName('themeText').Header = "Dark mode"
+        $window.FindName('themeText').Header = "Dark Mode"
         $theme = $window.FindResource("LightTheme")
-        $window.Resources.MergedDictionaries.Clear()
-        $window.Resources.MergedDictionaries.Add($theme)
-        Set-ItemProperty -Path "HKCU:\Software\ITTEmadadel" -Name "Theme" -Value "Light"
-
+        Update-Theme $theme "Light"
     } catch {
-        Write-Host "Error: $_"
+        Write-Host "Error switching to light mode: $_"
     }
 }
+
+# Function to update the theme
+function Update-Theme ($theme, $mode) {
+    $window.Resources.MergedDictionaries.Clear()
+    $window.Resources.MergedDictionaries.Add($theme)
+    Set-ItemProperty -Path "HKCU:\Software\ITTEmadadel" -Name "Theme" -Value $mode -Force
+}
+
 #endregion
-
-
-
-
 function ChangeTap() {
     
+
     if($window.FindName('apps').IsSelected)
     {
         $window.FindName('installBtn').Visibility = "Visible"
         $window.FindName('applyBtn').Visibility = "Hidden"
-        $Window.FindName('description').Text =  ""
-
-
 
         $Window.FindName('itemLink').Visibility = "Visible"
 
-        $Window.FindName('itemLink').IsEnabled = $true
-
     }
+
+    $window.FindName('apps').add_LostFocus({$Window.FindName('description').Text =  ""})
+    $window.FindName('tweeks').add_LostFocus({$Window.FindName('description').Text =  ""})
+
 
     if($window.FindName('tweeks').IsSelected)
     {
         $window.FindName('applyBtn').Visibility = "Visible"
         $window.FindName('installBtn').Visibility = "Hidden"
 
+        #$Window.FindName('itemLink').Visibility = "Visible"
 
-        $Window.FindName('itemLink').Visibility = "Hidden"
-        $Window.FindName('itemLink').IsEnabled = $false
     }
 }
+
+
 
 #===========================================================================
 # End functions
@@ -705,472 +719,554 @@ function ChangeTap() {
 $sync.configs.applications = '[
   {
     "Name": "Thorium",
+    "Description": "A web browser designed for smooth and secure browsing experiences.",
     "winget": "Alex313031.Thorium",
     "choco": "thorium",
-    "catgory": "Browsers",
+    "category": "Browsers",
     "check": "false"
   },
   {
     "Name": "Firefox",
+    "Description": "A widely-used open-source web browser known for its speed, privacy features, and customization options.",
     "winget": "Mozilla.Firefox",
     "choco": "firefox",
-    "catgory": "Browsers",
+    "category": "Browsers",
     "check": "true"
   },
   {
     "Name": "Add block extension [Firefox]",
+    "Description": "An extension for Firefox browser that enhances browsing by blocking intrusive ads and pop-ups.",
     "winget": "#",
     "choco": "adblockplusfirefox",
-    "catgory": "Browsers",
+    "category": "Browsers",
     "check": "false"
   },
   {
     "Name": "Microsoft Edge",
+    "Description": "Microsoft''s web browser built for fast and secure internet surfing, integrating seamlessly with Windows ecosystem.",
     "winget": "Microsoft.Edge",
     "choco": "microsoft-edge",
-    "catgory": "Browsers",
+    "category": "Browsers",
     "check": "false"
   },
   {
     "Name": "Google Chrome",
+    "Description": "A popular web browser known for its speed, simplicity, and vast ecosystem of extensions.",
     "winget": "Google.Chrome",
     "choco": "googlechrome",
-    "catgory": "Browsers",
+    "category": "Browsers",
     "check": "false"
   },
   {
     "Name": "uBlock Origin extension [Chrome]",
+    "Description": "A powerful ad-blocking extension for Chrome, providing users with an ad-free browsing experience.",
     "winget": "#",
     "choco": "ublockorigin-chrome",
-    "catgory": "Browsers",
+    "category": "Browsers",
     "check": "false"
   },
   {
     "Name": "Chromium",
+    "Description": "An open-source web browser project that serves as the foundation for many browsers, including Google Chrome.",
     "winget": "eloston.ungoogled-chromium",
     "choco": "chromium",
-    "catgory": "Browsers",
+    "category": "Browsers",
     "check": "false"
   },
   {
     "Name": "Brave",
+    "Description": "A privacy-focused web browser that blocks ads and trackers, offering faster and safer browsing experiences.",
     "winget": "Brave.Brave",
     "choco": "brave",
-    "catgory": "Brave.Brave",
+    "category": "Brave.Brave",
     "check": "false"
   },
   {
     "Name": "Tor Browser",
+    "Description": "A web browser that prioritizes user privacy by routing internet traffic through a global network of servers, enabling anonymous browsing.",
     "winget": "TorProject.TorBrowser",
     "choco": "tor-browser",
-    "catgory": "Brave.Brave",
+    "category": "Brave.Brave",
     "check": "false"
   },
   {
     "Name": "Internet Download Manager",
+    "Description": "A popular download manager tool that accelerates downloads and allows users to organize and schedule downloads efficiently.",
     "winget": "Tonec.InternetDownloadManager",
     "choco": "internet-download-manager",
-    "catgory": "Browsers",
+    "category": "Browsers",
     "check": "true"
   },
   {
     "Name": "K-Lite Mega Codec Pack",
+    "Description": "Comprehensive collection of audio and video codecs, filters, and tools, enabling playback of various media formats.",
     "winget": "CodecGuide.K-LiteCodecPack.Mega",
     "choco": "k-litecodecpackfull",
-    "catgory": "Media",
+    "category": "Media",
     "check": "true"
   },
   {
     "Name": "PotPlayer",
+    "Description": "A multimedia player with a sleek interface and advanced features, supporting a wide range of audio and video formats.",
     "winget": "Daum.PotPlayer",
     "choco": "potplayer",
-    "catgory": "Media",
+    "category": "Media",
     "check": "false"
   },
   {
     "Name": "VLC",
+    "Description": "A versatile media player capable of playing almost any multimedia file format, with support for various streaming protocols.",
     "winget": "VideoLAN.VLC",
     "choco": "vlc.install",
-    "catgory": "Media",
+    "category": "Media",
     "check": "false"
   },
   {
     "Name": "Kodi",
+    "Description": "A powerful open-source media center software that allows users to organize and stream their media collections.",
     "winget": "#",
     "choco": "kodi",
-    "catgory": "Media",
+    "category": "Media",
     "check": "false"
   },
   {
     "Name": "Jellyfin",
+    "Description": "An open-source media server software that enables users to stream their media libraries across devices, providing a self-hosted alternative to commercial services.",
     "winget": "#",
     "choco": "jellyfin",
-    "catgory": "Media",
+    "category": "Media",
     "check": "false"
   },
   {
     "Name": "Winamp",
+    "Description": "A classic media player known for its customizable interface and extensive plugin support, providing a nostalgic music playback experience.",
     "winget": "#",
     "choco": "winamp",
-    "catgory": "Media",
+    "category": "Media",
     "check": "false"
   },
   {
     "Name": "Aimp",
+    "Description": "A lightweight and feature-rich audio player with support for various audio formats and customizable interface themes.",
     "winget": "#",
     "choco": "aimp",
-    "catgory": "Media",
+    "category": "Media",
     "check": "false"
   },
-
   {
     "Name": "OpenOffice",
+    "Description": "An open-source office productivity suite offering word processing, spreadsheet, presentation, and other office tools, compatible with Microsoft Office formats.",
     "winget": "Apache.OpenOffice",
     "choco": "openoffice",
-    "catgory": "Documents",
+    "category": "Documents",
     "check": "false"
   },
   {
     "Name": "FoxitReader",
+    "Description": "A lightweight and feature-rich PDF reader with annotation, form filling, and document signing capabilities.",
     "winget": "Foxit.FoxitReader",
     "choco": "foxitreader",
-    "catgory": "Documents",
+    "category": "Documents",
     "check": "false"
   },
   {
     "Name": "LibreOffice",
+    "Description": "A powerful open-source office suite providing word processing, spreadsheet, presentation, and other office tools, compatible with Microsoft Office formats.",
     "winget": "TheDocumentFoundation.LibreOffice",
     "choco": "libreoffice-fresh",
-    "catgory": "Documents",
+    "category": "Documents",
     "check": "false"
   },
   {
     "Name": "SumatraPDF",
+    "Description": "A lightweight and fast PDF reader with minimalistic design and focus on simplicity and speed.",
     "winget": "SumatraPDF.SumatraPDF",
     "choco": "sumatrapdf.install",
-    "catgory": "Documents",
+    "category": "Documents",
     "check": "false"
   },
   {
     "Name": "WinRAR",
+    "Description": "A popular file compression and archiving utility that supports various archive formats and offers advanced features such as encryption and self-extracting archives.",
     "winget": "RARLab.WinRAR",
     "choco": "winrar",
-    "catgory": "Compression",
+    "category": "Compression",
     "check": "false"
   },
   {
     "Name": "7-Zip",
+    "Description": "An open-source file archiver with a high compression ratio, supporting various archive formats and providing a powerful command-line interface.",
     "winget": "7zip.7zip",
     "choco": "7zip",
-    "catgory": "Compression",
+    "category": "Compression",
     "check": "false"
   },
   {
     "Name": "QQPlayer",
+    "Description": "A multimedia player with support for a wide range of audio and video formats, featuring built-in codecs and additional functionalities such as screen capturing and video conversion.",
     "winget": "Tencent.QQPlayer",
     "choco": "Tencent.QQPlayer",
-    "catgory": "Media",
+    "category": "Media",
     "check": "false"
   },
   {
     "Name": "Telegram Desktop",
+    "Description": "A cross-platform messaging app with a focus on speed and security, offering end-to-end encryption and a wide range of features such as group chats, file sharing, and stickers.",
     "winget": "Telegram.TelegramDesktop",
     "choco": "telegram",
-    "catgory": "Communication",
+    "category": "Communication",
     "check": "false"
   },
   {
     "Name": "Meta Messenger",
+    "Description": "A messaging app that allows users to connect with friends and family through text messages, voice calls, and video calls, offering various multimedia sharing features.",
     "winget": "WhatsApp.WhatsApp",
     "choco": "messenger",
-    "catgory": "Communication",
+    "category": "Communication",
     "check": "false"
   },
   {
     "Name": "Skype",
+    "Description": "A communication platform that enables users to make voice and video calls, send instant messages, and share files, supporting both individual and group conversations.",
     "winget": "Microsoft.Skype",
     "choco": "skype",
-    "catgory": "Communication",
+    "category": "Communication",
     "check": "false"
   },
   {
     "Name": "Zoom",
+    "Description": "A video conferencing app that facilitates online meetings, webinars, and virtual events, allowing participants to interact through video, audio, and chat.",
     "winget": " Zoom.Zoom",
     "choco": "zoom",
-    "catgory": "Communication",
+    "category": "Communication",
     "check": "false"
   },
   {
     "Name": "Microsoft Teams",
+    "Description": "A collaboration platform that combines workplace chat, video meetings, file storage, and application integration, enhancing teamwork and productivity within organizations.",
     "winget": "Microsoft.Teams",
     "choco": "microsoft-teams.install",
-    "catgory": "Communication",
+    "category": "Communication",
     "check": "false"
   },
   {
     "Name": "Discord",
+    "Description": "A VoIP application and digital distribution platform designed for creating communities and connecting gamers, providing text, voice, and video communication features.",
     "winget": "Discord.Discord",
     "choco": "discord",
-    "catgory": "Communication",
+    "category": "Communication",
     "check": "false"
   },
   {
     "Name": "TeamViewer",
+    "Description": "A remote access and support software that enables users to remotely control computers, transfer files, and collaborate online, facilitating remote work and IT support.",
     "winget": "TeamViewer.TeamViewer",
     "choco": "teamviewer",
-    "catgory": "File Sharing",
+    "category": "File Sharing",
     "check": "false"
   },
   {
     "Name": "GIMP",
+    "Description": "A free and open-source raster graphics editor used for image retouching and editing, drawing and painting, and converting between different image formats.",
     "winget": "GIMP.GIMP",
     "choco": "gimp",
-    "catgory": "Imaging",
+    "category": "Imaging",
     "check": "false"
   },
   {
     "Name": "Microsoft Visual C++ 2005 (x86) Redistributable",
+    "Description": "A set of runtime components required to run applications developed with Microsoft Visual C++ 2005, providing libraries, DLLs, and other resources.",
     "winget": "Microsoft.VCRedist.2005.x86",
     "choco": "vcredist2005",
-    "catgory": "Gaming",
+    "category": "Gaming",
     "check": "false"
   },
   {
     "Name": "Microsoft Visual C++ 2005 (x64) Redistributable",
+    "Description": "A set of runtime components required to run 64-bit applications developed with Microsoft Visual C++ 2005, providing libraries, DLLs, and other resources.",
     "winget": "Microsoft.VCRedist.2005.x64",
     "choco": "vcredist2005",
-    "catgory": "Gaming",
+    "category": "Gaming",
     "check": "false"
   },
   {
     "Name": "Microsoft Visual C++ 2008 (x86) Redistributable",
+    "Description": "A set of runtime components required to run applications developed with Microsoft Visual C++ 2008, providing libraries, DLLs, and other resources.",
     "winget": "Microsoft.VCRedist.2008.x86",
     "choco": "vcredist2008",
-    "catgory": "Gaming",
+    "category": "Gaming",
     "check": "false"
   },
   {
     "Name": "Microsoft Visual C++ 2008 (x64) Redistributable",
+    "Description": "A set of runtime components required to run 64-bit applications developed with Microsoft Visual C++ 2008, providing libraries, DLLs, and other resources.",
     "winget": "Microsoft.VCRedist.2008.x64",
     "choco": "vcredist2008",
-    "catgory": "Gaming",
+    "category": "Gaming",
     "check": "false"
   },
   {
     "Name": "Microsoft Visual C++ 2010 (x86) Redistributable",
+    "Description": "A set of runtime components required to run applications developed with Microsoft Visual C++ 2010, providing libraries, DLLs, and other resources.",
     "winget": "Microsoft.VCRedist.2010.x86",
     "choco": "vcredist2010",
-    "catgory": "Gaming",
+    "category": "Gaming",
     "check": "false"
   },
   {
     "Name": "Microsoft Visual C++ 2010 (x64) Redistributable",
+    "Description": "A set of runtime components required to run 64-bit applications developed with Microsoft Visual C++ 2010, providing libraries, DLLs, and other resources.",
     "winget": "Microsoft.VCRedist.2010.x64",
     "choco": "vcredist2010",
-    "catgory": "Gaming",
+    "category": "Gaming",
     "check": "false"
   },
   {
     "Name": "Microsoft Visual C++ 2012 (x86) Redistributable",
+    "Description": "A set of runtime components required to run applications developed with Microsoft Visual C++ 2012, providing libraries, DLLs, and other resources.",
     "winget": "Microsoft.VCRedist.2012.x86",
     "choco": "vcredist2012",
-    "catgory": "Gaming",
+    "category": "Gaming",
     "check": "false"
   },
   {
     "Name": "Microsoft Visual C++ 2012 (x64) Redistributable",
+    "Description": "A set of runtime components required to run 64-bit applications developed with Microsoft Visual C++ 2012, providing libraries, DLLs, and other resources.",
     "winget": "Microsoft.VCRedist.2012.x64",
     "choco": "vcredist2012",
-    "catgory": "Gaming",
+    "category": "Gaming",
     "check": "false"
   },
   {
     "Name": "Microsoft Visual C++ 2013 (x86) Redistributable",
+    "Description": "A set of runtime components required to run applications developed with Microsoft Visual C++ 2013, providing libraries, DLLs, and other resources.",
     "winget": "Microsoft.VCRedist.2013.x86",
     "choco": "vcredist2013",
-    "catgory": "Gaming",
+    "category": "Gaming",
     "check": "false"
   },
   {
     "Name": "Microsoft Visual C++ 2013 (x64) Redistributable",
+    "Description": "A set of runtime components required to run 64-bit applications developed with Microsoft Visual C++ 2013, providing libraries, DLLs, and other resources.",
     "winget": "Microsoft.VCRedist.2013.x64",
     "choco": "vcredist2013",
-    "catgory": "Gaming",
+    "category": "Gaming",
     "check": "false"
   },
   {
     "Name": "Microsoft Visual C++ 2015-2022 (x64) Redistributable",
+    "Description": "A set of runtime components required to run 64-bit applications developed with Microsoft Visual C++ 2015-2022, providing libraries, DLLs, and other resources.",
     "winget": "Microsoft.VCRedist.2015+.x64",
     "choco": "vcredist2015",
-    "catgory": "Gaming",
+    "category": "Gaming",
     "check": "false"
   },
   {
     "Name": "Microsoft Visual C++ 2015-2022  (x86) Redistributable",
+    "Description": "A set of runtime components required to run applications developed with Microsoft Visual C++ 2015-2022, providing libraries, DLLs, and other resources.",
     "winget": "Microsoft.VCRedist.2015+.x86",
     "choco": "vcredist2015",
-    "catgory": "Gaming",
+    "category": "Gaming",
     "check": "false"
   },
   {
     "Name": "NET Framework All Versions",
+    "Description": "A comprehensive and consistent programming model for building applications that have visually stunning user experiences, seamless and secure communication, and the ability to model a range of business processes.",
     "winget": "#",
     "choco": "dotnet-all",
-    "catgory": "Gaming",
+    "category": "Gaming",
     "check": "false"
   },
   {
-    "Name": "NVIDIA GeForce NOW",
+    "Name": "NVidia Display Driver",
+    "Description": "The software component that allows the operating system and installed software to communicate with and control the NVIDIA graphics processing unit (GPU).",
+    "winget": "#",
+    "choco": "nvidia-display-driver",
+    "category": "Gaming",
+    "check": "false"
+  },
+  {
+    "Name": "NVIDIA GeForce Now",
+    "Description": "A cloud-based gaming service provided by NVIDIA that allows users to play video games on supported devices via a remote gaming PC hosted on NVIDIA''s servers.",
     "winget": "Nvidia.GeForceNow",
     "choco": "nvidia-geforce-now",
-    "catgory": "Gaming",
+    "category": "Gaming",
     "check": "false"
   },
   {
     "Name": "NVIDIA PhysX",
+    "Description": "A physics processing unit (PPU) software development kit (SDK) offered by NVIDIA for real-time physics simulations in video games.",
     "winget": "Nvidia.PhysX",
     "choco": "physx.legacy",
-    "catgory": "Gaming",
+    "category": "Gaming",
     "check": "false"
   },
   {
     "Name": "Steam",
+    "Description": "A digital distribution platform developed by Valve Corporation for purchasing and playing video games.",
     "winget": "Valve.Steam",
     "choco": "steam",
-    "catgory": "Gaming",
+    "category": "Gaming",
     "check": "false"
   },
   {
     "Name": "Ubisoft Connect",
+    "Description": "A digital distribution, digital rights management, multiplayer, and communications service developed by Ubisoft, providing access to Ubisoft''s games, rewards, and social features.",
     "winget": "Ubisoft.Connect",
     "choco": "ubisoft-connect",
-    "catgory": "Gaming",
+    "category": "Gaming",
     "check": "false"
   },
   {
     "Name": "GameSave Manager",
+    "Description": "A utility tool that allows users to backup, restore, and transfer their game saves between different gaming platforms and directories.",
     "winget": "InsaneMatt.GameSaveManager",
     "choco": "gamesavemanager",
-    "catgory": "Gaming",
+    "category": "Gaming",
     "check": "false"
   },
   {
     "Name": "StreamlabsOBS",
+    "Description": "A free and open-source streaming software built on top of OBS Studio with additional features tailored for streamers, such as built-in alerts, overlays, and chat integration.",
     "winget": "Streamlabs.StreamlabsOBS",
     "choco": "streamlabs-obs",
-    "catgory": "Gaming",
+    "category": "Gaming",
     "check": "false"
   },
   {
     "Name": "OBS Studio",
+    "Description": "A free and open-source software for video recording and live streaming. It offers high performance real-time video/audio capturing and mixing.",
     "winget": " OBSProject.OBSStudio",
     "choco": "obs-studio.install",
-    "catgory": "Gaming",
+    "category": "Gaming",
     "check": "false"
   },
   {
-    "Name": "Lively Wallpaper ",
+    "Name": "Lively Wallpaper",
+    "Description": "A software that allows users to set animated and interactive wallpapers on their Windows desktop, providing various customization options.",
     "winget": " #",
     "choco": "lively",
-    "catgory": "Gaming",
+    "category": "Gaming",
     "check": "false"
   },
   {
     "Name": "Driver Easy",
+    "Description": "A driver update tool that automatically detects, downloads, and installs device drivers for the user''s computer hardware.",
     "winget": "Easeware.DriverEasy",
     "choco": "drivereasyfree",
-    "catgory": "Utilities",
+    "category": "Utilities",
     "check": "false"
   },
   {
     "Name": "Snappy Driver Installer",
+    "Description": "A free and open-source tool for updating and installing device drivers on Windows, offering offline driver updates and wide hardware support.",
     "winget": "samlab-ws.SnappyDriverInstaller",
     "choco": "snappy-driver-installer",
-    "catgory": "Utilities",
+    "category": "Utilities",
     "check": "false"
   },
   {
     "Name": "1Password",
+    "Description": "A password manager that securely stores login credentials, credit card information, and other sensitive data in an encrypted vault, accessible with a single master password.",
     "winget": "AgileBits.1Password",
     "choco": "1password",
-    "catgory": "Utilities",
+    "category": "Utilities",
     "check": "false"
   },
   {
-    "Name": "MiniTool Partition Wizard ",
+    "Name": "MiniTool Partition Wizard",
+    "Description": "A disk partition management tool that allows users to create, resize, move, merge, split, copy, and convert partitions on their hard drives or storage devices.",
     "winget": "MiniTool.PartitionWizard.Free 12.8",
     "choco": "partitionwizard",
-    "catgory": "Utilities",
+    "category": "Utilities",
     "check": "false"
   },
   {
     "Name": "AOMEI Backupper",
+    "Description": "A backup and recovery software that enables users to create system backups, disk backups, partition backups, and file backups to protect data against system failures and data loss.",
     "winget": "AOMEI.Backupper.Standard",
     "choco": "backupper-standard",
-    "catgory": "Utilities",
+    "category": "Utilities",
     "check": "false"
   },
   {
     "Name": "Recuva recover",
+    "Description": "A data recovery software that helps users retrieve accidentally deleted files, including photos, documents, videos, and more, from various storage devices such as hard drives, USB drives, and memory cards.",
     "winget": "#",
     "choco": "recuva",
-    "catgory": "Utilities",
+    "category": "Utilities",
     "check": "false"
   },
   {
     "Name": "CCleaner",
+    "Description": "A system optimization, privacy, and cleaning tool that helps users remove unused files, clean up temporary files, and optimize their Windows PCs for better performance.",
     "winget": "Piriform.CCleaner",
     "choco": "ccleaner",
-    "catgory": "Utilities",
+    "category": "Utilities",
     "check": "false"
   },
   {
     "Name": "BCUninstaller",
+    "Description": "A powerful uninstaller tool for Windows that allows users to remove unwanted programs, plugins, and Windows Store apps, along with leftover files and registry entries.",
     "winget": "Klocman.BulkCrapUninstaller",
     "choco": "bulk-crap-uninstaller",
-    "catgory": "Utilities",
+    "category": "Utilities",
     "check": "false"
   },
   {
     "Name": "HWiNFO",
+    "Description": "A hardware information and diagnostic tool that provides detailed information about the hardware components of a computer system, including sensors, temperature, voltage, and more.",
     "winget": "REALiX.HWiNFO",
     "choco": "hwinfo.install",
-    "catgory": "Utilities",
+    "category": "Utilities",
     "check": "false"
   },
   {
     "Name": "Speccy",
+    "Description": "A system information tool that provides detailed information about the hardware and operating system of a computer, including CPU, RAM, motherboard, graphics card, and storage devices.",
     "winget": "Piriform.Speccy",
     "choco": "speccy",
-    "catgory": "Utilities",
+    "category": "Utilities",
     "check": "false"
   },
   {
     "Name": "FurMark",
+    "Description": "A graphics card stress testing and benchmarking utility that helps users test the stability, cooling, and performance of their GPU by rendering a highly intensive 3D graphics scene.",
     "winget": "Geeks3D.FurMark",
     "choco": "furmark",
-    "catgory": "Utilities",
+    "category": "Utilities",
+    "check": "false"
+  },
+  {
+    "Name": "Hard Disk Sentinel",
+    "Description": "A hard disk monitoring and analysis software that helps users monitor the health, performance, and temperature of their hard drives, SSDs, and other storage devices.",
+    "winget": "#",
+    "choco": "hdsentinel",
+    "category": "Utilities",
     "check": "false"
   },
   {
     "Name": "CPUID CPU-Z",
+    "Description": "A system monitoring utility that provides detailed information about the CPU, motherboard, memory, and other hardware components of a computer system.",
     "winget": "CPUID.CPU-Z",
     "choco": "cpu-z.install",
-    "catgory": "Utilities",
+    "category": "Utilities",
     "check": "false"
   },
   {
     "Name": "HandBrake",
+    "Description": "A free and open-source video transcoder tool that converts video files from one format to another, supporting a wide range of input and output formats.",
     "winget": "HandBrake.HandBrake",
     "choco": "handbrake.install",
-    "catgory": "Utilities",
+    "category": "Utilities",
     "check": "false"
   },
   {
     "Name": "Rufus",
+    "Description": "A utility tool for creating bootable USB drives from ISO images, helping users to install or run operating systems, such as Windows, Linux, or other utilities.",
     "winget": "Rufus.Rufus",
     "choco": "rufus",
-    "catgory": "Utilities",
+    "category": "Utilities",
     "check": "false"
   },
   {
@@ -1181,214 +1277,275 @@ $sync.configs.applications = '[
     "check": "false"
   },
   {
+    "Name": "Virtual CloneDrive",
+    "Description": "A free software that allows users to mount disc images as virtual drives, enabling them to access the content of ISO, BIN, and CCD files without the need for physical discs.",
+    "winget": "#",
+    "choco": "virtualclonedrive",
+    "category": "Utilities",
+    "check": "false"
+  },
+  {
     "Name": "Utilso",
+    "Description": "A powerful ISO image management tool that enables users to create, edit, extract, and burn ISO files, providing a comprehensive solution for managing disk image files.",
     "winget": "SerhiiSlieptsov.Utilso",
     "choco": "ultraiso",
-    "catgory": "Utilities",
+    "category": "Utilities",
     "check": "false"
   },
   {
     "Name": "Ventoy",
+    "Description": "An open-source tool for creating bootable USB drives with multiple ISO files, allowing users to boot various operating systems or utilities directly from a single USB drive.",
     "winget": "Ventoy.Ventoy",
     "choco": "ventoy",
-    "catgory": "Utilities",
+    "category": "Utilities",
     "check": "false"
   },
   {
     "Name": "AutoHotkey",
+    "Description": "A scripting language for automating repetitive tasks and creating macros on Windows, allowing users to customize keyboard shortcuts, remap keys, and automate mouse actions.",
     "winget": "AutoHotkey.AutoHotkey",
     "choco": "autohotkey",
-    "catgory": "Utilities",
+    "category": "Utilities",
     "check": "false"
   },
   {
     "Name": "Rainmeter",
+    "Description": "A customizable desktop customization tool that displays customizable skins, widgets, and applets on the Windows desktop, providing users with real-time system monitoring and information.",
     "winget": "#",
     "choco": "rainmeter",
-    "catgory": "Utilities",
+    "category": "Utilities",
     "check": "false"
   },
   {
     "Name": "FxSound",
+    "Description": "An audio enhancer software that improves the sound quality of music, videos, and games on Windows PCs by providing advanced audio processing and customization options.",
     "winget": "FxSoundLLC.FxSound",
     "choco": "fxsound",
-    "catgory": "Utilities",
+    "category": "Utilities",
     "check": "false"
   },
   {
     "Name": "HiSuite",
+    "Description": "A management tool for Huawei smartphones and tablets that allows users to manage, backup, and transfer data between their devices and Windows PCs, including contacts, messages, and multimedia files.",
     "winget": "Huawei.HiSuite",
     "choco": "Huawei.HiSuite",
-    "catgory": "Utilities",
+    "category": "Utilities",
     "check": "false"
   },
   {
     "Name": "Vysor",
+    "Description": "A screen mirroring and remote control software that enables users to view and control Android devices from Windows PCs, allowing for easy screen sharing, app testing, and troubleshooting.",
     "winget": "#",
     "choco": "vysor",
-    "catgory": "Utilities",
+    "category": "Utilities",
     "check": "false"
   },
   {
     "Name": "Unifiedremote",
+    "Description": "A remote control app that turns smartphones into universal remote controls for Windows, macOS, and Linux computers, allowing users to control media playback, presentations, and more.",
     "winget": "unifiedremote",
     "choco": "unifiedremote",
-    "catgory": "Utilities",
+    "category": "Utilities",
     "check": "false"
   },
   {
     "Name": "AnyDesk",
+    "Description": "A remote desktop software that allows users to access and control Windows, macOS, Linux, Android, and iOS devices from anywhere, providing secure and reliable remote access.",
     "winget": "AnyDeskSoftwareGmbH.AnyDesk",
     "choco": "anydesk.install",
-    "catgory": "Utilities",
+    "category": "Utilities",
     "check": "false"
   },
   {
     "Name": "qBittorrent",
+    "Description": "A free and open-source BitTorrent client for downloading and uploading files via the BitTorrent protocol, providing users with a lightweight and feature-rich torrenting experience.",
     "winget": "qBittorrent.qBittorrent",
     "choco": "qbittorrent",
-    "catgory": "Utilities",
+    "category": "Utilities",
     "check": "false"
   },
   {
     "Name": "XAMPP",
+    "Description": "XAMPP is a free and open-source cross-platform web server solution stack package developed by Apache Friends, consisting mainly of the Apache HTTP Server, MariaDB database, and interpreters for scripts written in the PHP and Perl programming languages.",
     "winget": "XAMPP 8.2",
     "choco": "xampp-81",
-    "catgory": "Developer",
+    "category": "Developer",
     "check": "false"
   },
   {
     "Name": "Visual Studio Professional 2022",
+    "Description": "Visual Studio Professional 2022 is an integrated development environment (IDE) from Microsoft. It is used to develop computer programs, websites, web apps, web services, and mobile apps.",
     "winget": "Microsoft.VisualStudio.2022.Professional",
     "choco": "visualstudio2022professional",
-    "catgory": "Developer",
+    "category": "Developer",
     "check": "false"
   },
   {
     "Name": "Visual Studio Community 2022",
+    "Description": "Visual Studio Community 2022 is a free, fully-featured, and extensible IDE for individual developers, open source projects, academic research, education, and small professional teams.",
     "winget": "Microsoft.VisualStudio.2022.Community",
     "choco": "visualstudio2022community",
-    "catgory": "Developer",
+    "category": "Developer",
     "check": "false"
   },
   {
     "Name": "Godot game engine",
+    "Description": "Godot is a feature-packed, cross-platform game engine for creating 2D and 3D games. It provides a comprehensive set of tools and features to develop games efficiently and quickly.",
     "winget": "#",
     "choco": "godot",
-    "catgory": "Developer",
+    "category": "Developer",
     "check": "false"
   },
   {
     "Name": "Microsoft Visual Studio Code",
+    "Description": "Visual Studio Code is a free source-code editor developed by Microsoft for Windows, Linux, and macOS. It includes support for debugging, embedded Git control, syntax highlighting, intelligent code completion, snippets, and code refactoring.",
     "winget": "Microsoft.VisualStudioCode",
     "choco": "vscode",
-    "catgory": "Developer",
+    "category": "Developer",
     "check": "false"
   },
   {
     "Name": "PyCharm Community Edition",
+    "Description": "PyCharm Community Edition is a free and open-source IDE for Python development. It provides smart code completion, code inspections, on-the-fly error highlighting, and quick-fixes.",
     "winget": "JetBrains.PyCharm.Community",
     "choco": "pycharm-community",
-    "catgory": "Developer",
+    "category": "Developer",
     "check": "false"
   },
   {
     "Name": "PyCharm Professional Edition",
+    "Description": "PyCharm Professional Edition is a powerful IDE for professional Python development. It includes advanced features such as database tools, web development support, and scientific tools integration.",
     "winget": "JetBrains.PyCharm.Professional",
     "choco": "pycharm",
-    "catgory": "Developer",
+    "category": "Developer",
     "check": "false"
   },
   {
     "Name": "Jetbrains Rider",
+    "Description": "Rider is a cross-platform .NET IDE developed by JetBrains. It supports C#, VB.NET, F#, ASP.NET, JavaScript, TypeScript, HTML, CSS, and SQL languages and frameworks.",
     "winget": "JetBrains.Rider",
     "choco": "jetbrains-rider",
-    "catgory": "Developer",
+    "category": "Developer",
     "check": "false"
   },
   {
     "Name": "Node.js LTS",
+    "Description": "Node.js is a JavaScript runtime built on Chrome''s V8 JavaScript engine. LTS (Long Term Support) releases are supported for an extended period and provide stability for production environments.",
     "winget": "OpenJS.NodeJS",
     "choco": "nodejs-lts",
-    "catgory": "Developer",
+    "category": "Developer",
     "check": "false"
   },
   {
     "Name": "Electrum-LTS",
+    "Description": "Electrum is a lightweight Bitcoin wallet focused on speed and simplicity, with support for hardware wallets and multisig functionality. LTS (Long Term Support) releases provide stability and security updates for an extended period.",
     "winget": "#",
     "choco": "electronim",
-    "catgory": "Developer",
+    "category": "Developer",
     "check": "false"
   },
   {
     "Name": "Notepad++",
+    "Description": "Notepad++ is a free source code editor and Notepad replacement that supports several languages. It offers syntax highlighting, code folding, auto-completion, and other features for efficient code editing.",
     "winget": "Notepad++.Notepad++",
     "choco": "notepadplusplus",
-
-    "catgory": "Developer",
+    "category": "Developer",
     "check": "false"
   },
   {
     "Name": "Windows Terminal",
+    "Description": "Windows Terminal is a modern terminal application for users of command-line tools and shells like Command Prompt, PowerShell, and Windows Subsystem for Linux (WSL). It provides multiple tabs, custom themes, and GPU-accelerated text rendering.",
     "winget": "Microsoft.WindowsTerminal",
     "choco": "microsoft-windows-terminal",
-    "catgory": "Developer",
+    "category": "Developer",
     "check": "false"
   },
   {
     "Name": "Powershell core",
+    "Description": "PowerShell Core is a cross-platform (Windows, Linux, and macOS) automation and configuration tool/framework that works well with your existing tools and is optimized for dealing with structured data (e.g., JSON, CSV, XML, etc.), REST APIs, and object models.",
     "winget": "powershell-core",
     "choco": "powershell-core",
-    "catgory": "Developer",
+    "category": "Developer",
     "check": "false"
   },
   {
     "Name": "Python",
+    "Description": "Python is a popular high-level programming language known for its simplicity and versatility. It is used in various fields such as web development, data science, machine learning, and automation.",
     "winget": "Python.Python.3.9",
     "choco": "python",
-    "catgory": "Developer",
+    "category": "Developer",
     "check": "false"
   },
   {
     "Name": "Git",
+    "Description": "Git is a free and open-source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.",
     "winget": "Git.Git",
     "choco": "git",
-    "catgory": "Developer",
+    "category": "Developer",
     "check": "false"
   },
   {
     "Name": "GitHub Desktop",
+    "Description": "GitHub Desktop is a seamless way to contribute to projects on GitHub and GitHub Enterprise. It provides an intuitive interface for managing repositories, branching, committing, and merging code changes.",
     "winget": "GitHub.GitHubDesktop",
     "choco": "github-desktop",
-    "catgory": "Developer",
+    "category": "Developer",
     "check": "false"
   },
   {
     "Name": "Docker Desktop",
-    "winget": "#",
+    "Description": "Docker Desktop is an easy-to-install application for Windows and macOS that enables developers to build, share, and run containerized applications and microservices locally.",
+    "winget": "Docker.DockerDesktop",
     "choco": "docker-desktop",
-    "catgory": "Developer",
+    "category": "Developer",
     "check": "false"
   },
   {
     "Name": "Docker Compose",
+    "Description": "Docker Compose is a tool for defining and running multi-container Docker applications. It allows you to use a YAML file to configure your application''s services, networks, and volumes.",
     "winget": "#",
     "choco": "docker-compose",
-    "catgory": "Developer",
+    "category": "Developer",
     "check": "false"
   },
   {
     "Name": "PowerToys",
+    "Description": "PowerToys is a set of utilities for power users to tune and streamline their Windows experience for greater productivity. It includes tools like FancyZones for window management, PowerRename for batch renaming files, and more.",
     "winget": "Microsoft.PowerToys",
     "choco": "powertoys",
-    "catgory": "Developer",
+    "category": "Developer",
     "check": "false"
   },
   {
     "Name": "FL Studio",
+    "Description": "FL Studio is a digital audio workstation (DAW) developed by Image-Line. It allows you to compose, arrange, record, edit, mix, and master professional-quality music.",
     "winget": "ImageLine.FLStudio",
     "choco": "ImageLine.FLStudio",
-    "catgory": "Developer",
+    "category": "Developer",
+    "check": "false"
+  },
+  {
+    "Name": "Android Debug Bridge",
+    "Description": "Android Debug Bridge (ADB) is a command-line tool that allows you to communicate with an Android device. It is used for various debugging tasks such as installing and debugging apps.",
+    "winget": "ImageLine.FLStudio",
+    "choco": "adb",
+    "category": "Developer",
+    "check": "false"
+  },
+  {
+    "Name": "Universal ADB Drivers",
+    "Description": "Universal ADB Drivers are drivers that provide compatibility with a wide range of Android devices for debugging purposes. They allow you to connect your Android device to a computer and use ADB commands.",
+    "winget": "ImageLine.FLStudio",
+    "choco": "universal-adb-drivers",
+    "category": "Developer",
+    "check": "false"
+  },
+  {
+    "Name": "Scrcpy",
+    "Description": "Scrcpy is a free and open-source tool that allows you to display and control your Android device from a computer. It provides high-performance screen mirroring and supports various input methods.",
+    "winget": "#",
+    "choco": "scrcpy",
+    "category": "Developer",
     "check": "false"
   }
 ]' | convertfrom-json
@@ -1397,7 +1554,7 @@ $sync.configs.tweaks = '[
   {
     "name": "System File Checker",
     "description": "Use the System File Checker tool to repair missing or corrupted system files",
-    "repo": "#",
+    "repo": "null",
     "script": "sfc /scannow",
     "check": "true",
     "category": "tweak"
@@ -1405,7 +1562,7 @@ $sync.configs.tweaks = '[
   {
     "name": "Disk Cleanup",
     "description": "Clean temporary files that are not necessary",
-    "repo": "#",
+    "repo": "null",
     "script": "cleanmgr.exe /d C: /VERYLOWDISK Dism.exe /online /Cleanup-Image /StartComponentCleanup /ResetBase",
     "check": "true",
     "category": "tweak"
@@ -1413,7 +1570,7 @@ $sync.configs.tweaks = '[
   {
     "name": "Restore All Windows Services to Default",
     "description": "If you face a problem with some system services, you can restore all services to Default.",
-    "repo": "#",
+    "repo": "null",
     "script": "Invoke-RestMethod https://raw.githubusercontent.com/emadadel4/WindowsTweaks/main/restore.bat | Invoke-Expression",
     "check": "true",
     "category": "tweak"
@@ -1421,7 +1578,7 @@ $sync.configs.tweaks = '[
   {
     "name": "Remove Folder Shortcuts From Windows'' File Explorer",
     "description": "Remove Documents, Videos, Pictures, Desktop. Shortcuts from File Explorer ",
-    "repo": "#",
+    "repo": "https://github.com/emadadel4/WindowsTweaks",
     "script": "Invoke-RestMethod https://raw.githubusercontent.com/emadadel4/WindowsTweaks/main/rm.ps1 | Invoke-Expression",
     "check": "true",
     "category": "tweak"
@@ -1437,7 +1594,7 @@ $sync.configs.tweaks = '[
   {
     "name": "Remove Unnecessary Windows 10 Apps",
     "description": "BingNews, GetHelp, Getstarted, Messaging, Microsoft3DViewer, MicrosoftOfficeHub, MicrosoftSolitaireCollection, News, Office.Lens, Office.OneNote, Office.Sway, OneConnect, People, Print3D, RemoteDesktop, SkypeApp, StorePurchaseApp, Office.Todo.List, Whiteboard, WindowsAlarms, WindowsCamera, windowscommunicationsapps, WindowsFeedbackHub, WindowsMaps, WindowsSoundRecorder, Xbox.TCUI, XboxApp, XboxGameOverlay, XboxIdentityProvider, XboxSpeechToTextOverlay, ZuneMusic, ZuneVideo, Windows.Cortana, MSPaint",
-    "repo": "https://github.com/emadadel4/Fix-Stutter-in-Games",
+    "repo": "https://github.com/emadadel4/WindowsTweaks",
     "script": "Invoke-RestMethod https://raw.githubusercontent.com/emadadel4/WindowsTweaks/main/debloater.ps1 | Invoke-Expression",
     "check": "true",
     "category": "tweak"
@@ -1445,7 +1602,7 @@ $sync.configs.tweaks = '[
   {
     "name": "Enable the Ultimate Performance Power Plan",
     "description": "Enable the Ultimate Performance Power Plan",
-    "repo": "#",
+    "repo": "https://github.com/emadadel4/WindowsTweaks",
     "script": "powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61",
     "fromUrl": "true",
     "category": "tweak"
@@ -1453,7 +1610,7 @@ $sync.configs.tweaks = '[
   {
     "name": " Reset the TCP/IP Stack",
     "description": "If you have an internet problem, Reset network configuration",
-    "repo": "#",
+    "repo": "null",
     "script": "netsh int ip reset",
     "check": "true",
     "category": "tweak"
@@ -1711,6 +1868,7 @@ $inputXML =  '
             </MenuItem>
 
             <MenuItem Name="themeText" Header="Light Mode"/>
+            <MenuItem Name="toggleMusic" Header="Mute"/>
 
 
         </Menu>
@@ -2022,81 +2180,99 @@ catch [System.Management.Automation.MethodInvocationException] {
 
 #region Generate items from json file
 $sync.list = $Window.FindName("list")
-$Window.FindName("apps").add_Loaded({
 
-
-    foreach ($item in $sync.configs.applications)
-    {
+# Define a function to populate the list with checkboxes
+function PopulateList {
+    foreach ($app in $sync.configs.applications) {
         $checkbox = New-Object System.Windows.Controls.CheckBox
+        $checkbox.Content = $app.name
         $sync.list.Items.Add($checkbox)
-        $checkbox.Content = $item.name
     }
+}
 
+# Define a function to update the description and link when an item is selected
+function UpdateDescriptionAndLink {
+    $selectedAppName = $sync.list.SelectedItem.Content.ToString()
 
-
-     # Get Discription of selected item in $list
-     $sync.list.Add_SelectionChanged({
-            
-        $Window.FindName('itemLink').Visibility = "Visible"
-
-        foreach($data in $sync.configs.applications)
-        {
-
-            if($sync.list.SelectedItem.Content -eq $data.name)
-            {
-                $Window.FindName('itemLink').Text  = "What is " + $data.name + " ?"
-                # $Window.FindName("description").Text = $data.description
-            }
+    foreach ($app in $sync.configs.applications) {
+        if ($app.name -eq $selectedAppName) {
+            $Window.FindName("description").Text = $app.description
+            $Window.FindName('itemLink').Text = "$($app.name) official website"
+            break
         }
-    })
+    }
+}
 
-    # Get Selected item Website link from json file
-    $Window.FindName('itemLink').add_MouseLeftButtonDown({
+# Define a function to open the official website of the selected application
+function OpenOfficialWebsite {
+    $selectedAppName = $sync.list.SelectedItem.Content.ToString()
 
-        foreach ($item in $sync.list.SelectedItem.Content)
-        {
-            foreach ($data in $sync.configs.applications)
-            {
-                if($item -eq $data.name)
-                {
-                    Start-Process ("https://duckduckgo.com/?hps=1&q=%5C" + $data.name)
-                }
-            }
+    foreach ($app in $sync.configs.applications) {
+        if ($app.name -eq $selectedAppName) {
+            Start-Process ("https://duckduckgo.com/?hps=1&q=%5C" + $app.name)
+            break
         }
+    }
+}
 
-    })
-
-
-
+# Add event handlers
+$Window.FindName("apps").add_Loaded({
+    PopulateList
 })
+
+$sync.list.Add_SelectionChanged({
+    $Window.FindName('itemLink').Visibility = "Visible"
+    UpdateDescriptionAndLink
+})
+
+$Window.FindName('itemLink').add_MouseLeftButtonDown({
+    OpenOfficialWebsite
+})
+
+
 #endregion
 #region Generate tweaks from json file
 $sync.tweaks = $Window.FindName("tweaks")
-$Window.FindName("tweeks").add_Loaded({
 
-
-    foreach ($item in $sync.configs.tweaks)
-    {
+# Function to add tweak checkboxes
+function Add-TweakCheckboxes {
+    foreach ($item in $sync.configs.tweaks) {
         $checkbox = New-Object System.Windows.Controls.CheckBox
-        $sync.tweaks.Items.Add($checkbox)
         $checkbox.Content = $item.name
+        $sync.tweaks.Items.Add($checkbox)
     }
+}
 
-    # Get Discription of selected tweaks in $list
-    $sync.tweaks.Add_SelectionChanged({
-            
-        foreach($data in $sync.configs.tweaks)
-        {
-            if($sync.tweaks.SelectedItem.Content -eq $data.name)
-            {
-                $Window.FindName('description').Text =  $data.description
-            }
-        }
-    })
-
-
-
+# Add loaded event handler
+$Window.FindName("tweeks").add_Loaded({
+    Add-TweakCheckboxes
 })
+
+# Add selection changed event handler
+$sync.tweaks.Add_SelectionChanged({
+    $selectedItem = $sync.tweaks.SelectedItem.Content
+    foreach ($data in $sync.configs.tweaks) {
+        if ($data.name -eq $selectedItem) {
+            $Window.FindName('description').Text = $data.description
+            $Window.FindName('itemLink').Visibility = if ($data.repo -ne "null") { "Visible" } else { "Hidden" }
+            $Window.FindName('itemLink').Text = "Github repository"
+            break
+        }
+    }
+})
+
+# Add mouse left button down event handler for item link
+$Window.FindName('itemLink').add_MouseLeftButtonDown({
+    $selectedItem = $sync.tweaks.SelectedItem.Content
+    foreach ($data in $sync.configs.tweaks) {
+        if ($selectedItem -eq $data.name -and $data.repo -ne "null") {
+            Start-Process $data.repo
+            break
+        }
+    }
+})
+
+
 
 #endregion
 #===========================================================================
@@ -2110,22 +2286,61 @@ CheckChoco
 
 # Buttons
 $window.FindName('taps').add_SelectionChanged({ChangeTap})
+
 $window.FindName('installBtn').add_click({Invoke-Install})
+
 $window.FindName('applyBtn').add_click({ApplyTweaks})
+
 $window.FindName('searchInput').add_TextChanged({Search})
-$window.FindName('searchInput').add_GotFocus({ShowAll})
+
+$window.FindName('searchInput').add_GotFocus({ShowAllApplications})
+
 $window.FindName('about').add_MouseLeftButtonDown({About})
+
 $window.FindName('themeText').add_click({Toggle-Theme})
 
+
+# Function to play or pause music
+Function TogglePlayback {
+    if ($global:playlistPaused) {
+        ResumePlayback
+    } else {
+        PausePlayback
+    }
+}
+
+Function PausePlayback {
+    $mediaPlayer.controls.pause()
+    $global:playlistPaused = $true
+}
+
+Function ResumePlayback {
+    $mediaPlayer.controls.play()
+    $global:playlistPaused = $false
+}
+
+
+$window.FindName('toggleMusic').add_click({
+
+
+    Write-Host "emad"
+
+    $global:mediaPlayer.controls.pause()
+
+
+})
+
+
+
 # Catgoray bar buttons
-$window.FindName('b').add_click({Catgoray($window.FindName('b').Content)})
-$window.FindName('m').add_click({Catgoray($window.FindName('m').Content)})
-$window.FindName('d').add_click({Catgoray($window.FindName('d').Content)})
-$window.FindName('g').add_click({Catgoray($window.FindName('g').Content)})
-$window.FindName('u').add_click({Catgoray($window.FindName('u').Content)})
-$window.FindName('c').add_click({Catgoray($window.FindName('c').Content)})
-$window.FindName('r').add_click({Recommended($window.FindName('r').Content)})
-$window.FindName('all').add_click({ShowAll})
+$window.FindName('b').add_click({FilterApplicationsByCategory($window.FindName('b').Content)})
+$window.FindName('m').add_click({FilterApplicationsByCategory($window.FindName('m').Content)})
+$window.FindName('d').add_click({FilterApplicationsByCategory($window.FindName('d').Content)})
+$window.FindName('g').add_click({FilterApplicationsByCategory($window.FindName('g').Content)})
+$window.FindName('u').add_click({FilterApplicationsByCategory($window.FindName('u').Content)})
+$window.FindName('c').add_click({FilterApplicationsByCategory($window.FindName('c').Content)})
+$window.FindName('r').add_click({ShowRecommendedApplications($window.FindName('r').Content)})
+$window.FindName('all').add_click({ShowAllApplications})
 
 $Window.Add_Closing({
     Write-Host "Bye :)"

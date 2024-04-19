@@ -39,6 +39,7 @@
             </MenuItem>
 
             <MenuItem Name="themeText" Header="Light Mode"/>
+            <MenuItem Name="toggleMusic" Header="Mute"/>
 
 
         </Menu>
@@ -46,9 +47,9 @@
         <!--Header Section-->
 
             <!--Logo-->
-                <StackPanel Margin="20" Orientation="Horizontal"  VerticalAlignment="Center" Grid.Row="1" Grid.ColumnSpan="3" >
+                <StackPanel Margin="20" Orientation="Horizontal" HorizontalAlignment="Left"  VerticalAlignment="Center" Grid.Row="1" Grid.ColumnSpan="3" >
 
-                    <Ellipse Name="about" Width="100" Height="100" Cursor="Hand">
+                    <Ellipse Name="about" Width="50" Height="50" Cursor="Hand">
                         <Ellipse.Fill>
                             <ImageBrush ImageSource="https://avatars.githubusercontent.com/u/19177373?v=4.png" />
                         </Ellipse.Fill>
@@ -56,14 +57,14 @@
             <!--End Logo-->
 
             <!--Catagory Section-->
-                    <StackPanel Name="catg" Margin="20,0,0,0" Orientation="Horizontal" HorizontalAlignment="Left">
+                <StackPanel Name="catg" Margin="20,0,0,0" Orientation="Horizontal" HorizontalAlignment="Left">
 
                     <Button Name="all"
                     Cursor="Hand"  
                     Content="All" 
                     Height="20" Width="60" 
                     Margin="4"  
-                    Background="{DynamicResource primary}" 
+                    Background="{DynamicResource BGColor}" 
                     Foreground="{DynamicResource DefaultTextColor}"
                     
                     />
@@ -73,7 +74,7 @@
                     Content="Fresh Start" 
                     Height="20" 
                     Width="100" Margin="4"  
-                    Background="{DynamicResource primary}" 
+                    Background="{DynamicResource BGColor}" 
                     Foreground="{DynamicResource DefaultTextColor}"
 
                     />
@@ -84,7 +85,7 @@
                     Height="20" 
                     Width="60" 
                     Margin="4"  
-                    Background="{DynamicResource primary}" 
+                    Background="{DynamicResource BGColor}" 
                     Foreground="{DynamicResource DefaultTextColor}"
                     
                     />
@@ -94,7 +95,7 @@
                     Content="Browsers" 
                     Height="20" Width="60" 
                     Margin="4"  
-                    Background="{DynamicResource primary}" 
+                    Background="{DynamicResource BGColor}" 
                     Foreground="{DynamicResource DefaultTextColor}"
                     
                     />
@@ -105,7 +106,7 @@
                     Height="20" 
                     Width="60" 
                     Margin="4"  
-                    Background="{DynamicResource primary}" 
+                    Background="{DynamicResource BGColor}" 
                     Foreground="{DynamicResource DefaultTextColor}"
                     
                     />
@@ -116,7 +117,7 @@
                     Height="20" 
                     Width="70" 
                     Margin="4"  
-                    Background="{DynamicResource primary}" 
+                    Background="{DynamicResource BGColor}" 
                     Foreground="{DynamicResource DefaultTextColor}"
 
                     />
@@ -127,7 +128,7 @@
                     Height="20" 
                     Width="60" 
                     Margin="4"  
-                    Background="{DynamicResource primary}" 
+                    Background="{DynamicResource BGColor}" 
                     Foreground="{DynamicResource DefaultTextColor}"
                     
                     />
@@ -137,7 +138,7 @@
                     Height="20" 
                     Width="100" 
                     Margin="4"  
-                    Background="{DynamicResource primary}" 
+                    Background="{DynamicResource BGColor}" 
                     Foreground="{DynamicResource DefaultTextColor}"
                     
                     />
@@ -160,7 +161,7 @@
 
                         <Grid>
                             <TextBox Padding="8"
-                            Width="188" 
+                            Width="188"
                             VerticalAlignment="Center"
                             HorizontalAlignment="Left" 
                             Text="{Binding Text_searchInput}"
@@ -228,9 +229,9 @@
                     HorizontalAlignment="Center"
                     VerticalAlignment="Bottom"
                     Cursor="Hand"
-                    FontSize="17"
+                    FontSize="15"
                     Visibility="Hidden"
-                    Width="90" Height="33" Margin="50"/>
+                    Width="100" Height="40" Margin="50"/>
                 <!--End Apply Button-->
 
             </Grid>

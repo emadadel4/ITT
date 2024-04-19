@@ -4,52 +4,55 @@
 #===========================================================================
 
 #region Generate items from json file
-$list = $Window.FindName("list")
-$Window.FindName("apps").add_Loaded({
+$sync.list = $Window.FindName("list")
 
-
-    foreach ($item in $sync.configs.applications)
-    {
+# Define a function to populate the list with checkboxes
+function PopulateList {
+    foreach ($app in $sync.configs.applications) {
         $checkbox = New-Object System.Windows.Controls.CheckBox
-        $list.Items.Add($checkbox)
-        $checkbox.Content = $item.name
+        $checkbox.Content = $app.name
+        $sync.list.Items.Add($checkbox)
     }
+}
 
+# Define a function to update the description and link when an item is selected
+function UpdateDescriptionAndLink {
+    $selectedAppName = $sync.list.SelectedItem.Content.ToString()
 
-
-     # Get Discription of selected item in $list
-     $list.Add_SelectionChanged({
-            
-        $Window.FindName('itemLink').Visibility = "Visible"
-
-        foreach($data in $sync.configs.applications)
-        {
-
-            if($list.SelectedItem.Content -eq $data.name)
-            {
-                $Window.FindName('itemLink').Text  = "What is " + $data.name + " ?"
-                # $Window.FindName("description").Text = $data.description
-            }
+    foreach ($app in $sync.configs.applications) {
+        if ($app.name -eq $selectedAppName) {
+            $Window.FindName("description").Text = $app.description
+            $Window.FindName('itemLink').Text = "$($app.name) official website"
+            break
         }
-    })
+    }
+}
 
-    # Get Selected item Website link from json file
-    $Window.FindName('itemLink').add_MouseLeftButtonDown({
+# Define a function to open the official website of the selected application
+function OpenOfficialWebsite {
+    $selectedAppName = $sync.list.SelectedItem.Content.ToString()
 
-        foreach ($item in $list.SelectedItem.Content)
-        {
-            foreach ($data in $sync.configs.applications)
-            {
-                if($item -eq $data.name)
-                {
-                    Start-Process ("https://duckduckgo.com/?hps=1&q=%5C" + $data.name)
-                }
-            }
+    foreach ($app in $sync.configs.applications) {
+        if ($app.name -eq $selectedAppName) {
+            Start-Process ("https://duckduckgo.com/?hps=1&q=%5C" + $app.name)
+            break
         }
+    }
+}
 
-    })
-
-
-
+# Add event handlers
+$Window.FindName("apps").add_Loaded({
+    PopulateList
 })
+
+$sync.list.Add_SelectionChanged({
+    $Window.FindName('itemLink').Visibility = "Visible"
+    UpdateDescriptionAndLink
+})
+
+$Window.FindName('itemLink').add_MouseLeftButtonDown({
+    OpenOfficialWebsite
+})
+
+
 #endregion

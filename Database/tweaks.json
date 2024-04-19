@@ -2,7 +2,7 @@
   {
     "name": "System File Checker",
     "description": "Use the System File Checker tool to repair missing or corrupted system files",
-    "repo": "#",
+    "repo": "null",
     "script": "sfc /scannow",
     "check": "true",
     "category": "tweak"
@@ -10,7 +10,7 @@
   {
     "name": "Disk Cleanup",
     "description": "Clean temporary files that are not necessary",
-    "repo": "#",
+    "repo": "null",
     "script": "cleanmgr.exe /d C: /VERYLOWDISK Dism.exe /online /Cleanup-Image /StartComponentCleanup /ResetBase",
     "check": "true",
     "category": "tweak"
@@ -18,7 +18,7 @@
   {
     "name": "Restore All Windows Services to Default",
     "description": "If you face a problem with some system services, you can restore all services to Default.",
-    "repo": "#",
+    "repo": "null",
     "script": "Invoke-RestMethod https://raw.githubusercontent.com/emadadel4/WindowsTweaks/main/restore.bat | Invoke-Expression",
     "check": "true",
     "category": "tweak"
@@ -26,7 +26,7 @@
   {
     "name": "Remove Folder Shortcuts From Windows' File Explorer",
     "description": "Remove Documents, Videos, Pictures, Desktop. Shortcuts from File Explorer ",
-    "repo": "#",
+    "repo": "https://github.com/emadadel4/WindowsTweaks",
     "script": "Invoke-RestMethod https://raw.githubusercontent.com/emadadel4/WindowsTweaks/main/rm.ps1 | Invoke-Expression",
     "check": "true",
     "category": "tweak"
@@ -42,7 +42,7 @@
   {
     "name": "Remove Unnecessary Windows 10 Apps",
     "description": "BingNews, GetHelp, Getstarted, Messaging, Microsoft3DViewer, MicrosoftOfficeHub, MicrosoftSolitaireCollection, News, Office.Lens, Office.OneNote, Office.Sway, OneConnect, People, Print3D, RemoteDesktop, SkypeApp, StorePurchaseApp, Office.Todo.List, Whiteboard, WindowsAlarms, WindowsCamera, windowscommunicationsapps, WindowsFeedbackHub, WindowsMaps, WindowsSoundRecorder, Xbox.TCUI, XboxApp, XboxGameOverlay, XboxIdentityProvider, XboxSpeechToTextOverlay, ZuneMusic, ZuneVideo, Windows.Cortana, MSPaint",
-    "repo": "https://github.com/emadadel4/Fix-Stutter-in-Games",
+    "repo": "https://github.com/emadadel4/WindowsTweaks",
     "script": "Invoke-RestMethod https://raw.githubusercontent.com/emadadel4/WindowsTweaks/main/debloater.ps1 | Invoke-Expression",
     "check": "true",
     "category": "tweak"
@@ -50,7 +50,7 @@
   {
     "name": "Enable the Ultimate Performance Power Plan",
     "description": "Enable the Ultimate Performance Power Plan",
-    "repo": "#",
+    "repo": "https://github.com/emadadel4/WindowsTweaks",
     "script": "powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61",
     "fromUrl": "true",
     "category": "tweak"
@@ -58,7 +58,7 @@
   {
     "name": " Reset the TCP/IP Stack",
     "description": "If you have an internet problem, Reset network configuration",
-    "repo": "#",
+    "repo": "null",
     "script": "netsh int ip reset",
     "check": "true",
     "category": "tweak"

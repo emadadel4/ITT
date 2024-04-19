@@ -2,7 +2,7 @@ function Get-SelectedApps {
 
     $items = @()
 
-    foreach ($item in $list.Items)
+    foreach ($item in $sync.list.Items)
     {
         if ($item.IsChecked)
         {
@@ -59,7 +59,7 @@ function Invoke-Install() {
         return
     }
   
-    $choco = Get-SelectedApps
+    $choco += Get-SelectedApps
 
     if(Get-SelectedApps -ne $null)
     {
@@ -79,6 +79,15 @@ function Invoke-Install() {
                     Start-Process -FilePath "choco" -ArgumentList "install $choco -y --force --ignore-checksums" -NoNewWindow -Wait
                     Write-Host "Installs have finished"
                     [System.Windows.MessageBox]::Show("Installs have finished", "ITT @emadadel4", "OK", "Information")
+
+                    # Uncheck all checkboxes in $list
+                    $sync.list.Dispatcher.Invoke([Action]{
+                        foreach ($item in $sync.list.Items)
+                        {
+                            $item.IsChecked = $false
+                        }
+                    })
+                   
                 }
             }
             Catch
@@ -115,7 +124,7 @@ function ApplyTweaks() {
         return
     }
   
-    $tweeaks = Get-SelectedTweeaks
+    $tweeaks += Get-SelectedTweeaks
 
     if(Get-SelectedTweeaks -ne $null)
     {
@@ -130,10 +139,17 @@ function ApplyTweaks() {
                 if($msg -eq "Yes")
                 {
                     $sync.ProcessRunning = $true
-                    Write-Host "Applying tweeak(s) $tweeaks "
+                    #Write-Host "Applying tweeak(s) $tweeaks "
                     Start-Process -FilePath "powershell.exe" -ArgumentList "-Command `"$tweeaks`"" -NoNewWindow -Wait
                     Write-Host "The operation was successful."    
                     [System.Windows.MessageBox]::Show("The operation was successful.", "ITT @emadadel4", "OK", "Information")
+
+                    $sync.tweaks.Dispatcher.Invoke([Action]{
+                        foreach ($item in $sync.tweaks.Items)
+                        {
+                            $item.IsChecked = $false
+                        }
+                    })
                 }
             }
             Catch
@@ -150,5 +166,3 @@ function ApplyTweaks() {
         [System.Windows.MessageBox]::Show("Choose at least something from the list", "ITT @emadadel", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Question)
     }
 }
-
-

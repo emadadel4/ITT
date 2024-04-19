@@ -28,9 +28,12 @@ $sync.runspace.Open()
 
 $reader = (New-Object System.Xml.XmlNodeReader $xaml)
 $window = [Windows.Markup.XamlReader]::Load($reader)
+
+# Read the XAML file
+$reader = (New-Object System.Xml.XmlNodeReader $xaml)
 try
 { 
-   #$window = [Windows.Markup.XamlReader]::Load($reader)
+    $window = [Windows.Markup.XamlReader]::Load($reader)
 }
 catch [System.Management.Automation.MethodInvocationException] {
    

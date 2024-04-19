@@ -1,66 +1,60 @@
-function Catgoray($cat){
-
-    $window.FindName('apps').IsSelected = $true 
-
+function FilterApplicationsByCategory {
     <#
     .DESCRIPTION
     This function filters and populates a list of applications based on the specified category.
 
     .PARAMETER cat
     The category based on which the applications are filtered.
-
-    .EXAMPLE
-    Catgoray -cat "SomeCategory"
-
-    .EXAMPLE
-    ShowAll "Show all apps"
     #>
+    param (
+        [string]$Category
+    )
 
-    $list.Items.Clear()
+    $window.FindName('apps').IsSelected = $true 
 
-    foreach ($item in $sync.configs.applications)
-    {
-        if($item.catgory -eq $cat)
-        {
+    $sync.list.Items.Clear()
+
+    foreach ($item in $sync.configs.applications) {
+        if($item.category -eq $Category) {
             $checkbox = New-Object System.Windows.Controls.CheckBox
-            $list.Items.Add($checkbox)
+            $sync.list.Items.Add($checkbox) | Out-Null
             $checkbox.Content = $item.name
         }
     }
 }
 
-function ShowAll{
+function ShowAllApplications {
+    <#
+    .DESCRIPTION
+    This function populates the list with all available applications.
+    #>
 
     $window.FindName('apps').IsSelected = $true 
 
-    $list.Items.Clear()
+    $sync.list.Items.Clear()
 
-    foreach ($item in $sync.configs.applications)
-    {
+    foreach ($item in $sync.configs.applications) {
         $checkbox = New-Object System.Windows.Controls.CheckBox
-        $list.Items.Add($checkbox)
+        $sync.list.Items.Add($checkbox) | Out-Null
         $checkbox.Content = $item.name
     }
 }
 
-function Recommended() {
+function ShowRecommendedApplications {
+    <#
+    .DESCRIPTION
+    This function populates the list with recommended applications.
+    #>
 
     $window.FindName('apps').IsSelected = $true 
 
-    #Clear Listview
-    
-    $list.Items.Clear()
+    $sync.list.Items.Clear()
 
-    # get items that has check = true in json file
-    foreach ($item in $sync.configs.applications)
-    {
-        # $item.check = true
-        if($item.check -eq 'true')
-        {
+    foreach ($item in $sync.configs.applications) {
+        if($item.check -eq 'true') {
             $checkbox = New-Object System.Windows.Controls.CheckBox
-            $list.Items.Add($checkbox)
+            $sync.list.Items.Add($checkbox) | Out-Null
             $checkbox.Content = $item.name
         }
     }
 }
-

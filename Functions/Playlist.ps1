@@ -1,4 +1,3 @@
-$ErrorActionPreference = "SilentlyContinue"
 function PlayMusic {
 
     Invoke-RunspaceWithScriptBlock -ScriptBlock {
@@ -15,17 +14,19 @@ function PlayMusic {
             "https://archive.org/download/GrandTheftAuto4ThemeSong_201904/Grand%20Theft%20Auto%204%20Theme%20Song.mp3"
         )
     
-        $mediaPlayer = New-Object -ComObject WMPlayer.OCX
-    
+        $global:mediaPlayer = New-Object -ComObject WMPlayer.OCX
+        $global:playlistPaused = $false
+
         Function PlayAudio($url) {
             try {
-                $mediaItem = $mediaPlayer.newMedia($url)
-                $mediaPlayer.currentPlaylist.appendItem($mediaItem)
-                $mediaPlayer.controls.play()
+                $mediaItem = $global:mediaPlayer.newMedia($url)
+                $global:mediaPlayer.currentPlaylist.appendItem($mediaItem)
+                $global:mediaPlayer.controls.play()
             }
             catch {
             }
         }
+        
     
         # Function to shuffle the playlist
         Function ShuffleArray {
@@ -47,18 +48,41 @@ function PlayMusic {
             foreach ($url in $audioUrls) {
                 PlayAudio $url
                 # Wait for the track to finish playing
-                while ($mediaPlayer.playState -eq 3 -or $mediaPlayer.playState -eq 6) {
+                while ($global:mediaPlayer.playState -eq 3 -or $global:mediaPlayer.playState -eq 6) {
                     Start-Sleep -Milliseconds 100
                 }
             }
         }
+
+        
+
+        
     
         # Play the shuffled playlist indefinitely
-        while ($true) {
+        while ($true) 
+        {
             PlayShuffledPlaylist
         }
+
+
+        
     }
+
+
+    $window.FindName('toggleMusic').add_click({
+
+
+        Write-Host "emad"
+    
+        $global:mediaPlayer.controls.pause()
+    
+    
+    })
+    
+
 }
 
-PlayMusic *> $null
+
+#PlayMusic *> $null
+
 
