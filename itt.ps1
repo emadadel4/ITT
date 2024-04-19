@@ -2510,18 +2510,7 @@ $window.FindName('about').add_MouseLeftButtonDown({About})
 
 $window.FindName('themeText').add_click({Toggle-Theme})
 
-
-# Function to play or pause music
-Function TogglePlayback {
-    if ($global:playlistPaused) {
-        ResumePlayback
-    } else {
-        PausePlayback
-    }
-}
-
 # Catgoray bar buttons
-
 $window.FindName('all').add_click({ShowAllApplications($window.FindName('b').Content)})
 $window.FindName('b').add_click({FilterApplicationsByCategory($window.FindName('b').Content)})
 $window.FindName('m').add_click({FilterApplicationsByCategory($window.FindName('m').Content)})
