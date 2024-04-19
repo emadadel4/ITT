@@ -2402,46 +2402,55 @@ catch [System.Management.Automation.MethodInvocationException] {
 
 #region Generate items from json file
 $sync.list = $Window.FindName("list")
+
+# Define a function to populate the list with checkboxes
+function PopulateList {
+    foreach ($app in $sync.configs.applications) {
+        $checkbox = New-Object System.Windows.Controls.CheckBox
+        $checkbox.Content = $app.name
+        $sync.list.Items.Add($checkbox)
+    }
+}
+
+# Define a function to update the description and link when an item is selected
+function UpdateDescriptionAndLink {
+    $selectedAppName = $sync.list.SelectedItem.Content.ToString()
+
+    foreach ($app in $sync.configs.applications) {
+        if ($app.name -eq $selectedAppName) {
+            $Window.FindName("description").Text = $app.description
+            $Window.FindName('itemLink').Text = "$($app.name) official website"
+            break
+        }
+    }
+}
+
+# Define a function to open the official website of the selected application
+function OpenOfficialWebsite {
+    $selectedAppName = $sync.list.SelectedItem.Content.ToString()
+
+    foreach ($app in $sync.configs.applications) {
+        if ($app.name -eq $selectedAppName) {
+            Start-Process ("https://duckduckgo.com/?hps=1&q=%5C" + $app.name)
+            break
+        }
+    }
+}
+
 # Add event handlers
 $Window.FindName("apps").add_Loaded({
-
-
-    # Define a function to update the description and link when an item is selected
-    function UpdateDescriptionAndLink {
-        $selectedAppName = $sync.list.SelectedItem.Content.ToString()
-
-        foreach ($app in $sync.configs.applications) {
-            if ($app.name -eq $selectedAppName) {
-                $Window.FindName("description").Text = $app.description
-                $Window.FindName('itemLink').Text = "$($app.name) official website"
-                break
-            }
-        }
-    }
-
-    # Define a function to open the official website of the selected application
-    function OpenOfficialWebsite {
-        $selectedAppName = $sync.list.SelectedItem.Content.ToString()
-
-        foreach ($app in $sync.configs.applications) {
-            if ($app.name -eq $selectedAppName) {
-                Start-Process ("https://duckduckgo.com/?hps=1&q=%5C" + $app.name)
-                break
-            }
-        }
-    }
-
-
-    $sync.list.Add_SelectionChanged({
-        $Window.FindName('itemLink').Visibility = "Visible"
-        UpdateDescriptionAndLink
-    })
-    
-    $Window.FindName('itemLink').add_MouseLeftButtonDown({
-        OpenOfficialWebsite
-    })
-
+    PopulateList
 })
+
+$sync.list.Add_SelectionChanged({
+    $Window.FindName('itemLink').Visibility = "Visible"
+    UpdateDescriptionAndLink
+})
+
+$Window.FindName('itemLink').add_MouseLeftButtonDown({
+    OpenOfficialWebsite
+})
+
 
 #endregion
 #region Generate tweaks from json file
@@ -2510,17 +2519,6 @@ Function TogglePlayback {
         PausePlayback
     }
 }
-
-Function PausePlayback {
-    $mediaPlayer.controls.pause()
-    $global:playlistPaused = $true
-}
-
-Function ResumePlayback {
-    $mediaPlayer.controls.play()
-    $global:playlistPaused = $false
-}
-
 
 # Catgoray bar buttons
 $window.FindName('b').add_click({FilterApplicationsByCategory($window.FindName('b').Content)})
