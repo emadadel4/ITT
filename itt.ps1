@@ -300,7 +300,6 @@ function ApplyTweaks() {
 
     # Check internet connection
     if (Test-InternetConnection) {
-        Write-Host "Internet is available you good"
     } else {
         [System.Windows.MessageBox]::Show("Internet is not available.", "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
         return
