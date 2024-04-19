@@ -107,34 +107,34 @@ function Search{
 }
 
 function FilterByCat {
-    # param (
-    #     $Cat
-    # )
+    param (
+        $Cat
+    )
 
-    # $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.list.Items)
+    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.list.Items)
 
-    # # Define the filter predicate
-    # $filterPredicate = {
-    #     param($item)
-    #     # Define the tag you want to filter by
-    #     $tagToFilter =  $Cat
-    #     # Check if the item has the tag
-    #     $itemTag = $item.Tag
-    #     return $itemTag -eq $tagToFilter
-    # }
+    # Define the filter predicate
+    $filterPredicate = {
+        param($item)
+        # Define the tag you want to filter by
+        $tagToFilter =  $Cat
+        # Check if the item has the tag
+        $itemTag = $item.Tag
+        return $itemTag -eq $tagToFilter
+    }
 
-    # $sync.list.Clear()
-    # # Apply the filter to the collection view
-    # $collectionView.Filter = $filterPredicate
+    $sync.list.Clear()
+    # Apply the filter to the collection view
+    $collectionView.Filter = $filterPredicate
     
 }
 
 function ClearFilter {
 
-    # $sync.list.Clear()
+    $sync.list.Clear()
 
-    # $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.list.Items)
-    # $collectionView.Filter = $null
+    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.list.Items)
+    $collectionView.Filter = $null
 }
 
 #endregion
@@ -3204,14 +3204,13 @@ $window.FindName('about').add_MouseLeftButtonDown({About})
 $window.FindName('themeText').add_click({Toggle-Theme})
 
 # Catgoray bar buttons
-#$window.FindName('all').add_click({ClearFilter})
-
-# $window.FindName('b').add_click({ FilterByCat($window.FindName('b').Content)})
-# $window.FindName('m').add_click({FilterByCat($window.FindName('m').Content)})
-# $window.FindName('d').add_click({ FilterByCat($window.FindName('d').Content)})
-# $window.FindName('g').add_click({ FilterByCat($window.FindName('g').Content)})
-# $window.FindName('u').add_click({ FilterByCat($window.FindName('u').Content)})
-# $window.FindName('c').add_click({ FilterByCat($window.FindName('c').Content)})
+$window.FindName('all').add_click({ClearFilter})
+$window.FindName('b').add_click({ FilterByCat($window.FindName('b').Content)})
+$window.FindName('m').add_click({FilterByCat($window.FindName('m').Content)})
+$window.FindName('d').add_click({ FilterByCat($window.FindName('d').Content)})
+$window.FindName('g').add_click({ FilterByCat($window.FindName('g').Content)})
+$window.FindName('u').add_click({ FilterByCat($window.FindName('u').Content)})
+$window.FindName('c').add_click({ FilterByCat($window.FindName('c').Content)})
 
 $Window.Add_Closing({
     Write-Host "Bye :)"
