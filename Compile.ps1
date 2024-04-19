@@ -40,8 +40,7 @@ $xaml = (Get-Content .\interface\window.xaml).replace("'","''")
 
 # Assuming taps.xaml is in the same directory as main.ps1
 $appXamlPath = Join-Path -Path $PSScriptRoot -ChildPath "interface/Controls/taps.xaml"
-$buttonStylePath = Join-Path -Path $PSScriptRoot -ChildPath "interface/Themes/button.xaml"
-$scrollbarStylePath = Join-Path -Path $PSScriptRoot -ChildPath "interface/Themes/scrollbar.xaml"
+$StylePath = Join-Path -Path $PSScriptRoot -ChildPath "interface/Themes/style.xaml"
 $colorsPath = Join-Path -Path $PSScriptRoot -ChildPath "interface/Themes/colors.xaml"
 
 
@@ -49,8 +48,7 @@ $colorsPath = Join-Path -Path $PSScriptRoot -ChildPath "interface/Themes/colors.
 
 # Load the XAML content from inputApp.xaml
 $appXamlContent = Get-Content -Path $appXamlPath -Raw
-$buttonStyleContent = Get-Content -Path $buttonStylePath -Raw
-$scrollbarContent = Get-Content -Path $scrollbarStylePath -Raw
+$StyleContent = Get-Content -Path $StylePath -Raw
 $colorsContent = Get-Content -Path $colorsPath -Raw
 
 
@@ -60,11 +58,7 @@ $colorsContent = Get-Content -Path $colorsPath -Raw
 # Replace the placeholder in $inputXML with the content of inputApp.xaml
 $xaml = $xaml -replace "{{Taps}}", $appXamlContent
 
-
-
-
-$xaml = $xaml -replace "{{ButtonStyle}}", $buttonStyleContent
-$xaml = $xaml -replace "{{ScrollbarStyle}}", $scrollbarContent
+$xaml = $xaml -replace "{{Style}}", $StyleContent
 $xaml = $xaml -replace "{{Colors}}", $colorsContent
 
 
@@ -120,4 +114,4 @@ Get-Content .\scripts\main.ps1 | Out-File ./$scriptname -Append -Encoding ascii
 
 
 
-./itt.ps1
+#./itt.ps1

@@ -4,17 +4,21 @@ $global:isDarkMode = $global:themePreference
 # Function to toggle between dark and light modes
 function Toggle-Theme {
 
-    $global:isDarkMode = -not $global:isDarkMode
 
     try {
     if ($global:isDarkMode -eq "Dark") {
         Switch-ToLightMode
+        $global:isDarkMode = -not $global:isDarkMode
+
     } else {
         Switch-ToDarkMode
+        $global:isDarkMode = -not $global:isDarkMode
     }
     } catch {
         Write-Host "Error toggling theme: $_"
     }
+
+
 }
 
 # Function to switch to dark mode

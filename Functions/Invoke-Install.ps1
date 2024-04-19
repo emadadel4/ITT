@@ -78,7 +78,7 @@ function Invoke-Install() {
                     Write-Host "Installing the following programs $choco "
                     Start-Process -FilePath "choco" -ArgumentList "install $choco -y --force --ignore-checksums" -NoNewWindow -Wait
                     Write-Host "Installs have finished"
-                    [System.Windows.MessageBox]::Show("Installs have finished", "ITT @emadadel4", "OK", "Information")
+                    [System.Windows.MessageBox]::Show("Installation Successfully Completed", "ITT @emadadel4", "OK", "Information")
 
                     # Uncheck all checkboxes in $list
                     $sync.list.Dispatcher.Invoke([Action]{
@@ -142,7 +142,7 @@ function ApplyTweaks() {
                     #Write-Host "Applying tweeak(s) $tweeaks "
                     Start-Process -FilePath "powershell.exe" -ArgumentList "-Command `"$tweeaks`"" -NoNewWindow -Wait
                     Write-Host "The operation was successful."    
-                    [System.Windows.MessageBox]::Show("The operation was successful.", "ITT @emadadel4", "OK", "Information")
+                    [System.Windows.MessageBox]::Show("Successfully Completed", "ITT @emadadel4", "OK", "Information")
 
                     $sync.tweaks.Dispatcher.Invoke([Action]{
                         foreach ($item in $sync.tweaks.Items)

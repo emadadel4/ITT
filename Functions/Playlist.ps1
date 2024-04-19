@@ -83,6 +83,6 @@ function PlayMusic {
 }
 
 
-#PlayMusic *> $null
+PlayMusic *> $null
 
 

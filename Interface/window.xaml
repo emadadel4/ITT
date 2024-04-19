@@ -9,246 +9,238 @@
     
         <Window.Resources>
 
-            {{ScrollbarStyle}}
-
-            {{ButtonStyle}}
-
+            {{Style}}
+            
             {{Colors}}
 
         </Window.Resources>
 
-    <Grid>
-     
-       <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="auto"/>
-        </Grid.RowDefinitions>
+        <Grid>
+        
+        <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
 
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="222"/>
-        </Grid.ColumnDefinitions>
-
-
-        <Menu Grid.Row="0" Grid.ColumnSpan="3" BorderBrush="Transparent" BorderThickness="0">
-            <MenuItem Header="File" BorderBrush="Transparent" BorderThickness="0">
-                <MenuItem Header="Load Preset"/>
-                <MenuItem Header="Save Preset"/>
-            </MenuItem>
-
-            <MenuItem Name="themeText" Header="Light Mode"/>
-            <MenuItem Name="toggleMusic" Header="Mute"/>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="222"/>
+            </Grid.ColumnDefinitions>
 
 
-        </Menu>
+            <Menu Grid.Row="0" Grid.ColumnSpan="3" BorderBrush="Transparent" BorderThickness="0">
+                <MenuItem Header="File" BorderBrush="Transparent" BorderThickness="0">
+                    <MenuItem Header="Load Preset"/>
+                    <MenuItem Header="Save Preset"/>
+                </MenuItem>
+                <MenuItem Name="themeText" Header="Light Mode"/>
+            </Menu>
 
-        <!--Header Section-->
+            <!--Header Section-->
 
-            <!--Logo-->
-                <StackPanel Margin="20" Orientation="Horizontal" HorizontalAlignment="Left"  VerticalAlignment="Center" Grid.Row="1" Grid.ColumnSpan="3" >
+                <!--Logo-->
+                    <StackPanel Margin="20" Orientation="Horizontal" HorizontalAlignment="Left"  VerticalAlignment="Center" Grid.Row="1" Grid.ColumnSpan="3" >
 
-                    <Ellipse Name="about" Width="50" Height="50" Cursor="Hand">
-                        <Ellipse.Fill>
-                            <ImageBrush ImageSource="https://avatars.githubusercontent.com/u/19177373?v=4.png" />
-                        </Ellipse.Fill>
-                    </Ellipse>
-            <!--End Logo-->
+                        <Ellipse Name="about" Width="50" Height="50" Cursor="Hand">
+                            <Ellipse.Fill>
+                                <ImageBrush ImageSource="https://avatars.githubusercontent.com/u/19177373?v=4.png" />
+                            </Ellipse.Fill>
+                        </Ellipse>
+                <!--End Logo-->
 
-            <!--Catagory Section-->
-                <StackPanel Name="catg" Margin="20,0,0,0" Orientation="Horizontal" HorizontalAlignment="Left">
+                <!--Catagory Section-->
+                    <StackPanel Name="catg" Margin="20,0,0,0" Orientation="Horizontal" HorizontalAlignment="Left">
 
-                    <Button Name="all"
-                    Cursor="Hand"  
-                    Content="All" 
-                    Height="20" Width="60" 
-                    Margin="4"  
-                    Background="{DynamicResource BGColor}" 
-                    Foreground="{DynamicResource DefaultTextColor}"
-                    
-                    />
+                        <Button Name="all"
+                        Cursor="Hand"  
+                        Content="All" 
+                        Height="20" Width="60" 
+                        Margin="4"  
+                        Background="{DynamicResource BGColor}" 
+                        Foreground="{DynamicResource DefaultTextColor}"
+                        
+                        />
 
-                    <Button Name="r" 
-                    Cursor="Hand" 
-                    Content="Fresh Start" 
-                    Height="20" 
-                    Width="100" Margin="4"  
-                    Background="{DynamicResource BGColor}" 
-                    Foreground="{DynamicResource DefaultTextColor}"
+                        <Button Name="r" 
+                        Cursor="Hand" 
+                        Content="Fresh Start" 
+                        Height="20" 
+                        Width="100" Margin="4"  
+                        Background="{DynamicResource BGColor}" 
+                        Foreground="{DynamicResource DefaultTextColor}"
 
-                    />
+                        />
 
-                    <Button Name="m" 
-                    Cursor="Hand"  
-                    Content="Media" 
-                    Height="20" 
-                    Width="60" 
-                    Margin="4"  
-                    Background="{DynamicResource BGColor}" 
-                    Foreground="{DynamicResource DefaultTextColor}"
-                    
-                    />
+                        <Button Name="m" 
+                        Cursor="Hand"  
+                        Content="Media" 
+                        Height="20" 
+                        Width="60" 
+                        Margin="4"  
+                        Background="{DynamicResource BGColor}" 
+                        Foreground="{DynamicResource DefaultTextColor}"
+                        
+                        />
 
-                    <Button Name="b" 
-                    Cursor="Hand"  
-                    Content="Browsers" 
-                    Height="20" Width="60" 
-                    Margin="4"  
-                    Background="{DynamicResource BGColor}" 
-                    Foreground="{DynamicResource DefaultTextColor}"
-                    
-                    />
+                        <Button Name="b" 
+                        Cursor="Hand"  
+                        Content="Browsers" 
+                        Height="20" Width="60" 
+                        Margin="4"  
+                        Background="{DynamicResource BGColor}" 
+                        Foreground="{DynamicResource DefaultTextColor}"
+                        
+                        />
 
-                    <Button Name="g" 
-                    Cursor="Hand"  
-                    Content="Gaming" 
-                    Height="20" 
-                    Width="60" 
-                    Margin="4"  
-                    Background="{DynamicResource BGColor}" 
-                    Foreground="{DynamicResource DefaultTextColor}"
-                    
-                    />
+                        <Button Name="g" 
+                        Cursor="Hand"  
+                        Content="Gaming" 
+                        Height="20" 
+                        Width="60" 
+                        Margin="4"  
+                        Background="{DynamicResource BGColor}" 
+                        Foreground="{DynamicResource DefaultTextColor}"
+                        
+                        />
 
-                    <Button Name="d" 
-                    Cursor="Hand"  
-                    Content="Developer" 
-                    Height="20" 
-                    Width="70" 
-                    Margin="4"  
-                    Background="{DynamicResource BGColor}" 
-                    Foreground="{DynamicResource DefaultTextColor}"
+                        <Button Name="d" 
+                        Cursor="Hand"  
+                        Content="Developer" 
+                        Height="20" 
+                        Width="70" 
+                        Margin="4"  
+                        Background="{DynamicResource BGColor}" 
+                        Foreground="{DynamicResource DefaultTextColor}"
 
-                    />
+                        />
 
-                    <Button Name="u" 
-                    Cursor="Hand"  
-                    Content="Utilities" 
-                    Height="20" 
-                    Width="60" 
-                    Margin="4"  
-                    Background="{DynamicResource BGColor}" 
-                    Foreground="{DynamicResource DefaultTextColor}"
-                    
-                    />
-                    <Button Name="c" 
-                    Cursor="Hand" 
-                    Content="Communication" 
-                    Height="20" 
-                    Width="100" 
-                    Margin="4"  
-                    Background="{DynamicResource BGColor}" 
-                    Foreground="{DynamicResource DefaultTextColor}"
-                    
-                    />
+                        <Button Name="u" 
+                        Cursor="Hand"  
+                        Content="Utilities" 
+                        Height="20" 
+                        Width="60" 
+                        Margin="4"  
+                        Background="{DynamicResource BGColor}" 
+                        Foreground="{DynamicResource DefaultTextColor}"
+                        
+                        />
+                        <Button Name="c" 
+                        Cursor="Hand" 
+                        Content="Communication" 
+                        Height="20" 
+                        Width="100" 
+                        Margin="4"  
+                        Background="{DynamicResource BGColor}" 
+                        Foreground="{DynamicResource DefaultTextColor}"
+                        
+                        />
 
+                        </StackPanel>
                     </StackPanel>
-                </StackPanel>
-            <!--End Catagory Section-->
+                <!--End Catagory Section-->
 
-        <!--End Header Section-->
+            <!--End Header Section-->
 
-            {{Taps}}
+                {{Taps}}
 
-        <!--Main Section-->
-            <Grid  Grid.Row="2" Grid.Column="2"  Grid.RowSpan="2">
+            <!--Main Section-->
+                <Grid  Grid.Row="2" Grid.Column="2"  Grid.RowSpan="2">
 
-                <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Vertical">
 
 
-                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
 
-                        <Grid>
-                            <TextBox Padding="8"
-                            Width="188"
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Left" 
-                            Text="{Binding Text_searchInput}"
-                            x:Name="searchInput" 
-                            />
+                            <Grid>
+                                <TextBox Padding="8"
+                                Width="188"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Left" 
+                                Text="{Binding Text_searchInput}"
+                                x:Name="searchInput" 
+                                />
 
-                            <TextBlock IsHitTestVisible="False" 
-                            Text="Search"
-                            VerticalAlignment="Center" 
-                            HorizontalAlignment="Left"
-                            Margin="16,0,0,0"
-                            Foreground="{DynamicResource FGTextColor}">
+                                <TextBlock IsHitTestVisible="False" 
+                                Text="Search"
+                                VerticalAlignment="Center" 
+                                HorizontalAlignment="Left"
+                                Margin="16,0,0,0"
+                                Foreground="{DynamicResource FGTextColor}">
 
-                            <TextBlock.Style>
-                                    <Style TargetType="{x:Type TextBlock}">
-                                        <Setter Property="Visibility" Value="Collapsed"/>
-                                        <Style.Triggers>
-                                            <DataTrigger Binding="{Binding Text, ElementName=searchInput}" Value="">
-                                                <Setter Property="Visibility" Value="Visible"/>
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </TextBlock.Style>
-                            </TextBlock>
-                        </Grid>
-                    </StackPanel>
+                                <TextBlock.Style>
+                                        <Style TargetType="{x:Type TextBlock}">
+                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding Text, ElementName=searchInput}" Value="">
+                                                    <Setter Property="Visibility" Value="Visible"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBlock.Style>
+                                </TextBlock>
+                            </Grid>
+                        </StackPanel>
 
-                    <TextBlock Name="itemLink" 
-                        Foreground="{DynamicResource BGButtonColor}" 
-                        Visibility="Hidden" 
-                        TextWrapping="Wrap" 
-                        Text="" 
-                        Margin="20,15,15,0" 
-                    />
-
-                    <ScrollViewer VerticalScrollBarVisibility="Auto"
-                        Height="233"
-                        Margin="20,15,15,0" 
-                    >
-                        <TextBlock Name="description" 
-                            Text=""
+                        <TextBlock Name="itemLink" 
+                            Foreground="{DynamicResource BGButtonColor}" 
+                            Visibility="Hidden" 
                             TextWrapping="Wrap" 
-                            Foreground="{DynamicResource DefaultTextColor}"/>
-                    </ScrollViewer>
+                            Text="" 
+                            Margin="20,15,15,0" 
+                        />
 
-                    
+                        <ScrollViewer VerticalScrollBarVisibility="Auto"
+                            Height="233"
+                            Margin="20,15,15,0" 
+                        >
+                            <TextBlock Name="description" 
+                                Text=""
+                                TextWrapping="Wrap" 
+                                Foreground="{DynamicResource DefaultTextColor}"/>
+                        </ScrollViewer>
 
-                </StackPanel>
+                        
 
-                <!--Install Button-->
-                    <Button
-                    Name="installBtn"
-                    Content="Install"
-                    FontSize="15"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Bottom"
-                    Cursor="Hand"
-                    Width="100" Height="40" Margin="50"/>
-                <!--End Install Button-->
+                    </StackPanel>
 
-                <!--Apply Button-->
-                    <Button
-                    Name="applyBtn"
-                    Content="Apply"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Bottom"
-                    Cursor="Hand"
-                    FontSize="15"
-                    Visibility="Hidden"
-                    Width="100" Height="40" Margin="50"/>
-                <!--End Apply Button-->
+                    <!--Install Button-->
+                        <Button
+                        Name="installBtn"
+                        Content="Install"
+                        FontSize="15"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Bottom"
+                        Width="100" Height="40" Margin="50"/>
+                    <!--End Install Button-->
 
-            </Grid>
-        <!--End Main Section-->
+                    <!--Apply Button-->
+                        <Button
+                        Name="applyBtn"
+                        Content="Apply"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Bottom"
+                        FontSize="15"
+                        Visibility="Hidden"
+                        Width="100" Height="40" Margin="50"/>
+                    <!--End Apply Button-->
 
-        <!--Footer Section-->
-            <Grid Grid.Row="4">
-                <TextBlock Name="quotes"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Center" 
-                Padding="16" TextWrapping="Wrap" 
-                Text="When I finished building my boat, the sea dried up."
-                />
-            </Grid>
-        <!--End Footer Section-->
+                </Grid>
+            <!--End Main Section-->
 
-    </Grid>
+            <!--Footer Section-->
+                <Grid Grid.Row="4">
+                    <TextBlock Name="quotes"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center" 
+                    Padding="16" TextWrapping="Wrap" 
+                    Text="When I finished building my boat, the sea dried up."
+                    />
+                </Grid>
+            <!--End Footer Section-->
+
+        </Grid>
         
     </Window>
 <!--End Window-->

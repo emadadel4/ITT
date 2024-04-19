@@ -17,7 +17,7 @@ function PopulateList {
 
 # Define a function to update the description and link when an item is selected
 function UpdateDescriptionAndLink {
-    $selectedAppName = $sync.list.SelectedItem.Content.ToString()
+    $selectedAppName = $sync.list.SelectedItem.Content
 
     foreach ($app in $sync.configs.applications) {
         if ($app.name -eq $selectedAppName) {
@@ -30,7 +30,7 @@ function UpdateDescriptionAndLink {
 
 # Define a function to open the official website of the selected application
 function OpenOfficialWebsite {
-    $selectedAppName = $sync.list.SelectedItem.Content.ToString()
+    $selectedAppName = $sync.list.SelectedItem.Content
 
     foreach ($app in $sync.configs.applications) {
         if ($app.name -eq $selectedAppName) {

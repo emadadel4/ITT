@@ -1324,6 +1324,14 @@ $sync.configs.applications = '[
     "check": "false"
   },
   {
+    "Name": "AOMEI Partition Assistant Standard",
+    "Description": "AOMEI Partition Assistant Standard allows you to realize disk upgrade/replacement, partition style conversion, OS migration and other disk managements without any difficulties.",
+    "winget": "#",
+    "choco": "partition-assistant-standard",
+    "category": "Utilities",
+    "check": "false"
+  },
+  {
     "Name": "AOMEI Backupper",
     "Description": "A backup and recovery software that enables users to create system backups, disk backups, partition backups, and file backups to protect data against system failures and data loss.",
     "winget": "AOMEI.Backupper.Standard",
@@ -1978,196 +1986,195 @@ $inputXML =  '
     
         <Window.Resources>
 
-             <!--Scrollbar Thumbs-->
- <Style x:Key="ScrollThumbs" TargetType="{x:Type Thumb}">
-     <Setter Property="Template">
-         <Setter.Value>
-             <ControlTemplate TargetType="{x:Type Thumb}">
-                 <Grid x:Name="Grid">
-                     <Rectangle HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="Auto" Height="Auto" Fill="Transparent" />
-                     <Border x:Name="Rectangle1" CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="Auto" Height="Auto" Background="{TemplateBinding Background}" />
-                 </Grid>
-                 <ControlTemplate.Triggers>
-                     <Trigger Property="Tag" Value="Horizontal">
-                         <Setter TargetName="Rectangle1" Property="Width" Value="Auto" />
-                         <Setter TargetName="Rectangle1" Property="Height" Value="7" />
-                     </Trigger>
-                 </ControlTemplate.Triggers>
-             </ControlTemplate>
-         </Setter.Value>
-     </Setter>
- </Style>
- <Style x:Key="{x:Type ScrollBar}" TargetType="{x:Type ScrollBar}">
-     <Setter Property="Stylus.IsFlicksEnabled" Value="false" />
-     <Setter Property="Foreground" Value="{DynamicResource FGColor}" />
-     <Setter Property="Background" Value="Transparent" />
-     <Setter Property="Width" Value="8" />
-     <Setter Property="Template">
-         <Setter.Value>
-             <ControlTemplate TargetType="{x:Type ScrollBar}">
-                 <Grid x:Name="GridRoot" Width="8" Background="{TemplateBinding Background}">
-                     <Grid.RowDefinitions>
-                         <RowDefinition Height="0.00001*" />
-                     </Grid.RowDefinitions>
-                     <Track x:Name="PART_Track" Grid.Row="0" IsDirectionReversed="true" Focusable="false">
-                         <Track.Thumb>
-                             <Thumb x:Name="Thumb" Background="{TemplateBinding Foreground}" Style="{DynamicResource ScrollThumbs}" />
-                         </Track.Thumb>
-                         <Track.IncreaseRepeatButton>
-                             <RepeatButton x:Name="PageUp" Command="ScrollBar.PageDownCommand" Opacity="0" Focusable="false" />
-                         </Track.IncreaseRepeatButton>
-                         <Track.DecreaseRepeatButton>
-                             <RepeatButton x:Name="PageDown" Command="ScrollBar.PageUpCommand" Opacity="0" Focusable="false" />
-                         </Track.DecreaseRepeatButton>
-                     </Track>
-                 </Grid>
-                 <ControlTemplate.Triggers>
-                     <Trigger SourceName="Thumb" Property="IsMouseOver" Value="true">
-                         <Setter Value="{DynamicResource ButtonSelectBrush}" TargetName="Thumb" Property="Background" />
-                     </Trigger>
-                     <Trigger SourceName="Thumb" Property="IsDragging" Value="true">
-                         <Setter Value="{DynamicResource DarkBrush}" TargetName="Thumb" Property="Background" />
-                     </Trigger>
-                     <Trigger Property="IsEnabled" Value="false">
-                         <Setter TargetName="Thumb" Property="Visibility" Value="Collapsed" />
-                     </Trigger>
-                     <Trigger Property="Orientation" Value="Horizontal">
-                         <Setter TargetName="GridRoot" Property="LayoutTransform">
-                             <Setter.Value>
-                                 <RotateTransform Angle="-90" />
-                             </Setter.Value>
-                         </Setter>
-                         <Setter TargetName="PART_Track" Property="LayoutTransform">
-                             <Setter.Value>
-                                 <RotateTransform Angle="-90" />
-                             </Setter.Value>
-                         </Setter>
-                         <Setter Property="Width" Value="Auto" />
-                         <Setter Property="Height" Value="8" />
-                         <Setter TargetName="Thumb" Property="Tag" Value="Horizontal" />
-                         <Setter TargetName="PageDown" Property="Command" Value="ScrollBar.PageLeftCommand" />
-                         <Setter TargetName="PageUp" Property="Command" Value="ScrollBar.PageRightCommand" />
-                     </Trigger>
-                 </ControlTemplate.Triggers>
-             </ControlTemplate>
-         </Setter.Value>
-     </Setter>
- </Style>
- <!--End Scrollbar Thumbs-->
+                <!--Button Style-->
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="{DynamicResource FGColor}"/>
+            <Setter Property="Foreground" Value="{DynamicResource DefaultTextColor}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="20" Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                                VerticalAlignment="Center"/>
+                            
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
 
-                    <!--Button Style-->
-            <Style TargetType="Button">
-                <Setter Property="Background" Value="{DynamicResource FGColor}"/>
-                <Setter Property="Foreground" Value="{DynamicResource DefaultTextColor}"/>
-                <Setter Property="Template">
-                    <Setter.Value>
-                        <ControlTemplate TargetType="Button">
-                            <Border CornerRadius="20" Background="{TemplateBinding Background}">
-                                <ContentPresenter HorizontalAlignment="Center"
-                                                    VerticalAlignment="Center"/>
-                                
-                            </Border>
-                        </ControlTemplate>
-                    </Setter.Value>
-                </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{DynamicResource BGButtonColor}"/>
+                    <Setter Property="Foreground" Value="{DynamicResource FGButtonColor}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    <!--End Button Style-->
 
-                <Style.Triggers>
-                    <Trigger Property="IsMouseOver" Value="True">
-                        <Setter Property="Background" Value="{DynamicResource BGButtonColor}"/>
-                        <Setter Property="Foreground" Value="{DynamicResource FGButtonColor}"/>
+
+    <!--Textbox Style-->
+        <Style TargetType="TextBox">
+            <Setter Property="Foreground" Value="{DynamicResource FGTextColor}"/>
+            <Setter Property="Background" Value="{DynamicResource FGColor}"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="15"> <!-- Set CornerRadius here -->
+                            <ScrollViewer x:Name="PART_ContentHost" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                    <Trigger Property="IsFocused" Value="True">
+                        <Setter Property="BorderThickness" Value="1"/>
+                        <Setter Property="BorderBrush" Value="{DynamicResource BGButtonColor}"/>
                     </Trigger>
                 </Style.Triggers>
-            </Style>
-        <!--End Button Style-->
-
-
-        <!--Textbox Style-->
-            <Style TargetType="TextBox">
-                <Setter Property="Foreground" Value="{DynamicResource FGTextColor}"/>
-                <Setter Property="Background" Value="{DynamicResource FGColor}"/>
-                <Setter Property="BorderThickness" Value="0"/>
-                <Setter Property="Template">
-                    <Setter.Value>
-                        <ControlTemplate TargetType="TextBox">
-                            <Border Background="{TemplateBinding Background}"
-                                    BorderBrush="{TemplateBinding BorderBrush}"
-                                    BorderThickness="{TemplateBinding BorderThickness}"
-                                    CornerRadius="15"> <!-- Set CornerRadius here -->
-                                <ScrollViewer x:Name="PART_ContentHost" />
-                            </Border>
-                        </ControlTemplate>
-                    </Setter.Value>
-                </Setter>
-                <Style.Triggers>
-                        <Trigger Property="IsFocused" Value="True">
-                            <Setter Property="BorderThickness" Value="1"/>
-                            <Setter Property="BorderBrush" Value="{DynamicResource BGButtonColor}"/>
-                        </Trigger>
-                    </Style.Triggers>
-            </Style>
-        <!--End Textbox Style-->
-
-        <!--TextBlock Style-->
-            <Style TargetType="TextBlock">
-                <Setter Property="Foreground" Value="{DynamicResource FGTextColor}"/>
-            </Style>
-        <!--End TextBlock Style-->
-
-        <!--CheckBox Style-->
-            <Style TargetType="CheckBox">
-                <Setter Property="Foreground" Value="{DynamicResource FGTextColor}"/>
-                <Setter Property="Margin" Value="8"/>
-
-            </Style>
-        <!--End CheckBox Style-->
-
-        <!--Menu Style-->
-            <Style TargetType="Menu">
-                <Setter Property="Background" Value="{DynamicResource BGColor}"/>
-            </Style>
-        <!--End Menu Style-->
-
-
-        <!--MenuItem Style-->
-            <Style TargetType="MenuItem">
-                <Setter Property="Background" Value="{DynamicResource BGColor}"/>
-                <Setter Property="Foreground" Value="{DynamicResource DefaultTextColor}"/>
-                <Setter Property="OverridesDefaultStyle" Value="True"/>
-                <Setter Property="Template">
-                    <Setter.Value>
-                        <ControlTemplate TargetType="MenuItem">
-                            <Border Background="{DynamicResource BGColor}"
-                                    BorderThickness="0"> <!-- Set BorderThickness to 0 -->
-                                <Grid>
-                                    <ContentPresenter Content="{TemplateBinding Header}"
-                                                    Margin="6"/>
-                                    <Popup IsOpen="{Binding IsSubmenuOpen, RelativeSource={RelativeSource TemplatedParent}}"
-                                        AllowsTransparency="True"
-                                        Focusable="False"
-                                        PopupAnimation="Fade">
-                                        <Border Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"
-                                                BorderThickness="0"> <!-- Set BorderThickness to 0 -->
-                                            <ScrollViewer CanContentScroll="True"
-                                                        Style="{DynamicResource {ComponentResourceKey ResourceId=MenuScrollViewer, TypeInTargetAssembly={x:Type FrameworkElement}}}">
-                                                <ItemsPresenter Margin="0"/>
-                                            </ScrollViewer>
-                                        </Border>
-                                    </Popup>
-                                </Grid>
-                            </Border>
-                        </ControlTemplate>
-                    </Setter.Value>
-                </Setter>
-            </Style>
-        <!--End MenuItem Style-->
-
-        <!--ListViewItem Style-->
-            <Style TargetType="ListViewItem">
-            <Setter Property="Background" Value="{DynamicResource FGColor}"/>
         </Style>
-        <!--End ListViewItem Style-->
+    <!--End Textbox Style-->
+
+    <!--TextBlock Style-->
+        <Style TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{DynamicResource FGTextColor}"/>
+        </Style>
+    <!--End TextBlock Style-->
+
+    <!--CheckBox Style-->
+        <Style TargetType="CheckBox">
+            <Setter Property="Foreground" Value="{DynamicResource FGTextColor}"/>
+            <Setter Property="Margin" Value="8"/>
+
+        </Style>
+    <!--End CheckBox Style-->
+
+    <!--Menu Style-->
+        <Style TargetType="Menu">
+            <Setter Property="Background" Value="{DynamicResource BGColor}"/>
+        </Style>
+    <!--End Menu Style-->
 
 
+    <!--MenuItem Style-->
+        <Style TargetType="MenuItem">
+            <Setter Property="Background" Value="{DynamicResource BGColor}"/>
+            <Setter Property="Foreground" Value="{DynamicResource DefaultTextColor}"/>
+            <Setter Property="OverridesDefaultStyle" Value="True"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="MenuItem">
+                        <Border Background="{DynamicResource BGColor}"
+                                BorderThickness="0"> <!-- Set BorderThickness to 0 -->
+                            <Grid>
+                                <ContentPresenter Content="{TemplateBinding Header}"
+                                                Margin="6"/>
+                                <Popup IsOpen="{Binding IsSubmenuOpen, RelativeSource={RelativeSource TemplatedParent}}"
+                                    AllowsTransparency="True"
+                                    Focusable="False"
+                                    PopupAnimation="Fade">
+                                    <Border Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"
+                                            BorderThickness="0"> <!-- Set BorderThickness to 0 -->
+                                        <ScrollViewer CanContentScroll="True"
+                                                    Style="{DynamicResource {ComponentResourceKey ResourceId=MenuScrollViewer, TypeInTargetAssembly={x:Type FrameworkElement}}}">
+                                            <ItemsPresenter Margin="0"/>
+                                        </ScrollViewer>
+                                    </Border>
+                                </Popup>
+                            </Grid>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    <!--End MenuItem Style-->
+
+    <!--ListViewItem Style-->
+        <Style TargetType="ListViewItem">
+        <Setter Property="Background" Value="{DynamicResource FGColor}"/>
+    </Style>
+    <!--End ListViewItem Style-->
+
+    <!--Scrollbar Thumbs-->
+        <Style x:Key="ScrollThumbs" TargetType="{x:Type Thumb}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Thumb}">
+                        <Grid x:Name="Grid">
+                            <Rectangle HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="Auto" Height="Auto" Fill="Transparent" />
+                            <Border x:Name="Rectangle1" CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="Auto" Height="Auto" Background="{TemplateBinding Background}" />
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="Tag" Value="Horizontal">
+                                <Setter TargetName="Rectangle1" Property="Width" Value="Auto" />
+                                <Setter TargetName="Rectangle1" Property="Height" Value="7" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="{x:Type ScrollBar}" TargetType="{x:Type ScrollBar}">
+            <Setter Property="Stylus.IsFlicksEnabled" Value="false" />
+            <Setter Property="Foreground" Value="{DynamicResource FGColor}" />
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Width" Value="8" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ScrollBar}">
+                        <Grid x:Name="GridRoot" Width="8" Background="{TemplateBinding Background}">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="0.00001*" />
+                            </Grid.RowDefinitions>
+                            <Track x:Name="PART_Track" Grid.Row="0" IsDirectionReversed="true" Focusable="false">
+                                <Track.Thumb>
+                                    <Thumb x:Name="Thumb" Background="{TemplateBinding Foreground}" Style="{DynamicResource ScrollThumbs}" />
+                                </Track.Thumb>
+                                <Track.IncreaseRepeatButton>
+                                    <RepeatButton x:Name="PageUp" Command="ScrollBar.PageDownCommand" Opacity="0" Focusable="false" />
+                                </Track.IncreaseRepeatButton>
+                                <Track.DecreaseRepeatButton>
+                                    <RepeatButton x:Name="PageDown" Command="ScrollBar.PageUpCommand" Opacity="0" Focusable="false" />
+                                </Track.DecreaseRepeatButton>
+                            </Track>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger SourceName="Thumb" Property="IsMouseOver" Value="true">
+                                <Setter Value="{DynamicResource ButtonSelectBrush}" TargetName="Thumb" Property="Background" />
+                            </Trigger>
+                            <Trigger SourceName="Thumb" Property="IsDragging" Value="true">
+                                <Setter Value="{DynamicResource DarkBrush}" TargetName="Thumb" Property="Background" />
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter TargetName="Thumb" Property="Visibility" Value="Collapsed" />
+                            </Trigger>
+                            <Trigger Property="Orientation" Value="Horizontal">
+                                <Setter TargetName="GridRoot" Property="LayoutTransform">
+                                    <Setter.Value>
+                                        <RotateTransform Angle="-90" />
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter TargetName="PART_Track" Property="LayoutTransform">
+                                    <Setter.Value>
+                                        <RotateTransform Angle="-90" />
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter Property="Width" Value="Auto" />
+                                <Setter Property="Height" Value="8" />
+                                <Setter TargetName="Thumb" Property="Tag" Value="Horizontal" />
+                                <Setter TargetName="PageDown" Property="Command" Value="ScrollBar.PageLeftCommand" />
+                                <Setter TargetName="PageUp" Property="Command" Value="ScrollBar.PageRightCommand" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    <!--End Scrollbar Thumbs-->
+            
             <!--Light Theme-->
 
 
@@ -2198,135 +2205,135 @@ $inputXML =  '
 
         </Window.Resources>
 
-    <Grid>
-     
-       <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="auto"/>
-        </Grid.RowDefinitions>
+        <Grid>
+        
+        <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
 
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="222"/>
-        </Grid.ColumnDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="222"/>
+            </Grid.ColumnDefinitions>
 
 
-        <Menu Grid.Row="0" Grid.ColumnSpan="3" BorderBrush="Transparent" BorderThickness="0">
-            <MenuItem Header="File" BorderBrush="Transparent" BorderThickness="0">
-                <MenuItem Header="Load Preset"/>
-                <MenuItem Header="Save Preset"/>
-            </MenuItem>
-            <MenuItem Name="themeText" Header="Light Mode"/>
-        </Menu>
+            <Menu Grid.Row="0" Grid.ColumnSpan="3" BorderBrush="Transparent" BorderThickness="0">
+                <MenuItem Header="File" BorderBrush="Transparent" BorderThickness="0">
+                    <MenuItem Header="Load Preset"/>
+                    <MenuItem Header="Save Preset"/>
+                </MenuItem>
+                <MenuItem Name="themeText" Header="Light Mode"/>
+            </Menu>
 
-        <!--Header Section-->
+            <!--Header Section-->
 
-            <!--Logo-->
-                <StackPanel Margin="20" Orientation="Horizontal" HorizontalAlignment="Left"  VerticalAlignment="Center" Grid.Row="1" Grid.ColumnSpan="3" >
+                <!--Logo-->
+                    <StackPanel Margin="20" Orientation="Horizontal" HorizontalAlignment="Left"  VerticalAlignment="Center" Grid.Row="1" Grid.ColumnSpan="3" >
 
-                    <Ellipse Name="about" Width="50" Height="50" Cursor="Hand">
-                        <Ellipse.Fill>
-                            <ImageBrush ImageSource="https://avatars.githubusercontent.com/u/19177373?v=4.png" />
-                        </Ellipse.Fill>
-                    </Ellipse>
-            <!--End Logo-->
+                        <Ellipse Name="about" Width="50" Height="50" Cursor="Hand">
+                            <Ellipse.Fill>
+                                <ImageBrush ImageSource="https://avatars.githubusercontent.com/u/19177373?v=4.png" />
+                            </Ellipse.Fill>
+                        </Ellipse>
+                <!--End Logo-->
 
-            <!--Catagory Section-->
-                <StackPanel Name="catg" Margin="20,0,0,0" Orientation="Horizontal" HorizontalAlignment="Left">
+                <!--Catagory Section-->
+                    <StackPanel Name="catg" Margin="20,0,0,0" Orientation="Horizontal" HorizontalAlignment="Left">
 
-                    <Button Name="all"
-                    Cursor="Hand"  
-                    Content="All" 
-                    Height="20" Width="60" 
-                    Margin="4"  
-                    Background="{DynamicResource BGColor}" 
-                    Foreground="{DynamicResource DefaultTextColor}"
-                    
-                    />
+                        <Button Name="all"
+                        Cursor="Hand"  
+                        Content="All" 
+                        Height="20" Width="60" 
+                        Margin="4"  
+                        Background="{DynamicResource BGColor}" 
+                        Foreground="{DynamicResource DefaultTextColor}"
+                        
+                        />
 
-                    <Button Name="r" 
-                    Cursor="Hand" 
-                    Content="Fresh Start" 
-                    Height="20" 
-                    Width="100" Margin="4"  
-                    Background="{DynamicResource BGColor}" 
-                    Foreground="{DynamicResource DefaultTextColor}"
+                        <Button Name="r" 
+                        Cursor="Hand" 
+                        Content="Fresh Start" 
+                        Height="20" 
+                        Width="100" Margin="4"  
+                        Background="{DynamicResource BGColor}" 
+                        Foreground="{DynamicResource DefaultTextColor}"
 
-                    />
+                        />
 
-                    <Button Name="m" 
-                    Cursor="Hand"  
-                    Content="Media" 
-                    Height="20" 
-                    Width="60" 
-                    Margin="4"  
-                    Background="{DynamicResource BGColor}" 
-                    Foreground="{DynamicResource DefaultTextColor}"
-                    
-                    />
+                        <Button Name="m" 
+                        Cursor="Hand"  
+                        Content="Media" 
+                        Height="20" 
+                        Width="60" 
+                        Margin="4"  
+                        Background="{DynamicResource BGColor}" 
+                        Foreground="{DynamicResource DefaultTextColor}"
+                        
+                        />
 
-                    <Button Name="b" 
-                    Cursor="Hand"  
-                    Content="Browsers" 
-                    Height="20" Width="60" 
-                    Margin="4"  
-                    Background="{DynamicResource BGColor}" 
-                    Foreground="{DynamicResource DefaultTextColor}"
-                    
-                    />
+                        <Button Name="b" 
+                        Cursor="Hand"  
+                        Content="Browsers" 
+                        Height="20" Width="60" 
+                        Margin="4"  
+                        Background="{DynamicResource BGColor}" 
+                        Foreground="{DynamicResource DefaultTextColor}"
+                        
+                        />
 
-                    <Button Name="g" 
-                    Cursor="Hand"  
-                    Content="Gaming" 
-                    Height="20" 
-                    Width="60" 
-                    Margin="4"  
-                    Background="{DynamicResource BGColor}" 
-                    Foreground="{DynamicResource DefaultTextColor}"
-                    
-                    />
+                        <Button Name="g" 
+                        Cursor="Hand"  
+                        Content="Gaming" 
+                        Height="20" 
+                        Width="60" 
+                        Margin="4"  
+                        Background="{DynamicResource BGColor}" 
+                        Foreground="{DynamicResource DefaultTextColor}"
+                        
+                        />
 
-                    <Button Name="d" 
-                    Cursor="Hand"  
-                    Content="Developer" 
-                    Height="20" 
-                    Width="70" 
-                    Margin="4"  
-                    Background="{DynamicResource BGColor}" 
-                    Foreground="{DynamicResource DefaultTextColor}"
+                        <Button Name="d" 
+                        Cursor="Hand"  
+                        Content="Developer" 
+                        Height="20" 
+                        Width="70" 
+                        Margin="4"  
+                        Background="{DynamicResource BGColor}" 
+                        Foreground="{DynamicResource DefaultTextColor}"
 
-                    />
+                        />
 
-                    <Button Name="u" 
-                    Cursor="Hand"  
-                    Content="Utilities" 
-                    Height="20" 
-                    Width="60" 
-                    Margin="4"  
-                    Background="{DynamicResource BGColor}" 
-                    Foreground="{DynamicResource DefaultTextColor}"
-                    
-                    />
-                    <Button Name="c" 
-                    Cursor="Hand" 
-                    Content="Communication" 
-                    Height="20" 
-                    Width="100" 
-                    Margin="4"  
-                    Background="{DynamicResource BGColor}" 
-                    Foreground="{DynamicResource DefaultTextColor}"
-                    
-                    />
+                        <Button Name="u" 
+                        Cursor="Hand"  
+                        Content="Utilities" 
+                        Height="20" 
+                        Width="60" 
+                        Margin="4"  
+                        Background="{DynamicResource BGColor}" 
+                        Foreground="{DynamicResource DefaultTextColor}"
+                        
+                        />
+                        <Button Name="c" 
+                        Cursor="Hand" 
+                        Content="Communication" 
+                        Height="20" 
+                        Width="100" 
+                        Margin="4"  
+                        Background="{DynamicResource BGColor}" 
+                        Foreground="{DynamicResource DefaultTextColor}"
+                        
+                        />
 
+                        </StackPanel>
                     </StackPanel>
-                </StackPanel>
-            <!--End Catagory Section-->
+                <!--End Catagory Section-->
 
-        <!--End Header Section-->
+            <!--End Header Section-->
 
-            <!--TabControl-->
+                <!--TabControl-->
         <TabControl x:Name="taps" TabStripPlacement="Left" Margin="0, 10, 0, 10" Grid.Row="2"  BorderBrush="Transparent" Foreground="White" Background="Transparent">
                 <TabControl.Resources>
 
@@ -2513,6 +2520,8 @@ $inputXML =  '
 
                             <CheckBox Content="MiniTool Partition Wizard"/>
 
+                            <CheckBox Content="AOMEI Partition Assistant Standard"/>
+
                             <CheckBox Content="AOMEI Backupper"/>
 
                             <CheckBox Content="Recuva recover"/>
@@ -2687,102 +2696,102 @@ $inputXML =  '
             </TabControl>
         <!--End TabControl-->
 
-        <!--Main Section-->
-            <Grid  Grid.Row="2" Grid.Column="2"  Grid.RowSpan="2">
+            <!--Main Section-->
+                <Grid  Grid.Row="2" Grid.Column="2"  Grid.RowSpan="2">
 
-                <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Vertical">
 
 
-                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
 
-                        <Grid>
-                            <TextBox Padding="8"
-                            Width="188"
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Left" 
-                            Text="{Binding Text_searchInput}"
-                            x:Name="searchInput" 
-                            />
+                            <Grid>
+                                <TextBox Padding="8"
+                                Width="188"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Left" 
+                                Text="{Binding Text_searchInput}"
+                                x:Name="searchInput" 
+                                />
 
-                            <TextBlock IsHitTestVisible="False" 
-                            Text="Search"
-                            VerticalAlignment="Center" 
-                            HorizontalAlignment="Left"
-                            Margin="16,0,0,0"
-                            Foreground="{DynamicResource FGTextColor}">
+                                <TextBlock IsHitTestVisible="False" 
+                                Text="Search"
+                                VerticalAlignment="Center" 
+                                HorizontalAlignment="Left"
+                                Margin="16,0,0,0"
+                                Foreground="{DynamicResource FGTextColor}">
 
-                            <TextBlock.Style>
-                                    <Style TargetType="{x:Type TextBlock}">
-                                        <Setter Property="Visibility" Value="Collapsed"/>
-                                        <Style.Triggers>
-                                            <DataTrigger Binding="{Binding Text, ElementName=searchInput}" Value="">
-                                                <Setter Property="Visibility" Value="Visible"/>
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </TextBlock.Style>
-                            </TextBlock>
-                        </Grid>
+                                <TextBlock.Style>
+                                        <Style TargetType="{x:Type TextBlock}">
+                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding Text, ElementName=searchInput}" Value="">
+                                                    <Setter Property="Visibility" Value="Visible"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBlock.Style>
+                                </TextBlock>
+                            </Grid>
+                        </StackPanel>
+
+                        <TextBlock Name="itemLink" 
+                            Foreground="{DynamicResource BGButtonColor}" 
+                            Visibility="Hidden" 
+                            TextWrapping="Wrap" 
+                            Text="" 
+                            Margin="20,15,15,0" 
+                        />
+
+                        <ScrollViewer VerticalScrollBarVisibility="Auto"
+                            Height="233"
+                            Margin="20,15,15,0" 
+                        >
+                            <TextBlock Name="description" 
+                                Text=""
+                                TextWrapping="Wrap" 
+                                Foreground="{DynamicResource DefaultTextColor}"/>
+                        </ScrollViewer>
+
+                        
+
                     </StackPanel>
 
-                    <TextBlock Name="itemLink" 
-                        Foreground="{DynamicResource BGButtonColor}" 
-                        Visibility="Hidden" 
-                        TextWrapping="Wrap" 
-                        Text="" 
-                        Margin="20,15,15,0" 
+                    <!--Install Button-->
+                        <Button
+                        Name="installBtn"
+                        Content="Install"
+                        FontSize="15"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Bottom"
+                        Width="100" Height="40" Margin="50"/>
+                    <!--End Install Button-->
+
+                    <!--Apply Button-->
+                        <Button
+                        Name="applyBtn"
+                        Content="Apply"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Bottom"
+                        FontSize="15"
+                        Visibility="Hidden"
+                        Width="100" Height="40" Margin="50"/>
+                    <!--End Apply Button-->
+
+                </Grid>
+            <!--End Main Section-->
+
+            <!--Footer Section-->
+                <Grid Grid.Row="4">
+                    <TextBlock Name="quotes"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center" 
+                    Padding="16" TextWrapping="Wrap" 
+                    Text="When I finished building my boat, the sea dried up."
                     />
+                </Grid>
+            <!--End Footer Section-->
 
-                    <ScrollViewer VerticalScrollBarVisibility="Auto"
-                        Height="233"
-                        Margin="20,15,15,0" 
-                    >
-                        <TextBlock Name="description" 
-                            Text=""
-                            TextWrapping="Wrap" 
-                            Foreground="{DynamicResource DefaultTextColor}"/>
-                    </ScrollViewer>
-
-                    
-
-                </StackPanel>
-
-                <!--Install Button-->
-                    <Button
-                    Name="installBtn"
-                    Content="Install"
-                    FontSize="15"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Bottom"
-                    Width="100" Height="40" Margin="50"/>
-                <!--End Install Button-->
-
-                <!--Apply Button-->
-                    <Button
-                    Name="applyBtn"
-                    Content="Apply"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Bottom"
-                    FontSize="15"
-                    Visibility="Hidden"
-                    Width="100" Height="40" Margin="50"/>
-                <!--End Apply Button-->
-
-            </Grid>
-        <!--End Main Section-->
-
-        <!--Footer Section-->
-            <Grid Grid.Row="4">
-                <TextBlock Name="quotes"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Center" 
-                Padding="16" TextWrapping="Wrap" 
-                Text="When I finished building my boat, the sea dried up."
-                />
-            </Grid>
-        <!--End Footer Section-->
-
-    </Grid>
+        </Grid>
         
     </Window>
 <!--End Window-->

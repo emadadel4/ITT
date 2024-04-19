@@ -19,40 +19,8 @@ $window.FindName('about').add_MouseLeftButtonDown({About})
 
 $window.FindName('themeText').add_click({Toggle-Theme})
 
-
-# Function to play or pause music
-Function TogglePlayback {
-    if ($global:playlistPaused) {
-        ResumePlayback
-    } else {
-        PausePlayback
-    }
-}
-
-Function PausePlayback {
-    $mediaPlayer.controls.pause()
-    $global:playlistPaused = $true
-}
-
-Function ResumePlayback {
-    $mediaPlayer.controls.play()
-    $global:playlistPaused = $false
-}
-
-
-$window.FindName('toggleMusic').add_click({
-
-
-    Write-Host "emad"
-
-    $global:mediaPlayer.controls.pause()
-
-
-})
-
-
-
 # Catgoray bar buttons
+$window.FindName('all').add_click({ShowAllApplications($window.FindName('b').Content)})
 $window.FindName('b').add_click({FilterApplicationsByCategory($window.FindName('b').Content)})
 $window.FindName('m').add_click({FilterApplicationsByCategory($window.FindName('m').Content)})
 $window.FindName('d').add_click({FilterApplicationsByCategory($window.FindName('d').Content)})
@@ -60,7 +28,6 @@ $window.FindName('g').add_click({FilterApplicationsByCategory($window.FindName('
 $window.FindName('u').add_click({FilterApplicationsByCategory($window.FindName('u').Content)})
 $window.FindName('c').add_click({FilterApplicationsByCategory($window.FindName('c').Content)})
 $window.FindName('r').add_click({ShowRecommendedApplications($window.FindName('r').Content)})
-$window.FindName('all').add_click({ShowAllApplications})
 
 $Window.Add_Closing({
     Write-Host "Bye :)"
@@ -78,5 +45,6 @@ if ($global:themePreference -eq "Dark") {
     # Default to light mode if preference not found
     Switch-ToLightMode
 }
+
 
  $window.ShowDialog() | out-null
