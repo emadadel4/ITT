@@ -1705,8 +1705,8 @@ $inputXML =  '
 
                     <!--Button Style-->
             <Style TargetType="Button">
-                <Setter Property="Background" Value="{DynamicResource BGButtonColor}"/>
-                <Setter Property="Foreground" Value="{DynamicResource FGButtonColor}"/>
+                <Setter Property="Background" Value="{DynamicResource FGColor}"/>
+                <Setter Property="Foreground" Value="{DynamicResource DefaultTextColor}"/>
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="Button">
@@ -2314,7 +2314,6 @@ $inputXML =  '
                     FontSize="15"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Bottom"
-                    Cursor="Hand"
                     Width="100" Height="40" Margin="50"/>
                 <!--End Install Button-->
 
@@ -2324,7 +2323,6 @@ $inputXML =  '
                     Content="Apply"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Bottom"
-                    Cursor="Hand"
                     FontSize="15"
                     Visibility="Hidden"
                     Width="100" Height="40" Margin="50"/>
