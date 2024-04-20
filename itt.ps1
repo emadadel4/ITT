@@ -482,11 +482,10 @@ function GetQuotes {
                     $sync.q.Text = "`".$name`""
                 })
 
-                Start-Sleep -Seconds 8  # Adjust the sleep time as needed
+                # Adjust the sleep time as needed
+                Start-Sleep -Seconds 15  
             }
         }
-
-
     }
 }
 
@@ -2537,7 +2536,7 @@ $inputXML =  '
                     HorizontalAlignment="Left"
                     VerticalAlignment="Center" 
                     Padding="16" TextWrapping="Wrap" 
-                    Text="When I finished building my boat, the sea dried up."
+                    Text=""
                     />
                 </Grid>
             <!--End Footer Section-->
