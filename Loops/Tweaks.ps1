@@ -19,7 +19,9 @@ $Window.FindName("tweeks").add_Loaded({
 
     # Add mouse left button down event handler for item link
     $Window.FindName('itemLink').add_MouseLeftButtonDown({
+
         $selectedItem = $sync.tweaks.SelectedItem.Content
+
         foreach ($data in $sync.configs.tweaks) {
             if ($selectedItem -eq $data.name -and $data.repo -ne "null") {
                 Start-Process $data.repo
@@ -29,6 +31,12 @@ $Window.FindName("tweeks").add_Loaded({
     })
 
 })
+
+
+$Window.FindName("tweeks").add_LostFocus({
+    $sync.tweaks.SelectedItem = $null
+})
+
 
 #endregion
 #===========================================================================
