@@ -38,11 +38,10 @@ function GetQuotes {
                     $sync.q.Text = "`".$name`""
                 })
 
-                Start-Sleep -Seconds 8  # Adjust the sleep time as needed
+                # Adjust the sleep time as needed
+                Start-Sleep -Seconds 15  
             }
         }
-
-
     }
 }
 
