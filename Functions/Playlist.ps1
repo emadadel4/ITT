@@ -62,7 +62,3 @@ function PlayMusic {
     }
 }
 
-
-PlayMusic *> $null
-
-
