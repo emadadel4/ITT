@@ -218,7 +218,25 @@ function Get-SelectedTweeaks {
     return $items 
 }
 
-function Invoke-Install() {
+function UpdateDescription {
+
+    param ($des)
+
+
+
+  
+}
+
+function Invoke-Install($des) {
+
+    $sync.des = $Window.FindName("description")
+
+    # # Check internet connection
+    # if (Test-InternetConnection) {
+    # } else {
+    #     [System.Windows.MessageBox]::Show("Internet is not available.", "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
+    #     return
+    # }
 
     if($sync.ProcessRunning)
     {
@@ -243,6 +261,11 @@ function Invoke-Install() {
                 {
                     $sync.ProcessRunning = $true
 
+                   
+                    $sync.des.Dispatcher.Invoke([Action]{
+                        $sync.des.Text = "Installing... $("-$choco-")"
+                    })
+
                     Write-Host "Installing the following programs $choco "
                     Start-Process -FilePath "choco" -ArgumentList "install $choco -y --force --ignore-checksums" -NoNewWindow -Wait
                     Write-Host "Installs have finished"
@@ -256,20 +279,16 @@ function Invoke-Install() {
                         }
                     })
                    
-                }else{
-                    
-                    $sync.list.Dispatcher.Invoke([Action]{
-                        foreach ($item in $sync.list.Items)
-                        {
-                            $item.IsChecked = $false
-                        }
-                    })
                 }
             }
             Catch
             {
                 Write-Host "Error: $_"
             }
+
+            $sync.des.Dispatcher.Invoke([Action]{
+                $sync.des.Text = "Installed successfully, Check Start Menu"
+            })
 
             Start-Sleep -Seconds 1
             $sync.ProcessRunning = $False
@@ -284,12 +303,13 @@ function Invoke-Install() {
 
 function ApplyTweaks() {
 
-    # # Check internet connection
-    # if (Test-InternetConnection) {
-    # } else {
-    #     [System.Windows.MessageBox]::Show("Internet is not available.", "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
-    #     return
-    # }
+
+    # Check internet connection
+    if (Test-InternetConnection) {
+    } else {
+        [System.Windows.MessageBox]::Show("Internet is not available.", "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
+        return
+    }
 
     if($sync.ProcessRunning)
     {
@@ -367,72 +387,72 @@ function Invoke-RunspaceWithScriptBlock {
 }
 
 
-function PlayMusic {
+# function PlayMusic {
 
-    Invoke-RunspaceWithScriptBlock -ScriptBlock {
+#     Invoke-RunspaceWithScriptBlock -ScriptBlock {
 
-        $audioUrls = @(
-            "https://epsilon.vgmsite.com/soundtracks/far-cry-3/iqgdbfrhtw/17.%20Further%20%28feat.%20Serena%20McKinney%29.mp3",
-            "https://dl.vgmdownloads.com/soundtracks/hollow-knight-original-soundtrack/qqrmmaqyqg/26.%20Hollow%20Knight.mp3",
-            "https://dl.vgmdownloads.com/soundtracks/assassin-s-creed-unity-vol.-1/hxqrvcoyfj/01.%20Unity.mp3",
-            "https://dl.vgmdownloads.com/soundtracks/assassin-s-creed-3/jgevpclfcr/01.%20Assassin%27s%20Creed%20III%20Main%20Theme.mp3",
-            "https://dl.vgmdownloads.com/soundtracks/assassins-creed-mirage-original-game-soundtrack-2023/axtwruyduh/01.%20Mirage%20Theme.mp3",
-            "https://vgmsite.com/soundtracks/assassins-creed-ezios-family-m-me-remix-2022/qdxeshajdz/01.%20Ezio%27s%20Family%20%28M%C3%B8me%20Remix%29.mp3",
-            "https://epsilon.vgmsite.com/soundtracks/assassin-s-creed-iv-black-flag/zxpesokhkg/1-02%20Pyrates%20Beware.mp3",
-            "https://vgmsite.com/soundtracks/battlefield-3/tabqykkp/01.%20Battlefield%203%20Main%20Theme.mp3",
-            "https://archive.org/download/GrandTheftAuto4ThemeSong_201904/Grand%20Theft%20Auto%204%20Theme%20Song.mp3"
-        )
+#         $audioUrls = @(
+#             "https://epsilon.vgmsite.com/soundtracks/far-cry-3/iqgdbfrhtw/17.%20Further%20%28feat.%20Serena%20McKinney%29.mp3",
+#             "https://dl.vgmdownloads.com/soundtracks/hollow-knight-original-soundtrack/qqrmmaqyqg/26.%20Hollow%20Knight.mp3",
+#             "https://dl.vgmdownloads.com/soundtracks/assassin-s-creed-unity-vol.-1/hxqrvcoyfj/01.%20Unity.mp3",
+#             "https://dl.vgmdownloads.com/soundtracks/assassin-s-creed-3/jgevpclfcr/01.%20Assassin%27s%20Creed%20III%20Main%20Theme.mp3",
+#             "https://dl.vgmdownloads.com/soundtracks/assassins-creed-mirage-original-game-soundtrack-2023/axtwruyduh/01.%20Mirage%20Theme.mp3",
+#             "https://vgmsite.com/soundtracks/assassins-creed-ezios-family-m-me-remix-2022/qdxeshajdz/01.%20Ezio%27s%20Family%20%28M%C3%B8me%20Remix%29.mp3",
+#             "https://epsilon.vgmsite.com/soundtracks/assassin-s-creed-iv-black-flag/zxpesokhkg/1-02%20Pyrates%20Beware.mp3",
+#             "https://vgmsite.com/soundtracks/battlefield-3/tabqykkp/01.%20Battlefield%203%20Main%20Theme.mp3",
+#             "https://archive.org/download/GrandTheftAuto4ThemeSong_201904/Grand%20Theft%20Auto%204%20Theme%20Song.mp3"
+#         )
     
-        $global:mediaPlayer = New-Object -ComObject WMPlayer.OCX
-        $global:playlistPaused = $false
+#         $global:mediaPlayer = New-Object -ComObject WMPlayer.OCX
+#         $global:playlistPaused = $false
 
-        Function PlayAudio($url) {
-            try {
-                $mediaItem = $global:mediaPlayer.newMedia($url)
-                $global:mediaPlayer.currentPlaylist.appendItem($mediaItem)
-                $global:mediaPlayer.controls.play()
-            }
-            catch {
-            }
-        }
+#         Function PlayAudio($url) {
+#             try {
+#                 $mediaItem = $global:mediaPlayer.newMedia($url)
+#                 $global:mediaPlayer.currentPlaylist.appendItem($mediaItem)
+#                 $global:mediaPlayer.controls.play()
+#             }
+#             catch {
+#             }
+#         }
         
     
-        # Function to shuffle the playlist
-        Function ShuffleArray {
-            param([array]$array)
-            $count = $array.Length
-            for ($i = 0; $i -lt $count; $i++) {
-                $randomIndex = Get-Random -Minimum $i -Maximum $count
-                $temp = $array[$i]
-                $array[$i] = $array[$randomIndex]
-                $array[$randomIndex] = $temp
-            }
-        }
+#         # Function to shuffle the playlist
+#         Function ShuffleArray {
+#             param([array]$array)
+#             $count = $array.Length
+#             for ($i = 0; $i -lt $count; $i++) {
+#                 $randomIndex = Get-Random -Minimum $i -Maximum $count
+#                 $temp = $array[$i]
+#                 $array[$i] = $array[$randomIndex]
+#                 $array[$randomIndex] = $temp
+#             }
+#         }
     
-        # Shuffle the playlist
-        ShuffleArray -array $audioUrls
+#         # Shuffle the playlist
+#         ShuffleArray -array $audioUrls
     
-        # Function to play the entire shuffled playlist
-        Function PlayShuffledPlaylist {
-            foreach ($url in $audioUrls) {
-                PlayAudio $url
-                # Wait for the track to finish playing
-                while ($global:mediaPlayer.playState -eq 3 -or $global:mediaPlayer.playState -eq 6) {
-                    Start-Sleep -Milliseconds 100
-                }
-            }
-        }
+#         # Function to play the entire shuffled playlist
+#         Function PlayShuffledPlaylist {
+#             foreach ($url in $audioUrls) {
+#                 PlayAudio $url
+#                 # Wait for the track to finish playing
+#                 while ($global:mediaPlayer.playState -eq 3 -or $global:mediaPlayer.playState -eq 6) {
+#                     Start-Sleep -Milliseconds 100
+#                 }
+#             }
+#         }
     
-        # Play the shuffled playlist indefinitely
-        while ($true) 
-        {
-            PlayShuffledPlaylist
-        }
-    }
-}
+#         # Play the shuffled playlist indefinitely
+#         while ($true) 
+#         {
+#             PlayShuffledPlaylist
+#         }
+#     }
+# }
 
 
-PlayMusic *> $null
+# #PlayMusic *> $null
 
 
 # Show Custom Msg
@@ -1381,13 +1401,6 @@ $sync.configs.applications = '[
   },
   {
     "Name": "Virtual CloneDrive",
-    "winget": "#",
-    "choco": "virtualclonedrive",
-    "catgory": "Utilities",
-    "check": "false"
-  },
-  {
-    "Name": "Virtual CloneDrive",
     "Description": "A free software that allows users to mount disc images as virtual drives, enabling them to access the content of ISO, BIN, and CCD files without the need for physical discs.",
     "winget": "#",
     "choco": "virtualclonedrive",
@@ -1918,19 +1931,66 @@ $sync.configs.tweaks = '[
     "category": "tweak"
   },
   {
-    "name": "Disables suggestions on start menu",
-    "description": "Disables suggestions on start menu",
-    "repo": null,
-    "script": "if (Test-Path ''HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager'') { Set-ItemProperty ''HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager'' -Name SystemPaneSuggestionsEnabled -Value 0 -Verbose }",
-    "check": true,
-    "category": "tweak"
-  },
-  {
     "name": "Setup Auto login",
     "description": "Setup auto login Windows username",
     "repo": "null",
     "script": "curl.exe -ss \"https://live.sysinternals.com/Autologon.exe\" -o $env:temp\\autologin.exe ; cmd /c $env:temp\\autologin.exe /accepteula",
-    "check": true,
+    "check": "true",
+    "category": "tweak"
+  },
+  {
+    "name": "Disables People icon on Taskbar",
+    "description": "Disables People on taskbar",
+    "repo": "null",
+    "script": "If (Test-Path ''HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\\People'') { Set-ItemProperty ''HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\\People'' -Name PeopleBand -Value 0 -Verbose }",
+    "check": "true",
+    "category": "tweak"
+  },
+  {
+    "name": "Disables suggestions on start menu",
+    "description": "Disables suggestions on start menu",
+    "repo": "null",
+    "script": "if (Test-Path ''HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager'') { Set-ItemProperty ''HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager'' -Name SystemPaneSuggestionsEnabled -Value 0 -Verbose }",
+    "check": "true",
+    "category": "tweak"
+  },
+  {
+    "name": "Turns off Data Collection",
+    "description": "This tweak disables data collection on your Windows system by modifying the registry setting for telemetry. It checks if the specified registry path exists and if so, sets the AllowTelemetry value to 0, effectively turning off telemetry.",
+    "repo": "null",
+    "script": "If (Test-Path ''HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\DataCollection'') { Set-ItemProperty ''HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\DataCollection'' -Name AllowTelemetry -Value 0 -Verbose }",
+    "check": "false",
+    "category": "tweak"
+  },
+  {
+    "name": "Prevents bloatware applications from returning",
+    "description": "This tweak aims to prevent bloatware applications from returning on your Windows system. It checks if a specific registry path exists, and if not, it creates it. Then, it sets a registry value to disable Windows consumer features, thereby reducing the likelihood of bloatware apps being installed or reinstalled.",
+    "repo": "null",
+    "script": "If (!(Test-Path ''HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\CloudContent'')) { Mkdir ''HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\CloudContent'' -ErrorAction SilentlyContinue; New-ItemProperty ''HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\CloudContent'' -Name DisableWindowsConsumerFeatures -Value 1 -Verbose -ErrorAction SilentlyContinue }",
+    "check": "true",
+    "category": "tweak"
+  },
+  {
+    "name": "Stops the Windows Feedback Experience",
+    "description": "This tweak aims to stop Windows Feedback by creating necessary registry keys if they do not exist. It checks if the specified registry path exists, and if not, it creates the required keys. Then, it sets a registry value to disable Windows Feedback by setting the PeriodInNanoSeconds value to 0, effectively stopping the feedback mechanism.",
+    "repo": "null",
+    "script": "If (!(Test-Path ''HKCU:\\Software\\Microsoft\\Siuf\\Rules\\PeriodInNanoSeconds'')) { mkdir ''HKCU:\\Software\\Microsoft\\Siuf'' -ErrorAction SilentlyContinue; mkdir ''HKCU:\\Software\\Microsoft\\Siuf\\Rules'' -ErrorAction SilentlyContinue; mkdir ''HKCU:\\Software\\Microsoft\\Siuf\\Rules\\PeriodInNanoSeconds'' -ErrorAction SilentlyContinue; New-ItemProperty ''HKCU:\\Software\\Microsoft\\Siuf\\Rules\\PeriodInNanoSeconds'' -Name PeriodInNanoSeconds -Value 0 -Verbose -ErrorAction SilentlyContinue }; If (Test-Path ''HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\AdvertisingInfo'') { Set-ItemProperty ''HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\AdvertisingInfo'' -Name Enabled -Value 0 -Verbose }",
+    "check": "true",
+    "category": "tweak"
+  },
+  {
+    "name": "Disable Cortana",
+    "description": "This tweak aims to disable Cortana by modifying the registry settings related to Windows Search. It checks if the specified registry path exists, and if so, it sets the AllowCortana value to 0, effectively disabling Cortana''s functionality.",
+    "repo": "null",
+    "script": "If (Test-Path ''HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\Windows Search'') { Set-ItemProperty ''HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\Windows Search'' -Name AllowCortana -Value 0 -Verbose }",
+    "check": "true",
+    "category": "tweak"
+  },
+  {
+    "name": "Remove OneDrive",
+    "description": "Remove OneDrive it''s eating internet speed",
+    "repo": "null",
+    "script": "Stop-Process -Name OneDrive -ErrorAction SilentlyContinue; $UninstallString = (Get-ItemProperty ''HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\OneDrive'').UninstallString; Start-Process -FilePath $UninstallString -ArgumentList \"/uninstall\", \"/quiet\", \"/norestart\" -Wait; Remove-Item -Path \"$env:USERPROFILE\\OneDrive\", \"$env:LOCALAPPDATA\\Microsoft\\OneDrive\", \"$env:PROGRAMDATA\\Microsoft OneDrive\" -Recurse -Force; Remove-Item -Path ''HKCU:\\Software\\Microsoft\\OneDrive'', ''HKCU:\\Software\\Microsoft\\SkyDrive'', ''HKCU:\\Software\\Policies\\Microsoft\\OneDrive'', ''HKLM:\\Software\\Policies\\Microsoft\\OneDrive'' -Recurse -Force; Remove-Item -Path \"$env:USERPROFILE\\Desktop\\OneDrive.lnk\" -Force;",
     "category": "tweak"
   }
 ]' | convertfrom-json
@@ -1941,7 +2001,7 @@ $inputXML =  '
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         x:Name="Window" Title="ITT @emadadel4" WindowStartupLocation = "CenterScreen" 
-        Background="{DynamicResource BGColor}"
+        Background="White"
         Height="600" Width="955" MinWidth="677" MinHeight="400" ShowInTaskbar = "True" Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/icon.ico">
     
         <Window.Resources>
@@ -2317,7 +2377,7 @@ $inputXML =  '
                 </TabControl.Resources>
                 <TabItem Header="Apps" Name="apps" BorderBrush="{x:Null}" Padding="16">
                     <TabItem.Content>
-                        <ListView Margin="10" ScrollViewer.VerticalScrollBarVisibility="Auto" x:Name="list" BorderBrush="{x:Null}" Background="{x:Null}">
+                        <ListView Margin="10" ScrollViewer.VerticalScrollBarVisibility="Auto" Name="list" BorderBrush="{x:Null}" Background="{x:Null}">
                                         
                 <CheckBox Content="Thorium" Tag="Browsers"  />
 
@@ -2679,10 +2739,6 @@ $inputXML =  '
 
 
                         
-                <CheckBox Content="Virtual CloneDrive" Tag=""  />
-
-
-                        
                 <CheckBox Content="Virtual CloneDrive" Tag="Utilities"  />
 
 
@@ -2937,9 +2993,21 @@ $inputXML =  '
 
                             <CheckBox Content=" Reset the TCP/IP Stack"/>
 
+                            <CheckBox Content="Setup Auto login"/>
+
+                            <CheckBox Content="Disables People icon on Taskbar"/>
+
                             <CheckBox Content="Disables suggestions on start menu"/>
 
-                            <CheckBox Content="Setup Auto login"/>
+                            <CheckBox Content="Turns off Data Collection"/>
+
+                            <CheckBox Content="Prevents bloatware applications from returning"/>
+
+                            <CheckBox Content="Stops the Windows Feedback Experience"/>
+
+                            <CheckBox Content="Disable Cortana"/>
+
+                            <CheckBox Content="Remove OneDrive"/>
 
             
                         </ListView>
@@ -3079,17 +3147,9 @@ $sync.runspace.Open()
 
 $reader = (New-Object System.Xml.XmlNodeReader $xaml)
 $window = [Windows.Markup.XamlReader]::Load($reader)
+$sync.window = [hashtable]::Synchronized(@{Window = $window})
 
-# Read the XAML file
-$reader = (New-Object System.Xml.XmlNodeReader $xaml)
-try
-{ 
-    $window = [Windows.Markup.XamlReader]::Load($reader)
-}
-catch [System.Management.Automation.MethodInvocationException] {
-   
-    Write-Host "error"
-}
+
 #endregion
 #===========================================================================
 # End Load XMAL 
@@ -3101,6 +3161,7 @@ catch [System.Management.Automation.MethodInvocationException] {
 
 # Assigning the list control to a variable
 $sync.list = $Window.FindName("list")
+$sync.des = $Window.FindName("description")
 
 # Making the itemLink control visible
 $Window.FindName('itemLink').Visibility = "Visible"
@@ -3152,8 +3213,11 @@ $Window.FindName("apps").add_Loaded({
 
 
 $Window.FindName("apps").add_LostFocus({
+
   $sync.list.SelectedItem = $null
+
 })
+
 #endregion
 #region Generate tweaks from json file
 $sync.tweaks = $Window.FindName("tweaks")
@@ -3230,7 +3294,7 @@ $window.FindName('u').add_click({ FilterByCat($window.FindName('u').Content)})
 $window.FindName('c').add_click({ FilterByCat($window.FindName('c').Content)})
 
 $Window.Add_Closing({
-    Write-Host "Bye :)"
+  
 })
 
 #===========================================================================
