@@ -482,9 +482,8 @@ function GetQuotes {
         while ($true) {
             foreach ($name in $shuffledNames) {
 
-
-                $sync.emad.Dispatcher.Invoke([Action]{
-                    $sync.emad.Text = "`".$name`""
+                $sync.q.Dispatcher.Invoke([Action]{
+                    $sync.q.Text = "`".$name`""
                 })
 
                 Start-Sleep -Seconds 8  # Adjust the sleep time as needed
@@ -1641,7 +1640,7 @@ $sync.configs.applications = '[
   },
   {
     "Name": "Atom",
-    "Description": "Atom is a text editor that''s modern, approachable, yet hackable to the core?a tool you can customize to do anything but also use productively without ever touching a config file.",
+    "Description": "Atom is a text editor that''s modern, approachable, yet hackable to the core—a tool you can customize to do anything but also use productively without ever touching a config file.",
     "winget": "#",
     "choco": "atom",
     "category": "Developer",
@@ -1903,27 +1902,28 @@ $sync.configs.applications = '[
     "category": "Security",
     "check": "false"
   }
-]' | convertfrom-json
-  
+]
+' | ConvertFrom-Json
 $sync.configs.Quotes = '{
   "Q": [
-    "??? ???? ????? ?? ???? ?????? ??? ??? ???? ????? ??? ??????",
-    "??? ?????? ?????? ??? ?????? ?????? ?????",
-    "????? ?? ???? ???? ????? ?????? ?? ???? ????? ????? ????? ?????",
-    "????? ??? ?????? ????? ??? ?????? ?? ??? ?????",
-    "???? ?????? ?????? ????? ????? ???????",
-    "??? ????? ???? ?? ?? ?????",
-    "??????? ?? ???? ?? ????? ????. ??? ????? ????",
-    "?????? ??????? ?? ?????? ?? ?????",
-    "????? ???? ??? ??? ?????? ?? ??? ????? ?????? ?????",
-    "?????? ?? ???? ????? ???????",
-    "?????? ??????? ?? ???? ?? ?????? ???????? ?? ?? ????? ??????",
-    "??? ?? ?? ???? ??? ?????? ???? ?? ?? ???? ?????",
-    "???? ??? ?????? ?? ???? ?????? ????? ?? ??? ??? ????",
-    "???? ????? ????? ????? ?? ???? ??? ??? ????? ??? ????? ?? ???? ??????"
+    "إما تموت بطلا، أو تعيش طويلاً حتى ترى نفسك تتحول إلى الشرير",
+    "بعض الرجال يريدون فقط مشاهدة العالم يحترق",
+    "الخوف هو أكبر سلاح لديك، والأمل هو الذي يعطيك القوة للمضي قدمًا",
+    "الصمت ليس دائمًا علامة على الضعف، بل قوة الروح",
+    "إنهم يكرهون النور، لأنهم يخشون الحقيقة",
+    "أنت دائما تخشى ما لا تفهمه",
+    "التعاون مع الشر لا يجعلك تفوز. إنه يجعلك مثله",
+    "القتال الحقيقي هو دائمًا ضد الذات",
+    "القوة ليست فقط قوة الجسد، بل قوة العقل والروح أيضًا",
+    "الوحدة هي أسوأ أشكال العقوبة",
+    "الجمال الحقيقي لا يكمن في المظهر الخارجي، بل في النية والروح",
+    "ليس كل ما نخاف منه سيئًا، وليس كل ما نحبه جيدًا",
+    "ظننت أنه يمكننا أن نكون رجالاً شرفاء في زمن غير شريف",
+    "أعطي الرجل سلاحا يمكنه أن يسرق بنك لكن اعطيه بنك يمكنه أن يسرق العالم",
+    "أنت تعتقد أن الظلام هو حليفك لكنك تبنيت الظلام , انا لقد ولدت فيه"
   ]
-}' | convertfrom-json
-  
+}
+' | ConvertFrom-Json
 $sync.configs.tweaks = '[
   {
     "name": "System File Checker",
@@ -2052,8 +2052,8 @@ $sync.configs.tweaks = '[
     "script": "Stop-Process -Name OneDrive -ErrorAction SilentlyContinue; $UninstallString = (Get-ItemProperty ''HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\OneDrive'').UninstallString; Start-Process -FilePath $UninstallString -ArgumentList \"/uninstall\", \"/quiet\", \"/norestart\" -Wait; Remove-Item -Path \"$env:USERPROFILE\\OneDrive\", \"$env:LOCALAPPDATA\\Microsoft\\OneDrive\", \"$env:PROGRAMDATA\\Microsoft OneDrive\" -Recurse -Force; Remove-Item -Path ''HKCU:\\Software\\Microsoft\\OneDrive'', ''HKCU:\\Software\\Microsoft\\SkyDrive'', ''HKCU:\\Software\\Policies\\Microsoft\\OneDrive'', ''HKLM:\\Software\\Policies\\Microsoft\\OneDrive'' -Recurse -Force; Remove-Item -Path \"$env:USERPROFILE\\Desktop\\OneDrive.lnk\" -Force;",
     "category": "tweak"
   }
-]' | convertfrom-json
-  
+]
+' | ConvertFrom-Json
 $inputXML =  '
 <!--Window-->
     <Window
@@ -2437,638 +2437,14 @@ $inputXML =  '
                 <TabItem Header="Apps" Name="apps" BorderBrush="{x:Null}" Padding="16">
                     <TabItem.Content>
                         <ListView Margin="10" ScrollViewer.VerticalScrollBarVisibility="Auto" Name="list" BorderBrush="{x:Null}" Background="{x:Null}">
-                                        
-                <CheckBox Content="Thorium" Tag="Browsers"  />
-
-
-                        
-                <CheckBox Content="Firefox" Tag="Browsers"  />
-
-
-                        
-                <CheckBox Content="Add block extension [Firefox]" Tag="Browsers"  />
-
-
-                        
-                <CheckBox Content="Microsoft Edge" Tag="Browsers"  />
-
-
-                        
-                <CheckBox Content="Google Chrome" Tag="Browsers"  />
-
-
-                        
-                <CheckBox Content="uBlock Origin extension [Chrome]" Tag="Browsers"  />
-
-
-                        
-                <CheckBox Content="Chromium" Tag="Browsers"  />
-
-
-                        
-                <CheckBox Content="Brave" Tag="Browsers"  />
-
-
-                        
-                <CheckBox Content="Tor Browser" Tag="Browsers"  />
-
-
-                        
-                <CheckBox Content="Opera" Tag="Browsers"  />
-
-
-                        
-                <CheckBox Content="Internet Download Manager" Tag="Browsers"  />
-
-
-                        
-                <CheckBox Content="K-Lite Mega Codec Pack" Tag="Media"  />
-
-
-                        
-                <CheckBox Content="PotPlayer" Tag="Media"  />
-
-
-                        
-                <CheckBox Content="VLC" Tag="Media"  />
-
-
-                        
-                <CheckBox Content="Kodi" Tag="Media"  />
-
-
-                        
-                <CheckBox Content="Jellyfin" Tag="Media"  />
-
-
-                        
-                <CheckBox Content="Winamp" Tag="Media"  />
-
-
-                        
-                <CheckBox Content="Aimp" Tag="Media"  />
-
-
-                        
-                <CheckBox Content="Spotify" Tag="Media"  />
-
-
-                        
-                <CheckBox Content="FastStone Image Viewer" Tag="Media"  />
-
-
-                        
-                <CheckBox Content="OpenOffice" Tag="Documents"  />
-
-
-                        
-                <CheckBox Content="FoxitReader" Tag="Documents"  />
-
-
-                        
-                <CheckBox Content="LibreOffice" Tag="Documents"  />
-
-
-                        
-                <CheckBox Content="SumatraPDF" Tag="Documents"  />
-
-
-                        
-                <CheckBox Content="WinRAR" Tag="Compression"  />
-
-
-                        
-                <CheckBox Content="7-Zip" Tag="Compression"  />
-
-
-                        
-                <CheckBox Content="PeaZip" Tag="Compression"  />
-
-
-                        
-                <CheckBox Content="QQPlayer" Tag="Media"  />
-
-
-                        
-                <CheckBox Content="Telegram Desktop" Tag="Communication"  />
-
-
-                        
-                <CheckBox Content="Signal" Tag="Communication"  />
-
-
-                        
-                <CheckBox Content="Meta Messenger" Tag="Communication"  />
-
-
-                        
-                <CheckBox Content="Skype" Tag="Communication"  />
-
-
-                        
-                <CheckBox Content="Zoom" Tag="Communication"  />
-
-
-                        
-                <CheckBox Content="Microsoft Teams" Tag="Communication"  />
-
-
-                        
-                <CheckBox Content="Discord" Tag="Communication"  />
-
-
-                        
-                <CheckBox Content="TeamViewer" Tag="File Sharing"  />
-
-
-                        
-                <CheckBox Content="GIMP" Tag="Imaging"  />
-
-
-                        
-                <CheckBox Content="DirectX" Tag="Gaming"  />
-
-
-                        
-                <CheckBox Content="Microsoft Visual C++ Runtime - all versions" Tag="Gaming"  />
-
-
-                        
-                <CheckBox Content="Microsoft Visual C++ 2005 (x86) Redistributable" Tag="Gaming"  />
-
-
-                        
-                <CheckBox Content="Microsoft Visual C++ 2005 (x64) Redistributable" Tag="Gaming"  />
-
-
-                        
-                <CheckBox Content="Microsoft Visual C++ 2008 (x86) Redistributable" Tag="Gaming"  />
-
-
-                        
-                <CheckBox Content="Microsoft Visual C++ 2008 (x64) Redistributable" Tag="Gaming"  />
-
-
-                        
-                <CheckBox Content="Microsoft Visual C++ 2010 (x86) Redistributable" Tag="Gaming"  />
-
-
-                        
-                <CheckBox Content="Microsoft Visual C++ 2010 (x64) Redistributable" Tag="Gaming"  />
-
-
-                        
-                <CheckBox Content="Microsoft Visual C++ 2012 (x86) Redistributable" Tag="Gaming"  />
-
-
-                        
-                <CheckBox Content="Microsoft Visual C++ 2012 (x64) Redistributable" Tag="Gaming"  />
-
-
-                        
-                <CheckBox Content="Microsoft Visual C++ 2013 (x86) Redistributable" Tag="Gaming"  />
-
-
-                        
-                <CheckBox Content="Microsoft Visual C++ 2013 (x64) Redistributable" Tag="Gaming"  />
-
-
-                        
-                <CheckBox Content="Microsoft Visual C++ 2015-2022 (x64) Redistributable" Tag="Gaming"  />
-
-
-                        
-                <CheckBox Content="Microsoft Visual C++ 2015-2022  (x86) Redistributable" Tag="Gaming"  />
-
-
-                        
-                <CheckBox Content="NET Framework All Versions" Tag="Gaming"  />
-
-
-                        
-                <CheckBox Content="AMD Ryzen Chipset Drivers" Tag="Gaming"  />
-
-
-                        
-                <CheckBox Content="NVidia Display Driver" Tag="Gaming"  />
-
-
-                        
-                <CheckBox Content="NVIDIA GeForce" Tag="Gaming"  />
-
-
-                        
-                <CheckBox Content="Msi Afterburner" Tag="Gaming"  />
-
-
-                        
-                <CheckBox Content="NVIDIA PhysX" Tag="Gaming"  />
-
-
-                        
-                <CheckBox Content="Steam" Tag="Gaming"  />
-
-
-                        
-                <CheckBox Content="Epic Games Launcher " Tag="Gaming"  />
-
-
-                        
-                <CheckBox Content="Origin" Tag="Developer"  />
-
-
-                        
-                <CheckBox Content="Ubisoft Connect" Tag="Gaming"  />
-
-
-                        
-                <CheckBox Content="Rockstar Games Launcher" Tag="Gaming"  />
-
-
-                        
-                <CheckBox Content="GameSave Manager" Tag="Gaming"  />
-
-
-                        
-                <CheckBox Content="StreamlabsOBS" Tag="Gaming"  />
-
-
-                        
-                <CheckBox Content="OBS Studio" Tag="Gaming"  />
-
-
-                        
-                <CheckBox Content="Logitech Gaming Software" Tag="Gaming"  />
-
-
-                        
-                <CheckBox Content="Lively Wallpaper" Tag="Gaming"  />
-
-
-                        
-                <CheckBox Content="Playnite" Tag="Gaming"  />
-
-
-                        
-                <CheckBox Content="Driver Easy" Tag="Utilities"  />
-
-
-                        
-                <CheckBox Content="Snappy Driver Installer" Tag="Utilities"  />
-
-
-                        
-                <CheckBox Content="Driver booster" Tag="Utilities"  />
-
-
-                        
-                <CheckBox Content="Driver Genius" Tag="Utilities"  />
-
-
-                        
-                <CheckBox Content="Display Driver Uninstaller" Tag="Utilities"  />
-
-
-                        
-                <CheckBox Content="Driver Store Explorer" Tag="Utilities"  />
-
-
-                        
-                <CheckBox Content="1Password" Tag="Utilities"  />
-
-
-                        
-                <CheckBox Content="MiniTool Partition Wizard" Tag="Utilities"  />
-
-
-                        
-                <CheckBox Content="AOMEI Partition Assistant Standard" Tag="Utilities"  />
-
-
-                        
-                <CheckBox Content="AOMEI Backupper" Tag="Utilities"  />
-
-
-                        
-                <CheckBox Content="Recuva recover" Tag="Utilities"  />
-
-
-                        
-                <CheckBox Content="CCleaner" Tag="Utilities"  />
-
-
-                        
-                <CheckBox Content="BCUninstaller" Tag="Utilities"  />
-
-
-                        
-                <CheckBox Content="HWiNFO" Tag="Utilities"  />
-
-
-                        
-                <CheckBox Content="Speccy" Tag="Utilities"  />
-
-
-                        
-                <CheckBox Content="FurMark" Tag="Utilities"  />
-
-
-                        
-                <CheckBox Content="Hard Disk Sentinel" Tag="Utilities"  />
-
-
-                        
-                <CheckBox Content="CPUID CPU-Z" Tag="Utilities"  />
-
-
-                        
-                <CheckBox Content="Mem Reduct" Tag="Utilities"  />
-
-
-                        
-                <CheckBox Content="HandBrake" Tag="Utilities"  />
-
-
-                        
-                <CheckBox Content="Rufus" Tag="Utilities"  />
-
-
-                        
-                <CheckBox Content="ImgBurn" Tag="Developer"  />
-
-
-                        
-                <CheckBox Content="Virtual CloneDrive" Tag="Utilities"  />
-
-
-                        
-                <CheckBox Content="Utilso" Tag="Utilities"  />
-
-
-                        
-                <CheckBox Content="Ventoy" Tag="Utilities"  />
-
-
-                        
-                <CheckBox Content="iVentoy" Tag="Utilities"  />
-
-
-                        
-                <CheckBox Content="AutoHotkey" Tag="Utilities"  />
-
-
-                        
-                <CheckBox Content="Rainmeter" Tag="Utilities"  />
-
-
-                        
-                <CheckBox Content="FxSound" Tag="Utilities"  />
-
-
-                        
-                <CheckBox Content="HiSuite" Tag="Utilities"  />
-
-
-                        
-                <CheckBox Content="Vysor" Tag="Utilities"  />
-
-
-                        
-                <CheckBox Content="Unifiedremote" Tag="Utilities"  />
-
-
-                        
-                <CheckBox Content="AnyDesk" Tag="Utilities"  />
-
-
-                        
-                <CheckBox Content="Airdroid" Tag="Utilities"  />
-
-
-                        
-                <CheckBox Content="UltraViewer" Tag="Utilities"  />
-
-
-                        
-                <CheckBox Content="Wireless Network Watcher Portable" Tag="Utilities"  />
-
-
-                        
-                <CheckBox Content="qBittorrent" Tag="Utilities"  />
-
-
-                        
-                <CheckBox Content="Google Earth Pro" Tag="Utilities"  />
-
-
-                        
-                <CheckBox Content="XAMPP" Tag="Developer"  />
-
-
-                        
-                <CheckBox Content="Visual Studio Professional 2022" Tag="Developer"  />
-
-
-                        
-                <CheckBox Content="Visual Studio Community 2022" Tag="Developer"  />
-
-
-                        
-                <CheckBox Content="Godot game engine" Tag="Developer"  />
-
-
-                        
-                <CheckBox Content="Unity Hub" Tag="Developer"  />
-
-
-                        
-                <CheckBox Content="Unity 3D" Tag="Developer"  />
-
-
-                        
-                <CheckBox Content="Blender" Tag="Developer"  />
-
-
-                        
-                <CheckBox Content="Visual Studio Code" Tag="Developer"  />
-
-
-                        
-                <CheckBox Content="Sublime Text 4" Tag="Developer"  />
-
-
-                        
-                <CheckBox Content="Atom" Tag="Developer"  />
-
-
-                        
-                <CheckBox Content="InnoSetup" Tag="Developer"  />
-
-
-                        
-                <CheckBox Content="PyCharm Community Edition" Tag="Developer"  />
-
-
-                        
-                <CheckBox Content="PyCharm Professional Edition" Tag="Developer"  />
-
-
-                        
-                <CheckBox Content="Jetbrains Rider" Tag="Developer"  />
-
-
-                        
-                <CheckBox Content="Node.js LTS" Tag="Developer"  />
-
-
-                        
-                <CheckBox Content="Electrum-LTS" Tag="Developer"  />
-
-
-                        
-                <CheckBox Content="Hugo" Tag="Developer"  />
-
-
-                        
-                <CheckBox Content="Notepad++" Tag="Developer"  />
-
-
-                        
-                <CheckBox Content="Windows Terminal" Tag="Developer"  />
-
-
-                        
-                <CheckBox Content="Powershell core" Tag="Developer"  />
-
-
-                        
-                <CheckBox Content="x64dbg Portable" Tag="Developer"  />
-
-
-                        
-                <CheckBox Content="dnSpy" Tag="Developer"  />
-
-
-                        
-                <CheckBox Content="Cheat Engine" Tag="Developer"  />
-
-
-                        
-                <CheckBox Content="Python" Tag="Developer"  />
-
-
-                        
-                <CheckBox Content="Git" Tag="Developer"  />
-
-
-                        
-                <CheckBox Content="GitHub Desktop" Tag="Developer"  />
-
-
-                        
-                <CheckBox Content="Docker Desktop" Tag="Developer"  />
-
-
-                        
-                <CheckBox Content="Docker Compose" Tag="Developer"  />
-
-
-                        
-                <CheckBox Content="PowerToys" Tag="Developer"  />
-
-
-                        
-                <CheckBox Content="Notion" Tag="Developer"  />
-
-
-                        
-                <CheckBox Content="FL Studio" Tag="Developer"  />
-
-
-                        
-                <CheckBox Content="Android Debug Bridge" Tag="Developer"  />
-
-
-                        
-                <CheckBox Content="Universal ADB Drivers" Tag="Developer"  />
-
-
-                        
-                <CheckBox Content="Scrcpy" Tag="Developer"  />
-
-
-                        
-                <CheckBox Content="VirtualBox" Tag="Developer"  />
-
-
-                        
-                <CheckBox Content="UltraISO" Tag="Developer"  />
-
-
-                        
-                <CheckBox Content="Vmware Workstation" Tag="Developer"  />
-
-
-                        
-                <CheckBox Content="oh-my-posh" Tag="Developer"  />
-
-
-                        
-                <CheckBox Content="Malwarebytes" Tag="Security"  />
-
-
-                        
-                <CheckBox Content="Kaspersky Virus Removal Tool" Tag="Security"  />
-
-
-                        
-                <CheckBox Content="Kaspersky Anti-Virus" Tag="Security"  />
-
-
-                        
-                <CheckBox Content="Avast Free Antivirus" Tag="Security"  />
-
-
-            
+                            <CheckBox Content="Thorium" Tag="Browsers" /><CheckBox Content="Firefox" Tag="Browsers" /><CheckBox Content="Add block extension [Firefox]" Tag="Browsers" /><CheckBox Content="Microsoft Edge" Tag="Browsers" /><CheckBox Content="Google Chrome" Tag="Browsers" /><CheckBox Content="uBlock Origin extension [Chrome]" Tag="Browsers" /><CheckBox Content="Chromium" Tag="Browsers" /><CheckBox Content="Brave" Tag="Browsers" /><CheckBox Content="Tor Browser" Tag="Browsers" /><CheckBox Content="Opera" Tag="Browsers" /><CheckBox Content="Internet Download Manager" Tag="Browsers" /><CheckBox Content="K-Lite Mega Codec Pack" Tag="Media" /><CheckBox Content="PotPlayer" Tag="Media" /><CheckBox Content="VLC" Tag="Media" /><CheckBox Content="Kodi" Tag="Media" /><CheckBox Content="Jellyfin" Tag="Media" /><CheckBox Content="Winamp" Tag="Media" /><CheckBox Content="Aimp" Tag="Media" /><CheckBox Content="Spotify" Tag="Media" /><CheckBox Content="FastStone Image Viewer" Tag="Media" /><CheckBox Content="OpenOffice" Tag="Documents" /><CheckBox Content="FoxitReader" Tag="Documents" /><CheckBox Content="LibreOffice" Tag="Documents" /><CheckBox Content="SumatraPDF" Tag="Documents" /><CheckBox Content="WinRAR" Tag="Compression" /><CheckBox Content="7-Zip" Tag="Compression" /><CheckBox Content="PeaZip" Tag="Compression" /><CheckBox Content="QQPlayer" Tag="Media" /><CheckBox Content="Telegram Desktop" Tag="Communication" /><CheckBox Content="Signal" Tag="Communication" /><CheckBox Content="Meta Messenger" Tag="Communication" /><CheckBox Content="Skype" Tag="Communication" /><CheckBox Content="Zoom" Tag="Communication" /><CheckBox Content="Microsoft Teams" Tag="Communication" /><CheckBox Content="Discord" Tag="Communication" /><CheckBox Content="TeamViewer" Tag="File Sharing" /><CheckBox Content="GIMP" Tag="Imaging" /><CheckBox Content="DirectX" Tag="Gaming" /><CheckBox Content="Microsoft Visual C++ Runtime - all versions" Tag="Gaming" /><CheckBox Content="Microsoft Visual C++ 2005 (x86) Redistributable" Tag="Gaming" /><CheckBox Content="Microsoft Visual C++ 2005 (x64) Redistributable" Tag="Gaming" /><CheckBox Content="Microsoft Visual C++ 2008 (x86) Redistributable" Tag="Gaming" /><CheckBox Content="Microsoft Visual C++ 2008 (x64) Redistributable" Tag="Gaming" /><CheckBox Content="Microsoft Visual C++ 2010 (x86) Redistributable" Tag="Gaming" /><CheckBox Content="Microsoft Visual C++ 2010 (x64) Redistributable" Tag="Gaming" /><CheckBox Content="Microsoft Visual C++ 2012 (x86) Redistributable" Tag="Gaming" /><CheckBox Content="Microsoft Visual C++ 2012 (x64) Redistributable" Tag="Gaming" /><CheckBox Content="Microsoft Visual C++ 2013 (x86) Redistributable" Tag="Gaming" /><CheckBox Content="Microsoft Visual C++ 2013 (x64) Redistributable" Tag="Gaming" /><CheckBox Content="Microsoft Visual C++ 2015-2022 (x64) Redistributable" Tag="Gaming" /><CheckBox Content="Microsoft Visual C++ 2015-2022  (x86) Redistributable" Tag="Gaming" /><CheckBox Content="NET Framework All Versions" Tag="Gaming" /><CheckBox Content="AMD Ryzen Chipset Drivers" Tag="Gaming" /><CheckBox Content="NVidia Display Driver" Tag="Gaming" /><CheckBox Content="NVIDIA GeForce" Tag="Gaming" /><CheckBox Content="Msi Afterburner" Tag="Gaming" /><CheckBox Content="NVIDIA PhysX" Tag="Gaming" /><CheckBox Content="Steam" Tag="Gaming" /><CheckBox Content="Epic Games Launcher " Tag="Gaming" /><CheckBox Content="Origin" Tag="Developer" /><CheckBox Content="Ubisoft Connect" Tag="Gaming" /><CheckBox Content="Rockstar Games Launcher" Tag="Gaming" /><CheckBox Content="GameSave Manager" Tag="Gaming" /><CheckBox Content="StreamlabsOBS" Tag="Gaming" /><CheckBox Content="OBS Studio" Tag="Gaming" /><CheckBox Content="Logitech Gaming Software" Tag="Gaming" /><CheckBox Content="Lively Wallpaper" Tag="Gaming" /><CheckBox Content="Playnite" Tag="Gaming" /><CheckBox Content="Driver Easy" Tag="Utilities" /><CheckBox Content="Snappy Driver Installer" Tag="Utilities" /><CheckBox Content="Driver booster" Tag="Utilities" /><CheckBox Content="Driver Genius" Tag="Utilities" /><CheckBox Content="Display Driver Uninstaller" Tag="Utilities" /><CheckBox Content="Driver Store Explorer" Tag="Utilities" /><CheckBox Content="1Password" Tag="Utilities" /><CheckBox Content="MiniTool Partition Wizard" Tag="Utilities" /><CheckBox Content="AOMEI Partition Assistant Standard" Tag="Utilities" /><CheckBox Content="AOMEI Backupper" Tag="Utilities" /><CheckBox Content="Recuva recover" Tag="Utilities" /><CheckBox Content="CCleaner" Tag="Utilities" /><CheckBox Content="BCUninstaller" Tag="Utilities" /><CheckBox Content="HWiNFO" Tag="Utilities" /><CheckBox Content="Speccy" Tag="Utilities" /><CheckBox Content="FurMark" Tag="Utilities" /><CheckBox Content="Hard Disk Sentinel" Tag="Utilities" /><CheckBox Content="CPUID CPU-Z" Tag="Utilities" /><CheckBox Content="Mem Reduct" Tag="Utilities" /><CheckBox Content="HandBrake" Tag="Utilities" /><CheckBox Content="Rufus" Tag="Utilities" /><CheckBox Content="ImgBurn" Tag="Developer" /><CheckBox Content="Virtual CloneDrive" Tag="Utilities" /><CheckBox Content="Utilso" Tag="Utilities" /><CheckBox Content="Ventoy" Tag="Utilities" /><CheckBox Content="iVentoy" Tag="Utilities" /><CheckBox Content="AutoHotkey" Tag="Utilities" /><CheckBox Content="Rainmeter" Tag="Utilities" /><CheckBox Content="FxSound" Tag="Utilities" /><CheckBox Content="HiSuite" Tag="Utilities" /><CheckBox Content="Vysor" Tag="Utilities" /><CheckBox Content="Unifiedremote" Tag="Utilities" /><CheckBox Content="AnyDesk" Tag="Utilities" /><CheckBox Content="Airdroid" Tag="Utilities" /><CheckBox Content="UltraViewer" Tag="Utilities" /><CheckBox Content="Wireless Network Watcher Portable" Tag="Utilities" /><CheckBox Content="qBittorrent" Tag="Utilities" /><CheckBox Content="Google Earth Pro" Tag="Utilities" /><CheckBox Content="XAMPP" Tag="Developer" /><CheckBox Content="Visual Studio Professional 2022" Tag="Developer" /><CheckBox Content="Visual Studio Community 2022" Tag="Developer" /><CheckBox Content="Godot game engine" Tag="Developer" /><CheckBox Content="Unity Hub" Tag="Developer" /><CheckBox Content="Unity 3D" Tag="Developer" /><CheckBox Content="Blender" Tag="Developer" /><CheckBox Content="Visual Studio Code" Tag="Developer" /><CheckBox Content="Sublime Text 4" Tag="Developer" /><CheckBox Content="Atom" Tag="Developer" /><CheckBox Content="InnoSetup" Tag="Developer" /><CheckBox Content="PyCharm Community Edition" Tag="Developer" /><CheckBox Content="PyCharm Professional Edition" Tag="Developer" /><CheckBox Content="Jetbrains Rider" Tag="Developer" /><CheckBox Content="Node.js LTS" Tag="Developer" /><CheckBox Content="Electrum-LTS" Tag="Developer" /><CheckBox Content="Hugo" Tag="Developer" /><CheckBox Content="Notepad++" Tag="Developer" /><CheckBox Content="Windows Terminal" Tag="Developer" /><CheckBox Content="Powershell core" Tag="Developer" /><CheckBox Content="x64dbg Portable" Tag="Developer" /><CheckBox Content="dnSpy" Tag="Developer" /><CheckBox Content="Cheat Engine" Tag="Developer" /><CheckBox Content="Python" Tag="Developer" /><CheckBox Content="Git" Tag="Developer" /><CheckBox Content="GitHub Desktop" Tag="Developer" /><CheckBox Content="Docker Desktop" Tag="Developer" /><CheckBox Content="Docker Compose" Tag="Developer" /><CheckBox Content="PowerToys" Tag="Developer" /><CheckBox Content="Notion" Tag="Developer" /><CheckBox Content="FL Studio" Tag="Developer" /><CheckBox Content="Android Debug Bridge" Tag="Developer" /><CheckBox Content="Universal ADB Drivers" Tag="Developer" /><CheckBox Content="Scrcpy" Tag="Developer" /><CheckBox Content="VirtualBox" Tag="Developer" /><CheckBox Content="UltraISO" Tag="Developer" /><CheckBox Content="Vmware Workstation" Tag="Developer" /><CheckBox Content="oh-my-posh" Tag="Developer" /><CheckBox Content="Malwarebytes" Tag="Security" /><CheckBox Content="Kaspersky Virus Removal Tool" Tag="Security" /><CheckBox Content="Kaspersky Anti-Virus" Tag="Security" /><CheckBox Content="Avast Free Antivirus" Tag="Security" />
                         </ListView>
                     </TabItem.Content>
                 </TabItem>
                 <TabItem Header="Tweaks" x:Name="tweeks" Padding="16" BorderBrush="{x:Null}" Background="{x:Null}">
                     <TabItem.Content>
                         <ListView Name="tweaks"  Margin="10" ScrollViewer.VerticalScrollBarVisibility="Auto" BorderBrush="{x:Null}" Background="{x:Null}">
-                                            <CheckBox Content="System File Checker"/>
-
-                            <CheckBox Content="Disk Cleanup"/>
-
-                            <CheckBox Content="Restore All Windows Services to Default"/>
-
-                            <CheckBox Content="Remove Folder Shortcuts From Windows'' File Explorer"/>
-
-                            <CheckBox Content="Fix stutter in games"/>
-
-                            <CheckBox Content="Remove Unnecessary Windows 10 Apps"/>
-
-                            <CheckBox Content="Enable the Ultimate Performance Power Plan"/>
-
-                            <CheckBox Content=" Reset the TCP/IP Stack"/>
-
-                            <CheckBox Content="Setup Auto login"/>
-
-                            <CheckBox Content="Disables People icon on Taskbar"/>
-
-                            <CheckBox Content="Disables suggestions on start menu"/>
-
-                            <CheckBox Content="Turns off Data Collection"/>
-
-                            <CheckBox Content="Prevents bloatware applications from returning"/>
-
-                            <CheckBox Content="Stops the Windows Feedback Experience"/>
-
-                            <CheckBox Content="Disable Cortana"/>
-
-                            <CheckBox Content="Remove OneDrive"/>
-
-            
+                            <CheckBox Content="System File Checker" /><CheckBox Content="Disk Cleanup" /><CheckBox Content="Restore All Windows Services to Default" /><CheckBox Content="Remove Folder Shortcuts From Windows'' File Explorer" /><CheckBox Content="Fix stutter in games" /><CheckBox Content="Remove Unnecessary Windows 10 Apps" /><CheckBox Content="Enable the Ultimate Performance Power Plan" /><CheckBox Content=" Reset the TCP/IP Stack" /><CheckBox Content="Setup Auto login" /><CheckBox Content="Disables People icon on Taskbar" /><CheckBox Content="Disables suggestions on start menu" /><CheckBox Content="Turns off Data Collection" /><CheckBox Content="Prevents bloatware applications from returning" /><CheckBox Content="Stops the Windows Feedback Experience" /><CheckBox Content="Disable Cortana" /><CheckBox Content="Remove OneDrive" />
                         </ListView>
                     </TabItem.Content>
                 </TabItem>
@@ -3175,6 +2551,7 @@ $inputXML =  '
     </Window>
 <!--End Window-->
 
+
 '
 #===========================================================================
 # Load XMAL 
@@ -3206,6 +2583,8 @@ $sync.runspace.Open()
 $reader = (New-Object System.Xml.XmlNodeReader $xaml)
 $window = [Windows.Markup.XamlReader]::Load($reader)
 
+$global:quotes = $window.FindName("quotes").Text
+
 #endregion
 #===========================================================================
 # End Load XMAL 
@@ -3218,6 +2597,7 @@ $window = [Windows.Markup.XamlReader]::Load($reader)
 # Assigning the list control to a variable
 $sync.list = $Window.FindName("list")
 $sync.des = $Window.FindName("description")
+$sync.q = $Window.FindName("quotes")
 
 # Making the itemLink control visible
 $Window.FindName('itemLink').Visibility = "Visible"
