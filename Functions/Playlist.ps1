@@ -53,36 +53,16 @@ function PlayMusic {
                 }
             }
         }
-
-        
-
-        
     
         # Play the shuffled playlist indefinitely
         while ($true) 
         {
             PlayShuffledPlaylist
         }
-
-
-        
     }
-
-
-    $window.FindName('toggleMusic').add_click({
-
-
-        Write-Host "emad"
-    
-        $global:mediaPlayer.controls.pause()
-    
-    
-    })
-    
-
 }
 
 
-#PlayMusic *> $null
+PlayMusic *> $null
 
 
