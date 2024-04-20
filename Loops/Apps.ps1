@@ -2,6 +2,7 @@
 #===========================================================================
 # Loops 
 #===========================================================================
+
 # Assigning the list control to a variable
 $sync.list = $Window.FindName("list")
 
@@ -32,7 +33,7 @@ function OpenOfficialWebsite {
 
     # Loop through the list of applications in the configs and find the matching one
     foreach ($app in $sync.configs.applications) {
-        if ($app.name -eq $selectedAppName) {
+        if ($selectedAppName -eq $app.name) {
             # Open the official website of the selected application in the default web browser
             Start-Process ("https://duckduckgo.com/?hps=1&q=%5C" + $app.name)
             break
@@ -53,4 +54,8 @@ $Window.FindName("apps").add_Loaded({
     })
 })
 
+
+$Window.FindName("apps").add_LostFocus({
+  $sync.list.SelectedItem = $null
+})
 #endregion
