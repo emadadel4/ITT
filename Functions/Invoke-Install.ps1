@@ -44,13 +44,6 @@ function Get-SelectedTweeaks {
 
 function Invoke-Install() {
 
-    # Check internet connection
-    if (Test-InternetConnection) {
-    } else {
-        [System.Windows.MessageBox]::Show("Internet is not available.", "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
-        return
-    }
-
     if($sync.ProcessRunning)
     {
         $msg = "An Install process is currently running."
@@ -87,6 +80,14 @@ function Invoke-Install() {
                         }
                     })
                    
+                }else{
+                    
+                    $sync.list.Dispatcher.Invoke([Action]{
+                        foreach ($item in $sync.list.Items)
+                        {
+                            $item.IsChecked = $false
+                        }
+                    })
                 }
             }
             Catch
@@ -107,13 +108,12 @@ function Invoke-Install() {
 
 function ApplyTweaks() {
 
-
-    # Check internet connection
-    if (Test-InternetConnection) {
-    } else {
-        [System.Windows.MessageBox]::Show("Internet is not available.", "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
-        return
-    }
+    # # Check internet connection
+    # if (Test-InternetConnection) {
+    # } else {
+    #     [System.Windows.MessageBox]::Show("Internet is not available.", "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
+    #     return
+    # }
 
     if($sync.ProcessRunning)
     {
