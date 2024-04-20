@@ -11,7 +11,7 @@
     Author         : Emad Adel @emadadel4
     GitHub         : https://github.com/emadadel4
     Website        : https://eprojects.orgfree.com/
-    Version        : 24.04.20
+    Version        : 24.04.21
 #>
 
 if (!(Test-Path -Path $ENV:TEMP)) {
@@ -27,7 +27,7 @@ Add-Type -AssemblyName PresentationFramework.Aero
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "24.04.20"
+$sync.version = "24.04.21"
 $sync.github = "https://github.com/emadadel4"
 $sync.website = "https://eprojects.orgfree.com"
 $sync.author = "Emad Adel @emadadel4"
@@ -218,15 +218,7 @@ function Get-SelectedTweeaks {
     return $items 
 }
 
-function Invoke-Install($des) {
-
-
-    # # Check internet connection
-    # if (Test-InternetConnection) {
-    # } else {
-    #     [System.Windows.MessageBox]::Show("Internet is not available.", "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
-    #     return
-    # }
+function Invoke-Install{
 
     if($sync.ProcessRunning)
     {
@@ -235,7 +227,7 @@ function Invoke-Install($des) {
         return
     }
   
-    $choco += Get-SelectedApps
+    $choco = Get-SelectedApps
 
     if(Get-SelectedApps -ne $null)
     {
