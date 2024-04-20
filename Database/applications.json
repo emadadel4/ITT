@@ -721,13 +721,6 @@
   },
   {
     "Name": "Virtual CloneDrive",
-    "winget": "#",
-    "choco": "virtualclonedrive",
-    "catgory": "Utilities",
-    "check": "false"
-  },
-  {
-    "Name": "Virtual CloneDrive",
     "Description": "A free software that allows users to mount disc images as virtual drives, enabling them to access the content of ISO, BIN, and CCD files without the need for physical discs.",
     "winget": "#",
     "choco": "virtualclonedrive",
