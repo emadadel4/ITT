@@ -225,7 +225,7 @@
                     HorizontalAlignment="Left"
                     VerticalAlignment="Center" 
                     Padding="16" TextWrapping="Wrap" 
-                    Text="When I finished building my boat, the sea dried up."
+                    Text=""
                     />
                 </Grid>
             <!--End Footer Section-->
