@@ -442,10 +442,6 @@ function PlayMusic {
     }
 }
 
-
-PlayMusic *> $null
-
-
 function GetQuotes {
 
     Invoke-RunspaceWithScriptBlock -ScriptBlock {
@@ -2582,8 +2578,6 @@ $sync.runspace.Open()
 [xml]$XAML = $inputXML
 $reader = (New-Object System.Xml.XmlNodeReader $xaml)
 $window = [Windows.Markup.XamlReader]::Load($reader)
-
-$global:quotes = $window.FindName("quotes").Text
 
 #endregion
 #===========================================================================
