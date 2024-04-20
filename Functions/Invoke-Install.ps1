@@ -42,7 +42,15 @@ function Get-SelectedTweeaks {
     return $items 
 }
 
-function Invoke-Install() {
+function Invoke-Install($des) {
+
+
+    # # Check internet connection
+    # if (Test-InternetConnection) {
+    # } else {
+    #     [System.Windows.MessageBox]::Show("Internet is not available.", "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
+    #     return
+    # }
 
     if($sync.ProcessRunning)
     {
@@ -67,6 +75,11 @@ function Invoke-Install() {
                 {
                     $sync.ProcessRunning = $true
 
+                   
+                    $sync.des.Dispatcher.Invoke([Action]{
+                        $sync.des.Text = "Installing... $("-$choco-")"
+                    })
+
                     Write-Host "Installing the following programs $choco "
                     Start-Process -FilePath "choco" -ArgumentList "install $choco -y --force --ignore-checksums" -NoNewWindow -Wait
                     Write-Host "Installs have finished"
@@ -80,20 +93,16 @@ function Invoke-Install() {
                         }
                     })
                    
-                }else{
-                    
-                    $sync.list.Dispatcher.Invoke([Action]{
-                        foreach ($item in $sync.list.Items)
-                        {
-                            $item.IsChecked = $false
-                        }
-                    })
                 }
             }
             Catch
             {
                 Write-Host "Error: $_"
             }
+
+            $sync.des.Dispatcher.Invoke([Action]{
+                $sync.des.Text = "Installed successfully, Check Start Menu"
+            })
 
             Start-Sleep -Seconds 1
             $sync.ProcessRunning = $False
@@ -107,13 +116,6 @@ function Invoke-Install() {
 
 
 function ApplyTweaks() {
-
-    # # Check internet connection
-    # if (Test-InternetConnection) {
-    # } else {
-    #     [System.Windows.MessageBox]::Show("Internet is not available.", "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
-    #     return
-    # }
 
     if($sync.ProcessRunning)
     {
@@ -137,6 +139,11 @@ function ApplyTweaks() {
                 if($msg -eq "Yes")
                 {
                     $sync.ProcessRunning = $true
+
+                    $sync.des.Dispatcher.Invoke([Action]{
+                        $sync.des.Text = "Applying..."
+                    })
+
                     #Write-Host "Applying tweeak(s) $tweeaks "
                     Start-Process -FilePath "powershell.exe" -ArgumentList "-Command `"$tweeaks`"" -NoNewWindow -Wait
                     Write-Host "The operation was successful."    
@@ -154,6 +161,10 @@ function ApplyTweaks() {
             {
                 Write-Host "Error: $_"
             }
+
+            $sync.des.Dispatcher.Invoke([Action]{
+                $sync.des.Text = "Done..."
+            })
 
             Start-Sleep -Seconds 1
             $sync.ProcessRunning = $False
