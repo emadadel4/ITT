@@ -34,9 +34,8 @@ function GetQuotes {
         while ($true) {
             foreach ($name in $shuffledNames) {
 
-
-                $sync.emad.Dispatcher.Invoke([Action]{
-                    $sync.emad.Text = "`".$name`""
+                $sync.q.Dispatcher.Invoke([Action]{
+                    $sync.q.Text = "`".$name`""
                 })
 
                 Start-Sleep -Seconds 8  # Adjust the sleep time as needed
