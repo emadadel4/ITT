@@ -32,7 +32,7 @@
                 </TabControl.Resources>
                 <TabItem Header="Apps" Name="apps" BorderBrush="{x:Null}" Padding="16">
                     <TabItem.Content>
-                        <ListView Margin="10" ScrollViewer.VerticalScrollBarVisibility="Auto" x:Name="list" BorderBrush="{x:Null}" Background="{x:Null}">
+                        <ListView Margin="10" ScrollViewer.VerticalScrollBarVisibility="Auto" Name="list" BorderBrush="{x:Null}" Background="{x:Null}">
                             {{ee}}
                         </ListView>
                     </TabItem.Content>
