@@ -218,18 +218,8 @@ function Get-SelectedTweeaks {
     return $items 
 }
 
-function UpdateDescription {
-
-    param ($des)
-
-
-
-  
-}
-
 function Invoke-Install($des) {
 
-    $sync.des = $Window.FindName("description")
 
     # # Check internet connection
     # if (Test-InternetConnection) {
@@ -333,6 +323,11 @@ function ApplyTweaks() {
                 if($msg -eq "Yes")
                 {
                     $sync.ProcessRunning = $true
+
+                    $sync.des.Dispatcher.Invoke([Action]{
+                        $sync.des.Text = "Applying..."
+                    })
+
                     #Write-Host "Applying tweeak(s) $tweeaks "
                     Start-Process -FilePath "powershell.exe" -ArgumentList "-Command `"$tweeaks`"" -NoNewWindow -Wait
                     Write-Host "The operation was successful."    
@@ -350,6 +345,10 @@ function ApplyTweaks() {
             {
                 Write-Host "Error: $_"
             }
+
+            $sync.des.Dispatcher.Invoke([Action]{
+                $sync.des.Text = "Done..."
+            })
 
             Start-Sleep -Seconds 1
             $sync.ProcessRunning = $False
