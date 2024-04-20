@@ -64,6 +64,14 @@
     "category": "tweak"
   },
   {
+    "name": "Disables suggestions on start menu",
+    "description": "Disables suggestions on start menu",
+    "repo": null,
+    "script": "if (Test-Path 'HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager') { Set-ItemProperty 'HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager' -Name SystemPaneSuggestionsEnabled -Value 0 -Verbose }",
+    "check": true,
+    "category": "tweak"
+  },
+  {
     "name": "Setup Auto login",
     "description": "Setup auto login Windows username",
     "repo": "null",
