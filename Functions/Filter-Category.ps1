@@ -1,4 +1,5 @@
 #region Function to filter a list based on a search input
+
 function Search{
     
     # Retrieves the search input, converts it to lowercase, and filters the list based on the input
@@ -10,7 +11,6 @@ function Search{
     }
 
 }
-
 
 function FilterByCat {
     param (
@@ -29,14 +29,19 @@ function FilterByCat {
         return $itemTag -eq $tagToFilter
     }
 
+    $sync.list.Clear()
     # Apply the filter to the collection view
     $collectionView.Filter = $filterPredicate
     
 }
 
 function ClearFilter {
+
+    $sync.list.Clear()
+
     $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.list.Items)
     $collectionView.Filter = $null
 }
+
 #endregion
 
