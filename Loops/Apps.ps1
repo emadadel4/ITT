@@ -5,6 +5,7 @@
 
 # Assigning the list control to a variable
 $sync.list = $Window.FindName("list")
+$sync.des = $Window.FindName("description")
 
 # Making the itemLink control visible
 $Window.FindName('itemLink').Visibility = "Visible"
@@ -56,6 +57,9 @@ $Window.FindName("apps").add_Loaded({
 
 
 $Window.FindName("apps").add_LostFocus({
+
   $sync.list.SelectedItem = $null
+
 })
+
 #endregion
