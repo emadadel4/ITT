@@ -1588,7 +1588,7 @@ $sync.configs.applications = '[
   },
   {
     "Name": "Atom",
-    "Description": "Atom is a text editor that''s modern, approachable, yet hackable to the core???a tool you can customize to do anything but also use productively without ever touching a config file.",
+    "Description": "Atom is a text editor that''s modern, approachable, yet hackable to the core?a tool you can customize to do anything but also use productively without ever touching a config file.",
     "winget": "#",
     "choco": "atom",
     "category": "Developer",
@@ -1915,6 +1915,14 @@ $sync.configs.tweaks = '[
     "repo": "null",
     "script": "netsh int ip reset;",
     "check": "true",
+    "category": "tweak"
+  },
+  {
+    "name": "Disables suggestions on start menu",
+    "description": "Disables suggestions on start menu",
+    "repo": null,
+    "script": "if (Test-Path ''HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager'') { Set-ItemProperty ''HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager'' -Name SystemPaneSuggestionsEnabled -Value 0 -Verbose }",
+    "check": true,
     "category": "tweak"
   },
   {
@@ -2928,6 +2936,8 @@ $inputXML =  '
                             <CheckBox Content="Enable the Ultimate Performance Power Plan"/>
 
                             <CheckBox Content=" Reset the TCP/IP Stack"/>
+
+                            <CheckBox Content="Disables suggestions on start menu"/>
 
                             <CheckBox Content="Setup Auto login"/>
 
