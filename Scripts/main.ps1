@@ -29,6 +29,8 @@ $window.FindName('u').add_click({ FilterByCat($window.FindName('u').Content)})
 $window.FindName('c').add_click({ FilterByCat($window.FindName('c').Content)})
 
 $Window.Add_Closing({
+
+    Stop-Process  -ID $PID
     Write-Host "Bye :)"
 })
 
