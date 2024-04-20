@@ -644,16 +644,12 @@ function ChangeTap() {
     {
         $window.FindName('installBtn').Visibility = "Visible"
         $window.FindName('applyBtn').Visibility = "Hidden"
-        #$Window.FindName('itemLink').Visibility = "Visible"
-
     }
 
     if($window.FindName('tweeks').IsSelected)
     {
         $window.FindName('applyBtn').Visibility = "Visible"
         $window.FindName('installBtn').Visibility = "Hidden"
-        #$Window.FindName('itemLink').Visibility = "Visible"
-
     }
 }
 
@@ -3092,6 +3088,7 @@ catch [System.Management.Automation.MethodInvocationException] {
 #===========================================================================
 # Loops 
 #===========================================================================
+
 # Assigning the list control to a variable
 $sync.list = $Window.FindName("list")
 
@@ -3122,7 +3119,7 @@ function OpenOfficialWebsite {
 
     # Loop through the list of applications in the configs and find the matching one
     foreach ($app in $sync.configs.applications) {
-        if ($app.name -eq $selectedAppName) {
+        if ($selectedAppName -eq $app.name) {
             # Open the official website of the selected application in the default web browser
             Start-Process ("https://duckduckgo.com/?hps=1&q=%5C" + $app.name)
             break
@@ -3143,6 +3140,10 @@ $Window.FindName("apps").add_Loaded({
     })
 })
 
+
+$Window.FindName("apps").add_LostFocus({
+  $sync.list.SelectedItem = $null
+})
 #endregion
 #region Generate tweaks from json file
 $sync.tweaks = $Window.FindName("tweaks")
@@ -3165,7 +3166,9 @@ $Window.FindName("tweeks").add_Loaded({
 
     # Add mouse left button down event handler for item link
     $Window.FindName('itemLink').add_MouseLeftButtonDown({
+
         $selectedItem = $sync.tweaks.SelectedItem.Content
+
         foreach ($data in $sync.configs.tweaks) {
             if ($selectedItem -eq $data.name -and $data.repo -ne "null") {
                 Start-Process $data.repo
@@ -3175,6 +3178,12 @@ $Window.FindName("tweeks").add_Loaded({
     })
 
 })
+
+
+$Window.FindName("tweeks").add_LostFocus({
+    $sync.tweaks.SelectedItem = $null
+})
+
 
 #endregion
 #===========================================================================
