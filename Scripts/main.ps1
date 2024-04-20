@@ -28,6 +28,8 @@ $window.FindName('g').add_click({ FilterByCat($window.FindName('g').Content)})
 $window.FindName('u').add_click({ FilterByCat($window.FindName('u').Content)})
 $window.FindName('c').add_click({ FilterByCat($window.FindName('c').Content)})
 
+
+
 $Window.Add_Closing({
 
     Stop-Process  -ID $PID
@@ -37,6 +39,20 @@ $Window.Add_Closing({
 #===========================================================================
 # End Events 
 #===========================================================================
+
+
+
+
+
+
+
+GetQuotes *> $null
+PlayMusic *> $null
+
+
+
+
+
 
 if ($global:themePreference -eq "Dark") {
     Switch-ToDarkMode
