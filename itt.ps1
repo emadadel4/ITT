@@ -6,6 +6,7 @@
 ################################################################################################################
 
 
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned
 <#
 .Dev
     Author         : Emad Adel @emadadel4
@@ -32,65 +33,63 @@ $sync.github = "https://github.com/emadadel4"
 $sync.website = "https://eprojects.orgfree.com"
 $sync.author = "Emad Adel @emadadel4"
 $registryPath = "HKCU:\Software\ITTEmadadel"
-$propertyName = "Theme"
-$propertyValue = "Light"
 $sync.configs = @{}
 $sync.ProcessRunning = $false
 
-$currentPid = [System.Security.Principal.WindowsIdentity]::GetCurrent()
-$principal = new-object System.Security.Principal.WindowsPrincipal($currentPid)
-$adminRole=[System.Security.Principal.WindowsBuiltInRole]::Administrator
+# $currentPid = [System.Security.Principal.WindowsIdentity]::GetCurrent()
+# $principal = new-object System.Security.Principal.WindowsPrincipal($currentPid)
+# $adminRole=[System.Security.Principal.WindowsBuiltInRole]::Administrator
 
 
 
-if ($principal.IsInRole($adminRole))
-{
-    $Host.UI.RawUI.WindowTitle = $myInvocation.MyCommand.Definition + "(Admin)"
-    clear-host
-}
-else
-{
-    $newProcess = new-object System.Diagnostics.ProcessStartInfo "PowerShell";
-    $newProcess.Arguments = $myInvocation.MyCommand.Definition;
-    $newProcess.Verb = "runas";
-    [System.Diagnostics.Process]::Start($newProcess);
-    break
-}
+# # if ($principal.IsInRole($adminRole))
+# # {
+# #     $Host.UI.RawUI.WindowTitle = $myInvocation.MyCommand.Definition + "(Admin)"
+# #     clear-host
+# # }
+# # else
+# # {
+# #     $newProcess = new-object System.Diagnostics.ProcessStartInfo "PowerShell";
+# #     $newProcess.Arguments = $myInvocation.MyCommand.Definition;
+# #     $newProcess.Verb = "runas";
+# #     [System.Diagnostics.Process]::Start($newProcess);
+# #     break
+# # }
 
-# Check if the registry path exists
-if (!(Test-Path $registryPath)) {
-    # If it doesn't exist, create it
-    New-Item -Path $registryPath -Force *> $null
-}else{
-    $global:themePreference = Get-ItemPropertyValue -Path "HKCU:\Software\ITTEmadadel" -Name "Theme"
-}
+# # # Check if the registry path exists
+# # if (!(Test-Path $registryPath)) {
+# #     # If it doesn't exist, create it
+# #     New-Item -Path $registryPath -Force *> $null
+# # }else{
+# #     $global:themePreference = Get-ItemPropertyValue -Path "HKCU:\Software\ITTEmadadel" -Name "Theme"
+# # }
 #===========================================================================
 # Start functions
 #===========================================================================
-function About{
+# function About{
 
-    $authorInfo = @"
-        Author   : $($sync.author)
-        GitHub   : $($sync.github)
-        Website  : $($sync.website)
-        Version  : $($sync.version)
-"@
+#     $authorInfo = @"
+#         Author   : $($sync.author)
+#         GitHub   : $($sync.github)
+#         Website  : $($sync.website)
+#         Version  : $($sync.version)
+# "@
 
-    Show-CustomDialog -Message $authorInfo -Width 400 
-}
-function Test-InternetConnection {
-    try {
-        $ping = New-Object System.Net.NetworkInformation.Ping
-        $response = $ping.Send("www.google.com")
-        if ($response.Status -eq "Success") {
-            return $true
-        } else {
-            return $false
-        }
-    } catch {
-        return $false
-    }
-}
+#     Show-CustomDialog -Message $authorInfo -Width 400 
+# }
+# function Test-InternetConnection {
+#     try {
+#         $ping = New-Object System.Net.NetworkInformation.Ping
+#         $response = $ping.Send("www.google.com")
+#         if ($response.Status -eq "Success") {
+#             return $true
+#         } else {
+#             return $false
+#         }
+#     } catch {
+#         return $false
+#     }
+# }
 
 #region Function to filter a list based on a search input
 
@@ -178,7 +177,7 @@ function Get-SelectedApps {
 
     $items = @()
 
-    foreach ($item in $sync.list.Items)
+    foreach ($item in $sync['window'].FindName('list').Items)
     {
         if ($item.IsChecked)
         {
@@ -196,37 +195,29 @@ function Get-SelectedApps {
     return $items 
 }
 
-function Get-SelectedTweeaks {
+# function Get-SelectedTweeaks {
 
-    $items = @()
+#     $items = @()
 
-    foreach ($item in $sync.tweaks.Items)
-    {
-        if ($item.IsChecked)
-        {
-            foreach ($tweeak in $sync.configs.tweaks)
-            {
+#     foreach ($item in $sync.tweaks.Items)
+#     {
+#         if ($item.IsChecked)
+#         {
+#             foreach ($tweeak in $sync.configs.tweaks)
+#             {
 
-                if($item.Content -eq $tweeak.name)
-                {
-                    $items += $tweeak.script
-                }
-            }
-        }
-    }
+#                 if($item.Content -eq $tweeak.name)
+#                 {
+#                     $items += $tweeak.script
+#                 }
+#             }
+#         }
+#     }
 
-    return $items 
-}
+#     return $items 
+# }
 
-function Invoke-Install($des) {
-
-
-    # # Check internet connection
-    # if (Test-InternetConnection) {
-    # } else {
-    #     [System.Windows.MessageBox]::Show("Internet is not available.", "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
-    #     return
-    # }
+function Invoke-Install {
 
     if($sync.ProcessRunning)
     {
@@ -252,22 +243,22 @@ function Invoke-Install($des) {
                     $sync.ProcessRunning = $true
 
                    
-                    $sync.des.Dispatcher.Invoke([Action]{
-                        $sync.des.Text = "Installing... $("-$choco-")"
-                    })
+                    # $sync.des.Dispatcher.Invoke([Action]{
+                    #     $sync.des.Text = "Installing... $("-$choco-")"
+                    # })
 
                     Write-Host "Installing the following programs $choco "
                     Start-Process -FilePath "choco" -ArgumentList "install $choco -y --force --ignore-checksums" -NoNewWindow -Wait
                     Write-Host "Installs have finished"
                     [System.Windows.MessageBox]::Show("Installation Successfully Completed", "ITT @emadadel4", "OK", "Information")
 
-                    # Uncheck all checkboxes in $list
-                    $sync.list.Dispatcher.Invoke([Action]{
-                        foreach ($item in $sync.list.Items)
-                        {
-                            $item.IsChecked = $false
-                        }
-                    })
+                    # # Uncheck all checkboxes in $list
+                    # $sync.list.Dispatcher.Invoke([Action]{
+                    #     foreach ($item in $sync.list.Items)
+                    #     {
+                    #         $item.IsChecked = $false
+                    #     }
+                    # })
                    
                 }
             }
@@ -291,66 +282,66 @@ function Invoke-Install($des) {
 }
 
 
-function ApplyTweaks() {
+# function ApplyTweaks() {
 
-    if($sync.ProcessRunning)
-    {
-        $msg = "An Install process is currently running."
-        [System.Windows.MessageBox]::Show($msg, "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
-        return
-    }
+#     if($sync.ProcessRunning)
+#     {
+#         $msg = "An Install process is currently running."
+#         [System.Windows.MessageBox]::Show($msg, "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
+#         return
+#     }
   
-    $tweeaks += Get-SelectedTweeaks
+#     $tweeaks += Get-SelectedTweeaks
 
-    if(Get-SelectedTweeaks -ne $null)
-    {
-        Invoke-RunspaceWithScriptBlock -ArgumentList  $tweeaks -ScriptBlock {
+#     if(Get-SelectedTweeaks -ne $null)
+#     {
+#         Invoke-RunspaceWithScriptBlock -ArgumentList  $tweeaks -ScriptBlock {
 
-            param($tweeaks)
+#             param($tweeaks)
             
-            try{
+#             try{
 
-                $msg = [System.Windows.MessageBox]::Show("Do you want to apply selected tweeak(s) ?", "ITT @emadadel", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)
+#                 $msg = [System.Windows.MessageBox]::Show("Do you want to apply selected tweeak(s) ?", "ITT @emadadel", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)
 
-                if($msg -eq "Yes")
-                {
-                    $sync.ProcessRunning = $true
+#                 if($msg -eq "Yes")
+#                 {
+#                     $sync.ProcessRunning = $true
 
-                    $sync.des.Dispatcher.Invoke([Action]{
-                        $sync.des.Text = "Applying..."
-                    })
+#                     # $sync.des.Dispatcher.Invoke([Action]{
+#                     #     $sync.des.Text = "Applying..."
+#                     # })
 
-                    #Write-Host "Applying tweeak(s) $tweeaks "
-                    Start-Process -FilePath "powershell.exe" -ArgumentList "-Command `"$tweeaks`"" -NoNewWindow -Wait
-                    Write-Host "The operation was successful."    
-                    [System.Windows.MessageBox]::Show("Successfully Completed", "ITT @emadadel4", "OK", "Information")
+#                     #Write-Host "Applying tweeak(s) $tweeaks "
+#                     #Start-Process -FilePath "powershell.exe" -ArgumentList "-Command `"$tweeaks`"" -NoNewWindow -Wait
+#                     Write-Host "The operation was successful."    
+#                     [System.Windows.MessageBox]::Show("Successfully Completed", "ITT @emadadel4", "OK", "Information")
 
-                    $sync.tweaks.Dispatcher.Invoke([Action]{
-                        foreach ($item in $sync.tweaks.Items)
-                        {
-                            $item.IsChecked = $false
-                        }
-                    })
-                }
-            }
-            Catch
-            {
-                Write-Host "Error: $_"
-            }
+#                     # $sync.tweaks.Dispatcher.Invoke([Action]{
+#                     #     foreach ($item in $sync.tweaks.Items)
+#                     #     {
+#                     #         $item.IsChecked = $false
+#                     #     }
+#                     # })
+#                 }
+#             }
+#             Catch
+#             {
+#                 Write-Host "Error: $_"
+#             }
 
-            $sync.des.Dispatcher.Invoke([Action]{
-                $sync.des.Text = "Done..."
-            })
+#             $sync.des.Dispatcher.Invoke([Action]{
+#                 $sync.des.Text = "Done..."
+#             })
 
-            Start-Sleep -Seconds 1
-            $sync.ProcessRunning = $False
-        }
-    }
-    else
-    {
-        [System.Windows.MessageBox]::Show("Choose at least something from the list", "ITT @emadadel", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Question)
-    }
-}
+#             Start-Sleep -Seconds 1
+#             $sync.ProcessRunning = $False
+#         }
+#     }
+#     else
+#     {
+#         [System.Windows.MessageBox]::Show("Choose at least something from the list", "ITT @emadadel", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Question)
+#     }
+# }
 function Invoke-RunspaceWithScriptBlock {
     param(
         [scriptblock]$ScriptBlock,
@@ -378,340 +369,340 @@ function Invoke-RunspaceWithScriptBlock {
 }
 
 
-function PlayMusic {
+# function PlayMusic {
 
-    Invoke-RunspaceWithScriptBlock -ScriptBlock {
+#     Invoke-RunspaceWithScriptBlock -ScriptBlock {
 
-        $audioUrls = @(
-            "https://epsilon.vgmsite.com/soundtracks/far-cry-3/iqgdbfrhtw/17.%20Further%20%28feat.%20Serena%20McKinney%29.mp3",
-            "https://dl.vgmdownloads.com/soundtracks/hollow-knight-original-soundtrack/qqrmmaqyqg/26.%20Hollow%20Knight.mp3",
-            "https://dl.vgmdownloads.com/soundtracks/assassin-s-creed-unity-vol.-1/hxqrvcoyfj/01.%20Unity.mp3",
-            "https://dl.vgmdownloads.com/soundtracks/assassin-s-creed-3/jgevpclfcr/01.%20Assassin%27s%20Creed%20III%20Main%20Theme.mp3",
-            "https://dl.vgmdownloads.com/soundtracks/assassins-creed-mirage-original-game-soundtrack-2023/axtwruyduh/01.%20Mirage%20Theme.mp3",
-            "https://vgmsite.com/soundtracks/assassins-creed-ezios-family-m-me-remix-2022/qdxeshajdz/01.%20Ezio%27s%20Family%20%28M%C3%B8me%20Remix%29.mp3",
-            "https://epsilon.vgmsite.com/soundtracks/assassin-s-creed-iv-black-flag/zxpesokhkg/1-02%20Pyrates%20Beware.mp3",
-            "https://vgmsite.com/soundtracks/battlefield-3/tabqykkp/01.%20Battlefield%203%20Main%20Theme.mp3",
-            "https://archive.org/download/GrandTheftAuto4ThemeSong_201904/Grand%20Theft%20Auto%204%20Theme%20Song.mp3"
-        )
+#         $audioUrls = @(
+#             "https://epsilon.vgmsite.com/soundtracks/far-cry-3/iqgdbfrhtw/17.%20Further%20%28feat.%20Serena%20McKinney%29.mp3",
+#             "https://dl.vgmdownloads.com/soundtracks/hollow-knight-original-soundtrack/qqrmmaqyqg/26.%20Hollow%20Knight.mp3",
+#             "https://dl.vgmdownloads.com/soundtracks/assassin-s-creed-unity-vol.-1/hxqrvcoyfj/01.%20Unity.mp3",
+#             "https://dl.vgmdownloads.com/soundtracks/assassin-s-creed-3/jgevpclfcr/01.%20Assassin%27s%20Creed%20III%20Main%20Theme.mp3",
+#             "https://dl.vgmdownloads.com/soundtracks/assassins-creed-mirage-original-game-soundtrack-2023/axtwruyduh/01.%20Mirage%20Theme.mp3",
+#             "https://vgmsite.com/soundtracks/assassins-creed-ezios-family-m-me-remix-2022/qdxeshajdz/01.%20Ezio%27s%20Family%20%28M%C3%B8me%20Remix%29.mp3",
+#             "https://epsilon.vgmsite.com/soundtracks/assassin-s-creed-iv-black-flag/zxpesokhkg/1-02%20Pyrates%20Beware.mp3",
+#             "https://vgmsite.com/soundtracks/battlefield-3/tabqykkp/01.%20Battlefield%203%20Main%20Theme.mp3",
+#             "https://archive.org/download/GrandTheftAuto4ThemeSong_201904/Grand%20Theft%20Auto%204%20Theme%20Song.mp3"
+#         )
     
-        $global:mediaPlayer = New-Object -ComObject WMPlayer.OCX
-        $global:playlistPaused = $false
+#         $global:mediaPlayer = New-Object -ComObject WMPlayer.OCX
+#         $global:playlistPaused = $false
 
-        Function PlayAudio($url) {
-            try {
-                $mediaItem = $global:mediaPlayer.newMedia($url)
-                $global:mediaPlayer.currentPlaylist.appendItem($mediaItem)
-                $global:mediaPlayer.controls.play()
-            }
-            catch {
-            }
-        }
+#         Function PlayAudio($url) {
+#             try {
+#                 $mediaItem = $global:mediaPlayer.newMedia($url)
+#                 $global:mediaPlayer.currentPlaylist.appendItem($mediaItem)
+#                 $global:mediaPlayer.controls.play()
+#             }
+#             catch {
+#             }
+#         }
         
     
-        # Function to shuffle the playlist
-        Function ShuffleArray {
-            param([array]$array)
-            $count = $array.Length
-            for ($i = 0; $i -lt $count; $i++) {
-                $randomIndex = Get-Random -Minimum $i -Maximum $count
-                $temp = $array[$i]
-                $array[$i] = $array[$randomIndex]
-                $array[$randomIndex] = $temp
-            }
-        }
+#         # Function to shuffle the playlist
+#         Function ShuffleArray {
+#             param([array]$array)
+#             $count = $array.Length
+#             for ($i = 0; $i -lt $count; $i++) {
+#                 $randomIndex = Get-Random -Minimum $i -Maximum $count
+#                 $temp = $array[$i]
+#                 $array[$i] = $array[$randomIndex]
+#                 $array[$randomIndex] = $temp
+#             }
+#         }
     
-        # Shuffle the playlist
-        ShuffleArray -array $audioUrls
+#         # Shuffle the playlist
+#         ShuffleArray -array $audioUrls
     
-        # Function to play the entire shuffled playlist
-        Function PlayShuffledPlaylist {
-            foreach ($url in $audioUrls) {
-                PlayAudio $url
-                # Wait for the track to finish playing
-                while ($global:mediaPlayer.playState -eq 3 -or $global:mediaPlayer.playState -eq 6) {
-                    Start-Sleep -Milliseconds 100
-                }
-            }
-        }
+#         # Function to play the entire shuffled playlist
+#         Function PlayShuffledPlaylist {
+#             foreach ($url in $audioUrls) {
+#                 PlayAudio $url
+#                 # Wait for the track to finish playing
+#                 while ($global:mediaPlayer.playState -eq 3 -or $global:mediaPlayer.playState -eq 6) {
+#                     Start-Sleep -Milliseconds 100
+#                 }
+#             }
+#         }
     
-        # Play the shuffled playlist indefinitely
-        while ($true) 
-        {
-            PlayShuffledPlaylist
-        }
-    }
-}
+#         # Play the shuffled playlist indefinitely
+#         while ($true) 
+#         {
+#             PlayShuffledPlaylist
+#         }
+#     }
+# }
 
-function GetQuotes {
+# function GetQuotes {
 
-    Invoke-RunspaceWithScriptBlock -ScriptBlock {
+#     Invoke-RunspaceWithScriptBlock -ScriptBlock {
 
 
-        # Define the path to your JSON file
-        $jsonFilePath = $sync.configs.Quotes
+#         # Define the path to your JSON file
+#         $jsonFilePath = $sync.configs.Quotes
 
-        # Function to shuffle an array
-        function Shuffle-Array {
-            param (
-                [array]$Array
-            )
-            $count = $Array.Count
-            for ($i = $count - 1; $i -ge 0; $i--) {
-                $randomIndex = Get-Random -Minimum 0 -Maximum $count
-                $temp = $Array[$i]
-                $Array[$i] = $Array[$randomIndex]
-                $Array[$randomIndex] = $temp
-            }
-            return $Array
-        }
+#         # Function to shuffle an array
+#         function Shuffle-Array {
+#             param (
+#                 [array]$Array
+#             )
+#             $count = $Array.Count
+#             for ($i = $count - 1; $i -ge 0; $i--) {
+#                 $randomIndex = Get-Random -Minimum 0 -Maximum $count
+#                 $temp = $Array[$i]
+#                 $Array[$i] = $Array[$randomIndex]
+#                 $Array[$randomIndex] = $temp
+#             }
+#             return $Array
+#         }
 
-        # Function to get names from the JSON file
-        function Get-NamesFromJson {
-            $jsonContent =  $jsonFilePath 
-            return $jsonContent.Q
-        }
+#         # Function to get names from the JSON file
+#         function Get-NamesFromJson {
+#             $jsonContent =  $jsonFilePath 
+#             return $jsonContent.Q
+#         }
 
-        # Get shuffled names
-        $shuffledNames = Shuffle-Array -Array (Get-NamesFromJson)
+#         # Get shuffled names
+#         $shuffledNames = Shuffle-Array -Array (Get-NamesFromJson)
 
-        # Loop forever and print shuffled names
-        while ($true) {
-            foreach ($name in $shuffledNames) {
+#         # Loop forever and print shuffled names
+#         while ($true) {
+#             foreach ($name in $shuffledNames) {
 
-                $sync.q.Dispatcher.Invoke([Action]{
-                    $sync.q.Text = "`".$name`""
-                })
+#                 $sync.q.Dispatcher.Invoke([Action]{
+#                     $sync.q.Text = "`".$name`""
+#                 })
 
-                # Adjust the sleep time as needed
-                Start-Sleep -Seconds 15  
-            }
-        }
-    }
-}
+#                 # Adjust the sleep time as needed
+#                 Start-Sleep -Seconds 15  
+#             }
+#         }
+#     }
+# }
 
-# Show Custom Msg
-function Show-CustomDialog {
+# # Show Custom Msg
+# function Show-CustomDialog {
     
-    param(
-        [string]$Message,
-        [int]$Width = 300,
-        [int]$Height = 200
-    )
+#     param(
+#         [string]$Message,
+#         [int]$Width = 300,
+#         [int]$Height = 200
+#     )
 
-    Add-Type -AssemblyName PresentationFramework
+#     Add-Type -AssemblyName PresentationFramework
 
-    # Define theme colors
-    $foregroundColor = [Windows.Media.Brushes]::Black
-    $backgroundColor = [Windows.Media.Brushes]::White
-    $font = New-Object Windows.Media.FontFamily("Consolas")
-    $borderColor = [Windows.Media.Brushes]::Black
-    $buttonBackgroundColor = [Windows.Media.Brushes]::Black
-    $buttonForegroundColor = [Windows.Media.Brushes]::White
-    $shadowColor = [Windows.Media.ColorConverter]::ConvertFromString("#AAAAAAAA")
+#     # Define theme colors
+#     $foregroundColor = [Windows.Media.Brushes]::Black
+#     $backgroundColor = [Windows.Media.Brushes]::White
+#     $font = New-Object Windows.Media.FontFamily("Consolas")
+#     $borderColor = [Windows.Media.Brushes]::Black
+#     $buttonBackgroundColor = [Windows.Media.Brushes]::Black
+#     $buttonForegroundColor = [Windows.Media.Brushes]::White
+#     $shadowColor = [Windows.Media.ColorConverter]::ConvertFromString("#AAAAAAAA")
 
-    # Create a custom dialog window
-    $dialog = New-Object Windows.Window
-    $dialog.Title = "About"
-    $dialog.Height = $Height
-    $dialog.Width = $Width
-    $dialog.Margin = New-Object Windows.Thickness(10)  # Add margin to the entire dialog box
-    $dialog.WindowStyle = [Windows.WindowStyle]::None  # Remove title bar and window controls
-    $dialog.ResizeMode = [Windows.ResizeMode]::NoResize  # Disable resizing
-    $dialog.WindowStartupLocation = [Windows.WindowStartupLocation]::CenterScreen  # Center the window
-    $dialog.Foreground = $foregroundColor
-    $dialog.Background = $backgroundColor
-    $dialog.FontFamily = $font
+#     # Create a custom dialog window
+#     $dialog = New-Object Windows.Window
+#     $dialog.Title = "About"
+#     $dialog.Height = $Height
+#     $dialog.Width = $Width
+#     $dialog.Margin = New-Object Windows.Thickness(10)  # Add margin to the entire dialog box
+#     $dialog.WindowStyle = [Windows.WindowStyle]::None  # Remove title bar and window controls
+#     $dialog.ResizeMode = [Windows.ResizeMode]::NoResize  # Disable resizing
+#     $dialog.WindowStartupLocation = [Windows.WindowStartupLocation]::CenterScreen  # Center the window
+#     $dialog.Foreground = $foregroundColor
+#     $dialog.Background = $backgroundColor
+#     $dialog.FontFamily = $font
 
-    # Create a Border for the green edge with rounded corners
-    $border = New-Object Windows.Controls.Border
-    $border.BorderBrush = $borderColor
-    $border.BorderThickness = New-Object Windows.Thickness(1)  # Adjust border thickness as needed
-    $border.CornerRadius = New-Object Windows.CornerRadius(0)  # Adjust the radius for rounded corners
+#     # Create a Border for the green edge with rounded corners
+#     $border = New-Object Windows.Controls.Border
+#     $border.BorderBrush = $borderColor
+#     $border.BorderThickness = New-Object Windows.Thickness(1)  # Adjust border thickness as needed
+#     $border.CornerRadius = New-Object Windows.CornerRadius(0)  # Adjust the radius for rounded corners
 
-    # Create a drop shadow effect
-    $dropShadow = New-Object Windows.Media.Effects.DropShadowEffect
-    $dropShadow.Color = $shadowColor
-    $dropShadow.Direction = 270
-    $dropShadow.ShadowDepth = 5
-    $dropShadow.BlurRadius = 0
+#     # Create a drop shadow effect
+#     $dropShadow = New-Object Windows.Media.Effects.DropShadowEffect
+#     $dropShadow.Color = $shadowColor
+#     $dropShadow.Direction = 270
+#     $dropShadow.ShadowDepth = 5
+#     $dropShadow.BlurRadius = 0
 
-    # Apply drop shadow effect to the border
-    $dialog.Effect = $dropShadow
+#     # Apply drop shadow effect to the border
+#     $dialog.Effect = $dropShadow
 
-    $dialog.Content = $border
+#     $dialog.Content = $border
 
-    # Create a grid for layout inside the Border
-    $grid = New-Object Windows.Controls.Grid
-    $border.Child = $grid
+#     # Create a grid for layout inside the Border
+#     $grid = New-Object Windows.Controls.Grid
+#     $border.Child = $grid
 
-    # Add the following line to show gridlines
-    #$grid.ShowGridLines = $true
+#     # Add the following line to show gridlines
+#     #$grid.ShowGridLines = $true
 
-    # Add the following line to set the background color of the grid
-    $grid.Background = [Windows.Media.Brushes]::Transparent
-    # Add the following line to make the Grid stretch
-    $grid.HorizontalAlignment = [Windows.HorizontalAlignment]::Stretch
-    $grid.VerticalAlignment = [Windows.VerticalAlignment]::Stretch
+#     # Add the following line to set the background color of the grid
+#     $grid.Background = [Windows.Media.Brushes]::Transparent
+#     # Add the following line to make the Grid stretch
+#     $grid.HorizontalAlignment = [Windows.HorizontalAlignment]::Stretch
+#     $grid.VerticalAlignment = [Windows.VerticalAlignment]::Stretch
 
-    # Add the following line to make the Border stretch
-    $border.HorizontalAlignment = [Windows.HorizontalAlignment]::Stretch
-    $border.VerticalAlignment = [Windows.VerticalAlignment]::Stretch
+#     # Add the following line to make the Border stretch
+#     $border.HorizontalAlignment = [Windows.HorizontalAlignment]::Stretch
+#     $border.VerticalAlignment = [Windows.VerticalAlignment]::Stretch
 
 
-    # Set up Row Definitions
-    $row0 = New-Object Windows.Controls.RowDefinition
-    $row0.Height = [Windows.GridLength]::Auto
+#     # Set up Row Definitions
+#     $row0 = New-Object Windows.Controls.RowDefinition
+#     $row0.Height = [Windows.GridLength]::Auto
 
-    $row1 = New-Object Windows.Controls.RowDefinition
-    $row1.Height = [Windows.GridLength]::new(1, [Windows.GridUnitType]::Star)
+#     $row1 = New-Object Windows.Controls.RowDefinition
+#     $row1.Height = [Windows.GridLength]::new(1, [Windows.GridUnitType]::Star)
 
-    $row2 = New-Object Windows.Controls.RowDefinition
-    $row2.Height = [Windows.GridLength]::Auto
+#     $row2 = New-Object Windows.Controls.RowDefinition
+#     $row2.Height = [Windows.GridLength]::Auto
 
-    # Add Row Definitions to Grid
-    $grid.RowDefinitions.Add($row0)
-    $grid.RowDefinitions.Add($row1)
-    $grid.RowDefinitions.Add($row2)
+#     # Add Row Definitions to Grid
+#     $grid.RowDefinitions.Add($row0)
+#     $grid.RowDefinitions.Add($row1)
+#     $grid.RowDefinitions.Add($row2)
         
-    # Add StackPanel for horizontal layout with margins
-    $stackPanel = New-Object Windows.Controls.StackPanel
-    $stackPanel.Margin = New-Object Windows.Thickness(10)  # Add margins around the stack panel
-    $stackPanel.Orientation = [Windows.Controls.Orientation]::Horizontal
-    $stackPanel.HorizontalAlignment = [Windows.HorizontalAlignment]::Left  # Align to the left
-    $stackPanel.VerticalAlignment = [Windows.VerticalAlignment]::Top  # Align to the top
+#     # Add StackPanel for horizontal layout with margins
+#     $stackPanel = New-Object Windows.Controls.StackPanel
+#     $stackPanel.Margin = New-Object Windows.Thickness(10)  # Add margins around the stack panel
+#     $stackPanel.Orientation = [Windows.Controls.Orientation]::Horizontal
+#     $stackPanel.HorizontalAlignment = [Windows.HorizontalAlignment]::Left  # Align to the left
+#     $stackPanel.VerticalAlignment = [Windows.VerticalAlignment]::Top  # Align to the top
 
-    $grid.Children.Add($stackPanel)
-    [Windows.Controls.Grid]::SetRow($stackPanel, 0)  # Set the row to the second row (0-based index)
+#     $grid.Children.Add($stackPanel)
+#     [Windows.Controls.Grid]::SetRow($stackPanel, 0)  # Set the row to the second row (0-based index)
 
-    $viewbox = New-Object Windows.Controls.Viewbox
-    $viewbox.Width = 25
-    $viewbox.Height = 25
+#     $viewbox = New-Object Windows.Controls.Viewbox
+#     $viewbox.Width = 25
+#     $viewbox.Height = 25
     
 
-    # Add "Winutil" text
-    $IttTextBlock = New-Object Windows.Controls.TextBlock
-    $IttTextBlock.Text = "ITT"
-    $IttTextBlock.FontSize = 18  # Adjust font size as needed
-    $IttTextBlock.Foreground = $foregroundColor
-    $IttTextBlock.Margin = New-Object Windows.Thickness(10, 5, 10, 5)  # Add margins around the text block
-    $stackPanel.Children.Add($IttTextBlock)
+#     # Add "Winutil" text
+#     $IttTextBlock = New-Object Windows.Controls.TextBlock
+#     $IttTextBlock.Text = "ITT"
+#     $IttTextBlock.FontSize = 18  # Adjust font size as needed
+#     $IttTextBlock.Foreground = $foregroundColor
+#     $IttTextBlock.Margin = New-Object Windows.Thickness(10, 5, 10, 5)  # Add margins around the text block
+#     $stackPanel.Children.Add($IttTextBlock)
 
-    # Add TextBlock for information with text wrapping and margins
-    $messageTextBlock = New-Object Windows.Controls.TextBlock
-    $messageTextBlock.Text = $Message
-    $messageTextBlock.TextWrapping = [Windows.TextWrapping]::Wrap  # Enable text wrapping
-    $messageTextBlock.HorizontalAlignment = [Windows.HorizontalAlignment]::Left
-    $messageTextBlock.VerticalAlignment = [Windows.VerticalAlignment]::Top
-    $messageTextBlock.Margin = New-Object Windows.Thickness(10)  # Add margins around the text block
-    $grid.Children.Add($messageTextBlock)
-    [Windows.Controls.Grid]::SetRow($messageTextBlock, 1)  # Set the row to the second row (0-based index)
+#     # Add TextBlock for information with text wrapping and margins
+#     $messageTextBlock = New-Object Windows.Controls.TextBlock
+#     $messageTextBlock.Text = $Message
+#     $messageTextBlock.TextWrapping = [Windows.TextWrapping]::Wrap  # Enable text wrapping
+#     $messageTextBlock.HorizontalAlignment = [Windows.HorizontalAlignment]::Left
+#     $messageTextBlock.VerticalAlignment = [Windows.VerticalAlignment]::Top
+#     $messageTextBlock.Margin = New-Object Windows.Thickness(10)  # Add margins around the text block
+#     $grid.Children.Add($messageTextBlock)
+#     [Windows.Controls.Grid]::SetRow($messageTextBlock, 1)  # Set the row to the second row (0-based index)
 
-    # Add OK button
-    $okButton = New-Object Windows.Controls.Button
-    $okButton.Content = "OK"
-    $okButton.Width = 80
-    $okButton.Height = 30
-    $okButton.HorizontalAlignment = [Windows.HorizontalAlignment]::Center
-    $okButton.VerticalAlignment = [Windows.VerticalAlignment]::Bottom
-    $okButton.Margin = New-Object Windows.Thickness(0, 0, 0, 10)
-    $okButton.Background = $buttonBackgroundColor
-    $okButton.Foreground = $buttonForegroundColor
-    $okButton.BorderBrush = $borderColor
+#     # Add OK button
+#     $okButton = New-Object Windows.Controls.Button
+#     $okButton.Content = "OK"
+#     $okButton.Width = 80
+#     $okButton.Height = 30
+#     $okButton.HorizontalAlignment = [Windows.HorizontalAlignment]::Center
+#     $okButton.VerticalAlignment = [Windows.VerticalAlignment]::Bottom
+#     $okButton.Margin = New-Object Windows.Thickness(0, 0, 0, 10)
+#     $okButton.Background = $buttonBackgroundColor
+#     $okButton.Foreground = $buttonForegroundColor
+#     $okButton.BorderBrush = $borderColor
 
-    $okButton.Add_Click({
-        $dialog.Close()
-    })
-    $grid.Children.Add($okButton)
-    [Windows.Controls.Grid]::SetRow($okButton, 2)  # Set the row to the third row (0-based index)
+#     $okButton.Add_Click({
+#         $dialog.Close()
+#     })
+#     $grid.Children.Add($okButton)
+#     [Windows.Controls.Grid]::SetRow($okButton, 2)  # Set the row to the third row (0-based index)
 
-    # Handle Escape key press to close the dialog
-    $dialog.Add_KeyDown({
-        if ($_.Key -eq 'Escape') {
-            $dialog.Close()
-        }
-    })
+#     # Handle Escape key press to close the dialog
+#     $dialog.Add_KeyDown({
+#         if ($_.Key -eq 'Escape') {
+#             $dialog.Close()
+#         }
+#     })
 
-    # Set the OK button as the default button (activated on Enter)
-    $okButton.IsDefault = $true
+#     # Set the OK button as the default button (activated on Enter)
+#     $okButton.IsDefault = $true
 
-    # Show the custom dialog
-    $dialog.ShowDialog()
-}
+#     # Show the custom dialog
+#     $dialog.ShowDialog()
+# }
 
-#region Theme Functions
-$global:isDarkMode = $global:themePreference
+# #region Theme Functions
+# $global:isDarkMode = $global:themePreference
 
-# Function to toggle between dark and light modes
-function Toggle-Theme {
-
-
-    try {
-    if ($global:isDarkMode -eq "Dark") {
-        Switch-ToLightMode
-        $global:isDarkMode = -not $global:isDarkMode
-
-    } else {
-        Switch-ToDarkMode
-        $global:isDarkMode = -not $global:isDarkMode
-    }
-    } catch {
-        Write-Host "Error toggling theme: $_"
-    }
+# # Function to toggle between dark and light modes
+# function Toggle-Theme {
 
 
-}
+#     try {
+#     if ($global:isDarkMode -eq "Dark") {
+#         Switch-ToLightMode
+#         $global:isDarkMode = -not $global:isDarkMode
 
-# Function to switch to dark mode
-function Switch-ToDarkMode {
-    try {
-        $window.FindName('themeText').Header = "Light Mode"
-        $theme = $window.FindResource("DarkTheme")
-        Update-Theme $theme "Dark"
-    } catch {
-        Write-Host "Error switching to dark mode: $_"
-    }
-}
+#     } else {
+#         Switch-ToDarkMode
+#         $global:isDarkMode = -not $global:isDarkMode
+#     }
+#     } catch {
+#         Write-Host "Error toggling theme: $_"
+#     }
 
-# Function to switch to light mode
-function Switch-ToLightMode {
-    try {
-        $window.FindName('themeText').Header = "Dark Mode"
-        $theme = $window.FindResource("LightTheme")
-        Update-Theme $theme "Light"
-    } catch {
-        Write-Host "Error switching to light mode: $_"
-    }
-}
 
-# Function to update the theme
-function Update-Theme ($theme, $mode) {
-    $window.Resources.MergedDictionaries.Clear()
-    $window.Resources.MergedDictionaries.Add($theme)
-    Set-ItemProperty -Path "HKCU:\Software\ITTEmadadel" -Name "Theme" -Value $mode -Force
-}
+# }
 
-#endregion
-function ChangeTap() {
+# # Function to switch to dark mode
+# function Switch-ToDarkMode {
+#     try {
+#         $window.FindName('themeText').Header = "Light Mode"
+#         $theme = $window.FindResource("DarkTheme")
+#         Update-Theme $theme "Dark"
+#     } catch {
+#         Write-Host "Error switching to dark mode: $_"
+#     }
+# }
+
+# # Function to switch to light mode
+# function Switch-ToLightMode {
+#     try {
+#         $window.FindName('themeText').Header = "Dark Mode"
+#         $theme = $window.FindResource("LightTheme")
+#         Update-Theme $theme "Light"
+#     } catch {
+#         Write-Host "Error switching to light mode: $_"
+#     }
+# }
+
+# # Function to update the theme
+# function Update-Theme ($theme, $mode) {
+#     $window.Resources.MergedDictionaries.Clear()
+#     $window.Resources.MergedDictionaries.Add($theme)
+#     Set-ItemProperty -Path "HKCU:\Software\ITTEmadadel" -Name "Theme" -Value $mode -Force
+# }
+
+# #endregion
+# function ChangeTap() {
     
 
-    if($window.FindName('apps').IsSelected)
-    {
-        $window.FindName('installBtn').Visibility = "Visible"
-        $window.FindName('applyBtn').Visibility = "Hidden"
-    }
+#     if($window.FindName('apps').IsSelected)
+#     {
+#         $window.FindName('installBtn').Visibility = "Visible"
+#         $window.FindName('applyBtn').Visibility = "Hidden"
+#     }
 
-    if($window.FindName('tweeks').IsSelected)
-    {
-        $window.FindName('applyBtn').Visibility = "Visible"
-        $window.FindName('installBtn').Visibility = "Hidden"
-    }
-}
+#     if($window.FindName('tweeks').IsSelected)
+#     {
+#         $window.FindName('applyBtn').Visibility = "Visible"
+#         $window.FindName('installBtn').Visibility = "Hidden"
+#     }
+# }
 
 
 
-#===========================================================================
-# End functions
-#===========================================================================
+# #===========================================================================
+# # End functions
+# #===========================================================================
 $sync.configs.applications = '[
   {
     "Name": "Thorium",
@@ -2579,7 +2570,7 @@ $sync.runspace.Open()
 
 # Read the XAML file
 $reader = (New-Object System.Xml.XmlNodeReader $xaml)
-try { $sync["Form"] = [Windows.Markup.XamlReader]::Load( $reader ) }
+try { $sync["window"] = [Windows.Markup.XamlReader]::Load( $reader ) }
 catch [System.Management.Automation.MethodInvocationException] {
     Write-Warning "We ran into a problem with the XAML code.  Check the syntax for this control..."
     Write-Host $error[0].Exception.Message -ForegroundColor Red
@@ -2596,115 +2587,115 @@ catch {
 # End Load XMAL 
 #===========================================================================
 
-#===========================================================================
-# Loops 
-#===========================================================================
+# #===========================================================================
+# # Loops 
+# #===========================================================================
 
-# Assigning the list control to a variable
-$sync.list = $Window.FindName("list")
-$sync.des = $Window.FindName("description")
-$sync.q = $Window.FindName("quotes")
+# # Assigning the list control to a variable
+# $sync.list = $Window.FindName("list")
+# $sync.des = $Window.FindName("description")
+# $sync.q = $Window.FindName("quotes")
 
-# Making the itemLink control visible
-$Window.FindName('itemLink').Visibility = "Visible"
+# # Making the itemLink control visible
+# $Window.FindName('itemLink').Visibility = "Visible"
 
-# Define a function to update the description and link when an item is selected
-function UpdateDescriptionAndLink {
-    # Get the name of the selected application from the list
-    $selectedAppName = $sync.list.SelectedItem.Content
+# # Define a function to update the description and link when an item is selected
+# function UpdateDescriptionAndLink {
+#     # Get the name of the selected application from the list
+#     $selectedAppName = $sync.list.SelectedItem.Content
 
-    # Loop through the list of applications in the configs and find the matching one
-    foreach ($app in $sync.configs.applications) {
-        if ($app.name -eq $selectedAppName) {
-            # Update the description text block with the selected application's description
-            $Window.FindName("description").Text = $app.description
-            # Update the link text block with the selected application's official website link
-            $Window.FindName('itemLink').Text = "$($app.name) official website"
-            break
-        }
-    }
-}
+#     # Loop through the list of applications in the configs and find the matching one
+#     foreach ($app in $sync.configs.applications) {
+#         if ($app.name -eq $selectedAppName) {
+#             # Update the description text block with the selected application's description
+#             $Window.FindName("description").Text = $app.description
+#             # Update the link text block with the selected application's official website link
+#             $Window.FindName('itemLink').Text = "$($app.name) official website"
+#             break
+#         }
+#     }
+# }
 
-# Define a function to open the official website of the selected application
-function OpenOfficialWebsite {
-    # Get the name of the selected application from the list
-    $selectedAppName = $sync.list.SelectedItem.Content
+# # Define a function to open the official website of the selected application
+# function OpenOfficialWebsite {
+#     # Get the name of the selected application from the list
+#     $selectedAppName = $sync.list.SelectedItem.Content
 
-    # Loop through the list of applications in the configs and find the matching one
-    foreach ($app in $sync.configs.applications) {
-        if ($selectedAppName -eq $app.name) {
-            # Open the official website of the selected application in the default web browser
-            Start-Process ("https://duckduckgo.com/?hps=1&q=%5C" + $app.name)
-            break
-        }
-    }
-}
+#     # Loop through the list of applications in the configs and find the matching one
+#     foreach ($app in $sync.configs.applications) {
+#         if ($selectedAppName -eq $app.name) {
+#             # Open the official website of the selected application in the default web browser
+#             Start-Process ("https://duckduckgo.com/?hps=1&q=%5C" + $app.name)
+#             break
+#         }
+#     }
+# }
 
-# Add event handlers
-$Window.FindName("apps").add_Loaded({
-    # Add a selection changed event handler to the list control
-    $sync.list.Add_SelectionChanged({
-        UpdateDescriptionAndLink
-    })
+# # Add event handlers
+# $Window.FindName("apps").add_Loaded({
+#     # Add a selection changed event handler to the list control
+#     $sync.list.Add_SelectionChanged({
+#         UpdateDescriptionAndLink
+#     })
 
-    # Add a mouse left button down event handler to the itemLink control
-    $Window.FindName('itemLink').add_MouseLeftButtonDown({
-        OpenOfficialWebsite
-    })
-})
+#     # Add a mouse left button down event handler to the itemLink control
+#     $Window.FindName('itemLink').add_MouseLeftButtonDown({
+#         OpenOfficialWebsite
+#     })
+# })
 
 
-$Window.FindName("apps").add_LostFocus({
+# $Window.FindName("apps").add_LostFocus({
 
-  $sync.list.SelectedItem = $null
+#   $sync.list.SelectedItem = $null
 
-})
+# })
 
-#endregion
-#region Generate tweaks from json file
-$sync.tweaks = $Window.FindName("tweaks")
+# #endregion
+# #region Generate tweaks from json file
+# $sync.tweaks = $Window.FindName("tweaks")
 
-# Add loaded event handler
-$Window.FindName("tweeks").add_Loaded({
+# # Add loaded event handler
+# $Window.FindName("tweeks").add_Loaded({
    
-    # Add selection changed event handler
-    $sync.tweaks.Add_SelectionChanged({
-        $selectedItem = $sync.tweaks.SelectedItem.Content
-        foreach ($data in $sync.configs.tweaks) {
-            if ($data.name -eq $selectedItem) {
-                $Window.FindName('description').Text = $data.description
-                $Window.FindName('itemLink').Visibility = if ($data.repo -ne "null") { "Visible" } else { "Hidden" }
-                $Window.FindName('itemLink').Text = "Github repository"
-                break
-            }
-        }
-    })
+#     # Add selection changed event handler
+#     $sync.tweaks.Add_SelectionChanged({
+#         $selectedItem = $sync.tweaks.SelectedItem.Content
+#         foreach ($data in $sync.configs.tweaks) {
+#             if ($data.name -eq $selectedItem) {
+#                 $Window.FindName('description').Text = $data.description
+#                 $Window.FindName('itemLink').Visibility = if ($data.repo -ne "null") { "Visible" } else { "Hidden" }
+#                 $Window.FindName('itemLink').Text = "Github repository"
+#                 break
+#             }
+#         }
+#     })
 
-    # Add mouse left button down event handler for item link
-    $Window.FindName('itemLink').add_MouseLeftButtonDown({
+#     # Add mouse left button down event handler for item link
+#     $Window.FindName('itemLink').add_MouseLeftButtonDown({
 
-        $selectedItem = $sync.tweaks.SelectedItem.Content
+#         $selectedItem = $sync.tweaks.SelectedItem.Content
 
-        foreach ($data in $sync.configs.tweaks) {
-            if ($selectedItem -eq $data.name -and $data.repo -ne "null") {
-                Start-Process $data.repo
-                break
-            }
-        }
-    })
+#         foreach ($data in $sync.configs.tweaks) {
+#             if ($selectedItem -eq $data.name -and $data.repo -ne "null") {
+#                 Start-Process $data.repo
+#                 break
+#             }
+#         }
+#     })
 
-})
-
-
-$Window.FindName("tweeks").add_LostFocus({
-    $sync.tweaks.SelectedItem = $null
-})
+# })
 
 
-#endregion
-#===========================================================================
-# End Loops 
-#===========================================================================
+# $Window.FindName("tweeks").add_LostFocus({
+#     $sync.tweaks.SelectedItem = $null
+# })
+
+
+# #endregion
+# #===========================================================================
+# # End Loops 
+# #===========================================================================
 CheckChoco
 
 #===========================================================================
@@ -2712,36 +2703,36 @@ CheckChoco
 #===========================================================================
 
 # Buttons
-$window.FindName('taps').add_SelectionChanged({ChangeTap})
+# $window.FindName('taps').add_SelectionChanged({ChangeTap})
 
-$window.FindName('installBtn').add_click({Invoke-Install})
+# $window.FindName('installBtn').add_click({Invoke-Install})
 
-$window.FindName('applyBtn').add_click({ApplyTweaks})
+# $window.FindName('applyBtn').add_click({ApplyTweaks})
 
-$window.FindName('searchInput').add_TextChanged({Search})
+# $window.FindName('searchInput').add_TextChanged({Search})
 
-$window.FindName('searchInput').add_GotFocus({ClearFilter})
+# $window.FindName('searchInput').add_GotFocus({ClearFilter})
 
-$window.FindName('about').add_MouseLeftButtonDown({About})
+# $window.FindName('about').add_MouseLeftButtonDown({About})
 
-$window.FindName('themeText').add_click({Toggle-Theme})
+# $window.FindName('themeText').add_click({Toggle-Theme})
 
-# Catgoray bar buttons
-$window.FindName('all').add_click({ClearFilter})
-$window.FindName('b').add_click({ FilterByCat($window.FindName('b').Content)})
-$window.FindName('m').add_click({FilterByCat($window.FindName('m').Content)})
-$window.FindName('d').add_click({ FilterByCat($window.FindName('d').Content)})
-$window.FindName('g').add_click({ FilterByCat($window.FindName('g').Content)})
-$window.FindName('u').add_click({ FilterByCat($window.FindName('u').Content)})
-$window.FindName('c').add_click({ FilterByCat($window.FindName('c').Content)})
+# # Catgoray bar buttons
+# $window.FindName('all').add_click({ClearFilter})
+# $window.FindName('b').add_click({ FilterByCat($window.FindName('b').Content)})
+# $window.FindName('m').add_click({FilterByCat($window.FindName('m').Content)})
+# $window.FindName('d').add_click({ FilterByCat($window.FindName('d').Content)})
+# $window.FindName('g').add_click({ FilterByCat($window.FindName('g').Content)})
+# $window.FindName('u').add_click({ FilterByCat($window.FindName('u').Content)})
+# $window.FindName('c').add_click({ FilterByCat($window.FindName('c').Content)})
 
 
 
-$Window.Add_Closing({
+# $Window.Add_Closing({
 
-    Stop-Process  -ID $PID
-    Write-Host "Bye :)"
-})
+#     Stop-Process  -ID $PID
+#     Write-Host "Bye :)"
+# })
 
 #===========================================================================
 # End Events 
@@ -2750,25 +2741,29 @@ $Window.Add_Closing({
 
 
 
-
-
-
-GetQuotes *> $null
-PlayMusic *> $null
+# GetQuotes *> $null
+# PlayMusic *> $null
 
 
 
 
 
 
-if ($global:themePreference -eq "Dark") {
-    Switch-ToDarkMode
-} elseif ($global:themePreference -eq "Light") {
-    Switch-ToLightMode
-} else {
-    # Default to light mode if preference not found
-    Switch-ToLightMode
-}
+# if ($global:themePreference -eq "Dark") {
+#     Switch-ToDarkMode
+# } elseif ($global:themePreference -eq "Light") {
+#     Switch-ToLightMode
+# } else {
+#     # Default to light mode if preference not found
+#     Switch-ToLightMode
+# }
 
 
- $window.ShowDialog() | out-null
+$sync["window"].FindName('installBtn').add_click({
+
+    Invoke-Install
+
+})
+
+
+ $sync["window"].ShowDialog() | out-null
