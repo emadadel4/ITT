@@ -95,8 +95,8 @@ if (!(Test-Path $registryPath)) {
 function Search{
     
     # Retrieves the search input, converts it to lowercase, and filters the list based on the input
-    $filter = $window.FindName('searchInput').Text.ToLower()
-    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.list.Items)
+    $filter = $sync['window'].FindName('searchInput').Text.ToLower()
+    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync['window'].FindName('list').Items)
     $collectionView.Filter = {
         param($item)
         $item -like "*$filter*"
@@ -129,9 +129,8 @@ function FilterByCat {
 
 function ClearFilter {
 
-    $sync.list.Clear()
-
-    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.list.Items)
+    $sync['window'].FindName('list').Clear()
+    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync['window'].FindName('list').Items)
     $collectionView.Filter = $null
 }
 
@@ -2514,27 +2513,53 @@ CheckChoco
 # Buttons
 # $window.FindName('taps').add_SelectionChanged({ChangeTap})
 
-# $window.FindName('installBtn').add_click({Invoke-Install})
+CheckChoco
 
-# $window.FindName('applyBtn').add_click({ApplyTweaks})
+#===========================================================================
+# Events 
+#===========================================================================
 
-# $window.FindName('searchInput').add_TextChanged({Search})
 
-# $window.FindName('searchInput').add_GotFocus({ClearFilter})
+$sync['window'].Add_Closing({
 
-# $window.FindName('about').add_MouseLeftButtonDown({About})
+     Stop-Process  -ID $PID
+    Write-Host "Bye :)"
+ })
 
-# $window.FindName('themeText').add_click({Toggle-Theme})
+#===========================================================================
+# End Events 
+#===========================================================================
 
-# # Catgoray bar buttons
-# $window.FindName('all').add_click({ClearFilter})
-# $window.FindName('b').add_click({ FilterByCat($window.FindName('b').Content)})
-# $window.FindName('m').add_click({FilterByCat($window.FindName('m').Content)})
-# $window.FindName('d').add_click({ FilterByCat($window.FindName('d').Content)})
-# $window.FindName('g').add_click({ FilterByCat($window.FindName('g').Content)})
-# $window.FindName('u').add_click({ FilterByCat($window.FindName('u').Content)})
-# $window.FindName('c').add_click({ FilterByCat($window.FindName('c').Content)})
 
+
+# GetQuotes *> $null
+# PlayMusic *> $null
+
+
+
+# if ($global:themePreference -eq "Dark") {
+#     Switch-ToDarkMode
+# } elseif ($global:themePreference -eq "Light") {
+#     Switch-ToLightMode
+# } else {
+#     # Default to light mode if preference not found
+#     Switch-ToLightMode
+# }
+
+
+
+$sync["window"].FindName('applyBtn').add_click({ApplyTweaks})
+$sync["window"].FindName('searchInput').add_TextChanged({Search})
+$sync["window"].FindName('searchInput').add_GotFocus({ClearFilter})
+$sync["window"].FindName('all').add_click({ClearFilter})
+
+
+$sync["window"].FindName('installBtn').add_click({
+    Invoke-Install
+})
+
+
+ $sync["window"].ShowDialog() | out-null
 
 
 # $Window.Add_Closing({
