@@ -1955,7 +1955,9 @@ $sync.runspace.Open()
 
 # Read the XAML file
 $reader = (New-Object System.Xml.XmlNodeReader $xaml)
-try { $sync["window"] = [Windows.Markup.XamlReader]::Load( $reader ) }
+try { $sync["window"] = [Windows.Markup.XamlReader]::Load( $reader )  }
+
+
 catch [System.Management.Automation.MethodInvocationException] {
     Write-Warning "We ran into a problem with the XAML code.  Check the syntax for this control..."
     Write-Host $error[0].Exception.Message -ForegroundColor Red
@@ -2081,15 +2083,6 @@ catch {
 # #===========================================================================
 # # End Loops 
 # #===========================================================================
-CheckChoco
-
-#===========================================================================
-# Events 
-#===========================================================================
-
-# Buttons
-# $window.FindName('taps').add_SelectionChanged({ChangeTap})
-
 CheckChoco
 
 #===========================================================================
