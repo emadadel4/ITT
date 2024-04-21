@@ -32,6 +32,8 @@ $sync.github = "https://github.com/emadadel4"
 $sync.website = "https://eprojects.orgfree.com"
 $sync.author = "Emad Adel @emadadel4"
 $registryPath = "HKCU:\Software\ITTEmadadel"
+$propertyName = "Theme"
+$propertyValue = "Light"
 $sync.configs = @{}
 $sync.ProcessRunning = $false
 
@@ -62,13 +64,41 @@ if (!(Test-Path $registryPath)) {
 }else{
     $global:themePreference = Get-ItemPropertyValue -Path "HKCU:\Software\ITTEmadadel" -Name "Theme"
 }
+#===========================================================================
+# Start functions
+#===========================================================================
+function About{
+
+    $authorInfo = @"
+        Author   : $($sync.author)
+        GitHub   : $($sync.github)
+        Website  : $($sync.website)
+        Version  : $($sync.version)
+"@
+
+    Show-CustomDialog -Message $authorInfo -Width 400 
+}
+function Test-InternetConnection {
+    try {
+        $ping = New-Object System.Net.NetworkInformation.Ping
+        $response = $ping.Send("www.google.com")
+        if ($response.Status -eq "Success") {
+            return $true
+        } else {
+            return $false
+        }
+    } catch {
+        return $false
+    }
+}
+
 #region Function to filter a list based on a search input
 
 function Search{
     
     # Retrieves the search input, converts it to lowercase, and filters the list based on the input
-    $filter = $sync['window'].FindName('searchInput').Text.ToLower()
-    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync['window'].FindName('list').Items)
+    $filter = $window.FindName('searchInput').Text.ToLower()
+    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.list.Items)
     $collectionView.Filter = {
         param($item)
         $item -like "*$filter*"
@@ -101,8 +131,9 @@ function FilterByCat {
 
 function ClearFilter {
 
-    $sync['window'].FindName('list').Clear()
-    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync['window'].FindName('list').Items)
+    $sync.list.Clear()
+
+    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.list.Items)
     $collectionView.Filter = $null
 }
 
@@ -147,7 +178,7 @@ function Get-SelectedApps {
 
     $items = @()
 
-    foreach ($item in $sync['window'].FindName('list').Items)
+    foreach ($item in $sync.list.Items)
     {
         if ($item.IsChecked)
         {
@@ -168,7 +199,8 @@ function Get-SelectedApps {
 function Get-SelectedTweeaks {
 
     $items = @()
-    foreach ($item in $sync['window'].FindName('tweaks').Items)
+
+    foreach ($item in $sync.tweaks.Items)
     {
         if ($item.IsChecked)
         {
@@ -186,7 +218,15 @@ function Get-SelectedTweeaks {
     return $items 
 }
 
-function Invoke-Install {
+function Invoke-Install($des) {
+
+
+    # # Check internet connection
+    # if (Test-InternetConnection) {
+    # } else {
+    #     [System.Windows.MessageBox]::Show("Internet is not available.", "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
+    #     return
+    # }
 
     if($sync.ProcessRunning)
     {
@@ -212,22 +252,22 @@ function Invoke-Install {
                     $sync.ProcessRunning = $true
 
                    
-                    # $sync['window'].FindName('description').Dispatcher.Invoke([Action]{
-                    #     $sync['window'].FindName('description').Text = "Installing... $("-$choco-")"
-                    # })
+                    $sync.des.Dispatcher.Invoke([Action]{
+                        $sync.des.Text = "Installing... $("-$choco-")"
+                    })
 
                     Write-Host "Installing the following programs $choco "
-                    Start-Process -FilePath "choco" -ArgumentList "install $choco --force --ignore-checksums -y" -NoNewWindow -Wait
+                    Start-Process -FilePath "choco" -ArgumentList "install $choco -y --force --ignore-checksums" -NoNewWindow -Wait
                     Write-Host "Installs have finished"
                     [System.Windows.MessageBox]::Show("Installation Successfully Completed", "ITT @emadadel4", "OK", "Information")
 
                     # Uncheck all checkboxes in $list
-                    # $sync['window'].FindName('list').Dispatcher.Invoke([Action]{
-                    #     foreach ($item in $sync['window'].FindName('list').Items)
-                    #     {
-                    #         $item.IsChecked = $false
-                    #     }
-                    # })
+                    $sync.list.Dispatcher.Invoke([Action]{
+                        foreach ($item in $sync.list.Items)
+                        {
+                            $item.IsChecked = $false
+                        }
+                    })
                    
                 }
             }
@@ -236,9 +276,9 @@ function Invoke-Install {
                 Write-Host "Error: $_"
             }
 
-            # $sync['window'].FindName('description').Dispatcher.Invoke([Action]{
-            #     $sync['window'].FindName('description').Text = "Installed successfully, Check Start Menu"
-            # })
+            $sync.des.Dispatcher.Invoke([Action]{
+                $sync.des.Text = "Installed successfully, Check Start Menu"
+            })
 
             Start-Sleep -Seconds 1
             $sync.ProcessRunning = $False
@@ -276,22 +316,21 @@ function ApplyTweaks() {
                 {
                     $sync.ProcessRunning = $true
 
-                    # $sync.des.Dispatcher.Invoke([Action]{
-                    #     $sync.des.Text = "Applying..."
-                    # })
+                    $sync.des.Dispatcher.Invoke([Action]{
+                        $sync.des.Text = "Applying..."
+                    })
 
-                    Write-Host "Applying tweeak(s) $tweeaks "
+                    #Write-Host "Applying tweeak(s) $tweeaks "
                     Start-Process -FilePath "powershell.exe" -ArgumentList "-Command `"$tweeaks`"" -NoNewWindow -Wait
                     Write-Host "The operation was successful."    
                     [System.Windows.MessageBox]::Show("Successfully Completed", "ITT @emadadel4", "OK", "Information")
 
-
-                    #     $sync['window'].FindName('tweaks').Dispatcher.Invoke([Action]{
-                    #     foreach ($item in $sync['window'].FindName('tweaks').Items)
-                    #     {
-                    #         $item.IsChecked = $false
-                    #     }
-                    # })
+                    $sync.tweaks.Dispatcher.Invoke([Action]{
+                        foreach ($item in $sync.tweaks.Items)
+                        {
+                            $item.IsChecked = $false
+                        }
+                    })
                 }
             }
             Catch
@@ -299,9 +338,9 @@ function ApplyTweaks() {
                 Write-Host "Error: $_"
             }
 
-            # $sync.des.Dispatcher.Invoke([Action]{
-            #     $sync.des.Text = "Done..."
-            # })
+            $sync.des.Dispatcher.Invoke([Action]{
+                $sync.des.Text = "Done..."
+            })
 
             Start-Sleep -Seconds 1
             $sync.ProcessRunning = $False
@@ -339,19 +378,332 @@ function Invoke-RunspaceWithScriptBlock {
 }
 
 
+function PlayMusic {
+
+    Invoke-RunspaceWithScriptBlock -ScriptBlock {
+
+        $audioUrls = @(
+            "https://epsilon.vgmsite.com/soundtracks/far-cry-3/iqgdbfrhtw/17.%20Further%20%28feat.%20Serena%20McKinney%29.mp3",
+            "https://dl.vgmdownloads.com/soundtracks/hollow-knight-original-soundtrack/qqrmmaqyqg/26.%20Hollow%20Knight.mp3",
+            "https://dl.vgmdownloads.com/soundtracks/assassin-s-creed-unity-vol.-1/hxqrvcoyfj/01.%20Unity.mp3",
+            "https://dl.vgmdownloads.com/soundtracks/assassin-s-creed-3/jgevpclfcr/01.%20Assassin%27s%20Creed%20III%20Main%20Theme.mp3",
+            "https://dl.vgmdownloads.com/soundtracks/assassins-creed-mirage-original-game-soundtrack-2023/axtwruyduh/01.%20Mirage%20Theme.mp3",
+            "https://vgmsite.com/soundtracks/assassins-creed-ezios-family-m-me-remix-2022/qdxeshajdz/01.%20Ezio%27s%20Family%20%28M%C3%B8me%20Remix%29.mp3",
+            "https://epsilon.vgmsite.com/soundtracks/assassin-s-creed-iv-black-flag/zxpesokhkg/1-02%20Pyrates%20Beware.mp3",
+            "https://vgmsite.com/soundtracks/battlefield-3/tabqykkp/01.%20Battlefield%203%20Main%20Theme.mp3",
+            "https://archive.org/download/GrandTheftAuto4ThemeSong_201904/Grand%20Theft%20Auto%204%20Theme%20Song.mp3"
+        )
+    
+        $global:mediaPlayer = New-Object -ComObject WMPlayer.OCX
+        $global:playlistPaused = $false
+
+        Function PlayAudio($url) {
+            try {
+                $mediaItem = $global:mediaPlayer.newMedia($url)
+                $global:mediaPlayer.currentPlaylist.appendItem($mediaItem)
+                $global:mediaPlayer.controls.play()
+            }
+            catch {
+            }
+        }
+        
+    
+        # Function to shuffle the playlist
+        Function ShuffleArray {
+            param([array]$array)
+            $count = $array.Length
+            for ($i = 0; $i -lt $count; $i++) {
+                $randomIndex = Get-Random -Minimum $i -Maximum $count
+                $temp = $array[$i]
+                $array[$i] = $array[$randomIndex]
+                $array[$randomIndex] = $temp
+            }
+        }
+    
+        # Shuffle the playlist
+        ShuffleArray -array $audioUrls
+    
+        # Function to play the entire shuffled playlist
+        Function PlayShuffledPlaylist {
+            foreach ($url in $audioUrls) {
+                PlayAudio $url
+                # Wait for the track to finish playing
+                while ($global:mediaPlayer.playState -eq 3 -or $global:mediaPlayer.playState -eq 6) {
+                    Start-Sleep -Milliseconds 100
+                }
+            }
+        }
+    
+        # Play the shuffled playlist indefinitely
+        while ($true) 
+        {
+            PlayShuffledPlaylist
+        }
+    }
+}
+
+function GetQuotes {
+
+    Invoke-RunspaceWithScriptBlock -ScriptBlock {
+
+
+        # Define the path to your JSON file
+        $jsonFilePath = $sync.configs.Quotes
+
+        # Function to shuffle an array
+        function Shuffle-Array {
+            param (
+                [array]$Array
+            )
+            $count = $Array.Count
+            for ($i = $count - 1; $i -ge 0; $i--) {
+                $randomIndex = Get-Random -Minimum 0 -Maximum $count
+                $temp = $Array[$i]
+                $Array[$i] = $Array[$randomIndex]
+                $Array[$randomIndex] = $temp
+            }
+            return $Array
+        }
+
+        # Function to get names from the JSON file
+        function Get-NamesFromJson {
+            $jsonContent =  $jsonFilePath 
+            return $jsonContent.Q
+        }
+
+        # Get shuffled names
+        $shuffledNames = Shuffle-Array -Array (Get-NamesFromJson)
+
+        # Loop forever and print shuffled names
+        while ($true) {
+            foreach ($name in $shuffledNames) {
+
+                $sync.q.Dispatcher.Invoke([Action]{
+                    $sync.q.Text = "`".$name`""
+                })
+
+                # Adjust the sleep time as needed
+                Start-Sleep -Seconds 15  
+            }
+        }
+    }
+}
+
+# Show Custom Msg
+function Show-CustomDialog {
+    
+    param(
+        [string]$Message,
+        [int]$Width = 300,
+        [int]$Height = 200
+    )
+
+    Add-Type -AssemblyName PresentationFramework
+
+    # Define theme colors
+    $foregroundColor = [Windows.Media.Brushes]::Black
+    $backgroundColor = [Windows.Media.Brushes]::White
+    $font = New-Object Windows.Media.FontFamily("Consolas")
+    $borderColor = [Windows.Media.Brushes]::Black
+    $buttonBackgroundColor = [Windows.Media.Brushes]::Black
+    $buttonForegroundColor = [Windows.Media.Brushes]::White
+    $shadowColor = [Windows.Media.ColorConverter]::ConvertFromString("#AAAAAAAA")
+
+    # Create a custom dialog window
+    $dialog = New-Object Windows.Window
+    $dialog.Title = "About"
+    $dialog.Height = $Height
+    $dialog.Width = $Width
+    $dialog.Margin = New-Object Windows.Thickness(10)  # Add margin to the entire dialog box
+    $dialog.WindowStyle = [Windows.WindowStyle]::None  # Remove title bar and window controls
+    $dialog.ResizeMode = [Windows.ResizeMode]::NoResize  # Disable resizing
+    $dialog.WindowStartupLocation = [Windows.WindowStartupLocation]::CenterScreen  # Center the window
+    $dialog.Foreground = $foregroundColor
+    $dialog.Background = $backgroundColor
+    $dialog.FontFamily = $font
+
+    # Create a Border for the green edge with rounded corners
+    $border = New-Object Windows.Controls.Border
+    $border.BorderBrush = $borderColor
+    $border.BorderThickness = New-Object Windows.Thickness(1)  # Adjust border thickness as needed
+    $border.CornerRadius = New-Object Windows.CornerRadius(0)  # Adjust the radius for rounded corners
+
+    # Create a drop shadow effect
+    $dropShadow = New-Object Windows.Media.Effects.DropShadowEffect
+    $dropShadow.Color = $shadowColor
+    $dropShadow.Direction = 270
+    $dropShadow.ShadowDepth = 5
+    $dropShadow.BlurRadius = 0
+
+    # Apply drop shadow effect to the border
+    $dialog.Effect = $dropShadow
+
+    $dialog.Content = $border
+
+    # Create a grid for layout inside the Border
+    $grid = New-Object Windows.Controls.Grid
+    $border.Child = $grid
+
+    # Add the following line to show gridlines
+    #$grid.ShowGridLines = $true
+
+    # Add the following line to set the background color of the grid
+    $grid.Background = [Windows.Media.Brushes]::Transparent
+    # Add the following line to make the Grid stretch
+    $grid.HorizontalAlignment = [Windows.HorizontalAlignment]::Stretch
+    $grid.VerticalAlignment = [Windows.VerticalAlignment]::Stretch
+
+    # Add the following line to make the Border stretch
+    $border.HorizontalAlignment = [Windows.HorizontalAlignment]::Stretch
+    $border.VerticalAlignment = [Windows.VerticalAlignment]::Stretch
+
+
+    # Set up Row Definitions
+    $row0 = New-Object Windows.Controls.RowDefinition
+    $row0.Height = [Windows.GridLength]::Auto
+
+    $row1 = New-Object Windows.Controls.RowDefinition
+    $row1.Height = [Windows.GridLength]::new(1, [Windows.GridUnitType]::Star)
+
+    $row2 = New-Object Windows.Controls.RowDefinition
+    $row2.Height = [Windows.GridLength]::Auto
+
+    # Add Row Definitions to Grid
+    $grid.RowDefinitions.Add($row0)
+    $grid.RowDefinitions.Add($row1)
+    $grid.RowDefinitions.Add($row2)
+        
+    # Add StackPanel for horizontal layout with margins
+    $stackPanel = New-Object Windows.Controls.StackPanel
+    $stackPanel.Margin = New-Object Windows.Thickness(10)  # Add margins around the stack panel
+    $stackPanel.Orientation = [Windows.Controls.Orientation]::Horizontal
+    $stackPanel.HorizontalAlignment = [Windows.HorizontalAlignment]::Left  # Align to the left
+    $stackPanel.VerticalAlignment = [Windows.VerticalAlignment]::Top  # Align to the top
+
+    $grid.Children.Add($stackPanel)
+    [Windows.Controls.Grid]::SetRow($stackPanel, 0)  # Set the row to the second row (0-based index)
+
+    $viewbox = New-Object Windows.Controls.Viewbox
+    $viewbox.Width = 25
+    $viewbox.Height = 25
+    
+
+    # Add "Winutil" text
+    $IttTextBlock = New-Object Windows.Controls.TextBlock
+    $IttTextBlock.Text = "ITT"
+    $IttTextBlock.FontSize = 18  # Adjust font size as needed
+    $IttTextBlock.Foreground = $foregroundColor
+    $IttTextBlock.Margin = New-Object Windows.Thickness(10, 5, 10, 5)  # Add margins around the text block
+    $stackPanel.Children.Add($IttTextBlock)
+
+    # Add TextBlock for information with text wrapping and margins
+    $messageTextBlock = New-Object Windows.Controls.TextBlock
+    $messageTextBlock.Text = $Message
+    $messageTextBlock.TextWrapping = [Windows.TextWrapping]::Wrap  # Enable text wrapping
+    $messageTextBlock.HorizontalAlignment = [Windows.HorizontalAlignment]::Left
+    $messageTextBlock.VerticalAlignment = [Windows.VerticalAlignment]::Top
+    $messageTextBlock.Margin = New-Object Windows.Thickness(10)  # Add margins around the text block
+    $grid.Children.Add($messageTextBlock)
+    [Windows.Controls.Grid]::SetRow($messageTextBlock, 1)  # Set the row to the second row (0-based index)
+
+    # Add OK button
+    $okButton = New-Object Windows.Controls.Button
+    $okButton.Content = "OK"
+    $okButton.Width = 80
+    $okButton.Height = 30
+    $okButton.HorizontalAlignment = [Windows.HorizontalAlignment]::Center
+    $okButton.VerticalAlignment = [Windows.VerticalAlignment]::Bottom
+    $okButton.Margin = New-Object Windows.Thickness(0, 0, 0, 10)
+    $okButton.Background = $buttonBackgroundColor
+    $okButton.Foreground = $buttonForegroundColor
+    $okButton.BorderBrush = $borderColor
+
+    $okButton.Add_Click({
+        $dialog.Close()
+    })
+    $grid.Children.Add($okButton)
+    [Windows.Controls.Grid]::SetRow($okButton, 2)  # Set the row to the third row (0-based index)
+
+    # Handle Escape key press to close the dialog
+    $dialog.Add_KeyDown({
+        if ($_.Key -eq 'Escape') {
+            $dialog.Close()
+        }
+    })
+
+    # Set the OK button as the default button (activated on Enter)
+    $okButton.IsDefault = $true
+
+    # Show the custom dialog
+    $dialog.ShowDialog()
+}
+
+#region Theme Functions
+$global:isDarkMode = $global:themePreference
+
+# Function to toggle between dark and light modes
+function Toggle-Theme {
+
+
+    try {
+    if ($global:isDarkMode -eq "Dark") {
+        Switch-ToLightMode
+        $global:isDarkMode = -not $global:isDarkMode
+
+    } else {
+        Switch-ToDarkMode
+        $global:isDarkMode = -not $global:isDarkMode
+    }
+    } catch {
+        Write-Host "Error toggling theme: $_"
+    }
+
+
+}
+
+# Function to switch to dark mode
+function Switch-ToDarkMode {
+    try {
+        $window.FindName('themeText').Header = "Light Mode"
+        $theme = $window.FindResource("DarkTheme")
+        Update-Theme $theme "Dark"
+    } catch {
+        Write-Host "Error switching to dark mode: $_"
+    }
+}
+
+# Function to switch to light mode
+function Switch-ToLightMode {
+    try {
+        $window.FindName('themeText').Header = "Dark Mode"
+        $theme = $window.FindResource("LightTheme")
+        Update-Theme $theme "Light"
+    } catch {
+        Write-Host "Error switching to light mode: $_"
+    }
+}
+
+# Function to update the theme
+function Update-Theme ($theme, $mode) {
+    $window.Resources.MergedDictionaries.Clear()
+    $window.Resources.MergedDictionaries.Add($theme)
+    Set-ItemProperty -Path "HKCU:\Software\ITTEmadadel" -Name "Theme" -Value $mode -Force
+}
+
+#endregion
 function ChangeTap() {
     
 
-    if($sync['window'].FindName('apps').IsSelected)
+    if($window.FindName('apps').IsSelected)
     {
-        $sync['window'].FindName('installBtn').Visibility = "Visible"
-        $sync['window'].FindName('applyBtn').Visibility = "Hidden"
+        $window.FindName('installBtn').Visibility = "Visible"
+        $window.FindName('applyBtn').Visibility = "Hidden"
     }
 
-    if($sync['window'].FindName('tweeks').IsSelected)
+    if($window.FindName('tweeks').IsSelected)
     {
-        $sync['window'].FindName('applyBtn').Visibility = "Visible"
-        $sync['window'].FindName('installBtn').Visibility = "Hidden"
+        $window.FindName('applyBtn').Visibility = "Visible"
+        $window.FindName('installBtn').Visibility = "Hidden"
     }
 }
 
@@ -1547,6 +1899,26 @@ $sync.configs.applications = '[
   }
 ]
 ' | ConvertFrom-Json
+$sync.configs.Quotes = '{
+  "Q": [
+    "?????? ???????? ?????????? ???? ???????? ???????????? ?????? ?????? ???????? ?????????? ?????? ????????????",
+    "?????? ???????????? ???????????? ?????? ???????????? ???????????? ??????????",
+    "?????????? ???? ???????? ???????? ?????????? ???????????? ???? ???????? ?????????? ?????????? ?????????? ??????????",
+    "?????????? ?????? ???????????? ?????????? ?????? ???????????? ???? ?????? ??????????",
+    "???????? ???????????? ???????????? ?????????? ?????????? ??????????????",
+    "?????? ?????????? ???????? ???? ???? ??????????",
+    "?????????????? ???? ???????? ???? ?????????? ????????. ?????? ?????????? ????????",
+    "???????????? ?????????????? ???? ???????????? ???? ??????????",
+    "?????????? ???????? ?????? ?????? ???????????? ???? ?????? ?????????? ???????????? ??????????",
+    "???????????? ???? ???????? ?????????? ??????????????",
+    "???????????? ?????????????? ???? ???????? ???? ???????????? ???????????????? ???? ???? ?????????? ????????????",
+    "?????? ???? ???? ???????? ?????? ???????????? ???????? ???? ???? ???????? ??????????",
+    "???????? ?????? ???????????? ???? ???????? ???????????? ?????????? ???? ?????? ?????? ????????",
+    "???????? ?????????? ?????????? ?????????? ???? ???????? ?????? ?????? ?????????? ?????? ?????????? ???? ???????? ????????????",
+    "?????? ?????????? ???? ???????????? ???? ?????????? ???????? ?????????? ???????????? , ?????? ?????? ???????? ??????"
+  ]
+}
+' | ConvertFrom-Json
 $sync.configs.tweaks = '[
   {
     "name": "System File Checker",
@@ -1683,38 +2055,227 @@ $inputXML =  '
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         x:Name="Window" Title="ITT @emadadel4" WindowStartupLocation = "CenterScreen" 
-        Background="White"
+        Background="{DynamicResource BGColor}"
         Height="600" Width="955" MinWidth="677" MinHeight="400" ShowInTaskbar = "True" Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/icon.ico">
     
         <Window.Resources>
 
-            <Style TargetType="Button">
-                <Setter Property="Background" Value="{DynamicResource BGButtonColor}"/>
-                <Setter Property="Foreground" Value="{DynamicResource FGButtonColor}"/>
-            </Style>
+                <!--Button Style-->
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="{DynamicResource FGColor}"/>
+            <Setter Property="Foreground" Value="{DynamicResource DefaultTextColor}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="20" Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                                VerticalAlignment="Center"/>
+                            
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{DynamicResource BGButtonColor}"/>
+                    <Setter Property="Foreground" Value="{DynamicResource FGButtonColor}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    <!--End Button Style-->
 
 
-            <ResourceDictionary x:Key="LightTheme">
-                    <SolidColorBrush x:Key="BGColor" Color="White"/>
-                    <SolidColorBrush x:Key="FGColor" Color="WhiteSmoke"/>
-                    <SolidColorBrush x:Key="BGButtonColor" Color="#382bf0  " />
-                    <SolidColorBrush x:Key="FGButtonColor" Color="White" />
-                    <SolidColorBrush x:Key="FGTextColor" Color="Black" />
-                    <SolidColorBrush x:Key="DefaultTextColor" Color="Black"/>
-                    <SolidColorBrush x:Key="BorderBrush" Color="#212121"/>
-            </ResourceDictionary>
+    <!--Textbox Style-->
+        <Style TargetType="TextBox">
+            <Setter Property="Foreground" Value="{DynamicResource FGTextColor}"/>
+            <Setter Property="Background" Value="{DynamicResource FGColor}"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="15"> <!-- Set CornerRadius here -->
+                            <ScrollViewer x:Name="PART_ContentHost" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                    <Trigger Property="IsFocused" Value="True">
+                        <Setter Property="BorderThickness" Value="1"/>
+                        <Setter Property="BorderBrush" Value="{DynamicResource BGButtonColor}"/>
+                    </Trigger>
+                </Style.Triggers>
+        </Style>
+    <!--End Textbox Style-->
 
-            <!-- Dark mode styles -->
-            <ResourceDictionary x:Key="DarkTheme">
-                    <SolidColorBrush x:Key="BGColor" Color="#121212 "/>
-                    <SolidColorBrush x:Key="FGColor" Color="#282828"/>
-                    <SolidColorBrush x:Key="BGButtonColor" Color="#1DB954" />
-                    <SolidColorBrush x:Key="FGButtonColor" Color="White" />
-                    <SolidColorBrush x:Key="FGTextColor" Color="WhiteSmoke" />
-                    <SolidColorBrush x:Key="DefaultTextColor" Color="White"/>
-                    <SolidColorBrush x:Key="BorderBrush" Color="WhiteSmoke" />
-            </ResourceDictionary>
-                
+    <!--TextBlock Style-->
+        <Style TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{DynamicResource FGTextColor}"/>
+        </Style>
+    <!--End TextBlock Style-->
+
+    <!--CheckBox Style-->
+        <Style TargetType="CheckBox">
+            <Setter Property="Foreground" Value="{DynamicResource FGTextColor}"/>
+            <Setter Property="Margin" Value="8"/>
+
+        </Style>
+    <!--End CheckBox Style-->
+
+    <!--Menu Style-->
+        <Style TargetType="Menu">
+            <Setter Property="Background" Value="{DynamicResource BGColor}"/>
+        </Style>
+    <!--End Menu Style-->
+
+
+    <!--MenuItem Style-->
+        <Style TargetType="MenuItem">
+            <Setter Property="Background" Value="{DynamicResource BGColor}"/>
+            <Setter Property="Foreground" Value="{DynamicResource DefaultTextColor}"/>
+            <Setter Property="OverridesDefaultStyle" Value="True"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="MenuItem">
+                        <Border Background="{DynamicResource BGColor}"
+                                BorderThickness="0"> <!-- Set BorderThickness to 0 -->
+                            <Grid>
+                                <ContentPresenter Content="{TemplateBinding Header}"
+                                                Margin="6"/>
+                                <Popup IsOpen="{Binding IsSubmenuOpen, RelativeSource={RelativeSource TemplatedParent}}"
+                                    AllowsTransparency="True"
+                                    Focusable="False"
+                                    PopupAnimation="Fade">
+                                    <Border Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"
+                                            BorderThickness="0"> <!-- Set BorderThickness to 0 -->
+                                        <ScrollViewer CanContentScroll="True"
+                                                    Style="{DynamicResource {ComponentResourceKey ResourceId=MenuScrollViewer, TypeInTargetAssembly={x:Type FrameworkElement}}}">
+                                            <ItemsPresenter Margin="0"/>
+                                        </ScrollViewer>
+                                    </Border>
+                                </Popup>
+                            </Grid>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    <!--End MenuItem Style-->
+
+    <!--ListViewItem Style-->
+        <Style TargetType="ListViewItem">
+        <Setter Property="Background" Value="{DynamicResource FGColor}"/>
+    </Style>
+    <!--End ListViewItem Style-->
+
+    <!--Scrollbar Thumbs-->
+        <Style x:Key="ScrollThumbs" TargetType="{x:Type Thumb}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Thumb}">
+                        <Grid x:Name="Grid">
+                            <Rectangle HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="Auto" Height="Auto" Fill="Transparent" />
+                            <Border x:Name="Rectangle1" CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="Auto" Height="Auto" Background="{TemplateBinding Background}" />
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="Tag" Value="Horizontal">
+                                <Setter TargetName="Rectangle1" Property="Width" Value="Auto" />
+                                <Setter TargetName="Rectangle1" Property="Height" Value="7" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="{x:Type ScrollBar}" TargetType="{x:Type ScrollBar}">
+            <Setter Property="Stylus.IsFlicksEnabled" Value="false" />
+            <Setter Property="Foreground" Value="{DynamicResource FGColor}" />
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Width" Value="8" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ScrollBar}">
+                        <Grid x:Name="GridRoot" Width="8" Background="{TemplateBinding Background}">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="0.00001*" />
+                            </Grid.RowDefinitions>
+                            <Track x:Name="PART_Track" Grid.Row="0" IsDirectionReversed="true" Focusable="false">
+                                <Track.Thumb>
+                                    <Thumb x:Name="Thumb" Background="{TemplateBinding Foreground}" Style="{DynamicResource ScrollThumbs}" />
+                                </Track.Thumb>
+                                <Track.IncreaseRepeatButton>
+                                    <RepeatButton x:Name="PageUp" Command="ScrollBar.PageDownCommand" Opacity="0" Focusable="false" />
+                                </Track.IncreaseRepeatButton>
+                                <Track.DecreaseRepeatButton>
+                                    <RepeatButton x:Name="PageDown" Command="ScrollBar.PageUpCommand" Opacity="0" Focusable="false" />
+                                </Track.DecreaseRepeatButton>
+                            </Track>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger SourceName="Thumb" Property="IsMouseOver" Value="true">
+                                <Setter Value="{DynamicResource ButtonSelectBrush}" TargetName="Thumb" Property="Background" />
+                            </Trigger>
+                            <Trigger SourceName="Thumb" Property="IsDragging" Value="true">
+                                <Setter Value="{DynamicResource DarkBrush}" TargetName="Thumb" Property="Background" />
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter TargetName="Thumb" Property="Visibility" Value="Collapsed" />
+                            </Trigger>
+                            <Trigger Property="Orientation" Value="Horizontal">
+                                <Setter TargetName="GridRoot" Property="LayoutTransform">
+                                    <Setter.Value>
+                                        <RotateTransform Angle="-90" />
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter TargetName="PART_Track" Property="LayoutTransform">
+                                    <Setter.Value>
+                                        <RotateTransform Angle="-90" />
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter Property="Width" Value="Auto" />
+                                <Setter Property="Height" Value="8" />
+                                <Setter TargetName="Thumb" Property="Tag" Value="Horizontal" />
+                                <Setter TargetName="PageDown" Property="Command" Value="ScrollBar.PageLeftCommand" />
+                                <Setter TargetName="PageUp" Property="Command" Value="ScrollBar.PageRightCommand" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    <!--End Scrollbar Thumbs-->
+            
+            <!--Light Theme-->
+
+
+        <!-- Light mode styles -->
+        <ResourceDictionary x:Key="LightTheme">
+                <SolidColorBrush x:Key="BGColor" Color="White"/>
+                <SolidColorBrush x:Key="FGColor" Color="WhiteSmoke"/>
+                <SolidColorBrush x:Key="BGButtonColor" Color="#382bf0  " />
+                <SolidColorBrush x:Key="FGButtonColor" Color="White" />
+                <SolidColorBrush x:Key="FGTextColor" Color="Black" />
+                <SolidColorBrush x:Key="DefaultTextColor" Color="Black"/>
+                <SolidColorBrush x:Key="BorderBrush" Color="#212121"/>
+        </ResourceDictionary>
+
+        <!-- Dark mode styles -->
+        <ResourceDictionary x:Key="DarkTheme">
+                <SolidColorBrush x:Key="BGColor" Color="#121212 "/>
+                <SolidColorBrush x:Key="FGColor" Color="#282828"/>
+                <SolidColorBrush x:Key="BGButtonColor" Color="#1DB954" />
+                <SolidColorBrush x:Key="FGButtonColor" Color="White" />
+                <SolidColorBrush x:Key="FGTextColor" Color="WhiteSmoke" />
+                <SolidColorBrush x:Key="DefaultTextColor" Color="White"/>
+                <SolidColorBrush x:Key="BorderBrush" Color="WhiteSmoke" />
+        </ResourceDictionary>
+
+       
+        
 
         </Window.Resources>
 
@@ -1766,6 +2327,69 @@ $inputXML =  '
                         
                         />
                        
+                        <Button Name="m" 
+                        Cursor="Hand"  
+                        Content="Media" 
+                        Height="20" 
+                        Width="60" 
+                        Margin="4"  
+                        Background="{DynamicResource BGColor}" 
+                        Foreground="{DynamicResource DefaultTextColor}"
+                        
+                        />
+
+                        <Button Name="b" 
+                        Cursor="Hand"  
+                        Content="Browsers" 
+                        Height="20" Width="60" 
+                        Margin="4"  
+                        Background="{DynamicResource BGColor}" 
+                        Foreground="{DynamicResource DefaultTextColor}"
+                        
+                        />
+
+                        <Button Name="g" 
+                        Cursor="Hand"  
+                        Content="Gaming" 
+                        Height="20" 
+                        Width="60" 
+                        Margin="4"  
+                        Background="{DynamicResource BGColor}" 
+                        Foreground="{DynamicResource DefaultTextColor}"
+                        
+                        />
+
+                        <Button Name="d" 
+                        Cursor="Hand"  
+                        Content="Developer" 
+                        Height="20" 
+                        Width="70" 
+                        Margin="4"  
+                        Background="{DynamicResource BGColor}" 
+                        Foreground="{DynamicResource DefaultTextColor}"
+
+                        />
+
+                        <Button Name="u" 
+                        Cursor="Hand"  
+                        Content="Utilities" 
+                        Height="20" 
+                        Width="60" 
+                        Margin="4"  
+                        Background="{DynamicResource BGColor}" 
+                        Foreground="{DynamicResource DefaultTextColor}"
+                        
+                        />
+                        <Button Name="c" 
+                        Cursor="Hand" 
+                        Content="Communication" 
+                        Height="20" 
+                        Width="100" 
+                        Margin="4"  
+                        Background="{DynamicResource BGColor}" 
+                        Foreground="{DynamicResource DefaultTextColor}"
+                        
+                        />
 
                         </StackPanel>
                     </StackPanel>
@@ -1950,193 +2574,161 @@ $sync.runspace = [runspacefactory]::CreateRunspacePool(
 # Open the RunspacePool instance
 $sync.runspace.Open()
 
-[void][System.Reflection.Assembly]::LoadWithPartialName('presentationframework')
 [xml]$XAML = $inputXML
-
-# Read the XAML file
 $reader = (New-Object System.Xml.XmlNodeReader $xaml)
-try { $sync["window"] = [Windows.Markup.XamlReader]::Load( $reader )  }
-
-
-catch [System.Management.Automation.MethodInvocationException] {
-    Write-Warning "We ran into a problem with the XAML code.  Check the syntax for this control..."
-    Write-Host $error[0].Exception.Message -ForegroundColor Red
-    If ($error[0].Exception.Message -like "*button*") {
-        write-warning "Ensure your &lt;button in the `$inputXML does NOT have a Click=ButtonClick property.  PS can't handle this`n`n`n`n"
-    }
-}
-catch {
-    Write-Host "Unable to load Windows.Markup.XamlReader. Double-check syntax and ensure .net is installed."
-}
+$window = [Windows.Markup.XamlReader]::Load($reader)
 
 #endregion
 #===========================================================================
 # End Load XMAL 
 #===========================================================================
 
-# #===========================================================================
-# # Loops 
-# #===========================================================================
+#===========================================================================
+# Loops 
+#===========================================================================
 
-# # Assigning the list control to a variable
-# $sync.list = $Window.FindName("list")
-# $sync.des = $Window.FindName("description")
-# $sync.q = $Window.FindName("quotes")
+# Assigning the list control to a variable
+$sync.list = $Window.FindName("list")
+$sync.des = $Window.FindName("description")
+$sync.q = $Window.FindName("quotes")
 
-# # Making the itemLink control visible
-# $Window.FindName('itemLink').Visibility = "Visible"
+# Making the itemLink control visible
+$Window.FindName('itemLink').Visibility = "Visible"
 
-# # Define a function to update the description and link when an item is selected
-# function UpdateDescriptionAndLink {
-#     # Get the name of the selected application from the list
-#     $selectedAppName = $sync.list.SelectedItem.Content
+# Define a function to update the description and link when an item is selected
+function UpdateDescriptionAndLink {
+    # Get the name of the selected application from the list
+    $selectedAppName = $sync.list.SelectedItem.Content
 
-#     # Loop through the list of applications in the configs and find the matching one
-#     foreach ($app in $sync.configs.applications) {
-#         if ($app.name -eq $selectedAppName) {
-#             # Update the description text block with the selected application's description
-#             $Window.FindName("description").Text = $app.description
-#             # Update the link text block with the selected application's official website link
-#             $Window.FindName('itemLink').Text = "$($app.name) official website"
-#             break
-#         }
-#     }
-# }
+    # Loop through the list of applications in the configs and find the matching one
+    foreach ($app in $sync.configs.applications) {
+        if ($app.name -eq $selectedAppName) {
+            # Update the description text block with the selected application's description
+            $Window.FindName("description").Text = $app.description
+            # Update the link text block with the selected application's official website link
+            $Window.FindName('itemLink').Text = "$($app.name) official website"
+            break
+        }
+    }
+}
 
-# # Define a function to open the official website of the selected application
-# function OpenOfficialWebsite {
-#     # Get the name of the selected application from the list
-#     $selectedAppName = $sync.list.SelectedItem.Content
+# Define a function to open the official website of the selected application
+function OpenOfficialWebsite {
+    # Get the name of the selected application from the list
+    $selectedAppName = $sync.list.SelectedItem.Content
 
-#     # Loop through the list of applications in the configs and find the matching one
-#     foreach ($app in $sync.configs.applications) {
-#         if ($selectedAppName -eq $app.name) {
-#             # Open the official website of the selected application in the default web browser
-#             Start-Process ("https://duckduckgo.com/?hps=1&q=%5C" + $app.name)
-#             break
-#         }
-#     }
-# }
+    # Loop through the list of applications in the configs and find the matching one
+    foreach ($app in $sync.configs.applications) {
+        if ($selectedAppName -eq $app.name) {
+            # Open the official website of the selected application in the default web browser
+            Start-Process ("https://duckduckgo.com/?hps=1&q=%5C" + $app.name)
+            break
+        }
+    }
+}
 
-# # Add event handlers
-# $Window.FindName("apps").add_Loaded({
-#     # Add a selection changed event handler to the list control
-#     $sync.list.Add_SelectionChanged({
-#         UpdateDescriptionAndLink
-#     })
+# Add event handlers
+$Window.FindName("apps").add_Loaded({
+    # Add a selection changed event handler to the list control
+    $sync.list.Add_SelectionChanged({
+        UpdateDescriptionAndLink
+    })
 
-#     # Add a mouse left button down event handler to the itemLink control
-#     $Window.FindName('itemLink').add_MouseLeftButtonDown({
-#         OpenOfficialWebsite
-#     })
-# })
+    # Add a mouse left button down event handler to the itemLink control
+    $Window.FindName('itemLink').add_MouseLeftButtonDown({
+        OpenOfficialWebsite
+    })
+})
 
 
-# $Window.FindName("apps").add_LostFocus({
+$Window.FindName("apps").add_LostFocus({
 
-#   $sync.list.SelectedItem = $null
+  $sync.list.SelectedItem = $null
 
-# })
+})
 
-# #endregion
-# #region Generate tweaks from json file
-# $sync.tweaks = $Window.FindName("tweaks")
+#endregion
+#region Generate tweaks from json file
+$sync.tweaks = $Window.FindName("tweaks")
 
-# # Add loaded event handler
-# $Window.FindName("tweeks").add_Loaded({
+# Add loaded event handler
+$Window.FindName("tweeks").add_Loaded({
    
-#     # Add selection changed event handler
-#     $sync.tweaks.Add_SelectionChanged({
-#         $selectedItem = $sync.tweaks.SelectedItem.Content
-#         foreach ($data in $sync.configs.tweaks) {
-#             if ($data.name -eq $selectedItem) {
-#                 $Window.FindName('description').Text = $data.description
-#                 $Window.FindName('itemLink').Visibility = if ($data.repo -ne "null") { "Visible" } else { "Hidden" }
-#                 $Window.FindName('itemLink').Text = "Github repository"
-#                 break
-#             }
-#         }
-#     })
+    # Add selection changed event handler
+    $sync.tweaks.Add_SelectionChanged({
+        $selectedItem = $sync.tweaks.SelectedItem.Content
+        foreach ($data in $sync.configs.tweaks) {
+            if ($data.name -eq $selectedItem) {
+                $Window.FindName('description').Text = $data.description
+                $Window.FindName('itemLink').Visibility = if ($data.repo -ne "null") { "Visible" } else { "Hidden" }
+                $Window.FindName('itemLink').Text = "Github repository"
+                break
+            }
+        }
+    })
 
-#     # Add mouse left button down event handler for item link
-#     $Window.FindName('itemLink').add_MouseLeftButtonDown({
+    # Add mouse left button down event handler for item link
+    $Window.FindName('itemLink').add_MouseLeftButtonDown({
 
-#         $selectedItem = $sync.tweaks.SelectedItem.Content
+        $selectedItem = $sync.tweaks.SelectedItem.Content
 
-#         foreach ($data in $sync.configs.tweaks) {
-#             if ($selectedItem -eq $data.name -and $data.repo -ne "null") {
-#                 Start-Process $data.repo
-#                 break
-#             }
-#         }
-#     })
+        foreach ($data in $sync.configs.tweaks) {
+            if ($selectedItem -eq $data.name -and $data.repo -ne "null") {
+                Start-Process $data.repo
+                break
+            }
+        }
+    })
 
-# })
-
-
-# $Window.FindName("tweeks").add_LostFocus({
-#     $sync.tweaks.SelectedItem = $null
-# })
+})
 
 
-# #endregion
-# #===========================================================================
-# # End Loops 
-# #===========================================================================
+$Window.FindName("tweeks").add_LostFocus({
+    $sync.tweaks.SelectedItem = $null
+})
+
+
+#endregion
+#===========================================================================
+# End Loops 
+#===========================================================================
 CheckChoco
 
 #===========================================================================
 # Events 
 #===========================================================================
 
+# Buttons
+$window.FindName('taps').add_SelectionChanged({ChangeTap})
 
-$sync['window'].Add_Closing({
+$window.FindName('installBtn').add_click({Invoke-Install})
 
-     Stop-Process  -ID $PID
+$window.FindName('applyBtn').add_click({ApplyTweaks})
+
+$window.FindName('searchInput').add_TextChanged({Search})
+
+$window.FindName('searchInput').add_GotFocus({ClearFilter})
+
+$window.FindName('about').add_MouseLeftButtonDown({About})
+
+$window.FindName('themeText').add_click({Toggle-Theme})
+
+# Catgoray bar buttons
+$window.FindName('all').add_click({ClearFilter})
+$window.FindName('b').add_click({ FilterByCat($window.FindName('b').Content)})
+$window.FindName('m').add_click({FilterByCat($window.FindName('m').Content)})
+$window.FindName('d').add_click({ FilterByCat($window.FindName('d').Content)})
+$window.FindName('g').add_click({ FilterByCat($window.FindName('g').Content)})
+$window.FindName('u').add_click({ FilterByCat($window.FindName('u').Content)})
+$window.FindName('c').add_click({ FilterByCat($window.FindName('c').Content)})
+
+
+
+$Window.Add_Closing({
+
+    Stop-Process  -ID $PID
     Write-Host "Bye :)"
- })
-
-#===========================================================================
-# End Events 
-#===========================================================================
-
-
-
-# GetQuotes *> $null
-# PlayMusic *> $null
-
-
-
-# if ($global:themePreference -eq "Dark") {
-#     Switch-ToDarkMode
-# } elseif ($global:themePreference -eq "Light") {
-#     Switch-ToLightMode
-# } else {
-#     # Default to light mode if preference not found
-#     Switch-ToLightMode
-# }
-
-
-$sync["window"].FindName('taps').add_SelectionChanged({ChangeTap})
-$sync["window"].FindName('applyBtn').add_click({ApplyTweaks})
-$sync["window"].FindName('searchInput').add_TextChanged({Search})
-$sync["window"].FindName('searchInput').add_GotFocus({ClearFilter})
-$sync["window"].FindName('all').add_click({ClearFilter})
-
-
-$sync["window"].FindName('installBtn').add_click({
-    Invoke-Install
 })
-
-
- $sync["window"].ShowDialog() | out-null
-
-
-# $Window.Add_Closing({
-
-#     Stop-Process  -ID $PID
-#     Write-Host "Bye :)"
-# })
 
 #===========================================================================
 # End Events 
@@ -2145,29 +2737,25 @@ $sync["window"].FindName('installBtn').add_click({
 
 
 
-# GetQuotes *> $null
-# PlayMusic *> $null
+
+
+
+GetQuotes *> $null
+PlayMusic *> $null
 
 
 
 
 
 
-# if ($global:themePreference -eq "Dark") {
-#     Switch-ToDarkMode
-# } elseif ($global:themePreference -eq "Light") {
-#     Switch-ToLightMode
-# } else {
-#     # Default to light mode if preference not found
-#     Switch-ToLightMode
-# }
+if ($global:themePreference -eq "Dark") {
+    Switch-ToDarkMode
+} elseif ($global:themePreference -eq "Light") {
+    Switch-ToLightMode
+} else {
+    # Default to light mode if preference not found
+    Switch-ToLightMode
+}
 
 
-$sync["window"].FindName('installBtn').add_click({
-
-    Invoke-Install
-
-})
-
-
- $sync["window"].ShowDialog() | out-null
+ $window.ShowDialog() | out-null
