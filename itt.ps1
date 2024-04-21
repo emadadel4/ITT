@@ -6,7 +6,6 @@
 ################################################################################################################
 
 
-Set-ExecutionPolicy -ExecutionPolicy RemoteSigned
 <#
 .Dev
     Author         : Emad Adel @emadadel4
@@ -36,33 +35,33 @@ $registryPath = "HKCU:\Software\ITTEmadadel"
 $sync.configs = @{}
 $sync.ProcessRunning = $false
 
-# $currentPid = [System.Security.Principal.WindowsIdentity]::GetCurrent()
-# $principal = new-object System.Security.Principal.WindowsPrincipal($currentPid)
-# $adminRole=[System.Security.Principal.WindowsBuiltInRole]::Administrator
+$currentPid = [System.Security.Principal.WindowsIdentity]::GetCurrent()
+$principal = new-object System.Security.Principal.WindowsPrincipal($currentPid)
+$adminRole=[System.Security.Principal.WindowsBuiltInRole]::Administrator
 
 
 
-# # if ($principal.IsInRole($adminRole))
-# # {
-# #     $Host.UI.RawUI.WindowTitle = $myInvocation.MyCommand.Definition + "(Admin)"
-# #     clear-host
-# # }
-# # else
-# # {
-# #     $newProcess = new-object System.Diagnostics.ProcessStartInfo "PowerShell";
-# #     $newProcess.Arguments = $myInvocation.MyCommand.Definition;
-# #     $newProcess.Verb = "runas";
-# #     [System.Diagnostics.Process]::Start($newProcess);
-# #     break
-# # }
+if ($principal.IsInRole($adminRole))
+{
+    $Host.UI.RawUI.WindowTitle = $myInvocation.MyCommand.Definition + "(Admin)"
+    clear-host
+}
+else
+{
+    $newProcess = new-object System.Diagnostics.ProcessStartInfo "PowerShell";
+    $newProcess.Arguments = $myInvocation.MyCommand.Definition;
+    $newProcess.Verb = "runas";
+    [System.Diagnostics.Process]::Start($newProcess);
+    break
+}
 
-# # # Check if the registry path exists
-# # if (!(Test-Path $registryPath)) {
-# #     # If it doesn't exist, create it
-# #     New-Item -Path $registryPath -Force *> $null
-# # }else{
-# #     $global:themePreference = Get-ItemPropertyValue -Path "HKCU:\Software\ITTEmadadel" -Name "Theme"
-# # }
+# Check if the registry path exists
+if (!(Test-Path $registryPath)) {
+    # If it doesn't exist, create it
+    New-Item -Path $registryPath -Force *> $null
+}else{
+    $global:themePreference = Get-ItemPropertyValue -Path "HKCU:\Software\ITTEmadadel" -Name "Theme"
+}
 #===========================================================================
 # Start functions
 #===========================================================================
@@ -247,7 +246,7 @@ function Invoke-Install {
                     # })
 
                     Write-Host "Installing the following programs $choco "
-                    Start-Process -FilePath "choco" -ArgumentList "install $choco -y --force --ignore-checksums" -NoNewWindow -Wait
+                    Start-Process -FilePath "choco" -ArgumentList "install $choco --force --ignore-checksums -y" -NoNewWindow -Wait
                     Write-Host "Installs have finished"
                     [System.Windows.MessageBox]::Show("Installation Successfully Completed", "ITT @emadadel4", "OK", "Information")
 
