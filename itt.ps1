@@ -195,27 +195,26 @@ function Get-SelectedApps {
     return $items 
 }
 
-# function Get-SelectedTweeaks {
+function Get-SelectedTweeaks {
 
-#     $items = @()
+    $items = @()
+    foreach ($item in $sync['window'].FindName('tweaks').Items)
+    {
+        if ($item.IsChecked)
+        {
+            foreach ($tweeak in $sync.configs.tweaks)
+            {
 
-#     foreach ($item in $sync.tweaks.Items)
-#     {
-#         if ($item.IsChecked)
-#         {
-#             foreach ($tweeak in $sync.configs.tweaks)
-#             {
+                if($item.Content -eq $tweeak.name)
+                {
+                    $items += $tweeak.script
+                }
+            }
+        }
+    }
 
-#                 if($item.Content -eq $tweeak.name)
-#                 {
-#                     $items += $tweeak.script
-#                 }
-#             }
-#         }
-#     }
-
-#     return $items 
-# }
+    return $items 
+}
 
 function Invoke-Install {
 
@@ -243,8 +242,8 @@ function Invoke-Install {
                     $sync.ProcessRunning = $true
 
                    
-                    # $sync.des.Dispatcher.Invoke([Action]{
-                    #     $sync.des.Text = "Installing... $("-$choco-")"
+                    # $sync['window'].FindName('description').Dispatcher.Invoke([Action]{
+                    #     $sync['window'].FindName('description').Text = "Installing... $("-$choco-")"
                     # })
 
                     Write-Host "Installing the following programs $choco "
@@ -252,13 +251,13 @@ function Invoke-Install {
                     Write-Host "Installs have finished"
                     [System.Windows.MessageBox]::Show("Installation Successfully Completed", "ITT @emadadel4", "OK", "Information")
 
-                    # # Uncheck all checkboxes in $list
-                    # $sync.list.Dispatcher.Invoke([Action]{
-                    #     foreach ($item in $sync.list.Items)
-                    #     {
-                    #         $item.IsChecked = $false
-                    #     }
-                    # })
+                    # Uncheck all checkboxes in $list
+                    $sync.list.Dispatcher.Invoke([Action]{
+                        foreach ($item in $sync.list.Items)
+                        {
+                            $item.IsChecked = $false
+                        }
+                    })
                    
                 }
             }
@@ -267,9 +266,9 @@ function Invoke-Install {
                 Write-Host "Error: $_"
             }
 
-            $sync.des.Dispatcher.Invoke([Action]{
-                $sync.des.Text = "Installed successfully, Check Start Menu"
-            })
+            # $sync['window'].FindName('description').Dispatcher.Invoke([Action]{
+            #     $sync['window'].FindName('description').Text = "Installed successfully, Check Start Menu"
+            # })
 
             Start-Sleep -Seconds 1
             $sync.ProcessRunning = $False
@@ -2046,227 +2045,38 @@ $inputXML =  '
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         x:Name="Window" Title="ITT @emadadel4" WindowStartupLocation = "CenterScreen" 
-        Background="{DynamicResource BGColor}"
+        Background="White"
         Height="600" Width="955" MinWidth="677" MinHeight="400" ShowInTaskbar = "True" Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/icon.ico">
     
         <Window.Resources>
 
-                <!--Button Style-->
-        <Style TargetType="Button">
-            <Setter Property="Background" Value="{DynamicResource FGColor}"/>
-            <Setter Property="Foreground" Value="{DynamicResource DefaultTextColor}"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        <Border CornerRadius="20" Background="{TemplateBinding Background}">
-                            <ContentPresenter HorizontalAlignment="Center"
-                                                VerticalAlignment="Center"/>
-                            
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="{DynamicResource BGButtonColor}"/>
-                    <Setter Property="Foreground" Value="{DynamicResource FGButtonColor}"/>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-    <!--End Button Style-->
+            <Style TargetType="Button">
+                <Setter Property="Background" Value="{DynamicResource BGButtonColor}"/>
+                <Setter Property="Foreground" Value="{DynamicResource FGButtonColor}"/>
+            </Style>
 
 
-    <!--Textbox Style-->
-        <Style TargetType="TextBox">
-            <Setter Property="Foreground" Value="{DynamicResource FGTextColor}"/>
-            <Setter Property="Background" Value="{DynamicResource FGColor}"/>
-            <Setter Property="BorderThickness" Value="0"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="TextBox">
-                        <Border Background="{TemplateBinding Background}"
-                                BorderBrush="{TemplateBinding BorderBrush}"
-                                BorderThickness="{TemplateBinding BorderThickness}"
-                                CornerRadius="15"> <!-- Set CornerRadius here -->
-                            <ScrollViewer x:Name="PART_ContentHost" />
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-            <Style.Triggers>
-                    <Trigger Property="IsFocused" Value="True">
-                        <Setter Property="BorderThickness" Value="1"/>
-                        <Setter Property="BorderBrush" Value="{DynamicResource BGButtonColor}"/>
-                    </Trigger>
-                </Style.Triggers>
-        </Style>
-    <!--End Textbox Style-->
+            <ResourceDictionary x:Key="LightTheme">
+                    <SolidColorBrush x:Key="BGColor" Color="White"/>
+                    <SolidColorBrush x:Key="FGColor" Color="WhiteSmoke"/>
+                    <SolidColorBrush x:Key="BGButtonColor" Color="#382bf0  " />
+                    <SolidColorBrush x:Key="FGButtonColor" Color="White" />
+                    <SolidColorBrush x:Key="FGTextColor" Color="Black" />
+                    <SolidColorBrush x:Key="DefaultTextColor" Color="Black"/>
+                    <SolidColorBrush x:Key="BorderBrush" Color="#212121"/>
+            </ResourceDictionary>
 
-    <!--TextBlock Style-->
-        <Style TargetType="TextBlock">
-            <Setter Property="Foreground" Value="{DynamicResource FGTextColor}"/>
-        </Style>
-    <!--End TextBlock Style-->
-
-    <!--CheckBox Style-->
-        <Style TargetType="CheckBox">
-            <Setter Property="Foreground" Value="{DynamicResource FGTextColor}"/>
-            <Setter Property="Margin" Value="8"/>
-
-        </Style>
-    <!--End CheckBox Style-->
-
-    <!--Menu Style-->
-        <Style TargetType="Menu">
-            <Setter Property="Background" Value="{DynamicResource BGColor}"/>
-        </Style>
-    <!--End Menu Style-->
-
-
-    <!--MenuItem Style-->
-        <Style TargetType="MenuItem">
-            <Setter Property="Background" Value="{DynamicResource BGColor}"/>
-            <Setter Property="Foreground" Value="{DynamicResource DefaultTextColor}"/>
-            <Setter Property="OverridesDefaultStyle" Value="True"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="MenuItem">
-                        <Border Background="{DynamicResource BGColor}"
-                                BorderThickness="0"> <!-- Set BorderThickness to 0 -->
-                            <Grid>
-                                <ContentPresenter Content="{TemplateBinding Header}"
-                                                Margin="6"/>
-                                <Popup IsOpen="{Binding IsSubmenuOpen, RelativeSource={RelativeSource TemplatedParent}}"
-                                    AllowsTransparency="True"
-                                    Focusable="False"
-                                    PopupAnimation="Fade">
-                                    <Border Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"
-                                            BorderThickness="0"> <!-- Set BorderThickness to 0 -->
-                                        <ScrollViewer CanContentScroll="True"
-                                                    Style="{DynamicResource {ComponentResourceKey ResourceId=MenuScrollViewer, TypeInTargetAssembly={x:Type FrameworkElement}}}">
-                                            <ItemsPresenter Margin="0"/>
-                                        </ScrollViewer>
-                                    </Border>
-                                </Popup>
-                            </Grid>
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-    <!--End MenuItem Style-->
-
-    <!--ListViewItem Style-->
-        <Style TargetType="ListViewItem">
-        <Setter Property="Background" Value="{DynamicResource FGColor}"/>
-    </Style>
-    <!--End ListViewItem Style-->
-
-    <!--Scrollbar Thumbs-->
-        <Style x:Key="ScrollThumbs" TargetType="{x:Type Thumb}">
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type Thumb}">
-                        <Grid x:Name="Grid">
-                            <Rectangle HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="Auto" Height="Auto" Fill="Transparent" />
-                            <Border x:Name="Rectangle1" CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="Auto" Height="Auto" Background="{TemplateBinding Background}" />
-                        </Grid>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="Tag" Value="Horizontal">
-                                <Setter TargetName="Rectangle1" Property="Width" Value="Auto" />
-                                <Setter TargetName="Rectangle1" Property="Height" Value="7" />
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-        <Style x:Key="{x:Type ScrollBar}" TargetType="{x:Type ScrollBar}">
-            <Setter Property="Stylus.IsFlicksEnabled" Value="false" />
-            <Setter Property="Foreground" Value="{DynamicResource FGColor}" />
-            <Setter Property="Background" Value="Transparent" />
-            <Setter Property="Width" Value="8" />
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type ScrollBar}">
-                        <Grid x:Name="GridRoot" Width="8" Background="{TemplateBinding Background}">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="0.00001*" />
-                            </Grid.RowDefinitions>
-                            <Track x:Name="PART_Track" Grid.Row="0" IsDirectionReversed="true" Focusable="false">
-                                <Track.Thumb>
-                                    <Thumb x:Name="Thumb" Background="{TemplateBinding Foreground}" Style="{DynamicResource ScrollThumbs}" />
-                                </Track.Thumb>
-                                <Track.IncreaseRepeatButton>
-                                    <RepeatButton x:Name="PageUp" Command="ScrollBar.PageDownCommand" Opacity="0" Focusable="false" />
-                                </Track.IncreaseRepeatButton>
-                                <Track.DecreaseRepeatButton>
-                                    <RepeatButton x:Name="PageDown" Command="ScrollBar.PageUpCommand" Opacity="0" Focusable="false" />
-                                </Track.DecreaseRepeatButton>
-                            </Track>
-                        </Grid>
-                        <ControlTemplate.Triggers>
-                            <Trigger SourceName="Thumb" Property="IsMouseOver" Value="true">
-                                <Setter Value="{DynamicResource ButtonSelectBrush}" TargetName="Thumb" Property="Background" />
-                            </Trigger>
-                            <Trigger SourceName="Thumb" Property="IsDragging" Value="true">
-                                <Setter Value="{DynamicResource DarkBrush}" TargetName="Thumb" Property="Background" />
-                            </Trigger>
-                            <Trigger Property="IsEnabled" Value="false">
-                                <Setter TargetName="Thumb" Property="Visibility" Value="Collapsed" />
-                            </Trigger>
-                            <Trigger Property="Orientation" Value="Horizontal">
-                                <Setter TargetName="GridRoot" Property="LayoutTransform">
-                                    <Setter.Value>
-                                        <RotateTransform Angle="-90" />
-                                    </Setter.Value>
-                                </Setter>
-                                <Setter TargetName="PART_Track" Property="LayoutTransform">
-                                    <Setter.Value>
-                                        <RotateTransform Angle="-90" />
-                                    </Setter.Value>
-                                </Setter>
-                                <Setter Property="Width" Value="Auto" />
-                                <Setter Property="Height" Value="8" />
-                                <Setter TargetName="Thumb" Property="Tag" Value="Horizontal" />
-                                <Setter TargetName="PageDown" Property="Command" Value="ScrollBar.PageLeftCommand" />
-                                <Setter TargetName="PageUp" Property="Command" Value="ScrollBar.PageRightCommand" />
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-    <!--End Scrollbar Thumbs-->
-            
-            <!--Light Theme-->
-
-
-        <!-- Light mode styles -->
-        <ResourceDictionary x:Key="LightTheme">
-                <SolidColorBrush x:Key="BGColor" Color="White"/>
-                <SolidColorBrush x:Key="FGColor" Color="WhiteSmoke"/>
-                <SolidColorBrush x:Key="BGButtonColor" Color="#382bf0  " />
-                <SolidColorBrush x:Key="FGButtonColor" Color="White" />
-                <SolidColorBrush x:Key="FGTextColor" Color="Black" />
-                <SolidColorBrush x:Key="DefaultTextColor" Color="Black"/>
-                <SolidColorBrush x:Key="BorderBrush" Color="#212121"/>
-        </ResourceDictionary>
-
-        <!-- Dark mode styles -->
-        <ResourceDictionary x:Key="DarkTheme">
-                <SolidColorBrush x:Key="BGColor" Color="#121212 "/>
-                <SolidColorBrush x:Key="FGColor" Color="#282828"/>
-                <SolidColorBrush x:Key="BGButtonColor" Color="#1DB954" />
-                <SolidColorBrush x:Key="FGButtonColor" Color="White" />
-                <SolidColorBrush x:Key="FGTextColor" Color="WhiteSmoke" />
-                <SolidColorBrush x:Key="DefaultTextColor" Color="White"/>
-                <SolidColorBrush x:Key="BorderBrush" Color="WhiteSmoke" />
-        </ResourceDictionary>
-
-       
-        
+            <!-- Dark mode styles -->
+            <ResourceDictionary x:Key="DarkTheme">
+                    <SolidColorBrush x:Key="BGColor" Color="#121212 "/>
+                    <SolidColorBrush x:Key="FGColor" Color="#282828"/>
+                    <SolidColorBrush x:Key="BGButtonColor" Color="#1DB954" />
+                    <SolidColorBrush x:Key="FGButtonColor" Color="White" />
+                    <SolidColorBrush x:Key="FGTextColor" Color="WhiteSmoke" />
+                    <SolidColorBrush x:Key="DefaultTextColor" Color="White"/>
+                    <SolidColorBrush x:Key="BorderBrush" Color="WhiteSmoke" />
+            </ResourceDictionary>
+                
 
         </Window.Resources>
 
