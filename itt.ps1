@@ -90,6 +90,9 @@ function Search{
 
 }
 
+
+
+
 function FilterByCat {
     param (
         $Cat
@@ -100,6 +103,7 @@ function FilterByCat {
     # Define the filter predicate
     $filterPredicate = {
         param($item)
+
         # Define the tag you want to filter by
         $tagToFilter =  $Cat
         # Check if the item has the tag
@@ -107,9 +111,23 @@ function FilterByCat {
         return $itemTag -eq $tagToFilter
     }
 
-    $sync['window'].FindName('list').Clear()
-    # Apply the filter to the collection view
-    $collectionView.Filter = $filterPredicate
+
+    if($Cat -eq "All")
+    {
+
+        $sync['window'].FindName('list').Clear()
+        $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync['window'].FindName('list').Items)
+        $collectionView.Filter = $null
+        
+    }else{
+
+        $sync['window'].FindName('list').Clear()
+        # Apply the filter to the collection view
+        $collectionView.Filter = $filterPredicate
+
+    }
+
+
     
 }
 
@@ -2072,15 +2090,19 @@ $inputXML =  '
                 <!--Catagory Section-->
                     <StackPanel Name="catg" Margin="20,0,0,0" Orientation="Horizontal" HorizontalAlignment="Left">
 
-                        <Button Name="all"
-                        Cursor="Hand"  
-                        Content="All" 
-                        Height="20" Width="60" 
-                        Margin="4"  
-                        Background="{DynamicResource BGColor}" 
-                        Foreground="{DynamicResource DefaultTextColor}"
-                        
-                     />
+                    <ComboBox SelectedIndex="0"  Margin="10,10,0,13" Name="emad" HorizontalAlignment="Left" VerticalAlignment="Top" Width="auto" Height="auto">
+                        <ComboBoxItem Content="All"></ComboBoxItem>
+                        <ComboBoxItem Content="Media"></ComboBoxItem>
+                        <ComboBoxItem Content="Browsers"></ComboBoxItem>
+                        <ComboBoxItem Content="Documents"></ComboBoxItem>
+                        <ComboBoxItem Content="Compression"></ComboBoxItem>
+                        <ComboBoxItem Content="Communication"></ComboBoxItem>
+                        <ComboBoxItem Content="File Sharing"></ComboBoxItem>
+                        <ComboBoxItem Content="Imaging"></ComboBoxItem>
+                        <ComboBoxItem Content="Gaming"></ComboBoxItem>
+                        <ComboBoxItem Content="Utilities"></ComboBoxItem>
+                        <ComboBoxItem Content="Developer"></ComboBoxItem>
+                    </ComboBox>
 
                         </StackPanel>
                     </StackPanel>
@@ -2410,7 +2432,14 @@ $sync['window'].FindName('applyBtn').add_click({ApplyTweaks})
 $sync['window'].FindName('searchInput').add_TextChanged({Search})
 $sync['window'].FindName('searchInput').add_GotFocus({ClearFilter})
 $sync['window'].FindName('about').add_MouseLeftButtonDown({About})
-$sync['window'].FindName('all').add_click({ClearFilter})
+
+$sync['window'].FindName('emad').add_SelectionChanged({
+
+  Write-Host $sync['window'].FindName('emad').SelectedItem.Content
+
+  FilterByCat( $sync['window'].FindName('emad').SelectedItem.Content)
+
+})
 
 
 # Catgoray bar buttons

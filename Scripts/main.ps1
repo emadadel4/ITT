@@ -11,7 +11,14 @@ $sync['window'].FindName('applyBtn').add_click({ApplyTweaks})
 $sync['window'].FindName('searchInput').add_TextChanged({Search})
 $sync['window'].FindName('searchInput').add_GotFocus({ClearFilter})
 $sync['window'].FindName('about').add_MouseLeftButtonDown({About})
-$sync['window'].FindName('all').add_click({ClearFilter})
+
+$sync['window'].FindName('emad').add_SelectionChanged({
+
+  Write-Host $sync['window'].FindName('emad').SelectedItem.Content
+
+  FilterByCat( $sync['window'].FindName('emad').SelectedItem.Content)
+
+})
 
 
 # Catgoray bar buttons

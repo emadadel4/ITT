@@ -45,15 +45,19 @@
                 <!--Catagory Section-->
                     <StackPanel Name="catg" Margin="20,0,0,0" Orientation="Horizontal" HorizontalAlignment="Left">
 
-                        <Button Name="all"
-                        Cursor="Hand"  
-                        Content="All" 
-                        Height="20" Width="60" 
-                        Margin="4"  
-                        Background="{DynamicResource BGColor}" 
-                        Foreground="{DynamicResource DefaultTextColor}"
-                        
-                     />
+                    <ComboBox SelectedIndex="0"  Margin="10,10,0,13" Name="emad" HorizontalAlignment="Left" VerticalAlignment="Top" Width="auto" Height="auto">
+                        <ComboBoxItem Content="All"></ComboBoxItem>
+                        <ComboBoxItem Content="Media"></ComboBoxItem>
+                        <ComboBoxItem Content="Browsers"></ComboBoxItem>
+                        <ComboBoxItem Content="Documents"></ComboBoxItem>
+                        <ComboBoxItem Content="Compression"></ComboBoxItem>
+                        <ComboBoxItem Content="Communication"></ComboBoxItem>
+                        <ComboBoxItem Content="File Sharing"></ComboBoxItem>
+                        <ComboBoxItem Content="Imaging"></ComboBoxItem>
+                        <ComboBoxItem Content="Gaming"></ComboBoxItem>
+                        <ComboBoxItem Content="Utilities"></ComboBoxItem>
+                        <ComboBoxItem Content="Developer"></ComboBoxItem>
+                    </ComboBox>
 
                         </StackPanel>
                     </StackPanel>
