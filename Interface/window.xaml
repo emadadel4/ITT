@@ -9,72 +9,8 @@
     
 
         <Window.Resources>
-            
-            <!-- Dark mode styles -->
-                <ResourceDictionary x:Key="DarkTheme">
-                <SolidColorBrush x:Key="BGColor" Color="#121212 "/>
-                <SolidColorBrush x:Key="FGColor" Color="#282828"/>
-                <SolidColorBrush x:Key="BGButtonColor" Color="#1DB954" />
-                <SolidColorBrush x:Key="FGButtonColor" Color="White" />
-                <SolidColorBrush x:Key="FGTextColor" Color="WhiteSmoke" />
-                <SolidColorBrush x:Key="DefaultTextColor" Color="White"/>
-                <SolidColorBrush x:Key="BorderBrush" Color="WhiteSmoke" />
-             </ResourceDictionary>
-
-            <!--Light Theme-->
-            
-                <!-- Light mode styles -->
-                <ResourceDictionary x:Key="LightTheme">
-                    <SolidColorBrush x:Key="BGColor" Color="White"/>
-                    <SolidColorBrush x:Key="FGColor" Color="WhiteSmoke"/>
-                    <SolidColorBrush x:Key="BGButtonColor" Color="#382bf0  " />
-                    <SolidColorBrush x:Key="FGButtonColor" Color="White" />
-                    <SolidColorBrush x:Key="FGTextColor" Color="Black" />
-                    <SolidColorBrush x:Key="DefaultTextColor" Color="Black"/>
-                    <SolidColorBrush x:Key="BorderBrush" Color="#212121"/>
-                </ResourceDictionary>
-            <!--Light Theme-->
 
 
-
-            <!--Button Style-->
-                <Style TargetType="Button">
-                    <Setter Property="Background" Value="{DynamicResource FGColor}"/>
-                    <Setter Property="Foreground" Value="{DynamicResource DefaultTextColor}"/>
-                    <Setter Property="Template">
-                        <Setter.Value>
-                            <ControlTemplate TargetType="Button">
-                                <Border CornerRadius="20" Background="{TemplateBinding Background}">
-                                    <ContentPresenter HorizontalAlignment="Center"
-                                                        VerticalAlignment="Center"/>
-                                    
-                                </Border>
-                            </ControlTemplate>
-                        </Setter.Value>
-                    </Setter>
-
-                    <Style.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" Value="{DynamicResource BGButtonColor}"/>
-                            <Setter Property="Foreground" Value="{DynamicResource FGButtonColor}"/>
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-            <!--End Button Style-->
-
-            <!--TextBlock Style-->
-                <Style TargetType="TextBlock">
-                    <Setter Property="Foreground" Value="{DynamicResource FGTextColor}"/>
-                </Style>
-            <!--End TextBlock Style-->
-
-
-   
-
-          
-
-        
-    
 
         </Window.Resources>
 

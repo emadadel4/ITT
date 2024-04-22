@@ -29,7 +29,7 @@ function FilterByCat {
         return $itemTag -eq $tagToFilter
     }
 
-    $sync.list.Clear()
+    $sync['window'].FindName('list').Clear()
     # Apply the filter to the collection view
     $collectionView.Filter = $filterPredicate
     
@@ -37,9 +37,8 @@ function FilterByCat {
 
 function ClearFilter {
 
-    $sync.list.Clear()
-
-    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.list.Items)
+    $sync['window'].FindName('list').Clear()
+    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync['window'].FindName('list').Items)
     $collectionView.Filter = $null
 }
 
