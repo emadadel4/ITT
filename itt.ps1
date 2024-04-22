@@ -2082,6 +2082,8 @@ $inputXML =  '
                         Background="{DynamicResource BGColor}" 
                         Foreground="{DynamicResource DefaultTextColor}"
                         
+                     />
+
                         </StackPanel>
                     </StackPanel>
                 <!--End Catagory Section-->
