@@ -22,7 +22,7 @@
             </Grid.ColumnDefinitions>
 
 
-            <Menu Grid.Row="0" Grid.ColumnSpan="3" BorderBrush="Transparent" BorderThickness="0">
+            <Menu Grid.Row="0" Grid.ColumnSpan="3" Background="Transparent" BorderBrush="Transparent" BorderThickness="0">
                 <MenuItem Header="File" BorderBrush="Transparent" BorderThickness="0">
                     <MenuItem Header="Load Preset"/>
                     <MenuItem Header="Save Preset"/>
@@ -132,6 +132,8 @@
                         Name="installBtn"
                         Content="Install"
                         FontSize="15"
+                        Background="blue"
+                        Foreground="White"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Bottom"
                         Width="100" Height="40" Margin="50"/>
@@ -144,6 +146,8 @@
                         HorizontalAlignment="Center"
                         VerticalAlignment="Bottom"
                         FontSize="15"
+                        Background="blue"
+                        Foreground="White"
                         Visibility="Hidden"
                         Width="100" Height="40" Margin="50"/>
                     <!--End Apply Button-->

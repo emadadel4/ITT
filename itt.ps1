@@ -247,7 +247,7 @@ function Invoke-Install($des) {
 
                    
                     $sync.des.Dispatcher.Invoke([Action]{
-                        $sync.des.Text = "Installing... $("-$choco-")"
+                        $sync.des.Text = "Installing Selected Programes..."
                     })
 
                     Write-Host "Installing the following programs $choco "
@@ -2067,7 +2067,7 @@ $inputXML =  '
             </Grid.ColumnDefinitions>
 
 
-            <Menu Grid.Row="0" Grid.ColumnSpan="3" BorderBrush="Transparent" BorderThickness="0">
+            <Menu Grid.Row="0" Grid.ColumnSpan="3" Background="Transparent" BorderBrush="Transparent" BorderThickness="0">
                 <MenuItem Header="File" BorderBrush="Transparent" BorderThickness="0">
                     <MenuItem Header="Load Preset"/>
                     <MenuItem Header="Save Preset"/>
@@ -2128,13 +2128,13 @@ $inputXML =  '
                                     </Border>
                                     <ControlTemplate.Triggers>
                                         <Trigger Property="IsSelected" Value="True">
-                                            <Setter TargetName="Border" Property="Background" Value="{DynamicResource BGButtonColor}" />
-                                            <Setter Property="Foreground" Value="{DynamicResource FGButtonColor}" />
+                                            <Setter TargetName="Border" Property="Background" Value="Blue" />
+                                            <Setter Property="Foreground" Value="White" />
 
                                         </Trigger>
                                         <Trigger Property="IsSelected" Value="False">
-                                            <Setter TargetName="Border" Property="Background" Value="{DynamicResource FGColor}" />
-                                            <Setter Property="Foreground" Value="{DynamicResource FGTextColor}" />
+                                            <Setter TargetName="Border" Property="Background" Value="WhiteSmoke" />
+                                            <Setter Property="Foreground" Value="Black" />
                                         </Trigger>
                                     </ControlTemplate.Triggers>
                                 </ControlTemplate>
@@ -2224,6 +2224,8 @@ $inputXML =  '
                         Name="installBtn"
                         Content="Install"
                         FontSize="15"
+                        Background="blue"
+                        Foreground="White"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Bottom"
                         Width="100" Height="40" Margin="50"/>
@@ -2236,6 +2238,8 @@ $inputXML =  '
                         HorizontalAlignment="Center"
                         VerticalAlignment="Bottom"
                         FontSize="15"
+                        Background="blue"
+                        Foreground="White"
                         Visibility="Hidden"
                         Width="100" Height="40" Margin="50"/>
                     <!--End Apply Button-->

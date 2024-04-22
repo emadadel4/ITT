@@ -70,7 +70,7 @@ function Invoke-Install($des) {
 
                    
                     $sync.des.Dispatcher.Invoke([Action]{
-                        $sync.des.Text = "Installing... $("-$choco-")"
+                        $sync.des.Text = "Installing Selected Programes..."
                     })
 
                     Write-Host "Installing the following programs $choco "
