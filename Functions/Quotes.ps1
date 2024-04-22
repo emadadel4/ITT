@@ -1,47 +1,47 @@
-function GetQuotes {
+# function GetQuotes {
 
-    Invoke-RunspaceWithScriptBlock -ScriptBlock {
+#     Invoke-RunspaceWithScriptBlock -ScriptBlock {
 
 
-        # Define the path to your JSON file
-        $jsonFilePath = $sync.configs.Quotes
+#         # Define the path to your JSON file
+#         $jsonFilePath = $sync.configs.Quotes
 
-        # Function to shuffle an array
-        function Shuffle-Array {
-            param (
-                [array]$Array
-            )
-            $count = $Array.Count
-            for ($i = $count - 1; $i -ge 0; $i--) {
-                $randomIndex = Get-Random -Minimum 0 -Maximum $count
-                $temp = $Array[$i]
-                $Array[$i] = $Array[$randomIndex]
-                $Array[$randomIndex] = $temp
-            }
-            return $Array
-        }
+#         # Function to shuffle an array
+#         function Shuffle-Array {
+#             param (
+#                 [array]$Array
+#             )
+#             $count = $Array.Count
+#             for ($i = $count - 1; $i -ge 0; $i--) {
+#                 $randomIndex = Get-Random -Minimum 0 -Maximum $count
+#                 $temp = $Array[$i]
+#                 $Array[$i] = $Array[$randomIndex]
+#                 $Array[$randomIndex] = $temp
+#             }
+#             return $Array
+#         }
 
-        # Function to get names from the JSON file
-        function Get-NamesFromJson {
-            $jsonContent =  $jsonFilePath 
-            return $jsonContent.Q
-        }
+#         # Function to get names from the JSON file
+#         function Get-NamesFromJson {
+#             $jsonContent =  $jsonFilePath 
+#             return $jsonContent.Q
+#         }
 
-        # Get shuffled names
-        $shuffledNames = Shuffle-Array -Array (Get-NamesFromJson)
+#         # Get shuffled names
+#         $shuffledNames = Shuffle-Array -Array (Get-NamesFromJson)
 
-        # Loop forever and print shuffled names
-        while ($true) {
-            foreach ($name in $shuffledNames) {
+#         # Loop forever and print shuffled names
+#         while ($true) {
+#             foreach ($name in $shuffledNames) {
 
-                $sync.q.Dispatcher.Invoke([Action]{
-                    $sync.q.Text = "`".$name`""
-                })
+#                 $sync.q.Dispatcher.Invoke([Action]{
+#                     $sync.q.Text = "`".$name`""
+#                 })
 
-                # Adjust the sleep time as needed
-                Start-Sleep -Seconds 15  
-            }
-        }
-    }
-}
+#                 # Adjust the sleep time as needed
+#                 Start-Sleep -Seconds 15  
+#             }
+#         }
+#     }
+# }
 

@@ -3,8 +3,8 @@
 function Search{
     
     # Retrieves the search input, converts it to lowercase, and filters the list based on the input
-    $filter = $window.FindName('searchInput').Text.ToLower()
-    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.list.Items)
+    $filter = $sync['window'].FindName('searchInput').Text.ToLower()
+    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync['window'].FindName('list').Items)
     $collectionView.Filter = {
         param($item)
         $item -like "*$filter*"
@@ -17,7 +17,7 @@ function FilterByCat {
         $Cat
     )
 
-    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.list.Items)
+    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync['window'].FindName('list').Items)
 
     # Define the filter predicate
     $filterPredicate = {
@@ -29,7 +29,7 @@ function FilterByCat {
         return $itemTag -eq $tagToFilter
     }
 
-    $sync.list.Clear()
+    $sync['window'].FindName('list').Clear()
     # Apply the filter to the collection view
     $collectionView.Filter = $filterPredicate
     
@@ -37,9 +37,8 @@ function FilterByCat {
 
 function ClearFilter {
 
-    $sync.list.Clear()
-
-    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.list.Items)
+    $sync['window'].FindName('list').Clear()
+    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync['window'].FindName('list').Items)
     $collectionView.Filter = $null
 }
 

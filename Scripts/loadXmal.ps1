@@ -24,9 +24,23 @@ $sync.runspace = [runspacefactory]::CreateRunspacePool(
 # Open the RunspacePool instance
 $sync.runspace.Open()
 
+
+[void][System.Reflection.Assembly]::LoadWithPartialName('presentationframework')
 [xml]$XAML = $inputXML
+
+# Read the XAML file
 $reader = (New-Object System.Xml.XmlNodeReader $xaml)
-$window = [Windows.Markup.XamlReader]::Load($reader)
+try { $sync["window"] = [Windows.Markup.XamlReader]::Load( $reader ) }
+catch [System.Management.Automation.MethodInvocationException] {
+    Write-Warning "We ran into a problem with the XAML code.  Check the syntax for this control..."
+    Write-Host $error[0].Exception.Message -ForegroundColor Red
+    If ($error[0].Exception.Message -like "*button*") {
+        write-warning "Ensure your &lt;button in the `$inputXML does NOT have a Click=ButtonClick property.  PS can't handle this`n`n`n`n"
+    }
+}
+catch {
+    Write-Host "Unable to load Windows.Markup.XamlReader. Double-check syntax and ensure .net is installed."
+}
 
 #endregion
 #===========================================================================

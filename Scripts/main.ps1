@@ -5,36 +5,31 @@ CheckChoco
 #===========================================================================
 
 # Buttons
-$window.FindName('taps').add_SelectionChanged({ChangeTap})
+$sync['window'].FindName('taps').add_SelectionChanged({ChangeTap})
 
-$window.FindName('installBtn').add_click({Invoke-Install})
+$sync['window'].FindName('installBtn').add_click({Invoke-Install})
 
-$window.FindName('applyBtn').add_click({ApplyTweaks})
+$sync['window'].FindName('applyBtn').add_click({ApplyTweaks})
 
-$window.FindName('searchInput').add_TextChanged({Search})
+#$sync.['window'].FindName('searchInput').add_TextChanged({Search})
 
-$window.FindName('searchInput').add_GotFocus({ClearFilter})
+$sync['window'].FindName('searchInput').add_GotFocus({ClearFilter})
 
-$window.FindName('about').add_MouseLeftButtonDown({About})
+$sync['window'].FindName('about').add_MouseLeftButtonDown({About})
 
-$window.FindName('themeText').add_click({Toggle-Theme})
+# $window.FindName('themeText').add_click({Toggle-Theme})
 
 # Catgoray bar buttons
-$window.FindName('all').add_click({ClearFilter})
-$window.FindName('b').add_click({ FilterByCat($window.FindName('b').Content)})
-$window.FindName('m').add_click({FilterByCat($window.FindName('m').Content)})
-$window.FindName('d').add_click({ FilterByCat($window.FindName('d').Content)})
-$window.FindName('g').add_click({ FilterByCat($window.FindName('g').Content)})
-$window.FindName('u').add_click({ FilterByCat($window.FindName('u').Content)})
-$window.FindName('c').add_click({ FilterByCat($window.FindName('c').Content)})
+$sync['window'].FindName('all').add_click({ClearFilter})
 
 
 
-$Window.Add_Closing({
 
-    Stop-Process  -ID $PID
-    Write-Host "Bye :)"
-})
+# $Window.Add_Closing({
+
+#     Stop-Process  -ID $PID
+#     Write-Host "Bye :)"
+# })
 
 #===========================================================================
 # End Events 
@@ -46,22 +41,22 @@ $Window.Add_Closing({
 
 
 
-GetQuotes *> $null
-PlayMusic *> $null
+# GetQuotes *> $null
+# PlayMusic *> $null
 
 
 
 
 
 
-if ($global:themePreference -eq "Dark") {
-    Switch-ToDarkMode
-} elseif ($global:themePreference -eq "Light") {
-    Switch-ToLightMode
-} else {
-    # Default to light mode if preference not found
-    Switch-ToLightMode
-}
+# if ($global:themePreference -eq "Dark") {
+#     Switch-ToDarkMode
+# } elseif ($global:themePreference -eq "Light") {
+#     Switch-ToLightMode
+# } else {
+#     # Default to light mode if preference not found
+#     Switch-ToLightMode
+# }
 
 
- $window.ShowDialog() | out-null
+$sync["window"].ShowDialog() | out-null
