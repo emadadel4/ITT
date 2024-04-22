@@ -32,8 +32,6 @@ $sync.github = "https://github.com/emadadel4"
 $sync.website = "https://eprojects.orgfree.com"
 $sync.author = "Emad Adel @emadadel4"
 $registryPath = "HKCU:\Software\ITTEmadadel"
-$propertyName = "Theme"
-$propertyValue = "Light"
 $sync.configs = @{}
 $sync.ProcessRunning = $false
 
@@ -58,12 +56,12 @@ else
 }
 
 # Check if the registry path exists
-if (!(Test-Path $registryPath)) {
-    # If it doesn't exist, create it
-    New-Item -Path $registryPath -Force *> $null
-}else{
-    $global:themePreference = Get-ItemPropertyValue -Path "HKCU:\Software\ITTEmadadel" -Name "Theme"
-}
+# if (!(Test-Path $registryPath)) {
+#     # If it doesn't exist, create it
+#     New-Item -Path $registryPath -Force *> $null
+# }else{
+#     $global:themePreference = Get-ItemPropertyValue -Path "HKCU:\Software\ITTEmadadel" -Name "Theme"
+# }
 #===========================================================================
 # Start functions
 #===========================================================================
