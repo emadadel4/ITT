@@ -2033,13 +2033,6 @@ $sync.configs.tweaks = '[
     "script": "If (Test-Path ''HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\Windows Search'') { Set-ItemProperty ''HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\Windows Search'' -Name AllowCortana -Value 0 -Verbose }",
     "check": "true",
     "category": "tweak"
-  },
-  {
-    "name": "Remove OneDrive",
-    "description": "Remove OneDrive it''s eating internet speed",
-    "repo": "null",
-    "script": "Stop-Process -Name OneDrive -ErrorAction SilentlyContinue; $UninstallString = (Get-ItemProperty ''HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\OneDrive'').UninstallString; Start-Process -FilePath $UninstallString -ArgumentList \"/uninstall\", \"/quiet\", \"/norestart\" -Wait; Remove-Item -Path \"$env:USERPROFILE\\OneDrive\", \"$env:LOCALAPPDATA\\Microsoft\\OneDrive\", \"$env:PROGRAMDATA\\Microsoft OneDrive\" -Recurse -Force; Remove-Item -Path ''HKCU:\\Software\\Microsoft\\OneDrive'', ''HKCU:\\Software\\Microsoft\\SkyDrive'', ''HKCU:\\Software\\Policies\\Microsoft\\OneDrive'', ''HKLM:\\Software\\Policies\\Microsoft\\OneDrive'' -Recurse -Force; Remove-Item -Path \"$env:USERPROFILE\\Desktop\\OneDrive.lnk\" -Force;",
-    "category": "tweak"
   }
 ]
 ' | ConvertFrom-Json
@@ -2152,7 +2145,7 @@ $inputXML =  '
                 <TabItem Header="Tweaks" x:Name="tweeks" Padding="16" BorderBrush="{x:Null}" Background="{x:Null}">
                     <TabItem.Content>
                         <ListView Name="tweaks"  Margin="10" ScrollViewer.VerticalScrollBarVisibility="Auto" BorderBrush="{x:Null}" Background="{x:Null}">
-                            <CheckBox Content="System File Checker" /><CheckBox Content="Disk Cleanup" /><CheckBox Content="Restore All Windows Services to Default" /><CheckBox Content="Remove Folder Shortcuts From Windows'' File Explorer" /><CheckBox Content="Fix stutter in games" /><CheckBox Content="Remove Unnecessary Windows 10 Apps" /><CheckBox Content="Enable the Ultimate Performance Power Plan" /><CheckBox Content=" Reset the TCP/IP Stack" /><CheckBox Content="Setup Auto login" /><CheckBox Content="Disables People icon on Taskbar" /><CheckBox Content="Disables suggestions on start menu" /><CheckBox Content="Turns off Data Collection" /><CheckBox Content="Prevents bloatware applications from returning" /><CheckBox Content="Stops the Windows Feedback Experience" /><CheckBox Content="Disable Cortana" /><CheckBox Content="Remove OneDrive" />
+                            <CheckBox Content="System File Checker" /><CheckBox Content="Disk Cleanup" /><CheckBox Content="Restore All Windows Services to Default" /><CheckBox Content="Remove Folder Shortcuts From Windows'' File Explorer" /><CheckBox Content="Fix stutter in games" /><CheckBox Content="Remove Unnecessary Windows 10 Apps" /><CheckBox Content="Enable the Ultimate Performance Power Plan" /><CheckBox Content=" Reset the TCP/IP Stack" /><CheckBox Content="Setup Auto login" /><CheckBox Content="Disables People icon on Taskbar" /><CheckBox Content="Disables suggestions on start menu" /><CheckBox Content="Turns off Data Collection" /><CheckBox Content="Prevents bloatware applications from returning" /><CheckBox Content="Stops the Windows Feedback Experience" /><CheckBox Content="Disable Cortana" />
                         </ListView>
                     </TabItem.Content>
                 </TabItem>
