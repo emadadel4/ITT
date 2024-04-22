@@ -2648,7 +2648,7 @@ Write-Host "Bye :)"
 
 
 GetQuotes *> $null
-# PlayMusic *> $null
+PlayMusic *> $null
 
 
 
