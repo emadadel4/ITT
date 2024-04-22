@@ -14,14 +14,10 @@ $sync['window'].FindName('about').add_MouseLeftButtonDown({About})
 
 $sync['window'].FindName('emad').add_SelectionChanged({
 
-  Write-Host $sync['window'].FindName('emad').SelectedItem.Content
-
   FilterByCat( $sync['window'].FindName('emad').SelectedItem.Content)
 
 })
 
-
-# Catgoray bar buttons
 
 #===========================================================================
 # End Events 
