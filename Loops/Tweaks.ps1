@@ -1,17 +1,17 @@
 #region Generate tweaks from json file
-$sync.tweaks = $Window.FindName("tweaks")
+$sync.tweaks = $sync['window'].FindName("tweaks")
 
 # Add loaded event handler
-$Window.FindName("tweeks").add_Loaded({
+$sync['window'].FindName("tweeks").add_Loaded({
    
     # Add selection changed event handler
     $sync.tweaks.Add_SelectionChanged({
         $selectedItem = $sync.tweaks.SelectedItem.Content
         foreach ($data in $sync.configs.tweaks) {
             if ($data.name -eq $selectedItem) {
-                $Window.FindName('description').Text = $data.description
-                $Window.FindName('itemLink').Visibility = if ($data.repo -ne "null") { "Visible" } else { "Hidden" }
-                $Window.FindName('itemLink').Text = "Github repository"
+                $sync['window'].FindName('description').Text = $data.description
+                $sync['window'].FindName('itemLink').Visibility = if ($data.repo -ne "null") { "Visible" } else { "Hidden" }
+                $sync['window'].FindName('itemLink').Text = "Github repository"
                 break
             }
         }
@@ -33,7 +33,7 @@ $Window.FindName("tweeks").add_Loaded({
 })
 
 
-$Window.FindName("tweeks").add_LostFocus({
+$sync['window'].FindName("tweeks").add_LostFocus({
     $sync.tweaks.SelectedItem = $null
 })
 

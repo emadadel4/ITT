@@ -2,7 +2,7 @@ function Get-SelectedApps {
 
     $items = @()
 
-    foreach ($item in $sync.list.Items)
+    foreach ($item in $sync['window'].FindName('list').Items)
     {
         if ($item.IsChecked)
         {
@@ -24,7 +24,7 @@ function Get-SelectedTweeaks {
 
     $items = @()
 
-    foreach ($item in $sync.tweaks.Items)
+    foreach ($item in $sync['window'].FindName('tweaks').Items)
     {
         if ($item.IsChecked)
         {
@@ -43,14 +43,6 @@ function Get-SelectedTweeaks {
 }
 
 function Invoke-Install($des) {
-
-
-    # # Check internet connection
-    # if (Test-InternetConnection) {
-    # } else {
-    #     [System.Windows.MessageBox]::Show("Internet is not available.", "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
-    #     return
-    # }
 
     if($sync.ProcessRunning)
     {

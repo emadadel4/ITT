@@ -26,7 +26,7 @@ $sync.runspace.Open()
 
 [xml]$XAML = $inputXML
 $reader = (New-Object System.Xml.XmlNodeReader $xaml)
-$window = [Windows.Markup.XamlReader]::Load($reader)
+$sync = [Windows.Markup.XamlReader]::Load($reader)
 
 #endregion
 #===========================================================================
