@@ -30,7 +30,12 @@ $sync['window'].FindName('searchInput').add_GotFocus({ClearFilter})
 $sync['window'].FindName('about').add_MouseLeftButtonDown({About})
 $sync['window'].FindName('themeText').add_click({Toggle-Theme})
 $sync['window'].FindName('cat').add_SelectionChanged({FilterByCat( $sync['window'].FindName('cat').SelectedItem.Content)})
-$sync['window'].FindName('save').add_click({SaveItemsToJson})
+$sync['window'].FindName('save').add_click({
+  
+  ClearFilter
+  SaveItemsToJson
+
+})
 $sync['window'].FindName('load').add_click({LoadJson})
 
 $sync['window'].add_Closing({
