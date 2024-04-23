@@ -1,24 +1,24 @@
 #region Theme Functions
-$global:isDarkMode = $global:themePreference
 
 # Function to toggle between dark and light modes
 function Toggle-Theme {
 
-
     try {
-    if ($global:isDarkMode -eq "Dark") {
+    if ($sync.isDarkMode -eq "Dark")
+     {
         Switch-ToLightMode
-        $global:isDarkMode = -not $global:isDarkMode
+        $sync.isDarkMode = -not $sync.isDarkMode
+
 
     } else {
         Switch-ToDarkMode
-        $global:isDarkMode = -not $global:isDarkMode
+        $sync.isDarkMode = -not $sync.isDarkMode
+
+
     }
     } catch {
         Write-Host "Error toggling theme: $_"
     }
-
-
 }
 
 # Function to switch to dark mode
@@ -48,7 +48,6 @@ function Update-Theme ($theme, $mode) {
     $sync['window'].Resources.MergedDictionaries.Clear()
     $sync['window'].Resources.MergedDictionaries.Add($theme)
     Set-ItemProperty -Path "HKCU:\Software\ITTEmadadel" -Name "Theme" -Value $mode -Force
-
 }
 
 #endregion

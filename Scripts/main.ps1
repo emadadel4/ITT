@@ -1,4 +1,22 @@
+
+#check currnet Theme
+if ($sync.theme -eq "Dark") {
+  Switch-ToDarkMode
+  $sync.isDarkMode = "Dark"
+} 
+else 
+{
+  Switch-ToLightMode
+  $sync.isDarkMode = "Light"
+}
+
+
+
 CheckChoco
+GetQuotes *> $null
+PlayMusic *> $null
+
+
 
 #===========================================================================
 # Events 
@@ -12,28 +30,20 @@ $sync['window'].FindName('searchInput').add_GotFocus({ClearFilter})
 $sync['window'].FindName('about').add_MouseLeftButtonDown({About})
 $sync['window'].FindName('themeText').add_click({Toggle-Theme})
 $sync['window'].FindName('cat').add_SelectionChanged({FilterByCat( $sync['window'].FindName('cat').SelectedItem.Content)})
+$sync['window'].FindName('save').add_click({SaveItemsToJson})
+$sync['window'].FindName('load').add_click({LoadJson})
+
+$sync['window'].add_Closing({
+  
+  Write-Host "Bye see you soon :)"
+   Stop-Process -Id $PID
+  
+  })
+
 #===========================================================================
 # End Events 
 #===========================================================================
 
-GetQuotes *> $null
-PlayMusic *> $null
 
-
-$sync['window'].Add_Closing({
-
-  Write-Host "Bye see you soon :)"
-
-  Stop-Process -Id $PID
-})
-
-if ($global:themePreference -eq "Dark") {
-  Switch-ToDarkMode
-} elseif ($global:themePreference -eq "Light") {
-  Switch-ToLightMode
-} else {
-  # Default to light mode if preference not found
-  Switch-ToLightMode
-}
 
 $sync["window"].ShowDialog() | out-null

@@ -37,8 +37,8 @@
 
             <Menu Grid.Row="0" Grid.ColumnSpan="3" Background="Transparent" BorderBrush="Transparent" BorderThickness="0">
                 <MenuItem Header="File" BorderBrush="Transparent" BorderThickness="0">
-                    <MenuItem Header="Load Preset"/>
-                    <MenuItem Header="Save Preset"/>
+                    <MenuItem Name="load" Header="Load Preset"/>
+                    <MenuItem Name="save" Header="Save Preset"/>
                 </MenuItem>
                 <MenuItem Name="themeText" Header="Light Mode"/>
             </Menu>

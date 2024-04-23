@@ -24,9 +24,13 @@ $sync.version = "#{replaceme}"
 $sync.github = "https://github.com/emadadel4"
 $sync.website = "https://eprojects.orgfree.com"
 $sync.author = "Emad Adel @emadadel4"
-$registryPath = "HKCU:\Software\ITTEmadadel"
+$sync.registryPath = "HKCU:\Software\ITTEmadadel"
 $sync.configs = @{}
 $sync.ProcessRunning = $false
+
+$sync.theme = "Light"
+$sync.isDarkMode = $sync.theme
+
 
 $currentPid = [System.Security.Principal.WindowsIdentity]::GetCurrent()
 $principal = new-object System.Security.Principal.WindowsPrincipal($currentPid)
@@ -49,9 +53,7 @@ else
 }
 
 # Check if the registry path exists
-if (!(Test-Path $registryPath)) {
+if (!(Test-Path $sync.registryPath)) {
     # If it doesn't exist, create it
-    New-Item -Path $registryPath -Force *> $null
-}else{
-    $global:themePreference = Get-ItemPropertyValue -Path "HKCU:\Software\ITTEmadadel" -Name "Theme"
+    New-Item -Path $sync.registryPath -Force *> $null
 }

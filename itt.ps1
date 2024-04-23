@@ -31,9 +31,13 @@ $sync.version = "24.04.23"
 $sync.github = "https://github.com/emadadel4"
 $sync.website = "https://eprojects.orgfree.com"
 $sync.author = "Emad Adel @emadadel4"
-$registryPath = "HKCU:\Software\ITTEmadadel"
+$sync.registryPath = "HKCU:\Software\ITTEmadadel"
 $sync.configs = @{}
 $sync.ProcessRunning = $false
+
+$sync.theme = "Light"
+$sync.isDarkMode = $sync.theme
+
 
 $currentPid = [System.Security.Principal.WindowsIdentity]::GetCurrent()
 $principal = new-object System.Security.Principal.WindowsPrincipal($currentPid)
@@ -56,11 +60,9 @@ else
 }
 
 # Check if the registry path exists
-if (!(Test-Path $registryPath)) {
+if (!(Test-Path $sync.registryPath)) {
     # If it doesn't exist, create it
-    New-Item -Path $registryPath -Force *> $null
-}else{
-    $global:themePreference = Get-ItemPropertyValue -Path "HKCU:\Software\ITTEmadadel" -Name "Theme"
+    New-Item -Path $sync.registryPath -Force *> $null
 }
 #===========================================================================
 # Start functions
@@ -354,6 +356,33 @@ function ApplyTweaks() {
         [System.Windows.MessageBox]::Show("Choose at least something from the list", "ITT @emadadel", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Question)
     }
 }
+function LoadJson {
+
+        # Open file dialog to select JSON file
+        $openFileDialog = New-Object -TypeName "Microsoft.Win32.OpenFileDialog"
+        $openFileDialog.Filter = "JSON files (*.json)|*.json"
+        $openFileDialog.Title = "Open JSON File"
+        $dialogResult = $openFileDialog.ShowDialog()
+
+
+    if ($dialogResult -eq "OK") {
+
+        # Read the JSON file
+        $json = Get-Content -Path $openFileDialog.FileName -Raw | ConvertFrom-Json
+
+        # Add items to the ListView
+        foreach ($itemData in $json)
+        {
+            foreach($item in $sync['window'].FindName('list').items)
+            {
+                if($itemData.Name -eq $item.Content)
+                {
+                    $item.IsChecked = $itemData.check
+                }
+            }
+        }
+    }
+}
 function Invoke-RunspaceWithScriptBlock {
     param(
         [scriptblock]$ScriptBlock,
@@ -381,6 +410,103 @@ function Invoke-RunspaceWithScriptBlock {
 }
 
 
+# Function to save items to JSON
+function SaveItemsToJson
+{
+  
+  $items = @()
+
+    foreach ($item in $sync['window'].FindName('list').Items)
+    {
+
+      if ($item.IsChecked)
+      {
+          Write-Host $item.Content
+            $itemObject = [PSCustomObject]@{
+              Name = $item.Content
+              check = "true"
+          }
+
+            $items += $itemObject
+      }
+    }
+
+
+
+    if ($items -ne $null -and $items.Count -gt 0) 
+    {
+
+        # Open save file dialog
+        $saveFileDialog = New-Object -TypeName "Microsoft.Win32.SaveFileDialog"
+        $saveFileDialog.Filter = "JSON files (*.json)|*.json"
+        $saveFileDialog.Title = "Save JSON File"
+        $dialogResult = $saveFileDialog.ShowDialog()
+
+        if ($dialogResult -eq "OK") {
+            $items | ConvertTo-Json | Out-File -FilePath $saveFileDialog.FileName -Force
+            Write-Host "JSON file saved: $($saveFileDialog.FileName)"
+        }
+
+    }
+    else
+    {
+        [System.Windows.MessageBox]::Show("You have to Select first", "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
+    }
+}
+
+#region Theme Functions
+
+# Function to toggle between dark and light modes
+function Toggle-Theme {
+
+    try {
+    if ($sync.isDarkMode -eq "Dark")
+     {
+        Switch-ToLightMode
+        $sync.isDarkMode = -not $sync.isDarkMode
+
+
+    } else {
+        Switch-ToDarkMode
+        $sync.isDarkMode = -not $sync.isDarkMode
+
+
+    }
+    } catch {
+        Write-Host "Error toggling theme: $_"
+    }
+}
+
+# Function to switch to dark mode
+function Switch-ToDarkMode {
+    try {
+        $sync['window'].FindName('themeText').Header = "Light Mode"
+        $theme = $sync['window'].FindResource("DarkTheme")
+        Update-Theme $theme "Dark"
+    } catch {
+        Write-Host "Error switching to dark mode: $_"
+    }
+}
+
+# Function to switch to light mode
+function Switch-ToLightMode {
+    try {
+        $sync['window'].FindName('themeText').Header = "Dark Mode"
+        $theme = $sync['window'].FindResource("LightTheme")
+        Update-Theme $theme "Light"
+    } catch {
+        Write-Host "Error switching to light mode: $_"
+    }
+}
+
+# Function to update the theme
+function Update-Theme ($theme, $mode) {
+    $sync['window'].Resources.MergedDictionaries.Clear()
+    $sync['window'].Resources.MergedDictionaries.Add($theme)
+    Set-ItemProperty -Path "HKCU:\Software\ITTEmadadel" -Name "Theme" -Value $mode -Force
+}
+
+#endregion
 function PlayMusic {
 
     Invoke-RunspaceWithScriptBlock -ScriptBlock {
@@ -646,60 +772,6 @@ function Show-CustomDialog {
     $dialog.ShowDialog()
 }
 
-#region Theme Functions
-$global:isDarkMode = $global:themePreference
-
-# Function to toggle between dark and light modes
-function Toggle-Theme {
-
-
-    try {
-    if ($global:isDarkMode -eq "Dark") {
-        Switch-ToLightMode
-        $global:isDarkMode = -not $global:isDarkMode
-
-    } else {
-        Switch-ToDarkMode
-        $global:isDarkMode = -not $global:isDarkMode
-    }
-    } catch {
-        Write-Host "Error toggling theme: $_"
-    }
-
-
-}
-
-# Function to switch to dark mode
-function Switch-ToDarkMode {
-    try {
-        $sync['window'].FindName('themeText').Header = "Light Mode"
-        $theme = $sync['window'].FindResource("DarkTheme")
-        Update-Theme $theme "Dark"
-    } catch {
-        Write-Host "Error switching to dark mode: $_"
-    }
-}
-
-# Function to switch to light mode
-function Switch-ToLightMode {
-    try {
-        $sync['window'].FindName('themeText').Header = "Dark Mode"
-        $theme = $sync['window'].FindResource("LightTheme")
-        Update-Theme $theme "Light"
-    } catch {
-        Write-Host "Error switching to light mode: $_"
-    }
-}
-
-# Function to update the theme
-function Update-Theme ($theme, $mode) {
-    $sync['window'].Resources.MergedDictionaries.Clear()
-    $sync['window'].Resources.MergedDictionaries.Add($theme)
-    Set-ItemProperty -Path "HKCU:\Software\ITTEmadadel" -Name "Theme" -Value $mode -Force
-
-}
-
-#endregion
 function ChangeTap() {
     
 
@@ -2326,8 +2398,8 @@ $inputXML =  '
 
             <Menu Grid.Row="0" Grid.ColumnSpan="3" Background="Transparent" BorderBrush="Transparent" BorderThickness="0">
                 <MenuItem Header="File" BorderBrush="Transparent" BorderThickness="0">
-                    <MenuItem Header="Load Preset"/>
-                    <MenuItem Header="Save Preset"/>
+                    <MenuItem Name="load" Header="Load Preset"/>
+                    <MenuItem Name="save" Header="Save Preset"/>
                 </MenuItem>
                 <MenuItem Name="themeText" Header="Light Mode"/>
             </Menu>
@@ -2679,7 +2751,25 @@ $sync['window'].FindName("tweeks").add_LostFocus({
 #===========================================================================
 # End Loops 
 #===========================================================================
+
+#check currnet Theme
+if ($sync.theme -eq "Dark") {
+  Switch-ToDarkMode
+  $sync.isDarkMode = "Dark"
+} 
+else 
+{
+  Switch-ToLightMode
+  $sync.isDarkMode = "Light"
+}
+
+
+
 CheckChoco
+GetQuotes *> $null
+PlayMusic *> $null
+
+
 
 #===========================================================================
 # Events 
@@ -2693,28 +2783,20 @@ $sync['window'].FindName('searchInput').add_GotFocus({ClearFilter})
 $sync['window'].FindName('about').add_MouseLeftButtonDown({About})
 $sync['window'].FindName('themeText').add_click({Toggle-Theme})
 $sync['window'].FindName('cat').add_SelectionChanged({FilterByCat( $sync['window'].FindName('cat').SelectedItem.Content)})
+$sync['window'].FindName('save').add_click({SaveItemsToJson})
+$sync['window'].FindName('load').add_click({LoadJson})
+
+$sync['window'].add_Closing({
+  
+  Write-Host "Bye see you soon :)"
+   Stop-Process -Id $PID
+  
+  })
+
 #===========================================================================
 # End Events 
 #===========================================================================
 
-GetQuotes *> $null
-PlayMusic *> $null
 
-
-$sync['window'].Add_Closing({
-
-  Write-Host "Bye see you soon :)"
-
-  Stop-Process -Id $PID
-})
-
-if ($global:themePreference -eq "Dark") {
-  Switch-ToDarkMode
-} elseif ($global:themePreference -eq "Light") {
-  Switch-ToLightMode
-} else {
-  # Default to light mode if preference not found
-  Switch-ToLightMode
-}
 
 $sync["window"].ShowDialog() | out-null
