@@ -11,7 +11,6 @@ function Search{
     }
 
 }
-
 function FilterByCat {
     param (
         $Cat
@@ -52,13 +51,11 @@ function FilterByCat {
     $collectionView.Filter = $filterPredicate
     
 }
-
 function ClearFilter {
 
     $sync['window'].FindName('list').Clear()
     $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync['window'].FindName('list').Items)
     $collectionView.Filter = $null
 }
-
 #endregion
 
