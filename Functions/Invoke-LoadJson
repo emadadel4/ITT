@@ -24,4 +24,7 @@ function LoadJson {
             }
         }
     }
+
+    Write-Host "Loaded successfully."
+
 }
