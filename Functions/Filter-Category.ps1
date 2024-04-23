@@ -22,12 +22,30 @@ function FilterByCat {
     # Define the filter predicate
     $filterPredicate = {
         param($item)
+
         # Define the tag you want to filter by
         $tagToFilter =  $Cat
         # Check if the item has the tag
         $itemTag = $item.Tag
         return $itemTag -eq $tagToFilter
     }
+
+
+    if($Cat -eq "All")
+    {
+
+        $sync['window'].FindName('list').Clear()
+        $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync['window'].FindName('list').Items)
+        $collectionView.Filter = $null
+        
+    }else{
+
+        $sync['window'].FindName('list').Clear()
+        # Apply the filter to the collection view
+        $collectionView.Filter = $filterPredicate
+
+    }
+
 
     $sync['window'].FindName('list').Clear()
     # Apply the filter to the collection view
