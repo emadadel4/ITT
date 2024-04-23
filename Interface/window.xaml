@@ -58,7 +58,7 @@
                 <!--Catagory Section-->
                     <StackPanel Name="catg" Margin="20,0,0,0" Orientation="Horizontal" HorizontalAlignment="Left">
 
-                    <ComboBox SelectedIndex="0"  Margin="10,10,0,13" Name="emad" HorizontalAlignment="Left" VerticalAlignment="Top" Width="Auto" Height="Auto">
+                    <ComboBox SelectedIndex="0"  Margin="10,10,0,13" Name="cat" HorizontalAlignment="Left" VerticalAlignment="Top" Width="Auto" Height="Auto">
                         
                         
 
