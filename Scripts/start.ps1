@@ -49,9 +49,9 @@ else
 }
 
 # Check if the registry path exists
-# if (!(Test-Path $registryPath)) {
-#     # If it doesn't exist, create it
-#     New-Item -Path $registryPath -Force *> $null
-# }else{
-#     $global:themePreference = Get-ItemPropertyValue -Path "HKCU:\Software\ITTEmadadel" -Name "Theme"
-# }
+if (!(Test-Path $registryPath)) {
+    # If it doesn't exist, create it
+    New-Item -Path $registryPath -Force *> $null
+}else{
+    $global:themePreference = Get-ItemPropertyValue -Path "HKCU:\Software\ITTEmadadel" -Name "Theme"
+}

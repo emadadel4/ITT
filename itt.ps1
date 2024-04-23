@@ -11,7 +11,7 @@
     Author         : Emad Adel @emadadel4
     GitHub         : https://github.com/emadadel4
     Website        : https://eprojects.orgfree.com/
-    Version        : 24.04.22
+    Version        : 24.04.23
 #>
 
 if (!(Test-Path -Path $ENV:TEMP)) {
@@ -27,7 +27,7 @@ Add-Type -AssemblyName PresentationFramework.Aero
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "24.04.22"
+$sync.version = "24.04.23"
 $sync.github = "https://github.com/emadadel4"
 $sync.website = "https://eprojects.orgfree.com"
 $sync.author = "Emad Adel @emadadel4"
@@ -56,12 +56,12 @@ else
 }
 
 # Check if the registry path exists
-# if (!(Test-Path $registryPath)) {
-#     # If it doesn't exist, create it
-#     New-Item -Path $registryPath -Force *> $null
-# }else{
-#     $global:themePreference = Get-ItemPropertyValue -Path "HKCU:\Software\ITTEmadadel" -Name "Theme"
-# }
+if (!(Test-Path $registryPath)) {
+    # If it doesn't exist, create it
+    New-Item -Path $registryPath -Force *> $null
+}else{
+    $global:themePreference = Get-ItemPropertyValue -Path "HKCU:\Software\ITTEmadadel" -Name "Theme"
+}
 #===========================================================================
 # Start functions
 #===========================================================================
@@ -658,8 +658,8 @@ function Toggle-Theme {
 # Function to switch to dark mode
 function Switch-ToDarkMode {
     try {
-        $window.FindName('themeText').Header = "Light Mode"
-        $theme = $window.FindResource("DarkTheme")
+        $sync['window'].FindName('themeText').Header = "Light Mode"
+        $theme = $sync['window'].FindResource("DarkTheme")
         Update-Theme $theme "Dark"
     } catch {
         Write-Host "Error switching to dark mode: $_"
@@ -669,8 +669,8 @@ function Switch-ToDarkMode {
 # Function to switch to light mode
 function Switch-ToLightMode {
     try {
-        $window.FindName('themeText').Header = "Dark Mode"
-        $theme = $window.FindResource("LightTheme")
+        $sync['window'].FindName('themeText').Header = "Dark Mode"
+        $theme = $sync['window'].FindResource("LightTheme")
         Update-Theme $theme "Light"
     } catch {
         Write-Host "Error switching to light mode: $_"
@@ -679,9 +679,10 @@ function Switch-ToLightMode {
 
 # Function to update the theme
 function Update-Theme ($theme, $mode) {
-    $window.Resources.MergedDictionaries.Clear()
-    $window.Resources.MergedDictionaries.Add($theme)
+    $sync['window'].Resources.MergedDictionaries.Clear()
+    $sync['window'].Resources.MergedDictionaries.Add($theme)
     Set-ItemProperty -Path "HKCU:\Software\ITTEmadadel" -Name "Theme" -Value $mode -Force
+
 }
 
 #endregion
@@ -1913,6 +1914,22 @@ $sync.configs.Quotes = '{
   ]
 }
 ' | ConvertFrom-Json
+$sync.configs.themes = '{
+    "matrix": {
+      "BGButtonColor": "#00FF00",
+      "FGButtonColor": "#0000FF"
+    },
+
+    "dark": {
+      "BGButtonColor": "#FF0000",
+      "FGButtonColor": "#FFFF00"
+    },
+    "light": {
+      "BGButtonColor": "#000000",
+      "FGButtonColor": "#FFFFFF"
+    }
+  }
+  ' | ConvertFrom-Json
 $sync.configs.tweaks = '[
   {
     "name": "System File Checker",
@@ -2042,10 +2059,236 @@ $inputXML =  '
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         x:Name="Window" Title="ITT @emadadel4" WindowStartupLocation = "CenterScreen" 
-        Background="white"
+        Background="{DynamicResource BGColor}"
         Height="600" Width="955" MinWidth="677" MinHeight="400" ShowInTaskbar = "True" Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/icon.ico">
     
+        <Window.Resources>
+
+            <!--Button Style-->
+      <Style TargetType="Button">
+        <Setter Property="Background" Value="{DynamicResource FGColor}"/>
+        <Setter Property="Foreground" Value="{DynamicResource DefaultTextColor}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border CornerRadius="20" Background="{TemplateBinding Background}">
+                        <ContentPresenter HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"/>
+                        
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{DynamicResource BGButtonColor}"/>
+                <Setter Property="Foreground" Value="{DynamicResource FGButtonColor}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+<!--End Button Style-->
+
+
+<!--Textbox Style-->
+  <Style TargetType="TextBox">
+      <Setter Property="Foreground" Value="{DynamicResource FGTextColor}"/>
+      <Setter Property="Background" Value="{DynamicResource FGColor}"/>
+      <Setter Property="BorderThickness" Value="0"/>
+      <Setter Property="Template">
+          <Setter.Value>
+              <ControlTemplate TargetType="TextBox">
+                  <Border Background="{TemplateBinding Background}"
+                          BorderBrush="{TemplateBinding BorderBrush}"
+                          BorderThickness="{TemplateBinding BorderThickness}"
+                          CornerRadius="15"> <!-- Set CornerRadius here -->
+                      <ScrollViewer x:Name="PART_ContentHost" />
+                  </Border>
+              </ControlTemplate>
+          </Setter.Value>
+      </Setter>
+      <Style.Triggers>
+              <Trigger Property="IsFocused" Value="True">
+                  <Setter Property="BorderThickness" Value="1"/>
+                  <Setter Property="BorderBrush" Value="{DynamicResource BGButtonColor}"/>
+              </Trigger>
+          </Style.Triggers>
+  </Style>
+<!--End Textbox Style-->
+
+<!--TextBlock Style-->
+  <Style TargetType="TextBlock">
+      <Setter Property="Foreground" Value="{DynamicResource FGTextColor}"/>
+  </Style>
+<!--End TextBlock Style-->
+
+<!--CheckBox Style-->
+  <Style TargetType="CheckBox">
+      <Setter Property="Foreground" Value="{DynamicResource FGTextColor}"/>
+      <Setter Property="Margin" Value="8"/>
+
+  </Style>
+<!--End CheckBox Style-->
+
+<!--Menu Style-->
+  <Style TargetType="Menu">
+      <Setter Property="Background" Value="{DynamicResource BGColor}"/>
+  </Style>
+<!--End Menu Style-->
+
+
+<!--MenuItem Style-->
+  <Style TargetType="MenuItem">
+      <Setter Property="Background" Value="{DynamicResource BGColor}"/>
+      <Setter Property="Foreground" Value="{DynamicResource DefaultTextColor}"/>
+      <Setter Property="OverridesDefaultStyle" Value="True"/>
+      <Setter Property="Template">
+          <Setter.Value>
+              <ControlTemplate TargetType="MenuItem">
+                  <Border Background="{DynamicResource BGColor}"
+                          BorderThickness="0"> <!-- Set BorderThickness to 0 -->
+                      <Grid>
+                          <ContentPresenter Content="{TemplateBinding Header}"
+                                          Margin="6"/>
+                          <Popup IsOpen="{Binding IsSubmenuOpen, RelativeSource={RelativeSource TemplatedParent}}"
+                              AllowsTransparency="True"
+                              Focusable="False"
+                              PopupAnimation="Fade">
+                              <Border Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"
+                                      BorderThickness="0"> <!-- Set BorderThickness to 0 -->
+                                  <ScrollViewer CanContentScroll="True"
+                                              Style="{DynamicResource {ComponentResourceKey ResourceId=MenuScrollViewer, TypeInTargetAssembly={x:Type FrameworkElement}}}">
+                                      <ItemsPresenter Margin="0"/>
+                                  </ScrollViewer>
+                              </Border>
+                          </Popup>
+                      </Grid>
+                  </Border>
+              </ControlTemplate>
+          </Setter.Value>
+      </Setter>
+  </Style>
+<!--End MenuItem Style-->
+
+<!--ListViewItem Style-->
+  <Style TargetType="ListViewItem">
+  <Setter Property="Background" Value="{DynamicResource FGColor}"/>
+</Style>
+<!--End ListViewItem Style-->
+
+<!--Scrollbar Thumbs-->
+  <Style x:Key="ScrollThumbs" TargetType="{x:Type Thumb}">
+      <Setter Property="Template">
+          <Setter.Value>
+              <ControlTemplate TargetType="{x:Type Thumb}">
+                  <Grid x:Name="Grid">
+                      <Rectangle HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="Auto" Height="Auto" Fill="Transparent" />
+                      <Border x:Name="Rectangle1" CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="Auto" Height="Auto" Background="{TemplateBinding Background}" />
+                  </Grid>
+                  <ControlTemplate.Triggers>
+                      <Trigger Property="Tag" Value="Horizontal">
+                          <Setter TargetName="Rectangle1" Property="Width" Value="Auto" />
+                          <Setter TargetName="Rectangle1" Property="Height" Value="7" />
+                      </Trigger>
+                  </ControlTemplate.Triggers>
+              </ControlTemplate>
+          </Setter.Value>
+      </Setter>
+  </Style>
+  <Style x:Key="{x:Type ScrollBar}" TargetType="{x:Type ScrollBar}">
+      <Setter Property="Stylus.IsFlicksEnabled" Value="false" />
+      <Setter Property="Foreground" Value="{DynamicResource FGColor}" />
+      <Setter Property="Background" Value="Transparent" />
+      <Setter Property="Width" Value="8" />
+      <Setter Property="Template">
+          <Setter.Value>
+              <ControlTemplate TargetType="{x:Type ScrollBar}">
+                  <Grid x:Name="GridRoot" Width="8" Background="{TemplateBinding Background}">
+                      <Grid.RowDefinitions>
+                          <RowDefinition Height="0.00001*" />
+                      </Grid.RowDefinitions>
+                      <Track x:Name="PART_Track" Grid.Row="0" IsDirectionReversed="true" Focusable="false">
+                          <Track.Thumb>
+                              <Thumb x:Name="Thumb" Background="{TemplateBinding Foreground}" Style="{DynamicResource ScrollThumbs}" />
+                          </Track.Thumb>
+                          <Track.IncreaseRepeatButton>
+                              <RepeatButton x:Name="PageUp" Command="ScrollBar.PageDownCommand" Opacity="0" Focusable="false" />
+                          </Track.IncreaseRepeatButton>
+                          <Track.DecreaseRepeatButton>
+                              <RepeatButton x:Name="PageDown" Command="ScrollBar.PageUpCommand" Opacity="0" Focusable="false" />
+                          </Track.DecreaseRepeatButton>
+                      </Track>
+                  </Grid>
+                  <ControlTemplate.Triggers>
+                      <Trigger SourceName="Thumb" Property="IsMouseOver" Value="true">
+                          <Setter Value="{DynamicResource ButtonSelectBrush}" TargetName="Thumb" Property="Background" />
+                      </Trigger>
+                      <Trigger SourceName="Thumb" Property="IsDragging" Value="true">
+                          <Setter Value="{DynamicResource DarkBrush}" TargetName="Thumb" Property="Background" />
+                      </Trigger>
+                      <Trigger Property="IsEnabled" Value="false">
+                          <Setter TargetName="Thumb" Property="Visibility" Value="Collapsed" />
+                      </Trigger>
+                      <Trigger Property="Orientation" Value="Horizontal">
+                          <Setter TargetName="GridRoot" Property="LayoutTransform">
+                              <Setter.Value>
+                                  <RotateTransform Angle="-90" />
+                              </Setter.Value>
+                          </Setter>
+                          <Setter TargetName="PART_Track" Property="LayoutTransform">
+                              <Setter.Value>
+                                  <RotateTransform Angle="-90" />
+                              </Setter.Value>
+                          </Setter>
+                          <Setter Property="Width" Value="Auto" />
+                          <Setter Property="Height" Value="8" />
+                          <Setter TargetName="Thumb" Property="Tag" Value="Horizontal" />
+                          <Setter TargetName="PageDown" Property="Command" Value="ScrollBar.PageLeftCommand" />
+                          <Setter TargetName="PageUp" Property="Command" Value="ScrollBar.PageRightCommand" />
+                      </Trigger>
+                  </ControlTemplate.Triggers>
+              </ControlTemplate>
+          </Setter.Value>
+      </Setter>
+  </Style>
+<!--End Scrollbar Thumbs-->
+
+            
+            <!--Light Theme-->
+
+        <!-- Light mode styles -->
+  <ResourceDictionary x:Key="LightTheme">
+          <SolidColorBrush x:Key="BGColor" Color="White"/>
+          <SolidColorBrush x:Key="FGColor" Color="WhiteSmoke"/>
+          <SolidColorBrush x:Key="BGButtonColor" Color="#382bf0  " />
+          <SolidColorBrush x:Key="FGButtonColor" Color="White" />
+          <SolidColorBrush x:Key="FGTextColor" Color="Black" />
+          <SolidColorBrush x:Key="DefaultTextColor" Color="Black"/>
+          <SolidColorBrush x:Key="BorderBrush" Color="#212121"/>
+  </ResourceDictionary>
+
+  <!-- Dark mode styles -->
+  <ResourceDictionary x:Key="DarkTheme">
+          <SolidColorBrush x:Key="BGColor" Color="#121212 "/>
+          <SolidColorBrush x:Key="FGColor" Color="#282828"/>
+          <SolidColorBrush x:Key="BGButtonColor" Color="#1DB954" />
+          <SolidColorBrush x:Key="FGButtonColor" Color="White" />
+          <SolidColorBrush x:Key="FGTextColor" Color="WhiteSmoke" />
+          <SolidColorBrush x:Key="DefaultTextColor" Color="White"/>
+          <SolidColorBrush x:Key="BorderBrush" Color="WhiteSmoke" />
+  </ResourceDictionary>
+
+ 
+  
+
+        </Window.Resources>
+
+   
+
+
         <Grid>
+
+     
         
         <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
@@ -2083,7 +2326,10 @@ $inputXML =  '
                 <!--Catagory Section-->
                     <StackPanel Name="catg" Margin="20,0,0,0" Orientation="Horizontal" HorizontalAlignment="Left">
 
-                    <ComboBox SelectedIndex="0"  Margin="10,10,0,13" Name="emad" HorizontalAlignment="Left" VerticalAlignment="Top" Width="auto" Height="auto">
+                    <ComboBox SelectedIndex="0"  Margin="10,10,0,13" Name="emad" HorizontalAlignment="Left" VerticalAlignment="Top" Width="Auto" Height="Auto">
+                        
+                        
+
                         <ComboBoxItem Content="All"></ComboBoxItem>
                         <ComboBoxItem Content="Media"></ComboBoxItem>
                         <ComboBoxItem Content="Browsers"></ComboBoxItem>
@@ -2217,8 +2463,6 @@ $inputXML =  '
                         Name="installBtn"
                         Content="Install"
                         FontSize="15"
-                        Background="blue"
-                        Foreground="White"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Bottom"
                         Width="100" Height="40" Margin="50"/>
@@ -2231,8 +2475,6 @@ $inputXML =  '
                         HorizontalAlignment="Center"
                         VerticalAlignment="Bottom"
                         FontSize="15"
-                        Background="blue"
-                        Foreground="White"
                         Visibility="Hidden"
                         Width="100" Height="40" Margin="50"/>
                     <!--End Apply Button-->
@@ -2429,12 +2671,24 @@ $sync['window'].FindName('applyBtn').add_click({ApplyTweaks})
 $sync['window'].FindName('searchInput').add_TextChanged({Search})
 $sync['window'].FindName('searchInput').add_GotFocus({ClearFilter})
 $sync['window'].FindName('about').add_MouseLeftButtonDown({About})
+$sync['window'].FindName('themeText').add_click({Toggle-Theme})
 
 $sync['window'].FindName('emad').add_SelectionChanged({
 
   FilterByCat( $sync['window'].FindName('emad').SelectedItem.Content)
 
 })
+
+Switch-ToDarkMode
+
+if ($global:themePreference -eq "Dark") {
+  Switch-ToDarkMode
+} elseif ($global:themePreference -eq "Light") {
+  Switch-ToLightMode
+} else {
+  # Default to light mode if preference not found
+  Switch-ToLightMode
+}
 
 
 #===========================================================================

@@ -24,8 +24,8 @@ function Toggle-Theme {
 # Function to switch to dark mode
 function Switch-ToDarkMode {
     try {
-        $window.FindName('themeText').Header = "Light Mode"
-        $theme = $window.FindResource("DarkTheme")
+        $sync['window'].FindName('themeText').Header = "Light Mode"
+        $theme = $sync['window'].FindResource("DarkTheme")
         Update-Theme $theme "Dark"
     } catch {
         Write-Host "Error switching to dark mode: $_"
@@ -35,8 +35,8 @@ function Switch-ToDarkMode {
 # Function to switch to light mode
 function Switch-ToLightMode {
     try {
-        $window.FindName('themeText').Header = "Dark Mode"
-        $theme = $window.FindResource("LightTheme")
+        $sync['window'].FindName('themeText').Header = "Dark Mode"
+        $theme = $sync['window'].FindResource("LightTheme")
         Update-Theme $theme "Light"
     } catch {
         Write-Host "Error switching to light mode: $_"
@@ -45,9 +45,10 @@ function Switch-ToLightMode {
 
 # Function to update the theme
 function Update-Theme ($theme, $mode) {
-    $window.Resources.MergedDictionaries.Clear()
-    $window.Resources.MergedDictionaries.Add($theme)
+    $sync['window'].Resources.MergedDictionaries.Clear()
+    $sync['window'].Resources.MergedDictionaries.Add($theme)
     Set-ItemProperty -Path "HKCU:\Software\ITTEmadadel" -Name "Theme" -Value $mode -Force
+
 }
 
 #endregion
