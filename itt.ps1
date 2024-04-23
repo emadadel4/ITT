@@ -382,6 +382,9 @@ function LoadJson {
             }
         }
     }
+
+    Write-Host "Loaded successfully."
+
 }
 function Invoke-RunspaceWithScriptBlock {
     param(
@@ -421,17 +424,13 @@ function SaveItemsToJson
 
       if ($item.IsChecked)
       {
-          Write-Host $item.Content
             $itemObject = [PSCustomObject]@{
               Name = $item.Content
               check = "true"
           }
-
             $items += $itemObject
       }
     }
-
-
 
     if ($items -ne $null -and $items.Count -gt 0) 
     {
