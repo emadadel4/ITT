@@ -66,6 +66,15 @@ function Invoke-Install($des) {
 
                 if($msg -eq "Yes")
                 {
+
+                    $chocoTempPath = Join-Path $env:TEMP "chocolatey"
+
+                    if (Test-Path $chocoTempPath) {
+                        Remove-Item -Path $chocoTempPath -Force -Recurse
+                        Write-Output "Clear Chocolatey temp folder"
+                    }
+
+
                     $sync.ProcessRunning = $true
 
                    

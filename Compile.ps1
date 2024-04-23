@@ -27,7 +27,7 @@ Get-ChildItem .\Functions -Recurse -File | ForEach-Object {
 Get-ChildItem .\Database | Where-Object {$psitem.extension -eq ".json"} | ForEach-Object {
     $json = (Get-Content $psitem.FullName -Raw).replace("'", "''")
     $sync.configs.$($psitem.BaseName) = $json | ConvertFrom-Json
-    Write-output "`$sync.configs.$($psitem.BaseName) = '$json' `| ConvertFrom-Json" | Out-File ./$scriptname -Append -Encoding ascii
+    Write-output "`$sync.configs.$($psitem.BaseName) = '$json' `| ConvertFrom-Json" | Out-File ./$scriptname -Append -Encoding default
 }
 
 $xaml = (Get-Content .\interface\window.xaml -Raw).replace("'", "''")

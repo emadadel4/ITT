@@ -21,6 +21,8 @@ $sync['window'].FindName('emad').add_SelectionChanged({
 
 Switch-ToDarkMode
 
+GetQuotes *> $null
+
 if ($global:themePreference -eq "Dark") {
   Switch-ToDarkMode
 } elseif ($global:themePreference -eq "Light") {
