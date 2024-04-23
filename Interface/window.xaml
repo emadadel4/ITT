@@ -1,0 +1,174 @@
+
+<!--Window-->
+    <Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Name="Window" Title="ITT @emadadel4" WindowStartupLocation = "CenterScreen" 
+        Background="white"
+        Height="600" Width="955" MinWidth="677" MinHeight="400" ShowInTaskbar = "True" Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/icon.ico">
+    
+        <Grid>
+        
+        <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="222"/>
+            </Grid.ColumnDefinitions>
+
+
+            <Menu Grid.Row="0" Grid.ColumnSpan="3" Background="Transparent" BorderBrush="Transparent" BorderThickness="0">
+                <MenuItem Header="File" BorderBrush="Transparent" BorderThickness="0">
+                    <MenuItem Header="Load Preset"/>
+                    <MenuItem Header="Save Preset"/>
+                </MenuItem>
+                <MenuItem Name="themeText" Header="Light Mode"/>
+            </Menu>
+
+            <!--Header Section-->
+
+                <!--Logo-->
+                    <StackPanel Margin="20" Orientation="Horizontal" HorizontalAlignment="Left"  VerticalAlignment="Center" Grid.Row="1" Grid.ColumnSpan="3" >
+
+                        <Ellipse Name="about" Width="50" Height="50" Cursor="Hand">
+                            <Ellipse.Fill>
+                                <ImageBrush ImageSource="https://avatars.githubusercontent.com/u/19177373?v=4.png" />
+                            </Ellipse.Fill>
+                        </Ellipse>
+                <!--End Logo-->
+
+                <!--Catagory Section-->
+                    <StackPanel Name="catg" Margin="20,0,0,0" Orientation="Horizontal" HorizontalAlignment="Left">
+
+                    <ComboBox SelectedIndex="0"  Margin="10,10,0,13" Name="emad" HorizontalAlignment="Left" VerticalAlignment="Top" Width="auto" Height="auto">
+                        <ComboBoxItem Content="All"></ComboBoxItem>
+                        <ComboBoxItem Content="Media"></ComboBoxItem>
+                        <ComboBoxItem Content="Browsers"></ComboBoxItem>
+                        <ComboBoxItem Content="Documents"></ComboBoxItem>
+                        <ComboBoxItem Content="Compression"></ComboBoxItem>
+                        <ComboBoxItem Content="Communication"></ComboBoxItem>
+                        <ComboBoxItem Content="File Sharing"></ComboBoxItem>
+                        <ComboBoxItem Content="Imaging"></ComboBoxItem>
+                        <ComboBoxItem Content="Gaming"></ComboBoxItem>
+                        <ComboBoxItem Content="Utilities"></ComboBoxItem>
+                        <ComboBoxItem Content="Developer"></ComboBoxItem>
+                    </ComboBox>
+
+                        </StackPanel>
+                    </StackPanel>
+                <!--End Catagory Section-->
+
+            <!--End Header Section-->
+
+                {{Taps}}
+
+            <!--Main Section-->
+                <Grid  Grid.Row="2" Grid.Column="2"  Grid.RowSpan="2">
+
+                    <StackPanel Orientation="Vertical">
+
+
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+
+                            <Grid>
+                                <TextBox Padding="8"
+                                Width="188"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Left" 
+                                Text="{Binding Text_searchInput}"
+                                x:Name="searchInput" 
+                                />
+
+                                <TextBlock IsHitTestVisible="False" 
+                                Text="Search"
+                                VerticalAlignment="Center" 
+                                HorizontalAlignment="Left"
+                                Margin="16,0,0,0"
+                                Foreground="{DynamicResource FGTextColor}">
+
+                                <TextBlock.Style>
+                                        <Style TargetType="{x:Type TextBlock}">
+                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding Text, ElementName=searchInput}" Value="">
+                                                    <Setter Property="Visibility" Value="Visible"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBlock.Style>
+                                </TextBlock>
+                            </Grid>
+                        </StackPanel>
+
+                        <TextBlock Name="itemLink" 
+                            Foreground="{DynamicResource BGButtonColor}" 
+                            Visibility="Hidden" 
+                            TextWrapping="Wrap" 
+                            Text="" 
+                            Margin="20,15,15,0" 
+                        />
+
+                        <ScrollViewer VerticalScrollBarVisibility="Auto"
+                            Height="233"
+                            Margin="20,15,15,0" 
+                        >
+                            <TextBlock Name="description" 
+                                Text=""
+                                TextWrapping="Wrap" 
+                                Foreground="{DynamicResource DefaultTextColor}"/>
+                        </ScrollViewer>
+
+                        
+
+                    </StackPanel>
+
+                    <!--Install Button-->
+                        <Button
+                        Name="installBtn"
+                        Content="Install"
+                        FontSize="15"
+                        Background="blue"
+                        Foreground="White"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Bottom"
+                        Width="100" Height="40" Margin="50"/>
+                    <!--End Install Button-->
+
+                    <!--Apply Button-->
+                        <Button
+                        Name="applyBtn"
+                        Content="Apply"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Bottom"
+                        FontSize="15"
+                        Background="blue"
+                        Foreground="White"
+                        Visibility="Hidden"
+                        Width="100" Height="40" Margin="50"/>
+                    <!--End Apply Button-->
+
+                </Grid>
+            <!--End Main Section-->
+
+            <!--Footer Section-->
+                <Grid Grid.Row="4">
+                    <TextBlock Name="quotes"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center" 
+                    Padding="16" TextWrapping="Wrap" 
+                    Text=""
+                    />
+                </Grid>
+            <!--End Footer Section-->
+
+        </Grid>
+        
+    </Window>
+<!--End Window-->
+
+
