@@ -11,7 +11,7 @@
     Author         : Emad Adel @emadadel4
     GitHub         : https://github.com/emadadel4
     Website        : https://eprojects.orgfree.com/
-    Version        : 24.04.24
+    Version        : 24.04.25
 #>
 
 if (!(Test-Path -Path $ENV:TEMP)) {
@@ -27,7 +27,7 @@ Add-Type -AssemblyName PresentationFramework.Aero
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "24.04.24"
+$sync.version = "24.04.25"
 $sync.github = "https://github.com/emadadel4"
 $sync.website = "https://eprojects.orgfree.com"
 $sync.author = "Emad Adel @emadadel4"
@@ -65,6 +65,7 @@ if (!(Test-Path $sync.registryPath)) {
     # If it doesn't exist, create it
     New-Item -Path $sync.registryPath -Force *> $null
 }
+
 #===========================================================================
 # Start functions
 #===========================================================================
@@ -79,70 +80,65 @@ function About{
 
     Show-CustomDialog -Message $authorInfo -Width 400 
 }
+
 #region Function to filter a list based on a search input
+    function Search{
+        
+        # Retrieves the search input, converts it to lowercase, and filters the list based on the input
+        $filter = $sync['window'].FindName('searchInput').Text.ToLower()
+        $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync['window'].FindName('list').Items)
+        $collectionView.Filter = {
+            param($item)
+            $item -like "*$filter*"
+        }
 
-function Search{
-    
-    # Retrieves the search input, converts it to lowercase, and filters the list based on the input
-    $filter = $sync['window'].FindName('searchInput').Text.ToLower()
-    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync['window'].FindName('list').Items)
-    $collectionView.Filter = {
-        param($item)
-        $item -like "*$filter*"
     }
 
-}
+    function FilterByCat {
+        param (
+            $Cat
+        )
+
+        $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync['window'].FindName('list').Items)
+
+        # Define the filter predicate
+        $filterPredicate = {
+            param($item)
+
+            # Define the tag you want to filter by
+            $tagToFilter =  $Cat
+            # Check if the item has the tag
+            $itemTag = $item.Tag
+            return $itemTag -eq $tagToFilter
+        }
 
 
+        if($Cat -eq "All")
+        {
+
+            $sync['window'].FindName('list').Clear()
+            $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync['window'].FindName('list').Items)
+            $collectionView.Filter = $null
+            
+        }else{
+
+            $sync['window'].FindName('list').Clear()
+            # Apply the filter to the collection view
+            $collectionView.Filter = $filterPredicate
+
+        }
 
 
-function FilterByCat {
-    param (
-        $Cat
-    )
-
-    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync['window'].FindName('list').Items)
-
-    # Define the filter predicate
-    $filterPredicate = {
-        param($item)
-
-        # Define the tag you want to filter by
-        $tagToFilter =  $Cat
-        # Check if the item has the tag
-        $itemTag = $item.Tag
-        return $itemTag -eq $tagToFilter
+        
     }
 
-
-    if($Cat -eq "All")
-    {
+    function ClearFilter {
 
         $sync['window'].FindName('list').Clear()
         $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync['window'].FindName('list').Items)
         $collectionView.Filter = $null
-        
-    }else{
-
-        $sync['window'].FindName('list').Clear()
-        # Apply the filter to the collection view
-        $collectionView.Filter = $filterPredicate
-
     }
-
-
-    
-}
-
-function ClearFilter {
-
-    $sync['window'].FindName('list').Clear()
-    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync['window'].FindName('list').Items)
-    $collectionView.Filter = $null
-}
-
 #endregion
-
 
 function CheckChoco 
 {
@@ -174,15 +170,11 @@ function CheckChoco
         Write-Host "--Chocolatey failed to install---"
     }
 }
-
-
-
-
 function Get-SelectedApps {
 
     $items = @()
 
-    foreach ($item in $sync['window'].FindName('list').Items)
+    foreach ($item in $sync.AppsListView.Items)
     {
         if ($item.IsChecked)
         {
@@ -203,7 +195,7 @@ function Get-SelectedTweeaks {
 
     $items = @()
 
-    foreach ($item in $sync['window'].FindName('tweaks').Items)
+    foreach ($item in $sync.TweeaksListView.Items)
     {
         if ($item.IsChecked)
         {
@@ -221,7 +213,7 @@ function Get-SelectedTweeaks {
     return $items 
 }
 
-function Invoke-Install($des) {
+function Invoke-Install{
 
 
     if($sync.ProcessRunning)
@@ -257,8 +249,8 @@ function Invoke-Install($des) {
                     $sync.ProcessRunning = $true
 
                    
-                    $sync.des.Dispatcher.Invoke([Action]{
-                        $sync.des.Text = "Downloading and Installing..."
+                    $sync.Description.Dispatcher.Invoke([Action]{
+                        $sync.Description.Text = "Downloading and Installing..."
                     })
 
                     Write-Host "Installing the following programs $choco "
@@ -267,8 +259,8 @@ function Invoke-Install($des) {
                     [System.Windows.MessageBox]::Show("Installation Successfully Completed", "ITT @emadadel4", "OK", "Information")
 
 
-                    $sync.des.Dispatcher.Invoke([Action]{
-                        $sync.des.Text = "Installed successfully"
+                    $sync.description.Dispatcher.Invoke([Action]{
+                        $sync.description.Text = "Installed successfully"
                     })
         
                     Start-Sleep -Seconds 1
@@ -281,8 +273,8 @@ function Invoke-Install($des) {
                 else
                 {
                     # Uncheck all checkboxes in $list
-                    $sync.list.Dispatcher.Invoke([Action]{
-                        foreach ($item in $sync.list.Items)
+                    $sync.AppsListView.Dispatcher.Invoke([Action]{
+                        foreach ($item in $sync.AppsListView.Items)
                         {
                             $item.IsChecked = $false
                         }
@@ -330,8 +322,8 @@ function ApplyTweaks() {
                 {
                     $sync.ProcessRunning = $true
 
-                    $sync.des.Dispatcher.Invoke([Action]{
-                        $sync.des.Text = "Applying..."
+                    $sync.description.Dispatcher.Invoke([Action]{
+                        $sync.description.Text = "Applying..."
                     })
 
                     #Write-Host "Applying tweeak(s) $tweeaks "
@@ -345,9 +337,22 @@ function ApplyTweaks() {
                             $item.IsChecked = $false
                         }
                     })
-                }else {
-                    $sync.tweaks.Dispatcher.Invoke([Action]{
-                        foreach ($item in $sync.tweaks.Items)
+
+                 
+                    $sync.description.Dispatcher.Invoke([Action]{
+                        $sync.description.Text = "Done..."
+                    })
+
+                    Start-Sleep -Seconds 1
+                    $sync.ProcessRunning = $False
+
+               
+
+                }
+                else 
+                {
+                    $sync.TweeaksListView.Dispatcher.Invoke([Action]{
+                        foreach ($item in $sync.TweeaksListView.Items)
                         {
                             $item.IsChecked = $false
                         }
@@ -358,13 +363,7 @@ function ApplyTweaks() {
             {
                 Write-Host "Error: $_"
             }
-
-            $sync.des.Dispatcher.Invoke([Action]{
-                $sync.des.Text = "Done..."
-            })
-
-            Start-Sleep -Seconds 1
-            $sync.ProcessRunning = $False
+         
         }
     }
     else
@@ -402,33 +401,7 @@ function LoadJson {
     Write-Host "Loaded successfully."
 
 }
-function Invoke-RunspaceWithScriptBlock {
-    param(
-        [scriptblock]$ScriptBlock,
-        [array]$ArgumentList
-    )
 
-        $script:powershell = [powershell]::Create()
-
-        # Add Scriptblock and Arguments to runspace
-        $script:powershell.AddScript($ScriptBlock)
-        $script:powershell.AddArgument($ArgumentList)
-        $script:powershell.RunspacePool = $sync.runspace
-
-        $script:handle = $script:powershell.BeginInvoke()
-
-        if ($script:handle.IsCompleted)
-        {
-            $script:powershell.EndInvoke($script:handle)
-            $script:powershell.Dispose()
-            $sync.runspace.Dispose()
-            $sync.runspace.Close()
-
-            [System.GC]::Collect()
-        }
-}
-
-# Function to save items to JSON
 function SaveItemsToJson
 {
   
@@ -467,124 +440,148 @@ function SaveItemsToJson
         [System.Windows.MessageBox]::Show("You have to Select first", "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
     }
 }
+function Invoke-RunspaceWithScriptBlock {
+    param(
+        [scriptblock]$ScriptBlock,
+        [array]$ArgumentList
+    )
 
+        $script:powershell = [powershell]::Create()
+
+        # Add Scriptblock and Arguments to runspace
+        $script:powershell.AddScript($ScriptBlock)
+        $script:powershell.AddArgument($ArgumentList)
+        $script:powershell.RunspacePool = $sync.runspace
+
+        $script:handle = $script:powershell.BeginInvoke()
+
+        if ($script:handle.IsCompleted)
+        {
+            $script:powershell.EndInvoke($script:handle)
+            $script:powershell.Dispose()
+            $sync.runspace.Dispose()
+            $sync.runspace.Close()
+
+            [System.GC]::Collect()
+        }
+}
 #region Theme Functions
 
-# Function to toggle between dark and light modes
-function Toggle-Theme {
+    # Function to toggle between dark and light modes
+    function Toggle-Theme {
 
-    try {
-    if ($sync.isDarkMode -eq "Dark")
-     {
-        Switch-ToLightMode
-        $sync.isDarkMode = -not $sync.isDarkMode
-
-
-    } else {
-        Switch-ToDarkMode
-        $sync.isDarkMode = -not $sync.isDarkMode
+        try {
+        if ($sync.isDarkMode -eq "Dark")
+        {
+            Switch-ToLightMode
+            $sync.isDarkMode = -not $sync.isDarkMode
 
 
+        } else {
+            Switch-ToDarkMode
+            $sync.isDarkMode = -not $sync.isDarkMode
+
+
+        }
+        } catch {
+            Write-Host "Error toggling theme: $_"
+        }
     }
-    } catch {
-        Write-Host "Error toggling theme: $_"
+
+    # Function to switch to dark mode
+    function Switch-ToDarkMode {
+        try {
+            $sync['window'].FindName('themeText').Header = "Light Mode"
+            $theme = $sync['window'].FindResource("DarkTheme")
+            Update-Theme $theme "Dark"
+        } catch {
+            Write-Host "Error switching to dark mode: $_"
+        }
     }
-}
 
-# Function to switch to dark mode
-function Switch-ToDarkMode {
-    try {
-        $sync['window'].FindName('themeText').Header = "Light Mode"
-        $theme = $sync['window'].FindResource("DarkTheme")
-        Update-Theme $theme "Dark"
-    } catch {
-        Write-Host "Error switching to dark mode: $_"
+    # Function to switch to light mode
+    function Switch-ToLightMode {
+        try {
+            $sync['window'].FindName('themeText').Header = "Dark Mode"
+            $theme = $sync['window'].FindResource("LightTheme")
+            Update-Theme $theme "Light"
+        } catch {
+            Write-Host "Error switching to light mode: $_"
+        }
     }
-}
 
-# Function to switch to light mode
-function Switch-ToLightMode {
-    try {
-        $sync['window'].FindName('themeText').Header = "Dark Mode"
-        $theme = $sync['window'].FindResource("LightTheme")
-        Update-Theme $theme "Light"
-    } catch {
-        Write-Host "Error switching to light mode: $_"
+    # Function to update the theme
+    function Update-Theme ($theme, $mode) {
+        $sync['window'].Resources.MergedDictionaries.Clear()
+        $sync['window'].Resources.MergedDictionaries.Add($theme)
+        Set-ItemProperty -Path "HKCU:\Software\ITTEmadadel" -Name "Theme" -Value $mode -Force
     }
-}
-
-# Function to update the theme
-function Update-Theme ($theme, $mode) {
-    $sync['window'].Resources.MergedDictionaries.Clear()
-    $sync['window'].Resources.MergedDictionaries.Add($theme)
-    Set-ItemProperty -Path "HKCU:\Software\ITTEmadadel" -Name "Theme" -Value $mode -Force
-}
-
 #endregion
-function PlayMusic {
+#region Theme Functions
+    function PlayMusic {
 
     Invoke-RunspaceWithScriptBlock -ScriptBlock {
 
-        $audioUrls = @(
-            "https://epsilon.vgmsite.com/soundtracks/far-cry-3/iqgdbfrhtw/17.%20Further%20%28feat.%20Serena%20McKinney%29.mp3",
-            "https://dl.vgmdownloads.com/soundtracks/hollow-knight-original-soundtrack/qqrmmaqyqg/26.%20Hollow%20Knight.mp3",
-            "https://dl.vgmdownloads.com/soundtracks/assassin-s-creed-unity-vol.-1/hxqrvcoyfj/01.%20Unity.mp3",
-            "https://dl.vgmdownloads.com/soundtracks/assassin-s-creed-3/jgevpclfcr/01.%20Assassin%27s%20Creed%20III%20Main%20Theme.mp3",
-            "https://dl.vgmdownloads.com/soundtracks/assassins-creed-mirage-original-game-soundtrack-2023/axtwruyduh/01.%20Mirage%20Theme.mp3",
-            "https://vgmsite.com/soundtracks/assassins-creed-ezios-family-m-me-remix-2022/qdxeshajdz/01.%20Ezio%27s%20Family%20%28M%C3%B8me%20Remix%29.mp3",
-            "https://epsilon.vgmsite.com/soundtracks/assassin-s-creed-iv-black-flag/zxpesokhkg/1-02%20Pyrates%20Beware.mp3",
-            "https://vgmsite.com/soundtracks/battlefield-3/tabqykkp/01.%20Battlefield%203%20Main%20Theme.mp3",
-            "https://archive.org/download/GrandTheftAuto4ThemeSong_201904/Grand%20Theft%20Auto%204%20Theme%20Song.mp3",
-            "https://epsilon.vgmsite.com/soundtracks/assassin-s-creed-2/jlrprchapt/1-03%20Ezio%27s%20Family.mp3",
-            "https://epsilon.vgmsite.com/soundtracks/assassin-s-creed-2/nkantwuktr/1-01%20Earth.mp3",
-            "https://epsilon.vgmsite.com/soundtracks/mass-effect-3-gamerip-2012/nchtmgcz/304.%20End%20of%20Cycle.mp3"
-        )
-    
-        Function PlayAudio($url) {
-            try {
-                $mediaItem =  $sync.mediaPlayer.newMedia($url)
-                $sync.mediaPlayer.currentPlaylist.appendItem($mediaItem)
-                $sync.mediaPlayer.controls.play()
-            }
-            catch {
-            }
+    $audioUrls = @(
+        "https://epsilon.vgmsite.com/soundtracks/far-cry-3/iqgdbfrhtw/17.%20Further%20%28feat.%20Serena%20McKinney%29.mp3",
+        "https://dl.vgmdownloads.com/soundtracks/hollow-knight-original-soundtrack/qqrmmaqyqg/26.%20Hollow%20Knight.mp3",
+        "https://dl.vgmdownloads.com/soundtracks/assassin-s-creed-unity-vol.-1/hxqrvcoyfj/01.%20Unity.mp3",
+        "https://dl.vgmdownloads.com/soundtracks/assassin-s-creed-3/jgevpclfcr/01.%20Assassin%27s%20Creed%20III%20Main%20Theme.mp3",
+        "https://dl.vgmdownloads.com/soundtracks/assassins-creed-mirage-original-game-soundtrack-2023/axtwruyduh/01.%20Mirage%20Theme.mp3",
+        "https://vgmsite.com/soundtracks/assassins-creed-ezios-family-m-me-remix-2022/qdxeshajdz/01.%20Ezio%27s%20Family%20%28M%C3%B8me%20Remix%29.mp3",
+        "https://epsilon.vgmsite.com/soundtracks/assassin-s-creed-iv-black-flag/zxpesokhkg/1-02%20Pyrates%20Beware.mp3",
+        "https://vgmsite.com/soundtracks/battlefield-3/tabqykkp/01.%20Battlefield%203%20Main%20Theme.mp3",
+        "https://archive.org/download/GrandTheftAuto4ThemeSong_201904/Grand%20Theft%20Auto%204%20Theme%20Song.mp3",
+        "https://epsilon.vgmsite.com/soundtracks/assassin-s-creed-2/jlrprchapt/1-03%20Ezio%27s%20Family.mp3",
+        "https://epsilon.vgmsite.com/soundtracks/assassin-s-creed-2/nkantwuktr/1-01%20Earth.mp3",
+        "https://epsilon.vgmsite.com/soundtracks/mass-effect-3-gamerip-2012/nchtmgcz/304.%20End%20of%20Cycle.mp3"
+    )
+
+    Function PlayAudio($url) {
+        try {
+            $mediaItem =  $sync.mediaPlayer.newMedia($url)
+            $sync.mediaPlayer.currentPlaylist.appendItem($mediaItem)
+            $sync.mediaPlayer.controls.play()
         }
-    
-        # Function to shuffle the playlist
-        Function ShuffleArray {
-            param([array]$array)
-            $count = $array.Length
-            for ($i = 0; $i -lt $count; $i++) {
-                $randomIndex = Get-Random -Minimum $i -Maximum $count
-                $temp = $array[$i]
-                $array[$i] = $array[$randomIndex]
-                $array[$randomIndex] = $temp
-            }
-        }
-    
-        # Shuffle the playlist
-        ShuffleArray -array $audioUrls
-    
-        # Function to play the entire shuffled playlist
-        Function PlayShuffledPlaylist {
-            foreach ($url in $audioUrls) {
-                PlayAudio $url
-                # Wait for the track to finish playing
-                while ( $sync.mediaPlayer.playState -eq 3 -or  $sync.mediaPlayer.playState -eq 6) {
-                    Start-Sleep -Milliseconds 100
-                }
-            }
-        }
-    
-        # Play the shuffled playlist indefinitely
-        while ($true) 
-        {
-            PlayShuffledPlaylist
+        catch {
         }
     }
-}
 
-function StopMusic {
+    # Function to shuffle the playlist
+    Function ShuffleArray {
+        param([array]$array)
+        $count = $array.Length
+        for ($i = 0; $i -lt $count; $i++) {
+            $randomIndex = Get-Random -Minimum $i -Maximum $count
+            $temp = $array[$i]
+            $array[$i] = $array[$randomIndex]
+            $array[$randomIndex] = $temp
+        }
+    }
+
+    # Shuffle the playlist
+    ShuffleArray -array $audioUrls
+
+    # Function to play the entire shuffled playlist
+    Function PlayShuffledPlaylist {
+        foreach ($url in $audioUrls) {
+            PlayAudio $url
+            # Wait for the track to finish playing
+            while ( $sync.mediaPlayer.playState -eq 3 -or  $sync.mediaPlayer.playState -eq 6) {
+                Start-Sleep -Milliseconds 100
+            }
+        }
+    }
+
+    # Play the shuffled playlist indefinitely
+    while ($true) 
+    {
+        PlayShuffledPlaylist
+    }
+    }
+    }
+
+    function StopMusic {
 
     $sync.mediaPlayer.controls.stop()
     $sync.mediaPlayer = $null
@@ -592,11 +589,9 @@ function StopMusic {
     $script:powershell.Dispose()
     $sync.runspace.Dispose()
     $sync.runspace.Close()
-}
-
-PlayMusic *> $null
-
-
+    }
+    PlayMusic *> $null
+#endregion
 function GetQuotes {
 
     Invoke-RunspaceWithScriptBlock -ScriptBlock {
@@ -633,8 +628,8 @@ function GetQuotes {
         while ($true) {
             foreach ($name in $shuffledNames) {
 
-                $sync.q.Dispatcher.Invoke([Action]{
-                    $sync.q.Text = "`".$name`""
+                $sync.Quotes.Dispatcher.Invoke([Action]{
+                    $sync.Quotes.Text = "`".$name`""
                 })
 
                 # Adjust the sleep time as needed
@@ -643,7 +638,6 @@ function GetQuotes {
         }
     }
 }
-
 # Show Custom Msg
 function Show-CustomDialog {
     
@@ -792,7 +786,6 @@ function Show-CustomDialog {
     # Show the custom dialog
     $dialog.ShowDialog()
 }
-
 function ChangeTap() {
     
 
@@ -802,14 +795,12 @@ function ChangeTap() {
         $sync['window'].FindName('applyBtn').Visibility = "Hidden"
     }
 
-    if($sync['window'].FindName('tweeks').IsSelected)
+    if($sync['window'].FindName('tweeksTab').IsSelected)
     {
         $sync['window'].FindName('applyBtn').Visibility = "Visible"
         $sync['window'].FindName('installBtn').Visibility = "Hidden"
     }
 }
-
-
 
 #===========================================================================
 # End functions
@@ -2497,7 +2488,7 @@ $inputXML =  '
                         </ListView>
                     </TabItem.Content>
                 </TabItem>
-                <TabItem Header="Tweaks" x:Name="tweeks" Padding="16" BorderBrush="{x:Null}" Background="{x:Null}">
+                <TabItem Header="Tweaks" x:Name="tweeksTab" Padding="16" BorderBrush="{x:Null}" Background="{x:Null}">
                     <TabItem.Content>
                         <ListView Name="tweaks"  Margin="10" ScrollViewer.VerticalScrollBarVisibility="Auto" BorderBrush="{x:Null}" Background="{x:Null}">
                             <CheckBox Content="System File Checker" /><CheckBox Content="Disk Cleanup" /><CheckBox Content="Restore All Windows Services to Default" /><CheckBox Content="Remove Folder Shortcuts From Windows'' File Explorer" /><CheckBox Content="Fix stutter in games" /><CheckBox Content="Remove Unnecessary Windows 10 Apps" /><CheckBox Content="Enable the Ultimate Performance Power Plan" /><CheckBox Content=" Reset the TCP/IP Stack" /><CheckBox Content="Setup Auto login" /><CheckBox Content="Disables People icon on Taskbar" /><CheckBox Content="Disables suggestions on start menu" /><CheckBox Content="Turns off Data Collection" /><CheckBox Content="Prevents bloatware applications from returning" /><CheckBox Content="Stops the Windows Feedback Experience" /><CheckBox Content="Disable Cortana" />
@@ -2653,10 +2644,19 @@ catch {
     Write-Host "Unable to load Windows.Markup.XamlReader. Double-check syntax and ensure .net is installed."
 }
 
+
+# Catch controls
+$sync.AppsListView = $sync['window'].FindName("list")
+$sync.Description = $sync['window'].FindName("description")
+$sync.Quotes = $sync['window'].FindName("quotes")
+$sync.TweeaksListView = $sync['window'].FindName("tweaks")
+$sync.itemLink = $sync['window'].FindName('itemLink')
+
 #endregion
 #===========================================================================
 # End Load XMAL 
 #===========================================================================
+
 
 #===========================================================================
 # Loops 
@@ -2665,17 +2665,19 @@ catch {
 # Define a function to update the description and link when an item is selected
 function UpdateDescriptionAndLink {
     # Get the name of the selected application from the list
-    $selectedAppName = $sync['window'].FindName('list').SelectedItem.Content
+    $selectedAppName = $sync.AppsListView.SelectedItem.Content
 
-    $sync['window'].FindName('itemLink').Visibility = "Visible"
+    $sync.itemLink.Visibility = "Visible"
 
     # Loop through the list of applications in the configs and find the matching one
     foreach ($app in $sync.configs.applications) {
+
         if ($app.name -eq $selectedAppName) {
+
             # Update the description text block with the selected application's description
-            $sync['window'].FindName("description").Text = $app.description
+            $sync.Description.Text = $app.description
             # Update the link text block with the selected application's official website link
-            $sync['window'].FindName('itemLink').Text = "$($app.name) official website"
+            $sync.itemLink.Text = "$($app.name) official website"
             break
         }
     }
@@ -2684,7 +2686,7 @@ function UpdateDescriptionAndLink {
 # Define a function to open the official website of the selected application
 function OpenOfficialWebsite {
     # Get the name of the selected application from the list
-    $selectedAppName =  $sync['window'].FindName('list').SelectedItem.Content
+    $selectedAppName =  $sync.AppsListView.SelectedItem.Content
 
     # Loop through the list of applications in the configs and find the matching one
     foreach ($app in $sync.configs.applications) {
@@ -2697,80 +2699,81 @@ function OpenOfficialWebsite {
 }
 
 # Add event handlers
-$sync['window'].FindName("apps").add_Loaded({
+$sync.AppsListView.add_Loaded({
     
-
     # Add a selection changed event handler to the list control
-    $sync['window'].FindName('list').Add_SelectionChanged({
+    $sync.AppsListView.Add_SelectionChanged({
         UpdateDescriptionAndLink
     })
 
+})
+
     # Add a mouse left button down event handler to the itemLink control
-    $sync['window'].FindName('itemLink').add_MouseLeftButtonDown({
+    $sync.itemLink.add_MouseLeftButtonDown({
         OpenOfficialWebsite
     })
 
-    $sync['window'].FindName("apps").add_LostFocus({
 
-        $sync['window'].FindName('list').SelectedItem = $null
-        $sync['window'].FindName('itemLink').Visibility = "Hidden"
-        $sync['window'].FindName('description').Text = ""
-        
+    $sync.AppsListView.add_LostFocus({
 
-    
+        $sync.AppsListView.SelectedItem = $null
+        $sync.itemLink.Visibility = "Hidden"
+        $sync.Description.Text = ""
+
     })
-
-})
 
 
 #endregion
 
 # Add loaded event handler
-$sync['window'].FindName("tweaks").add_Loaded({
+$sync.TweeaksListView.add_Loaded({
    
     # Add selection changed event handler
-    $sync['window'].FindName("tweaks").Add_SelectionChanged({
-        $selectedItem = $sync['window'].FindName("tweaks").SelectedItem.Content
+    $sync.TweeaksListView.Add_SelectionChanged({
+
+        $selectedItem = $sync.TweeaksListView.SelectedItem.Content
         foreach ($data in $sync.configs.tweaks) {
+
             if ($data.name -eq $selectedItem) {
-                $sync['window'].FindName('description').Text = $data.description
-                $sync['window'].FindName('itemLink').Visibility = if ($data.repo -ne "null") { "Visible" } else { "Hidden" }
-                $sync['window'].FindName('itemLink').Text = "Github repository"
+
+                $sync.Description.Text = $data.description
+                $sync.itemLink.Visibility = if ($data.repo -ne "null") { "Visible" } else { "Hidden" }
+                $sync.itemLink.Text = "Github repository"
                 break
             }
         }
     })
 
-    # Add mouse left button down event handler for item link
-    $sync['window'].FindName('itemLink').add_MouseLeftButtonDown({
+})
 
-        $selectedItem = $sync['window'].FindName("tweaks").SelectedItem.Content
+# Add mouse left button down event handler for item link
+$sync.itemLink.add_MouseLeftButtonDown({
 
-        foreach ($data in $sync.configs.tweaks) {
-            if ($selectedItem -eq $data.name -and $data.repo -ne "null") {
-                Start-Process $data.repo
-                break
-            }
+    $selectedItem = $sync.TweeaksListView.SelectedItem.Content
+
+    foreach ($data in $sync.configs.tweaks) {
+        if ($selectedItem -eq $data.name -and $data.repo -ne "null") {
+            Start-Process $data.repo
+            break
         }
-    })
-
-    $sync['window'].FindName("tweeks").add_LostFocus({
-
-        $sync['window'].FindName("tweaks").SelectedItem = $null
-        $sync['window'].FindName('list').SelectedItem = $null
-        #$sync['window'].FindName('itemLink').Visibility = "Hidden"
-        $sync['window'].FindName('description').Text = ""
-    })
-    
- 
+    }
 })
 
 
+$sync.TweeaksListView.add_LostFocus({
+
+    $sync.TweeaksListView.SelectedItem = $null
+    $sync.itemLink.Visibility = "Hidden"
+    $sync.Description.Text = ""
+})
 
 #===========================================================================
 # End Loops 
 #===========================================================================
 
+
+CheckChoco
+GetQuotes *> $null
 
 #check currnet Theme
 if ($sync.theme -eq "Dark") {
@@ -2785,8 +2788,7 @@ else
 
 
 
-CheckChoco
-GetQuotes *> $null
+
 
 
 
@@ -2811,11 +2813,14 @@ $sync['window'].FindName('save').add_click({
 $sync['window'].FindName('load').add_click({LoadJson})
 
 $sync['window'].add_Closing({
-  Write-Host "Bye see you soon :)"
-  
-  StopMusic
 
-  })
+  Write-Host "Bye see you soon :)"
+  StopMusic
+  $script:powershell.Dispose()
+  $sync.runspace.Dispose()
+  $sync.runspace.Close()
+
+})
 
 #===========================================================================
 # End Events 
