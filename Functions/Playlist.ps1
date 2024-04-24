@@ -17,19 +17,15 @@ function PlayMusic {
             "https://epsilon.vgmsite.com/soundtracks/mass-effect-3-gamerip-2012/nchtmgcz/304.%20End%20of%20Cycle.mp3"
         )
     
-        $global:mediaPlayer = New-Object -ComObject WMPlayer.OCX
-        $global:playlistPaused = $false
-
         Function PlayAudio($url) {
             try {
-                $mediaItem = $global:mediaPlayer.newMedia($url)
-                $global:mediaPlayer.currentPlaylist.appendItem($mediaItem)
-                $global:mediaPlayer.controls.play()
+                $mediaItem =  $sync.mediaPlayer.newMedia($url)
+                $sync.mediaPlayer.currentPlaylist.appendItem($mediaItem)
+                $sync.mediaPlayer.controls.play()
             }
             catch {
             }
         }
-        
     
         # Function to shuffle the playlist
         Function ShuffleArray {
@@ -51,7 +47,7 @@ function PlayMusic {
             foreach ($url in $audioUrls) {
                 PlayAudio $url
                 # Wait for the track to finish playing
-                while ($global:mediaPlayer.playState -eq 3 -or $global:mediaPlayer.playState -eq 6) {
+                while ( $sync.mediaPlayer.playState -eq 3 -or  $sync.mediaPlayer.playState -eq 6) {
                     Start-Sleep -Milliseconds 100
                 }
             }
@@ -63,5 +59,12 @@ function PlayMusic {
             PlayShuffledPlaylist
         }
     }
+}
+
+function StopMusic {
+
+    $sync.mediaPlayer.controls.stop()
+    $sync.mediaPlayer = $null
+    Invoke-RunspaceWithScriptBlock -ScriptBlock {$null}
 }
 
