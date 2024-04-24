@@ -574,7 +574,10 @@ function StopMusic {
 
     $sync.mediaPlayer.controls.stop()
     $sync.mediaPlayer = $null
-    Invoke-RunspaceWithScriptBlock -ScriptBlock {$null}
+
+    $script:powershell.Dispose()
+    $sync.runspace.Dispose()
+    $sync.runspace.Close()
 }
 
 function GetQuotes {
@@ -2004,7 +2007,9 @@ $sync.configs.Quotes = '{
     "النية خير معيار للأفعال",
     "الإيمان هو أن ترى الشيء الذي لا يمكن رؤيته بالعين",
     "الحقيقة تجعلك حرًا",
-    "الحياة قصيرة، استخدمها بحكمة"
+    "الحياة قصيرة، استخدمها بحكمة",
+    "ما الفرق ما بين الناقة والجمل",
+    "العادلة شيئ و القانون شيئ"
   ]
 }
 ' | ConvertFrom-Json
