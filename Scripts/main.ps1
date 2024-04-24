@@ -1,4 +1,5 @@
 
+
 #check currnet Theme
 if ($sync.theme -eq "Dark") {
   Switch-ToDarkMode
@@ -14,7 +15,6 @@ else
 
 CheckChoco
 GetQuotes *> $null
-PlayMusic *> $null
 
 
 

@@ -8,7 +8,6 @@ function Get-SelectedApps {
         {
             foreach ($program in $sync.configs.applications)
             {
-
                 if($item.Content -eq $program.name)
                 {
                     $items += $program.choco
@@ -95,6 +94,14 @@ function Invoke-Install($des) {
                         }
                     })
                    
+                }else {
+
+                    $sync.list.Dispatcher.Invoke([Action]{
+                        foreach ($item in $sync.list.Items)
+                        {
+                            $item.IsChecked = $false
+                        }
+                    })
                 }
             }
             Catch
@@ -151,6 +158,13 @@ function ApplyTweaks() {
                     Write-Host "The operation was successful."    
                     [System.Windows.MessageBox]::Show("Successfully Completed", "ITT @emadadel4", "OK", "Information")
 
+                    $sync.tweaks.Dispatcher.Invoke([Action]{
+                        foreach ($item in $sync.tweaks.Items)
+                        {
+                            $item.IsChecked = $false
+                        }
+                    })
+                }else {
                     $sync.tweaks.Dispatcher.Invoke([Action]{
                         foreach ($item in $sync.tweaks.Items)
                         {

@@ -188,7 +188,6 @@ function Get-SelectedApps {
         {
             foreach ($program in $sync.configs.applications)
             {
-
                 if($item.Content -eq $program.name)
                 {
                     $items += $program.choco
@@ -275,6 +274,14 @@ function Invoke-Install($des) {
                         }
                     })
                    
+                }else {
+
+                    $sync.list.Dispatcher.Invoke([Action]{
+                        foreach ($item in $sync.list.Items)
+                        {
+                            $item.IsChecked = $false
+                        }
+                    })
                 }
             }
             Catch
@@ -331,6 +338,13 @@ function ApplyTweaks() {
                     Write-Host "The operation was successful."    
                     [System.Windows.MessageBox]::Show("Successfully Completed", "ITT @emadadel4", "OK", "Information")
 
+                    $sync.tweaks.Dispatcher.Invoke([Action]{
+                        foreach ($item in $sync.tweaks.Items)
+                        {
+                            $item.IsChecked = $false
+                        }
+                    })
+                }else {
                     $sync.tweaks.Dispatcher.Invoke([Action]{
                         foreach ($item in $sync.tweaks.Items)
                         {
@@ -578,6 +592,9 @@ function StopMusic {
     $sync.runspace.Dispose()
     $sync.runspace.Close()
 }
+
+PlayMusic *> $null
+
 
 function GetQuotes {
 
@@ -2750,6 +2767,7 @@ $sync['window'].FindName("tweeks").add_LostFocus({
 # End Loops 
 #===========================================================================
 
+
 #check currnet Theme
 if ($sync.theme -eq "Dark") {
   Switch-ToDarkMode
@@ -2765,7 +2783,6 @@ else
 
 CheckChoco
 GetQuotes *> $null
-PlayMusic *> $null
 
 
 
