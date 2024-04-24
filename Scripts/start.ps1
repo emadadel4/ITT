@@ -30,6 +30,7 @@ $sync.ProcessRunning = $false
 
 $sync.theme = "Light"
 $sync.isDarkMode = $sync.theme
+$sync.mediaPlayer = New-Object -ComObject WMPlayer.OCX
 
 
 $currentPid = [System.Security.Principal.WindowsIdentity]::GetCurrent()
