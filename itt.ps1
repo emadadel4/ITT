@@ -413,7 +413,6 @@ function Invoke-RunspaceWithScriptBlock {
         }
 }
 
-
 # Function to save items to JSON
 function SaveItemsToJson
 {
