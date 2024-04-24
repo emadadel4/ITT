@@ -79,7 +79,7 @@ function Invoke-Install($des) {
 
                    
                     $sync.des.Dispatcher.Invoke([Action]{
-                        $sync.des.Text = "Installing Selected Programes..."
+                        $sync.des.Text = "Downloading and Installing..."
                     })
 
                     Write-Host "Installing the following programs $choco "
@@ -103,7 +103,7 @@ function Invoke-Install($des) {
             }
 
             $sync.des.Dispatcher.Invoke([Action]{
-                $sync.des.Text = "Installed successfully, Check Start Menu"
+                $sync.des.Text = "Installed successfully"
             })
 
             Start-Sleep -Seconds 1
