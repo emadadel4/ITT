@@ -266,6 +266,20 @@ function Invoke-Install($des) {
                     Write-Host "Installs have finished"
                     [System.Windows.MessageBox]::Show("Installation Successfully Completed", "ITT @emadadel4", "OK", "Information")
 
+
+                    $sync.des.Dispatcher.Invoke([Action]{
+                        $sync.des.Text = "Installed successfully"
+                    })
+        
+                    Start-Sleep -Seconds 1
+                    $sync.ProcessRunning = $False
+
+
+                  
+                   
+                }
+                else
+                {
                     # Uncheck all checkboxes in $list
                     $sync.list.Dispatcher.Invoke([Action]{
                         foreach ($item in $sync.list.Items)
@@ -273,15 +287,7 @@ function Invoke-Install($des) {
                             $item.IsChecked = $false
                         }
                     })
-                   
-                }else {
-
-                    $sync.list.Dispatcher.Invoke([Action]{
-                        foreach ($item in $sync.list.Items)
-                        {
-                            $item.IsChecked = $false
-                        }
-                    })
+                 
                 }
             }
             Catch
@@ -289,12 +295,7 @@ function Invoke-Install($des) {
                 Write-Host "Error: $_"
             }
 
-            $sync.des.Dispatcher.Invoke([Action]{
-                $sync.des.Text = "Installed successfully"
-            })
-
-            Start-Sleep -Seconds 1
-            $sync.ProcessRunning = $False
+          
         }
     }
     else
