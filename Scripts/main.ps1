@@ -39,10 +39,10 @@ $sync['window'].FindName('save').add_click({
 $sync['window'].FindName('load').add_click({LoadJson})
 
 $sync['window'].add_Closing({
-  
   Write-Host "Bye see you soon :)"
-   Stop-Process -Id $PID
   
+  StopMusic
+
   })
 
 #===========================================================================
