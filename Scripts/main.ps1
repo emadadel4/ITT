@@ -44,9 +44,7 @@ $sync['window'].add_Closing({
 
   Write-Host "Bye see you soon :)"
   StopMusic
-  $script:powershell.Dispose()
-  $sync.runspace.Dispose()
-  $sync.runspace.Close()
+  StopAllRunspace
 
 })
 
