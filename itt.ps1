@@ -26,6 +26,7 @@ Add-Type -AssemblyName PresentationFramework.Aero
 
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
+$script:powershell = [powershell]::Create()
 $sync.PSScriptRoot = $PSScriptRoot
 $sync.version = "24.04.25"
 $sync.github = "https://github.com/emadadel4"
@@ -440,13 +441,14 @@ function SaveItemsToJson
         [System.Windows.MessageBox]::Show("You have to Select first", "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
     }
 }
+
 function Invoke-RunspaceWithScriptBlock {
     param(
         [scriptblock]$ScriptBlock,
         [array]$ArgumentList
     )
 
-        $script:powershell = [powershell]::Create()
+       
 
         # Add Scriptblock and Arguments to runspace
         $script:powershell.AddScript($ScriptBlock)
@@ -461,9 +463,17 @@ function Invoke-RunspaceWithScriptBlock {
             $script:powershell.Dispose()
             $sync.runspace.Dispose()
             $sync.runspace.Close()
-
             [System.GC]::Collect()
         }
+}
+
+function StopAllRunspace {
+    
+    $script:powershell.Dispose()
+    $sync.runspace.Dispose()
+    $sync.runspace.Close()
+    $script:powershell.Stop()
+    
 }
 #region Theme Functions
 
@@ -2816,9 +2826,7 @@ $sync['window'].add_Closing({
 
   Write-Host "Bye see you soon :)"
   StopMusic
-  $script:powershell.Dispose()
-  $sync.runspace.Dispose()
-  $sync.runspace.Close()
+  StopAllRunspace
 
 })
 
