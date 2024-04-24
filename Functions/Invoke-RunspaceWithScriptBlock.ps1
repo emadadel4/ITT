@@ -1,10 +1,11 @@
+
 function Invoke-RunspaceWithScriptBlock {
     param(
         [scriptblock]$ScriptBlock,
         [array]$ArgumentList
     )
 
-        $script:powershell = [powershell]::Create()
+       
 
         # Add Scriptblock and Arguments to runspace
         $script:powershell.AddScript($ScriptBlock)
@@ -19,7 +20,15 @@ function Invoke-RunspaceWithScriptBlock {
             $script:powershell.Dispose()
             $sync.runspace.Dispose()
             $sync.runspace.Close()
-
             [System.GC]::Collect()
         }
+}
+
+function StopAllRunspace {
+    
+    $script:powershell.Dispose()
+    $sync.runspace.Dispose()
+    $sync.runspace.Close()
+    $script:powershell.Stop()
+    
 }
