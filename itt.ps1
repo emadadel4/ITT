@@ -26,7 +26,6 @@ Add-Type -AssemblyName PresentationFramework.Aero
 
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
-$script:powershell = [powershell]::Create()
 $sync.PSScriptRoot = $PSScriptRoot
 $sync.version = "24.04.25"
 $sync.github = "https://github.com/emadadel4"
@@ -448,7 +447,7 @@ function Invoke-RunspaceWithScriptBlock {
         [array]$ArgumentList
     )
 
-       
+        $script:powershell = [powershell]::Create()
 
         # Add Scriptblock and Arguments to runspace
         $script:powershell.AddScript($ScriptBlock)
