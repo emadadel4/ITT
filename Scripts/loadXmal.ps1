@@ -42,6 +42,14 @@ catch {
     Write-Host "Unable to load Windows.Markup.XamlReader. Double-check syntax and ensure .net is installed."
 }
 
+
+# Catch controls
+$sync.AppsListView = $sync['window'].FindName("list")
+$sync.Description = $sync['window'].FindName("description")
+$sync.Quotes = $sync['window'].FindName("quotes")
+$sync.TweeaksListView = $sync['window'].FindName("tweaks")
+$sync.itemLink = $sync['window'].FindName('itemLink')
+
 #endregion
 #===========================================================================
 # End Load XMAL 

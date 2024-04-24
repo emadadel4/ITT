@@ -1,5 +1,8 @@
 
 
+CheckChoco
+GetQuotes *> $null
+
 #check currnet Theme
 if ($sync.theme -eq "Dark") {
   Switch-ToDarkMode
@@ -13,8 +16,7 @@ else
 
 
 
-CheckChoco
-GetQuotes *> $null
+
 
 
 
@@ -39,11 +41,14 @@ $sync['window'].FindName('save').add_click({
 $sync['window'].FindName('load').add_click({LoadJson})
 
 $sync['window'].add_Closing({
-  Write-Host "Bye see you soon :)"
-  
-  StopMusic
 
-  })
+  Write-Host "Bye see you soon :)"
+  StopMusic
+  $script:powershell.Dispose()
+  $sync.runspace.Dispose()
+  $sync.runspace.Close()
+
+})
 
 #===========================================================================
 # End Events 

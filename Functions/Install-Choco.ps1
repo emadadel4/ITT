@@ -29,7 +29,3 @@ function CheckChoco
         Write-Host "--Chocolatey failed to install---"
     }
 }
-
-
-
-

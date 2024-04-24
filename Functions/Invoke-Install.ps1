@@ -2,7 +2,7 @@ function Get-SelectedApps {
 
     $items = @()
 
-    foreach ($item in $sync['window'].FindName('list').Items)
+    foreach ($item in $sync.AppsListView.Items)
     {
         if ($item.IsChecked)
         {
@@ -23,7 +23,7 @@ function Get-SelectedTweeaks {
 
     $items = @()
 
-    foreach ($item in $sync['window'].FindName('tweaks').Items)
+    foreach ($item in $sync.TweeaksListView.Items)
     {
         if ($item.IsChecked)
         {
@@ -41,7 +41,7 @@ function Get-SelectedTweeaks {
     return $items 
 }
 
-function Invoke-Install($des) {
+function Invoke-Install{
 
 
     if($sync.ProcessRunning)
@@ -77,8 +77,8 @@ function Invoke-Install($des) {
                     $sync.ProcessRunning = $true
 
                    
-                    $sync.des.Dispatcher.Invoke([Action]{
-                        $sync.des.Text = "Downloading and Installing..."
+                    $sync.Description.Dispatcher.Invoke([Action]{
+                        $sync.Description.Text = "Downloading and Installing..."
                     })
 
                     Write-Host "Installing the following programs $choco "
@@ -87,8 +87,8 @@ function Invoke-Install($des) {
                     [System.Windows.MessageBox]::Show("Installation Successfully Completed", "ITT @emadadel4", "OK", "Information")
 
 
-                    $sync.des.Dispatcher.Invoke([Action]{
-                        $sync.des.Text = "Installed successfully"
+                    $sync.description.Dispatcher.Invoke([Action]{
+                        $sync.description.Text = "Installed successfully"
                     })
         
                     Start-Sleep -Seconds 1
@@ -101,8 +101,8 @@ function Invoke-Install($des) {
                 else
                 {
                     # Uncheck all checkboxes in $list
-                    $sync.list.Dispatcher.Invoke([Action]{
-                        foreach ($item in $sync.list.Items)
+                    $sync.AppsListView.Dispatcher.Invoke([Action]{
+                        foreach ($item in $sync.AppsListView.Items)
                         {
                             $item.IsChecked = $false
                         }
@@ -150,8 +150,8 @@ function ApplyTweaks() {
                 {
                     $sync.ProcessRunning = $true
 
-                    $sync.des.Dispatcher.Invoke([Action]{
-                        $sync.des.Text = "Applying..."
+                    $sync.description.Dispatcher.Invoke([Action]{
+                        $sync.description.Text = "Applying..."
                     })
 
                     #Write-Host "Applying tweeak(s) $tweeaks "
@@ -165,9 +165,22 @@ function ApplyTweaks() {
                             $item.IsChecked = $false
                         }
                     })
-                }else {
-                    $sync.tweaks.Dispatcher.Invoke([Action]{
-                        foreach ($item in $sync.tweaks.Items)
+
+                 
+                    $sync.description.Dispatcher.Invoke([Action]{
+                        $sync.description.Text = "Done..."
+                    })
+
+                    Start-Sleep -Seconds 1
+                    $sync.ProcessRunning = $False
+
+               
+
+                }
+                else 
+                {
+                    $sync.TweeaksListView.Dispatcher.Invoke([Action]{
+                        foreach ($item in $sync.TweeaksListView.Items)
                         {
                             $item.IsChecked = $false
                         }
@@ -178,13 +191,7 @@ function ApplyTweaks() {
             {
                 Write-Host "Error: $_"
             }
-
-            $sync.des.Dispatcher.Invoke([Action]{
-                $sync.des.Text = "Done..."
-            })
-
-            Start-Sleep -Seconds 1
-            $sync.ProcessRunning = $False
+         
         }
     }
     else
