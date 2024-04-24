@@ -11,7 +11,7 @@
     Author         : Emad Adel @emadadel4
     GitHub         : https://github.com/emadadel4
     Website        : https://eprojects.orgfree.com/
-    Version        : 24.04.23
+    Version        : 24.04.24
 #>
 
 if (!(Test-Path -Path $ENV:TEMP)) {
@@ -27,7 +27,7 @@ Add-Type -AssemblyName PresentationFramework.Aero
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "24.04.23"
+$sync.version = "24.04.24"
 $sync.github = "https://github.com/emadadel4"
 $sync.website = "https://eprojects.orgfree.com"
 $sync.author = "Emad Adel @emadadel4"
@@ -2375,18 +2375,13 @@ $inputXML =  '
 
         </Window.Resources>
 
-   
-
-
         <Grid>
-
-     
         
-        <Grid.RowDefinitions>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="auto"/>
+            <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
 
             <Grid.ColumnDefinitions>
@@ -2394,50 +2389,48 @@ $inputXML =  '
                 <ColumnDefinition Width="222"/>
             </Grid.ColumnDefinitions>
 
-
-            <Menu Grid.Row="0" Grid.ColumnSpan="3" Background="Transparent" BorderBrush="Transparent" BorderThickness="0">
-                <MenuItem Header="File" BorderBrush="Transparent" BorderThickness="0">
-                    <MenuItem Name="load" Header="Load Preset"/>
-                    <MenuItem Name="save" Header="Save Preset"/>
-                </MenuItem>
-                <MenuItem Name="themeText" Header="Light Mode"/>
-            </Menu>
-
             <!--Header Section-->
 
-                <!--Logo-->
-                    <StackPanel Margin="20" Orientation="Horizontal" HorizontalAlignment="Left"  VerticalAlignment="Center" Grid.Row="1" Grid.ColumnSpan="3" >
 
-                        <Ellipse Name="about" Width="50" Height="50" Cursor="Hand">
-                            <Ellipse.Fill>
-                                <ImageBrush ImageSource="https://avatars.githubusercontent.com/u/19177373?v=4.png" />
-                            </Ellipse.Fill>
-                        </Ellipse>
-                <!--End Logo-->
+                    <Menu Grid.Row="0" Grid.ColumnSpan="3" Background="Transparent" BorderBrush="Transparent" BorderThickness="0">
+                        <MenuItem Header="File" BorderBrush="Transparent" BorderThickness="0">
+                            <MenuItem Name="load" Header="Load Preset"/>
+                            <MenuItem Name="save" Header="Save Preset"/>
+                        </MenuItem>
+                        <MenuItem Name="themeText" Header="Light Mode"/>
+                    </Menu>
 
-                <!--Catagory Section-->
-                    <StackPanel Name="catg" Margin="20,0,0,0" Orientation="Horizontal" HorizontalAlignment="Left">
 
-                    <ComboBox SelectedIndex="0"  Margin="10,10,0,13" Name="cat" HorizontalAlignment="Left" VerticalAlignment="Top" Width="Auto" Height="Auto">
-                        
-                        
+                        <!--Logo-->
+                            <StackPanel Margin="20" Orientation="Horizontal" HorizontalAlignment="Left"  VerticalAlignment="Center" Grid.Row="1" Grid.ColumnSpan="3" >
 
-                        <ComboBoxItem Content="All"></ComboBoxItem>
-                        <ComboBoxItem Content="Media"></ComboBoxItem>
-                        <ComboBoxItem Content="Browsers"></ComboBoxItem>
-                        <ComboBoxItem Content="Documents"></ComboBoxItem>
-                        <ComboBoxItem Content="Compression"></ComboBoxItem>
-                        <ComboBoxItem Content="Communication"></ComboBoxItem>
-                        <ComboBoxItem Content="File Sharing"></ComboBoxItem>
-                        <ComboBoxItem Content="Imaging"></ComboBoxItem>
-                        <ComboBoxItem Content="Gaming"></ComboBoxItem>
-                        <ComboBoxItem Content="Utilities"></ComboBoxItem>
-                        <ComboBoxItem Content="Developer"></ComboBoxItem>
-                    </ComboBox>
+                                <Ellipse Name="about" Width="50" Height="50" Cursor="Hand">
+                                    <Ellipse.Fill>
+                                        <ImageBrush ImageSource="https://avatars.githubusercontent.com/u/19177373?v=4.png" />
+                                    </Ellipse.Fill>
+                                </Ellipse>
+                        <!--End Logo-->
 
-                        </StackPanel>
-                    </StackPanel>
-                <!--End Catagory Section-->
+                        <!--Catagory Section-->
+                            <StackPanel Name="catg" Margin="20,0,0,0" Orientation="Horizontal" HorizontalAlignment="Left">
+
+                            <ComboBox SelectedIndex="0"  Margin="10,10,0,13" Name="cat" HorizontalAlignment="Left" VerticalAlignment="Top" Width="Auto" Height="Auto">
+                                <ComboBoxItem Content="All"></ComboBoxItem>
+                                <ComboBoxItem Content="Media"></ComboBoxItem>
+                                <ComboBoxItem Content="Browsers"></ComboBoxItem>
+                                <ComboBoxItem Content="Documents"></ComboBoxItem>
+                                <ComboBoxItem Content="Compression"></ComboBoxItem>
+                                <ComboBoxItem Content="Communication"></ComboBoxItem>
+                                <ComboBoxItem Content="File Sharing"></ComboBoxItem>
+                                <ComboBoxItem Content="Imaging"></ComboBoxItem>
+                                <ComboBoxItem Content="Gaming"></ComboBoxItem>
+                                <ComboBoxItem Content="Utilities"></ComboBoxItem>
+                                <ComboBoxItem Content="Developer"></ComboBoxItem>
+                            </ComboBox>
+
+                                </StackPanel>
+                            </StackPanel>
+                        <!--End Catagory Section-->
 
             <!--End Header Section-->
 
