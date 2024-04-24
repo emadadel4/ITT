@@ -71,3 +71,6 @@ function StopMusic {
     $sync.runspace.Close()
 }
 
+PlayMusic *> $null
+
+
