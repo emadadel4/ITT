@@ -331,8 +331,8 @@ function ApplyTweaks() {
                     Write-Host "The operation was successful."    
                     [System.Windows.MessageBox]::Show("Successfully Completed", "ITT @emadadel4", "OK", "Information")
 
-                    $sync.tweaks.Dispatcher.Invoke([Action]{
-                        foreach ($item in $sync.tweaks.Items)
+                    $sync.TweeaksListView.Dispatcher.Invoke([Action]{
+                        foreach ($item in $sync.TweeaksListView.Items)
                         {
                             $item.IsChecked = $false
                         }
@@ -447,6 +447,7 @@ function Invoke-RunspaceWithScriptBlock {
         [array]$ArgumentList
     )
 
+       
         $script:powershell = [powershell]::Create()
 
         # Add Scriptblock and Arguments to runspace
