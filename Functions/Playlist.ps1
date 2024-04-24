@@ -65,6 +65,9 @@ function StopMusic {
 
     $sync.mediaPlayer.controls.stop()
     $sync.mediaPlayer = $null
-    Invoke-RunspaceWithScriptBlock -ScriptBlock {$null}
+
+    $script:powershell.Dispose()
+    $sync.runspace.Dispose()
+    $sync.runspace.Close()
 }
 
