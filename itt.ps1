@@ -227,6 +227,7 @@ function Invoke-Install{
 
     if(Get-SelectedApps -ne $null)
     {
+
         Invoke-RunspaceWithScriptBlock -ArgumentList  $choco -ScriptBlock {
 
             param($choco)
@@ -248,6 +249,10 @@ function Invoke-Install{
 
                     $sync.ProcessRunning = $true
 
+                    $sync.installBtn.Dispatcher.Invoke([Action]{
+                        $sync.installBtn.Content = "Installing..."
+                    })
+
                    
                     $sync.Description.Dispatcher.Invoke([Action]{
                         $sync.Description.Text = "Downloading and Installing..."
@@ -262,11 +267,16 @@ function Invoke-Install{
                     $sync.description.Dispatcher.Invoke([Action]{
                         $sync.description.Text = "Installed successfully"
                     })
+
+                  
         
                     Start-Sleep -Seconds 1
                     $sync.ProcessRunning = $False
 
 
+                    $sync.installBtn.Dispatcher.Invoke([Action]{
+                        $sync.installBtn.Content = "Install"
+                    })
                   
                    
                 }
@@ -310,6 +320,7 @@ function ApplyTweaks() {
 
     if(Get-SelectedTweeaks -ne $null)
     {
+
         Invoke-RunspaceWithScriptBlock -ArgumentList  $tweeaks -ScriptBlock {
 
             param($tweeaks)
@@ -2573,6 +2584,7 @@ $inputXML =  '
                         Name="installBtn"
                         Content="Install"
                         FontSize="15"
+                        Visibility="Hidden"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Bottom"
                         Width="100" Height="40" Margin="50"/>
@@ -2661,6 +2673,8 @@ $sync.Description = $sync['window'].FindName("description")
 $sync.Quotes = $sync['window'].FindName("quotes")
 $sync.TweeaksListView = $sync['window'].FindName("tweaks")
 $sync.itemLink = $sync['window'].FindName('itemLink')
+
+$sync.installBtn = $sync['window'].FindName('installBtn') 
 
 #endregion
 #===========================================================================
