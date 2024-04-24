@@ -1,12 +1,10 @@
-#region Generate tweaks from json file
-$sync.tweaks = $sync['window'].FindName("tweaks")
 
 # Add loaded event handler
-$sync['window'].FindName("tweeks").add_Loaded({
+$sync['window'].FindName("tweaks").add_Loaded({
    
     # Add selection changed event handler
-    $sync.tweaks.Add_SelectionChanged({
-        $selectedItem = $sync.tweaks.SelectedItem.Content
+    $sync['window'].FindName("tweaks").Add_SelectionChanged({
+        $selectedItem = $sync['window'].FindName("tweaks").SelectedItem.Content
         foreach ($data in $sync.configs.tweaks) {
             if ($data.name -eq $selectedItem) {
                 $sync['window'].FindName('description').Text = $data.description
@@ -20,7 +18,7 @@ $sync['window'].FindName("tweeks").add_Loaded({
     # Add mouse left button down event handler for item link
     $sync['window'].FindName('itemLink').add_MouseLeftButtonDown({
 
-        $selectedItem = $sync.tweaks.SelectedItem.Content
+        $selectedItem = $sync['window'].FindName("tweaks").SelectedItem.Content
 
         foreach ($data in $sync.configs.tweaks) {
             if ($selectedItem -eq $data.name -and $data.repo -ne "null") {
@@ -30,15 +28,19 @@ $sync['window'].FindName("tweeks").add_Loaded({
         }
     })
 
+    $sync['window'].FindName("tweeks").add_LostFocus({
+
+        $sync['window'].FindName("tweaks").SelectedItem = $null
+        $sync['window'].FindName('list').SelectedItem = $null
+        #$sync['window'].FindName('itemLink').Visibility = "Hidden"
+        $sync['window'].FindName('description').Text = ""
+    })
+    
+ 
 })
 
 
-$sync['window'].FindName("tweeks").add_LostFocus({
-    $sync.tweaks.SelectedItem = $null
-})
 
-
-#endregion
 #===========================================================================
 # End Loops 
 #===========================================================================
