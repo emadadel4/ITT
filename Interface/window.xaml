@@ -141,6 +141,7 @@
                         Name="installBtn"
                         Content="Install"
                         FontSize="15"
+                        Visibility="Hidden"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Bottom"
                         Width="100" Height="40" Margin="50"/>
