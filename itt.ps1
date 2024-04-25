@@ -67,8 +67,9 @@ if (!(Test-Path $sync.registryPath)) {
 }
 
 #===========================================================================
-# Start functions
+#region Start functions
 #===========================================================================
+
 function About{
 
     $authorInfo = @"
@@ -80,7 +81,6 @@ function About{
 
     Show-CustomDialog -Message $authorInfo -Width 400 
 }
-
 #region Function to filter a list based on a search input
     function Search{
         
@@ -305,8 +305,6 @@ function Invoke-Install{
         [System.Windows.MessageBox]::Show("Select at lest one program", "ITT @emadadel", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Question)
     }
 }
-
-
 function ApplyTweaks() {
 
     if($sync.ProcessRunning)
@@ -610,7 +608,6 @@ function StopMusic {
 }
 
 #endregion
-
 function GetQuotes {
 
     Invoke-RunspaceWithScriptBlock -ScriptBlock {
@@ -821,9 +818,10 @@ function ChangeTap() {
     }
 }
 
-#===========================================================================
-# End functions
-#===========================================================================
+#====================================================================================
+#endregion End functions
+#====================================================================================
+
 $sync.configs.applications = '[
   {
     "Name": "Thorium",
@@ -2210,7 +2208,7 @@ $inputXML =  '
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         x:Name="Window" Title="ITT @emadadel4" WindowStartupLocation = "CenterScreen" 
         Background="{DynamicResource BGColor}"
-        Height="600" Width="955" MinWidth="677" MinHeight="400" ShowInTaskbar = "True" Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/icon.ico">
+        Height="500" Width="755" MinWidth="755" MinHeight="400" ShowInTaskbar = "True" Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/icon.ico">
     
         <Window.Resources>
 
@@ -2320,7 +2318,7 @@ $inputXML =  '
 
 <!--ListViewItem Style-->
     <Style TargetType="ListViewItem">
-    <Setter Property="Background" Value="{DynamicResource FGColor}"/>
+        <Setter Property="Background" Value="{DynamicResource FGColor}"/>
     </Style>
 <!--End ListViewItem Style-->
 
@@ -2401,33 +2399,64 @@ $inputXML =  '
   </Style>
 <!--End Scrollbar Thumbs-->
 
+<!--TabControl Style-->
+    <Style TargetType="TabItem">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TabItem">
+                    <Border Name="Border" CornerRadius="15" BorderThickness="0,0,0,0" Padding="5" BorderBrush="Gainsboro"  Margin="10,5">
+                        <ContentPresenter x:Name="ContentSite"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center"
+                        ContentSource="Header"
+                        Margin="10,2"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter TargetName="Border" Property="Background" Value="{DynamicResource BGButtonColor}" />
+                            <Setter Property="Foreground" Value="White" />
+
+                        </Trigger>
+                        <Trigger Property="IsSelected" Value="False">
+                            <Setter TargetName="Border" Property="Background" Value="{DynamicResource FGColor}" />
+                            <Setter Property="Foreground" Value="{DynamicResource DefaultTextColor}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+<!--End TabControl Style-->
+
             
-            <!--Light Theme-->
+            <!--Light Theme styles-->
 
-        <!-- Light mode styles -->
-  <ResourceDictionary x:Key="LightTheme">
-          <SolidColorBrush x:Key="BGColor" Color="White"/>
-          <SolidColorBrush x:Key="FGColor" Color="WhiteSmoke"/>
-          <SolidColorBrush x:Key="BGButtonColor" Color="#382bf0  " />
-          <SolidColorBrush x:Key="FGButtonColor" Color="White" />
-          <SolidColorBrush x:Key="FGTextColor" Color="Black" />
-          <SolidColorBrush x:Key="DefaultTextColor" Color="Black"/>
-          <SolidColorBrush x:Key="BorderBrush" Color="#212121"/>
-  </ResourceDictionary>
+        <!--Light mode -->
+                <ResourceDictionary x:Key="LightTheme">
+                        <SolidColorBrush x:Key="BGColor" Color="White"/>
+                        <SolidColorBrush x:Key="FGColor" Color="WhiteSmoke"/>
+                        <SolidColorBrush x:Key="BGButtonColor" Color="#382bf0  " />
+                        <SolidColorBrush x:Key="FGButtonColor" Color="White" />
+                        <SolidColorBrush x:Key="FGTextColor" Color="Black" />
+                        <SolidColorBrush x:Key="DefaultTextColor" Color="Black"/>
+                        <SolidColorBrush x:Key="BorderBrush" Color="#212121"/>
+                </ResourceDictionary>
+        <!--Light mode -->
 
-  <!-- Dark mode styles -->
-  <ResourceDictionary x:Key="DarkTheme">
-          <SolidColorBrush x:Key="BGColor" Color="#121212 "/>
-          <SolidColorBrush x:Key="FGColor" Color="#282828"/>
-          <SolidColorBrush x:Key="BGButtonColor" Color="#1DB954" />
-          <SolidColorBrush x:Key="FGButtonColor" Color="White" />
-          <SolidColorBrush x:Key="FGTextColor" Color="WhiteSmoke" />
-          <SolidColorBrush x:Key="DefaultTextColor" Color="White"/>
-          <SolidColorBrush x:Key="BorderBrush" Color="WhiteSmoke" />
-  </ResourceDictionary>
+        <!--Dark mode-->
+                <ResourceDictionary x:Key="DarkTheme">
+                        <SolidColorBrush x:Key="BGColor" Color="#121212 "/>
+                        <SolidColorBrush x:Key="FGColor" Color="#282828"/>
+                        <SolidColorBrush x:Key="BGButtonColor" Color="#1DB954" />
+                        <SolidColorBrush x:Key="FGButtonColor" Color="White" />
+                        <SolidColorBrush x:Key="FGTextColor" Color="WhiteSmoke" />
+                        <SolidColorBrush x:Key="DefaultTextColor" Color="White"/>
+                        <SolidColorBrush x:Key="BorderBrush" Color="WhiteSmoke" />
+                </ResourceDictionary>
+        <!--Dark mode -->
 
- 
-  
+<!--Light Theme-->
+
 
         </Window.Resources>
 
@@ -2493,36 +2522,6 @@ $inputXML =  '
 
                 <!--TabControl-->
         <TabControl x:Name="taps" TabStripPlacement="Left" Margin="0, 10, 0, 10" Grid.Row="2"  BorderBrush="Transparent" Foreground="White" Background="Transparent">
-                <TabControl.Resources>
-
-
-                    <Style TargetType="TabItem">
-                        <Setter Property="Template">
-                            <Setter.Value>
-                                <ControlTemplate TargetType="TabItem">
-                                    <Border Name="Border" CornerRadius="15" BorderThickness="0,0,0,0" Padding="5" BorderBrush="Gainsboro"  Margin="10,5">
-                                        <ContentPresenter x:Name="ContentSite"
-                                        VerticalAlignment="Center"
-                                        HorizontalAlignment="Center"
-                                        ContentSource="Header"
-                                        Margin="10,2"/>
-                                    </Border>
-                                    <ControlTemplate.Triggers>
-                                        <Trigger Property="IsSelected" Value="True">
-                                            <Setter TargetName="Border" Property="Background" Value="{DynamicResource BGButtonColor}" />
-                                            <Setter Property="Foreground" Value="White" />
-
-                                        </Trigger>
-                                        <Trigger Property="IsSelected" Value="False">
-                                            <Setter TargetName="Border" Property="Background" Value="{DynamicResource FGColor}" />
-                                            <Setter Property="Foreground" Value="{DynamicResource DefaultTextColor}" />
-                                        </Trigger>
-                                    </ControlTemplate.Triggers>
-                                </ControlTemplate>
-                            </Setter.Value>
-                        </Setter>
-                    </Style>
-                </TabControl.Resources>
                 <TabItem Header="Apps" Name="apps" BorderBrush="{x:Null}" Padding="16">
                     <TabItem.Content>
                         <ListView Margin="10" ScrollViewer.VerticalScrollBarVisibility="Auto" Name="list" BorderBrush="{x:Null}" Background="{x:Null}">
@@ -2644,10 +2643,9 @@ $inputXML =  '
 
 '
 #===========================================================================
-# Load XMAL 
+#region Load XMAL 
 #===========================================================================
 
-#region Load XMAL
 # Set the maximum number of threads for the RunspacePool to the number of threads on the machine
 $maxthreads = [int]$env:NUMBER_OF_PROCESSORS
 
@@ -2697,14 +2695,13 @@ $sync.itemLink = $sync['window'].FindName('itemLink')
 
 $sync.installBtn = $sync['window'].FindName('installBtn') 
 
-#endregion
 #===========================================================================
-# End Load XMAL 
+#endregion End Load XMAL 
 #===========================================================================
 
 
 #===========================================================================
-# Loops 
+#region Start Loops
 #===========================================================================
 
 # Define a function to update the description and link when an item is selected
@@ -2767,9 +2764,6 @@ $sync.AppsListView.add_Loaded({
 
     })
 
-
-#endregion
-
 # Add loaded event handler
 $sync.TweeaksListView.add_Loaded({
    
@@ -2813,8 +2807,9 @@ $sync.TweeaksListView.add_LostFocus({
 })
 
 #===========================================================================
-# End Loops 
+#endregion End Loopss 
 #===========================================================================
+
 
 CheckChoco
 GetQuotes *> $null
@@ -2830,10 +2825,10 @@ else
   $sync.isDarkMode = "Light"
 }
 
+#===========================================================================
+#region Start Events
+#===========================================================================
 
-#===========================================================================
-# Events 
-#===========================================================================
 # Buttons
 $sync['window'].FindName('taps').add_SelectionChanged({ChangeTap})
 $sync['window'].FindName('installBtn').add_click({Invoke-Install})
@@ -2859,8 +2854,7 @@ $sync['window'].add_Closing({
 
 })
 
-#===========================================================================
-# End Events 
+#endregion End Events 
 #===========================================================================
 
 PlayMusic *> $null
