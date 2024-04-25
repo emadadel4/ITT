@@ -104,7 +104,7 @@
 
 <!--ListViewItem Style-->
     <Style TargetType="ListViewItem">
-    <Setter Property="Background" Value="{DynamicResource FGColor}"/>
+        <Setter Property="Background" Value="{DynamicResource FGColor}"/>
     </Style>
 <!--End ListViewItem Style-->
 
@@ -184,3 +184,32 @@
       </Setter>
   </Style>
 <!--End Scrollbar Thumbs-->
+
+<!--TabControl Style-->
+    <Style TargetType="TabItem">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TabItem">
+                    <Border Name="Border" CornerRadius="15" BorderThickness="0,0,0,0" Padding="5" BorderBrush="Gainsboro"  Margin="10,5">
+                        <ContentPresenter x:Name="ContentSite"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center"
+                        ContentSource="Header"
+                        Margin="10,2"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter TargetName="Border" Property="Background" Value="{DynamicResource BGButtonColor}" />
+                            <Setter Property="Foreground" Value="White" />
+
+                        </Trigger>
+                        <Trigger Property="IsSelected" Value="False">
+                            <Setter TargetName="Border" Property="Background" Value="{DynamicResource FGColor}" />
+                            <Setter Property="Foreground" Value="{DynamicResource DefaultTextColor}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+<!--End TabControl Style-->
