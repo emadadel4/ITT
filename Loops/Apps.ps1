@@ -1,7 +1,7 @@
 
 
 #===========================================================================
-# Loops 
+#region Start Loops
 #===========================================================================
 
 # Define a function to update the description and link when an item is selected
@@ -63,6 +63,3 @@ $sync.AppsListView.add_Loaded({
         $sync.Description.Text = ""
 
     })
-
-
-#endregion
