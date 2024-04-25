@@ -2,8 +2,7 @@
 function PlayMusic {
 
     # RUN MUSIC IN BACKGROUND
-    Invoke-RunspaceWithScriptBlock -ScriptBlock
-    {
+    Invoke-RunspaceWithScriptBlock -ScriptBlock {
 
         Function PlayAudio($url)
         {
@@ -20,10 +19,14 @@ function PlayMusic {
         }
 
         # Function to shuffle the playlist
-        Function ShuffleArray {
+        Function ShuffleArray
+        {
             param([array]$array)
+
             $count = $array.Length
-            for ($i = 0; $i -lt $count; $i++) {
+
+            for ($i = 0; $i -lt $count; $i++)
+            {
                 $randomIndex = Get-Random -Minimum $i -Maximum $count
                 $temp = $array[$i]
                 $array[$i] = $array[$randomIndex]
@@ -35,11 +38,14 @@ function PlayMusic {
         ShuffleArray -array $sync.configs.OST.Tracks
 
         # Function to play the entire shuffled playlist
-        Function PlayShuffledPlaylist {
-            foreach ($url in $sync.configs.OST.Tracks) {
+        Function PlayShuffledPlaylist
+        {
+            foreach ($url in $sync.configs.OST.Tracks)
+            {
                 PlayAudio $url
                 # Wait for the track to finish playing
-                while ( $sync.mediaPlayer.playState -eq 3 -or  $sync.mediaPlayer.playState -eq 6) {
+                while ( $sync.mediaPlayer.playState -eq 3 -or  $sync.mediaPlayer.playState -eq 6)
+                {
                     Start-Sleep -Milliseconds 100
                 }
             }
@@ -62,5 +68,6 @@ function StopMusic {
     $sync.runspace.Dispose()
     $sync.runspace.Close()
 }
+
 #endregion
 
