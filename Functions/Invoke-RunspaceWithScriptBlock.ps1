@@ -6,6 +6,7 @@ function Invoke-RunspaceWithScriptBlock {
     )
 
        
+        $script:powershell = [powershell]::Create()
 
         # Add Scriptblock and Arguments to runspace
         $script:powershell.AddScript($ScriptBlock)
