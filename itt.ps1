@@ -613,7 +613,6 @@ $sync.runspace.Close()
 }
 #endregion
 
-
 function GetQuotes {
 
     Invoke-RunspaceWithScriptBlock -ScriptBlock {
@@ -2797,7 +2796,6 @@ $sync.TweeaksListView.add_LostFocus({
 #===========================================================================
 
 CheckChoco
-PlayMusic *> $null
 GetQuotes *> $null
 
 #check currnet Theme
@@ -2849,6 +2847,5 @@ $sync['window'].add_Closing({
 # End Events 
 #===========================================================================
 
-
-
+PlayMusic *> $null
 $sync["window"].ShowDialog() | out-null
