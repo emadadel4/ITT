@@ -50,6 +50,8 @@ $sync.Quotes = $sync['window'].FindName("quotes")
 $sync.TweeaksListView = $sync['window'].FindName("tweaks")
 $sync.itemLink = $sync['window'].FindName('itemLink')
 
+$sync.installBtn = $sync['window'].FindName('installBtn') 
+
 #endregion
 #===========================================================================
 # End Load XMAL 
