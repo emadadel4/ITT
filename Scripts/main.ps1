@@ -1,6 +1,5 @@
 
 CheckChoco
-PlayMusic *> $null
 GetQuotes *> $null
 
 #check currnet Theme
@@ -13,11 +12,6 @@ else
   Switch-ToLightMode
   $sync.isDarkMode = "Light"
 }
-
-
-
-
-
 
 
 #===========================================================================
@@ -52,6 +46,5 @@ $sync['window'].add_Closing({
 # End Events 
 #===========================================================================
 
-
-
+PlayMusic *> $null
 $sync["window"].ShowDialog() | out-null
