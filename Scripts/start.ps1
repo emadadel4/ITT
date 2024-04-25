@@ -19,7 +19,6 @@ Add-Type -AssemblyName PresentationFramework.Aero
 
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
-$script:powershell = [powershell]::Create()
 $sync.PSScriptRoot = $PSScriptRoot
 $sync.version = "#{replaceme}"
 $sync.github = "https://github.com/emadadel4"
