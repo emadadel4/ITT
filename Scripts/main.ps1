@@ -1,6 +1,6 @@
 
-
 CheckChoco
+PlayMusic *> $null
 GetQuotes *> $null
 
 #check currnet Theme
