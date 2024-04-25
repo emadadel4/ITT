@@ -555,7 +555,8 @@ $audioUrls = @(
     "https://archive.org/download/GrandTheftAuto4ThemeSong_201904/Grand%20Theft%20Auto%204%20Theme%20Song.mp3",
     "https://epsilon.vgmsite.com/soundtracks/assassin-s-creed-2/jlrprchapt/1-03%20Ezio%27s%20Family.mp3",
     "https://epsilon.vgmsite.com/soundtracks/assassin-s-creed-2/nkantwuktr/1-01%20Earth.mp3",
-    "https://epsilon.vgmsite.com/soundtracks/mass-effect-3-gamerip-2012/nchtmgcz/304.%20End%20of%20Cycle.mp3"
+    "https://epsilon.vgmsite.com/soundtracks/mass-effect-3-gamerip-2012/nchtmgcz/304.%20End%20of%20Cycle.mp3",
+    "https://archive.org/download/Cairokee-Roma/07%20-%20Roma.mp3"
 )
 
 Function PlayAudio($url) {
@@ -2038,7 +2039,11 @@ $sync.configs.Quotes = '{
     "الحقيقة تجعلك حرًا",
     "الحياة قصيرة، استخدمها بحكمة",
     "ما الفرق ما بين الناقة والجمل",
-    "العادلة شيئ و القانون شيئ"
+    "العادلة شيئ و القانون شيئ",
+    "ألحرية لا تُعطى بل تأخذ",
+    "ما أخذ بالقوة لا يٌسترد إلا بالقوة",
+    "الجهل سيئ و من صناعة الانظمة سلاح بينفع في كل زمان",
+    "الدنيا أختبار و احنا زي النار هنور ولا هنحرق؟"
   ]
 }
 ' | ConvertFrom-Json
@@ -2808,11 +2813,6 @@ else
   Switch-ToLightMode
   $sync.isDarkMode = "Light"
 }
-
-
-
-
-
 
 
 #===========================================================================
