@@ -23,7 +23,6 @@
     </Style>
 <!--End Button Style-->
 
-
 <!--Textbox Style-->
   <Style TargetType="TextBox">
       <Setter Property="Foreground" Value="{DynamicResource FGTextColor}"/>
@@ -70,7 +69,6 @@
   </Style>
 <!--End Menu Style-->
 
-
 <!--MenuItem Style-->
   <Style TargetType="MenuItem">
       <Setter Property="Background" Value="{DynamicResource BGColor}"/>
@@ -105,9 +103,9 @@
 <!--End MenuItem Style-->
 
 <!--ListViewItem Style-->
-  <Style TargetType="ListViewItem">
-  <Setter Property="Background" Value="{DynamicResource FGColor}"/>
-</Style>
+    <Style TargetType="ListViewItem">
+    <Setter Property="Background" Value="{DynamicResource FGColor}"/>
+    </Style>
 <!--End ListViewItem Style-->
 
 <!--Scrollbar Thumbs-->
