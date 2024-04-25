@@ -156,7 +156,7 @@
     "Description": "FastStone Image Viewer is a fast, stable, user-friendly image browser, converter and editor ",
     "winget": "#",
     "choco": "fsviewer",
-    "category": "Media",
+    "category": "Imaging",
     "check": "false"
   },
   {
@@ -472,18 +472,18 @@
     "check": "false"
   },
   {
-    "Name": "Origin",
-    "Description": "----------------",
-    "winget": "#",
-    "choco": "origin",
-    "category": "Developer",
-    "check": "false"
-  },
-  {
     "Name": "Ubisoft Connect",
     "Description": "A digital distribution, digital rights management, multiplayer, and communications service developed by Ubisoft, providing access to Ubisoft's games, rewards, and social features.",
     "winget": "Ubisoft.Connect",
     "choco": "ubisoft-connect",
+    "category": "Gaming",
+    "check": "false"
+  },
+  {
+    "Name": "Origin",
+    "Description":" Game store launcher",
+    "winget": "#",
+    "choco": "origin",
     "category": "Gaming",
     "check": "false"
   },
@@ -804,7 +804,7 @@
     "Description": "A remote desktop software that allows users to access and control Windows, macOS, Linux, Android, and iOS devices from anywhere, providing secure and reliable remote access.",
     "winget": "AnyDeskSoftwareGmbH.AnyDesk",
     "choco": "anydesk.install",
-    "category": "Utilities",
+    "category": "File Sharing",
     "check": "false"
   },
   {
@@ -812,7 +812,7 @@
     "Description": "AirDroid is a free and fast Android device manager app that allows you to access Android phone/tablet from computer remotely and securely. Manage SMS, files, photos and videos, WhatsApp, Line, WeChat and more on computer.",
     "winget": "#",
     "choco": "airdroid",
-    "category": "Utilities",
+    "category": "File Sharing",
     "check": "false"
   },
   {
@@ -820,7 +820,7 @@
     "Description": "Remote control to support your clients / partners from everywhere.",
     "winget": "#",
     "choco": "ultraviewer",
-    "category": "Utilities",
+    "category": "File Sharing",
     "check": "false"
   },
   {
@@ -836,7 +836,7 @@
     "Description": "A free and open-source BitTorrent client for downloading and uploading files via the BitTorrent protocol, providing users with a lightweight and feature-rich torrenting experience.",
     "winget": "qBittorrent.qBittorrent",
     "choco": "qbittorrent",
-    "category": "Utilities",
+    "category": "File Sharing",
     "check": "false"
   },
   {
@@ -844,7 +844,7 @@
     "Description": "Google Earth Pro on desktop is free for users with advanced feature needs. Import and export GIS data, and go back in time with historical imagery.",
     "winget": "#",
     "choco": "googleearthpro",
-    "category": "Utilities",
+    "category": "Imaging",
     "check": "false"
   },
   {
