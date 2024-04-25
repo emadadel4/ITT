@@ -66,6 +66,7 @@
                                 <ComboBoxItem Content="Gaming"></ComboBoxItem>
                                 <ComboBoxItem Content="Utilities"></ComboBoxItem>
                                 <ComboBoxItem Content="Developer"></ComboBoxItem>
+                                <ComboBoxItem Content="Security"></ComboBoxItem>
                             </ComboBox>
 
                                 </StackPanel>
