@@ -556,7 +556,8 @@ $audioUrls = @(
     "https://epsilon.vgmsite.com/soundtracks/assassin-s-creed-2/jlrprchapt/1-03%20Ezio%27s%20Family.mp3",
     "https://epsilon.vgmsite.com/soundtracks/assassin-s-creed-2/nkantwuktr/1-01%20Earth.mp3",
     "https://epsilon.vgmsite.com/soundtracks/mass-effect-3-gamerip-2012/nchtmgcz/304.%20End%20of%20Cycle.mp3",
-    "https://archive.org/download/Cairokee-Roma/07%20-%20Roma.mp3"
+    "https://archive.org/download/Cairokee-Roma/07%20-%20Roma.mp3",
+    "https://archive.org/download/Cairokee-Roma/08%20-%20Basrah%20w%20Atooh.mp3"
 )
 
 Function PlayAudio($url) {
@@ -2043,7 +2044,7 @@ $sync.configs.Quotes = '{
     "ألحرية لا تُعطى بل تأخذ",
     "ما أخذ بالقوة لا يٌسترد إلا بالقوة",
     "الجهل سيئ و من صناعة الانظمة سلاح بينفع في كل زمان",
-    "الدنيا أختبار و احنا زي النار هنور ولا هنحرق؟"
+    "الدنيا أختبار و احنا زي النار هنور ولا هنحرق احنا اللى بنختار"
   ]
 }
 ' | ConvertFrom-Json
