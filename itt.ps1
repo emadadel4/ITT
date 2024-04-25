@@ -541,6 +541,7 @@ function StopAllRunspace {
 #region Theme Functions
 function PlayMusic {
 
+    # RUN MUSIC IN BACKGROUND
     Invoke-RunspaceWithScriptBlock -ScriptBlock {
 
         Function PlayAudio($url)
@@ -600,6 +601,7 @@ function StopMusic {
     $sync.runspace.Dispose()
     $sync.runspace.Close()
 }
+
 #endregion
 
 function GetQuotes {
