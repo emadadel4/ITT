@@ -1,7 +1,8 @@
 
 #===========================================================================
-# Start functions
+#region Start functions
 #===========================================================================
+
 function About{
 
     $authorInfo = @"
@@ -13,4 +14,3 @@ function About{
 
     Show-CustomDialog -Message $authorInfo -Width 400 
 }
-
