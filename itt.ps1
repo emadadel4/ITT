@@ -559,10 +559,14 @@ function PlayMusic {
         }
 
         # Function to shuffle the playlist
-        Function ShuffleArray {
+        Function ShuffleArray
+        {
             param([array]$array)
+
             $count = $array.Length
-            for ($i = 0; $i -lt $count; $i++) {
+
+            for ($i = 0; $i -lt $count; $i++)
+            {
                 $randomIndex = Get-Random -Minimum $i -Maximum $count
                 $temp = $array[$i]
                 $array[$i] = $array[$randomIndex]
@@ -574,11 +578,14 @@ function PlayMusic {
         ShuffleArray -array $sync.configs.OST.Tracks
 
         # Function to play the entire shuffled playlist
-        Function PlayShuffledPlaylist {
-            foreach ($url in $sync.configs.OST.Tracks) {
+        Function PlayShuffledPlaylist
+        {
+            foreach ($url in $sync.configs.OST.Tracks)
+            {
                 PlayAudio $url
                 # Wait for the track to finish playing
-                while ( $sync.mediaPlayer.playState -eq 3 -or  $sync.mediaPlayer.playState -eq 6) {
+                while ( $sync.mediaPlayer.playState -eq 3 -or  $sync.mediaPlayer.playState -eq 6)
+                {
                     Start-Sleep -Milliseconds 100
                 }
             }
@@ -975,7 +982,7 @@ $sync.configs.applications = '[
     "Description": "FastStone Image Viewer is a fast, stable, user-friendly image browser, converter and editor ",
     "winget": "#",
     "choco": "fsviewer",
-    "category": "Media",
+    "category": "Imaging",
     "check": "false"
   },
   {
@@ -1291,18 +1298,18 @@ $sync.configs.applications = '[
     "check": "false"
   },
   {
-    "Name": "Origin",
-    "Description": "----------------",
-    "winget": "#",
-    "choco": "origin",
-    "category": "Developer",
-    "check": "false"
-  },
-  {
     "Name": "Ubisoft Connect",
     "Description": "A digital distribution, digital rights management, multiplayer, and communications service developed by Ubisoft, providing access to Ubisoft''s games, rewards, and social features.",
     "winget": "Ubisoft.Connect",
     "choco": "ubisoft-connect",
+    "category": "Gaming",
+    "check": "false"
+  },
+  {
+    "Name": "Origin",
+    "Description":" Game store launcher",
+    "winget": "#",
+    "choco": "origin",
     "category": "Gaming",
     "check": "false"
   },
@@ -1623,7 +1630,7 @@ $sync.configs.applications = '[
     "Description": "A remote desktop software that allows users to access and control Windows, macOS, Linux, Android, and iOS devices from anywhere, providing secure and reliable remote access.",
     "winget": "AnyDeskSoftwareGmbH.AnyDesk",
     "choco": "anydesk.install",
-    "category": "Utilities",
+    "category": "File Sharing",
     "check": "false"
   },
   {
@@ -1631,7 +1638,7 @@ $sync.configs.applications = '[
     "Description": "AirDroid is a free and fast Android device manager app that allows you to access Android phone/tablet from computer remotely and securely. Manage SMS, files, photos and videos, WhatsApp, Line, WeChat and more on computer.",
     "winget": "#",
     "choco": "airdroid",
-    "category": "Utilities",
+    "category": "File Sharing",
     "check": "false"
   },
   {
@@ -1639,7 +1646,7 @@ $sync.configs.applications = '[
     "Description": "Remote control to support your clients / partners from everywhere.",
     "winget": "#",
     "choco": "ultraviewer",
-    "category": "Utilities",
+    "category": "File Sharing",
     "check": "false"
   },
   {
@@ -1655,7 +1662,7 @@ $sync.configs.applications = '[
     "Description": "A free and open-source BitTorrent client for downloading and uploading files via the BitTorrent protocol, providing users with a lightweight and feature-rich torrenting experience.",
     "winget": "qBittorrent.qBittorrent",
     "choco": "qbittorrent",
-    "category": "Utilities",
+    "category": "File Sharing",
     "check": "false"
   },
   {
@@ -1663,7 +1670,7 @@ $sync.configs.applications = '[
     "Description": "Google Earth Pro on desktop is free for users with advanced feature needs. Import and export GIS data, and go back in time with historical imagery.",
     "winget": "#",
     "choco": "googleearthpro",
-    "category": "Utilities",
+    "category": "Imaging",
     "check": "false"
   },
   {
@@ -2232,7 +2239,6 @@ $inputXML =  '
     </Style>
 <!--End Button Style-->
 
-
 <!--Textbox Style-->
   <Style TargetType="TextBox">
       <Setter Property="Foreground" Value="{DynamicResource FGTextColor}"/>
@@ -2279,7 +2285,6 @@ $inputXML =  '
   </Style>
 <!--End Menu Style-->
 
-
 <!--MenuItem Style-->
   <Style TargetType="MenuItem">
       <Setter Property="Background" Value="{DynamicResource BGColor}"/>
@@ -2314,9 +2319,9 @@ $inputXML =  '
 <!--End MenuItem Style-->
 
 <!--ListViewItem Style-->
-  <Style TargetType="ListViewItem">
-  <Setter Property="Background" Value="{DynamicResource FGColor}"/>
-</Style>
+    <Style TargetType="ListViewItem">
+    <Setter Property="Background" Value="{DynamicResource FGColor}"/>
+    </Style>
 <!--End ListViewItem Style-->
 
 <!--Scrollbar Thumbs-->
@@ -2477,6 +2482,7 @@ $inputXML =  '
                                 <ComboBoxItem Content="Gaming"></ComboBoxItem>
                                 <ComboBoxItem Content="Utilities"></ComboBoxItem>
                                 <ComboBoxItem Content="Developer"></ComboBoxItem>
+                                <ComboBoxItem Content="Security"></ComboBoxItem>
                             </ComboBox>
 
                                 </StackPanel>
@@ -2520,7 +2526,7 @@ $inputXML =  '
                 <TabItem Header="Apps" Name="apps" BorderBrush="{x:Null}" Padding="16">
                     <TabItem.Content>
                         <ListView Margin="10" ScrollViewer.VerticalScrollBarVisibility="Auto" Name="list" BorderBrush="{x:Null}" Background="{x:Null}">
-                            <CheckBox Content="Thorium" Tag="Browsers" /><CheckBox Content="Firefox" Tag="Browsers" /><CheckBox Content="Add block extension [Firefox]" Tag="Browsers" /><CheckBox Content="Microsoft Edge" Tag="Browsers" /><CheckBox Content="Google Chrome" Tag="Browsers" /><CheckBox Content="uBlock Origin extension [Chrome]" Tag="Browsers" /><CheckBox Content="Chromium" Tag="Browsers" /><CheckBox Content="Brave" Tag="Browsers" /><CheckBox Content="Tor Browser" Tag="Browsers" /><CheckBox Content="Opera" Tag="Browsers" /><CheckBox Content="Internet Download Manager" Tag="Browsers" /><CheckBox Content="K-Lite Mega Codec Pack" Tag="Media" /><CheckBox Content="PotPlayer" Tag="Media" /><CheckBox Content="VLC" Tag="Media" /><CheckBox Content="Kodi" Tag="Media" /><CheckBox Content="Jellyfin" Tag="Media" /><CheckBox Content="Winamp" Tag="Media" /><CheckBox Content="Aimp" Tag="Media" /><CheckBox Content="Spotify" Tag="Media" /><CheckBox Content="FastStone Image Viewer" Tag="Media" /><CheckBox Content="OpenOffice" Tag="Documents" /><CheckBox Content="FoxitReader" Tag="Documents" /><CheckBox Content="LibreOffice" Tag="Documents" /><CheckBox Content="SumatraPDF" Tag="Documents" /><CheckBox Content="WinRAR" Tag="Compression" /><CheckBox Content="7-Zip" Tag="Compression" /><CheckBox Content="PeaZip" Tag="Compression" /><CheckBox Content="QQPlayer" Tag="Media" /><CheckBox Content="Telegram Desktop" Tag="Communication" /><CheckBox Content="Signal" Tag="Communication" /><CheckBox Content="Meta Messenger" Tag="Communication" /><CheckBox Content="Skype" Tag="Communication" /><CheckBox Content="Zoom" Tag="Communication" /><CheckBox Content="Microsoft Teams" Tag="Communication" /><CheckBox Content="Discord" Tag="Communication" /><CheckBox Content="TeamViewer" Tag="File Sharing" /><CheckBox Content="GIMP" Tag="Imaging" /><CheckBox Content="DirectX" Tag="Gaming" /><CheckBox Content="Microsoft Visual C++ Runtime - all versions" Tag="Gaming" /><CheckBox Content="Microsoft Visual C++ 2005 (x86) Redistributable" Tag="Gaming" /><CheckBox Content="Microsoft Visual C++ 2005 (x64) Redistributable" Tag="Gaming" /><CheckBox Content="Microsoft Visual C++ 2008 (x86) Redistributable" Tag="Gaming" /><CheckBox Content="Microsoft Visual C++ 2008 (x64) Redistributable" Tag="Gaming" /><CheckBox Content="Microsoft Visual C++ 2010 (x86) Redistributable" Tag="Gaming" /><CheckBox Content="Microsoft Visual C++ 2010 (x64) Redistributable" Tag="Gaming" /><CheckBox Content="Microsoft Visual C++ 2012 (x86) Redistributable" Tag="Gaming" /><CheckBox Content="Microsoft Visual C++ 2012 (x64) Redistributable" Tag="Gaming" /><CheckBox Content="Microsoft Visual C++ 2013 (x86) Redistributable" Tag="Gaming" /><CheckBox Content="Microsoft Visual C++ 2013 (x64) Redistributable" Tag="Gaming" /><CheckBox Content="Microsoft Visual C++ 2015-2022 (x64) Redistributable" Tag="Gaming" /><CheckBox Content="Microsoft Visual C++ 2015-2022  (x86) Redistributable" Tag="Gaming" /><CheckBox Content="NET Framework All Versions" Tag="Gaming" /><CheckBox Content="AMD Ryzen Chipset Drivers" Tag="Gaming" /><CheckBox Content="NVidia Display Driver" Tag="Gaming" /><CheckBox Content="NVIDIA GeForce" Tag="Gaming" /><CheckBox Content="Msi Afterburner" Tag="Gaming" /><CheckBox Content="NVIDIA PhysX" Tag="Gaming" /><CheckBox Content="Steam" Tag="Gaming" /><CheckBox Content="Epic Games Launcher " Tag="Gaming" /><CheckBox Content="Origin" Tag="Developer" /><CheckBox Content="Ubisoft Connect" Tag="Gaming" /><CheckBox Content="Rockstar Games Launcher" Tag="Gaming" /><CheckBox Content="GameSave Manager" Tag="Gaming" /><CheckBox Content="StreamlabsOBS" Tag="Gaming" /><CheckBox Content="OBS Studio" Tag="Gaming" /><CheckBox Content="Logitech Gaming Software" Tag="Gaming" /><CheckBox Content="Lively Wallpaper" Tag="Gaming" /><CheckBox Content="Playnite" Tag="Gaming" /><CheckBox Content="Driver Easy" Tag="Utilities" /><CheckBox Content="Snappy Driver Installer" Tag="Utilities" /><CheckBox Content="Driver booster" Tag="Utilities" /><CheckBox Content="Driver Genius" Tag="Utilities" /><CheckBox Content="Display Driver Uninstaller" Tag="Utilities" /><CheckBox Content="Driver Store Explorer" Tag="Utilities" /><CheckBox Content="1Password" Tag="Utilities" /><CheckBox Content="MiniTool Partition Wizard" Tag="Utilities" /><CheckBox Content="AOMEI Partition Assistant Standard" Tag="Utilities" /><CheckBox Content="AOMEI Backupper" Tag="Utilities" /><CheckBox Content="Recuva recover" Tag="Utilities" /><CheckBox Content="CCleaner" Tag="Utilities" /><CheckBox Content="BCUninstaller" Tag="Utilities" /><CheckBox Content="HWiNFO" Tag="Utilities" /><CheckBox Content="Speccy" Tag="Utilities" /><CheckBox Content="FurMark" Tag="Utilities" /><CheckBox Content="Hard Disk Sentinel" Tag="Utilities" /><CheckBox Content="CPUID CPU-Z" Tag="Utilities" /><CheckBox Content="Mem Reduct" Tag="Utilities" /><CheckBox Content="HandBrake" Tag="Utilities" /><CheckBox Content="Rufus" Tag="Utilities" /><CheckBox Content="ImgBurn" Tag="Developer" /><CheckBox Content="Virtual CloneDrive" Tag="Utilities" /><CheckBox Content="Utilso" Tag="Utilities" /><CheckBox Content="Ventoy" Tag="Utilities" /><CheckBox Content="iVentoy" Tag="Utilities" /><CheckBox Content="AutoHotkey" Tag="Utilities" /><CheckBox Content="Rainmeter" Tag="Utilities" /><CheckBox Content="FxSound" Tag="Utilities" /><CheckBox Content="HiSuite" Tag="Utilities" /><CheckBox Content="Vysor" Tag="Utilities" /><CheckBox Content="Unifiedremote" Tag="Utilities" /><CheckBox Content="AnyDesk" Tag="Utilities" /><CheckBox Content="Airdroid" Tag="Utilities" /><CheckBox Content="UltraViewer" Tag="Utilities" /><CheckBox Content="Wireless Network Watcher Portable" Tag="Utilities" /><CheckBox Content="qBittorrent" Tag="Utilities" /><CheckBox Content="Google Earth Pro" Tag="Utilities" /><CheckBox Content="XAMPP" Tag="Developer" /><CheckBox Content="Visual Studio Professional 2022" Tag="Developer" /><CheckBox Content="Visual Studio Community 2022" Tag="Developer" /><CheckBox Content="Godot game engine" Tag="Developer" /><CheckBox Content="Unity Hub" Tag="Developer" /><CheckBox Content="Unity 3D" Tag="Developer" /><CheckBox Content="Blender" Tag="Developer" /><CheckBox Content="Visual Studio Code" Tag="Developer" /><CheckBox Content="Sublime Text 4" Tag="Developer" /><CheckBox Content="Atom" Tag="Developer" /><CheckBox Content="InnoSetup" Tag="Developer" /><CheckBox Content="PyCharm Community Edition" Tag="Developer" /><CheckBox Content="PyCharm Professional Edition" Tag="Developer" /><CheckBox Content="Jetbrains Rider" Tag="Developer" /><CheckBox Content="Node.js LTS" Tag="Developer" /><CheckBox Content="Electrum-LTS" Tag="Developer" /><CheckBox Content="Hugo" Tag="Developer" /><CheckBox Content="Notepad++" Tag="Developer" /><CheckBox Content="Windows Terminal" Tag="Developer" /><CheckBox Content="Powershell core" Tag="Developer" /><CheckBox Content="x64dbg Portable" Tag="Developer" /><CheckBox Content="dnSpy" Tag="Developer" /><CheckBox Content="Cheat Engine" Tag="Developer" /><CheckBox Content="Python" Tag="Developer" /><CheckBox Content="Git" Tag="Developer" /><CheckBox Content="GitHub Desktop" Tag="Developer" /><CheckBox Content="Docker Desktop" Tag="Developer" /><CheckBox Content="Docker Compose" Tag="Developer" /><CheckBox Content="PowerToys" Tag="Developer" /><CheckBox Content="Notion" Tag="Developer" /><CheckBox Content="FL Studio" Tag="Developer" /><CheckBox Content="Android Debug Bridge" Tag="Developer" /><CheckBox Content="Universal ADB Drivers" Tag="Developer" /><CheckBox Content="Scrcpy" Tag="Developer" /><CheckBox Content="VirtualBox" Tag="Developer" /><CheckBox Content="UltraISO" Tag="Developer" /><CheckBox Content="Vmware Workstation" Tag="Developer" /><CheckBox Content="oh-my-posh" Tag="Developer" /><CheckBox Content="Malwarebytes" Tag="Security" /><CheckBox Content="Kaspersky Virus Removal Tool" Tag="Security" /><CheckBox Content="Kaspersky Anti-Virus" Tag="Security" /><CheckBox Content="Avast Free Antivirus" Tag="Security" />
+                            <CheckBox Content="Thorium" Tag="Browsers" /><CheckBox Content="Firefox" Tag="Browsers" /><CheckBox Content="Add block extension [Firefox]" Tag="Browsers" /><CheckBox Content="Microsoft Edge" Tag="Browsers" /><CheckBox Content="Google Chrome" Tag="Browsers" /><CheckBox Content="uBlock Origin extension [Chrome]" Tag="Browsers" /><CheckBox Content="Chromium" Tag="Browsers" /><CheckBox Content="Brave" Tag="Browsers" /><CheckBox Content="Tor Browser" Tag="Browsers" /><CheckBox Content="Opera" Tag="Browsers" /><CheckBox Content="Internet Download Manager" Tag="Browsers" /><CheckBox Content="K-Lite Mega Codec Pack" Tag="Media" /><CheckBox Content="PotPlayer" Tag="Media" /><CheckBox Content="VLC" Tag="Media" /><CheckBox Content="Kodi" Tag="Media" /><CheckBox Content="Jellyfin" Tag="Media" /><CheckBox Content="Winamp" Tag="Media" /><CheckBox Content="Aimp" Tag="Media" /><CheckBox Content="Spotify" Tag="Media" /><CheckBox Content="FastStone Image Viewer" Tag="Imaging" /><CheckBox Content="OpenOffice" Tag="Documents" /><CheckBox Content="FoxitReader" Tag="Documents" /><CheckBox Content="LibreOffice" Tag="Documents" /><CheckBox Content="SumatraPDF" Tag="Documents" /><CheckBox Content="WinRAR" Tag="Compression" /><CheckBox Content="7-Zip" Tag="Compression" /><CheckBox Content="PeaZip" Tag="Compression" /><CheckBox Content="QQPlayer" Tag="Media" /><CheckBox Content="Telegram Desktop" Tag="Communication" /><CheckBox Content="Signal" Tag="Communication" /><CheckBox Content="Meta Messenger" Tag="Communication" /><CheckBox Content="Skype" Tag="Communication" /><CheckBox Content="Zoom" Tag="Communication" /><CheckBox Content="Microsoft Teams" Tag="Communication" /><CheckBox Content="Discord" Tag="Communication" /><CheckBox Content="TeamViewer" Tag="File Sharing" /><CheckBox Content="GIMP" Tag="Imaging" /><CheckBox Content="DirectX" Tag="Gaming" /><CheckBox Content="Microsoft Visual C++ Runtime - all versions" Tag="Gaming" /><CheckBox Content="Microsoft Visual C++ 2005 (x86) Redistributable" Tag="Gaming" /><CheckBox Content="Microsoft Visual C++ 2005 (x64) Redistributable" Tag="Gaming" /><CheckBox Content="Microsoft Visual C++ 2008 (x86) Redistributable" Tag="Gaming" /><CheckBox Content="Microsoft Visual C++ 2008 (x64) Redistributable" Tag="Gaming" /><CheckBox Content="Microsoft Visual C++ 2010 (x86) Redistributable" Tag="Gaming" /><CheckBox Content="Microsoft Visual C++ 2010 (x64) Redistributable" Tag="Gaming" /><CheckBox Content="Microsoft Visual C++ 2012 (x86) Redistributable" Tag="Gaming" /><CheckBox Content="Microsoft Visual C++ 2012 (x64) Redistributable" Tag="Gaming" /><CheckBox Content="Microsoft Visual C++ 2013 (x86) Redistributable" Tag="Gaming" /><CheckBox Content="Microsoft Visual C++ 2013 (x64) Redistributable" Tag="Gaming" /><CheckBox Content="Microsoft Visual C++ 2015-2022 (x64) Redistributable" Tag="Gaming" /><CheckBox Content="Microsoft Visual C++ 2015-2022  (x86) Redistributable" Tag="Gaming" /><CheckBox Content="NET Framework All Versions" Tag="Gaming" /><CheckBox Content="AMD Ryzen Chipset Drivers" Tag="Gaming" /><CheckBox Content="NVidia Display Driver" Tag="Gaming" /><CheckBox Content="NVIDIA GeForce" Tag="Gaming" /><CheckBox Content="Msi Afterburner" Tag="Gaming" /><CheckBox Content="NVIDIA PhysX" Tag="Gaming" /><CheckBox Content="Steam" Tag="Gaming" /><CheckBox Content="Epic Games Launcher " Tag="Gaming" /><CheckBox Content="Ubisoft Connect" Tag="Gaming" /><CheckBox Content="Origin" Tag="Gaming" /><CheckBox Content="Rockstar Games Launcher" Tag="Gaming" /><CheckBox Content="GameSave Manager" Tag="Gaming" /><CheckBox Content="StreamlabsOBS" Tag="Gaming" /><CheckBox Content="OBS Studio" Tag="Gaming" /><CheckBox Content="Logitech Gaming Software" Tag="Gaming" /><CheckBox Content="Lively Wallpaper" Tag="Gaming" /><CheckBox Content="Playnite" Tag="Gaming" /><CheckBox Content="Driver Easy" Tag="Utilities" /><CheckBox Content="Snappy Driver Installer" Tag="Utilities" /><CheckBox Content="Driver booster" Tag="Utilities" /><CheckBox Content="Driver Genius" Tag="Utilities" /><CheckBox Content="Display Driver Uninstaller" Tag="Utilities" /><CheckBox Content="Driver Store Explorer" Tag="Utilities" /><CheckBox Content="1Password" Tag="Utilities" /><CheckBox Content="MiniTool Partition Wizard" Tag="Utilities" /><CheckBox Content="AOMEI Partition Assistant Standard" Tag="Utilities" /><CheckBox Content="AOMEI Backupper" Tag="Utilities" /><CheckBox Content="Recuva recover" Tag="Utilities" /><CheckBox Content="CCleaner" Tag="Utilities" /><CheckBox Content="BCUninstaller" Tag="Utilities" /><CheckBox Content="HWiNFO" Tag="Utilities" /><CheckBox Content="Speccy" Tag="Utilities" /><CheckBox Content="FurMark" Tag="Utilities" /><CheckBox Content="Hard Disk Sentinel" Tag="Utilities" /><CheckBox Content="CPUID CPU-Z" Tag="Utilities" /><CheckBox Content="Mem Reduct" Tag="Utilities" /><CheckBox Content="HandBrake" Tag="Utilities" /><CheckBox Content="Rufus" Tag="Utilities" /><CheckBox Content="ImgBurn" Tag="Developer" /><CheckBox Content="Virtual CloneDrive" Tag="Utilities" /><CheckBox Content="Utilso" Tag="Utilities" /><CheckBox Content="Ventoy" Tag="Utilities" /><CheckBox Content="iVentoy" Tag="Utilities" /><CheckBox Content="AutoHotkey" Tag="Utilities" /><CheckBox Content="Rainmeter" Tag="Utilities" /><CheckBox Content="FxSound" Tag="Utilities" /><CheckBox Content="HiSuite" Tag="Utilities" /><CheckBox Content="Vysor" Tag="Utilities" /><CheckBox Content="Unifiedremote" Tag="Utilities" /><CheckBox Content="AnyDesk" Tag="File Sharing" /><CheckBox Content="Airdroid" Tag="File Sharing" /><CheckBox Content="UltraViewer" Tag="File Sharing" /><CheckBox Content="Wireless Network Watcher Portable" Tag="Utilities" /><CheckBox Content="qBittorrent" Tag="File Sharing" /><CheckBox Content="Google Earth Pro" Tag="Imaging" /><CheckBox Content="XAMPP" Tag="Developer" /><CheckBox Content="Visual Studio Professional 2022" Tag="Developer" /><CheckBox Content="Visual Studio Community 2022" Tag="Developer" /><CheckBox Content="Godot game engine" Tag="Developer" /><CheckBox Content="Unity Hub" Tag="Developer" /><CheckBox Content="Unity 3D" Tag="Developer" /><CheckBox Content="Blender" Tag="Developer" /><CheckBox Content="Visual Studio Code" Tag="Developer" /><CheckBox Content="Sublime Text 4" Tag="Developer" /><CheckBox Content="Atom" Tag="Developer" /><CheckBox Content="InnoSetup" Tag="Developer" /><CheckBox Content="PyCharm Community Edition" Tag="Developer" /><CheckBox Content="PyCharm Professional Edition" Tag="Developer" /><CheckBox Content="Jetbrains Rider" Tag="Developer" /><CheckBox Content="Node.js LTS" Tag="Developer" /><CheckBox Content="Electrum-LTS" Tag="Developer" /><CheckBox Content="Hugo" Tag="Developer" /><CheckBox Content="Notepad++" Tag="Developer" /><CheckBox Content="Windows Terminal" Tag="Developer" /><CheckBox Content="Powershell core" Tag="Developer" /><CheckBox Content="x64dbg Portable" Tag="Developer" /><CheckBox Content="dnSpy" Tag="Developer" /><CheckBox Content="Cheat Engine" Tag="Developer" /><CheckBox Content="Python" Tag="Developer" /><CheckBox Content="Git" Tag="Developer" /><CheckBox Content="GitHub Desktop" Tag="Developer" /><CheckBox Content="Docker Desktop" Tag="Developer" /><CheckBox Content="Docker Compose" Tag="Developer" /><CheckBox Content="PowerToys" Tag="Developer" /><CheckBox Content="Notion" Tag="Developer" /><CheckBox Content="FL Studio" Tag="Developer" /><CheckBox Content="Android Debug Bridge" Tag="Developer" /><CheckBox Content="Universal ADB Drivers" Tag="Developer" /><CheckBox Content="Scrcpy" Tag="Developer" /><CheckBox Content="VirtualBox" Tag="Developer" /><CheckBox Content="UltraISO" Tag="Developer" /><CheckBox Content="Vmware Workstation" Tag="Developer" /><CheckBox Content="oh-my-posh" Tag="Developer" /><CheckBox Content="Malwarebytes" Tag="Security" /><CheckBox Content="Kaspersky Virus Removal Tool" Tag="Security" /><CheckBox Content="Kaspersky Anti-Virus" Tag="Security" /><CheckBox Content="Avast Free Antivirus" Tag="Security" />
                         </ListView>
                     </TabItem.Content>
                 </TabItem>
