@@ -832,6 +832,14 @@
     "check": "false"
   },
   {
+    "Name": "WifiInfoView",
+    "Description": "Wireless Network Watcher is a small utility that scans your wireless network and displays the list of all computers and devices that are currently connected to your network.",
+    "winget": "#",
+    "choco": "wifiinfoview",
+    "category": "Utilities",
+    "check": "false"
+  },
+  {
     "Name": "qBittorrent",
     "Description": "A free and open-source BitTorrent client for downloading and uploading files via the BitTorrent protocol, providing users with a lightweight and feature-rich torrenting experience.",
     "winget": "qBittorrent.qBittorrent",
