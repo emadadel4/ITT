@@ -16,7 +16,6 @@
 
 
 
-
 <#
 .Dev
     developer      : Emad Adel @emadadel4
@@ -25,10 +24,6 @@
     Website        : https://eprojects.orgfree.com/
     Version        : 24.04.26
 #>
-
-if (!(Test-Path -Path $ENV:TEMP)) {
-    New-Item -ItemType Directory -Force -Path $ENV:TEMP
-}
 
 # Load DLLs
 Add-Type -AssemblyName PresentationFramework
@@ -47,11 +42,9 @@ $sync.developer =   "Emad Adel @emadadel4"
 $sync.registryPath = "HKCU:\Software\ITTEmadadel"
 $sync.configs = @{}
 $sync.ProcessRunning = $false
-
-$sync.theme = "Light"
-$sync.isDarkMode = $sync.theme
+$sync.userTheme = Get-ItemPropertyValue -Path "HKCU:\Software\ITTEmadadel" -Name "DarkMode"
+$sync.isDarkMode
 $sync.mediaPlayer = New-Object -ComObject WMPlayer.OCX
-
 
 $currentPid = [System.Security.Principal.WindowsIdentity]::GetCurrent()
 $principal = new-object System.Security.Principal.WindowsPrincipal($currentPid)
@@ -71,12 +64,6 @@ else
     $newProcess.Verb = "runas";
     [System.Diagnostics.Process]::Start($newProcess);
     break
-}
-
-# Check if the registry path exists
-if (!(Test-Path $sync.registryPath)) {
-    # If it doesn't exist, create it
-    New-Item -Path $sync.registryPath -Force *> $null
 }
 
 #===========================================================================
@@ -157,10 +144,10 @@ function ClearFilter {
 function CheckChoco 
 {
 
-    try {
+try {
 
-    if((Get-Command -Name choco -ErrorAction Ignore))
-    {
+if((Get-Command -Name choco -ErrorAction Ignore))
+{
  
 Write-Host "
 ___ _____ _____   _____ __  __    _    ____    _    ____  _____ _    _  _   
@@ -170,8 +157,9 @@ ___ _____ _____   _____ __  __    _    ____    _    ____  _____ _    _  _
 |___| |_|   |_|   |_____|_|  |_/_/   \_\____/_/   \_\____/|_____|_____| |_|  
 Chocolatey is installed You Good to go
 " -ForegroundColor green
-        return
-        }
+
+return
+}
 
 Write-Host "
 __        _______ _     ____ ___  __  __ _____   _____ ___    ___ _____ _____ 
@@ -181,10 +169,9 @@ __        _______ _     ____ ___  __  __ _____   _____ ___    ___ _____ _____
    \_/\_/  |_____|_____\____\___/|_|  |_|_____|   |_| \___/  |___| |_|   |_|  
 " -ForegroundColor White             
 Write-Host "Chocolatey is not installed, installing now" -ForegroundColor red             
-        
-        Set-ExecutionPolicy Bypass -Scope Process -Force; Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1')) -ErrorAction Stop
-        powershell choco feature enable -n allowGlobalConfirmation
-    }
+Set-ExecutionPolicy Bypass -Scope Process -Force; Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1')) -ErrorAction Stop
+powershell choco feature enable -n allowGlobalConfirmation
+}
     Catch {
         Write-Host "--Chocolatey failed to install---"
     }
@@ -512,55 +499,59 @@ function StopAllRunspace {
 }
 #region Theme Functions
 
-    # Function to toggle between dark and light modes
-    function Toggle-Theme {
+# Function to toggle between dark and light mode
 
-        try {
-        if ($sync.isDarkMode -eq "Dark")
+
+function Toggle-Theme {
+
+    try {
+
+        if ($sync.isDarkMode -eq "False")
+        {
+            Switch-ToDarkMode
+        }
+        else
         {
             Switch-ToLightMode
-            $sync.isDarkMode = -not $sync.isDarkMode
-
-
-        } else {
-            Switch-ToDarkMode
-            $sync.isDarkMode = -not $sync.isDarkMode
-
-
         }
-        } catch {
-            Write-Host "Error toggling theme: $_"
-        }
-    }
 
-    # Function to switch to dark mode
-    function Switch-ToDarkMode {
-        try {
-            #$sync['window'].FindName('themeText').Header = "Light Mode"
-            $theme = $sync['window'].FindResource("DarkTheme")
-            Update-Theme $theme "Dark"
-        } catch {
-            Write-Host "Error switching to dark mode: $_"
-        }
-    }
+        $sync.isDarkMode = -not $sync.isDarkMode 
+        Write-Host $sync.isDarkMode
 
-    # Function to switch to light mode
-    function Switch-ToLightMode {
-        try {
-           #$sync['window'].FindName('themeText').Header = "Dark Mode"
-            $theme = $sync['window'].FindResource("LightTheme")
-            Update-Theme $theme "Light"
-        } catch {
-            Write-Host "Error switching to light mode: $_"
-        }
     }
+    catch {
+        Write-Host "Error toggling theme: $_"
+    }
+}
 
-    # Function to update the theme
-    function Update-Theme ($theme, $mode) {
-        $sync['window'].Resources.MergedDictionaries.Clear()
-        $sync['window'].Resources.MergedDictionaries.Add($theme)
-        Set-ItemProperty -Path "HKCU:\Software\ITTEmadadel" -Name "Theme" -Value $mode -Force
+# Function to switch to dark mode
+function Switch-ToDarkMode {
+    try 
+    {
+        $theme = $sync['window'].FindResource("Dark")
+        Update-Theme $theme "True"
+    } catch {
+        Write-Host "Error switching to dark mode: $_"
     }
+}
+
+# Function to switch to light mode
+function Switch-ToLightMode {
+    try {
+        $theme = $sync['window'].FindResource("Light")
+        Update-Theme $theme "False"
+
+    } catch {
+        Write-Host "Error switching to light mode: $_"
+    }
+}
+
+# Function to update the theme
+function Update-Theme ($theme, $mode) {
+    $sync['window'].Resources.MergedDictionaries.Clear()
+    $sync['window'].Resources.MergedDictionaries.Add($theme)
+    Set-ItemProperty -Path "HKCU:\Software\ITTEmadadel" -Name "DarkMode" -Value $mode -Force
+}
 #endregion
 #region Theme Functions
 function PlayMusic {
@@ -2495,7 +2486,7 @@ $inputXML =  '
             <!--Light Theme styles-->
 
         <!--Light mode -->
-                <ResourceDictionary x:Key="LightTheme">
+                <ResourceDictionary x:Key="Light">
                         <SolidColorBrush x:Key="BGColor" Color="White"/>
                         <SolidColorBrush x:Key="FGColor" Color="WhiteSmoke"/>
                         <SolidColorBrush x:Key="BGButtonColor" Color="#382bf0  " />
@@ -2507,7 +2498,7 @@ $inputXML =  '
         <!--Light mode -->
 
         <!--Dark mode-->
-                <ResourceDictionary x:Key="DarkTheme">
+                <ResourceDictionary x:Key="Dark">
                         <SolidColorBrush x:Key="BGColor" Color="#121212 "/>
                         <SolidColorBrush x:Key="FGColor" Color="#282828"/>
                         <SolidColorBrush x:Key="BGButtonColor" Color="#1DB954" />
@@ -2715,6 +2706,7 @@ $inputXML =  '
 #region Load XMAL 
 #===========================================================================
 
+
 # Set the maximum number of threads for the RunspacePool to the number of threads on the machine
 $maxthreads = [int]$env:NUMBER_OF_PROCESSORS
 
@@ -2742,7 +2734,36 @@ $sync.runspace.Open()
 
 # Read the XAML file
 $reader = (New-Object System.Xml.XmlNodeReader $xaml)
-try { $sync["window"] = [Windows.Markup.XamlReader]::Load( $reader ) }
+try { 
+    
+
+    $sync["window"] = [Windows.Markup.XamlReader]::Load( $reader ) 
+
+    Write-Host $sync.userTheme
+    # # Check if the registry path exists
+    if (!(Test-Path "HKCU:\Software\ITTEmadadel")) {
+
+        # If it doesn't exist, create it
+
+        New-Item -Path $sync.registryPath -Force *> $null
+        Set-ItemProperty -Path $sync.registryPath -Name "DarkMode" -Value "False"
+        $sync['window'].Resources.MergedDictionaries.Add($sync['window'].FindResource("Light"))
+    }
+    else
+    {
+        if ($sync.userTheme -eq "True")
+        {
+            $sync['window'].Resources.MergedDictionaries.Add($sync['window'].FindResource("Dark"))
+            $sync.isDarkMode = $sync.userTheme
+
+        }else {
+            $sync['window'].Resources.MergedDictionaries.Add($sync['window'].FindResource("Light"))
+            $sync.isDarkMode = $sync.userTheme
+
+        }
+    }
+
+}
 catch [System.Management.Automation.MethodInvocationException] {
     Write-Warning "We ran into a problem with the XAML code.  Check the syntax for this control..."
     Write-Host $error[0].Exception.Message -ForegroundColor Red
@@ -2753,6 +2774,7 @@ catch [System.Management.Automation.MethodInvocationException] {
 catch {
     Write-Host "Unable to load Windows.Markup.XamlReader. Double-check syntax and ensure .net is installed."
 }
+
 
 
 # Catch controls
@@ -2880,17 +2902,6 @@ $sync.TweeaksListView.add_LostFocus({
 #===========================================================================
 
 
-#check currnet Theme
-if ($sync.theme -eq "Dark") {
-  Switch-ToDarkMode
-  $sync.isDarkMode = "Dark"
-} 
-else 
-{
-  Switch-ToLightMode
-  $sync.isDarkMode = "Light"
-}
-
 #===========================================================================
 #region Start Events
 #===========================================================================
@@ -2904,6 +2915,7 @@ $sync['window'].FindName('searchInput').add_GotFocus({ClearFilter})
 $sync['window'].FindName('about').add_MouseLeftButtonDown({About})
 $sync['window'].FindName('themeText').add_click({Toggle-Theme})
 $sync['window'].FindName('cat').add_SelectionChanged({FilterByCat( $sync['window'].FindName('cat').SelectedItem.Content)})
+$sync['window'].FindName('load').add_click({LoadJson})
 $sync['window'].FindName('save').add_click({
   
   ClearFilter
@@ -2911,14 +2923,11 @@ $sync['window'].FindName('save').add_click({
 
 })
 
-
-$sync['window'].FindName('load').add_click({LoadJson})
-
 $sync['window'].add_Closing({
 
   Write-Host "Bye see you soon :)"
-  StopMusic
   StopAllRunspace
+  StopMusic
 
 })
 
@@ -2930,6 +2939,7 @@ $sync['window'].FindName('idm').add_click({
 
 Start-Process ("https://github.com/WindowsAddict/IDM-Activation-Script")
 })
+
 
 
 #endregion End Events 
