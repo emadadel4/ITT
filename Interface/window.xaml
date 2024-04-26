@@ -33,11 +33,16 @@
 
 
                     <Menu Grid.Row="0" Grid.ColumnSpan="3" Background="Transparent" BorderBrush="Transparent" BorderThickness="0">
-                        <MenuItem Header="File" BorderBrush="Transparent" BorderThickness="0">
+                        <MenuItem Header="Preferences" BorderBrush="Transparent" BorderThickness="0">
                             <MenuItem Name="load" Header="Load Preset"/>
                             <MenuItem Name="save" Header="Save Preset"/>
+                            <MenuItem Name="themeText" Header="Theme toggle"/>
                         </MenuItem>
-                        <MenuItem Name="themeText" Header="Light Mode"/>
+
+                        <MenuItem Header="Third-party" BorderBrush="Transparent" BorderThickness="0">
+                            <MenuItem Name="mas" Header="Microsoft Activation Scripts (MAS)"/>
+                            <MenuItem Name="idm" Header="IDM Activation"/>
+                        </MenuItem>
                     </Menu>
 
 
