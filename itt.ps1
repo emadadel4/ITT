@@ -654,6 +654,8 @@ function GetQuotes {
         }
     }
 }
+
+PlayMusic *> $null
 # Show Custom Msg
 function Show-CustomDialog {
     
@@ -2860,5 +2862,4 @@ $sync['window'].add_Closing({
 #endregion End Events 
 #===========================================================================
 
-PlayMusic *> $null
 $sync["window"].ShowDialog() | out-null
