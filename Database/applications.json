@@ -792,7 +792,7 @@
     "check": "false"
   },
   {
-    "Name": "Unifiedremote",
+    "Name": "Unified Remote",
     "Description": "A remote control app that turns smartphones into universal remote controls for Windows, macOS, and Linux computers, allowing users to control media playback, presentations, and more.",
     "winget": "unifiedremote",
     "choco": "unifiedremote",
@@ -880,7 +880,7 @@
     "check": "false"
   },
   {
-    "Name": "Godot game engine",
+    "Name": "Godot Game Engine",
     "Description": "Godot is a feature-packed, cross-platform game engine for creating 2D and 3D games. It provides a comprehensive set of tools and features to develop games efficiently and quickly.",
     "winget": "#",
     "choco": "godot",
