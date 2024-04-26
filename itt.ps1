@@ -2031,7 +2031,8 @@ $sync.configs.OST = '{
         "https://archive.org/download/GrandTheftAuto4ThemeSong_201904/Grand%20Theft%20Auto%204%20Theme%20Song.mp3",
         "https://epsilon.vgmsite.com/soundtracks/assassin-s-creed-2/jlrprchapt/1-03%20Ezio%27s%20Family.mp3",
         "https://epsilon.vgmsite.com/soundtracks/assassin-s-creed-2/nkantwuktr/1-01%20Earth.mp3",
-        "https://epsilon.vgmsite.com/soundtracks/mass-effect-3-gamerip-2012/nchtmgcz/304.%20End%20of%20Cycle.mp3"
+        "https://epsilon.vgmsite.com/soundtracks/mass-effect-3-gamerip-2012/nchtmgcz/304.%20End%20of%20Cycle.mp3",
+        "https://dl.vgmdownloads.com/soundtracks/somerville-2022/naszqoqnhr/01.%20Intro%20%28Somerville%20Original%20Soundtrack%29%20%28feat.%20Dominique%20Charpentier%29.mp3"
     ]
   }
   ' | ConvertFrom-Json
@@ -2492,7 +2493,7 @@ $inputXML =  '
                         <MenuItem Header="Preferences" BorderBrush="Transparent" BorderThickness="0">
                             <MenuItem Name="load" Header="Load Preset"/>
                             <MenuItem Name="save" Header="Save Preset"/>
-                            <MenuItem Name="themeText" Header="Toggle Theme"/>
+                            <MenuItem Name="themeText" Header="Theme toggle"/>
                         </MenuItem>
 
                         <MenuItem Header="Third-party" BorderBrush="Transparent" BorderThickness="0">
@@ -2850,27 +2851,6 @@ $sync['window'].FindName('searchInput').add_TextChanged({Search})
 $sync['window'].FindName('searchInput').add_GotFocus({ClearFilter})
 $sync['window'].FindName('about').add_MouseLeftButtonDown({About})
 $sync['window'].FindName('themeText').add_click({Toggle-Theme})
-
-$sync['window'].FindName('mas').add_click({
-
-
-    Start-Process ("https://github.com/massgravel/Microsoft-Activation-Scripts")
-
-
-})
-
-$sync['window'].FindName('idm').add_click({
-
-
-  Start-Process ("https://github.com/WindowsAddict/IDM-Activation-Script")
-
-
-})
-
-
-
-
-
 $sync['window'].FindName('cat').add_SelectionChanged({FilterByCat( $sync['window'].FindName('cat').SelectedItem.Content)})
 $sync['window'].FindName('save').add_click({
   
@@ -2878,6 +2858,8 @@ $sync['window'].FindName('save').add_click({
   SaveItemsToJson
 
 })
+
+
 $sync['window'].FindName('load').add_click({LoadJson})
 
 $sync['window'].add_Closing({
@@ -2887,6 +2869,16 @@ $sync['window'].add_Closing({
   StopAllRunspace
 
 })
+
+$sync['window'].FindName('mas').add_click({
+  Start-Process ("https://github.com/massgravel/Microsoft-Activation-Scripts")
+})
+
+$sync['window'].FindName('idm').add_click({
+
+Start-Process ("https://github.com/WindowsAddict/IDM-Activation-Script")
+})
+
 
 #endregion End Events 
 #===========================================================================
