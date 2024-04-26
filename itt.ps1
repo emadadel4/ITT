@@ -263,6 +263,13 @@ function Invoke-Install{
                     Write-Host "Installs have finished"
                     [System.Windows.MessageBox]::Show("Installation Successfully Completed", "ITT @emadadel4", "OK", "Information")
 
+                    $sync.$sync.AppsListView.Dispatcher.Invoke([Action]{
+                        foreach ($item in $sync.$sync.AppsListView.Items)
+                        {
+                            $item.IsChecked = $false
+                        }
+                    })
+
 
                     $sync.description.Dispatcher.Invoke([Action]{
                         $sync.description.Text = "Installed successfully"
@@ -2813,8 +2820,6 @@ $sync.TweeaksListView.add_LostFocus({
 #===========================================================================
 #endregion End Loopss 
 #===========================================================================
-
-
 
 
 #check currnet Theme
