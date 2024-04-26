@@ -2048,8 +2048,6 @@ $sync.configs.Quotes = '{
   "Q": [
     "إما تموت بطلا، أو تعيش طويلاً حتى ترى نفسك تتحول إلى الشرير",
     "بعض الرجال يريدون فقط مشاهدة العالم يحترق",
-    "الخوف هو أكبر سلاح لديك، والأمل هو الذي يعطيك القوة للمضي قدمًا",
-    "الصمت ليس دائمًا علامة على الضعف، بل قوة الروح",
     "إنهم يكرهون النور، لأنهم يخشون الحقيقة",
     "أنت دائما تخشى ما لا تفهمه",
     "التعاون مع الشر لا يجعلك تفوز. إنه يجعلك مثله",
@@ -2321,7 +2319,7 @@ $inputXML =  '
                               Focusable="True"
                               PopupAnimation="None">
                               <Border Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"
-                                      BorderThickness="20"> <!-- Set BorderThickness to 0 -->
+                                      BorderThickness="15"> <!-- Set BorderThickness to 0 -->
                                   <ScrollViewer CanContentScroll="True"
                                               Style="{DynamicResource {ComponentResourceKey ResourceId=MenuScrollViewer, TypeInTargetAssembly={x:Type FrameworkElement}}}">
                                       <ItemsPresenter Margin="0"/>
