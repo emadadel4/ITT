@@ -87,7 +87,7 @@
                               Focusable="True"
                               PopupAnimation="None">
                               <Border Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"
-                                      BorderThickness="0"> <!-- Set BorderThickness to 0 -->
+                                      BorderThickness="15"> <!-- Set BorderThickness to 0 -->
                                   <ScrollViewer CanContentScroll="True"
                                               Style="{DynamicResource {ComponentResourceKey ResourceId=MenuScrollViewer, TypeInTargetAssembly={x:Type FrameworkElement}}}">
                                       <ItemsPresenter Margin="0"/>
@@ -105,6 +105,8 @@
 <!--ListViewItem Style-->
     <Style TargetType="ListViewItem">
         <Setter Property="Background" Value="{DynamicResource FGColor}"/>
+        <Setter Property="Margin" Value="3"/>
+        <Setter Property="BorderThickness" Value="2"/>
     </Style>
 <!--End ListViewItem Style-->
 
