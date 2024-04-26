@@ -61,6 +61,7 @@
 
                             <ComboBox SelectedIndex="0"  Margin="10,10,0,13" Name="cat" HorizontalAlignment="Left" VerticalAlignment="Top" Width="Auto" Height="Auto">
                                 <ComboBoxItem Content="All"></ComboBoxItem>
+                                <ComboBoxItem Content="Drivers"></ComboBoxItem>
                                 <ComboBoxItem Content="Media"></ComboBoxItem>
                                 <ComboBoxItem Content="Browsers"></ComboBoxItem>
                                 <ComboBoxItem Content="Documents"></ComboBoxItem>
