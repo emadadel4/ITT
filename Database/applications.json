@@ -548,7 +548,31 @@
     "Description": "A driver update tool that automatically detects, downloads, and installs device drivers for the user's computer hardware.",
     "winget": "Easeware.DriverEasy",
     "choco": "drivereasyfree",
-    "category": "Utilities",
+    "category": "Drivers",
+    "check": "false"
+  },
+  {
+    "Name": "Intel Graphics Windows DCH",
+    "Description": "Intel Graphics Driver for Windows 10.",
+    "winget": "samlab-ws.SnappyDriverInstaller",
+    "choco": "#",
+    "category": "Drivers",
+    "check": "false"
+  },
+  {
+    "Name": "Intel Driver Support Assistant",
+    "Description": "Intel Driver & Support Assistant enables you to scan computing devices for the latest drivers available from Intel.",
+    "winget": "#",
+    "choco": "intel-dsa",
+    "category": "Drivers",
+    "check": "false"
+  },
+  {
+    "Name": "Intel Network Adapter",
+    "Description": "Intel Network Adapter Drivers for Windows 10.",
+    "winget": "#",
+    "choco": "intel-network-drivers-win10",
+    "category": "Drivers",
     "check": "false"
   },
   {
@@ -556,7 +580,7 @@
     "Description": "A free and open-source tool for updating and installing device drivers on Windows, offering offline driver updates and wide hardware support.",
     "winget": "samlab-ws.SnappyDriverInstaller",
     "choco": "snappy-driver-installer",
-    "category": "Utilities",
+    "category": "Drivers",
     "check": "false"
   },
   {
@@ -564,7 +588,7 @@
     "Description": "Scans and identifies outdated drivers automatically, and downloads and installs the right update for you with just ONE click.",
     "winget": "#",
     "choco": "driverbooster",
-    "category": "Utilities",
+    "category": "Drivers",
     "check": "false"
   },
   {
@@ -572,7 +596,7 @@
     "Description": "Professional driver management tool and hardware diagnostics.",
     "winget": "#",
     "choco": "drivergenius",
-    "category": "Utilities",
+    "category": "Drivers",
     "check": "false"
   },
   {
@@ -580,7 +604,7 @@
     "Description": "Utility to completely remove system drivers",
     "winget": "#",
     "choco": "ddu",
-    "category": "Utilities",
+    "category": "Drivers",
     "check": "false"
   },
   {
@@ -588,7 +612,7 @@
     "Description": " Windows driver store utility.",
     "winget": "#",
     "choco": "rapr",
-    "category": "Utilities",
+    "category": "Drivers",
     "check": "false"
   },
   {
