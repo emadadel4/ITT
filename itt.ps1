@@ -2310,7 +2310,7 @@ $inputXML =  '
                           <Popup IsOpen="{Binding IsSubmenuOpen, RelativeSource={RelativeSource TemplatedParent}}"
                               AllowsTransparency="True"
                               Focusable="True"
-                              PopupAnimation="Fade">
+                              PopupAnimation="None">
                               <Border Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"
                                       BorderThickness="0"> <!-- Set BorderThickness to 0 -->
                                   <ScrollViewer CanContentScroll="True"
@@ -2493,6 +2493,11 @@ $inputXML =  '
                             <MenuItem Name="load" Header="Load Preset"/>
                             <MenuItem Name="save" Header="Save Preset"/>
                             <MenuItem Name="themeText" Header="Toggle Theme"/>
+                        </MenuItem>
+
+                        <MenuItem Header="Third-party" BorderBrush="Transparent" BorderThickness="0">
+                            <MenuItem Name="mas" Header="Microsoft Activation Scripts (MAS)"/>
+                            <MenuItem Name="idm" Header="IDM Activation"/>
                         </MenuItem>
                     </Menu>
 
@@ -2845,6 +2850,27 @@ $sync['window'].FindName('searchInput').add_TextChanged({Search})
 $sync['window'].FindName('searchInput').add_GotFocus({ClearFilter})
 $sync['window'].FindName('about').add_MouseLeftButtonDown({About})
 $sync['window'].FindName('themeText').add_click({Toggle-Theme})
+
+$sync['window'].FindName('mas').add_click({
+
+
+    Start-Process ("https://github.com/massgravel/Microsoft-Activation-Scripts")
+
+
+})
+
+$sync['window'].FindName('idm').add_click({
+
+
+  Start-Process ("https://github.com/WindowsAddict/IDM-Activation-Script")
+
+
+})
+
+
+
+
+
 $sync['window'].FindName('cat').add_SelectionChanged({FilterByCat( $sync['window'].FindName('cat').SelectedItem.Content)})
 $sync['window'].FindName('save').add_click({
   
