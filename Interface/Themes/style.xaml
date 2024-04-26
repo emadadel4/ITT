@@ -81,11 +81,11 @@
                           BorderThickness="0"> <!-- Set BorderThickness to 0 -->
                       <Grid>
                           <ContentPresenter Content="{TemplateBinding Header}"
-                                          Margin="6"/>
+                                          Margin="13"/>
                           <Popup IsOpen="{Binding IsSubmenuOpen, RelativeSource={RelativeSource TemplatedParent}}"
                               AllowsTransparency="True"
-                              Focusable="False"
-                              PopupAnimation="Fade">
+                              Focusable="True"
+                              PopupAnimation="None">
                               <Border Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"
                                       BorderThickness="0"> <!-- Set BorderThickness to 0 -->
                                   <ScrollViewer CanContentScroll="True"
@@ -129,7 +129,7 @@
   </Style>
   <Style x:Key="{x:Type ScrollBar}" TargetType="{x:Type ScrollBar}">
       <Setter Property="Stylus.IsFlicksEnabled" Value="false" />
-      <Setter Property="Foreground" Value="{DynamicResource FGColor}" />
+      <Setter Property="Foreground" Value="{DynamicResource BGButtonColor}" />
       <Setter Property="Background" Value="Transparent" />
       <Setter Property="Width" Value="8" />
       <Setter Property="Template">
