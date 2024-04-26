@@ -1,7 +1,4 @@
 
-CheckChoco
-GetQuotes *> $null
-
 #check currnet Theme
 if ($sync.theme -eq "Dark") {
   Switch-ToDarkMode
@@ -32,6 +29,8 @@ $sync['window'].FindName('save').add_click({
   SaveItemsToJson
 
 })
+
+
 $sync['window'].FindName('load').add_click({LoadJson})
 
 $sync['window'].add_Closing({
@@ -42,8 +41,22 @@ $sync['window'].add_Closing({
 
 })
 
+$sync['window'].FindName('mas').add_click({
+  Start-Process ("https://github.com/massgravel/Microsoft-Activation-Scripts")
+})
+
+$sync['window'].FindName('idm').add_click({
+
+Start-Process ("https://github.com/WindowsAddict/IDM-Activation-Script")
+})
+
+
 #endregion End Events 
 #===========================================================================
 
+
+CheckChoco
+GetQuotes *> $null
 PlayMusic *> $null
+
 $sync["window"].ShowDialog() | out-null
