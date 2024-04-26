@@ -655,7 +655,6 @@ function GetQuotes {
     }
 }
 
-PlayMusic *> $null
 # Show Custom Msg
 function Show-CustomDialog {
     
@@ -2816,8 +2815,7 @@ $sync.TweeaksListView.add_LostFocus({
 #===========================================================================
 
 
-CheckChoco
-GetQuotes *> $null
+
 
 #check currnet Theme
 if ($sync.theme -eq "Dark") {
@@ -2861,5 +2859,10 @@ $sync['window'].add_Closing({
 
 #endregion End Events 
 #===========================================================================
+
+
+CheckChoco
+GetQuotes *> $null
+PlayMusic *> $null
 
 $sync["window"].ShowDialog() | out-null
