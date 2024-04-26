@@ -517,7 +517,7 @@ function StopAllRunspace {
     # Function to switch to dark mode
     function Switch-ToDarkMode {
         try {
-            $sync['window'].FindName('themeText').Header = "Light Mode"
+            #$sync['window'].FindName('themeText').Header = "Light Mode"
             $theme = $sync['window'].FindResource("DarkTheme")
             Update-Theme $theme "Dark"
         } catch {
@@ -528,7 +528,7 @@ function StopAllRunspace {
     # Function to switch to light mode
     function Switch-ToLightMode {
         try {
-            $sync['window'].FindName('themeText').Header = "Dark Mode"
+           #$sync['window'].FindName('themeText').Header = "Dark Mode"
             $theme = $sync['window'].FindResource("LightTheme")
             Update-Theme $theme "Light"
         } catch {
@@ -2306,10 +2306,10 @@ $inputXML =  '
                           BorderThickness="0"> <!-- Set BorderThickness to 0 -->
                       <Grid>
                           <ContentPresenter Content="{TemplateBinding Header}"
-                                          Margin="6"/>
+                                          Margin="13"/>
                           <Popup IsOpen="{Binding IsSubmenuOpen, RelativeSource={RelativeSource TemplatedParent}}"
                               AllowsTransparency="True"
-                              Focusable="False"
+                              Focusable="True"
                               PopupAnimation="Fade">
                               <Border Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"
                                       BorderThickness="0"> <!-- Set BorderThickness to 0 -->
@@ -2489,11 +2489,11 @@ $inputXML =  '
 
 
                     <Menu Grid.Row="0" Grid.ColumnSpan="3" Background="Transparent" BorderBrush="Transparent" BorderThickness="0">
-                        <MenuItem Header="File" BorderBrush="Transparent" BorderThickness="0">
+                        <MenuItem Header="Preferences" BorderBrush="Transparent" BorderThickness="0">
                             <MenuItem Name="load" Header="Load Preset"/>
                             <MenuItem Name="save" Header="Save Preset"/>
+                            <MenuItem Name="themeText" Header="Toggle Theme"/>
                         </MenuItem>
-                        <MenuItem Name="themeText" Header="Light Mode"/>
                     </Menu>
 
 
