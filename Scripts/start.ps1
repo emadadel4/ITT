@@ -1,8 +1,9 @@
 
 <#
 .Dev
-    Author         : Emad Adel @emadadel4
+    developer      : Emad Adel @emadadel4
     GitHub         : https://github.com/emadadel4
+    Telegram       : https://t.me/emadadel4
     Website        : https://eprojects.orgfree.com/
     Version        : #{replaceme}
 #>
@@ -21,9 +22,10 @@ Add-Type -AssemblyName PresentationFramework.Aero
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
 $sync.version = "#{replaceme}"
-$sync.github = "https://github.com/emadadel4"
-$sync.website = "https://eprojects.orgfree.com"
-$sync.author = "Emad Adel @emadadel4"
+$sync.github =   "https://github.com/emadadel4"
+$sync.telegram = "https://t.me/emadadel4"
+$sync.website =  "https://eprojects.orgfree.com"
+$sync.developer =   "Emad Adel @emadadel4"
 $sync.registryPath = "HKCU:\Software\ITTEmadadel"
 $sync.configs = @{}
 $sync.ProcessRunning = $false
