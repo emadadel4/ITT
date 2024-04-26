@@ -24,7 +24,7 @@
     # Function to switch to dark mode
     function Switch-ToDarkMode {
         try {
-            $sync['window'].FindName('themeText').Header = "Light Mode"
+            #$sync['window'].FindName('themeText').Header = "Light Mode"
             $theme = $sync['window'].FindResource("DarkTheme")
             Update-Theme $theme "Dark"
         } catch {
@@ -35,7 +35,7 @@
     # Function to switch to light mode
     function Switch-ToLightMode {
         try {
-            $sync['window'].FindName('themeText').Header = "Dark Mode"
+           #$sync['window'].FindName('themeText').Header = "Dark Mode"
             $theme = $sync['window'].FindResource("LightTheme")
             Update-Theme $theme "Light"
         } catch {
