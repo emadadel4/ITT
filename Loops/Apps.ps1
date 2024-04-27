@@ -1,9 +1,3 @@
-
-
-#===========================================================================
-#region Start Loops
-#===========================================================================
-
 # Define a function to update the description and link when an item is selected
 function UpdateDescriptionAndLink {
     # Get the name of the selected application from the list
