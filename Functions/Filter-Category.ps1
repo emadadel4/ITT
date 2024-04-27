@@ -44,9 +44,6 @@ function FilterByCat {
         $collectionView.Filter = $filterPredicate
 
     }
-
-
-    
 }
 
 function ClearFilter {
