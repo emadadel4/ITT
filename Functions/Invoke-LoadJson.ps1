@@ -64,6 +64,6 @@ function SaveItemsToJson
     }
     else
     {
-        [System.Windows.MessageBox]::Show("You have to Select first", "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
+        [System.Windows.MessageBox]::Show("أختار برنامج واحد على الاقل", "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
     }
 }
