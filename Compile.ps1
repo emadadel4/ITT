@@ -1,17 +1,59 @@
+
+
+
+param (
+    [string]$OutputScript = "itt.ps1",
+    [string]$StartScript = ".\Scripts\start.ps1",
+    [string]$FunctionsDirectory = ".\Functions",
+    [string]$DatabaseDirectory = ".\Database",
+    [string]$InterfaceDirectory = ".\interface",
+    [string]$LoopsDirectory = ".\loops",
+    [string]$LoadXamlScript = ".\scripts\loadXmal.ps1",
+    [string]$MainScript = ".\scripts\main.ps1"
+)
+
+# Initialize synchronized hashtable
 $OFS = "`r`n"
-$scriptname = "itt.ps1"
-# Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
 $sync.configs = @{}
 
-if (Test-Path -Path "$($scriptname)")
-{
-    Remove-Item -Force "$($scriptname)"
+
+# Function to write content to output script
+function WriteToScript {
+    param (
+        [string]$Content
+    )
+    Add-Content -Path $OutputScript -Value $Content
 }
 
-Write-output '
+# Function to handle file content generation
+function AddFileContentToScript {
+    param (
+        [string]$FilePath
+    )
+    $Content = Get-Content -Path $FilePath -Raw
+    WriteToScript -Content $Content
+}
 
+# Function to process files in a directory
+function ProcessDirectory {
+    param (
+        [string]$Directory
+    )
+    Get-ChildItem $Directory -Recurse -File | ForEach-Object {
+        AddFileContentToScript -FilePath $_.FullName
+    }
+}
+
+# Main script generation
+try {
+    if (Test-Path -Path $OutputScript) {
+        Remove-Item -Path $OutputScript -Force
+    }
+
+    # Write script header
+    WriteToScript -Content @"
 # ###################################################################################
 # #                                                                                 #
 # #   ___ _____ _____   _____ __  __    _    ____    _    ____  _____ _    _  _     #
@@ -25,163 +67,167 @@ Write-output '
 # #                          https://t.me/emadadel4                                 #  
 # #                                                                                 #
 # ###################################################################################
+"@
 
+    WriteToScript -Content @"
 
-' | Out-File ./$scriptname -Append -Encoding ascii
-
-
-Write-output '
 #===========================================================================
 #region End Start
 #===========================================================================
-' | Out-File ./$scriptname -Append -Encoding ascii
 
-(Get-Content .\Scripts\start.ps1).replace('#{replaceme}',"$(Get-Date -Format yy.MM.dd)") | Out-File ./$scriptname -Append -Encoding ascii
+"@
 
-Write-output '
+    AddFileContentToScript -FilePath $StartScript
+
+    WriteToScript -Content @"
 #===========================================================================
 #endregion End Start
 #===========================================================================
-' | Out-File ./$scriptname -Append -Encoding ascii
 
-Write-output '
+"@
+
+
+    WriteToScript -Content @"
 #===========================================================================
 #region Start Functions
 #===========================================================================
-' | Out-File ./$scriptname -Append -Encoding ascii
 
+"@
 
-Get-ChildItem .\Functions -Recurse -File | ForEach-Object {
-    Get-Content $psitem.FullName | Out-File ./$scriptname -Append -Encoding ascii
-}
+    ProcessDirectory -Directory $FunctionsDirectory
 
-Write-output '
+    WriteToScript -Content @"
 #===========================================================================
 #endregion End Functions
 #===========================================================================
-' | Out-File ./$scriptname -Append -Encoding ascii
+
+"@
 
 
-Write-output '
+    WriteToScript -Content @"
 #===========================================================================
 #region Start Database /APPS/TWEEAKS/Quotes/OST
 #===========================================================================
-' | Out-File ./$scriptname -Append -Encoding ascii
 
-Get-ChildItem .\Database | Where-Object {$psitem.extension -eq ".json"} | ForEach-Object {
-    $json = (Get-Content $psitem.FullName -Raw).replace("'", "''")
-    $sync.configs.$($psitem.BaseName) = $json | ConvertFrom-Json
-    Write-output "`$sync.configs.$($psitem.BaseName) = '$json' `| ConvertFrom-Json" | Out-File ./$scriptname -Append -Encoding default
-}
+"@
 
-Write-output '
+    Get-ChildItem .\Database | Where-Object {$psitem.extension -eq ".json"} | ForEach-Object {
+        $json = (Get-Content $psitem.FullName -Raw).replace("'", "''")
+        $sync.configs.$($psitem.BaseName) = $json | ConvertFrom-Json
+        Write-output "`$sync.configs.$($psitem.BaseName) = '$json' `| ConvertFrom-Json" | Out-File ./itt.ps1 -Append -Encoding default
+    }
+
+    WriteToScript -Content @"
 #===========================================================================
 #endregion End Database /APPS/TWEEAKS/Quotes/OST
 #===========================================================================
-' | Out-File ./$scriptname -Append -Encoding ascii
 
+"@
 
-Write-output '
+    WriteToScript -Content @"
 #===========================================================================
 #region Start WPF Window
 #===========================================================================
-' | Out-File ./$scriptname -Append -Encoding ascii
 
-$xaml = (Get-Content .\interface\window.xaml -Raw).replace("'", "''")
+"@
 
+    $XamlPath = Join-Path -Path $InterfaceDirectory -ChildPath "window.xaml"
+    $AppXamlPath = Join-Path -Path $InterfaceDirectory -ChildPath "Controls/taps.xaml"
+    $StylePath = Join-Path -Path $InterfaceDirectory -ChildPath "Themes/style.xaml"
+    $ColorsPath = Join-Path -Path $InterfaceDirectory -ChildPath "Themes/colors.xaml"
 
+    $XamlContent = (Get-Content -Path $XamlPath -Raw) -replace "'", "''"
+    $AppXamlContent = Get-Content -Path $AppXamlPath -Raw
+    $StyleContent = Get-Content -Path $StylePath -Raw
+    $ColorsContent = Get-Content -Path $ColorsPath -Raw
 
-# Assuming taps.xaml is in the same directory as main.ps1
-$appXamlPath = Join-Path -Path $PSScriptRoot -ChildPath "interface/Controls/taps.xaml"
-$StylePath = Join-Path -Path $PSScriptRoot -ChildPath "interface/Themes/style.xaml"
-$colorsPath = Join-Path -Path $PSScriptRoot -ChildPath "interface/Themes/colors.xaml"
+    $XamlContent = $XamlContent -replace "{{Taps}}", $AppXamlContent
+    $XamlContent = $XamlContent -replace "{{Style}}", $StyleContent
+    $XamlContent = $XamlContent -replace "{{Colors}}", $ColorsContent
 
-# Load the XAML content from inputApp.xaml
-$appXamlContent = Get-Content -Path $appXamlPath -Raw
-$StyleContent = Get-Content -Path $StylePath -Raw
-$colorsContent = Get-Content -Path $colorsPath -Raw
+   
+    $AppsCheckboxes  = ""
+    foreach ($App  in $sync.configs.applications) {
+        $AppsCheckboxes += @"
+    <CheckBox Content="$($App.Name)" Tag="$($App.category)" />
+"@
+    }
 
-# Replace the placeholder in $inputXML with the content of inputApp.xaml
-$xaml = $xaml -replace "{{Taps}}", $appXamlContent
-$xaml = $xaml -replace "{{Style}}", $StyleContent
-$xaml = $xaml -replace "{{Colors}}", $colorsContent
-
-# Create XAML content for checkboxes only
-$appCheckboxex = ""
-foreach ($a in $sync.configs.applications) {
-    $appCheckboxex += @"
-<CheckBox Content="$($a.Name)" Tag="$($a.category)" />
+    $TweaksCheckboxes  = ""
+    foreach ($Tweak  in $sync.configs.tweaks) {
+        $TweaksCheckboxes  += @"
+    <CheckBox Content="$($Tweak.Name)" />
 "@
 }
 
-$tweeaksCheckboxex = ""
-foreach ($t in $sync.configs.tweaks) {
-    $tweeaksCheckboxex += @"
-<CheckBox Content="$($t.Name)" />
-"@
-}
 
-$xaml = $xaml -replace "{{ee}}", $appCheckboxex
-$xaml = $xaml -replace "{{eee}}", $tweeaksCheckboxex
+    $XamlContent = $XamlContent -replace "{{Apps}}", $AppsCheckboxes 
+    $XamlContent = $XamlContent -replace "{{Tweeaks}}", $TweaksCheckboxes 
 
-Write-output "`$inputXML =  '$xaml'" | Out-File ./$scriptname -Append -Encoding ascii
+    WriteToScript -Content "`$inputXML = '$XamlContent'"
 
-Write-output '
+    WriteToScript -Content @"
 #===========================================================================
 #endregion End WPF Window
 #===========================================================================
-' | Out-File ./$scriptname -Append -Encoding ascii
 
+"@
 
-Write-output '
+    WriteToScript -Content @"
 #===========================================================================
 #region Start loadXmal
 #===========================================================================
-' | Out-File ./$scriptname -Append -Encoding ascii
 
-Get-Content .\scripts\loadXmal.ps1 | Out-File ./$scriptname -Append -Encoding ascii
+"@
 
+    AddFileContentToScript -FilePath $LoadXamlScript
 
-Write-output '
+    WriteToScript -Content @"
 #===========================================================================
 #endregion End loadXmal
 #===========================================================================
-' | Out-File ./$scriptname -Append -Encoding ascii
 
+"@
 
-Write-output '
+    # Write Loops section
+    WriteToScript -Content @"
 #===========================================================================
 #region Start Loops
 #===========================================================================
-' | Out-File ./$scriptname -Append -Encoding ascii
 
-Get-ChildItem .\loops -Recurse -File | ForEach-Object {
-    Get-Content $psitem.FullName | Out-File ./$scriptname -Append -Encoding ascii
-}
+"@
 
+    ProcessDirectory -Directory $LoopsDirectory
 
-
-Write-output '
+    WriteToScript -Content @"
 #===========================================================================
 #endregion Start Loops
 #===========================================================================
-' | Out-File ./$scriptname -Append -Encoding ascii
 
+"@
 
-
-Write-output '
+    # Write Main [Buttons Events] section
+    WriteToScript -Content @"
 #===========================================================================
 #region Start Main [Buttons Events]
 #===========================================================================
-' | Out-File ./$scriptname -Append -Encoding ascii
 
-Get-Content .\scripts\main.ps1 | Out-File ./$scriptname -Append -Encoding ascii
+"@
 
-Write-output '
+    AddFileContentToScript -FilePath $MainScript
+
+    WriteToScript -Content @"
 #===========================================================================
 #endregion End Main [Buttons Events]
 #===========================================================================
-' | Out-File ./$scriptname -Append -Encoding ascii
+
+"@
+
+./itt.ps1
+
+}
 
 
-#./itt.ps1
+catch {
+    Write-Error "An error occurred: $_"
+}
