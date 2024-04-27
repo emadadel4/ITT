@@ -88,7 +88,7 @@ function Invoke-Install{
 
                     Write-Host "Installing the following programs $choco "
                     Start-Process -FilePath "choco" -ArgumentList "install $choco -y --force --ignore-checksums" -NoNewWindow -Wait
-                    [System.Windows.MessageBox]::Show("Installation Successfully Completed", "ITT @emadadel4", "OK", "Information")
+                    [System.Windows.MessageBox]::Show("تم التثبيت بنجاح", "ITT @emadadel4", "OK", "Information")
 
                     $sync.AppsListView.Dispatcher.Invoke([Action]{
                         foreach ($item in $sync.AppsListView.Items)
