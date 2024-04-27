@@ -40,8 +40,3 @@ $sync.TweeaksListView.add_LostFocus({
     $sync.itemLink.Visibility = "Hidden"
     $sync.Description.Text = ""
 })
-
-#===========================================================================
-#endregion End Loopss 
-#===========================================================================
-
