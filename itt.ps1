@@ -17,13 +17,18 @@
 
 
 
+#===========================================================================
+#region End Start
+#===========================================================================
+
+
 <#
 .Dev
     developer      : Emad Adel @emadadel4
     GitHub         : https://github.com/emadadel4
     Telegram       : https://t.me/emadadel4
     Website        : https://eprojects.orgfree.com/
-    Version        : 24.04.27
+    Version        : 24.04.28
 #>
 
 if (!(Test-Path -Path $ENV:TEMP)) {
@@ -39,7 +44,7 @@ Add-Type -AssemblyName PresentationFramework.Aero
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "24.04.27"
+$sync.version = "24.04.28"
 $sync.github =   "https://github.com/emadadel4"
 $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://eprojects.orgfree.com"
@@ -80,7 +85,12 @@ if (!(Test-Path $sync.registryPath)) {
 }
 
 #===========================================================================
-#region Start functions
+#endregion End Start
+#===========================================================================
+
+
+#===========================================================================
+#region Start Functions
 #===========================================================================
 
 function About{
@@ -141,9 +151,6 @@ function FilterByCat {
         $collectionView.Filter = $filterPredicate
 
     }
-
-
-    
 }
 
 function ClearFilter {
@@ -331,6 +338,7 @@ function Invoke-Install{
         [System.Windows.MessageBox]::Show("Select at lest one program", "ITT @emadadel", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Question)
     }
 }
+
 function ApplyTweaks() {
 
     if($sync.ProcessRunning)
@@ -406,6 +414,7 @@ function ApplyTweaks() {
         [System.Windows.MessageBox]::Show("Choose at least something from the list", "ITT @emadadel", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Question)
     }
 }
+
 function LoadJson {
 
         # Open file dialog to select JSON file
@@ -510,59 +519,56 @@ function StopAllRunspace {
     $script:powershell.Stop()
     
 }
+
 #region Theme Functions
+function Toggle-Theme {
 
-    # Function to toggle between dark and light modes
-    function Toggle-Theme {
-
-        try {
-        if ($sync.isDarkMode -eq "Dark")
-        {
-            Switch-ToLightMode
-            $sync.isDarkMode = -not $sync.isDarkMode
+    try {
+    if ($sync.isDarkMode -eq "Dark")
+    {
+        Switch-ToLightMode
+        $sync.isDarkMode = -not $sync.isDarkMode
 
 
-        } else {
-            Switch-ToDarkMode
-            $sync.isDarkMode = -not $sync.isDarkMode
+    } else {
+        Switch-ToDarkMode
+        $sync.isDarkMode = -not $sync.isDarkMode
 
 
-        }
-        } catch {
-            Write-Host "Error toggling theme: $_"
-        }
     }
-
-    # Function to switch to dark mode
-    function Switch-ToDarkMode {
-        try {
-            #$sync['window'].FindName('themeText').Header = "Light Mode"
-            $theme = $sync['window'].FindResource("DarkTheme")
-            Update-Theme $theme "Dark"
-        } catch {
-            Write-Host "Error switching to dark mode: $_"
-        }
+    } catch {
+        Write-Host "Error toggling theme: $_"
     }
+}
 
-    # Function to switch to light mode
-    function Switch-ToLightMode {
-        try {
-           #$sync['window'].FindName('themeText').Header = "Dark Mode"
-            $theme = $sync['window'].FindResource("LightTheme")
-            Update-Theme $theme "Light"
-        } catch {
-            Write-Host "Error switching to light mode: $_"
-        }
+function Switch-ToDarkMode {
+    try {
+        #$sync['window'].FindName('themeText').Header = "Light Mode"
+        $theme = $sync['window'].FindResource("DarkTheme")
+        Update-Theme $theme "Dark"
+    } catch {
+        Write-Host "Error switching to dark mode: $_"
     }
+}
 
-    # Function to update the theme
-    function Update-Theme ($theme, $mode) {
-        $sync['window'].Resources.MergedDictionaries.Clear()
-        $sync['window'].Resources.MergedDictionaries.Add($theme)
-        Set-ItemProperty -Path "HKCU:\Software\ITTEmadadel" -Name "Theme" -Value $mode -Force
+function Switch-ToLightMode {
+    try {
+        #$sync['window'].FindName('themeText').Header = "Dark Mode"
+        $theme = $sync['window'].FindResource("LightTheme")
+        Update-Theme $theme "Light"
+    } catch {
+        Write-Host "Error switching to light mode: $_"
     }
+}
+
+function Update-Theme ($theme, $mode) {
+    $sync['window'].Resources.MergedDictionaries.Clear()
+    $sync['window'].Resources.MergedDictionaries.Add($theme)
+    Set-ItemProperty -Path "HKCU:\Software\ITTEmadadel" -Name "Theme" -Value $mode -Force
+}
 #endregion
-#region Theme Functions
+
+#region PlayMusic Functions
 function PlayMusic {
 
     # RUN MUSIC IN BACKGROUND
@@ -632,8 +638,8 @@ function StopMusic {
     $sync.runspace.Dispose()
     $sync.runspace.Close()
 }
-
 #endregion
+
 function GetQuotes {
 
     Invoke-RunspaceWithScriptBlock -ScriptBlock {
@@ -829,6 +835,7 @@ function Show-CustomDialog {
     # Show the custom dialog
     $dialog.ShowDialog()
 }
+
 function ChangeTap() {
     
 
@@ -845,9 +852,14 @@ function ChangeTap() {
     }
 }
 
-#====================================================================================
-#endregion End functions
-#====================================================================================
+#===========================================================================
+#endregion End Functions
+#===========================================================================
+
+
+#===========================================================================
+#region Start Database /APPS/TWEEAKS/Quotes/OST
+#===========================================================================
 
 $sync.configs.applications = '[
   {
@@ -2124,22 +2136,6 @@ $sync.configs.Quotes = '{
   ]
 }
 ' | ConvertFrom-Json
-$sync.configs.themes = '{
-    "matrix": {
-      "BGButtonColor": "#00FF00",
-      "FGButtonColor": "#0000FF"
-    },
-
-    "dark": {
-      "BGButtonColor": "#FF0000",
-      "FGButtonColor": "#FFFF00"
-    },
-    "light": {
-      "BGButtonColor": "#000000",
-      "FGButtonColor": "#FFFFFF"
-    }
-  }
-  ' | ConvertFrom-Json
 $sync.configs.tweaks = '[
   {
     "name": "System File Checker",
@@ -2263,6 +2259,16 @@ $sync.configs.tweaks = '[
   }
 ]
 ' | ConvertFrom-Json
+
+#===========================================================================
+#endregion End Database /APPS/TWEEAKS/Quotes/OST
+#===========================================================================
+
+
+#===========================================================================
+#region Start WPF Window
+#===========================================================================
+
 $inputXML =  '
 <!--Window-->
     <Window
@@ -2724,8 +2730,14 @@ $inputXML =  '
 
 
 '
+
 #===========================================================================
-#region Load XMAL 
+#endregion End WPF Window
+#===========================================================================
+
+
+#===========================================================================
+#region Start loadXmal
 #===========================================================================
 
 # Set the maximum number of threads for the RunspacePool to the number of threads on the machine
@@ -2778,7 +2790,7 @@ $sync.itemLink = $sync['window'].FindName('itemLink')
 $sync.installBtn = $sync['window'].FindName('installBtn') 
 
 #===========================================================================
-#endregion End Load XMAL 
+#endregion End loadXmal
 #===========================================================================
 
 
@@ -2889,7 +2901,12 @@ $sync.TweeaksListView.add_LostFocus({
 })
 
 #===========================================================================
-#endregion End Loopss 
+#endregion Start Loops
+#===========================================================================
+
+
+#===========================================================================
+#region Start Main [Buttons Events]
 #===========================================================================
 
 
@@ -2967,3 +2984,8 @@ GetQuotes *> $null
 PlayMusic *> $null
 
 $sync["window"].ShowDialog() | out-null
+
+#===========================================================================
+#endregion End Main [Buttons Events]
+#===========================================================================
+
