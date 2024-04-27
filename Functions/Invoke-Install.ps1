@@ -56,10 +56,6 @@ function Invoke-Install{
     if(Get-SelectedApps -ne $null)
     {
 
-        $sync.installBtn.Dispatcher.Invoke([Action]{
-            $sync.installBtn.IsEnabled = $false
-        })
-
         Invoke-RunspaceWithScriptBlock -ArgumentList  $choco -ScriptBlock {
 
             param($choco)
@@ -78,11 +74,11 @@ function Invoke-Install{
                         Write-Output "Clear Chocolatey temp folder"
                     }
 
+
                     $sync.ProcessRunning = $true
 
                     $sync.installBtn.Dispatcher.Invoke([Action]{
                         $sync.installBtn.Content = "Installing..."
-                        $sync.installBtn.Content.Visibility = "Hidden"
                     })
 
                    
@@ -92,6 +88,7 @@ function Invoke-Install{
 
                     Write-Host "Installing the following programs $choco "
                     Start-Process -FilePath "choco" -ArgumentList "install $choco -y --force --ignore-checksums" -NoNewWindow -Wait
+                    Write-Host "Installs have finished"
                     [System.Windows.MessageBox]::Show("Installation Successfully Completed", "ITT @emadadel4", "OK", "Information")
 
                     $sync.$sync.AppsListView.Dispatcher.Invoke([Action]{
@@ -116,6 +113,7 @@ function Invoke-Install{
                         $sync.installBtn.Content = "Install"
                     })
                   
+                   
                 }
                 else
                 {
