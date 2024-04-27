@@ -92,7 +92,7 @@ function Invoke-Install{
                     [System.Windows.MessageBox]::Show("Installation Successfully Completed", "ITT @emadadel4", "OK", "Information")
 
                     $sync.$sync.AppsListView.Dispatcher.Invoke([Action]{
-                        foreach ($item in $sync.$sync.AppsListView.Items)
+                        foreach ($item in $sync.AppsListView.Items)
                         {
                             $item.IsChecked = $false
                         }
