@@ -282,7 +282,7 @@ function Invoke-Install{
                     Write-Host "Installs have finished"
                     [System.Windows.MessageBox]::Show("Installation Successfully Completed", "ITT @emadadel4", "OK", "Information")
 
-                    $sync.$sync.AppsListView.Dispatcher.Invoke([Action]{
+                    $sync.AppsListView.Dispatcher.Invoke([Action]{
                         foreach ($item in $sync.AppsListView.Items)
                         {
                             $item.IsChecked = $false
