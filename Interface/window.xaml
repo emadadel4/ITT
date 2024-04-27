@@ -35,7 +35,7 @@
                     <Menu Grid.Row="0" Grid.ColumnSpan="3" Background="Transparent" BorderBrush="Transparent" BorderThickness="0">
                         
                         
-                        <MenuItem Header="Computer Managment" BorderBrush="Transparent" BorderThickness="0">
+                        <MenuItem Header="ادوات إدارة الجهاز" BorderBrush="Transparent" BorderThickness="0">
                             <MenuItem Name="sysinfo" Header="System Info"/>
                             <MenuItem Name="poweroption" Header="Power Options"/>
                             <MenuItem Name="deviceManager" Header="Device Manager"/>
@@ -46,15 +46,15 @@
                             <MenuItem Name="diskmgmt" Header="Disk Managment"/>
                         </MenuItem>
 
-                        <MenuItem Header="Third-party" BorderBrush="Transparent" BorderThickness="0">
+                        <MenuItem Header="روابط مفيدة" BorderBrush="Transparent" BorderThickness="0">
                             <MenuItem Name="mas" Header="Microsoft Activation Scripts (MAS)"/>
                             <MenuItem Name="idm" Header="IDM Activation"/>
                         </MenuItem>
                         
-                        <MenuItem Header="Preferences" BorderBrush="Transparent" BorderThickness="0">
-                            <MenuItem Name="load" Header="Load Preset"/>
-                            <MenuItem Name="save" Header="Save Preset"/>
-                            <MenuItem Name="themeText" Header="Theme toggle"/>
+                        <MenuItem Header="التفضيلات" BorderBrush="Transparent" BorderThickness="0">
+                            <MenuItem Name="load" Header="تحميل القائمة المحددة"/>
+                            <MenuItem Name="save" Header="حفظ القائمة المحددة"/>
+                            <MenuItem Name="themeText" Header="المظهر"/>
                         </MenuItem>
 
                     </Menu>
@@ -73,8 +73,8 @@
                         <!--Catagory Section-->
                             <StackPanel Name="catg" Margin="20,0,0,0" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
 
-                            <ComboBox SelectedIndex="0"  Margin="10,10,0,13" Name="cat" HorizontalAlignment="Left" VerticalAlignment="Top" Width="Auto" Height="Auto">
-                                <ComboBoxItem Content="All"></ComboBoxItem>
+                            <ComboBox SelectedIndex="0"  Margin="10,10,0,13" Name="cat" HorizontalAlignment="Left" VerticalAlignment="Top" Width="155" Height="Auto">
+                                <ComboBoxItem Content="جميع البرامج"></ComboBoxItem>
                                 <ComboBoxItem Content="Drivers"></ComboBoxItem>
                                 <ComboBoxItem Content="Media"></ComboBoxItem>
                                 <ComboBoxItem Content="Browsers"></ComboBoxItem>
@@ -115,7 +115,7 @@
                                 />
 
                                 <TextBlock IsHitTestVisible="False" 
-                                Text="Search"
+                                Text="بحث"
                                 VerticalAlignment="Center" 
                                 HorizontalAlignment="Left"
                                 Margin="16,0,0,0"
@@ -160,7 +160,7 @@
                     <!--Install Button-->
                         <Button
                         Name="installBtn"
-                        Content="Install"
+                        Content="تثبيت"
                         FontSize="15"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Bottom"
@@ -170,7 +170,7 @@
                     <!--Apply Button-->
                         <Button
                         Name="applyBtn"
-                        Content="Apply"
+                        Content="تطبيق الامر"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Bottom"
                         FontSize="15"
