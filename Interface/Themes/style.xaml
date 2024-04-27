@@ -13,7 +13,6 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Background" Value="{DynamicResource BGButtonColor}"/>
@@ -25,9 +24,9 @@
 
 <!--Textbox Style-->
   <Style TargetType="TextBox">
+    <Setter Property="Background" Value="{DynamicResource BGColor}"/>
       <Setter Property="Foreground" Value="{DynamicResource FGTextColor}"/>
-      <Setter Property="Background" Value="{DynamicResource FGColor}"/>
-      <Setter Property="BorderThickness" Value="0"/>
+      <Setter Property="BorderThickness" Value="1"/>
       <Setter Property="Template">
           <Setter.Value>
               <ControlTemplate TargetType="TextBox">
@@ -44,6 +43,7 @@
               <Trigger Property="IsFocused" Value="True">
                   <Setter Property="BorderThickness" Value="1"/>
                   <Setter Property="BorderBrush" Value="{DynamicResource BGButtonColor}"/>
+                  <Setter Property="Background" Value="{DynamicResource FGColor}"/>
               </Trigger>
           </Style.Triggers>
   </Style>
