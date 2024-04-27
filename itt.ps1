@@ -2541,18 +2541,8 @@ $inputXML =  '
 
 
                     <Menu Grid.Row="0" Grid.ColumnSpan="3" Background="Transparent" BorderBrush="Transparent" BorderThickness="0">
-                        <MenuItem Header="Preferences" BorderBrush="Transparent" BorderThickness="0">
-                            <MenuItem Name="load" Header="Load Preset"/>
-                            <MenuItem Name="save" Header="Save Preset"/>
-                            <MenuItem Name="themeText" Header="Theme toggle"/>
-                        </MenuItem>
-
-                        <MenuItem Header="Third-party" BorderBrush="Transparent" BorderThickness="0">
-                            <MenuItem Name="mas" Header="Microsoft Activation Scripts (MAS)"/>
-                            <MenuItem Name="idm" Header="IDM Activation"/>
-                        </MenuItem>
-
-
+                        
+                        
                         <MenuItem Header="Computer Managment" BorderBrush="Transparent" BorderThickness="0">
                             <MenuItem Name="sysinfo" Header="System Info"/>
                             <MenuItem Name="poweroption" Header="Power Options"/>
@@ -2562,6 +2552,17 @@ $inputXML =  '
                             <MenuItem Name="appsfeatures" Header="Apps-Features"/>
                             <MenuItem Name="taskmgr" Header="Task Manager"/>
                             <MenuItem Name="diskmgmt" Header="Disk Managment"/>
+                        </MenuItem>
+
+                        <MenuItem Header="Third-party" BorderBrush="Transparent" BorderThickness="0">
+                            <MenuItem Name="mas" Header="Microsoft Activation Scripts (MAS)"/>
+                            <MenuItem Name="idm" Header="IDM Activation"/>
+                        </MenuItem>
+                        
+                        <MenuItem Header="Preferences" BorderBrush="Transparent" BorderThickness="0">
+                            <MenuItem Name="load" Header="Load Preset"/>
+                            <MenuItem Name="save" Header="Save Preset"/>
+                            <MenuItem Name="themeText" Header="Theme toggle"/>
                         </MenuItem>
 
                     </Menu>
@@ -2916,43 +2917,20 @@ $sync['window'].FindName('searchInput').add_TextChanged({Search})
 $sync['window'].FindName('searchInput').add_GotFocus({ClearFilter})
 $sync['window'].FindName('about').add_MouseLeftButtonDown({About})
 $sync['window'].FindName('themeText').add_click({Toggle-Theme})
+$sync['window'].FindName('cat').add_SelectionChanged({FilterByCat( $sync['window'].FindName('cat').SelectedItem.Content)})
 
-
+# Computer Managment tools
 $sync['window'].FindName('deviceManager').add_click({Start-Process devmgmt.msc})
 $sync['window'].FindName('services').add_click({Start-Process services.msc})
 $sync['window'].FindName('network').add_click({Start-Process ncpa.cpl})
 $sync['window'].FindName('sysinfo').add_click({Start-Process msinfo32.exe; dxdiag.exe})
 $sync['window'].FindName('poweroption').add_click({Start-Process powercfg.cpl})
 $sync['window'].FindName('appsfeatures').add_click({start-Process ms-settings:appsfeatures})
-
 $sync['window'].FindName('taskmgr').add_click({Start-Process taskmgr.exe})
-
 $sync['window'].FindName('diskmgmt').add_click({Start-Process diskmgmt.msc})
+# Computer Managment tools
 
-
-
-
-
-
-$sync['window'].FindName('cat').add_SelectionChanged({FilterByCat( $sync['window'].FindName('cat').SelectedItem.Content)})
-$sync['window'].FindName('save').add_click({
-  
-  ClearFilter
-  SaveItemsToJson
-
-})
-
-
-$sync['window'].FindName('load').add_click({LoadJson})
-
-$sync['window'].add_Closing({
-
-  Write-Host "Bye see you soon :)"
-  StopMusic
-  StopAllRunspace
-
-})
-
+# Third-Party
 $sync['window'].FindName('mas').add_click({
   Start-Process ("https://github.com/massgravel/Microsoft-Activation-Scripts")
 })
@@ -2961,7 +2939,25 @@ $sync['window'].FindName('idm').add_click({
 
 Start-Process ("https://github.com/WindowsAddict/IDM-Activation-Script")
 })
+# Third-Party
 
+
+# Preferences
+$sync['window'].FindName('load').add_click({LoadJson})
+$sync['window'].FindName('save').add_click({
+  
+  ClearFilter
+  SaveItemsToJson
+
+})
+# Preferences
+
+
+$sync['window'].add_Closing({
+  Write-Host "Bye see you soon :)"
+  StopMusic
+  StopAllRunspace
+})
 
 #endregion End Events 
 #===========================================================================
