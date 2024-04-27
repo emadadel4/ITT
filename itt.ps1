@@ -331,7 +331,7 @@ function Invoke-Install{
     }
     else
     {
-        [System.Windows.MessageBox]::Show("Select at lest one program", "ITT @emadadel", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Question)
+        [System.Windows.MessageBox]::Show("أختار برنامج واحد على الاقل", "ITT @emadadel", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Question)
     }
 }
 
@@ -407,7 +407,7 @@ function ApplyTweaks() {
     }
     else
     {
-        [System.Windows.MessageBox]::Show("Choose at least something from the list", "ITT @emadadel", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Question)
+        [System.Windows.MessageBox]::Show("أختار الأمر المراد تطبيقه", "ITT @emadadel", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Question)
     }
 }
 
@@ -2137,22 +2137,6 @@ $sync.configs.Quotes = '{
   ]
 }
 ' | ConvertFrom-Json
-$sync.configs.themes = '{
-    "matrix": {
-      "BGButtonColor": "#00FF00",
-      "FGButtonColor": "#0000FF"
-    },
-
-    "dark": {
-      "BGButtonColor": "#FF0000",
-      "FGButtonColor": "#FFFF00"
-    },
-    "light": {
-      "BGButtonColor": "#000000",
-      "FGButtonColor": "#FFFFFF"
-    }
-  }
-  ' | ConvertFrom-Json
 $sync.configs.tweaks = '[
   {
     "name": "System File Checker",
