@@ -1,0 +1,16 @@
+{
+    "matrix": {
+      "BGButtonColor": "#00FF00",
+      "FGButtonColor": "#0000FF"
+    },
+
+    "dark": {
+      "BGButtonColor": "#FF0000",
+      "FGButtonColor": "#FFFF00"
+    },
+    "light": {
+      "BGButtonColor": "#000000",
+      "FGButtonColor": "#FFFFFF"
+    }
+  }
+  
