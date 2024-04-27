@@ -5,6 +5,7 @@ function ChangeTap() {
     {
         $sync['window'].FindName('installBtn').Visibility = "Visible"
         $sync['window'].FindName('applyBtn').Visibility = "Hidden"
+
     }
 
     if($sync['window'].FindName('tweeksTab').IsSelected)
