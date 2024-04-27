@@ -140,6 +140,7 @@ function Invoke-Install{
         [System.Windows.MessageBox]::Show("Select at lest one program", "ITT @emadadel", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Question)
     }
 }
+
 function ApplyTweaks() {
 
     if($sync.ProcessRunning)
@@ -215,3 +216,4 @@ function ApplyTweaks() {
         [System.Windows.MessageBox]::Show("Choose at least something from the list", "ITT @emadadel", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Question)
     }
 }
+
