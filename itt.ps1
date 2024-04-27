@@ -247,6 +247,10 @@ function Invoke-Install{
     if(Get-SelectedApps -ne $null)
     {
 
+        $sync.installBtn.Dispatcher.Invoke([Action]{
+            $sync.installBtn.IsEnabled = $false
+        })
+
         Invoke-RunspaceWithScriptBlock -ArgumentList  $choco -ScriptBlock {
 
             param($choco)
@@ -265,11 +269,14 @@ function Invoke-Install{
                         Write-Output "Clear Chocolatey temp folder"
                     }
 
+                    
+
 
                     $sync.ProcessRunning = $true
 
                     $sync.installBtn.Dispatcher.Invoke([Action]{
                         $sync.installBtn.Content = "Installing..."
+                        $sync.installBtn.Content.Visibility = "Hidden"
                     })
 
                    
@@ -279,7 +286,6 @@ function Invoke-Install{
 
                     Write-Host "Installing the following programs $choco "
                     Start-Process -FilePath "choco" -ArgumentList "install $choco -y --force --ignore-checksums" -NoNewWindow -Wait
-                    Write-Host "Installs have finished"
                     [System.Windows.MessageBox]::Show("Installation Successfully Completed", "ITT @emadadel4", "OK", "Information")
 
                     $sync.$sync.AppsListView.Dispatcher.Invoke([Action]{
@@ -2270,7 +2276,7 @@ $inputXML =  '
     <Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        x:Name="Window" Title="ITT @emadadel4" WindowStartupLocation = "CenterScreen" 
+        x:Name="Window" Title="IT Tools @emadadel4" WindowStartupLocation = "CenterScreen" 
         Background="{DynamicResource BGColor}"
         Height="500" Width="755" MinWidth="755" MinHeight="400" ShowInTaskbar = "True" Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/icon.ico">
     
@@ -2291,7 +2297,6 @@ $inputXML =  '
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Background" Value="{DynamicResource BGButtonColor}"/>
@@ -2303,9 +2308,9 @@ $inputXML =  '
 
 <!--Textbox Style-->
   <Style TargetType="TextBox">
+    <Setter Property="Background" Value="{DynamicResource BGColor}"/>
       <Setter Property="Foreground" Value="{DynamicResource FGTextColor}"/>
-      <Setter Property="Background" Value="{DynamicResource FGColor}"/>
-      <Setter Property="BorderThickness" Value="0"/>
+      <Setter Property="BorderThickness" Value="1"/>
       <Setter Property="Template">
           <Setter.Value>
               <ControlTemplate TargetType="TextBox">
@@ -2322,6 +2327,7 @@ $inputXML =  '
               <Trigger Property="IsFocused" Value="True">
                   <Setter Property="BorderThickness" Value="1"/>
                   <Setter Property="BorderBrush" Value="{DynamicResource BGButtonColor}"/>
+                  <Setter Property="Background" Value="{DynamicResource FGColor}"/>
               </Trigger>
           </Style.Triggers>
   </Style>
@@ -2570,19 +2576,19 @@ $inputXML =  '
 
                     </Menu>
 
-
                         <!--Logo-->
                             <StackPanel Margin="20" Orientation="Horizontal" HorizontalAlignment="Left"  VerticalAlignment="Center" Grid.Row="1" Grid.ColumnSpan="3" >
 
-                                <Ellipse Name="about" Width="50" Height="50" Cursor="Hand">
+                                <Ellipse Name="about" Width="60" Height="60" Cursor="Hand">
                                     <Ellipse.Fill>
                                         <ImageBrush ImageSource="https://avatars.githubusercontent.com/u/19177373?v=4.png" />
                                     </Ellipse.Fill>
                                 </Ellipse>
+
                         <!--End Logo-->
 
                         <!--Catagory Section-->
-                            <StackPanel Name="catg" Margin="20,0,0,0" Orientation="Horizontal" HorizontalAlignment="Left">
+                            <StackPanel Name="catg" Margin="20,0,0,0" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
 
                             <ComboBox SelectedIndex="0"  Margin="10,10,0,13" Name="cat" HorizontalAlignment="Left" VerticalAlignment="Top" Width="Auto" Height="Auto">
                                 <ComboBoxItem Content="All"></ComboBoxItem>
@@ -2690,7 +2696,6 @@ $inputXML =  '
                         Name="installBtn"
                         Content="Install"
                         FontSize="15"
-                        Visibility="Hidden"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Bottom"
                         Width="100" Height="40" Margin="50"/>
@@ -2703,7 +2708,6 @@ $inputXML =  '
                         HorizontalAlignment="Center"
                         VerticalAlignment="Bottom"
                         FontSize="15"
-                        Visibility="Hidden"
                         Width="100" Height="40" Margin="50"/>
                     <!--End Apply Button-->
 
