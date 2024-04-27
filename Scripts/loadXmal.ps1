@@ -1,7 +1,3 @@
-#===========================================================================
-#region Load XMAL 
-#===========================================================================
-
 # Set the maximum number of threads for the RunspacePool to the number of threads on the machine
 $maxthreads = [int]$env:NUMBER_OF_PROCESSORS
 
@@ -50,7 +46,3 @@ $sync.TweeaksListView = $sync['window'].FindName("tweaks")
 $sync.itemLink = $sync['window'].FindName('itemLink')
 
 $sync.installBtn = $sync['window'].FindName('installBtn') 
-
-#===========================================================================
-#endregion End Load XMAL 
-#===========================================================================
