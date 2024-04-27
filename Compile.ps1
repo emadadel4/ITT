@@ -29,11 +29,44 @@ Write-output '
 
 ' | Out-File ./$scriptname -Append -Encoding ascii
 
+
+Write-output '
+#===========================================================================
+#region End Start
+#===========================================================================
+' | Out-File ./$scriptname -Append -Encoding ascii
+
 (Get-Content .\Scripts\start.ps1).replace('#{replaceme}',"$(Get-Date -Format yy.MM.dd)") | Out-File ./$scriptname -Append -Encoding ascii
+
+Write-output '
+#===========================================================================
+#endregion End Start
+#===========================================================================
+' | Out-File ./$scriptname -Append -Encoding ascii
+
+Write-output '
+#===========================================================================
+#region Start Functions
+#===========================================================================
+' | Out-File ./$scriptname -Append -Encoding ascii
+
 
 Get-ChildItem .\Functions -Recurse -File | ForEach-Object {
     Get-Content $psitem.FullName | Out-File ./$scriptname -Append -Encoding ascii
 }
+
+Write-output '
+#===========================================================================
+#endregion End Functions
+#===========================================================================
+' | Out-File ./$scriptname -Append -Encoding ascii
+
+
+Write-output '
+#===========================================================================
+#region Start Database /APPS/TWEEAKS/Quotes/OST
+#===========================================================================
+' | Out-File ./$scriptname -Append -Encoding ascii
 
 Get-ChildItem .\Database | Where-Object {$psitem.extension -eq ".json"} | ForEach-Object {
     $json = (Get-Content $psitem.FullName -Raw).replace("'", "''")
@@ -41,7 +74,22 @@ Get-ChildItem .\Database | Where-Object {$psitem.extension -eq ".json"} | ForEac
     Write-output "`$sync.configs.$($psitem.BaseName) = '$json' `| ConvertFrom-Json" | Out-File ./$scriptname -Append -Encoding default
 }
 
+Write-output '
+#===========================================================================
+#endregion End Database /APPS/TWEEAKS/Quotes/OST
+#===========================================================================
+' | Out-File ./$scriptname -Append -Encoding ascii
+
+
+Write-output '
+#===========================================================================
+#region Start WPF Window
+#===========================================================================
+' | Out-File ./$scriptname -Append -Encoding ascii
+
 $xaml = (Get-Content .\interface\window.xaml -Raw).replace("'", "''")
+
+
 
 # Assuming taps.xaml is in the same directory as main.ps1
 $appXamlPath = Join-Path -Path $PSScriptRoot -ChildPath "interface/Controls/taps.xaml"
@@ -78,12 +126,62 @@ $xaml = $xaml -replace "{{eee}}", $tweeaksCheckboxex
 
 Write-output "`$inputXML =  '$xaml'" | Out-File ./$scriptname -Append -Encoding ascii
 
+Write-output '
+#===========================================================================
+#endregion End WPF Window
+#===========================================================================
+' | Out-File ./$scriptname -Append -Encoding ascii
+
+
+Write-output '
+#===========================================================================
+#region Start loadXmal
+#===========================================================================
+' | Out-File ./$scriptname -Append -Encoding ascii
+
 Get-Content .\scripts\loadXmal.ps1 | Out-File ./$scriptname -Append -Encoding ascii
+
+
+Write-output '
+#===========================================================================
+#endregion End loadXmal
+#===========================================================================
+' | Out-File ./$scriptname -Append -Encoding ascii
+
+
+Write-output '
+#===========================================================================
+#region Start Loops
+#===========================================================================
+' | Out-File ./$scriptname -Append -Encoding ascii
 
 Get-ChildItem .\loops -Recurse -File | ForEach-Object {
     Get-Content $psitem.FullName | Out-File ./$scriptname -Append -Encoding ascii
 }
 
+
+
+Write-output '
+#===========================================================================
+#endregion Start Loops
+#===========================================================================
+' | Out-File ./$scriptname -Append -Encoding ascii
+
+
+
+Write-output '
+#===========================================================================
+#region Start Main [Buttons Events]
+#===========================================================================
+' | Out-File ./$scriptname -Append -Encoding ascii
+
 Get-Content .\scripts\main.ps1 | Out-File ./$scriptname -Append -Encoding ascii
 
-./itt.ps1
+Write-output '
+#===========================================================================
+#endregion End Main [Buttons Events]
+#===========================================================================
+' | Out-File ./$scriptname -Append -Encoding ascii
+
+
+#./itt.ps1
