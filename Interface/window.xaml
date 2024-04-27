@@ -43,6 +43,19 @@
                             <MenuItem Name="mas" Header="Microsoft Activation Scripts (MAS)"/>
                             <MenuItem Name="idm" Header="IDM Activation"/>
                         </MenuItem>
+
+
+                        <MenuItem Header="Computer Managment" BorderBrush="Transparent" BorderThickness="0">
+                            <MenuItem Name="sysinfo" Header="System Info"/>
+                            <MenuItem Name="poweroption" Header="Power Options"/>
+                            <MenuItem Name="deviceManager" Header="Device Manager"/>
+                            <MenuItem Name="services" Header="Services"/>
+                            <MenuItem Name="network" Header="Network"/>
+                            <MenuItem Name="appsfeatures" Header="Apps-Features"/>
+                            <MenuItem Name="taskmgr" Header="Task Manager"/>
+                            <MenuItem Name="diskmgmt" Header="Disk Managment"/>
+                        </MenuItem>
+
                     </Menu>
 
 
