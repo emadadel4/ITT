@@ -46,7 +46,7 @@ function Invoke-Install{
 
     if($sync.ProcessRunning)
     {
-        $msg = "An Install process is currently running."
+        $msg = "...يوجد عملية جإرية الان يرجى الأنتظار"
         [System.Windows.MessageBox]::Show($msg, "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
         return
     }
@@ -62,7 +62,7 @@ function Invoke-Install{
             
             try{
 
-                $msg = [System.Windows.MessageBox]::Show("Do you want to Install selected program(s)", "ITT @emadadel", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)
+                $msg = [System.Windows.MessageBox]::Show("هل تريد تثبيت البرامج المحددة", "ITT @emadadel", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)
 
                 if($msg -eq "Yes")
                 {
@@ -78,17 +78,16 @@ function Invoke-Install{
                     $sync.ProcessRunning = $true
 
                     $sync.installBtn.Dispatcher.Invoke([Action]{
-                        $sync.installBtn.Content = "Installing..."
+                        $sync.installBtn.Content = "...جإري التثبيت"
                     })
 
                    
                     $sync.Description.Dispatcher.Invoke([Action]{
-                        $sync.Description.Text = "Downloading and Installing..."
+                        $sync.Description.Text = "...جإري التحميل و التثبيت"
                     })
 
                     Write-Host "Installing the following programs $choco "
                     Start-Process -FilePath "choco" -ArgumentList "install $choco -y --force --ignore-checksums" -NoNewWindow -Wait
-                    Write-Host "Installs have finished"
                     [System.Windows.MessageBox]::Show("Installation Successfully Completed", "ITT @emadadel4", "OK", "Information")
 
                     $sync.AppsListView.Dispatcher.Invoke([Action]{
@@ -100,7 +99,7 @@ function Invoke-Install{
 
 
                     $sync.description.Dispatcher.Invoke([Action]{
-                        $sync.description.Text = "Installed successfully"
+                        $sync.description.Text = "تم التثبيت بنجاح"
                     })
 
                   
@@ -110,7 +109,7 @@ function Invoke-Install{
 
 
                     $sync.installBtn.Dispatcher.Invoke([Action]{
-                        $sync.installBtn.Content = "Install"
+                        $sync.installBtn.Content = "تثبيت"
                     })
                   
                    
@@ -145,7 +144,7 @@ function ApplyTweaks() {
 
     if($sync.ProcessRunning)
     {
-        $msg = "An Install process is currently running."
+        $msg = "...يوجد عملية جإرية الان يرجى الأنتظار"
         [System.Windows.MessageBox]::Show($msg, "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
         return
     }
@@ -161,20 +160,20 @@ function ApplyTweaks() {
             
             try{
 
-                $msg = [System.Windows.MessageBox]::Show("Do you want to apply selected tweeak(s) ?", "ITT @emadadel", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)
+                $msg = [System.Windows.MessageBox]::Show("هل تريد تطبيق الإعدادات المختارة", "ITT @emadadel", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)
 
                 if($msg -eq "Yes")
                 {
                     $sync.ProcessRunning = $true
 
                     $sync.description.Dispatcher.Invoke([Action]{
-                        $sync.description.Text = "Applying..."
+                        $sync.description.Text = "جإري التطبيق"
                     })
 
                     #Write-Host "Applying tweeak(s) $tweeaks "
                     Start-Process -FilePath "powershell.exe" -ArgumentList "-Command `"$tweeaks`"" -NoNewWindow -Wait
                     Write-Host "The operation was successful."    
-                    [System.Windows.MessageBox]::Show("Successfully Completed", "ITT @emadadel4", "OK", "Information")
+                    [System.Windows.MessageBox]::Show("تمت العملية بنجاح", "ITT @emadadel4", "OK", "Information")
 
                     $sync.TweeaksListView.Dispatcher.Invoke([Action]{
                         foreach ($item in $sync.TweeaksListView.Items)
@@ -185,7 +184,7 @@ function ApplyTweaks() {
 
                  
                     $sync.description.Dispatcher.Invoke([Action]{
-                        $sync.description.Text = "Done..."
+                        $sync.description.Text = "تم التطبيق"
                     })
 
                     Start-Sleep -Seconds 1
