@@ -33,16 +33,30 @@
 
 
                     <Menu Grid.Row="0" Grid.ColumnSpan="3" Background="Transparent" BorderBrush="Transparent" BorderThickness="0">
-                        <MenuItem Header="Preferences" BorderBrush="Transparent" BorderThickness="0">
-                            <MenuItem Name="load" Header="Load Preset"/>
-                            <MenuItem Name="save" Header="Save Preset"/>
-                            <MenuItem Name="themeText" Header="Theme toggle"/>
+                        
+                        
+                        <MenuItem Header="Computer Managment" BorderBrush="Transparent" BorderThickness="0">
+                            <MenuItem Name="sysinfo" Header="System Info"/>
+                            <MenuItem Name="poweroption" Header="Power Options"/>
+                            <MenuItem Name="deviceManager" Header="Device Manager"/>
+                            <MenuItem Name="services" Header="Services"/>
+                            <MenuItem Name="network" Header="Network"/>
+                            <MenuItem Name="appsfeatures" Header="Apps-Features"/>
+                            <MenuItem Name="taskmgr" Header="Task Manager"/>
+                            <MenuItem Name="diskmgmt" Header="Disk Managment"/>
                         </MenuItem>
 
                         <MenuItem Header="Third-party" BorderBrush="Transparent" BorderThickness="0">
                             <MenuItem Name="mas" Header="Microsoft Activation Scripts (MAS)"/>
                             <MenuItem Name="idm" Header="IDM Activation"/>
                         </MenuItem>
+                        
+                        <MenuItem Header="Preferences" BorderBrush="Transparent" BorderThickness="0">
+                            <MenuItem Name="load" Header="Load Preset"/>
+                            <MenuItem Name="save" Header="Save Preset"/>
+                            <MenuItem Name="themeText" Header="Theme toggle"/>
+                        </MenuItem>
+
                     </Menu>
 
 
