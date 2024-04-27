@@ -283,7 +283,7 @@ function Invoke-Install{
                     [System.Windows.MessageBox]::Show("Installation Successfully Completed", "ITT @emadadel4", "OK", "Information")
 
                     $sync.$sync.AppsListView.Dispatcher.Invoke([Action]{
-                        foreach ($item in $sync.$sync.AppsListView.Items)
+                        foreach ($item in $sync.AppsListView.Items)
                         {
                             $item.IsChecked = $false
                         }
@@ -836,6 +836,7 @@ function ChangeTap() {
     {
         $sync['window'].FindName('installBtn').Visibility = "Visible"
         $sync['window'].FindName('applyBtn').Visibility = "Hidden"
+
     }
 
     if($sync['window'].FindName('tweeksTab').IsSelected)
@@ -2119,7 +2120,9 @@ $sync.configs.Quotes = '{
     "نظرت للسماء لم اجد غير السواد فاكتفيت بالبكاء مادهاكي يا بلادي",
     "قلوبكم تفتت وصارت كالحجار ضميركم غفى هفى اردتكم القذارة",
     "من جاءني رحيما بادلته احتراما",
-    "ولدت من جديد حينما رأيت ذلك"
+    "ولدت من جديد حينما رأيت ذلك",
+    "الوطنية للفقراء و الوطن للاغنياء",
+    "حين انتهيت من بناء قاربي جف البحر"
   ]
 }
 ' | ConvertFrom-Json
