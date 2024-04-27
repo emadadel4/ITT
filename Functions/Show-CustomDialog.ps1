@@ -146,3 +146,4 @@ function Show-CustomDialog {
     # Show the custom dialog
     $dialog.ShowDialog()
 }
+
