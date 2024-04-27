@@ -1,4 +1,4 @@
-#region Theme Functions
+#region PlayMusic Functions
 function PlayMusic {
 
     # RUN MUSIC IN BACKGROUND
@@ -68,5 +68,5 @@ function StopMusic {
     $sync.runspace.Dispose()
     $sync.runspace.Close()
 }
-
 #endregion
+
