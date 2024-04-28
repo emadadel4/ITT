@@ -1,4 +1,8 @@
 
+CheckChoco
+GetQuotes *> $null
+PlayMusic *> $null
+
 #check currnet Theme
 if ($sync.theme -eq "Dark") {
   Switch-ToDarkMode
@@ -9,10 +13,6 @@ else
   Switch-ToLightMode
   $sync.isDarkMode = "Light"
 }
-
-#===========================================================================
-#region Start Events
-#===========================================================================
 
 # Buttons
 $sync['window'].FindName('taps').add_SelectionChanged({ChangeTap})
@@ -63,13 +63,5 @@ $sync['window'].add_Closing({
   StopMusic
   StopAllRunspace
 })
-
-#endregion End Events 
-#===========================================================================
-
-
-CheckChoco
-GetQuotes *> $null
-PlayMusic *> $null
 
 $sync["window"].ShowDialog() | out-null
