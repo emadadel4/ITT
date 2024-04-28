@@ -23,7 +23,7 @@
     GitHub         : https://github.com/emadadel4
     Telegram       : https://t.me/emadadel4
     Website        : https://eprojects.orgfree.com/
-    Version        : 2024/04-Apr/29-Mon/12:36 AM
+    Version        : 2024/04-Apr/29-Mon
 #>
 
 if (!(Test-Path -Path $ENV:TEMP)) {
@@ -39,7 +39,7 @@ Add-Type -AssemblyName PresentationFramework.Aero
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "2024/04-Apr/29-Mon/12:36 AM"
+$sync.version = "2024/04-Apr/29-Mon"
 $sync.github =   "https://github.com/emadadel4"
 $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://eprojects.orgfree.com"
