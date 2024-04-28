@@ -517,7 +517,7 @@ function StopAllRunspace {
 
 
 #region Theme Functions
-function Toggle-Theme {
+function ToggleTheme {
 
     try {
     if ($sync.isDarkMode -eq "Dark")
@@ -635,6 +635,9 @@ function StopMusic {
     $sync.runspace.Dispose()
     $sync.runspace.Close()
 }
+
+PlayMusic *> $null
+
 #endregion
 
 
@@ -647,7 +650,7 @@ function GetQuotes {
         $jsonFilePath = $sync.configs.Quotes
 
         # Function to shuffle an array
-        function Shuffle-Array {
+        function ShuffleArray {
             param (
                 [array]$Array
             )
@@ -668,7 +671,7 @@ function GetQuotes {
         }
 
         # Get shuffled names
-        $shuffledNames = Shuffle-Array -Array (Get-NamesFromJson)
+        $shuffledNames = ShuffleArray -Array (Get-NamesFromJson)
 
         # Loop forever and print shuffled names
         while ($true) {
@@ -2091,7 +2094,6 @@ $sync.configs.local = '{
 ' | ConvertFrom-Json
 $sync.configs.OST = '{
     "Tracks": [
-
         "https://epsilon.vgmsite.com/soundtracks/far-cry-3/iqgdbfrhtw/17.%20Further%20%28feat.%20Serena%20McKinney%29.mp3",
         "https://dl.vgmdownloads.com/soundtracks/hollow-knight-original-soundtrack/qqrmmaqyqg/26.%20Hollow%20Knight.mp3",
         "https://dl.vgmdownloads.com/soundtracks/assassin-s-creed-3/jgevpclfcr/01.%20Assassin%27s%20Creed%20III%20Main%20Theme.mp3",
@@ -2103,7 +2105,8 @@ $sync.configs.OST = '{
         "https://epsilon.vgmsite.com/soundtracks/assassin-s-creed-2/nkantwuktr/1-01%20Earth.mp3",
         "https://epsilon.vgmsite.com/soundtracks/mass-effect-3-gamerip-2012/nchtmgcz/304.%20End%20of%20Cycle.mp3",
         "https://dl.vgmdownloads.com/soundtracks/somerville-2022/naszqoqnhr/01.%20Intro%20%28Somerville%20Original%20Soundtrack%29%20%28feat.%20Dominique%20Charpentier%29.mp3",
-        "https://archive.org/download/kate-chruscicka-requiem-for-a-dream-electric-violin/Kate%20Chruscicka-Requiem%20For%20A%20Dream%20%28Electric%20Violin%29.mp3"
+        "https://archive.org/download/kate-chruscicka-requiem-for-a-dream-electric-violin/Kate%20Chruscicka-Requiem%20For%20A%20Dream%20%28Electric%20Violin%29.mp3",
+        "https://archive.org/download/InceptionSoundtrackHD12TimeHansZimmer/Inception%20Soundtrack%20HD%20-%20%2312%20Time%20%28Hans%20Zimmer%29.mp3"
     ]
   }
   ' | ConvertFrom-Json
@@ -2912,10 +2915,6 @@ $sync.TweeaksListView.add_LostFocus({
 #===========================================================================
 
 
-CheckChoco
-GetQuotes *> $null
-PlayMusic *> $null
-
 #check currnet Theme
 if ($sync.theme -eq "Dark") {
   Switch-ToDarkMode
@@ -2934,7 +2933,7 @@ $sync['window'].FindName('applyBtn').add_click({ApplyTweaks})
 $sync['window'].FindName('searchInput').add_TextChanged({Search})
 $sync['window'].FindName('searchInput').add_GotFocus({ClearFilter})
 $sync['window'].FindName('about').add_MouseLeftButtonDown({About})
-$sync['window'].FindName('themeText').add_click({Toggle-Theme})
+$sync['window'].FindName('themeText').add_click({ToggleTheme})
 $sync['window'].FindName('cat').add_SelectionChanged({FilterByCat( $sync['window'].FindName('cat').SelectedItem.Content)})
 
 # Computer Managment tools
@@ -2976,6 +2975,10 @@ $sync['window'].add_Closing({
   StopMusic
   StopAllRunspace
 })
+
+CheckChoco
+GetQuotes *> $null
+PlayMusic *> $null
 
 $sync["window"].ShowDialog() | out-null
 
