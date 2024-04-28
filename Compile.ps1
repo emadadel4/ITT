@@ -131,20 +131,28 @@ try {
 
 "@
 
-    $XamlPath = Join-Path -Path $InterfaceDirectory -ChildPath "window.xaml"
-    $AppXamlPath = Join-Path -Path $InterfaceDirectory -ChildPath "Controls/taps.xaml"
-    $StylePath = Join-Path -Path $InterfaceDirectory -ChildPath "Themes/style.xaml"
-    $ColorsPath = Join-Path -Path $InterfaceDirectory -ChildPath "Themes/colors.xaml"
+    # Define file paths
+    $FilePaths = @{
+        "Xaml" = Join-Path -Path $InterfaceDirectory -ChildPath "window.xaml"
+        "AppXaml" = Join-Path -Path $InterfaceDirectory -ChildPath "Controls/taps.xaml"
+        "Style" = Join-Path -Path $InterfaceDirectory -ChildPath "Themes/style.xaml"
+        "Colors" = Join-Path -Path $InterfaceDirectory -ChildPath "Themes/colors.xaml"
+    }
 
-    $XamlContent = (Get-Content -Path $XamlPath -Raw) -replace "'", "''"
-    $AppXamlContent = Get-Content -Path $AppXamlPath -Raw
-    $StyleContent = Get-Content -Path $StylePath -Raw
-    $ColorsContent = Get-Content -Path $ColorsPath -Raw
+    # Read and replace placeholders in XAML content
+    try {
+        $XamlContent = (Get-Content -Path $FilePaths["Xaml"] -Raw) -replace "'", "''"
+        $AppXamlContent = Get-Content -Path $FilePaths["AppXaml"] -Raw
+        $StyleContent = Get-Content -Path $FilePaths["Style"] -Raw
+        $ColorsContent = Get-Content -Path $FilePaths["Colors"] -Raw
 
-    $XamlContent = $XamlContent -replace "{{Taps}}", $AppXamlContent
-    $XamlContent = $XamlContent -replace "{{Style}}", $StyleContent
-    $XamlContent = $XamlContent -replace "{{Colors}}", $ColorsContent
+        $XamlContent = $XamlContent -replace "{{Taps}}",
+        $AppXamlContent -replace "{{Style}}",
+        $StyleContent -replace "{{Colors}}", $ColorsContent
 
+    } catch {
+        Write-Error "Error: $($_.Exception.Message)"
+    }
    
     $AppsCheckboxes  = ""
     foreach ($App  in $sync.configs.applications) {
@@ -160,10 +168,8 @@ try {
 "@
 }
 
-
     $XamlContent = $XamlContent -replace "{{Apps}}", $AppsCheckboxes 
     $XamlContent = $XamlContent -replace "{{Tweeaks}}", $TweaksCheckboxes 
-
     WriteToScript -Content "`$inputXML = '$XamlContent'"
 
     WriteToScript -Content @"
