@@ -1,6 +1,3 @@
-
-
-
 param (
     [string]$OutputScript = "itt.ps1",
     [string]$StartScript = ".\Scripts\start.ps1",
