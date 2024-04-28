@@ -118,8 +118,9 @@ function FilterByCat {
         $Cat
     )
 
+    # if user on Other tab return to app list
     $sync['window'].FindName('apps').IsSelected = $true
-    
+
     $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync['window'].FindName('list').Items)
 
     # Define the filter predicate
@@ -416,33 +417,28 @@ function ApplyTweaks() {
 
 function LoadJson {
 
-        # Open file dialog to select JSON file
-        $openFileDialog = New-Object -TypeName "Microsoft.Win32.OpenFileDialog"
-        $openFileDialog.Filter = "JSON files (*.json)|*.json"
-        $openFileDialog.Title = "Open JSON File"
-        $dialogResult = $openFileDialog.ShowDialog()
-
+    # Open file dialog to select JSON file
+    $openFileDialog = New-Object -TypeName "Microsoft.Win32.OpenFileDialog"
+    $openFileDialog.Filter = "JSON files (*.json)|*.json"
+    $openFileDialog.Title = "Open JSON File"
+    $dialogResult = $openFileDialog.ShowDialog()
 
     if ($dialogResult -eq "OK") {
 
-        # Read the JSON file
-        $json = Get-Content -Path $openFileDialog.FileName -Raw | ConvertFrom-Json
+        $jsonData = Get-Content -Path $openFileDialog.FileName -Raw | ConvertFrom-Json
+        $filteredNames = $jsonData.Name
 
-        # Add items to the ListView
-        foreach ($itemData in $json)
-        {
-            foreach($item in $sync['window'].FindName('list').items)
-            {
-                if($itemData.Name -eq $item.Content)
-                {
-                    $item.IsChecked = $itemData.check
-                }
-            }
+        $filterPredicate = {
+
+            param($item)
+
+            return $filteredNames -contains $item.Content
         }
+
+        $sync['window'].FindName('list').Clear()
+        $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync['window'].FindName('list').Items)
+        $collectionView.Filter = $filterPredicate
     }
-
-    Write-Host "Loaded successfully."
-
 }
 
 function SaveItemsToJson
@@ -640,9 +636,6 @@ function StopMusic {
     $sync.runspace.Dispose()
     $sync.runspace.Close()
 }
-
-PlayMusic *> $null
-
 #endregion
 
 
@@ -2086,6 +2079,17 @@ $sync.configs.applications = '[
   }
 ]
 ' | ConvertFrom-Json
+$sync.configs.local = '{
+    "WelcomeMessage": {
+        "en": "Welcome!",
+        "ar": "أهلاً وسهلاً!"
+    },
+    "SubmitButton": {
+        "en": "Submit",
+        "ar": "إرسال"
+    }
+}
+' | ConvertFrom-Json
 $sync.configs.OST = '{
     "Tracks": [
 
@@ -2981,6 +2985,7 @@ $sync['window'].add_Closing({
 
 CheckChoco
 GetQuotes *> $null
+PlayMusic *> $null
 
 $sync["window"].ShowDialog() | out-null
 
