@@ -8,7 +8,7 @@
     "category": "tweak"
   },
   {
-    "name": "Disk Cleanup",
+    "name": "Run Disk cleanup",
     "description": "Clean temporary files that are not necessary",
     "repo": "null",
     "script": "cleanmgr.exe /d C: /VERYLOWDISK Dism.exe /online /Cleanup-Image /StartComponentCleanup /ResetBase;",
@@ -32,7 +32,7 @@
     "category": "tweak"
   },
   {
-    "name": "Fix stutter in games",
+    "name": "Fix Stutter/Lag in Games",
     "description": "Fix Stutter in Games (Disable GameBarPresenceWriter). Windows 10/11",
     "repo": "https://github.com/emadadel4/Fix-Stutter-in-Games",
     "script": "Invoke-RestMethod https://raw.githubusercontent.com/emadadel4/Fix-Stutter-in-Games/main/fix.ps1 | Invoke-Expression;",
@@ -40,7 +40,7 @@
     "category": "tweak"
   },
   {
-    "name": "Remove Unnecessary Windows 10 Apps",
+    "name": "Remove Unnecessary Windows 10/11 Apps",
     "description": "BingNews, GetHelp, Getstarted, Messaging, Microsoft3DViewer, MicrosoftOfficeHub, MicrosoftSolitaireCollection, News, Office.Lens, Office.OneNote, Office.Sway, OneConnect, People, Print3D, RemoteDesktop, SkypeApp, StorePurchaseApp, Office.Todo.List, Whiteboard, WindowsAlarms, WindowsCamera, windowscommunicationsapps, WindowsFeedbackHub, WindowsMaps, WindowsSoundRecorder, Xbox.TCUI, XboxApp, XboxGameOverlay, XboxIdentityProvider, XboxSpeechToTextOverlay, ZuneMusic, ZuneVideo, Windows.Cortana, MSPaint",
     "repo": "https://github.com/emadadel4/WindowsTweaks",
     "script": "Invoke-RestMethod https://raw.githubusercontent.com/emadadel4/WindowsTweaks/main/debloater.ps1 | Invoke-Expression;",
@@ -72,7 +72,7 @@
     "category": "tweak"
   },
   {
-    "name": "Disables People icon on Taskbar",
+    "name": "Disable People icon on Taskbar",
     "description": "Disables People on taskbar",
     "repo": "null",
     "script": "If (Test-Path 'HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\\People') { Set-ItemProperty 'HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\\People' -Name PeopleBand -Value 0 -Verbose }",
@@ -80,7 +80,7 @@
     "category": "tweak"
   },
   {
-    "name": "Disables suggestions on start menu",
+    "name": "Disable suggestions on start menu",
     "description": "Disables suggestions on start menu",
     "repo": "null",
     "script": "if (Test-Path 'HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager') { Set-ItemProperty 'HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager' -Name SystemPaneSuggestionsEnabled -Value 0 -Verbose }",
