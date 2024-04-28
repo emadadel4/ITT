@@ -35,7 +35,7 @@
                     <Menu Grid.Row="0" Grid.ColumnSpan="3" Background="Transparent" BorderBrush="Transparent" BorderThickness="0">
                         
                         
-                        <MenuItem Header="ادوات إدارة الجهاز" BorderBrush="Transparent" BorderThickness="0">
+                        <MenuItem Header="إدارة الجهاز" BorderBrush="Transparent" BorderThickness="0">
                             <MenuItem Name="sysinfo" Header="System Info"/>
                             <MenuItem Name="poweroption" Header="Power Options"/>
                             <MenuItem Name="deviceManager" Header="Device Manager"/>
@@ -46,7 +46,7 @@
                             <MenuItem Name="diskmgmt" Header="Disk Managment"/>
                         </MenuItem>
 
-                        <MenuItem Header="روابط مفيدة" BorderBrush="Transparent" BorderThickness="0">
+                        <MenuItem Header="روابط خارجية" BorderBrush="Transparent" BorderThickness="0">
                             <MenuItem Name="mas" Header="Microsoft Activation Scripts (MAS)"/>
                             <MenuItem Name="idm" Header="IDM Activation"/>
                         </MenuItem>
@@ -74,7 +74,7 @@
                             <StackPanel Name="catg" Margin="20,0,0,0" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
 
                             <ComboBox SelectedIndex="0"  Margin="10,10,0,13" Name="cat" HorizontalAlignment="Left" VerticalAlignment="Top" Width="155" Height="Auto">
-                                <ComboBoxItem Content="جميع البرامج"></ComboBoxItem>
+                                <ComboBoxItem Content="All"></ComboBoxItem>
                                 <ComboBoxItem Content="Drivers"></ComboBoxItem>
                                 <ComboBoxItem Content="Media"></ComboBoxItem>
                                 <ComboBoxItem Content="Browsers"></ComboBoxItem>
