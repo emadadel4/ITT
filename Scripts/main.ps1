@@ -1,8 +1,4 @@
 
-CheckChoco
-GetQuotes *> $null
-PlayMusic *> $null
-
 #check currnet Theme
 if ($sync.theme -eq "Dark") {
   Switch-ToDarkMode
@@ -21,7 +17,7 @@ $sync['window'].FindName('applyBtn').add_click({ApplyTweaks})
 $sync['window'].FindName('searchInput').add_TextChanged({Search})
 $sync['window'].FindName('searchInput').add_GotFocus({ClearFilter})
 $sync['window'].FindName('about').add_MouseLeftButtonDown({About})
-$sync['window'].FindName('themeText').add_click({Toggle-Theme})
+$sync['window'].FindName('themeText').add_click({ToggleTheme})
 $sync['window'].FindName('cat').add_SelectionChanged({FilterByCat( $sync['window'].FindName('cat').SelectedItem.Content)})
 
 # Computer Managment tools
@@ -63,5 +59,9 @@ $sync['window'].add_Closing({
   StopMusic
   StopAllRunspace
 })
+
+CheckChoco
+GetQuotes *> $null
+PlayMusic *> $null
 
 $sync["window"].ShowDialog() | out-null
