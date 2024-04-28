@@ -52,8 +52,8 @@
                         </MenuItem>
                         
                         <MenuItem Header="التفضيلات" BorderBrush="Transparent" BorderThickness="0">
-                            <MenuItem Name="load" Header="تحميل القائمة المحددة"/>
-                            <MenuItem Name="save" Header="حفظ القائمة المحددة"/>
+                            <MenuItem Name="save" Header="حفظ البرامج المختارة"/>
+                            <MenuItem Name="load" Header="تحميل البرامج المختارة مسبقا"/>
                             <MenuItem Name="themeText" Header="المظهر"/>
                         </MenuItem>
 
