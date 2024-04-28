@@ -2560,7 +2560,7 @@ $inputXML = '
                     <Menu Grid.Row="0" Grid.ColumnSpan="3" Background="Transparent" BorderBrush="Transparent" BorderThickness="0">
                         
                         
-                        <MenuItem Header="ادوات إدارة الجهاز" BorderBrush="Transparent" BorderThickness="0">
+                        <MenuItem Header="إدارة الجهاز" BorderBrush="Transparent" BorderThickness="0">
                             <MenuItem Name="sysinfo" Header="System Info"/>
                             <MenuItem Name="poweroption" Header="Power Options"/>
                             <MenuItem Name="deviceManager" Header="Device Manager"/>
@@ -2571,7 +2571,7 @@ $inputXML = '
                             <MenuItem Name="diskmgmt" Header="Disk Managment"/>
                         </MenuItem>
 
-                        <MenuItem Header="{Binding Path=WelcomeMessage.ar}" BorderBrush="Transparent" BorderThickness="0">
+                        <MenuItem Header="روابط خارجية" BorderBrush="Transparent" BorderThickness="0">
                             <MenuItem Name="mas" Header="Microsoft Activation Scripts (MAS)"/>
                             <MenuItem Name="idm" Header="IDM Activation"/>
                         </MenuItem>
