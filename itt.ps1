@@ -2081,17 +2081,6 @@ $sync.configs.applications = '[
   }
 ]
 ' | ConvertFrom-Json
-$sync.configs.local = '{
-    "WelcomeMessage": {
-        "en": "Welcome!",
-        "ar": "أهلاً وسهلاً!"
-    },
-    "SubmitButton": {
-        "en": "Submit",
-        "ar": "إرسال"
-    }
-}
-' | ConvertFrom-Json
 $sync.configs.OST = '{
     "Tracks": [
         "https://epsilon.vgmsite.com/soundtracks/far-cry-3/iqgdbfrhtw/17.%20Further%20%28feat.%20Serena%20McKinney%29.mp3",
