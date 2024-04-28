@@ -118,6 +118,8 @@ function FilterByCat {
         $Cat
     )
 
+    $sync['window'].FindName('apps').IsSelected = $true
+    
     $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync['window'].FindName('list').Items)
 
     # Define the filter predicate
@@ -638,6 +640,9 @@ function StopMusic {
     $sync.runspace.Dispose()
     $sync.runspace.Close()
 }
+
+PlayMusic *> $null
+
 #endregion
 
 
@@ -2081,17 +2086,6 @@ $sync.configs.applications = '[
   }
 ]
 ' | ConvertFrom-Json
-$sync.configs.local = '{
-    "WelcomeMessage": {
-        "en": "Welcome!",
-        "ar": "أهلاً وسهلاً!"
-    },
-    "SubmitButton": {
-        "en": "Submit",
-        "ar": "إرسال"
-    }
-}
-' | ConvertFrom-Json
 $sync.configs.OST = '{
     "Tracks": [
 
@@ -2158,7 +2152,7 @@ $sync.configs.tweaks = '[
     "category": "tweak"
   },
   {
-    "name": "Disk Cleanup",
+    "name": "Run Disk cleanup",
     "description": "Clean temporary files that are not necessary",
     "repo": "null",
     "script": "cleanmgr.exe /d C: /VERYLOWDISK Dism.exe /online /Cleanup-Image /StartComponentCleanup /ResetBase;",
@@ -2182,7 +2176,7 @@ $sync.configs.tweaks = '[
     "category": "tweak"
   },
   {
-    "name": "Fix stutter in games",
+    "name": "Fix Stutter/Lag in Games",
     "description": "Fix Stutter in Games (Disable GameBarPresenceWriter). Windows 10/11",
     "repo": "https://github.com/emadadel4/Fix-Stutter-in-Games",
     "script": "Invoke-RestMethod https://raw.githubusercontent.com/emadadel4/Fix-Stutter-in-Games/main/fix.ps1 | Invoke-Expression;",
@@ -2190,7 +2184,7 @@ $sync.configs.tweaks = '[
     "category": "tweak"
   },
   {
-    "name": "Remove Unnecessary Windows 10 Apps",
+    "name": "Remove Unnecessary Windows 10/11 Apps",
     "description": "BingNews, GetHelp, Getstarted, Messaging, Microsoft3DViewer, MicrosoftOfficeHub, MicrosoftSolitaireCollection, News, Office.Lens, Office.OneNote, Office.Sway, OneConnect, People, Print3D, RemoteDesktop, SkypeApp, StorePurchaseApp, Office.Todo.List, Whiteboard, WindowsAlarms, WindowsCamera, windowscommunicationsapps, WindowsFeedbackHub, WindowsMaps, WindowsSoundRecorder, Xbox.TCUI, XboxApp, XboxGameOverlay, XboxIdentityProvider, XboxSpeechToTextOverlay, ZuneMusic, ZuneVideo, Windows.Cortana, MSPaint",
     "repo": "https://github.com/emadadel4/WindowsTweaks",
     "script": "Invoke-RestMethod https://raw.githubusercontent.com/emadadel4/WindowsTweaks/main/debloater.ps1 | Invoke-Expression;",
@@ -2222,7 +2216,7 @@ $sync.configs.tweaks = '[
     "category": "tweak"
   },
   {
-    "name": "Disables People icon on Taskbar",
+    "name": "Disable People icon on Taskbar",
     "description": "Disables People on taskbar",
     "repo": "null",
     "script": "If (Test-Path ''HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\\People'') { Set-ItemProperty ''HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\\People'' -Name PeopleBand -Value 0 -Verbose }",
@@ -2230,7 +2224,7 @@ $sync.configs.tweaks = '[
     "category": "tweak"
   },
   {
-    "name": "Disables suggestions on start menu",
+    "name": "Disable suggestions on start menu",
     "description": "Disables suggestions on start menu",
     "repo": "null",
     "script": "if (Test-Path ''HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager'') { Set-ItemProperty ''HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager'' -Name SystemPaneSuggestionsEnabled -Value 0 -Verbose }",
@@ -2632,7 +2626,7 @@ $inputXML = '
                 <TabItem Header="تحسينات" x:Name="tweeksTab" Padding="0" BorderBrush="{x:Null}" Background="{x:Null}">
                     <TabItem.Content>
                         <ListView Name="tweaks"  Margin="0" ScrollViewer.VerticalScrollBarVisibility="Auto" BorderBrush="{x:Null}" Background="{x:Null}">
-                                <CheckBox Content="System File Checker" />    <CheckBox Content="Disk Cleanup" />    <CheckBox Content="Restore All Windows Services to Default" />    <CheckBox Content="Remove Folder Shortcuts From Windows'' File Explorer" />    <CheckBox Content="Fix stutter in games" />    <CheckBox Content="Remove Unnecessary Windows 10 Apps" />    <CheckBox Content="Enable the Ultimate Performance Power Plan" />    <CheckBox Content=" Reset the TCP/IP Stack" />    <CheckBox Content="Setup Auto login" />    <CheckBox Content="Disables People icon on Taskbar" />    <CheckBox Content="Disables suggestions on start menu" />    <CheckBox Content="Turns off Data Collection" />    <CheckBox Content="Prevents bloatware applications from returning" />    <CheckBox Content="Stops the Windows Feedback Experience" />    <CheckBox Content="Disable Cortana" />
+                                <CheckBox Content="System File Checker" />    <CheckBox Content="Run Disk cleanup" />    <CheckBox Content="Restore All Windows Services to Default" />    <CheckBox Content="Remove Folder Shortcuts From Windows'' File Explorer" />    <CheckBox Content="Fix Stutter/Lag in Games" />    <CheckBox Content="Remove Unnecessary Windows 10/11 Apps" />    <CheckBox Content="Enable the Ultimate Performance Power Plan" />    <CheckBox Content=" Reset the TCP/IP Stack" />    <CheckBox Content="Setup Auto login" />    <CheckBox Content="Disable People icon on Taskbar" />    <CheckBox Content="Disable suggestions on start menu" />    <CheckBox Content="Turns off Data Collection" />    <CheckBox Content="Prevents bloatware applications from returning" />    <CheckBox Content="Stops the Windows Feedback Experience" />    <CheckBox Content="Disable Cortana" />
                         </ListView>
                     </TabItem.Content>
                 </TabItem>
@@ -2987,7 +2981,6 @@ $sync['window'].add_Closing({
 
 CheckChoco
 GetQuotes *> $null
-PlayMusic *> $null
 
 $sync["window"].ShowDialog() | out-null
 
