@@ -1,5 +1,5 @@
 #region Theme Functions
-function Toggle-Theme {
+function ToggleTheme {
 
     try {
     if ($sync.isDarkMode -eq "Dark")
