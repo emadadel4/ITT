@@ -18,13 +18,28 @@ $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
 $sync.configs = @{}
 
-
 # Function to write content to output script
 function WriteToScript {
     param (
         [string]$Content
     )
     Add-Content -Path $OutputScript -Value $Content
+}
+function ReplaceTextInFile {
+    param (
+        [string]$FilePath,
+        [string]$TextToReplace,
+        [string]$ReplacementText
+    )
+
+    # Read the content of the file
+    $content = Get-Content $FilePath
+
+    # Replace the text
+    $newContent = $content -replace [regex]::Escape($TextToReplace), $ReplacementText
+
+    # Write the modified content back to the file
+    $newContent | Out-File -FilePath $FilePath -Encoding utf8
 }
 
 # Function to handle file content generation
@@ -78,6 +93,7 @@ try {
 "@
 
     AddFileContentToScript -FilePath $StartScript
+    ReplaceTextInFile -FilePath $OutputScript -TextToReplace '#{replaceme}' -ReplacementText "$(Get-Date -Format 'yyy/MM-MMM/dd-ddd/hh:mm tt')"
 
     WriteToScript -Content @"
 #===========================================================================
@@ -229,10 +245,14 @@ try {
 
 "@
 
+
+Write-Host "Compile successfully " -ForegroundColor Green
+
+Start-Sleep 1
+
 ./itt.ps1
 
 }
-
 
 catch {
     Write-Error "An error occurred: $_"
