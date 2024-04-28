@@ -432,6 +432,8 @@ function LoadJson {
 
             param($item)
 
+
+            $item.IsChecked = $true
             return $filteredNames -contains $item.Content
         }
 
@@ -453,26 +455,24 @@ function SaveItemsToJson
       {
             $itemObject = [PSCustomObject]@{
               Name = $item.Content
-              check = "true"
           }
             $items += $itemObject
       }
     }
 
-    if ($items -ne $null -and $items.Count -gt 0) 
+    if ($null -ne $items -and $items.Count -gt 0) 
     {
-
         # Open save file dialog
         $saveFileDialog = New-Object -TypeName "Microsoft.Win32.SaveFileDialog"
         $saveFileDialog.Filter = "JSON files (*.json)|*.json"
         $saveFileDialog.Title = "Save JSON File"
         $dialogResult = $saveFileDialog.ShowDialog()
 
-        if ($dialogResult -eq "OK") {
+        if ($dialogResult -eq "OK")
+        {
             $items | ConvertTo-Json | Out-File -FilePath $saveFileDialog.FileName -Force
             Write-Host "JSON file saved: $($saveFileDialog.FileName)"
         }
-
     }
     else
     {
@@ -2505,7 +2505,6 @@ $inputXML = '
         </Setter>
     </Style>
 <!--End TabControl Style-->
-
             
             <!--Light Theme styles-->
 
@@ -2575,8 +2574,8 @@ $inputXML = '
                         </MenuItem>
                         
                         <MenuItem Header="التفضيلات" BorderBrush="Transparent" BorderThickness="0">
-                            <MenuItem Name="load" Header="تحميل القائمة المحددة"/>
-                            <MenuItem Name="save" Header="حفظ القائمة المحددة"/>
+                            <MenuItem Name="save" Header="حفظ البرامج المختارة"/>
+                            <MenuItem Name="load" Header="تحميل البرامج المختارة مسبقا"/>
                             <MenuItem Name="themeText" Header="المظهر"/>
                         </MenuItem>
 
