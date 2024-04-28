@@ -14,8 +14,7 @@ function LoadJson {
         $filterPredicate = {
 
             param($item)
-
-
+            
             $item.IsChecked = $true
             return $filteredNames -contains $item.Content
         }
