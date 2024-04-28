@@ -5,7 +5,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         x:Name="Window" Title="IT Tools @emadadel4" WindowStartupLocation = "CenterScreen" 
         Background="{DynamicResource BGColor}"
-        Height="666" Width="700" MinWidth="700" MinHeight="500" ShowInTaskbar = "True" Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/icon.ico">
+        Height="600" Width="700" MinWidth="755" MinHeight="500" ShowInTaskbar = "True" Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/icon.ico">
     
         <Window.Resources>
 
