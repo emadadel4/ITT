@@ -7,7 +7,7 @@ function GetQuotes {
         $jsonFilePath = $sync.configs.Quotes
 
         # Function to shuffle an array
-        function Shuffle-Array {
+        function ShuffleArray {
             param (
                 [array]$Array
             )
@@ -28,7 +28,7 @@ function GetQuotes {
         }
 
         # Get shuffled names
-        $shuffledNames = Shuffle-Array -Array (Get-NamesFromJson)
+        $shuffledNames = ShuffleArray -Array (Get-NamesFromJson)
 
         # Loop forever and print shuffled names
         while ($true) {
