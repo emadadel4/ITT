@@ -16,6 +16,9 @@ function FilterByCat {
         $Cat
     )
 
+    # if user on Other tab return to app list
+    $sync['window'].FindName('apps').IsSelected = $true
+
     $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync['window'].FindName('list').Items)
 
     # Define the filter predicate
