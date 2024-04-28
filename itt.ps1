@@ -2081,6 +2081,17 @@ $sync.configs.applications = '[
   }
 ]
 ' | ConvertFrom-Json
+$sync.configs.local = '{
+    "WelcomeMessage": {
+        "en": "Welcome!",
+        "ar": "أهلاً وسهلاً!"
+    },
+    "SubmitButton": {
+        "en": "Submit",
+        "ar": "إرسال"
+    }
+}
+' | ConvertFrom-Json
 $sync.configs.OST = '{
     "Tracks": [
 
@@ -2560,7 +2571,7 @@ $inputXML = '
                             <MenuItem Name="diskmgmt" Header="Disk Managment"/>
                         </MenuItem>
 
-                        <MenuItem Header="روابط مفيدة" BorderBrush="Transparent" BorderThickness="0">
+                        <MenuItem Header="{Binding Path=WelcomeMessage.ar}" BorderBrush="Transparent" BorderThickness="0">
                             <MenuItem Name="mas" Header="Microsoft Activation Scripts (MAS)"/>
                             <MenuItem Name="idm" Header="IDM Activation"/>
                         </MenuItem>
@@ -2588,7 +2599,7 @@ $inputXML = '
                             <StackPanel Name="catg" Margin="20,0,0,0" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
 
                             <ComboBox SelectedIndex="0"  Margin="10,10,0,13" Name="cat" HorizontalAlignment="Left" VerticalAlignment="Top" Width="155" Height="Auto">
-                                <ComboBoxItem Content="جميع البرامج"></ComboBoxItem>
+                                <ComboBoxItem Content="All"></ComboBoxItem>
                                 <ComboBoxItem Content="Drivers"></ComboBoxItem>
                                 <ComboBoxItem Content="Media"></ComboBoxItem>
                                 <ComboBoxItem Content="Browsers"></ComboBoxItem>
