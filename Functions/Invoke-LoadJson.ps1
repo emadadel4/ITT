@@ -1,32 +1,27 @@
 function LoadJson {
 
-        # Open file dialog to select JSON file
-        $openFileDialog = New-Object -TypeName "Microsoft.Win32.OpenFileDialog"
-        $openFileDialog.Filter = "JSON files (*.json)|*.json"
-        $openFileDialog.Title = "Open JSON File"
-        $dialogResult = $openFileDialog.ShowDialog()
-
+    # Open file dialog to select JSON file
+    $openFileDialog = New-Object -TypeName "Microsoft.Win32.OpenFileDialog"
+    $openFileDialog.Filter = "JSON files (*.json)|*.json"
+    $openFileDialog.Title = "Open JSON File"
+    $dialogResult = $openFileDialog.ShowDialog()
 
     if ($dialogResult -eq "OK") {
 
-        # Read the JSON file
-        $json = Get-Content -Path $openFileDialog.FileName -Raw | ConvertFrom-Json
+        $jsonData = Get-Content -Path $openFileDialog.FileName -Raw | ConvertFrom-Json
+        $filteredNames = $jsonData.Name
 
-        # Add items to the ListView
-        foreach ($itemData in $json)
-        {
-            foreach($item in $sync['window'].FindName('list').items)
-            {
-                if($itemData.Name -eq $item.Content)
-                {
-                    $item.IsChecked = $itemData.check
-                }
-            }
+        $filterPredicate = {
+
+            param($item)
+
+            return $filteredNames -contains $item.Content
         }
+
+        $sync['window'].FindName('list').Clear()
+        $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync['window'].FindName('list').Items)
+        $collectionView.Filter = $filterPredicate
     }
-
-    Write-Host "Loaded successfully."
-
 }
 
 function SaveItemsToJson
