@@ -262,11 +262,17 @@ function Invoke-Install{
     if(Get-SelectedApps -ne $null)
     {
 
+        $sync.installBtn.Dispatcher.Invoke([Action]{
+            $sync.installBtn.Content = "red"
+        })
+
         Invoke-RunspaceWithScriptBlock -ArgumentList  $choco -ScriptBlock {
 
             param($choco)
             
             try{
+
+              
 
                 $msg = [System.Windows.MessageBox]::Show("هل تريد تثبيت البرامج المحددة", "ITT @emadadel", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)
 
@@ -2628,6 +2634,12 @@ $inputXML = '
                             <MenuItem Name="themeText" Header="المظهر"/>
                         </MenuItem>
 
+                        <MenuItem Header="المطور" BorderBrush="Transparent" BorderThickness="0">
+                            <MenuItem Name="ittlink" Header="صفحة الاداة - شارك في تحسينها"/>
+                            <MenuItem Name="eprojectslink" Header="موقع المطور"/>
+                            <MenuItem Name="teleegramprofile" Header="تلجرام"/>
+                        </MenuItem>
+
                     </Menu>
 
                         <!--Logo-->
@@ -2962,7 +2974,11 @@ $sync.TweeaksListView.add_LostFocus({
 #===========================================================================
 
 
-#check currnet Theme
+CheckChoco
+GetQuotes *> $null
+PlayMusic *> $null
+
+#region check currnet Theme
 if ($sync.theme -eq "Dark") {
   Switch-ToDarkMode
   $sync.isDarkMode = "Dark"
@@ -2972,8 +2988,9 @@ else
   Switch-ToLightMode
   $sync.isDarkMode = "Light"
 }
+#endregion
 
-# Buttons
+#region Buttons
 $sync['window'].FindName('taps').add_SelectionChanged({ChangeTap})
 $sync['window'].FindName('installBtn').add_click({Invoke-Install})
 $sync['window'].FindName('applyBtn').add_click({ApplyTweaks})
@@ -2982,8 +2999,9 @@ $sync['window'].FindName('searchInput').add_GotFocus({ClearFilter})
 $sync['window'].FindName('about').add_MouseLeftButtonDown({About})
 $sync['window'].FindName('themeText').add_click({ToggleTheme})
 $sync['window'].FindName('cat').add_SelectionChanged({FilterByCat( $sync['window'].FindName('cat').SelectedItem.Content)})
+#endregion Buttons
 
-# Computer Managment tools
+#region Computer Managment tools
 $sync['window'].FindName('deviceManager').add_click({Start-Process devmgmt.msc})
 $sync['window'].FindName('services').add_click({Start-Process services.msc})
 $sync['window'].FindName('network').add_click({Start-Process ncpa.cpl})
@@ -2992,9 +3010,9 @@ $sync['window'].FindName('poweroption').add_click({Start-Process powercfg.cpl})
 $sync['window'].FindName('appsfeatures').add_click({start-Process ms-settings:appsfeatures})
 $sync['window'].FindName('taskmgr').add_click({Start-Process taskmgr.exe})
 $sync['window'].FindName('diskmgmt').add_click({Start-Process diskmgmt.msc})
-# Computer Managment tools
+#endregion Computer Managment tools
 
-# Third-Party
+#region Third-Party
 $sync['window'].FindName('mas').add_click({
   Start-Process ("https://github.com/massgravel/Microsoft-Activation-Scripts")
 })
@@ -3003,10 +3021,31 @@ $sync['window'].FindName('idm').add_click({
 
 Start-Process ("https://github.com/WindowsAddict/IDM-Activation-Script")
 })
-# Third-Party
+#endregion Third-Party
 
+#region About
 
-# Preferences
+$sync['window'].FindName('ittlink').add_click({
+
+  Start-Process ("https://github.com/emadadel4/ITT")
+
+})
+
+$sync['window'].FindName('eprojectslink').add_click({
+
+  Start-Process ("https://eprojects.orgfree.com/")
+
+})
+
+$sync['window'].FindName('teleegramprofile').add_click({
+
+  Start-Process ("https://t.me/emadadel4")
+
+})
+
+#endregion About
+
+#region Preferences
 $sync['window'].FindName('load').add_click({LoadJson})
 $sync['window'].FindName('save').add_click({
   
@@ -3014,18 +3053,14 @@ $sync['window'].FindName('save').add_click({
   SaveItemsToJson
 
 })
-# Preferences
-
+#endregion Preferences
 
 $sync['window'].add_Closing({
   Write-Host "Bye see you soon :)"
-  StopMusic
   StopAllRunspace
+  StopMusic
 })
 
-CheckChoco
-GetQuotes *> $null
-PlayMusic *> $null
 
 $sync["window"].ShowDialog() | out-null
 
