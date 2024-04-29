@@ -84,7 +84,7 @@ try {
     WriteToScript -Content @"
 
 #===========================================================================
-#region End Start
+#region Begin Start
 #===========================================================================
 
 "@
@@ -102,7 +102,7 @@ try {
 
     WriteToScript -Content @"
 #===========================================================================
-#region Start Functions
+#region Begin Functions
 #===========================================================================
 
 "@
@@ -119,7 +119,7 @@ try {
 
     WriteToScript -Content @"
 #===========================================================================
-#region Start Database /APPS/TWEEAKS/Quotes/OST
+#region Begin Database /APPS/TWEEAKS/Quotes/OST
 #===========================================================================
 
 "@
@@ -139,7 +139,7 @@ try {
 
     WriteToScript -Content @"
 #===========================================================================
-#region Start WPF Window
+#region Begin WPF Window
 #===========================================================================
 
 "@
@@ -194,7 +194,7 @@ try {
 
     WriteToScript -Content @"
 #===========================================================================
-#region Start loadXmal
+#region Begin loadXmal
 #===========================================================================
 
 "@
@@ -211,7 +211,7 @@ try {
     # Write Loops section
     WriteToScript -Content @"
 #===========================================================================
-#region Start Loops
+#region Begin Loops
 #===========================================================================
 
 "@
@@ -220,7 +220,7 @@ try {
 
     WriteToScript -Content @"
 #===========================================================================
-#endregion Start Loops
+#endregion End Loops
 #===========================================================================
 
 "@
@@ -228,7 +228,7 @@ try {
     # Write Main [Buttons Events] section
     WriteToScript -Content @"
 #===========================================================================
-#region Start Main [Buttons Events]
+#region Begin Main [Buttons Events]
 #===========================================================================
 
 "@
@@ -244,9 +244,7 @@ try {
 
 
 Write-Host "Compile successfully " -ForegroundColor Green
-
 Start-Sleep 1
-
 ./itt.ps1
 
 }
