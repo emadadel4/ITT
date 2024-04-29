@@ -111,7 +111,14 @@ function Invoke-Install{
                     $sync.installBtn.Dispatcher.Invoke([Action]{
                         $sync.installBtn.Content = "تثبيت"
                     })
-                  
+Write-Host "
+___ _____ _____   _____ __  __    _    ____    _    ____  _____ _    _  _   
+|_ _|_   _|_   _| | ____|  \/  |  / \  |  _ \  / \  |  _ \| ____| |  | || |  
+| |  | |   | |   |  _| | |\/| | / _ \ | | | |/ _ \ | | | |  _| | |  | || |_ 
+| |  | |   | |   | |___| |  | |/ ___ \| |_| / ___ \| |_| | |___| |__|__   _|
+|___| |_|   |_|   |_____|_|  |_/_/   \_\____/_/   \_\____/|_____|_____| |_|  
+Everything work fine You Good to go
+" -ForegroundColor green
                    
                 }
                 else
@@ -190,7 +197,15 @@ function ApplyTweaks() {
                     Start-Sleep -Seconds 1
                     $sync.ProcessRunning = $False
 
-               
+                    Clear-Host
+Write-Host "
+___ _____ _____   _____ __  __    _    ____    _    ____  _____ _    _  _   
+|_ _|_   _|_   _| | ____|  \/  |  / \  |  _ \  / \  |  _ \| ____| |  | || |  
+| |  | |   | |   |  _| | |\/| | / _ \ | | | |/ _ \ | | | |  _| | |  | || |_ 
+| |  | |   | |   | |___| |  | |/ ___ \| |_| / ___ \| |_| | |___| |__|__   _|
+|___| |_|   |_|   |_____|_|  |_/_/   \_\____/_/   \_\____/|_____|_____| |_|  
+Everything work fine You Good to go
+" -ForegroundColor green
 
                 }
                 else 
