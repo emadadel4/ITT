@@ -349,7 +349,7 @@ Everything work fine You Good to go
     }
     else
     {
-        [System.Windows.MessageBox]::Show("أختار برنامج واحد على الاقل", "ITT @emadadel", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Question)
+        [System.Windows.MessageBox]::Show("أختار برنامج واحد على الاقل", "ITT @emadadel", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
     }
 }
 
@@ -433,7 +433,7 @@ Everything work fine You Good to go
     }
     else
     {
-        [System.Windows.MessageBox]::Show("أختار الأمر المراد تطبيقه", "ITT @emadadel", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Question)
+        [System.Windows.MessageBox]::Show("أختار الأمر المراد تطبيقه", "ITT @emadadel", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
     }
 }
 
@@ -470,9 +470,12 @@ function LoadJson {
             return $filteredNames.name -contains $item.Content
         }
 
+
         $sync['window'].FindName('list').Clear()
         $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync['window'].FindName('list').Items)
         $collectionView.Filter = $filterPredicate
+        [System.Windows.MessageBox]::Show("تم اظهار البرامج المختارة مسبقا فقط", "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
+
     }
 }
 
