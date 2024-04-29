@@ -23,7 +23,7 @@
     GitHub         : https://github.com/emadadel4
     Telegram       : https://t.me/emadadel4
     Website        : https://eprojects.orgfree.com/
-    Version        : 2024/04-Apr/29-Mon
+    Version        : 2024/04-Apr/30-Tue
 #>
 
 if (!(Test-Path -Path $ENV:TEMP)) {
@@ -39,7 +39,7 @@ Add-Type -AssemblyName PresentationFramework.Aero
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "2024/04-Apr/29-Mon"
+$sync.version = "2024/04-Apr/30-Tue"
 $sync.github =   "https://github.com/emadadel4"
 $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://eprojects.orgfree.com"
@@ -449,14 +449,25 @@ function LoadJson {
     if ($dialogResult -eq "OK") {
 
         $jsonData = Get-Content -Path $openFileDialog.FileName -Raw | ConvertFrom-Json
-        $filteredNames = $jsonData.Name
+        $filteredNames = $jsonData
 
         $filterPredicate = {
 
             param($item)
             
-            $item.IsChecked = $true
-            return $filteredNames -contains $item.Content
+            #Write-Host $item.Content
+
+            foreach ($currentItemName in $filteredNames.Name) {
+
+                if($currentItemName -eq $item.Content)
+                {
+                    $item.IsChecked = $true
+                    break
+                }
+
+            }
+
+            return $filteredNames.name -contains $item.Content
         }
 
         $sync['window'].FindName('list').Clear()
@@ -477,6 +488,8 @@ function SaveItemsToJson
       {
             $itemObject = [PSCustomObject]@{
               Name = $item.Content
+              check = "true"
+
           }
             $items += $itemObject
       }
@@ -494,7 +507,18 @@ function SaveItemsToJson
         {
             $items | ConvertTo-Json | Out-File -FilePath $saveFileDialog.FileName -Force
             Write-Host "JSON file saved: $($saveFileDialog.FileName)"
+
+            [System.Windows.MessageBox]::Show("تم حفظ البرامج", "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
+
         }
+        
+            foreach ($item in $sync.AppsListView.Items)
+            {
+                if ($item.IsChecked)
+                {
+                    $item.IsChecked = $false
+                }
+            }
     }
     else
     {

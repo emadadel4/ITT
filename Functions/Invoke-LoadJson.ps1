@@ -9,14 +9,25 @@ function LoadJson {
     if ($dialogResult -eq "OK") {
 
         $jsonData = Get-Content -Path $openFileDialog.FileName -Raw | ConvertFrom-Json
-        $filteredNames = $jsonData.Name
+        $filteredNames = $jsonData
 
         $filterPredicate = {
 
             param($item)
             
-            $item.IsChecked = $true
-            return $filteredNames -contains $item.Content
+            #Write-Host $item.Content
+
+            foreach ($currentItemName in $filteredNames.Name) {
+
+                if($currentItemName -eq $item.Content)
+                {
+                    $item.IsChecked = $true
+                    break
+                }
+
+            }
+
+            return $filteredNames.name -contains $item.Content
         }
 
         $sync['window'].FindName('list').Clear()
@@ -37,6 +48,8 @@ function SaveItemsToJson
       {
             $itemObject = [PSCustomObject]@{
               Name = $item.Content
+              check = "true"
+
           }
             $items += $itemObject
       }
@@ -54,7 +67,18 @@ function SaveItemsToJson
         {
             $items | ConvertTo-Json | Out-File -FilePath $saveFileDialog.FileName -Force
             Write-Host "JSON file saved: $($saveFileDialog.FileName)"
+
+            [System.Windows.MessageBox]::Show("تم حفظ البرامج", "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
+
         }
+        
+            foreach ($item in $sync.AppsListView.Items)
+            {
+                if ($item.IsChecked)
+                {
+                    $item.IsChecked = $false
+                }
+            }
     }
     else
     {
