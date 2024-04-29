@@ -672,6 +672,14 @@
     "check": "false"
   },
   {
+    "Name": "Easy Context Menu",
+    "Description": "To install Easy Context Menu, run the following command from the command line or from PowerShell:",
+    "winget": "#",
+    "choco": "ecm",
+    "category": "Utilities",
+    "check": "false"
+  },
+  {
     "Name": "HWiNFO",
     "Description": "A hardware information and diagnostic tool that provides detailed information about the hardware components of a computer system, including sensors, temperature, voltage, and more.",
     "winget": "REALiX.HWiNFO",
