@@ -2575,7 +2575,7 @@ $inputXML = '
                         <!--Logo-->
                             <StackPanel Margin="20" Orientation="Horizontal" HorizontalAlignment="Left"  VerticalAlignment="Center" Grid.Row="1" Grid.ColumnSpan="3" >
 
-                                <Ellipse Name="about" Width="60" Height="60" Cursor="Hand">
+                                <Ellipse Name="about" Width="80" Height="80" Cursor="Hand">
                                     <Ellipse.Fill>
                                         <ImageBrush ImageSource="https://avatars.githubusercontent.com/u/19177373?v=4.png" />
                                     </Ellipse.Fill>
