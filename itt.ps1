@@ -262,17 +262,11 @@ function Invoke-Install{
     if(Get-SelectedApps -ne $null)
     {
 
-        $sync.installBtn.Dispatcher.Invoke([Action]{
-            $sync.installBtn.Content = "red"
-        })
-
         Invoke-RunspaceWithScriptBlock -ArgumentList  $choco -ScriptBlock {
 
             param($choco)
             
             try{
-
-              
 
                 $msg = [System.Windows.MessageBox]::Show("هل تريد تثبيت البرامج المحددة", "ITT @emadadel", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)
 
@@ -2159,7 +2153,9 @@ $sync.configs.OST = '{
         "https://epsilon.vgmsite.com/soundtracks/mass-effect-3-gamerip-2012/nchtmgcz/304.%20End%20of%20Cycle.mp3",
         "https://dl.vgmdownloads.com/soundtracks/somerville-2022/naszqoqnhr/01.%20Intro%20%28Somerville%20Original%20Soundtrack%29%20%28feat.%20Dominique%20Charpentier%29.mp3",
         "https://archive.org/download/kate-chruscicka-requiem-for-a-dream-electric-violin/Kate%20Chruscicka-Requiem%20For%20A%20Dream%20%28Electric%20Violin%29.mp3",
-        "https://archive.org/download/InceptionSoundtrackHD12TimeHansZimmer/Inception%20Soundtrack%20HD%20-%20%2312%20Time%20%28Hans%20Zimmer%29.mp3"
+        "https://archive.org/download/InceptionSoundtrackHD12TimeHansZimmer/Inception%20Soundtrack%20HD%20-%20%2312%20Time%20%28Hans%20Zimmer%29.mp3",
+        "https://epsilon.vgmsite.com/soundtracks/little-nightmares-ii-original-soundtrack/bplsnxvnzm/01.%20Main%20Theme.mp3",
+        "https://dl.vgmdownloads.com/soundtracks/assassin-s-creed-3/qhigmkctpn/09.%20Trouble%20in%20Town.mp3"
     ]
   }
   ' | ConvertFrom-Json
