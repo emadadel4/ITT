@@ -43,7 +43,7 @@ irm https://raw.githubusercontent.com/emadadel4/ITT/main/itt.ps1 | iex
 
 👤 **Emad Adel**
 
-- Website: http://eprojects.orgfree.com
+- Website: https://eprojects.orgfree.com
 - Github: [emadadel4](https://github.com/emadadel4)
 
 ## Show your support
