@@ -29,6 +29,11 @@ Write-Host "Chocolatey is not installed, installing now" -ForegroundColor red
         
         Set-ExecutionPolicy Bypass -Scope Process -Force; Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1')) -ErrorAction Stop
         powershell choco feature enable -n allowGlobalConfirmation
+
+        Start-Sleep 2
+
+        CheckChoco
+
     }
     Catch {
         Write-Host "--Chocolatey failed to install---"
