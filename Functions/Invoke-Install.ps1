@@ -143,7 +143,7 @@ Everything work fine You Good to go
     }
     else
     {
-        [System.Windows.MessageBox]::Show("أختار برنامج واحد على الاقل", "ITT @emadadel", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Question)
+        [System.Windows.MessageBox]::Show("أختار برنامج واحد على الاقل", "ITT @emadadel", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
     }
 }
 
@@ -227,7 +227,7 @@ Everything work fine You Good to go
     }
     else
     {
-        [System.Windows.MessageBox]::Show("أختار الأمر المراد تطبيقه", "ITT @emadadel", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Question)
+        [System.Windows.MessageBox]::Show("أختار الأمر المراد تطبيقه", "ITT @emadadel", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
     }
 }
 
