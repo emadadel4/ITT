@@ -522,12 +522,16 @@ function SaveItemsToJson
                     $item.IsChecked = $false
                 }
             }
+
+
     }
     else
     {
         [System.Windows.MessageBox]::Show("أختار برنامج واحد على الاقل", "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
     }
 }
+
+$sync.cat.Items.Add("eeeeeeeeee")
 
 
 function Invoke-RunspaceWithScriptBlock {
@@ -2640,39 +2644,35 @@ $inputXML = '
 
                     </Menu>
 
-                        <!--Logo-->
-                            <StackPanel Margin="20" Orientation="Horizontal" HorizontalAlignment="Left"  VerticalAlignment="Center" Grid.Row="1" Grid.ColumnSpan="3" >
+                        <StackPanel Margin="15" Orientation="Horizontal" HorizontalAlignment="Left"  VerticalAlignment="Center" Grid.Row="1" Grid.ColumnSpan="3" >
 
-                                <Ellipse Name="about" Width="80" Height="80" Cursor="Hand">
-                                    <Ellipse.Fill>
-                                        <ImageBrush ImageSource="https://avatars.githubusercontent.com/u/19177373?v=4.png" />
-                                    </Ellipse.Fill>
-                                </Ellipse>
+                                <!--Logo-->
+                                    <Ellipse Name="about" Width="80" Height="80" Cursor="Hand">
+                                        <Ellipse.Fill>
+                                            <ImageBrush ImageSource="https://avatars.githubusercontent.com/u/19177373?v=4.png" />
+                                        </Ellipse.Fill>
+                                    </Ellipse>
+                                <!--End Logo-->
 
-                        <!--End Logo-->
+                            <!--Catagory Section-->
+                                <ComboBox SelectedIndex="0"  Margin="25,0,0,0" Name="cat" HorizontalAlignment="Center" VerticalAlignment="Center" Width="155" Height="Auto">
+                                    <ComboBoxItem Content="All"></ComboBoxItem>
+                                    <ComboBoxItem Content="Drivers"></ComboBoxItem>
+                                    <ComboBoxItem Content="Media"></ComboBoxItem>
+                                    <ComboBoxItem Content="Browsers"></ComboBoxItem>
+                                    <ComboBoxItem Content="Documents"></ComboBoxItem>
+                                    <ComboBoxItem Content="Compression"></ComboBoxItem>
+                                    <ComboBoxItem Content="Communication"></ComboBoxItem>
+                                    <ComboBoxItem Content="File Sharing"></ComboBoxItem>
+                                    <ComboBoxItem Content="Imaging"></ComboBoxItem>
+                                    <ComboBoxItem Content="Gaming"></ComboBoxItem>
+                                    <ComboBoxItem Content="Utilities"></ComboBoxItem>
+                                    <ComboBoxItem Content="Developer"></ComboBoxItem>
+                                    <ComboBoxItem Content="Security"></ComboBoxItem>
+                                </ComboBox>
+                            <!--End Catagory Section-->
 
-                        <!--Catagory Section-->
-                            <StackPanel Name="catg" Margin="20,0,0,0" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
-
-                            <ComboBox SelectedIndex="0"  Margin="10,10,0,13" Name="cat" HorizontalAlignment="Left" VerticalAlignment="Top" Width="155" Height="Auto">
-                                <ComboBoxItem Content="All"></ComboBoxItem>
-                                <ComboBoxItem Content="Drivers"></ComboBoxItem>
-                                <ComboBoxItem Content="Media"></ComboBoxItem>
-                                <ComboBoxItem Content="Browsers"></ComboBoxItem>
-                                <ComboBoxItem Content="Documents"></ComboBoxItem>
-                                <ComboBoxItem Content="Compression"></ComboBoxItem>
-                                <ComboBoxItem Content="Communication"></ComboBoxItem>
-                                <ComboBoxItem Content="File Sharing"></ComboBoxItem>
-                                <ComboBoxItem Content="Imaging"></ComboBoxItem>
-                                <ComboBoxItem Content="Gaming"></ComboBoxItem>
-                                <ComboBoxItem Content="Utilities"></ComboBoxItem>
-                                <ComboBoxItem Content="Developer"></ComboBoxItem>
-                                <ComboBoxItem Content="Security"></ComboBoxItem>
-                            </ComboBox>
-
-                                </StackPanel>
-                            </StackPanel>
-                        <!--End Catagory Section-->
+                        </StackPanel>
 
             <!--End Header Section-->
 
@@ -2850,8 +2850,8 @@ $sync.Description = $sync['window'].FindName("description")
 $sync.Quotes = $sync['window'].FindName("quotes")
 $sync.TweeaksListView = $sync['window'].FindName("tweaks")
 $sync.itemLink = $sync['window'].FindName('itemLink')
-
 $sync.installBtn = $sync['window'].FindName('installBtn') 
+$sync.cat = $sync['window'].FindName('cat')
 
 #===========================================================================
 #endregion End loadXmal
