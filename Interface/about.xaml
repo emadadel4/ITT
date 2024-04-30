@@ -3,7 +3,7 @@
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
   x:Name="Window" Title="Abou | IT Tools" WindowStartupLocation = "CenterScreen" 
   Background="White"
-  Height="344" Width="444" MinWidth="444" MinHeight="344" ShowInTaskbar = "True" Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/icon.ico">
+  Height="344" Width="444" FontFamily="Console" MinWidth="444" MinHeight="344" ShowInTaskbar = "True" Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/icon.ico">
     <Grid>
 
       <Grid.RowDefinitions>
@@ -11,29 +11,28 @@
         <RowDefinition Height="auto"/>
       </Grid.RowDefinitions>
 
+       <!--Logo-->
+       <Ellipse Margin="25" VerticalAlignment="Top" HorizontalAlignment="Left" Name="about" Width="60" Height="60" Cursor="Hand">
+        <Ellipse.Fill>
+            <ImageBrush ImageSource="https://avatars.githubusercontent.com/u/19177373?v=4.png" />
+        </Ellipse.Fill>
+      </Ellipse>
+      <!--End Logo-->
 
-
-      <CheckBox VerticalAlignment="Top" HorizontalAlignment="Left" Content="Dark" IsChecked="False" Margin="20" />
 
 
       <StackPanel Grid.Row="0"  Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
 
-          <!--Logo-->
-          <Ellipse Margin="10" Name="about" Width="60" Height="60" Cursor="Hand">
-            <Ellipse.Fill>
-                <ImageBrush ImageSource="https://avatars.githubusercontent.com/u/19177373?v=4.png" />
-            </Ellipse.Fill>
-          </Ellipse>
-          <!--End Logo-->
 
-        <TextBlock Margin="5" FontSize="15" Text="Developer Emad Adel" TextAlignment="Center"/>
-        <TextBlock Margin="5"  FontSize="30" TextAlignment="Center" Text="IT Tools"/>
-        <TextBlock Margin="5" TextAlignment="Center" TextWrapping="Wrap" Text="الاداة مفتوحة المصدر يمكنك الاطلاع على السورس كود و تحسينه من خلال الرابط التالي"/>
-        <TextBlock Margin="5" Cursor="Hand"   TextAlignment="Center" Text="Source code"/>
+        <TextBlock Margin="5" FontWeight="Bold" FontSize="30" TextAlignment="Center" Text="IT Tools"/>
+        <TextBlock Margin="5" Text="Developer Emad Adel" TextAlignment="Center"/>
+        <TextBlock Margin="5" Name="ver" TextAlignment="Center" Text="2024/4/21"/>
       </StackPanel>
 
       <StackPanel Margin="25" Grid.Row="1" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
-        <TextBlock TextAlignment="Center" Text="@emadadel4"/>
+
+        <TextBlock Margin="5" Cursor="Hand" TextAlignment="Center" Text="Source code"/>
+
         <StackPanel Orientation="Horizontal">
         <TextBlock Margin="5" Cursor="Hand"  Text="Telgram"/>
         <TextBlock Margin="5" Cursor="Hand"  Text="Github"/>
