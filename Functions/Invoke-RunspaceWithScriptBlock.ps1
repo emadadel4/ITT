@@ -31,6 +31,8 @@ function StopAllRunspace {
     $sync.runspace.Dispose()
     $sync.runspace.Close()
     $script:powershell.Stop()
+
+    StopMusic
     
 }
 
