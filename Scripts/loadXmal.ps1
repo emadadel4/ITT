@@ -109,6 +109,16 @@ $sync.Keys | ForEach-Object {
                 Invoke-Button $Sender.Name
             })
         }
+
+        # Check if the element is a TabControl
+        if ($element.GetType().Name -eq "TabControl") {
+            # Add a click event handler to the TabControl
+
+            $element.add_SelectionChanged({
+                param([System.Object]$Sender)
+                Invoke-Button $Sender.Name
+            })
+        }
     }
 }
 

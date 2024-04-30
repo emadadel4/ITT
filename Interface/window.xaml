@@ -176,6 +176,7 @@
                         HorizontalAlignment="Center"
                         VerticalAlignment="Bottom"
                         FontSize="15"
+                        Visibility="hidden"
                         Width="100" Height="40" Margin="50"/>
                     <!--End Apply Button-->
 
