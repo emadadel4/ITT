@@ -46,11 +46,6 @@
                             <MenuItem Name="diskmgmt" Header="Disk Managment"/>
                         </MenuItem>
 
-                        <MenuItem Header="روابط خارجية" BorderBrush="Transparent" BorderThickness="0">
-                            <MenuItem Name="mas" Header="Microsoft Activation Scripts (MAS)"/>
-                            <MenuItem Name="idm" Header="IDM Activation"/>
-                        </MenuItem>
-                        
                         <MenuItem Header="التفضيلات" BorderBrush="Transparent" BorderThickness="0">
                             <MenuItem Name="save" Header="حفظ البرامج المختارة"/>
                             <MenuItem Name="load" Header="تحميل البرامج المختارة مسبقا"/>
@@ -61,6 +56,11 @@
                             <MenuItem Name="ittlink" Header="صفحة الاداة - شارك في تحسينها"/>
                             <MenuItem Name="eprojectslink" Header="موقع المطور"/>
                             <MenuItem Name="teleegramprofile" Header="تلجرام"/>
+                        </MenuItem>
+
+                        <MenuItem Header="روابط خارجية" BorderBrush="Transparent" BorderThickness="0">
+                            <MenuItem Name="mas" Header="Microsoft Activation Scripts (MAS)"/>
+                            <MenuItem Name="idm" Header="IDM Activation"/>
                         </MenuItem>
 
                     </Menu>
