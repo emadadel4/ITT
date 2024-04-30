@@ -49,15 +49,21 @@
                         <MenuItem Header="التفضيلات" BorderBrush="Transparent" BorderThickness="0">
                             <MenuItem Name="save" Header="حفظ البرامج المختارة"/>
                             <MenuItem Name="load" Header="تحميل البرامج المختارة مسبقا"/>
-                            <MenuItem Name="themeText" IsChecked="true" Header="الوضع "/>
+
+                            <MenuItem Header="الوضع الليلي">
+                                <MenuItem Name="darkOn" Header="تفعيل"/>
+                                <MenuItem Name="darkOff" Header="تعطيل"/>
+                            </MenuItem>
+
                         </MenuItem>
 
-                        <MenuItem Name="dev" Header="المطور" BorderBrush="Transparent" BorderThickness="1"/>
 
                         <MenuItem Header="روابط خارجية" BorderBrush="Transparent" BorderThickness="0">
                             <MenuItem Name="mas" Header="Microsoft Activation Scripts (MAS)"/>
                             <MenuItem Name="idm" Header="IDM Activation"/>
                         </MenuItem>
+                        
+                        <MenuItem Name="dev" Header="المطور" BorderBrush="Transparent" BorderThickness="1"/>
 
                     </Menu>
 
