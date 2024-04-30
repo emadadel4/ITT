@@ -1,11 +1,10 @@
 #region Theme Functions
 function ToggleTheme {
   
-    $sync.isDarkMode = -not $sync.isDarkMode
     
     try {
 
-        if ($sync.isDarkMode -eq "true")
+        if ($sync.searchInput = $sync['window'].FindName('themeText').IsChecked -eq $true)
         {
             Switch-ToDarkMode
         } 
@@ -19,6 +18,7 @@ function ToggleTheme {
         Write-Host "Error toggling theme: $_"
     }
 
+    $sync['window'].FindName('themeText').IsChecked = -not $sync['window'].FindName('themeText').IsChecked
 
 }
 
