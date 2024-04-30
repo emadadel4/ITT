@@ -2704,7 +2704,7 @@ $inputXML = '
             <!--End Header Section-->
 
                 <!--TabControl-->
-        <TabControl x:Name="taps" TabStripPlacement="Left" Margin="0, 10, 0, 10" Grid.Row="2"  BorderBrush="Transparent" Foreground="White" Background="Transparent">
+        <TabControl Name="taps" TabStripPlacement="Left" Margin="0, 10, 0, 10" Grid.Row="2"  BorderBrush="Transparent" Foreground="White" Background="Transparent">
                 <TabItem Header="برامج" Name="apps" BorderBrush="{x:Null}" Padding="0">
                     <TabItem.Content>
                         <ListView Margin="0" ScrollViewer.VerticalScrollBarVisibility="Auto" Name="list" BorderBrush="{x:Null}" Background="{x:Null}">
@@ -2799,6 +2799,7 @@ $inputXML = '
                         HorizontalAlignment="Center"
                         VerticalAlignment="Bottom"
                         FontSize="15"
+                        Visibility="hidden"
                         Width="100" Height="40" Margin="50"/>
                     <!--End Apply Button-->
 
@@ -2936,6 +2937,16 @@ $sync.Keys | ForEach-Object {
         # Check if the element is a ComboBox
         if ($element.GetType().Name -eq "ComboBox") {
             # Add a click event handler to the ComboBox
+
+            $element.add_SelectionChanged({
+                param([System.Object]$Sender)
+                Invoke-Button $Sender.Name
+            })
+        }
+
+        # Check if the element is a TabControl
+        if ($element.GetType().Name -eq "TabControl") {
+            # Add a click event handler to the TabControl
 
             $element.add_SelectionChanged({
                 param([System.Object]$Sender)
