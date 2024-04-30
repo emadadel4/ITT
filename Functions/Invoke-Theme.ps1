@@ -1,29 +1,32 @@
 #region Theme Functions
 function ToggleTheme {
-
+  
+    $sync.isDarkMode = -not $sync.isDarkMode
+    
     try {
-    if ($sync.isDarkMode -eq "Dark")
-    {
-        Switch-ToLightMode
-        $sync.isDarkMode = -not $sync.isDarkMode
 
-
-    } else {
-        Switch-ToDarkMode
-        $sync.isDarkMode = -not $sync.isDarkMode
-
-
+        if ($sync.isDarkMode -eq "true")
+        {
+            Switch-ToDarkMode
+        } 
+        else
+        {
+            Switch-ToLightMode
+        }
+        
     }
-    } catch {
+    catch {
         Write-Host "Error toggling theme: $_"
     }
+
+
 }
 
 function Switch-ToDarkMode {
     try {
-        #$sync['window'].FindName('themeText').Header = "Light Mode"
-        $theme = $sync['window'].FindResource("DarkTheme")
-        Update-Theme $theme "Dark"
+
+        $theme = $sync['window'].FindResource("Dark")
+        Update-Theme $theme "true"
     } catch {
         Write-Host "Error switching to dark mode: $_"
     }
@@ -31,9 +34,8 @@ function Switch-ToDarkMode {
 
 function Switch-ToLightMode {
     try {
-        #$sync['window'].FindName('themeText').Header = "Dark Mode"
-        $theme = $sync['window'].FindResource("LightTheme")
-        Update-Theme $theme "Light"
+        $theme = $sync['window'].FindResource("Light")
+        Update-Theme $theme "false"
     } catch {
         Write-Host "Error switching to light mode: $_"
     }
@@ -42,7 +44,8 @@ function Switch-ToLightMode {
 function Update-Theme ($theme, $mode) {
     $sync['window'].Resources.MergedDictionaries.Clear()
     $sync['window'].Resources.MergedDictionaries.Add($theme)
-    Set-ItemProperty -Path "HKCU:\Software\ITTEmadadel" -Name "Theme" -Value $mode -Force
+    Set-ItemProperty -Path "HKCU:\Software\ITTEmadadel" -Name "DarkMode" -Value $mode -Force
+
 }
 #endregion
 
