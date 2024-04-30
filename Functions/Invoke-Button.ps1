@@ -18,9 +18,7 @@ function Invoke-Button {
         "cat" {FilterByCat($sync.cat.SelectedItem.Content) $Button}
         "mas" {Start-Process ("https://github.com/massgravel/Microsoft-Activation-Scripts") $Button}
         "idm" { Start-Process ("https://github.com/WindowsAddict/IDM-Activation-Script") $Button}
-        "ittlink" { Start-Process ("https://github.com/emadadel4/ITT") $Button}
-        "eprojectslink" { Start-Process ("https://eprojects.orgfree.com/") $Button}
-        "teleegramprofile" {Start-Process ("https://t.me/emadadel4") $Button}
+        "dev" { About $Button}
         "deviceManager" {Start-Process devmgmt.msc $Button}
         "appsfeatures" {Start-Process ms-settings:appsfeatures $Button}
         "sysinfo" {Start-Process msinfo32.exe; dxdiag.exe; $Button}
