@@ -49,13 +49,64 @@ $sync.Keys | ForEach-Object {
 
     # Check if the element exists
     if ($element) {
+
+
+            # Check if the element is a window
+        if ($element.GetType().Name -eq "window") {
+        # Add a click event handler to the window
+
+            $element.add_Closing({
+                param([System.Object]$Sender)
+                Invoke-Button $Sender.Name
+            })
+        }
+
         # Check if the element is a Button
         if ($element.GetType().Name -eq "Button") {
             # Add a click event handler to the button
+
             $element.Add_Click({
                 param([System.Object]$Sender)
                 Invoke-Button $Sender.Name
-                Write-Host "Test"
+            })
+        }
+
+        # Check if the element is a MenuItem
+        if ($element.GetType().Name -eq "MenuItem") {
+            # Add a click event handler to the MenuItem
+
+            $element.Add_Click({
+                param([System.Object]$Sender)
+                Invoke-Button $Sender.Name
+            })
+        }
+
+        # Check if the element is a TextBox
+        if ($element.GetType().Name -eq "TextBox") {
+
+            $element.Add_TextChanged({
+                param([System.Object]$Sender)
+                Invoke-Button $Sender.Name
+            })
+        }
+
+        # Check if the element is a Ellipse
+        if ($element.GetType().Name -eq "Ellipse") {
+                # Add a click event handler to the Ellipse
+    
+                $element.add_MouseLeftButtonDown({
+                    param([System.Object]$Sender)
+                    Invoke-Button $Sender.Name
+                })
+        }
+
+        # Check if the element is a ComboBox
+        if ($element.GetType().Name -eq "ComboBox") {
+            # Add a click event handler to the ComboBox
+
+            $element.add_SelectionChanged({
+                param([System.Object]$Sender)
+                Invoke-Button $Sender.Name
             })
         }
     }
@@ -70,3 +121,5 @@ $sync.TweeaksListView = $sync['window'].FindName("tweaks")
 $sync.itemLink = $sync['window'].FindName('itemLink')
 $sync.installBtn = $sync['window'].FindName('installBtn') 
 $sync.cat = $sync['window'].FindName('cat')
+$sync.searchInput = $sync['window'].FindName('searchInput')
+
