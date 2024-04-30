@@ -228,6 +228,15 @@ function Invoke-Button {
         "eprojectslink" { Start-Process ("https://eprojects.orgfree.com/") $Button}
         "teleegramprofile" {Start-Process ("https://t.me/emadadel4") $Button}
         "window" { StopAllRunspace Write-Host "Bye see you soon. :)" $Button }
+
+        "deviceManager" {Start-Process devmgmt.msc $Button}
+        "appsfeatures" {Start-Process ms-settings:appsfeatures $Button}
+        "sysinfo" {Start-Process msinfo32.exe; dxdiag.exe; $Button}
+        "poweroption" {Start-Process powercfg.cpl $Button}
+        "services" {Start-Process services.msc $Button}
+        "network" {Start-Process ncpa.cpl $Button}
+        "taskmgr" {Start-Process taskmgr.exe $Button}
+        "diskmgmt" {Start-Process diskmgmt.msc $Button}
     }
 }
 function Get-SelectedApps {
@@ -2652,11 +2661,6 @@ $inputXML = '
                             <MenuItem Name="diskmgmt" Header="Disk Managment"/>
                         </MenuItem>
 
-                        <MenuItem Header="روابط خارجية" BorderBrush="Transparent" BorderThickness="0">
-                            <MenuItem Name="mas" Header="Microsoft Activation Scripts (MAS)"/>
-                            <MenuItem Name="idm" Header="IDM Activation"/>
-                        </MenuItem>
-                        
                         <MenuItem Header="التفضيلات" BorderBrush="Transparent" BorderThickness="0">
                             <MenuItem Name="save" Header="حفظ البرامج المختارة"/>
                             <MenuItem Name="load" Header="تحميل البرامج المختارة مسبقا"/>
@@ -2667,6 +2671,11 @@ $inputXML = '
                             <MenuItem Name="ittlink" Header="صفحة الاداة - شارك في تحسينها"/>
                             <MenuItem Name="eprojectslink" Header="موقع المطور"/>
                             <MenuItem Name="teleegramprofile" Header="تلجرام"/>
+                        </MenuItem>
+
+                        <MenuItem Header="روابط خارجية" BorderBrush="Transparent" BorderThickness="0">
+                            <MenuItem Name="mas" Header="Microsoft Activation Scripts (MAS)"/>
+                            <MenuItem Name="idm" Header="IDM Activation"/>
                         </MenuItem>
 
                     </Menu>
@@ -3102,18 +3111,6 @@ else
   $sync.isDarkMode = "Light"
 }
 #endregion
-
-
-#region Computer Managment tools
-$sync['window'].FindName('deviceManager').add_click({Start-Process devmgmt.msc})
-$sync['window'].FindName('services').add_click({Start-Process services.msc})
-$sync['window'].FindName('network').add_click({Start-Process ncpa.cpl})
-$sync['window'].FindName('sysinfo').add_click({Start-Process msinfo32.exe; dxdiag.exe})
-$sync['window'].FindName('poweroption').add_click({Start-Process powercfg.cpl})
-$sync['window'].FindName('appsfeatures').add_click({start-Process ms-settings:appsfeatures})
-$sync['window'].FindName('taskmgr').add_click({Start-Process taskmgr.exe})
-$sync['window'].FindName('diskmgmt').add_click({Start-Process diskmgmt.msc})
-#endregion Computer Managment tools
 
 $sync["window"].ShowDialog() | out-null
 
