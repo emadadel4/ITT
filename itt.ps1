@@ -104,7 +104,7 @@ function About{
 function Search{
     
     # Retrieves the search input, converts it to lowercase, and filters the list based on the input
-    $filter = $sync['window'].FindName('searchInput').Text.ToLower()
+    $filter = $sync.searchInput.Text.ToLower()
     $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync['window'].FindName('list').Items)
     $collectionView.Filter = {
         param($item)
@@ -204,6 +204,32 @@ Write-Host "Starting up..." -ForegroundColor red
     }
 }
 
+function Invoke-Button {
+
+    Param ([string]$Button)
+
+    # debug
+    #Write-Host $Button
+
+    Switch -Wildcard ($Button){
+
+        "installBtn" {Invoke-Install $Button}
+        "applyBtn" {Invoke-ApplyTweaks $Button}
+        "taps" {ChangeTap $Button}
+        "load" {LoadJson $Button}
+        "save" {SaveItemsToJson $Button}
+        "themeText" {ToggleTheme $Button}
+        "searchInput" {Search $Button}
+        "about" {About $Button}
+        "cat" {FilterByCat($sync.cat.SelectedItem.Content) $Button}
+        "mas" {Start-Process ("https://github.com/massgravel/Microsoft-Activation-Scripts") $Button}
+        "idm" { Start-Process ("https://github.com/WindowsAddict/IDM-Activation-Script") $Button}
+        "ittlink" { Start-Process ("https://github.com/emadadel4/ITT") $Button}
+        "eprojectslink" { Start-Process ("https://eprojects.orgfree.com/") $Button}
+        "teleegramprofile" {Start-Process ("https://t.me/emadadel4") $Button}
+        "window" { StopAllRunspace Write-Host "Bye see you soon. :)" $Button }
+    }
+}
 function Get-SelectedApps {
 
     $items = @()
@@ -353,7 +379,7 @@ Everything work fine You Good to go
     }
 }
 
-function ApplyTweaks() {
+function Invoke-ApplyTweaks() {
 
     if($sync.ProcessRunning)
     {
@@ -482,7 +508,9 @@ function LoadJson {
 function SaveItemsToJson
 {
   
-  $items = @()
+    $items = @()
+
+    ClearFilter
 
     foreach ($item in $sync['window'].FindName('list').Items)
     {
@@ -523,15 +551,12 @@ function SaveItemsToJson
                 }
             }
 
-
     }
     else
     {
         [System.Windows.MessageBox]::Show("أختار برنامج واحد على الاقل", "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
     }
 }
-
-$sync.cat.Items.Add("eeeeeeeeee")
 
 
 function Invoke-RunspaceWithScriptBlock {
@@ -566,6 +591,8 @@ function StopAllRunspace {
     $sync.runspace.Dispose()
     $sync.runspace.Close()
     $script:powershell.Stop()
+
+    StopMusic
     
 }
 
@@ -2709,7 +2736,7 @@ $inputXML = '
                                 VerticalAlignment="Center"
                                 HorizontalAlignment="Left" 
                                 Text="{Binding Text_searchInput}"
-                                x:Name="searchInput" 
+                                Name="searchInput" 
                                 />
 
                                 <TextBlock IsHitTestVisible="False" 
@@ -2843,6 +2870,81 @@ catch {
     Write-Host "Unable to load Windows.Markup.XamlReader. Double-check syntax and ensure .net is installed."
 }
 
+# Select all elements with a Name attribute using XPath and iterate over them
+$xaml.SelectNodes("//*[@Name]") | ForEach-Object {
+    # Assign each element to a variable in $sync dictionary
+    $sync[$($_.Name)] = $sync["window"].FindName($_.Name)
+}
+
+# Iterate over keys in $sync dictionary
+$sync.Keys | ForEach-Object {
+    $element = $sync[$_]
+
+    # Check if the element exists
+    if ($element) {
+
+
+            # Check if the element is a window
+        if ($element.GetType().Name -eq "window") {
+        # Add a click event handler to the window
+
+            $element.add_Closing({
+                param([System.Object]$Sender)
+                Invoke-Button $Sender.Name
+            })
+        }
+
+        # Check if the element is a Button
+        if ($element.GetType().Name -eq "Button") {
+            # Add a click event handler to the button
+
+            $element.Add_Click({
+                param([System.Object]$Sender)
+                Invoke-Button $Sender.Name
+            })
+        }
+
+        # Check if the element is a MenuItem
+        if ($element.GetType().Name -eq "MenuItem") {
+            # Add a click event handler to the MenuItem
+
+            $element.Add_Click({
+                param([System.Object]$Sender)
+                Invoke-Button $Sender.Name
+            })
+        }
+
+        # Check if the element is a TextBox
+        if ($element.GetType().Name -eq "TextBox") {
+
+            $element.Add_TextChanged({
+                param([System.Object]$Sender)
+                Invoke-Button $Sender.Name
+            })
+        }
+
+        # Check if the element is a Ellipse
+        if ($element.GetType().Name -eq "Ellipse") {
+                # Add a click event handler to the Ellipse
+    
+                $element.add_MouseLeftButtonDown({
+                    param([System.Object]$Sender)
+                    Invoke-Button $Sender.Name
+                })
+        }
+
+        # Check if the element is a ComboBox
+        if ($element.GetType().Name -eq "ComboBox") {
+            # Add a click event handler to the ComboBox
+
+            $element.add_SelectionChanged({
+                param([System.Object]$Sender)
+                Invoke-Button $Sender.Name
+            })
+        }
+    }
+}
+
 
 # Catch controls
 $sync.AppsListView = $sync['window'].FindName("list")
@@ -2852,6 +2954,8 @@ $sync.TweeaksListView = $sync['window'].FindName("tweaks")
 $sync.itemLink = $sync['window'].FindName('itemLink')
 $sync.installBtn = $sync['window'].FindName('installBtn') 
 $sync.cat = $sync['window'].FindName('cat')
+$sync.searchInput = $sync['window'].FindName('searchInput')
+
 
 #===========================================================================
 #endregion End loadXmal
@@ -2988,16 +3092,6 @@ else
 }
 #endregion
 
-#region Buttons
-$sync['window'].FindName('taps').add_SelectionChanged({ChangeTap})
-$sync['window'].FindName('installBtn').add_click({Invoke-Install})
-$sync['window'].FindName('applyBtn').add_click({ApplyTweaks})
-$sync['window'].FindName('searchInput').add_TextChanged({Search})
-$sync['window'].FindName('searchInput').add_GotFocus({ClearFilter})
-$sync['window'].FindName('about').add_MouseLeftButtonDown({About})
-$sync['window'].FindName('themeText').add_click({ToggleTheme})
-$sync['window'].FindName('cat').add_SelectionChanged({FilterByCat( $sync['window'].FindName('cat').SelectedItem.Content)})
-#endregion Buttons
 
 #region Computer Managment tools
 $sync['window'].FindName('deviceManager').add_click({Start-Process devmgmt.msc})
@@ -3009,56 +3103,6 @@ $sync['window'].FindName('appsfeatures').add_click({start-Process ms-settings:ap
 $sync['window'].FindName('taskmgr').add_click({Start-Process taskmgr.exe})
 $sync['window'].FindName('diskmgmt').add_click({Start-Process diskmgmt.msc})
 #endregion Computer Managment tools
-
-#region Third-Party
-$sync['window'].FindName('mas').add_click({
-  Start-Process ("https://github.com/massgravel/Microsoft-Activation-Scripts")
-})
-
-$sync['window'].FindName('idm').add_click({
-
-Start-Process ("https://github.com/WindowsAddict/IDM-Activation-Script")
-})
-#endregion Third-Party
-
-#region About
-
-$sync['window'].FindName('ittlink').add_click({
-
-  Start-Process ("https://github.com/emadadel4/ITT")
-
-})
-
-$sync['window'].FindName('eprojectslink').add_click({
-
-  Start-Process ("https://eprojects.orgfree.com/")
-
-})
-
-$sync['window'].FindName('teleegramprofile').add_click({
-
-  Start-Process ("https://t.me/emadadel4")
-
-})
-
-#endregion About
-
-#region Preferences
-$sync['window'].FindName('load').add_click({LoadJson})
-$sync['window'].FindName('save').add_click({
-  
-  ClearFilter
-  SaveItemsToJson
-
-})
-#endregion Preferences
-
-$sync['window'].add_Closing({
-  Write-Host "Bye see you soon :)"
-  StopAllRunspace
-  StopMusic
-})
-
 
 $sync["window"].ShowDialog() | out-null
 
