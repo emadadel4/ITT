@@ -219,7 +219,6 @@ function Invoke-Button {
         "taps" {ChangeTap $Button}
         "load" {LoadJson $Button}
         "save" {SaveItemsToJson $Button}
-        "themeText" {ToggleTheme $Button}
         "searchInput" {Search $Button}
         "about" {About $Button}
         "cat" {FilterByCat($sync.cat.SelectedItem.Content) $Button}
@@ -235,6 +234,8 @@ function Invoke-Button {
         "taskmgr" {Start-Process taskmgr.exe $Button}
         "diskmgmt" {Start-Process diskmgmt.msc $Button}
         "window" { StopAllRunspace Write-Host "Bye see you soon. :)" $Button }
+        "darkOn" { Switch-ToDarkMode $Button }
+        "darkOff" { Switch-ToLightMode $Button }
     }
 }
 function Get-SelectedApps {
@@ -607,11 +608,10 @@ function StopAllRunspace {
 #region Theme Functions
 function ToggleTheme {
   
-    $sync.isDarkMode = -not $sync.isDarkMode
     
     try {
 
-        if ($sync.isDarkMode -eq "true")
+        if ($sync.searchInput = $sync['window'].FindName('themeText').IsChecked -eq $true)
         {
             Switch-ToDarkMode
         } 
@@ -625,6 +625,7 @@ function ToggleTheme {
         Write-Host "Error toggling theme: $_"
     }
 
+    $sync['window'].FindName('themeText').IsChecked = -not $sync['window'].FindName('themeText').IsChecked
 
 }
 
@@ -2515,15 +2516,21 @@ $inputXML = '
                         <MenuItem Header="التفضيلات" BorderBrush="Transparent" BorderThickness="0">
                             <MenuItem Name="save" Header="حفظ البرامج المختارة"/>
                             <MenuItem Name="load" Header="تحميل البرامج المختارة مسبقا"/>
-                            <MenuItem Name="themeText" IsChecked="true" Header="الوضع "/>
+
+                            <MenuItem Header="الوضع الليلي">
+                                <MenuItem Name="darkOn" Header="تفعيل"/>
+                                <MenuItem Name="darkOff" Header="تعطيل"/>
+                            </MenuItem>
+
                         </MenuItem>
 
-                        <MenuItem Name="dev" Header="المطور" BorderBrush="Transparent" BorderThickness="1"/>
 
                         <MenuItem Header="روابط خارجية" BorderBrush="Transparent" BorderThickness="0">
                             <MenuItem Name="mas" Header="Microsoft Activation Scripts (MAS)"/>
                             <MenuItem Name="idm" Header="IDM Activation"/>
                         </MenuItem>
+                        
+                        <MenuItem Name="dev" Header="المطور" BorderBrush="Transparent" BorderThickness="1"/>
 
                     </Menu>
 
@@ -2894,10 +2901,6 @@ $sync.itemLink = $sync['window'].FindName('itemLink')
 $sync.installBtn = $sync['window'].FindName('installBtn') 
 $sync.cat = $sync['window'].FindName('cat')
 $sync.searchInput = $sync['window'].FindName('searchInput')
-
-
-
-
 #===========================================================================
 #endregion End loadXmal
 #===========================================================================
@@ -3020,9 +3023,6 @@ $sync.TweeaksListView.add_LostFocus({
 CheckChoco
 GetQuotes *> $null
 PlayMusic *> $null
-
-
-
 
 $sync["window"].ShowDialog() | out-null
 
