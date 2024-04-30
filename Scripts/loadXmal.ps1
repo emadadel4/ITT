@@ -54,7 +54,7 @@ $sync.Keys | ForEach-Object {
             # Add a click event handler to the button
             $element.Add_Click({
                 param([System.Object]$Sender)
-                #Invoke-WPFButton $Sender.Name
+                Invoke-Button $Sender.Name
                 Write-Host "Test"
             })
         }
