@@ -147,7 +147,7 @@ Everything work fine You Good to go
     }
 }
 
-function ApplyTweaks() {
+function Invoke-ApplyTweaks() {
 
     if($sync.ProcessRunning)
     {
