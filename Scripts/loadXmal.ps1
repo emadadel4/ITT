@@ -37,6 +37,30 @@ catch {
     Write-Host "Unable to load Windows.Markup.XamlReader. Double-check syntax and ensure .net is installed."
 }
 
+# Select all elements with a Name attribute using XPath and iterate over them
+$xaml.SelectNodes("//*[@Name]") | ForEach-Object {
+    # Assign each element to a variable in $sync dictionary
+    $sync[$($_.Name)] = $sync["window"].FindName($_.Name)
+}
+
+# Iterate over keys in $sync dictionary
+$sync.Keys | ForEach-Object {
+    $element = $sync[$_]
+
+    # Check if the element exists
+    if ($element) {
+        # Check if the element is a Button
+        if ($element.GetType().Name -eq "Button") {
+            # Add a click event handler to the button
+            $element.Add_Click({
+                param([System.Object]$Sender)
+                #Invoke-WPFButton $Sender.Name
+                Write-Host "Test"
+            })
+        }
+    }
+}
+
 
 # Catch controls
 $sync.AppsListView = $sync['window'].FindName("list")
