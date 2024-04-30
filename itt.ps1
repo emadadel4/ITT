@@ -93,6 +93,10 @@ function About{
     [xml]$ee = $childXaml
     $childWindowReader = (New-Object System.Xml.XmlNodeReader $ee)
     $childWindow = [Windows.Markup.XamlReader]::Load( $childWindowReader )
+
+
+    $childWindow.FindName('ver').Text = $sync.version
+
     $childWindow.ShowDialog() | Out-Null
 
 }
@@ -221,9 +225,7 @@ function Invoke-Button {
         "cat" {FilterByCat($sync.cat.SelectedItem.Content) $Button}
         "mas" {Start-Process ("https://github.com/massgravel/Microsoft-Activation-Scripts") $Button}
         "idm" { Start-Process ("https://github.com/WindowsAddict/IDM-Activation-Script") $Button}
-        "ittlink" { Start-Process ("https://github.com/emadadel4/ITT") $Button}
-        "eprojectslink" { Start-Process ("https://eprojects.orgfree.com/") $Button}
-        "teleegramprofile" {Start-Process ("https://t.me/emadadel4") $Button}
+        "dev" { About $Button}
         "deviceManager" {Start-Process devmgmt.msc $Button}
         "appsfeatures" {Start-Process ms-settings:appsfeatures $Button}
         "sysinfo" {Start-Process msinfo32.exe; dxdiag.exe; $Button}
@@ -2516,11 +2518,7 @@ $inputXML = '
                             <MenuItem Name="themeText" IsChecked="true" Header="الوضع "/>
                         </MenuItem>
 
-                        <MenuItem Header="المطور" BorderBrush="Transparent" BorderThickness="0">
-                            <MenuItem Name="ittlink" Header="صفحة الاداة - شارك في تحسينها"/>
-                            <MenuItem Name="eprojectslink" Header="موقع المطور"/>
-                            <MenuItem Name="teleegramprofile" Header="تلجرام"/>
-                        </MenuItem>
+                        <MenuItem Name="dev" Header="المطور" BorderBrush="Transparent" BorderThickness="1"/>
 
                         <MenuItem Header="روابط خارجية" BorderBrush="Transparent" BorderThickness="0">
                             <MenuItem Name="mas" Header="Microsoft Activation Scripts (MAS)"/>
@@ -2694,7 +2692,7 @@ $childXaml = '<Window
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
   x:Name="Window" Title="Abou | IT Tools" WindowStartupLocation = "CenterScreen" 
   Background="White"
-  Height="344" Width="444" MinWidth="444" MinHeight="344" ShowInTaskbar = "True" Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/icon.ico">
+  Height="344" Width="444" FontFamily="Console" MinWidth="444" MinHeight="344" ShowInTaskbar = "True" Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/icon.ico">
     <Grid>
 
       <Grid.RowDefinitions>
@@ -2702,29 +2700,28 @@ $childXaml = '<Window
         <RowDefinition Height="auto"/>
       </Grid.RowDefinitions>
 
+       <!--Logo-->
+       <Ellipse Margin="25" VerticalAlignment="Top" HorizontalAlignment="Left" Name="about" Width="60" Height="60" Cursor="Hand">
+        <Ellipse.Fill>
+            <ImageBrush ImageSource="https://avatars.githubusercontent.com/u/19177373?v=4.png" />
+        </Ellipse.Fill>
+      </Ellipse>
+      <!--End Logo-->
 
-
-      <CheckBox VerticalAlignment="Top" HorizontalAlignment="Left" Content="Dark" IsChecked="False" Margin="20" />
 
 
       <StackPanel Grid.Row="0"  Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
 
-          <!--Logo-->
-          <Ellipse Margin="10" Name="about" Width="60" Height="60" Cursor="Hand">
-            <Ellipse.Fill>
-                <ImageBrush ImageSource="https://avatars.githubusercontent.com/u/19177373?v=4.png" />
-            </Ellipse.Fill>
-          </Ellipse>
-          <!--End Logo-->
 
-        <TextBlock Margin="5" FontSize="15" Text="Developer Emad Adel" TextAlignment="Center"/>
-        <TextBlock Margin="5"  FontSize="30" TextAlignment="Center" Text="IT Tools"/>
-        <TextBlock Margin="5" TextAlignment="Center" TextWrapping="Wrap" Text="الاداة مفتوحة المصدر يمكنك الاطلاع على السورس كود و تحسينه من خلال الرابط التالي"/>
-        <TextBlock Margin="5" Cursor="Hand"   TextAlignment="Center" Text="Source code"/>
+        <TextBlock Margin="5" FontWeight="Bold" FontSize="30" TextAlignment="Center" Text="IT Tools"/>
+        <TextBlock Margin="5" Text="Developer Emad Adel" TextAlignment="Center"/>
+        <TextBlock Margin="5" Name="ver" TextAlignment="Center" Text="2024/4/21"/>
       </StackPanel>
 
       <StackPanel Margin="25" Grid.Row="1" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
-        <TextBlock TextAlignment="Center" Text="@emadadel4"/>
+
+        <TextBlock Margin="5" Cursor="Hand" TextAlignment="Center" Text="Source code"/>
+
         <StackPanel Orientation="Horizontal">
         <TextBlock Margin="5" Cursor="Hand"  Text="Telgram"/>
         <TextBlock Margin="5" Cursor="Hand"  Text="Github"/>
