@@ -153,6 +153,3 @@ $sync.itemLink = $sync['window'].FindName('itemLink')
 $sync.installBtn = $sync['window'].FindName('installBtn') 
 $sync.cat = $sync['window'].FindName('cat')
 $sync.searchInput = $sync['window'].FindName('searchInput')
-
-
-
