@@ -1,12 +1,9 @@
 function About{
 
-    $authorInfo = @"
-    Developer : $($sync.developer)
-    Telegram  : $($sync.telegram)
-    GitHub    : $($sync.github)
-    Website   : $($sync.website)
-    Version   : $($sync.version)
-"@
+    # Load child window
+    [xml]$ee = $childXaml
+    $childWindowReader = (New-Object System.Xml.XmlNodeReader $ee)
+    $childWindow = [Windows.Markup.XamlReader]::Load( $childWindowReader )
+    $childWindow.ShowDialog() | Out-Null
 
-    Show-CustomDialog -Message $authorInfo -Width 400 
 }
