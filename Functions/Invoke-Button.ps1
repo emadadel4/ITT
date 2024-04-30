@@ -3,7 +3,7 @@ function Invoke-Button {
     Param ([string]$Button)
 
     # debug
-    Write-Host $Button
+    #Write-Host $Button
 
     Switch -Wildcard ($Button){
 
@@ -21,9 +21,6 @@ function Invoke-Button {
         "ittlink" { Start-Process ("https://github.com/emadadel4/ITT") $Button}
         "eprojectslink" { Start-Process ("https://eprojects.orgfree.com/") $Button}
         "teleegramprofile" {Start-Process ("https://t.me/emadadel4") $Button}
-        "window" { Write-Host "Bye see you soon. :)" StopAllRunspace StopMusic $Button
-        
-        }
-
+        "window" { StopAllRunspace Write-Host "Bye see you soon. :)" $Button }
     }
 }
