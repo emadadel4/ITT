@@ -113,7 +113,7 @@
                                 VerticalAlignment="Center"
                                 HorizontalAlignment="Left" 
                                 Text="{Binding Text_searchInput}"
-                                x:Name="searchInput" 
+                                Name="searchInput" 
                                 />
 
                                 <TextBlock IsHitTestVisible="False" 
