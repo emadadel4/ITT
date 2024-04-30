@@ -1,7 +1,7 @@
 <!--Light Theme styles-->
 
         <!--Light mode -->
-                <ResourceDictionary x:Key="LightTheme">
+                <ResourceDictionary x:Key="Light">
                         <SolidColorBrush x:Key="BGColor" Color="White"/>
                         <SolidColorBrush x:Key="FGColor" Color="WhiteSmoke"/>
                         <SolidColorBrush x:Key="BGButtonColor" Color="#382bf0  " />
@@ -13,7 +13,7 @@
         <!--Light mode -->
 
         <!--Dark mode-->
-                <ResourceDictionary x:Key="DarkTheme">
+                <ResourceDictionary x:Key="Dark">
                         <SolidColorBrush x:Key="BGColor" Color="#121212 "/>
                         <SolidColorBrush x:Key="FGColor" Color="#282828"/>
                         <SolidColorBrush x:Key="BGButtonColor" Color="#1DB954" />
