@@ -52,11 +52,7 @@
                             <MenuItem Name="themeText" IsChecked="true" Header="الوضع "/>
                         </MenuItem>
 
-                        <MenuItem Header="المطور" BorderBrush="Transparent" BorderThickness="0">
-                            <MenuItem Name="ittlink" Header="صفحة الاداة - شارك في تحسينها"/>
-                            <MenuItem Name="eprojectslink" Header="موقع المطور"/>
-                            <MenuItem Name="teleegramprofile" Header="تلجرام"/>
-                        </MenuItem>
+                        <MenuItem Name="dev" Header="المطور" BorderBrush="Transparent" BorderThickness="1"/>
 
                         <MenuItem Header="روابط خارجية" BorderBrush="Transparent" BorderThickness="0">
                             <MenuItem Name="mas" Header="Microsoft Activation Scripts (MAS)"/>
