@@ -49,7 +49,7 @@
                         <MenuItem Header="التفضيلات" BorderBrush="Transparent" BorderThickness="0">
                             <MenuItem Name="save" Header="حفظ البرامج المختارة"/>
                             <MenuItem Name="load" Header="تحميل البرامج المختارة مسبقا"/>
-                            <MenuItem Name="themeText" Header="المظهر"/>
+                            <MenuItem Name="themeText" IsChecked="true" Header="الوضع "/>
                         </MenuItem>
 
                         <MenuItem Header="المطور" BorderBrush="Transparent" BorderThickness="0">
