@@ -42,7 +42,9 @@ function LoadJson {
 function SaveItemsToJson
 {
   
-  $items = @()
+    $items = @()
+
+    ClearFilter
 
     foreach ($item in $sync['window'].FindName('list').Items)
     {
@@ -82,6 +84,7 @@ function SaveItemsToJson
                     $item.IsChecked = $false
                 }
             }
+
     }
     else
     {
