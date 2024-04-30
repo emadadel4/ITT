@@ -12,7 +12,6 @@ function Invoke-Button {
         "taps" {ChangeTap $Button}
         "load" {LoadJson $Button}
         "save" {SaveItemsToJson $Button}
-        "themeText" {ToggleTheme $Button}
         "searchInput" {Search $Button}
         "about" {About $Button}
         "cat" {FilterByCat($sync.cat.SelectedItem.Content) $Button}
@@ -28,5 +27,7 @@ function Invoke-Button {
         "taskmgr" {Start-Process taskmgr.exe $Button}
         "diskmgmt" {Start-Process diskmgmt.msc $Button}
         "window" { StopAllRunspace Write-Host "Bye see you soon. :)" $Button }
+        "darkOn" { Switch-ToDarkMode $Button }
+        "darkOff" { Switch-ToLightMode $Button }
     }
 }
