@@ -189,8 +189,38 @@ try {
 #===========================================================================
 #endregion End WPF Window
 #===========================================================================
+"@
+
+WriteToScript -Content @"
+#===========================================================================
+#region Begin WPF About
+#===========================================================================
 
 "@
+
+    # Define file paths
+    $FilePaths = @{
+        "ee" = Join-Path -Path $InterfaceDirectory -ChildPath "about.xaml"
+    }
+
+    # Read and replace placeholders in XAML content
+    try {
+        $childXaml = (Get-Content -Path $FilePaths["ee"] -Raw) -replace "'", "''"
+
+    } catch {
+        Write-Error "Error: $($_.Exception.Message)"
+    }
+   
+    WriteToScript -Content "`$childXaml = '$childXaml'"
+
+    WriteToScript -Content @"
+#===========================================================================
+#endregion End WPF About
+#===========================================================================
+
+"@
+
+
 
     WriteToScript -Content @"
 #===========================================================================
