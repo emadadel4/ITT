@@ -23,7 +23,7 @@
     GitHub         : https://github.com/emadadel4
     Telegram       : https://t.me/emadadel4
     Website        : https://eprojects.orgfree.com/
-    Version        : 2024/04-Apr/30-Tue
+    Version        : 2024/05-May/01-Wed
 #>
 
 if (!(Test-Path -Path $ENV:TEMP)) {
@@ -39,7 +39,7 @@ Add-Type -AssemblyName PresentationFramework.Aero
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "2024/04-Apr/30-Tue"
+$sync.version = "2024/05-May/01-Wed"
 $sync.github =   "https://github.com/emadadel4"
 $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://eprojects.orgfree.com"
@@ -47,11 +47,8 @@ $sync.developer =   "Emad Adel @emadadel4"
 $sync.registryPath = "HKCU:\Software\ITTEmadadel"
 $sync.configs = @{}
 $sync.ProcessRunning = $false
-
-$sync.theme = "Light"
-$sync.isDarkMode = $sync.theme
+$sync.isDarkMode = (Get-ItemProperty -Path "HKCU:\Software\ITTEmadadel" -Name "DarkMode").DarkMode
 $sync.mediaPlayer = New-Object -ComObject WMPlayer.OCX
-
 
 $currentPid = [System.Security.Principal.WindowsIdentity]::GetCurrent()
 $principal = new-object System.Security.Principal.WindowsPrincipal($currentPid)
@@ -73,11 +70,14 @@ else
     break
 }
 
-# Check if the registry path exists
-if (!(Test-Path $sync.registryPath)) {
-    # If it doesn't exist, create it
-    New-Item -Path $sync.registryPath -Force *> $null
-}
+# Check if the registry key exists
+# if (-not (Test-Path $sync.registryPath)) {
+#     # If it doesn't exist, create it
+#     New-Item -Path "HKCU:\Software\ITTEmadadel" -Force
+#     Write-Host "Registry key 'HKCU:\Software\ITTEmadadel' created successfully."
+#   } else {
+#     #Write-Host "Registry key 'HKCU:\Software\ITTEmadadel' already exists."
+# }
 
 #===========================================================================
 #endregion End Start
@@ -89,15 +89,12 @@ if (!(Test-Path $sync.registryPath)) {
 
 function About{
 
-    $authorInfo = @"
-    Developer : $($sync.developer)
-    Telegram  : $($sync.telegram)
-    GitHub    : $($sync.github)
-    Website   : $($sync.website)
-    Version   : $($sync.version)
-"@
+    # Load child window
+    [xml]$ee = $childXaml
+    $childWindowReader = (New-Object System.Xml.XmlNodeReader $ee)
+    $childWindow = [Windows.Markup.XamlReader]::Load( $childWindowReader )
+    $childWindow.ShowDialog() | Out-Null
 
-    Show-CustomDialog -Message $authorInfo -Width 400 
 }
 
 #region Function to filter a list based on a search input
@@ -227,8 +224,6 @@ function Invoke-Button {
         "ittlink" { Start-Process ("https://github.com/emadadel4/ITT") $Button}
         "eprojectslink" { Start-Process ("https://eprojects.orgfree.com/") $Button}
         "teleegramprofile" {Start-Process ("https://t.me/emadadel4") $Button}
-        "window" { StopAllRunspace Write-Host "Bye see you soon. :)" $Button }
-
         "deviceManager" {Start-Process devmgmt.msc $Button}
         "appsfeatures" {Start-Process ms-settings:appsfeatures $Button}
         "sysinfo" {Start-Process msinfo32.exe; dxdiag.exe; $Button}
@@ -237,6 +232,7 @@ function Invoke-Button {
         "network" {Start-Process ncpa.cpl $Button}
         "taskmgr" {Start-Process taskmgr.exe $Button}
         "diskmgmt" {Start-Process diskmgmt.msc $Button}
+        "window" { StopAllRunspace Write-Host "Bye see you soon. :)" $Button }
     }
 }
 function Get-SelectedApps {
@@ -608,30 +604,33 @@ function StopAllRunspace {
 
 #region Theme Functions
 function ToggleTheme {
-
+  
+    $sync.isDarkMode = -not $sync.isDarkMode
+    
     try {
-    if ($sync.isDarkMode -eq "Dark")
-    {
-        Switch-ToLightMode
-        $sync.isDarkMode = -not $sync.isDarkMode
 
-
-    } else {
-        Switch-ToDarkMode
-        $sync.isDarkMode = -not $sync.isDarkMode
-
-
+        if ($sync.isDarkMode -eq "true")
+        {
+            Switch-ToDarkMode
+        } 
+        else
+        {
+            Switch-ToLightMode
+        }
+        
     }
-    } catch {
+    catch {
         Write-Host "Error toggling theme: $_"
     }
+
+
 }
 
 function Switch-ToDarkMode {
     try {
-        #$sync['window'].FindName('themeText').Header = "Light Mode"
-        $theme = $sync['window'].FindResource("DarkTheme")
-        Update-Theme $theme "Dark"
+
+        $theme = $sync['window'].FindResource("Dark")
+        Update-Theme $theme "true"
     } catch {
         Write-Host "Error switching to dark mode: $_"
     }
@@ -639,9 +638,8 @@ function Switch-ToDarkMode {
 
 function Switch-ToLightMode {
     try {
-        #$sync['window'].FindName('themeText').Header = "Dark Mode"
-        $theme = $sync['window'].FindResource("LightTheme")
-        Update-Theme $theme "Light"
+        $theme = $sync['window'].FindResource("Light")
+        Update-Theme $theme "false"
     } catch {
         Write-Host "Error switching to light mode: $_"
     }
@@ -650,7 +648,8 @@ function Switch-ToLightMode {
 function Update-Theme ($theme, $mode) {
     $sync['window'].Resources.MergedDictionaries.Clear()
     $sync['window'].Resources.MergedDictionaries.Add($theme)
-    Set-ItemProperty -Path "HKCU:\Software\ITTEmadadel" -Name "Theme" -Value $mode -Force
+    Set-ItemProperty -Path "HKCU:\Software\ITTEmadadel" -Name "DarkMode" -Value $mode -Force
+
 }
 #endregion
 
@@ -776,156 +775,6 @@ function GetQuotes {
             }
         }
     }
-}
-
-
-# Show Custom Msg
-function Show-CustomDialog {
-    
-    param(
-        [string]$Message,
-        [int]$Width = 300,
-        [int]$Height = 200
-    )
-
-    Add-Type -AssemblyName PresentationFramework
-
-    # Define theme colors
-    $foregroundColor = [Windows.Media.Brushes]::Black
-    $backgroundColor = [Windows.Media.Brushes]::White
-    $font = New-Object Windows.Media.FontFamily("Consolas")
-    $borderColor = [Windows.Media.Brushes]::Black
-    $buttonBackgroundColor = [Windows.Media.Brushes]::Black
-    $buttonForegroundColor = [Windows.Media.Brushes]::White
-    $shadowColor = [Windows.Media.ColorConverter]::ConvertFromString("#AAAAAAAA")
-
-    # Create a custom dialog window
-    $dialog = New-Object Windows.Window
-    $dialog.Title = "About"
-    $dialog.Height = $Height
-    $dialog.Width = $Width
-    $dialog.Margin = New-Object Windows.Thickness(10)  # Add margin to the entire dialog box
-    $dialog.WindowStyle = [Windows.WindowStyle]::None  # Remove title bar and window controls
-    $dialog.ResizeMode = [Windows.ResizeMode]::NoResize  # Disable resizing
-    $dialog.WindowStartupLocation = [Windows.WindowStartupLocation]::CenterScreen  # Center the window
-    $dialog.Foreground = $foregroundColor
-    $dialog.Background = $backgroundColor
-    $dialog.FontFamily = $font
-
-    # Create a Border for the green edge with rounded corners
-    $border = New-Object Windows.Controls.Border
-    $border.BorderBrush = $borderColor
-    $border.BorderThickness = New-Object Windows.Thickness(1)  # Adjust border thickness as needed
-    $border.CornerRadius = New-Object Windows.CornerRadius(0)  # Adjust the radius for rounded corners
-
-    # Create a drop shadow effect
-    $dropShadow = New-Object Windows.Media.Effects.DropShadowEffect
-    $dropShadow.Color = $shadowColor
-    $dropShadow.Direction = 270
-    $dropShadow.ShadowDepth = 5
-    $dropShadow.BlurRadius = 0
-
-    # Apply drop shadow effect to the border
-    $dialog.Effect = $dropShadow
-
-    $dialog.Content = $border
-
-    # Create a grid for layout inside the Border
-    $grid = New-Object Windows.Controls.Grid
-    $border.Child = $grid
-
-    # Add the following line to show gridlines
-    #$grid.ShowGridLines = $true
-
-    # Add the following line to set the background color of the grid
-    $grid.Background = [Windows.Media.Brushes]::Transparent
-    # Add the following line to make the Grid stretch
-    $grid.HorizontalAlignment = [Windows.HorizontalAlignment]::Stretch
-    $grid.VerticalAlignment = [Windows.VerticalAlignment]::Stretch
-
-    # Add the following line to make the Border stretch
-    $border.HorizontalAlignment = [Windows.HorizontalAlignment]::Stretch
-    $border.VerticalAlignment = [Windows.VerticalAlignment]::Stretch
-
-
-    # Set up Row Definitions
-    $row0 = New-Object Windows.Controls.RowDefinition
-    $row0.Height = [Windows.GridLength]::Auto
-
-    $row1 = New-Object Windows.Controls.RowDefinition
-    $row1.Height = [Windows.GridLength]::new(1, [Windows.GridUnitType]::Star)
-
-    $row2 = New-Object Windows.Controls.RowDefinition
-    $row2.Height = [Windows.GridLength]::Auto
-
-    # Add Row Definitions to Grid
-    $grid.RowDefinitions.Add($row0)
-    $grid.RowDefinitions.Add($row1)
-    $grid.RowDefinitions.Add($row2)
-        
-    # Add StackPanel for horizontal layout with margins
-    $stackPanel = New-Object Windows.Controls.StackPanel
-    $stackPanel.Margin = New-Object Windows.Thickness(10)  # Add margins around the stack panel
-    $stackPanel.Orientation = [Windows.Controls.Orientation]::Horizontal
-    $stackPanel.HorizontalAlignment = [Windows.HorizontalAlignment]::Left  # Align to the left
-    $stackPanel.VerticalAlignment = [Windows.VerticalAlignment]::Top  # Align to the top
-
-    $grid.Children.Add($stackPanel)
-    [Windows.Controls.Grid]::SetRow($stackPanel, 0)  # Set the row to the second row (0-based index)
-
-    $viewbox = New-Object Windows.Controls.Viewbox
-    $viewbox.Width = 25
-    $viewbox.Height = 25
-    
-
-    # Add "Winutil" text
-    $IttTextBlock = New-Object Windows.Controls.TextBlock
-    $IttTextBlock.Text = "ITT"
-    $IttTextBlock.FontSize = 18  # Adjust font size as needed
-    $IttTextBlock.Foreground = $foregroundColor
-    $IttTextBlock.Margin = New-Object Windows.Thickness(10, 5, 10, 5)  # Add margins around the text block
-    $stackPanel.Children.Add($IttTextBlock)
-
-    # Add TextBlock for information with text wrapping and margins
-    $messageTextBlock = New-Object Windows.Controls.TextBlock
-    $messageTextBlock.Text = $Message
-    $messageTextBlock.TextWrapping = [Windows.TextWrapping]::Wrap  # Enable text wrapping
-    $messageTextBlock.HorizontalAlignment = [Windows.HorizontalAlignment]::Left
-    $messageTextBlock.VerticalAlignment = [Windows.VerticalAlignment]::Top
-    $messageTextBlock.Margin = New-Object Windows.Thickness(10)  # Add margins around the text block
-    $grid.Children.Add($messageTextBlock)
-    [Windows.Controls.Grid]::SetRow($messageTextBlock, 1)  # Set the row to the second row (0-based index)
-
-    # Add OK button
-    $okButton = New-Object Windows.Controls.Button
-    $okButton.Content = "OK"
-    $okButton.Width = 80
-    $okButton.Height = 30
-    $okButton.HorizontalAlignment = [Windows.HorizontalAlignment]::Center
-    $okButton.VerticalAlignment = [Windows.VerticalAlignment]::Bottom
-    $okButton.Margin = New-Object Windows.Thickness(0, 0, 0, 10)
-    $okButton.Background = $buttonBackgroundColor
-    $okButton.Foreground = $buttonForegroundColor
-    $okButton.BorderBrush = $borderColor
-
-    $okButton.Add_Click({
-        $dialog.Close()
-    })
-    $grid.Children.Add($okButton)
-    [Windows.Controls.Grid]::SetRow($okButton, 2)  # Set the row to the third row (0-based index)
-
-    # Handle Escape key press to close the dialog
-    $dialog.Add_KeyDown({
-        if ($_.Key -eq 'Escape') {
-            $dialog.Close()
-        }
-    })
-
-    # Set the OK button as the default button (activated on Enter)
-    $okButton.IsDefault = $true
-
-    # Show the custom dialog
-    $dialog.ShowDialog()
 }
 
 
@@ -2602,7 +2451,7 @@ $inputXML = '
             <!--Light Theme styles-->
 
         <!--Light mode -->
-                <ResourceDictionary x:Key="LightTheme">
+                <ResourceDictionary x:Key="Light">
                         <SolidColorBrush x:Key="BGColor" Color="White"/>
                         <SolidColorBrush x:Key="FGColor" Color="WhiteSmoke"/>
                         <SolidColorBrush x:Key="BGButtonColor" Color="#382bf0  " />
@@ -2614,7 +2463,7 @@ $inputXML = '
         <!--Light mode -->
 
         <!--Dark mode-->
-                <ResourceDictionary x:Key="DarkTheme">
+                <ResourceDictionary x:Key="Dark">
                         <SolidColorBrush x:Key="BGColor" Color="#121212 "/>
                         <SolidColorBrush x:Key="FGColor" Color="#282828"/>
                         <SolidColorBrush x:Key="BGButtonColor" Color="#1DB954" />
@@ -2664,7 +2513,7 @@ $inputXML = '
                         <MenuItem Header="التفضيلات" BorderBrush="Transparent" BorderThickness="0">
                             <MenuItem Name="save" Header="حفظ البرامج المختارة"/>
                             <MenuItem Name="load" Header="تحميل البرامج المختارة مسبقا"/>
-                            <MenuItem Name="themeText" Header="المظهر"/>
+                            <MenuItem Name="themeText" IsChecked="true" Header="الوضع "/>
                         </MenuItem>
 
                         <MenuItem Header="المطور" BorderBrush="Transparent" BorderThickness="0">
@@ -2836,6 +2685,58 @@ $inputXML = '
 #===========================================================================
 #endregion End WPF Window
 #===========================================================================
+#===========================================================================
+#region Begin WPF About
+#===========================================================================
+
+$childXaml = '<Window
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  x:Name="Window" Title="Abou | IT Tools" WindowStartupLocation = "CenterScreen" 
+  Background="White"
+  Height="344" Width="444" MinWidth="444" MinHeight="344" ShowInTaskbar = "True" Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/icon.ico">
+    <Grid>
+
+      <Grid.RowDefinitions>
+        <RowDefinition Height="*"/>
+        <RowDefinition Height="auto"/>
+      </Grid.RowDefinitions>
+
+
+
+      <CheckBox VerticalAlignment="Top" HorizontalAlignment="Left" Content="Dark" IsChecked="False" Margin="20" />
+
+
+      <StackPanel Grid.Row="0"  Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
+
+          <!--Logo-->
+          <Ellipse Margin="10" Name="about" Width="60" Height="60" Cursor="Hand">
+            <Ellipse.Fill>
+                <ImageBrush ImageSource="https://avatars.githubusercontent.com/u/19177373?v=4.png" />
+            </Ellipse.Fill>
+          </Ellipse>
+          <!--End Logo-->
+
+        <TextBlock Margin="5" FontSize="15" Text="Developer Emad Adel" TextAlignment="Center"/>
+        <TextBlock Margin="5"  FontSize="30" TextAlignment="Center" Text="IT Tools"/>
+        <TextBlock Margin="5" TextAlignment="Center" TextWrapping="Wrap" Text="الاداة مفتوحة المصدر يمكنك الاطلاع على السورس كود و تحسينه من خلال الرابط التالي"/>
+        <TextBlock Margin="5" Cursor="Hand"   TextAlignment="Center" Text="Source code"/>
+      </StackPanel>
+
+      <StackPanel Margin="25" Grid.Row="1" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
+        <TextBlock TextAlignment="Center" Text="@emadadel4"/>
+        <StackPanel Orientation="Horizontal">
+        <TextBlock Margin="5" Cursor="Hand"  Text="Telgram"/>
+        <TextBlock Margin="5" Cursor="Hand"  Text="Github"/>
+        <TextBlock Margin="5" Cursor="Hand"  Text="Website"/>
+        </StackPanel>
+      </StackPanel>
+    </Grid>
+  </Window>
+'
+#===========================================================================
+#endregion End WPF About
+#===========================================================================
 
 #===========================================================================
 #region Begin loadXmal
@@ -2868,7 +2769,28 @@ $sync.runspace.Open()
 
 # Read the XAML file
 $reader = (New-Object System.Xml.XmlNodeReader $xaml)
-try { $sync["window"] = [Windows.Markup.XamlReader]::Load( $reader ) }
+try { 
+    
+    $sync["window"] = [Windows.Markup.XamlReader]::Load( $reader )
+    
+
+    # Check if the registry key exists
+    if (-not (Test-Path $sync.registryPath))
+    {
+        New-Item -Path "HKCU:\Software\ITTEmadadel" -Force
+        Set-ItemProperty -Path "HKCU:\Software\ITTEmadadel" -Name "DarkMode" -Value "false" -Force
+    }
+
+    # Check if $themeValue is equal to "true"
+    if ($sync.isDarkMode -eq "true")
+    {
+        $sync['window'].Resources.MergedDictionaries.Add($sync['window'].FindResource("Dark"))
+
+    } else {
+        $sync['window'].Resources.MergedDictionaries.Add($sync['window'].FindResource("Light"))
+    }
+
+ }
 catch [System.Management.Automation.MethodInvocationException] {
     Write-Warning "We ran into a problem with the XAML code.  Check the syntax for this control..."
     Write-Host $error[0].Exception.Message -ForegroundColor Red
@@ -2975,6 +2897,8 @@ $sync.itemLink = $sync['window'].FindName('itemLink')
 $sync.installBtn = $sync['window'].FindName('installBtn') 
 $sync.cat = $sync['window'].FindName('cat')
 $sync.searchInput = $sync['window'].FindName('searchInput')
+
+
 
 
 #===========================================================================
@@ -3100,17 +3024,8 @@ CheckChoco
 GetQuotes *> $null
 PlayMusic *> $null
 
-#region check currnet Theme
-if ($sync.theme -eq "Dark") {
-  Switch-ToDarkMode
-  $sync.isDarkMode = "Dark"
-} 
-else 
-{
-  Switch-ToLightMode
-  $sync.isDarkMode = "Light"
-}
-#endregion
+
+
 
 $sync["window"].ShowDialog() | out-null
 
