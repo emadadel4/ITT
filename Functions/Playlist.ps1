@@ -59,7 +59,7 @@ function PlayMusic {
     }
 }
 
-PlayMusic | out-null
+#PlayMusic | out-null
 
 function StopMusic {
 
