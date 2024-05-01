@@ -19,7 +19,6 @@ $sync.runspace = [runspacefactory]::CreateRunspacePool(
 # Open the RunspacePool instance
 $sync.runspace.Open()
 
-
 [void][System.Reflection.Assembly]::LoadWithPartialName('presentationframework')
 [xml]$XAML = $inputXML
 

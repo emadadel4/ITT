@@ -17,7 +17,6 @@ Add-Type -AssemblyName PresentationFramework
 Add-Type -AssemblyName PresentationCore
 Add-Type -AssemblyName PresentationFramework.Aero
 
-
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
@@ -35,8 +34,6 @@ $newProcess = new-object System.Diagnostics.ProcessStartInfo "PowerShell";
 $currentPid = [System.Security.Principal.WindowsIdentity]::GetCurrent()
 $principal = new-object System.Security.Principal.WindowsPrincipal($currentPid)
 $adminRole=[System.Security.Principal.WindowsBuiltInRole]::Administrator
-
-
 
 if ($principal.IsInRole($adminRole))
 {
