@@ -102,7 +102,7 @@ Write-Host "
 |   \ V  V / | |___| |__| |__| |_| | |  | | |___    | || |_| |  | |  | |   | |   |
 |    \_/\_/  |_____|_____\____\___/|_|  |_|_____|   |_| \___/  |___| |_|   |_|   |
 +--------------------------------------------------------------------------------+
-Starting up... It'll be quick. I hope you like the tool :)
+    Starting up... It'll be quick. I hope you like the tool :)
         
         " -ForegroundColor Red
         Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1')) *> $null
@@ -120,7 +120,7 @@ Write-Host "
 | |___| |_|   |_|   |_____|_|  |_/_/   \_\____/  /_/   \_\____/|_____|_____| |
 |                                                                            |
 +----------------------------------------------------------------------------+
-Everything work fine. You good to go
+    Everything work fine. You good to go
 
 " -ForegroundColor green
         
