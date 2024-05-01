@@ -214,7 +214,8 @@ function Invoke-Install{
         return
     }
   
-    $sync.cat = $sync['window'].FindName('cat').SelectedIndex = 0
+    $sync['window'].FindName('cat').SelectedIndex = 0
+    ClearFilter
     $choco += Get-SelectedApps
 
     if(Get-SelectedApps -ne $null)
