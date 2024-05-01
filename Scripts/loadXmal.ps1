@@ -29,13 +29,14 @@ try {
     
     $sync["window"] = [Windows.Markup.XamlReader]::Load( $reader )
     
-
     # Check if the registry key exists
     if (-not (Test-Path $sync.registryPath))
     {
-        New-Item -Path "HKCU:\Software\ITTEmadadel" -Force
-        Set-ItemProperty -Path "HKCU:\Software\ITTEmadadel" -Name "DarkMode" -Value "false" -Force
+        New-Item -Path "HKCU:\Software\ITTEmadadel" -Force *> $null
+        Set-ItemProperty -Path "HKCU:\Software\ITTEmadadel" -Name "DarkMode" -Value "false" -Force 
     }
+
+    $sync.isDarkMode = (Get-ItemProperty -Path "HKCU:\Software\ITTEmadadel" -Name "DarkMode").DarkMode
 
     # Check if $themeValue is equal to "true"
     if ($sync.isDarkMode -eq "true")
@@ -70,17 +71,6 @@ $sync.Keys | ForEach-Object {
 
     # Check if the element exists
     if ($element) {
-
-
-            # Check if the element is a window
-        if ($element.GetType().Name -eq "window") {
-        # Add a click event handler to the window
-
-            $element.add_Closing({
-                param([System.Object]$Sender)
-                Invoke-Button $Sender.Name
-            })
-        }
 
         # Check if the element is a Button
         if ($element.GetType().Name -eq "Button") {
