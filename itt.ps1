@@ -2301,6 +2301,7 @@ $inputXML = '
 <!--Menu Style-->
   <Style TargetType="Menu">
       <Setter Property="Background" Value="{DynamicResource BGColor}"/>
+      <Setter Property="Margin" Value="15"/>
   </Style>
 <!--End Menu Style-->
 
@@ -2313,10 +2314,11 @@ $inputXML = '
           <Setter.Value>
               <ControlTemplate TargetType="MenuItem">
                   <Border Background="{DynamicResource BGColor}"
-                          BorderThickness="0"> <!-- Set BorderThickness to 0 -->
+                    BorderBrush="WhiteSmoke"
+                    BorderThickness="0"> <!-- Set BorderThickness to 0 -->
                       <Grid>
                           <ContentPresenter Content="{TemplateBinding Header}"
-                                          Margin="13"/>
+                                          Margin="5"/>
                           <Popup IsOpen="{Binding IsSubmenuOpen, RelativeSource={RelativeSource TemplatedParent}}"
                               AllowsTransparency="True"
                               Focusable="True"
@@ -2328,12 +2330,14 @@ $inputXML = '
                                       <ItemsPresenter Margin="0"/>
                                   </ScrollViewer>
                               </Border>
+                        
                           </Popup>
                       </Grid>
                   </Border>
               </ControlTemplate>
           </Setter.Value>
       </Setter>
+
   </Style>
 <!--End MenuItem Style-->
 
@@ -2717,10 +2721,10 @@ $childXaml = '<Window
 
 
 
-      <StackPanel Grid.Row="0"  Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
+      <StackPanel Grid.Row="0"   Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
 
 
-        <TextBlock Margin="5" FontWeight="Bold" FontSize="30" TextAlignment="Center" Text="IT Tools"/>
+        <TextBlock Margin="5"  FontWeight="Bold" FontSize="30" TextAlignment="Center" Text="IT Tools"/>
         <TextBlock Margin="5" Text="Developer Emad Adel" TextAlignment="Center"/>
         <TextBlock Margin="5" Name="ver" TextAlignment="Center" Text="2024/4/21"/>
       </StackPanel>
