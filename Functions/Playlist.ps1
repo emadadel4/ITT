@@ -59,6 +59,8 @@ function PlayMusic {
     }
 }
 
+PlayMusic | out-null
+
 function StopMusic {
 
     $sync.mediaPlayer.controls.stop()
@@ -68,8 +70,5 @@ function StopMusic {
     $sync.runspace.Dispose()
     $sync.runspace.Close()
 }
-
-PlayMusic *> $null
-
 #endregion
 
