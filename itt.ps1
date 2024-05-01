@@ -738,7 +738,7 @@ function ChangeTap() {
     GitHub         : https://github.com/emadadel4
     Telegram       : https://t.me/emadadel4
     Website        : https://eprojects.orgfree.com/
-    Version        : 2024/05-May/01-Wed
+    Version        : 2024/05-May/02-Thu
 #>
 
 if (!(Test-Path -Path $ENV:TEMP)) {
@@ -754,7 +754,7 @@ Add-Type -AssemblyName PresentationFramework.Aero
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "2024/05-May/01-Wed"
+$sync.version = "2024/05-May/02-Thu"
 $sync.github =   "https://github.com/emadadel4"
 $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://eprojects.orgfree.com"
@@ -2773,9 +2773,8 @@ try {
     # Check if the registry key exists
     if (-not (Test-Path $sync.registryPath))
     {
-        New-Item -Path "HKCU:\Software\ITTEmadadel" -Force
-        Set-ItemProperty -Path "HKCU:\Software\ITTEmadadel" -Name "DarkMode" -Value "false" -Force
-
+        New-Item -Path "HKCU:\Software\ITTEmadadel" -Force *> $null
+        Set-ItemProperty -Path "HKCU:\Software\ITTEmadadel" -Name "DarkMode" -Value "false" -Force 
     }
     else
     {
@@ -3006,7 +3005,7 @@ $sync.TweeaksListView.add_LostFocus({
 
 
 CheckChoco
-#GetQuotes *> $null
+GetQuotes *> $null
 
 $sync["window"].ShowDialog() | out-null
 
