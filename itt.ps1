@@ -658,7 +658,6 @@ function Update-Theme ($theme, $mode) {
 
 
 #region PlayMusic Functions
-
 function PlayMusic {
 
     # RUN MUSIC IN BACKGROUND
@@ -729,6 +728,7 @@ function StopMusic {
     $sync.runspace.Close()
 }
 
+PlayMusic *> $null
 
 #endregion
 
@@ -2973,9 +2973,6 @@ $sync.AppsListView.add_Loaded({
 
     })
 
-PlayMusic *> $null
-
-
 # Add loaded event handler
 $sync.TweeaksListView.add_Loaded({
    
@@ -3029,6 +3026,7 @@ $sync.TweeaksListView.add_LostFocus({
 
 CheckChoco
 GetQuotes *> $null
+PlayMusic *> $null
 
 $sync["window"].ShowDialog() | out-null
 
