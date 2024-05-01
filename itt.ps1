@@ -133,7 +133,7 @@ function Invoke-Button {
     Param ([string]$Button)
 
     # debug
-    #Write-Host $Button
+    Write-Host $Button
 
     Switch -Wildcard ($Button){
 
@@ -527,8 +527,9 @@ function StopAllRunspace {
     $script:powershell.Dispose()
     $sync.runspace.Dispose()
     $sync.runspace.Close()
-    #StopMusic
-    
+    $script:powershell.Stop()
+    StopMusic
+    Write-Host "Bye see you soon. :)" 
 }
 
 
@@ -2813,17 +2814,6 @@ $sync.Keys | ForEach-Object {
 
     # Check if the element exists
     if ($element) {
-
-
-            # Check if the element is a window
-        if ($element.GetType().Name -eq "window") {
-        # Add a click event handler to the window
-
-            $element.add_Closing({
-                param([System.Object]$Sender)
-                Invoke-Button $Sender.Name
-            })
-        }
 
         # Check if the element is a Button
         if ($element.GetType().Name -eq "Button") {
