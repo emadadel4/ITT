@@ -84,10 +84,29 @@ try {
     WriteToScript -Content @"
 
 #===========================================================================
+#region Begin Functions
+#===========================================================================
+
+"@
+
+
+    ProcessDirectory -Directory $FunctionsDirectory
+
+    WriteToScript -Content @"
+#===========================================================================
+#endregion End Functions
+#===========================================================================
+
+"@
+
+
+    WriteToScript -Content @"
+#===========================================================================
 #region Begin Start
 #===========================================================================
 
 "@
+
 
     AddFileContentToScript -FilePath $StartScript
     ReplaceTextInFile -FilePath $OutputScript -TextToReplace '#{replaceme}' -ReplacementText "$(Get-Date -Format 'yyy/MM-MMM/dd-ddd')"
@@ -95,23 +114,6 @@ try {
     WriteToScript -Content @"
 #===========================================================================
 #endregion End Start
-#===========================================================================
-
-"@
-
-
-    WriteToScript -Content @"
-#===========================================================================
-#region Begin Functions
-#===========================================================================
-
-"@
-
-    ProcessDirectory -Directory $FunctionsDirectory
-
-    WriteToScript -Content @"
-#===========================================================================
-#endregion End Functions
 #===========================================================================
 
 "@
