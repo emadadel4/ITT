@@ -3,7 +3,7 @@ function Invoke-Button {
     Param ([string]$Button)
 
     # debug
-    Write-Host $Button
+    #Write-Host $Button
 
     Switch -Wildcard ($Button){
 
