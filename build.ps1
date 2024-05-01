@@ -191,6 +191,7 @@ try {
 #===========================================================================
 #endregion End WPF Window
 #===========================================================================
+
 "@
 
 WriteToScript -Content @"
@@ -274,9 +275,7 @@ WriteToScript -Content @"
 
 "@
 
-
 Write-Host "Compile successfully " -ForegroundColor Green
-Start-Sleep 1
 ./itt.ps1
 
 }
