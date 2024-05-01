@@ -89,49 +89,43 @@ function ClearFilter {
 }
 #endregion
 
-
 function CheckChoco 
 {
+    # Check if Chocolatey is installed
+    if (-not (Test-Path 'C:\ProgramData\chocolatey\choco.exe')) {
 
-    try {
+Write-Host "
++--------------------------------------------------------------------------------+
+| __        _______ _     ____ ___  __  __ _____   _____ ___    ___ _____ _____  |
+| \ \      / / ____| |   / ___/ _ \|  \/  | ____| |_   _/ _ \  |_ _|_   _|_   _| |
+|  \ \ /\ / /|  _| | |  | |  | | | | |\/| |  _|     | || | | |  | |  | |   | |   |
+|   \ V  V / | |___| |__| |__| |_| | |  | | |___    | || |_| |  | |  | |   | |   |
+|    \_/\_/  |_____|_____\____\___/|_|  |_|_____|   |_| \___/  |___| |_|   |_|   |
++--------------------------------------------------------------------------------+
+Starting up... It'll be quick. I hope you like the tool :)
+        
+        " -ForegroundColor Red
+        Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1')) *> $null
 
-    if((Get-Command -Name choco -ErrorAction Ignore))
+    }
+    else
     {
-        Clear-Host
 
 Write-Host "
-___ _____ _____   _____ __  __    _    ____    _    ____  _____ _    _  _   
-|_ _|_   _|_   _| | ____|  \/  |  / \  |  _ \  / \  |  _ \| ____| |  | || |  
- | |  | |   | |   |  _| | |\/| | / _ \ | | | |/ _ \ | | | |  _| | |  | || |_ 
- | |  | |   | |   | |___| |  | |/ ___ \| |_| / ___ \| |_| | |___| |__|__   _|
-|___| |_|   |_|   |_____|_|  |_/_/   \_\____/_/   \_\____/|_____|_____| |_|  
-Everything work fine You Good to go
++----------------------------------------------------------------------------+
+|  ___ _____ _____   _____ __  __    _    ____       _    ____  _____ _      |
+| |_ _|_   _|_   _| | ____|  \/  |  / \  |  _ \     / \  |  _ \| ____| |     |
+|  | |  | |   | |   |  _| | |\/| | / _ \ | | | |   / _ \ | | | |  _| | |     |
+|  | |  | |   | |   | |___| |  | |/ ___ \| |_| |  / ___ \| |_| | |___| |___  |
+| |___| |_|   |_|   |_____|_|  |_/_/   \_\____/  /_/   \_\____/|_____|_____| |
+|                                                                            |
++----------------------------------------------------------------------------+
+Everything work fine. You good to go
+
 " -ForegroundColor green
-        return
-        }
-
-Write-Host "
-__        _______ _     ____ ___  __  __ _____   _____ ___    ___ _____ _____ 
-\ \      / / ____| |   / ___/ _ \|  \/  | ____| |_   _/ _ \  |_ _|_   _|_   _|
- \ \ /\ / /|  _| | |  | |  | | | | |\/| |  _|     | || | | |  | |  | |   | |  
-  \ V  V / | |___| |__| |__| |_| | |  | | |___    | || |_| |  | |  | |   | |  
-   \_/\_/  |_____|_____\____\___/|_|  |_|_____|   |_| \___/  |___| |_|   |_|  
-" -ForegroundColor White             
-Write-Host "Starting up..." -ForegroundColor red             
         
-        Set-ExecutionPolicy Bypass -Scope Process -Force; Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1')) -ErrorAction Stop *> $null
-        powershell choco feature enable -n allowGlobalConfirmation *> $null
-        
-        Start-Sleep 2
-
-        Clear-Host
-
-        CheckChoco
-
     }
-    Catch {
-        Write-Host "--Chocolatey failed to install---"
-    }
+
 }
 
 function Invoke-Button {
@@ -162,7 +156,6 @@ function Invoke-Button {
         "network" {Start-Process ncpa.cpl $Button}
         "taskmgr" {Start-Process taskmgr.exe $Button}
         "diskmgmt" {Start-Process diskmgmt.msc $Button}
-        "window" { StopAllRunspace Write-Host "Bye see you soon. :)" $Button }
         "darkOn" { Switch-ToDarkMode $Button }
         "darkOff" { Switch-ToLightMode $Button }
     }
@@ -220,6 +213,7 @@ function Invoke-Install{
         return
     }
   
+    $sync.cat = $sync['window'].FindName('cat').SelectedIndex = 0
     $choco += Get-SelectedApps
 
     if(Get-SelectedApps -ne $null)
@@ -236,13 +230,13 @@ function Invoke-Install{
                 if($msg -eq "Yes")
                 {
 
+                    
                     $chocoTempPath = Join-Path $env:TEMP "chocolatey"
 
                     if (Test-Path $chocoTempPath) {
                         Remove-Item -Path $chocoTempPath -Force -Recurse
                         Write-Output "Clear Chocolatey temp folder"
                     }
-
 
                     $sync.ProcessRunning = $true
 
@@ -256,7 +250,7 @@ function Invoke-Install{
                     })
 
                     Write-Host "Installing the following programs $choco "
-                    Start-Process -FilePath "choco" -ArgumentList "install $choco -y --force --ignore-checksums" -NoNewWindow -Wait
+                    #Start-Process -FilePath "choco" -ArgumentList "install $choco -y --force --ignore-checksums" -NoNewWindow -Wait
                     [System.Windows.MessageBox]::Show("تم التثبيت بنجاح", "ITT @emadadel4", "OK", "Information")
 
                     $sync.AppsListView.Dispatcher.Invoke([Action]{
@@ -280,13 +274,17 @@ function Invoke-Install{
                     $sync.installBtn.Dispatcher.Invoke([Action]{
                         $sync.installBtn.Content = "تثبيت"
                     })
+
+                    Clear-Host
 Write-Host "
-___ _____ _____   _____ __  __    _    ____    _    ____  _____ _    _  _   
-|_ _|_   _|_   _| | ____|  \/  |  / \  |  _ \  / \  |  _ \| ____| |  | || |  
-| |  | |   | |   |  _| | |\/| | / _ \ | | | |/ _ \ | | | |  _| | |  | || |_ 
-| |  | |   | |   | |___| |  | |/ ___ \| |_| / ___ \| |_| | |___| |__|__   _|
-|___| |_|   |_|   |_____|_|  |_/_/   \_\____/_/   \_\____/|_____|_____| |_|  
-Everything work fine You Good to go
++------------------------------------------------------------------------------+
+|   ___ _____ _____   _____ __  __    _    ____       _    ____  _____ _       |
+|  |_ _|_   _|_   _| | ____|  \/  |  / \  |  _ \     / \  |  _ \| ____| |      |
+|   | |  | |   | |   |  _| | |\/| | / _ \ | | | |   / _ \ | | | |  _| | |      |
+|   | |  | |   | |   | |___| |  | |/ ___ \| |_| |  / ___ \| |_| | |___| |___   |
+|  |___| |_|   |_|   |_____|_|  |_/_/   \_\____/  /_/   \_\____/|_____|_____|  |
+| Everything work fine You Good to go                                          |
++------------------------------------------------------------------------------+
 " -ForegroundColor green
                    
                 }
@@ -368,12 +366,14 @@ function Invoke-ApplyTweaks() {
 
                     Clear-Host
 Write-Host "
-___ _____ _____   _____ __  __    _    ____    _    ____  _____ _    _  _   
-|_ _|_   _|_   _| | ____|  \/  |  / \  |  _ \  / \  |  _ \| ____| |  | || |  
-| |  | |   | |   |  _| | |\/| | / _ \ | | | |/ _ \ | | | |  _| | |  | || |_ 
-| |  | |   | |   | |___| |  | |/ ___ \| |_| / ___ \| |_| | |___| |__|__   _|
-|___| |_|   |_|   |_____|_|  |_/_/   \_\____/_/   \_\____/|_____|_____| |_|  
-Everything work fine You Good to go
++------------------------------------------------------------------------------+
+|   ___ _____ _____   _____ __  __    _    ____       _    ____  _____ _       |
+|  |_ _|_   _|_   _| | ____|  \/  |  / \  |  _ \     / \  |  _ \| ____| |      |
+|   | |  | |   | |   |  _| | |\/| | / _ \ | | | |   / _ \ | | | |  _| | |      |
+|   | |  | |   | |   | |___| |  | |/ ___ \| |_| |  / ___ \| |_| | |___| |___   |
+|  |___| |_|   |_|   |_____|_|  |_/_/   \_\____/  /_/   \_\____/|_____|_____|  |
+| Everything work fine You Good to go                                          |
++------------------------------------------------------------------------------+
 " -ForegroundColor green
 
                 }
@@ -527,9 +527,7 @@ function StopAllRunspace {
     $script:powershell.Dispose()
     $sync.runspace.Dispose()
     $sync.runspace.Close()
-    $script:powershell.Stop()
-
-    StopMusic
+    #StopMusic
     
 }
 
@@ -647,7 +645,7 @@ function PlayMusic {
     }
 }
 
-PlayMusic | out-null
+#PlayMusic | out-null
 
 function StopMusic {
 
@@ -763,7 +761,7 @@ $sync.developer =   "Emad Adel @emadadel4"
 $sync.registryPath = "HKCU:\Software\ITTEmadadel"
 $sync.configs = @{}
 $sync.ProcessRunning = $false
-$sync.isDarkMode = (Get-ItemProperty -Path "HKCU:\Software\ITTEmadadel" -Name "DarkMode").DarkMode
+$sync.isDarkMode
 $sync.mediaPlayer = New-Object -ComObject WMPlayer.OCX
 
 $currentPid = [System.Security.Principal.WindowsIdentity]::GetCurrent()
@@ -785,15 +783,6 @@ else
     [System.Diagnostics.Process]::Start($newProcess);
     break
 }
-
-# Check if the registry key exists
-# if (-not (Test-Path $sync.registryPath)) {
-#     # If it doesn't exist, create it
-#     New-Item -Path "HKCU:\Software\ITTEmadadel" -Force
-#     Write-Host "Registry key 'HKCU:\Software\ITTEmadadel' created successfully."
-#   } else {
-#     #Write-Host "Registry key 'HKCU:\Software\ITTEmadadel' already exists."
-# }
 
 #===========================================================================
 #endregion End Start
@@ -2780,23 +2769,26 @@ try {
     
     $sync["window"] = [Windows.Markup.XamlReader]::Load( $reader )
     
-
     # Check if the registry key exists
     if (-not (Test-Path $sync.registryPath))
     {
         New-Item -Path "HKCU:\Software\ITTEmadadel" -Force
         Set-ItemProperty -Path "HKCU:\Software\ITTEmadadel" -Name "DarkMode" -Value "false" -Force
-    }
 
-    # Check if $themeValue is equal to "true"
-    if ($sync.isDarkMode -eq "true")
+    }
+    else
     {
-        $sync['window'].Resources.MergedDictionaries.Add($sync['window'].FindResource("Dark"))
+        $sync.isDarkMode = (Get-ItemProperty -Path "HKCU:\Software\ITTEmadadel" -Name "DarkMode").DarkMode
 
-    } else {
-        $sync['window'].Resources.MergedDictionaries.Add($sync['window'].FindResource("Light"))
+        # Check if $themeValue is equal to "true"
+        if ($sync.isDarkMode -eq "true")
+        {
+            $sync['window'].Resources.MergedDictionaries.Add($sync['window'].FindResource("Dark"))
+
+        } else {
+            $sync['window'].Resources.MergedDictionaries.Add($sync['window'].FindResource("Light"))
+        }
     }
-
  }
 catch [System.Management.Automation.MethodInvocationException] {
     Write-Warning "We ran into a problem with the XAML code.  Check the syntax for this control..."
@@ -3024,7 +3016,7 @@ $sync.TweeaksListView.add_LostFocus({
 
 
 CheckChoco
-GetQuotes *> $null
+#GetQuotes *> $null
 
 $sync["window"].ShowDialog() | out-null
 
