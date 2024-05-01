@@ -22,10 +22,11 @@ function About{
     [xml]$ee = $childXaml
     $childWindowReader = (New-Object System.Xml.XmlNodeReader $ee)
     $childWindow = [Windows.Markup.XamlReader]::Load( $childWindowReader )
-
-
-    $childWindow.FindName('ver').Text = $sync.version
-
+    $childWindow.FindName('ver').Text = "Last update " + $sync.version
+    $childWindow.FindName("telegram").add_MouseLeftButtonDown({Start-Process("https://t.me/emadadel4")})
+    $childWindow.FindName("github").add_MouseLeftButtonDown({Start-Process("https://github.com/emadadel4")})
+    $childWindow.FindName("website").add_MouseLeftButtonDown({Start-Process("https://eprojects.orgfree.com/")})
+    $childWindow.FindName("sourcecode").add_MouseLeftButtonDown({Start-Process("https://github.com/emadadel4/ITT")})
     $childWindow.ShowDialog() | Out-Null
 
 }
@@ -749,7 +750,6 @@ Add-Type -AssemblyName PresentationFramework
 Add-Type -AssemblyName PresentationCore
 Add-Type -AssemblyName PresentationFramework.Aero
 
-
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
@@ -767,8 +767,6 @@ $newProcess = new-object System.Diagnostics.ProcessStartInfo "PowerShell";
 $currentPid = [System.Security.Principal.WindowsIdentity]::GetCurrent()
 $principal = new-object System.Security.Principal.WindowsPrincipal($currentPid)
 $adminRole=[System.Security.Principal.WindowsBuiltInRole]::Administrator
-
-
 
 if ($principal.IsInRole($adminRole))
 {
@@ -2709,24 +2707,19 @@ $childXaml = '<Window
       </Ellipse>
       <!--End Logo-->
 
-
-
-      <StackPanel Grid.Row="0"   Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
-
-
-        <TextBlock Margin="5"  FontWeight="Bold" FontSize="30" TextAlignment="Center" Text="IT Tools"/>
-        <TextBlock Margin="5" Text="Developer Emad Adel" TextAlignment="Center"/>
-        <TextBlock Margin="5" Name="ver" TextAlignment="Center" Text="2024/4/21"/>
+      <StackPanel Grid.Row="0" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
+        <TextBlock Margin="5" TextWrapping="Wrap" FontWeight="Bold" FontSize="30" TextAlignment="Center" Text="IT Tools"/>
+        <TextBlock Margin="5" TextWrapping="Wrap" Text="Developer Emad Adel" TextAlignment="Center"/>
+        <TextBlock Margin="5" Name="ver" TextWrapping="Wrap" TextAlignment="Center" Text="2024/4/21"/>
       </StackPanel>
 
       <StackPanel Margin="25" Grid.Row="1" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
 
-        <TextBlock Margin="5" Cursor="Hand" TextAlignment="Center" Text="Source code"/>
-
+        <TextBlock Margin="25" Name="sourcecode" Cursor="Hand" TextAlignment="Center" Text="Source code"/>
         <StackPanel Orientation="Horizontal">
-        <TextBlock Margin="5" Cursor="Hand"  Text="Telgram"/>
-        <TextBlock Margin="5" Cursor="Hand"  Text="Github"/>
-        <TextBlock Margin="5" Cursor="Hand"  Text="Website"/>
+        <TextBlock Name="website" Margin="10" Cursor="Hand"  Text="EProjects"/>
+        <TextBlock Name="telegram" Margin="10" Cursor="Hand"  Text="Telgram"/>
+        <TextBlock Name="github" Margin="10" Cursor="Hand"  Text="Github"/>
         </StackPanel>
       </StackPanel>
     </Grid>
@@ -2760,7 +2753,6 @@ $sync.runspace = [runspacefactory]::CreateRunspacePool(
 
 # Open the RunspacePool instance
 $sync.runspace.Open()
-
 
 [void][System.Reflection.Assembly]::LoadWithPartialName('presentationframework')
 [xml]$XAML = $inputXML
