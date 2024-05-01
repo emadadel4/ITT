@@ -647,6 +647,8 @@ function PlayMusic {
     }
 }
 
+PlayMusic *> $null
+
 function StopMusic {
 
     $sync.mediaPlayer.controls.stop()
@@ -656,7 +658,6 @@ function StopMusic {
     $sync.runspace.Dispose()
     $sync.runspace.Close()
 }
-
 #endregion
 
 
@@ -793,7 +794,6 @@ else
 #   } else {
 #     #Write-Host "Registry key 'HKCU:\Software\ITTEmadadel' already exists."
 # }
-PlayMusic *> $null
 
 #===========================================================================
 #endregion End Start
@@ -3025,6 +3025,7 @@ $sync.TweeaksListView.add_LostFocus({
 
 CheckChoco
 GetQuotes *> $null
+
 $sync["window"].ShowDialog() | out-null
 
 #===========================================================================
