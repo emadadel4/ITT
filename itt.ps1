@@ -2777,8 +2777,9 @@ try {
     {
         New-Item -Path "HKCU:\Software\ITTEmadadel" -Force *> $null
         Set-ItemProperty -Path "HKCU:\Software\ITTEmadadel" -Name "DarkMode" -Value "false" -Force 
-        $sync.isDarkMode = (Get-ItemProperty -Path "HKCU:\Software\ITTEmadadel" -Name "DarkMode").DarkMode
     }
+
+    $sync.isDarkMode = (Get-ItemProperty -Path "HKCU:\Software\ITTEmadadel" -Name "DarkMode").DarkMode
 
     # Check if $themeValue is equal to "true"
     if ($sync.isDarkMode -eq "true")
@@ -2788,7 +2789,7 @@ try {
     } else {
         $sync['window'].Resources.MergedDictionaries.Add($sync['window'].FindResource("Light"))
     }
-    
+
  }
 catch [System.Management.Automation.MethodInvocationException] {
     Write-Warning "We ran into a problem with the XAML code.  Check the syntax for this control..."
