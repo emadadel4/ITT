@@ -29,7 +29,7 @@ $sync.developer =   "Emad Adel @emadadel4"
 $sync.registryPath = "HKCU:\Software\ITTEmadadel"
 $sync.configs = @{}
 $sync.ProcessRunning = $false
-$sync.isDarkMode = (Get-ItemProperty -Path "HKCU:\Software\ITTEmadadel" -Name "DarkMode").DarkMode
+$sync.isDarkMode
 $sync.mediaPlayer = New-Object -ComObject WMPlayer.OCX
 
 $currentPid = [System.Security.Principal.WindowsIdentity]::GetCurrent()
@@ -48,15 +48,8 @@ else
     $newProcess = new-object System.Diagnostics.ProcessStartInfo "PowerShell";
     $newProcess.Arguments = $myInvocation.MyCommand.Definition;
     $newProcess.Verb = "runas";
+    $newProcess.WindowStyle = "Maximized"
     [System.Diagnostics.Process]::Start($newProcess);
+    exit
     break
 }
-
-# Check if the registry key exists
-# if (-not (Test-Path $sync.registryPath)) {
-#     # If it doesn't exist, create it
-#     New-Item -Path "HKCU:\Software\ITTEmadadel" -Force
-#     Write-Host "Registry key 'HKCU:\Software\ITTEmadadel' created successfully."
-#   } else {
-#     #Write-Host "Registry key 'HKCU:\Software\ITTEmadadel' already exists."
-# }
