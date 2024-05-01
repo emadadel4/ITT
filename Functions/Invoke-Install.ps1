@@ -51,6 +51,7 @@ function Invoke-Install{
         return
     }
   
+    $sync.cat = $sync['window'].FindName('cat').SelectedIndex = 0
     $choco += Get-SelectedApps
 
     if(Get-SelectedApps -ne $null)
@@ -67,13 +68,13 @@ function Invoke-Install{
                 if($msg -eq "Yes")
                 {
 
+                    
                     $chocoTempPath = Join-Path $env:TEMP "chocolatey"
 
                     if (Test-Path $chocoTempPath) {
                         Remove-Item -Path $chocoTempPath -Force -Recurse
                         Write-Output "Clear Chocolatey temp folder"
                     }
-
 
                     $sync.ProcessRunning = $true
 
@@ -87,7 +88,7 @@ function Invoke-Install{
                     })
 
                     Write-Host "Installing the following programs $choco "
-                    Start-Process -FilePath "choco" -ArgumentList "install $choco -y --force --ignore-checksums" -NoNewWindow -Wait
+                    #Start-Process -FilePath "choco" -ArgumentList "install $choco -y --force --ignore-checksums" -NoNewWindow -Wait
                     [System.Windows.MessageBox]::Show("تم التثبيت بنجاح", "ITT @emadadel4", "OK", "Information")
 
                     $sync.AppsListView.Dispatcher.Invoke([Action]{
@@ -111,13 +112,17 @@ function Invoke-Install{
                     $sync.installBtn.Dispatcher.Invoke([Action]{
                         $sync.installBtn.Content = "تثبيت"
                     })
+
+                    Clear-Host
 Write-Host "
-___ _____ _____   _____ __  __    _    ____    _    ____  _____ _    _  _   
-|_ _|_   _|_   _| | ____|  \/  |  / \  |  _ \  / \  |  _ \| ____| |  | || |  
-| |  | |   | |   |  _| | |\/| | / _ \ | | | |/ _ \ | | | |  _| | |  | || |_ 
-| |  | |   | |   | |___| |  | |/ ___ \| |_| / ___ \| |_| | |___| |__|__   _|
-|___| |_|   |_|   |_____|_|  |_/_/   \_\____/_/   \_\____/|_____|_____| |_|  
-Everything work fine You Good to go
++------------------------------------------------------------------------------+
+|   ___ _____ _____   _____ __  __    _    ____       _    ____  _____ _       |
+|  |_ _|_   _|_   _| | ____|  \/  |  / \  |  _ \     / \  |  _ \| ____| |      |
+|   | |  | |   | |   |  _| | |\/| | / _ \ | | | |   / _ \ | | | |  _| | |      |
+|   | |  | |   | |   | |___| |  | |/ ___ \| |_| |  / ___ \| |_| | |___| |___   |
+|  |___| |_|   |_|   |_____|_|  |_/_/   \_\____/  /_/   \_\____/|_____|_____|  |
+| Everything work fine You Good to go                                          |
++------------------------------------------------------------------------------+
 " -ForegroundColor green
                    
                 }
@@ -199,12 +204,14 @@ function Invoke-ApplyTweaks() {
 
                     Clear-Host
 Write-Host "
-___ _____ _____   _____ __  __    _    ____    _    ____  _____ _    _  _   
-|_ _|_   _|_   _| | ____|  \/  |  / \  |  _ \  / \  |  _ \| ____| |  | || |  
-| |  | |   | |   |  _| | |\/| | / _ \ | | | |/ _ \ | | | |  _| | |  | || |_ 
-| |  | |   | |   | |___| |  | |/ ___ \| |_| / ___ \| |_| | |___| |__|__   _|
-|___| |_|   |_|   |_____|_|  |_/_/   \_\____/_/   \_\____/|_____|_____| |_|  
-Everything work fine You Good to go
++------------------------------------------------------------------------------+
+|   ___ _____ _____   _____ __  __    _    ____       _    ____  _____ _       |
+|  |_ _|_   _|_   _| | ____|  \/  |  / \  |  _ \     / \  |  _ \| ____| |      |
+|   | |  | |   | |   |  _| | |\/| | / _ \ | | | |   / _ \ | | | |  _| | |      |
+|   | |  | |   | |   | |___| |  | |/ ___ \| |_| |  / ___ \| |_| | |___| |___   |
+|  |___| |_|   |_|   |_____|_|  |_/_/   \_\____/  /_/   \_\____/|_____|_____|  |
+| Everything work fine You Good to go                                          |
++------------------------------------------------------------------------------+
 " -ForegroundColor green
 
                 }
