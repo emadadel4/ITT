@@ -529,6 +529,7 @@ function StopAllRunspace {
     $sync.runspace.Close()
     $script:powershell.Stop()
     StopMusic
+    $newProcess.exit
     Write-Host "Bye see you soon. :)" 
 }
 
@@ -762,7 +763,7 @@ $sync.configs = @{}
 $sync.ProcessRunning = $false
 $sync.isDarkMode
 $sync.mediaPlayer = New-Object -ComObject WMPlayer.OCX
-
+$newProcess = new-object System.Diagnostics.ProcessStartInfo "PowerShell";
 $currentPid = [System.Security.Principal.WindowsIdentity]::GetCurrent()
 $principal = new-object System.Security.Principal.WindowsPrincipal($currentPid)
 $adminRole=[System.Security.Principal.WindowsBuiltInRole]::Administrator
@@ -772,11 +773,9 @@ $adminRole=[System.Security.Principal.WindowsBuiltInRole]::Administrator
 if ($principal.IsInRole($adminRole))
 {
     $Host.UI.RawUI.WindowTitle = $myInvocation.MyCommand.Definition + "(Admin)"
-    clear-host
 }
 else
 {
-    $newProcess = new-object System.Diagnostics.ProcessStartInfo "PowerShell";
     $newProcess.Arguments = $myInvocation.MyCommand.Definition;
     $newProcess.Verb = "runas";
     $newProcess.WindowStyle = "Maximized"

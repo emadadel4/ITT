@@ -32,6 +32,7 @@ function StopAllRunspace {
     $sync.runspace.Close()
     $script:powershell.Stop()
     StopMusic
+    $newProcess.exit
     Write-Host "Bye see you soon. :)" 
 }
 
