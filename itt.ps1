@@ -646,8 +646,6 @@ function PlayMusic {
     }
 }
 
-#PlayMusic | out-null
-
 function StopMusic {
 
     $sync.mediaPlayer.controls.stop()
@@ -3007,7 +3005,13 @@ $sync.TweeaksListView.add_LostFocus({
 
 
 CheckChoco
-GetQuotes *> $null
+GetQuotes *> $null 
+PlayMusic *> $null 
+
+$sync["window"].add_Closing({
+
+    StopAllRunspace
+})
 
 $sync["window"].ShowDialog() | out-null
 
