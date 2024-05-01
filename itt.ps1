@@ -13,77 +13,6 @@
 # ###################################################################################
 
 #===========================================================================
-#region Begin Start
-#===========================================================================
-
-
-<#
-.Dev
-    developer      : Emad Adel @emadadel4
-    GitHub         : https://github.com/emadadel4
-    Telegram       : https://t.me/emadadel4
-    Website        : https://eprojects.orgfree.com/
-    Version        : 2024/05-May/01-Wed
-#>
-
-if (!(Test-Path -Path $ENV:TEMP)) {
-    New-Item -ItemType Directory -Force -Path $ENV:TEMP
-}
-
-# Load DLLs
-Add-Type -AssemblyName PresentationFramework
-Add-Type -AssemblyName PresentationCore
-Add-Type -AssemblyName PresentationFramework.Aero
-
-
-# Variable to sync between runspaces
-$sync = [Hashtable]::Synchronized(@{})
-$sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "2024/05-May/01-Wed"
-$sync.github =   "https://github.com/emadadel4"
-$sync.telegram = "https://t.me/emadadel4"
-$sync.website =  "https://eprojects.orgfree.com"
-$sync.developer =   "Emad Adel @emadadel4"
-$sync.registryPath = "HKCU:\Software\ITTEmadadel"
-$sync.configs = @{}
-$sync.ProcessRunning = $false
-$sync.isDarkMode = (Get-ItemProperty -Path "HKCU:\Software\ITTEmadadel" -Name "DarkMode").DarkMode
-$sync.mediaPlayer = New-Object -ComObject WMPlayer.OCX
-
-$currentPid = [System.Security.Principal.WindowsIdentity]::GetCurrent()
-$principal = new-object System.Security.Principal.WindowsPrincipal($currentPid)
-$adminRole=[System.Security.Principal.WindowsBuiltInRole]::Administrator
-
-
-
-if ($principal.IsInRole($adminRole))
-{
-    $Host.UI.RawUI.WindowTitle = $myInvocation.MyCommand.Definition + "(Admin)"
-    clear-host
-}
-else
-{
-    $newProcess = new-object System.Diagnostics.ProcessStartInfo "PowerShell";
-    $newProcess.Arguments = $myInvocation.MyCommand.Definition;
-    $newProcess.Verb = "runas";
-    [System.Diagnostics.Process]::Start($newProcess);
-    break
-}
-
-# Check if the registry key exists
-# if (-not (Test-Path $sync.registryPath)) {
-#     # If it doesn't exist, create it
-#     New-Item -Path "HKCU:\Software\ITTEmadadel" -Force
-#     Write-Host "Registry key 'HKCU:\Software\ITTEmadadel' created successfully."
-#   } else {
-#     #Write-Host "Registry key 'HKCU:\Software\ITTEmadadel' already exists."
-# }
-
-#===========================================================================
-#endregion End Start
-#===========================================================================
-
-#===========================================================================
 #region Begin Functions
 #===========================================================================
 
@@ -657,6 +586,141 @@ function Update-Theme ($theme, $mode) {
 #endregion
 
 
+
+function GetQuotes {
+
+    Invoke-RunspaceWithScriptBlock -ScriptBlock {
+
+
+        # Define the path to your JSON file
+        $jsonFilePath = $sync.configs.Quotes
+
+        # Function to shuffle an array
+        function ShuffleArray {
+            param (
+                [array]$Array
+            )
+            $count = $Array.Count
+            for ($i = $count - 1; $i -ge 0; $i--) {
+                $randomIndex = Get-Random -Minimum 0 -Maximum $count
+                $temp = $Array[$i]
+                $Array[$i] = $Array[$randomIndex]
+                $Array[$randomIndex] = $temp
+            }
+            return $Array
+        }
+
+        # Function to get names from the JSON file
+        function Get-NamesFromJson {
+            $jsonContent =  $jsonFilePath 
+            return $jsonContent.Q
+        }
+
+        # Get shuffled names
+        $shuffledNames = ShuffleArray -Array (Get-NamesFromJson)
+
+        # Loop forever and print shuffled names
+        while ($true) {
+            foreach ($name in $shuffledNames) {
+
+                $sync.Quotes.Dispatcher.Invoke([Action]{
+                    $sync.Quotes.Text = "`".$name`""
+                })
+
+                # Adjust the sleep time as needed
+                Start-Sleep -Seconds 15  
+            }
+        }
+    }
+}
+
+
+function ChangeTap() {
+    
+
+    if($sync['window'].FindName('apps').IsSelected)
+    {
+        $sync['window'].FindName('installBtn').Visibility = "Visible"
+        $sync['window'].FindName('applyBtn').Visibility = "Hidden"
+    }
+
+    if($sync['window'].FindName('tweeksTab').IsSelected)
+    {
+        $sync['window'].FindName('applyBtn').Visibility = "Visible"
+        $sync['window'].FindName('installBtn').Visibility = "Hidden"
+    }
+}
+#===========================================================================
+#endregion End Functions
+#===========================================================================
+
+#===========================================================================
+#region Begin Start
+#===========================================================================
+
+
+<#
+.Dev
+    developer      : Emad Adel @emadadel4
+    GitHub         : https://github.com/emadadel4
+    Telegram       : https://t.me/emadadel4
+    Website        : https://eprojects.orgfree.com/
+    Version        : 2024/05-May/01-Wed
+#>
+
+if (!(Test-Path -Path $ENV:TEMP)) {
+    New-Item -ItemType Directory -Force -Path $ENV:TEMP
+}
+
+# Load DLLs
+Add-Type -AssemblyName PresentationFramework
+Add-Type -AssemblyName PresentationCore
+Add-Type -AssemblyName PresentationFramework.Aero
+
+
+# Variable to sync between runspaces
+$sync = [Hashtable]::Synchronized(@{})
+$sync.PSScriptRoot = $PSScriptRoot
+$sync.version = "2024/05-May/01-Wed"
+$sync.github =   "https://github.com/emadadel4"
+$sync.telegram = "https://t.me/emadadel4"
+$sync.website =  "https://eprojects.orgfree.com"
+$sync.developer =   "Emad Adel @emadadel4"
+$sync.registryPath = "HKCU:\Software\ITTEmadadel"
+$sync.configs = @{}
+$sync.ProcessRunning = $false
+$sync.isDarkMode = (Get-ItemProperty -Path "HKCU:\Software\ITTEmadadel" -Name "DarkMode").DarkMode
+$sync.mediaPlayer = New-Object -ComObject WMPlayer.OCX
+
+$currentPid = [System.Security.Principal.WindowsIdentity]::GetCurrent()
+$principal = new-object System.Security.Principal.WindowsPrincipal($currentPid)
+$adminRole=[System.Security.Principal.WindowsBuiltInRole]::Administrator
+
+
+
+if ($principal.IsInRole($adminRole))
+{
+    $Host.UI.RawUI.WindowTitle = $myInvocation.MyCommand.Definition + "(Admin)"
+    clear-host
+}
+else
+{
+    $newProcess = new-object System.Diagnostics.ProcessStartInfo "PowerShell";
+    $newProcess.Arguments = $myInvocation.MyCommand.Definition;
+    $newProcess.Verb = "runas";
+    [System.Diagnostics.Process]::Start($newProcess);
+    break
+}
+
+# Check if the registry key exists
+# if (-not (Test-Path $sync.registryPath)) {
+#     # If it doesn't exist, create it
+#     New-Item -Path "HKCU:\Software\ITTEmadadel" -Force
+#     Write-Host "Registry key 'HKCU:\Software\ITTEmadadel' created successfully."
+#   } else {
+#     #Write-Host "Registry key 'HKCU:\Software\ITTEmadadel' already exists."
+# }
+
 #region PlayMusic Functions
 function PlayMusic {
 
@@ -728,76 +792,12 @@ function StopMusic {
     $sync.runspace.Close()
 }
 
-PlayMusic *> $null
 
 #endregion
 
 
-function GetQuotes {
-
-    Invoke-RunspaceWithScriptBlock -ScriptBlock {
-
-
-        # Define the path to your JSON file
-        $jsonFilePath = $sync.configs.Quotes
-
-        # Function to shuffle an array
-        function ShuffleArray {
-            param (
-                [array]$Array
-            )
-            $count = $Array.Count
-            for ($i = $count - 1; $i -ge 0; $i--) {
-                $randomIndex = Get-Random -Minimum 0 -Maximum $count
-                $temp = $Array[$i]
-                $Array[$i] = $Array[$randomIndex]
-                $Array[$randomIndex] = $temp
-            }
-            return $Array
-        }
-
-        # Function to get names from the JSON file
-        function Get-NamesFromJson {
-            $jsonContent =  $jsonFilePath 
-            return $jsonContent.Q
-        }
-
-        # Get shuffled names
-        $shuffledNames = ShuffleArray -Array (Get-NamesFromJson)
-
-        # Loop forever and print shuffled names
-        while ($true) {
-            foreach ($name in $shuffledNames) {
-
-                $sync.Quotes.Dispatcher.Invoke([Action]{
-                    $sync.Quotes.Text = "`".$name`""
-                })
-
-                # Adjust the sleep time as needed
-                Start-Sleep -Seconds 15  
-            }
-        }
-    }
-}
-
-
-function ChangeTap() {
-    
-
-    if($sync['window'].FindName('apps').IsSelected)
-    {
-        $sync['window'].FindName('installBtn').Visibility = "Visible"
-        $sync['window'].FindName('applyBtn').Visibility = "Hidden"
-    }
-
-    if($sync['window'].FindName('tweeksTab').IsSelected)
-    {
-        $sync['window'].FindName('applyBtn').Visibility = "Visible"
-        $sync['window'].FindName('installBtn').Visibility = "Hidden"
-    }
-}
 #===========================================================================
-#endregion End Functions
+#endregion End Start
 #===========================================================================
 
 #===========================================================================
