@@ -66,6 +66,7 @@
 <!--Menu Style-->
   <Style TargetType="Menu">
       <Setter Property="Background" Value="{DynamicResource BGColor}"/>
+      <Setter Property="Margin" Value="15"/>
   </Style>
 <!--End Menu Style-->
 
@@ -78,10 +79,11 @@
           <Setter.Value>
               <ControlTemplate TargetType="MenuItem">
                   <Border Background="{DynamicResource BGColor}"
-                          BorderThickness="0"> <!-- Set BorderThickness to 0 -->
+                    BorderBrush="WhiteSmoke"
+                    BorderThickness="0"> <!-- Set BorderThickness to 0 -->
                       <Grid>
                           <ContentPresenter Content="{TemplateBinding Header}"
-                                          Margin="13"/>
+                                          Margin="5"/>
                           <Popup IsOpen="{Binding IsSubmenuOpen, RelativeSource={RelativeSource TemplatedParent}}"
                               AllowsTransparency="True"
                               Focusable="True"
@@ -93,12 +95,14 @@
                                       <ItemsPresenter Margin="0"/>
                                   </ScrollViewer>
                               </Border>
+                        
                           </Popup>
                       </Grid>
                   </Border>
               </ControlTemplate>
           </Setter.Value>
       </Setter>
+
   </Style>
 <!--End MenuItem Style-->
 
