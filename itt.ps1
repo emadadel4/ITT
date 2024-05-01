@@ -647,7 +647,7 @@ function PlayMusic {
     }
 }
 
-PlayMusic *> $null
+PlayMusic | out-null
 
 function StopMusic {
 
