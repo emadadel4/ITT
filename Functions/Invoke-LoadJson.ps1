@@ -73,7 +73,7 @@ function SaveItemsToJson
             $items | ConvertTo-Json | Out-File -FilePath $saveFileDialog.FileName -Force
             Write-Host "JSON file saved: $($saveFileDialog.FileName)"
 
-            [System.Windows.MessageBox]::Show("تم حفظ البرامج", "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
+            [System.Windows.MessageBox]::Show("Saved", "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
 
         }
         
@@ -88,6 +88,6 @@ function SaveItemsToJson
     }
     else
     {
-        [System.Windows.MessageBox]::Show("أختار برنامج واحد على الاقل", "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
+        [System.Windows.MessageBox]::Show("Choose at least one program", "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
     }
 }
