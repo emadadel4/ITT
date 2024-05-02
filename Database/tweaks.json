@@ -112,7 +112,7 @@
     "category": "tweak"
   },
   {
-    "name": "Disable Cortana",
+    "name": "Remove Cortana",
     "description": "This tweak aims to disable Cortana by modifying the registry settings related to Windows Search. It checks if the specified registry path exists, and if so, it sets the AllowCortana value to 0, effectively disabling Cortana's functionality.",
     "repo": "null",
     "script": "Get-AppxPackage -AllUsers -PackageTypeFilter Bundle -name \"*Microsoft.549981*\" | Remove-AppxPackage",
