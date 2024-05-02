@@ -56,7 +56,7 @@
     "category": "tweak"
   },
   {
-    "name": " Reset the TCP/IP Stack",
+    "name": "Reset the TCP/IP Stack",
     "description": "If you have an internet problem, Reset network configuration",
     "repo": "null",
     "script": "netsh int ip reset;",
@@ -83,7 +83,7 @@
     "name": "Disable suggestions on start menu",
     "description": "Disables suggestions on start menu",
     "repo": "null",
-    "script": "if (Test-Path 'HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager') { Set-ItemProperty 'HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager' -Name SystemPaneSuggestionsEnabled -Value 0 -Verbose }",
+    "script": "New-Item -Path 'HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\CloudContent' -Force | New-ItemProperty -Name 'DisableWindowsConsumerFeatures' -Value 1 -PropertyType DWORD -Force",
     "check": "true",
     "category": "tweak"
   },
@@ -91,7 +91,7 @@
     "name": "Turns off Data Collection",
     "description": "This tweak disables data collection on your Windows system by modifying the registry setting for telemetry. It checks if the specified registry path exists and if so, sets the AllowTelemetry value to 0, effectively turning off telemetry.",
     "repo": "null",
-    "script": "If (Test-Path 'HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\DataCollection') { Set-ItemProperty 'HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\DataCollection' -Name AllowTelemetry -Value 0 -Verbose }",
+    "script": "New-ItemProperty -Path 'HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\DataCollection' -Name 'AllowTelemetry' -Value 0 -PropertyType DWORD -Force | Out-Null",
     "check": "false",
     "category": "tweak"
   },
@@ -115,7 +115,7 @@
     "name": "Disable Cortana",
     "description": "This tweak aims to disable Cortana by modifying the registry settings related to Windows Search. It checks if the specified registry path exists, and if so, it sets the AllowCortana value to 0, effectively disabling Cortana's functionality.",
     "repo": "null",
-    "script": "If (Test-Path 'HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\Windows Search') { Set-ItemProperty 'HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\Windows Search' -Name AllowCortana -Value 0 -Verbose }",
+    "script": "Get-AppxPackage -AllUsers -PackageTypeFilter Bundle -name \"*Microsoft.549981*\" | Remove-AppxPackage",
     "check": "true",
     "category": "tweak"
   }
