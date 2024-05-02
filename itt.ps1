@@ -1,4 +1,4 @@
-# ###################################################################################
+﻿# ###################################################################################
 # #                                                                                 #
 # #   ___ _____ _____   _____ __  __    _    ____    _    ____  _____ _    _  _     #
 # #  |_ _|_   _|_   _| | ____|  \/  |  / \  |  _ \  / \  |  _ \| ____| |  | || |    #
@@ -2137,7 +2137,7 @@ $sync.configs.tweaks = '[
     "category": "tweak"
   },
   {
-    "name": " Reset the TCP/IP Stack",
+    "name": "Reset the TCP/IP Stack",
     "description": "If you have an internet problem, Reset network configuration",
     "repo": "null",
     "script": "netsh int ip reset;",
@@ -2164,7 +2164,7 @@ $sync.configs.tweaks = '[
     "name": "Disable suggestions on start menu",
     "description": "Disables suggestions on start menu",
     "repo": "null",
-    "script": "if (Test-Path ''HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager'') { Set-ItemProperty ''HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager'' -Name SystemPaneSuggestionsEnabled -Value 0 -Verbose }",
+    "script": "New-Item -Path ''HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\CloudContent'' -Force | New-ItemProperty -Name ''DisableWindowsConsumerFeatures'' -Value 1 -PropertyType DWORD -Force",
     "check": "true",
     "category": "tweak"
   },
@@ -2172,7 +2172,7 @@ $sync.configs.tweaks = '[
     "name": "Turns off Data Collection",
     "description": "This tweak disables data collection on your Windows system by modifying the registry setting for telemetry. It checks if the specified registry path exists and if so, sets the AllowTelemetry value to 0, effectively turning off telemetry.",
     "repo": "null",
-    "script": "If (Test-Path ''HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\DataCollection'') { Set-ItemProperty ''HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\DataCollection'' -Name AllowTelemetry -Value 0 -Verbose }",
+    "script": "New-ItemProperty -Path ''HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\DataCollection'' -Name ''AllowTelemetry'' -Value 0 -PropertyType DWORD -Force | Out-Null",
     "check": "false",
     "category": "tweak"
   },
@@ -2196,7 +2196,7 @@ $sync.configs.tweaks = '[
     "name": "Disable Cortana",
     "description": "This tweak aims to disable Cortana by modifying the registry settings related to Windows Search. It checks if the specified registry path exists, and if so, it sets the AllowCortana value to 0, effectively disabling Cortana''s functionality.",
     "repo": "null",
-    "script": "If (Test-Path ''HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\Windows Search'') { Set-ItemProperty ''HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\Windows Search'' -Name AllowCortana -Value 0 -Verbose }",
+    "script": "Get-AppxPackage -AllUsers -PackageTypeFilter Bundle -name \"*Microsoft.549981*\" | Remove-AppxPackage",
     "check": "true",
     "category": "tweak"
   }
@@ -2569,7 +2569,7 @@ $inputXML = '
                 <TabItem Header="Tweeaks" x:Name="tweeksTab" Padding="0" BorderBrush="{x:Null}" Background="{x:Null}">
                     <TabItem.Content>
                         <ListView Name="tweaks"  Margin="0" ScrollViewer.VerticalScrollBarVisibility="Auto" BorderBrush="{x:Null}" Background="{x:Null}">
-                                <CheckBox Content="System File Checker" />    <CheckBox Content="Run Disk cleanup" />    <CheckBox Content="Restore All Windows Services to Default" />    <CheckBox Content="Remove Folder Shortcuts From Windows'' File Explorer" />    <CheckBox Content="Fix Stutter/Lag in Games" />    <CheckBox Content="Remove Unnecessary Windows 10/11 Apps" />    <CheckBox Content="Enable the Ultimate Performance Power Plan" />    <CheckBox Content=" Reset the TCP/IP Stack" />    <CheckBox Content="Setup Auto login" />    <CheckBox Content="Disable People icon on Taskbar" />    <CheckBox Content="Disable suggestions on start menu" />    <CheckBox Content="Turns off Data Collection" />    <CheckBox Content="Prevents bloatware applications from returning" />    <CheckBox Content="Stops the Windows Feedback Experience" />    <CheckBox Content="Disable Cortana" />
+                                <CheckBox Content="System File Checker" />    <CheckBox Content="Run Disk cleanup" />    <CheckBox Content="Restore All Windows Services to Default" />    <CheckBox Content="Remove Folder Shortcuts From Windows'' File Explorer" />    <CheckBox Content="Fix Stutter/Lag in Games" />    <CheckBox Content="Remove Unnecessary Windows 10/11 Apps" />    <CheckBox Content="Enable the Ultimate Performance Power Plan" />    <CheckBox Content="Reset the TCP/IP Stack" />    <CheckBox Content="Setup Auto login" />    <CheckBox Content="Disable People icon on Taskbar" />    <CheckBox Content="Disable suggestions on start menu" />    <CheckBox Content="Turns off Data Collection" />    <CheckBox Content="Prevents bloatware applications from returning" />    <CheckBox Content="Stops the Windows Feedback Experience" />    <CheckBox Content="Disable Cortana" />
                         </ListView>
                     </TabItem.Content>
                 </TabItem>
