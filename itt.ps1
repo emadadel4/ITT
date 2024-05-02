@@ -2092,7 +2092,7 @@ $sync.configs.tweaks = '[
     "name": "Run Disk cleanup",
     "description": "Clean temporary files that are not necessary",
     "repo": "null",
-    "script": "cleanmgr.exe /d C: /VERYLOWDISK Dism.exe /online /Cleanup-Image /StartComponentCleanup /ResetBase;",
+    "script": "cleanmgr.exe /d C: /VERYLOWDISK /sageset:1 /sagerun:1 Dism.exe /online /Cleanup-Image /StartComponentCleanup /ResetBase;",
     "check": "true",
     "category": "tweak"
   },
