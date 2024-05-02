@@ -1,4 +1,4 @@
-﻿# ###################################################################################
+# ###################################################################################
 # #                                                                                 #
 # #   ___ _____ _____   _____ __  __    _    ____    _    ____  _____ _    _  _     #
 # #  |_ _|_   _|_   _| | ____|  \/  |  / \  |  _ \  / \  |  _ \| ____| |  | || |    #
@@ -2193,7 +2193,7 @@ $sync.configs.tweaks = '[
     "category": "tweak"
   },
   {
-    "name": "Disable Cortana",
+    "name": "Remove Cortana",
     "description": "This tweak aims to disable Cortana by modifying the registry settings related to Windows Search. It checks if the specified registry path exists, and if so, it sets the AllowCortana value to 0, effectively disabling Cortana''s functionality.",
     "repo": "null",
     "script": "Get-AppxPackage -AllUsers -PackageTypeFilter Bundle -name \"*Microsoft.549981*\" | Remove-AppxPackage",
@@ -2569,7 +2569,7 @@ $inputXML = '
                 <TabItem Header="Tweeaks" x:Name="tweeksTab" Padding="0" BorderBrush="{x:Null}" Background="{x:Null}">
                     <TabItem.Content>
                         <ListView Name="tweaks"  Margin="0" ScrollViewer.VerticalScrollBarVisibility="Auto" BorderBrush="{x:Null}" Background="{x:Null}">
-                                <CheckBox Content="System File Checker" />    <CheckBox Content="Run Disk cleanup" />    <CheckBox Content="Restore All Windows Services to Default" />    <CheckBox Content="Remove Folder Shortcuts From Windows'' File Explorer" />    <CheckBox Content="Fix Stutter/Lag in Games" />    <CheckBox Content="Remove Unnecessary Windows 10/11 Apps" />    <CheckBox Content="Enable the Ultimate Performance Power Plan" />    <CheckBox Content="Reset the TCP/IP Stack" />    <CheckBox Content="Setup Auto login" />    <CheckBox Content="Disable People icon on Taskbar" />    <CheckBox Content="Disable suggestions on start menu" />    <CheckBox Content="Turns off Data Collection" />    <CheckBox Content="Prevents bloatware applications from returning" />    <CheckBox Content="Stops the Windows Feedback Experience" />    <CheckBox Content="Disable Cortana" />
+                                <CheckBox Content="System File Checker" />    <CheckBox Content="Run Disk cleanup" />    <CheckBox Content="Restore All Windows Services to Default" />    <CheckBox Content="Remove Folder Shortcuts From Windows'' File Explorer" />    <CheckBox Content="Fix Stutter/Lag in Games" />    <CheckBox Content="Remove Unnecessary Windows 10/11 Apps" />    <CheckBox Content="Enable the Ultimate Performance Power Plan" />    <CheckBox Content="Reset the TCP/IP Stack" />    <CheckBox Content="Setup Auto login" />    <CheckBox Content="Disable People icon on Taskbar" />    <CheckBox Content="Disable suggestions on start menu" />    <CheckBox Content="Turns off Data Collection" />    <CheckBox Content="Prevents bloatware applications from returning" />    <CheckBox Content="Stops the Windows Feedback Experience" />    <CheckBox Content="Remove Cortana" />
                         </ListView>
                     </TabItem.Content>
                 </TabItem>
