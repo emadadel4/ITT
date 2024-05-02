@@ -5,7 +5,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         x:Name="Window" Title="IT Tools @emadadel4" WindowStartupLocation = "CenterScreen" 
         Background="{DynamicResource BGColor}"
-        Height="600" Width="700" MinWidth="755" MinHeight="500" ShowInTaskbar = "True" Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/icon.ico">
+        Height="600"  MinHeight="600"  Width="799" MinWidth="799" ShowInTaskbar = "True" Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/icon.ico">
     
         <Window.Resources>
 
@@ -35,7 +35,7 @@
                     <Menu Grid.Row="0" Grid.ColumnSpan="3" Background="Transparent" BorderBrush="Transparent" BorderThickness="0">
                         
                         
-                        <MenuItem Header="إدارة الجهاز" BorderBrush="Transparent" BorderThickness="0">
+                        <MenuItem Header="Computer Managment" BorderBrush="Transparent" BorderThickness="0">
                             <MenuItem Name="sysinfo" Header="System Info"/>
                             <MenuItem Name="poweroption" Header="Power Options"/>
                             <MenuItem Name="deviceManager" Header="Device Manager"/>
@@ -46,24 +46,23 @@
                             <MenuItem Name="diskmgmt" Header="Disk Managment"/>
                         </MenuItem>
 
-                        <MenuItem Header="التفضيلات" BorderBrush="Transparent" BorderThickness="0">
-                            <MenuItem Name="save" Header="حفظ البرامج المختارة"/>
-                            <MenuItem Name="load" Header="تحميل البرامج المختارة مسبقا"/>
+                        <MenuItem Header="Preferences" BorderBrush="Transparent" BorderThickness="0">
+                            <MenuItem Name="save" Header="Save Selected apps"/>
+                            <MenuItem Name="load" Header="Load Apps"/>
 
-                            <MenuItem Header="الوضع الليلي">
-                                <MenuItem Name="darkOn" Header="تفعيل"/>
-                                <MenuItem Name="darkOff" Header="تعطيل"/>
+                            <MenuItem Header="Dark Mode">
+                                <MenuItem Name="darkOn" Header="ON"/>
+                                <MenuItem Name="darkOff" Header="OFF"/>
                             </MenuItem>
-
                         </MenuItem>
 
 
-                        <MenuItem Header="روابط خارجية" BorderBrush="Transparent" BorderThickness="0">
+                        <MenuItem Header="Mirror Links" BorderBrush="Transparent" BorderThickness="0">
                             <MenuItem Name="mas" Header="Microsoft Activation Scripts (MAS)"/>
                             <MenuItem Name="idm" Header="IDM Activation"/>
                         </MenuItem>
                         
-                        <MenuItem Name="dev" Header="المطور" BorderBrush="Transparent" BorderThickness="1"/>
+                        <MenuItem Name="dev" Header="About" BorderBrush="Transparent" BorderThickness="1"/>
 
                     </Menu>
 
@@ -119,7 +118,7 @@
                                 />
 
                                 <TextBlock IsHitTestVisible="False" 
-                                Text="بحث"
+                                Text="Search"
                                 VerticalAlignment="Center" 
                                 HorizontalAlignment="Left"
                                 Margin="16,0,0,0"
@@ -164,7 +163,7 @@
                     <!--Install Button-->
                         <Button
                         Name="installBtn"
-                        Content="تثبيت"
+                        Content="Install"
                         FontSize="15"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Bottom"
@@ -174,7 +173,7 @@
                     <!--Apply Button-->
                         <Button
                         Name="applyBtn"
-                        Content="تطبيق الامر"
+                        Content="Apply"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Bottom"
                         FontSize="15"

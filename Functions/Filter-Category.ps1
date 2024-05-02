@@ -2,7 +2,7 @@
 function Search{
     
     # Retrieves the search input, converts it to lowercase, and filters the list based on the input
-    $filter = $sync.searchInput.Text.ToLower()
+    $filter = $sync.searchInput.Text.ToLower() -replace '[^\p{L}\p{N}]', ''
     $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync['window'].FindName('list').Items)
     $collectionView.Filter = {
         param($item)

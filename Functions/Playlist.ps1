@@ -59,8 +59,6 @@ function PlayMusic {
     }
 }
 
-PlayMusic | out-null
-
 function StopMusic {
 
     $sync.mediaPlayer.controls.stop()

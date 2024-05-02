@@ -46,11 +46,13 @@ function Invoke-Install{
 
     if($sync.ProcessRunning)
     {
-        $msg = "...يوجد عملية جإرية الان يرجى الأنتظار"
+        $msg = "Please wait for the software to be installed."
         [System.Windows.MessageBox]::Show($msg, "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
         return
     }
   
+    $sync['window'].FindName('cat').SelectedIndex = 0
+    ClearFilter
     $choco += Get-SelectedApps
 
     if(Get-SelectedApps -ne $null)
@@ -62,11 +64,12 @@ function Invoke-Install{
             
             try{
 
-                $msg = [System.Windows.MessageBox]::Show("هل تريد تثبيت البرامج المحددة", "ITT @emadadel", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)
+                $msg = [System.Windows.MessageBox]::Show("Do you want to install selected apps", "ITT @emadadel", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)
 
                 if($msg -eq "Yes")
                 {
 
+                    
                     $chocoTempPath = Join-Path $env:TEMP "chocolatey"
 
                     if (Test-Path $chocoTempPath) {
@@ -74,16 +77,15 @@ function Invoke-Install{
                         Write-Output "Clear Chocolatey temp folder"
                     }
 
-
                     $sync.ProcessRunning = $true
 
                     $sync.installBtn.Dispatcher.Invoke([Action]{
-                        $sync.installBtn.Content = "...جإري التثبيت"
+                        $sync.installBtn.Content = "Installing..."
                     })
 
                    
                     $sync.Description.Dispatcher.Invoke([Action]{
-                        $sync.Description.Text = "...جإري التحميل و التثبيت"
+                        $sync.Description.Text = "Downloading and Installing..."
                     })
 
                     Write-Host "Installing the following programs $choco "
@@ -99,7 +101,7 @@ function Invoke-Install{
 
 
                     $sync.description.Dispatcher.Invoke([Action]{
-                        $sync.description.Text = "تم التثبيت بنجاح"
+                        $sync.description.Text = "Installed successfully"
                     })
 
                   
@@ -111,13 +113,17 @@ function Invoke-Install{
                     $sync.installBtn.Dispatcher.Invoke([Action]{
                         $sync.installBtn.Content = "تثبيت"
                     })
+
+                    Clear-Host
 Write-Host "
-___ _____ _____   _____ __  __    _    ____    _    ____  _____ _    _  _   
-|_ _|_   _|_   _| | ____|  \/  |  / \  |  _ \  / \  |  _ \| ____| |  | || |  
-| |  | |   | |   |  _| | |\/| | / _ \ | | | |/ _ \ | | | |  _| | |  | || |_ 
-| |  | |   | |   | |___| |  | |/ ___ \| |_| / ___ \| |_| | |___| |__|__   _|
-|___| |_|   |_|   |_____|_|  |_/_/   \_\____/_/   \_\____/|_____|_____| |_|  
-Everything work fine You Good to go
++------------------------------------------------------------------------------+
+|   ___ _____ _____   _____ __  __    _    ____       _    ____  _____ _       |
+|  |_ _|_   _|_   _| | ____|  \/  |  / \  |  _ \     / \  |  _ \| ____| |      |
+|   | |  | |   | |   |  _| | |\/| | / _ \ | | | |   / _ \ | | | |  _| | |      |
+|   | |  | |   | |   | |___| |  | |/ ___ \| |_| |  / ___ \| |_| | |___| |___   |
+|  |___| |_|   |_|   |_____|_|  |_/_/   \_\____/  /_/   \_\____/|_____|_____|  |
+| Everything work fine You Good to go                                          |
++------------------------------------------------------------------------------+
 " -ForegroundColor green
                    
                 }
@@ -143,7 +149,7 @@ Everything work fine You Good to go
     }
     else
     {
-        [System.Windows.MessageBox]::Show("أختار برنامج واحد على الاقل", "ITT @emadadel", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
+        [System.Windows.MessageBox]::Show("Choose at least one program", "ITT @emadadel", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
     }
 }
 
@@ -167,20 +173,20 @@ function Invoke-ApplyTweaks() {
             
             try{
 
-                $msg = [System.Windows.MessageBox]::Show("هل تريد تطبيق الإعدادات المختارة", "ITT @emadadel", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)
+                $msg = [System.Windows.MessageBox]::Show("Do you want to apply the selected settings", "ITT @emadadel", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)
 
                 if($msg -eq "Yes")
                 {
                     $sync.ProcessRunning = $true
 
                     $sync.description.Dispatcher.Invoke([Action]{
-                        $sync.description.Text = "جإري التطبيق"
+                        $sync.description.Text = "Applying"
                     })
 
                     #Write-Host "Applying tweeak(s) $tweeaks "
                     Start-Process -FilePath "powershell.exe" -ArgumentList "-Command `"$tweeaks`"" -NoNewWindow -Wait
                     Write-Host "The operation was successful."    
-                    [System.Windows.MessageBox]::Show("تمت العملية بنجاح", "ITT @emadadel4", "OK", "Information")
+                    [System.Windows.MessageBox]::Show("The operation was successful", "ITT @emadadel4", "OK", "Information")
 
                     $sync.TweeaksListView.Dispatcher.Invoke([Action]{
                         foreach ($item in $sync.TweeaksListView.Items)
@@ -191,7 +197,7 @@ function Invoke-ApplyTweaks() {
 
                  
                     $sync.description.Dispatcher.Invoke([Action]{
-                        $sync.description.Text = "تم التطبيق"
+                        $sync.description.Text = "Done"
                     })
 
                     Start-Sleep -Seconds 1
@@ -199,12 +205,14 @@ function Invoke-ApplyTweaks() {
 
                     Clear-Host
 Write-Host "
-___ _____ _____   _____ __  __    _    ____    _    ____  _____ _    _  _   
-|_ _|_   _|_   _| | ____|  \/  |  / \  |  _ \  / \  |  _ \| ____| |  | || |  
-| |  | |   | |   |  _| | |\/| | / _ \ | | | |/ _ \ | | | |  _| | |  | || |_ 
-| |  | |   | |   | |___| |  | |/ ___ \| |_| / ___ \| |_| | |___| |__|__   _|
-|___| |_|   |_|   |_____|_|  |_/_/   \_\____/_/   \_\____/|_____|_____| |_|  
-Everything work fine You Good to go
++------------------------------------------------------------------------------+
+|   ___ _____ _____   _____ __  __    _    ____       _    ____  _____ _       |
+|  |_ _|_   _|_   _| | ____|  \/  |  / \  |  _ \     / \  |  _ \| ____| |      |
+|   | |  | |   | |   |  _| | |\/| | / _ \ | | | |   / _ \ | | | |  _| | |      |
+|   | |  | |   | |   | |___| |  | |/ ___ \| |_| |  / ___ \| |_| | |___| |___   |
+|  |___| |_|   |_|   |_____|_|  |_/_/   \_\____/  /_/   \_\____/|_____|_____|  |
+| Everything work fine You Good to go                                          |
++------------------------------------------------------------------------------+
 " -ForegroundColor green
 
                 }
@@ -227,7 +235,7 @@ Everything work fine You Good to go
     }
     else
     {
-        [System.Windows.MessageBox]::Show("أختار الأمر المراد تطبيقه", "ITT @emadadel", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
+        [System.Windows.MessageBox]::Show("Choose at least one" , "ITT @emadadel", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
     }
 }
 

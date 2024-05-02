@@ -26,7 +26,6 @@ function Invoke-Button {
         "network" {Start-Process ncpa.cpl $Button}
         "taskmgr" {Start-Process taskmgr.exe $Button}
         "diskmgmt" {Start-Process diskmgmt.msc $Button}
-        "window" { StopAllRunspace Write-Host "Bye see you soon. :)" $Button }
         "darkOn" { Switch-ToDarkMode $Button }
         "darkOff" { Switch-ToLightMode $Button }
     }
