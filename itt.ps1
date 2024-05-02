@@ -2132,7 +2132,7 @@ $sync.configs.tweaks = '[
     "name": "Enable the Ultimate Performance Power Plan",
     "description": "Enable the Ultimate Performance Power Plan",
     "repo": "https://github.com/emadadel4/WindowsTweaks",
-    "script": "powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61;",
+    "script": "powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61; Start-Process powercfg.cpl;",
     "fromUrl": "true",
     "category": "tweak"
   },
@@ -2156,7 +2156,7 @@ $sync.configs.tweaks = '[
     "name": "Disable People icon on Taskbar",
     "description": "Disables People on taskbar",
     "repo": "null",
-    "script": "If (Test-Path ''HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\\People'') { Set-ItemProperty ''HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\\People'' -Name PeopleBand -Value 0 -Verbose }",
+    "script": "Set-ItemProperty ''HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\\People'' -Name PeopleBand -Value 0 -Verbose",
     "check": "true",
     "category": "tweak"
   },
