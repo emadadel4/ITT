@@ -209,7 +209,7 @@ function Invoke-Install{
 
     if($sync.ProcessRunning)
     {
-        $msg = "...يوجد عملية جإرية الان يرجى الأنتظار"
+        $msg = "Please wait for the software to be installed."
         [System.Windows.MessageBox]::Show($msg, "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
         return
     }
@@ -227,7 +227,7 @@ function Invoke-Install{
             
             try{
 
-                $msg = [System.Windows.MessageBox]::Show("هل تريد تثبيت البرامج المحددة", "ITT @emadadel", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)
+                $msg = [System.Windows.MessageBox]::Show("Do you want to install selected apps", "ITT @emadadel", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)
 
                 if($msg -eq "Yes")
                 {
@@ -243,12 +243,12 @@ function Invoke-Install{
                     $sync.ProcessRunning = $true
 
                     $sync.installBtn.Dispatcher.Invoke([Action]{
-                        $sync.installBtn.Content = "...جإري التثبيت"
+                        $sync.installBtn.Content = "Installing..."
                     })
 
                    
                     $sync.Description.Dispatcher.Invoke([Action]{
-                        $sync.Description.Text = "...جإري التحميل و التثبيت"
+                        $sync.Description.Text = "Downloading and Installing..."
                     })
 
                     Write-Host "Installing the following programs $choco "
@@ -264,7 +264,7 @@ function Invoke-Install{
 
 
                     $sync.description.Dispatcher.Invoke([Action]{
-                        $sync.description.Text = "تم التثبيت بنجاح"
+                        $sync.description.Text = "Installed successfully"
                     })
 
                   
@@ -312,7 +312,7 @@ Write-Host "
     }
     else
     {
-        [System.Windows.MessageBox]::Show("أختار برنامج واحد على الاقل", "ITT @emadadel", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
+        [System.Windows.MessageBox]::Show("Choose at least one program", "ITT @emadadel", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
     }
 }
 
@@ -336,20 +336,20 @@ function Invoke-ApplyTweaks() {
             
             try{
 
-                $msg = [System.Windows.MessageBox]::Show("هل تريد تطبيق الإعدادات المختارة", "ITT @emadadel", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)
+                $msg = [System.Windows.MessageBox]::Show("Do you want to apply the selected settings", "ITT @emadadel", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)
 
                 if($msg -eq "Yes")
                 {
                     $sync.ProcessRunning = $true
 
                     $sync.description.Dispatcher.Invoke([Action]{
-                        $sync.description.Text = "جإري التطبيق"
+                        $sync.description.Text = "Applying"
                     })
 
                     #Write-Host "Applying tweeak(s) $tweeaks "
                     Start-Process -FilePath "powershell.exe" -ArgumentList "-Command `"$tweeaks`"" -NoNewWindow -Wait
                     Write-Host "The operation was successful."    
-                    [System.Windows.MessageBox]::Show("تمت العملية بنجاح", "ITT @emadadel4", "OK", "Information")
+                    [System.Windows.MessageBox]::Show("The operation was successful", "ITT @emadadel4", "OK", "Information")
 
                     $sync.TweeaksListView.Dispatcher.Invoke([Action]{
                         foreach ($item in $sync.TweeaksListView.Items)
@@ -360,7 +360,7 @@ function Invoke-ApplyTweaks() {
 
                  
                     $sync.description.Dispatcher.Invoke([Action]{
-                        $sync.description.Text = "تم التطبيق"
+                        $sync.description.Text = "Done"
                     })
 
                     Start-Sleep -Seconds 1
@@ -398,7 +398,7 @@ Write-Host "
     }
     else
     {
-        [System.Windows.MessageBox]::Show("أختار الأمر المراد تطبيقه", "ITT @emadadel", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
+        [System.Windows.MessageBox]::Show("Choose at least one" , "ITT @emadadel", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
     }
 }
 
@@ -2494,7 +2494,7 @@ $inputXML = '
                     <Menu Grid.Row="0" Grid.ColumnSpan="3" Background="Transparent" BorderBrush="Transparent" BorderThickness="0">
                         
                         
-                        <MenuItem Header="إدارة الجهاز" BorderBrush="Transparent" BorderThickness="0">
+                        <MenuItem Header="Computer Managment" BorderBrush="Transparent" BorderThickness="0">
                             <MenuItem Name="sysinfo" Header="System Info"/>
                             <MenuItem Name="poweroption" Header="Power Options"/>
                             <MenuItem Name="deviceManager" Header="Device Manager"/>
@@ -2505,24 +2505,23 @@ $inputXML = '
                             <MenuItem Name="diskmgmt" Header="Disk Managment"/>
                         </MenuItem>
 
-                        <MenuItem Header="التفضيلات" BorderBrush="Transparent" BorderThickness="0">
-                            <MenuItem Name="save" Header="حفظ البرامج المختارة"/>
-                            <MenuItem Name="load" Header="تحميل البرامج المختارة مسبقا"/>
+                        <MenuItem Header="Preferences" BorderBrush="Transparent" BorderThickness="0">
+                            <MenuItem Name="save" Header="Save Selected apps"/>
+                            <MenuItem Name="load" Header="Load Apps"/>
 
-                            <MenuItem Header="الوضع الليلي">
-                                <MenuItem Name="darkOn" Header="تفعيل"/>
-                                <MenuItem Name="darkOff" Header="تعطيل"/>
+                            <MenuItem Header="Dark Mode">
+                                <MenuItem Name="darkOn" Header="ON"/>
+                                <MenuItem Name="darkOff" Header="OFF"/>
                             </MenuItem>
-
                         </MenuItem>
 
 
-                        <MenuItem Header="روابط خارجية" BorderBrush="Transparent" BorderThickness="0">
+                        <MenuItem Header="Mirror Links" BorderBrush="Transparent" BorderThickness="0">
                             <MenuItem Name="mas" Header="Microsoft Activation Scripts (MAS)"/>
                             <MenuItem Name="idm" Header="IDM Activation"/>
                         </MenuItem>
                         
-                        <MenuItem Name="dev" Header="المطور" BorderBrush="Transparent" BorderThickness="1"/>
+                        <MenuItem Name="dev" Header="About" BorderBrush="Transparent" BorderThickness="1"/>
 
                     </Menu>
 
@@ -2560,14 +2559,14 @@ $inputXML = '
 
                 <!--TabControl-->
         <TabControl Name="taps" TabStripPlacement="Left" Margin="0, 10, 0, 10" Grid.Row="2"  BorderBrush="Transparent" Foreground="White" Background="Transparent">
-                <TabItem Header="برامج" Name="apps" BorderBrush="{x:Null}" Padding="0">
+                <TabItem Header="Apps" Name="apps" BorderBrush="{x:Null}" Padding="0">
                     <TabItem.Content>
                         <ListView Margin="0" ScrollViewer.VerticalScrollBarVisibility="Auto" Name="list" BorderBrush="{x:Null}" Background="{x:Null}">
                                 <CheckBox Content="Thorium" Tag="Browsers" />    <CheckBox Content="Firefox" Tag="Browsers" />    <CheckBox Content="Add block extension [Firefox]" Tag="Browsers" />    <CheckBox Content="Microsoft Edge" Tag="Browsers" />    <CheckBox Content="Google Chrome" Tag="Browsers" />    <CheckBox Content="uBlock Origin extension [Chrome]" Tag="Browsers" />    <CheckBox Content="Chromium" Tag="Browsers" />    <CheckBox Content="Brave" Tag="Browsers" />    <CheckBox Content="Tor Browser" Tag="Browsers" />    <CheckBox Content="Opera" Tag="Browsers" />    <CheckBox Content="Internet Download Manager" Tag="Browsers" />    <CheckBox Content="K-Lite Mega Codec Pack" Tag="Media" />    <CheckBox Content="PotPlayer" Tag="Media" />    <CheckBox Content="VLC" Tag="Media" />    <CheckBox Content="Kodi" Tag="Media" />    <CheckBox Content="Jellyfin" Tag="Media" />    <CheckBox Content="Winamp" Tag="Media" />    <CheckBox Content="Aimp" Tag="Media" />    <CheckBox Content="Spotify" Tag="Media" />    <CheckBox Content="FastStone Image Viewer" Tag="Imaging" />    <CheckBox Content="OpenOffice" Tag="Documents" />    <CheckBox Content="FoxitReader" Tag="Documents" />    <CheckBox Content="LibreOffice" Tag="Documents" />    <CheckBox Content="SumatraPDF" Tag="Documents" />    <CheckBox Content="WinRAR" Tag="Compression" />    <CheckBox Content="7-Zip" Tag="Compression" />    <CheckBox Content="PeaZip" Tag="Compression" />    <CheckBox Content="QQPlayer" Tag="Media" />    <CheckBox Content="Telegram Desktop" Tag="Communication" />    <CheckBox Content="Signal" Tag="Communication" />    <CheckBox Content="Meta Messenger" Tag="Communication" />    <CheckBox Content="Skype" Tag="Communication" />    <CheckBox Content="Zoom" Tag="Communication" />    <CheckBox Content="Microsoft Teams" Tag="Communication" />    <CheckBox Content="Discord" Tag="Communication" />    <CheckBox Content="TeamViewer" Tag="File Sharing" />    <CheckBox Content="GIMP" Tag="Imaging" />    <CheckBox Content="DirectX" Tag="Gaming" />    <CheckBox Content="Microsoft Visual C++ Runtime - all versions" Tag="Gaming" />    <CheckBox Content="Microsoft Visual C++ 2005 (x86) Redistributable" Tag="Gaming" />    <CheckBox Content="Microsoft Visual C++ 2005 (x64) Redistributable" Tag="Gaming" />    <CheckBox Content="Microsoft Visual C++ 2008 (x86) Redistributable" Tag="Gaming" />    <CheckBox Content="Microsoft Visual C++ 2008 (x64) Redistributable" Tag="Gaming" />    <CheckBox Content="Microsoft Visual C++ 2010 (x86) Redistributable" Tag="Gaming" />    <CheckBox Content="Microsoft Visual C++ 2010 (x64) Redistributable" Tag="Gaming" />    <CheckBox Content="Microsoft Visual C++ 2012 (x86) Redistributable" Tag="Gaming" />    <CheckBox Content="Microsoft Visual C++ 2012 (x64) Redistributable" Tag="Gaming" />    <CheckBox Content="Microsoft Visual C++ 2013 (x86) Redistributable" Tag="Gaming" />    <CheckBox Content="Microsoft Visual C++ 2013 (x64) Redistributable" Tag="Gaming" />    <CheckBox Content="Microsoft Visual C++ 2015-2022 (x64) Redistributable" Tag="Gaming" />    <CheckBox Content="Microsoft Visual C++ 2015-2022  (x86) Redistributable" Tag="Gaming" />    <CheckBox Content="NET Framework All Versions" Tag="Gaming" />    <CheckBox Content="AMD Ryzen Chipset Drivers" Tag="Gaming" />    <CheckBox Content="NVidia Display Driver" Tag="Gaming" />    <CheckBox Content="NVIDIA GeForce" Tag="Gaming" />    <CheckBox Content="Msi Afterburner" Tag="Gaming" />    <CheckBox Content="NVIDIA PhysX" Tag="Gaming" />    <CheckBox Content="Steam" Tag="Gaming" />    <CheckBox Content="Epic Games Launcher " Tag="Gaming" />    <CheckBox Content="Ubisoft Connect" Tag="Gaming" />    <CheckBox Content="Origin" Tag="Gaming" />    <CheckBox Content="Rockstar Games Launcher" Tag="Gaming" />    <CheckBox Content="GameSave Manager" Tag="Gaming" />    <CheckBox Content="StreamlabsOBS" Tag="Gaming" />    <CheckBox Content="OBS Studio" Tag="Gaming" />    <CheckBox Content="Logitech Gaming Software" Tag="Gaming" />    <CheckBox Content="Lively Wallpaper" Tag="Gaming" />    <CheckBox Content="Playnite" Tag="Gaming" />    <CheckBox Content="Driver Easy" Tag="Drivers" />    <CheckBox Content="Intel Graphics Windows DCH" Tag="Drivers" />    <CheckBox Content="Intel Driver Support Assistant" Tag="Drivers" />    <CheckBox Content="Intel Network Adapter" Tag="Drivers" />    <CheckBox Content="Snappy Driver Installer" Tag="Drivers" />    <CheckBox Content="Driver booster" Tag="Drivers" />    <CheckBox Content="Driver Genius" Tag="Drivers" />    <CheckBox Content="Display Driver Uninstaller" Tag="Drivers" />    <CheckBox Content="Driver Store Explorer" Tag="Drivers" />    <CheckBox Content="1Password" Tag="Utilities" />    <CheckBox Content="MiniTool Partition Wizard" Tag="Utilities" />    <CheckBox Content="AOMEI Partition Assistant Standard" Tag="Utilities" />    <CheckBox Content="AOMEI Backupper" Tag="Utilities" />    <CheckBox Content="Recuva recover" Tag="Utilities" />    <CheckBox Content="CCleaner" Tag="Utilities" />    <CheckBox Content="BCUninstaller" Tag="Utilities" />    <CheckBox Content="Easy Context Menu" Tag="Utilities" />    <CheckBox Content="HWiNFO" Tag="Utilities" />    <CheckBox Content="Speccy" Tag="Utilities" />    <CheckBox Content="FurMark" Tag="Utilities" />    <CheckBox Content="Hard Disk Sentinel" Tag="Utilities" />    <CheckBox Content="CPUID CPU-Z" Tag="Utilities" />    <CheckBox Content="Mem Reduct" Tag="Utilities" />    <CheckBox Content="HandBrake" Tag="Utilities" />    <CheckBox Content="Rufus" Tag="Utilities" />    <CheckBox Content="ImgBurn" Tag="Developer" />    <CheckBox Content="Virtual CloneDrive" Tag="Utilities" />    <CheckBox Content="Utilso" Tag="Utilities" />    <CheckBox Content="Ventoy" Tag="Utilities" />    <CheckBox Content="iVentoy" Tag="Utilities" />    <CheckBox Content="AutoHotkey" Tag="Utilities" />    <CheckBox Content="Rainmeter" Tag="Utilities" />    <CheckBox Content="FxSound" Tag="Utilities" />    <CheckBox Content="HiSuite" Tag="Utilities" />    <CheckBox Content="Vysor" Tag="Utilities" />    <CheckBox Content="Unified Remote" Tag="Utilities" />    <CheckBox Content="AnyDesk" Tag="File Sharing" />    <CheckBox Content="Airdroid" Tag="File Sharing" />    <CheckBox Content="UltraViewer" Tag="File Sharing" />    <CheckBox Content="Wireless Network Watcher Portable" Tag="Utilities" />    <CheckBox Content="WifiInfoView" Tag="Utilities" />    <CheckBox Content="qBittorrent" Tag="File Sharing" />    <CheckBox Content="Google Earth Pro" Tag="Imaging" />    <CheckBox Content="XAMPP" Tag="Developer" />    <CheckBox Content="Visual Studio Professional 2022" Tag="Developer" />    <CheckBox Content="Visual Studio Community 2022" Tag="Developer" />    <CheckBox Content="Godot Game Engine" Tag="Developer" />    <CheckBox Content="Unity Hub" Tag="Developer" />    <CheckBox Content="Unity 3D" Tag="Developer" />    <CheckBox Content="Blender" Tag="Developer" />    <CheckBox Content="Visual Studio Code" Tag="Developer" />    <CheckBox Content="Sublime Text 4" Tag="Developer" />    <CheckBox Content="Atom" Tag="Developer" />    <CheckBox Content="InnoSetup" Tag="Developer" />    <CheckBox Content="PyCharm Community Edition" Tag="Developer" />    <CheckBox Content="PyCharm Professional Edition" Tag="Developer" />    <CheckBox Content="Jetbrains Rider" Tag="Developer" />    <CheckBox Content="Node.js LTS" Tag="Developer" />    <CheckBox Content="Electrum-LTS" Tag="Developer" />    <CheckBox Content="Hugo" Tag="Developer" />    <CheckBox Content="Notepad++" Tag="Developer" />    <CheckBox Content="Windows Terminal" Tag="Developer" />    <CheckBox Content="Powershell core" Tag="Developer" />    <CheckBox Content="x64dbg Portable" Tag="Developer" />    <CheckBox Content="dnSpy" Tag="Developer" />    <CheckBox Content="Cheat Engine" Tag="Developer" />    <CheckBox Content="Python" Tag="Developer" />    <CheckBox Content="Git" Tag="Developer" />    <CheckBox Content="GitHub Desktop" Tag="Developer" />    <CheckBox Content="Docker Desktop" Tag="Developer" />    <CheckBox Content="Docker Compose" Tag="Developer" />    <CheckBox Content="PowerToys" Tag="Developer" />    <CheckBox Content="Notion" Tag="Developer" />    <CheckBox Content="FL Studio" Tag="Developer" />    <CheckBox Content="Android Debug Bridge" Tag="Developer" />    <CheckBox Content="Universal ADB Drivers" Tag="Developer" />    <CheckBox Content="Scrcpy" Tag="Developer" />    <CheckBox Content="VirtualBox" Tag="Developer" />    <CheckBox Content="UltraISO" Tag="Developer" />    <CheckBox Content="Vmware Workstation" Tag="Developer" />    <CheckBox Content="oh-my-posh" Tag="Developer" />    <CheckBox Content="Malwarebytes" Tag="Security" />    <CheckBox Content="Kaspersky Virus Removal Tool" Tag="Security" />    <CheckBox Content="Kaspersky Anti-Virus" Tag="Security" />    <CheckBox Content="Avast Free Antivirus" Tag="Security" />
                         </ListView>
                     </TabItem.Content>
                 </TabItem>
-                <TabItem Header="تحسينات" x:Name="tweeksTab" Padding="0" BorderBrush="{x:Null}" Background="{x:Null}">
+                <TabItem Header="Tweeaks" x:Name="tweeksTab" Padding="0" BorderBrush="{x:Null}" Background="{x:Null}">
                     <TabItem.Content>
                         <ListView Name="tweaks"  Margin="0" ScrollViewer.VerticalScrollBarVisibility="Auto" BorderBrush="{x:Null}" Background="{x:Null}">
                                 <CheckBox Content="System File Checker" />    <CheckBox Content="Run Disk cleanup" />    <CheckBox Content="Restore All Windows Services to Default" />    <CheckBox Content="Remove Folder Shortcuts From Windows'' File Explorer" />    <CheckBox Content="Fix Stutter/Lag in Games" />    <CheckBox Content="Remove Unnecessary Windows 10/11 Apps" />    <CheckBox Content="Enable the Ultimate Performance Power Plan" />    <CheckBox Content=" Reset the TCP/IP Stack" />    <CheckBox Content="Setup Auto login" />    <CheckBox Content="Disable People icon on Taskbar" />    <CheckBox Content="Disable suggestions on start menu" />    <CheckBox Content="Turns off Data Collection" />    <CheckBox Content="Prevents bloatware applications from returning" />    <CheckBox Content="Stops the Windows Feedback Experience" />    <CheckBox Content="Disable Cortana" />
@@ -2595,7 +2594,7 @@ $inputXML = '
                                 />
 
                                 <TextBlock IsHitTestVisible="False" 
-                                Text="بحث"
+                                Text="Search"
                                 VerticalAlignment="Center" 
                                 HorizontalAlignment="Left"
                                 Margin="16,0,0,0"
@@ -2640,7 +2639,7 @@ $inputXML = '
                     <!--Install Button-->
                         <Button
                         Name="installBtn"
-                        Content="تثبيت"
+                        Content="Install"
                         FontSize="15"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Bottom"
@@ -2650,7 +2649,7 @@ $inputXML = '
                     <!--Apply Button-->
                         <Button
                         Name="applyBtn"
-                        Content="تطبيق الامر"
+                        Content="Apply"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Bottom"
                         FontSize="15"
