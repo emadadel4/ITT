@@ -142,5 +142,13 @@
     "script": "Set-ItemProperty -Path \"HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\DataCollection\" -Name \"AllowTelemetry\" -Value 0; Set-ItemProperty -Path \"HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\AdvertisingInfo\" -Name \"Enabled\" -Value 0; Set-ItemProperty -Path \"HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Search\" -Name \"AllowCortana\" -Value 0; Set-ItemProperty -Path \"HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Search\" -Name \"BingSearchEnabled\" -Value 0",
     "check": true,
     "category": "tweak"
+  },
+  {
+    "name": "Disable Game Mode",
+    "description": "This tweak disables Game Mode in Windows 10.",
+    "repo": "null",
+    "script": "Set-ItemProperty -Path \"HKCU:\\SOFTWARE\\Microsoft\\GameBar\" -Name \"AllowAutoGameMode\" -Value 0",
+    "check": true,
+    "category": "tweak"
   }
 ]
