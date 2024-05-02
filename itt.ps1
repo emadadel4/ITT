@@ -1,4 +1,4 @@
-﻿# ###################################################################################
+# ###################################################################################
 # #                                                                                 #
 # #   ___ _____ _____   _____ __  __    _    ____    _    ____  _____ _    _  _     #
 # #  |_ _|_   _|_   _| | ____|  \/  |  / \  |  _ \  / \  |  _ \| ____| |  | || |    #
@@ -772,7 +772,7 @@ $adminRole=[System.Security.Principal.WindowsBuiltInRole]::Administrator
 if ($principal.IsInRole($adminRole))
 {
     $Host.UI.RawUI.WindowTitle = $myInvocation.MyCommand.Definition + "(Admin)"
-    #Clear-Host
+    Clear-Host
 }
 else
 {
