@@ -2202,7 +2202,8 @@ $sync.configs.tweaks = '[
   },
   {
     "name": "Disable Windows Web Search",
-    "description": "This tweak aims to disable web search in Windows by modifying the registry settings related to Windows Search. It sets the BingSearchEnabled value to 0, effectively turning off web search results.",    "repo": "null",
+    "description": "This tweak aims to disable web search in Windows by modifying the registry settings related to Windows Search. It sets the BingSearchEnabled value to 0, effectively turning off web search results.",
+    "repo": "null",
     "script": "Set-ItemProperty -Path ''HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Search'' -Name ''BingSearchEnabled'' -Value 0",
     "check": "true",
     "category": "tweak"
@@ -2210,8 +2211,16 @@ $sync.configs.tweaks = '[
   {
     "name": "Windows 10 Turn off background apps",
     "description": "This tweak aims to disable background apps in Windows 10 by modifying the appropriate registry settings.",
-    "repo": null,
+    "repo": "null",
     "script": "Set-ItemProperty -Path ''HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\BackgroundAccessApplications'' -Name ''GlobalUserDisabled'' -Value 1",
+    "check": true,
+    "category": "tweak"
+  },
+  {
+    "name": "Windows 10 Disable all Privacy options",
+    "description": "This tweak aims to disable background apps in Windows 10 by modifying the appropriate registry settings.",
+    "repo": "null",
+    "script": "Set-ItemProperty -Path \"HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\DataCollection\" -Name \"AllowTelemetry\" -Value 0; Set-ItemProperty -Path \"HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\AdvertisingInfo\" -Name \"Enabled\" -Value 0; Set-ItemProperty -Path \"HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Search\" -Name \"AllowCortana\" -Value 0; Set-ItemProperty -Path \"HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Search\" -Name \"BingSearchEnabled\" -Value 0",
     "check": true,
     "category": "tweak"
   }
@@ -2584,7 +2593,7 @@ $inputXML = '
                 <TabItem Header="Tweeaks" x:Name="tweeksTab" Padding="0" BorderBrush="{x:Null}" Background="{x:Null}">
                     <TabItem.Content>
                         <ListView Name="tweaks"  Margin="0" ScrollViewer.VerticalScrollBarVisibility="Auto" BorderBrush="{x:Null}" Background="{x:Null}">
-                                <CheckBox Content="System File Checker" />    <CheckBox Content="Run Disk cleanup" />    <CheckBox Content="Restore All Windows Services to Default" />    <CheckBox Content="Remove Folder Shortcuts From Windows'' File Explorer" />    <CheckBox Content="Fix Stutter/Lag in Games" />    <CheckBox Content="Remove Unnecessary Windows 10/11 Apps" />    <CheckBox Content="Enable the Ultimate Performance Power Plan" />    <CheckBox Content="Reset the TCP/IP Stack" />    <CheckBox Content="Setup Auto login" />    <CheckBox Content="Disable People icon on Taskbar" />    <CheckBox Content="Disable suggestions on start menu" />    <CheckBox Content="Turns off Data Collection" />    <CheckBox Content="Prevents bloatware applications from returning" />    <CheckBox Content="Stops the Windows Feedback Experience" />    <CheckBox Content="Remove Cortana" />    <CheckBox Content="Disable Windows Web Search" />    <CheckBox Content="Windows 10 Turn off background apps" />
+                                <CheckBox Content="System File Checker" />    <CheckBox Content="Run Disk cleanup" />    <CheckBox Content="Restore All Windows Services to Default" />    <CheckBox Content="Remove Folder Shortcuts From Windows'' File Explorer" />    <CheckBox Content="Fix Stutter/Lag in Games" />    <CheckBox Content="Remove Unnecessary Windows 10/11 Apps" />    <CheckBox Content="Enable the Ultimate Performance Power Plan" />    <CheckBox Content="Reset the TCP/IP Stack" />    <CheckBox Content="Setup Auto login" />    <CheckBox Content="Disable People icon on Taskbar" />    <CheckBox Content="Disable suggestions on start menu" />    <CheckBox Content="Turns off Data Collection" />    <CheckBox Content="Prevents bloatware applications from returning" />    <CheckBox Content="Stops the Windows Feedback Experience" />    <CheckBox Content="Remove Cortana" />    <CheckBox Content="Disable Windows Web Search" />    <CheckBox Content="Windows 10 Turn off background apps" />    <CheckBox Content="Windows 10 Disable all Privacy options" />
                         </ListView>
                     </TabItem.Content>
                 </TabItem>
