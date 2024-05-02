@@ -90,7 +90,7 @@ function Invoke-Install{
 
                     Write-Host "Installing the following programs $choco "
                     Start-Process -FilePath "choco" -ArgumentList "install $choco -y --force --ignore-checksums" -NoNewWindow -Wait
-                    [System.Windows.MessageBox]::Show("تم التثبيت بنجاح", "ITT @emadadel4", "OK", "Information")
+                    [System.Windows.MessageBox]::Show("Installed successfully", "ITT @emadadel4", "OK", "Information")
 
                     $sync.AppsListView.Dispatcher.Invoke([Action]{
                         foreach ($item in $sync.AppsListView.Items)
@@ -111,7 +111,7 @@ function Invoke-Install{
 
 
                     $sync.installBtn.Dispatcher.Invoke([Action]{
-                        $sync.installBtn.Content = "تثبيت"
+                        $sync.installBtn.Content = "Install"
                     })
 
                     Clear-Host
@@ -157,7 +157,7 @@ function Invoke-ApplyTweaks() {
 
     if($sync.ProcessRunning)
     {
-        $msg = "...يوجد عملية جإرية الان يرجى الأنتظار"
+        $msg = "Please wait for applying to be done."
         [System.Windows.MessageBox]::Show($msg, "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
         return
     }
@@ -183,7 +183,7 @@ function Invoke-ApplyTweaks() {
                         $sync.description.Text = "Applying"
                     })
 
-                    #Write-Host "Applying tweeak(s) $tweeaks "
+                    #Write-Host "Applying tweeak(s) $tweeaks"
                     Start-Process -FilePath "powershell.exe" -ArgumentList "-Command `"$tweeaks`"" -NoNewWindow -Wait
                     Write-Host "The operation was successful."    
                     [System.Windows.MessageBox]::Show("The operation was successful", "ITT @emadadel4", "OK", "Information")

@@ -34,7 +34,7 @@ function LoadJson {
         $sync['window'].FindName('list').Clear()
         $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync['window'].FindName('list').Items)
         $collectionView.Filter = $filterPredicate
-        [System.Windows.MessageBox]::Show("تم اظهار البرامج المختارة مسبقا فقط", "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
+        [System.Windows.MessageBox]::Show("Restored successfully", "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
 
     }
 }
