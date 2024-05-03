@@ -203,6 +203,7 @@ function Invoke-ApplyTweaks() {
 
                     $sync.description.Dispatcher.Invoke([Action]{
                         $sync.description.Text = "Applying"
+                        $sync.applyBtn.Content = "Please wait..."
                     })
 
                     #Write-Host "Applying tweeak(s) $tweeaks"
@@ -220,6 +221,7 @@ function Invoke-ApplyTweaks() {
                  
                     $sync.description.Dispatcher.Invoke([Action]{
                         $sync.description.Text = "Done"
+                        $sync.applyBtn.Content = "Apply"
                     })
 
                     Start-Sleep -Seconds 1
@@ -227,15 +229,21 @@ function Invoke-ApplyTweaks() {
 
                     Clear-Host
 Write-Host "
-+------------------------------------------------------------------------------+
-|   ___ _____ _____   _____ __  __    _    ____       _    ____  _____ _       |
-|  |_ _|_   _|_   _| | ____|  \/  |  / \  |  _ \     / \  |  _ \| ____| |      |
-|   | |  | |   | |   |  _| | |\/| | / _ \ | | | |   / _ \ | | | |  _| | |      |
-|   | |  | |   | |   | |___| |  | |/ ___ \| |_| |  / ___ \| |_| | |___| |___   |
-|  |___| |_|   |_|   |_____|_|  |_/_/   \_\____/  /_/   \_\____/|_____|_____|  |
-| Everything work fine You Good to go                                          |
-+------------------------------------------------------------------------------+
-" -ForegroundColor green
++----------------------------------------------------------------------------+
+|  ___ _____ _____   _____ __  __    _    ____       _    ____  _____ _      |
+| |_ _|_   _|_   _| | ____|  \/  |  / \  |  _ \     / \  |  _ \| ____| |     |
+|  | |  | |   | |   |  _| | |\/| | / _ \ | | | |   / _ \ | | | |  _| | |     |
+|  | |  | |   | |   | |___| |  | |/ ___ \| |_| |  / ___ \| |_| | |___| |___  |
+| |___| |_|   |_|   |_____|_|  |_/_/   \_\____/  /_/   \_\____/|_____|_____| |
+|                                                                            |
++----------------------------------------------------------------------------+
+Everything work fine. You good to go
+
+(IT Tools) is open source, You can contribute to improving the tool.
+If you have trouble installing a program, report the problem on feedback links
+https://github.com/emadadel4/ITT/issues
+https://t.me/emadadel4
+" -ForegroundColor White
 
                 }
                 else 
@@ -350,7 +358,7 @@ function Invoke-Install {
                     }
 
                     $sync.Description.Dispatcher.Invoke([Action]{
-                        $sync.installBtn.Content = "Installing..."
+                        $sync.installBtn.Content = "Please wait..."
                         $sync.Description.Text = "Downloading and Installing..."
                     })
 
@@ -392,15 +400,21 @@ function Invoke-Install {
                     Clear-Host
 
 Write-Host "
-+------------------------------------------------------------------------------+
-|   ___ _____ _____   _____ __  __    _    ____       _    ____  _____ _       |
-|  |_ _|_   _|_   _| | ____|  \/  |  / \  |  _ \     / \  |  _ \| ____| |      |
-|   | |  | |   | |   |  _| | |\/| | / _ \ | | | |   / _ \ | | | |  _| | |      |
-|   | |  | |   | |   | |___| |  | |/ ___ \| |_| |  / ___ \| |_| | |___| |___   |
-|  |___| |_|   |_|   |_____|_|  |_/_/   \_\____/  /_/   \_\____/|_____|_____|  |
-| Everything work fine You Good to go                                          |
-+------------------------------------------------------------------------------+
-" -ForegroundColor green
++----------------------------------------------------------------------------+
+|  ___ _____ _____   _____ __  __    _    ____       _    ____  _____ _      |
+| |_ _|_   _|_   _| | ____|  \/  |  / \  |  _ \     / \  |  _ \| ____| |     |
+|  | |  | |   | |   |  _| | |\/| | / _ \ | | | |   / _ \ | | | |  _| | |     |
+|  | |  | |   | |   | |___| |  | |/ ___ \| |_| |  / ___ \| |_| | |___| |___  |
+| |___| |_|   |_|   |_____|_|  |_/_/   \_\____/  /_/   \_\____/|_____|_____| |
+|                                                                            |
++----------------------------------------------------------------------------+
+Everything work fine. You good to go
+
+(IT Tools) is open source, You can contribute to improving the tool.
+If you have trouble installing a program, report the problem on feedback links
+https://github.com/emadadel4/ITT/issues
+https://t.me/emadadel4
+" -ForegroundColor White
 
                 }else {
                     
@@ -3139,6 +3153,7 @@ $sync.Quotes = $sync['window'].FindName("quotes")
 $sync.TweeaksListView = $sync['window'].FindName("tweaks")
 $sync.itemLink = $sync['window'].FindName('itemLink')
 $sync.installBtn = $sync['window'].FindName('installBtn') 
+$sync.applyBtn = $sync['window'].FindName('applyBtn') 
 $sync.cat = $sync['window'].FindName('cat')
 $sync.searchInput = $sync['window'].FindName('searchInput')
 #===========================================================================
