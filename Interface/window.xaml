@@ -77,7 +77,7 @@
                                 <!--End Logo-->
 
                             <!--Catagory Section-->
-                                <ComboBox SelectedIndex="0"  Margin="25,0,0,0" Name="cat" HorizontalAlignment="Center" VerticalAlignment="Center" Width="155" Height="Auto">
+                                <ComboBox SelectedIndex="0"  Margin="25,0,0,0" Name="category" HorizontalAlignment="Center" VerticalAlignment="Center" Width="155" Height="Auto">
                                     <ComboBoxItem Content="All"></ComboBoxItem>
                                     <ComboBoxItem Content="Drivers"></ComboBoxItem>
                                     <ComboBoxItem Content="Media"></ComboBoxItem>

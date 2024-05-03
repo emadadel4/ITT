@@ -33,9 +33,6 @@ function About{
 
 #region Function to filter a list based on a search input
 function Search{
-    
-    # if you on Tweeaks tab return to apps tab
-    $sync['window'].FindName('apps').IsSelected = $true
 
     # Retrieves the search input, converts it to lowercase, and filters the list based on the input
     $filter = $sync.searchInput.Text.ToLower() -replace '[^\p{L}\p{N}]', ''
@@ -44,17 +41,14 @@ function Search{
         param($item)
         $item -like "*$filter*"
     }
-
 }
 
 function FilterByCat {
-    param (
-        $Cat
-    )
 
-    # if user on Other tab return to app list
+    param ($Cat)
+
+    # if user on Other tab return to apps list
     $sync['window'].FindName('apps').IsSelected = $true
-
     $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync['window'].FindName('list').Items)
 
     # Define the filter predicate
@@ -68,25 +62,21 @@ function FilterByCat {
         return $itemTag -eq $tagToFilter
     }
 
-
     if($Cat -eq "All")
     {
-
         $sync['window'].FindName('list').Clear()
         $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync['window'].FindName('list').Items)
         $collectionView.Filter = $null
-        
-    }else{
-
+    }
+    else
+    {
         $sync['window'].FindName('list').Clear()
         # Apply the filter to the collection view
         $collectionView.Filter = $filterPredicate
-
     }
 }
 
 function ClearFilter {
-
     $sync['window'].FindName('list').Clear()
     $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync['window'].FindName('list').Items)
     $collectionView.Filter = $null
@@ -272,34 +262,34 @@ https://t.me/emadadel4
 
 function Invoke-Button {
 
-    Param ([string]$Button)
+    Param ([string]$debug)
 
     # debug
-    #Write-Host $Button
+    #Write-Host $debug
 
-    Switch -Wildcard ($Button){
+    Switch -Wildcard ($debug){
 
-        "installBtn" {Invoke-Install $Button}
-        "applyBtn" {Invoke-ApplyTweaks $Button}
-        "taps" {ChangeTap $Button}
+        "installBtn" {Invoke-Install $debug}
+        "applyBtn" {Invoke-ApplyTweaks $debug}
+        "taps" {ChangeTap $debug}
         "load" {LoadJson $Button}
-        "save" {SaveItemsToJson $Button}
-        "searchInput" {Search $Button}
-        "about" {About $Button}
-        "cat" {FilterByCat($sync.cat.SelectedItem.Content) $Button}
-        "mas" {Start-Process ("https://github.com/massgravel/Microsoft-Activation-Scripts") $Button}
-        "idm" { Start-Process ("https://github.com/WindowsAddict/IDM-Activation-Script") $Button}
+        "save" {SaveItemsToJson $debug}
+        "about" {About $debug}
+        "category" {FilterByCat($sync.category.SelectedItem.Content) $debug}
+        "mas" {Start-Process ("https://github.com/massgravel/Microsoft-Activation-Scripts") $debug}
+        "idm" { Start-Process ("https://github.com/WindowsAddict/IDM-Activation-Script") $debug}
         "dev" { About $Button}
-        "deviceManager" {Start-Process devmgmt.msc $Button}
-        "appsfeatures" {Start-Process ms-settings:appsfeatures $Button}
-        "sysinfo" {Start-Process msinfo32.exe; dxdiag.exe; $Button}
-        "poweroption" {Start-Process powercfg.cpl $Button}
-        "services" {Start-Process services.msc $Button}
-        "network" {Start-Process ncpa.cpl $Button}
-        "taskmgr" {Start-Process taskmgr.exe $Button}
-        "diskmgmt" {Start-Process diskmgmt.msc $Button}
-        "darkOn" { Switch-ToDarkMode $Button }
-        "darkOff" { Switch-ToLightMode $Button }
+        "deviceManager" {Start-Process devmgmt.msc $debug}
+        "appsfeatures" {Start-Process ms-settings:appsfeatures $debug}
+        "sysinfo" {Start-Process msinfo32.exe; dxdiag.exe; $debug}
+        "poweroption" {Start-Process powercfg.cpl $debug}
+        "services" {Start-Process services.msc $debug}
+        "network" {Start-Process ncpa.cpl $debug}
+        "taskmgr" {Start-Process taskmgr.exe $debug}
+        "diskmgmt" {Start-Process diskmgmt.msc $debug}
+        "darkOn" { Switch-ToDarkMode $debug }
+        "darkOff" { Switch-ToLightMode $debug }
+        "searchInput" {Search; $sync['window'].FindName('category').SelectedIndex = 0; $sync['window'].FindName('apps').IsSelected = $true; $debug }
     }
 }
 
@@ -336,7 +326,7 @@ function Invoke-Install {
         return
     }
 
-    $sync['window'].FindName('cat').SelectedIndex = 0
+    $sync['window'].FindName('category').SelectedIndex = 0
     ClearFilter
 
     $selectedApps = Get-SelectedApps
@@ -2814,7 +2804,7 @@ $inputXML = '
                                 <!--End Logo-->
 
                             <!--Catagory Section-->
-                                <ComboBox SelectedIndex="0"  Margin="25,0,0,0" Name="cat" HorizontalAlignment="Center" VerticalAlignment="Center" Width="155" Height="Auto">
+                                <ComboBox SelectedIndex="0"  Margin="25,0,0,0" Name="category" HorizontalAlignment="Center" VerticalAlignment="Center" Width="155" Height="Auto">
                                     <ComboBoxItem Content="All"></ComboBoxItem>
                                     <ComboBoxItem Content="Drivers"></ComboBoxItem>
                                     <ComboBoxItem Content="Media"></ComboBoxItem>
@@ -3111,6 +3101,11 @@ $sync.Keys | ForEach-Object {
                 param([System.Object]$Sender)
                 Invoke-Button $Sender.Name
             })
+
+            $element.Add_GotFocus({
+                param([System.Object]$Sender)
+                Invoke-Button $Sender.Name
+            })
         }
 
         # Check if the element is a Ellipse
@@ -3154,7 +3149,7 @@ $sync.TweeaksListView = $sync['window'].FindName("tweaks")
 $sync.itemLink = $sync['window'].FindName('itemLink')
 $sync.installBtn = $sync['window'].FindName('installBtn') 
 $sync.applyBtn = $sync['window'].FindName('applyBtn') 
-$sync.cat = $sync['window'].FindName('cat')
+$sync.cat = $sync['window'].FindName('category')
 $sync.searchInput = $sync['window'].FindName('searchInput')
 #===========================================================================
 #endregion End loadXmal
@@ -3300,6 +3295,9 @@ $onClosingEvent = {
 
 # Add OnClosing event handler to the window
 $sync["window"].add_Closing($onClosingEvent)
+
+
+
 
 # Show the window
 $sync["window"].ShowDialog() | Out-Null

@@ -98,6 +98,11 @@ $sync.Keys | ForEach-Object {
                 param([System.Object]$Sender)
                 Invoke-Button $Sender.Name
             })
+
+            $element.Add_GotFocus({
+                param([System.Object]$Sender)
+                Invoke-Button $Sender.Name
+            })
         }
 
         # Check if the element is a Ellipse
@@ -141,5 +146,5 @@ $sync.TweeaksListView = $sync['window'].FindName("tweaks")
 $sync.itemLink = $sync['window'].FindName('itemLink')
 $sync.installBtn = $sync['window'].FindName('installBtn') 
 $sync.applyBtn = $sync['window'].FindName('applyBtn') 
-$sync.cat = $sync['window'].FindName('cat')
+$sync.cat = $sync['window'].FindName('category')
 $sync.searchInput = $sync['window'].FindName('searchInput')

@@ -1,7 +1,7 @@
 param (
     [string]$OutputScript = "itt.ps1",
     [string]$StartScript = ".\Scripts\start.ps1",
-    [string]$FunctionsDirectory = ".\Functions",
+    [string]$FunctionsDirectory = ".\Scripts\Functions",
     [string]$DatabaseDirectory = ".\Database",
     [string]$InterfaceDirectory = ".\interface",
     [string]$LoopsDirectory = ".\loops",
