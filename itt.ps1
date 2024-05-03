@@ -2202,7 +2202,7 @@ $sync.configs.tweaks = '[
   },
   {
     "name": "Disable Windows Web Search",
-    "description": "This tweak aims to disable web search in Windows by modifying the registry settings related to Windows Search. It sets the BingSearchEnabled value to 0, effectively turning off web search results.",
+    "description": "Disable web search in Windows by modifying the registry settings related to Windows Search. It sets the BingSearchEnabled value to 0, effectively turning off web search results.",
     "repo": "null",
     "script": "Set-ItemProperty -Path ''HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Search'' -Name ''BingSearchEnabled'' -Value 0",
     "check": "true",
@@ -2210,18 +2210,18 @@ $sync.configs.tweaks = '[
   },
   {
     "name": "Windows 10 Turn off background apps",
-    "description": "This tweak aims to disable background apps in Windows 10 by modifying the appropriate registry settings.",
+    "description": "Disable background apps in Windows 10 by modifying the appropriate registry settings.",
     "repo": "null",
     "script": "Set-ItemProperty -Path ''HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\BackgroundAccessApplications'' -Name ''GlobalUserDisabled'' -Value 1",
-    "check": true,
+    "check": "true",
     "category": "tweak"
   },
   {
     "name": "Windows 10 Disable all Privacy options",
-    "description": "This tweak aims to disable background apps in Windows 10 by modifying the appropriate registry settings.",
+    "description": "Disable all Privacy options.",
     "repo": "null",
     "script": "Set-ItemProperty -Path \"HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\DataCollection\" -Name \"AllowTelemetry\" -Value 0; Set-ItemProperty -Path \"HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\AdvertisingInfo\" -Name \"Enabled\" -Value 0; Set-ItemProperty -Path \"HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Search\" -Name \"AllowCortana\" -Value 0; Set-ItemProperty -Path \"HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Search\" -Name \"BingSearchEnabled\" -Value 0",
-    "check": true,
+    "check": "true",
     "category": "tweak"
   },
   {
@@ -2229,7 +2229,7 @@ $sync.configs.tweaks = '[
     "description": "This tweak disables Game Mode in Windows 10.",
     "repo": "null",
     "script": "Set-ItemProperty -Path \"HKCU:\\SOFTWARE\\Microsoft\\GameBar\" -Name \"AllowAutoGameMode\" -Value 0",
-    "check": true,
+    "check": "true",
     "category": "tweak"
   }
 ]
