@@ -1,8 +1,12 @@
 function CheckChoco 
 {
     # Check if Chocolatey is installed
-    if (-not (Test-Path 'C:\ProgramData\chocolatey\choco.exe'))
-    {
+    if (-not (Get-Command choco -ErrorAction SilentlyContinue)) {
+        
+        Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1')) *> $null
+    }
+
+    if (-not (Get-Command scoop -ErrorAction SilentlyContinue)) {
 
         Write-Host "
         +--------------------------------------------------------------------------------+
@@ -12,13 +16,13 @@ function CheckChoco
         |   \ V  V / | |___| |__| |__| |_| | |  | | |___    | || |_| |  | |  | |   | |   |
         |    \_/\_/  |_____|_____\____\___/|_|  |_|_____|   |_| \___/  |___| |_|   |_|   |
         +--------------------------------------------------------------------------------+
-            Starting up... It'll be quick. I hope you like the tool :)
-                    
+        Starting up... It'll be quick. I hope you like the tool :)
+                
         " -ForegroundColor Red
-        Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1')) *> $null
-
+        iex "& {$(irm get.scoop.sh)} -RunAsAdmin" | Out-Null
+        scoop bucket add extras *> $null
     }
-    else
+    else 
     {
 
         Write-Host "
@@ -30,19 +34,8 @@ function CheckChoco
         | |___| |_|   |_|   |_____|_|  |_/_/   \_\____/  /_/   \_\____/|_____|_____| |
         |                                                                            |
         +----------------------------------------------------------------------------+
-            Everything work fine. You good to go
+        Everything work fine. You good to go
 
         " -ForegroundColor green
-                
     }
-
-    if (-not (Test-Path $env:USERPROFILE\scoop)) {
-
-        irm get.scoop.sh -outfile 'install.ps1'
-        .\install.ps1 -RunAsAdmin [-OtherParameters ...]
-        # I don't care about other parameters and want a one-line command
-        iex "& {$(irm get.scoop.sh)} -RunAsAdmin"
-        scoop bucket add extras
-    }
-
 }
