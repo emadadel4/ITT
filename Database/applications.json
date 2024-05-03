@@ -80,6 +80,15 @@
     "check": "false"
   },
   {
+    "Name": "Neat download manager",
+    "Description": "A popular download manager tool that accelerates downloads and allows users to organize and schedule downloads efficiently.",
+    "winget": "Tonec.InternetDownloadManager",
+    "choco": "none",
+    "scoop": "extras/neatdownloadmanager",
+    "category": "Browsers",
+    "check": "true"
+  },
+  {
     "Name": "Internet Download Manager",
     "Description": "A popular download manager tool that accelerates downloads and allows users to organize and schedule downloads efficiently.",
     "winget": "Tonec.InternetDownloadManager",
@@ -204,6 +213,7 @@
     "Description": "An open-source file archiver with a high compression ratio, supporting various archive formats and providing a powerful command-line interface.",
     "winget": "7zip.7zip",
     "choco": "7zip",
+    "scoop": "none",
     "category": "Compression",
     "check": "false"
   },
