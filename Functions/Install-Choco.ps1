@@ -16,15 +16,23 @@ function CheckChoco
 |   \ V  V / | |___| |__| |__| |_| | |  | | |___    | || |_| |  | |  | |   | |   |
 |    \_/\_/  |_____|_____\____\___/|_|  |_|_____|   |_| \___/  |___| |_|   |_|   |
 +--------------------------------------------------------------------------------+
-    Starting up for the first time, it won't take longer :)
-    (IT Tools) is open source, You can contribute to improving the tool.
+Starting up... it won't take longer :)
 
-    Nothing true everything permitted. 
-    Freedom is not given it is taken.
+(IT Tools) is open source, You can contribute to improving the tool.
+If you have trouble installing a program, report the problem on feedback links
+https://github.com/emadadel4/ITT/issues
+https://t.me/emadadel4
 
-        " -ForegroundColor green
+Nothing true everything permitted. 
+Freedom is not given it is taken.
+
+        " -ForegroundColor White
         iex "& {$(irm get.scoop.sh)} -RunAsAdmin" | Out-Null
         scoop bucket add extras
+
+        Clear-Host
+
+        CheckChoco
     }
     else 
     {
@@ -38,8 +46,13 @@ Write-Host "
 | |___| |_|   |_|   |_____|_|  |_/_/   \_\____/  /_/   \_\____/|_____|_____| |
 |                                                                            |
 +----------------------------------------------------------------------------+
-    Everything work fine. You good to go
+Everything work fine. You good to go
 
-        " -ForegroundColor green
+(IT Tools) is open source, You can contribute to improving the tool.
+If you have trouble installing a program, report the problem on feedback links
+https://github.com/emadadel4/ITT/issues
+https://t.me/emadadel4
+
+        " -ForegroundColor White
     }
 }
