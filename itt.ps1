@@ -129,13 +129,8 @@ function CheckChoco
     }
 
     if (-not (Test-Path $env:USERPROFILE\scoop)) {
-
-        irm get.scoop.sh -outfile 'install.ps1'
-        .\install.ps1 -RunAsAdmin [-OtherParameters ...]
-        # I don't care about other parameters and want a one-line command
-        iex "& {$(irm get.scoop.sh)} -RunAsAdmin"
+        Invoke-Expression "& {$(Invoke-RestMethod get.scoop.sh)} -RunAsAdmin"
     }
-
 }
 
 
