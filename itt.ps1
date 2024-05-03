@@ -313,6 +313,9 @@ function Invoke-Install {
         return
     }
 
+    $sync['window'].FindName('cat').SelectedIndex = 0
+    ClearFilter
+
     $selectedApps = Get-SelectedApps
     
     if($selectedApps.Count -gt 0)
@@ -323,7 +326,6 @@ function Invoke-Install {
                 $msg = [System.Windows.MessageBox]::Show("Do you want to install selected apps", "ITT @emadadel", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)
                 if($msg -eq "Yes")
                 {
-
 
                     $chocoTempPath = Join-Path $env:TEMP "chocolatey"
 
