@@ -32,6 +32,9 @@ function Invoke-Install {
         return
     }
 
+    $sync['window'].FindName('cat').SelectedIndex = 0
+    ClearFilter
+
     $selectedApps = Get-SelectedApps
     
     if($selectedApps.Count -gt 0)
