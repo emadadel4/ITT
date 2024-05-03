@@ -134,7 +134,6 @@ function CheckChoco
         .\install.ps1 -RunAsAdmin [-OtherParameters ...]
         # I don't care about other parameters and want a one-line command
         iex "& {$(irm get.scoop.sh)} -RunAsAdmin"
-        scoop bucket add extras
     }
 
 }
