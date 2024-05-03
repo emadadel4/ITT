@@ -79,6 +79,14 @@ function Invoke-Install {
                         $sync.installBtn.Content = "Install"
 
                     })
+
+                    # Uncheck all checkboxes in $list
+                    $sync.AppsListView.Dispatcher.Invoke([Action]{
+                        foreach ($item in $sync.AppsListView.Items)
+                        {
+                            $item.IsChecked = $false
+                        }
+                    })
                   
                     Start-Sleep -Seconds 1
                     $sync.ProcessRunning = $False
