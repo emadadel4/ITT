@@ -34,6 +34,9 @@ function About{
 #region Function to filter a list based on a search input
 function Search{
     
+    # if you on Tweeaks tab return to apps tab
+    $sync['window'].FindName('apps').IsSelected = $true
+
     # Retrieves the search input, converts it to lowercase, and filters the list based on the input
     $filter = $sync.searchInput.Text.ToLower() -replace '[^\p{L}\p{N}]', ''
     $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync['window'].FindName('list').Items)
