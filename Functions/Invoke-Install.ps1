@@ -68,7 +68,6 @@ function Invoke-Install {
                         } elseif ($app.Scoop) {
                             Start-Process -FilePath "powershell.exe" -ArgumentList "scoop install $($app.Scoop)" -NoNewWindow -Wait
                             Write-Host $app.Scoop
-
                         }
                     }
                     
