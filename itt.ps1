@@ -111,7 +111,7 @@ function CheckChoco
 |   \ V  V / | |___| |__| |__| |_| | |  | | |___    | || |_| |  | |  | |   | |   |
 |    \_/\_/  |_____|_____\____\___/|_|  |_|_____|   |_| \___/  |___| |_|   |_|   |
 +--------------------------------------------------------------------------------+
-    Starting up for the first time, it won't take longer :)
+    Starting up... it won't take longer :)
     (IT Tools) is open source, You can contribute to improving the tool.
 
     Nothing true everything permitted. 
@@ -138,6 +138,7 @@ Write-Host "
 |                                                                            |
 +----------------------------------------------------------------------------+
     Everything work fine. You good to go
+    (IT Tools) is open source, You can contribute to improving the tool.
 
         " -ForegroundColor green
     }
