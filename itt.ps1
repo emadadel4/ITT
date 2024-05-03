@@ -119,7 +119,7 @@ function CheckChoco
 
         " -ForegroundColor green
         iex "& {$(irm get.scoop.sh)} -RunAsAdmin" | Out-Null
-        scoop bucket add extras *> $null
+        scoop bucket add extras
     }
     else 
     {
