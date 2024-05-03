@@ -16,6 +16,14 @@ Write-Host "
         " -ForegroundColor Red
         Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1')) *> $null
 
+        if (-not (Test-Path $env:USERPROFILE\scoop)) {
+
+            irm get.scoop.sh -outfile 'install.ps1'
+            .\install.ps1 -RunAsAdmin [-OtherParameters ...]
+            # I don't care about other parameters and want a one-line command
+            iex "& {$(irm get.scoop.sh)} -RunAsAdmin"
+        }
+
     }
     else
     {
