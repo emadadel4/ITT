@@ -98,7 +98,7 @@
     "check": "false"
   },
   {
-    "Name": "Neat download manager",
+    "Name": "Neat Download Manager",
     "Description": "A popular download manager tool that accelerates downloads and allows users to organize and schedule downloads efficiently.",
     "winget": "Tonec.InternetDownloadManager",
     "choco": "none",
@@ -685,8 +685,8 @@
   {
     "Name": "Intel Graphics Windows DCH",
     "Description": "Intel Graphics Driver for Windows 10.",
-    "winget": "samlab-ws.SnappyDriverInstaller",
-    "choco": "#",
+    "winget": "none",
+    "choco": "intel-graphics-driver",
     "scoop": "none",
     "category": "Drivers",
     "check": "false"
@@ -712,8 +712,8 @@
   {
     "Name": "Snappy Driver Installer",
     "Description": "A free and open-source tool for updating and installing device drivers on Windows, offering offline driver updates and wide hardware support.",
-    "winget": "samlab-ws.SnappyDriverInstaller",
-    "choco": "snappy-driver-installer",
+    "winget": "none",
+    "choco": "sdio",
     "scoop": "none",
     "category": "Drivers",
     "check": "false"
