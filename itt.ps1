@@ -774,7 +774,7 @@ function ChangeTap() {
     GitHub         : https://github.com/emadadel4
     Telegram       : https://t.me/emadadel4
     Website        : https://eprojects.orgfree.com/
-    Version        : 2024/05-May/03-Fri
+    Version        : 2024/05-May/04-Sat
 #>
 
 if (!(Test-Path -Path $ENV:TEMP)) {
@@ -789,7 +789,7 @@ Add-Type -AssemblyName PresentationFramework.Aero
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "2024/05-May/03-Fri"
+$sync.version = "2024/05-May/04-Sat"
 $sync.github =   "https://github.com/emadadel4"
 $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://eprojects.orgfree.com"
@@ -3279,13 +3279,30 @@ CheckChoco
 GetQuotes *> $null 
 PlayMusic *> $null 
 
-$sync["window"].add_Closing({
+# Define OnClosing event handler
+$onClosingEvent = {
+    param($sender, $eventArgs)
+    
+    # Show confirmation message box
+    $result = [System.Windows.MessageBox]::Show("Are you sure you want to close the program, If there are any installing, this will end it", "Confirmation", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)
 
-    StopAllRunspace
-})
+    # Check user's choice
+    if ($result -eq "Yes")
+    {
+        # Close the window
+        StopAllRunspace
+   
+    }else{
+        # Cancel closing the window
+        $eventArgs.Cancel = $true
+    }
+}
 
-$sync["window"].ShowDialog() | out-null
+# Add OnClosing event handler to the window
+$sync["window"].add_Closing($onClosingEvent)
 
+# Show the window
+$sync["window"].ShowDialog() | Out-Null
 #===========================================================================
 #endregion End Main [Buttons Events]
 #===========================================================================
