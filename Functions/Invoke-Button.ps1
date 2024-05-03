@@ -12,7 +12,6 @@ function Invoke-Button {
         "taps" {ChangeTap $Button}
         "load" {LoadJson $Button}
         "save" {SaveItemsToJson $Button}
-        "searchInput" {Search $Button}
         "about" {About $Button}
         "cat" {FilterByCat($sync.cat.SelectedItem.Content) $Button}
         "mas" {Start-Process ("https://github.com/massgravel/Microsoft-Activation-Scripts") $Button}
@@ -28,5 +27,6 @@ function Invoke-Button {
         "diskmgmt" {Start-Process diskmgmt.msc $Button}
         "darkOn" { Switch-ToDarkMode $Button }
         "darkOff" { Switch-ToLightMode $Button }
+        "searchInput" {Search; $sync['window'].FindName('cat').SelectedIndex = 0; $sync['window'].FindName('apps').IsSelected = $true; Write-Host "fff";  $Button }
     }
 }
