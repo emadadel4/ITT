@@ -98,6 +98,11 @@ $sync.Keys | ForEach-Object {
                 param([System.Object]$Sender)
                 Invoke-Button $Sender.Name
             })
+
+            $element.Add_GotFocus({
+                param([System.Object]$Sender)
+                Invoke-Button $Sender.Name
+            })
         }
 
         # Check if the element is a Ellipse
