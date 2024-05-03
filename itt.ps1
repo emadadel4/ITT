@@ -33,9 +33,6 @@ function About{
 
 #region Function to filter a list based on a search input
 function Search{
-    
-    # if you on Tweeaks tab return to apps tab
-    $sync['window'].FindName('apps').IsSelected = $true
 
     # Retrieves the search input, converts it to lowercase, and filters the list based on the input
     $filter = $sync.searchInput.Text.ToLower() -replace '[^\p{L}\p{N}]', ''
@@ -44,17 +41,14 @@ function Search{
         param($item)
         $item -like "*$filter*"
     }
-
 }
 
 function FilterByCat {
-    param (
-        $Cat
-    )
 
-    # if user on Other tab return to app list
+    param ($Cat)
+
+    # if user on Other tab return to apps list
     $sync['window'].FindName('apps').IsSelected = $true
-
     $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync['window'].FindName('list').Items)
 
     # Define the filter predicate
@@ -68,25 +62,21 @@ function FilterByCat {
         return $itemTag -eq $tagToFilter
     }
 
-
     if($Cat -eq "All")
     {
-
         $sync['window'].FindName('list').Clear()
         $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync['window'].FindName('list').Items)
         $collectionView.Filter = $null
-        
-    }else{
-
+    }
+    else
+    {
         $sync['window'].FindName('list').Clear()
         # Apply the filter to the collection view
         $collectionView.Filter = $filterPredicate
-
     }
 }
 
 function ClearFilter {
-
     $sync['window'].FindName('list').Clear()
     $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync['window'].FindName('list').Items)
     $collectionView.Filter = $null
@@ -284,7 +274,6 @@ function Invoke-Button {
         "taps" {ChangeTap $Button}
         "load" {LoadJson $Button}
         "save" {SaveItemsToJson $Button}
-        "searchInput" {Search $Button}
         "about" {About $Button}
         "cat" {FilterByCat($sync.cat.SelectedItem.Content) $Button}
         "mas" {Start-Process ("https://github.com/massgravel/Microsoft-Activation-Scripts") $Button}
@@ -300,6 +289,7 @@ function Invoke-Button {
         "diskmgmt" {Start-Process diskmgmt.msc $Button}
         "darkOn" { Switch-ToDarkMode $Button }
         "darkOff" { Switch-ToLightMode $Button }
+        "searchInput" {Search; $sync['window'].FindName('cat').SelectedIndex = 0; $sync['window'].FindName('apps').IsSelected = $true; Write-Host "fff";  $Button }
     }
 }
 
@@ -3111,6 +3101,11 @@ $sync.Keys | ForEach-Object {
                 param([System.Object]$Sender)
                 Invoke-Button $Sender.Name
             })
+
+            $element.Add_GotFocus({
+                param([System.Object]$Sender)
+                Invoke-Button $Sender.Name
+            })
         }
 
         # Check if the element is a Ellipse
@@ -3300,6 +3295,9 @@ $onClosingEvent = {
 
 # Add OnClosing event handler to the window
 $sync["window"].add_Closing($onClosingEvent)
+
+
+
 
 # Show the window
 $sync["window"].ShowDialog() | Out-Null
