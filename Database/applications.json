@@ -15,7 +15,8 @@
     "choco": "firefox",
     "scoop": "none",
     "category": "Browsers",
-    "check": "true"
+    "suggestion": "true",
+    "check": "false"
   },
   {
     "Name": "Add block extension [Firefox]",
@@ -23,7 +24,6 @@
     "winget": "#",
     "choco": "adblockplusfirefox",
     "scoop": "none",
-
     "category": "Browsers",
     "check": "false"
   },
@@ -33,7 +33,6 @@
     "winget": "Microsoft.Edge",
     "choco": "microsoft-edge",
     "scoop": "none",
-
     "category": "Browsers",
     "check": "false"
   },
@@ -43,7 +42,6 @@
     "winget": "Google.Chrome",
     "choco": "googlechrome",
     "scoop": "none",
-
     "category": "Browsers",
     "check": "false"
   },
@@ -53,7 +51,6 @@
     "winget": "#",
     "choco": "ublockorigin-chrome",
     "scoop": "none",
-
     "category": "Browsers",
     "check": "false"
   },
@@ -63,7 +60,6 @@
     "winget": "eloston.ungoogled-chromium",
     "choco": "chromium",
     "scoop": "none",
-
     "category": "Browsers",
     "check": "false"
   },
@@ -73,7 +69,6 @@
     "winget": "Brave.Brave",
     "choco": "brave",
     "scoop": "none",
-
     "category": "Browsers",
     "check": "false"
   },
@@ -83,7 +78,6 @@
     "winget": "TorProject.TorBrowser",
     "choco": "tor-browser",
     "scoop": "none",
-
     "category": "Browsers",
     "check": "false"
   },
@@ -93,7 +87,6 @@
     "winget": "#",
     "choco": "opera",
     "scoop": "none",
-
     "category": "Browsers",
     "check": "false"
   },
@@ -104,7 +97,8 @@
     "choco": "none",
     "scoop": "extras/neatdownloadmanager",
     "category": "Browsers",
-    "check": "true"
+    "suggestion": "true",
+    "check": "false"
   },
   {
     "Name": "Internet Download Manager",
@@ -112,9 +106,8 @@
     "winget": "Tonec.InternetDownloadManager",
     "choco": "internet-download-manager",
     "scoop": "none",
-
     "category": "Browsers",
-    "check": "true"
+    "check": "false"
   },
   {
     "Name": "K-Lite Mega Codec Pack",
@@ -122,9 +115,9 @@
     "winget": "CodecGuide.K-LiteCodecPack.Mega",
     "choco": "k-litecodecpackfull",
     "scoop": "none",
-
     "category": "Media",
-    "check": "true"
+    "suggestion": "true",
+    "check": "false"
   },
   {
     "Name": "PotPlayer",
@@ -132,7 +125,6 @@
     "winget": "Daum.PotPlayer",
     "choco": "potplayer",
     "scoop": "none",
-
     "category": "Media",
     "check": "false"
   },
@@ -142,8 +134,8 @@
     "winget": "VideoLAN.VLC",
     "choco": "vlc.install",
     "scoop": "none",
-
     "category": "Media",
+    "suggestion": "true",
     "check": "false"
   },
   {
@@ -152,7 +144,6 @@
     "winget": "#",
     "choco": "kodi",
     "scoop": "none",
-
     "category": "Media",
     "check": "false"
   },
@@ -162,7 +153,6 @@
     "winget": "#",
     "choco": "jellyfin",
     "scoop": "none",
-
     "category": "Media",
     "check": "false"
   },
@@ -172,7 +162,6 @@
     "winget": "#",
     "choco": "winamp",
     "scoop": "none",
-
     "category": "Media",
     "check": "false"
   },
@@ -182,7 +171,6 @@
     "winget": "#",
     "choco": "aimp",
     "scoop": "none",
-
     "category": "Media",
     "check": "false"
   },
@@ -192,7 +180,6 @@
     "winget": "#",
     "choco": "spotify",
     "scoop": "none",
-
     "category": "Media",
     "check": "false"
   },
@@ -202,7 +189,6 @@
     "winget": "#",
     "choco": "fsviewer",
     "scoop": "none",
-
     "category": "Imaging",
     "check": "false"
   },
@@ -212,7 +198,6 @@
     "winget": "Apache.OpenOffice",
     "choco": "openoffice",
     "scoop": "none",
-
     "category": "Documents",
     "check": "false"
   },
@@ -222,7 +207,6 @@
     "winget": "Foxit.FoxitReader",
     "choco": "foxitreader",
     "scoop": "none",
-
     "category": "Documents",
     "check": "false"
   },
@@ -232,8 +216,8 @@
     "winget": "TheDocumentFoundation.LibreOffice",
     "choco": "libreoffice-fresh",
     "scoop": "none",
-
     "category": "Documents",
+    "suggestion": "true",
     "check": "false"
   },
   {
@@ -242,7 +226,6 @@
     "winget": "SumatraPDF.SumatraPDF",
     "choco": "sumatrapdf.install",
     "scoop": "none",
-
     "category": "Documents",
     "check": "false"
   },
@@ -252,8 +235,8 @@
     "winget": "RARLab.WinRAR",
     "choco": "winrar",
     "scoop": "none",
-
     "category": "Compression",
+    "suggestion": "true",
     "check": "false"
   },
   {
@@ -263,6 +246,7 @@
     "choco": "7zip",
     "scoop": "none",
     "category": "Compression",
+    "suggestion": "true",
     "check": "false"
   },
   {
@@ -271,7 +255,6 @@
     "winget": "7zip.7zip",
     "choco": "peazip",
     "scoop": "none",
-
     "category": "Compression",
     "check": "false"
   },
@@ -291,6 +274,7 @@
     "choco": "telegram",
     "scoop": "none",
     "category": "Communication",
+    "suggestion": "true",
     "check": "false"
   },
   {
@@ -299,7 +283,6 @@
     "winget": "#",
     "choco": "signal",
     "scoop": "none",
-
     "category": "Communication",
     "check": "false"
   },
@@ -309,7 +292,6 @@
     "winget": "WhatsApp.WhatsApp",
     "choco": "messenger",
     "scoop": "none",
-
     "category": "Communication",
     "check": "false"
   },
@@ -319,7 +301,6 @@
     "winget": "Microsoft.Skype",
     "choco": "skype",
     "scoop": "none",
-
     "category": "Communication",
     "check": "false"
   },
@@ -329,7 +310,6 @@
     "winget": " Zoom.Zoom",
     "choco": "zoom",
     "scoop": "none",
-
     "category": "Communication",
     "check": "false"
   },
@@ -339,7 +319,6 @@
     "winget": "Microsoft.Teams",
     "choco": "microsoft-teams.install",
     "scoop": "none",
-
     "category": "Communication",
     "check": "false"
   },
@@ -349,7 +328,6 @@
     "winget": "Discord.Discord",
     "choco": "discord",
     "scoop": "none",
-
     "category": "Communication",
     "check": "false"
   },
@@ -359,7 +337,6 @@
     "winget": "TeamViewer.TeamViewer",
     "choco": "teamviewer",
     "scoop": "none",
-
     "category": "File Sharing",
     "check": "false"
   },
@@ -369,7 +346,6 @@
     "winget": "GIMP.GIMP",
     "choco": "gimp",
     "scoop": "none",
-
     "category": "Imaging",
     "check": "false"
   },
@@ -379,7 +355,6 @@
     "winget": "#",
     "choco": "directx",
     "scoop": "none",
-
     "category": "Gaming",
     "check": "false"
   },
@@ -389,7 +364,6 @@
     "winget": "#",
     "choco": "vcredist-all",
     "scoop": "none",
-
     "category": "Gaming",
     "check": "false"
   },
@@ -399,7 +373,6 @@
     "winget": "Microsoft.VCRedist.2005.x86",
     "choco": "vcredist2005",
     "scoop": "none",
-
     "category": "Gaming",
     "check": "false"
   },
@@ -409,7 +382,6 @@
     "winget": "Microsoft.VCRedist.2005.x64",
     "choco": "vcredist2005",
     "scoop": "none",
-
     "category": "Gaming",
     "check": "false"
   },
@@ -419,7 +391,6 @@
     "winget": "Microsoft.VCRedist.2008.x86",
     "choco": "vcredist2008",
     "scoop": "none",
-
     "category": "Gaming",
     "check": "false"
   },
@@ -429,7 +400,6 @@
     "winget": "Microsoft.VCRedist.2008.x64",
     "choco": "vcredist2008",
     "scoop": "none",
-
     "category": "Gaming",
     "check": "false"
   },
@@ -439,7 +409,6 @@
     "winget": "Microsoft.VCRedist.2010.x86",
     "choco": "vcredist2010",
     "scoop": "none",
-
     "category": "Gaming",
     "check": "false"
   },
@@ -449,7 +418,6 @@
     "winget": "Microsoft.VCRedist.2010.x64",
     "choco": "vcredist2010",
     "scoop": "none",
-
     "category": "Gaming",
     "check": "false"
   },
@@ -459,7 +427,6 @@
     "winget": "Microsoft.VCRedist.2012.x86",
     "choco": "vcredist2012",
     "scoop": "none",
-
     "category": "Gaming",
     "check": "false"
   },
@@ -469,7 +436,6 @@
     "winget": "Microsoft.VCRedist.2012.x64",
     "choco": "vcredist2012",
     "scoop": "none",
-
     "category": "Gaming",
     "check": "false"
   },
@@ -479,7 +445,6 @@
     "winget": "Microsoft.VCRedist.2013.x86",
     "choco": "vcredist2013",
     "scoop": "none",
-
     "category": "Gaming",
     "check": "false"
   },
@@ -489,7 +454,6 @@
     "winget": "Microsoft.VCRedist.2013.x64",
     "choco": "vcredist2013",
     "scoop": "none",
-
     "category": "Gaming",
     "check": "false"
   },
@@ -499,7 +463,6 @@
     "winget": "Microsoft.VCRedist.2015+.x64",
     "choco": "vcredist2015",
     "scoop": "none",
-
     "category": "Gaming",
     "check": "false"
   },
@@ -509,7 +472,6 @@
     "winget": "Microsoft.VCRedist.2015+.x86",
     "choco": "vcredist2015",
     "scoop": "none",
-
     "category": "Gaming",
     "check": "false"
   },
@@ -519,7 +481,6 @@
     "winget": "#",
     "choco": "dotnet-all",
     "scoop": "none",
-
     "category": "Gaming",
     "check": "false"
   },
@@ -529,9 +490,8 @@
     "winget": "#",
     "choco": "amd-ryzen-chipset",
     "scoop": "none",
-
     "category": "Gaming",
-    "check": "true"
+    "check": "false"
   },
   {
     "Name": "NVidia Display Driver",
@@ -539,7 +499,6 @@
     "winget": "#",
     "choco": "nvidia-display-driver",
     "scoop": "none",
-
     "category": "Gaming",
     "check": "false"
   },
@@ -549,7 +508,6 @@
     "winget": "Nvidia.GeForceNow",
     "choco": "nvidia-geforce-now",
     "scoop": "none",
-
     "category": "Gaming",
     "check": "false"
   },
@@ -559,7 +517,6 @@
     "winget": "#",
     "choco": "msiafterburner",
     "scoop": "none",
-
     "category": "Gaming",
     "check": "false"
   },
@@ -569,7 +526,6 @@
     "winget": "Nvidia.PhysX",
     "choco": "physx.legacy",
     "scoop": "none",
-
     "category": "Gaming",
     "check": "false"
   },
@@ -815,6 +771,7 @@
     "choco": "bulk-crap-uninstaller",
     "scoop": "none",
     "category": "Utilities",
+    "suggestion": "true",
     "check": "false"
   },
   {
@@ -833,6 +790,7 @@
     "choco": "hwinfo.install",
     "scoop": "none",
     "category": "Utilities",
+    "suggestion": "true",
     "check": "false"
   },
   {
@@ -896,6 +854,7 @@
     "choco": "rufus",
     "scoop": "none",
     "category": "Utilities",
+    "suggestion": "true",
     "check": "false"
   },
   {
@@ -968,6 +927,7 @@
     "choco": "fxsound",
     "scoop": "none",
     "category": "Utilities",
+    "suggestion": "true",
     "check": "false"
   },
   {
@@ -1049,6 +1009,7 @@
     "choco": "qbittorrent",
     "scoop": "none",
     "category": "File Sharing",
+    "suggestion": "true",
     "check": "false"
   },
   {

@@ -10,9 +10,7 @@ param (
 )
 
 # Initialize synchronized hashtable
-$OFS = "`r`n"
 $sync = [Hashtable]::Synchronized(@{})
-$sync.PSScriptRoot = $PSScriptRoot
 $sync.configs = @{}
 
 # Function to write content to output script
@@ -22,6 +20,8 @@ function WriteToScript {
     )
     Add-Content -Path $OutputScript -Value $Content
 }
+
+# Function to Replace placeholder
 function ReplaceTextInFile {
     param (
         [string]$FilePath,
@@ -172,14 +172,18 @@ try {
     $AppsCheckboxes  = ""
     foreach ($App  in $sync.configs.applications) {
         $AppsCheckboxes += @"
-    <CheckBox Content="$($App.Name)" Tag="$($App.category)" />
+
+    <CheckBox Content="$($App.Name)" Tag="$($App.category)" IsChecked="$($App.check)" FontFamily="console" />
+    
 "@
     }
 
     $TweaksCheckboxes  = ""
     foreach ($Tweak  in $sync.configs.tweaks) {
         $TweaksCheckboxes  += @"
-    <CheckBox Content="$($Tweak.Name)" />
+
+    <CheckBox Content="$($Tweak.Name)" FontFamily="console"/>
+
 "@
 }
 
@@ -275,7 +279,7 @@ WriteToScript -Content @"
 
 "@
 
-Write-Host "Compile successfully " -ForegroundColor Green
+Write-Host "Build successfully" -ForegroundColor Green
 ./itt.ps1
 
 }
