@@ -834,7 +834,8 @@ $sync.configs.applications = '[
     "choco": "firefox",
     "scoop": "none",
     "category": "Browsers",
-    "check": "true"
+    "suggestion": "true",
+    "check": "false"
   },
   {
     "Name": "Add block extension [Firefox]",
@@ -842,7 +843,6 @@ $sync.configs.applications = '[
     "winget": "#",
     "choco": "adblockplusfirefox",
     "scoop": "none",
-
     "category": "Browsers",
     "check": "false"
   },
@@ -852,7 +852,6 @@ $sync.configs.applications = '[
     "winget": "Microsoft.Edge",
     "choco": "microsoft-edge",
     "scoop": "none",
-
     "category": "Browsers",
     "check": "false"
   },
@@ -862,7 +861,6 @@ $sync.configs.applications = '[
     "winget": "Google.Chrome",
     "choco": "googlechrome",
     "scoop": "none",
-
     "category": "Browsers",
     "check": "false"
   },
@@ -872,7 +870,6 @@ $sync.configs.applications = '[
     "winget": "#",
     "choco": "ublockorigin-chrome",
     "scoop": "none",
-
     "category": "Browsers",
     "check": "false"
   },
@@ -882,7 +879,6 @@ $sync.configs.applications = '[
     "winget": "eloston.ungoogled-chromium",
     "choco": "chromium",
     "scoop": "none",
-
     "category": "Browsers",
     "check": "false"
   },
@@ -892,7 +888,6 @@ $sync.configs.applications = '[
     "winget": "Brave.Brave",
     "choco": "brave",
     "scoop": "none",
-
     "category": "Browsers",
     "check": "false"
   },
@@ -902,7 +897,6 @@ $sync.configs.applications = '[
     "winget": "TorProject.TorBrowser",
     "choco": "tor-browser",
     "scoop": "none",
-
     "category": "Browsers",
     "check": "false"
   },
@@ -912,7 +906,6 @@ $sync.configs.applications = '[
     "winget": "#",
     "choco": "opera",
     "scoop": "none",
-
     "category": "Browsers",
     "check": "false"
   },
@@ -923,7 +916,8 @@ $sync.configs.applications = '[
     "choco": "none",
     "scoop": "extras/neatdownloadmanager",
     "category": "Browsers",
-    "check": "true"
+    "suggestion": "true",
+    "check": "false"
   },
   {
     "Name": "Internet Download Manager",
@@ -931,9 +925,8 @@ $sync.configs.applications = '[
     "winget": "Tonec.InternetDownloadManager",
     "choco": "internet-download-manager",
     "scoop": "none",
-
     "category": "Browsers",
-    "check": "true"
+    "check": "false"
   },
   {
     "Name": "K-Lite Mega Codec Pack",
@@ -941,9 +934,9 @@ $sync.configs.applications = '[
     "winget": "CodecGuide.K-LiteCodecPack.Mega",
     "choco": "k-litecodecpackfull",
     "scoop": "none",
-
     "category": "Media",
-    "check": "true"
+    "suggestion": "true",
+    "check": "false"
   },
   {
     "Name": "PotPlayer",
@@ -951,7 +944,6 @@ $sync.configs.applications = '[
     "winget": "Daum.PotPlayer",
     "choco": "potplayer",
     "scoop": "none",
-
     "category": "Media",
     "check": "false"
   },
@@ -961,8 +953,8 @@ $sync.configs.applications = '[
     "winget": "VideoLAN.VLC",
     "choco": "vlc.install",
     "scoop": "none",
-
     "category": "Media",
+    "suggestion": "true",
     "check": "false"
   },
   {
@@ -971,7 +963,6 @@ $sync.configs.applications = '[
     "winget": "#",
     "choco": "kodi",
     "scoop": "none",
-
     "category": "Media",
     "check": "false"
   },
@@ -981,7 +972,6 @@ $sync.configs.applications = '[
     "winget": "#",
     "choco": "jellyfin",
     "scoop": "none",
-
     "category": "Media",
     "check": "false"
   },
@@ -991,7 +981,6 @@ $sync.configs.applications = '[
     "winget": "#",
     "choco": "winamp",
     "scoop": "none",
-
     "category": "Media",
     "check": "false"
   },
@@ -1001,7 +990,6 @@ $sync.configs.applications = '[
     "winget": "#",
     "choco": "aimp",
     "scoop": "none",
-
     "category": "Media",
     "check": "false"
   },
@@ -1011,7 +999,6 @@ $sync.configs.applications = '[
     "winget": "#",
     "choco": "spotify",
     "scoop": "none",
-
     "category": "Media",
     "check": "false"
   },
@@ -1021,7 +1008,6 @@ $sync.configs.applications = '[
     "winget": "#",
     "choco": "fsviewer",
     "scoop": "none",
-
     "category": "Imaging",
     "check": "false"
   },
@@ -1031,7 +1017,6 @@ $sync.configs.applications = '[
     "winget": "Apache.OpenOffice",
     "choco": "openoffice",
     "scoop": "none",
-
     "category": "Documents",
     "check": "false"
   },
@@ -1041,7 +1026,6 @@ $sync.configs.applications = '[
     "winget": "Foxit.FoxitReader",
     "choco": "foxitreader",
     "scoop": "none",
-
     "category": "Documents",
     "check": "false"
   },
@@ -1051,8 +1035,8 @@ $sync.configs.applications = '[
     "winget": "TheDocumentFoundation.LibreOffice",
     "choco": "libreoffice-fresh",
     "scoop": "none",
-
     "category": "Documents",
+    "suggestion": "true",
     "check": "false"
   },
   {
@@ -1061,7 +1045,6 @@ $sync.configs.applications = '[
     "winget": "SumatraPDF.SumatraPDF",
     "choco": "sumatrapdf.install",
     "scoop": "none",
-
     "category": "Documents",
     "check": "false"
   },
@@ -1071,8 +1054,8 @@ $sync.configs.applications = '[
     "winget": "RARLab.WinRAR",
     "choco": "winrar",
     "scoop": "none",
-
     "category": "Compression",
+    "suggestion": "true",
     "check": "false"
   },
   {
@@ -1082,6 +1065,7 @@ $sync.configs.applications = '[
     "choco": "7zip",
     "scoop": "none",
     "category": "Compression",
+    "suggestion": "true",
     "check": "false"
   },
   {
@@ -1090,7 +1074,6 @@ $sync.configs.applications = '[
     "winget": "7zip.7zip",
     "choco": "peazip",
     "scoop": "none",
-
     "category": "Compression",
     "check": "false"
   },
@@ -1110,6 +1093,7 @@ $sync.configs.applications = '[
     "choco": "telegram",
     "scoop": "none",
     "category": "Communication",
+    "suggestion": "true",
     "check": "false"
   },
   {
@@ -1118,7 +1102,6 @@ $sync.configs.applications = '[
     "winget": "#",
     "choco": "signal",
     "scoop": "none",
-
     "category": "Communication",
     "check": "false"
   },
@@ -1128,7 +1111,6 @@ $sync.configs.applications = '[
     "winget": "WhatsApp.WhatsApp",
     "choco": "messenger",
     "scoop": "none",
-
     "category": "Communication",
     "check": "false"
   },
@@ -1138,7 +1120,6 @@ $sync.configs.applications = '[
     "winget": "Microsoft.Skype",
     "choco": "skype",
     "scoop": "none",
-
     "category": "Communication",
     "check": "false"
   },
@@ -1148,7 +1129,6 @@ $sync.configs.applications = '[
     "winget": " Zoom.Zoom",
     "choco": "zoom",
     "scoop": "none",
-
     "category": "Communication",
     "check": "false"
   },
@@ -1158,7 +1138,6 @@ $sync.configs.applications = '[
     "winget": "Microsoft.Teams",
     "choco": "microsoft-teams.install",
     "scoop": "none",
-
     "category": "Communication",
     "check": "false"
   },
@@ -1168,7 +1147,6 @@ $sync.configs.applications = '[
     "winget": "Discord.Discord",
     "choco": "discord",
     "scoop": "none",
-
     "category": "Communication",
     "check": "false"
   },
@@ -1178,7 +1156,6 @@ $sync.configs.applications = '[
     "winget": "TeamViewer.TeamViewer",
     "choco": "teamviewer",
     "scoop": "none",
-
     "category": "File Sharing",
     "check": "false"
   },
@@ -1188,7 +1165,6 @@ $sync.configs.applications = '[
     "winget": "GIMP.GIMP",
     "choco": "gimp",
     "scoop": "none",
-
     "category": "Imaging",
     "check": "false"
   },
@@ -1198,7 +1174,6 @@ $sync.configs.applications = '[
     "winget": "#",
     "choco": "directx",
     "scoop": "none",
-
     "category": "Gaming",
     "check": "false"
   },
@@ -1208,7 +1183,6 @@ $sync.configs.applications = '[
     "winget": "#",
     "choco": "vcredist-all",
     "scoop": "none",
-
     "category": "Gaming",
     "check": "false"
   },
@@ -1218,7 +1192,6 @@ $sync.configs.applications = '[
     "winget": "Microsoft.VCRedist.2005.x86",
     "choco": "vcredist2005",
     "scoop": "none",
-
     "category": "Gaming",
     "check": "false"
   },
@@ -1228,7 +1201,6 @@ $sync.configs.applications = '[
     "winget": "Microsoft.VCRedist.2005.x64",
     "choco": "vcredist2005",
     "scoop": "none",
-
     "category": "Gaming",
     "check": "false"
   },
@@ -1238,7 +1210,6 @@ $sync.configs.applications = '[
     "winget": "Microsoft.VCRedist.2008.x86",
     "choco": "vcredist2008",
     "scoop": "none",
-
     "category": "Gaming",
     "check": "false"
   },
@@ -1248,7 +1219,6 @@ $sync.configs.applications = '[
     "winget": "Microsoft.VCRedist.2008.x64",
     "choco": "vcredist2008",
     "scoop": "none",
-
     "category": "Gaming",
     "check": "false"
   },
@@ -1258,7 +1228,6 @@ $sync.configs.applications = '[
     "winget": "Microsoft.VCRedist.2010.x86",
     "choco": "vcredist2010",
     "scoop": "none",
-
     "category": "Gaming",
     "check": "false"
   },
@@ -1268,7 +1237,6 @@ $sync.configs.applications = '[
     "winget": "Microsoft.VCRedist.2010.x64",
     "choco": "vcredist2010",
     "scoop": "none",
-
     "category": "Gaming",
     "check": "false"
   },
@@ -1278,7 +1246,6 @@ $sync.configs.applications = '[
     "winget": "Microsoft.VCRedist.2012.x86",
     "choco": "vcredist2012",
     "scoop": "none",
-
     "category": "Gaming",
     "check": "false"
   },
@@ -1288,7 +1255,6 @@ $sync.configs.applications = '[
     "winget": "Microsoft.VCRedist.2012.x64",
     "choco": "vcredist2012",
     "scoop": "none",
-
     "category": "Gaming",
     "check": "false"
   },
@@ -1298,7 +1264,6 @@ $sync.configs.applications = '[
     "winget": "Microsoft.VCRedist.2013.x86",
     "choco": "vcredist2013",
     "scoop": "none",
-
     "category": "Gaming",
     "check": "false"
   },
@@ -1308,7 +1273,6 @@ $sync.configs.applications = '[
     "winget": "Microsoft.VCRedist.2013.x64",
     "choco": "vcredist2013",
     "scoop": "none",
-
     "category": "Gaming",
     "check": "false"
   },
@@ -1318,7 +1282,6 @@ $sync.configs.applications = '[
     "winget": "Microsoft.VCRedist.2015+.x64",
     "choco": "vcredist2015",
     "scoop": "none",
-
     "category": "Gaming",
     "check": "false"
   },
@@ -1328,7 +1291,6 @@ $sync.configs.applications = '[
     "winget": "Microsoft.VCRedist.2015+.x86",
     "choco": "vcredist2015",
     "scoop": "none",
-
     "category": "Gaming",
     "check": "false"
   },
@@ -1338,7 +1300,6 @@ $sync.configs.applications = '[
     "winget": "#",
     "choco": "dotnet-all",
     "scoop": "none",
-
     "category": "Gaming",
     "check": "false"
   },
@@ -1348,9 +1309,8 @@ $sync.configs.applications = '[
     "winget": "#",
     "choco": "amd-ryzen-chipset",
     "scoop": "none",
-
     "category": "Gaming",
-    "check": "true"
+    "check": "false"
   },
   {
     "Name": "NVidia Display Driver",
@@ -1358,7 +1318,6 @@ $sync.configs.applications = '[
     "winget": "#",
     "choco": "nvidia-display-driver",
     "scoop": "none",
-
     "category": "Gaming",
     "check": "false"
   },
@@ -1368,7 +1327,6 @@ $sync.configs.applications = '[
     "winget": "Nvidia.GeForceNow",
     "choco": "nvidia-geforce-now",
     "scoop": "none",
-
     "category": "Gaming",
     "check": "false"
   },
@@ -1378,7 +1336,6 @@ $sync.configs.applications = '[
     "winget": "#",
     "choco": "msiafterburner",
     "scoop": "none",
-
     "category": "Gaming",
     "check": "false"
   },
@@ -1388,7 +1345,6 @@ $sync.configs.applications = '[
     "winget": "Nvidia.PhysX",
     "choco": "physx.legacy",
     "scoop": "none",
-
     "category": "Gaming",
     "check": "false"
   },
@@ -1634,6 +1590,7 @@ $sync.configs.applications = '[
     "choco": "bulk-crap-uninstaller",
     "scoop": "none",
     "category": "Utilities",
+    "suggestion": "true",
     "check": "false"
   },
   {
@@ -1652,6 +1609,7 @@ $sync.configs.applications = '[
     "choco": "hwinfo.install",
     "scoop": "none",
     "category": "Utilities",
+    "suggestion": "true",
     "check": "false"
   },
   {
@@ -1715,6 +1673,7 @@ $sync.configs.applications = '[
     "choco": "rufus",
     "scoop": "none",
     "category": "Utilities",
+    "suggestion": "true",
     "check": "false"
   },
   {
@@ -1787,6 +1746,7 @@ $sync.configs.applications = '[
     "choco": "fxsound",
     "scoop": "none",
     "category": "Utilities",
+    "suggestion": "true",
     "check": "false"
   },
   {
@@ -1868,6 +1828,7 @@ $sync.configs.applications = '[
     "choco": "qbittorrent",
     "scoop": "none",
     "category": "File Sharing",
+    "suggestion": "true",
     "check": "false"
   },
   {
@@ -2318,155 +2279,136 @@ $sync.configs.Quotes = '{
 $sync.configs.tweaks = '[
   {
     "name": "System File Checker",
-    "description": "Use the System File Checker tool to repair missing or corrupted system files",
+    "description": "sfc /scannow Use the System File Checker tool to repair missing or corrupted system files",
     "repo": "null",
     "script": "sfc /scannow;",
-    "check": "true",
-    "category": "tweak"
+    "check": "false"
   },
   {
     "name": "Run Disk cleanup",
     "description": "Clean temporary files that are not necessary",
     "repo": "null",
     "script": "cleanmgr.exe /d C: /VERYLOWDISK /sagerun:1 Dism.exe /online /Cleanup-Image /StartComponentCleanup /ResetBase;",
-    "check": "true",
-    "category": "tweak"
+    "check": "false"
   },
   {
     "name": "Restore All Windows Services to Default",
     "description": "If you face a problem with some system services, you can restore all services to Default.",
     "repo": "null",
     "script": "Invoke-RestMethod https://raw.githubusercontent.com/emadadel4/WindowsTweaks/main/restore.bat | Invoke-Expression;",
-    "check": "true",
-    "category": "tweak"
+    "check": "false"
   },
   {
     "name": "Remove Folder Shortcuts From Windows'' File Explorer",
     "description": "Remove Documents, Videos, Pictures, Desktop. Shortcuts from File Explorer ",
     "repo": "https://github.com/emadadel4/WindowsTweaks",
     "script": "Invoke-RestMethod https://raw.githubusercontent.com/emadadel4/WindowsTweaks/main/rm.ps1 | Invoke-Expression;",
-    "check": "true",
-    "category": "tweak"
+    "check": "false"
   },
   {
     "name": "Fix Stutter/Lag in Games",
     "description": "Fix Stutter in Games (Disable GameBarPresenceWriter). Windows 10/11",
     "repo": "https://github.com/emadadel4/Fix-Stutter-in-Games",
     "script": "Invoke-RestMethod https://raw.githubusercontent.com/emadadel4/Fix-Stutter-in-Games/main/fix.ps1 | Invoke-Expression;",
-    "check": "true",
-    "category": "tweak"
+    "check": "false"
   },
   {
     "name": "Remove Unnecessary Windows 10/11 Apps",
     "description": "BingNews, GetHelp, Getstarted, Messaging, Microsoft3DViewer, MicrosoftOfficeHub, MicrosoftSolitaireCollection, News, Office.Lens, Office.OneNote, Office.Sway, OneConnect, People, Print3D, RemoteDesktop, SkypeApp, StorePurchaseApp, Office.Todo.List, Whiteboard, WindowsAlarms, WindowsCamera, windowscommunicationsapps, WindowsFeedbackHub, WindowsMaps, WindowsSoundRecorder, Xbox.TCUI, XboxApp, XboxGameOverlay, XboxIdentityProvider, XboxSpeechToTextOverlay, ZuneMusic, ZuneVideo, Windows.Cortana, MSPaint",
     "repo": "https://github.com/emadadel4/WindowsTweaks",
     "script": "Invoke-RestMethod https://raw.githubusercontent.com/emadadel4/WindowsTweaks/main/debloater.ps1 | Invoke-Expression;",
-    "check": "true",
-    "category": "tweak"
+    "check": "false"
   },
   {
     "name": "Enable the Ultimate Performance Power Plan",
     "description": "Enable the Ultimate Performance Power Plan",
     "repo": "https://github.com/emadadel4/WindowsTweaks",
     "script": "powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61; Start-Process powercfg.cpl;",
-    "fromUrl": "true",
-    "category": "tweak"
+    "fromUrl": "false"
   },
   {
     "name": "Reset the TCP/IP Stack",
     "description": "If you have an internet problem, Reset network configuration",
     "repo": "null",
     "script": "netsh int ip reset;",
-    "check": "true",
-    "category": "tweak"
+    "check": "false"
   },
   {
     "name": "Setup Auto login",
     "description": "Setup auto login Windows username",
     "repo": "null",
     "script": "curl.exe -ss \"https://live.sysinternals.com/Autologon.exe\" -o $env:temp\\autologin.exe ; cmd /c $env:temp\\autologin.exe /accepteula",
-    "check": "true",
-    "category": "tweak"
+    "check": "false"
   },
   {
     "name": "Disable People icon on Taskbar",
     "description": "Disables People on taskbar",
     "repo": "null",
     "script": "Set-ItemProperty ''HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\\People'' -Name PeopleBand -Value 0 -Verbose",
-    "check": "true",
-    "category": "tweak"
+    "check": "false"
   },
   {
     "name": "Disable suggestions on start menu",
     "description": "Disables suggestions on start menu",
     "repo": "null",
     "script": "New-Item -Path ''HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\CloudContent'' -Force | New-ItemProperty -Name ''DisableWindowsConsumerFeatures'' -Value 1 -PropertyType DWORD -Force",
-    "check": "true",
-    "category": "tweak"
+    "check": "false"
   },
   {
     "name": "Turns off Data Collection",
     "description": "This tweak disables data collection on your Windows system by modifying the registry setting for telemetry. It checks if the specified registry path exists and if so, sets the AllowTelemetry value to 0, effectively turning off telemetry.",
     "repo": "null",
     "script": "New-ItemProperty -Path ''HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\DataCollection'' -Name ''AllowTelemetry'' -Value 0 -PropertyType DWORD -Force | Out-Null",
-    "check": "false",
-    "category": "tweak"
+    "check": "false"
   },
   {
     "name": "Prevents bloatware applications from returning",
     "description": "This tweak aims to prevent bloatware applications from returning on your Windows system. It checks if a specific registry path exists, and if not, it creates it. Then, it sets a registry value to disable Windows consumer features, thereby reducing the likelihood of bloatware apps being installed or reinstalled.",
     "repo": "null",
     "script": "If (!(Test-Path ''HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\CloudContent'')) { Mkdir ''HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\CloudContent'' -ErrorAction SilentlyContinue; New-ItemProperty ''HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\CloudContent'' -Name DisableWindowsConsumerFeatures -Value 1 -Verbose -ErrorAction SilentlyContinue }",
-    "check": "true",
-    "category": "tweak"
+    "check": "false"
   },
   {
     "name": "Stops the Windows Feedback Experience",
     "description": "This tweak aims to stop Windows Feedback by creating necessary registry keys if they do not exist. It checks if the specified registry path exists, and if not, it creates the required keys. Then, it sets a registry value to disable Windows Feedback by setting the PeriodInNanoSeconds value to 0, effectively stopping the feedback mechanism.",
     "repo": "null",
     "script": "If (!(Test-Path ''HKCU:\\Software\\Microsoft\\Siuf\\Rules\\PeriodInNanoSeconds'')) { mkdir ''HKCU:\\Software\\Microsoft\\Siuf'' -ErrorAction SilentlyContinue; mkdir ''HKCU:\\Software\\Microsoft\\Siuf\\Rules'' -ErrorAction SilentlyContinue; mkdir ''HKCU:\\Software\\Microsoft\\Siuf\\Rules\\PeriodInNanoSeconds'' -ErrorAction SilentlyContinue; New-ItemProperty ''HKCU:\\Software\\Microsoft\\Siuf\\Rules\\PeriodInNanoSeconds'' -Name PeriodInNanoSeconds -Value 0 -Verbose -ErrorAction SilentlyContinue }; If (Test-Path ''HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\AdvertisingInfo'') { Set-ItemProperty ''HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\AdvertisingInfo'' -Name Enabled -Value 0 -Verbose }",
-    "check": "true",
-    "category": "tweak"
+    "check": "false"
   },
   {
     "name": "Remove Cortana",
     "description": "This tweak aims to disable Cortana by modifying the registry settings related to Windows Search. It checks if the specified registry path exists, and if so, it sets the AllowCortana value to 0, effectively disabling Cortana''s functionality.",
     "repo": "null",
     "script": "Get-AppxPackage -AllUsers -PackageTypeFilter Bundle -name \"*Microsoft.549981*\" | Remove-AppxPackage",
-    "check": "true",
-    "category": "tweak"
+    "check": "false"
   },
   {
     "name": "Disable Windows Web Search",
     "description": "Disable web search in Windows by modifying the registry settings related to Windows Search. It sets the BingSearchEnabled value to 0, effectively turning off web search results.",
     "repo": "null",
     "script": "Set-ItemProperty -Path ''HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Search'' -Name ''BingSearchEnabled'' -Value 0",
-    "check": "true",
-    "category": "tweak"
+    "check": "false"
   },
   {
-    "name": "Windows 10 Turn off background apps",
+    "name": "Turn off background apps",
     "description": "Disable background apps in Windows 10 by modifying the appropriate registry settings.",
     "repo": "null",
     "script": "Set-ItemProperty -Path ''HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\BackgroundAccessApplications'' -Name ''GlobalUserDisabled'' -Value 1",
-    "check": "true",
-    "category": "tweak"
+    "check": "false"
   },
   {
-    "name": "Windows 10 Disable all Privacy options",
+    "name": "Disable all Privacy options",
     "description": "Disable all Privacy options.",
     "repo": "null",
     "script": "Set-ItemProperty -Path \"HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\DataCollection\" -Name \"AllowTelemetry\" -Value 0; Set-ItemProperty -Path \"HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\AdvertisingInfo\" -Name \"Enabled\" -Value 0; Set-ItemProperty -Path \"HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Search\" -Name \"AllowCortana\" -Value 0; Set-ItemProperty -Path \"HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Search\" -Name \"BingSearchEnabled\" -Value 0",
-    "check": "true",
-    "category": "tweak"
+    "check": "false"
   },
   {
     "name": "Disable Game Mode",
-    "description": "This tweak disables Game Mode in Windows 10.",
+    "description": "This tweak disables Game Mode",
     "repo": "null",
     "script": "Set-ItemProperty -Path \"HKCU:\\SOFTWARE\\Microsoft\\GameBar\" -Name \"AllowAutoGameMode\" -Value 0",
-    "check": "true",
-    "category": "tweak"
+    "check": "false"
   }
 ]
 ' | ConvertFrom-Json
@@ -2830,14 +2772,360 @@ $inputXML = '
                 <TabItem Header="Apps" Name="apps" BorderBrush="{x:Null}" Padding="0">
                     <TabItem.Content>
                         <ListView Margin="0" ScrollViewer.VerticalScrollBarVisibility="Auto" Name="list" BorderBrush="{x:Null}" Background="{x:Null}">
-                                <CheckBox Content="Thorium" Tag="Browsers" />    <CheckBox Content="Firefox" Tag="Browsers" />    <CheckBox Content="Add block extension [Firefox]" Tag="Browsers" />    <CheckBox Content="Microsoft Edge" Tag="Browsers" />    <CheckBox Content="Google Chrome" Tag="Browsers" />    <CheckBox Content="uBlock Origin extension [Chrome]" Tag="Browsers" />    <CheckBox Content="Chromium" Tag="Browsers" />    <CheckBox Content="Brave" Tag="Browsers" />    <CheckBox Content="Tor Browser" Tag="Browsers" />    <CheckBox Content="Opera" Tag="Browsers" />    <CheckBox Content="Neat Download Manager" Tag="Browsers" />    <CheckBox Content="Internet Download Manager" Tag="Browsers" />    <CheckBox Content="K-Lite Mega Codec Pack" Tag="Media" />    <CheckBox Content="PotPlayer" Tag="Media" />    <CheckBox Content="VLC" Tag="Media" />    <CheckBox Content="Kodi" Tag="Media" />    <CheckBox Content="Jellyfin" Tag="Media" />    <CheckBox Content="Winamp" Tag="Media" />    <CheckBox Content="Aimp" Tag="Media" />    <CheckBox Content="Spotify" Tag="Media" />    <CheckBox Content="FastStone Image Viewer" Tag="Imaging" />    <CheckBox Content="OpenOffice" Tag="Documents" />    <CheckBox Content="FoxitReader" Tag="Documents" />    <CheckBox Content="LibreOffice" Tag="Documents" />    <CheckBox Content="SumatraPDF" Tag="Documents" />    <CheckBox Content="WinRAR" Tag="Compression" />    <CheckBox Content="7-Zip" Tag="Compression" />    <CheckBox Content="PeaZip" Tag="Compression" />    <CheckBox Content="QQPlayer" Tag="Media" />    <CheckBox Content="Telegram Desktop" Tag="Communication" />    <CheckBox Content="Signal" Tag="Communication" />    <CheckBox Content="Meta Messenger" Tag="Communication" />    <CheckBox Content="Skype" Tag="Communication" />    <CheckBox Content="Zoom" Tag="Communication" />    <CheckBox Content="Microsoft Teams" Tag="Communication" />    <CheckBox Content="Discord" Tag="Communication" />    <CheckBox Content="TeamViewer" Tag="File Sharing" />    <CheckBox Content="GIMP" Tag="Imaging" />    <CheckBox Content="DirectX" Tag="Gaming" />    <CheckBox Content="Microsoft Visual C++ Runtime - all versions" Tag="Gaming" />    <CheckBox Content="Microsoft Visual C++ 2005 (x86) Redistributable" Tag="Gaming" />    <CheckBox Content="Microsoft Visual C++ 2005 (x64) Redistributable" Tag="Gaming" />    <CheckBox Content="Microsoft Visual C++ 2008 (x86) Redistributable" Tag="Gaming" />    <CheckBox Content="Microsoft Visual C++ 2008 (x64) Redistributable" Tag="Gaming" />    <CheckBox Content="Microsoft Visual C++ 2010 (x86) Redistributable" Tag="Gaming" />    <CheckBox Content="Microsoft Visual C++ 2010 (x64) Redistributable" Tag="Gaming" />    <CheckBox Content="Microsoft Visual C++ 2012 (x86) Redistributable" Tag="Gaming" />    <CheckBox Content="Microsoft Visual C++ 2012 (x64) Redistributable" Tag="Gaming" />    <CheckBox Content="Microsoft Visual C++ 2013 (x86) Redistributable" Tag="Gaming" />    <CheckBox Content="Microsoft Visual C++ 2013 (x64) Redistributable" Tag="Gaming" />    <CheckBox Content="Microsoft Visual C++ 2015-2022 (x64) Redistributable" Tag="Gaming" />    <CheckBox Content="Microsoft Visual C++ 2015-2022  (x86) Redistributable" Tag="Gaming" />    <CheckBox Content="NET Framework All Versions" Tag="Gaming" />    <CheckBox Content="AMD Ryzen Chipset Drivers" Tag="Gaming" />    <CheckBox Content="NVidia Display Driver" Tag="Gaming" />    <CheckBox Content="NVIDIA GeForce" Tag="Gaming" />    <CheckBox Content="Msi Afterburner" Tag="Gaming" />    <CheckBox Content="NVIDIA PhysX" Tag="Gaming" />    <CheckBox Content="Steam" Tag="Gaming" />    <CheckBox Content="Epic Games Launcher " Tag="Gaming" />    <CheckBox Content="Ubisoft Connect" Tag="Gaming" />    <CheckBox Content="Origin" Tag="Gaming" />    <CheckBox Content="Rockstar Games Launcher" Tag="Gaming" />    <CheckBox Content="GameSave Manager" Tag="Gaming" />    <CheckBox Content="StreamlabsOBS" Tag="Gaming" />    <CheckBox Content="OBS Studio" Tag="Gaming" />    <CheckBox Content="Logitech Gaming Software" Tag="Gaming" />    <CheckBox Content="Lively Wallpaper" Tag="Gaming" />    <CheckBox Content="Playnite" Tag="Gaming" />    <CheckBox Content="Driver Easy" Tag="Drivers" />    <CheckBox Content="Intel Graphics Windows DCH" Tag="Drivers" />    <CheckBox Content="Intel Driver Support Assistant" Tag="Drivers" />    <CheckBox Content="Intel Network Adapter" Tag="Drivers" />    <CheckBox Content="Snappy Driver Installer" Tag="Drivers" />    <CheckBox Content="Driver booster" Tag="Drivers" />    <CheckBox Content="Driver Genius" Tag="Drivers" />    <CheckBox Content="Display Driver Uninstaller" Tag="Drivers" />    <CheckBox Content="Driver Store Explorer" Tag="Drivers" />    <CheckBox Content="1Password" Tag="Utilities" />    <CheckBox Content="MiniTool Partition Wizard" Tag="Utilities" />    <CheckBox Content="AOMEI Partition Assistant Standard" Tag="Utilities" />    <CheckBox Content="AOMEI Backupper" Tag="Utilities" />    <CheckBox Content="Recuva recover" Tag="Utilities" />    <CheckBox Content="CCleaner" Tag="Utilities" />    <CheckBox Content="BCUninstaller" Tag="Utilities" />    <CheckBox Content="Easy Context Menu" Tag="Utilities" />    <CheckBox Content="HWiNFO" Tag="Utilities" />    <CheckBox Content="Speccy" Tag="Utilities" />    <CheckBox Content="FurMark" Tag="Utilities" />    <CheckBox Content="Hard Disk Sentinel" Tag="Utilities" />    <CheckBox Content="CPUID CPU-Z" Tag="Utilities" />    <CheckBox Content="Mem Reduct" Tag="Utilities" />    <CheckBox Content="HandBrake" Tag="Utilities" />    <CheckBox Content="Rufus" Tag="Utilities" />    <CheckBox Content="ImgBurn" Tag="Developer" />    <CheckBox Content="Virtual CloneDrive" Tag="Utilities" />    <CheckBox Content="Utilso" Tag="Utilities" />    <CheckBox Content="Ventoy" Tag="Utilities" />    <CheckBox Content="iVentoy" Tag="Utilities" />    <CheckBox Content="AutoHotkey" Tag="Utilities" />    <CheckBox Content="Rainmeter" Tag="Utilities" />    <CheckBox Content="FxSound" Tag="Utilities" />    <CheckBox Content="HiSuite" Tag="Utilities" />    <CheckBox Content="Vysor" Tag="Utilities" />    <CheckBox Content="Unified Remote" Tag="Utilities" />    <CheckBox Content="AnyDesk" Tag="File Sharing" />    <CheckBox Content="Airdroid" Tag="File Sharing" />    <CheckBox Content="UltraViewer" Tag="File Sharing" />    <CheckBox Content="Wireless Network Watcher Portable" Tag="Utilities" />    <CheckBox Content="WifiInfoView" Tag="Utilities" />    <CheckBox Content="qBittorrent" Tag="File Sharing" />    <CheckBox Content="Google Earth Pro" Tag="Imaging" />    <CheckBox Content="XAMPP" Tag="Developer" />    <CheckBox Content="Visual Studio Professional 2022" Tag="Developer" />    <CheckBox Content="Visual Studio Community 2022" Tag="Developer" />    <CheckBox Content="Godot Game Engine" Tag="Developer" />    <CheckBox Content="Unity Hub" Tag="Developer" />    <CheckBox Content="Unity 3D" Tag="Developer" />    <CheckBox Content="Blender" Tag="Developer" />    <CheckBox Content="Visual Studio Code" Tag="Developer" />    <CheckBox Content="Sublime Text 4" Tag="Developer" />    <CheckBox Content="Atom" Tag="Developer" />    <CheckBox Content="InnoSetup" Tag="Developer" />    <CheckBox Content="PyCharm Community Edition" Tag="Developer" />    <CheckBox Content="PyCharm Professional Edition" Tag="Developer" />    <CheckBox Content="Jetbrains Rider" Tag="Developer" />    <CheckBox Content="Node.js LTS" Tag="Developer" />    <CheckBox Content="Electrum-LTS" Tag="Developer" />    <CheckBox Content="Hugo" Tag="Developer" />    <CheckBox Content="Notepad++" Tag="Developer" />    <CheckBox Content="Windows Terminal" Tag="Developer" />    <CheckBox Content="Powershell core" Tag="Developer" />    <CheckBox Content="x64dbg Portable" Tag="Developer" />    <CheckBox Content="dnSpy" Tag="Developer" />    <CheckBox Content="Cheat Engine" Tag="Developer" />    <CheckBox Content="Python" Tag="Developer" />    <CheckBox Content="Git" Tag="Developer" />    <CheckBox Content="GitHub Desktop" Tag="Developer" />    <CheckBox Content="Docker Desktop" Tag="Developer" />    <CheckBox Content="Docker Compose" Tag="Developer" />    <CheckBox Content="PowerToys" Tag="Developer" />    <CheckBox Content="Notion" Tag="Developer" />    <CheckBox Content="FL Studio" Tag="Developer" />    <CheckBox Content="Android Debug Bridge" Tag="Developer" />    <CheckBox Content="Universal ADB Drivers" Tag="Developer" />    <CheckBox Content="Scrcpy" Tag="Developer" />    <CheckBox Content="VirtualBox" Tag="Developer" />    <CheckBox Content="UltraISO" Tag="Developer" />    <CheckBox Content="Vmware Workstation" Tag="Developer" />    <CheckBox Content="oh-my-posh" Tag="Developer" />    <CheckBox Content="Malwarebytes" Tag="Security" />    <CheckBox Content="Kaspersky Virus Removal Tool" Tag="Security" />    <CheckBox Content="Kaspersky Anti-Virus" Tag="Security" />    <CheckBox Content="Avast Free Antivirus" Tag="Security" />
+                            
+    <CheckBox Content="Thorium" Tag="Browsers" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="Firefox" Tag="Browsers" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="Add block extension [Firefox]" Tag="Browsers" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="Microsoft Edge" Tag="Browsers" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="Google Chrome" Tag="Browsers" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="uBlock Origin extension [Chrome]" Tag="Browsers" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="Chromium" Tag="Browsers" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="Brave" Tag="Browsers" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="Tor Browser" Tag="Browsers" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="Opera" Tag="Browsers" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="Neat Download Manager" Tag="Browsers" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="Internet Download Manager" Tag="Browsers" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="K-Lite Mega Codec Pack" Tag="Media" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="PotPlayer" Tag="Media" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="VLC" Tag="Media" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="Kodi" Tag="Media" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="Jellyfin" Tag="Media" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="Winamp" Tag="Media" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="Aimp" Tag="Media" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="Spotify" Tag="Media" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="FastStone Image Viewer" Tag="Imaging" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="OpenOffice" Tag="Documents" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="FoxitReader" Tag="Documents" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="LibreOffice" Tag="Documents" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="SumatraPDF" Tag="Documents" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="WinRAR" Tag="Compression" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="7-Zip" Tag="Compression" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="PeaZip" Tag="Compression" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="QQPlayer" Tag="Media" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="Telegram Desktop" Tag="Communication" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="Signal" Tag="Communication" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="Meta Messenger" Tag="Communication" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="Skype" Tag="Communication" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="Zoom" Tag="Communication" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="Microsoft Teams" Tag="Communication" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="Discord" Tag="Communication" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="TeamViewer" Tag="File Sharing" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="GIMP" Tag="Imaging" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="DirectX" Tag="Gaming" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="Microsoft Visual C++ Runtime - all versions" Tag="Gaming" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="Microsoft Visual C++ 2005 (x86) Redistributable" Tag="Gaming" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="Microsoft Visual C++ 2005 (x64) Redistributable" Tag="Gaming" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="Microsoft Visual C++ 2008 (x86) Redistributable" Tag="Gaming" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="Microsoft Visual C++ 2008 (x64) Redistributable" Tag="Gaming" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="Microsoft Visual C++ 2010 (x86) Redistributable" Tag="Gaming" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="Microsoft Visual C++ 2010 (x64) Redistributable" Tag="Gaming" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="Microsoft Visual C++ 2012 (x86) Redistributable" Tag="Gaming" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="Microsoft Visual C++ 2012 (x64) Redistributable" Tag="Gaming" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="Microsoft Visual C++ 2013 (x86) Redistributable" Tag="Gaming" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="Microsoft Visual C++ 2013 (x64) Redistributable" Tag="Gaming" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="Microsoft Visual C++ 2015-2022 (x64) Redistributable" Tag="Gaming" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="Microsoft Visual C++ 2015-2022  (x86) Redistributable" Tag="Gaming" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="NET Framework All Versions" Tag="Gaming" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="AMD Ryzen Chipset Drivers" Tag="Gaming" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="NVidia Display Driver" Tag="Gaming" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="NVIDIA GeForce" Tag="Gaming" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="Msi Afterburner" Tag="Gaming" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="NVIDIA PhysX" Tag="Gaming" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="Steam" Tag="Gaming" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="Epic Games Launcher " Tag="Gaming" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="Ubisoft Connect" Tag="Gaming" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="Origin" Tag="Gaming" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="Rockstar Games Launcher" Tag="Gaming" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="GameSave Manager" Tag="Gaming" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="StreamlabsOBS" Tag="Gaming" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="OBS Studio" Tag="Gaming" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="Logitech Gaming Software" Tag="Gaming" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="Lively Wallpaper" Tag="Gaming" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="Playnite" Tag="Gaming" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="Driver Easy" Tag="Drivers" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="Intel Graphics Windows DCH" Tag="Drivers" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="Intel Driver Support Assistant" Tag="Drivers" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="Intel Network Adapter" Tag="Drivers" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="Snappy Driver Installer" Tag="Drivers" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="Driver booster" Tag="Drivers" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="Driver Genius" Tag="Drivers" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="Display Driver Uninstaller" Tag="Drivers" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="Driver Store Explorer" Tag="Drivers" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="1Password" Tag="Utilities" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="MiniTool Partition Wizard" Tag="Utilities" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="AOMEI Partition Assistant Standard" Tag="Utilities" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="AOMEI Backupper" Tag="Utilities" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="Recuva recover" Tag="Utilities" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="CCleaner" Tag="Utilities" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="BCUninstaller" Tag="Utilities" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="Easy Context Menu" Tag="Utilities" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="HWiNFO" Tag="Utilities" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="Speccy" Tag="Utilities" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="FurMark" Tag="Utilities" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="Hard Disk Sentinel" Tag="Utilities" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="CPUID CPU-Z" Tag="Utilities" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="Mem Reduct" Tag="Utilities" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="HandBrake" Tag="Utilities" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="Rufus" Tag="Utilities" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="ImgBurn" Tag="Developer" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="Virtual CloneDrive" Tag="Utilities" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="Utilso" Tag="Utilities" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="Ventoy" Tag="Utilities" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="iVentoy" Tag="Utilities" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="AutoHotkey" Tag="Utilities" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="Rainmeter" Tag="Utilities" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="FxSound" Tag="Utilities" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="HiSuite" Tag="Utilities" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="Vysor" Tag="Utilities" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="Unified Remote" Tag="Utilities" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="AnyDesk" Tag="File Sharing" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="Airdroid" Tag="File Sharing" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="UltraViewer" Tag="File Sharing" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="Wireless Network Watcher Portable" Tag="Utilities" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="WifiInfoView" Tag="Utilities" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="qBittorrent" Tag="File Sharing" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="Google Earth Pro" Tag="Imaging" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="XAMPP" Tag="Developer" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="Visual Studio Professional 2022" Tag="Developer" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="Visual Studio Community 2022" Tag="Developer" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="Godot Game Engine" Tag="Developer" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="Unity Hub" Tag="Developer" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="Unity 3D" Tag="Developer" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="Blender" Tag="Developer" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="Visual Studio Code" Tag="Developer" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="Sublime Text 4" Tag="Developer" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="Atom" Tag="Developer" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="InnoSetup" Tag="Developer" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="PyCharm Community Edition" Tag="Developer" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="PyCharm Professional Edition" Tag="Developer" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="Jetbrains Rider" Tag="Developer" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="Node.js LTS" Tag="Developer" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="Electrum-LTS" Tag="Developer" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="Hugo" Tag="Developer" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="Notepad++" Tag="Developer" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="Windows Terminal" Tag="Developer" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="Powershell core" Tag="Developer" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="x64dbg Portable" Tag="Developer" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="dnSpy" Tag="Developer" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="Cheat Engine" Tag="Developer" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="Python" Tag="Developer" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="Git" Tag="Developer" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="GitHub Desktop" Tag="Developer" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="Docker Desktop" Tag="Developer" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="Docker Compose" Tag="Developer" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="PowerToys" Tag="Developer" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="Notion" Tag="Developer" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="FL Studio" Tag="Developer" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="Android Debug Bridge" Tag="Developer" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="Universal ADB Drivers" Tag="Developer" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="Scrcpy" Tag="Developer" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="VirtualBox" Tag="Developer" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="UltraISO" Tag="Developer" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="Vmware Workstation" Tag="Developer" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="oh-my-posh" Tag="Developer" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="Malwarebytes" Tag="Security" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="Kaspersky Virus Removal Tool" Tag="Security" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="Kaspersky Anti-Virus" Tag="Security" IsChecked="false" FontSize="15" FontFamily="console" />
+    
+    <CheckBox Content="Avast Free Antivirus" Tag="Security" IsChecked="false" FontSize="15" FontFamily="console" />
+    
                         </ListView>
                     </TabItem.Content>
                 </TabItem>
                 <TabItem Header="Tweeaks" x:Name="tweeksTab" Padding="0" BorderBrush="{x:Null}" Background="{x:Null}">
                     <TabItem.Content>
                         <ListView Name="tweaks"  Margin="0" ScrollViewer.VerticalScrollBarVisibility="Auto" BorderBrush="{x:Null}" Background="{x:Null}">
-                                <CheckBox Content="System File Checker" />    <CheckBox Content="Run Disk cleanup" />    <CheckBox Content="Restore All Windows Services to Default" />    <CheckBox Content="Remove Folder Shortcuts From Windows'' File Explorer" />    <CheckBox Content="Fix Stutter/Lag in Games" />    <CheckBox Content="Remove Unnecessary Windows 10/11 Apps" />    <CheckBox Content="Enable the Ultimate Performance Power Plan" />    <CheckBox Content="Reset the TCP/IP Stack" />    <CheckBox Content="Setup Auto login" />    <CheckBox Content="Disable People icon on Taskbar" />    <CheckBox Content="Disable suggestions on start menu" />    <CheckBox Content="Turns off Data Collection" />    <CheckBox Content="Prevents bloatware applications from returning" />    <CheckBox Content="Stops the Windows Feedback Experience" />    <CheckBox Content="Remove Cortana" />    <CheckBox Content="Disable Windows Web Search" />    <CheckBox Content="Windows 10 Turn off background apps" />    <CheckBox Content="Windows 10 Disable all Privacy options" />    <CheckBox Content="Disable Game Mode" />
+                            
+    <CheckBox Content="System File Checker" FontFamily="console"/>
+
+    <CheckBox Content="Run Disk cleanup" FontFamily="console"/>
+
+    <CheckBox Content="Restore All Windows Services to Default" FontFamily="console"/>
+
+    <CheckBox Content="Remove Folder Shortcuts From Windows'' File Explorer" FontFamily="console"/>
+
+    <CheckBox Content="Fix Stutter/Lag in Games" FontFamily="console"/>
+
+    <CheckBox Content="Remove Unnecessary Windows 10/11 Apps" FontFamily="console"/>
+
+    <CheckBox Content="Enable the Ultimate Performance Power Plan" FontFamily="console"/>
+
+    <CheckBox Content="Reset the TCP/IP Stack" FontFamily="console"/>
+
+    <CheckBox Content="Setup Auto login" FontFamily="console"/>
+
+    <CheckBox Content="Disable People icon on Taskbar" FontFamily="console"/>
+
+    <CheckBox Content="Disable suggestions on start menu" FontFamily="console"/>
+
+    <CheckBox Content="Turns off Data Collection" FontFamily="console"/>
+
+    <CheckBox Content="Prevents bloatware applications from returning" FontFamily="console"/>
+
+    <CheckBox Content="Stops the Windows Feedback Experience" FontFamily="console"/>
+
+    <CheckBox Content="Remove Cortana" FontFamily="console"/>
+
+    <CheckBox Content="Disable Windows Web Search" FontFamily="console"/>
+
+    <CheckBox Content="Turn off background apps" FontFamily="console"/>
+
+    <CheckBox Content="Disable all Privacy options" FontFamily="console"/>
+
+    <CheckBox Content="Disable Game Mode" FontFamily="console"/>
+
                         </ListView>
                     </TabItem.Content>
                 </TabItem>

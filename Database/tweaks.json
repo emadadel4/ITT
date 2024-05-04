@@ -1,154 +1,135 @@
 [
   {
     "name": "System File Checker",
-    "description": "Use the System File Checker tool to repair missing or corrupted system files",
+    "description": "sfc /scannow Use the System File Checker tool to repair missing or corrupted system files",
     "repo": "null",
     "script": "sfc /scannow;",
-    "check": "true",
-    "category": "tweak"
+    "check": "false"
   },
   {
     "name": "Run Disk cleanup",
     "description": "Clean temporary files that are not necessary",
     "repo": "null",
     "script": "cleanmgr.exe /d C: /VERYLOWDISK /sagerun:1 Dism.exe /online /Cleanup-Image /StartComponentCleanup /ResetBase;",
-    "check": "true",
-    "category": "tweak"
+    "check": "false"
   },
   {
     "name": "Restore All Windows Services to Default",
     "description": "If you face a problem with some system services, you can restore all services to Default.",
     "repo": "null",
     "script": "Invoke-RestMethod https://raw.githubusercontent.com/emadadel4/WindowsTweaks/main/restore.bat | Invoke-Expression;",
-    "check": "true",
-    "category": "tweak"
+    "check": "false"
   },
   {
     "name": "Remove Folder Shortcuts From Windows' File Explorer",
     "description": "Remove Documents, Videos, Pictures, Desktop. Shortcuts from File Explorer ",
     "repo": "https://github.com/emadadel4/WindowsTweaks",
     "script": "Invoke-RestMethod https://raw.githubusercontent.com/emadadel4/WindowsTweaks/main/rm.ps1 | Invoke-Expression;",
-    "check": "true",
-    "category": "tweak"
+    "check": "false"
   },
   {
     "name": "Fix Stutter/Lag in Games",
     "description": "Fix Stutter in Games (Disable GameBarPresenceWriter). Windows 10/11",
     "repo": "https://github.com/emadadel4/Fix-Stutter-in-Games",
     "script": "Invoke-RestMethod https://raw.githubusercontent.com/emadadel4/Fix-Stutter-in-Games/main/fix.ps1 | Invoke-Expression;",
-    "check": "true",
-    "category": "tweak"
+    "check": "false"
   },
   {
     "name": "Remove Unnecessary Windows 10/11 Apps",
     "description": "BingNews, GetHelp, Getstarted, Messaging, Microsoft3DViewer, MicrosoftOfficeHub, MicrosoftSolitaireCollection, News, Office.Lens, Office.OneNote, Office.Sway, OneConnect, People, Print3D, RemoteDesktop, SkypeApp, StorePurchaseApp, Office.Todo.List, Whiteboard, WindowsAlarms, WindowsCamera, windowscommunicationsapps, WindowsFeedbackHub, WindowsMaps, WindowsSoundRecorder, Xbox.TCUI, XboxApp, XboxGameOverlay, XboxIdentityProvider, XboxSpeechToTextOverlay, ZuneMusic, ZuneVideo, Windows.Cortana, MSPaint",
     "repo": "https://github.com/emadadel4/WindowsTweaks",
     "script": "Invoke-RestMethod https://raw.githubusercontent.com/emadadel4/WindowsTweaks/main/debloater.ps1 | Invoke-Expression;",
-    "check": "true",
-    "category": "tweak"
+    "check": "false"
   },
   {
     "name": "Enable the Ultimate Performance Power Plan",
     "description": "Enable the Ultimate Performance Power Plan",
     "repo": "https://github.com/emadadel4/WindowsTweaks",
     "script": "powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61; Start-Process powercfg.cpl;",
-    "fromUrl": "true",
-    "category": "tweak"
+    "fromUrl": "false"
   },
   {
     "name": "Reset the TCP/IP Stack",
     "description": "If you have an internet problem, Reset network configuration",
     "repo": "null",
     "script": "netsh int ip reset;",
-    "check": "true",
-    "category": "tweak"
+    "check": "false"
   },
   {
     "name": "Setup Auto login",
     "description": "Setup auto login Windows username",
     "repo": "null",
     "script": "curl.exe -ss \"https://live.sysinternals.com/Autologon.exe\" -o $env:temp\\autologin.exe ; cmd /c $env:temp\\autologin.exe /accepteula",
-    "check": "true",
-    "category": "tweak"
+    "check": "false"
   },
   {
     "name": "Disable People icon on Taskbar",
     "description": "Disables People on taskbar",
     "repo": "null",
     "script": "Set-ItemProperty 'HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\\People' -Name PeopleBand -Value 0 -Verbose",
-    "check": "true",
-    "category": "tweak"
+    "check": "false"
   },
   {
     "name": "Disable suggestions on start menu",
     "description": "Disables suggestions on start menu",
     "repo": "null",
     "script": "New-Item -Path 'HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\CloudContent' -Force | New-ItemProperty -Name 'DisableWindowsConsumerFeatures' -Value 1 -PropertyType DWORD -Force",
-    "check": "true",
-    "category": "tweak"
+    "check": "false"
   },
   {
     "name": "Turns off Data Collection",
     "description": "This tweak disables data collection on your Windows system by modifying the registry setting for telemetry. It checks if the specified registry path exists and if so, sets the AllowTelemetry value to 0, effectively turning off telemetry.",
     "repo": "null",
     "script": "New-ItemProperty -Path 'HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\DataCollection' -Name 'AllowTelemetry' -Value 0 -PropertyType DWORD -Force | Out-Null",
-    "check": "false",
-    "category": "tweak"
+    "check": "false"
   },
   {
     "name": "Prevents bloatware applications from returning",
     "description": "This tweak aims to prevent bloatware applications from returning on your Windows system. It checks if a specific registry path exists, and if not, it creates it. Then, it sets a registry value to disable Windows consumer features, thereby reducing the likelihood of bloatware apps being installed or reinstalled.",
     "repo": "null",
     "script": "If (!(Test-Path 'HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\CloudContent')) { Mkdir 'HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\CloudContent' -ErrorAction SilentlyContinue; New-ItemProperty 'HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\CloudContent' -Name DisableWindowsConsumerFeatures -Value 1 -Verbose -ErrorAction SilentlyContinue }",
-    "check": "true",
-    "category": "tweak"
+    "check": "false"
   },
   {
     "name": "Stops the Windows Feedback Experience",
     "description": "This tweak aims to stop Windows Feedback by creating necessary registry keys if they do not exist. It checks if the specified registry path exists, and if not, it creates the required keys. Then, it sets a registry value to disable Windows Feedback by setting the PeriodInNanoSeconds value to 0, effectively stopping the feedback mechanism.",
     "repo": "null",
     "script": "If (!(Test-Path 'HKCU:\\Software\\Microsoft\\Siuf\\Rules\\PeriodInNanoSeconds')) { mkdir 'HKCU:\\Software\\Microsoft\\Siuf' -ErrorAction SilentlyContinue; mkdir 'HKCU:\\Software\\Microsoft\\Siuf\\Rules' -ErrorAction SilentlyContinue; mkdir 'HKCU:\\Software\\Microsoft\\Siuf\\Rules\\PeriodInNanoSeconds' -ErrorAction SilentlyContinue; New-ItemProperty 'HKCU:\\Software\\Microsoft\\Siuf\\Rules\\PeriodInNanoSeconds' -Name PeriodInNanoSeconds -Value 0 -Verbose -ErrorAction SilentlyContinue }; If (Test-Path 'HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\AdvertisingInfo') { Set-ItemProperty 'HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\AdvertisingInfo' -Name Enabled -Value 0 -Verbose }",
-    "check": "true",
-    "category": "tweak"
+    "check": "false"
   },
   {
     "name": "Remove Cortana",
     "description": "This tweak aims to disable Cortana by modifying the registry settings related to Windows Search. It checks if the specified registry path exists, and if so, it sets the AllowCortana value to 0, effectively disabling Cortana's functionality.",
     "repo": "null",
     "script": "Get-AppxPackage -AllUsers -PackageTypeFilter Bundle -name \"*Microsoft.549981*\" | Remove-AppxPackage",
-    "check": "true",
-    "category": "tweak"
+    "check": "false"
   },
   {
     "name": "Disable Windows Web Search",
     "description": "Disable web search in Windows by modifying the registry settings related to Windows Search. It sets the BingSearchEnabled value to 0, effectively turning off web search results.",
     "repo": "null",
     "script": "Set-ItemProperty -Path 'HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Search' -Name 'BingSearchEnabled' -Value 0",
-    "check": "true",
-    "category": "tweak"
+    "check": "false"
   },
   {
-    "name": "Windows 10 Turn off background apps",
+    "name": "Turn off background apps",
     "description": "Disable background apps in Windows 10 by modifying the appropriate registry settings.",
     "repo": "null",
     "script": "Set-ItemProperty -Path 'HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\BackgroundAccessApplications' -Name 'GlobalUserDisabled' -Value 1",
-    "check": "true",
-    "category": "tweak"
+    "check": "false"
   },
   {
-    "name": "Windows 10 Disable all Privacy options",
+    "name": "Disable all Privacy options",
     "description": "Disable all Privacy options.",
     "repo": "null",
     "script": "Set-ItemProperty -Path \"HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\DataCollection\" -Name \"AllowTelemetry\" -Value 0; Set-ItemProperty -Path \"HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\AdvertisingInfo\" -Name \"Enabled\" -Value 0; Set-ItemProperty -Path \"HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Search\" -Name \"AllowCortana\" -Value 0; Set-ItemProperty -Path \"HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Search\" -Name \"BingSearchEnabled\" -Value 0",
-    "check": "true",
-    "category": "tweak"
+    "check": "false"
   },
   {
     "name": "Disable Game Mode",
-    "description": "This tweak disables Game Mode in Windows 10.",
+    "description": "This tweak disables Game Mode",
     "repo": "null",
     "script": "Set-ItemProperty -Path \"HKCU:\\SOFTWARE\\Microsoft\\GameBar\" -Name \"AllowAutoGameMode\" -Value 0",
-    "check": "true",
-    "category": "tweak"
+    "check": "false"
   }
 ]
