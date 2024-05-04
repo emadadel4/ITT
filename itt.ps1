@@ -894,17 +894,6 @@ $sync.configs.applications = '[
     "check": "false"
   },
   {
-    "Name": "Neat Download Manager",
-    "Description": "A popular download manager tool that accelerates downloads and allows users to organize and schedule downloads efficiently.",
-    "winget": "Tonec.InternetDownloadManager",
-    "choco": "none",
-    "scoop": "extras/neatdownloadmanager",
-    "bucket": "bucket add extras",
-    "category": "Browsers",
-    "suggestion": "true",
-    "check": "false"
-  },
-  {
     "Name": "Internet Download Manager",
     "Description": "A popular download manager tool that accelerates downloads and allows users to organize and schedule downloads efficiently.",
     "winget": "Tonec.InternetDownloadManager",
@@ -2778,8 +2767,6 @@ $inputXML = '
     <CheckBox Content="Tor Browser" Tag="Browsers" IsChecked="false" FontFamily="console" />
     
     <CheckBox Content="Opera" Tag="Browsers" IsChecked="false" FontFamily="console" />
-    
-    <CheckBox Content="Neat Download Manager" Tag="Browsers" IsChecked="false" FontFamily="console" />
     
     <CheckBox Content="Internet Download Manager" Tag="Browsers" IsChecked="false" FontFamily="console" />
     
