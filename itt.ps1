@@ -113,11 +113,6 @@ Freedom is not given it is taken.
 
         " -ForegroundColor White
         iex "& {$(irm get.scoop.sh)} -RunAsAdmin" | Out-Null
-        scoop bucket add extras
-
-        Clear-Host
-
-        CheckChoco
     }
     else 
     {
@@ -805,8 +800,8 @@ else
     $newProcess.Verb = "runas";
     $newProcess.WindowStyle = "Maximized"
     [System.Diagnostics.Process]::Start($newProcess);
-    exit
-    break
+    #exit
+    #break
 }
 
 #===========================================================================
@@ -2739,7 +2734,7 @@ $inputXML = '
                         <StackPanel Margin="15" Orientation="Horizontal" HorizontalAlignment="Left"  VerticalAlignment="Center" Grid.Row="1" Grid.ColumnSpan="3" >
 
                                 <!--Logo-->
-                                    <Ellipse Name="about" Width="80" Height="80" Cursor="Hand">
+                                    <Ellipse Name="about" Width="80" Height="80" Cursor="Hand" ToolTip="Enad Adel">
                                         <Ellipse.Fill>
                                             <ImageBrush ImageSource="https://avatars.githubusercontent.com/u/19177373?v=4.png" />
                                         </Ellipse.Fill>

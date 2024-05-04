@@ -28,11 +28,6 @@ Freedom is not given it is taken.
 
         " -ForegroundColor White
         iex "& {$(irm get.scoop.sh)} -RunAsAdmin" | Out-Null
-        scoop bucket add extras
-
-        Clear-Host
-
-        CheckChoco
     }
     else 
     {
