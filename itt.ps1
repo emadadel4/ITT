@@ -283,8 +283,8 @@ function Invoke-Button {
         "searchInput" {Search; $sync['window'].FindName('category').SelectedIndex = 0; $sync['window'].FindName('apps').IsSelected = $true; $debug }
     }
 }
-
-function Get-SelectedApps {
+function Get-SelectedApps
+{
 
     $items = @()
 
@@ -309,7 +309,9 @@ function Get-SelectedApps {
     return $items 
 }
 
-function Invoke-Install {
+function Invoke-Install
+{
+    
     if($sync.ProcessRunning)
     {
         $msg = "Please wait for the software to be installed."
@@ -390,9 +392,9 @@ If you have trouble installing a program, report the problem on feedback links
 https://github.com/emadadel4/ITT/issues
 https://t.me/emadadel4
 " -ForegroundColor White
-
-                }else {
-                    
+                }
+                else
+                {
                     # Uncheck all checkboxes in $list
                     $sync.AppsListView.Dispatcher.Invoke([Action]{
                         foreach ($item in $sync.AppsListView.Items)
@@ -400,7 +402,6 @@ https://t.me/emadadel4
                             $item.IsChecked = $false
                         }
                     })
-
                 }
             }
             catch {
@@ -408,7 +409,9 @@ https://t.me/emadadel4
                 Write-Host "Error: $_"
             }
         }
-    }else {
+    }
+    else
+    {
         [System.Windows.MessageBox]::Show("Choose at least one program", "ITT @emadadel", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
     }
 }
