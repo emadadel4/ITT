@@ -96,6 +96,7 @@
     "winget": "Tonec.InternetDownloadManager",
     "choco": "none",
     "scoop": "extras/neatdownloadmanager",
+    "bucket": "bucket add extras",
     "category": "Browsers",
     "suggestion": "true",
     "check": "false"
