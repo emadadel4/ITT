@@ -87,13 +87,8 @@ function CheckChoco
 {
     # Check if Chocolatey is installed
     if (-not (Get-Command choco -ErrorAction SilentlyContinue)) {
-        
-        Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1')) *> $null
-    }
 
-    if (-not (Get-Command scoop -ErrorAction SilentlyContinue)) {
-
-        Write-Host "
+Write-Host "
 +--------------------------------------------------------------------------------+
 | __        _______ _     ____ ___  __  __ _____   _____ ___    ___ _____ _____  |
 | \ \      / / ____| |   / ___/ _ \|  \/  | ____| |_   _/ _ \  |_ _|_   _|_   _| |
@@ -110,11 +105,11 @@ https://t.me/emadadel4
 
 Nothing true everything permitted. 
 Freedom is not given it is taken.
+" -ForegroundColor White
 
-        " -ForegroundColor White
-        iex "& {$(irm get.scoop.sh)} -RunAsAdmin" | Out-Null
+        Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1')) *> $null
     }
-    else 
+    else
     {
 
 Write-Host "
@@ -132,9 +127,10 @@ Everything work fine. You good to go
 If you have trouble installing a program, report the problem on feedback links
 https://github.com/emadadel4/ITT/issues
 https://t.me/emadadel4
+" -ForegroundColor White
 
-        " -ForegroundColor White
     }
+
 }
 
 
@@ -348,15 +344,11 @@ function Invoke-Install {
                     })
 
                     $sync.ProcessRunning = $true
-                    foreach ($app in $selectedApps) {
-                        if ($app.Choco -ne "none") {
-
+                    foreach ($app in $selectedApps) 
+                    {
+                        if ($app.Choco -ne "none")
+                        {
                             Start-Process -FilePath "choco" -ArgumentList "install $($app.Choco) -y  --ignore-checksums" -NoNewWindow -Wait
-                            Write-Host $app.Choco
-
-                        } elseif ($app.Scoop) {
-                            Start-Process -FilePath "powershell.exe" -ArgumentList "scoop install $($app.Scoop)" -NoNewWindow -Wait
-                            Write-Host $app.Scoop
                         }
                     }
                     
@@ -378,8 +370,6 @@ function Invoke-Install {
                   
                     Start-Sleep -Seconds 1
                     $sync.ProcessRunning = $False
-
-
                     Start-Sleep -Seconds 2
 
                     Clear-Host
@@ -759,7 +749,7 @@ function ChangeTap() {
     GitHub         : https://github.com/emadadel4
     Telegram       : https://t.me/emadadel4
     Website        : https://eprojects.orgfree.com/
-    Version        : 2024/05-May/04-Sat
+    Version        : 2024/05-May/05-Sun
 #>
 
 if (!(Test-Path -Path $ENV:TEMP)) {
@@ -774,7 +764,7 @@ Add-Type -AssemblyName PresentationFramework.Aero
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "2024/05-May/04-Sat"
+$sync.version = "2024/05-May/05-Sun"
 $sync.github =   "https://github.com/emadadel4"
 $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://eprojects.orgfree.com"
@@ -910,6 +900,7 @@ $sync.configs.applications = '[
     "winget": "Tonec.InternetDownloadManager",
     "choco": "none",
     "scoop": "extras/neatdownloadmanager",
+    "bucket": "bucket add extras",
     "category": "Browsers",
     "suggestion": "true",
     "check": "false"
