@@ -368,6 +368,7 @@ function Invoke-Install {
                         }
                     })
                   
+                    Start-Sleep -Seconds 1
                     $sync.ProcessRunning = $False
                     Start-Sleep -Seconds 2
 
