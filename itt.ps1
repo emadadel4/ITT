@@ -2773,313 +2773,313 @@ $inputXML = '
                     <TabItem.Content>
                         <ListView Margin="0" ScrollViewer.VerticalScrollBarVisibility="Auto" Name="list" BorderBrush="{x:Null}" Background="{x:Null}">
                             
-    <CheckBox Content="Thorium" Tag="Browsers" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="Thorium" Tag="Browsers" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="Firefox" Tag="Browsers" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="Firefox" Tag="Browsers" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="Add block extension [Firefox]" Tag="Browsers" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="Add block extension [Firefox]" Tag="Browsers" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="Microsoft Edge" Tag="Browsers" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="Microsoft Edge" Tag="Browsers" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="Google Chrome" Tag="Browsers" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="Google Chrome" Tag="Browsers" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="uBlock Origin extension [Chrome]" Tag="Browsers" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="uBlock Origin extension [Chrome]" Tag="Browsers" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="Chromium" Tag="Browsers" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="Chromium" Tag="Browsers" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="Brave" Tag="Browsers" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="Brave" Tag="Browsers" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="Tor Browser" Tag="Browsers" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="Tor Browser" Tag="Browsers" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="Opera" Tag="Browsers" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="Opera" Tag="Browsers" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="Neat Download Manager" Tag="Browsers" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="Neat Download Manager" Tag="Browsers" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="Internet Download Manager" Tag="Browsers" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="Internet Download Manager" Tag="Browsers" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="K-Lite Mega Codec Pack" Tag="Media" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="K-Lite Mega Codec Pack" Tag="Media" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="PotPlayer" Tag="Media" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="PotPlayer" Tag="Media" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="VLC" Tag="Media" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="VLC" Tag="Media" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="Kodi" Tag="Media" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="Kodi" Tag="Media" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="Jellyfin" Tag="Media" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="Jellyfin" Tag="Media" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="Winamp" Tag="Media" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="Winamp" Tag="Media" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="Aimp" Tag="Media" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="Aimp" Tag="Media" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="Spotify" Tag="Media" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="Spotify" Tag="Media" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="FastStone Image Viewer" Tag="Imaging" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="FastStone Image Viewer" Tag="Imaging" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="OpenOffice" Tag="Documents" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="OpenOffice" Tag="Documents" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="FoxitReader" Tag="Documents" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="FoxitReader" Tag="Documents" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="LibreOffice" Tag="Documents" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="LibreOffice" Tag="Documents" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="SumatraPDF" Tag="Documents" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="SumatraPDF" Tag="Documents" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="WinRAR" Tag="Compression" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="WinRAR" Tag="Compression" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="7-Zip" Tag="Compression" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="7-Zip" Tag="Compression" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="PeaZip" Tag="Compression" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="PeaZip" Tag="Compression" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="QQPlayer" Tag="Media" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="QQPlayer" Tag="Media" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="Telegram Desktop" Tag="Communication" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="Telegram Desktop" Tag="Communication" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="Signal" Tag="Communication" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="Signal" Tag="Communication" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="Meta Messenger" Tag="Communication" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="Meta Messenger" Tag="Communication" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="Skype" Tag="Communication" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="Skype" Tag="Communication" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="Zoom" Tag="Communication" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="Zoom" Tag="Communication" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="Microsoft Teams" Tag="Communication" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="Microsoft Teams" Tag="Communication" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="Discord" Tag="Communication" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="Discord" Tag="Communication" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="TeamViewer" Tag="File Sharing" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="TeamViewer" Tag="File Sharing" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="GIMP" Tag="Imaging" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="GIMP" Tag="Imaging" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="DirectX" Tag="Gaming" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="DirectX" Tag="Gaming" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="Microsoft Visual C++ Runtime - all versions" Tag="Gaming" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="Microsoft Visual C++ Runtime - all versions" Tag="Gaming" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="Microsoft Visual C++ 2005 (x86) Redistributable" Tag="Gaming" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="Microsoft Visual C++ 2005 (x86) Redistributable" Tag="Gaming" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="Microsoft Visual C++ 2005 (x64) Redistributable" Tag="Gaming" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="Microsoft Visual C++ 2005 (x64) Redistributable" Tag="Gaming" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="Microsoft Visual C++ 2008 (x86) Redistributable" Tag="Gaming" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="Microsoft Visual C++ 2008 (x86) Redistributable" Tag="Gaming" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="Microsoft Visual C++ 2008 (x64) Redistributable" Tag="Gaming" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="Microsoft Visual C++ 2008 (x64) Redistributable" Tag="Gaming" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="Microsoft Visual C++ 2010 (x86) Redistributable" Tag="Gaming" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="Microsoft Visual C++ 2010 (x86) Redistributable" Tag="Gaming" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="Microsoft Visual C++ 2010 (x64) Redistributable" Tag="Gaming" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="Microsoft Visual C++ 2010 (x64) Redistributable" Tag="Gaming" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="Microsoft Visual C++ 2012 (x86) Redistributable" Tag="Gaming" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="Microsoft Visual C++ 2012 (x86) Redistributable" Tag="Gaming" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="Microsoft Visual C++ 2012 (x64) Redistributable" Tag="Gaming" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="Microsoft Visual C++ 2012 (x64) Redistributable" Tag="Gaming" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="Microsoft Visual C++ 2013 (x86) Redistributable" Tag="Gaming" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="Microsoft Visual C++ 2013 (x86) Redistributable" Tag="Gaming" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="Microsoft Visual C++ 2013 (x64) Redistributable" Tag="Gaming" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="Microsoft Visual C++ 2013 (x64) Redistributable" Tag="Gaming" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="Microsoft Visual C++ 2015-2022 (x64) Redistributable" Tag="Gaming" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="Microsoft Visual C++ 2015-2022 (x64) Redistributable" Tag="Gaming" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="Microsoft Visual C++ 2015-2022  (x86) Redistributable" Tag="Gaming" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="Microsoft Visual C++ 2015-2022  (x86) Redistributable" Tag="Gaming" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="NET Framework All Versions" Tag="Gaming" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="NET Framework All Versions" Tag="Gaming" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="AMD Ryzen Chipset Drivers" Tag="Gaming" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="AMD Ryzen Chipset Drivers" Tag="Gaming" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="NVidia Display Driver" Tag="Gaming" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="NVidia Display Driver" Tag="Gaming" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="NVIDIA GeForce" Tag="Gaming" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="NVIDIA GeForce" Tag="Gaming" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="Msi Afterburner" Tag="Gaming" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="Msi Afterburner" Tag="Gaming" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="NVIDIA PhysX" Tag="Gaming" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="NVIDIA PhysX" Tag="Gaming" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="Steam" Tag="Gaming" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="Steam" Tag="Gaming" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="Epic Games Launcher " Tag="Gaming" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="Epic Games Launcher " Tag="Gaming" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="Ubisoft Connect" Tag="Gaming" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="Ubisoft Connect" Tag="Gaming" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="Origin" Tag="Gaming" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="Origin" Tag="Gaming" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="Rockstar Games Launcher" Tag="Gaming" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="Rockstar Games Launcher" Tag="Gaming" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="GameSave Manager" Tag="Gaming" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="GameSave Manager" Tag="Gaming" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="StreamlabsOBS" Tag="Gaming" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="StreamlabsOBS" Tag="Gaming" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="OBS Studio" Tag="Gaming" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="OBS Studio" Tag="Gaming" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="Logitech Gaming Software" Tag="Gaming" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="Logitech Gaming Software" Tag="Gaming" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="Lively Wallpaper" Tag="Gaming" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="Lively Wallpaper" Tag="Gaming" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="Playnite" Tag="Gaming" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="Playnite" Tag="Gaming" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="Driver Easy" Tag="Drivers" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="Driver Easy" Tag="Drivers" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="Intel Graphics Windows DCH" Tag="Drivers" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="Intel Graphics Windows DCH" Tag="Drivers" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="Intel Driver Support Assistant" Tag="Drivers" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="Intel Driver Support Assistant" Tag="Drivers" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="Intel Network Adapter" Tag="Drivers" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="Intel Network Adapter" Tag="Drivers" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="Snappy Driver Installer" Tag="Drivers" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="Snappy Driver Installer" Tag="Drivers" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="Driver booster" Tag="Drivers" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="Driver booster" Tag="Drivers" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="Driver Genius" Tag="Drivers" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="Driver Genius" Tag="Drivers" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="Display Driver Uninstaller" Tag="Drivers" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="Display Driver Uninstaller" Tag="Drivers" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="Driver Store Explorer" Tag="Drivers" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="Driver Store Explorer" Tag="Drivers" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="1Password" Tag="Utilities" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="1Password" Tag="Utilities" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="MiniTool Partition Wizard" Tag="Utilities" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="MiniTool Partition Wizard" Tag="Utilities" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="AOMEI Partition Assistant Standard" Tag="Utilities" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="AOMEI Partition Assistant Standard" Tag="Utilities" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="AOMEI Backupper" Tag="Utilities" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="AOMEI Backupper" Tag="Utilities" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="Recuva recover" Tag="Utilities" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="Recuva recover" Tag="Utilities" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="CCleaner" Tag="Utilities" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="CCleaner" Tag="Utilities" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="BCUninstaller" Tag="Utilities" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="BCUninstaller" Tag="Utilities" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="Easy Context Menu" Tag="Utilities" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="Easy Context Menu" Tag="Utilities" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="HWiNFO" Tag="Utilities" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="HWiNFO" Tag="Utilities" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="Speccy" Tag="Utilities" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="Speccy" Tag="Utilities" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="FurMark" Tag="Utilities" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="FurMark" Tag="Utilities" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="Hard Disk Sentinel" Tag="Utilities" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="Hard Disk Sentinel" Tag="Utilities" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="CPUID CPU-Z" Tag="Utilities" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="CPUID CPU-Z" Tag="Utilities" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="Mem Reduct" Tag="Utilities" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="Mem Reduct" Tag="Utilities" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="HandBrake" Tag="Utilities" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="HandBrake" Tag="Utilities" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="Rufus" Tag="Utilities" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="Rufus" Tag="Utilities" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="ImgBurn" Tag="Developer" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="ImgBurn" Tag="Developer" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="Virtual CloneDrive" Tag="Utilities" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="Virtual CloneDrive" Tag="Utilities" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="Utilso" Tag="Utilities" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="Utilso" Tag="Utilities" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="Ventoy" Tag="Utilities" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="Ventoy" Tag="Utilities" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="iVentoy" Tag="Utilities" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="iVentoy" Tag="Utilities" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="AutoHotkey" Tag="Utilities" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="AutoHotkey" Tag="Utilities" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="Rainmeter" Tag="Utilities" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="Rainmeter" Tag="Utilities" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="FxSound" Tag="Utilities" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="FxSound" Tag="Utilities" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="HiSuite" Tag="Utilities" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="HiSuite" Tag="Utilities" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="Vysor" Tag="Utilities" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="Vysor" Tag="Utilities" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="Unified Remote" Tag="Utilities" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="Unified Remote" Tag="Utilities" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="AnyDesk" Tag="File Sharing" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="AnyDesk" Tag="File Sharing" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="Airdroid" Tag="File Sharing" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="Airdroid" Tag="File Sharing" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="UltraViewer" Tag="File Sharing" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="UltraViewer" Tag="File Sharing" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="Wireless Network Watcher Portable" Tag="Utilities" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="Wireless Network Watcher Portable" Tag="Utilities" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="WifiInfoView" Tag="Utilities" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="WifiInfoView" Tag="Utilities" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="qBittorrent" Tag="File Sharing" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="qBittorrent" Tag="File Sharing" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="Google Earth Pro" Tag="Imaging" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="Google Earth Pro" Tag="Imaging" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="XAMPP" Tag="Developer" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="XAMPP" Tag="Developer" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="Visual Studio Professional 2022" Tag="Developer" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="Visual Studio Professional 2022" Tag="Developer" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="Visual Studio Community 2022" Tag="Developer" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="Visual Studio Community 2022" Tag="Developer" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="Godot Game Engine" Tag="Developer" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="Godot Game Engine" Tag="Developer" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="Unity Hub" Tag="Developer" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="Unity Hub" Tag="Developer" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="Unity 3D" Tag="Developer" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="Unity 3D" Tag="Developer" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="Blender" Tag="Developer" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="Blender" Tag="Developer" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="Visual Studio Code" Tag="Developer" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="Visual Studio Code" Tag="Developer" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="Sublime Text 4" Tag="Developer" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="Sublime Text 4" Tag="Developer" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="Atom" Tag="Developer" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="Atom" Tag="Developer" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="InnoSetup" Tag="Developer" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="InnoSetup" Tag="Developer" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="PyCharm Community Edition" Tag="Developer" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="PyCharm Community Edition" Tag="Developer" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="PyCharm Professional Edition" Tag="Developer" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="PyCharm Professional Edition" Tag="Developer" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="Jetbrains Rider" Tag="Developer" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="Jetbrains Rider" Tag="Developer" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="Node.js LTS" Tag="Developer" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="Node.js LTS" Tag="Developer" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="Electrum-LTS" Tag="Developer" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="Electrum-LTS" Tag="Developer" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="Hugo" Tag="Developer" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="Hugo" Tag="Developer" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="Notepad++" Tag="Developer" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="Notepad++" Tag="Developer" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="Windows Terminal" Tag="Developer" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="Windows Terminal" Tag="Developer" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="Powershell core" Tag="Developer" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="Powershell core" Tag="Developer" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="x64dbg Portable" Tag="Developer" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="x64dbg Portable" Tag="Developer" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="dnSpy" Tag="Developer" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="dnSpy" Tag="Developer" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="Cheat Engine" Tag="Developer" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="Cheat Engine" Tag="Developer" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="Python" Tag="Developer" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="Python" Tag="Developer" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="Git" Tag="Developer" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="Git" Tag="Developer" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="GitHub Desktop" Tag="Developer" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="GitHub Desktop" Tag="Developer" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="Docker Desktop" Tag="Developer" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="Docker Desktop" Tag="Developer" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="Docker Compose" Tag="Developer" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="Docker Compose" Tag="Developer" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="PowerToys" Tag="Developer" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="PowerToys" Tag="Developer" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="Notion" Tag="Developer" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="Notion" Tag="Developer" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="FL Studio" Tag="Developer" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="FL Studio" Tag="Developer" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="Android Debug Bridge" Tag="Developer" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="Android Debug Bridge" Tag="Developer" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="Universal ADB Drivers" Tag="Developer" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="Universal ADB Drivers" Tag="Developer" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="Scrcpy" Tag="Developer" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="Scrcpy" Tag="Developer" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="VirtualBox" Tag="Developer" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="VirtualBox" Tag="Developer" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="UltraISO" Tag="Developer" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="UltraISO" Tag="Developer" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="Vmware Workstation" Tag="Developer" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="Vmware Workstation" Tag="Developer" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="oh-my-posh" Tag="Developer" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="oh-my-posh" Tag="Developer" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="Malwarebytes" Tag="Security" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="Malwarebytes" Tag="Security" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="Kaspersky Virus Removal Tool" Tag="Security" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="Kaspersky Virus Removal Tool" Tag="Security" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="Kaspersky Anti-Virus" Tag="Security" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="Kaspersky Anti-Virus" Tag="Security" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="Avast Free Antivirus" Tag="Security" IsChecked="false" FontSize="15" FontFamily="console" />
+    <CheckBox Content="Avast Free Antivirus" Tag="Security" IsChecked="false" FontFamily="console" />
     
                         </ListView>
                     </TabItem.Content>
