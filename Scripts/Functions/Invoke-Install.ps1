@@ -59,15 +59,11 @@ function Invoke-Install {
                     })
 
                     $sync.ProcessRunning = $true
-                    foreach ($app in $selectedApps) {
-                        if ($app.Choco -ne "none") {
-
+                    foreach ($app in $selectedApps) 
+                    {
+                        if ($app.Choco -ne "none")
+                        {
                             Start-Process -FilePath "choco" -ArgumentList "install $($app.Choco) -y  --ignore-checksums" -NoNewWindow -Wait
-                            Write-Host $app.Choco
-
-                        } elseif ($app.Scoop) {
-                            Start-Process -FilePath "powershell.exe" -ArgumentList "scoop install $($app.Scoop)" -NoNewWindow -Wait
-                            Write-Host $app.Scoop
                         }
                     }
                     
@@ -89,8 +85,6 @@ function Invoke-Install {
                   
                     Start-Sleep -Seconds 1
                     $sync.ProcessRunning = $False
-
-
                     Start-Sleep -Seconds 2
 
                     Clear-Host
