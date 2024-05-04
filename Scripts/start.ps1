@@ -46,6 +46,5 @@ else
     $newProcess.Verb = "runas";
     $newProcess.WindowStyle = "Maximized"
     [System.Diagnostics.Process]::Start($newProcess);
-    #exit
-    #break
+    exit
 }
