@@ -12,16 +12,12 @@ ___ _____ _____   _____ __  __    _    ____    _    ____  _____ _
 |___| |_|   |_|   |_____|_|  |_/_/   \_\____/_/   \_\____/|_____|_____|
 
 $message
-
 (IT Tools) is open source, You can contribute to improving the tool.
 If you have trouble installing a program, report the problem on feedback links
 https://github.com/emadadel4/ITT/issues
 https://t.me/emadadel4
-
 " -ForegroundColor "$color"
-
 return $output
-
 }
 
 function WriteText {
