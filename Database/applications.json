@@ -1084,6 +1084,15 @@
     "check": "false"
   },
   {
+    "Name": "Vim",
+    "Description": "Vim is an advanced text editor that seeks to provide the power of the de-facto Unix editor 'Vi', with a more complete feature set. It's us... Keep Reading ",
+    "winget": "Microsoft.VisualStudioCode",
+    "choco": "vim",
+    "scoop": "none",
+    "category": "Developer",
+    "check": "false"
+  },
+  {
     "Name": "Sublime Text 4",
     "Description": "Sublime Text 4 - The sophisticated text editor for code, markup and prose. ",
     "winget": "#",
