@@ -100,6 +100,15 @@
     "check": "false"
   },
   {
+    "Name": "JDownloader",
+    "Description": "JDownloader is an internet download manager.",
+    "winget": "none",
+    "choco": "jdownloader",
+    "scoop": "none",
+    "category": "Browsers",
+    "check": "false"
+  },
+  {
     "Name": "K-Lite Mega Codec Pack",
     "Description": "Comprehensive collection of audio and video codecs, filters, and tools, enabling playback of various media formats.",
     "winget": "CodecGuide.K-LiteCodecPack.Mega",
