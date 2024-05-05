@@ -913,6 +913,15 @@ $sync.configs.applications = '[
     "check": "false"
   },
   {
+    "Name": "JDownloader",
+    "Description": "JDownloader is an internet download manager.",
+    "winget": "none",
+    "choco": "jdownloader",
+    "scoop": "none",
+    "category": "Browsers",
+    "check": "false"
+  },
+  {
     "Name": "K-Lite Mega Codec Pack",
     "Description": "Comprehensive collection of audio and video codecs, filters, and tools, enabling playback of various media formats.",
     "winget": "CodecGuide.K-LiteCodecPack.Mega",
@@ -2779,6 +2788,8 @@ $inputXML = '
     <CheckBox Content="Opera" Tag="Browsers" IsChecked="false" FontFamily="console" />
     
     <CheckBox Content="Internet Download Manager" Tag="Browsers" IsChecked="false" FontFamily="console" />
+    
+    <CheckBox Content="JDownloader" Tag="Browsers" IsChecked="false" FontFamily="console" />
     
     <CheckBox Content="K-Lite Mega Codec Pack" Tag="Media" IsChecked="false" FontFamily="console" />
     
