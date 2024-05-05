@@ -30,7 +30,7 @@ function WriteText {
 
     if($firstBoot -eq $true)
     {
-        Write-Host (WriteAText -color White -message  "Starting up... it won't take longer :)") 
+        Write-Host (WriteAText -color White -message  "Starting up... it won't take longer.") 
     }
     else
     {
