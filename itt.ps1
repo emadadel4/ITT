@@ -1067,15 +1067,6 @@ $sync.configs.applications = '[
     "check": "false"
   },
   {
-    "Name": "QQPlayer",
-    "Description": "A multimedia player with support for a wide range of audio and video formats, featuring built-in codecs and additional functionalities such as screen capturing and video conversion.",
-    "winget": "Tencent.QQPlayer",
-    "choco": "Tencent.QQPlayer",
-    "scoop": "none",
-    "category": "Media",
-    "check": "false"
-  },
-  {
     "Name": "Telegram Desktop",
     "Description": "A cross-platform messaging app with a focus on speed and security, offering end-to-end encryption and a wide range of features such as group chats, file sharing, and stickers.",
     "winget": "Telegram.TelegramDesktop",
@@ -2818,8 +2809,6 @@ $inputXML = '
     <CheckBox Content="7-Zip" Tag="Compression" IsChecked="false" FontFamily="console" />
     
     <CheckBox Content="PeaZip" Tag="Compression" IsChecked="false" FontFamily="console" />
-    
-    <CheckBox Content="QQPlayer" Tag="Media" IsChecked="false" FontFamily="console" />
     
     <CheckBox Content="Telegram Desktop" Tag="Communication" IsChecked="false" FontFamily="console" />
     
