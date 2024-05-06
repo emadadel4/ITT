@@ -11,7 +11,7 @@ param (
 
 # Initialize synchronized hashtable
 $sync = [Hashtable]::Synchronized(@{})
-$sync.configs = @{}
+$sync.database = @{}
 
 # Function to write content to output script
 function WriteToScript {
@@ -128,8 +128,8 @@ try {
 
     Get-ChildItem .\Database | Where-Object {$psitem.extension -eq ".json"} | ForEach-Object {
         $json = (Get-Content $psitem.FullName -Raw).replace("'", "''")
-        $sync.configs.$($psitem.BaseName) = $json | ConvertFrom-Json
-        Write-output "`$sync.configs.$($psitem.BaseName) = '$json' `| ConvertFrom-Json" | Out-File ./itt.ps1 -Append -Encoding default
+        $sync.database.$($psitem.BaseName) = $json | ConvertFrom-Json
+        Write-output "`$sync.database.$($psitem.BaseName) = '$json' `| ConvertFrom-Json" | Out-File ./itt.ps1 -Append -Encoding default
     }
 
     WriteToScript -Content @"
@@ -170,7 +170,7 @@ try {
     }
    
     $AppsCheckboxes  = ""
-    foreach ($App  in $sync.configs.applications) {
+    foreach ($App  in $sync.database.applications) {
         $AppsCheckboxes += @"
 
     <CheckBox Content="$($App.Name)" Tag="$($App.category)" IsChecked="$($App.check)" FontFamily="console" />
@@ -179,7 +179,7 @@ try {
     }
 
     $TweaksCheckboxes  = ""
-    foreach ($Tweak  in $sync.configs.tweaks) {
+    foreach ($Tweak  in $sync.database.tweeaks) {
         $TweaksCheckboxes  += @"
 
     <CheckBox Content="$($Tweak.Name)" FontFamily="console"/>
