@@ -2286,6 +2286,24 @@ $sync.configs.applications = '[
     "scoop": "none",
     "category": "Developer",
     "check": "false"
+  },
+  {
+    "Name": "MongoDB 7.3.2",
+    "Description": "MongoDB stores data using a flexible document data model that is similar to JSON. Documents contain one or more fields, including arrays, binary data and sub-documents. Fields can vary from document to document. This flexibility allows development teams to evolve the data model rapidly as their application requirements change.",
+    "winget": "none",
+    "choco": "mongodb",
+    "scoop": "none",
+    "category": "Developer",
+    "check": "false"
+  },
+  {
+    "Name": "Viber",
+    "Description": "Viber is a mobile application that lets you make free phone calls and send text messages to anyone who also has the application installed. You can call or text any Viber user, anywhere in the world, for free.",
+    "winget": "none",
+    "choco": "viber",
+    "scoop": "none",
+    "category": "Communication",
+    "check": "false"
   }
 ]
 ' | ConvertFrom-Json
@@ -3168,6 +3186,10 @@ $inputXML = '
     <CheckBox Content="Windows Subsystem for Linux WSL2" Tag="Developer" IsChecked="false" FontFamily="console" />
     
     <CheckBox Content="Wamp Server 3.3.5" Tag="Developer" IsChecked="false" FontFamily="console" />
+    
+    <CheckBox Content="MongoDB 7.3.2" Tag="Developer" IsChecked="false" FontFamily="console" />
+    
+    <CheckBox Content="Viber" Tag="Communication" IsChecked="false" FontFamily="console" />
     
                         </ListView>
                     </TabItem.Content>
