@@ -66,6 +66,13 @@ try {
 
     Write-Host  "Added Successfully" -ForegroundColor Green
 
+    if ($build -eq "") { $build = "n" }  # default value n
+
+    if($build -eq "y")
+    {
+        ./itt.ps1
+    }
+
 }
 catch {
     Write-Host "An error occurred: $_"
