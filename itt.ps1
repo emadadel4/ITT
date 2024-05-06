@@ -2363,7 +2363,7 @@ $sync.configs.Quotes = '{
   ]
 }
 ' | ConvertFrom-Json
-$sync.configs.tweaks = '[
+$sync.configs.tweeaks = '[
   {
     "name": "System File Checker",
     "description": "sfc /scannow Use the System File Checker tool to repair missing or corrupted system files",
