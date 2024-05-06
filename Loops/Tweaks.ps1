@@ -6,7 +6,7 @@ $sync.TweeaksListView.add_Loaded({
     $sync.TweeaksListView.Add_SelectionChanged({
 
         $selectedItem = $sync.TweeaksListView.SelectedItem.Content
-        foreach ($data in $sync.configs.tweaks) {
+        foreach ($data in $sync.database.tweaks) {
 
             if ($data.name -eq $selectedItem) {
 
@@ -25,7 +25,7 @@ $sync.itemLink.add_MouseLeftButtonDown({
 
     $selectedItem = $sync.TweeaksListView.SelectedItem.Content
 
-    foreach ($data in $sync.configs.tweaks) {
+    foreach ($data in $sync.database.tweaks) {
         if ($selectedItem -eq $data.name -and $data.repo -ne "null") {
             Start-Process $data.repo
             break
