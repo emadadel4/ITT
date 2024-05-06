@@ -100,6 +100,16 @@
     "check": "false"
   },
   {
+    "Name": "Neat Download manager",
+    "Description": "A free download manager tool that downloads and allows users to organize and schedule downloads ",
+    "winget": "none",
+    "choco": "none",
+    "scoop": "none",
+    "url": "https://www.neatdownloadmanager.com/file/NeatDM_setup.exe",
+    "category": "Browsers",
+    "check": "false"
+  },
+  {
     "Name": "JDownloader",
     "Description": "JDownloader is an internet download manager.",
     "winget": "none",
