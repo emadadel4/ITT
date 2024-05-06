@@ -4,7 +4,7 @@ function GetQuotes {
 
 
         # Define the path to your JSON file
-        $jsonFilePath = $sync.configs.Quotes
+        $jsonFilePath = $sync.database.Quotes
 
         # Function to shuffle an array
         function ShuffleArray {
