@@ -7,7 +7,7 @@ function Get-SelectedApps
     {
         if ($item.IsChecked)
         {
-            foreach ($program in $sync.configs.applications)
+            foreach ($program in $sync.database.applications)
             {
                 if($item.Content -eq $program.Name)
                 {
