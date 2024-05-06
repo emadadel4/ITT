@@ -2259,6 +2259,24 @@ $sync.configs.applications = '[
     "scoop": "none",
     "category": "Media",
     "check": "false"
+  },
+  {
+    "Name": "Winaero Tweaker",
+    "Description": "Customize the appearance and behavior of the Windows operating system",
+    "winget": "none",
+    "choco": "winaero-tweaker",
+    "scoop": "none",
+    "category": "Utilities",
+    "check": "false"
+  },
+  {
+    "Name": "Windows Subsystem for Linux WSL2",
+    "Description": "To install Windows Subsystem for Linux 2, run the following command from the command line or from PowerShell:",
+    "winget": "none",
+    "choco": "wsl2",
+    "scoop": "none",
+    "category": "Developer",
+    "check": "false"
   }
 ]
 ' | ConvertFrom-Json
@@ -3135,6 +3153,10 @@ $inputXML = '
     <CheckBox Content="Realtek High Definition Audio System Software" Tag="Drivers" IsChecked="false" FontFamily="console" />
     
     <CheckBox Content="FormatFactory" Tag="Media" IsChecked="false" FontFamily="console" />
+    
+    <CheckBox Content="Winaero Tweaker" Tag="Utilities" IsChecked="false" FontFamily="console" />
+    
+    <CheckBox Content="Windows Subsystem for Linux WSL2" Tag="Developer" IsChecked="false" FontFamily="console" />
     
                         </ListView>
                     </TabItem.Content>
