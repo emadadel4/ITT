@@ -2277,6 +2277,15 @@ $sync.configs.applications = '[
     "scoop": "none",
     "category": "Developer",
     "check": "false"
+  },
+  {
+    "Name": "Wamp Server 3.3.5",
+    "Description": "WampServer is a Windows web development environment. It allows you to create web applications.",
+    "winget": "none",
+    "choco": "wamp-server",
+    "scoop": "none",
+    "category": "Developer",
+    "check": "false"
   }
 ]
 ' | ConvertFrom-Json
@@ -3157,6 +3166,8 @@ $inputXML = '
     <CheckBox Content="Winaero Tweaker" Tag="Utilities" IsChecked="false" FontFamily="console" />
     
     <CheckBox Content="Windows Subsystem for Linux WSL2" Tag="Developer" IsChecked="false" FontFamily="console" />
+    
+    <CheckBox Content="Wamp Server 3.3.5" Tag="Developer" IsChecked="false" FontFamily="console" />
     
                         </ListView>
                     </TabItem.Content>
