@@ -207,12 +207,12 @@ WriteToScript -Content @"
 
     # Define file paths
     $FilePaths = @{
-        "ee" = Join-Path -Path $InterfaceDirectory -ChildPath "about.xaml"
+        "about" = Join-Path -Path $InterfaceDirectory -ChildPath "about.xaml"
     }
 
     # Read and replace placeholders in XAML content
     try {
-        $childXaml = (Get-Content -Path $FilePaths["ee"] -Raw) -replace "'", "''"
+        $childXaml = (Get-Content -Path $FilePaths["about"] -Raw) -replace "'", "''"
 
     } catch {
         Write-Error "Error: $($_.Exception.Message)"
