@@ -1468,5 +1468,14 @@
     "scoop": "none",
     "category": "Developer",
     "check": "false"
+  },
+  {
+    "Name": "Wamp Server 3.3.5",
+    "Description": "WampServer is a Windows web development environment. It allows you to create web applications.",
+    "winget": "none",
+    "choco": "wamp-server",
+    "scoop": "none",
+    "category": "Developer",
+    "check": "false"
   }
 ]
