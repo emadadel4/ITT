@@ -1334,7 +1334,6 @@ $sync.configs.applications = '[
     "winget": "Valve.Steam",
     "choco": "steam",
     "scoop": "none",
-
     "category": "Gaming",
     "check": "false"
   },
@@ -1358,7 +1357,7 @@ $sync.configs.applications = '[
   },
   {
     "Name": "Origin",
-    "Description":" Game store launcher",
+    "Description": " Game store launcher",
     "winget": "#",
     "choco": "origin",
     "scoop": "none",
@@ -1893,6 +1892,15 @@ $sync.configs.applications = '[
     "check": "false"
   },
   {
+    "Name": "Vim",
+    "Description": "Vim is an advanced text editor that seeks to provide the power of the de-facto Unix editor ''Vi'', with a more complete feature set. It''s us... Keep Reading ",
+    "winget": "Microsoft.VisualStudioCode",
+    "choco": "vim",
+    "scoop": "none",
+    "category": "Developer",
+    "check": "false"
+  },
+  {
     "Name": "Sublime Text 4",
     "Description": "Sublime Text 4 - The sophisticated text editor for code, markup and prose. ",
     "winget": "#",
@@ -2196,6 +2204,60 @@ $sync.configs.applications = '[
     "scoop": "none",
     "choco": "avastfreeantivirus",
     "category": "Security",
+    "check": "false"
+  },
+  {
+    "Name": "Nerd Fonts - CascadiaCode",
+    "Description": "Nerd Fonts is a project that patches developer targeted fonts with a high number of glyphs (icons).",
+    "winget": "none",
+    "choco": "nerd-fonts-cascadiacode",
+    "scoop": "none",
+    "category": "Developer",
+    "check": "false"
+  },
+  {
+    "Name": "Java SE Runtime Environment 8.0.411",
+    "Description": "Java allows you to play online games, chat with people around the world, calculate your mortgage interest, and view images in 3D, just to name a few. It''s also integral to the intranet applications and other e-business solutions that are the foundation of corporate computing. Please note you now need a Java License from Oracle to use unless installed for Personal Use and Development Use.",
+    "winget": "none",
+    "choco": "jre8",
+    "scoop": "none",
+    "category": "Developer",
+    "check": "false"
+  },
+  {
+    "Name": "Audacity",
+    "Description": "Audacity is free, open source, cross-platform software for recording and editing sounds.",
+    "winget": "none",
+    "choco": "audacity",
+    "scoop": "none",
+    "category": "Media",
+    "check": "false"
+  },
+  {
+    "Name": "MusicBee",
+    "Description": "MusicBee makes it easy to organize, find and play music files on your computer, on portable devices and on the web.",
+    "winget": "none",
+    "choco": "musicbee",
+    "scoop": "none",
+    "category": "Media",
+    "check": "false"
+  },
+  {
+    "Name": "Realtek High Definition Audio System Software",
+    "Description": "Realtek High Definition Audio Codecs",
+    "winget": "none",
+    "choco": "realtek-hd-audio-driver",
+    "scoop": "none",
+    "category": "Drivers",
+    "check": "false"
+  },
+  {
+    "Name": "FormatFactory",
+    "Description": "multifunctional media processing tools",
+    "winget": "none",
+    "choco": "formatfactory",
+    "scoop": "none",
+    "category": "Media",
     "check": "false"
   }
 ]
@@ -2992,6 +3054,8 @@ $inputXML = '
     
     <CheckBox Content="Visual Studio Code" Tag="Developer" IsChecked="false" FontFamily="console" />
     
+    <CheckBox Content="Vim" Tag="Developer" IsChecked="false" FontFamily="console" />
+    
     <CheckBox Content="Sublime Text 4" Tag="Developer" IsChecked="false" FontFamily="console" />
     
     <CheckBox Content="Atom" Tag="Developer" IsChecked="false" FontFamily="console" />
@@ -3059,6 +3123,18 @@ $inputXML = '
     <CheckBox Content="Kaspersky Anti-Virus" Tag="Security" IsChecked="false" FontFamily="console" />
     
     <CheckBox Content="Avast Free Antivirus" Tag="Security" IsChecked="false" FontFamily="console" />
+    
+    <CheckBox Content="Nerd Fonts - CascadiaCode" Tag="Developer" IsChecked="false" FontFamily="console" />
+    
+    <CheckBox Content="Java SE Runtime Environment 8.0.411" Tag="Developer" IsChecked="false" FontFamily="console" />
+    
+    <CheckBox Content="Audacity" Tag="Media" IsChecked="false" FontFamily="console" />
+    
+    <CheckBox Content="MusicBee" Tag="Media" IsChecked="false" FontFamily="console" />
+    
+    <CheckBox Content="Realtek High Definition Audio System Software" Tag="Drivers" IsChecked="false" FontFamily="console" />
+    
+    <CheckBox Content="FormatFactory" Tag="Media" IsChecked="false" FontFamily="console" />
     
                         </ListView>
                     </TabItem.Content>
