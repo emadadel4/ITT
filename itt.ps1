@@ -145,7 +145,7 @@ function Get-SelectedTweeaks {
     {
         if ($item.IsChecked)
         {
-            foreach ($tweeak in $sync.configs.tweaks)
+            foreach ($tweeak in $sync.database.tweaks)
             {
 
                 if($item.Content -eq $tweeak.name)
@@ -295,7 +295,7 @@ function Get-SelectedApps
     {
         if ($item.IsChecked)
         {
-            foreach ($program in $sync.configs.applications)
+            foreach ($program in $sync.database.applications)
             {
                 if($item.Content -eq $program.Name)
                 {
@@ -641,12 +641,12 @@ function PlayMusic {
         }
 
         # Shuffle the playlist
-        ShuffleArray -array $sync.configs.OST.Tracks
+        ShuffleArray -array $sync.database.OST.Tracks
 
         # Function to play the entire shuffled playlist
         Function PlayShuffledPlaylist
         {
-            foreach ($url in $sync.configs.OST.Tracks)
+            foreach ($url in $sync.database.OST.Tracks)
             {
                 PlayAudio $url
                 # Wait for the track to finish playing
@@ -683,7 +683,7 @@ function GetQuotes {
 
 
         # Define the path to your JSON file
-        $jsonFilePath = $sync.configs.Quotes
+        $jsonFilePath = $sync.database.Quotes
 
         # Function to shuffle an array
         function ShuffleArray {
@@ -776,7 +776,7 @@ $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://eprojects.orgfree.com"
 $sync.developer =   "Emad Adel @emadadel4"
 $sync.registryPath = "HKCU:\Software\ITTEmadadel"
-$sync.configs = @{}
+$sync.database = @{}
 $sync.ProcessRunning = $false
 $sync.isDarkMode
 $sync.mediaPlayer = New-Object -ComObject WMPlayer.OCX
@@ -806,7 +806,7 @@ else
 #region Begin Database /APPS/TWEEAKS/Quotes/OST
 #===========================================================================
 
-$sync.configs.applications = '[
+$sync.database.applications = '[
   {
     "Name": "Thorium",
     "Description": "A web browser designed for smooth and secure browsing experiences.",
@@ -2306,7 +2306,7 @@ $sync.configs.applications = '[
   }
 ]
 ' | ConvertFrom-Json
-$sync.configs.OST = '{
+$sync.database.OST = '{
     "Tracks": [
         "https://epsilon.vgmsite.com/soundtracks/far-cry-3/iqgdbfrhtw/17.%20Further%20%28feat.%20Serena%20McKinney%29.mp3",
         "https://dl.vgmdownloads.com/soundtracks/hollow-knight-original-soundtrack/qqrmmaqyqg/26.%20Hollow%20Knight.mp3",
@@ -2329,7 +2329,7 @@ $sync.configs.OST = '{
     ]
   }
   ' | ConvertFrom-Json
-$sync.configs.Quotes = '{
+$sync.database.Quotes = '{
   "Q": [
     "إما تموت بطلا، أو تعيش طويلاً حتى ترى نفسك اصبحت الشرير",
     "بعض الرجال يريدون فقط مشاهدة العالم يحترق",
@@ -2363,7 +2363,7 @@ $sync.configs.Quotes = '{
   ]
 }
 ' | ConvertFrom-Json
-$sync.configs.tweeaks = '[
+$sync.database.tweeaks = '[
   {
     "name": "System File Checker",
     "description": "sfc /scannow Use the System File Checker tool to repair missing or corrupted system files",
@@ -3564,8 +3564,8 @@ function UpdateDescriptionAndLink {
 
     $sync.itemLink.Visibility = "Visible"
 
-    # Loop through the list of applications in the configs and find the matching one
-    foreach ($app in $sync.configs.applications) {
+    # Loop through the list of applications in the database and find the matching one
+    foreach ($app in $sync.database.applications) {
 
         if ($app.name -eq $selectedAppName) {
 
@@ -3583,8 +3583,8 @@ function OpenOfficialWebsite {
     # Get the name of the selected application from the list
     $selectedAppName =  $sync.AppsListView.SelectedItem.Content
 
-    # Loop through the list of applications in the configs and find the matching one
-    foreach ($app in $sync.configs.applications) {
+    # Loop through the list of applications in the database and find the matching one
+    foreach ($app in $sync.database.applications) {
         if ($selectedAppName -eq $app.name) {
             # Open the official website of the selected application in the default web browser
             Start-Process ("https://duckduckgo.com/?hps=1&q=%5C" + $app.name)
@@ -3624,7 +3624,7 @@ $sync.TweeaksListView.add_Loaded({
     $sync.TweeaksListView.Add_SelectionChanged({
 
         $selectedItem = $sync.TweeaksListView.SelectedItem.Content
-        foreach ($data in $sync.configs.tweaks) {
+        foreach ($data in $sync.database.tweaks) {
 
             if ($data.name -eq $selectedItem) {
 
@@ -3643,7 +3643,7 @@ $sync.itemLink.add_MouseLeftButtonDown({
 
     $selectedItem = $sync.TweeaksListView.SelectedItem.Content
 
-    foreach ($data in $sync.configs.tweaks) {
+    foreach ($data in $sync.database.tweaks) {
         if ($selectedItem -eq $data.name -and $data.repo -ne "null") {
             Start-Process $data.repo
             break
