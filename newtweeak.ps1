@@ -10,7 +10,7 @@ try {
     $check = "false" # default value is false
 
     # Define software object with sorted properties
-    $software = @{
+    $Tweak = @{
         Name = $Name
         Description = $Description
         repo = $repo
@@ -23,7 +23,7 @@ try {
     $existingData = Get-Content $jsonFilePath -ErrorAction Stop | ConvertFrom-Json
 
     # Add new software object to existing array
-    $existingData += $software
+    $existingData += $Tweak
 
     # Write updated JSON to file
     $existingData | ConvertTo-Json | Out-File $jsonFilePath -ErrorAction Stop
