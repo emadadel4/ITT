@@ -129,7 +129,7 @@ try {
     Get-ChildItem .\Database | Where-Object {$psitem.extension -eq ".json"} | ForEach-Object {
         $json = (Get-Content $psitem.FullName -Raw).replace("'", "''")
         $sync.database.$($psitem.BaseName) = $json | ConvertFrom-Json
-        Write-output "`$sync.database.$($psitem.BaseName) = '$json' `| ConvertFrom-Json"  | Out-File ./itt.ps1 -Append -Encoding default
+        Write-output "`$sync.database.$($psitem.BaseName) = '$json' `| ConvertFrom-Json" | Out-File ./itt.ps1 -Append -Encoding default
     }
 
     WriteToScript -Content @"
