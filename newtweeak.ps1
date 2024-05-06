@@ -9,9 +9,6 @@ try {
     if ($script -eq "") { $script = "none" }  # Set default value if empty
     $check = "false" # default value is false
 
-    # Remove "choco install" from $choco if it exists
-    $choco = ($choco -replace "choco install", "" -replace ",,", ",").Trim()
-
     # Define software object with sorted properties
     $software = @{
         Name = $Name
