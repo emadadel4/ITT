@@ -5,8 +5,8 @@ function UpdateDescriptionAndLink {
 
     $sync.itemLink.Visibility = "Visible"
 
-    # Loop through the list of applications in the configs and find the matching one
-    foreach ($app in $sync.configs.applications) {
+    # Loop through the list of applications in the database and find the matching one
+    foreach ($app in $sync.database.applications) {
 
         if ($app.name -eq $selectedAppName) {
 
@@ -24,8 +24,8 @@ function OpenOfficialWebsite {
     # Get the name of the selected application from the list
     $selectedAppName =  $sync.AppsListView.SelectedItem.Content
 
-    # Loop through the list of applications in the configs and find the matching one
-    foreach ($app in $sync.configs.applications) {
+    # Loop through the list of applications in the database and find the matching one
+    foreach ($app in $sync.database.applications) {
         if ($selectedAppName -eq $app.name) {
             # Open the official website of the selected application in the default web browser
             Start-Process ("https://duckduckgo.com/?hps=1&q=%5C" + $app.name)
