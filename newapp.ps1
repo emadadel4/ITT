@@ -42,7 +42,7 @@ do {
 
 
 
-# Remove "install" from $choco if it exists
+# Remove "choco install" from $choco if it exists
 $choco = ($choco -replace "choco install", "" -replace ",,", ",").Trim()
 
 # Define software object with sorted properties
