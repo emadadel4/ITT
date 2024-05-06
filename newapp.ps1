@@ -1,8 +1,5 @@
-
 # Prompt user for software information
-
 Clear-Host
-
 $Name = Read-Host "Enter software name"
 $Description = (Read-Host "Enter software description").Trim()
 $choco = (Read-Host "Enter chocolatey Package name").Trim()  # Remove leading and trailing spaces
