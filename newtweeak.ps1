@@ -1,4 +1,3 @@
-# Prompt user for software information
 try {
     Clear-Host
     $Name = Read-Host "Enter app name"
