@@ -35,12 +35,12 @@ function PlayMusic {
         }
 
         # Shuffle the playlist
-        ShuffleArray -array $sync.configs.OST.Tracks
+        ShuffleArray -array $sync.database.OST.Tracks
 
         # Function to play the entire shuffled playlist
         Function PlayShuffledPlaylist
         {
-            foreach ($url in $sync.configs.OST.Tracks)
+            foreach ($url in $sync.database.OST.Tracks)
             {
                 PlayAudio $url
                 # Wait for the track to finish playing
