@@ -755,7 +755,7 @@ function ChangeTap() {
     GitHub         : https://github.com/emadadel4
     Telegram       : https://t.me/emadadel4
     Website        : https://eprojects.orgfree.com/
-    Version        : 2024/05-May/06-Mon
+    Version        : 2024/05-May/07-Tue
 #>
 
 if (!(Test-Path -Path $ENV:TEMP)) {
@@ -770,7 +770,7 @@ Add-Type -AssemblyName PresentationFramework.Aero
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "2024/05-May/06-Mon"
+$sync.version = "2024/05-May/07-Tue"
 $sync.github =   "https://github.com/emadadel4"
 $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://eprojects.orgfree.com"
