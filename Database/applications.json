@@ -1495,5 +1495,14 @@
     "scoop": "none",
     "category": "Communication",
     "check": "false"
+  },
+  {
+    "Name": "test",
+    "Description": "test",
+    "winget": "test",
+    "choco": "test",
+    "scoop": "none",
+    "category": "Browsers",
+    "check": "false"
   }
 ]
