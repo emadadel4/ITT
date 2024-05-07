@@ -145,7 +145,7 @@ function Get-SelectedTweeaks {
     {
         if ($item.IsChecked)
         {
-            foreach ($tweeak in $sync.database.tweaks)
+            foreach ($tweeak in $sync.database.Tweaks)
             {
 
                 if($item.Content -eq $tweeak.name)
@@ -295,7 +295,7 @@ function Get-SelectedApps
     {
         if ($item.IsChecked)
         {
-            foreach ($program in $sync.database.applications)
+            foreach ($program in $sync.database.Applications)
             {
                 if($item.Content -eq $program.Name)
                 {
