@@ -1,6 +1,6 @@
 try {
     Clear-Host
-    $Name = Read-Host "Enter app name"
+    $Name = Read-Host "Enter name"
     $Description = (Read-Host "Enter app description").Trim()
     $repo = (Read-Host "Enter repo url").Trim()  # Remove leading and trailing spaces
     if ($repo -eq "") { $repo = "null" }  # Set default value if empty
