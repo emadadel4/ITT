@@ -7,7 +7,7 @@ function Get-SelectedTweeaks {
     {
         if ($item.IsChecked)
         {
-            foreach ($tweeak in $sync.database.Tweaks)
+            foreach ($tweeak in $sync.database.Tweeaks)
             {
 
                 if($item.Content -eq $tweeak.name)
