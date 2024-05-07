@@ -5,7 +5,7 @@ try {
     $existingData = Get-Content $jsonFilePath -Raw -ErrorAction Stop | ConvertFrom-Json
 
     # Prompt for input
-    $newQ = Read-Host "Enter app name"
+    $newQ = Read-Host "Enter quote"
 
     # store input
     $q = $newQ
