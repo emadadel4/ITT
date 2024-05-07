@@ -5,7 +5,7 @@ try {
     $existingData = Get-Content $jsonFilePath -Raw -ErrorAction Stop | ConvertFrom-Json
 
     # Prompt for input
-    $newOST = Read-Host "Enter app name"
+    $newOST = Read-Host "Enter the URL/ Example: www.eprojects.orgfree.com/ezio_family.mp3"
 
     # store input
     $track = $newOST
