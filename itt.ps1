@@ -303,6 +303,8 @@ function Get-SelectedApps
                         Name = $program.Name
                         Choco = $program.Choco
                         Scoop = $program.Scoop
+                        URL = $program.url
+
                     }
                 }
             }
@@ -354,6 +356,32 @@ function Invoke-Install
                         if ($app.Choco -ne "none")
                         {
                             Start-Process -FilePath "choco" -ArgumentList "install $($app.Choco) -y  --ignore-checksums" -NoNewWindow -Wait
+                        }
+
+                        if ($app.URL -ne "none")
+                        {
+                            #Start-Process -FilePath "choco" -ArgumentList "install $($app.Choco) -y  --ignore-checksums" -NoNewWindow -Wait
+
+                           $FileUri = "$($app.URL)"
+                           $Destination = "$env:temp/setup.exe"
+                            
+                            $bitsJobObj = Start-BitsTransfer $FileUri -Destination $Destination
+                            
+                            switch ($bitsJobObj.JobState) {
+                            
+                                'Transferred' {
+                                    Complete-BitsTransfer -BitsJob $bitsJobObj
+                                    break
+                                }
+                            
+                                'Error' {
+                                    throw 'Error downloading'
+                                }
+                            }
+                            
+                            $exeArgs = '/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath'
+                            
+                            Start-Process -Wait $Destination -ArgumentList $exeArgs
                         }
                     }
                     
@@ -813,6 +841,7 @@ $sync.database.applications = '[
     "winget": "Alex313031.Thorium",
     "choco": "thorium",
     "scoop": "none",
+    "url": "none",
     "category": "Browsers",
     "check": "false"
   },
@@ -822,6 +851,7 @@ $sync.database.applications = '[
     "winget": "Mozilla.Firefox",
     "choco": "firefox",
     "scoop": "none",
+    "url": "none",
     "category": "Browsers",
     "suggestion": "true",
     "check": "false"
@@ -832,6 +862,7 @@ $sync.database.applications = '[
     "winget": "#",
     "choco": "adblockplusfirefox",
     "scoop": "none",
+    "url": "none",
     "category": "Browsers",
     "check": "false"
   },
@@ -841,6 +872,7 @@ $sync.database.applications = '[
     "winget": "Microsoft.Edge",
     "choco": "microsoft-edge",
     "scoop": "none",
+    "url": "none",
     "category": "Browsers",
     "check": "false"
   },
@@ -850,6 +882,7 @@ $sync.database.applications = '[
     "winget": "Google.Chrome",
     "choco": "googlechrome",
     "scoop": "none",
+    "url": "none",
     "category": "Browsers",
     "check": "false"
   },
@@ -859,6 +892,7 @@ $sync.database.applications = '[
     "winget": "#",
     "choco": "ublockorigin-chrome",
     "scoop": "none",
+    "url": "none",
     "category": "Browsers",
     "check": "false"
   },
@@ -868,6 +902,7 @@ $sync.database.applications = '[
     "winget": "eloston.ungoogled-chromium",
     "choco": "chromium",
     "scoop": "none",
+    "url": "none",
     "category": "Browsers",
     "check": "false"
   },
@@ -877,6 +912,7 @@ $sync.database.applications = '[
     "winget": "Brave.Brave",
     "choco": "brave",
     "scoop": "none",
+    "url": "none",
     "category": "Browsers",
     "check": "false"
   },
@@ -886,6 +922,7 @@ $sync.database.applications = '[
     "winget": "TorProject.TorBrowser",
     "choco": "tor-browser",
     "scoop": "none",
+    "url": "none",
     "category": "Browsers",
     "check": "false"
   },
@@ -895,6 +932,7 @@ $sync.database.applications = '[
     "winget": "#",
     "choco": "opera",
     "scoop": "none",
+    "url": "none",
     "category": "Browsers",
     "check": "false"
   },
@@ -904,6 +942,17 @@ $sync.database.applications = '[
     "winget": "Tonec.InternetDownloadManager",
     "choco": "internet-download-manager",
     "scoop": "none",
+    "url": "none",
+    "category": "Browsers",
+    "check": "false"
+  },
+  {
+    "Name": "Neat Download Manager",
+    "Description": "Free download Manager",
+    "winget": "Tonec.InternetDownloadManager",
+    "choco": "none",
+    "scoop": "none",
+    "url": "https://www.neatdownloadmanager.com/file/NeatDM_setup.exe",
     "category": "Browsers",
     "check": "false"
   },
@@ -913,6 +962,7 @@ $sync.database.applications = '[
     "winget": "none",
     "choco": "jdownloader",
     "scoop": "none",
+    "url": "none",
     "category": "Browsers",
     "check": "false"
   },
@@ -922,6 +972,7 @@ $sync.database.applications = '[
     "winget": "CodecGuide.K-LiteCodecPack.Mega",
     "choco": "k-litecodecpackfull",
     "scoop": "none",
+    "url": "none",
     "category": "Media",
     "suggestion": "true",
     "check": "false"
@@ -932,6 +983,7 @@ $sync.database.applications = '[
     "winget": "Daum.PotPlayer",
     "choco": "potplayer",
     "scoop": "none",
+    "url": "none",
     "category": "Media",
     "check": "false"
   },
@@ -941,6 +993,7 @@ $sync.database.applications = '[
     "winget": "VideoLAN.VLC",
     "choco": "vlc.install",
     "scoop": "none",
+    "url": "none",
     "category": "Media",
     "suggestion": "true",
     "check": "false"
@@ -951,6 +1004,7 @@ $sync.database.applications = '[
     "winget": "#",
     "choco": "kodi",
     "scoop": "none",
+    "url": "none",
     "category": "Media",
     "check": "false"
   },
@@ -960,6 +1014,7 @@ $sync.database.applications = '[
     "winget": "#",
     "choco": "jellyfin",
     "scoop": "none",
+    "url": "none",
     "category": "Media",
     "check": "false"
   },
@@ -969,6 +1024,7 @@ $sync.database.applications = '[
     "winget": "#",
     "choco": "winamp",
     "scoop": "none",
+    "url": "none",
     "category": "Media",
     "check": "false"
   },
@@ -978,6 +1034,7 @@ $sync.database.applications = '[
     "winget": "#",
     "choco": "aimp",
     "scoop": "none",
+    "url": "none",
     "category": "Media",
     "check": "false"
   },
@@ -987,6 +1044,7 @@ $sync.database.applications = '[
     "winget": "#",
     "choco": "spotify",
     "scoop": "none",
+    "url": "none",
     "category": "Media",
     "check": "false"
   },
@@ -996,6 +1054,7 @@ $sync.database.applications = '[
     "winget": "#",
     "choco": "fsviewer",
     "scoop": "none",
+    "url": "none",
     "category": "Imaging",
     "check": "false"
   },
@@ -1005,6 +1064,7 @@ $sync.database.applications = '[
     "winget": "Apache.OpenOffice",
     "choco": "openoffice",
     "scoop": "none",
+    "url": "none",
     "category": "Documents",
     "check": "false"
   },
@@ -1014,6 +1074,7 @@ $sync.database.applications = '[
     "winget": "Foxit.FoxitReader",
     "choco": "foxitreader",
     "scoop": "none",
+    "url": "none",
     "category": "Documents",
     "check": "false"
   },
@@ -1023,6 +1084,7 @@ $sync.database.applications = '[
     "winget": "TheDocumentFoundation.LibreOffice",
     "choco": "libreoffice-fresh",
     "scoop": "none",
+    "url": "none",
     "category": "Documents",
     "suggestion": "true",
     "check": "false"
@@ -1033,6 +1095,7 @@ $sync.database.applications = '[
     "winget": "SumatraPDF.SumatraPDF",
     "choco": "sumatrapdf.install",
     "scoop": "none",
+    "url": "none",
     "category": "Documents",
     "check": "false"
   },
@@ -1042,6 +1105,7 @@ $sync.database.applications = '[
     "winget": "RARLab.WinRAR",
     "choco": "winrar",
     "scoop": "none",
+    "url": "none",
     "category": "Compression",
     "suggestion": "true",
     "check": "false"
@@ -1052,6 +1116,7 @@ $sync.database.applications = '[
     "winget": "7zip.7zip",
     "choco": "7zip",
     "scoop": "none",
+    "url": "none",
     "category": "Compression",
     "suggestion": "true",
     "check": "false"
@@ -1062,6 +1127,7 @@ $sync.database.applications = '[
     "winget": "7zip.7zip",
     "choco": "peazip",
     "scoop": "none",
+    "url": "none",
     "category": "Compression",
     "check": "false"
   },
@@ -1071,6 +1137,7 @@ $sync.database.applications = '[
     "winget": "Telegram.TelegramDesktop",
     "choco": "telegram",
     "scoop": "none",
+    "url": "none",
     "category": "Communication",
     "suggestion": "true",
     "check": "false"
@@ -1081,6 +1148,7 @@ $sync.database.applications = '[
     "winget": "#",
     "choco": "signal",
     "scoop": "none",
+    "url": "none",
     "category": "Communication",
     "check": "false"
   },
@@ -1090,6 +1158,7 @@ $sync.database.applications = '[
     "winget": "WhatsApp.WhatsApp",
     "choco": "messenger",
     "scoop": "none",
+    "url": "none",
     "category": "Communication",
     "check": "false"
   },
@@ -1099,6 +1168,7 @@ $sync.database.applications = '[
     "winget": "Microsoft.Skype",
     "choco": "skype",
     "scoop": "none",
+    "url": "none",
     "category": "Communication",
     "check": "false"
   },
@@ -1108,6 +1178,7 @@ $sync.database.applications = '[
     "winget": " Zoom.Zoom",
     "choco": "zoom",
     "scoop": "none",
+    "url": "none",
     "category": "Communication",
     "check": "false"
   },
@@ -1117,6 +1188,7 @@ $sync.database.applications = '[
     "winget": "Microsoft.Teams",
     "choco": "microsoft-teams.install",
     "scoop": "none",
+    "url": "none",
     "category": "Communication",
     "check": "false"
   },
@@ -1126,6 +1198,7 @@ $sync.database.applications = '[
     "winget": "Discord.Discord",
     "choco": "discord",
     "scoop": "none",
+    "url": "none",
     "category": "Communication",
     "check": "false"
   },
@@ -1135,6 +1208,7 @@ $sync.database.applications = '[
     "winget": "TeamViewer.TeamViewer",
     "choco": "teamviewer",
     "scoop": "none",
+    "url": "none",
     "category": "File Sharing",
     "check": "false"
   },
@@ -1144,6 +1218,7 @@ $sync.database.applications = '[
     "winget": "GIMP.GIMP",
     "choco": "gimp",
     "scoop": "none",
+    "url": "none",
     "category": "Imaging",
     "check": "false"
   },
@@ -1153,6 +1228,7 @@ $sync.database.applications = '[
     "winget": "#",
     "choco": "directx",
     "scoop": "none",
+    "url": "none",
     "category": "Gaming",
     "check": "false"
   },
@@ -1162,6 +1238,7 @@ $sync.database.applications = '[
     "winget": "#",
     "choco": "vcredist-all",
     "scoop": "none",
+    "url": "none",
     "category": "Gaming",
     "check": "false"
   },
@@ -1171,6 +1248,7 @@ $sync.database.applications = '[
     "winget": "Microsoft.VCRedist.2005.x86",
     "choco": "vcredist2005",
     "scoop": "none",
+    "url": "none",
     "category": "Gaming",
     "check": "false"
   },
@@ -1180,6 +1258,7 @@ $sync.database.applications = '[
     "winget": "Microsoft.VCRedist.2005.x64",
     "choco": "vcredist2005",
     "scoop": "none",
+    "url": "none",
     "category": "Gaming",
     "check": "false"
   },
@@ -1189,6 +1268,7 @@ $sync.database.applications = '[
     "winget": "Microsoft.VCRedist.2008.x86",
     "choco": "vcredist2008",
     "scoop": "none",
+    "url": "none",
     "category": "Gaming",
     "check": "false"
   },
@@ -1198,6 +1278,7 @@ $sync.database.applications = '[
     "winget": "Microsoft.VCRedist.2008.x64",
     "choco": "vcredist2008",
     "scoop": "none",
+    "url": "none",
     "category": "Gaming",
     "check": "false"
   },
@@ -1207,6 +1288,7 @@ $sync.database.applications = '[
     "winget": "Microsoft.VCRedist.2010.x86",
     "choco": "vcredist2010",
     "scoop": "none",
+    "url": "none",
     "category": "Gaming",
     "check": "false"
   },
@@ -1216,6 +1298,7 @@ $sync.database.applications = '[
     "winget": "Microsoft.VCRedist.2010.x64",
     "choco": "vcredist2010",
     "scoop": "none",
+    "url": "none",
     "category": "Gaming",
     "check": "false"
   },
@@ -1225,6 +1308,7 @@ $sync.database.applications = '[
     "winget": "Microsoft.VCRedist.2012.x86",
     "choco": "vcredist2012",
     "scoop": "none",
+    "url": "none",
     "category": "Gaming",
     "check": "false"
   },
@@ -1234,6 +1318,7 @@ $sync.database.applications = '[
     "winget": "Microsoft.VCRedist.2012.x64",
     "choco": "vcredist2012",
     "scoop": "none",
+    "url": "none",
     "category": "Gaming",
     "check": "false"
   },
@@ -1243,6 +1328,7 @@ $sync.database.applications = '[
     "winget": "Microsoft.VCRedist.2013.x86",
     "choco": "vcredist2013",
     "scoop": "none",
+    "url": "none",
     "category": "Gaming",
     "check": "false"
   },
@@ -1252,6 +1338,7 @@ $sync.database.applications = '[
     "winget": "Microsoft.VCRedist.2013.x64",
     "choco": "vcredist2013",
     "scoop": "none",
+    "url": "none",
     "category": "Gaming",
     "check": "false"
   },
@@ -1261,6 +1348,7 @@ $sync.database.applications = '[
     "winget": "Microsoft.VCRedist.2015+.x64",
     "choco": "vcredist2015",
     "scoop": "none",
+    "url": "none",
     "category": "Gaming",
     "check": "false"
   },
@@ -1270,6 +1358,7 @@ $sync.database.applications = '[
     "winget": "Microsoft.VCRedist.2015+.x86",
     "choco": "vcredist2015",
     "scoop": "none",
+    "url": "none",
     "category": "Gaming",
     "check": "false"
   },
@@ -1279,6 +1368,7 @@ $sync.database.applications = '[
     "winget": "#",
     "choco": "dotnet-all",
     "scoop": "none",
+    "url": "none",
     "category": "Gaming",
     "check": "false"
   },
@@ -1288,6 +1378,7 @@ $sync.database.applications = '[
     "winget": "#",
     "choco": "amd-ryzen-chipset",
     "scoop": "none",
+    "url": "none",
     "category": "Gaming",
     "check": "false"
   },
@@ -1297,6 +1388,7 @@ $sync.database.applications = '[
     "winget": "#",
     "choco": "nvidia-display-driver",
     "scoop": "none",
+    "url": "none",
     "category": "Gaming",
     "check": "false"
   },
@@ -1306,6 +1398,7 @@ $sync.database.applications = '[
     "winget": "Nvidia.GeForceNow",
     "choco": "nvidia-geforce-now",
     "scoop": "none",
+    "url": "none",
     "category": "Gaming",
     "check": "false"
   },
@@ -1315,6 +1408,7 @@ $sync.database.applications = '[
     "winget": "#",
     "choco": "msiafterburner",
     "scoop": "none",
+    "url": "none",
     "category": "Gaming",
     "check": "false"
   },
@@ -1324,6 +1418,7 @@ $sync.database.applications = '[
     "winget": "Nvidia.PhysX",
     "choco": "physx.legacy",
     "scoop": "none",
+    "url": "none",
     "category": "Gaming",
     "check": "false"
   },
@@ -1333,6 +1428,7 @@ $sync.database.applications = '[
     "winget": "Valve.Steam",
     "choco": "steam",
     "scoop": "none",
+    "url": "none",
     "category": "Gaming",
     "check": "false"
   },
@@ -1342,6 +1438,7 @@ $sync.database.applications = '[
     "winget": "#",
     "choco": "epicgameslauncher",
     "scoop": "none",
+    "url": "none",
     "category": "Gaming",
     "check": "false"
   },
@@ -1351,6 +1448,7 @@ $sync.database.applications = '[
     "winget": "Ubisoft.Connect",
     "choco": "ubisoft-connect",
     "scoop": "none",
+    "url": "none",
     "category": "Gaming",
     "check": "false"
   },
@@ -1360,6 +1458,7 @@ $sync.database.applications = '[
     "winget": "#",
     "choco": "origin",
     "scoop": "none",
+    "url": "none",
     "category": "Gaming",
     "check": "false"
   },
@@ -1369,6 +1468,7 @@ $sync.database.applications = '[
     "winget": "rockstar-launcher",
     "choco": "steam",
     "scoop": "none",
+    "url": "none",
     "category": "Gaming",
     "check": "false"
   },
@@ -1378,6 +1478,7 @@ $sync.database.applications = '[
     "winget": "InsaneMatt.GameSaveManager",
     "choco": "gamesavemanager",
     "scoop": "none",
+    "url": "none",
     "category": "Gaming",
     "check": "false"
   },
@@ -1387,6 +1488,7 @@ $sync.database.applications = '[
     "winget": "Streamlabs.StreamlabsOBS",
     "choco": "streamlabs-obs",
     "scoop": "none",
+    "url": "none",
     "category": "Gaming",
     "check": "false"
   },
@@ -1396,6 +1498,7 @@ $sync.database.applications = '[
     "winget": " OBSProject.OBSStudio",
     "choco": "obs-studio.install",
     "scoop": "none",
+    "url": "none",
     "category": "Gaming",
     "check": "false"
   },
@@ -1405,6 +1508,7 @@ $sync.database.applications = '[
     "winget": "#",
     "choco": "logitechgaming",
     "scoop": "none",
+    "url": "none",
     "category": "Gaming",
     "check": "false"
   },
@@ -1414,6 +1518,7 @@ $sync.database.applications = '[
     "winget": " #",
     "choco": "lively",
     "scoop": "none",
+    "url": "none",
     "category": "Gaming",
     "check": "false"
   },
@@ -1423,6 +1528,7 @@ $sync.database.applications = '[
     "winget": " #",
     "choco": "playnite",
     "scoop": "none",
+    "url": "none",
     "category": "Gaming",
     "check": "false"
   },
@@ -1432,6 +1538,7 @@ $sync.database.applications = '[
     "winget": "Easeware.DriverEasy",
     "choco": "drivereasyfree",
     "scoop": "none",
+    "url": "none",
     "category": "Drivers",
     "check": "false"
   },
@@ -1441,6 +1548,7 @@ $sync.database.applications = '[
     "winget": "none",
     "choco": "intel-graphics-driver",
     "scoop": "none",
+    "url": "none",
     "category": "Drivers",
     "check": "false"
   },
@@ -1450,6 +1558,7 @@ $sync.database.applications = '[
     "winget": "#",
     "choco": "intel-dsa",
     "scoop": "none",
+    "url": "none",
     "category": "Drivers",
     "check": "false"
   },
@@ -1459,6 +1568,7 @@ $sync.database.applications = '[
     "winget": "#",
     "choco": "intel-network-drivers-win10",
     "scoop": "none",
+    "url": "none",
     "category": "Drivers",
     "check": "false"
   },
@@ -1468,6 +1578,7 @@ $sync.database.applications = '[
     "winget": "none",
     "choco": "sdio",
     "scoop": "none",
+    "url": "none",
     "category": "Drivers",
     "check": "false"
   },
@@ -1477,6 +1588,7 @@ $sync.database.applications = '[
     "winget": "#",
     "choco": "driverbooster",
     "scoop": "none",
+    "url": "none",
     "category": "Drivers",
     "check": "false"
   },
@@ -1486,6 +1598,7 @@ $sync.database.applications = '[
     "winget": "#",
     "choco": "drivergenius",
     "scoop": "none",
+    "url": "none",
     "category": "Drivers",
     "check": "false"
   },
@@ -1495,6 +1608,7 @@ $sync.database.applications = '[
     "winget": "#",
     "choco": "ddu",
     "scoop": "none",
+    "url": "none",
     "category": "Drivers",
     "check": "false"
   },
@@ -1504,6 +1618,7 @@ $sync.database.applications = '[
     "winget": "#",
     "choco": "rapr",
     "scoop": "none",
+    "url": "none",
     "category": "Drivers",
     "check": "false"
   },
@@ -1513,6 +1628,7 @@ $sync.database.applications = '[
     "winget": "AgileBits.1Password",
     "choco": "1password",
     "scoop": "none",
+    "url": "none",
     "category": "Utilities",
     "check": "false"
   },
@@ -1522,6 +1638,7 @@ $sync.database.applications = '[
     "winget": "MiniTool.PartitionWizard.Free 12.8",
     "choco": "partitionwizard",
     "scoop": "none",
+    "url": "none",
     "category": "Utilities",
     "check": "false"
   },
@@ -1531,6 +1648,7 @@ $sync.database.applications = '[
     "winget": "#",
     "choco": "partition-assistant-standard",
     "scoop": "none",
+    "url": "none",
     "category": "Utilities",
     "check": "false"
   },
@@ -1540,6 +1658,7 @@ $sync.database.applications = '[
     "winget": "AOMEI.Backupper.Standard",
     "choco": "backupper-standard",
     "scoop": "none",
+    "url": "none",
     "category": "Utilities",
     "check": "false"
   },
@@ -1549,6 +1668,7 @@ $sync.database.applications = '[
     "winget": "#",
     "choco": "recuva",
     "scoop": "none",
+    "url": "none",
     "category": "Utilities",
     "check": "false"
   },
@@ -1558,6 +1678,7 @@ $sync.database.applications = '[
     "winget": "Piriform.CCleaner",
     "choco": "ccleaner",
     "scoop": "none",
+    "url": "none",
     "category": "Utilities",
     "check": "false"
   },
@@ -1567,6 +1688,7 @@ $sync.database.applications = '[
     "winget": "Klocman.BulkCrapUninstaller",
     "choco": "bulk-crap-uninstaller",
     "scoop": "none",
+    "url": "none",
     "category": "Utilities",
     "suggestion": "true",
     "check": "false"
@@ -1577,6 +1699,7 @@ $sync.database.applications = '[
     "winget": "#",
     "choco": "ecm",
     "scoop": "none",
+    "url": "none",
     "category": "Utilities",
     "check": "false"
   },
@@ -1586,6 +1709,7 @@ $sync.database.applications = '[
     "winget": "REALiX.HWiNFO",
     "choco": "hwinfo.install",
     "scoop": "none",
+    "url": "none",
     "category": "Utilities",
     "suggestion": "true",
     "check": "false"
@@ -1596,6 +1720,7 @@ $sync.database.applications = '[
     "winget": "Piriform.Speccy",
     "choco": "speccy",
     "scoop": "none",
+    "url": "none",
     "category": "Utilities",
     "check": "false"
   },
@@ -1605,6 +1730,7 @@ $sync.database.applications = '[
     "winget": "Geeks3D.FurMark",
     "choco": "furmark",
     "scoop": "none",
+    "url": "none",
     "category": "Utilities",
     "check": "false"
   },
@@ -1614,6 +1740,7 @@ $sync.database.applications = '[
     "winget": "#",
     "choco": "hdsentinel",
     "scoop": "none",
+    "url": "none",
     "category": "Utilities",
     "check": "false"
   },
@@ -1623,6 +1750,7 @@ $sync.database.applications = '[
     "winget": "CPUID.CPU-Z",
     "choco": "cpu-z",
     "scoop": "none",
+    "url": "none",
     "category": "Utilities",
     "check": "false"
   },
@@ -1632,6 +1760,7 @@ $sync.database.applications = '[
     "winget": "#",
     "choco": "memreduct",
     "scoop": "none",
+    "url": "none",
     "category": "Utilities",
     "check": "false"
   },
@@ -1641,6 +1770,7 @@ $sync.database.applications = '[
     "winget": "HandBrake.HandBrake",
     "choco": "handbrake.install",
     "scoop": "none",
+    "url": "none",
     "category": "Utilities",
     "check": "false"
   },
@@ -1650,6 +1780,7 @@ $sync.database.applications = '[
     "winget": "Rufus.Rufus",
     "choco": "rufus",
     "scoop": "none",
+    "url": "none",
     "category": "Utilities",
     "suggestion": "true",
     "check": "false"
@@ -1660,6 +1791,7 @@ $sync.database.applications = '[
     "winget": "#",
     "choco": "imgburn",
     "scoop": "none",
+    "url": "none",
     "category": "Developer",
     "check": "false"
   },
@@ -1669,6 +1801,7 @@ $sync.database.applications = '[
     "winget": "#",
     "choco": "virtualclonedrive",
     "scoop": "none",
+    "url": "none",
     "category": "Utilities",
     "check": "false"
   },
@@ -1678,6 +1811,7 @@ $sync.database.applications = '[
     "winget": "SerhiiSlieptsov.Utilso",
     "choco": "ultraiso",
     "scoop": "none",
+    "url": "none",
     "category": "Utilities",
     "check": "false"
   },
@@ -1687,6 +1821,7 @@ $sync.database.applications = '[
     "winget": "Ventoy.Ventoy",
     "choco": "ventoy",
     "scoop": "none",
+    "url": "none",
     "category": "Utilities",
     "check": "false"
   },
@@ -1696,6 +1831,7 @@ $sync.database.applications = '[
     "winget": "#",
     "choco": "iventoy",
     "scoop": "none",
+    "url": "none",
     "category": "Utilities",
     "check": "false"
   },
@@ -1705,6 +1841,7 @@ $sync.database.applications = '[
     "winget": "AutoHotkey.AutoHotkey",
     "choco": "autohotkey",
     "scoop": "none",
+    "url": "none",
     "category": "Utilities",
     "check": "false"
   },
@@ -1714,6 +1851,7 @@ $sync.database.applications = '[
     "winget": "#",
     "choco": "rainmeter",
     "scoop": "none",
+    "url": "none",
     "category": "Utilities",
     "check": "false"
   },
@@ -1723,6 +1861,7 @@ $sync.database.applications = '[
     "winget": "FxSoundLLC.FxSound",
     "choco": "fxsound",
     "scoop": "none",
+    "url": "none",
     "category": "Utilities",
     "suggestion": "true",
     "check": "false"
@@ -1733,6 +1872,7 @@ $sync.database.applications = '[
     "winget": "Huawei.HiSuite",
     "choco": "Huawei.HiSuite",
     "scoop": "none",
+    "url": "none",
     "category": "Utilities",
     "check": "false"
   },
@@ -1742,6 +1882,7 @@ $sync.database.applications = '[
     "winget": "#",
     "choco": "vysor",
     "scoop": "none",
+    "url": "none",
     "category": "Utilities",
     "check": "false"
   },
@@ -1751,6 +1892,7 @@ $sync.database.applications = '[
     "winget": "unifiedremote",
     "choco": "unifiedremote",
     "scoop": "none",
+    "url": "none",
     "category": "Utilities",
     "check": "false"
   },
@@ -1760,6 +1902,7 @@ $sync.database.applications = '[
     "winget": "AnyDeskSoftwareGmbH.AnyDesk",
     "choco": "anydesk.install",
     "scoop": "none",
+    "url": "none",
     "category": "File Sharing",
     "check": "false"
   },
@@ -1769,6 +1912,7 @@ $sync.database.applications = '[
     "winget": "#",
     "choco": "airdroid",
     "scoop": "none",
+    "url": "none",
     "category": "File Sharing",
     "check": "false"
   },
@@ -1778,6 +1922,7 @@ $sync.database.applications = '[
     "winget": "#",
     "choco": "ultraviewer",
     "scoop": "none",
+    "url": "none",
     "category": "File Sharing",
     "check": "false"
   },
@@ -1787,6 +1932,7 @@ $sync.database.applications = '[
     "winget": "#",
     "choco": "wnetwatcher.portable",
     "scoop": "none",
+    "url": "none",
     "category": "Utilities",
     "check": "false"
   },
@@ -1796,6 +1942,7 @@ $sync.database.applications = '[
     "winget": "#",
     "choco": "wifiinfoview",
     "scoop": "none",
+    "url": "none",
     "category": "Utilities",
     "check": "false"
   },
@@ -1805,6 +1952,7 @@ $sync.database.applications = '[
     "winget": "qBittorrent.qBittorrent",
     "choco": "qbittorrent",
     "scoop": "none",
+    "url": "none",
     "category": "File Sharing",
     "suggestion": "true",
     "check": "false"
@@ -1815,6 +1963,7 @@ $sync.database.applications = '[
     "winget": "#",
     "choco": "googleearthpro",
     "scoop": "none",
+    "url": "none",
     "category": "Imaging",
     "check": "false"
   },
@@ -1824,6 +1973,7 @@ $sync.database.applications = '[
     "winget": "XAMPP 8.2",
     "choco": "xampp-81",
     "scoop": "none",
+    "url": "none",
     "category": "Developer",
     "check": "false"
   },
@@ -1833,6 +1983,7 @@ $sync.database.applications = '[
     "winget": "Microsoft.VisualStudio.2022.Professional",
     "choco": "visualstudio2022professional",
     "scoop": "none",
+    "url": "none",
     "category": "Developer",
     "check": "false"
   },
@@ -1842,6 +1993,7 @@ $sync.database.applications = '[
     "winget": "Microsoft.VisualStudio.2022.Community",
     "choco": "visualstudio2022community",
     "scoop": "none",
+    "url": "none",
     "category": "Developer",
     "check": "false"
   },
@@ -1851,6 +2003,7 @@ $sync.database.applications = '[
     "winget": "#",
     "choco": "godot",
     "scoop": "none",
+    "url": "none",
     "category": "Developer",
     "check": "false"
   },
@@ -1860,6 +2013,7 @@ $sync.database.applications = '[
     "winget": "#",
     "choco": "unity-hub",
     "scoop": "none",
+    "url": "none",
     "category": "Developer",
     "check": "false"
   },
@@ -1869,6 +2023,7 @@ $sync.database.applications = '[
     "winget": "#",
     "choco": "unity",
     "scoop": "none",
+    "url": "none",
     "category": "Developer",
     "check": "false"
   },
@@ -1878,6 +2033,7 @@ $sync.database.applications = '[
     "winget": "#",
     "choco": "blender",
     "scoop": "none",
+    "url": "none",
     "category": "Developer",
     "check": "false"
   },
@@ -1887,6 +2043,7 @@ $sync.database.applications = '[
     "winget": "Microsoft.VisualStudioCode",
     "choco": "vscode",
     "scoop": "none",
+    "url": "none",
     "category": "Developer",
     "check": "false"
   },
@@ -1896,6 +2053,7 @@ $sync.database.applications = '[
     "winget": "Microsoft.VisualStudioCode",
     "choco": "vim",
     "scoop": "none",
+    "url": "none",
     "category": "Developer",
     "check": "false"
   },
@@ -1905,6 +2063,7 @@ $sync.database.applications = '[
     "winget": "#",
     "choco": "sublimetext4",
     "scoop": "none",
+    "url": "none",
     "category": "Developer",
     "check": "false"
   },
@@ -1914,6 +2073,7 @@ $sync.database.applications = '[
     "winget": "#",
     "choco": "atom",
     "scoop": "none",
+    "url": "none",
     "category": "Developer",
     "check": "false"
   },
@@ -1923,6 +2083,7 @@ $sync.database.applications = '[
     "winget": "#",
     "choco": "innosetup",
     "scoop": "none",
+    "url": "none",
     "category": "Developer",
     "check": "false"
   },
@@ -1932,6 +2093,7 @@ $sync.database.applications = '[
     "winget": "JetBrains.PyCharm.Community",
     "choco": "pycharm-community",
     "scoop": "none",
+    "url": "none",
     "category": "Developer",
     "check": "false"
   },
@@ -1941,6 +2103,7 @@ $sync.database.applications = '[
     "winget": "JetBrains.PyCharm.Professional",
     "choco": "pycharm",
     "scoop": "none",
+    "url": "none",
     "category": "Developer",
     "check": "false"
   },
@@ -1950,6 +2113,7 @@ $sync.database.applications = '[
     "winget": "JetBrains.Rider",
     "choco": "jetbrains-rider",
     "scoop": "none",
+    "url": "none",
     "category": "Developer",
     "check": "false"
   },
@@ -1959,6 +2123,7 @@ $sync.database.applications = '[
     "winget": "OpenJS.NodeJS",
     "choco": "nodejs-lts",
     "scoop": "none",
+    "url": "none",
     "category": "Developer",
     "check": "false"
   },
@@ -1968,6 +2133,7 @@ $sync.database.applications = '[
     "winget": "#",
     "choco": "electronim",
     "scoop": "none",
+    "url": "none",
     "category": "Developer",
     "check": "false"
   },
@@ -1977,6 +2143,7 @@ $sync.database.applications = '[
     "winget": "#",
     "choco": "hugo",
     "scoop": "none",
+    "url": "none",
     "category": "Developer",
     "check": "false"
   },
@@ -1986,6 +2153,7 @@ $sync.database.applications = '[
     "winget": "Notepad++.Notepad++",
     "choco": "notepadplusplus",
     "scoop": "none",
+    "url": "none",
     "category": "Developer",
     "check": "false"
   },
@@ -1995,6 +2163,7 @@ $sync.database.applications = '[
     "winget": "Microsoft.WindowsTerminal",
     "choco": "microsoft-windows-terminal",
     "scoop": "none",
+    "url": "none",
     "category": "Developer",
     "check": "false"
   },
@@ -2004,6 +2173,7 @@ $sync.database.applications = '[
     "winget": "powershell-core",
     "choco": "powershell-core",
     "scoop": "none",
+    "url": "none",
     "category": "Developer",
     "check": "false"
   },
@@ -2013,6 +2183,7 @@ $sync.database.applications = '[
     "winget": "#",
     "choco": "x64dbg.portable",
     "scoop": "none",
+    "url": "none",
     "category": "Developer",
     "check": "false"
   },
@@ -2022,6 +2193,7 @@ $sync.database.applications = '[
     "winget": "#",
     "choco": "dnspy",
     "scoop": "none",
+    "url": "none",
     "category": "Developer",
     "check": "false"
   },
@@ -2031,6 +2203,7 @@ $sync.database.applications = '[
     "winget": "#",
     "choco": "cheatengine",
     "scoop": "none",
+    "url": "none",
     "category": "Developer",
     "check": "false"
   },
@@ -2040,6 +2213,7 @@ $sync.database.applications = '[
     "winget": "Python.Python.3.9",
     "choco": "python",
     "scoop": "none",
+    "url": "none",
     "category": "Developer",
     "check": "false"
   },
@@ -2049,6 +2223,7 @@ $sync.database.applications = '[
     "winget": "Git.Git",
     "choco": "git",
     "scoop": "none",
+    "url": "none",
     "category": "Developer",
     "check": "false"
   },
@@ -2058,6 +2233,7 @@ $sync.database.applications = '[
     "winget": "GitHub.GitHubDesktop",
     "choco": "github-desktop",
     "scoop": "none",
+    "url": "none",
     "category": "Developer",
     "check": "false"
   },
@@ -2067,6 +2243,7 @@ $sync.database.applications = '[
     "winget": "Docker.DockerDesktop",
     "choco": "docker-desktop",
     "scoop": "none",
+    "url": "none",
     "category": "Developer",
     "check": "false"
   },
@@ -2076,6 +2253,7 @@ $sync.database.applications = '[
     "winget": "#",
     "choco": "docker-compose",
     "scoop": "none",
+    "url": "none",
     "category": "Developer",
     "check": "false"
   },
@@ -2085,6 +2263,7 @@ $sync.database.applications = '[
     "winget": "Microsoft.PowerToys",
     "choco": "powertoys",
     "scoop": "none",
+    "url": "none",
     "category": "Developer",
     "check": "false"
   },
@@ -2094,6 +2273,7 @@ $sync.database.applications = '[
     "winget": "#",
     "choco": "notion",
     "scoop": "none",
+    "url": "none",
     "category": "Developer",
     "check": "false"
   },
@@ -2103,6 +2283,7 @@ $sync.database.applications = '[
     "winget": "ImageLine.FLStudio",
     "choco": "ImageLine.FLStudio",
     "scoop": "none",
+    "url": "none",
     "category": "Developer",
     "check": "false"
   },
@@ -2112,6 +2293,7 @@ $sync.database.applications = '[
     "winget": "ImageLine.FLStudio",
     "choco": "adb",
     "scoop": "none",
+    "url": "none",
     "category": "Developer",
     "check": "false"
   },
@@ -2121,6 +2303,7 @@ $sync.database.applications = '[
     "winget": "ImageLine.FLStudio",
     "choco": "universal-adb-drivers",
     "scoop": "none",
+    "url": "none",
     "category": "Developer",
     "check": "false"
   },
@@ -2130,6 +2313,7 @@ $sync.database.applications = '[
     "winget": "#",
     "choco": "scrcpy",
     "scoop": "none",
+    "url": "none",
     "category": "Developer",
     "check": "false"
   },
@@ -2139,6 +2323,7 @@ $sync.database.applications = '[
     "winget": "#",
     "choco": "virtualbox",
     "scoop": "none",
+    "url": "none",
     "category": "Developer",
     "check": "false"
   },
@@ -2148,6 +2333,7 @@ $sync.database.applications = '[
     "winget": "#",
     "choco": "ultraiso",
     "scoop": "none",
+    "url": "none",
     "category": "Developer",
     "check": "false"
   },
@@ -2157,6 +2343,7 @@ $sync.database.applications = '[
     "winget": "#",
     "choco": "vmwareworkstation",
     "scoop": "none",
+    "url": "none",
     "category": "Developer",
     "check": "false"
   },
@@ -2166,6 +2353,7 @@ $sync.database.applications = '[
     "winget": "#",
     "choco": "oh-my-posh",
     "scoop": "none",
+    "url": "none",
     "category": "Developer",
     "check": "false"
   },
@@ -2175,6 +2363,7 @@ $sync.database.applications = '[
     "winget": "#",
     "choco": "malwarebytes",
     "scoop": "none",
+    "url": "none",
     "category": "Security",
     "check": "false"
   },
@@ -2184,6 +2373,7 @@ $sync.database.applications = '[
     "winget": "#",
     "choco": "kvrt",
     "scoop": "none",
+    "url": "none",
     "category": "Security",
     "check": "false"
   },
@@ -2193,6 +2383,7 @@ $sync.database.applications = '[
     "winget": "#",
     "choco": "kav",
     "scoop": "none",
+    "url": "none",
     "category": "Security",
     "check": "false"
   },
@@ -2201,6 +2392,7 @@ $sync.database.applications = '[
     "Description": "Avast Free Antivirus.",
     "winget": "#",
     "scoop": "none",
+    "url": "none",
     "choco": "avastfreeantivirus",
     "category": "Security",
     "check": "false"
@@ -2211,6 +2403,7 @@ $sync.database.applications = '[
     "winget": "none",
     "choco": "nerd-fonts-cascadiacode",
     "scoop": "none",
+    "url": "none",
     "category": "Developer",
     "check": "false"
   },
@@ -2220,6 +2413,7 @@ $sync.database.applications = '[
     "winget": "none",
     "choco": "jre8",
     "scoop": "none",
+    "url": "none",
     "category": "Developer",
     "check": "false"
   },
@@ -2229,6 +2423,7 @@ $sync.database.applications = '[
     "winget": "none",
     "choco": "audacity",
     "scoop": "none",
+    "url": "none",
     "category": "Media",
     "check": "false"
   },
@@ -2238,6 +2433,7 @@ $sync.database.applications = '[
     "winget": "none",
     "choco": "musicbee",
     "scoop": "none",
+    "url": "none",
     "category": "Media",
     "check": "false"
   },
@@ -2247,6 +2443,7 @@ $sync.database.applications = '[
     "winget": "none",
     "choco": "realtek-hd-audio-driver",
     "scoop": "none",
+    "url": "none",
     "category": "Drivers",
     "check": "false"
   },
@@ -2256,6 +2453,7 @@ $sync.database.applications = '[
     "winget": "none",
     "choco": "formatfactory",
     "scoop": "none",
+    "url": "none",
     "category": "Media",
     "check": "false"
   },
@@ -2265,6 +2463,7 @@ $sync.database.applications = '[
     "winget": "none",
     "choco": "winaero-tweaker",
     "scoop": "none",
+    "url": "none",
     "category": "Utilities",
     "check": "false"
   },
@@ -2274,6 +2473,7 @@ $sync.database.applications = '[
     "winget": "none",
     "choco": "wsl2",
     "scoop": "none",
+    "url": "none",
     "category": "Developer",
     "check": "false"
   },
@@ -2283,6 +2483,7 @@ $sync.database.applications = '[
     "winget": "none",
     "choco": "wamp-server",
     "scoop": "none",
+    "url": "none",
     "category": "Developer",
     "check": "false"
   },
@@ -2292,6 +2493,7 @@ $sync.database.applications = '[
     "winget": "none",
     "choco": "mongodb",
     "scoop": "none",
+    "url": "none",
     "category": "Developer",
     "check": "false"
   },
@@ -2301,6 +2503,7 @@ $sync.database.applications = '[
     "winget": "none",
     "choco": "viber",
     "scoop": "none",
+    "url": "none",
     "category": "Communication",
     "check": "false"
   }
@@ -2881,6 +3084,8 @@ $inputXML = '
     <CheckBox Content="Opera" Tag="Browsers" IsChecked="false" FontFamily="console" />
     
     <CheckBox Content="Internet Download Manager" Tag="Browsers" IsChecked="false" FontFamily="console" />
+    
+    <CheckBox Content="Neat Download Manager" Tag="Browsers" IsChecked="false" FontFamily="console" />
     
     <CheckBox Content="JDownloader" Tag="Browsers" IsChecked="false" FontFamily="console" />
     
