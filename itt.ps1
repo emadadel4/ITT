@@ -834,7 +834,7 @@ else
 #region Begin Database /APPS/TWEEAKS/Quotes/OST
 #===========================================================================
 
-$sync.database.applications = '[
+$sync.database.Applications = '[
   {
     "Name": "Thorium",
     "Description": "A web browser designed for smooth and secure browsing experiences.",
@@ -2566,7 +2566,7 @@ $sync.database.Quotes = '{
   ]
 }
 ' | ConvertFrom-Json
-$sync.database.tweeaks = '[
+$sync.database.Tweeaks = '[
   {
     "name": "System File Checker",
     "description": "sfc /scannow Use the System File Checker tool to repair missing or corrupted system files",
@@ -3770,7 +3770,7 @@ function UpdateDescriptionAndLink {
     $sync.itemLink.Visibility = "Visible"
 
     # Loop through the list of applications in the database and find the matching one
-    foreach ($app in $sync.database.applications) {
+    foreach ($app in $sync.database.Applications) {
 
         if ($app.name -eq $selectedAppName) {
 
@@ -3789,7 +3789,7 @@ function OpenOfficialWebsite {
     $selectedAppName =  $sync.AppsListView.SelectedItem.Content
 
     # Loop through the list of applications in the database and find the matching one
-    foreach ($app in $sync.database.applications) {
+    foreach ($app in $sync.database.Applications) {
         if ($selectedAppName -eq $app.name) {
             # Open the official website of the selected application in the default web browser
             Start-Process ("https://duckduckgo.com/?hps=1&q=%5C" + $app.name)
@@ -3829,7 +3829,7 @@ $sync.TweeaksListView.add_Loaded({
     $sync.TweeaksListView.Add_SelectionChanged({
 
         $selectedItem = $sync.TweeaksListView.SelectedItem.Content
-        foreach ($data in $sync.database.tweaks) {
+        foreach ($data in $sync.database.Tweaks) {
 
             if ($data.name -eq $selectedItem) {
 
@@ -3848,7 +3848,7 @@ $sync.itemLink.add_MouseLeftButtonDown({
 
     $selectedItem = $sync.TweeaksListView.SelectedItem.Content
 
-    foreach ($data in $sync.database.tweaks) {
+    foreach ($data in $sync.database.Tweaks) {
         if ($selectedItem -eq $data.name -and $data.repo -ne "null") {
             Start-Process $data.repo
             break
