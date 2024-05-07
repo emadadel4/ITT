@@ -127,8 +127,8 @@ function CheckChoco
     {
         WriteText -firstBoot $true
         Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1')) *> $null
-        #Clear-Host
-        #Write-Host (WriteAText -color White -message  "You ready to Install anything.") 
+        Clear-Host
+        Write-Host (WriteAText -color White -message  "You ready to Install anything.") 
     }
     else
     {
@@ -783,7 +783,7 @@ function ChangeTap() {
     GitHub         : https://github.com/emadadel4
     Telegram       : https://t.me/emadadel4
     Website        : https://eprojects.orgfree.com/
-    Version        : 2024/05-May/07-Tue
+    Version        : 2024/05-May/08-Wed
 #>
 
 if (!(Test-Path -Path $ENV:TEMP)) {
@@ -798,7 +798,7 @@ Add-Type -AssemblyName PresentationFramework.Aero
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "2024/05-May/07-Tue"
+$sync.version = "2024/05-May/08-Wed"
 $sync.github =   "https://github.com/emadadel4"
 $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://eprojects.orgfree.com"
