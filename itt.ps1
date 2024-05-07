@@ -145,7 +145,7 @@ function Get-SelectedTweeaks {
     {
         if ($item.IsChecked)
         {
-            foreach ($tweeak in $sync.database.Tweaks)
+            foreach ($tweeak in $sync.database.Tweeaks)
             {
 
                 if($item.Content -eq $tweeak.name)
@@ -3829,7 +3829,7 @@ $sync.TweeaksListView.add_Loaded({
     $sync.TweeaksListView.Add_SelectionChanged({
 
         $selectedItem = $sync.TweeaksListView.SelectedItem.Content
-        foreach ($data in $sync.database.Tweaks) {
+        foreach ($data in $sync.database.Tweeaks) {
 
             if ($data.name -eq $selectedItem) {
 
@@ -3848,7 +3848,7 @@ $sync.itemLink.add_MouseLeftButtonDown({
 
     $selectedItem = $sync.TweeaksListView.SelectedItem.Content
 
-    foreach ($data in $sync.database.Tweaks) {
+    foreach ($data in $sync.database.Tweeaks) {
         if ($selectedItem -eq $data.name -and $data.repo -ne "null") {
             Start-Process $data.repo
             break
