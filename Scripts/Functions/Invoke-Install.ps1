@@ -15,6 +15,8 @@ function Get-SelectedApps
                         Name = $program.Name
                         Choco = $program.Choco
                         Scoop = $program.Scoop
+                        URL = $program.url
+
                     }
                 }
             }
@@ -66,6 +68,32 @@ function Invoke-Install
                         if ($app.Choco -ne "none")
                         {
                             Start-Process -FilePath "choco" -ArgumentList "install $($app.Choco) -y  --ignore-checksums" -NoNewWindow -Wait
+                        }
+
+                        if ($app.URL -ne "none")
+                        {
+                            #Start-Process -FilePath "choco" -ArgumentList "install $($app.Choco) -y  --ignore-checksums" -NoNewWindow -Wait
+
+                           $FileUri = "$($app.URL)"
+                           $Destination = "$env:temp/setup.exe"
+                            
+                            $bitsJobObj = Start-BitsTransfer $FileUri -Destination $Destination
+                            
+                            switch ($bitsJobObj.JobState) {
+                            
+                                'Transferred' {
+                                    Complete-BitsTransfer -BitsJob $bitsJobObj
+                                    break
+                                }
+                            
+                                'Error' {
+                                    throw 'Error downloading'
+                                }
+                            }
+                            
+                            $exeArgs = '/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath'
+                            
+                            Start-Process -Wait $Destination -ArgumentList $exeArgs
                         }
                     }
                     
