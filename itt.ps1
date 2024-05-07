@@ -3589,7 +3589,7 @@ $childXaml = '<Window
         <TextBlock Margin="25" Name="sourcecode" Cursor="Hand" TextAlignment="Center" Text="Source code"/>
         <StackPanel Orientation="Horizontal">
         <TextBlock Name="website" Margin="10" Cursor="Hand"  Text="EProjects"/>
-        <TextBlock Name="telegram" Margin="10" Cursor="Hand"  Text="Telgram"/>
+        <TextBlock Name="telegram" Margin="10" Cursor="Hand"  Text="Telegram"/>
         <TextBlock Name="github" Margin="10" Cursor="Hand"  Text="Github"/>
         </StackPanel>
       </StackPanel>
