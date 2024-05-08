@@ -861,16 +861,6 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Add block extension [Firefox]",
-    "Description": "An extension for Firefox browser that enhances browsing by blocking intrusive ads and pop-ups.",
-    "winget": "#",
-    "choco": "adblockplusfirefox",
-    "scoop": "none",
-    "url": "none",
-    "category": "Browsers",
-    "check": "false"
-  },
-  {
     "Name": "Microsoft Edge",
     "Description": "Microsoft''s web browser built for fast and secure internet surfing, integrating seamlessly with Windows ecosystem.",
     "winget": "Microsoft.Edge",
@@ -885,16 +875,6 @@ $sync.database.Applications = '[
     "Description": "A popular web browser known for its speed, simplicity, and vast ecosystem of extensions.",
     "winget": "Google.Chrome",
     "choco": "googlechrome",
-    "scoop": "none",
-    "url": "none",
-    "category": "Browsers",
-    "check": "false"
-  },
-  {
-    "Name": "uBlock Origin extension [Chrome]",
-    "Description": "A powerful ad-blocking extension for Chrome, providing users with an ad-free browsing experience.",
-    "winget": "#",
-    "choco": "ublockorigin-chrome",
     "scoop": "none",
     "url": "none",
     "category": "Browsers",
@@ -3076,13 +3056,9 @@ $inputXML = '
     
     <CheckBox Content="Firefox" Tag="Browsers" IsChecked="false" FontFamily="console" />
     
-    <CheckBox Content="Add block extension [Firefox]" Tag="Browsers" IsChecked="false" FontFamily="console" />
-    
     <CheckBox Content="Microsoft Edge" Tag="Browsers" IsChecked="false" FontFamily="console" />
     
     <CheckBox Content="Google Chrome" Tag="Browsers" IsChecked="false" FontFamily="console" />
-    
-    <CheckBox Content="uBlock Origin extension [Chrome]" Tag="Browsers" IsChecked="false" FontFamily="console" />
     
     <CheckBox Content="Chromium" Tag="Browsers" IsChecked="false" FontFamily="console" />
     
