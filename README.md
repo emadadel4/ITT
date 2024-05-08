@@ -45,7 +45,7 @@ irm https://raw.githubusercontent.com/emadadel4/ITT/main/itt.ps1 | iex
 
 - Telegram: [emadadel4](https://t.me/emadadel4)
 - Github: [emadadel4](https://github.com/emadadel4)
-- Website: https://eprojects.orgfree.com
+- Website: https://www.eprojects.orgfree.com
 
 ## Show your support
 
