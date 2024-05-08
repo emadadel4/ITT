@@ -55,7 +55,7 @@ try {
     } | Select-Object Name, Description, winget, choco, scoop, category, check
 
     # Read existing JSON file
-    $jsonFilePath = "./Database/applications.json"
+    $jsonFilePath = "./Database/Applications.json"
     $existingData = Get-Content $jsonFilePath -ErrorAction Stop | ConvertFrom-Json
 
     # Add new software object to existing array
