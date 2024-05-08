@@ -66,6 +66,8 @@ try {
 
     Write-Host  "Added Successfully" -ForegroundColor Green
 
+    $build = Read-Host "Build and run? [y/yes][n/no]"
+
     if ($build -eq "") { $build = "n" }  # default value n
 
     if($build -eq "y")
