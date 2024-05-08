@@ -18,7 +18,7 @@ try {
     } | Select-Object Name, Description, repo, script, check
 
     # Read existing JSON file
-    $jsonFilePath = "./Database/tweaks.json"
+    $jsonFilePath = "./Database/Tweeaks.json"
     $existingData = Get-Content $jsonFilePath -ErrorAction Stop | ConvertFrom-Json
 
     # Add new software object to existing array
@@ -28,6 +28,15 @@ try {
     $existingData | ConvertTo-Json | Out-File $jsonFilePath -ErrorAction Stop
 
     Write-Host  "Added Successfully" -ForegroundColor Green
+
+    $build = Read-Host "Build and run? [y/yes][n/no]"
+
+    if ($build -eq "") { $build = "n" }  # default value n
+
+    if($build -eq "y")
+    {
+        ./itt.ps1
+    }
 
 }
 catch {
