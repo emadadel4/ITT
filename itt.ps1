@@ -286,6 +286,11 @@ function Invoke-Button {
         "diskmgmt" {Start-Process diskmgmt.msc $debug}
         "darkOn" { Switch-ToDarkMode $debug }
         "darkOff" { Switch-ToLightMode $debug }
+
+        "moff" { MuteMusic $debug }
+        "mon" { Unmute $debug }
+
+
         # --Menu items-------------------
         "searchInput" {Search; $sync['window'].FindName('category').SelectedIndex = 0; $sync['window'].FindName('apps').IsSelected = $true; $debug }
     }
@@ -545,6 +550,97 @@ function SaveItemsToJson
     }
 }
 
+#region PlayMusic Functions
+function PlayMusic {
+
+    # RUN MUSIC IN BACKGROUND
+    Invoke-RunspaceWithScriptBlock -ScriptBlock {
+
+        Function PlayAudio($url)
+        {
+            try
+            {
+                $mediaItem =  $sync.mediaPlayer.newMedia($url)
+                $sync.mediaPlayer.currentPlaylist.appendItem($mediaItem)
+                $sync.mediaPlayer.controls.play()
+            }
+            catch
+            {
+
+            }
+        }
+
+        # Function to shuffle the playlist
+        Function ShuffleArray
+        {
+            param([array]$array)
+
+            $count = $array.Length
+
+            for ($i = 0; $i -lt $count; $i++)
+            {
+                $randomIndex = Get-Random -Minimum $i -Maximum $count
+                $temp = $array[$i]
+                $array[$i] = $array[$randomIndex]
+                $array[$randomIndex] = $temp
+            }
+        }
+
+        # Shuffle the playlist
+        ShuffleArray -array $sync.database.OST.Tracks
+
+        # Function to play the entire shuffled playlist
+        Function PlayShuffledPlaylist
+        {
+            foreach ($url in $sync.database.OST.Tracks)
+            {
+                PlayAudio $url
+                # Wait for the track to finish playing
+                while ( $sync.mediaPlayer.playState -eq 3 -or  $sync.mediaPlayer.playState -eq 6)
+                {
+                    Start-Sleep -Milliseconds 100
+                }
+            }
+        }
+
+        # Play the shuffled playlist indefinitely
+        while ($true) 
+        {
+            PlayShuffledPlaylist
+        }
+    }
+}
+
+function MuteMusic {
+
+    Write-Host "Mute"
+    $sync.mediaPlayer.settings.volume = 0
+
+
+    #$sync.mediaPlayer.controls.setVolume(0)
+}
+
+
+function Unmute {
+   
+    #$sync.mediaPlayer.controls.mute()
+    $sync.mediaPlayer.settings.volume = 100
+
+
+}
+
+function StopMusic {
+
+    $sync.mediaPlayer.controls.stop()
+    $sync.mediaPlayer = $null
+
+    $script:powershell.Dispose()
+    $sync.runspace.Dispose()
+    $sync.runspace.Close()
+}
+#endregion
+
+
 
 function Invoke-RunspaceWithScriptBlock {
     param(
@@ -636,79 +732,6 @@ function Update-Theme ($theme, $mode) {
 #endregion
 
 
-#region PlayMusic Functions
-function PlayMusic {
-
-    # RUN MUSIC IN BACKGROUND
-    Invoke-RunspaceWithScriptBlock -ScriptBlock {
-
-        Function PlayAudio($url)
-        {
-            try
-            {
-                $mediaItem =  $sync.mediaPlayer.newMedia($url)
-                $sync.mediaPlayer.currentPlaylist.appendItem($mediaItem)
-                $sync.mediaPlayer.controls.play()
-            }
-            catch
-            {
-
-            }
-        }
-
-        # Function to shuffle the playlist
-        Function ShuffleArray
-        {
-            param([array]$array)
-
-            $count = $array.Length
-
-            for ($i = 0; $i -lt $count; $i++)
-            {
-                $randomIndex = Get-Random -Minimum $i -Maximum $count
-                $temp = $array[$i]
-                $array[$i] = $array[$randomIndex]
-                $array[$randomIndex] = $temp
-            }
-        }
-
-        # Shuffle the playlist
-        ShuffleArray -array $sync.database.OST.Tracks
-
-        # Function to play the entire shuffled playlist
-        Function PlayShuffledPlaylist
-        {
-            foreach ($url in $sync.database.OST.Tracks)
-            {
-                PlayAudio $url
-                # Wait for the track to finish playing
-                while ( $sync.mediaPlayer.playState -eq 3 -or  $sync.mediaPlayer.playState -eq 6)
-                {
-                    Start-Sleep -Milliseconds 100
-                }
-            }
-        }
-
-        # Play the shuffled playlist indefinitely
-        while ($true) 
-        {
-            PlayShuffledPlaylist
-        }
-    }
-}
-
-function StopMusic {
-
-    $sync.mediaPlayer.controls.stop()
-    $sync.mediaPlayer = $null
-
-    $script:powershell.Dispose()
-    $sync.runspace.Dispose()
-    $sync.runspace.Close()
-}
-#endregion
-
-
 function GetQuotes {
 
     Invoke-RunspaceWithScriptBlock -ScriptBlock {
@@ -787,7 +810,7 @@ function ChangeTap() {
     GitHub         : https://github.com/emadadel4
     Telegram       : https://t.me/emadadel4
     Website        : https://eprojects.orgfree.com/
-    Version        : 2024/05-May/08-Wed
+    Version        : 2024/05-May/09-Thu
 #>
 
 if (!(Test-Path -Path $ENV:TEMP)) {
@@ -802,7 +825,7 @@ Add-Type -AssemblyName PresentationFramework.Aero
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "2024/05-May/08-Wed"
+$sync.version = "2024/05-May/09-Thu"
 $sync.github =   "https://github.com/emadadel4"
 $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://eprojects.orgfree.com"
@@ -2994,8 +3017,13 @@ $inputXML = '
                             <MenuItem Name="load" Header="Load Apps"/>
 
                             <MenuItem Header="Dark Mode">
-                                <MenuItem Name="darkOn" Header="ON"/>
-                                <MenuItem Name="darkOff" Header="OFF"/>
+                                <MenuItem Name="darkOn" Header="On"/>
+                                <MenuItem Name="darkOff" Header="Off"/>
+                            </MenuItem>
+
+                            <MenuItem Header="Music">
+                                <MenuItem Name="moff" Header="Mute"/>
+                                <MenuItem Name="mon" Header="Unmute"/>
                             </MenuItem>
                         </MenuItem>
 
