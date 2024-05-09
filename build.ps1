@@ -281,7 +281,7 @@ WriteToScript -Content @"
 
 Write-Host "Build successfully" -ForegroundColor Green
 
-$run = Read-Host "Build and run? [y/yes][n/no]"
+$run = Read-Host "do you want run it?. Type [N] or [Y]"
 
 if ($run -eq "") { $run = "n" }  # default value n
 
