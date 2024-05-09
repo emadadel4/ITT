@@ -30,6 +30,11 @@ function Invoke-Button {
         "diskmgmt" {Start-Process diskmgmt.msc $debug}
         "darkOn" { Switch-ToDarkMode $debug }
         "darkOff" { Switch-ToLightMode $debug }
+
+        "moff" { MuteMusic $debug }
+        "mon" { Unmute $debug }
+
+
         # --Menu items-------------------
         "searchInput" {Search; $sync['window'].FindName('category').SelectedIndex = 0; $sync['window'].FindName('apps').IsSelected = $true; $debug }
     }

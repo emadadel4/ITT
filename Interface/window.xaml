@@ -51,8 +51,13 @@
                             <MenuItem Name="load" Header="Load Apps"/>
 
                             <MenuItem Header="Dark Mode">
-                                <MenuItem Name="darkOn" Header="ON"/>
-                                <MenuItem Name="darkOff" Header="OFF"/>
+                                <MenuItem Name="darkOn" Header="On"/>
+                                <MenuItem Name="darkOff" Header="Off"/>
+                            </MenuItem>
+
+                            <MenuItem Header="Music">
+                                <MenuItem Name="moff" Header="Mute"/>
+                                <MenuItem Name="mon" Header="Unmute"/>
                             </MenuItem>
                         </MenuItem>
 
