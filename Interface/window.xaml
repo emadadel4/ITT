@@ -34,8 +34,7 @@
 
                     <Menu Grid.Row="0" Grid.ColumnSpan="3" Background="Transparent" BorderBrush="Transparent" BorderThickness="0">
                         
-                        
-                        <MenuItem Header="Computer Managment" BorderBrush="Transparent" BorderThickness="0">
+                        <MenuItem Header="Computer Managment" BorderBrush="Transparent"  FontWeight="Bold" BorderThickness="0">
                             <MenuItem Name="sysinfo" Header="System Info"/>
                             <MenuItem Name="poweroption" Header="Power Options"/>
                             <MenuItem Name="deviceManager" Header="Device Manager"/>
@@ -46,7 +45,7 @@
                             <MenuItem Name="diskmgmt" Header="Disk Managment"/>
                         </MenuItem>
 
-                        <MenuItem Header="Preferences" BorderBrush="Transparent" BorderThickness="0">
+                        <MenuItem Header="Preferences" BorderBrush="Transparent"  FontWeight="Bold" BorderThickness="0">
                             <MenuItem Name="save" Header="Save Selected apps"/>
                             <MenuItem Name="load" Header="Load Apps"/>
 
@@ -62,7 +61,7 @@
                         </MenuItem>
 
 
-                        <MenuItem Header="Mirror Links" BorderBrush="Transparent" BorderThickness="0">
+                        <MenuItem Header="Mirror Links" BorderBrush="Transparent" FontWeight="Bold" BorderThickness="0">
                             <MenuItem Name="mas" Header="Microsoft Activation Scripts (MAS)"/>
                             <MenuItem Name="idm" Header="IDM Activation"/>
 
@@ -72,7 +71,7 @@
                             </MenuItem>
                         </MenuItem>
                         
-                        <MenuItem Name="dev" Header="About" BorderBrush="Transparent" BorderThickness="1"/>
+                        <MenuItem Name="dev" Header="About" BorderBrush="Transparent" FontWeight="Bold" BorderThickness="1" />
 
                     </Menu>
 
@@ -153,6 +152,7 @@
                             Visibility="Hidden" 
                             TextWrapping="Wrap" 
                             Text="" 
+                            FontWeight="Bold"
                             Margin="20,15,15,0" 
                         />
 
