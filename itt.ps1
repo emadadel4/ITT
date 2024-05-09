@@ -613,27 +613,19 @@ function PlayMusic {
 
 function MuteMusic {
 
-    Write-Host "Mute"
     $sync.mediaPlayer.settings.volume = 0
-
-
-    #$sync.mediaPlayer.controls.setVolume(0)
 }
 
 
 function Unmute {
    
-    #$sync.mediaPlayer.controls.mute()
     $sync.mediaPlayer.settings.volume = 100
-
-
 }
 
 function StopMusic {
 
     $sync.mediaPlayer.controls.stop()
     $sync.mediaPlayer = $null
-
     $script:powershell.Dispose()
     $sync.runspace.Dispose()
     $sync.runspace.Close()
