@@ -173,7 +173,7 @@ try {
     foreach ($App  in $sync.database.Applications) {
         $AppsCheckboxes += @"
 
-    <CheckBox Content="$($App.Name)" Tag="$($App.category)" IsChecked="$($App.check)" FontFamily="console" />
+    <CheckBox Content="$($App.Name)" Tag="$($App.category)" IsChecked="$($App.check)" FontWeight="Bold"/>
     
 "@
     }
@@ -182,7 +182,7 @@ try {
     foreach ($Tweak  in $sync.database.Tweeaks) {
         $TweaksCheckboxes  += @"
 
-    <CheckBox Content="$($Tweak.Name)" FontFamily="console"/>
+    <CheckBox Content="$($Tweak.Name)"  FontWeight="Bold"/>
 
 "@
 }
