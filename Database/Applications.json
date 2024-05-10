@@ -373,7 +373,7 @@
     "choco": "directx",
     "scoop": "none",
     "url": "none",
-    "category": "Gaming",
+    "category": "Drivers",
     "check": "false"
   },
   {
@@ -383,7 +383,7 @@
     "choco": "vcredist-all",
     "scoop": "none",
     "url": "none",
-    "category": "Gaming",
+    "category": "Drivers",
     "check": "false"
   },
   {
@@ -393,7 +393,7 @@
     "choco": "vcredist2005",
     "scoop": "none",
     "url": "none",
-    "category": "Gaming",
+    "category": "Drivers",
     "check": "false"
   },
   {
@@ -403,7 +403,7 @@
     "choco": "vcredist2005",
     "scoop": "none",
     "url": "none",
-    "category": "Gaming",
+    "category": "Drivers",
     "check": "false"
   },
   {
@@ -413,7 +413,7 @@
     "choco": "vcredist2008",
     "scoop": "none",
     "url": "none",
-    "category": "Gaming",
+    "category": "Drivers",
     "check": "false"
   },
   {
@@ -423,7 +423,7 @@
     "choco": "vcredist2008",
     "scoop": "none",
     "url": "none",
-    "category": "Gaming",
+    "category": "Drivers",
     "check": "false"
   },
   {
@@ -433,7 +433,7 @@
     "choco": "vcredist2010",
     "scoop": "none",
     "url": "none",
-    "category": "Gaming",
+    "category": "Drivers",
     "check": "false"
   },
   {
@@ -443,7 +443,7 @@
     "choco": "vcredist2010",
     "scoop": "none",
     "url": "none",
-    "category": "Gaming",
+    "category": "Drivers",
     "check": "false"
   },
   {
@@ -453,7 +453,7 @@
     "choco": "vcredist2012",
     "scoop": "none",
     "url": "none",
-    "category": "Gaming",
+    "category": "Drivers",
     "check": "false"
   },
   {
@@ -463,7 +463,7 @@
     "choco": "vcredist2012",
     "scoop": "none",
     "url": "none",
-    "category": "Gaming",
+    "category": "Drivers",
     "check": "false"
   },
   {
@@ -473,7 +473,7 @@
     "choco": "vcredist2013",
     "scoop": "none",
     "url": "none",
-    "category": "Gaming",
+    "category": "Drivers",
     "check": "false"
   },
   {
@@ -483,7 +483,7 @@
     "choco": "vcredist2013",
     "scoop": "none",
     "url": "none",
-    "category": "Gaming",
+    "category": "Drivers",
     "check": "false"
   },
   {
@@ -493,7 +493,7 @@
     "choco": "vcredist2015",
     "scoop": "none",
     "url": "none",
-    "category": "Gaming",
+    "category": "Drivers",
     "check": "false"
   },
   {
@@ -503,7 +503,7 @@
     "choco": "vcredist2015",
     "scoop": "none",
     "url": "none",
-    "category": "Gaming",
+    "category": "Drivers",
     "check": "false"
   },
   {
@@ -513,7 +513,7 @@
     "choco": "dotnet-all",
     "scoop": "none",
     "url": "none",
-    "category": "Gaming",
+    "category": "Drivers",
     "check": "false"
   },
   {
@@ -523,7 +523,7 @@
     "choco": "amd-ryzen-chipset",
     "scoop": "none",
     "url": "none",
-    "category": "Gaming",
+    "category": "Drivers",
     "check": "false"
   },
   {
@@ -533,7 +533,7 @@
     "choco": "nvidia-display-driver",
     "scoop": "none",
     "url": "none",
-    "category": "Gaming",
+    "category": "Drivers",
     "check": "false"
   },
   {
@@ -543,7 +543,7 @@
     "choco": "nvidia-geforce-now",
     "scoop": "none",
     "url": "none",
-    "category": "Gaming",
+    "category": "Drivers",
     "check": "false"
   },
   {
@@ -553,7 +553,7 @@
     "choco": "msiafterburner",
     "scoop": "none",
     "url": "none",
-    "category": "Gaming",
+    "category": "Drivers",
     "check": "false"
   },
   {
@@ -563,7 +563,7 @@
     "choco": "physx.legacy",
     "scoop": "none",
     "url": "none",
-    "category": "Gaming",
+    "category": "Drivers",
     "check": "false"
   },
   {
@@ -1142,16 +1142,6 @@
     "check": "false"
   },
   {
-    "Name": "Godot Game Engine",
-    "Description": "Godot is a feature-packed, cross-platform game engine for creating 2D and 3D games. It provides a comprehensive set of tools and features to develop games efficiently and quickly.",
-    "winget": "#",
-    "choco": "godot",
-    "scoop": "none",
-    "url": "none",
-    "category": "Developer",
-    "check": "false"
-  },
-  {
     "Name": "Unity Hub",
     "Description": "Unity is a cross-platform game creation system developed by Unity Technologies and used to develop video games for PC, consoles, mobile",
     "winget": "#",
@@ -1162,7 +1152,17 @@
     "check": "false"
   },
   {
-    "Name": "Unity 3D",
+    "Name": "Godot Engine",
+    "Description": "Godot is a feature-packed, cross-platform game engine for creating 2D and 3D games. It provides a comprehensive set of tools and features to develop games efficiently and quickly.",
+    "winget": "#",
+    "choco": "godot",
+    "scoop": "none",
+    "url": "none",
+    "category": "Developer",
+    "check": "false"
+  },
+  {
+    "Name": "Unity3D Engine",
     "Description": "Unity is a cross-platform game creation system developed by Unity Technologies and used to develop video games for PC, consoles, mobile",
     "winget": "#",
     "choco": "unity",
@@ -1582,7 +1582,7 @@
     "check": "false"
   },
   {
-    "Name": "Realtek High Definition Audio System Software",
+    "Name": "Realtek High Definition Audio System",
     "Description": "Realtek High Definition Audio Codecs",
     "winget": "none",
     "choco": "realtek-hd-audio-driver",
