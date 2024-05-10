@@ -8,6 +8,10 @@ try {
     if ($winget -eq "") { $winget = "none" }  # Set default value if empty
     $scoop = (Read-Host "Enter Scoop package name (default: none)").Trim()  # Remove leading and trailing spaces
     if ($scoop -eq "") { $scoop = "none" }  # Set default value if empty
+
+    $url = (Read-Host "Enter url .exe (default: none)").Trim()  # Remove leading and trailing spaces
+    if ($url -eq "") { $url = "none" }  # Set default value if empty
+
     $check = "false" # default value is false
 
     # Define category options
@@ -50,9 +54,11 @@ try {
         winget = $winget
         choco = $choco
         scoop = $scoop
+        url = "none"
+
         category = $category
         check = $check
-    } | Select-Object Name, Description, winget, choco, scoop, category, check
+    } | Select-Object Name, Description, winget, choco, scoop, url, category, check
 
     # Read existing JSON file
     $jsonFilePath = "./Database/Applications.json"
