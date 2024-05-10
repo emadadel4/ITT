@@ -51,7 +51,7 @@ irm https://raw.githubusercontent.com/emadadel4/ITT/main/itt.ps1 | iex
 newApp.ps1
 ```
 
-**Use this Command to add new Soundtrack**
+**Use this Command to add new Soundtrack (mp3) only**
 ```sh
 newOST.ps1
 ```
