@@ -1016,7 +1016,7 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "K-Lite Mega Codec Pack",
+    "Name": "K-Lite Mega Codec Full Pack",
     "Description": "Comprehensive collection of audio and video codecs, filters, and tools, enabling playback of various media formats.",
     "winget": "CodecGuide.K-LiteCodecPack.Mega",
     "choco": "k-litecodecpackfull",
@@ -2555,6 +2555,16 @@ $sync.database.Applications = '[
     "url": "none",
     "category": "Communication",
     "check": "false"
+  },
+  {
+    "Name": "MPC-BE",
+    "Description": "Media Player Classic - BE is a free and open source audio and video player for Windows.",
+    "winget": "none",
+    "choco": "mpc-be",
+    "scoop": "none",
+    "url": "none",
+    "category": "Media",
+    "check": "false"
   }
 ]
 ' | ConvertFrom-Json
@@ -3142,7 +3152,7 @@ $inputXML = '
     
     <CheckBox Content="JDownloader" Tag="Browsers" IsChecked="false" FontWeight="Bold"/>
     
-    <CheckBox Content="K-Lite Mega Codec Pack" Tag="Media" IsChecked="false" FontWeight="Bold"/>
+    <CheckBox Content="K-Lite Mega Codec Full Pack" Tag="Media" IsChecked="false" FontWeight="Bold"/>
     
     <CheckBox Content="PotPlayer" Tag="Media" IsChecked="false" FontWeight="Bold"/>
     
@@ -3447,6 +3457,8 @@ $inputXML = '
     <CheckBox Content="MongoDB 7.3.2" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
     
     <CheckBox Content="Viber" Tag="Communication" IsChecked="false" FontWeight="Bold"/>
+    
+    <CheckBox Content="MPC-BE" Tag="Media" IsChecked="false" FontWeight="Bold"/>
     
                         </ListView>
                     </TabItem.Content>
