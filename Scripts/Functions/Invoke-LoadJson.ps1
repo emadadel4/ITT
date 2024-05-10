@@ -71,7 +71,7 @@ function SaveItemsToJson
         if ($dialogResult -eq "OK")
         {
             $items | ConvertTo-Json | Out-File -FilePath $saveFileDialog.FileName -Force
-            Write-Host "JSON file saved: $($saveFileDialog.FileName)"
+            Write-Host "Saved: $($saveFileDialog.FileName)"
 
             [System.Windows.MessageBox]::Show("Saved", "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
 
