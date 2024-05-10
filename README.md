@@ -39,7 +39,7 @@ if for some reason this site is not reachable from your country please try runni
 irm https://raw.githubusercontent.com/emadadel4/ITT/main/itt.ps1 | iex
 ```
 
-## How to add new App/OST/Qoute
+## How to add a new App/OST/Qoute
 
 
 <p dir="auto"><strong>Fork or Clone the repo</strong>
