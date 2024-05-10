@@ -39,6 +39,28 @@ if for some reason this site is not reachable from your country please try runni
 irm https://raw.githubusercontent.com/emadadel4/ITT/main/itt.ps1 | iex
 ```
 
+## How to add new App/OST/Qoute
+
+
+<p dir="auto"><strong>Fork or Clone the repo</strong>
+    Open itt directory in powershell and type  
+</p>
+
+**Use this Command to add new App**
+```sh
+newApp.ps1
+```
+
+**Use this Command to add new Soundtrack**
+```sh
+newOST.ps1
+```
+
+**Use this Command to add new Qoute**
+```sh
+newQuote.ps1
+```
+
 ## Author
 
 👤 **Emad Adel**
