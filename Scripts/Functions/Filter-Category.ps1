@@ -1,4 +1,4 @@
-#region Function to filter a list based on a search input
+#region Function to filter a list based on a search input and Category
 function Search{
 
     # Retrieves the search input, converts it to lowercase, and filters the list based on the input

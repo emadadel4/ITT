@@ -26,6 +26,23 @@ function Get-SelectedApps
     return $items 
 }
 
+function ShowSelectedItems {
+    
+    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.AppsListView.Items)
+
+    $filterPredicate = {
+       param($item)
+
+       $tagToFilter =  $true
+       # Check if the item has the tag
+       $itemTag = $item.IsChecked
+       return $itemTag -eq $tagToFilter
+   }
+
+   $collectionView.Filter = $filterPredicate
+
+}
+
 function Invoke-Install
 {
     
@@ -37,30 +54,89 @@ function Invoke-Install
     }
 
     $sync['window'].FindName('category').SelectedIndex = 0
-    ClearFilter
+    ShowSelectedItems
 
     $selectedApps = Get-SelectedApps
     
     if($selectedApps.Count -gt 0)
     {
         Invoke-RunspaceWithScriptBlock -ArgumentList $selectedApps -ScriptBlock {
+
             param($selectedApps)
-            try {
-                $msg = [System.Windows.MessageBox]::Show("Do you want to install selected apps", "ITT @emadadel", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)
+
+            function UpdateUI {
+
+                param($InstallBtn,$Description)
+               
+                $sync['window'].Dispatcher.Invoke([Action]{
+                    $sync.installBtn.Content = "$InstallBtn"
+                    $sync.Description.Text = "$Description"
+                })
+            }
+
+            function ClearTemp {
+                
+                $chocoTempPath = Join-Path $env:TEMP "chocolatey"
+
+                if (Test-Path $chocoTempPath) {
+                    Remove-Item -Path $chocoTempPath -Force -Recurse
+                    Write-Output "Clear Chocolatey temp folder"
+                }
+            }
+
+            function CustomMsg 
+            {
+                param (
+
+                    $title,
+                    $msg,
+                    $MessageBoxButton,
+                    $MessageBoxImage,
+                    $answer
+
+                )
+
+                [System.Windows.MessageBox]::Show($msg, $title, [System.Windows.MessageBoxButton]::$MessageBoxButton, [System.Windows.MessageBoxImage]::$MessageBoxImage)
+            }
+
+            function Finish {
+
+                $sync.AppsListView.Dispatcher.Invoke([Action]{
+                    foreach ($item in $sync.AppsListView.Items)
+                    {
+                        $item.IsChecked = $false
+                    }
+                })
+
+                Clear-Host
+
+                Write-Host "
+                +----------------------------------------------------------------------------+
+                |  ___ _____ _____   _____ __  __    _    ____       _    ____  _____ _      |
+                | |_ _|_   _|_   _| | ____|  \/  |  / \  |  _ \     / \  |  _ \| ____| |     |
+                |  | |  | |   | |   |  _| | |\/| | / _ \ | | | |   / _ \ | | | |  _| | |     |
+                |  | |  | |   | |   | |___| |  | |/ ___ \| |_| |  / ___ \| |_| | |___| |___  |
+                | |___| |_|   |_|   |_____|_|  |_/_/   \_\____/  /_/   \_\____/|_____|_____| |
+                |                                                                            |
+                +----------------------------------------------------------------------------+
+                You ready to Install anything.
+
+                (IT Tools) is open source, You can contribute to improving the tool.
+                If you have trouble installing a program, report the problem on feedback links
+                https://github.com/emadadel4/ITT/issues
+                https://t.me/emadadel4
+                " -ForegroundColor White
+            }
+
+            try 
+            {
+                $msg = [System.Windows.MessageBox]::Show("Do you want to install $($selectedApps.Count) selected apps", "ITT | Emad Adel", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)
+                
                 if($msg -eq "Yes")
                 {
 
-                    $chocoTempPath = Join-Path $env:TEMP "chocolatey"
-
-                    if (Test-Path $chocoTempPath) {
-                        Remove-Item -Path $chocoTempPath -Force -Recurse
-                        Write-Output "Clear Chocolatey temp folder"
-                    }
-
-                    $sync.Description.Dispatcher.Invoke([Action]{
-                        $sync.installBtn.Content = "Please wait..."
-                        $sync.Description.Text = "Downloading and Installing..."
-                    })
+                    ClearTemp
+                    UpdateUI -InstallBtn "Wait..." -Description "Downloading and Installing..." 
 
                     $sync.ProcessRunning = $true
                     foreach ($app in $selectedApps) 
@@ -97,44 +173,15 @@ function Invoke-Install
                         }
                     }
                     
-                    [System.Windows.MessageBox]::Show("Installed successfully", "ITT @emadadel4", "OK", "Information")
-
-                    $sync.description.Dispatcher.Invoke([Action]{
-                        $sync.description.Text = "Installed successfully"
-                        $sync.installBtn.Content = "Install"
-
-                    })
-
-                    # Uncheck all checkboxes in $list
-                    $sync.AppsListView.Dispatcher.Invoke([Action]{
-                        foreach ($item in $sync.AppsListView.Items)
-                        {
-                            $item.IsChecked = $false
-                        }
-                    })
-                  
                     Start-Sleep -Seconds 1
                     $sync.ProcessRunning = $False
-                    Start-Sleep -Seconds 2
 
-                    Clear-Host
+                    CustomMsg -title "ITT | Emad Adel" -msg "Installed successfully" -MessageBoxImage "Information" -MessageBoxButton "OK"
+                    UpdateUI -InstallBtn "Install" -Description "Installed successfully."
 
-Write-Host "
-+----------------------------------------------------------------------------+
-|  ___ _____ _____   _____ __  __    _    ____       _    ____  _____ _      |
-| |_ _|_   _|_   _| | ____|  \/  |  / \  |  _ \     / \  |  _ \| ____| |     |
-|  | |  | |   | |   |  _| | |\/| | / _ \ | | | |   / _ \ | | | |  _| | |     |
-|  | |  | |   | |   | |___| |  | |/ ___ \| |_| |  / ___ \| |_| | |___| |___  |
-| |___| |_|   |_|   |_____|_|  |_/_/   \_\____/  /_/   \_\____/|_____|_____| |
-|                                                                            |
-+----------------------------------------------------------------------------+
-You ready to Install anything.
+                    # Uncheck all checkboxes in $list
+                    Finish
 
-(IT Tools) is open source, You can contribute to improving the tool.
-If you have trouble installing a program, report the problem on feedback links
-https://github.com/emadadel4/ITT/issues
-https://t.me/emadadel4
-" -ForegroundColor White
                 }
                 else
                 {
@@ -143,6 +190,9 @@ https://t.me/emadadel4
                         foreach ($item in $sync.AppsListView.Items)
                         {
                             $item.IsChecked = $false
+                            $sync['window'].FindName('list').Clear()
+                            $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync['window'].FindName('list').Items)
+                            $collectionView.Filter = $null
                         }
                     })
                 }
@@ -155,6 +205,6 @@ https://t.me/emadadel4
     }
     else
     {
-        [System.Windows.MessageBox]::Show("Choose at least one program", "ITT @emadadel", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
+        [System.Windows.MessageBox]::Show("Choose at least one program", "ITT | Emad Adel", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
     }
 }
