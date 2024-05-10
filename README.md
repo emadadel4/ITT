@@ -61,7 +61,7 @@ newOST.ps1
 newQuote.ps1
 ```
 
-## Author
+## Developer
 
 👤 **Emad Adel**
 
