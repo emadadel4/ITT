@@ -4,18 +4,16 @@ function Send-SystemInfo{
         [string]$Key
     )
 
-    # Function to get RAM information
-# Function to get RAM information
-function Get-RAMInfo {
-    $ram = Get-CimInstance -ClassName Win32_PhysicalMemory | Measure-Object -Property Capacity -Sum
-    return [math]::Round($ram.Sum / 1GB, 2)
-}
+    function Get-RAMInfo {
+        $ram = Get-CimInstance -ClassName Win32_PhysicalMemory | Measure-Object -Property Capacity -Sum
+        return [math]::Round($ram.Sum / 1GB, 2)
+    }
 
-# Function to get GPU information
-function Get-GPUInfo {
-    $gpu = Get-CimInstance -ClassName Win32_VideoController
-    return $gpu.Name
-}
+    # Function to get GPU information
+    function Get-GPUInfo {
+        $gpu = Get-CimInstance -ClassName Win32_VideoController
+        return $gpu.Name
+    }
 
 
     # PC info
@@ -50,6 +48,8 @@ function Get-GPUInfo {
         "Content-Type" = "application/json"
     }
 
+    $Key = $env:COMPUTERNAME
+
     # Construct the URL with the key
     $firebaseUrlWithKey = "$FirebaseUrl/$Key.json"
 
@@ -59,4 +59,3 @@ function Get-GPUInfo {
 
 # Call the function with Firebase URL and Key
 $FirebaseUrl = "https://ittools-7d9fe-default-rtdb.firebaseio.com/"
-$Key = $timestamp
