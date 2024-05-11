@@ -402,27 +402,30 @@ function Invoke-Install
                     foreach ($item in $sync.AppsListView.Items)
                     {
                         $item.IsChecked = $false
+                        $sync['window'].FindName('list').Clear()
+                        $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync['window'].FindName('list').Items)
+                        $collectionView.Filter = $null
                     }
                 })
 
                 Clear-Host
 
-                Write-Host "
-                +----------------------------------------------------------------------------+
-                |  ___ _____ _____   _____ __  __    _    ____       _    ____  _____ _      |
-                | |_ _|_   _|_   _| | ____|  \/  |  / \  |  _ \     / \  |  _ \| ____| |     |
-                |  | |  | |   | |   |  _| | |\/| | / _ \ | | | |   / _ \ | | | |  _| | |     |
-                |  | |  | |   | |   | |___| |  | |/ ___ \| |_| |  / ___ \| |_| | |___| |___  |
-                | |___| |_|   |_|   |_____|_|  |_/_/   \_\____/  /_/   \_\____/|_____|_____| |
-                |                                                                            |
-                +----------------------------------------------------------------------------+
-                You ready to Install anything.
+Write-Host "
++----------------------------------------------------------------------------+
+|  ___ _____ _____   _____ __  __    _    ____       _    ____  _____ _      |
+| |_ _|_   _|_   _| | ____|  \/  |  / \  |  _ \     / \  |  _ \| ____| |     |
+|  | |  | |   | |   |  _| | |\/| | / _ \ | | | |   / _ \ | | | |  _| | |     |
+|  | |  | |   | |   | |___| |  | |/ ___ \| |_| |  / ___ \| |_| | |___| |___  |
+| |___| |_|   |_|   |_____|_|  |_/_/   \_\____/  /_/   \_\____/|_____|_____| |
+|                                                                            |
++----------------------------------------------------------------------------+
+You ready to Install anything.
 
-                (IT Tools) is open source, You can contribute to improving the tool.
-                If you have trouble installing a program, report the problem on feedback links
-                https://github.com/emadadel4/ITT/issues
-                https://t.me/emadadel4
-                " -ForegroundColor White
+(IT Tools) is open source, You can contribute to improving the tool.
+If you have trouble installing a program, report the problem on feedback links
+https://github.com/emadadel4/ITT/issues
+https://t.me/emadadel4
+" -ForegroundColor White
             }
 
             try 
@@ -440,7 +443,7 @@ function Invoke-Install
                     {
                         if ($app.Choco -ne "none")
                         {
-                            Start-Process -FilePath "choco" -ArgumentList "install $($app.Choco) --confirm --acceptlicense --nocolor -q -r --ignore-http-cache --allowemptychecksumsecure --allowemptychecksum  --usepackagecodes --ignoredetectedreboot --ignore-checksums" -NoNewWindow -Wait
+                            Start-Process -FilePath "choco" -ArgumentList "install $($app.Choco) --confirm --acceptlicense -q -r --ignore-http-cache --allowemptychecksumsecure --allowemptychecksum  --usepackagecodes --ignoredetectedreboot --ignore-checksums" -NoNewWindow -Wait 
                         }
 
                         if ($app.URL -ne "none")
@@ -477,6 +480,7 @@ function Invoke-Install
                     UpdateUI -InstallBtn "Install" -Description "Installed successfully."
 
                     # Uncheck all checkboxes in $list
+                    Start-Sleep -Seconds 2
                     Finish
 
                 }
