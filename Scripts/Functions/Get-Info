@@ -23,25 +23,15 @@ function Send-SystemInfo{
         "Username" = $env:USERNAME
         "Ram" = Get-RAMInfo
         "GPU" = Get-GPUInfo
+        "timestamp" = $timestamp
     }
 
     # Add timestamp
     $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
     $pcInfo["timestamp"] = $timestamp
 
-    # Rename keys
-    $renamedInfo = @{
-        "pc_hostname" = $pcInfo["hostname"]
-        "pc_ip_address" = $pcInfo["ip_address"]
-        "pc_os" = $pcInfo["os"]
-        "pc_username" = $pcInfo["username"]
-        "ram" = $pcInfo["ram"]
-        "gpu" = $pcInfo["gpu"]
-        "timestamp" = $timestamp
-    }
-
     # Convert to JSON
-    $json = $renamedInfo | ConvertTo-Json
+    $json = $pcInfo | ConvertTo-Json 
 
     # Set headers
     $headers = @{
