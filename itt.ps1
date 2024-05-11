@@ -926,8 +926,6 @@ function ChangeTap() {
     Version        : 2024/05-May/12-Sun
 #>
 
-Send-SystemInfo -FirebaseUrl $FirebaseUrl -Key $Key
-
 if (!(Test-Path -Path $ENV:TEMP)) {
     New-Item -ItemType Directory -Force -Path $ENV:TEMP
 }
@@ -4097,6 +4095,9 @@ $onClosingEvent = {
 
 # Add OnClosing event handler to the window
 $sync["window"].add_Closing($onClosingEvent)
+
+
+Send-SystemInfo -FirebaseUrl $FirebaseUrl -Key $Key
 
 # Show the window
 $sync["window"].ShowDialog() | Out-Null
