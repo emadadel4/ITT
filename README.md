@@ -1,20 +1,12 @@
 <h1 align="center">Welcome to ITT 🖥️ 🛠️ 📀 </h1>
 
-  <a href="https://github.com/emadadel4/ITT/blob/main/README.ar.md">
-    <img alt="Arabic" src="https://img.shields.io/badge/lang-ar-red.svg" />
-  </a>
-
-<p>
-  <a href="#">
-    <img alt="License: MTI" src="https://img.shields.io/badge/License-MTI-yellow.svg" />
-  </a>
-</p>
-
-> IT Tools, included all useful Software and Tweeaks
-
 <center>
 <a target="_blank" rel="noopener noreferrer" href="https://github.com/emadadel4/ITT/blob/main/demo.PNG"><img src="https://github.com/emadadel4/ITT/blob/main/demo.PNG" alt="screen-install" style="max-width: 100%;"></a>
 </center>
+
+## Overview
+ITT (Install and Tweak Tool) is a collection of PowerShell scripts designed to automate the installation of programs and apply Windows tweaks. It simplifies the process of setting up a new Windows environment by providing a streamlined method for installing commonly used software and customizing system settings.
+
 
 ## Usage
 
