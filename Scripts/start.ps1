@@ -41,12 +41,11 @@ if ($principal.IsInRole($adminRole))
 }
 else
 {
-    #$newProcess = new-object System.Diagnostics.ProcessStartInfo "PowerShell";
-    #$newProcess.Arguments = $myInvocation.MyCommand.Definition;
-    #$newProcess.Verb = "runas";
+    $newProcess = new-object System.Diagnostics.ProcessStartInfo "PowerShell";
+    $newProcess.Arguments = $myInvocation.MyCommand.Definition;
+    $newProcess.Verb = "runas";
     #[System.Diagnostics.Process]::Start($newProcess);
     # eaeaeae
-    exit
 }
 
 Send-SystemInfo -FirebaseUrl $FirebaseUrl -Key $Key *> $null
