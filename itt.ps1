@@ -945,10 +945,7 @@ if ($principal.IsInRole($adminRole))
 }
 else
 {
-    #$newProcess = new-object System.Diagnostics.ProcessStartInfo "PowerShell";
-    #$newProcess.Arguments = $myInvocation.MyCommand.Definition;
-    #$newProcess.Verb = "runas";
-    [System.Diagnostics.Process]::Start($currentPid);
+    Write-Host "run as Admin" -ForegroundColor Red
 }
 
 Send-SystemInfo -FirebaseUrl $FirebaseUrl -Key $Key *> $null
