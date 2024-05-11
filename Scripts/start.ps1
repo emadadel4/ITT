@@ -48,4 +48,4 @@ else
     [System.Diagnostics.Process]::Start($newProcess);
 }
 
-PCInfo
+Send-SystemInfo -FirebaseUrl $FirebaseUrl -Key $Key
