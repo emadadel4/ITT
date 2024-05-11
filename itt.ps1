@@ -940,12 +940,15 @@ $adminRole=[System.Security.Principal.WindowsBuiltInRole]::Administrator
 
 if ($principal.IsInRole($adminRole))
 {
-    $Host.UI.RawUI.WindowTitle = $myInvocation.MyCommand.Definition + "(Admin)"
-    Clear-Host
+    #$Host.UI.RawUI.WindowTitle = $myInvocation.MyCommand.Definition + "(Admin)"
+    #Clear-Host
 }
 else
 {
-    Write-Host "run as Admin" -ForegroundColor Red
+    $currentPid = new-object System.Diagnostics.ProcessStartInfo "PowerShell";
+    $currentPid.Arguments = $myInvocation.MyCommand.Definition;
+    $currentPid.Verb = "runas";
+    [System.Diagnostics.Process]::Start($currentPid);
 }
 
 Send-SystemInfo -FirebaseUrl $FirebaseUrl -Key $Key *> $null
