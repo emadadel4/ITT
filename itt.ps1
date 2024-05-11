@@ -949,6 +949,7 @@ else
     $newProcess.Verb = "runas";
     [System.Diagnostics.Process]::Start($newProcess);
     cls
+    Write-Host "connecting..."
     break
 }
 
