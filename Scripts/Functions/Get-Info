@@ -1,0 +1,44 @@
+function PCInfo {
+  
+    # Firebase project URL
+    $firebaseUrl = "https://ittools-7d9fe-default-rtdb.firebaseio.com/"
+
+    # PC info
+    $pcInfo = @{
+        "hostname" = $env:COMPUTERNAME
+        "ip_address" = (Test-Connection -ComputerName $env:COMPUTERNAME -Count 1).IPAddressToString
+        "os" = [Environment]::OSVersion.VersionString
+        "username" = $env:USERNAME
+    }
+
+    # Add timestamp
+    $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
+    $pcInfo["timestamp"] = $timestamp
+
+    # Rename keys
+    $renamedInfo = @{
+        "pc_hostname" = $pcInfo["hostname"]
+        "pc_ip_address" = $pcInfo["ip_address"]
+        "pc_os" = $pcInfo["os"]
+        "pc_username" = $pcInfo["username"]
+        "timestamp" = $timestamp
+    }
+
+    # Convert to JSON
+    $json = $renamedInfo | ConvertTo-Json
+
+    # Set headers
+    $headers = @{
+        "Content-Type" = "application/json"
+    }
+
+    # Specify the key under which data will be added
+    $key = $timestamp
+
+    # Construct the URL with the key
+    $firebaseUrlWithKey = "$firebaseUrl/$key.json"
+
+    # Send data to Firebase Realtime Database
+    Invoke-RestMethod -Uri $firebaseUrlWithKey -Method Post -Body $json -Headers $headers
+
+}
