@@ -8,8 +8,6 @@
     Version        : #{replaceme}
 #>
 
-Send-SystemInfo -FirebaseUrl $FirebaseUrl -Key $Key
-
 if (!(Test-Path -Path $ENV:TEMP)) {
     New-Item -ItemType Directory -Force -Path $ENV:TEMP
 }
