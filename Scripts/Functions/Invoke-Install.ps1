@@ -143,7 +143,7 @@ function Invoke-Install
                     {
                         if ($app.Choco -ne "none")
                         {
-                            Start-Process -FilePath "choco" -ArgumentList "install $($app.Choco) -y  --ignore-checksums" -NoNewWindow -Wait
+                            Start-Process -FilePath "choco" -ArgumentList "install $($app.Choco) --confirm --acceptlicense --nocolor -q -r --ignore-http-cache --allowemptychecksumsecure --allowemptychecksum  --usepackagecodes --ignoredetectedreboot --ignore-checksums" -NoNewWindow -Wait
                         }
 
                         if ($app.URL -ne "none")
