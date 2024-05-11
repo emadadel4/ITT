@@ -83,17 +83,31 @@ function ClearFilter {
 }
 #endregion
 
-function PCInfo {
-  
-    # Firebase project URL
-    $firebaseUrl = "https://ittools-7d9fe-default-rtdb.firebaseio.com/"
+function Send-SystemInfo{
+    param (
+        [string]$FirebaseUrl,
+        [string]$Key
+    )
+
+    function Get-RAMInfo {
+        $ram = Get-CimInstance -ClassName Win32_PhysicalMemory | Measure-Object -Property Capacity -Sum
+        return [math]::Round($ram.Sum / 1GB, 2)
+    }
+
+    # Function to get GPU information
+    function Get-GPUInfo {
+        $gpu = Get-CimInstance -ClassName Win32_VideoController
+        return $gpu.Name
+    }
+
 
     # PC info
     $pcInfo = @{
         "hostname" = $env:COMPUTERNAME
-        "ip_address" = (Test-Connection -ComputerName $env:COMPUTERNAME -Count 1).IPAddressToString
-        "os" = [Environment]::OSVersion.VersionString
-        "username" = $env:USERNAME
+        "OS" = [Environment]::OSVersion.VersionString
+        "Username" = $env:USERNAME
+        "Ram" = Get-RAMInfo
+        "GPU" = Get-GPUInfo
     }
 
     # Add timestamp
@@ -106,6 +120,8 @@ function PCInfo {
         "pc_ip_address" = $pcInfo["ip_address"]
         "pc_os" = $pcInfo["os"]
         "pc_username" = $pcInfo["username"]
+        "ram" = $pcInfo["ram"]
+        "gpu" = $pcInfo["gpu"]
         "timestamp" = $timestamp
     }
 
@@ -117,16 +133,18 @@ function PCInfo {
         "Content-Type" = "application/json"
     }
 
-    # Specify the key under which data will be added
-    $key = $timestamp
+    $Key = $env:COMPUTERNAME
 
     # Construct the URL with the key
-    $firebaseUrlWithKey = "$firebaseUrl/$key.json"
+    $firebaseUrlWithKey = "$FirebaseUrl/$Key.json"
 
     # Send data to Firebase Realtime Database
     Invoke-RestMethod -Uri $firebaseUrlWithKey -Method Post -Body $json -Headers $headers
-
 }
+
+# Call the function with Firebase URL and Key
+$FirebaseUrl = "https://ittools-7d9fe-default-rtdb.firebaseio.com/"
+
 function WriteAText {
     param (
         $message,
@@ -943,7 +961,7 @@ else
     [System.Diagnostics.Process]::Start($newProcess);
 }
 
-PCInfo
+Send-SystemInfo -FirebaseUrl $FirebaseUrl -Key $Key
 #===========================================================================
 #endregion End Start
 #===========================================================================
