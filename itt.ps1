@@ -4057,7 +4057,7 @@ $sync.TweeaksListView.add_LostFocus({
 
 CheckChoco
 GetQuotes *> $null 
-#PlayMusic *> $null 
+PlayMusic *> $null 
 
 # Define OnClosing event handler
 $onClosingEvent = {
