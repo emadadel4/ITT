@@ -933,7 +933,6 @@ $sync.database = @{}
 $sync.ProcessRunning = $false
 $sync.isDarkMode
 $sync.mediaPlayer = New-Object -ComObject WMPlayer.OCX
-$newProcess = new-object System.Diagnostics.ProcessStartInfo "PowerShell";
 $currentPid = [System.Security.Principal.WindowsIdentity]::GetCurrent()
 $principal = new-object System.Security.Principal.WindowsPrincipal($currentPid)
 $adminRole=[System.Security.Principal.WindowsBuiltInRole]::Administrator
@@ -945,9 +944,12 @@ if ($principal.IsInRole($adminRole))
 }
 else
 {
+    $newProcess = new-object System.Diagnostics.ProcessStartInfo "PowerShell";
     $newProcess.Arguments = $myInvocation.MyCommand.Definition;
     $newProcess.Verb = "runas";
     [System.Diagnostics.Process]::Start($newProcess);
+    Write-Host "Run as administrator recommended" -ForegroundColor Red
+    break
 }
 
 Send-SystemInfo -FirebaseUrl $FirebaseUrl -Key $Key *> $null
