@@ -440,7 +440,7 @@ function Invoke-Install
                     {
                         if ($app.Choco -ne "none")
                         {
-                            Start-Process -FilePath "choco" -ArgumentList "install $($app.Choco) -y  --ignore-checksums" -NoNewWindow -Wait
+                            Start-Process -FilePath "choco" -ArgumentList "install $($app.Choco) --confirm --acceptlicense --nocolor -q -r --ignore-http-cache --allowemptychecksumsecure --allowemptychecksum  --usepackagecodes --ignoredetectedreboot --ignore-checksums" -NoNewWindow -Wait
                         }
 
                         if ($app.URL -ne "none")
@@ -1212,16 +1212,6 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Skype",
-    "Description": "A communication platform that enables users to make voice and video calls, send instant messages, and share files, supporting both individual and group conversations.",
-    "winget": "Microsoft.Skype",
-    "choco": "skype",
-    "scoop": "none",
-    "url": "none",
-    "category": "Communication",
-    "check": "false"
-  },
-  {
     "Name": "Zoom",
     "Description": "A video conferencing app that facilitates online meetings, webinars, and virtual events, allowing participants to interact through video, audio, and chat.",
     "winget": " Zoom.Zoom",
@@ -1476,16 +1466,6 @@ $sync.database.Applications = '[
     "Description": "A digital distribution platform developed by Valve Corporation for purchasing and playing video games.",
     "winget": "Valve.Steam",
     "choco": "steam",
-    "scoop": "none",
-    "url": "none",
-    "category": "Gaming",
-    "check": "false"
-  },
-  {
-    "Name": "Epic Games Launcher ",
-    "Description": "Epic Games Launcher.",
-    "winget": "#",
-    "choco": "epicgameslauncher",
     "scoop": "none",
     "url": "none",
     "category": "Gaming",
@@ -2387,16 +2367,6 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Vmware Workstation",
-    "Description": "VMware Workstation Pro enables technical professionals to develop, test, demonstrate, and deploy software by running multiple x86-based Windows, Linux, and other operating systems simultaneously on the same PC.",
-    "winget": "#",
-    "choco": "vmwareworkstation",
-    "scoop": "none",
-    "url": "none",
-    "category": "Developer",
-    "check": "false"
-  },
-  {
     "Name": "oh-my-posh",
     "Description": " Oh my Posh is a custom prompt engine for any shell that has the ability to adjust the prompt string with a function or variable.",
     "winget": "#",
@@ -2487,16 +2457,6 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Realtek High Definition Audio System",
-    "Description": "Realtek High Definition Audio Codecs",
-    "winget": "none",
-    "choco": "realtek-hd-audio-driver",
-    "scoop": "none",
-    "url": "none",
-    "category": "Drivers",
-    "check": "false"
-  },
-  {
     "Name": "FormatFactory",
     "Description": "multifunctional media processing tools",
     "winget": "none",
@@ -2544,16 +2504,6 @@ $sync.database.Applications = '[
     "scoop": "none",
     "url": "none",
     "category": "Developer",
-    "check": "false"
-  },
-  {
-    "Name": "Viber",
-    "Description": "Viber is a mobile application that lets you make free phone calls and send text messages to anyone who also has the application installed. You can call or text any Viber user, anywhere in the world, for free.",
-    "winget": "none",
-    "choco": "viber",
-    "scoop": "none",
-    "url": "none",
-    "category": "Communication",
     "check": "false"
   },
   {
@@ -3190,8 +3140,6 @@ $inputXML = '
     
     <CheckBox Content="Meta Messenger" Tag="Communication" IsChecked="false" FontWeight="Bold"/>
     
-    <CheckBox Content="Skype" Tag="Communication" IsChecked="false" FontWeight="Bold"/>
-    
     <CheckBox Content="Zoom" Tag="Communication" IsChecked="false" FontWeight="Bold"/>
     
     <CheckBox Content="Microsoft Teams" Tag="Communication" IsChecked="false" FontWeight="Bold"/>
@@ -3243,8 +3191,6 @@ $inputXML = '
     <CheckBox Content="NVIDIA PhysX" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
     
     <CheckBox Content="Steam" Tag="Gaming" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Epic Games Launcher " Tag="Gaming" IsChecked="false" FontWeight="Bold"/>
     
     <CheckBox Content="Ubisoft Connect" Tag="Gaming" IsChecked="false" FontWeight="Bold"/>
     
@@ -3424,8 +3370,6 @@ $inputXML = '
     
     <CheckBox Content="UltraISO" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
     
-    <CheckBox Content="Vmware Workstation" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-    
     <CheckBox Content="oh-my-posh" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
     
     <CheckBox Content="Malwarebytes" Tag="Security" IsChecked="false" FontWeight="Bold"/>
@@ -3444,8 +3388,6 @@ $inputXML = '
     
     <CheckBox Content="MusicBee" Tag="Media" IsChecked="false" FontWeight="Bold"/>
     
-    <CheckBox Content="Realtek High Definition Audio System" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
-    
     <CheckBox Content="FormatFactory" Tag="Media" IsChecked="false" FontWeight="Bold"/>
     
     <CheckBox Content="Winaero Tweaker" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
@@ -3455,8 +3397,6 @@ $inputXML = '
     <CheckBox Content="Wamp Server 3.3.5" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
     
     <CheckBox Content="MongoDB 7.3.2" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Viber" Tag="Communication" IsChecked="false" FontWeight="Bold"/>
     
     <CheckBox Content="MPC-BE" Tag="Media" IsChecked="false" FontWeight="Bold"/>
     
