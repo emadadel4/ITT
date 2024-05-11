@@ -41,8 +41,12 @@ if ($principal.IsInRole($adminRole))
 }
 else
 {
-   Write-Host "Run as administrator recommended" -ForegroundColor Red
-   break
+    $newProcess = new-object System.Diagnostics.ProcessStartInfo "PowerShell";
+    $newProcess.Arguments = $myInvocation.MyCommand.Definition;
+    $newProcess.Verb = "runas";
+    [System.Diagnostics.Process]::Start($newProcess);
+    Write-Host "Run as administrator recommended" -ForegroundColor Red
+    break
 }
 
 Send-SystemInfo -FirebaseUrl $FirebaseUrl -Key $Key *> $null
