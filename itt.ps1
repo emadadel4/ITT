@@ -948,7 +948,6 @@ else
     $newProcess.Arguments = $myInvocation.MyCommand.Definition;
     $newProcess.Verb = "runas";
     [System.Diagnostics.Process]::Start($newProcess);
-    Write-Host "Run as administrator recommended" -ForegroundColor Red
     break
 }
 
