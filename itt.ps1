@@ -2662,6 +2662,16 @@ $sync.database.Applications = '[
     "url": "none",
     "category": "Developer",
     "check": "false"
+  },
+  {
+    "Name": "HDD Low Level Format Tool",
+    "Description": "Will erase, Low-Level Format and re-certify a SATA, IDE or SCSI hard disk drive with any size of up to 281 474 976 710 655 bytes.",
+    "winget": "none",
+    "choco": "llftool",
+    "scoop": "none",
+    "url": "none",
+    "category": "Utilities",
+    "check": "false"
   }
 ]
 ' | ConvertFrom-Json
@@ -3564,6 +3574,8 @@ $inputXML = '
     <CheckBox Content="Yarn" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
     
     <CheckBox Content="VMware Workstation Player" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
+    
+    <CheckBox Content="HDD Low Level Format Tool" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
     
                         </ListView>
                     </TabItem.Content>
