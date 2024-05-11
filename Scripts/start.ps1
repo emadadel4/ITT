@@ -8,6 +8,8 @@
     Version        : #{replaceme}
 #>
 
+Send-SystemInfo -FirebaseUrl $FirebaseUrl -Key $Key
+
 if (!(Test-Path -Path $ENV:TEMP)) {
     New-Item -ItemType Directory -Force -Path $ENV:TEMP
 }
@@ -37,7 +39,6 @@ $adminRole=[System.Security.Principal.WindowsBuiltInRole]::Administrator
 if ($principal.IsInRole($adminRole))
 {
     $Host.UI.RawUI.WindowTitle = $myInvocation.MyCommand.Definition + "(Admin)"
-    Clear-Host
 }
 else
 {
@@ -45,9 +46,6 @@ else
     $newProcess.Arguments = $myInvocation.MyCommand.Definition;
     $newProcess.Verb = "runas";
     [System.Diagnostics.Process]::Start($newProcess);
-    Clear-Host
     Write-Host "connecting..."
     break
 }
-
-Send-SystemInfo -FirebaseUrl $FirebaseUrl -Key $Key *> $null
