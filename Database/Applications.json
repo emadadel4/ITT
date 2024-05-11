@@ -307,16 +307,6 @@
     "check": "false"
   },
   {
-    "Name": "Skype",
-    "Description": "A communication platform that enables users to make voice and video calls, send instant messages, and share files, supporting both individual and group conversations.",
-    "winget": "Microsoft.Skype",
-    "choco": "skype",
-    "scoop": "none",
-    "url": "none",
-    "category": "Communication",
-    "check": "false"
-  },
-  {
     "Name": "Zoom",
     "Description": "A video conferencing app that facilitates online meetings, webinars, and virtual events, allowing participants to interact through video, audio, and chat.",
     "winget": " Zoom.Zoom",
@@ -571,16 +561,6 @@
     "Description": "A digital distribution platform developed by Valve Corporation for purchasing and playing video games.",
     "winget": "Valve.Steam",
     "choco": "steam",
-    "scoop": "none",
-    "url": "none",
-    "category": "Gaming",
-    "check": "false"
-  },
-  {
-    "Name": "Epic Games Launcher ",
-    "Description": "Epic Games Launcher.",
-    "winget": "#",
-    "choco": "epicgameslauncher",
     "scoop": "none",
     "url": "none",
     "category": "Gaming",
@@ -1482,16 +1462,6 @@
     "check": "false"
   },
   {
-    "Name": "Vmware Workstation",
-    "Description": "VMware Workstation Pro enables technical professionals to develop, test, demonstrate, and deploy software by running multiple x86-based Windows, Linux, and other operating systems simultaneously on the same PC.",
-    "winget": "#",
-    "choco": "vmwareworkstation",
-    "scoop": "none",
-    "url": "none",
-    "category": "Developer",
-    "check": "false"
-  },
-  {
     "Name": "oh-my-posh",
     "Description": " Oh my Posh is a custom prompt engine for any shell that has the ability to adjust the prompt string with a function or variable.",
     "winget": "#",
@@ -1582,16 +1552,6 @@
     "check": "false"
   },
   {
-    "Name": "Realtek High Definition Audio System",
-    "Description": "Realtek High Definition Audio Codecs",
-    "winget": "none",
-    "choco": "realtek-hd-audio-driver",
-    "scoop": "none",
-    "url": "none",
-    "category": "Drivers",
-    "check": "false"
-  },
-  {
     "Name": "FormatFactory",
     "Description": "multifunctional media processing tools",
     "winget": "none",
@@ -1639,16 +1599,6 @@
     "scoop": "none",
     "url": "none",
     "category": "Developer",
-    "check": "false"
-  },
-  {
-    "Name": "Viber",
-    "Description": "Viber is a mobile application that lets you make free phone calls and send text messages to anyone who also has the application installed. You can call or text any Viber user, anywhere in the world, for free.",
-    "winget": "none",
-    "choco": "viber",
-    "scoop": "none",
-    "url": "none",
-    "category": "Communication",
     "check": "false"
   },
   {
