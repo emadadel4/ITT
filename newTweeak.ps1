@@ -35,7 +35,7 @@ try {
 
     if($build -eq "y")
     {
-        ./itt.ps1
+        ./build.ps1
     }
 
 }
