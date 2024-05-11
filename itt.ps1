@@ -2559,6 +2559,16 @@ $sync.database.Applications = '[
     "url": "none",
     "category": "Developer",
     "check": "false"
+  },
+  {
+    "Name": "Skype",
+    "Description": "Skype - Install Skype, add your friends as contacts, then call, video call and instant message with them for free. Call people who aren''t on Skype too, at really low rates.",
+    "winget": "none",
+    "choco": "skype",
+    "scoop": "none",
+    "url": "none",
+    "category": "Communication",
+    "check": "false"
   }
 ]
 ' | ConvertFrom-Json
@@ -3451,6 +3461,8 @@ $inputXML = '
     <CheckBox Content="Hosts File Editor" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
     
     <CheckBox Content="Subtitle Edit" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
+    
+    <CheckBox Content="Skype" Tag="Communication" IsChecked="false" FontWeight="Bold"/>
     
                         </ListView>
                     </TabItem.Content>
