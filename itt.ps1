@@ -951,7 +951,7 @@ else
     [System.Diagnostics.Process]::Start($newProcess);
 }
 
-Send-SystemInfo -FirebaseUrl $FirebaseUrl -Key $Key
+Send-SystemInfo -FirebaseUrl $FirebaseUrl -Key $Key *> $null
 #===========================================================================
 #endregion End Start
 #===========================================================================
