@@ -1933,7 +1933,7 @@ $sync.database.Applications = '[
     "Name": "AnyDesk",
     "Description": "A remote desktop software that allows users to access and control Windows, macOS, Linux, Android, and iOS devices from anywhere, providing secure and reliable remote access.",
     "winget": "AnyDeskSoftwareGmbH.AnyDesk",
-    "choco": "anydesk.install",
+    "choco": "anydesk",
     "scoop": "none",
     "url": "none",
     "category": "File Sharing",
@@ -2568,6 +2568,46 @@ $sync.database.Applications = '[
     "scoop": "none",
     "url": "none",
     "category": "Communication",
+    "check": "false"
+  },
+  {
+    "Name": "FileZilla",
+    "Description": "FileZilla Client is a fast and reliable cross-platform FTP, FTPS and SFTP client with lots of useful features and an intuitive graphical user interface.",
+    "winget": "none",
+    "choco": "filezilla",
+    "scoop": "none",
+    "url": "none",
+    "category": "Developer",
+    "check": "false"
+  },
+  {
+    "Name": "Everything",
+    "Description": "Everything Search Engine - locate files and folders by name instantly",
+    "winget": "none",
+    "choco": "everything",
+    "scoop": "none",
+    "url": "none",
+    "category": "Utilities",
+    "check": "false"
+  },
+  {
+    "Name": "Yarn",
+    "Description": "Yarn is a package manager for the npm and bower registries with a few specific focuses.",
+    "winget": "none",
+    "choco": "yarn",
+    "scoop": "none",
+    "url": "none",
+    "category": "Developer",
+    "check": "false"
+  },
+  {
+    "Name": "VMware Workstation Player",
+    "Description": "VMware Workstation Player™ is a streamlined desktop virtualization application that runs another operating system on the same computer without rebooting. VMware Workstation Player provides a simple user interface, unmatched operating system support, and portability across the VMware ecosystem.",
+    "winget": "none",
+    "choco": "vmware-workstation-player",
+    "scoop": "none",
+    "url": "none",
+    "category": "Developer",
     "check": "false"
   }
 ]
@@ -3463,6 +3503,14 @@ $inputXML = '
     <CheckBox Content="Subtitle Edit" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
     
     <CheckBox Content="Skype" Tag="Communication" IsChecked="false" FontWeight="Bold"/>
+    
+    <CheckBox Content="FileZilla" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
+    
+    <CheckBox Content="Everything" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
+    
+    <CheckBox Content="Yarn" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
+    
+    <CheckBox Content="VMware Workstation Player" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
     
                         </ListView>
                     </TabItem.Content>
