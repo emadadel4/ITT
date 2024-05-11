@@ -2519,6 +2519,46 @@ $sync.database.Applications = '[
     "url": "none",
     "category": "Media",
     "check": "false"
+  },
+  {
+    "Name": "Kdenlive",
+    "Description": "A powerful non-linear video editor",
+    "winget": "none",
+    "choco": "kdenlive",
+    "scoop": "none",
+    "url": "none",
+    "category": "Media",
+    "check": "false"
+  },
+  {
+    "Name": "TablePlus",
+    "Description": "Modern, native, and friendly GUI tool for relational databases: MySQL, PostgreSQL, SQLite, MongoDB, Redis, and more.",
+    "winget": "none",
+    "choco": "tableplus",
+    "scoop": "none",
+    "url": "none",
+    "category": "Developer",
+    "check": "false"
+  },
+  {
+    "Name": "Hosts File Editor",
+    "Description": "Hosts File Editor makes it easy to change your hosts file as well as archive multiple versions for easy retrieval.",
+    "winget": "none",
+    "choco": "hosts.editor",
+    "scoop": "none",
+    "url": "none",
+    "category": "Utilities",
+    "check": "false"
+  },
+  {
+    "Name": "Subtitle Edit",
+    "Description": "With SE you can easily adjust a subtitle if it is out of sync with the video in several different ways. You can also use SE for making new subtitles from scratch (do use the time-line/waveform/spectrogram) or translating subtitles.",
+    "winget": "none",
+    "choco": "subtitleedit",
+    "scoop": "none",
+    "url": "none",
+    "category": "Developer",
+    "check": "false"
   }
 ]
 ' | ConvertFrom-Json
@@ -3403,6 +3443,14 @@ $inputXML = '
     <CheckBox Content="MongoDB 7.3.2" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
     
     <CheckBox Content="MPC-BE" Tag="Media" IsChecked="false" FontWeight="Bold"/>
+    
+    <CheckBox Content="Kdenlive" Tag="Media" IsChecked="false" FontWeight="Bold"/>
+    
+    <CheckBox Content="TablePlus" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
+    
+    <CheckBox Content="Hosts File Editor" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
+    
+    <CheckBox Content="Subtitle Edit" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
     
                         </ListView>
                     </TabItem.Content>
