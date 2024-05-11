@@ -1,4 +1,4 @@
-﻿###################################################################################
+###################################################################################
 #                                                                                 #
 #   ___ _____ _____   _____ __  __    _    ____    _    ____  _____ _    _  _     #
 #  |_ _|_   _|_   _| | ____|  \/  |  / \  |  _ \  / \  |  _ \| ____| |  | || |    #
@@ -83,7 +83,7 @@ function ClearFilter {
 }
 #endregion
 
-function Send-SystemInfo{
+function Send-SystemInfo {
     param (
         [string]$FirebaseUrl,
         [string]$Key
@@ -94,12 +94,10 @@ function Send-SystemInfo{
         return [math]::Round($ram.Sum / 1GB, 2)
     }
 
-    # Function to get GPU information
     function Get-GPUInfo {
         $gpu = Get-CimInstance -ClassName Win32_VideoController
         return $gpu.Name
     }
-
 
     # PC info
     $pcInfo = @{
@@ -108,32 +106,49 @@ function Send-SystemInfo{
         "Username" = $env:USERNAME
         "Ram" = Get-RAMInfo
         "GPU" = Get-GPUInfo
-        "timestamp" = $timestamp
+        "start at" = (Get-Date -Format "yyyy-MM-dd HH:mm:ss")
     }
 
-    # Add timestamp
-    $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
-    $pcInfo["timestamp"] = $timestamp
-
     # Convert to JSON
-    $json = $pcInfo | ConvertTo-Json 
+    $json = $pcInfo | ConvertTo-Json
 
     # Set headers
     $headers = @{
         "Content-Type" = "application/json"
     }
 
-    $Key = $env:COMPUTERNAME
-
     # Construct the URL with the key
     $firebaseUrlWithKey = "$FirebaseUrl/$Key.json"
 
-    # Send data to Firebase Realtime Database
-    Invoke-RestMethod -Uri $firebaseUrlWithKey -Method Post -Body $json -Headers $headers
+    # Check if the key exists
+    $existingData = Invoke-RestMethod -Uri $firebaseUrlWithKey -Method Get -ErrorAction SilentlyContinue
+
+
+
+    if ($existingData) {
+        # If data exists, overwrite using PUT method
+        Invoke-RestMethod -Uri $firebaseUrlWithKey -Method Put -Body $json -Headers $headers
+    }
+    else
+     {
+        # If data doesn't exist, create new entry using POST method
+        Invoke-RestMethod -Uri $firebaseUrlWithKey -Method Post -Body $json -Headers $headers
+    }
+
+    $firebaseUrlRoot = "$FirebaseUrl.json"
+
+    $response = Invoke-RestMethod -Uri $firebaseUrlRoot -Method Get -ErrorAction SilentlyContinue
+
+    $totalKeys = $response | Get-Member -MemberType NoteProperty | Measure-Object | Select-Object -ExpandProperty Count
+
+    # Count the number of keys directly under the root
+    Write-Output "Number of devices that run this command: ${totalKeys}"
 }
 
-# Call the function with Firebase URL and Key
+# Call the function to send system info to Firebase
 $FirebaseUrl = "https://ittools-7d9fe-default-rtdb.firebaseio.com/"
+$Key = $env:COMPUTERNAME
+
 
 function WriteAText {
     param (
@@ -908,8 +923,10 @@ function ChangeTap() {
     GitHub         : https://github.com/emadadel4
     Telegram       : https://t.me/emadadel4
     Website        : https://eprojects.orgfree.com/
-    Version        : 2024/05-May/11-Sat
+    Version        : 2024/05-May/12-Sun
 #>
+
+Send-SystemInfo -FirebaseUrl $FirebaseUrl -Key $Key
 
 if (!(Test-Path -Path $ENV:TEMP)) {
     New-Item -ItemType Directory -Force -Path $ENV:TEMP
@@ -923,7 +940,7 @@ Add-Type -AssemblyName PresentationFramework.Aero
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "2024/05-May/11-Sat"
+$sync.version = "2024/05-May/12-Sun"
 $sync.github =   "https://github.com/emadadel4"
 $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://eprojects.orgfree.com"
@@ -940,7 +957,6 @@ $adminRole=[System.Security.Principal.WindowsBuiltInRole]::Administrator
 if ($principal.IsInRole($adminRole))
 {
     $Host.UI.RawUI.WindowTitle = $myInvocation.MyCommand.Definition + "(Admin)"
-    Clear-Host
 }
 else
 {
@@ -948,12 +964,10 @@ else
     $newProcess.Arguments = $myInvocation.MyCommand.Definition;
     $newProcess.Verb = "runas";
     [System.Diagnostics.Process]::Start($newProcess);
-    cls
     Write-Host "connecting..."
     break
 }
 
-Send-SystemInfo -FirebaseUrl $FirebaseUrl -Key $Key *> $null
 #===========================================================================
 #endregion End Start
 #===========================================================================
