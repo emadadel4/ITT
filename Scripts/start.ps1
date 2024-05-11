@@ -42,6 +42,7 @@ if ($principal.IsInRole($adminRole))
 else
 {
    Write-Host "Run as administrator recommended" -ForegroundColor Red
+   break
 }
 
 Send-SystemInfo -FirebaseUrl $FirebaseUrl -Key $Key *> $null
