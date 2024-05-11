@@ -47,3 +47,5 @@ else
     $newProcess.WindowStyle = "Maximized"
     [System.Diagnostics.Process]::Start($newProcess);
 }
+
+PCInfo
