@@ -44,7 +44,6 @@ else
 {
     $newProcess.Arguments = $myInvocation.MyCommand.Definition;
     $newProcess.Verb = "runas";
-    $newProcess.WindowStyle = "Maximized"
     [System.Diagnostics.Process]::Start($newProcess);
 }
 
