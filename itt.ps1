@@ -969,7 +969,6 @@ if (!(Test-Path -Path $ENV:TEMP)) {
 Add-Type -AssemblyName PresentationFramework
 Add-Type -AssemblyName PresentationCore
 Add-Type -AssemblyName PresentationFramework.Aero
-Add-Type -AssemblyName System.Windows.Forms
 
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
@@ -992,6 +991,7 @@ $adminRole=[System.Security.Principal.WindowsBuiltInRole]::Administrator
 if ($principal.IsInRole($adminRole))
 {
     $Host.UI.RawUI.WindowTitle = $myInvocation.MyCommand.Definition + "(Admin)"
+    Clear-Host
 }
 else
 {
