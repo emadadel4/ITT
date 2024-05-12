@@ -76,8 +76,8 @@ $sync.Keys | ForEach-Object {
             # Add a click event handler to the button
 
             $element.Add_Click({
-                param([System.Object]$Sender)
-                Invoke-Button $Sender.Name
+                param([System.Object]$s)
+                Invoke-Button $s.Name
             })
         }
 
@@ -86,8 +86,8 @@ $sync.Keys | ForEach-Object {
             # Add a click event handler to the MenuItem
 
             $element.Add_Click({
-                param([System.Object]$Sender)
-                Invoke-Button $Sender.Name
+                param([System.Object]$s)
+                Invoke-Button $s.Name
             })
         }
 
@@ -95,13 +95,13 @@ $sync.Keys | ForEach-Object {
         if ($element.GetType().Name -eq "TextBox") {
 
             $element.Add_TextChanged({
-                param([System.Object]$Sender)
-                Invoke-Button $Sender.Name
+                param([System.Object]$s)
+                Invoke-Button $s.Name
             })
 
             $element.Add_GotFocus({
-                param([System.Object]$Sender)
-                Invoke-Button $Sender.Name
+                param([System.Object]$s)
+                Invoke-Button $s.Name
             })
         }
 
@@ -110,8 +110,8 @@ $sync.Keys | ForEach-Object {
                 # Add a click event handler to the Ellipse
     
                 $element.add_MouseLeftButtonDown({
-                    param([System.Object]$Sender)
-                    Invoke-Button $Sender.Name
+                    param([System.Object]$s)
+                    Invoke-Button $s.Name
                 })
         }
 
@@ -120,8 +120,8 @@ $sync.Keys | ForEach-Object {
             # Add a click event handler to the ComboBox
 
             $element.add_SelectionChanged({
-                param([System.Object]$Sender)
-                Invoke-Button $Sender.Name
+                param([System.Object]$s)
+                Invoke-Button $s.Name
             })
         }
 
@@ -130,8 +130,8 @@ $sync.Keys | ForEach-Object {
             # Add a click event handler to the TabControl
 
             $element.add_SelectionChanged({
-                param([System.Object]$Sender)
-                Invoke-Button $Sender.Name
+                param([System.Object]$s)
+                Invoke-Button $s.Name
             })
         }
     }

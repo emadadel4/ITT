@@ -19,8 +19,8 @@
 function About{
 
     # Load child window
-    [xml]$ee = $childXaml
-    $childWindowReader = (New-Object System.Xml.XmlNodeReader $ee)
+    [xml]$about = $childXaml
+    $childWindowReader = (New-Object System.Xml.XmlNodeReader $about)
     $childWindow = [Windows.Markup.XamlReader]::Load( $childWindowReader )
     $childWindow.FindName('ver').Text = "Last update " + $sync.version
     $childWindow.FindName("telegram").add_MouseLeftButtonDown({Start-Process("https://t.me/emadadel4")})
@@ -191,7 +191,7 @@ function CheckChoco
     if (-not (Get-Command choco -ErrorAction SilentlyContinue))
     {
         Startup -firstBoot $true
-        Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1')) *> $null
+        Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1')) *> $null
         Clear-Host
         Write-Host (WriteAText -color White -message  "You ready to Install anything.") 
         
@@ -3938,8 +3938,8 @@ $sync.Keys | ForEach-Object {
             # Add a click event handler to the button
 
             $element.Add_Click({
-                param([System.Object]$Sender)
-                Invoke-Button $Sender.Name
+                param([System.Object]$s)
+                Invoke-Button $s.Name
             })
         }
 
@@ -3948,8 +3948,8 @@ $sync.Keys | ForEach-Object {
             # Add a click event handler to the MenuItem
 
             $element.Add_Click({
-                param([System.Object]$Sender)
-                Invoke-Button $Sender.Name
+                param([System.Object]$s)
+                Invoke-Button $s.Name
             })
         }
 
@@ -3957,13 +3957,13 @@ $sync.Keys | ForEach-Object {
         if ($element.GetType().Name -eq "TextBox") {
 
             $element.Add_TextChanged({
-                param([System.Object]$Sender)
-                Invoke-Button $Sender.Name
+                param([System.Object]$s)
+                Invoke-Button $s.Name
             })
 
             $element.Add_GotFocus({
-                param([System.Object]$Sender)
-                Invoke-Button $Sender.Name
+                param([System.Object]$s)
+                Invoke-Button $s.Name
             })
         }
 
@@ -3972,8 +3972,8 @@ $sync.Keys | ForEach-Object {
                 # Add a click event handler to the Ellipse
     
                 $element.add_MouseLeftButtonDown({
-                    param([System.Object]$Sender)
-                    Invoke-Button $Sender.Name
+                    param([System.Object]$s)
+                    Invoke-Button $s.Name
                 })
         }
 
@@ -3982,8 +3982,8 @@ $sync.Keys | ForEach-Object {
             # Add a click event handler to the ComboBox
 
             $element.add_SelectionChanged({
-                param([System.Object]$Sender)
-                Invoke-Button $Sender.Name
+                param([System.Object]$s)
+                Invoke-Button $s.Name
             })
         }
 
@@ -3992,8 +3992,8 @@ $sync.Keys | ForEach-Object {
             # Add a click event handler to the TabControl
 
             $element.add_SelectionChanged({
-                param([System.Object]$Sender)
-                Invoke-Button $Sender.Name
+                param([System.Object]$s)
+                Invoke-Button $s.Name
             })
         }
     }
@@ -4135,7 +4135,8 @@ PlayMusic *> $null
 
 # Define OnClosing event handler
 $onClosingEvent = {
-    param($sender, $eventArgs)
+    
+    param($s, $c)
     
     # Show confirmation message box
     $result = [System.Windows.MessageBox]::Show("Are you sure you want to close the program, If there are any installing, this will end it", "Confirmation", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)
@@ -4148,7 +4149,7 @@ $onClosingEvent = {
    
     }else{
         # Cancel closing the window
-        $eventArgs.Cancel = $true
+        $c.Cancel = $true
     }
 }
 

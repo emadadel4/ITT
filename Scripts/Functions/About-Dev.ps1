@@ -1,8 +1,8 @@
 function About{
 
     # Load child window
-    [xml]$ee = $childXaml
-    $childWindowReader = (New-Object System.Xml.XmlNodeReader $ee)
+    [xml]$about = $childXaml
+    $childWindowReader = (New-Object System.Xml.XmlNodeReader $about)
     $childWindow = [Windows.Markup.XamlReader]::Load( $childWindowReader )
     $childWindow.FindName('ver').Text = "Last update " + $sync.version
     $childWindow.FindName("telegram").add_MouseLeftButtonDown({Start-Process("https://t.me/emadadel4")})

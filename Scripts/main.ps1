@@ -5,7 +5,8 @@ PlayMusic *> $null
 
 # Define OnClosing event handler
 $onClosingEvent = {
-    param($sender, $eventArgs)
+    
+    param($s, $c)
     
     # Show confirmation message box
     $result = [System.Windows.MessageBox]::Show("Are you sure you want to close the program, If there are any installing, this will end it", "Confirmation", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)
@@ -18,7 +19,7 @@ $onClosingEvent = {
    
     }else{
         # Cancel closing the window
-        $eventArgs.Cancel = $true
+        $c.Cancel = $true
     }
 }
 
