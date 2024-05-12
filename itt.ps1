@@ -31,7 +31,7 @@ function About{
 
 }
 
-function Create-Shortcut {
+function ITTShortcut {
   
     # Create a shortcut object
     $Shortcut = (New-Object -ComObject WScript.Shell).CreateShortcut("$([Environment]::GetFolderPath('Desktop'))\ITT Emad Adel.lnk")
@@ -364,7 +364,8 @@ function Invoke-Button {
 
         "moff" { MuteMusic $debug }
         "mon" { Unmute $debug }
-        "ittshortcut" { CreateShortcut $debug }
+        
+        "ittshortcut" { ITTShortcut $debug }
 
         # --Menu items-------------------
         "searchInput" {Search; $sync['window'].FindName('category').SelectedIndex = 0; $sync['window'].FindName('apps').IsSelected = $true; $debug }
@@ -3222,9 +3223,7 @@ $inputXML = '
                                 <MenuItem Name="moff" Header="Mute"/>
                                 <MenuItem Name="mon" Header="Unmute"/>
                             </MenuItem>
-                            
                             <MenuItem Name="ittshortcut" Header="Create Shortcut"/>
-
                         </MenuItem>
 
 
