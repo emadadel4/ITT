@@ -54,6 +54,5 @@ function CheckChoco
         WriteText -firstBoot $false
     }
     
-    #Send-SystemInfo -FirebaseUrl $FirebaseUrl -Key $Key
     Send-SystemInfo -FirebaseUrl $sync.firebaseUrl -Key $env:COMPUTERNAME
 }
