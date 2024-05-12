@@ -11,7 +11,11 @@ function Invoke-Button {
         "applyBtn" {Invoke-ApplyTweaks $debug}
         "taps" {ChangeTap $debug}
         "category" {FilterByCat($sync.category.SelectedItem.Content) $debug}
-        # --Menu items-------------------
+        "searchInput" {Search; $sync['window'].FindName('category').SelectedIndex = 0; $sync['window'].FindName('apps').IsSelected = $true; $debug }
+
+        #===========================================================================
+        #region Menu items
+        #===========================================================================
         "load" {LoadJson $Button}
         "save" {SaveItemsToJson $debug}
         "about" {About $debug}
@@ -30,13 +34,13 @@ function Invoke-Button {
         "diskmgmt" {Start-Process diskmgmt.msc $debug}
         "darkOn" { Switch-ToDarkMode $debug }
         "darkOff" { Switch-ToLightMode $debug }
-
+        "ittshortcut" { ITTShortcut $debug }
         "moff" { MuteMusic $debug }
         "mon" { Unmute $debug }
-        
-        "ittshortcut" { ITTShortcut $debug }
+        "neat" { Start-Process ("https://addons.mozilla.org/en-US/firefox/addon/neatdownloadmanager-extension/")  $debug }
+        #===========================================================================
+        #endregion Menu items
+        #===========================================================================
 
-        # --Menu items-------------------
-        "searchInput" {Search; $sync['window'].FindName('category').SelectedIndex = 0; $sync['window'].FindName('apps').IsSelected = $true; $debug }
     }
 }
