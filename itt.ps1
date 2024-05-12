@@ -2821,56 +2821,56 @@ $sync.database.Tweeaks = '[
     "name": "Setup Auto login",
     "description": "Setup auto login Windows username",
     "repo": "null",
-    "script": "curl.exe -ss \"https://live.sysinternals.com/Autologon.exe\" -o $env:temp\\autologin.exe ; cmd /c $env:temp\\autologin.exe /accepteula",
+    "script": "curl.exe -ss \"https://live.sysinternals.com/Autologon.exe\" -o $env:temp\\autologin.exe ; cmd /c $env:temp\\autologin.exe /accepteula;",
     "check": "false"
   },
   {
     "name": "Disable People icon on Taskbar",
     "description": "Disables People on taskbar",
     "repo": "null",
-    "script": "Set-ItemProperty ''HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\\People'' -Name PeopleBand -Value 0 -Verbose",
+    "script": "Set-ItemProperty ''HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\\People'' -Name PeopleBand -Value 0 -Verbose;",
     "check": "false"
   },
   {
     "name": "Disable suggestions on start menu",
     "description": "Disables suggestions on start menu",
     "repo": "null",
-    "script": "New-Item -Path ''HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\CloudContent'' -Force | New-ItemProperty -Name ''DisableWindowsConsumerFeatures'' -Value 1 -PropertyType DWORD -Force",
+    "script": "New-Item -Path ''HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\CloudContent'' -Force | New-ItemProperty -Name ''DisableWindowsConsumerFeatures'' -Value 1 -PropertyType DWORD -Force;",
     "check": "false"
   },
   {
     "name": "Turns off Data Collection",
     "description": "This tweak disables data collection on your Windows system by modifying the registry setting for telemetry. It checks if the specified registry path exists and if so, sets the AllowTelemetry value to 0, effectively turning off telemetry.",
     "repo": "null",
-    "script": "New-ItemProperty -Path ''HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\DataCollection'' -Name ''AllowTelemetry'' -Value 0 -PropertyType DWORD -Force | Out-Null",
+    "script": "New-ItemProperty -Path ''HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\DataCollection'' -Name ''AllowTelemetry'' -Value 0 -PropertyType DWORD -Force | Out-Null;",
     "check": "false"
   },
   {
     "name": "Prevents bloatware applications from returning",
     "description": "This tweak aims to prevent bloatware applications from returning on your Windows system. It checks if a specific registry path exists, and if not, it creates it. Then, it sets a registry value to disable Windows consumer features, thereby reducing the likelihood of bloatware apps being installed or reinstalled.",
     "repo": "null",
-    "script": "If (!(Test-Path ''HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\CloudContent'')) { Mkdir ''HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\CloudContent'' -ErrorAction SilentlyContinue; New-ItemProperty ''HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\CloudContent'' -Name DisableWindowsConsumerFeatures -Value 1 -Verbose -ErrorAction SilentlyContinue }",
+    "script": "If (!(Test-Path ''HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\CloudContent'')) { Mkdir ''HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\CloudContent'' -ErrorAction SilentlyContinue; New-ItemProperty ''HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\CloudContent'' -Name DisableWindowsConsumerFeatures -Value 1 -Verbose -ErrorAction SilentlyContinue };",
     "check": "false"
   },
   {
     "name": "Stops the Windows Feedback Experience",
     "description": "This tweak aims to stop Windows Feedback by creating necessary registry keys if they do not exist. It checks if the specified registry path exists, and if not, it creates the required keys. Then, it sets a registry value to disable Windows Feedback by setting the PeriodInNanoSeconds value to 0, effectively stopping the feedback mechanism.",
     "repo": "null",
-    "script": "If (!(Test-Path ''HKCU:\\Software\\Microsoft\\Siuf\\Rules\\PeriodInNanoSeconds'')) { mkdir ''HKCU:\\Software\\Microsoft\\Siuf'' -ErrorAction SilentlyContinue; mkdir ''HKCU:\\Software\\Microsoft\\Siuf\\Rules'' -ErrorAction SilentlyContinue; mkdir ''HKCU:\\Software\\Microsoft\\Siuf\\Rules\\PeriodInNanoSeconds'' -ErrorAction SilentlyContinue; New-ItemProperty ''HKCU:\\Software\\Microsoft\\Siuf\\Rules\\PeriodInNanoSeconds'' -Name PeriodInNanoSeconds -Value 0 -Verbose -ErrorAction SilentlyContinue }; If (Test-Path ''HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\AdvertisingInfo'') { Set-ItemProperty ''HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\AdvertisingInfo'' -Name Enabled -Value 0 -Verbose }",
+    "script": "If (!(Test-Path ''HKCU:\\Software\\Microsoft\\Siuf\\Rules\\PeriodInNanoSeconds'')) { mkdir ''HKCU:\\Software\\Microsoft\\Siuf'' -ErrorAction SilentlyContinue mkdir ''HKCU:\\Software\\Microsoft\\Siuf\\Rules'' -ErrorAction SilentlyContinue mkdir ''HKCU:\\Software\\Microsoft\\Siuf\\Rules\\PeriodInNanoSeconds'' -ErrorAction SilentlyContinue; New-ItemProperty ''HKCU:\\Software\\Microsoft\\Siuf\\Rules\\PeriodInNanoSeconds'' -Name PeriodInNanoSeconds -Value 0 -Verbose -ErrorAction SilentlyContinue }; If (Test-Path ''HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\AdvertisingInfo'') { Set-ItemProperty ''HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\AdvertisingInfo'' -Name Enabled -Value 0 -Verbose };",
     "check": "false"
   },
   {
     "name": "Remove Cortana",
     "description": "This tweak aims to disable Cortana by modifying the registry settings related to Windows Search. It checks if the specified registry path exists, and if so, it sets the AllowCortana value to 0, effectively disabling Cortana''s functionality.",
     "repo": "null",
-    "script": "Get-AppxPackage -AllUsers -PackageTypeFilter Bundle -name \"*Microsoft.549981*\" | Remove-AppxPackage",
+    "script": "Get-AppxPackage -AllUsers -PackageTypeFilter Bundle -name \"*Microsoft.549981*\" | Remove-AppxPackage;",
     "check": "false"
   },
   {
     "name": "Disable Windows Web Search",
     "description": "Disable web search in Windows by modifying the registry settings related to Windows Search. It sets the BingSearchEnabled value to 0, effectively turning off web search results.",
     "repo": "null",
-    "script": "Set-ItemProperty -Path ''HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Search'' -Name ''BingSearchEnabled'' -Value 0",
+    "script": "Set-ItemProperty -Path ''HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Search'' -Name ''BingSearchEnabled'' -Value 0;",
     "check": "false"
   },
   {
@@ -2884,7 +2884,7 @@ $sync.database.Tweeaks = '[
     "name": "Disable all Privacy options",
     "description": "Disable all Privacy options.",
     "repo": "null",
-    "script": "Set-ItemProperty -Path \"HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\DataCollection\" -Name \"AllowTelemetry\" -Value 0; Set-ItemProperty -Path \"HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\AdvertisingInfo\" -Name \"Enabled\" -Value 0; Set-ItemProperty -Path \"HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Search\" -Name \"AllowCortana\" -Value 0; Set-ItemProperty -Path \"HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Search\" -Name \"BingSearchEnabled\" -Value 0",
+    "script": "Set-ItemProperty -Path \"HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\DataCollection\" -Name \"AllowTelemetry\" -Value 0; Set-ItemProperty -Path \"HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\AdvertisingInfo\" -Name \"Enabled\" -Value 0; Set-ItemProperty -Path \"HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Search\" -Name \"AllowCortana\" -Value 0; Set-ItemProperty -Path \"HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Search\" -Name \"BingSearchEnabled\" -Value 0;",
     "check": "false"
   },
   {
