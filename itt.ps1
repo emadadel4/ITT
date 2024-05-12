@@ -227,7 +227,7 @@ function Invoke-ApplyTweaks() {
         return
     }
   
-    $tweeaks += Get-SelectedTweeaks
+    $tweeaks = Get-SelectedTweeaks
 
     if(Get-SelectedTweeaks -ne $null)
     {
@@ -251,6 +251,10 @@ function Invoke-ApplyTweaks() {
 
                     #Write-Host "Applying tweeak(s) $tweeaks"
                     Start-Process -FilePath "powershell.exe" -ArgumentList "-Command `"$tweeaks`"" -NoNewWindow -Wait
+
+                    
+                    Write-Host  Start-Process -FilePath "powershell.exe" -ArgumentList "-Command `"$tweeaks;`"" -NoNewWindow -Wait
+
                     Write-Host "The operation was successful."    
                     [System.Windows.MessageBox]::Show("The operation was successful", "ITT @emadadel4", "OK", "Information")
 
@@ -2873,7 +2877,7 @@ $sync.database.Tweeaks = '[
     "name": "Turn off background apps",
     "description": "Disable background apps in Windows 10 by modifying the appropriate registry settings.",
     "repo": "null",
-    "script": "Set-ItemProperty -Path ''HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\BackgroundAccessApplications'' -Name ''GlobalUserDisabled'' -Value 1",
+    "script": "Set-ItemProperty -Path ''HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\BackgroundAccessApplications'' -Name ''GlobalUserDisabled'' -Value 1;",
     "check": "false"
   },
   {
@@ -2887,7 +2891,7 @@ $sync.database.Tweeaks = '[
     "name": "Disable Game Mode",
     "description": "This tweak disables Game Mode",
     "repo": "null",
-    "script": "Set-ItemProperty -Path \"HKCU:\\SOFTWARE\\Microsoft\\GameBar\" -Name \"AllowAutoGameMode\" -Value 0",
+    "script": "Set-ItemProperty -Path \"HKCU:\\SOFTWARE\\Microsoft\\GameBar\" -Name \"AllowAutoGameMode\" -Value 0; Set-ItemProperty -Path \"HKCU:\\SOFTWARE\\Microsoft\\GameBar\" -Name \"AutoGameModeEnabled\" -Value 0;",
     "check": "false"
   }
 ]
