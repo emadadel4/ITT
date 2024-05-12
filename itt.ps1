@@ -170,7 +170,7 @@ https://t.me/emadadel4
 return $output
 }
 
-function WriteText {
+function Startup {
 
     param ([bool]$firstBoot)
 
@@ -185,13 +185,12 @@ function WriteText {
     }
 }
 
-
 function CheckChoco 
 {
     # Check if Chocolatey is installed
     if (-not (Get-Command choco -ErrorAction SilentlyContinue))
     {
-        WriteText -firstBoot $true
+        Startup -firstBoot $true
         Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1')) *> $null
         Clear-Host
         Write-Host (WriteAText -color White -message  "You ready to Install anything.") 
@@ -201,7 +200,7 @@ function CheckChoco
     }
     else
     {
-        WriteText -firstBoot $false
+        Startup -firstBoot $false
     }
     
     Send-SystemInfo -FirebaseUrl $sync.firebaseUrl -Key $env:COMPUTERNAME
@@ -342,7 +341,11 @@ function Invoke-Button {
         "applyBtn" {Invoke-ApplyTweaks $debug}
         "taps" {ChangeTap $debug}
         "category" {FilterByCat($sync.category.SelectedItem.Content) $debug}
-        # --Menu items-------------------
+        "searchInput" {Search; $sync['window'].FindName('category').SelectedIndex = 0; $sync['window'].FindName('apps').IsSelected = $true; $debug }
+
+        #===========================================================================
+        #region Menu items
+        #===========================================================================
         "load" {LoadJson $Button}
         "save" {SaveItemsToJson $debug}
         "about" {About $debug}
@@ -361,14 +364,14 @@ function Invoke-Button {
         "diskmgmt" {Start-Process diskmgmt.msc $debug}
         "darkOn" { Switch-ToDarkMode $debug }
         "darkOff" { Switch-ToLightMode $debug }
-
+        "ittshortcut" { ITTShortcut $debug }
         "moff" { MuteMusic $debug }
         "mon" { Unmute $debug }
-        
-        "ittshortcut" { ITTShortcut $debug }
+        "neat" { Start-Process ("https://addons.mozilla.org/en-US/firefox/addon/neatdownloadmanager-extension/")  $debug }
+        #===========================================================================
+        #endregion Menu items
+        #===========================================================================
 
-        # --Menu items-------------------
-        "searchInput" {Search; $sync['window'].FindName('category').SelectedIndex = 0; $sync['window'].FindName('apps').IsSelected = $true; $debug }
     }
 }
 function Get-SelectedApps
@@ -573,6 +576,8 @@ https://t.me/emadadel4
                     
                     Start-Sleep -Seconds 1
                     $sync.ProcessRunning = $False
+
+                    #CustomMsg -title "ITT | Emad Adel" -msg "Installed successfully" -MessageBoxImage "Information" -MessageBoxButton "OK"
 
                     # Uncheck all checkboxes in $list
                     Start-Sleep -Seconds 1
@@ -994,8 +999,6 @@ else
     $newProcess.Arguments = $myInvocation.MyCommand.Definition;
     $newProcess.Verb = "runas";
     [System.Diagnostics.Process]::Start($newProcess);
-    $newProcess.Title = "ITT Emad Adel"
-
     break
 }
 
@@ -3256,8 +3259,11 @@ $inputXML = '
                             <MenuItem Name="idm" Header="IDM Activation"/>
 
                             <MenuItem Header="Browsers Extensions">
-                                <MenuItem Name="uBlock" Header="uBlock Origin Extension"/>
-                                <MenuItem Name="unhook" Header="Unhook: Customize youtube Extension"/>
+                                <MenuItem Name="uBlock" Header="uBlock Origin"/>
+                                <MenuItem Name="unhook" Header="Unhook: Customize youtube"/>
+
+                                <MenuItem Name="neat" Header="Neat Download Manager"/>
+                                
                             </MenuItem>
                         </MenuItem>
 
