@@ -25,8 +25,5 @@ $onClosingEvent = {
 # Add OnClosing event handler to the window
 $sync["window"].add_Closing($onClosingEvent)
 
-
-Send-SystemInfo -FirebaseUrl $FirebaseUrl -Key $Key
-
 # Show the window
 $sync["window"].ShowDialog() | Out-Null
