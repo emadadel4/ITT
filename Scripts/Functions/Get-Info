@@ -4,38 +4,28 @@ function Send-SystemInfo {
         [string]$Key
     )
 
-    function Get-RAMInfo {
-        $ram = Get-CimInstance -ClassName Win32_PhysicalMemory | Measure-Object -Property Capacity -Sum
-        return [math]::Round($ram.Sum / 1GB, 2)
+    # Validate parameters
+    if (-not $FirebaseUrl -or -not $Key) {
+        throw "FirebaseUrl and Key are mandatory parameters."
     }
 
-    function Get-GPUInfo {
-        $gpu = Get-CimInstance -ClassName Win32_VideoController
-        return $gpu.Name
-    }
-
-    # Construct the URL with the key
+    # Reuse connection to Firebase URL
     $firebaseUrlWithKey = "$FirebaseUrl/$Key.json"
+    $firebaseUrlRoot = "$FirebaseUrl.json"
 
     # Check if the key exists
     $existingData = Invoke-RestMethod -Uri $firebaseUrlWithKey -Method Get -ErrorAction SilentlyContinue
 
-    if ($existingData) {
-        # If data exists, get the current value of "runs" and increment it
-        $runs = $existingData.runs + 1
-    }
-    else {
-        # If data doesn't exist, set "runs" to 1
-        $runs = 1
-    }
+    # Increment runs if data exists, otherwise set to 1
+    $runs = if ($existingData) { $existingData.runs + 1 } else { 1 }
 
     # PC info
     $pcInfo = @{
         "hostname" = $env:COMPUTERNAME
         "OS" = [Environment]::OSVersion.VersionString
         "Username" = $env:USERNAME
-        "Ram" = Get-RAMInfo
-        "GPU" = Get-GPUInfo
+        "Ram" = (Get-CimInstance -ClassName Win32_PhysicalMemory | Measure-Object -Property Capacity -Sum).Sum / 1GB
+        "GPU" = (Get-CimInstance -ClassName Win32_VideoController).Name
         "start at" = (Get-Date -Format "yyyy-MM-dd HH:mm:ss")
         "runs" = $runs
     }
@@ -51,17 +41,11 @@ function Send-SystemInfo {
     # Update Firebase database with the new value of "runs"
     Invoke-RestMethod -Uri $firebaseUrlWithKey -Method Put -Body $json -Headers $headers
 
-    $firebaseUrlRoot = "$FirebaseUrl.json"
-
-    $response = Invoke-RestMethod -Uri $firebaseUrlRoot -Method Get -ErrorAction SilentlyContinue
-
-    $totalKeys = $response | Get-Member -MemberType NoteProperty | Measure-Object | Select-Object -ExpandProperty Count
-
     # Count the number of keys directly under the root
-    Write-Output "Number of devices that run this command: ${totalKeys}"
+    $response = Invoke-RestMethod -Uri $firebaseUrlRoot -Method Get -ErrorAction SilentlyContinue
+    $totalKeys = ($response | Get-Member -MemberType NoteProperty | Measure-Object).Count
+
+    Write-Output "Number of devices that run this command: $totalKeys"
 }
 
 # Call the function to send system info to Firebase
-$FirebaseUrl = "https://ittools-7d9fe-default-rtdb.firebaseio.com/"
-$Key = $env:COMPUTERNAME
-
