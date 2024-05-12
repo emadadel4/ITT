@@ -31,6 +31,19 @@ function About{
 
 }
 
+function ITTShortcut {
+  
+    # Create a shortcut object
+    $Shortcut = (New-Object -ComObject WScript.Shell).CreateShortcut("$([Environment]::GetFolderPath('Desktop'))\ITT Emad Adel.lnk")
+
+    # Set the target path to PowerShell with your command
+    $Shortcut.TargetPath = "$env:SystemRoot\System32\WindowsPowerShell\v1.0\powershell.exe"
+    $Shortcut.Arguments = "-ExecutionPolicy Bypass -Command ""irm bit.ly/emadadel | iex"""
+
+    # Save the shortcut
+    $Shortcut.Save()
+
+}
 #region Function to filter a list based on a search input and Category
 function Search{
 
@@ -191,7 +204,6 @@ function CheckChoco
         WriteText -firstBoot $false
     }
     
-    #Send-SystemInfo -FirebaseUrl $FirebaseUrl -Key $Key
     Send-SystemInfo -FirebaseUrl $sync.firebaseUrl -Key $env:COMPUTERNAME
 }
 
@@ -352,7 +364,8 @@ function Invoke-Button {
 
         "moff" { MuteMusic $debug }
         "mon" { Unmute $debug }
-
+        
+        "ittshortcut" { ITTShortcut $debug }
 
         # --Menu items-------------------
         "searchInput" {Search; $sync['window'].FindName('category').SelectedIndex = 0; $sync['window'].FindName('apps').IsSelected = $true; $debug }
@@ -959,7 +972,6 @@ else
     $newProcess.Arguments = $myInvocation.MyCommand.Definition;
     $newProcess.Verb = "runas";
     [System.Diagnostics.Process]::Start($newProcess);
-    Write-Host "connecting..."
     break
 }
 
@@ -3211,6 +3223,7 @@ $inputXML = '
                                 <MenuItem Name="moff" Header="Mute"/>
                                 <MenuItem Name="mon" Header="Unmute"/>
                             </MenuItem>
+                            <MenuItem Name="ittshortcut" Header="Create Shortcut"/>
                         </MenuItem>
 
 
@@ -3223,6 +3236,7 @@ $inputXML = '
                                 <MenuItem Name="unhook" Header="Unhook: Customize youtube Extension"/>
                             </MenuItem>
                         </MenuItem>
+
                         
                         <MenuItem Name="dev" Header="About" BorderBrush="Transparent" FontWeight="Bold" BorderThickness="1" />
 

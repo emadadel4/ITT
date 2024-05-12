@@ -33,7 +33,8 @@ function Invoke-Button {
 
         "moff" { MuteMusic $debug }
         "mon" { Unmute $debug }
-
+        
+        "ittshortcut" { ITTShortcut $debug }
 
         # --Menu items-------------------
         "searchInput" {Search; $sync['window'].FindName('category').SelectedIndex = 0; $sync['window'].FindName('apps').IsSelected = $true; $debug }

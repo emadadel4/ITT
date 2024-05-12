@@ -58,6 +58,7 @@
                                 <MenuItem Name="moff" Header="Mute"/>
                                 <MenuItem Name="mon" Header="Unmute"/>
                             </MenuItem>
+                            <MenuItem Name="ittshortcut" Header="Create Shortcut"/>
                         </MenuItem>
 
 
@@ -70,6 +71,7 @@
                                 <MenuItem Name="unhook" Header="Unhook: Customize youtube Extension"/>
                             </MenuItem>
                         </MenuItem>
+
                         
                         <MenuItem Name="dev" Header="About" BorderBrush="Transparent" FontWeight="Bold" BorderThickness="1" />
 
