@@ -89,38 +89,28 @@ function Send-SystemInfo {
         [string]$Key
     )
 
-    function Get-RAMInfo {
-        $ram = Get-CimInstance -ClassName Win32_PhysicalMemory | Measure-Object -Property Capacity -Sum
-        return [math]::Round($ram.Sum / 1GB, 2)
+    # Validate parameters
+    if (-not $FirebaseUrl -or -not $Key) {
+        throw "FirebaseUrl and Key are mandatory parameters."
     }
 
-    function Get-GPUInfo {
-        $gpu = Get-CimInstance -ClassName Win32_VideoController
-        return $gpu.Name
-    }
-
-    # Construct the URL with the key
+    # Reuse connection to Firebase URL
     $firebaseUrlWithKey = "$FirebaseUrl/$Key.json"
+    $firebaseUrlRoot = "$FirebaseUrl.json"
 
     # Check if the key exists
     $existingData = Invoke-RestMethod -Uri $firebaseUrlWithKey -Method Get -ErrorAction SilentlyContinue
 
-    if ($existingData) {
-        # If data exists, get the current value of "runs" and increment it
-        $runs = $existingData.runs + 1
-    }
-    else {
-        # If data doesn't exist, set "runs" to 1
-        $runs = 1
-    }
+    # Increment runs if data exists, otherwise set to 1
+    $runs = if ($existingData) { $existingData.runs + 1 } else { 1 }
 
     # PC info
     $pcInfo = @{
         "hostname" = $env:COMPUTERNAME
         "OS" = [Environment]::OSVersion.VersionString
         "Username" = $env:USERNAME
-        "Ram" = Get-RAMInfo
-        "GPU" = Get-GPUInfo
+        "Ram" = (Get-CimInstance -ClassName Win32_PhysicalMemory | Measure-Object -Property Capacity -Sum).Sum / 1GB
+        "GPU" = (Get-CimInstance -ClassName Win32_VideoController).Name
         "start at" = (Get-Date -Format "yyyy-MM-dd HH:mm:ss")
         "runs" = $runs
     }
@@ -136,20 +126,14 @@ function Send-SystemInfo {
     # Update Firebase database with the new value of "runs"
     Invoke-RestMethod -Uri $firebaseUrlWithKey -Method Put -Body $json -Headers $headers
 
-    $firebaseUrlRoot = "$FirebaseUrl.json"
-
-    $response = Invoke-RestMethod -Uri $firebaseUrlRoot -Method Get -ErrorAction SilentlyContinue
-
-    $totalKeys = $response | Get-Member -MemberType NoteProperty | Measure-Object | Select-Object -ExpandProperty Count
-
     # Count the number of keys directly under the root
-    Write-Output "Number of devices that run this command: ${totalKeys}"
+    $response = Invoke-RestMethod -Uri $firebaseUrlRoot -Method Get -ErrorAction SilentlyContinue
+    $totalKeys = ($response | Get-Member -MemberType NoteProperty | Measure-Object).Count
+
+    Write-Output "Number of devices that run this command: $totalKeys"
 }
 
 # Call the function to send system info to Firebase
-$FirebaseUrl = "https://ittools-7d9fe-default-rtdb.firebaseio.com/"
-$Key = $env:COMPUTERNAME
-
 
 function WriteAText {
     param (
@@ -180,6 +164,7 @@ function WriteText {
     if($firstBoot -eq $true)
     {
         Write-Host (WriteAText -color White -message  "Starting up... it won't take longer.") 
+
     }
     else
     {
@@ -197,11 +182,17 @@ function CheckChoco
         Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1')) *> $null
         Clear-Host
         Write-Host (WriteAText -color White -message  "You ready to Install anything.") 
+        
+
+
     }
     else
     {
         WriteText -firstBoot $false
     }
+    
+    #Send-SystemInfo -FirebaseUrl $FirebaseUrl -Key $Key
+    Send-SystemInfo -FirebaseUrl $sync.firebaseUrl -Key $env:COMPUTERNAME
 }
 
 
@@ -582,7 +573,7 @@ function LoadJson {
 
     # Open file dialog to select JSON file
     $openFileDialog = New-Object -TypeName "Microsoft.Win32.OpenFileDialog"
-    $openFileDialog.Filter = "JSON files (*.json)|*.json"
+    $openFileDialog.Filter = "JSON files (*.ea4)|*.ea4"
     $openFileDialog.Title = "Open JSON File"
     $dialogResult = $openFileDialog.ShowDialog()
 
@@ -644,7 +635,7 @@ function SaveItemsToJson
     {
         # Open save file dialog
         $saveFileDialog = New-Object -TypeName "Microsoft.Win32.SaveFileDialog"
-        $saveFileDialog.Filter = "JSON files (*.json)|*.json"
+        $saveFileDialog.Filter = "JSON files (*.ea4)|*.ea4"
         $saveFileDialog.Title = "Save JSON File"
         $dialogResult = $saveFileDialog.ShowDialog()
 
@@ -945,6 +936,7 @@ $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://eprojects.orgfree.com"
 $sync.developer =   "Emad Adel @emadadel4"
 $sync.registryPath = "HKCU:\Software\ITTEmadadel"
+$sync.firebaseUrl = "https://ittools-7d9fe-default-rtdb.firebaseio.com/"
 $sync.database = @{}
 $sync.ProcessRunning = $false
 $sync.isDarkMode
@@ -2742,7 +2734,25 @@ $sync.database.Quotes = '{
     "ولدت من جديد حينما رأيت ذلك",
     "الوطنية للفقراء و الوطن للاغنياء",
     "حين انتهيت من بناء قاربي جف البحر",
-    "المشاكل لن تنتهي هكذا الدنيا"
+    "المشاكل لن تنتهي هكذا الدنيا",
+    "البطولة لا تأتي من القوة البدنية، بل من الإرادة والعزم",
+    "القوة ليست في القدرة على تحمل الصعاب، بل في القدرة على التغلب عليها",
+    "البطولة هي القدرة على الوقوف وحيدًا عندما يبدو أن الكل ضده",
+    "الخوف يولد من الجهل، والمعرفة هي السلاح الذي يقهره",
+    "عليك أن تتحطم قبل أن تتعلم كيف تقوم مرة أخرى",
+    "الإيمان بالمستحيل هو البداية لتحقيق المعجزات",
+    "الكون يحتفظ بأسرار لا يمكن للعقل البشري فهمها بأكملها",
+    "البقاء لا يعني شيئًا إذا كانت الحياة بلا معنى",
+    "عندما ننظر إلى السماء، نرى ليس فقط النجوم بل أيضًا أحلامنا وآمالنا",
+    "العالم ينقسم إلى طرفين: أولئك الذين لديهم القوة، وأولئك الذين يسعون للقوة",
+    "لقد قالوا إن الحقيقة تضر، ولكنهم لم يذكروا أن الكذب يؤلم أكثر",
+    "الموت ليس الأسوأ في الحياة. الأسوأ هو ما يموت به الإنسان دون أن يعيش",
+    "عندما نقف معًا، نحن قوة لا يمكن أن تُقهر",
+    "كل شيء في الحياة يتم الدفع ثمنه، لكن بعض الأشياء لا يمكن شراؤها بالمال",
+    "العدالة هي الطريقة التي نمنح بها الحق للمظلومين، ونعاقب بها المجرمين",
+    "الحقيقة ليست دائماً واضحة، لكنها دائماً هناك",
+    "الجشع هو موتك السريع، والغباء هو رصاصتك الخاصة",
+    "الحياة ليست سهلة، ولكن الصعوبات تجعلنا أقوى"
   ]
 }
 ' | ConvertFrom-Json
@@ -4096,9 +4106,6 @@ $onClosingEvent = {
 
 # Add OnClosing event handler to the window
 $sync["window"].add_Closing($onClosingEvent)
-
-
-Send-SystemInfo -FirebaseUrl $FirebaseUrl -Key $Key
 
 # Show the window
 $sync["window"].ShowDialog() | Out-Null
