@@ -58,9 +58,7 @@
                                 <MenuItem Name="moff" Header="Mute"/>
                                 <MenuItem Name="mon" Header="Unmute"/>
                             </MenuItem>
-                            
                             <MenuItem Name="ittshortcut" Header="Create Shortcut"/>
-
                         </MenuItem>
 
 
