@@ -14,6 +14,21 @@ function Send-SystemInfo {
         return $gpu.Name
     }
 
+    # Construct the URL with the key
+    $firebaseUrlWithKey = "$FirebaseUrl/$Key.json"
+
+    # Check if the key exists
+    $existingData = Invoke-RestMethod -Uri $firebaseUrlWithKey -Method Get -ErrorAction SilentlyContinue
+
+    if ($existingData) {
+        # If data exists, get the current value of "runs" and increment it
+        $runs = $existingData.runs + 1
+    }
+    else {
+        # If data doesn't exist, set "runs" to 1
+        $runs = 1
+    }
+
     # PC info
     $pcInfo = @{
         "hostname" = $env:COMPUTERNAME
@@ -22,6 +37,7 @@ function Send-SystemInfo {
         "Ram" = Get-RAMInfo
         "GPU" = Get-GPUInfo
         "start at" = (Get-Date -Format "yyyy-MM-dd HH:mm:ss")
+        "runs" = $runs
     }
 
     # Convert to JSON
@@ -32,23 +48,8 @@ function Send-SystemInfo {
         "Content-Type" = "application/json"
     }
 
-    # Construct the URL with the key
-    $firebaseUrlWithKey = "$FirebaseUrl/$Key.json"
-
-    # Check if the key exists
-    $existingData = Invoke-RestMethod -Uri $firebaseUrlWithKey -Method Get -ErrorAction SilentlyContinue
-
-
-
-    if ($existingData) {
-        # If data exists, overwrite using PUT method
-        Invoke-RestMethod -Uri $firebaseUrlWithKey -Method Put -Body $json -Headers $headers
-    }
-    else
-     {
-        # If data doesn't exist, create new entry using POST method
-        Invoke-RestMethod -Uri $firebaseUrlWithKey -Method Post -Body $json -Headers $headers
-    }
+    # Update Firebase database with the new value of "runs"
+    Invoke-RestMethod -Uri $firebaseUrlWithKey -Method Put -Body $json -Headers $headers
 
     $firebaseUrlRoot = "$FirebaseUrl.json"
 
