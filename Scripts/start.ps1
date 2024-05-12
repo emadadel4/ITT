@@ -26,6 +26,7 @@ $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://eprojects.orgfree.com"
 $sync.developer =   "Emad Adel @emadadel4"
 $sync.registryPath = "HKCU:\Software\ITTEmadadel"
+$sync.firebaseUrl = "https://ittools-7d9fe-default-rtdb.firebaseio.com/"
 $sync.database = @{}
 $sync.ProcessRunning = $false
 $sync.isDarkMode
