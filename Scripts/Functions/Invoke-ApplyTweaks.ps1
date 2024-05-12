@@ -30,7 +30,7 @@ function Invoke-ApplyTweaks() {
         return
     }
   
-    $tweeaks += Get-SelectedTweeaks
+    $tweeaks = Get-SelectedTweeaks
 
     if(Get-SelectedTweeaks -ne $null)
     {
@@ -54,6 +54,10 @@ function Invoke-ApplyTweaks() {
 
                     #Write-Host "Applying tweeak(s) $tweeaks"
                     Start-Process -FilePath "powershell.exe" -ArgumentList "-Command `"$tweeaks`"" -NoNewWindow -Wait
+
+                    
+                    Write-Host  Start-Process -FilePath "powershell.exe" -ArgumentList "-Command `"$tweeaks;`"" -NoNewWindow -Wait
+
                     Write-Host "The operation was successful."    
                     [System.Windows.MessageBox]::Show("The operation was successful", "ITT @emadadel4", "OK", "Information")
 
