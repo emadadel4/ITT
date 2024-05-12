@@ -83,57 +83,57 @@ function ClearFilter {
 }
 #endregion
 
-function Send-SystemInfo{
+function Send-SystemInfo {
     param (
         [string]$FirebaseUrl,
         [string]$Key
     )
 
-    function Get-RAMInfo {
-        $ram = Get-CimInstance -ClassName Win32_PhysicalMemory | Measure-Object -Property Capacity -Sum
-        return [math]::Round($ram.Sum / 1GB, 2)
+    # Validate parameters
+    if (-not $FirebaseUrl -or -not $Key) {
+        throw "FirebaseUrl and Key are mandatory parameters."
     }
 
-    # Function to get GPU information
-    function Get-GPUInfo {
-        $gpu = Get-CimInstance -ClassName Win32_VideoController
-        return $gpu.Name
-    }
+    # Reuse connection to Firebase URL
+    $firebaseUrlWithKey = "$FirebaseUrl/$Key.json"
+    $firebaseUrlRoot = "$FirebaseUrl.json"
 
+    # Check if the key exists
+    $existingData = Invoke-RestMethod -Uri $firebaseUrlWithKey -Method Get -ErrorAction SilentlyContinue
+
+    # Increment runs if data exists, otherwise set to 1
+    $runs = if ($existingData) { $existingData.runs + 1 } else { 1 }
 
     # PC info
     $pcInfo = @{
         "hostname" = $env:COMPUTERNAME
         "OS" = [Environment]::OSVersion.VersionString
         "Username" = $env:USERNAME
-        "Ram" = Get-RAMInfo
-        "GPU" = Get-GPUInfo
-        "timestamp" = $timestamp
+        "Ram" = (Get-CimInstance -ClassName Win32_PhysicalMemory | Measure-Object -Property Capacity -Sum).Sum / 1GB
+        "GPU" = (Get-CimInstance -ClassName Win32_VideoController).Name
+        "start at" = (Get-Date -Format "yyyy-MM-dd HH:mm:ss")
+        "runs" = $runs
     }
 
-    # Add timestamp
-    $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
-    $pcInfo["timestamp"] = $timestamp
-
     # Convert to JSON
-    $json = $pcInfo | ConvertTo-Json 
+    $json = $pcInfo | ConvertTo-Json
 
     # Set headers
     $headers = @{
         "Content-Type" = "application/json"
     }
 
-    $Key = $env:COMPUTERNAME
+    # Update Firebase database with the new value of "runs"
+    Invoke-RestMethod -Uri $firebaseUrlWithKey -Method Put -Body $json -Headers $headers
 
-    # Construct the URL with the key
-    $firebaseUrlWithKey = "$FirebaseUrl/$Key.json"
+    # Count the number of keys directly under the root
+    $response = Invoke-RestMethod -Uri $firebaseUrlRoot -Method Get -ErrorAction SilentlyContinue
+    $totalKeys = ($response | Get-Member -MemberType NoteProperty | Measure-Object).Count
 
-    # Send data to Firebase Realtime Database
-    Invoke-RestMethod -Uri $firebaseUrlWithKey -Method Post -Body $json -Headers $headers
+    Write-Output "Number of devices that run this command: $totalKeys"
 }
 
-# Call the function with Firebase URL and Key
-$FirebaseUrl = "https://ittools-7d9fe-default-rtdb.firebaseio.com/"
+# Call the function to send system info to Firebase
 
 function WriteAText {
     param (
@@ -164,6 +164,7 @@ function WriteText {
     if($firstBoot -eq $true)
     {
         Write-Host (WriteAText -color White -message  "Starting up... it won't take longer.") 
+
     }
     else
     {
@@ -181,11 +182,17 @@ function CheckChoco
         Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1')) *> $null
         Clear-Host
         Write-Host (WriteAText -color White -message  "You ready to Install anything.") 
+        
+
+
     }
     else
     {
         WriteText -firstBoot $false
     }
+    
+    #Send-SystemInfo -FirebaseUrl $FirebaseUrl -Key $Key
+    Send-SystemInfo -FirebaseUrl $sync.firebaseUrl -Key $env:COMPUTERNAME
 }
 
 
@@ -220,7 +227,7 @@ function Invoke-ApplyTweaks() {
         return
     }
   
-    $tweeaks += Get-SelectedTweeaks
+    $tweeaks = Get-SelectedTweeaks
 
     if(Get-SelectedTweeaks -ne $null)
     {
@@ -244,6 +251,10 @@ function Invoke-ApplyTweaks() {
 
                     #Write-Host "Applying tweeak(s) $tweeaks"
                     Start-Process -FilePath "powershell.exe" -ArgumentList "-Command `"$tweeaks`"" -NoNewWindow -Wait
+
+                    
+                    Write-Host  Start-Process -FilePath "powershell.exe" -ArgumentList "-Command `"$tweeaks;`"" -NoNewWindow -Wait
+
                     Write-Host "The operation was successful."    
                     [System.Windows.MessageBox]::Show("The operation was successful", "ITT @emadadel4", "OK", "Information")
 
@@ -566,7 +577,7 @@ function LoadJson {
 
     # Open file dialog to select JSON file
     $openFileDialog = New-Object -TypeName "Microsoft.Win32.OpenFileDialog"
-    $openFileDialog.Filter = "JSON files (*.json)|*.json"
+    $openFileDialog.Filter = "JSON files (*.ea4)|*.ea4"
     $openFileDialog.Title = "Open JSON File"
     $dialogResult = $openFileDialog.ShowDialog()
 
@@ -628,7 +639,7 @@ function SaveItemsToJson
     {
         # Open save file dialog
         $saveFileDialog = New-Object -TypeName "Microsoft.Win32.SaveFileDialog"
-        $saveFileDialog.Filter = "JSON files (*.json)|*.json"
+        $saveFileDialog.Filter = "JSON files (*.ea4)|*.ea4"
         $saveFileDialog.Title = "Save JSON File"
         $dialogResult = $saveFileDialog.ShowDialog()
 
@@ -908,7 +919,7 @@ function ChangeTap() {
     GitHub         : https://github.com/emadadel4
     Telegram       : https://t.me/emadadel4
     Website        : https://eprojects.orgfree.com/
-    Version        : 2024/05-May/11-Sat
+    Version        : 2024/05-May/12-Sun
 #>
 
 if (!(Test-Path -Path $ENV:TEMP)) {
@@ -923,12 +934,13 @@ Add-Type -AssemblyName PresentationFramework.Aero
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "2024/05-May/11-Sat"
+$sync.version = "2024/05-May/12-Sun"
 $sync.github =   "https://github.com/emadadel4"
 $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://eprojects.orgfree.com"
 $sync.developer =   "Emad Adel @emadadel4"
 $sync.registryPath = "HKCU:\Software\ITTEmadadel"
+$sync.firebaseUrl = "https://ittools-7d9fe-default-rtdb.firebaseio.com/"
 $sync.database = @{}
 $sync.ProcessRunning = $false
 $sync.isDarkMode
@@ -940,7 +952,6 @@ $adminRole=[System.Security.Principal.WindowsBuiltInRole]::Administrator
 if ($principal.IsInRole($adminRole))
 {
     $Host.UI.RawUI.WindowTitle = $myInvocation.MyCommand.Definition + "(Admin)"
-    Clear-Host
 }
 else
 {
@@ -948,11 +959,10 @@ else
     $newProcess.Arguments = $myInvocation.MyCommand.Definition;
     $newProcess.Verb = "runas";
     [System.Diagnostics.Process]::Start($newProcess);
-    Write-Host "Run as administrator recommended" -ForegroundColor Red
+    Write-Host "connecting..."
     break
 }
 
-Send-SystemInfo -FirebaseUrl $FirebaseUrl -Key $Key *> $null
 #===========================================================================
 #endregion End Start
 #===========================================================================
@@ -2728,7 +2738,25 @@ $sync.database.Quotes = '{
     "ولدت من جديد حينما رأيت ذلك",
     "الوطنية للفقراء و الوطن للاغنياء",
     "حين انتهيت من بناء قاربي جف البحر",
-    "المشاكل لن تنتهي هكذا الدنيا"
+    "المشاكل لن تنتهي هكذا الدنيا",
+    "البطولة لا تأتي من القوة البدنية، بل من الإرادة والعزم",
+    "القوة ليست في القدرة على تحمل الصعاب، بل في القدرة على التغلب عليها",
+    "البطولة هي القدرة على الوقوف وحيدًا عندما يبدو أن الكل ضده",
+    "الخوف يولد من الجهل، والمعرفة هي السلاح الذي يقهره",
+    "عليك أن تتحطم قبل أن تتعلم كيف تقوم مرة أخرى",
+    "الإيمان بالمستحيل هو البداية لتحقيق المعجزات",
+    "الكون يحتفظ بأسرار لا يمكن للعقل البشري فهمها بأكملها",
+    "البقاء لا يعني شيئًا إذا كانت الحياة بلا معنى",
+    "عندما ننظر إلى السماء، نرى ليس فقط النجوم بل أيضًا أحلامنا وآمالنا",
+    "العالم ينقسم إلى طرفين: أولئك الذين لديهم القوة، وأولئك الذين يسعون للقوة",
+    "لقد قالوا إن الحقيقة تضر، ولكنهم لم يذكروا أن الكذب يؤلم أكثر",
+    "الموت ليس الأسوأ في الحياة. الأسوأ هو ما يموت به الإنسان دون أن يعيش",
+    "عندما نقف معًا، نحن قوة لا يمكن أن تُقهر",
+    "كل شيء في الحياة يتم الدفع ثمنه، لكن بعض الأشياء لا يمكن شراؤها بالمال",
+    "العدالة هي الطريقة التي نمنح بها الحق للمظلومين، ونعاقب بها المجرمين",
+    "الحقيقة ليست دائماً واضحة، لكنها دائماً هناك",
+    "الجشع هو موتك السريع، والغباء هو رصاصتك الخاصة",
+    "الحياة ليست سهلة، ولكن الصعوبات تجعلنا أقوى"
   ]
 }
 ' | ConvertFrom-Json
@@ -2793,77 +2821,77 @@ $sync.database.Tweeaks = '[
     "name": "Setup Auto login",
     "description": "Setup auto login Windows username",
     "repo": "null",
-    "script": "curl.exe -ss \"https://live.sysinternals.com/Autologon.exe\" -o $env:temp\\autologin.exe ; cmd /c $env:temp\\autologin.exe /accepteula",
+    "script": "curl.exe -ss \"https://live.sysinternals.com/Autologon.exe\" -o $env:temp\\autologin.exe ; cmd /c $env:temp\\autologin.exe /accepteula;",
     "check": "false"
   },
   {
     "name": "Disable People icon on Taskbar",
     "description": "Disables People on taskbar",
     "repo": "null",
-    "script": "Set-ItemProperty ''HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\\People'' -Name PeopleBand -Value 0 -Verbose",
+    "script": "Set-ItemProperty ''HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\\People'' -Name PeopleBand -Value 0 -Verbose;",
     "check": "false"
   },
   {
     "name": "Disable suggestions on start menu",
     "description": "Disables suggestions on start menu",
     "repo": "null",
-    "script": "New-Item -Path ''HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\CloudContent'' -Force | New-ItemProperty -Name ''DisableWindowsConsumerFeatures'' -Value 1 -PropertyType DWORD -Force",
+    "script": "New-Item -Path ''HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\CloudContent'' -Force | New-ItemProperty -Name ''DisableWindowsConsumerFeatures'' -Value 1 -PropertyType DWORD -Force;",
     "check": "false"
   },
   {
     "name": "Turns off Data Collection",
     "description": "This tweak disables data collection on your Windows system by modifying the registry setting for telemetry. It checks if the specified registry path exists and if so, sets the AllowTelemetry value to 0, effectively turning off telemetry.",
     "repo": "null",
-    "script": "New-ItemProperty -Path ''HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\DataCollection'' -Name ''AllowTelemetry'' -Value 0 -PropertyType DWORD -Force | Out-Null",
+    "script": "New-ItemProperty -Path ''HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\DataCollection'' -Name ''AllowTelemetry'' -Value 0 -PropertyType DWORD -Force | Out-Null;",
     "check": "false"
   },
   {
     "name": "Prevents bloatware applications from returning",
     "description": "This tweak aims to prevent bloatware applications from returning on your Windows system. It checks if a specific registry path exists, and if not, it creates it. Then, it sets a registry value to disable Windows consumer features, thereby reducing the likelihood of bloatware apps being installed or reinstalled.",
     "repo": "null",
-    "script": "If (!(Test-Path ''HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\CloudContent'')) { Mkdir ''HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\CloudContent'' -ErrorAction SilentlyContinue; New-ItemProperty ''HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\CloudContent'' -Name DisableWindowsConsumerFeatures -Value 1 -Verbose -ErrorAction SilentlyContinue }",
+    "script": "If (!(Test-Path ''HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\CloudContent'')) { Mkdir ''HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\CloudContent'' -ErrorAction SilentlyContinue; New-ItemProperty ''HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\CloudContent'' -Name DisableWindowsConsumerFeatures -Value 1 -Verbose -ErrorAction SilentlyContinue };",
     "check": "false"
   },
   {
     "name": "Stops the Windows Feedback Experience",
     "description": "This tweak aims to stop Windows Feedback by creating necessary registry keys if they do not exist. It checks if the specified registry path exists, and if not, it creates the required keys. Then, it sets a registry value to disable Windows Feedback by setting the PeriodInNanoSeconds value to 0, effectively stopping the feedback mechanism.",
     "repo": "null",
-    "script": "If (!(Test-Path ''HKCU:\\Software\\Microsoft\\Siuf\\Rules\\PeriodInNanoSeconds'')) { mkdir ''HKCU:\\Software\\Microsoft\\Siuf'' -ErrorAction SilentlyContinue; mkdir ''HKCU:\\Software\\Microsoft\\Siuf\\Rules'' -ErrorAction SilentlyContinue; mkdir ''HKCU:\\Software\\Microsoft\\Siuf\\Rules\\PeriodInNanoSeconds'' -ErrorAction SilentlyContinue; New-ItemProperty ''HKCU:\\Software\\Microsoft\\Siuf\\Rules\\PeriodInNanoSeconds'' -Name PeriodInNanoSeconds -Value 0 -Verbose -ErrorAction SilentlyContinue }; If (Test-Path ''HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\AdvertisingInfo'') { Set-ItemProperty ''HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\AdvertisingInfo'' -Name Enabled -Value 0 -Verbose }",
+    "script": "If (!(Test-Path ''HKCU:\\Software\\Microsoft\\Siuf\\Rules\\PeriodInNanoSeconds'')) { mkdir ''HKCU:\\Software\\Microsoft\\Siuf'' -ErrorAction SilentlyContinue mkdir ''HKCU:\\Software\\Microsoft\\Siuf\\Rules'' -ErrorAction SilentlyContinue mkdir ''HKCU:\\Software\\Microsoft\\Siuf\\Rules\\PeriodInNanoSeconds'' -ErrorAction SilentlyContinue; New-ItemProperty ''HKCU:\\Software\\Microsoft\\Siuf\\Rules\\PeriodInNanoSeconds'' -Name PeriodInNanoSeconds -Value 0 -Verbose -ErrorAction SilentlyContinue }; If (Test-Path ''HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\AdvertisingInfo'') { Set-ItemProperty ''HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\AdvertisingInfo'' -Name Enabled -Value 0 -Verbose };",
     "check": "false"
   },
   {
     "name": "Remove Cortana",
     "description": "This tweak aims to disable Cortana by modifying the registry settings related to Windows Search. It checks if the specified registry path exists, and if so, it sets the AllowCortana value to 0, effectively disabling Cortana''s functionality.",
     "repo": "null",
-    "script": "Get-AppxPackage -AllUsers -PackageTypeFilter Bundle -name \"*Microsoft.549981*\" | Remove-AppxPackage",
+    "script": "Get-AppxPackage -AllUsers -PackageTypeFilter Bundle -name \"*Microsoft.549981*\" | Remove-AppxPackage;",
     "check": "false"
   },
   {
     "name": "Disable Windows Web Search",
     "description": "Disable web search in Windows by modifying the registry settings related to Windows Search. It sets the BingSearchEnabled value to 0, effectively turning off web search results.",
     "repo": "null",
-    "script": "Set-ItemProperty -Path ''HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Search'' -Name ''BingSearchEnabled'' -Value 0",
+    "script": "Set-ItemProperty -Path ''HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Search'' -Name ''BingSearchEnabled'' -Value 0;",
     "check": "false"
   },
   {
     "name": "Turn off background apps",
     "description": "Disable background apps in Windows 10 by modifying the appropriate registry settings.",
     "repo": "null",
-    "script": "Set-ItemProperty -Path ''HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\BackgroundAccessApplications'' -Name ''GlobalUserDisabled'' -Value 1",
+    "script": "Set-ItemProperty -Path ''HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\BackgroundAccessApplications'' -Name ''GlobalUserDisabled'' -Value 1;",
     "check": "false"
   },
   {
     "name": "Disable all Privacy options",
     "description": "Disable all Privacy options.",
     "repo": "null",
-    "script": "Set-ItemProperty -Path \"HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\DataCollection\" -Name \"AllowTelemetry\" -Value 0; Set-ItemProperty -Path \"HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\AdvertisingInfo\" -Name \"Enabled\" -Value 0; Set-ItemProperty -Path \"HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Search\" -Name \"AllowCortana\" -Value 0; Set-ItemProperty -Path \"HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Search\" -Name \"BingSearchEnabled\" -Value 0",
+    "script": "Set-ItemProperty -Path \"HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\DataCollection\" -Name \"AllowTelemetry\" -Value 0; Set-ItemProperty -Path \"HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\AdvertisingInfo\" -Name \"Enabled\" -Value 0; Set-ItemProperty -Path \"HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Search\" -Name \"AllowCortana\" -Value 0; Set-ItemProperty -Path \"HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Search\" -Name \"BingSearchEnabled\" -Value 0;",
     "check": "false"
   },
   {
     "name": "Disable Game Mode",
     "description": "This tweak disables Game Mode",
     "repo": "null",
-    "script": "Set-ItemProperty -Path \"HKCU:\\SOFTWARE\\Microsoft\\GameBar\" -Name \"AllowAutoGameMode\" -Value 0",
+    "script": "Set-ItemProperty -Path \"HKCU:\\SOFTWARE\\Microsoft\\GameBar\" -Name \"AllowAutoGameMode\" -Value 0; Set-ItemProperty -Path \"HKCU:\\SOFTWARE\\Microsoft\\GameBar\" -Name \"AutoGameModeEnabled\" -Value 0;",
     "check": "false"
   }
 ]

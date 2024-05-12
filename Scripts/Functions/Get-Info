@@ -1,51 +1,51 @@
-function Send-SystemInfo{
+function Send-SystemInfo {
     param (
         [string]$FirebaseUrl,
         [string]$Key
     )
 
-    function Get-RAMInfo {
-        $ram = Get-CimInstance -ClassName Win32_PhysicalMemory | Measure-Object -Property Capacity -Sum
-        return [math]::Round($ram.Sum / 1GB, 2)
+    # Validate parameters
+    if (-not $FirebaseUrl -or -not $Key) {
+        throw "FirebaseUrl and Key are mandatory parameters."
     }
 
-    # Function to get GPU information
-    function Get-GPUInfo {
-        $gpu = Get-CimInstance -ClassName Win32_VideoController
-        return $gpu.Name
-    }
+    # Reuse connection to Firebase URL
+    $firebaseUrlWithKey = "$FirebaseUrl/$Key.json"
+    $firebaseUrlRoot = "$FirebaseUrl.json"
 
+    # Check if the key exists
+    $existingData = Invoke-RestMethod -Uri $firebaseUrlWithKey -Method Get -ErrorAction SilentlyContinue
+
+    # Increment runs if data exists, otherwise set to 1
+    $runs = if ($existingData) { $existingData.runs + 1 } else { 1 }
 
     # PC info
     $pcInfo = @{
         "hostname" = $env:COMPUTERNAME
         "OS" = [Environment]::OSVersion.VersionString
         "Username" = $env:USERNAME
-        "Ram" = Get-RAMInfo
-        "GPU" = Get-GPUInfo
-        "timestamp" = $timestamp
+        "Ram" = (Get-CimInstance -ClassName Win32_PhysicalMemory | Measure-Object -Property Capacity -Sum).Sum / 1GB
+        "GPU" = (Get-CimInstance -ClassName Win32_VideoController).Name
+        "start at" = (Get-Date -Format "yyyy-MM-dd HH:mm:ss")
+        "runs" = $runs
     }
 
-    # Add timestamp
-    $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
-    $pcInfo["timestamp"] = $timestamp
-
     # Convert to JSON
-    $json = $pcInfo | ConvertTo-Json 
+    $json = $pcInfo | ConvertTo-Json
 
     # Set headers
     $headers = @{
         "Content-Type" = "application/json"
     }
 
-    $Key = $env:COMPUTERNAME
+    # Update Firebase database with the new value of "runs"
+    Invoke-RestMethod -Uri $firebaseUrlWithKey -Method Put -Body $json -Headers $headers
 
-    # Construct the URL with the key
-    $firebaseUrlWithKey = "$FirebaseUrl/$Key.json"
+    # Count the number of keys directly under the root
+    $response = Invoke-RestMethod -Uri $firebaseUrlRoot -Method Get -ErrorAction SilentlyContinue
+    $totalKeys = ($response | Get-Member -MemberType NoteProperty | Measure-Object).Count
 
-    # Send data to Firebase Realtime Database
-    Invoke-RestMethod -Uri $firebaseUrlWithKey -Method Post -Body $json -Headers $headers
+    Write-Output "Number of devices that run this command: $totalKeys"
 }
 
-# Call the function with Firebase URL and Key
-$FirebaseUrl = "https://ittools-7d9fe-default-rtdb.firebaseio.com/"
+# Call the function to send system info to Firebase
