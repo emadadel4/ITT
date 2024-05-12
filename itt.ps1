@@ -472,6 +472,28 @@ function Invoke-Install
                 [System.Windows.MessageBox]::Show($msg, $title, [System.Windows.MessageBoxButton]::$MessageBoxButton, [System.Windows.MessageBoxImage]::$MessageBoxImage)
             }
 
+            function Notify {
+                param(
+                    [string]$title,
+                    [string]$msg,
+                    [string]$icon,
+                    [Int32]$time
+                )
+               
+                $notification = New-Object System.Windows.Forms.NotifyIcon
+                $notification.Icon = [System.Drawing.SystemIcons]::Information
+                $notification.BalloonTipIcon = $icon
+                $notification.BalloonTipText = $msg
+                $notification.BalloonTipTitle = $title
+                $notification.Visible = $true
+
+                $notification.ShowBalloonTip($time)  # Display for specified time
+            
+                # Clean up resources
+                $notification.Dispose()
+            }
+            
+
             function Finish {
 
                 $sync.AppsListView.Dispatcher.Invoke([Action]{
@@ -552,11 +574,10 @@ https://t.me/emadadel4
                     Start-Sleep -Seconds 1
                     $sync.ProcessRunning = $False
 
-                    CustomMsg -title "ITT | Emad Adel" -msg "Installed successfully" -MessageBoxImage "Information" -MessageBoxButton "OK"
-                    UpdateUI -InstallBtn "Install" -Description "Installed successfully."
-
                     # Uncheck all checkboxes in $list
-                    Start-Sleep -Seconds 2
+                    Start-Sleep -Seconds 1
+                    Notify -title "ITT Emad Adel" -msg "Installed successfully" -icon "Info" -time 5666
+                    UpdateUI -InstallBtn "Install" -Description "Installed successfully."
                     Finish
 
                 }
@@ -932,7 +953,7 @@ function ChangeTap() {
     GitHub         : https://github.com/emadadel4
     Telegram       : https://t.me/emadadel4
     Website        : https://eprojects.orgfree.com/
-    Version        : 2024/05-May/12-Sun
+    Version        : 2024/05-May/13-Mon
 #>
 
 if (!(Test-Path -Path $ENV:TEMP)) {
@@ -943,11 +964,12 @@ if (!(Test-Path -Path $ENV:TEMP)) {
 Add-Type -AssemblyName PresentationFramework
 Add-Type -AssemblyName PresentationCore
 Add-Type -AssemblyName PresentationFramework.Aero
+Add-Type -AssemblyName System.Windows.Forms
 
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "2024/05-May/12-Sun"
+$sync.version = "2024/05-May/13-Mon"
 $sync.github =   "https://github.com/emadadel4"
 $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://eprojects.orgfree.com"
@@ -972,6 +994,8 @@ else
     $newProcess.Arguments = $myInvocation.MyCommand.Definition;
     $newProcess.Verb = "runas";
     [System.Diagnostics.Process]::Start($newProcess);
+    $newProcess.Title = "ITT Emad Adel"
+
     break
 }
 
