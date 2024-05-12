@@ -115,7 +115,7 @@
     "name": "Turn off background apps",
     "description": "Disable background apps in Windows 10 by modifying the appropriate registry settings.",
     "repo": "null",
-    "script": "Set-ItemProperty -Path 'HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\BackgroundAccessApplications' -Name 'GlobalUserDisabled' -Value 1",
+    "script": "Set-ItemProperty -Path 'HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\BackgroundAccessApplications' -Name 'GlobalUserDisabled' -Value 1;",
     "check": "false"
   },
   {
@@ -129,7 +129,7 @@
     "name": "Disable Game Mode",
     "description": "This tweak disables Game Mode",
     "repo": "null",
-    "script": "Set-ItemProperty -Path \"HKCU:\\SOFTWARE\\Microsoft\\GameBar\" -Name \"AllowAutoGameMode\" -Value 0",
+    "script": "Set-ItemProperty -Path \"HKCU:\\SOFTWARE\\Microsoft\\GameBar\" -Name \"AllowAutoGameMode\" -Value 0; Set-ItemProperty -Path \"HKCU:\\SOFTWARE\\Microsoft\\GameBar\" -Name \"AutoGameModeEnabled\" -Value 0;",
     "check": "false"
   }
 ]
