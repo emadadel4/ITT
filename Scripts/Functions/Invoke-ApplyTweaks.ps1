@@ -16,6 +16,7 @@ function Get-SelectedTweaks
                         Type = $program.type
                         registry = $program.registry
                         service = $program.service
+                        removeAppxPackage = $program.RemoveAppxPackage
                         Command = $program.command
                         # if you want to implement a new thing from JSON applications do it here.
                     }
@@ -80,32 +81,29 @@ function Invoke-ApplyTweaks
                     }
                 }
 
-                function Remove-Registry
-                {
+                function Remove-Registry {
                     param (
                         [Parameter(Mandatory=$true)]
                         [string]$RegistryPath,
                         [Parameter(Mandatory=$true)]
                         [string]$Folder
                     )
-
-                    # Combine the registry path and folder to create the full registry key path
-                    $KeyPath = "$RegistryPath\\$Folder"
-
-                    # Check if the registry key exists
-
-                    if (Test-Path "Registry::$KeyPath") {
-
-                        # Delete the registry key and all subkeys recursively
-
-                        Remove-Item -Path "Registry::$KeyPath" -Recurse -Force
-
-                        Write-Output "Registry key '$KeyPath' and its subkeys have been deleted."
-
-                    } 
-                    else
-                    {
-                        Write-Output "Registry key '$KeyPath' does not exist."
+                
+                    try {
+                        # Combine the registry path and folder to create the full registry key path
+                        $KeyPath = "$RegistryPath\\$Folder"
+                
+                        # Check if the registry key exists
+                        if (Test-Path "Registry::$KeyPath") {
+                            # Delete the registry key and all subkeys recursively
+                            Remove-Item -Path "Registry::$KeyPath" -Recurse -Force
+                            Write-Output "Registry key '$KeyPath' and its subkeys have been deleted."
+                        } else {
+                            Write-Output "Registry key '$KeyPath' does not exist."
+                        }
+                    }
+                    catch {
+                        Write-Output "An error occurred: $_"
                     }
                 }
 
@@ -132,6 +130,26 @@ function Invoke-ApplyTweaks
                     catch
                     {
                         Write-Host "Failed to disable service '$ServiceName'. Error: $_"
+                    }
+                }
+
+                function Remove-AppxPackage  {
+
+                    param (
+                        $App
+                    )
+                
+                    if (Get-AppxPackage -AllUsers -Name $App -ErrorAction SilentlyContinue) {
+                        try {
+                            Get-AppxPackage -AllUsers -Name "$App" | Remove-AppxPackage -ErrorAction Stop
+                            Write-Host "Successfully removed $App"
+                        } 
+                        catch {
+                            Write-Host "Failed to remove $App. $_"
+                        }
+                    }
+                    else {
+                        Write-Host "$App not found."
                     }
                 }
                 
@@ -209,7 +227,10 @@ https://t.me/emadadel4
                                 foreach ($re in $app.registry) 
                                 {
                                     Set-Registry -Name $re.Name -Type $re.Type -Path $re.Path -Value $re.Value
-                                    #Start-Process -FilePath "powershell.exe" -ArgumentList "-Command `"$($re.refresh)`"" -NoNewWindow -Wait
+
+                                    # debug
+                                    #Write-Host Set-Registry -Name $re.Name -Type $re.Type -Path $re.Path -Value $re.Value
+                                    
                                 }
                             }
 
@@ -218,6 +239,10 @@ https://t.me/emadadel4
                                 foreach ($re in $app.registry) 
                                 {
                                     Remove-Registry -RegistryPath $re.Path -Folder $re.Name
+
+                                    # debug
+                                    #Write-Host Remove-Registry -RegistryPath $re.Path -Folder $re.Name
+
                                 }
                             }
             
@@ -229,15 +254,30 @@ https://t.me/emadadel4
                                 }
                             }
             
-                            if ($app.Type -eq "script")
+                            if ($app.Type -eq "command")
                             {
                                 Start-Process -FilePath "powershell.exe" -ArgumentList "-Command `"$($app.Command)`"" -NoNewWindow -Wait
+
+                                # debug
+                                #Write-Host Start-Process -FilePath "powershell.exe" -ArgumentList "-Command `"$($app.Command)`"" -NoNewWindow -Wait
+                            }
+
+                            if ($app.Type -eq "AppxPackage")
+                            {
+                                foreach ($re in $app.removeAppxPackage) 
+                                {
+                                   Remove-AppxPackage -App $re.Name
+
+                                   # debug
+                                   #Write-Host Remove-AppxPackage -App $re.Name
+
+                                }
                             }
                         }
 
                         Start-Sleep -Seconds 2
                         $sync.ProcessRunning = $False
-                        Finish
+                        #Finish
                         CustomMsg -title "ITT | Emad Adel" -msg "Done" -MessageBoxImage "Information" -MessageBoxButton "OK"
                     }
                     else

@@ -224,6 +224,7 @@ function Get-SelectedTweaks
                         Type = $program.type
                         registry = $program.registry
                         service = $program.service
+                        removeAppxPackage = $program.RemoveAppxPackage
                         Command = $program.command
                         # if you want to implement a new thing from JSON applications do it here.
                     }
@@ -288,32 +289,29 @@ function Invoke-ApplyTweaks
                     }
                 }
 
-                function Remove-Registry
-                {
+                function Remove-Registry {
                     param (
                         [Parameter(Mandatory=$true)]
                         [string]$RegistryPath,
                         [Parameter(Mandatory=$true)]
                         [string]$Folder
                     )
-
-                    # Combine the registry path and folder to create the full registry key path
-                    $KeyPath = "$RegistryPath\\$Folder"
-
-                    # Check if the registry key exists
-
-                    if (Test-Path "Registry::$KeyPath") {
-
-                        # Delete the registry key and all subkeys recursively
-
-                        Remove-Item -Path "Registry::$KeyPath" -Recurse -Force
-
-                        Write-Output "Registry key '$KeyPath' and its subkeys have been deleted."
-
-                    } 
-                    else
-                    {
-                        Write-Output "Registry key '$KeyPath' does not exist."
+                
+                    try {
+                        # Combine the registry path and folder to create the full registry key path
+                        $KeyPath = "$RegistryPath\\$Folder"
+                
+                        # Check if the registry key exists
+                        if (Test-Path "Registry::$KeyPath") {
+                            # Delete the registry key and all subkeys recursively
+                            Remove-Item -Path "Registry::$KeyPath" -Recurse -Force
+                            Write-Output "Registry key '$KeyPath' and its subkeys have been deleted."
+                        } else {
+                            Write-Output "Registry key '$KeyPath' does not exist."
+                        }
+                    }
+                    catch {
+                        Write-Output "An error occurred: $_"
                     }
                 }
 
@@ -340,6 +338,26 @@ function Invoke-ApplyTweaks
                     catch
                     {
                         Write-Host "Failed to disable service '$ServiceName'. Error: $_"
+                    }
+                }
+
+                function Remove-AppxPackage  {
+
+                    param (
+                        $App
+                    )
+                
+                    if (Get-AppxPackage -AllUsers -Name $App -ErrorAction SilentlyContinue) {
+                        try {
+                            Get-AppxPackage -AllUsers -Name "$App" | Remove-AppxPackage -ErrorAction Stop
+                            Write-Host "Successfully removed $App"
+                        } 
+                        catch {
+                            Write-Host "Failed to remove $App. $_"
+                        }
+                    }
+                    else {
+                        Write-Host "$App not found."
                     }
                 }
                 
@@ -417,7 +435,10 @@ https://t.me/emadadel4
                                 foreach ($re in $app.registry) 
                                 {
                                     Set-Registry -Name $re.Name -Type $re.Type -Path $re.Path -Value $re.Value
-                                    #Start-Process -FilePath "powershell.exe" -ArgumentList "-Command `"$($re.refresh)`"" -NoNewWindow -Wait
+
+                                    # debug
+                                    #Write-Host Set-Registry -Name $re.Name -Type $re.Type -Path $re.Path -Value $re.Value
+                                    
                                 }
                             }
 
@@ -426,6 +447,10 @@ https://t.me/emadadel4
                                 foreach ($re in $app.registry) 
                                 {
                                     Remove-Registry -RegistryPath $re.Path -Folder $re.Name
+
+                                    # debug
+                                    #Write-Host Remove-Registry -RegistryPath $re.Path -Folder $re.Name
+
                                 }
                             }
             
@@ -437,9 +462,24 @@ https://t.me/emadadel4
                                 }
                             }
             
-                            if ($app.Type -eq "script")
+                            if ($app.Type -eq "command")
                             {
                                 Start-Process -FilePath "powershell.exe" -ArgumentList "-Command `"$($app.Command)`"" -NoNewWindow -Wait
+
+                                # debug
+                                #Write-Host Start-Process -FilePath "powershell.exe" -ArgumentList "-Command `"$($app.Command)`"" -NoNewWindow -Wait
+                            }
+
+                            if ($app.Type -eq "AppxPackage")
+                            {
+                                foreach ($re in $app.removeAppxPackage) 
+                                {
+                                   Remove-AppxPackage -App $re.Name
+
+                                   # debug
+                                   #Write-Host Remove-AppxPackage -App $re.Name
+
+                                }
                             }
                         }
 
@@ -2977,7 +3017,7 @@ $sync.database.Tweaks = '[
     "repo": "null",
     "command": "cleanmgr.exe /d C: /VERYLOWDISK /sagerun:1 Dism.exe /online /Cleanup-Image /StartComponentCleanup /ResetBase;",
     "check": "false",
-    "type":"script"
+    "type":"command"
   },
   {
     "name": "Restore All Windows Services to Default",
@@ -2985,7 +3025,7 @@ $sync.database.Tweaks = '[
     "repo": "null",
     "command": "Invoke-RestMethod https://raw.githubusercontent.com/emadadel4/WindowsTweaks/main/restore.bat | Invoke-Expression;",
     "check": "false",
-    "type":"script"
+    "type":"command"
   },
   {
     "name": "Fix Stutter/Lag in Games",
@@ -2993,23 +3033,15 @@ $sync.database.Tweaks = '[
     "repo": "https://github.com/emadadel4/Fix-Stutter-in-Games",
     "command": "Invoke-RestMethod https://raw.githubusercontent.com/emadadel4/Fix-Stutter-in-Games/main/fix.ps1 | Invoke-Expression;",
     "check": "false",
-    "type":"script"
-  },
-  {
-    "name": "Remove Unnecessary Windows 10/11 Apps",
-    "description": "BingNews, GetHelp, Getstarted, Messaging, Microsoft3DViewer, MicrosoftOfficeHub, MicrosoftSolitaireCollection, News, Office.Lens, Office.OneNote, Office.Sway, OneConnect, People, Print3D, RemoteDesktop, SkypeApp, StorePurchaseApp, Office.Todo.List, Whiteboard, WindowsAlarms, WindowsCamera, windowscommunicationsapps, WindowsFeedbackHub, WindowsMaps, WindowsSoundRecorder, Xbox.TCUI, XboxApp, XboxGameOverlay, XboxIdentityProvider, XboxSpeechToTextOverlay, ZuneMusic, ZuneVideo, Windows.Cortana, MSPaint",
-    "repo": "https://github.com/emadadel4/WindowsTweaks",
-    "command": "Invoke-RestMethod https://raw.githubusercontent.com/emadadel4/WindowsTweaks/main/debloater.ps1 | Invoke-Expression;",
-    "check": "false",
-    "type":"script"
+    "type":"command"
   },
   {
     "name": "Remove Cortana",
-    "description": "This tweak aims to disable Cortana",
+    "description": "This tweak aims to remove Cortana",
     "repo": "null",
     "command": "Get-AppxPackage -AllUsers -PackageTypeFilter Bundle -name \"*Microsoft.549981*\" | Remove-AppxPackage;",
     "check": "false",
-    "type":"script"
+    "type":"command"
   },
   {
     "name": "Enable the Ultimate Performance Power Plan",
@@ -3017,7 +3049,7 @@ $sync.database.Tweaks = '[
     "repo": "https://github.com/emadadel4/WindowsTweaks",
     "command": "powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61; Start-Process powercfg.cpl;",
     "check": "false",
-    "type":"script"
+    "type":"command"
   },
   {
     "name": "Reset the TCP/IP Stack",
@@ -3025,7 +3057,7 @@ $sync.database.Tweaks = '[
     "repo": "null",
     "command": "netsh int ip reset;",
     "check": "false",
-    "type":"script"
+    "type":"command"
   },
   {
     "name": "Setup Auto login",
@@ -3033,7 +3065,7 @@ $sync.database.Tweaks = '[
     "repo": "null",
     "command": "curl.exe -ss \"https://live.sysinternals.com/Autologon.exe\" -o $env:temp\\autologin.exe ; cmd /c $env:temp\\autologin.exe /accepteula;",
     "check": "false",
-    "type":"script"
+    "type":"command"
   },
   {
     "name": "Disable Game Mode",
@@ -3317,7 +3349,181 @@ $sync.database.Tweaks = '[
         "DefaultType": "Manual"
       }
     ]
-  }
+  },
+  {
+    "name": "Remove Unnecessary Windows 10/11 Apps",
+    "description": "BingNews, GetHelp, Getstarted, Messaging, Microsoft3DViewer, MicrosoftOfficeHub, MicrosoftSolitaireCollection, News, Office.Lens, Office.OneNote, Office.Sway, OneConnect, People, Print3D, RemoteDesktop, SkypeApp, StorePurchaseApp, Office.Todo.List, Whiteboard, WindowsAlarms, WindowsCamera, windowscommunicationsapps, WindowsFeedbackHub, WindowsMaps, WindowsSoundRecorder, Xbox.TCUI, XboxApp, XboxGameOverlay, XboxIdentityProvider, XboxSpeechToTextOverlay, ZuneMusic, ZuneVideo, Windows.Cortana, MSPaint",
+    "repo": "null",
+    "check": "false",
+    "type": "AppxPackage",
+    "RemoveAppxPackage": [
+        {
+            "Name": "Microsoft.BingNews"
+        },
+        {
+            "Name": "Microsoft.GetHelp"
+        },
+        {
+            "Name": "Microsoft.Getstarted"
+        },
+        {
+            "Name": "Microsoft.BingWeather"
+        },
+        {
+            "Name": "Microsoft.Messaging"
+        },
+        {
+            "Name": "Microsoft.Microsoft3DViewer"
+        },
+        {
+            "Name": "Microsoft.MicrosoftOfficeHub"
+        },
+        {
+            "Name": "Microsoft.MicrosoftSolitaireCollection"
+        },
+        {
+            "Name": "Microsoft.NetworkSpeedTest"
+        },
+        {
+            "Name": "Microsoft.News"
+        },
+        {
+            "Name": "Microsoft.Office.Lens"
+        },
+        {
+            "Name": "Microsoft.Office.OneNote"
+        },
+        {
+            "Name": "Microsoft.Office.Sway"
+        },
+        {
+            "Name": "Microsoft.OneConnect"
+        },
+        {
+            "Name": "Microsoft.People"
+        },
+        {
+            "Name": "Microsoft.Print3D"
+        },
+        {
+            "Name": "Microsoft.RemoteDesktop"
+        },
+        {
+            "Name": "Microsoft.SkypeApp"
+        },
+        {
+            "Name": "Microsoft.StorePurchaseApp"
+        },
+        {
+            "Name": "Microsoft.Office.Todo.List"
+        },
+        {
+            "Name": "Microsoft.Whiteboard"
+        },
+        {
+            "Name": "Microsoft.WindowsAlarms"
+        },
+        {
+            "Name": "Microsoft.WindowsCamera"
+        },
+        {
+            "Name": "microsoft.windowscommunicationsapps"
+        },
+        {
+            "Name": "Microsoft.WindowsFeedbackHub"
+        },
+        {
+            "Name": "Microsoft.WindowsMaps"
+        },
+        {
+            "Name": "Microsoft.YourPhone"
+        },
+        {
+            "Name": "Microsoft.WindowsSoundRecorder"
+        },
+        {
+            "Name": "Microsoft.Xbox.TCUI"
+        },
+        {
+            "Name": "Microsoft.XboxApp"
+        },
+        {
+            "Name": "Microsoft.XboxGameOverlay"
+        },
+        {
+            "Name": "Microsoft.XboxIdentityProvider"
+        },
+        {
+            "Name": "Microsoft.XboxSpeechToTextOverlay"
+        },
+        {
+            "Name": "Microsoft.ZuneMusic"
+        },
+        {
+            "Name": "Microsoft.ZuneVideo"
+        },
+        {
+            "Name": "Microsoft.Windows.Cortana"
+        },
+        {
+            "Name": "Microsoft.Windows.DevHome"
+        },
+        {
+            "Name": "Microsoft.MixedReality.Portal"
+        },
+        {
+            "Name": "Microsoft.MSPaint"
+        },
+        {
+            "Name": "EclipseManager"
+        },
+        {
+            "Name": "ActiproSoftwareLLC"
+        },
+        {
+            "Name": "AdobeSystemsIncorporated.AdobePhotoshopExpress"
+        },
+        {
+            "Name": "Duolingo-LearnLanguagesforFree"
+        },
+        {
+            "Name": "PandoraMediaInc"
+        },
+        {
+            "Name": "CandyCrush"
+        },
+        {
+            "Name": "BubbleWitch3Saga"
+        },
+        {
+            "Name": "Wunderlist"
+        },
+        {
+            "Name": "Flipboard"
+        },
+        {
+            "Name": "Twitter"
+        },
+        {
+            "Name": "Facebook"
+        },
+        {
+            "Name": "Minecraft"
+        },
+        {
+            "Name": "Royal Revolt"
+        },
+        {
+            "Name": "Sway"
+        },
+        {
+          "Name": "Microsoft.549981"
+        },
+        {
+          "Name": "Microsoft.MicrosoftStickyNotes"
+        }
+    ]
+}
 ]
 
 ' | ConvertFrom-Json
@@ -4055,8 +4261,6 @@ $inputXML = '
 
     <CheckBox Content="Fix Stutter/Lag in Games"  FontWeight="Bold"/>
 
-    <CheckBox Content="Remove Unnecessary Windows 10/11 Apps"  FontWeight="Bold"/>
-
     <CheckBox Content="Remove Cortana"  FontWeight="Bold"/>
 
     <CheckBox Content="Enable the Ultimate Performance Power Plan"  FontWeight="Bold"/>
@@ -4086,6 +4290,8 @@ $inputXML = '
     <CheckBox Content="Remove Folder Shortcuts From Windows'' File Explorer"  FontWeight="Bold"/>
 
     <CheckBox Content="Optimize services"  FontWeight="Bold"/>
+
+    <CheckBox Content="Remove Unnecessary Windows 10/11 Apps"  FontWeight="Bold"/>
 
                         </ListView>
                     </TabItem.Content>

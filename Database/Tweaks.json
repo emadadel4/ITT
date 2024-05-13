@@ -14,7 +14,7 @@
     "repo": "null",
     "command": "cleanmgr.exe /d C: /VERYLOWDISK /sagerun:1 Dism.exe /online /Cleanup-Image /StartComponentCleanup /ResetBase;",
     "check": "false",
-    "type":"script"
+    "type":"command"
   },
   {
     "name": "Restore All Windows Services to Default",
@@ -22,7 +22,7 @@
     "repo": "null",
     "command": "Invoke-RestMethod https://raw.githubusercontent.com/emadadel4/WindowsTweaks/main/restore.bat | Invoke-Expression;",
     "check": "false",
-    "type":"script"
+    "type":"command"
   },
   {
     "name": "Fix Stutter/Lag in Games",
@@ -30,23 +30,15 @@
     "repo": "https://github.com/emadadel4/Fix-Stutter-in-Games",
     "command": "Invoke-RestMethod https://raw.githubusercontent.com/emadadel4/Fix-Stutter-in-Games/main/fix.ps1 | Invoke-Expression;",
     "check": "false",
-    "type":"script"
-  },
-  {
-    "name": "Remove Unnecessary Windows 10/11 Apps",
-    "description": "BingNews, GetHelp, Getstarted, Messaging, Microsoft3DViewer, MicrosoftOfficeHub, MicrosoftSolitaireCollection, News, Office.Lens, Office.OneNote, Office.Sway, OneConnect, People, Print3D, RemoteDesktop, SkypeApp, StorePurchaseApp, Office.Todo.List, Whiteboard, WindowsAlarms, WindowsCamera, windowscommunicationsapps, WindowsFeedbackHub, WindowsMaps, WindowsSoundRecorder, Xbox.TCUI, XboxApp, XboxGameOverlay, XboxIdentityProvider, XboxSpeechToTextOverlay, ZuneMusic, ZuneVideo, Windows.Cortana, MSPaint",
-    "repo": "https://github.com/emadadel4/WindowsTweaks",
-    "command": "Invoke-RestMethod https://raw.githubusercontent.com/emadadel4/WindowsTweaks/main/debloater.ps1 | Invoke-Expression;",
-    "check": "false",
-    "type":"script"
+    "type":"command"
   },
   {
     "name": "Remove Cortana",
-    "description": "This tweak aims to disable Cortana",
+    "description": "This tweak aims to remove Cortana",
     "repo": "null",
     "command": "Get-AppxPackage -AllUsers -PackageTypeFilter Bundle -name \"*Microsoft.549981*\" | Remove-AppxPackage;",
     "check": "false",
-    "type":"script"
+    "type":"command"
   },
   {
     "name": "Enable the Ultimate Performance Power Plan",
@@ -54,7 +46,7 @@
     "repo": "https://github.com/emadadel4/WindowsTweaks",
     "command": "powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61; Start-Process powercfg.cpl;",
     "check": "false",
-    "type":"script"
+    "type":"command"
   },
   {
     "name": "Reset the TCP/IP Stack",
@@ -62,7 +54,7 @@
     "repo": "null",
     "command": "netsh int ip reset;",
     "check": "false",
-    "type":"script"
+    "type":"command"
   },
   {
     "name": "Setup Auto login",
@@ -70,7 +62,7 @@
     "repo": "null",
     "command": "curl.exe -ss \"https://live.sysinternals.com/Autologon.exe\" -o $env:temp\\autologin.exe ; cmd /c $env:temp\\autologin.exe /accepteula;",
     "check": "false",
-    "type":"script"
+    "type":"command"
   },
   {
     "name": "Disable Game Mode",
@@ -354,6 +346,180 @@
         "DefaultType": "Manual"
       }
     ]
-  }
+  },
+  {
+    "name": "Remove Unnecessary Windows 10/11 Apps",
+    "description": "BingNews, GetHelp, Getstarted, Messaging, Microsoft3DViewer, MicrosoftOfficeHub, MicrosoftSolitaireCollection, News, Office.Lens, Office.OneNote, Office.Sway, OneConnect, People, Print3D, RemoteDesktop, SkypeApp, StorePurchaseApp, Office.Todo.List, Whiteboard, WindowsAlarms, WindowsCamera, windowscommunicationsapps, WindowsFeedbackHub, WindowsMaps, WindowsSoundRecorder, Xbox.TCUI, XboxApp, XboxGameOverlay, XboxIdentityProvider, XboxSpeechToTextOverlay, ZuneMusic, ZuneVideo, Windows.Cortana, MSPaint",
+    "repo": "null",
+    "check": "false",
+    "type": "AppxPackage",
+    "RemoveAppxPackage": [
+        {
+            "Name": "Microsoft.BingNews"
+        },
+        {
+            "Name": "Microsoft.GetHelp"
+        },
+        {
+            "Name": "Microsoft.Getstarted"
+        },
+        {
+            "Name": "Microsoft.BingWeather"
+        },
+        {
+            "Name": "Microsoft.Messaging"
+        },
+        {
+            "Name": "Microsoft.Microsoft3DViewer"
+        },
+        {
+            "Name": "Microsoft.MicrosoftOfficeHub"
+        },
+        {
+            "Name": "Microsoft.MicrosoftSolitaireCollection"
+        },
+        {
+            "Name": "Microsoft.NetworkSpeedTest"
+        },
+        {
+            "Name": "Microsoft.News"
+        },
+        {
+            "Name": "Microsoft.Office.Lens"
+        },
+        {
+            "Name": "Microsoft.Office.OneNote"
+        },
+        {
+            "Name": "Microsoft.Office.Sway"
+        },
+        {
+            "Name": "Microsoft.OneConnect"
+        },
+        {
+            "Name": "Microsoft.People"
+        },
+        {
+            "Name": "Microsoft.Print3D"
+        },
+        {
+            "Name": "Microsoft.RemoteDesktop"
+        },
+        {
+            "Name": "Microsoft.SkypeApp"
+        },
+        {
+            "Name": "Microsoft.StorePurchaseApp"
+        },
+        {
+            "Name": "Microsoft.Office.Todo.List"
+        },
+        {
+            "Name": "Microsoft.Whiteboard"
+        },
+        {
+            "Name": "Microsoft.WindowsAlarms"
+        },
+        {
+            "Name": "Microsoft.WindowsCamera"
+        },
+        {
+            "Name": "microsoft.windowscommunicationsapps"
+        },
+        {
+            "Name": "Microsoft.WindowsFeedbackHub"
+        },
+        {
+            "Name": "Microsoft.WindowsMaps"
+        },
+        {
+            "Name": "Microsoft.YourPhone"
+        },
+        {
+            "Name": "Microsoft.WindowsSoundRecorder"
+        },
+        {
+            "Name": "Microsoft.Xbox.TCUI"
+        },
+        {
+            "Name": "Microsoft.XboxApp"
+        },
+        {
+            "Name": "Microsoft.XboxGameOverlay"
+        },
+        {
+            "Name": "Microsoft.XboxIdentityProvider"
+        },
+        {
+            "Name": "Microsoft.XboxSpeechToTextOverlay"
+        },
+        {
+            "Name": "Microsoft.ZuneMusic"
+        },
+        {
+            "Name": "Microsoft.ZuneVideo"
+        },
+        {
+            "Name": "Microsoft.Windows.Cortana"
+        },
+        {
+            "Name": "Microsoft.Windows.DevHome"
+        },
+        {
+            "Name": "Microsoft.MixedReality.Portal"
+        },
+        {
+            "Name": "Microsoft.MSPaint"
+        },
+        {
+            "Name": "EclipseManager"
+        },
+        {
+            "Name": "ActiproSoftwareLLC"
+        },
+        {
+            "Name": "AdobeSystemsIncorporated.AdobePhotoshopExpress"
+        },
+        {
+            "Name": "Duolingo-LearnLanguagesforFree"
+        },
+        {
+            "Name": "PandoraMediaInc"
+        },
+        {
+            "Name": "CandyCrush"
+        },
+        {
+            "Name": "BubbleWitch3Saga"
+        },
+        {
+            "Name": "Wunderlist"
+        },
+        {
+            "Name": "Flipboard"
+        },
+        {
+            "Name": "Twitter"
+        },
+        {
+            "Name": "Facebook"
+        },
+        {
+            "Name": "Minecraft"
+        },
+        {
+            "Name": "Royal Revolt"
+        },
+        {
+            "Name": "Sway"
+        },
+        {
+          "Name": "Microsoft.549981"
+        },
+        {
+          "Name": "Microsoft.MicrosoftStickyNotes"
+        }
+    ]
+}
 ]
 
