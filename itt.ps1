@@ -225,8 +225,7 @@ function Get-SelectedTweaks
                         registry = $program.registry
                         service = $program.service
                         Command = $program.command
-
-
+                        # if you want to implement a new thing from JSON applications do it here.
                     }
                 }
             }
@@ -286,6 +285,35 @@ function Invoke-ApplyTweaks
                     }
                     catch {
                         Write-Error "An error occurred: $_"
+                    }
+                }
+
+                function Remove-Registry
+                {
+                    param (
+                        [Parameter(Mandatory=$true)]
+                        [string]$RegistryPath,
+                        [Parameter(Mandatory=$true)]
+                        [string]$Folder
+                    )
+
+                    # Combine the registry path and folder to create the full registry key path
+                    $KeyPath = "$RegistryPath\\$Folder"
+
+                    # Check if the registry key exists
+
+                    if (Test-Path "Registry::$KeyPath") {
+
+                        # Delete the registry key and all subkeys recursively
+
+                        Remove-Item -Path "Registry::$KeyPath" -Recurse -Force
+
+                        Write-Output "Registry key '$KeyPath' and its subkeys have been deleted."
+
+                    } 
+                    else
+                    {
+                        Write-Output "Registry key '$KeyPath' does not exist."
                     }
                 }
 
@@ -384,12 +412,20 @@ https://t.me/emadadel4
                         foreach ($app in $tweaks) 
                         {
             
-                            if ($app.Type -eq "reg")
+                            if ($app.Type -eq "modifying")
                             {
                                 foreach ($re in $app.registry) 
                                 {
                                     Set-Registry -Name $re.Name -Type $re.Type -Path $re.Path -Value $re.Value
                                     #Start-Process -FilePath "powershell.exe" -ArgumentList "-Command `"$($re.refresh)`"" -NoNewWindow -Wait
+                                }
+                            }
+
+                            if ($app.Type -eq "delete")
+                            {
+                                foreach ($re in $app.registry) 
+                                {
+                                    Remove-Registry -RegistryPath $re.Path -Folder $re.Name
                                 }
                             }
             
@@ -409,7 +445,7 @@ https://t.me/emadadel4
 
                         Start-Sleep -Seconds 2
                         $sync.ProcessRunning = $False
-                        Finish
+                        #Finish
                         CustomMsg -title "ITT | Emad Adel" -msg "Done" -MessageBoxImage "Information" -MessageBoxButton "OK"
                     }
                     else
@@ -1063,7 +1099,7 @@ function ChangeTap() {
     GitHub         : https://github.com/emadadel4
     Telegram       : https://t.me/emadadel4
     Website        : https://eprojects.orgfree.com/
-    Version        : 2024/05-May/13-Mon
+    Version        : 2024/05-May/14-Tue
 #>
 
 if (!(Test-Path -Path $ENV:TEMP)) {
@@ -1079,7 +1115,7 @@ Add-Type -AssemblyName System.Windows.Forms
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "2024/05-May/13-Mon"
+$sync.version = "2024/05-May/14-Tue"
 $sync.github =   "https://github.com/emadadel4"
 $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://eprojects.orgfree.com"
@@ -2952,14 +2988,6 @@ $sync.database.Tweaks = '[
     "type":"script"
   },
   {
-    "name": "Remove Folder Shortcuts From Windows'' File Explorer",
-    "description": "Remove Documents, Videos, Pictures, Desktop. Shortcuts from File Explorer ",
-    "repo": "https://github.com/emadadel4/WindowsTweaks",
-    "command": "Invoke-RestMethod https://raw.githubusercontent.com/emadadel4/WindowsTweaks/main/rm.ps1 | Invoke-Expression;",
-    "check": "false",
-    "type":"script"
-  },
-  {
     "name": "Fix Stutter/Lag in Games",
     "description": "Fix Stutter in Games (Disable GameBarPresenceWriter). Windows 10/11",
     "repo": "https://github.com/emadadel4/Fix-Stutter-in-Games",
@@ -3012,7 +3040,7 @@ $sync.database.Tweaks = '[
     "description": "This tweak disables Game Mode",
     "repo": "null",
     "check": "false",
-    "type":"reg",
+    "type":"modifying",
     "registry": [
       {
         "Path": "HKCU:\\SOFTWARE\\Microsoft\\GameBar\\",
@@ -3037,7 +3065,7 @@ $sync.database.Tweaks = '[
     "description": "Disable Data Collection",
     "repo": "null",
     "check": "false",
-    "type":"reg",
+    "type":"modifying",
     "registry": [
       {
         "Path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\DataCollection",
@@ -3055,7 +3083,7 @@ $sync.database.Tweaks = '[
     "description": "Disable ads",
     "repo": "null",
     "check": "false",
-    "type":"reg",
+    "type":"modifying",
     "registry": [
       {
         "Path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\AdvertisingInfo",
@@ -3072,7 +3100,7 @@ $sync.database.Tweaks = '[
     "description": "Disable web search in Windows by modifying the registry settings related to Windows Search. It sets the BingSearchEnabled value to 0, effectively turning off web search results",
     "repo": "null",
     "check": "false",
-    "type":"reg",
+    "type":"modifying",
     "registry": [
       {
         "Path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Search",
@@ -3089,7 +3117,7 @@ $sync.database.Tweaks = '[
     "description": "Turn off background apps",
     "repo": "null",
     "check": "false",
-    "type":"reg",
+    "type":"modifying",
     "registry": [
       {
         "Path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\BackgroundAccessApplications",
@@ -3106,7 +3134,7 @@ $sync.database.Tweaks = '[
     "description": "Disables suggestions on start menu",
     "repo": "null",
     "check": "false",
-    "type":"reg",
+    "type":"modifying",
     "registry": [
       {
         "Path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\CloudContent",
@@ -3123,7 +3151,7 @@ $sync.database.Tweaks = '[
     "description": "Disables the News and interests",
     "repo": "null",
     "check": "false",
-    "type":"reg",
+    "type":"modifying",
     "registry": [
       {
         "Path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Feeds",
@@ -3141,7 +3169,7 @@ $sync.database.Tweaks = '[
     "description": "Show Search Icon Only",
     "repo": "null",
     "check": "false",
-    "type":"reg",
+    "type":"modifying",
     "registry": [
       {
         "Path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Search",
@@ -3159,7 +3187,7 @@ $sync.database.Tweaks = '[
     "description": "Disables People on taskbar",
     "repo": "null",
     "check": "false",
-    "type":"reg",
+    "type":"modifying",
     "registry": [
       {
         "Path": "HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\\People",
@@ -3168,6 +3196,71 @@ $sync.database.Tweaks = '[
         "Value": "0",
         "defaultValue": "1",
         "refresh": "Stop-Process -Name explorer -Force; Start-Process explorer"
+      }
+    ]
+  },
+  {
+    "name": "Remove Folder Shortcuts From Windows'' File Explorer",
+    "description": "Remove Documents, Videos, Pictures, Desktop. Shortcuts from File Explorer",
+    "repo": "null",
+    "check": "false",
+    "type":"delete",
+    "registry": [
+      {
+        "Path": "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\MyComputer\\NameSpace\\",
+        "Name": "{0DB7E03F-FC29-4DC6-9020-FF41B59E513A}"
+      },
+      {
+        "Path": "HKEY_LOCAL_MACHINE\\SOFTWARE\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Explorer\\MyComputer\\NameSpace\\",
+        "Name": "{0DB7E03F-FC29-4DC6-9020-FF41B59E513A}"
+      },
+      {
+        "Path": "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\MyComputer\\NameSpace\\",
+        "Name": "{f86fa3ab-70d2-4fc7-9c99-fcbf05467f3a}"
+      },
+      {
+        "Path": "HKEY_LOCAL_MACHINE\\SOFTWARE\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Explorer\\MyComputer\\NameSpace\\",
+        "Name": "{f86fa3ab-70d2-4fc7-9c99-fcbf05467f3a}"
+      },
+      {
+        "Path": "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\MyComputer\\NameSpace\\",
+        "Name": "{3dfdf296-dbec-4fb4-81d1-6a3438bcf4de}"
+      },
+      {
+        "Path": "HKEY_LOCAL_MACHINE\\SOFTWARE\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Explorer\\MyComputer\\NameSpace\\",
+        "Name": "{3dfdf296-dbec-4fb4-81d1-6a3438bcf4de}"
+      },
+      {
+        "Path": "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\MyComputer\\NameSpace\\",
+        "Name": "{24ad3ad4-a569-4530-98e1-ab02f9417aa8}"
+      },
+      {
+        "Path": "HKEY_LOCAL_MACHINE\\SOFTWARE\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Explorer\\MyComputer\\NameSpace\\",
+        "Name": "{24ad3ad4-a569-4530-98e1-ab02f9417aa8}"
+      },
+      {
+        "Path": "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\MyComputer\\NameSpace\\",
+        "Name": "{088e3905-0323-4b02-9826-5d99428e115f}"
+      },
+      {
+        "Path": "HKEY_LOCAL_MACHINE\\SOFTWARE\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Explorer\\MyComputer\\NameSpace\\",
+        "Name": "{088e3905-0323-4b02-9826-5d99428e115f}"
+      },
+      {
+        "Path": "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\MyComputer\\NameSpace\\",
+        "Name": "{B4BFCC3A-DB2C-424C-B029-7FE99A87C641}"
+      },
+      {
+        "Path": "HKEY_LOCAL_MACHINE\\SOFTWARE\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Explorer\\MyComputer\\NameSpace\\",
+        "Name": "{B4BFCC3A-DB2C-424C-B029-7FE99A87C641}"
+      },
+      {
+        "Path": "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\MyComputer\\NameSpace\\",
+        "Name": "{d3162b92-9365-467a-956b-92703aca08af}"
+      },
+      {
+        "Path": "HKEY_LOCAL_MACHINE\\SOFTWARE\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Explorer\\MyComputer\\NameSpace\\",
+        "Name": "{d3162b92-9365-467a-956b-92703aca08af}"
       }
     ]
   },
@@ -3960,8 +4053,6 @@ $inputXML = '
 
     <CheckBox Content="Restore All Windows Services to Default"  FontWeight="Bold"/>
 
-    <CheckBox Content="Remove Folder Shortcuts From Windows'' File Explorer"  FontWeight="Bold"/>
-
     <CheckBox Content="Fix Stutter/Lag in Games"  FontWeight="Bold"/>
 
     <CheckBox Content="Remove Unnecessary Windows 10/11 Apps"  FontWeight="Bold"/>
@@ -3991,6 +4082,8 @@ $inputXML = '
     <CheckBox Content="Show Search icon Only on taskbar"  FontWeight="Bold"/>
 
     <CheckBox Content="Disable People icon on taskbar"  FontWeight="Bold"/>
+
+    <CheckBox Content="Remove Folder Shortcuts From Windows'' File Explorer"  FontWeight="Bold"/>
 
     <CheckBox Content="Optimize services"  FontWeight="Bold"/>
 

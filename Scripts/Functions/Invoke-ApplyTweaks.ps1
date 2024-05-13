@@ -17,8 +17,7 @@ function Get-SelectedTweaks
                         registry = $program.registry
                         service = $program.service
                         Command = $program.command
-
-
+                        # if you want to implement a new thing from JSON applications do it here.
                     }
                 }
             }
@@ -78,6 +77,35 @@ function Invoke-ApplyTweaks
                     }
                     catch {
                         Write-Error "An error occurred: $_"
+                    }
+                }
+
+                function Remove-Registry
+                {
+                    param (
+                        [Parameter(Mandatory=$true)]
+                        [string]$RegistryPath,
+                        [Parameter(Mandatory=$true)]
+                        [string]$Folder
+                    )
+
+                    # Combine the registry path and folder to create the full registry key path
+                    $KeyPath = "$RegistryPath\\$Folder"
+
+                    # Check if the registry key exists
+
+                    if (Test-Path "Registry::$KeyPath") {
+
+                        # Delete the registry key and all subkeys recursively
+
+                        Remove-Item -Path "Registry::$KeyPath" -Recurse -Force
+
+                        Write-Output "Registry key '$KeyPath' and its subkeys have been deleted."
+
+                    } 
+                    else
+                    {
+                        Write-Output "Registry key '$KeyPath' does not exist."
                     }
                 }
 
@@ -176,12 +204,20 @@ https://t.me/emadadel4
                         foreach ($app in $tweaks) 
                         {
             
-                            if ($app.Type -eq "reg")
+                            if ($app.Type -eq "modifying")
                             {
                                 foreach ($re in $app.registry) 
                                 {
                                     Set-Registry -Name $re.Name -Type $re.Type -Path $re.Path -Value $re.Value
                                     #Start-Process -FilePath "powershell.exe" -ArgumentList "-Command `"$($re.refresh)`"" -NoNewWindow -Wait
+                                }
+                            }
+
+                            if ($app.Type -eq "delete")
+                            {
+                                foreach ($re in $app.registry) 
+                                {
+                                    Remove-Registry -RegistryPath $re.Path -Folder $re.Name
                                 }
                             }
             
