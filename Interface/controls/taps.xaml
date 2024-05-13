@@ -7,10 +7,10 @@
                         </ListView>
                     </TabItem.Content>
                 </TabItem>
-                <TabItem Header="Tweeaks" x:Name="tweeksTab" Padding="0" BorderBrush="{x:Null}" Background="{x:Null}">
+                <TabItem Header="Tweaks" x:Name="tweeksTab" Padding="0" BorderBrush="{x:Null}" Background="{x:Null}">
                     <TabItem.Content>
                         <ListView Name="tweaks"  Margin="0" ScrollViewer.VerticalScrollBarVisibility="Auto" BorderBrush="{x:Null}" Background="{x:Null}">
-                            {{Tweeaks}}
+                            {{Tweaks}}
                         </ListView>
                     </TabItem.Content>
                 </TabItem>
