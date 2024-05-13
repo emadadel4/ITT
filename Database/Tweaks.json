@@ -93,6 +93,13 @@
         "Type": "DWord",
         "Value": "0",
         "defaultValue": "1"
+      },
+      {
+        "Path": "HKCU:\\SOFTWARE\\Microsoft\\GameBar\\",
+        "Name": "AllowAutoGameMode",
+        "Type": "DWord",
+        "Value": "0",
+        "defaultValue": "1"
       }
     ]
   },
@@ -226,7 +233,7 @@
   },
   {
     "name": "Optimize services",
-    "description": "Disable Print Spooler,Fax",
+    "description": "Disable (Print Spooler), (Fax), (Diagnostic Policy), (Downloaded Maps Manager), (Windows Error Reporting Service), (Remote Registry) , (Internet Connection Sharing), (Disables Telemetry and Data) ",
     "repo": "null",
     "check": "false",
     "type":"service",
@@ -234,10 +241,45 @@
       {
         "Name": "Spooler",
         "StartupType": "Disabled",
-        "DefaultType": "Manual"
+        "DefaultType": "Automatic"
       },
       {
         "Name": "Fax",
+        "StartupType": "Disabled",
+        "DefaultType": "Automatic"
+      },
+      {
+        "Name": "DPS",
+        "StartupType": "Disabled",
+        "DefaultType": "Automatic"
+      },
+      {
+        "Name": "MapsBroker",
+        "StartupType": "Disabled",
+        "DefaultType": "Automatic"
+      },
+      {
+        "Name": "WerSvc",
+        "StartupType": "Disabled",
+        "DefaultType": "Manual"
+      },
+      {
+        "Name": "RemoteRegistry",
+        "StartupType": "Disabled",
+        "DefaultType": "Disabled"
+      },
+      {
+        "Name": "lmhosts",
+        "StartupType": "Disabled",
+        "DefaultType": "Manual"
+      },
+      {
+        "Name": "SharedAccess",
+        "StartupType": "Disabled",
+        "DefaultType": "Manual"
+      },
+      {
+        "Name": "DiagTrack",
         "StartupType": "Disabled",
         "DefaultType": "Manual"
       }

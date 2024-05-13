@@ -279,8 +279,8 @@ function Invoke-ApplyTweaks
                         if (-not (Test-Path -Path $Path)) {
                             New-Item -Path $Path -Force | Out-Null
                         }
-                        
-                        Write-Host "Set $Path\$Name to $Value"
+
+                        Write-Host "$Name disabled"
                         Set-ItemProperty -Path $Path -Name $Name -Type $Type -Value $Value -Force -ErrorAction Stop
             
                     }
@@ -386,7 +386,10 @@ https://t.me/emadadel4
             
                             if ($app.Type -eq "reg")
                             {
-                                Set-Registry -Name $app.registry.Name -Type $app.registry.Type -Path $app.registry.Path -Value $app.registry.Value
+                                foreach ($re in $app.registry) 
+                                {
+                                    Set-Registry -Name $re.Name -Type $re.Type -Path $re.Path -Value $re.Value
+                                }
                             }
             
                             if ($app.Type -eq "service")
@@ -403,7 +406,7 @@ https://t.me/emadadel4
                             }
                         }
 
-                        Start-Sleep -Seconds 1
+                        Start-Sleep -Seconds 2
                         $sync.ProcessRunning = $False
                         Finish
                         CustomMsg -title "ITT | Emad Adel" -msg "Done" -MessageBoxImage "Information" -MessageBoxButton "OK"
@@ -1028,26 +1031,6 @@ function GetQuotes {
     }
 }
 
-
-function Set-Registry {
-    param (
-        [string]$Name,
-        [string]$Type,
-        [string]$Path,
-        $Value
-    )
-    
-    try {
-        if (-not (Test-Path -Path $path)) {
-            New-Item -Path $path -Force | Out-Null
-        }
-        
-        Set-ItemProperty -Path $path -Name $name -Value $value -Type $type -ErrorAction Stop
-    }
-    catch {
-        Write-Error "An error occurred: $_"
-    }
-}
 
 function ChangeTap() {
     
@@ -3016,6 +2999,13 @@ $sync.database.Tweaks = '[
         "Type": "DWord",
         "Value": "0",
         "defaultValue": "1"
+      },
+      {
+        "Path": "HKCU:\\SOFTWARE\\Microsoft\\GameBar\\",
+        "Name": "AllowAutoGameMode",
+        "Type": "DWord",
+        "Value": "0",
+        "defaultValue": "1"
       }
     ]
   },
@@ -3149,7 +3139,7 @@ $sync.database.Tweaks = '[
   },
   {
     "name": "Optimize services",
-    "description": "Disable Print Spooler,Fax",
+    "description": "Disable (Print Spooler), (Fax), (Diagnostic Policy), (Downloaded Maps Manager), (Windows Error Reporting Service), (Remote Registry) , (Internet Connection Sharing), (Disables Telemetry and Data) ",
     "repo": "null",
     "check": "false",
     "type":"service",
@@ -3157,10 +3147,45 @@ $sync.database.Tweaks = '[
       {
         "Name": "Spooler",
         "StartupType": "Disabled",
-        "DefaultType": "Manual"
+        "DefaultType": "Automatic"
       },
       {
         "Name": "Fax",
+        "StartupType": "Disabled",
+        "DefaultType": "Automatic"
+      },
+      {
+        "Name": "DPS",
+        "StartupType": "Disabled",
+        "DefaultType": "Automatic"
+      },
+      {
+        "Name": "MapsBroker",
+        "StartupType": "Disabled",
+        "DefaultType": "Automatic"
+      },
+      {
+        "Name": "WerSvc",
+        "StartupType": "Disabled",
+        "DefaultType": "Manual"
+      },
+      {
+        "Name": "RemoteRegistry",
+        "StartupType": "Disabled",
+        "DefaultType": "Disabled"
+      },
+      {
+        "Name": "lmhosts",
+        "StartupType": "Disabled",
+        "DefaultType": "Manual"
+      },
+      {
+        "Name": "SharedAccess",
+        "StartupType": "Disabled",
+        "DefaultType": "Manual"
+      },
+      {
+        "Name": "DiagTrack",
         "StartupType": "Disabled",
         "DefaultType": "Manual"
       }
