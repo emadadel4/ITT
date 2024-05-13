@@ -1,3 +1,9 @@
+<p align="center" dir="auto">
+  <a href="https://techforpalestine.org/learn-more" rel="nofollow">
+    <img src="https://raw.githubusercontent.com/Safouene1/support-palestine-banner/master/StandWithPalestine.svg" alt="Ceasefire Now" style="max-width: 100%;">
+  </a>
+</p>
+  
 <h1 align="center">Welcome to ITT 🖥️ 🛠️ 📀 </h1>
 
 <center>
