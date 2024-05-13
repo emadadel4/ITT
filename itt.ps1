@@ -383,6 +383,8 @@ function Invoke-ApplyTweaks
                     UpdateUI -InstallBtn "Apply" -Description "" 
 
 
+                    Start-Sleep 5
+
                     Clear-Host
 
 Write-Host "
@@ -483,10 +485,12 @@ https://t.me/emadadel4
                             }
                         }
 
-                        Start-Sleep -Seconds 2
                         $sync.ProcessRunning = $False
-                        #Finish
                         CustomMsg -title "ITT | Emad Adel" -msg "Done" -MessageBoxImage "Information" -MessageBoxButton "OK"
+
+                        Start-Sleep -Seconds 1
+                        Finish
+
                     }
                     else
                     {
