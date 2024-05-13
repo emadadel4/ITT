@@ -1710,5 +1710,25 @@
     "url": "none",
     "category": "Utilities",
     "check": "false"
+  },
+  {
+    "Name": "BlueStacks",
+    "Description": "Play Android Games on PC.",
+    "winget": "none",
+    "choco": "bluestacks",
+    "scoop": "none",
+    "url": "none",
+    "category": "Gaming",
+    "check": "false"
+  },
+  {
+    "Name": "Intel Wireless Bluetooth for Windows 10 and Windows 11",
+    "Description": "Bluetooth for Windows 10 and Windows",
+    "winget": "none",
+    "choco": "intel-bluetooth-drivers",
+    "scoop": "none",
+    "url": "none",
+    "category": "Drivers",
+    "check": "false"
   }
 ]
