@@ -389,6 +389,7 @@ https://t.me/emadadel4
                                 foreach ($re in $app.registry) 
                                 {
                                     Set-Registry -Name $re.Name -Type $re.Type -Path $re.Path -Value $re.Value
+                                    Start-Process -FilePath "powershell.exe" -ArgumentList "-Command `"$($re.refresh)`"" -NoNewWindow -Wait
                                 }
                             }
             
@@ -2998,14 +2999,16 @@ $sync.database.Tweaks = '[
         "Name": "AutoGameModeEnabled",
         "Type": "DWord",
         "Value": "0",
-        "defaultValue": "1"
+        "defaultValue": "1",
+        "refresh": ""
       },
       {
         "Path": "HKCU:\\SOFTWARE\\Microsoft\\GameBar\\",
         "Name": "AllowAutoGameMode",
         "Type": "DWord",
         "Value": "0",
-        "defaultValue": "1"
+        "defaultValue": "1",
+        "refresh": ""
       }
     ]
   },
@@ -3021,7 +3024,9 @@ $sync.database.Tweaks = '[
         "Name": "AllowTelemetry",
         "Type": "DWord",
         "Value": "0",
-        "defaultValue": "1"
+        "defaultValue": "1",
+        "refresh": ""
+
       }
     ]
   },
@@ -3037,7 +3042,8 @@ $sync.database.Tweaks = '[
         "Name": "Enabled",
         "Type": "DWord",
         "Value": "0",
-        "defaultValue": "1"
+        "defaultValue": "1",
+        "refresh": "Stop-Process -Name explorer -Force; Start-Process explorer"
       }
     ]
   },
@@ -3053,7 +3059,8 @@ $sync.database.Tweaks = '[
         "Name": "BingSearchEnabled",
         "Type": "DWord",
         "Value": "0",
-        "defaultValue": "1"
+        "defaultValue": "1",
+        "refresh": ""
       }
     ]
   },
@@ -3069,7 +3076,8 @@ $sync.database.Tweaks = '[
         "Name": "GlobalUserDisabled",
         "Type": "DWord",
         "Value": "1",
-        "defaultValue": "0"
+        "defaultValue": "0",
+        "refresh": ""
       }
     ]
   },
@@ -3085,7 +3093,8 @@ $sync.database.Tweaks = '[
         "Name": "DisableWindowsConsumerFeatures",
         "Type": "DWord",
         "Value": "1",
-        "defaultValue": "0"
+        "defaultValue": "0",
+        "refresh": "Stop-Process -Name explorer -Force; Start-Process explorer"
       }
     ]
   },
@@ -3101,7 +3110,9 @@ $sync.database.Tweaks = '[
         "Name": "ShellFeedsTaskbarViewMode",
         "Type": "DWord",
         "Value": "2",
-        "defaultValue": "0"
+        "defaultValue": "0",
+        "refresh": "Stop-Process -Name explorer -Force; Start-Process explorer"
+
       }
     ]
   },
@@ -3117,7 +3128,9 @@ $sync.database.Tweaks = '[
         "Name": "SearchboxTaskbarMode",
         "Type": "DWord",
         "Value": "1",
-        "defaultValue": "2"
+        "defaultValue": "2",
+        "refresh": "Stop-Process -Name explorer -Force; Start-Process explorer"
+
       }
     ]
   },
@@ -3133,7 +3146,8 @@ $sync.database.Tweaks = '[
         "Name": "PeopleBand",
         "Type": "DWord",
         "Value": "0",
-        "defaultValue": "1"
+        "defaultValue": "1",
+        "refresh": "Stop-Process -Name explorer -Force; Start-Process explorer"
       }
     ]
   },

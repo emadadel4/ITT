@@ -92,14 +92,16 @@
         "Name": "AutoGameModeEnabled",
         "Type": "DWord",
         "Value": "0",
-        "defaultValue": "1"
+        "defaultValue": "1",
+        "refresh": ""
       },
       {
         "Path": "HKCU:\\SOFTWARE\\Microsoft\\GameBar\\",
         "Name": "AllowAutoGameMode",
         "Type": "DWord",
         "Value": "0",
-        "defaultValue": "1"
+        "defaultValue": "1",
+        "refresh": ""
       }
     ]
   },
@@ -115,7 +117,9 @@
         "Name": "AllowTelemetry",
         "Type": "DWord",
         "Value": "0",
-        "defaultValue": "1"
+        "defaultValue": "1",
+        "refresh": ""
+
       }
     ]
   },
@@ -131,7 +135,8 @@
         "Name": "Enabled",
         "Type": "DWord",
         "Value": "0",
-        "defaultValue": "1"
+        "defaultValue": "1",
+        "refresh": "Stop-Process -Name explorer -Force; Start-Process explorer"
       }
     ]
   },
@@ -147,7 +152,8 @@
         "Name": "BingSearchEnabled",
         "Type": "DWord",
         "Value": "0",
-        "defaultValue": "1"
+        "defaultValue": "1",
+        "refresh": ""
       }
     ]
   },
@@ -163,7 +169,8 @@
         "Name": "GlobalUserDisabled",
         "Type": "DWord",
         "Value": "1",
-        "defaultValue": "0"
+        "defaultValue": "0",
+        "refresh": ""
       }
     ]
   },
@@ -179,7 +186,8 @@
         "Name": "DisableWindowsConsumerFeatures",
         "Type": "DWord",
         "Value": "1",
-        "defaultValue": "0"
+        "defaultValue": "0",
+        "refresh": "Stop-Process -Name explorer -Force; Start-Process explorer"
       }
     ]
   },
@@ -195,7 +203,9 @@
         "Name": "ShellFeedsTaskbarViewMode",
         "Type": "DWord",
         "Value": "2",
-        "defaultValue": "0"
+        "defaultValue": "0",
+        "refresh": "Stop-Process -Name explorer -Force; Start-Process explorer"
+
       }
     ]
   },
@@ -211,7 +221,9 @@
         "Name": "SearchboxTaskbarMode",
         "Type": "DWord",
         "Value": "1",
-        "defaultValue": "2"
+        "defaultValue": "2",
+        "refresh": "Stop-Process -Name explorer -Force; Start-Process explorer"
+
       }
     ]
   },
@@ -227,7 +239,8 @@
         "Name": "PeopleBand",
         "Type": "DWord",
         "Value": "0",
-        "defaultValue": "1"
+        "defaultValue": "1",
+        "refresh": "Stop-Process -Name explorer -Force; Start-Process explorer"
       }
     ]
   },
