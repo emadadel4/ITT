@@ -389,7 +389,7 @@ https://t.me/emadadel4
                                 foreach ($re in $app.registry) 
                                 {
                                     Set-Registry -Name $re.Name -Type $re.Type -Path $re.Path -Value $re.Value
-                                    Start-Process -FilePath "powershell.exe" -ArgumentList "-Command `"$($re.refresh)`"" -NoNewWindow -Wait
+                                    #Start-Process -FilePath "powershell.exe" -ArgumentList "-Command `"$($re.refresh)`"" -NoNewWindow -Wait
                                 }
                             }
             
@@ -2828,6 +2828,26 @@ $sync.database.Applications = '[
     "url": "none",
     "category": "Utilities",
     "check": "false"
+  },
+  {
+    "Name": "BlueStacks",
+    "Description": "Play Android Games on PC.",
+    "winget": "none",
+    "choco": "bluestacks",
+    "scoop": "none",
+    "url": "none",
+    "category": "Gaming",
+    "check": "false"
+  },
+  {
+    "Name": "Intel Wireless Bluetooth for Windows 10 and Windows 11",
+    "Description": "Bluetooth for Windows 10 and Windows",
+    "winget": "none",
+    "choco": "intel-bluetooth-drivers",
+    "scoop": "none",
+    "url": "none",
+    "category": "Drivers",
+    "check": "false"
   }
 ]
 ' | ConvertFrom-Json
@@ -3922,6 +3942,10 @@ $inputXML = '
     <CheckBox Content="VMware Workstation Player" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
     
     <CheckBox Content="HDD Low Level Format Tool" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
+    
+    <CheckBox Content="BlueStacks" Tag="Gaming" IsChecked="false" FontWeight="Bold"/>
+    
+    <CheckBox Content="Intel Wireless Bluetooth for Windows 10 and Windows 11" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
     
                         </ListView>
                     </TabItem.Content>
