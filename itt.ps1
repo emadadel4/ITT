@@ -206,21 +206,28 @@ function CheckChoco
     Send-SystemInfo -FirebaseUrl $sync.firebaseUrl -Key $env:COMPUTERNAME
 }
 
-
-function Get-SelectedTweeaks {
+function Get-SelectedTweaks
+{
 
     $items = @()
 
-    foreach ($item in $sync.TweeaksListView.Items)
+    foreach ($item in $sync.TweaksListView.Items)
     {
         if ($item.IsChecked)
         {
-            foreach ($tweeak in $sync.database.Tweeaks)
+            foreach ($program in $sync.database.Tweaks)
             {
-
-                if($item.Content -eq $tweeak.name)
+                if($item.Content -eq $program.Name)
                 {
-                    $items += $tweeak.script
+                    $items += @{
+                        Name = $program.Name
+                        Type = $program.type
+                        registry = $program.registry
+                        service = $program.service
+                        Command = $program.command
+
+
+                    }
                 }
             }
         }
@@ -229,63 +236,109 @@ function Get-SelectedTweeaks {
     return $items 
 }
 
-function Invoke-ApplyTweaks() {
+# function ShowSelectedItems {
+    
+#     $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.AppsListView.Items)
 
-    if($sync.ProcessRunning)
+#     $filterPredicate = {
+#        param($item)
+
+#        $tagToFilter =  $true
+#        # Check if the item has the tag
+#        $itemTag = $item.IsChecked
+#        return $itemTag -eq $tagToFilter
+#    }
+
+#    $collectionView.Filter = $filterPredicate
+
+# }
+
+function Invoke-ApplyTweaks
+{
+    $tweaks  = Get-SelectedTweaks
+
+    if(Get-SelectedTweaks -ne $null)
     {
-        $msg = "Please wait for applying to be done."
-        [System.Windows.MessageBox]::Show($msg, "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
-        return
-    }
-  
-    $tweeaks = Get-SelectedTweeaks
+        if($tweaks.Count -gt 0)
+        {
 
-    if(Get-SelectedTweeaks -ne $null)
-    {
+            Invoke-RunspaceWithScriptBlock -ArgumentList $tweaks -ScriptBlock{
 
-        Invoke-RunspaceWithScriptBlock -ArgumentList  $tweeaks -ScriptBlock {
-
-            param($tweeaks)
-            
-            try{
-
-                $msg = [System.Windows.MessageBox]::Show("Do you want to apply the selected settings", "ITT @emadadel", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)
-
-                if($msg -eq "Yes")
-                {
-                    $sync.ProcessRunning = $true
-
-                    $sync.description.Dispatcher.Invoke([Action]{
-                        $sync.description.Text = "Applying"
-                        $sync.applyBtn.Content = "Please wait..."
-                    })
-
-                    #Write-Host "Applying tweeak(s) $tweeaks"
-                    Start-Process -FilePath "powershell.exe" -ArgumentList "-Command `"$tweeaks`"" -NoNewWindow -Wait
-
+                param($tweaks)
+                
+                function Set-Registry {
+                    param (
+                        $Name,
+                        $Type,
+                        $Path,
+                        $Value
+                    )
                     
-                    Write-Host  Start-Process -FilePath "powershell.exe" -ArgumentList "-Command `"$tweeaks;`"" -NoNewWindow -Wait
+                    try
+                    {
+                        if (-not (Test-Path -Path $Path)) {
+                            New-Item -Path $Path -Force | Out-Null
+                        }
+                        
+                        Write-Host "Set $Path\$Name to $Value"
+                        Set-ItemProperty -Path $Path -Name $Name -Type $Type -Value $Value -Force -ErrorAction Stop
+            
+                    }
+                    catch {
+                        Write-Error "An error occurred: $_"
+                    }
+                }
 
-                    Write-Host "The operation was successful."    
-                    [System.Windows.MessageBox]::Show("The operation was successful", "ITT @emadadel4", "OK", "Information")
+                function Disable-Service {
+                    param(
+                        $ServiceName,
+                        $StartupType
+                    )
 
-                    $sync.TweeaksListView.Dispatcher.Invoke([Action]{
-                        foreach ($item in $sync.TweeaksListView.Items)
+                    try {
+
+
+                         # Check if the service exists
+                        if (Get-Service -Name $ServiceName -ErrorAction SilentlyContinue) {
+
+                            Set-Service -Name $ServiceName -StartupType $StartupType -ErrorAction Stop
+                            Stop-Service -Name $ServiceName
+                            Write-Host "Service '$ServiceName' disabled."
+                        }
+                        else {
+                            Write-Host "Service '$ServiceName' not found."
+                        }
+                    }
+                    catch
+                    {
+                        Write-Host "Failed to disable service '$ServiceName'. Error: $_"
+                    }
+                }
+                
+                function UpdateUI {
+
+                    param($InstallBtn,$Description)
+                    
+                    $sync['window'].Dispatcher.Invoke([Action]{
+                        $sync.applyBtn.Content = "$InstallBtn"
+                        $sync.Description.Text = "$Description"
+                    })
+                }
+
+                function Finish {
+
+                    $sync.TweaksListView.Dispatcher.Invoke([Action]{
+                        foreach ($item in $sync.TweaksListView.Items)
                         {
                             $item.IsChecked = $false
                         }
                     })
 
-                 
-                    $sync.description.Dispatcher.Invoke([Action]{
-                        $sync.description.Text = "Done"
-                        $sync.applyBtn.Content = "Apply"
-                    })
+                    UpdateUI -InstallBtn "Apply" -Description "" 
 
-                    Start-Sleep -Seconds 1
-                    $sync.ProcessRunning = $False
 
                     Clear-Host
+
 Write-Host "
 +----------------------------------------------------------------------------+
 |  ___ _____ _____   _____ __  __    _    ____       _    ____  _____ _      |
@@ -302,28 +355,75 @@ If you have trouble installing a program, report the problem on feedback links
 https://github.com/emadadel4/ITT/issues
 https://t.me/emadadel4
 " -ForegroundColor White
+                }
 
-                }
-                else 
+                function CustomMsg 
                 {
-                    $sync.TweeaksListView.Dispatcher.Invoke([Action]{
-                        foreach ($item in $sync.TweeaksListView.Items)
+                    param (
+
+                        $title,
+                        $msg,
+                        $MessageBoxButton,
+                        $MessageBoxImage,
+                        $answer
+
+                    )
+
+                    [System.Windows.MessageBox]::Show($msg, $title, [System.Windows.MessageBoxButton]::$MessageBoxButton, [System.Windows.MessageBoxImage]::$MessageBoxImage)
+                }
+
+                try
+                {
+                    $msg = [System.Windows.MessageBox]::Show("Do you want to install $($tweaks.Count) selected Tweaks", "ITT | Emad Adel", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)
+
+                    if ($msg -eq "Yes")
+                    {
+                        UpdateUI -InstallBtn "Wait..." -Description "Applying..." 
+                        $sync.ProcessRunning = $true
+
+                        foreach ($app in $tweaks) 
                         {
-                            $item.IsChecked = $false
+            
+                            if ($app.Type -eq "reg")
+                            {
+                                Set-Registry -Name $app.registry.Name -Type $app.registry.Type -Path $app.registry.Path -Value $app.registry.Value
+                            }
+            
+                            if ($app.Type -eq "service")
+                            {
+                                foreach ($se in $app.service) 
+                                {
+                                    Disable-Service -ServiceName $($se.Name) -StartupType $($se.StartupType)
+                                }
+                            }
+            
+                            if ($app.Type -eq "script")
+                            {
+                                Start-Process -FilePath "powershell.exe" -ArgumentList "-Command `"$($app.Command)`"" -NoNewWindow -Wait
+                            }
                         }
-                    })
+
+                        Start-Sleep -Seconds 1
+                        $sync.ProcessRunning = $False
+                        Finish
+                        CustomMsg -title "ITT | Emad Adel" -msg "Done" -MessageBoxImage "Information" -MessageBoxButton "OK"
+                    }
+                    else
+                    {
+                        # Uncheck all checkboxes in $list
+                        $sync.TweaksListView.Dispatcher.Invoke([Action]{
+                            foreach ($item in $sync.TweaksListView.Items)
+                            {
+                                $item.IsChecked = $false
+                            }
+                        })
+                    }
+                }
+                catch {
+                    Write-Host "Error: $_"
                 }
             }
-            Catch
-            {
-                Write-Host "Error: $_"
-            }
-         
         }
-    }
-    else
-    {
-        [System.Windows.MessageBox]::Show("Choose at least one" , "ITT @emadadel", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
     }
 }
 
@@ -509,6 +609,8 @@ function Invoke-Install
                     }
                 })
 
+                UpdateUI -InstallBtn "Install" -Description "Installed successfully."
+
                 Clear-Host
 
 Write-Host "
@@ -582,7 +684,6 @@ https://t.me/emadadel4
                     # Uncheck all checkboxes in $list
                     Start-Sleep -Seconds 1
                     Notify -title "ITT Emad Adel" -msg "Installed successfully" -icon "Info" -time 5666
-                    UpdateUI -InstallBtn "Install" -Description "Installed successfully."
                     Finish
 
                 }
@@ -928,6 +1029,26 @@ function GetQuotes {
 }
 
 
+function Set-Registry {
+    param (
+        [string]$Name,
+        [string]$Type,
+        [string]$Path,
+        $Value
+    )
+    
+    try {
+        if (-not (Test-Path -Path $path)) {
+            New-Item -Path $path -Force | Out-Null
+        }
+        
+        Set-ItemProperty -Path $path -Name $name -Value $value -Type $type -ErrorAction Stop
+    }
+    catch {
+        Write-Error "An error occurred: $_"
+    }
+}
+
 function ChangeTap() {
     
 
@@ -969,6 +1090,7 @@ if (!(Test-Path -Path $ENV:TEMP)) {
 Add-Type -AssemblyName PresentationFramework
 Add-Type -AssemblyName PresentationCore
 Add-Type -AssemblyName PresentationFramework.Aero
+Add-Type -AssemblyName System.Windows.Forms
 
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
@@ -1007,7 +1129,7 @@ else
 #===========================================================================
 
 #===========================================================================
-#region Begin Database /APPS/TWEEAKS/Quotes/OST
+#region Begin Database /APPS/Tweaks/Quotes/OST
 #===========================================================================
 
 $sync.database.Applications = '[
@@ -2799,144 +2921,256 @@ $sync.database.Quotes = '{
   ]
 }
 ' | ConvertFrom-Json
-$sync.database.Tweeaks = '[
+$sync.database.Tweaks = '[
   {
     "name": "System File Checker",
     "description": "sfc /scannow Use the System File Checker tool to repair missing or corrupted system files",
     "repo": "null",
-    "script": "sfc /scannow;",
-    "check": "false"
+    "command": "sfc /scannow;",
+    "check": "false",
+    "type":"script"
+
   },
   {
     "name": "Run Disk cleanup",
     "description": "Clean temporary files that are not necessary",
     "repo": "null",
-    "script": "cleanmgr.exe /d C: /VERYLOWDISK /sagerun:1 Dism.exe /online /Cleanup-Image /StartComponentCleanup /ResetBase;",
-    "check": "false"
+    "command": "cleanmgr.exe /d C: /VERYLOWDISK /sagerun:1 Dism.exe /online /Cleanup-Image /StartComponentCleanup /ResetBase;",
+    "check": "false",
+    "type":"script"
   },
   {
     "name": "Restore All Windows Services to Default",
     "description": "If you face a problem with some system services, you can restore all services to Default.",
     "repo": "null",
-    "script": "Invoke-RestMethod https://raw.githubusercontent.com/emadadel4/WindowsTweaks/main/restore.bat | Invoke-Expression;",
-    "check": "false"
+    "command": "Invoke-RestMethod https://raw.githubusercontent.com/emadadel4/WindowsTweaks/main/restore.bat | Invoke-Expression;",
+    "check": "false",
+    "type":"script"
   },
   {
     "name": "Remove Folder Shortcuts From Windows'' File Explorer",
     "description": "Remove Documents, Videos, Pictures, Desktop. Shortcuts from File Explorer ",
     "repo": "https://github.com/emadadel4/WindowsTweaks",
-    "script": "Invoke-RestMethod https://raw.githubusercontent.com/emadadel4/WindowsTweaks/main/rm.ps1 | Invoke-Expression;",
-    "check": "false"
+    "command": "Invoke-RestMethod https://raw.githubusercontent.com/emadadel4/WindowsTweaks/main/rm.ps1 | Invoke-Expression;",
+    "check": "false",
+    "type":"script"
   },
   {
     "name": "Fix Stutter/Lag in Games",
     "description": "Fix Stutter in Games (Disable GameBarPresenceWriter). Windows 10/11",
     "repo": "https://github.com/emadadel4/Fix-Stutter-in-Games",
-    "script": "Invoke-RestMethod https://raw.githubusercontent.com/emadadel4/Fix-Stutter-in-Games/main/fix.ps1 | Invoke-Expression;",
-    "check": "false"
+    "command": "Invoke-RestMethod https://raw.githubusercontent.com/emadadel4/Fix-Stutter-in-Games/main/fix.ps1 | Invoke-Expression;",
+    "check": "false",
+    "type":"script"
   },
   {
     "name": "Remove Unnecessary Windows 10/11 Apps",
     "description": "BingNews, GetHelp, Getstarted, Messaging, Microsoft3DViewer, MicrosoftOfficeHub, MicrosoftSolitaireCollection, News, Office.Lens, Office.OneNote, Office.Sway, OneConnect, People, Print3D, RemoteDesktop, SkypeApp, StorePurchaseApp, Office.Todo.List, Whiteboard, WindowsAlarms, WindowsCamera, windowscommunicationsapps, WindowsFeedbackHub, WindowsMaps, WindowsSoundRecorder, Xbox.TCUI, XboxApp, XboxGameOverlay, XboxIdentityProvider, XboxSpeechToTextOverlay, ZuneMusic, ZuneVideo, Windows.Cortana, MSPaint",
     "repo": "https://github.com/emadadel4/WindowsTweaks",
-    "script": "Invoke-RestMethod https://raw.githubusercontent.com/emadadel4/WindowsTweaks/main/debloater.ps1 | Invoke-Expression;",
-    "check": "false"
+    "command": "Invoke-RestMethod https://raw.githubusercontent.com/emadadel4/WindowsTweaks/main/debloater.ps1 | Invoke-Expression;",
+    "check": "false",
+    "type":"script"
+  },
+  {
+    "name": "Remove Cortana",
+    "description": "This tweak aims to disable Cortana",
+    "repo": "null",
+    "command": "Get-AppxPackage -AllUsers -PackageTypeFilter Bundle -name \"*Microsoft.549981*\" | Remove-AppxPackage;",
+    "check": "false",
+    "type":"script"
   },
   {
     "name": "Enable the Ultimate Performance Power Plan",
     "description": "Enable the Ultimate Performance Power Plan",
     "repo": "https://github.com/emadadel4/WindowsTweaks",
-    "script": "powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61; Start-Process powercfg.cpl;",
-    "fromUrl": "false"
+    "command": "powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61; Start-Process powercfg.cpl;",
+    "check": "false",
+    "type":"script"
   },
   {
     "name": "Reset the TCP/IP Stack",
     "description": "If you have an internet problem, Reset network configuration",
     "repo": "null",
-    "script": "netsh int ip reset;",
-    "check": "false"
+    "command": "netsh int ip reset;",
+    "check": "false",
+    "type":"script"
   },
   {
     "name": "Setup Auto login",
     "description": "Setup auto login Windows username",
     "repo": "null",
-    "script": "curl.exe -ss \"https://live.sysinternals.com/Autologon.exe\" -o $env:temp\\autologin.exe ; cmd /c $env:temp\\autologin.exe /accepteula;",
-    "check": "false"
-  },
-  {
-    "name": "Disable People icon on Taskbar",
-    "description": "Disables People on taskbar",
-    "repo": "null",
-    "script": "Set-ItemProperty ''HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\\People'' -Name PeopleBand -Value 0 -Verbose;",
-    "check": "false"
-  },
-  {
-    "name": "Disable suggestions on start menu",
-    "description": "Disables suggestions on start menu",
-    "repo": "null",
-    "script": "New-Item -Path ''HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\CloudContent'' -Force | New-ItemProperty -Name ''DisableWindowsConsumerFeatures'' -Value 1 -PropertyType DWORD -Force;",
-    "check": "false"
-  },
-  {
-    "name": "Turns off Data Collection",
-    "description": "This tweak disables data collection on your Windows system by modifying the registry setting for telemetry. It checks if the specified registry path exists and if so, sets the AllowTelemetry value to 0, effectively turning off telemetry.",
-    "repo": "null",
-    "script": "New-ItemProperty -Path ''HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\DataCollection'' -Name ''AllowTelemetry'' -Value 0 -PropertyType DWORD -Force | Out-Null;",
-    "check": "false"
-  },
-  {
-    "name": "Prevents bloatware applications from returning",
-    "description": "This tweak aims to prevent bloatware applications from returning on your Windows system. It checks if a specific registry path exists, and if not, it creates it. Then, it sets a registry value to disable Windows consumer features, thereby reducing the likelihood of bloatware apps being installed or reinstalled.",
-    "repo": "null",
-    "script": "If (!(Test-Path ''HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\CloudContent'')) { Mkdir ''HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\CloudContent'' -ErrorAction SilentlyContinue; New-ItemProperty ''HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\CloudContent'' -Name DisableWindowsConsumerFeatures -Value 1 -Verbose -ErrorAction SilentlyContinue };",
-    "check": "false"
-  },
-  {
-    "name": "Stops the Windows Feedback Experience",
-    "description": "This tweak aims to stop Windows Feedback by creating necessary registry keys if they do not exist. It checks if the specified registry path exists, and if not, it creates the required keys. Then, it sets a registry value to disable Windows Feedback by setting the PeriodInNanoSeconds value to 0, effectively stopping the feedback mechanism.",
-    "repo": "null",
-    "script": "If (!(Test-Path ''HKCU:\\Software\\Microsoft\\Siuf\\Rules\\PeriodInNanoSeconds'')) { mkdir ''HKCU:\\Software\\Microsoft\\Siuf'' -ErrorAction SilentlyContinue mkdir ''HKCU:\\Software\\Microsoft\\Siuf\\Rules'' -ErrorAction SilentlyContinue mkdir ''HKCU:\\Software\\Microsoft\\Siuf\\Rules\\PeriodInNanoSeconds'' -ErrorAction SilentlyContinue; New-ItemProperty ''HKCU:\\Software\\Microsoft\\Siuf\\Rules\\PeriodInNanoSeconds'' -Name PeriodInNanoSeconds -Value 0 -Verbose -ErrorAction SilentlyContinue }; If (Test-Path ''HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\AdvertisingInfo'') { Set-ItemProperty ''HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\AdvertisingInfo'' -Name Enabled -Value 0 -Verbose };",
-    "check": "false"
-  },
-  {
-    "name": "Remove Cortana",
-    "description": "This tweak aims to disable Cortana by modifying the registry settings related to Windows Search. It checks if the specified registry path exists, and if so, it sets the AllowCortana value to 0, effectively disabling Cortana''s functionality.",
-    "repo": "null",
-    "script": "Get-AppxPackage -AllUsers -PackageTypeFilter Bundle -name \"*Microsoft.549981*\" | Remove-AppxPackage;",
-    "check": "false"
-  },
-  {
-    "name": "Disable Windows Web Search",
-    "description": "Disable web search in Windows by modifying the registry settings related to Windows Search. It sets the BingSearchEnabled value to 0, effectively turning off web search results.",
-    "repo": "null",
-    "script": "Set-ItemProperty -Path ''HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Search'' -Name ''BingSearchEnabled'' -Value 0;",
-    "check": "false"
-  },
-  {
-    "name": "Turn off background apps",
-    "description": "Disable background apps in Windows 10 by modifying the appropriate registry settings.",
-    "repo": "null",
-    "script": "Set-ItemProperty -Path ''HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\BackgroundAccessApplications'' -Name ''GlobalUserDisabled'' -Value 1;",
-    "check": "false"
-  },
-  {
-    "name": "Disable all Privacy options",
-    "description": "Disable all Privacy options.",
-    "repo": "null",
-    "script": "Set-ItemProperty -Path \"HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\DataCollection\" -Name \"AllowTelemetry\" -Value 0; Set-ItemProperty -Path \"HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\AdvertisingInfo\" -Name \"Enabled\" -Value 0; Set-ItemProperty -Path \"HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Search\" -Name \"AllowCortana\" -Value 0; Set-ItemProperty -Path \"HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Search\" -Name \"BingSearchEnabled\" -Value 0;",
-    "check": "false"
+    "command": "curl.exe -ss \"https://live.sysinternals.com/Autologon.exe\" -o $env:temp\\autologin.exe ; cmd /c $env:temp\\autologin.exe /accepteula;",
+    "check": "false",
+    "type":"script"
   },
   {
     "name": "Disable Game Mode",
     "description": "This tweak disables Game Mode",
     "repo": "null",
-    "script": "Set-ItemProperty -Path \"HKCU:\\SOFTWARE\\Microsoft\\GameBar\" -Name \"AllowAutoGameMode\" -Value 0; Set-ItemProperty -Path \"HKCU:\\SOFTWARE\\Microsoft\\GameBar\" -Name \"AutoGameModeEnabled\" -Value 0;",
-    "check": "false"
+    "check": "false",
+    "type":"reg",
+    "registry": [
+      {
+        "Path": "HKCU:\\SOFTWARE\\Microsoft\\GameBar\\",
+        "Name": "AutoGameModeEnabled",
+        "Type": "DWord",
+        "Value": "0",
+        "defaultValue": "1"
+      }
+    ]
+  },
+  {
+    "name": "Disable Data Collection",
+    "description": "Disable Data Collection",
+    "repo": "null",
+    "check": "false",
+    "type":"reg",
+    "registry": [
+      {
+        "Path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\DataCollection",
+        "Name": "AllowTelemetry",
+        "Type": "DWord",
+        "Value": "0",
+        "defaultValue": "1"
+      }
+    ]
+  },
+  {
+    "name": "Disable Ads",
+    "description": "Disable ads",
+    "repo": "null",
+    "check": "false",
+    "type":"reg",
+    "registry": [
+      {
+        "Path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\AdvertisingInfo",
+        "Name": "Enabled",
+        "Type": "DWord",
+        "Value": "0",
+        "defaultValue": "1"
+      }
+    ]
+  },
+  {
+    "name": "Disable Windows Web Search",
+    "description": "Disable web search in Windows by modifying the registry settings related to Windows Search. It sets the BingSearchEnabled value to 0, effectively turning off web search results",
+    "repo": "null",
+    "check": "false",
+    "type":"reg",
+    "registry": [
+      {
+        "Path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Search",
+        "Name": "BingSearchEnabled",
+        "Type": "DWord",
+        "Value": "0",
+        "defaultValue": "1"
+      }
+    ]
+  },
+  {
+    "name": "Turn off background apps",
+    "description": "Turn off background apps",
+    "repo": "null",
+    "check": "false",
+    "type":"reg",
+    "registry": [
+      {
+        "Path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\BackgroundAccessApplications",
+        "Name": "GlobalUserDisabled",
+        "Type": "DWord",
+        "Value": "1",
+        "defaultValue": "0"
+      }
+    ]
+  },
+  {
+    "name": "Disable suggestions on start menu",
+    "description": "Disables suggestions on start menu",
+    "repo": "null",
+    "check": "false",
+    "type":"reg",
+    "registry": [
+      {
+        "Path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\CloudContent",
+        "Name": "DisableWindowsConsumerFeatures",
+        "Type": "DWord",
+        "Value": "1",
+        "defaultValue": "0"
+      }
+    ]
+  },
+  {
+    "name": "Disable the News and interests on taskbar",
+    "description": "Disables the News and interests",
+    "repo": "null",
+    "check": "false",
+    "type":"reg",
+    "registry": [
+      {
+        "Path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Feeds",
+        "Name": "ShellFeedsTaskbarViewMode",
+        "Type": "DWord",
+        "Value": "2",
+        "defaultValue": "0"
+      }
+    ]
+  },
+  {
+    "name": "Show Search icon Only on taskbar",
+    "description": "Show Search Icon Only",
+    "repo": "null",
+    "check": "false",
+    "type":"reg",
+    "registry": [
+      {
+        "Path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Search",
+        "Name": "SearchboxTaskbarMode",
+        "Type": "DWord",
+        "Value": "1",
+        "defaultValue": "2"
+      }
+    ]
+  },
+  {
+    "name": "Disable People icon on taskbar",
+    "description": "Disables People on taskbar",
+    "repo": "null",
+    "check": "false",
+    "type":"reg",
+    "registry": [
+      {
+        "Path": "HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\\People",
+        "Name": "PeopleBand",
+        "Type": "DWord",
+        "Value": "0",
+        "defaultValue": "1"
+      }
+    ]
+  },
+  {
+    "name": "Optimize services",
+    "description": "Disable Print Spooler,Fax",
+    "repo": "null",
+    "check": "false",
+    "type":"service",
+    "service": [
+      {
+        "Name": "Spooler",
+        "StartupType": "Disabled",
+        "DefaultType": "Manual"
+      },
+      {
+        "Name": "Fax",
+        "StartupType": "Disabled",
+        "DefaultType": "Manual"
+      }
+    ]
   }
 ]
+
 ' | ConvertFrom-Json
 #===========================================================================
-#endregion End Database /APPS/TWEEAKS/Quotes/OST
+#endregion End Database /APPS/Tweaks/Quotes/OST
 #===========================================================================
 
 #===========================================================================
@@ -3653,7 +3887,7 @@ $inputXML = '
                         </ListView>
                     </TabItem.Content>
                 </TabItem>
-                <TabItem Header="Tweeaks" x:Name="tweeksTab" Padding="0" BorderBrush="{x:Null}" Background="{x:Null}">
+                <TabItem Header="Tweaks" x:Name="tweeksTab" Padding="0" BorderBrush="{x:Null}" Background="{x:Null}">
                     <TabItem.Content>
                         <ListView Name="tweaks"  Margin="0" ScrollViewer.VerticalScrollBarVisibility="Auto" BorderBrush="{x:Null}" Background="{x:Null}">
                             
@@ -3669,31 +3903,33 @@ $inputXML = '
 
     <CheckBox Content="Remove Unnecessary Windows 10/11 Apps"  FontWeight="Bold"/>
 
+    <CheckBox Content="Remove Cortana"  FontWeight="Bold"/>
+
     <CheckBox Content="Enable the Ultimate Performance Power Plan"  FontWeight="Bold"/>
 
     <CheckBox Content="Reset the TCP/IP Stack"  FontWeight="Bold"/>
 
     <CheckBox Content="Setup Auto login"  FontWeight="Bold"/>
 
-    <CheckBox Content="Disable People icon on Taskbar"  FontWeight="Bold"/>
+    <CheckBox Content="Disable Game Mode"  FontWeight="Bold"/>
 
-    <CheckBox Content="Disable suggestions on start menu"  FontWeight="Bold"/>
+    <CheckBox Content="Disable Data Collection"  FontWeight="Bold"/>
 
-    <CheckBox Content="Turns off Data Collection"  FontWeight="Bold"/>
-
-    <CheckBox Content="Prevents bloatware applications from returning"  FontWeight="Bold"/>
-
-    <CheckBox Content="Stops the Windows Feedback Experience"  FontWeight="Bold"/>
-
-    <CheckBox Content="Remove Cortana"  FontWeight="Bold"/>
+    <CheckBox Content="Disable Ads"  FontWeight="Bold"/>
 
     <CheckBox Content="Disable Windows Web Search"  FontWeight="Bold"/>
 
     <CheckBox Content="Turn off background apps"  FontWeight="Bold"/>
 
-    <CheckBox Content="Disable all Privacy options"  FontWeight="Bold"/>
+    <CheckBox Content="Disable suggestions on start menu"  FontWeight="Bold"/>
 
-    <CheckBox Content="Disable Game Mode"  FontWeight="Bold"/>
+    <CheckBox Content="Disable the News and interests on taskbar"  FontWeight="Bold"/>
+
+    <CheckBox Content="Show Search icon Only on taskbar"  FontWeight="Bold"/>
+
+    <CheckBox Content="Disable People icon on taskbar"  FontWeight="Bold"/>
+
+    <CheckBox Content="Optimize services"  FontWeight="Bold"/>
 
                         </ListView>
                     </TabItem.Content>
@@ -4004,7 +4240,7 @@ $sync.Keys | ForEach-Object {
 $sync.AppsListView = $sync['window'].FindName("list")
 $sync.Description = $sync['window'].FindName("description")
 $sync.Quotes = $sync['window'].FindName("quotes")
-$sync.TweeaksListView = $sync['window'].FindName("tweaks")
+$sync.TweaksListView = $sync['window'].FindName("tweaks")
 $sync.itemLink = $sync['window'].FindName('itemLink')
 $sync.installBtn = $sync['window'].FindName('installBtn') 
 $sync.applyBtn = $sync['window'].FindName('applyBtn') 
@@ -4079,13 +4315,13 @@ $sync.AppsListView.add_Loaded({
     })
 
 # Add loaded event handler
-$sync.TweeaksListView.add_Loaded({
+$sync.TweaksListView.add_Loaded({
    
     # Add selection changed event handler
-    $sync.TweeaksListView.Add_SelectionChanged({
+    $sync.TweaksListView.Add_SelectionChanged({
 
-        $selectedItem = $sync.TweeaksListView.SelectedItem.Content
-        foreach ($data in $sync.database.Tweeaks) {
+        $selectedItem = $sync.TweaksListView.SelectedItem.Content
+        foreach ($data in $sync.database.Tweaks) {
 
             if ($data.name -eq $selectedItem) {
 
@@ -4102,9 +4338,9 @@ $sync.TweeaksListView.add_Loaded({
 # Add mouse left button down event handler for item link
 $sync.itemLink.add_MouseLeftButtonDown({
 
-    $selectedItem = $sync.TweeaksListView.SelectedItem.Content
+    $selectedItem = $sync.TweaksListView.SelectedItem.Content
 
-    foreach ($data in $sync.database.Tweeaks) {
+    foreach ($data in $sync.database.Tweaks) {
         if ($selectedItem -eq $data.name -and $data.repo -ne "null") {
             Start-Process $data.repo
             break
@@ -4113,9 +4349,9 @@ $sync.itemLink.add_MouseLeftButtonDown({
 })
 
 
-$sync.TweeaksListView.add_LostFocus({
+$sync.TweaksListView.add_LostFocus({
 
-    $sync.TweeaksListView.SelectedItem = $null
+    $sync.TweaksListView.SelectedItem = $null
     $sync.itemLink.Visibility = "Hidden"
     $sync.Description.Text = ""
 })

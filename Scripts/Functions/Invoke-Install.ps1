@@ -133,6 +133,8 @@ function Invoke-Install
                     }
                 })
 
+                UpdateUI -InstallBtn "Install" -Description "Installed successfully."
+
                 Clear-Host
 
 Write-Host "
@@ -206,7 +208,6 @@ https://t.me/emadadel4
                     # Uncheck all checkboxes in $list
                     Start-Sleep -Seconds 1
                     Notify -title "ITT Emad Adel" -msg "Installed successfully" -icon "Info" -time 5666
-                    UpdateUI -InstallBtn "Install" -Description "Installed successfully."
                     Finish
 
                 }

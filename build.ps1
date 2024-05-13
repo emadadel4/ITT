@@ -121,7 +121,7 @@ try {
 
     WriteToScript -Content @"
 #===========================================================================
-#region Begin Database /APPS/TWEEAKS/Quotes/OST
+#region Begin Database /APPS/Tweaks/Quotes/OST
 #===========================================================================
 
 "@
@@ -134,7 +134,7 @@ try {
 
     WriteToScript -Content @"
 #===========================================================================
-#endregion End Database /APPS/TWEEAKS/Quotes/OST
+#endregion End Database /APPS/Tweaks/Quotes/OST
 #===========================================================================
 
 "@
@@ -179,7 +179,7 @@ try {
     }
 
     $TweaksCheckboxes  = ""
-    foreach ($Tweak  in $sync.database.Tweeaks) {
+    foreach ($Tweak  in $sync.database.Tweaks) {
         $TweaksCheckboxes  += @"
 
     <CheckBox Content="$($Tweak.Name)"  FontWeight="Bold"/>
@@ -188,7 +188,7 @@ try {
 }
 
     $XamlContent = $XamlContent -replace "{{Apps}}", $AppsCheckboxes 
-    $XamlContent = $XamlContent -replace "{{Tweeaks}}", $TweaksCheckboxes 
+    $XamlContent = $XamlContent -replace "{{Tweaks}}", $TweaksCheckboxes 
     WriteToScript -Content "`$inputXML = '$XamlContent'"
 
     WriteToScript -Content @"

@@ -1,18 +1,25 @@
-
-function Get-SelectedTweeaks {
+function Get-SelectedTweaks
+{
 
     $items = @()
 
-    foreach ($item in $sync.TweeaksListView.Items)
+    foreach ($item in $sync.TweaksListView.Items)
     {
         if ($item.IsChecked)
         {
-            foreach ($tweeak in $sync.database.Tweeaks)
+            foreach ($program in $sync.database.Tweaks)
             {
-
-                if($item.Content -eq $tweeak.name)
+                if($item.Content -eq $program.Name)
                 {
-                    $items += $tweeak.script
+                    $items += @{
+                        Name = $program.Name
+                        Type = $program.type
+                        registry = $program.registry
+                        service = $program.service
+                        Command = $program.command
+
+
+                    }
                 }
             }
         }
@@ -21,63 +28,109 @@ function Get-SelectedTweeaks {
     return $items 
 }
 
-function Invoke-ApplyTweaks() {
+# function ShowSelectedItems {
+    
+#     $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.AppsListView.Items)
 
-    if($sync.ProcessRunning)
+#     $filterPredicate = {
+#        param($item)
+
+#        $tagToFilter =  $true
+#        # Check if the item has the tag
+#        $itemTag = $item.IsChecked
+#        return $itemTag -eq $tagToFilter
+#    }
+
+#    $collectionView.Filter = $filterPredicate
+
+# }
+
+function Invoke-ApplyTweaks
+{
+    $tweaks  = Get-SelectedTweaks
+
+    if(Get-SelectedTweaks -ne $null)
     {
-        $msg = "Please wait for applying to be done."
-        [System.Windows.MessageBox]::Show($msg, "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
-        return
-    }
-  
-    $tweeaks = Get-SelectedTweeaks
+        if($tweaks.Count -gt 0)
+        {
 
-    if(Get-SelectedTweeaks -ne $null)
-    {
+            Invoke-RunspaceWithScriptBlock -ArgumentList $tweaks -ScriptBlock{
 
-        Invoke-RunspaceWithScriptBlock -ArgumentList  $tweeaks -ScriptBlock {
-
-            param($tweeaks)
-            
-            try{
-
-                $msg = [System.Windows.MessageBox]::Show("Do you want to apply the selected settings", "ITT @emadadel", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)
-
-                if($msg -eq "Yes")
-                {
-                    $sync.ProcessRunning = $true
-
-                    $sync.description.Dispatcher.Invoke([Action]{
-                        $sync.description.Text = "Applying"
-                        $sync.applyBtn.Content = "Please wait..."
-                    })
-
-                    #Write-Host "Applying tweeak(s) $tweeaks"
-                    Start-Process -FilePath "powershell.exe" -ArgumentList "-Command `"$tweeaks`"" -NoNewWindow -Wait
-
+                param($tweaks)
+                
+                function Set-Registry {
+                    param (
+                        $Name,
+                        $Type,
+                        $Path,
+                        $Value
+                    )
                     
-                    Write-Host  Start-Process -FilePath "powershell.exe" -ArgumentList "-Command `"$tweeaks;`"" -NoNewWindow -Wait
+                    try
+                    {
+                        if (-not (Test-Path -Path $Path)) {
+                            New-Item -Path $Path -Force | Out-Null
+                        }
+                        
+                        Write-Host "Set $Path\$Name to $Value"
+                        Set-ItemProperty -Path $Path -Name $Name -Type $Type -Value $Value -Force -ErrorAction Stop
+            
+                    }
+                    catch {
+                        Write-Error "An error occurred: $_"
+                    }
+                }
 
-                    Write-Host "The operation was successful."    
-                    [System.Windows.MessageBox]::Show("The operation was successful", "ITT @emadadel4", "OK", "Information")
+                function Disable-Service {
+                    param(
+                        $ServiceName,
+                        $StartupType
+                    )
 
-                    $sync.TweeaksListView.Dispatcher.Invoke([Action]{
-                        foreach ($item in $sync.TweeaksListView.Items)
+                    try {
+
+
+                         # Check if the service exists
+                        if (Get-Service -Name $ServiceName -ErrorAction SilentlyContinue) {
+
+                            Set-Service -Name $ServiceName -StartupType $StartupType -ErrorAction Stop
+                            Stop-Service -Name $ServiceName
+                            Write-Host "Service '$ServiceName' disabled."
+                        }
+                        else {
+                            Write-Host "Service '$ServiceName' not found."
+                        }
+                    }
+                    catch
+                    {
+                        Write-Host "Failed to disable service '$ServiceName'. Error: $_"
+                    }
+                }
+                
+                function UpdateUI {
+
+                    param($InstallBtn,$Description)
+                    
+                    $sync['window'].Dispatcher.Invoke([Action]{
+                        $sync.applyBtn.Content = "$InstallBtn"
+                        $sync.Description.Text = "$Description"
+                    })
+                }
+
+                function Finish {
+
+                    $sync.TweaksListView.Dispatcher.Invoke([Action]{
+                        foreach ($item in $sync.TweaksListView.Items)
                         {
                             $item.IsChecked = $false
                         }
                     })
 
-                 
-                    $sync.description.Dispatcher.Invoke([Action]{
-                        $sync.description.Text = "Done"
-                        $sync.applyBtn.Content = "Apply"
-                    })
+                    UpdateUI -InstallBtn "Apply" -Description "" 
 
-                    Start-Sleep -Seconds 1
-                    $sync.ProcessRunning = $False
 
                     Clear-Host
+
 Write-Host "
 +----------------------------------------------------------------------------+
 |  ___ _____ _____   _____ __  __    _    ____       _    ____  _____ _      |
@@ -94,28 +147,75 @@ If you have trouble installing a program, report the problem on feedback links
 https://github.com/emadadel4/ITT/issues
 https://t.me/emadadel4
 " -ForegroundColor White
+                }
 
-                }
-                else 
+                function CustomMsg 
                 {
-                    $sync.TweeaksListView.Dispatcher.Invoke([Action]{
-                        foreach ($item in $sync.TweeaksListView.Items)
+                    param (
+
+                        $title,
+                        $msg,
+                        $MessageBoxButton,
+                        $MessageBoxImage,
+                        $answer
+
+                    )
+
+                    [System.Windows.MessageBox]::Show($msg, $title, [System.Windows.MessageBoxButton]::$MessageBoxButton, [System.Windows.MessageBoxImage]::$MessageBoxImage)
+                }
+
+                try
+                {
+                    $msg = [System.Windows.MessageBox]::Show("Do you want to install $($tweaks.Count) selected Tweaks", "ITT | Emad Adel", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)
+
+                    if ($msg -eq "Yes")
+                    {
+                        UpdateUI -InstallBtn "Wait..." -Description "Applying..." 
+                        $sync.ProcessRunning = $true
+
+                        foreach ($app in $tweaks) 
                         {
-                            $item.IsChecked = $false
+            
+                            if ($app.Type -eq "reg")
+                            {
+                                Set-Registry -Name $app.registry.Name -Type $app.registry.Type -Path $app.registry.Path -Value $app.registry.Value
+                            }
+            
+                            if ($app.Type -eq "service")
+                            {
+                                foreach ($se in $app.service) 
+                                {
+                                    Disable-Service -ServiceName $($se.Name) -StartupType $($se.StartupType)
+                                }
+                            }
+            
+                            if ($app.Type -eq "script")
+                            {
+                                Start-Process -FilePath "powershell.exe" -ArgumentList "-Command `"$($app.Command)`"" -NoNewWindow -Wait
+                            }
                         }
-                    })
+
+                        Start-Sleep -Seconds 1
+                        $sync.ProcessRunning = $False
+                        Finish
+                        CustomMsg -title "ITT | Emad Adel" -msg "Done" -MessageBoxImage "Information" -MessageBoxButton "OK"
+                    }
+                    else
+                    {
+                        # Uncheck all checkboxes in $list
+                        $sync.TweaksListView.Dispatcher.Invoke([Action]{
+                            foreach ($item in $sync.TweaksListView.Items)
+                            {
+                                $item.IsChecked = $false
+                            }
+                        })
+                    }
+                }
+                catch {
+                    Write-Host "Error: $_"
                 }
             }
-            Catch
-            {
-                Write-Host "Error: $_"
-            }
-         
         }
-    }
-    else
-    {
-        [System.Windows.MessageBox]::Show("Choose at least one" , "ITT @emadadel", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
     }
 }
 

@@ -1,12 +1,12 @@
 
 # Add loaded event handler
-$sync.TweeaksListView.add_Loaded({
+$sync.TweaksListView.add_Loaded({
    
     # Add selection changed event handler
-    $sync.TweeaksListView.Add_SelectionChanged({
+    $sync.TweaksListView.Add_SelectionChanged({
 
-        $selectedItem = $sync.TweeaksListView.SelectedItem.Content
-        foreach ($data in $sync.database.Tweeaks) {
+        $selectedItem = $sync.TweaksListView.SelectedItem.Content
+        foreach ($data in $sync.database.Tweaks) {
 
             if ($data.name -eq $selectedItem) {
 
@@ -23,9 +23,9 @@ $sync.TweeaksListView.add_Loaded({
 # Add mouse left button down event handler for item link
 $sync.itemLink.add_MouseLeftButtonDown({
 
-    $selectedItem = $sync.TweeaksListView.SelectedItem.Content
+    $selectedItem = $sync.TweaksListView.SelectedItem.Content
 
-    foreach ($data in $sync.database.Tweeaks) {
+    foreach ($data in $sync.database.Tweaks) {
         if ($selectedItem -eq $data.name -and $data.repo -ne "null") {
             Start-Process $data.repo
             break
@@ -34,9 +34,9 @@ $sync.itemLink.add_MouseLeftButtonDown({
 })
 
 
-$sync.TweeaksListView.add_LostFocus({
+$sync.TweaksListView.add_LostFocus({
 
-    $sync.TweeaksListView.SelectedItem = $null
+    $sync.TweaksListView.SelectedItem = $null
     $sync.itemLink.Visibility = "Hidden"
     $sync.Description.Text = ""
 })
