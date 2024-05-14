@@ -304,7 +304,7 @@
     ]
   },
   {
-    "name": "Optimize services",
+    "name": "Optimize Services",
     "description": "Disable (Print Spooler), (Fax), (Diagnostic Policy), (Downloaded Maps Manager), (Windows Error Reporting Service), (Remote Registry) , (Internet Connection Sharing), (Disables Telemetry and Data) ",
     "check": "false",
     "type":"service",
