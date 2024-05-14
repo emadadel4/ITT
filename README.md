@@ -49,12 +49,19 @@ irm https://raw.githubusercontent.com/emadadel4/ITT/main/itt.ps1 | iex
 newApp.ps1
 ```
 
-**Use this Command to add new Soundtrack**
+**Use this Command to add a new Tweak**
+Note: you must know what you're doing when you add a new tweak, just be careful and test it before commit
+
+```sh
+newTweak.ps1
+```
+
+**Use this Command to add a new Soundtrack**
 ```sh
 newOST.ps1
 ```
 
-**Use this Command to add new Qoute**
+**Use this Command to add a new Qoute**
 ```sh
 newQuote.ps1
 ```
