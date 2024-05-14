@@ -2944,36 +2944,6 @@ $sync.database.Applications = '[
     "url": "none",
     "category": "Microsoft",
     "check": "false"
-  },
-  {
-    "Name": "1",
-    "Description": "1",
-    "winget": "1",
-    "choco": "1",
-    "scoop": "1",
-    "url": "none",
-    "category": "Browsers",
-    "check": "false"
-  },
-  {
-    "Name": "",
-    "Description": "",
-    "winget": "none",
-    "choco": "",
-    "scoop": "none",
-    "url": "none",
-    "category": "Browsers",
-    "check": "false"
-  },
-  {
-    "Name": "",
-    "Description": "",
-    "winget": "none",
-    "choco": "",
-    "scoop": "none",
-    "url": "none",
-    "category": "Browsers",
-    "check": "false"
   }
 ]
 ' | ConvertFrom-Json
@@ -4309,12 +4279,6 @@ $inputXML = '
     <CheckBox Content="Intel Wireless Bluetooth for Windows 10 and Windows 11" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
     
     <CheckBox Content="Office 365 Business" Tag="Microsoft" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="1" Tag="Browsers" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="" Tag="Browsers" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="" Tag="Browsers" IsChecked="false" FontWeight="Bold"/>
     
                         </ListView>
                     </TabItem.Content>
