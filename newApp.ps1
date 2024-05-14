@@ -51,7 +51,7 @@ try {
 
     # Define software object with sorted properties
     $software = @{
-        
+
         Name = $Name
         Description = $Description
         winget = $winget
@@ -75,7 +75,9 @@ try {
 
     Write-Host  "Added Successfully" -ForegroundColor Green
 
-    $build = Read-Host "Build and run? [y/yes][n/no]"
+    $build = Read-Host "Press Enter to build and run"
+
+    $build = "y"
 
     if ($build -eq "") { $build = "n" }  # default value n
 
