@@ -144,3 +144,54 @@ $updatedJson | Out-File -FilePath "./Database/Tweaks.json" -Encoding utf8
 }
 
 
+if($userInput -eq "command")
+{
+
+    
+$TweakName = Read-Host "Enter Tweak Name"
+$description = Read-Host "Enter Tweak description"
+$Name = Read-Host "Enter AppxPackage Name"
+
+
+# Define the data
+$data = @{
+    "name" = $TweakName
+    "description" = $description
+    "check" = "false"
+    "type" = "AppxPackage"
+    "$userInput" = @(
+        @{
+            "Name" = $Name
+        }
+    )
+}
+
+# Convert to JSON string
+$jsonString = @"
+{
+    "name": "$($data["name"])",
+    "description": "$($data["description"])",
+    "check": "$($data["check"])",
+    "type": "$($data["type"])",
+    "$userInput": [
+        {
+            "Name": "$($data["$userInput"][0]["Name"])",
+        }
+    ]
+}
+"@
+
+# Read existing JSON file
+$existingJson = Get-Content -Path "./Database/Tweaks.json" | ConvertFrom-Json
+
+# Append new data to existing JSON
+$existingJson += $jsonString | ConvertFrom-Json
+
+# Convert to JSON string
+$updatedJson = $existingJson | ConvertTo-Json -Depth 100
+
+# Output to file
+$updatedJson | Out-File -FilePath "./Database/Tweaks.json" -Encoding utf8
+
+}
+

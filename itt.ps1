@@ -225,7 +225,8 @@ function Get-SelectedTweaks
                         registry = $program.registry
                         service = $program.service
                         removeAppxPackage = $program.RemoveAppxPackage
-                        Command = $program.command
+                        Command = $program.commands
+
                         # if you want to implement a new thing from JSON applications do it here.
                     }
                 }
@@ -431,7 +432,17 @@ https://t.me/emadadel4
 
                         foreach ($app in $tweaks) 
                         {
-            
+
+                            if ($app.Type -eq "command")
+                            {
+                                foreach ($cmd in $app.Command) 
+                                {
+                                    Start-Process -FilePath "powershell.exe" -ArgumentList "-Command `"$($cmd.run)`"" -NoNewWindow -Wait
+                                    # debug
+                                    #Write-Host Start-Process -FilePath "powershell.exe" -ArgumentList "-Command `"$($cmd.run)`"" -NoNewWindow -Wait
+                                }
+                            }
+
                             if ($app.Type -eq "modifying")
                             {
                                 foreach ($re in $app.registry) 
@@ -463,23 +474,15 @@ https://t.me/emadadel4
                                     Disable-Service -ServiceName $($se.Name) -StartupType $($se.StartupType)
                                 }
                             }
-            
-                            if ($app.Type -eq "command")
-                            {
-                                Start-Process -FilePath "powershell.exe" -ArgumentList "-Command `"$($app.Command)`"" -NoNewWindow -Wait
-
-                                # debug
-                                #Write-Host Start-Process -FilePath "powershell.exe" -ArgumentList "-Command `"$($app.Command)`"" -NoNewWindow -Wait
-                            }
 
                             if ($app.Type -eq "AppxPackage")
                             {
-                                foreach ($re in $app.removeAppxPackage) 
+                                foreach ($appx in $app.removeAppxPackage) 
                                 {
-                                   Remove-AppxPackage -App $re.Name
+                                   Remove-AppxPackage -App $appx.Name
 
                                    # debug
-                                   #Write-Host Remove-AppxPackage -App $re.Name
+                                   #Write-Host Remove-AppxPackage -App $appx.Name
 
                                 }
                             }
@@ -3012,59 +3015,86 @@ $sync.database.Tweaks = '[
     "description": "sfc /scannow Use the System File Checker tool to repair missing or corrupted system files",
     "command": "sfc /scannow;",
     "check": "false",
-    "type":"script"
-
+    "type":"script",
+    "commands": [
+      {
+        "run": "sfc /scannow;",
+        "delay": "1"
+      }
+    ]
   },
   {
     "name": "Run Disk cleanup",
     "description": "Clean temporary files that are not necessary",
-    "command": "cleanmgr.exe /d C: /VERYLOWDISK /sagerun:1 Dism.exe /online /Cleanup-Image /StartComponentCleanup /ResetBase;",
     "check": "false",
-    "type":"command"
+    "type":"command",
+    "commands": [
+      {
+        "run": "cleanmgr.exe /d C: /VERYLOWDISK /sagerun:1 Dism.exe /online /Cleanup-Image /StartComponentCleanup /ResetBase;",
+        "delay": "1"
+      }
+    ]
   },
   {
     "name": "Restore All Windows Services to Default",
     "description": "If you face a problem with some system services, you can restore all services to Default.",
-    "command": "Invoke-RestMethod https://raw.githubusercontent.com/emadadel4/WindowsTweaks/main/restore.bat | Invoke-Expression;",
     "check": "false",
-    "type":"command"
+    "type":"command",
+    "commands": [
+      {
+        "run": "Invoke-RestMethod https://raw.githubusercontent.com/emadadel4/WindowsTweaks/main/restore.bat | Invoke-Expression;",
+        "delay": "1"
+      }
+    ]
   },
   {
     "name": "Fix Stutter/Lag in Games",
     "description": "Fix Stutter in Games (Disable GameBarPresenceWriter). Windows 10/11",
-    "repo": "https://github.com/emadadel4/Fix-Stutter-in-Games",
-    "command": "Invoke-RestMethod https://raw.githubusercontent.com/emadadel4/Fix-Stutter-in-Games/main/fix.ps1 | Invoke-Expression;",
     "check": "false",
-    "type":"command"
-  },
-  {
-    "name": "Remove Cortana",
-    "description": "This tweak aims to remove Cortana",
-    "command": "Get-AppxPackage -AllUsers -PackageTypeFilter Bundle -name \"*Microsoft.549981*\" | Remove-AppxPackage;",
-    "check": "false",
-    "type":"command"
+    "type":"command",
+    "commands": [
+      {
+        "run": "Invoke-RestMethod https://raw.githubusercontent.com/emadadel4/Fix-Stutter-in-Games/main/fix.ps1 | Invoke-Expression;",
+        "delay": "1"
+      }
+    ]
   },
   {
     "name": "Enable the Ultimate Performance Power Plan",
     "description": "Enable the Ultimate Performance Power Plan",
     "repo": "https://github.com/emadadel4/WindowsTweaks",
-    "command": "powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61; Start-Process powercfg.cpl;",
     "check": "false",
-    "type":"command"
+    "type":"command",
+    "commands": [
+      {
+        "run": "powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61; Start-Process powercfg.cpl;",
+        "delay": "1"
+      }
+    ]
   },
   {
     "name": "Reset the TCP/IP Stack",
     "description": "If you have an internet problem, Reset network configuration",
-    "command": "netsh int ip reset;",
     "check": "false",
-    "type":"command"
+    "type":"command",
+    "commands": [
+      {
+        "run": "netsh int ip reset;",
+        "delay": "1"
+      }
+    ]
   },
   {
     "name": "Setup Auto login",
     "description": "Setup auto login Windows username",
-    "command": "curl.exe -ss \"https://live.sysinternals.com/Autologon.exe\" -o $env:temp\\autologin.exe ; cmd /c $env:temp\\autologin.exe /accepteula;",
     "check": "false",
-    "type":"command"
+    "type":"command",
+    "commands": [
+      {
+        "run": "curl.exe -ss \"https://live.sysinternals.com/Autologon.exe\" -o $env:temp\\autologin.exe ; cmd /c $env:temp\\autologin.exe /accepteula;",
+        "delay": "1"
+      }
+    ]
   },
   {
     "name": "Disable Game Mode",
@@ -4249,8 +4279,6 @@ $inputXML = '
     <CheckBox Content="Restore All Windows Services to Default"  FontWeight="Bold"/>
 
     <CheckBox Content="Fix Stutter/Lag in Games"  FontWeight="Bold"/>
-
-    <CheckBox Content="Remove Cortana"  FontWeight="Bold"/>
 
     <CheckBox Content="Enable the Ultimate Performance Power Plan"  FontWeight="Bold"/>
 

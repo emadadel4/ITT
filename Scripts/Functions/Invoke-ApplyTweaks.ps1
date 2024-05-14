@@ -17,7 +17,8 @@ function Get-SelectedTweaks
                         registry = $program.registry
                         service = $program.service
                         removeAppxPackage = $program.RemoveAppxPackage
-                        Command = $program.command
+                        Command = $program.commands
+
                         # if you want to implement a new thing from JSON applications do it here.
                     }
                 }
@@ -223,7 +224,17 @@ https://t.me/emadadel4
 
                         foreach ($app in $tweaks) 
                         {
-            
+
+                            if ($app.Type -eq "command")
+                            {
+                                foreach ($cmd in $app.Command) 
+                                {
+                                    Start-Process -FilePath "powershell.exe" -ArgumentList "-Command `"$($cmd.run)`"" -NoNewWindow -Wait
+                                    # debug
+                                    #Write-Host Start-Process -FilePath "powershell.exe" -ArgumentList "-Command `"$($cmd.run)`"" -NoNewWindow -Wait
+                                }
+                            }
+
                             if ($app.Type -eq "modifying")
                             {
                                 foreach ($re in $app.registry) 
@@ -255,23 +266,15 @@ https://t.me/emadadel4
                                     Disable-Service -ServiceName $($se.Name) -StartupType $($se.StartupType)
                                 }
                             }
-            
-                            if ($app.Type -eq "command")
-                            {
-                                Start-Process -FilePath "powershell.exe" -ArgumentList "-Command `"$($app.Command)`"" -NoNewWindow -Wait
-
-                                # debug
-                                #Write-Host Start-Process -FilePath "powershell.exe" -ArgumentList "-Command `"$($app.Command)`"" -NoNewWindow -Wait
-                            }
 
                             if ($app.Type -eq "AppxPackage")
                             {
-                                foreach ($re in $app.removeAppxPackage) 
+                                foreach ($appx in $app.removeAppxPackage) 
                                 {
-                                   Remove-AppxPackage -App $re.Name
+                                   Remove-AppxPackage -App $appx.Name
 
                                    # debug
-                                   #Write-Host Remove-AppxPackage -App $re.Name
+                                   #Write-Host Remove-AppxPackage -App $appx.Name
 
                                 }
                             }
