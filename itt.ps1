@@ -3319,7 +3319,7 @@ $sync.database.Tweaks = '[
     ]
   },
   {
-    "name": "Optimize services",
+    "name": "Optimize Services",
     "description": "Disable (Print Spooler), (Fax), (Diagnostic Policy), (Downloaded Maps Manager), (Windows Error Reporting Service), (Remote Registry) , (Internet Connection Sharing), (Disables Telemetry and Data) ",
     "check": "false",
     "type":"service",
@@ -4309,7 +4309,7 @@ $inputXML = '
 
     <CheckBox Content="Remove Folder Shortcuts From Windows'' File Explorer"  FontWeight="Bold"/>
 
-    <CheckBox Content="Optimize services"  FontWeight="Bold"/>
+    <CheckBox Content="Optimize Services"  FontWeight="Bold"/>
 
     <CheckBox Content="Remove Unnecessary Windows 10/11 Apps"  FontWeight="Bold"/>
 
