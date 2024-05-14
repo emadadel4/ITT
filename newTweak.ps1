@@ -95,10 +95,17 @@ $updatedJson | Out-File -FilePath "./Database/Tweaks.json" -Encoding utf8
 if($userInput -eq "RemoveAppxPackage")
 {
 
-    
 $TweakName = Read-Host "Enter Tweak Name"
 $description = Read-Host "Enter Tweak description"
-$Name = Read-Host "Enter AppxPackage Name"
+
+# Read multiple AppxPackage Names
+$Names = @()
+# Read multiple AppxPackage Names
+do {
+    $Name = Read-Host "Enter AppxPackage Name"
+    $Names += $Name
+    $continue = Read-Host "Do you want to add another AppxPackage Name? (y/n)"
+} while ($continue -eq "y")
 
 
 # Define the data
@@ -108,8 +115,10 @@ $data = @{
     "check" = "false"
     "type" = "AppxPackage"
     "$userInput" = @(
-        @{
-            "Name" = $Name
+        $Names | ForEach-Object {
+            @{
+                "Name" = $_
+            }
         }
     )
 }
@@ -121,16 +130,15 @@ $jsonString = @"
     "description": "$($data["description"])",
     "check": "$($data["check"])",
     "type": "$($data["type"])",
-    "$userInput": [
-        {
-            "Name": "$($data["$userInput"][0]["Name"])",
-        }
-    ]
+    "$userInput": $($data["$userInput"] | ConvertTo-Json -Depth 100)
 }
 "@
 
 # Read existing JSON file
-$existingJson = Get-Content -Path "./Database/Tweaks.json" | ConvertFrom-Json
+$existingJson = Get-Content -Path "./Database/Tweaks.json" -Raw | ConvertFrom-Json -ErrorAction SilentlyContinue
+if (!$existingJson) {
+    $existingJson = @()
+}
 
 # Append new data to existing JSON
 $existingJson += $jsonString | ConvertFrom-Json
@@ -140,6 +148,7 @@ $updatedJson = $existingJson | ConvertTo-Json -Depth 100
 
 # Output to file
 $updatedJson | Out-File -FilePath "./Database/Tweaks.json" -Encoding utf8
+    
 
 }
 
