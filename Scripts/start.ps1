@@ -31,7 +31,11 @@ $sync.firebaseUrl = "https://ittools-7d9fe-default-rtdb.firebaseio.com/"
 $sync.database = @{}
 $sync.ProcessRunning = $false
 $sync.isDarkMode
-$sync.mediaPlayer = New-Object -ComObject WMPlayer.OCX
+
+if (Test-Path -Path "HKLM:\SOFTWARE\Microsoft\MediaPlayer") {
+    $sync.mediaPlayer = New-Object -ComObject WMPlayer.OCX
+} 
+
 $currentPid = [System.Security.Principal.WindowsIdentity]::GetCurrent()
 $principal = new-object System.Security.Principal.WindowsPrincipal($currentPid)
 $adminRole=[System.Security.Principal.WindowsBuiltInRole]::Administrator
