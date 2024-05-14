@@ -11,8 +11,7 @@ $sync.TweaksListView.add_Loaded({
             if ($data.name -eq $selectedItem) {
 
                 $sync.Description.Text = $data.description
-                $sync.itemLink.Visibility = if ($data.repo -ne "null") { "Visible" } else { "Hidden" }
-                $sync.itemLink.Text = "Github repository"
+                $sync.itemLink.Visibility = if ($data.repo -ne "null") { "Hidden" } else { "Hidden" }
                 break
             }
         }
