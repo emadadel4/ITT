@@ -14,10 +14,10 @@ function Get-SelectedTweaks
                     $items += @{
                         Name = $program.Name
                         Type = $program.type
-                        registry = $program.registry
-                        service = $program.service
+                        registry = $program.Registry
+                        service = $program.Service
                         removeAppxPackage = $program.RemoveAppxPackage
-                        Command = $program.commands
+                        Command = $program.Commands
 
                         # if you want to implement a new thing from JSON applications do it here.
                     }

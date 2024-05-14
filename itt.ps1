@@ -1194,6 +1194,9 @@ else
     break
 }
 
+CheckChoco
+GetQuotes | Out-Null
+PlayMusic | Out-Null
 #===========================================================================
 #endregion End Start
 #===========================================================================
@@ -3028,7 +3031,7 @@ $sync.database.Tweaks = '[
     "description": "sfc /scannow Use the System File Checker tool to repair missing or corrupted system files",
     "command": "sfc /scannow;",
     "check": "false",
-    "type":"script",
+    "type": "script",
     "commands": [
       {
         "run": "sfc /scannow;",
@@ -3040,7 +3043,7 @@ $sync.database.Tweaks = '[
     "name": "Run Disk cleanup",
     "description": "Clean temporary files that are not necessary",
     "check": "false",
-    "type":"command",
+    "type": "command",
     "commands": [
       {
         "run": "cleanmgr.exe /d C: /VERYLOWDISK /sagerun:1 Dism.exe /online /Cleanup-Image /StartComponentCleanup /ResetBase;",
@@ -3052,7 +3055,7 @@ $sync.database.Tweaks = '[
     "name": "Restore All Windows Services to Default",
     "description": "If you face a problem with some system services, you can restore all services to Default.",
     "check": "false",
-    "type":"command",
+    "type": "command",
     "commands": [
       {
         "run": "Invoke-RestMethod https://raw.githubusercontent.com/emadadel4/WindowsTweaks/main/restore.bat | Invoke-Expression;",
@@ -3064,7 +3067,7 @@ $sync.database.Tweaks = '[
     "name": "Fix Stutter/Lag in Games",
     "description": "Fix Stutter in Games (Disable GameBarPresenceWriter). Windows 10/11",
     "check": "false",
-    "type":"command",
+    "type": "command",
     "commands": [
       {
         "run": "Invoke-RestMethod https://raw.githubusercontent.com/emadadel4/Fix-Stutter-in-Games/main/fix.ps1 | Invoke-Expression;",
@@ -3076,7 +3079,7 @@ $sync.database.Tweaks = '[
     "name": "Enable the Ultimate Performance Power Plan",
     "description": "Enable the Ultimate Performance Power Plan",
     "check": "false",
-    "type":"command",
+    "type": "command",
     "commands": [
       {
         "run": "powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61; Start-Process powercfg.cpl;",
@@ -3088,7 +3091,7 @@ $sync.database.Tweaks = '[
     "name": "Reset the TCP/IP Stack",
     "description": "If you have an internet problem, Reset network configuration",
     "check": "false",
-    "type":"command",
+    "type": "command",
     "commands": [
       {
         "run": "netsh int ip reset;",
@@ -3100,7 +3103,7 @@ $sync.database.Tweaks = '[
     "name": "Setup Auto login",
     "description": "Setup auto login Windows username",
     "check": "false",
-    "type":"command",
+    "type": "command",
     "commands": [
       {
         "run": "curl.exe -ss \"https://live.sysinternals.com/Autologon.exe\" -o $env:temp\\autologin.exe ; cmd /c $env:temp\\autologin.exe /accepteula;",
@@ -3112,7 +3115,7 @@ $sync.database.Tweaks = '[
     "name": "Disable Game Mode",
     "description": "This tweak disables Game Mode",
     "check": "false",
-    "type":"modifying",
+    "type": "modifying",
     "registry": [
       {
         "Path": "HKCU:\\SOFTWARE\\Microsoft\\GameBar\\",
@@ -3136,7 +3139,7 @@ $sync.database.Tweaks = '[
     "name": "Disable Data Collection",
     "description": "Disable Data Collection",
     "check": "false",
-    "type":"modifying",
+    "type": "modifying",
     "registry": [
       {
         "Path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\DataCollection",
@@ -3145,7 +3148,6 @@ $sync.database.Tweaks = '[
         "Value": "0",
         "defaultValue": "1",
         "refresh": ""
-
       }
     ]
   },
@@ -3153,7 +3155,7 @@ $sync.database.Tweaks = '[
     "name": "Disable Ads",
     "description": "Disable ads",
     "check": "false",
-    "type":"modifying",
+    "type": "modifying",
     "registry": [
       {
         "Path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\AdvertisingInfo",
@@ -3169,7 +3171,7 @@ $sync.database.Tweaks = '[
     "name": "Disable Windows Web Search",
     "description": "Disable web search in Windows by modifying the registry settings related to Windows Search. It sets the BingSearchEnabled value to 0, effectively turning off web search results",
     "check": "false",
-    "type":"modifying",
+    "type": "modifying",
     "registry": [
       {
         "Path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Search",
@@ -3185,7 +3187,7 @@ $sync.database.Tweaks = '[
     "name": "Turn off background apps",
     "description": "Turn off background apps",
     "check": "false",
-    "type":"modifying",
+    "type": "modifying",
     "registry": [
       {
         "Path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\BackgroundAccessApplications",
@@ -3201,7 +3203,7 @@ $sync.database.Tweaks = '[
     "name": "Disable suggestions on start menu",
     "description": "Disables suggestions on start menu",
     "check": "false",
-    "type":"modifying",
+    "type": "modifying",
     "registry": [
       {
         "Path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\CloudContent",
@@ -3217,7 +3219,7 @@ $sync.database.Tweaks = '[
     "name": "Disable the News and interests on taskbar",
     "description": "Disables the News and interests",
     "check": "false",
-    "type":"modifying",
+    "type": "modifying",
     "registry": [
       {
         "Path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Feeds",
@@ -3226,7 +3228,6 @@ $sync.database.Tweaks = '[
         "Value": "2",
         "defaultValue": "0",
         "refresh": "Stop-Process -Name explorer -Force; Start-Process explorer"
-
       }
     ]
   },
@@ -3234,7 +3235,7 @@ $sync.database.Tweaks = '[
     "name": "Show Search icon Only on taskbar",
     "description": "Show Search Icon Only",
     "check": "false",
-    "type":"modifying",
+    "type": "modifying",
     "registry": [
       {
         "Path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Search",
@@ -3243,7 +3244,6 @@ $sync.database.Tweaks = '[
         "Value": "1",
         "defaultValue": "2",
         "refresh": "Stop-Process -Name explorer -Force; Start-Process explorer"
-
       }
     ]
   },
@@ -3251,7 +3251,7 @@ $sync.database.Tweaks = '[
     "name": "Disable People icon on taskbar",
     "description": "Disables People on taskbar",
     "check": "false",
-    "type":"modifying",
+    "type": "modifying",
     "registry": [
       {
         "Path": "HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\\People",
@@ -3267,7 +3267,7 @@ $sync.database.Tweaks = '[
     "name": "Remove Folder Shortcuts From Windows'' File Explorer",
     "description": "Remove Documents, Videos, Pictures, Desktop. Shortcuts from File Explorer",
     "check": "false",
-    "type":"delete",
+    "type": "delete",
     "registry": [
       {
         "Path": "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\MyComputer\\NameSpace\\",
@@ -3331,7 +3331,7 @@ $sync.database.Tweaks = '[
     "name": "Optimize Services",
     "description": "Disable (Print Spooler), (Fax), (Diagnostic Policy), (Downloaded Maps Manager), (Windows Error Reporting Service), (Remote Registry) , (Internet Connection Sharing), (Disables Telemetry and Data) ",
     "check": "false",
-    "type":"service",
+    "type": "service",
     "service": [
       {
         "Name": "Spooler",
@@ -3386,176 +3386,198 @@ $sync.database.Tweaks = '[
     "check": "false",
     "type": "AppxPackage",
     "RemoveAppxPackage": [
-        {
-            "Name": "Microsoft.BingNews"
-        },
-        {
-            "Name": "Microsoft.GetHelp"
-        },
-        {
-            "Name": "Microsoft.Getstarted"
-        },
-        {
-            "Name": "Microsoft.BingWeather"
-        },
-        {
-            "Name": "Microsoft.Messaging"
-        },
-        {
-            "Name": "Microsoft.Microsoft3DViewer"
-        },
-        {
-            "Name": "Microsoft.MicrosoftOfficeHub"
-        },
-        {
-            "Name": "Microsoft.MicrosoftSolitaireCollection"
-        },
-        {
-            "Name": "Microsoft.NetworkSpeedTest"
-        },
-        {
-            "Name": "Microsoft.News"
-        },
-        {
-            "Name": "Microsoft.Office.Lens"
-        },
-        {
-            "Name": "Microsoft.Office.OneNote"
-        },
-        {
-            "Name": "Microsoft.Office.Sway"
-        },
-        {
-            "Name": "Microsoft.OneConnect"
-        },
-        {
-            "Name": "Microsoft.People"
-        },
-        {
-            "Name": "Microsoft.Print3D"
-        },
-        {
-            "Name": "Microsoft.RemoteDesktop"
-        },
-        {
-            "Name": "Microsoft.SkypeApp"
-        },
-        {
-            "Name": "Microsoft.StorePurchaseApp"
-        },
-        {
-            "Name": "Microsoft.Office.Todo.List"
-        },
-        {
-            "Name": "Microsoft.Whiteboard"
-        },
-        {
-            "Name": "Microsoft.WindowsAlarms"
-        },
-        {
-            "Name": "Microsoft.WindowsCamera"
-        },
-        {
-            "Name": "microsoft.windowscommunicationsapps"
-        },
-        {
-            "Name": "Microsoft.WindowsFeedbackHub"
-        },
-        {
-            "Name": "Microsoft.WindowsMaps"
-        },
-        {
-            "Name": "Microsoft.YourPhone"
-        },
-        {
-            "Name": "Microsoft.WindowsSoundRecorder"
-        },
-        {
-            "Name": "Microsoft.Xbox.TCUI"
-        },
-        {
-            "Name": "Microsoft.XboxApp"
-        },
-        {
-            "Name": "Microsoft.XboxGameOverlay"
-        },
-        {
-            "Name": "Microsoft.XboxIdentityProvider"
-        },
-        {
-            "Name": "Microsoft.XboxSpeechToTextOverlay"
-        },
-        {
-            "Name": "Microsoft.ZuneMusic"
-        },
-        {
-            "Name": "Microsoft.ZuneVideo"
-        },
-        {
-            "Name": "Microsoft.Windows.Cortana"
-        },
-        {
-            "Name": "Microsoft.Windows.DevHome"
-        },
-        {
-            "Name": "Microsoft.MixedReality.Portal"
-        },
-        {
-            "Name": "Microsoft.MSPaint"
-        },
-        {
-            "Name": "EclipseManager"
-        },
-        {
-            "Name": "ActiproSoftwareLLC"
-        },
-        {
-            "Name": "AdobeSystemsIncorporated.AdobePhotoshopExpress"
-        },
-        {
-            "Name": "Duolingo-LearnLanguagesforFree"
-        },
-        {
-            "Name": "PandoraMediaInc"
-        },
-        {
-            "Name": "CandyCrush"
-        },
-        {
-            "Name": "BubbleWitch3Saga"
-        },
-        {
-            "Name": "Wunderlist"
-        },
-        {
-            "Name": "Flipboard"
-        },
-        {
-            "Name": "Twitter"
-        },
-        {
-            "Name": "Facebook"
-        },
-        {
-            "Name": "Minecraft"
-        },
-        {
-            "Name": "Royal Revolt"
-        },
-        {
-            "Name": "Sway"
-        },
-      
-        {
-          "Name": "Microsoft.549981"
-        },
-        {
-          "Name": "Microsoft.MicrosoftStickyNotes"
-        }
+      {
+        "Name": "Microsoft.BingNews"
+      },
+      {
+        "Name": "Microsoft.GetHelp"
+      },
+      {
+        "Name": "Microsoft.Getstarted"
+      },
+      {
+        "Name": "Microsoft.BingWeather"
+      },
+      {
+        "Name": "Microsoft.Messaging"
+      },
+      {
+        "Name": "Microsoft.Microsoft3DViewer"
+      },
+      {
+        "Name": "Microsoft.MicrosoftOfficeHub"
+      },
+      {
+        "Name": "Microsoft.MicrosoftSolitaireCollection"
+      },
+      {
+        "Name": "Microsoft.NetworkSpeedTest"
+      },
+      {
+        "Name": "Microsoft.News"
+      },
+      {
+        "Name": "Microsoft.Office.Lens"
+      },
+      {
+        "Name": "Microsoft.Office.OneNote"
+      },
+      {
+        "Name": "Microsoft.Office.Sway"
+      },
+      {
+        "Name": "Microsoft.OneConnect"
+      },
+      {
+        "Name": "Microsoft.People"
+      },
+      {
+        "Name": "Microsoft.Print3D"
+      },
+      {
+        "Name": "Microsoft.RemoteDesktop"
+      },
+      {
+        "Name": "Microsoft.SkypeApp"
+      },
+      {
+        "Name": "Microsoft.StorePurchaseApp"
+      },
+      {
+        "Name": "Microsoft.Office.Todo.List"
+      },
+      {
+        "Name": "Microsoft.Whiteboard"
+      },
+      {
+        "Name": "Microsoft.WindowsAlarms"
+      },
+      {
+        "Name": "Microsoft.WindowsCamera"
+      },
+      {
+        "Name": "microsoft.windowscommunicationsapps"
+      },
+      {
+        "Name": "Microsoft.WindowsFeedbackHub"
+      },
+      {
+        "Name": "Microsoft.WindowsMaps"
+      },
+      {
+        "Name": "Microsoft.YourPhone"
+      },
+      {
+        "Name": "Microsoft.WindowsSoundRecorder"
+      },
+      {
+        "Name": "Microsoft.Xbox.TCUI"
+      },
+      {
+        "Name": "Microsoft.XboxApp"
+      },
+      {
+        "Name": "Microsoft.XboxGameOverlay"
+      },
+      {
+        "Name": "Microsoft.XboxIdentityProvider"
+      },
+      {
+        "Name": "Microsoft.XboxSpeechToTextOverlay"
+      },
+      {
+        "Name": "Microsoft.ZuneMusic"
+      },
+      {
+        "Name": "Microsoft.ZuneVideo"
+      },
+      {
+        "Name": "Microsoft.Windows.Cortana"
+      },
+      {
+        "Name": "Microsoft.Windows.DevHome"
+      },
+      {
+        "Name": "Microsoft.MixedReality.Portal"
+      },
+      {
+        "Name": "Microsoft.MSPaint"
+      },
+      {
+        "Name": "EclipseManager"
+      },
+      {
+        "Name": "ActiproSoftwareLLC"
+      },
+      {
+        "Name": "AdobeSystemsIncorporated.AdobePhotoshopExpress"
+      },
+      {
+        "Name": "Duolingo-LearnLanguagesforFree"
+      },
+      {
+        "Name": "PandoraMediaInc"
+      },
+      {
+        "Name": "CandyCrush"
+      },
+      {
+        "Name": "BubbleWitch3Saga"
+      },
+      {
+        "Name": "Wunderlist"
+      },
+      {
+        "Name": "Flipboard"
+      },
+      {
+        "Name": "Twitter"
+      },
+      {
+        "Name": "Facebook"
+      },
+      {
+        "Name": "Minecraft"
+      },
+      {
+        "Name": "Royal Revolt"
+      },
+      {
+        "Name": "Sway"
+      },
+      {
+        "Name": "Microsoft.549981"
+      },
+      {
+        "Name": "Microsoft.MicrosoftStickyNotes"
+      }
     ]
-}
+  },
+  {
+    "check": "false",
+    "description": "",
+    "services": [
+      {
+        "DefaultType": "",
+        "Name": "",
+        "StartupType": ""
+      }
+    ],
+    "type": "service",
+    "name": ""
+  },
+  {
+    "name": "3",
+    "description": "3",
+    "check": "false",
+    "type": "service",
+    "service": {
+      "DefaultType": "3",
+      "Name": "3",
+      "StartupType": "3"
+    }
+  }
 ]
-
 ' | ConvertFrom-Json
 #===========================================================================
 #endregion End Database /APPS/Tweaks/Quotes/OST
@@ -4325,6 +4347,10 @@ $inputXML = '
 
     <CheckBox Content="Remove Unnecessary Windows 10/11 Apps"  FontWeight="Bold"/>
 
+    <CheckBox Content=""  FontWeight="Bold"/>
+
+    <CheckBox Content="3"  FontWeight="Bold"/>
+
                         </ListView>
                     </TabItem.Content>
                 </TabItem>
@@ -4642,9 +4668,7 @@ $sync.category = $sync['window'].FindName('category')
 $sync.searchInput = $sync['window'].FindName('searchInput')
 
 
-CheckChoco
-GetQuotes | Out-Null
-PlayMusic | Out-Null
+
 #===========================================================================
 #endregion End loadXmal
 #===========================================================================
