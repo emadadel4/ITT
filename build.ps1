@@ -279,7 +279,10 @@ WriteToScript -Content @"
 
 "@
 
-Write-Host "Build successfully" -ForegroundColor Green
+Write-Host ===========================================================================
+Write-Host "Build successfully" -ForegroundColor Green 
+Write-Host Time $(Get-Date -Format 'hh:mm: MM/dd')   
+Write-Host ===========================================================================
 
     ./itt.ps1
 }
