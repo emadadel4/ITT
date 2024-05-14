@@ -2,7 +2,7 @@
 function PlayMusic {
 
     # RUN MUSIC IN BACKGROUND
-    Invoke-RunspaceWithScriptBlock -ScriptBlock {
+    Invoke-ScriptBlock -ScriptBlock {
 
         Function PlayAudio($url)
         {

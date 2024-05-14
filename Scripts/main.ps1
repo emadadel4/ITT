@@ -1,8 +1,3 @@
-
-CheckChoco
-GetQuotes *> $null 
-#PlayMusic *> $null 
-
 # Define OnClosing event handler
 $onClosingEvent = {
     

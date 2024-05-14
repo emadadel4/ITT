@@ -16,6 +16,45 @@
 #region Begin Functions
 #===========================================================================
 
+
+function Invoke-ScriptBlock {
+    param(
+        [scriptblock]$ScriptBlock,
+        [array]$ArgumentList
+    )
+
+       
+        $script:powershell = [powershell]::Create()
+
+        # Add Scriptblock and Arguments to runspace
+        $script:powershell.AddScript($ScriptBlock)
+        $script:powershell.AddArgument($ArgumentList)
+        $script:powershell.RunspacePool = $sync.runspace
+
+        $script:handle = $script:powershell.BeginInvoke()
+
+        if ($script:handle.IsCompleted)
+        {
+            $script:powershell.EndInvoke($script:handle)
+            $script:powershell.Dispose()
+            $sync.runspace.Dispose()
+            $sync.runspace.Close()
+            [System.GC]::Collect()
+        }
+}
+
+function StopAllRunspace {
+    
+    $script:powershell.Dispose()
+    $sync.runspace.Dispose()
+    $sync.runspace.Close()
+    $script:powershell.Stop()
+    StopMusic
+    $newProcess.exit
+    Write-Host "Bye see you soon. :)" 
+}
+
+
 function About{
 
     # Load child window
@@ -263,7 +302,7 @@ function Invoke-ApplyTweaks
         if($tweaks.Count -gt 0)
         {
 
-            Invoke-RunspaceWithScriptBlock -ArgumentList $tweaks -ScriptBlock{
+            Invoke-ScriptBlock -ArgumentList $tweaks -ScriptBlock{
 
                 param($tweaks)
                 
@@ -623,7 +662,7 @@ function Invoke-Install
     
     if($selectedApps.Count -gt 0)
     {
-        Invoke-RunspaceWithScriptBlock -ArgumentList $selectedApps -ScriptBlock {
+        Invoke-ScriptBlock -ArgumentList $selectedApps -ScriptBlock {
 
             param($selectedApps)
 
@@ -898,7 +937,7 @@ function SaveItemsToJson
 function PlayMusic {
 
     # RUN MUSIC IN BACKGROUND
-    Invoke-RunspaceWithScriptBlock -ScriptBlock {
+    Invoke-ScriptBlock -ScriptBlock {
 
         Function PlayAudio($url)
         {
@@ -976,45 +1015,6 @@ function StopMusic {
 #endregion
 
 
-
-function Invoke-RunspaceWithScriptBlock {
-    param(
-        [scriptblock]$ScriptBlock,
-        [array]$ArgumentList
-    )
-
-       
-        $script:powershell = [powershell]::Create()
-
-        # Add Scriptblock and Arguments to runspace
-        $script:powershell.AddScript($ScriptBlock)
-        $script:powershell.AddArgument($ArgumentList)
-        $script:powershell.RunspacePool = $sync.runspace
-
-        $script:handle = $script:powershell.BeginInvoke()
-
-        if ($script:handle.IsCompleted)
-        {
-            $script:powershell.EndInvoke($script:handle)
-            $script:powershell.Dispose()
-            $sync.runspace.Dispose()
-            $sync.runspace.Close()
-            [System.GC]::Collect()
-        }
-}
-
-function StopAllRunspace {
-    
-    $script:powershell.Dispose()
-    $sync.runspace.Dispose()
-    $sync.runspace.Close()
-    $script:powershell.Stop()
-    StopMusic
-    $newProcess.exit
-    Write-Host "Bye see you soon. :)" 
-}
-
-
 #region Theme Functions
 function ToggleTheme {
   
@@ -1069,7 +1069,7 @@ function Update-Theme ($theme, $mode) {
 
 function GetQuotes {
 
-    Invoke-RunspaceWithScriptBlock -ScriptBlock {
+    Invoke-ScriptBlock -ScriptBlock {
 
 
         # Define the path to your JSON file
@@ -1145,7 +1145,7 @@ function ChangeTap() {
     GitHub         : https://github.com/emadadel4
     Telegram       : https://t.me/emadadel4
     Website        : https://eprojects.orgfree.com/
-    Version        : 2024/05-May/14-Tue
+    Version        : 2024/05-May/15-Wed
 #>
 
 if (!(Test-Path -Path $ENV:TEMP)) {
@@ -1161,7 +1161,7 @@ Add-Type -AssemblyName System.Windows.Forms
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "2024/05-May/14-Tue"
+$sync.version = "2024/05-May/15-Wed"
 $sync.github =   "https://github.com/emadadel4"
 $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://eprojects.orgfree.com"
@@ -4640,6 +4640,11 @@ $sync.installBtn = $sync['window'].FindName('installBtn')
 $sync.applyBtn = $sync['window'].FindName('applyBtn') 
 $sync.category = $sync['window'].FindName('category')
 $sync.searchInput = $sync['window'].FindName('searchInput')
+
+
+CheckChoco
+GetQuotes | Out-Null
+PlayMusic | Out-Null
 #===========================================================================
 #endregion End loadXmal
 #===========================================================================
@@ -4756,11 +4761,6 @@ $sync.TweaksListView.add_LostFocus({
 #===========================================================================
 #region Begin Main
 #===========================================================================
-
-
-CheckChoco
-GetQuotes *> $null 
-#PlayMusic *> $null 
 
 # Define OnClosing event handler
 $onClosingEvent = {

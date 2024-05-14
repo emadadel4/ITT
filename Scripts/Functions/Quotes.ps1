@@ -1,6 +1,6 @@
 function GetQuotes {
 
-    Invoke-RunspaceWithScriptBlock -ScriptBlock {
+    Invoke-ScriptBlock -ScriptBlock {
 
 
         # Define the path to your JSON file

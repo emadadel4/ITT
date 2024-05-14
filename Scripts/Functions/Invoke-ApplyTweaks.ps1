@@ -55,7 +55,7 @@ function Invoke-ApplyTweaks
         if($tweaks.Count -gt 0)
         {
 
-            Invoke-RunspaceWithScriptBlock -ArgumentList $tweaks -ScriptBlock{
+            Invoke-ScriptBlock -ArgumentList $tweaks -ScriptBlock{
 
                 param($tweaks)
                 

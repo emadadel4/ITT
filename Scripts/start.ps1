@@ -53,3 +53,7 @@ else
     [System.Diagnostics.Process]::Start($newProcess);
     break
 }
+
+CheckChoco
+GetQuotes | Out-Null
+PlayMusic | Out-Null

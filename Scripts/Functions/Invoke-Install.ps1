@@ -60,7 +60,7 @@ function Invoke-Install
     
     if($selectedApps.Count -gt 0)
     {
-        Invoke-RunspaceWithScriptBlock -ArgumentList $selectedApps -ScriptBlock {
+        Invoke-ScriptBlock -ArgumentList $selectedApps -ScriptBlock {
 
             param($selectedApps)
 
