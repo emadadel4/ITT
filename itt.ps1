@@ -261,10 +261,10 @@ function Get-SelectedTweaks
                     $items += @{
                         Name = $program.Name
                         Type = $program.type
-                        registry = $program.registry
-                        service = $program.service
+                        registry = $program.Registry
+                        service = $program.Service
                         removeAppxPackage = $program.RemoveAppxPackage
-                        Command = $program.commands
+                        Command = $program.Commands
 
                         # if you want to implement a new thing from JSON applications do it here.
                     }
@@ -3032,7 +3032,7 @@ $sync.database.Tweaks = '[
     "command": "sfc /scannow;",
     "check": "false",
     "type": "script",
-    "commands": [
+    "Commands": [
       {
         "run": "sfc /scannow;",
         "delay": "1"
@@ -3044,7 +3044,7 @@ $sync.database.Tweaks = '[
     "description": "Clean temporary files that are not necessary",
     "check": "false",
     "type": "command",
-    "commands": [
+    "Commands": [
       {
         "run": "cleanmgr.exe /d C: /VERYLOWDISK /sagerun:1 Dism.exe /online /Cleanup-Image /StartComponentCleanup /ResetBase;",
         "delay": "1"
@@ -3056,7 +3056,7 @@ $sync.database.Tweaks = '[
     "description": "If you face a problem with some system services, you can restore all services to Default.",
     "check": "false",
     "type": "command",
-    "commands": [
+    "Commands": [
       {
         "run": "Invoke-RestMethod https://raw.githubusercontent.com/emadadel4/WindowsTweaks/main/restore.bat | Invoke-Expression;",
         "delay": "1"
@@ -3068,7 +3068,7 @@ $sync.database.Tweaks = '[
     "description": "Fix Stutter in Games (Disable GameBarPresenceWriter). Windows 10/11",
     "check": "false",
     "type": "command",
-    "commands": [
+    "Commands": [
       {
         "run": "Invoke-RestMethod https://raw.githubusercontent.com/emadadel4/Fix-Stutter-in-Games/main/fix.ps1 | Invoke-Expression;",
         "delay": "1"
@@ -3080,7 +3080,7 @@ $sync.database.Tweaks = '[
     "description": "Enable the Ultimate Performance Power Plan",
     "check": "false",
     "type": "command",
-    "commands": [
+    "Commands": [
       {
         "run": "powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61; Start-Process powercfg.cpl;",
         "delay": "1"
@@ -3092,7 +3092,7 @@ $sync.database.Tweaks = '[
     "description": "If you have an internet problem, Reset network configuration",
     "check": "false",
     "type": "command",
-    "commands": [
+    "Commands": [
       {
         "run": "netsh int ip reset;",
         "delay": "1"
@@ -3104,7 +3104,7 @@ $sync.database.Tweaks = '[
     "description": "Setup auto login Windows username",
     "check": "false",
     "type": "command",
-    "commands": [
+    "Commands": [
       {
         "run": "curl.exe -ss \"https://live.sysinternals.com/Autologon.exe\" -o $env:temp\\autologin.exe ; cmd /c $env:temp\\autologin.exe /accepteula;",
         "delay": "1"
@@ -3116,7 +3116,7 @@ $sync.database.Tweaks = '[
     "description": "This tweak disables Game Mode",
     "check": "false",
     "type": "modifying",
-    "registry": [
+    "Registry": [
       {
         "Path": "HKCU:\\SOFTWARE\\Microsoft\\GameBar\\",
         "Name": "AutoGameModeEnabled",
@@ -3140,7 +3140,7 @@ $sync.database.Tweaks = '[
     "description": "Disable Data Collection",
     "check": "false",
     "type": "modifying",
-    "registry": [
+    "Registry": [
       {
         "Path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\DataCollection",
         "Name": "AllowTelemetry",
@@ -3156,7 +3156,7 @@ $sync.database.Tweaks = '[
     "description": "Disable ads",
     "check": "false",
     "type": "modifying",
-    "registry": [
+    "Registry": [
       {
         "Path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\AdvertisingInfo",
         "Name": "Enabled",
@@ -3172,7 +3172,7 @@ $sync.database.Tweaks = '[
     "description": "Disable web search in Windows by modifying the registry settings related to Windows Search. It sets the BingSearchEnabled value to 0, effectively turning off web search results",
     "check": "false",
     "type": "modifying",
-    "registry": [
+    "Registry": [
       {
         "Path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Search",
         "Name": "BingSearchEnabled",
@@ -3188,7 +3188,7 @@ $sync.database.Tweaks = '[
     "description": "Turn off background apps",
     "check": "false",
     "type": "modifying",
-    "registry": [
+    "Registry": [
       {
         "Path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\BackgroundAccessApplications",
         "Name": "GlobalUserDisabled",
@@ -3204,7 +3204,7 @@ $sync.database.Tweaks = '[
     "description": "Disables suggestions on start menu",
     "check": "false",
     "type": "modifying",
-    "registry": [
+    "Registry": [
       {
         "Path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\CloudContent",
         "Name": "DisableWindowsConsumerFeatures",
@@ -3220,7 +3220,7 @@ $sync.database.Tweaks = '[
     "description": "Disables the News and interests",
     "check": "false",
     "type": "modifying",
-    "registry": [
+    "Registry": [
       {
         "Path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Feeds",
         "Name": "ShellFeedsTaskbarViewMode",
@@ -3236,7 +3236,7 @@ $sync.database.Tweaks = '[
     "description": "Show Search Icon Only",
     "check": "false",
     "type": "modifying",
-    "registry": [
+    "Registry": [
       {
         "Path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Search",
         "Name": "SearchboxTaskbarMode",
@@ -3252,7 +3252,7 @@ $sync.database.Tweaks = '[
     "description": "Disables People on taskbar",
     "check": "false",
     "type": "modifying",
-    "registry": [
+    "Registry": [
       {
         "Path": "HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\\People",
         "Name": "PeopleBand",
@@ -3268,7 +3268,7 @@ $sync.database.Tweaks = '[
     "description": "Remove Documents, Videos, Pictures, Desktop. Shortcuts from File Explorer",
     "check": "false",
     "type": "delete",
-    "registry": [
+    "Registry": [
       {
         "Path": "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\MyComputer\\NameSpace\\",
         "Name": "{0DB7E03F-FC29-4DC6-9020-FF41B59E513A}"
@@ -3332,7 +3332,7 @@ $sync.database.Tweaks = '[
     "description": "Disable (Print Spooler), (Fax), (Diagnostic Policy), (Downloaded Maps Manager), (Windows Error Reporting Service), (Remote Registry) , (Internet Connection Sharing), (Disables Telemetry and Data) ",
     "check": "false",
     "type": "service",
-    "service": [
+    "Service": [
       {
         "Name": "Spooler",
         "StartupType": "Disabled",
@@ -3552,30 +3552,6 @@ $sync.database.Tweaks = '[
         "Name": "Microsoft.MicrosoftStickyNotes"
       }
     ]
-  },
-  {
-    "check": "false",
-    "description": "",
-    "services": [
-      {
-        "DefaultType": "",
-        "Name": "",
-        "StartupType": ""
-      }
-    ],
-    "type": "service",
-    "name": ""
-  },
-  {
-    "name": "3",
-    "description": "3",
-    "check": "false",
-    "type": "service",
-    "service": {
-      "DefaultType": "3",
-      "Name": "3",
-      "StartupType": "3"
-    }
   }
 ]
 ' | ConvertFrom-Json
@@ -4346,10 +4322,6 @@ $inputXML = '
     <CheckBox Content="Optimize Services"  FontWeight="Bold"/>
 
     <CheckBox Content="Remove Unnecessary Windows 10/11 Apps"  FontWeight="Bold"/>
-
-    <CheckBox Content=""  FontWeight="Bold"/>
-
-    <CheckBox Content="3"  FontWeight="Bold"/>
 
                         </ListView>
                     </TabItem.Content>
