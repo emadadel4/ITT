@@ -1,44 +1,65 @@
-try {
-    Clear-Host
-    $Name = Read-Host "Enter name"
-    $Description = (Read-Host "Enter app description").Trim()
-    $repo = (Read-Host "Enter repo url").Trim()  # Remove leading and trailing spaces
-    if ($repo -eq "") { $repo = "null" }  # Set default value if empty
-    $script = (Read-Host "Enter script").Trim()  # Remove leading and trailing spaces
-    if ($script -eq "") { $script = "none" }  # Set default value if empty
-    $check = "false" # default value is false
+$TweakName = Read-Host "Enter Tweak Name"
 
-    # Define software object with sorted properties
-    $Tweak = @{
-        Name = $Name
-        Description = $Description
-        repo = $repo
-        script = $script
-        check = $check
-    } | Select-Object Name, Description, repo, script, check
+$description = Read-Host "Enter Tweak description"
 
-    # Read existing JSON file
-    $jsonFilePath = "./Database/Tweeaks.json"
-    $existingData = Get-Content $jsonFilePath -ErrorAction Stop | ConvertFrom-Json
+$Path = Read-Host "Enter Reg Path"
 
-    # Add new software object to existing array
-    $existingData += $Tweak
+$Name = Read-Host "Enter Reg Name"
 
-    # Write updated JSON to file
-    $existingData | ConvertTo-Json | Out-File $jsonFilePath -ErrorAction Stop
+$Type = Read-Host "Enter Reg Type [DWord] or [Qword] or [Binary] or [SZ]"
 
-    Write-Host  "Added Successfully" -ForegroundColor Green
+$Value = Read-Host "Enter Reg Value"
 
-    $build = Read-Host "Build and run? [y/yes][n/no]"
+$defaultValue = Read-Host "Enter Reg defaultValue"
+if ($defaultValue -eq "") { $defaultValue = "1" }  # Set default value 1
 
-    if ($build -eq "") { $build = "n" }  # default value n
 
-    if($build -eq "y")
-    {
-        ./build.ps1
-    }
-
+# Define the data
+$data = @{
+    "name" = $TweakName
+    "description" = $description
+    "check" = "false"
+    "type" = "modifying"
+    "registry" = @(
+        @{
+            "Path" = $Path
+            "Name" = $Name
+            "Type" = $Type
+            "Value" = $Value
+            "defaultValue" = $defaultValue 
+            "refresh" = ""
+        }
+    )
 }
-catch {
-    Write-Host "An error occurred: $_"
+
+# Convert to JSON string
+$jsonString = @"
+{
+    "name": "$($data["name"])",
+    "description": "$($data["description"])",
+    "check": "$($data["check"])",
+    "type": "$($data["type"])",
+    "registry": [
+        {
+            "Path": "$($data["registry"][0]["Path"])",
+            "Name": "$($data["registry"][0]["Name"])",
+            "Type": "$($data["registry"][0]["Type"])",
+            "Value": "$($data["registry"][0]["Value"])",
+            "defaultValue": "$($data["registry"][0]["defaultValue"])",
+            "refresh": "$($data["registry"][0]["refresh"])"
+        }
+    ]
 }
+"@
+
+# Read existing JSON file
+$existingJson = Get-Content -Path "./Database/Tweaks.json" | ConvertFrom-Json
+
+# Append new data to existing JSON
+$existingJson += $jsonString | ConvertFrom-Json
+
+# Convert to JSON string
+$updatedJson = $existingJson | ConvertTo-Json -Depth 100
+
+# Output to file
+$updatedJson | Out-File -FilePath "./Database/Tweaks.json" -Encoding utf8
