@@ -16,7 +16,7 @@ try {
 
     # Define category options
     $validCategories = @{
-        
+
         1 = "Browsers"
         2 = "Media"
         3 = "Documents"
@@ -51,6 +51,7 @@ try {
 
     # Define software object with sorted properties
     $software = @{
+        
         Name = $Name
         Description = $Description
         winget = $winget
