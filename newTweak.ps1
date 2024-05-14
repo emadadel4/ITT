@@ -1,5 +1,7 @@
 
 $validCategories = @{
+
+    # Available options
     1 = "command"
     2 = "registry"
     3 = "RemoveAppxPackage"
@@ -19,8 +21,12 @@ do {
     }
 } until ([int]$choice -in $validCategories.Keys)
 
+# Read User Input.
 $userInput
 
+#===========================================================================
+#region Registry 
+#===========================================================================
 if($userInput -eq "registry")
 {
 
@@ -91,6 +97,13 @@ $updatedJson = $existingJson | ConvertTo-Json -Depth 100
 $updatedJson | Out-File -FilePath "./Database/Tweaks.json" -Encoding utf8
 
 }
+#===========================================================================
+#endregion Registry 
+#===========================================================================
+
+#===========================================================================
+#region RemoveAppxPackage 
+#===========================================================================
 
 if($userInput -eq "RemoveAppxPackage")
 {
@@ -152,6 +165,13 @@ $updatedJson | Out-File -FilePath "./Database/Tweaks.json" -Encoding utf8
 
 }
 
+#===========================================================================
+#endregion RemoveAppxPackage 
+#===========================================================================
+
+#===========================================================================
+#region Command 
+#===========================================================================
 
 if($userInput -eq "command")
 {
@@ -205,3 +225,6 @@ $updatedJson | Out-File -FilePath "./Database/Tweaks.json" -Encoding utf8
 
 }
 
+#===========================================================================
+#endregion Command 
+#===========================================================================
