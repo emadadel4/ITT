@@ -105,6 +105,7 @@
                                     <ComboBoxItem Content="Games Launchers"></ComboBoxItem>
                                     <ComboBoxItem Content="Utilities"></ComboBoxItem>
                                     <ComboBoxItem Content="Developer"></ComboBoxItem>
+                                    <ComboBoxItem Content="Microsoft"></ComboBoxItem>
                                     <ComboBoxItem Content="Security"></ComboBoxItem>
                                 </ComboBox>
                             <!--End Catagory Section-->

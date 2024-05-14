@@ -423,7 +423,7 @@ https://t.me/emadadel4
 
                 try
                 {
-                    $msg = [System.Windows.MessageBox]::Show("Do you want to install $($tweaks.Count) selected Tweaks", "ITT | Emad Adel", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)
+                    $msg = [System.Windows.MessageBox]::Show("Do you want to apply $($tweaks.Count) selected Tweaks", "ITT | Emad Adel", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)
 
                     if ($msg -eq "Yes")
                     {
@@ -959,7 +959,6 @@ function MuteMusic {
 
     $sync.mediaPlayer.settings.volume = 0
 }
-
 
 function Unmute {
    
@@ -2935,6 +2934,16 @@ $sync.database.Applications = '[
     "url": "none",
     "category": "Drivers",
     "check": "false"
+  },
+  {
+    "Name": "Office 365 Business",
+    "Description": "Microsoft 365 (formerly Office 365) is a line of subscription services offered by Microsoft as part of the Microsoft Office product line. The brand encompasses plans that allow use of the Microsoft Office software suite over the life of the subscription, as well as cloud-based software as a service products for business environments, such as hosted Exchange Server, Skype for Business Server, and SharePoint, among others. All Microsoft 365 plans include automatic updates to their respective software at no additional charge, as opposed to conventional licenses for these programs—where new versions require purchase of a new license.",
+    "winget": "none",
+    "choco": "office365business",
+    "scoop": "none",
+    "url": "none",
+    "category": "Microsoft",
+    "check": "false"
   }
 ]
 ' | ConvertFrom-Json
@@ -3910,6 +3919,7 @@ $inputXML = '
                                     <ComboBoxItem Content="Games Launchers"></ComboBoxItem>
                                     <ComboBoxItem Content="Utilities"></ComboBoxItem>
                                     <ComboBoxItem Content="Developer"></ComboBoxItem>
+                                    <ComboBoxItem Content="Microsoft"></ComboBoxItem>
                                     <ComboBoxItem Content="Security"></ComboBoxItem>
                                 </ComboBox>
                             <!--End Catagory Section-->
@@ -4267,6 +4277,8 @@ $inputXML = '
     <CheckBox Content="BlueStacks" Tag="Games Launchers" IsChecked="false" FontWeight="Bold"/>
     
     <CheckBox Content="Intel Wireless Bluetooth for Windows 10 and Windows 11" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
+    
+    <CheckBox Content="Office 365 Business" Tag="Microsoft" IsChecked="false" FontWeight="Bold"/>
     
                         </ListView>
                     </TabItem.Content>
@@ -4748,7 +4760,7 @@ $sync.TweaksListView.add_LostFocus({
 
 CheckChoco
 GetQuotes *> $null 
-PlayMusic *> $null 
+#PlayMusic *> $null 
 
 # Define OnClosing event handler
 $onClosingEvent = {

@@ -27,7 +27,8 @@ try {
         9 = "Utilities"
         10 = "File Sharing"
         11 = "Developer"
-        12 = "Security"
+        12 = "Microsoft"
+        13 = "Security"
     }
 
     # Prompt user to choose category

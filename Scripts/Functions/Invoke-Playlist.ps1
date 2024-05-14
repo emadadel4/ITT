@@ -64,7 +64,6 @@ function MuteMusic {
     $sync.mediaPlayer.settings.volume = 0
 }
 
-
 function Unmute {
    
     $sync.mediaPlayer.settings.volume = 100
