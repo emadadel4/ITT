@@ -4433,7 +4433,7 @@ $childXaml = '<Window
        <!--Logo-->
        <Ellipse Margin="25" VerticalAlignment="Top" HorizontalAlignment="Left" Name="about" Width="60" Height="60" ToolTip="Enad Adel">
         <Ellipse.Fill>
-            <ImageBrush ImageSource="https://avatars.githubusercontent.com/u/19177373?v=4.png" />
+            <ImageBrush ImageSource="https://raw.githubusercontent.com/emadadel4/ITT/main/logo.png" />
         </Ellipse.Fill>
       </Ellipse>
       <!--End Logo-->
