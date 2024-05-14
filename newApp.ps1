@@ -16,12 +16,13 @@ try {
 
     # Define category options
     $validCategories = @{
+        
         1 = "Browsers"
         2 = "Media"
         3 = "Documents"
         4 = "Compression"
         5 = "Communication"
-        6 = "Gaming"
+        6 = "Launchers"
         7 = "Imaging"
         8 = "Drivers"
         9 = "Utilities"
