@@ -3062,7 +3062,6 @@ $sync.database.Tweaks = '[
   {
     "name": "Enable the Ultimate Performance Power Plan",
     "description": "Enable the Ultimate Performance Power Plan",
-    "repo": "https://github.com/emadadel4/WindowsTweaks",
     "check": "false",
     "type":"command",
     "commands": [
