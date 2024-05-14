@@ -1767,7 +1767,7 @@ $sync.database.Applications = '[
     "choco": "steam",
     "scoop": "none",
     "url": "none",
-    "category": "Games Launchers",
+    "category": "Launchers",
     "check": "false"
   },
   {
@@ -1777,7 +1777,7 @@ $sync.database.Applications = '[
     "choco": "ubisoft-connect",
     "scoop": "none",
     "url": "none",
-    "category": "Games Launchers",
+    "category": "Launchers",
     "check": "false"
   },
   {
@@ -1787,7 +1787,7 @@ $sync.database.Applications = '[
     "choco": "origin",
     "scoop": "none",
     "url": "none",
-    "category": "Games Launchers",
+    "category": "Launchers",
     "check": "false"
   },
   {
@@ -1797,7 +1797,7 @@ $sync.database.Applications = '[
     "choco": "steam",
     "scoop": "none",
     "url": "none",
-    "category": "Games Launchers",
+    "category": "Launchers",
     "check": "false"
   },
   {
@@ -1807,7 +1807,7 @@ $sync.database.Applications = '[
     "choco": "gamesavemanager",
     "scoop": "none",
     "url": "none",
-    "category": "Games Launchers",
+    "category": "Launchers",
     "check": "false"
   },
   {
@@ -1817,7 +1817,7 @@ $sync.database.Applications = '[
     "choco": "streamlabs-obs",
     "scoop": "none",
     "url": "none",
-    "category": "Games Launchers",
+    "category": "Launchers",
     "check": "false"
   },
   {
@@ -1827,7 +1827,7 @@ $sync.database.Applications = '[
     "choco": "obs-studio.install",
     "scoop": "none",
     "url": "none",
-    "category": "Games Launchers",
+    "category": "Launchers",
     "check": "false"
   },
   {
@@ -1837,7 +1837,7 @@ $sync.database.Applications = '[
     "choco": "logitechgaming",
     "scoop": "none",
     "url": "none",
-    "category": "Games Launchers",
+    "category": "Launchers",
     "check": "false"
   },
   {
@@ -1847,7 +1847,7 @@ $sync.database.Applications = '[
     "choco": "lively",
     "scoop": "none",
     "url": "none",
-    "category": "Games Launchers",
+    "category": "Launchers",
     "check": "false"
   },
   {
@@ -1857,7 +1857,7 @@ $sync.database.Applications = '[
     "choco": "playnite",
     "scoop": "none",
     "url": "none",
-    "category": "Games Launchers",
+    "category": "Launchers",
     "check": "false"
   },
   {
@@ -2922,7 +2922,7 @@ $sync.database.Applications = '[
     "choco": "bluestacks",
     "scoop": "none",
     "url": "none",
-    "category": "Games Launchers",
+    "category": "Launchers",
     "check": "false"
   },
   {
@@ -3916,7 +3916,7 @@ $inputXML = '
                                     <ComboBoxItem Content="Communication"></ComboBoxItem>
                                     <ComboBoxItem Content="File Sharing"></ComboBoxItem>
                                     <ComboBoxItem Content="Imaging"></ComboBoxItem>
-                                    <ComboBoxItem Content="Games Launchers"></ComboBoxItem>
+                                    <ComboBoxItem Content="Launchers"></ComboBoxItem>
                                     <ComboBoxItem Content="Utilities"></ComboBoxItem>
                                     <ComboBoxItem Content="Developer"></ComboBoxItem>
                                     <ComboBoxItem Content="Microsoft"></ComboBoxItem>
@@ -4044,25 +4044,25 @@ $inputXML = '
     
     <CheckBox Content="NVIDIA PhysX" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
     
-    <CheckBox Content="Steam" Tag="Games Launchers" IsChecked="false" FontWeight="Bold"/>
+    <CheckBox Content="Steam" Tag="Launchers" IsChecked="false" FontWeight="Bold"/>
     
-    <CheckBox Content="Ubisoft Connect" Tag="Games Launchers" IsChecked="false" FontWeight="Bold"/>
+    <CheckBox Content="Ubisoft Connect" Tag="Launchers" IsChecked="false" FontWeight="Bold"/>
     
-    <CheckBox Content="Origin" Tag="Games Launchers" IsChecked="false" FontWeight="Bold"/>
+    <CheckBox Content="Origin" Tag="Launchers" IsChecked="false" FontWeight="Bold"/>
     
-    <CheckBox Content="Rockstar Games Launcher" Tag="Games Launchers" IsChecked="false" FontWeight="Bold"/>
+    <CheckBox Content="Rockstar Games Launcher" Tag="Launchers" IsChecked="false" FontWeight="Bold"/>
     
-    <CheckBox Content="GameSave Manager" Tag="Games Launchers" IsChecked="false" FontWeight="Bold"/>
+    <CheckBox Content="GameSave Manager" Tag="Launchers" IsChecked="false" FontWeight="Bold"/>
     
-    <CheckBox Content="StreamlabsOBS" Tag="Games Launchers" IsChecked="false" FontWeight="Bold"/>
+    <CheckBox Content="StreamlabsOBS" Tag="Launchers" IsChecked="false" FontWeight="Bold"/>
     
-    <CheckBox Content="OBS Studio" Tag="Games Launchers" IsChecked="false" FontWeight="Bold"/>
+    <CheckBox Content="OBS Studio" Tag="Launchers" IsChecked="false" FontWeight="Bold"/>
     
-    <CheckBox Content="Logitech Gaming Software" Tag="Games Launchers" IsChecked="false" FontWeight="Bold"/>
+    <CheckBox Content="Logitech Gaming Software" Tag="Launchers" IsChecked="false" FontWeight="Bold"/>
     
-    <CheckBox Content="Lively Wallpaper" Tag="Games Launchers" IsChecked="false" FontWeight="Bold"/>
+    <CheckBox Content="Lively Wallpaper" Tag="Launchers" IsChecked="false" FontWeight="Bold"/>
     
-    <CheckBox Content="Playnite" Tag="Games Launchers" IsChecked="false" FontWeight="Bold"/>
+    <CheckBox Content="Playnite" Tag="Launchers" IsChecked="false" FontWeight="Bold"/>
     
     <CheckBox Content="Driver Easy" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
     
@@ -4274,7 +4274,7 @@ $inputXML = '
     
     <CheckBox Content="HDD Low Level Format Tool" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
     
-    <CheckBox Content="BlueStacks" Tag="Games Launchers" IsChecked="false" FontWeight="Bold"/>
+    <CheckBox Content="BlueStacks" Tag="Launchers" IsChecked="false" FontWeight="Bold"/>
     
     <CheckBox Content="Intel Wireless Bluetooth for Windows 10 and Windows 11" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
     
