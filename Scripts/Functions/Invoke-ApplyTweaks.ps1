@@ -215,7 +215,7 @@ https://t.me/emadadel4
 
                 try
                 {
-                    $msg = [System.Windows.MessageBox]::Show("Do you want to install $($tweaks.Count) selected Tweaks", "ITT | Emad Adel", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)
+                    $msg = [System.Windows.MessageBox]::Show("Do you want to apply $($tweaks.Count) selected Tweaks", "ITT | Emad Adel", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)
 
                     if ($msg -eq "Yes")
                     {
