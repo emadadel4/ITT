@@ -897,7 +897,62 @@ function SaveItemsToJson
 #region PlayMusic Functions
 function PlayMusic {
 
-   
+    # RUN MUSIC IN BACKGROUND
+    Invoke-RunspaceWithScriptBlock -ScriptBlock {
+
+        Function PlayAudio($url)
+        {
+            try
+            {
+                $mediaItem =  $sync.mediaPlayer.newMedia($url)
+                $sync.mediaPlayer.currentPlaylist.appendItem($mediaItem)
+                $sync.mediaPlayer.controls.play()
+            }
+            catch
+            {
+
+            }
+        }
+
+        # Function to shuffle the playlist
+        Function ShuffleArray
+        {
+            param([array]$array)
+
+            $count = $array.Length
+
+            for ($i = 0; $i -lt $count; $i++)
+            {
+                $randomIndex = Get-Random -Minimum $i -Maximum $count
+                $temp = $array[$i]
+                $array[$i] = $array[$randomIndex]
+                $array[$randomIndex] = $temp
+            }
+        }
+
+        # Shuffle the playlist
+        ShuffleArray -array $sync.database.OST.Tracks
+
+        # Function to play the entire shuffled playlist
+        Function PlayShuffledPlaylist
+        {
+            foreach ($url in $sync.database.OST.Tracks)
+            {
+                PlayAudio $url
+                # Wait for the track to finish playing
+                while ( $sync.mediaPlayer.playState -eq 3 -or  $sync.mediaPlayer.playState -eq 6)
+                {
+                    Start-Sleep -Milliseconds 100
+                }
+            }
+        }
+
+        # Play the shuffled playlist indefinitely
+        while ($true) 
+        {
+            PlayShuffledPlaylist
+        }
+    }
 }
 
 function MuteMusic {
@@ -919,6 +974,8 @@ function StopMusic {
     $sync.runspace.Close()
 }
 #endregion
+
+
 
 function Invoke-RunspaceWithScriptBlock {
     param(
@@ -4703,6 +4760,7 @@ $sync.TweaksListView.add_LostFocus({
 
 CheckChoco
 GetQuotes *> $null 
+#PlayMusic *> $null 
 
 # Define OnClosing event handler
 $onClosingEvent = {
@@ -4726,65 +4784,6 @@ $onClosingEvent = {
 
 # Add OnClosing event handler to the window
 $sync["window"].add_Closing($onClosingEvent)
-
-
- # RUN MUSIC IN BACKGROUND
- Invoke-RunspaceWithScriptBlock -ScriptBlock {
-
-    Function PlayAudio($url)
-    {
-        try
-        {
-            $mediaItem =  $sync.mediaPlayer.newMedia($url)
-            $sync.mediaPlayer.currentPlaylist.appendItem($mediaItem)
-            $sync.mediaPlayer.controls.play()
-        }
-        catch
-        {
-
-        }
-    }
-
-    # Function to shuffle the playlist
-    Function ShuffleArray
-    {
-        param([array]$array)
-
-        $count = $array.Length
-
-        for ($i = 0; $i -lt $count; $i++)
-        {
-            $randomIndex = Get-Random -Minimum $i -Maximum $count
-            $temp = $array[$i]
-            $array[$i] = $array[$randomIndex]
-            $array[$randomIndex] = $temp
-        }
-    }
-
-    # Shuffle the playlist
-    ShuffleArray -array $sync.database.OST.Tracks
-
-    # Function to play the entire shuffled playlist
-    Function PlayShuffledPlaylist
-    {
-        foreach ($url in $sync.database.OST.Tracks)
-        {
-            PlayAudio $url
-            # Wait for the track to finish playing
-            while ( $sync.mediaPlayer.playState -eq 3 -or  $sync.mediaPlayer.playState -eq 6)
-            {
-                Start-Sleep -Milliseconds 100
-            }
-        }
-    }
-
-    # Play the shuffled playlist indefinitely
-    while ($true) 
-    {
-        PlayShuffledPlaylist
-    }
-}
-
 
 # Show the window
 $sync["window"].ShowDialog() | Out-Null
