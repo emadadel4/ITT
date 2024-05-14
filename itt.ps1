@@ -3807,10 +3807,10 @@ $inputXML = '
         <Grid>
         
             <Grid.RowDefinitions>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
                     <RowDefinition Height="*"/>
-                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
             <Grid.ColumnDefinitions>
@@ -3872,11 +3872,12 @@ $inputXML = '
                         <StackPanel Margin="15" Orientation="Horizontal" HorizontalAlignment="Left"  VerticalAlignment="Center" Grid.Row="1" Grid.ColumnSpan="3" >
 
                                 <!--Logo-->
-                                    <Ellipse Name="about" Width="80" Height="80" Cursor="Hand" ToolTip="Enad Adel">
+                                    <Ellipse Name="about" Width="50" Height="50" Cursor="Hand" ToolTip="Enad Adel">
                                         <Ellipse.Fill>
                                             <ImageBrush ImageSource="https://avatars.githubusercontent.com/u/19177373?v=4.png" />
                                         </Ellipse.Fill>
                                     </Ellipse>
+
                                 <!--End Logo-->
 
                             <!--Catagory Section-->
