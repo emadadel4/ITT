@@ -146,11 +146,10 @@ $updatedJson | Out-File -FilePath "./Database/Tweaks.json" -Encoding utf8
 
 if($userInput -eq "command")
 {
-
     
 $TweakName = Read-Host "Enter Tweak Name"
 $description = Read-Host "Enter Tweak description"
-$Name = Read-Host "Enter AppxPackage Name"
+$cmd = Read-Host "Enter command"
 
 
 # Define the data
@@ -158,10 +157,11 @@ $data = @{
     "name" = $TweakName
     "description" = $description
     "check" = "false"
-    "type" = "AppxPackage"
+    "type" = "command"
     "$userInput" = @(
         @{
-            "Name" = $Name
+            "run" = $cmd
+            "delay" = "1"
         }
     )
 }
@@ -175,7 +175,8 @@ $jsonString = @"
     "type": "$($data["type"])",
     "$userInput": [
         {
-            "Name": "$($data["$userInput"][0]["Name"])",
+            "run": "$($data["$userInput"][0]["run"])",
+            "delay": "$($data["$userInput"][0]["delay"])",
         }
     ]
 }
