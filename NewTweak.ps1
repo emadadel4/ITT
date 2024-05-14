@@ -95,10 +95,9 @@ $updatedJson | Out-File -FilePath "./Database/Tweaks.json" -Encoding utf8
 if($userInput -eq "RemoveAppxPackage")
 {
 
+    
 $TweakName = Read-Host "Enter Tweak Name"
-
 $description = Read-Host "Enter Tweak description"
-
 $Name = Read-Host "Enter AppxPackage Name"
 
 
