@@ -2,18 +2,24 @@
 $validCategories = @{
 
     # Available options
-    1 = "command"
-    2 = "registry"
+
+    1 = "Command"
+
+    2 = "Registry"
+
     3 = "RemoveAppxPackage"
+
+    4 = "Service"
+
 }
 
-# Prompt user to choose category
+# Prompt user to choose tweaks
 do {
     Write-Host "Which Tweak this will be?:"
     foreach ($key in $validCategories.Keys | Sort-Object) {
         Write-Host "$key - $($validCategories[$key])"
     }
-    $choice = Read-Host "Enter the number corresponding to the category"
+    $choice = Read-Host "Enter the number corresponding to the tweaks"
     if ([int]$choice -in $validCategories.Keys) {
         $userInput = $validCategories[[int]$choice]
     } else {
@@ -227,4 +233,80 @@ $updatedJson | Out-File -FilePath "./Database/Tweaks.json" -Encoding utf8
 
 #===========================================================================
 #endregion Command 
+#===========================================================================
+
+
+#===========================================================================
+#region Services 
+#===========================================================================
+
+if($userInput -eq "service")
+{
+
+$TweakName = Read-Host "Enter Tweak Name"
+$description = Read-Host "Enter Tweak description"
+
+# Read multiple Disable Services Names
+$Names = @()
+# Read multiple Disable Services Names
+do {
+
+    $Name = Read-Host "Enter Service Name"
+    $StartupType = Read-Host "Enter Service StartupType"
+    $Automatic = Read-Host "Enter Service Default State"
+    $Names += $Name
+
+    $continue = Read-Host "Do you want to add another Service ? (y/n)"
+} while ($continue -eq "y")
+
+
+# Define the data as an ordered hashtable
+$data = [Ordered]@{
+
+    "name" = $TweakName
+    "description" = $description
+    "check" = "false"
+    "type" = "service"
+    "$userInput" = @(
+        $Names | ForEach-Object {
+            [Ordered]@{
+                "Name" = $_
+                "StartupType" = $StartupType
+                "DefaultType" = $Automatic
+            }
+        }
+    )
+}
+
+# Convert to JSON string
+$jsonString = @"
+{
+    "name": "$($data["name"])",
+    "description": "$($data["description"])",
+    "check": "$($data["check"])",
+    "type": "$($data["type"])",
+    "$userInput": $($data["$userInput"] | ConvertTo-Json -Depth 100)
+}
+"@
+
+# Read existing JSON file
+$existingJson = Get-Content -Path "./Database/Tweaks.json" -Raw | ConvertFrom-Json -ErrorAction SilentlyContinue
+if (!$existingJson) {
+    $existingJson = @()
+}
+
+# Append new data to existing JSON
+$existingJson += $jsonString | ConvertFrom-Json
+
+# Convert to JSON string
+$updatedJson = $existingJson | ConvertTo-Json -Depth 100
+
+# Output to file
+$updatedJson | Out-File -FilePath "./Database/Tweaks.json" -Encoding utf8
+    
+
+}
+
+#===========================================================================
+#endregion RemoveAppxPackage 
 #===========================================================================
