@@ -563,7 +563,7 @@
     "choco": "steam",
     "scoop": "none",
     "url": "none",
-    "category": "Games Launchers",
+    "category": "Launchers",
     "check": "false"
   },
   {
@@ -573,7 +573,7 @@
     "choco": "ubisoft-connect",
     "scoop": "none",
     "url": "none",
-    "category": "Games Launchers",
+    "category": "Launchers",
     "check": "false"
   },
   {
@@ -583,7 +583,7 @@
     "choco": "origin",
     "scoop": "none",
     "url": "none",
-    "category": "Games Launchers",
+    "category": "Launchers",
     "check": "false"
   },
   {
@@ -593,7 +593,7 @@
     "choco": "steam",
     "scoop": "none",
     "url": "none",
-    "category": "Games Launchers",
+    "category": "Launchers",
     "check": "false"
   },
   {
@@ -603,7 +603,7 @@
     "choco": "gamesavemanager",
     "scoop": "none",
     "url": "none",
-    "category": "Games Launchers",
+    "category": "Launchers",
     "check": "false"
   },
   {
@@ -613,7 +613,7 @@
     "choco": "streamlabs-obs",
     "scoop": "none",
     "url": "none",
-    "category": "Games Launchers",
+    "category": "Launchers",
     "check": "false"
   },
   {
@@ -623,7 +623,7 @@
     "choco": "obs-studio.install",
     "scoop": "none",
     "url": "none",
-    "category": "Games Launchers",
+    "category": "Launchers",
     "check": "false"
   },
   {
@@ -633,7 +633,7 @@
     "choco": "logitechgaming",
     "scoop": "none",
     "url": "none",
-    "category": "Games Launchers",
+    "category": "Launchers",
     "check": "false"
   },
   {
@@ -643,7 +643,7 @@
     "choco": "lively",
     "scoop": "none",
     "url": "none",
-    "category": "Games Launchers",
+    "category": "Launchers",
     "check": "false"
   },
   {
@@ -653,7 +653,7 @@
     "choco": "playnite",
     "scoop": "none",
     "url": "none",
-    "category": "Games Launchers",
+    "category": "Launchers",
     "check": "false"
   },
   {
@@ -1718,7 +1718,7 @@
     "choco": "bluestacks",
     "scoop": "none",
     "url": "none",
-    "category": "Games Launchers",
+    "category": "Launchers",
     "check": "false"
   },
   {
