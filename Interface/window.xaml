@@ -102,7 +102,7 @@
                                     <ComboBoxItem Content="Communication"></ComboBoxItem>
                                     <ComboBoxItem Content="File Sharing"></ComboBoxItem>
                                     <ComboBoxItem Content="Imaging"></ComboBoxItem>
-                                    <ComboBoxItem Content="Games Launchers"></ComboBoxItem>
+                                    <ComboBoxItem Content="Launchers"></ComboBoxItem>
                                     <ComboBoxItem Content="Utilities"></ComboBoxItem>
                                     <ComboBoxItem Content="Developer"></ComboBoxItem>
                                     <ComboBoxItem Content="Microsoft"></ComboBoxItem>
