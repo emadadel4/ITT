@@ -423,7 +423,7 @@ https://t.me/emadadel4
 
                 try
                 {
-                    $msg = [System.Windows.MessageBox]::Show("Do you want to install $($tweaks.Count) selected Tweaks", "ITT | Emad Adel", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)
+                    $msg = [System.Windows.MessageBox]::Show("Do you want to apply $($tweaks.Count) selected Tweaks", "ITT | Emad Adel", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)
 
                     if ($msg -eq "Yes")
                     {
@@ -800,72 +800,110 @@ https://t.me/emadadel4
     }
 }
 
+function LoadJson {
+
+    # Open file dialog to select JSON file
+    $openFileDialog = New-Object -TypeName "Microsoft.Win32.OpenFileDialog"
+    $openFileDialog.Filter = "JSON files (*.ea4)|*.ea4"
+    $openFileDialog.Title = "Open JSON File"
+    $dialogResult = $openFileDialog.ShowDialog()
+
+    if ($dialogResult -eq "OK") {
+
+        $jsonData = Get-Content -Path $openFileDialog.FileName -Raw | ConvertFrom-Json
+        $filteredNames = $jsonData
+
+        $filterPredicate = {
+
+            param($item)
+            
+            #Write-Host $item.Content
+
+            foreach ($currentItemName in $filteredNames.Name) {
+
+                if($currentItemName -eq $item.Content)
+                {
+                    $item.IsChecked = $true
+                    break
+                }
+
+            }
+
+            return $filteredNames.name -contains $item.Content
+        }
+
+
+        $sync['window'].FindName('list').Clear()
+        $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync['window'].FindName('list').Items)
+        $collectionView.Filter = $filterPredicate
+        [System.Windows.MessageBox]::Show("Restored successfully", "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
+
+    }
+}
+
+function SaveItemsToJson
+{
+  
+    $items = @()
+
+    ClearFilter
+
+    foreach ($item in $sync['window'].FindName('list').Items)
+    {
+
+      if ($item.IsChecked)
+      {
+            $itemObject = [PSCustomObject]@{
+              Name = $item.Content
+              check = "true"
+
+          }
+            $items += $itemObject
+      }
+    }
+
+    if ($null -ne $items -and $items.Count -gt 0) 
+    {
+        # Open save file dialog
+        $saveFileDialog = New-Object -TypeName "Microsoft.Win32.SaveFileDialog"
+        $saveFileDialog.Filter = "JSON files (*.ea4)|*.ea4"
+        $saveFileDialog.Title = "Save JSON File"
+        $dialogResult = $saveFileDialog.ShowDialog()
+
+        if ($dialogResult -eq "OK")
+        {
+            $items | ConvertTo-Json | Out-File -FilePath $saveFileDialog.FileName -Force
+            Write-Host "Saved: $($saveFileDialog.FileName)"
+
+            [System.Windows.MessageBox]::Show("Saved", "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
+
+        }
+        
+            foreach ($item in $sync.AppsListView.Items)
+            {
+                if ($item.IsChecked)
+                {
+                    $item.IsChecked = $false
+                }
+            }
+
+    }
+    else
+    {
+        [System.Windows.MessageBox]::Show("Choose at least one program", "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
+    }
+}
+
 #region PlayMusic Functions
 function PlayMusic {
 
-    # RUN MUSIC IN BACKGROUND
-    Invoke-RunspaceWithScriptBlock -ScriptBlock {
-
-        Function PlayAudio($url)
-        {
-            try
-            {
-                $mediaItem =  $sync.mediaPlayer.newMedia($url)
-                $sync.mediaPlayer.currentPlaylist.appendItem($mediaItem)
-                $sync.mediaPlayer.controls.play()
-            }
-            catch
-            {
-
-            }
-        }
-
-        # Function to shuffle the playlist
-        Function ShuffleArray
-        {
-            param([array]$array)
-
-            $count = $array.Length
-
-            for ($i = 0; $i -lt $count; $i++)
-            {
-                $randomIndex = Get-Random -Minimum $i -Maximum $count
-                $temp = $array[$i]
-                $array[$i] = $array[$randomIndex]
-                $array[$randomIndex] = $temp
-            }
-        }
-
-        # Shuffle the playlist
-        ShuffleArray -array $sync.database.OST.Tracks
-
-        # Function to play the entire shuffled playlist
-        Function PlayShuffledPlaylist
-        {
-            foreach ($url in $sync.database.OST.Tracks)
-            {
-                PlayAudio $url
-                # Wait for the track to finish playing
-                while ( $sync.mediaPlayer.playState -eq 3 -or  $sync.mediaPlayer.playState -eq 6)
-                {
-                    Start-Sleep -Milliseconds 100
-                }
-            }
-        }
-
-        # Play the shuffled playlist indefinitely
-        while ($true) 
-        {
-            PlayShuffledPlaylist
-        }
-    }
+   
 }
 
 function MuteMusic {
 
     $sync.mediaPlayer.settings.volume = 0
 }
-
 
 function Unmute {
    
@@ -881,8 +919,6 @@ function StopMusic {
     $sync.runspace.Close()
 }
 #endregion
-
-
 
 function Invoke-RunspaceWithScriptBlock {
     param(
@@ -4667,7 +4703,6 @@ $sync.TweaksListView.add_LostFocus({
 
 CheckChoco
 GetQuotes *> $null 
-PlayMusic *> $null 
 
 # Define OnClosing event handler
 $onClosingEvent = {
@@ -4691,6 +4726,65 @@ $onClosingEvent = {
 
 # Add OnClosing event handler to the window
 $sync["window"].add_Closing($onClosingEvent)
+
+
+ # RUN MUSIC IN BACKGROUND
+ Invoke-RunspaceWithScriptBlock -ScriptBlock {
+
+    Function PlayAudio($url)
+    {
+        try
+        {
+            $mediaItem =  $sync.mediaPlayer.newMedia($url)
+            $sync.mediaPlayer.currentPlaylist.appendItem($mediaItem)
+            $sync.mediaPlayer.controls.play()
+        }
+        catch
+        {
+
+        }
+    }
+
+    # Function to shuffle the playlist
+    Function ShuffleArray
+    {
+        param([array]$array)
+
+        $count = $array.Length
+
+        for ($i = 0; $i -lt $count; $i++)
+        {
+            $randomIndex = Get-Random -Minimum $i -Maximum $count
+            $temp = $array[$i]
+            $array[$i] = $array[$randomIndex]
+            $array[$randomIndex] = $temp
+        }
+    }
+
+    # Shuffle the playlist
+    ShuffleArray -array $sync.database.OST.Tracks
+
+    # Function to play the entire shuffled playlist
+    Function PlayShuffledPlaylist
+    {
+        foreach ($url in $sync.database.OST.Tracks)
+        {
+            PlayAudio $url
+            # Wait for the track to finish playing
+            while ( $sync.mediaPlayer.playState -eq 3 -or  $sync.mediaPlayer.playState -eq 6)
+            {
+                Start-Sleep -Milliseconds 100
+            }
+        }
+    }
+
+    # Play the shuffled playlist indefinitely
+    while ($true) 
+    {
+        PlayShuffledPlaylist
+    }
+}
+
 
 # Show the window
 $sync["window"].ShowDialog() | Out-Null
