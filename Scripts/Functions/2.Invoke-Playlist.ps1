@@ -77,5 +77,8 @@ function StopMusic {
     $sync.runspace.Dispose()
     $sync.runspace.Close()
 }
+
+PlayMusic | Out-Null
+
 #endregion
 
