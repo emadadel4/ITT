@@ -6,16 +6,10 @@ function PlayMusic {
 
         Function PlayAudio($url)
         {
-            try
-            {
-                $mediaItem =  $sync.mediaPlayer.newMedia($url)
-                $sync.mediaPlayer.currentPlaylist.appendItem($mediaItem)
-                $sync.mediaPlayer.controls.play()
-            }
-            catch
-            {
-
-            }
+            $mediaItem =  $sync.mediaPlayer.newMedia($url)
+            $sync.mediaPlayer.currentPlaylist.appendItem($mediaItem)
+            $sync.mediaPlayer.controls.play()
+           
         }
 
         # Function to shuffle the playlist
@@ -50,12 +44,12 @@ function PlayMusic {
                 }
             }
         }
-
-        # Play the shuffled playlist indefinitely
-        while ($true) 
-        {
-            PlayShuffledPlaylist
-        }
+        PlayShuffledPlaylist
+        # # Play the shuffled playlist indefinitely
+        # while ($true) 
+        # {
+        #    
+        # }
     }
 }
 

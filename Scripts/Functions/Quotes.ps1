@@ -33,7 +33,7 @@ function GetQuotes {
         # Function to display welcome text
         function Display-WelcomeText {
             $sync.Quotes.Dispatcher.Invoke([Action]{
-                $sync.Quotes.Text = "توفر هذه الأداة تسهيلات كبيرة في عملية تثبيت البرامج وتحسين أداء نظام التشغيل. انضم إلينا لتساهم في تطويرها وجعلها أكثر اكتمالًا"
+                $sync.Quotes.Text = $sync.database.Quotes.Q[0]
             })
         }
 
@@ -58,4 +58,3 @@ function GetQuotes {
 }
 
 GetQuotes | Out-Null
-

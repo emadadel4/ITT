@@ -1,4 +1,4 @@
-###################################################################################
+﻿###################################################################################
 #                                                                                 #
 #   ___ _____ _____   _____ __  __    _    ____    _    ____  _____ _    _  _     #
 #  |_ _|_   _|_   _| | ____|  \/  |  / \  |  _ \  / \  |  _ \| ____| |  | || |    #
@@ -35,11 +35,7 @@ $sync.firebaseUrl = "https://ittools-7d9fe-default-rtdb.firebaseio.com/"
 $sync.database = @{}
 $sync.ProcessRunning = $false
 $sync.isDarkMode
-
-if (Test-Path -Path "HKLM:\SOFTWARE\Microsoft\MediaPlayer") {
-    $sync.mediaPlayer = New-Object -ComObject WMPlayer.OCX
-} 
-
+$sync.mediaPlayer = New-Object -ComObject WMPlayer.OCX
 $currentPid = [System.Security.Principal.WindowsIdentity]::GetCurrent()
 $principal = new-object System.Security.Principal.WindowsPrincipal($currentPid)
 $adminRole=[System.Security.Principal.WindowsBuiltInRole]::Administrator
@@ -1838,6 +1834,7 @@ $sync.database.OST = '{
 ' | ConvertFrom-Json
 $sync.database.Quotes = '{
   "Q": [
+    "توفر هذه الأداة تسهيلات كبيرة في عملية تثبيت البرامج وتحسين أداء نظام التشغيل. انضم إلينا لتساهم في تطويرها وجعلها أكثر اكتمالًا",
     "إما تموت بطلا، أو تعيش طويلاً حتى ترى نفسك اصبحت الشرير",
     "بعض الرجال يريدون فقط مشاهدة العالم يحترق",
     "إنهم يكرهون النور، لأنهم يخشون الحقيقة",
@@ -3559,16 +3556,10 @@ function PlayMusic {
 
         Function PlayAudio($url)
         {
-            try
-            {
-                $mediaItem =  $sync.mediaPlayer.newMedia($url)
-                $sync.mediaPlayer.currentPlaylist.appendItem($mediaItem)
-                $sync.mediaPlayer.controls.play()
-            }
-            catch
-            {
-
-            }
+            $mediaItem =  $sync.mediaPlayer.newMedia($url)
+            $sync.mediaPlayer.currentPlaylist.appendItem($mediaItem)
+            $sync.mediaPlayer.controls.play()
+           
         }
 
         # Function to shuffle the playlist
@@ -3603,12 +3594,12 @@ function PlayMusic {
                 }
             }
         }
-
-        # Play the shuffled playlist indefinitely
-        while ($true) 
-        {
-            PlayShuffledPlaylist
-        }
+        PlayShuffledPlaylist
+        # # Play the shuffled playlist indefinitely
+        # while ($true) 
+        # {
+        #    
+        # }
     }
 }
 
@@ -3878,13 +3869,20 @@ function ShowSelectedTweaks {
 
 function Invoke-ApplyTweaks
 {
-    ShowSelectedTweaks
-    $tweaks  = Get-SelectedTweaks
 
-    if(Get-SelectedTweaks -ne $null)
+    if($sync.ProcessRunning)
     {
+        $msg = "Please wait for the tweak to be applying...."
+        [System.Windows.MessageBox]::Show($msg, "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
+        return
+    }
+
+        $tweaks  = Get-SelectedTweaks
+
         if($tweaks.Count -gt 0)
         {
+
+            ShowSelectedTweaks
 
             Invoke-ScriptBlock -ArgumentList $tweaks -ScriptBlock{
 
@@ -4014,22 +4012,22 @@ function Invoke-ApplyTweaks
 
                     Clear-Host
 
-Write-Host "
-+----------------------------------------------------------------------------+
-|  ___ _____ _____   _____ __  __    _    ____       _    ____  _____ _      |
-| |_ _|_   _|_   _| | ____|  \/  |  / \  |  _ \     / \  |  _ \| ____| |     |
-|  | |  | |   | |   |  _| | |\/| | / _ \ | | | |   / _ \ | | | |  _| | |     |
-|  | |  | |   | |   | |___| |  | |/ ___ \| |_| |  / ___ \| |_| | |___| |___  |
-| |___| |_|   |_|   |_____|_|  |_/_/   \_\____/  /_/   \_\____/|_____|_____| |
-|                                                                            |
-+----------------------------------------------------------------------------+
-You ready to Install anything.
+                    Write-Host "
+                    +----------------------------------------------------------------------------+
+                    |  ___ _____ _____   _____ __  __    _    ____       _    ____  _____ _      |
+                    | |_ _|_   _|_   _| | ____|  \/  |  / \  |  _ \     / \  |  _ \| ____| |     |
+                    |  | |  | |   | |   |  _| | |\/| | / _ \ | | | |   / _ \ | | | |  _| | |     |
+                    |  | |  | |   | |   | |___| |  | |/ ___ \| |_| |  / ___ \| |_| | |___| |___  |
+                    | |___| |_|   |_|   |_____|_|  |_/_/   \_\____/  /_/   \_\____/|_____|_____| |
+                    |                                                                            |
+                    +----------------------------------------------------------------------------+
+                    You ready to Install anything.
 
-(IT Tools) is open source, You can contribute to improving the tool.
-If you have trouble installing a program, report the problem on feedback links
-https://github.com/emadadel4/ITT/issues
-https://t.me/emadadel4
-" -ForegroundColor White
+                    (IT Tools) is open source, You can contribute to improving the tool.
+                    If you have trouble installing a program, report the problem on feedback links
+                    https://github.com/emadadel4/ITT/issues
+                    https://t.me/emadadel4
+                    " -ForegroundColor White
                 }
 
                 function CustomMsg 
@@ -4140,7 +4138,10 @@ https://t.me/emadadel4
                 }
             }
         }
-    }
+        else
+        {
+            [System.Windows.MessageBox]::Show("Choose at least one tweak", "ITT | Emad Adel", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
+        }
 }
 
 
@@ -4245,13 +4246,13 @@ function Invoke-Install
         return
     }
 
-    $sync['window'].FindName('category').SelectedIndex = 0
-    ShowSelectedItems
-
     $selectedApps = Get-SelectedApps
     
     if($selectedApps.Count -gt 0)
     {
+        $sync['window'].FindName('category').SelectedIndex = 0
+        ShowSelectedItems
+
         Invoke-ScriptBlock -ArgumentList $selectedApps -ScriptBlock {
 
             param($selectedApps)
@@ -4610,7 +4611,7 @@ function GetQuotes {
         # Function to display welcome text
         function Display-WelcomeText {
             $sync.Quotes.Dispatcher.Invoke([Action]{
-                $sync.Quotes.Text = "توفر هذه الأداة تسهيلات كبيرة في عملية تثبيت البرامج وتحسين أداء نظام التشغيل. انضم إلينا لتساهم في تطويرها وجعلها أكثر اكتمالًا"
+                $sync.Quotes.Text = $sync.database.Quotes.Q[0]
             })
         }
 
@@ -4635,8 +4636,6 @@ function GetQuotes {
 }
 
 GetQuotes | Out-Null
-
-
 function ChangeTap() {
     
 
@@ -4791,6 +4790,7 @@ $onClosingEvent = {
 
 # Add OnClosing event handler to the window
 $sync["window"].add_Closing($onClosingEvent)
+
 
 # Show the window
 $sync["window"].ShowDialog() | Out-Null
