@@ -207,6 +207,7 @@
                     HorizontalAlignment="Left"
                     VerticalAlignment="Center" 
                     Padding="16" TextWrapping="Wrap" 
+                    FlowDirection="RightToLeft"
                     Text=""
                     />
                 </Grid>
