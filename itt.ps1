@@ -1,4 +1,4 @@
-###################################################################################
+﻿###################################################################################
 #                                                                                 #
 #   ___ _____ _____   _____ __  __    _    ____    _    ____  _____ _    _  _     #
 #  |_ _|_   _|_   _| | ____|  \/  |  / \  |  _ \  / \  |  _ \| ____| |  | || |    #
@@ -2854,12 +2854,12 @@ function Invoke-ApplyTweaks
                             New-Item -Path $Path -Force | Out-Null
                         }
 
-                        Write-Host "$Name disabled"
+                        Write-Host "$Name disabled" -ForegroundColor Yellow
                         Set-ItemProperty -Path $Path -Name $Name -Type $Type -Value $Value -Force -ErrorAction Stop
             
                     }
                     catch {
-                        Write-Error "An error occurred: $_"
+                        Write-Error "An error occurred: $_" -ForegroundColor Red
                     }
                 }
 
@@ -2879,13 +2879,13 @@ function Invoke-ApplyTweaks
                         if (Test-Path "Registry::$KeyPath") {
                             # Delete the registry key and all subkeys recursively
                             Remove-Item -Path "Registry::$KeyPath" -Recurse -Force
-                            Write-Output "Registry key '$KeyPath' and its subkeys have been deleted."
+                            Write-Output "Registry key '$KeyPath' and its subkeys have been deleted." -ForegroundColor Yellow
                         } else {
-                            Write-Output "Registry key '$KeyPath' does not exist."
+                            Write-Output "Registry key '$KeyPath' does not exist." -ForegroundColor Red
                         }
                     }
                     catch {
-                        Write-Output "An error occurred: $_"
+                        Write-Output "An error occurred: $_" -ForegroundColor red
                     }
                 }
 
@@ -2902,16 +2902,16 @@ function Invoke-ApplyTweaks
                         if (Get-Service -Name $ServiceName -ErrorAction SilentlyContinue) {
 
                             Set-Service -Name $ServiceName -StartupType $StartupType -ErrorAction Stop
-                            Stop-Service -Name $ServiceName
-                            Write-Host "Service '$ServiceName' disabled."
+                            Stop-Service -Name $ServiceName 
+                            Write-Host "Service '$ServiceName' disabled." -ForegroundColor Yellow
                         }
                         else {
-                            Write-Host "Service '$ServiceName' not found."
+                            Write-Host "Service '$ServiceName' not found." -ForegroundColor Yellow
                         }
                     }
                     catch
                     {
-                        Write-Host "Failed to disable service '$ServiceName'. Error: $_"
+                        Write-Host "Failed to disable service '$ServiceName'. Error: $_" -ForegroundColor Red
                     }
                 }
 
@@ -2921,19 +2921,19 @@ function Invoke-ApplyTweaks
                         $App
                     )
                 
-                    if (Get-AppxPackage -AllUsers -Name $App -ErrorAction SilentlyContinue) {
+                    if (Get-AppxPackage -AllUsers -Name "$App" -ErrorAction SilentlyContinue)
+                    {
                         try {
 
                             Get-AppxPackage -AllUsers -Name "$App" | Remove-AppxPackage -ErrorAction Stop
-                            Write-Host "Successfully removed $App"
+                            Write-Host "Successfully removed $App" -ForegroundColor Yellow
                         } 
                         catch {
-                            Write-Host "Failed to remove $App. $_"
-                            throw
+                            Write-Host "Failed to remove $App. $_" -ForegroundColor red
                         }
                     }
                     else {
-                        Write-Host "$App not found."
+                        Write-Host "$App : Not found." -ForegroundColor Yellow
                     }
                 }
                 
