@@ -1,17 +1,3 @@
-
-<#
-.Dev
-    developer      : Emad Adel @emadadel4
-    GitHub         : https://github.com/emadadel4
-    Telegram       : https://t.me/emadadel4
-    Website        : https://eprojects.orgfree.com/
-    Version        : #{replaceme}
-#>
-
-if (!(Test-Path -Path $ENV:TEMP)) {
-    New-Item -ItemType Directory -Force -Path $ENV:TEMP
-}
-
 # Load DLLs
 Add-Type -AssemblyName PresentationFramework
 Add-Type -AssemblyName PresentationCore
@@ -43,7 +29,7 @@ $adminRole=[System.Security.Principal.WindowsBuiltInRole]::Administrator
 if ($principal.IsInRole($adminRole))
 {
     $Host.UI.RawUI.WindowTitle = $myInvocation.MyCommand.Definition + "(Admin)"
-    Clear-Host
+    #Clear-Host
 }
 else
 {
