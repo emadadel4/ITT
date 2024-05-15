@@ -2921,19 +2921,31 @@ function Invoke-ApplyTweaks
                         $App
                     )
                 
+                    # Check if the command is available
+                    if (-not (Get-Command "Get-AppxPackage" -ErrorAction SilentlyContinue)) {
+                        Write-Host "Error: The 'Get-AppxPackage' command is not available. Please run 'Import-Module Appx' first."
+                        return
+                    }
+                
                     if (Get-AppxPackage -AllUsers -Name $App -ErrorAction SilentlyContinue) {
                         try {
+                
                             Get-AppxPackage -AllUsers -Name "$App" | Remove-AppxPackage -ErrorAction Stop
+                
+                            Get-AppxProvisionedPackage -Online | Where-Object{$_.DisplayName -like $App} | Remove-AppxProvisionedPackage -Online -Verbose
+                
                             Write-Host "Successfully removed $App"
                         } 
                         catch {
                             Write-Host "Failed to remove $App. $_"
+                            return  # Stop the code execution here
                         }
                     }
                     else {
                         Write-Host "$App not found."
                     }
                 }
+                
                 
                 function UpdateUI {
 
