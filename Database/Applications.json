@@ -933,7 +933,7 @@
     "Name": "Utilso",
     "Description": "A powerful ISO image management tool that enables users to create, edit, extract, and burn ISO files, providing a comprehensive solution for managing disk image files.",
     "winget": "SerhiiSlieptsov.Utilso",
-    "choco": "ultraiso",
+    "choco": "Ultra ISO",
     "scoop": "none",
     "url": "none",
     "category": "Utilities",
