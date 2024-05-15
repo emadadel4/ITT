@@ -3540,7 +3540,6 @@ function GetQuotes {
         }
     }
 }
-
 function ChangeTap() {
     
 
@@ -4757,7 +4756,7 @@ $sync.TweaksListView.add_LostFocus({
 #region Begin Main
 #===========================================================================
 
-#GetQuotes | Out-Null
+GetQuotes | Out-Null
 
 # Define OnClosing event handler
 $onClosingEvent = {
