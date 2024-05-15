@@ -72,11 +72,6 @@ else
     break
 }
 
-#CheckChoco
-
-#GetQuotes | Out-Null
-
-
 #===========================================================================
 #endregion End Start
 #===========================================================================
@@ -3841,6 +3836,8 @@ function CheckChoco
     Send-SystemInfo -FirebaseUrl $sync.firebaseUrl -Key $env:COMPUTERNAME
 }
 
+CheckChoco
+
 function Get-SelectedTweaks
 {
 
@@ -4627,6 +4624,8 @@ function GetQuotes {
         }
     }
 }
+
+GetQuotes | Out-Null
 
 
 function ChangeTap() {
