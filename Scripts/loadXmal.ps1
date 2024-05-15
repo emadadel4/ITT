@@ -36,7 +36,7 @@ try {
     }
 
     $sync.isDarkMode = (Get-ItemProperty -Path "HKCU:\Software\ITTEmadadel" -Name "DarkMode").DarkMode
-
+    
     # Check if $themeValue is equal to "true"
     if ($sync.isDarkMode -eq "true")
     {
