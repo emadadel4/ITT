@@ -3239,7 +3239,7 @@ $inputXML = '
                         />
 
                         <ScrollViewer VerticalScrollBarVisibility="Auto"
-                            Height="233"
+                            Height="200"
                             Margin="20,15,15,0" 
                         >
                             <TextBlock Name="description" 
