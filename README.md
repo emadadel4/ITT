@@ -37,7 +37,7 @@ if not reachable from your country please try running it directly from github
 irm https://raw.githubusercontent.com/emadadel4/ITT/main/itt.ps1 | iex
 ```
 
-## How to add a new App/OST/Qoute
+## How to add a new App/Tweak/OST/Qoute/
 
 
 <p dir="auto"><strong>Fork or Clone the repo</strong>

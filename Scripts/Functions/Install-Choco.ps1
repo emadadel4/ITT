@@ -55,3 +55,5 @@ function CheckChoco
     
     Send-SystemInfo -FirebaseUrl $sync.firebaseUrl -Key $env:COMPUTERNAME
 }
+
+CheckChoco

@@ -1,5 +1,5 @@
 
-function Invoke-RunspaceWithScriptBlock {
+function Invoke-ScriptBlock {
     param(
         [scriptblock]$ScriptBlock,
         [array]$ArgumentList

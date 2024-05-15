@@ -1,17 +1,26 @@
+Clear-Host
 
 $validCategories = @{
-    1 = "command"
-    2 = "registry"
+
+    # Available options
+
+    1 = "Command"
+
+    2 = "Registry"
+
     3 = "RemoveAppxPackage"
+
+    4 = "Service"
+
 }
 
-# Prompt user to choose category
+# Prompt user to choose tweaks
 do {
     Write-Host "Which Tweak this will be?:"
     foreach ($key in $validCategories.Keys | Sort-Object) {
         Write-Host "$key - $($validCategories[$key])"
     }
-    $choice = Read-Host "Enter the number corresponding to the category"
+    $choice = Read-Host "Enter the number corresponding to the tweaks"
     if ([int]$choice -in $validCategories.Keys) {
         $userInput = $validCategories[[int]$choice]
     } else {
@@ -19,9 +28,13 @@ do {
     }
 } until ([int]$choice -in $validCategories.Keys)
 
+# Read User Input.
 $userInput
 
-if($userInput -eq "registry")
+#===========================================================================
+#region Registry 
+#===========================================================================
+if($userInput -eq "Registry")
 {
 
 $TweakName = Read-Host "Enter Tweak Name"
@@ -90,15 +103,32 @@ $updatedJson = $existingJson | ConvertTo-Json -Depth 100
 # Output to file
 $updatedJson | Out-File -FilePath "./Database/Tweaks.json" -Encoding utf8
 
+Write-Host "Added successfully, Don't forget to build and test it before commit" -ForegroundColor Green 
+
+
 }
+#===========================================================================
+#endregion Registry 
+#===========================================================================
+
+#===========================================================================
+#region RemoveAppxPackage 
+#===========================================================================
 
 if($userInput -eq "RemoveAppxPackage")
 {
 
-    
 $TweakName = Read-Host "Enter Tweak Name"
 $description = Read-Host "Enter Tweak description"
-$Name = Read-Host "Enter AppxPackage Name"
+
+# Read multiple AppxPackage Names
+$Names = @()
+# Read multiple AppxPackage Names
+do {
+    $Name = Read-Host "Enter AppxPackage Name"
+    $Names += $Name
+    $continue = Read-Host "Do you want to add another AppxPackage Name? (y/n)"
+} while ($continue -eq "y")
 
 
 # Define the data
@@ -108,8 +138,10 @@ $data = @{
     "check" = "false"
     "type" = "AppxPackage"
     "$userInput" = @(
-        @{
-            "Name" = $Name
+        $Names | ForEach-Object {
+            @{
+                "Name" = $_
+            }
         }
     )
 }
@@ -121,16 +153,15 @@ $jsonString = @"
     "description": "$($data["description"])",
     "check": "$($data["check"])",
     "type": "$($data["type"])",
-    "$userInput": [
-        {
-            "Name": "$($data["$userInput"][0]["Name"])",
-        }
-    ]
+    "$userInput": $($data["$userInput"] | ConvertTo-Json -Depth 100)
 }
 "@
 
 # Read existing JSON file
-$existingJson = Get-Content -Path "./Database/Tweaks.json" | ConvertFrom-Json
+$existingJson = Get-Content -Path "./Database/Tweaks.json" -Raw | ConvertFrom-Json -ErrorAction SilentlyContinue
+if (!$existingJson) {
+    $existingJson = @()
+}
 
 # Append new data to existing JSON
 $existingJson += $jsonString | ConvertFrom-Json
@@ -140,11 +171,20 @@ $updatedJson = $existingJson | ConvertTo-Json -Depth 100
 
 # Output to file
 $updatedJson | Out-File -FilePath "./Database/Tweaks.json" -Encoding utf8
+    
+Write-Host "Added successfully, Don't forget to build and test it before commit" -ForegroundColor Green 
 
 }
 
+#===========================================================================
+#endregion RemoveAppxPackage 
+#===========================================================================
 
-if($userInput -eq "command")
+#===========================================================================
+#region Command 
+#===========================================================================
+
+if($userInput -eq "Command")
 {
     
 $TweakName = Read-Host "Enter Tweak Name"
@@ -194,5 +234,87 @@ $updatedJson = $existingJson | ConvertTo-Json -Depth 100
 # Output to file
 $updatedJson | Out-File -FilePath "./Database/Tweaks.json" -Encoding utf8
 
+Write-Host "Added successfully, Don't forget to build and test it before commit" -ForegroundColor Green 
+
 }
 
+#===========================================================================
+#endregion Command 
+#===========================================================================
+
+
+#===========================================================================
+#region Services 
+#===========================================================================
+
+if($userInput -eq "Service")
+{
+
+$TweakName = Read-Host "Enter Tweak Name"
+$description = Read-Host "Enter Tweak description"
+
+# Read multiple Disable Services Names
+$Names = @()
+# Read multiple Disable Services Names
+do {
+
+    $Name = Read-Host "Enter Service Name"
+    $StartupType = Read-Host "Enter Service StartupType"
+    $Automatic = Read-Host "Enter Service Default State"
+    $Names += $Name
+
+    $continue = Read-Host "Do you want to add another Service ? (y/n)"
+} while ($continue -eq "y")
+
+
+# Define the data as an ordered hashtable
+$data = [Ordered]@{
+
+    "name" = $TweakName
+    "description" = $description
+    "check" = "false"
+    "type" = "service"
+    "$userInput" = @(
+        $Names | ForEach-Object {
+            [Ordered]@{
+                "Name" = $_
+                "StartupType" = $StartupType
+                "DefaultType" = $Automatic
+            }
+        }
+    )
+}
+
+# Convert to JSON string
+$jsonString = @"
+{
+    "name": "$($data["name"])",
+    "description": "$($data["description"])",
+    "check": "$($data["check"])",
+    "type": "$($data["type"])",
+    "$userInput": $($data["$userInput"] | ConvertTo-Json -Depth 100)
+}
+"@
+
+# Read existing JSON file
+$existingJson = Get-Content -Path "./Database/Tweaks.json" -Raw | ConvertFrom-Json -ErrorAction SilentlyContinue
+if (!$existingJson) {
+    $existingJson = @()
+}
+
+# Append new data to existing JSON
+$existingJson += $jsonString | ConvertFrom-Json
+
+# Convert to JSON string
+$updatedJson = $existingJson | ConvertTo-Json -Depth 100
+
+# Output to file
+$updatedJson | Out-File -FilePath "./Database/Tweaks.json" -Encoding utf8
+
+Write-Host "Added successfully, Don't forget to build and test it before commit" -ForegroundColor Green 
+
+}
+
+#===========================================================================
+#endregion RemoveAppxPackage 
+#===========================================================================

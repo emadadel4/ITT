@@ -13,1128 +13,6 @@
 ###################################################################################
 
 #===========================================================================
-#region Begin Functions
-#===========================================================================
-
-function About{
-
-    # Load child window
-    [xml]$about = $childXaml
-    $childWindowReader = (New-Object System.Xml.XmlNodeReader $about)
-    $childWindow = [Windows.Markup.XamlReader]::Load( $childWindowReader )
-    $childWindow.FindName('ver').Text = "Last update " + $sync.version
-    $childWindow.FindName("telegram").add_MouseLeftButtonDown({Start-Process("https://t.me/emadadel4")})
-    $childWindow.FindName("github").add_MouseLeftButtonDown({Start-Process("https://github.com/emadadel4")})
-    $childWindow.FindName("website").add_MouseLeftButtonDown({Start-Process("https://eprojects.orgfree.com/")})
-    $childWindow.FindName("sourcecode").add_MouseLeftButtonDown({Start-Process("https://github.com/emadadel4/ITT")})
-    $childWindow.ShowDialog() | Out-Null
-
-}
-
-function ITTShortcut {
-  
-    # Create a shortcut object
-    $Shortcut = (New-Object -ComObject WScript.Shell).CreateShortcut("$([Environment]::GetFolderPath('Desktop'))\ITT Emad Adel.lnk")
-
-    # Set the target path to PowerShell with your command
-    $Shortcut.TargetPath = "$env:SystemRoot\System32\WindowsPowerShell\v1.0\powershell.exe"
-    $Shortcut.Arguments = "-ExecutionPolicy Bypass -Command ""irm bit.ly/emadadel | iex"""
-
-    # Save the shortcut
-    $Shortcut.Save()
-
-}
-#region Function to filter a list based on a search input and Category
-function Search{
-
-    # Retrieves the search input, converts it to lowercase, and filters the list based on the input
-    $filter = $sync.searchInput.Text.ToLower() -replace '[^\p{L}\p{N}]', ''
-    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync['window'].FindName('list').Items)
-    $collectionView.Filter = {
-        param($item)
-        $item -like "*$filter*"
-    }
-}
-
-function FilterByCat {
-
-    param ($Cat)
-
-    # if user on Other tab return to apps list
-    $sync['window'].FindName('apps').IsSelected = $true
-    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync['window'].FindName('list').Items)
-
-    # Define the filter predicate
-    $filterPredicate = {
-        param($item)
-
-        # Define the tag you want to filter by
-        $tagToFilter =  $Cat
-        # Check if the item has the tag
-        $itemTag = $item.Tag
-        return $itemTag -eq $tagToFilter
-    }
-
-    if($Cat -eq "All")
-    {
-        $sync['window'].FindName('list').Clear()
-        $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync['window'].FindName('list').Items)
-        $collectionView.Filter = $null
-    }
-    else
-    {
-        $sync['window'].FindName('list').Clear()
-        # Apply the filter to the collection view
-        $collectionView.Filter = $filterPredicate
-    }
-}
-
-function ClearFilter {
-    $sync['window'].FindName('list').Clear()
-    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync['window'].FindName('list').Items)
-    $collectionView.Filter = $null
-}
-#endregion
-
-function Send-SystemInfo {
-    param (
-        [string]$FirebaseUrl,
-        [string]$Key
-    )
-
-    # Validate parameters
-    if (-not $FirebaseUrl -or -not $Key) {
-        throw "FirebaseUrl and Key are mandatory parameters."
-    }
-
-    # Reuse connection to Firebase URL
-    $firebaseUrlWithKey = "$FirebaseUrl/$Key.json"
-    $firebaseUrlRoot = "$FirebaseUrl.json"
-
-    # Check if the key exists
-    $existingData = Invoke-RestMethod -Uri $firebaseUrlWithKey -Method Get -ErrorAction SilentlyContinue
-
-    # Increment runs if data exists, otherwise set to 1
-    $runs = if ($existingData) { $existingData.runs + 1 } else { 1 }
-
-    # PC info
-    $pcInfo = @{
-        "hostname" = $env:COMPUTERNAME
-        "OS" = [Environment]::OSVersion.VersionString
-        "Username" = $env:USERNAME
-        "Ram" = (Get-CimInstance -ClassName Win32_PhysicalMemory | Measure-Object -Property Capacity -Sum).Sum / 1GB
-        "GPU" = (Get-CimInstance -ClassName Win32_VideoController).Name
-        "start at" = (Get-Date -Format "yyyy-MM-dd HH:mm:ss")
-        "runs" = $runs
-    }
-
-    # Convert to JSON
-    $json = $pcInfo | ConvertTo-Json
-
-    # Set headers
-    $headers = @{
-        "Content-Type" = "application/json"
-    }
-
-    # Update Firebase database with the new value of "runs"
-    Invoke-RestMethod -Uri $firebaseUrlWithKey -Method Put -Body $json -Headers $headers
-
-    # Count the number of keys directly under the root
-    $response = Invoke-RestMethod -Uri $firebaseUrlRoot -Method Get -ErrorAction SilentlyContinue
-    $totalKeys = ($response | Get-Member -MemberType NoteProperty | Measure-Object).Count
-
-    Write-Output "Number of devices that run this command: $totalKeys"
-}
-
-# Call the function to send system info to Firebase
-
-function WriteAText {
-    param (
-        $message,
-        $color
-    )
-    
-$output = Write-Host "
-___ _____ _____   _____ __  __    _    ____    _    ____  _____ _     
-|_ _|_   _|_   _| | ____|  \/  |  / \  |  _ \  / \  |  _ \| ____| |    
- | |  | |   | |   |  _| | |\/| | / _ \ | | | |/ _ \ | | | |  _| | |    
- | |  | |   | |   | |___| |  | |/ ___ \| |_| / ___ \| |_| | |___| |___ 
-|___| |_|   |_|   |_____|_|  |_/_/   \_\____/_/   \_\____/|_____|_____|
-
-$message
-(IT Tools) is open source, You can contribute to improving the tool.
-If you have trouble installing a program, report the problem on feedback links
-https://github.com/emadadel4/ITT/issues
-https://t.me/emadadel4
-" -ForegroundColor "$color"
-return $output
-}
-
-function Startup {
-
-    param ([bool]$firstBoot)
-
-    if($firstBoot -eq $true)
-    {
-        Write-Host (WriteAText -color White -message  "Starting up... it won't take longer.") 
-
-    }
-    else
-    {
-        Write-Host (WriteAText -color White -message  "You ready to Install anything.") 
-    }
-}
-
-function CheckChoco 
-{
-    # Check if Chocolatey is installed
-    if (-not (Get-Command choco -ErrorAction SilentlyContinue))
-    {
-        Startup -firstBoot $true
-        Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1')) *> $null
-        Clear-Host
-        Write-Host (WriteAText -color White -message  "You ready to Install anything.") 
-        
-
-
-    }
-    else
-    {
-        Startup -firstBoot $false
-    }
-    
-    Send-SystemInfo -FirebaseUrl $sync.firebaseUrl -Key $env:COMPUTERNAME
-}
-
-function Get-SelectedTweaks
-{
-
-    $items = @()
-
-    foreach ($item in $sync.TweaksListView.Items)
-    {
-        if ($item.IsChecked)
-        {
-            foreach ($program in $sync.database.Tweaks)
-            {
-                if($item.Content -eq $program.Name)
-                {
-                    $items += @{
-                        Name = $program.Name
-                        Type = $program.type
-                        registry = $program.registry
-                        service = $program.service
-                        removeAppxPackage = $program.RemoveAppxPackage
-                        Command = $program.commands
-
-                        # if you want to implement a new thing from JSON applications do it here.
-                    }
-                }
-            }
-        }
-    }
-
-    return $items 
-}
-
-# function ShowSelectedItems {
-    
-#     $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.AppsListView.Items)
-
-#     $filterPredicate = {
-#        param($item)
-
-#        $tagToFilter =  $true
-#        # Check if the item has the tag
-#        $itemTag = $item.IsChecked
-#        return $itemTag -eq $tagToFilter
-#    }
-
-#    $collectionView.Filter = $filterPredicate
-
-# }
-
-function Invoke-ApplyTweaks
-{
-    $tweaks  = Get-SelectedTweaks
-
-    if(Get-SelectedTweaks -ne $null)
-    {
-        if($tweaks.Count -gt 0)
-        {
-
-            Invoke-RunspaceWithScriptBlock -ArgumentList $tweaks -ScriptBlock{
-
-                param($tweaks)
-                
-                function Set-Registry {
-                    param (
-                        $Name,
-                        $Type,
-                        $Path,
-                        $Value
-                    )
-                    
-                    try
-                    {
-                        if (-not (Test-Path -Path $Path)) {
-                            New-Item -Path $Path -Force | Out-Null
-                        }
-
-                        Write-Host "$Name disabled"
-                        Set-ItemProperty -Path $Path -Name $Name -Type $Type -Value $Value -Force -ErrorAction Stop
-            
-                    }
-                    catch {
-                        Write-Error "An error occurred: $_"
-                    }
-                }
-
-                function Remove-Registry {
-                    param (
-                        [Parameter(Mandatory=$true)]
-                        [string]$RegistryPath,
-                        [Parameter(Mandatory=$true)]
-                        [string]$Folder
-                    )
-                
-                    try {
-                        # Combine the registry path and folder to create the full registry key path
-                        $KeyPath = "$RegistryPath\\$Folder"
-                
-                        # Check if the registry key exists
-                        if (Test-Path "Registry::$KeyPath") {
-                            # Delete the registry key and all subkeys recursively
-                            Remove-Item -Path "Registry::$KeyPath" -Recurse -Force
-                            Write-Output "Registry key '$KeyPath' and its subkeys have been deleted."
-                        } else {
-                            Write-Output "Registry key '$KeyPath' does not exist."
-                        }
-                    }
-                    catch {
-                        Write-Output "An error occurred: $_"
-                    }
-                }
-
-                function Disable-Service {
-                    param(
-                        $ServiceName,
-                        $StartupType
-                    )
-
-                    try {
-
-
-                         # Check if the service exists
-                        if (Get-Service -Name $ServiceName -ErrorAction SilentlyContinue) {
-
-                            Set-Service -Name $ServiceName -StartupType $StartupType -ErrorAction Stop
-                            Stop-Service -Name $ServiceName
-                            Write-Host "Service '$ServiceName' disabled."
-                        }
-                        else {
-                            Write-Host "Service '$ServiceName' not found."
-                        }
-                    }
-                    catch
-                    {
-                        Write-Host "Failed to disable service '$ServiceName'. Error: $_"
-                    }
-                }
-
-                function Remove-AppxPackage  {
-
-                    param (
-                        $App
-                    )
-                
-                    if (Get-AppxPackage -AllUsers -Name $App -ErrorAction SilentlyContinue) {
-                        try {
-                            Get-AppxPackage -AllUsers -Name "$App" | Remove-AppxPackage -ErrorAction Stop
-                            Write-Host "Successfully removed $App"
-                        } 
-                        catch {
-                            Write-Host "Failed to remove $App. $_"
-                        }
-                    }
-                    else {
-                        Write-Host "$App not found."
-                    }
-                }
-                
-                function UpdateUI {
-
-                    param($InstallBtn,$Description)
-                    
-                    $sync['window'].Dispatcher.Invoke([Action]{
-                        $sync.applyBtn.Content = "$InstallBtn"
-                        $sync.Description.Text = "$Description"
-                    })
-                }
-
-                function Finish {
-
-                    $sync.TweaksListView.Dispatcher.Invoke([Action]{
-                        foreach ($item in $sync.TweaksListView.Items)
-                        {
-                            $item.IsChecked = $false
-                        }
-                    })
-
-                    UpdateUI -InstallBtn "Apply" -Description "" 
-
-
-                    Start-Sleep 5
-
-                    Clear-Host
-
-Write-Host "
-+----------------------------------------------------------------------------+
-|  ___ _____ _____   _____ __  __    _    ____       _    ____  _____ _      |
-| |_ _|_   _|_   _| | ____|  \/  |  / \  |  _ \     / \  |  _ \| ____| |     |
-|  | |  | |   | |   |  _| | |\/| | / _ \ | | | |   / _ \ | | | |  _| | |     |
-|  | |  | |   | |   | |___| |  | |/ ___ \| |_| |  / ___ \| |_| | |___| |___  |
-| |___| |_|   |_|   |_____|_|  |_/_/   \_\____/  /_/   \_\____/|_____|_____| |
-|                                                                            |
-+----------------------------------------------------------------------------+
-You ready to Install anything.
-
-(IT Tools) is open source, You can contribute to improving the tool.
-If you have trouble installing a program, report the problem on feedback links
-https://github.com/emadadel4/ITT/issues
-https://t.me/emadadel4
-" -ForegroundColor White
-                }
-
-                function CustomMsg 
-                {
-                    param (
-
-                        $title,
-                        $msg,
-                        $MessageBoxButton,
-                        $MessageBoxImage,
-                        $answer
-
-                    )
-
-                    [System.Windows.MessageBox]::Show($msg, $title, [System.Windows.MessageBoxButton]::$MessageBoxButton, [System.Windows.MessageBoxImage]::$MessageBoxImage)
-                }
-
-                try
-                {
-                    $msg = [System.Windows.MessageBox]::Show("Do you want to apply $($tweaks.Count) selected Tweaks", "ITT | Emad Adel", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)
-
-                    if ($msg -eq "Yes")
-                    {
-                        UpdateUI -InstallBtn "Wait..." -Description "Applying..." 
-                        $sync.ProcessRunning = $true
-
-                        foreach ($app in $tweaks) 
-                        {
-
-                            if ($app.Type -eq "command")
-                            {
-                                foreach ($cmd in $app.Command) 
-                                {
-                                    Start-Process -FilePath "powershell.exe" -ArgumentList "-Command `"$($cmd.run)`"" -NoNewWindow -Wait
-                                    # debug
-                                    #Write-Host Start-Process -FilePath "powershell.exe" -ArgumentList "-Command `"$($cmd.run)`"" -NoNewWindow -Wait
-                                }
-                            }
-
-                            if ($app.Type -eq "modifying")
-                            {
-                                foreach ($re in $app.registry) 
-                                {
-                                    Set-Registry -Name $re.Name -Type $re.Type -Path $re.Path -Value $re.Value
-
-                                    # debug
-                                    #Write-Host Set-Registry -Name $re.Name -Type $re.Type -Path $re.Path -Value $re.Value
-                                    
-                                }
-                            }
-
-                            if ($app.Type -eq "delete")
-                            {
-                                foreach ($re in $app.registry) 
-                                {
-                                    Remove-Registry -RegistryPath $re.Path -Folder $re.Name
-
-                                    # debug
-                                    #Write-Host Remove-Registry -RegistryPath $re.Path -Folder $re.Name
-
-                                }
-                            }
-            
-                            if ($app.Type -eq "service")
-                            {
-                                foreach ($se in $app.service) 
-                                {
-                                    Disable-Service -ServiceName $($se.Name) -StartupType $($se.StartupType)
-                                }
-                            }
-
-                            if ($app.Type -eq "AppxPackage")
-                            {
-                                foreach ($appx in $app.removeAppxPackage) 
-                                {
-                                   Remove-AppxPackage -App $appx.Name
-
-                                   # debug
-                                   #Write-Host Remove-AppxPackage -App $appx.Name
-
-                                }
-                            }
-                        }
-
-                        $sync.ProcessRunning = $False
-                        CustomMsg -title "ITT | Emad Adel" -msg "Done" -MessageBoxImage "Information" -MessageBoxButton "OK"
-
-                        Start-Sleep -Seconds 1
-                        Finish
-
-                    }
-                    else
-                    {
-                        # Uncheck all checkboxes in $list
-                        $sync.TweaksListView.Dispatcher.Invoke([Action]{
-                            foreach ($item in $sync.TweaksListView.Items)
-                            {
-                                $item.IsChecked = $false
-                            }
-                        })
-                    }
-                }
-                catch {
-                    Write-Host "Error: $_"
-                }
-            }
-        }
-    }
-}
-
-
-function Invoke-Button {
-
-    Param ([string]$debug)
-
-    # debug
-    #Write-Host $debug
-
-    Switch -Wildcard ($debug){
-
-        "installBtn" {Invoke-Install $debug}
-        "applyBtn" {Invoke-ApplyTweaks $debug}
-        "taps" {ChangeTap $debug}
-        "category" {FilterByCat($sync.category.SelectedItem.Content) $debug}
-        "searchInput" {Search; $sync['window'].FindName('category').SelectedIndex = 0; $sync['window'].FindName('apps').IsSelected = $true; $debug }
-
-        #===========================================================================
-        #region Menu items
-        #===========================================================================
-        "load" {LoadJson $Button}
-        "save" {SaveItemsToJson $debug}
-        "about" {About $debug}
-        "mas" {Start-Process ("https://github.com/massgravel/Microsoft-Activation-Scripts") $debug}
-        "idm" { Start-Process ("https://github.com/WindowsAddict/IDM-Activation-Script") $debug}
-        "unhook" { Start-Process ("https://unhook.app/") $debug}
-        "uBlock" { Start-Process ("https://ublockorigin.com/") $debug}
-        "dev" { About $Button}
-        "deviceManager" {Start-Process devmgmt.msc $debug}
-        "appsfeatures" {Start-Process ms-settings:appsfeatures $debug}
-        "sysinfo" {Start-Process msinfo32.exe; dxdiag.exe; $debug}
-        "poweroption" {Start-Process powercfg.cpl $debug}
-        "services" {Start-Process services.msc $debug}
-        "network" {Start-Process ncpa.cpl $debug}
-        "taskmgr" {Start-Process taskmgr.exe $debug}
-        "diskmgmt" {Start-Process diskmgmt.msc $debug}
-        "darkOn" { Switch-ToDarkMode $debug }
-        "darkOff" { Switch-ToLightMode $debug }
-        "ittshortcut" { ITTShortcut $debug }
-        "moff" { MuteMusic $debug }
-        "mon" { Unmute $debug }
-        "neat" { Start-Process ("https://addons.mozilla.org/en-US/firefox/addon/neatdownloadmanager-extension/")  $debug }
-        #===========================================================================
-        #endregion Menu items
-        #===========================================================================
-
-    }
-}
-function Get-SelectedApps
-{
-
-    $items = @()
-
-    foreach ($item in $sync.AppsListView.Items)
-    {
-        if ($item.IsChecked)
-        {
-            foreach ($program in $sync.database.Applications)
-            {
-                if($item.Content -eq $program.Name)
-                {
-                    $items += @{
-                        Name = $program.Name
-                        Choco = $program.Choco
-                        Scoop = $program.Scoop
-                        URL = $program.url
-
-                    }
-                }
-            }
-        }
-    }
-
-    return $items 
-}
-
-function ShowSelectedItems {
-    
-    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.AppsListView.Items)
-
-    $filterPredicate = {
-       param($item)
-
-       $tagToFilter =  $true
-       # Check if the item has the tag
-       $itemTag = $item.IsChecked
-       return $itemTag -eq $tagToFilter
-   }
-
-   $collectionView.Filter = $filterPredicate
-
-}
-
-function Invoke-Install
-{
-    
-    if($sync.ProcessRunning)
-    {
-        $msg = "Please wait for the software to be installed."
-        [System.Windows.MessageBox]::Show($msg, "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
-        return
-    }
-
-    $sync['window'].FindName('category').SelectedIndex = 0
-    ShowSelectedItems
-
-    $selectedApps = Get-SelectedApps
-    
-    if($selectedApps.Count -gt 0)
-    {
-        Invoke-RunspaceWithScriptBlock -ArgumentList $selectedApps -ScriptBlock {
-
-            param($selectedApps)
-
-            function UpdateUI {
-
-                param($InstallBtn,$Description)
-               
-                $sync['window'].Dispatcher.Invoke([Action]{
-                    $sync.installBtn.Content = "$InstallBtn"
-                    $sync.Description.Text = "$Description"
-                })
-            }
-
-            function ClearTemp {
-                
-                $chocoTempPath = Join-Path $env:TEMP "chocolatey"
-
-                if (Test-Path $chocoTempPath) {
-                    Remove-Item -Path $chocoTempPath -Force -Recurse
-                    Write-Output "Clear Chocolatey temp folder"
-                }
-            }
-
-            function CustomMsg 
-            {
-                param (
-
-                    $title,
-                    $msg,
-                    $MessageBoxButton,
-                    $MessageBoxImage,
-                    $answer
-
-                )
-
-                [System.Windows.MessageBox]::Show($msg, $title, [System.Windows.MessageBoxButton]::$MessageBoxButton, [System.Windows.MessageBoxImage]::$MessageBoxImage)
-            }
-
-            function Notify {
-                param(
-                    [string]$title,
-                    [string]$msg,
-                    [string]$icon,
-                    [Int32]$time
-                )
-               
-                $notification = New-Object System.Windows.Forms.NotifyIcon
-                $notification.Icon = [System.Drawing.SystemIcons]::Information
-                $notification.BalloonTipIcon = $icon
-                $notification.BalloonTipText = $msg
-                $notification.BalloonTipTitle = $title
-                $notification.Visible = $true
-
-                $notification.ShowBalloonTip($time)  # Display for specified time
-            
-                # Clean up resources
-                $notification.Dispose()
-            }
-            
-
-            function Finish {
-
-                $sync.AppsListView.Dispatcher.Invoke([Action]{
-                    foreach ($item in $sync.AppsListView.Items)
-                    {
-                        $item.IsChecked = $false
-                        $sync['window'].FindName('list').Clear()
-                        $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync['window'].FindName('list').Items)
-                        $collectionView.Filter = $null
-                    }
-                })
-
-                UpdateUI -InstallBtn "Install" -Description "Installed successfully."
-
-                Clear-Host
-
-Write-Host "
-+----------------------------------------------------------------------------+
-|  ___ _____ _____   _____ __  __    _    ____       _    ____  _____ _      |
-| |_ _|_   _|_   _| | ____|  \/  |  / \  |  _ \     / \  |  _ \| ____| |     |
-|  | |  | |   | |   |  _| | |\/| | / _ \ | | | |   / _ \ | | | |  _| | |     |
-|  | |  | |   | |   | |___| |  | |/ ___ \| |_| |  / ___ \| |_| | |___| |___  |
-| |___| |_|   |_|   |_____|_|  |_/_/   \_\____/  /_/   \_\____/|_____|_____| |
-|                                                                            |
-+----------------------------------------------------------------------------+
-You ready to Install anything.
-
-(IT Tools) is open source, You can contribute to improving the tool.
-If you have trouble installing a program, report the problem on feedback links
-https://github.com/emadadel4/ITT/issues
-https://t.me/emadadel4
-" -ForegroundColor White
-            }
-
-            try 
-            {
-                $msg = [System.Windows.MessageBox]::Show("Do you want to install $($selectedApps.Count) selected apps", "ITT | Emad Adel", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)
-                
-                if($msg -eq "Yes")
-                {
-
-                    ClearTemp
-                    UpdateUI -InstallBtn "Wait..." -Description "Downloading and Installing..." 
-
-                    $sync.ProcessRunning = $true
-                    foreach ($app in $selectedApps) 
-                    {
-                        if ($app.Choco -ne "none")
-                        {
-                            Start-Process -FilePath "choco" -ArgumentList "install $($app.Choco) --confirm --acceptlicense -q -r --ignore-http-cache --allowemptychecksumsecure --allowemptychecksum  --usepackagecodes --ignoredetectedreboot --ignore-checksums" -NoNewWindow -Wait 
-                        }
-
-                        if ($app.URL -ne "none")
-                        {
-                            #Start-Process -FilePath "choco" -ArgumentList "install $($app.Choco) -y  --ignore-checksums" -NoNewWindow -Wait
-
-                           $FileUri = "$($app.URL)"
-                           $Destination = "$env:temp/setup.exe"
-                            
-                            $bitsJobObj = Start-BitsTransfer $FileUri -Destination $Destination
-                            
-                            switch ($bitsJobObj.JobState) {
-                            
-                                'Transferred' {
-                                    Complete-BitsTransfer -BitsJob $bitsJobObj
-                                    break
-                                }
-                            
-                                'Error' {
-                                    throw 'Error downloading'
-                                }
-                            }
-                            
-                            $exeArgs = '/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath'
-                            
-                            Start-Process -Wait $Destination -ArgumentList $exeArgs
-                        }
-                    }
-                    
-                    Start-Sleep -Seconds 1
-                    $sync.ProcessRunning = $False
-
-                    #CustomMsg -title "ITT | Emad Adel" -msg "Installed successfully" -MessageBoxImage "Information" -MessageBoxButton "OK"
-
-                    # Uncheck all checkboxes in $list
-                    Start-Sleep -Seconds 1
-                    Notify -title "ITT Emad Adel" -msg "Installed successfully" -icon "Info" -time 5666
-                    Finish
-
-                }
-                else
-                {
-                    # Uncheck all checkboxes in $list
-                    $sync.AppsListView.Dispatcher.Invoke([Action]{
-                        foreach ($item in $sync.AppsListView.Items)
-                        {
-                            $item.IsChecked = $false
-                            $sync['window'].FindName('list').Clear()
-                            $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync['window'].FindName('list').Items)
-                            $collectionView.Filter = $null
-                        }
-                    })
-                }
-            }
-            catch {
-
-                Write-Host "Error: $_"
-            }
-        }
-    }
-    else
-    {
-        [System.Windows.MessageBox]::Show("Choose at least one program", "ITT | Emad Adel", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
-    }
-}
-
-function LoadJson {
-
-    # Open file dialog to select JSON file
-    $openFileDialog = New-Object -TypeName "Microsoft.Win32.OpenFileDialog"
-    $openFileDialog.Filter = "JSON files (*.ea4)|*.ea4"
-    $openFileDialog.Title = "Open JSON File"
-    $dialogResult = $openFileDialog.ShowDialog()
-
-    if ($dialogResult -eq "OK") {
-
-        $jsonData = Get-Content -Path $openFileDialog.FileName -Raw | ConvertFrom-Json
-        $filteredNames = $jsonData
-
-        $filterPredicate = {
-
-            param($item)
-            
-            #Write-Host $item.Content
-
-            foreach ($currentItemName in $filteredNames.Name) {
-
-                if($currentItemName -eq $item.Content)
-                {
-                    $item.IsChecked = $true
-                    break
-                }
-
-            }
-
-            return $filteredNames.name -contains $item.Content
-        }
-
-
-        $sync['window'].FindName('list').Clear()
-        $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync['window'].FindName('list').Items)
-        $collectionView.Filter = $filterPredicate
-        [System.Windows.MessageBox]::Show("Restored successfully", "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
-
-    }
-}
-
-function SaveItemsToJson
-{
-  
-    $items = @()
-
-    ClearFilter
-
-    foreach ($item in $sync['window'].FindName('list').Items)
-    {
-
-      if ($item.IsChecked)
-      {
-            $itemObject = [PSCustomObject]@{
-              Name = $item.Content
-              check = "true"
-
-          }
-            $items += $itemObject
-      }
-    }
-
-    if ($null -ne $items -and $items.Count -gt 0) 
-    {
-        # Open save file dialog
-        $saveFileDialog = New-Object -TypeName "Microsoft.Win32.SaveFileDialog"
-        $saveFileDialog.Filter = "JSON files (*.ea4)|*.ea4"
-        $saveFileDialog.Title = "Save JSON File"
-        $dialogResult = $saveFileDialog.ShowDialog()
-
-        if ($dialogResult -eq "OK")
-        {
-            $items | ConvertTo-Json | Out-File -FilePath $saveFileDialog.FileName -Force
-            Write-Host "Saved: $($saveFileDialog.FileName)"
-
-            [System.Windows.MessageBox]::Show("Saved", "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
-
-        }
-        
-            foreach ($item in $sync.AppsListView.Items)
-            {
-                if ($item.IsChecked)
-                {
-                    $item.IsChecked = $false
-                }
-            }
-
-    }
-    else
-    {
-        [System.Windows.MessageBox]::Show("Choose at least one program", "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
-    }
-}
-
-#region PlayMusic Functions
-function PlayMusic {
-
-    # RUN MUSIC IN BACKGROUND
-    Invoke-RunspaceWithScriptBlock -ScriptBlock {
-
-        Function PlayAudio($url)
-        {
-            try
-            {
-                $mediaItem =  $sync.mediaPlayer.newMedia($url)
-                $sync.mediaPlayer.currentPlaylist.appendItem($mediaItem)
-                $sync.mediaPlayer.controls.play()
-            }
-            catch
-            {
-
-            }
-        }
-
-        # Function to shuffle the playlist
-        Function ShuffleArray
-        {
-            param([array]$array)
-
-            $count = $array.Length
-
-            for ($i = 0; $i -lt $count; $i++)
-            {
-                $randomIndex = Get-Random -Minimum $i -Maximum $count
-                $temp = $array[$i]
-                $array[$i] = $array[$randomIndex]
-                $array[$randomIndex] = $temp
-            }
-        }
-
-        # Shuffle the playlist
-        ShuffleArray -array $sync.database.OST.Tracks
-
-        # Function to play the entire shuffled playlist
-        Function PlayShuffledPlaylist
-        {
-            foreach ($url in $sync.database.OST.Tracks)
-            {
-                PlayAudio $url
-                # Wait for the track to finish playing
-                while ( $sync.mediaPlayer.playState -eq 3 -or  $sync.mediaPlayer.playState -eq 6)
-                {
-                    Start-Sleep -Milliseconds 100
-                }
-            }
-        }
-
-        # Play the shuffled playlist indefinitely
-        while ($true) 
-        {
-            PlayShuffledPlaylist
-        }
-    }
-}
-
-function MuteMusic {
-
-    $sync.mediaPlayer.settings.volume = 0
-}
-
-function Unmute {
-   
-    $sync.mediaPlayer.settings.volume = 100
-}
-
-function StopMusic {
-
-    $sync.mediaPlayer.controls.stop()
-    $sync.mediaPlayer = $null
-    $script:powershell.Dispose()
-    $sync.runspace.Dispose()
-    $sync.runspace.Close()
-}
-#endregion
-
-
-
-function Invoke-RunspaceWithScriptBlock {
-    param(
-        [scriptblock]$ScriptBlock,
-        [array]$ArgumentList
-    )
-
-       
-        $script:powershell = [powershell]::Create()
-
-        # Add Scriptblock and Arguments to runspace
-        $script:powershell.AddScript($ScriptBlock)
-        $script:powershell.AddArgument($ArgumentList)
-        $script:powershell.RunspacePool = $sync.runspace
-
-        $script:handle = $script:powershell.BeginInvoke()
-
-        if ($script:handle.IsCompleted)
-        {
-            $script:powershell.EndInvoke($script:handle)
-            $script:powershell.Dispose()
-            $sync.runspace.Dispose()
-            $sync.runspace.Close()
-            [System.GC]::Collect()
-        }
-}
-
-function StopAllRunspace {
-    
-    $script:powershell.Dispose()
-    $sync.runspace.Dispose()
-    $sync.runspace.Close()
-    $script:powershell.Stop()
-    StopMusic
-    $newProcess.exit
-    Write-Host "Bye see you soon. :)" 
-}
-
-
-#region Theme Functions
-function ToggleTheme {
-  
-    
-    try {
-
-        if ($sync.searchInput = $sync['window'].FindName('themeText').IsChecked -eq $true)
-        {
-            Switch-ToDarkMode
-        } 
-        else
-        {
-            Switch-ToLightMode
-        }
-        
-    }
-    catch {
-        Write-Host "Error toggling theme: $_"
-    }
-
-    $sync['window'].FindName('themeText').IsChecked = -not $sync['window'].FindName('themeText').IsChecked
-
-}
-
-function Switch-ToDarkMode {
-    try {
-
-        $theme = $sync['window'].FindResource("Dark")
-        Update-Theme $theme "true"
-    } catch {
-        Write-Host "Error switching to dark mode: $_"
-    }
-}
-
-function Switch-ToLightMode {
-    try {
-        $theme = $sync['window'].FindResource("Light")
-        Update-Theme $theme "false"
-    } catch {
-        Write-Host "Error switching to light mode: $_"
-    }
-}
-
-function Update-Theme ($theme, $mode) {
-    $sync['window'].Resources.MergedDictionaries.Clear()
-    $sync['window'].Resources.MergedDictionaries.Add($theme)
-    Set-ItemProperty -Path "HKCU:\Software\ITTEmadadel" -Name "DarkMode" -Value $mode -Force
-
-}
-#endregion
-
-
-function GetQuotes {
-
-    Invoke-RunspaceWithScriptBlock -ScriptBlock {
-
-
-        # Define the path to your JSON file
-        $jsonFilePath = $sync.database.Quotes
-
-        # Function to shuffle an array
-        function ShuffleArray {
-            param (
-                [array]$Array
-            )
-            $count = $Array.Count
-            for ($i = $count - 1; $i -ge 0; $i--) {
-                $randomIndex = Get-Random -Minimum 0 -Maximum $count
-                $temp = $Array[$i]
-                $Array[$i] = $Array[$randomIndex]
-                $Array[$randomIndex] = $temp
-            }
-            return $Array
-        }
-
-        # Function to get names from the JSON file
-        function Get-NamesFromJson {
-            $jsonContent =  $jsonFilePath 
-            return $jsonContent.Q
-        }
-
-        # Get shuffled names
-        $shuffledNames = ShuffleArray -Array (Get-NamesFromJson)
-
-        # Loop forever and print shuffled names
-        while ($true) {
-            foreach ($name in $shuffledNames) {
-
-                $sync.Quotes.Dispatcher.Invoke([Action]{
-                    $sync.Quotes.Text = "`".$name`""
-                })
-
-                # Adjust the sleep time as needed
-                Start-Sleep -Seconds 15  
-            }
-        }
-    }
-}
-
-
-function ChangeTap() {
-    
-
-    if($sync['window'].FindName('apps').IsSelected)
-    {
-        $sync['window'].FindName('installBtn').Visibility = "Visible"
-        $sync['window'].FindName('applyBtn').Visibility = "Hidden"
-    }
-
-    if($sync['window'].FindName('tweeksTab').IsSelected)
-    {
-        $sync['window'].FindName('applyBtn').Visibility = "Visible"
-        $sync['window'].FindName('installBtn').Visibility = "Hidden"
-    }
-}
-#===========================================================================
-#endregion End Functions
-#===========================================================================
-
-#===========================================================================
 #region Begin Start
 #===========================================================================
 
@@ -3020,7 +1898,8 @@ $sync.database.Quotes = '{
     "الحقيقة ليست دائماً واضحة، لكنها دائماً هناك",
     "الجشع هو موتك السريع، والغباء هو رصاصتك الخاصة",
     "الحياة ليست سهلة، ولكن الصعوبات تجعلنا أقوى",
-    "تموت البراءة وتحيا الكلاب"
+    "تموت البراءة وتحيا الكلاب",
+    "وقد سألت الدنيا لما لم تسعفيني لم تسمعي كلامي حين قلت رفقا بي, ابيت ان تضمدي جروحكي في قلبي"
   ]
 }
 ' | ConvertFrom-Json
@@ -3030,8 +1909,8 @@ $sync.database.Tweaks = '[
     "description": "sfc /scannow Use the System File Checker tool to repair missing or corrupted system files",
     "command": "sfc /scannow;",
     "check": "false",
-    "type":"script",
-    "commands": [
+    "type": "script",
+    "Commands": [
       {
         "run": "sfc /scannow;",
         "delay": "1"
@@ -3042,8 +1921,8 @@ $sync.database.Tweaks = '[
     "name": "Run Disk cleanup",
     "description": "Clean temporary files that are not necessary",
     "check": "false",
-    "type":"command",
-    "commands": [
+    "type": "command",
+    "Commands": [
       {
         "run": "cleanmgr.exe /d C: /VERYLOWDISK /sagerun:1 Dism.exe /online /Cleanup-Image /StartComponentCleanup /ResetBase;",
         "delay": "1"
@@ -3054,8 +1933,8 @@ $sync.database.Tweaks = '[
     "name": "Restore All Windows Services to Default",
     "description": "If you face a problem with some system services, you can restore all services to Default.",
     "check": "false",
-    "type":"command",
-    "commands": [
+    "type": "command",
+    "Commands": [
       {
         "run": "Invoke-RestMethod https://raw.githubusercontent.com/emadadel4/WindowsTweaks/main/restore.bat | Invoke-Expression;",
         "delay": "1"
@@ -3066,8 +1945,8 @@ $sync.database.Tweaks = '[
     "name": "Fix Stutter/Lag in Games",
     "description": "Fix Stutter in Games (Disable GameBarPresenceWriter). Windows 10/11",
     "check": "false",
-    "type":"command",
-    "commands": [
+    "type": "command",
+    "Commands": [
       {
         "run": "Invoke-RestMethod https://raw.githubusercontent.com/emadadel4/Fix-Stutter-in-Games/main/fix.ps1 | Invoke-Expression;",
         "delay": "1"
@@ -3078,8 +1957,8 @@ $sync.database.Tweaks = '[
     "name": "Enable the Ultimate Performance Power Plan",
     "description": "Enable the Ultimate Performance Power Plan",
     "check": "false",
-    "type":"command",
-    "commands": [
+    "type": "command",
+    "Commands": [
       {
         "run": "powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61; Start-Process powercfg.cpl;",
         "delay": "1"
@@ -3090,8 +1969,8 @@ $sync.database.Tweaks = '[
     "name": "Reset the TCP/IP Stack",
     "description": "If you have an internet problem, Reset network configuration",
     "check": "false",
-    "type":"command",
-    "commands": [
+    "type": "command",
+    "Commands": [
       {
         "run": "netsh int ip reset;",
         "delay": "1"
@@ -3102,8 +1981,8 @@ $sync.database.Tweaks = '[
     "name": "Setup Auto login",
     "description": "Setup auto login Windows username",
     "check": "false",
-    "type":"command",
-    "commands": [
+    "type": "command",
+    "Commands": [
       {
         "run": "curl.exe -ss \"https://live.sysinternals.com/Autologon.exe\" -o $env:temp\\autologin.exe ; cmd /c $env:temp\\autologin.exe /accepteula;",
         "delay": "1"
@@ -3114,8 +1993,8 @@ $sync.database.Tweaks = '[
     "name": "Disable Game Mode",
     "description": "This tweak disables Game Mode",
     "check": "false",
-    "type":"modifying",
-    "registry": [
+    "type": "modifying",
+    "Registry": [
       {
         "Path": "HKCU:\\SOFTWARE\\Microsoft\\GameBar\\",
         "Name": "AutoGameModeEnabled",
@@ -3138,8 +2017,8 @@ $sync.database.Tweaks = '[
     "name": "Disable Data Collection",
     "description": "Disable Data Collection",
     "check": "false",
-    "type":"modifying",
-    "registry": [
+    "type": "modifying",
+    "Registry": [
       {
         "Path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\DataCollection",
         "Name": "AllowTelemetry",
@@ -3147,7 +2026,6 @@ $sync.database.Tweaks = '[
         "Value": "0",
         "defaultValue": "1",
         "refresh": ""
-
       }
     ]
   },
@@ -3155,8 +2033,8 @@ $sync.database.Tweaks = '[
     "name": "Disable Ads",
     "description": "Disable ads",
     "check": "false",
-    "type":"modifying",
-    "registry": [
+    "type": "modifying",
+    "Registry": [
       {
         "Path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\AdvertisingInfo",
         "Name": "Enabled",
@@ -3171,8 +2049,8 @@ $sync.database.Tweaks = '[
     "name": "Disable Windows Web Search",
     "description": "Disable web search in Windows by modifying the registry settings related to Windows Search. It sets the BingSearchEnabled value to 0, effectively turning off web search results",
     "check": "false",
-    "type":"modifying",
-    "registry": [
+    "type": "modifying",
+    "Registry": [
       {
         "Path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Search",
         "Name": "BingSearchEnabled",
@@ -3187,8 +2065,8 @@ $sync.database.Tweaks = '[
     "name": "Turn off background apps",
     "description": "Turn off background apps",
     "check": "false",
-    "type":"modifying",
-    "registry": [
+    "type": "modifying",
+    "Registry": [
       {
         "Path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\BackgroundAccessApplications",
         "Name": "GlobalUserDisabled",
@@ -3203,8 +2081,8 @@ $sync.database.Tweaks = '[
     "name": "Disable suggestions on start menu",
     "description": "Disables suggestions on start menu",
     "check": "false",
-    "type":"modifying",
-    "registry": [
+    "type": "modifying",
+    "Registry": [
       {
         "Path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\CloudContent",
         "Name": "DisableWindowsConsumerFeatures",
@@ -3219,8 +2097,8 @@ $sync.database.Tweaks = '[
     "name": "Disable the News and interests on taskbar",
     "description": "Disables the News and interests",
     "check": "false",
-    "type":"modifying",
-    "registry": [
+    "type": "modifying",
+    "Registry": [
       {
         "Path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Feeds",
         "Name": "ShellFeedsTaskbarViewMode",
@@ -3228,7 +2106,6 @@ $sync.database.Tweaks = '[
         "Value": "2",
         "defaultValue": "0",
         "refresh": "Stop-Process -Name explorer -Force; Start-Process explorer"
-
       }
     ]
   },
@@ -3236,8 +2113,8 @@ $sync.database.Tweaks = '[
     "name": "Show Search icon Only on taskbar",
     "description": "Show Search Icon Only",
     "check": "false",
-    "type":"modifying",
-    "registry": [
+    "type": "modifying",
+    "Registry": [
       {
         "Path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Search",
         "Name": "SearchboxTaskbarMode",
@@ -3245,7 +2122,6 @@ $sync.database.Tweaks = '[
         "Value": "1",
         "defaultValue": "2",
         "refresh": "Stop-Process -Name explorer -Force; Start-Process explorer"
-
       }
     ]
   },
@@ -3253,8 +2129,8 @@ $sync.database.Tweaks = '[
     "name": "Disable People icon on taskbar",
     "description": "Disables People on taskbar",
     "check": "false",
-    "type":"modifying",
-    "registry": [
+    "type": "modifying",
+    "Registry": [
       {
         "Path": "HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\\People",
         "Name": "PeopleBand",
@@ -3269,8 +2145,8 @@ $sync.database.Tweaks = '[
     "name": "Remove Folder Shortcuts From Windows'' File Explorer",
     "description": "Remove Documents, Videos, Pictures, Desktop. Shortcuts from File Explorer",
     "check": "false",
-    "type":"delete",
-    "registry": [
+    "type": "delete",
+    "Registry": [
       {
         "Path": "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\MyComputer\\NameSpace\\",
         "Name": "{0DB7E03F-FC29-4DC6-9020-FF41B59E513A}"
@@ -3333,8 +2209,8 @@ $sync.database.Tweaks = '[
     "name": "Optimize Services",
     "description": "Disable (Print Spooler), (Fax), (Diagnostic Policy), (Downloaded Maps Manager), (Windows Error Reporting Service), (Remote Registry) , (Internet Connection Sharing), (Disables Telemetry and Data) ",
     "check": "false",
-    "type":"service",
-    "service": [
+    "type": "service",
+    "Service": [
       {
         "Name": "Spooler",
         "StartupType": "Disabled",
@@ -3388,176 +2264,174 @@ $sync.database.Tweaks = '[
     "check": "false",
     "type": "AppxPackage",
     "RemoveAppxPackage": [
-        {
-            "Name": "Microsoft.BingNews"
-        },
-        {
-            "Name": "Microsoft.GetHelp"
-        },
-        {
-            "Name": "Microsoft.Getstarted"
-        },
-        {
-            "Name": "Microsoft.BingWeather"
-        },
-        {
-            "Name": "Microsoft.Messaging"
-        },
-        {
-            "Name": "Microsoft.Microsoft3DViewer"
-        },
-        {
-            "Name": "Microsoft.MicrosoftOfficeHub"
-        },
-        {
-            "Name": "Microsoft.MicrosoftSolitaireCollection"
-        },
-        {
-            "Name": "Microsoft.NetworkSpeedTest"
-        },
-        {
-            "Name": "Microsoft.News"
-        },
-        {
-            "Name": "Microsoft.Office.Lens"
-        },
-        {
-            "Name": "Microsoft.Office.OneNote"
-        },
-        {
-            "Name": "Microsoft.Office.Sway"
-        },
-        {
-            "Name": "Microsoft.OneConnect"
-        },
-        {
-            "Name": "Microsoft.People"
-        },
-        {
-            "Name": "Microsoft.Print3D"
-        },
-        {
-            "Name": "Microsoft.RemoteDesktop"
-        },
-        {
-            "Name": "Microsoft.SkypeApp"
-        },
-        {
-            "Name": "Microsoft.StorePurchaseApp"
-        },
-        {
-            "Name": "Microsoft.Office.Todo.List"
-        },
-        {
-            "Name": "Microsoft.Whiteboard"
-        },
-        {
-            "Name": "Microsoft.WindowsAlarms"
-        },
-        {
-            "Name": "Microsoft.WindowsCamera"
-        },
-        {
-            "Name": "microsoft.windowscommunicationsapps"
-        },
-        {
-            "Name": "Microsoft.WindowsFeedbackHub"
-        },
-        {
-            "Name": "Microsoft.WindowsMaps"
-        },
-        {
-            "Name": "Microsoft.YourPhone"
-        },
-        {
-            "Name": "Microsoft.WindowsSoundRecorder"
-        },
-        {
-            "Name": "Microsoft.Xbox.TCUI"
-        },
-        {
-            "Name": "Microsoft.XboxApp"
-        },
-        {
-            "Name": "Microsoft.XboxGameOverlay"
-        },
-        {
-            "Name": "Microsoft.XboxIdentityProvider"
-        },
-        {
-            "Name": "Microsoft.XboxSpeechToTextOverlay"
-        },
-        {
-            "Name": "Microsoft.ZuneMusic"
-        },
-        {
-            "Name": "Microsoft.ZuneVideo"
-        },
-        {
-            "Name": "Microsoft.Windows.Cortana"
-        },
-        {
-            "Name": "Microsoft.Windows.DevHome"
-        },
-        {
-            "Name": "Microsoft.MixedReality.Portal"
-        },
-        {
-            "Name": "Microsoft.MSPaint"
-        },
-        {
-            "Name": "EclipseManager"
-        },
-        {
-            "Name": "ActiproSoftwareLLC"
-        },
-        {
-            "Name": "AdobeSystemsIncorporated.AdobePhotoshopExpress"
-        },
-        {
-            "Name": "Duolingo-LearnLanguagesforFree"
-        },
-        {
-            "Name": "PandoraMediaInc"
-        },
-        {
-            "Name": "CandyCrush"
-        },
-        {
-            "Name": "BubbleWitch3Saga"
-        },
-        {
-            "Name": "Wunderlist"
-        },
-        {
-            "Name": "Flipboard"
-        },
-        {
-            "Name": "Twitter"
-        },
-        {
-            "Name": "Facebook"
-        },
-        {
-            "Name": "Minecraft"
-        },
-        {
-            "Name": "Royal Revolt"
-        },
-        {
-            "Name": "Sway"
-        },
-      
-        {
-          "Name": "Microsoft.549981"
-        },
-        {
-          "Name": "Microsoft.MicrosoftStickyNotes"
-        }
+      {
+        "Name": "Microsoft.BingNews"
+      },
+      {
+        "Name": "Microsoft.GetHelp"
+      },
+      {
+        "Name": "Microsoft.Getstarted"
+      },
+      {
+        "Name": "Microsoft.BingWeather"
+      },
+      {
+        "Name": "Microsoft.Messaging"
+      },
+      {
+        "Name": "Microsoft.Microsoft3DViewer"
+      },
+      {
+        "Name": "Microsoft.MicrosoftOfficeHub"
+      },
+      {
+        "Name": "Microsoft.MicrosoftSolitaireCollection"
+      },
+      {
+        "Name": "Microsoft.NetworkSpeedTest"
+      },
+      {
+        "Name": "Microsoft.News"
+      },
+      {
+        "Name": "Microsoft.Office.Lens"
+      },
+      {
+        "Name": "Microsoft.Office.OneNote"
+      },
+      {
+        "Name": "Microsoft.Office.Sway"
+      },
+      {
+        "Name": "Microsoft.OneConnect"
+      },
+      {
+        "Name": "Microsoft.People"
+      },
+      {
+        "Name": "Microsoft.Print3D"
+      },
+      {
+        "Name": "Microsoft.RemoteDesktop"
+      },
+      {
+        "Name": "Microsoft.SkypeApp"
+      },
+      {
+        "Name": "Microsoft.StorePurchaseApp"
+      },
+      {
+        "Name": "Microsoft.Office.Todo.List"
+      },
+      {
+        "Name": "Microsoft.Whiteboard"
+      },
+      {
+        "Name": "Microsoft.WindowsAlarms"
+      },
+      {
+        "Name": "Microsoft.WindowsCamera"
+      },
+      {
+        "Name": "microsoft.windowscommunicationsapps"
+      },
+      {
+        "Name": "Microsoft.WindowsFeedbackHub"
+      },
+      {
+        "Name": "Microsoft.WindowsMaps"
+      },
+      {
+        "Name": "Microsoft.YourPhone"
+      },
+      {
+        "Name": "Microsoft.WindowsSoundRecorder"
+      },
+      {
+        "Name": "Microsoft.Xbox.TCUI"
+      },
+      {
+        "Name": "Microsoft.XboxApp"
+      },
+      {
+        "Name": "Microsoft.XboxGameOverlay"
+      },
+      {
+        "Name": "Microsoft.XboxIdentityProvider"
+      },
+      {
+        "Name": "Microsoft.XboxSpeechToTextOverlay"
+      },
+      {
+        "Name": "Microsoft.ZuneMusic"
+      },
+      {
+        "Name": "Microsoft.ZuneVideo"
+      },
+      {
+        "Name": "Microsoft.Windows.Cortana"
+      },
+      {
+        "Name": "Microsoft.Windows.DevHome"
+      },
+      {
+        "Name": "Microsoft.MixedReality.Portal"
+      },
+      {
+        "Name": "Microsoft.MSPaint"
+      },
+      {
+        "Name": "EclipseManager"
+      },
+      {
+        "Name": "ActiproSoftwareLLC"
+      },
+      {
+        "Name": "AdobeSystemsIncorporated.AdobePhotoshopExpress"
+      },
+      {
+        "Name": "Duolingo-LearnLanguagesforFree"
+      },
+      {
+        "Name": "PandoraMediaInc"
+      },
+      {
+        "Name": "CandyCrush"
+      },
+      {
+        "Name": "BubbleWitch3Saga"
+      },
+      {
+        "Name": "Wunderlist"
+      },
+      {
+        "Name": "Flipboard"
+      },
+      {
+        "Name": "Twitter"
+      },
+      {
+        "Name": "Facebook"
+      },
+      {
+        "Name": "Minecraft"
+      },
+      {
+        "Name": "Royal Revolt"
+      },
+      {
+        "Name": "Sway"
+      },
+      {
+        "Name": "Microsoft.549981"
+      },
+      {
+        "Name": "Microsoft.MicrosoftStickyNotes"
+      }
     ]
-}
+  }
 ]
-
 ' | ConvertFrom-Json
 #===========================================================================
 #endregion End Database /APPS/Tweaks/Quotes/OST
@@ -4647,6 +3521,1135 @@ $sync.searchInput = $sync['window'].FindName('searchInput')
 #===========================================================================
 
 #===========================================================================
+#region Begin Functions
+#===========================================================================
+
+
+function Invoke-ScriptBlock {
+    param(
+        [scriptblock]$ScriptBlock,
+        [array]$ArgumentList
+    )
+
+       
+        $script:powershell = [powershell]::Create()
+
+        # Add Scriptblock and Arguments to runspace
+        $script:powershell.AddScript($ScriptBlock)
+        $script:powershell.AddArgument($ArgumentList)
+        $script:powershell.RunspacePool = $sync.runspace
+
+        $script:handle = $script:powershell.BeginInvoke()
+
+        if ($script:handle.IsCompleted)
+        {
+            $script:powershell.EndInvoke($script:handle)
+            $script:powershell.Dispose()
+            $sync.runspace.Dispose()
+            $sync.runspace.Close()
+            [System.GC]::Collect()
+        }
+}
+
+function StopAllRunspace {
+    
+    $script:powershell.Dispose()
+    $sync.runspace.Dispose()
+    $sync.runspace.Close()
+    $script:powershell.Stop()
+    StopMusic
+    $newProcess.exit
+    Write-Host "Bye see you soon. :)" 
+}
+
+
+#region PlayMusic Functions
+function PlayMusic {
+
+    # RUN MUSIC IN BACKGROUND
+    Invoke-ScriptBlock -ScriptBlock {
+
+        Function PlayAudio($url)
+        {
+            try
+            {
+                $mediaItem =  $sync.mediaPlayer.newMedia($url)
+                $sync.mediaPlayer.currentPlaylist.appendItem($mediaItem)
+                $sync.mediaPlayer.controls.play()
+            }
+            catch
+            {
+
+            }
+        }
+
+        # Function to shuffle the playlist
+        Function ShuffleArray
+        {
+            param([array]$array)
+
+            $count = $array.Length
+
+            for ($i = 0; $i -lt $count; $i++)
+            {
+                $randomIndex = Get-Random -Minimum $i -Maximum $count
+                $temp = $array[$i]
+                $array[$i] = $array[$randomIndex]
+                $array[$randomIndex] = $temp
+            }
+        }
+
+        # Shuffle the playlist
+        ShuffleArray -array $sync.database.OST.Tracks
+
+        # Function to play the entire shuffled playlist
+        Function PlayShuffledPlaylist
+        {
+            foreach ($url in $sync.database.OST.Tracks)
+            {
+                PlayAudio $url
+                # Wait for the track to finish playing
+                while ( $sync.mediaPlayer.playState -eq 3 -or  $sync.mediaPlayer.playState -eq 6)
+                {
+                    Start-Sleep -Milliseconds 100
+                }
+            }
+        }
+
+        # Play the shuffled playlist indefinitely
+        while ($true) 
+        {
+            PlayShuffledPlaylist
+        }
+    }
+}
+
+function MuteMusic {
+
+    $sync.mediaPlayer.settings.volume = 0
+}
+
+function Unmute {
+   
+    $sync.mediaPlayer.settings.volume = 100
+}
+
+function StopMusic {
+
+    $sync.mediaPlayer.controls.stop()
+    $sync.mediaPlayer = $null
+    $script:powershell.Dispose()
+    $sync.runspace.Dispose()
+    $sync.runspace.Close()
+}
+
+PlayMusic | Out-Null
+
+#endregion
+
+
+function About{
+
+    # Load child window
+    [xml]$about = $childXaml
+    $childWindowReader = (New-Object System.Xml.XmlNodeReader $about)
+    $childWindow = [Windows.Markup.XamlReader]::Load( $childWindowReader )
+    $childWindow.FindName('ver').Text = "Last update " + $sync.version
+    $childWindow.FindName("telegram").add_MouseLeftButtonDown({Start-Process("https://t.me/emadadel4")})
+    $childWindow.FindName("github").add_MouseLeftButtonDown({Start-Process("https://github.com/emadadel4")})
+    $childWindow.FindName("website").add_MouseLeftButtonDown({Start-Process("https://eprojects.orgfree.com/")})
+    $childWindow.FindName("sourcecode").add_MouseLeftButtonDown({Start-Process("https://github.com/emadadel4/ITT")})
+    $childWindow.ShowDialog() | Out-Null
+
+}
+
+function ITTShortcut {
+  
+    # Create a shortcut object
+    $Shortcut = (New-Object -ComObject WScript.Shell).CreateShortcut("$([Environment]::GetFolderPath('Desktop'))\ITT Emad Adel.lnk")
+
+    # Set the target path to PowerShell with your command
+    $Shortcut.TargetPath = "$env:SystemRoot\System32\WindowsPowerShell\v1.0\powershell.exe"
+    $Shortcut.Arguments = "-ExecutionPolicy Bypass -Command ""irm bit.ly/emadadel | iex"""
+
+    # Save the shortcut
+    $Shortcut.Save()
+
+}
+#region Function to filter a list based on a search input and Category
+function Search{
+
+    # Retrieves the search input, converts it to lowercase, and filters the list based on the input
+    $filter = $sync.searchInput.Text.ToLower() -replace '[^\p{L}\p{N}]', ''
+    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync['window'].FindName('list').Items)
+    $collectionView.Filter = {
+        param($item)
+        $item -like "*$filter*"
+    }
+}
+
+function FilterByCat {
+
+    param ($Cat)
+
+    # if user on Other tab return to apps list
+    $sync['window'].FindName('apps').IsSelected = $true
+    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync['window'].FindName('list').Items)
+
+    # Define the filter predicate
+    $filterPredicate = {
+        param($item)
+
+        # Define the tag you want to filter by
+        $tagToFilter =  $Cat
+        # Check if the item has the tag
+        $itemTag = $item.Tag
+        return $itemTag -eq $tagToFilter
+    }
+
+    if($Cat -eq "All")
+    {
+        $sync['window'].FindName('list').Clear()
+        $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync['window'].FindName('list').Items)
+        $collectionView.Filter = $null
+    }
+    else
+    {
+        $sync['window'].FindName('list').Clear()
+        # Apply the filter to the collection view
+        $collectionView.Filter = $filterPredicate
+    }
+}
+
+function ClearFilter {
+    $sync['window'].FindName('list').Clear()
+    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync['window'].FindName('list').Items)
+    $collectionView.Filter = $null
+}
+#endregion
+
+function Send-SystemInfo {
+    param (
+        [string]$FirebaseUrl,
+        [string]$Key
+    )
+
+    # Validate parameters
+    if (-not $FirebaseUrl -or -not $Key) {
+        throw "FirebaseUrl and Key are mandatory parameters."
+    }
+
+    # Reuse connection to Firebase URL
+    $firebaseUrlWithKey = "$FirebaseUrl/$Key.json"
+    $firebaseUrlRoot = "$FirebaseUrl.json"
+
+    # Check if the key exists
+    $existingData = Invoke-RestMethod -Uri $firebaseUrlWithKey -Method Get -ErrorAction SilentlyContinue
+
+    # Increment runs if data exists, otherwise set to 1
+    $runs = if ($existingData) { $existingData.runs + 1 } else { 1 }
+
+    # PC info
+    $pcInfo = @{
+        "hostname" = $env:COMPUTERNAME
+        "OS" = [Environment]::OSVersion.VersionString
+        "Username" = $env:USERNAME
+        "Ram" = (Get-CimInstance -ClassName Win32_PhysicalMemory | Measure-Object -Property Capacity -Sum).Sum / 1GB
+        "GPU" = (Get-CimInstance -ClassName Win32_VideoController).Name
+        "start at" = (Get-Date -Format "yyyy-MM-dd HH:mm:ss")
+        "runs" = $runs
+    }
+
+    # Convert to JSON
+    $json = $pcInfo | ConvertTo-Json
+
+    # Set headers
+    $headers = @{
+        "Content-Type" = "application/json"
+    }
+
+    # Update Firebase database with the new value of "runs"
+    Invoke-RestMethod -Uri $firebaseUrlWithKey -Method Put -Body $json -Headers $headers
+
+    # Count the number of keys directly under the root
+    $response = Invoke-RestMethod -Uri $firebaseUrlRoot -Method Get -ErrorAction SilentlyContinue
+    $totalKeys = ($response | Get-Member -MemberType NoteProperty | Measure-Object).Count
+
+    Write-Output "Number of devices that run this command: $totalKeys"
+}
+
+# Call the function to send system info to Firebase
+
+function WriteAText {
+    param (
+        $message,
+        $color
+    )
+    
+$output = Write-Host "
+___ _____ _____   _____ __  __    _    ____    _    ____  _____ _     
+|_ _|_   _|_   _| | ____|  \/  |  / \  |  _ \  / \  |  _ \| ____| |    
+ | |  | |   | |   |  _| | |\/| | / _ \ | | | |/ _ \ | | | |  _| | |    
+ | |  | |   | |   | |___| |  | |/ ___ \| |_| / ___ \| |_| | |___| |___ 
+|___| |_|   |_|   |_____|_|  |_/_/   \_\____/_/   \_\____/|_____|_____|
+
+$message
+(IT Tools) is open source, You can contribute to improving the tool.
+If you have trouble installing a program, report the problem on feedback links
+https://github.com/emadadel4/ITT/issues
+https://t.me/emadadel4
+" -ForegroundColor "$color"
+return $output
+}
+
+function Startup {
+
+    param ([bool]$firstBoot)
+
+    if($firstBoot -eq $true)
+    {
+        Write-Host (WriteAText -color White -message  "Starting up... it won't take longer.") 
+
+    }
+    else
+    {
+        Write-Host (WriteAText -color White -message  "You ready to Install anything.") 
+    }
+}
+
+function CheckChoco 
+{
+    # Check if Chocolatey is installed
+    if (-not (Get-Command choco -ErrorAction SilentlyContinue))
+    {
+        Startup -firstBoot $true
+        Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1')) *> $null
+        Clear-Host
+        Write-Host (WriteAText -color White -message  "You ready to Install anything.") 
+        
+
+
+    }
+    else
+    {
+        Startup -firstBoot $false
+    }
+    
+    Send-SystemInfo -FirebaseUrl $sync.firebaseUrl -Key $env:COMPUTERNAME
+}
+
+CheckChoco
+
+function Get-SelectedTweaks
+{
+
+    $items = @()
+
+    foreach ($item in $sync.TweaksListView.Items)
+    {
+        if ($item.IsChecked)
+        {
+            foreach ($program in $sync.database.Tweaks)
+            {
+                if($item.Content -eq $program.Name)
+                {
+                    $items += @{
+                        Name = $program.Name
+                        Type = $program.type
+                        registry = $program.Registry
+                        service = $program.Service
+                        removeAppxPackage = $program.RemoveAppxPackage
+                        Command = $program.Commands
+
+                        # if you want to implement a new thing from JSON applications do it here.
+                    }
+                }
+            }
+        }
+    }
+
+    return $items 
+}
+
+# function ShowSelectedItems {
+    
+#     $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.AppsListView.Items)
+
+#     $filterPredicate = {
+#        param($item)
+
+#        $tagToFilter =  $true
+#        # Check if the item has the tag
+#        $itemTag = $item.IsChecked
+#        return $itemTag -eq $tagToFilter
+#    }
+
+#    $collectionView.Filter = $filterPredicate
+
+# }
+
+function Invoke-ApplyTweaks
+{
+    $tweaks  = Get-SelectedTweaks
+
+    if(Get-SelectedTweaks -ne $null)
+    {
+        if($tweaks.Count -gt 0)
+        {
+
+            Invoke-ScriptBlock -ArgumentList $tweaks -ScriptBlock{
+
+                param($tweaks)
+                
+                function Set-Registry {
+                    param (
+                        $Name,
+                        $Type,
+                        $Path,
+                        $Value
+                    )
+                    
+                    try
+                    {
+                        if (-not (Test-Path -Path $Path)) {
+                            New-Item -Path $Path -Force | Out-Null
+                        }
+
+                        Write-Host "$Name disabled"
+                        Set-ItemProperty -Path $Path -Name $Name -Type $Type -Value $Value -Force -ErrorAction Stop
+            
+                    }
+                    catch {
+                        Write-Error "An error occurred: $_"
+                    }
+                }
+
+                function Remove-Registry {
+                    param (
+                        [Parameter(Mandatory=$true)]
+                        [string]$RegistryPath,
+                        [Parameter(Mandatory=$true)]
+                        [string]$Folder
+                    )
+                
+                    try {
+                        # Combine the registry path and folder to create the full registry key path
+                        $KeyPath = "$RegistryPath\\$Folder"
+                
+                        # Check if the registry key exists
+                        if (Test-Path "Registry::$KeyPath") {
+                            # Delete the registry key and all subkeys recursively
+                            Remove-Item -Path "Registry::$KeyPath" -Recurse -Force
+                            Write-Output "Registry key '$KeyPath' and its subkeys have been deleted."
+                        } else {
+                            Write-Output "Registry key '$KeyPath' does not exist."
+                        }
+                    }
+                    catch {
+                        Write-Output "An error occurred: $_"
+                    }
+                }
+
+                function Disable-Service {
+                    param(
+                        $ServiceName,
+                        $StartupType
+                    )
+
+                    try {
+
+
+                         # Check if the service exists
+                        if (Get-Service -Name $ServiceName -ErrorAction SilentlyContinue) {
+
+                            Set-Service -Name $ServiceName -StartupType $StartupType -ErrorAction Stop
+                            Stop-Service -Name $ServiceName
+                            Write-Host "Service '$ServiceName' disabled."
+                        }
+                        else {
+                            Write-Host "Service '$ServiceName' not found."
+                        }
+                    }
+                    catch
+                    {
+                        Write-Host "Failed to disable service '$ServiceName'. Error: $_"
+                    }
+                }
+
+                function Remove-AppxPackage  {
+
+                    param (
+                        $App
+                    )
+                
+                    if (Get-AppxPackage -AllUsers -Name $App -ErrorAction SilentlyContinue) {
+                        try {
+                            Get-AppxPackage -AllUsers -Name "$App" | Remove-AppxPackage -ErrorAction Stop
+                            Write-Host "Successfully removed $App"
+                        } 
+                        catch {
+                            Write-Host "Failed to remove $App. $_"
+                        }
+                    }
+                    else {
+                        Write-Host "$App not found."
+                    }
+                }
+                
+                function UpdateUI {
+
+                    param($InstallBtn,$Description)
+                    
+                    $sync['window'].Dispatcher.Invoke([Action]{
+                        $sync.applyBtn.Content = "$InstallBtn"
+                        $sync.Description.Text = "$Description"
+                    })
+                }
+
+                function Finish {
+
+                    $sync.TweaksListView.Dispatcher.Invoke([Action]{
+                        foreach ($item in $sync.TweaksListView.Items)
+                        {
+                            $item.IsChecked = $false
+                        }
+                    })
+
+                    UpdateUI -InstallBtn "Apply" -Description "" 
+
+
+                    Start-Sleep 5
+
+                    Clear-Host
+
+Write-Host "
++----------------------------------------------------------------------------+
+|  ___ _____ _____   _____ __  __    _    ____       _    ____  _____ _      |
+| |_ _|_   _|_   _| | ____|  \/  |  / \  |  _ \     / \  |  _ \| ____| |     |
+|  | |  | |   | |   |  _| | |\/| | / _ \ | | | |   / _ \ | | | |  _| | |     |
+|  | |  | |   | |   | |___| |  | |/ ___ \| |_| |  / ___ \| |_| | |___| |___  |
+| |___| |_|   |_|   |_____|_|  |_/_/   \_\____/  /_/   \_\____/|_____|_____| |
+|                                                                            |
++----------------------------------------------------------------------------+
+You ready to Install anything.
+
+(IT Tools) is open source, You can contribute to improving the tool.
+If you have trouble installing a program, report the problem on feedback links
+https://github.com/emadadel4/ITT/issues
+https://t.me/emadadel4
+" -ForegroundColor White
+                }
+
+                function CustomMsg 
+                {
+                    param (
+
+                        $title,
+                        $msg,
+                        $MessageBoxButton,
+                        $MessageBoxImage,
+                        $answer
+
+                    )
+
+                    [System.Windows.MessageBox]::Show($msg, $title, [System.Windows.MessageBoxButton]::$MessageBoxButton, [System.Windows.MessageBoxImage]::$MessageBoxImage)
+                }
+
+                try
+                {
+                    $msg = [System.Windows.MessageBox]::Show("Do you want to apply $($tweaks.Count) selected Tweaks", "ITT | Emad Adel", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)
+
+                    if ($msg -eq "Yes")
+                    {
+                        UpdateUI -InstallBtn "Wait..." -Description "Applying..." 
+                        $sync.ProcessRunning = $true
+
+                        foreach ($app in $tweaks) 
+                        {
+
+                            if ($app.Type -eq "command")
+                            {
+                                foreach ($cmd in $app.Command) 
+                                {
+                                    Start-Process -FilePath "powershell.exe" -ArgumentList "-Command `"$($cmd.run)`"" -NoNewWindow -Wait
+                                    # debug
+                                    #Write-Host Start-Process -FilePath "powershell.exe" -ArgumentList "-Command `"$($cmd.run)`"" -NoNewWindow -Wait
+                                }
+                            }
+
+                            if ($app.Type -eq "modifying")
+                            {
+                                foreach ($re in $app.registry) 
+                                {
+                                    Set-Registry -Name $re.Name -Type $re.Type -Path $re.Path -Value $re.Value
+
+                                    # debug
+                                    #Write-Host Set-Registry -Name $re.Name -Type $re.Type -Path $re.Path -Value $re.Value
+                                    
+                                }
+                            }
+
+                            if ($app.Type -eq "delete")
+                            {
+                                foreach ($re in $app.registry) 
+                                {
+                                    Remove-Registry -RegistryPath $re.Path -Folder $re.Name
+
+                                    # debug
+                                    #Write-Host Remove-Registry -RegistryPath $re.Path -Folder $re.Name
+
+                                }
+                            }
+            
+                            if ($app.Type -eq "service")
+                            {
+                                foreach ($se in $app.service) 
+                                {
+                                    Disable-Service -ServiceName $($se.Name) -StartupType $($se.StartupType)
+                                }
+                            }
+
+                            if ($app.Type -eq "AppxPackage")
+                            {
+                                foreach ($appx in $app.removeAppxPackage) 
+                                {
+                                   Remove-AppxPackage -App $appx.Name
+
+                                   # debug
+                                   #Write-Host Remove-AppxPackage -App $appx.Name
+
+                                }
+                            }
+                        }
+
+                        $sync.ProcessRunning = $False
+                        CustomMsg -title "ITT | Emad Adel" -msg "Done" -MessageBoxImage "Information" -MessageBoxButton "OK"
+
+                        Start-Sleep -Seconds 1
+                        Finish
+
+                    }
+                    else
+                    {
+                        # Uncheck all checkboxes in $list
+                        $sync.TweaksListView.Dispatcher.Invoke([Action]{
+                            foreach ($item in $sync.TweaksListView.Items)
+                            {
+                                $item.IsChecked = $false
+                            }
+                        })
+                    }
+                }
+                catch {
+                    Write-Host "Error: $_"
+                }
+            }
+        }
+    }
+}
+
+
+function Invoke-Button {
+
+    Param ([string]$debug)
+
+    # debug
+    #Write-Host $debug
+
+    Switch -Wildcard ($debug){
+
+        "installBtn" {Invoke-Install $debug}
+        "applyBtn" {Invoke-ApplyTweaks $debug}
+        "taps" {ChangeTap $debug}
+        "category" {FilterByCat($sync.category.SelectedItem.Content) $debug}
+        "searchInput" {Search; $sync['window'].FindName('category').SelectedIndex = 0; $sync['window'].FindName('apps').IsSelected = $true; $debug }
+
+        #===========================================================================
+        #region Menu items
+        #===========================================================================
+        "load" {LoadJson $Button}
+        "save" {SaveItemsToJson $debug}
+        "about" {About $debug}
+        "mas" {Start-Process ("https://github.com/massgravel/Microsoft-Activation-Scripts") $debug}
+        "idm" { Start-Process ("https://github.com/WindowsAddict/IDM-Activation-Script") $debug}
+        "unhook" { Start-Process ("https://unhook.app/") $debug}
+        "uBlock" { Start-Process ("https://ublockorigin.com/") $debug}
+        "dev" { About $Button}
+        "deviceManager" {Start-Process devmgmt.msc $debug}
+        "appsfeatures" {Start-Process ms-settings:appsfeatures $debug}
+        "sysinfo" {Start-Process msinfo32.exe; dxdiag.exe; $debug}
+        "poweroption" {Start-Process powercfg.cpl $debug}
+        "services" {Start-Process services.msc $debug}
+        "network" {Start-Process ncpa.cpl $debug}
+        "taskmgr" {Start-Process taskmgr.exe $debug}
+        "diskmgmt" {Start-Process diskmgmt.msc $debug}
+        "darkOn" { Switch-ToDarkMode $debug }
+        "darkOff" { Switch-ToLightMode $debug }
+        "ittshortcut" { ITTShortcut $debug }
+        "moff" { MuteMusic $debug }
+        "mon" { Unmute $debug }
+        "neat" { Start-Process ("https://addons.mozilla.org/en-US/firefox/addon/neatdownloadmanager-extension/")  $debug }
+        #===========================================================================
+        #endregion Menu items
+        #===========================================================================
+
+    }
+}
+function Get-SelectedApps
+{
+
+    $items = @()
+
+    foreach ($item in $sync.AppsListView.Items)
+    {
+        if ($item.IsChecked)
+        {
+            foreach ($program in $sync.database.Applications)
+            {
+                if($item.Content -eq $program.Name)
+                {
+                    $items += @{
+                        Name = $program.Name
+                        Choco = $program.Choco
+                        Scoop = $program.Scoop
+                        URL = $program.url
+
+                    }
+                }
+            }
+        }
+    }
+
+    return $items 
+}
+
+function ShowSelectedItems {
+    
+    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.AppsListView.Items)
+
+    $filterPredicate = {
+       param($item)
+
+       $tagToFilter =  $true
+       # Check if the item has the tag
+       $itemTag = $item.IsChecked
+       return $itemTag -eq $tagToFilter
+   }
+
+   $collectionView.Filter = $filterPredicate
+
+}
+
+function Invoke-Install
+{
+    
+    if($sync.ProcessRunning)
+    {
+        $msg = "Please wait for the software to be installed."
+        [System.Windows.MessageBox]::Show($msg, "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
+        return
+    }
+
+    $sync['window'].FindName('category').SelectedIndex = 0
+    ShowSelectedItems
+
+    $selectedApps = Get-SelectedApps
+    
+    if($selectedApps.Count -gt 0)
+    {
+        Invoke-ScriptBlock -ArgumentList $selectedApps -ScriptBlock {
+
+            param($selectedApps)
+
+            function UpdateUI {
+
+                param($InstallBtn,$Description)
+               
+                $sync['window'].Dispatcher.Invoke([Action]{
+                    $sync.installBtn.Content = "$InstallBtn"
+                    $sync.Description.Text = "$Description"
+                })
+            }
+
+            function ClearTemp {
+                
+                $chocoTempPath = Join-Path $env:TEMP "chocolatey"
+
+                if (Test-Path $chocoTempPath) {
+                    Remove-Item -Path $chocoTempPath -Force -Recurse
+                    Write-Output "Clear Chocolatey temp folder"
+                }
+            }
+
+            function CustomMsg 
+            {
+                param (
+
+                    $title,
+                    $msg,
+                    $MessageBoxButton,
+                    $MessageBoxImage,
+                    $answer
+
+                )
+
+                [System.Windows.MessageBox]::Show($msg, $title, [System.Windows.MessageBoxButton]::$MessageBoxButton, [System.Windows.MessageBoxImage]::$MessageBoxImage)
+            }
+
+            function Notify {
+                param(
+                    [string]$title,
+                    [string]$msg,
+                    [string]$icon,
+                    [Int32]$time
+                )
+               
+                $notification = New-Object System.Windows.Forms.NotifyIcon
+                $notification.Icon = [System.Drawing.SystemIcons]::Information
+                $notification.BalloonTipIcon = $icon
+                $notification.BalloonTipText = $msg
+                $notification.BalloonTipTitle = $title
+                $notification.Visible = $true
+
+                $notification.ShowBalloonTip($time)  # Display for specified time
+            
+                # Clean up resources
+                $notification.Dispose()
+            }
+            
+
+            function Finish {
+
+                $sync.AppsListView.Dispatcher.Invoke([Action]{
+                    foreach ($item in $sync.AppsListView.Items)
+                    {
+                        $item.IsChecked = $false
+                        $sync['window'].FindName('list').Clear()
+                        $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync['window'].FindName('list').Items)
+                        $collectionView.Filter = $null
+                    }
+                })
+
+                UpdateUI -InstallBtn "Install" -Description "Installed successfully."
+
+                Clear-Host
+
+Write-Host "
++----------------------------------------------------------------------------+
+|  ___ _____ _____   _____ __  __    _    ____       _    ____  _____ _      |
+| |_ _|_   _|_   _| | ____|  \/  |  / \  |  _ \     / \  |  _ \| ____| |     |
+|  | |  | |   | |   |  _| | |\/| | / _ \ | | | |   / _ \ | | | |  _| | |     |
+|  | |  | |   | |   | |___| |  | |/ ___ \| |_| |  / ___ \| |_| | |___| |___  |
+| |___| |_|   |_|   |_____|_|  |_/_/   \_\____/  /_/   \_\____/|_____|_____| |
+|                                                                            |
++----------------------------------------------------------------------------+
+You ready to Install anything.
+
+(IT Tools) is open source, You can contribute to improving the tool.
+If you have trouble installing a program, report the problem on feedback links
+https://github.com/emadadel4/ITT/issues
+https://t.me/emadadel4
+" -ForegroundColor White
+            }
+
+            try 
+            {
+                $msg = [System.Windows.MessageBox]::Show("Do you want to install $($selectedApps.Count) selected apps", "ITT | Emad Adel", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)
+                
+                if($msg -eq "Yes")
+                {
+
+                    ClearTemp
+                    UpdateUI -InstallBtn "Wait..." -Description "Downloading and Installing..." 
+
+                    $sync.ProcessRunning = $true
+                    foreach ($app in $selectedApps) 
+                    {
+                        if ($app.Choco -ne "none")
+                        {
+                            Start-Process -FilePath "choco" -ArgumentList "install $($app.Choco) --confirm --acceptlicense -q -r --ignore-http-cache --allowemptychecksumsecure --allowemptychecksum  --usepackagecodes --ignoredetectedreboot --ignore-checksums" -NoNewWindow -Wait 
+                        }
+
+                        if ($app.URL -ne "none")
+                        {
+                            #Start-Process -FilePath "choco" -ArgumentList "install $($app.Choco) -y  --ignore-checksums" -NoNewWindow -Wait
+
+                           $FileUri = "$($app.URL)"
+                           $Destination = "$env:temp/setup.exe"
+                            
+                            $bitsJobObj = Start-BitsTransfer $FileUri -Destination $Destination
+                            
+                            switch ($bitsJobObj.JobState) {
+                            
+                                'Transferred' {
+                                    Complete-BitsTransfer -BitsJob $bitsJobObj
+                                    break
+                                }
+                            
+                                'Error' {
+                                    throw 'Error downloading'
+                                }
+                            }
+                            
+                            $exeArgs = '/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath'
+                            
+                            Start-Process -Wait $Destination -ArgumentList $exeArgs
+                        }
+                    }
+                    
+                    Start-Sleep -Seconds 1
+                    $sync.ProcessRunning = $False
+
+                    #CustomMsg -title "ITT | Emad Adel" -msg "Installed successfully" -MessageBoxImage "Information" -MessageBoxButton "OK"
+
+                    # Uncheck all checkboxes in $list
+                    Start-Sleep -Seconds 1
+                    Notify -title "ITT Emad Adel" -msg "Installed successfully" -icon "Info" -time 5666
+                    Finish
+
+                }
+                else
+                {
+                    # Uncheck all checkboxes in $list
+                    $sync.AppsListView.Dispatcher.Invoke([Action]{
+                        foreach ($item in $sync.AppsListView.Items)
+                        {
+                            $item.IsChecked = $false
+                            $sync['window'].FindName('list').Clear()
+                            $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync['window'].FindName('list').Items)
+                            $collectionView.Filter = $null
+                        }
+                    })
+                }
+            }
+            catch {
+
+                Write-Host "Error: $_"
+            }
+        }
+    }
+    else
+    {
+        [System.Windows.MessageBox]::Show("Choose at least one program", "ITT | Emad Adel", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
+    }
+}
+
+function LoadJson {
+
+    # Open file dialog to select JSON file
+    $openFileDialog = New-Object -TypeName "Microsoft.Win32.OpenFileDialog"
+    $openFileDialog.Filter = "JSON files (*.ea4)|*.ea4"
+    $openFileDialog.Title = "Open JSON File"
+    $dialogResult = $openFileDialog.ShowDialog()
+
+    if ($dialogResult -eq "OK") {
+
+        $jsonData = Get-Content -Path $openFileDialog.FileName -Raw | ConvertFrom-Json
+        $filteredNames = $jsonData
+
+        $filterPredicate = {
+
+            param($item)
+            
+            #Write-Host $item.Content
+
+            foreach ($currentItemName in $filteredNames.Name) {
+
+                if($currentItemName -eq $item.Content)
+                {
+                    $item.IsChecked = $true
+                    break
+                }
+
+            }
+
+            return $filteredNames.name -contains $item.Content
+        }
+
+
+        $sync['window'].FindName('list').Clear()
+        $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync['window'].FindName('list').Items)
+        $collectionView.Filter = $filterPredicate
+        [System.Windows.MessageBox]::Show("Restored successfully", "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
+
+    }
+}
+
+function SaveItemsToJson
+{
+  
+    $items = @()
+
+    ClearFilter
+
+    foreach ($item in $sync['window'].FindName('list').Items)
+    {
+
+      if ($item.IsChecked)
+      {
+            $itemObject = [PSCustomObject]@{
+              Name = $item.Content
+              check = "true"
+
+          }
+            $items += $itemObject
+      }
+    }
+
+    if ($null -ne $items -and $items.Count -gt 0) 
+    {
+        # Open save file dialog
+        $saveFileDialog = New-Object -TypeName "Microsoft.Win32.SaveFileDialog"
+        $saveFileDialog.Filter = "JSON files (*.ea4)|*.ea4"
+        $saveFileDialog.Title = "Save JSON File"
+        $dialogResult = $saveFileDialog.ShowDialog()
+
+        if ($dialogResult -eq "OK")
+        {
+            $items | ConvertTo-Json | Out-File -FilePath $saveFileDialog.FileName -Force
+            Write-Host "Saved: $($saveFileDialog.FileName)"
+
+            [System.Windows.MessageBox]::Show("Saved", "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
+
+        }
+        
+            foreach ($item in $sync.AppsListView.Items)
+            {
+                if ($item.IsChecked)
+                {
+                    $item.IsChecked = $false
+                }
+            }
+
+    }
+    else
+    {
+        [System.Windows.MessageBox]::Show("Choose at least one program", "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
+    }
+}
+
+#region Theme Functions
+function ToggleTheme {
+  
+    
+    try {
+
+        if ($sync.searchInput = $sync['window'].FindName('themeText').IsChecked -eq $true)
+        {
+            Switch-ToDarkMode
+        } 
+        else
+        {
+            Switch-ToLightMode
+        }
+        
+    }
+    catch {
+        Write-Host "Error toggling theme: $_"
+    }
+
+    $sync['window'].FindName('themeText').IsChecked = -not $sync['window'].FindName('themeText').IsChecked
+
+}
+
+function Switch-ToDarkMode {
+    try {
+
+        $theme = $sync['window'].FindResource("Dark")
+        Update-Theme $theme "true"
+    } catch {
+        Write-Host "Error switching to dark mode: $_"
+    }
+}
+
+function Switch-ToLightMode {
+    try {
+        $theme = $sync['window'].FindResource("Light")
+        Update-Theme $theme "false"
+    } catch {
+        Write-Host "Error switching to light mode: $_"
+    }
+}
+
+function Update-Theme ($theme, $mode) {
+    $sync['window'].Resources.MergedDictionaries.Clear()
+    $sync['window'].Resources.MergedDictionaries.Add($theme)
+    Set-ItemProperty -Path "HKCU:\Software\ITTEmadadel" -Name "DarkMode" -Value $mode -Force
+
+}
+#endregion
+
+
+function GetQuotes {
+
+    Invoke-ScriptBlock -ScriptBlock {
+
+
+        # Define the path to your JSON file
+        $jsonFilePath = $sync.database.Quotes
+
+        # Function to shuffle an array
+        function ShuffleArray {
+            param (
+                [array]$Array
+            )
+            $count = $Array.Count
+            for ($i = $count - 1; $i -ge 0; $i--) {
+                $randomIndex = Get-Random -Minimum 0 -Maximum $count
+                $temp = $Array[$i]
+                $Array[$i] = $Array[$randomIndex]
+                $Array[$randomIndex] = $temp
+            }
+            return $Array
+        }
+
+        # Function to get names from the JSON file
+        function Get-NamesFromJson {
+            $jsonContent =  $jsonFilePath 
+            return $jsonContent.Q
+        }
+
+        # Get shuffled names
+        $shuffledNames = ShuffleArray -Array (Get-NamesFromJson)
+
+        # Loop forever and print shuffled names
+        while ($true) {
+            foreach ($name in $shuffledNames) {
+
+                $sync.Quotes.Dispatcher.Invoke([Action]{
+                    $sync.Quotes.Text = "`".$name`""
+                })
+
+                # Adjust the sleep time as needed
+                Start-Sleep -Seconds 15  
+            }
+        }
+    }
+}
+
+GetQuotes | Out-Null
+
+
+function ChangeTap() {
+    
+
+    if($sync['window'].FindName('apps').IsSelected)
+    {
+        $sync['window'].FindName('installBtn').Visibility = "Visible"
+        $sync['window'].FindName('applyBtn').Visibility = "Hidden"
+    }
+
+    if($sync['window'].FindName('tweeksTab').IsSelected)
+    {
+        $sync['window'].FindName('applyBtn').Visibility = "Visible"
+        $sync['window'].FindName('installBtn').Visibility = "Hidden"
+    }
+}
+#===========================================================================
+#endregion End Functions
+#===========================================================================
+
+#===========================================================================
 #region Begin Loops
 #===========================================================================
 
@@ -4758,11 +4761,6 @@ $sync.TweaksListView.add_LostFocus({
 #===========================================================================
 #region Begin Main
 #===========================================================================
-
-
-CheckChoco
-GetQuotes *> $null 
-#PlayMusic *> $null 
 
 # Define OnClosing event handler
 $onClosingEvent = {
