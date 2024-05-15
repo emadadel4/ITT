@@ -30,12 +30,24 @@ function GetQuotes {
         # Get shuffled names
         $shuffledNames = ShuffleArray -Array (Get-NamesFromJson)
 
+        # Function to display welcome text
+        function Display-WelcomeText {
+            $sync.Quotes.Dispatcher.Invoke([Action]{
+                $sync.Quotes.Text = "توفر هذه الأداة تسهيلات كبيرة في عملية تثبيت البرامج وتحسين أداء نظام التشغيل. انضم إلينا لتساهم في تطويرها وجعلها أكثر اكتمالًا"
+            })
+        }
+
+        # Display welcome text
+        Display-WelcomeText
+
+        Start-Sleep -Seconds 15
+
         # Loop forever and print shuffled names
         while ($true) {
             foreach ($name in $shuffledNames) {
 
                 $sync.Quotes.Dispatcher.Invoke([Action]{
-                    $sync.Quotes.Text = "`".$name`""
+                    $sync.Quotes.Text = "`"$name.`""
                 })
 
                 # Adjust the sleep time as needed
