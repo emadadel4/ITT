@@ -45,3 +45,5 @@ function GetQuotes {
     }
 }
 
+GetQuotes | Out-Null
+
