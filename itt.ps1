@@ -4125,6 +4125,7 @@ https://t.me/emadadel4
                             foreach ($item in $sync.TweaksListView.Items)
                             {
                                 $item.IsChecked = $false
+                                $sync.TweaksListView.Clear()
                                 $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.TweaksListView.Items)
                                 $collectionView.Filter = $null
                             }
