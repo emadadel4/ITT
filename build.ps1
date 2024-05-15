@@ -84,6 +84,24 @@ try {
     WriteToScript -Content @"
 
 #===========================================================================
+#region Begin Functions
+#===========================================================================
+
+"@
+
+
+    ProcessDirectory -Directory $FunctionsDirectory
+
+    WriteToScript -Content @"
+#===========================================================================
+#endregion End Functions
+#===========================================================================
+
+"@
+
+
+    WriteToScript -Content @"
+#===========================================================================
 #region Begin Start
 #===========================================================================
 
@@ -100,9 +118,10 @@ try {
 
 "@
 
-WriteToScript -Content @"
+
+    WriteToScript -Content @"
 #===========================================================================
-#region Begin Database /APPS/Tweaks/Quotes/OST
+#region Begin Database /APPS/TWEEAKS/Quotes/OST
 #===========================================================================
 
 "@
@@ -115,11 +134,10 @@ WriteToScript -Content @"
 
     WriteToScript -Content @"
 #===========================================================================
-#endregion End Database /APPS/Tweaks/Quotes/OST
+#endregion End Database /APPS/TWEEAKS/Quotes/OST
 #===========================================================================
 
 "@
-
 
     WriteToScript -Content @"
 #===========================================================================
@@ -161,7 +179,7 @@ WriteToScript -Content @"
     }
 
     $TweaksCheckboxes  = ""
-    foreach ($Tweak  in $sync.database.Tweaks) {
+    foreach ($Tweak  in $sync.database.Tweeaks) {
         $TweaksCheckboxes  += @"
 
     <CheckBox Content="$($Tweak.Name)"  FontWeight="Bold"/>
@@ -170,7 +188,7 @@ WriteToScript -Content @"
 }
 
     $XamlContent = $XamlContent -replace "{{Apps}}", $AppsCheckboxes 
-    $XamlContent = $XamlContent -replace "{{Tweaks}}", $TweaksCheckboxes 
+    $XamlContent = $XamlContent -replace "{{Tweeaks}}", $TweaksCheckboxes 
     WriteToScript -Content "`$inputXML = '$XamlContent'"
 
     WriteToScript -Content @"
@@ -227,24 +245,6 @@ WriteToScript -Content @"
 
 "@
 
-WriteToScript -Content @"
-#===========================================================================
-#region Begin Functions
-#===========================================================================
-
-"@
-
-
-    ProcessDirectory -Directory $FunctionsDirectory
-
-    WriteToScript -Content @"
-#===========================================================================
-#endregion End Functions
-#===========================================================================
-
-"@
-
-
     # Write Loops section
     WriteToScript -Content @"
 #===========================================================================
@@ -279,12 +279,17 @@ WriteToScript -Content @"
 
 "@
 
-Write-Host ===========================================================================
-Write-Host "Build successfully" -ForegroundColor Green 
-Write-Host Time $(Get-Date -Format 'hh:mm: MM/dd')   
-Write-Host ===========================================================================
+Write-Host "Build successfully" -ForegroundColor Green
 
+$run = Read-Host "Do you want run it?. [Enter] to run or type [N] to Cancel" 
+
+if ($run -eq "") { $run = "y" }  # default value y
+
+if($run -eq "y")
+{
     ./itt.ps1
+}
+
 }
 
 catch {
