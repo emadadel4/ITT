@@ -1,4 +1,4 @@
-###################################################################################
+﻿###################################################################################
 #                                                                                 #
 #   ___ _____ _____   _____ __  __    _    ____    _    ____  _____ _    _  _     #
 #  |_ _|_   _|_   _| | ____|  \/  |  / \  |  _ \  / \  |  _ \| ____| |  | || |    #
@@ -35,11 +35,7 @@ $sync.firebaseUrl = "https://ittools-7d9fe-default-rtdb.firebaseio.com/"
 $sync.database = @{}
 $sync.ProcessRunning = $false
 $sync.isDarkMode
-
-if (Test-Path -Path "HKLM:\SOFTWARE\Microsoft\MediaPlayer") {
-    $sync.mediaPlayer = New-Object -ComObject WMPlayer.OCX
-} 
-
+$sync.mediaPlayer = New-Object -ComObject WMPlayer.OCX
 $currentPid = [System.Security.Principal.WindowsIdentity]::GetCurrent()
 $principal = new-object System.Security.Principal.WindowsPrincipal($currentPid)
 $adminRole=[System.Security.Principal.WindowsBuiltInRole]::Administrator
@@ -1838,6 +1834,7 @@ $sync.database.OST = '{
 ' | ConvertFrom-Json
 $sync.database.Quotes = '{
   "Q": [
+    "توفر هذه الأداة تسهيلات كبيرة في عملية تثبيت البرامج وتحسين أداء نظام التشغيل. انضم إلينا لتساهم في تطويرها وجعلها أكثر اكتمالًا",
     "إما تموت بطلا، أو تعيش طويلاً حتى ترى نفسك اصبحت الشرير",
     "بعض الرجال يريدون فقط مشاهدة العالم يحترق",
     "إنهم يكرهون النور، لأنهم يخشون الحقيقة",
@@ -4610,7 +4607,7 @@ function GetQuotes {
         # Function to display welcome text
         function Display-WelcomeText {
             $sync.Quotes.Dispatcher.Invoke([Action]{
-                $sync.Quotes.Text = "توفر هذه الأداة تسهيلات كبيرة في عملية تثبيت البرامج وتحسين أداء نظام التشغيل. انضم إلينا لتساهم في تطويرها وجعلها أكثر اكتمالًا"
+                $sync.Quotes.Text = $sync.database.Quotes.Q[0]
             })
         }
 
