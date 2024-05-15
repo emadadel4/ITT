@@ -29,25 +29,26 @@ function Get-SelectedTweaks
     return $items 
 }
 
-# function ShowSelectedItems {
+function ShowSelectedTweaks {
     
-#     $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.AppsListView.Items)
+    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.TweaksListView.Items)
 
-#     $filterPredicate = {
-#        param($item)
+    $filterPredicate = {
+       param($item)
 
-#        $tagToFilter =  $true
-#        # Check if the item has the tag
-#        $itemTag = $item.IsChecked
-#        return $itemTag -eq $tagToFilter
-#    }
+       $tagToFilter =  $true
+       # Check if the item has the tag
+       $itemTag = $item.IsChecked
+       return $itemTag -eq $tagToFilter
+   }
 
-#    $collectionView.Filter = $filterPredicate
+   $collectionView.Filter = $filterPredicate
 
-# }
+}
 
 function Invoke-ApplyTweaks
 {
+    ShowSelectedTweaks
     $tweaks  = Get-SelectedTweaks
 
     if(Get-SelectedTweaks -ne $null)
@@ -294,6 +295,8 @@ https://t.me/emadadel4
                             foreach ($item in $sync.TweaksListView.Items)
                             {
                                 $item.IsChecked = $false
+                                $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.TweaksListView.Items)
+                                $collectionView.Filter = $null
                             }
                         })
                     }
