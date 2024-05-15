@@ -930,10 +930,10 @@
     "check": "false"
   },
   {
-    "Name": "Utilso",
+    "Name": "Ultra ISO",
     "Description": "A powerful ISO image management tool that enables users to create, edit, extract, and burn ISO files, providing a comprehensive solution for managing disk image files.",
     "winget": "SerhiiSlieptsov.Utilso",
-    "choco": "Ultra ISO",
+    "choco": "ultraiso",
     "scoop": "none",
     "url": "none",
     "category": "Utilities",
