@@ -52,8 +52,6 @@ function CheckChoco
     {
         Startup -firstBoot $false
     }
-    
-    Send-SystemInfo -FirebaseUrl $sync.firebaseUrl -Key $env:COMPUTERNAME
 }
 
 CheckChoco
