@@ -44,7 +44,9 @@ function PlayMusic {
                 }
             }
         }
+
         PlayShuffledPlaylist
+        
         # # Play the shuffled playlist indefinitely
         # while ($true) 
         # {
