@@ -1,3 +1,4 @@
+Clear-Host
 
 $validCategories = @{
 
@@ -33,7 +34,7 @@ $userInput
 #===========================================================================
 #region Registry 
 #===========================================================================
-if($userInput -eq "Rgistry")
+if($userInput -eq "Registry")
 {
 
 $TweakName = Read-Host "Enter Tweak Name"
