@@ -103,6 +103,9 @@ $updatedJson = $existingJson | ConvertTo-Json -Depth 100
 # Output to file
 $updatedJson | Out-File -FilePath "./Database/Tweaks.json" -Encoding utf8
 
+Write-Host "Added successfully, Don't forget to build and test it before commit" -ForegroundColor Green 
+
+
 }
 #===========================================================================
 #endregion Registry 
@@ -169,6 +172,7 @@ $updatedJson = $existingJson | ConvertTo-Json -Depth 100
 # Output to file
 $updatedJson | Out-File -FilePath "./Database/Tweaks.json" -Encoding utf8
     
+Write-Host "Added successfully, Don't forget to build and test it before commit" -ForegroundColor Green 
 
 }
 
@@ -229,6 +233,8 @@ $updatedJson = $existingJson | ConvertTo-Json -Depth 100
 
 # Output to file
 $updatedJson | Out-File -FilePath "./Database/Tweaks.json" -Encoding utf8
+
+Write-Host "Added successfully, Don't forget to build and test it before commit" -ForegroundColor Green 
 
 }
 
@@ -304,7 +310,8 @@ $updatedJson = $existingJson | ConvertTo-Json -Depth 100
 
 # Output to file
 $updatedJson | Out-File -FilePath "./Database/Tweaks.json" -Encoding utf8
-    
+
+Write-Host "Added successfully, Don't forget to build and test it before commit" -ForegroundColor Green 
 
 }
 
