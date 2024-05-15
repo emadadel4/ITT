@@ -993,7 +993,7 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Utilso",
+    "Name": "Ultra ISO",
     "Description": "A powerful ISO image management tool that enables users to create, edit, extract, and burn ISO files, providing a comprehensive solution for managing disk image files.",
     "winget": "SerhiiSlieptsov.Utilso",
     "choco": "ultraiso",
@@ -1509,16 +1509,6 @@ $sync.database.Applications = '[
     "Description": "VirtualBox is a cross-platform virtualization application. It installs on existing Intel or AMD-based computers, whether they are running Windows, Mac, Linux or Solaris operating systems. It extends the capabilities of your existing computer so that it can run multiple operating systems (inside multiple virtual machines) at the same time.",
     "winget": "#",
     "choco": "virtualbox",
-    "scoop": "none",
-    "url": "none",
-    "category": "Developer",
-    "check": "false"
-  },
-  {
-    "Name": "UltraISO",
-    "Description": "UltraISO is an ISO CD/DVD image file creating/editing/converting tool and a bootable CD/DVD maker , it can directly edit the CD/DVD image file and extract files and folders from it, as well as directly make ISO files from your CD/DVD-ROM or hard disk. At the same time, you can maintain the ISO bootable information, thus creating your own bootable CD/DVDs.",
-    "winget": "#",
-    "choco": "ultraiso",
     "scoop": "none",
     "url": "none",
     "category": "Developer",
@@ -4124,7 +4114,7 @@ $inputXML = '
     
     <CheckBox Content="Virtual CloneDrive" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
     
-    <CheckBox Content="Utilso" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
+    <CheckBox Content="Ultra ISO" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
     
     <CheckBox Content="Ventoy" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
     
@@ -4227,8 +4217,6 @@ $inputXML = '
     <CheckBox Content="Scrcpy" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
     
     <CheckBox Content="VirtualBox" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="UltraISO" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
     
     <CheckBox Content="oh-my-posh" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
     
