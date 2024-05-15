@@ -4292,7 +4292,45 @@ $inputXML = '
                 <TabItem Header="Tweaks" x:Name="tweeksTab" Padding="0" BorderBrush="{x:Null}" Background="{x:Null}">
                     <TabItem.Content>
                         <ListView Name="tweaks"  Margin="0" ScrollViewer.VerticalScrollBarVisibility="Auto" BorderBrush="{x:Null}" Background="{x:Null}">
-                            {{Tweaks}}
+                            
+    <CheckBox Content="System File Checker"  FontWeight="Bold"/>
+
+    <CheckBox Content="Run Disk cleanup"  FontWeight="Bold"/>
+
+    <CheckBox Content="Restore All Windows Services to Default"  FontWeight="Bold"/>
+
+    <CheckBox Content="Fix Stutter/Lag in Games"  FontWeight="Bold"/>
+
+    <CheckBox Content="Enable the Ultimate Performance Power Plan"  FontWeight="Bold"/>
+
+    <CheckBox Content="Reset the TCP/IP Stack"  FontWeight="Bold"/>
+
+    <CheckBox Content="Setup Auto login"  FontWeight="Bold"/>
+
+    <CheckBox Content="Disable Game Mode"  FontWeight="Bold"/>
+
+    <CheckBox Content="Disable Data Collection"  FontWeight="Bold"/>
+
+    <CheckBox Content="Disable Ads"  FontWeight="Bold"/>
+
+    <CheckBox Content="Disable Windows Web Search"  FontWeight="Bold"/>
+
+    <CheckBox Content="Turn off background apps"  FontWeight="Bold"/>
+
+    <CheckBox Content="Disable suggestions on start menu"  FontWeight="Bold"/>
+
+    <CheckBox Content="Disable the News and interests on taskbar"  FontWeight="Bold"/>
+
+    <CheckBox Content="Show Search icon Only on taskbar"  FontWeight="Bold"/>
+
+    <CheckBox Content="Disable People icon on taskbar"  FontWeight="Bold"/>
+
+    <CheckBox Content="Remove Folder Shortcuts From Windows'' File Explorer"  FontWeight="Bold"/>
+
+    <CheckBox Content="Optimize Services"  FontWeight="Bold"/>
+
+    <CheckBox Content="Remove Unnecessary Windows 10/11 Apps"  FontWeight="Bold"/>
+
                         </ListView>
                     </TabItem.Content>
                 </TabItem>
