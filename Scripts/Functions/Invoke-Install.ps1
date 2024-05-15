@@ -53,15 +53,13 @@ function Invoke-Install
         return
     }
 
-
-
     $selectedApps = Get-SelectedApps
     
     if($selectedApps.Count -gt 0)
     {
         $sync['window'].FindName('category').SelectedIndex = 0
         ShowSelectedItems
-        
+
         Invoke-ScriptBlock -ArgumentList $selectedApps -ScriptBlock {
 
             param($selectedApps)
