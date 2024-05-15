@@ -1452,16 +1452,6 @@
     "check": "false"
   },
   {
-    "Name": "UltraISO",
-    "Description": "UltraISO is an ISO CD/DVD image file creating/editing/converting tool and a bootable CD/DVD maker , it can directly edit the CD/DVD image file and extract files and folders from it, as well as directly make ISO files from your CD/DVD-ROM or hard disk. At the same time, you can maintain the ISO bootable information, thus creating your own bootable CD/DVDs.",
-    "winget": "#",
-    "choco": "ultraiso",
-    "scoop": "none",
-    "url": "none",
-    "category": "Developer",
-    "check": "false"
-  },
-  {
     "Name": "oh-my-posh",
     "Description": " Oh my Posh is a custom prompt engine for any shell that has the ability to adjust the prompt string with a function or variable.",
     "winget": "#",
