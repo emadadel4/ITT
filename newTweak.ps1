@@ -33,7 +33,7 @@ $userInput
 #===========================================================================
 #region Registry 
 #===========================================================================
-if($userInput -eq "registry")
+if($userInput -eq "Rgistry")
 {
 
 $TweakName = Read-Host "Enter Tweak Name"
@@ -179,7 +179,7 @@ $updatedJson | Out-File -FilePath "./Database/Tweaks.json" -Encoding utf8
 #region Command 
 #===========================================================================
 
-if($userInput -eq "command")
+if($userInput -eq "Command")
 {
     
 $TweakName = Read-Host "Enter Tweak Name"
@@ -240,7 +240,7 @@ $updatedJson | Out-File -FilePath "./Database/Tweaks.json" -Encoding utf8
 #region Services 
 #===========================================================================
 
-if($userInput -eq "service")
+if($userInput -eq "Service")
 {
 
 $TweakName = Read-Host "Enter Tweak Name"
