@@ -2453,6 +2453,79 @@ function StopAllRunspace {
 }
 
 
+#region PlayMusic Functions
+function PlayMusic {
+
+        Function PlayAudio($url)
+        {
+            $mediaItem =  $sync.mediaPlayer.newMedia($url)
+            $sync.mediaPlayer.currentPlaylist.appendItem($mediaItem)
+            $sync.mediaPlayer.controls.play()
+           
+        }
+
+        # Function to shuffle the playlist
+        Function ShuffleArray
+        {
+            param([array]$array)
+
+            $count = $array.Length
+
+            for ($i = 0; $i -lt $count; $i++)
+            {
+                $randomIndex = Get-Random -Minimum $i -Maximum $count
+                $temp = $array[$i]
+                $array[$i] = $array[$randomIndex]
+                $array[$randomIndex] = $temp
+            }
+        }
+
+        # Shuffle the playlist
+        ShuffleArray -array $sync.database.OST.Tracks
+
+        # Function to play the entire shuffled playlist
+        Function PlayShuffledPlaylist
+        {
+            foreach ($url in $sync.database.OST.Tracks)
+            {
+                PlayAudio $url
+                # Wait for the track to finish playing
+                while ( $sync.mediaPlayer.playState -eq 3 -or  $sync.mediaPlayer.playState -eq 6)
+                {
+                    Start-Sleep -Milliseconds 100
+                }
+            }
+        }
+
+        PlayShuffledPlaylist
+
+        # # Play the shuffled playlist indefinitely
+        # while ($true) 
+        # {
+        #    
+        # }
+    }
+
+function MuteMusic {
+
+    $sync.mediaPlayer.settings.volume = 0
+}
+
+function Unmute {
+   
+    $sync.mediaPlayer.settings.volume = 100
+}
+
+function StopMusic {
+
+    $sync.mediaPlayer.controls.stop()
+    $sync.mediaPlayer = $null
+    $script:powershell.Dispose()
+    $sync.runspace.Dispose()
+    $sync.runspace.Close()
+}
+#endregion
+
 function About{
 
     # Load child window
@@ -3179,9 +3252,9 @@ https://t.me/emadadel4
 
             try 
             {
-                $msg = [System.Windows.MessageBox]::Show("Do you want to install $($selectedApps.Count) selected apps", "ITT | Emad Adel", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)
+                $result = [System.Windows.MessageBox]::Show("Do you want to install $($selectedApps.Count) selected apps", "ITT | Emad Adel", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)
                 
-                if($msg -eq "Yes")
+                if($result -eq "Yes")
                 {
 
                     ClearTemp
@@ -3258,7 +3331,6 @@ https://t.me/emadadel4
         [System.Windows.MessageBox]::Show("Choose at least one program", "ITT | Emad Adel", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
     }
 }
-
 function LoadJson {
 
     # Open file dialog to select JSON file
@@ -3405,83 +3477,6 @@ function Update-Theme ($theme, $mode) {
 #endregion
 
 
-#region PlayMusic Functions
-function PlayMusic {
-
-    # RUN MUSIC IN BACKGROUND
-    Invoke-ScriptBlock -ScriptBlock {
-
-        Function PlayAudio($url)
-        {
-            $mediaItem =  $sync.mediaPlayer.newMedia($url)
-            $sync.mediaPlayer.currentPlaylist.appendItem($mediaItem)
-            $sync.mediaPlayer.controls.play()
-           
-        }
-
-        # Function to shuffle the playlist
-        Function ShuffleArray
-        {
-            param([array]$array)
-
-            $count = $array.Length
-
-            for ($i = 0; $i -lt $count; $i++)
-            {
-                $randomIndex = Get-Random -Minimum $i -Maximum $count
-                $temp = $array[$i]
-                $array[$i] = $array[$randomIndex]
-                $array[$randomIndex] = $temp
-            }
-        }
-
-        # Shuffle the playlist
-        ShuffleArray -array $sync.database.OST.Tracks
-
-        # Function to play the entire shuffled playlist
-        Function PlayShuffledPlaylist
-        {
-            foreach ($url in $sync.database.OST.Tracks)
-            {
-                PlayAudio $url
-                # Wait for the track to finish playing
-                while ( $sync.mediaPlayer.playState -eq 3 -or  $sync.mediaPlayer.playState -eq 6)
-                {
-                    Start-Sleep -Milliseconds 100
-                }
-            }
-        }
-
-        PlayShuffledPlaylist
-
-        # # Play the shuffled playlist indefinitely
-        # while ($true) 
-        # {
-        #    
-        # }
-    }
-}
-
-function MuteMusic {
-
-    $sync.mediaPlayer.settings.volume = 0
-}
-
-function Unmute {
-   
-    $sync.mediaPlayer.settings.volume = 100
-}
-
-function StopMusic {
-
-    $sync.mediaPlayer.controls.stop()
-    $sync.mediaPlayer = $null
-    $script:powershell.Dispose()
-    $sync.runspace.Dispose()
-    $sync.runspace.Close()
-}
-#endregion
-
 function GetQuotes {
 
     Invoke-ScriptBlock -ScriptBlock {
@@ -3555,6 +3550,9 @@ function ChangeTap() {
         $sync['window'].FindName('installBtn').Visibility = "Hidden"
     }
 }
+
+PlayMusic | Out-Null
+
 #===========================================================================
 #endregion End Functions
 #===========================================================================
@@ -4526,7 +4524,7 @@ try {
     }
 
     $sync.isDarkMode = (Get-ItemProperty -Path "HKCU:\Software\ITTEmadadel" -Name "DarkMode").DarkMode
-
+    
     # Check if $themeValue is equal to "true"
     if ($sync.isDarkMode -eq "true")
     {
