@@ -3869,13 +3869,20 @@ function ShowSelectedTweaks {
 
 function Invoke-ApplyTweaks
 {
-    ShowSelectedTweaks
-    $tweaks  = Get-SelectedTweaks
 
-    if(Get-SelectedTweaks -ne $null)
+    if($sync.ProcessRunning)
     {
+        $msg = "Please wait for the tweak to be applying...."
+        [System.Windows.MessageBox]::Show($msg, "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
+        return
+    }
+
+        $tweaks  = Get-SelectedTweaks
+
         if($tweaks.Count -gt 0)
         {
+
+            ShowSelectedTweaks
 
             Invoke-ScriptBlock -ArgumentList $tweaks -ScriptBlock{
 
@@ -4005,22 +4012,22 @@ function Invoke-ApplyTweaks
 
                     Clear-Host
 
-Write-Host "
-+----------------------------------------------------------------------------+
-|  ___ _____ _____   _____ __  __    _    ____       _    ____  _____ _      |
-| |_ _|_   _|_   _| | ____|  \/  |  / \  |  _ \     / \  |  _ \| ____| |     |
-|  | |  | |   | |   |  _| | |\/| | / _ \ | | | |   / _ \ | | | |  _| | |     |
-|  | |  | |   | |   | |___| |  | |/ ___ \| |_| |  / ___ \| |_| | |___| |___  |
-| |___| |_|   |_|   |_____|_|  |_/_/   \_\____/  /_/   \_\____/|_____|_____| |
-|                                                                            |
-+----------------------------------------------------------------------------+
-You ready to Install anything.
+                    Write-Host "
+                    +----------------------------------------------------------------------------+
+                    |  ___ _____ _____   _____ __  __    _    ____       _    ____  _____ _      |
+                    | |_ _|_   _|_   _| | ____|  \/  |  / \  |  _ \     / \  |  _ \| ____| |     |
+                    |  | |  | |   | |   |  _| | |\/| | / _ \ | | | |   / _ \ | | | |  _| | |     |
+                    |  | |  | |   | |   | |___| |  | |/ ___ \| |_| |  / ___ \| |_| | |___| |___  |
+                    | |___| |_|   |_|   |_____|_|  |_/_/   \_\____/  /_/   \_\____/|_____|_____| |
+                    |                                                                            |
+                    +----------------------------------------------------------------------------+
+                    You ready to Install anything.
 
-(IT Tools) is open source, You can contribute to improving the tool.
-If you have trouble installing a program, report the problem on feedback links
-https://github.com/emadadel4/ITT/issues
-https://t.me/emadadel4
-" -ForegroundColor White
+                    (IT Tools) is open source, You can contribute to improving the tool.
+                    If you have trouble installing a program, report the problem on feedback links
+                    https://github.com/emadadel4/ITT/issues
+                    https://t.me/emadadel4
+                    " -ForegroundColor White
                 }
 
                 function CustomMsg 
@@ -4131,7 +4138,10 @@ https://t.me/emadadel4
                 }
             }
         }
-    }
+        else
+        {
+            [System.Windows.MessageBox]::Show("Choose at least one tweak", "ITT | Emad Adel", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
+        }
 }
 
 
@@ -4236,15 +4246,13 @@ function Invoke-Install
         return
     }
 
-
-
     $selectedApps = Get-SelectedApps
     
     if($selectedApps.Count -gt 0)
     {
         $sync['window'].FindName('category').SelectedIndex = 0
         ShowSelectedItems
-        
+
         Invoke-ScriptBlock -ArgumentList $selectedApps -ScriptBlock {
 
             param($selectedApps)
