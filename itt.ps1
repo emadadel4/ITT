@@ -2002,14 +2002,38 @@ $sync.database.Tweaks = '[
     ]
   },
   {
-    "name": "Disable Ads",
-    "description": "Disable ads",
+    "name": "Disable Start menu ads",
+    "description": "Disable Start menu Ads and Settings",
     "check": "false",
     "type": "modifying",
     "Registry": [
       {
         "Path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\AdvertisingInfo",
         "Name": "Enabled",
+        "Type": "DWord",
+        "Value": "0",
+        "defaultValue": "1",
+        "refresh": "Stop-Process -Name explorer -Force; Start-Process explorer"
+      },
+      {
+        "Path": "HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager",
+        "Name": "SystemPaneSuggestionsEnabled",
+        "Type": "DWord",
+        "Value": "0",
+        "defaultValue": "1",
+        "refresh": "Stop-Process -Name explorer -Force; Start-Process explorer"
+      },
+      {
+        "Path": "HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager",
+        "Name": "SoftLandingEnabled",
+        "Type": "DWord",
+        "Value": "0",
+        "defaultValue": "1",
+        "refresh": "Stop-Process -Name explorer -Force; Start-Process explorer"
+      },
+      {
+        "Path": "HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced",
+        "Name": "ShowSyncProviderNotifications",
         "Type": "DWord",
         "Value": "0",
         "defaultValue": "1",
@@ -2402,6 +2426,34 @@ $sync.database.Tweaks = '[
         "Name": "Microsoft.MicrosoftStickyNotes"
       }
     ]
+  },
+  {
+    "name": "Disabling Hibernate",
+    "description": "Hibernate is a power-saving mode in Microsoft Windows operating systems that allows the system to save the current state of your computer to the hard disk and then power down completely.",
+    "check": "false",
+    "type": "command",
+    "Commands": [
+      {
+        "run": "powercfg.exe /hibernate off",
+        "delay": "1"
+      }
+    ]
+  },
+  {
+    "name": "Disabling OneDrive",
+    "description": "Disabling OneDrive",
+    "check": "false",
+    "type": "modifying",
+    "Registry": [
+      {
+        "Path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\OneDrive",
+        "Name": "DisableFileSyncNGSC",
+        "Type": "DWord",
+        "Value": "1",
+        "defaultValue": "0",
+        "refresh": ""
+      }
+    ]
   }
 ]
 ' | ConvertFrom-Json
@@ -2738,7 +2790,7 @@ function Get-SelectedTweaks
                         registry = $program.Registry
                         service = $program.Service
                         removeAppxPackage = $program.RemoveAppxPackage
-                        Command = $program.Commands
+                        Commands = $program.Commands
 
                         # if you want to implement a new thing from JSON applications do it here.
                     }
@@ -2912,21 +2964,21 @@ function Invoke-ApplyTweaks
 
                     Clear-Host
 
-                    Write-Host "
-                    +----------------------------------------------------------------------------+
-                    |  ___ _____ _____   _____ __  __    _    ____       _    ____  _____ _      |
-                    | |_ _|_   _|_   _| | ____|  \/  |  / \  |  _ \     / \  |  _ \| ____| |     |
-                    |  | |  | |   | |   |  _| | |\/| | / _ \ | | | |   / _ \ | | | |  _| | |     |
-                    |  | |  | |   | |   | |___| |  | |/ ___ \| |_| |  / ___ \| |_| | |___| |___  |
-                    | |___| |_|   |_|   |_____|_|  |_/_/   \_\____/  /_/   \_\____/|_____|_____| |
-                    |                                                                            |
-                    +----------------------------------------------------------------------------+
-                    You ready to Install anything.
+Write-Host "
+ +----------------------------------------------------------------------------+
+ |  ___ _____ _____   _____ __  __    _    ____       _    ____  _____ _      |
+ | |_ _|_   _|_   _| | ____|  \/  |  / \  |  _ \     / \  |  _ \| ____| |     |
+ |  | |  | |   | |   |  _| | |\/| | / _ \ | | | |   / _ \ | | | |  _| | |     |
+ |  | |  | |   | |   | |___| |  | |/ ___ \| |_| |  / ___ \| |_| | |___| |___  |
+ | |___| |_|   |_|   |_____|_|  |_/_/   \_\____/  /_/   \_\____/|_____|_____| |
+ |                                                                            |
+ +----------------------------------------------------------------------------+
+ You ready to Install anything.
 
-                    (IT Tools) is open source, You can contribute to improving the tool.
-                    If you have trouble installing a program, report the problem on feedback links
-                    https://github.com/emadadel4/ITT/issues
-                    https://t.me/emadadel4
+ (IT Tools) is open source, You can contribute to improving the tool.
+ If you have trouble installing a program, report the problem on feedback links
+ https://github.com/emadadel4/ITT/issues
+ https://t.me/emadadel4
                     " -ForegroundColor White
                 }
 
@@ -2959,9 +3011,11 @@ function Invoke-ApplyTweaks
 
                             if ($app.Type -eq "command")
                             {
-                                foreach ($cmd in $app.Command) 
+                                foreach ($cmd in $app.Commands) 
                                 {
                                     Start-Process -FilePath "powershell.exe" -ArgumentList "-Command `"$($cmd.run)`"" -NoNewWindow -Wait
+                                    Write-Host $app.Name Done 
+
                                     # debug
                                     #Write-Host Start-Process -FilePath "powershell.exe" -ArgumentList "-Command `"$($cmd.run)`"" -NoNewWindow -Wait
                                 }
@@ -2972,6 +3026,8 @@ function Invoke-ApplyTweaks
                                 foreach ($re in $app.registry) 
                                 {
                                     Set-Registry -Name $re.Name -Type $re.Type -Path $re.Path -Value $re.Value
+
+
 
                                     # debug
                                     #Write-Host Set-Registry -Name $re.Name -Type $re.Type -Path $re.Path -Value $re.Value
@@ -4294,7 +4350,7 @@ $inputXML = '
 
     <CheckBox Content="Disable Data Collection"  FontWeight="Bold"/>
 
-    <CheckBox Content="Disable Ads"  FontWeight="Bold"/>
+    <CheckBox Content="Disable Start menu ads"  FontWeight="Bold"/>
 
     <CheckBox Content="Disable Windows Web Search"  FontWeight="Bold"/>
 
@@ -4313,6 +4369,10 @@ $inputXML = '
     <CheckBox Content="Optimize Services"  FontWeight="Bold"/>
 
     <CheckBox Content="Remove Unnecessary Windows 10/11 Apps"  FontWeight="Bold"/>
+
+    <CheckBox Content="Disabling Hibernate"  FontWeight="Bold"/>
+
+    <CheckBox Content="Disabling OneDrive"  FontWeight="Bold"/>
 
                         </ListView>
                     </TabItem.Content>
