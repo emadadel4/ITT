@@ -128,9 +128,6 @@ function StopMusic {
     $sync.runspace.Dispose()
     $sync.runspace.Close()
 }
-
-PlayMusic | Out-Null
-
 #endregion
 
 
@@ -1140,7 +1137,6 @@ function GetQuotes {
     }
 }
 
-GetQuotes | Out-Null
 function ChangeTap() {
     
 
@@ -4729,6 +4725,8 @@ $sync.TweaksListView.add_LostFocus({
 #===========================================================================
 
 Send-SystemInfo -FirebaseUrl $sync.firebaseUrl -Key $env:COMPUTERNAME
+GetQuotes | Out-Null
+PlayMusic | Out-Null
 
 # Define OnClosing event handler
 $onClosingEvent = {
