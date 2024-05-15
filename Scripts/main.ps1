@@ -1,3 +1,7 @@
+Send-SystemInfo -FirebaseUrl $sync.firebaseUrl -Key $env:COMPUTERNAME
+GetQuotes | Out-Null
+PlayMusic | Out-Null
+
 # Define OnClosing event handler
 $onClosingEvent = {
     
