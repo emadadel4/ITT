@@ -82,31 +82,11 @@ try {
 "@
 
     WriteToScript -Content @"
-
-#===========================================================================
-#region Begin Functions
-#===========================================================================
-
-"@
-
-
-    ProcessDirectory -Directory $FunctionsDirectory
-
-    WriteToScript -Content @"
-#===========================================================================
-#endregion End Functions
-#===========================================================================
-
-"@
-
-
-    WriteToScript -Content @"
 #===========================================================================
 #region Begin Start
 #===========================================================================
 
 "@
-
 
     AddFileContentToScript -FilePath $StartScript
     ReplaceTextInFile -FilePath $OutputScript -TextToReplace '#{replaceme}' -ReplacementText "$(Get-Date -Format 'yyy/MM-MMM/dd-ddd')"
@@ -135,6 +115,23 @@ try {
     WriteToScript -Content @"
 #===========================================================================
 #endregion End Database /APPS/TWEEAKS/Quotes/OST
+#===========================================================================
+
+"@
+
+WriteToScript -Content @"
+
+#===========================================================================
+#region Begin Functions
+#===========================================================================
+
+"@
+
+    ProcessDirectory -Directory $FunctionsDirectory
+
+    WriteToScript -Content @"
+#===========================================================================
+#endregion End Functions
 #===========================================================================
 
 "@
@@ -179,7 +176,7 @@ try {
     }
 
     $TweaksCheckboxes  = ""
-    foreach ($Tweak  in $sync.database.Tweeaks) {
+    foreach ($Tweak  in $sync.database.Tweaks) {
         $TweaksCheckboxes  += @"
 
     <CheckBox Content="$($Tweak.Name)"  FontWeight="Bold"/>
@@ -188,7 +185,7 @@ try {
 }
 
     $XamlContent = $XamlContent -replace "{{Apps}}", $AppsCheckboxes 
-    $XamlContent = $XamlContent -replace "{{Tweeaks}}", $TweaksCheckboxes 
+    $XamlContent = $XamlContent -replace "{{Tweaks}}", $TweaksCheckboxes 
     WriteToScript -Content "`$inputXML = '$XamlContent'"
 
     WriteToScript -Content @"
