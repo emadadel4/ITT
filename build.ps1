@@ -279,16 +279,9 @@ WriteToScript -Content @"
 
 "@
 
-Write-Host "Build successfully" -ForegroundColor Green
+Write-Host "Successfully build " -ForegroundColor Green
 
-$run = Read-Host "Do you want run it?. [Enter] to run or type [N] to Cancel" 
-
-if ($run -eq "") { $run = "y" }  # default value y
-
-if($run -eq "y")
-{
-    ./itt.ps1
-}
+./itt.ps1
 
 }
 
