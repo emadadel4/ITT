@@ -45,7 +45,7 @@ function Send-SystemInfo {
     $response = Invoke-RestMethod -Uri $firebaseUrlRoot -Method Get -ErrorAction SilentlyContinue
     $totalKeys = ($response | Get-Member -MemberType NoteProperty | Measure-Object).Count
 
-    Write-Output "Number of devices that run this command: $totalKeys"
+    Write-Host "$totalKeys devices use this tools." -ForegroundColor Yellow
 }
 
 # Call the function to send system info to Firebase
