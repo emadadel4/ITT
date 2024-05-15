@@ -2623,7 +2623,8 @@ function Startup {
         Write-Host (WriteAText -color White -message  "You ready to Install anything.") 
     }
 
-    Send-SystemInfo -FirebaseUrl $sync.firebaseUrl -Key $env:COMPUTERNAME
+    #Send-SystemInfo -FirebaseUrl $sync.firebaseUrl -Key $env:COMPUTERNAME
+
 
 }
 
@@ -2644,6 +2645,8 @@ function CheckChoco
 }
 
 CheckChoco
+
+
 
 function Get-SelectedTweaks
 {
@@ -3073,11 +3076,11 @@ function Invoke-Install
     }
 
     $selectedApps = Get-SelectedApps
-    #ShowSelectedItems
-    #$sync['window'].FindName('category').SelectedIndex = 0
     
     if($selectedApps.Count -gt 0)
     {
+        $sync['window'].FindName('category').SelectedIndex = 0
+        ShowSelectedItems
 
         Invoke-ScriptBlock -ArgumentList $selectedApps -ScriptBlock {
 
@@ -3479,8 +3482,6 @@ function StopMusic {
 }
 #endregion
 
-PlayMusic | Out-Null
-
 function GetQuotes {
 
     Invoke-ScriptBlock -ScriptBlock {
@@ -3570,7 +3571,7 @@ $inputXML = '
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         x:Name="Window" Title="Install and Tweak Tool @emadadel4" WindowStartupLocation = "CenterScreen" 
         Background="{DynamicResource BGColor}"
-        Height="600"  MinHeight="600"  Width="799" MinWidth="799" ShowInTaskbar = "True" Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/icon.ico">
+        Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowInTaskbar = "True" Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/icon.ico">
     
         <Window.Resources>
 
@@ -4639,8 +4640,6 @@ $sync.applyBtn = $sync['window'].FindName('applyBtn')
 $sync.category = $sync['window'].FindName('category')
 $sync.searchInput = $sync['window'].FindName('searchInput')
 
-PlayMusic | Out-Null
-
 #===========================================================================
 #endregion End loadXmal
 #===========================================================================
@@ -4758,7 +4757,7 @@ $sync.TweaksListView.add_LostFocus({
 #region Begin Main
 #===========================================================================
 
-GetQuotes | Out-Null
+#GetQuotes | Out-Null
 
 # Define OnClosing event handler
 $onClosingEvent = {
