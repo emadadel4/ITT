@@ -2518,6 +2518,10 @@ function StopMusic {
     $sync.runspace.Dispose()
     $sync.runspace.Close()
 }
+
+PlayMusic | Out-Null
+
+
 #endregion
 
 function About{
@@ -3544,9 +3548,6 @@ function ChangeTap() {
         $sync['window'].FindName('installBtn').Visibility = "Hidden"
     }
 }
-
-PlayMusic | Out-Null
-
 #===========================================================================
 #endregion End Functions
 #===========================================================================
