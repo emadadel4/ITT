@@ -4,7 +4,7 @@ $validCategories = @{
 
     # Available options
 
-    1 = "Command"
+    1 = "Commands"
 
     2 = "Registry"
 
@@ -42,6 +42,8 @@ $TweakName = Read-Host "Enter Tweak Name"
 $description = Read-Host "Enter Tweak description"
 
 $Path = Read-Host "Enter Reg Path"
+
+$Path = $Path -replace '\\', '\\'
 
 $Name = Read-Host "Enter Reg Name"
 
