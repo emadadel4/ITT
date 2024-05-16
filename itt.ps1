@@ -3664,7 +3664,7 @@ function StopMusic {
     $sync.runspace.Close()
 }
 
-#PlayMusic | Out-Null
+PlayMusic | Out-Null
 
 
 #endregion
@@ -3858,7 +3858,7 @@ function CheckChoco
     }
 }
 
-#CheckChoco
+CheckChoco
 
 
 
@@ -4815,7 +4815,7 @@ $sync.TweaksListView.add_LostFocus({
 #region Begin Main
 #===========================================================================
 
-#GetQuotes | Out-Null
+GetQuotes | Out-Null
 
 # Define OnClosing event handler
 $onClosingEvent = {
