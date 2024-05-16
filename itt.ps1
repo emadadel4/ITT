@@ -2735,8 +2735,6 @@ $output = Write-Host "
  https://t.me/emadadel4
 " -ForegroundColor "$color"
 return $output
-
-
 }
 
 function Startup {
@@ -2774,7 +2772,6 @@ function CheckChoco
     }
 }
 
-CheckChoco
 
 
 
