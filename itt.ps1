@@ -1797,33 +1797,34 @@ $sync.database.Applications = '[
 ]
 ' | ConvertFrom-Json
 $sync.database.OST = '{
-    "Tracks":  [
-                   "https://epsilon.vgmsite.com/soundtracks/far-cry-3/iqgdbfrhtw/17.%20Further%20%28feat.%20Serena%20McKinney%29.mp3",
-                   "https://dl.vgmdownloads.com/soundtracks/hollow-knight-original-soundtrack/qqrmmaqyqg/26.%20Hollow%20Knight.mp3",
-                   "https://dl.vgmdownloads.com/soundtracks/assassin-s-creed-3/jgevpclfcr/01.%20Assassin%27s%20Creed%20III%20Main%20Theme.mp3",
-                   "https://dl.vgmdownloads.com/soundtracks/assassins-creed-mirage-original-game-soundtrack-2023/axtwruyduh/01.%20Mirage%20Theme.mp3",
-                   "https://vgmsite.com/soundtracks/assassins-creed-ezios-family-m-me-remix-2022/qdxeshajdz/01.%20Ezio%27s%20Family%20%28M%C3%B8me%20Remix%29.mp3",
-                   "https://archive.org/download/GrandTheftAuto4ThemeSong_201904/Grand%20Theft%20Auto%204%20Theme%20Song.mp3",
-                   "https://epsilon.vgmsite.com/soundtracks/assassin-s-creed-2/jlrprchapt/1-03%20Ezio%27s%20Family.mp3",
-                   "https://epsilon.vgmsite.com/soundtracks/assassin-s-creed-2/nkantwuktr/1-01%20Earth.mp3",
-                   "https://epsilon.vgmsite.com/soundtracks/mass-effect-3-gamerip-2012/nchtmgcz/304.%20End%20of%20Cycle.mp3",
-                   "https://dl.vgmdownloads.com/soundtracks/somerville-2022/naszqoqnhr/01.%20Intro%20%28Somerville%20Original%20Soundtrack%29%20%28feat.%20Dominique%20Charpentier%29.mp3",
-                   "https://archive.org/download/kate-chruscicka-requiem-for-a-dream-electric-violin/Kate%20Chruscicka-Requiem%20For%20A%20Dream%20%28Electric%20Violin%29.mp3",
-                   "https://archive.org/download/InceptionSoundtrackHD12TimeHansZimmer/Inception%20Soundtrack%20HD%20-%20%2312%20Time%20%28Hans%20Zimmer%29.mp3",
-                   "https://epsilon.vgmsite.com/soundtracks/little-nightmares-ii-original-soundtrack/bplsnxvnzm/01.%20Main%20Theme.mp3",
-                   "https://dl.vgmdownloads.com/soundtracks/assassin-s-creed-3/qhigmkctpn/09.%20Trouble%20in%20Town.mp3",
-                   "https://vgmsite.com/soundtracks/assassin-s-creed-odyssey-original-game-soundtrack/kbtrtqrtyf/01.%20Legend%20of%20the%20Eagle%20Bearer%20%28Main%20Theme%29.mp3",
-                   "https://vgmsite.com/soundtracks/assassin-s-creed-odyssey-original-game-soundtrack/kcjbuaurdi/11.%20Assassin%27s%20Creed.mp3",
-                   "https://archive.org/download/exit-music-for-a-film-westworld-soundtrack/exit-music-for-a-film-westworld-soundtrack.mp3",
-                   "https://dl.vgmdownloads.com/soundtracks/max-payne-3/xhaxngwzys/1.%20MAX%20THEME.mp3",
-                   "https://vgmsite.com/soundtracks/max-payne-3-macos-ps3-windows-xbox-360-gamerip-2012/hcwizawdyl/112.%20Theme%20Variation%2003.mp3",
-                   "https://archive.org/download/ludovico-einaudi-experience-mp-3-70-k/Ludovico%20Einaudi%20-%20Experience%28MP3_70K%29.mp3",
-                   "https://archive.org/download/GTASanAndreasThemeSongFull_201904/GTA%20San%20Andreas%20Theme%20Song%20Full%20%21%20%21.mp3",
-                   "https://archive.org/download/interstellar-soundtrack/22%20No%20Time%20for%20Caution%20%28Docking%20scene%29%201.mp3",
-                   "https://archive.org/download/interstellar-soundtrack/26%20Organ%20Variation.mp3",
-                   "https://archive.org/download/max-richter-memoryhouse/09%20November.mp3",
-                   "https://archive.org/download/ZackHemseyTheWay_201704/Zack%20Hemsey%20-%20The%20Way.mp3"
-               ]
+    "Tracks": 
+    [
+        "https://epsilon.vgmsite.com/soundtracks/far-cry-3/iqgdbfrhtw/17.%20Further%20%28feat.%20Serena%20McKinney%29.mp3",
+        "https://dl.vgmdownloads.com/soundtracks/hollow-knight-original-soundtrack/qqrmmaqyqg/26.%20Hollow%20Knight.mp3",
+        "https://dl.vgmdownloads.com/soundtracks/assassin-s-creed-3/jgevpclfcr/01.%20Assassin%27s%20Creed%20III%20Main%20Theme.mp3",
+        "https://dl.vgmdownloads.com/soundtracks/assassins-creed-mirage-original-game-soundtrack-2023/axtwruyduh/01.%20Mirage%20Theme.mp3",
+        "https://vgmsite.com/soundtracks/assassins-creed-ezios-family-m-me-remix-2022/qdxeshajdz/01.%20Ezio%27s%20Family%20%28M%C3%B8me%20Remix%29.mp3",
+        "https://archive.org/download/GrandTheftAuto4ThemeSong_201904/Grand%20Theft%20Auto%204%20Theme%20Song.mp3",
+        "https://epsilon.vgmsite.com/soundtracks/assassin-s-creed-2/jlrprchapt/1-03%20Ezio%27s%20Family.mp3",
+        "https://epsilon.vgmsite.com/soundtracks/assassin-s-creed-2/nkantwuktr/1-01%20Earth.mp3",
+        "https://epsilon.vgmsite.com/soundtracks/mass-effect-3-gamerip-2012/nchtmgcz/304.%20End%20of%20Cycle.mp3",
+        "https://dl.vgmdownloads.com/soundtracks/somerville-2022/naszqoqnhr/01.%20Intro%20%28Somerville%20Original%20Soundtrack%29%20%28feat.%20Dominique%20Charpentier%29.mp3",
+        "https://archive.org/download/kate-chruscicka-requiem-for-a-dream-electric-violin/Kate%20Chruscicka-Requiem%20For%20A%20Dream%20%28Electric%20Violin%29.mp3",
+        "https://archive.org/download/InceptionSoundtrackHD12TimeHansZimmer/Inception%20Soundtrack%20HD%20-%20%2312%20Time%20%28Hans%20Zimmer%29.mp3",
+        "https://epsilon.vgmsite.com/soundtracks/little-nightmares-ii-original-soundtrack/bplsnxvnzm/01.%20Main%20Theme.mp3",
+        "https://dl.vgmdownloads.com/soundtracks/assassin-s-creed-3/qhigmkctpn/09.%20Trouble%20in%20Town.mp3",
+        "https://vgmsite.com/soundtracks/assassin-s-creed-odyssey-original-game-soundtrack/kbtrtqrtyf/01.%20Legend%20of%20the%20Eagle%20Bearer%20%28Main%20Theme%29.mp3",
+        "https://vgmsite.com/soundtracks/assassin-s-creed-odyssey-original-game-soundtrack/kcjbuaurdi/11.%20Assassin%27s%20Creed.mp3",
+        "https://archive.org/download/exit-music-for-a-film-westworld-soundtrack/exit-music-for-a-film-westworld-soundtrack.mp3",
+        "https://dl.vgmdownloads.com/soundtracks/max-payne-3/xhaxngwzys/1.%20MAX%20THEME.mp3",
+        "https://vgmsite.com/soundtracks/max-payne-3-macos-ps3-windows-xbox-360-gamerip-2012/hcwizawdyl/112.%20Theme%20Variation%2003.mp3",
+        "https://archive.org/download/ludovico-einaudi-experience-mp-3-70-k/Ludovico%20Einaudi%20-%20Experience%28MP3_70K%29.mp3",
+        "https://archive.org/download/GTASanAndreasThemeSongFull_201904/GTA%20San%20Andreas%20Theme%20Song%20Full%20%21%20%21.mp3",
+        "https://archive.org/download/interstellar-soundtrack/22%20No%20Time%20for%20Caution%20%28Docking%20scene%29%201.mp3",
+        "https://archive.org/download/interstellar-soundtrack/26%20Organ%20Variation.mp3",
+        "https://archive.org/download/max-richter-memoryhouse/09%20November.mp3",
+        "https://archive.org/download/ZackHemseyTheWay_201704/Zack%20Hemsey%20-%20The%20Way.mp3"
+    ]
 }
 ' | ConvertFrom-Json
 $sync.database.Quotes = '{
