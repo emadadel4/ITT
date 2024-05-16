@@ -2,6 +2,9 @@
 #region Begin Start
 #===========================================================================
 
+Write-Host "TEEEEEEEEEEEEEEEEEEEEESSSSSSSSSSSSSST"
+
+
 # Load DLLs
 Add-Type -AssemblyName PresentationFramework
 Add-Type -AssemblyName PresentationCore
