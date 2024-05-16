@@ -1818,9 +1818,9 @@ $sync.database.OST = '{
                    "https://archive.org/download/exit-music-for-a-film-westworld-soundtrack/exit-music-for-a-film-westworld-soundtrack.mp3",
                    "https://dl.vgmdownloads.com/soundtracks/max-payne-3/xhaxngwzys/1.%20MAX%20THEME.mp3",
                    "https://vgmsite.com/soundtracks/max-payne-3-macos-ps3-windows-xbox-360-gamerip-2012/hcwizawdyl/112.%20Theme%20Variation%2003.mp3",
-                   "https://archive.org/download/interstellar-soundtrack/02%20Cornfield%20Chase.mp3",
                    "https://archive.org/download/ludovico-einaudi-experience-mp-3-70-k/Ludovico%20Einaudi%20-%20Experience%28MP3_70K%29.mp3",
-                   "https://archive.org/download/GTASanAndreasThemeSongFull_201904/GTA%20San%20Andreas%20Theme%20Song%20Full%20%21%20%21.mp3"
+                   "https://archive.org/download/GTASanAndreasThemeSongFull_201904/GTA%20San%20Andreas%20Theme%20Song%20Full%20%21%20%21.mp3",
+                   "https://archive.org/download/interstellar-soundtrack/22%20No%20Time%20for%20Caution%20%28Docking%20scene%29%201.mp3"
                ]
 }
 ' | ConvertFrom-Json
@@ -4706,6 +4706,65 @@ $sync.searchInput = $sync['window'].FindName('searchInput')
 #region Begin Loops
 #===========================================================================
 
+# Define a function to update the description and link when an item is selected
+function UpdateDescriptionAndLink {
+    # Get the name of the selected application from the list
+    $selectedAppName = $sync.AppsListView.SelectedItem.Content
+
+    $sync.itemLink.Visibility = "Visible"
+
+    # Loop through the list of applications in the database and find the matching one
+    foreach ($app in $sync.database.Applications) {
+
+        if ($app.name -eq $selectedAppName) {
+
+            # Update the description text block with the selected application's description
+            $sync.Description.Text = $app.description
+            # Update the link text block with the selected application's official website link
+            $sync.itemLink.Text = "$($app.name) official website"
+            break
+        }
+    }
+}
+
+# Define a function to open the official website of the selected application
+function OpenOfficialWebsite {
+    # Get the name of the selected application from the list
+    $selectedAppName =  $sync.AppsListView.SelectedItem.Content
+
+    # Loop through the list of applications in the database and find the matching one
+    foreach ($app in $sync.database.Applications) {
+        if ($selectedAppName -eq $app.name) {
+            # Open the official website of the selected application in the default web browser
+            Start-Process ("https://duckduckgo.com/?hps=1&q=%5C" + $app.name)
+            break
+        }
+    }
+}
+
+# Add event handlers
+$sync.AppsListView.add_Loaded({
+    
+    # Add a selection changed event handler to the list control
+    $sync.AppsListView.Add_SelectionChanged({
+        UpdateDescriptionAndLink
+    })
+
+})
+
+    # Add a mouse left button down event handler to the itemLink control
+    $sync.itemLink.add_MouseLeftButtonDown({
+        OpenOfficialWebsite
+    })
+
+
+    $sync.AppsListView.add_LostFocus({
+
+        $sync.AppsListView.SelectedItem = $null
+        $sync.itemLink.Visibility = "Hidden"
+        $sync.Description.Text = ""
+
+    })
 
 # Add loaded event handler
 $sync.TweaksListView.add_Loaded({
