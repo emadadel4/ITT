@@ -3591,6 +3591,7 @@ function GetQuotes {
         }
     }
 }
+
 function ChangeTap() {
     
 
