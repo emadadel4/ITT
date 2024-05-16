@@ -1,4 +1,4 @@
-###################################################################################
+﻿###################################################################################
 #                                                                                 #
 #   ___ _____ _____   _____ __  __    _    ____    _    ____  _____ _    _  _     #
 #  |_ _|_   _|_   _| | ____|  \/  |  / \  |  _ \  / \  |  _ \| ____| |  | || |    #
@@ -25,7 +25,7 @@ Add-Type -AssemblyName System.Windows.Forms
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "#{replaceme}"
+$sync.version = "2024/05-May/16-Thu"
 $sync.github =   "https://github.com/emadadel4"
 $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://eprojects.orgfree.com"
