@@ -1,5 +1,4 @@
 ﻿#region Begin Start
-###################################################################################
 
 # Load DLLs
 Add-Type -AssemblyName PresentationFramework
@@ -2452,7 +2451,6 @@ $sync.database.Tweaks = '[
 
 
 #region Begin Functions
-###################################################################################
 
 
 function Invoke-ScriptBlock {
@@ -3597,7 +3595,6 @@ function ChangeTap() {
 
 
 #region Begin WPF Window
-###################################################################################
 
 
 $inputXML = '
@@ -4529,7 +4526,6 @@ $childXaml = '<Window
 
 
 #region Begin loadXmal
-###################################################################################
 
 
 # Set the maximum number of threads for the RunspacePool to the number of threads on the machine
@@ -4689,7 +4685,6 @@ $sync.searchInput = $sync['window'].FindName('searchInput')
 
 
 #region Begin Loops
-###################################################################################
 
 # Define a function to update the description and link when an item is selected
 function UpdateDescriptionAndLink {
@@ -4798,7 +4793,6 @@ $sync.TweaksListView.add_LostFocus({
 
 
 #region Begin Main
-###################################################################################
 
 
 GetQuotes | Out-Null
