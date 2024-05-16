@@ -1821,7 +1821,8 @@ $sync.database.OST = '{
                    "https://archive.org/download/GTASanAndreasThemeSongFull_201904/GTA%20San%20Andreas%20Theme%20Song%20Full%20%21%20%21.mp3",
                    "https://archive.org/download/interstellar-soundtrack/22%20No%20Time%20for%20Caution%20%28Docking%20scene%29%201.mp3",
                    "https://archive.org/download/interstellar-soundtrack/26%20Organ%20Variation.mp3",
-                   "https://archive.org/download/max-richter-memoryhouse/09%20November.mp3"
+                   "https://archive.org/download/max-richter-memoryhouse/09%20November.mp3",
+                   "https://archive.org/download/ZackHemseyTheWay_201704/Zack%20Hemsey%20-%20The%20Way.mp3"
                ]
 }
 ' | ConvertFrom-Json
