@@ -23,6 +23,5 @@ $onClosingEvent = {
 # Add OnClosing event handler to the window
 $sync["window"].add_Closing($onClosingEvent)
 
-
 # Show the window
 $sync["window"].ShowDialog() | Out-Null
