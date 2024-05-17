@@ -16,7 +16,6 @@
 #===========================================================================
 #region Begin Start
 #===========================================================================
-
 # Load DLLs
 Add-Type -AssemblyName PresentationFramework
 Add-Type -AssemblyName PresentationCore
