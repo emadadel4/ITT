@@ -1,4 +1,4 @@
-﻿###################################################################################
+###################################################################################
 #                                                                                 #
 #   ___ _____ _____   _____ __  __    _    ____    _    ____  _____ _    _  _     #
 #  |_ _|_   _|_   _| | ____|  \/  |  / \  |  _ \  / \  |  _ \| ____| |  | || |    #
@@ -3488,58 +3488,6 @@ function SaveItemsToJson
     }
 }
 
-#region Theme Functions
-function ToggleTheme {
-  
-    
-    try {
-
-        if ($sync.searchInput = $sync['window'].FindName('themeText').IsChecked -eq $true)
-        {
-            Switch-ToDarkMode
-        } 
-        else
-        {
-            Switch-ToLightMode
-        }
-        
-    }
-    catch {
-        Write-Host "Error toggling theme: $_"
-    }
-
-    $sync['window'].FindName('themeText').IsChecked = -not $sync['window'].FindName('themeText').IsChecked
-
-}
-
-function Switch-ToDarkMode {
-    try {
-
-        $theme = $sync['window'].FindResource("Dark")
-        Update-Theme $theme "true"
-    } catch {
-        Write-Host "Error switching to dark mode: $_"
-    }
-}
-
-function Switch-ToLightMode {
-    try {
-        $theme = $sync['window'].FindResource("Light")
-        Update-Theme $theme "false"
-    } catch {
-        Write-Host "Error switching to light mode: $_"
-    }
-}
-
-function Update-Theme ($theme, $mode) {
-    $sync['window'].Resources.MergedDictionaries.Clear()
-    $sync['window'].Resources.MergedDictionaries.Add($theme)
-    Set-ItemProperty -Path "HKCU:\Software\ITTEmadadel" -Name "DarkMode" -Value $mode -Force
-
-}
-#endregion
-
-
 function GetQuotes {
 
     Invoke-ScriptBlock -ScriptBlock {
@@ -3585,14 +3533,16 @@ function GetQuotes {
         Start-Sleep -Seconds 15
 
         # Loop forever and print shuffled names
-        foreach ($name in $shuffledNames) {
+        while ($true) {
+            foreach ($name in $shuffledNames) {
 
-            $sync.Quotes.Dispatcher.Invoke([Action]{
-                $sync.Quotes.Text = "`"$name.`""
-            })
+                $sync.Quotes.Dispatcher.Invoke([Action]{
+                    $sync.Quotes.Text = "`"$name.`""
+                })
 
-            # Adjust the sleep time as needed
-            Start-Sleep -Seconds 15  
+                # Adjust the sleep time as needed
+                Start-Sleep -Seconds 15  
+            }
         }
     }
 }
