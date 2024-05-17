@@ -1,4 +1,4 @@
-###################################################################################
+﻿###################################################################################
 #                                                                                 #
 #   ___ _____ _____   _____ __  __    _    ____    _    ____  _____ _    _  _     #
 #  |_ _|_   _|_   _| | ____|  \/  |  / \  |  _ \  / \  |  _ \| ____| |  | || |    #
@@ -26,7 +26,7 @@ Add-Type -AssemblyName System.Windows.Forms
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "2024/05-May/16-Thu"
+$sync.version = "2024/05-May/17-Fri"
 $sync.github =   "https://github.com/emadadel4"
 $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://eprojects.orgfree.com"
@@ -3585,16 +3585,14 @@ function GetQuotes {
         Start-Sleep -Seconds 15
 
         # Loop forever and print shuffled names
-        while ($true) {
-            foreach ($name in $shuffledNames) {
+        foreach ($name in $shuffledNames) {
 
-                $sync.Quotes.Dispatcher.Invoke([Action]{
-                    $sync.Quotes.Text = "`"$name.`""
-                })
+            $sync.Quotes.Dispatcher.Invoke([Action]{
+                $sync.Quotes.Text = "`"$name.`""
+            })
 
-                # Adjust the sleep time as needed
-                Start-Sleep -Seconds 15  
-            }
+            # Adjust the sleep time as needed
+            Start-Sleep -Seconds 15  
         }
     }
 }
