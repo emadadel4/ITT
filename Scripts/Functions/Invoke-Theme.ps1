@@ -1,6 +1,5 @@
 #region Theme Functions
 function ToggleTheme {
-  
     
     try {
 
