@@ -137,7 +137,6 @@ $sync.Keys | ForEach-Object {
     }
 }
 
-
 # Catch controls
 $sync.AppsListView = $sync['window'].FindName("list")
 $sync.Description = $sync['window'].FindName("description")
