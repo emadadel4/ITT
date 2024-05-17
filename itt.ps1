@@ -3490,7 +3490,6 @@ function SaveItemsToJson
 
 #region Theme Functions
 function ToggleTheme {
-  
     
     try {
 
@@ -4690,7 +4689,6 @@ $sync.Keys | ForEach-Object {
     }
 }
 
-
 # Catch controls
 $sync.AppsListView = $sync['window'].FindName("list")
 $sync.Description = $sync['window'].FindName("description")
@@ -4843,7 +4841,6 @@ $onClosingEvent = {
 
 # Add OnClosing event handler to the window
 $sync["window"].add_Closing($onClosingEvent)
-
 
 # Show the window
 $sync["window"].ShowDialog() | Out-Null
