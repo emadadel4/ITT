@@ -21,6 +21,7 @@ $sync.mediaPlayer = New-Object -ComObject WMPlayer.OCX
 $currentPid = [System.Security.Principal.WindowsIdentity]::GetCurrent()
 $principal = new-object System.Security.Principal.WindowsPrincipal($currentPid)
 $administrator=[System.Security.Principal.WindowsBuiltInRole]::Administrator
+$newProcess = new-object System.Diagnostics.ProcessStartInfo "PowerShell";
 
 if ($principal.IsInRole($administrator))
 {
@@ -29,7 +30,6 @@ if ($principal.IsInRole($administrator))
 }
 else
 {
-    $newProcess = new-object System.Diagnostics.ProcessStartInfo "PowerShell";
     $newProcess.Arguments = $myInvocation.MyCommand.Definition;
     $newProcess.Verb = "runas";
     [System.Diagnostics.Process]::Start($newProcess);
