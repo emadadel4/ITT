@@ -551,7 +551,7 @@
     ]
   },
   {
-    "name": "Disabling Hibernate",
+    "name": "Disable Hibernate",
     "description": "Hibernate is a power-saving mode in Microsoft Windows operating systems that allows the system to save the current state of your computer to the hard disk and then power down completely.",
     "check": "false",
     "type": "command",
@@ -563,7 +563,7 @@
     ]
   },
   {
-    "name": "Disabling OneDrive",
+    "name": "Disable OneDrive",
     "description": "Disabling OneDrive",
     "check": "false",
     "type": "modifying",
