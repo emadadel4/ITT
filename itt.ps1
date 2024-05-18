@@ -25,7 +25,7 @@ Add-Type -AssemblyName System.Windows.Forms
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "18-05-2024 (03:31 AM)"
+$sync.version = "18-05-2024 (03:33 AM)"
 $sync.github =   "https://github.com/emadadel4"
 $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://eprojects.orgfree.com"
@@ -71,7 +71,7 @@ $sync.database.Applications = '[
     "scoop": "none",
     "url": "none",
     "category": "Browsers",
-    "check": "true"
+    "check": "false"
   },
   {
     "Name": "Firefox",
@@ -2840,7 +2840,7 @@ $inputXML = '
                     <TabItem.Content>
                         <ListView Margin="0" ScrollViewer.VerticalScrollBarVisibility="Auto" Name="list" BorderBrush="{x:Null}" Background="{x:Null}">
                             
-            <CheckBox Content="Thorium" Tag="Browsers" IsChecked="true" FontWeight="Bold"/>
+            <CheckBox Content="Thorium" Tag="Browsers" IsChecked="false" FontWeight="Bold"/>
 
             <CheckBox Content="Firefox" Tag="Browsers" IsChecked="false" FontWeight="Bold"/>
 

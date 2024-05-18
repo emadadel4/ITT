@@ -7,7 +7,7 @@
     "scoop": "none",
     "url": "none",
     "category": "Browsers",
-    "check": "true"
+    "check": "false"
   },
   {
     "Name": "Firefox",
