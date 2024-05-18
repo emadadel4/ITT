@@ -15,7 +15,7 @@
        <!--Logo-->
        <Ellipse Margin="25" VerticalAlignment="Top" HorizontalAlignment="Left" Name="about" Width="70" Height="70" ToolTip="Enad Adel">
         <Ellipse.Fill>
-            <ImageBrush ImageSource="https://raw.githubusercontent.com/emadadel4/ITT/main/logo.png" />
+          <ImageBrush ImageSource="https://raw.githubusercontent.com/emadadel4/ITT/main/Assets/Images/logo.png" />
         </Ellipse.Fill>
       </Ellipse>
       <!--End Logo-->

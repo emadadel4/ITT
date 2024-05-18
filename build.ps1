@@ -7,7 +7,7 @@ param (
     [string]$MainScript = ".\initiation\main.ps1",
     [string]$ScritsDirectory = ".\Scripts",
     [string]$windows = ".\windows",
-    [string]$LoadXamlScript = ".\windows\loadXmal.ps1"
+    [string]$LoadXamlScript = ".\initiation\loadXmal.ps1"
 )
 
 # Initialize synchronized hashtable

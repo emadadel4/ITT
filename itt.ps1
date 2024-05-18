@@ -25,7 +25,7 @@ Add-Type -AssemblyName System.Windows.Forms
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "18-05-2024 (04:54 AM)"
+$sync.version = "18-05-2024 (05:02 AM)"
 $sync.github =   "https://github.com/emadadel4"
 $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://eprojects.orgfree.com"
@@ -3368,7 +3368,7 @@ $childXaml = '<Window
        <!--Logo-->
        <Ellipse Margin="25" VerticalAlignment="Top" HorizontalAlignment="Left" Name="about" Width="70" Height="70" ToolTip="Enad Adel">
         <Ellipse.Fill>
-            <ImageBrush ImageSource="https://raw.githubusercontent.com/emadadel4/ITT/main/logo.png" />
+          <ImageBrush ImageSource="https://raw.githubusercontent.com/emadadel4/ITT/main/Assets/Images/logo.png" />
         </Ellipse.Fill>
       </Ellipse>
       <!--End Logo-->
