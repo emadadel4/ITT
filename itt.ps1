@@ -25,7 +25,7 @@ Add-Type -AssemblyName System.Windows.Forms
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "18-05-2024 (04:45 AM)"
+$sync.version = "18-05-2024 (04:49 AM)"
 $sync.github =   "https://github.com/emadadel4"
 $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://eprojects.orgfree.com"
@@ -2434,7 +2434,7 @@ $sync.database.Tweaks = '[
     ]
   },
   {
-    "name": "Disabling Hibernate",
+    "name": "Disable Hibernate",
     "description": "Hibernate is a power-saving mode in Microsoft Windows operating systems that allows the system to save the current state of your computer to the hard disk and then power down completely.",
     "check": "false",
     "type": "command",
@@ -2446,7 +2446,7 @@ $sync.database.Tweaks = '[
     ]
   },
   {
-    "name": "Disabling OneDrive",
+    "name": "Disable OneDrive",
     "description": "Disabling OneDrive",
     "check": "false",
     "type": "modifying",
@@ -3229,9 +3229,9 @@ $inputXML = '
 
             <CheckBox Content="Remove Unnecessary Windows 10/11 Apps"   FontWeight="Bold"/>
 
-            <CheckBox Content="Disabling Hibernate"   FontWeight="Bold"/>
+            <CheckBox Content="Disable Hibernate"   FontWeight="Bold"/>
 
-            <CheckBox Content="Disabling OneDrive"   FontWeight="Bold"/>
+            <CheckBox Content="Disable OneDrive"   FontWeight="Bold"/>
 
                         </ListView>
                     </TabItem.Content>
