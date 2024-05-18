@@ -25,7 +25,7 @@ Add-Type -AssemblyName System.Windows.Forms
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "18-05-2024 (03:33 AM)"
+$sync.version = "18-05-2024 (04:45 AM)"
 $sync.github =   "https://github.com/emadadel4"
 $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://eprojects.orgfree.com"
@@ -2815,7 +2815,7 @@ $inputXML = '
                                 <ComboBox SelectedIndex="0"  Margin="25,0,0,0" Name="category" HorizontalAlignment="Center" VerticalAlignment="Center" Width="155" Height="Auto">
                                     <ComboBoxItem Content="All"></ComboBoxItem>
                                     <ComboBoxItem Content="Drivers"></ComboBoxItem>
-                                    <ComboBoxItem Content="Media"></ComboBoxItem>
+                                    <ComboBoxItem Content="Media"></ComboBoxItem> 
                                     <ComboBoxItem Content="Browsers"></ComboBoxItem>
                                     <ComboBoxItem Content="Documents"></ComboBoxItem>
                                     <ComboBoxItem Content="Compression"></ComboBoxItem>
