@@ -24,15 +24,3 @@ function Invoke-ScriptBlock {
             [System.GC]::Collect()
         }
 }
-
-function StopAllRunspace {
-    
-    $script:powershell.Dispose()
-    $sync.runspace.Dispose()
-    $sync.runspace.Close()
-    $script:powershell.Stop()
-    StopMusic
-    $newProcess.exit
-    Write-Host "Bye see you soon. :)" 
-}
-

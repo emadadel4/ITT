@@ -64,7 +64,16 @@ function StopMusic {
     $sync.runspace.Close()
 }
 
+function StopAllRunspace {
+    
+    $script:powershell.Dispose()
+    $sync.runspace.Dispose()
+    $sync.runspace.Close()
+    $script:powershell.Stop()
+    StopMusic
+    $newProcess.exit
+    Write-Host "Bye see you soon. :)" 
+}
+
 PlayMusic | Out-Null
-
-
 #endregion

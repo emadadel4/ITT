@@ -12,7 +12,6 @@
 #                                                                                 #
 ###################################################################################
 
-
 #===========================================================================
 #region Begin Start
 #===========================================================================
@@ -26,7 +25,7 @@ Add-Type -AssemblyName System.Windows.Forms
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "17-05-2024 (07:19 AM)"
+$sync.version = "18-05-2024 (03:15 AM)"
 $sync.github =   "https://github.com/emadadel4"
 $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://eprojects.orgfree.com"
@@ -72,7 +71,7 @@ $sync.database.Applications = '[
     "scoop": "none",
     "url": "none",
     "category": "Browsers",
-    "check": "false"
+    "check": "true"
   },
   {
     "Name": "Firefox",
@@ -2468,6 +2467,1093 @@ $sync.database.Tweaks = '[
 #endregion End Database /APPS/TWEEAKS/Quotes/OST
 #===========================================================================
 
+#===========================================================================
+#region Begin WPF Window
+#===========================================================================
+
+$inputXML = '
+<!--Window-->
+    <Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Name="Window" Title="Install and Tweak Tool @emadadel4" WindowStartupLocation = "CenterScreen" 
+        Background="{DynamicResource BGColor}"
+        Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowInTaskbar = "True" Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/icon.ico">
+    
+        <Window.Resources>
+
+            <!--Button Style-->
+      <Style TargetType="Button">
+        <Setter Property="Background" Value="{DynamicResource FGColor}"/>
+        <Setter Property="Foreground" Value="{DynamicResource DefaultTextColor}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border CornerRadius="20" Background="{TemplateBinding Background}">
+                        <ContentPresenter HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"/>
+                        
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{DynamicResource BGButtonColor}"/>
+                <Setter Property="Foreground" Value="{DynamicResource FGButtonColor}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+<!--End Button Style-->
+
+<!--Textbox Style-->
+  <Style TargetType="TextBox">
+    <Setter Property="Background" Value="{DynamicResource BGColor}"/>
+      <Setter Property="Foreground" Value="{DynamicResource FGTextColor}"/>
+      <Setter Property="BorderThickness" Value="1"/>
+      <Setter Property="Template">
+          <Setter.Value>
+              <ControlTemplate TargetType="TextBox">
+                  <Border Background="{TemplateBinding Background}"
+                          BorderBrush="{TemplateBinding BorderBrush}"
+                          BorderThickness="{TemplateBinding BorderThickness}"
+                          CornerRadius="15"> <!-- Set CornerRadius here -->
+                      <ScrollViewer x:Name="PART_ContentHost" />
+                  </Border>
+              </ControlTemplate>
+          </Setter.Value>
+      </Setter>
+      <Style.Triggers>
+              <Trigger Property="IsFocused" Value="True">
+                  <Setter Property="BorderThickness" Value="1"/>
+                  <Setter Property="BorderBrush" Value="{DynamicResource BGButtonColor}"/>
+                  <Setter Property="Background" Value="{DynamicResource FGColor}"/>
+              </Trigger>
+          </Style.Triggers>
+  </Style>
+<!--End Textbox Style-->
+
+<!--TextBlock Style-->
+  <Style TargetType="TextBlock">
+      <Setter Property="Foreground" Value="{DynamicResource FGTextColor}"/>
+  </Style>
+<!--End TextBlock Style-->
+
+<!--CheckBox Style-->
+  <Style TargetType="CheckBox">
+      <Setter Property="Foreground" Value="{DynamicResource FGTextColor}"/>
+      <Setter Property="Margin" Value="8"/>
+
+  </Style>
+<!--End CheckBox Style-->
+
+<!--Menu Style-->
+  <Style TargetType="Menu">
+      <Setter Property="Background" Value="{DynamicResource BGColor}"/>
+      <Setter Property="Margin" Value="15"/>
+  </Style>
+<!--End Menu Style-->
+
+<!--MenuItem Style-->
+  <Style TargetType="MenuItem">
+      <Setter Property="Background" Value="{DynamicResource BGColor}"/>
+      <Setter Property="Foreground" Value="{DynamicResource DefaultTextColor}"/>
+      <Setter Property="OverridesDefaultStyle" Value="True"/>
+      <Setter Property="Template">
+          <Setter.Value>
+              <ControlTemplate TargetType="MenuItem">
+                  <Border Background="{DynamicResource BGColor}"
+                    BorderBrush="WhiteSmoke"
+                    BorderThickness="0"> <!-- Set BorderThickness to 0 -->
+                      <Grid>
+                          <ContentPresenter Content="{TemplateBinding Header}"
+                                          Margin="5"/>
+                          <Popup IsOpen="{Binding IsSubmenuOpen, RelativeSource={RelativeSource TemplatedParent}}"
+                              AllowsTransparency="True"
+                              Focusable="True"
+                              PopupAnimation="None">
+                              <Border Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"
+                                      BorderThickness="15"> <!-- Set BorderThickness to 0 -->
+                                  <ScrollViewer CanContentScroll="True"
+                                              Style="{DynamicResource {ComponentResourceKey ResourceId=MenuScrollViewer, TypeInTargetAssembly={x:Type FrameworkElement}}}">
+                                      <ItemsPresenter Margin="0"/>
+                                  </ScrollViewer>
+                              </Border>
+                        
+                          </Popup>
+                      </Grid>
+                  </Border>
+              </ControlTemplate>
+          </Setter.Value>
+      </Setter>
+
+  </Style>
+<!--End MenuItem Style-->
+
+<!--ListViewItem Style-->
+    <Style TargetType="ListViewItem">
+        <Setter Property="Background" Value="{DynamicResource FGColor}"/>
+        <Setter Property="Margin" Value="3"/>
+        <Setter Property="BorderThickness" Value="2"/>
+    </Style>
+<!--End ListViewItem Style-->
+
+<!--Scrollbar Thumbs-->
+  <Style x:Key="ScrollThumbs" TargetType="{x:Type Thumb}">
+      <Setter Property="Template">
+          <Setter.Value>
+              <ControlTemplate TargetType="{x:Type Thumb}">
+                  <Grid x:Name="Grid">
+                      <Rectangle HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="Auto" Height="Auto" Fill="Transparent" />
+                      <Border x:Name="Rectangle1" CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="Auto" Height="Auto" Background="{TemplateBinding Background}" />
+                  </Grid>
+                  <ControlTemplate.Triggers>
+                      <Trigger Property="Tag" Value="Horizontal">
+                          <Setter TargetName="Rectangle1" Property="Width" Value="Auto" />
+                          <Setter TargetName="Rectangle1" Property="Height" Value="7" />
+                      </Trigger>
+                  </ControlTemplate.Triggers>
+              </ControlTemplate>
+          </Setter.Value>
+      </Setter>
+  </Style>
+  <Style x:Key="{x:Type ScrollBar}" TargetType="{x:Type ScrollBar}">
+      <Setter Property="Stylus.IsFlicksEnabled" Value="false" />
+      <Setter Property="Foreground" Value="{DynamicResource BGButtonColor}" />
+      <Setter Property="Background" Value="Transparent" />
+      <Setter Property="Width" Value="8" />
+      <Setter Property="Template">
+          <Setter.Value>
+              <ControlTemplate TargetType="{x:Type ScrollBar}">
+                  <Grid x:Name="GridRoot" Width="8" Background="{TemplateBinding Background}">
+                      <Grid.RowDefinitions>
+                          <RowDefinition Height="0.00001*" />
+                      </Grid.RowDefinitions>
+                      <Track x:Name="PART_Track" Grid.Row="0" IsDirectionReversed="true" Focusable="false">
+                          <Track.Thumb>
+                              <Thumb x:Name="Thumb" Background="{TemplateBinding Foreground}" Style="{DynamicResource ScrollThumbs}" />
+                          </Track.Thumb>
+                          <Track.IncreaseRepeatButton>
+                              <RepeatButton x:Name="PageUp" Command="ScrollBar.PageDownCommand" Opacity="0" Focusable="false" />
+                          </Track.IncreaseRepeatButton>
+                          <Track.DecreaseRepeatButton>
+                              <RepeatButton x:Name="PageDown" Command="ScrollBar.PageUpCommand" Opacity="0" Focusable="false" />
+                          </Track.DecreaseRepeatButton>
+                      </Track>
+                  </Grid>
+                  <ControlTemplate.Triggers>
+                      <Trigger SourceName="Thumb" Property="IsMouseOver" Value="true">
+                          <Setter Value="{DynamicResource ButtonSelectBrush}" TargetName="Thumb" Property="Background" />
+                      </Trigger>
+                      <Trigger SourceName="Thumb" Property="IsDragging" Value="true">
+                          <Setter Value="{DynamicResource DarkBrush}" TargetName="Thumb" Property="Background" />
+                      </Trigger>
+                      <Trigger Property="IsEnabled" Value="false">
+                          <Setter TargetName="Thumb" Property="Visibility" Value="Collapsed" />
+                      </Trigger>
+                      <Trigger Property="Orientation" Value="Horizontal">
+                          <Setter TargetName="GridRoot" Property="LayoutTransform">
+                              <Setter.Value>
+                                  <RotateTransform Angle="-90" />
+                              </Setter.Value>
+                          </Setter>
+                          <Setter TargetName="PART_Track" Property="LayoutTransform">
+                              <Setter.Value>
+                                  <RotateTransform Angle="-90" />
+                              </Setter.Value>
+                          </Setter>
+                          <Setter Property="Width" Value="Auto" />
+                          <Setter Property="Height" Value="8" />
+                          <Setter TargetName="Thumb" Property="Tag" Value="Horizontal" />
+                          <Setter TargetName="PageDown" Property="Command" Value="ScrollBar.PageLeftCommand" />
+                          <Setter TargetName="PageUp" Property="Command" Value="ScrollBar.PageRightCommand" />
+                      </Trigger>
+                  </ControlTemplate.Triggers>
+              </ControlTemplate>
+          </Setter.Value>
+      </Setter>
+  </Style>
+<!--End Scrollbar Thumbs-->
+
+<!--TabControl Style-->
+    <Style TargetType="TabItem">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TabItem">
+                    <Border Name="Border" CornerRadius="15" BorderThickness="0,0,0,0" Padding="5" BorderBrush="Gainsboro"  Margin="10,5">
+                        <ContentPresenter x:Name="ContentSite"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center"
+                        ContentSource="Header"
+                        Margin="10,2"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter TargetName="Border" Property="Background" Value="{DynamicResource BGButtonColor}" />
+                            <Setter Property="Foreground" Value="White" />
+
+                        </Trigger>
+                        <Trigger Property="IsSelected" Value="False">
+                            <Setter TargetName="Border" Property="Background" Value="{DynamicResource FGColor}" />
+                            <Setter Property="Foreground" Value="{DynamicResource DefaultTextColor}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+<!--End TabControl Style-->
+            
+            <!--Light Theme styles-->
+
+        <!--Light mode -->
+                <ResourceDictionary x:Key="Light">
+                        <SolidColorBrush x:Key="BGColor" Color="White"/>
+                        <SolidColorBrush x:Key="FGColor" Color="WhiteSmoke"/>
+                        <SolidColorBrush x:Key="BGButtonColor" Color="#382bf0  " />
+                        <SolidColorBrush x:Key="FGButtonColor" Color="White" />
+                        <SolidColorBrush x:Key="FGTextColor" Color="Black" />
+                        <SolidColorBrush x:Key="DefaultTextColor" Color="Black"/>
+                        <SolidColorBrush x:Key="BorderBrush" Color="#212121"/>
+                </ResourceDictionary>
+        <!--Light mode -->
+
+        <!--Dark mode-->
+                <ResourceDictionary x:Key="Dark">
+                        <SolidColorBrush x:Key="BGColor" Color="#121212 "/>
+                        <SolidColorBrush x:Key="FGColor" Color="#282828"/>
+                        <SolidColorBrush x:Key="BGButtonColor" Color="#1DB954" />
+                        <SolidColorBrush x:Key="FGButtonColor" Color="White" />
+                        <SolidColorBrush x:Key="FGTextColor" Color="WhiteSmoke" />
+                        <SolidColorBrush x:Key="DefaultTextColor" Color="White"/>
+                        <SolidColorBrush x:Key="BorderBrush" Color="WhiteSmoke" />
+                </ResourceDictionary>
+        <!--Dark mode -->
+
+<!--Light Theme-->
+
+
+        </Window.Resources>
+
+        <Grid>
+        
+            <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="222"/>
+            </Grid.ColumnDefinitions>
+
+            <!--Header Section-->
+
+
+                    <Menu Grid.Row="0" Grid.ColumnSpan="3" Background="Transparent" BorderBrush="Transparent" BorderThickness="0">
+                        
+                        <MenuItem Header="Computer Managment" BorderBrush="Transparent"  FontWeight="Bold" BorderThickness="0">
+                            <MenuItem Name="sysinfo" Header="System Info"/>
+                            <MenuItem Name="poweroption" Header="Power Options"/>
+                            <MenuItem Name="deviceManager" Header="Device Manager"/>
+                            <MenuItem Name="services" Header="Services"/>
+                            <MenuItem Name="network" Header="Network"/>
+                            <MenuItem Name="appsfeatures" Header="Apps-Features"/>
+                            <MenuItem Name="taskmgr" Header="Task Manager"/>
+                            <MenuItem Name="diskmgmt" Header="Disk Managment"/>
+                        </MenuItem>
+
+                        <MenuItem Header="Preferences" BorderBrush="Transparent"  FontWeight="Bold" BorderThickness="0">
+                            <MenuItem Name="save" Header="Save Selected apps"/>
+                            <MenuItem Name="load" Header="Load Apps"/>
+
+                            <MenuItem Header="Dark Mode">
+                                <MenuItem Name="darkOn" Header="On"/>
+                                <MenuItem Name="darkOff" Header="Off"/>
+                            </MenuItem>
+
+                            <MenuItem Header="Music">
+                                <MenuItem Name="moff" Header="Mute"/>
+                                <MenuItem Name="mon" Header="Unmute"/>
+                            </MenuItem>
+                            <MenuItem Name="ittshortcut" Header="Create Shortcut"/>
+                        </MenuItem>
+
+
+                        <MenuItem Header="Mirror Links" BorderBrush="Transparent" FontWeight="Bold" BorderThickness="0">
+                            <MenuItem Name="mas" Header="Microsoft Activation Scripts (MAS)"/>
+                            <MenuItem Name="idm" Header="IDM Activation"/>
+
+                            <MenuItem Header="Browsers Extensions">
+                                <MenuItem Name="uBlock" Header="uBlock Origin"/>
+                                <MenuItem Name="unhook" Header="Unhook: Customize youtube"/>
+
+                                <MenuItem Name="neat" Header="Neat Download Manager"/>
+                                
+                            </MenuItem>
+                        </MenuItem>
+
+                        
+                        <MenuItem Name="dev" Header="About" BorderBrush="Transparent" FontWeight="Bold" BorderThickness="1" />
+
+                    </Menu>
+
+                        <StackPanel Margin="15" Orientation="Horizontal" HorizontalAlignment="Left"  VerticalAlignment="Center" Grid.Row="1" Grid.ColumnSpan="3" >
+
+                                <!--Logo-->
+                                    <Ellipse Name="about" Width="80" Height="80" Cursor="Hand" ToolTip="Enad Adel">
+                                        <Ellipse.Fill>
+                                            <ImageBrush ImageSource="https://raw.githubusercontent.com/emadadel4/ITT/main/logo.png" />
+                                        </Ellipse.Fill>
+                                    </Ellipse>
+
+                                <!--End Logo-->
+
+                            <!--Catagory Section-->
+                                <ComboBox SelectedIndex="0"  Margin="25,0,0,0" Name="category" HorizontalAlignment="Center" VerticalAlignment="Center" Width="155" Height="Auto">
+                                    <ComboBoxItem Content="All"></ComboBoxItem>
+                                    <ComboBoxItem Content="Drivers"></ComboBoxItem>
+                                    <ComboBoxItem Content="Media"></ComboBoxItem>
+                                    <ComboBoxItem Content="Browsers"></ComboBoxItem>
+                                    <ComboBoxItem Content="Documents"></ComboBoxItem>
+                                    <ComboBoxItem Content="Compression"></ComboBoxItem>
+                                    <ComboBoxItem Content="Communication"></ComboBoxItem>
+                                    <ComboBoxItem Content="File Sharing"></ComboBoxItem>
+                                    <ComboBoxItem Content="Imaging"></ComboBoxItem>
+                                    <ComboBoxItem Content="Launchers"></ComboBoxItem>
+                                    <ComboBoxItem Content="Utilities"></ComboBoxItem>
+                                    <ComboBoxItem Content="Developer"></ComboBoxItem>
+                                    <ComboBoxItem Content="Microsoft"></ComboBoxItem>
+                                    <ComboBoxItem Content="Security"></ComboBoxItem>
+                                </ComboBox>
+                            <!--End Catagory Section-->
+
+                        </StackPanel>
+
+            <!--End Header Section-->
+
+                <!--TabControl-->
+        <TabControl Name="taps" TabStripPlacement="Left" Margin="0, 10, 0, 10" Grid.Row="2"  BorderBrush="Transparent" Foreground="White" Background="Transparent">
+                <TabItem Header="Apps" Name="apps" BorderBrush="{x:Null}" Padding="0">
+                    <TabItem.Content>
+                        <ListView Margin="0" ScrollViewer.VerticalScrollBarVisibility="Auto" Name="list" BorderBrush="{x:Null}" Background="{x:Null}">
+                            
+            <CheckBox Content="Thorium" Tag="Browsers" IsChecked="true" FontWeight="Bold"/>
+
+            <CheckBox Content="Firefox" Tag="Browsers" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Microsoft Edge" Tag="Browsers" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Google Chrome" Tag="Browsers" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Chromium" Tag="Browsers" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Brave" Tag="Browsers" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Tor Browser" Tag="Browsers" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Opera" Tag="Browsers" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Internet Download Manager" Tag="Browsers" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Neat Download Manager" Tag="Browsers" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="JDownloader" Tag="Browsers" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="K-Lite Mega Codec Full Pack" Tag="Media" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="PotPlayer" Tag="Media" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="VLC" Tag="Media" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Kodi" Tag="Media" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Jellyfin" Tag="Media" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Winamp" Tag="Media" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Aimp" Tag="Media" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Spotify" Tag="Media" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="FastStone Image Viewer" Tag="Imaging" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="OpenOffice" Tag="Documents" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="FoxitReader" Tag="Documents" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="LibreOffice" Tag="Documents" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="SumatraPDF" Tag="Documents" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="WinRAR" Tag="Compression" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="7-Zip" Tag="Compression" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="PeaZip" Tag="Compression" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Telegram Desktop" Tag="Communication" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Signal" Tag="Communication" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Meta Messenger" Tag="Communication" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Zoom" Tag="Communication" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Microsoft Teams" Tag="Communication" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Discord" Tag="Communication" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="TeamViewer" Tag="File Sharing" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="GIMP" Tag="Imaging" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="DirectX" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Microsoft Visual C++ Runtime - all versions" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Microsoft Visual C++ 2005 (x86) Redistributable" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Microsoft Visual C++ 2005 (x64) Redistributable" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Microsoft Visual C++ 2008 (x86) Redistributable" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Microsoft Visual C++ 2008 (x64) Redistributable" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Microsoft Visual C++ 2010 (x86) Redistributable" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Microsoft Visual C++ 2010 (x64) Redistributable" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Microsoft Visual C++ 2012 (x86) Redistributable" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Microsoft Visual C++ 2012 (x64) Redistributable" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Microsoft Visual C++ 2013 (x86) Redistributable" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Microsoft Visual C++ 2013 (x64) Redistributable" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Microsoft Visual C++ 2015-2022 (x64) Redistributable" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Microsoft Visual C++ 2015-2022  (x86) Redistributable" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="NET Framework All Versions" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="AMD Ryzen Chipset Drivers" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="NVidia Display Driver" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="NVIDIA GeForce" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Msi Afterburner" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="NVIDIA PhysX" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Steam" Tag="Launchers" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Ubisoft Connect" Tag="Launchers" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Origin" Tag="Launchers" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Rockstar Games Launcher" Tag="Launchers" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="GameSave Manager" Tag="Launchers" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="StreamlabsOBS" Tag="Launchers" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="OBS Studio" Tag="Launchers" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Logitech Gaming Software" Tag="Launchers" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Lively Wallpaper" Tag="Launchers" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Playnite" Tag="Launchers" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Driver Easy" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Intel Graphics Windows DCH" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Intel Driver Support Assistant" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Intel Network Adapter" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Snappy Driver Installer" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Driver booster" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Driver Genius" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Display Driver Uninstaller" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Driver Store Explorer" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="1Password" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="MiniTool Partition Wizard" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="AOMEI Partition Assistant Standard" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="AOMEI Backupper" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Recuva recover" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="CCleaner" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="BCUninstaller" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Easy Context Menu" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="HWiNFO" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Speccy" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="FurMark" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Hard Disk Sentinel" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="CPUID CPU-Z" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Mem Reduct" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="HandBrake" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Rufus" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="ImgBurn" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Virtual CloneDrive" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Ultra ISO" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Ventoy" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="iVentoy" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="AutoHotkey" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Rainmeter" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="FxSound" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="HiSuite" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Vysor" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Unified Remote" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="AnyDesk" Tag="File Sharing" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Airdroid" Tag="File Sharing" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="UltraViewer" Tag="File Sharing" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Wireless Network Watcher Portable" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="WifiInfoView" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="qBittorrent" Tag="File Sharing" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Google Earth Pro" Tag="Imaging" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="XAMPP" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Visual Studio Professional 2022" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Visual Studio Community 2022" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Unity Hub" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Godot Engine" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Unity3D Engine" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Blender" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Visual Studio Code" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Vim" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Sublime Text 4" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Atom" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="InnoSetup" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="PyCharm Community Edition" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="PyCharm Professional Edition" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Jetbrains Rider" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Node.js LTS" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Electrum-LTS" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Hugo" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Notepad++" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Windows Terminal" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Powershell core" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="x64dbg Portable" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="dnSpy" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Cheat Engine" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Python" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Git" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="GitHub Desktop" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Docker Desktop" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Docker Compose" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="PowerToys" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Notion" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="FL Studio" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Android Debug Bridge" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Universal ADB Drivers" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Scrcpy" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="VirtualBox" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="oh-my-posh" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Malwarebytes" Tag="Security" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Kaspersky Virus Removal Tool" Tag="Security" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Kaspersky Anti-Virus" Tag="Security" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Avast Free Antivirus" Tag="Security" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Nerd Fonts - CascadiaCode" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Java SE Runtime Environment 8.0.411" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Audacity" Tag="Media" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="MusicBee" Tag="Media" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="FormatFactory" Tag="Media" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Winaero Tweaker" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Windows Subsystem for Linux WSL2" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Wamp Server 3.3.5" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="MongoDB 7.3.2" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="MPC-BE" Tag="Media" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Kdenlive" Tag="Media" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="TablePlus" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Hosts File Editor" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Subtitle Edit" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Skype" Tag="Communication" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="FileZilla" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Everything" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Yarn" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="VMware Workstation Player" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="HDD Low Level Format Tool" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="BlueStacks" Tag="Launchers" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Intel Wireless Bluetooth for Windows 10 and Windows 11" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Office 365 Business" Tag="Microsoft" IsChecked="false" FontWeight="Bold"/>
+
+                        </ListView>
+                    </TabItem.Content>
+                </TabItem>
+                <TabItem Header="Tweaks" x:Name="tweeksTab" Padding="0" BorderBrush="{x:Null}" Background="{x:Null}">
+                    <TabItem.Content>
+                        <ListView Name="tweaks"  Margin="0" ScrollViewer.VerticalScrollBarVisibility="Auto" BorderBrush="{x:Null}" Background="{x:Null}">
+                            
+            <CheckBox Content="System File Checker"   FontWeight="Bold"/>
+
+            <CheckBox Content="Run Disk cleanup"   FontWeight="Bold"/>
+
+            <CheckBox Content="Restore All Windows Services to Default"   FontWeight="Bold"/>
+
+            <CheckBox Content="Fix Stutter/Lag in Games"   FontWeight="Bold"/>
+
+            <CheckBox Content="Enable the Ultimate Performance Power Plan"   FontWeight="Bold"/>
+
+            <CheckBox Content="Reset the TCP/IP Stack"   FontWeight="Bold"/>
+
+            <CheckBox Content="Setup Auto login"   FontWeight="Bold"/>
+
+            <CheckBox Content="Disable Game Mode"   FontWeight="Bold"/>
+
+            <CheckBox Content="Disable Data Collection"   FontWeight="Bold"/>
+
+            <CheckBox Content="Disable Start menu ads"   FontWeight="Bold"/>
+
+            <CheckBox Content="Disable Windows Web Search"   FontWeight="Bold"/>
+
+            <CheckBox Content="Turn off background apps"   FontWeight="Bold"/>
+
+            <CheckBox Content="Disable suggestions on start menu"   FontWeight="Bold"/>
+
+            <CheckBox Content="Disable the News and interests on taskbar"   FontWeight="Bold"/>
+
+            <CheckBox Content="Show Search icon Only on taskbar"   FontWeight="Bold"/>
+
+            <CheckBox Content="Disable People icon on taskbar"   FontWeight="Bold"/>
+
+            <CheckBox Content="Remove Folder Shortcuts From Windows'' File Explorer"   FontWeight="Bold"/>
+
+            <CheckBox Content="Optimize Services"   FontWeight="Bold"/>
+
+            <CheckBox Content="Remove Unnecessary Windows 10/11 Apps"   FontWeight="Bold"/>
+
+            <CheckBox Content="Disabling Hibernate"   FontWeight="Bold"/>
+
+            <CheckBox Content="Disabling OneDrive"   FontWeight="Bold"/>
+
+                        </ListView>
+                    </TabItem.Content>
+                </TabItem>
+            </TabControl>
+        <!--End TabControl-->
+
+            <!--Main Section-->
+                <Grid  Grid.Row="2" Grid.Column="2"  Grid.RowSpan="2">
+
+                    <StackPanel Orientation="Vertical">
+
+
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+
+                            <Grid>
+                                <TextBox Padding="8"
+                                Width="188"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Left" 
+                                Text="{Binding Text_searchInput}"
+                                Name="searchInput" 
+                                />
+
+                                <TextBlock IsHitTestVisible="False" 
+                                Text="Search"
+                                VerticalAlignment="Center" 
+                                HorizontalAlignment="Left"
+                                Margin="16,0,0,0"
+                                Foreground="{DynamicResource FGTextColor}">
+
+                                <TextBlock.Style>
+                                        <Style TargetType="{x:Type TextBlock}">
+                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding Text, ElementName=searchInput}" Value="">
+                                                    <Setter Property="Visibility" Value="Visible"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBlock.Style>
+                                </TextBlock>
+                            </Grid>
+                        </StackPanel>
+
+                        <TextBlock Name="itemLink" 
+                            Foreground="{DynamicResource BGButtonColor}" 
+                            Visibility="Hidden" 
+                            TextWrapping="Wrap" 
+                            Text="" 
+                            FontWeight="Bold"
+                            Margin="20,15,15,0" 
+                        />
+
+                        <ScrollViewer VerticalScrollBarVisibility="Auto"
+                            Height="200"
+                            Margin="20,15,15,0" 
+                        >
+                            <TextBlock Name="description" 
+                                Text=""
+                                TextWrapping="Wrap" 
+                                Foreground="{DynamicResource DefaultTextColor}"/>
+                        </ScrollViewer>
+
+                        
+
+                    </StackPanel>
+
+                    <!--Install Button-->
+                        <Button
+                        Name="installBtn"
+                        Content="Install"
+                        FontSize="15"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Bottom"
+                        Width="100" Height="40" Margin="50"/>
+                    <!--End Install Button-->
+
+                    <!--Apply Button-->
+                        <Button
+                        Name="applyBtn"
+                        Content="Apply"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Bottom"
+                        FontSize="15"
+                        Visibility="hidden"
+                        Width="100" Height="40" Margin="50"/>
+                    <!--End Apply Button-->
+
+                </Grid>
+            <!--End Main Section-->
+
+            <!--Footer Section-->
+                <Grid Grid.Row="4">
+                    <TextBlock Name="quotes"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center" 
+                    Padding="16" TextWrapping="Wrap" 
+                    FlowDirection="RightToLeft"
+                    Text=""
+                    />
+                </Grid>
+            <!--End Footer Section-->
+
+        </Grid>
+        
+    </Window>
+<!--End Window-->
+
+
+'
+#===========================================================================
+#endregion End WPF Window
+#===========================================================================
+
+#===========================================================================
+#region Begin WPF About
+#===========================================================================
+
+$childXaml = '<Window
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  x:Name="Window" Title="About | ITT " WindowStartupLocation = "CenterScreen" 
+  Background="White"
+  WindowStyle="ToolWindow"
+  Height="344" Width="444" FontFamily="Console" MinWidth="444" MinHeight="344" ShowInTaskbar = "True" Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/icon.ico">
+    <Grid>
+
+      <Grid.RowDefinitions>
+        <RowDefinition Height="*"/>
+        <RowDefinition Height="auto"/>
+      </Grid.RowDefinitions>
+
+       <!--Logo-->
+       <Ellipse Margin="25" VerticalAlignment="Top" HorizontalAlignment="Left" Name="about" Width="70" Height="70" ToolTip="Enad Adel">
+        <Ellipse.Fill>
+            <ImageBrush ImageSource="https://raw.githubusercontent.com/emadadel4/ITT/main/logo.png" />
+        </Ellipse.Fill>
+      </Ellipse>
+      <!--End Logo-->
+
+      <StackPanel Grid.Row="0" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
+        <TextBlock Margin="5" TextWrapping="Wrap" FontWeight="Bold" FontSize="30" TextAlignment="Center" Text="ITT"/>
+        <TextBlock Margin="5" TextWrapping="Wrap" FontWeight="Bold" FontSize="15" TextAlignment="Center" Text="Install and Tweak Tool"/>
+        <TextBlock Margin="5" TextWrapping="Wrap" Text="Developer Emad Adel" TextAlignment="Center"/>
+        <TextBlock Margin="5" Name="ver" TextWrapping="Wrap" TextAlignment="Center" Text="2024/4/21"/>
+      </StackPanel>
+
+      <StackPanel Margin="25" Grid.Row="1" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
+
+        <TextBlock Margin="25" Name="sourcecode" Cursor="Hand" TextAlignment="Center" Text="Source code"/>
+        <StackPanel Orientation="Horizontal">
+        <TextBlock Name="website" Margin="10" Cursor="Hand"  Text="EProjects"/>
+        <TextBlock Name="telegram" Margin="10" Cursor="Hand"  Text="Telegram"/>
+        <TextBlock Name="github" Margin="10" Cursor="Hand"  Text="Github"/>
+        </StackPanel>
+      </StackPanel>
+    </Grid>
+  </Window>
+'
+#===========================================================================
+#endregion End WPF About
+#===========================================================================
+
+#===========================================================================
+#region Begin loadXmal
+#===========================================================================
+
+# Set the maximum number of threads for the RunspacePool to the number of threads on the machine
+$maxthreads = [int]$env:NUMBER_OF_PROCESSORS
+
+# Create a new session state for parsing variables into our runspace
+$hashVars = New-object System.Management.Automation.Runspaces.SessionStateVariableEntry -ArgumentList 'sync',$sync,$Null
+$InitialSessionState = [System.Management.Automation.Runspaces.InitialSessionState]::CreateDefault()
+
+# Add the variable to the session state
+$InitialSessionState.Variables.Add($hashVars)
+
+# Create the runspace pool
+$sync.runspace = [runspacefactory]::CreateRunspacePool(
+    1,                      # Minimum thread count
+    $maxthreads,            # Maximum thread count
+    $InitialSessionState,   # Initial session state
+    $Host                   # Machine to create runspaces on
+)
+
+# Open the RunspacePool instance
+$sync.runspace.Open()
+
+[void][System.Reflection.Assembly]::LoadWithPartialName('presentationframework')
+[xml]$XAML = $inputXML
+
+# Read the XAML file
+$reader = (New-Object System.Xml.XmlNodeReader $xaml)
+try { 
+    
+    $sync["window"] = [Windows.Markup.XamlReader]::Load( $reader )
+    
+    # Check if the registry key exists
+    if (-not (Test-Path $sync.registryPath))
+    {
+        New-Item -Path "HKCU:\Software\ITTEmadadel" -Force *> $null
+        Set-ItemProperty -Path "HKCU:\Software\ITTEmadadel" -Name "DarkMode" -Value "false" -Force 
+    }
+
+    $sync.isDarkMode = (Get-ItemProperty -Path "HKCU:\Software\ITTEmadadel" -Name "DarkMode").DarkMode
+    
+    # Check if $themeValue is equal to "true"
+    if ($sync.isDarkMode -eq "true")
+    {
+        $sync['window'].Resources.MergedDictionaries.Add($sync['window'].FindResource("Dark"))
+
+    } else {
+        $sync['window'].Resources.MergedDictionaries.Add($sync['window'].FindResource("Light"))
+    }
+
+ }
+catch [System.Management.Automation.MethodInvocationException] {
+    Write-Warning "We ran into a problem with the XAML code.  Check the syntax for this control..."
+    Write-Host $error[0].Exception.Message -ForegroundColor Red
+    If ($error[0].Exception.Message -like "*button*") {
+        write-warning "Ensure your &lt;button in the `$inputXML does NOT have a Click=ButtonClick property.  PS can't handle this`n`n`n`n"
+    }
+}
+catch {
+    Write-Host "Unable to load Windows.Markup.XamlReader. Double-check syntax and ensure .net is installed."
+}
+
+# Select all elements with a Name attribute using XPath and iterate over them
+$xaml.SelectNodes("//*[@Name]") | ForEach-Object {
+    # Assign each element to a variable in $sync dictionary
+    $sync[$($_.Name)] = $sync["window"].FindName($_.Name)
+}
+
+# Iterate over keys in $sync dictionary
+$sync.Keys | ForEach-Object {
+    $element = $sync[$_]
+
+    # Check if the element exists
+    if ($element) {
+
+        # Check if the element is a Button
+        if ($element.GetType().Name -eq "Button") {
+            # Add a click event handler to the button
+
+            $element.Add_Click({
+                param([System.Object]$s)
+                Invoke-Button $s.Name
+            })
+        }
+
+        # Check if the element is a MenuItem
+        if ($element.GetType().Name -eq "MenuItem") {
+            # Add a click event handler to the MenuItem
+
+            $element.Add_Click({
+                param([System.Object]$s)
+                Invoke-Button $s.Name
+            })
+        }
+
+        # Check if the element is a TextBox
+        if ($element.GetType().Name -eq "TextBox") {
+
+            $element.Add_TextChanged({
+                param([System.Object]$s)
+                Invoke-Button $s.Name
+            })
+
+            $element.Add_GotFocus({
+                param([System.Object]$s)
+                Invoke-Button $s.Name
+            })
+        }
+
+        # Check if the element is a Ellipse
+        if ($element.GetType().Name -eq "Ellipse") {
+                # Add a click event handler to the Ellipse
+    
+                $element.add_MouseLeftButtonDown({
+                    param([System.Object]$s)
+                    Invoke-Button $s.Name
+                })
+        }
+
+        # Check if the element is a ComboBox
+        if ($element.GetType().Name -eq "ComboBox") {
+            # Add a click event handler to the ComboBox
+
+            $element.add_SelectionChanged({
+                param([System.Object]$s)
+                Invoke-Button $s.Name
+            })
+        }
+
+        # Check if the element is a TabControl
+        if ($element.GetType().Name -eq "TabControl") {
+            # Add a click event handler to the TabControl
+
+            $element.add_SelectionChanged({
+                param([System.Object]$s)
+                Invoke-Button $s.Name
+            })
+        }
+    }
+}
+
+# Catch controls
+$sync.AppsListView = $sync['window'].FindName("list")
+$sync.Description = $sync['window'].FindName("description")
+$sync.Quotes = $sync['window'].FindName("quotes")
+$sync.TweaksListView = $sync['window'].FindName("tweaks")
+$sync.itemLink = $sync['window'].FindName('itemLink')
+$sync.installBtn = $sync['window'].FindName('installBtn') 
+$sync.applyBtn = $sync['window'].FindName('applyBtn') 
+$sync.category = $sync['window'].FindName('category')
+$sync.searchInput = $sync['window'].FindName('searchInput')
+
+#===========================================================================
+#endregion End loadXmal
+#===========================================================================
+
 
 #===========================================================================
 #region Begin Functions
@@ -2499,169 +3585,6 @@ function Invoke-ScriptBlock {
             [System.GC]::Collect()
         }
 }
-
-function StopAllRunspace {
-    
-    $script:powershell.Dispose()
-    $sync.runspace.Dispose()
-    $sync.runspace.Close()
-    $script:powershell.Stop()
-    StopMusic
-    $newProcess.exit
-    Write-Host "Bye see you soon. :)" 
-}
-
-
-#region PlayMusic Functions
-function PlayMusic {
-
-    Function PlayAudio($url)
-    {
-        $mediaItem =  $sync.mediaPlayer.newMedia($url)
-        $sync.mediaPlayer.currentPlaylist.appendItem($mediaItem)
-        $sync.mediaPlayer.controls.play()
-        
-    }
-
-    # Function to shuffle the playlist
-    Function ShuffleArray
-    {
-        param([array]$array)
-
-        $count = $array.Length
-
-        for ($i = 0; $i -lt $count; $i++)
-        {
-            $randomIndex = Get-Random -Minimum $i -Maximum $count
-            $temp = $array[$i]
-            $array[$i] = $array[$randomIndex]
-            $array[$randomIndex] = $temp
-        }
-    }
-
-    # Shuffle the playlist
-    ShuffleArray -array $sync.database.OST.Tracks
-
-    # Function to play the entire shuffled playlist
-    Function PlayShuffledPlaylist
-    {
-        foreach ($url in $sync.database.OST.Tracks)
-        {
-            PlayAudio $url
-            # Wait for the track to finish playing
-            while ( $sync.mediaPlayer.playState -eq 3 -or  $sync.mediaPlayer.playState -eq 6)
-            {
-                Start-Sleep -Milliseconds 100
-            }
-        }
-    }
-
-    PlayShuffledPlaylist
-}
-
-function MuteMusic {
-
-    $sync.mediaPlayer.settings.volume = 0
-}
-
-function Unmute {
-   
-    $sync.mediaPlayer.settings.volume = 100
-}
-
-function StopMusic {
-
-    $sync.mediaPlayer.controls.stop()
-    $sync.mediaPlayer = $null
-    $script:powershell.Dispose()
-    $sync.runspace.Dispose()
-    $sync.runspace.Close()
-}
-
-PlayMusic | Out-Null
-
-
-#endregion
-
-function About{
-
-    # Load child window
-    [xml]$about = $childXaml
-    $childWindowReader = (New-Object System.Xml.XmlNodeReader $about)
-    $childWindow = [Windows.Markup.XamlReader]::Load( $childWindowReader )
-    $childWindow.FindName('ver').Text = "Last update " + $sync.version
-    $childWindow.FindName("telegram").add_MouseLeftButtonDown({Start-Process("https://t.me/emadadel4")})
-    $childWindow.FindName("github").add_MouseLeftButtonDown({Start-Process("https://github.com/emadadel4")})
-    $childWindow.FindName("website").add_MouseLeftButtonDown({Start-Process("https://eprojects.orgfree.com/")})
-    $childWindow.FindName("sourcecode").add_MouseLeftButtonDown({Start-Process("https://github.com/emadadel4/ITT")})
-    $childWindow.ShowDialog() | Out-Null
-
-}
-
-function ITTShortcut {
-  
-    # Create a shortcut object
-    $Shortcut = (New-Object -ComObject WScript.Shell).CreateShortcut("$([Environment]::GetFolderPath('Desktop'))\ITT Emad Adel.lnk")
-
-    # Set the target path to PowerShell with your command
-    $Shortcut.TargetPath = "$env:SystemRoot\System32\WindowsPowerShell\v1.0\powershell.exe"
-    $Shortcut.Arguments = "-ExecutionPolicy Bypass -Command ""irm bit.ly/emadadel | iex"""
-
-    # Save the shortcut
-    $Shortcut.Save()
-
-}
-#region Function to filter a list based on a search input and Category
-function Search{
-
-    # Retrieves the search input, converts it to lowercase, and filters the list based on the input
-    $filter = $sync.searchInput.Text.ToLower() -replace '[^\p{L}\p{N}]', ''
-    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync['window'].FindName('list').Items)
-    $collectionView.Filter = {
-        param($item)
-        $item -like "*$filter*"
-    }
-}
-
-function FilterByCat {
-
-    param ($Cat)
-
-    # if user on Other tab return to apps list
-    $sync['window'].FindName('apps').IsSelected = $true
-    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync['window'].FindName('list').Items)
-
-    # Define the filter predicate
-    $filterPredicate = {
-        param($item)
-
-        # Define the tag you want to filter by
-        $tagToFilter =  $Cat
-        # Check if the item has the tag
-        $itemTag = $item.Tag
-        return $itemTag -eq $tagToFilter
-    }
-
-    if($Cat -eq "All")
-    {
-        $sync['window'].FindName('list').Clear()
-        $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync['window'].FindName('list').Items)
-        $collectionView.Filter = $null
-    }
-    else
-    {
-        $sync['window'].FindName('list').Clear()
-        # Apply the filter to the collection view
-        $collectionView.Filter = $filterPredicate
-    }
-}
-
-function ClearFilter {
-    $sync['window'].FindName('list').Clear()
-    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync['window'].FindName('list').Items)
-    $collectionView.Filter = $null
-}
-#endregion
 
 function Send-SystemInfo {
     param (
@@ -2753,7 +3676,7 @@ function Startup {
         Write-Host (WriteAText -color White -message  "You ready to Install anything.") 
     }
 
-    Send-SystemInfo -FirebaseUrl $sync.firebaseUrl -Key $env:COMPUTERNAME
+    #Send-SystemInfo -FirebaseUrl $sync.firebaseUrl -Key $env:COMPUTERNAME
 
 
 }
@@ -3488,6 +4411,282 @@ function SaveItemsToJson
     }
 }
 
+function ChangeTap() {
+    
+
+    if($sync['window'].FindName('apps').IsSelected)
+    {
+        $sync['window'].FindName('installBtn').Visibility = "Visible"
+        $sync['window'].FindName('applyBtn').Visibility = "Hidden"
+    }
+
+    if($sync['window'].FindName('tweeksTab').IsSelected)
+    {
+        $sync['window'].FindName('applyBtn').Visibility = "Visible"
+        $sync['window'].FindName('installBtn').Visibility = "Hidden"
+    }
+}
+# Define a function to update the description and link when an item is selected
+function UpdateDescriptionAndLink {
+    # Get the name of the selected application from the list
+    $selectedAppName = $sync.AppsListView.SelectedItem.Content
+
+    $sync.itemLink.Visibility = "Visible"
+
+    # Loop through the list of applications in the database and find the matching one
+    foreach ($app in $sync.database.Applications) {
+
+        if ($app.name -eq $selectedAppName) {
+
+            # Update the description text block with the selected application's description
+            $sync.Description.Text = $app.description
+            # Update the link text block with the selected application's official website link
+            $sync.itemLink.Text = "$($app.name) official website"
+            break
+        }
+    }
+}
+
+# Define a function to open the official website of the selected application
+function OpenOfficialWebsite {
+    # Get the name of the selected application from the list
+    $selectedAppName =  $sync.AppsListView.SelectedItem.Content
+
+    # Loop through the list of applications in the database and find the matching one
+    foreach ($app in $sync.database.Applications) {
+        if ($selectedAppName -eq $app.name) {
+            # Open the official website of the selected application in the default web browser
+            Start-Process ("https://duckduckgo.com/?hps=1&q=%5C" + $app.name)
+            break
+        }
+    }
+}
+
+# Add event handlers
+$sync.AppsListView.add_Loaded({
+    
+    # Add a selection changed event handler to the list control
+    $sync.AppsListView.Add_SelectionChanged({
+        UpdateDescriptionAndLink
+    })
+
+})
+
+    # Add a mouse left button down event handler to the itemLink control
+    $sync.itemLink.add_MouseLeftButtonDown({
+        OpenOfficialWebsite
+    })
+
+
+    $sync.AppsListView.add_LostFocus({
+
+        $sync.AppsListView.SelectedItem = $null
+        $sync.itemLink.Visibility = "Hidden"
+        $sync.Description.Text = ""
+
+    })
+
+# Add loaded event handler
+$sync.TweaksListView.add_Loaded({
+   
+    # Add selection changed event handler
+    $sync.TweaksListView.Add_SelectionChanged({
+
+        $selectedItem = $sync.TweaksListView.SelectedItem.Content
+        foreach ($data in $sync.database.Tweaks) {
+
+            if ($data.name -eq $selectedItem) {
+
+                $sync.Description.Text = $data.description
+                $sync.itemLink.Visibility = if ($data.repo -ne "null") { "Hidden" } else { "Hidden" }
+                break
+            }
+        }
+    })
+
+})
+
+# Add mouse left button down event handler for item link
+$sync.itemLink.add_MouseLeftButtonDown({
+
+    $selectedItem = $sync.TweaksListView.SelectedItem.Content
+
+    foreach ($data in $sync.database.Tweaks) {
+        if ($selectedItem -eq $data.name -and $data.repo -ne "null") {
+            Start-Process $data.repo
+            break
+        }
+    }
+})
+
+
+$sync.TweaksListView.add_LostFocus({
+
+    $sync.TweaksListView.SelectedItem = $null
+    $sync.itemLink.Visibility = "Hidden"
+    $sync.Description.Text = ""
+})
+
+#region PlayMusic Functions
+function PlayMusic {
+
+    Function PlayAudio($url)
+    {
+        $mediaItem =  $sync.mediaPlayer.newMedia($url)
+        $sync.mediaPlayer.currentPlaylist.appendItem($mediaItem)
+        $sync.mediaPlayer.controls.play()
+        
+    }
+
+    # Function to shuffle the playlist
+    Function ShuffleArray
+    {
+        param([array]$array)
+
+        $count = $array.Length
+
+        for ($i = 0; $i -lt $count; $i++)
+        {
+            $randomIndex = Get-Random -Minimum $i -Maximum $count
+            $temp = $array[$i]
+            $array[$i] = $array[$randomIndex]
+            $array[$randomIndex] = $temp
+        }
+    }
+
+    # Shuffle the playlist
+    ShuffleArray -array $sync.database.OST.Tracks
+
+    # Function to play the entire shuffled playlist
+    Function PlayShuffledPlaylist
+    {
+        foreach ($url in $sync.database.OST.Tracks)
+        {
+            PlayAudio $url
+            # Wait for the track to finish playing
+            while ( $sync.mediaPlayer.playState -eq 3 -or  $sync.mediaPlayer.playState -eq 6)
+            {
+                Start-Sleep -Milliseconds 100
+            }
+        }
+    }
+
+    PlayShuffledPlaylist
+}
+
+function MuteMusic {
+
+    $sync.mediaPlayer.settings.volume = 0
+}
+
+function Unmute {
+   
+    $sync.mediaPlayer.settings.volume = 100
+}
+
+function StopMusic {
+
+    $sync.mediaPlayer.controls.stop()
+    $sync.mediaPlayer = $null
+    $script:powershell.Dispose()
+    $sync.runspace.Dispose()
+    $sync.runspace.Close()
+}
+
+function StopAllRunspace {
+    
+    $script:powershell.Dispose()
+    $sync.runspace.Dispose()
+    $sync.runspace.Close()
+    $script:powershell.Stop()
+    StopMusic
+    $newProcess.exit
+    Write-Host "Bye see you soon. :)" 
+}
+
+PlayMusic | Out-Null
+#endregion
+
+function About{
+
+    # Load child window
+    [xml]$about = $childXaml
+    $childWindowReader = (New-Object System.Xml.XmlNodeReader $about)
+    $childWindow = [Windows.Markup.XamlReader]::Load( $childWindowReader )
+    $childWindow.FindName('ver').Text = "Last update " + $sync.version
+    $childWindow.FindName("telegram").add_MouseLeftButtonDown({Start-Process("https://t.me/emadadel4")})
+    $childWindow.FindName("github").add_MouseLeftButtonDown({Start-Process("https://github.com/emadadel4")})
+    $childWindow.FindName("website").add_MouseLeftButtonDown({Start-Process("https://eprojects.orgfree.com/")})
+    $childWindow.FindName("sourcecode").add_MouseLeftButtonDown({Start-Process("https://github.com/emadadel4/ITT")})
+    $childWindow.ShowDialog() | Out-Null
+
+}
+
+function ITTShortcut {
+  
+    # Create a shortcut object
+    $Shortcut = (New-Object -ComObject WScript.Shell).CreateShortcut("$([Environment]::GetFolderPath('Desktop'))\ITT Emad Adel.lnk")
+
+    # Set the target path to PowerShell with your command
+    $Shortcut.TargetPath = "$env:SystemRoot\System32\WindowsPowerShell\v1.0\powershell.exe"
+    $Shortcut.Arguments = "-ExecutionPolicy Bypass -Command ""irm bit.ly/emadadel | iex"""
+
+    # Save the shortcut
+    $Shortcut.Save()
+
+}
+#region Function to filter a list based on a search input and Category
+function Search{
+
+    # Retrieves the search input, converts it to lowercase, and filters the list based on the input
+    $filter = $sync.searchInput.Text.ToLower() -replace '[^\p{L}\p{N}]', ''
+    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync['window'].FindName('list').Items)
+    $collectionView.Filter = {
+        param($item)
+        $item -like "*$filter*"
+    }
+}
+
+function FilterByCat {
+
+    param ($Cat)
+
+    # if user on Other tab return to apps list
+    $sync['window'].FindName('apps').IsSelected = $true
+    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync['window'].FindName('list').Items)
+
+    # Define the filter predicate
+    $filterPredicate = {
+        param($item)
+
+        # Define the tag you want to filter by
+        $tagToFilter =  $Cat
+        # Check if the item has the tag
+        $itemTag = $item.Tag
+        return $itemTag -eq $tagToFilter
+    }
+
+    if($Cat -eq "All")
+    {
+        $sync['window'].FindName('list').Clear()
+        $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync['window'].FindName('list').Items)
+        $collectionView.Filter = $null
+    }
+    else
+    {
+        $sync['window'].FindName('list').Clear()
+        # Apply the filter to the collection view
+        $collectionView.Filter = $filterPredicate
+    }
+}
+
+function ClearFilter {
+    $sync['window'].FindName('list').Clear()
+    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync['window'].FindName('list').Items)
+    $collectionView.Filter = $null
+}
+#endregion
+
 #region Theme Functions
 function ToggleTheme {
     
@@ -3596,1219 +4795,8 @@ function GetQuotes {
     }
 }
 
-function ChangeTap() {
-    
-
-    if($sync['window'].FindName('apps').IsSelected)
-    {
-        $sync['window'].FindName('installBtn').Visibility = "Visible"
-        $sync['window'].FindName('applyBtn').Visibility = "Hidden"
-    }
-
-    if($sync['window'].FindName('tweeksTab').IsSelected)
-    {
-        $sync['window'].FindName('applyBtn').Visibility = "Visible"
-        $sync['window'].FindName('installBtn').Visibility = "Hidden"
-    }
-}
 #===========================================================================
 #endregion End Functions
-#===========================================================================
-
-#===========================================================================
-#region Begin WPF Window
-#===========================================================================
-
-$inputXML = '
-<!--Window-->
-    <Window
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        x:Name="Window" Title="Install and Tweak Tool @emadadel4" WindowStartupLocation = "CenterScreen" 
-        Background="{DynamicResource BGColor}"
-        Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowInTaskbar = "True" Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/icon.ico">
-    
-        <Window.Resources>
-
-            <!--Button Style-->
-      <Style TargetType="Button">
-        <Setter Property="Background" Value="{DynamicResource FGColor}"/>
-        <Setter Property="Foreground" Value="{DynamicResource DefaultTextColor}"/>
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="Button">
-                    <Border CornerRadius="20" Background="{TemplateBinding Background}">
-                        <ContentPresenter HorizontalAlignment="Center"
-                                            VerticalAlignment="Center"/>
-                        
-                    </Border>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-        <Style.Triggers>
-            <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="{DynamicResource BGButtonColor}"/>
-                <Setter Property="Foreground" Value="{DynamicResource FGButtonColor}"/>
-            </Trigger>
-        </Style.Triggers>
-    </Style>
-<!--End Button Style-->
-
-<!--Textbox Style-->
-  <Style TargetType="TextBox">
-    <Setter Property="Background" Value="{DynamicResource BGColor}"/>
-      <Setter Property="Foreground" Value="{DynamicResource FGTextColor}"/>
-      <Setter Property="BorderThickness" Value="1"/>
-      <Setter Property="Template">
-          <Setter.Value>
-              <ControlTemplate TargetType="TextBox">
-                  <Border Background="{TemplateBinding Background}"
-                          BorderBrush="{TemplateBinding BorderBrush}"
-                          BorderThickness="{TemplateBinding BorderThickness}"
-                          CornerRadius="15"> <!-- Set CornerRadius here -->
-                      <ScrollViewer x:Name="PART_ContentHost" />
-                  </Border>
-              </ControlTemplate>
-          </Setter.Value>
-      </Setter>
-      <Style.Triggers>
-              <Trigger Property="IsFocused" Value="True">
-                  <Setter Property="BorderThickness" Value="1"/>
-                  <Setter Property="BorderBrush" Value="{DynamicResource BGButtonColor}"/>
-                  <Setter Property="Background" Value="{DynamicResource FGColor}"/>
-              </Trigger>
-          </Style.Triggers>
-  </Style>
-<!--End Textbox Style-->
-
-<!--TextBlock Style-->
-  <Style TargetType="TextBlock">
-      <Setter Property="Foreground" Value="{DynamicResource FGTextColor}"/>
-  </Style>
-<!--End TextBlock Style-->
-
-<!--CheckBox Style-->
-  <Style TargetType="CheckBox">
-      <Setter Property="Foreground" Value="{DynamicResource FGTextColor}"/>
-      <Setter Property="Margin" Value="8"/>
-
-  </Style>
-<!--End CheckBox Style-->
-
-<!--Menu Style-->
-  <Style TargetType="Menu">
-      <Setter Property="Background" Value="{DynamicResource BGColor}"/>
-      <Setter Property="Margin" Value="15"/>
-  </Style>
-<!--End Menu Style-->
-
-<!--MenuItem Style-->
-  <Style TargetType="MenuItem">
-      <Setter Property="Background" Value="{DynamicResource BGColor}"/>
-      <Setter Property="Foreground" Value="{DynamicResource DefaultTextColor}"/>
-      <Setter Property="OverridesDefaultStyle" Value="True"/>
-      <Setter Property="Template">
-          <Setter.Value>
-              <ControlTemplate TargetType="MenuItem">
-                  <Border Background="{DynamicResource BGColor}"
-                    BorderBrush="WhiteSmoke"
-                    BorderThickness="0"> <!-- Set BorderThickness to 0 -->
-                      <Grid>
-                          <ContentPresenter Content="{TemplateBinding Header}"
-                                          Margin="5"/>
-                          <Popup IsOpen="{Binding IsSubmenuOpen, RelativeSource={RelativeSource TemplatedParent}}"
-                              AllowsTransparency="True"
-                              Focusable="True"
-                              PopupAnimation="None">
-                              <Border Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"
-                                      BorderThickness="15"> <!-- Set BorderThickness to 0 -->
-                                  <ScrollViewer CanContentScroll="True"
-                                              Style="{DynamicResource {ComponentResourceKey ResourceId=MenuScrollViewer, TypeInTargetAssembly={x:Type FrameworkElement}}}">
-                                      <ItemsPresenter Margin="0"/>
-                                  </ScrollViewer>
-                              </Border>
-                        
-                          </Popup>
-                      </Grid>
-                  </Border>
-              </ControlTemplate>
-          </Setter.Value>
-      </Setter>
-
-  </Style>
-<!--End MenuItem Style-->
-
-<!--ListViewItem Style-->
-    <Style TargetType="ListViewItem">
-        <Setter Property="Background" Value="{DynamicResource FGColor}"/>
-        <Setter Property="Margin" Value="3"/>
-        <Setter Property="BorderThickness" Value="2"/>
-    </Style>
-<!--End ListViewItem Style-->
-
-<!--Scrollbar Thumbs-->
-  <Style x:Key="ScrollThumbs" TargetType="{x:Type Thumb}">
-      <Setter Property="Template">
-          <Setter.Value>
-              <ControlTemplate TargetType="{x:Type Thumb}">
-                  <Grid x:Name="Grid">
-                      <Rectangle HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="Auto" Height="Auto" Fill="Transparent" />
-                      <Border x:Name="Rectangle1" CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="Auto" Height="Auto" Background="{TemplateBinding Background}" />
-                  </Grid>
-                  <ControlTemplate.Triggers>
-                      <Trigger Property="Tag" Value="Horizontal">
-                          <Setter TargetName="Rectangle1" Property="Width" Value="Auto" />
-                          <Setter TargetName="Rectangle1" Property="Height" Value="7" />
-                      </Trigger>
-                  </ControlTemplate.Triggers>
-              </ControlTemplate>
-          </Setter.Value>
-      </Setter>
-  </Style>
-  <Style x:Key="{x:Type ScrollBar}" TargetType="{x:Type ScrollBar}">
-      <Setter Property="Stylus.IsFlicksEnabled" Value="false" />
-      <Setter Property="Foreground" Value="{DynamicResource BGButtonColor}" />
-      <Setter Property="Background" Value="Transparent" />
-      <Setter Property="Width" Value="8" />
-      <Setter Property="Template">
-          <Setter.Value>
-              <ControlTemplate TargetType="{x:Type ScrollBar}">
-                  <Grid x:Name="GridRoot" Width="8" Background="{TemplateBinding Background}">
-                      <Grid.RowDefinitions>
-                          <RowDefinition Height="0.00001*" />
-                      </Grid.RowDefinitions>
-                      <Track x:Name="PART_Track" Grid.Row="0" IsDirectionReversed="true" Focusable="false">
-                          <Track.Thumb>
-                              <Thumb x:Name="Thumb" Background="{TemplateBinding Foreground}" Style="{DynamicResource ScrollThumbs}" />
-                          </Track.Thumb>
-                          <Track.IncreaseRepeatButton>
-                              <RepeatButton x:Name="PageUp" Command="ScrollBar.PageDownCommand" Opacity="0" Focusable="false" />
-                          </Track.IncreaseRepeatButton>
-                          <Track.DecreaseRepeatButton>
-                              <RepeatButton x:Name="PageDown" Command="ScrollBar.PageUpCommand" Opacity="0" Focusable="false" />
-                          </Track.DecreaseRepeatButton>
-                      </Track>
-                  </Grid>
-                  <ControlTemplate.Triggers>
-                      <Trigger SourceName="Thumb" Property="IsMouseOver" Value="true">
-                          <Setter Value="{DynamicResource ButtonSelectBrush}" TargetName="Thumb" Property="Background" />
-                      </Trigger>
-                      <Trigger SourceName="Thumb" Property="IsDragging" Value="true">
-                          <Setter Value="{DynamicResource DarkBrush}" TargetName="Thumb" Property="Background" />
-                      </Trigger>
-                      <Trigger Property="IsEnabled" Value="false">
-                          <Setter TargetName="Thumb" Property="Visibility" Value="Collapsed" />
-                      </Trigger>
-                      <Trigger Property="Orientation" Value="Horizontal">
-                          <Setter TargetName="GridRoot" Property="LayoutTransform">
-                              <Setter.Value>
-                                  <RotateTransform Angle="-90" />
-                              </Setter.Value>
-                          </Setter>
-                          <Setter TargetName="PART_Track" Property="LayoutTransform">
-                              <Setter.Value>
-                                  <RotateTransform Angle="-90" />
-                              </Setter.Value>
-                          </Setter>
-                          <Setter Property="Width" Value="Auto" />
-                          <Setter Property="Height" Value="8" />
-                          <Setter TargetName="Thumb" Property="Tag" Value="Horizontal" />
-                          <Setter TargetName="PageDown" Property="Command" Value="ScrollBar.PageLeftCommand" />
-                          <Setter TargetName="PageUp" Property="Command" Value="ScrollBar.PageRightCommand" />
-                      </Trigger>
-                  </ControlTemplate.Triggers>
-              </ControlTemplate>
-          </Setter.Value>
-      </Setter>
-  </Style>
-<!--End Scrollbar Thumbs-->
-
-<!--TabControl Style-->
-    <Style TargetType="TabItem">
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="TabItem">
-                    <Border Name="Border" CornerRadius="15" BorderThickness="0,0,0,0" Padding="5" BorderBrush="Gainsboro"  Margin="10,5">
-                        <ContentPresenter x:Name="ContentSite"
-                        VerticalAlignment="Center"
-                        HorizontalAlignment="Center"
-                        ContentSource="Header"
-                        Margin="10,2"/>
-                    </Border>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsSelected" Value="True">
-                            <Setter TargetName="Border" Property="Background" Value="{DynamicResource BGButtonColor}" />
-                            <Setter Property="Foreground" Value="White" />
-
-                        </Trigger>
-                        <Trigger Property="IsSelected" Value="False">
-                            <Setter TargetName="Border" Property="Background" Value="{DynamicResource FGColor}" />
-                            <Setter Property="Foreground" Value="{DynamicResource DefaultTextColor}" />
-                        </Trigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-<!--End TabControl Style-->
-            
-            <!--Light Theme styles-->
-
-        <!--Light mode -->
-                <ResourceDictionary x:Key="Light">
-                        <SolidColorBrush x:Key="BGColor" Color="White"/>
-                        <SolidColorBrush x:Key="FGColor" Color="WhiteSmoke"/>
-                        <SolidColorBrush x:Key="BGButtonColor" Color="#382bf0  " />
-                        <SolidColorBrush x:Key="FGButtonColor" Color="White" />
-                        <SolidColorBrush x:Key="FGTextColor" Color="Black" />
-                        <SolidColorBrush x:Key="DefaultTextColor" Color="Black"/>
-                        <SolidColorBrush x:Key="BorderBrush" Color="#212121"/>
-                </ResourceDictionary>
-        <!--Light mode -->
-
-        <!--Dark mode-->
-                <ResourceDictionary x:Key="Dark">
-                        <SolidColorBrush x:Key="BGColor" Color="#121212 "/>
-                        <SolidColorBrush x:Key="FGColor" Color="#282828"/>
-                        <SolidColorBrush x:Key="BGButtonColor" Color="#1DB954" />
-                        <SolidColorBrush x:Key="FGButtonColor" Color="White" />
-                        <SolidColorBrush x:Key="FGTextColor" Color="WhiteSmoke" />
-                        <SolidColorBrush x:Key="DefaultTextColor" Color="White"/>
-                        <SolidColorBrush x:Key="BorderBrush" Color="WhiteSmoke" />
-                </ResourceDictionary>
-        <!--Dark mode -->
-
-<!--Light Theme-->
-
-
-        </Window.Resources>
-
-        <Grid>
-        
-            <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
-
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="222"/>
-            </Grid.ColumnDefinitions>
-
-            <!--Header Section-->
-
-
-                    <Menu Grid.Row="0" Grid.ColumnSpan="3" Background="Transparent" BorderBrush="Transparent" BorderThickness="0">
-                        
-                        <MenuItem Header="Computer Managment" BorderBrush="Transparent"  FontWeight="Bold" BorderThickness="0">
-                            <MenuItem Name="sysinfo" Header="System Info"/>
-                            <MenuItem Name="poweroption" Header="Power Options"/>
-                            <MenuItem Name="deviceManager" Header="Device Manager"/>
-                            <MenuItem Name="services" Header="Services"/>
-                            <MenuItem Name="network" Header="Network"/>
-                            <MenuItem Name="appsfeatures" Header="Apps-Features"/>
-                            <MenuItem Name="taskmgr" Header="Task Manager"/>
-                            <MenuItem Name="diskmgmt" Header="Disk Managment"/>
-                        </MenuItem>
-
-                        <MenuItem Header="Preferences" BorderBrush="Transparent"  FontWeight="Bold" BorderThickness="0">
-                            <MenuItem Name="save" Header="Save Selected apps"/>
-                            <MenuItem Name="load" Header="Load Apps"/>
-
-                            <MenuItem Header="Dark Mode">
-                                <MenuItem Name="darkOn" Header="On"/>
-                                <MenuItem Name="darkOff" Header="Off"/>
-                            </MenuItem>
-
-                            <MenuItem Header="Music">
-                                <MenuItem Name="moff" Header="Mute"/>
-                                <MenuItem Name="mon" Header="Unmute"/>
-                            </MenuItem>
-                            <MenuItem Name="ittshortcut" Header="Create Shortcut"/>
-                        </MenuItem>
-
-
-                        <MenuItem Header="Mirror Links" BorderBrush="Transparent" FontWeight="Bold" BorderThickness="0">
-                            <MenuItem Name="mas" Header="Microsoft Activation Scripts (MAS)"/>
-                            <MenuItem Name="idm" Header="IDM Activation"/>
-
-                            <MenuItem Header="Browsers Extensions">
-                                <MenuItem Name="uBlock" Header="uBlock Origin"/>
-                                <MenuItem Name="unhook" Header="Unhook: Customize youtube"/>
-
-                                <MenuItem Name="neat" Header="Neat Download Manager"/>
-                                
-                            </MenuItem>
-                        </MenuItem>
-
-                        
-                        <MenuItem Name="dev" Header="About" BorderBrush="Transparent" FontWeight="Bold" BorderThickness="1" />
-
-                    </Menu>
-
-                        <StackPanel Margin="15" Orientation="Horizontal" HorizontalAlignment="Left"  VerticalAlignment="Center" Grid.Row="1" Grid.ColumnSpan="3" >
-
-                                <!--Logo-->
-                                    <Ellipse Name="about" Width="80" Height="80" Cursor="Hand" ToolTip="Enad Adel">
-                                        <Ellipse.Fill>
-                                            <ImageBrush ImageSource="https://raw.githubusercontent.com/emadadel4/ITT/main/logo.png" />
-                                        </Ellipse.Fill>
-                                    </Ellipse>
-
-                                <!--End Logo-->
-
-                            <!--Catagory Section-->
-                                <ComboBox SelectedIndex="0"  Margin="25,0,0,0" Name="category" HorizontalAlignment="Center" VerticalAlignment="Center" Width="155" Height="Auto">
-                                    <ComboBoxItem Content="All"></ComboBoxItem>
-                                    <ComboBoxItem Content="Drivers"></ComboBoxItem>
-                                    <ComboBoxItem Content="Media"></ComboBoxItem>
-                                    <ComboBoxItem Content="Browsers"></ComboBoxItem>
-                                    <ComboBoxItem Content="Documents"></ComboBoxItem>
-                                    <ComboBoxItem Content="Compression"></ComboBoxItem>
-                                    <ComboBoxItem Content="Communication"></ComboBoxItem>
-                                    <ComboBoxItem Content="File Sharing"></ComboBoxItem>
-                                    <ComboBoxItem Content="Imaging"></ComboBoxItem>
-                                    <ComboBoxItem Content="Launchers"></ComboBoxItem>
-                                    <ComboBoxItem Content="Utilities"></ComboBoxItem>
-                                    <ComboBoxItem Content="Developer"></ComboBoxItem>
-                                    <ComboBoxItem Content="Microsoft"></ComboBoxItem>
-                                    <ComboBoxItem Content="Security"></ComboBoxItem>
-                                </ComboBox>
-                            <!--End Catagory Section-->
-
-                        </StackPanel>
-
-            <!--End Header Section-->
-
-                <!--TabControl-->
-        <TabControl Name="taps" TabStripPlacement="Left" Margin="0, 10, 0, 10" Grid.Row="2"  BorderBrush="Transparent" Foreground="White" Background="Transparent">
-                <TabItem Header="Apps" Name="apps" BorderBrush="{x:Null}" Padding="0">
-                    <TabItem.Content>
-                        <ListView Margin="0" ScrollViewer.VerticalScrollBarVisibility="Auto" Name="list" BorderBrush="{x:Null}" Background="{x:Null}">
-                            
-    <CheckBox Content="Thorium" Tag="Browsers" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Firefox" Tag="Browsers" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Microsoft Edge" Tag="Browsers" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Google Chrome" Tag="Browsers" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Chromium" Tag="Browsers" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Brave" Tag="Browsers" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Tor Browser" Tag="Browsers" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Opera" Tag="Browsers" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Internet Download Manager" Tag="Browsers" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Neat Download Manager" Tag="Browsers" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="JDownloader" Tag="Browsers" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="K-Lite Mega Codec Full Pack" Tag="Media" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="PotPlayer" Tag="Media" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="VLC" Tag="Media" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Kodi" Tag="Media" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Jellyfin" Tag="Media" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Winamp" Tag="Media" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Aimp" Tag="Media" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Spotify" Tag="Media" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="FastStone Image Viewer" Tag="Imaging" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="OpenOffice" Tag="Documents" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="FoxitReader" Tag="Documents" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="LibreOffice" Tag="Documents" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="SumatraPDF" Tag="Documents" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="WinRAR" Tag="Compression" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="7-Zip" Tag="Compression" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="PeaZip" Tag="Compression" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Telegram Desktop" Tag="Communication" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Signal" Tag="Communication" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Meta Messenger" Tag="Communication" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Zoom" Tag="Communication" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Microsoft Teams" Tag="Communication" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Discord" Tag="Communication" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="TeamViewer" Tag="File Sharing" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="GIMP" Tag="Imaging" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="DirectX" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Microsoft Visual C++ Runtime - all versions" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Microsoft Visual C++ 2005 (x86) Redistributable" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Microsoft Visual C++ 2005 (x64) Redistributable" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Microsoft Visual C++ 2008 (x86) Redistributable" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Microsoft Visual C++ 2008 (x64) Redistributable" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Microsoft Visual C++ 2010 (x86) Redistributable" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Microsoft Visual C++ 2010 (x64) Redistributable" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Microsoft Visual C++ 2012 (x86) Redistributable" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Microsoft Visual C++ 2012 (x64) Redistributable" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Microsoft Visual C++ 2013 (x86) Redistributable" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Microsoft Visual C++ 2013 (x64) Redistributable" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Microsoft Visual C++ 2015-2022 (x64) Redistributable" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Microsoft Visual C++ 2015-2022  (x86) Redistributable" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="NET Framework All Versions" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="AMD Ryzen Chipset Drivers" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="NVidia Display Driver" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="NVIDIA GeForce" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Msi Afterburner" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="NVIDIA PhysX" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Steam" Tag="Launchers" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Ubisoft Connect" Tag="Launchers" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Origin" Tag="Launchers" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Rockstar Games Launcher" Tag="Launchers" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="GameSave Manager" Tag="Launchers" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="StreamlabsOBS" Tag="Launchers" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="OBS Studio" Tag="Launchers" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Logitech Gaming Software" Tag="Launchers" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Lively Wallpaper" Tag="Launchers" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Playnite" Tag="Launchers" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Driver Easy" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Intel Graphics Windows DCH" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Intel Driver Support Assistant" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Intel Network Adapter" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Snappy Driver Installer" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Driver booster" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Driver Genius" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Display Driver Uninstaller" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Driver Store Explorer" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="1Password" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="MiniTool Partition Wizard" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="AOMEI Partition Assistant Standard" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="AOMEI Backupper" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Recuva recover" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="CCleaner" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="BCUninstaller" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Easy Context Menu" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="HWiNFO" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Speccy" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="FurMark" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Hard Disk Sentinel" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="CPUID CPU-Z" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Mem Reduct" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="HandBrake" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Rufus" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="ImgBurn" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Virtual CloneDrive" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Ultra ISO" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Ventoy" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="iVentoy" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="AutoHotkey" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Rainmeter" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="FxSound" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="HiSuite" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Vysor" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Unified Remote" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="AnyDesk" Tag="File Sharing" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Airdroid" Tag="File Sharing" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="UltraViewer" Tag="File Sharing" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Wireless Network Watcher Portable" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="WifiInfoView" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="qBittorrent" Tag="File Sharing" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Google Earth Pro" Tag="Imaging" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="XAMPP" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Visual Studio Professional 2022" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Visual Studio Community 2022" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Unity Hub" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Godot Engine" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Unity3D Engine" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Blender" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Visual Studio Code" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Vim" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Sublime Text 4" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Atom" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="InnoSetup" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="PyCharm Community Edition" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="PyCharm Professional Edition" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Jetbrains Rider" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Node.js LTS" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Electrum-LTS" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Hugo" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Notepad++" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Windows Terminal" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Powershell core" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="x64dbg Portable" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="dnSpy" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Cheat Engine" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Python" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Git" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="GitHub Desktop" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Docker Desktop" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Docker Compose" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="PowerToys" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Notion" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="FL Studio" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Android Debug Bridge" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Universal ADB Drivers" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Scrcpy" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="VirtualBox" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="oh-my-posh" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Malwarebytes" Tag="Security" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Kaspersky Virus Removal Tool" Tag="Security" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Kaspersky Anti-Virus" Tag="Security" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Avast Free Antivirus" Tag="Security" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Nerd Fonts - CascadiaCode" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Java SE Runtime Environment 8.0.411" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Audacity" Tag="Media" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="MusicBee" Tag="Media" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="FormatFactory" Tag="Media" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Winaero Tweaker" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Windows Subsystem for Linux WSL2" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Wamp Server 3.3.5" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="MongoDB 7.3.2" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="MPC-BE" Tag="Media" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Kdenlive" Tag="Media" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="TablePlus" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Hosts File Editor" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Subtitle Edit" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Skype" Tag="Communication" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="FileZilla" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Everything" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Yarn" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="VMware Workstation Player" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="HDD Low Level Format Tool" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="BlueStacks" Tag="Launchers" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Intel Wireless Bluetooth for Windows 10 and Windows 11" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
-    
-    <CheckBox Content="Office 365 Business" Tag="Microsoft" IsChecked="false" FontWeight="Bold"/>
-    
-                        </ListView>
-                    </TabItem.Content>
-                </TabItem>
-                <TabItem Header="Tweaks" x:Name="tweeksTab" Padding="0" BorderBrush="{x:Null}" Background="{x:Null}">
-                    <TabItem.Content>
-                        <ListView Name="tweaks"  Margin="0" ScrollViewer.VerticalScrollBarVisibility="Auto" BorderBrush="{x:Null}" Background="{x:Null}">
-                            
-    <CheckBox Content="System File Checker"  FontWeight="Bold"/>
-
-    <CheckBox Content="Run Disk cleanup"  FontWeight="Bold"/>
-
-    <CheckBox Content="Restore All Windows Services to Default"  FontWeight="Bold"/>
-
-    <CheckBox Content="Fix Stutter/Lag in Games"  FontWeight="Bold"/>
-
-    <CheckBox Content="Enable the Ultimate Performance Power Plan"  FontWeight="Bold"/>
-
-    <CheckBox Content="Reset the TCP/IP Stack"  FontWeight="Bold"/>
-
-    <CheckBox Content="Setup Auto login"  FontWeight="Bold"/>
-
-    <CheckBox Content="Disable Game Mode"  FontWeight="Bold"/>
-
-    <CheckBox Content="Disable Data Collection"  FontWeight="Bold"/>
-
-    <CheckBox Content="Disable Start menu ads"  FontWeight="Bold"/>
-
-    <CheckBox Content="Disable Windows Web Search"  FontWeight="Bold"/>
-
-    <CheckBox Content="Turn off background apps"  FontWeight="Bold"/>
-
-    <CheckBox Content="Disable suggestions on start menu"  FontWeight="Bold"/>
-
-    <CheckBox Content="Disable the News and interests on taskbar"  FontWeight="Bold"/>
-
-    <CheckBox Content="Show Search icon Only on taskbar"  FontWeight="Bold"/>
-
-    <CheckBox Content="Disable People icon on taskbar"  FontWeight="Bold"/>
-
-    <CheckBox Content="Remove Folder Shortcuts From Windows'' File Explorer"  FontWeight="Bold"/>
-
-    <CheckBox Content="Optimize Services"  FontWeight="Bold"/>
-
-    <CheckBox Content="Remove Unnecessary Windows 10/11 Apps"  FontWeight="Bold"/>
-
-    <CheckBox Content="Disabling Hibernate"  FontWeight="Bold"/>
-
-    <CheckBox Content="Disabling OneDrive"  FontWeight="Bold"/>
-
-                        </ListView>
-                    </TabItem.Content>
-                </TabItem>
-            </TabControl>
-        <!--End TabControl-->
-
-            <!--Main Section-->
-                <Grid  Grid.Row="2" Grid.Column="2"  Grid.RowSpan="2">
-
-                    <StackPanel Orientation="Vertical">
-
-
-                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-
-                            <Grid>
-                                <TextBox Padding="8"
-                                Width="188"
-                                VerticalAlignment="Center"
-                                HorizontalAlignment="Left" 
-                                Text="{Binding Text_searchInput}"
-                                Name="searchInput" 
-                                />
-
-                                <TextBlock IsHitTestVisible="False" 
-                                Text="Search"
-                                VerticalAlignment="Center" 
-                                HorizontalAlignment="Left"
-                                Margin="16,0,0,0"
-                                Foreground="{DynamicResource FGTextColor}">
-
-                                <TextBlock.Style>
-                                        <Style TargetType="{x:Type TextBlock}">
-                                            <Setter Property="Visibility" Value="Collapsed"/>
-                                            <Style.Triggers>
-                                                <DataTrigger Binding="{Binding Text, ElementName=searchInput}" Value="">
-                                                    <Setter Property="Visibility" Value="Visible"/>
-                                                </DataTrigger>
-                                            </Style.Triggers>
-                                        </Style>
-                                    </TextBlock.Style>
-                                </TextBlock>
-                            </Grid>
-                        </StackPanel>
-
-                        <TextBlock Name="itemLink" 
-                            Foreground="{DynamicResource BGButtonColor}" 
-                            Visibility="Hidden" 
-                            TextWrapping="Wrap" 
-                            Text="" 
-                            FontWeight="Bold"
-                            Margin="20,15,15,0" 
-                        />
-
-                        <ScrollViewer VerticalScrollBarVisibility="Auto"
-                            Height="200"
-                            Margin="20,15,15,0" 
-                        >
-                            <TextBlock Name="description" 
-                                Text=""
-                                TextWrapping="Wrap" 
-                                Foreground="{DynamicResource DefaultTextColor}"/>
-                        </ScrollViewer>
-
-                        
-
-                    </StackPanel>
-
-                    <!--Install Button-->
-                        <Button
-                        Name="installBtn"
-                        Content="Install"
-                        FontSize="15"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Bottom"
-                        Width="100" Height="40" Margin="50"/>
-                    <!--End Install Button-->
-
-                    <!--Apply Button-->
-                        <Button
-                        Name="applyBtn"
-                        Content="Apply"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Bottom"
-                        FontSize="15"
-                        Visibility="hidden"
-                        Width="100" Height="40" Margin="50"/>
-                    <!--End Apply Button-->
-
-                </Grid>
-            <!--End Main Section-->
-
-            <!--Footer Section-->
-                <Grid Grid.Row="4">
-                    <TextBlock Name="quotes"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Center" 
-                    Padding="16" TextWrapping="Wrap" 
-                    FlowDirection="RightToLeft"
-                    Text=""
-                    />
-                </Grid>
-            <!--End Footer Section-->
-
-        </Grid>
-        
-    </Window>
-<!--End Window-->
-
-
-'
-#===========================================================================
-#endregion End WPF Window
-#===========================================================================
-
-#===========================================================================
-#region Begin WPF About
-#===========================================================================
-
-$childXaml = '<Window
-  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-  x:Name="Window" Title="About | ITT " WindowStartupLocation = "CenterScreen" 
-  Background="White"
-  WindowStyle="ToolWindow"
-  Height="344" Width="444" FontFamily="Console" MinWidth="444" MinHeight="344" ShowInTaskbar = "True" Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/icon.ico">
-    <Grid>
-
-      <Grid.RowDefinitions>
-        <RowDefinition Height="*"/>
-        <RowDefinition Height="auto"/>
-      </Grid.RowDefinitions>
-
-       <!--Logo-->
-       <Ellipse Margin="25" VerticalAlignment="Top" HorizontalAlignment="Left" Name="about" Width="70" Height="70" ToolTip="Enad Adel">
-        <Ellipse.Fill>
-            <ImageBrush ImageSource="https://raw.githubusercontent.com/emadadel4/ITT/main/logo.png" />
-        </Ellipse.Fill>
-      </Ellipse>
-      <!--End Logo-->
-
-      <StackPanel Grid.Row="0" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
-        <TextBlock Margin="5" TextWrapping="Wrap" FontWeight="Bold" FontSize="30" TextAlignment="Center" Text="ITT"/>
-        <TextBlock Margin="5" TextWrapping="Wrap" FontWeight="Bold" FontSize="15" TextAlignment="Center" Text="Install and Tweak Tool"/>
-        <TextBlock Margin="5" TextWrapping="Wrap" Text="Developer Emad Adel" TextAlignment="Center"/>
-        <TextBlock Margin="5" Name="ver" TextWrapping="Wrap" TextAlignment="Center" Text="2024/4/21"/>
-      </StackPanel>
-
-      <StackPanel Margin="25" Grid.Row="1" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
-
-        <TextBlock Margin="25" Name="sourcecode" Cursor="Hand" TextAlignment="Center" Text="Source code"/>
-        <StackPanel Orientation="Horizontal">
-        <TextBlock Name="website" Margin="10" Cursor="Hand"  Text="EProjects"/>
-        <TextBlock Name="telegram" Margin="10" Cursor="Hand"  Text="Telegram"/>
-        <TextBlock Name="github" Margin="10" Cursor="Hand"  Text="Github"/>
-        </StackPanel>
-      </StackPanel>
-    </Grid>
-  </Window>
-'
-#===========================================================================
-#endregion End WPF About
-#===========================================================================
-
-#===========================================================================
-#region Begin loadXmal
-#===========================================================================
-
-# Set the maximum number of threads for the RunspacePool to the number of threads on the machine
-$maxthreads = [int]$env:NUMBER_OF_PROCESSORS
-
-# Create a new session state for parsing variables into our runspace
-$hashVars = New-object System.Management.Automation.Runspaces.SessionStateVariableEntry -ArgumentList 'sync',$sync,$Null
-$InitialSessionState = [System.Management.Automation.Runspaces.InitialSessionState]::CreateDefault()
-
-# Add the variable to the session state
-$InitialSessionState.Variables.Add($hashVars)
-
-# Create the runspace pool
-$sync.runspace = [runspacefactory]::CreateRunspacePool(
-    1,                      # Minimum thread count
-    $maxthreads,            # Maximum thread count
-    $InitialSessionState,   # Initial session state
-    $Host                   # Machine to create runspaces on
-)
-
-# Open the RunspacePool instance
-$sync.runspace.Open()
-
-[void][System.Reflection.Assembly]::LoadWithPartialName('presentationframework')
-[xml]$XAML = $inputXML
-
-# Read the XAML file
-$reader = (New-Object System.Xml.XmlNodeReader $xaml)
-try { 
-    
-    $sync["window"] = [Windows.Markup.XamlReader]::Load( $reader )
-    
-    # Check if the registry key exists
-    if (-not (Test-Path $sync.registryPath))
-    {
-        New-Item -Path "HKCU:\Software\ITTEmadadel" -Force *> $null
-        Set-ItemProperty -Path "HKCU:\Software\ITTEmadadel" -Name "DarkMode" -Value "false" -Force 
-    }
-
-    $sync.isDarkMode = (Get-ItemProperty -Path "HKCU:\Software\ITTEmadadel" -Name "DarkMode").DarkMode
-    
-    # Check if $themeValue is equal to "true"
-    if ($sync.isDarkMode -eq "true")
-    {
-        $sync['window'].Resources.MergedDictionaries.Add($sync['window'].FindResource("Dark"))
-
-    } else {
-        $sync['window'].Resources.MergedDictionaries.Add($sync['window'].FindResource("Light"))
-    }
-
- }
-catch [System.Management.Automation.MethodInvocationException] {
-    Write-Warning "We ran into a problem with the XAML code.  Check the syntax for this control..."
-    Write-Host $error[0].Exception.Message -ForegroundColor Red
-    If ($error[0].Exception.Message -like "*button*") {
-        write-warning "Ensure your &lt;button in the `$inputXML does NOT have a Click=ButtonClick property.  PS can't handle this`n`n`n`n"
-    }
-}
-catch {
-    Write-Host "Unable to load Windows.Markup.XamlReader. Double-check syntax and ensure .net is installed."
-}
-
-# Select all elements with a Name attribute using XPath and iterate over them
-$xaml.SelectNodes("//*[@Name]") | ForEach-Object {
-    # Assign each element to a variable in $sync dictionary
-    $sync[$($_.Name)] = $sync["window"].FindName($_.Name)
-}
-
-# Iterate over keys in $sync dictionary
-$sync.Keys | ForEach-Object {
-    $element = $sync[$_]
-
-    # Check if the element exists
-    if ($element) {
-
-        # Check if the element is a Button
-        if ($element.GetType().Name -eq "Button") {
-            # Add a click event handler to the button
-
-            $element.Add_Click({
-                param([System.Object]$s)
-                Invoke-Button $s.Name
-            })
-        }
-
-        # Check if the element is a MenuItem
-        if ($element.GetType().Name -eq "MenuItem") {
-            # Add a click event handler to the MenuItem
-
-            $element.Add_Click({
-                param([System.Object]$s)
-                Invoke-Button $s.Name
-            })
-        }
-
-        # Check if the element is a TextBox
-        if ($element.GetType().Name -eq "TextBox") {
-
-            $element.Add_TextChanged({
-                param([System.Object]$s)
-                Invoke-Button $s.Name
-            })
-
-            $element.Add_GotFocus({
-                param([System.Object]$s)
-                Invoke-Button $s.Name
-            })
-        }
-
-        # Check if the element is a Ellipse
-        if ($element.GetType().Name -eq "Ellipse") {
-                # Add a click event handler to the Ellipse
-    
-                $element.add_MouseLeftButtonDown({
-                    param([System.Object]$s)
-                    Invoke-Button $s.Name
-                })
-        }
-
-        # Check if the element is a ComboBox
-        if ($element.GetType().Name -eq "ComboBox") {
-            # Add a click event handler to the ComboBox
-
-            $element.add_SelectionChanged({
-                param([System.Object]$s)
-                Invoke-Button $s.Name
-            })
-        }
-
-        # Check if the element is a TabControl
-        if ($element.GetType().Name -eq "TabControl") {
-            # Add a click event handler to the TabControl
-
-            $element.add_SelectionChanged({
-                param([System.Object]$s)
-                Invoke-Button $s.Name
-            })
-        }
-    }
-}
-
-# Catch controls
-$sync.AppsListView = $sync['window'].FindName("list")
-$sync.Description = $sync['window'].FindName("description")
-$sync.Quotes = $sync['window'].FindName("quotes")
-$sync.TweaksListView = $sync['window'].FindName("tweaks")
-$sync.itemLink = $sync['window'].FindName('itemLink')
-$sync.installBtn = $sync['window'].FindName('installBtn') 
-$sync.applyBtn = $sync['window'].FindName('applyBtn') 
-$sync.category = $sync['window'].FindName('category')
-$sync.searchInput = $sync['window'].FindName('searchInput')
-
-#===========================================================================
-#endregion End loadXmal
-#===========================================================================
-
-#===========================================================================
-#region Begin Loops
-#===========================================================================
-
-# Define a function to update the description and link when an item is selected
-function UpdateDescriptionAndLink {
-    # Get the name of the selected application from the list
-    $selectedAppName = $sync.AppsListView.SelectedItem.Content
-
-    $sync.itemLink.Visibility = "Visible"
-
-    # Loop through the list of applications in the database and find the matching one
-    foreach ($app in $sync.database.Applications) {
-
-        if ($app.name -eq $selectedAppName) {
-
-            # Update the description text block with the selected application's description
-            $sync.Description.Text = $app.description
-            # Update the link text block with the selected application's official website link
-            $sync.itemLink.Text = "$($app.name) official website"
-            break
-        }
-    }
-}
-
-# Define a function to open the official website of the selected application
-function OpenOfficialWebsite {
-    # Get the name of the selected application from the list
-    $selectedAppName =  $sync.AppsListView.SelectedItem.Content
-
-    # Loop through the list of applications in the database and find the matching one
-    foreach ($app in $sync.database.Applications) {
-        if ($selectedAppName -eq $app.name) {
-            # Open the official website of the selected application in the default web browser
-            Start-Process ("https://duckduckgo.com/?hps=1&q=%5C" + $app.name)
-            break
-        }
-    }
-}
-
-# Add event handlers
-$sync.AppsListView.add_Loaded({
-    
-    # Add a selection changed event handler to the list control
-    $sync.AppsListView.Add_SelectionChanged({
-        UpdateDescriptionAndLink
-    })
-
-})
-
-    # Add a mouse left button down event handler to the itemLink control
-    $sync.itemLink.add_MouseLeftButtonDown({
-        OpenOfficialWebsite
-    })
-
-
-    $sync.AppsListView.add_LostFocus({
-
-        $sync.AppsListView.SelectedItem = $null
-        $sync.itemLink.Visibility = "Hidden"
-        $sync.Description.Text = ""
-
-    })
-
-# Add loaded event handler
-$sync.TweaksListView.add_Loaded({
-   
-    # Add selection changed event handler
-    $sync.TweaksListView.Add_SelectionChanged({
-
-        $selectedItem = $sync.TweaksListView.SelectedItem.Content
-        foreach ($data in $sync.database.Tweaks) {
-
-            if ($data.name -eq $selectedItem) {
-
-                $sync.Description.Text = $data.description
-                $sync.itemLink.Visibility = if ($data.repo -ne "null") { "Hidden" } else { "Hidden" }
-                break
-            }
-        }
-    })
-
-})
-
-# Add mouse left button down event handler for item link
-$sync.itemLink.add_MouseLeftButtonDown({
-
-    $selectedItem = $sync.TweaksListView.SelectedItem.Content
-
-    foreach ($data in $sync.database.Tweaks) {
-        if ($selectedItem -eq $data.name -and $data.repo -ne "null") {
-            Start-Process $data.repo
-            break
-        }
-    }
-})
-
-
-$sync.TweaksListView.add_LostFocus({
-
-    $sync.TweaksListView.SelectedItem = $null
-    $sync.itemLink.Visibility = "Hidden"
-    $sync.Description.Text = ""
-})
-
-#===========================================================================
-#endregion End Loops
 #===========================================================================
 
 #===========================================================================

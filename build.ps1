@@ -1,12 +1,13 @@
 param (
     [string]$OutputScript = "itt.ps1",
-    [string]$StartScript = ".\Scripts\start.ps1",
-    [string]$FunctionsDirectory = ".\Scripts\Functions",
-    [string]$DatabaseDirectory = ".\Database",
-    [string]$InterfaceDirectory = ".\interface",
-    [string]$LoopsDirectory = ".\loops",
-    [string]$LoadXamlScript = ".\scripts\loadXmal.ps1",
-    [string]$MainScript = ".\scripts\main.ps1"
+    [string]$Assets = ".\Assets",
+    [string]$Controls = ".\Controls",
+    [string]$DatabaseDirectory = ".\Assets\Database",
+    [string]$StartScript = ".\initiation\start.ps1",
+    [string]$MainScript = ".\initiation\main.ps1",
+    [string]$ScritsDirectory = ".\Scripts",
+    [string]$windows = ".\windows",
+    [string]$LoadXamlScript = ".\windows\loadXmal.ps1"
 )
 
 # Initialize synchronized hashtable
@@ -18,8 +19,18 @@ function WriteToScript {
     param (
         [string]$Content
     )
-    Add-Content -Path $OutputScript -Value $Content
+    $streamWriter = $null
+    try {
+        $streamWriter = [System.IO.StreamWriter]::new($OutputScript, $true)
+        $streamWriter.WriteLine($Content)
+    }
+    finally {
+        if ($null -ne $streamWriter) {
+            $streamWriter.Dispose()
+        }
+    }
 }
+
 
 # Function to Replace placeholder
 function ReplaceTextInFile {
@@ -53,16 +64,58 @@ function ProcessDirectory {
     param (
         [string]$Directory
     )
+    
     Get-ChildItem $Directory -Recurse -File | ForEach-Object {
-        AddFileContentToScript -FilePath $_.FullName
+        if ($_.DirectoryName -ne $Directory) {
+            AddFileContentToScript -FilePath $_.FullName
+        }
     }
 }
 
-# Main script generation
-try {
-    if (Test-Path -Path $OutputScript) {
-        Remove-Item -Path $OutputScript -Force
+
+function GenerateCheckboxes {
+    param (
+        [array]$Items,
+        [string]$ContentField,
+        [string]$TagField = "",
+        [string]$IsCheckedField = ""
+    )
+
+    $Checkboxes = ""
+    foreach ($Item in $Items) {
+        
+        $Content = $Item.$ContentField
+
+        $Tag = if ($TagField) { "Tag=`"$($Item.$TagField)`"" } else { "" }
+
+        $IsChecked = if ($IsCheckedField) { "IsChecked=`"$($Item.$IsCheckedField)`"" } else { "" }
+
+        $Checkboxes += @"
+
+            <CheckBox Content="$Content" $Tag $IsChecked FontWeight="Bold"/>
+
+"@
     }
+    return $Checkboxes
+}
+
+function Sync-JsonFiles {
+    param (
+        [Parameter(Mandatory = $true)]
+        [string]$DatabaseDirectory,
+        [Parameter(Mandatory = $true)]
+        [string]$OutputScriptPath
+    )
+
+    Get-ChildItem $DatabaseDirectory | Where-Object {$_.extension -eq ".json"} | ForEach-Object {
+        $json = (Get-Content $_.FullName -Raw).replace("'", "''")
+        $sync.database.$($_.BaseName) = $json | ConvertFrom-Json
+        Write-Output "`$sync.database.$($_.BaseName) = '$json' | ConvertFrom-Json" | Out-File $OutputScriptPath -Append -Encoding default
+    }
+}
+
+
+function WriteHeader {
 
     # Write script header
     WriteToScript -Content @"
@@ -79,9 +132,20 @@ try {
 #                          https://t.me/emadadel4                                 #  
 #                                                                                 #
 ###################################################################################
-
 "@
 
+    
+}
+
+# Main script generation
+try {
+
+
+    if (Test-Path -Path $OutputScript) {
+        Remove-Item -Path $OutputScript -Force
+    }
+
+    WriteHeader
 
     WriteToScript -Content @"
 
@@ -109,11 +173,7 @@ try {
 
 "@
 
-    Get-ChildItem .\Database | Where-Object {$psitem.extension -eq ".json"} | ForEach-Object {
-        $json = (Get-Content $psitem.FullName -Raw).replace("'", "''")
-        $sync.database.$($psitem.BaseName) = $json | ConvertFrom-Json
-        Write-output "`$sync.database.$($psitem.BaseName) = '$json' `| ConvertFrom-Json" | Out-File ./itt.ps1 -Append -Encoding default
-    }
+    Sync-JsonFiles -DatabaseDirectory $DatabaseDirectory -OutputScriptPath $OutputScript
 
     WriteToScript -Content @"
 #===========================================================================
@@ -123,23 +183,6 @@ try {
 "@
 
 WriteToScript -Content @"
-
-#===========================================================================
-#region Begin Functions
-#===========================================================================
-
-"@
-
-    ProcessDirectory -Directory $FunctionsDirectory
-
-    WriteToScript -Content @"
-#===========================================================================
-#endregion End Functions
-#===========================================================================
-
-"@
-
-    WriteToScript -Content @"
 #===========================================================================
 #region Begin WPF Window
 #===========================================================================
@@ -148,44 +191,32 @@ WriteToScript -Content @"
 
     # Define file paths
     $FilePaths = @{
-        "Xaml" = Join-Path -Path $InterfaceDirectory -ChildPath "window.xaml"
-        "AppXaml" = Join-Path -Path $InterfaceDirectory -ChildPath "Controls/taps.xaml"
-        "Style" = Join-Path -Path $InterfaceDirectory -ChildPath "Themes/style.xaml"
-        "Colors" = Join-Path -Path $InterfaceDirectory -ChildPath "Themes/colors.xaml"
+        "Xaml"    = Join-Path -Path $windows -ChildPath "window.xaml"
+        "AppXaml" = Join-Path -Path $Controls -ChildPath "taps.xaml"
+        "Style"   = Join-Path -Path $Assets -ChildPath "Styles/Styles.xaml"
+        "Colors"  = Join-Path -Path $Assets -ChildPath "Styles/Colors.xaml"
     }
 
     # Read and replace placeholders in XAML content
     try {
-        $XamlContent = (Get-Content -Path $FilePaths["Xaml"] -Raw) -replace "'", "''"
-        $AppXamlContent = Get-Content -Path $FilePaths["AppXaml"] -Raw
-        $StyleContent = Get-Content -Path $FilePaths["Style"] -Raw
-        $ColorsContent = Get-Content -Path $FilePaths["Colors"] -Raw
+        # Read content from files
+        $XamlContent     = (Get-Content -Path $FilePaths["Xaml"] -Raw) -replace "'", "''"
+        $AppXamlContent  = Get-Content -Path $FilePaths["AppXaml"] -Raw
+        $StyleContent    = Get-Content -Path $FilePaths["Style"] -Raw
+        $ColorsContent   = Get-Content -Path $FilePaths["Colors"] -Raw
 
-        $XamlContent = $XamlContent -replace "{{Taps}}",
-        $AppXamlContent -replace "{{Style}}",
-        $StyleContent -replace "{{Colors}}", $ColorsContent
+        # Replace placeholders with actual content
+        $XamlContent = $XamlContent -replace "{{Taps}}", $AppXamlContent
+        $XamlContent = $XamlContent -replace "{{Style}}", $StyleContent
+        $XamlContent = $XamlContent -replace "{{Colors}}", $ColorsContent
 
     } catch {
-        Write-Error "Error: $($_.Exception.Message)"
+        Write-Error "An error occurred while processing the XAML content: $($_.Exception.Message)"
     }
    
-    $AppsCheckboxes  = ""
-    foreach ($App  in $sync.database.Applications) {
-        $AppsCheckboxes += @"
+    $AppsCheckboxes = GenerateCheckboxes -Items $sync.database.Applications -ContentField "Name" -TagField "category" -IsCheckedField "check"
+    $TweaksCheckboxes = GenerateCheckboxes -Items $sync.database.Tweaks -ContentField "Name"
 
-    <CheckBox Content="$($App.Name)" Tag="$($App.category)" IsChecked="$($App.check)" FontWeight="Bold"/>
-    
-"@
-    }
-
-    $TweaksCheckboxes  = ""
-    foreach ($Tweak  in $sync.database.Tweaks) {
-        $TweaksCheckboxes  += @"
-
-    <CheckBox Content="$($Tweak.Name)"  FontWeight="Bold"/>
-
-"@
-}
 
     $XamlContent = $XamlContent -replace "{{Apps}}", $AppsCheckboxes 
     $XamlContent = $XamlContent -replace "{{Tweaks}}", $TweaksCheckboxes 
@@ -207,7 +238,8 @@ WriteToScript -Content @"
 
     # Define file paths
     $FilePaths = @{
-        "about" = Join-Path -Path $InterfaceDirectory -ChildPath "about.xaml"
+        
+        "about" = Join-Path -Path $windows -ChildPath "about.xaml"
     }
 
     # Read and replace placeholders in XAML content
@@ -245,19 +277,19 @@ WriteToScript -Content @"
 
 "@
 
-    # Write Loops section
-    WriteToScript -Content @"
+WriteToScript -Content @"
+
 #===========================================================================
-#region Begin Loops
+#region Begin Functions
 #===========================================================================
 
 "@
 
-    ProcessDirectory -Directory $LoopsDirectory
+    ProcessDirectory -Directory $ScritsDirectory
 
     WriteToScript -Content @"
 #===========================================================================
-#endregion End Loops
+#endregion End Functions
 #===========================================================================
 
 "@
