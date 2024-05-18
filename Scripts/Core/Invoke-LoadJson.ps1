@@ -31,6 +31,7 @@ function LoadJson {
         }
 
 
+        $sync['window'].FindName('apps').IsSelected = $true
         $sync['window'].FindName('list').Clear()
         $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync['window'].FindName('list').Items)
         $collectionView.Filter = $filterPredicate
