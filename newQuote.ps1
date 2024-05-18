@@ -1,7 +1,7 @@
 try {
     Clear-Host
     # Read existing JSON file
-    $jsonFilePath = "./Database/Quotes.json"
+    $jsonFilePath = "./Assets/Database/Quotes.json"
     $existingData = Get-Content $jsonFilePath -Raw -ErrorAction Stop | ConvertFrom-Json
 
     # Prompt for input

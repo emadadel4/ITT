@@ -299,7 +299,7 @@ $jsonString = @"
 "@
 
 # Read existing JSON file
-$existingJson = Get-Content -Path "./Database/Tweaks.json" -Raw | ConvertFrom-Json -ErrorAction SilentlyContinue
+$existingJson = Get-Content -Path "./Assets/Database/Tweaks.json" -Raw | ConvertFrom-Json -ErrorAction SilentlyContinue
 if (!$existingJson) {
     $existingJson = @()
 }
@@ -311,7 +311,7 @@ $existingJson += $jsonString | ConvertFrom-Json
 $updatedJson = $existingJson | ConvertTo-Json -Depth 100
 
 # Output to file
-$updatedJson | Out-File -FilePath "./Database/Tweaks.json" -Encoding utf8
+$updatedJson | Out-File -FilePath "./Assets/Database/Tweaks.json" -Encoding utf8
 
 Write-Host "Added successfully, Don't forget to build and test it before commit" -ForegroundColor Green 
 
