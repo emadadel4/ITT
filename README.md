@@ -9,7 +9,7 @@
 
 
 <center>
-<a target="_blank" rel="noopener noreferrer" href="https://github.com/emadadel4/ITT/blob/main/demo.PNG"><img src="https://github.com/emadadel4/ITT/blob/main/demo.PNG" alt="screen-install" style="max-width: 100%;"></a>
+<a target="_blank" rel="noopener noreferrer" href="https://github.com/emadadel4/ITT/edit/main/Assets/Images/demo.PNG"><img src="https://github.com/emadadel4/ITT/edit/main/Assets/Images/demo.PNG" alt="screen-install" style="max-width: 100%;"></a>
 </center>
 
 ## Overview
