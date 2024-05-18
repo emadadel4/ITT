@@ -25,7 +25,7 @@ Add-Type -AssemblyName System.Windows.Forms
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "18-05-2024 (05:04 AM)"
+$sync.version = "18-05-2024 (05:07 AM)"
 $sync.github =   "https://github.com/emadadel4"
 $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://eprojects.orgfree.com"
@@ -3412,7 +3412,7 @@ $InitialSessionState.Variables.Add($hashVars)
 
 # Create the runspace pool
 $sync.runspace = [runspacefactory]::CreateRunspacePool(
-    2,                      # thread count
+    1,                      # thread count
     $maxthreads,            # thread count
     $InitialSessionState,   # session state
     $Host                   # create runspaces on
