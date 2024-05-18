@@ -95,7 +95,7 @@
                                 <ComboBox SelectedIndex="0"  Margin="25,0,0,0" Name="category" HorizontalAlignment="Center" VerticalAlignment="Center" Width="155" Height="Auto">
                                     <ComboBoxItem Content="All"></ComboBoxItem>
                                     <ComboBoxItem Content="Drivers"></ComboBoxItem>
-                                    <ComboBoxItem Content="Media"></ComboBoxItem>
+                                    <ComboBoxItem Content="Media"></ComboBoxItem> 
                                     <ComboBoxItem Content="Browsers"></ComboBoxItem>
                                     <ComboBoxItem Content="Documents"></ComboBoxItem>
                                     <ComboBoxItem Content="Compression"></ComboBoxItem>
