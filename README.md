@@ -43,7 +43,7 @@ irm https://raw.githubusercontent.com/emadadel4/ITT/main/itt.ps1 | iex
 <ul>
   <li><p dir="auto"><strong>Powershell 7 (Recommended) for build</strong></p></li>
   <li><p dir="auto"><strong>Fork the repo</strong></p></li>
-  <li>Open ITT directory in Powershell and choose what you will add</li>
+  <li><p dir="auto"><strong>Open ITT directory in Powershell and choose what you will add</strong></p></li>
 </ul> 
   
 **Use this Command to add new App**
