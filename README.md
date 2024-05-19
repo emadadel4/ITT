@@ -43,7 +43,7 @@ irm https://raw.githubusercontent.com/emadadel4/ITT/main/itt.ps1 | iex
 
 
 <p dir="auto"><strong>Fork the repo</strong>
-    Open itt directory in powershell and choose what you will added
+    Open itt directory in powershell and choose what you will add
 </p>
 
 **Use this Command to add new App**
