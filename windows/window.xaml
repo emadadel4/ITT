@@ -34,7 +34,10 @@
 
                     <Menu Grid.Row="0" Grid.ColumnSpan="3" Background="Transparent" BorderBrush="Transparent" BorderThickness="0">
                         
-                        <MenuItem Header="Computer Managment" BorderBrush="Transparent"  FontWeight="Bold" BorderThickness="0">
+                        <MenuItem Header="Computer Managment" BorderBrush="Transparent" BorderThickness="0">
+                            <MenuItem.Icon>
+                                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                            </MenuItem.Icon>
                             <MenuItem Name="sysinfo" Header="System Info"/>
                             <MenuItem Name="poweroption" Header="Power Options"/>
                             <MenuItem Name="deviceManager" Header="Device Manager"/>
@@ -43,55 +46,84 @@
                             <MenuItem Name="appsfeatures" Header="Apps-Features"/>
                             <MenuItem Name="taskmgr" Header="Task Manager"/>
                             <MenuItem Name="diskmgmt" Header="Disk Managment"/>
+
+                            
                         </MenuItem>
 
-                        <MenuItem Header="Preferences" BorderBrush="Transparent"  FontWeight="Bold" BorderThickness="0">
-                            <MenuItem Name="save" Header="Save Selected apps"/>
-                            <MenuItem Name="load" Header="Load Apps"/>
+                        <MenuItem Header="Preferences" BorderBrush="Transparent" BorderThickness="0">
+                            <MenuItem.Icon>
+                                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                            </MenuItem.Icon>
+
+                            <MenuItem Name="save" Header="Save Selected apps">
+                                <MenuItem.Icon>
+                                    <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <MenuItem Name="load" Header="Load Apps">
+                                <MenuItem.Icon>
+                                    <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                                </MenuItem.Icon>
+                            </MenuItem>
 
                             <MenuItem Header="Dark Mode">
+                                <MenuItem.Icon>
+                                    <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                                </MenuItem.Icon>
                                 <MenuItem Name="darkOn" Header="On"/>
                                 <MenuItem Name="darkOff" Header="Off"/>
                             </MenuItem>
 
                             <MenuItem Header="Music">
+                                <MenuItem.Icon>
+                                    <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                                </MenuItem.Icon>
                                 <MenuItem Name="moff" Header="Mute"/>
                                 <MenuItem Name="mon" Header="Unmute"/>
                             </MenuItem>
-                            <MenuItem Name="ittshortcut" Header="Create Shortcut"/>
+                            <MenuItem Name="ittshortcut" Header="Create Shortcut">
+                                <MenuItem.Icon>
+                                    <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                                </MenuItem.Icon>
+                            </MenuItem>
                         </MenuItem>
+                        
 
-
-                        <MenuItem Header="Mirror Links" BorderBrush="Transparent" FontWeight="Bold" BorderThickness="0">
+                        <MenuItem Header="Mirror Links" BorderThickness="0">
+                            <MenuItem.Icon>
+                                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                            </MenuItem.Icon>
                             <MenuItem Name="mas" Header="Microsoft Activation Scripts (MAS)"/>
                             <MenuItem Name="idm" Header="IDM Activation"/>
 
                             <MenuItem Header="Browsers Extensions">
                                 <MenuItem Name="uBlock" Header="uBlock Origin"/>
                                 <MenuItem Name="unhook" Header="Unhook: Customize youtube"/>
-
                                 <MenuItem Name="neat" Header="Neat Download Manager"/>
-                                
                             </MenuItem>
                         </MenuItem>
 
                         
-                        <MenuItem Name="dev" Header="About" BorderBrush="Transparent" FontWeight="Bold" BorderThickness="1" />
+                        <MenuItem Name="dev" Header="About" BorderBrush="Transparent" BorderThickness="1">
+                            <MenuItem.Icon>
+                                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                            </MenuItem.Icon>
+                        </MenuItem>
 
                     </Menu>
 
-                        <StackPanel Margin="15" Orientation="Horizontal" HorizontalAlignment="Left"  VerticalAlignment="Center" Grid.Row="1" Grid.ColumnSpan="3" >
+
+                    <StackPanel Margin="15" Orientation="Horizontal" Grid.Row="1" Grid.ColumnSpan="2" >
 
                                 <!--Logo-->
-                                    <Ellipse Name="about" Width="80" Height="80" Cursor="Hand" ToolTip="Enad Adel">
-                                        <Ellipse.Fill>
-                                            <ImageBrush ImageSource="https://raw.githubusercontent.com/emadadel4/ITT/main/Assets/Images/logo.png" />
-                                        </Ellipse.Fill>
-                                    </Ellipse>
-
+                                <Ellipse Name="about" Width="80" Height="80" Cursor="Hand" ToolTip="Enad Adel">
+                                    <Ellipse.Fill>
+                                        <ImageBrush ImageSource="https://raw.githubusercontent.com/emadadel4/ITT/main/Assets/Images/logo.png" />
+                                    </Ellipse.Fill>
+                                </Ellipse>
                                 <!--End Logo-->
 
-                            <!--Catagory Section-->
+                                <!--Catagory Section-->
                                 <ComboBox SelectedIndex="0"  Margin="25,0,0,0" Name="category" HorizontalAlignment="Center" VerticalAlignment="Center" Width="155" Height="Auto">
                                     <ComboBoxItem Content="All"></ComboBoxItem>
                                     <ComboBoxItem Content="Drivers"></ComboBoxItem>
@@ -110,7 +142,15 @@
                                 </ComboBox>
                             <!--End Catagory Section-->
 
-                        </StackPanel>
+                        
+
+                        
+                            
+                    
+
+
+                    </StackPanel>
+
 
             <!--End Header Section-->
 
@@ -134,7 +174,8 @@
                                 />
 
                                 <TextBlock IsHitTestVisible="False" 
-                                Text="Search"
+                                Text=""
+                                FontFamily="Segoe MDL2 Assets" 
                                 VerticalAlignment="Center" 
                                 HorizontalAlignment="Left"
                                 Margin="16,0,0,0"
