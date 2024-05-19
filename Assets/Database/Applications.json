@@ -1,9 +1,19 @@
 [
   {
-    "Name": "Thorium",
+    "Name": "Thorium SSE3",
     "Description": "A web browser designed for smooth and secure browsing experiences.",
-    "winget": "Alex313031.Thorium",
-    "choco": "thorium",
+    "winget": "none",
+    "choco": "thorium --params /SSE3",
+    "scoop": "none",
+    "url": "none",
+    "category": "Browsers",
+    "check": "false"
+  },
+  {
+    "Name": "Thorium AVX",
+    "Description": "A web browser designed for smooth and secure browsing experiences.",
+    "winget": "none",
+    "choco": "thorium --params /AVX",
     "scoop": "none",
     "url": "none",
     "category": "Browsers",
@@ -93,10 +103,10 @@
   {
     "Name": "Neat Download Manager",
     "Description": "Free download Manager",
-    "winget": "Tonec.InternetDownloadManager",
+    "winget": "JavadMotallebi.NeatDownloadManager",
     "choco": "none",
     "scoop": "none",
-    "url": "https://www.neatdownloadmanager.com/file/NeatDM_setup.exe",
+    "url": "none",
     "category": "Browsers",
     "check": "false"
   },
@@ -527,10 +537,10 @@
     "check": "false"
   },
   {
-    "Name": "NVIDIA GeForce",
+    "Name": "NVIDIA GeForce Experience",
     "Description": "A cloud-based gaming service provided by NVIDIA that allows users to play video games on supported devices via a remote gaming PC hosted on NVIDIA's servers.",
-    "winget": "Nvidia.GeForceNow",
-    "choco": "nvidia-geforce-now",
+    "winget": "Nvidia.GeForceExperience",
+    "choco": "none",
     "scoop": "none",
     "url": "none",
     "category": "Drivers",
@@ -729,8 +739,8 @@
   {
     "Name": "Display Driver Uninstaller",
     "Description": "Utility to completely remove system drivers",
-    "winget": "#",
-    "choco": "ddu",
+    "winget": "Wagnardsoft.DisplayDriverUninstaller",
+    "choco": "none",
     "scoop": "none",
     "url": "none",
     "category": "Drivers",
@@ -1003,7 +1013,7 @@
   {
     "Name": "Vysor",
     "Description": "A screen mirroring and remote control software that enables users to view and control Android devices from Windows PCs, allowing for easy screen sharing, app testing, and troubleshooting.",
-    "winget": "#",
+    "winget": "Vysor.Vysor",
     "choco": "vysor",
     "scoop": "none",
     "url": "none",
@@ -1452,7 +1462,7 @@
     "check": "false"
   },
   {
-    "Name": "oh-my-posh",
+    "Name": "Oh My Posh",
     "Description": " Oh my Posh is a custom prompt engine for any shell that has the ability to adjust the prompt string with a function or variable.",
     "winget": "#",
     "choco": "oh-my-posh",
@@ -1729,6 +1739,86 @@
     "scoop": "none",
     "url": "none",
     "category": "Microsoft",
+    "check": "false"
+  },
+  {
+    "Name": "Bandicam",
+    "Description": "Video Capture Desktop",
+    "winget": "BandicamCompany.Bandicam",
+    "choco": "none",
+    "scoop": "none",
+    "url": "none",
+    "category": "Imaging",
+    "check": "false"
+  },
+  {
+    "Name": "QQPlayer",
+    "Description": "QQPlayer media player",
+    "winget": "Tencent.QQPlayer",
+    "choco": "none",
+    "scoop": "none",
+    "url": "none",
+    "category": "Media",
+    "check": "false"
+  },
+  {
+    "Name": "4K Video Downloader",
+    "Description": "4K Video Downloader allows downloading videos, playlists, channels and subtitles from YouTube, Facebook, Vimeo and other video sites in high quality.",
+    "winget": "none",
+    "choco": "4k-video-downloader",
+    "scoop": "none",
+    "url": "none",
+    "category": "Utilities",
+    "check": "false"
+  },
+  {
+    "Name": "Active@ Partition Recovery",
+    "Description": "Active@ Partition Recovery is a freeware toolkit that helps to recover deleted and damaged logical drives and partitions within Windows, WinPE (recovery boot disk) and Linux (recovery LiveCD) environments.",
+    "winget": "LSoftTechnologies.ActivePartitionRecovery",
+    "choco": "none",
+    "scoop": "none",
+    "url": "none",
+    "category": "Utilities",
+    "check": "false"
+  },
+  {
+    "Name": "FL Studio",
+    "Description": "FL Studio is a digital audio workstation developed by the Belgian company Image-Line. It features a graphical user interface with a pattern-based music sequencer.",
+    "winget": "ImageLine.FLStudio",
+    "choco": "none",
+    "scoop": "none",
+    "url": "none",
+    "category": "Developer",
+    "check": "false"
+  },
+  {
+    "Name": "HiSuite",
+    "Description": "HUAWEI HiSuite is the official Android Smart Device Manager tool,HiSuite helps users to connect their HUAWEI smartphones and tablets to PC",
+    "winget": "Huawei.HiSuite",
+    "choco": "none",
+    "scoop": "none",
+    "url": "none",
+    "category": "Utilities",
+    "check": "false"
+  },
+  {
+    "Name": "Android Studio",
+    "Description": "Android Studio is the official integrated development environment for Google's Android operating system, built on JetBrains IntelliJ IDEA software and designed specifically for Android development",
+    "winget": "none",
+    "choco": "androidstudio",
+    "scoop": "none",
+    "url": "none",
+    "category": "Developer",
+    "check": "false"
+  },
+  {
+    "Name": "WhatsApp",
+    "Description": "WhatsApp is an instant messaging and voice-over-IP service owned by technology conglomerate Meta. It allows users to send text, voice messages and video messages, make voice and video calls, and share images, documents, user",
+    "winget": "WhatsApp.WhatsApp",
+    "choco": "none",
+    "scoop": "none",
+    "url": "none",
+    "category": "Communication",
     "check": "false"
   }
 ]
