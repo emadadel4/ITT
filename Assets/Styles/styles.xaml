@@ -71,40 +71,45 @@
 <!--End Menu Style-->
 
 <!--MenuItem Style-->
-  <Style TargetType="MenuItem">
-      <Setter Property="Background" Value="{DynamicResource BGColor}"/>
-      <Setter Property="Foreground" Value="{DynamicResource DefaultTextColor}"/>
-      <Setter Property="OverridesDefaultStyle" Value="True"/>
-      <Setter Property="Template">
-          <Setter.Value>
-              <ControlTemplate TargetType="MenuItem">
-                  <Border Background="{DynamicResource BGColor}"
-                    BorderBrush="WhiteSmoke"
-                    BorderThickness="0"> <!-- Set BorderThickness to 0 -->
-                      <Grid>
-                          <ContentPresenter Content="{TemplateBinding Header}"
-                                          Margin="5"/>
-                          <Popup IsOpen="{Binding IsSubmenuOpen, RelativeSource={RelativeSource TemplatedParent}}"
-                              AllowsTransparency="True"
-                              Focusable="True"
-                              PopupAnimation="None">
-                              <Border Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"
-                                      BorderThickness="15"> <!-- Set BorderThickness to 0 -->
-                                  <ScrollViewer CanContentScroll="True"
-                                              Style="{DynamicResource {ComponentResourceKey ResourceId=MenuScrollViewer, TypeInTargetAssembly={x:Type FrameworkElement}}}">
-                                      <ItemsPresenter Margin="0"/>
-                                  </ScrollViewer>
-                              </Border>
-                        
-                          </Popup>
-                      </Grid>
-                  </Border>
-              </ControlTemplate>
-          </Setter.Value>
-      </Setter>
+<Style TargetType="MenuItem">
+    <Setter Property="Background" Value="{DynamicResource BGColor}"/>
+    <Setter Property="Foreground" Value="{DynamicResource DefaultTextColor}"/>
+    <Setter Property="OverridesDefaultStyle" Value="True"/>
 
-  </Style>
+    <Setter Property="Template">
+        <Setter.Value>
+            <ControlTemplate TargetType="MenuItem">
+                <Border Background="{DynamicResource BGColor}"
+                        BorderBrush="Transparent"
+                        BorderThickness="0">
+                    <Grid>
+                        <!-- Icon -->
+                        <ContentPresenter Content="{TemplateBinding Icon}"
+                                          VerticalAlignment="Center"
+                                          Margin="5"/>
+                        <!-- Header -->
+                        <ContentPresenter Content="{TemplateBinding Header}"
+                                          Margin="30,5,5,5"/>
+                        <Popup IsOpen="{Binding IsSubmenuOpen, RelativeSource={RelativeSource TemplatedParent}}"
+                               AllowsTransparency="True"
+                               Focusable="True"
+                               PopupAnimation="Fade">
+                            <Border Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"
+                                    BorderThickness="0">
+                                <ScrollViewer CanContentScroll="True"
+                                              Style="{DynamicResource {ComponentResourceKey ResourceId=MenuScrollViewer, TypeInTargetAssembly={x:Type FrameworkElement}}}">
+                                    <ItemsPresenter Margin="0"/>
+                                </ScrollViewer>
+                            </Border>
+                        </Popup>
+                    </Grid>
+                </Border>
+            </ControlTemplate>
+        </Setter.Value>
+    </Setter>
+</Style>
 <!--End MenuItem Style-->
+
 
 <!--ListViewItem Style-->
     <Style TargetType="ListViewItem">
