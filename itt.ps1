@@ -25,7 +25,7 @@ Add-Type -AssemblyName System.Windows.Forms
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "18-05-2024 (05:07 AM)"
+$sync.version = "19-05-2024 (04:21 AM)"
 $sync.github =   "https://github.com/emadadel4"
 $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://eprojects.orgfree.com"
@@ -64,10 +64,20 @@ else
 
 $sync.database.Applications = '[
   {
-    "Name": "Thorium",
+    "Name": "Thorium SSE3",
     "Description": "A web browser designed for smooth and secure browsing experiences.",
-    "winget": "Alex313031.Thorium",
-    "choco": "thorium",
+    "winget": "none",
+    "choco": "thorium --params /SSE3",
+    "scoop": "none",
+    "url": "none",
+    "category": "Browsers",
+    "check": "false"
+  },
+  {
+    "Name": "Thorium AVX",
+    "Description": "A web browser designed for smooth and secure browsing experiences.",
+    "winget": "none",
+    "choco": "thorium --params /AVX",
     "scoop": "none",
     "url": "none",
     "category": "Browsers",
@@ -157,10 +167,10 @@ $sync.database.Applications = '[
   {
     "Name": "Neat Download Manager",
     "Description": "Free download Manager",
-    "winget": "Tonec.InternetDownloadManager",
+    "winget": "JavadMotallebi.NeatDownloadManager",
     "choco": "none",
     "scoop": "none",
-    "url": "https://www.neatdownloadmanager.com/file/NeatDM_setup.exe",
+    "url": "none",
     "category": "Browsers",
     "check": "false"
   },
@@ -591,10 +601,10 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "NVIDIA GeForce",
+    "Name": "NVIDIA GeForce Experience",
     "Description": "A cloud-based gaming service provided by NVIDIA that allows users to play video games on supported devices via a remote gaming PC hosted on NVIDIA''s servers.",
-    "winget": "Nvidia.GeForceNow",
-    "choco": "nvidia-geforce-now",
+    "winget": "Nvidia.GeForceExperience",
+    "choco": "none",
     "scoop": "none",
     "url": "none",
     "category": "Drivers",
@@ -793,8 +803,8 @@ $sync.database.Applications = '[
   {
     "Name": "Display Driver Uninstaller",
     "Description": "Utility to completely remove system drivers",
-    "winget": "#",
-    "choco": "ddu",
+    "winget": "Wagnardsoft.DisplayDriverUninstaller",
+    "choco": "none",
     "scoop": "none",
     "url": "none",
     "category": "Drivers",
@@ -1067,7 +1077,7 @@ $sync.database.Applications = '[
   {
     "Name": "Vysor",
     "Description": "A screen mirroring and remote control software that enables users to view and control Android devices from Windows PCs, allowing for easy screen sharing, app testing, and troubleshooting.",
-    "winget": "#",
+    "winget": "Vysor.Vysor",
     "choco": "vysor",
     "scoop": "none",
     "url": "none",
@@ -1516,7 +1526,7 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "oh-my-posh",
+    "Name": "Oh My Posh",
     "Description": " Oh my Posh is a custom prompt engine for any shell that has the ability to adjust the prompt string with a function or variable.",
     "winget": "#",
     "choco": "oh-my-posh",
@@ -1793,6 +1803,86 @@ $sync.database.Applications = '[
     "scoop": "none",
     "url": "none",
     "category": "Microsoft",
+    "check": "false"
+  },
+  {
+    "Name": "Bandicam",
+    "Description": "Video Capture Desktop",
+    "winget": "BandicamCompany.Bandicam",
+    "choco": "none",
+    "scoop": "none",
+    "url": "none",
+    "category": "Imaging",
+    "check": "false"
+  },
+  {
+    "Name": "QQPlayer",
+    "Description": "QQPlayer media player",
+    "winget": "Tencent.QQPlayer",
+    "choco": "none",
+    "scoop": "none",
+    "url": "none",
+    "category": "Media",
+    "check": "false"
+  },
+  {
+    "Name": "4K Video Downloader",
+    "Description": "4K Video Downloader allows downloading videos, playlists, channels and subtitles from YouTube, Facebook, Vimeo and other video sites in high quality.",
+    "winget": "none",
+    "choco": "4k-video-downloader",
+    "scoop": "none",
+    "url": "none",
+    "category": "Utilities",
+    "check": "false"
+  },
+  {
+    "Name": "Active@ Partition Recovery",
+    "Description": "Active@ Partition Recovery is a freeware toolkit that helps to recover deleted and damaged logical drives and partitions within Windows, WinPE (recovery boot disk) and Linux (recovery LiveCD) environments.",
+    "winget": "LSoftTechnologies.ActivePartitionRecovery",
+    "choco": "none",
+    "scoop": "none",
+    "url": "none",
+    "category": "Utilities",
+    "check": "false"
+  },
+  {
+    "Name": "FL Studio",
+    "Description": "FL Studio is a digital audio workstation developed by the Belgian company Image-Line. It features a graphical user interface with a pattern-based music sequencer.",
+    "winget": "ImageLine.FLStudio",
+    "choco": "none",
+    "scoop": "none",
+    "url": "none",
+    "category": "Developer",
+    "check": "false"
+  },
+  {
+    "Name": "HiSuite",
+    "Description": "HUAWEI HiSuite is the official Android Smart Device Manager tool,HiSuite helps users to connect their HUAWEI smartphones and tablets to PC",
+    "winget": "Huawei.HiSuite",
+    "choco": "none",
+    "scoop": "none",
+    "url": "none",
+    "category": "Utilities",
+    "check": "false"
+  },
+  {
+    "Name": "Android Studio",
+    "Description": "Android Studio is the official integrated development environment for Google''s Android operating system, built on JetBrains IntelliJ IDEA software and designed specifically for Android development",
+    "winget": "none",
+    "choco": "androidstudio",
+    "scoop": "none",
+    "url": "none",
+    "category": "Developer",
+    "check": "false"
+  },
+  {
+    "Name": "WhatsApp",
+    "Description": "WhatsApp is an instant messaging and voice-over-IP service owned by technology conglomerate Meta. It allows users to send text, voice messages and video messages, make voice and video calls, and share images, documents, user",
+    "winget": "WhatsApp.WhatsApp",
+    "choco": "none",
+    "scoop": "none",
+    "url": "none",
+    "category": "Communication",
     "check": "false"
   }
 ]
@@ -2555,40 +2645,45 @@ $inputXML = '
 <!--End Menu Style-->
 
 <!--MenuItem Style-->
-  <Style TargetType="MenuItem">
-      <Setter Property="Background" Value="{DynamicResource BGColor}"/>
-      <Setter Property="Foreground" Value="{DynamicResource DefaultTextColor}"/>
-      <Setter Property="OverridesDefaultStyle" Value="True"/>
-      <Setter Property="Template">
-          <Setter.Value>
-              <ControlTemplate TargetType="MenuItem">
-                  <Border Background="{DynamicResource BGColor}"
-                    BorderBrush="WhiteSmoke"
-                    BorderThickness="0"> <!-- Set BorderThickness to 0 -->
-                      <Grid>
-                          <ContentPresenter Content="{TemplateBinding Header}"
-                                          Margin="5"/>
-                          <Popup IsOpen="{Binding IsSubmenuOpen, RelativeSource={RelativeSource TemplatedParent}}"
-                              AllowsTransparency="True"
-                              Focusable="True"
-                              PopupAnimation="None">
-                              <Border Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"
-                                      BorderThickness="15"> <!-- Set BorderThickness to 0 -->
-                                  <ScrollViewer CanContentScroll="True"
-                                              Style="{DynamicResource {ComponentResourceKey ResourceId=MenuScrollViewer, TypeInTargetAssembly={x:Type FrameworkElement}}}">
-                                      <ItemsPresenter Margin="0"/>
-                                  </ScrollViewer>
-                              </Border>
-                        
-                          </Popup>
-                      </Grid>
-                  </Border>
-              </ControlTemplate>
-          </Setter.Value>
-      </Setter>
+<Style TargetType="MenuItem">
+    <Setter Property="Background" Value="{DynamicResource BGColor}"/>
+    <Setter Property="Foreground" Value="{DynamicResource DefaultTextColor}"/>
+    <Setter Property="OverridesDefaultStyle" Value="True"/>
 
-  </Style>
+    <Setter Property="Template">
+        <Setter.Value>
+            <ControlTemplate TargetType="MenuItem">
+                <Border Background="{DynamicResource BGColor}"
+                        BorderBrush="Transparent"
+                        BorderThickness="0">
+                    <Grid>
+                        <!-- Icon -->
+                        <ContentPresenter Content="{TemplateBinding Icon}"
+                                          VerticalAlignment="Center"
+                                          Margin="5"/>
+                        <!-- Header -->
+                        <ContentPresenter Content="{TemplateBinding Header}"
+                                          Margin="30,5,5,5"/>
+                        <Popup IsOpen="{Binding IsSubmenuOpen, RelativeSource={RelativeSource TemplatedParent}}"
+                               AllowsTransparency="True"
+                               Focusable="True"
+                               PopupAnimation="Fade">
+                            <Border Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"
+                                    BorderThickness="0">
+                                <ScrollViewer CanContentScroll="True"
+                                              Style="{DynamicResource {ComponentResourceKey ResourceId=MenuScrollViewer, TypeInTargetAssembly={x:Type FrameworkElement}}}">
+                                    <ItemsPresenter Margin="0"/>
+                                </ScrollViewer>
+                            </Border>
+                        </Popup>
+                    </Grid>
+                </Border>
+            </ControlTemplate>
+        </Setter.Value>
+    </Setter>
+</Style>
 <!--End MenuItem Style-->
+
 
 <!--ListViewItem Style-->
     <Style TargetType="ListViewItem">
@@ -2754,7 +2849,10 @@ $inputXML = '
 
                     <Menu Grid.Row="0" Grid.ColumnSpan="3" Background="Transparent" BorderBrush="Transparent" BorderThickness="0">
                         
-                        <MenuItem Header="Computer Managment" BorderBrush="Transparent"  FontWeight="Bold" BorderThickness="0">
+                        <MenuItem Header="Computer Managment" BorderBrush="Transparent" BorderThickness="0">
+                            <MenuItem.Icon>
+                                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                            </MenuItem.Icon>
                             <MenuItem Name="sysinfo" Header="System Info"/>
                             <MenuItem Name="poweroption" Header="Power Options"/>
                             <MenuItem Name="deviceManager" Header="Device Manager"/>
@@ -2763,55 +2861,84 @@ $inputXML = '
                             <MenuItem Name="appsfeatures" Header="Apps-Features"/>
                             <MenuItem Name="taskmgr" Header="Task Manager"/>
                             <MenuItem Name="diskmgmt" Header="Disk Managment"/>
+
+                            
                         </MenuItem>
 
-                        <MenuItem Header="Preferences" BorderBrush="Transparent"  FontWeight="Bold" BorderThickness="0">
-                            <MenuItem Name="save" Header="Save Selected apps"/>
-                            <MenuItem Name="load" Header="Load Apps"/>
+                        <MenuItem Header="Preferences" BorderBrush="Transparent" BorderThickness="0">
+                            <MenuItem.Icon>
+                                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                            </MenuItem.Icon>
+
+                            <MenuItem Name="save" Header="Save Selected apps">
+                                <MenuItem.Icon>
+                                    <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <MenuItem Name="load" Header="Load Apps">
+                                <MenuItem.Icon>
+                                    <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                                </MenuItem.Icon>
+                            </MenuItem>
 
                             <MenuItem Header="Dark Mode">
+                                <MenuItem.Icon>
+                                    <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                                </MenuItem.Icon>
                                 <MenuItem Name="darkOn" Header="On"/>
                                 <MenuItem Name="darkOff" Header="Off"/>
                             </MenuItem>
 
                             <MenuItem Header="Music">
+                                <MenuItem.Icon>
+                                    <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                                </MenuItem.Icon>
                                 <MenuItem Name="moff" Header="Mute"/>
                                 <MenuItem Name="mon" Header="Unmute"/>
                             </MenuItem>
-                            <MenuItem Name="ittshortcut" Header="Create Shortcut"/>
+                            <MenuItem Name="ittshortcut" Header="Create Shortcut">
+                                <MenuItem.Icon>
+                                    <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                                </MenuItem.Icon>
+                            </MenuItem>
                         </MenuItem>
+                        
 
-
-                        <MenuItem Header="Mirror Links" BorderBrush="Transparent" FontWeight="Bold" BorderThickness="0">
+                        <MenuItem Header="Mirror Links" BorderThickness="0">
+                            <MenuItem.Icon>
+                                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                            </MenuItem.Icon>
                             <MenuItem Name="mas" Header="Microsoft Activation Scripts (MAS)"/>
                             <MenuItem Name="idm" Header="IDM Activation"/>
 
                             <MenuItem Header="Browsers Extensions">
                                 <MenuItem Name="uBlock" Header="uBlock Origin"/>
                                 <MenuItem Name="unhook" Header="Unhook: Customize youtube"/>
-
                                 <MenuItem Name="neat" Header="Neat Download Manager"/>
-                                
                             </MenuItem>
                         </MenuItem>
 
                         
-                        <MenuItem Name="dev" Header="About" BorderBrush="Transparent" FontWeight="Bold" BorderThickness="1" />
+                        <MenuItem Name="dev" Header="About" BorderBrush="Transparent" BorderThickness="1">
+                            <MenuItem.Icon>
+                                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                            </MenuItem.Icon>
+                        </MenuItem>
 
                     </Menu>
 
-                        <StackPanel Margin="15" Orientation="Horizontal" HorizontalAlignment="Left"  VerticalAlignment="Center" Grid.Row="1" Grid.ColumnSpan="3" >
+
+                    <StackPanel Margin="15" Orientation="Horizontal" Grid.Row="1" Grid.ColumnSpan="2" >
 
                                 <!--Logo-->
-                                    <Ellipse Name="about" Width="80" Height="80" Cursor="Hand" ToolTip="Enad Adel">
-                                        <Ellipse.Fill>
-                                            <ImageBrush ImageSource="https://raw.githubusercontent.com/emadadel4/ITT/main/Assets/Images/logo.png" />
-                                        </Ellipse.Fill>
-                                    </Ellipse>
-
+                                <Ellipse Name="about" Width="80" Height="80" Cursor="Hand" ToolTip="Enad Adel">
+                                    <Ellipse.Fill>
+                                        <ImageBrush ImageSource="https://raw.githubusercontent.com/emadadel4/ITT/main/Assets/Images/logo.png" />
+                                    </Ellipse.Fill>
+                                </Ellipse>
                                 <!--End Logo-->
 
-                            <!--Catagory Section-->
+                                <!--Catagory Section-->
                                 <ComboBox SelectedIndex="0"  Margin="25,0,0,0" Name="category" HorizontalAlignment="Center" VerticalAlignment="Center" Width="155" Height="Auto">
                                     <ComboBoxItem Content="All"></ComboBoxItem>
                                     <ComboBoxItem Content="Drivers"></ComboBoxItem>
@@ -2830,17 +2957,37 @@ $inputXML = '
                                 </ComboBox>
                             <!--End Catagory Section-->
 
-                        </StackPanel>
+                        
+
+                        
+                            
+                    
+
+
+                    </StackPanel>
+
 
             <!--End Header Section-->
 
                 <!--TabControl-->
         <TabControl Name="taps" TabStripPlacement="Left" Margin="0, 10, 0, 10" Grid.Row="2"  BorderBrush="Transparent" Foreground="White" Background="Transparent">
-                <TabItem Header="Apps" Name="apps" BorderBrush="{x:Null}" Padding="0">
+                <TabItem Name="apps" BorderBrush="{x:Null}" Padding="0">
+                    <TabItem.HeaderTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <!-- Icon -->
+                                <TextBlock Text="" FontFamily="Segoe MDL2 Assets" FontSize="15" Margin="0,0,5,0"/>
+                                <!-- Text -->
+                                <TextBlock Text="Apps"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </TabItem.HeaderTemplate>
                     <TabItem.Content>
                         <ListView Margin="0" ScrollViewer.VerticalScrollBarVisibility="Auto" Name="list" BorderBrush="{x:Null}" Background="{x:Null}">
                             
-            <CheckBox Content="Thorium" Tag="Browsers" IsChecked="false" FontWeight="Bold"/>
+            <CheckBox Content="Thorium SSE3" Tag="Browsers" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Thorium AVX" Tag="Browsers" IsChecked="false" FontWeight="Bold"/>
 
             <CheckBox Content="Firefox" Tag="Browsers" IsChecked="false" FontWeight="Bold"/>
 
@@ -2944,7 +3091,7 @@ $inputXML = '
 
             <CheckBox Content="NVidia Display Driver" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="NVIDIA GeForce" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
+            <CheckBox Content="NVIDIA GeForce Experience" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
 
             <CheckBox Content="Msi Afterburner" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
 
@@ -3128,7 +3275,7 @@ $inputXML = '
 
             <CheckBox Content="VirtualBox" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="oh-my-posh" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
+            <CheckBox Content="Oh My Posh" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
 
             <CheckBox Content="Malwarebytes" Tag="Security" IsChecked="false" FontWeight="Bold"/>
 
@@ -3184,10 +3331,36 @@ $inputXML = '
 
             <CheckBox Content="Office 365 Business" Tag="Microsoft" IsChecked="false" FontWeight="Bold"/>
 
+            <CheckBox Content="Bandicam" Tag="Imaging" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="QQPlayer" Tag="Media" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="4K Video Downloader" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Active@ Partition Recovery" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="FL Studio" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="HiSuite" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="Android Studio" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
+
+            <CheckBox Content="WhatsApp" Tag="Communication" IsChecked="false" FontWeight="Bold"/>
+
                         </ListView>
                     </TabItem.Content>
                 </TabItem>
-                <TabItem Header="Tweaks" x:Name="tweeksTab" Padding="0" BorderBrush="{x:Null}" Background="{x:Null}">
+                <TabItem x:Name="tweeksTab" Padding="0" BorderBrush="{x:Null}" Background="{x:Null}">
+                    <TabItem.HeaderTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <!-- Icon -->
+                                <TextBlock Text="" FontFamily="Segoe MDL2 Assets" FontSize="15" Margin="0,0,5,0"/>
+                                <!-- Text -->
+                                <TextBlock Text="Tweaks"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </TabItem.HeaderTemplate>
                     <TabItem.Content>
                         <ListView Name="tweaks"  Margin="0" ScrollViewer.VerticalScrollBarVisibility="Auto" BorderBrush="{x:Null}" Background="{x:Null}">
                             
@@ -3239,6 +3412,8 @@ $inputXML = '
             </TabControl>
         <!--End TabControl-->
 
+        
+
             <!--Main Section-->
                 <Grid  Grid.Row="2" Grid.Column="2"  Grid.RowSpan="2">
 
@@ -3257,7 +3432,8 @@ $inputXML = '
                                 />
 
                                 <TextBlock IsHitTestVisible="False" 
-                                Text="Search"
+                                Text=""
+                                FontFamily="Segoe MDL2 Assets" 
                                 VerticalAlignment="Center" 
                                 HorizontalAlignment="Left"
                                 Margin="16,0,0,0"
@@ -3412,10 +3588,10 @@ $InitialSessionState.Variables.Add($hashVars)
 
 # Create the runspace pool
 $sync.runspace = [runspacefactory]::CreateRunspacePool(
-    1,                      # thread count
-    $maxthreads,            # thread count
-    $InitialSessionState,   # session state
-    $Host                   # create runspaces on
+    1,                      # Minimum thread count
+    $maxthreads,            # Maximum thread count
+    $InitialSessionState,   # Initial session state
+    $Host                   # Machine to create runspaces on
 )
 
 # Open the RunspacePool instance
@@ -4093,11 +4269,12 @@ function Get-SelectedApps
                 if($item.Content -eq $program.Name)
                 {
                     $items += @{
+
                         Name = $program.Name
                         Choco = $program.Choco
                         Scoop = $program.Scoop
+                        Winget = $program.winget
                         URL = $program.url
-
                     }
                 }
             }
@@ -4236,6 +4413,31 @@ https://t.me/emadadel4
 " -ForegroundColor White
             }
 
+            function InstallWinget {
+               
+                # Check if winget is installed
+                if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
+
+                    # Download the Microsoft Store App Installer if not installed
+
+                    Write-Host "Winget is not installed. Installing..."
+                    
+                    Invoke-WebRequest -Uri "https://github.com/microsoft/winget-cli/releases/latest/download/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.appxbundle" -OutFile "$env:TEMP\Microsoft.DesktopAppInstaller.appxbundle" -UseBasicParsing
+
+                    # Install the Microsoft Store App Installer
+                    Add-AppxPackage -Path "$env:TEMP\Microsoft.DesktopAppInstaller.appxbundle"
+
+                    # Check if winget is installed after installation
+                    if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
+                        Write-Host "Installation failed. Please try again later."
+                    } else {
+                        Write-Host "Winget has been successfully installed."
+                    }
+                } else {
+                    Write-Host "Winget is already installed."
+                }
+            }
+
             try 
             {
                 $result = [System.Windows.MessageBox]::Show("Do you want to install $($selectedApps.Count) selected apps", "ITT | Emad Adel", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)
@@ -4252,6 +4454,12 @@ https://t.me/emadadel4
                         if ($app.Choco -ne "none")
                         {
                             Start-Process -FilePath "choco" -ArgumentList "install $($app.Choco) --confirm --acceptlicense -q -r --ignore-http-cache --allowemptychecksumsecure --allowemptychecksum  --usepackagecodes --ignoredetectedreboot --ignore-checksums" -NoNewWindow -Wait 
+                        }
+
+                        if ($app.Winget -ne "none")
+                        {
+                            InstallWinget
+                            Start-Process -FilePath "winget" -ArgumentList "install -e -h --accept-source-agreements --accept-package-agreements --id $($app.Winget)" -NoNewWindow -Wait
                         }
 
                         if ($app.URL -ne "none")
