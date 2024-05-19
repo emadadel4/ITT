@@ -177,7 +177,7 @@ https://t.me/emadadel4
                         Write-Host "Winget has been successfully installed."
                     }
                 } else {
-                    Write-Host "Winget is already installed."
+                    Write-Host "Installing using winget"
                 }
             }
 
