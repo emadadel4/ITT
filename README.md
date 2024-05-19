@@ -4,7 +4,7 @@
   </a>
 </p>
   
-<h1 align="center">ITT (Install and Tweaks) 🛠️ 🖥️ </h1>
+<h1 align="center">ITT (Install and Tweaks Tool) 🛠️ 🖥️ </h1>
 
 <center>
 <a target="_blank" rel="noopener noreferrer" href="https://raw.githubusercontent.com/emadadel4/ITT/main/Assets/Images/demo.PNG"><img src="https://raw.githubusercontent.com/emadadel4/ITT/main/Assets/Images/demo.PNG" alt="screen-install" style="max-width: 100%;"></a>
