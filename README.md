@@ -42,7 +42,7 @@ irm https://raw.githubusercontent.com/emadadel4/ITT/main/itt.ps1 | iex
 ## How to add a new App/Tweak/OST/Qoute/
 
 
-<p dir="auto"><strong>Fork or Clone the repo</strong>
+<p dir="auto"><strong>Fork the repo</strong>
     Open itt directory in powershell and choose what you will added
 </p>
 
