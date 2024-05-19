@@ -12,11 +12,12 @@ function Get-SelectedApps
                 if($item.Content -eq $program.Name)
                 {
                     $items += @{
+
                         Name = $program.Name
                         Choco = $program.Choco
                         Scoop = $program.Scoop
+                        Winget = $program.winget
                         URL = $program.url
-
                     }
                 }
             }
@@ -155,6 +156,31 @@ https://t.me/emadadel4
 " -ForegroundColor White
             }
 
+            function InstallWinget {
+               
+                # Check if winget is installed
+                if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
+
+                    # Download the Microsoft Store App Installer if not installed
+
+                    Write-Host "Winget is not installed. Installing..."
+                    
+                    Invoke-WebRequest -Uri "https://github.com/microsoft/winget-cli/releases/latest/download/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.appxbundle" -OutFile "$env:TEMP\Microsoft.DesktopAppInstaller.appxbundle" -UseBasicParsing
+
+                    # Install the Microsoft Store App Installer
+                    Add-AppxPackage -Path "$env:TEMP\Microsoft.DesktopAppInstaller.appxbundle"
+
+                    # Check if winget is installed after installation
+                    if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
+                        Write-Host "Installation failed. Please try again later."
+                    } else {
+                        Write-Host "Winget has been successfully installed."
+                    }
+                } else {
+                    Write-Host "Winget is already installed."
+                }
+            }
+
             try 
             {
                 $result = [System.Windows.MessageBox]::Show("Do you want to install $($selectedApps.Count) selected apps", "ITT | Emad Adel", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)
@@ -171,6 +197,12 @@ https://t.me/emadadel4
                         if ($app.Choco -ne "none")
                         {
                             Start-Process -FilePath "choco" -ArgumentList "install $($app.Choco) --confirm --acceptlicense -q -r --ignore-http-cache --allowemptychecksumsecure --allowemptychecksum  --usepackagecodes --ignoredetectedreboot --ignore-checksums" -NoNewWindow -Wait 
+                        }
+
+                        if ($app.Winget -ne "none")
+                        {
+                            InstallWinget
+                            Start-Process -FilePath "winget" -ArgumentList "install -e -h --accept-source-agreements --accept-package-agreements --id $($app.Winget)" -NoNewWindow -Wait
                         }
 
                         if ($app.URL -ne "none")
