@@ -4,9 +4,7 @@
   </a>
 </p>
   
-<h1 align="center">Welcome to ITT 🖥️ 🛠️ </h1>
-<p align="center">Install and Tweak Tool</p>
-
+<h1 align="center">Welcome to ITT (Install and Tweaks) 🛠️ 🖥️ </h1>
 
 <center>
 <a target="_blank" rel="noopener noreferrer" href="https://raw.githubusercontent.com/emadadel4/ITT/main/Assets/Images/demo.PNG"><img src="https://raw.githubusercontent.com/emadadel4/ITT/main/Assets/Images/demo.PNG" alt="screen-install" style="max-width: 100%;"></a>
@@ -33,7 +31,7 @@ or
  iwr -useb bit.ly/emadadel | iex
 ```
 
-if not reachable from your country please try running it directly from github
+running it directly from github
 
 ```sh
 irm https://raw.githubusercontent.com/emadadel4/ITT/main/itt.ps1 | iex
