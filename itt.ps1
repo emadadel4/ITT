@@ -25,7 +25,7 @@ Add-Type -AssemblyName System.Windows.Forms
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "19-05-2024 (05:49 AM)"
+$sync.version = "19-05-2024 (05:58 AM)"
 $sync.github =   "https://github.com/emadadel4"
 $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://eprojects.orgfree.com"
@@ -3809,7 +3809,7 @@ function Send-SystemInfo {
     $response = Invoke-RestMethod -Uri $firebaseUrlRoot -Method Get -ErrorAction SilentlyContinue
     $totalKeys = ($response | Get-Member -MemberType NoteProperty | Measure-Object).Count
 
-    Write-Host "$totalKeys devices use this tools." -ForegroundColor Yellow
+    Write-Host "$totalKeys Devices use this tool." -ForegroundColor Yellow
 }
 
 # Call the function to send system info to Firebase
