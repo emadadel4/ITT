@@ -3588,7 +3588,7 @@ $InitialSessionState.Variables.Add($hashVars)
 
 # Create the runspace pool
 $sync.runspace = [runspacefactory]::CreateRunspacePool(
-    1,                      # Minimum thread count
+    2,                      # Minimum thread count
     $maxthreads,            # Maximum thread count
     $InitialSessionState,   # Initial session state
     $Host                   # Machine to create runspaces on
