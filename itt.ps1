@@ -25,7 +25,7 @@ Add-Type -AssemblyName System.Windows.Forms
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "19-05-2024 (05:45 AM)"
+$sync.version = "19-05-2024 (05:49 AM)"
 $sync.github =   "https://github.com/emadadel4"
 $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://eprojects.orgfree.com"
@@ -4434,7 +4434,7 @@ https://t.me/emadadel4
                         Write-Host "Winget has been successfully installed."
                     }
                 } else {
-                    Write-Host "Winget is already installed."
+                    Write-Host "Installing using winget"
                 }
             }
 
