@@ -577,5 +577,21 @@
         "refresh": ""
       }
     ]
+  },
+  {
+    "name": "Remove Meet Now icon on Taskbar Windows 10",
+    "description": "Earlier this year Microsoft introduced Meet Now in Skype. Meet Now makes it easy to connect with anyone in as little as two clicks for free and each call can last up to 24 hours.",
+    "check": "false",
+    "type": "modifying",
+    "Registry": [
+      {
+        "Path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer",
+        "Name": "HideSCAMeetNow",
+        "Type": "DWord",
+        "Value": "1",
+        "defaultValue": "0",
+        "refresh": ""
+      }
+    ]
   }
 ]
