@@ -25,7 +25,7 @@ Add-Type -AssemblyName System.Windows.Forms
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "20-05-2024 (11:41 PM)"
+$sync.version = "20-05-2024 (11:43 PM)"
 $sync.github =   "https://github.com/emadadel4"
 $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://eprojects.orgfree.com"
@@ -2794,6 +2794,74 @@ $inputXML = '
         </Setter>
     </Style>
 <!--End TabControl Style-->
+
+<!--ComboBox Style-->
+<Style  TargetType="{x:Type ComboBox}">
+
+    <Setter Property="Foreground" Value="{DynamicResource FGTextColor}"/>
+
+        <Setter Property="Template">
+            <Setter.Value>
+            <ControlTemplate TargetType="ComboBox">
+            <Grid>
+                <ToggleButton Grid.Column="2" Focusable="false" IsChecked="{Binding Path=IsDropDownOpen,Mode=TwoWay,RelativeSource={RelativeSource TemplatedParent}}" >
+                <ToggleButton.Template>
+                    <ControlTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="5*" />
+                        <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Border x:Name="Border"  Grid.ColumnSpan="2" CornerRadius="0" Background="{DynamicResource FGColor}" BorderBrush="Transparent" BorderThickness="0" />
+                        <Border Grid.Column="0" CornerRadius="0"  Margin="1" VerticalAlignment="Center" HorizontalAlignment="Center"  Background="{DynamicResource FGColor}"  BorderBrush="Transparent" BorderThickness="0" />
+                        <Path x:Name="Arrow" Grid.Column="1"  Fill="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center" Data="M 0 0 L 4 4 L 8 0 Z"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="ToggleButton.IsMouseOver" Value="true">
+                        <Setter TargetName="Border" Property="Background" Value="WhiteSmoke" />
+                        </Trigger>
+                        <Trigger Property="ToggleButton.IsChecked" Value="true">
+                        <Setter TargetName="Border" Property="Background" Value="Transparent" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </ToggleButton.Template>
+                </ToggleButton>
+                <ContentPresenter Name="ContentSite" IsHitTestVisible="False"  Content="{TemplateBinding SelectionBoxItem}" ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}" ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}" Margin="3"  />
+                <TextBox x:Name="PART_EditableTextBox" Visibility="Hidden" IsReadOnly="{TemplateBinding IsReadOnly}"/>
+                <Popup Name="Popup" Placement="Bottom" IsOpen="{TemplateBinding IsDropDownOpen}" AllowsTransparency="True"  Focusable="False" PopupAnimation="Slide">
+                <Grid  Name="DropDown" SnapsToDevicePixels="True" MinWidth="{TemplateBinding ActualWidth}" MaxHeight="{TemplateBinding MaxDropDownHeight}">
+                    <Border x:Name="DropDownBorder" Background="{DynamicResource FGColor}" />
+                    <ScrollViewer SnapsToDevicePixels="True">
+                    <StackPanel IsItemsHost="True" />
+                    </ScrollViewer>
+                </Grid>
+                </Popup>
+            </Grid>
+            </ControlTemplate>
+        </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+        </Style.Triggers>
+</Style>
+
+<Style  TargetType="{x:Type ComboBoxItem}">
+    <Setter Property="Background" Value="{DynamicResource FGColor}"/>
+    <Setter Property="Foreground" Value="{DynamicResource DefaultTextColor}"/>
+</Style>
+
+<!--End ComboBox Style-->
+
+
+<Style x:Key="CustomSeparatorStyle" TargetType="{x:Type Separator}">
+<Setter Property="Template">
+    <Setter.Value>
+        <ControlTemplate TargetType="{x:Type Separator}">
+            <Border Background="Black" Height="1" Margin="5"/>
+        </ControlTemplate>
+    </Setter.Value>
+</Setter>
+</Style>
             
             <!--Light Theme styles-->
 
