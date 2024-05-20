@@ -18,7 +18,7 @@ function Invoke-Button {
         #===========================================================================
         "load" {LoadJson $Button}
         "save" {SaveItemsToJson $debug}
-        "about" {About $debug}
+        "logo" {About $debug}
         "mas" {Start-Process ("https://github.com/massgravel/Microsoft-Activation-Scripts") $debug}
         "idm" { Start-Process ("https://github.com/WindowsAddict/IDM-Activation-Script") $debug}
         "unhook" { Start-Process ("https://unhook.app/") $debug}
