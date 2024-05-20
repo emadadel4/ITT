@@ -142,7 +142,7 @@ function Invoke-ApplyTweaks
                     }
                 }
 
-                function Remove-AppxPackage  {
+                function UninstallAppxPackage  {
 
                     param (
                         $Name
@@ -270,11 +270,10 @@ Write-Host "
                             {
                                 foreach ($re in $app.registry) 
                                 {
-                                    Remove-Registry -RegistryPath $re.Path -Folder $re.Name
+                                    #Remove-Registry -RegistryPath $re.Path -Folder $re.Name
 
                                     # debug
                                     #Write-Host Remove-Registry -RegistryPath $re.Path -Folder $re.Name
-
                                 }
                             }
             
@@ -290,13 +289,10 @@ Write-Host "
                             {
                                 foreach ($appx in $app.removeAppxPackage) 
                                 {
-                                   Remove-AppxPackage -Name $($appx.Name)
+                                   UninstallAppxPackage -Name "$($appx.Name)"
 
                                    # debug
-                                   #Write-Host RemoveAppxPackage -Name $($appx.Name)
-
-
-
+                                   # Write-Host UninstallAppxPackage -Name "$($appx.Name)"
                                 }
                             }
                         }
