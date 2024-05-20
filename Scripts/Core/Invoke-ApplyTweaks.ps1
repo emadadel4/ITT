@@ -145,15 +145,17 @@ function Invoke-ApplyTweaks
                 function Remove-AppxPackage  {
 
                     param (
-                        $App
+                        $Name
                     )
                 
-                    if (Get-AppxPackage -AllUsers -Name "$App" -ErrorAction SilentlyContinue)
+                    if (Get-AppxPackage -AllUsers -Name $Name -ErrorAction SilentlyContinue)
                     {
                         try {
 
-                            Get-AppxPackage -AllUsers -Name "$App" | Remove-AppxPackage -ErrorAction Stop
+                            Get-AppxPackage -AllUsers -Name $Name | Remove-AppxPackage -ErrorAction Stop
+
                             Write-Host "Successfully removed $App" -ForegroundColor Yellow
+
                         } 
                         catch {
                             Write-Host "Failed to remove $App. $_" -ForegroundColor red
@@ -288,10 +290,10 @@ Write-Host "
                             {
                                 foreach ($appx in $app.removeAppxPackage) 
                                 {
-                                   Remove-AppxPackage -App $appx.Name
+                                   Remove-AppxPackage -Name $appx.Name
 
                                    # debug
-                                   #Write-Host Remove-AppxPackage -App $appx.Name
+                                   #Write-Host Remove-AppxPackage -Name $appx.Name
 
                                 }
                             }
