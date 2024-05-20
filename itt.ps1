@@ -4235,7 +4235,7 @@ Write-Host "
                                    UninstallAppxPackage -Name "$($appx.Name)"
 
                                    # debug
-                                   #Write-Host UninstallAppxPackage -Name "$($appx.Name)"
+                                   # Write-Host UninstallAppxPackage -Name "$($appx.Name)"
                                 }
                             }
                         }
