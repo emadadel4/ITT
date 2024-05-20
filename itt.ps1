@@ -25,7 +25,7 @@ Add-Type -AssemblyName System.Windows.Forms
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "20-05-2024 (11:09 PM)"
+$sync.version = "20-05-2024 (11:40 PM)"
 $sync.github =   "https://github.com/emadadel4"
 $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://eprojects.orgfree.com"
@@ -4023,17 +4023,17 @@ function Invoke-ApplyTweaks
                         $Name
                     )
                 
-                    if (Get-AppxPackage -AllUsers -Name $Name -ErrorAction SilentlyContinue)
+                    if (Get-AppxPackage -AllUsers -Name $($Name) -ErrorAction SilentlyContinue)
                     {
                         try {
 
-                            Get-AppxPackage -AllUsers -Name $Name | Remove-AppxPackage -ErrorAction Stop
+                            Get-AppxPackage -AllUsers -Name $($Name) | Remove-AppxPackage -ErrorAction Stop
 
-                            Write-Host "Successfully removed $Name" -ForegroundColor Yellow
+                            Write-Host "Successfully removed $($Name)" -ForegroundColor Yellow
 
                         } 
                         catch {
-                            Write-Host "Failed to remove $Name. $_" -ForegroundColor red
+                            #Write-Host "Failed to remove $($Name). $_" -ForegroundColor red
                         }
                     }
                     else {
@@ -4165,7 +4165,7 @@ Write-Host "
                             {
                                 foreach ($appx in $app.removeAppxPackage) 
                                 {
-                                   Remove-AppxPackage -Name $appx.Name
+                                   Remove-AppxPackage -Name $($appx.Name)
 
                                    # debug
                                    #Write-Host Remove-AppxPackage -Name $appx.Name
