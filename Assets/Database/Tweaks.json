@@ -590,6 +590,14 @@
         "Type": "DWord",
         "Value": "1",
         "defaultValue": "0",
+        "refresh": "Stop-Process -Name explorer -Force; Start-Process explorer; -NoNewWindow"
+      },
+      {
+        "Path": "HKLM:\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer",
+        "Name": "HideSCAMeetNow",
+        "Type": "DWord",
+        "Value": "1",
+        "defaultValue": "0",
         "refresh": ""
       }
     ]
