@@ -25,7 +25,7 @@ Add-Type -AssemblyName System.Windows.Forms
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "20-05-2024 (11:50 PM)"
+$sync.version = "20-05-2024 (11:52 PM)"
 $sync.github =   "https://github.com/emadadel4"
 $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://eprojects.orgfree.com"
@@ -4105,7 +4105,7 @@ function Invoke-ApplyTweaks
                         }
                     }
                     else {
-                        Write-Host "$App : Not found." -ForegroundColor Yellow
+                        Write-Host "$($Name) : Not found." -ForegroundColor Yellow
                     }
                 }
                 
