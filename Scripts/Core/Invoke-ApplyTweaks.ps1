@@ -77,17 +77,30 @@ function Invoke-ApplyTweaks
                     
                     try
                     {
+
+                        # Check if the registry path exists
                         if (-not (Test-Path -Path $Path)) {
-                            New-Item -Path $Path -Force | Out-Null
+                            Write-Output "Registry path does not exist. Creating it..."
+                            # Try to create the registry path
+                            try {
+                                New-Item -Path $Path -Force -ErrorAction Stop | Out-Null
+                                Write-Output "Registry path created successfully."
+                            } catch {
+                                Write-Output "Failed to create registry path: $_"
+                            }
+                        } else {
+
+                            Set-ItemProperty -Path $Path -Name $Name -Type $Type -Value $Value -Force -ErrorAction Stop
+                            Write-Host "$($Path) disabled" -ForegroundColor Yellow
+                            Write-Output "Registry path already exists."
                         }
 
-                        Write-Host "$Name disabled" -ForegroundColor Yellow
-                        Set-ItemProperty -Path $Path -Name $Name -Type $Type -Value $Value -Force -ErrorAction Stop
-            
                     }
+                
                     catch {
-                        Write-Error "An error occurred: $_" -ForegroundColor Red
+                        Write-Error "An error occurred: $_"
                     }
+                    
                 }
 
                 function Remove-Registry {
@@ -147,22 +160,20 @@ function Invoke-ApplyTweaks
                     param (
                         $Name
                     )
-                
-                    if (Get-AppxPackage -AllUsers -Name $($Name) -ErrorAction SilentlyContinue)
+                    
+                    if (powershell.exe -Command "Import-Module Appx; if (Get-AppxPackage -Name '$Name' -ErrorAction SilentlyContinue) { exit 0 } else { exit 1 }")
                     {
                         try {
 
-                            Get-AppxPackage -AllUsers -Name $($Name) | Remove-AppxPackage -ErrorAction Stop
-
+                            powershell.exe -Command "Import-Module Appx; Get-AppxPackage -AllUsers -Name $($Name) | Remove-AppxPackage -ErrorAction Stop"
                             Write-Host "Successfully removed $($Name)" -ForegroundColor Yellow
-
                         } 
                         catch {
                             #Write-Host "Failed to remove $($Name). $_" -ForegroundColor red
                         }
                     }
                     else {
-                        Write-Host "$App : Not found." -ForegroundColor Yellow
+                        Write-Host "$($Name) : Not found." -ForegroundColor Yellow
                     }
                 }
                 
@@ -254,15 +265,13 @@ Write-Host "
 
                             if ($app.Type -eq "modifying")
                             {
-                                foreach ($re in $app.registry) 
+                                foreach ($mod in $app.registry) 
                                 {
-                                    Set-Registry -Name $re.Name -Type $re.Type -Path $re.Path -Value $re.Value
-
-
+                                    Set-Registry -Name $mod.Name -Type $mod.Type -Path $($mod.Path) -Value $mod.Value
 
                                     # debug
-                                    #Write-Host Set-Registry -Name $re.Name -Type $re.Type -Path $re.Path -Value $re.Value
-                                    
+                                    Write-Host Set-Registry -Name $mod.Name -Type $mod.Type -Path "$($mod.Path)" -Value $mod.Value
+                                    #Start-Process -FilePath "powershell.exe" -ArgumentList "-Command `" $($mod.refresh) `"" -NoNewWindow -Wait
                                 }
                             }
 
@@ -274,6 +283,7 @@ Write-Host "
 
                                     # debug
                                     #Write-Host Remove-Registry -RegistryPath $re.Path -Folder $re.Name
+                                    #Start-Process -FilePath "powershell.exe" -ArgumentList "-Command `" $($re.refresh) `"" -NoNewWindow -Wait
                                 }
                             }
             
@@ -301,7 +311,7 @@ Write-Host "
                         CustomMsg -title "ITT | Emad Adel" -msg "Done" -MessageBoxImage "Information" -MessageBoxButton "OK"
 
                         Start-Sleep -Seconds 1
-                        Finish
+                        #Finish
 
                     }
                     else
