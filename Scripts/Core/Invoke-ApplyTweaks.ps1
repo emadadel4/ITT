@@ -142,7 +142,7 @@ function Invoke-ApplyTweaks
                     }
                 }
 
-                function RemoveAppxPackage  {
+                function Remove-AppxPackage  {
 
                     param (
                         $Name
