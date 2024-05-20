@@ -25,7 +25,7 @@ Add-Type -AssemblyName System.Windows.Forms
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "21-05-2024 (12:01 AM)"
+$sync.version = "21-05-2024 (12:48 AM)"
 $sync.github =   "https://github.com/emadadel4"
 $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://eprojects.orgfree.com"
@@ -2546,6 +2546,22 @@ $sync.database.Tweaks = '[
         "refresh": ""
       }
     ]
+  },
+  {
+    "name": "Remove Meet Now icon on Taskbar Windows 10",
+    "description": "Earlier this year Microsoft introduced Meet Now in Skype. Meet Now makes it easy to connect with anyone in as little as two clicks for free and each call can last up to 24 hours.",
+    "check": "false",
+    "type": "modifying",
+    "Registry": [
+      {
+        "Path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer",
+        "Name": "HideSCAMeetNow",
+        "Type": "DWord",
+        "Value": "1",
+        "defaultValue": "0",
+        "refresh": ""
+      }
+    ]
   }
 ]
 ' | ConvertFrom-Json
@@ -3470,6 +3486,8 @@ $inputXML = '
 
             <CheckBox Content="Disable OneDrive"   FontWeight="Bold"/>
 
+            <CheckBox Content="Remove Meet Now icon on Taskbar Windows 10"   FontWeight="Bold"/>
+
                         </ListView>
                     </TabItem.Content>
                 </TabItem>
@@ -4020,17 +4038,30 @@ function Invoke-ApplyTweaks
                     
                     try
                     {
+
+                        # Check if the registry path exists
                         if (-not (Test-Path -Path $Path)) {
-                            New-Item -Path $Path -Force | Out-Null
+                            Write-Output "Registry path does not exist. Creating it..."
+                            # Try to create the registry path
+                            try {
+                                New-Item -Path $Path -Force -ErrorAction Stop | Out-Null
+                                Write-Output "Registry path created successfully."
+                            } catch {
+                                Write-Output "Failed to create registry path: $_"
+                            }
+                        } else {
+
+                            Set-ItemProperty -Path $Path -Name $Name -Type $Type -Value $Value -Force -ErrorAction Stop
+                            Write-Host "$($Path) disabled" -ForegroundColor Yellow
+                            Write-Output "Registry path already exists."
                         }
 
-                        Write-Host "$Name disabled" -ForegroundColor Yellow
-                        Set-ItemProperty -Path $Path -Name $Name -Type $Type -Value $Value -Force -ErrorAction Stop
-            
                     }
+                
                     catch {
-                        Write-Error "An error occurred: $_" -ForegroundColor Red
+                        Write-Error "An error occurred: $_"
                     }
+                    
                 }
 
                 function Remove-Registry {
@@ -4096,9 +4127,7 @@ function Invoke-ApplyTweaks
                         try {
 
                             powershell.exe -Command "Import-Module Appx; Get-AppxPackage -AllUsers -Name $($Name) | Remove-AppxPackage -ErrorAction Stop"
-
                             Write-Host "Successfully removed $($Name)" -ForegroundColor Yellow
-
                         } 
                         catch {
                             #Write-Host "Failed to remove $($Name). $_" -ForegroundColor red
@@ -4197,14 +4226,13 @@ Write-Host "
 
                             if ($app.Type -eq "modifying")
                             {
-                                foreach ($re in $app.registry) 
+                                foreach ($mod in $app.registry) 
                                 {
-                                    Set-Registry -Name $re.Name -Type $re.Type -Path $re.Path -Value $re.Value
-
-
+                                    Set-Registry -Name $mod.Name -Type $mod.Type -Path $($mod.Path) -Value $mod.Value
 
                                     # debug
-                                    #Write-Host Set-Registry -Name $re.Name -Type $re.Type -Path $re.Path -Value $re.Value
+                                    Write-Host Set-Registry -Name $mod.Name -Type $mod.Type -Path "$($mod.Path)" -Value $mod.Value
+
                                     
                                 }
                             }
