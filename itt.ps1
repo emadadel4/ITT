@@ -25,7 +25,7 @@ Add-Type -AssemblyName System.Windows.Forms
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "20-05-2024 (11:52 PM)"
+$sync.version = "21-05-2024 (12:01 AM)"
 $sync.github =   "https://github.com/emadadel4"
 $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://eprojects.orgfree.com"
@@ -4090,12 +4090,12 @@ function Invoke-ApplyTweaks
                     param (
                         $Name
                     )
-                
-                    if (Get-AppxPackage -AllUsers -Name $($Name) -ErrorAction SilentlyContinue)
+                    
+                    if (powershell.exe -Command "Import-Module Appx; if (Get-AppxPackage -Name '$Name' -ErrorAction SilentlyContinue) { exit 0 } else { exit 1 }")
                     {
                         try {
 
-                            Get-AppxPackage -AllUsers -Name $($Name) | Remove-AppxPackage -ErrorAction Stop
+                            powershell.exe -Command "Import-Module Appx; Get-AppxPackage -AllUsers -Name $($Name) | Remove-AppxPackage -ErrorAction Stop"
 
                             Write-Host "Successfully removed $($Name)" -ForegroundColor Yellow
 
