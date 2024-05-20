@@ -159,25 +159,32 @@ https://t.me/emadadel4
             function InstallWinget {
                
                 # Check if winget is installed
-                if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
+                if (!(Get-Command winget -ErrorAction SilentlyContinue)) {
+                    Write-Output "winget is not installed. Installing winget..."
 
-                    # Download the Microsoft Store App Installer if not installed
+                    # Define the URL for the latest App Installer package
+                    $url = "https://aka.ms/getwinget"
 
-                    Write-Host "Winget is not installed. Installing..."
-                    
-                    Invoke-WebRequest -Uri "https://github.com/microsoft/winget-cli/releases/latest/download/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.appxbundle" -OutFile "$env:TEMP\Microsoft.DesktopAppInstaller.appxbundle" -UseBasicParsing
+                    # Define the path to download the installer
+                    $installerPath = "$env:TEMP\Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle"
 
-                    # Install the Microsoft Store App Installer
-                    Add-AppxPackage -Path "$env:TEMP\Microsoft.DesktopAppInstaller.appxbundle"
+                    # Download the installer
+                    Invoke-WebRequest -Uri $url -OutFile $installerPath
 
-                    # Check if winget is installed after installation
-                    if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
-                        Write-Host "Installation failed. Please try again later."
+                    # Add-AppxPackage requires running with administrative privileges
+                    Start-Process powershell -ArgumentList "Add-AppxPackage -Path $installerPath" -Verb RunAs -Wait
+
+                    # Check if winget is installed successfully
+                    if (Get-Command winget -ErrorAction SilentlyContinue) {
+                        Write-Output "winget has been successfully installed."
                     } else {
-                        Write-Host "Winget has been successfully installed."
+                        Write-Output "winget installation failed. Please check the log for details."
                     }
+
+                    # Clean up the installer file
+                    Remove-Item $installerPath -Force
                 } else {
-                    Write-Host "Installing using winget"
+                    Write-Output "winget is already installed."
                 }
             }
 
