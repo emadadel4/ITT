@@ -25,7 +25,7 @@ Add-Type -AssemblyName System.Windows.Forms
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "20-05-2024 (11:46 PM)"
+$sync.version = "20-05-2024 (11:50 PM)"
 $sync.github =   "https://github.com/emadadel4"
 $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://eprojects.orgfree.com"
@@ -4085,7 +4085,7 @@ function Invoke-ApplyTweaks
                     }
                 }
 
-                function Remove-AppxPackage  {
+                function UninstallAppxPackage  {
 
                     param (
                         $Name
@@ -4213,11 +4213,10 @@ Write-Host "
                             {
                                 foreach ($re in $app.registry) 
                                 {
-                                    Remove-Registry -RegistryPath $re.Path -Folder $re.Name
+                                    #Remove-Registry -RegistryPath $re.Path -Folder $re.Name
 
                                     # debug
                                     #Write-Host Remove-Registry -RegistryPath $re.Path -Folder $re.Name
-
                                 }
                             }
             
@@ -4233,13 +4232,10 @@ Write-Host "
                             {
                                 foreach ($appx in $app.removeAppxPackage) 
                                 {
-                                   Remove-AppxPackage -Name $($appx.Name)
+                                   UninstallAppxPackage -Name "$($appx.Name)"
 
                                    # debug
-                                   #Write-Host RemoveAppxPackage -Name $($appx.Name)
-
-
-
+                                   #Write-Host UninstallAppxPackage -Name "$($appx.Name)"
                                 }
                             }
                         }
