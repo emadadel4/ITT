@@ -1,5 +1,5 @@
 <!--TabControl-->
-        <TabControl Name="taps" TabStripPlacement="Left" Margin="0, 10, 0, 10" Grid.Row="2"  BorderBrush="Transparent" Foreground="White" Background="Transparent">
+        <TabControl Name="taps" TabStripPlacement="Left" Margin="0, 10, 0, 10" Grid.Row="1"  BorderBrush="Transparent" Foreground="White" Background="Transparent">
                 <TabItem Name="apps" BorderBrush="{x:Null}" Padding="0">
                     <TabItem.HeaderTemplate>
                         <DataTemplate>
