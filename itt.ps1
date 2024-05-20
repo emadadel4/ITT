@@ -25,7 +25,7 @@ Add-Type -AssemblyName System.Windows.Forms
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "21-05-2024 (01:18 AM)"
+$sync.version = "21-05-2024 (02:18 AM)"
 $sync.github =   "https://github.com/emadadel4"
 $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://eprojects.orgfree.com"
@@ -2922,7 +2922,6 @@ $inputXML = '
         
             <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
@@ -2934,131 +2933,163 @@ $inputXML = '
 
             <!--Header Section-->
 
-
-                    <Menu Grid.Row="0" Grid.ColumnSpan="3" Background="Transparent" BorderBrush="Transparent" BorderThickness="0">
-                        
-                        <MenuItem Header="Computer Managment" BorderBrush="Transparent" BorderThickness="0">
-                            <MenuItem.Icon>
-                                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
-                            </MenuItem.Icon>
-                            <MenuItem Name="sysinfo" Header="System Info"/>
-                            <MenuItem Name="poweroption" Header="Power Options"/>
-                            <MenuItem Name="deviceManager" Header="Device Manager"/>
-                            <MenuItem Name="services" Header="Services"/>
-                            <MenuItem Name="network" Header="Network"/>
-                            <MenuItem Name="appsfeatures" Header="Apps-Features"/>
-                            <MenuItem Name="taskmgr" Header="Task Manager"/>
-                            <MenuItem Name="diskmgmt" Header="Disk Managment"/>
-
-                            
-                        </MenuItem>
-
-                        <MenuItem Header="Preferences" BorderBrush="Transparent" BorderThickness="0">
-                            <MenuItem.Icon>
-                                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
-                            </MenuItem.Icon>
-
-                            <MenuItem Name="save" Header="Save Selected apps">
-                                <MenuItem.Icon>
-                                    <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
-                                </MenuItem.Icon>
-                            </MenuItem>
-                            <MenuItem Name="load" Header="Load Apps">
-                                <MenuItem.Icon>
-                                    <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
-                                </MenuItem.Icon>
-                            </MenuItem>
-
-                            <MenuItem Header="Dark Mode">
-                                <MenuItem.Icon>
-                                    <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
-                                </MenuItem.Icon>
-                                <MenuItem Name="darkOn" Header="On"/>
-                                <MenuItem Name="darkOff" Header="Off"/>
-                            </MenuItem>
-
-                            <MenuItem Header="Music">
-                                <MenuItem.Icon>
-                                    <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
-                                </MenuItem.Icon>
-                                <MenuItem Name="moff" Header="Mute"/>
-                                <MenuItem Name="mon" Header="Unmute"/>
-                            </MenuItem>
-                            <MenuItem Name="ittshortcut" Header="Create Shortcut">
-                                <MenuItem.Icon>
-                                    <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
-                                </MenuItem.Icon>
-                            </MenuItem>
-                        </MenuItem>
-                        
-
-                        <MenuItem Header="Mirror Links" BorderThickness="0">
-                            <MenuItem.Icon>
-                                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
-                            </MenuItem.Icon>
-                            <MenuItem Name="mas" Header="Microsoft Activation Scripts (MAS)"/>
-                            <MenuItem Name="idm" Header="IDM Activation"/>
-
-                            <MenuItem Header="Browsers Extensions">
-                                <MenuItem Name="uBlock" Header="uBlock Origin"/>
-                                <MenuItem Name="unhook" Header="Unhook: Customize youtube"/>
-                                <MenuItem Name="neat" Header="Neat Download Manager"/>
-                            </MenuItem>
-                        </MenuItem>
-
-                        
-                        <MenuItem Name="dev" Header="About" BorderBrush="Transparent" BorderThickness="1">
-                            <MenuItem.Icon>
-                                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
-                            </MenuItem.Icon>
-                        </MenuItem>
-
-                    </Menu>
+                <Menu Grid.Row="0" Grid.ColumnSpan="3" Background="Transparent" BorderBrush="Transparent" BorderThickness="0">
 
 
-                    <StackPanel Margin="15" Orientation="Horizontal" Grid.Row="1" Grid.ColumnSpan="2" >
-
-                                <!--Logo-->
-                                <Ellipse Name="about" Width="80" Height="80" Cursor="Hand" ToolTip="Enad Adel">
-                                    <Ellipse.Fill>
-                                        <ImageBrush ImageSource="https://raw.githubusercontent.com/emadadel4/ITT/main/Assets/Images/logo.png" />
-                                    </Ellipse.Fill>
-                                </Ellipse>
-                                <!--End Logo-->
-
-                                <!--Catagory Section-->
-                                <ComboBox SelectedIndex="0"  Margin="25,0,0,0" Name="category" HorizontalAlignment="Center" VerticalAlignment="Center" Width="155" Height="Auto">
-                                    <ComboBoxItem Content="All"></ComboBoxItem>
-                                    <ComboBoxItem Content="Drivers"></ComboBoxItem>
-                                    <ComboBoxItem Content="Media"></ComboBoxItem> 
-                                    <ComboBoxItem Content="Browsers"></ComboBoxItem>
-                                    <ComboBoxItem Content="Documents"></ComboBoxItem>
-                                    <ComboBoxItem Content="Compression"></ComboBoxItem>
-                                    <ComboBoxItem Content="Communication"></ComboBoxItem>
-                                    <ComboBoxItem Content="File Sharing"></ComboBoxItem>
-                                    <ComboBoxItem Content="Imaging"></ComboBoxItem>
-                                    <ComboBoxItem Content="Launchers"></ComboBoxItem>
-                                    <ComboBoxItem Content="Utilities"></ComboBoxItem>
-                                    <ComboBoxItem Content="Developer"></ComboBoxItem>
-                                    <ComboBoxItem Content="Microsoft"></ComboBoxItem>
-                                    <ComboBoxItem Content="Security"></ComboBoxItem>
-                                </ComboBox>
-                            <!--End Catagory Section-->
-
-                        
-
-                        
-                            
+                    <MenuItem IsEnabled="False">
+                        <MenuItem.Icon>
+                            <!--Logo-->
+                            <Ellipse Name="logo" Width="80" Height="80" Cursor="Hand" ToolTip="Enad Adel">
+                                <Ellipse.Fill>
+                                    <ImageBrush ImageSource="https://raw.githubusercontent.com/emadadel4/ITT/main/Assets/Images/logo.png" />
+                                </Ellipse.Fill>
+                            </Ellipse>
+                            <!--End Logo-->
+                        </MenuItem.Icon>
+                
+                    </MenuItem>
                     
+                    <MenuItem Header="Computer Managment" BorderBrush="Transparent" BorderThickness="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <MenuItem.Icon>
+                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                        </MenuItem.Icon>
+                        <MenuItem Name="sysinfo" Header="System Info"/>
+                        <MenuItem Name="poweroption" Header="Power Options"/>
+                        <MenuItem Name="deviceManager" Header="Device Manager"/>
+                        <MenuItem Name="services" Header="Services"/>
+                        <MenuItem Name="network" Header="Network"/>
+                        <MenuItem Name="appsfeatures" Header="Apps-Features"/>
+                        <MenuItem Name="taskmgr" Header="Task Manager"/>
+                        <MenuItem Name="diskmgmt" Header="Disk Managment"/>
+        
+        
+                    </MenuItem>
+        
+                    <MenuItem Header="Preferences" BorderBrush="Transparent" BorderThickness="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <MenuItem.Icon>
+                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                        </MenuItem.Icon>
+        
+                        <MenuItem Name="save" Header="Save Selected apps">
+                            <MenuItem.Icon>
+                                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Name="load" Header="Load Apps">
+                            <MenuItem.Icon>
+                                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+        
+                        <MenuItem Header="Dark Mode">
+                            <MenuItem.Icon>
+                                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                            </MenuItem.Icon>
+                            <MenuItem Name="darkOn" Header="On"/>
+                            <MenuItem Name="darkOff" Header="Off"/>
+                        </MenuItem>
+        
+                        <MenuItem Header="Music">
+                            <MenuItem.Icon>
+                                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                            </MenuItem.Icon>
+                            <MenuItem Name="moff" Header="Mute"/>
+                            <MenuItem Name="mon" Header="Unmute"/>
+                        </MenuItem>
+                        <MenuItem Name="ittshortcut" Header="Create Shortcut">
+                            <MenuItem.Icon>
+                                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                    </MenuItem>
+        
+        
+                    <MenuItem Header="Mirror Links" BorderThickness="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <MenuItem.Icon>
+                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                        </MenuItem.Icon>
+                        <MenuItem Name="mas" Header="Microsoft Activation Scripts (MAS)"/>
+                        <MenuItem Name="idm" Header="IDM Activation"/>
+        
+                        <MenuItem Header="Browsers Extensions">
+                            <MenuItem Name="uBlock" Header="uBlock Origin"/>
+                            <MenuItem Name="unhook" Header="Unhook: Customize youtube"/>
+                            <MenuItem Name="neat" Header="Neat Download Manager"/>
+                        </MenuItem>
+                    </MenuItem>
+        
+        
+                    <MenuItem Name="dev" Header="About" BorderBrush="Transparent" BorderThickness="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <MenuItem.Icon>
+                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+        
+                </Menu>
+        
 
+                <StackPanel Margin="0" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Right" Grid.ColumnSpan="3">
 
-                    </StackPanel>
+                    <!--Searchbox-->
+                        <Grid Grid.Row="0" VerticalAlignment="Center" Margin="44" HorizontalAlignment="Center" Grid.ColumnSpan="3">
+                            <TextBox Padding="8"
+                            Width="188"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Left" 
+                            Text="{Binding Text_searchInput}"
+                            Name="searchInput" 
+                            />
+            
+                            <TextBlock IsHitTestVisible="False" 
+                            Text=""
+                            FontFamily="Segoe MDL2 Assets" 
+                            VerticalAlignment="Center" 
+                            HorizontalAlignment="Left"
+                            Margin="16,0,0,0"
+                            Foreground="{DynamicResource FGTextColor}">
+            
+                            <TextBlock.Style>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Text, ElementName=searchInput}" Value="">
+                                                <Setter Property="Visibility" Value="Visible"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                        </Grid>
+                    <!--End Searchbox-->
 
+                    <!--Catagory Section-->
+                        <StackPanel Margin="0,0,0,10" VerticalAlignment="Top" HorizontalAlignment="Center" Grid.ColumnSpan="3">
+
+                            <ComboBox SelectedIndex="0"  Margin="25,0,0,0" Name="category" HorizontalAlignment="Center" VerticalAlignment="Center" Width="155" Height="Auto">
+                                <ComboBoxItem Content="All"></ComboBoxItem>
+                                <ComboBoxItem Content="Drivers"></ComboBoxItem>
+                                <ComboBoxItem Content="Media"></ComboBoxItem> 
+                                <ComboBoxItem Content="Browsers"></ComboBoxItem>
+                                <ComboBoxItem Content="Documents"></ComboBoxItem>
+                                <ComboBoxItem Content="Compression"></ComboBoxItem>
+                                <ComboBoxItem Content="Communication"></ComboBoxItem>
+                                <ComboBoxItem Content="File Sharing"></ComboBoxItem>
+                                <ComboBoxItem Content="Imaging"></ComboBoxItem>
+                                <ComboBoxItem Content="Launchers"></ComboBoxItem>
+                                <ComboBoxItem Content="Utilities"></ComboBoxItem>
+                                <ComboBoxItem Content="Developer"></ComboBoxItem>
+                                <ComboBoxItem Content="Microsoft"></ComboBoxItem>
+                                <ComboBoxItem Content="Security"></ComboBoxItem>
+                            </ComboBox>
+                        </StackPanel>
+                    <!--End Catagory Section-->
+
+                </StackPanel>
 
             <!--End Header Section-->
 
                 <!--TabControl-->
-        <TabControl Name="taps" TabStripPlacement="Left" Margin="0, 10, 0, 10" Grid.Row="2"  BorderBrush="Transparent" Foreground="White" Background="Transparent">
+        <TabControl Name="taps" TabStripPlacement="Left" Margin="0, 10, 0, 10" Grid.Row="1"  BorderBrush="Transparent" Foreground="White" Background="Transparent">
                 <TabItem Name="apps" BorderBrush="{x:Null}" Padding="0">
                     <TabItem.HeaderTemplate>
                         <DataTemplate>
@@ -3504,45 +3535,10 @@ $inputXML = '
 
         
 
-            <!--Main Section-->
-                <Grid  Grid.Row="2" Grid.Column="2"  Grid.RowSpan="2">
-
+            <!--Sidebar  Section-->
+                <Grid  Grid.Row="1" Grid.Column="2"  Grid.RowSpan="2">
                     <StackPanel Orientation="Vertical">
-
-
-                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-
-                            <Grid>
-                                <TextBox Padding="8"
-                                Width="188"
-                                VerticalAlignment="Center"
-                                HorizontalAlignment="Left" 
-                                Text="{Binding Text_searchInput}"
-                                Name="searchInput" 
-                                />
-
-                                <TextBlock IsHitTestVisible="False" 
-                                Text=""
-                                FontFamily="Segoe MDL2 Assets" 
-                                VerticalAlignment="Center" 
-                                HorizontalAlignment="Left"
-                                Margin="16,0,0,0"
-                                Foreground="{DynamicResource FGTextColor}">
-
-                                <TextBlock.Style>
-                                        <Style TargetType="{x:Type TextBlock}">
-                                            <Setter Property="Visibility" Value="Collapsed"/>
-                                            <Style.Triggers>
-                                                <DataTrigger Binding="{Binding Text, ElementName=searchInput}" Value="">
-                                                    <Setter Property="Visibility" Value="Visible"/>
-                                                </DataTrigger>
-                                            </Style.Triggers>
-                                        </Style>
-                                    </TextBlock.Style>
-                                </TextBlock>
-                            </Grid>
-                        </StackPanel>
-
+    
                         <TextBlock Name="itemLink" 
                             Foreground="{DynamicResource BGButtonColor}" 
                             Visibility="Hidden" 
@@ -3551,7 +3547,7 @@ $inputXML = '
                             FontWeight="Bold"
                             Margin="20,15,15,0" 
                         />
-
+    
                         <ScrollViewer VerticalScrollBarVisibility="Auto"
                             Height="200"
                             Margin="20,15,15,0" 
@@ -3561,11 +3557,11 @@ $inputXML = '
                                 TextWrapping="Wrap" 
                                 Foreground="{DynamicResource DefaultTextColor}"/>
                         </ScrollViewer>
-
+    
                         
-
+    
                     </StackPanel>
-
+    
                     <!--Install Button-->
                         <Button
                         Name="installBtn"
@@ -3575,7 +3571,7 @@ $inputXML = '
                         VerticalAlignment="Bottom"
                         Width="100" Height="40" Margin="50"/>
                     <!--End Install Button-->
-
+    
                     <!--Apply Button-->
                         <Button
                         Name="applyBtn"
@@ -3586,12 +3582,12 @@ $inputXML = '
                         Visibility="hidden"
                         Width="100" Height="40" Margin="50"/>
                     <!--End Apply Button-->
-
+    
                 </Grid>
-            <!--End Main Section-->
+            <!--End Sidebar  Section-->
 
             <!--Footer Section-->
-                <Grid Grid.Row="4">
+                <Grid Grid.Row="3">
                     <TextBlock Name="quotes"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Center" 
@@ -4329,7 +4325,7 @@ function Invoke-Button {
         #===========================================================================
         "load" {LoadJson $Button}
         "save" {SaveItemsToJson $debug}
-        "about" {About $debug}
+        "logo" {About $debug}
         "mas" {Start-Process ("https://github.com/massgravel/Microsoft-Activation-Scripts") $debug}
         "idm" { Start-Process ("https://github.com/WindowsAddict/IDM-Activation-Script") $debug}
         "unhook" { Start-Process ("https://unhook.app/") $debug}
