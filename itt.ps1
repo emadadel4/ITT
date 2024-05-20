@@ -25,7 +25,7 @@ Add-Type -AssemblyName System.Windows.Forms
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "21-05-2024 (12:48 AM)"
+$sync.version = "21-05-2024 (01:18 AM)"
 $sync.github =   "https://github.com/emadadel4"
 $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://eprojects.orgfree.com"
@@ -2559,6 +2559,14 @@ $sync.database.Tweaks = '[
         "Type": "DWord",
         "Value": "1",
         "defaultValue": "0",
+        "refresh": "Stop-Process -Name explorer -Force; Start-Process explorer; -NoNewWindow"
+      },
+      {
+        "Path": "HKLM:\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer",
+        "Name": "HideSCAMeetNow",
+        "Type": "DWord",
+        "Value": "1",
+        "defaultValue": "0",
         "refresh": ""
       }
     ]
@@ -4232,8 +4240,7 @@ Write-Host "
 
                                     # debug
                                     Write-Host Set-Registry -Name $mod.Name -Type $mod.Type -Path "$($mod.Path)" -Value $mod.Value
-
-                                    
+                                    #Start-Process -FilePath "powershell.exe" -ArgumentList "-Command `" $($mod.refresh) `"" -NoNewWindow -Wait
                                 }
                             }
 
@@ -4245,6 +4252,7 @@ Write-Host "
 
                                     # debug
                                     #Write-Host Remove-Registry -RegistryPath $re.Path -Folder $re.Name
+                                    #Start-Process -FilePath "powershell.exe" -ArgumentList "-Command `" $($re.refresh) `"" -NoNewWindow -Wait
                                 }
                             }
             
@@ -4272,7 +4280,7 @@ Write-Host "
                         CustomMsg -title "ITT | Emad Adel" -msg "Done" -MessageBoxImage "Information" -MessageBoxButton "OK"
 
                         Start-Sleep -Seconds 1
-                        Finish
+                        #Finish
 
                     }
                     else
