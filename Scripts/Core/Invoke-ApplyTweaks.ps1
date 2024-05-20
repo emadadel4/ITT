@@ -142,23 +142,23 @@ function Invoke-ApplyTweaks
                     }
                 }
 
-                function Remove-AppxPackage  {
+                function RemoveAppxPackage  {
 
                     param (
                         $Name
                     )
                 
-                    if (Get-AppxPackage -AllUsers -Name $Name -ErrorAction SilentlyContinue)
+                    if (Get-AppxPackage -AllUsers -Name $($Name) -ErrorAction SilentlyContinue)
                     {
                         try {
 
-                            Get-AppxPackage -AllUsers -Name $Name | Remove-AppxPackage -ErrorAction Stop
+                            Get-AppxPackage -AllUsers -Name $($Name) | Remove-AppxPackage -ErrorAction Stop
 
-                            Write-Host "Successfully removed $App" -ForegroundColor Yellow
+                            Write-Host "Successfully removed $($Name)" -ForegroundColor Yellow
 
                         } 
                         catch {
-                            Write-Host "Failed to remove $App. $_" -ForegroundColor red
+                            #Write-Host "Failed to remove $($Name). $_" -ForegroundColor red
                         }
                     }
                     else {
@@ -290,10 +290,12 @@ Write-Host "
                             {
                                 foreach ($appx in $app.removeAppxPackage) 
                                 {
-                                   Remove-AppxPackage -Name $appx.Name
+                                   Remove-AppxPackage -Name $($appx.Name)
 
                                    # debug
-                                   #Write-Host Remove-AppxPackage -Name $appx.Name
+                                   #Write-Host RemoveAppxPackage -Name $($appx.Name)
+
+
 
                                 }
                             }
