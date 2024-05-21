@@ -1001,16 +1001,6 @@
     "check": "false"
   },
   {
-    "Name": "HiSuite",
-    "Description": "A management tool for Huawei smartphones and tablets that allows users to manage, backup, and transfer data between their devices and Windows PCs, including contacts, messages, and multimedia files.",
-    "winget": "none",
-    "choco": "Huawei.HiSuite",
-    "scoop": "none",
-    "url": "none",
-    "category": "Utilities",
-    "check": "false"
-  },
-  {
     "Name": "Vysor",
     "Description": "A screen mirroring and remote control software that enables users to view and control Android devices from Windows PCs, allowing for easy screen sharing, app testing, and troubleshooting.",
     "winget": "none",
@@ -1779,16 +1769,6 @@
     "scoop": "none",
     "url": "none",
     "category": "Utilities",
-    "check": "false"
-  },
-  {
-    "Name": "FL Studio",
-    "Description": "FL Studio is a digital audio workstation developed by the Belgian company Image-Line. It features a graphical user interface with a pattern-based music sequencer.",
-    "winget": "ImageLine.FLStudio",
-    "choco": "none",
-    "scoop": "none",
-    "url": "none",
-    "category": "Developer",
     "check": "false"
   },
   {
