@@ -1,4 +1,3 @@
-
 # # Add loaded event handler
 # $sync.TweaksListView.add_Loaded({
    
@@ -30,12 +29,4 @@
 #             break
 #         }
 #     }
-# })
-
-
-# $sync.TweaksListView.add_LostFocus({
-
-#     $sync.TweaksListView.SelectedItem = $null
-#     $sync.itemLink.Visibility = "Hidden"
-#     $sync.Description.Text = ""
 # })
