@@ -61,7 +61,7 @@ newTweak.ps1
 newOST.ps1
 ```
 
-**Use this Command to add a new Qoute**
+**Use this Command to add a new Quote**
 ```sh
 newQuote.ps1
 ```
