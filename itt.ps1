@@ -25,7 +25,7 @@ Add-Type -AssemblyName System.Windows.Forms
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "21-05-2024 (03:17 AM)"
+$sync.version = "21-05-2024 (03:19 AM)"
 $sync.github =   "https://github.com/emadadel4"
 $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://eprojects.orgfree.com"
@@ -4534,7 +4534,7 @@ https://t.me/emadadel4
                         if ($app.Winget -ne "none")
                         {
                             InstallWinget
-                            Start-Process -FilePath "winget" -ArgumentList "install -e -h --accept-source-agreements --accept-package-agreements --id $($app.Winget)" -NoNewWindow -Wait
+                            Start-Process -FilePath "winget" -ArgumentList "install -e -h --accept-source-agreements --ignore-security-hash --accept-package-agreements --id $($app.Winget)" -NoNewWindow -Wait
                         }
 
 
