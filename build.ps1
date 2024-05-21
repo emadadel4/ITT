@@ -92,7 +92,7 @@ function GenerateCheckboxes {
 
         $Checkboxes += @"
 
-            <CheckBox Content="$Content" $Tag $IsChecked FontWeight="Bold"/>
+            <CheckBox Content="$Content" FontWeight="Bold"/>
 
 "@
     }
