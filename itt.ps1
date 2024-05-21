@@ -25,7 +25,7 @@ Add-Type -AssemblyName System.Windows.Forms
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "21-05-2024 (10:36 PM)"
+$sync.version = "21-05-2024 (10:52 PM)"
 $sync.github =   "https://github.com/emadadel4"
 $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://eprojects.orgfree.com"
@@ -2920,6 +2920,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
     <!--Header Section-->
 
 
+        <!--Menu Section-->
             <Menu Grid.Row="0"  Background="Transparent" BorderBrush="Transparent" BorderThickness="0">
                 
                 <MenuItem IsEnabled="False">
@@ -3009,6 +3010,8 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                     </MenuItem.Icon>
                 </MenuItem>
 
+
+            <!--Catagory Section-->
                 <ComboBox SelectedIndex="0" Margin="0" VerticalAlignment="Center" HorizontalAlignment="Center" Name="category" Width="100">
                     <ComboBoxItem Content="All"></ComboBoxItem>
                     <ComboBoxItem Content="Drivers"></ComboBoxItem>
@@ -3025,13 +3028,15 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                     <ComboBoxItem Content="Microsoft"></ComboBoxItem>
                     <ComboBoxItem Content="Security"></ComboBoxItem>
                 </ComboBox>
+            <!--End Catagory Section-->
 
-              
+            
 
 
             </Menu>
+        <!--End Menu Section-->
 
-
+        <!--Search Section-->
             <Grid HorizontalAlignment="Right" Margin="0,0,15,0" Grid.Row="0"  VerticalAlignment="Center" >
                 <TextBox Padding="6"
                                     Width="110"
@@ -3061,11 +3066,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                     </TextBlock.Style>
                 </TextBlock>
             </Grid>        
-    
-    
-                   
-            <!--End Catagory Section-->
-
+        <!--End Search Section-->
 
     <!--End Header Section-->
 
@@ -4727,7 +4728,6 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         
 
 
-
     <!--Footer Section-->
             <Grid Grid.Row="2">
                     <!--applyBtn Button-->
@@ -4764,14 +4764,6 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                             Text="aaa"
                             Width="622"
                             />
-
-                    
-
-
-                    
-
-
-
             </StackPanel>
     <!--End Footer Section-->
 
