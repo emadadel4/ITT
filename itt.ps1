@@ -25,7 +25,7 @@ Add-Type -AssemblyName System.Windows.Forms
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "21-05-2024 (03:19 AM)"
+$sync.version = "21-05-2024 (03:28 AM)"
 $sync.github =   "https://github.com/emadadel4"
 $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://eprojects.orgfree.com"
@@ -3084,364 +3084,543 @@ $inputXML = '
                     <TabItem.Content>
                         <ListView Margin="0" ScrollViewer.VerticalScrollBarVisibility="Auto" Name="list" BorderBrush="{x:Null}" Background="{x:Null}">
                             
-            <CheckBox Content="Thorium SSE3" FontWeight="Bold"/>
+        <CheckBox Content="Thorium SSE3" Tag="Browsers" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Thorium AVX" FontWeight="Bold"/>
+        
+        <CheckBox Content="Thorium AVX" Tag="Browsers" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Firefox" FontWeight="Bold"/>
+        
+        <CheckBox Content="Firefox" Tag="Browsers" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Microsoft Edge" FontWeight="Bold"/>
+        
+        <CheckBox Content="Microsoft Edge" Tag="Browsers" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Google Chrome" FontWeight="Bold"/>
+        
+        <CheckBox Content="Google Chrome" Tag="Browsers" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Chromium" FontWeight="Bold"/>
+        
+        <CheckBox Content="Chromium" Tag="Browsers" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Brave" FontWeight="Bold"/>
+        
+        <CheckBox Content="Brave" Tag="Browsers" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Tor Browser" FontWeight="Bold"/>
+        
+        <CheckBox Content="Tor Browser" Tag="Browsers" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Opera" FontWeight="Bold"/>
+        
+        <CheckBox Content="Opera" Tag="Browsers" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Internet Download Manager" FontWeight="Bold"/>
+        
+        <CheckBox Content="Internet Download Manager" Tag="Browsers" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Neat Download Manager" FontWeight="Bold"/>
+        
+        <CheckBox Content="Neat Download Manager" Tag="Browsers" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="JDownloader" FontWeight="Bold"/>
+        
+        <CheckBox Content="JDownloader" Tag="Browsers" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="K-Lite Mega Codec Full Pack" FontWeight="Bold"/>
+        
+        <CheckBox Content="K-Lite Mega Codec Full Pack" Tag="Media" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="PotPlayer" FontWeight="Bold"/>
+        
+        <CheckBox Content="PotPlayer" Tag="Media" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="VLC" FontWeight="Bold"/>
+        
+        <CheckBox Content="VLC" Tag="Media" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Kodi" FontWeight="Bold"/>
+        
+        <CheckBox Content="Kodi" Tag="Media" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Jellyfin" FontWeight="Bold"/>
+        
+        <CheckBox Content="Jellyfin" Tag="Media" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Winamp" FontWeight="Bold"/>
+        
+        <CheckBox Content="Winamp" Tag="Media" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Aimp" FontWeight="Bold"/>
+        
+        <CheckBox Content="Aimp" Tag="Media" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Spotify" FontWeight="Bold"/>
+        
+        <CheckBox Content="Spotify" Tag="Media" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="FastStone Image Viewer" FontWeight="Bold"/>
+        
+        <CheckBox Content="FastStone Image Viewer" Tag="Imaging" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="OpenOffice" FontWeight="Bold"/>
+        
+        <CheckBox Content="OpenOffice" Tag="Documents" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="FoxitReader" FontWeight="Bold"/>
+        
+        <CheckBox Content="FoxitReader" Tag="Documents" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="LibreOffice" FontWeight="Bold"/>
+        
+        <CheckBox Content="LibreOffice" Tag="Documents" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="SumatraPDF" FontWeight="Bold"/>
+        
+        <CheckBox Content="SumatraPDF" Tag="Documents" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="WinRAR" FontWeight="Bold"/>
+        
+        <CheckBox Content="WinRAR" Tag="Compression" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="7-Zip" FontWeight="Bold"/>
+        
+        <CheckBox Content="7-Zip" Tag="Compression" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="PeaZip" FontWeight="Bold"/>
+        
+        <CheckBox Content="PeaZip" Tag="Compression" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Telegram Desktop" FontWeight="Bold"/>
+        
+        <CheckBox Content="Telegram Desktop" Tag="Communication" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Signal" FontWeight="Bold"/>
+        
+        <CheckBox Content="Signal" Tag="Communication" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Meta Messenger" FontWeight="Bold"/>
+        
+        <CheckBox Content="Meta Messenger" Tag="Communication" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Zoom" FontWeight="Bold"/>
+        
+        <CheckBox Content="Zoom" Tag="Communication" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Microsoft Teams" FontWeight="Bold"/>
+        
+        <CheckBox Content="Microsoft Teams" Tag="Communication" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Discord" FontWeight="Bold"/>
+        
+        <CheckBox Content="Discord" Tag="Communication" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="TeamViewer" FontWeight="Bold"/>
+        
+        <CheckBox Content="TeamViewer" Tag="File Sharing" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="GIMP" FontWeight="Bold"/>
+        
+        <CheckBox Content="GIMP" Tag="Imaging" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="DirectX" FontWeight="Bold"/>
+        
+        <CheckBox Content="DirectX" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Microsoft Visual C++ Runtime - all versions" FontWeight="Bold"/>
+        
+        <CheckBox Content="Microsoft Visual C++ Runtime - all versions" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Microsoft Visual C++ 2005 (x86) Redistributable" FontWeight="Bold"/>
+        
+        <CheckBox Content="Microsoft Visual C++ 2005 (x86) Redistributable" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Microsoft Visual C++ 2005 (x64) Redistributable" FontWeight="Bold"/>
+        
+        <CheckBox Content="Microsoft Visual C++ 2005 (x64) Redistributable" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Microsoft Visual C++ 2008 (x86) Redistributable" FontWeight="Bold"/>
+        
+        <CheckBox Content="Microsoft Visual C++ 2008 (x86) Redistributable" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Microsoft Visual C++ 2008 (x64) Redistributable" FontWeight="Bold"/>
+        
+        <CheckBox Content="Microsoft Visual C++ 2008 (x64) Redistributable" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Microsoft Visual C++ 2010 (x86) Redistributable" FontWeight="Bold"/>
+        
+        <CheckBox Content="Microsoft Visual C++ 2010 (x86) Redistributable" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Microsoft Visual C++ 2010 (x64) Redistributable" FontWeight="Bold"/>
+        
+        <CheckBox Content="Microsoft Visual C++ 2010 (x64) Redistributable" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Microsoft Visual C++ 2012 (x86) Redistributable" FontWeight="Bold"/>
+        
+        <CheckBox Content="Microsoft Visual C++ 2012 (x86) Redistributable" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Microsoft Visual C++ 2012 (x64) Redistributable" FontWeight="Bold"/>
+        
+        <CheckBox Content="Microsoft Visual C++ 2012 (x64) Redistributable" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Microsoft Visual C++ 2013 (x86) Redistributable" FontWeight="Bold"/>
+        
+        <CheckBox Content="Microsoft Visual C++ 2013 (x86) Redistributable" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Microsoft Visual C++ 2013 (x64) Redistributable" FontWeight="Bold"/>
+        
+        <CheckBox Content="Microsoft Visual C++ 2013 (x64) Redistributable" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Microsoft Visual C++ 2015-2022 (x64) Redistributable" FontWeight="Bold"/>
+        
+        <CheckBox Content="Microsoft Visual C++ 2015-2022 (x64) Redistributable" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Microsoft Visual C++ 2015-2022  (x86) Redistributable" FontWeight="Bold"/>
+        
+        <CheckBox Content="Microsoft Visual C++ 2015-2022  (x86) Redistributable" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="NET Framework All Versions" FontWeight="Bold"/>
+        
+        <CheckBox Content="NET Framework All Versions" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="AMD Ryzen Chipset Drivers" FontWeight="Bold"/>
+        
+        <CheckBox Content="AMD Ryzen Chipset Drivers" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="NVidia Display Driver" FontWeight="Bold"/>
+        
+        <CheckBox Content="NVidia Display Driver" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="NVIDIA GeForce Experience" FontWeight="Bold"/>
+        
+        <CheckBox Content="NVIDIA GeForce Experience" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Msi Afterburner" FontWeight="Bold"/>
+        
+        <CheckBox Content="Msi Afterburner" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="NVIDIA PhysX" FontWeight="Bold"/>
+        
+        <CheckBox Content="NVIDIA PhysX" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Steam" FontWeight="Bold"/>
+        
+        <CheckBox Content="Steam" Tag="Launchers" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Ubisoft Connect" FontWeight="Bold"/>
+        
+        <CheckBox Content="Ubisoft Connect" Tag="Launchers" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Origin" FontWeight="Bold"/>
+        
+        <CheckBox Content="Origin" Tag="Launchers" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Rockstar Games Launcher" FontWeight="Bold"/>
+        
+        <CheckBox Content="Rockstar Games Launcher" Tag="Launchers" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="GameSave Manager" FontWeight="Bold"/>
+        
+        <CheckBox Content="GameSave Manager" Tag="Launchers" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="StreamlabsOBS" FontWeight="Bold"/>
+        
+        <CheckBox Content="StreamlabsOBS" Tag="Launchers" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="OBS Studio" FontWeight="Bold"/>
+        
+        <CheckBox Content="OBS Studio" Tag="Launchers" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Logitech Gaming Software" FontWeight="Bold"/>
+        
+        <CheckBox Content="Logitech Gaming Software" Tag="Launchers" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Lively Wallpaper" FontWeight="Bold"/>
+        
+        <CheckBox Content="Lively Wallpaper" Tag="Launchers" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Playnite" FontWeight="Bold"/>
+        
+        <CheckBox Content="Playnite" Tag="Launchers" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Driver Easy" FontWeight="Bold"/>
+        
+        <CheckBox Content="Driver Easy" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Intel Graphics Windows DCH" FontWeight="Bold"/>
+        
+        <CheckBox Content="Intel Graphics Windows DCH" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Intel Driver Support Assistant" FontWeight="Bold"/>
+        
+        <CheckBox Content="Intel Driver Support Assistant" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Intel Network Adapter" FontWeight="Bold"/>
+        
+        <CheckBox Content="Intel Network Adapter" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Snappy Driver Installer" FontWeight="Bold"/>
+        
+        <CheckBox Content="Snappy Driver Installer" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Driver booster" FontWeight="Bold"/>
+        
+        <CheckBox Content="Driver booster" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Driver Genius" FontWeight="Bold"/>
+        
+        <CheckBox Content="Driver Genius" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Display Driver Uninstaller" FontWeight="Bold"/>
+        
+        <CheckBox Content="Display Driver Uninstaller" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Driver Store Explorer" FontWeight="Bold"/>
+        
+        <CheckBox Content="Driver Store Explorer" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="1Password" FontWeight="Bold"/>
+        
+        <CheckBox Content="1Password" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="MiniTool Partition Wizard" FontWeight="Bold"/>
+        
+        <CheckBox Content="MiniTool Partition Wizard" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="AOMEI Partition Assistant Standard" FontWeight="Bold"/>
+        
+        <CheckBox Content="AOMEI Partition Assistant Standard" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="AOMEI Backupper" FontWeight="Bold"/>
+        
+        <CheckBox Content="AOMEI Backupper" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Recuva recover" FontWeight="Bold"/>
+        
+        <CheckBox Content="Recuva recover" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="CCleaner" FontWeight="Bold"/>
+        
+        <CheckBox Content="CCleaner" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="BCUninstaller" FontWeight="Bold"/>
+        
+        <CheckBox Content="BCUninstaller" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Easy Context Menu" FontWeight="Bold"/>
+        
+        <CheckBox Content="Easy Context Menu" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="HWiNFO" FontWeight="Bold"/>
+        
+        <CheckBox Content="HWiNFO" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Speccy" FontWeight="Bold"/>
+        
+        <CheckBox Content="Speccy" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="FurMark" FontWeight="Bold"/>
+        
+        <CheckBox Content="FurMark" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Hard Disk Sentinel" FontWeight="Bold"/>
+        
+        <CheckBox Content="Hard Disk Sentinel" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="CPUID CPU-Z" FontWeight="Bold"/>
+        
+        <CheckBox Content="CPUID CPU-Z" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Mem Reduct" FontWeight="Bold"/>
+        
+        <CheckBox Content="Mem Reduct" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="HandBrake" FontWeight="Bold"/>
+        
+        <CheckBox Content="HandBrake" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Rufus" FontWeight="Bold"/>
+        
+        <CheckBox Content="Rufus" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="ImgBurn" FontWeight="Bold"/>
+        
+        <CheckBox Content="ImgBurn" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Virtual CloneDrive" FontWeight="Bold"/>
+        
+        <CheckBox Content="Virtual CloneDrive" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Ultra ISO" FontWeight="Bold"/>
+        
+        <CheckBox Content="Ultra ISO" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Ventoy" FontWeight="Bold"/>
+        
+        <CheckBox Content="Ventoy" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="iVentoy" FontWeight="Bold"/>
+        
+        <CheckBox Content="iVentoy" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="AutoHotkey" FontWeight="Bold"/>
+        
+        <CheckBox Content="AutoHotkey" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Rainmeter" FontWeight="Bold"/>
+        
+        <CheckBox Content="Rainmeter" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="FxSound" FontWeight="Bold"/>
+        
+        <CheckBox Content="FxSound" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Vysor" FontWeight="Bold"/>
+        
+        <CheckBox Content="Vysor" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Unified Remote" FontWeight="Bold"/>
+        
+        <CheckBox Content="Unified Remote" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="AnyDesk" FontWeight="Bold"/>
+        
+        <CheckBox Content="AnyDesk" Tag="File Sharing" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Airdroid" FontWeight="Bold"/>
+        
+        <CheckBox Content="Airdroid" Tag="File Sharing" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="UltraViewer" FontWeight="Bold"/>
+        
+        <CheckBox Content="UltraViewer" Tag="File Sharing" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Wireless Network Watcher Portable" FontWeight="Bold"/>
+        
+        <CheckBox Content="Wireless Network Watcher Portable" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="WifiInfoView" FontWeight="Bold"/>
+        
+        <CheckBox Content="WifiInfoView" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="qBittorrent" FontWeight="Bold"/>
+        
+        <CheckBox Content="qBittorrent" Tag="File Sharing" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Google Earth Pro" FontWeight="Bold"/>
+        
+        <CheckBox Content="Google Earth Pro" Tag="Imaging" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="XAMPP" FontWeight="Bold"/>
+        
+        <CheckBox Content="XAMPP" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Visual Studio Professional 2022" FontWeight="Bold"/>
+        
+        <CheckBox Content="Visual Studio Professional 2022" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Visual Studio Community 2022" FontWeight="Bold"/>
+        
+        <CheckBox Content="Visual Studio Community 2022" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Unity Hub" FontWeight="Bold"/>
+        
+        <CheckBox Content="Unity Hub" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Godot Engine" FontWeight="Bold"/>
+        
+        <CheckBox Content="Godot Engine" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Unity3D Engine" FontWeight="Bold"/>
+        
+        <CheckBox Content="Unity3D Engine" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Blender" FontWeight="Bold"/>
+        
+        <CheckBox Content="Blender" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Visual Studio Code" FontWeight="Bold"/>
+        
+        <CheckBox Content="Visual Studio Code" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Vim" FontWeight="Bold"/>
+        
+        <CheckBox Content="Vim" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Sublime Text 4" FontWeight="Bold"/>
+        
+        <CheckBox Content="Sublime Text 4" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Atom" FontWeight="Bold"/>
+        
+        <CheckBox Content="Atom" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="InnoSetup" FontWeight="Bold"/>
+        
+        <CheckBox Content="InnoSetup" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="PyCharm Community Edition" FontWeight="Bold"/>
+        
+        <CheckBox Content="PyCharm Community Edition" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="PyCharm Professional Edition" FontWeight="Bold"/>
+        
+        <CheckBox Content="PyCharm Professional Edition" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Jetbrains Rider" FontWeight="Bold"/>
+        
+        <CheckBox Content="Jetbrains Rider" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Node.js LTS" FontWeight="Bold"/>
+        
+        <CheckBox Content="Node.js LTS" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Electrum-LTS" FontWeight="Bold"/>
+        
+        <CheckBox Content="Electrum-LTS" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Hugo" FontWeight="Bold"/>
+        
+        <CheckBox Content="Hugo" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Notepad++" FontWeight="Bold"/>
+        
+        <CheckBox Content="Notepad++" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Windows Terminal" FontWeight="Bold"/>
+        
+        <CheckBox Content="Windows Terminal" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Powershell core" FontWeight="Bold"/>
+        
+        <CheckBox Content="Powershell core" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="x64dbg Portable" FontWeight="Bold"/>
+        
+        <CheckBox Content="x64dbg Portable" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="dnSpy" FontWeight="Bold"/>
+        
+        <CheckBox Content="dnSpy" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Cheat Engine" FontWeight="Bold"/>
+        
+        <CheckBox Content="Cheat Engine" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Python" FontWeight="Bold"/>
+        
+        <CheckBox Content="Python" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Git" FontWeight="Bold"/>
+        
+        <CheckBox Content="Git" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="GitHub Desktop" FontWeight="Bold"/>
+        
+        <CheckBox Content="GitHub Desktop" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Docker Desktop" FontWeight="Bold"/>
+        
+        <CheckBox Content="Docker Desktop" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Docker Compose" FontWeight="Bold"/>
+        
+        <CheckBox Content="Docker Compose" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="PowerToys" FontWeight="Bold"/>
+        
+        <CheckBox Content="PowerToys" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Notion" FontWeight="Bold"/>
+        
+        <CheckBox Content="Notion" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="FL Studio" FontWeight="Bold"/>
+        
+        <CheckBox Content="FL Studio" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Android Debug Bridge" FontWeight="Bold"/>
+        
+        <CheckBox Content="Android Debug Bridge" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Universal ADB Drivers" FontWeight="Bold"/>
+        
+        <CheckBox Content="Universal ADB Drivers" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Scrcpy" FontWeight="Bold"/>
+        
+        <CheckBox Content="Scrcpy" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="VirtualBox" FontWeight="Bold"/>
+        
+        <CheckBox Content="VirtualBox" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Oh My Posh" FontWeight="Bold"/>
+        
+        <CheckBox Content="Oh My Posh" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Malwarebytes" FontWeight="Bold"/>
+        
+        <CheckBox Content="Malwarebytes" Tag="Security" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Kaspersky Virus Removal Tool" FontWeight="Bold"/>
+        
+        <CheckBox Content="Kaspersky Virus Removal Tool" Tag="Security" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Kaspersky Anti-Virus" FontWeight="Bold"/>
+        
+        <CheckBox Content="Kaspersky Anti-Virus" Tag="Security" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Avast Free Antivirus" FontWeight="Bold"/>
+        
+        <CheckBox Content="Avast Free Antivirus" Tag="Security" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Nerd Fonts - CascadiaCode" FontWeight="Bold"/>
+        
+        <CheckBox Content="Nerd Fonts - CascadiaCode" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Java SE Runtime Environment 8.0.411" FontWeight="Bold"/>
+        
+        <CheckBox Content="Java SE Runtime Environment 8.0.411" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Audacity" FontWeight="Bold"/>
+        
+        <CheckBox Content="Audacity" Tag="Media" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="MusicBee" FontWeight="Bold"/>
+        
+        <CheckBox Content="MusicBee" Tag="Media" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="FormatFactory" FontWeight="Bold"/>
+        
+        <CheckBox Content="FormatFactory" Tag="Media" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Winaero Tweaker" FontWeight="Bold"/>
+        
+        <CheckBox Content="Winaero Tweaker" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Windows Subsystem for Linux WSL2" FontWeight="Bold"/>
+        
+        <CheckBox Content="Windows Subsystem for Linux WSL2" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Wamp Server 3.3.5" FontWeight="Bold"/>
+        
+        <CheckBox Content="Wamp Server 3.3.5" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="MongoDB 7.3.2" FontWeight="Bold"/>
+        
+        <CheckBox Content="MongoDB 7.3.2" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="MPC-BE" FontWeight="Bold"/>
+        
+        <CheckBox Content="MPC-BE" Tag="Media" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Kdenlive" FontWeight="Bold"/>
+        
+        <CheckBox Content="Kdenlive" Tag="Media" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="TablePlus" FontWeight="Bold"/>
+        
+        <CheckBox Content="TablePlus" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Hosts File Editor" FontWeight="Bold"/>
+        
+        <CheckBox Content="Hosts File Editor" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Subtitle Edit" FontWeight="Bold"/>
+        
+        <CheckBox Content="Subtitle Edit" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Skype" FontWeight="Bold"/>
+        
+        <CheckBox Content="Skype" Tag="Communication" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="FileZilla" FontWeight="Bold"/>
+        
+        <CheckBox Content="FileZilla" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Everything" FontWeight="Bold"/>
+        
+        <CheckBox Content="Everything" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Yarn" FontWeight="Bold"/>
+        
+        <CheckBox Content="Yarn" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="VMware Workstation Player" FontWeight="Bold"/>
+        
+        <CheckBox Content="VMware Workstation Player" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="HDD Low Level Format Tool" FontWeight="Bold"/>
+        
+        <CheckBox Content="HDD Low Level Format Tool" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="BlueStacks" FontWeight="Bold"/>
+        
+        <CheckBox Content="BlueStacks" Tag="Launchers" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Intel Wireless Bluetooth for Windows 10 and Windows 11" FontWeight="Bold"/>
+        
+        <CheckBox Content="Intel Wireless Bluetooth for Windows 10 and Windows 11" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Office 365 Business" FontWeight="Bold"/>
+        
+        <CheckBox Content="Office 365 Business" Tag="Microsoft" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Bandicam" FontWeight="Bold"/>
+        
+        <CheckBox Content="Bandicam" Tag="Imaging" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="QQPlayer" FontWeight="Bold"/>
+        
+        <CheckBox Content="QQPlayer" Tag="Media" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="4K Video Downloader" FontWeight="Bold"/>
+        
+        <CheckBox Content="4K Video Downloader" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Active@ Partition Recovery" FontWeight="Bold"/>
+        
+        <CheckBox Content="Active@ Partition Recovery" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="HiSuite" FontWeight="Bold"/>
+        
+        <CheckBox Content="HiSuite" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="Android Studio" FontWeight="Bold"/>
+        
+        <CheckBox Content="Android Studio" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
 
-            <CheckBox Content="WhatsApp" FontWeight="Bold"/>
+        
+        <CheckBox Content="WhatsApp" Tag="Communication" IsChecked="false" FontWeight="Bold"/>
 
+        
                         </ListView>
                     </TabItem.Content>
                 </TabItem>
@@ -3459,50 +3638,72 @@ $inputXML = '
                     <TabItem.Content>
                         <ListView Name="tweaks"  Margin="0" ScrollViewer.VerticalScrollBarVisibility="Auto" BorderBrush="{x:Null}" Background="{x:Null}">
                             
-            <CheckBox Content="System File Checker" FontWeight="Bold"/>
+        <CheckBox Content="System File Checker"   FontWeight="Bold"/>
 
-            <CheckBox Content="Run Disk cleanup" FontWeight="Bold"/>
+        
+        <CheckBox Content="Run Disk cleanup"   FontWeight="Bold"/>
 
-            <CheckBox Content="Restore All Windows Services to Default" FontWeight="Bold"/>
+        
+        <CheckBox Content="Restore All Windows Services to Default"   FontWeight="Bold"/>
 
-            <CheckBox Content="Fix Stutter/Lag in Games" FontWeight="Bold"/>
+        
+        <CheckBox Content="Fix Stutter/Lag in Games"   FontWeight="Bold"/>
 
-            <CheckBox Content="Enable the Ultimate Performance Power Plan" FontWeight="Bold"/>
+        
+        <CheckBox Content="Enable the Ultimate Performance Power Plan"   FontWeight="Bold"/>
 
-            <CheckBox Content="Reset the TCP/IP Stack" FontWeight="Bold"/>
+        
+        <CheckBox Content="Reset the TCP/IP Stack"   FontWeight="Bold"/>
 
-            <CheckBox Content="Setup Auto login" FontWeight="Bold"/>
+        
+        <CheckBox Content="Setup Auto login"   FontWeight="Bold"/>
 
-            <CheckBox Content="Disable Game Mode" FontWeight="Bold"/>
+        
+        <CheckBox Content="Disable Game Mode"   FontWeight="Bold"/>
 
-            <CheckBox Content="Disable Data Collection" FontWeight="Bold"/>
+        
+        <CheckBox Content="Disable Data Collection"   FontWeight="Bold"/>
 
-            <CheckBox Content="Disable Start menu ads" FontWeight="Bold"/>
+        
+        <CheckBox Content="Disable Start menu ads"   FontWeight="Bold"/>
 
-            <CheckBox Content="Disable Windows Web Search" FontWeight="Bold"/>
+        
+        <CheckBox Content="Disable Windows Web Search"   FontWeight="Bold"/>
 
-            <CheckBox Content="Turn off background apps" FontWeight="Bold"/>
+        
+        <CheckBox Content="Turn off background apps"   FontWeight="Bold"/>
 
-            <CheckBox Content="Disable suggestions on start menu" FontWeight="Bold"/>
+        
+        <CheckBox Content="Disable suggestions on start menu"   FontWeight="Bold"/>
 
-            <CheckBox Content="Disable the News and interests on taskbar" FontWeight="Bold"/>
+        
+        <CheckBox Content="Disable the News and interests on taskbar"   FontWeight="Bold"/>
 
-            <CheckBox Content="Show Search icon Only on taskbar" FontWeight="Bold"/>
+        
+        <CheckBox Content="Show Search icon Only on taskbar"   FontWeight="Bold"/>
 
-            <CheckBox Content="Disable People icon on taskbar" FontWeight="Bold"/>
+        
+        <CheckBox Content="Disable People icon on taskbar"   FontWeight="Bold"/>
 
-            <CheckBox Content="Remove Folder Shortcuts From Windows'' File Explorer" FontWeight="Bold"/>
+        
+        <CheckBox Content="Remove Folder Shortcuts From Windows'' File Explorer"   FontWeight="Bold"/>
 
-            <CheckBox Content="Optimize Services" FontWeight="Bold"/>
+        
+        <CheckBox Content="Optimize Services"   FontWeight="Bold"/>
 
-            <CheckBox Content="Remove Unnecessary Windows 10/11 Apps" FontWeight="Bold"/>
+        
+        <CheckBox Content="Remove Unnecessary Windows 10/11 Apps"   FontWeight="Bold"/>
 
-            <CheckBox Content="Disable Hibernate" FontWeight="Bold"/>
+        
+        <CheckBox Content="Disable Hibernate"   FontWeight="Bold"/>
 
-            <CheckBox Content="Disable OneDrive" FontWeight="Bold"/>
+        
+        <CheckBox Content="Disable OneDrive"   FontWeight="Bold"/>
 
-            <CheckBox Content="Remove Meet Now icon on Taskbar Windows 10" FontWeight="Bold"/>
+        
+        <CheckBox Content="Remove Meet Now icon on Taskbar Windows 10"   FontWeight="Bold"/>
 
+        
                         </ListView>
                     </TabItem.Content>
                 </TabItem>
@@ -4293,7 +4494,9 @@ function Invoke-Button {
         "installBtn" {Invoke-Install $debug}
         "applyBtn" {Invoke-ApplyTweaks $debug}
         "taps" {ChangeTap $debug}
+
         "category" {FilterByCat($sync.category.SelectedItem.Content) $debug}
+        
         "searchInput" {Search; $sync['window'].FindName('category').SelectedIndex = 0; $sync['window'].FindName('apps').IsSelected = $true; $debug }
 
         #===========================================================================
