@@ -79,4 +79,3 @@ function ClearFilter {
     $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync['window'].FindName('list').Items)
     $collectionView.Filter = $null
 }
-#endregion
