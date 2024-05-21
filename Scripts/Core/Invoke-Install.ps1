@@ -5,19 +5,33 @@ function Get-SelectedApps
 
     foreach ($item in $sync.AppsListView.Items)
     {
-        if ($item.IsChecked)
-        {
-            foreach ($program in $sync.database.Applications)
-            {
-                if($item.Content -eq $program.Name)
-                {
-                    $items += @{
+        if ($item -is [System.Windows.Controls.StackPanel]) {
 
-                        Name = $program.Name
-                        Choco = $program.Choco
-                        Scoop = $program.Scoop
-                        Winget = $program.winget
-                        URL = $program.url
+            foreach ($child in $item.Children) {
+                if ($child -is [System.Windows.Controls.StackPanel]) {
+                    foreach ($innerChild in $child.Children) {
+                        if ($innerChild -is [System.Windows.Controls.CheckBox]) {
+
+                            if($innerChild.IsChecked)
+                            {
+                                    foreach ($program in $sync.database.Applications)
+                                    {
+                                        if($innerChild.content -eq $program.Name)
+                                        {
+                                            $items += @{
+
+                                                Name = $program.Name
+                                                Choco = $program.Choco
+                                                Scoop = $program.Scoop
+                                                Winget = $program.winget
+                                                URL = $program.url
+                                            }
+
+                                        }
+                                    }
+                            }
+
+                        }
                     }
                 }
             }
@@ -27,6 +41,7 @@ function Get-SelectedApps
     return $items 
 }
 
+
 function ShowSelectedItems {
     
     $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.AppsListView.Items)
@@ -34,11 +49,28 @@ function ShowSelectedItems {
     $filterPredicate = {
        param($item)
 
-       $tagToFilter =  $true
-       # Check if the item has the tag
-       $itemTag = $item.IsChecked
-       return $itemTag -eq $tagToFilter
-   }
+       if ($item -is [System.Windows.Controls.StackPanel]) {
+
+        foreach ($child in $item.Children) {
+            if ($child -is [System.Windows.Controls.StackPanel]) {
+                foreach ($innerChild in $child.Children) {
+                    if ($innerChild -is [System.Windows.Controls.CheckBox]) {
+    
+                        $tagToFilter =  $true
+                        # Check if the item has the tag
+                        $itemTag = $innerChild.IsChecked
+                        return $itemTag -eq $tagToFilter
+                    }
+                }
+            }
+        }
+
+        $collectionView.Filter = $filterPredicate
+
+    }
+     
+}
+
 
    $collectionView.Filter = $filterPredicate
 
@@ -71,7 +103,7 @@ function Invoke-Install
                
                 $sync['window'].Dispatcher.Invoke([Action]{
                     $sync.installBtn.Content = "$InstallBtn"
-                    $sync.Description.Text = "$Description"
+                    #$sync.Description.Text = "$Description"
                 })
             }
 
@@ -127,10 +159,19 @@ function Invoke-Install
                 $sync.AppsListView.Dispatcher.Invoke([Action]{
                     foreach ($item in $sync.AppsListView.Items)
                     {
-                        $item.IsChecked = $false
-                        $sync['window'].FindName('list').Clear()
-                        $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync['window'].FindName('list').Items)
-                        $collectionView.Filter = $null
+                        foreach ($child in $item.Children) {
+                            if ($child -is [System.Windows.Controls.StackPanel]) {
+                                foreach ($innerChild in $child.Children) {
+                                    if ($innerChild -is [System.Windows.Controls.CheckBox]) {
+                    
+                                        $innerChild.IsChecked = $false
+                                        $sync['window'].FindName('list').Clear()
+                                        $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.AppsListView.Items)
+                                        $collectionView.Filter = $null
+                                    }
+                                }
+                            }
+                        }
                     }
                 })
 
@@ -258,10 +299,19 @@ https://t.me/emadadel4
                     $sync.AppsListView.Dispatcher.Invoke([Action]{
                         foreach ($item in $sync.AppsListView.Items)
                         {
-                            $item.IsChecked = $false
-                            $sync['window'].FindName('list').Clear()
-                            $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync['window'].FindName('list').Items)
-                            $collectionView.Filter = $null
+                            foreach ($child in $item.Children) {
+                                if ($child -is [System.Windows.Controls.StackPanel]) {
+                                    foreach ($innerChild in $child.Children) {
+                                        if ($innerChild -is [System.Windows.Controls.CheckBox]) {
+                        
+                                            $innerChild.IsChecked = $false
+                                            $sync['window'].FindName('list').Clear()
+                                            $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync['window'].FindName('list').Items)
+                                            $collectionView.Filter = $null
+                                        }
+                                    }
+                                }
+                            }
                         }
                     })
                 }
