@@ -201,15 +201,17 @@ https://t.me/emadadel4
                     $sync.ProcessRunning = $true
                     foreach ($app in $selectedApps) 
                     {
-                        if ($app.Choco -ne "none")
-                        {
-                            Start-Process -FilePath "choco" -ArgumentList "install $($app.Choco) --confirm --acceptlicense -q -r --ignore-http-cache --allowemptychecksumsecure --allowemptychecksum  --usepackagecodes --ignoredetectedreboot --ignore-checksums" -NoNewWindow -Wait 
-                        }
 
                         if ($app.Winget -ne "none")
                         {
                             InstallWinget
-                            Start-Process -FilePath "winget" -ArgumentList "install -e -h --accept-source-agreements --accept-package-agreements --id $($app.Winget)" -NoNewWindow -Wait
+                            Start-Process -FilePath "winget" -ArgumentList "install -e -h --accept-source-agreements --ignore-security-hash --accept-package-agreements --id $($app.Winget)" -NoNewWindow -Wait
+                        }
+
+
+                        if ($app.Choco -ne "none")
+                        {
+                            Start-Process -FilePath "choco" -ArgumentList "install $($app.Choco) --confirm --acceptlicense -q -r --ignore-http-cache --allowemptychecksumsecure --allowemptychecksum  --usepackagecodes --ignoredetectedreboot --ignore-checksums" -NoNewWindow -Wait 
                         }
 
                         if ($app.URL -ne "none")
