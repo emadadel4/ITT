@@ -1,23 +1,28 @@
 # # Define a function to update the description and link when an item is selected
-# function UpdateDescriptionAndLink {
-#     # Get the name of the selected application from the list
-#     $selectedAppName = $sync.AppsListView.SelectedItem.Content
 
-#     $sync.itemLink.Visibility = "Visible"
+# function GetCheckBoxesFromStackPanel {
+#     param (
+#         [System.Windows.Controls.StackPanel]$item
+#     )
 
-#     # Loop through the list of applications in the database and find the matching one
-#     foreach ($app in $sync.database.Applications) {
-
-#         if ($app.name -eq $selectedAppName) {
-
-#             # Update the description text block with the selected application's description
-#             $sync.Description.Text = $app.description
-#             # Update the link text block with the selected application's official website link
-#             $sync.itemLink.Text = "$($app.name) official website"
-#             break
+#     $checkBoxes = @()  # Initialize an empty array to store CheckBoxes
+    
+#     if ($item -is [System.Windows.Controls.StackPanel]) {
+#         foreach ($child in $item.Children) {
+#             if ($child -is [System.Windows.Controls.StackPanel]) {
+#                 foreach ($innerChild in $child.Children) {
+#                     if ($innerChild -is [System.Windows.Controls.CheckBox]) {
+#                         # Add CheckBox to the array
+#                         $checkBoxes += $innerChild
+#                     }
+#                 }
+#             }
 #         }
 #     }
+
+#     return $checkBoxes
 # }
+
 
 # # Define a function to open the official website of the selected application
 # function OpenOfficialWebsite {
@@ -44,16 +49,8 @@
 
 # })
 
-#     # Add a mouse left button down event handler to the itemLink control
-#     $sync.itemLink.add_MouseLeftButtonDown({
-#         OpenOfficialWebsite
-#     })
+# # Add a mouse left button down event handler to the itemLink control
+# $sync.itemLink.add_MouseLeftButtonDown({
+#     OpenOfficialWebsite
+# })
 
-
-#     $sync.AppsListView.add_LostFocus({
-
-#         $sync.AppsListView.SelectedItem = $null
-#         $sync.itemLink.Visibility = "Hidden"
-#         $sync.Description.Text = ""
-
-#     })
