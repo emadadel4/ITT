@@ -1,3 +1,27 @@
+
+function GetCheckBoxesFromStackPanel {
+    param (
+        [System.Windows.Controls.StackPanel]$item
+    )
+
+    $checkBoxes = @()  # Initialize an empty array to store CheckBoxes
+    
+    if ($item -is [System.Windows.Controls.StackPanel]) {
+        foreach ($child in $item.Children) {
+            if ($child -is [System.Windows.Controls.StackPanel]) {
+                foreach ($innerChild in $child.Children) {
+                    if ($innerChild -is [System.Windows.Controls.CheckBox]) {
+                        # Add CheckBox to the array
+                        $checkBoxes += $innerChild
+                    }
+                }
+            }
+        }
+    }
+
+    return $checkBoxes
+}
+
 function LoadJson {
 
     # Open file dialog to select JSON file
@@ -14,8 +38,8 @@ function LoadJson {
         $filterPredicate = {
 
             param($item)
-            
-            #Write-Host $item.Content
+
+            $item =  GetCheckBoxesFromStackPanel -item $item
 
             foreach ($currentItemName in $filteredNames.Name) {
 
@@ -26,10 +50,10 @@ function LoadJson {
                 }
 
             }
-
+            
             return $filteredNames.name -contains $item.Content
+                          
         }
-
 
         $sync['window'].FindName('apps').IsSelected = $true
         $sync['window'].FindName('list').Clear()
@@ -39,6 +63,7 @@ function LoadJson {
 
     }
 }
+
 
 function SaveItemsToJson
 {
@@ -50,15 +75,18 @@ function SaveItemsToJson
     foreach ($item in $sync['window'].FindName('list').Items)
     {
 
-      if ($item.IsChecked)
-      {
-            $itemObject = [PSCustomObject]@{
-              Name = $item.Content
-              check = "true"
+        $item =  GetCheckBoxesFromStackPanel -item $item
 
-          }
-            $items += $itemObject
-      }
+        if ($item.IsChecked)
+        {
+                $itemObject = [PSCustomObject]@{
+                Name = $item.Content
+                check = "true"
+    
+            }
+                $items += $itemObject
+        }
+     
     }
 
     if ($null -ne $items -and $items.Count -gt 0) 
@@ -80,12 +108,13 @@ function SaveItemsToJson
         
             foreach ($item in $sync.AppsListView.Items)
             {
+                $item =  GetCheckBoxesFromStackPanel -item $item
+
                 if ($item.IsChecked)
                 {
                     $item.IsChecked = $false
                 }
             }
-
     }
     else
     {

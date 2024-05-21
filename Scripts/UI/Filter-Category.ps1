@@ -1,14 +1,30 @@
-#region Function to filter a list based on a search input and Category
-function Search{
+function Search {
 
     # Retrieves the search input, converts it to lowercase, and filters the list based on the input
     $filter = $sync.searchInput.Text.ToLower() -replace '[^\p{L}\p{N}]', ''
+
     $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync['window'].FindName('list').Items)
+    
     $collectionView.Filter = {
         param($item)
-        $item -like "*$filter*"
+        if ($item -is [System.Windows.Controls.StackPanel]) {
+            foreach ($child in $item.Children) {
+                if ($child -is [System.Windows.Controls.StackPanel]) {
+                    foreach ($innerChild in $child.Children) {
+                        if ($innerChild -is [System.Windows.Controls.CheckBox]) {
+                            if ($innerChild.Content -match $filter) {
+                                return $true
+                            }
+                        }
+                    }
+                }
+            }
+            return $false
+        }
+        return $true  # Non-StackPanel items are always included
     }
 }
+
 
 function FilterByCat {
 
@@ -21,12 +37,27 @@ function FilterByCat {
     # Define the filter predicate
     $filterPredicate = {
         param($item)
+        
+        if ($item -is [System.Windows.Controls.StackPanel]) {
 
-        # Define the tag you want to filter by
-        $tagToFilter =  $Cat
-        # Check if the item has the tag
-        $itemTag = $item.Tag
-        return $itemTag -eq $tagToFilter
+            foreach ($child in $item.Children) {
+                if ($child -is [System.Windows.Controls.StackPanel]) {
+                    foreach ($innerChild in $child.Children) {
+                        if ($innerChild -is [System.Windows.Controls.CheckBox]) {
+
+                            # Define the tag you want to filter by
+                            $tagToFilter =  $Cat
+                            # Check if the item has the tag
+                            $itemTag = $innerChild.Tag
+                            return $itemTag -eq $tagToFilter
+
+                        }
+                    }
+                }
+            }
+        }
+
+   
     }
 
     if($Cat -eq "All")

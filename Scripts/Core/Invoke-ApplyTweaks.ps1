@@ -5,21 +5,34 @@ function Get-SelectedTweaks
 
     foreach ($item in $sync.TweaksListView.Items)
     {
-        if ($item.IsChecked)
-        {
-            foreach ($program in $sync.database.Tweaks)
-            {
-                if($item.Content -eq $program.Name)
-                {
-                    $items += @{
-                        Name = $program.Name
-                        Type = $program.type
-                        registry = $program.Registry
-                        service = $program.Service
-                        removeAppxPackage = $program.RemoveAppxPackage
-                        Commands = $program.Commands
+        if ($item -is [System.Windows.Controls.StackPanel]) {
 
-                        # if you want to implement a new thing from JSON applications do it here.
+            foreach ($child in $item.Children) {
+                if ($child -is [System.Windows.Controls.StackPanel]) {
+                    foreach ($innerChild in $child.Children) {
+                        if ($innerChild -is [System.Windows.Controls.CheckBox]) {
+
+                            if($innerChild.IsChecked)
+                            {
+                                    foreach ($program in $sync.database.Tweaks)
+                                    {
+                                        if($innerChild.content -eq $program.Name)
+                                        {
+                                            $items += @{
+                                                Name = $program.Name
+                                                Type = $program.type
+                                                registry = $program.Registry
+                                                service = $program.Service
+                                                removeAppxPackage = $program.RemoveAppxPackage
+                                                Commands = $program.Commands
+                                                # if you want to implement a new thing from JSON applications do it here.
+                                            }
+
+                                        }
+                                    }
+                            }
+
+                        }
                     }
                 }
             }
@@ -36,10 +49,26 @@ function ShowSelectedTweaks {
     $filterPredicate = {
        param($item)
 
-       $tagToFilter =  $true
-       # Check if the item has the tag
-       $itemTag = $item.IsChecked
-       return $itemTag -eq $tagToFilter
+       if ($item -is [System.Windows.Controls.StackPanel]) {
+
+        foreach ($child in $item.Children) {
+            if ($child -is [System.Windows.Controls.StackPanel]) {
+                foreach ($innerChild in $child.Children) {
+                    if ($innerChild -is [System.Windows.Controls.CheckBox]) {
+    
+                        $tagToFilter =  $true
+                        # Check if the item has the tag
+                        $itemTag = $innerChild.IsChecked
+                        return $itemTag -eq $tagToFilter
+                    }
+                }
+            }
+        }
+
+        $collectionView.Filter = $filterPredicate
+    }
+
+       
    }
 
    $collectionView.Filter = $filterPredicate
@@ -183,7 +212,7 @@ function Invoke-ApplyTweaks
                     
                     $sync['window'].Dispatcher.Invoke([Action]{
                         $sync.applyBtn.Content = "$InstallBtn"
-                        $sync.Description.Text = "$Description"
+                        #$sync.Description.Text = "$Description"
                     })
                 }
 
@@ -192,10 +221,19 @@ function Invoke-ApplyTweaks
                     $sync.TweaksListView.Dispatcher.Invoke([Action]{
                         foreach ($item in $sync.TweaksListView.Items)
                         {
-                            $item.IsChecked = $false
-                            $sync.TweaksListView.Clear()
-                            $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.TweaksListView.Items)
-                            $collectionView.Filter = $null
+                            foreach ($child in $item.Children) {
+                                if ($child -is [System.Windows.Controls.StackPanel]) {
+                                    foreach ($innerChild in $child.Children) {
+                                        if ($innerChild -is [System.Windows.Controls.CheckBox]) {
+                        
+                                            $innerChild.IsChecked = $false
+                                            $sync['window'].FindName('list').Clear()
+                                            $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.TweaksListView.Items)
+                                            $collectionView.Filter = $null
+                                        }
+                                    }
+                                }
+                            }
                         }
                     })
 
@@ -311,7 +349,7 @@ Write-Host "
                         CustomMsg -title "ITT | Emad Adel" -msg "Done" -MessageBoxImage "Information" -MessageBoxButton "OK"
 
                         Start-Sleep -Seconds 1
-                        #Finish
+                        Finish
 
                     }
                     else
@@ -320,10 +358,19 @@ Write-Host "
                         $sync.TweaksListView.Dispatcher.Invoke([Action]{
                             foreach ($item in $sync.TweaksListView.Items)
                             {
-                                $item.IsChecked = $false
-                                $sync.TweaksListView.Clear()
-                                $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.TweaksListView.Items)
-                                $collectionView.Filter = $null
+                                foreach ($child in $item.Children) {
+                                    if ($child -is [System.Windows.Controls.StackPanel]) {
+                                        foreach ($innerChild in $child.Children) {
+                                            if ($innerChild -is [System.Windows.Controls.CheckBox]) {
+                            
+                                                $innerChild.IsChecked = $false
+                                                $sync['window'].FindName('list').Clear()
+                                                $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.TweaksListView.Items)
+                                                $collectionView.Filter = $null
+                                            }
+                                        }
+                                    }
+                                }
                             }
                         })
                     }
