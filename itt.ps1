@@ -25,7 +25,7 @@ Add-Type -AssemblyName System.Windows.Forms
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "21-05-2024 (05:51 AM)"
+$sync.version = "21-05-2024 (08:14 م)"
 $sync.github =   "https://github.com/emadadel4"
 $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://eprojects.orgfree.com"
@@ -1257,7 +1257,7 @@ $sync.database.Applications = '[
   },
   {
     "Name": "Atom",
-    "Description": "Atom is a text editor that''s modern, approachable, yet hackable to the core—a tool you can customize to do anything but also use productively without ever touching a config file.",
+    "Description": "Atom is a text editor that''s modern, approachable, yet hackable to the coreâ€”a tool you can customize to do anything but also use productively without ever touching a config file.",
     "winget": "none",
     "choco": "atom",
     "scoop": "none",
@@ -1747,7 +1747,7 @@ $sync.database.Applications = '[
   },
   {
     "Name": "VMware Workstation Player",
-    "Description": "VMware Workstation Player™ is a streamlined desktop virtualization application that runs another operating system on the same computer without rebooting. VMware Workstation Player provides a simple user interface, unmatched operating system support, and portability across the VMware ecosystem.",
+    "Description": "VMware Workstation Playerâ„¢ is a streamlined desktop virtualization application that runs another operating system on the same computer without rebooting. VMware Workstation Player provides a simple user interface, unmatched operating system support, and portability across the VMware ecosystem.",
     "winget": "none",
     "choco": "vmware-workstation-player",
     "scoop": "none",
@@ -1787,7 +1787,7 @@ $sync.database.Applications = '[
   },
   {
     "Name": "Office 365 Business",
-    "Description": "Microsoft 365 (formerly Office 365) is a line of subscription services offered by Microsoft as part of the Microsoft Office product line. The brand encompasses plans that allow use of the Microsoft Office software suite over the life of the subscription, as well as cloud-based software as a service products for business environments, such as hosted Exchange Server, Skype for Business Server, and SharePoint, among others. All Microsoft 365 plans include automatic updates to their respective software at no additional charge, as opposed to conventional licenses for these programs—where new versions require purchase of a new license.",
+    "Description": "Microsoft 365 (formerly Office 365) is a line of subscription services offered by Microsoft as part of the Microsoft Office product line. The brand encompasses plans that allow use of the Microsoft Office software suite over the life of the subscription, as well as cloud-based software as a service products for business environments, such as hosted Exchange Server, Skype for Business Server, and SharePoint, among others. All Microsoft 365 plans include automatic updates to their respective software at no additional charge, as opposed to conventional licenses for these programsâ€”where new versions require purchase of a new license.",
     "winget": "none",
     "choco": "office365business",
     "scoop": "none",
@@ -1863,6 +1863,16 @@ $sync.database.Applications = '[
     "scoop": "none",
     "url": "none",
     "category": "Communication",
+    "check": "false"
+  },
+  {
+    "Name": "Battle Net",
+    "Description": "Battle.net is an Internet-based online game, social networking service, digital distribution, and digital rights management platform developed by Blizzard Entertainment.",
+    "winget": "none",
+    "choco": "none",
+    "scoop": "none",
+    "url": "https://downloader.battle.net/download/getInstaller?os=win&installer=Battle.net-Setup.exe&id=5b6207d1-4859-42d5-819c-7d01708b6606",
+    "category": "Launchers",
     "check": "false"
   }
 ]
@@ -4024,7 +4034,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                 <CheckBox Content="Atom" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
                 <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
             </StackPanel>
-                <TextBlock Width="500"  Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center"  TextWrapping="Wrap" Text="Atom is a text editor thats modern approachable yet hackable to the corea tool you can customize to do anything but also use productively without ever touching a config file"/>
+                <TextBlock Width="500"  Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center"  TextWrapping="Wrap" Text="Atom is a text editor thats modern approachable yet hackable to the coreâa tool you can customize to do anything but also use productively without ever touching a config file"/>
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Width="auto">
@@ -4416,7 +4426,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                 <CheckBox Content="VMware Workstation Player" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
                 <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
             </StackPanel>
-                <TextBlock Width="500"  Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center"  TextWrapping="Wrap" Text="VMware Workstation Player is a streamlined desktop virtualization application that runs another operating system on the same computer without rebooting VMware Workstation Player provides a simple user interface unmatched operating system support and portability across the VMware ecosystem"/>
+                <TextBlock Width="500"  Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center"  TextWrapping="Wrap" Text="VMware Workstation Playerâ is a streamlined desktop virtualization application that runs another operating system on the same computer without rebooting VMware Workstation Player provides a simple user interface unmatched operating system support and portability across the VMware ecosystem"/>
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Width="auto">
@@ -4448,7 +4458,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                 <CheckBox Content="Office 365 Business" Tag="Microsoft" IsChecked="false" FontWeight="Bold"/>
                 <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
             </StackPanel>
-                <TextBlock Width="500"  Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center"  TextWrapping="Wrap" Text="Microsoft 365 formerly Office 365 is a line of subscription services offered by Microsoft as part of the Microsoft Office product line The brand encompasses plans that allow use of the Microsoft Office software suite over the life of the subscription as well as cloudbased software as a service products for business environments such as hosted Exchange Server Skype for Business Server and SharePoint among others All Microsoft 365 plans include automatic updates to their respective software at no additional charge as opposed to conventional licenses for these programswhere new versions require purchase of a new license"/>
+                <TextBlock Width="500"  Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center"  TextWrapping="Wrap" Text="Microsoft 365 formerly Office 365 is a line of subscription services offered by Microsoft as part of the Microsoft Office product line The brand encompasses plans that allow use of the Microsoft Office software suite over the life of the subscription as well as cloudbased software as a service products for business environments such as hosted Exchange Server Skype for Business Server and SharePoint among others All Microsoft 365 plans include automatic updates to their respective software at no additional charge as opposed to conventional licenses for these programsâwhere new versions require purchase of a new license"/>
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Width="auto">
@@ -4505,6 +4515,14 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                 <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
             </StackPanel>
                 <TextBlock Width="500"  Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center"  TextWrapping="Wrap" Text="WhatsApp is an instant messaging and voiceoverIP service owned by technology conglomerate Meta It allows users to send text voice messages and video messages make voice and video calls and share images documents user"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Width="auto">
+            <StackPanel Orientation="Horizontal">
+                <CheckBox Content="Battle Net" Tag="Launchers" IsChecked="false" FontWeight="Bold"/>
+                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+            </StackPanel>
+                <TextBlock Width="500"  Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center"  TextWrapping="Wrap" Text="Battlenet is an Internetbased online game social networking service digital distribution and digital rights management platform developed by Blizzard Entertainment"/>
         </StackPanel>
 
                         </ListView>

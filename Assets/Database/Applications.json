@@ -1193,7 +1193,7 @@
   },
   {
     "Name": "Atom",
-    "Description": "Atom is a text editor that's modern, approachable, yet hackable to the core—a tool you can customize to do anything but also use productively without ever touching a config file.",
+    "Description": "Atom is a text editor that's modern, approachable, yet hackable to the coreâ€”a tool you can customize to do anything but also use productively without ever touching a config file.",
     "winget": "none",
     "choco": "atom",
     "scoop": "none",
@@ -1683,7 +1683,7 @@
   },
   {
     "Name": "VMware Workstation Player",
-    "Description": "VMware Workstation Player™ is a streamlined desktop virtualization application that runs another operating system on the same computer without rebooting. VMware Workstation Player provides a simple user interface, unmatched operating system support, and portability across the VMware ecosystem.",
+    "Description": "VMware Workstation Playerâ„¢ is a streamlined desktop virtualization application that runs another operating system on the same computer without rebooting. VMware Workstation Player provides a simple user interface, unmatched operating system support, and portability across the VMware ecosystem.",
     "winget": "none",
     "choco": "vmware-workstation-player",
     "scoop": "none",
@@ -1723,7 +1723,7 @@
   },
   {
     "Name": "Office 365 Business",
-    "Description": "Microsoft 365 (formerly Office 365) is a line of subscription services offered by Microsoft as part of the Microsoft Office product line. The brand encompasses plans that allow use of the Microsoft Office software suite over the life of the subscription, as well as cloud-based software as a service products for business environments, such as hosted Exchange Server, Skype for Business Server, and SharePoint, among others. All Microsoft 365 plans include automatic updates to their respective software at no additional charge, as opposed to conventional licenses for these programs—where new versions require purchase of a new license.",
+    "Description": "Microsoft 365 (formerly Office 365) is a line of subscription services offered by Microsoft as part of the Microsoft Office product line. The brand encompasses plans that allow use of the Microsoft Office software suite over the life of the subscription, as well as cloud-based software as a service products for business environments, such as hosted Exchange Server, Skype for Business Server, and SharePoint, among others. All Microsoft 365 plans include automatic updates to their respective software at no additional charge, as opposed to conventional licenses for these programsâ€”where new versions require purchase of a new license.",
     "winget": "none",
     "choco": "office365business",
     "scoop": "none",
@@ -1799,6 +1799,16 @@
     "scoop": "none",
     "url": "none",
     "category": "Communication",
+    "check": "false"
+  },
+  {
+    "Name": "Battle Net",
+    "Description": "Battle.net is an Internet-based online game, social networking service, digital distribution, and digital rights management platform developed by Blizzard Entertainment.",
+    "winget": "none",
+    "choco": "none",
+    "scoop": "none",
+    "url": "https://downloader.battle.net/download/getInstaller?os=win&installer=Battle.net-Setup.exe&id=5b6207d1-4859-42d5-819c-7d01708b6606",
+    "category": "Launchers",
     "check": "false"
   }
 ]
