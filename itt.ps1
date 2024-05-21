@@ -25,7 +25,7 @@ Add-Type -AssemblyName System.Windows.Forms
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "21-05-2024 (10:52 PM)"
+$sync.version = "22-05-2024 (12:55 AM)"
 $sync.github =   "https://github.com/emadadel4"
 $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://eprojects.orgfree.com"
@@ -5045,7 +5045,8 @@ function Send-SystemInfo {
         "Username" = $env:USERNAME
         "Ram" = (Get-CimInstance -ClassName Win32_PhysicalMemory | Measure-Object -Property Capacity -Sum).Sum / 1GB
         "GPU" = (Get-CimInstance -ClassName Win32_VideoController).Name
-        "start at" = (Get-Date -Format "yyyy-MM-dd HH:mm:ss")
+        "CPU" = (Get-CimInstance -ClassName Win32_Processor).Name
+        "start at" = (Get-Date -Format "yyyy-MM-dd hh:mm:ss tt")
         "runs" = $runs
     }
 
@@ -6036,25 +6037,30 @@ function ChangeTap() {
     }
 }
 # # Define a function to update the description and link when an item is selected
-# function UpdateDescriptionAndLink {
-#     # Get the name of the selected application from the list
-#     $selectedAppName = $sync.AppsListView.SelectedItem.Content
 
-#     $sync.itemLink.Visibility = "Visible"
+# function GetCheckBoxesFromStackPanel {
+#     param (
+#         [System.Windows.Controls.StackPanel]$item
+#     )
 
-#     # Loop through the list of applications in the database and find the matching one
-#     foreach ($app in $sync.database.Applications) {
-
-#         if ($app.name -eq $selectedAppName) {
-
-#             # Update the description text block with the selected application's description
-#             $sync.Description.Text = $app.description
-#             # Update the link text block with the selected application's official website link
-#             $sync.itemLink.Text = "$($app.name) official website"
-#             break
+#     $checkBoxes = @()  # Initialize an empty array to store CheckBoxes
+    
+#     if ($item -is [System.Windows.Controls.StackPanel]) {
+#         foreach ($child in $item.Children) {
+#             if ($child -is [System.Windows.Controls.StackPanel]) {
+#                 foreach ($innerChild in $child.Children) {
+#                     if ($innerChild -is [System.Windows.Controls.CheckBox]) {
+#                         # Add CheckBox to the array
+#                         $checkBoxes += $innerChild
+#                     }
+#                 }
+#             }
 #         }
 #     }
+
+#     return $checkBoxes
 # }
+
 
 # # Define a function to open the official website of the selected application
 # function OpenOfficialWebsite {
@@ -6081,19 +6087,11 @@ function ChangeTap() {
 
 # })
 
-#     # Add a mouse left button down event handler to the itemLink control
-#     $sync.itemLink.add_MouseLeftButtonDown({
-#         OpenOfficialWebsite
-#     })
+# # Add a mouse left button down event handler to the itemLink control
+# $sync.itemLink.add_MouseLeftButtonDown({
+#     OpenOfficialWebsite
+# })
 
-
-#     $sync.AppsListView.add_LostFocus({
-
-#         $sync.AppsListView.SelectedItem = $null
-#         $sync.itemLink.Visibility = "Hidden"
-#         $sync.Description.Text = ""
-
-#     })
 
 # # Add loaded event handler
 # $sync.TweaksListView.add_Loaded({
@@ -6126,14 +6124,6 @@ function ChangeTap() {
 #             break
 #         }
 #     }
-# })
-
-
-# $sync.TweaksListView.add_LostFocus({
-
-#     $sync.TweaksListView.SelectedItem = $null
-#     $sync.itemLink.Visibility = "Hidden"
-#     $sync.Description.Text = ""
 # })
 
 #region PlayMusic Functions
@@ -6325,7 +6315,6 @@ function ClearFilter {
     $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync['window'].FindName('list').Items)
     $collectionView.Filter = $null
 }
-#endregion
 
 #region Theme Functions
 function ToggleTheme {
