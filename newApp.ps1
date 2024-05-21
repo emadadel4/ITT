@@ -3,13 +3,20 @@ try {
     Clear-Host
     $Name = Read-Host "Enter app name"
     $Description = (Read-Host "Enter app description").Trim()
+
+    if ($choco -eq "") { $choco = "none" }  # Set default value if empty
     $choco = (Read-Host "Enter Chocolatey package name").Trim()  # Remove leading and trailing spaces
+
     $winget = (Read-Host "Enter Winget package name (default: none)").Trim()  # Remove leading and trailing spaces
+
     if ($winget -eq "") { $winget = "none" }  # Set default value if empty
     $scoop = (Read-Host "Enter Scoop package name (default: none)").Trim()  # Remove leading and trailing spaces
+
     if ($scoop -eq "") { $scoop = "none" }  # Set default value if empty
 
+    if ($url -eq "") { $url = "none" }  # Set default value if empty
     $url = (Read-Host "Enter url .exe (default: none)").Trim()  # Remove leading and trailing spaces
+
     if ($url -eq "") { $url = "none" }  # Set default value if empty
 
     $check = "false" # default value is false
@@ -57,7 +64,7 @@ try {
         winget = $winget
         choco = $choco
         scoop = $scoop
-        url = "none"
+        url = $url
 
         category = $category
         check = $check
