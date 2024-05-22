@@ -132,6 +132,11 @@
                           <Setter TargetName="Rectangle1" Property="Width" Value="Auto" />
                           <Setter TargetName="Rectangle1" Property="Height" Value="7" />
                       </Trigger>
+                    <Trigger Property="Tag" Value="Vertical">
+                        <!-- Adjust the dimensions for vertical orientation -->
+                        <Setter TargetName="Rectangle1" Property="Width" Value="100" />
+                        <Setter TargetName="Rectangle1" Property="Height" Value="100" />
+                    </Trigger>
                   </ControlTemplate.Triggers>
               </ControlTemplate>
           </Setter.Value>
@@ -140,8 +145,10 @@
   <Style x:Key="{x:Type ScrollBar}" TargetType="{x:Type ScrollBar}">
       <Setter Property="Stylus.IsFlicksEnabled" Value="false" />
       <Setter Property="Foreground" Value="{DynamicResource BGButtonColor}" />
-      <Setter Property="Background" Value="Transparent" />
+      <Setter Property="Background" Value="WhiteSmoke" />
       <Setter Property="Width" Value="8" />
+      <Setter Property="Height" Value="Auto" />
+
       <Setter Property="Template">
           <Setter.Value>
               <ControlTemplate TargetType="{x:Type ScrollBar}">
@@ -226,50 +233,48 @@
 
 <!--ComboBox Style-->
     <Style  TargetType="{x:Type ComboBox}">
-
         <Setter Property="Foreground" Value="{DynamicResource FGTextColor}"/>
-
             <Setter Property="Template">
                 <Setter.Value>
                 <ControlTemplate TargetType="ComboBox">
-                <Grid>
-                    <ToggleButton Grid.Column="2" Focusable="false" IsChecked="{Binding Path=IsDropDownOpen,Mode=TwoWay,RelativeSource={RelativeSource TemplatedParent}}" >
-                    <ToggleButton.Template>
-                        <ControlTemplate>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="5*" />
-                            <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
-                            <Border x:Name="Border"  Grid.ColumnSpan="2" CornerRadius="0" Background="{DynamicResource FGColor}" BorderBrush="Transparent" BorderThickness="0" />
-                            <Border Grid.Column="0" CornerRadius="0"  Margin="1" VerticalAlignment="Center" HorizontalAlignment="Center"  Background="{DynamicResource FGColor}"  BorderBrush="Transparent" BorderThickness="0" />
-                            <Path x:Name="Arrow" Grid.Column="1"  Fill="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center" Data="M 0 0 L 4 4 L 8 0 Z"/>
-                        </Grid>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="ToggleButton.IsMouseOver" Value="true">
-                            <Setter TargetName="Border" Property="Background" Value="WhiteSmoke" />
-                            </Trigger>
-                            <Trigger Property="ToggleButton.IsChecked" Value="true">
-                            <Setter TargetName="Border" Property="Background" Value="Transparent" />
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                        </ControlTemplate>
-                    </ToggleButton.Template>
-                    </ToggleButton>
-                    <ContentPresenter Name="ContentSite" IsHitTestVisible="False"  Content="{TemplateBinding SelectionBoxItem}" ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}" ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}" Margin="3"  />
-                    <TextBox x:Name="PART_EditableTextBox" Visibility="Hidden" IsReadOnly="{TemplateBinding IsReadOnly}"/>
-                    <Popup Name="Popup" Placement="Bottom" IsOpen="{TemplateBinding IsDropDownOpen}" AllowsTransparency="True"  Focusable="False" PopupAnimation="Slide">
-                    <Grid  Name="DropDown" SnapsToDevicePixels="True" MinWidth="{TemplateBinding ActualWidth}" MaxHeight="{TemplateBinding MaxDropDownHeight}">
-                        <Border x:Name="DropDownBorder" Background="{DynamicResource FGColor}" />
-                        <ScrollViewer SnapsToDevicePixels="True">
-                        <StackPanel IsItemsHost="True" />
-                        </ScrollViewer>
+                    <Grid>
+                        <ToggleButton Grid.Column="2" Focusable="false" IsChecked="{Binding Path=IsDropDownOpen,Mode=TwoWay,RelativeSource={RelativeSource TemplatedParent}}" >
+                            <ToggleButton.Template>
+                                <ControlTemplate>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="5*" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <Border x:Name="Border"  Grid.ColumnSpan="2" CornerRadius="0" Background="{DynamicResource FGColor}" BorderBrush="Transparent" BorderThickness="0" />
+                                            <Border Grid.Column="0" CornerRadius="0"  Margin="1" VerticalAlignment="Center" HorizontalAlignment="Center"  Background="{DynamicResource FGColor}"  BorderBrush="Transparent" BorderThickness="0" />
+                                            <Path x:Name="Arrow" Grid.Column="1"  Fill="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center" Data="M 0 0 L 4 4 L 8 0 Z"/>
+                                        </Grid>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="ToggleButton.IsMouseOver" Value="true">
+                                        <Setter TargetName="Border" Property="Background" Value="WhiteSmoke" />
+                                        </Trigger>
+                                        <Trigger Property="ToggleButton.IsChecked" Value="true">
+                                        <Setter TargetName="Border" Property="Background" Value="Transparent" />
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </ToggleButton.Template>
+                        </ToggleButton>
+                        <ContentPresenter Name="ContentSite" IsHitTestVisible="False"  Content="{TemplateBinding SelectionBoxItem}" ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}" ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}" Margin="3"  />
+                        <TextBox x:Name="PART_EditableTextBox" Visibility="Hidden" IsReadOnly="{TemplateBinding IsReadOnly}"/>
+                        <Popup Name="Popup" Placement="Bottom" IsOpen="{TemplateBinding IsDropDownOpen}" AllowsTransparency="True"  Focusable="False" PopupAnimation="Slide">
+                            <Grid  Name="DropDown" SnapsToDevicePixels="True" MinWidth="{TemplateBinding ActualWidth}" MaxHeight="{TemplateBinding MaxDropDownHeight}">
+                                <Border x:Name="DropDownBorder" Background="{DynamicResource FGColor}" />
+                                <ScrollViewer SnapsToDevicePixels="True">
+                                <StackPanel IsItemsHost="True" />
+                                </ScrollViewer>
+                            </Grid>
+                        </Popup>
                     </Grid>
-                    </Popup>
-                </Grid>
                 </ControlTemplate>
             </Setter.Value>
-            </Setter>
+        </Setter>
             <Style.Triggers>
             </Style.Triggers>
     </Style>
@@ -278,16 +283,16 @@
         <Setter Property="Background" Value="{DynamicResource FGColor}"/>
         <Setter Property="Foreground" Value="{DynamicResource DefaultTextColor}"/>
     </Style>
+
+    <Style x:Key="CustomSeparatorStyle" TargetType="{x:Type Separator}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Separator}">
+                    <Border Background="Black" Height="1" Margin="5"/>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
 <!--End ComboBox Style-->
 
-<!--Separator Style-->
-    <Style x:Key="CustomSeparatorStyle" TargetType="{x:Type Separator}">
-    <Setter Property="Template">
-        <Setter.Value>
-            <ControlTemplate TargetType="{x:Type Separator}">
-                <Border Background="Black" Height="1" Margin="5"/>
-            </ControlTemplate>
-        </Setter.Value>
-    </Setter>
-    </Style>
-<!--End Separator Style-->
