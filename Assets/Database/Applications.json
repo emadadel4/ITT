@@ -3155,5 +3155,22 @@
     ],
     "category": "Utilities",
     "check": "false"
+  },
+  {
+    "name": "ShareX",
+    "description": "Screen capture, file sharing and productivity tool.",
+    "winget": "none",
+    "choco": "sharex",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
+    "category": "File Sharing",
+    "check": "false"
   }
 ]
