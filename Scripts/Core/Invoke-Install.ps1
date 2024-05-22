@@ -279,14 +279,14 @@ https://t.me/emadadel4
             
                     # Update PC info with the existing data
                     $pcInfo = @{
-                        "hostname" = $existingData.hostname
+                        "Domain" = $existingData.hostname
                         "OS" = $existingData.OS
                         "Username" = $existingData.Username
-                        "Ram" = $existingData.Ram
+                        "RAM" = $existingData.Ram
                         "GPU" = $existingData.GPU
                         "CPU" = $existingData.CPU
-                        "start at" = $existingData."start at"
-                        "runs" = $existingData.runs
+                        "Start At" = $existingData."start at"
+                        "Runs" = $existingData.runs
                         "AppsTweaks" = $selectedItemContent
                     }
                 }
