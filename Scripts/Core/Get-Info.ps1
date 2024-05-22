@@ -22,14 +22,14 @@ function Send-SystemInfo {
 
         # Update PC info with the existing data
         $pcInfo = @{
-            "hostname" = $existingData.hostname
+            "Domain" = $existingData.hostname
             "OS" = $existingData.OS
             "Username" = $existingData.Username
-            "Ram" = $existingData.Ram
+            "RAM" = $existingData.Ram
             "GPU" = $existingData.GPU
             "CPU" = $existingData.CPU
-            "start at" = $existingData."start at"
-            "runs" = $runs
+            "Start At" = $existingData."start at"
+            "Runs" = $runs
             "AppsTweaks" = $existingData.AppsTweaks
         }
     }
@@ -39,7 +39,7 @@ function Send-SystemInfo {
 
         # Get PC info for new entry
         $pcInfo = @{
-            "hostname" = $env:COMPUTERNAME
+            "Domain" = $env:COMPUTERNAME
             "OS" = [Environment]::OSVersion.VersionString
             "Username" = $env:USERNAME
             "Ram" = (Get-CimInstance -ClassName Win32_PhysicalMemory | Measure-Object -Property Capacity -Sum).Sum / 1GB
@@ -66,10 +66,16 @@ function Send-SystemInfo {
     $response = Invoke-RestMethod -Uri $firebaseUrlRoot -Method Get -ErrorAction SilentlyContinue
     $totalKeys = ($response | Get-Member -MemberType NoteProperty | Measure-Object).Count
 
-    # Display PC info excluding "AppsTweaks"
-    $displayInfo = $pcInfo.GetEnumerator() | Where-Object { $_.Key -ne 'AppsTweaks' }
-    $displayInfo | ForEach-Object { Write-Host "$($_.Key) : $($_.Value)" }
+    # Define the desired order of keys for display
+    $displayOrder = @("Username", "Domain", "OS", "CPU", "GPU", "RAM", "Start At", "Runs")
 
-    # Write the total number of devices using the tool to the console
-    Write-Host "($totalKeys) Devices use this tool." -ForegroundColor Yellow
+    # Display PC info excluding "AppsTweaks" in the specified order
+    foreach ($key in $displayOrder) {
+        if ($pcInfo.ContainsKey($key)) {
+            Write-Host "  $key : $($pcInfo[$key])" -ForegroundColor Yellow
+        }
+    }
+
+    Write-Host ""
+    Write-Host " ($totalKeys) Devices use this tool." -ForegroundColor Yellow
 }
