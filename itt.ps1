@@ -25,7 +25,7 @@ Add-Type -AssemblyName System.Windows.Forms
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "22-05-2024 (07:45 م)"
+$sync.version = "23-05-2024 (12:12 AM)"
 $sync.github =   "https://github.com/emadadel4"
 $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://eprojects.orgfree.com"
@@ -69,15 +69,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "thorium --params /SSE3",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Browsers",
     "check": "false"
   },
@@ -87,15 +86,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "thorium --params /AVX",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Browsers",
     "check": "false"
   },
@@ -105,15 +103,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "firefox",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Browsers",
     "suggestion": "true",
     "check": "false"
@@ -124,15 +121,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "microsoft-edge",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Browsers",
     "check": "false"
   },
@@ -142,15 +138,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "googlechrome",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Browsers",
     "check": "false"
   },
@@ -160,15 +155,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "chromium",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Browsers",
     "check": "false"
   },
@@ -178,15 +172,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "brave",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Browsers",
     "check": "false"
   },
@@ -196,15 +189,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "tor-browser",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Browsers",
     "check": "false"
   },
@@ -214,15 +206,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "opera",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Browsers",
     "check": "false"
   },
@@ -232,15 +223,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "internet-download-manager",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Browsers",
     "check": "false"
   },
@@ -250,15 +240,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "none",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "true",
-      "url": "https://www.neatdownloadmanager.com/file/NeatDM_setup.exe",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "true",
+        "url": "https://www.neatdownloadmanager.com/file/NeatDM_setup.exe",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "$env:temp"
+      }
+    ],
     "category": "Browsers",
     "check": "false"
   },
@@ -268,15 +257,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "jdownloader",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Browsers",
     "check": "false"
   },
@@ -286,15 +274,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "k-litecodecpackfull",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Media",
     "suggestion": "true",
     "check": "false"
@@ -305,15 +292,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "potplayer",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Media",
     "check": "false"
   },
@@ -323,15 +309,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "vlc.install",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Media",
     "suggestion": "true",
     "check": "false"
@@ -342,15 +327,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "kodi",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Media",
     "check": "false"
   },
@@ -360,15 +344,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "jellyfin",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Media",
     "check": "false"
   },
@@ -378,15 +361,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "winamp",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Media",
     "check": "false"
   },
@@ -396,15 +378,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "aimp",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Media",
     "check": "false"
   },
@@ -414,15 +395,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "spotify",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Media",
     "check": "false"
   },
@@ -432,15 +412,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "fsviewer",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Imaging",
     "check": "false"
   },
@@ -450,15 +429,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "openoffice",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Documents",
     "check": "false"
   },
@@ -468,15 +446,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "foxitreader",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Documents",
     "check": "false"
   },
@@ -486,15 +463,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "libreoffice-fresh",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Documents",
     "suggestion": "true",
     "check": "false"
@@ -505,15 +481,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "sumatrapdf.install",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Documents",
     "check": "false"
   },
@@ -523,15 +498,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "winrar",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Compression",
     "suggestion": "true",
     "check": "false"
@@ -542,15 +516,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "7zip",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Compression",
     "suggestion": "true",
     "check": "false"
@@ -561,15 +534,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "peazip",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Compression",
     "check": "false"
   },
@@ -579,15 +551,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "telegram",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Communication",
     "suggestion": "true",
     "check": "false"
@@ -598,15 +569,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "signal",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Communication",
     "check": "false"
   },
@@ -616,15 +586,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "messenger",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Communication",
     "check": "false"
   },
@@ -634,15 +603,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "zoom",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Communication",
     "check": "false"
   },
@@ -652,15 +620,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "microsoft-teams.install",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Communication",
     "check": "false"
   },
@@ -670,15 +637,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "discord",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Communication",
     "check": "false"
   },
@@ -688,15 +654,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "teamviewer",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "File Sharing",
     "check": "false"
   },
@@ -706,15 +671,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "gimp",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Imaging",
     "check": "false"
   },
@@ -724,15 +688,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "directx",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Drivers",
     "check": "false"
   },
@@ -742,15 +705,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "vcredist-all",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Drivers",
     "check": "false"
   },
@@ -760,15 +722,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "vcredist2005",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Drivers",
     "check": "false"
   },
@@ -778,15 +739,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "vcredist2005",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Drivers",
     "check": "false"
   },
@@ -796,15 +756,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "vcredist2008",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Drivers",
     "check": "false"
   },
@@ -814,15 +773,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "vcredist2008",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Drivers",
     "check": "false"
   },
@@ -832,15 +790,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "vcredist2010",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Drivers",
     "check": "false"
   },
@@ -850,15 +807,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "vcredist2010",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Drivers",
     "check": "false"
   },
@@ -868,15 +824,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "vcredist2012",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Drivers",
     "check": "false"
   },
@@ -886,15 +841,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "vcredist2012",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Drivers",
     "check": "false"
   },
@@ -904,15 +858,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "vcredist2013",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Drivers",
     "check": "false"
   },
@@ -922,15 +875,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "vcredist2013",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Drivers",
     "check": "false"
   },
@@ -940,15 +892,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "vcredist2015",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Drivers",
     "check": "false"
   },
@@ -958,15 +909,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "vcredist2015",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Drivers",
     "check": "false"
   },
@@ -976,15 +926,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "dotnet-all",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Drivers",
     "check": "false"
   },
@@ -994,15 +943,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "amd-ryzen-chipset",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Drivers",
     "check": "false"
   },
@@ -1012,15 +960,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "nvidia-display-driver",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Drivers",
     "check": "false"
   },
@@ -1030,15 +977,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "none",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Drivers",
     "check": "false"
   },
@@ -1048,15 +994,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "msiafterburner",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Drivers",
     "check": "false"
   },
@@ -1066,15 +1011,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "physx.legacy",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Drivers",
     "check": "false"
   },
@@ -1084,15 +1028,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "steam",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Launchers",
     "check": "false"
   },
@@ -1102,15 +1045,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "ubisoft-connect",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Launchers",
     "check": "false"
   },
@@ -1120,15 +1062,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "origin",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Launchers",
     "check": "false"
   },
@@ -1138,15 +1079,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "steam",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Launchers",
     "check": "false"
   },
@@ -1156,15 +1096,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "gamesavemanager",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Launchers",
     "check": "false"
   },
@@ -1174,15 +1113,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "streamlabs-obs",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Launchers",
     "check": "false"
   },
@@ -1192,15 +1130,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "obs-studio.install",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Launchers",
     "check": "false"
   },
@@ -1210,15 +1147,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "logitechgaming",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Launchers",
     "check": "false"
   },
@@ -1228,15 +1164,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "lively",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Launchers",
     "check": "false"
   },
@@ -1246,15 +1181,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "playnite",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Launchers",
     "check": "false"
   },
@@ -1264,15 +1198,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "drivereasyfree",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Drivers",
     "check": "false"
   },
@@ -1282,15 +1215,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "intel-graphics-driver",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Drivers",
     "check": "false"
   },
@@ -1300,15 +1232,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "intel-dsa",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Drivers",
     "check": "false"
   },
@@ -1318,15 +1249,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "intel-network-drivers-win10",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Drivers",
     "check": "false"
   },
@@ -1336,15 +1266,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "sdio",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Drivers",
     "check": "false"
   },
@@ -1354,15 +1283,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "driverbooster",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Drivers",
     "check": "false"
   },
@@ -1372,15 +1300,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "drivergenius",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Drivers",
     "check": "false"
   },
@@ -1390,15 +1317,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "none",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Drivers",
     "check": "false"
   },
@@ -1408,15 +1334,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "rapr",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Drivers",
     "check": "false"
   },
@@ -1426,15 +1351,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "1password",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Utilities",
     "check": "false"
   },
@@ -1444,15 +1368,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "partitionwizard",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Utilities",
     "check": "false"
   },
@@ -1462,15 +1385,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "partition-assistant-standard",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Utilities",
     "check": "false"
   },
@@ -1480,15 +1402,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "backupper-standard",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Utilities",
     "check": "false"
   },
@@ -1498,15 +1419,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "recuva",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Utilities",
     "check": "false"
   },
@@ -1516,15 +1436,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "ccleaner",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Utilities",
     "check": "false"
   },
@@ -1534,15 +1453,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "bulk-crap-uninstaller",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Utilities",
     "suggestion": "true",
     "check": "false"
@@ -1553,15 +1471,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "ecm",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Utilities",
     "check": "false"
   },
@@ -1571,15 +1488,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "hwinfo.install",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Utilities",
     "suggestion": "true",
     "check": "false"
@@ -1590,15 +1506,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "speccy",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Utilities",
     "check": "false"
   },
@@ -1608,15 +1523,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "furmark",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Utilities",
     "check": "false"
   },
@@ -1626,15 +1540,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "hdsentinel",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Utilities",
     "check": "false"
   },
@@ -1644,15 +1557,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "cpu-z",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Utilities",
     "check": "false"
   },
@@ -1662,15 +1574,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "memreduct",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Utilities",
     "check": "false"
   },
@@ -1680,15 +1591,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "handbrake.install",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Utilities",
     "check": "false"
   },
@@ -1698,15 +1608,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "rufus",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Utilities",
     "suggestion": "true",
     "check": "false"
@@ -1717,15 +1626,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "imgburn",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Developer",
     "check": "false"
   },
@@ -1735,15 +1643,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "virtualclonedrive",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Utilities",
     "check": "false"
   },
@@ -1753,15 +1660,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "ultraiso",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Utilities",
     "check": "false"
   },
@@ -1771,15 +1677,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "ventoy",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Utilities",
     "check": "false"
   },
@@ -1789,15 +1694,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "iventoy",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Utilities",
     "check": "false"
   },
@@ -1807,15 +1711,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "autohotkey",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Utilities",
     "check": "false"
   },
@@ -1825,15 +1728,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "rainmeter",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Utilities",
     "check": "false"
   },
@@ -1843,15 +1745,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "fxsound",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Utilities",
     "suggestion": "true",
     "check": "false"
@@ -1862,15 +1763,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "vysor",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Utilities",
     "check": "false"
   },
@@ -1880,15 +1780,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "unifiedremote",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Utilities",
     "check": "false"
   },
@@ -1898,15 +1797,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "anydesk",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "File Sharing",
     "check": "false"
   },
@@ -1916,15 +1814,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "airdroid",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "File Sharing",
     "check": "false"
   },
@@ -1934,15 +1831,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "ultraviewer",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "File Sharing",
     "check": "false"
   },
@@ -1952,15 +1848,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "wnetwatcher.portable",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Utilities",
     "check": "false"
   },
@@ -1970,15 +1865,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "wifiinfoview",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Utilities",
     "check": "false"
   },
@@ -1988,15 +1882,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "qbittorrent",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "File Sharing",
     "suggestion": "true",
     "check": "false"
@@ -2007,15 +1900,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "googleearthpro",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Imaging",
     "check": "false"
   },
@@ -2025,15 +1917,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "xampp-81",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Developer",
     "check": "false"
   },
@@ -2043,15 +1934,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "visualstudio2022professional",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Developer",
     "check": "false"
   },
@@ -2061,15 +1951,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "visualstudio2022community",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Developer",
     "check": "false"
   },
@@ -2079,15 +1968,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "unity-hub",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Developer",
     "check": "false"
   },
@@ -2097,15 +1985,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "godot",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Developer",
     "check": "false"
   },
@@ -2115,15 +2002,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "unity",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Developer",
     "check": "false"
   },
@@ -2133,15 +2019,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "blender",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Developer",
     "check": "false"
   },
@@ -2151,15 +2036,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "vscode",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Developer",
     "check": "false"
   },
@@ -2169,15 +2053,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "vim",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Developer",
     "check": "false"
   },
@@ -2187,15 +2070,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "sublimetext4",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Developer",
     "check": "false"
   },
@@ -2205,15 +2087,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "atom",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Developer",
     "check": "false"
   },
@@ -2223,15 +2104,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "innosetup",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Developer",
     "check": "false"
   },
@@ -2241,15 +2121,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "pycharm-community",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Developer",
     "check": "false"
   },
@@ -2259,15 +2138,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "pycharm",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Developer",
     "check": "false"
   },
@@ -2277,15 +2155,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "jetbrains-rider",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Developer",
     "check": "false"
   },
@@ -2295,15 +2172,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "nodejs-lts",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Developer",
     "check": "false"
   },
@@ -2313,15 +2189,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "electronim",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Developer",
     "check": "false"
   },
@@ -2331,15 +2206,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "hugo",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Developer",
     "check": "false"
   },
@@ -2349,15 +2223,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "notepadplusplus",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Developer",
     "check": "false"
   },
@@ -2367,15 +2240,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "microsoft-windows-terminal",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Developer",
     "check": "false"
   },
@@ -2385,15 +2257,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "powershell-core",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Developer",
     "check": "false"
   },
@@ -2403,15 +2274,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "x64dbg.portable",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Developer",
     "check": "false"
   },
@@ -2421,15 +2291,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "dnspy",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Developer",
     "check": "false"
   },
@@ -2439,15 +2308,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "cheatengine",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Developer",
     "check": "false"
   },
@@ -2457,15 +2325,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "python",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Developer",
     "check": "false"
   },
@@ -2475,15 +2342,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "git",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Developer",
     "check": "false"
   },
@@ -2493,15 +2359,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "github-desktop",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Developer",
     "check": "false"
   },
@@ -2511,15 +2376,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "docker-desktop",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Developer",
     "check": "false"
   },
@@ -2529,15 +2393,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "docker-compose",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Developer",
     "check": "false"
   },
@@ -2547,15 +2410,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "powertoys",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Developer",
     "check": "false"
   },
@@ -2565,15 +2427,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "notion",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Developer",
     "check": "false"
   },
@@ -2583,15 +2444,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "ImageLine.FLStudio",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Developer",
     "check": "false"
   },
@@ -2601,15 +2461,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "adb",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Developer",
     "check": "false"
   },
@@ -2619,15 +2478,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "universal-adb-drivers",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Developer",
     "check": "false"
   },
@@ -2637,15 +2495,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "scrcpy",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Developer",
     "check": "false"
   },
@@ -2655,15 +2512,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "virtualbox",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Developer",
     "check": "false"
   },
@@ -2673,15 +2529,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "oh-my-posh",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Developer",
     "check": "false"
   },
@@ -2691,15 +2546,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "malwarebytes",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Security",
     "check": "false"
   },
@@ -2709,15 +2563,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "kvrt",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Security",
     "check": "false"
   },
@@ -2727,15 +2580,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "kav",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Security",
     "check": "false"
   },
@@ -2744,15 +2596,14 @@ $sync.database.Applications = '[
     "Description": "Avast Free Antivirus.",
     "winget": "none",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "choco": "avastfreeantivirus",
     "category": "Security",
     "check": "false"
@@ -2763,15 +2614,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "nerd-fonts-cascadiacode",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Developer",
     "check": "false"
   },
@@ -2781,15 +2631,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "jre8",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Developer",
     "check": "false"
   },
@@ -2799,15 +2648,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "audacity",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Media",
     "check": "false"
   },
@@ -2817,15 +2665,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "musicbee",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Media",
     "check": "false"
   },
@@ -2835,15 +2682,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "formatfactory",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Media",
     "check": "false"
   },
@@ -2853,15 +2699,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "winaero-tweaker",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Utilities",
     "check": "false"
   },
@@ -2871,15 +2716,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "wsl2",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Developer",
     "check": "false"
   },
@@ -2889,15 +2733,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "wamp-server",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Developer",
     "check": "false"
   },
@@ -2907,15 +2750,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "mongodb",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Developer",
     "check": "false"
   },
@@ -2925,15 +2767,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "mpc-be",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Media",
     "check": "false"
   },
@@ -2943,15 +2784,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "kdenlive",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Media",
     "check": "false"
   },
@@ -2961,15 +2801,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "tableplus",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Developer",
     "check": "false"
   },
@@ -2979,15 +2818,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "hosts.editor",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Utilities",
     "check": "false"
   },
@@ -2997,15 +2835,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "subtitleedit",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Developer",
     "check": "false"
   },
@@ -3015,15 +2852,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "skype",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Communication",
     "check": "false"
   },
@@ -3033,15 +2869,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "filezilla",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Developer",
     "check": "false"
   },
@@ -3051,15 +2886,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "everything",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Utilities",
     "check": "false"
   },
@@ -3069,15 +2903,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "yarn",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Developer",
     "check": "false"
   },
@@ -3087,15 +2920,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "vmware-workstation-player",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Developer",
     "check": "false"
   },
@@ -3105,15 +2937,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "llftool",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Utilities",
     "check": "false"
   },
@@ -3123,15 +2954,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "bluestacks",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Launchers",
     "check": "false"
   },
@@ -3141,15 +2971,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "intel-bluetooth-drivers",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Drivers",
     "check": "false"
   },
@@ -3159,15 +2988,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "office365business",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Microsoft",
     "check": "false"
   },
@@ -3177,15 +3005,14 @@ $sync.database.Applications = '[
     "winget": "BandicamCompany.Bandicam",
     "choco": "none",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Imaging",
     "check": "false"
   },
@@ -3195,15 +3022,14 @@ $sync.database.Applications = '[
     "winget": "Tencent.QQPlayer",
     "choco": "none",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Media",
     "check": "false"
   },
@@ -3213,15 +3039,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "4k-video-downloader",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Utilities",
     "check": "false"
   },
@@ -3231,15 +3056,14 @@ $sync.database.Applications = '[
     "winget": "LSoftTechnologies.ActivePartitionRecovery",
     "choco": "none",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Utilities",
     "check": "false"
   },
@@ -3249,15 +3073,14 @@ $sync.database.Applications = '[
     "winget": "Huawei.HiSuite",
     "choco": "none",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Utilities",
     "check": "false"
   },
@@ -3267,15 +3090,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "androidstudio",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Developer",
     "check": "false"
   },
@@ -3285,15 +3107,14 @@ $sync.database.Applications = '[
     "winget": "WhatsApp.WhatsApp",
     "choco": "none",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Communication",
     "check": "false"
   },
@@ -3303,15 +3124,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "librewolf",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Browsers",
     "check": "false"
   },
@@ -3321,15 +3141,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "flow-launcher",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Utilities",
     "check": "false"
   },
@@ -3339,15 +3158,14 @@ $sync.database.Applications = '[
     "winget": "none",
     "choco": "iconsext",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Drivers",
     "check": "false"
   },
@@ -3357,19 +3175,36 @@ $sync.database.Applications = '[
     "winget": "choco install adguardhome",
     "choco": "It operates as a DNS server that re-routes tracking domains to a \"black hole\", thus preventing your devices from connecting to those servers. It''s based on software we use for our public AdGuard DNS servers - both share a lot of common code.",
     "scoop": "none",
-    "default":[
-    {
-      "IsExcute": "false",
-      "url": "none",
-      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-      "output": "$env:temp"
-    }
-  ],
-    
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
     "category": "Security",
     "check": "false"
+  },
+  {
+    "name": "Burp Suite Community Edition",
+    "description": "Burp Suite is an integrated platform for performing security testing of web applications. Its various tools work seamlessly together to support the entire testing process, from initial mapping and analysis of an application''s attack surface, through to finding and exploiting security vulnerabilities.",
+    "winget": "none",
+    "choco": "burp-suite-free-edition",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
+    "category": "Developer",
+    "check": "false"
   }
-]' | ConvertFrom-Json
+]
+' | ConvertFrom-Json
 $sync.database.OST = '{
     "Tracks":  [
                    "https://epsilon.vgmsite.com/soundtracks/far-cry-3/iqgdbfrhtw/17.%20Further%20%28feat.%20Serena%20McKinney%29.mp3",
@@ -6040,6 +5875,14 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                 <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="AdGuard Home is a networkwide software for blocking ads and tracking After you set it up itll cover ALL your home devices and you dont need any clientside software for that"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Width="auto">
+            <StackPanel Orientation="Horizontal">
+                <CheckBox Content="Burp Suite Community Edition" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
+                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+            </StackPanel>
+                <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Burp Suite is an integrated platform for performing security testing of web applications Its various tools work seamlessly together to support the entire testing process from initial mapping and analysis of an applications attack surface through to finding and exploiting security vulnerabilities"/>
         </StackPanel>
 
                         </ListView>
