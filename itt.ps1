@@ -25,7 +25,7 @@ Add-Type -AssemblyName System.Windows.Forms
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "23-05-2024 (12:12 AM)"
+$sync.version = "23-05-2024 (12:31 AM)"
 $sync.github =   "https://github.com/emadadel4"
 $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://eprojects.orgfree.com"
@@ -6403,8 +6403,8 @@ function Send-SystemInfo {
             "Domain" = $env:COMPUTERNAME
             "OS" = $existingData.OS
             "Username" = $env:USERNAME
-            "RAM" = $existingData.Ram
-            "GPU" = $existingData.GPU
+            "RAM" = (Get-CimInstance -ClassName Win32_PhysicalMemory | Measure-Object -Property Capacity -Sum).Sum / 1GB
+            "GPU" = (Get-CimInstance -ClassName Win32_VideoController).Name
             "CPU" = (Get-CimInstance -ClassName Win32_Processor).Name
             "Start At" = (Get-Date -Format "MM-dd-yyyy hh:mm:ss tt")
             "Runs" = $runs
@@ -6420,7 +6420,7 @@ function Send-SystemInfo {
             "Domain" = $env:COMPUTERNAME
             "OS" = [Environment]::OSVersion.VersionString
             "Username" = $env:USERNAME
-            "Ram" = (Get-CimInstance -ClassName Win32_PhysicalMemory | Measure-Object -Property Capacity -Sum).Sum / 1GB
+            "RAM" = (Get-CimInstance -ClassName Win32_PhysicalMemory | Measure-Object -Property Capacity -Sum).Sum / 1GB
             "GPU" = (Get-CimInstance -ClassName Win32_VideoController).Name
             "CPU" = (Get-CimInstance -ClassName Win32_Processor).Name
             "Start At" = (Get-Date -Format "MM-dd-yyyy hh:mm:ss tt")
