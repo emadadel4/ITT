@@ -1,8 +1,112 @@
-# Prompt user for software information
-try {
+Clear-Host
+
+$validCategories = @{
+
+    # Available options
+
+    1 = "API [Choco/Winget/Scoop] Recommend"
+
+    2 = "Default [Native Downloader]" 
+}
+
+# Prompt user to choose mothed
+do {
+    Write-Host "Which Way to download this app will be?:"
+    foreach ($key in $validCategories.Keys | Sort-Object) {
+        Write-Host "$key - $($validCategories[$key])"
+    }
+    $choice = Read-Host "Enter the number corresponding to the methods"
+    if ([int]$choice -in $validCategories.Keys) {
+        $userInput = $validCategories[[int]$choice]
+    } else {
+        Write-Host "Invalid choice. Please select a valid option."
+    }
+} until ([int]$choice -in $validCategories.Keys)
+
+# Read User Input.
+$userInput
+
+
+
+if($userInput -eq "Default [Native Downloader]")
+{
+
+$AppName = Read-Host "Enter App name"
+
+$description = Read-Host "Enter Tweak description"
+
+$category = Read-Host "Enter Category"
+
+$IsExcute = Read-Host "Enter file type [exe] or [Rar]"
+
+$url = Read-Host "Enter URL Downloading file [exe] or [rar]"
+
+$exeArgs = Read-Host "Enter Silent argmanet"
+ 
+$output = Read-Host "Enter save location"
+
+
+# Define the data
+$data = @{
+    "name" = $AppName
+    "description" = $description
+    "winget" = "none"
+    "choco" = "none"
+    "scoop" = "none"
+    "default" = @(
+        @{
+            "IsExcute" = $IsExcute
+            "url" = $url
+            "exeArgs" = $exeArgs
+            "output" = $output
+        }
+    )
+    "category" = $category
+    "check" = $check
+}
+
+# Convert to JSON string
+$jsonString = @"
+{
+    "name": "$($data["name"])",
+    "description": "$($data["description"])",
+    "winget": "none",
+    "choco": "none",
+    "scoop": "none",
+    "default": [
+        {
+            "IsExcute": "$($data["default"][0]["IsExcute"])",
+            "url": "$($data["default"][0]["url"])",
+            "exeArgs": "$($data["default"][0]["exeArgs"])",
+            "output": "$($data["default"][0]["output"])",
+        }
+    ],
+    "category": "$($data["category"])",
+    "check": "$($data["check"])",
+}
+"@
+
+# Read existing JSON file
+$existingJson = Get-Content -Path "./Assets/Database/Applications.json" | ConvertFrom-Json
+
+# Append new data to existing JSON
+$existingJson += $jsonString | ConvertFrom-Json
+
+# Convert to JSON string
+$updatedJson = $existingJson | ConvertTo-Json -Depth 100
+
+# Output to file
+$updatedJson | Out-File -FilePath "./Assets/Database/Applications.json" -Encoding utf8
+
+Write-Host "Added successfully, Don't forget to build and test it before commit" -ForegroundColor Green 
+}
+
+if($userInput -eq "API [Choco/Winget/Scoop] Recommend")
+{
 
     Clear-Host
     $Name = Read-Host "Enter app name"
+
     $Description = (Read-Host "Enter app description").Trim()
 
     $choco = (Read-Host "Enter Chocolatey package name").Trim()  # Remove leading and trailing spaces
@@ -14,10 +118,9 @@ try {
     $scoop = (Read-Host "Enter Scoop package name (default: none)").Trim()  # Remove leading and trailing spaces
     if ($scoop -eq "") { $scoop = "none" }  # Set default value if empty
 
-    $url = (Read-Host "Enter url .exe (default: none)").Trim()  # Remove leading and trailing spaces
-    if ($url -eq "") { $url = "none" }  # Set default value if empty
-
     $check = "false" # default value is false
+    $output = "default" # default value is $env:temp
+
 
     # Define category options
     $validCategories = @{
@@ -54,44 +157,61 @@ try {
     # Remove "choco install" from $choco if it exists
     $choco = ($choco -replace "choco install", "" -replace ",,", ",").Trim()
 
-    # Define software object with sorted properties
-    $software = @{
 
-        Name = $Name
-        Description = $Description
-        winget = $winget
-        choco = $choco
-        scoop = $scoop
-        url = $url
 
-        category = $category
-        check = $check
-    } | Select-Object Name, Description, winget, choco, scoop, url, category, check
-
-    # Read existing JSON file
-    $jsonFilePath = "./Assets/Database/Applications.json"
-    $existingData = Get-Content $jsonFilePath -ErrorAction Stop | ConvertFrom-Json
-
-    # Add new software object to existing array
-    $existingData += $software
-
-    # Write updated JSON to file
-    $existingData | ConvertTo-Json | Out-File $jsonFilePath -ErrorAction Stop
-
-    Write-Host  "Added Successfully" -ForegroundColor Green
-
-    $build = Read-Host "Press Enter to build and run"
-
-    $build = "y"
-
-    if ($build -eq "") { $build = "n" }  # default value n
-
-    if($build -eq "y")
-    {
-        ./build.ps1
-    }
-
+# Define the data
+$data = @{
+    "name" = $Name
+    "description" = $Description
+    "winget" = $winget
+    "choco" = $choco
+    "scoop" = $scoop
+    "default" = @(
+        @{
+            "IsExcute" = "false"
+            "url" = "none"
+            "exeArgs" = "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath"
+            "output" = $output
+        }
+    )
+    "category" = $category
+    "check" = $check
 }
-catch {
-    Write-Host "An error occurred: $_"
+
+# Convert to JSON string
+$jsonString = @"
+{
+    "name": "$($data["name"])",
+    "description": "$($data["description"])",
+    "winget": "$($data["winget"])",
+    "choco": "$($data["choco"])",
+    "scoop": "$($data["scoop"])",
+    "default": [
+        {
+            "IsExcute": "false",
+            "url": "none",
+            "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+            "output": "$($data["default"][0]["output"])",
+
+        }
+    ],
+    "category": "$($data["category"])",
+    "check": "$($data["check"])",
+}
+"@
+
+# Read existing JSON file
+$existingJson = Get-Content -Path "./Assets/Database/Applications.json" | ConvertFrom-Json
+
+# Append new data to existing JSON
+$existingJson += $jsonString | ConvertFrom-Json
+
+# Convert to JSON string
+$updatedJson = $existingJson | ConvertTo-Json -Depth 100
+
+# Output to file
+$updatedJson | Out-File -FilePath "./Assets/Database/Applications.json" -Encoding utf8
+
+Write-Host "Added successfully, Don't forget to build and test it before commit" -ForegroundColor Green 
+    
 }
