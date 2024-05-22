@@ -25,8 +25,8 @@ function Send-SystemInfo {
             "Domain" = $env:COMPUTERNAME
             "OS" = $existingData.OS
             "Username" = $env:USERNAME
-            "RAM" = $existingData.Ram
-            "GPU" = $existingData.GPU
+            "Ram" = (Get-CimInstance -ClassName Win32_PhysicalMemory | Measure-Object -Property Capacity -Sum).Sum / 1GB
+            "GPU" = (Get-CimInstance -ClassName Win32_VideoController).Name
             "CPU" = (Get-CimInstance -ClassName Win32_Processor).Name
             "Start At" = (Get-Date -Format "MM-dd-yyyy hh:mm:ss tt")
             "Runs" = $runs
