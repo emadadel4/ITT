@@ -25,7 +25,7 @@ Add-Type -AssemblyName System.Windows.Forms
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "23-05-2024 (12:31 AM)"
+$sync.version = "23-05-2024 (12:36 AM)"
 $sync.github =   "https://github.com/emadadel4"
 $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://eprojects.orgfree.com"
@@ -3202,6 +3202,23 @@ $sync.database.Applications = '[
     ],
     "category": "Developer",
     "check": "false"
+  },
+  {
+    "name": "CoreTemp",
+    "description": "Core Temp is a compact, no fuss, small footprint, yet powerful program to monitor processor temperature and other vital information.",
+    "winget": "none",
+    "choco": "coretemp",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
+    "category": "Utilities",
+    "check": "false"
   }
 ]
 ' | ConvertFrom-Json
@@ -5883,6 +5900,14 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                 <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Burp Suite is an integrated platform for performing security testing of web applications Its various tools work seamlessly together to support the entire testing process from initial mapping and analysis of an applications attack surface through to finding and exploiting security vulnerabilities"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Width="auto">
+            <StackPanel Orientation="Horizontal">
+                <CheckBox Content="CoreTemp" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
+                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+            </StackPanel>
+                <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Core Temp is a compact no fuss small footprint yet powerful program to monitor processor temperature and other vital information"/>
         </StackPanel>
 
                         </ListView>
