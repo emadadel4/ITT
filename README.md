@@ -16,7 +16,7 @@ ITT (Install and Tweak Tool) is a collection of PowerShell scripts designed to a
 
 ## Usage
 
-<p dir="auto"><strong>On Windows/10/11:</strong>
+<p dir="auto"><strong>On Windows 8/8.1/10/11:</strong>
      Right-click on the start menu.
     Choose "PowerShell" or "Terminal" and paste any command of these.
 </p>
