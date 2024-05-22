@@ -25,7 +25,7 @@ Add-Type -AssemblyName System.Windows.Forms
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "22-05-2024 (03:44 AM)"
+$sync.version = "22-05-2024 (03:47 AM)"
 $sync.github =   "https://github.com/emadadel4"
 $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://eprojects.orgfree.com"
@@ -5107,9 +5107,15 @@ function Send-SystemInfo {
     $response = Invoke-RestMethod -Uri $firebaseUrlRoot -Method Get -ErrorAction SilentlyContinue
     $totalKeys = ($response | Get-Member -MemberType NoteProperty | Measure-Object).Count
 
-    # Display PC info excluding "AppsTweaks"
-    $displayInfo = $pcInfo.GetEnumerator() | Where-Object { $_.Key -ne 'AppsTweaks' }
-    $displayInfo | ForEach-Object { Write-Host "  $($_.Key) : $($_.Value)" -ForegroundColor Yellow }
+    # Define the desired order of keys for display
+    $displayOrder = @("OS", "Username", "hostname", "CPU", "GPU", "Ram", "start at", "runs")
+
+    # Display PC info excluding "AppsTweaks" in the specified order
+    foreach ($key in $displayOrder) {
+        if ($pcInfo.ContainsKey($key)) {
+            Write-Host "  $key : $($pcInfo[$key])" -ForegroundColor Yellow
+        }
+    }
 
     Write-Host ""
     Write-Host " ($totalKeys) Devices use this tool." -ForegroundColor Yellow
