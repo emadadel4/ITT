@@ -3138,5 +3138,22 @@
     ],
     "category": "Developer",
     "check": "false"
+  },
+  {
+    "name": "CoreTemp",
+    "description": "Core Temp is a compact, no fuss, small footprint, yet powerful program to monitor processor temperature and other vital information.",
+    "winget": "none",
+    "choco": "coretemp",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
+    "category": "Utilities",
+    "check": "false"
   }
 ]
