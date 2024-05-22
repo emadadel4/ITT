@@ -41,27 +41,32 @@ irm https://raw.githubusercontent.com/emadadel4/ITT/main/itt.ps1 | iex
 <ul>
   <li><p dir="auto"><strong>Powershell 7 (Recommended) for build</strong></p></li>
   <li><p dir="auto"><strong>Fork the repo</strong></p></li>
-  <li><p dir="auto"><strong>Open ITT directory in Powershell and choose what you will add</strong></p></li>
+  <li><p dir="auto"><strong>Open ITT directory in Powershell</strong></p></li>
+  
+```sh
+Set-Location "C:\Users\$env:USERNAME\Documents\Github\ITT"
+```
+  <li><p dir="auto"><strong>..and choose what you will add.</strong></p></li>
 </ul> 
   
-**Use this Command to add new App**
+**Use this Command to add new App.**
 ```sh
 newApp.ps1
 ```
 
-**Use this Command to add a new Tweak**
+**Use this Command to add a new Tweak.**
 Note: you must know what you're doing when you add a new tweak, just be careful and test it before commit
 
 ```sh
 newTweak.ps1
 ```
 
-**Use this Command to add a new Soundtrack**
+**Use this Command to add a new Soundtrack.**
 ```sh
 newOST.ps1
 ```
 
-**Use this Command to add a new Quote**
+**Use this Command to add a new Quote.**
 ```sh
 newQuote.ps1
 ```
