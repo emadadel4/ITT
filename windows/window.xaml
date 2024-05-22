@@ -23,7 +23,6 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
             <RowDefinition Height="Auto"/>
     </Grid.RowDefinitions>
 
-
     <!--Header Section-->
 
 
