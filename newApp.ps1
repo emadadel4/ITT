@@ -119,7 +119,7 @@ if($userInput -eq "API [Choco/Winget/Scoop] Recommend")
     if ($scoop -eq "") { $scoop = "none" }  # Set default value if empty
 
     $check = "false" # default value is false
-    $output = "default" # default value is $env:temp
+    $output = "none" # default value is none
 
 
     # Define category options
