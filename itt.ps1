@@ -25,7 +25,7 @@ Add-Type -AssemblyName System.Windows.Forms
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "22-05-2024 (04:37 AM)"
+$sync.version = "22-05-2024 (04:46 AM)"
 $sync.github =   "https://github.com/emadadel4"
 $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://eprojects.orgfree.com"
@@ -1797,7 +1797,7 @@ $sync.database.Applications = '[
   },
   {
     "Name": "Bandicam",
-    "Description": "Video Capture Desktop",
+    "Description": "Bandicam is a closed-source screen capture and screen recording software originally developed by Bandisoft and later by Bandicam Company that can take screenshots or record screen changes. Bandicam consists of three main modes. One is the Screen Recording mode, which can be used for recording a certain area on the PC screen",
     "winget": "BandicamCompany.Bandicam",
     "choco": "none",
     "scoop": "none",
@@ -1893,6 +1893,16 @@ $sync.database.Applications = '[
     "scoop": "none",
     "url": "none",
     "category": "Drivers",
+    "check": "false"
+  },
+  {
+    "Name": "AdGuard Home",
+    "Description": "AdGuard Home is a network-wide software for blocking ads and tracking. After you set it up, it''ll cover ALL your home devices, and you don''t need any client-side software for that.",
+    "winget": "choco install adguardhome",
+    "choco": "It operates as a DNS server that re-routes tracking domains to a \"black hole\", thus preventing your devices from connecting to those servers. It''s based on software we use for our public AdGuard DNS servers - both share a lot of common code.",
+    "scoop": "none",
+    "url": "none",
+    "category": "Security",
     "check": "false"
   }
 ]
@@ -2726,87 +2736,80 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
 <!--End ListViewItem Style-->
 
 <!--Scrollbar Thumbs-->
-  <Style x:Key="ScrollThumbs" TargetType="{x:Type Thumb}">
-      <Setter Property="Template">
-          <Setter.Value>
-              <ControlTemplate TargetType="{x:Type Thumb}">
-                  <Grid x:Name="Grid">
-                      <Rectangle HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="Auto" Height="Auto" Fill="Transparent" />
-                      <Border x:Name="Rectangle1" CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="Auto" Height="Auto" Background="{TemplateBinding Background}" />
-                  </Grid>
-                  <ControlTemplate.Triggers>
-                      <Trigger Property="Tag" Value="Horizontal">
-                          <Setter TargetName="Rectangle1" Property="Width" Value="Auto" />
-                          <Setter TargetName="Rectangle1" Property="Height" Value="7" />
-                      </Trigger>
-                    <Trigger Property="Tag" Value="Vertical">
-                        <!-- Adjust the dimensions for vertical orientation -->
-                        <Setter TargetName="Rectangle1" Property="Width" Value="100" />
-                        <Setter TargetName="Rectangle1" Property="Height" Value="100" />
+<Style x:Key="ScrollThumbs" TargetType="{x:Type Thumb}">
+    <Setter Property="Template">
+        <Setter.Value>
+            <ControlTemplate TargetType="{x:Type Thumb}">
+                <Grid x:Name="Grid">
+                    <Rectangle HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="Auto" Height="Auto" Fill="Transparent" />
+                    <Border x:Name="Rectangle1" CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="Auto" Height="Auto" Background="{TemplateBinding Background}" />
+                </Grid>
+                <ControlTemplate.Triggers>
+                    <Trigger Property="Tag" Value="Horizontal">
+                        <Setter TargetName="Rectangle1" Property="Width" Value="Auto" />
+                        <Setter TargetName="Rectangle1" Property="Height" Value="7" />
                     </Trigger>
-                  </ControlTemplate.Triggers>
-              </ControlTemplate>
-          </Setter.Value>
-      </Setter>
-  </Style>
-  <Style x:Key="{x:Type ScrollBar}" TargetType="{x:Type ScrollBar}">
-      <Setter Property="Stylus.IsFlicksEnabled" Value="false" />
-      <Setter Property="Foreground" Value="{DynamicResource BGButtonColor}" />
-      <Setter Property="Background" Value="{DynamicResource FGColor}" />
-      <Setter Property="Width" Value="8" />
-      <Setter Property="Height" Value="Auto" />
-
-      <Setter Property="Template">
-          <Setter.Value>
-              <ControlTemplate TargetType="{x:Type ScrollBar}">
-                  <Grid x:Name="GridRoot" Width="8" Background="{TemplateBinding Background}">
-                      <Grid.RowDefinitions>
-                          <RowDefinition Height="0.00001*" />
-                      </Grid.RowDefinitions>
-                      <Track x:Name="PART_Track" Grid.Row="0" IsDirectionReversed="true" Focusable="false">
-                          <Track.Thumb>
-                              <Thumb x:Name="Thumb" Background="{TemplateBinding Foreground}" Style="{DynamicResource ScrollThumbs}" />
-                          </Track.Thumb>
-                          <Track.IncreaseRepeatButton>
-                              <RepeatButton x:Name="PageUp" Command="ScrollBar.PageDownCommand" Opacity="0" Focusable="false" />
-                          </Track.IncreaseRepeatButton>
-                          <Track.DecreaseRepeatButton>
-                              <RepeatButton x:Name="PageDown" Command="ScrollBar.PageUpCommand" Opacity="0" Focusable="false" />
-                          </Track.DecreaseRepeatButton>
-                      </Track>
-                  </Grid>
-                  <ControlTemplate.Triggers>
-                      <Trigger SourceName="Thumb" Property="IsMouseOver" Value="true">
-                          <Setter Value="{DynamicResource ButtonSelectBrush}" TargetName="Thumb" Property="Background" />
-                      </Trigger>
-                      <Trigger SourceName="Thumb" Property="IsDragging" Value="true">
-                          <Setter Value="{DynamicResource DarkBrush}" TargetName="Thumb" Property="Background" />
-                      </Trigger>
-                      <Trigger Property="IsEnabled" Value="false">
-                          <Setter TargetName="Thumb" Property="Visibility" Value="Collapsed" />
-                      </Trigger>
-                      <Trigger Property="Orientation" Value="Horizontal">
-                          <Setter TargetName="GridRoot" Property="LayoutTransform">
-                              <Setter.Value>
-                                  <RotateTransform Angle="-90" />
-                              </Setter.Value>
-                          </Setter>
-                          <Setter TargetName="PART_Track" Property="LayoutTransform">
-                              <Setter.Value>
-                                  <RotateTransform Angle="-90" />
-                              </Setter.Value>
-                          </Setter>
-                          <Setter Property="Width" Value="Auto" />
-                          <Setter Property="Height" Value="8" />
-                          <Setter TargetName="Thumb" Property="Tag" Value="Horizontal" />
-                          <Setter TargetName="PageDown" Property="Command" Value="ScrollBar.PageLeftCommand" />
-                          <Setter TargetName="PageUp" Property="Command" Value="ScrollBar.PageRightCommand" />
-                      </Trigger>
-                  </ControlTemplate.Triggers>
-              </ControlTemplate>
-          </Setter.Value>
-      </Setter>
-  </Style>
+                </ControlTemplate.Triggers>
+            </ControlTemplate>
+        </Setter.Value>
+    </Setter>
+</Style>
+<Style x:Key="{x:Type ScrollBar}" TargetType="{x:Type ScrollBar}">
+    <Setter Property="Stylus.IsFlicksEnabled" Value="false" />
+    <Setter Property="Foreground" Value="{DynamicResource BGButtonColor}" />
+    <Setter Property="Background" Value="{DynamicResource FGColor}" />
+    <Setter Property="Width" Value="8" />
+    <Setter Property="Template">
+        <Setter.Value>
+            <ControlTemplate TargetType="{x:Type ScrollBar}">
+                <Grid x:Name="GridRoot" Width="8" Background="{TemplateBinding Background}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.00001*" />
+                    </Grid.RowDefinitions>
+                    <Track x:Name="PART_Track" Grid.Row="0" IsDirectionReversed="true" Focusable="false">
+                        <Track.Thumb>
+                            <Thumb x:Name="Thumb" Background="{TemplateBinding Foreground}" Style="{DynamicResource ScrollThumbs}" />
+                        </Track.Thumb>
+                        <Track.IncreaseRepeatButton>
+                            <RepeatButton x:Name="PageUp" Command="ScrollBar.PageDownCommand" Opacity="0" Focusable="false" />
+                        </Track.IncreaseRepeatButton>
+                        <Track.DecreaseRepeatButton>
+                            <RepeatButton x:Name="PageDown" Command="ScrollBar.PageUpCommand" Opacity="0" Focusable="false" />
+                        </Track.DecreaseRepeatButton>
+                    </Track>
+                </Grid>
+                <ControlTemplate.Triggers>
+                    <Trigger SourceName="Thumb" Property="IsMouseOver" Value="true">
+                        <Setter Value="{DynamicResource ButtonSelectBrush}" TargetName="Thumb" Property="Background" />
+                    </Trigger>
+                    <Trigger SourceName="Thumb" Property="IsDragging" Value="true">
+                        <Setter Value="{DynamicResource DarkBrush}" TargetName="Thumb" Property="Background" />
+                    </Trigger>
+                    <Trigger Property="IsEnabled" Value="false">
+                        <Setter TargetName="Thumb" Property="Visibility" Value="Collapsed" />
+                    </Trigger>
+                    <Trigger Property="Orientation" Value="Horizontal">
+                        <Setter TargetName="GridRoot" Property="LayoutTransform">
+                            <Setter.Value>
+                                <RotateTransform Angle="-90" />
+                            </Setter.Value>
+                        </Setter>
+                        <Setter TargetName="PART_Track" Property="LayoutTransform">
+                            <Setter.Value>
+                                <RotateTransform Angle="-90" />
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Property="Width" Value="Auto" />
+                        <Setter Property="Height" Value="8" />
+                        <Setter TargetName="Thumb" Property="Tag" Value="Horizontal" />
+                        <Setter TargetName="PageDown" Property="Command" Value="ScrollBar.PageLeftCommand" />
+                        <Setter TargetName="PageUp" Property="Command" Value="ScrollBar.PageRightCommand" />
+                    </Trigger>
+                </ControlTemplate.Triggers>
+            </ControlTemplate>
+        </Setter.Value>
+    </Setter>
+</Style>
 <!--End Scrollbar Thumbs-->
 
 <!--TabControl Style-->
@@ -4493,7 +4496,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                 <CheckBox Content="Bandicam" Tag="Imaging" IsChecked="false" FontWeight="Bold"/>
                 <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
             </StackPanel>
-                <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Video Capture Desktop"/>
+                <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Bandicam is a closedsource screen capture and screen recording software originally developed by Bandisoft and later by Bandicam Company that can take screenshots or record screen changes Bandicam consists of three main modes One is the Screen Recording mode which can be used for recording a certain area on the PC screen"/>
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Width="auto">
@@ -4566,6 +4569,14 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                 <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="The IconsExtract utility scans the files and folders on your computer and extract the icons and cursors stored in EXE DLL OCX CPL and in other file types"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Width="auto">
+            <StackPanel Orientation="Horizontal">
+                <CheckBox Content="AdGuard Home" Tag="Security" IsChecked="false" FontWeight="Bold"/>
+                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+            </StackPanel>
+                <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="AdGuard Home is a networkwide software for blocking ads and tracking After you set it up itll cover ALL your home devices and you dont need any clientside software for that"/>
         </StackPanel>
 
                         </ListView>
