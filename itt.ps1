@@ -25,7 +25,7 @@ Add-Type -AssemblyName System.Windows.Forms
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "22-05-2024 (04:47 AM)"
+$sync.version = "22-05-2024 (04:48 AM)"
 $sync.github =   "https://github.com/emadadel4"
 $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://eprojects.orgfree.com"
@@ -4587,7 +4587,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
                                 <!-- Icon -->
-                                <TextBlock Text="" FontFamily="Segoe MDL2 Assets" FontSize="15" Margin="0,0,5,0"/>
+                                <TextBlock Text="" FontFamily="Segoe MDL2 Assets" FontSize="15" Margin="0,0,5,0"/>
                                 <!-- Text -->
                                 <TextBlock Text="Tweaks"/>
                             </StackPanel>
