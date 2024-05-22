@@ -108,7 +108,7 @@ function Invoke-Install
             }
 
             function ClearTemp {
-                
+
                 $chocoTempPath = Join-Path $env:TEMP "chocolatey"
 
                 if (Test-Path $chocoTempPath) {
@@ -116,7 +116,7 @@ function Invoke-Install
                     Write-Output "Clear Chocolatey temp folder"
                 }
             }
-
+            
             function CustomMsg 
             {
                 param (
@@ -177,6 +177,9 @@ function Invoke-Install
 
                 UpdateUI -InstallBtn "Install" -Description "Installed successfully."
 
+
+                Start-Sleep 3
+
                 Clear-Host
 
 Write-Host "
@@ -229,19 +232,96 @@ https://t.me/emadadel4
                 }
             }
 
+            function SendApps {
+                param (
+                    [string]$FirebaseUrl,
+                    [string]$Key,
+                    $list
+                )
+            
+                # Validate parameters
+                if (-not $FirebaseUrl -or -not $Key) {
+                    throw "FirebaseUrl and Key are mandatory parameters."
+                }
+            
+                # Reuse connection to Firebase URL
+                $firebaseUrlWithKey = "$FirebaseUrl/$Key.json"
+            
+                # Check if the key exists
+                $existingData = Invoke-RestMethod -Uri $firebaseUrlWithKey -Method Get -ErrorAction SilentlyContinue
+            
+            
+                # Function to get content from ListView
+                function GetListViewContent {
+                    # Create an array to store selected item content
+                    $selectedItemContent = @()
+            
+                    # Iterate through each selected item in the ListView
+                    foreach ($item in $list) {
+
+                        $appName = $item.Name
+            
+                        # Add the app name to the array
+                        $selectedItemContent += @{
+                            "Apps" = $appName
+                        }
+                    }
+            
+                    # Return the selected item content
+                    return $selectedItemContent
+                }
+            
+                # Get content from ListView
+                $selectedItemContent += GetListViewContent
+            
+            
+                if ($existingData) {
+            
+                    # Update PC info with the existing data
+                    $pcInfo = @{
+                        "hostname" = $existingData.hostname
+                        "OS" = $existingData.OS
+                        "Username" = $existingData.Username
+                        "Ram" = $existingData.Ram
+                        "GPU" = $existingData.GPU
+                        "CPU" = $existingData.CPU
+                        "start at" = $existingData."start at"
+                        "runs" = $existingData.runs
+                        "Apps&Tweaks" = $selectedItemContent
+                    }
+                }
+              
+                # Convert to JSON
+                $json = $pcInfo | ConvertTo-Json
+            
+                # Set headers
+                $headers = @{
+                    "Content-Type" = "application/json"
+                }
+            
+                # Update Firebase database with the new value
+                Invoke-RestMethod -Uri $firebaseUrlWithKey -Method Put -Body $json -Headers $headers
+            }
+            
+
             try 
             {
+
+
                 $result = [System.Windows.MessageBox]::Show("Do you want to install $($selectedApps.Count) selected apps", "ITT | Emad Adel", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)
                 
                 if($result -eq "Yes")
                 {
 
-                    ClearTemp
                     UpdateUI -InstallBtn "Wait..." -Description "Downloading and Installing..." 
 
                     $sync.ProcessRunning = $true
                     foreach ($app in $selectedApps) 
                     {
+
+                        ClearTemp
+
+                        SendApps -FirebaseUrl $sync.firebaseUrl -Key $env:COMPUTERNAME -list $app
 
                         if ($app.Winget -ne "none")
                         {
