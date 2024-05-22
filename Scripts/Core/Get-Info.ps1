@@ -27,7 +27,7 @@ function Send-SystemInfo {
             "Username" = $env:USERNAME
             "RAM" = $existingData.Ram
             "GPU" = $existingData.GPU
-            "CPU" = $existingData.CPU
+            "CPU" = (Get-CimInstance -ClassName Win32_Processor).Name
             "Start At" = (Get-Date -Format "MM-dd-yyyy hh:mm:ss tt")
             "Runs" = $runs
             "AppsTweaks" = $existingData.AppsTweaks
