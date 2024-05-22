@@ -16,18 +16,38 @@ function Send-SystemInfo {
     # Check if the key exists
     $existingData = Invoke-RestMethod -Uri $firebaseUrlWithKey -Method Get -ErrorAction SilentlyContinue
 
-    # Increment runs if data exists, otherwise set to 1
-    $runs = if ($existingData) { $existingData.runs + 1 } else { 1 }
+    if ($existingData) {
+        # Increment runs if data exists
+        $runs = $existingData.runs + 1
 
-    # PC info
-    $pcInfo = @{
-        "hostname" = $env:COMPUTERNAME
-        "OS" = [Environment]::OSVersion.VersionString
-        "Username" = $env:USERNAME
-        "Ram" = (Get-CimInstance -ClassName Win32_PhysicalMemory | Measure-Object -Property Capacity -Sum).Sum / 1GB
-        "GPU" = (Get-CimInstance -ClassName Win32_VideoController).Name
-        "start at" = (Get-Date -Format "yyyy-MM-dd HH:mm:ss")
-        "runs" = $runs
+        # Update PC info with the existing data
+        $pcInfo = @{
+            "hostname" = $existingData.hostname
+            "OS" = $existingData.OS
+            "Username" = $existingData.Username
+            "Ram" = $existingData.Ram
+            "GPU" = $existingData.GPU
+            "CPU" = $existingData.CPU
+            "start at" = $existingData."start at"
+            "runs" = $runs
+            "Apps&Tweaks" = $existingData."Apps&Tweaks"
+        }
+    }
+    else {
+        # Set runs to 1 if key doesn't exist
+        $runs = 1
+
+        # Get PC info for new entry
+        $pcInfo = @{
+            "hostname" = $env:COMPUTERNAME
+            "OS" = [Environment]::OSVersion.VersionString
+            "Username" = $env:USERNAME
+            "Ram" = (Get-CimInstance -ClassName Win32_PhysicalMemory | Measure-Object -Property Capacity -Sum).Sum / 1GB
+            "GPU" = (Get-CimInstance -ClassName Win32_VideoController).Name
+            "CPU" = (Get-CimInstance -ClassName Win32_Processor).Name
+            "start at" = (Get-Date -Format "yyyy-MM-dd hh:mm:ss tt")
+            "runs" = ""
+        }
     }
 
     # Convert to JSON
@@ -38,7 +58,7 @@ function Send-SystemInfo {
         "Content-Type" = "application/json"
     }
 
-    # Update Firebase database with the new value of "runs"
+    # Update Firebase database with the new value
     Invoke-RestMethod -Uri $firebaseUrlWithKey -Method Put -Body $json -Headers $headers
 
     # Count the number of keys directly under the root
@@ -47,5 +67,3 @@ function Send-SystemInfo {
 
     Write-Host " ($totalKeys) Devices use this tool." -ForegroundColor Yellow
 }
-
-# Call the function to send system info to Firebase
