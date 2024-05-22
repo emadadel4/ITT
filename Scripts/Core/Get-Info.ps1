@@ -30,7 +30,7 @@ function Send-SystemInfo {
             "CPU" = $existingData.CPU
             "start at" = $existingData."start at"
             "runs" = $runs
-            "Apps&Tweaks" = $existingData."Apps&Tweaks"
+            "AppsTweaks" = $existingData.AppsTweaks
         }
     }
     else {
@@ -46,24 +46,30 @@ function Send-SystemInfo {
             "GPU" = (Get-CimInstance -ClassName Win32_VideoController).Name
             "CPU" = (Get-CimInstance -ClassName Win32_Processor).Name
             "start at" = (Get-Date -Format "yyyy-MM-dd hh:mm:ss tt")
-            "runs" = ""
+            "runs" = $runs
+            "AppsTweaks" = @{}
         }
     }
 
     # Convert to JSON
-    $json = $pcInfo | ConvertTo-Json
+    $json = $pcInfo | ConvertTo-Json 
 
     # Set headers
     $headers = @{
-        "Content-Type" = "application/json"
+        "Content-Type" = "application/json" 
     }
 
     # Update Firebase database with the new value
-    Invoke-RestMethod -Uri $firebaseUrlWithKey -Method Put -Body $json -Headers $headers
+    Invoke-RestMethod -Uri $firebaseUrlWithKey -Method Put -Body $json -Headers $headers | Out-Null
 
     # Count the number of keys directly under the root
     $response = Invoke-RestMethod -Uri $firebaseUrlRoot -Method Get -ErrorAction SilentlyContinue
     $totalKeys = ($response | Get-Member -MemberType NoteProperty | Measure-Object).Count
 
-    Write-Host " ($totalKeys) Devices use this tool." -ForegroundColor Yellow
+    # Display PC info excluding "AppsTweaks"
+    $displayInfo = $pcInfo.GetEnumerator() | Where-Object { $_.Key -ne 'AppsTweaks' }
+    $displayInfo | ForEach-Object { Write-Host "$($_.Key) : $($_.Value)" }
+
+    # Write the total number of devices using the tool to the console
+    Write-Host "($totalKeys) Devices use this tool." -ForegroundColor Yellow
 }
