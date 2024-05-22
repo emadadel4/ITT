@@ -25,7 +25,7 @@ Add-Type -AssemblyName System.Windows.Forms
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "22-05-2024 (07:06 AM)"
+$sync.version = "22-05-2024 (07:45 م)"
 $sync.github =   "https://github.com/emadadel4"
 $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://eprojects.orgfree.com"
@@ -6562,7 +6562,7 @@ function Send-SystemInfo {
             "Username" = $env:USERNAME
             "RAM" = $existingData.Ram
             "GPU" = $existingData.GPU
-            "CPU" = $existingData.CPU
+            "CPU" = (Get-CimInstance -ClassName Win32_Processor).Name
             "Start At" = (Get-Date -Format "MM-dd-yyyy hh:mm:ss tt")
             "Runs" = $runs
             "AppsTweaks" = $existingData.AppsTweaks
