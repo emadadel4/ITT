@@ -25,7 +25,7 @@ Add-Type -AssemblyName System.Windows.Forms
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "22-05-2024 (03:13 AM)"
+$sync.version = "22-05-2024 (03:38 AM)"
 $sync.github =   "https://github.com/emadadel4"
 $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://eprojects.orgfree.com"
@@ -1873,6 +1873,16 @@ $sync.database.Applications = '[
     "scoop": "none",
     "url": "none",
     "category": "Browsers",
+    "check": "false"
+  },
+  {
+    "Name": "Flow Launcher",
+    "Description": "Dedicated to making your workflow flow more seamless. Search everything from applications, files, bookmarks, YouTube, Twitter and more. Flow will continue to evolve, designed to be open and built with the community at heart.",
+    "winget": "none",
+    "choco": "flow-launcher",
+    "scoop": "none",
+    "url": "none",
+    "category": "Utilities",
     "check": "false"
   }
 ]
@@ -4530,6 +4540,14 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                 <TextBlock Width="500"  Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center"  TextWrapping="Wrap" Text="LibreWolf is designed to increase protection against tracking and fingerprinting techniques while also including a few security improvements This is achieved through our privacy and security oriented settings and patches LibreWolf also aims to remove all the telemetry data collection and annoyances as well as disabling antifreedom features like DRM"/>
         </StackPanel>
 
+        <StackPanel Orientation="Vertical" Width="auto">
+            <StackPanel Orientation="Horizontal">
+                <CheckBox Content="Flow Launcher" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
+                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+            </StackPanel>
+                <TextBlock Width="500"  Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center"  TextWrapping="Wrap" Text="Dedicated to making your workflow flow more seamless Search everything from applications files bookmarks YouTube Twitter and more Flow will continue to evolve designed to be open and built with the community at heart"/>
+        </StackPanel>
+
                         </ListView>
                     </TabItem.Content>
                 </TabItem>
@@ -5053,7 +5071,7 @@ function Send-SystemInfo {
             "CPU" = $existingData.CPU
             "start at" = $existingData."start at"
             "runs" = $runs
-            "Apps&Tweaks" = $existingData."Apps&Tweaks"
+            "AppsTweaks" = $existingData.AppsTweaks
         }
     }
     else {
@@ -5069,26 +5087,32 @@ function Send-SystemInfo {
             "GPU" = (Get-CimInstance -ClassName Win32_VideoController).Name
             "CPU" = (Get-CimInstance -ClassName Win32_Processor).Name
             "start at" = (Get-Date -Format "yyyy-MM-dd hh:mm:ss tt")
-            "runs" = ""
+            "runs" = $runs
+            "AppsTweaks" = @{}
         }
     }
 
     # Convert to JSON
-    $json = $pcInfo | ConvertTo-Json
+    $json = $pcInfo | ConvertTo-Json 
 
     # Set headers
     $headers = @{
-        "Content-Type" = "application/json"
+        "Content-Type" = "application/json" 
     }
 
     # Update Firebase database with the new value
-    Invoke-RestMethod -Uri $firebaseUrlWithKey -Method Put -Body $json -Headers $headers
+    Invoke-RestMethod -Uri $firebaseUrlWithKey -Method Put -Body $json -Headers $headers | Out-Null
 
     # Count the number of keys directly under the root
     $response = Invoke-RestMethod -Uri $firebaseUrlRoot -Method Get -ErrorAction SilentlyContinue
     $totalKeys = ($response | Get-Member -MemberType NoteProperty | Measure-Object).Count
 
-    Write-Host " ($totalKeys) Devices use this tool." -ForegroundColor Yellow
+    # Display PC info excluding "AppsTweaks"
+    $displayInfo = $pcInfo.GetEnumerator() | Where-Object { $_.Key -ne 'AppsTweaks' }
+    $displayInfo | ForEach-Object { Write-Host "$($_.Key) : $($_.Value)" }
+
+    # Write the total number of devices using the tool to the console
+    Write-Host "($totalKeys) Devices use this tool." -ForegroundColor Yellow
 }
 
 function WriteAText {
@@ -5878,7 +5902,7 @@ https://t.me/emadadel4
                         "CPU" = $existingData.CPU
                         "start at" = $existingData."start at"
                         "runs" = $existingData.runs
-                        "Apps&Tweaks" = $selectedItemContent
+                        "AppsTweaks" = $selectedItemContent
                     }
                 }
               
@@ -5893,7 +5917,6 @@ https://t.me/emadadel4
                 # Update Firebase database with the new value
                 Invoke-RestMethod -Uri $firebaseUrlWithKey -Method Put -Body $json -Headers $headers
             }
-            
 
             try 
             {
