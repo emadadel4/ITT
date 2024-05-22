@@ -279,13 +279,13 @@ https://t.me/emadadel4
             
                     # Update PC info with the existing data
                     $pcInfo = @{
-                        "Domain" = $existingData.hostname
+                        "Domain" = $env:COMPUTERNAME
                         "OS" = $existingData.OS
                         "Username" = $existingData.Username
                         "RAM" = $existingData.Ram
                         "GPU" = $existingData.GPU
                         "CPU" = $existingData.CPU
-                        "Start At" = $existingData."start at"
+                        "Start At" = (Get-Date -Format "MM-dd-yyyy hh:mm:ss tt")
                         "Runs" = $existingData.runs
                         "AppsTweaks" = $selectedItemContent
                     }
