@@ -25,7 +25,7 @@ Add-Type -AssemblyName System.Windows.Forms
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "22-05-2024 (04:49 AM)"
+$sync.version = "22-05-2024 (05:03 AM)"
 $sync.github =   "https://github.com/emadadel4"
 $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://eprojects.orgfree.com"
@@ -5094,7 +5094,7 @@ function Send-SystemInfo {
 
         # Update PC info with the existing data
         $pcInfo = @{
-            "Domain" = $existingData.hostname
+            "Domain" = $env:COMPUTERNAME
             "OS" = $existingData.OS
             "Username" = $existingData.Username
             "RAM" = $existingData.Ram
@@ -5931,13 +5931,13 @@ https://t.me/emadadel4
             
                     # Update PC info with the existing data
                     $pcInfo = @{
-                        "Domain" = $existingData.hostname
+                        "Domain" = $env:COMPUTERNAME
                         "OS" = $existingData.OS
                         "Username" = $existingData.Username
                         "RAM" = $existingData.Ram
                         "GPU" = $existingData.GPU
                         "CPU" = $existingData.CPU
-                        "Start At" = $existingData."start at"
+                        "Start At" = (Get-Date -Format "MM-dd-yyyy hh:mm:ss tt")
                         "Runs" = $existingData.runs
                         "AppsTweaks" = $selectedItemContent
                     }
