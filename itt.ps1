@@ -25,7 +25,7 @@ Add-Type -AssemblyName System.Windows.Forms
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "22-05-2024 (03:38 AM)"
+$sync.version = "22-05-2024 (03:44 AM)"
 $sync.github =   "https://github.com/emadadel4"
 $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://eprojects.orgfree.com"
@@ -5109,10 +5109,10 @@ function Send-SystemInfo {
 
     # Display PC info excluding "AppsTweaks"
     $displayInfo = $pcInfo.GetEnumerator() | Where-Object { $_.Key -ne 'AppsTweaks' }
-    $displayInfo | ForEach-Object { Write-Host "$($_.Key) : $($_.Value)" }
+    $displayInfo | ForEach-Object { Write-Host "  $($_.Key) : $($_.Value)" -ForegroundColor Yellow }
 
-    # Write the total number of devices using the tool to the console
-    Write-Host "($totalKeys) Devices use this tool." -ForegroundColor Yellow
+    Write-Host ""
+    Write-Host " ($totalKeys) Devices use this tool." -ForegroundColor Yellow
 }
 
 function WriteAText {
