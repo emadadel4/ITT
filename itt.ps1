@@ -25,7 +25,7 @@ Add-Type -AssemblyName System.Windows.Forms
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "22-05-2024 (03:57 AM)"
+$sync.version = "22-05-2024 (04:28 AM)"
 $sync.github =   "https://github.com/emadadel4"
 $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://eprojects.orgfree.com"
@@ -2596,10 +2596,13 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
       <Style TargetType="Button">
         <Setter Property="Background" Value="{DynamicResource FGColor}"/>
         <Setter Property="Foreground" Value="{DynamicResource DefaultTextColor}"/>
+        <Setter Property="BorderBrush" Value="red"/>
+        <Setter Property="BorderThickness" Value="11"/>
+        
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
-                    <Border CornerRadius="20" Background="{TemplateBinding Background}">
+                    <Border CornerRadius="20" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="2" Background="{TemplateBinding Background}">
                         <ContentPresenter HorizontalAlignment="Center"
                                             VerticalAlignment="Center"/>
                         
@@ -2739,7 +2742,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
   <Style x:Key="{x:Type ScrollBar}" TargetType="{x:Type ScrollBar}">
       <Setter Property="Stylus.IsFlicksEnabled" Value="false" />
       <Setter Property="Foreground" Value="{DynamicResource BGButtonColor}" />
-      <Setter Property="Background" Value="WhiteSmoke" />
+      <Setter Property="Background" Value="{DynamicResource FGColor}" />
       <Setter Property="Width" Value="8" />
       <Setter Property="Height" Value="Auto" />
 
@@ -2887,7 +2890,6 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
             </Setter.Value>
         </Setter>
     </Style>
-
 <!--End ComboBox Style-->
 
 
@@ -2898,11 +2900,11 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                 <ResourceDictionary x:Key="Light">
                         <SolidColorBrush x:Key="BGColor" Color="White"/>
                         <SolidColorBrush x:Key="FGColor" Color="WhiteSmoke"/>
-                        <SolidColorBrush x:Key="BGButtonColor" Color="#382bf0  " />
+                        <SolidColorBrush x:Key="BGButtonColor" Color="#382bf0" />
                         <SolidColorBrush x:Key="FGButtonColor" Color="White" />
                         <SolidColorBrush x:Key="FGTextColor" Color="Black" />
                         <SolidColorBrush x:Key="DefaultTextColor" Color="Black"/>
-                        <SolidColorBrush x:Key="BorderBrush" Color="#212121"/>
+                        <SolidColorBrush x:Key="BorderBrush" Color="LightBlue"/>
                 </ResourceDictionary>
         <!--Light mode -->
 
@@ -2914,7 +2916,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                         <SolidColorBrush x:Key="FGButtonColor" Color="White" />
                         <SolidColorBrush x:Key="FGTextColor" Color="WhiteSmoke" />
                         <SolidColorBrush x:Key="DefaultTextColor" Color="White"/>
-                        <SolidColorBrush x:Key="BorderBrush" Color="WhiteSmoke" />
+                        <SolidColorBrush x:Key="BorderBrush" Color="#1DB954" />
                 </ResourceDictionary>
         <!--Dark mode -->
 
@@ -3085,7 +3087,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
     <!--End Header Section-->
 
         <!--TabControl-->
-        <TabControl Name="taps" TabStripPlacement="Left" Margin="0, 10, 0, 10" Grid.Row="1"  BorderBrush="Transparent" Foreground="White" Background="Transparent">
+        <TabControl Name="taps" TabStripPlacement="Left" Margin="0, 10, 0, 10" Grid.Row="1"  BorderBrush="{DynamicResource FGColor}" Foreground="White" Background="Transparent">
                 <TabItem Name="apps" BorderBrush="{x:Null}" Padding="0">
                     <TabItem.HeaderTemplate>
                         <DataTemplate>
@@ -5159,7 +5161,7 @@ function Startup {
         Write-Host (WriteAText -color White -message  "You ready to Install anything.") 
     }
 
-    Send-SystemInfo -FirebaseUrl $sync.firebaseUrl -Key $env:COMPUTERNAME
+    #Send-SystemInfo -FirebaseUrl $sync.firebaseUrl -Key $env:COMPUTERNAME
 
 
 }

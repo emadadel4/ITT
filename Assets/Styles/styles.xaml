@@ -2,10 +2,13 @@
       <Style TargetType="Button">
         <Setter Property="Background" Value="{DynamicResource FGColor}"/>
         <Setter Property="Foreground" Value="{DynamicResource DefaultTextColor}"/>
+        <Setter Property="BorderBrush" Value="red"/>
+        <Setter Property="BorderThickness" Value="11"/>
+        
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
-                    <Border CornerRadius="20" Background="{TemplateBinding Background}">
+                    <Border CornerRadius="20" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="2" Background="{TemplateBinding Background}">
                         <ContentPresenter HorizontalAlignment="Center"
                                             VerticalAlignment="Center"/>
                         
@@ -145,7 +148,7 @@
   <Style x:Key="{x:Type ScrollBar}" TargetType="{x:Type ScrollBar}">
       <Setter Property="Stylus.IsFlicksEnabled" Value="false" />
       <Setter Property="Foreground" Value="{DynamicResource BGButtonColor}" />
-      <Setter Property="Background" Value="WhiteSmoke" />
+      <Setter Property="Background" Value="{DynamicResource FGColor}" />
       <Setter Property="Width" Value="8" />
       <Setter Property="Height" Value="Auto" />
 
@@ -293,6 +296,5 @@
             </Setter.Value>
         </Setter>
     </Style>
-
 <!--End ComboBox Style-->
 
