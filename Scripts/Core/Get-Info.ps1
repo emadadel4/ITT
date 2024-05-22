@@ -25,7 +25,7 @@ function Send-SystemInfo {
             "Domain" = $env:COMPUTERNAME
             "OS" = $existingData.OS
             "Username" = $env:USERNAME
-            "Ram" = (Get-CimInstance -ClassName Win32_PhysicalMemory | Measure-Object -Property Capacity -Sum).Sum / 1GB
+            "RAM" = (Get-CimInstance -ClassName Win32_PhysicalMemory | Measure-Object -Property Capacity -Sum).Sum / 1GB
             "GPU" = (Get-CimInstance -ClassName Win32_VideoController).Name
             "CPU" = (Get-CimInstance -ClassName Win32_Processor).Name
             "Start At" = (Get-Date -Format "MM-dd-yyyy hh:mm:ss tt")
@@ -42,7 +42,7 @@ function Send-SystemInfo {
             "Domain" = $env:COMPUTERNAME
             "OS" = [Environment]::OSVersion.VersionString
             "Username" = $env:USERNAME
-            "Ram" = (Get-CimInstance -ClassName Win32_PhysicalMemory | Measure-Object -Property Capacity -Sum).Sum / 1GB
+            "RAM" = (Get-CimInstance -ClassName Win32_PhysicalMemory | Measure-Object -Property Capacity -Sum).Sum / 1GB
             "GPU" = (Get-CimInstance -ClassName Win32_VideoController).Name
             "CPU" = (Get-CimInstance -ClassName Win32_Processor).Name
             "Start At" = (Get-Date -Format "MM-dd-yyyy hh:mm:ss tt")
