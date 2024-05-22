@@ -287,7 +287,7 @@ https://t.me/emadadel4
                         "CPU" = $existingData.CPU
                         "start at" = $existingData."start at"
                         "runs" = $existingData.runs
-                        "Apps&Tweaks" = $selectedItemContent
+                        "AppsTweaks" = $selectedItemContent
                     }
                 }
               
@@ -302,7 +302,6 @@ https://t.me/emadadel4
                 # Update Firebase database with the new value
                 Invoke-RestMethod -Uri $firebaseUrlWithKey -Method Put -Body $json -Headers $headers
             }
-            
 
             try 
             {
