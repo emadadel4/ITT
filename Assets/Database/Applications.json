@@ -5,7 +5,15 @@
     "winget": "none",
     "choco": "thorium --params /SSE3",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Browsers",
     "check": "false"
   },
@@ -15,7 +23,15 @@
     "winget": "none",
     "choco": "thorium --params /AVX",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Browsers",
     "check": "false"
   },
@@ -25,7 +41,15 @@
     "winget": "none",
     "choco": "firefox",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Browsers",
     "suggestion": "true",
     "check": "false"
@@ -36,7 +60,15 @@
     "winget": "none",
     "choco": "microsoft-edge",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Browsers",
     "check": "false"
   },
@@ -46,7 +78,15 @@
     "winget": "none",
     "choco": "googlechrome",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Browsers",
     "check": "false"
   },
@@ -56,7 +96,15 @@
     "winget": "none",
     "choco": "chromium",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Browsers",
     "check": "false"
   },
@@ -66,7 +114,15 @@
     "winget": "none",
     "choco": "brave",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Browsers",
     "check": "false"
   },
@@ -76,7 +132,15 @@
     "winget": "none",
     "choco": "tor-browser",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Browsers",
     "check": "false"
   },
@@ -86,7 +150,15 @@
     "winget": "none",
     "choco": "opera",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Browsers",
     "check": "false"
   },
@@ -96,7 +168,15 @@
     "winget": "none",
     "choco": "internet-download-manager",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Browsers",
     "check": "false"
   },
@@ -106,7 +186,15 @@
     "winget": "none",
     "choco": "none",
     "scoop": "none",
-    "url": "https://www.neatdownloadmanager.com/file/NeatDM_setup.exe",
+    "default":[
+    {
+      "IsExcute": "true",
+      "url": "https://www.neatdownloadmanager.com/file/NeatDM_setup.exe",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Browsers",
     "check": "false"
   },
@@ -116,7 +204,15 @@
     "winget": "none",
     "choco": "jdownloader",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Browsers",
     "check": "false"
   },
@@ -126,7 +222,15 @@
     "winget": "none",
     "choco": "k-litecodecpackfull",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Media",
     "suggestion": "true",
     "check": "false"
@@ -137,7 +241,15 @@
     "winget": "none",
     "choco": "potplayer",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Media",
     "check": "false"
   },
@@ -147,7 +259,15 @@
     "winget": "none",
     "choco": "vlc.install",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Media",
     "suggestion": "true",
     "check": "false"
@@ -158,7 +278,15 @@
     "winget": "none",
     "choco": "kodi",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Media",
     "check": "false"
   },
@@ -168,7 +296,15 @@
     "winget": "none",
     "choco": "jellyfin",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Media",
     "check": "false"
   },
@@ -178,7 +314,15 @@
     "winget": "none",
     "choco": "winamp",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Media",
     "check": "false"
   },
@@ -188,7 +332,15 @@
     "winget": "none",
     "choco": "aimp",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Media",
     "check": "false"
   },
@@ -198,7 +350,15 @@
     "winget": "none",
     "choco": "spotify",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Media",
     "check": "false"
   },
@@ -208,7 +368,15 @@
     "winget": "none",
     "choco": "fsviewer",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Imaging",
     "check": "false"
   },
@@ -218,7 +386,15 @@
     "winget": "none",
     "choco": "openoffice",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Documents",
     "check": "false"
   },
@@ -228,7 +404,15 @@
     "winget": "none",
     "choco": "foxitreader",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Documents",
     "check": "false"
   },
@@ -238,7 +422,15 @@
     "winget": "none",
     "choco": "libreoffice-fresh",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Documents",
     "suggestion": "true",
     "check": "false"
@@ -249,7 +441,15 @@
     "winget": "none",
     "choco": "sumatrapdf.install",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Documents",
     "check": "false"
   },
@@ -259,7 +459,15 @@
     "winget": "none",
     "choco": "winrar",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Compression",
     "suggestion": "true",
     "check": "false"
@@ -270,7 +478,15 @@
     "winget": "none",
     "choco": "7zip",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Compression",
     "suggestion": "true",
     "check": "false"
@@ -281,7 +497,15 @@
     "winget": "none",
     "choco": "peazip",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Compression",
     "check": "false"
   },
@@ -291,7 +515,15 @@
     "winget": "none",
     "choco": "telegram",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Communication",
     "suggestion": "true",
     "check": "false"
@@ -302,7 +534,15 @@
     "winget": "none",
     "choco": "signal",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Communication",
     "check": "false"
   },
@@ -312,7 +552,15 @@
     "winget": "none",
     "choco": "messenger",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Communication",
     "check": "false"
   },
@@ -322,7 +570,15 @@
     "winget": "none",
     "choco": "zoom",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Communication",
     "check": "false"
   },
@@ -332,7 +588,15 @@
     "winget": "none",
     "choco": "microsoft-teams.install",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Communication",
     "check": "false"
   },
@@ -342,7 +606,15 @@
     "winget": "none",
     "choco": "discord",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Communication",
     "check": "false"
   },
@@ -352,7 +624,15 @@
     "winget": "none",
     "choco": "teamviewer",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "File Sharing",
     "check": "false"
   },
@@ -362,7 +642,15 @@
     "winget": "none",
     "choco": "gimp",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Imaging",
     "check": "false"
   },
@@ -372,7 +660,15 @@
     "winget": "none",
     "choco": "directx",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Drivers",
     "check": "false"
   },
@@ -382,7 +678,15 @@
     "winget": "none",
     "choco": "vcredist-all",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Drivers",
     "check": "false"
   },
@@ -392,7 +696,15 @@
     "winget": "none",
     "choco": "vcredist2005",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Drivers",
     "check": "false"
   },
@@ -402,7 +714,15 @@
     "winget": "none",
     "choco": "vcredist2005",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Drivers",
     "check": "false"
   },
@@ -412,7 +732,15 @@
     "winget": "none",
     "choco": "vcredist2008",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Drivers",
     "check": "false"
   },
@@ -422,7 +750,15 @@
     "winget": "none",
     "choco": "vcredist2008",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Drivers",
     "check": "false"
   },
@@ -432,7 +768,15 @@
     "winget": "none",
     "choco": "vcredist2010",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Drivers",
     "check": "false"
   },
@@ -442,7 +786,15 @@
     "winget": "none",
     "choco": "vcredist2010",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Drivers",
     "check": "false"
   },
@@ -452,7 +804,15 @@
     "winget": "none",
     "choco": "vcredist2012",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Drivers",
     "check": "false"
   },
@@ -462,7 +822,15 @@
     "winget": "none",
     "choco": "vcredist2012",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Drivers",
     "check": "false"
   },
@@ -472,7 +840,15 @@
     "winget": "none",
     "choco": "vcredist2013",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Drivers",
     "check": "false"
   },
@@ -482,7 +858,15 @@
     "winget": "none",
     "choco": "vcredist2013",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Drivers",
     "check": "false"
   },
@@ -492,7 +876,15 @@
     "winget": "none",
     "choco": "vcredist2015",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Drivers",
     "check": "false"
   },
@@ -502,7 +894,15 @@
     "winget": "none",
     "choco": "vcredist2015",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Drivers",
     "check": "false"
   },
@@ -512,7 +912,15 @@
     "winget": "none",
     "choco": "dotnet-all",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Drivers",
     "check": "false"
   },
@@ -522,7 +930,15 @@
     "winget": "none",
     "choco": "amd-ryzen-chipset",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Drivers",
     "check": "false"
   },
@@ -532,7 +948,15 @@
     "winget": "none",
     "choco": "nvidia-display-driver",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Drivers",
     "check": "false"
   },
@@ -542,7 +966,15 @@
     "winget": "none",
     "choco": "none",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Drivers",
     "check": "false"
   },
@@ -552,7 +984,15 @@
     "winget": "none",
     "choco": "msiafterburner",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Drivers",
     "check": "false"
   },
@@ -562,7 +1002,15 @@
     "winget": "none",
     "choco": "physx.legacy",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Drivers",
     "check": "false"
   },
@@ -572,7 +1020,15 @@
     "winget": "none",
     "choco": "steam",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Launchers",
     "check": "false"
   },
@@ -582,7 +1038,15 @@
     "winget": "none",
     "choco": "ubisoft-connect",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Launchers",
     "check": "false"
   },
@@ -592,7 +1056,15 @@
     "winget": "none",
     "choco": "origin",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Launchers",
     "check": "false"
   },
@@ -602,7 +1074,15 @@
     "winget": "none",
     "choco": "steam",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Launchers",
     "check": "false"
   },
@@ -612,7 +1092,15 @@
     "winget": "none",
     "choco": "gamesavemanager",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Launchers",
     "check": "false"
   },
@@ -622,7 +1110,15 @@
     "winget": "none",
     "choco": "streamlabs-obs",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Launchers",
     "check": "false"
   },
@@ -632,7 +1128,15 @@
     "winget": "none",
     "choco": "obs-studio.install",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Launchers",
     "check": "false"
   },
@@ -642,7 +1146,15 @@
     "winget": "none",
     "choco": "logitechgaming",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Launchers",
     "check": "false"
   },
@@ -652,7 +1164,15 @@
     "winget": "none",
     "choco": "lively",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Launchers",
     "check": "false"
   },
@@ -662,7 +1182,15 @@
     "winget": "none",
     "choco": "playnite",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Launchers",
     "check": "false"
   },
@@ -672,7 +1200,15 @@
     "winget": "none",
     "choco": "drivereasyfree",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Drivers",
     "check": "false"
   },
@@ -682,7 +1218,15 @@
     "winget": "none",
     "choco": "intel-graphics-driver",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Drivers",
     "check": "false"
   },
@@ -692,7 +1236,15 @@
     "winget": "none",
     "choco": "intel-dsa",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Drivers",
     "check": "false"
   },
@@ -702,7 +1254,15 @@
     "winget": "none",
     "choco": "intel-network-drivers-win10",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Drivers",
     "check": "false"
   },
@@ -712,7 +1272,15 @@
     "winget": "none",
     "choco": "sdio",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Drivers",
     "check": "false"
   },
@@ -722,7 +1290,15 @@
     "winget": "none",
     "choco": "driverbooster",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Drivers",
     "check": "false"
   },
@@ -732,7 +1308,15 @@
     "winget": "none",
     "choco": "drivergenius",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Drivers",
     "check": "false"
   },
@@ -742,7 +1326,15 @@
     "winget": "none",
     "choco": "none",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Drivers",
     "check": "false"
   },
@@ -752,7 +1344,15 @@
     "winget": "none",
     "choco": "rapr",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Drivers",
     "check": "false"
   },
@@ -762,7 +1362,15 @@
     "winget": "none",
     "choco": "1password",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Utilities",
     "check": "false"
   },
@@ -772,7 +1380,15 @@
     "winget": "none",
     "choco": "partitionwizard",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Utilities",
     "check": "false"
   },
@@ -782,7 +1398,15 @@
     "winget": "none",
     "choco": "partition-assistant-standard",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Utilities",
     "check": "false"
   },
@@ -792,7 +1416,15 @@
     "winget": "none",
     "choco": "backupper-standard",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Utilities",
     "check": "false"
   },
@@ -802,7 +1434,15 @@
     "winget": "none",
     "choco": "recuva",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Utilities",
     "check": "false"
   },
@@ -812,7 +1452,15 @@
     "winget": "none",
     "choco": "ccleaner",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Utilities",
     "check": "false"
   },
@@ -822,7 +1470,15 @@
     "winget": "none",
     "choco": "bulk-crap-uninstaller",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Utilities",
     "suggestion": "true",
     "check": "false"
@@ -833,7 +1489,15 @@
     "winget": "none",
     "choco": "ecm",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Utilities",
     "check": "false"
   },
@@ -843,7 +1507,15 @@
     "winget": "none",
     "choco": "hwinfo.install",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Utilities",
     "suggestion": "true",
     "check": "false"
@@ -854,7 +1526,15 @@
     "winget": "none",
     "choco": "speccy",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Utilities",
     "check": "false"
   },
@@ -864,7 +1544,15 @@
     "winget": "none",
     "choco": "furmark",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Utilities",
     "check": "false"
   },
@@ -874,7 +1562,15 @@
     "winget": "none",
     "choco": "hdsentinel",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Utilities",
     "check": "false"
   },
@@ -884,7 +1580,15 @@
     "winget": "none",
     "choco": "cpu-z",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Utilities",
     "check": "false"
   },
@@ -894,7 +1598,15 @@
     "winget": "none",
     "choco": "memreduct",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Utilities",
     "check": "false"
   },
@@ -904,7 +1616,15 @@
     "winget": "none",
     "choco": "handbrake.install",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Utilities",
     "check": "false"
   },
@@ -914,7 +1634,15 @@
     "winget": "none",
     "choco": "rufus",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Utilities",
     "suggestion": "true",
     "check": "false"
@@ -925,7 +1653,15 @@
     "winget": "none",
     "choco": "imgburn",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Developer",
     "check": "false"
   },
@@ -935,7 +1671,15 @@
     "winget": "none",
     "choco": "virtualclonedrive",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Utilities",
     "check": "false"
   },
@@ -945,7 +1689,15 @@
     "winget": "none",
     "choco": "ultraiso",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Utilities",
     "check": "false"
   },
@@ -955,7 +1707,15 @@
     "winget": "none",
     "choco": "ventoy",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Utilities",
     "check": "false"
   },
@@ -965,7 +1725,15 @@
     "winget": "none",
     "choco": "iventoy",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Utilities",
     "check": "false"
   },
@@ -975,7 +1743,15 @@
     "winget": "none",
     "choco": "autohotkey",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Utilities",
     "check": "false"
   },
@@ -985,7 +1761,15 @@
     "winget": "none",
     "choco": "rainmeter",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Utilities",
     "check": "false"
   },
@@ -995,7 +1779,15 @@
     "winget": "none",
     "choco": "fxsound",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Utilities",
     "suggestion": "true",
     "check": "false"
@@ -1006,7 +1798,15 @@
     "winget": "none",
     "choco": "vysor",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Utilities",
     "check": "false"
   },
@@ -1016,7 +1816,15 @@
     "winget": "none",
     "choco": "unifiedremote",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Utilities",
     "check": "false"
   },
@@ -1026,7 +1834,15 @@
     "winget": "none",
     "choco": "anydesk",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "File Sharing",
     "check": "false"
   },
@@ -1036,7 +1852,15 @@
     "winget": "none",
     "choco": "airdroid",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "File Sharing",
     "check": "false"
   },
@@ -1046,7 +1870,15 @@
     "winget": "none",
     "choco": "ultraviewer",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "File Sharing",
     "check": "false"
   },
@@ -1056,7 +1888,15 @@
     "winget": "none",
     "choco": "wnetwatcher.portable",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Utilities",
     "check": "false"
   },
@@ -1066,7 +1906,15 @@
     "winget": "none",
     "choco": "wifiinfoview",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Utilities",
     "check": "false"
   },
@@ -1076,7 +1924,15 @@
     "winget": "none",
     "choco": "qbittorrent",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "File Sharing",
     "suggestion": "true",
     "check": "false"
@@ -1087,7 +1943,15 @@
     "winget": "none",
     "choco": "googleearthpro",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Imaging",
     "check": "false"
   },
@@ -1097,7 +1961,15 @@
     "winget": "none",
     "choco": "xampp-81",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Developer",
     "check": "false"
   },
@@ -1107,7 +1979,15 @@
     "winget": "none",
     "choco": "visualstudio2022professional",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Developer",
     "check": "false"
   },
@@ -1117,7 +1997,15 @@
     "winget": "none",
     "choco": "visualstudio2022community",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Developer",
     "check": "false"
   },
@@ -1127,7 +2015,15 @@
     "winget": "none",
     "choco": "unity-hub",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Developer",
     "check": "false"
   },
@@ -1137,7 +2033,15 @@
     "winget": "none",
     "choco": "godot",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Developer",
     "check": "false"
   },
@@ -1147,7 +2051,15 @@
     "winget": "none",
     "choco": "unity",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Developer",
     "check": "false"
   },
@@ -1157,7 +2069,15 @@
     "winget": "none",
     "choco": "blender",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Developer",
     "check": "false"
   },
@@ -1167,7 +2087,15 @@
     "winget": "none",
     "choco": "vscode",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Developer",
     "check": "false"
   },
@@ -1177,7 +2105,15 @@
     "winget": "none",
     "choco": "vim",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Developer",
     "check": "false"
   },
@@ -1187,7 +2123,15 @@
     "winget": "none",
     "choco": "sublimetext4",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Developer",
     "check": "false"
   },
@@ -1197,7 +2141,15 @@
     "winget": "none",
     "choco": "atom",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Developer",
     "check": "false"
   },
@@ -1207,7 +2159,15 @@
     "winget": "none",
     "choco": "innosetup",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Developer",
     "check": "false"
   },
@@ -1217,7 +2177,15 @@
     "winget": "none",
     "choco": "pycharm-community",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Developer",
     "check": "false"
   },
@@ -1227,7 +2195,15 @@
     "winget": "none",
     "choco": "pycharm",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Developer",
     "check": "false"
   },
@@ -1237,7 +2213,15 @@
     "winget": "none",
     "choco": "jetbrains-rider",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Developer",
     "check": "false"
   },
@@ -1247,7 +2231,15 @@
     "winget": "none",
     "choco": "nodejs-lts",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Developer",
     "check": "false"
   },
@@ -1257,7 +2249,15 @@
     "winget": "none",
     "choco": "electronim",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Developer",
     "check": "false"
   },
@@ -1267,7 +2267,15 @@
     "winget": "none",
     "choco": "hugo",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Developer",
     "check": "false"
   },
@@ -1277,7 +2285,15 @@
     "winget": "none",
     "choco": "notepadplusplus",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Developer",
     "check": "false"
   },
@@ -1287,7 +2303,15 @@
     "winget": "none",
     "choco": "microsoft-windows-terminal",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Developer",
     "check": "false"
   },
@@ -1297,7 +2321,15 @@
     "winget": "none",
     "choco": "powershell-core",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Developer",
     "check": "false"
   },
@@ -1307,7 +2339,15 @@
     "winget": "none",
     "choco": "x64dbg.portable",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Developer",
     "check": "false"
   },
@@ -1317,7 +2357,15 @@
     "winget": "none",
     "choco": "dnspy",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Developer",
     "check": "false"
   },
@@ -1327,7 +2375,15 @@
     "winget": "none",
     "choco": "cheatengine",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Developer",
     "check": "false"
   },
@@ -1337,7 +2393,15 @@
     "winget": "none",
     "choco": "python",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Developer",
     "check": "false"
   },
@@ -1347,7 +2411,15 @@
     "winget": "none",
     "choco": "git",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Developer",
     "check": "false"
   },
@@ -1357,7 +2429,15 @@
     "winget": "none",
     "choco": "github-desktop",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Developer",
     "check": "false"
   },
@@ -1367,7 +2447,15 @@
     "winget": "none",
     "choco": "docker-desktop",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Developer",
     "check": "false"
   },
@@ -1377,7 +2465,15 @@
     "winget": "none",
     "choco": "docker-compose",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Developer",
     "check": "false"
   },
@@ -1387,7 +2483,15 @@
     "winget": "none",
     "choco": "powertoys",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Developer",
     "check": "false"
   },
@@ -1397,7 +2501,15 @@
     "winget": "none",
     "choco": "notion",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Developer",
     "check": "false"
   },
@@ -1407,7 +2519,15 @@
     "winget": "none",
     "choco": "ImageLine.FLStudio",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Developer",
     "check": "false"
   },
@@ -1417,7 +2537,15 @@
     "winget": "none",
     "choco": "adb",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Developer",
     "check": "false"
   },
@@ -1427,7 +2555,15 @@
     "winget": "none",
     "choco": "universal-adb-drivers",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Developer",
     "check": "false"
   },
@@ -1437,7 +2573,15 @@
     "winget": "none",
     "choco": "scrcpy",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Developer",
     "check": "false"
   },
@@ -1447,7 +2591,15 @@
     "winget": "none",
     "choco": "virtualbox",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Developer",
     "check": "false"
   },
@@ -1457,7 +2609,15 @@
     "winget": "none",
     "choco": "oh-my-posh",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Developer",
     "check": "false"
   },
@@ -1467,7 +2627,15 @@
     "winget": "none",
     "choco": "malwarebytes",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Security",
     "check": "false"
   },
@@ -1477,7 +2645,15 @@
     "winget": "none",
     "choco": "kvrt",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Security",
     "check": "false"
   },
@@ -1487,7 +2663,15 @@
     "winget": "none",
     "choco": "kav",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Security",
     "check": "false"
   },
@@ -1496,7 +2680,15 @@
     "Description": "Avast Free Antivirus.",
     "winget": "none",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "choco": "avastfreeantivirus",
     "category": "Security",
     "check": "false"
@@ -1507,7 +2699,15 @@
     "winget": "none",
     "choco": "nerd-fonts-cascadiacode",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Developer",
     "check": "false"
   },
@@ -1517,7 +2717,15 @@
     "winget": "none",
     "choco": "jre8",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Developer",
     "check": "false"
   },
@@ -1527,7 +2735,15 @@
     "winget": "none",
     "choco": "audacity",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Media",
     "check": "false"
   },
@@ -1537,7 +2753,15 @@
     "winget": "none",
     "choco": "musicbee",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Media",
     "check": "false"
   },
@@ -1547,7 +2771,15 @@
     "winget": "none",
     "choco": "formatfactory",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Media",
     "check": "false"
   },
@@ -1557,7 +2789,15 @@
     "winget": "none",
     "choco": "winaero-tweaker",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Utilities",
     "check": "false"
   },
@@ -1567,7 +2807,15 @@
     "winget": "none",
     "choco": "wsl2",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Developer",
     "check": "false"
   },
@@ -1577,7 +2825,15 @@
     "winget": "none",
     "choco": "wamp-server",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Developer",
     "check": "false"
   },
@@ -1587,7 +2843,15 @@
     "winget": "none",
     "choco": "mongodb",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Developer",
     "check": "false"
   },
@@ -1597,7 +2861,15 @@
     "winget": "none",
     "choco": "mpc-be",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Media",
     "check": "false"
   },
@@ -1607,7 +2879,15 @@
     "winget": "none",
     "choco": "kdenlive",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Media",
     "check": "false"
   },
@@ -1617,7 +2897,15 @@
     "winget": "none",
     "choco": "tableplus",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Developer",
     "check": "false"
   },
@@ -1627,7 +2915,15 @@
     "winget": "none",
     "choco": "hosts.editor",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Utilities",
     "check": "false"
   },
@@ -1637,7 +2933,15 @@
     "winget": "none",
     "choco": "subtitleedit",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Developer",
     "check": "false"
   },
@@ -1647,7 +2951,15 @@
     "winget": "none",
     "choco": "skype",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Communication",
     "check": "false"
   },
@@ -1657,7 +2969,15 @@
     "winget": "none",
     "choco": "filezilla",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Developer",
     "check": "false"
   },
@@ -1667,7 +2987,15 @@
     "winget": "none",
     "choco": "everything",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Utilities",
     "check": "false"
   },
@@ -1677,7 +3005,15 @@
     "winget": "none",
     "choco": "yarn",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Developer",
     "check": "false"
   },
@@ -1687,7 +3023,15 @@
     "winget": "none",
     "choco": "vmware-workstation-player",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Developer",
     "check": "false"
   },
@@ -1697,7 +3041,15 @@
     "winget": "none",
     "choco": "llftool",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Utilities",
     "check": "false"
   },
@@ -1707,7 +3059,15 @@
     "winget": "none",
     "choco": "bluestacks",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Launchers",
     "check": "false"
   },
@@ -1717,7 +3077,15 @@
     "winget": "none",
     "choco": "intel-bluetooth-drivers",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Drivers",
     "check": "false"
   },
@@ -1727,7 +3095,15 @@
     "winget": "none",
     "choco": "office365business",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Microsoft",
     "check": "false"
   },
@@ -1737,7 +3113,15 @@
     "winget": "BandicamCompany.Bandicam",
     "choco": "none",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Imaging",
     "check": "false"
   },
@@ -1747,7 +3131,15 @@
     "winget": "Tencent.QQPlayer",
     "choco": "none",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Media",
     "check": "false"
   },
@@ -1757,7 +3149,15 @@
     "winget": "none",
     "choco": "4k-video-downloader",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Utilities",
     "check": "false"
   },
@@ -1767,7 +3167,15 @@
     "winget": "LSoftTechnologies.ActivePartitionRecovery",
     "choco": "none",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Utilities",
     "check": "false"
   },
@@ -1777,7 +3185,15 @@
     "winget": "Huawei.HiSuite",
     "choco": "none",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Utilities",
     "check": "false"
   },
@@ -1787,7 +3203,15 @@
     "winget": "none",
     "choco": "androidstudio",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Developer",
     "check": "false"
   },
@@ -1797,7 +3221,15 @@
     "winget": "WhatsApp.WhatsApp",
     "choco": "none",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Communication",
     "check": "false"
   },
@@ -1807,7 +3239,15 @@
     "winget": "none",
     "choco": "librewolf",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Browsers",
     "check": "false"
   },
@@ -1817,7 +3257,15 @@
     "winget": "none",
     "choco": "flow-launcher",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Utilities",
     "check": "false"
   },
@@ -1827,7 +3275,15 @@
     "winget": "none",
     "choco": "iconsext",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Drivers",
     "check": "false"
   },
@@ -1837,7 +3293,15 @@
     "winget": "choco install adguardhome",
     "choco": "It operates as a DNS server that re-routes tracking domains to a \"black hole\", thus preventing your devices from connecting to those servers. It's based on software we use for our public AdGuard DNS servers - both share a lot of common code.",
     "scoop": "none",
-    "url": "none",
+    "default":[
+    {
+      "IsExcute": "false",
+      "url": "none",
+      "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+      "output": "$env:temp"
+    }
+  ],
+    
     "category": "Security",
     "check": "false"
   }
