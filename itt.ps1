@@ -25,7 +25,7 @@ Add-Type -AssemblyName System.Windows.Forms
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "22-05-2024 (03:10 AM)"
+$sync.version = "22-05-2024 (03:13 AM)"
 $sync.github =   "https://github.com/emadadel4"
 $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://eprojects.orgfree.com"
@@ -5767,6 +5767,9 @@ function Invoke-Install
                 })
 
                 UpdateUI -InstallBtn "Install" -Description "Installed successfully."
+
+
+                Start-Sleep 3
 
                 Clear-Host
 
