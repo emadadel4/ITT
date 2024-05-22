@@ -1810,5 +1810,15 @@
     "url": "none",
     "category": "Browsers",
     "check": "false"
+  },
+  {
+    "Name": "Flow Launcher",
+    "Description": "Dedicated to making your workflow flow more seamless. Search everything from applications, files, bookmarks, YouTube, Twitter and more. Flow will continue to evolve, designed to be open and built with the community at heart.",
+    "winget": "none",
+    "choco": "flow-launcher",
+    "scoop": "none",
+    "url": "none",
+    "category": "Utilities",
+    "check": "false"
   }
 ]
