@@ -1820,5 +1820,15 @@
     "url": "none",
     "category": "Utilities",
     "check": "false"
+  },
+  {
+    "Name": "IconsExtract",
+    "Description": "The IconsExtract utility scans the files and folders on your computer, and extract the icons and cursors stored in EXE, DLL, OCX, CPL, and in other file types.",
+    "winget": "none",
+    "choco": "iconsext",
+    "scoop": "none",
+    "url": "none",
+    "category": "Drivers",
+    "check": "false"
   }
 ]
