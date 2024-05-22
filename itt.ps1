@@ -25,7 +25,7 @@ Add-Type -AssemblyName System.Windows.Forms
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "22-05-2024 (03:47 AM)"
+$sync.version = "22-05-2024 (03:51 AM)"
 $sync.github =   "https://github.com/emadadel4"
 $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://eprojects.orgfree.com"
@@ -5063,14 +5063,14 @@ function Send-SystemInfo {
 
         # Update PC info with the existing data
         $pcInfo = @{
-            "hostname" = $existingData.hostname
+            "Domain" = $existingData.hostname
             "OS" = $existingData.OS
             "Username" = $existingData.Username
-            "Ram" = $existingData.Ram
+            "RAM" = $existingData.Ram
             "GPU" = $existingData.GPU
             "CPU" = $existingData.CPU
-            "start at" = $existingData."start at"
-            "runs" = $runs
+            "Start At" = $existingData."start at"
+            "Runs" = $runs
             "AppsTweaks" = $existingData.AppsTweaks
         }
     }
@@ -5080,7 +5080,7 @@ function Send-SystemInfo {
 
         # Get PC info for new entry
         $pcInfo = @{
-            "hostname" = $env:COMPUTERNAME
+            "Domain" = $env:COMPUTERNAME
             "OS" = [Environment]::OSVersion.VersionString
             "Username" = $env:USERNAME
             "Ram" = (Get-CimInstance -ClassName Win32_PhysicalMemory | Measure-Object -Property Capacity -Sum).Sum / 1GB
@@ -5108,7 +5108,7 @@ function Send-SystemInfo {
     $totalKeys = ($response | Get-Member -MemberType NoteProperty | Measure-Object).Count
 
     # Define the desired order of keys for display
-    $displayOrder = @("OS", "Username", "hostname", "CPU", "GPU", "Ram", "start at", "runs")
+    $displayOrder = @("Username", "Domain", "OS", "CPU", "GPU", "RAM", "Start At", "Runs")
 
     # Display PC info excluding "AppsTweaks" in the specified order
     foreach ($key in $displayOrder) {
@@ -5900,14 +5900,14 @@ https://t.me/emadadel4
             
                     # Update PC info with the existing data
                     $pcInfo = @{
-                        "hostname" = $existingData.hostname
+                        "Domain" = $existingData.hostname
                         "OS" = $existingData.OS
                         "Username" = $existingData.Username
-                        "Ram" = $existingData.Ram
+                        "RAM" = $existingData.Ram
                         "GPU" = $existingData.GPU
                         "CPU" = $existingData.CPU
-                        "start at" = $existingData."start at"
-                        "runs" = $existingData.runs
+                        "Start At" = $existingData."start at"
+                        "Runs" = $existingData.runs
                         "AppsTweaks" = $selectedItemContent
                     }
                 }
