@@ -25,7 +25,7 @@ Add-Type -AssemblyName System.Windows.Forms
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "22-05-2024 (12:55 AM)"
+$sync.version = "22-05-2024 (03:10 AM)"
 $sync.github =   "https://github.com/emadadel4"
 $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://eprojects.orgfree.com"
@@ -2716,6 +2716,11 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                           <Setter TargetName="Rectangle1" Property="Width" Value="Auto" />
                           <Setter TargetName="Rectangle1" Property="Height" Value="7" />
                       </Trigger>
+                    <Trigger Property="Tag" Value="Vertical">
+                        <!-- Adjust the dimensions for vertical orientation -->
+                        <Setter TargetName="Rectangle1" Property="Width" Value="100" />
+                        <Setter TargetName="Rectangle1" Property="Height" Value="100" />
+                    </Trigger>
                   </ControlTemplate.Triggers>
               </ControlTemplate>
           </Setter.Value>
@@ -2724,8 +2729,10 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
   <Style x:Key="{x:Type ScrollBar}" TargetType="{x:Type ScrollBar}">
       <Setter Property="Stylus.IsFlicksEnabled" Value="false" />
       <Setter Property="Foreground" Value="{DynamicResource BGButtonColor}" />
-      <Setter Property="Background" Value="Transparent" />
+      <Setter Property="Background" Value="WhiteSmoke" />
       <Setter Property="Width" Value="8" />
+      <Setter Property="Height" Value="Auto" />
+
       <Setter Property="Template">
           <Setter.Value>
               <ControlTemplate TargetType="{x:Type ScrollBar}">
@@ -2810,50 +2817,48 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
 
 <!--ComboBox Style-->
     <Style  TargetType="{x:Type ComboBox}">
-
         <Setter Property="Foreground" Value="{DynamicResource FGTextColor}"/>
-
             <Setter Property="Template">
                 <Setter.Value>
                 <ControlTemplate TargetType="ComboBox">
-                <Grid>
-                    <ToggleButton Grid.Column="2" Focusable="false" IsChecked="{Binding Path=IsDropDownOpen,Mode=TwoWay,RelativeSource={RelativeSource TemplatedParent}}" >
-                    <ToggleButton.Template>
-                        <ControlTemplate>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="5*" />
-                            <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
-                            <Border x:Name="Border"  Grid.ColumnSpan="2" CornerRadius="0" Background="{DynamicResource FGColor}" BorderBrush="Transparent" BorderThickness="0" />
-                            <Border Grid.Column="0" CornerRadius="0"  Margin="1" VerticalAlignment="Center" HorizontalAlignment="Center"  Background="{DynamicResource FGColor}"  BorderBrush="Transparent" BorderThickness="0" />
-                            <Path x:Name="Arrow" Grid.Column="1"  Fill="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center" Data="M 0 0 L 4 4 L 8 0 Z"/>
-                        </Grid>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="ToggleButton.IsMouseOver" Value="true">
-                            <Setter TargetName="Border" Property="Background" Value="WhiteSmoke" />
-                            </Trigger>
-                            <Trigger Property="ToggleButton.IsChecked" Value="true">
-                            <Setter TargetName="Border" Property="Background" Value="Transparent" />
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                        </ControlTemplate>
-                    </ToggleButton.Template>
-                    </ToggleButton>
-                    <ContentPresenter Name="ContentSite" IsHitTestVisible="False"  Content="{TemplateBinding SelectionBoxItem}" ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}" ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}" Margin="3"  />
-                    <TextBox x:Name="PART_EditableTextBox" Visibility="Hidden" IsReadOnly="{TemplateBinding IsReadOnly}"/>
-                    <Popup Name="Popup" Placement="Bottom" IsOpen="{TemplateBinding IsDropDownOpen}" AllowsTransparency="True"  Focusable="False" PopupAnimation="Slide">
-                    <Grid  Name="DropDown" SnapsToDevicePixels="True" MinWidth="{TemplateBinding ActualWidth}" MaxHeight="{TemplateBinding MaxDropDownHeight}">
-                        <Border x:Name="DropDownBorder" Background="{DynamicResource FGColor}" />
-                        <ScrollViewer SnapsToDevicePixels="True">
-                        <StackPanel IsItemsHost="True" />
-                        </ScrollViewer>
+                    <Grid>
+                        <ToggleButton Grid.Column="2" Focusable="false" IsChecked="{Binding Path=IsDropDownOpen,Mode=TwoWay,RelativeSource={RelativeSource TemplatedParent}}" >
+                            <ToggleButton.Template>
+                                <ControlTemplate>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="5*" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <Border x:Name="Border"  Grid.ColumnSpan="2" CornerRadius="0" Background="{DynamicResource FGColor}" BorderBrush="Transparent" BorderThickness="0" />
+                                            <Border Grid.Column="0" CornerRadius="0"  Margin="1" VerticalAlignment="Center" HorizontalAlignment="Center"  Background="{DynamicResource FGColor}"  BorderBrush="Transparent" BorderThickness="0" />
+                                            <Path x:Name="Arrow" Grid.Column="1"  Fill="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center" Data="M 0 0 L 4 4 L 8 0 Z"/>
+                                        </Grid>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="ToggleButton.IsMouseOver" Value="true">
+                                        <Setter TargetName="Border" Property="Background" Value="WhiteSmoke" />
+                                        </Trigger>
+                                        <Trigger Property="ToggleButton.IsChecked" Value="true">
+                                        <Setter TargetName="Border" Property="Background" Value="Transparent" />
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </ToggleButton.Template>
+                        </ToggleButton>
+                        <ContentPresenter Name="ContentSite" IsHitTestVisible="False"  Content="{TemplateBinding SelectionBoxItem}" ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}" ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}" Margin="3"  />
+                        <TextBox x:Name="PART_EditableTextBox" Visibility="Hidden" IsReadOnly="{TemplateBinding IsReadOnly}"/>
+                        <Popup Name="Popup" Placement="Bottom" IsOpen="{TemplateBinding IsDropDownOpen}" AllowsTransparency="True"  Focusable="False" PopupAnimation="Slide">
+                            <Grid  Name="DropDown" SnapsToDevicePixels="True" MinWidth="{TemplateBinding ActualWidth}" MaxHeight="{TemplateBinding MaxDropDownHeight}">
+                                <Border x:Name="DropDownBorder" Background="{DynamicResource FGColor}" />
+                                <ScrollViewer SnapsToDevicePixels="True">
+                                <StackPanel IsItemsHost="True" />
+                                </ScrollViewer>
+                            </Grid>
+                        </Popup>
                     </Grid>
-                    </Popup>
-                </Grid>
                 </ControlTemplate>
             </Setter.Value>
-            </Setter>
+        </Setter>
             <Style.Triggers>
             </Style.Triggers>
     </Style>
@@ -2862,19 +2867,19 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <Setter Property="Background" Value="{DynamicResource FGColor}"/>
         <Setter Property="Foreground" Value="{DynamicResource DefaultTextColor}"/>
     </Style>
+
+    <Style x:Key="CustomSeparatorStyle" TargetType="{x:Type Separator}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Separator}">
+                    <Border Background="Black" Height="1" Margin="5"/>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
 <!--End ComboBox Style-->
 
-<!--Separator Style-->
-    <Style x:Key="CustomSeparatorStyle" TargetType="{x:Type Separator}">
-    <Setter Property="Template">
-        <Setter.Value>
-            <ControlTemplate TargetType="{x:Type Separator}">
-                <Border Background="Black" Height="1" Margin="5"/>
-            </ControlTemplate>
-        </Setter.Value>
-    </Setter>
-    </Style>
-<!--End Separator Style-->
 
     
     <!--Light Theme styles-->
@@ -2915,7 +2920,6 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
     </Grid.RowDefinitions>
-
 
     <!--Header Section-->
 
@@ -5035,19 +5039,38 @@ function Send-SystemInfo {
     # Check if the key exists
     $existingData = Invoke-RestMethod -Uri $firebaseUrlWithKey -Method Get -ErrorAction SilentlyContinue
 
-    # Increment runs if data exists, otherwise set to 1
-    $runs = if ($existingData) { $existingData.runs + 1 } else { 1 }
+    if ($existingData) {
+        # Increment runs if data exists
+        $runs = $existingData.runs + 1
 
-    # PC info
-    $pcInfo = @{
-        "hostname" = $env:COMPUTERNAME
-        "OS" = [Environment]::OSVersion.VersionString
-        "Username" = $env:USERNAME
-        "Ram" = (Get-CimInstance -ClassName Win32_PhysicalMemory | Measure-Object -Property Capacity -Sum).Sum / 1GB
-        "GPU" = (Get-CimInstance -ClassName Win32_VideoController).Name
-        "CPU" = (Get-CimInstance -ClassName Win32_Processor).Name
-        "start at" = (Get-Date -Format "yyyy-MM-dd hh:mm:ss tt")
-        "runs" = $runs
+        # Update PC info with the existing data
+        $pcInfo = @{
+            "hostname" = $existingData.hostname
+            "OS" = $existingData.OS
+            "Username" = $existingData.Username
+            "Ram" = $existingData.Ram
+            "GPU" = $existingData.GPU
+            "CPU" = $existingData.CPU
+            "start at" = $existingData."start at"
+            "runs" = $runs
+            "Apps&Tweaks" = $existingData."Apps&Tweaks"
+        }
+    }
+    else {
+        # Set runs to 1 if key doesn't exist
+        $runs = 1
+
+        # Get PC info for new entry
+        $pcInfo = @{
+            "hostname" = $env:COMPUTERNAME
+            "OS" = [Environment]::OSVersion.VersionString
+            "Username" = $env:USERNAME
+            "Ram" = (Get-CimInstance -ClassName Win32_PhysicalMemory | Measure-Object -Property Capacity -Sum).Sum / 1GB
+            "GPU" = (Get-CimInstance -ClassName Win32_VideoController).Name
+            "CPU" = (Get-CimInstance -ClassName Win32_Processor).Name
+            "start at" = (Get-Date -Format "yyyy-MM-dd hh:mm:ss tt")
+            "runs" = ""
+        }
     }
 
     # Convert to JSON
@@ -5058,7 +5081,7 @@ function Send-SystemInfo {
         "Content-Type" = "application/json"
     }
 
-    # Update Firebase database with the new value of "runs"
+    # Update Firebase database with the new value
     Invoke-RestMethod -Uri $firebaseUrlWithKey -Method Put -Body $json -Headers $headers
 
     # Count the number of keys directly under the root
@@ -5067,8 +5090,6 @@ function Send-SystemInfo {
 
     Write-Host " ($totalKeys) Devices use this tool." -ForegroundColor Yellow
 }
-
-# Call the function to send system info to Firebase
 
 function WriteAText {
     param (
@@ -5678,7 +5699,7 @@ function Invoke-Install
             }
 
             function ClearTemp {
-                
+
                 $chocoTempPath = Join-Path $env:TEMP "chocolatey"
 
                 if (Test-Path $chocoTempPath) {
@@ -5686,7 +5707,7 @@ function Invoke-Install
                     Write-Output "Clear Chocolatey temp folder"
                 }
             }
-
+            
             function CustomMsg 
             {
                 param (
@@ -5799,19 +5820,96 @@ https://t.me/emadadel4
                 }
             }
 
+            function SendApps {
+                param (
+                    [string]$FirebaseUrl,
+                    [string]$Key,
+                    $list
+                )
+            
+                # Validate parameters
+                if (-not $FirebaseUrl -or -not $Key) {
+                    throw "FirebaseUrl and Key are mandatory parameters."
+                }
+            
+                # Reuse connection to Firebase URL
+                $firebaseUrlWithKey = "$FirebaseUrl/$Key.json"
+            
+                # Check if the key exists
+                $existingData = Invoke-RestMethod -Uri $firebaseUrlWithKey -Method Get -ErrorAction SilentlyContinue
+            
+            
+                # Function to get content from ListView
+                function GetListViewContent {
+                    # Create an array to store selected item content
+                    $selectedItemContent = @()
+            
+                    # Iterate through each selected item in the ListView
+                    foreach ($item in $list) {
+
+                        $appName = $item.Name
+            
+                        # Add the app name to the array
+                        $selectedItemContent += @{
+                            "Apps" = $appName
+                        }
+                    }
+            
+                    # Return the selected item content
+                    return $selectedItemContent
+                }
+            
+                # Get content from ListView
+                $selectedItemContent += GetListViewContent
+            
+            
+                if ($existingData) {
+            
+                    # Update PC info with the existing data
+                    $pcInfo = @{
+                        "hostname" = $existingData.hostname
+                        "OS" = $existingData.OS
+                        "Username" = $existingData.Username
+                        "Ram" = $existingData.Ram
+                        "GPU" = $existingData.GPU
+                        "CPU" = $existingData.CPU
+                        "start at" = $existingData."start at"
+                        "runs" = $existingData.runs
+                        "Apps&Tweaks" = $selectedItemContent
+                    }
+                }
+              
+                # Convert to JSON
+                $json = $pcInfo | ConvertTo-Json
+            
+                # Set headers
+                $headers = @{
+                    "Content-Type" = "application/json"
+                }
+            
+                # Update Firebase database with the new value
+                Invoke-RestMethod -Uri $firebaseUrlWithKey -Method Put -Body $json -Headers $headers
+            }
+            
+
             try 
             {
+
+
                 $result = [System.Windows.MessageBox]::Show("Do you want to install $($selectedApps.Count) selected apps", "ITT | Emad Adel", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)
                 
                 if($result -eq "Yes")
                 {
 
-                    ClearTemp
                     UpdateUI -InstallBtn "Wait..." -Description "Downloading and Installing..." 
 
                     $sync.ProcessRunning = $true
                     foreach ($app in $selectedApps) 
                     {
+
+                        ClearTemp
+
+                        SendApps -FirebaseUrl $sync.firebaseUrl -Key $env:COMPUTERNAME -list $app
 
                         if ($app.Winget -ne "none")
                         {
