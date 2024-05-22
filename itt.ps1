@@ -25,7 +25,7 @@ Add-Type -AssemblyName System.Windows.Forms
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "22-05-2024 (06:57 AM)"
+$sync.version = "22-05-2024 (07:06 AM)"
 $sync.github =   "https://github.com/emadadel4"
 $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://eprojects.orgfree.com"
@@ -246,7 +246,7 @@ $sync.database.Applications = '[
   },
   {
     "Name": "Neat Download Manager",
-    "Description": "Free download Manager",
+    "Description": "Introducing Neat Download Manager, the powerful neatdownload manager that supports macOS, Windows 7 or later, and Windows 11. With lightning-fast downloads, smart file filter management, and the best features, start downloading today and see why Neat Download Manager is the perfect tool for you.r",
     "winget": "none",
     "choco": "none",
     "scoop": "none",
@@ -4663,7 +4663,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                 <CheckBox Content="Neat Download Manager" Tag="Browsers" IsChecked="false" FontWeight="Bold"/>
                 <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
             </StackPanel>
-                <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Free download Manager"/>
+                <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Introducing Neat Download Manager the powerful neatdownload manager that supports macOS Windows 7 or later and Windows 11 With lightningfast downloads smart file filter management and the best features start downloading today and see why Neat Download Manager is the perfect tool for your"/>
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Width="auto">
