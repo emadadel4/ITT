@@ -1733,7 +1733,7 @@
   },
   {
     "Name": "Bandicam",
-    "Description": "Video Capture Desktop",
+    "Description": "Bandicam is a closed-source screen capture and screen recording software originally developed by Bandisoft and later by Bandicam Company that can take screenshots or record screen changes. Bandicam consists of three main modes. One is the Screen Recording mode, which can be used for recording a certain area on the PC screen",
     "winget": "BandicamCompany.Bandicam",
     "choco": "none",
     "scoop": "none",
@@ -1829,6 +1829,16 @@
     "scoop": "none",
     "url": "none",
     "category": "Drivers",
+    "check": "false"
+  },
+  {
+    "Name": "AdGuard Home",
+    "Description": "AdGuard Home is a network-wide software for blocking ads and tracking. After you set it up, it'll cover ALL your home devices, and you don't need any client-side software for that.",
+    "winget": "choco install adguardhome",
+    "choco": "It operates as a DNS server that re-routes tracking domains to a \"black hole\", thus preventing your devices from connecting to those servers. It's based on software we use for our public AdGuard DNS servers - both share a lot of common code.",
+    "scoop": "none",
+    "url": "none",
+    "category": "Security",
     "check": "false"
   }
 ]
