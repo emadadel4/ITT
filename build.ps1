@@ -99,7 +99,7 @@ function GenerateCheckboxes {
                 <CheckBox Content="$Content" $Tag $IsChecked FontWeight="Bold"/>
                 <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
             </StackPanel>
-                <TextBlock Width="500"  Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center"  TextWrapping="Wrap" Text="$CleanedItem"/>
+                <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="$CleanedItem"/>
         </StackPanel>
 
 "@
