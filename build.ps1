@@ -82,7 +82,10 @@ function GenerateCheckboxes {
     )
 
     $Checkboxes = ""
-    foreach ($Item in $Items) {        
+    
+    $ReversedItems = $Items[$Items.Count..0]
+
+    foreach ($Item in $ReversedItems) {        
 
         $CleanedItem = $Item.Description -replace '[^\w\s]', ''
 
@@ -107,6 +110,7 @@ function GenerateCheckboxes {
     return $Checkboxes
 }
 
+
 function Sync-JsonFiles {
     param (
         [Parameter(Mandatory = $true)]
@@ -120,6 +124,13 @@ function Sync-JsonFiles {
         $sync.database.$($_.BaseName) = $json | ConvertFrom-Json
         Write-Output "`$sync.database.$($_.BaseName) = '$json' | ConvertFrom-Json" | Out-File $OutputScriptPath -Append -Encoding default
     }
+}
+
+function CountItems {
+
+    Write-Host  "$($sync.database.Applications.Count) Apps" -ForegroundColor Yellow
+    Write-Host  "$($sync.database.Tweaks.Count) Tweaks" -ForegroundColor Yellow
+
 }
 
 
@@ -225,7 +236,6 @@ WriteToScript -Content @"
     $AppsCheckboxes = GenerateCheckboxes -Items $sync.database.Applications -ContentField "Name" -TagField "category" -IsCheckedField "check"
     $TweaksCheckboxes = GenerateCheckboxes -Items $sync.database.Tweaks -ContentField "Name"
 
-
     $XamlContent = $XamlContent -replace "{{Apps}}", $AppsCheckboxes 
     $XamlContent = $XamlContent -replace "{{Tweaks}}", $TweaksCheckboxes 
     WriteToScript -Content "`$inputXML = '$XamlContent'"
@@ -319,8 +329,9 @@ WriteToScript -Content @"
 
 "@
 
+Clear-Host
 Write-Host "Successfully build " -ForegroundColor Green
-
+CountItems
 ./itt.ps1
 
 }
