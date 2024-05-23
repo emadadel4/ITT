@@ -89,6 +89,8 @@ function GenerateCheckboxes {
 
         $CleanedItem = $Item.Description -replace '[^\w\s]', ''
 
+        $Cat = $Item.category -replace '[^\w\s]', ''
+
         $Content = $Item.$ContentField
 
         $Tag = if ($TagField) { "Tag=`"$($Item.$TagField)`"" } else { "" }
@@ -100,7 +102,7 @@ function GenerateCheckboxes {
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="$Content" $Tag $IsChecked FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="$Cat"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="$CleanedItem"/>
         </StackPanel>

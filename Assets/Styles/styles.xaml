@@ -52,6 +52,13 @@
   </Style>
 <!--End Textbox Style-->
 
+<!--Label Style-->
+  <Style TargetType="Label">
+    <Setter Property="Background" Value="{DynamicResource Label}"/>
+    <Setter Property="Foreground" Value="{DynamicResource DefaultTextColor}"/>
+  </Style>
+<!--End Label Style-->
+
 <!--TextBlock Style-->
   <Style TargetType="TextBlock">
       <Setter Property="Foreground" Value="{DynamicResource FGTextColor}"/>
