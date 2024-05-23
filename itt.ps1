@@ -29,7 +29,7 @@ Add-Type -AssemblyName System.Windows.Forms
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "24-05-2024 (02:48 AM)"
+$sync.version = "24-05-2024 (02:58 ص)"
 $sync.github =   "https://github.com/emadadel4"
 $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://eprojects.orgfree.com"
@@ -6835,21 +6835,11 @@ try {
     {
         New-Item -Path "HKCU:\Software\ITTEmadadel" -Force *> $null
         Set-ItemProperty -Path "HKCU:\Software\ITTEmadadel" -Name "DarkMode" -Value "false" -Force 
-        Set-ItemProperty -Path "HKCU:\Software\ITTEmadadel" -Name "lang" -Value "en" -Force 
-        
-    }elseif (-not (Test-Path "HKCU:\Software\ITTEmadadel\lang"))
-    {
-        Set-ItemProperty -Path "HKCU:\Software\ITTEmadadel" -Name "lang" -Value "en" -Force 
     }
 
-    # Check if the registry entry exists
-    if (-not (Test-Path "HKCU:\Software\ITTEmadadel\lang")) 
-    {
-        Set-ItemProperty -Path "HKCU:\Software\ITTEmadadel" -Name "lang" -Value "en" -Force 
-    } 
+    #$sync.isDarkMode = (Get-ItemProperty -Path "HKCU:\Software\ITTEmadadel" -Name "DarkMode").DarkMode
 
-    $sync.isDarkMode = (Get-ItemProperty -Path "HKCU:\Software\ITTEmadadel" -Name "DarkMode").DarkMode
-    $sync.Langusege  = (Get-ItemProperty -Path "HKCU:\Software\ITTEmadadel" -Name "lang").lang
+    #$sync.Langusege  = (Get-ItemProperty -Path "HKCU:\Software\ITTEmadadel" -Name "lang").lang
 
     # Check if $themeValue is equal to "true"
     if ($sync.isDarkMode -eq "true")
@@ -8351,16 +8341,16 @@ function About{
     $sync.about.FindName("sourcecode").add_MouseLeftButtonDown({Start-Process("https://github.com/emadadel4/ITT")})
 
 
-    # if($sync.Langusege -eq "en")
-    # {
-    #     #$childWindow["window"].DataContext = $sync.database.locales.en
-    #     $sync.about.DataContext = $sync.database.locales.en
-    # }
-    # else
-    # {
-    #     #$childWindow["window"].DataContext = $sync.database.locales.ar
-    #     $sync.about.DataContext = $sync.database.locales.ar
-    # }
+    if($sync.Langusege -eq "en")
+    {
+        #$childWindow["window"].DataContext = $sync.database.locales.en
+        $sync.about.DataContext = $sync.database.locales.en
+    }
+    else
+    {
+        #$childWindow["window"].DataContext = $sync.database.locales.ar
+        $sync.about.DataContext = $sync.database.locales.ar
+    }
 
     
     $sync.about.ShowDialog() | Out-Null
@@ -8522,27 +8512,26 @@ function GetCulture {
     $currentCulture = [System.Globalization.CultureInfo]::CurrentCulture
     $shortCulture = $currentCulture.Name.Substring(0,2)
 
-    $lang = (Get-ItemProperty -Path "HKCU:\Software\ITTEmadadel" -Name "lang").lang
+    # #$lang = (Get-ItemProperty -Path "HKCU:\Software\ITTEmadadel" -Name "lang").lang
 
-    if ($sync.Langusege -ne "en") 
-    {
-        $sync["window"].DataContext = $sync.database.locales.$lang
-        return
-    } 
+    # if ($sync.Langusege -ne "en") 
+    # {
+    #     $sync["window"].DataContext = $sync.database.locales.$lang
+    #     return
+    # } 
 
-    if($shortCulture -eq "en")
-    {
-        $sync["window"].DataContext = $sync.database.locales.en
-
-    }
-    elseif ($shortCulture -eq "ar") {
-        $sync["window"].DataContext = $sync.database.locales.ar
-    }
-    else
-    {
-        # default lang
-        $sync["window"].DataContext = $sync.database.locales.en
-        #Write-Host "fallback to default lang"
+    switch ($shortCulture) {
+        "en" {
+            $sync["window"].DataContext = $sync.database.locales.en
+        }
+        "ar" {
+            $sync["window"].DataContext = $sync.database.locales.ar
+        }
+        default {
+            # Default language
+            $sync["window"].DataContext = $sync.database.locales.en
+            #Write-Host "fallback to default lang"
+        }
     }
 
 }
