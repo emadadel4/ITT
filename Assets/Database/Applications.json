@@ -3427,5 +3427,39 @@
     ],
     "category": "Development",
     "check": "false"
+  },
+  {
+    "name": "GameMaker-Studio",
+    "description": "GameMaker Studio has everything you need for games development no matter what your level or expertise",
+    "winget": "YoYoGames.GameMaker.Studio.1",
+    "choco": "none",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
+    "category": "Development",
+    "check": "false"
+  },
+  {
+    "name": "Charles",
+    "description": "Charles is an HTTP proxy  HTTP monitor  Reverse Proxy that enables a developer to view all of the HTTP and SSL  HTTPS traffic between their machine and the Internet This includes requests responses and the HTTP headers which contain the cookies and caching information",
+    "winget": "none",
+    "choco": "charles",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
+    "category": "Development",
+    "check": "false"
   }
 ]
