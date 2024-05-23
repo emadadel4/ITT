@@ -29,7 +29,7 @@ Add-Type -AssemblyName System.Windows.Forms
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "23-05-2024 (07:10 AM)"
+$sync.version = "23-05-2024 (07:13 AM)"
 $sync.github =   "https://github.com/emadadel4"
 $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://eprojects.orgfree.com"
@@ -4827,7 +4827,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                                 <!-- Icon -->
                                 <TextBlock Text="" FontFamily="Segoe MDL2 Assets" FontSize="18" Margin="0,0,5,0"/>
                                 <!-- Text -->
-                                <TextBlock Text="{Binding apps}"/>
+                                <TextBlock Text="Apps"/>
                             </StackPanel>
                         </DataTemplate>
                     </TabItem.HeaderTemplate>
@@ -6476,7 +6476,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                                 <!-- Icon -->
                                 <TextBlock Text="" FontFamily="Segoe MDL2 Assets" FontSize="18" Margin="0,0,5,0"/>
                                 <!-- Text -->
-                                <TextBlock Text="{Binding emad}"/>
+                                <TextBlock Text="Tweaks"/>
                             </StackPanel>
                         </DataTemplate>
                     </TabItem.HeaderTemplate>
