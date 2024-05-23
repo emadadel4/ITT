@@ -483,12 +483,6 @@
         "Name": "Microsoft.XboxSpeechToTextOverlay"
       },
       {
-        "Name": "Microsoft.ZuneMusic"
-      },
-      {
-        "Name": "Microsoft.ZuneVideo"
-      },
-      {
         "Name": "Microsoft.Windows.Cortana"
       },
       {
