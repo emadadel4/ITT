@@ -107,7 +107,9 @@ if($userInput -eq "API [Choco/Winget/Scoop] Recommend")
     Clear-Host
     $Name = Read-Host "Enter app name"
 
-    $Description = (Read-Host "Enter app description").Trim()
+
+    $Description = [regex]::Replace((Read-Host "Enter app description").Trim(), "[^\w\s]", "")
+
 
     $choco = (Read-Host "Enter Chocolatey package name").Trim()  # Remove leading and trailing spaces
     if ($choco -eq "") { $choco = "none" }  # Set default value if empty
