@@ -3461,5 +3461,22 @@
     ],
     "category": "Development",
     "check": "false"
+  },
+  {
+    "name": "Windows Media Player",
+    "description": "Media Player is designed to make listening to and watching your multimedia content more enjoyable At the heart of Media Player is a fullfeatured music library that allows you to quickly browse and play music as well as create and manage playlists All your content in the music and video folders on your PC will appear automatically in your library",
+    "winget": "9WZDNCRFJ3PT",
+    "choco": "none",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
+    "category": "Media",
+    "check": "false"
   }
 ]
