@@ -29,7 +29,7 @@ Add-Type -AssemblyName System.Windows.Forms
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "23-05-2024 (05:12 AM)"
+$sync.version = "23-05-2024 (05:43 AM)"
 $sync.github =   "https://github.com/emadadel4"
 $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://eprojects.orgfree.com"
@@ -3510,7 +3510,7 @@ $sync.database.Applications = '[
         "output": "none"
       }
     ],
-    "category": "Developer",
+    "category": "Development",
     "check": "false"
   },
   {
@@ -3527,7 +3527,7 @@ $sync.database.Applications = '[
         "output": "none"
       }
     ],
-    "category": "Developer",
+    "category": "Development",
     "check": "false"
   }
 ]
@@ -4095,12 +4095,6 @@ $sync.database.Tweaks = '[
       },
       {
         "Name": "Microsoft.XboxSpeechToTextOverlay"
-      },
-      {
-        "Name": "Microsoft.ZuneMusic"
-      },
-      {
-        "Name": "Microsoft.ZuneVideo"
       },
       {
         "Name": "Microsoft.Windows.Cortana"
@@ -4770,16 +4764,16 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                             
         <StackPanel Orientation="Vertical" Width="auto" Margin="8">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Charles" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content="Developer"/>
+                <CheckBox Content="Charles" Tag="Development" IsChecked="false" FontWeight="Bold"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content="Development"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Charles is an HTTP proxy  HTTP monitor  Reverse Proxy that enables a developer to view all of the HTTP and SSL  HTTPS traffic between their machine and the Internet This includes requests responses and the HTTP headers which contain the cookies and caching information"/>
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Width="auto" Margin="8">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="GameMaker-Studio" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content="Developer"/>
+                <CheckBox Content="GameMaker-Studio" Tag="Development" IsChecked="false" FontWeight="Bold"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content="Development"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="GameMaker Studio has everything you need for games development no matter what your level or expertise"/>
         </StackPanel>
