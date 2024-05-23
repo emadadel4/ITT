@@ -29,7 +29,7 @@
 
       <StackPanel Margin="25" Grid.Row="1" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
 
-        <TextBlock Margin="25" Name="sourcecode" Cursor="Hand" TextAlignment="Center" Text="Source code"/>
+        <TextBlock Margin="25" Name="sourcecode" Cursor="Hand" TextAlignment="Center" Text="{Binding sourcecode}"/>
         <StackPanel Orientation="Horizontal">
         <TextBlock Name="website" Margin="10" Cursor="Hand"  Text="EProjects"/>
         <TextBlock Name="telegram" Margin="10" Cursor="Hand"  Text="Telegram"/>
