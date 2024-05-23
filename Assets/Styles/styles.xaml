@@ -82,9 +82,38 @@
 
 <!--CheckBox Style-->
   <Style TargetType="CheckBox">
-      <Setter Property="Foreground" Value="{DynamicResource FGTextColor}"/>
-      <Setter Property="Margin" Value="8"/>
+      <Setter Property="Foreground" Value="{DynamicResource checkbox}"/>
+      <Setter Property="Margin" Value="0"/>
 
+
+        <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="CheckBox">
+                        <StackPanel Orientation="Horizontal">
+                            <!-- Default checkbox icon -->
+                            <Grid Width="13" Height="13" Margin="0,0,5,0">
+                                <Ellipse Width="13" Height="13" Fill="{TemplateBinding Background}" Stroke="{TemplateBinding BorderBrush}" StrokeThickness="1"/>
+                                <Path x:Name="CheckMark" Width="7" Height="7" SnapsToDevicePixels="False" Stroke="#FF333333" StrokeThickness="2" Data="M 0 3.5 L 7 3.5 M 3.5 0 L 3.5 7" Visibility="Collapsed"/>
+                            </Grid>
+                            <!-- Content with background -->
+                            <Border CornerRadius="8" Background="{DynamicResource BGButtonColor}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                    Padding="5">
+                                <ContentPresenter/>
+                            </Border>
+                        </StackPanel>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="CheckMark" Property="Visibility" Value="Visible"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+         
+        
+        
   </Style>
 <!--End CheckBox Style-->
 
@@ -235,8 +264,7 @@
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsSelected" Value="True">
                             <Setter TargetName="Border" Property="Background" Value="{DynamicResource BGButtonColor}" />
-                            <Setter Property="Foreground" Value="White" />
-
+                            <Setter Property="Foreground" Value="white" />
                         </Trigger>
                         <Trigger Property="IsSelected" Value="False">
                             <Setter TargetName="Border" Property="Background" Value="{DynamicResource FGColor}" />
