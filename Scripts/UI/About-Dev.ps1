@@ -2,13 +2,37 @@ function About{
 
     # Load child window
     [xml]$about = $childXaml
+
+    $sync.about = $childWindow
+
+
     $childWindowReader = (New-Object System.Xml.XmlNodeReader $about)
-    $childWindow = [Windows.Markup.XamlReader]::Load( $childWindowReader )
-    $childWindow.FindName('ver').Text = "Last update " + $sync.version
-    $childWindow.FindName("telegram").add_MouseLeftButtonDown({Start-Process("https://t.me/emadadel4")})
-    $childWindow.FindName("github").add_MouseLeftButtonDown({Start-Process("https://github.com/emadadel4")})
-    $childWindow.FindName("website").add_MouseLeftButtonDown({Start-Process("https://eprojects.orgfree.com/")})
-    $childWindow.FindName("sourcecode").add_MouseLeftButtonDown({Start-Process("https://github.com/emadadel4/ITT")})
-    $childWindow.ShowDialog() | Out-Null
+
+    $sync.about = [Windows.Markup.XamlReader]::Load( $childWindowReader )
+
+    $sync.about.FindName('ver').Text = "Last update " + $sync.version
+
+    $sync.about.FindName("telegram").add_MouseLeftButtonDown({Start-Process("https://t.me/emadadel4")})
+
+    $sync.about.FindName("github").add_MouseLeftButtonDown({Start-Process("https://github.com/emadadel4")})
+
+    $sync.about.FindName("website").add_MouseLeftButtonDown({Start-Process("https://eprojects.orgfree.com/")})
+
+    $sync.about.FindName("sourcecode").add_MouseLeftButtonDown({Start-Process("https://github.com/emadadel4/ITT")})
+
+
+    if($sync.Langusege -eq "en")
+    {
+        #$childWindow["window"].DataContext = $sync.database.locales.en
+        $sync.about.DataContext = $sync.database.locales.en
+    }
+    else
+    {
+        #$childWindow["window"].DataContext = $sync.database.locales.ar
+        $sync.about.DataContext = $sync.database.locales.ar
+    }
+
+    
+    $sync.about.ShowDialog() | Out-Null
 
 }
