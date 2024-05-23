@@ -137,7 +137,7 @@ if($userInput -eq "API [Choco/Winget/Scoop] Recommend")
         8 = "Drivers"
         9 = "Utilities"
         10 = "File Sharing"
-        11 = "Developer"
+        11 = "Development"
         12 = "Microsoft"
         13 = "Security"
     }
