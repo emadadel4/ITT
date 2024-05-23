@@ -33,21 +33,11 @@ try {
     {
         New-Item -Path "HKCU:\Software\ITTEmadadel" -Force *> $null
         Set-ItemProperty -Path "HKCU:\Software\ITTEmadadel" -Name "DarkMode" -Value "false" -Force 
-        Set-ItemProperty -Path "HKCU:\Software\ITTEmadadel" -Name "lang" -Value "en" -Force 
-        
-    }elseif (-not (Test-Path "HKCU:\Software\ITTEmadadel\lang"))
-    {
-        Set-ItemProperty -Path "HKCU:\Software\ITTEmadadel" -Name "lang" -Value "en" -Force 
     }
 
-    # Check if the registry entry exists
-    if (-not (Test-Path "HKCU:\Software\ITTEmadadel\lang")) 
-    {
-        Set-ItemProperty -Path "HKCU:\Software\ITTEmadadel" -Name "lang" -Value "en" -Force 
-    } 
+    #$sync.isDarkMode = (Get-ItemProperty -Path "HKCU:\Software\ITTEmadadel" -Name "DarkMode").DarkMode
 
-    $sync.isDarkMode = (Get-ItemProperty -Path "HKCU:\Software\ITTEmadadel" -Name "DarkMode").DarkMode
-    $sync.Langusege  = (Get-ItemProperty -Path "HKCU:\Software\ITTEmadadel" -Name "lang").lang
+    #$sync.Langusege  = (Get-ItemProperty -Path "HKCU:\Software\ITTEmadadel" -Name "lang").lang
 
     # Check if $themeValue is equal to "true"
     if ($sync.isDarkMode -eq "true")
