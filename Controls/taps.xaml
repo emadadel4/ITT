@@ -1,40 +1,32 @@
 <!--TabControl-->
-        <TabControl Name="taps" TabStripPlacement="Left" Grid.Row="1"  BorderBrush="{DynamicResource FGColor}" Foreground="White" Background="Transparent">
-                <TabItem Name="apps" BorderBrush="{x:Null}" >
-                    <TabItem.HeaderTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
-                                <!-- Icon -->
-                                <TextBlock Text="" FontFamily="Segoe MDL2 Assets" FontSize="18" Margin="0,0,5,0"/>
-                                <!-- Text -->
-                                <TextBlock Text="Apps"/>
-                            </StackPanel>
-                        </DataTemplate>
-                    </TabItem.HeaderTemplate>
-                    <TabItem.Content>
-                        <ListView Margin="0" ScrollViewer.VerticalScrollBarVisibility="Auto" Name="list" BorderBrush="{x:Null}" Background="{x:Null}">
-                            {{Apps}}
-                        </ListView>
-                    </TabItem.Content>
-                </TabItem>
-                <TabItem x:Name="tweeksTab" BorderBrush="{x:Null}" Background="{x:Null}">
-                    <TabItem.HeaderTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
-                                <!-- Icon -->
-                                <TextBlock Text="" FontFamily="Segoe MDL2 Assets" FontSize="18" Margin="0,0,5,0"/>
-                                <!-- Text -->
-                                <TextBlock Text="Tweaks"/>
-                            </StackPanel>
-                        </DataTemplate>
-                    </TabItem.HeaderTemplate>
-                    <TabItem.Content>
-                        <ListView Name="tweaks"  Margin="0" ScrollViewer.VerticalScrollBarVisibility="Auto" BorderBrush="{x:Null}" Background="{x:Null}">
-                            {{Tweaks}}
-                        </ListView>
-                    </TabItem.Content>
-                </TabItem>
-            </TabControl>
+                <TabControl Name="taps" TabStripPlacement="Left" Grid.Row="1"  BorderBrush="{DynamicResource FGColor}" Foreground="White" Background="Transparent">
+                        <TabItem Name="apps" Header="{Binding apps}" BorderBrush="{x:Null}">
+                            <TabItem.HeaderTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="" FontFamily="Segoe MDL2 Assets" FontSize="18" Margin="0,0,5,0"/>
+                                        <TextBlock Text="{Binding}" Margin="0,0,5,0"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                        </TabItem.HeaderTemplate>
+                            <TabItem.Content>
+                                <ListView Margin="0" ScrollViewer.VerticalScrollBarVisibility="Auto" Name="list" BorderBrush="{x:Null}" Background="{x:Null}">
+                                    {{Apps}}
+                                </ListView>
+                            </TabItem.Content>
+                        </TabItem>
+                        <TabItem x:Name="tweeksTab" Header="{Binding tweaks}" BorderBrush="{x:Null}" Background="{x:Null}">
+                            <TabItem.HeaderTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="" FontFamily="Segoe MDL2 Assets" FontSize="18" Margin="0,0,5,0"/>
+                                            <TextBlock Text="{Binding}" Margin="0,0,5,0"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                            </TabItem.HeaderTemplate>
+                                <ListView Name="tweaks"  Margin="0" ScrollViewer.VerticalScrollBarVisibility="Auto" BorderBrush="{x:Null}" Background="{x:Null}">
+                                    {{Tweaks}}
+                                </ListView>
+                        </TabItem>
+                </TabControl>
 <!--End TabControl-->
-
-        
