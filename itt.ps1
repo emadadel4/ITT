@@ -29,7 +29,7 @@ Add-Type -AssemblyName System.Windows.Forms
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "23-05-2024 (03:28 AM)"
+$sync.version = "23-05-2024 (04:09 AM)"
 $sync.github =   "https://github.com/emadadel4"
 $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://eprojects.orgfree.com"
@@ -1638,7 +1638,7 @@ $sync.database.Applications = '[
         "output": "none"
       }
     ],
-    "category": "Developer",
+    "category": "Development",
     "check": "false"
   },
   {
@@ -1929,7 +1929,7 @@ $sync.database.Applications = '[
         "output": "none"
       }
     ],
-    "category": "Developer",
+    "category": "Development",
     "check": "false"
   },
   {
@@ -1946,7 +1946,7 @@ $sync.database.Applications = '[
         "output": "none"
       }
     ],
-    "category": "Developer",
+    "category": "Development",
     "check": "false"
   },
   {
@@ -1963,7 +1963,7 @@ $sync.database.Applications = '[
         "output": "none"
       }
     ],
-    "category": "Developer",
+    "category": "Development",
     "check": "false"
   },
   {
@@ -1980,7 +1980,7 @@ $sync.database.Applications = '[
         "output": "none"
       }
     ],
-    "category": "Developer",
+    "category": "Development",
     "check": "false"
   },
   {
@@ -1997,7 +1997,7 @@ $sync.database.Applications = '[
         "output": "none"
       }
     ],
-    "category": "Developer",
+    "category": "Development",
     "check": "false"
   },
   {
@@ -2014,7 +2014,7 @@ $sync.database.Applications = '[
         "output": "none"
       }
     ],
-    "category": "Developer",
+    "category": "Development",
     "check": "false"
   },
   {
@@ -2031,7 +2031,7 @@ $sync.database.Applications = '[
         "output": "none"
       }
     ],
-    "category": "Developer",
+    "category": "Development",
     "check": "false"
   },
   {
@@ -2048,7 +2048,7 @@ $sync.database.Applications = '[
         "output": "none"
       }
     ],
-    "category": "Developer",
+    "category": "Development",
     "check": "false"
   },
   {
@@ -2065,7 +2065,7 @@ $sync.database.Applications = '[
         "output": "none"
       }
     ],
-    "category": "Developer",
+    "category": "Development",
     "check": "false"
   },
   {
@@ -2082,7 +2082,7 @@ $sync.database.Applications = '[
         "output": "none"
       }
     ],
-    "category": "Developer",
+    "category": "Development",
     "check": "false"
   },
   {
@@ -2099,7 +2099,7 @@ $sync.database.Applications = '[
         "output": "none"
       }
     ],
-    "category": "Developer",
+    "category": "Development",
     "check": "false"
   },
   {
@@ -2116,7 +2116,7 @@ $sync.database.Applications = '[
         "output": "none"
       }
     ],
-    "category": "Developer",
+    "category": "Development",
     "check": "false"
   },
   {
@@ -2133,7 +2133,7 @@ $sync.database.Applications = '[
         "output": "none"
       }
     ],
-    "category": "Developer",
+    "category": "Development",
     "check": "false"
   },
   {
@@ -2150,7 +2150,7 @@ $sync.database.Applications = '[
         "output": "none"
       }
     ],
-    "category": "Developer",
+    "category": "Development",
     "check": "false"
   },
   {
@@ -2167,7 +2167,7 @@ $sync.database.Applications = '[
         "output": "none"
       }
     ],
-    "category": "Developer",
+    "category": "Development",
     "check": "false"
   },
   {
@@ -2184,7 +2184,7 @@ $sync.database.Applications = '[
         "output": "none"
       }
     ],
-    "category": "Developer",
+    "category": "Development",
     "check": "false"
   },
   {
@@ -2201,7 +2201,7 @@ $sync.database.Applications = '[
         "output": "none"
       }
     ],
-    "category": "Developer",
+    "category": "Development",
     "check": "false"
   },
   {
@@ -2218,7 +2218,7 @@ $sync.database.Applications = '[
         "output": "none"
       }
     ],
-    "category": "Developer",
+    "category": "Development",
     "check": "false"
   },
   {
@@ -2235,7 +2235,7 @@ $sync.database.Applications = '[
         "output": "none"
       }
     ],
-    "category": "Developer",
+    "category": "Development",
     "check": "false"
   },
   {
@@ -2252,7 +2252,7 @@ $sync.database.Applications = '[
         "output": "none"
       }
     ],
-    "category": "Developer",
+    "category": "Development",
     "check": "false"
   },
   {
@@ -2269,7 +2269,7 @@ $sync.database.Applications = '[
         "output": "none"
       }
     ],
-    "category": "Developer",
+    "category": "Development",
     "check": "false"
   },
   {
@@ -2286,7 +2286,7 @@ $sync.database.Applications = '[
         "output": "none"
       }
     ],
-    "category": "Developer",
+    "category": "Development",
     "check": "false"
   },
   {
@@ -2303,7 +2303,7 @@ $sync.database.Applications = '[
         "output": "none"
       }
     ],
-    "category": "Developer",
+    "category": "Development",
     "check": "false"
   },
   {
@@ -2320,7 +2320,7 @@ $sync.database.Applications = '[
         "output": "none"
       }
     ],
-    "category": "Developer",
+    "category": "Development",
     "check": "false"
   },
   {
@@ -2337,7 +2337,7 @@ $sync.database.Applications = '[
         "output": "none"
       }
     ],
-    "category": "Developer",
+    "category": "Development",
     "check": "false"
   },
   {
@@ -2354,7 +2354,7 @@ $sync.database.Applications = '[
         "output": "none"
       }
     ],
-    "category": "Developer",
+    "category": "Development",
     "check": "false"
   },
   {
@@ -2371,7 +2371,7 @@ $sync.database.Applications = '[
         "output": "none"
       }
     ],
-    "category": "Developer",
+    "category": "Development",
     "check": "false"
   },
   {
@@ -2388,7 +2388,7 @@ $sync.database.Applications = '[
         "output": "none"
       }
     ],
-    "category": "Developer",
+    "category": "Development",
     "check": "false"
   },
   {
@@ -2405,7 +2405,7 @@ $sync.database.Applications = '[
         "output": "none"
       }
     ],
-    "category": "Developer",
+    "category": "Development",
     "check": "false"
   },
   {
@@ -2422,7 +2422,7 @@ $sync.database.Applications = '[
         "output": "none"
       }
     ],
-    "category": "Developer",
+    "category": "Development",
     "check": "false"
   },
   {
@@ -2439,7 +2439,7 @@ $sync.database.Applications = '[
         "output": "none"
       }
     ],
-    "category": "Developer",
+    "category": "Development",
     "check": "false"
   },
   {
@@ -2456,7 +2456,7 @@ $sync.database.Applications = '[
         "output": "none"
       }
     ],
-    "category": "Developer",
+    "category": "Development",
     "check": "false"
   },
   {
@@ -2473,7 +2473,7 @@ $sync.database.Applications = '[
         "output": "none"
       }
     ],
-    "category": "Developer",
+    "category": "Development",
     "check": "false"
   },
   {
@@ -2490,7 +2490,7 @@ $sync.database.Applications = '[
         "output": "none"
       }
     ],
-    "category": "Developer",
+    "category": "Development",
     "check": "false"
   },
   {
@@ -2507,7 +2507,7 @@ $sync.database.Applications = '[
         "output": "none"
       }
     ],
-    "category": "Developer",
+    "category": "Development",
     "check": "false"
   },
   {
@@ -2524,7 +2524,7 @@ $sync.database.Applications = '[
         "output": "none"
       }
     ],
-    "category": "Developer",
+    "category": "Development",
     "check": "false"
   },
   {
@@ -2541,7 +2541,7 @@ $sync.database.Applications = '[
         "output": "none"
       }
     ],
-    "category": "Developer",
+    "category": "Development",
     "check": "false"
   },
   {
@@ -2626,7 +2626,7 @@ $sync.database.Applications = '[
         "output": "none"
       }
     ],
-    "category": "Developer",
+    "category": "Development",
     "check": "false"
   },
   {
@@ -2643,7 +2643,7 @@ $sync.database.Applications = '[
         "output": "none"
       }
     ],
-    "category": "Developer",
+    "category": "Development",
     "check": "false"
   },
   {
@@ -2728,7 +2728,7 @@ $sync.database.Applications = '[
         "output": "none"
       }
     ],
-    "category": "Developer",
+    "category": "Development",
     "check": "false"
   },
   {
@@ -2745,7 +2745,7 @@ $sync.database.Applications = '[
         "output": "none"
       }
     ],
-    "category": "Developer",
+    "category": "Development",
     "check": "false"
   },
   {
@@ -2762,7 +2762,7 @@ $sync.database.Applications = '[
         "output": "none"
       }
     ],
-    "category": "Developer",
+    "category": "Development",
     "check": "false"
   },
   {
@@ -2813,7 +2813,7 @@ $sync.database.Applications = '[
         "output": "none"
       }
     ],
-    "category": "Developer",
+    "category": "Development",
     "check": "false"
   },
   {
@@ -2847,7 +2847,7 @@ $sync.database.Applications = '[
         "output": "none"
       }
     ],
-    "category": "Developer",
+    "category": "Development",
     "check": "false"
   },
   {
@@ -2881,7 +2881,7 @@ $sync.database.Applications = '[
         "output": "none"
       }
     ],
-    "category": "Developer",
+    "category": "Development",
     "check": "false"
   },
   {
@@ -2915,7 +2915,7 @@ $sync.database.Applications = '[
         "output": "none"
       }
     ],
-    "category": "Developer",
+    "category": "Development",
     "check": "false"
   },
   {
@@ -2932,7 +2932,7 @@ $sync.database.Applications = '[
         "output": "none"
       }
     ],
-    "category": "Developer",
+    "category": "Development",
     "check": "false"
   },
   {
@@ -3102,7 +3102,7 @@ $sync.database.Applications = '[
         "output": "none"
       }
     ],
-    "category": "Developer",
+    "category": "Development",
     "check": "false"
   },
   {
@@ -3204,7 +3204,7 @@ $sync.database.Applications = '[
         "output": "none"
       }
     ],
-    "category": "Developer",
+    "category": "Development",
     "check": "false"
   },
   {
@@ -3374,7 +3374,7 @@ $sync.database.Applications = '[
         "output": "none"
       }
     ],
-    "category": "Developer",
+    "category": "Development",
     "check": "false"
   },
   {
@@ -3392,6 +3392,108 @@ $sync.database.Applications = '[
       }
     ],
     "category": "Drivers",
+    "check": "false"
+  },
+  {
+    "name": "Go Programming Language",
+    "description": "Go is expressive concise clean and efficient Its concurrency mechanisms make it easy to write programs that get the most out of multicore and networked machines while its novel type system enables flexible and modular program construction Go compiles quickly to machine code yet has the convenience of garbage collection and the power of runtime reflection Its a fast statically typed compiled language that feels like a dynamically typed interpreted language",
+    "winget": "none",
+    "choco": "golang",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
+    "category": "Development",
+    "check": "false"
+  },
+  {
+    "name": "Rust",
+    "description": "Rust is a curlybrace blockstructured expression language It visually resembles the C language family but differs significantly in syntactic and semantic details Its design is oriented toward concerns of programming in the large that is of creating and maintaining boundaries  both abstract and operational  that preserve largesystem integrity availability and concurrency",
+    "winget": "none",
+    "choco": "rust",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
+    "category": "Development",
+    "check": "false"
+  },
+  {
+    "name": "Inkscape",
+    "description": "Inkscape is an opensource vector graphics editor similar to Adobe Illustrator Corel Draw Freehand or Xara X What sets Inkscape apart is its use of Scalable Vector Graphics SVG an open XMLbased W3C standard as the native format",
+    "winget": "none",
+    "choco": "inkscape",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
+    "category": "Imaging",
+    "check": "false"
+  },
+  {
+    "name": "Youtube dl",
+    "description": "outubedl is a small commandline program to download videos from YouTubecom and a few more sites It is written in Python and its not platform specific It should work in your Unix box in Windows or in Mac OS X It is released to the public domain which means you can modify it redistribute it or use it however you like",
+    "winget": "none",
+    "choco": "youtube-dl",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
+    "category": "Utilities",
+    "check": "false"
+  },
+  {
+    "name": "Postman",
+    "description": "Postman helps you be more efficient while working with APIs Using Postman you can construct complex HTTP requests quickly organize them in collections and share them with your coworkers",
+    "winget": "none",
+    "choco": "postman",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
+    "category": "Development",
+    "check": "false"
+  },
+  {
+    "name": "Azure CLI",
+    "description": "The Azure CLI is available across Azure services and is designed to get you working quickly with Azure with an emphasis on automation",
+    "winget": "none",
+    "choco": "azure-cli",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
+    "category": "Development",
     "check": "false"
   }
 ]
@@ -4155,6 +4257,13 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
   </Style>
 <!--End Textbox Style-->
 
+<!--Label Style-->
+  <Style TargetType="Label">
+    <Setter Property="Background" Value="{DynamicResource Label}"/>
+    <Setter Property="Foreground" Value="{DynamicResource DefaultTextColor}"/>
+  </Style>
+<!--End Label Style-->
+
 <!--TextBlock Style-->
   <Style TargetType="TextBlock">
       <Setter Property="Foreground" Value="{DynamicResource FGTextColor}"/>
@@ -4407,6 +4516,8 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                         <SolidColorBrush x:Key="FGTextColor" Color="Black" />
                         <SolidColorBrush x:Key="DefaultTextColor" Color="Black"/>
                         <SolidColorBrush x:Key="BorderBrush" Color="LightBlue"/>
+                        <SolidColorBrush x:Key="Label" Color="LightBlue"/>
+
                 </ResourceDictionary>
         <!--Light mode -->
 
@@ -4419,6 +4530,8 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                         <SolidColorBrush x:Key="FGTextColor" Color="WhiteSmoke" />
                         <SolidColorBrush x:Key="DefaultTextColor" Color="White"/>
                         <SolidColorBrush x:Key="BorderBrush" Color="#1DB954" />
+                        <SolidColorBrush x:Key="Label" Color="#3f3f3f"/>
+
                 </ResourceDictionary>
         <!--Dark mode -->
 
@@ -4542,7 +4655,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                     <ComboBoxItem Content="Imaging"></ComboBoxItem>
                     <ComboBoxItem Content="Launchers"></ComboBoxItem>
                     <ComboBoxItem Content="Utilities"></ComboBoxItem>
-                    <ComboBoxItem Content="Developer"></ComboBoxItem>
+                    <ComboBoxItem Content="Development"></ComboBoxItem>
                     <ComboBoxItem Content="Microsoft"></ComboBoxItem>
                     <ComboBoxItem Content="Security"></ComboBoxItem>
                 </ComboBox>
@@ -4606,16 +4719,64 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                             
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
+                <CheckBox Content="Azure CLI" Tag="Development" IsChecked="false" FontWeight="Bold"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Development"/>
+            </StackPanel>
+                <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="The Azure CLI is available across Azure services and is designed to get you working quickly with Azure with an emphasis on automation"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Width="auto">
+            <StackPanel Orientation="Horizontal">
+                <CheckBox Content="Postman" Tag="Development" IsChecked="false" FontWeight="Bold"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Development"/>
+            </StackPanel>
+                <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Postman helps you be more efficient while working with APIs Using Postman you can construct complex HTTP requests quickly organize them in collections and share them with your coworkers"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Width="auto">
+            <StackPanel Orientation="Horizontal">
+                <CheckBox Content="Youtube dl" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Utilities"/>
+            </StackPanel>
+                <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="outubedl is a small commandline program to download videos from YouTubecom and a few more sites It is written in Python and its not platform specific It should work in your Unix box in Windows or in Mac OS X It is released to the public domain which means you can modify it redistribute it or use it however you like"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Width="auto">
+            <StackPanel Orientation="Horizontal">
+                <CheckBox Content="Inkscape" Tag="Imaging" IsChecked="false" FontWeight="Bold"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Imaging"/>
+            </StackPanel>
+                <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Inkscape is an opensource vector graphics editor similar to Adobe Illustrator Corel Draw Freehand or Xara X What sets Inkscape apart is its use of Scalable Vector Graphics SVG an open XMLbased W3C standard as the native format"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Width="auto">
+            <StackPanel Orientation="Horizontal">
+                <CheckBox Content="Rust" Tag="Development" IsChecked="false" FontWeight="Bold"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Development"/>
+            </StackPanel>
+                <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Rust is a curlybrace blockstructured expression language It visually resembles the C language family but differs significantly in syntactic and semantic details Its design is oriented toward concerns of programming in the large that is of creating and maintaining boundaries  both abstract and operational  that preserve largesystem integrity availability and concurrency"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Width="auto">
+            <StackPanel Orientation="Horizontal">
+                <CheckBox Content="Go Programming Language" Tag="Development" IsChecked="false" FontWeight="Bold"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Development"/>
+            </StackPanel>
+                <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Go is expressive concise clean and efficient Its concurrency mechanisms make it easy to write programs that get the most out of multicore and networked machines while its novel type system enables flexible and modular program construction Go compiles quickly to machine code yet has the convenience of garbage collection and the power of runtime reflection Its a fast statically typed compiled language that feels like a dynamically typed interpreted language"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Width="auto">
+            <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Intel Graphics Command Center" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Drivers"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Dont have time to mess around with settings The Intel Graphics Command Center easily finds and tunes your games complete with recommended settings for your computer Use oneclick optimization for many popular titles and instantly get the most out of your system Windows 10 version 1709 or higher6th Gen Intel Core Platforms or newer"/>
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="RepoZ" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <CheckBox Content="RepoZ" Tag="Development" IsChecked="false" FontWeight="Bold"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Development"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="RepoZ provides a quick overview of the git repositories on your development machine including their current branch and a short status information It uses the repositories on your machine to create an efficient navigation widget and makes sure youll never loose track of your work along the way"/>
         </StackPanel>
@@ -4623,7 +4784,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="QuickLook" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Utilities"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Quick Look is among the few features I missed from Mac OS X It enables very quick preview of file by pressing Space key while highlighting it without opening its associated application Then I decide to add this feature to Windows by myself which results this QuickLook project"/>
         </StackPanel>
@@ -4631,7 +4792,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="TeraCopy" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Utilities"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="TeraCopy is designed to copy and move files at the maximum possible speed It skips bad files during the copying process and then displays them at the end of the transfer so that you can see which ones need attention TeraCopy can automatically check the copied files for errors by calculating their CRC checksum values It also provides a lot more information about the files being copied than its Windows counterpart TeraCopy integrates with Windows Explorers rightclick menu and can be set as the default copy handler"/>
         </StackPanel>
@@ -4639,7 +4800,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Wireshark" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Utilities"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Wireshark is the worlds foremost and widelyused network protocol analyzer It lets you see whats happening on your network at a microscopic level and is the de facto and often de jure standard across many commercial and nonprofit enterprises government agencies and educational institutions Wireshark development thrives thanks to the volunteer contributions of networking experts around the globe and is the continuation of a project started by Gerald Combs in 1998"/>
         </StackPanel>
@@ -4647,7 +4808,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Winmerge" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Utilities"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="WinMerge is an Open Source differencing and merging tool for Windows WinMerge can compare both  folders and files presenting differences in a visual text format that is easy to understand and handle"/>
         </StackPanel>
@@ -4655,7 +4816,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="WinDirStat" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Utilities"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="WinDirStat is a disk usage statistics viewer and cleanup tool for Microsoft Windows"/>
         </StackPanel>
@@ -4663,7 +4824,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="ESET Internet Security" Tag="Security" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Security"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Ideal for modern users concerned about their privacy who actively use internet for shopping banking work and communication"/>
         </StackPanel>
@@ -4671,7 +4832,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="ONLYOFFICE" Tag="Documents" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Documents"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="ONLYOFFICE is a project developed by experienced IT experts from Ascensio System SIA leading IT company with headquarters in Riga Latvia Originally ONLYOFFICE was designed for internal team collaboration An attempt to introduce it to a wider audience proved to be successful ONLYOFFICE received very positive feedback from the Internet community As a result its functionality was considerably revised and expanded that brought about a high and stable growth of users from different countries"/>
         </StackPanel>
@@ -4679,7 +4840,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="ShareX" Tag="File Sharing" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="File Sharing"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Screen capture file sharing and productivity tool"/>
         </StackPanel>
@@ -4687,15 +4848,15 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="CoreTemp" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Utilities"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Core Temp is a compact no fuss small footprint yet powerful program to monitor processor temperature and other vital information"/>
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Burp Suite Community Edition" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <CheckBox Content="Burp Suite Community Edition" Tag="Development" IsChecked="false" FontWeight="Bold"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Development"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Burp Suite is an integrated platform for performing security testing of web applications Its various tools work seamlessly together to support the entire testing process from initial mapping and analysis of an applications attack surface through to finding and exploiting security vulnerabilities"/>
         </StackPanel>
@@ -4703,7 +4864,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="AdGuard Home" Tag="Security" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Security"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="AdGuard Home is a networkwide software for blocking ads and tracking After you set it up itll cover ALL your home devices and you dont need any clientside software for that"/>
         </StackPanel>
@@ -4711,7 +4872,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="IconsExtract" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Drivers"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="The IconsExtract utility scans the files and folders on your computer and extract the icons and cursors stored in EXE DLL OCX CPL and in other file types"/>
         </StackPanel>
@@ -4719,7 +4880,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Flow Launcher" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Utilities"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Dedicated to making your workflow flow more seamless Search everything from applications files bookmarks YouTube Twitter and more Flow will continue to evolve designed to be open and built with the community at heart"/>
         </StackPanel>
@@ -4727,7 +4888,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="LibreWolf" Tag="Browsers" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Browsers"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="LibreWolf is designed to increase protection against tracking and fingerprinting techniques while also including a few security improvements This is achieved through our privacy and security oriented settings and patches LibreWolf also aims to remove all the telemetry data collection and annoyances as well as disabling antifreedom features like DRM"/>
         </StackPanel>
@@ -4735,15 +4896,15 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="WhatsApp" Tag="Communication" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Communication"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="WhatsApp is an instant messaging and voiceoverIP service owned by technology conglomerate Meta It allows users to send text voice messages and video messages make voice and video calls and share images documents user"/>
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Android Studio" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <CheckBox Content="Android Studio" Tag="Development" IsChecked="false" FontWeight="Bold"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Development"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Android Studio is the official integrated development environment for Googles Android operating system built on JetBrains IntelliJ IDEA software and designed specifically for Android development"/>
         </StackPanel>
@@ -4751,7 +4912,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="HiSuite" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Utilities"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="HUAWEI HiSuite is the official Android Smart Device Manager toolHiSuite helps users to connect their HUAWEI smartphones and tablets to PC"/>
         </StackPanel>
@@ -4759,7 +4920,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Active@ Partition Recovery" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Utilities"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Active Partition Recovery is a freeware toolkit that helps to recover deleted and damaged logical drives and partitions within Windows WinPE recovery boot disk and Linux recovery LiveCD environments"/>
         </StackPanel>
@@ -4767,7 +4928,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="4K Video Downloader" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Utilities"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="4K Video Downloader allows downloading videos playlists channels and subtitles from YouTube Facebook Vimeo and other video sites in high quality"/>
         </StackPanel>
@@ -4775,7 +4936,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="QQPlayer" Tag="Media" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Media"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="QQPlayer media player"/>
         </StackPanel>
@@ -4783,7 +4944,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Bandicam" Tag="Imaging" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Imaging"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Bandicam is a closedsource screen capture and screen recording software originally developed by Bandisoft and later by Bandicam Company that can take screenshots or record screen changes Bandicam consists of three main modes One is the Screen Recording mode which can be used for recording a certain area on the PC screen"/>
         </StackPanel>
@@ -4791,7 +4952,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Office 365 Business" Tag="Microsoft" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Microsoft"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Microsoft 365 formerly Office 365 is a line of subscription services offered by Microsoft as part of the Microsoft Office product line The brand encompasses plans that allow use of the Microsoft Office software suite over the life of the subscription as well as cloudbased software as a service products for business environments such as hosted Exchange Server Skype for Business Server and SharePoint among others All Microsoft 365 plans include automatic updates to their respective software at no additional charge as opposed to conventional licenses for these programswhere new versions require purchase of a new license"/>
         </StackPanel>
@@ -4799,7 +4960,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Intel Wireless Bluetooth for Windows 10 and Windows 11" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Drivers"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Bluetooth for Windows 10 and Windows"/>
         </StackPanel>
@@ -4807,7 +4968,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="BlueStacks" Tag="Launchers" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Launchers"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Play Android Games on PC"/>
         </StackPanel>
@@ -4815,23 +4976,23 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="HDD Low Level Format Tool" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Utilities"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Will erase LowLevel Format and recertify a SATA IDE or SCSI hard disk drive with any size of up to 281 474 976 710 655 bytes"/>
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="VMware Workstation Player" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <CheckBox Content="VMware Workstation Player" Tag="Development" IsChecked="false" FontWeight="Bold"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Development"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="VMware Workstation Player is a streamlined desktop virtualization application that runs another operating system on the same computer without rebooting VMware Workstation Player provides a simple user interface unmatched operating system support and portability across the VMware ecosystem"/>
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Yarn" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <CheckBox Content="Yarn" Tag="Development" IsChecked="false" FontWeight="Bold"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Development"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Yarn is a package manager for the npm and bower registries with a few specific focuses"/>
         </StackPanel>
@@ -4839,15 +5000,15 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Everything" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Utilities"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Everything Search Engine  locate files and folders by name instantly"/>
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="FileZilla" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <CheckBox Content="FileZilla" Tag="Development" IsChecked="false" FontWeight="Bold"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Development"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="FileZilla Client is a fast and reliable crossplatform FTP FTPS and SFTP client with lots of useful features and an intuitive graphical user interface"/>
         </StackPanel>
@@ -4855,15 +5016,15 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Skype" Tag="Communication" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Communication"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Skype  Install Skype add your friends as contacts then call video call and instant message with them for free Call people who arent on Skype too at really low rates"/>
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Subtitle Edit" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <CheckBox Content="Subtitle Edit" Tag="Development" IsChecked="false" FontWeight="Bold"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Development"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="With SE you can easily adjust a subtitle if it is out of sync with the video in several different ways You can also use SE for making new subtitles from scratch do use the timelinewaveformspectrogram or translating subtitles"/>
         </StackPanel>
@@ -4871,15 +5032,15 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Hosts File Editor" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Utilities"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Hosts File Editor makes it easy to change your hosts file as well as archive multiple versions for easy retrieval"/>
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="TablePlus" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <CheckBox Content="TablePlus" Tag="Development" IsChecked="false" FontWeight="Bold"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Development"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Modern native and friendly GUI tool for relational databases MySQL PostgreSQL SQLite MongoDB Redis and more"/>
         </StackPanel>
@@ -4887,7 +5048,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Kdenlive" Tag="Media" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Media"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="A powerful nonlinear video editor"/>
         </StackPanel>
@@ -4895,31 +5056,31 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="MPC-BE" Tag="Media" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Media"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Media Player Classic  BE is a free and open source audio and video player for Windows"/>
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="MongoDB 7.3.2" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <CheckBox Content="MongoDB 7.3.2" Tag="Development" IsChecked="false" FontWeight="Bold"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Development"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="MongoDB stores data using a flexible document data model that is similar to JSON Documents contain one or more fields including arrays binary data and subdocuments Fields can vary from document to document This flexibility allows development teams to evolve the data model rapidly as their application requirements change"/>
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Wamp Server 3.3.5" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <CheckBox Content="Wamp Server 3.3.5" Tag="Development" IsChecked="false" FontWeight="Bold"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Development"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="WampServer is a Windows web development environment It allows you to create web applications"/>
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Windows Subsystem for Linux WSL2" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <CheckBox Content="Windows Subsystem for Linux WSL2" Tag="Development" IsChecked="false" FontWeight="Bold"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Development"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="To install Windows Subsystem for Linux 2 run the following command from the command line or from PowerShell"/>
         </StackPanel>
@@ -4927,7 +5088,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Winaero Tweaker" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Utilities"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Customize the appearance and behavior of the Windows operating system"/>
         </StackPanel>
@@ -4935,7 +5096,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="FormatFactory" Tag="Media" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Media"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="multifunctional media processing tools"/>
         </StackPanel>
@@ -4943,7 +5104,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="MusicBee" Tag="Media" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Media"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="MusicBee makes it easy to organize find and play music files on your computer on portable devices and on the web"/>
         </StackPanel>
@@ -4951,23 +5112,23 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Audacity" Tag="Media" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Media"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Audacity is free open source crossplatform software for recording and editing sounds"/>
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Java SE Runtime Environment 8.0.411" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <CheckBox Content="Java SE Runtime Environment 8.0.411" Tag="Development" IsChecked="false" FontWeight="Bold"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Development"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Java allows you to play online games chat with people around the world calculate your mortgage interest and view images in 3D just to name a few Its also integral to the intranet applications and other ebusiness solutions that are the foundation of corporate computing Please note you now need a Java License from Oracle to use unless installed for Personal Use and Development Use"/>
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Nerd Fonts - CascadiaCode" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <CheckBox Content="Nerd Fonts - CascadiaCode" Tag="Development" IsChecked="false" FontWeight="Bold"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Development"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Nerd Fonts is a project that patches developer targeted fonts with a high number of glyphs icons"/>
         </StackPanel>
@@ -4975,7 +5136,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Avast Free Antivirus" Tag="Security" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Security"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Avast Free Antivirus"/>
         </StackPanel>
@@ -4983,7 +5144,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Kaspersky Anti-Virus" Tag="Security" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Security"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Antivirus protection from a range of IT threats and provides the basic tools needed to keep your PC secure"/>
         </StackPanel>
@@ -4991,7 +5152,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Kaspersky Virus Removal Tool" Tag="Security" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Security"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Designed to remove different types of infections from an infected PC"/>
         </StackPanel>
@@ -4999,303 +5160,303 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Malwarebytes" Tag="Security" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Security"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Multiple layers of malwarecrushing tech including virus protection Thorough malware and spyware removal Specialized ransomware protection"/>
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Oh My Posh" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <CheckBox Content="Oh My Posh" Tag="Development" IsChecked="false" FontWeight="Bold"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Development"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text=" Oh my Posh is a custom prompt engine for any shell that has the ability to adjust the prompt string with a function or variable"/>
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="VirtualBox" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <CheckBox Content="VirtualBox" Tag="Development" IsChecked="false" FontWeight="Bold"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Development"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="VirtualBox is a crossplatform virtualization application It installs on existing Intel or AMDbased computers whether they are running Windows Mac Linux or Solaris operating systems It extends the capabilities of your existing computer so that it can run multiple operating systems inside multiple virtual machines at the same time"/>
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Scrcpy" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <CheckBox Content="Scrcpy" Tag="Development" IsChecked="false" FontWeight="Bold"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Development"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Scrcpy is a free and opensource tool that allows you to display and control your Android device from a computer It provides highperformance screen mirroring and supports various input methods"/>
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Universal ADB Drivers" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <CheckBox Content="Universal ADB Drivers" Tag="Development" IsChecked="false" FontWeight="Bold"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Development"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Universal ADB Drivers are drivers that provide compatibility with a wide range of Android devices for debugging purposes They allow you to connect your Android device to a computer and use ADB commands"/>
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Android Debug Bridge" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <CheckBox Content="Android Debug Bridge" Tag="Development" IsChecked="false" FontWeight="Bold"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Development"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Android Debug Bridge ADB is a commandline tool that allows you to communicate with an Android device It is used for various debugging tasks such as installing and debugging apps"/>
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="FL Studio" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <CheckBox Content="FL Studio" Tag="Development" IsChecked="false" FontWeight="Bold"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Development"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="FL Studio is a digital audio workstation DAW developed by ImageLine It allows you to compose arrange record edit mix and master professionalquality music"/>
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Notion" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <CheckBox Content="Notion" Tag="Development" IsChecked="false" FontWeight="Bold"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Development"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="The allinone workspace for your notes tasks wikis and databases"/>
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="PowerToys" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <CheckBox Content="PowerToys" Tag="Development" IsChecked="false" FontWeight="Bold"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Development"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="PowerToys is a set of utilities for power users to tune and streamline their Windows experience for greater productivity It includes tools like FancyZones for window management PowerRename for batch renaming files and more"/>
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Docker Compose" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <CheckBox Content="Docker Compose" Tag="Development" IsChecked="false" FontWeight="Bold"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Development"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Docker Compose is a tool for defining and running multicontainer Docker applications It allows you to use a YAML file to configure your applications services networks and volumes"/>
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Docker Desktop" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <CheckBox Content="Docker Desktop" Tag="Development" IsChecked="false" FontWeight="Bold"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Development"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Docker Desktop is an easytoinstall application for Windows and macOS that enables developers to build share and run containerized applications and microservices locally"/>
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="GitHub Desktop" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <CheckBox Content="GitHub Desktop" Tag="Development" IsChecked="false" FontWeight="Bold"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Development"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="GitHub Desktop is a seamless way to contribute to projects on GitHub and GitHub Enterprise It provides an intuitive interface for managing repositories branching committing and merging code changes"/>
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Git" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <CheckBox Content="Git" Tag="Development" IsChecked="false" FontWeight="Bold"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Development"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Git is a free and opensource distributed version control system designed to handle everything from small to very large projects with speed and efficiency"/>
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Python" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <CheckBox Content="Python" Tag="Development" IsChecked="false" FontWeight="Bold"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Development"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Python is a popular highlevel programming language known for its simplicity and versatility It is used in various fields such as web development data science machine learning and automation"/>
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Cheat Engine" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <CheckBox Content="Cheat Engine" Tag="Development" IsChecked="false" FontWeight="Bold"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Development"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Cheat Engine is an open source tool designed to help you modify single player games"/>
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="dnSpy" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <CheckBox Content="dnSpy" Tag="Development" IsChecked="false" FontWeight="Bold"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Development"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="dnSpy is a tool to reverse engineer NET assemblies It includes a decompiler a debugger and an assembly editor and more and can be easily extended by writing your own extension It uses dnlib to read and write assemblies so it can handle obfuscated assemblies eg malware without crashing"/>
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="x64dbg Portable" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <CheckBox Content="x64dbg Portable" Tag="Development" IsChecked="false" FontWeight="Bold"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Development"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="An opensource x64x32 debugger for windows"/>
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Powershell core" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <CheckBox Content="Powershell core" Tag="Development" IsChecked="false" FontWeight="Bold"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Development"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="PowerShell Core is a crossplatform Windows Linux and macOS automation and configuration toolframework that works well with your existing tools and is optimized for dealing with structured data eg JSON CSV XML etc REST APIs and object models"/>
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Windows Terminal" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <CheckBox Content="Windows Terminal" Tag="Development" IsChecked="false" FontWeight="Bold"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Development"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Windows Terminal is a modern terminal application for users of commandline tools and shells like Command Prompt PowerShell and Windows Subsystem for Linux WSL It provides multiple tabs custom themes and GPUaccelerated text rendering"/>
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Notepad++" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <CheckBox Content="Notepad++" Tag="Development" IsChecked="false" FontWeight="Bold"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Development"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Notepad is a free source code editor and Notepad replacement that supports several languages It offers syntax highlighting code folding autocompletion and other features for efficient code editing"/>
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Hugo" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <CheckBox Content="Hugo" Tag="Development" IsChecked="false" FontWeight="Bold"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Development"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Hugo is one of the most popular opensource static site generators With its amazing speed and flexibility Hugo makes building websites f Keep Reading "/>
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Electrum-LTS" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <CheckBox Content="Electrum-LTS" Tag="Development" IsChecked="false" FontWeight="Bold"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Development"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Electrum is a lightweight Bitcoin wallet focused on speed and simplicity with support for hardware wallets and multisig functionality LTS Long Term Support releases provide stability and security updates for an extended period"/>
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Node.js LTS" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <CheckBox Content="Node.js LTS" Tag="Development" IsChecked="false" FontWeight="Bold"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Development"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Nodejs is a JavaScript runtime built on Chromes V8 JavaScript engine LTS Long Term Support releases are supported for an extended period and provide stability for production environments"/>
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Jetbrains Rider" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <CheckBox Content="Jetbrains Rider" Tag="Development" IsChecked="false" FontWeight="Bold"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Development"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Rider is a crossplatform NET IDE developed by JetBrains It supports C VBNET F ASPNET JavaScript TypeScript HTML CSS and SQL languages and frameworks"/>
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="PyCharm Professional Edition" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <CheckBox Content="PyCharm Professional Edition" Tag="Development" IsChecked="false" FontWeight="Bold"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Development"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="PyCharm Professional Edition is a powerful IDE for professional Python development It includes advanced features such as database tools web development support and scientific tools integration"/>
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="PyCharm Community Edition" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <CheckBox Content="PyCharm Community Edition" Tag="Development" IsChecked="false" FontWeight="Bold"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Development"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="PyCharm Community Edition is a free and opensource IDE for Python development It provides smart code completion code inspections onthefly error highlighting and quickfixes"/>
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="InnoSetup" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <CheckBox Content="InnoSetup" Tag="Development" IsChecked="false" FontWeight="Bold"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Development"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Inno Setup is a free installer for Windows programs First introduced in 1997 Inno Setup today rivals and even surpasses many commercial installers in feature set and stability"/>
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Atom" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <CheckBox Content="Atom" Tag="Development" IsChecked="false" FontWeight="Bold"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Development"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Atom is a text editor thats modern approachable yet hackable to the corea tool you can customize to do anything but also use productively without ever touching a config file"/>
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Sublime Text 4" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <CheckBox Content="Sublime Text 4" Tag="Development" IsChecked="false" FontWeight="Bold"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Development"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Sublime Text 4  The sophisticated text editor for code markup and prose "/>
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Vim" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <CheckBox Content="Vim" Tag="Development" IsChecked="false" FontWeight="Bold"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Development"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Vim is an advanced text editor that seeks to provide the power of the defacto Unix editor Vi with a more complete feature set Its us Keep Reading "/>
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Visual Studio Code" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <CheckBox Content="Visual Studio Code" Tag="Development" IsChecked="false" FontWeight="Bold"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Development"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Visual Studio Code is a free sourcecode editor developed by Microsoft for Windows Linux and macOS It includes support for debugging embedded Git control syntax highlighting intelligent code completion snippets and code refactoring"/>
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Blender" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <CheckBox Content="Blender" Tag="Development" IsChecked="false" FontWeight="Bold"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Development"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Blender is a free and opensource professionalgrade 3D computer graphics and video compositing program"/>
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Unity3D Engine" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <CheckBox Content="Unity3D Engine" Tag="Development" IsChecked="false" FontWeight="Bold"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Development"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Unity is a crossplatform game creation system developed by Unity Technologies and used to develop video games for PC consoles mobile"/>
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Godot Engine" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <CheckBox Content="Godot Engine" Tag="Development" IsChecked="false" FontWeight="Bold"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Development"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Godot is a featurepacked crossplatform game engine for creating 2D and 3D games It provides a comprehensive set of tools and features to develop games efficiently and quickly"/>
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Unity Hub" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <CheckBox Content="Unity Hub" Tag="Development" IsChecked="false" FontWeight="Bold"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Development"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Unity is a crossplatform game creation system developed by Unity Technologies and used to develop video games for PC consoles mobile"/>
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Visual Studio Community 2022" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <CheckBox Content="Visual Studio Community 2022" Tag="Development" IsChecked="false" FontWeight="Bold"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Development"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Visual Studio Community 2022 is a free fullyfeatured and extensible IDE for individual developers open source projects academic research education and small professional teams"/>
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Visual Studio Professional 2022" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <CheckBox Content="Visual Studio Professional 2022" Tag="Development" IsChecked="false" FontWeight="Bold"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Development"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Visual Studio Professional 2022 is an integrated development environment IDE from Microsoft It is used to develop computer programs websites web apps web services and mobile apps"/>
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="XAMPP" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <CheckBox Content="XAMPP" Tag="Development" IsChecked="false" FontWeight="Bold"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Development"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="XAMPP is a free and opensource crossplatform web server solution stack package developed by Apache Friends consisting mainly of the Apache HTTP Server MariaDB database and interpreters for scripts written in the PHP and Perl programming languages"/>
         </StackPanel>
@@ -5303,7 +5464,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Google Earth Pro" Tag="Imaging" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Imaging"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Google Earth Pro on desktop is free for users with advanced feature needs Import and export GIS data and go back in time with historical imagery"/>
         </StackPanel>
@@ -5311,7 +5472,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="qBittorrent" Tag="File Sharing" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="File Sharing"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="A free and opensource BitTorrent client for downloading and uploading files via the BitTorrent protocol providing users with a lightweight and featurerich torrenting experience"/>
         </StackPanel>
@@ -5319,7 +5480,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="WifiInfoView" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Utilities"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Wireless Network Watcher is a small utility that scans your wireless network and displays the list of all computers and devices that are currently connected to your network"/>
         </StackPanel>
@@ -5327,7 +5488,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Wireless Network Watcher Portable" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Utilities"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Wireless Network Watcher is a small utility that scans your wireless network and displays the list of all computers and devices that are currently connected to your network"/>
         </StackPanel>
@@ -5335,7 +5496,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="UltraViewer" Tag="File Sharing" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="File Sharing"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Remote control to support your clients  partners from everywhere"/>
         </StackPanel>
@@ -5343,7 +5504,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Airdroid" Tag="File Sharing" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="File Sharing"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="AirDroid is a free and fast Android device manager app that allows you to access Android phonetablet from computer remotely and securely Manage SMS files photos and videos WhatsApp Line WeChat and more on computer"/>
         </StackPanel>
@@ -5351,7 +5512,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="AnyDesk" Tag="File Sharing" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="File Sharing"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="A remote desktop software that allows users to access and control Windows macOS Linux Android and iOS devices from anywhere providing secure and reliable remote access"/>
         </StackPanel>
@@ -5359,7 +5520,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Unified Remote" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Utilities"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="A remote control app that turns smartphones into universal remote controls for Windows macOS and Linux computers allowing users to control media playback presentations and more"/>
         </StackPanel>
@@ -5367,7 +5528,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Vysor" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Utilities"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="A screen mirroring and remote control software that enables users to view and control Android devices from Windows PCs allowing for easy screen sharing app testing and troubleshooting"/>
         </StackPanel>
@@ -5375,7 +5536,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="FxSound" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Utilities"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="An audio enhancer software that improves the sound quality of music videos and games on Windows PCs by providing advanced audio processing and customization options"/>
         </StackPanel>
@@ -5383,7 +5544,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Rainmeter" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Utilities"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="A customizable desktop customization tool that displays customizable skins widgets and applets on the Windows desktop providing users with realtime system monitoring and information"/>
         </StackPanel>
@@ -5391,7 +5552,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="AutoHotkey" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Utilities"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="A scripting language for automating repetitive tasks and creating macros on Windows allowing users to customize keyboard shortcuts remap keys and automate mouse actions"/>
         </StackPanel>
@@ -5399,7 +5560,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="iVentoy" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Utilities"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="With iVentoy you can boot and install OS on multiple machines at the same time through the network"/>
         </StackPanel>
@@ -5407,7 +5568,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Ventoy" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Utilities"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="An opensource tool for creating bootable USB drives with multiple ISO files allowing users to boot various operating systems or utilities directly from a single USB drive"/>
         </StackPanel>
@@ -5415,7 +5576,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Ultra ISO" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Utilities"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="A powerful ISO image management tool that enables users to create edit extract and burn ISO files providing a comprehensive solution for managing disk image files"/>
         </StackPanel>
@@ -5423,15 +5584,15 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Virtual CloneDrive" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Utilities"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="A free software that allows users to mount disc images as virtual drives enabling them to access the content of ISO BIN and CCD files without the need for physical discs"/>
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="ImgBurn" Tag="Developer" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <CheckBox Content="ImgBurn" Tag="Development" IsChecked="false" FontWeight="Bold"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Development"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Lightweight CD  DVD burning application "/>
         </StackPanel>
@@ -5439,7 +5600,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Rufus" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Utilities"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="A utility tool for creating bootable USB drives from ISO images helping users to install or run operating systems such as Windows Linux or other utilities"/>
         </StackPanel>
@@ -5447,7 +5608,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="HandBrake" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Utilities"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="A free and opensource video transcoder tool that converts video files from one format to another supporting a wide range of input and output formats"/>
         </StackPanel>
@@ -5455,7 +5616,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Mem Reduct" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Utilities"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Lightweight realtime memory management application to monitor and clean system memory on your computer"/>
         </StackPanel>
@@ -5463,7 +5624,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="CPUID CPU-Z" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Utilities"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="A system monitoring utility that provides detailed information about the CPU motherboard memory and other hardware components of a computer system"/>
         </StackPanel>
@@ -5471,7 +5632,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Hard Disk Sentinel" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Utilities"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="A hard disk monitoring and analysis software that helps users monitor the health performance and temperature of their hard drives SSDs and other storage devices"/>
         </StackPanel>
@@ -5479,7 +5640,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="FurMark" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Utilities"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="A graphics card stress testing and benchmarking utility that helps users test the stability cooling and performance of their GPU by rendering a highly intensive 3D graphics scene"/>
         </StackPanel>
@@ -5487,7 +5648,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Speccy" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Utilities"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="A system information tool that provides detailed information about the hardware and operating system of a computer including CPU RAM motherboard graphics card and storage devices"/>
         </StackPanel>
@@ -5495,7 +5656,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="HWiNFO" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Utilities"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="A hardware information and diagnostic tool that provides detailed information about the hardware components of a computer system including sensors temperature voltage and more"/>
         </StackPanel>
@@ -5503,7 +5664,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Easy Context Menu" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Utilities"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="To install Easy Context Menu run the following command from the command line or from PowerShell"/>
         </StackPanel>
@@ -5511,7 +5672,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="BCUninstaller" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Utilities"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="A powerful uninstaller tool for Windows that allows users to remove unwanted programs plugins and Windows Store apps along with leftover files and registry entries"/>
         </StackPanel>
@@ -5519,7 +5680,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="CCleaner" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Utilities"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="A system optimization privacy and cleaning tool that helps users remove unused files clean up temporary files and optimize their Windows PCs for better performance"/>
         </StackPanel>
@@ -5527,7 +5688,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Recuva recover" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Utilities"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="A data recovery software that helps users retrieve accidentally deleted files including photos documents videos and more from various storage devices such as hard drives USB drives and memory cards"/>
         </StackPanel>
@@ -5535,7 +5696,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="AOMEI Backupper" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Utilities"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="A backup and recovery software that enables users to create system backups disk backups partition backups and file backups to protect data against system failures and data loss"/>
         </StackPanel>
@@ -5543,7 +5704,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="AOMEI Partition Assistant Standard" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Utilities"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="AOMEI Partition Assistant Standard allows you to realize disk upgradereplacement partition style conversion OS migration and other disk managements without any difficulties"/>
         </StackPanel>
@@ -5551,7 +5712,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="MiniTool Partition Wizard" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Utilities"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="A disk partition management tool that allows users to create resize move merge split copy and convert partitions on their hard drives or storage devices"/>
         </StackPanel>
@@ -5559,7 +5720,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="1Password" Tag="Utilities" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Utilities"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="A password manager that securely stores login credentials credit card information and other sensitive data in an encrypted vault accessible with a single master password"/>
         </StackPanel>
@@ -5567,7 +5728,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Driver Store Explorer" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Drivers"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text=" Windows driver store utility"/>
         </StackPanel>
@@ -5575,7 +5736,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Display Driver Uninstaller" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Drivers"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Utility to completely remove system drivers"/>
         </StackPanel>
@@ -5583,7 +5744,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Driver Genius" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Drivers"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Professional driver management tool and hardware diagnostics"/>
         </StackPanel>
@@ -5591,7 +5752,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Driver booster" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Drivers"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Scans and identifies outdated drivers automatically and downloads and installs the right update for you with just ONE click"/>
         </StackPanel>
@@ -5599,7 +5760,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Snappy Driver Installer" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Drivers"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="A free and opensource tool for updating and installing device drivers on Windows offering offline driver updates and wide hardware support"/>
         </StackPanel>
@@ -5607,7 +5768,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Intel Network Adapter" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Drivers"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Intel Network Adapter Drivers for Windows 10"/>
         </StackPanel>
@@ -5615,7 +5776,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Intel Driver Support Assistant" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Drivers"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Intel Driver  Support Assistant enables you to scan computing devices for the latest drivers available from Intel"/>
         </StackPanel>
@@ -5623,7 +5784,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Intel Graphics Windows DCH" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Drivers"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Intel Graphics Driver for Windows 10"/>
         </StackPanel>
@@ -5631,7 +5792,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Driver Easy" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Drivers"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="A driver update tool that automatically detects downloads and installs device drivers for the users computer hardware"/>
         </StackPanel>
@@ -5639,7 +5800,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Playnite" Tag="Launchers" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Launchers"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Open source video game library manager and launcher with support for 3rd party libraries like Steam GOG Origin Battlenet and Uplay"/>
         </StackPanel>
@@ -5647,7 +5808,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Lively Wallpaper" Tag="Launchers" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Launchers"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="A software that allows users to set animated and interactive wallpapers on their Windows desktop providing various customization options"/>
         </StackPanel>
@@ -5655,7 +5816,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Logitech Gaming Software" Tag="Launchers" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Launchers"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Logitech Gaming Software lets you customize Logitech G gaming mice keyboards headsets and select wheels"/>
         </StackPanel>
@@ -5663,7 +5824,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="OBS Studio" Tag="Launchers" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Launchers"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="A free and opensource software for video recording and live streaming It offers high performance realtime videoaudio capturing and mixing"/>
         </StackPanel>
@@ -5671,7 +5832,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="StreamlabsOBS" Tag="Launchers" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Launchers"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="A free and opensource streaming software built on top of OBS Studio with additional features tailored for streamers such as builtin alerts overlays and chat integration"/>
         </StackPanel>
@@ -5679,7 +5840,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="GameSave Manager" Tag="Launchers" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Launchers"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="A utility tool that allows users to backup restore and transfer their game saves between different gaming platforms and directories"/>
         </StackPanel>
@@ -5687,7 +5848,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Rockstar Games Launcher" Tag="Launchers" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Launchers"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Download and play the latest Rockstar Games PC titles"/>
         </StackPanel>
@@ -5695,7 +5856,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Origin" Tag="Launchers" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Launchers"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text=" Game store launcher"/>
         </StackPanel>
@@ -5703,7 +5864,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Ubisoft Connect" Tag="Launchers" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Launchers"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="A digital distribution digital rights management multiplayer and communications service developed by Ubisoft providing access to Ubisofts games rewards and social features"/>
         </StackPanel>
@@ -5711,7 +5872,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Steam" Tag="Launchers" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Launchers"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="A digital distribution platform developed by Valve Corporation for purchasing and playing video games"/>
         </StackPanel>
@@ -5719,7 +5880,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="NVIDIA PhysX" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Drivers"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="A physics processing unit PPU software development kit SDK offered by NVIDIA for realtime physics simulations in video games"/>
         </StackPanel>
@@ -5727,7 +5888,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Msi Afterburner" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Drivers"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="MSI Afterburner is the ultimate graphics card utility codeveloped by MSI and RivaTuner teams"/>
         </StackPanel>
@@ -5735,7 +5896,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="NVIDIA GeForce Experience" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Drivers"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="A cloudbased gaming service provided by NVIDIA that allows users to play video games on supported devices via a remote gaming PC hosted on NVIDIAs servers"/>
         </StackPanel>
@@ -5743,7 +5904,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="NVidia Display Driver" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Drivers"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="The software component that allows the operating system and installed software to communicate with and control the NVIDIA graphics processing unit GPU"/>
         </StackPanel>
@@ -5751,7 +5912,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="AMD Ryzen Chipset Drivers" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Drivers"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Supports AMD Ryzen Threadripper PRO Processor AMD Ryzen 800070407000 Series Desktop  Mobile Processors AMD Ryzen 50003rd Gen2nd Gen Desktop  Threadripper Processors AMD Ryzen Desktop Processor with Radeon Graphics  Mobile Processor with Radeon Graphics 7thGen AMD ASeries Processors AMD X670EX670B650EB650B350A320X370X399B450X470X570B550A520A620TRX40TRX50WRX80WRX90 Chipsets"/>
         </StackPanel>
@@ -5759,7 +5920,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="NET Framework All Versions" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Drivers"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="A comprehensive and consistent programming model for building applications that have visually stunning user experiences seamless and secure communication and the ability to model a range of business processes"/>
         </StackPanel>
@@ -5767,7 +5928,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Microsoft Visual C++ 2015-2022  (x86) Redistributable" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Drivers"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="A set of runtime components required to run applications developed with Microsoft Visual C 20152022 providing libraries DLLs and other resources"/>
         </StackPanel>
@@ -5775,7 +5936,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Microsoft Visual C++ 2015-2022 (x64) Redistributable" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Drivers"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="A set of runtime components required to run 64bit applications developed with Microsoft Visual C 20152022 providing libraries DLLs and other resources"/>
         </StackPanel>
@@ -5783,7 +5944,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Microsoft Visual C++ 2013 (x64) Redistributable" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Drivers"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="A set of runtime components required to run 64bit applications developed with Microsoft Visual C 2013 providing libraries DLLs and other resources"/>
         </StackPanel>
@@ -5791,7 +5952,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Microsoft Visual C++ 2013 (x86) Redistributable" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Drivers"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="A set of runtime components required to run applications developed with Microsoft Visual C 2013 providing libraries DLLs and other resources"/>
         </StackPanel>
@@ -5799,7 +5960,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Microsoft Visual C++ 2012 (x64) Redistributable" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Drivers"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="A set of runtime components required to run 64bit applications developed with Microsoft Visual C 2012 providing libraries DLLs and other resources"/>
         </StackPanel>
@@ -5807,7 +5968,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Microsoft Visual C++ 2012 (x86) Redistributable" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Drivers"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="A set of runtime components required to run applications developed with Microsoft Visual C 2012 providing libraries DLLs and other resources"/>
         </StackPanel>
@@ -5815,7 +5976,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Microsoft Visual C++ 2010 (x64) Redistributable" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Drivers"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="A set of runtime components required to run 64bit applications developed with Microsoft Visual C 2010 providing libraries DLLs and other resources"/>
         </StackPanel>
@@ -5823,7 +5984,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Microsoft Visual C++ 2010 (x86) Redistributable" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Drivers"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="A set of runtime components required to run applications developed with Microsoft Visual C 2010 providing libraries DLLs and other resources"/>
         </StackPanel>
@@ -5831,7 +5992,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Microsoft Visual C++ 2008 (x64) Redistributable" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Drivers"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="A set of runtime components required to run 64bit applications developed with Microsoft Visual C 2008 providing libraries DLLs and other resources"/>
         </StackPanel>
@@ -5839,7 +6000,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Microsoft Visual C++ 2008 (x86) Redistributable" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Drivers"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="A set of runtime components required to run applications developed with Microsoft Visual C 2008 providing libraries DLLs and other resources"/>
         </StackPanel>
@@ -5847,7 +6008,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Microsoft Visual C++ 2005 (x64) Redistributable" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Drivers"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="A set of runtime components required to run 64bit applications developed with Microsoft Visual C 2005 providing libraries DLLs and other resources"/>
         </StackPanel>
@@ -5855,7 +6016,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Microsoft Visual C++ 2005 (x86) Redistributable" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Drivers"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="A set of runtime components required to run applications developed with Microsoft Visual C 2005 providing libraries DLLs and other resources"/>
         </StackPanel>
@@ -5863,7 +6024,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Microsoft Visual C++ Runtime - all versions" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Drivers"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Microsoft Visual C Redistributable installs runtime components of Visual C libraries These components are required to run C applications that are developed using Visual Studio and link dynamically to Visual C libraries"/>
         </StackPanel>
@@ -5871,7 +6032,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="DirectX" Tag="Drivers" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Drivers"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="DirectX is a collection of APIs for handling tasks related to games and videos"/>
         </StackPanel>
@@ -5879,7 +6040,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="GIMP" Tag="Imaging" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Imaging"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="A free and opensource raster graphics editor used for image retouching and editing drawing and painting and converting between different image formats"/>
         </StackPanel>
@@ -5887,7 +6048,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="TeamViewer" Tag="File Sharing" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="File Sharing"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="A remote access and support software that enables users to remotely control computers transfer files and collaborate online facilitating remote work and IT support"/>
         </StackPanel>
@@ -5895,7 +6056,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Discord" Tag="Communication" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Communication"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="A VoIP application and digital distribution platform designed for creating communities and connecting gamers providing text voice and video communication features"/>
         </StackPanel>
@@ -5903,7 +6064,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Microsoft Teams" Tag="Communication" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Communication"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="A collaboration platform that combines workplace chat video meetings file storage and application integration enhancing teamwork and productivity within organizations"/>
         </StackPanel>
@@ -5911,7 +6072,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Zoom" Tag="Communication" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Communication"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="A video conferencing app that facilitates online meetings webinars and virtual events allowing participants to interact through video audio and chat"/>
         </StackPanel>
@@ -5919,7 +6080,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Meta Messenger" Tag="Communication" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Communication"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="A messaging app that allows users to connect with friends and family through text messages voice calls and video calls offering various multimedia sharing features"/>
         </StackPanel>
@@ -5927,7 +6088,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Signal" Tag="Communication" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Communication"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Fast simple secure Privacy that fits in your pocket"/>
         </StackPanel>
@@ -5935,7 +6096,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Telegram Desktop" Tag="Communication" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Communication"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="A crossplatform messaging app with a focus on speed and security offering endtoend encryption and a wide range of features such as group chats file sharing and stickers"/>
         </StackPanel>
@@ -5943,7 +6104,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="PeaZip" Tag="Compression" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Compression"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text=" PeaZip is a free crossplatform file archiver"/>
         </StackPanel>
@@ -5951,7 +6112,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="7-Zip" Tag="Compression" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Compression"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="An opensource file archiver with a high compression ratio supporting various archive formats and providing a powerful commandline interface"/>
         </StackPanel>
@@ -5959,7 +6120,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="WinRAR" Tag="Compression" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Compression"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="A popular file compression and archiving utility that supports various archive formats and offers advanced features such as encryption and selfextracting archives"/>
         </StackPanel>
@@ -5967,7 +6128,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="SumatraPDF" Tag="Documents" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Documents"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="A lightweight and fast PDF reader with minimalistic design and focus on simplicity and speed"/>
         </StackPanel>
@@ -5975,7 +6136,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="LibreOffice" Tag="Documents" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Documents"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="A powerful opensource office suite providing word processing spreadsheet presentation and other office tools compatible with Microsoft Office formats"/>
         </StackPanel>
@@ -5983,7 +6144,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="FoxitReader" Tag="Documents" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Documents"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="A lightweight and featurerich PDF reader with annotation form filling and document signing capabilities"/>
         </StackPanel>
@@ -5991,7 +6152,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="OpenOffice" Tag="Documents" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Documents"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="An opensource office productivity suite offering word processing spreadsheet presentation and other office tools compatible with Microsoft Office formats"/>
         </StackPanel>
@@ -5999,7 +6160,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="FastStone Image Viewer" Tag="Imaging" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Imaging"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="FastStone Image Viewer is a fast stable userfriendly image browser converter and editor "/>
         </StackPanel>
@@ -6007,7 +6168,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Spotify" Tag="Media" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Media"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Spotify is a new way to listen to music"/>
         </StackPanel>
@@ -6015,7 +6176,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Aimp" Tag="Media" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Media"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="A lightweight and featurerich audio player with support for various audio formats and customizable interface themes"/>
         </StackPanel>
@@ -6023,7 +6184,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Winamp" Tag="Media" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Media"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="A classic media player known for its customizable interface and extensive plugin support providing a nostalgic music playback experience"/>
         </StackPanel>
@@ -6031,7 +6192,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Jellyfin" Tag="Media" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Media"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="An opensource media server software that enables users to stream their media libraries across devices providing a selfhosted alternative to commercial services"/>
         </StackPanel>
@@ -6039,7 +6200,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Kodi" Tag="Media" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Media"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="A powerful opensource media center software that allows users to organize and stream their media collections"/>
         </StackPanel>
@@ -6047,7 +6208,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="VLC" Tag="Media" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Media"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="A versatile media player capable of playing almost any multimedia file format with support for various streaming protocols"/>
         </StackPanel>
@@ -6055,7 +6216,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="PotPlayer" Tag="Media" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Media"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="A multimedia player with a sleek interface and advanced features supporting a wide range of audio and video formats"/>
         </StackPanel>
@@ -6063,7 +6224,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="K-Lite Mega Codec Full Pack" Tag="Media" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Media"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Comprehensive collection of audio and video codecs filters and tools enabling playback of various media formats"/>
         </StackPanel>
@@ -6071,7 +6232,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="JDownloader" Tag="Browsers" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Browsers"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="JDownloader is an internet download manager"/>
         </StackPanel>
@@ -6079,7 +6240,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Neat Download Manager" Tag="Browsers" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Browsers"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Introducing Neat Download Manager the powerful neatdownload manager that supports macOS Windows 7 or later and Windows 11 With lightningfast downloads smart file filter management and the best features start downloading today and see why Neat Download Manager is the perfect tool for your"/>
         </StackPanel>
@@ -6087,7 +6248,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Internet Download Manager" Tag="Browsers" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Browsers"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="A popular download manager tool that accelerates downloads and allows users to organize and schedule downloads efficiently"/>
         </StackPanel>
@@ -6095,7 +6256,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Opera" Tag="Browsers" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Browsers"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="The Opera web browser makes the Web fast and fun giving you a better web browser experience on any computer"/>
         </StackPanel>
@@ -6103,7 +6264,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Tor Browser" Tag="Browsers" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Browsers"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="A web browser that prioritizes user privacy by routing internet traffic through a global network of servers enabling anonymous browsing"/>
         </StackPanel>
@@ -6111,7 +6272,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Brave" Tag="Browsers" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Browsers"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="A privacyfocused web browser that blocks ads and trackers offering faster and safer browsing experiences"/>
         </StackPanel>
@@ -6119,7 +6280,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Chromium" Tag="Browsers" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Browsers"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="An opensource web browser project that serves as the foundation for many browsers including Google Chrome"/>
         </StackPanel>
@@ -6127,7 +6288,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Google Chrome" Tag="Browsers" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Browsers"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="A popular web browser known for its speed simplicity and vast ecosystem of extensions"/>
         </StackPanel>
@@ -6135,7 +6296,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Microsoft Edge" Tag="Browsers" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Browsers"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Microsofts web browser built for fast and secure internet surfing integrating seamlessly with Windows ecosystem"/>
         </StackPanel>
@@ -6143,7 +6304,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Firefox" Tag="Browsers" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Browsers"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="A widelyused opensource web browser known for its speed privacy features and customization options"/>
         </StackPanel>
@@ -6151,7 +6312,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Thorium AVX" Tag="Browsers" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Browsers"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="A web browser designed for smooth and secure browsing experiences"/>
         </StackPanel>
@@ -6159,7 +6320,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Thorium SSE3" Tag="Browsers" IsChecked="false" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content="Browsers"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="A web browser designed for smooth and secure browsing experiences"/>
         </StackPanel>
@@ -6184,7 +6345,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Remove Meet Now icon on Taskbar Windows 10"   FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content=""/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Earlier this year Microsoft introduced Meet Now in Skype Meet Now makes it easy to connect with anyone in as little as two clicks for free and each call can last up to 24 hours"/>
         </StackPanel>
@@ -6192,7 +6353,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Disable OneDrive"   FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content=""/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Disabling OneDrive"/>
         </StackPanel>
@@ -6200,7 +6361,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Disable Hibernate"   FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content=""/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Hibernate is a powersaving mode in Microsoft Windows operating systems that allows the system to save the current state of your computer to the hard disk and then power down completely"/>
         </StackPanel>
@@ -6208,7 +6369,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Remove Unnecessary Windows 10/11 Apps"   FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content=""/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="BingNews GetHelp Getstarted Messaging Microsoft3DViewer MicrosoftOfficeHub MicrosoftSolitaireCollection News OfficeLens OfficeOneNote OfficeSway OneConnect People Print3D RemoteDesktop SkypeApp StorePurchaseApp OfficeTodoList Whiteboard WindowsAlarms WindowsCamera windowscommunicationsapps WindowsFeedbackHub WindowsMaps WindowsSoundRecorder XboxTCUI XboxApp XboxGameOverlay XboxIdentityProvider XboxSpeechToTextOverlay ZuneMusic ZuneVideo WindowsCortana MSPaint"/>
         </StackPanel>
@@ -6216,7 +6377,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Optimize Services"   FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content=""/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Disable Print Spooler Fax Diagnostic Policy Downloaded Maps Manager Windows Error Reporting Service Remote Registry  Internet Connection Sharing Disables Telemetry and Data "/>
         </StackPanel>
@@ -6224,7 +6385,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Remove Folder Shortcuts From Windows'' File Explorer"   FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content=""/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Remove Documents Videos Pictures Desktop Shortcuts from File Explorer"/>
         </StackPanel>
@@ -6232,7 +6393,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Disable People icon on taskbar"   FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content=""/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Disables People on taskbar"/>
         </StackPanel>
@@ -6240,7 +6401,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Show Search icon Only on taskbar"   FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content=""/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Show Search Icon Only"/>
         </StackPanel>
@@ -6248,7 +6409,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Disable the News and interests on taskbar"   FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content=""/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Disables the News and interests"/>
         </StackPanel>
@@ -6256,7 +6417,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Disable suggestions on start menu"   FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content=""/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Disables suggestions on start menu"/>
         </StackPanel>
@@ -6264,7 +6425,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Turn off background apps"   FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content=""/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Turn off background apps"/>
         </StackPanel>
@@ -6272,7 +6433,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Disable Windows Web Search"   FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content=""/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Disable web search in Windows by modifying the registry settings related to Windows Search It sets the BingSearchEnabled value to 0 effectively turning off web search results"/>
         </StackPanel>
@@ -6280,7 +6441,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Disable Start menu ads"   FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content=""/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Disable Start menu Ads and Settings"/>
         </StackPanel>
@@ -6288,7 +6449,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Disable Data Collection"   FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content=""/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Disable Data Collection"/>
         </StackPanel>
@@ -6296,7 +6457,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Disable Game Mode"   FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content=""/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="This tweak disables Game Mode"/>
         </StackPanel>
@@ -6304,7 +6465,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Setup Auto login"   FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content=""/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Setup auto login Windows username"/>
         </StackPanel>
@@ -6312,7 +6473,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Reset the TCP/IP Stack"   FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content=""/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="If you have an internet problem Reset network configuration"/>
         </StackPanel>
@@ -6320,7 +6481,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Enable the Ultimate Performance Power Plan"   FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content=""/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Enable the Ultimate Performance Power Plan"/>
         </StackPanel>
@@ -6328,7 +6489,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Fix Stutter/Lag in Games"   FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content=""/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Fix Stutter in Games Disable GameBarPresenceWriter Windows 1011"/>
         </StackPanel>
@@ -6336,7 +6497,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Restore All Windows Services to Default"   FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content=""/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="If you face a problem with some system services you can restore all services to Default"/>
         </StackPanel>
@@ -6344,7 +6505,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Run Disk cleanup"   FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content=""/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Clean temporary files that are not necessary"/>
         </StackPanel>
@@ -6352,7 +6513,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="System File Checker"   FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Background="Transparent" FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="airal"  FontSize="12" Content=""/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="sfc scannow Use the System File Checker tool to repair missing or corrupted system files"/>
         </StackPanel>
