@@ -10,7 +10,7 @@
                         <SolidColorBrush x:Key="DefaultTextColor" Color="Black"/>
                         <SolidColorBrush x:Key="BorderBrush" Color="LightBlue"/>
                         <SolidColorBrush x:Key="Label" Color="LightBlue"/>
-
+                        <SolidColorBrush x:Key="checkbox" Color="White"/>
                 </ResourceDictionary>
         <!--Light mode -->
 
@@ -24,7 +24,7 @@
                         <SolidColorBrush x:Key="DefaultTextColor" Color="White"/>
                         <SolidColorBrush x:Key="BorderBrush" Color="#1DB954" />
                         <SolidColorBrush x:Key="Label" Color="#3f3f3f"/>
-
+                        <SolidColorBrush x:Key="checkbox" Color="White"/>
                 </ResourceDictionary>
         <!--Dark mode -->
 
