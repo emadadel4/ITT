@@ -42,7 +42,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
             
                 </MenuItem>
 
-                <MenuItem Header="Computer Managment" BorderBrush="Transparent" BorderThickness="0" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <MenuItem Header="{Binding device}" BorderBrush="Transparent" BorderThickness="0" VerticalAlignment="Center" HorizontalAlignment="Center">
                     <MenuItem.Icon>
                         <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
                     </MenuItem.Icon>
@@ -56,38 +56,48 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                     <MenuItem Name="diskmgmt" Header="Disk Managment"/>
                 </MenuItem>
 
-                <MenuItem Header="Preferences" BorderBrush="Transparent" BorderThickness="0" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <MenuItem Header="{Binding pref}" BorderBrush="Transparent" BorderThickness="0" VerticalAlignment="Center" HorizontalAlignment="Center">
                     <MenuItem.Icon>
                         <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
                     </MenuItem.Icon>
 
-                    <MenuItem Name="save" Header="Save Selected apps">
+                    <MenuItem Name="save" Header="{Binding saveapps}">
                         <MenuItem.Icon>
                             <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem Name="load" Header="Load Apps">
+                    <MenuItem Name="load" Header="{Binding loadapps}">
                         <MenuItem.Icon>
                             <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
                         </MenuItem.Icon>
                     </MenuItem>
 
-                    <MenuItem Header="Dark Mode">
+                    <MenuItem Header="{Binding darkmode}">
                         <MenuItem.Icon>
                             <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
                         </MenuItem.Icon>
-                        <MenuItem Name="darkOn" Header="On"/>
-                        <MenuItem Name="darkOff" Header="Off"/>
+                        <MenuItem Name="darkOn" Header="{Binding on}"/>
+                        <MenuItem Name="darkOff" Header="{Binding off}"/>
                     </MenuItem>
 
-                    <MenuItem Header="Music">
+                    <MenuItem Header="{Binding music}">
                         <MenuItem.Icon>
                             <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
                         </MenuItem.Icon>
-                        <MenuItem Name="moff" Header="Mute"/>
-                        <MenuItem Name="mon" Header="Unmute"/>
+                        <MenuItem Name="moff" Header="{Binding off}"/>
+                        <MenuItem Name="mon" Header="{Binding on}"/>
                     </MenuItem>
-                    <MenuItem Name="ittshortcut" Header="Create Shortcut">
+
+                    <MenuItem Header="{Binding lang}">
+                            <MenuItem.Icon>
+                                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                            </MenuItem.Icon>
+                        <MenuItem Name="en" Header="{Binding en}"/>
+                        <MenuItem Name="ar" Header="{Binding ar}"/>
+                    </MenuItem>
+
+                  
+                    <MenuItem Name="ittshortcut" Header="{Binding ittlink}">
                         <MenuItem.Icon>
                             <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
                         </MenuItem.Icon>
@@ -95,7 +105,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                 </MenuItem>
                 
 
-                <MenuItem Header="Mirror Links" BorderThickness="0" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <MenuItem Header="{Binding mirrorlinks}" BorderThickness="0" VerticalAlignment="Center" HorizontalAlignment="Center">
                     <MenuItem.Icon>
                         <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
                     </MenuItem.Icon>
@@ -110,12 +120,12 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                 </MenuItem>
 
                 
-                <MenuItem Name="dev" Header="About" BorderBrush="Transparent" BorderThickness="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <MenuItem Name="dev" Header="{Binding about}" BorderBrush="Transparent" BorderThickness="1" VerticalAlignment="Center" HorizontalAlignment="Center">
                     <MenuItem.Icon>
                         <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
                     </MenuItem.Icon>
                 </MenuItem>
-                
+
             <!--Catagory Section-->
                 <ComboBox SelectedIndex="0" Margin="0" VerticalAlignment="Center" HorizontalAlignment="Center" Name="category" Width="100">
                     <ComboBoxItem Content="All"></ComboBoxItem>
@@ -183,7 +193,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                     <!--applyBtn Button-->
                     <Button
                     Name="applyBtn"
-                    Content="Apply"
+                    Content="{Binding applyBtn}"
                     FontSize="15"
                     HorizontalAlignment="Right"
                     VerticalAlignment="Bottom"
@@ -194,7 +204,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                 <!--Install Button-->
                     <Button
                         Name="installBtn"
-                        Content="Install"
+                        Content="{Binding instalLBtn}"
                         FontSize="15"
                         HorizontalAlignment="Right"
                         VerticalAlignment="Bottom"

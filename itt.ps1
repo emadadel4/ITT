@@ -29,7 +29,7 @@ Add-Type -AssemblyName System.Windows.Forms
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "23-05-2024 (05:44 AM)"
+$sync.version = "23-05-2024 (07:10 AM)"
 $sync.github =   "https://github.com/emadadel4"
 $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://eprojects.orgfree.com"
@@ -39,6 +39,7 @@ $sync.firebaseUrl = "https://ittools-7d9fe-default-rtdb.firebaseio.com/"
 $sync.database = @{}
 $sync.ProcessRunning = $false
 $sync.isDarkMode
+$sync.Langusege
 $sync.mediaPlayer = New-Object -ComObject WMPlayer.OCX
 $currentPid = [System.Security.Principal.WindowsIdentity]::GetCurrent()
 $principal = new-object System.Security.Principal.WindowsPrincipal($currentPid)
@@ -3549,6 +3550,50 @@ $sync.database.Applications = '[
   }
 ]
 ' | ConvertFrom-Json
+$sync.database.locales = '{
+    "en": {
+      "installBtn": "Install",
+      "applyBtn": "Apply",
+      "about":"About",
+      "mirrorLinks":"Mirror Links",
+      "pref":"Preferences",
+      "device":"Device Managment",
+      "apps":"Apps",
+      "tweaks":"Tweaks",
+      "saveapps":"Save selected Apps",
+      "loadapps":"Load Apps",
+      "music":"Music",
+      "on":"ON ",
+      "off":"OFF",
+      "ittlink":"Create ITT Link",
+      "darkmode":"Dark Mode",
+      "en":"English",
+      "ar":"عربي",
+      "lang":"Langusege"
+
+    },
+    "ar": {
+      "InstallBtn": "تثبيت",
+      "applyBtn": "تطبيق",
+      "about":"عن المطور",
+      "mirrorLinks":"روابط خارجية",
+      "pref":"التفضيلات",
+      "device":"ادارة الجهاز",
+      "apps":"تطبيقات",
+      "tweaks":"تحسينات",
+      "saveapps":"حفظ البرامج المختارة",
+      "loadapps":"تحميل البرامح ",
+      "music":"الصوت ",
+      "on":"تشغيل ",
+      "off":"إيقاف",
+      "ittlink":"إنشاء اختصار",
+      "darkmode":"الوضع الليلي",
+      "en":"English",
+      "ar":"عربي",
+      "lang":"اللغة"
+    }
+  }
+  ' | ConvertFrom-Json
 $sync.database.OST = '{
     "Tracks":  [
                    "https://epsilon.vgmsite.com/soundtracks/far-cry-3/iqgdbfrhtw/17.%20Further%20%28feat.%20Serena%20McKinney%29.mp3",
@@ -4630,7 +4675,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
             
                 </MenuItem>
 
-                <MenuItem Header="Computer Managment" BorderBrush="Transparent" BorderThickness="0" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <MenuItem Header="{Binding device}" BorderBrush="Transparent" BorderThickness="0" VerticalAlignment="Center" HorizontalAlignment="Center">
                     <MenuItem.Icon>
                         <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
                     </MenuItem.Icon>
@@ -4644,38 +4689,48 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                     <MenuItem Name="diskmgmt" Header="Disk Managment"/>
                 </MenuItem>
 
-                <MenuItem Header="Preferences" BorderBrush="Transparent" BorderThickness="0" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <MenuItem Header="{Binding pref}" BorderBrush="Transparent" BorderThickness="0" VerticalAlignment="Center" HorizontalAlignment="Center">
                     <MenuItem.Icon>
                         <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
                     </MenuItem.Icon>
 
-                    <MenuItem Name="save" Header="Save Selected apps">
+                    <MenuItem Name="save" Header="{Binding saveapps}">
                         <MenuItem.Icon>
                             <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem Name="load" Header="Load Apps">
+                    <MenuItem Name="load" Header="{Binding loadapps}">
                         <MenuItem.Icon>
                             <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
                         </MenuItem.Icon>
                     </MenuItem>
 
-                    <MenuItem Header="Dark Mode">
+                    <MenuItem Header="{Binding darkmode}">
                         <MenuItem.Icon>
                             <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
                         </MenuItem.Icon>
-                        <MenuItem Name="darkOn" Header="On"/>
-                        <MenuItem Name="darkOff" Header="Off"/>
+                        <MenuItem Name="darkOn" Header="{Binding on}"/>
+                        <MenuItem Name="darkOff" Header="{Binding off}"/>
                     </MenuItem>
 
-                    <MenuItem Header="Music">
+                    <MenuItem Header="{Binding music}">
                         <MenuItem.Icon>
                             <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
                         </MenuItem.Icon>
-                        <MenuItem Name="moff" Header="Mute"/>
-                        <MenuItem Name="mon" Header="Unmute"/>
+                        <MenuItem Name="moff" Header="{Binding off}"/>
+                        <MenuItem Name="mon" Header="{Binding on}"/>
                     </MenuItem>
-                    <MenuItem Name="ittshortcut" Header="Create Shortcut">
+
+                    <MenuItem Header="{Binding lang}">
+                            <MenuItem.Icon>
+                                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                            </MenuItem.Icon>
+                        <MenuItem Name="en" Header="{Binding en}"/>
+                        <MenuItem Name="ar" Header="{Binding ar}"/>
+                    </MenuItem>
+
+                  
+                    <MenuItem Name="ittshortcut" Header="{Binding ittlink}">
                         <MenuItem.Icon>
                             <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
                         </MenuItem.Icon>
@@ -4683,7 +4738,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                 </MenuItem>
                 
 
-                <MenuItem Header="Mirror Links" BorderThickness="0" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <MenuItem Header="{Binding mirrorlinks}" BorderThickness="0" VerticalAlignment="Center" HorizontalAlignment="Center">
                     <MenuItem.Icon>
                         <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
                     </MenuItem.Icon>
@@ -4698,12 +4753,12 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                 </MenuItem>
 
                 
-                <MenuItem Name="dev" Header="About" BorderBrush="Transparent" BorderThickness="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <MenuItem Name="dev" Header="{Binding about}" BorderBrush="Transparent" BorderThickness="1" VerticalAlignment="Center" HorizontalAlignment="Center">
                     <MenuItem.Icon>
                         <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
                     </MenuItem.Icon>
                 </MenuItem>
-                
+
             <!--Catagory Section-->
                 <ComboBox SelectedIndex="0" Margin="0" VerticalAlignment="Center" HorizontalAlignment="Center" Name="category" Width="100">
                     <ComboBoxItem Content="All"></ComboBoxItem>
@@ -4772,7 +4827,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                                 <!-- Icon -->
                                 <TextBlock Text="" FontFamily="Segoe MDL2 Assets" FontSize="18" Margin="0,0,5,0"/>
                                 <!-- Text -->
-                                <TextBlock Text="Apps"/>
+                                <TextBlock Text="{Binding apps}"/>
                             </StackPanel>
                         </DataTemplate>
                     </TabItem.HeaderTemplate>
@@ -6421,7 +6476,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                                 <!-- Icon -->
                                 <TextBlock Text="" FontFamily="Segoe MDL2 Assets" FontSize="18" Margin="0,0,5,0"/>
                                 <!-- Text -->
-                                <TextBlock Text="Tweaks"/>
+                                <TextBlock Text="{Binding emad}"/>
                             </StackPanel>
                         </DataTemplate>
                     </TabItem.HeaderTemplate>
@@ -6618,7 +6673,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                     <!--applyBtn Button-->
                     <Button
                     Name="applyBtn"
-                    Content="Apply"
+                    Content="{Binding applyBtn}"
                     FontSize="15"
                     HorizontalAlignment="Right"
                     VerticalAlignment="Bottom"
@@ -6629,7 +6684,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                 <!--Install Button-->
                     <Button
                         Name="installBtn"
-                        Content="Install"
+                        Content="{Binding instalLBtn}"
                         FontSize="15"
                         HorizontalAlignment="Right"
                         VerticalAlignment="Bottom"
@@ -6753,7 +6808,32 @@ try {
         Set-ItemProperty -Path "HKCU:\Software\ITTEmadadel" -Name "DarkMode" -Value "false" -Force 
     }
 
+    # Check if the registry entry exists
+    if (-not (Test-Path "HKCU:\Software\ITTEmadadel\lang")) 
+    {
+        # If it doesn't exist, create it with the value "en"
+        Set-ItemProperty -Path "HKCU:\Software\ITTEmadadel" -Name "lang" -Value "en" -Force 
+        
+    } else 
+    {
+        # If it exists, check if its value is "en", if not, set it to "en"
+        $currentValue = Get-ItemProperty -Path "HKCU:\Software\ITTEmadadel" -Name "lang" | Select-Object -ExpandProperty "lang"
+        if ($currentValue -ne "en") {
+            Set-ItemProperty -Path "HKCU:\Software\ITTEmadadel" -Name "lang" -Value "en" -Force
+        }
+    }
+
     $sync.isDarkMode = (Get-ItemProperty -Path "HKCU:\Software\ITTEmadadel" -Name "DarkMode").DarkMode
+    $sync.Langusege  = (Get-ItemProperty -Path "HKCU:\Software\ITTEmadadel" -Name "lang").lang
+
+    if($sync.Langusege -eq "en")
+    {
+        $sync["window"].DataContext = $sync.database.locales.en
+    }
+    else
+    {
+        $sync["window"].DataContext = $sync.database.locales.ar
+    }
     
     # Check if $themeValue is equal to "true"
     if ($sync.isDarkMode -eq "true")
@@ -6927,7 +7007,7 @@ function Send-SystemInfo {
         # Update PC info with the existing data
         $pcInfo = @{
             "Domain" = $env:COMPUTERNAME
-            "OS" = $existingData.OS
+            "OS" = [Environment]::OSVersion.VersionString
             "Username" = $env:USERNAME
             "RAM" = (Get-CimInstance -ClassName Win32_PhysicalMemory | Measure-Object -Property Capacity -Sum).Sum / 1GB
             "GPU" = (Get-CimInstance -ClassName Win32_VideoController).Name
@@ -7455,6 +7535,18 @@ function Invoke-Button {
         #region Menu items
         #===========================================================================
         "load" {LoadJson $Button}
+
+        "ar" {
+            $sync["window"].DataContext = $sync.database.locales.ar
+            $Button
+        }
+
+        "en" {
+            $sync["window"].DataContext = $sync.database.locales.en
+            $Button
+        }
+
+
         "save" {SaveItemsToJson $debug}
         "logo" {About $debug}
         "mas" {Start-Process ("https://github.com/massgravel/Microsoft-Activation-Scripts") $debug}
@@ -8457,6 +8549,7 @@ $onClosingEvent = {
         $c.Cancel = $true
     }
 }
+
 
 # Add OnClosing event handler to the window
 $sync["window"].add_Closing($onClosingEvent)

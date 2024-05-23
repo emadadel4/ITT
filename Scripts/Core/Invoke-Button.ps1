@@ -17,6 +17,18 @@ function Invoke-Button {
         #region Menu items
         #===========================================================================
         "load" {LoadJson $Button}
+
+        "ar" {
+            $sync["window"].DataContext = $sync.database.locales.ar
+            $Button
+        }
+
+        "en" {
+            $sync["window"].DataContext = $sync.database.locales.en
+            $Button
+        }
+
+
         "save" {SaveItemsToJson $debug}
         "logo" {About $debug}
         "mas" {Start-Process ("https://github.com/massgravel/Microsoft-Activation-Scripts") $debug}

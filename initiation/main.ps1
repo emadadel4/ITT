@@ -20,6 +20,7 @@ $onClosingEvent = {
     }
 }
 
+
 # Add OnClosing event handler to the window
 $sync["window"].add_Closing($onClosingEvent)
 
