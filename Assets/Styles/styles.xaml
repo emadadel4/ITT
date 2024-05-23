@@ -33,7 +33,7 @@
       <Setter Property="Template">
           <Setter.Value>
               <ControlTemplate TargetType="TextBox">
-                  <Border Background="{TemplateBinding Background}"
+                  <Border Margin="8" Background="{TemplateBinding Background}"
                           BorderBrush="{TemplateBinding BorderBrush}"
                           BorderThickness="{TemplateBinding BorderThickness}"
                           CornerRadius="15"> <!-- Set CornerRadius here -->
@@ -56,7 +56,22 @@
   <Style TargetType="Label">
     <Setter Property="Background" Value="{DynamicResource Label}"/>
     <Setter Property="Foreground" Value="{DynamicResource DefaultTextColor}"/>
+    <Setter Property="FontSize" Value="20"/>
+    <Setter Property="Template">
+        <Setter.Value>
+            <ControlTemplate TargetType="Label">
+                <Border Padding="4" Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="5"> <!-- Set the corner radius here -->
+                    <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                </Border>
+            </ControlTemplate>
+        </Setter.Value>
+    </Setter>
   </Style>
+  
 <!--End Label Style-->
 
 <!--TextBlock Style-->
