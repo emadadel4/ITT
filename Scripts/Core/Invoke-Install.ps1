@@ -312,30 +312,32 @@ https://t.me/emadadel4
                 if($result -eq "Yes")
                 {
 
-                    UpdateUI -InstallBtn "Installing..." -Description "Downloading and Installing..." 
+
 
                     $sync.ProcessRunning = $true
                     foreach ($app in $selectedApps) 
                     {
 
                         ClearTemp
-
                         SendApps -FirebaseUrl $sync.firebaseUrl -Key $env:COMPUTERNAME -list $app
-
+                        
                         if ($app.Winget -ne "none")
                         {
                             InstallWinget
+                            UpdateUI -InstallBtn "Installing..." -Description "Downloading and Installing..." 
                             Start-Process -FilePath "winget" -ArgumentList "install -e -h --accept-source-agreements --ignore-security-hash --accept-package-agreements --id $($app.Winget)" -NoNewWindow -Wait
                         }
 
 
                         if ($app.Choco -ne "none")
                         {
+                            UpdateUI -InstallBtn "Installing..." -Description "Downloading and Installing..." 
                             Start-Process -FilePath "choco" -ArgumentList "install $($app.Choco) --confirm --acceptlicense -q -r --ignore-http-cache --allowemptychecksumsecure --allowemptychecksum  --usepackagecodes --ignoredetectedreboot --ignore-checksums" -NoNewWindow -Wait 
                         }
 
                         if ($app.Default.url -ne "none")
                         {
+                            UpdateUI -InstallBtn "Downloading..." -Description "Downloading..." 
 
                             foreach ($app in $app.default) 
                             {
@@ -345,7 +347,7 @@ https://t.me/emadadel4
                                     $url = "$($app.url)"
 
                                     # Directory where WinRAR file will be downloaded and extracted
-                                    $downloadDir = "$env:ProgramData\ITT\Downloads"
+                                    $downloadDir = "$env:ProgramData\$($app.output)"
 
                                     # Create the directories if they don't exist
                                     if (-not (Test-Path -Path $downloadDir)) {
