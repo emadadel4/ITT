@@ -29,7 +29,7 @@ Add-Type -AssemblyName System.Windows.Forms
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "24-05-2024 (04:14 AM)"
+$sync.version = "24-05-2024 (04:19 AM)"
 $sync.github =   "https://github.com/emadadel4"
 $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://eprojects.orgfree.com"
@@ -6841,6 +6841,24 @@ try {
 
     #$sync.Langusege  = (Get-ItemProperty -Path "HKCU:\Software\ITTEmadadel" -Name "lang").lang
 
+    $currentCulture = [System.Globalization.CultureInfo]::CurrentCulture
+    $shortCulture = $currentCulture.Name.Substring(0,2)
+
+    if($shortCulture -eq "en")
+    {
+        $sync["window"].DataContext = $sync.database.locales.en
+
+    }
+    elseif ($shortCulture -eq "ar") {
+        $sync["window"].DataContext = $sync.database.locales.ar
+    }
+    else
+    {
+        # default lang
+        $sync["window"].DataContext = $sync.database.locales.en
+        #Write-Host "fallback to default lang"
+    }
+
     # Check if $themeValue is equal to "true"
     if ($sync.isDarkMode -eq "true")
     {
@@ -8509,8 +8527,7 @@ function GetCulture {
         [string]$currentlang
     )
 
-    $currentCulture = [System.Globalization.CultureInfo]::CurrentCulture
-    $shortCulture = $currentCulture.Name.Substring(0,2)
+
 
     # #$lang = (Get-ItemProperty -Path "HKCU:\Software\ITTEmadadel" -Name "lang").lang
 
@@ -8520,20 +8537,7 @@ function GetCulture {
     #     return
     # } 
 
-    if($shortCulture -eq "en")
-    {
-        $sync["window"].DataContext = $sync.database.locales.en
-
-    }
-    elseif ($shortCulture -eq "ar") {
-        $sync["window"].DataContext = $sync.database.locales.ar
-    }
-    else
-    {
-        # default lang
-        $sync["window"].DataContext = $sync.database.locales.en
-        #Write-Host "fallback to default lang"
-    }
+ 
 
 }
 
