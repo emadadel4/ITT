@@ -197,7 +197,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                     FontSize="15"
                     HorizontalAlignment="Right"
                     VerticalAlignment="Bottom"
-                    Width="100" Height="40" Margin="15"/>
+                    Width="130" Height="40" Margin="15"/>
                 <!--End applyBtn Button-->
 
 
@@ -208,7 +208,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                         FontSize="15"
                         HorizontalAlignment="Right"
                         VerticalAlignment="Bottom"
-                        Width="100" Height="40" Margin="15"/>
+                        Width="130" Height="40" Margin="15"/>
                 <!--End Install Button-->
             </Grid>
 
