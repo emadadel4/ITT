@@ -29,7 +29,7 @@ Add-Type -AssemblyName System.Windows.Forms
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "24-05-2024 (05:10 AM)"
+$sync.version = "24-05-2024 (08:25 AM)"
 $sync.github =   "https://github.com/emadadel4"
 $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://eprojects.orgfree.com"
@@ -79,7 +79,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Browsers",
@@ -96,7 +96,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Browsers",
@@ -113,7 +113,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Browsers",
@@ -131,7 +131,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Browsers",
@@ -148,7 +148,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Browsers",
@@ -165,7 +165,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Browsers",
@@ -182,7 +182,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Browsers",
@@ -199,7 +199,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Browsers",
@@ -216,7 +216,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Browsers",
@@ -233,7 +233,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Browsers",
@@ -267,7 +267,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Browsers",
@@ -284,7 +284,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Media",
@@ -302,7 +302,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Media",
@@ -319,7 +319,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Media",
@@ -337,7 +337,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Media",
@@ -354,7 +354,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Media",
@@ -371,7 +371,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Media",
@@ -388,7 +388,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Media",
@@ -405,7 +405,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Media",
@@ -422,7 +422,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Imaging",
@@ -439,7 +439,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Documents",
@@ -456,7 +456,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Documents",
@@ -473,7 +473,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Documents",
@@ -491,7 +491,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Documents",
@@ -508,7 +508,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Compression",
@@ -526,7 +526,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Compression",
@@ -544,7 +544,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Compression",
@@ -561,7 +561,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Communication",
@@ -579,7 +579,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Communication",
@@ -596,7 +596,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Communication",
@@ -613,7 +613,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Communication",
@@ -630,7 +630,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Communication",
@@ -647,7 +647,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Communication",
@@ -664,7 +664,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "File Sharing",
@@ -681,7 +681,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Imaging",
@@ -698,7 +698,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Drivers",
@@ -715,7 +715,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Drivers",
@@ -732,7 +732,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Drivers",
@@ -749,7 +749,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Drivers",
@@ -766,7 +766,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Drivers",
@@ -783,7 +783,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Drivers",
@@ -800,7 +800,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Drivers",
@@ -817,7 +817,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Drivers",
@@ -834,7 +834,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Drivers",
@@ -851,7 +851,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Drivers",
@@ -868,7 +868,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Drivers",
@@ -885,7 +885,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Drivers",
@@ -902,7 +902,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Drivers",
@@ -919,7 +919,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Drivers",
@@ -936,7 +936,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Drivers",
@@ -953,7 +953,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Drivers",
@@ -970,7 +970,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Drivers",
@@ -987,7 +987,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Drivers",
@@ -1004,7 +1004,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Drivers",
@@ -1021,7 +1021,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Drivers",
@@ -1038,7 +1038,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Launchers",
@@ -1055,7 +1055,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Launchers",
@@ -1072,7 +1072,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Launchers",
@@ -1089,7 +1089,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Launchers",
@@ -1106,7 +1106,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Launchers",
@@ -1123,7 +1123,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Launchers",
@@ -1140,7 +1140,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Launchers",
@@ -1157,7 +1157,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Launchers",
@@ -1174,7 +1174,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Launchers",
@@ -1191,7 +1191,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Launchers",
@@ -1208,7 +1208,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Drivers",
@@ -1225,7 +1225,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Drivers",
@@ -1242,7 +1242,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Drivers",
@@ -1259,7 +1259,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Drivers",
@@ -1276,7 +1276,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Drivers",
@@ -1293,7 +1293,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Drivers",
@@ -1310,7 +1310,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Drivers",
@@ -1327,7 +1327,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Drivers",
@@ -1344,7 +1344,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Drivers",
@@ -1361,7 +1361,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Utilities",
@@ -1378,7 +1378,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Utilities",
@@ -1395,7 +1395,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Utilities",
@@ -1412,7 +1412,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Utilities",
@@ -1429,7 +1429,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Utilities",
@@ -1446,7 +1446,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Utilities",
@@ -1463,7 +1463,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Utilities",
@@ -1481,7 +1481,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Utilities",
@@ -1498,7 +1498,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Utilities",
@@ -1516,7 +1516,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Utilities",
@@ -1533,7 +1533,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Utilities",
@@ -1550,7 +1550,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Utilities",
@@ -1567,7 +1567,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Utilities",
@@ -1584,7 +1584,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Utilities",
@@ -1601,7 +1601,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Utilities",
@@ -1618,7 +1618,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Utilities",
@@ -1636,7 +1636,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Development",
@@ -1653,7 +1653,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Utilities",
@@ -1670,7 +1670,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Utilities",
@@ -1687,7 +1687,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Utilities",
@@ -1704,7 +1704,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Utilities",
@@ -1721,7 +1721,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Utilities",
@@ -1738,7 +1738,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Utilities",
@@ -1755,7 +1755,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Utilities",
@@ -1773,7 +1773,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Utilities",
@@ -1790,7 +1790,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Utilities",
@@ -1807,7 +1807,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "File Sharing",
@@ -1824,7 +1824,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "File Sharing",
@@ -1841,7 +1841,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "File Sharing",
@@ -1858,7 +1858,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Utilities",
@@ -1875,7 +1875,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Utilities",
@@ -1892,7 +1892,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "File Sharing",
@@ -1910,7 +1910,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Imaging",
@@ -1927,7 +1927,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Development",
@@ -1944,7 +1944,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Development",
@@ -1961,7 +1961,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Development",
@@ -1978,7 +1978,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Development",
@@ -1995,7 +1995,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Development",
@@ -2012,7 +2012,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Development",
@@ -2029,7 +2029,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Development",
@@ -2046,7 +2046,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Development",
@@ -2063,7 +2063,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Development",
@@ -2080,7 +2080,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Development",
@@ -2097,7 +2097,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Development",
@@ -2114,7 +2114,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Development",
@@ -2131,7 +2131,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Development",
@@ -2148,7 +2148,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Development",
@@ -2165,7 +2165,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Development",
@@ -2182,7 +2182,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Development",
@@ -2199,7 +2199,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Development",
@@ -2216,7 +2216,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Development",
@@ -2233,7 +2233,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Development",
@@ -2250,7 +2250,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Development",
@@ -2267,7 +2267,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Development",
@@ -2284,7 +2284,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Development",
@@ -2301,7 +2301,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Development",
@@ -2318,7 +2318,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Development",
@@ -2335,7 +2335,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Development",
@@ -2352,7 +2352,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Development",
@@ -2369,7 +2369,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Development",
@@ -2386,7 +2386,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Development",
@@ -2403,7 +2403,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Development",
@@ -2420,7 +2420,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Development",
@@ -2437,7 +2437,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Development",
@@ -2454,7 +2454,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Development",
@@ -2471,7 +2471,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Development",
@@ -2488,7 +2488,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Development",
@@ -2505,7 +2505,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Development",
@@ -2522,7 +2522,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Development",
@@ -2539,7 +2539,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Development",
@@ -2556,7 +2556,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Security",
@@ -2573,7 +2573,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Security",
@@ -2590,7 +2590,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Security",
@@ -2606,7 +2606,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "choco": "avastfreeantivirus",
@@ -2624,7 +2624,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Development",
@@ -2641,7 +2641,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Development",
@@ -2658,7 +2658,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Media",
@@ -2675,7 +2675,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Media",
@@ -2692,7 +2692,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Media",
@@ -2709,7 +2709,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Utilities",
@@ -2726,7 +2726,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Development",
@@ -2743,7 +2743,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Development",
@@ -2760,7 +2760,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Development",
@@ -2777,7 +2777,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Media",
@@ -2794,7 +2794,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Media",
@@ -2811,7 +2811,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Development",
@@ -2828,7 +2828,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Utilities",
@@ -2845,7 +2845,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Development",
@@ -2862,7 +2862,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Communication",
@@ -2879,7 +2879,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Development",
@@ -2896,7 +2896,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Utilities",
@@ -2913,7 +2913,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Development",
@@ -2930,7 +2930,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Development",
@@ -2947,7 +2947,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Utilities",
@@ -2964,7 +2964,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Launchers",
@@ -2981,7 +2981,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Drivers",
@@ -2998,7 +2998,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Microsoft",
@@ -3015,7 +3015,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Imaging",
@@ -3032,7 +3032,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Media",
@@ -3049,7 +3049,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Utilities",
@@ -3066,7 +3066,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Utilities",
@@ -3083,7 +3083,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Utilities",
@@ -3100,7 +3100,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Development",
@@ -3117,7 +3117,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Communication",
@@ -3134,7 +3134,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Browsers",
@@ -3151,7 +3151,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Utilities",
@@ -3168,7 +3168,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Drivers",
@@ -3185,7 +3185,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Security",
@@ -3202,7 +3202,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Development",
@@ -3219,7 +3219,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Utilities",
@@ -3236,7 +3236,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "File Sharing",
@@ -3253,7 +3253,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Documents",
@@ -3270,7 +3270,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Security",
@@ -3287,7 +3287,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Utilities",
@@ -3304,7 +3304,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Utilities",
@@ -3321,7 +3321,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Utilities",
@@ -3338,7 +3338,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Utilities",
@@ -3355,7 +3355,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Utilities",
@@ -3372,7 +3372,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Development",
@@ -3389,7 +3389,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Drivers",
@@ -3406,7 +3406,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Development",
@@ -3423,7 +3423,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Development",
@@ -3440,7 +3440,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Imaging",
@@ -3457,7 +3457,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Utilities",
@@ -3474,7 +3474,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Development",
@@ -3491,7 +3491,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Development",
@@ -3508,7 +3508,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Development",
@@ -3525,7 +3525,7 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Development",
@@ -3542,10 +3542,27 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "ITT/Downloads"
       }
     ],
     "category": "Media",
+    "check": "false"
+  },
+  {
+    "name": "x360ce",
+    "description": "Xbox 360 Controller Emulator allows your controller (gamepad joystick, steering wheel, pedals, etc.) to function on your PC as an Xbox 360 controller. It allows you to remap buttons and axes and to drive cars with steering wheel and pedals or to fly planes with joystick and throttle in games",
+    "winget": "none",
+    "choco": "none",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "exe",
+        "url": "https://www.x360ce.com/files/x360ce.zip",
+        "exeArgs": "none",
+        "output": "ITT/Downloads"
+      }
+    ],
+    "category": "Utilities",
     "check": "false"
   }
 ]
@@ -4880,6 +4897,14 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                             <TabItem.Content>
                                 <ListView Margin="0" ScrollViewer.VerticalScrollBarVisibility="Auto" Name="list" BorderBrush="{x:Null}" Background="{x:Null}">
                                     
+        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+            <StackPanel Orientation="Horizontal">
+                <CheckBox Content="x360ce" Tag="Utilities" IsChecked="false" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content="Utilities"/>
+            </StackPanel>
+                <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Xbox 360 Controller Emulator allows your controller gamepad joystick steering wheel pedals etc to function on your PC as an Xbox 360 controller It allows you to remap buttons and axes and to drive cars with steering wheel and pedals or to fly planes with joystick and throttle in games"/>
+        </StackPanel>
+
         <StackPanel Orientation="Vertical" Width="auto" Margin="8">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Windows Media Player" Tag="Media" IsChecked="false" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
@@ -6717,7 +6742,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                     FontSize="15"
                     HorizontalAlignment="Right"
                     VerticalAlignment="Bottom"
-                    Width="100" Height="40" Margin="15"/>
+                    Width="130" Height="40" Margin="15"/>
                 <!--End applyBtn Button-->
 
 
@@ -6728,7 +6753,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                         FontSize="15"
                         HorizontalAlignment="Right"
                         VerticalAlignment="Bottom"
-                        Width="100" Height="40" Margin="15"/>
+                        Width="130" Height="40" Margin="15"/>
                 <!--End Install Button-->
             </Grid>
 
@@ -7146,7 +7171,7 @@ function Startup {
         Write-Host (WriteAText -color White -message  "You ready to Install anything.") 
     }
 
-    Send-SystemInfo -FirebaseUrl $sync.firebaseUrl -Key $env:COMPUTERNAME
+    #sSend-SystemInfo -FirebaseUrl $sync.firebaseUrl -Key $env:COMPUTERNAME
 
 
 }
@@ -7932,38 +7957,66 @@ https://t.me/emadadel4
                 if($result -eq "Yes")
                 {
 
-                    UpdateUI -InstallBtn "Installing..." -Description "Downloading and Installing..." 
+
 
                     $sync.ProcessRunning = $true
                     foreach ($app in $selectedApps) 
                     {
 
                         ClearTemp
-
                         SendApps -FirebaseUrl $sync.firebaseUrl -Key $env:COMPUTERNAME -list $app
-
+                        
                         if ($app.Winget -ne "none")
                         {
                             InstallWinget
+                            UpdateUI -InstallBtn "Installing..." -Description "Downloading and Installing..." 
                             Start-Process -FilePath "winget" -ArgumentList "install -e -h --accept-source-agreements --ignore-security-hash --accept-package-agreements --id $($app.Winget)" -NoNewWindow -Wait
                         }
 
 
                         if ($app.Choco -ne "none")
                         {
+                            UpdateUI -InstallBtn "Installing..." -Description "Downloading and Installing..." 
                             Start-Process -FilePath "choco" -ArgumentList "install $($app.Choco) --confirm --acceptlicense -q -r --ignore-http-cache --allowemptychecksumsecure --allowemptychecksum  --usepackagecodes --ignoredetectedreboot --ignore-checksums" -NoNewWindow -Wait 
                         }
 
                         if ($app.Default.url -ne "none")
                         {
+                            UpdateUI -InstallBtn "Downloading..." -Description "Downloading..." 
 
                             foreach ($app in $app.default) 
                             {
-
-                                if($app.IsExcute -eq "true")
+                                if($app.IsExcute -eq "exe")
                                 {
-                                    Write-Host $($app.url)
+                                    
+                                    $url = "$($app.url)"
 
+                                    # Directory where WinRAR file will be downloaded and extracted
+                                    $downloadDir = "$env:ProgramData\$($app.output)"
+
+                                    # Create the directories if they don't exist
+                                    if (-not (Test-Path -Path $downloadDir)) {
+                                        New-Item -ItemType Directory -Path $downloadDir | Out-Null
+                                    }
+
+                                    # File paths
+                                    $downloadPath = Join-Path -Path $downloadDir -ChildPath (Split-Path $url -Leaf)
+
+                                    # Download
+                                    Write-Host "Downloading..."
+                                    Invoke-WebRequest -Uri $url -OutFile $downloadPath
+
+                                    # Extract the WinRAR file
+                                    Write-Host "Extracting WinRAR..."
+                                    Expand-Archive -Path $downloadPath -DestinationPath $downloadDir -Force
+
+                                    Write-Host "Extracted successfully to $downloadDir"
+                                    Invoke-Item $downloadDir
+
+                                }
+
+                                if($app.IsExcute -eq "false")
+                                {
                                     $FileUri = "$($app.url)"
 
                                     $Destination = "$env:temp/setup.exe"
@@ -7986,9 +8039,7 @@ https://t.me/emadadel4
                                             
                                     Start-Process -Wait $Destination -ArgumentList $app.exeArgs
                                 }
-                               
                             }
-                            
                         }
                     }
                     
