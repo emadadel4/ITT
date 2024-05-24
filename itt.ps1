@@ -29,7 +29,7 @@ Add-Type -AssemblyName System.Windows.Forms
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "24-05-2024 (04:19 AM)"
+$sync.version = "24-05-2024 (05:10 AM)"
 $sync.github =   "https://github.com/emadadel4"
 $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://eprojects.orgfree.com"
@@ -4386,7 +4386,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
 
 <!--CheckBox Style-->
   <Style TargetType="CheckBox">
-      <Setter Property="Foreground" Value="{DynamicResource checkbox}"/>
+      <Setter Property="Foreground" Value="{DynamicResource DefaultTextColor}"/>
       <Setter Property="Margin" Value="0"/>
 
 
@@ -4395,12 +4395,12 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                     <ControlTemplate TargetType="CheckBox">
                         <StackPanel Orientation="Horizontal">
                             <!-- Default checkbox icon -->
-                            <Grid Width="13" Height="13" Margin="0,0,5,0">
-                                <Ellipse Width="13" Height="13" Fill="{TemplateBinding Background}" Stroke="{TemplateBinding BorderBrush}" StrokeThickness="1"/>
-                                <Path x:Name="CheckMark" Width="7" Height="7" SnapsToDevicePixels="False" Stroke="#FF333333" StrokeThickness="2" Data="M 0 3.5 L 7 3.5 M 3.5 0 L 3.5 7" Visibility="Collapsed"/>
+                            <Grid Width="18" Height="18" Margin="0,0,5,0">
+                                <Ellipse Width="18" Height="18" Fill="{TemplateBinding Background}" Stroke="{TemplateBinding BorderBrush}" StrokeThickness="1"/>
+                                <Path x:Name="CheckMark" Width="7" Height="7" SnapsToDevicePixels="False" Stroke="blue" StrokeThickness="2" Data="M 0 3.5 L 7 3.5 M 3.5 0 L 3.5 7" Visibility="Collapsed"/>
                             </Grid>
                             <!-- Content with background -->
-                            <Border CornerRadius="8" Background="{DynamicResource BGButtonColor}"
+                            <Border CornerRadius="8" Background="{DynamicResource checkboxBG}"
                                     BorderBrush="{TemplateBinding BorderBrush}"
                                     BorderThickness="{TemplateBinding BorderThickness}"
                                     Padding="5">
@@ -4410,14 +4410,22 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsChecked" Value="True">
                                 <Setter TargetName="CheckMark" Property="Visibility" Value="Visible"/>
+                                <Setter Property="Background" Value="{DynamicResource BGButtonColor}"/>
+                                <Setter TargetName="CheckMark" Property="Stroke" Value="white"/>
+                                <Setter Property="BorderBrush" Value="{DynamicResource highlight}"/>
                             </Trigger>
+                              <Trigger Property="IsChecked" Value="False">
+                                <Setter Property="Background" Value="white"/>
+                            </Trigger>
+                         <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="{DynamicResource highlight}"/>
+                            <Setter  Property="BorderBrush" Value="{DynamicResource highlight}"/>
+                            <Setter  Property="BorderThickness" Value="1.5"/>
+                        </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
-         
-        
-        
   </Style>
 <!--End CheckBox Style-->
 
@@ -4662,7 +4670,9 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                         <SolidColorBrush x:Key="DefaultTextColor" Color="Black"/>
                         <SolidColorBrush x:Key="BorderBrush" Color="LightBlue"/>
                         <SolidColorBrush x:Key="Label" Color="LightBlue"/>
-                        <SolidColorBrush x:Key="checkbox" Color="White"/>
+                        <SolidColorBrush x:Key="checkboxBG" Color="White"/>
+                        <SolidColorBrush x:Key="highlight" Color="blue"/>
+
                 </ResourceDictionary>
         <!--Light mode -->
 
@@ -4676,7 +4686,8 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                         <SolidColorBrush x:Key="DefaultTextColor" Color="White"/>
                         <SolidColorBrush x:Key="BorderBrush" Color="#1DB954" />
                         <SolidColorBrush x:Key="Label" Color="#3f3f3f"/>
-                        <SolidColorBrush x:Key="checkbox" Color="White"/>
+                        <SolidColorBrush x:Key="checkboxBG" Color="#1DB954"/>
+                        <SolidColorBrush x:Key="highlight" Color="#3cb043"/>
                 </ResourceDictionary>
         <!--Dark mode -->
 
@@ -6837,8 +6848,7 @@ try {
         Set-ItemProperty -Path "HKCU:\Software\ITTEmadadel" -Name "DarkMode" -Value "false" -Force 
     }
 
-    #$sync.isDarkMode = (Get-ItemProperty -Path "HKCU:\Software\ITTEmadadel" -Name "DarkMode").DarkMode
-
+    $sync.isDarkMode = (Get-ItemProperty -Path "HKCU:\Software\ITTEmadadel" -Name "DarkMode").DarkMode
     #$sync.Langusege  = (Get-ItemProperty -Path "HKCU:\Software\ITTEmadadel" -Name "lang").lang
 
     $currentCulture = [System.Globalization.CultureInfo]::CurrentCulture
