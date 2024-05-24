@@ -29,7 +29,7 @@ Add-Type -AssemblyName System.Windows.Forms
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "24-05-2024 (08:28 AM)"
+$sync.version = "24-05-2024 (08:34 AM)"
 $sync.github =   "https://github.com/emadadel4"
 $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://eprojects.orgfree.com"
@@ -3556,9 +3556,26 @@ $sync.database.Applications = '[
     "scoop": "none",
     "default": [
       {
-        "IsExcute": "exe",
+        "IsExcute": "rar",
         "url": "https://www.x360ce.com/files/x360ce.zip",
         "exeArgs": "none",
+        "output": "ITT/Downloads"
+      }
+    ],
+    "category": "Utilities",
+    "check": "false"
+  },
+  {
+    "name": "SelfishNetV3",
+    "description": "Control your internet bandwidth with SelfishNet v3.",
+    "winget": "none",
+    "choco": "none",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "rar",
+        "url": "https://github.com/nov0caina/SelfishNetV3/releases/download/SelfishNetV3.0.0/SelfishNetV3.0.0_Installer.zip",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "ITT/Downloads"
       }
     ],
@@ -4897,6 +4914,14 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                             <TabItem.Content>
                                 <ListView Margin="0" ScrollViewer.VerticalScrollBarVisibility="Auto" Name="list" BorderBrush="{x:Null}" Background="{x:Null}">
                                     
+        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+            <StackPanel Orientation="Horizontal">
+                <CheckBox Content="SelfishNetV3" Tag="Utilities" IsChecked="false" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content="Utilities"/>
+            </StackPanel>
+                <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Control your internet bandwidth with SelfishNet v3"/>
+        </StackPanel>
+
         <StackPanel Orientation="Vertical" Width="auto" Margin="8">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="x360ce" Tag="Utilities" IsChecked="false" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
@@ -7986,7 +8011,7 @@ https://t.me/emadadel4
 
                             foreach ($app in $app.default) 
                             {
-                                if($app.IsExcute -eq "exe")
+                                if($app.IsExcute -eq "rar")
                                 {
                                     
                                     $url = "$($app.url)"
@@ -8015,7 +8040,7 @@ https://t.me/emadadel4
 
                                 }
 
-                                if($app.IsExcute -eq "false")
+                                if($app.IsExcute -eq "exe")
                                 {
                                     $FileUri = "$($app.url)"
 
