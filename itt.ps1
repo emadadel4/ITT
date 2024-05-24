@@ -29,7 +29,7 @@ Add-Type -AssemblyName System.Windows.Forms
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "24-05-2024 (08:34 AM)"
+$sync.version = "24-05-2024 (08:53 AM)"
 $sync.github =   "https://github.com/emadadel4"
 $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://eprojects.orgfree.com"
@@ -1082,7 +1082,7 @@ $sync.database.Applications = '[
     "Name": "Rockstar Games Launcher",
     "Description": "Download and play the latest Rockstar Games PC titles",
     "winget": "none",
-    "choco": "steam",
+    "choco": "rockstar-launcher",
     "scoop": "none",
     "default": [
       {
