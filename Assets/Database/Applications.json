@@ -3512,5 +3512,22 @@
     ],
     "category": "Utilities",
     "check": "false"
+  },
+  {
+    "name": "espanso",
+    "description": "A crossplatform Text Expander written in Rust",
+    "winget": "none",
+    "choco": "espanso",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
+    "category": "Development",
+    "check": "false"
   }
 ]
