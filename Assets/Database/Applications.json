@@ -1013,7 +1013,7 @@
     "Name": "Rockstar Games Launcher",
     "Description": "Download and play the latest Rockstar Games PC titles",
     "winget": "none",
-    "choco": "steam",
+    "choco": "rockstar-launcher",
     "scoop": "none",
     "default": [
       {
