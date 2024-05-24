@@ -341,7 +341,7 @@ https://t.me/emadadel4
 
                             foreach ($app in $app.default) 
                             {
-                                if($app.IsExcute -eq "exe")
+                                if($app.IsExcute -eq "rar")
                                 {
                                     
                                     $url = "$($app.url)"
@@ -370,7 +370,7 @@ https://t.me/emadadel4
 
                                 }
 
-                                if($app.IsExcute -eq "false")
+                                if($app.IsExcute -eq "exe")
                                 {
                                     $FileUri = "$($app.url)"
 
