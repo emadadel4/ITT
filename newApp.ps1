@@ -45,6 +45,39 @@ $exeArgs = Read-Host "Enter Silent argmanet"
  
 $output = Read-Host "Enter save location"
 
+# Define category options
+$validCategories = @{
+
+    1 = "Browsers"
+    2 = "Media"
+    3 = "Documents"
+    4 = "Compression"
+    5 = "Communication"
+    6 = "Launchers"
+    7 = "Imaging"
+    8 = "Drivers"
+    9 = "Utilities"
+    10 = "File Sharing"
+    11 = "Development"
+    12 = "Microsoft"
+    13 = "Security"
+}
+
+# Prompt user to choose category
+do {
+    Write-Host "Which category this app will be?:"
+    foreach ($key in $validCategories.Keys | Sort-Object) {
+        Write-Host "$key - $($validCategories[$key])"
+    }
+    $choice = Read-Host "Enter the number corresponding to the category"
+    if ([int]$choice -in $validCategories.Keys) {
+        $category = $validCategories[[int]$choice]
+    } else {
+        Write-Host "Invalid choice. Please select a valid option."
+    }
+} until ([int]$choice -in $validCategories.Keys)
+
+
 
 # Define the data
 $data = @{
@@ -62,7 +95,7 @@ $data = @{
         }
     )
     "category" = $category
-    "check" = $check
+    "check" = "false"
 }
 
 # Convert to JSON string
@@ -82,7 +115,7 @@ $jsonString = @"
         }
     ],
     "category": "$($data["category"])",
-    "check": "$($data["check"])",
+    "check": "false"
 }
 "@
 
@@ -120,7 +153,6 @@ if($userInput -eq "API [Choco/Winget/Scoop] Recommend")
     $scoop = (Read-Host "Enter Scoop package name (default: none)").Trim()  # Remove leading and trailing spaces
     if ($scoop -eq "") { $scoop = "none" }  # Set default value if empty
 
-    $check = "false" # default value is false
     $output = "none" # default value is none
 
 
@@ -177,7 +209,7 @@ $data = @{
         }
     )
     "category" = $category
-    "check" = $check
+    "check" = "false"
 }
 
 # Convert to JSON string
@@ -198,7 +230,7 @@ $jsonString = @"
         }
     ],
     "category": "$($data["category"])",
-    "check": "$($data["check"])",
+    "check": "false",
 }
 "@
 
