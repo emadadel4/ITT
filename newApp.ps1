@@ -32,18 +32,18 @@ if($userInput -eq "Default [Native Downloader]")
 {
 
 $AppName = Read-Host "Enter App name"
-
 $description = Read-Host "Enter Tweak description"
 
-$category = Read-Host "Enter Category"
-
 $IsExcute = Read-Host "Enter file type [exe] or [Rar]"
+if ($IsExcute -eq "") { $IsExcute = "false" }  # Set default value if empty
 
 $url = Read-Host "Enter URL Downloading file [exe] or [rar]"
 
 $exeArgs = Read-Host "Enter Silent argmanet"
+if ($exeArgs -eq "") { $exeArgs = "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath" }  # Set default value if empty
  
 $output = Read-Host "Enter save location"
+if ($output -eq "") { $output = "ITT/Downloads" }  # Set default value if empty
 
 # Define category options
 $validCategories = @{
