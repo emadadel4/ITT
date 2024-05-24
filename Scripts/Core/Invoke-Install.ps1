@@ -339,11 +339,37 @@ https://t.me/emadadel4
 
                             foreach ($app in $app.default) 
                             {
-
-                                if($app.IsExcute -eq "true")
+                                if($app.IsExcute -eq "exe")
                                 {
-                                    Write-Host $($app.url)
+                                    
+                                    $url = "$($app.url)"
 
+                                    # Directory where WinRAR file will be downloaded and extracted
+                                    $downloadDir = "$env:ProgramData\ITT\Downloads"
+
+                                    # Create the directories if they don't exist
+                                    if (-not (Test-Path -Path $downloadDir)) {
+                                        New-Item -ItemType Directory -Path $downloadDir | Out-Null
+                                    }
+
+                                    # File paths
+                                    $downloadPath = Join-Path -Path $downloadDir -ChildPath (Split-Path $url -Leaf)
+
+                                    # Download
+                                    Write-Host "Downloading..."
+                                    Invoke-WebRequest -Uri $url -OutFile $downloadPath
+
+                                    # Extract the WinRAR file
+                                    Write-Host "Extracting WinRAR..."
+                                    Expand-Archive -Path $downloadPath -DestinationPath $downloadDir -Force
+
+                                    Write-Host "Extracted successfully to $downloadDir"
+                                    Invoke-Item $downloadDir
+
+                                }
+
+                                if($app.IsExcute -eq "false")
+                                {
                                     $FileUri = "$($app.url)"
 
                                     $Destination = "$env:temp/setup.exe"
@@ -366,9 +392,7 @@ https://t.me/emadadel4
                                             
                                     Start-Process -Wait $Destination -ArgumentList $app.exeArgs
                                 }
-                               
                             }
-                            
                         }
                     }
                     
