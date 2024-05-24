@@ -188,9 +188,10 @@ if($userInput -eq "API [Choco/Winget/Scoop] Recommend")
         }
     } until ([int]$choice -in $validCategories.Keys)
 
-    # Remove "choco install" from $choco if it exists
-    $choco = ($choco -replace "choco install", "" -replace ",,", ",").Trim()
-
+        # Remove "choco install" from $choco if it exists
+        $choco = ($choco -replace "choco install", "" -replace ",,", ",").Trim()
+        $winget = $winget.Split('--id=')[-1].Trim()
+        $winget = $winget.Replace("-e", "").Trim()
 
 
 # Define the data
