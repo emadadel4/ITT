@@ -29,7 +29,7 @@ Add-Type -AssemblyName System.Windows.Forms
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "24-05-2024 (02:59 ص)"
+$sync.version = "24-05-2024 (04:14 AM)"
 $sync.github =   "https://github.com/emadadel4"
 $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://eprojects.orgfree.com"
@@ -8520,18 +8520,19 @@ function GetCulture {
     #     return
     # } 
 
-    switch ($shortCulture) {
-        "en" {
-            $sync["window"].DataContext = $sync.database.locales.en
-        }
-        "ar" {
-            $sync["window"].DataContext = $sync.database.locales.ar
-        }
-        default {
-            # Default language
-            $sync["window"].DataContext = $sync.database.locales.en
-            #Write-Host "fallback to default lang"
-        }
+    if($shortCulture -eq "en")
+    {
+        $sync["window"].DataContext = $sync.database.locales.en
+
+    }
+    elseif ($shortCulture -eq "ar") {
+        $sync["window"].DataContext = $sync.database.locales.ar
+    }
+    else
+    {
+        # default lang
+        $sync["window"].DataContext = $sync.database.locales.en
+        #Write-Host "fallback to default lang"
     }
 
 }
