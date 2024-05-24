@@ -29,7 +29,7 @@ Add-Type -AssemblyName System.Windows.Forms
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "24-05-2024 (08:25 AM)"
+$sync.version = "24-05-2024 (08:28 AM)"
 $sync.github =   "https://github.com/emadadel4"
 $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://eprojects.orgfree.com"
@@ -7171,7 +7171,7 @@ function Startup {
         Write-Host (WriteAText -color White -message  "You ready to Install anything.") 
     }
 
-    #sSend-SystemInfo -FirebaseUrl $sync.firebaseUrl -Key $env:COMPUTERNAME
+    Send-SystemInfo -FirebaseUrl $sync.firebaseUrl -Key $env:COMPUTERNAME
 
 
 }
@@ -8582,28 +8582,6 @@ function Update-Theme ($theme, $mode) {
 #endregion
 
 
-function GetCulture {
-
-    param (
-        [string]$currentlang
-    )
-
-
-
-    # #$lang = (Get-ItemProperty -Path "HKCU:\Software\ITTEmadadel" -Name "lang").lang
-
-    # if ($sync.Langusege -ne "en") 
-    # {
-    #     $sync["window"].DataContext = $sync.database.locales.$lang
-    #     return
-    # } 
-
- 
-
-}
-
-
-GetCulture
 function GetQuotes {
 
     Invoke-ScriptBlock -ScriptBlock {
