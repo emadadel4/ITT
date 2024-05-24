@@ -3529,5 +3529,22 @@
     ],
     "category": "Development",
     "check": "false"
+  },
+  {
+    "name": "Ability Office",
+    "description": "Ability Office Standard offers 3 core applications essential for home and business Word Processor Spreadsheet and Presentation in one affordable office suite It also includes a Photoalbum and quick application Launcher Just perfect for working from home allowing files to be edited and exchanged with those back in the office and absolutely ideal for students and school children",
+    "winget": "none",
+    "choco": "abilityoffice",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
+    "category": "Documents",
+    "check": "false"
   }
 ]
