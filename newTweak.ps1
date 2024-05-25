@@ -62,13 +62,9 @@ do {
 } until ([int]$choice -in $validTypes.Keys)
 
 
-$Path = Read-Host "Enter Reg Path, Example: HKLM:\SOFTWARE\Policies\Microsoft\Windows\OneDrive"
+$Path = Read-Host "Enter Registry, Example: HKLM:\SOFTWARE\Policies\Microsoft\Windows\OneDrive"
 $Path = $Path -replace '\\', '\\'
-
 $Name = Read-Host "Enter Reg Name"
-
-#$Type = Read-Host "Enter Reg Type [DWord] or [Qword] or [Binary] or [SZ]"
-
 
 $KeyType = @{
 
@@ -76,6 +72,11 @@ $KeyType = @{
     2 = "Qword"
     3 = "Binary"
     4 = "SZ"
+    5 = "EXPAND_SZ"
+    6 = "LINK"
+    7 = "MULTI_SZ"
+    8 = "NONE"
+    9 = "QWORD_LITTLE_ENDIAN"
 }
 
 # Prompt user to choose KeyType
@@ -93,11 +94,10 @@ do {
 } until ([int]$choice -in $KeyType.Keys)
 
 
-$Value = Read-Host "Enter Reg Value"
+$Value = Read-Host "Enter Registry value"
 
-$defaultValue = Read-Host "Enter Reg defaultValue"
+$defaultValue = Read-Host "Enter Registry default Value"
 if ($defaultValue -eq "") { $defaultValue = "1" }  # Set default value 1
-
 
 # Define the data
 $data = @{
