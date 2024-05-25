@@ -94,6 +94,7 @@ $data = @{
     "description" = $description
     "check" = "false"
     "type" = "AppxPackage"
+    "refresh" = "false"
     "$userInput" = @(
         $Names | ForEach-Object {
             @{
@@ -115,6 +116,7 @@ $jsonString = @"
     "description": "$($data["description"])",
     "check": "$($data["check"])",
     "type": "$($data["type"])",
+    "refresh": "$($data["refresh"])",
     "$userInput": $($data["$userInput"] | ConvertTo-Json -Depth 100)
 }
 "@
@@ -166,6 +168,7 @@ $data = @{
     "description" = $description
     "check" = "false"
     "type" = "AppxPackage"
+    "refresh" = "false"
     "$userInput" = @(
         $Names | ForEach-Object {
             @{
@@ -182,6 +185,7 @@ $jsonString = @"
     "description": "$($data["description"])",
     "check": "$($data["check"])",
     "type": "$($data["type"])",
+    "refresh": "$($data["refresh"])",
     "$userInput": $($data["$userInput"] | ConvertTo-Json -Depth 100)
 }
 "@
@@ -227,6 +231,7 @@ $data = @{
     "description" = $description
     "check" = "false"
     "type" = "command"
+    "refresh" = "false"
     "$userInput" = @(
         @{
             "run" = $cmd
@@ -242,6 +247,7 @@ $jsonString = @"
     "description": "$($data["description"])",
     "check": "$($data["check"])",
     "type": "$($data["type"])",
+    "refresh": "$($data["refresh"])",
     "$userInput": [
         {
             "run": "$($data["$userInput"][0]["run"])",
@@ -303,6 +309,7 @@ $data = [Ordered]@{
     "description" = $description
     "check" = "false"
     "type" = "service"
+    "refresh" = "false"
     "$userInput" = @(
         $Names | ForEach-Object {
             [Ordered]@{
@@ -321,6 +328,7 @@ $jsonString = @"
     "description": "$($data["description"])",
     "check": "$($data["check"])",
     "type": "$($data["type"])",
+    "refresh": "$($data["refresh"])",
     "$userInput": $($data["$userInput"] | ConvertTo-Json -Depth 100)
 }
 "@
