@@ -7629,36 +7629,50 @@ CheckChoco
 
 
 function Get-SelectedTweaks {
-    
-    $selectedItems = @()
 
-    $sync.TweaksListView.Items |
-        Where-Object { $_ -is [System.Windows.Controls.StackPanel] } |
-        ForEach-Object {
-            $_.Children |
-                Where-Object { $_ -is [System.Windows.Controls.StackPanel] } |
-                ForEach-Object {
-                    $_.Children |
-                        Where-Object { $_ -is [System.Windows.Controls.CheckBox] -and $_.IsChecked } |
-                        ForEach-Object { $checkBox = $_
-                            $program = $sync.database.Tweaks | Where-Object { $_.Name -eq $checkBox.Content }
-                            if ($program) {
-                                $selectedItems += [PSCustomObject]@{
-                                    Name = $program.Name
-                                    Type = $program.Type
-                                    Registry = $program.Registry
-                                    Service = $program.Service
-                                    RemoveAppxPackage = $program.RemoveAppxPackage
-                                    Commands = $program.Commands
-                                    Refresh = $program.Refresh
-                                    # Add more fields here if needed
-                                }
+    $items = @()
+
+    foreach ($item in $sync.TweaksListView.Items)
+    {
+        if ($item -is [System.Windows.Controls.StackPanel]) {
+
+            foreach ($child in $item.Children) {
+                if ($child -is [System.Windows.Controls.StackPanel]) {
+                    foreach ($innerChild in $child.Children) {
+                        if ($innerChild -is [System.Windows.Controls.CheckBox]) {
+
+                            if($innerChild.IsChecked)
+                            {
+                                    foreach ($program in $sync.database.Tweaks)
+                                    {
+                                        if($innerChild.content -eq $program.Name)
+                                        {
+                                            $items += @{
+
+                                                Name = $program.Name
+                                                Type = $program.Type
+                                                Registry = $program.Registry
+                                                Service = $program.Service
+                                                RemoveAppxPackage = $program.RemoveAppxPackage
+                                                Commands = $program.Commands
+                                                Refresh = $program.Refresh
+
+                                                # add a new method tweak here
+                                            }
+
+                                        }
+                                    }
                             }
-                        }
-                }
-        }
 
-    return $selectedItems
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    return $items 
+   
 }
 
 
