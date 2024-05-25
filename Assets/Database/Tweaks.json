@@ -635,5 +635,20 @@
         "defaultValue": "0"
       }
     ]
+  },
+  {
+    "name": "1",
+    "description": "1",
+    "check": "false",
+    "type": "delete",
+    "Registry": [
+      {
+        "Path": "2",
+        "Name": "2",
+        "Type": "SZ",
+        "Value": "2",
+        "defaultValue": "2"
+      }
+    ]
   }
 ]
