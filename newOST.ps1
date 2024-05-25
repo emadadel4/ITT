@@ -10,7 +10,7 @@ try {
     # store input
     $track = $newOST
 
-    # Add new software object to existing array
+    # Add new object to existing array
     $existingData.Tracks += $track
 
     # Write updated JSON to file
