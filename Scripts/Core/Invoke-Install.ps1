@@ -68,6 +68,10 @@ function ShowSelectedItems {
 function Invoke-Install
 {
     
+    $sync['window'].Dispatcher.Invoke([Action]{
+        $sync.installBtn.IsEnabled = $false
+    })
+
     if($sync.ProcessRunning)
     {
         $msg = "Please wait there is a process in the background."
@@ -404,6 +408,11 @@ https://t.me/emadadel4
                 }
                 else
                 {
+                    $sync['window'].Dispatcher.Invoke([Action]{
+                        $sync.installBtn.IsEnabled = $true
+                    })
+                
+
                     # Uncheck all checkboxes in $list
                     $sync.AppsListView.Dispatcher.Invoke([Action]{
                         foreach ($item in $sync.AppsListView.Items)
@@ -434,5 +443,9 @@ https://t.me/emadadel4
     else
     {
         [System.Windows.MessageBox]::Show("Choose at least one program", "ITT | Emad Adel", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
+
+        $sync['window'].Dispatcher.Invoke([Action]{
+            $sync.installBtn.IsEnabled = $true
+        })
     }
 }
