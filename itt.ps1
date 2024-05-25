@@ -29,7 +29,7 @@ Add-Type -AssemblyName System.Windows.Forms
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "25-05-2024"
+$sync.version = "26-05-2024"
 $sync.github =   "https://github.com/emadadel4"
 $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://eprojects.orgfree.com"
@@ -3928,6 +3928,7 @@ $sync.database.Tweaks = '[
     "command": "sfc /scannow;",
     "check": "false",
     "type": "script",
+    "refresh": "false",
     "Commands": [
       {
         "run": "sfc /scannow;",
@@ -3940,6 +3941,7 @@ $sync.database.Tweaks = '[
     "description": "Clean temporary files that are not necessary",
     "check": "false",
     "type": "command",
+    "refresh": "false",
     "Commands": [
       {
         "run": "cleanmgr.exe /d C: /VERYLOWDISK /sagerun:1 Dism.exe /online /Cleanup-Image /StartComponentCleanup /ResetBase;",
@@ -3952,6 +3954,7 @@ $sync.database.Tweaks = '[
     "description": "If you face a problem with some system services, you can restore all services to Default.",
     "check": "false",
     "type": "command",
+    "refresh": "false",
     "Commands": [
       {
         "run": "Invoke-RestMethod https://raw.githubusercontent.com/emadadel4/WindowsTweaks/main/restore.bat | Invoke-Expression;",
@@ -3964,6 +3967,7 @@ $sync.database.Tweaks = '[
     "description": "Fix Stutter in Games (Disable GameBarPresenceWriter). Windows 10/11",
     "check": "false",
     "type": "command",
+    "refresh": "false",
     "Commands": [
       {
         "run": "Invoke-RestMethod https://raw.githubusercontent.com/emadadel4/Fix-Stutter-in-Games/main/fix.ps1 | Invoke-Expression;",
@@ -3976,6 +3980,7 @@ $sync.database.Tweaks = '[
     "description": "Enable the Ultimate Performance Power Plan",
     "check": "false",
     "type": "command",
+    "refresh": "false",
     "Commands": [
       {
         "run": "powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61; Start-Process powercfg.cpl;",
@@ -3988,6 +3993,7 @@ $sync.database.Tweaks = '[
     "description": "If you have an internet problem, Reset network configuration",
     "check": "false",
     "type": "command",
+    "refresh": "false",
     "Commands": [
       {
         "run": "netsh int ip reset;",
@@ -4000,6 +4006,7 @@ $sync.database.Tweaks = '[
     "description": "Setup auto login Windows username",
     "check": "false",
     "type": "command",
+    "refresh": "false",
     "Commands": [
       {
         "run": "curl.exe -ss \"https://live.sysinternals.com/Autologon.exe\" -o $env:temp\\autologin.exe ; cmd /c $env:temp\\autologin.exe /accepteula;",
@@ -4012,6 +4019,7 @@ $sync.database.Tweaks = '[
     "description": "This tweak disables Game Mode",
     "check": "false",
     "type": "modifying",
+    "refresh": "false",
     "Registry": [
       {
         "Path": "HKCU:\\SOFTWARE\\Microsoft\\GameBar",
@@ -4090,6 +4098,7 @@ $sync.database.Tweaks = '[
     "description": "Disable Data Collection",
     "check": "false",
     "type": "modifying",
+    "refresh": "false",
     "Registry": [
       {
         "Path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\DataCollection",
@@ -4105,6 +4114,7 @@ $sync.database.Tweaks = '[
     "description": "Disable Start menu Ads and Settings",
     "check": "false",
     "type": "modifying",
+    "refresh": "true",
     "Registry": [
       {
         "Path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\AdvertisingInfo",
@@ -4141,6 +4151,7 @@ $sync.database.Tweaks = '[
     "description": "Disable web search in Windows by modifying the registry settings related to Windows Search. It sets the BingSearchEnabled value to 0, effectively turning off web search results",
     "check": "false",
     "type": "modifying",
+    "refresh": "false",
     "Registry": [
       {
         "Path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Search",
@@ -4156,6 +4167,7 @@ $sync.database.Tweaks = '[
     "description": "Turn off background apps",
     "check": "false",
     "type": "modifying",
+    "refresh": "false",
     "Registry": [
       {
         "Path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\BackgroundAccessApplications",
@@ -4171,6 +4183,7 @@ $sync.database.Tweaks = '[
     "description": "Disables suggestions on start menu",
     "check": "false",
     "type": "modifying",
+    "refresh": "false",
     "Registry": [
       {
         "Path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\CloudContent",
@@ -4186,6 +4199,7 @@ $sync.database.Tweaks = '[
     "description": "Disable the (News and interests) and (People icon) Show Search icon only",
     "check": "false",
     "type": "modifying",
+    "refresh": "true",
     "Registry": [
       {
         "Path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Feeds",
@@ -4229,6 +4243,7 @@ $sync.database.Tweaks = '[
     "description": "Remove Documents, Videos, Pictures, Desktop. Shortcuts from File Explorer",
     "check": "false",
     "type": "delete",
+    "refresh": "false",
     "Registry": [
       {
         "Path": "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\MyComputer\\NameSpace\\",
@@ -4293,6 +4308,7 @@ $sync.database.Tweaks = '[
     "description": "Disable (Print Spooler), (Fax), (Diagnostic Policy), (Downloaded Maps Manager), (Windows Error Reporting Service), (Remote Registry) , (Internet Connection Sharing), (Disables Telemetry and Data) ",
     "check": "false",
     "type": "service",
+    "refresh": "false",
     "Service": [
       {
         "Name": "Spooler",
@@ -4346,6 +4362,7 @@ $sync.database.Tweaks = '[
     "description": "BingNews, GetHelp, Getstarted, Messaging, Microsoft3DViewer, MicrosoftOfficeHub, MicrosoftSolitaireCollection, News, Office.Lens, Office.OneNote, Office.Sway, OneConnect, People, Print3D, RemoteDesktop, SkypeApp, StorePurchaseApp, Office.Todo.List, Whiteboard, WindowsAlarms, WindowsCamera, windowscommunicationsapps, WindowsFeedbackHub, WindowsMaps, WindowsSoundRecorder, Xbox.TCUI, XboxApp, XboxGameOverlay, XboxIdentityProvider, XboxSpeechToTextOverlay, ZuneMusic, ZuneVideo, Windows.Cortana, MSPaint",
     "check": "false",
     "type": "AppxPackage",
+    "refresh": "false",
     "RemoveAppxPackage": [
       {
         "Name": "Microsoft.BingNews"
@@ -4513,6 +4530,7 @@ $sync.database.Tweaks = '[
     "description": "Hibernate is a power-saving mode in Microsoft Windows operating systems that allows the system to save the current state of your computer to the hard disk and then power down completely.",
     "check": "false",
     "type": "command",
+    "refresh": "false",
     "Commands": [
       {
         "run": "powercfg.exe /hibernate off",
@@ -4525,6 +4543,7 @@ $sync.database.Tweaks = '[
     "description": "Disabling OneDrive",
     "check": "false",
     "type": "modifying",
+    "refresh": "false",
     "Registry": [
       {
         "Path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\OneDrive",
@@ -4540,6 +4559,7 @@ $sync.database.Tweaks = '[
     "description": "This tweak enables the classic Windows Photo Viewer on Windows 10.",
     "check": "false",
     "type": "modifying",
+    "refresh": "false",
     "Registry": [
       {
         "Path": "HKLM:\\SOFTWARE\\Microsoft\\Windows Photo Viewer\\Capabilities\\FileAssociations",
@@ -7604,6 +7624,7 @@ function Get-SelectedTweaks
                                                 service = $program.Service
                                                 removeAppxPackage = $program.RemoveAppxPackage
                                                 Commands = $program.Commands
+                                                Refresh = $program.refresh
                                                 # if you want to implement a new thing from JSON applications do it here.
                                             }
 
@@ -7889,9 +7910,17 @@ Write-Host "
                                     }
                                 }
                                 "modifying" {
+
                                     foreach ($mod in $app.registry) {
                                         Set-RegistryValue -Name $mod.Name -Type $mod.Type -Path $mod.Path -Value $mod.Value
                                     }
+
+                                    if($app.Refresh -eq "true")
+                                    {
+                                        Write-Host "Restart exploror"
+                                        Stop-Process -Name explorer -Force; Start-Process explorer
+                                    }
+
                                 }
                                 "delete" {
                                     foreach ($re in $app.registry) {
