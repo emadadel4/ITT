@@ -26,7 +26,9 @@ do {
 # Read User Input.
 $userInput
 
-
+#===========================================================================
+#region Native Downloader 
+#===========================================================================
 
 if($userInput -eq "Default [Native Downloader]")
 {
@@ -133,7 +135,13 @@ $updatedJson | Out-File -FilePath "./Assets/Database/Applications.json" -Encodin
 
 Write-Host "Added successfully, Don't forget to build and test it before commit" -ForegroundColor Green 
 }
+#===========================================================================
+#endregion Native Downloader 
+#===========================================================================
 
+#===========================================================================
+#region API 
+#===========================================================================
 if($userInput -eq "API [Choco/Winget/Scoop] Recommend")
 {
 
@@ -250,3 +258,6 @@ $updatedJson | Out-File -FilePath "./Assets/Database/Applications.json" -Encodin
 Write-Host "Added successfully, Don't forget to build and test it before commit" -ForegroundColor Green 
     
 }
+#===========================================================================
+#endregion API 
+#===========================================================================
