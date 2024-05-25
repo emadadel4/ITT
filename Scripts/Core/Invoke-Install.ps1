@@ -25,6 +25,8 @@ function Get-SelectedApps
                                                 Scoop = $program.Scoop
                                                 Winget = $program.winget
                                                 Default = $program.default
+
+                                                # add a new method downloader here
                                             }
 
                                         }
@@ -81,7 +83,7 @@ function Invoke-Install
     
     if($sync.ProcessRunning)
     {
-        $msg = "Please wait for the software to be installed."
+        $msg = "Please wait there is a process in the background."
         [System.Windows.MessageBox]::Show($msg, "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
         return
     }
