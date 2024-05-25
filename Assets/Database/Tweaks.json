@@ -259,8 +259,8 @@
     ]
   },
   {
-    "name": "Disable the News and interests on taskbar",
-    "description": "Disables the News and interests",
+    "name": "Clean Taskbar Windows 10",
+    "description": "Disable the (News and interests) and (People icon) Show Search icon only",
     "check": "false",
     "type": "modifying",
     "Registry": [
@@ -270,36 +270,34 @@
         "Type": "DWord",
         "Value": "2",
         "defaultValue": "0"
-      }
-    ]
-  },
-  {
-    "name": "Show Search icon Only on taskbar",
-    "description": "Show Search Icon Only",
-    "check": "false",
-    "type": "modifying",
-    "Registry": [
+      },
       {
         "Path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Search",
         "Name": "SearchboxTaskbarMode",
         "Type": "DWord",
         "Value": "1",
         "defaultValue": "2"
-      }
-    ]
-  },
-  {
-    "name": "Disable People icon on taskbar",
-    "description": "Disables People on taskbar",
-    "check": "false",
-    "type": "modifying",
-    "Registry": [
+      },
       {
         "Path": "HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\\People",
         "Name": "PeopleBand",
         "Type": "DWord",
         "Value": "0",
         "defaultValue": "1"
+      },
+      {
+        "Path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer",
+        "Name": "HideSCAMeetNow",
+        "Type": "DWord",
+        "Value": "1",
+        "defaultValue": "0"
+      },
+      {
+        "Path": "HKLM:\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer",
+        "Name": "HideSCAMeetNow",
+        "Type": "DWord",
+        "Value": "1",
+        "defaultValue": "0"
       }
     ]
   },
@@ -608,28 +606,6 @@
       {
         "Path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\OneDrive",
         "Name": "DisableFileSyncNGSC",
-        "Type": "DWord",
-        "Value": "1",
-        "defaultValue": "0"
-      }
-    ]
-  },
-  {
-    "name": "Remove Meet Now icon on Taskbar Windows 10",
-    "description": "Earlier this year Microsoft introduced Meet Now in Skype. Meet Now makes it easy to connect with anyone in as little as two clicks for free and each call can last up to 24 hours.",
-    "check": "false",
-    "type": "modifying",
-    "Registry": [
-      {
-        "Path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer",
-        "Name": "HideSCAMeetNow",
-        "Type": "DWord",
-        "Value": "1",
-        "defaultValue": "0"
-      },
-      {
-        "Path": "HKLM:\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer",
-        "Name": "HideSCAMeetNow",
         "Type": "DWord",
         "Value": "1",
         "defaultValue": "0"
