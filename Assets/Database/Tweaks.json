@@ -161,6 +161,14 @@
         "Value": "0",
         "defaultValue": "1",
         "refresh": ""
+      },
+      {
+        "Path": "HKLM:\\System\\CurrentControlSet\\Services\\xbgm",
+        "Name": "Start",
+        "Type": "DWord",
+        "Value": "4",
+        "defaultValue": "0",
+        "refresh": ""
       }
     ]
   },
@@ -232,7 +240,7 @@
         "Type": "DWord",
         "Value": "0",
         "defaultValue": "1",
-        "refresh": ""
+        "refresh": "Stop-Process -Name explorer -Force; Start-Process explorer"
       }
     ]
   },
