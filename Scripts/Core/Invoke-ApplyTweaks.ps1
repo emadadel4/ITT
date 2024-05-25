@@ -345,7 +345,10 @@ Write-Host "
                             }
                         }
 
-                        Start-Process -FilePath "powershell.exe" -ArgumentList "-Command `" $($tweaks.registry.refresh) `"" -NoNewWindow -Wait
+
+                        # restart explorer
+                        Stop-Process -Name explorer -Force; Start-Process explorer
+
                         $sync.ProcessRunning = $False
                         CustomMsg -title "ITT | Emad Adel" -msg "Done" -MessageBoxImage "Information" -MessageBoxButton "OK"
                         Start-Sleep -Seconds 1
