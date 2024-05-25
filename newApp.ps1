@@ -11,7 +11,7 @@ $validCategories = @{
 
 # Prompt user to choose mothed
 do {
-    Write-Host "Which Way to download this app will be?:"
+    Write-Host "Which method to download this app will be?:"
     foreach ($key in $validCategories.Keys | Sort-Object) {
         Write-Host "$key - $($validCategories[$key])"
     }
