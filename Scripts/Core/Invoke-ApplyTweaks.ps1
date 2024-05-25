@@ -120,7 +120,7 @@ function Invoke-ApplyTweaks
                         } else {
 
                             Set-ItemProperty -Path $Path -Name $Name -Type $Type -Value $Value -Force -ErrorAction Stop
-                            Write-Host "$($Name) disabled" -ForegroundColor Yellow
+                            Write-Host "$($Name) Successful applied" -ForegroundColor Yellow
                             Write-Output "Registry path already exists."
                         }
 
