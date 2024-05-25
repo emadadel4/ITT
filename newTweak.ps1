@@ -41,13 +41,57 @@ $TweakName = Read-Host "Enter Tweak Name"
 
 $description = Read-Host "Enter Tweak description"
 
-$Path = Read-Host "Enter Reg Path"
+ $validTypes = @{
 
+    1 = "delete"
+    2 = "modifying"
+}
+
+# Prompt user to choose category
+do {
+    Write-Host "This will do?"
+    foreach ($key in $validTypes.Keys | Sort-Object) {
+        Write-Host "$key - $($validTypes[$key])"
+    }
+    $choice = Read-Host "Enter the number corresponding to the type"
+    if ([int]$choice -in $validTypes.Keys) {
+        $RegistryType = $validTypes[[int]$choice]
+    } else {
+        Write-Host "Invalid choice. Please select a valid option."
+    }
+} until ([int]$choice -in $validTypes.Keys)
+
+
+$Path = Read-Host "Enter Reg Path, Example: HKLM:\SOFTWARE\Policies\Microsoft\Windows\OneDrive"
 $Path = $Path -replace '\\', '\\'
 
 $Name = Read-Host "Enter Reg Name"
 
-$Type = Read-Host "Enter Reg Type [DWord] or [Qword] or [Binary] or [SZ]"
+#$Type = Read-Host "Enter Reg Type [DWord] or [Qword] or [Binary] or [SZ]"
+
+
+$KeyType = @{
+
+    1 = "DWord"
+    2 = "Qword"
+    3 = "Binary"
+    4 = "SZ"
+}
+
+# Prompt user to choose KeyType
+do {
+    Write-Host "What is the Key type"
+    foreach ($key in $KeyType.Keys | Sort-Object) {
+        Write-Host "$key - $($KeyType[$key])"
+    }
+    $choice = Read-Host "Enter the number corresponding to the Key Type"
+    if ([int]$choice -in $validType.Keys) {
+        $Type = $KeyType[[int]$choice]
+    } else {
+        Write-Host "Invalid choice. Please select a valid option."
+    }
+} until ([int]$choice -in $KeyType.Keys)
+
 
 $Value = Read-Host "Enter Reg Value"
 
@@ -60,7 +104,7 @@ $data = @{
     "name" = $TweakName
     "description" = $description
     "check" = "false"
-    "type" = "modifying"
+    "type" = $RegistryType
     "$userInput" = @(
         @{
             "Path" = $Path
