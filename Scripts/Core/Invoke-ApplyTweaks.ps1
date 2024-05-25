@@ -25,6 +25,7 @@ function Get-SelectedTweaks
                                                 service = $program.Service
                                                 removeAppxPackage = $program.RemoveAppxPackage
                                                 Commands = $program.Commands
+                                                Refresh = $program.refresh
                                                 # if you want to implement a new thing from JSON applications do it here.
                                             }
 
@@ -310,9 +311,17 @@ Write-Host "
                                     }
                                 }
                                 "modifying" {
+
                                     foreach ($mod in $app.registry) {
                                         Set-RegistryValue -Name $mod.Name -Type $mod.Type -Path $mod.Path -Value $mod.Value
                                     }
+
+                                    if($app.Refresh -eq "true")
+                                    {
+                                        Write-Host "Restart exploror"
+                                        Stop-Process -Name explorer -Force; Start-Process explorer
+                                    }
+
                                 }
                                 "delete" {
                                     foreach ($re in $app.registry) {
