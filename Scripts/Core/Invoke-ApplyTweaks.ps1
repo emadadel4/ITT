@@ -120,7 +120,7 @@ function Invoke-ApplyTweaks
                         } else {
 
                             Set-ItemProperty -Path $Path -Name $Name -Type $Type -Value $Value -Force -ErrorAction Stop
-                            Write-Host "$($Path) disabled" -ForegroundColor Yellow
+                            Write-Host "$($Name) disabled" -ForegroundColor Yellow
                             Write-Output "Registry path already exists."
                         }
 
@@ -308,7 +308,7 @@ Write-Host "
                                     Set-Registry -Name $mod.Name -Type $mod.Type -Path $($mod.Path) -Value $mod.Value
 
                                     # debug
-                                    Write-Host Set-Registry -Name $mod.Name -Type $mod.Type -Path "$($mod.Path)" -Value $mod.Value
+                                    #Write-Host Set-Registry -Name $mod.Name -Type $mod.Type -Path "$($mod.Path)" -Value $mod.Value
                                     #Start-Process -FilePath "powershell.exe" -ArgumentList "-Command `" $($mod.refresh) `"" -NoNewWindow -Wait
                                 }
                             }
@@ -345,9 +345,9 @@ Write-Host "
                             }
                         }
 
+                        Start-Process -FilePath "powershell.exe" -ArgumentList "-Command `" $($tweaks.registry.refresh) `"" -NoNewWindow -Wait
                         $sync.ProcessRunning = $False
                         CustomMsg -title "ITT | Emad Adel" -msg "Done" -MessageBoxImage "Information" -MessageBoxButton "OK"
-
                         Start-Sleep -Seconds 1
                         Finish
 
