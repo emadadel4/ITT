@@ -85,13 +85,13 @@
     ]
   },
   {
-    "name": "Disable Game Mode",
+    "name": "Disable  Xbox Services",
     "description": "This tweak disables Game Mode",
     "check": "false",
     "type": "modifying",
     "Registry": [
       {
-        "Path": "HKCU:\\SOFTWARE\\Microsoft\\GameBar\\",
+        "Path": "HKCU:\\SOFTWARE\\Microsoft\\GameBar",
         "Name": "AutoGameModeEnabled",
         "Type": "DWord",
         "Value": "0",
@@ -99,8 +99,64 @@
         "refresh": ""
       },
       {
-        "Path": "HKCU:\\SOFTWARE\\Microsoft\\GameBar\\",
+        "Path": "HKCU:\\SOFTWARE\\Microsoft\\GameBar",
         "Name": "AllowAutoGameMode",
+        "Type": "DWord",
+        "Value": "0",
+        "defaultValue": "1",
+        "refresh": ""
+      },
+      {
+        "Path": "HKCU:\\SOFTWARE\\Microsoft\\GameBar",
+        "Name": "ShowStartupPanel",
+        "Type": "DWord",
+        "Value": "0",
+        "defaultValue": "1",
+        "refresh": ""
+      },
+      {
+        "Path": "HKCU:\\System\\GameConfigStore",
+        "Name": "GameDVR_Enabled",
+        "Type": "DWord",
+        "Value": "0",
+        "defaultValue": "1",
+        "refresh": ""
+      },
+      {
+        "Path": "HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\GameBar",
+        "Name": "AppCaptureEnabled",
+        "Type": "DWord",
+        "Value": "0",
+        "defaultValue": "1",
+        "refresh": ""
+      },
+      {
+        "Path": "HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\GameBar",
+        "Name": "UseNexusForGameBarEnabled",
+        "Type": "DWord",
+        "Value": "0",
+        "defaultValue": "1",
+        "refresh": ""
+      },
+      {
+        "Path": "HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\GameBar",
+        "Name": "AudioCaptureEnabled",
+        "Type": "DWord",
+        "Value": "0",
+        "defaultValue": "1",
+        "refresh": ""
+      },
+      {
+        "Path": "HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\GameBar",
+        "Name": "CursorCaptureEnabled",
+        "Type": "DWord",
+        "Value": "0",
+        "defaultValue": "1",
+        "refresh": ""
+      },
+      {
+        "Path": "HKLM:\\Software\\Policies\\Microsoft\\Windows\\GameDVR",
+        "Name": "AllowgameDVR",
         "Type": "DWord",
         "Value": "0",
         "defaultValue": "1",
