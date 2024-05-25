@@ -4558,6 +4558,63 @@ $sync.database.Tweaks = '[
         "defaultValue": "0"
       }
     ]
+  },
+  {
+    "name": "Activate Windows Old Photo Viewer on Windows 10",
+    "description": "This tweak enables the classic Windows Photo Viewer on Windows 10.",
+    "check": "false",
+    "type": "modifying",
+    "Registry": [
+      {
+        "Path": "HKLM:\\SOFTWARE\\Microsoft\\Windows Photo Viewer\\Capabilities\\FileAssociations",
+        "Name": ".jpg",
+        "Type": "String",
+        "Value": "PhotoViewer.FileAssoc.Tiff",
+        "defaultValue": "0"
+      },
+      {
+        "Path": "HKLM:\\SOFTWARE\\Microsoft\\Windows Photo Viewer\\Capabilities\\FileAssociations",
+        "Name": ".jpeg",
+        "Type": "String",
+        "Value": "PhotoViewer.FileAssoc.Tiff",
+        "defaultValue": "0"
+      },
+      {
+        "Path": "HKLM:\\SOFTWARE\\Microsoft\\Windows Photo Viewer\\Capabilities\\FileAssociations",
+        "Name": ".png",
+        "Type": "String",
+        "Value": "PhotoViewer.FileAssoc.Tiff",
+        "defaultValue": "0"
+      },
+      {
+        "Path": "HKLM:\\SOFTWARE\\Microsoft\\Windows Photo Viewer\\Capabilities\\FileAssociations",
+        "Name": ".bmp",
+        "Type": "String",
+        "Value": "PhotoViewer.FileAssoc.Tiff",
+        "defaultValue": "0"
+      },
+      {
+        "Path": "HKLM:\\SOFTWARE\\Microsoft\\Windows Photo Viewer\\Capabilities\\FileAssociations",
+        "Name": ".gif",
+        "Type": "String",
+        "Value": "PhotoViewer.FileAssoc.Tiff",
+        "defaultValue": "0"
+      },
+      {
+        "Path": "HKLM:\\SOFTWARE\\Microsoft\\Windows Photo Viewer\\Capabilities\\FileAssociations",
+        "Name": "ApplicationIcon",
+        "Type": "String",
+        "Value": "C:\\Program Files (x86)\\Windows Photo Viewer\\photoviewer.dll",
+        "defaultValue": "0"
+      },
+      {
+        "Path": "HKLM:\\SOFTWARE\\Microsoft\\Windows Photo Viewer\\Capabilities\\FileAssociations",
+        "Name": "ApplicationName",
+        "Type": "String",
+        "Value": "Windows Photo Viewer",
+        "defaultValue": "0"
+      }
+    ]
   }
 ]' | ConvertFrom-Json
 #===========================================================================
@@ -6917,6 +6974,14 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                                     
         <StackPanel Orientation="Vertical" Width="auto" Margin="8">
             <StackPanel Orientation="Horizontal">
+                <CheckBox Content="Activate Windows Old Photo Viewer on Windows 10"   FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content=""/>
+            </StackPanel>
+                <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="This tweak enables the classic Windows Photo Viewer on Windows 10"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+            <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Remove Meet Now icon on Taskbar Windows 10"   FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content=""/>
             </StackPanel>
@@ -7682,7 +7747,7 @@ function Invoke-ApplyTweaks
                         } else {
 
                             Set-ItemProperty -Path $Path -Name $Name -Type $Type -Value $Value -Force -ErrorAction Stop
-                            Write-Host "$($Name) disabled" -ForegroundColor Yellow
+                            Write-Host "$($Name) Successful applied" -ForegroundColor Yellow
                             Write-Output "Registry path already exists."
                         }
 
