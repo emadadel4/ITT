@@ -68,7 +68,6 @@ $data = @{
             "Type" = $Type
             "Value" = $Value
             "defaultValue" = $defaultValue 
-            "refresh" = ""
         }
     )
 }
@@ -87,7 +86,6 @@ $jsonString = @"
             "Type": "$($data["$userInput"][0]["Type"])",
             "Value": "$($data["$userInput"][0]["Value"])",
             "defaultValue": "$($data["$userInput"][0]["defaultValue"])",
-            "refresh": "$($data["$userInput"][0]["refresh"])"
         }
     ]
 }
