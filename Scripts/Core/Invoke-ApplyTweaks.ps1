@@ -309,7 +309,6 @@ Write-Host "
 
                                     # debug
                                     #Write-Host Set-Registry -Name $mod.Name -Type $mod.Type -Path "$($mod.Path)" -Value $mod.Value
-                                    #Start-Process -FilePath "powershell.exe" -ArgumentList "-Command `" $($mod.refresh) `"" -NoNewWindow -Wait
                                 }
                             }
 
@@ -321,7 +320,6 @@ Write-Host "
 
                                     # debug
                                     #Write-Host Remove-Registry -RegistryPath $re.Path -Folder $re.Name
-                                    #Start-Process -FilePath "powershell.exe" -ArgumentList "-Command `" $($re.refresh) `"" -NoNewWindow -Wait
                                 }
                             }
             
