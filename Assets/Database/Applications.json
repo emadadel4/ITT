@@ -3631,5 +3631,22 @@
     ],
     "category": "Utilities",
     "check": "false"
+  },
+  {
+    "name": "Send Anywhere",
+    "description": "Send Anywhere is a multiplatform file sharing service where users can directly share digital content in real time",
+    "winget": "Estmob.SendAnywhere",
+    "choco": "none",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
+    "category": "File Sharing",
+    "check": "false"
   }
 ]
