@@ -316,7 +316,7 @@ Write-Host "
                             {
                                 foreach ($re in $app.registry) 
                                 {
-                                    #Remove-Registry -RegistryPath $re.Path -Folder $re.Name
+                                    Remove-Registry -RegistryPath $re.Path -Folder $re.Name
 
                                     # debug
                                     #Write-Host Remove-Registry -RegistryPath $re.Path -Folder $re.Name
