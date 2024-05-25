@@ -3751,6 +3751,40 @@ $sync.database.Applications = '[
     ],
     "category": "Utilities",
     "check": "false"
+  },
+  {
+    "name": "OP Auto Clicker",
+    "description": "A fullfledged autoclicker with two modes of autoclicking at your dynamic cursor location or at a prespecified location The maximum amounts of clicked can also be set or left as infinite Hotkeys work in the background for convenience",
+    "winget": "none",
+    "choco": "autoclicker",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
+    "category": "Utilities",
+    "check": "false"
+  },
+  {
+    "name": "Spotube",
+    "description": "Spotube is a Flutter based lightweight spotify client It utilizes the power of Spotify  Youtubes public API  creates a hazardless performant  resource friendly User Experience",
+    "winget": "none",
+    "choco": "spotube",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
+    "category": "Media",
+    "check": "false"
   }
 ]
 ' | ConvertFrom-Json
@@ -3974,13 +4008,13 @@ $sync.database.Tweaks = '[
     ]
   },
   {
-    "name": "Disable Game Mode",
+    "name": "Disable  Xbox Services",
     "description": "This tweak disables Game Mode",
     "check": "false",
     "type": "modifying",
     "Registry": [
       {
-        "Path": "HKCU:\\SOFTWARE\\Microsoft\\GameBar\\",
+        "Path": "HKCU:\\SOFTWARE\\Microsoft\\GameBar",
         "Name": "AutoGameModeEnabled",
         "Type": "DWord",
         "Value": "0",
@@ -3988,8 +4022,64 @@ $sync.database.Tweaks = '[
         "refresh": ""
       },
       {
-        "Path": "HKCU:\\SOFTWARE\\Microsoft\\GameBar\\",
+        "Path": "HKCU:\\SOFTWARE\\Microsoft\\GameBar",
         "Name": "AllowAutoGameMode",
+        "Type": "DWord",
+        "Value": "0",
+        "defaultValue": "1",
+        "refresh": ""
+      },
+      {
+        "Path": "HKCU:\\SOFTWARE\\Microsoft\\GameBar",
+        "Name": "ShowStartupPanel",
+        "Type": "DWord",
+        "Value": "0",
+        "defaultValue": "1",
+        "refresh": ""
+      },
+      {
+        "Path": "HKCU:\\System\\GameConfigStore",
+        "Name": "GameDVR_Enabled",
+        "Type": "DWord",
+        "Value": "0",
+        "defaultValue": "1",
+        "refresh": ""
+      },
+      {
+        "Path": "HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\GameBar",
+        "Name": "AppCaptureEnabled",
+        "Type": "DWord",
+        "Value": "0",
+        "defaultValue": "1",
+        "refresh": ""
+      },
+      {
+        "Path": "HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\GameBar",
+        "Name": "UseNexusForGameBarEnabled",
+        "Type": "DWord",
+        "Value": "0",
+        "defaultValue": "1",
+        "refresh": ""
+      },
+      {
+        "Path": "HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\GameBar",
+        "Name": "AudioCaptureEnabled",
+        "Type": "DWord",
+        "Value": "0",
+        "defaultValue": "1",
+        "refresh": ""
+      },
+      {
+        "Path": "HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\GameBar",
+        "Name": "CursorCaptureEnabled",
+        "Type": "DWord",
+        "Value": "0",
+        "defaultValue": "1",
+        "refresh": ""
+      },
+      {
+        "Path": "HKLM:\\Software\\Policies\\Microsoft\\Windows\\GameDVR",
+        "Name": "AllowgameDVR",
         "Type": "DWord",
         "Value": "0",
         "defaultValue": "1",
@@ -5084,6 +5174,22 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                             <TabItem.Content>
                                 <ListView Margin="0" ScrollViewer.VerticalScrollBarVisibility="Auto" Name="list" BorderBrush="{x:Null}" Background="{x:Null}">
                                     
+        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+            <StackPanel Orientation="Horizontal">
+                <CheckBox Content="Spotube" Tag="Media" IsChecked="false" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content="Media"/>
+            </StackPanel>
+                <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Spotube is a Flutter based lightweight spotify client It utilizes the power of Spotify  Youtubes public API  creates a hazardless performant  resource friendly User Experience"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+            <StackPanel Orientation="Horizontal">
+                <CheckBox Content="OP Auto Clicker" Tag="Utilities" IsChecked="false" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content="Utilities"/>
+            </StackPanel>
+                <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="A fullfledged autoclicker with two modes of autoclicking at your dynamic cursor location or at a prespecified location The maximum amounts of clicked can also be set or left as infinite Hotkeys work in the background for convenience"/>
+        </StackPanel>
+
         <StackPanel Orientation="Vertical" Width="auto" Margin="8">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="YUMI UEFI" Tag="Utilities" IsChecked="false" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
@@ -6940,7 +7046,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
 
         <StackPanel Orientation="Vertical" Width="auto" Margin="8">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Disable Game Mode"   FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <CheckBox Content="Disable  Xbox Services"   FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content=""/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="This tweak disables Game Mode"/>
