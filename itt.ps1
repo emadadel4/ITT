@@ -4611,8 +4611,31 @@ $sync.database.Tweaks = '[
         "defaultValue": "0"
       }
     ]
+  },
+  {
+    "name": "Restore Classic Context Menu Windows 11",
+    "description": "Restore the old context menu in Windows 11",
+    "check": "false",
+    "type": "modifying",
+    "Registry": [
+      {
+        "Path": "HKCU:\\Software\\Classes\\CLSID\\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}",
+        "Name": "",
+        "Type": "",
+        "Value": "",
+        "defaultValue": ""
+      },
+      {
+        "Path": "HKCU:\\Software\\Classes\\CLSID\\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\\InprocServer32",
+        "Name": "default",
+        "Type": "SZ",
+        "Value": "",
+        "defaultValue": "default"
+      }
+    ]
   }
-]' | ConvertFrom-Json
+]
+' | ConvertFrom-Json
 #===========================================================================
 #endregion End Database /APPS/TWEEAKS/Quotes/OST
 #===========================================================================
@@ -6968,6 +6991,14 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                             </TabItem.HeaderTemplate>
                                 <ListView Name="tweaks"  Margin="0" ScrollViewer.VerticalScrollBarVisibility="Auto" BorderBrush="{x:Null}" Background="{x:Null}">
                                     
+        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+            <StackPanel Orientation="Horizontal">
+                <CheckBox Content="Restore Classic Context Menu Windows 11"   FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content=""/>
+            </StackPanel>
+                <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Restore the old context menu in Windows 11"/>
+        </StackPanel>
+
         <StackPanel Orientation="Vertical" Width="auto" Margin="8">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Activate Windows Old Photo Viewer on Windows 10"   FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
