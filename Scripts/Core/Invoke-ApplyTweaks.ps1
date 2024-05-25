@@ -95,8 +95,24 @@ function Invoke-ApplyTweaks
             Invoke-ScriptBlock -ArgumentList $tweaks -ScriptBlock{
 
                 param($tweaks)
+
+                function Execute-Command {
+                    param (
+                        [string]$Command
+                    )
+                    try {
+                        Start-Process -FilePath "powershell.exe" -ArgumentList "-Command `"$Command`"" -NoNewWindow -Wait
+
+                        #debug
+                        #Write-Host "Command '$Command' executed successfully."
+
+                        Write-Host "Command '$Command' executed successfully."
+                    } catch {
+                        Write-Host "Error executing command '$Command': $_"
+                    }
+                }
                 
-                function Set-Registry {
+                function Set-RegistryValue {
                     param (
                         $Name,
                         $Type,
@@ -132,7 +148,7 @@ function Invoke-ApplyTweaks
                     
                 }
 
-                function Remove-Registry {
+                function Remove-RegistryValue {
                     param (
                         [Parameter(Mandatory=$true)]
                         [string]$RegistryPath,
@@ -184,7 +200,7 @@ function Invoke-ApplyTweaks
                     }
                 }
 
-                function UninstallAppxPackage  {
+                function Uninstall-AppxPackage  {
 
                     param (
                         $Name
@@ -286,66 +302,39 @@ Write-Host "
                         UpdateUI -InstallBtn "Wait..." -Description "Applying..." 
                         $sync.ProcessRunning = $true
 
-                        foreach ($app in $tweaks) 
-                        {
-
-                            if ($app.Type -eq "command")
-                            {
-                                foreach ($cmd in $app.Commands) 
-                                {
-                                    Start-Process -FilePath "powershell.exe" -ArgumentList "-Command `"$($cmd.run)`"" -NoNewWindow -Wait
-                                    Write-Host $app.Name Done 
-
-                                    # debug
-                                    #Write-Host Start-Process -FilePath "powershell.exe" -ArgumentList "-Command `"$($cmd.run)`"" -NoNewWindow -Wait
+                        foreach ($app in $tweaks) {
+                            switch ($app.Type) {
+                                "command" {
+                                    foreach ($cmd in $app.Commands) {
+                                        Execute-Command -Command $cmd.run
+                                    }
                                 }
-                            }
-
-                            if ($app.Type -eq "modifying")
-                            {
-                                foreach ($mod in $app.registry) 
-                                {
-                                    Set-Registry -Name $mod.Name -Type $mod.Type -Path $($mod.Path) -Value $mod.Value
-
-                                    # debug
-                                    #Write-Host Set-Registry -Name $mod.Name -Type $mod.Type -Path "$($mod.Path)" -Value $mod.Value
+                                "modifying" {
+                                    foreach ($mod in $app.registry) {
+                                        Set-RegistryValue -Name $mod.Name -Type $mod.Type -Path $mod.Path -Value $mod.Value
+                                    }
                                 }
-                            }
-
-                            if ($app.Type -eq "delete")
-                            {
-                                foreach ($re in $app.registry) 
-                                {
-                                    Remove-Registry -RegistryPath $re.Path -Folder $re.Name
-
-                                    # debug
-                                    #Write-Host Remove-Registry -RegistryPath $re.Path -Folder $re.Name
+                                "delete" {
+                                    foreach ($re in $app.registry) {
+                                        Remove-RegistryValue -Path $re.Path -Name $re.Name
+                                    }
                                 }
-                            }
-            
-                            if ($app.Type -eq "service")
-                            {
-                                foreach ($se in $app.service) 
-                                {
-                                    Disable-Service -ServiceName $($se.Name) -StartupType $($se.StartupType)
+                                "service" {
+                                    foreach ($se in $app.service) {
+                                        Disable-Service -Name $se.Name -StartupType $se.StartupType
+                                    }
                                 }
-                            }
-
-                            if ($app.Type -eq "AppxPackage")
-                            {
-                                foreach ($appx in $app.removeAppxPackage) 
-                                {
-                                   UninstallAppxPackage -Name "$($appx.Name)"
-
-                                   # debug
-                                   # Write-Host UninstallAppxPackage -Name "$($appx.Name)"
+                                "AppxPackage" {
+                                    foreach ($appx in $app.removeAppxPackage) {
+                                        Uninstall-AppxPackage -Name $appx.Name
+                                    }
                                 }
                             }
                         }
 
 
                         # restart explorer
-                        Stop-Process -Name explorer -Force; Start-Process explorer
+                        #Stop-Process -Name explorer -Force; Start-Process explorer
 
                         $sync.ProcessRunning = $False
                         CustomMsg -title "ITT | Emad Adel" -msg "Done" -MessageBoxImage "Information" -MessageBoxButton "OK"
