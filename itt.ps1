@@ -4018,80 +4018,70 @@ $sync.database.Tweaks = '[
         "Name": "AutoGameModeEnabled",
         "Type": "DWord",
         "Value": "0",
-        "defaultValue": "1",
-        "refresh": ""
+        "defaultValue": "1"
       },
       {
         "Path": "HKCU:\\SOFTWARE\\Microsoft\\GameBar",
         "Name": "AllowAutoGameMode",
         "Type": "DWord",
         "Value": "0",
-        "defaultValue": "1",
-        "refresh": ""
+        "defaultValue": "1"
       },
       {
         "Path": "HKCU:\\SOFTWARE\\Microsoft\\GameBar",
         "Name": "ShowStartupPanel",
         "Type": "DWord",
         "Value": "0",
-        "defaultValue": "1",
-        "refresh": ""
+        "defaultValue": "1"
       },
       {
         "Path": "HKCU:\\System\\GameConfigStore",
         "Name": "GameDVR_Enabled",
         "Type": "DWord",
         "Value": "0",
-        "defaultValue": "1",
-        "refresh": ""
+        "defaultValue": "1"
       },
       {
         "Path": "HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\GameBar",
         "Name": "AppCaptureEnabled",
         "Type": "DWord",
         "Value": "0",
-        "defaultValue": "1",
-        "refresh": ""
+        "defaultValue": "1"
       },
       {
         "Path": "HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\GameBar",
         "Name": "UseNexusForGameBarEnabled",
         "Type": "DWord",
         "Value": "0",
-        "defaultValue": "1",
-        "refresh": ""
+        "defaultValue": "1"
       },
       {
         "Path": "HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\GameBar",
         "Name": "AudioCaptureEnabled",
         "Type": "DWord",
         "Value": "0",
-        "defaultValue": "1",
-        "refresh": ""
+        "defaultValue": "1"
       },
       {
         "Path": "HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\GameBar",
         "Name": "CursorCaptureEnabled",
         "Type": "DWord",
         "Value": "0",
-        "defaultValue": "1",
-        "refresh": ""
+        "defaultValue": "1"
       },
       {
         "Path": "HKLM:\\Software\\Policies\\Microsoft\\Windows\\GameDVR",
         "Name": "AllowgameDVR",
         "Type": "DWord",
         "Value": "0",
-        "defaultValue": "1",
-        "refresh": ""
+        "defaultValue": "1"
       },
       {
         "Path": "HKLM:\\System\\CurrentControlSet\\Services\\xbgm",
         "Name": "Start",
         "Type": "DWord",
         "Value": "4",
-        "defaultValue": "0",
-        "refresh": ""
+        "defaultValue": "0"
       }
     ]
   },
@@ -4106,8 +4096,7 @@ $sync.database.Tweaks = '[
         "Name": "AllowTelemetry",
         "Type": "DWord",
         "Value": "0",
-        "defaultValue": "1",
-        "refresh": ""
+        "defaultValue": "1"
       }
     ]
   },
@@ -4122,32 +4111,28 @@ $sync.database.Tweaks = '[
         "Name": "Enabled",
         "Type": "DWord",
         "Value": "0",
-        "defaultValue": "1",
-        "refresh": "Stop-Process -Name explorer -Force; Start-Process explorer"
+        "defaultValue": "1"
       },
       {
         "Path": "HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager",
         "Name": "SystemPaneSuggestionsEnabled",
         "Type": "DWord",
         "Value": "0",
-        "defaultValue": "1",
-        "refresh": "Stop-Process -Name explorer -Force; Start-Process explorer"
+        "defaultValue": "1"
       },
       {
         "Path": "HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager",
         "Name": "SoftLandingEnabled",
         "Type": "DWord",
         "Value": "0",
-        "defaultValue": "1",
-        "refresh": "Stop-Process -Name explorer -Force; Start-Process explorer"
+        "defaultValue": "1"
       },
       {
         "Path": "HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced",
         "Name": "ShowSyncProviderNotifications",
         "Type": "DWord",
         "Value": "0",
-        "defaultValue": "1",
-        "refresh": "Stop-Process -Name explorer -Force; Start-Process explorer"
+        "defaultValue": "1"
       }
     ]
   },
@@ -4162,8 +4147,7 @@ $sync.database.Tweaks = '[
         "Name": "BingSearchEnabled",
         "Type": "DWord",
         "Value": "0",
-        "defaultValue": "1",
-        "refresh": "Stop-Process -Name explorer -Force; Start-Process explorer"
+        "defaultValue": "1"
       }
     ]
   },
@@ -4178,8 +4162,7 @@ $sync.database.Tweaks = '[
         "Name": "GlobalUserDisabled",
         "Type": "DWord",
         "Value": "1",
-        "defaultValue": "0",
-        "refresh": ""
+        "defaultValue": "0"
       }
     ]
   },
@@ -4194,8 +4177,7 @@ $sync.database.Tweaks = '[
         "Name": "DisableWindowsConsumerFeatures",
         "Type": "DWord",
         "Value": "1",
-        "defaultValue": "0",
-        "refresh": "Stop-Process -Name explorer -Force; Start-Process explorer"
+        "defaultValue": "0"
       }
     ]
   },
@@ -4210,8 +4192,7 @@ $sync.database.Tweaks = '[
         "Name": "ShellFeedsTaskbarViewMode",
         "Type": "DWord",
         "Value": "2",
-        "defaultValue": "0",
-        "refresh": "Stop-Process -Name explorer -Force; Start-Process explorer"
+        "defaultValue": "0"
       }
     ]
   },
@@ -4226,8 +4207,7 @@ $sync.database.Tweaks = '[
         "Name": "SearchboxTaskbarMode",
         "Type": "DWord",
         "Value": "1",
-        "defaultValue": "2",
-        "refresh": "Stop-Process -Name explorer -Force; Start-Process explorer"
+        "defaultValue": "2"
       }
     ]
   },
@@ -4242,8 +4222,7 @@ $sync.database.Tweaks = '[
         "Name": "PeopleBand",
         "Type": "DWord",
         "Value": "0",
-        "defaultValue": "1",
-        "refresh": "Stop-Process -Name explorer -Force; Start-Process explorer"
+        "defaultValue": "1"
       }
     ]
   },
@@ -4554,8 +4533,7 @@ $sync.database.Tweaks = '[
         "Name": "DisableFileSyncNGSC",
         "Type": "DWord",
         "Value": "1",
-        "defaultValue": "0",
-        "refresh": ""
+        "defaultValue": "0"
       }
     ]
   },
@@ -4570,21 +4548,18 @@ $sync.database.Tweaks = '[
         "Name": "HideSCAMeetNow",
         "Type": "DWord",
         "Value": "1",
-        "defaultValue": "0",
-        "refresh": "Stop-Process -Name explorer -Force; Start-Process explorer; -NoNewWindow"
+        "defaultValue": "0"
       },
       {
         "Path": "HKLM:\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer",
         "Name": "HideSCAMeetNow",
         "Type": "DWord",
         "Value": "1",
-        "defaultValue": "0",
-        "refresh": ""
+        "defaultValue": "0"
       }
     ]
   }
-]
-' | ConvertFrom-Json
+]' | ConvertFrom-Json
 #===========================================================================
 #endregion End Database /APPS/TWEEAKS/Quotes/OST
 #===========================================================================
@@ -7896,7 +7871,6 @@ Write-Host "
 
                                     # debug
                                     #Write-Host Set-Registry -Name $mod.Name -Type $mod.Type -Path "$($mod.Path)" -Value $mod.Value
-                                    #Start-Process -FilePath "powershell.exe" -ArgumentList "-Command `" $($mod.refresh) `"" -NoNewWindow -Wait
                                 }
                             }
 
@@ -7908,7 +7882,6 @@ Write-Host "
 
                                     # debug
                                     #Write-Host Remove-Registry -RegistryPath $re.Path -Folder $re.Name
-                                    #Start-Process -FilePath "powershell.exe" -ArgumentList "-Command `" $($re.refresh) `"" -NoNewWindow -Wait
                                 }
                             }
             
