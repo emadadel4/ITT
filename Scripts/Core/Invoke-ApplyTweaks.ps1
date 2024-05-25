@@ -318,7 +318,7 @@ Write-Host "
 
                                     if($app.Refresh -eq "true")
                                     {
-                                        Write-Host "Restart exploror"
+                                        Write-Host "Restart windows explorer"
                                         Stop-Process -Name explorer -Force; Start-Process explorer
                                     }
 
