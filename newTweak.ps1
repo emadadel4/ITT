@@ -38,80 +38,73 @@ if($userInput -eq "Registry")
 {
 
 $TweakName = Read-Host "Enter Tweak Name"
-
 $description = Read-Host "Enter Tweak description"
 
- $validTypes = @{
-
-    1 = "delete"
-    2 = "modifying"
-}
-
-# Prompt user to choose category
+# Read multiple AppxPackage Names
+$Names = @()
+# Read multiple AppxPackage Names
 do {
-    Write-Host "This will do?"
-    foreach ($key in $validTypes.Keys | Sort-Object) {
-        Write-Host "$key - $($validTypes[$key])"
+
+    $Path = Read-Host "Enter Reg Path"
+    $Name = Read-Host "Enter Value Name"
+
+        
+    $KeyType = @{
+
+        1 = "DWord"
+        2 = "Qword"
+        3 = "Binary"
+        4 = "SZ"
+        5 = "EXPAND_SZ"
+        6 = "LINK"
+        7 = "MULTI_SZ"
+        8 = "NONE"
+        9 = "QWORD_LITTLE_ENDIAN"
     }
-    $choice = Read-Host "Enter the number corresponding to the type"
-    if ([int]$choice -in $validTypes.Keys) {
-        $RegistryType = $validTypes[[int]$choice]
-    } else {
-        Write-Host "Invalid choice. Please select a valid option."
-    }
-} until ([int]$choice -in $validTypes.Keys)
+    
+    # Prompt user to choose KeyType
+    do {
+        Write-Host "What is the Key type"
+        foreach ($key in $KeyType.Keys | Sort-Object) {
+            Write-Host "$key - $($KeyType[$key])"
+        }
+        $choice = Read-Host "Enter the number corresponding to the Key Type"
+        if ([int]$choice -in $KeyType.Keys) {
+            $Type = $KeyType[[int]$choice]
+        } else {
+            Write-Host "Invalid choice. Please select a valid option."
+        }
+    } until ([int]$choice -in $KeyType.Keys)
 
 
-$Path = Read-Host "Enter Registry, Example: HKLM:\SOFTWARE\Policies\Microsoft\Windows\OneDrive"
-$Path = $Path -replace '\\', '\\'
-$Name = Read-Host "Enter Reg Name"
+    $Value = Read-Host "Enter Value"
+    $defaultValue = Read-Host "Enter default Value"
 
-$KeyType = @{
-
-    1 = "DWord"
-    2 = "Qword"
-    3 = "Binary"
-    4 = "SZ"
-    5 = "EXPAND_SZ"
-    6 = "LINK"
-    7 = "MULTI_SZ"
-    8 = "NONE"
-    9 = "QWORD_LITTLE_ENDIAN"
-}
-
-# Prompt user to choose KeyType
-do {
-    Write-Host "What is the Key type"
-    foreach ($key in $KeyType.Keys | Sort-Object) {
-        Write-Host "$key - $($KeyType[$key])"
-    }
-    $choice = Read-Host "Enter the number corresponding to the Key Type"
-    if ([int]$choice -in $validType.Keys) {
-        $Type = $KeyType[[int]$choice]
-    } else {
-        Write-Host "Invalid choice. Please select a valid option."
-    }
-} until ([int]$choice -in $KeyType.Keys)
+    $Names += $Name
 
 
-$Value = Read-Host "Enter Registry value"
 
-$defaultValue = Read-Host "Enter Registry default Value"
-if ($defaultValue -eq "") { $defaultValue = "1" }  # Set default value 1
+    $continue = Read-Host "Do you want to add another Path? (y/n)"
+} while ($continue -eq "y")
+
 
 # Define the data
 $data = @{
     "name" = $TweakName
     "description" = $description
     "check" = "false"
-    "type" = $RegistryType
+    "type" = "AppxPackage"
+    "refresh" = "false"
     "$userInput" = @(
-        @{
-            "Path" = $Path
-            "Name" = $Name
-            "Type" = $Type
-            "Value" = $Value
-            "defaultValue" = $defaultValue 
+        $Names | ForEach-Object {
+            @{
+                "Path" = $Path
+                "Name" = $Name
+                "Type" = $Type
+                "Value" = $Value
+                "defaultValue" = $defaultValue
+
+            } | Select-Object Path, Name, Type, Value, defaultValue
         }
     )
 }
@@ -123,20 +116,16 @@ $jsonString = @"
     "description": "$($data["description"])",
     "check": "$($data["check"])",
     "type": "$($data["type"])",
-    "$userInput": [
-        {
-            "Path": "$($data["$userInput"][0]["Path"])",
-            "Name": "$($data["$userInput"][0]["Name"])",
-            "Type": "$($data["$userInput"][0]["Type"])",
-            "Value": "$($data["$userInput"][0]["Value"])",
-            "defaultValue": "$($data["$userInput"][0]["defaultValue"])",
-        }
-    ]
+    "refresh": "$($data["refresh"])",
+    "$userInput": $($data["$userInput"] | ConvertTo-Json -Depth 100)
 }
 "@
 
 # Read existing JSON file
-$existingJson = Get-Content -Path "./Assets/Database/Tweaks.json" | ConvertFrom-Json
+$existingJson = Get-Content -Path "./Assets/Database/Tweaks.json" -Raw | ConvertFrom-Json -ErrorAction SilentlyContinue
+if (!$existingJson) {
+    $existingJson = @()
+}
 
 # Append new data to existing JSON
 $existingJson += $jsonString | ConvertFrom-Json
@@ -146,10 +135,8 @@ $updatedJson = $existingJson | ConvertTo-Json -Depth 100
 
 # Output to file
 $updatedJson | Out-File -FilePath "./Assets/Database/Tweaks.json" -Encoding utf8
-
+    
 Write-Host "Added successfully, Don't forget to build and test it before commit" -ForegroundColor Green 
-
-
 }
 #===========================================================================
 #endregion Registry 
@@ -181,6 +168,7 @@ $data = @{
     "description" = $description
     "check" = "false"
     "type" = "AppxPackage"
+    "refresh" = "false"
     "$userInput" = @(
         $Names | ForEach-Object {
             @{
@@ -197,6 +185,7 @@ $jsonString = @"
     "description": "$($data["description"])",
     "check": "$($data["check"])",
     "type": "$($data["type"])",
+    "refresh": "$($data["refresh"])",
     "$userInput": $($data["$userInput"] | ConvertTo-Json -Depth 100)
 }
 "@
@@ -242,6 +231,7 @@ $data = @{
     "description" = $description
     "check" = "false"
     "type" = "command"
+    "refresh" = "false"
     "$userInput" = @(
         @{
             "run" = $cmd
@@ -257,6 +247,7 @@ $jsonString = @"
     "description": "$($data["description"])",
     "check": "$($data["check"])",
     "type": "$($data["type"])",
+    "refresh": "$($data["refresh"])",
     "$userInput": [
         {
             "run": "$($data["$userInput"][0]["run"])",
@@ -318,6 +309,7 @@ $data = [Ordered]@{
     "description" = $description
     "check" = "false"
     "type" = "service"
+    "refresh" = "false"
     "$userInput" = @(
         $Names | ForEach-Object {
             [Ordered]@{
@@ -336,6 +328,7 @@ $jsonString = @"
     "description": "$($data["description"])",
     "check": "$($data["check"])",
     "type": "$($data["type"])",
+    "refresh": "$($data["refresh"])",
     "$userInput": $($data["$userInput"] | ConvertTo-Json -Depth 100)
 }
 "@
