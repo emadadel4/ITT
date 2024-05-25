@@ -1,47 +1,36 @@
-function Get-SelectedTweaks
-{
+function Get-SelectedTweaks {
+    
+    $selectedItems = @()
 
-    $items = @()
-
-    foreach ($item in $sync.TweaksListView.Items)
-    {
-        if ($item -is [System.Windows.Controls.StackPanel]) {
-
-            foreach ($child in $item.Children) {
-                if ($child -is [System.Windows.Controls.StackPanel]) {
-                    foreach ($innerChild in $child.Children) {
-                        if ($innerChild -is [System.Windows.Controls.CheckBox]) {
-
-                            if($innerChild.IsChecked)
-                            {
-                                    foreach ($program in $sync.database.Tweaks)
-                                    {
-                                        if($innerChild.content -eq $program.Name)
-                                        {
-                                            $items += @{
-                                                Name = $program.Name
-                                                Type = $program.type
-                                                registry = $program.Registry
-                                                service = $program.Service
-                                                removeAppxPackage = $program.RemoveAppxPackage
-                                                Commands = $program.Commands
-                                                Refresh = $program.refresh
-                                                # if you want to implement a new thing from JSON applications do it here.
-                                            }
-
-                                        }
-                                    }
+    $sync.TweaksListView.Items |
+        Where-Object { $_ -is [System.Windows.Controls.StackPanel] } |
+        ForEach-Object {
+            $_.Children |
+                Where-Object { $_ -is [System.Windows.Controls.StackPanel] } |
+                ForEach-Object {
+                    $_.Children |
+                        Where-Object { $_ -is [System.Windows.Controls.CheckBox] -and $_.IsChecked } |
+                        ForEach-Object { $checkBox = $_
+                            $program = $sync.database.Tweaks | Where-Object { $_.Name -eq $checkBox.Content }
+                            if ($program) {
+                                $selectedItems += [PSCustomObject]@{
+                                    Name = $program.Name
+                                    Type = $program.Type
+                                    Registry = $program.Registry
+                                    Service = $program.Service
+                                    RemoveAppxPackage = $program.RemoveAppxPackage
+                                    Commands = $program.Commands
+                                    Refresh = $program.Refresh
+                                    # Add more fields here if needed
+                                }
                             }
-
                         }
-                    }
                 }
-            }
         }
-    }
 
-    return $items 
+    return $selectedItems
 }
+
 
 function ShowSelectedTweaks {
     
@@ -103,11 +92,9 @@ function Invoke-ApplyTweaks
                     )
                     try {
                         Start-Process -FilePath "powershell.exe" -ArgumentList "-Command `"$Command`"" -NoNewWindow -Wait
-
                         #debug
                         #Write-Host "Command '$Command' executed successfully."
-
-                        Write-Host "Command '$Command' executed successfully."
+                        Write-Host "Executed successfully."
                     } catch {
                         Write-Host "Error executing command '$Command': $_"
                     }
