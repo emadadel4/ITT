@@ -86,7 +86,7 @@ do {
         Write-Host "$key - $($KeyType[$key])"
     }
     $choice = Read-Host "Enter the number corresponding to the Key Type"
-    if ([int]$choice -in $validType.Keys) {
+    if ([int]$choice -in $KeyType.Keys) {
         $Type = $KeyType[[int]$choice]
     } else {
         Write-Host "Invalid choice. Please select a valid option."
