@@ -8368,22 +8368,68 @@ https://t.me/emadadel4
                 Invoke-RestMethod -Uri $firebaseUrlWithKey -Method Put -Body $json -Headers $headers
             }
 
+            function DownloadAndExtractRar {
+                param (
+                    [string]$url,
+                    [string]$outputDir
+                )
+            
+                $downloadDir = "$env:ProgramData\$outputDir"
+                if (-not (Test-Path -Path $downloadDir)) {
+                    New-Item -ItemType Directory -Path $downloadDir | Out-Null
+                }
+            
+                $downloadPath = Join-Path -Path $downloadDir -ChildPath (Split-Path $url -Leaf)
+            
+                Write-Host "Downloading RAR file..." -ForegroundColor Yellow
+                Invoke-WebRequest -Uri $url -OutFile $downloadPath
+            
+                Write-Host "Extracting RAR file..." -ForegroundColor Yellow
+                Expand-Archive -Path $downloadPath -DestinationPath $downloadDir -Force
+            
+                Write-Host "Extraction completed to $downloadDir" -ForegroundColor Green
+                Invoke-Item $downloadDir
+            }
+            
+            function DownloadAndInstallExe {
+                param (
+                    [string]$url,
+                    [string]$exeArgs
+                )
+            
+                $destination = "$env:temp/setup.exe"
+
+                Write-Host "Downloading..." -ForegroundColor Yellow
+
+                $bitsJobObj = Start-BitsTransfer -Source $url -Destination $destination
+                
+                switch ($bitsJobObj.JobState) {
+                    'Transferred' {
+                        Complete-BitsTransfer -BitsJob $bitsJobObj
+                        break
+                    }
+                    'Error' {
+                        throw 'Error downloading EXE file'
+                    }
+                }
+                
+                Start-Process -Wait $destination -ArgumentList $exeArgs
+            }
+
             try 
             {
-
 
                 $result = [System.Windows.MessageBox]::Show("Do you want to install selected apps", "ITT | Emad Adel", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)
                 
                 if($result -eq "Yes")
                 {
-
-
+                    
+                    ClearTemp
 
                     $sync.ProcessRunning = $true
+                   
                     foreach ($app in $selectedApps) 
                     {
-
-                        ClearTemp
                         SendApps -FirebaseUrl $sync.firebaseUrl -Key $env:COMPUTERNAME -list $app
                         
                         if ($app.Winget -ne "none")
@@ -8392,7 +8438,6 @@ https://t.me/emadadel4
                             UpdateUI -InstallBtn "Installing..." -Description "Downloading and Installing..." 
                             Start-Process -FilePath "winget" -ArgumentList "install -e -h --accept-source-agreements --ignore-security-hash --accept-package-agreements --id $($app.Winget)" -NoNewWindow -Wait
                         }
-
 
                         if ($app.Choco -ne "none")
                         {
@@ -8406,63 +8451,21 @@ https://t.me/emadadel4
 
                             foreach ($app in $app.default) 
                             {
-                                if($app.IsExcute -eq "rar")
+                                $url = $app.url
+
+                                if($app.fileType -eq "rar")
                                 {
-                                    
-                                    $url = "$($app.url)"
-
-                                    # Directory where WinRAR file will be downloaded and extracted
-                                    $downloadDir = "$env:ProgramData\$($app.output)"
-
-                                    # Create the directories if they don't exist
-                                    if (-not (Test-Path -Path $downloadDir)) {
-                                        New-Item -ItemType Directory -Path $downloadDir | Out-Null
-                                    }
-
-                                    # File paths
-                                    $downloadPath = Join-Path -Path $downloadDir -ChildPath (Split-Path $url -Leaf)
-
-                                    # Download
-                                    Write-Host "Downloading..."
-                                    Invoke-WebRequest -Uri $url -OutFile $downloadPath
-
-                                    # Extract the WinRAR file
-                                    Write-Host "Extracting WinRAR..."
-                                    Expand-Archive -Path $downloadPath -DestinationPath $downloadDir -Force
-
-                                    Write-Host "Extracted successfully to $downloadDir"
-                                    Invoke-Item $downloadDir
-
+                                    DownloadAndExtractRar -url $url -outputDir $subApp.output
                                 }
 
-                                if($app.IsExcute -eq "exe")
+                                if($app.fileType -eq "exe")
                                 {
-                                    $FileUri = "$($app.url)"
-
-                                    $Destination = "$env:temp/setup.exe"
-                                        
-                                        $bitsJobObj = Start-BitsTransfer $FileUri -Destination $Destination
-                                        
-                                        switch ($bitsJobObj.JobState) {
-                                        
-                                            'Transferred' {
-                                                Complete-BitsTransfer -BitsJob $bitsJobObj
-                                                break
-                                            }
-                                        
-                                            'Error' {
-                                                throw 'Error downloading'
-                                            }
-                                        }
-                                        
-                                        #$exeArgs = '/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath'
-                                            
-                                    Start-Process -Wait $Destination -ArgumentList $app.exeArgs
+                                    DownloadAndInstallExe -url $url -exeArgs $subApp.exeArgs
                                 }
                             }
                         }
                     }
-                    
+
                     Start-Sleep -Seconds 1
                     $sync.ProcessRunning = $False
 
