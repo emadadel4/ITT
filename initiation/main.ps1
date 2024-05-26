@@ -1,4 +1,3 @@
-GetQuotes | Out-Null
 
 # Define OnClosing event handler
 $onClosingEvent = {
@@ -13,13 +12,21 @@ $onClosingEvent = {
     {
         # Close the window
         StopAllRunspace
-   
-    }else{
+    }
+    else
+    {
         # Cancel closing the window
         $c.Cancel = $true
     }
 }
 
+# Handle the Loaded event
+$sync["window"].Add_Loaded({
+    
+    $sync["window"].Activate()
+    GetQuotes | Out-Null
+
+})
 
 # Add OnClosing event handler to the window
 $sync["window"].add_Closing($onClosingEvent)
