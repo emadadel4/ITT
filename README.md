@@ -1,84 +1,103 @@
-<p align="center" dir="auto">
+<p align="center">
   <a href="https://techforpalestine.org/learn-more" rel="nofollow">
     <img src="https://raw.githubusercontent.com/Safouene1/support-palestine-banner/master/StandWithPalestine.svg" alt="Ceasefire Now" style="max-width: 100%;">
   </a>
 </p>
   
-<h1 align="center">ITT (Install and Tweaks Tool) 🛠️ 🖥️ </h1>
+<h1 align="center">ITT (Install and Tweaks Tool) 🛠️ 🚀</h1>
 
-<center>
-<a target="_blank" rel="noopener noreferrer" href="https://raw.githubusercontent.com/emadadel4/ITT/main/Assets/Images/demo.PNG"><img src="https://raw.githubusercontent.com/emadadel4/ITT/main/Assets/Images/demo.PNG" alt="screen-install" style="max-width: 100%;"></a>
-</center>
-
-## Overview
-ITT (Install and Tweak Tool) is a collection of PowerShell scripts designed to automate the installation of programs and apply Windows tweaks. It simplifies the process of setting up a new Windows environment by providing a streamlined method for installing commonly used software and customizing system settings.
-
-
-## Usage
-
-<p dir="auto"><strong>On Windows 8/8.1/10/11:</strong>
-     Right-click on the start menu.
-    Choose "PowerShell" or "Terminal" and paste any command of these.
+<p align="center">
+  <a target="_blank" rel="noopener noreferrer" href="https://raw.githubusercontent.com/emadadel4/ITT/main/Assets/Images/demo.PNG">
+    <img src="https://raw.githubusercontent.com/emadadel4/ITT/main/Assets/Images/demo.PNG" alt="ITT Demo" style="max-width: 100%;">
+  </a>
 </p>
 
-```sh
-irm bit.ly/emadadel | iex
-```
+<h2>Overview</h2>
+<p><strong>ITT (Install and Tweak Tool)</strong></p>
 
-or
+- **Automated Installation**: Say goodbye to manual software installations. ITT automates the process, saving you time and effort.
+- **System Tweaks**: Customize your Windows environment with ease. ITT provides scripts to apply system tweaks for enhanced performance and usability.
+- **Developer-Friendly**: Easy-to-use scripts and clear documentation make ITT accessible for developers of all skill levels.
 
-```sh
- iwr -useb bit.ly/emadadel | iex
-```
+<h2>🚀 Usage</h2>
 
-running it directly from github
+<h3>On Windows 10/11:</h3>
+<ol>
+<li>Right-click on the Start menu.</li>
+<li>Choose "PowerShell" or "Terminal" and paste any of the following commands:</li>
+</ol>
 
-```sh
-irm https://raw.githubusercontent.com/emadadel4/ITT/main/itt.ps1 | iex
-```
+<pre><code>irm bit.ly/emadadel | iex
+</code></pre>
 
-## How to add a new App/Tweak/OST/Qoute/
+<pre><code>iwr -useb bit.ly/emadadel | iex
+</code></pre>
+
+<p>To run it directly from GitHub:</p>
+
+<pre><code>irm https://raw.githubusercontent.com/emadadel4/ITT/main/itt.ps1 | iex
+</code></pre>
+
+<h2> 📦 How to Add a New App/Tweak/OST/Quote</h2>
+<ol>
+<li><strong>Make sure you have PowerShell 7 installed (recommended) for building</strong></li>
+<li><strong>Fork the repository.</strong></li>
+<li><strong>Open the ITT directory in PowerShell:</strong></li>
+</ol>
+
+<pre><code>Set-Location "C:\Users\$env:USERNAME\Documents\Github\ITT"
+</code></pre>
+
+<ol start="4">
+<li><strong>Choose what you want to add.</strong></li>
+</ol>
+
+<h3>Add a New App</h3>
+
+<pre><code>newApp.ps1
+</code></pre>
+
+<h3>Add a New Tweak</h3>
+
+<p><em>Note: Ensure you understand the tweak you are adding and test it before committing.</em></p>
+
+<pre><code>newTweak.ps1
+</code></pre>
+
+<h3>Add a New Soundtrack</h3>
+
+<pre><code>newOST.ps1
+</code></pre>
+
+<h3>Add a New Quote</h3>
+
+<pre><code>newQuote.ps1
+</code></pre>
+
+<h3>Build</h3>
+
+<pre><code>build.ps1
+</code></pre>
+
+<h3>See Your Changes</h3>
+<pre><code>itt.ps1
+</code></pre>
+
+<p><em>Remember to test your changes before committing.</em></p>
+
+<h2>Developer</h2>
+
+<p><strong>👤 Emad Adel</strong></p>
+
 <ul>
-  <li><p dir="auto"><strong>Powershell 7 (Recommended) for build</strong></p></li>
-  <li><p dir="auto"><strong>Fork the repo</strong></p></li>
-  <li><p dir="auto"><strong>Open ITT directory in Powershell</strong></p></li>
-  
-```sh
-Set-Location "C:\Users\$env:USERNAME\Documents\Github\ITT"
-```
-  <li><p dir="auto"><strong>..and choose what you will add.</strong></p></li>
-</ul> 
-  
-**Use this Command to add new App.**
-```sh
-newApp.ps1
-```
+<li>Telegram: <a href="https://t.me/emadadel4">emadadel4</a></li>
+<li>GitHub: <a href="https://github.com/emadadel4">emadadel4</a></li>
+<li>Website: <a href="https://www.eprojects.orgfree.com">eprojects</a></li>
+</ul>
 
-**Use this Command to add a new Tweak.**
-Note: you must know what you're doing when you add a new tweak, just be careful and test it before commit
+<h2>Show Your Support</h2>
 
-```sh
-newTweak.ps1
-```
+<p>If this project helped you, please give it a ⭐️!</p>
 
-**Use this Command to add a new Soundtrack.**
-```sh
-newOST.ps1
-```
-
-**Use this Command to add a new Quote.**
-```sh
-newQuote.ps1
-```
-
-## Developer
-
-👤 **Emad Adel**
-
-- Telegram: [emadadel4](https://t.me/emadadel4)
-- Github: [emadadel4](https://github.com/emadadel4)
-- Website: https://www.eprojects.orgfree.com
-
-## Show your support
-
-Give a ⭐️ if this project helped you!
+</body>
+</html>
