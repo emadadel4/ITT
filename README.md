@@ -4,7 +4,7 @@
   </a>
 </p>
   
-<h1 align="center">ITT (Install and Tweaks Tool) 🛠️ 🖥️</h1>
+<h1 align="center">ITT (Install and Tweaks Tool) 🛠️ 🚀</h1>
 
 <p align="center">
   <a target="_blank" rel="noopener noreferrer" href="https://raw.githubusercontent.com/emadadel4/ITT/main/Assets/Images/demo.PNG">
@@ -13,9 +13,13 @@
 </p>
 
 <h2>Overview</h2>
-<p><strong>ITT (Install and Tweak Tool)</strong> is a collection of PowerShell scripts designed to automate the installation of programs and apply Windows tweaks. It simplifies the process of setting up a new Windows environment by providing a streamlined method for installing commonly used software and customizing system settings.</p>
+<p><strong>ITT (Install and Tweak Tool)</strong></p>
 
-<h2>Usage</h2>
+- **Automated Installation**: Say goodbye to manual software installations. ITT automates the process, saving you time and effort.
+- **System Tweaks**: Customize your Windows environment with ease. ITT provides scripts to apply system tweaks for enhanced performance and usability.
+- **Developer-Friendly**: Easy-to-use scripts and clear documentation make ITT accessible for developers of all skill levels.
+
+<h2>🚀 Usage</h2>
 
 <h3>On Windows 10/11:</h3>
 <ol>
@@ -34,7 +38,7 @@
 <pre><code>irm https://raw.githubusercontent.com/emadadel4/ITT/main/itt.ps1 | iex
 </code></pre>
 
-<h2>How to Add a New App/Tweak/OST/Quote</h2>
+<h2> 📦 How to Add a New App/Tweak/OST/Quote</h2>
 <ol>
 <li><strong>Make sure you have PowerShell 7 installed (recommended) for building</strong></li>
 <li><strong>Fork the repository.</strong></li>
