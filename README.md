@@ -42,7 +42,8 @@ irm https://raw.githubusercontent.com/emadadel4/ITT/main/itt.ps1 | iex
   <li><p dir="auto"><strong>Powershell 7 (Recommended) for build</strong></p></li>
   <li><p dir="auto"><strong>Fork the repo</strong></p></li>
   <li><p dir="auto"><strong>Open ITT directory in Powershell</strong></p></li>
-  
+</ul>
+
 ```sh
 Set-Location "C:\Users\$env:USERNAME\Documents\Github\ITT"
 ```
@@ -70,6 +71,17 @@ newOST.ps1
 ```sh
 newQuote.ps1
 ```
+
+<ul>
+  <li><p dir="auto"><strong>After adding any of the previous Commands</strong></p></li>
+
+**Use this Command build**
+```sh
+build.ps1
+```
+
+<li><p dir="auto"><strong>Test it and commit.</strong></p></li>
+</ul>
 
 ## Developer
 
