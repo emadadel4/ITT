@@ -3682,5 +3682,22 @@
     ],
     "category": "Media",
     "check": "false"
+  },
+  {
+    "name": "Firefox ESR",
+    "description": "Bringing together all kinds of awesomeness to make browsing better for you",
+    "winget": "none",
+    "choco": "firefoxesr",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
+    "category": "Browsers",
+    "check": "false"
   }
 ]
