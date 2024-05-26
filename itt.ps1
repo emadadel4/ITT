@@ -9082,16 +9082,17 @@ function GetQuotes {
 
         Start-Sleep -Seconds 15
 
-        # Loop forever and print shuffled names
-        foreach ($name in $shuffledNames) {
+        # Loop through shuffled names and display them
+        do {
+            foreach ($name in $shuffledNames) {
+                $sync.Quotes.Dispatcher.Invoke([Action]{
+                    $sync.Quotes.Text = "`".$name`""
+                })
 
-            $sync.Quotes.Dispatcher.Invoke([Action]{
-                $sync.Quotes.Text = "`".$name`""
-            })
-
-            # Adjust the sleep time as needed
-            Start-Sleep -Seconds 15  
-        }
+                # Adjust the sleep time as needed
+                Start-Sleep -Seconds 15  
+            }
+        } while ($true)
     }
 }
 
