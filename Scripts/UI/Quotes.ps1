@@ -46,7 +46,7 @@ function GetQuotes {
         foreach ($name in $shuffledNames) {
 
             $sync.Quotes.Dispatcher.Invoke([Action]{
-                $sync.Quotes.Text = "`"$name.`""
+                $sync.Quotes.Text = "`".$name`""
             })
 
             # Adjust the sleep time as needed
