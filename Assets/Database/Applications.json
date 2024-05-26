@@ -564,7 +564,7 @@
         "output": "ITT/Downloads"
       }
     ],
-    "category": "Communication",
+    "category": "Microsoft",
     "check": "false"
   },
   {
@@ -3698,6 +3698,40 @@
       }
     ],
     "category": "Browsers",
+    "check": "false"
+  },
+  {
+    "name": "Audio Switcher",
+    "description": "Easily switch the default audio device input or output on any Windows PC Vista and above Using this application you can switch output OR input sound devices at the click of a button or the press of a key I designed this application to be incredibly small and lightweight There is no bloat it does exactly what it should nothing more nothing less",
+    "winget": "none",
+    "choco": "audioswitcher",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
+    "category": "Media",
+    "check": "false"
+  },
+  {
+    "name": "Microsoft Teams Classic Desktop",
+    "description": "Microsoft Teams is a messaging app for teams where all conversations meetings files and notes can be accessed by everyone all in one place Its a place for collaboration and work to happen in the open",
+    "winget": "none",
+    "choco": "microsoft-teams.install",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
+    "category": "Microsoft",
     "check": "false"
   }
 ]
