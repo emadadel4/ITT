@@ -41,7 +41,7 @@
 <h2> 📦 How to Add a New App/Tweak/OST/Quote</h2>
 <ol>
 <li><strong>Make sure you have PowerShell 7 installed (recommended) for building</strong></li>
-<li><strong>Fork the repository.</strong></li>
+<li><strong>Fork the repository and clone it.</strong></li>
 <li><strong>Open the ITT directory in PowerShell:</strong></li>
 </ol>
 
