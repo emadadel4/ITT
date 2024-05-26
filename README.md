@@ -36,7 +36,7 @@
 
 <h2>How to Add a New App/Tweak/OST/Quote</h2>
 <ol>
-<li><strong>Install PowerShell 7 (Recommended) for building.</strong></li>
+<li><strong>Make sure you have PowerShell 7 installed (recommended) for building</strong></li>
 <li><strong>Fork the repository.</strong></li>
 <li><strong>Open the ITT directory in PowerShell:</strong></li>
 </ol>
@@ -70,9 +70,13 @@
 <pre><code>newQuote.ps1
 </code></pre>
 
-<h3>Build and See Your Changes</h3>
+<h3>Build</h3>
 
 <pre><code>build.ps1
+</code></pre>
+
+<h3>See Your Changes</h3>
+<pre><code>itt.ps1
 </code></pre>
 
 <p><em>Remember to test your changes before committing.</em></p>
