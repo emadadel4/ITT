@@ -73,7 +73,7 @@ do {
         foreach ($key in $TweakType.Keys | Sort-Object) {
             Write-Host "$key - $($TweakType[$key])"
         }
-        $choice = Read-Host "Enter the number corresponding to the Key Type"
+        $choice = Read-Host "Enter the number corresponding to the Tweak Type"
         if ([int]$choice -in $TweakType.Keys) {
             $TType = $TweakType[[int]$choice]
         } else {
