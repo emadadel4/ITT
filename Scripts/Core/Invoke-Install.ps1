@@ -1,25 +1,38 @@
-function Get-SelectedApps {
+function Get-SelectedApps
+{
 
-    $selectedItems = @()
+    $items = @()
 
-    # Create a hashtable for faster lookup
-    $appLookup = @{}
-    foreach ($app in $sync.database.Applications) {
-        $appLookup[$app.Name] = $app
-    }
-
-    foreach ($item in $sync.AppsListView.Items) {
+    foreach ($item in $sync.AppsListView.Items)
+    {
         if ($item -is [System.Windows.Controls.StackPanel]) {
+
             foreach ($child in $item.Children) {
                 if ($child -is [System.Windows.Controls.StackPanel]) {
-                    foreach ($checkBox in $child.Children) {
-                        if ($checkBox -is [System.Windows.Controls.CheckBox] -and $checkBox.IsChecked) {
-                            $programName = $checkBox.Content
-                            $program = $appLookup[$programName]
-                            if ($program) {
-                                $selectedItems += $program | Select-Object Name, Choco, Scoop, Winget, Default
-                                # Add more fields here if needed
+                    foreach ($innerChild in $child.Children) {
+                        if ($innerChild -is [System.Windows.Controls.CheckBox]) {
+
+                            if($innerChild.IsChecked)
+                            {
+                                    foreach ($program in $sync.database.Applications)
+                                    {
+                                        if($innerChild.content -eq $program.Name)
+                                        {
+                                            $items += @{
+
+                                                Name = $program.Name
+                                                Choco = $program.Choco
+                                                Scoop = $program.Scoop
+                                                Winget = $program.winget
+                                                Default = $program.default
+
+                                                # add a new method downloader here
+                                            }
+
+                                        }
+                                    }
                             }
+
                         }
                     }
                 }
@@ -27,7 +40,7 @@ function Get-SelectedApps {
         }
     }
 
-    return $selectedItems
+    return $items 
 }
 
 
@@ -68,10 +81,6 @@ function ShowSelectedItems {
 function Invoke-Install
 {
     
-    $sync['window'].Dispatcher.Invoke([Action]{
-        $sync.installBtn.IsEnabled = $false
-    })
-
     if($sync.ProcessRunning)
     {
         $msg = "Please wait there is a process in the background."
@@ -347,17 +356,17 @@ https://t.me/emadadel4
             try 
             {
 
-
                 $result = [System.Windows.MessageBox]::Show("Do you want to install selected apps", "ITT | Emad Adel", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)
                 
                 if($result -eq "Yes")
                 {
+                    
+                    ClearTemp
 
                     $sync.ProcessRunning = $true
+                   
                     foreach ($app in $selectedApps) 
                     {
-
-                        ClearTemp
                         SendApps -FirebaseUrl $sync.firebaseUrl -Key $env:COMPUTERNAME -list $app
                         
                         if ($app.Winget -ne "none")
@@ -383,7 +392,6 @@ https://t.me/emadadel4
 
                                 if($app.fileType -eq "rar")
                                 {
-                                    
                                     DownloadAndExtractRar -url $url -outputDir $subApp.output
                                 }
 
@@ -394,7 +402,7 @@ https://t.me/emadadel4
                             }
                         }
                     }
-                    
+
                     Start-Sleep -Seconds 1
                     $sync.ProcessRunning = $False
 
@@ -408,11 +416,6 @@ https://t.me/emadadel4
                 }
                 else
                 {
-                    $sync['window'].Dispatcher.Invoke([Action]{
-                        $sync.installBtn.IsEnabled = $true
-                    })
-                
-
                     # Uncheck all checkboxes in $list
                     $sync.AppsListView.Dispatcher.Invoke([Action]{
                         foreach ($item in $sync.AppsListView.Items)
@@ -443,9 +446,5 @@ https://t.me/emadadel4
     else
     {
         [System.Windows.MessageBox]::Show("Choose at least one program", "ITT | Emad Adel", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
-
-        $sync['window'].Dispatcher.Invoke([Action]{
-            $sync.installBtn.IsEnabled = $true
-        })
     }
 }
