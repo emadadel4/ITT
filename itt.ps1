@@ -29,7 +29,7 @@ Add-Type -AssemblyName System.Windows.Forms
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "26-05-2024"
+$sync.version = "27-05-2024"
 $sync.github =   "https://github.com/emadadel4"
 $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://eprojects.orgfree.com"
@@ -9104,7 +9104,6 @@ function GetQuotes {
 #region Begin Main
 #===========================================================================
 
-GetQuotes | Out-Null
 
 # Define OnClosing event handler
 $onClosingEvent = {
@@ -9119,13 +9118,21 @@ $onClosingEvent = {
     {
         # Close the window
         StopAllRunspace
-   
-    }else{
+    }
+    else
+    {
         # Cancel closing the window
         $c.Cancel = $true
     }
 }
 
+# Handle the Loaded event
+$sync["window"].Add_Loaded({
+    
+    $sync["window"].Activate()
+    GetQuotes | Out-Null
+
+})
 
 # Add OnClosing event handler to the window
 $sync["window"].add_Closing($onClosingEvent)
