@@ -48,7 +48,8 @@ if($userInput -eq "Default [Native Downloader]")
 {
 
 $AppName = Read-Host "Enter App name"
-$description = Read-Host "Enter Tweak description"
+$description = (Read-Host "Enter app description") -replace '[\W.]', ''
+
 
 $IsExcute = Read-Host "Enter file type [exe] or [Rar]"
 if ($IsExcute -eq "") { $IsExcute = "false" }  # Set default value if empty
