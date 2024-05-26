@@ -72,15 +72,12 @@ newOST.ps1
 newQuote.ps1
 ```
 
-<ul>
-  <li><p dir="auto"><strong>After adding any of the previous Commands</strong></p></li>
-
-**Use this Command build**
+**Use this Command to build and see your changes**
 ```sh
 build.ps1
 ```
 
-<li><p dir="auto"><strong>Test it and commit.</strong></p></li>
+<li><p dir="auto"><strong>Don't forget to test it before commit it.</strong></p></li>
 </ul>
 
 ## Developer
