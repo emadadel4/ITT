@@ -2494,40 +2494,6 @@
     "check": "false"
   },
   {
-    "Name": "Kaspersky Virus Removal Tool",
-    "Description": "Designed to remove different types of infections from an infected PC.",
-    "winget": "none",
-    "choco": "kvrt",
-    "scoop": "none",
-    "default": [
-      {
-        "fileType": "none",
-        "url": "none",
-        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "ITT/Downloads"
-      }
-    ],
-    "category": "Security",
-    "check": "false"
-  },
-  {
-    "Name": "Kaspersky Anti-Virus",
-    "Description": "Antivirus protection from a range of IT threats and provides the basic tools needed to keep your PC secure.",
-    "winget": "none",
-    "choco": "kav",
-    "scoop": "none",
-    "default": [
-      {
-        "fileType": "none",
-        "url": "none",
-        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "ITT/Downloads"
-      }
-    ],
-    "category": "Security",
-    "check": "false"
-  },
-  {
     "Name": "Avast Free Antivirus",
     "Description": "Avast Free Antivirus.",
     "winget": "none",
@@ -3715,6 +3681,23 @@
       }
     ],
     "category": "Media",
+    "check": "false"
+  },
+  {
+    "name": "Firefox ESR",
+    "description": "Bringing together all kinds of awesomeness to make browsing better for you",
+    "winget": "none",
+    "choco": "firefoxesr",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
+    "category": "Browsers",
     "check": "false"
   }
 ]
