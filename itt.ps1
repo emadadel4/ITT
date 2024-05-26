@@ -1320,7 +1320,7 @@ $sync.database.Applications = '[
     "Name": "Display Driver Uninstaller",
     "Description": "Utility to completely remove system drivers",
     "winget": "none",
-    "choco": "none",
+    "choco": "ddu",
     "scoop": "none",
     "default": [
       {
@@ -7694,6 +7694,7 @@ $output = Write-Host "
   |_|  |_|   |_|   |_____|_|  |_/_/   \_\____/_/   \_\____/|_____|_____|
 
  $message
+ 
  (IT Tools) is open source, You can contribute to improving the tool.
  If you have trouble installing a program, report the problem on feedback links
  https://github.com/emadadel4/ITT/issues
@@ -8570,7 +8571,7 @@ https://t.me/emadadel4
                         if ($app.Choco -ne "none")
                         {
                             UpdateUI -InstallBtn "Installing..." -Description "Downloading and Installing..." 
-                            Start-Process -FilePath "choco" -ArgumentList "install $($app.Choco) --confirm --acceptlicense -q -r --ignore-http-cache --allowemptychecksumsecure --allowemptychecksum  --usepackagecodes --ignoredetectedreboot --ignore-checksums" -NoNewWindow -Wait 
+                            Start-Process -FilePath "choco" -ArgumentList "install $($app.Choco) --confirm --acceptlicense -q -r --ignore-http-cache --allowemptychecksumsecure --allowemptychecksum  --usepackagecodes --ignoredetectedreboot --ignore-checksums --ignore-reboot-requests" -NoNewWindow -Wait 
                         }
 
                         if ($app.Default.url -ne "none")
@@ -9130,14 +9131,16 @@ $onClosingEvent = {
 # Add OnClosing event handler to the window
 # Handle the Loaded event
 $sync["window"].Add_Loaded({
-    $sync["window"].Activate()
     GetQuotes | Out-Null
     PlayMusic | Out-Null
+    $sync["window"].Activate()
 })
 
 # Show and close Window
 $sync["window"].add_Closing($onClosingEvent)
 $sync["window"].ShowDialog() | Out-Null
+
+
 #===========================================================================
 #endregion End Main Functions
 #===========================================================================
