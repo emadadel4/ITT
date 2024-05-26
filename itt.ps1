@@ -5145,8 +5145,8 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                 </MenuItem>
 
             <!--Catagory Section-->
-                <ComboBox SelectedIndex="0" Margin="0" VerticalAlignment="Center" HorizontalAlignment="Center" Name="category" Width="100">
-                    <ComboBoxItem Content="All"></ComboBoxItem>
+                <ComboBox SelectedIndex="0" Margin="0" VerticalAlignment="Center" HorizontalAlignment="Center" Name="category" Width="120">
+                    <ComboBoxItem Content="All Categories"></ComboBoxItem>
                     <ComboBoxItem Content="Drivers"></ComboBoxItem>
                     <ComboBoxItem Content="Media"></ComboBoxItem> 
                     <ComboBoxItem Content="Browsers"></ComboBoxItem>
@@ -5215,7 +5215,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                                 </DataTemplate>
                         </TabItem.HeaderTemplate>
                             <TabItem.Content>
-                                <ListView Margin="0" ScrollViewer.VerticalScrollBarVisibility="Auto" Name="list" BorderBrush="{x:Null}" Background="{x:Null}">
+                                <ListView Name="appslist"  Margin="0" ScrollViewer.VerticalScrollBarVisibility="Auto" BorderBrush="{x:Null}" Background="{x:Null}">
                                     
         <StackPanel Orientation="Vertical" Width="auto" Margin="8">
             <StackPanel Orientation="Horizontal">
@@ -6965,7 +6965,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                                         </StackPanel>
                                     </DataTemplate>
                             </TabItem.HeaderTemplate>
-                                <ListView Name="tweaks"  Margin="0" ScrollViewer.VerticalScrollBarVisibility="Auto" BorderBrush="{x:Null}" Background="{x:Null}">
+                                <ListView Name="tweakslist"  Margin="0" ScrollViewer.VerticalScrollBarVisibility="Auto" BorderBrush="{x:Null}" Background="{x:Null}">
                                     
         <StackPanel Orientation="Vertical" Width="auto" Margin="8">
             <StackPanel Orientation="Horizontal">
@@ -7403,26 +7403,17 @@ $sync.Keys | ForEach-Object {
 }
 
 # Catch controls
-$sync.AppsListView = $sync['window'].FindName("list")
+$sync.AppsListView = $sync['window'].FindName("appslist")
+$sync.TweaksListView = $sync['window'].FindName("tweakslist")
+$sync.currentList
+
 $sync.Description = $sync['window'].FindName("description")
 $sync.Quotes = $sync['window'].FindName("quotes")
-$sync.TweaksListView = $sync['window'].FindName("tweaks")
 $sync.itemLink = $sync['window'].FindName('itemLink')
 $sync.installBtn = $sync['window'].FindName('installBtn') 
 $sync.applyBtn = $sync['window'].FindName('applyBtn') 
 $sync.category = $sync['window'].FindName('category')
 $sync.searchInput = $sync['window'].FindName('searchInput')
-
-
-# if($sync.Langusege -eq "en")
-# {
-#     $sync["window"].DataContext = $sync.database.locales.en
-
-# }
-# else
-# {
-#     $sync["window"].DataContext = $sync.database.locales.ar
-# }
 #===========================================================================
 #endregion End loadXmal
 #===========================================================================
@@ -7579,7 +7570,7 @@ function Startup {
         Write-Host (WriteAText -color White -message  "You ready to Install anything.") 
     }
 
-    Send-SystemInfo -FirebaseUrl $sync.firebaseUrl -Key $env:COMPUTERNAME
+    #Send-SystemInfo -FirebaseUrl $sync.firebaseUrl -Key $env:COMPUTERNAME
 
 
 }
@@ -7851,7 +7842,7 @@ function Invoke-ApplyTweaks
                                         if ($innerChild -is [System.Windows.Controls.CheckBox]) {
                         
                                             $innerChild.IsChecked = $false
-                                            $sync['window'].FindName('list').Clear()
+                                            $sync.TweaksListView.Clear()
                                             $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.TweaksListView.Items)
                                             $collectionView.Filter = $null
                                         }
@@ -7970,7 +7961,7 @@ Write-Host "
                                             if ($innerChild -is [System.Windows.Controls.CheckBox]) {
                             
                                                 $innerChild.IsChecked = $false
-                                                $sync['window'].FindName('list').Clear()
+                                                $sync.TweaksListView.Clear()
                                                 $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.TweaksListView.Items)
                                                 $collectionView.Filter = $null
                                             }
@@ -8005,8 +7996,9 @@ function Invoke-Button {
         "installBtn" {Invoke-Install $debug}
         "applyBtn" {Invoke-ApplyTweaks $debug}
         "taps" {ChangeTap $debug}
+        
         "category" {FilterByCat($sync.category.SelectedItem.Content) $debug}
-        "searchInput" {Search; $sync['window'].FindName('category').SelectedIndex = 0; $sync['window'].FindName('apps').IsSelected = $true; $debug }
+        "searchInput" {Search; $sync['window'].FindName('category').SelectedIndex = 0; $debug }
 
         #===========================================================================
         #region Menu items
@@ -8220,7 +8212,7 @@ function Invoke-Install
                                     if ($innerChild -is [System.Windows.Controls.CheckBox]) {
                     
                                         $innerChild.IsChecked = $false
-                                        $sync['window'].FindName('list').Clear()
+                                        $sync.AppsListView.Clear()
                                         $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.AppsListView.Items)
                                         $collectionView.Filter = $null
                                     }
@@ -8479,8 +8471,8 @@ https://t.me/emadadel4
                                         if ($innerChild -is [System.Windows.Controls.CheckBox]) {
                         
                                             $innerChild.IsChecked = $false
-                                            $sync['window'].FindName('list').Clear()
-                                            $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync['window'].FindName('list').Items)
+                                            $sync.AppsListView.Clear()
+                                            $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.AppsListView.Items)
                                             $collectionView.Filter = $null
                                         }
                                     }
@@ -8632,12 +8624,15 @@ function ChangeTap() {
     {
         $sync['window'].FindName('installBtn').Visibility = "Visible"
         $sync['window'].FindName('applyBtn').Visibility = "Hidden"
+
+        $sync.currentList = "appslist"
     }
 
     if($sync['window'].FindName('tweeksTab').IsSelected)
     {
         $sync['window'].FindName('applyBtn').Visibility = "Visible"
         $sync['window'].FindName('installBtn').Visibility = "Hidden"
+        $sync.currentList = "tweakslist"
     }
 }
 # # Define a function to update the description and link when an item is selected
@@ -8867,7 +8862,7 @@ function Search {
     # Retrieves the search input, converts it to lowercase, and filters the list based on the input
     $filter = $sync.searchInput.Text.ToLower() -replace '[^\p{L}\p{N}]', ''
 
-    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync['window'].FindName('list').Items)
+    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync['window'].FindName($sync.currentList).Items)
     
     $collectionView.Filter = {
         param($item)
@@ -8896,7 +8891,7 @@ function FilterByCat {
 
     # if user on Other tab return to apps list
     $sync['window'].FindName('apps').IsSelected = $true
-    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync['window'].FindName('list').Items)
+    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.AppsListView.Items)
 
     # Define the filter predicate
     $filterPredicate = {
@@ -8920,27 +8915,25 @@ function FilterByCat {
                 }
             }
         }
-
-   
     }
 
-    if($Cat -eq "All")
+    if($Cat -eq "All Categories")
     {
-        $sync['window'].FindName('list').Clear()
-        $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync['window'].FindName('list').Items)
+        $sync.AppsListView.Clear()
+        $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.AppsListView.Items)
         $collectionView.Filter = $null
     }
     else
     {
-        $sync['window'].FindName('list').Clear()
+        $sync.AppsListView.Clear()
         # Apply the filter to the collection view
         $collectionView.Filter = $filterPredicate
     }
 }
 
 function ClearFilter {
-    $sync['window'].FindName('list').Clear()
-    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync['window'].FindName('list').Items)
+    $sync.AppsListView.Clear()
+    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.AppsListView.Items)
     $collectionView.Filter = $null
 }
 

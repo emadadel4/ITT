@@ -10,8 +10,9 @@ function Invoke-Button {
         "installBtn" {Invoke-Install $debug}
         "applyBtn" {Invoke-ApplyTweaks $debug}
         "taps" {ChangeTap $debug}
+        
         "category" {FilterByCat($sync.category.SelectedItem.Content) $debug}
-        "searchInput" {Search; $sync['window'].FindName('category').SelectedIndex = 0; $sync['window'].FindName('apps').IsSelected = $true; $debug }
+        "searchInput" {Search; $sync['window'].FindName('category').SelectedIndex = 0; $debug }
 
         #===========================================================================
         #region Menu items

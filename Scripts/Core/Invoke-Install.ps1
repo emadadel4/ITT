@@ -167,7 +167,7 @@ function Invoke-Install
                                     if ($innerChild -is [System.Windows.Controls.CheckBox]) {
                     
                                         $innerChild.IsChecked = $false
-                                        $sync['window'].FindName('list').Clear()
+                                        $sync.AppsListView.Clear()
                                         $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.AppsListView.Items)
                                         $collectionView.Filter = $null
                                     }
@@ -426,8 +426,8 @@ https://t.me/emadadel4
                                         if ($innerChild -is [System.Windows.Controls.CheckBox]) {
                         
                                             $innerChild.IsChecked = $false
-                                            $sync['window'].FindName('list').Clear()
-                                            $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync['window'].FindName('list').Items)
+                                            $sync.AppsListView.Clear()
+                                            $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.AppsListView.Items)
                                             $collectionView.Filter = $null
                                         }
                                     }

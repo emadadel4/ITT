@@ -245,7 +245,7 @@ function Invoke-ApplyTweaks
                                         if ($innerChild -is [System.Windows.Controls.CheckBox]) {
                         
                                             $innerChild.IsChecked = $false
-                                            $sync['window'].FindName('list').Clear()
+                                            $sync.TweaksListView.Clear()
                                             $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.TweaksListView.Items)
                                             $collectionView.Filter = $null
                                         }
@@ -364,7 +364,7 @@ Write-Host "
                                             if ($innerChild -is [System.Windows.Controls.CheckBox]) {
                             
                                                 $innerChild.IsChecked = $false
-                                                $sync['window'].FindName('list').Clear()
+                                                $sync.TweaksListView.Clear()
                                                 $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.TweaksListView.Items)
                                                 $collectionView.Filter = $null
                                             }

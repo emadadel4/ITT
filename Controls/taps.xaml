@@ -10,7 +10,7 @@
                                 </DataTemplate>
                         </TabItem.HeaderTemplate>
                             <TabItem.Content>
-                                <ListView Margin="0" ScrollViewer.VerticalScrollBarVisibility="Auto" Name="list" BorderBrush="{x:Null}" Background="{x:Null}">
+                                <ListView Name="appslist"  Margin="0" ScrollViewer.VerticalScrollBarVisibility="Auto" BorderBrush="{x:Null}" Background="{x:Null}">
                                     {{Apps}}
                                 </ListView>
                             </TabItem.Content>
@@ -24,7 +24,7 @@
                                         </StackPanel>
                                     </DataTemplate>
                             </TabItem.HeaderTemplate>
-                                <ListView Name="tweaks"  Margin="0" ScrollViewer.VerticalScrollBarVisibility="Auto" BorderBrush="{x:Null}" Background="{x:Null}">
+                                <ListView Name="tweakslist"  Margin="0" ScrollViewer.VerticalScrollBarVisibility="Auto" BorderBrush="{x:Null}" Background="{x:Null}">
                                     {{Tweaks}}
                                 </ListView>
                         </TabItem>

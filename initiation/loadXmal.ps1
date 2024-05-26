@@ -157,23 +157,14 @@ $sync.Keys | ForEach-Object {
 }
 
 # Catch controls
-$sync.AppsListView = $sync['window'].FindName("list")
+$sync.AppsListView = $sync['window'].FindName("appslist")
+$sync.TweaksListView = $sync['window'].FindName("tweakslist")
+$sync.currentList
+
 $sync.Description = $sync['window'].FindName("description")
 $sync.Quotes = $sync['window'].FindName("quotes")
-$sync.TweaksListView = $sync['window'].FindName("tweaks")
 $sync.itemLink = $sync['window'].FindName('itemLink')
 $sync.installBtn = $sync['window'].FindName('installBtn') 
 $sync.applyBtn = $sync['window'].FindName('applyBtn') 
 $sync.category = $sync['window'].FindName('category')
 $sync.searchInput = $sync['window'].FindName('searchInput')
-
-
-# if($sync.Langusege -eq "en")
-# {
-#     $sync["window"].DataContext = $sync.database.locales.en
-
-# }
-# else
-# {
-#     $sync["window"].DataContext = $sync.database.locales.ar
-# }
