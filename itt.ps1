@@ -7245,7 +7245,7 @@ $childXaml = '<Window
       <StackPanel Grid.Row="0" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
         <TextBlock Margin="5" TextWrapping="Wrap" FontWeight="Bold" FontSize="30" TextAlignment="Center" Text="ITT"/>
         <TextBlock Margin="5" TextWrapping="Wrap" FontWeight="Bold" FontSize="15" TextAlignment="Center" Text="Install and Tweak Tool"/>
-        <TextBlock Margin="5" TextWrapping="Wrap" Text="Made with ♥  By Emad Adel" TextAlignment="Center"/>
+        <TextBlock Margin="5" TextWrapping="Wrap" Text="Made with ♥ By Emad Adel" TextAlignment="Center"/>
         <TextBlock Margin="5" Name="ver" TextWrapping="Wrap" TextAlignment="Center" Text="2024/4/21"/>
       </StackPanel>
 
