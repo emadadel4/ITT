@@ -17,7 +17,7 @@
 
 - **Automated Installation**: Say goodbye to manual software installations. ITT automates the process, saving you time and effort.
 - **System Tweaks**: Customize your Windows environment with ease. ITT provides scripts to apply system tweaks for enhanced performance and usability.
-- **Developer-Friendly**: Easy-to-use scripts and clear documentation make ITT accessible for developers of all skill levels.
+- **Developer-Friendly**: Easy-to-use and clear documentation to add a new app or tweaks as you like, you can create a new method to download apps. Be creative.
 
 <h2>🚀 Usage</h2>
 
