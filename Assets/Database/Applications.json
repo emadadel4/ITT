@@ -1539,7 +1539,7 @@
     "check": "false"
   },
   {
-    "Name": "Rufus",
+    "Name": "Rufus Portable",
     "Description": "A utility tool for creating bootable USB drives from ISO images, helping users to install or run operating systems, such as Windows, Linux, or other utilities.",
     "winget": "none",
     "choco": "rufus",
@@ -1608,7 +1608,7 @@
     "check": "false"
   },
   {
-    "Name": "Ventoy",
+    "Name": "Ventoy Portable",
     "Description": "An open-source tool for creating bootable USB drives with multiple ISO files, allowing users to boot various operating systems or utilities directly from a single USB drive.",
     "winget": "none",
     "choco": "ventoy",
@@ -3446,7 +3446,7 @@
     "check": "false"
   },
   {
-    "name": "x360ce",
+    "name": "x360ce Portable",
     "description": "Xbox 360 Controller Emulator allows your controller (gamepad joystick, steering wheel, pedals, etc.) to function on your PC as an Xbox 360 controller. It allows you to remap buttons and axes and to drive cars with steering wheel and pedals or to fly planes with joystick and throttle in games",
     "winget": "none",
     "choco": "none",
@@ -3732,6 +3732,74 @@
       }
     ],
     "category": "Microsoft",
+    "check": "false"
+  },
+  {
+    "name": "Microsoft .NET 7.0 Desktop Runtime",
+    "description": "NET Core is a general purpose development platform maintained by Microsoft and the NET community on GitHub It is crossplatform supporting Windows macOS and Linux and can be used in device cloud and embeddedIoT scenarios",
+    "winget": "none",
+    "choco": "dotnet-7.0-desktopruntime",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
+    "category": "Development",
+    "check": "false"
+  },
+  {
+    "name": "Microsoft Windows SDK for Windows 10 and .NET Framework 4.7",
+    "description": "The Windows 10 SDK for Windows 10 version 1809 provides the latest headers libraries metadata and tools for building Windows 10 apps NoteWindows 10 development targeting Windows 10 version 1903 or later requires Visual Studio 2017 or later This SDK will not be discovered by previous versions of Visual Studio",
+    "winget": "none",
+    "choco": "windows-sdk-10.1",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
+    "category": "Development",
+    "check": "false"
+  },
+  {
+    "name": "Microsoft .NET 8.0 Desktop Runtime 8.0.5",
+    "description": "NET is a general purpose development platform maintained by Microsoft and the NET community on GitHub It is crossplatform supporting Windows macOS and Linux and can be used in device cloud and embeddedIoT scenarios",
+    "winget": "none",
+    "choco": "dotnet-8.0-desktopruntime",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
+    "category": "Development",
+    "check": "false"
+  },
+  {
+    "name": "RunAsDate Portable",
+    "description": "RunAsDate is a small utility that allows you to run a program in the date and time that you specify This utility doesnt change the current system date and time of your computer but it only injects the datetime that you specify into the desired application",
+    "winget": "none",
+    "choco": "runasdate",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
+    "category": "Utilities",
     "check": "false"
   }
 ]
