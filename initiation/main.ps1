@@ -1,3 +1,5 @@
+# Check Chocolatey is Installed or not
+CheckChoco
 
 # Define OnClosing event handler
 $onClosingEvent = {
@@ -10,7 +12,7 @@ $onClosingEvent = {
     # Check user's choice
     if ($result -eq "Yes")
     {
-        # Close the window
+        # Close the window and stop all runspace
         StopAllRunspace
     }
     else
@@ -20,16 +22,14 @@ $onClosingEvent = {
     }
 }
 
+# Add OnClosing event handler to the window
 # Handle the Loaded event
 $sync["window"].Add_Loaded({
-    
     $sync["window"].Activate()
     GetQuotes | Out-Null
-
+    PlayMusic | Out-Null
 })
 
-# Add OnClosing event handler to the window
+# Show and close Window
 $sync["window"].add_Closing($onClosingEvent)
-
-# Show the window
 $sync["window"].ShowDialog() | Out-Null

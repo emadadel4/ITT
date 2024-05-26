@@ -406,11 +406,11 @@ https://t.me/emadadel4
                     Start-Sleep -Seconds 1
                     $sync.ProcessRunning = $False
 
-                    #CustomMsg -title "ITT | Emad Adel" -msg "Installed successfully" -MessageBoxImage "Information" -MessageBoxButton "OK"
+                    CustomMsg -title "ITT | Emad Adel" -msg "Installed successfully" -MessageBoxImage "Information" -MessageBoxButton "OK"
+                    Notify -title "ITT Emad Adel" -msg "Installed successfully" -icon "Info" -time 5666
 
                     # Uncheck all checkboxes in $list
                     Start-Sleep -Seconds 1
-                    Notify -title "ITT Emad Adel" -msg "Installed successfully" -icon "Info" -time 5666
                     Finish
 
                 }

@@ -1,4 +1,3 @@
-
 function Invoke-ScriptBlock {
     param(
         [scriptblock]$ScriptBlock,

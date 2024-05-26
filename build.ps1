@@ -189,7 +189,6 @@ try {
 
 "@
 
-
     WriteToScript -Content @"
 #===========================================================================
 #region Begin Database /APPS/TWEEAKS/Quotes/OST
@@ -300,36 +299,22 @@ WriteToScript -Content @"
 
 "@
 
-WriteToScript -Content @"
-
+    # Write Main section
+    WriteToScript -Content @"
 #===========================================================================
-#region Begin Functions
+#region Begin Main Functions
 #===========================================================================
 
 "@
 
     ProcessDirectory -Directory $ScritsDirectory
 
-    WriteToScript -Content @"
-#===========================================================================
-#endregion End Functions
-#===========================================================================
-
-"@
-
-    # Write Main section
-    WriteToScript -Content @"
-#===========================================================================
-#region Begin Main
-#===========================================================================
-
-"@
-
     AddFileContentToScript -FilePath $MainScript
 
+
     WriteToScript -Content @"
 #===========================================================================
-#endregion End Main
+#endregion End Main Functions
 #===========================================================================
 
 "@

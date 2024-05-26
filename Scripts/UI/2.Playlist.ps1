@@ -1,3 +1,4 @@
+
 #region PlayMusic Functions
 function PlayMusic {
 
@@ -74,6 +75,4 @@ function StopAllRunspace {
     $newProcess.exit
     Write-Host "Bye see you soon. :)" 
 }
-
-PlayMusic | Out-Null
 #endregion
