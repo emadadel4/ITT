@@ -379,7 +379,7 @@ https://t.me/emadadel4
                         if ($app.Choco -ne "none")
                         {
                             UpdateUI -InstallBtn "Installing..." -Description "Downloading and Installing..." 
-                            Start-Process -FilePath "choco" -ArgumentList "install $($app.Choco) --confirm --acceptlicense -q -r --ignore-http-cache --allowemptychecksumsecure --allowemptychecksum  --usepackagecodes --ignoredetectedreboot --ignore-checksums" -NoNewWindow -Wait 
+                            Start-Process -FilePath "choco" -ArgumentList "install $($app.Choco) --confirm --acceptlicense -q -r --ignore-http-cache --allowemptychecksumsecure --allowemptychecksum  --usepackagecodes --ignoredetectedreboot --ignore-checksums --ignore-reboot-requests" -NoNewWindow -Wait 
                         }
 
                         if ($app.Default.url -ne "none")
