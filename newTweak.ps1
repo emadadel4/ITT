@@ -52,7 +52,8 @@ if($userInput -eq "Registry")
 {
 
 $TweakName = Read-Host "Enter Tweak Name"
-$description = Read-Host "Enter Tweak description"
+$description = (Read-Host "Enter Tweak description").Trim() -replace '[^\w\s]', ''
+
 
 # Read multiple AppxPackage Names
 $Names = @()
@@ -186,7 +187,7 @@ if($userInput -eq "RemoveAppxPackage")
 {
 
 $TweakName = Read-Host "Enter Tweak Name"
-$description = Read-Host "Enter Tweak description"
+$description = (Read-Host "Enter tweak description").Trim() -replace '[^\w\s]', ''
 
 # Read multiple AppxPackage Names
 $Names = @()
@@ -257,7 +258,7 @@ if($userInput -eq "Commands")
 {
     
 $TweakName = Read-Host "Enter Tweak Name"
-$description = Read-Host "Enter Tweak description"
+$description = (Read-Host "Enter tweak description").Trim() -replace '[^\w\s]', ''
 $cmd = Read-Host "Enter command"
 
 
@@ -322,7 +323,7 @@ if($userInput -eq "Service")
 {
 
 $TweakName = Read-Host "Enter Tweak Name"
-$description = Read-Host "Enter Tweak description"
+$description = (Read-Host "Enter tweak description").Trim() -replace '[^\w\s]', ''
 
 # Read multiple Disable Services Names
 $Names = @()
