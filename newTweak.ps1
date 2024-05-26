@@ -84,7 +84,7 @@ do {
 
 
 
-    $continue = Read-Host "Do you want to add another Path? (y/n)"
+    $continue = Read-Host "Do you want to add another Path in current Tweak? (y/n)"
 } while ($continue -eq "y")
 
 
@@ -158,7 +158,7 @@ $Names = @()
 do {
     $Name = Read-Host "Enter AppxPackage Name"
     $Names += $Name
-    $continue = Read-Host "Do you want to add another AppxPackage Name? (y/n)"
+    $continue = Read-Host "Do you want to add another AppxPackage in current Tweak? (y/n)"
 } while ($continue -eq "y")
 
 
@@ -294,11 +294,36 @@ $Names = @()
 do {
 
     $Name = Read-Host "Enter Service Name"
-    $StartupType = Read-Host "Enter Service StartupType"
-    $Automatic = Read-Host "Enter Service Default State"
+
+    $StartupType = @{
+
+        1 = "Disabled"
+        2 = "Automatic"
+        3 = "Automatic"
+        4 = "Manual "
+    }
+    
+    # Prompt user to choose KeyType
+    do {
+        Write-Host "What is Startup Type will be?"
+        foreach ($key in $StartupType.Keys | Sort-Object) {
+            Write-Host "$key - $($StartupType[$key])"
+        }
+        $choice = Read-Host "Enter the number corresponding to the Key Type"
+        if ([int]$choice -in $StartupType.Keys) {
+            $Type = $StartupType[[int]$choice]
+        } else {
+            Write-Host "Invalid choice. Please select a valid option."
+        }
+    } until ([int]$choice -in $StartupType.Keys)
+
+
+    $Automatic = Read-Host "Enter Service Default State: You can skip this Press [Enter]"
+    if ($Automatic -eq "") { $Automatic = "Manual" }  # Set default value if empty
+
     $Names += $Name
 
-    $continue = Read-Host "Do you want to add another Service ? (y/n)"
+    $continue = Read-Host "Do you want to add another Service in current Tweak ? (y/n)"
 } while ($continue -eq "y")
 
 
@@ -314,7 +339,7 @@ $data = [Ordered]@{
         $Names | ForEach-Object {
             [Ordered]@{
                 "Name" = $_
-                "StartupType" = $StartupType
+                "StartupType" = $Type
                 "DefaultType" = $Automatic
             }
         }
