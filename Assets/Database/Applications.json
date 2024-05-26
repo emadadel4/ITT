@@ -1251,7 +1251,7 @@
     "Name": "Display Driver Uninstaller",
     "Description": "Utility to completely remove system drivers",
     "winget": "none",
-    "choco": "none",
+    "choco": "ddu",
     "scoop": "none",
     "default": [
       {
