@@ -1,5 +1,20 @@
 Clear-Host
 
+
+Write-Host "
+
+
+
+ ___ _____ _____   ____    _  _____  _    ____    _    ____  _____ 
+ |_ _|_   _|_   _| |  _ \  / \|_   _|/ \  | __ )  / \  / ___|| ____|
+  | |  | |   | |   | | | |/ _ \ | | / _ \ |  _ \ / _ \ \___ \|  _|  
+  | |  | |   | |   | |_| / ___ \| |/ ___ \| |_) / ___ \ ___) | |___ 
+ |___| |_|   |_|   |____/_/   \_\_/_/   \_\____/_/   \_\____/|_____|
+
+
+
+"
+
 $validCategories = @{
 
     # Available options
@@ -44,6 +59,28 @@ $description = Read-Host "Enter Tweak description"
 $Names = @()
 # Read multiple AppxPackage Names
 do {
+
+
+    $TweakType = @{
+
+        1 = "modifying"
+        2 = "delete"
+    }
+    
+    # Prompt user to choose KeyType
+    do {
+        Write-Host "This tweak will do?"
+        foreach ($key in $TweakType.Keys | Sort-Object) {
+            Write-Host "$key - $($TweakType[$key])"
+        }
+        $choice = Read-Host "Enter the number corresponding to the Key Type"
+        if ([int]$choice -in $TweakType.Keys) {
+            $TType = $TweakType[[int]$choice]
+        } else {
+            Write-Host "Invalid choice. Please select a valid option."
+        }
+    } until ([int]$choice -in $TweakType.Keys)
+
 
     $Path = Read-Host "Enter Reg Path"
     $Name = Read-Host "Enter Value Name"
@@ -93,7 +130,7 @@ $data = @{
     "name" = $TweakName
     "description" = $description
     "check" = "false"
-    "type" = "AppxPackage"
+    "type" = $TType
     "refresh" = "false"
     "$userInput" = @(
         $Names | ForEach-Object {
