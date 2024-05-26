@@ -25,11 +25,12 @@ $onClosingEvent = {
 # Add OnClosing event handler to the window
 # Handle the Loaded event
 $sync["window"].Add_Loaded({
-    $sync["window"].Activate()
     GetQuotes | Out-Null
     PlayMusic | Out-Null
+    $sync["window"].Activate()
 })
 
 # Show and close Window
 $sync["window"].add_Closing($onClosingEvent)
 $sync["window"].ShowDialog() | Out-Null
+
