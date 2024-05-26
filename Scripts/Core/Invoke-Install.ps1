@@ -406,11 +406,13 @@ https://t.me/emadadel4
                     Start-Sleep -Seconds 1
                     $sync.ProcessRunning = $False
 
-                    CustomMsg -title "ITT | Emad Adel" -msg "Installed successfully" -MessageBoxImage "Information" -MessageBoxButton "OK"
-                    Notify -title "ITT Emad Adel" -msg "Installed successfully" -icon "Info" -time 5666
+                    CustomMsg -title "ITT | Emad Adel" -msg "Installed successfully: Portable Apps will save in C:\ProgramData\chocolatey\lib" -MessageBoxImage "Information" -MessageBoxButton "OK"
+                    Notify -title "ITT Emad Adel" -msg "Installed successfully: Portable Apps will save in C:\ProgramData\chocolatey\lib" -icon "Info" -time 5666
+
+                    Write-Host "Portable Apps will save in C:\ProgramData\chocolatey\lib" -ForegroundColor Yellow
 
                     # Uncheck all checkboxes in $list
-                    Start-Sleep -Seconds 1
+                    Start-Sleep -Seconds 3
                     Finish
 
                 }
