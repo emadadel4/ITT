@@ -166,15 +166,19 @@ function Invoke-ApplyTweaks
                 
                         # Check if the registry key exists
                         if (Test-Path "Registry::$KeyPath") {
+
                             # Delete the registry key and all subkeys recursively
+
                             Remove-Item -Path "Registry::$KeyPath" -Recurse -Force
-                            Write-Output "Registry key '$KeyPath' and its subkeys have been deleted." -ForegroundColor Yellow
+
+                            Write-Host "successful removed" -ForegroundColor Yellow
+
                         } else {
-                            Write-Output "Registry key '$KeyPath' does not exist." -ForegroundColor Red
+                            Write-Host "Registry key '$KeyPath' does not exist." -ForegroundColor Red
                         }
                     }
                     catch {
-                        Write-Output "An error occurred: $_" -ForegroundColor red
+                        Write-Host "An error occurred: $_" -ForegroundColor red
                     }
                 }
 
@@ -315,24 +319,18 @@ Write-Host "
                                 }
                                 "modifying" {
 
-                                    foreach ($mod in $app.registry) {
+                                    foreach ($mod in $app.Registry) {
                                         Set-RegistryValue -Name $mod.Name -Type $mod.Type -Path $mod.Path -Value $mod.Value
-                                    }
-
-                                    if($app.Refresh -eq "true")
-                                    {
-                                        Write-Host "Restart windows explorer"
-                                        Stop-Process -Name explorer -Force; Start-Process explorer
                                     }
 
                                 }
                                 "delete" {
-                                    foreach ($re in $app.registry) {
-                                        Remove-RegistryValue -Path $re.Path -Name $re.Name
+                                    foreach ($re in $app.Registry) {
+                                        Remove-RegistryValue -RegistryPath $re.Path -Folder $re.Name
                                     }
                                 }
                                 "service" {
-                                    foreach ($se in $app.service) {
+                                    foreach ($se in $app.Service) {
                                         Disable-Service -Name $se.Name -StartupType $se.StartupType
                                     }
                                 }

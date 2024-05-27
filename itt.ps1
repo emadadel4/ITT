@@ -4090,14 +4090,110 @@ $sync.database.Tweaks = '[
       
       "
         takeown /f C:\\Windows\\System32\\GameBarPresenceWriter.exe
+
         takeown /f C:\\Windows\\System32\\GameBarPresenceWriter.proxy.dll
+
         takeown /f C:\\Windows\\System32\\Windows.Gaming.UI.GameBar.dll
+
+        Start-Sleep -Seconds 1
+
+
         icacls C:\\Windows\\System32\\GameBarPresenceWriter.exe /grant administrators:F
+
         icacls C:\\Windows\\System32\\GameBarPresenceWriter.proxy.dll /grant administrators:F
+
         icacls C:\\Windows\\System32\\Windows.Gaming.UI.GameBar.dll /grant administrators:F
-        Rename-Item C:\\Windows\\System32\\GameBarPresenceWriter.exe GameBarPresenceWriter.exe_backup
-        Rename-Item C:\\Windows\\System32\\GameBarPresenceWriter.proxy.dll GameBarPresenceWriter.proxy.dll_backup
-        Rename-Item C:\\Windows\\System32\\Windows.Gaming.UI.GameBar.dll Windows.Gaming.UI.GameBar.dll_backup
+
+        Start-Sleep -Seconds 1
+
+
+        Rename-Item C:\\Windows\\System32\\GameBarPresenceWriter.exe -NewName GameBarPresenceWriter.exe_backup
+
+        Rename-Item C:\\Windows\\System32\\GameBarPresenceWriter.proxy.dll -NewName GameBarPresenceWriter.proxy.dll_backup
+
+        Rename-Item C:\\Windows\\System32\\Windows.Gaming.UI.GameBar.dll -NewName Windows.Gaming.UI.GameBar.dll_backup
+
+      "
+
+    ],
+    "UndoCommand": [
+      ""
+    ]
+  },
+  {
+    "name": "Remove Onedrive",
+    "description": "",
+    "check": "false",
+    "type": "command",
+    "refresh": "false",
+    "InvokeCommand": [
+      
+      "
+      Write-Host \"Kill OneDrive process\"
+      taskkill.exe /F /IM \"OneDrive.exe\"
+      taskkill.exe /F /IM \"explorer.exe\"
+
+      Write-Host \"Copy all OneDrive to Root UserProfile\"
+      Start-Process -FilePath powershell -ArgumentList \"robocopy ''$($env:USERPROFILE.TrimEnd())\\OneDrive'' ''$($env:USERPROFILE.TrimEnd())\\'' /e /xj\" -NoNewWindow -Wait
+
+      Write-Host \"Remove OneDrive\"
+      Start-Process -FilePath winget -ArgumentList \"uninstall -e --purge --force --silent Microsoft.OneDrive \" -NoNewWindow -Wait
+
+      Write-Host \"Removing OneDrive leftovers\"
+      Remove-Item -Recurse -Force -ErrorAction SilentlyContinue \"$env:localappdata\\Microsoft\\OneDrive\"
+      Remove-Item -Recurse -Force -ErrorAction SilentlyContinue \"$env:localappdata\\OneDrive\"
+      Remove-Item -Recurse -Force -ErrorAction SilentlyContinue \"$env:programdata\\Microsoft OneDrive\"
+      Remove-Item -Recurse -Force -ErrorAction SilentlyContinue \"$env:systemdrive\\OneDriveTemp\"
+      # check if directory is empty before removing:
+      If ((Get-ChildItem \"$env:userprofile\\OneDrive\" -Recurse | Measure-Object).Count -eq 0) {
+          Remove-Item -Recurse -Force -ErrorAction SilentlyContinue \"$env:userprofile\\OneDrive\"
+      }
+
+      Write-Host \"Remove Onedrive from explorer sidebar\"
+      Set-ItemProperty -Path \"HKCR:\\CLSID\\{018D5C66-4533-4307-9B53-224DE2ED1FE6}\" -Name \"System.IsPinnedToNameSpaceTree\" -Value 0
+      Set-ItemProperty -Path \"HKCR:\\Wow6432Node\\CLSID\\{018D5C66-4533-4307-9B53-224DE2ED1FE6}\" -Name \"System.IsPinnedToNameSpaceTree\" -Value 0
+
+      Write-Host \"Removing run hook for new users\"
+      reg load \"hku\\Default\" \"C:\\Users\\Default\\NTUSER.DAT\"
+      reg delete \"HKEY_USERS\\Default\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run\" /v \"OneDriveSetup\" /f
+      reg unload \"hku\\Default\"
+
+      Write-Host \"Removing startmenu entry\"
+      Remove-Item -Force -ErrorAction SilentlyContinue \"$env:userprofile\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\OneDrive.lnk\"
+
+      Write-Host \"Removing scheduled task\"
+      Get-ScheduledTask -TaskPath ''\\'' -TaskName ''OneDrive*'' -ea SilentlyContinue | Unregister-ScheduledTask -Confirm:$false
+
+      # Add Shell folders restoring default locations
+      Write-Host \"Shell Fixing\"
+      Set-ItemProperty -Path \"HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\User Shell Folders\" -Name \"AppData\" -Value \"$env:userprofile\\AppData\\Roaming\" -Type ExpandString
+      Set-ItemProperty -Path \"HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\User Shell Folders\" -Name \"Cache\" -Value \"$env:userprofile\\AppData\\Local\\Microsoft\\Windows\\INetCache\" -Type ExpandString
+      Set-ItemProperty -Path \"HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\User Shell Folders\" -Name \"Cookies\" -Value \"$env:userprofile\\AppData\\Local\\Microsoft\\Windows\\INetCookies\" -Type ExpandString
+      Set-ItemProperty -Path \"HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\User Shell Folders\" -Name \"Favorites\" -Value \"$env:userprofile\\Favorites\" -Type ExpandString
+      Set-ItemProperty -Path \"HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\User Shell Folders\" -Name \"History\" -Value \"$env:userprofile\\AppData\\Local\\Microsoft\\Windows\\History\" -Type ExpandString
+      Set-ItemProperty -Path \"HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\User Shell Folders\" -Name \"Local AppData\" -Value \"$env:userprofile\\AppData\\Local\" -Type ExpandString
+      Set-ItemProperty -Path \"HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\User Shell Folders\" -Name \"My Music\" -Value \"$env:userprofile\\Music\" -Type ExpandString
+      Set-ItemProperty -Path \"HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\User Shell Folders\" -Name \"My Video\" -Value \"$env:userprofile\\Videos\" -Type ExpandString
+      Set-ItemProperty -Path \"HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\User Shell Folders\" -Name \"NetHood\" -Value \"$env:userprofile\\AppData\\Roaming\\Microsoft\\Windows\\Network Shortcuts\" -Type ExpandString
+      Set-ItemProperty -Path \"HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\User Shell Folders\" -Name \"PrintHood\" -Value \"$env:userprofile\\AppData\\Roaming\\Microsoft\\Windows\\Printer Shortcuts\" -Type ExpandString
+      Set-ItemProperty -Path \"HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\User Shell Folders\" -Name \"Programs\" -Value \"$env:userprofile\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\" -Type ExpandString
+      Set-ItemProperty -Path \"HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\User Shell Folders\" -Name \"Recent\" -Value \"$env:userprofile\\AppData\\Roaming\\Microsoft\\Windows\\Recent\" -Type ExpandString
+      Set-ItemProperty -Path \"HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\User Shell Folders\" -Name \"SendTo\" -Value \"$env:userprofile\\AppData\\Roaming\\Microsoft\\Windows\\SendTo\" -Type ExpandString
+      Set-ItemProperty -Path \"HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\User Shell Folders\" -Name \"Start Menu\" -Value \"$env:userprofile\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\" -Type ExpandString
+      Set-ItemProperty -Path \"HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\User Shell Folders\" -Name \"Startup\" -Value \"$env:userprofile\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\" -Type ExpandString
+      Set-ItemProperty -Path \"HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\User Shell Folders\" -Name \"Templates\" -Value \"$env:userprofile\\AppData\\Roaming\\Microsoft\\Windows\\Templates\" -Type ExpandString
+      Set-ItemProperty -Path \"HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\User Shell Folders\" -Name \"{374DE290-123F-4565-9164-39C4925E467B}\" -Value \"$env:userprofile\\Downloads\" -Type ExpandString
+      Set-ItemProperty -Path \"HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\User Shell Folders\" -Name \"Desktop\" -Value \"$env:userprofile\\Desktop\" -Type ExpandString
+      Set-ItemProperty -Path \"HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\User Shell Folders\" -Name \"My Pictures\" -Value \"$env:userprofile\\Pictures\" -Type ExpandString
+      Set-ItemProperty -Path \"HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\User Shell Folders\" -Name \"Personal\" -Value \"$env:userprofile\\Documents\" -Type ExpandString
+      Set-ItemProperty -Path \"HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\User Shell Folders\" -Name \"{F42EE2D3-909F-4907-8871-4C22FC0BF756}\" -Value \"$env:userprofile\\Documents\" -Type ExpandString
+      Set-ItemProperty -Path \"HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\User Shell Folders\" -Name \"{0DDD015D-B06C-45D5-8C4C-F59713854639}\" -Value \"$env:userprofile\\Pictures\" -Type ExpandString
+      Write-Host \"Restarting explorer\"
+      Start-Process \"explorer.exe\"
+
+      Write-Host \"Waiting for explorer to complete loading\"
+      Write-Host \"Please Note - OneDrive folder may still have items in it. You must manually delete it, but all the files should already be copied to the base user folder.\"
+      Start-Sleep 5
       "
 
     ],
@@ -7404,6 +7500,14 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
 
         <StackPanel Orientation="Vertical" Width="auto" Margin="8">
             <StackPanel Orientation="Horizontal">
+                <CheckBox Content="Remove Onedrive"   FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content=""/>
+            </StackPanel>
+                <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text=""/>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+            <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Fix Stutter/Lag in Games"   FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content=""/>
             </StackPanel>
@@ -8059,15 +8163,19 @@ function Invoke-ApplyTweaks
                 
                         # Check if the registry key exists
                         if (Test-Path "Registry::$KeyPath") {
+
                             # Delete the registry key and all subkeys recursively
+
                             Remove-Item -Path "Registry::$KeyPath" -Recurse -Force
-                            Write-Output "Registry key '$KeyPath' and its subkeys have been deleted." -ForegroundColor Yellow
+
+                            Write-Host "successful removed" -ForegroundColor Yellow
+
                         } else {
-                            Write-Output "Registry key '$KeyPath' does not exist." -ForegroundColor Red
+                            Write-Host "Registry key '$KeyPath' does not exist." -ForegroundColor Red
                         }
                     }
                     catch {
-                        Write-Output "An error occurred: $_" -ForegroundColor red
+                        Write-Host "An error occurred: $_" -ForegroundColor red
                     }
                 }
 
@@ -8208,24 +8316,18 @@ Write-Host "
                                 }
                                 "modifying" {
 
-                                    foreach ($mod in $app.registry) {
+                                    foreach ($mod in $app.Registry) {
                                         Set-RegistryValue -Name $mod.Name -Type $mod.Type -Path $mod.Path -Value $mod.Value
-                                    }
-
-                                    if($app.Refresh -eq "true")
-                                    {
-                                        Write-Host "Restart windows explorer"
-                                        Stop-Process -Name explorer -Force; Start-Process explorer
                                     }
 
                                 }
                                 "delete" {
-                                    foreach ($re in $app.registry) {
-                                        Remove-RegistryValue -Path $re.Path -Name $re.Name
+                                    foreach ($re in $app.Registry) {
+                                        Remove-RegistryValue -RegistryPath $re.Path -Folder $re.Name
                                     }
                                 }
                                 "service" {
-                                    foreach ($se in $app.service) {
+                                    foreach ($se in $app.Service) {
                                         Disable-Service -Name $se.Name -StartupType $se.StartupType
                                     }
                                 }
