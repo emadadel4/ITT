@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://techforpalestine.org/learn-more" rel="nofollow">
-    <img src="https://raw.githubusercontent.com/Safouene1/support-palestine-banner/master/StandWithPalestine.svg" alt="Ceasefire Now" style="max-width: 100%;">
+    <img src="https://raw.githubusercontent.com/Safouene1/support-palestine-banner/master/StandWithPalestine.svg" alt="Ceasefire Now" style="width:50%;">
   </a>
 </p>
   
