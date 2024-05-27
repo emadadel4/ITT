@@ -4061,9 +4061,7 @@ $sync.database.Tweaks = '[
     "type": "command",
     "refresh": "false",
     "InvokeCommand": [
-      "
-        cleanmgr.exe /d C: /VERYLOWDISK /sagerun:1 Dism.exe /online /Cleanup-Image /StartComponentCleanup /ResetBase
-      "
+      "cleanmgr.exe /d C: /VERYLOWDISK /sagerun:1 Dism.exe /online /Cleanup-Image /StartComponentCleanup /ResetBase"
     ],
     "UndoCommand": [
       ""
@@ -4076,11 +4074,7 @@ $sync.database.Tweaks = '[
     "type": "command",
     "refresh": "false",
     "InvokeCommand": [
-
-        "
-          Invoke-RestMethod https://raw.githubusercontent.com/emadadel4/WindowsTweaks/main/restore.bat | Invoke-Expression
-        "
-        
+      "Invoke-RestMethod https://raw.githubusercontent.com/emadadel4/WindowsTweaks/main/restore.bat | Invoke-Expression"
     ],
     "UndoCommand": [
       ""
@@ -7874,8 +7868,7 @@ function Startup {
         Write-Host (WriteAText -color White -message  "You ready to Install anything.") 
     }
 
-    #Send-SystemInfo -FirebaseUrl $sync.firebaseUrl -Key $env:COMPUTERNAME
-
+    Send-SystemInfo -FirebaseUrl $sync.firebaseUrl -Key $env:COMPUTERNAME
 
 
 }
@@ -8000,7 +7993,7 @@ function Invoke-ApplyTweaks
 
                 param($tweaks)
 
-                function Execute-Command {
+                function ExecuteCommand {
                     param (
                         [string]$Command
                     )
@@ -8210,7 +8203,7 @@ Write-Host "
                             switch ($app.Type) {
                                 "command" {
                                     foreach ($cmd in $app.Command) {
-                                        Execute-Command -Command $cmd
+                                        ExecuteCommand -Command $cmd
                                     }
                                 }
                                 "modifying" {
@@ -8681,7 +8674,7 @@ https://t.me/emadadel4
             function DownloadAndInstallExe {
                 param (
                     [string]$url,
-                    [string]$Args
+                    [string]$exeArgs
                 )
             
                 $destination = "$env:temp/setup.exe"
@@ -8700,7 +8693,7 @@ https://t.me/emadadel4
                     }
                 }
                 
-                Start-Process -Wait $destination -ArgumentList $Args
+                Start-Process -Wait $destination -ArgumentList $exeArgs
             }
 
             try 
@@ -8748,7 +8741,7 @@ https://t.me/emadadel4
 
                                 if($app.fileType -eq "exe")
                                 {
-                                    DownloadAndInstallExe -url $url $Args $app.exeArgs
+                                    DownloadAndInstallExe -url $url $exeArgs $app.exeArgs
                                 }
                             }
                         }
