@@ -8312,24 +8312,18 @@ Write-Host "
                                 }
                                 "modifying" {
 
-                                    foreach ($mod in $app.registry) {
+                                    foreach ($mod in $app.Registry) {
                                         Set-RegistryValue -Name $mod.Name -Type $mod.Type -Path $mod.Path -Value $mod.Value
-                                    }
-
-                                    if($app.Refresh -eq "true")
-                                    {
-                                        Write-Host "Restart windows explorer"
-                                        Stop-Process -Name explorer -Force; Start-Process explorer
                                     }
 
                                 }
                                 "delete" {
-                                    foreach ($re in $app.registry) {
+                                    foreach ($re in $app.Registry) {
                                         Remove-RegistryValue -Path $re.Path -Name $re.Name
                                     }
                                 }
                                 "service" {
-                                    foreach ($se in $app.service) {
+                                    foreach ($se in $app.Service) {
                                         Disable-Service -Name $se.Name -StartupType $se.StartupType
                                     }
                                 }
