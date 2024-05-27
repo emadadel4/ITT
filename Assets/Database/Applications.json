@@ -3801,5 +3801,22 @@
     ],
     "category": "Utilities",
     "check": "false"
+  },
+  {
+    "name": "Visual Studio 2017 Build ",
+    "description": "These Build Tools allow you to build native and managed MSBuildbased applications without requiring the Visual Studio IDE There are options to install the Visual C compilers and libraries MFC ATL and CCLI support",
+    "winget": "none",
+    "choco": "visualstudio2017buildtools",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
+    "category": "Development",
+    "check": "false"
   }
 ]
