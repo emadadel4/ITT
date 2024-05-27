@@ -4765,6 +4765,13 @@ $sync.database.Tweaks = '[
         "Type": "DWord",
         "Value": "1",
         "defaultValue": "0"
+      },
+      {
+        "Path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Run",
+        "Name": "OneDrive",
+        "Type": "ExpandString",
+        "Value": "",
+        "defaultValue": ""
       }
     ],
     "InvokeCommand": [
@@ -8040,7 +8047,8 @@ function Invoke-ApplyTweaks
                             Write-Output "Registry path does not exist. Creating it..."
                             # Try to create the registry path
                             try {
-                                New-Item -Path $Path -Force -ErrorAction Stop | Out-Null
+                                New-Item -Path $Path -Name $Name -Type $Type -Value $Value -Force -ErrorAction Stop | Out-Null
+                                
                                 Write-Output "Registry path created successfully."
                             } catch {
                                 Write-Output "Failed to create registry path: $_"

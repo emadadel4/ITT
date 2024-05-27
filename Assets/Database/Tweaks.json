@@ -723,6 +723,13 @@
         "Type": "DWord",
         "Value": "1",
         "defaultValue": "0"
+      },
+      {
+        "Path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Run",
+        "Name": "OneDrive",
+        "Type": "String",
+        "Value": "",
+        "defaultValue": ""
       }
     ],
     "InvokeCommand": [
