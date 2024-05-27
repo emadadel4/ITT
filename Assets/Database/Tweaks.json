@@ -5,11 +5,11 @@
     "check": "false",
     "type": "command",
     "refresh": "false",
-    "Commands": [
-      {
-        "run": "sfc /scannow;",
-        "delay": "1"
-      }
+    "InvokeCommand": [
+      "sfc /scannow"
+    ],
+    "UndoCommand": [
+      ""
     ]
   },
   {
@@ -18,11 +18,13 @@
     "check": "false",
     "type": "command",
     "refresh": "false",
-    "Commands": [
-      {
-        "run": "cleanmgr.exe /d C: /VERYLOWDISK /sagerun:1 Dism.exe /online /Cleanup-Image /StartComponentCleanup /ResetBase;",
-        "delay": "1"
-      }
+    "InvokeCommand": [
+      "
+        cleanmgr.exe /d C: /VERYLOWDISK /sagerun:1 Dism.exe /online /Cleanup-Image /StartComponentCleanup /ResetBase
+      "
+    ],
+    "UndoCommand": [
+      ""
     ]
   },
   {
@@ -31,24 +33,40 @@
     "check": "false",
     "type": "command",
     "refresh": "false",
-    "Commands": [
-      {
-        "run": "Invoke-RestMethod https://raw.githubusercontent.com/emadadel4/WindowsTweaks/main/restore.bat | Invoke-Expression;",
-        "delay": "1"
-      }
+    "InvokeCommand": [
+
+        "
+          Invoke-RestMethod https://raw.githubusercontent.com/emadadel4/WindowsTweaks/main/restore.bat | Invoke-Expression
+        "
+        
+    ],
+    "UndoCommand": [
+      ""
     ]
   },
   {
     "name": "Fix Stutter/Lag in Games",
-    "description": "Fix Stutter in Games (Disable GameBarPresenceWriter). Windows 10/11",
+    "description": "Fix Stutter in Games Disable GameBarPresenceWriter. Windows 10/11",
     "check": "false",
     "type": "command",
     "refresh": "false",
-    "Commands": [
-      {
-        "run": "Invoke-RestMethod https://raw.githubusercontent.com/emadadel4/Fix-Stutter-in-Games/main/fix.ps1 | Invoke-Expression;",
-        "delay": "1"
-      }
+    "InvokeCommand": [
+      
+      "
+        takeown /f C:\\Windows\\System32\\GameBarPresenceWriter.exe
+        takeown /f C:\\Windows\\System32\\GameBarPresenceWriter.proxy.dll
+        takeown /f C:\\Windows\\System32\\Windows.Gaming.UI.GameBar.dll
+        icacls C:\\Windows\\System32\\GameBarPresenceWriter.exe /grant administrators:F
+        icacls C:\\Windows\\System32\\GameBarPresenceWriter.proxy.dll /grant administrators:F
+        icacls C:\\Windows\\System32\\Windows.Gaming.UI.GameBar.dll /grant administrators:F
+        Rename-Item C:\\Windows\\System32\\GameBarPresenceWriter.exe GameBarPresenceWriter.exe_backup
+        Rename-Item C:\\Windows\\System32\\GameBarPresenceWriter.proxy.dll GameBarPresenceWriter.proxy.dll_backup
+        Rename-Item C:\\Windows\\System32\\Windows.Gaming.UI.GameBar.dll Windows.Gaming.UI.GameBar.dll_backup
+      "
+
+    ],
+    "UndoCommand": [
+      ""
     ]
   },
   {
@@ -57,11 +75,12 @@
     "check": "false",
     "type": "command",
     "refresh": "false",
-    "Commands": [
-      {
-        "run": "powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61; Start-Process powercfg.cpl;",
-        "delay": "1"
-      }
+    "InvokeCommand": [
+
+        "powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61; Start-Process powercfg.cpl"
+    ],
+    "UndoCommand": [
+      ""
     ]
   },
   {
@@ -70,11 +89,13 @@
     "check": "false",
     "type": "command",
     "refresh": "false",
-    "Commands": [
-      {
-        "run": "netsh int ip reset;",
-        "delay": "1"
-      }
+    "InvokeCommand": [
+
+        "netsh int ip reset"
+
+    ],
+    "UndoCommand": [
+      ""
     ]
   },
   {
@@ -83,11 +104,11 @@
     "check": "false",
     "type": "command",
     "refresh": "false",
-    "Commands": [
-      {
-        "run": "curl.exe -ss \"https://live.sysinternals.com/Autologon.exe\" -o $env:temp\\autologin.exe ; cmd /c $env:temp\\autologin.exe /accepteula;",
-        "delay": "1"
-      }
+    "InvokeCommand": [
+      "curl.exe -ss \"https://live.sysinternals.com/Autologon.exe\" -o $env:temp\\autologin.exe ; cmd /c $env:temp\\autologin.exe /accepteula"
+    ],
+    "UndoCommand": [
+      ""
     ]
   },
   {
@@ -167,6 +188,12 @@
         "Value": "4",
         "defaultValue": "0"
       }
+    ],
+    "InvokeCommand": [
+      ""
+    ],
+    "UndoCommand": [
+      ""
     ]
   },
   {
@@ -183,6 +210,12 @@
         "Value": "0",
         "defaultValue": "1"
       }
+    ],
+    "InvokeCommand": [
+      ""
+    ],
+    "UndoCommand": [
+      ""
     ]
   },
   {
@@ -220,6 +253,12 @@
         "Value": "0",
         "defaultValue": "1"
       }
+    ],
+    "InvokeCommand": [
+      ""
+    ],
+    "UndoCommand": [
+      ""
     ]
   },
   {
@@ -236,6 +275,12 @@
         "Value": "0",
         "defaultValue": "1"
       }
+    ],
+    "InvokeCommand": [
+      ""
+    ],
+    "UndoCommand": [
+      ""
     ]
   },
   {
@@ -252,6 +297,12 @@
         "Value": "1",
         "defaultValue": "0"
       }
+    ],
+    "InvokeCommand": [
+      ""
+    ],
+    "UndoCommand": [
+      ""
     ]
   },
   {
@@ -268,6 +319,12 @@
         "Value": "1",
         "defaultValue": "0"
       }
+    ],
+    "InvokeCommand": [
+      ""
+    ],
+    "UndoCommand": [
+      ""
     ]
   },
   {
@@ -312,6 +369,12 @@
         "Value": "1",
         "defaultValue": "0"
       }
+    ],
+    "InvokeCommand": [
+      ""
+    ],
+    "UndoCommand": [
+      ""
     ]
   },
   {
@@ -377,6 +440,12 @@
         "Path": "HKEY_LOCAL_MACHINE\\SOFTWARE\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Explorer\\MyComputer\\NameSpace\\",
         "Name": "{d3162b92-9365-467a-956b-92703aca08af}"
       }
+    ],
+    "InvokeCommand": [
+      ""
+    ],
+    "UndoCommand": [
+      ""
     ]
   },
   {
@@ -431,6 +500,12 @@
         "StartupType": "Disabled",
         "DefaultType": "Manual"
       }
+    ],
+    "InvokeCommand": [
+      ""
+    ],
+    "UndoCommand": [
+      ""
     ]
   },
   {
@@ -599,6 +674,12 @@
       {
         "Name": "Microsoft.MicrosoftStickyNotes"
       }
+    ],
+    "InvokeCommand": [
+      ""
+    ],
+    "UndoCommand": [
+      ""
     ]
   },
   {
@@ -612,6 +693,12 @@
         "run": "powercfg.exe /hibernate off",
         "delay": "1"
       }
+    ],
+    "InvokeCommand": [
+      ""
+    ],
+    "UndoCommand": [
+      ""
     ]
   },
   {
@@ -628,6 +715,12 @@
         "Value": "1",
         "defaultValue": "0"
       }
+    ],
+    "InvokeCommand": [
+      ""
+    ],
+    "UndoCommand": [
+      ""
     ]
   },
   {
@@ -686,6 +779,12 @@
         "Value": "Windows Photo Viewer",
         "defaultValue": "0"
       }
+    ],
+    "InvokeCommand": [
+      ""
+    ],
+    "UndoCommand": [
+      ""
     ]
   },
   {
@@ -709,6 +808,12 @@
         "Value": "",
         "defaultValue": "default"
       }
+    ],
+    "InvokeCommand": [
+      ""
+    ],
+    "UndoCommand": [
+      ""
     ]
   }
 ]
