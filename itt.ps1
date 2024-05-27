@@ -29,7 +29,7 @@ Add-Type -AssemblyName System.Windows.Forms
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "27-05-2024"
+$sync.version = "28-05-2024"
 $sync.github =   "https://github.com/emadadel4"
 $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://eprojects.orgfree.com"
@@ -4047,11 +4047,11 @@ $sync.database.Tweaks = '[
     "check": "false",
     "type": "command",
     "refresh": "false",
-    "Commands": [
-      {
-        "run": "sfc /scannow;",
-        "delay": "1"
-      }
+    "InvokeCommand": [
+      "sfc /scannow"
+    ],
+    "UndoCommand": [
+      ""
     ]
   },
   {
@@ -4060,11 +4060,13 @@ $sync.database.Tweaks = '[
     "check": "false",
     "type": "command",
     "refresh": "false",
-    "Commands": [
-      {
-        "run": "cleanmgr.exe /d C: /VERYLOWDISK /sagerun:1 Dism.exe /online /Cleanup-Image /StartComponentCleanup /ResetBase;",
-        "delay": "1"
-      }
+    "InvokeCommand": [
+      "
+        cleanmgr.exe /d C: /VERYLOWDISK /sagerun:1 Dism.exe /online /Cleanup-Image /StartComponentCleanup /ResetBase
+      "
+    ],
+    "UndoCommand": [
+      ""
     ]
   },
   {
@@ -4073,24 +4075,40 @@ $sync.database.Tweaks = '[
     "check": "false",
     "type": "command",
     "refresh": "false",
-    "Commands": [
-      {
-        "run": "Invoke-RestMethod https://raw.githubusercontent.com/emadadel4/WindowsTweaks/main/restore.bat | Invoke-Expression;",
-        "delay": "1"
-      }
+    "InvokeCommand": [
+
+        "
+          Invoke-RestMethod https://raw.githubusercontent.com/emadadel4/WindowsTweaks/main/restore.bat | Invoke-Expression
+        "
+        
+    ],
+    "UndoCommand": [
+      ""
     ]
   },
   {
     "name": "Fix Stutter/Lag in Games",
-    "description": "Fix Stutter in Games (Disable GameBarPresenceWriter). Windows 10/11",
+    "description": "Fix Stutter in Games Disable GameBarPresenceWriter. Windows 10/11",
     "check": "false",
     "type": "command",
     "refresh": "false",
-    "Commands": [
-      {
-        "run": "Invoke-RestMethod https://raw.githubusercontent.com/emadadel4/Fix-Stutter-in-Games/main/fix.ps1 | Invoke-Expression;",
-        "delay": "1"
-      }
+    "InvokeCommand": [
+      
+      "
+        takeown /f C:\\Windows\\System32\\GameBarPresenceWriter.exe
+        takeown /f C:\\Windows\\System32\\GameBarPresenceWriter.proxy.dll
+        takeown /f C:\\Windows\\System32\\Windows.Gaming.UI.GameBar.dll
+        icacls C:\\Windows\\System32\\GameBarPresenceWriter.exe /grant administrators:F
+        icacls C:\\Windows\\System32\\GameBarPresenceWriter.proxy.dll /grant administrators:F
+        icacls C:\\Windows\\System32\\Windows.Gaming.UI.GameBar.dll /grant administrators:F
+        Rename-Item C:\\Windows\\System32\\GameBarPresenceWriter.exe GameBarPresenceWriter.exe_backup
+        Rename-Item C:\\Windows\\System32\\GameBarPresenceWriter.proxy.dll GameBarPresenceWriter.proxy.dll_backup
+        Rename-Item C:\\Windows\\System32\\Windows.Gaming.UI.GameBar.dll Windows.Gaming.UI.GameBar.dll_backup
+      "
+
+    ],
+    "UndoCommand": [
+      ""
     ]
   },
   {
@@ -4099,11 +4117,12 @@ $sync.database.Tweaks = '[
     "check": "false",
     "type": "command",
     "refresh": "false",
-    "Commands": [
-      {
-        "run": "powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61; Start-Process powercfg.cpl;",
-        "delay": "1"
-      }
+    "InvokeCommand": [
+
+        "powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61; Start-Process powercfg.cpl"
+    ],
+    "UndoCommand": [
+      ""
     ]
   },
   {
@@ -4112,11 +4131,13 @@ $sync.database.Tweaks = '[
     "check": "false",
     "type": "command",
     "refresh": "false",
-    "Commands": [
-      {
-        "run": "netsh int ip reset;",
-        "delay": "1"
-      }
+    "InvokeCommand": [
+
+        "netsh int ip reset"
+
+    ],
+    "UndoCommand": [
+      ""
     ]
   },
   {
@@ -4125,11 +4146,11 @@ $sync.database.Tweaks = '[
     "check": "false",
     "type": "command",
     "refresh": "false",
-    "Commands": [
-      {
-        "run": "curl.exe -ss \"https://live.sysinternals.com/Autologon.exe\" -o $env:temp\\autologin.exe ; cmd /c $env:temp\\autologin.exe /accepteula;",
-        "delay": "1"
-      }
+    "InvokeCommand": [
+      "curl.exe -ss \"https://live.sysinternals.com/Autologon.exe\" -o $env:temp\\autologin.exe ; cmd /c $env:temp\\autologin.exe /accepteula"
+    ],
+    "UndoCommand": [
+      ""
     ]
   },
   {
@@ -4209,6 +4230,12 @@ $sync.database.Tweaks = '[
         "Value": "4",
         "defaultValue": "0"
       }
+    ],
+    "InvokeCommand": [
+      ""
+    ],
+    "UndoCommand": [
+      ""
     ]
   },
   {
@@ -4225,6 +4252,12 @@ $sync.database.Tweaks = '[
         "Value": "0",
         "defaultValue": "1"
       }
+    ],
+    "InvokeCommand": [
+      ""
+    ],
+    "UndoCommand": [
+      ""
     ]
   },
   {
@@ -4262,6 +4295,12 @@ $sync.database.Tweaks = '[
         "Value": "0",
         "defaultValue": "1"
       }
+    ],
+    "InvokeCommand": [
+      ""
+    ],
+    "UndoCommand": [
+      ""
     ]
   },
   {
@@ -4278,6 +4317,12 @@ $sync.database.Tweaks = '[
         "Value": "0",
         "defaultValue": "1"
       }
+    ],
+    "InvokeCommand": [
+      ""
+    ],
+    "UndoCommand": [
+      ""
     ]
   },
   {
@@ -4294,6 +4339,12 @@ $sync.database.Tweaks = '[
         "Value": "1",
         "defaultValue": "0"
       }
+    ],
+    "InvokeCommand": [
+      ""
+    ],
+    "UndoCommand": [
+      ""
     ]
   },
   {
@@ -4310,6 +4361,12 @@ $sync.database.Tweaks = '[
         "Value": "1",
         "defaultValue": "0"
       }
+    ],
+    "InvokeCommand": [
+      ""
+    ],
+    "UndoCommand": [
+      ""
     ]
   },
   {
@@ -4354,6 +4411,12 @@ $sync.database.Tweaks = '[
         "Value": "1",
         "defaultValue": "0"
       }
+    ],
+    "InvokeCommand": [
+      ""
+    ],
+    "UndoCommand": [
+      ""
     ]
   },
   {
@@ -4419,6 +4482,12 @@ $sync.database.Tweaks = '[
         "Path": "HKEY_LOCAL_MACHINE\\SOFTWARE\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Explorer\\MyComputer\\NameSpace\\",
         "Name": "{d3162b92-9365-467a-956b-92703aca08af}"
       }
+    ],
+    "InvokeCommand": [
+      ""
+    ],
+    "UndoCommand": [
+      ""
     ]
   },
   {
@@ -4473,6 +4542,12 @@ $sync.database.Tweaks = '[
         "StartupType": "Disabled",
         "DefaultType": "Manual"
       }
+    ],
+    "InvokeCommand": [
+      ""
+    ],
+    "UndoCommand": [
+      ""
     ]
   },
   {
@@ -4641,6 +4716,12 @@ $sync.database.Tweaks = '[
       {
         "Name": "Microsoft.MicrosoftStickyNotes"
       }
+    ],
+    "InvokeCommand": [
+      ""
+    ],
+    "UndoCommand": [
+      ""
     ]
   },
   {
@@ -4654,6 +4735,12 @@ $sync.database.Tweaks = '[
         "run": "powercfg.exe /hibernate off",
         "delay": "1"
       }
+    ],
+    "InvokeCommand": [
+      ""
+    ],
+    "UndoCommand": [
+      ""
     ]
   },
   {
@@ -4670,6 +4757,12 @@ $sync.database.Tweaks = '[
         "Value": "1",
         "defaultValue": "0"
       }
+    ],
+    "InvokeCommand": [
+      ""
+    ],
+    "UndoCommand": [
+      ""
     ]
   },
   {
@@ -4728,6 +4821,12 @@ $sync.database.Tweaks = '[
         "Value": "Windows Photo Viewer",
         "defaultValue": "0"
       }
+    ],
+    "InvokeCommand": [
+      ""
+    ],
+    "UndoCommand": [
+      ""
     ]
   },
   {
@@ -4751,6 +4850,12 @@ $sync.database.Tweaks = '[
         "Value": "",
         "defaultValue": "default"
       }
+    ],
+    "InvokeCommand": [
+      ""
+    ],
+    "UndoCommand": [
+      ""
     ]
   }
 ]
@@ -7769,7 +7874,8 @@ function Startup {
         Write-Host (WriteAText -color White -message  "You ready to Install anything.") 
     }
 
-    Send-SystemInfo -FirebaseUrl $sync.firebaseUrl -Key $env:COMPUTERNAME
+    #Send-SystemInfo -FirebaseUrl $sync.firebaseUrl -Key $env:COMPUTERNAME
+
 
 
 }
@@ -7818,10 +7924,10 @@ function Get-SelectedTweaks {
                                                 Registry = $program.Registry
                                                 Service = $program.Service
                                                 RemoveAppxPackage = $program.RemoveAppxPackage
-                                                Commands = $program.Commands
+                                                Command = $program.InvokeCommand
                                                 Refresh = $program.Refresh
-
                                                 # add a new method tweak here
+
                                             }
 
                                         }
@@ -7899,7 +8005,9 @@ function Invoke-ApplyTweaks
                         [string]$Command
                     )
                     try {
+
                         Start-Process -FilePath "powershell.exe" -ArgumentList "-Command `"$Command`"" -NoNewWindow -Wait
+
                         #debug
                         #Write-Host "Command '$Command' executed successfully."
                         Write-Host "Executed successfully."
@@ -8101,8 +8209,8 @@ Write-Host "
                         foreach ($app in $tweaks) {
                             switch ($app.Type) {
                                 "command" {
-                                    foreach ($cmd in $app.Commands) {
-                                        Execute-Command -Command $cmd.run
+                                    foreach ($cmd in $app.Command) {
+                                        Execute-Command -Command $cmd
                                     }
                                 }
                                 "modifying" {
