@@ -331,7 +331,7 @@ https://t.me/emadadel4
             function DownloadAndInstallExe {
                 param (
                     [string]$url,
-                    [string]$Args
+                    [string]$exeArgs
                 )
             
                 $destination = "$env:temp/setup.exe"
@@ -350,7 +350,7 @@ https://t.me/emadadel4
                     }
                 }
                 
-                Start-Process -Wait $destination -ArgumentList $Args
+                Start-Process -Wait $destination -ArgumentList $exeArgs
             }
 
             try 
@@ -398,7 +398,7 @@ https://t.me/emadadel4
 
                                 if($app.fileType -eq "exe")
                                 {
-                                    DownloadAndInstallExe -url $url $Args $app.exeArgs
+                                    DownloadAndInstallExe -url $url $exeArgs $app.exeArgs
                                 }
                             }
                         }
