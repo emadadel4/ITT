@@ -166,15 +166,19 @@ function Invoke-ApplyTweaks
                 
                         # Check if the registry key exists
                         if (Test-Path "Registry::$KeyPath") {
+
                             # Delete the registry key and all subkeys recursively
+
                             Remove-Item -Path "Registry::$KeyPath" -Recurse -Force
-                            Write-Output "Registry key '$KeyPath' and its subkeys have been deleted." -ForegroundColor Yellow
+
+                            Write-Host "successful removed" -ForegroundColor Yellow
+
                         } else {
-                            Write-Output "Registry key '$KeyPath' does not exist." -ForegroundColor Red
+                            Write-Host "Registry key '$KeyPath' does not exist." -ForegroundColor Red
                         }
                     }
                     catch {
-                        Write-Output "An error occurred: $_" -ForegroundColor red
+                        Write-Host "An error occurred: $_" -ForegroundColor red
                     }
                 }
 
@@ -322,7 +326,7 @@ Write-Host "
                                 }
                                 "delete" {
                                     foreach ($re in $app.Registry) {
-                                        Remove-RegistryValue -Path $re.Path -Name $re.Name
+                                        Remove-RegistryValue -RegistryPath $re.Path -Folder $re.Name
                                     }
                                 }
                                 "service" {
