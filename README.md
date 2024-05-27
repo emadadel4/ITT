@@ -30,9 +30,6 @@
 <pre><code>irm bit.ly/emadadel | iex
 </code></pre>
 
-<pre><code>iwr -useb bit.ly/emadadel | iex
-</code></pre>
-
 <p>To run it directly from GitHub:</p>
 
 <pre><code>irm https://raw.githubusercontent.com/emadadel4/ITT/main/itt.ps1 | iex
