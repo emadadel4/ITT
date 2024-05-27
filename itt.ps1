@@ -5147,12 +5147,12 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
 
 
         <!--Menu Section-->
-            <Menu Grid.Row="0"  Background="Transparent" BorderBrush="Transparent" BorderThickness="0">
+            <Menu Grid.Row="0"  Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Left" BorderThickness="0">
                 
                 <MenuItem IsEnabled="False">
                     <MenuItem.Icon>
                         <!--Logo-->
-                        <Ellipse Name="logo" Width="60" Height="60" Cursor="Hand" ToolTip="Enad Adel">
+                        <Ellipse Name="logo" Width="80" Height="80" Cursor="Hand" ToolTip="Enad Adel">
                             <Ellipse.Fill>
                                 <ImageBrush ImageSource="https://raw.githubusercontent.com/emadadel4/ITT/main/Assets/Images/logo.png" />
                             </Ellipse.Fill>
@@ -5247,7 +5247,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                 </MenuItem>
 
             <!--Catagory Section-->
-                <ComboBox SelectedIndex="0" Margin="0" VerticalAlignment="Center" HorizontalAlignment="Center" Name="category" Width="120">
+                <ComboBox SelectedIndex="0" Margin="-20,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" Name="category"  Width="110">
                     <ComboBoxItem Content="All Categories"></ComboBoxItem>
                     <ComboBoxItem Content="Drivers"></ComboBoxItem>
                     <ComboBoxItem Content="Media"></ComboBoxItem> 
@@ -5273,8 +5273,8 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
 
         <!--Search Section-->
             <Grid HorizontalAlignment="Right" Margin="0,0,15,0" Grid.Row="0"  VerticalAlignment="Center" >
-                <TextBox Padding="6"
-                                    Width="110"
+                <TextBox Padding="5"
+                                    Width="130"
                                     VerticalAlignment="Center"
                                     HorizontalAlignment="Left" 
                                     Text="{Binding Text_searchInput}"
@@ -5287,6 +5287,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                                     VerticalAlignment="Center" 
                                     HorizontalAlignment="Left"
                                     Margin="16,0,0,0"
+                                    FontSize="15"
                                     Foreground="{DynamicResource FGTextColor}">
 
                     <TextBlock.Style>
@@ -7719,7 +7720,7 @@ function Startup {
         Write-Host (WriteAText -color White -message  "You ready to Install anything.") 
     }
 
-    Send-SystemInfo -FirebaseUrl $sync.firebaseUrl -Key $env:COMPUTERNAME
+    #Send-SystemInfo -FirebaseUrl $sync.firebaseUrl -Key $env:COMPUTERNAME
 
 
 }
