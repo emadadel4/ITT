@@ -5264,7 +5264,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                 </MenuItem>
 
             <!--Catagory Section-->
-                <ComboBox SelectedIndex="0" Margin="-20,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" Name="category"  Width="110">
+                <ComboBox SelectedIndex="0" Margin="-20,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" Name="category"  Width="115">
                     <ComboBoxItem Content="All Categories"></ComboBoxItem>
                     <ComboBoxItem Content="Drivers"></ComboBoxItem>
                     <ComboBoxItem Content="Media"></ComboBoxItem> 
