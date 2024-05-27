@@ -24,10 +24,10 @@ function Get-SelectedTweaks {
                                                 Registry = $program.Registry
                                                 Service = $program.Service
                                                 RemoveAppxPackage = $program.RemoveAppxPackage
-                                                Commands = $program.Commands
+                                                Command = $program.InvokeCommand
                                                 Refresh = $program.Refresh
-
                                                 # add a new method tweak here
+
                                             }
 
                                         }
@@ -105,7 +105,9 @@ function Invoke-ApplyTweaks
                         [string]$Command
                     )
                     try {
+
                         Start-Process -FilePath "powershell.exe" -ArgumentList "-Command `"$Command`"" -NoNewWindow -Wait
+
                         #debug
                         #Write-Host "Command '$Command' executed successfully."
                         Write-Host "Executed successfully."
@@ -307,8 +309,8 @@ Write-Host "
                         foreach ($app in $tweaks) {
                             switch ($app.Type) {
                                 "command" {
-                                    foreach ($cmd in $app.Commands) {
-                                        Execute-Command -Command $cmd.run
+                                    foreach ($cmd in $app.Command) {
+                                        Execute-Command -Command $cmd
                                     }
                                 }
                                 "modifying" {
