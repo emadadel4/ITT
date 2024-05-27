@@ -4002,10 +4002,10 @@ $sync.database.Quotes = '{
     "الجشع هو موتك السريع، والغباء هو رصاصتك الخاصة",
     "الحياة ليست سهلة، ولكن الصعوبات تجعلنا أقوى",
     "تموت البراءة وتحيا الكلاب",
-    "وقد سألت الدنيا لما لم تسعفيني لم تسمعي كلامي حين قلت رفقا بي, ابيت ان تضمدي جروحكي في قلبي"
+    "وقد سألت الدنيا لما لم تسعفيني لم تسمعي كلامي حين قلت رفقا بي, ابيت ان تضمدي جروحكي في قلبي",
+    "رجال الحق قالو الصابرون نالوا والذهن حامل لما لا تحمل الجبال"
   ]
-}
-' | ConvertFrom-Json
+}' | ConvertFrom-Json
 $sync.database.Tweaks = '[
   {
     "name": "System File Checker",
@@ -4735,7 +4735,7 @@ $inputXML = '
 <Window
 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-x:Name="Window" Title="Install and Tweak Tool @emadadel4" WindowStartupLocation = "CenterScreen" 
+x:Name="Window" Title="Install and Tweak Tool #Stand With Palestine" WindowStartupLocation = "CenterScreen" 
 Background="{DynamicResource BGColor}"
 Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowInTaskbar = "True" Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/Assets/Icons/icon.ico">
 
