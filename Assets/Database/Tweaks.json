@@ -48,14 +48,29 @@
       
       "
         takeown /f C:\\Windows\\System32\\GameBarPresenceWriter.exe
+
         takeown /f C:\\Windows\\System32\\GameBarPresenceWriter.proxy.dll
+
         takeown /f C:\\Windows\\System32\\Windows.Gaming.UI.GameBar.dll
+
+        Start-Sleep -Seconds 1
+
+
         icacls C:\\Windows\\System32\\GameBarPresenceWriter.exe /grant administrators:F
+
         icacls C:\\Windows\\System32\\GameBarPresenceWriter.proxy.dll /grant administrators:F
+
         icacls C:\\Windows\\System32\\Windows.Gaming.UI.GameBar.dll /grant administrators:F
-        Rename-Item C:\\Windows\\System32\\GameBarPresenceWriter.exe GameBarPresenceWriter.exe_backup
-        Rename-Item C:\\Windows\\System32\\GameBarPresenceWriter.proxy.dll GameBarPresenceWriter.proxy.dll_backup
-        Rename-Item C:\\Windows\\System32\\Windows.Gaming.UI.GameBar.dll Windows.Gaming.UI.GameBar.dll_backup
+
+        Start-Sleep -Seconds 1
+
+
+        Rename-Item C:\\Windows\\System32\\GameBarPresenceWriter.exe -NewName GameBarPresenceWriter.exe_backup
+
+        Rename-Item C:\\Windows\\System32\\GameBarPresenceWriter.proxy.dll -NewName GameBarPresenceWriter.proxy.dll_backup
+
+        Rename-Item C:\\Windows\\System32\\Windows.Gaming.UI.GameBar.dll -NewName Windows.Gaming.UI.GameBar.dll_backup
+
       "
 
     ],
