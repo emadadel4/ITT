@@ -4769,7 +4769,7 @@ $sync.database.Tweaks = '[
       {
         "Path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Run",
         "Name": "OneDrive",
-        "Type": "ExpandString",
+        "Type": "String",
         "Value": "",
         "defaultValue": ""
       }
