@@ -4044,9 +4044,8 @@ $sync.database.Tweaks = '[
   {
     "name": "System File Checker",
     "description": "sfc /scannow Use the System File Checker tool to repair missing or corrupted system files",
-    "command": "sfc /scannow;",
     "check": "false",
-    "type": "script",
+    "type": "command",
     "refresh": "false",
     "Commands": [
       {
