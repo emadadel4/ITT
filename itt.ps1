@@ -7940,7 +7940,7 @@ function Get-SelectedTweaks {
                                                 Service = $program.Service
                                                 RemoveAppxPackage = $program.RemoveAppxPackage
                                                 Command = $program.InvokeCommand
-                                                Refresh = $program.Refresh
+                                                Refresh = $program.refresh
                                                 # add a new method tweak here
 
                                             }
@@ -8229,8 +8229,15 @@ Write-Host "
                         foreach ($app in $tweaks) {
                             switch ($app.Type) {
                                 "command" {
+                                    
                                     foreach ($cmd in $app.Command) {
                                         ExecuteCommand -Command $cmd
+                                    }
+
+                                    if($app.Refresh -eq "true")
+                                    {
+                                        Write-Host "Restarting exploror..."
+                                        Stop-Process -Name explorer -Force
                                     }
                                 }
                                 "modifying" {
@@ -8239,10 +8246,23 @@ Write-Host "
                                         Set-RegistryValue -Name $mod.Name -Type $mod.Type -Path $mod.Path -Value $mod.Value
                                     }
 
+                                    if($app.Refresh -eq "true")
+                                    {
+                                        Write-Host "Restarting exploror..."
+                                        Stop-Process -Name explorer -Force
+                                    }
+
                                 }
                                 "delete" {
+                                    
                                     foreach ($re in $app.Registry) {
                                         Remove-RegistryValue -RegistryPath $re.Path -Folder $re.Name
+                                    }
+
+                                    if($app.Refresh -eq "true")
+                                    {
+                                        Write-Host "Restarting exploror..."
+                                        Stop-Process -Name explorer -Force
                                     }
                                 }
                                 "service" {
