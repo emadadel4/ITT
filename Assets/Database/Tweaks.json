@@ -19,9 +19,7 @@
     "type": "command",
     "refresh": "false",
     "InvokeCommand": [
-      "
-        cleanmgr.exe /d C: /VERYLOWDISK /sagerun:1 Dism.exe /online /Cleanup-Image /StartComponentCleanup /ResetBase
-      "
+      "cleanmgr.exe /d C: /VERYLOWDISK /sagerun:1 Dism.exe /online /Cleanup-Image /StartComponentCleanup /ResetBase"
     ],
     "UndoCommand": [
       ""
@@ -34,11 +32,7 @@
     "type": "command",
     "refresh": "false",
     "InvokeCommand": [
-
-        "
-          Invoke-RestMethod https://raw.githubusercontent.com/emadadel4/WindowsTweaks/main/restore.bat | Invoke-Expression
-        "
-        
+      "Invoke-RestMethod https://raw.githubusercontent.com/emadadel4/WindowsTweaks/main/restore.bat | Invoke-Expression"
     ],
     "UndoCommand": [
       ""
