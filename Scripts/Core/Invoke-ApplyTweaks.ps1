@@ -100,7 +100,7 @@ function Invoke-ApplyTweaks
 
                 param($tweaks)
 
-                function Execute-Command {
+                function ExecuteCommand {
                     param (
                         [string]$Command
                     )
@@ -310,7 +310,7 @@ Write-Host "
                             switch ($app.Type) {
                                 "command" {
                                     foreach ($cmd in $app.Command) {
-                                        Execute-Command -Command $cmd
+                                        ExecuteCommand -Command $cmd
                                     }
                                 }
                                 "modifying" {
