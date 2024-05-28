@@ -202,6 +202,9 @@ https://t.me/emadadel4
             function InstallWinget {
                
                 # Check if winget is installed
+
+                Write-Host "Install Winget first Time"
+
                 if (!(Get-Command winget -ErrorAction SilentlyContinue)) {
                     Write-Output "winget is not installed. Installing winget..."
 
@@ -211,24 +214,37 @@ https://t.me/emadadel4
                     # Define the path to download the installer
                     $installerPath = "$env:TEMP\Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle"
 
-                    # Download the installer
-                    Invoke-WebRequest -Uri $url -OutFile $installerPath
+                    try {
+                        # Create a new BITS transfer job
+                        $bitsJob = Start-BitsTransfer -Source $url -Destination $installerPath -Asynchronous
 
-                    # Add-AppxPackage requires running with administrative privileges
-                    Start-Process powershell -ArgumentList "Add-AppxPackage -Path $installerPath" -Verb RunAs -Wait
+                        # Wait for the transfer job to complete
+                        while ($bitsJob.JobState -eq "Transferring") {
+                            Start-Sleep -Seconds 5
+                        }
 
-                    # Check if winget is installed successfully
-                    if (Get-Command winget -ErrorAction SilentlyContinue) {
-                        Write-Output "winget has been successfully installed."
-                    } else {
-                        Write-Output "winget installation failed. Please check the log for details."
+                        # Check if the transfer was completed successfully
+                        if ($bitsJob.JobState -eq "Transferred") {
+                            # Add-AppxPackage requires running with administrative privileges
+                            Start-Process powershell -ArgumentList "Add-AppxPackage -Path $installerPath" -Verb RunAs -Wait
+
+                            # Check if winget is installed successfully
+                            if (Get-Command winget -ErrorAction SilentlyContinue) {
+                                Write-Output "winget has been successfully installed."
+                            } else {
+                                Write-Output "winget installation failed. Please check the log for details."
+                            }
+                        } else {
+                            Write-Output "Failed to download winget. Please check your internet connection and try again."
+                        }
+                    } finally {
+                        # Clean up the BITS transfer job
+                        Remove-BitsTransfer -BitsJob $bitsJob.Id
                     }
-
-                    # Clean up the installer file
-                    Remove-Item $installerPath -Force
                 } else {
                     Write-Output "winget is already installed."
                 }
+
             }
 
             function SendApps {

@@ -72,7 +72,7 @@ function SaveItemsToJson
 
     ClearFilter
 
-    foreach ($item in $sync['window'].FindName('list').Items)
+    foreach ($item in $sync.AppsListView.Items)
     {
 
         $item =  GetCheckBoxesFromStackPanel -item $item
