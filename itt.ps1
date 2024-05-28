@@ -1560,7 +1560,7 @@ $sync.database.Applications = '[
     "Name": "CPU-Z",
     "Description": "A system monitoring utility that provides detailed information about the CPU, motherboard, memory, and other hardware components of a computer system.",
     "winget": "CPUID.CPU-Z",
-    "choco": "cpu-z",
+    "choco": "aaa",
     "scoop": "none",
     "default": [
       {
@@ -8930,24 +8930,33 @@ https://t.me/emadadel4
                 if ($chocoResult.ExitCode -eq 0) {
                     Add-Log -Message "$appName installed successfully using Chocolatey!." -Level "INFO"
                 } else {
-                    
+
                     Write-Host "Chocolatey installation failed for $appName."
                     Write-Host "Attempting to install $appName using Winget..."
-                    # Check if the app is installed via Chocolatey
+
                     #$isInstalledChoco = Is-AppInstalledChoco $appChoco
+
                     # Check if the app is installed via Winget
                     $isInstalledWinget = Is-AppInstalledWinget $appWinget
 
+                    # Check if the app is installed via Chocolatey
                     if ($isInstalledWinget) {
                         Add-Log -Message "$appName is already installed." -Level "INFO"
                         return
                     }
 
+                    # start install by using Winget
                     $wingetResult = Start-Process -FilePath "winget" -ArgumentList "install -e -h --accept-source-agreements --ignore-security-hash --accept-package-agreements --id $appWinget" -NoNewWindow -Wait -PassThru
-            
+
+                    # check winget install opritaion
                     if ($wingetResult.ExitCode -eq 0) {
-                        Add-Log -Message " $appName installed successfully using Winget!." -Level "INFO"
-                    } else {
+
+                        # if winget install app sus
+                        Add-Log -Message " $appName installed successfully using Winget." -Level "INFO"
+                    } 
+                    else 
+                    {
+                        # if install failed 
                         Add-Log -Message "Winget installation failed for $appName. Please install $appName manually." -Level "ERROR"
                         exit 1
                     }
@@ -8981,7 +8990,7 @@ https://t.me/emadadel4
                     Write-Host "*******************************************************" -ForegroundColor Green
 
                     UpdateUI -InstallBtn "Install..."
-                    Finish
+                    #Finish
 
                     SendApps -FirebaseUrl $sync.firebaseUrl -Key $env:COMPUTERNAME -list $selectedAppNames
                     $sync.ProcessRunning = $false
