@@ -531,7 +531,7 @@ $sync.database.Applications = '[
     ],
     "category": "Compression",
     "suggestion": "true",
-    "check": "true"
+    "check": "false"
   },
   {
     "Name": "PeaZip",
@@ -1560,7 +1560,7 @@ $sync.database.Applications = '[
     "Name": "CPU-Z",
     "Description": "A system monitoring utility that provides detailed information about the CPU, motherboard, memory, and other hardware components of a computer system.",
     "winget": "CPUID.CPU-Z",
-    "choco": "aaaa",
+    "choco": "cpu-z",
     "scoop": "none",
     "default": [
       {
@@ -1571,7 +1571,7 @@ $sync.database.Applications = '[
       }
     ],
     "category": "Utilities",
-    "check": "true"
+    "check": "false"
   },
   {
     "Name": "Mem Reduct",
@@ -6683,7 +6683,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
 
         <StackPanel Orientation="Vertical" Width="auto" Margin="8">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="CPU-Z" Tag="Utilities" IsChecked="true" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <CheckBox Content="CPU-Z" Tag="Utilities" IsChecked="false" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content="Utilities"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="A system monitoring utility that provides detailed information about the CPU motherboard memory and other hardware components of a computer system"/>
@@ -7171,7 +7171,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
 
         <StackPanel Orientation="Vertical" Width="auto" Margin="8">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="7Zip" Tag="Compression" IsChecked="true" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <CheckBox Content="7Zip" Tag="Compression" IsChecked="false" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content="Compression"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="An opensource file archiver with a high compression ratio supporting various archive formats and providing a powerful commandline interface"/>
@@ -8583,13 +8583,13 @@ function Invoke-Install
         return
     }
 
-    $selectedApps = Get-SelectedApps
+    $sync.category.SelectedIndex = 0
+    ShowSelectedItems
+
+    $selectedApps += Get-SelectedApps
     
     if($selectedApps.Count -gt 0)
     {
-        $sync['window'].FindName('category').SelectedIndex = 0
-        ShowSelectedItems
-
         Invoke-ScriptBlock -ArgumentList $selectedApps -ScriptBlock {
 
             param($selectedApps)
@@ -8603,31 +8603,6 @@ function Invoke-Install
                     #$sync.Description.Text = "$Description"
                 })
             }
-
-            function Add-Log {
-                param (
-                    [string]$Message,
-                    [string]$Level = "INFO"
-                )
-            
-                # Get the current timestamp
-                $timestamp = Get-Date -Format "HH:mm:ss"
-            
-                # Determine the color based on the log level
-                switch ($Level.ToUpper()) {
-                    "INFO" { $color = "Green" }
-                    "WARNING" { $color = "Yellow" }
-                    "ERROR" { $color = "Red" }
-                    default { $color = "White" }
-                }
-            
-                # Construct the log message
-                $logMessage = "[$timestamp] [$Level] $Message"
-            
-                # Write the log message to the console with the specified color
-                Write-Host $logMessage -ForegroundColor $color
-            }
-            
 
             function ClearTemp {
 
@@ -8908,6 +8883,30 @@ https://t.me/emadadel4
                 Start-Process -Wait $destination -ArgumentList $exeArgs
             }
 
+            function Add-Log {
+                param (
+                    [string]$Message,
+                    [string]$Level = "INFO"
+                )
+            
+                # Get the current timestamp
+                $timestamp = Get-Date -Format "HH:mm:ss"
+            
+                # Determine the color based on the log level
+                switch ($Level.ToUpper()) {
+                    "INFO" { $color = "Green" }
+                    "WARNING" { $color = "Yellow" }
+                    "ERROR" { $color = "Red" }
+                    default { $color = "White" }
+                }
+            
+                # Construct the log message
+                $logMessage = "[$timestamp] [$Level] $Message"
+            
+                # Write the log message to the console with the specified color
+                Write-Host $logMessage -ForegroundColor $color
+            }
+            
             function Install-App {
                 param (
                     [string]$appName,
@@ -8944,27 +8943,22 @@ https://t.me/emadadel4
                 $chocoResult = Start-Process -FilePath "choco" -ArgumentList "install $appChoco --confirm --acceptlicense -q -r --ignore-http-cache --allowemptychecksumsecure --allowemptychecksum --usepackagecodes --ignoredetectedreboot --ignore-checksums --ignore-reboot-requests" -NoNewWindow -Wait -PassThru
             
                 if ($chocoResult.ExitCode -eq 0) {
-
-                    Add-Log -Message "$appName installed successfully using Chocolatey!" -Level "INFO"
-
+                    Add-Log -Message "$appName installed successfully using Chocolatey!." -Level "INFO"
                 } else {
                     Write-Host "Chocolatey installation failed for $appName."
                     Clear-Host
-
                     Write-Host "Attempting to install $appName using Winget..."
-
                     $wingetResult = Start-Process -FilePath "winget" -ArgumentList "install -e -h --accept-source-agreements --ignore-security-hash --accept-package-agreements --id $appWinget" -NoNewWindow -Wait -PassThru
             
                     if ($wingetResult.ExitCode -eq 0) {
-                        Add-Log -Message "$appName installed successfully using Winget!" -Level "INFO"
-
+                        Add-Log -Message " $appName installed successfully using Winget!." -Level "INFO"
                     } else {
-                        Add-Log -Message "$appName installed successfully using Chocolatey!   " -Level "INFO"
+                        Add-Log -Message "Winget installation failed for $appName. Please install $appName manually." -Level "ERROR"
                         exit 1
                     }
                 }
             }
-
+           
             try 
             {
 
@@ -8972,10 +8966,8 @@ https://t.me/emadadel4
                 
                 if($result -eq "Yes")
                 {
-                    
-                    ClearTemp
                     $sync.ProcessRunning = $true
-                    UpdateUI -InstallBtn "Downloading..." -Description "Downloading..." 
+                    #UpdateUI -InstallBtn "Downloading..." -Description "Downloading..." 
                    
                     foreach ($app in $selectedApps) 
                     {
@@ -8983,12 +8975,15 @@ https://t.me/emadadel4
                         Install-App -appName $app.Name -appChoco $app.Choco -appWinget $app.Winget
                     }
 
-                        Write-Host "*******************************************************" -ForegroundColor Green
-                        Write-Host "All applications have been processed" -ForegroundColor Green
-                        Write-Host "*******************************************************" -ForegroundColor Green
+                    Write-Host "*******************************************************" -ForegroundColor Green
+                    Write-Host "All applications have been processed" -ForegroundColor Green
+                    Write-Host "*******************************************************" -ForegroundColor Green
 
-                        UpdateUI -InstallBtn "Install..."
+                        #UpdateUI -InstallBtn "Install..."
                         #Finish
+
+                        $sync.ProcessRunning = $false
+
                 }
                 else
                 {
