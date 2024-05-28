@@ -71,7 +71,7 @@ $sync.database.Applications = '[
   {
     "Name": "Thorium SSE3",
     "Description": "A web browser designed for smooth and secure browsing experiences.",
-    "winget": "Alex313031.Thorium",
+    "winget": "none",
     "choco": "thorium --params /SSE3",
     "scoop": "none",
     "default": [
@@ -88,7 +88,7 @@ $sync.database.Applications = '[
   {
     "Name": "Thorium AVX",
     "Description": "A web browser designed for smooth and secure browsing experiences.",
-    "winget": "Alex313031.Thorium.AVX2",
+    "winget": "none",
     "choco": "thorium --params /AVX",
     "scoop": "none",
     "default": [
@@ -105,7 +105,7 @@ $sync.database.Applications = '[
   {
     "Name": "Firefox",
     "Description": "A widely-used open-source web browser known for its speed, privacy features, and customization options.",
-    "winget": "Mozilla.Firefox",
+    "winget": "none",
     "choco": "firefox",
     "scoop": "none",
     "default": [
@@ -123,7 +123,7 @@ $sync.database.Applications = '[
   {
     "Name": "Microsoft Edge",
     "Description": "Microsoft''s web browser built for fast and secure internet surfing, integrating seamlessly with Windows ecosystem.",
-    "winget": "Microsoft.Edge",
+    "winget": "none",
     "choco": "microsoft-edge",
     "scoop": "none",
     "default": [
@@ -140,7 +140,7 @@ $sync.database.Applications = '[
   {
     "Name": "Google Chrome",
     "Description": "A popular web browser known for its speed, simplicity, and vast ecosystem of extensions.",
-    "winget": "Google.Chrome",
+    "winget": "none",
     "choco": "googlechrome",
     "scoop": "none",
     "default": [
@@ -157,7 +157,7 @@ $sync.database.Applications = '[
   {
     "Name": "Chromium",
     "Description": "An open-source web browser project that serves as the foundation for many browsers, including Google Chrome.",
-    "winget": "eloston.ungoogled-chromium",
+    "winget": "none",
     "choco": "chromium",
     "scoop": "none",
     "default": [
@@ -174,7 +174,7 @@ $sync.database.Applications = '[
   {
     "Name": "Brave",
     "Description": "A privacy-focused web browser that blocks ads and trackers, offering faster and safer browsing experiences.",
-    "winget": "Brave.Brave",
+    "winget": "none",
     "choco": "brave",
     "scoop": "none",
     "default": [
@@ -191,7 +191,7 @@ $sync.database.Applications = '[
   {
     "Name": "Tor Browser",
     "Description": "A web browser that prioritizes user privacy by routing internet traffic through a global network of servers, enabling anonymous browsing.",
-    "winget": "TorProject.TorBrowser",
+    "winget": "none",
     "choco": "tor-browser",
     "scoop": "none",
     "default": [
@@ -208,7 +208,7 @@ $sync.database.Applications = '[
   {
     "Name": "Opera",
     "Description": "The Opera web browser makes the Web fast and fun, giving you a better web browser experience on any computer.",
-    "winget": "Opera.Opera",
+    "winget": "none",
     "choco": "opera",
     "scoop": "none",
     "default": [
@@ -225,7 +225,7 @@ $sync.database.Applications = '[
   {
     "Name": "Internet Download Manager",
     "Description": "A popular download manager tool that accelerates downloads and allows users to organize and schedule downloads efficiently.",
-    "winget": "Tonec.InternetDownloadManager",
+    "winget": "none",
     "choco": "internet-download-manager",
     "scoop": "none",
     "default": [
@@ -243,7 +243,7 @@ $sync.database.Applications = '[
     "Name": "Neat Download Manager",
     "Description": "Introducing Neat Download Manager, the powerful neatdownload manager that supports macOS, Windows 7 or later, and Windows 11. With lightning-fast downloads, smart file filter management, and the best features, start downloading today and see why Neat Download Manager is the perfect tool for you.r",
     "winget": "none",
-    "choco": "neatdownloadmanager --version=14.24.0",
+    "choco": "none",
     "scoop": "none",
     "default": [
       {
@@ -259,7 +259,7 @@ $sync.database.Applications = '[
   {
     "Name": "JDownloader",
     "Description": "JDownloader is an internet download manager.",
-    "winget": "AppWork.JDownloader",
+    "winget": "none",
     "choco": "jdownloader",
     "scoop": "none",
     "default": [
@@ -294,7 +294,7 @@ $sync.database.Applications = '[
   {
     "Name": "PotPlayer",
     "Description": "A multimedia player with a sleek interface and advanced features, supporting a wide range of audio and video formats.",
-    "winget": "Daum.PotPlayer",
+    "winget": "none",
     "choco": "potplayer",
     "scoop": "none",
     "default": [
@@ -311,7 +311,7 @@ $sync.database.Applications = '[
   {
     "Name": "VLC",
     "Description": "A versatile media player capable of playing almost any multimedia file format, with support for various streaming protocols.",
-    "winget": "VideoLAN.VLC",
+    "winget": "none",
     "choco": "vlc.install",
     "scoop": "none",
     "default": [
@@ -329,7 +329,7 @@ $sync.database.Applications = '[
   {
     "Name": "Kodi",
     "Description": "A powerful open-source media center software that allows users to organize and stream their media collections.",
-    "winget": "9NBLGGH4T892",
+    "winget": "none",
     "choco": "kodi",
     "scoop": "none",
     "default": [
@@ -344,9 +344,9 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Jellyfin Server",
+    "Name": "Jellyfin",
     "Description": "An open-source media server software that enables users to stream their media libraries across devices, providing a self-hosted alternative to commercial services.",
-    "winget": "Jellyfin.Server",
+    "winget": "none",
     "choco": "jellyfin",
     "scoop": "none",
     "default": [
@@ -363,7 +363,7 @@ $sync.database.Applications = '[
   {
     "Name": "Winamp",
     "Description": "A classic media player known for its customizable interface and extensive plugin support, providing a nostalgic music playback experience.",
-    "winget": "Winamp.Winamp",
+    "winget": "none",
     "choco": "winamp",
     "scoop": "none",
     "default": [
@@ -380,7 +380,7 @@ $sync.database.Applications = '[
   {
     "Name": "Aimp",
     "Description": "A lightweight and feature-rich audio player with support for various audio formats and customizable interface themes.",
-    "winget": "AIMP.AIMP",
+    "winget": "none",
     "choco": "aimp",
     "scoop": "none",
     "default": [
@@ -397,7 +397,7 @@ $sync.database.Applications = '[
   {
     "Name": "Spotify",
     "Description": "Spotify is a new way to listen to music.",
-    "winget": "Spotify.Spotify",
+    "winget": "none",
     "choco": "spotify",
     "scoop": "none",
     "default": [
@@ -500,7 +500,7 @@ $sync.database.Applications = '[
   {
     "Name": "WinRAR",
     "Description": "A popular file compression and archiving utility that supports various archive formats and offers advanced features such as encryption and self-extracting archives.",
-    "winget": "RARLab.WinRAR",
+    "winget": "none",
     "choco": "winrar",
     "scoop": "none",
     "default": [
@@ -516,9 +516,9 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "7Zip",
+    "Name": "7-Zip",
     "Description": "An open-source file archiver with a high compression ratio, supporting various archive formats and providing a powerful command-line interface.",
-    "winget": "7zip.7zip",
+    "winget": "none",
     "choco": "7zip",
     "scoop": "none",
     "default": [
@@ -536,7 +536,7 @@ $sync.database.Applications = '[
   {
     "Name": "PeaZip",
     "Description": " PeaZip is a free cross-platform file archiver.",
-    "winget": "Giorgiotani.Peazip",
+    "winget": "none",
     "choco": "peazip",
     "scoop": "none",
     "default": [
@@ -553,7 +553,7 @@ $sync.database.Applications = '[
   {
     "Name": "Telegram Desktop",
     "Description": "A cross-platform messaging app with a focus on speed and security, offering end-to-end encryption and a wide range of features such as group chats, file sharing, and stickers.",
-    "winget": "Telegram.TelegramDesktop",
+    "winget": "none",
     "choco": "telegram",
     "scoop": "none",
     "default": [
@@ -571,7 +571,7 @@ $sync.database.Applications = '[
   {
     "Name": "Signal",
     "Description": "Fast, simple, secure. Privacy that fits in your pocket.",
-    "winget": "OpenWhisperSystems.Signal",
+    "winget": "none",
     "choco": "signal",
     "scoop": "none",
     "default": [
@@ -588,7 +588,7 @@ $sync.database.Applications = '[
   {
     "Name": "Meta Messenger",
     "Description": "A messaging app that allows users to connect with friends and family through text messages, voice calls, and video calls, offering various multimedia sharing features.",
-    "winget": "9WZDNCRF0083",
+    "winget": "none",
     "choco": "messenger",
     "scoop": "none",
     "default": [
@@ -605,7 +605,7 @@ $sync.database.Applications = '[
   {
     "Name": "Zoom",
     "Description": "A video conferencing app that facilitates online meetings, webinars, and virtual events, allowing participants to interact through video, audio, and chat.",
-    "winget": "Zoom.ZoomRooms",
+    "winget": "none",
     "choco": "zoom",
     "scoop": "none",
     "default": [
@@ -622,7 +622,7 @@ $sync.database.Applications = '[
   {
     "Name": "Microsoft Teams",
     "Description": "A collaboration platform that combines workplace chat, video meetings, file storage, and application integration, enhancing teamwork and productivity within organizations.",
-    "winget": "Microsoft.Teams",
+    "winget": "none",
     "choco": "microsoft-teams.install",
     "scoop": "none",
     "default": [
@@ -639,7 +639,7 @@ $sync.database.Applications = '[
   {
     "Name": "Discord",
     "Description": "A VoIP application and digital distribution platform designed for creating communities and connecting gamers, providing text, voice, and video communication features.",
-    "winget": "Discord.Discord",
+    "winget": "none",
     "choco": "discord",
     "scoop": "none",
     "default": [
@@ -656,7 +656,7 @@ $sync.database.Applications = '[
   {
     "Name": "TeamViewer",
     "Description": "A remote access and support software that enables users to remotely control computers, transfer files, and collaborate online, facilitating remote work and IT support.",
-    "winget": "TeamViewer.TeamViewer",
+    "winget": "none",
     "choco": "teamviewer",
     "scoop": "none",
     "default": [
@@ -673,7 +673,7 @@ $sync.database.Applications = '[
   {
     "Name": "GIMP",
     "Description": "A free and open-source raster graphics editor used for image retouching and editing, drawing and painting, and converting between different image formats.",
-    "winget": "GIMP.GIMP",
+    "winget": "none",
     "choco": "gimp",
     "scoop": "none",
     "default": [
@@ -707,7 +707,7 @@ $sync.database.Applications = '[
   {
     "Name": "DirectX",
     "Description": "DirectX is a collection of APIs for handling tasks related to games and videos.",
-    "winget": "Microsoft.DirectX",
+    "winget": "none",
     "choco": "directx",
     "scoop": "none",
     "default": [
@@ -979,8 +979,8 @@ $sync.database.Applications = '[
   {
     "Name": "NVIDIA GeForce Experience",
     "Description": "A cloud-based gaming service provided by NVIDIA that allows users to play video games on supported devices via a remote gaming PC hosted on NVIDIA''s servers.",
-    "winget": "Nvidia.GeForceExperience",
-    "choco": "geforce-experience",
+    "winget": "none",
+    "choco": "none",
     "scoop": "none",
     "default": [
       {
@@ -996,7 +996,7 @@ $sync.database.Applications = '[
   {
     "Name": "Msi Afterburner",
     "Description": "MSI Afterburner is the ultimate graphics card utility, co-developed by MSI and RivaTuner teams.",
-    "winget": "Guru3D.Afterburner",
+    "winget": "none",
     "choco": "msiafterburner",
     "scoop": "none",
     "default": [
@@ -1013,7 +1013,7 @@ $sync.database.Applications = '[
   {
     "Name": "NVIDIA PhysX",
     "Description": "A physics processing unit (PPU) software development kit (SDK) offered by NVIDIA for real-time physics simulations in video games.",
-    "winget": "Nvidia.PhysXLegacy",
+    "winget": "none",
     "choco": "physx.legacy",
     "scoop": "none",
     "default": [
@@ -1030,7 +1030,7 @@ $sync.database.Applications = '[
   {
     "Name": "Steam",
     "Description": "A digital distribution platform developed by Valve Corporation for purchasing and playing video games.",
-    "winget": "Valve.Steam",
+    "winget": "none",
     "choco": "steam",
     "scoop": "none",
     "default": [
@@ -1047,7 +1047,7 @@ $sync.database.Applications = '[
   {
     "Name": "Ubisoft Connect",
     "Description": "A digital distribution, digital rights management, multiplayer, and communications service developed by Ubisoft, providing access to Ubisoft''s games, rewards, and social features.",
-    "winget": "Ubisoft.Connect",
+    "winget": "none",
     "choco": "ubisoft-connect",
     "scoop": "none",
     "default": [
@@ -1064,7 +1064,7 @@ $sync.database.Applications = '[
   {
     "Name": "Origin",
     "Description": " Game store launcher",
-    "winget": "ElectronicArts.Origin",
+    "winget": "none",
     "choco": "origin",
     "scoop": "none",
     "default": [
@@ -1098,7 +1098,7 @@ $sync.database.Applications = '[
   {
     "Name": "GameSave Manager",
     "Description": "A utility tool that allows users to backup, restore, and transfer their game saves between different gaming platforms and directories.",
-    "winget": "InsaneMatt.GameSaveManager",
+    "winget": "none",
     "choco": "gamesavemanager",
     "scoop": "none",
     "default": [
@@ -1115,7 +1115,7 @@ $sync.database.Applications = '[
   {
     "Name": "StreamlabsOBS",
     "Description": "A free and open-source streaming software built on top of OBS Studio with additional features tailored for streamers, such as built-in alerts, overlays, and chat integration.",
-    "winget": "Streamlabs.StreamlabsOBS",
+    "winget": "none",
     "choco": "streamlabs-obs",
     "scoop": "none",
     "default": [
@@ -1132,7 +1132,7 @@ $sync.database.Applications = '[
   {
     "Name": "OBS Studio",
     "Description": "A free and open-source software for video recording and live streaming. It offers high performance real-time video/audio capturing and mixing.",
-    "winget": "OBSProject.OBSStudio",
+    "winget": "none",
     "choco": "obs-studio.install",
     "scoop": "none",
     "default": [
@@ -1149,7 +1149,7 @@ $sync.database.Applications = '[
   {
     "Name": "Logitech Gaming Software",
     "Description": "Logitech Gaming Software lets you customize Logitech G gaming mice, keyboards, headsets and select wheels.",
-    "winget": "Logitech.LGS",
+    "winget": "none",
     "choco": "logitechgaming",
     "scoop": "none",
     "default": [
@@ -1166,7 +1166,7 @@ $sync.database.Applications = '[
   {
     "Name": "Lively Wallpaper",
     "Description": "A software that allows users to set animated and interactive wallpapers on their Windows desktop, providing various customization options.",
-    "winget": "rocksdanister.LivelyWallpaper",
+    "winget": "none",
     "choco": "lively",
     "scoop": "none",
     "default": [
@@ -1183,7 +1183,7 @@ $sync.database.Applications = '[
   {
     "Name": "Playnite",
     "Description": "Open source video game library manager and launcher with support for 3rd party libraries like Steam, GOG, Origin, Battle.net and Uplay.",
-    "winget": "Playnite.Playnite",
+    "winget": "none",
     "choco": "playnite",
     "scoop": "none",
     "default": [
@@ -1200,7 +1200,7 @@ $sync.database.Applications = '[
   {
     "Name": "Driver Easy",
     "Description": "A driver update tool that automatically detects, downloads, and installs device drivers for the user''s computer hardware.",
-    "winget": "Easeware.DriverEasy",
+    "winget": "none",
     "choco": "drivereasyfree",
     "scoop": "none",
     "default": [
@@ -1234,7 +1234,7 @@ $sync.database.Applications = '[
   {
     "Name": "Intel Driver Support Assistant",
     "Description": "Intel Driver & Support Assistant enables you to scan computing devices for the latest drivers available from Intel.",
-    "winget": "Intel.IntelDriverAndSupportAssistant",
+    "winget": "none",
     "choco": "intel-dsa",
     "scoop": "none",
     "default": [
@@ -1251,7 +1251,7 @@ $sync.database.Applications = '[
   {
     "Name": "Intel Network Adapter",
     "Description": "Intel Network Adapter Drivers for Windows 10.",
-    "winget": "Intel.WiFiDrivers",
+    "winget": "none",
     "choco": "intel-network-drivers-win10",
     "scoop": "none",
     "default": [
@@ -1268,7 +1268,7 @@ $sync.database.Applications = '[
   {
     "Name": "Snappy Driver Installer",
     "Description": "A free and open-source tool for updating and installing device drivers on Windows, offering offline driver updates and wide hardware support.",
-    "winget": "samlab-ws.SnappyDriverInstaller",
+    "winget": "none",
     "choco": "sdio",
     "scoop": "none",
     "default": [
@@ -1285,7 +1285,7 @@ $sync.database.Applications = '[
   {
     "Name": "Driver booster",
     "Description": "Scans and identifies outdated drivers automatically, and downloads and installs the right update for you with just ONE click.",
-    "winget": "IObit.DriverBooster",
+    "winget": "none",
     "choco": "driverbooster",
     "scoop": "none",
     "default": [
@@ -1319,7 +1319,7 @@ $sync.database.Applications = '[
   {
     "Name": "Display Driver Uninstaller",
     "Description": "Utility to completely remove system drivers",
-    "winget": "Wagnardsoft.DisplayDriverUninstaller",
+    "winget": "none",
     "choco": "ddu",
     "scoop": "none",
     "default": [
@@ -1353,7 +1353,7 @@ $sync.database.Applications = '[
   {
     "Name": "1Password",
     "Description": "A password manager that securely stores login credentials, credit card information, and other sensitive data in an encrypted vault, accessible with a single master password.",
-    "winget": "AgileBits.1Password",
+    "winget": "none",
     "choco": "1password",
     "scoop": "none",
     "default": [
@@ -1370,7 +1370,7 @@ $sync.database.Applications = '[
   {
     "Name": "MiniTool Partition Wizard",
     "Description": "A disk partition management tool that allows users to create, resize, move, merge, split, copy, and convert partitions on their hard drives or storage devices.",
-    "winget": "MiniTool.PartitionWizard.Free",
+    "winget": "none",
     "choco": "partitionwizard",
     "scoop": "none",
     "default": [
@@ -1387,7 +1387,7 @@ $sync.database.Applications = '[
   {
     "Name": "AOMEI Partition Assistant Standard",
     "Description": "AOMEI Partition Assistant Standard allows you to realize disk upgrade/replacement, partition style conversion, OS migration and other disk managements without any difficulties.",
-    "winget": "AOMEI.PartitionAssistant",
+    "winget": "none",
     "choco": "partition-assistant-standard",
     "scoop": "none",
     "default": [
@@ -1402,9 +1402,9 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "AOMEI Backupper Standard",
+    "Name": "AOMEI Backupper",
     "Description": "A backup and recovery software that enables users to create system backups, disk backups, partition backups, and file backups to protect data against system failures and data loss.",
-    "winget": "AOMEI.Backupper.Standard",
+    "winget": "none",
     "choco": "backupper-standard",
     "scoop": "none",
     "default": [
@@ -1421,7 +1421,7 @@ $sync.database.Applications = '[
   {
     "Name": "Recuva recover",
     "Description": "A data recovery software that helps users retrieve accidentally deleted files, including photos, documents, videos, and more, from various storage devices such as hard drives, USB drives, and memory cards.",
-    "winget": "Piriform.Recuva",
+    "winget": "none",
     "choco": "recuva",
     "scoop": "none",
     "default": [
@@ -1438,7 +1438,7 @@ $sync.database.Applications = '[
   {
     "Name": "CCleaner",
     "Description": "A system optimization, privacy, and cleaning tool that helps users remove unused files, clean up temporary files, and optimize their Windows PCs for better performance.",
-    "winget": "SingularLabs.CCEnhancer",
+    "winget": "none",
     "choco": "ccleaner",
     "scoop": "none",
     "default": [
@@ -1455,7 +1455,7 @@ $sync.database.Applications = '[
   {
     "Name": "BCUninstaller",
     "Description": "A powerful uninstaller tool for Windows that allows users to remove unwanted programs, plugins, and Windows Store apps, along with leftover files and registry entries.",
-    "winget": "Klocman.BulkCrapUninstaller",
+    "winget": "none",
     "choco": "bulk-crap-uninstaller",
     "scoop": "none",
     "default": [
@@ -1490,7 +1490,7 @@ $sync.database.Applications = '[
   {
     "Name": "HWiNFO",
     "Description": "A hardware information and diagnostic tool that provides detailed information about the hardware components of a computer system, including sensors, temperature, voltage, and more.",
-    "winget": "REALiX.HWiNFO",
+    "winget": "none",
     "choco": "hwinfo.install",
     "scoop": "none",
     "default": [
@@ -1508,7 +1508,7 @@ $sync.database.Applications = '[
   {
     "Name": "Speccy",
     "Description": "A system information tool that provides detailed information about the hardware and operating system of a computer, including CPU, RAM, motherboard, graphics card, and storage devices.",
-    "winget": "Piriform.Speccy",
+    "winget": "none",
     "choco": "speccy",
     "scoop": "none",
     "default": [
@@ -1525,7 +1525,7 @@ $sync.database.Applications = '[
   {
     "Name": "FurMark",
     "Description": "A graphics card stress testing and benchmarking utility that helps users test the stability, cooling, and performance of their GPU by rendering a highly intensive 3D graphics scene.",
-    "winget": "Geeks3D.FurMark",
+    "winget": "none",
     "choco": "furmark",
     "scoop": "none",
     "default": [
@@ -1542,7 +1542,7 @@ $sync.database.Applications = '[
   {
     "Name": "Hard Disk Sentinel",
     "Description": "A hard disk monitoring and analysis software that helps users monitor the health, performance, and temperature of their hard drives, SSDs, and other storage devices.",
-    "winget": "JanosMathe.HardDiskSentinelPro",
+    "winget": "none",
     "choco": "hdsentinel",
     "scoop": "none",
     "default": [
@@ -1559,7 +1559,7 @@ $sync.database.Applications = '[
   {
     "Name": "CPUID CPU-Z",
     "Description": "A system monitoring utility that provides detailed information about the CPU, motherboard, memory, and other hardware components of a computer system.",
-    "winget": "CPUID.CPU-Z",
+    "winget": "none",
     "choco": "cpu-z",
     "scoop": "none",
     "default": [
@@ -1576,7 +1576,7 @@ $sync.database.Applications = '[
   {
     "Name": "Mem Reduct",
     "Description": "Lightweight real-time memory management application to monitor and clean system memory on your computer.",
-    "winget": "Henry++.MemReduct",
+    "winget": "none",
     "choco": "memreduct",
     "scoop": "none",
     "default": [
@@ -1593,7 +1593,7 @@ $sync.database.Applications = '[
   {
     "Name": "HandBrake",
     "Description": "A free and open-source video transcoder tool that converts video files from one format to another, supporting a wide range of input and output formats.",
-    "winget": "HandBrake.HandBrake",
+    "winget": "none",
     "choco": "handbrake.install",
     "scoop": "none",
     "default": [
@@ -1610,7 +1610,7 @@ $sync.database.Applications = '[
   {
     "Name": "Rufus Portable",
     "Description": "A utility tool for creating bootable USB drives from ISO images, helping users to install or run operating systems, such as Windows, Linux, or other utilities.",
-    "winget": "Rufus.Rufus",
+    "winget": "none",
     "choco": "rufus",
     "scoop": "none",
     "default": [
@@ -1628,7 +1628,7 @@ $sync.database.Applications = '[
   {
     "Name": "ImgBurn",
     "Description": "Lightweight CD / DVD burning application ",
-    "winget": "LIGHTNINGUK.ImgBurn",
+    "winget": "none",
     "choco": "imgburn",
     "scoop": "none",
     "default": [
@@ -1662,7 +1662,7 @@ $sync.database.Applications = '[
   {
     "Name": "Ultra ISO",
     "Description": "A powerful ISO image management tool that enables users to create, edit, extract, and burn ISO files, providing a comprehensive solution for managing disk image files.",
-    "winget": "EZBSystems.UltraISO",
+    "winget": "none",
     "choco": "ultraiso",
     "scoop": "none",
     "default": [
@@ -1679,7 +1679,7 @@ $sync.database.Applications = '[
   {
     "Name": "Ventoy Portable",
     "Description": "An open-source tool for creating bootable USB drives with multiple ISO files, allowing users to boot various operating systems or utilities directly from a single USB drive.",
-    "winget": "Ventoy.Ventoy",
+    "winget": "none",
     "choco": "ventoy",
     "scoop": "none",
     "default": [
@@ -1713,7 +1713,7 @@ $sync.database.Applications = '[
   {
     "Name": "AutoHotkey",
     "Description": "A scripting language for automating repetitive tasks and creating macros on Windows, allowing users to customize keyboard shortcuts, remap keys, and automate mouse actions.",
-    "winget": "AutoHotkey.AutoHotkey",
+    "winget": "none",
     "choco": "autohotkey",
     "scoop": "none",
     "default": [
@@ -1730,7 +1730,7 @@ $sync.database.Applications = '[
   {
     "Name": "Rainmeter",
     "Description": "A customizable desktop customization tool that displays customizable skins, widgets, and applets on the Windows desktop, providing users with real-time system monitoring and information.",
-    "winget": "Rainmeter.Rainmeter",
+    "winget": "none",
     "choco": "rainmeter",
     "scoop": "none",
     "default": [
@@ -1747,7 +1747,7 @@ $sync.database.Applications = '[
   {
     "Name": "FxSound",
     "Description": "An audio enhancer software that improves the sound quality of music, videos, and games on Windows PCs by providing advanced audio processing and customization options.",
-    "winget": "FxSoundLLC.FxSound",
+    "winget": "none",
     "choco": "fxsound",
     "scoop": "none",
     "default": [
@@ -1765,7 +1765,7 @@ $sync.database.Applications = '[
   {
     "Name": "Vysor",
     "Description": "A screen mirroring and remote control software that enables users to view and control Android devices from Windows PCs, allowing for easy screen sharing, app testing, and troubleshooting.",
-    "winget": "Vysor.Vysor",
+    "winget": "none",
     "choco": "vysor",
     "scoop": "none",
     "default": [
@@ -1782,7 +1782,7 @@ $sync.database.Applications = '[
   {
     "Name": "Unified Remote",
     "Description": "A remote control app that turns smartphones into universal remote controls for Windows, macOS, and Linux computers, allowing users to control media playback, presentations, and more.",
-    "winget": "UnifiedIntents.UnifiedRemote",
+    "winget": "none",
     "choco": "unifiedremote",
     "scoop": "none",
     "default": [
@@ -1799,7 +1799,7 @@ $sync.database.Applications = '[
   {
     "Name": "AnyDesk",
     "Description": "A remote desktop software that allows users to access and control Windows, macOS, Linux, Android, and iOS devices from anywhere, providing secure and reliable remote access.",
-    "winget": "AnyDeskSoftwareGmbH.AnyDesk",
+    "winget": "none",
     "choco": "anydesk",
     "scoop": "none",
     "default": [
@@ -1816,7 +1816,7 @@ $sync.database.Applications = '[
   {
     "Name": "Airdroid",
     "Description": "AirDroid is a free and fast Android device manager app that allows you to access Android phone/tablet from computer remotely and securely. Manage SMS, files, photos and videos, WhatsApp, Line, WeChat and more on computer.",
-    "winget": "AirDroid.AirDroid",
+    "winget": "none",
     "choco": "airdroid",
     "scoop": "none",
     "default": [
@@ -1833,7 +1833,7 @@ $sync.database.Applications = '[
   {
     "Name": "UltraViewer",
     "Description": "Remote control to support your clients / partners from everywhere.",
-    "winget": "DucFabulous.UltraViewer",
+    "winget": "none",
     "choco": "ultraviewer",
     "scoop": "none",
     "default": [
@@ -1850,7 +1850,7 @@ $sync.database.Applications = '[
   {
     "Name": "Wireless Network Watcher Portable",
     "Description": "Wireless Network Watcher is a small utility that scans your wireless network and displays the list of all computers and devices that are currently connected to your network.",
-    "winget": "NirSoft.WirelessNetworkWatcher",
+    "winget": "none",
     "choco": "wnetwatcher.portable",
     "scoop": "none",
     "default": [
@@ -1867,7 +1867,7 @@ $sync.database.Applications = '[
   {
     "Name": "WifiInfoView",
     "Description": "Wireless Network Watcher is a small utility that scans your wireless network and displays the list of all computers and devices that are currently connected to your network.",
-    "winget": "NirSoft.WifiInfoView",
+    "winget": "none",
     "choco": "wifiinfoview",
     "scoop": "none",
     "default": [
@@ -1884,7 +1884,7 @@ $sync.database.Applications = '[
   {
     "Name": "qBittorrent",
     "Description": "A free and open-source BitTorrent client for downloading and uploading files via the BitTorrent protocol, providing users with a lightweight and feature-rich torrenting experience.",
-    "winget": "qBittorrent.qBittorrent",
+    "winget": "none",
     "choco": "qbittorrent",
     "scoop": "none",
     "default": [
@@ -1902,7 +1902,7 @@ $sync.database.Applications = '[
   {
     "Name": "Google Earth Pro",
     "Description": "Google Earth Pro on desktop is free for users with advanced feature needs. Import and export GIS data, and go back in time with historical imagery.",
-    "winget": "Google.EarthPro",
+    "winget": "none",
     "choco": "googleearthpro",
     "scoop": "none",
     "default": [
@@ -1919,7 +1919,7 @@ $sync.database.Applications = '[
   {
     "Name": "XAMPP",
     "Description": "XAMPP is a free and open-source cross-platform web server solution stack package developed by Apache Friends, consisting mainly of the Apache HTTP Server, MariaDB database, and interpreters for scripts written in the PHP and Perl programming languages.",
-    "winget": "ApacheFriends.Xampp.8.2",
+    "winget": "none",
     "choco": "xampp-81",
     "scoop": "none",
     "default": [
@@ -1936,7 +1936,7 @@ $sync.database.Applications = '[
   {
     "Name": "Visual Studio Professional 2022",
     "Description": "Visual Studio Professional 2022 is an integrated development environment (IDE) from Microsoft. It is used to develop computer programs, websites, web apps, web services, and mobile apps.",
-    "winget": "Microsoft.VisualStudio.2022.Professional",
+    "winget": "none",
     "choco": "visualstudio2022professional",
     "scoop": "none",
     "default": [
@@ -1953,7 +1953,7 @@ $sync.database.Applications = '[
   {
     "Name": "Visual Studio Community 2022",
     "Description": "Visual Studio Community 2022 is a free, fully-featured, and extensible IDE for individual developers, open source projects, academic research, education, and small professional teams.",
-    "winget": "Microsoft.VisualStudio.2022.Community",
+    "winget": "none",
     "choco": "visualstudio2022community",
     "scoop": "none",
     "default": [
@@ -1970,7 +1970,7 @@ $sync.database.Applications = '[
   {
     "Name": "Unity Hub",
     "Description": "Unity is a cross-platform game creation system developed by Unity Technologies and used to develop video games for PC, consoles, mobile",
-    "winget": "Unity.UnityHub",
+    "winget": "none",
     "choco": "unity-hub",
     "scoop": "none",
     "default": [
@@ -1987,7 +1987,7 @@ $sync.database.Applications = '[
   {
     "Name": "Godot Engine",
     "Description": "Godot is a feature-packed, cross-platform game engine for creating 2D and 3D games. It provides a comprehensive set of tools and features to develop games efficiently and quickly.",
-    "winget": "GodotEngine.GodotEngine",
+    "winget": "none",
     "choco": "godot",
     "scoop": "none",
     "default": [
@@ -2004,7 +2004,7 @@ $sync.database.Applications = '[
   {
     "Name": "Unity3D Engine",
     "Description": "Unity is a cross-platform game creation system developed by Unity Technologies and used to develop video games for PC, consoles, mobile",
-    "winget": "Unity.Unity.2020",
+    "winget": "none",
     "choco": "unity",
     "scoop": "none",
     "default": [
@@ -2021,7 +2021,7 @@ $sync.database.Applications = '[
   {
     "Name": "Blender",
     "Description": "Blender is a free and open-source professional-grade 3D computer graphics and video compositing program.",
-    "winget": "BlenderFoundation.Blender",
+    "winget": "none",
     "choco": "blender",
     "scoop": "none",
     "default": [
@@ -2038,7 +2038,7 @@ $sync.database.Applications = '[
   {
     "Name": "Visual Studio Code",
     "Description": "Visual Studio Code is a free source-code editor developed by Microsoft for Windows, Linux, and macOS. It includes support for debugging, embedded Git control, syntax highlighting, intelligent code completion, snippets, and code refactoring.",
-    "winget": "Microsoft.VisualStudioCode",
+    "winget": "none",
     "choco": "vscode",
     "scoop": "none",
     "default": [
@@ -2055,7 +2055,7 @@ $sync.database.Applications = '[
   {
     "Name": "Vim",
     "Description": "Vim is an advanced text editor that seeks to provide the power of the de-facto Unix editor ''Vi'', with a more complete feature set. It''s us... Keep Reading ",
-    "winget": "vim.vim",
+    "winget": "none",
     "choco": "vim",
     "scoop": "none",
     "default": [
@@ -2072,7 +2072,7 @@ $sync.database.Applications = '[
   {
     "Name": "Sublime Text 4",
     "Description": "Sublime Text 4 - The sophisticated text editor for code, markup and prose. ",
-    "winget": "SublimeHQ.SublimeText.4",
+    "winget": "none",
     "choco": "sublimetext4",
     "scoop": "none",
     "default": [
@@ -2089,7 +2089,7 @@ $sync.database.Applications = '[
   {
     "Name": "Atom",
     "Description": "Atom is a text editor that''s modern, approachable, yet hackable to the core—a tool you can customize to do anything but also use productively without ever touching a config file.",
-    "winget": "GitHub.Atom",
+    "winget": "none",
     "choco": "atom",
     "scoop": "none",
     "default": [
@@ -2106,7 +2106,7 @@ $sync.database.Applications = '[
   {
     "Name": "InnoSetup",
     "Description": "Inno Setup is a free installer for Windows programs. First introduced in 1997, Inno Setup today rivals and even surpasses many commercial installers in feature set and stability.",
-    "winget": "JRSoftware.InnoSetup",
+    "winget": "none",
     "choco": "innosetup",
     "scoop": "none",
     "default": [
@@ -2123,7 +2123,7 @@ $sync.database.Applications = '[
   {
     "Name": "PyCharm Community Edition",
     "Description": "PyCharm Community Edition is a free and open-source IDE for Python development. It provides smart code completion, code inspections, on-the-fly error highlighting, and quick-fixes.",
-    "winget": "JetBrains.PyCharm.Community",
+    "winget": "none",
     "choco": "pycharm-community",
     "scoop": "none",
     "default": [
@@ -2140,7 +2140,7 @@ $sync.database.Applications = '[
   {
     "Name": "PyCharm Professional Edition",
     "Description": "PyCharm Professional Edition is a powerful IDE for professional Python development. It includes advanced features such as database tools, web development support, and scientific tools integration.",
-    "winget": "JetBrains.PyCharm.Professional",
+    "winget": "none",
     "choco": "pycharm",
     "scoop": "none",
     "default": [
@@ -2157,7 +2157,7 @@ $sync.database.Applications = '[
   {
     "Name": "Jetbrains Rider",
     "Description": "Rider is a cross-platform .NET IDE developed by JetBrains. It supports C#, VB.NET, F#, ASP.NET, JavaScript, TypeScript, HTML, CSS, and SQL languages and frameworks.",
-    "winget": "JetBrains.Rider",
+    "winget": "none",
     "choco": "jetbrains-rider",
     "scoop": "none",
     "default": [
@@ -2174,7 +2174,7 @@ $sync.database.Applications = '[
   {
     "Name": "Node.js LTS",
     "Description": "Node.js is a JavaScript runtime built on Chrome''s V8 JavaScript engine. LTS (Long Term Support) releases are supported for an extended period and provide stability for production environments.",
-    "winget": "OpenJS.NodeJS.LTS",
+    "winget": "none",
     "choco": "nodejs-lts",
     "scoop": "none",
     "default": [
@@ -2191,7 +2191,7 @@ $sync.database.Applications = '[
   {
     "Name": "Electrum-LTS",
     "Description": "Electrum is a lightweight Bitcoin wallet focused on speed and simplicity, with support for hardware wallets and multisig functionality. LTS (Long Term Support) releases provide stability and security updates for an extended period.",
-    "winget": "Electrum.Electrum",
+    "winget": "none",
     "choco": "electronim",
     "scoop": "none",
     "default": [
@@ -2208,7 +2208,7 @@ $sync.database.Applications = '[
   {
     "Name": "Hugo",
     "Description": "Hugo is one of the most popular open-source static site generators. With its amazing speed and flexibility, Hugo makes building websites f... Keep Reading ",
-    "winget": "Hugo.Hugo",
+    "winget": "none",
     "choco": "hugo",
     "scoop": "none",
     "default": [
@@ -2225,7 +2225,7 @@ $sync.database.Applications = '[
   {
     "Name": "Notepad++",
     "Description": "Notepad++ is a free source code editor and Notepad replacement that supports several languages. It offers syntax highlighting, code folding, auto-completion, and other features for efficient code editing.",
-    "winget": "Notepad++.Notepad++",
+    "winget": "none",
     "choco": "notepadplusplus",
     "scoop": "none",
     "default": [
@@ -2242,7 +2242,7 @@ $sync.database.Applications = '[
   {
     "Name": "Windows Terminal",
     "Description": "Windows Terminal is a modern terminal application for users of command-line tools and shells like Command Prompt, PowerShell, and Windows Subsystem for Linux (WSL). It provides multiple tabs, custom themes, and GPU-accelerated text rendering.",
-    "winget": "Microsoft.WindowsTerminal",
+    "winget": "none",
     "choco": "microsoft-windows-terminal",
     "scoop": "none",
     "default": [
@@ -2257,9 +2257,9 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Powershell 7",
+    "Name": "Powershell core",
     "Description": "PowerShell Core is a cross-platform (Windows, Linux, and macOS) automation and configuration tool/framework that works well with your existing tools and is optimized for dealing with structured data (e.g., JSON, CSV, XML, etc.), REST APIs, and object models.",
-    "winget": "Microsoft.PowerShell",
+    "winget": "none",
     "choco": "powershell-core",
     "scoop": "none",
     "default": [
@@ -2293,7 +2293,7 @@ $sync.database.Applications = '[
   {
     "Name": "dnSpy",
     "Description": "dnSpy is a tool to reverse engineer .NET assemblies. It includes a decompiler, a debugger and an assembly editor (and more) and can be easily extended by writing your own extension. It uses dnlib to read and write assemblies so it can handle obfuscated assemblies (eg. malware) without crashing.",
-    "winget": "dnSpyEx.dnSpy",
+    "winget": "none",
     "choco": "dnspy",
     "scoop": "none",
     "default": [
@@ -2325,9 +2325,9 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Python 3.9",
+    "Name": "Python",
     "Description": "Python is a popular high-level programming language known for its simplicity and versatility. It is used in various fields such as web development, data science, machine learning, and automation.",
-    "winget": "Python.Python.3.9",
+    "winget": "none",
     "choco": "python",
     "scoop": "none",
     "default": [
@@ -2344,7 +2344,7 @@ $sync.database.Applications = '[
   {
     "Name": "Git",
     "Description": "Git is a free and open-source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.",
-    "winget": "Git.Git",
+    "winget": "none",
     "choco": "git",
     "scoop": "none",
     "default": [
@@ -2361,7 +2361,7 @@ $sync.database.Applications = '[
   {
     "Name": "GitHub Desktop",
     "Description": "GitHub Desktop is a seamless way to contribute to projects on GitHub and GitHub Enterprise. It provides an intuitive interface for managing repositories, branching, committing, and merging code changes.",
-    "winget": "GitHub.GitHubDesktop",
+    "winget": "none",
     "choco": "github-desktop",
     "scoop": "none",
     "default": [
@@ -2378,7 +2378,7 @@ $sync.database.Applications = '[
   {
     "Name": "Docker Desktop",
     "Description": "Docker Desktop is an easy-to-install application for Windows and macOS that enables developers to build, share, and run containerized applications and microservices locally.",
-    "winget": "Docker.DockerDesktop",
+    "winget": "none",
     "choco": "docker-desktop",
     "scoop": "none",
     "default": [
@@ -2395,7 +2395,7 @@ $sync.database.Applications = '[
   {
     "Name": "Docker Compose",
     "Description": "Docker Compose is a tool for defining and running multi-container Docker applications. It allows you to use a YAML file to configure your application''s services, networks, and volumes.",
-    "winget": "Docker.DockerCompose",
+    "winget": "none",
     "choco": "docker-compose",
     "scoop": "none",
     "default": [
@@ -2412,7 +2412,7 @@ $sync.database.Applications = '[
   {
     "Name": "PowerToys",
     "Description": "PowerToys is a set of utilities for power users to tune and streamline their Windows experience for greater productivity. It includes tools like FancyZones for window management, PowerRename for batch renaming files, and more.",
-    "winget": "Microsoft.PowerToys",
+    "winget": "none",
     "choco": "powertoys",
     "scoop": "none",
     "default": [
@@ -2429,7 +2429,7 @@ $sync.database.Applications = '[
   {
     "Name": "Notion",
     "Description": "The all-in-one workspace for your notes, tasks, wikis, and databases.",
-    "winget": "Notion.Notion",
+    "winget": "none",
     "choco": "notion",
     "scoop": "none",
     "default": [
@@ -2446,7 +2446,7 @@ $sync.database.Applications = '[
   {
     "Name": "FL Studio",
     "Description": "FL Studio is a digital audio workstation (DAW) developed by Image-Line. It allows you to compose, arrange, record, edit, mix, and master professional-quality music.",
-    "winget": "ImageLine.FLStudio",
+    "winget": "none",
     "choco": "ImageLine.FLStudio",
     "scoop": "none",
     "default": [
@@ -2497,7 +2497,7 @@ $sync.database.Applications = '[
   {
     "Name": "Scrcpy",
     "Description": "Scrcpy is a free and open-source tool that allows you to display and control your Android device from a computer. It provides high-performance screen mirroring and supports various input methods.",
-    "winget": "Genymobile.scrcpy",
+    "winget": "none",
     "choco": "scrcpy",
     "scoop": "none",
     "default": [
@@ -2514,7 +2514,7 @@ $sync.database.Applications = '[
   {
     "Name": "VirtualBox",
     "Description": "VirtualBox is a cross-platform virtualization application. It installs on existing Intel or AMD-based computers, whether they are running Windows, Mac, Linux or Solaris operating systems. It extends the capabilities of your existing computer so that it can run multiple operating systems (inside multiple virtual machines) at the same time.",
-    "winget": "Oracle.VirtualBox",
+    "winget": "none",
     "choco": "virtualbox",
     "scoop": "none",
     "default": [
@@ -2531,7 +2531,7 @@ $sync.database.Applications = '[
   {
     "Name": "Oh My Posh",
     "Description": " Oh my Posh is a custom prompt engine for any shell that has the ability to adjust the prompt string with a function or variable.",
-    "winget": "JanDeDobbeleer.OhMyPosh",
+    "winget": "none",
     "choco": "oh-my-posh",
     "scoop": "none",
     "default": [
@@ -2548,7 +2548,7 @@ $sync.database.Applications = '[
   {
     "Name": "Malwarebytes",
     "Description": "Multiple layers of malware-crushing tech, including virus protection. Thorough malware and spyware removal. Specialized ransomware protection.",
-    "winget": "Malwarebytes.Malwarebytes",
+    "winget": "none",
     "choco": "malwarebytes",
     "scoop": "none",
     "default": [
@@ -2565,7 +2565,7 @@ $sync.database.Applications = '[
   {
     "Name": "Avast Free Antivirus",
     "Description": "Avast Free Antivirus.",
-    "winget": "XPDNZJFNCR1B07",
+    "winget": "none",
     "scoop": "none",
     "default": [
       {
@@ -2616,7 +2616,7 @@ $sync.database.Applications = '[
   {
     "Name": "Audacity",
     "Description": "Audacity is free, open source, cross-platform software for recording and editing sounds.",
-    "winget": "Audacity.Audacity",
+    "winget": "none",
     "choco": "audacity",
     "scoop": "none",
     "default": [
@@ -2633,7 +2633,7 @@ $sync.database.Applications = '[
   {
     "Name": "MusicBee",
     "Description": "MusicBee makes it easy to organize, find and play music files on your computer, on portable devices and on the web.",
-    "winget": "MusicBee.MusicBee",
+    "winget": "none",
     "choco": "musicbee",
     "scoop": "none",
     "default": [
@@ -2648,7 +2648,7 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Format Factory",
+    "Name": "FormatFactory",
     "Description": "multifunctional media processing tools",
     "winget": "none",
     "choco": "formatfactory",
@@ -2684,7 +2684,7 @@ $sync.database.Applications = '[
   {
     "Name": "Windows Subsystem for Linux WSL2",
     "Description": "To install Windows Subsystem for Linux 2, run the following command from the command line or from PowerShell:",
-    "winget": "Microsoft.WSL",
+    "winget": "none",
     "choco": "wsl2",
     "scoop": "none",
     "default": [
@@ -2716,9 +2716,9 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "MongoDB",
+    "Name": "MongoDB 7.3.2",
     "Description": "MongoDB stores data using a flexible document data model that is similar to JSON. Documents contain one or more fields, including arrays, binary data and sub-documents. Fields can vary from document to document. This flexibility allows development teams to evolve the data model rapidly as their application requirements change.",
-    "winget": "MongoDB.Server",
+    "winget": "none",
     "choco": "mongodb",
     "scoop": "none",
     "default": [
@@ -2735,7 +2735,7 @@ $sync.database.Applications = '[
   {
     "Name": "MPC-BE",
     "Description": "Media Player Classic - BE is a free and open source audio and video player for Windows.",
-    "winget": " MPC-BE.MPC-BE",
+    "winget": "none",
     "choco": "mpc-be",
     "scoop": "none",
     "default": [
@@ -2752,7 +2752,7 @@ $sync.database.Applications = '[
   {
     "Name": "Kdenlive",
     "Description": "A powerful non-linear video editor",
-    "winget": "KDE.Kdenlive",
+    "winget": "none",
     "choco": "kdenlive",
     "scoop": "none",
     "default": [
@@ -2769,7 +2769,7 @@ $sync.database.Applications = '[
   {
     "Name": "TablePlus",
     "Description": "Modern, native, and friendly GUI tool for relational databases: MySQL, PostgreSQL, SQLite, MongoDB, Redis, and more.",
-    "winget": "TablePlus.TablePlus",
+    "winget": "none",
     "choco": "tableplus",
     "scoop": "none",
     "default": [
@@ -2786,7 +2786,7 @@ $sync.database.Applications = '[
   {
     "Name": "Hosts File Editor",
     "Description": "Hosts File Editor makes it easy to change your hosts file as well as archive multiple versions for easy retrieval.",
-    "winget": "scottlerch.hosts-file-editor",
+    "winget": "none",
     "choco": "hosts.editor",
     "scoop": "none",
     "default": [
@@ -2803,7 +2803,7 @@ $sync.database.Applications = '[
   {
     "Name": "Subtitle Edit",
     "Description": "With SE you can easily adjust a subtitle if it is out of sync with the video in several different ways. You can also use SE for making new subtitles from scratch (do use the time-line/waveform/spectrogram) or translating subtitles.",
-    "winget": "9NWH51GWJTKN",
+    "winget": "none",
     "choco": "subtitleedit",
     "scoop": "none",
     "default": [
@@ -2820,7 +2820,7 @@ $sync.database.Applications = '[
   {
     "Name": "Skype",
     "Description": "Skype - Install Skype, add your friends as contacts, then call, video call and instant message with them for free. Call people who aren''t on Skype too, at really low rates.",
-    "winget": "Microsoft.Skype",
+    "winget": "none",
     "choco": "skype",
     "scoop": "none",
     "default": [
@@ -2854,7 +2854,7 @@ $sync.database.Applications = '[
   {
     "Name": "Everything",
     "Description": "Everything Search Engine - locate files and folders by name instantly",
-    "winget": "voidtools.Everything",
+    "winget": "none",
     "choco": "everything",
     "scoop": "none",
     "default": [
@@ -2871,7 +2871,7 @@ $sync.database.Applications = '[
   {
     "Name": "Yarn",
     "Description": "Yarn is a package manager for the npm and bower registries with a few specific focuses.",
-    "winget": "Yarn.Yarn",
+    "winget": "none",
     "choco": "yarn",
     "scoop": "none",
     "default": [
@@ -2922,7 +2922,7 @@ $sync.database.Applications = '[
   {
     "Name": "BlueStacks",
     "Description": "Play Android Games on PC.",
-    "winget": "BlueStack.BlueStacks",
+    "winget": "none",
     "choco": "bluestacks",
     "scoop": "none",
     "default": [
@@ -2956,7 +2956,7 @@ $sync.database.Applications = '[
   {
     "Name": "Office 365 Business",
     "Description": "Microsoft 365 (formerly Office 365) is a line of subscription services offered by Microsoft as part of the Microsoft Office product line. The brand encompasses plans that allow use of the Microsoft Office software suite over the life of the subscription, as well as cloud-based software as a service products for business environments, such as hosted Exchange Server, Skype for Business Server, and SharePoint, among others. All Microsoft 365 plans include automatic updates to their respective software at no additional charge, as opposed to conventional licenses for these programs—where new versions require purchase of a new license.",
-    "winget": "Microsoft.Office",
+    "winget": "none",
     "choco": "office365business",
     "scoop": "none",
     "default": [
@@ -3007,7 +3007,7 @@ $sync.database.Applications = '[
   {
     "Name": "4K Video Downloader",
     "Description": "4K Video Downloader allows downloading videos, playlists, channels and subtitles from YouTube, Facebook, Vimeo and other video sites in high quality.",
-    "winget": "OpenMedia.4KVideoDownloader",
+    "winget": "none",
     "choco": "4k-video-downloader",
     "scoop": "none",
     "default": [
@@ -3058,7 +3058,7 @@ $sync.database.Applications = '[
   {
     "Name": "Android Studio",
     "Description": "Android Studio is the official integrated development environment for Google''s Android operating system, built on JetBrains IntelliJ IDEA software and designed specifically for Android development",
-    "winget": "Google.AndroidStudio",
+    "winget": "none",
     "choco": "androidstudio",
     "scoop": "none",
     "default": [
@@ -3073,9 +3073,26 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
+    "Name": "WhatsApp",
+    "Description": "WhatsApp is an instant messaging and voice-over-IP service owned by technology conglomerate Meta. It allows users to send text, voice messages and video messages, make voice and video calls, and share images, documents, user",
+    "winget": "WhatsApp.WhatsApp",
+    "choco": "none",
+    "scoop": "none",
+    "default": [
+      {
+        "fileType": "none",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "ITT/Downloads"
+      }
+    ],
+    "category": "Communication",
+    "check": "false"
+  },
+  {
     "Name": "LibreWolf",
     "Description": "LibreWolf is designed to increase protection against tracking and fingerprinting techniques, while also including a few security improvements. This is achieved through our privacy and security oriented settings and patches. LibreWolf also aims to remove all the telemetry, data collection and annoyances, as well as disabling anti-freedom features like DRM.",
-    "winget": "LibreWolf.LibreWolf",
+    "winget": "none",
     "choco": "librewolf",
     "scoop": "none",
     "default": [
@@ -3092,7 +3109,7 @@ $sync.database.Applications = '[
   {
     "Name": "Flow Launcher",
     "Description": "Dedicated to making your workflow flow more seamless. Search everything from applications, files, bookmarks, YouTube, Twitter and more. Flow will continue to evolve, designed to be open and built with the community at heart.",
-    "winget": "Flow-Launcher.Flow-Launcher",
+    "winget": "none",
     "choco": "flow-launcher",
     "scoop": "none",
     "default": [
@@ -3126,8 +3143,8 @@ $sync.database.Applications = '[
   {
     "Name": "AdGuard Home",
     "Description": "AdGuard Home is a network-wide software for blocking ads and tracking. After you set it up, it''ll cover ALL your home devices, and you don''t need any client-side software for that.",
-    "winget": "AdGuard.AdGuardHome",
-    "choco": "adguardhome",
+    "winget": "choco install adguardhome",
+    "choco": "It operates as a DNS server that re-routes tracking domains to a \"black hole\", thus preventing your devices from connecting to those servers. It''s based on software we use for our public AdGuard DNS servers - both share a lot of common code.",
     "scoop": "none",
     "default": [
       {
@@ -3143,7 +3160,7 @@ $sync.database.Applications = '[
   {
     "name": "Burp Suite Community Edition",
     "description": "Burp Suite is an integrated platform for performing security testing of web applications. Its various tools work seamlessly together to support the entire testing process, from initial mapping and analysis of an application''s attack surface, through to finding and exploiting security vulnerabilities.",
-    "winget": "PortSwigger.BurpSuite.Community",
+    "winget": "none",
     "choco": "burp-suite-free-edition",
     "scoop": "none",
     "default": [
@@ -3160,7 +3177,7 @@ $sync.database.Applications = '[
   {
     "name": "CoreTemp",
     "description": "Core Temp is a compact, no fuss, small footprint, yet powerful program to monitor processor temperature and other vital information.",
-    "winget": "ALCPU.CoreTemp",
+    "winget": "none",
     "choco": "coretemp",
     "scoop": "none",
     "default": [
@@ -3177,7 +3194,7 @@ $sync.database.Applications = '[
   {
     "name": "ShareX",
     "description": "Screen capture, file sharing and productivity tool.",
-    "winget": "ShareX.ShareX",
+    "winget": "none",
     "choco": "sharex",
     "scoop": "none",
     "default": [
@@ -3192,9 +3209,9 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "name": "ONLY OFFICE",
+    "name": "ONLYOFFICE",
     "description": "ONLYOFFICE is a project developed by experienced IT experts from Ascensio System SIA, leading IT company with headquarters in Riga, Latvia. Originally ONLYOFFICE was designed for internal team collaboration. An attempt to introduce it to a wider audience proved to be successful: ONLYOFFICE received very positive feedback from the Internet community. As a result, its functionality was considerably revised and expanded that brought about a high and stable growth of users from different countries.",
-    "winget": "ONLYOFFICE.DesktopEditors",
+    "winget": "none",
     "choco": "onlyoffice",
     "scoop": "none",
     "default": [
@@ -3211,7 +3228,7 @@ $sync.database.Applications = '[
   {
     "name": "ESET Internet Security",
     "description": "Ideal for modern users concerned about their privacy, who actively use internet for shopping, banking, work and communication.",
-    "winget": "ESET.EndpointSecurity",
+    "winget": "none",
     "choco": "eset-internet-security",
     "scoop": "none",
     "default": [
@@ -3228,7 +3245,7 @@ $sync.database.Applications = '[
   {
     "name": "WinDirStat",
     "description": "WinDirStat is a disk usage statistics viewer and cleanup tool for Microsoft Windows.",
-    "winget": "WinDirStat.WinDirStat",
+    "winget": "none",
     "choco": "windirstat",
     "scoop": "none",
     "default": [
@@ -3245,7 +3262,7 @@ $sync.database.Applications = '[
   {
     "name": "Winmerge",
     "description": "WinMerge is an Open Source differencing and merging tool for Windows. WinMerge can compare both  folders and files, presenting differences in a visual text format that is easy to understand and handle.",
-    "winget": "WinMerge.WinMerge",
+    "winget": "none",
     "choco": "winmerge",
     "scoop": "none",
     "default": [
@@ -3262,7 +3279,7 @@ $sync.database.Applications = '[
   {
     "name": "Wireshark",
     "description": "Wireshark is the worlds foremost and widely-used network protocol analyzer. It lets you see whats happening on your network at a microscopic level and is the de facto (and often de jure) standard across many commercial and non-profit enterprises, government agencies, and educational institutions. Wireshark development thrives thanks to the volunteer contributions of networking experts around the globe and is the continuation of a project started by Gerald Combs in 1998.",
-    "winget": "WiresharkFoundation.Wireshark",
+    "winget": "none",
     "choco": "wireshark",
     "scoop": "none",
     "default": [
@@ -3279,7 +3296,7 @@ $sync.database.Applications = '[
   {
     "name": "TeraCopy",
     "description": "TeraCopy is designed to copy and move files at the maximum possible speed. It skips bad files during the copying process, and then displays them at the end of the transfer so that you can see which ones need attention. TeraCopy can automatically check the copied files for errors by calculating their CRC checksum values. It also provides a lot more information about the files being copied than its Windows counterpart. TeraCopy integrates with Windows Explorer''s right-click menu and can be set as the default copy handler.",
-    "winget": "CodeSector.TeraCopy",
+    "winget": "none",
     "choco": "teracopy",
     "scoop": "none",
     "default": [
@@ -3296,7 +3313,7 @@ $sync.database.Applications = '[
   {
     "name": "QuickLook",
     "description": "Quick Look is among the few features I missed from Mac OS X It enables very quick preview of file by pressing Space key while highlighting it without opening its associated application Then I decide to add this feature to Windows by myself which results this QuickLook project",
-    "winget": "QL-Win.QuickLook",
+    "winget": "none",
     "choco": "quicklook",
     "scoop": "none",
     "default": [
@@ -3313,7 +3330,7 @@ $sync.database.Applications = '[
   {
     "name": "RepoZ",
     "description": "RepoZ provides a quick overview of the git repositories on your development machine including their current branch and a short status information It uses the repositories on your machine to create an efficient navigation widget and makes sure youll never loose track of your work along the way",
-    "winget": "AndreasWascher.RepoZ",
+    "winget": "none",
     "choco": "repoz",
     "scoop": "none",
     "default": [
@@ -3347,7 +3364,7 @@ $sync.database.Applications = '[
   {
     "name": "Go Programming Language",
     "description": "Go is expressive concise clean and efficient Its concurrency mechanisms make it easy to write programs that get the most out of multicore and networked machines while its novel type system enables flexible and modular program construction Go compiles quickly to machine code yet has the convenience of garbage collection and the power of runtime reflection Its a fast statically typed compiled language that feels like a dynamically typed interpreted language",
-    "winget": "Language GoLang.Go",
+    "winget": "none",
     "choco": "golang",
     "scoop": "none",
     "default": [
@@ -3364,7 +3381,7 @@ $sync.database.Applications = '[
   {
     "name": "Rust",
     "description": "Rust is a curlybrace blockstructured expression language It visually resembles the C language family but differs significantly in syntactic and semantic details Its design is oriented toward concerns of programming in the large that is of creating and maintaining boundaries  both abstract and operational  that preserve largesystem integrity availability and concurrency",
-    "winget": "Rustlang.Rust.GNU",
+    "winget": "none",
     "choco": "rust",
     "scoop": "none",
     "default": [
@@ -3381,7 +3398,7 @@ $sync.database.Applications = '[
   {
     "name": "Inkscape",
     "description": "Inkscape is an opensource vector graphics editor similar to Adobe Illustrator Corel Draw Freehand or Xara X What sets Inkscape apart is its use of Scalable Vector Graphics SVG an open XMLbased W3C standard as the native format",
-    "winget": "Inkscape.Inkscape",
+    "winget": "none",
     "choco": "inkscape",
     "scoop": "none",
     "default": [
@@ -3398,7 +3415,7 @@ $sync.database.Applications = '[
   {
     "name": "Youtube dl",
     "description": "outubedl is a small commandline program to download videos from YouTubecom and a few more sites It is written in Python and its not platform specific It should work in your Unix box in Windows or in Mac OS X It is released to the public domain which means you can modify it redistribute it or use it however you like",
-    "winget": "youtube-dl.youtube-dl",
+    "winget": "none",
     "choco": "youtube-dl",
     "scoop": "none",
     "default": [
@@ -3415,7 +3432,7 @@ $sync.database.Applications = '[
   {
     "name": "Postman",
     "description": "Postman helps you be more efficient while working with APIs Using Postman you can construct complex HTTP requests quickly organize them in collections and share them with your coworkers",
-    "winget": "Postman.Postman",
+    "winget": "none",
     "choco": "postman",
     "scoop": "none",
     "default": [
@@ -3432,7 +3449,7 @@ $sync.database.Applications = '[
   {
     "name": "Azure CLI",
     "description": "The Azure CLI is available across Azure services and is designed to get you working quickly with Azure with an emphasis on automation",
-    "winget": "Microsoft.AzureCLI",
+    "winget": "none",
     "choco": "azure-cli",
     "scoop": "none",
     "default": [
@@ -3449,7 +3466,7 @@ $sync.database.Applications = '[
   {
     "name": "GameMaker-Studio",
     "description": "GameMaker Studio has everything you need for games development no matter what your level or expertise",
-    "winget": "YoYoGames.GameMaker.Studio.2",
+    "winget": "YoYoGames.GameMaker.Studio.1",
     "choco": "none",
     "scoop": "none",
     "default": [
@@ -3466,7 +3483,7 @@ $sync.database.Applications = '[
   {
     "name": "Charles",
     "description": "Charles is an HTTP proxy  HTTP monitor  Reverse Proxy that enables a developer to view all of the HTTP and SSL  HTTPS traffic between their machine and the Internet This includes requests responses and the HTTP headers which contain the cookies and caching information",
-    "winget": "XK72.Charles",
+    "winget": "none",
     "choco": "charles",
     "scoop": "none",
     "default": [
@@ -3534,7 +3551,7 @@ $sync.database.Applications = '[
   {
     "name": "espanso",
     "description": "A crossplatform Text Expander written in Rust",
-    "winget": "Espanso.Espanso",
+    "winget": "none",
     "choco": "espanso",
     "scoop": "none",
     "default": [
@@ -3551,7 +3568,7 @@ $sync.database.Applications = '[
   {
     "name": "Ability Office",
     "description": "Ability Office Standard offers 3 core applications essential for home and business Word Processor Spreadsheet and Presentation in one affordable office suite It also includes a Photoalbum and quick application Launcher Just perfect for working from home allowing files to be edited and exchanged with those back in the office and absolutely ideal for students and school children",
-    "winget": "Ability.AbilityOffice.8.Standard",
+    "winget": "none",
     "choco": "abilityoffice",
     "scoop": "none",
     "default": [
@@ -3585,7 +3602,7 @@ $sync.database.Applications = '[
   {
     "name": "SearchMyFiles",
     "description": "SearchMyFiles allows you to make a very accurate search that cannot be done with Windows search For Example You can search all files created in the last 10 minutes with size between 500 and 700 bytes",
-    "winget": "NirSoft.SearchMyFiles",
+    "winget": "none",
     "choco": "searchmyfiles",
     "scoop": "none",
     "default": [
@@ -3602,7 +3619,7 @@ $sync.database.Applications = '[
   {
     "name": "iTunes",
     "description": "iTunes is the best way to organize and enjoy the music movies and TV shows you already have and shop for the ones you want to get Its home to Apple Music which gives you unlimited access to millions of songs curated playlists1 and Beats 1 radio hosted by Zane Lowe and a team of acclaimed DJs Enjoy all the entertainment iTunes has to offer on your Mac and PC",
-    "winget": "Apple.iTunes",
+    "winget": "none",
     "choco": "itunes",
     "scoop": "none",
     "default": [
@@ -3620,7 +3637,7 @@ $sync.database.Applications = '[
     "name": "StartIsBack++",
     "description": "StartIsBack returns Windows 10 and Windows 8 a real fully featured start menu and start button behaving exactly like the ones in Windows 7",
     "winget": "StartIsBack.StartIsBack",
-    "choco": "startisback",
+    "choco": "none",
     "scoop": "none",
     "default": [
       {
@@ -3636,7 +3653,7 @@ $sync.database.Applications = '[
   {
     "name": "Advanced SystemCare Free",
     "description": "Over time your computer may accumulate with large quantities of useless temporary and duplicate files Advanced SystemCare 12 will help clean up these junk files and free up your disk space Also you can use our advanced tools to make registry clean for better use",
-    "winget": "XPFFGSS4Z9M2TX",
+    "winget": "none",
     "choco": "afedteated",
     "scoop": "none",
     "default": [
@@ -3668,9 +3685,9 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "name": "YUMI Legacy",
+    "name": "YUMI",
     "description": "YUMI Your Universal Multiboot Installer is the successor to MultibootISOs It can be used to create a Multiboot USB Flash Drive containing multiple operating systems antivirus utilities disc cloning diagnostic tools and more Contrary to MultiBootISOs which used grub to boot ISO files directly from USB YUMI uses syslinux to boot extracted distributions stored on the USB device and reverts to using grub to Boot Multiple ISO files from USB if necessary",
-    "winget": "YumiUsb.Legacy",
+    "winget": "none",
     "choco": "yumi",
     "scoop": "none",
     "default": [
@@ -3687,7 +3704,7 @@ $sync.database.Applications = '[
   {
     "name": "YUMI UEFI",
     "description": "YUMI Your Universal Multiboot Installer is the successor to MultibootISOs It can be used to create a Multiboot USB Flash Drive containing multiple operating systems antivirus utilities disc cloning diagnostic tools and more Contrary to MultiBootISOs which used grub to boot ISO files directly from USB YUMI uses syslinux to boot extracted distributions stored on the USB device and reverts to using grub to Boot Multiple ISO files from USB if necessary",
-    "winget": "YumiUsb.UEFI",
+    "winget": "none",
     "choco": "yumi-uefi",
     "scoop": "none",
     "default": [
@@ -3704,7 +3721,7 @@ $sync.database.Applications = '[
   {
     "name": "OP Auto Clicker",
     "description": "A fullfledged autoclicker with two modes of autoclicking at your dynamic cursor location or at a prespecified location The maximum amounts of clicked can also be set or left as infinite Hotkeys work in the background for convenience",
-    "winget": "OPAutoClicker.OPAutoClicker",
+    "winget": "none",
     "choco": "autoclicker",
     "scoop": "none",
     "default": [
@@ -3721,7 +3738,7 @@ $sync.database.Applications = '[
   {
     "name": "Spotube",
     "description": "Spotube is a Flutter based lightweight spotify client It utilizes the power of Spotify  Youtubes public API  creates a hazardless performant  resource friendly User Experience",
-    "winget": "KRTirtho.Spotube",
+    "winget": "none",
     "choco": "spotube",
     "scoop": "none",
     "default": [
@@ -3738,7 +3755,7 @@ $sync.database.Applications = '[
   {
     "name": "Firefox ESR",
     "description": "Bringing together all kinds of awesomeness to make browsing better for you",
-    "winget": "Mozilla.Firefox.ESR",
+    "winget": "none",
     "choco": "firefoxesr",
     "scoop": "none",
     "default": [
@@ -3755,7 +3772,7 @@ $sync.database.Applications = '[
   {
     "name": "Audio Switcher",
     "description": "Easily switch the default audio device input or output on any Windows PC Vista and above Using this application you can switch output OR input sound devices at the click of a button or the press of a key I designed this application to be incredibly small and lightweight There is no bloat it does exactly what it should nothing more nothing less",
-    "winget": "FortyOneLtd.AudioSwitcher",
+    "winget": "none",
     "choco": "audioswitcher",
     "scoop": "none",
     "default": [
@@ -3840,7 +3857,7 @@ $sync.database.Applications = '[
   {
     "name": "MSEdgeRedirect",
     "description": "This tool filters and passes the command line arguments of Microsoft Edge processes into your default browser instead of hooking into the microsoftedge handler this should provide resiliency against future changes Additionally an Image File Execution Options mode is available to operate similarly to the Old EdgeDeflector Additional modes are planned for future versions",
-    "winget": "rcmaehl.MSEdgeRedirect",
+    "winget": "none",
     "choco": "msedgeredirect",
     "scoop": "none",
     "default": [
@@ -3855,60 +3872,9 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "name": "NET Desktop Runtime 5",
-    "description": "NET Core is a general purpose development platform maintained by Microsoft and the NET community on GitHub It is crossplatform supporting Windows macOS and Linux and can be used in device cloud and embeddedIoT scenarios This package is required to run Windows Desktop applications with the .NET Runtime.",
-    "winget": "Microsoft.DotNet.HostingBundle.5",
-    "choco": "dotnet-5.0-desktopruntime",
-    "scoop": "none",
-    "default": [
-      {
-        "IsExcute": "false",
-        "url": "none",
-        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
-      }
-    ],
-    "category": "Runtimes",
-    "check": "false"
-  },
-  {
-    "name": "NET Desktop Runtime 3",
-    "description": "NET Core is a general purpose development platform maintained by Microsoft and the NET community on GitHub It is crossplatform supporting Windows macOS and Linux and can be used in device cloud and embeddedIoT scenarios This package is required to run Windows Desktop applications with the .NET Runtime.",
-    "winget": "dotnetcore-3.0-desktopruntime",
-    "choco": "Microsoft.DotNet.HostingBundle.3_1",
-    "scoop": "none",
-    "default": [
-      {
-        "IsExcute": "false",
-        "url": "none",
-        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
-      }
-    ],
-    "category": "Runtimes",
-    "check": "false"
-  },
-  {
-    "name": "NET Desktop Runtime 6",
-    "description": "NET Core is a general purpose development platform maintained by Microsoft and the NET community on GitHub It is crossplatform supporting Windows macOS and Linux and can be used in device cloud and embeddedIoT scenarios This package is required to run Windows Desktop applications with the .NET Runtime.",
-    "winget": "Microsoft.DotNet.HostingBundle.6",
-    "choco": "dotnet-6.0-desktopruntime",
-    "scoop": "none",
-    "default": [
-      {
-        "IsExcute": "false",
-        "url": "none",
-        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
-      }
-    ],
-    "category": "Runtimes",
-    "check": "false"
-  },
-  {
     "name": "NET Desktop Runtime 7",
     "description": "NET Core is a general purpose development platform maintained by Microsoft and the NET community on GitHub It is crossplatform supporting Windows macOS and Linux and can be used in device cloud and embeddedIoT scenarios This package is required to run Windows Desktop applications with the .NET Runtime.",
-    "winget": "Microsoft.DotNet.AspNetCore.7",
+    "winget": "none",
     "choco": "dotnet-7.0-desktopruntime",
     "scoop": "none",
     "default": [
@@ -3925,7 +3891,7 @@ $sync.database.Applications = '[
   {
     "name": "NET Desktop Runtime 8",
     "description": "NET Core is a general purpose development platform maintained by Microsoft and the NET community on GitHub It is crossplatform supporting Windows macOS and Linux and can be used in device cloud and embeddedIoT scenarios This package is required to run Windows Desktop applications with the NET Runtime",
-    "winget": "Microsoft.DotNet.DesktopRuntime.8",
+    "winget": "none",
     "choco": "dotnet-desktopruntime",
     "scoop": "none",
     "default": [
@@ -3942,7 +3908,7 @@ $sync.database.Applications = '[
   {
     "name": "Viber",
     "description": "Viber is a mobile application that lets you make free phone calls and send text messages to anyone who also has the application installed You can call or text any Viber user anywhere in the world for free",
-    "winget": "XPFM5P5KDWF0JP",
+    "winget": "none",
     "choco": "viber",
     "scoop": "none",
     "default": [
@@ -3954,23 +3920,6 @@ $sync.database.Applications = '[
       }
     ],
     "category": "Communication",
-    "check": "false"
-  },
-  {
-    "name": "StartAllBack",
-    "description": "Introducing  StartAllBack Windows 11 from a better timeline Embrace enhance unsweep classic UI from under the rug",
-    "winget": "StartIsBack.StartAllBack",
-    "choco": "startallback",
-    "scoop": "none",
-    "default": [
-      {
-        "IsExcute": "false",
-        "url": "none",
-        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
-      }
-    ],
-    "category": "Utilities",
     "check": "false"
   }
 ]
@@ -4807,27 +4756,17 @@ $sync.database.Tweaks = '[
     "check": "false",
     "type": "command",
     "refresh": "false",
-    "Registry": [
+    "Commands": [
       {
-        "Path": "HKLM:\\System\\CurrentControlSet\\Control\\Session Manager\\Power",
-        "Name": "HibernateEnabled",
-        "Type": "DWord",
-        "Value": "0",
-        "defaultValue": "1"
-      },
-      {
-        "Path": "HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\FlyoutMenuSettings",
-        "Name": "ShowHibernateOption",
-        "Type": "DWord",
-        "Value": "0",
-        "defaultValue": "1"
+        "run": "powercfg.exe /hibernate off",
+        "delay": "1"
       }
     ],
     "InvokeCommand": [
-      "powercfg.exe /hibernate off"
+      ""
     ],
     "UndoCommand": [
-      "powercfg.exe /hibernate on"
+      ""
     ]
   },
   {
@@ -5555,14 +5494,6 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                                     
         <StackPanel Orientation="Vertical" Width="auto" Margin="8">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="StartAllBack" Tag="Utilities" IsChecked="false" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content="Utilities"/>
-            </StackPanel>
-                <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Introducing  StartAllBack Windows 11 from a better timeline Embrace enhance unsweep classic UI from under the rug"/>
-        </StackPanel>
-
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
-            <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Viber" Tag="Communication" IsChecked="false" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content="Communication"/>
             </StackPanel>
@@ -5580,30 +5511,6 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <StackPanel Orientation="Vertical" Width="auto" Margin="8">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="NET Desktop Runtime 7" Tag="Runtimes" IsChecked="false" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content="Runtimes"/>
-            </StackPanel>
-                <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="NET Core is a general purpose development platform maintained by Microsoft and the NET community on GitHub It is crossplatform supporting Windows macOS and Linux and can be used in device cloud and embeddedIoT scenarios This package is required to run Windows Desktop applications with the NET Runtime"/>
-        </StackPanel>
-
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
-            <StackPanel Orientation="Horizontal">
-                <CheckBox Content="NET Desktop Runtime 6" Tag="Runtimes" IsChecked="false" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content="Runtimes"/>
-            </StackPanel>
-                <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="NET Core is a general purpose development platform maintained by Microsoft and the NET community on GitHub It is crossplatform supporting Windows macOS and Linux and can be used in device cloud and embeddedIoT scenarios This package is required to run Windows Desktop applications with the NET Runtime"/>
-        </StackPanel>
-
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
-            <StackPanel Orientation="Horizontal">
-                <CheckBox Content="NET Desktop Runtime 3" Tag="Runtimes" IsChecked="false" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content="Runtimes"/>
-            </StackPanel>
-                <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="NET Core is a general purpose development platform maintained by Microsoft and the NET community on GitHub It is crossplatform supporting Windows macOS and Linux and can be used in device cloud and embeddedIoT scenarios This package is required to run Windows Desktop applications with the NET Runtime"/>
-        </StackPanel>
-
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
-            <StackPanel Orientation="Horizontal">
-                <CheckBox Content="NET Desktop Runtime 5" Tag="Runtimes" IsChecked="false" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content="Runtimes"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="NET Core is a general purpose development platform maintained by Microsoft and the NET community on GitHub It is crossplatform supporting Windows macOS and Linux and can be used in device cloud and embeddedIoT scenarios This package is required to run Windows Desktop applications with the NET Runtime"/>
@@ -5691,7 +5598,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
 
         <StackPanel Orientation="Vertical" Width="auto" Margin="8">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="YUMI Legacy" Tag="Utilities" IsChecked="false" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <CheckBox Content="YUMI" Tag="Utilities" IsChecked="false" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content="Utilities"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="YUMI Your Universal Multiboot Installer is the successor to MultibootISOs It can be used to create a Multiboot USB Flash Drive containing multiple operating systems antivirus utilities disc cloning diagnostic tools and more Contrary to MultiBootISOs which used grub to boot ISO files directly from USB YUMI uses syslinux to boot extracted distributions stored on the USB device and reverts to using grub to Boot Multiple ISO files from USB if necessary"/>
@@ -5915,7 +5822,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
 
         <StackPanel Orientation="Vertical" Width="auto" Margin="8">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="ONLY OFFICE" Tag="Documents" IsChecked="false" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <CheckBox Content="ONLYOFFICE" Tag="Documents" IsChecked="false" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content="Documents"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="ONLYOFFICE is a project developed by experienced IT experts from Ascensio System SIA leading IT company with headquarters in Riga Latvia Originally ONLYOFFICE was designed for internal team collaboration An attempt to introduce it to a wider audience proved to be successful ONLYOFFICE received very positive feedback from the Internet community As a result its functionality was considerably revised and expanded that brought about a high and stable growth of users from different countries"/>
@@ -5975,6 +5882,14 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                 <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content="Browsers"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="LibreWolf is designed to increase protection against tracking and fingerprinting techniques while also including a few security improvements This is achieved through our privacy and security oriented settings and patches LibreWolf also aims to remove all the telemetry data collection and annoyances as well as disabling antifreedom features like DRM"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+            <StackPanel Orientation="Horizontal">
+                <CheckBox Content="WhatsApp" Tag="Communication" IsChecked="false" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content="Communication"/>
+            </StackPanel>
+                <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="WhatsApp is an instant messaging and voiceoverIP service owned by technology conglomerate Meta It allows users to send text voice messages and video messages make voice and video calls and share images documents user"/>
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Width="auto" Margin="8">
@@ -6139,7 +6054,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
 
         <StackPanel Orientation="Vertical" Width="auto" Margin="8">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="MongoDB" Tag="Development" IsChecked="false" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <CheckBox Content="MongoDB 7.3.2" Tag="Development" IsChecked="false" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content="Development"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="MongoDB stores data using a flexible document data model that is similar to JSON Documents contain one or more fields including arrays binary data and subdocuments Fields can vary from document to document This flexibility allows development teams to evolve the data model rapidly as their application requirements change"/>
@@ -6171,7 +6086,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
 
         <StackPanel Orientation="Vertical" Width="auto" Margin="8">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Format Factory" Tag="Media" IsChecked="false" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <CheckBox Content="FormatFactory" Tag="Media" IsChecked="false" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content="Media"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="multifunctional media processing tools"/>
@@ -6323,7 +6238,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
 
         <StackPanel Orientation="Vertical" Width="auto" Margin="8">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Python 3.9" Tag="Development" IsChecked="false" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <CheckBox Content="Python" Tag="Development" IsChecked="false" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content="Development"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Python is a popular highlevel programming language known for its simplicity and versatility It is used in various fields such as web development data science machine learning and automation"/>
@@ -6355,7 +6270,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
 
         <StackPanel Orientation="Vertical" Width="auto" Margin="8">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Powershell 7" Tag="Development" IsChecked="false" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <CheckBox Content="Powershell core" Tag="Development" IsChecked="false" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content="Development"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="PowerShell Core is a crossplatform Windows Linux and macOS automation and configuration toolframework that works well with your existing tools and is optimized for dealing with structured data eg JSON CSV XML etc REST APIs and object models"/>
@@ -6755,7 +6670,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
 
         <StackPanel Orientation="Vertical" Width="auto" Margin="8">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="AOMEI Backupper Standard" Tag="Utilities" IsChecked="false" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <CheckBox Content="AOMEI Backupper" Tag="Utilities" IsChecked="false" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content="Utilities"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="A backup and recovery software that enables users to create system backups disk backups partition backups and file backups to protect data against system failures and data loss"/>
@@ -7171,7 +7086,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
 
         <StackPanel Orientation="Vertical" Width="auto" Margin="8">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="7Zip" Tag="Compression" IsChecked="false" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <CheckBox Content="7-Zip" Tag="Compression" IsChecked="false" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content="Compression"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="An opensource file archiver with a high compression ratio supporting various archive formats and providing a powerful commandline interface"/>
@@ -7251,7 +7166,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
 
         <StackPanel Orientation="Vertical" Width="auto" Margin="8">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Jellyfin Server" Tag="Media" IsChecked="false" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <CheckBox Content="Jellyfin" Tag="Media" IsChecked="false" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content="Media"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="An opensource media server software that enables users to stream their media libraries across devices providing a selfhosted alternative to commercial services"/>
@@ -8365,7 +8280,7 @@ Write-Host "
 
                                 }
                                 "delete" {
-
+                                    
                                     foreach ($re in $app.Registry) {
                                         Remove-RegistryValue -RegistryPath $re.Path -Folder $re.Name
                                     }
@@ -8378,7 +8293,7 @@ Write-Host "
                                 }
                                 "service" {
                                     foreach ($se in $app.Service) {
-                                        Disable-Service -ServiceName $se.Name -StartupType $se.StartupType
+                                        Disable-Service -Name $se.Name -StartupType $se.StartupType
                                     }
                                 }
                                 "AppxPackage" {
@@ -8672,6 +8587,9 @@ function Invoke-Install
                     }
                 })
 
+                UpdateUI -InstallBtn "Install" -Description "Installed successfully."
+
+
                 Start-Sleep 3
 
                 Clear-Host
@@ -8706,45 +8624,8 @@ https://t.me/emadadel4
                     # Define the path to download the installer
                     $installerPath = "$env:TEMP\Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle"
 
-                    # Initialize the web request
-                    $webRequest = [System.Net.HttpWebRequest]::Create($url)
-                    $webRequest.Method = "GET"
-
-                    # Get the response
-                    $response = $webRequest.GetResponse()
-
-                    # Get the total size of the file
-                    $totalSize = $response.ContentLength
-
-                    # Open the response stream
-                    $responseStream = $response.GetResponseStream()
-
-                    # Create a file stream to write the downloaded data
-                    $fileStream = [System.IO.File]::Create($installerPath)
-
-                    # Buffer size for reading data
-                    $bufferSize = 8192
-                    $buffer = New-Object byte[] $bufferSize
-
-                    # Variables to track progress
-                    $totalRead = 0
-                    $readCount = 0
-
-                    # Read the data in chunks
-                    while (($readCount = $responseStream.Read($buffer, 0, $bufferSize)) -gt 0) {
-                        $fileStream.Write($buffer, 0, $readCount)
-                        $totalRead += $readCount
-
-                        # Calculate the percentage and display progress
-                        $percentComplete = [math]::Round(($totalRead / $totalSize) * 100, 2)
-                        $downloadedMB = [math]::Round($totalRead / 1MB, 2)
-                        $totalSizeMB = [math]::Round($totalSize / 1MB, 2)
-                        Write-Progress -Activity "Downloading winget" -Status "$downloadedMB MB of $totalSizeMB MB" -PercentComplete $percentComplete
-                    }
-
-                    # Close the streams
-                    $fileStream.Close()
-                    $responseStream.Close()
+                    # Download the installer
+                    Invoke-WebRequest -Uri $url -OutFile $installerPath
 
                     # Add-AppxPackage requires running with administrative privileges
                     Start-Process powershell -ArgumentList "Add-AppxPackage -Path $installerPath" -Verb RunAs -Wait
@@ -8761,7 +8642,6 @@ https://t.me/emadadel4
                 } else {
                     Write-Output "winget is already installed."
                 }
-
             }
 
             function SendApps {
@@ -8892,80 +8772,60 @@ https://t.me/emadadel4
                 {
                     
                     ClearTemp
+
                     $sync.ProcessRunning = $true
-                    UpdateUI -InstallBtn "Downloading..." -Description "Downloading..." 
                    
                     foreach ($app in $selectedApps) 
                     {
                         SendApps -FirebaseUrl $sync.firebaseUrl -Key $env:COMPUTERNAME -list $app
-
-                        # Define the name of the application to install
-                        $choco = $app.Choco
-                        $winget = $app.Winget
-
-
-                        # Attempt to install the app using Chocolatey
-                        Write-Host "Attempting to install $($choco) using Chocolatey..." -ForegroundColor Yellow
-                        $chocoResult = Start-Process -FilePath "choco" -ArgumentList "install $($choco) --confirm --acceptlicense -q -r --ignore-http-cache --allowemptychecksumsecure --allowemptychecksum --usepackagecodes --ignoredetectedreboot --ignore-checksums --ignore-reboot-requests" -NoNewWindow -Wait -PassThru
-
-                        # Check if Chocolatey installation was successful
-                        if ($chocoResult.ExitCode -eq 0) {
-                            Write-Host "$appName installed successfully using Chocolatey!"
-                            $sync.ProcessRunning = $False
-                            Notify -title "ITT Emad Adel" -msg "Installed successfully: Portable Apps will save in C:\ProgramData\chocolatey\lib" -icon "Info" -time 5666
-                            UpdateUI -InstallBtn "Install" -Description "Installed successfully."
-                            Start-Sleep -Seconds 3
-                            Finish
-                            exit 0
-                        } else {
-                            Clear-Host
-                            Write-Host "Chocolatey installation failed."
-                            # Attempt to install the app using Winget
-                            Write-Host "Attempting to install $($app.name) using Winget..." -ForegroundColor Yellow
+                        
+                        if ($app.Winget -ne "none")
+                        {
                             InstallWinget
-                            $wingetResult = Start-Process -FilePath "winget" -ArgumentList "install -e -h --accept-source-agreements --ignore-security-hash --accept-package-agreements --id $($winget)" -NoNewWindow -Wait -PassThru
+                            UpdateUI -InstallBtn "Installing..." -Description "Downloading and Installing..." 
+                            Start-Process -FilePath "winget" -ArgumentList "install -e -h --accept-source-agreements --ignore-security-hash --accept-package-agreements --id $($app.Winget)" -NoNewWindow -Wait
+                        }
 
-                            # Check if Winget installation was successful
-                            if ($wingetResult.ExitCode -eq 0) {
-                                Write-Host "$appName installed successfully using Winget!" -ForegroundColor Yellow
-                                $sync.ProcessRunning = $False
-                                Notify -title "ITT Emad Adel" -msg "Installed successfully: Portable Apps will save in C:\ProgramData\chocolatey\lib" -icon "Info" -time 5666
-                                UpdateUI -InstallBtn "Install" -Description "Installed successfully."
-                                Start-Sleep -Seconds 3
-                                Finish
-                                exit 0
-                            } 
-                            else 
+                        if ($app.Choco -ne "none")
+                        {
+                            UpdateUI -InstallBtn "Installing..." -Description "Downloading and Installing..." 
+                            Start-Process -FilePath "choco" -ArgumentList "install $($app.Choco) --confirm --acceptlicense -q -r --ignore-http-cache --allowemptychecksumsecure --allowemptychecksum  --usepackagecodes --ignoredetectedreboot --ignore-checksums --ignore-reboot-requests" -NoNewWindow -Wait 
+                        }
+
+                        if ($app.Default.url -ne "none")
+                        {
+                            UpdateUI -InstallBtn "Downloading..." -Description "Downloading..." 
+
+                            foreach ($app in $app.default) 
                             {
-                                # Check if the application is already installed using Winget
-                                $wingetCheck = Start-Process -FilePath "winget" -ArgumentList "show --id $($winget)" -NoNewWindow -Wait -PassThru
+                                $url = $app.url
 
-                                # If Winget returns success, the application is already installed
-                                if ($wingetCheck.ExitCode -eq 0)
+                                if($app.fileType -eq "rar")
                                 {
-                                    Clear-Host
-
-                                    Write-Host "$($appName) is already installed." -ForegroundColor Yellow
-
-                                    $sync.ProcessRunning = $False
-                                    Notify -title "ITT Emad Adel" -msg "Already installed using Winget." -icon "Info" -time 5666
-                                    UpdateUI -InstallBtn "Install" -Description "Already installed."
-                                    Start-Sleep -Seconds 5
-                                    Finish
-                                    exit 0
+                                    DownloadAndExtractRar -url $url -outputDir $app.output
+                                    
                                 }
-                                else
+
+                                if($app.fileType -eq "exe")
                                 {
-                                    Write-Host "Winget installation failed. Please install $appName manually."
-                                    $sync.ProcessRunning = $False
-                                    UpdateUI -InstallBtn "Install" 
-                                    Start-Sleep -Seconds 5
-                                    Finish
-                                    exit 1
+                                    DownloadAndInstallExe -url $url $exeArgs $app.exeArgs
                                 }
                             }
                         }
                     }
+
+                    Start-Sleep -Seconds 1
+                    $sync.ProcessRunning = $False
+
+                    CustomMsg -title "ITT | Emad Adel" -msg "Installed successfully: Portable Apps will save in C:\ProgramData\chocolatey\lib" -MessageBoxImage "Information" -MessageBoxButton "OK"
+                    Notify -title "ITT Emad Adel" -msg "Installed successfully: Portable Apps will save in C:\ProgramData\chocolatey\lib" -icon "Info" -time 5666
+
+                    Write-Host "Portable Apps will save in C:\ProgramData\chocolatey\lib" -ForegroundColor Yellow
+
+                    # Uncheck all checkboxes in $list
+                    Start-Sleep -Seconds 3
+                    Finish
+
                 }
                 else
                 {
@@ -9059,8 +8919,8 @@ function LoadJson {
         }
 
         $sync['window'].FindName('apps').IsSelected = $true
-        $sync['window'].FindName('appslist').Clear()
-        $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync['window'].FindName('appslist').Items)
+        $sync['window'].FindName('list').Clear()
+        $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync['window'].FindName('list').Items)
         $collectionView.Filter = $filterPredicate
         [System.Windows.MessageBox]::Show("Restored successfully", "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
 
@@ -9075,7 +8935,7 @@ function SaveItemsToJson
 
     ClearFilter
 
-    foreach ($item in $sync.AppsListView.Items)
+    foreach ($item in $sync['window'].FindName('list').Items)
     {
 
         $item =  GetCheckBoxesFromStackPanel -item $item
