@@ -29,7 +29,7 @@ Add-Type -AssemblyName System.Windows.Forms
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "28-05-2024"
+$sync.version = "29-05-2024"
 $sync.github =   "https://github.com/emadadel4"
 $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://eprojects.orgfree.com"
@@ -1557,7 +1557,7 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "CPUID CPU-Z",
+    "Name": "CPU-Z",
     "Description": "A system monitoring utility that provides detailed information about the CPU, motherboard, memory, and other hardware components of a computer system.",
     "winget": "CPUID.CPU-Z",
     "choco": "aaaa",
@@ -6683,7 +6683,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
 
         <StackPanel Orientation="Vertical" Width="auto" Margin="8">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="CPUID CPU-Z" Tag="Utilities" IsChecked="true" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <CheckBox Content="CPU-Z" Tag="Utilities" IsChecked="true" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content="Utilities"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="A system monitoring utility that provides detailed information about the CPU motherboard memory and other hardware components of a computer system"/>
@@ -8604,6 +8604,31 @@ function Invoke-Install
                 })
             }
 
+            function Add-Log {
+                param (
+                    [string]$Message,
+                    [string]$Level = "INFO"
+                )
+            
+                # Get the current timestamp
+                $timestamp = Get-Date -Format "HH:mm:ss"
+            
+                # Determine the color based on the log level
+                switch ($Level.ToUpper()) {
+                    "INFO" { $color = "Green" }
+                    "WARNING" { $color = "Yellow" }
+                    "ERROR" { $color = "Red" }
+                    default { $color = "White" }
+                }
+            
+                # Construct the log message
+                $logMessage = "[$timestamp] [$Level] $Message"
+            
+                # Write the log message to the console with the specified color
+                Write-Host $logMessage -ForegroundColor $color
+            }
+            
+
             function ClearTemp {
 
                 $chocoTempPath = Join-Path $env:TEMP "chocolatey"
@@ -8911,11 +8936,7 @@ https://t.me/emadadel4
                 $isInstalledWinget = Is-AppInstalledWinget $appWinget
             
                 if ($isInstalledChoco -or $isInstalledWinget) {
-                    Write-Host "
-                    *******************************************************
-                    $appName is already installed.
-                    *******************************************************
-                    " -ForegroundColor Green
+                    Add-Log -Message "$appName is already installed." -Level "INFO"
                     return
                 }
             
@@ -8923,29 +8944,22 @@ https://t.me/emadadel4
                 $chocoResult = Start-Process -FilePath "choco" -ArgumentList "install $appChoco --confirm --acceptlicense -q -r --ignore-http-cache --allowemptychecksumsecure --allowemptychecksum --usepackagecodes --ignoredetectedreboot --ignore-checksums --ignore-reboot-requests" -NoNewWindow -Wait -PassThru
             
                 if ($chocoResult.ExitCode -eq 0) {
-                    Write-Host "
-                    *******************************************************
-                    $appName installed successfully using Chocolatey!   
-                    *******************************************************
-                    " -ForegroundColor Green
+
+                    Add-Log -Message "$appName installed successfully using Chocolatey!" -Level "INFO"
+
                 } else {
                     Write-Host "Chocolatey installation failed for $appName."
                     Clear-Host
+
                     Write-Host "Attempting to install $appName using Winget..."
+
                     $wingetResult = Start-Process -FilePath "winget" -ArgumentList "install -e -h --accept-source-agreements --ignore-security-hash --accept-package-agreements --id $appWinget" -NoNewWindow -Wait -PassThru
             
                     if ($wingetResult.ExitCode -eq 0) {
-                        Write-Host " 
-                        *******************************************************
-                        $appName installed successfully using Winget!
-                        *******************************************************
-                        " -ForegroundColor Yellow
+                        Add-Log -Message "$appName installed successfully using Winget!" -Level "INFO"
+
                     } else {
-                        Write-Host "
-                        *******************************************************
-                        Winget installation failed for $appName. Please install $appName manually.
-                        *******************************************************
-                        " -ForegroundColor Red
+                        Add-Log -Message "$appName installed successfully using Chocolatey!   " -Level "INFO"
                         exit 1
                     }
                 }
@@ -8967,8 +8981,14 @@ https://t.me/emadadel4
                     {
                         #SendApps -FirebaseUrl $sync.firebaseUrl -Key $env:COMPUTERNAME -list $app
                         Install-App -appName $app.Name -appChoco $app.Choco -appWinget $app.Winget
-                        Finish
                     }
+
+                        Write-Host "*******************************************************" -ForegroundColor Green
+                        Write-Host "All applications have been processed" -ForegroundColor Green
+                        Write-Host "*******************************************************" -ForegroundColor Green
+
+                        UpdateUI -InstallBtn "Install..."
+                        #Finish
                 }
                 else
                 {
