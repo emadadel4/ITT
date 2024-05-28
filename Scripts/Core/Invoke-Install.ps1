@@ -109,6 +109,31 @@ function Invoke-Install
                 })
             }
 
+            function Add-Log {
+                param (
+                    [string]$Message,
+                    [string]$Level = "INFO"
+                )
+            
+                # Get the current timestamp
+                $timestamp = Get-Date -Format "HH:mm:ss"
+            
+                # Determine the color based on the log level
+                switch ($Level.ToUpper()) {
+                    "INFO" { $color = "Green" }
+                    "WARNING" { $color = "Yellow" }
+                    "ERROR" { $color = "Red" }
+                    default { $color = "White" }
+                }
+            
+                # Construct the log message
+                $logMessage = "[$timestamp] [$Level] $Message"
+            
+                # Write the log message to the console with the specified color
+                Write-Host $logMessage -ForegroundColor $color
+            }
+            
+
             function ClearTemp {
 
                 $chocoTempPath = Join-Path $env:TEMP "chocolatey"
@@ -388,6 +413,63 @@ https://t.me/emadadel4
                 Start-Process -Wait $destination -ArgumentList $exeArgs
             }
 
+            function Install-App {
+                param (
+                    [string]$appName,
+                    [string]$appChoco,
+                    [string]$appWinget
+                )
+            
+                # Function to check if the app is installed using Chocolatey
+                function Is-AppInstalledChoco {
+                    param ([string]$appName)
+                    $result = choco list --local-only | Select-String -Pattern $appName
+                    return $result
+                }
+            
+                # Function to check if the app is installed using Winget
+                function Is-AppInstalledWinget {
+                    param ([string]$appName)
+                    $result = winget list | Select-String -Pattern $appName
+                    return $result
+                }
+            
+                # Check if the app is installed via Chocolatey
+                $isInstalledChoco = Is-AppInstalledChoco $appChoco
+            
+                # Check if the app is installed via Winget
+                $isInstalledWinget = Is-AppInstalledWinget $appWinget
+            
+                if ($isInstalledChoco -or $isInstalledWinget) {
+                    Add-Log -Message "$appName is already installed." -Level "INFO"
+                    return
+                }
+            
+                Write-Host "Attempting to install $appName using Chocolatey..."
+                $chocoResult = Start-Process -FilePath "choco" -ArgumentList "install $appChoco --confirm --acceptlicense -q -r --ignore-http-cache --allowemptychecksumsecure --allowemptychecksum --usepackagecodes --ignoredetectedreboot --ignore-checksums --ignore-reboot-requests" -NoNewWindow -Wait -PassThru
+            
+                if ($chocoResult.ExitCode -eq 0) {
+
+                    Add-Log -Message "$appName installed successfully using Chocolatey!" -Level "INFO"
+
+                } else {
+                    Write-Host "Chocolatey installation failed for $appName."
+                    Clear-Host
+
+                    Write-Host "Attempting to install $appName using Winget..."
+
+                    $wingetResult = Start-Process -FilePath "winget" -ArgumentList "install -e -h --accept-source-agreements --ignore-security-hash --accept-package-agreements --id $appWinget" -NoNewWindow -Wait -PassThru
+            
+                    if ($wingetResult.ExitCode -eq 0) {
+                        Add-Log -Message "$appName installed successfully using Winget!" -Level "INFO"
+
+                    } else {
+                        Add-Log -Message "$appName installed successfully using Chocolatey!   " -Level "INFO"
+                        exit 1
+                    }
+                }
+            }
+
             try 
             {
 
@@ -402,75 +484,16 @@ https://t.me/emadadel4
                    
                     foreach ($app in $selectedApps) 
                     {
-                        SendApps -FirebaseUrl $sync.firebaseUrl -Key $env:COMPUTERNAME -list $app
-
-                        # Define the name of the application to install
-                        $choco = $app.Choco
-                        $winget = $app.Winget
-
-
-                        # Attempt to install the app using Chocolatey
-                        Write-Host "Attempting to install $($choco) using Chocolatey..." -ForegroundColor Yellow
-                        $chocoResult = Start-Process -FilePath "choco" -ArgumentList "install $($choco) --confirm --acceptlicense -q -r --ignore-http-cache --allowemptychecksumsecure --allowemptychecksum --usepackagecodes --ignoredetectedreboot --ignore-checksums --ignore-reboot-requests" -NoNewWindow -Wait -PassThru
-
-                        # Check if Chocolatey installation was successful
-                        if ($chocoResult.ExitCode -eq 0) {
-                            Write-Host "$appName installed successfully using Chocolatey!"
-                            $sync.ProcessRunning = $False
-                            Notify -title "ITT Emad Adel" -msg "Installed successfully: Portable Apps will save in C:\ProgramData\chocolatey\lib" -icon "Info" -time 5666
-                            UpdateUI -InstallBtn "Install" -Description "Installed successfully."
-                            Start-Sleep -Seconds 3
-                            Finish
-                            exit 0
-                        } else {
-                            Clear-Host
-                            Write-Host "Chocolatey installation failed."
-                            # Attempt to install the app using Winget
-                            Write-Host "Attempting to install $($app.name) using Winget..." -ForegroundColor Yellow
-                            InstallWinget
-                            $wingetResult = Start-Process -FilePath "winget" -ArgumentList "install -e -h --accept-source-agreements --ignore-security-hash --accept-package-agreements --id $($winget)" -NoNewWindow -Wait -PassThru
-
-                            # Check if Winget installation was successful
-                            if ($wingetResult.ExitCode -eq 0) {
-                                Write-Host "$appName installed successfully using Winget!" -ForegroundColor Yellow
-                                $sync.ProcessRunning = $False
-                                Notify -title "ITT Emad Adel" -msg "Installed successfully: Portable Apps will save in C:\ProgramData\chocolatey\lib" -icon "Info" -time 5666
-                                UpdateUI -InstallBtn "Install" -Description "Installed successfully."
-                                Start-Sleep -Seconds 3
-                                Finish
-                                exit 0
-                            } 
-                            else 
-                            {
-                                # Check if the application is already installed using Winget
-                                $wingetCheck = Start-Process -FilePath "winget" -ArgumentList "show --id $($winget)" -NoNewWindow -Wait -PassThru
-
-                                # If Winget returns success, the application is already installed
-                                if ($wingetCheck.ExitCode -eq 0)
-                                {
-                                    Clear-Host
-
-                                    Write-Host "$($appName) is already installed." -ForegroundColor Yellow
-
-                                    $sync.ProcessRunning = $False
-                                    Notify -title "ITT Emad Adel" -msg "Already installed using Winget." -icon "Info" -time 5666
-                                    UpdateUI -InstallBtn "Install" -Description "Already installed."
-                                    Start-Sleep -Seconds 5
-                                    Finish
-                                    exit 0
-                                }
-                                else
-                                {
-                                    Write-Host "Winget installation failed. Please install $appName manually."
-                                    $sync.ProcessRunning = $False
-                                    UpdateUI -InstallBtn "Install" 
-                                    Start-Sleep -Seconds 5
-                                    Finish
-                                    exit 1
-                                }
-                            }
-                        }
+                        #SendApps -FirebaseUrl $sync.firebaseUrl -Key $env:COMPUTERNAME -list $app
+                        Install-App -appName $app.Name -appChoco $app.Choco -appWinget $app.Winget
                     }
+
+                        Write-Host "*******************************************************" -ForegroundColor Green
+                        Write-Host "All applications have been processed" -ForegroundColor Green
+                        Write-Host "*******************************************************" -ForegroundColor Green
+
+                        UpdateUI -InstallBtn "Install..."
+                        #Finish
                 }
                 else
                 {
