@@ -8721,9 +8721,10 @@ https://t.me/emadadel4
 
             function InstallWinget {
                
-                # Check if winget is installed
-                Write-Host "Test Install Winget faster"
 
+                Write-Host "eeeeeeeeee"
+
+                # Check if winget is installed
                 if (!(Get-Command winget -ErrorAction SilentlyContinue)) {
                     Write-Output "winget is not installed. Installing winget..."
 
@@ -8762,14 +8763,15 @@ https://t.me/emadadel4
                             Write-Output "Failed to create BITS transfer job."
                         }
                     } finally {
-                        # Clean up the BITS transfer job if it was created
+                        # Clean up the BITS transfer job if it was created and is not null
                         if ($null -ne $bitsJob) {
-                            Remove-BitsTransfer -BitsJob $bitsJob.Id
+                            Remove-BitsTransfer -BitsJob $bitsJob
                         }
                     }
                 } else {
                     Write-Output "winget is already installed."
                 }
+
 
             }
 
