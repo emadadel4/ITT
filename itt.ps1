@@ -8915,15 +8915,16 @@ https://t.me/emadadel4
                             Notify -title "ITT Emad Adel" -msg "Installed successfully: Portable Apps will save in C:\ProgramData\chocolatey\lib" -icon "Info" -time 5666
                             UpdateUI -InstallBtn "Install" -Description "Installed successfully."
                             Start-Sleep -Seconds 3
-                            Finish
+                            #Finish
                             exit 0
                         } else {
                             Clear-Host
                             Write-Host "Chocolatey installation failed."
                             # Attempt to install the app using Winget
-                            Write-Host "Attempting to install $($app.name) using Winget..." -ForegroundColor Yellow
+                            Write-Host "Attempting to install $winget using Winget..." -ForegroundColor Yellow
                             InstallWinget
-                            $wingetResult = Start-Process -FilePath "winget" -ArgumentList "install -e -h --accept-source-agreements --ignore-security-hash --accept-package-agreements --id $($winget)" -NoNewWindow -Wait -PassThru
+                            winget settings --enable InstallerHashOverride
+                            $wingetResult = Start-Process -FilePath "winget" -ArgumentList "install -e -h --accept-source-agreements --ignore-security-hash --accept-package-agreements --id $winget" -NoNewWindow -Wait -PassThru
 
                             # Check if Winget installation was successful
                             if ($wingetResult.ExitCode -eq 0) {
@@ -8932,13 +8933,13 @@ https://t.me/emadadel4
                                 Notify -title "ITT Emad Adel" -msg "Installed successfully: Portable Apps will save in C:\ProgramData\chocolatey\lib" -icon "Info" -time 5666
                                 UpdateUI -InstallBtn "Install" -Description "Installed successfully."
                                 Start-Sleep -Seconds 3
-                                Finish
+                                #Finish
                                 exit 0
                             } 
                             else 
                             {
                                 # Check if the application is already installed using Winget
-                                $wingetCheck = Start-Process -FilePath "winget" -ArgumentList "show --id $($winget)" -NoNewWindow -Wait -PassThru
+                                $wingetCheck = Start-Process -FilePath "winget" -ArgumentList "show --id $winget" -NoNewWindow -Wait -PassThru
 
                                 # If Winget returns success, the application is already installed
                                 if ($wingetCheck.ExitCode -eq 0)
@@ -8951,7 +8952,7 @@ https://t.me/emadadel4
                                     Notify -title "ITT Emad Adel" -msg "Already installed using Winget." -icon "Info" -time 5666
                                     UpdateUI -InstallBtn "Install" -Description "Already installed."
                                     Start-Sleep -Seconds 5
-                                    Finish
+                                    #Finish
                                     exit 0
                                 }
                                 else
@@ -8960,7 +8961,7 @@ https://t.me/emadadel4
                                     $sync.ProcessRunning = $False
                                     UpdateUI -InstallBtn "Install" 
                                     Start-Sleep -Seconds 5
-                                    Finish
+                                    #Finish
                                     exit 1
                                 }
                             }
