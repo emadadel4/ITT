@@ -322,7 +322,7 @@ Write-Host "
                                     if($app.Refresh -eq "true")
                                     {
                                         Write-Host "Restarting exploror..."
-                                        Stop-Process -Name explorer -Force
+                                        #Stop-Process -Name explorer -Force
                                     }
                                 }
                                 "modifying" {
@@ -334,7 +334,7 @@ Write-Host "
                                     if($app.Refresh -eq "true")
                                     {
                                         Write-Host "Restarting exploror..."
-                                        Stop-Process -Name explorer -Force
+                                        #Stop-Process -Name explorer -Force
                                     }
 
                                 }
@@ -347,7 +347,7 @@ Write-Host "
                                     if($app.Refresh -eq "true")
                                     {
                                         Write-Host "Restarting exploror..."
-                                        Stop-Process -Name explorer -Force
+                                        #Stop-Process -Name explorer -Force
                                     }
                                 }
                                 "service" {
