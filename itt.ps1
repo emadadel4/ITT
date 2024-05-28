@@ -414,7 +414,7 @@ $sync.database.Applications = '[
   {
     "Name": "FastStone Image Viewer",
     "Description": "FastStone Image Viewer is a fast, stable, user-friendly image browser, converter and editor ",
-    "winget": "none",
+    "winget": "FastStone.Viewer",
     "choco": "fsviewer",
     "scoop": "none",
     "default": [
@@ -431,7 +431,7 @@ $sync.database.Applications = '[
   {
     "Name": "OpenOffice",
     "Description": "An open-source office productivity suite offering word processing, spreadsheet, presentation, and other office tools, compatible with Microsoft Office formats.",
-    "winget": "none",
+    "winget": "Apache.OpenOffice",
     "choco": "openoffice",
     "scoop": "none",
     "default": [
@@ -448,7 +448,7 @@ $sync.database.Applications = '[
   {
     "Name": "FoxitReader",
     "Description": "A lightweight and feature-rich PDF reader with annotation, form filling, and document signing capabilities.",
-    "winget": "none",
+    "winget": "Foxit.FoxitReader",
     "choco": "foxitreader",
     "scoop": "none",
     "default": [
@@ -465,7 +465,7 @@ $sync.database.Applications = '[
   {
     "Name": "LibreOffice",
     "Description": "A powerful open-source office suite providing word processing, spreadsheet, presentation, and other office tools, compatible with Microsoft Office formats.",
-    "winget": "none",
+    "winget": "Foxit.FoxitReader",
     "choco": "libreoffice-fresh",
     "scoop": "none",
     "default": [
@@ -483,7 +483,7 @@ $sync.database.Applications = '[
   {
     "Name": "SumatraPDF",
     "Description": "A lightweight and fast PDF reader with minimalistic design and focus on simplicity and speed.",
-    "winget": "none",
+    "winget": "SumatraPDF.SumatraPDF",
     "choco": "sumatrapdf.install",
     "scoop": "none",
     "default": [
