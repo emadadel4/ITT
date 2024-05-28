@@ -8722,8 +8722,7 @@ https://t.me/emadadel4
             function InstallWinget {
                
                 # Check if winget is installed
-
-                Write-Host "Install Winget first Time"
+                Write-Host "Test Install Winget faster"
 
                 if (!(Get-Command winget -ErrorAction SilentlyContinue)) {
                     Write-Output "winget is not installed. Installing winget..."
@@ -8738,28 +8737,35 @@ https://t.me/emadadel4
                         # Create a new BITS transfer job
                         $bitsJob = Start-BitsTransfer -Source $url -Destination $installerPath -Asynchronous
 
-                        # Wait for the transfer job to complete
-                        while ($bitsJob.JobState -eq "Transferring") {
-                            Start-Sleep -Seconds 5
-                        }
+                        # Check if the BITS transfer job was created successfully
+                        if ($null -ne $bitsJob) {
+                            # Wait for the transfer job to complete
+                            while ($bitsJob.JobState -eq "Transferring") {
+                                Start-Sleep -Seconds 5
+                            }
 
-                        # Check if the transfer was completed successfully
-                        if ($bitsJob.JobState -eq "Transferred") {
-                            # Add-AppxPackage requires running with administrative privileges
-                            Start-Process powershell -ArgumentList "Add-AppxPackage -Path $installerPath" -Verb RunAs -Wait
+                            # Check if the transfer was completed successfully
+                            if ($bitsJob.JobState -eq "Transferred") {
+                                # Add-AppxPackage requires running with administrative privileges
+                                Start-Process powershell -ArgumentList "Add-AppxPackage -Path $installerPath" -Verb RunAs -Wait
 
-                            # Check if winget is installed successfully
-                            if (Get-Command winget -ErrorAction SilentlyContinue) {
-                                Write-Output "winget has been successfully installed."
+                                # Check if winget is installed successfully
+                                if (Get-Command winget -ErrorAction SilentlyContinue) {
+                                    Write-Output "winget has been successfully installed."
+                                } else {
+                                    Write-Output "winget installation failed. Please check the log for details."
+                                }
                             } else {
-                                Write-Output "winget installation failed. Please check the log for details."
+                                Write-Output "Failed to download winget. Please check your internet connection and try again."
                             }
                         } else {
-                            Write-Output "Failed to download winget. Please check your internet connection and try again."
+                            Write-Output "Failed to create BITS transfer job."
                         }
                     } finally {
-                        # Clean up the BITS transfer job
-                        Remove-BitsTransfer -BitsJob $bitsJob.Id
+                        # Clean up the BITS transfer job if it was created
+                        if ($null -ne $bitsJob) {
+                            Remove-BitsTransfer -BitsJob $bitsJob.Id
+                        }
                     }
                 } else {
                     Write-Output "winget is already installed."
@@ -9034,8 +9040,8 @@ function LoadJson {
         }
 
         $sync['window'].FindName('apps').IsSelected = $true
-        $sync['window'].FindName('list').Clear()
-        $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync['window'].FindName('list').Items)
+        $sync['window'].FindName('appslist').Clear()
+        $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync['window'].FindName('appslist').Items)
         $collectionView.Filter = $filterPredicate
         [System.Windows.MessageBox]::Show("Restored successfully", "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
 
