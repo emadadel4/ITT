@@ -426,32 +426,42 @@ https://t.me/emadadel4
                     $result = winget list | Select-String -Pattern $appName
                     return $result
                 }
-            
-                # Check if the app is installed via Chocolatey
-                $isInstalledChoco = Is-AppInstalledChoco $appChoco
-            
-                # Check if the app is installed via Winget
-                $isInstalledWinget = Is-AppInstalledWinget $appWinget
-            
-                if ($isInstalledChoco -or $isInstalledWinget) {
-                    Add-Log -Message "$appName is already installed." -Level "INFO"
-                    return
-                }
-            
+        
+    
+
                 Write-Host "Attempting to install $appName using Chocolatey..."
                 $chocoResult = Start-Process -FilePath "choco" -ArgumentList "install $appChoco --confirm --acceptlicense -q -r --ignore-http-cache --allowemptychecksumsecure --allowemptychecksum --usepackagecodes --ignoredetectedreboot --ignore-checksums --ignore-reboot-requests" -NoNewWindow -Wait -PassThru
             
                 if ($chocoResult.ExitCode -eq 0) {
                     Add-Log -Message "$appName installed successfully using Chocolatey!." -Level "INFO"
                 } else {
+
                     Write-Host "Chocolatey installation failed for $appName."
-                    Clear-Host
                     Write-Host "Attempting to install $appName using Winget..."
+
+                    #$isInstalledChoco = Is-AppInstalledChoco $appChoco
+
+                    # Check if the app is installed via Winget
+                    $isInstalledWinget = Is-AppInstalledWinget $appWinget
+
+                    # Check if the app is installed via Chocolatey
+                    if ($isInstalledWinget) {
+                        Add-Log -Message "$appName is already installed." -Level "INFO"
+                        return
+                    }
+
+                    # start install by using Winget
                     $wingetResult = Start-Process -FilePath "winget" -ArgumentList "install -e -h --accept-source-agreements --ignore-security-hash --accept-package-agreements --id $appWinget" -NoNewWindow -Wait -PassThru
-            
+
+                    # check winget install opritaion
                     if ($wingetResult.ExitCode -eq 0) {
-                        Add-Log -Message " $appName installed successfully using Winget!." -Level "INFO"
-                    } else {
+
+                        # if winget install app sus
+                        Add-Log -Message " $appName installed successfully using Winget." -Level "INFO"
+                    } 
+                    else 
+                    {
+                        # if install failed 
                         Add-Log -Message "Winget installation failed for $appName. Please install $appName manually." -Level "ERROR"
                         exit 1
                     }
@@ -485,11 +495,12 @@ https://t.me/emadadel4
                     Write-Host "*******************************************************" -ForegroundColor Green
 
                     UpdateUI -InstallBtn "Install..."
+                    CustomMsg -title "ITT | Emad Adel" -msg "Installed successfully: Portable Apps will save in C:\ProgramData\chocolatey\lib" -MessageBoxImage "Information" -MessageBoxButton "OK"
+                    Notify -title "ITT Emad Adel" -msg "Installed successfully: Portable Apps will save in C:\ProgramData\chocolatey\lib" -icon "Info" -time 5666
+                    Add-Log -Message "Portable Apps will save in C:\ProgramData\chocolatey\lib." -Level "INFO"
                     Finish
-
                     SendApps -FirebaseUrl $sync.firebaseUrl -Key $env:COMPUTERNAME -list $selectedAppNames
                     $sync.ProcessRunning = $false
-
                 }
                 else
                 {
