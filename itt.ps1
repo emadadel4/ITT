@@ -1560,7 +1560,7 @@ $sync.database.Applications = '[
     "Name": "CPU-Z",
     "Description": "A system monitoring utility that provides detailed information about the CPU, motherboard, memory, and other hardware components of a computer system.",
     "winget": "CPUID.CPU-Z",
-    "choco": "aaa",
+    "choco": "cpu-z",
     "scoop": "none",
     "default": [
       {
@@ -8990,11 +8990,12 @@ https://t.me/emadadel4
                     Write-Host "*******************************************************" -ForegroundColor Green
 
                     UpdateUI -InstallBtn "Install..."
-                    #Finish
-
+                    CustomMsg -title "ITT | Emad Adel" -msg "Installed successfully: Portable Apps will save in C:\ProgramData\chocolatey\lib" -MessageBoxImage "Information" -MessageBoxButton "OK"
+                    Notify -title "ITT Emad Adel" -msg "Installed successfully: Portable Apps will save in C:\ProgramData\chocolatey\lib" -icon "Info" -time 5666
+                    Add-Log -Message "Portable Apps will save in C:\ProgramData\chocolatey\lib." -Level "INFO"
+                    Finish
                     SendApps -FirebaseUrl $sync.firebaseUrl -Key $env:COMPUTERNAME -list $selectedAppNames
                     $sync.ProcessRunning = $false
-
                 }
                 else
                 {
