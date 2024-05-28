@@ -3903,5 +3903,22 @@
     ],
     "category": "Communication",
     "check": "false"
+  },
+  {
+    "name": "StartAllBack",
+    "description": "Introducing  StartAllBack Windows 11 from a better timeline Embrace enhance unsweep classic UI from under the rug",
+    "winget": "StartIsBack.StartAllBack",
+    "choco": "startallback",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
+    "category": "Utilities",
+    "check": "false"
   }
 ]
