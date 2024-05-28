@@ -8721,9 +8721,6 @@ https://t.me/emadadel4
 
             function InstallWinget {
                
-
-                Write-Host "eeeeeeeeee"
-
                 # Check if winget is installed
                 if (!(Get-Command winget -ErrorAction SilentlyContinue)) {
                     Write-Output "winget is not installed. Installing winget..."
@@ -8734,45 +8731,24 @@ https://t.me/emadadel4
                     # Define the path to download the installer
                     $installerPath = "$env:TEMP\Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle"
 
-                    try {
-                        # Create a new BITS transfer job
-                        $bitsJob = Start-BitsTransfer -Source $url -Destination $installerPath -Asynchronous
+                    # Download the installer
+                    Invoke-WebRequest -Uri $url -OutFile $installerPath
 
-                        # Check if the BITS transfer job was created successfully
-                        if ($null -ne $bitsJob) {
-                            # Wait for the transfer job to complete
-                            while ($bitsJob.JobState -eq "Transferring") {
-                                Start-Sleep -Seconds 5
-                            }
+                    # Add-AppxPackage requires running with administrative privileges
+                    Start-Process powershell -ArgumentList "Add-AppxPackage -Path $installerPath" -Verb RunAs -Wait
 
-                            # Check if the transfer was completed successfully
-                            if ($bitsJob.JobState -eq "Transferred") {
-                                # Add-AppxPackage requires running with administrative privileges
-                                Start-Process powershell -ArgumentList "Add-AppxPackage -Path $installerPath" -Verb RunAs -Wait
-
-                                # Check if winget is installed successfully
-                                if (Get-Command winget -ErrorAction SilentlyContinue) {
-                                    Write-Output "winget has been successfully installed."
-                                } else {
-                                    Write-Output "winget installation failed. Please check the log for details."
-                                }
-                            } else {
-                                Write-Output "Failed to download winget. Please check your internet connection and try again."
-                            }
-                        } else {
-                            Write-Output "Failed to create BITS transfer job."
-                        }
-                    } finally {
-                        # Clean up the BITS transfer job if it was created and is not null
-                        if ($null -ne $bitsJob) {
-                            Remove-BitsTransfer -BitsJob $bitsJob
-                        }
+                    # Check if winget is installed successfully
+                    if (Get-Command winget -ErrorAction SilentlyContinue) {
+                        Write-Output "winget has been successfully installed."
+                    } else {
+                        Write-Output "winget installation failed. Please check the log for details."
                     }
+
+                    # Clean up the installer file
+                    Remove-Item $installerPath -Force
                 } else {
                     Write-Output "winget is already installed."
                 }
-
-
             }
 
             function SendApps {
@@ -8927,6 +8903,7 @@ https://t.me/emadadel4
                             Finish
                             exit 0
                         } else {
+                            Clear-Host
                             Write-Host "Chocolatey installation failed."
                             # Attempt to install the app using Winget
                             Write-Host "Attempting to install $appName using Winget..." -ForegroundColor Yellow
