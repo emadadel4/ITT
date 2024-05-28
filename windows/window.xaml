@@ -140,6 +140,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                     <ComboBoxItem Content="Launchers"></ComboBoxItem>
                     <ComboBoxItem Content="Utilities"></ComboBoxItem>
                     <ComboBoxItem Content="Development"></ComboBoxItem>
+                    <ComboBoxItem Content="Runtimes"></ComboBoxItem>
                     <ComboBoxItem Content="Microsoft"></ComboBoxItem>
                     <ComboBoxItem Content="Security"></ComboBoxItem>
                 </ComboBox>
