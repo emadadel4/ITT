@@ -3004,23 +3004,6 @@
     "check": "false"
   },
   {
-    "Name": "WhatsApp",
-    "Description": "WhatsApp is an instant messaging and voice-over-IP service owned by technology conglomerate Meta. It allows users to send text, voice messages and video messages, make voice and video calls, and share images, documents, user",
-    "winget": "WhatsApp.WhatsApp",
-    "choco": "none",
-    "scoop": "none",
-    "default": [
-      {
-        "fileType": "none",
-        "url": "none",
-        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "ITT/Downloads"
-      }
-    ],
-    "category": "Communication",
-    "check": "false"
-  },
-  {
     "Name": "LibreWolf",
     "Description": "LibreWolf is designed to increase protection against tracking and fingerprinting techniques, while also including a few security improvements. This is achieved through our privacy and security oriented settings and patches. LibreWolf also aims to remove all the telemetry, data collection and annoyances, as well as disabling anti-freedom features like DRM.",
     "winget": "LibreWolf.LibreWolf",
