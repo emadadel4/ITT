@@ -339,7 +339,7 @@ Write-Host "
 
                                 }
                                 "delete" {
-                                    
+
                                     foreach ($re in $app.Registry) {
                                         Remove-RegistryValue -RegistryPath $re.Path -Folder $re.Name
                                     }
@@ -352,7 +352,7 @@ Write-Host "
                                 }
                                 "service" {
                                     foreach ($se in $app.Service) {
-                                        Disable-Service -Name $se.Name -StartupType $se.StartupType
+                                        Disable-Service -ServiceName $se.Name -StartupType $se.StartupType
                                     }
                                 }
                                 "AppxPackage" {

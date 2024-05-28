@@ -18,7 +18,7 @@ $validCategories = @{
 
     # Available options
 
-    1 = "Commands"
+    1 = "InvokeCommand"
 
     2 = "Registry"
 
@@ -144,6 +144,12 @@ $data = @{
             } | Select-Object Path, Name, Type, Value, defaultValue
         }
     )
+    "InvokeCommand" = @(
+        ""
+    )
+    "UndoCommand" = @(
+        ""
+    )
 }
 
 # Convert to JSON string
@@ -154,7 +160,13 @@ $jsonString = @"
     "check": "$($data["check"])",
     "type": "$($data["type"])",
     "refresh": "$($data["refresh"])",
-    "$userInput": $($data["$userInput"] | ConvertTo-Json -Depth 100)
+    "$userInput": $($data["$userInput"] | ConvertTo-Json -Depth 100),
+    "InvokeCommand": [
+        ""
+    ],
+    "UndoCommand": [
+    ""
+    ]
 }
 "@
 
@@ -213,6 +225,12 @@ $data = @{
             }
         }
     )
+    "InvokeCommand" = @(
+        ""
+    )
+    "UndoCommand" = @(
+        ""
+    )
 }
 
 # Convert to JSON string
@@ -223,7 +241,13 @@ $jsonString = @"
     "check": "$($data["check"])",
     "type": "$($data["type"])",
     "refresh": "$($data["refresh"])",
-    "$userInput": $($data["$userInput"] | ConvertTo-Json -Depth 100)
+    "$userInput": $($data["$userInput"] | ConvertTo-Json -Depth 100),
+    "InvokeCommand": [
+        ""
+    ],
+    "UndoCommand": [
+    ""
+    ]
 }
 "@
 
@@ -254,13 +278,23 @@ Write-Host "Added successfully, Don't forget to build and test it before commit"
 #region Command 
 #===========================================================================
 
-if($userInput -eq "Commands")
+if($userInput -eq "InvokeCommand")
 {
     
 $TweakName = Read-Host "Enter Tweak Name"
 $description = (Read-Host "Enter tweak description").Trim() -replace '[^\w\s]', ''
-$cmd = Read-Host "Enter command"
 
+
+# Initialize an empty array to collect commands
+$cmd = @()
+
+# Loop to collect commands from the user
+do {
+    $line = Read-Host "Enter command (leave empty to finish)"
+    if ($line -ne '') {
+        $cmd += $line
+    }
+} while ($line -ne '')
 
 # Define the data
 $data = @{
@@ -269,13 +303,13 @@ $data = @{
     "check" = "false"
     "type" = "command"
     "refresh" = "false"
-    "$userInput" = @(
-        @{
-            "run" = $cmd
-            "delay" = "1"
-        }
-    )
+    "userInput" = $cmd
 }
+
+# Convert userInput array to JSON formatted string
+$userInputJson = ($data["userInput"] | ForEach-Object { '"' + $_.Replace('"', '\"') + '"' }) -join ",
+
+"
 
 # Convert to JSON string
 $jsonString = @"
@@ -286,13 +320,11 @@ $jsonString = @"
     "type": "$($data["type"])",
     "refresh": "$($data["refresh"])",
     "$userInput": [
-        {
-            "run": "$($data["$userInput"][0]["run"])",
-            "delay": "$($data["$userInput"][0]["delay"])",
-        }
+        $userInputJson
     ]
 }
 "@
+
 
 # Read existing JSON file
 $existingJson = Get-Content -Path "./Assets/Database/Tweaks.json" | ConvertFrom-Json

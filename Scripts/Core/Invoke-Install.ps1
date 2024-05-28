@@ -177,9 +177,6 @@ function Invoke-Install
                     }
                 })
 
-                UpdateUI -InstallBtn "Install" -Description "Installed successfully."
-
-
                 Start-Sleep 3
 
                 Clear-Host
@@ -214,8 +211,45 @@ https://t.me/emadadel4
                     # Define the path to download the installer
                     $installerPath = "$env:TEMP\Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle"
 
-                    # Download the installer
-                    Invoke-WebRequest -Uri $url -OutFile $installerPath
+                    # Initialize the web request
+                    $webRequest = [System.Net.HttpWebRequest]::Create($url)
+                    $webRequest.Method = "GET"
+
+                    # Get the response
+                    $response = $webRequest.GetResponse()
+
+                    # Get the total size of the file
+                    $totalSize = $response.ContentLength
+
+                    # Open the response stream
+                    $responseStream = $response.GetResponseStream()
+
+                    # Create a file stream to write the downloaded data
+                    $fileStream = [System.IO.File]::Create($installerPath)
+
+                    # Buffer size for reading data
+                    $bufferSize = 8192
+                    $buffer = New-Object byte[] $bufferSize
+
+                    # Variables to track progress
+                    $totalRead = 0
+                    $readCount = 0
+
+                    # Read the data in chunks
+                    while (($readCount = $responseStream.Read($buffer, 0, $bufferSize)) -gt 0) {
+                        $fileStream.Write($buffer, 0, $readCount)
+                        $totalRead += $readCount
+
+                        # Calculate the percentage and display progress
+                        $percentComplete = [math]::Round(($totalRead / $totalSize) * 100, 2)
+                        $downloadedMB = [math]::Round($totalRead / 1MB, 2)
+                        $totalSizeMB = [math]::Round($totalSize / 1MB, 2)
+                        Write-Progress -Activity "Downloading winget" -Status "$downloadedMB MB of $totalSizeMB MB" -PercentComplete $percentComplete
+                    }
+
+                    # Close the streams
+                    $fileStream.Close()
+                    $responseStream.Close()
 
                     # Add-AppxPackage requires running with administrative privileges
                     Start-Process powershell -ArgumentList "Add-AppxPackage -Path $installerPath" -Verb RunAs -Wait
@@ -232,6 +266,7 @@ https://t.me/emadadel4
                 } else {
                     Write-Output "winget is already installed."
                 }
+
             }
 
             function SendApps {
@@ -362,60 +397,80 @@ https://t.me/emadadel4
                 {
                     
                     ClearTemp
-
                     $sync.ProcessRunning = $true
+                    UpdateUI -InstallBtn "Downloading..." -Description "Downloading..." 
                    
                     foreach ($app in $selectedApps) 
                     {
                         SendApps -FirebaseUrl $sync.firebaseUrl -Key $env:COMPUTERNAME -list $app
-                        
-                        if ($app.Winget -ne "none")
-                        {
+
+                        # Define the name of the application to install
+                        $choco = $app.Choco
+                        $winget = $app.Winget
+
+
+                        # Attempt to install the app using Chocolatey
+                        Write-Host "Attempting to install $($choco) using Chocolatey..." -ForegroundColor Yellow
+                        $chocoResult = Start-Process -FilePath "choco" -ArgumentList "install $($choco) --confirm --acceptlicense -q -r --ignore-http-cache --allowemptychecksumsecure --allowemptychecksum --usepackagecodes --ignoredetectedreboot --ignore-checksums --ignore-reboot-requests" -NoNewWindow -Wait -PassThru
+
+                        # Check if Chocolatey installation was successful
+                        if ($chocoResult.ExitCode -eq 0) {
+                            Write-Host "$appName installed successfully using Chocolatey!"
+                            $sync.ProcessRunning = $False
+                            Notify -title "ITT Emad Adel" -msg "Installed successfully: Portable Apps will save in C:\ProgramData\chocolatey\lib" -icon "Info" -time 5666
+                            UpdateUI -InstallBtn "Install" -Description "Installed successfully."
+                            Start-Sleep -Seconds 3
+                            Finish
+                            exit 0
+                        } else {
+                            Clear-Host
+                            Write-Host "Chocolatey installation failed."
+                            # Attempt to install the app using Winget
+                            Write-Host "Attempting to install $($app.name) using Winget..." -ForegroundColor Yellow
                             InstallWinget
-                            UpdateUI -InstallBtn "Installing..." -Description "Downloading and Installing..." 
-                            Start-Process -FilePath "winget" -ArgumentList "install -e -h --accept-source-agreements --ignore-security-hash --accept-package-agreements --id $($app.Winget)" -NoNewWindow -Wait
-                        }
+                            $wingetResult = Start-Process -FilePath "winget" -ArgumentList "install -e -h --accept-source-agreements --ignore-security-hash --accept-package-agreements --id $($winget)" -NoNewWindow -Wait -PassThru
 
-                        if ($app.Choco -ne "none")
-                        {
-                            UpdateUI -InstallBtn "Installing..." -Description "Downloading and Installing..." 
-                            Start-Process -FilePath "choco" -ArgumentList "install $($app.Choco) --confirm --acceptlicense -q -r --ignore-http-cache --allowemptychecksumsecure --allowemptychecksum  --usepackagecodes --ignoredetectedreboot --ignore-checksums --ignore-reboot-requests" -NoNewWindow -Wait 
-                        }
-
-                        if ($app.Default.url -ne "none")
-                        {
-                            UpdateUI -InstallBtn "Downloading..." -Description "Downloading..." 
-
-                            foreach ($app in $app.default) 
+                            # Check if Winget installation was successful
+                            if ($wingetResult.ExitCode -eq 0) {
+                                Write-Host "$appName installed successfully using Winget!" -ForegroundColor Yellow
+                                $sync.ProcessRunning = $False
+                                Notify -title "ITT Emad Adel" -msg "Installed successfully: Portable Apps will save in C:\ProgramData\chocolatey\lib" -icon "Info" -time 5666
+                                UpdateUI -InstallBtn "Install" -Description "Installed successfully."
+                                Start-Sleep -Seconds 3
+                                Finish
+                                exit 0
+                            } 
+                            else 
                             {
-                                $url = $app.url
+                                # Check if the application is already installed using Winget
+                                $wingetCheck = Start-Process -FilePath "winget" -ArgumentList "show --id $($winget)" -NoNewWindow -Wait -PassThru
 
-                                if($app.fileType -eq "rar")
+                                # If Winget returns success, the application is already installed
+                                if ($wingetCheck.ExitCode -eq 0)
                                 {
-                                    DownloadAndExtractRar -url $url -outputDir $app.output
-                                    
+                                    Clear-Host
+
+                                    Write-Host "$($appName) is already installed." -ForegroundColor Yellow
+
+                                    $sync.ProcessRunning = $False
+                                    Notify -title "ITT Emad Adel" -msg "Already installed using Winget." -icon "Info" -time 5666
+                                    UpdateUI -InstallBtn "Install" -Description "Already installed."
+                                    Start-Sleep -Seconds 5
+                                    Finish
+                                    exit 0
                                 }
-
-                                if($app.fileType -eq "exe")
+                                else
                                 {
-                                    DownloadAndInstallExe -url $url $exeArgs $app.exeArgs
+                                    Write-Host "Winget installation failed. Please install $appName manually."
+                                    $sync.ProcessRunning = $False
+                                    UpdateUI -InstallBtn "Install" 
+                                    Start-Sleep -Seconds 5
+                                    Finish
+                                    exit 1
                                 }
                             }
                         }
                     }
-
-                    Start-Sleep -Seconds 1
-                    $sync.ProcessRunning = $False
-
-                    CustomMsg -title "ITT | Emad Adel" -msg "Installed successfully: Portable Apps will save in C:\ProgramData\chocolatey\lib" -MessageBoxImage "Information" -MessageBoxButton "OK"
-                    Notify -title "ITT Emad Adel" -msg "Installed successfully: Portable Apps will save in C:\ProgramData\chocolatey\lib" -icon "Info" -time 5666
-
-                    Write-Host "Portable Apps will save in C:\ProgramData\chocolatey\lib" -ForegroundColor Yellow
-
-                    # Uncheck all checkboxes in $list
-                    Start-Sleep -Seconds 3
-                    Finish
-
                 }
                 else
                 {

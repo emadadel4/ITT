@@ -56,8 +56,8 @@ function LoadJson {
         }
 
         $sync['window'].FindName('apps').IsSelected = $true
-        $sync['window'].FindName('list').Clear()
-        $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync['window'].FindName('list').Items)
+        $sync['window'].FindName('appslist').Clear()
+        $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync['window'].FindName('appslist').Items)
         $collectionView.Filter = $filterPredicate
         [System.Windows.MessageBox]::Show("Restored successfully", "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
 
@@ -72,7 +72,7 @@ function SaveItemsToJson
 
     ClearFilter
 
-    foreach ($item in $sync['window'].FindName('list').Items)
+    foreach ($item in $sync.AppsListView.Items)
     {
 
         $item =  GetCheckBoxesFromStackPanel -item $item
