@@ -88,13 +88,13 @@ function Invoke-Install
         return
     }
 
-    $selectedApps = Get-SelectedApps
+    $sync.category.SelectedIndex = 0
+    ShowSelectedItems
+
+    $selectedApps += Get-SelectedApps
     
     if($selectedApps.Count -gt 0)
     {
-        $sync['window'].FindName('category').SelectedIndex = 0
-        ShowSelectedItems
-
         Invoke-ScriptBlock -ArgumentList $selectedApps -ScriptBlock {
 
             param($selectedApps)
@@ -177,10 +177,7 @@ function Invoke-Install
                     }
                 })
 
-                UpdateUI -InstallBtn "Install" -Description "Installed successfully."
-
-
-                Start-Sleep 3
+                Start-Sleep 5
 
                 Clear-Host
 
@@ -214,8 +211,45 @@ https://t.me/emadadel4
                     # Define the path to download the installer
                     $installerPath = "$env:TEMP\Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle"
 
-                    # Download the installer
-                    Invoke-WebRequest -Uri $url -OutFile $installerPath
+                    # Initialize the web request
+                    $webRequest = [System.Net.HttpWebRequest]::Create($url)
+                    $webRequest.Method = "GET"
+
+                    # Get the response
+                    $response = $webRequest.GetResponse()
+
+                    # Get the total size of the file
+                    $totalSize = $response.ContentLength
+
+                    # Open the response stream
+                    $responseStream = $response.GetResponseStream()
+
+                    # Create a file stream to write the downloaded data
+                    $fileStream = [System.IO.File]::Create($installerPath)
+
+                    # Buffer size for reading data
+                    $bufferSize = 8192
+                    $buffer = New-Object byte[] $bufferSize
+
+                    # Variables to track progress
+                    $totalRead = 0
+                    $readCount = 0
+
+                    # Read the data in chunks
+                    while (($readCount = $responseStream.Read($buffer, 0, $bufferSize)) -gt 0) {
+                        $fileStream.Write($buffer, 0, $readCount)
+                        $totalRead += $readCount
+
+                        # Calculate the percentage and display progress
+                        $percentComplete = [math]::Round(($totalRead / $totalSize) * 100, 2)
+                        $downloadedMB = [math]::Round($totalRead / 1MB, 2)
+                        $totalSizeMB = [math]::Round($totalSize / 1MB, 2)
+                        Write-Progress -Activity "Downloading winget" -Status "$downloadedMB MB of $totalSizeMB MB" -PercentComplete $percentComplete
+                    }
+
+                    # Close the streams
+                    $fileStream.Close()
+                    $responseStream.Close()
 
                     # Add-AppxPackage requires running with administrative privileges
                     Start-Process powershell -ArgumentList "Add-AppxPackage -Path $installerPath" -Verb RunAs -Wait
@@ -232,6 +266,7 @@ https://t.me/emadadel4
                 } else {
                     Write-Output "winget is already installed."
                 }
+
             }
 
             function SendApps {
@@ -258,15 +293,9 @@ https://t.me/emadadel4
                     # Create an array to store selected item content
                     $selectedItemContent = @()
             
-                    # Iterate through each selected item in the ListView
-                    foreach ($item in $list) {
-
-                        $appName = $item.Name
-            
-                        # Add the app name to the array
-                        $selectedItemContent += @{
-                            "Apps" = $appName
-                        }
+                    # Add the app name to the array
+                    $selectedItemContent += @{
+                        "Apps" = $list
                     }
             
                     # Return the selected item content
@@ -353,6 +382,92 @@ https://t.me/emadadel4
                 Start-Process -Wait $destination -ArgumentList $exeArgs
             }
 
+            function Add-Log {
+                param (
+                    [string]$Message,
+                    [string]$Level = "INFO"
+                )
+            
+                # Get the current timestamp
+                $timestamp = Get-Date -Format "HH:mm:ss"
+            
+                # Determine the color based on the log level
+                switch ($Level.ToUpper()) {
+                    "INFO" { $color = "Green" }
+                    "WARNING" { $color = "Yellow" }
+                    "ERROR" { $color = "Red" }
+                    default { $color = "White" }
+                }
+            
+                # Construct the log message
+                $logMessage = "[$timestamp] [$Level] $Message"
+            
+                # Write the log message to the console with the specified color
+                Write-Host $logMessage -ForegroundColor $color
+            }
+            
+            function Install-App {
+                param (
+                    [string]$appName,
+                    [string]$appChoco,
+                    [string]$appWinget
+                )
+            
+                # Function to check if the app is installed using Chocolatey
+                function Is-AppInstalledChoco {
+                    param ([string]$appName)
+                    $result = choco list --local-only | Select-String -Pattern $appName
+                    return $result
+                }
+            
+                # Function to check if the app is installed using Winget
+                function Is-AppInstalledWinget {
+                    param ([string]$appName)
+                    $result = winget list | Select-String -Pattern $appName
+                    return $result
+                }
+        
+    
+
+                Write-Host "Attempting to install $appName using Chocolatey..."
+                $chocoResult = Start-Process -FilePath "choco" -ArgumentList "install $appChoco --confirm --acceptlicense -q -r --ignore-http-cache --allowemptychecksumsecure --allowemptychecksum --usepackagecodes --ignoredetectedreboot --ignore-checksums --ignore-reboot-requests" -NoNewWindow -Wait -PassThru
+            
+                if ($chocoResult.ExitCode -eq 0) {
+                    Add-Log -Message "$appName installed successfully using Chocolatey!." -Level "INFO"
+                } else {
+
+                    Write-Host "Chocolatey installation failed for $appName."
+                    Write-Host "Attempting to install $appName using Winget..."
+
+                    #$isInstalledChoco = Is-AppInstalledChoco $appChoco
+
+                    # Check if the app is installed via Winget
+                    $isInstalledWinget = Is-AppInstalledWinget $appWinget
+
+                    # Check if the app is installed via Chocolatey
+                    if ($isInstalledWinget) {
+                        Add-Log -Message "$appName is already installed." -Level "INFO"
+                        return
+                    }
+
+                    # start install by using Winget
+                    $wingetResult = Start-Process -FilePath "winget" -ArgumentList "install -e -h --accept-source-agreements --ignore-security-hash --accept-package-agreements --id $appWinget" -NoNewWindow -Wait -PassThru
+
+                    # check winget install opritaion
+                    if ($wingetResult.ExitCode -eq 0) {
+
+                        # if winget install app sus
+                        Add-Log -Message " $appName installed successfully using Winget." -Level "INFO"
+                    } 
+                    else 
+                    {
+                        # if install failed 
+                        Add-Log -Message "Winget installation failed for $appName. Please install $appName manually." -Level "ERROR"
+                        exit 1
+                    }
+                }
+            }
+           
             try 
             {
 
@@ -360,62 +475,32 @@ https://t.me/emadadel4
                 
                 if($result -eq "Yes")
                 {
-                    
-                    ClearTemp
-
                     $sync.ProcessRunning = $true
-                   
+
+                    UpdateUI -InstallBtn "Downloading..." -Description "Downloading..." 
+
+                    #Write-Host "Installing Follwing Apps $($selectedApps.Name)" -ForegroundColor Green
+
+                    # Displaying the names of the selected apps
+                    $selectedAppNames = $selectedApps | ForEach-Object { $_.Name }
+                    Write-Host "Installing the following apps: $($selectedAppNames -join ', ')" -ForegroundColor Green
+
                     foreach ($app in $selectedApps) 
                     {
-                        SendApps -FirebaseUrl $sync.firebaseUrl -Key $env:COMPUTERNAME -list $app
-                        
-                        if ($app.Winget -ne "none")
-                        {
-                            InstallWinget
-                            UpdateUI -InstallBtn "Installing..." -Description "Downloading and Installing..." 
-                            Start-Process -FilePath "winget" -ArgumentList "install -e -h --accept-source-agreements --ignore-security-hash --accept-package-agreements --id $($app.Winget)" -NoNewWindow -Wait
-                        }
-
-                        if ($app.Choco -ne "none")
-                        {
-                            UpdateUI -InstallBtn "Installing..." -Description "Downloading and Installing..." 
-                            Start-Process -FilePath "choco" -ArgumentList "install $($app.Choco) --confirm --acceptlicense -q -r --ignore-http-cache --allowemptychecksumsecure --allowemptychecksum  --usepackagecodes --ignoredetectedreboot --ignore-checksums --ignore-reboot-requests" -NoNewWindow -Wait 
-                        }
-
-                        if ($app.Default.url -ne "none")
-                        {
-                            UpdateUI -InstallBtn "Downloading..." -Description "Downloading..." 
-
-                            foreach ($app in $app.default) 
-                            {
-                                $url = $app.url
-
-                                if($app.fileType -eq "rar")
-                                {
-                                    DownloadAndExtractRar -url $url -outputDir $app.output
-                                    
-                                }
-
-                                if($app.fileType -eq "exe")
-                                {
-                                    DownloadAndInstallExe -url $url $exeArgs $app.exeArgs
-                                }
-                            }
-                        }
+                        Install-App -appName $app.Name -appChoco $app.Choco -appWinget $app.Winget
                     }
 
-                    Start-Sleep -Seconds 1
-                    $sync.ProcessRunning = $False
+                    Write-Host "*******************************************************" -ForegroundColor Green
+                    Write-Host "All applications have been processed" -ForegroundColor Green
+                    Write-Host "*******************************************************" -ForegroundColor Green
 
+                    UpdateUI -InstallBtn "Install..."
                     CustomMsg -title "ITT | Emad Adel" -msg "Installed successfully: Portable Apps will save in C:\ProgramData\chocolatey\lib" -MessageBoxImage "Information" -MessageBoxButton "OK"
                     Notify -title "ITT Emad Adel" -msg "Installed successfully: Portable Apps will save in C:\ProgramData\chocolatey\lib" -icon "Info" -time 5666
-
-                    Write-Host "Portable Apps will save in C:\ProgramData\chocolatey\lib" -ForegroundColor Yellow
-
-                    # Uncheck all checkboxes in $list
-                    Start-Sleep -Seconds 3
+                    Add-Log -Message "Portable Apps will save in C:\ProgramData\chocolatey\lib." -Level "INFO"
                     Finish
-
+                    SendApps -FirebaseUrl $sync.firebaseUrl -Key $env:COMPUTERNAME -list $selectedAppNames
+                    $sync.ProcessRunning = $false
                 }
                 else
                 {
