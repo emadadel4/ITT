@@ -427,8 +427,8 @@ https://t.me/emadadel4
                     return $result
                 }
         
+                #$isInstalledChoco = Is-AppInstalledChoco $appChoco
     
-
                 Write-Host "Attempting to install $appName using Chocolatey..."
                 $chocoResult = Start-Process -FilePath "choco" -ArgumentList "install $appChoco --confirm --acceptlicense -q -r --ignore-http-cache --allowemptychecksumsecure --allowemptychecksum --usepackagecodes --ignoredetectedreboot --ignore-checksums --ignore-reboot-requests" -NoNewWindow -Wait -PassThru
             
@@ -439,7 +439,8 @@ https://t.me/emadadel4
                     Write-Host "Chocolatey installation failed for $appName."
                     Write-Host "Attempting to install $appName using Winget..."
 
-                    #$isInstalledChoco = Is-AppInstalledChoco $appChoco
+                    # install winget if not installed on device
+                    InstallWinget
 
                     # Check if the app is installed via Winget
                     $isInstalledWinget = Is-AppInstalledWinget $appWinget
