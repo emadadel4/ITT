@@ -88,13 +88,13 @@ function Invoke-Install
         return
     }
 
-    $selectedApps = Get-SelectedApps
+    $sync.category.SelectedIndex = 0
+    ShowSelectedItems
+
+    $selectedApps += Get-SelectedApps
     
     if($selectedApps.Count -gt 0)
     {
-        $sync['window'].FindName('category').SelectedIndex = 0
-        ShowSelectedItems
-
         Invoke-ScriptBlock -ArgumentList $selectedApps -ScriptBlock {
 
             param($selectedApps)
@@ -108,31 +108,6 @@ function Invoke-Install
                     #$sync.Description.Text = "$Description"
                 })
             }
-
-            function Add-Log {
-                param (
-                    [string]$Message,
-                    [string]$Level = "INFO"
-                )
-            
-                # Get the current timestamp
-                $timestamp = Get-Date -Format "HH:mm:ss"
-            
-                # Determine the color based on the log level
-                switch ($Level.ToUpper()) {
-                    "INFO" { $color = "Green" }
-                    "WARNING" { $color = "Yellow" }
-                    "ERROR" { $color = "Red" }
-                    default { $color = "White" }
-                }
-            
-                # Construct the log message
-                $logMessage = "[$timestamp] [$Level] $Message"
-            
-                # Write the log message to the console with the specified color
-                Write-Host $logMessage -ForegroundColor $color
-            }
-            
 
             function ClearTemp {
 
@@ -202,7 +177,7 @@ function Invoke-Install
                     }
                 })
 
-                Start-Sleep 3
+                Start-Sleep 5
 
                 Clear-Host
 
@@ -413,6 +388,30 @@ https://t.me/emadadel4
                 Start-Process -Wait $destination -ArgumentList $exeArgs
             }
 
+            function Add-Log {
+                param (
+                    [string]$Message,
+                    [string]$Level = "INFO"
+                )
+            
+                # Get the current timestamp
+                $timestamp = Get-Date -Format "HH:mm:ss"
+            
+                # Determine the color based on the log level
+                switch ($Level.ToUpper()) {
+                    "INFO" { $color = "Green" }
+                    "WARNING" { $color = "Yellow" }
+                    "ERROR" { $color = "Red" }
+                    default { $color = "White" }
+                }
+            
+                # Construct the log message
+                $logMessage = "[$timestamp] [$Level] $Message"
+            
+                # Write the log message to the console with the specified color
+                Write-Host $logMessage -ForegroundColor $color
+            }
+            
             function Install-App {
                 param (
                     [string]$appName,
@@ -449,27 +448,22 @@ https://t.me/emadadel4
                 $chocoResult = Start-Process -FilePath "choco" -ArgumentList "install $appChoco --confirm --acceptlicense -q -r --ignore-http-cache --allowemptychecksumsecure --allowemptychecksum --usepackagecodes --ignoredetectedreboot --ignore-checksums --ignore-reboot-requests" -NoNewWindow -Wait -PassThru
             
                 if ($chocoResult.ExitCode -eq 0) {
-
-                    Add-Log -Message "$appName installed successfully using Chocolatey!" -Level "INFO"
-
+                    Add-Log -Message "$appName installed successfully using Chocolatey!." -Level "INFO"
                 } else {
                     Write-Host "Chocolatey installation failed for $appName."
                     Clear-Host
-
                     Write-Host "Attempting to install $appName using Winget..."
-
                     $wingetResult = Start-Process -FilePath "winget" -ArgumentList "install -e -h --accept-source-agreements --ignore-security-hash --accept-package-agreements --id $appWinget" -NoNewWindow -Wait -PassThru
             
                     if ($wingetResult.ExitCode -eq 0) {
-                        Add-Log -Message "$appName installed successfully using Winget!" -Level "INFO"
-
+                        Add-Log -Message " $appName installed successfully using Winget!." -Level "INFO"
                     } else {
-                        Add-Log -Message "$appName installed successfully using Chocolatey!   " -Level "INFO"
+                        Add-Log -Message "Winget installation failed for $appName. Please install $appName manually." -Level "ERROR"
                         exit 1
                     }
                 }
             }
-
+           
             try 
             {
 
@@ -477,9 +471,8 @@ https://t.me/emadadel4
                 
                 if($result -eq "Yes")
                 {
-                    
-                    ClearTemp
                     $sync.ProcessRunning = $true
+                    
                     UpdateUI -InstallBtn "Downloading..." -Description "Downloading..." 
                    
                     foreach ($app in $selectedApps) 
@@ -488,12 +481,15 @@ https://t.me/emadadel4
                         Install-App -appName $app.Name -appChoco $app.Choco -appWinget $app.Winget
                     }
 
-                        Write-Host "*******************************************************" -ForegroundColor Green
-                        Write-Host "All applications have been processed" -ForegroundColor Green
-                        Write-Host "*******************************************************" -ForegroundColor Green
+                    Write-Host "*******************************************************" -ForegroundColor Green
+                    Write-Host "All applications have been processed" -ForegroundColor Green
+                    Write-Host "*******************************************************" -ForegroundColor Green
 
-                        UpdateUI -InstallBtn "Install..."
-                        #Finish
+                    UpdateUI -InstallBtn "Install..."
+                    Finish
+
+                    $sync.ProcessRunning = $false
+
                 }
                 else
                 {
