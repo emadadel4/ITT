@@ -3073,23 +3073,6 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "WhatsApp",
-    "Description": "WhatsApp is an instant messaging and voice-over-IP service owned by technology conglomerate Meta. It allows users to send text, voice messages and video messages, make voice and video calls, and share images, documents, user",
-    "winget": "WhatsApp.WhatsApp",
-    "choco": "none",
-    "scoop": "none",
-    "default": [
-      {
-        "fileType": "none",
-        "url": "none",
-        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "ITT/Downloads"
-      }
-    ],
-    "category": "Communication",
-    "check": "false"
-  },
-  {
     "Name": "LibreWolf",
     "Description": "LibreWolf is designed to increase protection against tracking and fingerprinting techniques, while also including a few security improvements. This is achieved through our privacy and security oriented settings and patches. LibreWolf also aims to remove all the telemetry, data collection and annoyances, as well as disabling anti-freedom features like DRM.",
     "winget": "LibreWolf.LibreWolf",
@@ -5992,14 +5975,6 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                 <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content="Browsers"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="LibreWolf is designed to increase protection against tracking and fingerprinting techniques while also including a few security improvements This is achieved through our privacy and security oriented settings and patches LibreWolf also aims to remove all the telemetry data collection and annoyances as well as disabling antifreedom features like DRM"/>
-        </StackPanel>
-
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
-            <StackPanel Orientation="Horizontal">
-                <CheckBox Content="WhatsApp" Tag="Communication" IsChecked="false" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content="Communication"/>
-            </StackPanel>
-                <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="WhatsApp is an instant messaging and voiceoverIP service owned by technology conglomerate Meta It allows users to send text voice messages and video messages make voice and video calls and share images documents user"/>
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Width="auto" Margin="8">
@@ -8925,11 +8900,13 @@ https://t.me/emadadel4
                         SendApps -FirebaseUrl $sync.firebaseUrl -Key $env:COMPUTERNAME -list $app
 
                         # Define the name of the application to install
-                        $appName = $app.Choco
+                        $choco = $app.Choco
+                        $winget = $app.Winget
+
 
                         # Attempt to install the app using Chocolatey
-                        Write-Host "Attempting to install $appName using Chocolatey..." -ForegroundColor Yellow
-                        $chocoResult = Start-Process -FilePath "choco" -ArgumentList "install $appName --confirm --acceptlicense -q -r --ignore-http-cache --allowemptychecksumsecure --allowemptychecksum --usepackagecodes --ignoredetectedreboot --ignore-checksums --ignore-reboot-requests" -NoNewWindow -Wait -PassThru
+                        Write-Host "Attempting to install $($choco) using Chocolatey..." -ForegroundColor Yellow
+                        $chocoResult = Start-Process -FilePath "choco" -ArgumentList "install $($choco) --confirm --acceptlicense -q -r --ignore-http-cache --allowemptychecksumsecure --allowemptychecksum --usepackagecodes --ignoredetectedreboot --ignore-checksums --ignore-reboot-requests" -NoNewWindow -Wait -PassThru
 
                         # Check if Chocolatey installation was successful
                         if ($chocoResult.ExitCode -eq 0) {
@@ -8944,9 +8921,9 @@ https://t.me/emadadel4
                             Clear-Host
                             Write-Host "Chocolatey installation failed."
                             # Attempt to install the app using Winget
-                            Write-Host "Attempting to install $appName using Winget..." -ForegroundColor Yellow
+                            Write-Host "Attempting to install $($app.name) using Winget..." -ForegroundColor Yellow
                             InstallWinget
-                            $wingetResult = Start-Process -FilePath "winget" -ArgumentList "install -e -h --accept-source-agreements --ignore-security-hash --accept-package-agreements --id $appName" -NoNewWindow -Wait -PassThru
+                            $wingetResult = Start-Process -FilePath "winget" -ArgumentList "install -e -h --accept-source-agreements --ignore-security-hash --accept-package-agreements --id $($winget)" -NoNewWindow -Wait -PassThru
 
                             # Check if Winget installation was successful
                             if ($wingetResult.ExitCode -eq 0) {
@@ -8957,12 +8934,37 @@ https://t.me/emadadel4
                                 Start-Sleep -Seconds 3
                                 Finish
                                 exit 0
-                            } else {
-                                Write-Host "Winget installation failed. Please install $appName manually."
-                                exit 1
+                            } 
+                            else 
+                            {
+                                # Check if the application is already installed using Winget
+                                $wingetCheck = Start-Process -FilePath "winget" -ArgumentList "show --id $($winget)" -NoNewWindow -Wait -PassThru
+
+                                # If Winget returns success, the application is already installed
+                                if ($wingetCheck.ExitCode -eq 0)
+                                {
+                                    Clear-Host
+
+                                    Write-Host "$($appName) is already installed." -ForegroundColor Yellow
+
+                                    $sync.ProcessRunning = $False
+                                    Notify -title "ITT Emad Adel" -msg "Already installed using Winget." -icon "Info" -time 5666
+                                    UpdateUI -InstallBtn "Install" -Description "Already installed."
+                                    Start-Sleep -Seconds 5
+                                    Finish
+                                    exit 0
+                                }
+                                else
+                                {
+                                    Write-Host "Winget installation failed. Please install $appName manually."
+                                    $sync.ProcessRunning = $False
+                                    UpdateUI -InstallBtn "Install" 
+                                    Start-Sleep -Seconds 5
+                                    Finish
+                                    exit 1
+                                }
                             }
                         }
-                        
                     }
                 }
                 else
