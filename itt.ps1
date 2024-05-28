@@ -8026,7 +8026,7 @@ function Startup {
         Write-Host (WriteAText -color White -message  "You ready to Install anything.") 
     }
 
-    Send-SystemInfo -FirebaseUrl $sync.firebaseUrl -Key $env:COMPUTERNAME
+    #Send-SystemInfo -FirebaseUrl $sync.firebaseUrl -Key $env:COMPUTERNAME
 
 
 }
@@ -9050,7 +9050,7 @@ function SaveItemsToJson
 
     ClearFilter
 
-    foreach ($item in $sync['window'].FindName('list').Items)
+    foreach ($item in $sync.AppsListView.Items)
     {
 
         $item =  GetCheckBoxesFromStackPanel -item $item
