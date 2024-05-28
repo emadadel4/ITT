@@ -4807,17 +4807,27 @@ $sync.database.Tweaks = '[
     "check": "false",
     "type": "command",
     "refresh": "false",
-    "Commands": [
+    "Registry": [
       {
-        "run": "powercfg.exe /hibernate off",
-        "delay": "1"
+        "Path": "HKLM:\\System\\CurrentControlSet\\Control\\Session Manager\\Power",
+        "Name": "HibernateEnabled",
+        "Type": "DWord",
+        "Value": "0",
+        "defaultValue": "1"
+      },
+      {
+        "Path": "HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\FlyoutMenuSettings",
+        "Name": "ShowHibernateOption",
+        "Type": "DWord",
+        "Value": "0",
+        "defaultValue": "1"
       }
     ],
     "InvokeCommand": [
-      ""
+      "powercfg.exe /hibernate off"
     ],
     "UndoCommand": [
-      ""
+      "powercfg.exe /hibernate on"
     ]
   },
   {
