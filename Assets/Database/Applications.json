@@ -1488,7 +1488,7 @@
     "check": "false"
   },
   {
-    "Name": "CPUID CPU-Z",
+    "Name": "CPU-Z",
     "Description": "A system monitoring utility that provides detailed information about the CPU, motherboard, memory, and other hardware components of a computer system.",
     "winget": "CPUID.CPU-Z",
     "choco": "cpu-z",
