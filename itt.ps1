@@ -8924,14 +8924,10 @@ https://t.me/emadadel4
             
                 # Check if the app is installed via Chocolatey
                 $isInstalledChoco = Is-AppInstalledChoco $appChoco
-            
                 # Check if the app is installed via Winget
                 $isInstalledWinget = Is-AppInstalledWinget $appWinget
             
-                if ($isInstalledChoco -or $isInstalledWinget) {
-                    Add-Log -Message "$appName is already installed." -Level "INFO"
-                    return
-                }
+               
             
                 Write-Host "Attempting to install $appName using Chocolatey..."
                 $chocoResult = Start-Process -FilePath "choco" -ArgumentList "install $appChoco --confirm --acceptlicense -q -r --ignore-http-cache --allowemptychecksumsecure --allowemptychecksum --usepackagecodes --ignoredetectedreboot --ignore-checksums --ignore-reboot-requests" -NoNewWindow -Wait -PassThru
@@ -8942,6 +8938,12 @@ https://t.me/emadadel4
                     Write-Host "Chocolatey installation failed for $appName."
                     Clear-Host
                     Write-Host "Attempting to install $appName using Winget..."
+
+                    if ($isInstalledWinget) {
+                        Add-Log -Message "$appName is already installed." -Level "INFO"
+                        return
+                    }
+
                     $wingetResult = Start-Process -FilePath "winget" -ArgumentList "install -e -h --accept-source-agreements --ignore-security-hash --accept-package-agreements --id $appWinget" -NoNewWindow -Wait -PassThru
             
                     if ($wingetResult.ExitCode -eq 0) {
