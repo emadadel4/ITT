@@ -619,23 +619,6 @@
     "check": "false"
   },
   {
-    "Name": "DirectX",
-    "Description": "DirectX is a collection of APIs for handling tasks related to games and videos.",
-    "winget": "none",
-    "choco": "directx",
-    "scoop": "none",
-    "default": [
-      {
-        "fileType": "none",
-        "url": "none",
-        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "ITT/Downloads"
-      }
-    ],
-    "category": "Drivers",
-    "check": "false"
-  },
-  {
     "Name": "Microsoft Visual C++ Runtime - all versions",
     "Description": "Microsoft Visual C++ Redistributable installs run-time components of Visual C++ libraries. These components are required to run C++ applications that are developed using Visual Studio and link dynamically to Visual C++ libraries.",
     "winget": "none",
@@ -649,7 +632,24 @@
         "output": "ITT/Downloads"
       }
     ],
-    "category": "Drivers",
+    "category": "Runtimes",
+    "check": "false"
+  },
+  {
+    "Name": "DirectX",
+    "Description": "DirectX is a collection of APIs for handling tasks related to games and videos.",
+    "winget": "none",
+    "choco": "directx",
+    "scoop": "none",
+    "default": [
+      {
+        "fileType": "none",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "ITT/Downloads"
+      }
+    ],
+    "category": "Runtimes",
     "check": "false"
   },
   {
@@ -666,7 +666,7 @@
         "output": "ITT/Downloads"
       }
     ],
-    "category": "Drivers",
+    "category": "Runtimes",
     "check": "false"
   },
   {
@@ -683,7 +683,7 @@
         "output": "ITT/Downloads"
       }
     ],
-    "category": "Drivers",
+    "category": "Runtimes",
     "check": "false"
   },
   {
@@ -700,7 +700,7 @@
         "output": "ITT/Downloads"
       }
     ],
-    "category": "Drivers",
+    "category": "Runtimes",
     "check": "false"
   },
   {
@@ -717,7 +717,7 @@
         "output": "ITT/Downloads"
       }
     ],
-    "category": "Drivers",
+    "category": "Runtimes",
     "check": "false"
   },
   {
@@ -734,7 +734,7 @@
         "output": "ITT/Downloads"
       }
     ],
-    "category": "Drivers",
+    "category": "Runtimes",
     "check": "false"
   },
   {
@@ -751,7 +751,7 @@
         "output": "ITT/Downloads"
       }
     ],
-    "category": "Drivers",
+    "category": "Runtimes",
     "check": "false"
   },
   {
@@ -768,7 +768,7 @@
         "output": "ITT/Downloads"
       }
     ],
-    "category": "Drivers",
+    "category": "Runtimes",
     "check": "false"
   },
   {
@@ -785,7 +785,7 @@
         "output": "ITT/Downloads"
       }
     ],
-    "category": "Drivers",
+    "category": "Runtimes",
     "check": "false"
   },
   {
@@ -802,7 +802,7 @@
         "output": "ITT/Downloads"
       }
     ],
-    "category": "Drivers",
+    "category": "Runtimes",
     "check": "false"
   },
   {
@@ -819,7 +819,7 @@
         "output": "ITT/Downloads"
       }
     ],
-    "category": "Drivers",
+    "category": "DriRuntimesvers",
     "check": "false"
   },
   {
@@ -836,7 +836,7 @@
         "output": "ITT/Downloads"
       }
     ],
-    "category": "Drivers",
+    "category": "Runtimes",
     "check": "false"
   },
   {
@@ -853,7 +853,7 @@
         "output": "ITT/Downloads"
       }
     ],
-    "category": "Drivers",
+    "category": "Runtimes",
     "check": "false"
   },
   {
@@ -870,7 +870,7 @@
         "output": "ITT/Downloads"
       }
     ],
-    "category": "Drivers",
+    "category": "Runtimes",
     "check": "false"
   },
   {
@@ -3735,23 +3735,6 @@
     "check": "false"
   },
   {
-    "name": "Microsoft .NET 7.0 Desktop Runtime",
-    "description": "NET Core is a general purpose development platform maintained by Microsoft and the NET community on GitHub It is crossplatform supporting Windows macOS and Linux and can be used in device cloud and embeddedIoT scenarios",
-    "winget": "none",
-    "choco": "dotnet-7.0-desktopruntime",
-    "scoop": "none",
-    "default": [
-      {
-        "IsExcute": "false",
-        "url": "none",
-        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
-      }
-    ],
-    "category": "Development",
-    "check": "false"
-  },
-  {
     "name": "Microsoft Windows SDK for Windows 10 and .NET Framework 4.7",
     "description": "The Windows 10 SDK for Windows 10 version 1809 provides the latest headers libraries metadata and tools for building Windows 10 apps NoteWindows 10 development targeting Windows 10 version 1903 or later requires Visual Studio 2017 or later This SDK will not be discovered by previous versions of Visual Studio",
     "winget": "none",
@@ -3765,24 +3748,7 @@
         "output": "none"
       }
     ],
-    "category": "Development",
-    "check": "false"
-  },
-  {
-    "name": "Microsoft .NET 8.0 Desktop Runtime 8.0.5",
-    "description": "NET is a general purpose development platform maintained by Microsoft and the NET community on GitHub It is crossplatform supporting Windows macOS and Linux and can be used in device cloud and embeddedIoT scenarios",
-    "winget": "none",
-    "choco": "dotnet-8.0-desktopruntime",
-    "scoop": "none",
-    "default": [
-      {
-        "IsExcute": "false",
-        "url": "none",
-        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
-      }
-    ],
-    "category": "Development",
+    "category": "Runtimes",
     "check": "false"
   },
   {
@@ -3834,6 +3800,57 @@
       }
     ],
     "category": "Utilities",
+    "check": "false"
+  },
+  {
+    "name": "NET Desktop Runtime 7",
+    "description": "NET Core is a general purpose development platform maintained by Microsoft and the NET community on GitHub It is crossplatform supporting Windows macOS and Linux and can be used in device cloud and embeddedIoT scenarios This package is required to run Windows Desktop applications with the .NET Runtime.",
+    "winget": "none",
+    "choco": "dotnet-7.0-desktopruntime",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
+    "category": "Runtimes",
+    "check": "false"
+  },
+  {
+    "name": "NET Desktop Runtime 8",
+    "description": "NET Core is a general purpose development platform maintained by Microsoft and the NET community on GitHub It is crossplatform supporting Windows macOS and Linux and can be used in device cloud and embeddedIoT scenarios This package is required to run Windows Desktop applications with the NET Runtime",
+    "winget": "none",
+    "choco": "dotnet-desktopruntime",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
+    "category": "Runtimes",
+    "check": "false"
+  },
+  {
+    "name": "Viber",
+    "description": "Viber is a mobile application that lets you make free phone calls and send text messages to anyone who also has the application installed You can call or text any Viber user anywhere in the world for free",
+    "winget": "none",
+    "choco": "viber",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
+    "category": "Communication",
     "check": "false"
   }
 ]
