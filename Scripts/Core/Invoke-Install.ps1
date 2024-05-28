@@ -202,9 +202,6 @@ https://t.me/emadadel4
             function InstallWinget {
                
                 # Check if winget is installed
-
-                Write-Host "Install Winget first Time"
-
                 if (!(Get-Command winget -ErrorAction SilentlyContinue)) {
                     Write-Output "winget is not installed. Installing winget..."
 
@@ -214,33 +211,58 @@ https://t.me/emadadel4
                     # Define the path to download the installer
                     $installerPath = "$env:TEMP\Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle"
 
-                    try {
-                        # Create a new BITS transfer job
-                        $bitsJob = Start-BitsTransfer -Source $url -Destination $installerPath -Asynchronous
+                    # Initialize the web request
+                    $webRequest = [System.Net.HttpWebRequest]::Create($url)
+                    $webRequest.Method = "GET"
 
-                        # Wait for the transfer job to complete
-                        while ($bitsJob.JobState -eq "Transferring") {
-                            Start-Sleep -Seconds 5
-                        }
+                    # Get the response
+                    $response = $webRequest.GetResponse()
 
-                        # Check if the transfer was completed successfully
-                        if ($bitsJob.JobState -eq "Transferred") {
-                            # Add-AppxPackage requires running with administrative privileges
-                            Start-Process powershell -ArgumentList "Add-AppxPackage -Path $installerPath" -Verb RunAs -Wait
+                    # Get the total size of the file
+                    $totalSize = $response.ContentLength
 
-                            # Check if winget is installed successfully
-                            if (Get-Command winget -ErrorAction SilentlyContinue) {
-                                Write-Output "winget has been successfully installed."
-                            } else {
-                                Write-Output "winget installation failed. Please check the log for details."
-                            }
-                        } else {
-                            Write-Output "Failed to download winget. Please check your internet connection and try again."
-                        }
-                    } finally {
-                        # Clean up the BITS transfer job
-                        Remove-BitsTransfer -BitsJob $bitsJob.Id
+                    # Open the response stream
+                    $responseStream = $response.GetResponseStream()
+
+                    # Create a file stream to write the downloaded data
+                    $fileStream = [System.IO.File]::Create($installerPath)
+
+                    # Buffer size for reading data
+                    $bufferSize = 8192
+                    $buffer = New-Object byte[] $bufferSize
+
+                    # Variables to track progress
+                    $totalRead = 0
+                    $readCount = 0
+
+                    # Read the data in chunks
+                    while (($readCount = $responseStream.Read($buffer, 0, $bufferSize)) -gt 0) {
+                        $fileStream.Write($buffer, 0, $readCount)
+                        $totalRead += $readCount
+
+                        # Calculate the percentage and display progress
+                        $percentComplete = [math]::Round(($totalRead / $totalSize) * 100, 2)
+                        $downloadedMB = [math]::Round($totalRead / 1MB, 2)
+                        $totalSizeMB = [math]::Round($totalSize / 1MB, 2)
+                        Write-Progress -Activity "Downloading winget" -Status "$downloadedMB MB of $totalSizeMB MB" -PercentComplete $percentComplete
                     }
+
+                    # Close the streams
+                    $fileStream.Close()
+                    $responseStream.Close()
+
+                    # Add-AppxPackage requires running with administrative privileges
+                    Start-Process powershell -ArgumentList "Add-AppxPackage -Path $installerPath" -Verb RunAs -Wait
+
+                    # Check if winget is installed successfully
+                    if (Get-Command winget -ErrorAction SilentlyContinue) {
+                        Write-Output "winget has been successfully installed."
+                    } else {
+                        Write-Output "winget installation failed. Please check the log for details."
+                    }
+
+                    # Clean up the installer file
+                    Remove-Item $installerPath -Force
                 } else {
                     Write-Output "winget is already installed."
                 }
@@ -383,11 +405,13 @@ https://t.me/emadadel4
                         SendApps -FirebaseUrl $sync.firebaseUrl -Key $env:COMPUTERNAME -list $app
 
                         # Define the name of the application to install
-                        $appName = $app.Choco
+                        $choco = $app.Choco
+                        $winget = $app.Winget
+
 
                         # Attempt to install the app using Chocolatey
-                        Write-Host "Attempting to install $appName using Chocolatey..." -ForegroundColor Yellow
-                        $chocoResult = Start-Process -FilePath "choco" -ArgumentList "install $appName --confirm --acceptlicense -q -r --ignore-http-cache --allowemptychecksumsecure --allowemptychecksum --usepackagecodes --ignoredetectedreboot --ignore-checksums --ignore-reboot-requests" -NoNewWindow -Wait -PassThru
+                        Write-Host "Attempting to install $($choco) using Chocolatey..." -ForegroundColor Yellow
+                        $chocoResult = Start-Process -FilePath "choco" -ArgumentList "install $($choco) --confirm --acceptlicense -q -r --ignore-http-cache --allowemptychecksumsecure --allowemptychecksum --usepackagecodes --ignoredetectedreboot --ignore-checksums --ignore-reboot-requests" -NoNewWindow -Wait -PassThru
 
                         # Check if Chocolatey installation was successful
                         if ($chocoResult.ExitCode -eq 0) {
@@ -399,11 +423,12 @@ https://t.me/emadadel4
                             Finish
                             exit 0
                         } else {
+                            Clear-Host
                             Write-Host "Chocolatey installation failed."
                             # Attempt to install the app using Winget
-                            Write-Host "Attempting to install $appName using Winget..." -ForegroundColor Yellow
+                            Write-Host "Attempting to install $($app.name) using Winget..." -ForegroundColor Yellow
                             InstallWinget
-                            $wingetResult = Start-Process -FilePath "winget" -ArgumentList "install -e -h --accept-source-agreements --ignore-security-hash --accept-package-agreements --id $appName" -NoNewWindow -Wait -PassThru
+                            $wingetResult = Start-Process -FilePath "winget" -ArgumentList "install -e -h --accept-source-agreements --ignore-security-hash --accept-package-agreements --id $($winget)" -NoNewWindow -Wait -PassThru
 
                             # Check if Winget installation was successful
                             if ($wingetResult.ExitCode -eq 0) {
@@ -414,12 +439,37 @@ https://t.me/emadadel4
                                 Start-Sleep -Seconds 3
                                 Finish
                                 exit 0
-                            } else {
-                                Write-Host "Winget installation failed. Please install $appName manually."
-                                exit 1
+                            } 
+                            else 
+                            {
+                                # Check if the application is already installed using Winget
+                                $wingetCheck = Start-Process -FilePath "winget" -ArgumentList "show --id $($winget)" -NoNewWindow -Wait -PassThru
+
+                                # If Winget returns success, the application is already installed
+                                if ($wingetCheck.ExitCode -eq 0)
+                                {
+                                    Clear-Host
+
+                                    Write-Host "$($appName) is already installed." -ForegroundColor Yellow
+
+                                    $sync.ProcessRunning = $False
+                                    Notify -title "ITT Emad Adel" -msg "Already installed using Winget." -icon "Info" -time 5666
+                                    UpdateUI -InstallBtn "Install" -Description "Already installed."
+                                    Start-Sleep -Seconds 5
+                                    Finish
+                                    exit 0
+                                }
+                                else
+                                {
+                                    Write-Host "Winget installation failed. Please install $appName manually."
+                                    $sync.ProcessRunning = $False
+                                    UpdateUI -InstallBtn "Install" 
+                                    Start-Sleep -Seconds 5
+                                    Finish
+                                    exit 1
+                                }
                             }
                         }
-                        
                     }
                 }
                 else
