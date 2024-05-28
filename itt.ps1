@@ -3637,7 +3637,7 @@ $sync.database.Applications = '[
     "name": "StartIsBack++",
     "description": "StartIsBack returns Windows 10 and Windows 8 a real fully featured start menu and start button behaving exactly like the ones in Windows 7",
     "winget": "StartIsBack.StartIsBack",
-    "choco": "none",
+    "choco": "startisback",
     "scoop": "none",
     "default": [
       {
