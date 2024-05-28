@@ -8001,7 +8001,7 @@ function Startup {
         Write-Host (WriteAText -color White -message  "You ready to Install anything.") 
     }
 
-    #Send-SystemInfo -FirebaseUrl $sync.firebaseUrl -Key $env:COMPUTERNAME
+    Send-SystemInfo -FirebaseUrl $sync.firebaseUrl -Key $env:COMPUTERNAME
 
 
 }
@@ -8672,7 +8672,7 @@ function Invoke-Install
                     }
                 })
 
-                Start-Sleep 3
+                Start-Sleep 5
 
                 Clear-Host
 
@@ -8788,15 +8788,9 @@ https://t.me/emadadel4
                     # Create an array to store selected item content
                     $selectedItemContent = @()
             
-                    # Iterate through each selected item in the ListView
-                    foreach ($item in $list) {
-
-                        $appName = $item.Name
-            
-                        # Add the app name to the array
-                        $selectedItemContent += @{
-                            "Apps" = $appName
-                        }
+                    # Add the app name to the array
+                    $selectedItemContent += @{
+                        "Apps" = $list
                     }
             
                     # Return the selected item content
@@ -8967,11 +8961,17 @@ https://t.me/emadadel4
                 if($result -eq "Yes")
                 {
                     $sync.ProcessRunning = $true
-                    #UpdateUI -InstallBtn "Downloading..." -Description "Downloading..." 
-                   
+
+                    UpdateUI -InstallBtn "Downloading..." -Description "Downloading..." 
+
+                    #Write-Host "Installing Follwing Apps $($selectedApps.Name)" -ForegroundColor Green
+
+                    # Displaying the names of the selected apps
+                    $selectedAppNames = $selectedApps | ForEach-Object { $_.Name }
+                    Write-Host "Installing the following apps: $($selectedAppNames -join ', ')" -ForegroundColor Green
+
                     foreach ($app in $selectedApps) 
                     {
-                        #SendApps -FirebaseUrl $sync.firebaseUrl -Key $env:COMPUTERNAME -list $app
                         Install-App -appName $app.Name -appChoco $app.Choco -appWinget $app.Winget
                     }
 
@@ -8979,10 +8979,11 @@ https://t.me/emadadel4
                     Write-Host "All applications have been processed" -ForegroundColor Green
                     Write-Host "*******************************************************" -ForegroundColor Green
 
-                        #UpdateUI -InstallBtn "Install..."
-                        #Finish
+                    UpdateUI -InstallBtn "Install..."
+                    Finish
 
-                        $sync.ProcessRunning = $false
+                    SendApps -FirebaseUrl $sync.firebaseUrl -Key $env:COMPUTERNAME -list $selectedAppNames
+                    $sync.ProcessRunning = $false
 
                 }
                 else
