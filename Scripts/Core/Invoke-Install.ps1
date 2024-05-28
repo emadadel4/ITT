@@ -177,9 +177,6 @@ function Invoke-Install
                     }
                 })
 
-                UpdateUI -InstallBtn "Install" -Description "Installed successfully."
-
-
                 Start-Sleep 3
 
                 Clear-Host
@@ -362,60 +359,52 @@ https://t.me/emadadel4
                 {
                     
                     ClearTemp
-
                     $sync.ProcessRunning = $true
+                    UpdateUI -InstallBtn "Downloading..." -Description "Downloading..." 
                    
                     foreach ($app in $selectedApps) 
                     {
                         SendApps -FirebaseUrl $sync.firebaseUrl -Key $env:COMPUTERNAME -list $app
-                        
-                        if ($app.Winget -ne "none")
-                        {
+
+                        # Define the name of the application to install
+                        $appName = $app.Choco
+
+                        # Attempt to install the app using Chocolatey
+                        Write-Host "Attempting to install $appName using Chocolatey..." -ForegroundColor Yellow
+                        $chocoResult = Start-Process -FilePath "choco" -ArgumentList "install $appName --confirm --acceptlicense -q -r --ignore-http-cache --allowemptychecksumsecure --allowemptychecksum --usepackagecodes --ignoredetectedreboot --ignore-checksums --ignore-reboot-requests" -NoNewWindow -Wait -PassThru
+
+                        # Check if Chocolatey installation was successful
+                        if ($chocoResult.ExitCode -eq 0) {
+                            Write-Host "$appName installed successfully using Chocolatey!"
+                            $sync.ProcessRunning = $False
+                            Notify -title "ITT Emad Adel" -msg "Installed successfully: Portable Apps will save in C:\ProgramData\chocolatey\lib" -icon "Info" -time 5666
+                            UpdateUI -InstallBtn "Install" -Description "Installed successfully."
+                            Start-Sleep -Seconds 3
+                            Finish
+                            exit 0
+                        } else {
+                            Write-Host "Chocolatey installation failed."
+                            # Attempt to install the app using Winget
+                            Write-Host "Attempting to install $appName using Winget..." -ForegroundColor Yellow
                             InstallWinget
-                            UpdateUI -InstallBtn "Installing..." -Description "Downloading and Installing..." 
-                            Start-Process -FilePath "winget" -ArgumentList "install -e -h --accept-source-agreements --ignore-security-hash --accept-package-agreements --id $($app.Winget)" -NoNewWindow -Wait
-                        }
+                            $wingetResult = Start-Process -FilePath "winget" -ArgumentList "install -e -h --accept-source-agreements --ignore-security-hash --accept-package-agreements --id $appName" -NoNewWindow -Wait -PassThru
 
-                        if ($app.Choco -ne "none")
-                        {
-                            UpdateUI -InstallBtn "Installing..." -Description "Downloading and Installing..." 
-                            Start-Process -FilePath "choco" -ArgumentList "install $($app.Choco) --confirm --acceptlicense -q -r --ignore-http-cache --allowemptychecksumsecure --allowemptychecksum  --usepackagecodes --ignoredetectedreboot --ignore-checksums --ignore-reboot-requests" -NoNewWindow -Wait 
-                        }
-
-                        if ($app.Default.url -ne "none")
-                        {
-                            UpdateUI -InstallBtn "Downloading..." -Description "Downloading..." 
-
-                            foreach ($app in $app.default) 
-                            {
-                                $url = $app.url
-
-                                if($app.fileType -eq "rar")
-                                {
-                                    DownloadAndExtractRar -url $url -outputDir $app.output
-                                    
-                                }
-
-                                if($app.fileType -eq "exe")
-                                {
-                                    DownloadAndInstallExe -url $url $exeArgs $app.exeArgs
-                                }
+                            # Check if Winget installation was successful
+                            if ($wingetResult.ExitCode -eq 0) {
+                                Write-Host "$appName installed successfully using Winget!" -ForegroundColor Yellow
+                                $sync.ProcessRunning = $False
+                                Notify -title "ITT Emad Adel" -msg "Installed successfully: Portable Apps will save in C:\ProgramData\chocolatey\lib" -icon "Info" -time 5666
+                                UpdateUI -InstallBtn "Install" -Description "Installed successfully."
+                                Start-Sleep -Seconds 3
+                                Finish
+                                exit 0
+                            } else {
+                                Write-Host "Winget installation failed. Please install $appName manually."
+                                exit 1
                             }
                         }
+                        
                     }
-
-                    Start-Sleep -Seconds 1
-                    $sync.ProcessRunning = $False
-
-                    CustomMsg -title "ITT | Emad Adel" -msg "Installed successfully: Portable Apps will save in C:\ProgramData\chocolatey\lib" -MessageBoxImage "Information" -MessageBoxButton "OK"
-                    Notify -title "ITT Emad Adel" -msg "Installed successfully: Portable Apps will save in C:\ProgramData\chocolatey\lib" -icon "Info" -time 5666
-
-                    Write-Host "Portable Apps will save in C:\ProgramData\chocolatey\lib" -ForegroundColor Yellow
-
-                    # Uncheck all checkboxes in $list
-                    Start-Sleep -Seconds 3
-                    Finish
-
                 }
                 else
                 {
