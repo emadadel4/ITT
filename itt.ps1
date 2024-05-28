@@ -71,7 +71,7 @@ $sync.database.Applications = '[
   {
     "Name": "Thorium SSE3",
     "Description": "A web browser designed for smooth and secure browsing experiences.",
-    "winget": "none",
+    "winget": "Alex313031.Thorium",
     "choco": "thorium --params /SSE3",
     "scoop": "none",
     "default": [
@@ -88,7 +88,7 @@ $sync.database.Applications = '[
   {
     "Name": "Thorium AVX",
     "Description": "A web browser designed for smooth and secure browsing experiences.",
-    "winget": "none",
+    "winget": "Alex313031.Thorium.AVX2",
     "choco": "thorium --params /AVX",
     "scoop": "none",
     "default": [
@@ -105,7 +105,7 @@ $sync.database.Applications = '[
   {
     "Name": "Firefox",
     "Description": "A widely-used open-source web browser known for its speed, privacy features, and customization options.",
-    "winget": "none",
+    "winget": "Mozilla.Firefox",
     "choco": "firefox",
     "scoop": "none",
     "default": [
@@ -123,7 +123,7 @@ $sync.database.Applications = '[
   {
     "Name": "Microsoft Edge",
     "Description": "Microsoft''s web browser built for fast and secure internet surfing, integrating seamlessly with Windows ecosystem.",
-    "winget": "none",
+    "winget": "Microsoft.Edge",
     "choco": "microsoft-edge",
     "scoop": "none",
     "default": [
@@ -140,7 +140,7 @@ $sync.database.Applications = '[
   {
     "Name": "Google Chrome",
     "Description": "A popular web browser known for its speed, simplicity, and vast ecosystem of extensions.",
-    "winget": "none",
+    "winget": "Google.Chrome",
     "choco": "googlechrome",
     "scoop": "none",
     "default": [
@@ -157,7 +157,7 @@ $sync.database.Applications = '[
   {
     "Name": "Chromium",
     "Description": "An open-source web browser project that serves as the foundation for many browsers, including Google Chrome.",
-    "winget": "none",
+    "winget": "eloston.ungoogled-chromium",
     "choco": "chromium",
     "scoop": "none",
     "default": [
@@ -174,7 +174,7 @@ $sync.database.Applications = '[
   {
     "Name": "Brave",
     "Description": "A privacy-focused web browser that blocks ads and trackers, offering faster and safer browsing experiences.",
-    "winget": "none",
+    "winget": "Brave.Brave",
     "choco": "brave",
     "scoop": "none",
     "default": [
@@ -191,7 +191,7 @@ $sync.database.Applications = '[
   {
     "Name": "Tor Browser",
     "Description": "A web browser that prioritizes user privacy by routing internet traffic through a global network of servers, enabling anonymous browsing.",
-    "winget": "none",
+    "winget": "TorProject.TorBrowser",
     "choco": "tor-browser",
     "scoop": "none",
     "default": [
@@ -208,7 +208,7 @@ $sync.database.Applications = '[
   {
     "Name": "Opera",
     "Description": "The Opera web browser makes the Web fast and fun, giving you a better web browser experience on any computer.",
-    "winget": "none",
+    "winget": "Opera.Opera",
     "choco": "opera",
     "scoop": "none",
     "default": [
@@ -225,7 +225,7 @@ $sync.database.Applications = '[
   {
     "Name": "Internet Download Manager",
     "Description": "A popular download manager tool that accelerates downloads and allows users to organize and schedule downloads efficiently.",
-    "winget": "none",
+    "winget": "Tonec.InternetDownloadManager",
     "choco": "internet-download-manager",
     "scoop": "none",
     "default": [
@@ -259,7 +259,7 @@ $sync.database.Applications = '[
   {
     "Name": "JDownloader",
     "Description": "JDownloader is an internet download manager.",
-    "winget": "none",
+    "winget": "AppWork.JDownloader",
     "choco": "jdownloader",
     "scoop": "none",
     "default": [
@@ -294,7 +294,7 @@ $sync.database.Applications = '[
   {
     "Name": "PotPlayer",
     "Description": "A multimedia player with a sleek interface and advanced features, supporting a wide range of audio and video formats.",
-    "winget": "none",
+    "winget": "Daum.PotPlayer",
     "choco": "potplayer",
     "scoop": "none",
     "default": [
@@ -311,7 +311,7 @@ $sync.database.Applications = '[
   {
     "Name": "VLC",
     "Description": "A versatile media player capable of playing almost any multimedia file format, with support for various streaming protocols.",
-    "winget": "none",
+    "winget": "VideoLAN.VLC",
     "choco": "vlc.install",
     "scoop": "none",
     "default": [
@@ -329,7 +329,7 @@ $sync.database.Applications = '[
   {
     "Name": "Kodi",
     "Description": "A powerful open-source media center software that allows users to organize and stream their media collections.",
-    "winget": "none",
+    "winget": "9NBLGGH4T892",
     "choco": "kodi",
     "scoop": "none",
     "default": [
@@ -344,9 +344,9 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Jellyfin",
+    "Name": "Jellyfin Server",
     "Description": "An open-source media server software that enables users to stream their media libraries across devices, providing a self-hosted alternative to commercial services.",
-    "winget": "none",
+    "winget": "Jellyfin.Server",
     "choco": "jellyfin",
     "scoop": "none",
     "default": [
@@ -363,7 +363,7 @@ $sync.database.Applications = '[
   {
     "Name": "Winamp",
     "Description": "A classic media player known for its customizable interface and extensive plugin support, providing a nostalgic music playback experience.",
-    "winget": "none",
+    "winget": "Winamp.Winamp",
     "choco": "winamp",
     "scoop": "none",
     "default": [
@@ -380,7 +380,7 @@ $sync.database.Applications = '[
   {
     "Name": "Aimp",
     "Description": "A lightweight and feature-rich audio player with support for various audio formats and customizable interface themes.",
-    "winget": "none",
+    "winget": "AIMP.AIMP",
     "choco": "aimp",
     "scoop": "none",
     "default": [
@@ -397,7 +397,7 @@ $sync.database.Applications = '[
   {
     "Name": "Spotify",
     "Description": "Spotify is a new way to listen to music.",
-    "winget": "none",
+    "winget": "Spotify.Spotify",
     "choco": "spotify",
     "scoop": "none",
     "default": [
@@ -7251,7 +7251,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
 
         <StackPanel Orientation="Vertical" Width="auto" Margin="8">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Jellyfin" Tag="Media" IsChecked="false" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <CheckBox Content="Jellyfin Server" Tag="Media" IsChecked="false" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content="Media"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="An opensource media server software that enables users to stream their media libraries across devices providing a selfhosted alternative to commercial services"/>
@@ -8001,7 +8001,7 @@ function Startup {
         Write-Host (WriteAText -color White -message  "You ready to Install anything.") 
     }
 
-    #Send-SystemInfo -FirebaseUrl $sync.firebaseUrl -Key $env:COMPUTERNAME
+    Send-SystemInfo -FirebaseUrl $sync.firebaseUrl -Key $env:COMPUTERNAME
 
 
 }
