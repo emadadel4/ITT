@@ -1299,23 +1299,6 @@
     "check": "false"
   },
   {
-    "Name": "MiniTool Partition Wizard",
-    "Description": "A disk partition management tool that allows users to create, resize, move, merge, split, copy, and convert partitions on their hard drives or storage devices.",
-    "winget": "MiniTool.PartitionWizard.Free",
-    "choco": "partitionwizard",
-    "scoop": "none",
-    "default": [
-      {
-        "fileType": "none",
-        "url": "none",
-        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "ITT/Downloads"
-      }
-    ],
-    "category": "Utilities",
-    "check": "false"
-  },
-  {
     "Name": "AOMEI Partition Assistant Standard",
     "Description": "AOMEI Partition Assistant Standard allows you to realize disk upgrade/replacement, partition style conversion, OS migration and other disk managements without any difficulties.",
     "winget": "AOMEI.PartitionAssistant",
@@ -1329,7 +1312,7 @@
         "output": "ITT/Downloads"
       }
     ],
-    "category": "Utilities",
+    "category": "Disk Tools",
     "check": "false"
   },
   {
@@ -1346,7 +1329,7 @@
         "output": "ITT/Downloads"
       }
     ],
-    "category": "Utilities",
+    "category": "Disk Tools",
     "check": "false"
   },
   {
@@ -1363,7 +1346,7 @@
         "output": "ITT/Downloads"
       }
     ],
-    "category": "Utilities",
+    "category": "Disk Tools",
     "check": "false"
   },
   {
@@ -1484,7 +1467,7 @@
         "output": "ITT/Downloads"
       }
     ],
-    "category": "Utilities",
+    "category": "Disk Tools",
     "check": "false"
   },
   {
@@ -2966,7 +2949,7 @@
         "output": "ITT/Downloads"
       }
     ],
-    "category": "Utilities",
+    "category": "Disk Tools",
     "check": "false"
   },
   {
@@ -3170,7 +3153,7 @@
         "output": "ITT/Downloads"
       }
     ],
-    "category": "Utilities",
+    "category": "Disk Tools",
     "check": "false"
   },
   {
@@ -3902,6 +3885,57 @@
       }
     ],
     "category": "Utilities",
+    "check": "false"
+  },
+  {
+    "name": "DiskGenius Free",
+    "description": "With powerful capabilities and userfriendly interface DiskGenius Free Edition provides a robust solution for individuals and organizations to seek efficient disk management",
+    "winget": "Eassos.DiskGenius",
+    "choco": "diskgenius",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
+    "category": "Disk Tools",
+    "check": "false"
+  },
+  {
+    "name": "UNFORMAT",
+    "description": "UNFORMAT is a software utility created to solve almost all data loss scenarios due to logical failure It can recover deleted files on a disk or restore deleted or damaged partitions and volumes As well as recovers data after using the FORMAT command",
+    "winget": "LSoftTechnologies.UNFORMAT",
+    "choco": "none",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
+    "category": "Disk Tools",
+    "check": "false"
+  },
+  {
+    "name": "Active@ UNDELETE",
+    "description": "Active UNDELETE helps you to recover deleted files and restore deleted partitions from a variety of file systems such as FAT NTFS NTFS  EFS MacOS HFS ApFS Linux ext2 ext3 ext4 ZFS Unix UFS Advanced scan algorithms help to restore files even from severely damaged disks Sophisticated userfriendly UI makes navigation through your data a breeze",
+    "winget": "LSoftTechnologies.ActiveUNDELETE",
+    "choco": "none",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
+    "category": "Disk Tools",
     "check": "false"
   }
 ]
