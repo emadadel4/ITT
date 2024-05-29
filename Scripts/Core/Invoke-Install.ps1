@@ -460,7 +460,7 @@ https://t.me/emadadel4
                         # if winget install app sus
                         Add-Log -Message " $appName installed successfully using Winget." -Level "INFO"
                     } 
-                    else 
+                    elseif ($wingetResult.ExitCode -eq 1) 
                     {
                         # if install failed 
                         Add-Log -Message "Winget installation failed for $appName. Please install $appName manually." -Level "ERROR"

@@ -74,11 +74,12 @@ $validCategories = @{
     7 = "Imaging"
     8 = "Drivers"
     9 = "Utilities"
-    10 = "File Sharing"
-    11 = "Development"
-    12 = "Runtimes"
-    13 = "Microsoft"
-    14 = "Security"
+    10 = "Disk Tools"
+    11 = "File Sharing"
+    12 = "Development"
+    13 = "Runtimes"
+    14 = "Microsoft"
+    15 = "Security"
 }
 
 # Prompt user to choose category
@@ -192,11 +193,12 @@ if($userInput -eq "API [Choco/Winget/Scoop] Recommend")
         7 = "Imaging"
         8 = "Drivers"
         9 = "Utilities"
-        10 = "File Sharing"
-        11 = "Development"
-        12 = "Runtimes"
-        13 = "Microsoft"
-        14 = "Security"
+        10 = "Disk Tools"
+        11 = "File Sharing"
+        12 = "Development"
+        13 = "Runtimes"
+        14 = "Microsoft"
+        15 = "Security"
     }
 
     # Prompt user to choose category
