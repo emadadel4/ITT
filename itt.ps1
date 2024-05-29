@@ -3498,40 +3498,6 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "name": "x360ce Portable",
-    "description": "Xbox 360 Controller Emulator allows your controller (gamepad joystick, steering wheel, pedals, etc.) to function on your PC as an Xbox 360 controller. It allows you to remap buttons and axes and to drive cars with steering wheel and pedals or to fly planes with joystick and throttle in games",
-    "winget": "none",
-    "choco": "none",
-    "scoop": "none",
-    "default": [
-      {
-        "fileType": "rar",
-        "url": "https://www.x360ce.com/files/x360ce.zip",
-        "exeArgs": "none",
-        "output": "ITT/Downloads"
-      }
-    ],
-    "category": "Utilities",
-    "check": "false"
-  },
-  {
-    "name": "SelfishNetV3",
-    "description": "Control your internet bandwidth with SelfishNet v3.",
-    "winget": "none",
-    "choco": "none",
-    "scoop": "none",
-    "default": [
-      {
-        "fileType": "rar",
-        "url": "https://github.com/nov0caina/SelfishNetV3/releases/download/SelfishNetV3.0.0/SelfishNetV3.0.0_Installer.zip",
-        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "ITT/Downloads"
-      }
-    ],
-    "category": "Utilities",
-    "check": "false"
-  },
-  {
     "name": "espanso",
     "description": "A crossplatform Text Expander written in Rust",
     "winget": "Espanso.Espanso",
@@ -4041,8 +4007,7 @@ $sync.database.Applications = '[
     "category": "Launchers",
     "check": "false"
   }
-]
-' | ConvertFrom-Json
+]' | ConvertFrom-Json
 $sync.database.locales = '{
   "en": {
     "installBtn": "Install",
@@ -5860,22 +5825,6 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                 <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content="Development"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="A crossplatform Text Expander written in Rust"/>
-        </StackPanel>
-
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
-            <StackPanel Orientation="Horizontal">
-                <CheckBox Content="SelfishNetV3" Tag="Utilities" IsChecked="false" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content="Utilities"/>
-            </StackPanel>
-                <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Control your internet bandwidth with SelfishNet v3"/>
-        </StackPanel>
-
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
-            <StackPanel Orientation="Horizontal">
-                <CheckBox Content="x360ce Portable" Tag="Utilities" IsChecked="false" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content="Utilities"/>
-            </StackPanel>
-                <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Xbox 360 Controller Emulator allows your controller gamepad joystick steering wheel pedals etc to function on your PC as an Xbox 360 controller It allows you to remap buttons and axes and to drive cars with steering wheel and pedals or to fly planes with joystick and throttle in games"/>
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Width="auto" Margin="8">
@@ -9132,6 +9081,7 @@ https://t.me/emadadel4
     {
         [System.Windows.MessageBox]::Show("Choose at least one program", "ITT | Emad Adel", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
     }
+
 }
 
 function GetCheckBoxesFromStackPanel {
