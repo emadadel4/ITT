@@ -129,21 +129,21 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
             <!--Catagory Section-->
                 <ComboBox SelectedIndex="0" Margin="-20,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" Name="category"  Width="115">
                     <ComboBoxItem Content="All Categories"></ComboBoxItem>
-                    <ComboBoxItem Content="Drivers"></ComboBoxItem>
+                    <ComboBoxItem Content="Web Browsers"></ComboBoxItem>
                     <ComboBoxItem Content="Media"></ComboBoxItem> 
-                    <ComboBoxItem Content="Browsers"></ComboBoxItem>
+                    <ComboBoxItem Content="Runtimes"></ComboBoxItem>
                     <ComboBoxItem Content="Documents"></ComboBoxItem>
                     <ComboBoxItem Content="Compression"></ComboBoxItem>
                     <ComboBoxItem Content="Communication"></ComboBoxItem>
                     <ComboBoxItem Content="File Sharing"></ComboBoxItem>
                     <ComboBoxItem Content="Imaging"></ComboBoxItem>
-                    <ComboBoxItem Content="Launchers"></ComboBoxItem>
+                    <ComboBoxItem Content="Gaming"></ComboBoxItem>
                     <ComboBoxItem Content="Utilities"></ComboBoxItem>
                     <ComboBoxItem Content="Disk Tools"></ComboBoxItem>
                     <ComboBoxItem Content="Development"></ComboBoxItem>
-                    <ComboBoxItem Content="Runtimes"></ComboBoxItem>
                     <ComboBoxItem Content="Microsoft"></ComboBoxItem>
                     <ComboBoxItem Content="Security"></ComboBoxItem>
+                    <ComboBoxItem Content="Drivers"></ComboBoxItem>
                 </ComboBox>
             <!--End Catagory Section-->
 
