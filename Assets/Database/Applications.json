@@ -47,7 +47,7 @@
         "output": "ITT/Downloads"
       }
     ],
-    "category": "Browsers",
+    "category": "Web Browsers",
     "suggestion": "true",
     "check": "false"
   },
@@ -65,7 +65,7 @@
         "output": "none"
       }
     ],
-    "category": "Browsers",
+    "category": "Web Browsers",
     "check": "false"
   },
   {
@@ -82,7 +82,7 @@
         "output": "ITT/Downloads"
       }
     ],
-    "category": "Browsers",
+    "category": "Web Browsers",
     "check": "false"
   },
   {
@@ -99,7 +99,7 @@
         "output": "ITT/Downloads"
       }
     ],
-    "category": "Browsers",
+    "category": "Web Browsers",
     "check": "false"
   },
   {
@@ -116,7 +116,7 @@
         "output": "ITT/Downloads"
       }
     ],
-    "category": "Browsers",
+    "category": "Web Browsers",
     "check": "false"
   },
   {
@@ -133,7 +133,7 @@
         "output": "ITT/Downloads"
       }
     ],
-    "category": "Browsers",
+    "category": "Web Browsers",
     "check": "false"
   },
   {
@@ -167,7 +167,7 @@
         "output": "ITT/Downloads"
       }
     ],
-    "category": "Browsers",
+    "category": "Web Browsers",
     "check": "false"
   },
   {
@@ -184,7 +184,7 @@
         "output": "ITT/Downloads"
       }
     ],
-    "category": "Browsers",
+    "category": "Web Browsers",
     "check": "false"
   },
   {
@@ -201,7 +201,7 @@
         "output": "$env:temp"
       }
     ],
-    "category": "Browsers",
+    "category": "Web Browsers",
     "check": "false"
   },
   {
@@ -218,7 +218,7 @@
         "output": "ITT/Downloads"
       }
     ],
-    "category": "Browsers",
+    "category": "Web Browsers",
     "check": "false"
   },
   {
@@ -989,7 +989,7 @@
         "output": "ITT/Downloads"
       }
     ],
-    "category": "Launchers",
+    "category": "Gaming",
     "check": "false"
   },
   {
@@ -1006,7 +1006,7 @@
         "output": "ITT/Downloads"
       }
     ],
-    "category": "Launchers",
+    "category": "Gaming",
     "check": "false"
   },
   {
@@ -1023,7 +1023,7 @@
         "output": "ITT/Downloads"
       }
     ],
-    "category": "Launchers",
+    "category": "Gaming",
     "check": "false"
   },
   {
@@ -1040,7 +1040,7 @@
         "output": "ITT/Downloads"
       }
     ],
-    "category": "Launchers",
+    "category": "Gaming",
     "check": "false"
   },
   {
@@ -1057,7 +1057,7 @@
         "output": "ITT/Downloads"
       }
     ],
-    "category": "Launchers",
+    "category": "Gaming",
     "check": "false"
   },
   {
@@ -1074,7 +1074,7 @@
         "output": "ITT/Downloads"
       }
     ],
-    "category": "Launchers",
+    "category": "Gaming",
     "check": "false"
   },
   {
@@ -1091,7 +1091,7 @@
         "output": "ITT/Downloads"
       }
     ],
-    "category": "Launchers",
+    "category": "Gaming",
     "check": "false"
   },
   {
@@ -1108,7 +1108,7 @@
         "output": "ITT/Downloads"
       }
     ],
-    "category": "Launchers",
+    "category": "Gaming",
     "check": "false"
   },
   {
@@ -1125,7 +1125,7 @@
         "output": "ITT/Downloads"
       }
     ],
-    "category": "Launchers",
+    "category": "Gaming",
     "check": "false"
   },
   {
@@ -1142,7 +1142,7 @@
         "output": "ITT/Downloads"
       }
     ],
-    "category": "Launchers",
+    "category": "Gaming",
     "check": "false"
   },
   {
@@ -2864,7 +2864,7 @@
         "output": "ITT/Downloads"
       }
     ],
-    "category": "Launchers",
+    "category": "Gaming",
     "check": "false"
   },
   {
@@ -3935,7 +3935,7 @@
         "output": "none"
       }
     ],
-    "category": "Launchers",
+    "category": "Gaming",
     "check": "false"
   }
 ]
