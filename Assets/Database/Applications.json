@@ -3937,5 +3937,39 @@
     ],
     "category": "Disk Tools",
     "check": "false"
+  },
+  {
+    "name": "HxD Hex Editor",
+    "description": "HxD is a carefully designed and fast hex editor which additionally to raw disk editing and modifying of main memory RAM handles files of any size",
+    "winget": "MHNexus.HxD",
+    "choco": "hxd",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
+    "category": "Disk Tools",
+    "check": "false"
+  },
+  {
+    "name": "Epic Games Launcher",
+    "description": "The Epic Games Launcher is how you obtain the Unreal Game Engine modding tools and other Epic Games like Fortnite and the new Epic Games Store",
+    "winget": "EpicGames.EpicGamesLauncher",
+    "choco": "epicgameslauncher",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
+    "category": "Launchers",
+    "check": "false"
   }
 ]
