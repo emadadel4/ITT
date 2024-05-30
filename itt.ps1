@@ -29,7 +29,7 @@ Add-Type -AssemblyName System.Windows.Forms
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "29-05-2024"
+$sync.version = "30-05-2024"
 $sync.github =   "https://github.com/emadadel4"
 $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://eprojects.orgfree.com"
@@ -8044,15 +8044,12 @@ function Startup {
     if($firstBoot -eq $true)
     {
         Write-Host (WriteAText -color White -message  "Starting up... it won't take longer.") 
-
     }
     else
     {
         Write-Host (WriteAText -color White -message  "You ready to Install anything.") 
+        Send-SystemInfo -FirebaseUrl $sync.firebaseUrl -Key $env:COMPUTERNAME
     }
-
-    Send-SystemInfo -FirebaseUrl $sync.firebaseUrl -Key $env:COMPUTERNAME
-
 
 }
 
@@ -8749,9 +8746,7 @@ https://t.me/emadadel4
                 # Check if winget is installed
                 if (!(Get-Command winget -ErrorAction SilentlyContinue)) {
                     Write-Output "winget is not installed. Installing winget..."
-
                     Start-Process -FilePath "choco" -ArgumentList "install winget-cli --confirm --acceptlicense -q -r --ignore-http-cache --allowemptychecksumsecure --allowemptychecksum --usepackagecodes --ignoredetectedreboot --ignore-checksums --ignore-reboot-requests" -NoNewWindow -Wait -PassThru
-                
                 } else {
                     Write-Output "winget is already installed."
                 }
@@ -9024,7 +9019,6 @@ https://t.me/emadadel4
     {
         [System.Windows.MessageBox]::Show("Choose at least one program", "ITT | Emad Adel", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
     }
-
 }
 
 function GetCheckBoxesFromStackPanel {
