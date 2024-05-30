@@ -57,7 +57,6 @@ else
     $newProcess.Verb = "runas";
     $newProcess.WindowWidth = 20  # Set the width of the window
     $newProcess.WindowHeight = 20  # Set the height of the window
-    #$newProcess.WindowStyle = "Hidden" # Set window style to hidden
     [System.Diagnostics.Process]::Start($newProcess);
     break
 }
