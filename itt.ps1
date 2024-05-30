@@ -8888,7 +8888,7 @@ https://t.me/emadadel4
               
                 # Check if winget is already installed
                 if (Get-Command winget -ErrorAction SilentlyContinue) {
-                    Write-Host "winget is already installed."
+                    Write-Host "winget is installed. Continue installing..." -ForegroundColor Green
                     return
                 }
               
