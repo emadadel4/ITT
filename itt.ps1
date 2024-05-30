@@ -55,7 +55,12 @@ else
 {
     $newProcess.Arguments = $myInvocation.MyCommand.Definition;
     $newProcess.Verb = "runas";
-    $newProcess.WindowStyle = "Hidden" # Set window style to hidden
+    #$newProcess.WindowStyle = "Hidden" # Set window style to hidden
+
+    $newProcess.WindowStyle = "Normal" # Set window style to normal
+    $newProcess.StartPosition = "Manual" # Set start position to manual
+    $newProcess.DesktopLocation = New-Object System.Drawing.Point(0, 0) # Set top-left corner
+
     [System.Diagnostics.Process]::Start($newProcess);
     break
 }
