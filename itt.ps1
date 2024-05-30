@@ -57,9 +57,9 @@ else
 {
     $newProcess.Arguments = $myInvocation.MyCommand.Definition;
     $newProcess.Verb = "runas";
-    [System.Diagnostics.Process]::Start($newProcess);
     $newProcess.WindowWidth = 20  # Set the width of the window
     $newProcess.WindowHeight = 20  # Set the height of the window
+    [System.Diagnostics.Process]::Start($newProcess);
     break
 }
 
