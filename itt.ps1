@@ -9067,9 +9067,8 @@ https://t.me/emadadel4
                         Install-WinUtilWinget
                     }
 
-                    # start install by using Winget
-                    winget settings --enable InstallerHashOverride
-                    $wingetResult = Start-Process -FilePath "winget" -ArgumentList "install -e -h --accept-source-agreements --ignore-security-hash --accept-package-agreements --id $appWinget" -NoNewWindow -Wait -PassThru
+                     winget settings --enable ignore-security-hash-argument
+                    $wingetResult = Start-Process -FilePath "winget" -ArgumentList "install -e -h --silent --exact --accept-source-agreements --ignore-security-hash --accept-package-agreements --id $appWinget --force" -NoNewWindow -Wait -PassThru
 
                     # check winget install opritaion
                     if ($wingetResult.ExitCode -eq 0) {
