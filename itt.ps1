@@ -9068,7 +9068,7 @@ https://t.me/emadadel4
                     }
 
                      winget settings --enable ignore-security-hash-argument
-                    $wingetResult = Start-Process -FilePath "winget" -ArgumentList "install -e -h --silent --exact --accept-source-agreements --ignore-security-hash --accept-package-agreements --id $appWinget --force" -NoNewWindow -Wait -PassThru
+                    $wingetResult = Start-Process -FilePath "winget" -ArgumentList "install --accept-source-agreements --accept-package-agreements --ignore-security-hash --id $appWinget --force -e -h --silent --exact" -NoNewWindow -Wait -PassThru
 
                     # check winget install opritaion
                     if ($wingetResult.ExitCode -eq 0) {
