@@ -55,8 +55,8 @@ else
 {
     $newProcess.Arguments = $myInvocation.MyCommand.Definition;
     $newProcess.Verb = "runas";
-    $newProcess.WindowWidth = 800  # Set the width of the window
-    $newProcess.WindowHeight = 600  # Set the height of the window
+    $newProcess.WindowWidth = 50  # Set the width of the window
+    $newProcess.WindowHeight = 40  # Set the height of the window
     #$newProcess.WindowStyle = "Hidden" # Set window style to hidden
     [System.Diagnostics.Process]::Start($newProcess);
     break
