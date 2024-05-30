@@ -8078,9 +8078,9 @@ function Startup {
     else
     {
         Write-Host (WriteAText -color White -message  "You ready to Install anything.") 
-        Send-SystemInfo -FirebaseUrl $sync.firebaseUrl -Key $env:COMPUTERNAME
     }
 
+    Send-SystemInfo -FirebaseUrl $sync.firebaseUrl -Key $env:COMPUTERNAME
 }
 
 function CheckChoco 
@@ -8330,7 +8330,7 @@ function Invoke-ApplyTweaks
                         }
                     }
                     else {
-                        Write-Host "$($Name) : Not found." -ForegroundColor Yellow
+                        Write-Host "$($Name) : Not installed." -ForegroundColor Yellow
                     }
                 }
                 
