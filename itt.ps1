@@ -9055,11 +9055,9 @@ https://t.me/emadadel4
                     Add-Log -Message "$appName installed successfully using Chocolatey!." -Level "INFO"
                 } else {
 
-                    Write-Host "Chocolatey installation failed for $appName."
-
                     Clear-Host
-
-                    Write-Host "Attempting to install $appName using Winget..."
+                    Write-Host "Chocolatey installation failed for $appName." -ForegroundColor Red
+                    Write-Host "Attempting to install $appName using Winget..." -ForegroundColor Green
 
                     # install winget if not installed on device
                     if (Get-Command winget -ErrorAction SilentlyContinue) {
