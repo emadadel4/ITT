@@ -7733,8 +7733,7 @@ $childXaml = '<Window
 #===========================================================================
 
 # Set the maximum number of threads for the RunspacePool to the number of threads on the machine
-$maxthreads = [System.Environment]::ProcessorCount
-$minthreads = 2
+$maxthreads = [int]$env:NUMBER_OF_PROCESSORS
 
 # Create a new session state for parsing variables into our runspace
 $hashVars = New-object System.Management.Automation.Runspaces.SessionStateVariableEntry -ArgumentList 'sync',$sync,$Null
@@ -7743,14 +7742,9 @@ $InitialSessionState = [System.Management.Automation.Runspaces.InitialSessionSta
 # Add the variable to the session state
 $InitialSessionState.Variables.Add($hashVars)
 
-# Ensure that minthreads is not greater than maxthreads
-if ($minthreads -gt $maxthreads) {
-    $minthreads = $maxthreads
-}
-
 # Create the runspace pool
 $sync.runspace = [runspacefactory]::CreateRunspacePool(
-    $minthreads,            
+    1,                      
     $maxthreads,            
     $InitialSessionState,   
     $Host                   
