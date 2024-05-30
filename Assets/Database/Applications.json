@@ -1,5 +1,23 @@
 [
   {
+    "Name": "Firefox",
+    "Description": "A widely-used open-source web browser known for its speed, privacy features, and customization options.",
+    "winget": "Mozilla.Firefox",
+    "choco": "firefox",
+    "scoop": "none",
+    "default": [
+      {
+        "fileType": "none",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "ITT/Downloads"
+      }
+    ],
+    "category": "Web Browsers",
+    "suggestion": "true",
+    "check": "false"
+  },
+  {
     "Name": "Thorium SSE3",
     "Description": "A web browser designed for smooth and secure browsing experiences.",
     "winget": "Alex313031.Thorium",
@@ -31,24 +49,6 @@
       }
     ],
     "category": "Browsers",
-    "check": "false"
-  },
-  {
-    "Name": "Firefox",
-    "Description": "A widely-used open-source web browser known for its speed, privacy features, and customization options.",
-    "winget": "Mozilla.Firefox",
-    "choco": "firefox",
-    "scoop": "none",
-    "default": [
-      {
-        "fileType": "none",
-        "url": "none",
-        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "ITT/Downloads"
-      }
-    ],
-    "category": "Web Browsers",
-    "suggestion": "true",
     "check": "false"
   },
   {
