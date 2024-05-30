@@ -345,13 +345,13 @@ https://t.me/emadadel4
                     [string]$WingetUrl = "https://github.com/microsoft/winget-cli/releases/latest/download/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle",
                     [string]$TempPath = "$env:TEMP\winget.msixbundle"
                 )
-              
+            
                 # Check if winget is already installed
                 if (Get-Command winget -ErrorAction SilentlyContinue) {
-                    Write-Host "winget is installed. Continue installing..." -ForegroundColor Green
+                    Write-Host "winget is already installed."
                     return
                 }
-              
+            
                 # Download winget from GitHub
                 Write-Host "Downloading winget from GitHub..."
                 try {
@@ -361,7 +361,7 @@ https://t.me/emadadel4
                     Write-Error "Failed to download winget: $_"
                     return
                 }
-              
+            
                 # Install winget
                 Write-Host "Installing winget..."
                 try {
@@ -371,11 +371,11 @@ https://t.me/emadadel4
                     Write-Error "Failed to install winget: $_"
                     return
                 }
-              
+            
                 # Verify installation
                 if (Get-Command winget -ErrorAction SilentlyContinue) {
                     Write-Host "winget is installed successfully."
-              
+            
                     # Check if winget is in the PATH environment variable
                     $wingetPath = (Get-Command winget).Source
                     $envPath = [System.Environment]::GetEnvironmentVariable("Path", [System.EnvironmentVariableTarget]::Machine)
@@ -390,9 +390,9 @@ https://t.me/emadadel4
                 } else {
                     Write-Error "winget installation verification failed."
                 }
-              
+            
                 # Clean up
-                Remove-Item $TempPath -Force
+                #Remove-Item $TempPath -Force
             }
 
             function Install-App {
