@@ -55,6 +55,7 @@ else
 {
     $newProcess.Arguments = $myInvocation.MyCommand.Definition;
     $newProcess.Verb = "runas";
+    $newProcess.WindowStyle = "Hidden" # Set window style to hidden
     [System.Diagnostics.Process]::Start($newProcess);
     break
 }
