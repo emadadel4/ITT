@@ -30,15 +30,12 @@ function Startup {
     if($firstBoot -eq $true)
     {
         Write-Host (WriteAText -color White -message  "Starting up... it won't take longer.") 
-
     }
     else
     {
         Write-Host (WriteAText -color White -message  "You ready to Install anything.") 
+        Send-SystemInfo -FirebaseUrl $sync.firebaseUrl -Key $env:COMPUTERNAME
     }
-
-    Send-SystemInfo -FirebaseUrl $sync.firebaseUrl -Key $env:COMPUTERNAME
-
 
 }
 
