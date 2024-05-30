@@ -7750,10 +7750,10 @@ if ($minthreads -gt $maxthreads) {
 
 # Create the runspace pool
 $sync.runspace = [runspacefactory]::CreateRunspacePool(
-    $minthreads,            # Minimum thread count
-    $maxthreads,            # Maximum thread count
-    $InitialSessionState,   # Initial session state
-    $Host                   # Machine to create runspaces on
+    $minthreads,            
+    $maxthreads,            
+    $InitialSessionState,   
+    $Host                   
 )
 
 # Open the RunspacePool instance
