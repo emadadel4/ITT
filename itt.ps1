@@ -8911,8 +8911,6 @@ https://t.me/emadadel4
                 } else {
                     Write-Host "Winget is already installed."
                 }
-
-
             }
 
             function Install-App {
