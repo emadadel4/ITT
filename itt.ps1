@@ -8991,10 +8991,10 @@ https://t.me/emadadel4
                     $isInstalledWinget = Is-AppInstalledWinget $appWinget
 
                     # Check if the app is installed via Chocolatey
-                    if ($isInstalledWinget) {
-                        Add-Log -Message "$appName is already installed." -Level "INFO"
-                        return
-                    }
+                    # if ($isInstalledWinget) {
+                    #     Add-Log -Message "$appName is already installed." -Level "INFO"
+                    #     return
+                    # }
 
                     # start install by using Winget
                     Start-Process -FilePath "winget" -ArgumentList "settings --enable InstallerHashOverride" -NoNewWindow -Wait -PassThru
