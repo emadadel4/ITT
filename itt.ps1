@@ -8613,9 +8613,7 @@ function ShowSelectedItems {
         $collectionView.Filter = $filterPredicate
 
     }
-     
 }
-
 
    $collectionView.Filter = $filterPredicate
 
@@ -8970,7 +8968,6 @@ https://t.me/emadadel4
                     return $result
                 }
         
-                #$isInstalledChoco = Is-AppInstalledChoco $appChoco
 
                 Add-Log -Message "Attempting to install $appName using Chocolatey..." -Level "INFO"
 
@@ -8981,7 +8978,6 @@ https://t.me/emadadel4
                 } else {
 
                     Clear-Host
-
                     Add-Log -Message "Chocolatey installation failed for $appName." -Level "INFO"
                     Add-Log -Message "Attempting to install $appName using Winget." -Level "INFO"
 
