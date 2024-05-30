@@ -7733,7 +7733,8 @@ $childXaml = '<Window
 #===========================================================================
 
 # Set the maximum number of threads for the RunspacePool to the number of threads on the machine
-$maxthreads = [int]$env:NUMBER_OF_PROCESSORS
+$maxthreads = [System.Environment]::ProcessorCount
+$minthreads = 2
 
 # Create a new session state for parsing variables into our runspace
 $hashVars = New-object System.Management.Automation.Runspaces.SessionStateVariableEntry -ArgumentList 'sync',$sync,$Null
@@ -7744,7 +7745,7 @@ $InitialSessionState.Variables.Add($hashVars)
 
 # Create the runspace pool
 $sync.runspace = [runspacefactory]::CreateRunspacePool(
-    1,                      # Minimum thread count
+    $minthreads,                      # Minimum thread count
     $maxthreads,            # Maximum thread count
     $InitialSessionState,   # Initial session state
     $Host                   # Machine to create runspaces on
@@ -9213,7 +9214,6 @@ function ChangeTap() {
     {
         $sync['window'].FindName('installBtn').Visibility = "Visible"
         $sync['window'].FindName('applyBtn').Visibility = "Hidden"
-
         $sync.currentList = "appslist"
     }
 
@@ -9576,8 +9576,11 @@ $sync["window"].Add_Loaded({
     $sync["window"].Activate()
 })
 
-# Show and close Window
+
+#Close Event button
 $sync["window"].add_Closing($onClosingEvent)
+
+# Show Window
 $sync["window"].ShowDialog() | Out-Null
 
 
