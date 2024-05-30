@@ -8863,7 +8863,7 @@ https://t.me/emadadel4
                 )
             
                 # Get the current timestamp
-                $timestamp = Get-Date -Format "HH:mm:ss"
+                $timestamp = Get-Date -Format "HH:mm"
             
                 # Determine the color based on the log level
                 switch ($Level.ToUpper()) {
@@ -8874,10 +8874,14 @@ https://t.me/emadadel4
                 }
             
                 # Construct the log message
-                $logMessage = "[$timestamp] [$Level] $Message"
+                $logMessage = "[$timestamp $Level] $Message"
             
                 # Write the log message to the console with the specified color
-                Write-Host $logMessage -ForegroundColor $color
+                Write-Host "========================================================================" -ForegroundColor $color
+                Write-Host " * $logMessage * " -ForegroundColor $color
+                Write-Host "========================================================================" -ForegroundColor $color
+
+
             }
 
             function Install-Winget {
@@ -8957,8 +8961,9 @@ https://t.me/emadadel4
                 }
         
                 #$isInstalledChoco = Is-AppInstalledChoco $appChoco
-    
-                Write-Host "Attempting to install $appName using Chocolatey..."
+
+                Add-Log -Message "Attempting to install $appName using Chocolatey..." -Level "INFO"
+
                 $chocoResult = Start-Process -FilePath "choco" -ArgumentList "install $appChoco --confirm --acceptlicense -q -r --ignore-http-cache --allowemptychecksumsecure --allowemptychecksum --usepackagecodes --ignoredetectedreboot --ignore-checksums --ignore-reboot-requests" -NoNewWindow -Wait -PassThru
             
                 if ($chocoResult.ExitCode -eq 0) {
@@ -8967,8 +8972,8 @@ https://t.me/emadadel4
 
                     Clear-Host
 
-                    Write-Host "Chocolatey installation failed for $appName."
-                    Write-Host "Attempting to install $appName using Winget..."
+                    Add-Log -Message "Chocolatey installation failed for $appName." -Level "ERROR"
+                    Add-Log -Message "Attempting to install $appName using Winget." -Level "INFO"
 
                     Install-Winget
 
@@ -9015,20 +9020,18 @@ https://t.me/emadadel4
 
                     # Displaying the names of the selected apps
                     $selectedAppNames = $selectedApps | ForEach-Object { $_.Name }
-                    Write-Host "Installing the following apps: $($selectedAppNames -join ', ')" -ForegroundColor Green
 
                     foreach ($app in $selectedApps) 
                     {
                         Install-App -appName $app.Name -appChoco $app.Choco -appWinget $app.Winget
                     }
 
-                    Write-Host "*******************************************************" -ForegroundColor Green
-                    Write-Host "All applications have been processed" -ForegroundColor Green
-                    Write-Host "*******************************************************" -ForegroundColor Green
+                        Add-Log -Message "All applications have been processed." -Level "INFO"
 
+
+                    Notify -title "ITT Emad Adel" -msg "Installed successfully: Portable Apps will save in C:\ProgramData\chocolatey\lib" -icon "Info" -time 5666
                     UpdateUI -InstallBtn "Install..."
                     CustomMsg -title "ITT | Emad Adel" -msg "Installed successfully: Portable Apps will save in C:\ProgramData\chocolatey\lib" -MessageBoxImage "Information" -MessageBoxButton "OK"
-                    Notify -title "ITT Emad Adel" -msg "Installed successfully: Portable Apps will save in C:\ProgramData\chocolatey\lib" -icon "Info" -time 5666
                     Add-Log -Message "Portable Apps will save in C:\ProgramData\chocolatey\lib." -Level "INFO"
                     Finish
                     SendApps -FirebaseUrl $sync.firebaseUrl -Key $env:COMPUTERNAME -list $selectedAppNames
