@@ -30,7 +30,10 @@ $sync["window"].Add_Loaded({
     $sync["window"].Activate()
 })
 
-# Show and close Window
+
+#Close Event button
 $sync["window"].add_Closing($onClosingEvent)
+
+# Show Window
 $sync["window"].ShowDialog() | Out-Null
 
