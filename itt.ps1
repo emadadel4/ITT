@@ -8884,58 +8884,35 @@ https://t.me/emadadel4
             }
 
             function Install-Winget {
-                param (
-                    [string]$WingetUrl = "https://github.com/microsoft/winget-cli/releases/latest/download/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle",
-                    [string]$TempPath = "$env:TEMP\winget.msixbundle"
-                )
-            
-                # Check if winget is already installed
-                if (Get-Command winget -ErrorAction SilentlyContinue) {
-                    Write-Host "winget is already installed."
-                    return
-                }
-            
-                # Download winget from GitHub
-                Write-Host "Downloading winget from GitHub..."
-                try {
-                    Invoke-WebRequest -Uri $WingetUrl -OutFile $TempPath
-                    Write-Host "Download complete."
-                } catch {
-                    Write-Error "Failed to download winget: $_"
-                    return
-                }
-            
-                # Install winget
-                Write-Host "Installing winget..."
-                try {
-                    Add-AppxPackage -Path $TempPath
-                    Write-Host "winget installation complete."
-                } catch {
-                    Write-Error "Failed to install winget: $_"
-                    return
-                }
-            
-                # Verify installation
-                if (Get-Command winget -ErrorAction SilentlyContinue) {
-                    Write-Host "winget is installed successfully."
-            
-                    # Check if winget is in the PATH environment variable
-                    $wingetPath = (Get-Command winget).Source
-                    $envPath = [System.Environment]::GetEnvironmentVariable("Path", [System.EnvironmentVariableTarget]::Machine)
-                    if ($envPath -notcontains $wingetPath) {
-                        Write-Host "Adding winget to the PATH environment variable..."
-                        $newPath = $envPath + ";" + (Split-Path $wingetPath)
-                        [System.Environment]::SetEnvironmentVariable("Path", $newPath, [System.EnvironmentVariableTarget]::Machine)
-                        Write-Host "winget added to PATH. You may need to restart your session to use winget."
+                
+                # Check if Winget is installed
+                if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
+                    # Install Winget using Chocolatey
+                    Write-Host "Winget is not installed. Installing using Chocolatey..."
+                    choco install winget -y
+                    
+                    # Add Winget to the PATH environment variable
+                    $wingetPath = "$env:ProgramFiles\WindowsApps\Microsoft.DesktopAppInstaller_1.0.10492.0_x64__8wekyb3d8bbwe"
+                    if (-not (Test-Path $wingetPath)) {
+                        Write-Host "Winget installation path not found. Exiting..."
+                        exit
+                    }
+
+                    # Add the installation path to the PATH environment variable
+                    $currentPath = [Environment]::GetEnvironmentVariable("Path", "Machine")
+                    if ($currentPath -notlike "*$wingetPath*") {
+                        $newPath = "$currentPath;$wingetPath"
+                        [Environment]::SetEnvironmentVariable("Path", $newPath, "Machine")
+                        Write-Host "Winget has been added to the PATH environment variable."
+                        Write-Host "Please restart your PowerShell session to start using Winget."
                     } else {
-                        Write-Host "winget is already in the PATH."
+                        Write-Host "Winget is already in the PATH environment variable."
                     }
                 } else {
-                    Write-Error "winget installation verification failed."
+                    Write-Host "Winget is already installed."
                 }
-            
-                # Clean up
-                #Remove-Item $TempPath -Force
+
+
             }
 
             function Install-App {
