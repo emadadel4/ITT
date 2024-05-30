@@ -27,6 +27,7 @@ $newProcess = new-object System.Diagnostics.ProcessStartInfo "PowerShell";
 if ($principal.IsInRole($administrator))
 {
     $Host.UI.RawUI.WindowTitle = $myInvocation.MyCommand.Definition + "(Admin)"
+    $Host.UI.RawUI.WindowTitle = "ITT (Install and Tweaks Tool)"
     #Clear-Host
 }
 else

@@ -264,7 +264,6 @@ function Invoke-ApplyTweaks
 
                     UpdateUI -InstallBtn "Apply" -Description "" 
 
-
                     Start-Sleep 5
 
                     Clear-Host
@@ -308,7 +307,7 @@ Write-Host "
 
                     if ($msg -eq "Yes")
                     {
-                        UpdateUI -InstallBtn "Wait..." -Description "Applying..." 
+                        UpdateUI -InstallBtn "Applying..." -Description "Applying..." 
                         $sync.ProcessRunning = $true
 
                         foreach ($app in $tweaks) {

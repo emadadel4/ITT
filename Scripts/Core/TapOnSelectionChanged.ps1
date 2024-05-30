@@ -5,7 +5,6 @@ function ChangeTap() {
     {
         $sync['window'].FindName('installBtn').Visibility = "Visible"
         $sync['window'].FindName('applyBtn').Visibility = "Hidden"
-
         $sync.currentList = "appslist"
     }
 

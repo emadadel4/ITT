@@ -49,6 +49,7 @@ $newProcess = new-object System.Diagnostics.ProcessStartInfo "PowerShell";
 if ($principal.IsInRole($administrator))
 {
     $Host.UI.RawUI.WindowTitle = $myInvocation.MyCommand.Definition + "(Admin)"
+    $Host.UI.RawUI.WindowTitle = "ITT (Install and Tweaks Tool)"
     #Clear-Host
 }
 else
@@ -4006,8 +4007,26 @@ $sync.database.Applications = '[
     ],
     "category": "Gaming",
     "check": "false"
+  },
+  {
+    "name": "Vivaldi",
+    "description": "The new Vivaldi browser protects you from trackers blocks unwanted ads and puts you in control with unique builtin features Get Vivaldi and browse fast",
+    "winget": "VivaldiTechnologies.Vivaldi",
+    "choco": "vivaldi",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
+    "category": "Web Browsers",
+    "check": "false"
   }
-]' | ConvertFrom-Json
+]
+' | ConvertFrom-Json
 $sync.database.locales = '{
   "en": {
     "installBtn": "Install",
@@ -7437,6 +7456,14 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="The Epic Games Launcher is how you obtain the Unreal Game Engine modding tools and other Epic Games like Fortnite and the new Epic Games Store"/>
         </StackPanel>
 
+        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+            <StackPanel Orientation="Horizontal">
+                <CheckBox Content="Vivaldi" Tag="Web Browsers" IsChecked="false" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content="Web Browsers"/>
+            </StackPanel>
+                <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="The new Vivaldi browser protects you from trackers blocks unwanted ads and puts you in control with unique builtin features Get Vivaldi and browse fast"/>
+        </StackPanel>
+
                                 </ListView>
                             </TabItem.Content>
                         </TabItem>
@@ -7740,10 +7767,10 @@ $InitialSessionState.Variables.Add($hashVars)
 
 # Create the runspace pool
 $sync.runspace = [runspacefactory]::CreateRunspacePool(
-    1,                      # Minimum thread count
-    $maxthreads,            # Maximum thread count
-    $InitialSessionState,   # Initial session state
-    $Host                   # Machine to create runspaces on
+    1,                      
+    $maxthreads,            
+    $InitialSessionState,   
+    $Host                   
 )
 
 # Open the RunspacePool instance
@@ -7891,6 +7918,7 @@ $sync.AppsListView = $sync['window'].FindName("appslist")
 $sync.TweaksListView = $sync['window'].FindName("tweakslist")
 $sync.currentList
 
+# Buttons
 $sync.Description = $sync['window'].FindName("description")
 $sync.Quotes = $sync['window'].FindName("quotes")
 $sync.itemLink = $sync['window'].FindName('itemLink')
@@ -8339,7 +8367,6 @@ function Invoke-ApplyTweaks
 
                     UpdateUI -InstallBtn "Apply" -Description "" 
 
-
                     Start-Sleep 5
 
                     Clear-Host
@@ -8383,7 +8410,7 @@ Write-Host "
 
                     if ($msg -eq "Yes")
                     {
-                        UpdateUI -InstallBtn "Wait..." -Description "Applying..." 
+                        UpdateUI -InstallBtn "Applying..." -Description "Applying..." 
                         $sync.ProcessRunning = $true
 
                         foreach ($app in $tweaks) {
@@ -8614,9 +8641,7 @@ function ShowSelectedItems {
         $collectionView.Filter = $filterPredicate
 
     }
-     
 }
-
 
    $collectionView.Filter = $filterPredicate
 
@@ -8863,7 +8888,7 @@ https://t.me/emadadel4
                 )
             
                 # Get the current timestamp
-                $timestamp = Get-Date -Format "HH:mm:ss"
+                $timestamp = Get-Date -Format "HH:mm"
             
                 # Determine the color based on the log level
                 switch ($Level.ToUpper()) {
@@ -8874,157 +8899,80 @@ https://t.me/emadadel4
                 }
             
                 # Construct the log message
-                $logMessage = "[$timestamp] [$Level] $Message"
+                $logMessage = "[$timestamp $Level] $Message"
             
                 # Write the log message to the console with the specified color
-                Write-Host $logMessage -ForegroundColor $color
+                Write-Host "========================================================================" -ForegroundColor $color
+                Write-Host " * $logMessage * " -ForegroundColor $color
+                Write-Host "========================================================================" -ForegroundColor $color
+
+
             }
 
-            function Test-PackageManager {
+            function Install-Winget {
 
-                Param(
-                    [System.Management.Automation.SwitchParameter]$winget
-                )
-            
-                $status = "not-installed"
-            
-                if ($winget) {
-                    # Install Winget if not detected
-                    $wingetExists = Get-Command -Name winget -ErrorAction SilentlyContinue
-            
-                    if ($wingetExists) {
-                        # Check Winget Version
-                        $wingetVersionFull = (winget --version) # Full Version without 'v'.
-            
-                        # Check if Preview Version
-                        if ($wingetVersionFull.Contains("-preview")) {
-                            $wingetVersion = $wingetVersionFull.Trim("-preview")
-                            $wingetPreview = $true
-                        } else {
-                            $wingetVersion = $wingetVersionFull
-                            $wingetPreview = $false
-                        }
-            
-                        # Check if Winget's Version is too old.
-                        $wingetCurrentVersion = [System.Version]::Parse($wingetVersion.Trim('v'))
-                        # Grabs the latest release of Winget from the Github API for version check process.
-                        $response = Invoke-RestMethod -Uri "https://api.github.com/repos/microsoft/Winget-cli/releases/latest" -Method Get -ErrorAction Stop
-                        $wingetLatestVersion = [System.Version]::Parse(($response.tag_name).Trim('v')) #Stores version number of latest release.
-                        $wingetOutdated = $wingetCurrentVersion -lt $wingetLatestVersion
-
-                        Write-Host "Winget is installed" -ForegroundColor Green
-            
-                        if (!$wingetPreview) {
-                            #Write-Host "    - Winget is a release version." -ForegroundColor Green
-                        } else {
-                            Write-Host "    - Winget is a preview version. Unexpected problems may occur." -ForegroundColor Yellow
-                        }
-            
-                        if (!$wingetOutdated) {
-                            #Write-Host "    - Winget is Up to Date" -ForegroundColor Green
-                            $status = "installed"
-                        }
-                        else {
-                            Write-Host "    - Winget is Out of Date" -ForegroundColor Red
-                            $status = "outdated"
-                        }
-                    } else {        
-                        Write-Host "===========================================" -ForegroundColor Red
-                        Write-Host "---      Winget is not installed        ---" -ForegroundColor Red
-                        Write-Host "===========================================" -ForegroundColor Red
-                        $status = "not-installed"
-                    }
-                }
-                
-                return $status
-            }
-            
-            function Get-WingetPrerequisites {
-            
                 $versionVCLibs = "14.00"
-                $fileVCLibs = "https://aka.ms/Microsoft.VCLibs.x64.${versionVCLibs}.Desktop.appx"
                 $versionUIXamlMinor = "2.8"
                 $versionUIXamlPatch = "2.8.6"
-                $fileUIXaml = "https://github.com/microsoft/microsoft-ui-xaml/releases/download/v${versionUIXamlPatch}/Microsoft.UI.Xaml.${versionUIXamlMinor}.x64.appx"
             
-                Try{
-                    Write-Host "Downloading Microsoft.VCLibs Dependency..."
-                    Invoke-WebRequest -Uri $fileVCLibs -OutFile $ENV:TEMP\Microsoft.VCLibs.x64.Desktop.appx
-                    Write-Host "Downloading Microsoft.UI.Xaml Dependency...`n"
-                    Invoke-WebRequest -Uri $fileUIXaml -OutFile $ENV:TEMP\Microsoft.UI.Xaml.x64.appx
+                function Get-OSArchitecture {
+                  $is64Bit = $env:PROCESSOR_ARCHITEW6432 -eq "AMD64"
+                  $architecture = if ($is64Bit) { "64-bit" } else { "32-bit" }
+                  return $architecture
                 }
-                Catch{
-                    throw [WingetFailedInstall]::new('Failed to install prerequsites')
+            
+                if (Get-OSArchitecture -eq "64-bit") {
+                  $fileVCLibs = "https://aka.ms/Microsoft.VCLibs.x64.${versionVCLibs}.Desktop.appx"
+                  $fileUIXaml = "https://github.com/microsoft/microsoft-ui-xaml/releases/download/v${versionUIXamlPatch}/Microsoft.UI.Xaml.${versionUIXamlMinor}.x64.appx"
+                } 
+                else
+                {
+                  $fileVCLibs = "https://aka.ms/Microsoft.VCLibs.x86.${versionVCLibs}.Desktop.appx"
+                  $fileUIXaml = "https://github.com/microsoft/microsoft-ui-xaml/releases/download/v${versionUIXamlPatch}/Microsoft.UI.Xaml.${versionUIXamlMinor}.x86.appx"
                 }
-            }
-
-            function Get-WingetLatest {
             
-                Try{
-                    # Grabs the latest release of Winget from the Github API for the install process.
-                    $response = Invoke-RestMethod -Uri "https://api.github.com/repos/microsoft/Winget-cli/releases/latest" -Method Get -ErrorAction Stop
-                    $latestVersion = $response.tag_name #Stores version number of latest release.
-                    $licenseWingetUrl = $response.assets.browser_download_url[0] #Index value for License file.
-                    Write-Host "Latest Version:`t$($latestVersion)`n"
-                    $assetUrl = $response.assets.browser_download_url[2] #Index value for download URL.
-                    Invoke-WebRequest -Uri $licenseWingetUrl -OutFile $ENV:TEMP\License1.xml
-                    # The only pain is that the msixbundle for winget-cli is 246MB. In some situations this can take a bit, with slower connections.
-                    Invoke-WebRequest -Uri $assetUrl -OutFile $ENV:TEMP\Microsoft.DesktopAppInstaller.msixbundle
-                }
-                Catch{
-                    throw [WingetFailedInstall]::new('Failed to get latest Winget release and license')
-                }
-            }
+              Try {
             
-            function Install-WinUtilWinget {
+                  if (Get-Command winget -ErrorAction SilentlyContinue) {
+                    Write-Host "winget is installed on this system."
+                    return
+                  } 
             
-                $isWingetInstalled = Test-PackageManager -winget
+                  Write-Host "Downloading Microsoft.VCLibs Dependency..."
+                  Invoke-WebRequest -Uri $fileVCLibs -OutFile $ENV:TEMP\Microsoft.VCLibs.x64.Desktop.appx
+                  Write-Host "Downloading Microsoft.UI.Xaml Dependency...`n"
+                  Invoke-WebRequest -Uri $fileUIXaml -OutFile $ENV:TEMP\Microsoft.UI.Xaml.x64.appx
             
-                Try {
-                    if ($isWingetInstalled -eq "installed") {
-                        #Write-Host "`nWinget is already installed.`r" -ForegroundColor Green
-                        return
-                    } elseif ($isWingetInstalled -eq "outdated") {
-                        Write-Host "`nWinget is Outdated. updateing....`r" -ForegroundColor Yellow
-                    } else {
-                        Write-Host "`nWinget is not Installed. installing...`r" -ForegroundColor Red
-                    }
+                  # Install Microsoft.VCLibs
+                  Add-AppxPackage -Path "$ENV:TEMP\Microsoft.VCLibs.x64.Desktop.appx"
             
-                    # Gets the computer's information
-                    if ($null -eq $sync.ComputerInfo){
-                        $ComputerInfo = Get-ComputerInfo -ErrorAction Stop
-                    } else {
-                        $ComputerInfo = $sync.ComputerInfo
-                    }
+                  # Install Microsoft.UI.Xaml
+                  Add-AppxPackage -Path "$ENV:TEMP\Microsoft.UI.Xaml.x64.appx"
             
-                    if (($ComputerInfo.WindowsVersion) -lt "1809") {
-                        # Checks if Windows Version is too old for Winget
-                        Write-Host "Winget is not supported on this version of Windows (Pre-1809)" -ForegroundColor Red
-                        return
-                    }
+                  $msiPath = "$env:TEMP\winget.msixbundle"
+                  $url = "https://github.com/microsoft/winget-cli/releases/latest/download/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle"
+                  Invoke-WebRequest -Uri $url -OutFile $msiPath
             
-                    Write-Host "Downloading Winget Prerequsites`n"
-                    Get-WingetPrerequisites
-                    Write-Host "Downloading Winget and License File`r"
-                    Get-WingetLatest
-                    Write-Host "Installing Winget w/ Prerequsites`r"
-                    Add-AppxProvisionedPackage -Online -PackagePath $ENV:TEMP\Microsoft.DesktopAppInstaller.msixbundle -DependencyPackagePath $ENV:TEMP\Microsoft.VCLibs.x64.Desktop.appx, $ENV:TEMP\Microsoft.UI.Xaml.x64.appx -LicensePath $ENV:TEMP\License1.xml
-                    Write-Host "Manually adding Winget Sources, from Winget CDN."
-                    Add-AppxPackage -Path https://cdn.winget.microsoft.com/cache/source.msix 
-                    Write-Host "Winget Installed" -ForegroundColor Green
-                    Write-Output "Refreshing Environment Variables...`n"
-                    $ENV:PATH = [System.Environment]::GetEnvironmentVariable("Path", "Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path", "User")
-                } Catch {
-                    Write-Host "Failure detected while installing via GitHub method. Continuing with Chocolatey method as fallback." -ForegroundColor Red
-                    Try {
-                    Start-Process -Verb runas -FilePath powershell.exe -ArgumentList "choco install winget-cli"
-                    Write-Host "Winget Installed" -ForegroundColor Green
-                    Write-Output "Refreshing Environment Variables...`n"
-                    $ENV:PATH = [System.Environment]::GetEnvironmentVariable("Path", "Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path", "User")
-                    } Catch {
-                        throw [WingetFailedInstall]::new('Failed to install!')
-                    }
-                }
+                  # Install the Microsoft Store App Installer silently
+                  Add-AppxPackage -Path $msiPath -ErrorAction Stop
+            
+                  # Wait for the installation to complete
+                  Start-Sleep -Seconds 2
+            
+                   # Add winget to the system environment variable 'Path' if not already present
+                  $wingetPath = "$env:ProgramFiles\WindowsApps\Microsoft.DesktopAppInstaller_1.11.12371.0_x64__8wekyb3d8bbwe"
+                  $pathVariable = [Environment]::GetEnvironmentVariable("Path", "Machine")
+                  if (-not ($pathVariable -split ";" | Where-Object {$_ -eq $wingetPath})) {
+                      $newPath = "$pathVariable;$wingetPath"
+                      [Environment]::SetEnvironmentVariable("Path", $newPath, "Machine")
+                  }
+            
+                  $ENV:PATH = [System.Environment]::GetEnvironmentVariable("Path", "Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path", "User")
+            
+              }
+              Catch {
+                  throw [WingetFailedInstall]::new('Failed to install prerequisites')
+              }
             }
 
             function Install-App {
@@ -9048,40 +8996,33 @@ https://t.me/emadadel4
                     return $result
                 }
         
-                #$isInstalledChoco = Is-AppInstalledChoco $appChoco
-    
-                Write-Host "Attempting to install $appName using Chocolatey..."
-                $chocoResult = Start-Process -FilePath "choco" -ArgumentList "install $appChoco --confirm --acceptlicense -q -r --ignore-http-cache --allowemptychecksumsecure --allowemptychecksum --usepackagecodes --ignoredetectedreboot --ignore-checksums --ignore-reboot-requests" -NoNewWindow -Wait -PassThru
+
+                Add-Log -Message "Attempting to install $appName using Chocolatey..." -Level "INFO"
+
+                $chocoResult = Start-Process -FilePath "choco" -ArgumentList "install $appChoco --confirm --acceptlicense -q -r --ignore-http-cache --allowemptychecksumsecure --allowemptychecksum --usepackagecodes --ignoredetectedreboot --ignore-checksums --ignore-reboot-requests" -Wait -PassThru
             
                 if ($chocoResult.ExitCode -eq 0) {
                     Add-Log -Message "$appName installed successfully using Chocolatey!." -Level "INFO"
                 } else {
 
                     Clear-Host
+                    Add-Log -Message "Chocolatey installation failed for $appName." -Level "INFO"
+                    Add-Log -Message "Attempting to install $appName using Winget." -Level "INFO"
 
-                    Write-Host "Chocolatey installation failed for $appName."
-                    Write-Host "Attempting to install $appName using Winget..."
-
-                    # install winget if not installed on device
-                    if (Get-Command winget -ErrorAction SilentlyContinue) {
-                        Write-Host "winget is installed. Continue installing selected apps"
-                    } else {
-                        Write-Host "winget is not installed"
-                        Install-WinUtilWinget
-                    }
+                    Install-Winget
 
                     # Check if the app is installed via Winget
-                    $isInstalledWinget = Is-AppInstalledWinget $appWinget
+                    #$isInstalledWinget = Is-AppInstalledWinget $appWinget
 
                     # Check if the app is installed via Chocolatey
-                    if ($isInstalledWinget) {
-                        Add-Log -Message "$appName is already installed." -Level "INFO"
-                        return
-                    }
+                    # if ($isInstalledWinget) {
+                    #     Add-Log -Message "$appName is already installed." -Level "INFO"
+                    #     return
+                    # }
 
                     # start install by using Winget
                     Start-Process -FilePath "winget" -ArgumentList "settings --enable InstallerHashOverride" -NoNewWindow -Wait -PassThru
-                    $wingetResult = Start-Process -FilePath "winget" -ArgumentList "install --accept-source-agreements --accept-package-agreements --ignore-security-hash --id $appWinget --force -e -h --silent --exact" -NoNewWindow -Wait -PassThru
+                    $wingetResult = Start-Process -FilePath "winget" -ArgumentList "install --accept-source-agreements --accept-package-agreements --ignore-security-hash --id $appWinget --force -e -h --silent --exact" -Wait -PassThru
 
                     # check winget install opritaion
                     if ($wingetResult.ExitCode -eq 0) {
@@ -9113,23 +9054,22 @@ https://t.me/emadadel4
 
                     # Displaying the names of the selected apps
                     $selectedAppNames = $selectedApps | ForEach-Object { $_.Name }
-                    Write-Host "Installing the following apps: $($selectedAppNames -join ', ')" -ForegroundColor Green
 
                     foreach ($app in $selectedApps) 
                     {
                         Install-App -appName $app.Name -appChoco $app.Choco -appWinget $app.Winget
                     }
 
-                    Write-Host "*******************************************************" -ForegroundColor Green
-                    Write-Host "All applications have been processed" -ForegroundColor Green
-                    Write-Host "*******************************************************" -ForegroundColor Green
+                        Add-Log -Message "All applications have been processed." -Level "INFO"
 
+
+                    Notify -title "ITT Emad Adel" -msg "Installed successfully: Portable Apps will save in C:\ProgramData\chocolatey\lib" -icon "Info" -time 8000
                     UpdateUI -InstallBtn "Install..."
                     CustomMsg -title "ITT | Emad Adel" -msg "Installed successfully: Portable Apps will save in C:\ProgramData\chocolatey\lib" -MessageBoxImage "Information" -MessageBoxButton "OK"
-                    Notify -title "ITT Emad Adel" -msg "Installed successfully: Portable Apps will save in C:\ProgramData\chocolatey\lib" -icon "Info" -time 5666
                     Add-Log -Message "Portable Apps will save in C:\ProgramData\chocolatey\lib." -Level "INFO"
                     Finish
                     SendApps -FirebaseUrl $sync.firebaseUrl -Key $env:COMPUTERNAME -list $selectedAppNames
+
                     $sync.ProcessRunning = $false
                 }
                 else
@@ -9297,7 +9237,6 @@ function ChangeTap() {
     {
         $sync['window'].FindName('installBtn').Visibility = "Visible"
         $sync['window'].FindName('applyBtn').Visibility = "Hidden"
-
         $sync.currentList = "appslist"
     }
 
@@ -9660,8 +9599,11 @@ $sync["window"].Add_Loaded({
     $sync["window"].Activate()
 })
 
-# Show and close Window
+
+#Close Event button
 $sync["window"].add_Closing($onClosingEvent)
+
+# Show Window
 $sync["window"].ShowDialog() | Out-Null
 
 
