@@ -336,151 +336,59 @@ https://t.me/emadadel4
                 Write-Host $logMessage -ForegroundColor $color
             }
 
-            function Test-PackageManager {
-
-                Param(
-                    [System.Management.Automation.SwitchParameter]$winget
+            function Install-Winget {
+                param (
+                    [string]$WingetUrl = "https://github.com/microsoft/winget-cli/releases/latest/download/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle",
+                    [string]$TempPath = "$env:TEMP\winget.msixbundle"
                 )
-            
-                $status = "not-installed"
-            
-                if ($winget) {
-                    # Install Winget if not detected
-                    $wingetExists = Get-Command -Name winget -ErrorAction SilentlyContinue
-            
-                    if ($wingetExists) {
-                        # Check Winget Version
-                        $wingetVersionFull = (winget --version) # Full Version without 'v'.
-            
-                        # Check if Preview Version
-                        if ($wingetVersionFull.Contains("-preview")) {
-                            $wingetVersion = $wingetVersionFull.Trim("-preview")
-                            $wingetPreview = $true
-                        } else {
-                            $wingetVersion = $wingetVersionFull
-                            $wingetPreview = $false
-                        }
-            
-                        # Check if Winget's Version is too old.
-                        $wingetCurrentVersion = [System.Version]::Parse($wingetVersion.Trim('v'))
-                        # Grabs the latest release of Winget from the Github API for version check process.
-                        $response = Invoke-RestMethod -Uri "https://api.github.com/repos/microsoft/Winget-cli/releases/latest" -Method Get -ErrorAction Stop
-                        $wingetLatestVersion = [System.Version]::Parse(($response.tag_name).Trim('v')) #Stores version number of latest release.
-                        $wingetOutdated = $wingetCurrentVersion -lt $wingetLatestVersion
-
-                        Write-Host "Winget is installed" -ForegroundColor Green
-            
-                        if (!$wingetPreview) {
-                            #Write-Host "    - Winget is a release version." -ForegroundColor Green
-                        } else {
-                            Write-Host "    - Winget is a preview version. Unexpected problems may occur." -ForegroundColor Yellow
-                        }
-            
-                        if (!$wingetOutdated) {
-                            #Write-Host "    - Winget is Up to Date" -ForegroundColor Green
-                            $status = "installed"
-                        }
-                        else {
-                            Write-Host "    - Winget is Out of Date" -ForegroundColor Red
-                            $status = "outdated"
-                        }
-                    } else {        
-                        Write-Host "===========================================" -ForegroundColor Red
-                        Write-Host "---      Winget is not installed        ---" -ForegroundColor Red
-                        Write-Host "===========================================" -ForegroundColor Red
-                        $status = "not-installed"
-                    }
+              
+                # Check if winget is already installed
+                if (Get-Command winget -ErrorAction SilentlyContinue) {
+                    Write-Host "winget is already installed."
+                    return
                 }
-                
-                return $status
-            }
-            
-            function Get-WingetPrerequisites {
-            
-                $versionVCLibs = "14.00"
-                $fileVCLibs = "https://aka.ms/Microsoft.VCLibs.x64.${versionVCLibs}.Desktop.appx"
-                $versionUIXamlMinor = "2.8"
-                $versionUIXamlPatch = "2.8.6"
-                $fileUIXaml = "https://github.com/microsoft/microsoft-ui-xaml/releases/download/v${versionUIXamlPatch}/Microsoft.UI.Xaml.${versionUIXamlMinor}.x64.appx"
-            
-                Try{
-                    Write-Host "Downloading Microsoft.VCLibs Dependency..."
-                    Invoke-WebRequest -Uri $fileVCLibs -OutFile $ENV:TEMP\Microsoft.VCLibs.x64.Desktop.appx
-                    Write-Host "Downloading Microsoft.UI.Xaml Dependency...`n"
-                    Invoke-WebRequest -Uri $fileUIXaml -OutFile $ENV:TEMP\Microsoft.UI.Xaml.x64.appx
+              
+                # Download winget from GitHub
+                Write-Host "Downloading winget from GitHub..."
+                try {
+                    Invoke-WebRequest -Uri $WingetUrl -OutFile $TempPath
+                    Write-Host "Download complete."
+                } catch {
+                    Write-Error "Failed to download winget: $_"
+                    return
                 }
-                Catch{
-                    throw [WingetFailedInstall]::new('Failed to install prerequsites')
+              
+                # Install winget
+                Write-Host "Installing winget..."
+                try {
+                    Add-AppxPackage -Path $TempPath
+                    Write-Host "winget installation complete."
+                } catch {
+                    Write-Error "Failed to install winget: $_"
+                    return
                 }
-            }
-
-            function Get-WingetLatest {
-            
-                Try{
-                    # Grabs the latest release of Winget from the Github API for the install process.
-                    $response = Invoke-RestMethod -Uri "https://api.github.com/repos/microsoft/Winget-cli/releases/latest" -Method Get -ErrorAction Stop
-                    $latestVersion = $response.tag_name #Stores version number of latest release.
-                    $licenseWingetUrl = $response.assets.browser_download_url[0] #Index value for License file.
-                    Write-Host "Latest Version:`t$($latestVersion)`n"
-                    $assetUrl = $response.assets.browser_download_url[2] #Index value for download URL.
-                    Invoke-WebRequest -Uri $licenseWingetUrl -OutFile $ENV:TEMP\License1.xml
-                    # The only pain is that the msixbundle for winget-cli is 246MB. In some situations this can take a bit, with slower connections.
-                    Invoke-WebRequest -Uri $assetUrl -OutFile $ENV:TEMP\Microsoft.DesktopAppInstaller.msixbundle
-                }
-                Catch{
-                    throw [WingetFailedInstall]::new('Failed to get latest Winget release and license')
-                }
-            }
-            
-            function Install-WinUtilWinget {
-            
-                $isWingetInstalled = Test-PackageManager -winget
-            
-                Try {
-                    if ($isWingetInstalled -eq "installed") {
-                        #Write-Host "`nWinget is already installed.`r" -ForegroundColor Green
-                        return
-                    } elseif ($isWingetInstalled -eq "outdated") {
-                        Write-Host "`nWinget is Outdated. updateing....`r" -ForegroundColor Yellow
+              
+                # Verify installation
+                if (Get-Command winget -ErrorAction SilentlyContinue) {
+                    Write-Host "winget is installed successfully."
+              
+                    # Check if winget is in the PATH environment variable
+                    $wingetPath = (Get-Command winget).Source
+                    $envPath = [System.Environment]::GetEnvironmentVariable("Path", [System.EnvironmentVariableTarget]::Machine)
+                    if ($envPath -notcontains $wingetPath) {
+                        Write-Host "Adding winget to the PATH environment variable..."
+                        $newPath = $envPath + ";" + (Split-Path $wingetPath)
+                        [System.Environment]::SetEnvironmentVariable("Path", $newPath, [System.EnvironmentVariableTarget]::Machine)
+                        Write-Host "winget added to PATH. You may need to restart your session to use winget."
                     } else {
-                        Write-Host "`nWinget is not Installed. installing...`r" -ForegroundColor Red
+                        Write-Host "winget is already in the PATH."
                     }
-            
-                    # Gets the computer's information
-                    if ($null -eq $sync.ComputerInfo){
-                        $ComputerInfo = Get-ComputerInfo -ErrorAction Stop
-                    } else {
-                        $ComputerInfo = $sync.ComputerInfo
-                    }
-            
-                    if (($ComputerInfo.WindowsVersion) -lt "1809") {
-                        # Checks if Windows Version is too old for Winget
-                        Write-Host "Winget is not supported on this version of Windows (Pre-1809)" -ForegroundColor Red
-                        return
-                    }
-            
-                    Write-Host "Downloading Winget Prerequsites`n"
-                    Get-WingetPrerequisites
-                    Write-Host "Downloading Winget and License File`r"
-                    Get-WingetLatest
-                    Write-Host "Installing Winget w/ Prerequsites`r"
-                    Add-AppxProvisionedPackage -Online -PackagePath $ENV:TEMP\Microsoft.DesktopAppInstaller.msixbundle -DependencyPackagePath $ENV:TEMP\Microsoft.VCLibs.x64.Desktop.appx, $ENV:TEMP\Microsoft.UI.Xaml.x64.appx -LicensePath $ENV:TEMP\License1.xml
-                    Write-Host "Manually adding Winget Sources, from Winget CDN."
-                    Add-AppxPackage -Path https://cdn.winget.microsoft.com/cache/source.msix 
-                    Write-Host "Winget Installed" -ForegroundColor Green
-                    Write-Output "Refreshing Environment Variables...`n"
-                    $ENV:PATH = [System.Environment]::GetEnvironmentVariable("Path", "Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path", "User")
-                } Catch {
-                    Write-Host "Failure detected while installing via GitHub method. Continuing with Chocolatey method as fallback." -ForegroundColor Red
-                    Try {
-                    Start-Process -Verb runas -FilePath powershell.exe -ArgumentList "choco install winget-cli"
-                    Write-Host "Winget Installed" -ForegroundColor Green
-                    Write-Output "Refreshing Environment Variables...`n"
-                    $ENV:PATH = [System.Environment]::GetEnvironmentVariable("Path", "Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path", "User")
-                    } Catch {
-                        throw [WingetFailedInstall]::new('Failed to install!')
-                    }
+                } else {
+                    Write-Error "winget installation verification failed."
                 }
+              
+                # Clean up
+                Remove-Item $TempPath -Force
             }
 
             function Install-App {
@@ -518,13 +426,7 @@ https://t.me/emadadel4
                     Write-Host "Chocolatey installation failed for $appName."
                     Write-Host "Attempting to install $appName using Winget..."
 
-                    # install winget if not installed on device
-                    if (Get-Command winget -ErrorAction SilentlyContinue) {
-                        Write-Host "winget is installed. Continue installing selected apps"
-                    } else {
-                        Write-Host "winget is not installed"
-                        Install-WinUtilWinget
-                    }
+                    Install-Winget
 
                     # Check if the app is installed via Winget
                     $isInstalledWinget = Is-AppInstalledWinget $appWinget
