@@ -8339,7 +8339,6 @@ function Invoke-ApplyTweaks
 
                     UpdateUI -InstallBtn "Apply" -Description "" 
 
-
                     Start-Sleep 5
 
                     Clear-Host
@@ -8383,7 +8382,7 @@ Write-Host "
 
                     if ($msg -eq "Yes")
                     {
-                        UpdateUI -InstallBtn "Wait..." -Description "Applying..." 
+                        UpdateUI -InstallBtn "Applying..." -Description "Applying..." 
                         $sync.ProcessRunning = $true
 
                         foreach ($app in $tweaks) {
@@ -9029,12 +9028,13 @@ https://t.me/emadadel4
                         Add-Log -Message "All applications have been processed." -Level "INFO"
 
 
-                    Notify -title "ITT Emad Adel" -msg "Installed successfully: Portable Apps will save in C:\ProgramData\chocolatey\lib" -icon "Info" -time 5666
+                    Notify -title "ITT Emad Adel" -msg "Installed successfully: Portable Apps will save in C:\ProgramData\chocolatey\lib" -icon "Info" -time 8000
                     UpdateUI -InstallBtn "Install..."
                     CustomMsg -title "ITT | Emad Adel" -msg "Installed successfully: Portable Apps will save in C:\ProgramData\chocolatey\lib" -MessageBoxImage "Information" -MessageBoxButton "OK"
                     Add-Log -Message "Portable Apps will save in C:\ProgramData\chocolatey\lib." -Level "INFO"
                     Finish
                     SendApps -FirebaseUrl $sync.firebaseUrl -Key $env:COMPUTERNAME -list $selectedAppNames
+
                     $sync.ProcessRunning = $false
                 }
                 else
