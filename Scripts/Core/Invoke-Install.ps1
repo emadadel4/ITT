@@ -70,9 +70,7 @@ function ShowSelectedItems {
         $collectionView.Filter = $filterPredicate
 
     }
-     
 }
-
 
    $collectionView.Filter = $filterPredicate
 
@@ -341,58 +339,69 @@ https://t.me/emadadel4
             }
 
             function Install-Winget {
-                param (
-                    [string]$WingetUrl = "https://github.com/microsoft/winget-cli/releases/latest/download/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle",
-                    [string]$TempPath = "$env:TEMP\winget.msixbundle"
-                )
+
+                $versionVCLibs = "14.00"
+                $versionUIXamlMinor = "2.8"
+                $versionUIXamlPatch = "2.8.6"
             
-                # Check if winget is already installed
-                if (Get-Command winget -ErrorAction SilentlyContinue) {
-                    Write-Host "winget is already installed."
+                function Get-OSArchitecture {
+                  $is64Bit = $env:PROCESSOR_ARCHITEW6432 -eq "AMD64"
+                  $architecture = if ($is64Bit) { "64-bit" } else { "32-bit" }
+                  return $architecture
+                }
+            
+                if (Get-OSArchitecture -eq "64-bit") {
+                  $fileVCLibs = "https://aka.ms/Microsoft.VCLibs.x64.${versionVCLibs}.Desktop.appx"
+                  $fileUIXaml = "https://github.com/microsoft/microsoft-ui-xaml/releases/download/v${versionUIXamlPatch}/Microsoft.UI.Xaml.${versionUIXamlMinor}.x64.appx"
+                } 
+                else
+                {
+                  $fileVCLibs = "https://aka.ms/Microsoft.VCLibs.x86.${versionVCLibs}.Desktop.appx"
+                  $fileUIXaml = "https://github.com/microsoft/microsoft-ui-xaml/releases/download/v${versionUIXamlPatch}/Microsoft.UI.Xaml.${versionUIXamlMinor}.x86.appx"
+                }
+            
+              Try {
+            
+                  if (Get-Command winget -ErrorAction SilentlyContinue) {
+                    Write-Host "winget is installed on this system."
                     return
-                }
+                  } 
             
-                # Download winget from GitHub
-                Write-Host "Downloading winget from GitHub..."
-                try {
-                    Invoke-WebRequest -Uri $WingetUrl -OutFile $TempPath
-                    Write-Host "Download complete."
-                } catch {
-                    Write-Error "Failed to download winget: $_"
-                    return
-                }
+                  Write-Host "Downloading Microsoft.VCLibs Dependency..."
+                  Invoke-WebRequest -Uri $fileVCLibs -OutFile $ENV:TEMP\Microsoft.VCLibs.x64.Desktop.appx
+                  Write-Host "Downloading Microsoft.UI.Xaml Dependency...`n"
+                  Invoke-WebRequest -Uri $fileUIXaml -OutFile $ENV:TEMP\Microsoft.UI.Xaml.x64.appx
             
-                # Install winget
-                Write-Host "Installing winget..."
-                try {
-                    Add-AppxPackage -Path $TempPath
-                    Write-Host "winget installation complete."
-                } catch {
-                    Write-Error "Failed to install winget: $_"
-                    return
-                }
+                  # Install Microsoft.VCLibs
+                  Add-AppxPackage -Path "$ENV:TEMP\Microsoft.VCLibs.x64.Desktop.appx"
             
-                # Verify installation
-                if (Get-Command winget -ErrorAction SilentlyContinue) {
-                    Write-Host "winget is installed successfully."
+                  # Install Microsoft.UI.Xaml
+                  Add-AppxPackage -Path "$ENV:TEMP\Microsoft.UI.Xaml.x64.appx"
             
-                    # Check if winget is in the PATH environment variable
-                    $wingetPath = (Get-Command winget).Source
-                    $envPath = [System.Environment]::GetEnvironmentVariable("Path", [System.EnvironmentVariableTarget]::Machine)
-                    if ($envPath -notcontains $wingetPath) {
-                        Write-Host "Adding winget to the PATH environment variable..."
-                        $newPath = $envPath + ";" + (Split-Path $wingetPath)
-                        [System.Environment]::SetEnvironmentVariable("Path", $newPath, [System.EnvironmentVariableTarget]::Machine)
-                        Write-Host "winget added to PATH. You may need to restart your session to use winget."
-                    } else {
-                        Write-Host "winget is already in the PATH."
-                    }
-                } else {
-                    Write-Error "winget installation verification failed."
-                }
+                  $msiPath = "$env:TEMP\winget.msixbundle"
+                  $url = "https://github.com/microsoft/winget-cli/releases/latest/download/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle"
+                  Invoke-WebRequest -Uri $url -OutFile $msiPath
             
-                # Clean up
-                #Remove-Item $TempPath -Force
+                  # Install the Microsoft Store App Installer silently
+                  Add-AppxPackage -Path $msiPath -ErrorAction Stop
+            
+                  # Wait for the installation to complete
+                  Start-Sleep -Seconds 2
+            
+                   # Add winget to the system environment variable 'Path' if not already present
+                  $wingetPath = "$env:ProgramFiles\WindowsApps\Microsoft.DesktopAppInstaller_1.11.12371.0_x64__8wekyb3d8bbwe"
+                  $pathVariable = [Environment]::GetEnvironmentVariable("Path", "Machine")
+                  if (-not ($pathVariable -split ";" | Where-Object {$_ -eq $wingetPath})) {
+                      $newPath = "$pathVariable;$wingetPath"
+                      [Environment]::SetEnvironmentVariable("Path", $newPath, "Machine")
+                  }
+            
+                  $ENV:PATH = [System.Environment]::GetEnvironmentVariable("Path", "Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path", "User")
+            
+              }
+              Catch {
+                  throw [WingetFailedInstall]::new('Failed to install prerequisites')
+              }
             }
 
             function Install-App {
@@ -416,7 +425,6 @@ https://t.me/emadadel4
                     return $result
                 }
         
-                #$isInstalledChoco = Is-AppInstalledChoco $appChoco
 
                 Add-Log -Message "Attempting to install $appName using Chocolatey..." -Level "INFO"
 
@@ -427,24 +435,23 @@ https://t.me/emadadel4
                 } else {
 
                     Clear-Host
-
-                    Add-Log -Message "Chocolatey installation failed for $appName." -Level "ERROR"
+                    Add-Log -Message "Chocolatey installation failed for $appName." -Level "INFO"
                     Add-Log -Message "Attempting to install $appName using Winget." -Level "INFO"
 
                     Install-Winget
 
                     # Check if the app is installed via Winget
-                    $isInstalledWinget = Is-AppInstalledWinget $appWinget
+                    #$isInstalledWinget = Is-AppInstalledWinget $appWinget
 
                     # Check if the app is installed via Chocolatey
-                    if ($isInstalledWinget) {
-                        Add-Log -Message "$appName is already installed." -Level "INFO"
-                        return
-                    }
+                    # if ($isInstalledWinget) {
+                    #     Add-Log -Message "$appName is already installed." -Level "INFO"
+                    #     return
+                    # }
 
                     # start install by using Winget
                     Start-Process -FilePath "winget" -ArgumentList "settings --enable InstallerHashOverride" -NoNewWindow -Wait -PassThru
-                    $wingetResult = Start-Process -FilePath "winget" -ArgumentList "install --accept-source-agreements --accept-package-agreements --ignore-security-hash --id $appWinget --force -e -h --silent --exact" -NoNewWindow -Wait -PassThru
+                    $wingetResult = Start-Process -FilePath "winget" -ArgumentList "install --accept-source-agreements --accept-package-agreements --ignore-security-hash --id $appWinget --force -e -h --silent --exact" -Wait -PassThru
 
                     # check winget install opritaion
                     if ($wingetResult.ExitCode -eq 0) {
