@@ -9067,6 +9067,7 @@ https://t.me/emadadel4
                     } else {
                         Write-Host "winget is not installed"
                         Install-WinUtilWinget
+                        winget settings --enable InstallerHashOverride
                     }
 
                     # start install by using Winget
