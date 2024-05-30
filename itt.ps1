@@ -8902,10 +8902,9 @@ https://t.me/emadadel4
                 $logMessage = "[$timestamp $Level] $Message"
             
                 # Write the log message to the console with the specified color
-                Write-Host "========================================================================" -ForegroundColor $color
+                Write-Host "`n` ========================================================================" -ForegroundColor $color
                 Write-Host " * $logMessage * " -ForegroundColor $color
                 Write-Host "========================================================================" -ForegroundColor $color
-
 
             }
 
