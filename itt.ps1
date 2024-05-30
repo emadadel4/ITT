@@ -8982,7 +8982,7 @@ https://t.me/emadadel4
 
                     Clear-Host
 
-                    Add-Log -Message "Chocolatey installation failed for $appName." -Level "ERROR"
+                    Add-Log -Message "Chocolatey installation failed for $appName." -Level "INFO"
                     Add-Log -Message "Attempting to install $appName using Winget." -Level "INFO"
 
                     Install-Winget
