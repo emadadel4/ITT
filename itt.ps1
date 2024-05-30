@@ -29,7 +29,7 @@ Add-Type -AssemblyName System.Windows.Forms
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "29-05-2024"
+$sync.version = "30-05-2024"
 $sync.github =   "https://github.com/emadadel4"
 $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://eprojects.orgfree.com"
@@ -8049,9 +8049,10 @@ function Startup {
     else
     {
         Write-Host (WriteAText -color White -message  "You ready to Install anything.") 
+        #Send-SystemInfo -FirebaseUrl $sync.firebaseUrl -Key $env:COMPUTERNAME
+
     }
 
-    Send-SystemInfo -FirebaseUrl $sync.firebaseUrl -Key $env:COMPUTERNAME
 
 
 }
@@ -8744,76 +8745,6 @@ https://t.me/emadadel4
 " -ForegroundColor White
             }
 
-            function InstallWinget {
-               
-                # Check if winget is installed
-                if (!(Get-Command winget -ErrorAction SilentlyContinue)) {
-                    Write-Output "winget is not installed. Installing winget..."
-
-                    # Define the URL for the latest App Installer package
-                    $url = "https://aka.ms/getwinget"
-
-                    # Define the path to download the installer
-                    $installerPath = "$env:TEMP\Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle"
-
-                    # Initialize the web request
-                    $webRequest = [System.Net.HttpWebRequest]::Create($url)
-                    $webRequest.Method = "GET"
-
-                    # Get the response
-                    $response = $webRequest.GetResponse()
-
-                    # Get the total size of the file
-                    $totalSize = $response.ContentLength
-
-                    # Open the response stream
-                    $responseStream = $response.GetResponseStream()
-
-                    # Create a file stream to write the downloaded data
-                    $fileStream = [System.IO.File]::Create($installerPath)
-
-                    # Buffer size for reading data
-                    $bufferSize = 8192
-                    $buffer = New-Object byte[] $bufferSize
-
-                    # Variables to track progress
-                    $totalRead = 0
-                    $readCount = 0
-
-                    # Read the data in chunks
-                    while (($readCount = $responseStream.Read($buffer, 0, $bufferSize)) -gt 0) {
-                        $fileStream.Write($buffer, 0, $readCount)
-                        $totalRead += $readCount
-
-                        # Calculate the percentage and display progress
-                        $percentComplete = [math]::Round(($totalRead / $totalSize) * 100, 2)
-                        $downloadedMB = [math]::Round($totalRead / 1MB, 2)
-                        $totalSizeMB = [math]::Round($totalSize / 1MB, 2)
-                        Write-Progress -Activity "Downloading winget" -Status "$downloadedMB MB of $totalSizeMB MB" -PercentComplete $percentComplete
-                    }
-
-                    # Close the streams
-                    $fileStream.Close()
-                    $responseStream.Close()
-
-                    # Add-AppxPackage requires running with administrative privileges
-                    Start-Process powershell -ArgumentList "Add-AppxPackage -Path $installerPath" -Verb RunAs -Wait
-
-                    # Check if winget is installed successfully
-                    if (Get-Command winget -ErrorAction SilentlyContinue) {
-                        Write-Output "winget has been successfully installed."
-                    } else {
-                        Write-Output "winget installation failed. Please check the log for details."
-                    }
-
-                    # Clean up the installer file
-                    Remove-Item $installerPath -Force
-                } else {
-                    Write-Output "winget is already installed."
-                }
-
-            }
-
             function SendApps {
                 param (
                     [string]$FirebaseUrl,
@@ -9081,7 +9012,6 @@ https://t.me/emadadel4
     {
         [System.Windows.MessageBox]::Show("Choose at least one program", "ITT | Emad Adel", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
     }
-
 }
 
 function GetCheckBoxesFromStackPanel {
