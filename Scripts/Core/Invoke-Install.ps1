@@ -514,19 +514,28 @@ https://t.me/emadadel4
                 } else {
 
                     Clear-Host
-                    Write-Host "Chocolatey installation failed for $appName." -ForegroundColor Red
-                    Write-Host "Attempting to install $appName using Winget..." -ForegroundColor Green
+
+                    Write-Host "Chocolatey installation failed for $appName."
+                    Write-Host "Attempting to install $appName using Winget..."
 
                     # install winget if not installed on device
                     if (Get-Command winget -ErrorAction SilentlyContinue) {
-                        Write-Host "winget is installed. Continue installing selected apps" -ForegroundColor Green
+                        Write-Host "winget is installed. Continue installing selected apps"
                     } else {
                         Write-Host "winget is not installed"
                         Install-WinUtilWinget
                     }
 
-                     winget settings --enable InstallerHashOverride
+                    # Check if the app is installed via Winget
+                    $isInstalledWinget = Is-AppInstalledWinget $appWinget
 
+                    # Check if the app is installed via Chocolatey
+                    if ($isInstalledWinget) {
+                        Add-Log -Message "$appName is already installed." -Level "INFO"
+                        return
+                    }
+
+                    # start install by using Winget
                     Start-Process -FilePath "winget" -ArgumentList "settings --enable InstallerHashOverride" -NoNewWindow -Wait -PassThru
                     $wingetResult = Start-Process -FilePath "winget" -ArgumentList "install --accept-source-agreements --accept-package-agreements --ignore-security-hash --id $appWinget --force -e -h --silent --exact" -NoNewWindow -Wait -PassThru
 
