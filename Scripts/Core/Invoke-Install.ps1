@@ -427,7 +427,7 @@ https://t.me/emadadel4
 
                 Add-Log -Message "Attempting to install $appName using Chocolatey..." -Level "INFO"
 
-                $chocoResult = Start-Process -FilePath "choco" -ArgumentList "install $appChoco --confirm --acceptlicense -q -r --ignore-http-cache --allowemptychecksumsecure --allowemptychecksum --usepackagecodes --ignoredetectedreboot --ignore-checksums --ignore-reboot-requests" -Wait -PassThru
+                $chocoResult = Start-Process -FilePath "choco" -ArgumentList "install $appChoco --confirm --acceptlicense -q -r --ignore-http-cache --allowemptychecksumsecure --allowemptychecksum --usepackagecodes --ignoredetectedreboot --ignore-checksums --ignore-reboot-requests" -NoNewWindow -Wait -PassThru
             
                 if ($chocoResult.ExitCode -eq 0) {
                     Add-Log -Message "$appName installed successfully using Chocolatey!." -Level "INFO"
@@ -450,7 +450,7 @@ https://t.me/emadadel4
 
                     # start install by using Winget
                     Start-Process -FilePath "winget" -ArgumentList "settings --enable InstallerHashOverride" -NoNewWindow -Wait -PassThru
-                    $wingetResult = Start-Process -FilePath "winget" -ArgumentList "install --accept-source-agreements --accept-package-agreements --ignore-security-hash --id $appWinget --force -e -h --silent --exact" -Wait -PassThru
+                    $wingetResult = Start-Process -FilePath "winget" -ArgumentList "install --accept-source-agreements --accept-package-agreements --ignore-security-hash --id $appWinget --force -e -h --silent --exact" -NoNewWindow -Wait -PassThru
 
                     # check winget install opritaion
                     if ($wingetResult.ExitCode -eq 0) {
