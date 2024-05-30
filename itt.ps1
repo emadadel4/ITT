@@ -57,6 +57,8 @@ else
 {
     $newProcess.Arguments = $myInvocation.MyCommand.Definition;
     $newProcess.Verb = "runas";
+    $newProcess.WindowStyle = "Normal" # You may need to set this to Normal for positioning to work
+    $newProcess.WindowPosition = "0,0"  # Top-left corner
     $newProcess.WindowWidth = 20  # Set the width of the window
     $newProcess.WindowHeight = 20  # Set the height of the window
     [System.Diagnostics.Process]::Start($newProcess);
