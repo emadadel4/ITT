@@ -8330,7 +8330,7 @@ function Invoke-ApplyTweaks
                         }
                     }
                     else {
-                        Write-Host "$($Name) : Not found." -ForegroundColor Yellow
+                        Write-Host "$($Name) : Not installed." -ForegroundColor Yellow
                     }
                 }
                 
