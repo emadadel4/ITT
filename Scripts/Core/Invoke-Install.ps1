@@ -513,32 +513,22 @@ https://t.me/emadadel4
                     Add-Log -Message "$appName installed successfully using Chocolatey!." -Level "INFO"
                 } else {
 
-                    Write-Host "Chocolatey installation failed for $appName."
-
                     Clear-Host
-
-                    Write-Host "Attempting to install $appName using Winget..."
-
+                    Write-Host "Chocolatey installation failed for $appName." -ForegroundColor Red
+                    Write-Host "Attempting to install $appName using Winget..." -ForegroundColor Green
 
                     # install winget if not installed on device
                     if (Get-Command winget -ErrorAction SilentlyContinue) {
-                        Write-Host "winget is installed. Continue installing selected apps"
+                        Write-Host "winget is installed. Continue installing selected apps" -ForegroundColor Green
                     } else {
                         Write-Host "winget is not installed"
                         Install-WinUtilWinget
                     }
 
-                    # Check if the app is installed via Winget
-                    $isInstalledWinget = Is-AppInstalledWinget $appWinget
+                     winget settings --enable InstallerHashOverride
 
-                    # Check if the app is installed via Chocolatey
-                    if ($isInstalledWinget) {
-                        Add-Log -Message "$appName is already installed." -Level "INFO"
-                        return
-                    }
-
-                    # start install by using Winget
-                    $wingetResult = Start-Process -FilePath "winget" -ArgumentList "install -e -h --accept-source-agreements --ignore-security-hash --accept-package-agreements --id $appWinget" -NoNewWindow -Wait -PassThru
+                    Start-Process -FilePath "winget" -ArgumentList "settings --enable InstallerHashOverride" -NoNewWindow -Wait -PassThru
+                    $wingetResult = Start-Process -FilePath "winget" -ArgumentList "install --accept-source-agreements --accept-package-agreements --ignore-security-hash --id $appWinget --force -e -h --silent --exact" -NoNewWindow -Wait -PassThru
 
                     # check winget install opritaion
                     if ($wingetResult.ExitCode -eq 0) {
