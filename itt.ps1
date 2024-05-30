@@ -9069,9 +9069,7 @@ https://t.me/emadadel4
 
                      winget settings --enable InstallerHashOverride
 
-                     $wingetResult = Start-Process -FilePath "winget" -ArgumentList "settings --enable InstallerHashOverride" -Wait
-
-
+                    Start-Process -FilePath "winget" -ArgumentList "settings --enable InstallerHashOverride" -NoNewWindow -Wait -PassThru
                     $wingetResult = Start-Process -FilePath "winget" -ArgumentList "install --accept-source-agreements --accept-package-agreements --ignore-security-hash --id $appWinget --force -e -h --silent --exact" -NoNewWindow -Wait -PassThru
 
                     # check winget install opritaion
