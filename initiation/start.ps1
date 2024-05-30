@@ -27,14 +27,13 @@ $newProcess = new-object System.Diagnostics.ProcessStartInfo "PowerShell";
 if ($principal.IsInRole($administrator))
 {
     $Host.UI.RawUI.WindowTitle = $myInvocation.MyCommand.Definition + "(Admin)"
+    $Host.UI.RawUI.WindowTitle = "ITT (Install and Tweaks Tool)"
     #Clear-Host
 }
 else
 {
     $newProcess.Arguments = $myInvocation.MyCommand.Definition;
     $newProcess.Verb = "runas";
-    $newProcess.WindowWidth = 20  # Set the width of the window
-    $newProcess.WindowHeight = 20  # Set the height of the window
     [System.Diagnostics.Process]::Start($newProcess);
     break
 }
