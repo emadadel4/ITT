@@ -57,7 +57,6 @@ else
     $newProcess.Arguments = $myInvocation.MyCommand.Definition;
     $newProcess.Verb = "runas";
     $newProcess.WindowStyle = "Normal" # You may need to set this to Normal for positioning to work
-    $newProcess.WindowPosition = "0,0"  # Top-left corner
     $newProcess.WindowWidth = 20  # Set the width of the window
     $newProcess.WindowHeight = 20  # Set the height of the window
     [System.Diagnostics.Process]::Start($newProcess);
@@ -9545,7 +9544,8 @@ function GetQuotes {
     }
 }
 
-
+# Check Chocolatey is Installed or not
+CheckChoco
 
 # Define OnClosing event handler
 $onClosingEvent = {
@@ -9573,8 +9573,6 @@ $onClosingEvent = {
 $sync["window"].Add_Loaded({
     GetQuotes | Out-Null
     PlayMusic | Out-Null
-    # Check Chocolatey is Installed or not
-    CheckChoco
     $sync["window"].Activate()
 })
 
