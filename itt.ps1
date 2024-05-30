@@ -7743,9 +7743,14 @@ $InitialSessionState = [System.Management.Automation.Runspaces.InitialSessionSta
 # Add the variable to the session state
 $InitialSessionState.Variables.Add($hashVars)
 
+# Ensure that minthreads is not greater than maxthreads
+if ($minthreads -gt $maxthreads) {
+    $minthreads = $maxthreads
+}
+
 # Create the runspace pool
 $sync.runspace = [runspacefactory]::CreateRunspacePool(
-    $minthreads,                      # Minimum thread count
+    $minthreads,            # Minimum thread count
     $maxthreads,            # Maximum thread count
     $InitialSessionState,   # Initial session state
     $Host                   # Machine to create runspaces on
