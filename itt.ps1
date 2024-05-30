@@ -9067,10 +9067,10 @@ https://t.me/emadadel4
                     } else {
                         Write-Host "winget is not installed"
                         Install-WinUtilWinget
-                        winget settings --enable InstallerHashOverride
                     }
 
                     # start install by using Winget
+                    winget settings --enable InstallerHashOverride
                     $wingetResult = Start-Process -FilePath "winget" -ArgumentList "install -e -h --accept-source-agreements --ignore-security-hash --accept-package-agreements --id $appWinget" -NoNewWindow -Wait -PassThru
 
                     # check winget install opritaion
