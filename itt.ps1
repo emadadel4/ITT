@@ -9545,8 +9545,7 @@ function GetQuotes {
     }
 }
 
-# Check Chocolatey is Installed or not
-CheckChoco
+
 
 # Define OnClosing event handler
 $onClosingEvent = {
@@ -9574,6 +9573,8 @@ $onClosingEvent = {
 $sync["window"].Add_Loaded({
     GetQuotes | Out-Null
     PlayMusic | Out-Null
+    # Check Chocolatey is Installed or not
+    CheckChoco
     $sync["window"].Activate()
 })
 
