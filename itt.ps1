@@ -9061,22 +9061,12 @@ https://t.me/emadadel4
 
                     Write-Host "Attempting to install $appName using Winget..."
 
-
                     # install winget if not installed on device
                     if (Get-Command winget -ErrorAction SilentlyContinue) {
                         Write-Host "winget is installed. Continue installing selected apps"
                     } else {
                         Write-Host "winget is not installed"
                         Install-WinUtilWinget
-                    }
-
-                    # Check if the app is installed via Winget
-                    $isInstalledWinget = Is-AppInstalledWinget $appWinget
-
-                    # Check if the app is installed via Chocolatey
-                    if ($isInstalledWinget) {
-                        Add-Log -Message "$appName is already installed." -Level "INFO"
-                        return
                     }
 
                     # start install by using Winget
