@@ -9063,7 +9063,7 @@ https://t.me/emadadel4
 
                     # install winget if not installed on device
                     if (Get-Command winget -ErrorAction SilentlyContinue) {
-                        Write-Host "winget is installed. Continue installing selected apps"
+                        Write-Host "winget is installed. Continue installing selected apps" -ForegroundColor Green
                     } else {
                         Write-Host "winget is not installed"
                         Install-WinUtilWinget
