@@ -517,7 +517,12 @@ https://t.me/emadadel4
                     Write-Host "Attempting to install $appName using Winget..."
 
                     # install winget if not installed on device
-                    Install-WinUtilWinget
+                    if (Get-Command winget -ErrorAction SilentlyContinue) {
+                        Write-Host "winget is installed."
+                    } else {
+                        Write-Host "winget is not installed."
+                        Install-WinUtilWinget
+                    }
 
                     # Check if the app is installed via Winget
                     $isInstalledWinget = Is-AppInstalledWinget $appWinget
