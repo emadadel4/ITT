@@ -8988,7 +8988,7 @@ https://t.me/emadadel4
                     Install-Winget
 
                     # Check if the app is installed via Winget
-                    $isInstalledWinget = Is-AppInstalledWinget $appWinget
+                    #$isInstalledWinget = Is-AppInstalledWinget $appWinget
 
                     # Check if the app is installed via Chocolatey
                     # if ($isInstalledWinget) {
