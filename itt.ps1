@@ -7901,6 +7901,7 @@ $sync.AppsListView = $sync['window'].FindName("appslist")
 $sync.TweaksListView = $sync['window'].FindName("tweakslist")
 $sync.currentList
 
+# Buttons
 $sync.Description = $sync['window'].FindName("description")
 $sync.Quotes = $sync['window'].FindName("quotes")
 $sync.itemLink = $sync['window'].FindName('itemLink')
