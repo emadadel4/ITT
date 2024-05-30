@@ -9056,13 +9056,17 @@ https://t.me/emadadel4
                 } else {
 
                     Write-Host "Chocolatey installation failed for $appName."
+
+                    Clear-Host
+
                     Write-Host "Attempting to install $appName using Winget..."
+
 
                     # install winget if not installed on device
                     if (Get-Command winget -ErrorAction SilentlyContinue) {
-                        Write-Host "winget is installed."
+                        Write-Host "winget is installed. Continue installing selected apps"
                     } else {
-                        Write-Host "winget is not installed."
+                        Write-Host "winget is not installed"
                         Install-WinUtilWinget
                     }
 
