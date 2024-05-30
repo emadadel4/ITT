@@ -3937,5 +3937,22 @@
     ],
     "category": "Gaming",
     "check": "false"
+  },
+  {
+    "name": "Vivaldi",
+    "description": "The new Vivaldi browser protects you from trackers blocks unwanted ads and puts you in control with unique builtin features Get Vivaldi and browse fast",
+    "winget": "VivaldiTechnologies.Vivaldi",
+    "choco": "vivaldi",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
+    "category": "Web Browsers",
+    "check": "false"
   }
 ]
