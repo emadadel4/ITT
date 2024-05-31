@@ -96,6 +96,34 @@ function Invoke-Install
 
             param($selectedApps)
 
+            function Add-Log {
+                param (
+                    [string]$Message,
+                    [string]$Level = "INFO"
+                )
+            
+                # Get the current timestamp
+                $timestamp = Get-Date -Format "HH:mm"
+            
+                # Determine the color based on the log level
+                switch ($Level.ToUpper()) {
+                    "INFO" { $color = "Green" }
+                    "WARNING" { $color = "Yellow" }
+                    "ERROR" { $color = "Red" }
+                    default { $color = "White" }
+                }
+            
+                # Construct the log message
+                $logMessage = "$Message"
+                $date =  "[$timestamp $Level]"
+            
+                # Write the log message to the console with the specified color
+                Write-Host "`n` ====================================================================" -ForegroundColor $color
+                Write-Host " $date" -ForegroundColor Yellow ; Write-Host " *$logMessage * " -ForegroundColor $color 
+                Write-Host "========================================================================" -ForegroundColor $color
+
+            }
+
             function UpdateUI {
 
                 param($InstallBtn,$Description)
@@ -178,22 +206,22 @@ function Invoke-Install
 
                 Clear-Host
 
-Write-Host "
-+----------------------------------------------------------------------------+
-|  ___ _____ _____   _____ __  __    _    ____       _    ____  _____ _      |
-| |_ _|_   _|_   _| | ____|  \/  |  / \  |  _ \     / \  |  _ \| ____| |     |
-|  | |  | |   | |   |  _| | |\/| | / _ \ | | | |   / _ \ | | | |  _| | |     |
-|  | |  | |   | |   | |___| |  | |/ ___ \| |_| |  / ___ \| |_| | |___| |___  |
-| |___| |_|   |_|   |_____|_|  |_/_/   \_\____/  /_/   \_\____/|_____|_____| |
-|                                                                            |
-+----------------------------------------------------------------------------+
-You ready to Install anything.
-
-(IT Tools) is open source, You can contribute to improving the tool.
-If you have trouble installing a program, report the problem on feedback links
-https://github.com/emadadel4/ITT/issues
-https://t.me/emadadel4
-" -ForegroundColor White
+                    Write-Host "+==============================================================================+";
+                    Write-Host "|                                                                              |";
+                    Write-Host "|                                                                              |";
+                    Write-Host "|   ___ _____ _____   _____ __  __    _    ____       _    ____  _____ _       |";
+                    Write-Host "|  |_ _|_   _|_   _| | ____|  \/  |  / \  |  _ \     / \  |  _ \| ____| |      |";
+                    Write-Host "|   | |  | |   | |   |  _| | |\/| | / _ \ | | | |   / _ \ | | | |  _| | |      |";
+                    Write-Host "|   | |  | |   | |   | |___| |  | |/ ___ \| |_| |  / ___ \| |_| | |___| |___   |";
+                    Write-Host "|  |___| |_|   |_|   |_____|_|  |_/_/   \_\____/  /_/   \_\____/|_____|_____|  |";
+                    Write-Host "|                                                                              |";
+                    Write-Host "|                                                                              |";
+                    Write-Host "+==============================================================================+";
+                    Write-Host "`n` You ready to Install anything."
+                    Write-Host  "`n` (IT Tools) is open source, You can contribute to improving the tool."
+                    Write-Host "If you have trouble installing a program, report the problem on feedback links"
+                    Write-Host  "https://github.com/emadadel4/ITT/issues"
+                    Write-Host  "https://t.me/emadadel4"
             }
 
             function SendApps {
@@ -327,11 +355,12 @@ https://t.me/emadadel4
                 }
             
                 # Construct the log message
-                $logMessage = "[$timestamp $Level] $Message"
+                $logMessage = "$Message"
+                $date =  "[$timestamp $Level]"
             
                 # Write the log message to the console with the specified color
-                Write-Host "`n` ========================================================================" -ForegroundColor $color
-                Write-Host " * $logMessage * " -ForegroundColor $color
+                Write-Host "`n` ====================================================================" -ForegroundColor $color
+                Write-Host " $date" -ForegroundColor Yellow ; Write-Host " *$logMessage * " -ForegroundColor $color 
                 Write-Host "========================================================================" -ForegroundColor $color
 
             }
