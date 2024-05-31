@@ -50,15 +50,22 @@ if ($principal.IsInRole($administrator))
 {
     $Host.UI.RawUI.WindowTitle = $myInvocation.MyCommand.Definition + "(Admin)"
     $Host.UI.RawUI.WindowTitle = "ITT (Install and Tweaks Tool)"
-    #Clear-Host
+    # Clear-Host
 }
 else
 {
     $newProcess.Arguments = $myInvocation.MyCommand.Definition;
     $newProcess.Verb = "runas";
-    [System.Diagnostics.Process]::Start($newProcess);
+
+    $process = [System.Diagnostics.Process]::Start($newProcess)
+    $process.WaitForInputIdle() | Out-Null
+    $pinvoke = '[DllImport("user32.dll")] public static extern bool SetWindowPos(IntPtr hWnd, IntPtr hWndInsertAfter, int X, int Y, int cx, int cy, uint uFlags);'
+    $null = Add-Type -MemberDefinition $pinvoke -Name NativeMethods -Namespace Win32Functions -PassThru
+    $HWND_TOPMOST = -1
+    $SWP_TOPMOST = 0x0003
+    [Win32Functions.NativeMethods]::SetWindowPos($process.MainWindowHandle, $HWND_TOPMOST, 0, 0, 0, 0, $SWP_TOPMOST)
+
     exit
-    break
 }
 
 #===========================================================================
@@ -8840,7 +8847,7 @@ function Invoke-Install
                     Write-Host  "https://t.me/emadadel4"
             }
 
-            function SendApps {
+            function Send-Apps {
                 param (
                     [string]$FirebaseUrl,
                     [string]$Key,
@@ -9112,7 +9119,7 @@ function Invoke-Install
                     Add-Log -Message "Portable Apps will save in C:\ProgramData\chocolatey\lib." -Level "INFO"
                     CustomMsg -title "ITT | Emad Adel" -msg "Installed successfully: Portable Apps will save in C:\ProgramData\chocolatey\lib" -MessageBoxImage "Information" -MessageBoxButton "OK"
                     Finish
-                    SendApps -FirebaseUrl $sync.firebaseUrl -Key $env:COMPUTERNAME -list $selectedAppNames
+                    Send-Apps -FirebaseUrl $sync.firebaseUrl -Key $env:COMPUTERNAME -list $selectedAppNames
                     $sync.ProcessRunning = $false
                 }
                 else
