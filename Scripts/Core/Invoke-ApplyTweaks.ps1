@@ -45,7 +45,6 @@ function Get-SelectedTweaks {
    
 }
 
-
 function ShowSelectedTweaks {
     
     $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.TweaksListView.Items)
@@ -405,4 +404,3 @@ Write-Host "
             [System.Windows.MessageBox]::Show("Choose at least one tweak", "ITT | Emad Adel", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
         }
 }
-
