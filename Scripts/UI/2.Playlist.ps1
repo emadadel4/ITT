@@ -1,4 +1,3 @@
-
 #region PlayMusic Functions
 function PlayMusic {
 
