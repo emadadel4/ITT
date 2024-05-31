@@ -7788,7 +7788,7 @@ try {
     $currentCulture = [System.Globalization.CultureInfo]::CurrentCulture
     $shortCulture = $currentCulture.Name.Substring(0,2)
     
-    # Check if the registry key exists
+    # Check if the registry key exists if not then create one
     if (-not (Test-Path $sync.registryPath))
     {
         New-Item -Path "HKCU:\Software\itt.emadadel" -Force *> $null
@@ -7799,6 +7799,9 @@ try {
     $sync.isDarkMode = (Get-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "DarkMode").DarkMode
     $sync.Langusege  = (Get-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "locales").locales
 
+    #===========================================================================
+    #region Check for lang 
+    #===========================================================================
     if($sync.Langusege -ne "en")
     {
         switch ($sync.Langusege) {
@@ -7820,8 +7823,13 @@ try {
     {
         $sync["window"].DataContext = $sync.database.locales.$($sync.Langusege)
     }
+    #===========================================================================
+    #endregion Check for lang 
+    #===========================================================================
 
-    # Check if $themeValue is equal to "true"
+    #===========================================================================
+    #region Check Theme
+    #===========================================================================
     if ($sync.isDarkMode -eq "true")
     {
         $sync['window'].Resources.MergedDictionaries.Add($sync['window'].FindResource("Dark"))
@@ -7829,6 +7837,9 @@ try {
     } else {
         $sync['window'].Resources.MergedDictionaries.Add($sync['window'].FindResource("Light"))
     }
+    #===========================================================================
+    #endregion Check Theme
+    #===========================================================================
 
  }
 catch [System.Management.Automation.MethodInvocationException] {
