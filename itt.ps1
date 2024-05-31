@@ -8840,7 +8840,7 @@ function Invoke-Install
                     Write-Host  "https://t.me/emadadel4"
             }
 
-            function SendApps {
+            function Send-Apps {
                 param (
                     [string]$FirebaseUrl,
                     [string]$Key,
@@ -9112,7 +9112,7 @@ function Invoke-Install
                     Add-Log -Message "Portable Apps will save in C:\ProgramData\chocolatey\lib." -Level "INFO"
                     CustomMsg -title "ITT | Emad Adel" -msg "Installed successfully: Portable Apps will save in C:\ProgramData\chocolatey\lib" -MessageBoxImage "Information" -MessageBoxButton "OK"
                     Finish
-                    SendApps -FirebaseUrl $sync.firebaseUrl -Key $env:COMPUTERNAME -list $selectedAppNames
+                    Send-Apps -FirebaseUrl $sync.firebaseUrl -Key $env:COMPUTERNAME -list $selectedAppNames
                     $sync.ProcessRunning = $false
                 }
                 else
