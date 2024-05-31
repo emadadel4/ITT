@@ -50,21 +50,15 @@ if ($principal.IsInRole($administrator))
 {
     $Host.UI.RawUI.WindowTitle = $myInvocation.MyCommand.Definition + "(Admin)"
     $Host.UI.RawUI.WindowTitle = "ITT (Install and Tweaks Tool)"
-    # Clear-Host
+    #Clear-Host
 }
 else
 {
     $newProcess.Arguments = $myInvocation.MyCommand.Definition;
     $newProcess.Verb = "runas";
-
-    $process = [System.Diagnostics.Process]::Start($newProcess)
-    $process.WaitForInputIdle() | Out-Null
-    $pinvoke = '[DllImport("user32.dll")] public static extern bool SetWindowPos(IntPtr hWnd, IntPtr hWndInsertAfter, int X, int Y, int cx, int cy, uint uFlags);'
-    $null = Add-Type -MemberDefinition $pinvoke -Name NativeMethods -Namespace Win32Functions -PassThru
-    $HWND_TOPMOST = -1
-    $SWP_TOPMOST = 0x0003
-    [Win32Functions.NativeMethods]::SetWindowPos($process.MainWindowHandle, $HWND_TOPMOST, 0, 0, 0, 0, $SWP_TOPMOST)
+    [System.Diagnostics.Process]::Start($newProcess);
     exit
+    break
 }
 
 #===========================================================================
