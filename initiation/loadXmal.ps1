@@ -27,33 +27,40 @@ $reader = (New-Object System.Xml.XmlNodeReader $xaml)
 try { 
     
     $sync["window"] = [Windows.Markup.XamlReader]::Load( $reader )
+    $currentCulture = [System.Globalization.CultureInfo]::CurrentCulture
+    $shortCulture = $currentCulture.Name.Substring(0,2)
     
     # Check if the registry key exists
     if (-not (Test-Path $sync.registryPath))
     {
-        New-Item -Path "HKCU:\Software\ITTEmadadel" -Force *> $null
-        Set-ItemProperty -Path "HKCU:\Software\ITTEmadadel" -Name "DarkMode" -Value "false" -Force 
+        New-Item -Path "HKCU:\Software\itt.emadadel" -Force *> $null
+        Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "DarkMode" -Value "false" -Force 
+        Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "locales" -Value "$shortCulture" -Force 
     }
 
-    $sync.isDarkMode = (Get-ItemProperty -Path "HKCU:\Software\ITTEmadadel" -Name "DarkMode").DarkMode
-    #$sync.Langusege  = (Get-ItemProperty -Path "HKCU:\Software\ITTEmadadel" -Name "lang").lang
+    $sync.isDarkMode = (Get-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "DarkMode").DarkMode
+    $sync.Langusege  = (Get-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "locales").locales
 
-    $currentCulture = [System.Globalization.CultureInfo]::CurrentCulture
-    $shortCulture = $currentCulture.Name.Substring(0,2)
-
-    if($shortCulture -eq "en")
+    if($sync.Langusege -ne "en")
     {
-        $sync["window"].DataContext = $sync.database.locales.en
-
-    }
-    elseif ($shortCulture -eq "ar") {
-        $sync["window"].DataContext = $sync.database.locales.ar
+        switch ($shortCulture) {
+            "en" {
+                $sync["window"].DataContext = $sync.database.locales.en
+            }
+            "ar" {
+                $sync["window"].DataContext = $sync.database.locales.ar
+            }
+            default {
+                # Default to English for any other culture or invalid input
+                $sync["window"].DataContext = $sync.database.locales.en
+                Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "locales" -Value "en" -Force 
+                #Write-Host "fallback to default lang"
+            }
+        }
     }
     else
     {
-        # default lang
-        $sync["window"].DataContext = $sync.database.locales.en
-        #Write-Host "fallback to default lang"
+        $sync["window"].DataContext = $sync.database.locales.$($sync.Langusege)
     }
 
     # Check if $themeValue is equal to "true"
