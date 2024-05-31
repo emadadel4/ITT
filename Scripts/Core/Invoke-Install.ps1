@@ -118,9 +118,9 @@ function Invoke-Install
                 $date =  "[$timestamp $Level]"
             
                 # Write the log message to the console with the specified color
-                Write-Host "`n` ====================================================================" -ForegroundColor $color
-                Write-Host " $date" -ForegroundColor Yellow ; Write-Host " *$logMessage * " -ForegroundColor $color 
-                Write-Host "========================================================================" -ForegroundColor $color
+                Write-Host "`n` " -ForegroundColor $color
+                Write-Host "$date" -ForegroundColor Yellow ; Write-Host "**$logMessage**" -ForegroundColor $color 
+                Write-Host "" -ForegroundColor $color
 
             }
 
@@ -179,7 +179,6 @@ function Invoke-Install
                 # Clean up resources
                 $notification.Dispose()
             }
-            
 
             function Finish {
 
@@ -224,7 +223,7 @@ function Invoke-Install
                     Write-Host  "https://t.me/emadadel4"
             }
 
-            function SendApps {
+            function Send-Apps {
                 param (
                     [string]$FirebaseUrl,
                     [string]$Key,
@@ -335,34 +334,6 @@ function Invoke-Install
                 }
                 
                 Start-Process -Wait $destination -ArgumentList $exeArgs
-            }
-
-            function Add-Log {
-                param (
-                    [string]$Message,
-                    [string]$Level = "INFO"
-                )
-            
-                # Get the current timestamp
-                $timestamp = Get-Date -Format "HH:mm"
-            
-                # Determine the color based on the log level
-                switch ($Level.ToUpper()) {
-                    "INFO" { $color = "Green" }
-                    "WARNING" { $color = "Yellow" }
-                    "ERROR" { $color = "Red" }
-                    default { $color = "White" }
-                }
-            
-                # Construct the log message
-                $logMessage = "$Message"
-                $date =  "[$timestamp $Level]"
-            
-                # Write the log message to the console with the specified color
-                Write-Host "`n` ====================================================================" -ForegroundColor $color
-                Write-Host " $date" -ForegroundColor Yellow ; Write-Host " *$logMessage * " -ForegroundColor $color 
-                Write-Host "========================================================================" -ForegroundColor $color
-
             }
 
             function Install-Winget {
@@ -521,11 +492,10 @@ function Invoke-Install
 
                     Notify -title "ITT Emad Adel" -msg "Installed successfully: Portable Apps will save in C:\ProgramData\chocolatey\lib" -icon "Info" -time 8000
                     UpdateUI -InstallBtn "Install..."
-                    CustomMsg -title "ITT | Emad Adel" -msg "Installed successfully: Portable Apps will save in C:\ProgramData\chocolatey\lib" -MessageBoxImage "Information" -MessageBoxButton "OK"
                     Add-Log -Message "Portable Apps will save in C:\ProgramData\chocolatey\lib." -Level "INFO"
+                    CustomMsg -title "ITT | Emad Adel" -msg "Installed successfully: Portable Apps will save in C:\ProgramData\chocolatey\lib" -MessageBoxImage "Information" -MessageBoxButton "OK"
                     Finish
-                    SendApps -FirebaseUrl $sync.firebaseUrl -Key $env:COMPUTERNAME -list $selectedAppNames
-
+                    Send-Apps -FirebaseUrl $sync.firebaseUrl -Key $env:COMPUTERNAME -list $selectedAppNames
                     $sync.ProcessRunning = $false
                 }
                 else
