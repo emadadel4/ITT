@@ -43,7 +43,6 @@ function Get-SelectedApps
     return $items 
 }
 
-
 function ShowSelectedItems {
     
     $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.AppsListView.Items)
