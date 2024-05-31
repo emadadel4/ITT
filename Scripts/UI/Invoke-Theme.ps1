@@ -47,4 +47,3 @@ function Update-Theme ($theme, $mode) {
 
 }
 #endregion
-
