@@ -27,7 +27,7 @@ $reader = (New-Object System.Xml.XmlNodeReader $xaml)
 try { 
     
     $sync["window"] = [Windows.Markup.XamlReader]::Load( $reader )
-    $currentCulture = [System.Globalization.CultureInfo]::CurrentCulture
+    $currentCulture = [System.Threading.Thread]::CurrentThread.CurrentCulture
     $shortCulture = $currentCulture.Name.Substring(0,2)
     
     # Check if the registry key exists if not then create one
@@ -42,7 +42,7 @@ try {
     $sync.Langusege  = (Get-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "locales").locales
 
     #===========================================================================
-    #region Check for lang 
+    #region Check for Langusege 
     #===========================================================================
     if($sync.Langusege -ne "en")
     {
@@ -66,7 +66,7 @@ try {
         $sync["window"].DataContext = $sync.database.locales.$($sync.Langusege)
     }
     #===========================================================================
-    #endregion Check for lang 
+    #endregion Check for Langusege 
     #===========================================================================
 
     #===========================================================================
