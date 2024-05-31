@@ -7800,7 +7800,7 @@ try {
     $sync.Langusege  = (Get-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "locales").locales
 
     #===========================================================================
-    #region Check for lang 
+    #region Check for Langusege 
     #===========================================================================
     if($sync.Langusege -ne "en")
     {
@@ -7824,7 +7824,7 @@ try {
         $sync["window"].DataContext = $sync.database.locales.$($sync.Langusege)
     }
     #===========================================================================
-    #endregion Check for lang 
+    #endregion Check for Langusege 
     #===========================================================================
 
     #===========================================================================
