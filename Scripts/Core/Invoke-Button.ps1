@@ -20,12 +20,12 @@ function Invoke-Button {
         "load" {LoadJson $Button}
 
         "ar" {
-            $sync["window"].DataContext = $sync.database.locales.ar
+            SetLangusege -lang "ar"
             $Button
         }
 
         "en" {
-            $sync["window"].DataContext = $sync.database.locales.en
+            SetLangusege -lang "en"
             $Button
         }
 
