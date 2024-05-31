@@ -175,7 +175,7 @@ function Invoke-Install
                     }
                 })
 
-                Start-Sleep 5
+                Start-Sleep 10
 
                 Clear-Host
 
