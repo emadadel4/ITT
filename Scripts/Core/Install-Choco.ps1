@@ -53,5 +53,3 @@ function CheckChoco
         Startup -firstBoot $false
     }
 }
-
-
