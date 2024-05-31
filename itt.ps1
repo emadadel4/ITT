@@ -8117,8 +8117,6 @@ function CheckChoco
     }
 }
 
-
-
 function Get-SelectedTweaks {
 
     $items = @()
@@ -8165,7 +8163,6 @@ function Get-SelectedTweaks {
     return $items 
    
 }
-
 
 function ShowSelectedTweaks {
     
@@ -8527,7 +8524,6 @@ Write-Host "
         }
 }
 
-
 function Invoke-Button {
 
     Param ([string]$debug)
@@ -8587,6 +8583,7 @@ function Invoke-Button {
 
     }
 }
+
 function Get-SelectedApps
 {
 
@@ -8631,7 +8628,6 @@ function Get-SelectedApps
 
     return $items 
 }
-
 
 function ShowSelectedItems {
     
@@ -9124,6 +9120,7 @@ https://t.me/emadadel4
     }
 }
 
+
 function GetCheckBoxesFromStackPanel {
     param (
         [System.Windows.Controls.StackPanel]$item
@@ -9189,7 +9186,6 @@ function LoadJson {
     }
 }
 
-
 function SaveItemsToJson
 {
   
@@ -9248,7 +9244,6 @@ function SaveItemsToJson
 }
 
 function ChangeTap() {
-    
 
     if($sync['window'].FindName('apps').IsSelected)
     {
@@ -9395,6 +9390,7 @@ function ITTShortcut {
     $Shortcut.Save()
 
 }
+
 function Search {
 
     # Retrieves the search input, converts it to lowercase, and filters the list based on the input
@@ -9421,7 +9417,6 @@ function Search {
         return $true  # Non-StackPanel items are always included
     }
 }
-
 
 function FilterByCat {
 
@@ -9525,7 +9520,6 @@ function Update-Theme ($theme, $mode) {
 }
 #endregion
 
-
 function SetLangusege {
     param (
         [string]$lang
@@ -9534,6 +9528,7 @@ function SetLangusege {
     $sync["window"].DataContext = $sync.database.locales.$($lang)
     Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "locales" -Value "$lang" -Force 
 }
+
 function GetQuotes {
 
     Invoke-ScriptBlock -ScriptBlock {
