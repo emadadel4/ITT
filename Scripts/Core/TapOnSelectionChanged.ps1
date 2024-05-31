@@ -1,5 +1,4 @@
 function ChangeTap() {
-    
 
     if($sync['window'].FindName('apps').IsSelected)
     {
