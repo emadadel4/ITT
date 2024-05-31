@@ -8254,9 +8254,10 @@ function Invoke-ApplyTweaks
                     try {
                         Add-Log -Message "Applying $Name" -Level "INFO"
                         Start-Process -FilePath "powershell.exe" -ArgumentList "-Command `"$Command`"" -NoNewWindow -Wait
+                        Add-Log -Message "Executed successfully." -Level "INFO"
+
                         #debug
                         #Write-Host "Command '$Command' executed successfully."
-                        Add-Log -Message "Executed successfully." -Level "INFO"
 
                     } catch {
                         Write-Host "Error executing command '$Command': $_"
@@ -8280,22 +8281,13 @@ function Invoke-ApplyTweaks
                             # Try to create the registry path
                             try {
                                 New-Item -Path $Path -Name $Name -Type $Type -Value $Value -Force -ErrorAction Stop | Out-Null
-                                
                                 Add-Log -Message "Registry path created successfully." -Level "INFO"
-
                             } catch {
-
-                                #Write-Output "Failed to create registry path: $_"
                                 Add-Log -Message "Failed to create registry path: $_" -Level "ERROR"
-
                             }
                         } else {
-
                             Set-ItemProperty -Path $Path -Name $Name -Type $Type -Value $Value -Force -ErrorAction Stop
                             Add-Log -Message "$($Name) Successful applied" -Level "INFO"
-                            Add-Log -Message "Registry path already exists." -Level "INFO"
-                            #Write-Output "Registry path already exists."
-
                         }
 
                     }
@@ -8436,9 +8428,9 @@ function Invoke-ApplyTweaks
                     Write-Host "+==============================================================================+";
                     Write-Host "`n` You ready to Install anything."
                     Write-Host  "`n` (IT Tools) is open source, You can contribute to improving the tool."
-                    Write-Host "If you have trouble installing a program, report the problem on feedback links"
-                    Write-Host  "https://github.com/emadadel4/ITT/issues"
-                    Write-Host  "https://t.me/emadadel4"
+                    Write-Host " If you have trouble installing a program, report the problem on feedback links"
+                    Write-Host  " https://github.com/emadadel4/ITT/issues"
+                    Write-Host  " https://t.me/emadadel4"
 
          
                 }
