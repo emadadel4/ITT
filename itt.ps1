@@ -64,7 +64,6 @@ else
     $HWND_TOPMOST = -1
     $SWP_TOPMOST = 0x0003
     [Win32Functions.NativeMethods]::SetWindowPos($process.MainWindowHandle, $HWND_TOPMOST, 0, 0, 0, 0, $SWP_TOPMOST)
-
     exit
 }
 
