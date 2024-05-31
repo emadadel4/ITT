@@ -7785,7 +7785,7 @@ $reader = (New-Object System.Xml.XmlNodeReader $xaml)
 try { 
     
     $sync["window"] = [Windows.Markup.XamlReader]::Load( $reader )
-    $currentCulture = [System.Globalization.CultureInfo]::CurrentCulture
+    $currentCulture = [System.Threading.Thread]::CurrentThread.CurrentCulture
     $shortCulture = $currentCulture.Name.Substring(0,2)
     
     # Check if the registry key exists if not then create one
