@@ -1,19 +1,18 @@
+try {
 Clear-Host
-
 Write-Host "
-    +-------------------------------------------------------------------------+
-    |                                                                         |
-    |    ___ _____ _____   ____    _  _____  _    ____    _    ____  _____    |
-    |   |_ _|_   _|_   _| |  _ \  / \|_   _|/ \  | __ )  / \  / ___|| ____|   |
-    |    | |  | |   | |   | | | |/ _ \ | | / _ \ |  _ \ / _ \ \___ \|  _|     |
-    |    | |  | |   | |   | |_| / ___ \| |/ ___ \| |_) / ___ \ ___) | |___    |
-    |   |___| |_|   |_|   |____/_/   \_\_/_/   \_\____/_/   \_\____/|_____|   |
-    |                                                                         |
-    |    Made with ♥  By Emad Adel                                            |
-    |                                                                         |
-    +-------------------------------------------------------------------------+
++-------------------------------------------------------------------------+
+|                                                                         |
+|    ___ _____ _____   ____    _  _____  _    ____    _    ____  _____    |
+|   |_ _|_   _|_   _| |  _ \  / \|_   _|/ \  | __ )  / \  / ___|| ____|   |
+|    | |  | |   | |   | | | |/ _ \ | | / _ \ |  _ \ / _ \ \___ \|  _|     |
+|    | |  | |   | |   | |_| / ___ \| |/ ___ \| |_) / ___ \ ___) | |___    |
+|   |___| |_|   |_|   |____/_/   \_\_/_/   \_\____/_/   \_\____/|_____|   |
+|                                                                         |
+|    Made with ♥  By Emad Adel                                            |
+|                                                                         |
++-------------------------------------------------------------------------+
 "
-
 $validCategories = @{
 
     # Available options
@@ -161,13 +160,8 @@ Write-Host "Added successfully, Don't forget to build and test it before commit"
 #===========================================================================
 if($userInput -eq "API [Choco/Winget/Scoop] Recommend")
 {
-
-    Clear-Host
     $Name = Read-Host "Enter app name"
-
-
     $Description = [regex]::Replace((Read-Host "Enter app description").Trim(), "[^\w\s]", "")
-
 
     $choco = (Read-Host "Enter Chocolatey package name").Trim()  # Remove leading and trailing spaces
     if ($choco -eq "") { $choco = "none" }  # Set default value if empty
@@ -280,3 +274,8 @@ Write-Host "Added successfully, Don't forget to build and test it before commit"
 #===========================================================================
 #endregion API 
 #===========================================================================
+    
+}
+catch {
+    Write-Host "An error occurred: $_"
+}
