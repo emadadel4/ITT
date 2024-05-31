@@ -25,7 +25,6 @@ function Search {
     }
 }
 
-
 function FilterByCat {
 
     param ($Cat)
