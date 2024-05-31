@@ -102,7 +102,7 @@ $sync.database.Applications = '[
         "output": "ITT/Downloads"
       }
     ],
-    "category": "Browsers",
+    "category": "Web Browsers",
     "check": "false"
   },
   {
@@ -119,7 +119,7 @@ $sync.database.Applications = '[
         "output": "ITT/Downloads"
       }
     ],
-    "category": "Browsers",
+    "category": "Web Browsers",
     "check": "false"
   },
   {
@@ -221,7 +221,7 @@ $sync.database.Applications = '[
         "output": "ITT/Downloads"
       }
     ],
-    "category": "Browsers",
+    "category": "Web Browsers",
     "check": "false"
   },
   {
@@ -3088,7 +3088,7 @@ $sync.database.Applications = '[
         "output": "ITT/Downloads"
       }
     ],
-    "category": "Browsers",
+    "category": "Web Browsers",
     "check": "false"
   },
   {
@@ -5619,16 +5619,16 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
 
         <StackPanel Orientation="Vertical" Width="auto" Margin="8">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Thorium SSE3" Tag="Browsers" IsChecked="false" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content="Browsers"/>
+                <CheckBox Content="Thorium SSE3" Tag="Web Browsers" IsChecked="false" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content="Web Browsers"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="A web browser designed for smooth and secure browsing experiences"/>
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Width="auto" Margin="8">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Thorium AVX" Tag="Browsers" IsChecked="false" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content="Browsers"/>
+                <CheckBox Content="Thorium AVX" Tag="Web Browsers" IsChecked="false" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content="Web Browsers"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="A web browser designed for smooth and secure browsing experiences"/>
         </StackPanel>
@@ -5675,8 +5675,8 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
 
         <StackPanel Orientation="Vertical" Width="auto" Margin="8">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Tor Browser" Tag="Browsers" IsChecked="false" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content="Browsers"/>
+                <CheckBox Content="Tor Browser" Tag="Web Browsers" IsChecked="false" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content="Web Browsers"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="A web browser that prioritizes user privacy by routing internet traffic through a global network of servers enabling anonymous browsing"/>
         </StackPanel>
@@ -7019,8 +7019,8 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
 
         <StackPanel Orientation="Vertical" Width="auto" Margin="8">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="LibreWolf" Tag="Browsers" IsChecked="false" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content="Browsers"/>
+                <CheckBox Content="LibreWolf" Tag="Web Browsers" IsChecked="false" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content="Web Browsers"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="LibreWolf is designed to increase protection against tracking and fingerprinting techniques while also including a few security improvements This is achieved through our privacy and security oriented settings and patches LibreWolf also aims to remove all the telemetry data collection and annoyances as well as disabling antifreedom features like DRM"/>
         </StackPanel>
