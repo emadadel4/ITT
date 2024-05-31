@@ -8218,17 +8218,47 @@ function Invoke-ApplyTweaks
 
                 param($tweaks)
 
+                function Add-Log {
+                    param (
+                        [string]$Message,
+                        [string]$Level = "INFO"
+                    )
+                
+                    # Get the current timestamp
+                    $timestamp = Get-Date -Format "HH:mm"
+                
+                    # Determine the color based on the log level
+                    switch ($Level.ToUpper()) {
+                        "INFO" { $color = "Green" }
+                        "WARNING" { $color = "Yellow" }
+                        "ERROR" { $color = "Red" }
+                        default { $color = "White" }
+                    }
+                
+                    # Construct the log message
+                    $logMessage = "$Message"
+                    $date =  "[$timestamp $Level]"
+                
+                    # Write the log message to the console with the specified color
+                    Write-Host "`n` " -ForegroundColor $color
+                    Write-Host " $date" -ForegroundColor Yellow ; Write-Host " *$logMessage * " -ForegroundColor $color 
+                    Write-Host "" -ForegroundColor $color
+    
+                }
+
                 function ExecuteCommand {
                     param (
+                        [string]$Name,
                         [string]$Command
                     )
                     try {
-
+                        Add-Log -Message "Applying $Name" -Level "INFO"
                         Start-Process -FilePath "powershell.exe" -ArgumentList "-Command `"$Command`"" -NoNewWindow -Wait
+                        Add-Log -Message "Executed successfully." -Level "INFO"
 
                         #debug
                         #Write-Host "Command '$Command' executed successfully."
-                        Write-Host "Executed successfully."
+
                     } catch {
                         Write-Host "Error executing command '$Command': $_"
                     }
@@ -8251,16 +8281,13 @@ function Invoke-ApplyTweaks
                             # Try to create the registry path
                             try {
                                 New-Item -Path $Path -Name $Name -Type $Type -Value $Value -Force -ErrorAction Stop | Out-Null
-                                
-                                Write-Output "Registry path created successfully."
+                                Add-Log -Message "Registry path created successfully." -Level "INFO"
                             } catch {
-                                Write-Output "Failed to create registry path: $_"
+                                Add-Log -Message "Failed to create registry path: $_" -Level "ERROR"
                             }
                         } else {
-
                             Set-ItemProperty -Path $Path -Name $Name -Type $Type -Value $Value -Force -ErrorAction Stop
-                            Write-Host "$($Name) Successful applied" -ForegroundColor Yellow
-                            Write-Output "Registry path already exists."
+                            Add-Log -Message "$($Name) Successful applied" -Level "INFO"
                         }
 
                     }
@@ -8289,11 +8316,11 @@ function Invoke-ApplyTweaks
                             # Delete the registry key and all subkeys recursively
 
                             Remove-Item -Path "Registry::$KeyPath" -Recurse -Force
+                            Add-Log -Message "successful removed." -Level "INFO"
 
-                            Write-Host "successful removed" -ForegroundColor Yellow
 
                         } else {
-                            Write-Host "Registry key '$KeyPath' does not exist." -ForegroundColor Red
+                            Add-Log -Message "Registry key '$KeyPath' does not exist." -Level "INFO"
                         }
                     }
                     catch {
@@ -8315,10 +8342,11 @@ function Invoke-ApplyTweaks
 
                             Set-Service -Name $ServiceName -StartupType $StartupType -ErrorAction Stop
                             Stop-Service -Name $ServiceName 
-                            Write-Host "Service '$ServiceName' disabled." -ForegroundColor Yellow
+                            Add-Log -Message "Service '$ServiceName' disabled." -Level "INFO"
+
                         }
                         else {
-                            Write-Host "Service '$ServiceName' not found." -ForegroundColor Yellow
+                            Add-Log -Message "Service '$ServiceName' not found." -Level "INFO"
                         }
                     }
                     catch
@@ -8338,14 +8366,15 @@ function Invoke-ApplyTweaks
                         try {
 
                             powershell.exe -Command "Import-Module Appx; Get-AppxPackage -AllUsers -Name $($Name) | Remove-AppxPackage -ErrorAction Stop"
-                            Write-Host "Successfully removed $($Name)" -ForegroundColor Yellow
+                            Add-Log -Message "Successfully removed $($Name)" -Level "INFO"
+
                         } 
                         catch {
-                            #Write-Host "Failed to remove $($Name). $_" -ForegroundColor red
+                            Write-Host "Failed to remove $($Name). $_" -ForegroundColor red
                         }
                     }
                     else {
-                        Write-Host "$($Name) : Not installed." -ForegroundColor Yellow
+                        Add-Log -Message "$($Name) : Not installed." -Level "INFO"
                     }
                 }
                 
@@ -8382,26 +8411,28 @@ function Invoke-ApplyTweaks
 
                     UpdateUI -InstallBtn "Apply" -Description "" 
 
-                    Start-Sleep 5
+                    Start-Sleep 10
 
                     Clear-Host
 
-Write-Host "
- +----------------------------------------------------------------------------+
- |  ___ _____ _____   _____ __  __    _    ____       _    ____  _____ _      |
- | |_ _|_   _|_   _| | ____|  \/  |  / \  |  _ \     / \  |  _ \| ____| |     |
- |  | |  | |   | |   |  _| | |\/| | / _ \ | | | |   / _ \ | | | |  _| | |     |
- |  | |  | |   | |   | |___| |  | |/ ___ \| |_| |  / ___ \| |_| | |___| |___  |
- | |___| |_|   |_|   |_____|_|  |_/_/   \_\____/  /_/   \_\____/|_____|_____| |
- |                                                                            |
- +----------------------------------------------------------------------------+
- You ready to Install anything.
+                    Write-Host "+==============================================================================+";
+                    Write-Host "|                                                                              |";
+                    Write-Host "|                                                                              |";
+                    Write-Host "|   ___ _____ _____   _____ __  __    _    ____       _    ____  _____ _       |";
+                    Write-Host "|  |_ _|_   _|_   _| | ____|  \/  |  / \  |  _ \     / \  |  _ \| ____| |      |";
+                    Write-Host "|   | |  | |   | |   |  _| | |\/| | / _ \ | | | |   / _ \ | | | |  _| | |      |";
+                    Write-Host "|   | |  | |   | |   | |___| |  | |/ ___ \| |_| |  / ___ \| |_| | |___| |___   |";
+                    Write-Host "|  |___| |_|   |_|   |_____|_|  |_/_/   \_\____/  /_/   \_\____/|_____|_____|  |";
+                    Write-Host "|                                                                              |";
+                    Write-Host "|                                                                              |";
+                    Write-Host "+==============================================================================+";
+                    Write-Host "`n` You ready to Install anything."
+                    Write-Host  "`n` (IT Tools) is open source, You can contribute to improving the tool."
+                    Write-Host " If you have trouble installing a program, report the problem on feedback links"
+                    Write-Host  " https://github.com/emadadel4/ITT/issues"
+                    Write-Host  " https://t.me/emadadel4"
 
- (IT Tools) is open source, You can contribute to improving the tool.
- If you have trouble installing a program, report the problem on feedback links
- https://github.com/emadadel4/ITT/issues
- https://t.me/emadadel4
-                    " -ForegroundColor White
+         
                 }
                 
                 function CustomMsg 
@@ -8433,7 +8464,7 @@ Write-Host "
                                 "command" {
                                     
                                     foreach ($cmd in $app.Command) {
-                                        ExecuteCommand -Command $cmd
+                                        ExecuteCommand -Name $app.Name -Command $cmd
                                     }
 
                                     if($app.Refresh -eq "true")
@@ -8682,6 +8713,34 @@ function Invoke-Install
 
             param($selectedApps)
 
+            function Add-Log {
+                param (
+                    [string]$Message,
+                    [string]$Level = "INFO"
+                )
+            
+                # Get the current timestamp
+                $timestamp = Get-Date -Format "HH:mm"
+            
+                # Determine the color based on the log level
+                switch ($Level.ToUpper()) {
+                    "INFO" { $color = "Green" }
+                    "WARNING" { $color = "Yellow" }
+                    "ERROR" { $color = "Red" }
+                    default { $color = "White" }
+                }
+            
+                # Construct the log message
+                $logMessage = "$Message"
+                $date =  "[$timestamp $Level]"
+            
+                # Write the log message to the console with the specified color
+                Write-Host "`n` ====================================================================" -ForegroundColor $color
+                Write-Host " $date" -ForegroundColor Yellow ; Write-Host " *$logMessage * " -ForegroundColor $color 
+                Write-Host "========================================================================" -ForegroundColor $color
+
+            }
+
             function UpdateUI {
 
                 param($InstallBtn,$Description)
@@ -8764,22 +8823,22 @@ function Invoke-Install
 
                 Clear-Host
 
-Write-Host "
-+----------------------------------------------------------------------------+
-|  ___ _____ _____   _____ __  __    _    ____       _    ____  _____ _      |
-| |_ _|_   _|_   _| | ____|  \/  |  / \  |  _ \     / \  |  _ \| ____| |     |
-|  | |  | |   | |   |  _| | |\/| | / _ \ | | | |   / _ \ | | | |  _| | |     |
-|  | |  | |   | |   | |___| |  | |/ ___ \| |_| |  / ___ \| |_| | |___| |___  |
-| |___| |_|   |_|   |_____|_|  |_/_/   \_\____/  /_/   \_\____/|_____|_____| |
-|                                                                            |
-+----------------------------------------------------------------------------+
-You ready to Install anything.
-
-(IT Tools) is open source, You can contribute to improving the tool.
-If you have trouble installing a program, report the problem on feedback links
-https://github.com/emadadel4/ITT/issues
-https://t.me/emadadel4
-" -ForegroundColor White
+                    Write-Host "+==============================================================================+";
+                    Write-Host "|                                                                              |";
+                    Write-Host "|                                                                              |";
+                    Write-Host "|   ___ _____ _____   _____ __  __    _    ____       _    ____  _____ _       |";
+                    Write-Host "|  |_ _|_   _|_   _| | ____|  \/  |  / \  |  _ \     / \  |  _ \| ____| |      |";
+                    Write-Host "|   | |  | |   | |   |  _| | |\/| | / _ \ | | | |   / _ \ | | | |  _| | |      |";
+                    Write-Host "|   | |  | |   | |   | |___| |  | |/ ___ \| |_| |  / ___ \| |_| | |___| |___   |";
+                    Write-Host "|  |___| |_|   |_|   |_____|_|  |_/_/   \_\____/  /_/   \_\____/|_____|_____|  |";
+                    Write-Host "|                                                                              |";
+                    Write-Host "|                                                                              |";
+                    Write-Host "+==============================================================================+";
+                    Write-Host "`n` You ready to Install anything."
+                    Write-Host  "`n` (IT Tools) is open source, You can contribute to improving the tool."
+                    Write-Host "If you have trouble installing a program, report the problem on feedback links"
+                    Write-Host  "https://github.com/emadadel4/ITT/issues"
+                    Write-Host  "https://t.me/emadadel4"
             }
 
             function SendApps {
@@ -8913,11 +8972,12 @@ https://t.me/emadadel4
                 }
             
                 # Construct the log message
-                $logMessage = "[$timestamp $Level] $Message"
+                $logMessage = "$Message"
+                $date =  "[$timestamp $Level]"
             
                 # Write the log message to the console with the specified color
-                Write-Host "`n` ========================================================================" -ForegroundColor $color
-                Write-Host " * $logMessage * " -ForegroundColor $color
+                Write-Host "`n` ====================================================================" -ForegroundColor $color
+                Write-Host " $date" -ForegroundColor Yellow ; Write-Host " *$logMessage * " -ForegroundColor $color 
                 Write-Host "========================================================================" -ForegroundColor $color
 
             }
