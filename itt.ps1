@@ -7802,9 +7802,7 @@ try {
     if($sync.Langusege -ne "en")
     {
         switch ($sync.Langusege) {
-            "en" {
-                $sync["window"].DataContext = $sync.database.locales.en
-            }
+         
             "ar" {
                 $sync["window"].DataContext = $sync.database.locales.ar
             }
