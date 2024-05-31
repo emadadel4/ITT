@@ -7801,7 +7801,7 @@ try {
 
     if($sync.Langusege -ne "en")
     {
-        switch ($shortCulture) {
+        switch ($sync.Langusege) {
             "en" {
                 $sync["window"].DataContext = $sync.database.locales.en
             }
@@ -7811,7 +7811,7 @@ try {
             default {
                 # Default to English for any other culture or invalid input
                 $sync["window"].DataContext = $sync.database.locales.en
-                Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "locales" -Value "en" -Force 
+                Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "locales" -Value "$shortCulture" -Force 
                 #Write-Host "fallback to default lang"
             }
         }
