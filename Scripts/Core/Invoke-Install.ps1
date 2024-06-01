@@ -80,13 +80,14 @@ function Invoke-Install
     
     if($sync.ProcessRunning)
     {
-        $msg = "Please wait there is a process in the background."
+        $localizedMessageTemplate = $sync.database.locales.$($sync.Langusege).Pleasewait
+        $msg = "$localizedMessageTemplate"
         [System.Windows.MessageBox]::Show($msg, "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
         return
     }
 
     $sync.category.SelectedIndex = 0
-    ShowSelectedItems
+    #ShowSelectedItems
 
     $selectedApps += Get-SelectedApps
     
@@ -468,14 +469,17 @@ function Invoke-Install
 
             try 
             {
+                $areyousuremsg = $sync.database.locales.$($sync.Langusege).InstallMessage
+                $installBtn = $sync.database.locales.$($sync.Langusege).installBtn
+                $downloading = $sync.database.locales.$($sync.Langusege).downloading
 
-                $result = [System.Windows.MessageBox]::Show("Do you want to install $($selectedApps.Count) selected apps", "ITT | Emad Adel", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)
+                $result = [System.Windows.MessageBox]::Show("[$($selectedApps.Count)] $areyousuremsg ", "ITT | Emad Adel", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)
                 
                 if($result -eq "Yes")
                 {
                     $sync.ProcessRunning = $true
 
-                    UpdateUI -InstallBtn "Downloading..." -Description "Downloading..." 
+                    UpdateUI -InstallBtn "$downloading" 
 
                     #Write-Host "Installing Follwing Apps $($selectedApps.Name)" -ForegroundColor Green
 
@@ -491,7 +495,7 @@ function Invoke-Install
 
 
                     Notify -title "ITT Emad Adel" -msg "Installed successfully: Portable Apps will save in C:\ProgramData\chocolatey\lib" -icon "Info" -time 8000
-                    UpdateUI -InstallBtn "Install..."
+                    UpdateUI -InstallBtn "$installBtn"
                     Add-Log -Message "Portable Apps will save in C:\ProgramData\chocolatey\lib." -Level "INFO"
                     CustomMsg -title "ITT | Emad Adel" -msg "Installed successfully: Portable Apps will save in C:\ProgramData\chocolatey\lib" -MessageBoxImage "Information" -MessageBoxButton "OK"
                     Finish
@@ -529,6 +533,8 @@ function Invoke-Install
     }
     else
     {
-        [System.Windows.MessageBox]::Show("Choose at least one program", "ITT | Emad Adel", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
+        $localizedMessageTemplate = $sync.database.locales.$($sync.Langusege).choseapp
+        $localizedMessage = $localizedMessageTemplate
+        [System.Windows.MessageBox]::Show("$localizedMessageTemplate", "ITT | Emad Adel", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
     }
 }
