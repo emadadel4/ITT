@@ -8213,7 +8213,7 @@ function Invoke-ApplyTweaks
 
     if($sync.ProcessRunning)
     {
-        $localizedMessageTemplate = $sync.database.locales.$($sync.Langusege).chosetweak
+        $localizedMessageTemplate = $sync.database.locales.$($sync.Langusege).Pleasewait
         $msg = "$localizedMessageTemplate"
         [System.Windows.MessageBox]::Show($msg, "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
         return
@@ -8568,7 +8568,8 @@ function Invoke-ApplyTweaks
         }
         else
         {
-            [System.Windows.MessageBox]::Show("Choose at least one tweak", "ITT | Emad Adel", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
+            $localizedMessageTemplate = $sync.database.locales.$($sync.Langusege).chosetweak
+            [System.Windows.MessageBox]::Show("$localizedMessageTemplate", "ITT | Emad Adel", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
         }
 }
 
