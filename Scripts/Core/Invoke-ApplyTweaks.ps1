@@ -83,7 +83,8 @@ function Invoke-ApplyTweaks
 
     if($sync.ProcessRunning)
     {
-        $msg = "Please wait for the tweak to be applying...."
+        $localizedMessageTemplate = $sync.database.locales.$($sync.Langusege).Pleasewait
+        $msg = "$localizedMessageTemplate"
         [System.Windows.MessageBox]::Show($msg, "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
         return
     }
@@ -290,7 +291,6 @@ function Invoke-ApplyTweaks
                         }
                     })
 
-                    UpdateUI -InstallBtn "Apply" -Description "" 
 
                     Start-Sleep 10
 
@@ -333,11 +333,16 @@ function Invoke-ApplyTweaks
 
                 try
                 {
-                    $msg = [System.Windows.MessageBox]::Show("Do you want to apply $($tweaks.Count) selected Tweaks", "ITT | Emad Adel", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)
+                    $areyousuremsg = $sync.database.locales.$($sync.Langusege).ApplyMessage
+                    $applyBtn = $sync.database.locales.$($sync.Langusege).applyBtn
+                    $Applying = $sync.database.locales.$($sync.Langusege).Applying
+
+
+                    $msg = [System.Windows.MessageBox]::Show("[$($tweaks.Count)] $areyousuremsg", "ITT | Emad Adel", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)
 
                     if ($msg -eq "Yes")
                     {
-                        UpdateUI -InstallBtn "Applying..." -Description "Applying..." 
+                        UpdateUI -InstallBtn "$applying" 
                         $sync.ProcessRunning = $true
 
                         foreach ($app in $tweaks) {
@@ -396,6 +401,7 @@ function Invoke-ApplyTweaks
                         # restart explorer
                         #Stop-Process -Name explorer -Force; Start-Process explorer
 
+                        UpdateUI -InstallBtn "$applyBtn" -Description "" 
                         $sync.ProcessRunning = $False
                         CustomMsg -title "ITT | Emad Adel" -msg "Done" -MessageBoxImage "Information" -MessageBoxButton "OK"
                         Start-Sleep -Seconds 1
@@ -432,6 +438,7 @@ function Invoke-ApplyTweaks
         }
         else
         {
-            [System.Windows.MessageBox]::Show("Choose at least one tweak", "ITT | Emad Adel", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
+            $localizedMessageTemplate = $sync.database.locales.$($sync.Langusege).chosetweak
+            [System.Windows.MessageBox]::Show("$localizedMessageTemplate", "ITT | Emad Adel", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
         }
 }
