@@ -29,7 +29,7 @@ Add-Type -AssemblyName System.Windows.Forms
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "31-05-2024"
+$sync.version = "01-06-2024"
 $sync.github =   "https://github.com/emadadel4"
 $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://eprojects.orgfree.com"
@@ -4032,6 +4032,7 @@ $sync.database.locales = '{
   "en": {
     "installBtn": "Install",
     "applyBtn": "Apply",
+    "downloading": "Downloading",
     "about":"About",
     "mirrorLinks":"Mirror Links",
     "pref":"Preferences",
@@ -4048,8 +4049,13 @@ $sync.database.locales = '{
     "en":"English",
     "ar":"عربي",
     "lang":"Langusege",
-    "installmsg":"Do you want install selected apps",
+    "InstallMessage":"Do you want install selected apps",
+    "ApplyMessage":"Do you want to apply selected tweaks",
+    "installing": "Installing..",
+    "Applying": "Applying..",
     "choseapp":"Select at lest app to install",
+    "chosetweak":"Please wait for the tweak to be applying",
+    "Pleasewait": "Please wait there is a process in the background.",
     "lastupdate":"Last update",
     "sourcecode":"Source Code",
     "devby":"Development by Emad Adel"
@@ -4057,6 +4063,7 @@ $sync.database.locales = '{
   "ar": {
     "InstallBtn": "تثبيت",
     "applyBtn": "تطبيق",
+    "downloading": "جإري التثبيت",
     "about":"عن المطور",
     "mirrorLinks":"روابط خارجية",
     "pref":"التفضيلات",
@@ -4073,8 +4080,12 @@ $sync.database.locales = '{
     "en":"English",
     "ar":"عربي",
     "lang":"اللغة",
-    "installmsg":"هل تريد تثبيت البرامج المختارة؟",
+    "InstallMessage":"هل تريد تثبيت البرامج المختارة؟",
+    "ApplyMessage":"هل تريد تطبيق التحسينات المختارة؟",
+    "Applying": "جإري التطبيق",
+    "Pleasewait": "يرجى الانظار يوجد برامح تثبت في الحلفية",
     "choseapp":"أختار على الاقل تطبيق لتثبيته",
+    "chosetweak":"أختار على الاقل اي تحسين لتطبيقه",
     "lastupdate":"اخر تحديث",
     "sourcecode":"اكواد الاداة",
     "devby":"تطوير بواسطة عماد عادل"
@@ -8202,7 +8213,8 @@ function Invoke-ApplyTweaks
 
     if($sync.ProcessRunning)
     {
-        $msg = "Please wait for the tweak to be applying...."
+        $localizedMessageTemplate = $sync.database.locales.$($sync.Langusege).Pleasewait
+        $msg = "$localizedMessageTemplate"
         [System.Windows.MessageBox]::Show($msg, "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
         return
     }
@@ -8409,7 +8421,6 @@ function Invoke-ApplyTweaks
                         }
                     })
 
-                    UpdateUI -InstallBtn "Apply" -Description "" 
 
                     Start-Sleep 10
 
@@ -8452,11 +8463,16 @@ function Invoke-ApplyTweaks
 
                 try
                 {
-                    $msg = [System.Windows.MessageBox]::Show("Do you want to apply $($tweaks.Count) selected Tweaks", "ITT | Emad Adel", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)
+                    $areyousuremsg = $sync.database.locales.$($sync.Langusege).ApplyMessage
+                    $applyBtn = $sync.database.locales.$($sync.Langusege).applyBtn
+                    $Applying = $sync.database.locales.$($sync.Langusege).Applying
+
+
+                    $msg = [System.Windows.MessageBox]::Show("[$($tweaks.Count)] $areyousuremsg", "ITT | Emad Adel", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)
 
                     if ($msg -eq "Yes")
                     {
-                        UpdateUI -InstallBtn "Applying..." -Description "Applying..." 
+                        UpdateUI -InstallBtn "$applying" 
                         $sync.ProcessRunning = $true
 
                         foreach ($app in $tweaks) {
@@ -8515,6 +8531,7 @@ function Invoke-ApplyTweaks
                         # restart explorer
                         #Stop-Process -Name explorer -Force; Start-Process explorer
 
+                        UpdateUI -InstallBtn "$applyBtn" -Description "" 
                         $sync.ProcessRunning = $False
                         CustomMsg -title "ITT | Emad Adel" -msg "Done" -MessageBoxImage "Information" -MessageBoxButton "OK"
                         Start-Sleep -Seconds 1
@@ -8551,7 +8568,8 @@ function Invoke-ApplyTweaks
         }
         else
         {
-            [System.Windows.MessageBox]::Show("Choose at least one tweak", "ITT | Emad Adel", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
+            $localizedMessageTemplate = $sync.database.locales.$($sync.Langusege).chosetweak
+            [System.Windows.MessageBox]::Show("$localizedMessageTemplate", "ITT | Emad Adel", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
         }
 }
 
@@ -8697,13 +8715,14 @@ function Invoke-Install
     
     if($sync.ProcessRunning)
     {
-        $msg = "Please wait there is a process in the background."
+        $localizedMessageTemplate = $sync.database.locales.$($sync.Langusege).Pleasewait
+        $msg = "$localizedMessageTemplate"
         [System.Windows.MessageBox]::Show($msg, "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
         return
     }
 
     $sync.category.SelectedIndex = 0
-    ShowSelectedItems
+    #ShowSelectedItems
 
     $selectedApps += Get-SelectedApps
     
@@ -9085,14 +9104,17 @@ function Invoke-Install
 
             try 
             {
+                $areyousuremsg = $sync.database.locales.$($sync.Langusege).InstallMessage
+                $installBtn = $sync.database.locales.$($sync.Langusege).installBtn
+                $downloading = $sync.database.locales.$($sync.Langusege).downloading
 
-                $result = [System.Windows.MessageBox]::Show("Do you want to install $($selectedApps.Count) selected apps", "ITT | Emad Adel", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)
+                $result = [System.Windows.MessageBox]::Show("[$($selectedApps.Count)] $areyousuremsg ", "ITT | Emad Adel", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)
                 
                 if($result -eq "Yes")
                 {
                     $sync.ProcessRunning = $true
 
-                    UpdateUI -InstallBtn "Downloading..." -Description "Downloading..." 
+                    UpdateUI -InstallBtn "$downloading" 
 
                     #Write-Host "Installing Follwing Apps $($selectedApps.Name)" -ForegroundColor Green
 
@@ -9108,7 +9130,7 @@ function Invoke-Install
 
 
                     Notify -title "ITT Emad Adel" -msg "Installed successfully: Portable Apps will save in C:\ProgramData\chocolatey\lib" -icon "Info" -time 8000
-                    UpdateUI -InstallBtn "Install..."
+                    UpdateUI -InstallBtn "$installBtn"
                     Add-Log -Message "Portable Apps will save in C:\ProgramData\chocolatey\lib." -Level "INFO"
                     CustomMsg -title "ITT | Emad Adel" -msg "Installed successfully: Portable Apps will save in C:\ProgramData\chocolatey\lib" -MessageBoxImage "Information" -MessageBoxButton "OK"
                     Finish
@@ -9146,7 +9168,9 @@ function Invoke-Install
     }
     else
     {
-        [System.Windows.MessageBox]::Show("Choose at least one program", "ITT | Emad Adel", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
+        $localizedMessageTemplate = $sync.database.locales.$($sync.Langusege).choseapp
+        $localizedMessage = $localizedMessageTemplate
+        [System.Windows.MessageBox]::Show("$localizedMessageTemplate", "ITT | Emad Adel", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
     }
 }
 
