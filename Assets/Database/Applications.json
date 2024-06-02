@@ -1552,7 +1552,7 @@
         "output": "ITT/Downloads"
       }
     ],
-    "category": "Utilities",
+    "category": "Portable",
     "suggestion": "true",
     "check": "false"
   },
@@ -1608,7 +1608,7 @@
     "check": "false"
   },
   {
-    "Name": "Ventoy Portable",
+    "Name": "Ventoy",
     "Description": "An open-source tool for creating bootable USB drives with multiple ISO files, allowing users to boot various operating systems or utilities directly from a single USB drive.",
     "winget": "Ventoy.Ventoy",
     "choco": "ventoy",
@@ -1792,7 +1792,7 @@
         "output": "ITT/Downloads"
       }
     ],
-    "category": "Utilities",
+    "category": "Portable",
     "check": "false"
   },
   {
@@ -2218,7 +2218,7 @@
         "output": "ITT/Downloads"
       }
     ],
-    "category": "Development",
+    "category": "Portable",
     "check": "false"
   },
   {
@@ -3697,7 +3697,7 @@
         "output": "none"
       }
     ],
-    "category": "Utilities",
+    "category": "Portable",
     "check": "false"
   },
   {
