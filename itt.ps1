@@ -29,7 +29,7 @@ Add-Type -AssemblyName System.Windows.Forms
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "01-06-2024"
+$sync.version = "02-06-2024"
 $sync.github =   "https://github.com/emadadel4"
 $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://eprojects.orgfree.com"
@@ -5104,7 +5104,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                 <Border Padding="4" Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}"
-                        CornerRadius="2"> <!-- Set the corner radius here -->
+                        CornerRadius="0"> <!-- Set the corner radius here -->
                     <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                       VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                 </Border>
@@ -5125,6 +5125,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
   <Style TargetType="CheckBox">
       <Setter Property="Foreground" Value="{DynamicResource DefaultTextColor}"/>
       <Setter Property="Margin" Value="0"/>
+      <Setter Property="BorderThickness" Value="0"/>
 
 
         <Setter Property="Template">
@@ -5137,7 +5138,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                                 <Path x:Name="CheckMark" Width="7" Height="7" SnapsToDevicePixels="False" Stroke="blue" StrokeThickness="2" Data="M 0 3.5 L 7 3.5 M 3.5 0 L 3.5 7" Visibility="Collapsed"/>
                             </Grid>
                             <!-- Content with background -->
-                            <Border CornerRadius="2" Background="{DynamicResource checkboxBG}"
+                            <Border CornerRadius="0" Background="{DynamicResource checkboxBG}"
                                     BorderBrush="{TemplateBinding BorderBrush}"
                                     BorderThickness="{TemplateBinding BorderThickness}"
                                     Padding="5">
@@ -5157,7 +5158,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                          <Trigger Property="IsMouseOver" Value="True">
                             <Setter Property="Background" Value="{DynamicResource highlight}"/>
                             <Setter  Property="BorderBrush" Value="{DynamicResource highlight}"/>
-                            <Setter  Property="BorderThickness" Value="1.5"/>
+                            <Setter  Property="BorderThickness" Value="1.2"/>
                         </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -5169,7 +5170,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
 <!--Menu Style-->
   <Style TargetType="Menu">
       <Setter Property="Background" Value="{DynamicResource BGColor}"/>
-      <Setter Property="Margin" Value="15"/>
+      <Setter Property="Margin" Value="10"/>
   </Style>
 <!--End Menu Style-->
 
@@ -5214,11 +5215,12 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
 <!--End MenuItem Style-->
 
 <!--ListViewItem Style-->
-    <Style TargetType="ListViewItem">
-        <Setter Property="Background" Value="{DynamicResource FGColor}"/>
-        <Setter Property="Margin" Value="3"/>
-        <Setter Property="BorderThickness" Value="2"/>
-    </Style>
+<Style TargetType="ListViewItem">
+    <Setter Property="Background" Value="{DynamicResource FGColor}"/>
+    <Setter Property="Margin" Value="2"/>
+    <Setter Property="BorderThickness" Value="0"/>
+</Style>
+
 <!--End ListViewItem Style-->
 
 <!--Scrollbar Thumbs-->
