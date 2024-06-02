@@ -305,16 +305,16 @@
                                                 <ColumnDefinition Width="2*" />
                                                 <ColumnDefinition Width="*" />
                                             </Grid.ColumnDefinitions>
-                                            <Border x:Name="Border"  Grid.ColumnSpan="2" CornerRadius="10" Background="{DynamicResource FGColor}" BorderBrush="Transparent" BorderThickness="0" />
-                                            <Border Grid.Column="0" CornerRadius="10"  Margin="1" VerticalAlignment="Center" HorizontalAlignment="Center"  Background="{DynamicResource FGColor}"  BorderBrush="Transparent" BorderThickness="0" />
+                                            <Border x:Name="Border"  Grid.ColumnSpan="2" CornerRadius="8" Background="{DynamicResource FGColor}" BorderBrush="Transparent" BorderThickness="0" />
+                                            <Border Grid.Column="0" CornerRadius="8"  Margin="1" VerticalAlignment="Center" HorizontalAlignment="Center"  Background="{DynamicResource FGColor}"  BorderBrush="Transparent" BorderThickness="0" />
                                             <Path x:Name="Arrow" Grid.Column="1"  Fill="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center" Data="M 0 0 L 4 4 L 8 0 Z"/>
                                         </Grid>
                                     <ControlTemplate.Triggers>
                                         <Trigger Property="ToggleButton.IsMouseOver" Value="true">
-                                        <Setter TargetName="Border" Property="Background" Value="Transparent" />
+                                            <Setter TargetName="Border" Property="Background" Value="{DynamicResource FGColor}" />
                                         </Trigger>
                                         <Trigger Property="ToggleButton.IsChecked" Value="true">
-                                        <Setter TargetName="Border" Property="Background" Value="Transparent" />
+                                            <Setter TargetName="Border" Property="Background" Value="Transparent" />
                                         </Trigger>
                                     </ControlTemplate.Triggers>
                                 </ControlTemplate>
