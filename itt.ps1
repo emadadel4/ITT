@@ -5346,16 +5346,16 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                                                 <ColumnDefinition Width="2*" />
                                                 <ColumnDefinition Width="*" />
                                             </Grid.ColumnDefinitions>
-                                            <Border x:Name="Border"  Grid.ColumnSpan="2" CornerRadius="10" Background="{DynamicResource FGColor}" BorderBrush="Transparent" BorderThickness="0" />
-                                            <Border Grid.Column="0" CornerRadius="10"  Margin="1" VerticalAlignment="Center" HorizontalAlignment="Center"  Background="{DynamicResource FGColor}"  BorderBrush="Transparent" BorderThickness="0" />
+                                            <Border x:Name="Border"  Grid.ColumnSpan="2" CornerRadius="8" Background="{DynamicResource FGColor}" BorderBrush="Transparent" BorderThickness="0" />
+                                            <Border Grid.Column="0" CornerRadius="8"  Margin="1" VerticalAlignment="Center" HorizontalAlignment="Center"  Background="{DynamicResource FGColor}"  BorderBrush="Transparent" BorderThickness="0" />
                                             <Path x:Name="Arrow" Grid.Column="1"  Fill="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center" Data="M 0 0 L 4 4 L 8 0 Z"/>
                                         </Grid>
                                     <ControlTemplate.Triggers>
                                         <Trigger Property="ToggleButton.IsMouseOver" Value="true">
-                                        <Setter TargetName="Border" Property="Background" Value="Transparent" />
+                                            <Setter TargetName="Border" Property="Background" Value="{DynamicResource FGColor}" />
                                         </Trigger>
                                         <Trigger Property="ToggleButton.IsChecked" Value="true">
-                                        <Setter TargetName="Border" Property="Background" Value="Transparent" />
+                                            <Setter TargetName="Border" Property="Background" Value="Transparent" />
                                         </Trigger>
                                     </ControlTemplate.Triggers>
                                 </ControlTemplate>
@@ -5448,6 +5448,9 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
 
         <!--Menu Section-->
             <Menu Grid.Row="0"  Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Left" BorderThickness="0">
+
+
+               
                 
                 <MenuItem IsEnabled="False">
                     <MenuItem.Icon>
@@ -5461,6 +5464,28 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                     </MenuItem.Icon>
             
                 </MenuItem>
+
+                 <!--Catagory Section-->
+                    <ComboBox SelectedIndex="0" Margin="-20,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" Name="category"  Width="115">
+                        <ComboBoxItem Content="All Categories"></ComboBoxItem>
+                        <ComboBoxItem Content="Web Browsers"></ComboBoxItem>
+                        <ComboBoxItem Content="Media"></ComboBoxItem> 
+                        <ComboBoxItem Content="Runtimes"></ComboBoxItem>
+                        <ComboBoxItem Content="Documents"></ComboBoxItem>
+                        <ComboBoxItem Content="Compression"></ComboBoxItem>
+                        <ComboBoxItem Content="Communication"></ComboBoxItem>
+                        <ComboBoxItem Content="File Sharing"></ComboBoxItem>
+                        <ComboBoxItem Content="Imaging"></ComboBoxItem>
+                        <ComboBoxItem Content="Gaming"></ComboBoxItem>
+                        <ComboBoxItem Content="Utilities"></ComboBoxItem>
+                        <ComboBoxItem Content="Disk Tools"></ComboBoxItem>
+                        <ComboBoxItem Content="Development"></ComboBoxItem>
+                        <ComboBoxItem Content="Microsoft"></ComboBoxItem>
+                        <ComboBoxItem Content="Security"></ComboBoxItem>
+                        <ComboBoxItem Content="Drivers"></ComboBoxItem>
+                    </ComboBox>
+                <!--End Catagory Section-->
+
 
                 <MenuItem Header="{Binding device}" Margin="10,0,0,0" BorderBrush="Transparent" BorderThickness="0" VerticalAlignment="Center" HorizontalAlignment="Center">
                     <MenuItem.Icon>
@@ -5546,29 +5571,6 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                     </MenuItem.Icon>
                 </MenuItem>
 
-            <!--Catagory Section-->
-                <ComboBox SelectedIndex="0" Margin="-20,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" Name="category"  Width="115">
-                    <ComboBoxItem Content="All Categories"></ComboBoxItem>
-                    <ComboBoxItem Content="Web Browsers"></ComboBoxItem>
-                    <ComboBoxItem Content="Media"></ComboBoxItem> 
-                    <ComboBoxItem Content="Runtimes"></ComboBoxItem>
-                    <ComboBoxItem Content="Documents"></ComboBoxItem>
-                    <ComboBoxItem Content="Compression"></ComboBoxItem>
-                    <ComboBoxItem Content="Communication"></ComboBoxItem>
-                    <ComboBoxItem Content="File Sharing"></ComboBoxItem>
-                    <ComboBoxItem Content="Imaging"></ComboBoxItem>
-                    <ComboBoxItem Content="Gaming"></ComboBoxItem>
-                    <ComboBoxItem Content="Utilities"></ComboBoxItem>
-                    <ComboBoxItem Content="Disk Tools"></ComboBoxItem>
-                    <ComboBoxItem Content="Development"></ComboBoxItem>
-                    <ComboBoxItem Content="Microsoft"></ComboBoxItem>
-                    <ComboBoxItem Content="Security"></ComboBoxItem>
-                    <ComboBoxItem Content="Drivers"></ComboBoxItem>
-                </ComboBox>
-            <!--End Catagory Section-->
-
-            
-
 
             </Menu>
         <!--End Menu Section-->
@@ -5576,7 +5578,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <!--Search Section-->
             <Grid HorizontalAlignment="Right" Margin="0,0,15,0" Grid.Row="0"  VerticalAlignment="Center" >
                 <TextBox Padding="5"
-                                    Width="130"
+                                    Width="110"
                                     VerticalAlignment="Center"
                                     HorizontalAlignment="Left" 
                                     Text="{Binding Text_searchInput}"
@@ -5588,7 +5590,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                                     FontFamily="Segoe MDL2 Assets" 
                                     VerticalAlignment="Center" 
                                     HorizontalAlignment="Left"
-                                    Margin="16,0,0,0"
+                                    Margin="15,0,0,0"
                                     FontSize="15"
                                     Foreground="{DynamicResource FGTextColor}">
 
