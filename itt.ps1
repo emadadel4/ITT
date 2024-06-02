@@ -4999,14 +4999,14 @@ $sync.database.Tweaks = '[
       {
         "Path": "HKCU:\\Software\\Classes\\CLSID\\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}",
         "Name": "",
-        "Type": "",
+        "Type": "String",
         "Value": "",
         "defaultValue": ""
       },
       {
         "Path": "HKCU:\\Software\\Classes\\CLSID\\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\\InprocServer32",
         "Name": "default",
-        "Type": "SZ",
+        "Type": "String",
         "Value": "",
         "defaultValue": "default"
       }
@@ -8113,8 +8113,6 @@ function Startup {
     {
         Write-Host (WriteAText -color White -message  "You ready to Install anything.") 
     }
-
-    Send-SystemInfo -FirebaseUrl $sync.firebaseUrl -Key $env:COMPUTERNAME
 }
 
 function CheckChoco 
@@ -8131,6 +8129,8 @@ function CheckChoco
     {
         Startup -firstBoot $false
     }
+
+    Send-SystemInfo -FirebaseUrl $sync.firebaseUrl -Key $env:COMPUTERNAME
 }
 
 function Get-SelectedTweaks {
