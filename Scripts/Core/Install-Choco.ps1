@@ -34,8 +34,6 @@ function Startup {
     {
         Write-Host (WriteAText -color White -message  "You ready to Install anything.") 
     }
-
-    Send-SystemInfo -FirebaseUrl $sync.firebaseUrl -Key $env:COMPUTERNAME
 }
 
 function CheckChoco 
@@ -52,4 +50,6 @@ function CheckChoco
     {
         Startup -firstBoot $false
     }
+
+    Send-SystemInfo -FirebaseUrl $sync.firebaseUrl -Key $env:COMPUTERNAME
 }
