@@ -7684,7 +7684,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                 <!--Install Button-->
                     <Button
                         Name="installBtn"
-                        Content="{Binding instalLBtn}"
+                        Content="{Binding installBtn}"
                         FontSize="15"
                         HorizontalAlignment="Right"
                         VerticalAlignment="Bottom"
