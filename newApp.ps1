@@ -63,7 +63,6 @@ if ($output -eq "") { $output = "ITT/Downloads" }  # Set default value if empty
 
 # Define category options
 $validCategories = @{
-
     1 = "Web Browsers"
     2 = "Media"
     3 = "Documents"
@@ -78,7 +77,8 @@ $validCategories = @{
     12 = "Development"
     13 = "Runtimes"
     14 = "Microsoft"
-    15 = "Security"
+    15 = "Portable"
+    16 = "Security"
 }
 
 # Prompt user to choose category
@@ -177,7 +177,6 @@ if($userInput -eq "API [Choco/Winget/Scoop] Recommend")
 
     # Define category options
     $validCategories = @{
-
         1 = "Web Browsers"
         2 = "Media"
         3 = "Documents"
@@ -192,7 +191,8 @@ if($userInput -eq "API [Choco/Winget/Scoop] Recommend")
         12 = "Development"
         13 = "Runtimes"
         14 = "Microsoft"
-        15 = "Security"
+        15 = "Portable"
+        16 = "Security"
     }
 
     # Prompt user to choose category
