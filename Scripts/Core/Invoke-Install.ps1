@@ -489,8 +489,6 @@ function Invoke-Install
                         Install-App -appName $app.Name -appChoco $app.Choco -appWinget $app.Winget
                     }
 
-                    Add-Log -Message "All applications have been processed." -Level "INFO"
-
                     Notify -title "ITT Emad Adel" -msg "Installed successfully: Portable Apps will save in C:\ProgramData\chocolatey\lib" -icon "Info" -time 8000
                     UpdateUI -InstallBtn "$installBtn"
                     Add-Log -Message "Portable Apps will save in C:\ProgramData\chocolatey\lib." -Level "INFO"
