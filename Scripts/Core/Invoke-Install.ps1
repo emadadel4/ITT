@@ -43,7 +43,7 @@ function Get-SelectedApps
     return $items 
 }
 
-function ShowSelectedItems {
+function FilterdSelectedItems {
     
     $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.AppsListView.Items)
 
@@ -87,7 +87,7 @@ function Invoke-Install
     }
 
     $sync.category.SelectedIndex = 0
-    #ShowSelectedItems
+    #FilterdSelectedItems
 
     $selectedApps += Get-SelectedApps
     
