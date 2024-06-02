@@ -5070,14 +5070,14 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
   <Style TargetType="TextBox">
     <Setter Property="Background" Value="{DynamicResource BGColor}"/>
       <Setter Property="Foreground" Value="{DynamicResource FGTextColor}"/>
-      <Setter Property="BorderThickness" Value="1"/>
+      <Setter Property="BorderThickness" Value="1.3"/>
       <Setter Property="Template">
           <Setter.Value>
               <ControlTemplate TargetType="TextBox">
                   <Border Margin="8" Background="{TemplateBinding Background}"
                           BorderBrush="{TemplateBinding BorderBrush}"
                           BorderThickness="{TemplateBinding BorderThickness}"
-                          CornerRadius="15"> <!-- Set CornerRadius here -->
+                          CornerRadius="14"> <!-- Set CornerRadius here -->
                       <ScrollViewer x:Name="PART_ContentHost" />
                   </Border>
               </ControlTemplate>
@@ -5085,7 +5085,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
       </Setter>
       <Style.Triggers>
               <Trigger Property="IsFocused" Value="True">
-                  <Setter Property="BorderThickness" Value="1"/>
+                  <Setter Property="BorderThickness" Value="1.4"/>
                   <Setter Property="BorderBrush" Value="{DynamicResource BGButtonColor}"/>
                   <Setter Property="Background" Value="{DynamicResource FGColor}"/>
               </Trigger>
