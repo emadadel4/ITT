@@ -481,8 +481,6 @@ function Invoke-Install
 
                     UpdateUI -InstallBtn "$downloading" 
 
-                    #Write-Host "Installing Follwing Apps $($selectedApps.Name)" -ForegroundColor Green
-
                     # Displaying the names of the selected apps
                     $selectedAppNames = $selectedApps | ForEach-Object { $_.Name }
 
