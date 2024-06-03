@@ -4404,7 +4404,7 @@ $sync.database.Tweaks = '[
     ]
   },
   {
-    "name": "Disable Start menu ads",
+    "name": "Disable Start Menu Ads",
     "description": "Disable Start menu Ads and Settings",
     "check": "false",
     "type": "modifying",
@@ -4498,7 +4498,7 @@ $sync.database.Tweaks = '[
     ]
   },
   {
-    "name": "Disable suggestions on start menu",
+    "name": "Disable suggestions on Start Menu",
     "description": "Disables suggestions on start menu",
     "check": "false",
     "type": "modifying",
@@ -7579,7 +7579,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
 
         <StackPanel Orientation="Vertical" Width="auto" Margin="8">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Disable Start menu ads"   FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <CheckBox Content="Disable Start Menu Ads"   FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content=""/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Disable Start menu Ads and Settings"/>
@@ -7603,7 +7603,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
 
         <StackPanel Orientation="Vertical" Width="auto" Margin="8">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Disable suggestions on start menu"   FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <CheckBox Content="Disable suggestions on Start Menu"   FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content=""/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Disables suggestions on start menu"/>
