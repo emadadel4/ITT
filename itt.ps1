@@ -4988,35 +4988,6 @@ $sync.database.Tweaks = '[
     "UndoCommand": [
       ""
     ]
-  },
-  {
-    "name": "Restore Classic Context Menu Windows 11",
-    "description": "Restore the old context menu in Windows 11",
-    "check": "false",
-    "type": "modifying",
-    "refresh": "false",
-    "Registry": [
-      {
-        "Path": "HKCU:\\Software\\Classes\\CLSID\\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}",
-        "Name": "",
-        "Type": "String",
-        "Value": "",
-        "defaultValue": ""
-      },
-      {
-        "Path": "HKCU:\\Software\\Classes\\CLSID\\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\\InprocServer32",
-        "Name": "default",
-        "Type": "String",
-        "Value": "",
-        "defaultValue": "default"
-      }
-    ],
-    "InvokeCommand": [
-      ""
-    ],
-    "UndoCommand": [
-      ""
-    ]
   }
 ]
 ' | ConvertFrom-Json
@@ -7653,14 +7624,6 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                 <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content=""/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="This tweak enables the classic Windows Photo Viewer on Windows 10"/>
-        </StackPanel>
-
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
-            <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Restore Classic Context Menu Windows 11"   FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content=""/>
-            </StackPanel>
-                <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Restore the old context menu in Windows 11"/>
         </StackPanel>
 
                                 </ListView>
