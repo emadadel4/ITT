@@ -8727,7 +8727,7 @@ function Invoke-Install
     }
 
     $sync.category.SelectedIndex = 0
-    #FilterdSelectedItems
+    FilterdSelectedItems
 
     $selectedApps += Get-SelectedApps
     
@@ -9163,7 +9163,6 @@ function Invoke-Install
         [System.Windows.MessageBox]::Show("$localizedMessageTemplate", "ITT | Emad Adel", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
     }
 }
-
 
 function GetCheckBoxesFromStackPanel {
     param (
