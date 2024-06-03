@@ -4994,7 +4994,7 @@ $sync.database.Tweaks = '[
     "description": "Restore the old context menu in Windows 11",
     "check": "false",
     "type": "modifying",
-    "refresh": "false",
+    "refresh": "true",
     "Registry": [
       {
         "Path": "HKCU:\\Software\\Classes\\CLSID\\",
@@ -8491,7 +8491,9 @@ function Invoke-ApplyTweaks
                                     if($app.Refresh -eq "true")
                                     {
                                         Write-Host "Restarting exploror..."
-                                        #Stop-Process -Name explorer -Force
+                                        Stop-Process -Name explorer -Force
+                                        Start-Process explorer
+
                                     }
                                 }
                                 "modifying" {
@@ -8503,7 +8505,8 @@ function Invoke-ApplyTweaks
                                     if($app.Refresh -eq "true")
                                     {
                                         Write-Host "Restarting exploror..."
-                                        #Stop-Process -Name explorer -Force
+                                        Stop-Process -Name explorer -Force
+                                        Start-Process explorer
                                     }
 
                                 }
@@ -8516,7 +8519,8 @@ function Invoke-ApplyTweaks
                                     if($app.Refresh -eq "true")
                                     {
                                         Write-Host "Restarting exploror..."
-                                        #Stop-Process -Name explorer -Force
+                                        Stop-Process -Name explorer -Force
+                                        Start-Process explorer
                                     }
                                 }
                                 "service" {
