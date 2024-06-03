@@ -228,7 +228,7 @@
     ]
   },
   {
-    "name": "Disable Start menu ads",
+    "name": "Disable Start Menu Ads",
     "description": "Disable Start menu Ads and Settings",
     "check": "false",
     "type": "modifying",
@@ -322,7 +322,7 @@
     ]
   },
   {
-    "name": "Disable suggestions on start menu",
+    "name": "Disable suggestions on Start Menu",
     "description": "Disables suggestions on start menu",
     "check": "false",
     "type": "modifying",
