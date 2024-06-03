@@ -242,22 +242,16 @@ function Invoke-ApplyTweaks
                     param (
                         $Name
                     )
-                    
-                    if (powershell.exe -Command "Import-Module Appx; if (Get-AppxPackage -Name '$Name' -ErrorAction SilentlyContinue) { exit 0 } else { exit 1 }")
-                    {
                         try {
 
-                            powershell.exe -Command "Import-Module Appx; Get-AppxPackage -AllUsers -Name $($Name) | Remove-AppxPackage -ErrorAction Stop"
+                            #powershell.exe -Command "Import-Module Appx; Get-AppxPackage -AllUsers -Name "$($Name)" | Remove-AppxPackage -ErrorAction Stop"
+                            Start-Process powershell.exe -ArgumentList "-Command `"Import-Module Appx; Get-AppxPackage -AllUsers -Name '$($Name)' | Remove-AppxPackage -ErrorAction Stop`"" -NoNewWindow  -Wait 
                             Add-Log -Message "Successfully removed $($Name)" -Level "INFO"
 
                         } 
                         catch {
                             Write-Host "Failed to remove $($Name). $_" -ForegroundColor red
                         }
-                    }
-                    else {
-                        Add-Log -Message "$($Name) : Not installed." -Level "INFO"
-                    }
                 }
                 
                 function UpdateUI {
