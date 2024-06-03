@@ -48,26 +48,31 @@ function FilterdSelectedItems {
     $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.AppsListView.Items)
 
     $filterPredicate = {
-    param($item)
+       param($item)
 
-        if ($item -is [System.Windows.Controls.StackPanel]) {
+       if ($item -is [System.Windows.Controls.StackPanel]) {
 
-            foreach ($child in $item.Children) {
-                if ($child -is [System.Windows.Controls.StackPanel]) {
-                    foreach ($innerChild in $child.Children) {
-                        if ($innerChild -is [System.Windows.Controls.CheckBox]) {
-        
-                            $tagToFilter = $true
-                            $itemCheck = $innerChild.IsChecked
-                            return $itemCheck -eq $tagToFilter
-                        }
+        foreach ($child in $item.Children) {
+            if ($child -is [System.Windows.Controls.StackPanel]) {
+                foreach ($innerChild in $child.Children) {
+                    if ($innerChild -is [System.Windows.Controls.CheckBox]) {
+    
+                        $tagToFilter =  $true
+                        # Check if the item has the tag
+                        $itemTag = $innerChild.IsChecked
+                        return $itemTag -eq $tagToFilter
                     }
                 }
             }
         }
-    }
 
-    $collectionView.Filter = $filterPredicate
+        $collectionView.Filter = $filterPredicate
+
+    }
+}
+
+   $collectionView.Filter = $filterPredicate
+
 }
 
 function Invoke-Install
@@ -83,7 +88,6 @@ function Invoke-Install
 
     $sync.category.SelectedIndex = 0
     FilterdSelectedItems
-
     $selectedApps += Get-SelectedApps
     
     if($selectedApps.Count -gt 0)
@@ -448,7 +452,7 @@ function Invoke-Install
                 }
                 else
                 {
-                    Add-Log -Message "Installed $appName successfully using Winget." -Level "INFO"
+                    Add-Log -Message "Installed $appName successfully using Chocolatey." -Level "INFO"
                 }
             }
 
@@ -462,9 +466,9 @@ function Invoke-Install
                 
                 if($result -eq "Yes")
                 {
-                    ClearTemp
-
                     $sync.ProcessRunning = $true
+
+                    ClearTemp
 
                     UpdateUI -InstallBtn "$downloading" 
 
