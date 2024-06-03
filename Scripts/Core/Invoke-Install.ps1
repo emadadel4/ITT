@@ -48,31 +48,26 @@ function FilterdSelectedItems {
     $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.AppsListView.Items)
 
     $filterPredicate = {
-       param($item)
+    param($item)
 
-       if ($item -is [System.Windows.Controls.StackPanel]) {
+        if ($item -is [System.Windows.Controls.StackPanel]) {
 
-        foreach ($child in $item.Children) {
-            if ($child -is [System.Windows.Controls.StackPanel]) {
-                foreach ($innerChild in $child.Children) {
-                    if ($innerChild -is [System.Windows.Controls.CheckBox]) {
-    
-                        $tagToFilter =  $true
-                        # Check if the item has the tag
-                        $itemTag = $innerChild.IsChecked
-                        return $itemTag -eq $tagToFilter
+            foreach ($child in $item.Children) {
+                if ($child -is [System.Windows.Controls.StackPanel]) {
+                    foreach ($innerChild in $child.Children) {
+                        if ($innerChild -is [System.Windows.Controls.CheckBox]) {
+        
+                            $tagToFilter = $true
+                            $itemCheck = $innerChild.IsChecked
+                            return $itemCheck -eq $tagToFilter
+                        }
                     }
                 }
             }
         }
-
-        $collectionView.Filter = $filterPredicate
-
     }
-}
 
-   $collectionView.Filter = $filterPredicate
-
+    $collectionView.Filter = $filterPredicate
 }
 
 function Invoke-Install
@@ -467,6 +462,8 @@ function Invoke-Install
                 
                 if($result -eq "Yes")
                 {
+                    ClearTemp
+
                     $sync.ProcessRunning = $true
 
                     UpdateUI -InstallBtn "$downloading" 
