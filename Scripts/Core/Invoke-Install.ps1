@@ -427,43 +427,33 @@ function Invoke-Install
 
                 Add-Log -Message "Attempting to install $appName using Chocolatey..." -Level "INFO"
 
-                $chocoResult = Start-Process -FilePath "choco" -ArgumentList "install $appChoco --confirm --acceptlicense -q -r --ignore-http-cache --allowemptychecksumsecure --allowemptychecksum --usepackagecodes --ignoredetectedreboot --ignore-checksums --ignore-reboot-requests" -NoNewWindow -Wait -PassThru
+                $chocoResult = $(Start-Process -FilePath "choco" -ArgumentList "install $appChoco --confirm --acceptlicense -q -r --ignore-http-cache --allowemptychecksumsecure --allowemptychecksum --usepackagecodes --ignoredetectedreboot --ignore-checksums --ignore-reboot-requests" -Wait -PassThru).ExitCode
             
-                if ($chocoResult.ExitCode -eq 0) {
-                    Add-Log -Message "$appName installed successfully using Chocolatey!." -Level "INFO"
-                } else {
-
-                    Clear-Host
+                if ($chocoResult -ne 0) {
+                    
                     Add-Log -Message "Chocolatey installation failed for $appName." -Level "INFO"
                     Add-Log -Message "Attempting to install $appName using Winget." -Level "INFO"
 
+
+                    #Install Winget if not install on Device
                     Install-Winget
 
-                    # Check if the app is installed via Winget
-                    #$isInstalledWinget = Is-AppInstalledWinget $appWinget
-
-                    # Check if the app is installed via Chocolatey
-                    # if ($isInstalledWinget) {
-                    #     Add-Log -Message "$appName is already installed." -Level "INFO"
-                    #     return
-                    # }
-
-                    # start install by using Winget
                     Start-Process -FilePath "winget" -ArgumentList "settings --enable InstallerHashOverride" -NoNewWindow -Wait -PassThru
-                    $wingetResult = Start-Process -FilePath "winget" -ArgumentList "install --accept-source-agreements --accept-package-agreements --ignore-security-hash --id $appWinget --force -e -h --silent --exact" -NoNewWindow -Wait -PassThru
+                    $wingetResult = $(Start-Process -FilePath "winget" -ArgumentList "install --accept-source-agreements --accept-package-agreements --id $appWinget --force -e -h --silent --exact" -Wait -PassThru).ExitCode
 
-                    # check winget install opritaion
-                    if ($wingetResult.ExitCode -eq 0) {
+                    # Check winget 
+                    if ($wingetResult -ne 0) {
 
-                        # if winget install app sus
-                        Add-Log -Message " $appName installed successfully using Winget." -Level "INFO"
-                    } 
-                    elseif ($wingetResult.ExitCode -eq 1) 
-                    {
-                        # if install failed 
                         Add-Log -Message "Winget installation failed for $appName. Please install $appName manually." -Level "ERROR"
-                        exit 1
+                    } 
+                    else
+                    {
+                        Add-Log -Message " $appName installed successfully using Winget." -Level "INFO"
                     }
+                }
+                else
+                {
+                    Add-Log -Message "Installed $appName successfully using Winget." -Level "INFO"
                 }
             }
 
