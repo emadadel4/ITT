@@ -818,7 +818,7 @@
     "description": "Restore the old context menu in Windows 11",
     "check": "false",
     "type": "modifying",
-    "refresh": "false",
+    "refresh": "true",
     "Registry": [
       {
         "Path": "HKCU:\\Software\\Classes\\CLSID\\",
