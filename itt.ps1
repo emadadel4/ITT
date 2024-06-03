@@ -4794,6 +4794,9 @@ $sync.database.Tweaks = '[
         "Name": "Microsoft.XboxGameOverlay"
       },
       {
+        "Name": "Microsoft.GamingApp"
+      },
+      {
         "Name": "Microsoft.XboxIdentityProvider"
       },
       {
