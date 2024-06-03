@@ -4481,6 +4481,13 @@ $sync.database.Tweaks = '[
         "Type": "DWord",
         "Value": "1",
         "defaultValue": "0"
+      },
+      {
+        "Path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Search",
+        "Name": "BackgroundAppGlobalToggle",
+        "Type": "DWord",
+        "Value": "0",
+        "defaultValue": "1"
       }
     ],
     "InvokeCommand": [
