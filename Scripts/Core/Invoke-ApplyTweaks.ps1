@@ -356,7 +356,9 @@ function Invoke-ApplyTweaks
                                     if($app.Refresh -eq "true")
                                     {
                                         Write-Host "Restarting exploror..."
-                                        #Stop-Process -Name explorer -Force
+                                        Stop-Process -Name explorer -Force
+                                        Start-Process explorer
+
                                     }
                                 }
                                 "modifying" {
@@ -368,7 +370,8 @@ function Invoke-ApplyTweaks
                                     if($app.Refresh -eq "true")
                                     {
                                         Write-Host "Restarting exploror..."
-                                        #Stop-Process -Name explorer -Force
+                                        Stop-Process -Name explorer -Force
+                                        Start-Process explorer
                                     }
 
                                 }
@@ -381,7 +384,8 @@ function Invoke-ApplyTweaks
                                     if($app.Refresh -eq "true")
                                     {
                                         Write-Host "Restarting exploror..."
-                                        #Stop-Process -Name explorer -Force
+                                        Stop-Process -Name explorer -Force
+                                        Start-Process explorer
                                     }
                                 }
                                 "service" {
