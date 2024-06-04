@@ -4499,7 +4499,7 @@ $sync.database.Tweaks = '[
   },
   {
     "name": "Disable suggestions on Start Menu",
-    "description": "Disables suggestions on start menu for Windows 10 11",
+    "description": "Disables suggestions on start menu for Windows 10 and 11",
     "check": "false",
     "type": "modifying",
     "refresh": "false",
@@ -4570,7 +4570,7 @@ $sync.database.Tweaks = '[
     ]
   },
   {
-    "name": "Remove Folder Shortcuts From Windows'' File Explorer",
+    "name": "Remove Folder Shortcuts From File Explorer",
     "description": "Remove Documents, Videos, Pictures, Desktop. Shortcuts from File Explorer",
     "check": "false",
     "type": "delete",
@@ -5001,7 +5001,7 @@ $sync.database.Tweaks = '[
   },
   {
     "name": "Restore Classic Context Menu Windows 11",
-    "description": "Restore the old context menu for Windows 10 and 11",
+    "description": "Restore the old context menu for Windows 11",
     "check": "false",
     "type": "modifying",
     "refresh": "true",
@@ -5136,8 +5136,6 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
       <Setter Property="Foreground" Value="{DynamicResource DefaultTextColor}"/>
       <Setter Property="Margin" Value="0"/>
       <Setter Property="BorderThickness" Value="0"/>
-
-
         <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="CheckBox">
@@ -5189,7 +5187,6 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <Setter Property="Background" Value="{DynamicResource BGColor}"/>
         <Setter Property="Foreground" Value="{DynamicResource DefaultTextColor}"/>
         <Setter Property="OverridesDefaultStyle" Value="True"/>
-
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="MenuItem">
@@ -5225,12 +5222,11 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
 <!--End MenuItem Style-->
 
 <!--ListViewItem Style-->
-<Style TargetType="ListViewItem">
-    <Setter Property="Background" Value="{DynamicResource FGColor}"/>
-    <Setter Property="Margin" Value="2"/>
-    <Setter Property="BorderThickness" Value="0"/>
-</Style>
-
+    <Style TargetType="ListViewItem">
+        <Setter Property="Background" Value="{DynamicResource FGColor}"/>
+        <Setter Property="Margin" Value="2"/>
+        <Setter Property="BorderThickness" Value="0"/>
+    </Style>
 <!--End ListViewItem Style-->
 
 <!--Scrollbar Thumbs-->
@@ -5388,12 +5384,10 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
             <Style.Triggers>
             </Style.Triggers>
     </Style>
-
     <Style  TargetType="{x:Type ComboBoxItem}">
         <Setter Property="Background" Value="{DynamicResource FGColor}"/>
         <Setter Property="Foreground" Value="{DynamicResource DefaultTextColor}"/>
     </Style>
-
     <Style x:Key="CustomSeparatorStyle" TargetType="{x:Type Separator}">
         <Setter Property="Template">
             <Setter.Value>
@@ -5404,8 +5398,6 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         </Setter>
     </Style>
 <!--End ComboBox Style-->
-
-
     
     <!--Light Theme styles-->
 
@@ -7606,7 +7598,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                 <CheckBox Content="Disable suggestions on Start Menu"   FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content=""/>
             </StackPanel>
-                <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Disables suggestions on start menu for Windows 10 11"/>
+                <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Disables suggestions on start menu for Windows 10 and 11"/>
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Width="auto" Margin="8">
@@ -7619,7 +7611,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
 
         <StackPanel Orientation="Vertical" Width="auto" Margin="8">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Remove Folder Shortcuts From Windows'' File Explorer"   FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <CheckBox Content="Remove Folder Shortcuts From File Explorer"   FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content=""/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Remove Documents Videos Pictures Desktop Shortcuts from File Explorer"/>
@@ -7670,7 +7662,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                 <CheckBox Content="Restore Classic Context Menu Windows 11"   FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content=""/>
             </StackPanel>
-                <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Restore the old context menu for Windows 10 and 11"/>
+                <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Restore the old context menu for Windows 11"/>
         </StackPanel>
 
                                 </ListView>
