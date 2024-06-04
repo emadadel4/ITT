@@ -4216,7 +4216,7 @@ $sync.database.Tweaks = '[
   },
   {
     "name": "Fix Stutter/Lag in Games",
-    "description": "Fix Stutter in Games Disable GameBarPresenceWriter. Windows 10/11",
+    "description": "Fix Stutter in Games Disable GameBarPresenceWriter for Windows 10 and 11",
     "check": "false",
     "type": "command",
     "refresh": "false",
@@ -4448,7 +4448,7 @@ $sync.database.Tweaks = '[
   },
   {
     "name": "Disable Windows Web Search",
-    "description": "Disable web search in Windows by modifying the registry settings related to Windows Search. It sets the BingSearchEnabled value to 0, effectively turning off web search results",
+    "description": "Disable web search in Windows by modifying the registry settings related to Windows Search for Windows 10 and 11",
     "check": "false",
     "type": "modifying",
     "refresh": "false",
@@ -4469,8 +4469,8 @@ $sync.database.Tweaks = '[
     ]
   },
   {
-    "name": "Turn off background apps Windows 10/11",
-    "description": "Turn off background apps",
+    "name": "Turn off background Apps",
+    "description": "Turn off background apps for Windows 10 and 11",
     "check": "false",
     "type": "modifying",
     "refresh": "false",
@@ -4499,7 +4499,7 @@ $sync.database.Tweaks = '[
   },
   {
     "name": "Disable suggestions on Start Menu",
-    "description": "Disables suggestions on start menu",
+    "description": "Disables suggestions on start menu for Windows 10 11",
     "check": "false",
     "type": "modifying",
     "refresh": "false",
@@ -4520,8 +4520,8 @@ $sync.database.Tweaks = '[
     ]
   },
   {
-    "name": "Clean Taskbar Windows 10",
-    "description": "Disable the (News and interests) and (People icon) Show Search icon only",
+    "name": "Clean Taskbar",
+    "description": "Disable the (News and interests) and (People icon) Show Search icon only for Windows 10",
     "check": "false",
     "type": "modifying",
     "refresh": "true",
@@ -4701,7 +4701,7 @@ $sync.database.Tweaks = '[
     ]
   },
   {
-    "name": "Remove Unnecessary Windows 10/11 Apps",
+    "name": "Remove Unnecessary Windows Apps 10/11",
     "description": "BingNews, GetHelp, Getstarted, Messaging, Microsoft3DViewer, MicrosoftOfficeHub, MicrosoftSolitaireCollection, News, Office.Lens, Office.OneNote, Office.Sway, OneConnect, People, Print3D, RemoteDesktop, SkypeApp, StorePurchaseApp, Office.Todo.List, Whiteboard, WindowsAlarms, WindowsCamera, windowscommunicationsapps, WindowsFeedbackHub, WindowsMaps, WindowsSoundRecorder, Xbox.TCUI, XboxApp, XboxGameOverlay, XboxIdentityProvider, XboxSpeechToTextOverlay, ZuneMusic, ZuneVideo, Windows.Cortana, MSPaint",
     "check": "false",
     "type": "AppxPackage",
@@ -4908,7 +4908,7 @@ $sync.database.Tweaks = '[
   },
   {
     "name": "Disable OneDrive",
-    "description": "Disabling OneDrive",
+    "description": "Disabling OneDrive for Windows 10 and 11",
     "check": "false",
     "type": "modifying",
     "refresh": "false",
@@ -4936,8 +4936,8 @@ $sync.database.Tweaks = '[
     ]
   },
   {
-    "name": "Activate Windows Old Photo Viewer on Windows 10",
-    "description": "This tweak enables the classic Windows Photo Viewer on Windows 10.",
+    "name": "Activate Windows Old Photo Viewer",
+    "description": "This tweak enables the classic Windows Photo Viewer for Windows 10.",
     "check": "false",
     "type": "modifying",
     "refresh": "false",
@@ -5001,7 +5001,7 @@ $sync.database.Tweaks = '[
   },
   {
     "name": "Restore Classic Context Menu Windows 11",
-    "description": "Restore the old context menu in Windows 11",
+    "description": "Restore the old context menu for Windows 10 and 11",
     "check": "false",
     "type": "modifying",
     "refresh": "true",
@@ -7534,7 +7534,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                 <CheckBox Content="Fix Stutter/Lag in Games"   FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content=""/>
             </StackPanel>
-                <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Fix Stutter in Games Disable GameBarPresenceWriter Windows 1011"/>
+                <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Fix Stutter in Games Disable GameBarPresenceWriter for Windows 10 and 11"/>
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Width="auto" Margin="8">
@@ -7590,15 +7590,15 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                 <CheckBox Content="Disable Windows Web Search"   FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content=""/>
             </StackPanel>
-                <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Disable web search in Windows by modifying the registry settings related to Windows Search It sets the BingSearchEnabled value to 0 effectively turning off web search results"/>
+                <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Disable web search in Windows by modifying the registry settings related to Windows Search for Windows 10 and 11"/>
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Width="auto" Margin="8">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Turn off background apps Windows 10/11"   FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <CheckBox Content="Turn off background Apps"   FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content=""/>
             </StackPanel>
-                <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Turn off background apps"/>
+                <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Turn off background apps for Windows 10 and 11"/>
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Width="auto" Margin="8">
@@ -7606,15 +7606,15 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                 <CheckBox Content="Disable suggestions on Start Menu"   FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content=""/>
             </StackPanel>
-                <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Disables suggestions on start menu"/>
+                <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Disables suggestions on start menu for Windows 10 11"/>
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Width="auto" Margin="8">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Clean Taskbar Windows 10"   FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <CheckBox Content="Clean Taskbar"   FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content=""/>
             </StackPanel>
-                <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Disable the News and interests and People icon Show Search icon only"/>
+                <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Disable the News and interests and People icon Show Search icon only for Windows 10"/>
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Width="auto" Margin="8">
@@ -7635,7 +7635,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
 
         <StackPanel Orientation="Vertical" Width="auto" Margin="8">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Remove Unnecessary Windows 10/11 Apps"   FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <CheckBox Content="Remove Unnecessary Windows Apps 10/11"   FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content=""/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="BingNews GetHelp Getstarted Messaging Microsoft3DViewer MicrosoftOfficeHub MicrosoftSolitaireCollection News OfficeLens OfficeOneNote OfficeSway OneConnect People Print3D RemoteDesktop SkypeApp StorePurchaseApp OfficeTodoList Whiteboard WindowsAlarms WindowsCamera windowscommunicationsapps WindowsFeedbackHub WindowsMaps WindowsSoundRecorder XboxTCUI XboxApp XboxGameOverlay XboxIdentityProvider XboxSpeechToTextOverlay ZuneMusic ZuneVideo WindowsCortana MSPaint"/>
@@ -7654,15 +7654,15 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                 <CheckBox Content="Disable OneDrive"   FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content=""/>
             </StackPanel>
-                <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Disabling OneDrive"/>
+                <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Disabling OneDrive for Windows 10 and 11"/>
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Width="auto" Margin="8">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Activate Windows Old Photo Viewer on Windows 10"   FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <CheckBox Content="Activate Windows Old Photo Viewer"   FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content=""/>
             </StackPanel>
-                <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="This tweak enables the classic Windows Photo Viewer on Windows 10"/>
+                <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="This tweak enables the classic Windows Photo Viewer for Windows 10"/>
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Width="auto" Margin="8">
@@ -7670,7 +7670,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                 <CheckBox Content="Restore Classic Context Menu Windows 11"   FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content=""/>
             </StackPanel>
-                <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Restore the old context menu in Windows 11"/>
+                <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Restore the old context menu for Windows 10 and 11"/>
         </StackPanel>
 
                                 </ListView>
