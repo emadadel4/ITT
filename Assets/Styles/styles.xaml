@@ -85,8 +85,6 @@
       <Setter Property="Foreground" Value="{DynamicResource DefaultTextColor}"/>
       <Setter Property="Margin" Value="0"/>
       <Setter Property="BorderThickness" Value="0"/>
-
-
         <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="CheckBox">
@@ -138,7 +136,6 @@
         <Setter Property="Background" Value="{DynamicResource BGColor}"/>
         <Setter Property="Foreground" Value="{DynamicResource DefaultTextColor}"/>
         <Setter Property="OverridesDefaultStyle" Value="True"/>
-
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="MenuItem">
@@ -174,12 +171,11 @@
 <!--End MenuItem Style-->
 
 <!--ListViewItem Style-->
-<Style TargetType="ListViewItem">
-    <Setter Property="Background" Value="{DynamicResource FGColor}"/>
-    <Setter Property="Margin" Value="2"/>
-    <Setter Property="BorderThickness" Value="0"/>
-</Style>
-
+    <Style TargetType="ListViewItem">
+        <Setter Property="Background" Value="{DynamicResource FGColor}"/>
+        <Setter Property="Margin" Value="2"/>
+        <Setter Property="BorderThickness" Value="0"/>
+    </Style>
 <!--End ListViewItem Style-->
 
 <!--Scrollbar Thumbs-->
@@ -337,12 +333,10 @@
             <Style.Triggers>
             </Style.Triggers>
     </Style>
-
     <Style  TargetType="{x:Type ComboBoxItem}">
         <Setter Property="Background" Value="{DynamicResource FGColor}"/>
         <Setter Property="Foreground" Value="{DynamicResource DefaultTextColor}"/>
     </Style>
-
     <Style x:Key="CustomSeparatorStyle" TargetType="{x:Type Separator}">
         <Setter Property="Template">
             <Setter.Value>
@@ -353,4 +347,3 @@
         </Setter>
     </Style>
 <!--End ComboBox Style-->
-
