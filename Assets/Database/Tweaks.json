@@ -323,7 +323,7 @@
   },
   {
     "name": "Disable suggestions on Start Menu",
-    "description": "Disables suggestions on start menu for Windows 10 11",
+    "description": "Disables suggestions on start menu for Windows 10 and 11",
     "check": "false",
     "type": "modifying",
     "refresh": "false",
@@ -394,7 +394,7 @@
     ]
   },
   {
-    "name": "Remove Folder Shortcuts From Windows' File Explorer",
+    "name": "Remove Folder Shortcuts From File Explorer",
     "description": "Remove Documents, Videos, Pictures, Desktop. Shortcuts from File Explorer",
     "check": "false",
     "type": "delete",
@@ -825,7 +825,7 @@
   },
   {
     "name": "Restore Classic Context Menu Windows 11",
-    "description": "Restore the old context menu for Windows 10 and 11",
+    "description": "Restore the old context menu for Windows 11",
     "check": "false",
     "type": "modifying",
     "refresh": "true",
