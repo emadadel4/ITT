@@ -201,10 +201,9 @@ function Invoke-Install
                     }
                 })
 
-
-                Start-Sleep 10
                 Add-Log -Message "Clear temporary files, Please Wait..." -Level "INFO"
-
+                Start-Sleep 10
+                
                 Clear-Host
 
                     Write-Host "+==============================================================================+";
