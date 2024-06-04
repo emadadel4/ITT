@@ -8841,8 +8841,9 @@ function Invoke-Install
                     }
                 })
 
+                Add-Log -Message "Clear temporary files, Please Wait..." -Level "INFO"
                 Start-Sleep 10
-
+                
                 Clear-Host
 
                     Write-Host "+==============================================================================+";
@@ -8858,9 +8859,9 @@ function Invoke-Install
                     Write-Host "+==============================================================================+";
                     Write-Host "`n` You ready to Install anything."
                     Write-Host  "`n` (IT Tools) is open source, You can contribute to improving the tool."
-                    Write-Host "If you have trouble installing a program, report the problem on feedback links"
-                    Write-Host  "https://github.com/emadadel4/ITT/issues"
-                    Write-Host  "https://t.me/emadadel4"
+                    Write-Host " If you have trouble installing a program, report the problem on feedback links"
+                    Write-Host  " https://github.com/emadadel4/ITT/issues"
+                    Write-Host  " https://t.me/emadadel4"
             }
 
             function Send-Apps {
