@@ -293,7 +293,7 @@
     ]
   },
   {
-    "name": "Turn off background apps",
+    "name": "Turn off background apps Windows 10/11",
     "description": "Turn off background apps",
     "check": "false",
     "type": "modifying",
