@@ -4135,7 +4135,7 @@ $sync.database.Quotes = '{
     "الجمال الحقيقي لا يكمن في المظهر الخارجي، بل في النية والروح",
     "ليس كل ما نخاف منه سيئًا، وليس كل ما نحبه جيدًا",
     "ظننت أنه يمكننا أن نكون رجالاً شرفاء في زمن غير شريف",
-    "أعطي الرجل سلاحا يمكنه أن يسرق بنك لكن اعطيه بنك يمكنه سرقة العالم",
+    "أعط رجلا مسدسا يمكنه سرقة بنك ولكن أعطه بنكا يمكنه سرقة العالم",
     "أنت تعتقد أن الظلام هو حليفك لكنك تبنيت الظلام , انا لقد ولدت فيه",
     "لا يغرنك من تكلم حسناً عنك ولا يؤذيك من تكلم سيئاً عليك",
     "اختر أن تكون شمعة تضيء دروب الآخرين، ولا تكن ظلامًا يعكر جوهر الحياة",
@@ -4641,7 +4641,7 @@ $sync.database.Tweaks = '[
     ]
   },
   {
-    "name": "Optimize Services",
+    "name": "Optimize Windows Services",
     "description": "Disable (Print Spooler), (Fax), (Diagnostic Policy), (Downloaded Maps Manager), (Windows Error Reporting Service), (Remote Registry) , (Internet Connection Sharing), (Disables Telemetry and Data) ",
     "check": "false",
     "type": "service",
@@ -7627,7 +7627,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
 
         <StackPanel Orientation="Vertical" Width="auto" Margin="8">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Optimize Services"   FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <CheckBox Content="Optimize Windows Services"   FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content=""/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Disable Print Spooler Fax Diagnostic Policy Downloaded Maps Manager Windows Error Reporting Service Remote Registry  Internet Connection Sharing Disables Telemetry and Data "/>
