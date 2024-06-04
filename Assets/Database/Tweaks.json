@@ -40,7 +40,7 @@
   },
   {
     "name": "Fix Stutter/Lag in Games",
-    "description": "Fix Stutter in Games Disable GameBarPresenceWriter. Windows 10/11",
+    "description": "Fix Stutter in Games Disable GameBarPresenceWriter for Windows 10 and 11",
     "check": "false",
     "type": "command",
     "refresh": "false",
@@ -272,7 +272,7 @@
   },
   {
     "name": "Disable Windows Web Search",
-    "description": "Disable web search in Windows by modifying the registry settings related to Windows Search. It sets the BingSearchEnabled value to 0, effectively turning off web search results",
+    "description": "Disable web search in Windows by modifying the registry settings related to Windows Search for Windows 10 and 11",
     "check": "false",
     "type": "modifying",
     "refresh": "false",
@@ -293,8 +293,8 @@
     ]
   },
   {
-    "name": "Turn off background apps Windows 10/11",
-    "description": "Turn off background apps",
+    "name": "Turn off background Apps",
+    "description": "Turn off background apps for Windows 10 and 11",
     "check": "false",
     "type": "modifying",
     "refresh": "false",
@@ -323,7 +323,7 @@
   },
   {
     "name": "Disable suggestions on Start Menu",
-    "description": "Disables suggestions on start menu",
+    "description": "Disables suggestions on start menu for Windows 10 11",
     "check": "false",
     "type": "modifying",
     "refresh": "false",
@@ -344,8 +344,8 @@
     ]
   },
   {
-    "name": "Clean Taskbar Windows 10",
-    "description": "Disable the (News and interests) and (People icon) Show Search icon only",
+    "name": "Clean Taskbar",
+    "description": "Disable the (News and interests) and (People icon) Show Search icon only for Windows 10",
     "check": "false",
     "type": "modifying",
     "refresh": "true",
@@ -465,7 +465,7 @@
     ]
   },
   {
-    "name": "Optimize Services",
+    "name": "Optimize Windows Services",
     "description": "Disable (Print Spooler), (Fax), (Diagnostic Policy), (Downloaded Maps Manager), (Windows Error Reporting Service), (Remote Registry) , (Internet Connection Sharing), (Disables Telemetry and Data) ",
     "check": "false",
     "type": "service",
@@ -525,7 +525,7 @@
     ]
   },
   {
-    "name": "Remove Unnecessary Windows 10/11 Apps",
+    "name": "Remove Unnecessary Windows Apps 10/11",
     "description": "BingNews, GetHelp, Getstarted, Messaging, Microsoft3DViewer, MicrosoftOfficeHub, MicrosoftSolitaireCollection, News, Office.Lens, Office.OneNote, Office.Sway, OneConnect, People, Print3D, RemoteDesktop, SkypeApp, StorePurchaseApp, Office.Todo.List, Whiteboard, WindowsAlarms, WindowsCamera, windowscommunicationsapps, WindowsFeedbackHub, WindowsMaps, WindowsSoundRecorder, Xbox.TCUI, XboxApp, XboxGameOverlay, XboxIdentityProvider, XboxSpeechToTextOverlay, ZuneMusic, ZuneVideo, Windows.Cortana, MSPaint",
     "check": "false",
     "type": "AppxPackage",
@@ -732,7 +732,7 @@
   },
   {
     "name": "Disable OneDrive",
-    "description": "Disabling OneDrive",
+    "description": "Disabling OneDrive for Windows 10 and 11",
     "check": "false",
     "type": "modifying",
     "refresh": "false",
@@ -760,8 +760,8 @@
     ]
   },
   {
-    "name": "Activate Windows Old Photo Viewer on Windows 10",
-    "description": "This tweak enables the classic Windows Photo Viewer on Windows 10.",
+    "name": "Activate Windows Old Photo Viewer",
+    "description": "This tweak enables the classic Windows Photo Viewer for Windows 10.",
     "check": "false",
     "type": "modifying",
     "refresh": "false",
@@ -825,7 +825,7 @@
   },
   {
     "name": "Restore Classic Context Menu Windows 11",
-    "description": "Restore the old context menu in Windows 11",
+    "description": "Restore the old context menu for Windows 10 and 11",
     "check": "false",
     "type": "modifying",
     "refresh": "true",
