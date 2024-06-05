@@ -520,7 +520,6 @@ function Invoke-Install
     else
     {
         $localizedMessageTemplate = $sync.database.locales.$($sync.Langusege).choseapp
-        $localizedMessage = $localizedMessageTemplate
         [System.Windows.MessageBox]::Show("$localizedMessageTemplate", "ITT | Emad Adel", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
     }
 }
