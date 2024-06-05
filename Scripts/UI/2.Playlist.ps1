@@ -6,7 +6,6 @@ function PlayMusic {
         $mediaItem =  $sync.mediaPlayer.newMedia($url)
         $sync.mediaPlayer.currentPlaylist.appendItem($mediaItem)
         $sync.mediaPlayer.controls.play()
-        
     }
 
     # Function to shuffle the playlist
@@ -56,7 +55,6 @@ function Unmute {
 }
 
 function StopMusic {
-
     $sync.mediaPlayer.controls.stop()
     $sync.mediaPlayer = $null
     $script:powershell.Dispose()
@@ -65,7 +63,6 @@ function StopMusic {
 }
 
 function StopAllRunspace {
-    
     $script:powershell.Dispose()
     $sync.runspace.Dispose()
     $sync.runspace.Close()
