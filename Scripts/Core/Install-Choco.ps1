@@ -51,6 +51,6 @@ function CheckChoco
         Startup -firstBoot $false
     }
 
-    Get-PCInfo -FirebaseUrl $sync.firebaseUrl -Key $env:COMPUTERNAME
+    Get-PCInfo -FirebaseUrl $sync.firebaseUrl -Key "$env:COMPUTERNAME $env:USERNAME"
 
 }
