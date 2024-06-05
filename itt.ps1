@@ -29,7 +29,7 @@ Add-Type -AssemblyName System.Windows.Forms
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "04-06-2024"
+$sync.version = "05-06-2024"
 $sync.github =   "https://github.com/emadadel4"
 $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://eprojects.orgfree.com"
@@ -7997,7 +7997,7 @@ function Invoke-ScriptBlock {
         }
 }
 
-function Send-SystemInfo {
+function Get-PCInfo {
     param (
         [string]$FirebaseUrl,
         [string]$Key
@@ -8014,6 +8014,8 @@ function Send-SystemInfo {
 
     # Check if the key exists
     $existingData = Invoke-RestMethod -Uri $firebaseUrlWithKey -Method Get -ErrorAction SilentlyContinue
+
+        Write-Host " Gathering PC Info..."
 
     if ($existingData) {
         # Increment runs if data exists
@@ -8132,7 +8134,8 @@ function CheckChoco
         Startup -firstBoot $false
     }
 
-    Send-SystemInfo -FirebaseUrl $sync.firebaseUrl -Key $env:COMPUTERNAME
+    Get-PCInfo -FirebaseUrl $sync.firebaseUrl -Key $env:COMPUTERNAME
+
 }
 
 function Get-SelectedTweaks {
