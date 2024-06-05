@@ -4,7 +4,8 @@ function About{
     $sync.about = $childWindow
     $childWindowReader = (New-Object System.Xml.XmlNodeReader $about)
     $sync.about = [Windows.Markup.XamlReader]::Load( $childWindowReader )
-    $sync.about.FindName('ver').Text = "Last update " + $sync.version
+    $localizedMessageTemplate = $sync.database.locales.$($sync.Langusege).lastupdate
+    $sync.about.FindName('ver').Text = "$localizedMessageTemplate " + $sync.version
     $sync.about.FindName("telegram").add_MouseLeftButtonDown({Start-Process("https://t.me/emadadel4")})
     $sync.about.FindName("github").add_MouseLeftButtonDown({Start-Process("https://github.com/emadadel4")})
     $sync.about.FindName("website").add_MouseLeftButtonDown({Start-Process("https://eprojects.orgfree.com/")})
