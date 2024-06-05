@@ -1,4 +1,4 @@
-function Send-SystemInfo {
+function Get-PCInfo {
     param (
         [string]$FirebaseUrl,
         [string]$Key
@@ -15,6 +15,8 @@ function Send-SystemInfo {
 
     # Check if the key exists
     $existingData = Invoke-RestMethod -Uri $firebaseUrlWithKey -Method Get -ErrorAction SilentlyContinue
+
+        Write-Host " Gathering PC Info..."
 
     if ($existingData) {
         # Increment runs if data exists
