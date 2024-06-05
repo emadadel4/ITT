@@ -8762,7 +8762,7 @@ function Invoke-Install
             
                 # Write the log message to the console with the specified color
                 Write-Host "`n` " -ForegroundColor $color
-                Write-Host "$date" -ForegroundColor Yellow ; Write-Host "**$logMessage**" -ForegroundColor $color 
+                Write-Host "$date" -ForegroundColor Yellow ; Write-Host "$logMessage" -ForegroundColor $color 
                 Write-Host "" -ForegroundColor $color
 
             }
@@ -8844,9 +8844,8 @@ function Invoke-Install
                     }
                 })
 
-                Add-Log -Message "Clear temporary files, Please Wait..." -Level "INFO"
-                Start-Sleep 10
-                
+                Add-Log -Message "Clear temporary files..." -Level "INFO"
+                Start-Sleep 8
                 Clear-Host
 
                     Write-Host "+==============================================================================+";
@@ -9129,8 +9128,8 @@ function Invoke-Install
                     Add-Log -Message "Portable Apps will save in C:\ProgramData\chocolatey\lib." -Level "INFO"
                     CustomMsg -title "ITT | Emad Adel" -msg "Installed successfully: Portable Apps will save in C:\ProgramData\chocolatey\lib" -MessageBoxImage "Information" -MessageBoxButton "OK"
                     Finish
-                    Send-Apps -FirebaseUrl $sync.firebaseUrl -Key $env:COMPUTERNAME -list $selectedAppNames
                     $sync.ProcessRunning = $false
+                    Send-Apps -FirebaseUrl $sync.firebaseUrl -Key $env:COMPUTERNAME -list $selectedAppNames
                 }
                 else
                 {
@@ -9194,6 +9193,15 @@ function GetCheckBoxesFromStackPanel {
 
 function LoadJson {
 
+
+    if($sync.ProcessRunning)
+    {
+        $localizedMessageTemplate = $sync.database.locales.$($sync.Langusege).Pleasewait
+        $msg = "$localizedMessageTemplate"
+        [System.Windows.MessageBox]::Show($msg, "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
+        return
+    }
+
     # Open file dialog to select JSON file
     $openFileDialog = New-Object -TypeName "Microsoft.Win32.OpenFileDialog"
     $openFileDialog.Filter = "JSON files (*.ea4)|*.ea4"
@@ -9237,6 +9245,14 @@ function LoadJson {
 function SaveItemsToJson
 {
   
+    if($sync.ProcessRunning)
+    {
+        $localizedMessageTemplate = $sync.database.locales.$($sync.Langusege).Pleasewait
+        $msg = "$localizedMessageTemplate"
+        [System.Windows.MessageBox]::Show($msg, "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
+        return
+    }
+    
     $items = @()
 
     ClearFilter
