@@ -9186,13 +9186,10 @@ function GetCheckBoxesFromStackPanel {
             }
         }
     }
-
     return $checkBoxes
 }
 
 function LoadJson {
-
-
     if($sync.ProcessRunning)
     {
         $localizedMessageTemplate = $sync.database.locales.$($sync.Langusege).Pleasewait
@@ -9200,7 +9197,6 @@ function LoadJson {
         [System.Windows.MessageBox]::Show($msg, "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
         return
     }
-
     # Open file dialog to select JSON file
     $openFileDialog = New-Object -TypeName "Microsoft.Win32.OpenFileDialog"
     $openFileDialog.Filter = "JSON files (*.ea4)|*.ea4"
@@ -9227,23 +9223,18 @@ function LoadJson {
                 }
 
             }
-            
             return $filteredNames.name -contains $item.Content
-                          
         }
-
         $sync['window'].FindName('apps').IsSelected = $true
         $sync['window'].FindName('appslist').Clear()
         $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync['window'].FindName('appslist').Items)
         $collectionView.Filter = $filterPredicate
         [System.Windows.MessageBox]::Show("Restored successfully", "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
-
     }
 }
 
 function SaveItemsToJson
 {
-  
     if($sync.ProcessRunning)
     {
         $localizedMessageTemplate = $sync.database.locales.$($sync.Langusege).Pleasewait
@@ -9251,26 +9242,19 @@ function SaveItemsToJson
         [System.Windows.MessageBox]::Show($msg, "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
         return
     }
-    
     $items = @()
-
     ClearFilter
-
     foreach ($item in $sync.AppsListView.Items)
     {
-
         $item =  GetCheckBoxesFromStackPanel -item $item
-
         if ($item.IsChecked)
         {
                 $itemObject = [PSCustomObject]@{
                 Name = $item.Content
                 check = "true"
-    
             }
-                $items += $itemObject
+            $items += $itemObject
         }
-     
     }
 
     if ($null -ne $items -and $items.Count -gt 0) 
@@ -9307,7 +9291,6 @@ function SaveItemsToJson
 }
 
 function ChangeTap() {
-
     if($sync['window'].FindName('apps').IsSelected)
     {
         $sync['window'].FindName('installBtn').Visibility = "Visible"
@@ -9331,7 +9314,6 @@ function PlayMusic {
         $mediaItem =  $sync.mediaPlayer.newMedia($url)
         $sync.mediaPlayer.currentPlaylist.appendItem($mediaItem)
         $sync.mediaPlayer.controls.play()
-        
     }
 
     # Function to shuffle the playlist
@@ -9381,7 +9363,6 @@ function Unmute {
 }
 
 function StopMusic {
-
     $sync.mediaPlayer.controls.stop()
     $sync.mediaPlayer = $null
     $script:powershell.Dispose()
@@ -9390,7 +9371,6 @@ function StopMusic {
 }
 
 function StopAllRunspace {
-    
     $script:powershell.Dispose()
     $sync.runspace.Dispose()
     $sync.runspace.Close()
@@ -9402,27 +9382,16 @@ function StopAllRunspace {
 #endregion
 
 function About{
-
     # Load child window
     [xml]$about = $childXaml
-
     $sync.about = $childWindow
-
-
     $childWindowReader = (New-Object System.Xml.XmlNodeReader $about)
-
     $sync.about = [Windows.Markup.XamlReader]::Load( $childWindowReader )
-
     $sync.about.FindName('ver').Text = "Last update " + $sync.version
-
     $sync.about.FindName("telegram").add_MouseLeftButtonDown({Start-Process("https://t.me/emadadel4")})
-
     $sync.about.FindName("github").add_MouseLeftButtonDown({Start-Process("https://github.com/emadadel4")})
-
     $sync.about.FindName("website").add_MouseLeftButtonDown({Start-Process("https://eprojects.orgfree.com/")})
-
     $sync.about.FindName("sourcecode").add_MouseLeftButtonDown({Start-Process("https://github.com/emadadel4/ITT")})
-
 
     if($sync.Langusege -eq "en")
     {
@@ -9434,24 +9403,17 @@ function About{
         #$childWindow["window"].DataContext = $sync.database.locales.ar
         $sync.about.DataContext = $sync.database.locales.ar
     }
-
-    
     $sync.about.ShowDialog() | Out-Null
-
 }
 
 function ITTShortcut {
-  
     # Create a shortcut object
     $Shortcut = (New-Object -ComObject WScript.Shell).CreateShortcut("$([Environment]::GetFolderPath('Desktop'))\ITT Emad Adel.lnk")
-
     # Set the target path to PowerShell with your command
     $Shortcut.TargetPath = "$env:SystemRoot\System32\WindowsPowerShell\v1.0\powershell.exe"
     $Shortcut.Arguments = "-ExecutionPolicy Bypass -Command ""irm bit.ly/emadadel | iex"""
-
     # Save the shortcut
     $Shortcut.Save()
-
 }
 
 function Search {
