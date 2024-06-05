@@ -18,13 +18,10 @@ function GetCheckBoxesFromStackPanel {
             }
         }
     }
-
     return $checkBoxes
 }
 
 function LoadJson {
-
-
     if($sync.ProcessRunning)
     {
         $localizedMessageTemplate = $sync.database.locales.$($sync.Langusege).Pleasewait
@@ -32,7 +29,6 @@ function LoadJson {
         [System.Windows.MessageBox]::Show($msg, "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
         return
     }
-
     # Open file dialog to select JSON file
     $openFileDialog = New-Object -TypeName "Microsoft.Win32.OpenFileDialog"
     $openFileDialog.Filter = "JSON files (*.ea4)|*.ea4"
@@ -59,23 +55,18 @@ function LoadJson {
                 }
 
             }
-            
             return $filteredNames.name -contains $item.Content
-                          
         }
-
         $sync['window'].FindName('apps').IsSelected = $true
         $sync['window'].FindName('appslist').Clear()
         $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync['window'].FindName('appslist').Items)
         $collectionView.Filter = $filterPredicate
         [System.Windows.MessageBox]::Show("Restored successfully", "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
-
     }
 }
 
 function SaveItemsToJson
 {
-  
     if($sync.ProcessRunning)
     {
         $localizedMessageTemplate = $sync.database.locales.$($sync.Langusege).Pleasewait
@@ -83,26 +74,19 @@ function SaveItemsToJson
         [System.Windows.MessageBox]::Show($msg, "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
         return
     }
-    
     $items = @()
-
     ClearFilter
-
     foreach ($item in $sync.AppsListView.Items)
     {
-
         $item =  GetCheckBoxesFromStackPanel -item $item
-
         if ($item.IsChecked)
         {
                 $itemObject = [PSCustomObject]@{
                 Name = $item.Content
                 check = "true"
-    
             }
-                $items += $itemObject
+            $items += $itemObject
         }
-     
     }
 
     if ($null -ne $items -and $items.Count -gt 0) 
