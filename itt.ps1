@@ -8783,7 +8783,7 @@ function Invoke-Install
 
                 if (Test-Path $chocoTempPath) {
                     Remove-Item -Path $chocoTempPath -Force -Recurse
-                    Write-Output "Clear Chocolatey temp folder"
+                    Add-Log -Message "Clear Chocolatey temp folder" -Level "INFO"
                 }
             }
             
@@ -9163,7 +9163,6 @@ function Invoke-Install
     else
     {
         $localizedMessageTemplate = $sync.database.locales.$($sync.Langusege).choseapp
-        $localizedMessage = $localizedMessageTemplate
         [System.Windows.MessageBox]::Show("$localizedMessageTemplate", "ITT | Emad Adel", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
     }
 }
