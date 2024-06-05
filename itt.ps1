@@ -4036,7 +4036,7 @@ $sync.database.locales = '{
     "about":"About",
     "mirrorLinks":"Mirror Links",
     "pref":"Preferences",
-    "device":"Device Managment",
+    "device":"Managment",
     "apps":"Apps",
     "tweaks":"Tweaks",
     "saveapps":"Save selected Apps",
@@ -4058,7 +4058,7 @@ $sync.database.locales = '{
     "Pleasewait": "Please wait there is a process in the background.",
     "lastupdate":"Last update",
     "sourcecode":"Source Code",
-    "devby":"Development by Emad Adel"
+    "devby":"Made with ♥ by Emad Adel"
   },
   "ar": {
     "InstallBtn": "تثبيت",
@@ -4088,7 +4088,7 @@ $sync.database.locales = '{
     "chosetweak":"أختار على الاقل اي تحسين لتطبيقه",
     "lastupdate":"اخر تحديث",
     "sourcecode":"اكواد الاداة",
-    "devby":"تطوير بواسطة عماد عادل"
+    "devby":"صنع ♥ من قبل عماد عادل"
   }
 }
 ' | ConvertFrom-Json
@@ -4124,7 +4124,7 @@ $sync.database.OST = '{
 ' | ConvertFrom-Json
 $sync.database.Quotes = '{
   "Q": [
-    "توفر هذه الأداة تسهيلات كبيرة في عملية تثبيت البرامج وتحسين أداء نظام التشغيل. انضم إلينا لتساهم في تطويرها وجعلها أكثر اكتمالًا",
+    "توفر هذه الأداة تسهيلات كبيرة في عملية تثبيت البرامج وتحسين الاداء. انضم إلينا لتساهم في تطويرها وجعلها أكثر اكتمالًا",
     "إما تموت بطلا، أو تعيش طويلاً حتى ترى نفسك اصبحت الشرير",
     "بعض الرجال يريدون فقط مشاهدة العالم يحترق",
     "إنهم يكرهون النور، لأنهم يخشون الحقيقة",
@@ -7750,7 +7750,7 @@ $childXaml = '<Window
       <StackPanel Grid.Row="0" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
         <TextBlock Margin="5" TextWrapping="Wrap" FontWeight="Bold" FontSize="30" TextAlignment="Center" Text="ITT"/>
         <TextBlock Margin="5" TextWrapping="Wrap" FontWeight="Bold" FontSize="15" TextAlignment="Center" Text="Install and Tweak Tool"/>
-        <TextBlock Margin="5" TextWrapping="Wrap" Text="Made with ♥ By Emad Adel" TextAlignment="Center"/>
+        <TextBlock Margin="5" TextWrapping="Wrap" Text="{Binding devby}" TextAlignment="Center"/>
         <TextBlock Margin="5" Name="ver" TextWrapping="Wrap" TextAlignment="Center" Text="2024/4/21"/>
       </StackPanel>
 
@@ -9395,7 +9395,8 @@ function About{
     $sync.about = $childWindow
     $childWindowReader = (New-Object System.Xml.XmlNodeReader $about)
     $sync.about = [Windows.Markup.XamlReader]::Load( $childWindowReader )
-    $sync.about.FindName('ver').Text = "Last update " + $sync.version
+    $localizedMessageTemplate = $sync.database.locales.$($sync.Langusege).lastupdate
+    $sync.about.FindName('ver').Text = "$localizedMessageTemplate " + $sync.version
     $sync.about.FindName("telegram").add_MouseLeftButtonDown({Start-Process("https://t.me/emadadel4")})
     $sync.about.FindName("github").add_MouseLeftButtonDown({Start-Process("https://github.com/emadadel4")})
     $sync.about.FindName("website").add_MouseLeftButtonDown({Start-Process("https://eprojects.orgfree.com/")})
