@@ -9163,20 +9163,14 @@ function Invoke-Install
     else
     {
         $sync.category.SelectedIndex = 0
-        
         $sync.AppsListView.Dispatcher.Invoke([Action]{
             
             $sync.AppsListView.Clear()
             $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.AppsListView.Items)
             $collectionView.Filter = $null
         })
-
-       
         $localizedMessageTemplate = $sync.database.locales.$($sync.Langusege).choseapp
         [System.Windows.MessageBox]::Show("$localizedMessageTemplate", "ITT | Emad Adel", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
-
-   
-
     }
 }
 
