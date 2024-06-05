@@ -24,6 +24,15 @@ function GetCheckBoxesFromStackPanel {
 
 function LoadJson {
 
+
+    if($sync.ProcessRunning)
+    {
+        $localizedMessageTemplate = $sync.database.locales.$($sync.Langusege).Pleasewait
+        $msg = "$localizedMessageTemplate"
+        [System.Windows.MessageBox]::Show($msg, "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
+        return
+    }
+
     # Open file dialog to select JSON file
     $openFileDialog = New-Object -TypeName "Microsoft.Win32.OpenFileDialog"
     $openFileDialog.Filter = "JSON files (*.ea4)|*.ea4"
@@ -67,6 +76,14 @@ function LoadJson {
 function SaveItemsToJson
 {
   
+    if($sync.ProcessRunning)
+    {
+        $localizedMessageTemplate = $sync.database.locales.$($sync.Langusege).Pleasewait
+        $msg = "$localizedMessageTemplate"
+        [System.Windows.MessageBox]::Show($msg, "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
+        return
+    }
+    
     $items = @()
 
     ClearFilter
