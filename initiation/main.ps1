@@ -1,6 +1,3 @@
-# Check Chocolatey is Installed or not
-CheckChoco
-
 # Define OnClosing event handler
 $onClosingEvent = {
     
