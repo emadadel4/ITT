@@ -45,34 +45,7 @@
     "type": "command",
     "refresh": "false",
     "InvokeCommand": [
-      
-      "
-        takeown /f C:\\Windows\\System32\\GameBarPresenceWriter.exe
-
-        takeown /f C:\\Windows\\System32\\GameBarPresenceWriter.proxy.dll
-
-        takeown /f C:\\Windows\\System32\\Windows.Gaming.UI.GameBar.dll
-
-        Start-Sleep -Seconds 1
-
-
-        icacls C:\\Windows\\System32\\GameBarPresenceWriter.exe /grant administrators:F
-
-        icacls C:\\Windows\\System32\\GameBarPresenceWriter.proxy.dll /grant administrators:F
-
-        icacls C:\\Windows\\System32\\Windows.Gaming.UI.GameBar.dll /grant administrators:F
-
-        Start-Sleep -Seconds 1
-
-
-        Rename-Item C:\\Windows\\System32\\GameBarPresenceWriter.exe -NewName GameBarPresenceWriter.exe_backup
-
-        Rename-Item C:\\Windows\\System32\\GameBarPresenceWriter.proxy.dll -NewName GameBarPresenceWriter.proxy.dll_backup
-
-        Rename-Item C:\\Windows\\System32\\Windows.Gaming.UI.GameBar.dll -NewName Windows.Gaming.UI.GameBar.dll_backup
-
-      "
-
+      "\r\n        takeown /f C:\\Windows\\System32\\GameBarPresenceWriter.exe\r\n\r\n        takeown /f C:\\Windows\\System32\\GameBarPresenceWriter.proxy.dll\r\n\r\n        takeown /f C:\\Windows\\System32\\Windows.Gaming.UI.GameBar.dll\r\n\r\n        Start-Sleep -Seconds 1\r\n\r\n\r\n        icacls C:\\Windows\\System32\\GameBarPresenceWriter.exe /grant administrators:F\r\n\r\n        icacls C:\\Windows\\System32\\GameBarPresenceWriter.proxy.dll /grant administrators:F\r\n\r\n        icacls C:\\Windows\\System32\\Windows.Gaming.UI.GameBar.dll /grant administrators:F\r\n\r\n        Start-Sleep -Seconds 1\r\n\r\n\r\n        Rename-Item C:\\Windows\\System32\\GameBarPresenceWriter.exe -NewName GameBarPresenceWriter.exe_backup\r\n\r\n        Rename-Item C:\\Windows\\System32\\GameBarPresenceWriter.proxy.dll -NewName GameBarPresenceWriter.proxy.dll_backup\r\n\r\n        Rename-Item C:\\Windows\\System32\\Windows.Gaming.UI.GameBar.dll -NewName Windows.Gaming.UI.GameBar.dll_backup\r\n\r\n      "
     ],
     "UndoCommand": [
       ""
@@ -85,8 +58,7 @@
     "type": "command",
     "refresh": "false",
     "InvokeCommand": [
-
-        "powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61; Start-Process powercfg.cpl"
+      "powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61; Start-Process powercfg.cpl"
     ],
     "UndoCommand": [
       ""
@@ -99,9 +71,7 @@
     "type": "command",
     "refresh": "false",
     "InvokeCommand": [
-
-        "netsh int ip reset"
-
+      "netsh int ip reset"
     ],
     "UndoCommand": [
       ""
@@ -849,6 +819,56 @@
         "Type": "String",
         "Value": "",
         "defaultValue": "default"
+      }
+    ],
+    "InvokeCommand": [
+      ""
+    ],
+    "UndoCommand": [
+      ""
+    ]
+  },
+  {
+    "name": "Remove Copilot in Windows 11",
+    "description": "Copilot in Windows provides centralized generative AI assistance to your users right from the Windows desktop Copilot in Windows appears as a side bar docked on the Windows desktop and is designed to help users get things done in Windows Copilot in Windows can perform common tasks in Windows like changing Windows settings which makes it different from the browserbased Copilot in Edge",
+    "check": "false",
+    "type": "modifying",
+    "refresh": "false",
+    "Registry": [
+      {
+        "Path": "HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows\\Explorer",
+        "Name": "DisableSearchBoxSuggestions",
+        "Type": "DWord",
+        "Value": "1",
+        "defaultValue": "0"
+      },
+      {
+        "Path": "HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows\\Explorer",
+        "Name": "DisableSearchBoxSuggestions",
+        "Type": "DWord",
+        "Value": "1",
+        "defaultValue": "0"
+      },
+      {
+        "Path": "HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows\\Explorer",
+        "Name": "DisableSearchBoxSuggestions",
+        "Type": "DWord",
+        "Value": "1",
+        "defaultValue": "0"
+      },
+      {
+        "Path": "HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows\\Explorer",
+        "Name": "DisableSearchBoxSuggestions",
+        "Type": "DWord",
+        "Value": "1",
+        "defaultValue": "0"
+      },
+      {
+        "Path": "HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows\\Explorer",
+        "Name": "DisableSearchBoxSuggestions",
+        "Type": "DWord",
+        "Value": "1",
+        "defaultValue": "0"
       }
     ],
     "InvokeCommand": [
