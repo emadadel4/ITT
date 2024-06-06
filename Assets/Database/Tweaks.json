@@ -877,5 +877,34 @@
     "UndoCommand": [
       ""
     ]
+  },
+  {
+    "name": "1",
+    "description": "Disable Recall Snapshots in Windows 11 24H",
+    "check": "false",
+    "type": "modifying",
+    "refresh": "false",
+    "Registry": [
+      {
+        "Path": "HKCU:\\Software\\Policies\\Microsoft\\Windows\\WindowsAI",
+        "Name": "DisableAIDataAnalysis",
+        "Type": "DWord",
+        "Value": "1",
+        "defaultValue": "0"
+      },
+      {
+        "Path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\WindowsAI",
+        "Name": "DisableAIDataAnalysis",
+        "Type": "DWord",
+        "Value": "1",
+        "defaultValue": "0"
+      }
+    ],
+    "InvokeCommand": [
+      ""
+    ],
+    "UndoCommand": [
+      ""
+    ]
   }
 ]
