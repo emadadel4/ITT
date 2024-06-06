@@ -112,7 +112,6 @@ function GenerateCheckboxes {
     return $Checkboxes
 }
 
-
 function Sync-JsonFiles {
     param (
         [Parameter(Mandatory = $true)]
