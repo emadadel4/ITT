@@ -4728,6 +4728,12 @@ $sync.database.Tweaks = '[
         "Name": "Microsoft.BingNews"
       },
       {
+        "Name": "Microsoft.BingWeather_1.0.6.0_x64__8wekyb3d8bbwe"
+      },
+      {
+        "Name": "MicrosoftWindows.Client.WebExperience_cw5n1h2txyewy"
+      },
+      {
         "Name": "Microsoft.GetHelp"
       },
       {
