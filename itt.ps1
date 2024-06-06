@@ -5076,7 +5076,7 @@ $sync.database.Tweaks = '[
     "description": "Recall is an upcoming preview experience exclusive to Copilot+ PCs that will help you easily find and remember things you''ve seen using natural language.",
     "check": "false",
     "type": "modifying",
-    "refresh": "false",
+    "refresh": "true",
     "Registry": [
       {
         "Path": "HKCU:\\Software\\Policies\\Microsoft\\Windows\\WindowsAI",
