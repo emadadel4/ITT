@@ -402,6 +402,16 @@ function Invoke-Install
               }
             }
 
+            function Install-Choco 
+            {
+                # Check if Chocolatey is installed
+                if (-not (Get-Command choco -ErrorAction SilentlyContinue))
+                {
+                    Add-Log -Message "Installing Chocolatey for the first, It won't take minutes :)" -Level "WARNING"
+                    Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1')) *> $null
+                }
+            }
+
             function Install-App {
                 param (
                     [string]$appName,
@@ -424,6 +434,8 @@ function Invoke-Install
                 }
         
 
+                Install-Choco
+                
                 Add-Log -Message "Attempting to install $appName using Chocolatey..." -Level "INFO"
 
                 $chocoResult = $(Start-Process -FilePath "choco" -ArgumentList "install $appChoco --confirm --acceptlicense -q -r --ignore-http-cache --allowemptychecksumsecure --allowemptychecksum --usepackagecodes --ignoredetectedreboot --ignore-checksums --ignore-reboot-requests" -Wait -PassThru).ExitCode
@@ -486,7 +498,7 @@ function Invoke-Install
                     CustomMsg -title "ITT | Emad Adel" -msg "Installed successfully: Portable Apps will save in C:\ProgramData\chocolatey\lib" -MessageBoxImage "Information" -MessageBoxButton "OK"
                     Finish
                     $sync.ProcessRunning = $false
-                    Send-Apps -FirebaseUrl $sync.firebaseUrl -Key "$env:COMPUTERNAME $env:USERNAME" -list $selectedAppNames
+                    Send-Apps -FirebaseUrl $sync.firebaseUrl -Key $env:COMPUTERNAME -list $selectedAppNames
                 }
                 else
                 {
