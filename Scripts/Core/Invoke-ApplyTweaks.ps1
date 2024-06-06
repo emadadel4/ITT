@@ -388,8 +388,13 @@ function Invoke-ApplyTweaks
                                     }
                                 }
                                 "AppxPackage" {
+
                                     foreach ($appx in $app.removeAppxPackage) {
                                         Uninstall-AppxPackage -Name $appx.Name
+                                    }
+
+                                    foreach ($cmd in $app.Command) {
+                                        ExecuteCommand -Command $cmd
                                     }
                                 }
                             }
