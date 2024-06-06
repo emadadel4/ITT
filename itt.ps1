@@ -4818,6 +4818,9 @@ $sync.database.Tweaks = '[
         "Name": "Microsoft.MSPaint"
       },
       {
+        "Name": "Microsoft.Getstarted"
+      },
+      {
         "Name": "EclipseManager"
       },
       {
