@@ -4731,6 +4731,9 @@ $sync.database.Tweaks = '[
         "Name": "Microsoft.News"
       },
       {
+        "Name": "Microsoft.549981C3F5F10"
+      },
+      {
         "Name": "Microsoft.Office.Lens"
       },
       {
@@ -8230,7 +8233,7 @@ function CheckChoco
         Startup -firstBoot $false
     }
 
-    Get-PCInfo -FirebaseUrl $sync.firebaseUrl -Key "$env:COMPUTERNAME $env:USERNAME"
+    #Get-PCInfo -FirebaseUrl $sync.firebaseUrl -Key "$env:COMPUTERNAME $env:USERNAME"
 
 }
 
