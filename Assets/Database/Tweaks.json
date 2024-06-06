@@ -879,8 +879,8 @@
     ]
   },
   {
-    "name": "1",
-    "description": "Disable Recall Snapshots in Windows 11 24H",
+    "name": "Disable Recall Snapshots in Windows 11 24H",
+    "description": "Recall is an upcoming preview experience exclusive to Copilot+ PCs that will help you easily find and remember things you've seen using natural language.",
     "check": "false",
     "type": "modifying",
     "refresh": "false",
