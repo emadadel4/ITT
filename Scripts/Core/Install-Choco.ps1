@@ -24,33 +24,6 @@ Write-Host " https://t.me/emadadel4"
 
 function Startup {
 
-    param ([bool]$firstBoot)
-
-    if($firstBoot -eq $true)
-    {
-        Write-Host (WriteAText -color White -message  "Starting up... it won't take longer.") 
-    }
-    else
-    {
-        Write-Host (WriteAText -color White -message  "You ready to Install anything.") 
-    }
-}
-
-function CheckChoco 
-{
-    # Check if Chocolatey is installed
-    if (-not (Get-Command choco -ErrorAction SilentlyContinue))
-    {
-        Startup -firstBoot $true
-        Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1')) *> $null
-        Clear-Host
-        Write-Host (WriteAText -color White -message  "You ready to Install anything.") 
-    }
-    else
-    {
-        Startup -firstBoot $false
-    }
-
-    Get-PCInfo -FirebaseUrl $sync.firebaseUrl -Key "$env:COMPUTERNAME $env:USERNAME"
-
+    Write-Host (WriteAText -color White -message  "You ready to Install anything.") 
+    Get-PCInfo 
 }

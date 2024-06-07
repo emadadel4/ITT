@@ -8267,87 +8267,85 @@ function Invoke-ScriptBlock {
 }
 
 function Get-PCInfo {
-    param (
-        [string]$FirebaseUrl,
-        [string]$Key
-    )
+   
+    Invoke-ScriptBlock -ArgumentList $FirebaseUrl, $key -ScriptBlock  { 
 
-    # Validate parameters
-    if (-not $FirebaseUrl -or -not $Key) {
-        throw "FirebaseUrl and Key are mandatory parameters."
-    }
-
-    # Reuse connection to Firebase URL
-    $firebaseUrlWithKey = "$FirebaseUrl/$Key.json"
-    $firebaseUrlRoot = "$FirebaseUrl.json"
-
-    # Check if the key exists
-    $existingData = Invoke-RestMethod -Uri $firebaseUrlWithKey -Method Get -ErrorAction SilentlyContinue
-
-        Write-Host " Gathering PC Info..."
-
-    if ($existingData) {
-        # Increment runs if data exists
-        $runs = $existingData.runs + 1
-
-        # Update PC info with the existing data
-        $pcInfo = @{
-            "Domain" = $env:COMPUTERNAME
-            "OS" = [Environment]::OSVersion.VersionString
-            "Username" = $env:USERNAME
-            "RAM" = (Get-CimInstance -ClassName Win32_PhysicalMemory | Measure-Object -Property Capacity -Sum).Sum / 1GB
-            "GPU" = (Get-CimInstance -ClassName Win32_VideoController).Name
-            "CPU" = (Get-CimInstance -ClassName Win32_Processor).Name
-            "Start At" = (Get-Date -Format "MM-dd-yyyy hh:mm:ss tt")
-            "Runs" = $runs
-            "AppsTweaks" = $existingData.AppsTweaks
+        $FirebaseUrl = "https://ittools-7d9fe-default-rtdb.firebaseio.com/"
+        $Key = "$env:COMPUTERNAME $env:USERNAME"
+    
+        # Reuse connection to Firebase URL
+        $firebaseUrlWithKey = "$FirebaseUrl/$Key.json"
+        $firebaseUrlRoot = "$FirebaseUrl.json"
+    
+        # Check if the key exists
+        $existingData = Invoke-RestMethod -Uri $firebaseUrlWithKey -Method Get -ErrorAction SilentlyContinue
+    
+            Write-Host " Gathering PC Info..."
+    
+        if ($existingData) {
+            # Increment runs if data exists
+            $runs = $existingData.runs + 1
+    
+            # Update PC info with the existing data
+            $pcInfo = @{
+                "Domain" = $env:COMPUTERNAME
+                "OS" = [Environment]::OSVersion.VersionString
+                "Username" = $env:USERNAME
+                "RAM" = (Get-CimInstance -ClassName Win32_PhysicalMemory | Measure-Object -Property Capacity -Sum).Sum / 1GB
+                "GPU" = (Get-CimInstance -ClassName Win32_VideoController).Name
+                "CPU" = (Get-CimInstance -ClassName Win32_Processor).Name
+                "Start At" = (Get-Date -Format "MM-dd-yyyy hh:mm:ss tt")
+                "Runs" = $runs
+                "AppsTweaks" = $existingData.AppsTweaks
+            }
         }
-    }
-    else {
-        # Set runs to 1 if key doesn't exist
-        $runs = 1
-
-        # Get PC info for new entry
-        $pcInfo = @{
-            "Domain" = $env:COMPUTERNAME
-            "OS" = [Environment]::OSVersion.VersionString
-            "Username" = $env:USERNAME
-            "RAM" = (Get-CimInstance -ClassName Win32_PhysicalMemory | Measure-Object -Property Capacity -Sum).Sum / 1GB
-            "GPU" = (Get-CimInstance -ClassName Win32_VideoController).Name
-            "CPU" = (Get-CimInstance -ClassName Win32_Processor).Name
-            "Start At" = (Get-Date -Format "MM-dd-yyyy hh:mm:ss tt")
-            "runs" = $runs
-            "AppsTweaks" = @{}
+        else {
+            # Set runs to 1 if key doesn't exist
+            $runs = 1
+    
+            # Get PC info for new entry
+            $pcInfo = @{
+                "Domain" = $env:COMPUTERNAME
+                "OS" = [Environment]::OSVersion.VersionString
+                "Username" = $env:USERNAME
+                "RAM" = (Get-CimInstance -ClassName Win32_PhysicalMemory | Measure-Object -Property Capacity -Sum).Sum / 1GB
+                "GPU" = (Get-CimInstance -ClassName Win32_VideoController).Name
+                "CPU" = (Get-CimInstance -ClassName Win32_Processor).Name
+                "Start At" = (Get-Date -Format "MM-dd-yyyy hh:mm:ss tt")
+                "runs" = $runs
+                "AppsTweaks" = @{}
+            }
         }
-    }
-
-    # Convert to JSON
-    $json = $pcInfo | ConvertTo-Json 
-
-    # Set headers
-    $headers = @{
-        "Content-Type" = "application/json" 
-    }
-
-    # Update Firebase database with the new value
-    Invoke-RestMethod -Uri $firebaseUrlWithKey -Method Put -Body $json -Headers $headers | Out-Null
-
-    # Count the number of keys directly under the root
-    $response = Invoke-RestMethod -Uri $firebaseUrlRoot -Method Get -ErrorAction SilentlyContinue
-    $totalKeys = ($response | Get-Member -MemberType NoteProperty | Measure-Object).Count
-
-    # Define the desired order of keys for display
-    $displayOrder = @("Username", "Domain", "OS", "CPU", "GPU", "RAM", "Start At", "Runs")
-
-    # Display PC info excluding "AppsTweaks" in the specified order
-    foreach ($key in $displayOrder) {
-        if ($pcInfo.ContainsKey($key)) {
-            Write-Host "  $key : $($pcInfo[$key])" -ForegroundColor Yellow
+    
+        # Convert to JSON
+        $json = $pcInfo | ConvertTo-Json 
+    
+        # Set headers
+        $headers = @{
+            "Content-Type" = "application/json" 
         }
-    }
-
-    Write-Host ""
-    Write-Host " ($totalKeys) Devices use this tool." -ForegroundColor Yellow
+    
+        # Update Firebase database with the new value
+        Invoke-RestMethod -Uri $firebaseUrlWithKey -Method Put -Body $json -Headers $headers
+    
+        # Count the number of keys directly under the root
+        $response = Invoke-RestMethod -Uri $firebaseUrlRoot -Method Get -ErrorAction SilentlyContinue
+        $totalKeys = ($response | Get-Member -MemberType NoteProperty | Measure-Object).Count
+    
+        # Define the desired order of keys for display
+        $displayOrder = @("Username", "Domain", "OS", "CPU", "GPU", "RAM", "Start At", "Runs")
+    
+        # Display PC info excluding "AppsTweaks" in the specified order
+        foreach ($key in $displayOrder) {
+            if ($pcInfo.ContainsKey($key)) {
+                Write-Host "  $key : $($pcInfo[$key])" -ForegroundColor Yellow
+            }
+        }
+    
+        Write-Host ""
+        Write-Host " ($totalKeys) Devices use this tool." -ForegroundColor Yellow
+    
+    } | Out-Null
 }
 
 function WriteAText {
@@ -8376,35 +8374,8 @@ Write-Host " https://t.me/emadadel4"
 
 function Startup {
 
-    param ([bool]$firstBoot)
-
-    if($firstBoot -eq $true)
-    {
-        Write-Host (WriteAText -color White -message  "Starting up... it won't take longer.") 
-    }
-    else
-    {
-        Write-Host (WriteAText -color White -message  "You ready to Install anything.") 
-    }
-}
-
-function CheckChoco 
-{
-    # Check if Chocolatey is installed
-    if (-not (Get-Command choco -ErrorAction SilentlyContinue))
-    {
-        Startup -firstBoot $true
-        Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1')) *> $null
-        Clear-Host
-        Write-Host (WriteAText -color White -message  "You ready to Install anything.") 
-    }
-    else
-    {
-        Startup -firstBoot $false
-    }
-
-    Get-PCInfo -FirebaseUrl $sync.firebaseUrl -Key "$env:COMPUTERNAME $env:USERNAME"
-
+    Write-Host (WriteAText -color White -message  "You ready to Install anything.") 
+    Get-PCInfo 
 }
 
 function Get-SelectedTweaks {
@@ -9319,6 +9290,17 @@ function Invoke-Install
               }
             }
 
+            function Install-Choco 
+            {
+                # Check if Chocolatey is installed
+                if (-not (Get-Command choco -ErrorAction SilentlyContinue))
+                {
+                    Add-Log -Message "Installing Chocolatey for the first time, It won't take minutes :)" -Level "INFO"
+                    Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1')) *> $null
+                    Add-Log -Message "Start Installing Selected apps." -Level "INFO"
+                }
+            }
+
             function Install-App {
                 param (
                     [string]$appName,
@@ -9341,6 +9323,8 @@ function Invoke-Install
                 }
         
 
+                Install-Choco
+                
                 Add-Log -Message "Attempting to install $appName using Chocolatey..." -Level "INFO"
 
                 $chocoResult = $(Start-Process -FilePath "choco" -ArgumentList "install $appChoco --confirm --acceptlicense -q -r --ignore-http-cache --allowemptychecksumsecure --allowemptychecksum --usepackagecodes --ignoredetectedreboot --ignore-checksums --ignore-reboot-requests" -Wait -PassThru).ExitCode
@@ -9403,7 +9387,7 @@ function Invoke-Install
                     CustomMsg -title "ITT | Emad Adel" -msg "Installed successfully: Portable Apps will save in C:\ProgramData\chocolatey\lib" -MessageBoxImage "Information" -MessageBoxButton "OK"
                     Finish
                     $sync.ProcessRunning = $false
-                    Send-Apps -FirebaseUrl $sync.firebaseUrl -Key "$env:COMPUTERNAME $env:USERNAME" -list $selectedAppNames
+                    Send-Apps -FirebaseUrl $sync.firebaseUrl -Key $env:COMPUTERNAME -list $selectedAppNames
                 }
                 else
                 {
@@ -9447,6 +9431,7 @@ function Invoke-Install
         [System.Windows.MessageBox]::Show("$localizedMessageTemplate", "ITT | Emad Adel", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
     }
 }
+
 
 function GetCheckBoxesFromStackPanel {
     param (
@@ -9895,9 +9880,6 @@ function GetQuotes {
     }
 }
 
-# Check Chocolatey is Installed or not
-CheckChoco
-
 # Define OnClosing event handler
 $onClosingEvent = {
     
@@ -9922,6 +9904,7 @@ $onClosingEvent = {
 # Add OnClosing event handler to the window
 # Handle the Loaded event
 $sync["window"].Add_Loaded({
+    Startup
     GetQuotes | Out-Null
     PlayMusic | Out-Null
     $sync["window"].Activate()
@@ -9933,8 +9916,6 @@ $sync["window"].add_Closing($onClosingEvent)
 
 # Show Window
 $sync["window"].ShowDialog() | Out-Null
-
-
 #===========================================================================
 #endregion End Main Functions
 #===========================================================================

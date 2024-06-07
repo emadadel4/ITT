@@ -1,6 +1,3 @@
-# Check Chocolatey is Installed or not
-CheckChoco
-
 # Define OnClosing event handler
 $onClosingEvent = {
     
@@ -25,6 +22,7 @@ $onClosingEvent = {
 # Add OnClosing event handler to the window
 # Handle the Loaded event
 $sync["window"].Add_Loaded({
+    Startup
     GetQuotes | Out-Null
     PlayMusic | Out-Null
     $sync["window"].Activate()
@@ -36,4 +34,3 @@ $sync["window"].add_Closing($onClosingEvent)
 
 # Show Window
 $sync["window"].ShowDialog() | Out-Null
-
