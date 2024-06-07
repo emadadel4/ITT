@@ -39,7 +39,7 @@
 <ol>
 <li><strong>Make sure you have PowerShell 7 installed (recommended) for building</strong></li>
 <li><strong>Fork the repository and clone it.</strong></li>
-<li><strong>Open the ITT directory in PowerShell:</strong></li>
+<li><strong>Open the ITT directory in PowerShell run as administrator:</strong></li>
 </ol>
 
 <pre><code>Set-Location "C:\Users\$env:USERNAME\Documents\Github\ITT"
