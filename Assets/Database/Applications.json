@@ -4005,5 +4005,22 @@
     ],
     "category": "Communication",
     "check": "false"
+  },
+  {
+    "name": "Paint.NET",
+    "description": "PaintNET is image and photo editing software for PCs that run Windows",
+    "winget": "dotPDNLLC.paintdotnet",
+    "choco": "paint.net",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
+    "category": "Imaging",
+    "check": "false"
   }
 ]
