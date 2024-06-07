@@ -581,7 +581,7 @@
         "output": "ITT/Downloads"
       }
     ],
-    "category": "Microsoft",
+    "category": "Communication",
     "check": "false"
   },
   {
@@ -2558,7 +2558,7 @@
         "output": "ITT/Downloads"
       }
     ],
-    "category": "Media",
+    "category": "Media Tools",
     "check": "false"
   },
   {
@@ -2592,7 +2592,7 @@
         "output": "ITT/Downloads"
       }
     ],
-    "category": "Media",
+    "category": "Media Tools",
     "check": "false"
   },
   {
@@ -2694,7 +2694,7 @@
         "output": "ITT/Downloads"
       }
     ],
-    "category": "Media",
+    "category": "Media Tools",
     "check": "false"
   },
   {
@@ -2898,7 +2898,7 @@
         "output": "ITT/Downloads"
       }
     ],
-    "category": "Microsoft",
+    "category": "Documents",
     "check": "false"
   },
   {
@@ -3663,7 +3663,7 @@
         "output": "none"
       }
     ],
-    "category": "Microsoft",
+    "category": "Communication",
     "check": "false"
   },
   {
@@ -3970,6 +3970,40 @@
       }
     ],
     "category": "Utilities",
+    "check": "false"
+  },
+  {
+    "name": "Openshot",
+    "description": "OpenShot Video Editor is an awardwinning opensource video editor available on Linux Mac and Windows OpenShot can create stunning videos films and animations with an easytouse interface and rich set of features",
+    "winget": "OpenShot.OpenShot",
+    "choco": "openshot",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
+    "category": "Media Tools",
+    "check": "false"
+  },
+  {
+    "name": "WhatsApp",
+    "description": "WhatsApp Messenger or simply WhatsApp is an American freeware crossplatform centralized messaging and voiceoverIP VoIP service owned by Facebook Inc It allows users to send text messages and voice messages make voice and video calls and share images documents user locations and other content",
+    "winget": "9NKSQGP7F2NH",
+    "choco": "none",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
+    "category": "Communication",
     "check": "false"
   }
 ]
