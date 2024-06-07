@@ -49,8 +49,8 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                     <ComboBox SelectedIndex="0" Margin="-20,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" Name="category"  Width="115">
                         <ComboBoxItem Content="All Categories"></ComboBoxItem>
                         <ComboBoxItem Content="Web Browsers"></ComboBoxItem>
-                        <ComboBoxItem Content="Media"></ComboBoxItem> 
-                        <ComboBoxItem Content="Runtimes"></ComboBoxItem>
+                        <ComboBoxItem Content="Media"></ComboBoxItem>
+                        <ComboBoxItem Content="Media Tools"></ComboBoxItem>
                         <ComboBoxItem Content="Documents"></ComboBoxItem>
                         <ComboBoxItem Content="Compression"></ComboBoxItem>
                         <ComboBoxItem Content="Communication"></ComboBoxItem>
@@ -63,6 +63,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                         <ComboBoxItem Content="Microsoft"></ComboBoxItem>
                         <ComboBoxItem Content="Security"></ComboBoxItem>
                         <ComboBoxItem Content="Portable"></ComboBoxItem>
+                        <ComboBoxItem Content="Runtimes"></ComboBoxItem>
                         <ComboBoxItem Content="Drivers"></ComboBoxItem>
                     </ComboBox>
                 <!--End Catagory Section-->
