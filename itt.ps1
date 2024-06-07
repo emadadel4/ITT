@@ -5340,44 +5340,82 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
   </Style>
 <!--End Menu Style-->
 
-<!--MenuItem Style-->
-    <Style TargetType="MenuItem">
-        <Setter Property="Background" Value="{DynamicResource BGColor}"/>
-        <Setter Property="Foreground" Value="{DynamicResource DefaultTextColor}"/>
-        <Setter Property="OverridesDefaultStyle" Value="True"/>
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="MenuItem">
-                    <Border Background="{DynamicResource BGColor}"
-                            BorderBrush="Transparent"
-                            BorderThickness="0">
+<Style TargetType="MenuItem">
+    <Setter Property="Background" Value="{DynamicResource BGColor}"/>
+    <Setter Property="Foreground" Value="{DynamicResource DefaultTextColor}"/>
+    <Setter Property="BorderBrush" Value="{DynamicResource FGColor}"/>
+    <Setter Property="Padding" Value="5"/>
+    <Setter Property="Template">
+        <Setter.Value>
+            <ControlTemplate TargetType="MenuItem">
+                <Grid>
+                    <Border x:Name="Border"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="0"
+                            Padding="{TemplateBinding Padding}">
                         <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
                             <!-- Icon -->
-                            <ContentPresenter Content="{TemplateBinding Icon}"
-                                            VerticalAlignment="Center"
-                                            Margin="5"/>
+                            <ContentPresenter Grid.Column="0"
+                                              Content="{TemplateBinding Icon}"
+                                              VerticalAlignment="Center"
+                                              Margin="0,0,5,0"/>
                             <!-- Header -->
-                            <ContentPresenter Content="{TemplateBinding Header}"
-                                            Margin="30,5,5,5"/>
-                            <Popup IsOpen="{Binding IsSubmenuOpen, RelativeSource={RelativeSource TemplatedParent}}"
-                                AllowsTransparency="True"
-                                Focusable="True"
-                                PopupAnimation="Fade">
-                                <Border Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"
-                                        BorderThickness="0">
-                                    <ScrollViewer CanContentScroll="True"
-                                                Style="{DynamicResource {ComponentResourceKey ResourceId=MenuScrollViewer, TypeInTargetAssembly={x:Type FrameworkElement}}}">
-                                        <ItemsPresenter Margin="0"/>
-                                    </ScrollViewer>
-                                </Border>
-                            </Popup>
+                            <ContentPresenter Grid.Column="1"
+                                              Content="{TemplateBinding Header}"
+                                              VerticalAlignment="Center"/>
+                            <!-- Arrow for Submenu -->
+                            <Path x:Name="Arrow"
+                                  Grid.Column="2"
+                                  Margin="3"
+                                  HorizontalAlignment="Right"
+                                  VerticalAlignment="Center"
+                                  Data="M0,0 L4,4 L8,0 Z"
+                                  Fill="{DynamicResource DefaultTextColor}"
+                                  Visibility="Collapsed"/>
                         </Grid>
                     </Border>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-<!--End MenuItem Style-->
+                    <!-- Submenu -->
+                    <Popup x:Name="SubmenuPopup"
+                           Placement="Right"
+                           IsOpen="{Binding IsSubmenuOpen, RelativeSource={RelativeSource TemplatedParent}}"
+                           Focusable="False"
+                           AllowsTransparency="True"
+                           PopupAnimation="Fade">
+                        <Border Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"
+                                BorderThickness="0"
+                                CornerRadius="5">
+                            <StackPanel>
+                                <ItemsPresenter/>
+                            </StackPanel>
+                        </Border>
+                    </Popup>
+                </Grid>
+                <ControlTemplate.Triggers>
+                    <!-- Hover Effect -->
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter TargetName="Border" Property="Background" Value="{DynamicResource HoverColor}"/>
+                        <Setter Property="BorderBrush" Value="red"/>
+                    </Trigger>
+                       <Trigger Property="IsEnabled" Value="False">
+                        <Setter TargetName="Border" Property="Background" Value="Transparent"/>
+                        <Setter Property="BorderBrush" Value="Transparent"/>
+                    </Trigger>
+                    <!-- Show Arrow if Submenu Exists -->
+                    <Trigger Property="HasItems" Value="True">
+                        <Setter TargetName="Arrow" Property="Visibility" Value="Visible"/>
+                    </Trigger>
+                </ControlTemplate.Triggers>
+            </ControlTemplate>
+        </Setter.Value>
+    </Setter>
+</Style>
+
 
 <!--ListViewItem Style-->
     <Style TargetType="ListViewItem">
@@ -5510,8 +5548,8 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                                                 <ColumnDefinition Width="2*" />
                                                 <ColumnDefinition Width="*" />
                                             </Grid.ColumnDefinitions>
-                                            <Border x:Name="Border"  Grid.ColumnSpan="2" CornerRadius="8" Background="{DynamicResource FGColor}" BorderBrush="Transparent" BorderThickness="0" />
-                                            <Border Grid.Column="0" CornerRadius="8"  Margin="1" VerticalAlignment="Center" HorizontalAlignment="Center"  Background="{DynamicResource FGColor}"  BorderBrush="Transparent" BorderThickness="0" />
+                                            <Border x:Name="Border"  Grid.ColumnSpan="2" CornerRadius="5" Background="{DynamicResource FGColor}" BorderBrush="Transparent" BorderThickness="0" />
+                                            <Border Grid.Column="0" CornerRadius="5"  Margin="1" VerticalAlignment="Center" HorizontalAlignment="Center"  Background="{DynamicResource FGColor}"  BorderBrush="Transparent" BorderThickness="0" />
                                             <Path x:Name="Arrow" Grid.Column="1"  Fill="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center" Data="M 0 0 L 4 4 L 8 0 Z"/>
                                         </Grid>
                                     <ControlTemplate.Triggers>
@@ -5626,8 +5664,8 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                 </MenuItem>
 
                  <!--Catagory Section-->
-                    <ComboBox SelectedIndex="0" Margin="-20,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" Name="category"  Width="115">
-                        <ComboBoxItem Content="All Categories"></ComboBoxItem>
+                    <ComboBox SelectedIndex="0" Margin="0,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" Name="category"  Width="90">
+                        <ComboBoxItem Content="All"></ComboBoxItem>
                         <ComboBoxItem Content="Web Browsers"></ComboBoxItem>
                         <ComboBoxItem Content="Media"></ComboBoxItem>
                         <ComboBoxItem Content="Media Tools"></ComboBoxItem>
@@ -5740,7 +5778,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <!--Search Section-->
             <Grid HorizontalAlignment="Right" Margin="0,0,15,0" Grid.Row="0"  VerticalAlignment="Center" >
                 <TextBox Padding="5"
-                                    Width="110"
+                                    Width="130"
                                     VerticalAlignment="Center"
                                     HorizontalAlignment="Left" 
                                     Text="{Binding Text_searchInput}"
@@ -7877,7 +7915,6 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                 </TabControl>
 <!--End TabControl-->
 
-
     <!--Footer Section-->
             <Grid Grid.Row="2">
                     <!--applyBtn Button-->
@@ -7903,17 +7940,15 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
             </Grid>
 
             <StackPanel Orientation="Horizontal" Grid.Row="3">
-
-
-                        <TextBlock Name="quotes"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Center" 
-                            TextWrapping="Wrap"
-                            Margin="15,0,0,0"
-                            FlowDirection="LeftToRight"
-                            Text="aaa"
-                            Width="622"
-                            />
+                <TextBlock Name="quotes"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center" 
+                    TextWrapping="Wrap"
+                    Margin="15,0,0,0"
+                    FlowDirection="LeftToRight"
+                    Text="Hello World"
+                    Width="622"
+                    />
             </StackPanel>
     <!--End Footer Section-->
 
@@ -8107,6 +8142,7 @@ $sync.Keys | ForEach-Object {
 
             $element.Add_Click({
                 param([System.Object]$s)
+                Write-Host $s.Header
                 Invoke-Button $s.Name
             })
         }
