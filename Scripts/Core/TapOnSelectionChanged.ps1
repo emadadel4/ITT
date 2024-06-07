@@ -13,4 +13,10 @@ function ChangeTap() {
         $sync['window'].FindName('installBtn').Visibility = "Hidden"
         $sync.currentList = "tweakslist"
     }
+
+    if($sync['window'].FindName('featurestab').IsSelected)
+    {
+        $sync['window'].FindName('applyBtn').Visibility = "Hidden"
+        $sync['window'].FindName('installBtn').Visibility = "Hidden"
+    }
 }

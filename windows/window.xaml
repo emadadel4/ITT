@@ -101,7 +101,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
 
                     <MenuItem Header="{Binding darkmode}">
                         <MenuItem.Icon>
-                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
                         </MenuItem.Icon>
                         <MenuItem Name="darkOn" Header="{Binding on}"/>
                         <MenuItem Name="darkOff" Header="{Binding off}"/>
