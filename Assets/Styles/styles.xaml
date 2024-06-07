@@ -131,81 +131,83 @@
   </Style>
 <!--End Menu Style-->
 
-<Style TargetType="MenuItem">
-    <Setter Property="Background" Value="{DynamicResource BGColor}"/>
-    <Setter Property="Foreground" Value="{DynamicResource DefaultTextColor}"/>
-    <Setter Property="BorderBrush" Value="{DynamicResource FGColor}"/>
-    <Setter Property="Padding" Value="5"/>
-    <Setter Property="Template">
-        <Setter.Value>
-            <ControlTemplate TargetType="MenuItem">
-                <Grid>
-                    <Border x:Name="Border"
-                            Background="{TemplateBinding Background}"
-                            BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="0"
-                            Padding="{TemplateBinding Padding}">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="Auto"/>
-                            </Grid.ColumnDefinitions>
-                            <!-- Icon -->
-                            <ContentPresenter Grid.Column="0"
-                                              Content="{TemplateBinding Icon}"
-                                              VerticalAlignment="Center"
-                                              Margin="0,0,5,0"/>
-                            <!-- Header -->
-                            <ContentPresenter Grid.Column="1"
-                                              Content="{TemplateBinding Header}"
-                                              VerticalAlignment="Center"/>
-                            <!-- Arrow for Submenu -->
-                            <Path x:Name="Arrow"
-                                  Grid.Column="2"
-                                  Margin="3"
-                                  HorizontalAlignment="Right"
-                                  VerticalAlignment="Center"
-                                  Data="M0,0 L4,4 L8,0 Z"
-                                  Fill="{DynamicResource DefaultTextColor}"
-                                  Visibility="Collapsed"/>
-                        </Grid>
-                    </Border>
-                    <!-- Submenu -->
-                    <Popup x:Name="SubmenuPopup"
-                           Placement="Right"
-                           IsOpen="{Binding IsSubmenuOpen, RelativeSource={RelativeSource TemplatedParent}}"
-                           Focusable="False"
-                           AllowsTransparency="True"
-                           PopupAnimation="Fade">
-                        <Border Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"
+<!--MenuItem Style-->
+    <Style TargetType="MenuItem">
+        <Setter Property="Background" Value="{DynamicResource BGColor}"/>
+        <Setter Property="Foreground" Value="{DynamicResource DefaultTextColor}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource FGColor}"/>
+        <Setter Property="Padding" Value="5"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="MenuItem">
+                    <Grid>
+                        <Border x:Name="Border"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="0"
-                                CornerRadius="5">
-                            <StackPanel>
-                                <ItemsPresenter/>
-                            </StackPanel>
+                                Padding="{TemplateBinding Padding}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <!-- Icon -->
+                                <ContentPresenter Grid.Column="0"
+                                                Content="{TemplateBinding Icon}"
+                                                VerticalAlignment="Center"
+                                                Margin="0,0,5,0"/>
+                                <!-- Header -->
+                                <ContentPresenter Grid.Column="1"
+                                                Content="{TemplateBinding Header}"
+                                                VerticalAlignment="Center"/>
+                                <!-- Arrow for Submenu -->
+                                <Path x:Name="Arrow"
+                                    Grid.Column="2"
+                                    Margin="3"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Center"
+                                    Data="M0,0 L4,4 L8,0 Z"
+                                    Fill="{DynamicResource DefaultTextColor}"
+                                    Visibility="Collapsed"/>
+                            </Grid>
                         </Border>
-                    </Popup>
-                </Grid>
-                <ControlTemplate.Triggers>
-                    <!-- Hover Effect -->
-                    <Trigger Property="IsMouseOver" Value="True">
-                        <Setter TargetName="Border" Property="Background" Value="{DynamicResource HoverColor}"/>
-                        <Setter Property="BorderBrush" Value="red"/>
-                    </Trigger>
-                       <Trigger Property="IsEnabled" Value="False">
-                        <Setter TargetName="Border" Property="Background" Value="Transparent"/>
-                        <Setter Property="BorderBrush" Value="Transparent"/>
-                    </Trigger>
-                    <!-- Show Arrow if Submenu Exists -->
-                    <Trigger Property="HasItems" Value="True">
-                        <Setter TargetName="Arrow" Property="Visibility" Value="Visible"/>
-                    </Trigger>
-                </ControlTemplate.Triggers>
-            </ControlTemplate>
-        </Setter.Value>
-    </Setter>
-</Style>
+                        <!-- Submenu -->
+                        <Popup x:Name="SubmenuPopup"
+                            Placement="Right"
+                            IsOpen="{Binding IsSubmenuOpen, RelativeSource={RelativeSource TemplatedParent}}"
+                            Focusable="False"
+                            AllowsTransparency="True"
+                            PopupAnimation="Fade">
+                            <Border Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"
+                                    BorderThickness="0"
+                                    CornerRadius="5">
+                                <StackPanel>
+                                    <ItemsPresenter/>
+                                </StackPanel>
+                            </Border>
+                        </Popup>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <!-- Hover Effect -->
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="Border" Property="Background" Value="{DynamicResource HoverColor}"/>
+                            <Setter Property="BorderBrush" Value="red"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="Border" Property="Background" Value="Transparent"/>
+                            <Setter Property="BorderBrush" Value="Transparent"/>
+                        </Trigger>
+                        <!-- Show Arrow if Submenu Exists -->
+                        <Trigger Property="HasItems" Value="True">
+                            <Setter TargetName="Arrow" Property="Visibility" Value="Visible"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+<!--End MenuItem Style-->
 
 
 <!--ListViewItem Style-->
