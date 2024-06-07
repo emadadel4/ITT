@@ -23,7 +23,7 @@ Add-Type -AssemblyName System.Windows.Forms
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "06-06-2024"
+$sync.version = "07-06-2024"
 $sync.github =   "https://github.com/emadadel4"
 $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://eprojects.orgfree.com"
@@ -646,7 +646,7 @@ $sync.database.Applications = '[
         "output": "ITT/Downloads"
       }
     ],
-    "category": "Microsoft",
+    "category": "Communication",
     "check": "false"
   },
   {
@@ -2623,7 +2623,7 @@ $sync.database.Applications = '[
         "output": "ITT/Downloads"
       }
     ],
-    "category": "Media",
+    "category": "Media Tools",
     "check": "false"
   },
   {
@@ -2657,7 +2657,7 @@ $sync.database.Applications = '[
         "output": "ITT/Downloads"
       }
     ],
-    "category": "Media",
+    "category": "Media Tools",
     "check": "false"
   },
   {
@@ -2759,7 +2759,7 @@ $sync.database.Applications = '[
         "output": "ITT/Downloads"
       }
     ],
-    "category": "Media",
+    "category": "Media Tools",
     "check": "false"
   },
   {
@@ -2963,7 +2963,7 @@ $sync.database.Applications = '[
         "output": "ITT/Downloads"
       }
     ],
-    "category": "Microsoft",
+    "category": "Documents",
     "check": "false"
   },
   {
@@ -3728,7 +3728,7 @@ $sync.database.Applications = '[
         "output": "none"
       }
     ],
-    "category": "Microsoft",
+    "category": "Communication",
     "check": "false"
   },
   {
@@ -4035,6 +4035,40 @@ $sync.database.Applications = '[
       }
     ],
     "category": "Utilities",
+    "check": "false"
+  },
+  {
+    "name": "Openshot",
+    "description": "OpenShot Video Editor is an awardwinning opensource video editor available on Linux Mac and Windows OpenShot can create stunning videos films and animations with an easytouse interface and rich set of features",
+    "winget": "OpenShot.OpenShot",
+    "choco": "openshot",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
+    "category": "Media Tools",
+    "check": "false"
+  },
+  {
+    "name": "WhatsApp",
+    "description": "WhatsApp Messenger or simply WhatsApp is an American freeware crossplatform centralized messaging and voiceoverIP VoIP service owned by Facebook Inc It allows users to send text messages and voice messages make voice and video calls and share images documents user locations and other content",
+    "winget": "9NKSQGP7F2NH",
+    "choco": "none",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
+    "category": "Communication",
     "check": "false"
   }
 ]
@@ -5578,8 +5612,8 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                     <ComboBox SelectedIndex="0" Margin="-20,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" Name="category"  Width="115">
                         <ComboBoxItem Content="All Categories"></ComboBoxItem>
                         <ComboBoxItem Content="Web Browsers"></ComboBoxItem>
-                        <ComboBoxItem Content="Media"></ComboBoxItem> 
-                        <ComboBoxItem Content="Runtimes"></ComboBoxItem>
+                        <ComboBoxItem Content="Media"></ComboBoxItem>
+                        <ComboBoxItem Content="Media Tools"></ComboBoxItem>
                         <ComboBoxItem Content="Documents"></ComboBoxItem>
                         <ComboBoxItem Content="Compression"></ComboBoxItem>
                         <ComboBoxItem Content="Communication"></ComboBoxItem>
@@ -5592,6 +5626,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                         <ComboBoxItem Content="Microsoft"></ComboBoxItem>
                         <ComboBoxItem Content="Security"></ComboBoxItem>
                         <ComboBoxItem Content="Portable"></ComboBoxItem>
+                        <ComboBoxItem Content="Runtimes"></ComboBoxItem>
                         <ComboBoxItem Content="Drivers"></ComboBoxItem>
                     </ComboBox>
                 <!--End Catagory Section-->
@@ -5734,6 +5769,22 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                             <TabItem.Content>
                                 <ListView Name="appslist"  Margin="0" ScrollViewer.VerticalScrollBarVisibility="Auto" BorderBrush="{x:Null}" Background="{x:Null}">
                                     
+        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+            <StackPanel Orientation="Horizontal">
+                <CheckBox Content="WhatsApp" Tag="Communication" IsChecked="false" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content="Communication"/>
+            </StackPanel>
+                <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="WhatsApp Messenger or simply WhatsApp is an American freeware crossplatform centralized messaging and voiceoverIP VoIP service owned by Facebook Inc It allows users to send text messages and voice messages make voice and video calls and share images documents user locations and other content"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+            <StackPanel Orientation="Horizontal">
+                <CheckBox Content="Openshot" Tag="Media Tools" IsChecked="false" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content="Media Tools"/>
+            </StackPanel>
+                <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="OpenShot Video Editor is an awardwinning opensource video editor available on Linux Mac and Windows OpenShot can create stunning videos films and animations with an easytouse interface and rich set of features"/>
+        </StackPanel>
+
         <StackPanel Orientation="Vertical" Width="auto" Margin="8">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Microsoft PC Manager" Tag="Utilities" IsChecked="false" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
@@ -5880,8 +5931,8 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
 
         <StackPanel Orientation="Vertical" Width="auto" Margin="8">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Microsoft Teams Classic Desktop" Tag="Microsoft" IsChecked="false" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content="Microsoft"/>
+                <CheckBox Content="Microsoft Teams Classic Desktop" Tag="Communication" IsChecked="false" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content="Communication"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Microsoft Teams is a messaging app for teams where all conversations meetings files and notes can be accessed by everyone all in one place Its a place for collaboration and work to happen in the open"/>
         </StackPanel>
@@ -6240,8 +6291,8 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
 
         <StackPanel Orientation="Vertical" Width="auto" Margin="8">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Office 365 Business" Tag="Microsoft" IsChecked="false" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content="Microsoft"/>
+                <CheckBox Content="Office 365 Business" Tag="Documents" IsChecked="false" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content="Documents"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Microsoft 365 formerly Office 365 is a line of subscription services offered by Microsoft as part of the Microsoft Office product line The brand encompasses plans that allow use of the Microsoft Office software suite over the life of the subscription as well as cloudbased software as a service products for business environments such as hosted Exchange Server Skype for Business Server and SharePoint among others All Microsoft 365 plans include automatic updates to their respective software at no additional charge as opposed to conventional licenses for these programswhere new versions require purchase of a new license"/>
         </StackPanel>
@@ -6336,8 +6387,8 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
 
         <StackPanel Orientation="Vertical" Width="auto" Margin="8">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Kdenlive" Tag="Media" IsChecked="false" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content="Media"/>
+                <CheckBox Content="Kdenlive" Tag="Media Tools" IsChecked="false" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content="Media Tools"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="A powerful nonlinear video editor"/>
         </StackPanel>
@@ -6384,8 +6435,8 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
 
         <StackPanel Orientation="Vertical" Width="auto" Margin="8">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Format Factory" Tag="Media" IsChecked="false" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content="Media"/>
+                <CheckBox Content="Format Factory" Tag="Media Tools" IsChecked="false" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content="Media Tools"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="multifunctional media processing tools"/>
         </StackPanel>
@@ -6400,8 +6451,8 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
 
         <StackPanel Orientation="Vertical" Width="auto" Margin="8">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Audacity" Tag="Media" IsChecked="false" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content="Media"/>
+                <CheckBox Content="Audacity" Tag="Media Tools" IsChecked="false" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content="Media Tools"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Audacity is free open source crossplatform software for recording and editing sounds"/>
         </StackPanel>
@@ -7328,8 +7379,8 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
 
         <StackPanel Orientation="Vertical" Width="auto" Margin="8">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Microsoft Teams" Tag="Microsoft" IsChecked="false" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content="Microsoft"/>
+                <CheckBox Content="Microsoft Teams" Tag="Communication" IsChecked="false" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content="Communication"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="A collaboration platform that combines workplace chat video meetings file storage and application integration enhancing teamwork and productivity within organizations"/>
         </StackPanel>
