@@ -387,3 +387,85 @@
         </Setter>
     </Style>
 <!--End ComboBox Style-->
+
+<!--ToggleSwitchStyle Style-->
+    <Style x:Key="ToggleSwitchStyle" TargetType="CheckBox">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="CheckBox">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{TemplateBinding Content}" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                        <Grid>
+                            <Border Width="45"
+                                    Height="20"
+                                    Background="#555555"
+                                    CornerRadius="10"
+                                    Margin="0,0,5,0"
+                            />
+                            <Border Name="WPFToggleSwitchButton"
+                                    Width="25"
+                                    Height="25"
+                                    Background="Black"
+                                    CornerRadius="12.5"
+                                    HorizontalAlignment="Left"
+                            />
+                        </Grid>
+                        <TextBlock>
+                            <TextBlock.Style>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="Text" Value="Off"/>
+                                    <Setter Property="Margin" Value="7"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsChecked}" Value="True">
+                                            <Setter Property="Text" Value="On"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+                    </StackPanel>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="false">
+                            <Trigger.ExitActions>
+                                <RemoveStoryboard BeginStoryboardName="WPFToggleSwitchLeft" />
+                                <BeginStoryboard x:Name="WPFToggleSwitchRight">
+                                    <Storyboard>
+                                        <ThicknessAnimation Storyboard.TargetProperty="Margin"
+                                                Storyboard.TargetName="WPFToggleSwitchButton"
+                                                Duration="0:0:0:0"
+                                                From="0,0,0,0"
+                                                To="28,0,0,0">
+                                        </ThicknessAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                            <Setter TargetName="WPFToggleSwitchButton"
+                                    Property="Background"
+                                    Value="#fff9f4f4"
+                            />
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="true">
+                            <Trigger.ExitActions>
+                                <RemoveStoryboard BeginStoryboardName="WPFToggleSwitchRight" />
+                                <BeginStoryboard x:Name="WPFToggleSwitchLeft">
+                                    <Storyboard>
+                                        <ThicknessAnimation Storyboard.TargetProperty="Margin"
+                                                Storyboard.TargetName="WPFToggleSwitchButton"
+                                                Duration="0:0:0:0"
+                                                From="28,0,0,0"
+                                                To="0,0,0,0">
+                                        </ThicknessAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                            <Setter TargetName="WPFToggleSwitchButton"
+                                    Property="Background"
+                                    Value="#ff060600"
+                            />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+<!--End ToggleSwitchStyle Style-->

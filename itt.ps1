@@ -23,7 +23,7 @@ Add-Type -AssemblyName System.Windows.Forms
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "07-06-2024"
+$sync.version = "08-06-2024"
 $sync.github =   "https://github.com/emadadel4"
 $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://eprojects.orgfree.com"
@@ -5613,6 +5613,89 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         </Setter>
     </Style>
 <!--End ComboBox Style-->
+
+<!--ToggleSwitchStyle Style-->
+    <Style x:Key="ToggleSwitchStyle" TargetType="CheckBox">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="CheckBox">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{TemplateBinding Content}" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                        <Grid>
+                            <Border Width="45"
+                                    Height="20"
+                                    Background="#555555"
+                                    CornerRadius="10"
+                                    Margin="0,0,5,0"
+                            />
+                            <Border Name="WPFToggleSwitchButton"
+                                    Width="25"
+                                    Height="25"
+                                    Background="Black"
+                                    CornerRadius="12.5"
+                                    HorizontalAlignment="Left"
+                            />
+                        </Grid>
+                        <TextBlock>
+                            <TextBlock.Style>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="Text" Value="Off"/>
+                                    <Setter Property="Margin" Value="7"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsChecked}" Value="True">
+                                            <Setter Property="Text" Value="On"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+                    </StackPanel>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="false">
+                            <Trigger.ExitActions>
+                                <RemoveStoryboard BeginStoryboardName="WPFToggleSwitchLeft" />
+                                <BeginStoryboard x:Name="WPFToggleSwitchRight">
+                                    <Storyboard>
+                                        <ThicknessAnimation Storyboard.TargetProperty="Margin"
+                                                Storyboard.TargetName="WPFToggleSwitchButton"
+                                                Duration="0:0:0:0"
+                                                From="0,0,0,0"
+                                                To="28,0,0,0">
+                                        </ThicknessAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                            <Setter TargetName="WPFToggleSwitchButton"
+                                    Property="Background"
+                                    Value="#fff9f4f4"
+                            />
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="true">
+                            <Trigger.ExitActions>
+                                <RemoveStoryboard BeginStoryboardName="WPFToggleSwitchRight" />
+                                <BeginStoryboard x:Name="WPFToggleSwitchLeft">
+                                    <Storyboard>
+                                        <ThicknessAnimation Storyboard.TargetProperty="Margin"
+                                                Storyboard.TargetName="WPFToggleSwitchButton"
+                                                Duration="0:0:0:0"
+                                                From="28,0,0,0"
+                                                To="0,0,0,0">
+                                        </ThicknessAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                            <Setter TargetName="WPFToggleSwitchButton"
+                                    Property="Background"
+                                    Value="#ff060600"
+                            />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+<!--End ToggleSwitchStyle Style-->
+
     
     <!--Light Theme styles-->
 
@@ -5738,7 +5821,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
 
                     <MenuItem Header="{Binding darkmode}">
                         <MenuItem.Icon>
-                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
                         </MenuItem.Icon>
                         <MenuItem Name="darkOn" Header="{Binding on}"/>
                         <MenuItem Name="darkOff" Header="{Binding off}"/>
@@ -7939,6 +8022,20 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
 
                                 </ListView>
                         </TabItem>
+                        <TabItem x:Name="featurestab" Header="Features" BorderBrush="{x:Null}" Background="{x:Null}">
+                            <TabItem.HeaderTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="" FontFamily="Segoe MDL2 Assets" FontSize="18" Margin="0,0,5,0"/>
+                                            <TextBlock Text="{Binding}" Margin="0,0,5,0"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                            </TabItem.HeaderTemplate>
+                                <ListView Name="featureslist"  Margin="0" ScrollViewer.VerticalScrollBarVisibility="Auto" BorderBrush="{x:Null}" Background="{x:Null}">
+                                    <CheckBox Content="Show file extensions" Name="ToggleShowExt" FontWeight="Bold" Style="{StaticResource ToggleSwitchStyle}" Margin="10" HorizontalAlignment="Right"/>
+                                    <CheckBox Content="Dark Theme" Name="ToggleDarkMode" FontWeight="Bold" Style="{StaticResource ToggleSwitchStyle}" Margin="10" HorizontalAlignment="Right"/>
+                                </ListView>
+                        </TabItem>
                 </TabControl>
 <!--End TabControl-->
 
@@ -8140,85 +8237,6 @@ catch {
     Write-Host "Unable to load Windows.Markup.XamlReader. Double-check syntax and ensure .net is installed."
 }
 
-# Select all elements with a Name attribute using XPath and iterate over them
-$xaml.SelectNodes("//*[@Name]") | ForEach-Object {
-    # Assign each element to a variable in $sync dictionary
-    $sync[$($_.Name)] = $sync["window"].FindName($_.Name)
-}
-
-# Iterate over keys in $sync dictionary
-$sync.Keys | ForEach-Object {
-    $element = $sync[$_]
-
-    # Check if the element exists
-    if ($element) {
-
-        # Check if the element is a Button
-        if ($element.GetType().Name -eq "Button") {
-            # Add a click event handler to the button
-
-            $element.Add_Click({
-                param([System.Object]$s)
-                Invoke-Button $s.Name
-            })
-        }
-
-        # Check if the element is a MenuItem
-        if ($element.GetType().Name -eq "MenuItem") {
-            # Add a click event handler to the MenuItem
-
-            $element.Add_Click({
-                param([System.Object]$s)
-                Invoke-Button $s.Name
-            })
-        }
-
-        # Check if the element is a TextBox
-        if ($element.GetType().Name -eq "TextBox") {
-
-            $element.Add_TextChanged({
-                param([System.Object]$s)
-                Invoke-Button $s.Name
-            })
-
-            $element.Add_GotFocus({
-                param([System.Object]$s)
-                Invoke-Button $s.Name
-            })
-        }
-
-        # Check if the element is a Ellipse
-        if ($element.GetType().Name -eq "Ellipse") {
-                # Add a click event handler to the Ellipse
-    
-                $element.add_MouseLeftButtonDown({
-                    param([System.Object]$s)
-                    Invoke-Button $s.Name
-                })
-        }
-
-        # Check if the element is a ComboBox
-        if ($element.GetType().Name -eq "ComboBox") {
-            # Add a click event handler to the ComboBox
-
-            $element.add_SelectionChanged({
-                param([System.Object]$s)
-                Invoke-Button $s.Name
-            })
-        }
-
-        # Check if the element is a TabControl
-        if ($element.GetType().Name -eq "TabControl") {
-            # Add a click event handler to the TabControl
-
-            $element.add_SelectionChanged({
-                param([System.Object]$s)
-                Invoke-Button $s.Name
-            })
-        }
-    }
-}
-
 # Catch controls
 $sync.AppsListView = $sync['window'].FindName("appslist")
 $sync.TweaksListView = $sync['window'].FindName("tweakslist")
@@ -8348,6 +8366,31 @@ function Get-PCInfo {
     } | Out-Null
 }
 
+Function Get-ToggleStatus {
+
+    Param($ToggleSwitch)
+
+    if($ToggleSwitch -eq "ToggleDarkMode"){
+        $app = (Get-ItemProperty -path 'HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize').AppsUseLightTheme
+        $system = (Get-ItemProperty -path 'HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize').SystemUsesLightTheme
+        if($app -eq 0 -and $system -eq 0){
+            return $true
+        }
+        else{
+            return $false
+        }
+    }
+  
+    if($ToggleSwitch -eq "ToggleShowExt"){
+        $hideextvalue = (Get-ItemProperty -path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced').HideFileExt
+        if($hideextvalue -eq 0){
+            return $true
+        }
+        else{
+            return $false
+        }
+    }    
+}
 function WriteAText {
     param (
         $message,
@@ -8838,7 +8881,6 @@ function Invoke-Button {
         "installBtn" {Invoke-Install $debug}
         "applyBtn" {Invoke-ApplyTweaks $debug}
         "taps" {ChangeTap $debug}
-        
         "category" {FilterByCat($sync.category.SelectedItem.Content) $debug}
         "searchInput" {Search; $sync['window'].FindName('category').SelectedIndex = 0; $debug }
 
@@ -8846,6 +8888,7 @@ function Invoke-Button {
         #region Menu items
         #===========================================================================
         "load" {LoadJson $Button}
+
 
         "ar" {
             SetLangusege -lang "ar"
@@ -9556,6 +9599,20 @@ function SaveItemsToJson
     }
 }
 
+function Invoke-Toogle {
+
+    Param ([string]$debug)
+
+    # debug
+    #Write-Host $debug
+
+    Switch -Wildcard ($debug){
+
+        "ToggleShowExt" {Invoke-ShowFile-Extensions $(Get-ToggleStatus ToggleShowExt)}
+        "ToggleDarkMode" {Invoke-DarkMode $(Get-ToggleStatus ToggleDarkMode)}
+    }
+}
+
 function ChangeTap() {
 
     if($sync['window'].FindName('apps').IsSelected)
@@ -9571,8 +9628,74 @@ function ChangeTap() {
         $sync['window'].FindName('installBtn').Visibility = "Hidden"
         $sync.currentList = "tweakslist"
     }
+
+    if($sync['window'].FindName('featurestab').IsSelected)
+    {
+        $sync['window'].FindName('applyBtn').Visibility = "Hidden"
+        $sync['window'].FindName('installBtn').Visibility = "Hidden"
+    }
 }
 
+Function Invoke-DarkMode {
+    <#
+
+    .SYNOPSIS
+        Enables/Disables Dark Mode
+
+    .PARAMETER DarkMoveEnabled
+        Indicates the current dark mode state
+
+    #>
+    Param($DarkMoveEnabled)
+    Try{
+        if ($DarkMoveEnabled -eq $false){
+            Write-Host "Enabling Dark Mode"
+            $DarkMoveValue = 0
+        }
+        else {
+            Write-Host "Disabling Dark Mode"
+            $DarkMoveValue = 1
+        }
+
+        $Path = "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize"
+        Set-ItemProperty -Path $Path -Name AppsUseLightTheme -Value $DarkMoveValue
+        Set-ItemProperty -Path $Path -Name SystemUsesLightTheme -Value $DarkMoveValue
+    }
+    Catch [System.Security.SecurityException] {
+        Write-Warning "Unable to set $Path\$Name to $Value due to a Security Exception"
+    }
+    Catch [System.Management.Automation.ItemNotFoundException] {
+        Write-Warning $psitem.Exception.ErrorRecord
+    }
+    Catch{
+        Write-Warning "Unable to set $Name due to unhandled exception"
+        Write-Warning $psitem.Exception.StackTrace
+    }
+}
+function Invoke-ShowFile-Extensions {
+   
+    Param($Enabled)
+    Try{
+        if ($Enabled -eq $false){
+            $value = 0
+        }
+        else {
+            $value = 1
+        }
+        $Path = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced"
+        Set-ItemProperty -Path $Path -Name HideFileExt -Value $value
+    }
+    Catch [System.Security.SecurityException] {
+        Write-Warning "Unable to set $Path\$Name to $Value due to a Security Exception"
+    }
+    Catch [System.Management.Automation.ItemNotFoundException] {
+        Write-Warning $psitem.Exception.ErrorRecord
+    }
+    Catch{
+        Write-Warning "Unable to set $Name due to unhandled exception"
+        Write-Warning $psitem.Exception.StackTrace
+    }
+}
 #region PlayMusic Functions
 function PlayMusic {
 
@@ -9909,6 +10032,96 @@ $sync["window"].Add_Loaded({
     PlayMusic | Out-Null
     $sync["window"].Activate()
 })
+
+# Select all elements with a Name attribute using XPath and iterate over them
+$xaml.SelectNodes("//*[@Name]") | ForEach-Object {
+    # Assign each element to a variable in $sync dictionary
+    $sync[$($_.Name)] = $sync["window"].FindName($_.Name)
+}
+
+# Iterate over keys in $sync dictionary
+$sync.Keys | ForEach-Object {
+    $element = $sync[$_]
+
+    # Check if the element exists
+    if ($element) {
+
+        # Check if the element is a Button
+        if ($element.GetType().Name -eq "Button") {
+            # Add a click event handler to the button
+
+            $element.Add_Click({
+                param([System.Object]$s)
+                Invoke-Button $s.Name
+            })
+        }
+
+        # Check if the element is a MenuItem
+        if ($element.GetType().Name -eq "MenuItem") {
+            # Add a click event handler to the MenuItem
+
+            $element.Add_Click({
+                param([System.Object]$s)
+                Invoke-Button $s.Name
+            })
+        }
+
+        # Check if the element is a TextBox
+        if ($element.GetType().Name -eq "TextBox") {
+
+            $element.Add_TextChanged({
+                param([System.Object]$s)
+                Invoke-Button $s.Name
+            })
+
+            $element.Add_GotFocus({
+                param([System.Object]$s)
+                Invoke-Button $s.Name
+            })
+        }
+
+        # Check if the element is a Ellipse
+        if ($element.GetType().Name -eq "Ellipse") {
+                # Add a click event handler to the Ellipse
+    
+                $element.add_MouseLeftButtonDown({
+                    param([System.Object]$s)
+                    Invoke-Button $s.Name
+                })
+        }
+
+        # Check if the element is a ComboBox
+        if ($element.GetType().Name -eq "ComboBox") {
+            # Add a click event handler to the ComboBox
+
+            $element.add_SelectionChanged({
+                param([System.Object]$s)
+                Invoke-Button $s.Name
+            })
+        }
+
+        # Check if the element is a TabControl
+        if ($element.GetType().Name -eq "TabControl") {
+            # Add a click event handler to the TabControl
+
+            $element.add_SelectionChanged({
+                param([System.Object]$s)
+                Invoke-Button $s.Name
+            })
+        }
+
+        # Check if the element is a TabControl
+        if ($element.GetType().Name -eq "CheckBox")
+        {
+            $element.IsChecked = Get-ToggleStatus -ToggleSwitch $element.Name
+
+             $element.Add_Click({
+                [System.Object]$Sender = $args[0]
+                Invoke-Toogle $Sender.name
+            })
+        }
+    }
+}
 
 
 #Close Event button
