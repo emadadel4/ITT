@@ -4022,5 +4022,22 @@
     ],
     "category": "Imaging",
     "check": "false"
+  },
+  {
+    "name": "Stretchly",
+    "description": "stretchly is a crossplatform electron app that reminds you to take breaks when working on your computer By default it runs in your tray and displays a reminder window containing an idea for a microbreak for 20 seconds every 10 minutes",
+    "winget": "Stretchly.Stretchly",
+    "choco": "stretchly",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
+    "category": "Utilities",
+    "check": "false"
   }
 ]
