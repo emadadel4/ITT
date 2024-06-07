@@ -111,6 +111,7 @@ $onClosingEvent = {
 
 # Handle the Loaded event
 $sync["window"].Add_Loaded({
+    Startup
     GetQuotes | Out-Null
     PlayMusic | Out-Null
     $sync["window"].Activate()
