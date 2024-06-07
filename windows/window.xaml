@@ -46,8 +46,8 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                 </MenuItem>
 
                  <!--Catagory Section-->
-                    <ComboBox SelectedIndex="0" Margin="-20,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" Name="category"  Width="115">
-                        <ComboBoxItem Content="All Categories"></ComboBoxItem>
+                    <ComboBox SelectedIndex="0" Margin="0,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" Name="category"  Width="90">
+                        <ComboBoxItem Content="All"></ComboBoxItem>
                         <ComboBoxItem Content="Web Browsers"></ComboBoxItem>
                         <ComboBoxItem Content="Media"></ComboBoxItem>
                         <ComboBoxItem Content="Media Tools"></ComboBoxItem>
@@ -160,7 +160,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <!--Search Section-->
             <Grid HorizontalAlignment="Right" Margin="0,0,15,0" Grid.Row="0"  VerticalAlignment="Center" >
                 <TextBox Padding="5"
-                                    Width="110"
+                                    Width="130"
                                     VerticalAlignment="Center"
                                     HorizontalAlignment="Left" 
                                     Text="{Binding Text_searchInput}"
@@ -194,7 +194,6 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
 
         {{Taps}}
 
-
     <!--Footer Section-->
             <Grid Grid.Row="2">
                     <!--applyBtn Button-->
@@ -220,17 +219,15 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
             </Grid>
 
             <StackPanel Orientation="Horizontal" Grid.Row="3">
-
-
-                        <TextBlock Name="quotes"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Center" 
-                            TextWrapping="Wrap"
-                            Margin="15,0,0,0"
-                            FlowDirection="LeftToRight"
-                            Text="aaa"
-                            Width="622"
-                            />
+                <TextBlock Name="quotes"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center" 
+                    TextWrapping="Wrap"
+                    Margin="15,0,0,0"
+                    FlowDirection="LeftToRight"
+                    Text="Hello World"
+                    Width="622"
+                    />
             </StackPanel>
     <!--End Footer Section-->
 
