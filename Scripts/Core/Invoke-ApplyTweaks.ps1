@@ -243,11 +243,10 @@ function Invoke-ApplyTweaks
                         $Name
                     )
                         try {
-
                             #powershell.exe -Command "Import-Module Appx; Get-AppxPackage -AllUsers -Name "$($Name)" | Remove-AppxPackage -ErrorAction Stop"
-                            Start-Process powershell.exe -ArgumentList "-Command `"Import-Module Appx; Get-AppxPackage -AllUsers -Name '$($Name)' | Remove-AppxPackage -ErrorAction Stop`"" -NoNewWindow  -Wait 
+                            #Start-Process powershell.exe -ArgumentList "-Command `"Import-Module Appx; Get-AppxPackage -AllUsers -Name '$($Name)' | Remove-AppxPackage -ErrorAction Stop`"" -NoNewWindow  -Wait 
+                            Start-Process powershell.exe -ArgumentList "-Command `"Get-AppXProvisionedPackage -Online | where DisplayName -EQ $($Name) | Remove-AppxProvisionedPackage -Online`"" -NoNewWindow  -Wait 
                             Add-Log -Message "Successfully removed $($Name)" -Level "INFO"
-
                         } 
                         catch {
                             Write-Host "Failed to remove $($Name). $_" -ForegroundColor red
@@ -394,7 +393,7 @@ function Invoke-ApplyTweaks
                                     }
 
                                     foreach ($cmd in $app.Command) {
-                                        ExecuteCommand -Command $cmd
+                                        #ExecuteCommand -Command $cmd
                                     }
                                 }
                             }
