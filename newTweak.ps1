@@ -286,14 +286,28 @@ $description = (Read-Host "Enter tweak description").Trim() -replace '[^\w\s]', 
 
 # Initialize an empty array to collect commands
 $cmd = @()
+$cmd2 = @()
+
 
 # Loop to collect commands from the user
 do {
-    $line = Read-Host "Enter command (leave empty to finish)"
+    $line = Read-Host "Enter InvokeCommand (leave empty to finish)"
     if ($line -ne '') {
+        $line = $line -replace '(?<!\\)\\(?!\\)', '\\'
         $cmd += $line
     }
 } while ($line -ne '')
+
+
+# Loop to collect commands from the user
+do {
+    $line = Read-Host "Enter UndoCommand (leave empty to finish)"
+    if ($line -ne '') {
+        $line = $line -replace '(?<!\\)\\(?!\\)', '\\'
+        $cmd2 += $line
+    }
+} while ($line -ne '')
+
 
 # Define the data
 $data = @{
@@ -303,12 +317,19 @@ $data = @{
     "type" = "command"
     "refresh" = "false"
     "userInput" = $cmd
+    "UndoCommand" = $cmd2
+
 }
 
 # Convert userInput array to JSON formatted string
 $userInputJson = ($data["userInput"] | ForEach-Object { '"' + $_.Replace('"', '\"') + '"' }) -join ",
 
 "
+
+$userInputJson2 = ($data["UndoCommand"] | ForEach-Object { '"' + $_.Replace('"', '\"') + '"' }) -join ",
+
+"
+
 
 # Convert to JSON string
 $jsonString = @"
@@ -320,6 +341,9 @@ $jsonString = @"
     "refresh": "$($data["refresh"])",
     "$userInput": [
         $userInputJson
+    ],
+    "UndoCommand": [
+        $userInputJson2
     ]
 }
 "@
