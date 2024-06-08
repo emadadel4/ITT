@@ -9670,13 +9670,13 @@ Function Invoke-DarkMode {
     Param($DarkMoveEnabled)
     Try{
 
-        $eee = (Get-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "DarkMode").DarkMode
+        $DarkMode = (Get-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "DarkMode").DarkMode
 
 
         if ($DarkMoveEnabled -eq $false){
             $DarkMoveValue = 0
 
-            if($eee -eq "none")
+            if($DarkMode -eq "none")
             {
                 $sync['window'].Resources.MergedDictionaries.Add($sync['window'].FindResource("Dark"))
             }
@@ -9684,7 +9684,7 @@ Function Invoke-DarkMode {
         else {
             $DarkMoveValue = 1
 
-            if($eee -eq "none")
+            if($DarkMode -eq "none")
             {
                 $sync['window'].Resources.MergedDictionaries.Add($sync['window'].FindResource("Light"))
             }
