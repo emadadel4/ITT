@@ -4123,8 +4123,11 @@ $sync.database.locales = '{
     "music":"Music",
     "on":"ON ",
     "off":"OFF",
+    "Dark":"Dark ",
+    "Light":"Light",
+    "defaultTheme":"System",
     "ittlink":"Create ITT Link",
-    "darkmode":"Dark Mode",
+    "darkmode":"Theme",
     "en":"English",
     "ar":"عربي",
     "lang":"Langusege",
@@ -4154,8 +4157,11 @@ $sync.database.locales = '{
     "music":"الصوت ",
     "on":"تشغيل ",
     "off":"إيقاف",
+    "Dark":"داكن",
+    "Light":"ابيض",
+    "defaultTheme":"النظام",
     "ittlink":"إنشاء اختصار",
-    "darkmode":"الوضع الليلي",
+    "darkmode":"المظهر",
     "en":"English",
     "ar":"عربي",
     "lang":"اللغة",
@@ -5823,8 +5829,9 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                         <MenuItem.Icon>
                             <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
                         </MenuItem.Icon>
-                        <MenuItem Name="darkOn" Header="{Binding on}"/>
-                        <MenuItem Name="darkOff" Header="{Binding off}"/>
+                        <MenuItem Name="systheme" Header="{Binding defaultTheme}"/>
+                        <MenuItem Name="Dark" Header="{Binding Dark}"/>
+                        <MenuItem Name="Light" Header="{Binding Light}"/>
                     </MenuItem>
 
                     <MenuItem Header="{Binding music}">
@@ -8171,12 +8178,14 @@ try {
     $sync["window"] = [Windows.Markup.XamlReader]::Load( $reader )
     $currentCulture = [System.Globalization.CultureInfo]::InstalledUICulture
     $shortCulture = $currentCulture.Name.Substring(0,2)
+
+    $AppsTheme = (Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize" -Name "AppsUseLightTheme")
     
     # Check if the registry key exists if not then create one
     if (-not (Test-Path $sync.registryPath))
     {
         New-Item -Path "HKCU:\Software\itt.emadadel" -Force *> $null
-        Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "DarkMode" -Value "false" -Force 
+        Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "DarkMode" -Value "none" -Force 
         Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "locales" -Value "$shortCulture" -Force 
     }
 
@@ -8214,13 +8223,27 @@ try {
     #===========================================================================
     #region Check Theme
     #===========================================================================
-    if ($sync.isDarkMode -eq "true")
+
+    if($sync.isDarkMode -eq "true")
     {
         $sync['window'].Resources.MergedDictionaries.Add($sync['window'].FindResource("Dark"))
 
-    } else {
+    }elseif ($sync.isDarkMode -eq "false") 
+    {
         $sync['window'].Resources.MergedDictionaries.Add($sync['window'].FindResource("Light"))
     }
+    else
+    {
+        switch ($AppsTheme) {
+            "0" {
+                $sync['window'].Resources.MergedDictionaries.Add($sync['window'].FindResource("Dark"))
+            }
+            "1" {
+                $sync['window'].Resources.MergedDictionaries.Add($sync['window'].FindResource("Light"))
+            }
+        }
+    }
+    
     #===========================================================================
     #endregion Check Theme
     #===========================================================================
@@ -8887,27 +8910,16 @@ function Invoke-Button {
         #===========================================================================
         #region Menu items
         #===========================================================================
-        "load" {LoadJson $Button}
 
-
-        "ar" {
-            SetLangusege -lang "ar"
-            $Button
-        }
-
-        "en" {
-            SetLangusege -lang "en"
-            $Button
-        }
-
+        #region Lang
+        "ar" {SetLangusege -lang "ar" $Button}
+        "en" {SetLangusege -lang "en" $Button}
+        #endregion Lang 
 
         "save" {SaveItemsToJson $debug}
-        "logo" {About $debug}
-        "mas" {Start-Process ("https://github.com/massgravel/Microsoft-Activation-Scripts") $debug}
-        "idm" { Start-Process ("https://github.com/WindowsAddict/IDM-Activation-Script") $debug}
-        "unhook" { Start-Process ("https://unhook.app/") $debug}
-        "uBlock" { Start-Process ("https://ublockorigin.com/") $debug}
-        "dev" { About $Button}
+        "load" {LoadJson $Button}
+
+        #region Device Managment
         "deviceManager" {Start-Process devmgmt.msc $debug}
         "appsfeatures" {Start-Process ms-settings:appsfeatures $debug}
         "sysinfo" {Start-Process msinfo32.exe; dxdiag.exe; $debug}
@@ -8916,16 +8928,33 @@ function Invoke-Button {
         "network" {Start-Process ncpa.cpl $debug}
         "taskmgr" {Start-Process taskmgr.exe $debug}
         "diskmgmt" {Start-Process diskmgmt.msc $debug}
-        "darkOn" { Switch-ToDarkMode $debug }
-        "darkOff" { Switch-ToLightMode $debug }
-        "ittshortcut" { ITTShortcut $debug }
-        "moff" { MuteMusic $debug }
-        "mon" { Unmute $debug }
+        #endregion Managment
+
+        #region Theme
+            "Dark" { Switch-ToDarkMode $debug }
+            "Light" { Switch-ToLightMode $debug }
+            "systheme" {SwitchToSystem $Button}
+        #endregion Menu items
+
+        #region Music
+            "moff" { MuteMusic $debug }
+            "mon" { Unmute $debug }
+        #endregion Music
+
+        #region Mirror Links
+        "unhook" { Start-Process ("https://unhook.app/") $debug}
+        "uBlock" { Start-Process ("https://ublockorigin.com/") $debug}
+        "mas" {Start-Process ("https://github.com/massgravel/Microsoft-Activation-Scripts") $debug}
+        "idm" { Start-Process ("https://github.com/WindowsAddict/IDM-Activation-Script") $debug}
         "neat" { Start-Process ("https://addons.mozilla.org/en-US/firefox/addon/neatdownloadmanager-extension/")  $debug }
+        #endregion Mirror Links
+
+        "ittshortcut" { ITTShortcut $debug }
+        "dev" { About $Button}
+
         #===========================================================================
         #endregion Menu items
         #===========================================================================
-
     }
 }
 
@@ -9650,11 +9679,13 @@ Function Invoke-DarkMode {
     Try{
         if ($DarkMoveEnabled -eq $false){
             Write-Host "Enabling Dark Mode"
+            $sync['window'].Resources.MergedDictionaries.Add($sync['window'].FindResource("Dark"))
             $DarkMoveValue = 0
         }
         else {
             Write-Host "Disabling Dark Mode"
             $DarkMoveValue = 1
+            $sync['window'].Resources.MergedDictionaries.Add($sync['window'].FindResource("Light"))
         }
 
         $Path = "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize"
@@ -9934,6 +9965,30 @@ function Update-Theme ($theme, $mode) {
     Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "DarkMode" -Value $mode -Force
 
 }
+
+function SwitchToSystem {
+
+    try {
+
+        $AppsTheme = (Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize" -Name "AppsUseLightTheme")
+
+        switch ($AppsTheme) {
+            "0" {
+                $sync['window'].Resources.MergedDictionaries.Add($sync['window'].FindResource("Dark"))
+            }
+            "1" {
+                $sync['window'].Resources.MergedDictionaries.Add($sync['window'].FindResource("Light"))
+            }
+            Default {
+                Write-Host "Unknown theme value: $AppsTheme"
+            }
+        }
+    }
+    catch {
+        Write-Host "Error occurred: $_"
+    }
+}
+
 #endregion
 
 function SetLangusege {

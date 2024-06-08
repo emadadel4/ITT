@@ -16,27 +16,16 @@ function Invoke-Button {
         #===========================================================================
         #region Menu items
         #===========================================================================
-        "load" {LoadJson $Button}
 
-
-        "ar" {
-            SetLangusege -lang "ar"
-            $Button
-        }
-
-        "en" {
-            SetLangusege -lang "en"
-            $Button
-        }
-
+        #region Lang
+        "ar" {SetLangusege -lang "ar" $Button}
+        "en" {SetLangusege -lang "en" $Button}
+        #endregion Lang 
 
         "save" {SaveItemsToJson $debug}
-        "logo" {About $debug}
-        "mas" {Start-Process ("https://github.com/massgravel/Microsoft-Activation-Scripts") $debug}
-        "idm" { Start-Process ("https://github.com/WindowsAddict/IDM-Activation-Script") $debug}
-        "unhook" { Start-Process ("https://unhook.app/") $debug}
-        "uBlock" { Start-Process ("https://ublockorigin.com/") $debug}
-        "dev" { About $Button}
+        "load" {LoadJson $Button}
+
+        #region Device Managment
         "deviceManager" {Start-Process devmgmt.msc $debug}
         "appsfeatures" {Start-Process ms-settings:appsfeatures $debug}
         "sysinfo" {Start-Process msinfo32.exe; dxdiag.exe; $debug}
@@ -45,15 +34,32 @@ function Invoke-Button {
         "network" {Start-Process ncpa.cpl $debug}
         "taskmgr" {Start-Process taskmgr.exe $debug}
         "diskmgmt" {Start-Process diskmgmt.msc $debug}
-        "darkOn" { Switch-ToDarkMode $debug }
-        "darkOff" { Switch-ToLightMode $debug }
-        "ittshortcut" { ITTShortcut $debug }
-        "moff" { MuteMusic $debug }
-        "mon" { Unmute $debug }
+        #endregion Managment
+
+        #region Theme
+            "Dark" { Switch-ToDarkMode $debug }
+            "Light" { Switch-ToLightMode $debug }
+            "systheme" {SwitchToSystem $Button}
+        #endregion Menu items
+
+        #region Music
+            "moff" { MuteMusic $debug }
+            "mon" { Unmute $debug }
+        #endregion Music
+
+        #region Mirror Links
+        "unhook" { Start-Process ("https://unhook.app/") $debug}
+        "uBlock" { Start-Process ("https://ublockorigin.com/") $debug}
+        "mas" {Start-Process ("https://github.com/massgravel/Microsoft-Activation-Scripts") $debug}
+        "idm" { Start-Process ("https://github.com/WindowsAddict/IDM-Activation-Script") $debug}
         "neat" { Start-Process ("https://addons.mozilla.org/en-US/firefox/addon/neatdownloadmanager-extension/")  $debug }
+        #endregion Mirror Links
+
+        "ittshortcut" { ITTShortcut $debug }
+        "dev" { About $Button}
+
         #===========================================================================
         #endregion Menu items
         #===========================================================================
-
     }
 }

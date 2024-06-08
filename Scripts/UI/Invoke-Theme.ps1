@@ -46,4 +46,28 @@ function Update-Theme ($theme, $mode) {
     Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "DarkMode" -Value $mode -Force
 
 }
+
+function SwitchToSystem {
+
+    try {
+
+        $AppsTheme = (Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize" -Name "AppsUseLightTheme")
+
+        switch ($AppsTheme) {
+            "0" {
+                $sync['window'].Resources.MergedDictionaries.Add($sync['window'].FindResource("Dark"))
+            }
+            "1" {
+                $sync['window'].Resources.MergedDictionaries.Add($sync['window'].FindResource("Light"))
+            }
+            Default {
+                Write-Host "Unknown theme value: $AppsTheme"
+            }
+        }
+    }
+    catch {
+        Write-Host "Error occurred: $_"
+    }
+}
+
 #endregion
