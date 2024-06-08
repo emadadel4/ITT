@@ -15,7 +15,12 @@
 
                         <SolidColorBrush x:Key="ToggleSwitchBG" Color="#282828"/>
                         <SolidColorBrush x:Key="ToggleSwitchFG" Color="#282828"/>
-                        <SolidColorBrush x:Key="ToggleSwitch" Color="white"/>
+
+
+                        <SolidColorBrush x:Key="ToggleSwitchEnable" Color="white"/>
+                        <SolidColorBrush x:Key="ToggleSwitchDisable" Color="black"/>
+
+
                         <SolidColorBrush x:Key="ToggleSwitchBorderBrush" Color="black"/>
 
 
@@ -38,8 +43,11 @@
 
                         <SolidColorBrush x:Key="ToggleSwitchBG" Color="#282828"/>
                         <SolidColorBrush x:Key="ToggleSwitchFG" Color="#282828"/>
-                        <SolidColorBrush x:Key="ToggleSwitch" Color="WhiteSmoke"/>
-                        <SolidColorBrush x:Key="ToggleSwitchBorderBrush" Color="WhiteSmoke"/>
+
+                        <SolidColorBrush x:Key="ToggleSwitchEnable" Color="white"/>
+                        <SolidColorBrush x:Key="ToggleSwitchDisable" Color="#c9c9c7"/>
+
+                        <SolidColorBrush x:Key="ToggleSwitchBorderBrush" Color="#c9c9c7"/>
 
                 </ResourceDictionary>
         <!--Dark mode -->
