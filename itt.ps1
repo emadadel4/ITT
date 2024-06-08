@@ -9678,14 +9678,10 @@ Function Invoke-DarkMode {
     Param($DarkMoveEnabled)
     Try{
         if ($DarkMoveEnabled -eq $false){
-            Write-Host "Enabling Dark Mode"
-            $sync['window'].Resources.MergedDictionaries.Add($sync['window'].FindResource("Dark"))
             $DarkMoveValue = 0
         }
         else {
-            Write-Host "Disabling Dark Mode"
             $DarkMoveValue = 1
-            $sync['window'].Resources.MergedDictionaries.Add($sync['window'].FindResource("Light"))
         }
 
         $Path = "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize"
@@ -9969,6 +9965,8 @@ function Update-Theme ($theme, $mode) {
 function SwitchToSystem {
 
     try {
+
+        Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "DarkMode" -Value "none" -Force
 
         $AppsTheme = (Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize" -Name "AppsUseLightTheme")
 
