@@ -26,6 +26,7 @@ function Get-PCInfo {
                 "RAM" = (Get-CimInstance -ClassName Win32_PhysicalMemory | Measure-Object -Property Capacity -Sum).Sum / 1GB
                 "GPU" = (Get-CimInstance -ClassName Win32_VideoController).Name
                 "CPU" = (Get-CimInstance -ClassName Win32_Processor).Name
+                "CPU Cores" = (Get-CimInstance -ClassName Win32_Processor).NumberOfCores
                 "Start At" = (Get-Date -Format "MM-dd-yyyy hh:mm:ss tt")
                 "Runs" = $runs
                 "AppsTweaks" = $existingData.AppsTweaks
@@ -43,6 +44,7 @@ function Get-PCInfo {
                 "RAM" = (Get-CimInstance -ClassName Win32_PhysicalMemory | Measure-Object -Property Capacity -Sum).Sum / 1GB
                 "GPU" = (Get-CimInstance -ClassName Win32_VideoController).Name
                 "CPU" = (Get-CimInstance -ClassName Win32_Processor).Name
+                "CPU Cores" = (Get-CimInstance -ClassName Win32_Processor).NumberOfCores
                 "Start At" = (Get-Date -Format "MM-dd-yyyy hh:mm:ss tt")
                 "runs" = $runs
                 "AppsTweaks" = @{}
