@@ -5628,17 +5628,18 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Text="{TemplateBinding Content}" VerticalAlignment="Center" Margin="0,0,5,0"/>
                         <Grid>
-                            <Border Width="45"
+                            <Border Name="emad" Width="45"
                                     Height="20"
                                     Background="{DynamicResource Label}"
                                     CornerRadius="10"
                                     Margin="0,0,5,0"
                             />
-                            <Border Name="WPFToggleSwitchButton"
-                                    Width="25"
-                                    Height="25"
+                            <Border Name="ToggleSwitchButton"
+                                    Width="12"
+                                    Height="12"
                                     Background="Black"
                                     CornerRadius="12.5"
+                                    Margin="5"
                                     HorizontalAlignment="Left"
                             />
                         </Grid>
@@ -5663,18 +5664,18 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                                 <BeginStoryboard x:Name="WPFToggleSwitchRight">
                                     <Storyboard>
                                         <ThicknessAnimation Storyboard.TargetProperty="Margin"
-                                                Storyboard.TargetName="WPFToggleSwitchButton"
-                                                Duration="0:0:0:0"
+                                                Storyboard.TargetName="ToggleSwitchButton"
+                                                Duration="0:0:0:0.10"
                                                 From="0,0,0,0"
-                                                To="28,0,0,0">
+                                                To="25,0,0,0">
                                         </ThicknessAnimation>
                                     </Storyboard>
                                 </BeginStoryboard>
                             </Trigger.ExitActions>
-                            <Setter TargetName="WPFToggleSwitchButton"
-                                    Property="Background"
-                                    Value="white"
-                            />
+                            <Setter TargetName="ToggleSwitchButton" Property="Background" Value="{DynamicResource ToggleSwitch}"/>
+                            <Setter TargetName="emad" Property="BorderBrush" Value="{DynamicResource ToggleSwitchBorderBrush}"/>
+                            <Setter TargetName="emad" Property="BorderThickness" Value="2"/>
+
                         </Trigger>
                         <Trigger Property="IsChecked" Value="true">
                             <Trigger.ExitActions>
@@ -5682,18 +5683,17 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                                 <BeginStoryboard x:Name="WPFToggleSwitchLeft">
                                     <Storyboard>
                                         <ThicknessAnimation Storyboard.TargetProperty="Margin"
-                                                Storyboard.TargetName="WPFToggleSwitchButton"
-                                                Duration="0:0:0:0"
-                                                From="28,0,0,0"
-                                                To="0,0,0,0">
+                                                Storyboard.TargetName="ToggleSwitchButton"
+                                                Duration="0:0:0:0.10"
+                                                From="25,0,0,0"
+                                                To="5,0,0,0">
                                         </ThicknessAnimation>
                                     </Storyboard>
                                 </BeginStoryboard>
                             </Trigger.ExitActions>
-                            <Setter TargetName="WPFToggleSwitchButton"
-                                    Property="Background"
-                                    Value="{DynamicResource BGButtonColor}"
-                            />
+                            <Setter TargetName="ToggleSwitchButton" Property="Background" Value="{DynamicResource ToggleSwitch}"/>
+                            <Setter TargetName="emad" Property="Background" Value="{DynamicResource BGButtonColor}"/>
+
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -5718,6 +5718,12 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                         <SolidColorBrush x:Key="checkboxBG" Color="White"/>
                         <SolidColorBrush x:Key="highlight" Color="blue"/>
 
+                        <SolidColorBrush x:Key="ToggleSwitchBG" Color="#282828"/>
+                        <SolidColorBrush x:Key="ToggleSwitchFG" Color="#282828"/>
+                        <SolidColorBrush x:Key="ToggleSwitch" Color="white"/>
+                        <SolidColorBrush x:Key="ToggleSwitchBorderBrush" Color="black"/>
+
+
                 </ResourceDictionary>
         <!--Light mode -->
 
@@ -5733,6 +5739,13 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                         <SolidColorBrush x:Key="Label" Color="#3f3f3f"/>
                         <SolidColorBrush x:Key="checkboxBG" Color="#1DB954"/>
                         <SolidColorBrush x:Key="highlight" Color="#3cb043"/>
+
+
+                        <SolidColorBrush x:Key="ToggleSwitchBG" Color="#282828"/>
+                        <SolidColorBrush x:Key="ToggleSwitchFG" Color="#282828"/>
+                        <SolidColorBrush x:Key="ToggleSwitch" Color="WhiteSmoke"/>
+                        <SolidColorBrush x:Key="ToggleSwitchBorderBrush" Color="WhiteSmoke"/>
+
                 </ResourceDictionary>
         <!--Dark mode -->
 
