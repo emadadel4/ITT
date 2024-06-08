@@ -440,7 +440,7 @@
                                     </Storyboard>
                                 </BeginStoryboard>
                             </Trigger.ExitActions>
-                            <Setter TargetName="ToggleSwitchButton" Property="Background" Value="{DynamicResource ToggleSwitch}"/>
+                            <Setter TargetName="ToggleSwitchButton" Property="Background" Value="{DynamicResource ToggleSwitchDisable}"/>
                             <Setter TargetName="emad" Property="BorderBrush" Value="{DynamicResource ToggleSwitchBorderBrush}"/>
                             <Setter TargetName="emad" Property="BorderThickness" Value="2"/>
 
@@ -459,7 +459,7 @@
                                     </Storyboard>
                                 </BeginStoryboard>
                             </Trigger.ExitActions>
-                            <Setter TargetName="ToggleSwitchButton" Property="Background" Value="{DynamicResource ToggleSwitch}"/>
+                            <Setter TargetName="ToggleSwitchButton" Property="Background" Value="{DynamicResource ToggleSwitchEnable}"/>
                             <Setter TargetName="emad" Property="Background" Value="{DynamicResource BGButtonColor}"/>
 
                         </Trigger>
