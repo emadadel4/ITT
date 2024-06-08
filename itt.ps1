@@ -4939,8 +4939,6 @@ $sync.database.Tweaks = '[
       }
     ],
     "InvokeCommand": [
-     
-
       "reg delete \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Appx\\AppxAllUserStore\\Deprovisioned\\Microsoft.BingWeather_8wekyb3d8bbwe\" /f",
       "reg delete \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Appx\\AppxAllUserStore\\Deprovisioned\\Microsoft.DesktopAppInstaller_8wekyb3d8bbwe\" /f",
       "reg delete \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Appx\\AppxAllUserStore\\Deprovisioned\\Microsoft.GetHelp_8wekyb3d8bbwe\" /f",
@@ -5208,6 +5206,18 @@ $sync.database.Tweaks = '[
     "UndoCommand": [
       ""
     ]
+  },
+  {
+    "name": "Clear Temp Folders",
+    "description": "Clear Temp Folders",
+    "check": "false",
+    "type": "command",
+    "refresh": "false",
+    "InvokeCommand": [
+      "Remove-Item -Path $env:TEMP -Force -Recurse",
+      "Remove-Item -Path C:\\Windows\\temp -Force -Recurse"
+    ],
+    "UndoCommand": []
   }
 ]
 ' | ConvertFrom-Json
@@ -7866,6 +7876,14 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                                     
         <StackPanel Orientation="Vertical" Width="auto" Margin="8">
             <StackPanel Orientation="Horizontal">
+                <CheckBox Content="Clear Temp Folders"   FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content=""/>
+            </StackPanel>
+                <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Clear Temp Folders"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+            <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Disable Recall Snapshots in Windows 11 24H"   FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content=""/>
             </StackPanel>
@@ -8714,7 +8732,8 @@ function Invoke-ApplyTweaks
                         try {
 
                             #powershell.exe -Command "Import-Module Appx; Get-AppxPackage -AllUsers -Name "$($Name)" | Remove-AppxPackage -ErrorAction Stop"
-                            Start-Process powershell.exe -ArgumentList "-Command `"Import-Module Appx; Get-AppxPackage -AllUsers -Name '$($Name)' | Remove-AppxPackage -ErrorAction Stop`"" -NoNewWindow  -Wait 
+                            #Start-Process powershell.exe -ArgumentList "-Command `"Import-Module Appx; Get-AppxPackage -AllUsers -Name '$($Name)' | Remove-AppxPackage -ErrorAction Stop`"" -NoNewWindow  -Wait 
+                            Start-Process powershell.exe -ArgumentList "-Command `"Get-AppXProvisionedPackage -Online | where DisplayName -EQ $($Name) | Remove-AppxProvisionedPackage -Online`"" -NoNewWindow  -Wait 
                             Add-Log -Message "Successfully removed $($Name)" -Level "INFO"
 
                         } 
@@ -8863,7 +8882,7 @@ function Invoke-ApplyTweaks
                                     }
 
                                     foreach ($cmd in $app.Command) {
-                                        ExecuteCommand -Command $cmd
+                                        #ExecuteCommand -Command $cmd
                                     }
                                 }
                             }
