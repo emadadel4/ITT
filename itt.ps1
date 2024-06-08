@@ -9666,22 +9666,28 @@ function ChangeTap() {
 }
 
 Function Invoke-DarkMode {
-    <#
 
-    .SYNOPSIS
-        Enables/Disables Dark Mode
-
-    .PARAMETER DarkMoveEnabled
-        Indicates the current dark mode state
-
-    #>
     Param($DarkMoveEnabled)
     Try{
+
+        $eee = (Get-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "DarkMode").DarkMode
+
+
         if ($DarkMoveEnabled -eq $false){
             $DarkMoveValue = 0
+
+            if($eee -eq "none")
+            {
+                $sync['window'].Resources.MergedDictionaries.Add($sync['window'].FindResource("Dark"))
+            }
         }
         else {
             $DarkMoveValue = 1
+
+            if($eee -eq "none")
+            {
+                $sync['window'].Resources.MergedDictionaries.Add($sync['window'].FindResource("Light"))
+            }
         }
 
         $Path = "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize"
