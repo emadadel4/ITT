@@ -29,12 +29,14 @@ try {
     $sync["window"] = [Windows.Markup.XamlReader]::Load( $reader )
     $currentCulture = [System.Globalization.CultureInfo]::InstalledUICulture
     $shortCulture = $currentCulture.Name.Substring(0,2)
+
+    $AppsTheme = (Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize" -Name "AppsUseLightTheme")
     
     # Check if the registry key exists if not then create one
     if (-not (Test-Path $sync.registryPath))
     {
         New-Item -Path "HKCU:\Software\itt.emadadel" -Force *> $null
-        Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "DarkMode" -Value "false" -Force 
+        Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "DarkMode" -Value "none" -Force 
         Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "locales" -Value "$shortCulture" -Force 
     }
 
@@ -72,13 +74,27 @@ try {
     #===========================================================================
     #region Check Theme
     #===========================================================================
-    if ($sync.isDarkMode -eq "true")
+
+    if($sync.isDarkMode -eq "true")
     {
         $sync['window'].Resources.MergedDictionaries.Add($sync['window'].FindResource("Dark"))
 
-    } else {
+    }elseif ($sync.isDarkMode -eq "false") 
+    {
         $sync['window'].Resources.MergedDictionaries.Add($sync['window'].FindResource("Light"))
     }
+    else
+    {
+        switch ($AppsTheme) {
+            "0" {
+                $sync['window'].Resources.MergedDictionaries.Add($sync['window'].FindResource("Dark"))
+            }
+            "1" {
+                $sync['window'].Resources.MergedDictionaries.Add($sync['window'].FindResource("Light"))
+            }
+        }
+    }
+    
     #===========================================================================
     #endregion Check Theme
     #===========================================================================
