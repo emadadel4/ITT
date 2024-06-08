@@ -13,6 +13,12 @@
                         <SolidColorBrush x:Key="checkboxBG" Color="White"/>
                         <SolidColorBrush x:Key="highlight" Color="blue"/>
 
+                        <SolidColorBrush x:Key="ToggleSwitchBG" Color="#282828"/>
+                        <SolidColorBrush x:Key="ToggleSwitchFG" Color="#282828"/>
+                        <SolidColorBrush x:Key="ToggleSwitch" Color="white"/>
+                        <SolidColorBrush x:Key="ToggleSwitchBorderBrush" Color="black"/>
+
+
                 </ResourceDictionary>
         <!--Light mode -->
 
@@ -28,6 +34,13 @@
                         <SolidColorBrush x:Key="Label" Color="#3f3f3f"/>
                         <SolidColorBrush x:Key="checkboxBG" Color="#1DB954"/>
                         <SolidColorBrush x:Key="highlight" Color="#3cb043"/>
+
+
+                        <SolidColorBrush x:Key="ToggleSwitchBG" Color="#282828"/>
+                        <SolidColorBrush x:Key="ToggleSwitchFG" Color="#282828"/>
+                        <SolidColorBrush x:Key="ToggleSwitch" Color="WhiteSmoke"/>
+                        <SolidColorBrush x:Key="ToggleSwitchBorderBrush" Color="WhiteSmoke"/>
+
                 </ResourceDictionary>
         <!--Dark mode -->
 
