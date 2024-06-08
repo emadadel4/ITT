@@ -5672,7 +5672,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                                     </Storyboard>
                                 </BeginStoryboard>
                             </Trigger.ExitActions>
-                            <Setter TargetName="ToggleSwitchButton" Property="Background" Value="{DynamicResource ToggleSwitch}"/>
+                            <Setter TargetName="ToggleSwitchButton" Property="Background" Value="{DynamicResource ToggleSwitchDisable}"/>
                             <Setter TargetName="emad" Property="BorderBrush" Value="{DynamicResource ToggleSwitchBorderBrush}"/>
                             <Setter TargetName="emad" Property="BorderThickness" Value="2"/>
 
@@ -5691,7 +5691,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                                     </Storyboard>
                                 </BeginStoryboard>
                             </Trigger.ExitActions>
-                            <Setter TargetName="ToggleSwitchButton" Property="Background" Value="{DynamicResource ToggleSwitch}"/>
+                            <Setter TargetName="ToggleSwitchButton" Property="Background" Value="{DynamicResource ToggleSwitchEnable}"/>
                             <Setter TargetName="emad" Property="Background" Value="{DynamicResource BGButtonColor}"/>
 
                         </Trigger>
@@ -5720,7 +5720,12 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
 
                         <SolidColorBrush x:Key="ToggleSwitchBG" Color="#282828"/>
                         <SolidColorBrush x:Key="ToggleSwitchFG" Color="#282828"/>
-                        <SolidColorBrush x:Key="ToggleSwitch" Color="white"/>
+
+
+                        <SolidColorBrush x:Key="ToggleSwitchEnable" Color="white"/>
+                        <SolidColorBrush x:Key="ToggleSwitchDisable" Color="black"/>
+
+
                         <SolidColorBrush x:Key="ToggleSwitchBorderBrush" Color="black"/>
 
 
@@ -5743,8 +5748,11 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
 
                         <SolidColorBrush x:Key="ToggleSwitchBG" Color="#282828"/>
                         <SolidColorBrush x:Key="ToggleSwitchFG" Color="#282828"/>
-                        <SolidColorBrush x:Key="ToggleSwitch" Color="WhiteSmoke"/>
-                        <SolidColorBrush x:Key="ToggleSwitchBorderBrush" Color="WhiteSmoke"/>
+
+                        <SolidColorBrush x:Key="ToggleSwitchEnable" Color="white"/>
+                        <SolidColorBrush x:Key="ToggleSwitchDisable" Color="#c9c9c7"/>
+
+                        <SolidColorBrush x:Key="ToggleSwitchBorderBrush" Color="#c9c9c7"/>
 
                 </ResourceDictionary>
         <!--Dark mode -->
