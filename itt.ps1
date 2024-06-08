@@ -5630,7 +5630,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                         <Grid>
                             <Border Width="45"
                                     Height="20"
-                                    Background="#555555"
+                                    Background="{DynamicResource Label}"
                                     CornerRadius="10"
                                     Margin="0,0,5,0"
                             />
@@ -5673,7 +5673,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                             </Trigger.ExitActions>
                             <Setter TargetName="WPFToggleSwitchButton"
                                     Property="Background"
-                                    Value="#fff9f4f4"
+                                    Value="white"
                             />
                         </Trigger>
                         <Trigger Property="IsChecked" Value="true">
@@ -5692,7 +5692,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                             </Trigger.ExitActions>
                             <Setter TargetName="WPFToggleSwitchButton"
                                     Property="Background"
-                                    Value="#ff060600"
+                                    Value="{DynamicResource BGButtonColor}"
                             />
                         </Trigger>
                     </ControlTemplate.Triggers>
@@ -8039,8 +8039,8 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                                     </DataTemplate>
                             </TabItem.HeaderTemplate>
                                 <ListView Name="featureslist"  Margin="0" ScrollViewer.VerticalScrollBarVisibility="Auto" BorderBrush="{x:Null}" Background="{x:Null}">
-                                    <CheckBox Content="Show file extensions" Name="ToggleShowExt" FontWeight="Bold" Style="{StaticResource ToggleSwitchStyle}" Margin="10" HorizontalAlignment="Right"/>
-                                    <CheckBox Content="Dark Theme" Name="ToggleDarkMode" FontWeight="Bold" Style="{StaticResource ToggleSwitchStyle}" Margin="10" HorizontalAlignment="Right"/>
+                                    <CheckBox Content="Show file extensions" Name="ToggleShowExt" Foreground="{DynamicResource DefaultTextColor}" FontWeight="Bold" Style="{StaticResource ToggleSwitchStyle}" Margin="10" HorizontalAlignment="Right"/>
+                                    <CheckBox Content="Dark Theme" Name="ToggleDarkMode" Foreground="{DynamicResource DefaultTextColor}" FontWeight="Bold" Style="{StaticResource ToggleSwitchStyle}" Margin="10" HorizontalAlignment="Right"/>
                                 </ListView>
                         </TabItem>
                 </TabControl>
