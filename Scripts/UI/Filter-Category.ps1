@@ -57,7 +57,7 @@ function FilterByCat {
         }
     }
 
-    if($Cat -eq "All Categories")
+    if($Cat -eq "All")
     {
         $sync.AppsListView.Clear()
         $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.AppsListView.Items)
