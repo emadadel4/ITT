@@ -23,7 +23,7 @@ Add-Type -AssemblyName System.Windows.Forms
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "09-06-2024"
+$sync.version = "10-06-2024"
 $sync.github =   "https://github.com/emadadel4"
 $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://eprojects.orgfree.com"
@@ -9939,7 +9939,7 @@ function FilterByCat {
         }
     }
 
-    if($Cat -eq "All Categories")
+    if($Cat -eq "All")
     {
         $sync.AppsListView.Clear()
         $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.AppsListView.Items)
