@@ -9545,6 +9545,20 @@ function Invoke-Install
     }
 }
 
+function Invoke-Toogle {
+
+    Param ([string]$debug)
+
+    # debug
+    #Write-Host $debug
+
+    Switch -Wildcard ($debug){
+
+        "ToggleShowExt" {Invoke-ShowFile-Extensions $(Get-ToggleStatus ToggleShowExt)}
+        "ToggleDarkMode" {Invoke-DarkMode $(Get-ToggleStatus ToggleDarkMode)}
+    }
+}
+
 
 function GetCheckBoxesFromStackPanel {
     param (
@@ -9666,20 +9680,6 @@ function SaveItemsToJson
     else
     {
         [System.Windows.MessageBox]::Show("Choose at least one program", "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
-    }
-}
-
-function Invoke-Toogle {
-
-    Param ([string]$debug)
-
-    # debug
-    #Write-Host $debug
-
-    Switch -Wildcard ($debug){
-
-        "ToggleShowExt" {Invoke-ShowFile-Extensions $(Get-ToggleStatus ToggleShowExt)}
-        "ToggleDarkMode" {Invoke-DarkMode $(Get-ToggleStatus ToggleDarkMode)}
     }
 }
 
