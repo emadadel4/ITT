@@ -159,7 +159,7 @@ Write-Host "Added successfully, Don't forget to build and test it before commit"
 #===========================================================================
 #region API 
 #===========================================================================
-if($userInput -eq "API [Choco/Winget/Scoop] Recommend")
+if($userInput -eq "API [Choco/Winget/Scoop] Recommended")
 {
     $Name = Read-Host "Enter app name"
     $Description = [regex]::Replace((Read-Host "Enter app description").Trim(), "[^\w\s]", "")
