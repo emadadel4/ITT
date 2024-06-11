@@ -9040,36 +9040,31 @@ function Get-SelectedApps
     return $items 
 }
 
-function FilterdSelectedItems {
-    
+function FilteredSelectedItems {
     $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.AppsListView.Items)
 
     $filterPredicate = {
-       param($item)
+        param($item)
 
-       if ($item -is [System.Windows.Controls.StackPanel]) {
-
-        foreach ($child in $item.Children) {
-            if ($child -is [System.Windows.Controls.StackPanel]) {
-                foreach ($innerChild in $child.Children) {
-                    if ($innerChild -is [System.Windows.Controls.CheckBox]) {
-    
-                        $tagToFilter =  $true
-                        # Check if the item has the tag
-                        $itemTag = $innerChild.IsChecked
-                        return $itemTag -eq $tagToFilter
+        if ($item -is [System.Windows.Controls.StackPanel]) {
+            foreach ($child in $item.Children) {
+                if ($child -is [System.Windows.Controls.StackPanel]) {
+                    foreach ($innerChild in $child.Children) {
+                        if ($innerChild -is [System.Windows.Controls.CheckBox]) {
+                            # Check if the CheckBox is checked
+                            $itemTag = $innerChild.IsChecked
+                            return $itemTag
+                        }
                     }
                 }
             }
         }
 
-        $collectionView.Filter = $filterPredicate
-
+        # Return $true if no CheckBox found (to include all items)
+        return $true
     }
-}
 
-   $collectionView.Filter = $filterPredicate
-
+    $collectionView.Filter = $filterPredicate
 }
 
 function Invoke-Install
@@ -9095,8 +9090,8 @@ function Invoke-Install
 
             function Add-Log {
                 param (
-                    [string]$Message,
-                    [string]$Level = "INFO"
+                    [string]$Message, # Content of Message
+                    [string]$Level = "INFO" # Message Level [INFO] [ERROR] [WARNING]
                 )
             
                 # Get the current timestamp
@@ -9127,7 +9122,6 @@ function Invoke-Install
                
                 $sync['window'].Dispatcher.Invoke([Action]{
                     $sync.installBtn.Content = "$InstallBtn"
-                    #$sync.Description.Text = "$Description"
                 })
             }
 
@@ -9141,8 +9135,7 @@ function Invoke-Install
                 }
             }
             
-            function CustomMsg 
-            {
+            function CustomMsg {
                 param (
 
                     $title,
@@ -9175,49 +9168,6 @@ function Invoke-Install
 
                 # Clean up resources
                 $notification.Dispose()
-            }
-
-            function Finish {
-
-                $sync.AppsListView.Dispatcher.Invoke([Action]{
-                    foreach ($item in $sync.AppsListView.Items)
-                    {
-                        foreach ($child in $item.Children) {
-                            if ($child -is [System.Windows.Controls.StackPanel]) {
-                                foreach ($innerChild in $child.Children) {
-                                    if ($innerChild -is [System.Windows.Controls.CheckBox]) {
-                    
-                                        $innerChild.IsChecked = $false
-                                        $sync.AppsListView.Clear()
-                                        $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.AppsListView.Items)
-                                        $collectionView.Filter = $null
-                                    }
-                                }
-                            }
-                        }
-                    }
-                })
-
-                Add-Log -Message "Clear temporary files..." -Level "INFO"
-                Start-Sleep 8
-                Clear-Host
-
-                    Write-Host "+==============================================================================+";
-                    Write-Host "|                                                                              |";
-                    Write-Host "|                                                                              |";
-                    Write-Host "|   ___ _____ _____   _____ __  __    _    ____       _    ____  _____ _       |";
-                    Write-Host "|  |_ _|_   _|_   _| | ____|  \/  |  / \  |  _ \     / \  |  _ \| ____| |      |";
-                    Write-Host "|   | |  | |   | |   |  _| | |\/| | / _ \ | | | |   / _ \ | | | |  _| | |      |";
-                    Write-Host "|   | |  | |   | |   | |___| |  | |/ ___ \| |_| |  / ___ \| |_| | |___| |___   |";
-                    Write-Host "|  |___| |_|   |_|   |_____|_|  |_/_/   \_\____/  /_/   \_\____/|_____|_____|  |";
-                    Write-Host "|                                                                              |";
-                    Write-Host "|                                                                              |";
-                    Write-Host "+==============================================================================+";
-                    Write-Host "`n` You ready to Install anything."
-                    Write-Host  "`n` (IT Tools) is open source, You can contribute to improving the tool."
-                    Write-Host " If you have trouble installing a program, report the problem on feedback links"
-                    Write-Host  " https://github.com/emadadel4/ITT/issues"
-                    Write-Host  " https://t.me/emadadel4"
             }
 
             function Send-Apps {
@@ -9285,6 +9235,7 @@ function Invoke-Install
                 Invoke-RestMethod -Uri $firebaseUrlWithKey -Method Put -Body $json -Headers $headers
             }
 
+            # THIS FUNC NOT APPLY it will added soon
             function DownloadAndExtractRar {
                 param (
                     [string]$url,
@@ -9307,7 +9258,8 @@ function Invoke-Install
                 Write-Host "Extraction completed to $downloadDir" -ForegroundColor Green
                 Invoke-Item $downloadDir
             }
-            
+
+            # THIS FUNC NOT APPLY it will added soon
             function DownloadAndInstallExe {
                 param (
                     [string]$url,
@@ -9399,8 +9351,7 @@ function Invoke-Install
               }
             }
 
-            function Install-Choco 
-            {
+            function Install-Choco {
                 # Check if Chocolatey is installed
                 if (-not (Get-Command choco -ErrorAction SilentlyContinue))
                 {
@@ -9443,7 +9394,6 @@ function Invoke-Install
                     Add-Log -Message "Chocolatey installation failed for $appName." -Level "INFO"
                     Add-Log -Message "Attempting to install $appName using Winget." -Level "INFO"
 
-
                     #Install Winget if not install on Device
                     Install-Winget
 
@@ -9452,7 +9402,6 @@ function Invoke-Install
 
                     # Check winget 
                     if ($wingetResult -ne 0) {
-
                         Add-Log -Message "Winget installation failed for $appName. Please install $appName manually." -Level "ERROR"
                     } 
                     else
@@ -9466,36 +9415,89 @@ function Invoke-Install
                 }
             }
 
-            try 
+            function Finish {
+
+                $sync.AppsListView.Dispatcher.Invoke([Action]{
+                    foreach ($item in $sync.AppsListView.Items)
+                    {
+                        foreach ($child in $item.Children) {
+                            if ($child -is [System.Windows.Controls.StackPanel]) {
+                                foreach ($innerChild in $child.Children) {
+                                    if ($innerChild -is [System.Windows.Controls.CheckBox]) {
+
+                                        $innerChild.IsChecked = $false
+                                        $sync.AppsListView.Clear()
+                                        $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.AppsListView.Items)
+                                        $collectionView.Filter = $null
+                                    }
+                                }
+                            }
+                        }
+                    }
+                })
+
+                # Notify user of successful installation
+                UpdateUI -InstallBtn "$installBtn"
+                Notify -title "ITT Emad Adel" -msg "Installed successfully: Portable Apps will save in C:\ProgramData\chocolatey\lib" -icon "Info" -time 30000
+                Add-Log -Message "Portable Apps will save in C:\ProgramData\chocolatey\lib." -Level "INFO"
+                #CustomMsg -title "ITT | Emad Adel" -msg "Installed successfully: Portable Apps will save in C:\ProgramData\chocolatey\lib" -MessageBoxImage "Information" -MessageBoxButton "OK"
+                Send-Apps -FirebaseUrl $sync.firebaseUrl -Key "$env:COMPUTERNAME $env:USERNAME" -list $selectedAppNames
+
+                Start-Sleep 10
+                Clear-Host
+
+                Write-Host "+==============================================================================+";
+                Write-Host "|                                                                              |";
+                Write-Host "|                                                                              |";
+                Write-Host "|   ___ _____ _____   _____ __  __    _    ____       _    ____  _____ _       |";
+                Write-Host "|  |_ _|_   _|_   _| | ____|  \/  |  / \  |  _ \     / \  |  _ \| ____| |      |";
+                Write-Host "|   | |  | |   | |   |  _| | |\/| | / _ \ | | | |   / _ \ | | | |  _| | |      |";
+                Write-Host "|   | |  | |   | |   | |___| |  | |/ ___ \| |_| |  / ___ \| |_| | |___| |___   |";
+                Write-Host "|  |___| |_|   |_|   |_____|_|  |_/_/   \_\____/  /_/   \_\____/|_____|_____|  |";
+                Write-Host "|                                                                              |";
+                Write-Host "|                                                                              |";
+                Write-Host "+==============================================================================+";
+                Write-Host "`n` You ready to Install anything."
+                Write-Host  "`n` (IT Tools) is open source, You can contribute to improving the tool."
+                Write-Host " If you have trouble installing a program, report the problem on feedback links"
+                Write-Host  " https://github.com/emadadel4/ITT/issues"
+                Write-Host  " https://t.me/emadadel4"
+            }
+
+            try
             {
+                # Retrieve localized messages for confirmation dialog and UI elements
                 $areyousuremsg = $sync.database.locales.$($sync.Langusege).InstallMessage
                 $installBtn = $sync.database.locales.$($sync.Langusege).installBtn
                 $downloading = $sync.database.locales.$($sync.Langusege).downloading
 
+                # Show confirmation dialog
                 $result = [System.Windows.MessageBox]::Show("[$($selectedApps.Count)] $areyousuremsg ", "ITT | Emad Adel", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)
                 
                 if($result -eq "Yes")
                 {
+                    # start ProcessRunning
                     $sync.ProcessRunning = $true
 
+                    # Clear temporary files
                     ClearTemp
 
-                    UpdateUI -InstallBtn "$downloading" 
+                    # Chancge Install Content "Downloading.."
+                    UpdateUI -InstallBtn "$downloading"
 
                     # Displaying the names of the selected apps
                     $selectedAppNames = $selectedApps | ForEach-Object { $_.Name }
 
-                    foreach ($app in $selectedApps) 
+                    # Install selected apps
+                    foreach ($app in $selectedApps)
                     {
                         Install-App -appName $app.Name -appChoco $app.Choco -appWinget $app.Winget
                     }
 
-                    Notify -title "ITT Emad Adel" -msg "Installed successfully: Portable Apps will save in C:\ProgramData\chocolatey\lib" -icon "Info" -time 30000
-                    UpdateUI -InstallBtn "$installBtn"
-                    Add-Log -Message "Portable Apps will save in C:\ProgramData\chocolatey\lib." -Level "INFO"
-                    CustomMsg -title "ITT | Emad Adel" -msg "Installed successfully: Portable Apps will save in C:\ProgramData\chocolatey\lib" -MessageBoxImage "Information" -MessageBoxButton "OK"
-                    Send-Apps -FirebaseUrl $sync.firebaseUrl -Key "$env:COMPUTERNAME $env:USERNAME" -list $selectedAppNames
+                    # Notify user of successful installation
                     Finish
+
+                    # End ProcessRunning
                     $sync.ProcessRunning = $false
                 }
                 else
@@ -9523,12 +9525,14 @@ function Invoke-Install
             }
             catch {
 
+                # catch if there any error
                 Write-Host "Error: $_"
             }
         }
     }
     else
     {
+        # Uncheck all checkboxes in $list
         $sync.category.SelectedIndex = 0
         $sync.AppsListView.Dispatcher.Invoke([Action]{
             
@@ -10034,11 +10038,14 @@ function SwitchToSystem {
 
 function SetLangusege {
     param (
-        [string]$lang
+        [string]$lang  # Parameter for the language to set
     )
 
+    # Set DataContext of the window to the specified language
     $sync["window"].DataContext = $sync.database.locales.$($lang)
-    Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "locales" -Value "$lang" -Force 
+
+    # Set registry value for the language
+    Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "locales" -Value "$lang" -Force
 }
 
 function GetQuotes {
