@@ -43,7 +43,7 @@ $userInput
 #region Native Downloader 
 #===========================================================================
 
-if($userInput -eq "Default [Native Downloader]")
+if($userInput -eq "Default [Native Downloader] Soon! ")
 {
 
 $AppName = Read-Host "Enter App name"
