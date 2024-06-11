@@ -151,42 +151,34 @@ function WriteHeader {
 #                            #Stand With Palestine                                   #
 ######################################################################################
 "@
-    
 }
 
 # Main script generation
 try {
-
 
     if (Test-Path -Path $OutputScript) {
         Remove-Item -Path $OutputScript -Force
     }
 
     WriteHeader
-
     WriteToScript -Content @"
-
 #===========================================================================
 #region Begin Start
 #===========================================================================
-
 "@
 
     AddFileContentToScript -FilePath $StartScript
     ReplaceTextInFile -FilePath $OutputScript -TextToReplace '#{replaceme}' -ReplacementText "$(Get-Date -Format 'dd-MM-yyy')"
-
     WriteToScript -Content @"
 #===========================================================================
 #endregion End Start
 #===========================================================================
-
 "@
 
     WriteToScript -Content @"
 #===========================================================================
 #region Begin Database /APPS/TWEEAKS/Quotes/OST
 #===========================================================================
-
 "@
 
     Sync-JsonFiles -DatabaseDirectory $DatabaseDirectory -OutputScriptPath $OutputScript
@@ -195,14 +187,12 @@ try {
 #===========================================================================
 #endregion End Database /APPS/TWEEAKS/Quotes/OST
 #===========================================================================
-
 "@
 
 WriteToScript -Content @"
 #===========================================================================
 #region Begin WPF Window
 #===========================================================================
-
 "@
 
     # Define file paths
@@ -241,7 +231,6 @@ WriteToScript -Content @"
 #===========================================================================
 #endregion End WPF Window
 #===========================================================================
-
 "@
 
 WriteToScript -Content @"
@@ -266,30 +255,23 @@ WriteToScript -Content @"
     }
    
     WriteToScript -Content "`$childXaml = '$childXaml'"
-
     WriteToScript -Content @"
 #===========================================================================
 #endregion End WPF About
 #===========================================================================
-
 "@
-
-
 
     WriteToScript -Content @"
 #===========================================================================
 #region Begin loadXmal
 #===========================================================================
-
 "@
 
     AddFileContentToScript -FilePath $LoadXamlScript
-
     WriteToScript -Content @"
 #===========================================================================
 #endregion End loadXmal
 #===========================================================================
-
 "@
 
     # Write Main section
@@ -297,19 +279,13 @@ WriteToScript -Content @"
 #===========================================================================
 #region Begin Main Functions
 #===========================================================================
-
 "@
-
     ProcessDirectory -Directory $ScritsDirectory
-
     AddFileContentToScript -FilePath $MainScript
-
-
     WriteToScript -Content @"
 #===========================================================================
 #endregion End Main Functions
 #===========================================================================
-
 "@
 
 Clear-Host
