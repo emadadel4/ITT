@@ -1,7 +1,4 @@
 # Load DLLs
-Add-Type -AssemblyName PresentationFramework
-Add-Type -AssemblyName PresentationCore
-Add-Type -AssemblyName PresentationFramework.Aero
 Add-Type -AssemblyName System.Windows.Forms
 
 # Variable to sync between runspaces
