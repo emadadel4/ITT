@@ -1,4 +1,3 @@
-#region Theme Functions
 function ToggleTheme {
     
     try {
@@ -20,7 +19,6 @@ function ToggleTheme {
     $sync['window'].FindName('themeText').IsChecked = -not $sync['window'].FindName('themeText').IsChecked
 
 }
-
 function Switch-ToDarkMode {
     try {
 
@@ -30,7 +28,6 @@ function Switch-ToDarkMode {
         Write-Host "Error switching to dark mode: $_"
     }
 }
-
 function Switch-ToLightMode {
     try {
         $theme = $sync['window'].FindResource("Light")
@@ -39,14 +36,12 @@ function Switch-ToLightMode {
         Write-Host "Error switching to light mode: $_"
     }
 }
-
 function Update-Theme ($theme, $mode) {
     $sync['window'].Resources.MergedDictionaries.Clear()
     $sync['window'].Resources.MergedDictionaries.Add($theme)
     Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "DarkMode" -Value $mode -Force
 
 }
-
 function SwitchToSystem {
 
     try {
@@ -71,5 +66,3 @@ function SwitchToSystem {
         Write-Host "Error occurred: $_"
     }
 }
-
-#endregion

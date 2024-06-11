@@ -44,7 +44,6 @@ function Get-SelectedTweaks {
     return $items 
    
 }
-
 function ShowSelectedTweaks {
     
     $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.TweaksListView.Items)
@@ -77,9 +76,7 @@ function ShowSelectedTweaks {
    $collectionView.Filter = $filterPredicate
 
 }
-
-function Invoke-ApplyTweaks
-{
+function Invoke-ApplyTweaks {
 
     if($sync.ProcessRunning)
     {

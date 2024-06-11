@@ -21,7 +21,6 @@ Write-Host " If you have trouble installing a program, report the problem on fee
 Write-Host " https://github.com/emadadel4/ITT/issues"
 Write-Host " https://t.me/emadadel4"
 }
-
 function Startup {
 
     Write-Host (WriteAText -color White -message  "You ready to Install anything.") 

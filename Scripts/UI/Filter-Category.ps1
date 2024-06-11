@@ -24,7 +24,6 @@ function Search {
         return $true  # Non-StackPanel items are always included
     }
 }
-
 function FilterByCat {
 
     param ($Cat)
@@ -70,7 +69,6 @@ function FilterByCat {
         $collectionView.Filter = $filterPredicate
     }
 }
-
 function ClearFilter {
     $sync.AppsListView.Clear()
     $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.AppsListView.Items)

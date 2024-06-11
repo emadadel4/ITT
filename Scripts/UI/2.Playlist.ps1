@@ -1,4 +1,3 @@
-#region PlayMusic Functions
 function PlayMusic {
 
     Function PlayAudio($url)
@@ -43,17 +42,14 @@ function PlayMusic {
 
     PlayShuffledPlaylist
 }
-
 function MuteMusic {
 
     $sync.mediaPlayer.settings.volume = 0
 }
-
 function Unmute {
    
     $sync.mediaPlayer.settings.volume = 100
 }
-
 function StopMusic {
     $sync.mediaPlayer.controls.stop()
     $sync.mediaPlayer = $null
@@ -61,7 +57,6 @@ function StopMusic {
     $sync.runspace.Dispose()
     $sync.runspace.Close()
 }
-
 function StopAllRunspace {
     $script:powershell.Dispose()
     $sync.runspace.Dispose()
@@ -71,4 +66,3 @@ function StopAllRunspace {
     $newProcess.exit
     Write-Host "Bye see you soon. :)" 
 }
-#endregion

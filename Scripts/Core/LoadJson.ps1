@@ -1,4 +1,3 @@
-
 function GetCheckBoxesFromStackPanel {
     param (
         [System.Windows.Controls.StackPanel]$item
@@ -20,7 +19,6 @@ function GetCheckBoxesFromStackPanel {
     }
     return $checkBoxes
 }
-
 function LoadJson {
     if($sync.ProcessRunning)
     {
@@ -64,9 +62,7 @@ function LoadJson {
         [System.Windows.MessageBox]::Show("Restored successfully", "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
     }
 }
-
-function SaveItemsToJson
-{
+function SaveItemsToJson {
     if($sync.ProcessRunning)
     {
         $localizedMessageTemplate = $sync.database.locales.$($sync.Langusege).Pleasewait

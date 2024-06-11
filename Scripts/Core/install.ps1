@@ -1,5 +1,4 @@
-function Get-SelectedApps
-{
+function Get-SelectedApps {
 
     $items = @()
 
@@ -42,7 +41,6 @@ function Get-SelectedApps
 
     return $items 
 }
-
 function FilteredSelectedItems {
     $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.AppsListView.Items)
 
@@ -69,9 +67,7 @@ function FilteredSelectedItems {
 
     $collectionView.Filter = $filterPredicate
 }
-
-function Invoke-Install
-{
+function Invoke-Install {
     
     if($sync.ProcessRunning)
     {
@@ -403,7 +399,7 @@ function Invoke-Install
                     Start-Process -FilePath "winget" -ArgumentList "settings --enable InstallerHashOverride" -NoNewWindow -Wait -PassThru
                     $wingetResult = $(Start-Process -FilePath "winget" -ArgumentList "install --accept-source-agreements --accept-package-agreements --id $appWinget --force -e -h --silent --exact" -Wait -PassThru).ExitCode
 
-                    # Check winget 
+                    # Check winget
                     if ($wingetResult -ne 0) {
                         Add-Log -Message "Winget installation failed for $appName. Please install $appName manually." -Level "ERROR"
                     } 
