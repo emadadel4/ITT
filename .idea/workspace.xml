@@ -7,6 +7,7 @@
       <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Core/Invoke-Install.ps1" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Core/Invoke-Install.ps1" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/initiation/main.ps1" beforeDir="false" afterPath="$PROJECT_DIR$/initiation/main.ps1" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/initiation/start.ps1" beforeDir="false" afterPath="$PROJECT_DIR$/initiation/start.ps1" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/itt.ps1" beforeDir="false" afterPath="$PROJECT_DIR$/itt.ps1" afterDir="false" />
@@ -35,7 +36,6 @@
   "keyToString": {
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "update",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "nodejs_package_manager_path": "npm",
@@ -60,7 +60,7 @@
       <option name="presentableId" value="Default" />
       <updated>1718071070518</updated>
       <workItem from="1718071071548" duration="86000" />
-      <workItem from="1718071165119" duration="85000" />
+      <workItem from="1718071165119" duration="205000" />
     </task>
     <servers />
   </component>
