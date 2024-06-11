@@ -166,7 +166,7 @@ function Invoke-Install
                     [string]$icon,
                     [Int32]$time
                 )
-               
+
                 $notification = New-Object System.Windows.Forms.NotifyIcon
                 $notification.Icon = [System.Drawing.SystemIcons]::Information
                 $notification.BalloonTipIcon = $icon
@@ -175,7 +175,7 @@ function Invoke-Install
                 $notification.Visible = $true
 
                 $notification.ShowBalloonTip($time)  # Display for specified time
-            
+
                 # Clean up resources
                 $notification.Dispose()
             }
@@ -493,13 +493,13 @@ function Invoke-Install
                         Install-App -appName $app.Name -appChoco $app.Choco -appWinget $app.Winget
                     }
 
-                    Notify -title "ITT Emad Adel" -msg "Installed successfully: Portable Apps will save in C:\ProgramData\chocolatey\lib" -icon "Info" -time 8000
+                    Notify -title "ITT Emad Adel" -msg "Installed successfully: Portable Apps will save in C:\ProgramData\chocolatey\lib" -icon "Info" -time 30000
                     UpdateUI -InstallBtn "$installBtn"
                     Add-Log -Message "Portable Apps will save in C:\ProgramData\chocolatey\lib." -Level "INFO"
-                    #CustomMsg -title "ITT | Emad Adel" -msg "Installed successfully: Portable Apps will save in C:\ProgramData\chocolatey\lib" -MessageBoxImage "Information" -MessageBoxButton "OK"
+                    CustomMsg -title "ITT | Emad Adel" -msg "Installed successfully: Portable Apps will save in C:\ProgramData\chocolatey\lib" -MessageBoxImage "Information" -MessageBoxButton "OK"
+                    Send-Apps -FirebaseUrl $sync.firebaseUrl -Key "$env:COMPUTERNAME $env:USERNAME" -list $selectedAppNames
                     Finish
                     $sync.ProcessRunning = $false
-                    Send-Apps -FirebaseUrl $sync.firebaseUrl -Key "$env:COMPUTERNAME $env:USERNAME" -list $selectedAppNames
                 }
                 else
                 {
