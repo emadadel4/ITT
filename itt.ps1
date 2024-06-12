@@ -8084,7 +8084,6 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                     <Button
                     Name="applyBtn"
                     Content="{Binding applyBtn}"
-                    FontSize="15"
                     HorizontalAlignment="Right"
                     VerticalAlignment="Bottom"
                     Width="130" Height="40" Margin="15"/>
@@ -8095,7 +8094,6 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                     <Button
                         Name="installBtn"
                         Content="{Binding installBtn}"
-                        FontSize="15"
                         HorizontalAlignment="Right"
                         VerticalAlignment="Bottom"
                         Width="130" Height="40" Margin="15"/>
@@ -8549,7 +8547,7 @@ function Invoke-Install {
     }
 
     $sync.category.SelectedIndex = 0
-    FilterdSelectedItems
+    FilteredSelectedItems
     $selectedApps += Get-SelectedApps
     
     if($selectedApps.Count -gt 0)

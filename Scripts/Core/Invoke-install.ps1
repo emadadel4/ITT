@@ -78,7 +78,7 @@ function Invoke-Install {
     }
 
     $sync.category.SelectedIndex = 0
-    FilterdSelectedItems
+    FilteredSelectedItems
     $selectedApps += Get-SelectedApps
     
     if($selectedApps.Count -gt 0)
