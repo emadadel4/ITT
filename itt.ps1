@@ -5810,7 +5810,6 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                         <ComboBoxItem Content="Utilities"></ComboBoxItem>
                         <ComboBoxItem Content="Disk Tools"></ComboBoxItem>
                         <ComboBoxItem Content="Development"></ComboBoxItem>
-                        <ComboBoxItem Content="Microsoft"></ComboBoxItem>
                         <ComboBoxItem Content="Security"></ComboBoxItem>
                         <ComboBoxItem Content="Portable"></ComboBoxItem>
                         <ComboBoxItem Content="Runtimes"></ComboBoxItem>
