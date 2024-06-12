@@ -28,7 +28,7 @@
                                     {{Tweaks}}
                                 </ListView>
                         </TabItem>
-                        <TabItem x:Name="featurestab" Header="Features" BorderBrush="{x:Null}" Background="{x:Null}">
+                        <TabItem x:Name="featurestab" Header="{Binding Features}" BorderBrush="{x:Null}" Background="{x:Null}">
                             <TabItem.HeaderTemplate>
                                     <DataTemplate>
                                         <StackPanel Orientation="Horizontal">

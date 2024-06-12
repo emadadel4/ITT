@@ -18,7 +18,7 @@ Add-Type -AssemblyName System.Windows.Forms
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "11-06-2024"
+$sync.version = "12-06-2024"
 $sync.github =   "https://github.com/emadadel4"
 $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://eprojects.orgfree.com"
@@ -4111,6 +4111,7 @@ $sync.database.locales = '{
     "device":"Managment",
     "apps":"Apps",
     "tweaks":"Tweaks",
+    "Features": "Features",
     "saveapps":"Save selected Apps",
     "loadapps":"Load Apps",
     "music":"Music",
@@ -4145,6 +4146,7 @@ $sync.database.locales = '{
     "device":"ادارة الجهاز",
     "apps":"تطبيقات",
     "tweaks":"تحسينات",
+    "Features": "اعدادات",
     "saveapps":"حفظ البرامج المختارة",
     "loadapps":"تحميل البرامح ",
     "music":"الصوت ",
@@ -8059,7 +8061,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
 
                                 </ListView>
                         </TabItem>
-                        <TabItem x:Name="featurestab" Header="Features" BorderBrush="{x:Null}" Background="{x:Null}">
+                        <TabItem x:Name="featurestab" Header="{Binding Features}" BorderBrush="{x:Null}" Background="{x:Null}">
                             <TabItem.HeaderTemplate>
                                     <DataTemplate>
                                         <StackPanel Orientation="Horizontal">
