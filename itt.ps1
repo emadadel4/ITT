@@ -5909,9 +5909,9 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <!--End Menu Section-->
 
         <!--Search Section-->
-            <Grid HorizontalAlignment="Right" Margin="0" Grid.Row="0"  VerticalAlignment="Center" >
+            <Grid HorizontalAlignment="Right" Margin="0,0,15,0" Grid.Row="0"  VerticalAlignment="Center" >
                 <TextBox Padding="5"
-                                    Width="130"
+                                    Width="120"
                                     VerticalAlignment="Center"
                                     HorizontalAlignment="Left" 
                                     Text="{Binding Text_searchInput}"
@@ -5929,7 +5929,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
 
                     <TextBlock.Style>
                         <Style TargetType="{x:Type TextBlock}">
-                            <Setter Property="Visibility" Value="Collapsed"/>
+                            <Setter Property="Visibility" Value="Hidden"/>
                             <Style.Triggers>
                                 <DataTrigger Binding="{Binding Text, ElementName=searchInput}" Value="">
                                     <Setter Property="Visibility" Value="Visible"/>
