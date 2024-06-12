@@ -86,12 +86,12 @@ function Invoke-ApplyTweaks {
         return
     }
 
+        ShowSelectedTweaks
+
         $tweaks  = Get-SelectedTweaks
 
         if($tweaks.Count -gt 0)
         {
-
-            ShowSelectedTweaks
 
             Invoke-ScriptBlock -ArgumentList $tweaks -ScriptBlock{
 
@@ -437,6 +437,14 @@ function Invoke-ApplyTweaks {
         }
         else
         {
+
+            $sync.TweaksListView.Dispatcher.Invoke([Action]{
+                
+                $sync.TweaksListView.Clear()
+                $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.TweaksListView.Items)
+                $collectionView.Filter = $null
+            })
+
             $localizedMessageTemplate = $sync.database.locales.$($sync.Langusege).chosetweak
             [System.Windows.MessageBox]::Show("$localizedMessageTemplate", "ITT | Emad Adel", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
         }
