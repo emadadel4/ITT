@@ -222,7 +222,7 @@
     "check": "false"
   },
   {
-    "Name": "K-Lite Mega Codec Full Pack",
+    "Name": "KLite Mega Codec Full Pack",
     "Description": "Comprehensive collection of audio and video codecs, filters, and tools, enabling playback of various media formats.",
     "winget": "none",
     "choco": "k-litecodecpackfull",

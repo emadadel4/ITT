@@ -280,7 +280,7 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "K-Lite Mega Codec Full Pack",
+    "Name": "KLite Mega Codec Full Pack",
     "Description": "Comprehensive collection of audio and video codecs, filters, and tools, enabling playback of various media formats.",
     "winget": "none",
     "choco": "k-litecodecpackfull",
@@ -5909,7 +5909,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <!--End Menu Section-->
 
         <!--Search Section-->
-            <Grid HorizontalAlignment="Right" Margin="0,0,15,0" Grid.Row="0"  VerticalAlignment="Center" >
+            <Grid HorizontalAlignment="Right" Margin="0" Grid.Row="0"  VerticalAlignment="Center" >
                 <TextBox Padding="5"
                                     Width="130"
                                     VerticalAlignment="Center"
@@ -5923,8 +5923,8 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                                     FontFamily="Segoe MDL2 Assets" 
                                     VerticalAlignment="Center" 
                                     HorizontalAlignment="Left"
-                                    Margin="15,0,0,0"
-                                    FontSize="15"
+                                    Margin="20"
+                                    FontSize="12"
                                     Foreground="{DynamicResource FGTextColor}">
 
                     <TextBlock.Style>
@@ -7743,7 +7743,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
 
         <StackPanel Orientation="Vertical" Width="auto" Margin="8">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="K-Lite Mega Codec Full Pack" Tag="Media" IsChecked="false" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <CheckBox Content="KLite Mega Codec Full Pack" Tag="Media" IsChecked="false" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content="Media"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Comprehensive collection of audio and video codecs filters and tools enabling playback of various media formats"/>
