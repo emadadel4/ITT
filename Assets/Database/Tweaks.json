@@ -944,17 +944,5 @@
     "UndoCommand": [
       ""
     ]
-  },
-  {
-    "name": "Clear Temp Folders",
-    "description": "Clear Temp Folders",
-    "check": "false",
-    "type": "command",
-    "refresh": "false",
-    "InvokeCommand": [
-      "Remove-Item -Path $env:TEMP -Force -Recurse",
-      "Remove-Item -Path C:\\Windows\\temp -Force -Recurse"
-    ],
-    "UndoCommand": []
   }
 ]
