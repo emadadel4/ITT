@@ -5201,18 +5201,6 @@ $sync.database.Tweaks = '[
     "UndoCommand": [
       ""
     ]
-  },
-  {
-    "name": "Clear Temp Folders",
-    "description": "Clear Temp Folders",
-    "check": "false",
-    "type": "command",
-    "refresh": "false",
-    "InvokeCommand": [
-      "Remove-Item -Path $env:TEMP -Force -Recurse",
-      "Remove-Item -Path C:\\Windows\\temp -Force -Recurse"
-    ],
-    "UndoCommand": []
   }
 ]
 ' | ConvertFrom-Json
@@ -7858,14 +7846,6 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                             </TabItem.HeaderTemplate>
                                 <ListView Name="tweakslist"  Margin="0" ScrollViewer.VerticalScrollBarVisibility="Auto" BorderBrush="{x:Null}" Background="{x:Null}">
                                     
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
-            <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Clear Temp Folders"   FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content=""/>
-            </StackPanel>
-                <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Clear Temp Folders"/>
-        </StackPanel>
-
         <StackPanel Orientation="Vertical" Width="auto" Margin="8">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Disable Recall Snapshots in Windows 11 24H"   FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
