@@ -8137,13 +8137,13 @@ $childXaml = '<Window
         </DockPanel>
         <Separator/>
         <DockPanel Margin="10">
-          <TextBlock>Version</TextBlock>
-          <TextBlock Name="ver" TextAlignment="Right">5/20/2024</TextBlock>
+          <TextBlock>Website</TextBlock>
+          <TextBlock Name="website" TextAlignment="Right">eprojects.orgfree.com</TextBlock>
         </DockPanel>
         <Separator/>
         <DockPanel Margin="10">
-          <TextBlock>Website</TextBlock>
-          <TextBlock Name="website" TextAlignment="Right">eprojects.orgfree.com</TextBlock>
+          <TextBlock>Version</TextBlock>
+          <TextBlock Name="ver" TextAlignment="Right">5/20/2024</TextBlock>
         </DockPanel>
         <Separator/>
         <TextBlock  Name="sourcecode" Margin="0,25,0,0" Text="Source Code" VerticalAlignment="Center" HorizontalAlignment="Center"/>
