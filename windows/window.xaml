@@ -8,15 +8,11 @@ Background="{DynamicResource BGColor}"
 Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowInTaskbar = "True" Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/Assets/Icons/icon.ico">
 
 <Window.Resources>
-
     {{Style}}
-    
     {{Colors}}
-
 </Window.Resources>
 
 <Grid>
-
     <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
@@ -25,12 +21,8 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
 
     <!--Header Section-->
 
-
         <!--Menu Section-->
             <Menu Grid.Row="0"  Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Left" BorderThickness="0">
-
-
-               
                 
                 <MenuItem IsEnabled="False">
                     <MenuItem.Icon>
@@ -228,9 +220,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                     />
             </StackPanel>
     <!--End Footer Section-->
-
 </Grid>
-
 </Window>
 <!--End Window-->
 
