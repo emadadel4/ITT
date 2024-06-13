@@ -4,7 +4,7 @@
   x:Name="Window" Title="About | ITT " WindowStartupLocation = "CenterScreen" 
   Background="White"
   WindowStyle="ToolWindow"
-  Height="344" Width="444" FontFamily="Console" MinWidth="444" MinHeight="344" ShowInTaskbar = "True" Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/icon.ico">
+  Height="380" Width="300" MinHeight="380" MinWidth="300"  FontFamily="Console" ShowInTaskbar = "True" Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/icon.ico">
     <Grid>
 
       <Grid.RowDefinitions>
@@ -12,29 +12,50 @@
         <RowDefinition Height="auto"/>
       </Grid.RowDefinitions>
 
-       <!--Logo-->
-       <Ellipse Margin="25" VerticalAlignment="Top" HorizontalAlignment="Left" Name="about" Width="70" Height="70" ToolTip="Enad Adel">
+
+      <StackPanel Orientation="Vertical">
+
+        
+      <!--Logo-->
+      <Ellipse Margin="0,0,0,15" VerticalAlignment="Center" HorizontalAlignment="Center" Name="about" Width="50" Height="50" ToolTip="Enad Adel">
         <Ellipse.Fill>
           <ImageBrush ImageSource="https://raw.githubusercontent.com/emadadel4/ITT/main/Assets/Images/logo.png" />
         </Ellipse.Fill>
       </Ellipse>
-      <!--End Logo-->
+    <!--End Logo-->
 
-      <StackPanel Grid.Row="0" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
-        <TextBlock Margin="5" TextWrapping="Wrap" FontWeight="Bold" FontSize="30" TextAlignment="Center" Text="ITT"/>
-        <TextBlock Margin="5" TextWrapping="Wrap" FontWeight="Bold" FontSize="15" TextAlignment="Center" Text="Install and Tweak Tool"/>
-        <TextBlock Margin="5" TextWrapping="Wrap" Text="{Binding devby}" TextAlignment="Center"/>
-        <TextBlock Margin="5" Name="ver" TextWrapping="Wrap" TextAlignment="Center" Text="2024/4/21"/>
+        <TextBlock Text="Install and Tweak Tool" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+          <TextBlock Text="{Binding devby}" Margin="0,5,0,0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+
+
+        <DockPanel Margin="10">
+          <TextBlock>Telegram</TextBlock>
+          <TextBlock Name="telegram" TextAlignment="Right">emadadel4</TextBlock>
+        </DockPanel>
+        <Separator/>
+        <DockPanel Margin="10">
+          <TextBlock>Github</TextBlock>
+          <TextBlock Name="github" TextAlignment="Right">emadadel4</TextBlock>
+        </DockPanel>
+        <Separator/>
+        <DockPanel Margin="10">
+          <TextBlock>Version</TextBlock>
+          <TextBlock Name="ver" TextAlignment="Right">5/20/2024</TextBlock>
+        </DockPanel>
+        <Separator/>
+        <DockPanel Margin="10">
+          <TextBlock>Website</TextBlock>
+          <TextBlock Name="website" TextAlignment="Right">eprojects.orgfree.com</TextBlock>
+        </DockPanel>
+        <Separator/>
+        <TextBlock  Name="sourcecode" Margin="0,25,0,0" Text="Source Code" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+
       </StackPanel>
 
-      <StackPanel Margin="25" Grid.Row="1" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
+     
 
-        <TextBlock Margin="25" Name="sourcecode" Cursor="Hand" TextAlignment="Center" Text="{Binding sourcecode}"/>
-        <StackPanel Orientation="Horizontal">
-        <TextBlock Name="website" Margin="10" Cursor="Hand"  Text="EProjects"/>
-        <TextBlock Name="telegram" Margin="10" Cursor="Hand"  Text="Telegram"/>
-        <TextBlock Name="github" Margin="10" Cursor="Hand"  Text="Github"/>
-        </StackPanel>
-      </StackPanel>
+    
+
+     
     </Grid>
   </Window>
