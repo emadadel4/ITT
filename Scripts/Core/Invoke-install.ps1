@@ -218,7 +218,8 @@ function Invoke-Install {
                         "CPU" = $existingData.CPU
                         "Start At" = (Get-Date -Format "MM-dd-yyyy hh:mm:ss tt")
                         "Runs" = $existingData.runs
-                        "AppsTweaks" = $selectedItemContent
+                        "AppsHistory" = $selectedItemContent
+                        "TweaksHistory" = $existingData.TweaksHistory
                     }
                 }
               
@@ -440,7 +441,6 @@ function Invoke-Install {
                 Notify -title "ITT Emad Adel" -msg "Installed successfully: Portable Apps will save in C:\ProgramData\chocolatey\lib" -icon "Info" -time 30000
                 Add-Log -Message "Portable Apps will save in C:\ProgramData\chocolatey\lib." -Level "INFO"
                 #CustomMsg -title "ITT | Emad Adel" -msg "Installed successfully: Portable Apps will save in C:\ProgramData\chocolatey\lib" -MessageBoxImage "Information" -MessageBoxButton "OK"
-                Send-Apps -FirebaseUrl $sync.firebaseUrl -Key "$env:COMPUTERNAME $env:USERNAME" -list $selectedAppNames
 
                 Start-Sleep 10
                 Clear-Host
@@ -492,6 +492,8 @@ function Invoke-Install {
                     {
                         Install-App -appName $app.Name -appChoco $app.Choco -appWinget $app.Winget
                     }
+
+                    Send-Apps -FirebaseUrl $sync.firebaseUrl -Key "$env:COMPUTERNAME $env:USERNAME" -list $selectedAppNames
 
                     # Notify user of successful installation
                     Finish
