@@ -8110,21 +8110,18 @@ $childXaml = '<Window
         <RowDefinition Height="auto"/>
       </Grid.RowDefinitions>
 
-
       <StackPanel Orientation="Vertical">
-
+          
+        <!--Logo-->
+          <Ellipse Margin="0,20,0,15" VerticalAlignment="Center" HorizontalAlignment="Center" Name="about" Width="50" Height="50" ToolTip="Enad Adel">
+            <Ellipse.Fill>
+              <ImageBrush ImageSource="https://raw.githubusercontent.com/emadadel4/ITT/main/Assets/Images/logo.png" />
+            </Ellipse.Fill>
+          </Ellipse>
+        <!--End Logo-->
         
-      <!--Logo-->
-      <Ellipse Margin="0,0,0,15" VerticalAlignment="Center" HorizontalAlignment="Center" Name="about" Width="50" Height="50" ToolTip="Enad Adel">
-        <Ellipse.Fill>
-          <ImageBrush ImageSource="https://raw.githubusercontent.com/emadadel4/ITT/main/Assets/Images/logo.png" />
-        </Ellipse.Fill>
-      </Ellipse>
-    <!--End Logo-->
-
         <TextBlock Text="Install and Tweak Tool" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-          <TextBlock Text="{Binding devby}" Margin="0,5,0,0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-
+        <TextBlock Text="{Binding devby}" Margin="0,5,0,0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
 
         <DockPanel Margin="10">
           <TextBlock>Telegram</TextBlock>
@@ -8142,19 +8139,12 @@ $childXaml = '<Window
         </DockPanel>
         <Separator/>
         <DockPanel Margin="10">
-          <TextBlock>Version</TextBlock>
+          <TextBlock Name="lastupdate" >{Binding lastupdate}</TextBlock>
           <TextBlock Name="ver" TextAlignment="Right">5/20/2024</TextBlock>
         </DockPanel>
         <Separator/>
         <TextBlock  Name="sourcecode" Margin="0,25,0,0" Text="Source Code" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-
       </StackPanel>
-
-     
-
-    
-
-     
     </Grid>
   </Window>
 '
@@ -9884,7 +9874,8 @@ function About{
     $childWindowReader = (New-Object System.Xml.XmlNodeReader $about)
     $sync.about = [Windows.Markup.XamlReader]::Load( $childWindowReader )
     $localizedMessageTemplate = $sync.database.locales.$($sync.Langusege).lastupdate
-    $sync.about.FindName('ver').Text = "$localizedMessageTemplate " + $sync.version
+    $sync.about.FindName('lastupdate').Text = $localizedMessageTemplate 
+    $sync.about.FindName('ver').Text =  $sync.version
     $sync.about.FindName("telegram").add_MouseLeftButtonDown({Start-Process("https://t.me/emadadel4")})
     $sync.about.FindName("github").add_MouseLeftButtonDown({Start-Process("https://github.com/emadadel4")})
     $sync.about.FindName("website").add_MouseLeftButtonDown({Start-Process("https://eprojects.orgfree.com/")})
