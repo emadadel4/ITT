@@ -366,7 +366,6 @@ Write-Host "Added successfully, Don't forget to build and test it before commit"
 #endregion Command 
 #===========================================================================
 
-
 #===========================================================================
 #region Services 
 #===========================================================================
@@ -469,7 +468,6 @@ Write-Host "Added successfully, Don't forget to build and test it before commit"
 #===========================================================================
 #endregion RemoveAppxPackage 
 #===========================================================================
-
     
 }
 catch {
