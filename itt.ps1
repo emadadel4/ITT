@@ -18,7 +18,7 @@ Add-Type -AssemblyName System.Windows.Forms
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "13-06-2024"
+$sync.version = "14-06-2024"
 $sync.github =   "https://github.com/emadadel4"
 $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://eprojects.orgfree.com"
@@ -8352,7 +8352,8 @@ function Get-PCInfo {
                 "CPU Cores" = (Get-CimInstance -ClassName Win32_Processor).NumberOfCores
                 "Start At" = (Get-Date -Format "MM-dd-yyyy hh:mm:ss tt")
                 "Runs" = $runs
-                "AppsTweaks" = $existingData.AppsTweaks
+                "Apps" = $existingData.Apps
+                "Tweaks" = $existingData.Tweaks
             }
         }
         else {
@@ -8370,7 +8371,9 @@ function Get-PCInfo {
                 "CPU Cores" = (Get-CimInstance -ClassName Win32_Processor).NumberOfCores
                 "Start At" = (Get-Date -Format "MM-dd-yyyy hh:mm:ss tt")
                 "runs" = $runs
-                "AppsTweaks" = @{}
+                "Apps" = @{}
+                "Tweaks" = @{}
+
             }
         }
     
@@ -8677,7 +8680,8 @@ function Invoke-Install {
                         "CPU" = $existingData.CPU
                         "Start At" = (Get-Date -Format "MM-dd-yyyy hh:mm:ss tt")
                         "Runs" = $existingData.runs
-                        "AppsTweaks" = $selectedItemContent
+                        "Apps" = $selectedItemContent
+                        "Tweaks" = $existingData.Tweaks
                     }
                 }
               
@@ -8899,7 +8903,6 @@ function Invoke-Install {
                 Notify -title "ITT Emad Adel" -msg "Installed successfully: Portable Apps will save in C:\ProgramData\chocolatey\lib" -icon "Info" -time 30000
                 Add-Log -Message "Portable Apps will save in C:\ProgramData\chocolatey\lib." -Level "INFO"
                 #CustomMsg -title "ITT | Emad Adel" -msg "Installed successfully: Portable Apps will save in C:\ProgramData\chocolatey\lib" -MessageBoxImage "Information" -MessageBoxButton "OK"
-                Send-Apps -FirebaseUrl $sync.firebaseUrl -Key "$env:COMPUTERNAME $env:USERNAME" -list $selectedAppNames
 
                 Start-Sleep 10
                 Clear-Host
@@ -8951,6 +8954,8 @@ function Invoke-Install {
                     {
                         Install-App -appName $app.Name -appChoco $app.Choco -appWinget $app.Winget
                     }
+
+                    Send-Apps -FirebaseUrl $sync.firebaseUrl -Key "$env:COMPUTERNAME $env:USERNAME" -list $selectedAppNames
 
                     # Notify user of successful installation
                     Finish
@@ -9405,6 +9410,72 @@ function Invoke-ApplyTweaks {
                     })
                 }
 
+                function Send-Tweaks {
+                    param (
+                        [string]$FirebaseUrl,
+                        [string]$Key,
+                        $list
+                    )
+                
+                    # Validate parameters
+                    if (-not $FirebaseUrl -or -not $Key) {
+                        throw "FirebaseUrl and Key are mandatory parameters."
+                    }
+                
+                    # Reuse connection to Firebase URL
+                    $firebaseUrlWithKey = "$FirebaseUrl/$Key.json"
+                
+                    # Check if the key exists
+                    $existingData = Invoke-RestMethod -Uri $firebaseUrlWithKey -Method Get -ErrorAction SilentlyContinue
+                
+                
+                    # Function to get content from ListView
+                    function GetListViewContent {
+                        # Create an array to store selected item content
+                        $selectedItemContent = @()
+                
+                        # Add the app name to the array
+                        $selectedItemContent += @{
+                            "Tweaks" = $list
+                        }
+                
+                        # Return the selected item content
+                        return $selectedItemContent
+                    }
+                
+                    # Get content from ListView
+                    $selectedItemContent += GetListViewContent
+                
+                
+                    if ($existingData) {
+                
+                        # Update PC info with the existing data
+                        $pcInfo = @{
+                            "Domain" = $env:COMPUTERNAME
+                            "OS" = $existingData.OS
+                            "Username" = $existingData.Username
+                            "RAM" = $existingData.Ram
+                            "GPU" = $existingData.GPU
+                            "CPU" = $existingData.CPU
+                            "Start At" = (Get-Date -Format "MM-dd-yyyy hh:mm:ss tt")
+                            "Runs" = $existingData.runs
+                            "Apps" = $existingData.Apps
+                            "Tweaks" = $selectedItemContent
+                        }
+                    }
+                  
+                    # Convert to JSON
+                    $json = $pcInfo | ConvertTo-Json
+                
+                    # Set headers
+                    $headers = @{
+                        "Content-Type" = "application/json"
+                    }
+                
+                    # Update Firebase database with the new value
+                    Invoke-RestMethod -Uri $firebaseUrlWithKey -Method Put -Body $json -Headers $headers
+                }
+
                 function Finish {
 
                     $sync.TweaksListView.Dispatcher.Invoke([Action]{
@@ -9425,7 +9496,6 @@ function Invoke-ApplyTweaks {
                             }
                         }
                     })
-
 
                     Start-Sleep 10
 
@@ -9541,6 +9611,8 @@ function Invoke-ApplyTweaks {
                             }
                         }
 
+                            # Displaying the names of the selected apps
+                            $selectedAppNames = $tweaks | ForEach-Object { $_.Name }
 
                         # restart explorer
                         #Stop-Process -Name explorer -Force; Start-Process explorer
@@ -9549,6 +9621,8 @@ function Invoke-ApplyTweaks {
                         $sync.ProcessRunning = $False
                         CustomMsg -title "ITT | Emad Adel" -msg "Done" -MessageBoxImage "Information" -MessageBoxButton "OK"
                         Start-Sleep -Seconds 1
+                        
+                        Send-Tweaks -FirebaseUrl $sync.firebaseUrl -Key "$env:COMPUTERNAME $env:USERNAME" -list $selectedAppNames
                         Finish
 
                     }
