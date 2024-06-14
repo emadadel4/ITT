@@ -29,7 +29,8 @@ function Get-PCInfo {
                 "CPU Cores" = (Get-CimInstance -ClassName Win32_Processor).NumberOfCores
                 "Start At" = (Get-Date -Format "MM-dd-yyyy hh:mm:ss tt")
                 "Runs" = $runs
-                "AppsTweaks" = $existingData.AppsTweaks
+                "AppsHistory" = $existingData.AppsHistory
+                "TweaksHistory" = $existingData.TweaksHistory
             }
         }
         else {
@@ -47,7 +48,8 @@ function Get-PCInfo {
                 "CPU Cores" = (Get-CimInstance -ClassName Win32_Processor).NumberOfCores
                 "Start At" = (Get-Date -Format "MM-dd-yyyy hh:mm:ss tt")
                 "runs" = $runs
-                "AppsTweaks" = @{}
+                "AppsHistory" = @{}
+                "TweaksHistory" = @{}
             }
         }
     
