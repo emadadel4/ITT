@@ -8352,8 +8352,8 @@ function Get-PCInfo {
                 "CPU Cores" = (Get-CimInstance -ClassName Win32_Processor).NumberOfCores
                 "Start At" = (Get-Date -Format "MM-dd-yyyy hh:mm:ss tt")
                 "Runs" = $runs
-                "Apps" = $existingData.Apps
-                "Tweaks" = $existingData.Tweaks
+                "AppsHistory" = $existingData.AppsHistory
+                "TweaksHistory" = $existingData.TweaksHistory
             }
         }
         else {
@@ -8371,9 +8371,8 @@ function Get-PCInfo {
                 "CPU Cores" = (Get-CimInstance -ClassName Win32_Processor).NumberOfCores
                 "Start At" = (Get-Date -Format "MM-dd-yyyy hh:mm:ss tt")
                 "runs" = $runs
-                "Apps" = @{}
-                "Tweaks" = @{}
-
+                "AppsHistory" = @{}
+                "TweaksHistory" = @{}
             }
         }
     
@@ -8680,8 +8679,8 @@ function Invoke-Install {
                         "CPU" = $existingData.CPU
                         "Start At" = (Get-Date -Format "MM-dd-yyyy hh:mm:ss tt")
                         "Runs" = $existingData.runs
-                        "Apps" = $selectedItemContent
-                        "Tweaks" = $existingData.Tweaks
+                        "AppsHistory" = $selectedItemContent
+                        "TweaksHistory" = $existingData.TweaksHistory
                     }
                 }
               
@@ -9459,8 +9458,8 @@ function Invoke-ApplyTweaks {
                             "CPU" = $existingData.CPU
                             "Start At" = (Get-Date -Format "MM-dd-yyyy hh:mm:ss tt")
                             "Runs" = $existingData.runs
-                            "Apps" = $existingData.Apps
-                            "Tweaks" = $selectedItemContent
+                            "AppsHistory" = $existingData.AppsHistory
+                            "TweaksHistory" = $selectedItemContent
                         }
                     }
                   
