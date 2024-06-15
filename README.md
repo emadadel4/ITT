@@ -106,5 +106,3 @@ or
 
 <p>If this project helped you, please give it a ⭐️!</p>
 
-</body>
-</html>
