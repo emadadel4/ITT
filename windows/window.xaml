@@ -27,7 +27,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                 <MenuItem IsEnabled="False">
                     <MenuItem.Icon>
                         <!--Logo-->
-                        <Ellipse Name="logo" Width="80" Height="80" Cursor="Hand" ToolTip="Enad Adel">
+                        <Ellipse Name="logo" Margin="10,10,0,0" Width="70" Height="70">
                             <Ellipse.Fill>
                                 <ImageBrush ImageSource="https://raw.githubusercontent.com/emadadel4/ITT/main/Assets/Images/logo.png" />
                             </Ellipse.Fill>
@@ -38,8 +38,8 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                 </MenuItem>
 
                  <!--Catagory Section-->
-                    <ComboBox SelectedIndex="0" Margin="0,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" Name="category"  Width="90">
-                        <ComboBoxItem Content="All"></ComboBoxItem>
+                    <ComboBox SelectedIndex="0" Margin="0,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" Name="category"  Width="auto">
+                        <ComboBoxItem  Content="All"></ComboBoxItem>
                         <ComboBoxItem Content="Web Browsers"></ComboBoxItem>
                         <ComboBoxItem Content="Media"></ComboBoxItem>
                         <ComboBoxItem Content="Media Tools"></ComboBoxItem>
@@ -194,7 +194,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                     Content="{Binding applyBtn}"
                     HorizontalAlignment="Right"
                     VerticalAlignment="Bottom"
-                    Width="130" Height="40" Margin="15"/>
+                    Width="100" Height="40" Margin="20"/>
                 <!--End applyBtn Button-->
 
 
@@ -204,7 +204,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                         Content="{Binding installBtn}"
                         HorizontalAlignment="Right"
                         VerticalAlignment="Bottom"
-                        Width="130" Height="40" Margin="15"/>
+                        Width="100" Height="40" Margin="20"/>
                 <!--End Install Button-->
             </Grid>
 
@@ -213,9 +213,10 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                     HorizontalAlignment="Left"
                     VerticalAlignment="Center" 
                     TextWrapping="Wrap"
-                    Margin="15,0,0,0"
+                    Margin="10,0,0,0"
                     FlowDirection="LeftToRight"
                     Text="Hello World"
+                    FontWeight="Bold"
                     Width="622"
                     />
             </StackPanel>
