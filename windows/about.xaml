@@ -41,7 +41,7 @@
         </DockPanel>
         <Separator/>
         <DockPanel Margin="10">
-          <TextBlock Name="lastupdate" >{Binding lastupdate}</TextBlock>
+          <TextBlock Name="lastupdate" Text="{Binding lastupdate}"/>
           <TextBlock Name="ver" TextAlignment="Right">5/20/2024</TextBlock>
         </DockPanel>
         <Separator/>
