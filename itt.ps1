@@ -18,7 +18,7 @@ Add-Type -AssemblyName System.Windows.Forms
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "14-06-2024"
+$sync.version = "15-06-2024"
 $sync.github =   "https://github.com/emadadel4"
 $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://eprojects.orgfree.com"
@@ -4251,7 +4251,10 @@ $sync.database.Quotes = '{
     "رجال الحق قالو الصابرون نالوا والذهن حامل لما لا تحمل الجبال",
     "أردتم السلام , فأشعلنا حربا في الخفاء",
     "الدنيا إدتني قلم غير الألم اللي في جسمي مسكت بإيدي القلم غرزته جوة نفسي رسمت بيه لوحة ومضيت تحتها إسمي",
-    "الدنيا إختبار وإحنا زي النار هنور ولا هنحرق، إحنا اللي بنختار"
+    "الدنيا إختبار وإحنا زي النار هنور ولا هنحرق، إحنا اللي بنختار",
+    "أنت لأ تخاف الموت أنت ترحب به",
+    "أسعى عن طرق لمكافحة الظلم,و لزرع الخوف في هولاك الذين يؤذون الضعفاء",
+    "لاستغلال خوف الآخرين، عليك أن تسيطر على خوفك"
   ]
 }
 ' | ConvertFrom-Json
@@ -5546,68 +5549,56 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
 <!--End TabControl Style-->
 
 <!--ComboBox Style-->
-    <Style  TargetType="{x:Type ComboBox}">
-        <Setter Property="Foreground" Value="{DynamicResource FGTextColor}"/>
-        <Setter Property="Height" Value="28"/>
-        <Setter Property="Width" Value="2"/>
-        <Setter Property="HorizontalAlignment" Value="Center"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                <ControlTemplate TargetType="ComboBox">
-                    <Grid>
-                        <ToggleButton Grid.Column="2" Focusable="false" IsChecked="{Binding Path=IsDropDownOpen,Mode=TwoWay,RelativeSource={RelativeSource TemplatedParent}}" >
-                            <ToggleButton.Template>
-                                <ControlTemplate>
-                                        <Grid>
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="2*" />
-                                                <ColumnDefinition Width="*" />
-                                            </Grid.ColumnDefinitions>
-                                            <Border x:Name="Border"  Grid.ColumnSpan="2" CornerRadius="5" Background="{DynamicResource FGColor}" BorderBrush="Transparent" BorderThickness="0" />
-                                            <Border Grid.Column="0" CornerRadius="5"  Margin="1" VerticalAlignment="Center" HorizontalAlignment="Center"  Background="{DynamicResource FGColor}"  BorderBrush="Transparent" BorderThickness="0" />
-                                            <Path x:Name="Arrow" Grid.Column="1"  Fill="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center" Data="M 0 0 L 4 4 L 8 0 Z"/>
-                                        </Grid>
-                                    <ControlTemplate.Triggers>
-                                        <Trigger Property="ToggleButton.IsMouseOver" Value="true">
-                                            <Setter TargetName="Border" Property="Background" Value="{DynamicResource FGColor}" />
-                                        </Trigger>
-                                        <Trigger Property="ToggleButton.IsChecked" Value="true">
-                                            <Setter TargetName="Border" Property="Background" Value="Transparent" />
-                                        </Trigger>
-                                    </ControlTemplate.Triggers>
-                                </ControlTemplate>
-                            </ToggleButton.Template>
-                        </ToggleButton>
-                        <ContentPresenter Name="ContentSite" IsHitTestVisible="False"  Content="{TemplateBinding SelectionBoxItem}" ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}" ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}" Margin="6"  />
-                        <TextBox x:Name="PART_EditableTextBox" Visibility="Hidden" IsReadOnly="{TemplateBinding IsReadOnly}"/>
-                        <Popup Name="Popup" Placement="Bottom" IsOpen="{TemplateBinding IsDropDownOpen}" AllowsTransparency="True"  Focusable="true" PopupAnimation="Slide">
-                            <Grid  Name="DropDown" SnapsToDevicePixels="True" MinWidth="{TemplateBinding ActualWidth}" MaxHeight="{TemplateBinding MaxDropDownHeight}">
-                                <Border x:Name="DropDownBorder" Background="{DynamicResource FGColor}" />
-                                <ScrollViewer SnapsToDevicePixels="True">
-                                <StackPanel IsItemsHost="True" />
-                                </ScrollViewer>
-                            </Grid>
-                        </Popup>
-                    </Grid>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-            <Style.Triggers>
-            </Style.Triggers>
-    </Style>
-    <Style  TargetType="{x:Type ComboBoxItem}">
-        <Setter Property="Background" Value="{DynamicResource FGColor}"/>
-        <Setter Property="Foreground" Value="{DynamicResource DefaultTextColor}"/>
-    </Style>
-    <Style x:Key="CustomSeparatorStyle" TargetType="{x:Type Separator}">
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type Separator}">
-                    <Border Background="Black" Height="1" Margin="5"/>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
+<Style TargetType="{x:Type ComboBox}">
+    <Setter Property="Foreground" Value="{DynamicResource FGTextColor}"/>
+    <Setter Property="HorizontalAlignment" Value="Center"/>
+    <Setter Property="Template">
+        <Setter.Value>
+            <ControlTemplate TargetType="ComboBox">
+                <Grid>
+                    <ToggleButton Name="ToggleButton" Focusable="false" IsChecked="{Binding Path=IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
+                                  Background="Transparent" BorderBrush="Transparent">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/> <!-- Text will take up available space -->
+                                <ColumnDefinition Width="20"/> <!-- Arrow width -->
+                            </Grid.ColumnDefinitions>
+                            <ContentPresenter Name="ContentSite" Grid.Column="0" IsHitTestVisible="False" Content="{TemplateBinding SelectionBoxItem}"
+                                              ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}" ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
+                                              Margin="6" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                            <Path x:Name="Arrow" Grid.Column="1" Fill="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center" Data="M 0 0 L 4 4 L 8 0 Z"/>
+                        </Grid>
+                    </ToggleButton>
+                    <TextBox x:Name="PART_EditableTextBox" Visibility="Hidden" IsReadOnly="{TemplateBinding IsReadOnly}"/>
+                    <Popup Name="Popup" Placement="Bottom" IsOpen="{TemplateBinding IsDropDownOpen}" AllowsTransparency="True" Focusable="True" PopupAnimation="Slide">
+                        <Grid Name="DropDown" SnapsToDevicePixels="True" MinWidth="{TemplateBinding ActualWidth}" MaxHeight="{TemplateBinding MaxDropDownHeight}">
+                            <Border x:Name="DropDownBorder" Background="{DynamicResource FGColor}"/>
+                            <ScrollViewer SnapsToDevicePixels="True">
+                                <StackPanel IsItemsHost="True"/>
+                            </ScrollViewer>
+                        </Grid>
+                    </Popup>
+                </Grid>
+            </ControlTemplate>
+        </Setter.Value>
+    </Setter>
+</Style>
+
+<Style TargetType="{x:Type ComboBoxItem}">
+    <Setter Property="Background" Value="{DynamicResource FGColor}"/>
+    <Setter Property="Foreground" Value="{DynamicResource DefaultTextColor}"/>
+</Style>
+
+<Style x:Key="CustomSeparatorStyle" TargetType="{x:Type Separator}">
+    <Setter Property="Template">
+        <Setter.Value>
+            <ControlTemplate TargetType="{x:Type Separator}">
+                <Border Background="Black" Height="1" Margin="5"/>
+            </ControlTemplate>
+        </Setter.Value>
+    </Setter>
+</Style>
+
 <!--End ComboBox Style-->
 
 <!--ToggleSwitchStyle Style-->
@@ -5765,7 +5756,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                 <MenuItem IsEnabled="False">
                     <MenuItem.Icon>
                         <!--Logo-->
-                        <Ellipse Name="logo" Width="80" Height="80" Cursor="Hand" ToolTip="Enad Adel">
+                        <Ellipse Name="logo" Margin="10,10,0,0" Width="70" Height="70">
                             <Ellipse.Fill>
                                 <ImageBrush ImageSource="https://raw.githubusercontent.com/emadadel4/ITT/main/Assets/Images/logo.png" />
                             </Ellipse.Fill>
@@ -5776,8 +5767,8 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                 </MenuItem>
 
                  <!--Catagory Section-->
-                    <ComboBox SelectedIndex="0" Margin="0,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" Name="category"  Width="90">
-                        <ComboBoxItem Content="All"></ComboBoxItem>
+                    <ComboBox SelectedIndex="0" Margin="0,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" Name="category"  Width="auto">
+                        <ComboBoxItem  Content="All"></ComboBoxItem>
                         <ComboBoxItem Content="Web Browsers"></ComboBoxItem>
                         <ComboBoxItem Content="Media"></ComboBoxItem>
                         <ComboBoxItem Content="Media Tools"></ComboBoxItem>
@@ -8057,7 +8048,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                     Content="{Binding applyBtn}"
                     HorizontalAlignment="Right"
                     VerticalAlignment="Bottom"
-                    Width="130" Height="40" Margin="15"/>
+                    Width="100" Height="40" Margin="20"/>
                 <!--End applyBtn Button-->
 
 
@@ -8067,7 +8058,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                         Content="{Binding installBtn}"
                         HorizontalAlignment="Right"
                         VerticalAlignment="Bottom"
-                        Width="130" Height="40" Margin="15"/>
+                        Width="100" Height="40" Margin="20"/>
                 <!--End Install Button-->
             </Grid>
 
@@ -8076,9 +8067,10 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
                     HorizontalAlignment="Left"
                     VerticalAlignment="Center" 
                     TextWrapping="Wrap"
-                    Margin="15,0,0,0"
+                    Margin="10,0,0,0"
                     FlowDirection="LeftToRight"
                     Text="Hello World"
+                    FontWeight="Bold"
                     Width="622"
                     />
             </StackPanel>
