@@ -8160,6 +8160,7 @@ $InitialSessionState.Variables.Add($hashVars)
 $sync.runspace = [runspacefactory]::CreateRunspacePool(1, $maxthreads, $InitialSessionState, $Host)
 $sync.runspace.Open()
 
+# Load required assembly
 [void][System.Reflection.Assembly]::LoadWithPartialName('presentationframework')
 [xml]$XAML = $inputXML
 
