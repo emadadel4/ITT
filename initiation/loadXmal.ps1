@@ -8,17 +8,11 @@ $InitialSessionState = [System.Management.Automation.Runspaces.InitialSessionSta
 # Add the variable to the session state
 $InitialSessionState.Variables.Add($hashVars)
 
-# Create the runspace pool
-$sync.runspace = [runspacefactory]::CreateRunspacePool(
-    1,                      
-    $maxthreads,            
-    $InitialSessionState,   
-    $Host                   
-)
-
-# Open the RunspacePool instance
+# Create and open the runspace pool
+$sync.runspace = [runspacefactory]::CreateRunspacePool(1, $maxthreads, $InitialSessionState, $Host)
 $sync.runspace.Open()
 
+# Load required assembly
 [void][System.Reflection.Assembly]::LoadWithPartialName('presentationframework')
 [xml]$XAML = $inputXML
 
@@ -49,11 +43,11 @@ try {
     if($sync.Langusege -ne "en")
     {
         switch ($sync.Langusege) {
-            "en" {
-                $sync["window"].DataContext = $sync.database.locales.en
-            }
             "ar" {
                 $sync["window"].DataContext = $sync.database.locales.ar
+            }
+            "en" {
+                $sync["window"].DataContext = $sync.database.locales.en
             }
             default {
                 # Default to English for any other culture or invalid input
