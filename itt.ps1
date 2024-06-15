@@ -8902,6 +8902,7 @@ function Invoke-Install {
 
             try
             {
+
                 # Retrieve localized messages for confirmation dialog and UI elements
                 $areyousuremsg = $sync.database.locales.$($sync.Langusege).InstallMessage
                 $installBtn = $sync.database.locales.$($sync.Langusege).installBtn
@@ -8909,9 +8910,15 @@ function Invoke-Install {
 
                 # Show confirmation dialog
                 $result = [System.Windows.MessageBox]::Show("[$($selectedApps.Count)] $areyousuremsg ", "ITT | Emad Adel", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)
-                
+
+                $sync['window'].Dispatcher.Invoke([Action]{
+                    $sync["window"].Activate()
+                })
+
                 if($result -eq "Yes")
                 {
+
+
                     # start ProcessRunning
                     $sync.ProcessRunning = $true
 
