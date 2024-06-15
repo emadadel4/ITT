@@ -74,9 +74,8 @@ $validCategories = @{
     12 = "File Sharing"
     13 = "Development"
     14 = "Runtimes"
-    15 = "Microsoft"
-    16 = "Portable"
-    17 = "Security"
+    15 = "Portable"
+    16 = "Security"
 }
 
 # Prompt user to choose category
@@ -189,9 +188,8 @@ if($userInput -eq "API [Choco/Winget/Scoop] Recommended")
         12 = "File Sharing"
         13 = "Development"
         14 = "Runtimes"
-        15 = "Microsoft"
-        16 = "Portable"
-        17 = "Security"
+        15 = "Portable"
+        16 = "Security"
     }
 
     # Prompt user to choose category
