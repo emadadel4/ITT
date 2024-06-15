@@ -9714,58 +9714,149 @@ function Invoke-ShowFile-Extensions {
     }
 }
 function Invoke-Button {
+    Param ([string]$action)
 
-    Param ([string]$debug)
+    # Helper function for debugging
+    function Debug-Message($message) {
+        #Write-Host "Debug: $message"
+    }
 
-    Switch -Wildcard ($debug) {
+    # Switch block to handle different actions
+    Switch -Wildcard ($action) {
 
-        "installBtn"        { Invoke-Install $debug }
-        "applyBtn"          { Invoke-ApplyTweaks $debug }
-        "taps"              { ChangeTap $debug }
-        "category"          { FilterByCat $sync.category.SelectedItem.Content $debug }
-        "searchInput"       { 
-                                Search
-                                $sync['window'].FindName('category').SelectedIndex = 0
-                                $debug 
-                             }
+        "installBtn" {
+            Invoke-Install 
+            Debug-Message $action
+        }
+        "applyBtn" {
+            Invoke-ApplyTweaks
+            Debug-Message $action
+        }
+        "taps" {
+            ChangeTap $action
+        }
+        "category" {
+            FilterByCat($sync.category.SelectedItem.Content)
+            Debug-Message $action
+        }
+        "searchInput" {
+            Search
+            $sync['window'].FindName('category').SelectedIndex = 0
+            Debug-Message $action
+        }
 
         # Menu items
-
-        # Language
-        "ar"                { SetLangusege -lang "ar" $Button }
-        "en"                { SetLangusege -lang "en" $Button }
-
-        "save"              { SaveItemsToJson $debug }
-        "load"              { LoadJson $Button }
+        "ar" {
+            SetLangusege -lang "ar"
+            Debug-Message $action
+        }
+        "en" {
+            SetLangusege -lang "en"
+            Debug-Message $action
+        }
+        "save" {
+            SaveItemsToJson
+            Debug-Message $action
+        }
+        "load" {
+            LoadJson
+            Debug-Message $action
+        }
 
         # Device Management
-        "deviceManager"     {  devmgmt.msc $debug }
-        "appsfeatures"      {  appwiz.cpl $debug }
-        "sysinfo"           {  msinfo32.exe; Start-Process dxdiag.exe $debug }
-        "poweroption"       {  powercfg.cpl $debug }
-        "services"          {  services.msc $debug }
-        "network"           {  ncpa.cpl $debug }
-        "taskmgr"           {  taskmgr.exe $debug }
-        "diskmgmt"          {  diskmgmt.msc $debug }
+        "deviceManager" {
+            Start-Process devmgmt.msc 
+            Debug-Message $action
+        }
+        "appsfeatures" {
+            Start-Process appwiz.cpl 
+            Debug-Message $action
+        }
+        "sysinfo" {
+            Start-Process msinfo32.exe
+            Start-Process dxdiag.exe 
+            Debug-Message $action
+        }
+        "poweroption" {
+            Start-Process powercfg.cpl 
+            Debug-Message $action
+        }
+        "services" {
+            Start-Process services.msc 
+            Debug-Message $action
+        }
+        "network" {
+            Start-Process ncpa.cpl
+            Debug-Message $action
+        }
+        "taskmgr" {
+            Start-Process taskmgr.exe 
+            Debug-Message $action
+        }
+        "diskmgmt" {
+            Start-Process diskmgmt.msc
+            Debug-Message $action
+        }
 
         # Theme
-        "Dark"              { Switch-ToDarkMode $debug }
-        "Light"             { Switch-ToLightMode $debug }
-        "systheme"          { SwitchToSystem $Button }
+        "Dark" {
+            Switch-ToDarkMode
+            Debug-Message $action
+        }
+        "Light" {
+            Switch-ToLightMode
+            Debug-Message $action
+        }
+        "systheme" {
+            SwitchToSystem 
+            Debug-Message $action
+        }
 
         # Music
-        "moff"              { MuteMusic $debug }
-        "mon"               { Unmute $debug }
+        "moff" {
+            MuteMusic
+            Debug-Message $action
+        }
+        "mon" {
+            UnmuteMusic
+            Debug-Message $action
+        }
 
         # Mirror Links
-        "unhook"            { Start-Process "https://unhook.app/" $debug }
-        "uBlock"            { Start-Process "https://ublockorigin.com/" $debug }
-        "mas"               { Start-Process "https://github.com/massgravel/Microsoft-Activation-Scripts" $debug }
-        "idm"               { Start-Process "https://github.com/WindowsAddict/IDM-Activation-Script" $debug }
-        "neat"              { Start-Process "https://addons.mozilla.org/en-US/firefox/addon/neatdownloadmanager-extension/" $debug }
+        "unhook" {
+            Start-Process "https://unhook.app/" 
+            Debug-Message $action
+        }
+        "uBlock" {
+            Start-Process "https://ublockorigin.com/" 
+            Debug-Message $action
+        }
+        "mas" {
+            Start-Process "https://github.com/massgravel/Microsoft-Activation-Scripts"
+            Debug-Message $action
+        }
+        "idm" {
+            Start-Process "https://github.com/WindowsAddict/IDM-Activation-Script"
+            Debug-Message $action
+        }
+        "neat" {
+            Start-Process "https://addons.mozilla.org/en-US/firefox/addon/neatdownloadmanager-extension/" 
+            Debug-Message $action
+        }
 
-        "ittshortcut"       { ITTShortcut $debug }
-        "dev"               { About $Button }
+        # Other actions
+        "ittshortcut" {
+            ITTShortcut $action
+            Debug-Message $action
+        }
+        "dev" {
+            About
+            Debug-Message $action
+        }
+
+        Default {
+            Write-Host "Unknown action: $action"
+        }
     }
 }
 
