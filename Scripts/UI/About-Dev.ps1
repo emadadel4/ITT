@@ -4,7 +4,7 @@ function About{
     $sync.about = $childWindow
     $childWindowReader = (New-Object System.Xml.XmlNodeReader $about)
     $sync.about = [Windows.Markup.XamlReader]::Load( $childWindowReader )
-    $sync.about.FindName('ver').Text =  $sync.version
+    $sync.about.FindName('ver').Text =  $sync.lastupdate
     $sync.about.FindName("telegram").add_MouseLeftButtonDown({Start-Process("https://t.me/emadadel4")})
     $sync.about.FindName("github").add_MouseLeftButtonDown({Start-Process("https://github.com/emadadel4")})
     $sync.about.FindName("website").add_MouseLeftButtonDown({Start-Process("https://eprojects.orgfree.com/")})
