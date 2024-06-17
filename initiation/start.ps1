@@ -3,16 +3,15 @@ Add-Type -AssemblyName System.Windows.Forms
 
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
-$sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "#{replaceme}"
+$sync.database = @{}
+$sync.ProcessRunning = $false
+$sync.lastupdate = "#{replaceme}"
 $sync.github =   "https://github.com/emadadel4"
 $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://eprojects.orgfree.com"
-$sync.developer =   "Emad Adel @emadadel4"
+$sync.developer =   "Emad Adel"
 $sync.registryPath = "HKCU:\Software\itt.emadadel"
 $sync.firebaseUrl = "https://ittools-7d9fe-default-rtdb.firebaseio.com/"
-$sync.database = @{}
-$sync.ProcessRunning = $false
 $sync.isDarkMode
 $sync.Langusege = "en"
 $sync.mediaPlayer = New-Object -ComObject WMPlayer.OCX
