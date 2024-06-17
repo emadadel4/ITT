@@ -18,7 +18,7 @@ Add-Type -AssemblyName System.Windows.Forms
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "16-06-2024"
+$sync.version = "17-06-2024"
 $sync.github =   "https://github.com/emadadel4"
 $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://eprojects.orgfree.com"
@@ -4214,7 +4214,7 @@ $sync.database.Quotes = '{
     "الجمال الحقيقي لا يكمن في المظهر الخارجي، بل في النية والروح",
     "ليس كل ما نخاف منه سيئًا، وليس كل ما نحبه جيدًا",
     "ظننت أنه يمكننا أن نكون رجالاً شرفاء في زمن غير شريف",
-    "أعطي رجلا مسدسا يمكنه سرقة بنك ولكن أعطه بنكا يمكنه سرقة العالم",
+    "يمكنك أن تعطي رجلاً مسدسًا ليسرق بنكًا، لكن أعطه بنكًا يمكنه سرقة العالم",
     "أنت تعتقد أن الظلام هو حليفك لكنك تبنيت الظلام , انا لقد ولدت فيه",
     "لا يغرنك من تكلم حسناً عنك ولا يؤذيك من تكلم سيئاً عليك",
     "اختر أن تكون شمعة تضيء دروب الآخرين، ولا تكن ظلامًا يعكر جوهر الحياة",
