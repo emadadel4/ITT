@@ -130,7 +130,6 @@ function Invoke-Install {
 
                 if (Test-Path $chocoTempPath) {
                     Remove-Item -Path $chocoTempPath -Force -Recurse
-                    Add-Log -Message "Clear Chocolatey temp folder" -Level "INFO"
                 }
             }
             
