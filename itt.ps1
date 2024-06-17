@@ -5565,13 +5565,13 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
 
 <!--ComboBox Style-->
 <Style TargetType="{x:Type ComboBox}">
-    <Setter Property="Foreground" Value="{DynamicResource FGTextColor}"/>
+    <Setter Property="Foreground" Value="{DynamicResource DefaultTextColor}"/>
     <Setter Property="HorizontalAlignment" Value="Center"/>
     <Setter Property="Template">
         <Setter.Value>
             <ControlTemplate TargetType="ComboBox">
                 <Grid>
-                    <ToggleButton Name="ToggleButton" Focusable="false" IsChecked="{Binding Path=IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
+                    <ToggleButton Foreground="{DynamicResource DefaultTextColor}" Name="ToggleButton" Focusable="false" IsChecked="{Binding Path=IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
                                   Background="Transparent" BorderBrush="Transparent">
                         <Grid>
                             <Grid.ColumnDefinitions>
