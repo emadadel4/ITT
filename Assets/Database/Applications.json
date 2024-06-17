@@ -2388,7 +2388,7 @@
         "output": "ITT/Downloads"
       }
     ],
-    "category": "Development",
+    "category": "Media Tools",
     "check": "false"
   },
   {
@@ -2541,7 +2541,7 @@
         "output": "ITT/Downloads"
       }
     ],
-    "category": "Development",
+    "category": "Runtimes",
     "check": "false"
   },
   {
@@ -4038,6 +4038,23 @@
       }
     ],
     "category": "Utilities",
+    "check": "false"
+  },
+  {
+    "name": "Microsoft Silverlight",
+    "description": "Silverlight is a powerful development tool for creating engaging interactive user experiences for Web and mobile applications",
+    "winget": "none",
+    "choco": "silverlight",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
+    "category": "Runtimes",
     "check": "false"
   }
 ]
