@@ -5571,8 +5571,11 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
         <Setter.Value>
             <ControlTemplate TargetType="ComboBox">
                 <Grid>
-                    <ToggleButton Foreground="{DynamicResource DefaultTextColor}" Name="ToggleButton" Focusable="false" IsChecked="{Binding Path=IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
-                                  Background="Transparent" BorderBrush="Transparent">
+                    <ToggleButton 
+                        Foreground="{DynamicResource DefaultTextColor}" 
+                        Name="ToggleButton" Focusable="false"
+                        IsChecked="{Binding Path=IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
+                        Background="Transparent" BorderBrush="Transparent">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/> <!-- Text will take up available space -->
