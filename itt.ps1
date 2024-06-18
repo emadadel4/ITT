@@ -19,7 +19,7 @@ Add-Type -AssemblyName System.Windows.Forms
 $sync = [Hashtable]::Synchronized(@{})
 $sync.database = @{}
 $sync.ProcessRunning = $false
-$sync.lastupdate = "17-06-2024"
+$sync.lastupdate = "18-06-2024"
 $sync.github =   "https://github.com/emadadel4"
 $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://eprojects.orgfree.com"
@@ -5235,7 +5235,7 @@ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 x:Name="Window" Title="Install and Tweak Tool #Stand With Palestine" WindowStartupLocation = "CenterScreen" 
 Background="{DynamicResource BGColor}"
-Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowInTaskbar = "True" Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/Assets/Icons/icon.ico">
+Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowInTaskbar = "True" Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/Assets/Icons/icon.ico">
 
 <Window.Resources>
     <!--Button Style-->
@@ -5786,7 +5786,7 @@ Height="600"  MinHeight="600"  Topmost="False" Width="799" MinWidth="799" ShowIn
 
                  <!--Catagory Section-->
                     <ComboBox SelectedIndex="0" Margin="0,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" Name="category"  Width="auto">
-                        <ComboBoxItem  Content="All"></ComboBoxItem>
+                        <ComboBoxItem Content="All"></ComboBoxItem>
                         <ComboBoxItem Content="Web Browsers"></ComboBoxItem>
                         <ComboBoxItem Content="Media"></ComboBoxItem>
                         <ComboBoxItem Content="Media Tools"></ComboBoxItem>
