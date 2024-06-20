@@ -7,14 +7,16 @@ jobs:
     runs-on: windows-latest
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
-    - name: Set up PowerShell
-      uses: actions/setup-python@v2
+      - name: Set up PowerShell 7
+        uses: actions/setup-powershell@v2
+        with:
+          pwsh-version: '7.2.6' # Specify the desired version of PowerShell 7
 
-    - name: Run build.ps1 script
-      run: |
-        Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
-        .\build.ps1
-      shell: pwsh
+      - name: Run build.ps1 script
+        shell: pwsh
+        run: |
+          pwsh -NoProfile -Command "Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process"
+          pwsh -NoProfile -Command "./build.ps1"
