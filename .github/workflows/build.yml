@@ -1,6 +1,16 @@
 name: Run PowerShell Script
 
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - main  # Adjust branch name as needed
+    paths:
+      - '**'  # Trigger on any path changes within the repository
+  pull_request:
+    branches:
+      - main  # Adjust branch name as needed
+    paths:
+      - '**'  # Trigger on any path changes within the repository
 
 jobs:
   build:
