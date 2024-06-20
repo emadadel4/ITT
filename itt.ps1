@@ -19,7 +19,7 @@ Add-Type -AssemblyName System.Windows.Forms
 $sync = [Hashtable]::Synchronized(@{})
 $sync.database = @{}
 $sync.ProcessRunning = $false
-$sync.lastupdate = "20-06-2024"
+$sync.lastupdate = "21-06-2024"
 $sync.github =   "https://github.com/emadadel4"
 $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://eprojects.orgfree.com"
@@ -103,23 +103,6 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "ITT/Downloads"
-      }
-    ],
-    "category": "Web Browsers",
-    "check": "false"
-  },
-  {
-    "name": "Firefox ESR",
-    "description": "Bringing together all kinds of awesomeness to make browsing better for you",
-    "winget": "Mozilla.Firefox.ESR",
-    "choco": "firefoxesr",
-    "scoop": "none",
-    "default": [
-      {
-        "IsExcute": "false",
-        "url": "none",
-        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
       }
     ],
     "category": "Web Browsers",
@@ -4264,12 +4247,9 @@ $sync.database.Quotes = '{
     "الجشع هو موتك السريع، والغباء هو رصاصتك الخاصة",
     "الحياة ليست سهلة، ولكن الصعوبات تجعلنا أقوى",
     "تموت البراءة وتحيا الكلاب",
-    "وقد سألت الدنيا لما لم تسعفيني لم تسمعي كلامي حين قلت رفقا بي, ابيت ان تضمدي جروحكي في قلبي",
     "رجال الحق قالو الصابرون نالوا والذهن حامل لما لا تحمل الجبال",
     "أردتم السلام , فأشعلنا حربا في الخفاء",
-    "الدنيا إختبار وإحنا زي النار هنور ولا هنحرق، إحنا اللي بنختار",
     "أنت لأ تخاف الموت أنت ترحب به",
-    "أسعى عن طرق لمكافحة الظلم,و لزرع الخوف في هولاك الذين يؤذون الضعفاء",
     "لاستغلال خوف الآخرين، عليك أن تسيطر على خوفك"
   ]
 }
@@ -5968,14 +5948,6 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
                 <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content="Web Browsers"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="A web browser designed for smooth and secure browsing experiences"/>
-        </StackPanel>
-
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
-            <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Firefox ESR" Tag="Web Browsers" IsChecked="false" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content="Web Browsers"/>
-            </StackPanel>
-                <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Bringing together all kinds of awesomeness to make browsing better for you"/>
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Width="auto" Margin="8">
