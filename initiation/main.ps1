@@ -101,8 +101,10 @@ $onClosingEvent = {
     
     param($s, $c)
     
+    $exitdialog = $sync.database.locales.$($sync.Langusege).exit
+
     # Show confirmation message box
-    $result = [System.Windows.MessageBox]::Show("Are you sure you want to close the program, If there are any installing, this will end it", "Confirmation", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)
+    $result = [System.Windows.MessageBox]::Show($exitdialog, "Confirmation", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)
 
     # Check user's choice
     if ($result -eq "Yes")
