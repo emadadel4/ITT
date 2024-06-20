@@ -17,9 +17,8 @@ jobs:
           $pwshPath = 'C:\Program Files\PowerShell\7\pwsh.exe'
           $env:Path += ';C:\Program Files\PowerShell\7'
 
-      - name: Run build.ps1 script
+      - name: Run build.ps1 script as Administrator
         shell: pwsh
         run: |
           $pwshPath = 'C:\Program Files\PowerShell\7\pwsh.exe'
-          & $pwshPath -NoProfile -Command "Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process"
-          & $pwshPath -NoProfile -File './test.ps1'
+          Start-Process -FilePath $pwshPath -ArgumentList "-NoProfile -ExecutionPolicy Bypass -File ./build.ps1" -Verb RunAs
