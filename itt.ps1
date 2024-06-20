@@ -8144,17 +8144,17 @@ $childXaml = '<Window
 
         <DockPanel Margin="10">
           <TextBlock>Telegram</TextBlock>
-          <TextBlock Name="telegram" TextAlignment="Right">emadadel4</TextBlock>
+          <TextBlock Name="telegram" Cursor="Hand" Text="emadadel4" TextAlignment="Right"/>
         </DockPanel>
         <Separator/>
         <DockPanel Margin="10">
           <TextBlock>Github</TextBlock>
-          <TextBlock Name="github" TextAlignment="Right">emadadel4</TextBlock>
+          <TextBlock Name="github" Cursor="Hand" Text="emadadel4" TextAlignment="Right"/>
         </DockPanel>
         <Separator/>
         <DockPanel Margin="10">
           <TextBlock>Website</TextBlock>
-          <TextBlock Name="website" TextAlignment="Right">eprojects.orgfree.com</TextBlock>
+          <TextBlock Name="website" Cursor="Hand" Text="eprojects.orgfree.com" TextAlignment="Right"/>
         </DockPanel>
         <Separator/>
         <DockPanel Margin="10">
@@ -8162,7 +8162,7 @@ $childXaml = '<Window
           <TextBlock Name="ver" TextAlignment="Right">5/20/2024</TextBlock>
         </DockPanel>
         <Separator/>
-        <TextBlock  Name="sourcecode" Margin="0,25,0,0" Text="Source Code" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <TextBlock  Name="sourcecode" Cursor="Hand" Margin="0,25,0,0" Text="Source Code" VerticalAlignment="Center" HorizontalAlignment="Center"/>
       </StackPanel>
     </Grid>
   </Window>
