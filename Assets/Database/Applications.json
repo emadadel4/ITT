@@ -52,23 +52,6 @@
     "check": "false"
   },
   {
-    "name": "Firefox ESR",
-    "description": "Bringing together all kinds of awesomeness to make browsing better for you",
-    "winget": "Mozilla.Firefox.ESR",
-    "choco": "firefoxesr",
-    "scoop": "none",
-    "default": [
-      {
-        "IsExcute": "false",
-        "url": "none",
-        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
-      }
-    ],
-    "category": "Web Browsers",
-    "check": "false"
-  },
-  {
     "Name": "Microsoft Edge",
     "Description": "Microsoft's web browser built for fast and secure internet surfing, integrating seamlessly with Windows ecosystem.",
     "winget": "Microsoft.Edge",
