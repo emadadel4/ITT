@@ -22,4 +22,4 @@ jobs:
         run: |
           $pwshPath = 'C:\Program Files\PowerShell\7\pwsh.exe'
           & $pwshPath -NoProfile -Command "Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process"
-          & $pwshPath -NoProfile -File './build.ps1'
+          & $pwshPath -NoProfile -File './test.ps1'
