@@ -1,25 +1,21 @@
-name: Run PowerShell Script on Commit
+name: Run PowerShell Script on Repository Change
 
-on: [push]
+on:
+  push:
+    branches:
+      - main  # or specify the branches you want to monitor
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: windows-latest  # Use the latest Windows runner
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+    - name: Checkout repository
+      uses: actions/checkout@v3
 
-      - name: Install PowerShell 7
-        run: |
-          Invoke-WebRequest -Uri https://github.com/PowerShell/PowerShell/releases/download/v7.3.4/PowerShell-7.3.4-win-x64.msi -OutFile pwsh.msi
-          Start-Process msiexec.exe -ArgumentList '/i pwsh.msi /quiet' -NoNewWindow -Wait
-          $pwshPath = 'C:\Program Files\PowerShell\7\pwsh.exe'
-          $env:Path += ';C:\Program Files\PowerShell\7'
+    - name: Set up PowerShell
+      uses: actions/setup-powershell@v2
 
-      - name: Run build.ps1 script
-        shell: pwsh
-        run: |
-          $pwshPath = 'C:\Program Files\PowerShell\7\pwsh.exe'
-          & $pwshPath -NoProfile -Command "Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process"
-          & $pwshPath -NoProfile -File './build.ps1'
+    - name: Run build script
+      shell: pwsh
+      run: ./build.ps1
