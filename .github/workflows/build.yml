@@ -21,4 +21,4 @@ jobs:
         shell: pwsh
         run: |
           $pwshPath = 'C:\Program Files\PowerShell\7\pwsh.exe'
-          Start-Process -FilePath $pwshPath -ArgumentList "-NoProfile -ExecutionPolicy Bypass -File ./build.ps1" -Verb RunAs
+          Start-Process -FilePath $pwshPath -ArgumentList "-NoProfile -ExecutionPolicy Bypass -File ./test.ps1" -Verb RunAs
