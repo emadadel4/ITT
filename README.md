@@ -40,11 +40,6 @@ or
 <pre><code>irm https://raw.githubusercontent.com/emadadel4/ITT/main/itt.ps1 | iex
 </code></pre>
 
-<p>To run it directly from Gitlab:</p>
-
-<pre><code> irm https://gitlab.com/emadadel/ITT/-/raw/main/itt.ps1 | iex
-</code></pre>
-
 <h2> 📦 How to Add a New App/Tweak/OST/Quote</h2>
 <ol>
 <li><strong>Make sure you have PowerShell 7 installed (recommended) for building</strong></li>
