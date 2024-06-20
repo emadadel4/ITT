@@ -1,26 +1,34 @@
 name: Run PowerShell Script on Commit
 
-on:
-  push:
-    branches:
-      - main  # Adjust branch as needed
+on: [push]
 
 jobs:
   build:
     runs-on: windows-latest
-    
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-      
-      - name: Set up PowerShell 7
-        run: |
-          Invoke-WebRequest -Uri https://github.com/PowerShell/PowerShell/releases/download/v7.3.4/PowerShell-7.3.4-win-x64.msi -OutFile pwsh.msi
-          Start-Process msiexec.exe -ArgumentList '/i pwsh.msi /quiet' -NoNewWindow -Wait
-          $pwshPath = 'C:\Program Files\PowerShell\7\pwsh.exe'
-          $env:Path += ';C:\Program Files\PowerShell\7'
 
-      - name: Run build.ps1 as Administrator
+      - name: Check if PowerShell 7 is installed
+        id: pwsh7-check
+        run: |
+          $pwshPath = 'C:\Program Files\PowerShell\7\pwsh.exe'
+          if (Test-Path $pwshPath) {
+            echo "::set-output name=pwsh7_exists::true"
+          } else {
+            echo "::set-output name=pwsh7_exists::false"
+          }
+
+      - name: Fail if PowerShell 7 is not installed
+        if: steps.pwsh7-check.outputs.pwsh7_exists == 'false'
+        run: |
+          echo "PowerShell 7 is not installed on this runner."
+          exit 1
+
+      - name: Run build.ps1 script as Administrator
+        if: steps.pwsh7-check.outputs.pwsh7_exists == 'true'
         shell: pwsh
         run: |
-          Start-Process -FilePath $env:pwshPath -ArgumentList "-NoProfile -ExecutionPolicy Bypass -File './test.ps1'" -Verb RunAs
+          $pwshPath = 'C:\Program Files\PowerShell\7\pwsh.exe'
+          Start-Process -FilePath $pwshPath -ArgumentList "-NoProfile -ExecutionPolicy Bypass -File ./test.ps1" -Verb RunAs
