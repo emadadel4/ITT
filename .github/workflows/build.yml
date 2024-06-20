@@ -1,24 +1,26 @@
 name: Run PowerShell Script on Commit
 
-on: [push]
+on:
+  push:
+    branches:
+      - main  # Adjust branch as needed
 
 jobs:
   build:
     runs-on: windows-latest
-
+    
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-
-      - name: Install PowerShell 7
+      
+      - name: Set up PowerShell 7
         run: |
           Invoke-WebRequest -Uri https://github.com/PowerShell/PowerShell/releases/download/v7.3.4/PowerShell-7.3.4-win-x64.msi -OutFile pwsh.msi
           Start-Process msiexec.exe -ArgumentList '/i pwsh.msi /quiet' -NoNewWindow -Wait
           $pwshPath = 'C:\Program Files\PowerShell\7\pwsh.exe'
           $env:Path += ';C:\Program Files\PowerShell\7'
 
-      - name: Run build.ps1 script as Administrator
+      - name: Run build.ps1 as Administrator
         shell: pwsh
         run: |
-          $pwshPath = 'C:\Program Files\PowerShell\7\pwsh.exe'
-          Start-Process -FilePath $pwshPath -ArgumentList "-NoProfile -ExecutionPolicy Bypass -File ./test.ps1" -Verb RunAs
+          Start-Process -FilePath $env:pwshPath -ArgumentList "-NoProfile -ExecutionPolicy Bypass -File './test.ps1'" -Verb RunAs
