@@ -1,34 +1,16 @@
-name: Run PowerShell Script on Commit
+name: Run PowerShell Script
 
-on: [push]
+on: [push, pull_request]
 
 jobs:
   build:
     runs-on: windows-latest
-
+    
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+    - name: Checkout repository
+      uses: actions/checkout@v3
 
-      - name: Check if PowerShell 7 is installed
-        id: pwsh7-check
-        run: |
-          $pwshPath = 'C:\Program Files\PowerShell\7\pwsh.exe'
-          if (Test-Path $pwshPath) {
-            echo "::set-output name=pwsh7_exists::true"
-          } else {
-            echo "::set-output name=pwsh7_exists::false"
-          }
-
-      - name: Fail if PowerShell 7 is not installed
-        if: steps.pwsh7-check.outputs.pwsh7_exists == 'false'
-        run: |
-          echo "PowerShell 7 is not installed on this runner."
-          exit 1
-
-      - name: Run build.ps1 script as Administrator
-        if: steps.pwsh7-check.outputs.pwsh7_exists == 'true'
-        shell: pwsh
-        run: |
-          $pwshPath = 'C:\Program Files\PowerShell\7\pwsh.exe'
-          Start-Process -FilePath $pwshPath -ArgumentList "-NoProfile -ExecutionPolicy Bypass -File ./test.ps1" -Verb RunAs
+    - name: Run build.ps1 as Administrator
+      run: |
+        Start-Process powershell -ArgumentList '-NoProfile -ExecutionPolicy Bypass -File $PWD\test.ps1' -Verb RunAs
+      shell: pwsh
