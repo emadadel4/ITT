@@ -12,12 +12,14 @@ jobs:
 
       - name: Install PowerShell 7
         run: |
-          Install-Package -Name PowerShell -AllowClobber -Force -Source https://www.powershellgallery.com/api/v2
-          $pwsh = 'C:\Program Files\PowerShell\7\pwsh.exe'
+          Invoke-WebRequest -Uri https://github.com/PowerShell/PowerShell/releases/download/v7.3.4/PowerShell-7.3.4-win-x64.msi -OutFile pwsh.msi
+          Start-Process msiexec.exe -ArgumentList '/i pwsh.msi /quiet' -NoNewWindow -Wait
+          $pwshPath = 'C:\Program Files\PowerShell\7\pwsh.exe'
           $env:Path += ';C:\Program Files\PowerShell\7'
 
       - name: Run build.ps1 script
         shell: pwsh
         run: |
-          Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
-          .\build.ps1
+          $pwshPath = 'C:\Program Files\PowerShell\7\pwsh.exe'
+          & $pwshPath -NoProfile -Command "Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process"
+          & $pwshPath -NoProfile -File './build.ps1'
