@@ -4133,7 +4133,9 @@ $sync.database.locales = '{
     "Pleasewait": "Please wait there is a process in the background.",
     "lastupdate":"Last update",
     "sourcecode":"Source Code",
-    "devby":"Made with ♥ by Emad Adel"
+    "devby":"Made with ♥ by Emad Adel",
+    "exit":"Are you sure you want to close the program, If there are any installing, this will end it"
+
   },
   "ar": {
     "InstallBtn": "تثبيت",
@@ -4167,7 +4169,8 @@ $sync.database.locales = '{
     "chosetweak":"أختار على الاقل اي تحسين لتطبيقه",
     "lastupdate":"اخر تحديث",
     "sourcecode":"اكواد الاداة",
-    "devby":"صنع ♥ من قبل عماد عادل"
+    "devby":"صنع ♥ من قبل عماد عادل",
+    "exit":"هل أنت متأكد من أنك تريد إغلاق البرنامج ، إذا كان هناك أي تثبيت ، فسيؤدي ذلك إلى إنهائه"
   }
 }
 ' | ConvertFrom-Json
@@ -10288,8 +10291,10 @@ $onClosingEvent = {
     
     param($s, $c)
     
+    $exitdialog = $sync.database.locales.$($sync.Langusege).exit
+
     # Show confirmation message box
-    $result = [System.Windows.MessageBox]::Show("Are you sure you want to close the program, If there are any installing, this will end it", "Confirmation", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)
+    $result = [System.Windows.MessageBox]::Show($exitdialog, "Confirmation", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)
 
     # Check user's choice
     if ($result -eq "Yes")
