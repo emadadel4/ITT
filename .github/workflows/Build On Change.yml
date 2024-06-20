@@ -10,13 +10,14 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Set up PowerShell 7
-        uses: actions/setup-powershell@v2
-        with:
-          pwsh-version: '7.2.6' # Specify the desired version of PowerShell 7
+      - name: Install PowerShell 7
+        run: |
+          Install-Package -Name PowerShell -AllowClobber -Force -Source https://www.powershellgallery.com/api/v2
+          $pwsh = 'C:\Program Files\PowerShell\7\pwsh.exe'
+          $env:Path += ';C:\Program Files\PowerShell\7'
 
       - name: Run build.ps1 script
         shell: pwsh
         run: |
-          pwsh -NoProfile -Command "Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process"
-          pwsh -NoProfile -Command "./build.ps1"
+          Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
+          .\build.ps1
