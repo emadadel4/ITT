@@ -57,10 +57,28 @@ else
 #===========================================================================
 $sync.database.Applications = '[
   {
-    "Name": "Firefox",
+    "Name": "Mozilla Firefox",
     "Description": "A widely-used open-source web browser known for its speed, privacy features, and customization options.",
     "winget": "Mozilla.Firefox",
     "choco": "firefox",
+    "scoop": "none",
+    "default": [
+      {
+        "fileType": "none",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "ITT/Downloads"
+      }
+    ],
+    "category": "Web Browsers",
+    "suggestion": "true",
+    "check": "false"
+  },
+  {
+    "Name": "Mozilla Firefox ESR",
+    "Description": "A widely-used open-source web browser known for its speed, privacy features, and customization options.",
+    "winget": "Mozilla.Firefox",
+    "choco": "firefoxesr",
     "scoop": "none",
     "default": [
       {
@@ -5931,7 +5949,15 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
                                     
         <StackPanel Orientation="Vertical" Width="auto" Margin="8">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Firefox" Tag="Web Browsers" IsChecked="false" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <CheckBox Content="Mozilla Firefox" Tag="Web Browsers" IsChecked="false" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content="Web Browsers"/>
+            </StackPanel>
+                <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="A widelyused opensource web browser known for its speed privacy features and customization options"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+            <StackPanel Orientation="Horizontal">
+                <CheckBox Content="Mozilla Firefox ESR" Tag="Web Browsers" IsChecked="false" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content="Web Browsers"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="A widelyused opensource web browser known for its speed privacy features and customization options"/>
