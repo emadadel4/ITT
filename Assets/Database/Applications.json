@@ -1,9 +1,27 @@
 [
   {
-    "Name": "Firefox",
+    "Name": "Mozilla Firefox",
     "Description": "A widely-used open-source web browser known for its speed, privacy features, and customization options.",
     "winget": "Mozilla.Firefox",
     "choco": "firefox",
+    "scoop": "none",
+    "default": [
+      {
+        "fileType": "none",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "ITT/Downloads"
+      }
+    ],
+    "category": "Web Browsers",
+    "suggestion": "true",
+    "check": "false"
+  },
+  {
+    "Name": "Mozilla Firefox ESR",
+    "Description": "A widely-used open-source web browser known for its speed, privacy features, and customization options.",
+    "winget": "Mozilla.Firefox",
+    "choco": "firefoxesr",
     "scoop": "none",
     "default": [
       {
