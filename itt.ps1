@@ -19,7 +19,7 @@ Add-Type -AssemblyName System.Windows.Forms
 $sync = [Hashtable]::Synchronized(@{})
 $sync.database = @{}
 $sync.ProcessRunning = $false
-$sync.lastupdate = "21-06-2024"
+$sync.lastupdate = "22-06-2024"
 $sync.github =   "https://github.com/emadadel4"
 $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://eprojects.orgfree.com"
@@ -894,7 +894,7 @@ $sync.database.Applications = '[
         "output": "ITT/Downloads"
       }
     ],
-    "category": "DriRuntimesvers",
+    "category": "Runtimes",
     "check": "false"
   },
   {
@@ -6333,8 +6333,8 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
 
         <StackPanel Orientation="Vertical" Width="auto" Margin="8">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Microsoft Visual C++ 2013 (x64) Redistributable" Tag="DriRuntimesvers" IsChecked="false" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content="DriRuntimesvers"/>
+                <CheckBox Content="Microsoft Visual C++ 2013 (x64) Redistributable" Tag="Runtimes" IsChecked="false" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content="Runtimes"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="A set of runtime components required to run 64bit applications developed with Microsoft Visual C 2013 providing libraries DLLs and other resources"/>
         </StackPanel>
