@@ -32,11 +32,11 @@ function Invoke-Button {
 
         # Menu items
         "ar" {
-            SetLangusege -lang "ar"
+            Set-Langusege -lang "ar"
             Debug-Message $action
         }
         "en" {
-            SetLangusege -lang "en"
+            Set-Langusege -lang "en"
             Debug-Message $action
         }
         "save" {
