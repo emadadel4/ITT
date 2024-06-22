@@ -4074,5 +4074,22 @@
     ],
     "category": "Utilities",
     "check": "false"
+  },
+  {
+    "name": "Dot Net 3.5",
+    "description": "NET is a free crossplatform opensource developer platform for building many different types of applications",
+    "winget": "Microsoft.DotNet.DesktopRuntime.3_1",
+    "choco": "dotnet3.5",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
+    "category": "Runtimes",
+    "check": "false"
   }
 ]
