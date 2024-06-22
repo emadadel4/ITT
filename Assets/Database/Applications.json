@@ -4061,7 +4061,7 @@
   {
     "name": "TreeSize",
     "description": "Every hard disk is too small if you just wait long enough TreeSize Free tells you where precious disk space has gone",
-    "winget": "winget install  --id JAMSoftware.TreeSize.Free",
+    "winget": "JAMSoftware.TreeSize.Free",
     "choco": "treesizefree",
     "scoop": "none",
     "default": [
