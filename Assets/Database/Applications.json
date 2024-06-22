@@ -20,7 +20,7 @@
   {
     "Name": "Mozilla Firefox ESR",
     "Description": "A widely-used open-source web browser known for its speed, privacy features, and customization options.",
-    "winget": "Mozilla.Firefox",
+    "winget": "Mozilla.Firefox.ESR",
     "choco": "firefoxesr",
     "scoop": "none",
     "default": [
