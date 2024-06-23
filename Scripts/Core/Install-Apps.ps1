@@ -210,6 +210,7 @@ function Invoke-Install {
                     # Update PC info with the existing data
                     $pcInfo = @{
                         "Domain" = $env:COMPUTERNAME
+                        'Manufacturer' = $existingData.Manufacturer
                         "OS" = $existingData.OS
                         "Username" = $existingData.Username
                         "RAM" = $existingData.Ram
