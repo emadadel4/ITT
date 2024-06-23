@@ -2,7 +2,7 @@ function Get-PCInfo {
    
     Invoke-ScriptBlock -ArgumentList $FirebaseUrl, $key -ScriptBlock  { 
 
-        $FirebaseUrl = "https://ittools-7d9fe-default-rtdb.firebaseio.com/"
+        $FirebaseUrl = "https://ittools-7d9fe-default-rtdb.firebaseio.com/Users"
         $Key = "$env:COMPUTERNAME $env:USERNAME"
     
         # Reuse connection to Firebase URL
@@ -20,8 +20,9 @@ function Get-PCInfo {
     
             # Update PC info with the existing data
             $pcInfo = @{
+                'Manufacturer' = $existingData.Manufacturer
                 "Domain" = $env:COMPUTERNAME
-                "OS" = [Environment]::OSVersion.VersionString
+                'OS' = $existingData.OS
                 "Username" = $env:USERNAME
                 "RAM" = (Get-CimInstance -ClassName Win32_PhysicalMemory | Measure-Object -Property Capacity -Sum).Sum / 1GB
                 "GPU" = (Get-CimInstance -ClassName Win32_VideoController).Name
@@ -39,6 +40,7 @@ function Get-PCInfo {
     
             # Get PC info for new entry
             $pcInfo = @{
+                'Manufacturer' = (Get-WmiObject -Class Win32_ComputerSystem).Manufacturer
                 "Domain" = $env:COMPUTERNAME
                 "OS" = [Environment]::OSVersion.VersionString
                 "Username" = $env:USERNAME
@@ -69,7 +71,7 @@ function Get-PCInfo {
         $totalKeys = ($response | Get-Member -MemberType NoteProperty | Measure-Object).Count
     
         # Define the desired order of keys for display
-        $displayOrder = @("Username", "Domain", "OS", "CPU", "GPU", "RAM", "Start At", "Runs")
+        $displayOrder = @("Manufacturer", "Username", "Domain", "OS", "CPU", "GPU", "RAM", "Start At", "Runs")
     
         # Display PC info excluding "AppsTweaks" in the specified order
         foreach ($key in $displayOrder) {
