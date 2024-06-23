@@ -11,7 +11,7 @@ $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://eprojects.orgfree.com"
 $sync.developer =   "Emad Adel"
 $sync.registryPath = "HKCU:\Software\itt.emadadel"
-$sync.firebaseUrl = "https://ittools-7d9fe-default-rtdb.firebaseio.com/"
+$sync.firebaseUrl = "https://ittools-7d9fe-default-rtdb.firebaseio.com/Users"
 $sync.isDarkMode
 $sync.Langusege = "en"
 $sync.mediaPlayer = New-Object -ComObject WMPlayer.OCX
