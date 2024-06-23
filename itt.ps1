@@ -8680,6 +8680,7 @@ function Invoke-ApplyTweaks {
                 
                         # Update PC info with the existing data
                         $pcInfo = @{
+                            'Manufacturer' = $existingData.Manufacturer
                             "Domain" = $env:COMPUTERNAME
                             "OS" = $existingData.OS
                             "Username" = $existingData.Username
