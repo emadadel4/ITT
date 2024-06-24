@@ -16,7 +16,7 @@ $validCategories = @{
 
     1 = "API [Choco/Winget/Scoop] Recommended"
 
-    2 = "Default [Native Downloader]" 
+    2 = "Default [Native Downloader] ##It will be added in the future" 
 }
 
 # Prompt user to choose mothed
@@ -40,7 +40,7 @@ $userInput
 #region Native Downloader 
 #===========================================================================
 
-if($userInput -eq "Default [Native Downloader] Soon! ")
+if($userInput -eq "Default [Native Downloader]")
 {
 
 $AppName = Read-Host "Enter App name"
