@@ -8668,67 +8668,71 @@ function Invoke-ApplyTweaks {
                     param (
                         [string]$FirebaseUrl,
                         [string]$Key,
-                        $list
+                        $List
                     )
                 
-                    # Validate parameters
-                    if (-not $FirebaseUrl -or -not $Key) {
-                        throw "FirebaseUrl and Key are mandatory parameters."
-                    }
+                    try {
+                        # Validate parameters
+                        if (-not $FirebaseUrl -or -not $Key) {
+                            throw "FirebaseUrl and Key are mandatory parameters."
+                        }
+                        
+                        # Reuse connection to Firebase URL
+                        $firebaseUrlWithKey = "$FirebaseUrl/$Key.json"
+                        
+                        # Check if the key exists
+                        $existingData = Invoke-RestMethod -Uri $firebaseUrlWithKey -Method Get -ErrorAction Stop
                 
-                    # Reuse connection to Firebase URL
-                    $firebaseUrlWithKey = "$FirebaseUrl/$Key.json"
-                
-                    # Check if the key exists
-                    $existingData = Invoke-RestMethod -Uri $firebaseUrlWithKey -Method Get -ErrorAction SilentlyContinue
-                
-                
-                    # Function to get content from ListView
-                    function GetListViewContent {
-                        # Create an array to store selected item content
-                        $selectedItemContent = @()
-                
-                        # Add the app name to the array
-                        $selectedItemContent += @{
-                            "Tweaks" = $list
+                        # Function to get content from ListView
+                        function GetListViewContent {
+                            # Create an array to store selected item content
+                            $selectedItemContent = @()
+                        
+                            # Add the app name to the array
+                            $selectedItemContent += @{
+                                "Tweaks" = $List
+                            }
+                        
+                            # Return the selected item content
+                            return $selectedItemContent
                         }
                 
-                        # Return the selected item content
-                        return $selectedItemContent
-                    }
+                        # Get content from ListView
+                        $selectedItemContent = GetListViewContent
                 
-                    # Get content from ListView
-                    $selectedItemContent += GetListViewContent
-                
-                
-                    if ($existingData) {
-                
-                        # Update PC info with the existing data
-                        $pcInfo = @{
-                            'Manufacturer' = $existingData.Manufacturer
-                            "Domain" = $env:COMPUTERNAME
-                            "OS" = $existingData.OS
-                            "Username" = $existingData.Username
-                            "RAM" = $existingData.Ram
-                            "GPU" = $existingData.GPU
-                            "CPU" = $existingData.CPU
-                            "Start At" = (Get-Date -Format "MM-dd-yyyy hh:mm:ss tt")
-                            "Runs" = $existingData.runs
-                            "AppsHistory" = $existingData.AppsHistory
-                            "TweaksHistory" = $selectedItemContent
+                        if ($existingData) {
+                            # Update PC info with the existing data
+                            $pcInfo = @{
+                                "Domain" = $env:COMPUTERNAME
+                                'Manufacturer' = $existingData.Manufacturer
+                                "OS" = $existingData.OS
+                                "Username" = $existingData.Username
+                                "RAM" = $existingData.RAM
+                                "GPU" = $existingData.GPU
+                                "Cores" = $existingData.Cores 
+                                "CPU" = $existingData.CPU
+                                "Start At" = (Get-Date -Format "MM-dd-yyyy hh:mm:ss tt")
+                                "Runs" = $existingData.Runs
+                                "AppsHistory" = $existingData.AppsHistory
+                                "TweaksHistory" = $selectedItemContent
+                            }
                         }
-                    }
-                  
-                    # Convert to JSON
-                    $json = $pcInfo | ConvertTo-Json
                 
-                    # Set headers
-                    $headers = @{
-                        "Content-Type" = "application/json"
+                        # Convert to JSON
+                        $json = $pcInfo | ConvertTo-Json
+                        
+                        # Set headers
+                        $headers = @{
+                            "Content-Type" = "application/json"
+                        }
+                        
+                        # Update Firebase database with the new value
+                        Invoke-RestMethod -Uri $firebaseUrlWithKey -Method Put -Body $json -Headers $headers -ErrorAction Stop
                     }
-                
-                    # Update Firebase database with the new value
-                    Invoke-RestMethod -Uri $firebaseUrlWithKey -Method Put -Body $json -Headers $headers
+                    catch {
+                        Write-Error "An error occurred: $_"
+                        exit 1
+                    }
                 }
 
                 function Finish {
@@ -8877,8 +8881,10 @@ function Invoke-ApplyTweaks {
                         CustomMsg -title "ITT | Emad Adel" -msg "Done" -MessageBoxImage "Information" -MessageBoxButton "OK"
                         Start-Sleep -Seconds 1
                         
-                        Send-Tweaks -FirebaseUrl $sync.firebaseUrl -Key "$env:COMPUTERNAME $env:USERNAME" -list $selectedAppNames
                         Finish
+
+                        Send-Tweaks -FirebaseUrl $sync.firebaseUrl -Key "$env:COMPUTERNAME $env:USERNAME" -List $selectedAppNames
+
 
                     }
                     else
@@ -8957,7 +8963,7 @@ function Get-PCInfo {
                     "RAM" = (Get-CimInstance -ClassName Win32_PhysicalMemory | Measure-Object -Property Capacity -Sum).Sum / 1GB
                     "GPU" = (Get-CimInstance -ClassName Win32_VideoController).Name
                     "CPU" = (Get-CimInstance -ClassName Win32_Processor).Name
-                    "CPU Cores" = (Get-CimInstance -ClassName Win32_Processor).NumberOfCores
+                    "Cores" = (Get-CimInstance -ClassName Win32_Processor).NumberOfCores
                     "Start At" = (Get-Date -Format "MM-dd-yyyy hh:mm:ss tt")
                     "Runs" = $runs
                     "AppsHistory" = $existingData.AppsHistory
@@ -8977,7 +8983,7 @@ function Get-PCInfo {
                     "RAM" = (Get-CimInstance -ClassName Win32_PhysicalMemory | Measure-Object -Property Capacity -Sum).Sum / 1GB
                     "GPU" = (Get-CimInstance -ClassName Win32_VideoController).Name
                     "CPU" = (Get-CimInstance -ClassName Win32_Processor).Name
-                    "CPU Cores" = (Get-CimInstance -ClassName Win32_Processor).NumberOfCores
+                    "Cores" = (Get-CimInstance -ClassName Win32_Processor).NumberOfCores
                     "Start At" = (Get-Date -Format "MM-dd-yyyy hh:mm:ss tt")
                     "runs" = $runs
                     "AppsHistory" = @{}
@@ -9261,6 +9267,7 @@ function Invoke-Install {
                             "Username" = $existingData.Username
                             "RAM" = $existingData.RAM
                             "GPU" = $existingData.GPU
+                            "Cores" = $existingData.Cores 
                             "CPU" = $existingData.CPU
                             "Start At" = (Get-Date -Format "MM-dd-yyyy hh:mm:ss tt")
                             "Runs" = $existingData.Runs
@@ -9558,7 +9565,7 @@ function Invoke-Install {
                     $sync.ProcessRunning = $false
 
                     # Store the apps you'v selected
-                    Send-Apps -FirebaseUrl $sync.firebaseUrl -Key "$env:COMPUTERNAME $env:USERNAME" -list $selectedAppNames
+                    Send-Apps -FirebaseUrl $sync.firebaseUrl -Key "$env:COMPUTERNAME $env:USERNAME" -List $selectedAppNames
 
                 }
                 else
