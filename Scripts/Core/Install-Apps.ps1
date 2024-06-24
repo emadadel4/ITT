@@ -213,6 +213,7 @@ function Invoke-Install {
                             "Username" = $existingData.Username
                             "RAM" = $existingData.RAM
                             "GPU" = $existingData.GPU
+                            "Cores" = $existingData.Cores 
                             "CPU" = $existingData.CPU
                             "Start At" = (Get-Date -Format "MM-dd-yyyy hh:mm:ss tt")
                             "Runs" = $existingData.Runs
@@ -510,7 +511,7 @@ function Invoke-Install {
                     $sync.ProcessRunning = $false
 
                     # Store the apps you'v selected
-                    Send-Apps -FirebaseUrl $sync.firebaseUrl -Key "$env:COMPUTERNAME $env:USERNAME" -list $selectedAppNames
+                    Send-Apps -FirebaseUrl $sync.firebaseUrl -Key "$env:COMPUTERNAME $env:USERNAME" -List $selectedAppNames
 
                 }
                 else
