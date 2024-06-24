@@ -172,67 +172,70 @@ function Invoke-Install {
                 param (
                     [string]$FirebaseUrl,
                     [string]$Key,
-                    $list
+                    $List
                 )
             
-                # Validate parameters
-                if (-not $FirebaseUrl -or -not $Key) {
-                    throw "FirebaseUrl and Key are mandatory parameters."
-                }
+                try {
+                    # Validate parameters
+                    if (-not $FirebaseUrl -or -not $Key) {
+                        throw "FirebaseUrl and Key are mandatory parameters."
+                    }
+                    
+                    # Reuse connection to Firebase URL
+                    $firebaseUrlWithKey = "$FirebaseUrl/$Key.json"
+                    
+                    # Check if the key exists
+                    $existingData = Invoke-RestMethod -Uri $firebaseUrlWithKey -Method Get -ErrorAction Stop
             
-                # Reuse connection to Firebase URL
-                $firebaseUrlWithKey = "$FirebaseUrl/$Key.json"
-            
-                # Check if the key exists
-                $existingData = Invoke-RestMethod -Uri $firebaseUrlWithKey -Method Get -ErrorAction SilentlyContinue
-            
-            
-                # Function to get content from ListView
-                function GetListViewContent {
-                    # Create an array to store selected item content
-                    $selectedItemContent = @()
-            
-                    # Add the app name to the array
-                    $selectedItemContent += @{
-                        "Apps" = $list
+                    # Function to get content from ListView
+                    function GetListViewContent {
+                        # Create an array to store selected item content
+                        $selectedItemContent = @()
+                    
+                        # Add the app name to the array
+                        $selectedItemContent += @{
+                            "Apps" = $List
+                        }
+                    
+                        # Return the selected item content
+                        return $selectedItemContent
                     }
             
-                    # Return the selected item content
-                    return $selectedItemContent
-                }
+                    # Get content from ListView
+                    $selectedItemContent = GetListViewContent
             
-                # Get content from ListView
-                $selectedItemContent += GetListViewContent
-            
-            
-                if ($existingData) {
-            
-                    # Update PC info with the existing data
-                    $pcInfo = @{
-                        "Domain" = $env:COMPUTERNAME
-                        'Manufacturer' = $existingData.Manufacturer
-                        "OS" = $existingData.OS
-                        "Username" = $existingData.Username
-                        "RAM" = $existingData.Ram
-                        "GPU" = $existingData.GPU
-                        "CPU" = $existingData.CPU
-                        "Start At" = (Get-Date -Format "MM-dd-yyyy hh:mm:ss tt")
-                        "Runs" = $existingData.runs
-                        "AppsHistory" = $selectedItemContent
-                        "TweaksHistory" = $existingData.TweaksHistory
+                    if ($existingData) {
+                        # Update PC info with the existing data
+                        $pcInfo = @{
+                            "Domain" = $env:COMPUTERNAME
+                            'Manufacturer' = $existingData.Manufacturer
+                            "OS" = $existingData.OS
+                            "Username" = $existingData.Username
+                            "RAM" = $existingData.RAM
+                            "GPU" = $existingData.GPU
+                            "CPU" = $existingData.CPU
+                            "Start At" = (Get-Date -Format "MM-dd-yyyy hh:mm:ss tt")
+                            "Runs" = $existingData.Runs
+                            "AppsHistory" = $selectedItemContent
+                            "TweaksHistory" = $existingData.TweaksHistory
+                        }
                     }
-                }
-              
-                # Convert to JSON
-                $json = $pcInfo | ConvertTo-Json
             
-                # Set headers
-                $headers = @{
-                    "Content-Type" = "application/json"
+                    # Convert to JSON
+                    $json = $pcInfo | ConvertTo-Json
+                    
+                    # Set headers
+                    $headers = @{
+                        "Content-Type" = "application/json"
+                    }
+                    
+                    # Update Firebase database with the new value
+                    Invoke-RestMethod -Uri $firebaseUrlWithKey -Method Put -Body $json -Headers $headers -ErrorAction Stop
                 }
-            
-                # Update Firebase database with the new value
-                Invoke-RestMethod -Uri $firebaseUrlWithKey -Method Put -Body $json -Headers $headers
+                catch {
+                    Write-Error "An error occurred: $_"
+                    exit 1
+                }
             }
 
             # THIS FUNC NOT APPLY it will added soon
@@ -500,13 +503,15 @@ function Invoke-Install {
                         Install-App -appName $app.Name -appChoco $app.Choco -appWinget $app.Winget
                     }
 
-                    Send-Apps -FirebaseUrl $sync.firebaseUrl -Key "$env:COMPUTERNAME $env:USERNAME" -list $selectedAppNames
-
                     # Notify user of successful installation
                     Finish
 
                     # End ProcessRunning
                     $sync.ProcessRunning = $false
+
+                    # Store the apps you'v selected
+                    Send-Apps -FirebaseUrl $sync.firebaseUrl -Key "$env:COMPUTERNAME $env:USERNAME" -list $selectedAppNames
+
                 }
                 else
                 {
