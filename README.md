@@ -18,6 +18,8 @@
 - **Automated Installation**: Say goodbye to manual software installations. ITT automates the process, saving you time and effort.
 - **System Tweaks**: Customize your Windows environment with ease. ITT provides scripts to apply system tweaks for enhanced performance and usability.
 - **User-Friendly**: Easy-to-use and clear documentation  to add a new app or tweaks as you like, you can create a new method to download apps. Be creative. <a href="#--how-to-add-a-new-apptweakostquote">How to Add a New App</a>
+- **Soundtracks**: Enjoy listening to the best music from games and movies while downloading your programs.
+
 
 <h2>🚀 Usage</h2>
 
