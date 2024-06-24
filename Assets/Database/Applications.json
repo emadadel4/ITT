@@ -2155,6 +2155,23 @@
     "check": "false"
   },
   {
+    "Name": "Hugo Extended",
+    "Description": "Hugo is one of the most popular open-source static site generators. With its amazing speed and flexibility, Hugo makes building websites f... Keep Reading ",
+    "winget": "hugo-extended",
+    "choco": "Hugo.Hugo.Extended",
+    "scoop": "none",
+    "default": [
+      {
+        "fileType": "none",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "ITT/Downloads"
+      }
+    ],
+    "category": "Development",
+    "check": "false"
+  },
+  {
     "Name": "Notepad++",
     "Description": "Notepad++ is a free source code editor and Notepad replacement that supports several languages. It offers syntax highlighting, code folding, auto-completion, and other features for efficient code editing.",
     "winget": "Notepad++.Notepad++",
