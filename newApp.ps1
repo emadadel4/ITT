@@ -14,7 +14,7 @@ $validCategories = @{
 
     # Available options
 
-    1 = "API [Choco/Winget/Scoop] Recommended"
+    1 = "API [Choco/Winget] Recommended"
 
     2 = "Default [Native Downloader] ##It will be added in the future" 
 }
