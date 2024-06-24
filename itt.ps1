@@ -2214,8 +2214,8 @@ $sync.database.Applications = '[
   {
     "Name": "Hugo Extended",
     "Description": "Hugo is one of the most popular open-source static site generators. With its amazing speed and flexibility, Hugo makes building websites f... Keep Reading ",
-    "winget": "hugo-extended",
-    "choco": "Hugo.Hugo.Extended",
+    "winget": "Hugo.Hugo.Extended",
+    "choco": "hugo-extended",
     "scoop": "none",
     "default": [
       {
