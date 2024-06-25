@@ -85,323 +85,317 @@ function Invoke-ApplyTweaks {
         [System.Windows.MessageBox]::Show($msg, "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
         return
     }
-
         ShowSelectedTweaks
 
         $tweaks  = Get-SelectedTweaks
 
         if($tweaks.Count -gt 0)
         {
+            $areyousuremsg = $sync.database.locales.$($sync.Langusege).ApplyMessage
+            $result = [System.Windows.MessageBox]::Show($areyousuremsg, "ITT | Emad Adel", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)
 
-            Invoke-ScriptBlock -ArgumentList $tweaks -ScriptBlock{
+            if($result -eq "Yes")
+            {
+                Invoke-ScriptBlock -ArgumentList $tweaks -ScriptBlock{
 
-                param($tweaks)
-
-                function Add-Log {
-                    param (
-                        [string]$Message,
-                        [string]$Level = "INFO"
-                    )
-                
-                    # Get the current timestamp
-                    $timestamp = Get-Date -Format "HH:mm"
-                
-                    # Determine the color based on the log level
-                    switch ($Level.ToUpper()) {
-                        "INFO" { $color = "Green" }
-                        "WARNING" { $color = "Yellow" }
-                        "ERROR" { $color = "Red" }
-                        default { $color = "White" }
-                    }
-                
-                    # Construct the log message
-                    $logMessage = "$Message"
-                    $date =  "[$timestamp $Level]"
-                
-                    # Write the log message to the console with the specified color
-                    Write-Host "`n` " -ForegroundColor $color
-                    Write-Host " $date" -ForegroundColor Yellow ; Write-Host " *$logMessage * " -ForegroundColor $color 
-                    Write-Host "" -ForegroundColor $color
+                    param($tweaks)
     
-                }
-
-                function ExecuteCommand {
-                    param (
-                        [string]$Name,
-                        [string]$Command
-                    )
-                    try {
-                        Add-Log -Message "Applying $Name" -Level "INFO"
-                        Start-Process -FilePath "powershell.exe" -ArgumentList "-Command `"$Command`"" -NoNewWindow -Wait
-                        Add-Log -Message "Executed successfully." -Level "INFO"
-
-                        #debug
-                        #Write-Host "Command '$Command' executed successfully."
-
-                    } catch {
-                        Write-Host "Error executing command '$Command': $_"
-                    }
-                }
-                
-                function Set-RegistryValue {
-                    param (
-                        $Name,
-                        $Type,
-                        $Path,
-                        $Value
-                    )
+                    function Add-Log {
+                        param (
+                            [string]$Message,
+                            [string]$Level = "INFO"
+                        )
                     
-                    try
-                    {
-
-                        # Check if the registry path exists
-                        if (-not (Test-Path -Path $Path)) {
-                            Write-Output "Registry path does not exist. Creating it..."
-                            # Try to create the registry path
-                            try {
-                                New-Item -Path $Path -Name $Name -Type $Type -Value $Value -Force -ErrorAction Stop | Out-Null
-                                Add-Log -Message "Registry path created successfully." -Level "INFO"
-                            } catch {
-                                Add-Log -Message "Failed to create registry path: $_" -Level "ERROR"
-                            }
-                        } else {
-                            Set-ItemProperty -Path $Path -Name $Name -Type $Type -Value $Value -Force -ErrorAction Stop
-                            Add-Log -Message "$($Name) Successful applied" -Level "INFO"
-                        }
-
-                    }
-                
-                    catch {
-                        Write-Error "An error occurred: $_"
-                    }
+                        # Get the current timestamp
+                        $timestamp = Get-Date -Format "HH:mm"
                     
-                }
-
-                function Remove-RegistryValue {
-                    param (
-                        [Parameter(Mandatory=$true)]
-                        [string]$RegistryPath,
-                        [Parameter(Mandatory=$true)]
-                        [string]$Folder
-                    )
-                
-                    try {
-                        # Combine the registry path and folder to create the full registry key path
-                        $KeyPath = "$RegistryPath\\$Folder"
-                
-                        # Check if the registry key exists
-                        if (Test-Path "Registry::$KeyPath") {
-
-                            # Delete the registry key and all subkeys recursively
-
-                            Remove-Item -Path "Registry::$KeyPath" -Recurse -Force
-                            Add-Log -Message "successful removed." -Level "INFO"
-
-
-                        } else {
-                            Add-Log -Message "Registry key '$KeyPath' does not exist." -Level "INFO"
+                        # Determine the color based on the log level
+                        switch ($Level.ToUpper()) {
+                            "INFO" { $color = "Green" }
+                            "WARNING" { $color = "Yellow" }
+                            "ERROR" { $color = "Red" }
+                            default { $color = "White" }
                         }
+                    
+                        # Construct the log message
+                        $logMessage = "$Message"
+                        $date =  "[$timestamp $Level]"
+                    
+                        # Write the log message to the console with the specified color
+                        Write-Host "`n` " -ForegroundColor $color
+                        Write-Host " $date" -ForegroundColor Yellow ; Write-Host " *$logMessage * " -ForegroundColor $color 
+                        Write-Host "" -ForegroundColor $color
+        
                     }
-                    catch {
-                        Write-Host "An error occurred: $_" -ForegroundColor red
-                    }
-                }
-
-                function Disable-Service {
-                    param(
-                        $ServiceName,
-                        $StartupType
-                    )
-
-                    try {
-
-
-                         # Check if the service exists
-                        if (Get-Service -Name $ServiceName -ErrorAction SilentlyContinue) {
-
-                            Set-Service -Name $ServiceName -StartupType $StartupType -ErrorAction Stop
-                            Stop-Service -Name $ServiceName 
-                            Add-Log -Message "Service '$ServiceName' disabled." -Level "INFO"
-
-                        }
-                        else {
-                            Add-Log -Message "Service '$ServiceName' not found." -Level "INFO"
-                        }
-                    }
-                    catch
-                    {
-                        Write-Host "Failed to disable service '$ServiceName'. Error: $_" -ForegroundColor Red
-                    }
-                }
-
-                function Uninstall-AppxPackage  {
-
-                    param (
-                        $Name
-                    )
+    
+                    function ExecuteCommand {
+                        param (
+                            [string]$Name,
+                            [string]$Command
+                        )
                         try {
-                            #powershell.exe -Command "Import-Module Appx; Get-AppxPackage -AllUsers -Name "$($Name)" | Remove-AppxPackage -ErrorAction Stop"
-                            #Start-Process powershell.exe -ArgumentList "-Command `"Import-Module Appx; Get-AppxPackage -AllUsers -Name '$($Name)' | Remove-AppxPackage -ErrorAction Stop`"" -NoNewWindow  -Wait 
-                            Start-Process powershell.exe -ArgumentList "-Command `"Get-AppXProvisionedPackage -Online | where DisplayName -EQ $($Name) | Remove-AppxProvisionedPackage -Online`"" -NoNewWindow  -Wait 
-                            Add-Log -Message "Successfully removed $($Name)" -Level "INFO"
-                        } 
-                        catch {
-                            Write-Host "Failed to remove $($Name). $_" -ForegroundColor red
+                            Add-Log -Message "Applying $Name" -Level "INFO"
+                            Start-Process -FilePath "powershell.exe" -ArgumentList "-Command `"$Command`"" -NoNewWindow -Wait
+                            Add-Log -Message "Executed successfully." -Level "INFO"
+    
+                            #debug
+                            #Write-Host "Command '$Command' executed successfully."
+    
+                        } catch {
+                            Write-Host "Error executing command '$Command': $_"
                         }
-                }
-                
-                function UpdateUI {
-
-                    param($InstallBtn,$Description)
+                    }
                     
-                    $sync['window'].Dispatcher.Invoke([Action]{
-                        $sync.applyBtn.Content = "$InstallBtn"
-                        #$sync.Description.Text = "$Description"
-                    })
-                }
-
-                function Send-Tweaks {
-                    param (
-                        [string]$FirebaseUrl,
-                        [string]$Key,
-                        $List
-                    )
-                
-                    try {
-                        # Validate parameters
-                        if (-not $FirebaseUrl -or -not $Key) {
-                            throw "FirebaseUrl and Key are mandatory parameters."
-                        }
+                    function Set-RegistryValue {
+                        param (
+                            $Name,
+                            $Type,
+                            $Path,
+                            $Value
+                        )
                         
-                        # Reuse connection to Firebase URL
-                        $firebaseUrlWithKey = "$FirebaseUrl/$Key.json"
-                        
-                        # Check if the key exists
-                        $existingData = Invoke-RestMethod -Uri $firebaseUrlWithKey -Method Get -ErrorAction Stop
-                
-                        # Function to get content from ListView
-                        function GetListViewContent {
-                            # Create an array to store selected item content
-                            $selectedItemContent = @()
-                        
-                            # Add the app name to the array
-                            $selectedItemContent += @{
-                                "Tweaks" = $List
-                            }
-                        
-                            # Return the selected item content
-                            return $selectedItemContent
-                        }
-                
-                        # Get content from ListView
-                        $selectedItemContent = GetListViewContent
-                
-                        if ($existingData) {
-                            # Update PC info with the existing data
-                            $pcInfo = @{
-                                "Domain" = $env:COMPUTERNAME
-                                'Manufacturer' = $existingData.Manufacturer
-                                "OS" = $existingData.OS
-                                "Username" = $existingData.Username
-                                "RAM" = $existingData.RAM
-                                "GPU" = $existingData.GPU
-                                "Cores" = $existingData.Cores 
-                                "CPU" = $existingData.CPU
-                                "Start At" = (Get-Date -Format "MM-dd-yyyy hh:mm:ss tt")
-                                "Runs" = $existingData.Runs
-                                "AppsHistory" = $existingData.AppsHistory
-                                "TweaksHistory" = $selectedItemContent
-                            }
-                        }
-                
-                        # Convert to JSON
-                        $json = $pcInfo | ConvertTo-Json
-                        
-                        # Set headers
-                        $headers = @{
-                            "Content-Type" = "application/json"
-                        }
-                        
-                        # Update Firebase database with the new value
-                        Invoke-RestMethod -Uri $firebaseUrlWithKey -Method Put -Body $json -Headers $headers -ErrorAction Stop
-                    }
-                    catch {
-                        Write-Error "An error occurred: $_"
-                        exit 1
-                    }
-                }
-
-                function Finish {
-
-                    $sync.TweaksListView.Dispatcher.Invoke([Action]{
-                        foreach ($item in $sync.TweaksListView.Items)
+                        try
                         {
-                            foreach ($child in $item.Children) {
-                                if ($child -is [System.Windows.Controls.StackPanel]) {
-                                    foreach ($innerChild in $child.Children) {
-                                        if ($innerChild -is [System.Windows.Controls.CheckBox]) {
+    
+                            # Check if the registry path exists
+                            if (-not (Test-Path -Path $Path)) {
+                                Write-Output "Registry path does not exist. Creating it..."
+                                # Try to create the registry path
+                                try {
+                                    New-Item -Path $Path -Name $Name -Type $Type -Value $Value -Force -ErrorAction Stop | Out-Null
+                                    Add-Log -Message "Registry path created successfully." -Level "INFO"
+                                } catch {
+                                    Add-Log -Message "Failed to create registry path: $_" -Level "ERROR"
+                                }
+                            } else {
+                                Set-ItemProperty -Path $Path -Name $Name -Type $Type -Value $Value -Force -ErrorAction Stop
+                                Add-Log -Message "$($Name) Successful applied" -Level "INFO"
+                            }
+    
+                        }
+                    
+                        catch {
+                            Write-Error "An error occurred: $_"
+                        }
                         
-                                            $innerChild.IsChecked = $false
-                                            $sync.TweaksListView.Clear()
-                                            $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.TweaksListView.Items)
-                                            $collectionView.Filter = $null
+                    }
+    
+                    function Remove-RegistryValue {
+                        param (
+                            [Parameter(Mandatory=$true)]
+                            [string]$RegistryPath,
+                            [Parameter(Mandatory=$true)]
+                            [string]$Folder
+                        )
+                    
+                        try {
+                            # Combine the registry path and folder to create the full registry key path
+                            $KeyPath = "$RegistryPath\\$Folder"
+                    
+                            # Check if the registry key exists
+                            if (Test-Path "Registry::$KeyPath") {
+    
+                                # Delete the registry key and all subkeys recursively
+    
+                                Remove-Item -Path "Registry::$KeyPath" -Recurse -Force
+                                Add-Log -Message "successful removed." -Level "INFO"
+    
+    
+                            } else {
+                                Add-Log -Message "Registry key '$KeyPath' does not exist." -Level "INFO"
+                            }
+                        }
+                        catch {
+                            Write-Host "An error occurred: $_" -ForegroundColor red
+                        }
+                    }
+    
+                    function Disable-Service {
+                        param(
+                            $ServiceName,
+                            $StartupType
+                        )
+    
+                        try {
+    
+    
+                             # Check if the service exists
+                            if (Get-Service -Name $ServiceName -ErrorAction SilentlyContinue) {
+    
+                                Set-Service -Name $ServiceName -StartupType $StartupType -ErrorAction Stop
+                                Stop-Service -Name $ServiceName 
+                                Add-Log -Message "Service '$ServiceName' disabled." -Level "INFO"
+    
+                            }
+                            else {
+                                Add-Log -Message "Service '$ServiceName' not found." -Level "INFO"
+                            }
+                        }
+                        catch
+                        {
+                            Write-Host "Failed to disable service '$ServiceName'. Error: $_" -ForegroundColor Red
+                        }
+                    }
+    
+                    function Uninstall-AppxPackage  {
+    
+                        param (
+                            $Name
+                        )
+                            try {
+                                #powershell.exe -Command "Import-Module Appx; Get-AppxPackage -AllUsers -Name "$($Name)" | Remove-AppxPackage -ErrorAction Stop"
+                                #Start-Process powershell.exe -ArgumentList "-Command `"Import-Module Appx; Get-AppxPackage -AllUsers -Name '$($Name)' | Remove-AppxPackage -ErrorAction Stop`"" -NoNewWindow  -Wait 
+                                Start-Process powershell.exe -ArgumentList "-Command `"Get-AppXProvisionedPackage -Online | where DisplayName -EQ $($Name) | Remove-AppxProvisionedPackage -Online`"" -NoNewWindow  -Wait 
+                                Add-Log -Message "Successfully removed $($Name)" -Level "INFO"
+                            } 
+                            catch {
+                                Write-Host "Failed to remove $($Name). $_" -ForegroundColor red
+                            }
+                    }
+                    
+                    function UpdateUI {
+    
+                        param($InstallBtn,$Description)
+                        
+                        $sync['window'].Dispatcher.Invoke([Action]{
+                            $sync.applyBtn.Content = "$InstallBtn"
+                            #$sync.Description.Text = "$Description"
+                        })
+                    }
+    
+                    function Send-Tweaks {
+                        param (
+                            [string]$FirebaseUrl,
+                            [string]$Key,
+                            $List
+                        )
+                    
+                        try {
+                            # Validate parameters
+                            if (-not $FirebaseUrl -or -not $Key) {
+                                throw "FirebaseUrl and Key are mandatory parameters."
+                            }
+                            
+                            # Reuse connection to Firebase URL
+                            $firebaseUrlWithKey = "$FirebaseUrl/$Key.json"
+                            
+                            # Check if the key exists
+                            $existingData = Invoke-RestMethod -Uri $firebaseUrlWithKey -Method Get -ErrorAction Stop
+                    
+                            # Function to get content from ListView
+                            function GetListViewContent {
+                                # Create an array to store selected item content
+                                $selectedItemContent = @()
+                            
+                                # Add the app name to the array
+                                $selectedItemContent += @{
+                                    "Tweaks" = $List
+                                }
+                            
+                                # Return the selected item content
+                                return $selectedItemContent
+                            }
+                    
+                            # Get content from ListView
+                            $selectedItemContent = GetListViewContent
+                    
+                            if ($existingData) {
+                                # Update PC info with the existing data
+                                $pcInfo = @{
+                                    "Domain" = $env:COMPUTERNAME
+                                    'Manufacturer' = $existingData.Manufacturer
+                                    "OS" = $existingData.OS
+                                    "Username" = $existingData.Username
+                                    "RAM" = $existingData.RAM
+                                    "GPU" = $existingData.GPU
+                                    "Cores" = $existingData.Cores 
+                                    "CPU" = $existingData.CPU
+                                    "Start At" = (Get-Date -Format "MM-dd-yyyy hh:mm:ss tt")
+                                    "Runs" = $existingData.Runs
+                                    "AppsHistory" = $existingData.AppsHistory
+                                    "TweaksHistory" = $selectedItemContent
+                                }
+                            }
+                    
+                            # Convert to JSON
+                            $json = $pcInfo | ConvertTo-Json
+                            
+                            # Set headers
+                            $headers = @{
+                                "Content-Type" = "application/json"
+                            }
+                            
+                            # Update Firebase database with the new value
+                            Invoke-RestMethod -Uri $firebaseUrlWithKey -Method Put -Body $json -Headers $headers -ErrorAction Stop
+                        }
+                        catch {
+                            Write-Error "An error occurred: $_"
+                            exit 1
+                        }
+                    }
+    
+                    function Finish {
+    
+                        $sync.TweaksListView.Dispatcher.Invoke([Action]{
+                            foreach ($item in $sync.TweaksListView.Items)
+                            {
+                                foreach ($child in $item.Children) {
+                                    if ($child -is [System.Windows.Controls.StackPanel]) {
+                                        foreach ($innerChild in $child.Children) {
+                                            if ($innerChild -is [System.Windows.Controls.CheckBox]) {
+                            
+                                                $innerChild.IsChecked = $false
+                                                $sync.TweaksListView.Clear()
+                                                $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.TweaksListView.Items)
+                                                $collectionView.Filter = $null
+                                            }
                                         }
                                     }
                                 }
                             }
-                        }
-                    })
-
-                    Start-Sleep 10
-
-                    Clear-Host
-
-                    Write-Host "+==============================================================================+";
-                    Write-Host "|                                                                              |";
-                    Write-Host "|                                                                              |";
-                    Write-Host "|   ___ _____ _____   _____ __  __    _    ____       _    ____  _____ _       |";
-                    Write-Host "|  |_ _|_   _|_   _| | ____|  \/  |  / \  |  _ \     / \  |  _ \| ____| |      |";
-                    Write-Host "|   | |  | |   | |   |  _| | |\/| | / _ \ | | | |   / _ \ | | | |  _| | |      |";
-                    Write-Host "|   | |  | |   | |   | |___| |  | |/ ___ \| |_| |  / ___ \| |_| | |___| |___   |";
-                    Write-Host "|  |___| |_|   |_|   |_____|_|  |_/_/   \_\____/  /_/   \_\____/|_____|_____|  |";
-                    Write-Host "|                                                                              |";
-                    Write-Host "|                                                                              |";
-                    Write-Host "+==============================================================================+";
-                    Write-Host "`n` You ready to Install anything."
-                    Write-Host  "`n` (IT Tools) is open source, You can contribute to improving the tool."
-                    Write-Host " If you have trouble installing a program, report the problem on feedback links"
-                    Write-Host  " https://github.com/emadadel4/ITT/issues"
-                    Write-Host  " https://t.me/emadadel4"
-
-         
-                }
-                
-                function CustomMsg 
-                {
-                    param (
-
-                        $title,
-                        $msg,
-                        $MessageBoxButton,
-                        $MessageBoxImage,
-                        $answer
-
-                    )
-
-                    [System.Windows.MessageBox]::Show($msg, $title, [System.Windows.MessageBoxButton]::$MessageBoxButton, [System.Windows.MessageBoxImage]::$MessageBoxImage)
-                }
-
-                try
-                {
-                    $areyousuremsg = $sync.database.locales.$($sync.Langusege).ApplyMessage
-                    $applyBtn = $sync.database.locales.$($sync.Langusege).applyBtn
-                    $Applying = $sync.database.locales.$($sync.Langusege).Applying
-
-
-                    $msg = [System.Windows.MessageBox]::Show("[$($tweaks.Count)] $areyousuremsg", "ITT | Emad Adel", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)
-
-                    if ($msg -eq "Yes")
+                        })
+    
+                        Start-Sleep 10
+    
+                        Clear-Host
+    
+                        Write-Host "+==============================================================================+";
+                        Write-Host "|                                                                              |";
+                        Write-Host "|                                                                              |";
+                        Write-Host "|   ___ _____ _____   _____ __  __    _    ____       _    ____  _____ _       |";
+                        Write-Host "|  |_ _|_   _|_   _| | ____|  \/  |  / \  |  _ \     / \  |  _ \| ____| |      |";
+                        Write-Host "|   | |  | |   | |   |  _| | |\/| | / _ \ | | | |   / _ \ | | | |  _| | |      |";
+                        Write-Host "|   | |  | |   | |   | |___| |  | |/ ___ \| |_| |  / ___ \| |_| | |___| |___   |";
+                        Write-Host "|  |___| |_|   |_|   |_____|_|  |_/_/   \_\____/  /_/   \_\____/|_____|_____|  |";
+                        Write-Host "|                                                                              |";
+                        Write-Host "|                                                                              |";
+                        Write-Host "+==============================================================================+";
+                        Write-Host "`n` You ready to Install anything."
+                        Write-Host  "`n` (IT Tools) is open source, You can contribute to improving the tool."
+                        Write-Host " If you have trouble installing a program, report the problem on feedback links"
+                        Write-Host  " https://github.com/emadadel4/ITT/issues"
+                        Write-Host  " https://t.me/emadadel4"
+    
+             
+                    }
+                    
+                    function CustomMsg 
                     {
+                        param (
+    
+                            $title,
+                            $msg,
+                            $MessageBoxButton,
+                            $MessageBoxImage,
+                            $answer
+    
+                        )
+    
+                        [System.Windows.MessageBox]::Show($msg, $title, [System.Windows.MessageBoxButton]::$MessageBoxButton, [System.Windows.MessageBoxImage]::$MessageBoxImage)
+                    }
+                        $applyBtn = $sync.database.locales.$($sync.Langusege).applyBtn
+                        $Applying = $sync.database.locales.$($sync.Langusege).Applying
+
                         UpdateUI -InstallBtn "$applying" 
                         $sync.ProcessRunning = $true
 
@@ -466,8 +460,8 @@ function Invoke-ApplyTweaks {
                             }
                         }
 
-                            # Displaying the names of the selected apps
-                            $selectedAppNames = $tweaks | ForEach-Object { $_.Name }
+                        # Displaying the names of the selected apps
+                        $selectedAppNames = $tweaks | ForEach-Object { $_.Name }
 
                         # restart explorer
                         #Stop-Process -Name explorer -Force; Start-Process explorer
@@ -480,35 +474,29 @@ function Invoke-ApplyTweaks {
                         Finish
 
                         Send-Tweaks -FirebaseUrl $sync.firebaseUrl -Key "$env:COMPUTERNAME $env:USERNAME" -List $selectedAppNames
-
-
-                    }
-                    else
+                }
+            }
+            else
+            {
+                # Uncheck all checkboxes in $list
+                $sync.TweaksListView.Dispatcher.Invoke([Action]{
+                    foreach ($item in $sync.TweaksListView.Items)
                     {
-                        # Uncheck all checkboxes in $list
-                        $sync.TweaksListView.Dispatcher.Invoke([Action]{
-                            foreach ($item in $sync.TweaksListView.Items)
-                            {
-                                foreach ($child in $item.Children) {
-                                    if ($child -is [System.Windows.Controls.StackPanel]) {
-                                        foreach ($innerChild in $child.Children) {
-                                            if ($innerChild -is [System.Windows.Controls.CheckBox]) {
-                            
-                                                $innerChild.IsChecked = $false
-                                                $sync.TweaksListView.Clear()
-                                                $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.TweaksListView.Items)
-                                                $collectionView.Filter = $null
-                                            }
-                                        }
+                        foreach ($child in $item.Children) {
+                            if ($child -is [System.Windows.Controls.StackPanel]) {
+                                foreach ($innerChild in $child.Children) {
+                                    if ($innerChild -is [System.Windows.Controls.CheckBox]) {
+                    
+                                        $innerChild.IsChecked = $false
+                                        $sync.TweaksListView.Clear()
+                                        $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.TweaksListView.Items)
+                                        $collectionView.Filter = $null
                                     }
                                 }
                             }
-                        })
+                        }
                     }
-                }
-                catch {
-                    Write-Host "Error: $_"
-                }
+                })
             }
         }
         else
