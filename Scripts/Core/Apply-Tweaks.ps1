@@ -463,16 +463,10 @@ function Invoke-ApplyTweaks {
                         # Displaying the names of the selected apps
                         $selectedAppNames = $tweaks | ForEach-Object { $_.Name }
 
-                        # restart explorer
-                        #Stop-Process -Name explorer -Force; Start-Process explorer
-
                         UpdateUI -InstallBtn "$applyBtn" -Description "" 
                         $sync.ProcessRunning = $False
                         CustomMsg -title "ITT | Emad Adel" -msg "Done" -MessageBoxImage "Information" -MessageBoxButton "OK"
-                        Start-Sleep -Seconds 1
-                        
                         Finish
-
                         Send-Tweaks -FirebaseUrl $sync.firebaseUrl -Key "$env:COMPUTERNAME $env:USERNAME" -List $selectedAppNames
                 }
             }
