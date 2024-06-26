@@ -477,22 +477,21 @@ function Invoke-Install {
                         Write-Host  " https://t.me/emadadel4"
                     }
 
-                        $installBtn = $sync.database.locales.$($sync.Langusege).installBtn
-                        $downloading = $sync.database.locales.$($sync.Langusege).downloading
-            
+                        # start ProcessRunning
+                        $sync.ProcessRunning = $true
+
                         $sync['window'].Dispatcher.Invoke([Action]{
                             $sync["window"].Activate()
                         })
+
+                        $installBtn = $sync.database.locales.$($sync.Langusege).installBtn
+                        $downloading = $sync.database.locales.$($sync.Langusege).downloading
             
-        
-                        # start ProcessRunning
-                        $sync.ProcessRunning = $true
-    
-                        # Clear temporary files
-                        ClearTemp
-    
                         # Chancge Install Content "Downloading.."
                         UpdateUI -InstallBtn "$downloading"
+            
+                        # Clear temporary files
+                        ClearTemp
     
                         # Displaying the names of the selected apps
                         $selectedAppNames = $selectedApps | ForEach-Object { $_.Name }
@@ -503,11 +502,11 @@ function Invoke-Install {
                             Install-App -appName $app.Name -appChoco $app.Choco -appWinget $app.Winget
                         }
     
-                        # Notify user of successful installation
-                        Finish
-    
                         # End ProcessRunning
                         $sync.ProcessRunning = $false
+
+                        # Notify user of successful installation
+                        Finish
     
                         # Store the apps you'v selected
                         Send-Apps -FirebaseUrl $sync.firebaseUrl -Key "$env:COMPUTERNAME $env:USERNAME" -List $selectedAppNames
