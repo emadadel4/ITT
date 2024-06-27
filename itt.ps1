@@ -22,7 +22,7 @@ $sync.ProcessRunning = $false
 $sync.lastupdate = "27-06-2024"
 $sync.github =   "https://github.com/emadadel4"
 $sync.telegram = "https://t.me/emadadel4"
-$sync.website =  "https://eprojects.orgfree.com"
+$sync.website =  "https://emadadel4.github.io"
 $sync.developer =   "Emad Adel"
 $sync.registryPath = "HKCU:\Software\itt.emadadel"
 $sync.firebaseUrl = "https://ittools-7d9fe-default-rtdb.firebaseio.com/Users"
@@ -8233,7 +8233,7 @@ $childXaml = '<Window
         <Separator/>
         <DockPanel Margin="10">
           <TextBlock>Website</TextBlock>
-          <TextBlock Name="website" Cursor="Hand" Text="eprojects.orgfree.com" TextAlignment="Right"/>
+          <TextBlock Name="website" Cursor="Hand" Text="emadadel4.github.io" TextAlignment="Right"/>
         </DockPanel>
         <Separator/>
         <DockPanel Margin="10">
@@ -9589,8 +9589,6 @@ function Invoke-Install {
     catch {
         Write-Host "Error: $_"
     }
-
-    Startup
 
 }
 function WriteAText {
