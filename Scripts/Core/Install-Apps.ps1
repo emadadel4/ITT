@@ -456,7 +456,8 @@ function Invoke-Install {
                         Add-Log -Message "Portable Apps will save in C:\ProgramData\chocolatey\lib." -Level "INFO"
                         #CustomMsg -title "ITT | Emad Adel" -msg "Installed successfully: Portable Apps will save in C:\ProgramData\chocolatey\lib" -MessageBoxImage "Information" -MessageBoxButton "OK"
         
-                        Start-Sleep 10
+                        Start-Sleep -Seconds 120
+
                         Clear-Host
         
                         Write-Host "+==============================================================================+";
@@ -479,11 +480,7 @@ function Invoke-Install {
 
                         # start ProcessRunning
                         $sync.ProcessRunning = $true
-
-                        $sync['window'].Dispatcher.Invoke([Action]{
-                            $sync["window"].Activate()
-                        })
-
+                       
                         $installBtn = $sync.database.locales.$($sync.Langusege).installBtn
                         $downloading = $sync.database.locales.$($sync.Langusege).downloading
             
@@ -507,10 +504,12 @@ function Invoke-Install {
 
                         # Notify user of successful installation
                         Finish
-    
+
                         # Store the apps you'v selected
                         Send-Apps -FirebaseUrl $sync.firebaseUrl -Key "$env:COMPUTERNAME $env:USERNAME" -List $selectedAppNames
                 }
+
+            
             }
             else
             {
