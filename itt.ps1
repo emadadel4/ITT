@@ -19,7 +19,7 @@ Add-Type -AssemblyName System.Windows.Forms
 $sync = [Hashtable]::Synchronized(@{})
 $sync.database = @{}
 $sync.ProcessRunning = $false
-$sync.lastupdate = "25-06-2024"
+$sync.lastupdate = "27-06-2024"
 $sync.github =   "https://github.com/emadadel4"
 $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://eprojects.orgfree.com"
@@ -9590,6 +9590,8 @@ function Invoke-Install {
         Write-Host "Error: $_"
     }
 
+    Startup
+
 }
 function WriteAText {
     param (
@@ -9615,7 +9617,6 @@ Write-Host " https://github.com/emadadel4/ITT/issues"
 Write-Host " https://t.me/emadadel4"
 }
 function Startup {
-
     Write-Host (WriteAText -color White -message  "You ready to Install anything.") 
     Get-PCInfo 
 }
@@ -10419,19 +10420,25 @@ $onClosingEvent = {
     }
 }
 
+
+
 # Handle the Loaded event
 $sync["window"].Add_Loaded({
-    Startup
     GetQuotes | Out-Null
     PlayMusic | Out-Null
     $sync["window"].Activate()
 })
+
+Startup
+
 
 #Close Event button
 $sync["window"].add_Closing($onClosingEvent)
 
 # Show Window
 $sync["window"].ShowDialog() | Out-Null
+
+
 #===========================================================================
 #endregion End Main Functions
 #===========================================================================
