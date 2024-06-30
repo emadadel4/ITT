@@ -4278,5 +4278,22 @@
     ],
     "category": "Utilities",
     "check": "false"
+  },
+  {
+    "name": "Git Large File Storage",
+    "description": "Git Large File Storage LFS replaces large files such as audio samples videos datasets and graphics with text pointers inside Git while storing the file contents on a remote server like GitHubcom or GitHub Enterprise",
+    "winget": "none",
+    "choco": "git-lfs",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
+    "category": "Development",
+    "check": "false"
   }
 ]
