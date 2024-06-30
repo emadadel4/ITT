@@ -189,23 +189,6 @@
     "check": "false"
   },
   {
-    "Name": "Neat Download Manager",
-    "Description": "Introducing Neat Download Manager, the powerful neatdownload manager that supports macOS, Windows 7 or later, and Windows 11. With lightning-fast downloads, smart file filter management, and the best features, start downloading today and see why Neat Download Manager is the perfect tool for you.r",
-    "winget": "none",
-    "choco": "neatdownloadmanager --version=1.4.0",
-    "scoop": "none",
-    "default": [
-      {
-        "fileType": "exe",
-        "url": "https://www.neatdownloadmanager.com/file/NeatDM_setup.exe",
-        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "$env:temp"
-      }
-    ],
-    "category": "Web Browsers",
-    "check": "false"
-  },
-  {
     "Name": "JDownloader",
     "Description": "JDownloader is an internet download manager.",
     "winget": "AppWork.JDownloader",
