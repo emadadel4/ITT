@@ -4295,5 +4295,39 @@
     ],
     "category": "Development",
     "check": "false"
+  },
+  {
+    "name": "Nmap",
+    "description": "Nmap Network Mapper is a free and open source utility for network discovery and security auditing",
+    "winget": "Insecure.Nmap",
+    "choco": "nmap",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
+    "category": "Utilities",
+    "check": "false"
+  },
+  {
+    "name": "UltraVNC",
+    "description": "UltraVNC is an open source application that uses the VNC protocol to control another computer remotely over a network connection UltraVNC allows the use of a remote computer",
+    "winget": "uvncbvba.UltraVnc",
+    "choco": "ultravnc",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
+    "category": "File Sharing",
+    "check": "false"
   }
 ]
