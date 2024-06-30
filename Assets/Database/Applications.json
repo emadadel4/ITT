@@ -4261,5 +4261,22 @@
     ],
     "category": "Media Tools",
     "check": "false"
+  },
+  {
+    "name": "OpenVPN Connect",
+    "description": "The official OpenVPN Connect client software developed and maintained by OpenVPN Inc",
+    "winget": "OpenVPNTechnologies.OpenVPNConnect",
+    "choco": "openvpn-connect",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
+    "category": "Utilities",
+    "check": "false"
   }
 ]
