@@ -4335,6 +4335,23 @@ $sync.database.Applications = '[
     ],
     "category": "Utilities",
     "check": "false"
+  },
+  {
+    "name": "Git Large File Storage",
+    "description": "Git Large File Storage LFS replaces large files such as audio samples videos datasets and graphics with text pointers inside Git while storing the file contents on a remote server like GitHubcom or GitHub Enterprise",
+    "winget": "none",
+    "choco": "git-lfs",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
+    "category": "Development",
+    "check": "false"
   }
 ]
 ' | ConvertFrom-Json
@@ -8177,6 +8194,14 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
                 <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content="Utilities"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="The official OpenVPN Connect client software developed and maintained by OpenVPN Inc"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+            <StackPanel Orientation="Horizontal">
+                <CheckBox Content="Git Large File Storage" Tag="Development" IsChecked="false" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content="Development"/>
+            </StackPanel>
+                <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Git Large File Storage LFS replaces large files such as audio samples videos datasets and graphics with text pointers inside Git while storing the file contents on a remote server like GitHubcom or GitHub Enterprise"/>
         </StackPanel>
 
                                 </ListView>
