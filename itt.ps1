@@ -19,7 +19,7 @@ Add-Type -AssemblyName System.Windows.Forms
 $sync = [Hashtable]::Synchronized(@{})
 $sync.database = @{}
 $sync.ProcessRunning = $false
-$sync.lastupdate = "27-06-2024"
+$sync.lastupdate = "30-06-2024"
 $sync.github =   "https://github.com/emadadel4"
 $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://emadadel4.github.io"
@@ -240,23 +240,6 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "ITT/Downloads"
-      }
-    ],
-    "category": "Web Browsers",
-    "check": "false"
-  },
-  {
-    "Name": "Neat Download Manager",
-    "Description": "Introducing Neat Download Manager, the powerful neatdownload manager that supports macOS, Windows 7 or later, and Windows 11. With lightning-fast downloads, smart file filter management, and the best features, start downloading today and see why Neat Download Manager is the perfect tool for you.r",
-    "winget": "none",
-    "choco": "neatdownloadmanager --version=1.4.0",
-    "scoop": "none",
-    "default": [
-      {
-        "fileType": "exe",
-        "url": "https://www.neatdownloadmanager.com/file/NeatDM_setup.exe",
-        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "$env:temp"
       }
     ],
     "category": "Web Browsers",
@@ -6087,14 +6070,6 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
                 <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content="Web Browsers"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="A popular download manager tool that accelerates downloads and allows users to organize and schedule downloads efficiently"/>
-        </StackPanel>
-
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
-            <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Neat Download Manager" Tag="Web Browsers" IsChecked="false" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content="Web Browsers"/>
-            </StackPanel>
-                <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Introducing Neat Download Manager the powerful neatdownload manager that supports macOS Windows 7 or later and Windows 11 With lightningfast downloads smart file filter management and the best features start downloading today and see why Neat Download Manager is the perfect tool for your"/>
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Width="auto" Margin="8">
