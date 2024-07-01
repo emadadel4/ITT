@@ -9096,7 +9096,6 @@ function Invoke-Install {
         FilteredSelectedItems
         $selectedApps += Get-SelectedApps
     
-
         if($selectedApps.Count -gt 0)
         {
             # Retrieve localized messages for confirmation dialog and UI elements
