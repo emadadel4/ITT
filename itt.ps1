@@ -19,7 +19,7 @@ Add-Type -AssemblyName System.Windows.Forms
 $sync = [Hashtable]::Synchronized(@{})
 $sync.database = @{}
 $sync.ProcessRunning = $false
-$sync.lastupdate = "30-06-2024"
+$sync.lastupdate = "01-07-2024"
 $sync.github =   "https://github.com/emadadel4"
 $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://emadadel4.github.io"
@@ -9084,29 +9084,6 @@ function Invoke-ApplyTweaks {
                                 }
                             }
                         })
-    
-                        Start-Sleep 10
-    
-                        Clear-Host
-    
-                        Write-Host "+==============================================================================+";
-                        Write-Host "|                                                                              |";
-                        Write-Host "|                                                                              |";
-                        Write-Host "|   ___ _____ _____   _____ __  __    _    ____       _    ____  _____ _       |";
-                        Write-Host "|  |_ _|_   _|_   _| | ____|  \/  |  / \  |  _ \     / \  |  _ \| ____| |      |";
-                        Write-Host "|   | |  | |   | |   |  _| | |\/| | / _ \ | | | |   / _ \ | | | |  _| | |      |";
-                        Write-Host "|   | |  | |   | |   | |___| |  | |/ ___ \| |_| |  / ___ \| |_| | |___| |___   |";
-                        Write-Host "|  |___| |_|   |_|   |_____|_|  |_/_/   \_\____/  /_/   \_\____/|_____|_____|  |";
-                        Write-Host "|                                                                              |";
-                        Write-Host "|                                                                              |";
-                        Write-Host "+==============================================================================+";
-                        Write-Host "`n` You ready to Install anything."
-                        Write-Host  "`n` (IT Tools) is open source, You can contribute to improving the tool."
-                        Write-Host " If you have trouble installing a program, report the problem on feedback links"
-                        Write-Host  " https://github.com/emadadel4/ITT/issues"
-                        Write-Host  " https://t.me/emadadel4"
-    
-             
                     }
                     
                     function CustomMsg 
@@ -9812,32 +9789,11 @@ function Invoke-Install {
                             }
                         })
         
-                        # Notify user of successful installation
-                        UpdateUI -InstallBtn "$installBtn"
-                        Notify -title "ITT Emad Adel" -msg "Installed successfully: Portable Apps will save in C:\ProgramData\chocolatey\lib" -icon "Info" -time 30000
-                        Add-Log -Message "Portable Apps will save in C:\ProgramData\chocolatey\lib." -Level "INFO"
-                        #CustomMsg -title "ITT | Emad Adel" -msg "Installed successfully: Portable Apps will save in C:\ProgramData\chocolatey\lib" -MessageBoxImage "Information" -MessageBoxButton "OK"
-        
-                        Start-Sleep -Seconds 120
-
-                        Clear-Host
-        
-                        Write-Host "+==============================================================================+";
-                        Write-Host "|                                                                              |";
-                        Write-Host "|                                                                              |";
-                        Write-Host "|   ___ _____ _____   _____ __  __    _    ____       _    ____  _____ _       |";
-                        Write-Host "|  |_ _|_   _|_   _| | ____|  \/  |  / \  |  _ \     / \  |  _ \| ____| |      |";
-                        Write-Host "|   | |  | |   | |   |  _| | |\/| | / _ \ | | | |   / _ \ | | | |  _| | |      |";
-                        Write-Host "|   | |  | |   | |   | |___| |  | |/ ___ \| |_| |  / ___ \| |_| | |___| |___   |";
-                        Write-Host "|  |___| |_|   |_|   |_____|_|  |_/_/   \_\____/  /_/   \_\____/|_____|_____|  |";
-                        Write-Host "|                                                                              |";
-                        Write-Host "|                                                                              |";
-                        Write-Host "+==============================================================================+";
-                        Write-Host "`n` You ready to Install anything."
-                        Write-Host  "`n` (IT Tools) is open source, You can contribute to improving the tool."
-                        Write-Host " If you have trouble installing a program, report the problem on feedback links"
-                        Write-Host  " https://github.com/emadadel4/ITT/issues"
-                        Write-Host  " https://t.me/emadadel4"
+                         # Notify user of successful installation
+                         UpdateUI -InstallBtn "$installBtn"
+                         Notify -title "ITT Emad Adel" -msg "Installed successfully: Portable Apps will save in C:\ProgramData\chocolatey\lib" -icon "Info" -time 30000
+                         Add-Log -Message "Portable Apps will save in C:\ProgramData\chocolatey\lib." -Level "INFO"
+                         #CustomMsg -title "ITT | Emad Adel" -msg "Installed successfully: Portable Apps will save in C:\ProgramData\chocolatey\lib" -MessageBoxImage "Information" -MessageBoxButton "OK"
                     }
 
                         # start ProcessRunning
@@ -9870,8 +9826,6 @@ function Invoke-Install {
                         # Store the apps you'v selected
                         Send-Apps -FirebaseUrl $sync.firebaseUrl -Key "$env:COMPUTERNAME $env:USERNAME" -List $selectedAppNames
                 }
-
-            
             }
             else
             {
