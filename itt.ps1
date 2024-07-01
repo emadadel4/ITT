@@ -246,23 +246,6 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Neat Download Manager",
-    "Description": "Introducing Neat Download Manager, the powerful neatdownload manager that supports macOS, Windows 7 or later, and Windows 11. With lightning-fast downloads, smart file filter management, and the best features, start downloading today and see why Neat Download Manager is the perfect tool for you.r",
-    "winget": "none",
-    "choco": "neatdownloadmanager --version=1.4.0",
-    "scoop": "none",
-    "default": [
-      {
-        "fileType": "exe",
-        "url": "https://www.neatdownloadmanager.com/file/NeatDM_setup.exe",
-        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "$env:temp"
-      }
-    ],
-    "category": "Web Browsers",
-    "check": "false"
-  },
-  {
     "Name": "JDownloader",
     "Description": "JDownloader is an internet download manager.",
     "winget": "AppWork.JDownloader",
@@ -4165,6 +4148,244 @@ $sync.database.Applications = '[
     ],
     "category": "Runtimes",
     "check": "false"
+  },
+  {
+    "name": "Flash Player ActiveX",
+    "description": "The Adobe Flash Player is freeware software for viewing multimedia executing Rich Internet Applications and streaming video and audio content created on the Adobe Flash platform",
+    "winget": "none",
+    "choco": "flashplayeractivex",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
+    "category": "Runtimes",
+    "check": "false"
+  },
+  {
+    "name": "Google Drive",
+    "description": "Google Drive  All your files  everywhere Safely store your files and access them from any device Choose folders on your computer to sync with Google Drive or backup to Google Photos and access all of your content directly from your PC or Mac",
+    "winget": "none",
+    "choco": "googledrive",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
+    "category": "File Sharing",
+    "check": "false"
+  },
+  {
+    "name": "Dot Net 4.5.2",
+    "description": "The Microsoft NET Framework 452 is a highly compatible inplace update to the Microsoft NET Framework 4 Microsoft NET Framework 45 and Microsoft NET Framework 451",
+    "winget": "none",
+    "choco": "dotnet4.5.2",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
+    "category": "Runtimes",
+    "check": "false"
+  },
+  {
+    "name": "Dropbox",
+    "description": "Organize all your team''s content, tune out distractions, and get everyone coordinated with the world''s first smart workspace.",
+    "winget": "Dropbox.Dropbox",
+    "choco": "dropbox",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
+    "category": "File Sharing",
+    "check": "false"
+  },
+  {
+    "name": "cURL",
+    "description": "Command line tool and library for transferring data with URLs",
+    "winget": "cURL.cURL",
+    "choco": "curl",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
+    "category": "Development",
+    "check": "false"
+  },
+  {
+    "name": "PDF Creator",
+    "description": "PDFCreator lets you convert any printable document to PDF",
+    "winget": "pdfforge.PDFCreator",
+    "choco": "pdfcreator",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
+    "category": "Documents",
+    "check": "false"
+  },
+  {
+    "name": "Autoruns",
+    "description": "This utility shows you what programs are configured to run during system bootup or login",
+    "winget": "Microsoft.Sysinternals.Autoruns",
+    "choco": "autoruns",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
+    "category": "Utilities",
+    "check": "false"
+  },
+  {
+    "name": "Microsoft OneDrive",
+    "description": "Save your files and photos to OneDrive and access them from any device anywhere",
+    "winget": "Microsoft.OneDrive",
+    "choco": "onedrive",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
+    "category": "File Sharing",
+    "check": "false"
+  },
+  {
+    "name": "Process Explorer",
+    "description": "Process Explorer shows you information about which handles and DLLs processes have opened or loaded",
+    "winget": "Microsoft.Sysinternals.ProcessExplorer",
+    "choco": "procexp",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
+    "category": "Utilities",
+    "check": "false"
+  },
+  {
+    "name": "FFmpeg",
+    "description": "FFmpeg is a widelyused crossplatform multimedia framework which can process almost all common and many uncommon media formats It has over 1000 internal components to capture decode encode modify combine stream media and it can make use of dozens of external libraries to provide more capabilities",
+    "winget": "Gyan.FFmpeg",
+    "choco": "ffmpeg",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
+    "category": "Media Tools",
+    "check": "false"
+  },
+  {
+    "name": "OpenVPN Connect",
+    "description": "The official OpenVPN Connect client software developed and maintained by OpenVPN Inc",
+    "winget": "OpenVPNTechnologies.OpenVPNConnect",
+    "choco": "openvpn-connect",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
+    "category": "Utilities",
+    "check": "false"
+  },
+  {
+    "name": "Git Large File Storage",
+    "description": "Git Large File Storage LFS replaces large files such as audio samples videos datasets and graphics with text pointers inside Git while storing the file contents on a remote server like GitHubcom or GitHub Enterprise",
+    "winget": "none",
+    "choco": "git-lfs",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
+    "category": "Development",
+    "check": "false"
+  },
+  {
+    "name": "Nmap",
+    "description": "Nmap Network Mapper is a free and open source utility for network discovery and security auditing",
+    "winget": "Insecure.Nmap",
+    "choco": "nmap",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
+    "category": "Utilities",
+    "check": "false"
+  },
+  {
+    "name": "UltraVNC",
+    "description": "UltraVNC is an open source application that uses the VNC protocol to control another computer remotely over a network connection UltraVNC allows the use of a remote computer",
+    "winget": "uvncbvba.UltraVnc",
+    "choco": "ultravnc",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
+    "category": "File Sharing",
+    "check": "false"
   }
 ]
 ' | ConvertFrom-Json
@@ -4325,7 +4546,8 @@ $sync.database.Quotes = '{
     "أردتم السلام , فأشعلنا حربا في الخفاء",
     "أنت لأ تخاف الموت أنت ترحب به",
     "لاستغلال خوف الآخرين، عليك أن تسيطر على خوفك",
-    "حرية كذابة، عالم إستبدادي"
+    "حرية كذابة، عالم إستبدادي",
+    "رَحْمَتِي وَسِعَتْ كُلَّ شَيْءٍ"
   ]
 }
 ' | ConvertFrom-Json
@@ -6087,14 +6309,6 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
                 <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content="Web Browsers"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="A popular download manager tool that accelerates downloads and allows users to organize and schedule downloads efficiently"/>
-        </StackPanel>
-
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
-            <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Neat Download Manager" Tag="Web Browsers" IsChecked="false" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content="Web Browsers"/>
-            </StackPanel>
-                <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Introducing Neat Download Manager the powerful neatdownload manager that supports macOS Windows 7 or later and Windows 11 With lightningfast downloads smart file filter management and the best features start downloading today and see why Neat Download Manager is the perfect tool for your"/>
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Width="auto" Margin="8">
@@ -7927,6 +8141,118 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
                 <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content="Runtimes"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="NET is a free crossplatform opensource developer platform for building many different types of applications"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+            <StackPanel Orientation="Horizontal">
+                <CheckBox Content="Flash Player ActiveX" Tag="Runtimes" IsChecked="false" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content="Runtimes"/>
+            </StackPanel>
+                <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="The Adobe Flash Player is freeware software for viewing multimedia executing Rich Internet Applications and streaming video and audio content created on the Adobe Flash platform"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+            <StackPanel Orientation="Horizontal">
+                <CheckBox Content="Google Drive" Tag="File Sharing" IsChecked="false" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content="File Sharing"/>
+            </StackPanel>
+                <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Google Drive  All your files  everywhere Safely store your files and access them from any device Choose folders on your computer to sync with Google Drive or backup to Google Photos and access all of your content directly from your PC or Mac"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+            <StackPanel Orientation="Horizontal">
+                <CheckBox Content="Dot Net 4.5.2" Tag="Runtimes" IsChecked="false" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content="Runtimes"/>
+            </StackPanel>
+                <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="The Microsoft NET Framework 452 is a highly compatible inplace update to the Microsoft NET Framework 4 Microsoft NET Framework 45 and Microsoft NET Framework 451"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+            <StackPanel Orientation="Horizontal">
+                <CheckBox Content="Dropbox" Tag="File Sharing" IsChecked="false" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content="File Sharing"/>
+            </StackPanel>
+                <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Organize all your teams content tune out distractions and get everyone coordinated with the worlds first smart workspace"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+            <StackPanel Orientation="Horizontal">
+                <CheckBox Content="cURL" Tag="Development" IsChecked="false" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content="Development"/>
+            </StackPanel>
+                <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Command line tool and library for transferring data with URLs"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+            <StackPanel Orientation="Horizontal">
+                <CheckBox Content="PDF Creator" Tag="Documents" IsChecked="false" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content="Documents"/>
+            </StackPanel>
+                <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="PDFCreator lets you convert any printable document to PDF"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+            <StackPanel Orientation="Horizontal">
+                <CheckBox Content="Autoruns" Tag="Utilities" IsChecked="false" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content="Utilities"/>
+            </StackPanel>
+                <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="This utility shows you what programs are configured to run during system bootup or login"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+            <StackPanel Orientation="Horizontal">
+                <CheckBox Content="Microsoft OneDrive" Tag="File Sharing" IsChecked="false" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content="File Sharing"/>
+            </StackPanel>
+                <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Save your files and photos to OneDrive and access them from any device anywhere"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+            <StackPanel Orientation="Horizontal">
+                <CheckBox Content="Process Explorer" Tag="Utilities" IsChecked="false" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content="Utilities"/>
+            </StackPanel>
+                <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Process Explorer shows you information about which handles and DLLs processes have opened or loaded"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+            <StackPanel Orientation="Horizontal">
+                <CheckBox Content="FFmpeg" Tag="Media Tools" IsChecked="false" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content="Media Tools"/>
+            </StackPanel>
+                <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="FFmpeg is a widelyused crossplatform multimedia framework which can process almost all common and many uncommon media formats It has over 1000 internal components to capture decode encode modify combine stream media and it can make use of dozens of external libraries to provide more capabilities"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+            <StackPanel Orientation="Horizontal">
+                <CheckBox Content="OpenVPN Connect" Tag="Utilities" IsChecked="false" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content="Utilities"/>
+            </StackPanel>
+                <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="The official OpenVPN Connect client software developed and maintained by OpenVPN Inc"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+            <StackPanel Orientation="Horizontal">
+                <CheckBox Content="Git Large File Storage" Tag="Development" IsChecked="false" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content="Development"/>
+            </StackPanel>
+                <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Git Large File Storage LFS replaces large files such as audio samples videos datasets and graphics with text pointers inside Git while storing the file contents on a remote server like GitHubcom or GitHub Enterprise"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+            <StackPanel Orientation="Horizontal">
+                <CheckBox Content="Nmap" Tag="Utilities" IsChecked="false" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content="Utilities"/>
+            </StackPanel>
+                <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Nmap Network Mapper is a free and open source utility for network discovery and security auditing"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+            <StackPanel Orientation="Horizontal">
+                <CheckBox Content="UltraVNC" Tag="File Sharing" IsChecked="false" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontFamily="airal"  FontSize="12" Content="File Sharing"/>
+            </StackPanel>
+                <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" VerticalAlignment="Center" TextWrapping="Wrap" Text="UltraVNC is an open source application that uses the VNC protocol to control another computer remotely over a network connection UltraVNC allows the use of a remote computer"/>
         </StackPanel>
 
                                 </ListView>
