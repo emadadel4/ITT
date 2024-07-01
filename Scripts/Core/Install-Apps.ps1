@@ -456,10 +456,6 @@ function Invoke-Install {
                         Add-Log -Message "Portable Apps will save in C:\ProgramData\chocolatey\lib." -Level "INFO"
                         #CustomMsg -title "ITT | Emad Adel" -msg "Installed successfully: Portable Apps will save in C:\ProgramData\chocolatey\lib" -MessageBoxImage "Information" -MessageBoxButton "OK"
         
-                        Start-Sleep -Seconds 120
-
-                        Clear-Host
-        
                         Write-Host "+==============================================================================+";
                         Write-Host "|                                                                              |";
                         Write-Host "|                                                                              |";
