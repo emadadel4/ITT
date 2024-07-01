@@ -9426,7 +9426,6 @@ function Invoke-Install {
         {
             # Retrieve localized messages for confirmation dialog and UI elements
             $areyousuremsg = $sync.database.locales.$($sync.Langusege).InstallMessage
-
             $result = [System.Windows.MessageBox]::Show($areyousuremsg, "ITT | Emad Adel", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)
 
             if($result -eq "Yes")
