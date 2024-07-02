@@ -19,7 +19,7 @@ Add-Type -AssemblyName System.Windows.Forms
 $sync = [Hashtable]::Synchronized(@{})
 $sync.database = @{}
 $sync.ProcessRunning = $false
-$sync.lastupdate = "01-07-2024"
+$sync.lastupdate = "02-07-2024"
 $sync.github =   "https://github.com/emadadel4"
 $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://emadadel4.github.io"
@@ -4547,7 +4547,8 @@ $sync.database.Quotes = '{
     "أنت لأ تخاف الموت أنت ترحب به",
     "لاستغلال خوف الآخرين، عليك أن تسيطر على خوفك",
     "حرية كذابة، عالم إستبدادي",
-    "رَحْمَتِي وَسِعَتْ كُلَّ شَيْءٍ"
+    "رَحْمَتِي وَسِعَتْ كُلَّ شَيْءٍ",
+    "عندما تتبول الأنظمة علي الشعوب تسارع الصحافة لإقناعهم بانها مطر و رجال الدين بانها طاهرة"
   ]
 }
 ' | ConvertFrom-Json
