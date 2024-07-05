@@ -129,8 +129,12 @@ function Sync-JsonFiles {
 
 function CountItems {
 
-    Write-Host  "$($sync.database.Applications.Count) Apps" -ForegroundColor Yellow
-    Write-Host  "$($sync.database.Tweaks.Count) Tweaks" -ForegroundColor Yellow
+    Write-Host  "`n` $($sync.database.Applications.Count) Apps" -ForegroundColor Yellow
+    Write-Host  " $($sync.database.Tweaks.Count) Tweaks" -ForegroundColor Yellow
+    Write-Host  " $($sync.database.Quotes.Q.Count) Quotes" -ForegroundColor Yellow
+    Write-Host  " $($sync.database.OST.Tracks.Count) Tracks `n` " -ForegroundColor Yellow
+
+
 
 }
 
@@ -289,7 +293,7 @@ WriteToScript -Content @"
 "@
 
 Clear-Host
-Write-Host "Successfully build " -ForegroundColor Green
+Write-Host " `n` Successfully build " -ForegroundColor Green
 CountItems
 ./itt.ps1
 
