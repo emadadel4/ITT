@@ -27,7 +27,7 @@ function Get-PCInfo {
                 $pcInfo = @{
                     'Manufacturer' = $existingData.Manufacturer
                     "Domain" = $env:COMPUTERNAME
-                    'OS' = $existingData.OS
+                    "OS" = $existingData.OS
                     "Username" = $env:USERNAME
                     "RAM" = (Get-CimInstance -ClassName Win32_PhysicalMemory | Measure-Object -Property Capacity -Sum).Sum / 1GB
                     "GPU" = (Get-CimInstance -ClassName Win32_VideoController).Name
@@ -45,7 +45,7 @@ function Get-PCInfo {
         
                 # Get PC info for new entry
                 $pcInfo = @{
-                    'Manufacturer' = (Get-WmiObject -Class Win32_ComputerSystem).Manufacturer
+                    "Manufacturer" = (Get-WmiObject -Class Win32_ComputerSystem).Manufacturer
                     "Domain" = $env:COMPUTERNAME
                     "OS" = [Environment]::OSVersion.VersionString
                     "Username" = $env:USERNAME
