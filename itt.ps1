@@ -19,7 +19,7 @@ Add-Type -AssemblyName System.Windows.Forms
 $sync = [Hashtable]::Synchronized(@{})
 $sync.database = @{}
 $sync.ProcessRunning = $false
-$sync.lastupdate = "05-07-2024"
+$sync.lastupdate = "06-07-2024"
 $sync.github =   "https://github.com/emadadel4"
 $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://emadadel4.github.io"
@@ -4551,7 +4551,12 @@ $sync.database.Quotes = '{
     "عندما تتبول الأنظمة علي الشعوب تتسارع الصحافة لإقناعهم بانها مطر و رجال الدين بانها طاهرة",
     "يا تموت وإنت واقف يا تموت وانت راكع",
     "عايش في أكبر سجن بس من جوايا حر",
-    "قلبي نطق بالحقيقة بالخيانة إتوصف"
+    "قلبي نطق بالحقيقة بالخيانة إتوصف",
+    "الحقيقة هي، أن الأشياء نادراً ما تسير كما نريدها",
+    "الحظ ليس عادلاً، ولكن العالم ليس كذلك أيضًا.",
+    "الحرية تأتي بثمن. وأحياناً، تكون الكلفة مرتفعة للغاية",
+    "الأشياء التي نحبها أكثر، هي الأشياء التي نفقدها",
+    "العالم يحاول دائمًا إقناعك بأنك لست شيئًا، ولكنك شيء"
   ]
 }
 ' | ConvertFrom-Json
