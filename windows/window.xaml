@@ -3,7 +3,7 @@
 <Window
 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-x:Name="Window" Title="Install and Tweak Tool #Stand With Palestine" WindowStartupLocation = "CenterScreen" 
+x:Name="Window" Title="Install Tweak Tool #StandWithPalestine" WindowStartupLocation = "CenterScreen" 
 Background="{DynamicResource BGColor}"
 Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowInTaskbar = "True" Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/Assets/Icons/icon.ico">
 

@@ -22,7 +22,7 @@
           </Ellipse>
         <!--End Logo-->
         
-        <TextBlock Text="Install and Tweak Tool" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <TextBlock Text="Install Tweak Tool" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center"/>
         <TextBlock Text="{Binding devby}" Margin="0,5,0,0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
 
         <DockPanel Margin="10">
