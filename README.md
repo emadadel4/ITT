@@ -20,7 +20,6 @@
 - **Developer-Friendly**: Easy-to-use and clear documentation  to add a new app or tweaks as you like, you can create a new method to download apps. Be creative. <a href="#--how-to-add-a-new-apptweakostquote">How to Add a New App</a>
 - **Soundtracks**: Enjoy listening to the best music from games and movies while downloading your programs.
 
-
 <h2>🚀 Usage</h2>
 
 <h3>On Windows 10/11:</h3>
@@ -38,6 +37,13 @@ or
 
 <pre><code>irm https://raw.githubusercontent.com/emadadel4/ITT/main/itt.ps1 | iex
 </code></pre>
+
+<div align="center">
+  
+  ## Watch the Demo
+  
+  [![Watch the video](https://img.youtube.com/vi/QTv88lchoo0/hqdefault.jpg)](https://www.youtube.com/watch?v=QTv88lchoo0)
+</div>
 
 <h2> 📦 How to Add a New App/Tweak/OST/Quote</h2>
 <ol>
