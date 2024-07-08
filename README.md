@@ -104,7 +104,7 @@ or
 
 <h2>Show Your Support</h2>
 
-<p>If this project helped you, please give it a ⭐️!</p>
+<p>If this project helped you, please give it a ⭐️</p>
 <a href="https://www.buymeacoffee.com/emadadel" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>
 
 
