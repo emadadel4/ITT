@@ -60,7 +60,7 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
                 <!--End Catagory Section-->
 
 
-                <MenuItem Header="{Binding device}" Margin="10,0,0,0" BorderBrush="Transparent" BorderThickness="0" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <MenuItem Header="{Binding device}" FontFamily="arial" FontSize="13"  Margin="10,0,0,0" BorderBrush="Transparent" BorderThickness="0" VerticalAlignment="Center" HorizontalAlignment="Center">
                     <MenuItem.Icon>
                         <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
                     </MenuItem.Icon>
@@ -74,7 +74,7 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
                     <MenuItem Name="diskmgmt" Header="Disk Managment"/>
                 </MenuItem>
 
-                <MenuItem Header="{Binding pref}" BorderBrush="Transparent" BorderThickness="0" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <MenuItem Header="{Binding pref}" FontFamily="arial" FontSize="13"  BorderBrush="Transparent" BorderThickness="0" VerticalAlignment="Center" HorizontalAlignment="Center">
                     <MenuItem.Icon>
                         <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
                     </MenuItem.Icon>
@@ -124,7 +124,7 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
                 </MenuItem>
                 
 
-                <MenuItem Header="{Binding mirrorlinks}" BorderThickness="0" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <MenuItem Header="{Binding mirrorlinks}" FontFamily="arial" FontSize="13"  BorderThickness="0" VerticalAlignment="Center" HorizontalAlignment="Center">
                     <MenuItem.Icon>
                         <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
                     </MenuItem.Icon>
@@ -139,7 +139,7 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
                 </MenuItem>
 
                 
-                <MenuItem Name="dev" Header="{Binding about}" BorderBrush="Transparent" BorderThickness="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <MenuItem Name="dev" Header="{Binding about}" FontFamily="arial" FontSize="13"  BorderBrush="Transparent" BorderThickness="1" VerticalAlignment="Center" HorizontalAlignment="Center">
                     <MenuItem.Icon>
                         <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
                     </MenuItem.Icon>
@@ -194,6 +194,7 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
                     Content="{Binding applyBtn}"
                     HorizontalAlignment="Right"
                     VerticalAlignment="Bottom"
+                    FontFamily="Sego UI" FontSize="15" 
                     Width="100" Height="40" Margin="20"/>
                 <!--End applyBtn Button-->
 
@@ -201,6 +202,7 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
                 <!--Install Button-->
                     <Button
                         Name="installBtn"
+                        FontFamily="Sego UI" FontSize="15" 
                         Content="{Binding installBtn}"
                         HorizontalAlignment="Right"
                         VerticalAlignment="Bottom"
@@ -216,7 +218,9 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
                     Margin="10,0,0,0"
                     FlowDirection="LeftToRight"
                     Text="Hello World"
-                    FontWeight="Bold"
+                    FontWeight="Medium"
+                    FontFamily="simplified Arabic"
+                    FontSize="15"
                     Width="622"
                     />
             </StackPanel>

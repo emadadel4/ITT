@@ -40,9 +40,7 @@ function Get-SelectedTweaks {
             }
         }
     }
-
     return $items 
-   
 }
 function ShowSelectedTweaks {
     
@@ -51,30 +49,26 @@ function ShowSelectedTweaks {
     $filterPredicate = {
        param($item)
 
-       if ($item -is [System.Windows.Controls.StackPanel]) {
+        if ($item -is [System.Windows.Controls.StackPanel]) {
 
-        foreach ($child in $item.Children) {
-            if ($child -is [System.Windows.Controls.StackPanel]) {
-                foreach ($innerChild in $child.Children) {
-                    if ($innerChild -is [System.Windows.Controls.CheckBox]) {
-    
-                        $tagToFilter =  $true
-                        # Check if the item has the tag
-                        $itemTag = $innerChild.IsChecked
-                        return $itemTag -eq $tagToFilter
+            foreach ($child in $item.Children) {
+                if ($child -is [System.Windows.Controls.StackPanel]) {
+                    foreach ($innerChild in $child.Children) {
+                        if ($innerChild -is [System.Windows.Controls.CheckBox]) {
+        
+                            $tagToFilter =  $true
+                            # Check if the item has the tag
+                            $itemTag = $innerChild.IsChecked
+                            return $itemTag -eq $tagToFilter
+                        }
                     }
                 }
             }
+
+            $collectionView.Filter = $filterPredicate
         }
-
-        $collectionView.Filter = $filterPredicate
-    }
-
-       
    }
-
    $collectionView.Filter = $filterPredicate
-
 }
 function Invoke-ApplyTweaks {
 
@@ -244,7 +238,7 @@ function Invoke-ApplyTweaks {
                         )
                             try {
                                 #powershell.exe -Command "Import-Module Appx; Get-AppxPackage -AllUsers -Name "$($Name)" | Remove-AppxPackage -ErrorAction Stop"
-                                #Start-Process powershell.exe -ArgumentList "-Command `"Import-Module Appx; Get-AppxPackage -AllUsers -Name '$($Name)' | Remove-AppxPackage -ErrorAction Stop`"" -NoNewWindow  -Wait 
+                                Start-Process powershell.exe -ArgumentList "-Command `"Import-Module Appx; Get-AppxPackage -AllUsers -Name '$($Name)' | Remove-AppxPackage -ErrorAction Stop`"" -NoNewWindow  -Wait 
                                 Start-Process powershell.exe -ArgumentList "-Command `"Get-AppXProvisionedPackage -Online | where DisplayName -EQ $($Name) | Remove-AppxProvisionedPackage -Online`"" -NoNewWindow  -Wait 
                                 Add-Log -Message "Successfully removed $($Name)" -Level "INFO"
                             } 
@@ -386,7 +380,6 @@ function Invoke-ApplyTweaks {
 
                                     if($app.Refresh -eq "true")
                                     {
-                                        Write-Host "Restarting exploror..."
                                         Stop-Process -Name explorer -Force
                                         Start-Process explorer
 
@@ -400,7 +393,6 @@ function Invoke-ApplyTweaks {
 
                                     if($app.Refresh -eq "true")
                                     {
-                                        Write-Host "Restarting exploror..."
                                         Stop-Process -Name explorer -Force
                                         Start-Process explorer
                                     }
@@ -414,7 +406,6 @@ function Invoke-ApplyTweaks {
 
                                     if($app.Refresh -eq "true")
                                     {
-                                        Write-Host "Restarting exploror..."
                                         Stop-Process -Name explorer -Force
                                         Start-Process explorer
                                     }
@@ -439,7 +430,6 @@ function Invoke-ApplyTweaks {
 
                         # Displaying the names of the selected apps
                         $selectedAppNames = $tweaks | ForEach-Object { $_.Name }
-
                         UpdateUI -InstallBtn "$applyBtn" -Description "" 
                         $sync.ProcessRunning = $False
                         CustomMsg -title "ITT | Emad Adel" -msg "Done" -MessageBoxImage "Information" -MessageBoxButton "OK"
@@ -472,14 +462,12 @@ function Invoke-ApplyTweaks {
         }
         else
         {
-
             $sync.TweaksListView.Dispatcher.Invoke([Action]{
                 
                 $sync.TweaksListView.Clear()
                 $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.TweaksListView.Items)
                 $collectionView.Filter = $null
             })
-
             $localizedMessageTemplate = $sync.database.locales.$($sync.Langusege).chosetweak
             [System.Windows.MessageBox]::Show("$localizedMessageTemplate", "ITT | Emad Adel", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
         }

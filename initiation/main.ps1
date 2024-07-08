@@ -119,8 +119,6 @@ $onClosingEvent = {
     }
 }
 
-
-
 # Handle the Loaded event
 $sync["window"].Add_Loaded({
     GetQuotes | Out-Null
