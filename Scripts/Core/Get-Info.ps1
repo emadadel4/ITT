@@ -17,7 +17,7 @@ function Get-PCInfo {
             # Check if the key exists
             $existingData = Invoke-RestMethod -Uri $firebaseUrlWithKey -Method Get -ErrorAction Stop
         
-            Write-Host "Gathering PC Info..."
+            Write-Host "  Gathering PC Info... `n` "
         
             if ($existingData) {
                 # Increment runs if data exists
