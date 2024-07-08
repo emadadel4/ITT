@@ -4,7 +4,7 @@
   </a>
 </p>
   
-<h1 align="center">ITT (Install and Tweaks Tool) 🛠️ 🚀</h1>
+<h1 align="center">ITT (Install Tweaks Tool) 🛠️ 🚀</h1>
 
 <p align="center">
 <a href="https://www.buymeacoffee.com/emadadel" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="30" width="150"></a>
@@ -103,7 +103,7 @@ or
 <ul>
 <li>Telegram: <a href="https://t.me/emadadel4">emadadel4</a></li>
 <li>GitHub: <a href="https://github.com/emadadel4">emadadel4</a></li>
-<li>Website: <a href="https://www.eprojects.orgfree.com">eprojects</a></li>
+<li>Website: <a href="emadadel4.github.io">Website</a></li>
 </ul>
 
 <h2>Show Your Support</h2>
