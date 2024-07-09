@@ -9235,7 +9235,7 @@ function Invoke-ApplyTweaks {
                                     }
 
                                     foreach ($cmd in $app.Command) {
-                                        #ExecuteCommand -Command $cmd
+                                        ExecuteCommand -Command $cmd
                                     }
                                 }
                             }
