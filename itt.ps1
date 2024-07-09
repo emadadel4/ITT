@@ -8680,7 +8680,6 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
                     FlowDirection="LeftToRight"
                     Text="Hello World"
                     FontWeight="Medium"
-                    FontFamily="simplified Arabic"
                     FontSize="15"
                     Width="622"
                     />
