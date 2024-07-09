@@ -5298,39 +5298,7 @@ $sync.database.Tweaks = '[
       }
     ],
     "InvokeCommand": [
-      "reg delete \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Appx\\AppxAllUserStore\\Deprovisioned\\Microsoft.BingWeather_8wekyb3d8bbwe\" /f",
-      "reg delete \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Appx\\AppxAllUserStore\\Deprovisioned\\Microsoft.DesktopAppInstaller_8wekyb3d8bbwe\" /f",
-      "reg delete \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Appx\\AppxAllUserStore\\Deprovisioned\\Microsoft.GetHelp_8wekyb3d8bbwe\" /f",
-      "reg delete \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Appx\\AppxAllUserStore\\Deprovisioned\\Microsoft.Getstarted_8wekyb3d8bbwe\" /f",
-      "reg delete \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Appx\\AppxAllUserStore\\Deprovisioned\\Microsoft.Microsoft3DViewer_8wekyb3d8bbwe\" /f",
-      "reg delete \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Appx\\AppxAllUserStore\\Deprovisioned\\Microsoft.MicrosoftOfficeHub_8wekyb3d8bbwe\" /f",
-      "reg delete \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Appx\\AppxAllUserStore\\Deprovisioned\\Microsoft.MicrosoftSolitaireCollection_8wekyb3d8bbwe\" /f",
-      "reg delete \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Appx\\AppxAllUserStore\\Deprovisioned\\Microsoft.MicrosoftStickyNotes_8wekyb3d8bbwe\" /f",
-      "reg delete \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Appx\\AppxAllUserStore\\Deprovisioned\\Microsoft.MSPaint_8wekyb3d8bbwe\" /f",
-      "reg delete \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Appx\\AppxAllUserStore\\Deprovisioned\\Microsoft.Office.OneNote_8wekyb3d8bbwe\" /f",
-      "reg delete \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Appx\\AppxAllUserStore\\Deprovisioned\\Microsoft.OneConnect_8wekyb3d8bbwe\" /f",
-      "reg delete \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Appx\\AppxAllUserStore\\Deprovisioned\\Microsoft.People_8wekyb3d8bbwe\" /f",
-      "reg delete \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Appx\\AppxAllUserStore\\Deprovisioned\\Microsoft.Print3D_8wekyb3d8bbwe\" /f",
-      "reg delete \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Appx\\AppxAllUserStore\\Deprovisioned\\Microsoft.SkypeApp_kzf8qxf38zg5c\" /f",
-      "reg delete \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Appx\\AppxAllUserStore\\Deprovisioned\\Microsoft.StorePurchaseApp_8wekyb3d8bbwe\" /f",
-      "reg delete \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Appx\\AppxAllUserStore\\Deprovisioned\\Microsoft.Wallet_8wekyb3d8bbwe\" /f",
-      "reg delete \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Appx\\AppxAllUserStore\\Deprovisioned\\Microsoft.Windows.Photos_8wekyb3d8bbwe\" /f",
-      "reg delete \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Appx\\AppxAllUserStore\\Deprovisioned\\Microsoft.WindowsAlarms_8wekyb3d8bbwe\" /f",
-      "reg delete \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Appx\\AppxAllUserStore\\Deprovisioned\\Microsoft.WindowsCalculator_8wekyb3d8bbwe\" /f",
-      "reg delete \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Appx\\AppxAllUserStore\\Deprovisioned\\Microsoft.WindowsCamera_8wekyb3d8bbwe\" /f",
-      "reg delete \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Appx\\AppxAllUserStore\\Deprovisioned\\microsoft.windowscommunicationsapps_8wekyb3d8bbwe\" /f",
-      "reg delete \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Appx\\AppxAllUserStore\\Deprovisioned\\Microsoft.WindowsFeedbackHub_8wekyb3d8bbwe\" /f",
-      "reg delete \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Appx\\AppxAllUserStore\\Deprovisioned\\Microsoft.WindowsMaps_8wekyb3d8bbwe\" /f",
-      "reg delete \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Appx\\AppxAllUserStore\\Deprovisioned\\Microsoft.WindowsSoundRecorder_8wekyb3d8bbwe\" /f",
-      "reg delete \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Appx\\AppxAllUserStore\\Deprovisioned\\Microsoft.WindowsStore_8wekyb3d8bbwe\" /f",
-      "reg delete \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Appx\\AppxAllUserStore\\Deprovisioned\\Microsoft.Xbox.TCUI_8wekyb3d8bbwe\" /f",
-      "reg delete \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Appx\\AppxAllUserStore\\Deprovisioned\\Microsoft.XboxApp_8wekyb3d8bbwe\" /f",
-      "reg delete \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Appx\\AppxAllUserStore\\Deprovisioned\\Microsoft.XboxGameOverlay_8wekyb3d8bbwe\" /f",
-      "reg delete \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Appx\\AppxAllUserStore\\Deprovisioned\\Microsoft.XboxIdentityProvider_8wekyb3d8bbwe\" /f",
-      "reg delete \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Appx\\AppxAllUserStore\\Deprovisioned\\Microsoft.XboxSpeechToTextOverlay_8wekyb3d8bbwe\" /f",
-      "reg delete \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Appx\\AppxAllUserStore\\Deprovisioned\\Microsoft.ZuneMusic_8wekyb3d8bbwe\" /f",
-      "reg delete \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Appx\\AppxAllUserStore\\Deprovisioned\\Microsoft.ZuneVideo_8wekyb3d8bbwe\" /f",
-      "reg delete \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Appx\\AppxAllUserStore\\Deprovisioned\\MicrosoftWindows.Client.WebExperience_cw5n1h2txyewy\" /f"
+     ""
     ],
     "UndoCommand": [
       ""
@@ -8546,6 +8514,8 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
                                 <ListView Name="featureslist"  Margin="0" ScrollViewer.VerticalScrollBarVisibility="Auto" BorderBrush="{x:Null}" Background="{x:Null}">
                                     <CheckBox Content="Show file extensions" Name="ToggleShowExt" Foreground="{DynamicResource DefaultTextColor}" FontWeight="Bold" Style="{StaticResource ToggleSwitchStyle}" Margin="10" HorizontalAlignment="Right"/>
                                     <CheckBox Content="Dark Theme" Name="ToggleDarkMode" Foreground="{DynamicResource DefaultTextColor}" FontWeight="Bold" Style="{StaticResource ToggleSwitchStyle}" Margin="10" HorizontalAlignment="Right"/>
+                                    <CheckBox Content="Show Hidden Files and Folders" Name="ToggleShowHidden" Foreground="{DynamicResource DefaultTextColor}" FontWeight="Bold" Style="{StaticResource ToggleSwitchStyle}" Margin="10" HorizontalAlignment="Right"/>
+
                                 </ListView>
                         </TabItem>
                 </TabControl>
@@ -9406,6 +9376,16 @@ Function Get-ToggleStatus {
         else{
             return $false
         }
+    }
+
+    if($ToggleSwitch -eq "ToggleShowHidden"){
+        $hideextvalue = (Get-ItemPropertyValue -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "ShowSuperHidden")
+        if($hideextvalue -eq 1){
+            return $true
+        }
+        else{
+            return $false
+        }
     }    
 }
 function Get-SelectedApps {
@@ -10147,6 +10127,34 @@ Function Invoke-DarkMode {
         Write-Warning $psitem.Exception.StackTrace
     }
 }
+function Invoke-ShowFile {
+    Param($Enabled)
+    Try {
+        $value = if ($Enabled -eq $false) { 1 } else { 2 }
+
+        $hiddenItemsKey = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced"
+        
+        # Set registry values to show or hide hidden items
+        Set-ItemProperty -Path $hiddenItemsKey -Name Hidden -Value $value
+        Set-ItemProperty -Path $hiddenItemsKey -Name ShowSuperHidden -Value $value
+
+        # Notify the system to refresh the settings
+        Stop-Process -Name explorer -Force
+    }
+    Catch [System.Security.SecurityException] {
+        Write-Warning "Unable to set registry keys due to a Security Exception"
+    }
+    Catch [System.Management.Automation.ItemNotFoundException] {
+        Write-Warning $psitem.Exception.ErrorRecord
+    }
+    Catch {
+        Write-Warning "Unable to set registry keys due to unhandled exception"
+        Write-Warning $psitem.Exception.StackTrace
+    }
+
+    Write-Host "Completed setting hidden file visibility."
+}
+
 function Invoke-ShowFile-Extensions {
    
     Param($Enabled)
@@ -10328,6 +10336,8 @@ function Invoke-Toogle {
 
         "ToggleShowExt" {Invoke-ShowFile-Extensions $(Get-ToggleStatus ToggleShowExt)}
         "ToggleDarkMode" {Invoke-DarkMode $(Get-ToggleStatus ToggleDarkMode)}
+
+        "ToggleShowHidden" {Invoke-ShowFile $(Get-ToggleStatus ToggleShowHidden)}
     }
 }
 function PlayMusic {

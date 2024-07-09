@@ -40,6 +40,8 @@
                                 <ListView Name="featureslist"  Margin="0" ScrollViewer.VerticalScrollBarVisibility="Auto" BorderBrush="{x:Null}" Background="{x:Null}">
                                     <CheckBox Content="Show file extensions" Name="ToggleShowExt" Foreground="{DynamicResource DefaultTextColor}" FontWeight="Bold" Style="{StaticResource ToggleSwitchStyle}" Margin="10" HorizontalAlignment="Right"/>
                                     <CheckBox Content="Dark Theme" Name="ToggleDarkMode" Foreground="{DynamicResource DefaultTextColor}" FontWeight="Bold" Style="{StaticResource ToggleSwitchStyle}" Margin="10" HorizontalAlignment="Right"/>
+                                    <CheckBox Content="Show Hidden Files and Folders" Name="ToggleShowHidden" Foreground="{DynamicResource DefaultTextColor}" FontWeight="Bold" Style="{StaticResource ToggleSwitchStyle}" Margin="10" HorizontalAlignment="Right"/>
+
                                 </ListView>
                         </TabItem>
                 </TabControl>

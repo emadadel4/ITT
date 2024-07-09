@@ -21,5 +21,15 @@ Function Get-ToggleStatus {
         else{
             return $false
         }
+    }
+
+    if($ToggleSwitch -eq "ToggleShowHidden"){
+        $hideextvalue = (Get-ItemPropertyValue -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "ShowSuperHidden")
+        if($hideextvalue -eq 1){
+            return $true
+        }
+        else{
+            return $false
+        }
     }    
 }
