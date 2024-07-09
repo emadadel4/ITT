@@ -4380,5 +4380,22 @@
     ],
     "category": "Documents",
     "check": "false"
+  },
+  {
+    "name": "Key'n'Stroke",
+    "description": "KeynStroke makes it easy for your audience to follow your actions on the screen",
+    "winget": "none",
+    "choco": "key-n-stroke",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
+    "category": "Utilities",
+    "check": "false"
   }
 ]
