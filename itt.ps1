@@ -19,7 +19,7 @@ Add-Type -AssemblyName System.Windows.Forms
 $sync = [Hashtable]::Synchronized(@{})
 $sync.database = @{}
 $sync.ProcessRunning = $false
-$sync.lastupdate = "08-07-2024"
+$sync.lastupdate = "09-07-2024"
 $sync.github =   "https://github.com/emadadel4"
 $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://emadadel4.github.io"
@@ -5289,6 +5289,12 @@ $sync.database.Tweaks = '[
       },
       {
         "Name": "Microsoft.MicrosoftStickyNotes"
+      },
+      {
+        "Name": "Microsoft.ZuneMusic"
+      },
+      {
+        "Name": "Microsoft.ZuneVideo"
       }
     ],
     "InvokeCommand": [

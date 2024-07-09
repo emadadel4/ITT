@@ -674,6 +674,12 @@
       },
       {
         "Name": "Microsoft.MicrosoftStickyNotes"
+      },
+      {
+        "Name": "Microsoft.ZuneMusic"
+      },
+      {
+        "Name": "Microsoft.ZuneVideo"
       }
     ],
     "InvokeCommand": [
