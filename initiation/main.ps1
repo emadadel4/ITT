@@ -101,7 +101,7 @@ $onClosingEvent = {
     
     param($s, $c)
     
-    $exitdialog = $sync.database.locales.$($sync.Langusege).exit
+    $exitdialog = $sync.database.locales.Controls.$($sync.Langusege).exit
 
     # Show confirmation message box
     $result = [System.Windows.MessageBox]::Show($exitdialog, "Confirmation", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)

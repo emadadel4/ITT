@@ -4441,77 +4441,86 @@ $sync.database.Applications = '[
 ]
 ' | ConvertFrom-Json
 $sync.database.locales = '{
-  "en": {
-    "installBtn": "Install",
-    "applyBtn": "Apply",
-    "downloading": "Downloading",
-    "about":"About",
-    "mirrorLinks":"Mirror Links",
-    "pref":"Preferences",
-    "device":"Managment",
-    "apps":"Apps",
-    "tweaks":"Tweaks",
-    "Features": "Settings",
-    "saveapps":"Save selected Apps",
-    "loadapps":"Load Apps",
-    "music":"Music",
-    "on":"ON ",
-    "off":"OFF",
-    "Dark":"Dark ",
-    "Light":"Light",
-    "defaultTheme":"System",
-    "ittlink":"Create ITT Link",
-    "darkmode":"Theme",
-    "en":"English",
-    "ar":"عربي",
-    "lang":"Langusege",
-    "InstallMessage":"Do you want install selected apps",
-    "ApplyMessage":"Do you want to apply selected tweaks",
-    "installing": "Installing..",
-    "Applying": "Applying..",
-    "choseapp":"Select at lest app to install",
-    "chosetweak":"Please wait for the tweak to be applying",
-    "Pleasewait": "Please wait there is a process in the background.",
-    "lastupdate":"Last update",
-    "sourcecode":"Source Code",
-    "devby":"Made with ♥ by Emad Adel",
-    "exit":"Are you sure you want to close the program, If there are any installing, this will end it"
-
+  "Controls": {
+    "en": {
+      "installBtn": "Install",
+      "applyBtn": "Apply",
+      "downloading": "Downloading",
+      "about":"About",
+      "mirrorLinks":"Mirror Links",
+      "pref":"Preferences",
+      "device":"Management",
+      "apps":"Apps",
+      "tweaks":"Tweaks",
+      "Features": "Settings",
+      "saveapps":"Save selected Apps",
+      "loadapps":"Load Apps",
+      "music":"Music",
+      "on":"ON ",
+      "off":"OFF",
+      "Dark":"Dark ",
+      "Light":"Light",
+      "defaultTheme":"System",
+      "ittlink":"Create ITT Link",
+      "darkmode":"Theme",
+      "en":"English",
+      "ar":"عربي",
+      "lang":"Language",
+      "InstallMessage":"Do you want install selected apps",
+      "ApplyMessage":"Do you want to apply selected tweaks",
+      "installing": "Installing..",
+      "Applying": "Applying..",
+      "choseapp":"Select at least one app to install",
+      "chosetweak":"Please wait for the tweaks to be applied",
+      "Pleasewait": "Please wait, there is a process in the background.",
+      "lastupdate":"Last update",
+      "sourcecode":"Source Code",
+      "devby":"Made with ♥ by Emad Adel",
+      "exit":"Are you sure you want to close the program? If there are any installations, they will be terminated."
+    },
+    "ar": {
+      "InstallBtn": "تثبيت",
+      "applyBtn": "تطبيق",
+      "downloading": "جارٍ التحميل",
+      "about":"عن المطور",
+      "mirrorLinks":"روابط خارجية",
+      "pref":"التفضيلات",
+      "device":"إدارة الجهاز",
+      "apps":"تطبيقات",
+      "tweaks":"تحسينات",
+      "Features": "إعدادات",
+      "saveapps":"حفظ البرامج المختارة",
+      "loadapps":"تحميل البرامج",
+      "music":"الموسيقى",
+      "on":"مشغل ",
+      "off":"متوقف",
+      "Dark":"داكن",
+      "Light":"فاتح",
+      "defaultTheme":"النظام",
+      "ittlink":"إنشاء اختصار",
+      "darkmode":"المظهر",
+      "en":"English",
+      "ar":"عربي",
+      "lang":"اللغة",
+      "InstallMessage":"هل تريد تثبيت البرامج المختارة؟",
+      "ApplyMessage":"هل تريد تطبيق التحسينات المختارة؟",
+      "Applying": "جارٍ التطبيق",
+      "Pleasewait": "يرجى الانتظار، يوجد عملية في الخلفية",
+      "choseapp":"اختر على الأقل تطبيقًا لتثبيته",
+      "chosetweak":"يرجى الانتظار حتى يتم تطبيق التحسينات",
+      "lastupdate":"آخر تحديث",
+      "sourcecode":"الشفرة المصدرية",
+      "devby":"صنع بـ ♥ من قبل عماد عادل",
+      "exit":"هل أنت متأكد من رغبتك في إغلاق البرنامج؟ إذا كان هناك أي تثبيتات، فسيتم إيقافها."
+    }
   },
-  "ar": {
-    "InstallBtn": "تثبيت",
-    "applyBtn": "تطبيق",
-    "downloading": "جإري التثبيت",
-    "about":"عن المطور",
-    "mirrorLinks":"روابط خارجية",
-    "pref":"التفضيلات",
-    "device":"ادارة الجهاز",
-    "apps":"تطبيقات",
-    "tweaks":"تحسينات",
-    "Features": "اعدادات",
-    "saveapps":"حفظ البرامج المختارة",
-    "loadapps":"تحميل البرامح ",
-    "music":"الصوت ",
-    "on":"تشغيل ",
-    "off":"إيقاف",
-    "Dark":"داكن",
-    "Light":"ابيض",
-    "defaultTheme":"النظام",
-    "ittlink":"إنشاء اختصار",
-    "darkmode":"المظهر",
-    "en":"English",
-    "ar":"عربي",
-    "lang":"اللغة",
-    "InstallMessage":"هل تريد تثبيت البرامج المختارة؟",
-    "ApplyMessage":"هل تريد تطبيق التحسينات المختارة؟",
-    "Applying": "جإري التطبيق",
-    "Pleasewait": "يرجى الانظار يوجد برامح تثبت في الحلفية",
-    "choseapp":"أختار على الاقل تطبيق لتثبيته",
-    "chosetweak":"أختار على الاقل اي تحسين لتطبيقه",
-    "lastupdate":"اخر تحديث",
-    "sourcecode":"اكواد الاداة",
-    "devby":"صنع ♥ من قبل عماد عادل",
-    "exit":"هل أنت متأكد من أنك تريد إغلاق البرنامج ، إذا كان هناك أي تثبيت ، فسيؤدي ذلك إلى إنهائه"
+  "AppsDescription": {
+    "en": {
+      "VLC": "Mediaplayer"
+    },
+    "ar": {
+      "VLC": "مشغل فديوهات و موسيقى"
+    }
   }
 }
 ' | ConvertFrom-Json
@@ -8715,14 +8724,14 @@ try {
     {
         switch ($sync.Langusege) {
             "ar" {
-                $sync["window"].DataContext = $sync.database.locales.ar
+                $sync["window"].DataContext = $sync.database.locales.Controls.ar
             }
             "en" {
-                $sync["window"].DataContext = $sync.database.locales.en
+                $sync["window"].DataContext = $sync.database.locales.Controls.en
             }
             default {
                 # Default to English for any other culture or invalid input
-                $sync["window"].DataContext = $sync.database.locales.en
+                $sync["window"].DataContext = $sync.database.locales.Controls.en
                 Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "locales" -Value "en" -Force 
                 #Write-Host "fallback to default lang"
             }
@@ -8730,7 +8739,7 @@ try {
     }
     else
     {
-        $sync["window"].DataContext = $sync.database.locales.$($sync.Langusege)
+        $sync["window"].DataContext = $sync.database.locales.Controls.$($sync.Langusege)
     }
     #===========================================================================
     #endregion Check for Langusege 
@@ -8896,7 +8905,7 @@ function Invoke-ApplyTweaks {
 
     if($sync.ProcessRunning)
     {
-        $localizedMessageTemplate = $sync.database.locales.$($sync.Langusege).Pleasewait
+        $localizedMessageTemplate = $sync.database.locales.Controls.$($sync.Langusege).Pleasewait
         $msg = "$localizedMessageTemplate"
         [System.Windows.MessageBox]::Show($msg, "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
         return
@@ -8907,7 +8916,7 @@ function Invoke-ApplyTweaks {
 
         if($tweaks.Count -gt 0)
         {
-            $areyousuremsg = $sync.database.locales.$($sync.Langusege).ApplyMessage
+            $areyousuremsg = $sync.database.locales.Controls.$($sync.Langusege).ApplyMessage
             $result = [System.Windows.MessageBox]::Show($areyousuremsg, "ITT | Emad Adel", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)
 
             if($result -eq "Yes")
@@ -9186,8 +9195,8 @@ function Invoke-ApplyTweaks {
     
                         [System.Windows.MessageBox]::Show($msg, $title, [System.Windows.MessageBoxButton]::$MessageBoxButton, [System.Windows.MessageBoxImage]::$MessageBoxImage)
                     }
-                        $applyBtn = $sync.database.locales.$($sync.Langusege).applyBtn
-                        $Applying = $sync.database.locales.$($sync.Langusege).Applying
+                        $applyBtn = $sync.database.locales.Controls.$($sync.Langusege).applyBtn
+                        $Applying = $sync.database.locales.Controls.$($sync.Langusege).Applying
 
                         UpdateUI -InstallBtn "$applying" 
                         $sync.ProcessRunning = $true
@@ -9286,7 +9295,7 @@ function Invoke-ApplyTweaks {
                 $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.TweaksListView.Items)
                 $collectionView.Filter = $null
             })
-            $localizedMessageTemplate = $sync.database.locales.$($sync.Langusege).chosetweak
+            $localizedMessageTemplate = $sync.database.locales.Controls.$($sync.Langusege).chosetweak
             [System.Windows.MessageBox]::Show("$localizedMessageTemplate", "ITT | Emad Adel", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
         }
 }
@@ -9498,7 +9507,7 @@ function Invoke-Install {
         
         if($sync.ProcessRunning)
         {
-            $localizedMessageTemplate = $sync.database.locales.$($sync.Langusege).Pleasewait
+            $localizedMessageTemplate = $sync.database.locales.Controls.$($sync.Langusege).Pleasewait
             $msg = "$localizedMessageTemplate"
             [System.Windows.MessageBox]::Show($msg, "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
             return
@@ -9511,7 +9520,7 @@ function Invoke-Install {
         if($selectedApps.Count -gt 0)
         {
             # Retrieve localized messages for confirmation dialog and UI elements
-            $areyousuremsg = $sync.database.locales.$($sync.Langusege).InstallMessage
+            $areyousuremsg = $sync.database.locales.Controls.$($sync.Langusege).InstallMessage
             $result = [System.Windows.MessageBox]::Show($areyousuremsg, "ITT | Emad Adel", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)
 
             if($result -eq "Yes")
@@ -9881,8 +9890,8 @@ function Invoke-Install {
                         # start ProcessRunning
                         $sync.ProcessRunning = $true
                        
-                        $installBtn = $sync.database.locales.$($sync.Langusege).installBtn
-                        $downloading = $sync.database.locales.$($sync.Langusege).downloading
+                        $installBtn = $sync.database.locales.Controls.$($sync.Langusege).installBtn
+                        $downloading = $sync.database.locales.Controls.$($sync.Langusege).downloading
             
                         # Chancge Install Content "Downloading.."
                         UpdateUI -InstallBtn "$downloading"
@@ -9943,7 +9952,7 @@ function Invoke-Install {
                 $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.AppsListView.Items)
                 $collectionView.Filter = $null
             })
-            $localizedMessageTemplate = $sync.database.locales.$($sync.Langusege).choseapp
+            $localizedMessageTemplate = $sync.database.locales.Controls.$($sync.Langusege).choseapp
             [System.Windows.MessageBox]::Show("$localizedMessageTemplate", "ITT | Emad Adel", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
         }
     }
@@ -10003,7 +10012,7 @@ function GetCheckBoxesFromStackPanel {
 function LoadJson {
     if($sync.ProcessRunning)
     {
-        $localizedMessageTemplate = $sync.database.locales.$($sync.Langusege).Pleasewait
+        $localizedMessageTemplate = $sync.database.locales.Controls.$($sync.Langusege).Pleasewait
         $msg = "$localizedMessageTemplate"
         [System.Windows.MessageBox]::Show($msg, "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
         return
@@ -10046,7 +10055,7 @@ function LoadJson {
 function SaveItemsToJson {
     if($sync.ProcessRunning)
     {
-        $localizedMessageTemplate = $sync.database.locales.$($sync.Langusege).Pleasewait
+        $localizedMessageTemplate = $sync.database.locales.Controls.$($sync.Langusege).Pleasewait
         $msg = "$localizedMessageTemplate"
         [System.Windows.MessageBox]::Show($msg, "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
         return
@@ -10455,12 +10464,12 @@ function About{
     if($sync.Langusege -eq "en")
     {
         #$childWindow["window"].DataContext = $sync.database.locales.en
-        $sync.about.DataContext = $sync.database.locales.en
+        $sync.about.DataContext = $sync.database.locales.Controls.en
     }
     else
     {
         #$childWindow["window"].DataContext = $sync.database.locales.ar
-        $sync.about.DataContext = $sync.database.locales.ar
+        $sync.about.DataContext = $sync.database.locales.Controls.ar
     }
     $sync.about.ShowDialog() | Out-Null
 }
@@ -10612,7 +10621,7 @@ function Set-Langusege {
     )
 
     # Set DataContext of the window to the specified language
-    $sync["window"].DataContext = $sync.database.locales.$($lang)
+    $sync["window"].DataContext = $sync.database.locales.Controls.$($lang)
 
     # Set registry value for the language
     Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "locales" -Value "$lang" -Force
@@ -10788,7 +10797,7 @@ $onClosingEvent = {
     
     param($s, $c)
     
-    $exitdialog = $sync.database.locales.$($sync.Langusege).exit
+    $exitdialog = $sync.database.locales.Controls.$($sync.Langusege).exit
 
     # Show confirmation message box
     $result = [System.Windows.MessageBox]::Show($exitdialog, "Confirmation", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)

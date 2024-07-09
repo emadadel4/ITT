@@ -13,12 +13,12 @@ function About{
     if($sync.Langusege -eq "en")
     {
         #$childWindow["window"].DataContext = $sync.database.locales.en
-        $sync.about.DataContext = $sync.database.locales.en
+        $sync.about.DataContext = $sync.database.locales.Controls.en
     }
     else
     {
         #$childWindow["window"].DataContext = $sync.database.locales.ar
-        $sync.about.DataContext = $sync.database.locales.ar
+        $sync.about.DataContext = $sync.database.locales.Controls.ar
     }
     $sync.about.ShowDialog() | Out-Null
 }
