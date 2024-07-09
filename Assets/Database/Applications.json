@@ -4397,5 +4397,22 @@
     ],
     "category": "Utilities",
     "check": "false"
+  },
+  {
+    "name": "Ability Office",
+    "description": "Ability Office 8 Standard complete office suite",
+    "winget": "Ability.AbilityOffice.8.Standard",
+    "choco": "abilityoffice",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
+    "category": "Documents",
+    "check": "false"
   }
 ]
