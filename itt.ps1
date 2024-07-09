@@ -8514,7 +8514,7 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
                                 <ListView Name="featureslist"  Margin="0" ScrollViewer.VerticalScrollBarVisibility="Auto" BorderBrush="{x:Null}" Background="{x:Null}">
                                     <CheckBox Content="Show file extensions" Name="ToggleShowExt" Foreground="{DynamicResource DefaultTextColor}" FontWeight="Bold" Style="{StaticResource ToggleSwitchStyle}" Margin="10" HorizontalAlignment="Right"/>
                                     <CheckBox Content="Dark Theme" Name="ToggleDarkMode" Foreground="{DynamicResource DefaultTextColor}" FontWeight="Bold" Style="{StaticResource ToggleSwitchStyle}" Margin="10" HorizontalAlignment="Right"/>
-                                    <CheckBox Content="Show Hidden Files and Folders" Name="ToggleShowHidden" Foreground="{DynamicResource DefaultTextColor}" FontWeight="Bold" Style="{StaticResource ToggleSwitchStyle}" Margin="10" HorizontalAlignment="Right"/>
+                                    <CheckBox Content="Show Super Hidden" Name="ToggleShowHidden" Foreground="{DynamicResource DefaultTextColor}" FontWeight="Bold" Style="{StaticResource ToggleSwitchStyle}" Margin="10" HorizontalAlignment="Right"/>
 
                                 </ListView>
                         </TabItem>
@@ -10138,7 +10138,6 @@ function Invoke-ShowFile {
         Set-ItemProperty -Path $hiddenItemsKey -Name Hidden -Value $value
         Set-ItemProperty -Path $hiddenItemsKey -Name ShowSuperHidden -Value $value
 
-        # Notify the system to refresh the settings
         Stop-Process -Name explorer -Force
     }
     Catch [System.Security.SecurityException] {
@@ -10151,8 +10150,6 @@ function Invoke-ShowFile {
         Write-Warning "Unable to set registry keys due to unhandled exception"
         Write-Warning $psitem.Exception.StackTrace
     }
-
-    Write-Host "Completed setting hidden file visibility."
 }
 
 function Invoke-ShowFile-Extensions {

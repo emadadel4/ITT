@@ -9,7 +9,6 @@ function Invoke-ShowFile {
         Set-ItemProperty -Path $hiddenItemsKey -Name Hidden -Value $value
         Set-ItemProperty -Path $hiddenItemsKey -Name ShowSuperHidden -Value $value
 
-        # Notify the system to refresh the settings
         Stop-Process -Name explorer -Force
     }
     Catch [System.Security.SecurityException] {
@@ -22,6 +21,4 @@ function Invoke-ShowFile {
         Write-Warning "Unable to set registry keys due to unhandled exception"
         Write-Warning $psitem.Exception.StackTrace
     }
-
-    Write-Host "Completed setting hidden file visibility."
 }
