@@ -4626,17 +4626,21 @@ $sync.database.Settings = '[
   {
       "Content": "Show file extensions",
       "Name":"ToggleShowExt",
-      "description": "Show file extensions in Windows displays the suffix at the end of file names (like .txt, .jpg, .exe), indicating file types and helping users identify which programs can open them, simplifying file management and differentiation."
-  },
+      "description": "Show file extensions in Windows displays the suffix at the end of file names (like .txt, .jpg, .exe), indicating file types and helping users identify which programs can open them, simplifying file management and differentiation.",
+      "category": "Protection"
+    },
   {
     "Content": "Show Super Hidden",
     "Name":"ToggleShowHidden",
-    "description": "Show Super Hidden displays files and folders in Windows that are hidden beyond standard hidden files, often system files to prevent accidental changes."
+    "description": "Show Super Hidden displays files and folders in Windows that are hidden beyond standard hidden files, often system files to prevent accidental changes.",
+    "category": "Protection"
+
 },
   {
     "Content": "Dark Mode",
     "Name":"ToggleDarkMode",
-    "description": "Dark Mode is a setting that changes the screen to darker colors, reducing eye strain and saving battery life on OLED screens."
+    "description": "Dark Mode is a setting that changes the screen to darker colors, reducing eye strain and saving battery life on OLED screens.",
+    "category": "Personalize"
   }
 ]' | ConvertFrom-Json
 $sync.database.Tweaks = '[
@@ -4644,6 +4648,7 @@ $sync.database.Tweaks = '[
     "name": "System File Checker",
     "description": "sfc /scannow Use the System File Checker tool to repair missing or corrupted system files",
     "check": "false",
+    "category": "Fixer",
     "type": "command",
     "refresh": "false",
     "InvokeCommand": [
@@ -4657,6 +4662,7 @@ $sync.database.Tweaks = '[
     "name": "Run Disk cleanup",
     "description": "Clean temporary files that are not necessary",
     "check": "false",
+    "category": "Cleanup",
     "type": "command",
     "refresh": "false",
     "InvokeCommand": [
@@ -4670,6 +4676,7 @@ $sync.database.Tweaks = '[
     "name": "Restore All Windows Services to Default",
     "description": "If you face a problem with some system services, you can restore all services to Default.",
     "check": "false",
+    "category": "Fixer",
     "type": "command",
     "refresh": "false",
     "InvokeCommand": [
@@ -4683,6 +4690,7 @@ $sync.database.Tweaks = '[
     "name": "Fix Stutter/Lag in Games",
     "description": "Fix Stutter in Games Disable GameBarPresenceWriter for Windows 10 and 11",
     "check": "false",
+    "category": "Performance",
     "type": "command",
     "refresh": "false",
     "InvokeCommand": [
@@ -4696,6 +4704,7 @@ $sync.database.Tweaks = '[
     "name": "Enable the Ultimate Performance Power Plan",
     "description": "Enable the Ultimate Performance Power Plan",
     "check": "false",
+    "category": "Performance",
     "type": "command",
     "refresh": "false",
     "InvokeCommand": [
@@ -4709,6 +4718,7 @@ $sync.database.Tweaks = '[
     "name": "Reset the TCP/IP Stack",
     "description": "If you have an internet problem, Reset network configuration",
     "check": "false",
+    "category": "Fixer",
     "type": "command",
     "refresh": "false",
     "InvokeCommand": [
@@ -4722,6 +4732,7 @@ $sync.database.Tweaks = '[
     "name": "Setup Auto login",
     "description": "Setup auto login Windows username",
     "check": "false",
+    "category": "Other",
     "type": "command",
     "refresh": "false",
     "InvokeCommand": [
@@ -4735,6 +4746,7 @@ $sync.database.Tweaks = '[
     "name": "Disable  Xbox Services",
     "description": "This tweak disables Game Mode",
     "check": "false",
+    "category": "Performance",
     "type": "modifying",
     "refresh": "false",
     "Registry": [
@@ -4820,7 +4832,8 @@ $sync.database.Tweaks = '[
     "name": "Disable Data Collection",
     "description": "Disable Data Collection",
     "check": "false",
-    "type": "modifying",
+    "category": "Privacy",
+      "type": "modifying",
     "refresh": "false",
     "Registry": [
       {
@@ -4842,6 +4855,7 @@ $sync.database.Tweaks = '[
     "name": "Disable Start Menu Ads",
     "description": "Disable Start menu Ads and Settings",
     "check": "false",
+    "category": "Privacy",
     "type": "modifying",
     "refresh": "true",
     "Registry": [
@@ -4885,6 +4899,7 @@ $sync.database.Tweaks = '[
     "name": "Disable Windows Web Search",
     "description": "Disable web search in Windows by modifying the registry settings related to Windows Search for Windows 10 and 11",
     "check": "false",
+    "category": "Privacy",
     "type": "modifying",
     "refresh": "false",
     "Registry": [
@@ -4907,6 +4922,7 @@ $sync.database.Tweaks = '[
     "name": "Turn off background Apps",
     "description": "Turn off background apps for Windows 10 and 11",
     "check": "false",
+    "category": "Performance",
     "type": "modifying",
     "refresh": "false",
     "Registry": [
@@ -4936,6 +4952,7 @@ $sync.database.Tweaks = '[
     "name": "Disable suggestions on Start Menu",
     "description": "Disables suggestions on start menu for Windows 10 and 11",
     "check": "false",
+    "category": "Privacy",
     "type": "modifying",
     "refresh": "false",
     "Registry": [
@@ -4958,6 +4975,7 @@ $sync.database.Tweaks = '[
     "name": "Clean Taskbar",
     "description": "Disable the (News and interests) and (People icon) Show Search icon only for Windows 10",
     "check": "false",
+    "category": "Performance",
     "type": "modifying",
     "refresh": "true",
     "Registry": [
@@ -5008,6 +5026,7 @@ $sync.database.Tweaks = '[
     "name": "Remove Folder Shortcuts From File Explorer",
     "description": "Remove Documents, Videos, Pictures, Desktop. Shortcuts from File Explorer",
     "check": "false",
+    "category": "Other",
     "type": "delete",
     "refresh": "false",
     "Registry": [
@@ -5079,6 +5098,7 @@ $sync.database.Tweaks = '[
     "name": "Optimize Windows Services",
     "description": "Disable (Print Spooler), (Fax), (Diagnostic Policy), (Downloaded Maps Manager), (Windows Error Reporting Service), (Remote Registry) , (Internet Connection Sharing), (Disables Telemetry and Data) ",
     "check": "false",
+    "category": "Performance",
     "type": "service",
     "refresh": "false",
     "Service": [
@@ -5334,6 +5354,7 @@ $sync.database.Tweaks = '[
     "name": "Disable Hibernate",
     "description": "Hibernate is a power-saving mode in Microsoft Windows operating systems that allows the system to save the current state of your computer to the hard disk and then power down completely.",
     "check": "false",
+    "category": "Performance",
     "type": "command",
     "refresh": "false",
     "Registry": [
@@ -5363,6 +5384,7 @@ $sync.database.Tweaks = '[
     "name": "Disable OneDrive",
     "description": "Disabling OneDrive for Windows 10 and 11",
     "check": "false",
+    "category": "Performance",
     "type": "modifying",
     "refresh": "false",
     "Registry": [
@@ -5392,6 +5414,7 @@ $sync.database.Tweaks = '[
     "name": "Activate Windows Old Photo Viewer",
     "description": "This tweak enables the classic Windows Photo Viewer for Windows 10.",
     "check": "false",
+    "category": "Classic",
     "type": "modifying",
     "refresh": "false",
     "Registry": [
@@ -5456,6 +5479,7 @@ $sync.database.Tweaks = '[
     "name": "Restore Classic Context Menu Windows 11",
     "description": "Restore the old context menu for Windows 11",
     "check": "false",
+    "category": "Classic",
     "type": "modifying",
     "refresh": "true",
     "Registry": [
@@ -5485,6 +5509,7 @@ $sync.database.Tweaks = '[
     "name": "Remove Copilot in Windows 11",
     "description": "Copilot in Windows provides centralized generative AI assistance to your users right from the Windows desktop Copilot in Windows appears as a side bar docked on the Windows desktop and is designed to help users get things done in Windows Copilot in Windows can perform common tasks in Windows like changing Windows settings which makes it different from the browserbased Copilot in Edge",
     "check": "false",
+    "category": "Privacy",
     "type": "modifying",
     "refresh": "true",
     "Registry": [
@@ -5535,6 +5560,7 @@ $sync.database.Tweaks = '[
     "name": "Disable Recall Snapshots in Windows 11 24H",
     "description": "Recall is an upcoming preview experience exclusive to Copilot+ PCs that will help you easily find and remember things you''ve seen using natural language.",
     "check": "false",
+    "category": "Privacy",
     "type": "modifying",
     "refresh": "true",
     "Registry": [
@@ -8345,7 +8371,7 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
         <StackPanel Orientation="Vertical" Width="auto" Margin="8">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="System File Checker"     FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Fixer"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" FontSize="13" FontFamily="Sego UI Semibold" VerticalAlignment="Center" TextWrapping="Wrap" Text="sfc scannow Use the System File Checker tool to repair missing or corrupted system files"/>
         </StackPanel>
@@ -8353,7 +8379,7 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
         <StackPanel Orientation="Vertical" Width="auto" Margin="8">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Run Disk cleanup"     FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Cleanup"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" FontSize="13" FontFamily="Sego UI Semibold" VerticalAlignment="Center" TextWrapping="Wrap" Text="Clean temporary files that are not necessary"/>
         </StackPanel>
@@ -8361,7 +8387,7 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
         <StackPanel Orientation="Vertical" Width="auto" Margin="8">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Restore All Windows Services to Default"     FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Fixer"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" FontSize="13" FontFamily="Sego UI Semibold" VerticalAlignment="Center" TextWrapping="Wrap" Text="If you face a problem with some system services you can restore all services to Default"/>
         </StackPanel>
@@ -8369,7 +8395,7 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
         <StackPanel Orientation="Vertical" Width="auto" Margin="8">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Fix Stutter/Lag in Games"     FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Performance"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" FontSize="13" FontFamily="Sego UI Semibold" VerticalAlignment="Center" TextWrapping="Wrap" Text="Fix Stutter in Games Disable GameBarPresenceWriter for Windows 10 and 11"/>
         </StackPanel>
@@ -8377,7 +8403,7 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
         <StackPanel Orientation="Vertical" Width="auto" Margin="8">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Enable the Ultimate Performance Power Plan"     FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Performance"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" FontSize="13" FontFamily="Sego UI Semibold" VerticalAlignment="Center" TextWrapping="Wrap" Text="Enable the Ultimate Performance Power Plan"/>
         </StackPanel>
@@ -8385,7 +8411,7 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
         <StackPanel Orientation="Vertical" Width="auto" Margin="8">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Reset the TCP/IP Stack"     FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Fixer"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" FontSize="13" FontFamily="Sego UI Semibold" VerticalAlignment="Center" TextWrapping="Wrap" Text="If you have an internet problem Reset network configuration"/>
         </StackPanel>
@@ -8393,7 +8419,7 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
         <StackPanel Orientation="Vertical" Width="auto" Margin="8">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Setup Auto login"     FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Other"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" FontSize="13" FontFamily="Sego UI Semibold" VerticalAlignment="Center" TextWrapping="Wrap" Text="Setup auto login Windows username"/>
         </StackPanel>
@@ -8401,7 +8427,7 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
         <StackPanel Orientation="Vertical" Width="auto" Margin="8">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Disable  Xbox Services"     FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Performance"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" FontSize="13" FontFamily="Sego UI Semibold" VerticalAlignment="Center" TextWrapping="Wrap" Text="This tweak disables Game Mode"/>
         </StackPanel>
@@ -8409,7 +8435,7 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
         <StackPanel Orientation="Vertical" Width="auto" Margin="8">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Disable Data Collection"     FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Privacy"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" FontSize="13" FontFamily="Sego UI Semibold" VerticalAlignment="Center" TextWrapping="Wrap" Text="Disable Data Collection"/>
         </StackPanel>
@@ -8417,7 +8443,7 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
         <StackPanel Orientation="Vertical" Width="auto" Margin="8">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Disable Start Menu Ads"     FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Privacy"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" FontSize="13" FontFamily="Sego UI Semibold" VerticalAlignment="Center" TextWrapping="Wrap" Text="Disable Start menu Ads and Settings"/>
         </StackPanel>
@@ -8425,7 +8451,7 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
         <StackPanel Orientation="Vertical" Width="auto" Margin="8">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Disable Windows Web Search"     FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Privacy"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" FontSize="13" FontFamily="Sego UI Semibold" VerticalAlignment="Center" TextWrapping="Wrap" Text="Disable web search in Windows by modifying the registry settings related to Windows Search for Windows 10 and 11"/>
         </StackPanel>
@@ -8433,7 +8459,7 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
         <StackPanel Orientation="Vertical" Width="auto" Margin="8">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Turn off background Apps"     FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Performance"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" FontSize="13" FontFamily="Sego UI Semibold" VerticalAlignment="Center" TextWrapping="Wrap" Text="Turn off background apps for Windows 10 and 11"/>
         </StackPanel>
@@ -8441,7 +8467,7 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
         <StackPanel Orientation="Vertical" Width="auto" Margin="8">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Disable suggestions on Start Menu"     FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Privacy"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" FontSize="13" FontFamily="Sego UI Semibold" VerticalAlignment="Center" TextWrapping="Wrap" Text="Disables suggestions on start menu for Windows 10 and 11"/>
         </StackPanel>
@@ -8449,7 +8475,7 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
         <StackPanel Orientation="Vertical" Width="auto" Margin="8">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Clean Taskbar"     FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Performance"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" FontSize="13" FontFamily="Sego UI Semibold" VerticalAlignment="Center" TextWrapping="Wrap" Text="Disable the News and interests and People icon Show Search icon only for Windows 10"/>
         </StackPanel>
@@ -8457,7 +8483,7 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
         <StackPanel Orientation="Vertical" Width="auto" Margin="8">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Remove Folder Shortcuts From File Explorer"     FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Other"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" FontSize="13" FontFamily="Sego UI Semibold" VerticalAlignment="Center" TextWrapping="Wrap" Text="Remove Documents Videos Pictures Desktop Shortcuts from File Explorer"/>
         </StackPanel>
@@ -8465,7 +8491,7 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
         <StackPanel Orientation="Vertical" Width="auto" Margin="8">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Optimize Windows Services"     FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Performance"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" FontSize="13" FontFamily="Sego UI Semibold" VerticalAlignment="Center" TextWrapping="Wrap" Text="Disable Print Spooler Fax Diagnostic Policy Downloaded Maps Manager Windows Error Reporting Service Remote Registry  Internet Connection Sharing Disables Telemetry and Data "/>
         </StackPanel>
@@ -8481,7 +8507,7 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
         <StackPanel Orientation="Vertical" Width="auto" Margin="8">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Disable Hibernate"     FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Performance"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" FontSize="13" FontFamily="Sego UI Semibold" VerticalAlignment="Center" TextWrapping="Wrap" Text="Hibernate is a powersaving mode in Microsoft Windows operating systems that allows the system to save the current state of your computer to the hard disk and then power down completely"/>
         </StackPanel>
@@ -8489,7 +8515,7 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
         <StackPanel Orientation="Vertical" Width="auto" Margin="8">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Disable OneDrive"     FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Performance"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" FontSize="13" FontFamily="Sego UI Semibold" VerticalAlignment="Center" TextWrapping="Wrap" Text="Disabling OneDrive for Windows 10 and 11"/>
         </StackPanel>
@@ -8497,7 +8523,7 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
         <StackPanel Orientation="Vertical" Width="auto" Margin="8">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Activate Windows Old Photo Viewer"     FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Classic"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" FontSize="13" FontFamily="Sego UI Semibold" VerticalAlignment="Center" TextWrapping="Wrap" Text="This tweak enables the classic Windows Photo Viewer for Windows 10"/>
         </StackPanel>
@@ -8505,7 +8531,7 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
         <StackPanel Orientation="Vertical" Width="auto" Margin="8">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Restore Classic Context Menu Windows 11"     FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Classic"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" FontSize="13" FontFamily="Sego UI Semibold" VerticalAlignment="Center" TextWrapping="Wrap" Text="Restore the old context menu for Windows 11"/>
         </StackPanel>
@@ -8513,7 +8539,7 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
         <StackPanel Orientation="Vertical" Width="auto" Margin="8">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Remove Copilot in Windows 11"     FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Privacy"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" FontSize="13" FontFamily="Sego UI Semibold" VerticalAlignment="Center" TextWrapping="Wrap" Text="Copilot in Windows provides centralized generative AI assistance to your users right from the Windows desktop Copilot in Windows appears as a side bar docked on the Windows desktop and is designed to help users get things done in Windows Copilot in Windows can perform common tasks in Windows like changing Windows settings which makes it different from the browserbased Copilot in Edge"/>
         </StackPanel>
@@ -8521,7 +8547,7 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
         <StackPanel Orientation="Vertical" Width="auto" Margin="8">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Disable Recall Snapshots in Windows 11 24H"     FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Privacy"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" FontSize="13" FontFamily="Sego UI Semibold" VerticalAlignment="Center" TextWrapping="Wrap" Text="Recall is an upcoming preview experience exclusive to Copilot PCs that will help you easily find and remember things youve seen using natural language"/>
         </StackPanel>
@@ -8542,7 +8568,7 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
         <StackPanel Orientation="Vertical" Width="auto" Margin="8">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Show file extensions" Tag=""  Style="{StaticResource ToggleSwitchStyle}" Name="ToggleShowExt" FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Protection"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" FontSize="13" FontFamily="Sego UI Semibold" VerticalAlignment="Center" TextWrapping="Wrap" Text="Show file extensions in Windows displays the suffix at the end of file names like txt jpg exe indicating file types and helping users identify which programs can open them simplifying file management and differentiation"/>
         </StackPanel>
@@ -8550,7 +8576,7 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
         <StackPanel Orientation="Vertical" Width="auto" Margin="8">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Show Super Hidden" Tag=""  Style="{StaticResource ToggleSwitchStyle}" Name="ToggleShowHidden" FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Protection"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" FontSize="13" FontFamily="Sego UI Semibold" VerticalAlignment="Center" TextWrapping="Wrap" Text="Show Super Hidden displays files and folders in Windows that are hidden beyond standard hidden files often system files to prevent accidental changes"/>
         </StackPanel>
@@ -8558,7 +8584,7 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
         <StackPanel Orientation="Vertical" Width="auto" Margin="8">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Dark Mode" Tag=""  Style="{StaticResource ToggleSwitchStyle}" Name="ToggleDarkMode" FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Personalize"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" FontSize="13" FontFamily="Sego UI Semibold" VerticalAlignment="Center" TextWrapping="Wrap" Text="Dark Mode is a setting that changes the screen to darker colors reducing eye strain and saving battery life on OLED screens"/>
         </StackPanel>

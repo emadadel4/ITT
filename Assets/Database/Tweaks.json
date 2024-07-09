@@ -3,6 +3,7 @@
     "name": "System File Checker",
     "description": "sfc /scannow Use the System File Checker tool to repair missing or corrupted system files",
     "check": "false",
+    "category": "Fixer",
     "type": "command",
     "refresh": "false",
     "InvokeCommand": [
@@ -16,6 +17,7 @@
     "name": "Run Disk cleanup",
     "description": "Clean temporary files that are not necessary",
     "check": "false",
+    "category": "Cleanup",
     "type": "command",
     "refresh": "false",
     "InvokeCommand": [
@@ -29,6 +31,7 @@
     "name": "Restore All Windows Services to Default",
     "description": "If you face a problem with some system services, you can restore all services to Default.",
     "check": "false",
+    "category": "Fixer",
     "type": "command",
     "refresh": "false",
     "InvokeCommand": [
@@ -42,6 +45,7 @@
     "name": "Fix Stutter/Lag in Games",
     "description": "Fix Stutter in Games Disable GameBarPresenceWriter for Windows 10 and 11",
     "check": "false",
+    "category": "Performance",
     "type": "command",
     "refresh": "false",
     "InvokeCommand": [
@@ -55,6 +59,7 @@
     "name": "Enable the Ultimate Performance Power Plan",
     "description": "Enable the Ultimate Performance Power Plan",
     "check": "false",
+    "category": "Performance",
     "type": "command",
     "refresh": "false",
     "InvokeCommand": [
@@ -68,6 +73,7 @@
     "name": "Reset the TCP/IP Stack",
     "description": "If you have an internet problem, Reset network configuration",
     "check": "false",
+    "category": "Fixer",
     "type": "command",
     "refresh": "false",
     "InvokeCommand": [
@@ -81,6 +87,7 @@
     "name": "Setup Auto login",
     "description": "Setup auto login Windows username",
     "check": "false",
+    "category": "Other",
     "type": "command",
     "refresh": "false",
     "InvokeCommand": [
@@ -94,6 +101,7 @@
     "name": "Disable  Xbox Services",
     "description": "This tweak disables Game Mode",
     "check": "false",
+    "category": "Performance",
     "type": "modifying",
     "refresh": "false",
     "Registry": [
@@ -179,7 +187,8 @@
     "name": "Disable Data Collection",
     "description": "Disable Data Collection",
     "check": "false",
-    "type": "modifying",
+    "category": "Privacy",
+      "type": "modifying",
     "refresh": "false",
     "Registry": [
       {
@@ -201,6 +210,7 @@
     "name": "Disable Start Menu Ads",
     "description": "Disable Start menu Ads and Settings",
     "check": "false",
+    "category": "Privacy",
     "type": "modifying",
     "refresh": "true",
     "Registry": [
@@ -244,6 +254,7 @@
     "name": "Disable Windows Web Search",
     "description": "Disable web search in Windows by modifying the registry settings related to Windows Search for Windows 10 and 11",
     "check": "false",
+    "category": "Privacy",
     "type": "modifying",
     "refresh": "false",
     "Registry": [
@@ -266,6 +277,7 @@
     "name": "Turn off background Apps",
     "description": "Turn off background apps for Windows 10 and 11",
     "check": "false",
+    "category": "Performance",
     "type": "modifying",
     "refresh": "false",
     "Registry": [
@@ -295,6 +307,7 @@
     "name": "Disable suggestions on Start Menu",
     "description": "Disables suggestions on start menu for Windows 10 and 11",
     "check": "false",
+    "category": "Privacy",
     "type": "modifying",
     "refresh": "false",
     "Registry": [
@@ -317,6 +330,7 @@
     "name": "Clean Taskbar",
     "description": "Disable the (News and interests) and (People icon) Show Search icon only for Windows 10",
     "check": "false",
+    "category": "Performance",
     "type": "modifying",
     "refresh": "true",
     "Registry": [
@@ -367,6 +381,7 @@
     "name": "Remove Folder Shortcuts From File Explorer",
     "description": "Remove Documents, Videos, Pictures, Desktop. Shortcuts from File Explorer",
     "check": "false",
+    "category": "Other",
     "type": "delete",
     "refresh": "false",
     "Registry": [
@@ -438,6 +453,7 @@
     "name": "Optimize Windows Services",
     "description": "Disable (Print Spooler), (Fax), (Diagnostic Policy), (Downloaded Maps Manager), (Windows Error Reporting Service), (Remote Registry) , (Internet Connection Sharing), (Disables Telemetry and Data) ",
     "check": "false",
+    "category": "Performance",
     "type": "service",
     "refresh": "false",
     "Service": [
@@ -693,6 +709,7 @@
     "name": "Disable Hibernate",
     "description": "Hibernate is a power-saving mode in Microsoft Windows operating systems that allows the system to save the current state of your computer to the hard disk and then power down completely.",
     "check": "false",
+    "category": "Performance",
     "type": "command",
     "refresh": "false",
     "Registry": [
@@ -722,6 +739,7 @@
     "name": "Disable OneDrive",
     "description": "Disabling OneDrive for Windows 10 and 11",
     "check": "false",
+    "category": "Performance",
     "type": "modifying",
     "refresh": "false",
     "Registry": [
@@ -751,6 +769,7 @@
     "name": "Activate Windows Old Photo Viewer",
     "description": "This tweak enables the classic Windows Photo Viewer for Windows 10.",
     "check": "false",
+    "category": "Classic",
     "type": "modifying",
     "refresh": "false",
     "Registry": [
@@ -815,6 +834,7 @@
     "name": "Restore Classic Context Menu Windows 11",
     "description": "Restore the old context menu for Windows 11",
     "check": "false",
+    "category": "Classic",
     "type": "modifying",
     "refresh": "true",
     "Registry": [
@@ -844,6 +864,7 @@
     "name": "Remove Copilot in Windows 11",
     "description": "Copilot in Windows provides centralized generative AI assistance to your users right from the Windows desktop Copilot in Windows appears as a side bar docked on the Windows desktop and is designed to help users get things done in Windows Copilot in Windows can perform common tasks in Windows like changing Windows settings which makes it different from the browserbased Copilot in Edge",
     "check": "false",
+    "category": "Privacy",
     "type": "modifying",
     "refresh": "true",
     "Registry": [
@@ -894,6 +915,7 @@
     "name": "Disable Recall Snapshots in Windows 11 24H",
     "description": "Recall is an upcoming preview experience exclusive to Copilot+ PCs that will help you easily find and remember things you've seen using natural language.",
     "check": "false",
+    "category": "Privacy",
     "type": "modifying",
     "refresh": "true",
     "Registry": [
