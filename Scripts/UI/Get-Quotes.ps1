@@ -33,7 +33,15 @@ function GetQuotes {
         # Function to display welcome text
         function Display-WelcomeText {
             $sync.Quotes.Dispatcher.Invoke([Action]{
-                $sync.Quotes.Text = $sync.database.Quotes.Q[0]
+
+                if($sync.Langusege -eq "en")
+                {
+                    $sync.Quotes.Text = $sync.database.locales.Controls.en.welcome
+                }
+                else
+                {
+                    $sync.Quotes.Text = $sync.database.locales.Controls.ar.welcome
+                }
             })
         }
 

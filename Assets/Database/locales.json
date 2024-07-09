@@ -1,6 +1,7 @@
 {
   "Controls": {
     "en": {
+      "Welcome": "This tool offers substantial facilitation in software installation and performance enhancement. Join us to contribute to its development and enhance its completeness",
       "installBtn": "Install",
       "applyBtn": "Apply",
       "downloading": "Downloading",
@@ -37,6 +38,7 @@
       "exit":"Are you sure you want to close the program? If there are any installations, they will be terminated."
     },
     "ar": {
+      "Welcome": "توفر هذه الأداة تسهيلات كبيرة في عملية تثبيت البرامج وتحسين الاداء. انضم إلينا لتساهم في تطويرها وجعلها أكثر اكتمالًا",
       "InstallBtn": "تثبيت",
       "applyBtn": "تطبيق",
       "downloading": "جارٍ التحميل",
