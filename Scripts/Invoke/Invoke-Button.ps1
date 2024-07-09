@@ -129,6 +129,11 @@ function Invoke-Button {
             Debug-Message $action
         }
 
+        "winoffice" {
+            Start-Process "https://massgrave.dev/genuine-installation-media" 
+            Debug-Message $action
+        }
+
         # Other actions
         "ittshortcut" {
             ITTShortcut $action
