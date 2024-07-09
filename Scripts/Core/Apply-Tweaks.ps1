@@ -74,7 +74,7 @@ function Invoke-ApplyTweaks {
 
     if($sync.ProcessRunning)
     {
-        $localizedMessageTemplate = $sync.database.locales.$($sync.Langusege).Pleasewait
+        $localizedMessageTemplate = $sync.database.locales.Controls.$($sync.Langusege).Pleasewait
         $msg = "$localizedMessageTemplate"
         [System.Windows.MessageBox]::Show($msg, "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
         return
@@ -85,7 +85,7 @@ function Invoke-ApplyTweaks {
 
         if($tweaks.Count -gt 0)
         {
-            $areyousuremsg = $sync.database.locales.$($sync.Langusege).ApplyMessage
+            $areyousuremsg = $sync.database.locales.Controls.$($sync.Langusege).ApplyMessage
             $result = [System.Windows.MessageBox]::Show($areyousuremsg, "ITT | Emad Adel", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)
 
             if($result -eq "Yes")
@@ -364,8 +364,8 @@ function Invoke-ApplyTweaks {
     
                         [System.Windows.MessageBox]::Show($msg, $title, [System.Windows.MessageBoxButton]::$MessageBoxButton, [System.Windows.MessageBoxImage]::$MessageBoxImage)
                     }
-                        $applyBtn = $sync.database.locales.$($sync.Langusege).applyBtn
-                        $Applying = $sync.database.locales.$($sync.Langusege).Applying
+                        $applyBtn = $sync.database.locales.Controls.$($sync.Langusege).applyBtn
+                        $Applying = $sync.database.locales.Controls.$($sync.Langusege).Applying
 
                         UpdateUI -InstallBtn "$applying" 
                         $sync.ProcessRunning = $true
@@ -464,7 +464,7 @@ function Invoke-ApplyTweaks {
                 $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.TweaksListView.Items)
                 $collectionView.Filter = $null
             })
-            $localizedMessageTemplate = $sync.database.locales.$($sync.Langusege).chosetweak
+            $localizedMessageTemplate = $sync.database.locales.Controls.$($sync.Langusege).chosetweak
             [System.Windows.MessageBox]::Show("$localizedMessageTemplate", "ITT | Emad Adel", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
         }
 }

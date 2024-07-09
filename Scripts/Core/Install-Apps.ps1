@@ -73,7 +73,7 @@ function Invoke-Install {
         
         if($sync.ProcessRunning)
         {
-            $localizedMessageTemplate = $sync.database.locales.$($sync.Langusege).Pleasewait
+            $localizedMessageTemplate = $sync.database.locales.Controls.$($sync.Langusege).Pleasewait
             $msg = "$localizedMessageTemplate"
             [System.Windows.MessageBox]::Show($msg, "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
             return
@@ -86,7 +86,7 @@ function Invoke-Install {
         if($selectedApps.Count -gt 0)
         {
             # Retrieve localized messages for confirmation dialog and UI elements
-            $areyousuremsg = $sync.database.locales.$($sync.Langusege).InstallMessage
+            $areyousuremsg = $sync.database.locales.Controls.$($sync.Langusege).InstallMessage
             $result = [System.Windows.MessageBox]::Show($areyousuremsg, "ITT | Emad Adel", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)
 
             if($result -eq "Yes")
@@ -456,8 +456,8 @@ function Invoke-Install {
                         # start ProcessRunning
                         $sync.ProcessRunning = $true
                        
-                        $installBtn = $sync.database.locales.$($sync.Langusege).installBtn
-                        $downloading = $sync.database.locales.$($sync.Langusege).downloading
+                        $installBtn = $sync.database.locales.Controls.$($sync.Langusege).installBtn
+                        $downloading = $sync.database.locales.Controls.$($sync.Langusege).downloading
             
                         # Chancge Install Content "Downloading.."
                         UpdateUI -InstallBtn "$downloading"
@@ -518,7 +518,7 @@ function Invoke-Install {
                 $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.AppsListView.Items)
                 $collectionView.Filter = $null
             })
-            $localizedMessageTemplate = $sync.database.locales.$($sync.Langusege).choseapp
+            $localizedMessageTemplate = $sync.database.locales.Controls.$($sync.Langusege).choseapp
             [System.Windows.MessageBox]::Show("$localizedMessageTemplate", "ITT | Emad Adel", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
         }
     }

@@ -44,14 +44,14 @@ try {
     {
         switch ($sync.Langusege) {
             "ar" {
-                $sync["window"].DataContext = $sync.database.locales.ar
+                $sync["window"].DataContext = $sync.database.locales.Controls.ar
             }
             "en" {
-                $sync["window"].DataContext = $sync.database.locales.en
+                $sync["window"].DataContext = $sync.database.locales.Controls.en
             }
             default {
                 # Default to English for any other culture or invalid input
-                $sync["window"].DataContext = $sync.database.locales.en
+                $sync["window"].DataContext = $sync.database.locales.Controls.en
                 Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "locales" -Value "en" -Force 
                 #Write-Host "fallback to default lang"
             }
@@ -59,7 +59,7 @@ try {
     }
     else
     {
-        $sync["window"].DataContext = $sync.database.locales.$($sync.Langusege)
+        $sync["window"].DataContext = $sync.database.locales.Controls.$($sync.Langusege)
     }
     #===========================================================================
     #endregion Check for Langusege 
@@ -108,6 +108,7 @@ catch {
 # Catch controls
 $sync.AppsListView = $sync['window'].FindName("appslist")
 $sync.TweaksListView = $sync['window'].FindName("tweakslist")
+$sync.SettingsListView = $sync['window'].FindName("SettingsList")
 $sync.currentList
 
 # Buttons

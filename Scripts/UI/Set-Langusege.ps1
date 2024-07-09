@@ -4,7 +4,7 @@ function Set-Langusege {
     )
 
     # Set DataContext of the window to the specified language
-    $sync["window"].DataContext = $sync.database.locales.$($lang)
+    $sync["window"].DataContext = $sync.database.locales.Controls.$($lang)
 
     # Set registry value for the language
     Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "locales" -Value "$lang" -Force
