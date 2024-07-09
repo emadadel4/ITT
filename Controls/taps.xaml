@@ -28,7 +28,7 @@
                                     {{Tweaks}}
                                 </ListView>
                         </TabItem>
-                        <TabItem x:Name="featurestab" Header="{Binding Features}" BorderBrush="{x:Null}" Background="{x:Null}">
+                        <TabItem x:Name="SettingsTab" Header="{Binding Features}" BorderBrush="{x:Null}" Background="{x:Null}">
                             <TabItem.HeaderTemplate>
                                     <DataTemplate>
                                         <StackPanel Orientation="Horizontal">
@@ -37,10 +37,8 @@
                                         </StackPanel>
                                     </DataTemplate>
                             </TabItem.HeaderTemplate>
-                                <ListView Name="featureslist"  Margin="0" ScrollViewer.VerticalScrollBarVisibility="Auto" BorderBrush="{x:Null}" Background="{x:Null}">
-                                    <CheckBox Content="Show file extensions" Name="ToggleShowExt" Foreground="{DynamicResource DefaultTextColor}" FontWeight="Bold" Style="{StaticResource ToggleSwitchStyle}" Margin="10" HorizontalAlignment="Right"/>
-                                    <CheckBox Content="Show Super Hidden" Name="ToggleShowHidden" Foreground="{DynamicResource DefaultTextColor}" FontWeight="Bold" Style="{StaticResource ToggleSwitchStyle}" Margin="10" HorizontalAlignment="Right"/>
-                                    <CheckBox Content="Windows Dark Mode" Name="ToggleDarkMode" Foreground="{DynamicResource DefaultTextColor}" FontWeight="Bold" Style="{StaticResource ToggleSwitchStyle}" Margin="10" HorizontalAlignment="Right"/>
+                                <ListView Name="SettingsList"  Margin="0" ScrollViewer.VerticalScrollBarVisibility="Auto" BorderBrush="{x:Null}" Background="{x:Null}">
+                                    {{Settings}}
                                 </ListView>
                         </TabItem>
                 </TabControl>

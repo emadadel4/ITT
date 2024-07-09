@@ -78,7 +78,10 @@ function GenerateCheckboxes {
         [array]$Items,
         [string]$ContentField,
         [string]$TagField = "",
-        [string]$IsCheckedField = ""
+        [string]$IsCheckedField = "",
+        [string]$ToggleField = "",
+        [string]$NameField = ""
+
     )
 
     $Checkboxes = ""
@@ -91,17 +94,28 @@ function GenerateCheckboxes {
 
         $Cat = $Item.category -replace '[^\w\s]', ''
 
+        $NameNoSpace = $Item.Name -replace '[^\w\s]', ''
+
+
         $Content = $Item.$ContentField
 
         $Tag = if ($TagField) { "Tag=`"$($Item.$TagField)`"" } else { "" }
 
+        $adel = if ($NameField) { "Name=`"$($Item.$NameField)`"" } else { "" }
+
+
         $IsChecked = if ($IsCheckedField) { "IsChecked=`"$($Item.$IsCheckedField)`"" } else { "" }
+
+        $Toggle = if ($ToggleField) { "Style=`"{StaticResource ToggleSwitchStyle}`"" } else { "" }
+
+
+
 
         $Checkboxes += @"
 
         <StackPanel Orientation="Vertical" Width="auto" Margin="8">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="$Content" $Tag $IsChecked FontWeight="Bold" FontFamily="arial" FontSize="13"  HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <CheckBox Content="$Content" $Tag $IsChecked $Toggle $adel FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="$Cat"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" FontSize="13" FontFamily="Sego UI Semibold" VerticalAlignment="Center" TextWrapping="Wrap" Text="$CleanedItem"/>
@@ -226,9 +240,13 @@ WriteToScript -Content @"
    
     $AppsCheckboxes = GenerateCheckboxes -Items $sync.database.Applications -ContentField "Name" -TagField "category" -IsCheckedField "check"
     $TweaksCheckboxes = GenerateCheckboxes -Items $sync.database.Tweaks -ContentField "Name"
+    $SettingsCheckboxes = GenerateCheckboxes -Items $sync.database.Settings -ContentField "Content" -NameField "Name" -ToggleField "Style="{StaticResource ToggleSwitchStyle}""
+
 
     $XamlContent = $XamlContent -replace "{{Apps}}", $AppsCheckboxes 
     $XamlContent = $XamlContent -replace "{{Tweaks}}", $TweaksCheckboxes 
+    $XamlContent = $XamlContent -replace "{{Settings}}", $SettingsCheckboxes 
+
     WriteToScript -Content "`$inputXML = '$XamlContent'"
 
     WriteToScript -Content @"

@@ -108,6 +108,7 @@ catch {
 # Catch controls
 $sync.AppsListView = $sync['window'].FindName("appslist")
 $sync.TweaksListView = $sync['window'].FindName("tweakslist")
+$sync.SettingsListView = $sync['window'].FindName("SettingsList")
 $sync.currentList
 
 # Buttons
