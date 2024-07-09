@@ -34,13 +34,14 @@ function GetQuotes {
         function Display-WelcomeText {
             $sync.Quotes.Dispatcher.Invoke([Action]{
 
-                if($sync.Langusege -eq "en")
+                if($sync.Langusege -eq "ar")
                 {
-                    $sync.Quotes.Text = $sync.database.locales.Controls.en.welcome
+                    $sync.Quotes.Text = $sync.database.locales.Controls.ar.welcome
+
                 }
                 else
                 {
-                    $sync.Quotes.Text = $sync.database.locales.Controls.ar.welcome
+                    $sync.Quotes.Text = $sync.database.locales.Controls.en.welcome
                 }
             })
         }
