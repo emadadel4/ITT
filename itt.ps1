@@ -9163,8 +9163,6 @@ function Invoke-ApplyTweaks {
                                     if($app.Refresh -eq "true")
                                     {
                                         Stop-Process -Name explorer -Force
-                                        Start-Process explorer
-
                                     }
                                 }
                                 "modifying" {
@@ -9176,7 +9174,6 @@ function Invoke-ApplyTweaks {
                                     if($app.Refresh -eq "true")
                                     {
                                         Stop-Process -Name explorer -Force
-                                        Start-Process explorer
                                     }
 
                                 }
@@ -9189,7 +9186,6 @@ function Invoke-ApplyTweaks {
                                     if($app.Refresh -eq "true")
                                     {
                                         Stop-Process -Name explorer -Force
-                                        Start-Process explorer
                                     }
                                 }
                                 "service" {
