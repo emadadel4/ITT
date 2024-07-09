@@ -4443,6 +4443,7 @@ $sync.database.Applications = '[
 $sync.database.locales = '{
   "Controls": {
     "en": {
+      "Welcome": "This tool offers substantial facilitation in software installation and performance enhancement. Join us to contribute to its development and enhance its completeness",
       "installBtn": "Install",
       "applyBtn": "Apply",
       "downloading": "Downloading",
@@ -4479,6 +4480,7 @@ $sync.database.locales = '{
       "exit":"Are you sure you want to close the program? If there are any installations, they will be terminated."
     },
     "ar": {
+      "Welcome": "توفر هذه الأداة تسهيلات كبيرة في عملية تثبيت البرامج وتحسين الاداء. انضم إلينا لتساهم في تطويرها وجعلها أكثر اكتمالًا",
       "InstallBtn": "تثبيت",
       "applyBtn": "تطبيق",
       "downloading": "جارٍ التحميل",
@@ -4561,7 +4563,6 @@ $sync.database.OST = '{
 ' | ConvertFrom-Json
 $sync.database.Quotes = '{
   "Q": [
-    "توفر هذه الأداة تسهيلات كبيرة في عملية تثبيت البرامج وتحسين الاداء. انضم إلينا لتساهم في تطويرها وجعلها أكثر اكتمالًا",
     "إما تموت بطلا، أو تعيش طويلاً حتى ترى نفسك اصبحت الشرير",
     "بعض الرجال يريدون فقط مشاهدة العالم يحترق",
     "أنت دائما تخشى ما لا تفهمه",
@@ -10619,7 +10620,15 @@ function GetQuotes {
         # Function to display welcome text
         function Display-WelcomeText {
             $sync.Quotes.Dispatcher.Invoke([Action]{
-                $sync.Quotes.Text = $sync.database.Quotes.Q[0]
+
+                if($sync.Langusege -eq "en")
+                {
+                    $sync.Quotes.Text = $sync.database.locales.Controls.en.welcome
+                }
+                else
+                {
+                    $sync.Quotes.Text = $sync.database.locales.Controls.ar.welcome
+                }
             })
         }
 
