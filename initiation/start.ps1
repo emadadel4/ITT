@@ -32,6 +32,7 @@ else
     $newProcess.Verb = "runas";
     [System.Diagnostics.Process]::Start($newProcess);
     $newProcess.WindowStyle = [System.Diagnostics.ProcessWindowStyle]::Maximized
+    Write-Host "update repo"
     exit
     break
 }
