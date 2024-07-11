@@ -10048,14 +10048,13 @@ function WriteAText {
 
 Write-Host " +==============================================================================+" -ForegroundColor Yellow;
 Write-Host " |                                                                              |" -ForegroundColor Yellow;
-Write-Host " |                                                                              |" -ForegroundColor Yellow;
 Write-Host " |   ___ _____ _____   _____ __  __    _    ____       _    ____  _____ _       |" -ForegroundColor Yellow;
 Write-Host " |  |_ _|_   _|_   _| | ____|  \/  |  / \  |  _ \     / \  |  _ \| ____| |      |" -ForegroundColor Yellow;
 Write-Host " |   | |  | |   | |   |  _| | |\/| | / _ \ | | | |   / _ \ | | | |  _| | |      |" -ForegroundColor Yellow;
 Write-Host " |   | |  | |   | |   | |___| |  | |/ ___ \| |_| |  / ___ \| |_| | |___| |___   |" -ForegroundColor Yellow;
 Write-Host " |  |___| |_|   |_|   |_____|_|  |_/_/   \_\____/  /_/   \_\____/|_____|_____|  |" -ForegroundColor Yellow;
 Write-Host " |                                                                              |" -ForegroundColor Yellow;
-Write-Host " |                                                                              |" -ForegroundColor Yellow;
+Write-Host " |                       Made with ♥ By Emad Adel                               |" -ForegroundColor Yellow;
 Write-Host " +==============================================================================+" -ForegroundColor Yellow; 
 Write-Host " `n` $message" -ForegroundColor Yellow
 Write-Host "`n` IT (Install and Tweaks Tools) is open source, You can contribute to improving the tool." -ForegroundColor Yellow
