@@ -51,9 +51,6 @@ if ($principal.IsInRole($administrator)) {
         $console.WindowWidth = $maxWidth
         $console.WindowHeight = $maxHeight
     }
-
-    # Optionally, clear the screen
-    Clear-Host
 }
 else {
     # Run the script as administrator
