@@ -31,6 +31,7 @@ else
     $newProcess.Arguments = $myInvocation.MyCommand.Definition;
     $newProcess.Verb = "runas";
     [System.Diagnostics.Process]::Start($newProcess);
+    $newProcess.WindowStyle = [System.Diagnostics.ProcessWindowStyle]::Maximized
     exit
     break
 }
