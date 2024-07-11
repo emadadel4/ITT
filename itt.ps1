@@ -41,7 +41,8 @@ if ($principal.IsInRole($administrator))
     # Set the window to start maximized
     $Maximized = New-Object -ComObject Shell.Application
     $Maximized.MinimizeAll()
-    $Maximized.UndoMinimizeAll()
+
+ 
     #Clear-Host
 }
 else
