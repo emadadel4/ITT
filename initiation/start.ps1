@@ -29,10 +29,12 @@ if ($principal.IsInRole($administrator))
 }
 else
 {
-    $newProcess.Arguments = $myInvocation.MyCommand.Definition;
-    $newProcess.Verb = "runas";
-    [System.Diagnostics.Process]::Start($newProcess);
+    $newProcess = New-Object System.Diagnostics.ProcessStartInfo
+    $newProcess.FileName = "powershell.exe"
+    $newProcess.Arguments = $myInvocation.MyCommand.Definition
+    $newProcess.Verb = "runas"
     $newProcess.WindowStyle = [System.Diagnostics.ProcessWindowStyle]::Maximized
+    [System.Diagnostics.Process]::Start($newProcess)
     Write-Host "update repo"
     exit
     break
