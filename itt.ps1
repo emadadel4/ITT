@@ -34,32 +34,21 @@ $principal = new-object System.Security.Principal.WindowsPrincipal($currentPid)
 $administrator=[System.Security.Principal.WindowsBuiltInRole]::Administrator
 $newProcess = new-object System.Diagnostics.ProcessStartInfo "PowerShell";
 
-if ($principal.IsInRole($administrator)) {
-    # Set window title
+if ($principal.IsInRole($administrator))
+{
+    $Host.UI.RawUI.WindowTitle = $myInvocation.MyCommand.Definition + "(Admin)"
     $Host.UI.RawUI.WindowTitle = "ITT (Install and Tweaks Tool)"
-
-    # Maximize the PowerShell console window
-    $console = [System.Console]
-    $consoleWidth = $console.BufferWidth
-    $consoleHeight = $console.BufferHeight
-    $maxWidth = $console.LargestWindowWidth
-    $maxHeight = $console.LargestWindowHeight
-
-    if ($console.WindowWidth -lt $maxWidth -or $console.WindowHeight -lt $maxHeight) {
-        $console.BufferWidth = $maxWidth
-        $console.BufferHeight = $maxHeight
-        $console.WindowWidth = $maxWidth
-        $console.WindowHeight = $maxHeight
-    }
+    #Clear-Host
 }
-else {
-    # Run the script as administrator
-    $newProcess = new-object System.Diagnostics.ProcessStartInfo "PowerShell"
-    $newProcess.Arguments = $myInvocation.MyCommand.Definition
-    $newProcess.Verb = "runas"
-    [System.Diagnostics.Process]::Start($newProcess)
+else
+{
+    $newProcess.Arguments = $myInvocation.MyCommand.Definition;
+    $newProcess.Verb = "runas";
+    [System.Diagnostics.Process]::Start($newProcess);
     exit
+    break
 }
+
 #===========================================================================
 #endregion End Start
 #===========================================================================
