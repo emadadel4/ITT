@@ -21,17 +21,27 @@ $reader = (New-Object System.Xml.XmlNodeReader $xaml)
 try { 
     
     $sync["window"] = [Windows.Markup.XamlReader]::Load( $reader )
-    $currentCulture = [System.Globalization.CultureInfo]::InstalledUICulture
-    $shortCulture = $currentCulture.Name.Substring(0,2)
+
+    #$currentCulture = [System.Globalization.CultureInfo]::InstalledUICulture
 
     $AppsTheme = (Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize" -Name "AppsUseLightTheme")
+
+        # Get the full LocaleName from the registry
+        $fullCulture = (Get-ItemPropertyValue -Path "HKCU:\Control Panel\International" -Name "LocaleName")
+
+        # Extract the short form (before the hyphen)
+        $shortCulture = $fullCulture.Split('-')[0]
+
+        # Output the short culture
+        Write-Host $shortCulture
+
     
     # Check if the registry key exists if not then create one
     if (-not (Test-Path $sync.registryPath))
     {
         New-Item -Path "HKCU:\Software\itt.emadadel" -Force *> $null
         Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "DarkMode" -Value "none" -Force 
-        Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "locales" -Value "$shortCulture" -Force 
+        Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "locales" -Value "$($shortCulture)" -Force 
     }
 
     $sync.isDarkMode = (Get-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "DarkMode").DarkMode
