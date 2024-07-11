@@ -26,7 +26,7 @@ $sync.website =  "https://emadadel4.github.io"
 $sync.developer =   "Emad Adel"
 $sync.registryPath = "HKCU:\Software\itt.emadadel"
 $sync.firebaseUrl = "https://ittools-7d9fe-default-rtdb.firebaseio.com/Users"
-$sync.isDarkMode 
+$sync.isDarkMode
 $sync.Langusege = "en"
 $sync.mediaPlayer = New-Object -ComObject WMPlayer.OCX
 $currentPid = [System.Security.Principal.WindowsIdentity]::GetCurrent()
@@ -38,22 +38,20 @@ if ($principal.IsInRole($administrator))
 {
     $Host.UI.RawUI.WindowTitle = $myInvocation.MyCommand.Definition + "(Admin)"
     $Host.UI.RawUI.WindowTitle = "ITT (Install and Tweaks Tool)"
-    Write-Host "update repo"
+    # Set the window to start maximized
+    $Maximized = New-Object -ComObject Shell.Application
+    $Maximized.MinimizeAll()
+    $Maximized.UndoMinimizeAll()
     #Clear-Host
 }
 else
 {
-    $newProcess = New-Object System.Diagnostics.ProcessStartInfo
-    $newProcess.FileName = "powershell.exe"
     $newProcess.Arguments = $myInvocation.MyCommand.Definition
     $newProcess.Verb = "runas"
     $newProcess.WindowStyle = [System.Diagnostics.ProcessWindowStyle]::Maximized
     [System.Diagnostics.Process]::Start($newProcess)
-    Write-Host "update repo"
     exit
-    break
 }
-
 #===========================================================================
 #endregion End Start
 #===========================================================================
