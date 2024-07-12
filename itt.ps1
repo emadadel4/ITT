@@ -8802,19 +8802,27 @@ try {
     #region Check for Langusege 
     #===========================================================================
 
-    switch ($shortCulture) {
-        "ar" {
-            $sync["window"].DataContext = $sync.database.locales.Controls.ar
 
-        }
-        "en" {
-            $sync["window"].DataContext = $sync.database.locales.Controls.en
-        }
-        default {
-            # fallback to default lang
-            $sync["window"].DataContext = $sync.database.locales.Controls.en
-            Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "locales" -Value "en" -Force 
-            
+    if($shortCulture -ne $sync.Langusege)
+    {
+        $sync["window"].DataContext = $sync.database.locales.Controls.$($sync.Langusege)
+    }
+    else
+    {
+        switch ($shortCulture) {
+            "ar" {
+                $sync["window"].DataContext = $sync.database.locales.Controls.ar
+    
+            }
+            "en" {
+                $sync["window"].DataContext = $sync.database.locales.Controls.en
+            }
+            default {
+                # fallback to default lang
+                $sync["window"].DataContext = $sync.database.locales.Controls.en
+                Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "locales" -Value "en" -Force 
+                
+            }
         }
     }
     
