@@ -19,21 +19,15 @@ $sync.runspace.Open()
 # Read the XAML file
 $reader = (New-Object System.Xml.XmlNodeReader $xaml)
 try { 
-    
-    $sync["window"] = [Windows.Markup.XamlReader]::Load( $reader )
+        $sync["window"] = [Windows.Markup.XamlReader]::Load( $reader )
 
-    #$currentCulture = [System.Globalization.CultureInfo]::InstalledUICulture
-
-    $AppsTheme = (Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize" -Name "AppsUseLightTheme")
+        $AppsTheme = (Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize" -Name "AppsUseLightTheme")
 
         # Get the full LocaleName from the registry
         $fullCulture = (Get-ItemPropertyValue -Path "HKCU:\Control Panel\International" -Name "LocaleName")
 
         # Extract the short form (before the hyphen)
         $shortCulture = $fullCulture.Split('-')[0]
-
-        # Output the short culture
-        Write-Host $shortCulture
 
     
     # Check if the registry key exists if not then create one
@@ -50,9 +44,9 @@ try {
     #===========================================================================
     #region Check for Langusege 
     #===========================================================================
-    if($sync.Langusege -ne "en")
+    if($shortCulture -ne "en")
     {
-        switch ($sync.Langusege) {
+        switch ($shortCulture) {
             "ar" {
                 $sync["window"].DataContext = $sync.database.locales.Controls.ar
             }
@@ -60,10 +54,9 @@ try {
                 $sync["window"].DataContext = $sync.database.locales.Controls.en
             }
             default {
-                # Default to English for any other culture or invalid input
+                # fallback to default lang
                 $sync["window"].DataContext = $sync.database.locales.Controls.en
                 Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "locales" -Value "en" -Force 
-                #Write-Host "fallback to default lang"
             }
         }
     }
