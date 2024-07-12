@@ -8679,7 +8679,6 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
                     TextWrapping="Wrap"
                     Margin="10,0,0,0"
                     FlowDirection="LeftToRight"
-                    Text="Hello World"
                     FontWeight="Medium"
                     FontSize="15"
                     Width="622"
@@ -10651,7 +10650,6 @@ function GetQuotes {
 
     Invoke-ScriptBlock -ScriptBlock {
 
-
         # Define the path to your JSON file
         $jsonFilePath = $sync.database.Quotes
 
@@ -10686,14 +10684,17 @@ function GetQuotes {
                 $fullCulture = (Get-ItemPropertyValue -Path "HKCU:\Control Panel\International" -Name "LocaleName")
                 $shortCulture = $fullCulture.Split('-')[0]
 
-                if($shortCulture -eq "ar")
+                switch ($sync.Langusege)
                 {
-                    $sync.Quotes.Text = $sync.database.locales.Controls.ar.welcome
-
-                }
-                else
-                {
-                    $sync.Quotes.Text = $sync.database.locales.Controls.en.welcome
+                    "ar" {
+                        $sync.Quotes.Text = $sync.database.locales.Controls.ar.welcome
+                    }
+                    "en" {
+                        $sync.Quotes.Text = $sync.database.locales.Controls.en.welcome
+                    }
+                    default {
+                        $sync.Quotes.Text = $sync.database.locales.Controls.en.welcome
+                    }
                 }
             })
         }
@@ -10701,7 +10702,7 @@ function GetQuotes {
         # Display welcome text
         Display-WelcomeText
 
-        Start-Sleep -Seconds 15
+        Start-Sleep -Seconds 18
 
         # Loop through shuffled names and display them
         do {
