@@ -19,15 +19,15 @@ $sync.runspace.Open()
 # Read the XAML file
 $reader = (New-Object System.Xml.XmlNodeReader $xaml)
 try { 
-        $sync["window"] = [Windows.Markup.XamlReader]::Load( $reader )
+    
+    $sync["window"] = [Windows.Markup.XamlReader]::Load( $reader )
 
-        $AppsTheme = (Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize" -Name "AppsUseLightTheme")
 
-        # Get the full LocaleName from the registry
-        $fullCulture = (Get-ItemPropertyValue -Path "HKCU:\Control Panel\International" -Name "LocaleName")
-
-        # Extract the short form (before the hyphen)
-        $shortCulture = $fullCulture.Split('-')[0]
+    $AppsTheme = (Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize" -Name "AppsUseLightTheme")
+    # Get the full LocaleName from the registry
+    $fullCulture = (Get-ItemPropertyValue -Path "HKCU:\Control Panel\International" -Name "LocaleName")
+    # Extract the short form (before the hyphen)
+    $shortCulture = $fullCulture.Split('-')[0]
 
     
     # Check if the registry key exists if not then create one

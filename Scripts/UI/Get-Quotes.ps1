@@ -34,7 +34,10 @@ function GetQuotes {
         function Display-WelcomeText {
             $sync.Quotes.Dispatcher.Invoke([Action]{
 
-                if($sync.Langusege -eq "ar")
+                $fullCulture = (Get-ItemPropertyValue -Path "HKCU:\Control Panel\International" -Name "LocaleName")
+                $shortCulture = $fullCulture.Split('-')[0]
+
+                if($shortCulture -eq "ar")
                 {
                     $sync.Quotes.Text = $sync.database.locales.Controls.ar.welcome
 
