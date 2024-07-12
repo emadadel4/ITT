@@ -8792,7 +8792,7 @@ try {
     {
         New-Item -Path "HKCU:\Software\itt.emadadel" -Force *> $null
         Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "DarkMode" -Value "none" -Force 
-        Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "locales" -Value "$($shortCulture)" -Force 
+        Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "locales" -Value "en" -Force 
     }
 
     $sync.isDarkMode = (Get-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "DarkMode").DarkMode
@@ -8802,17 +8802,9 @@ try {
     #region Check for Langusege 
     #===========================================================================
 
-
-    if($shortCulture -ne $sync.Langusege)
-    {
-        $sync["window"].DataContext = $sync.database.locales.Controls.$($sync.Langusege)
-    }
-    else
-    {
         switch ($shortCulture) {
             "ar" {
                 $sync["window"].DataContext = $sync.database.locales.Controls.ar
-    
             }
             "en" {
                 $sync["window"].DataContext = $sync.database.locales.Controls.en
@@ -8824,8 +8816,7 @@ try {
                 
             }
         }
-    }
-    
+   
     #===========================================================================
     #endregion Check for Langusege 
     #===========================================================================
