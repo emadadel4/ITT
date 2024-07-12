@@ -19,7 +19,7 @@ Add-Type -AssemblyName System.Windows.Forms
 $sync = [Hashtable]::Synchronized(@{})
 $sync.database = @{}
 $sync.ProcessRunning = $false
-$sync.lastupdate = "12-07-2024"
+$sync.lastupdate = "13-07-2024"
 $sync.github =   "https://github.com/emadadel4"
 $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://emadadel4.github.io"
@@ -4491,8 +4491,8 @@ $sync.database.locales = '{
       "saveapps":"Save selected Apps",
       "loadapps":"Load Apps",
       "music":"Music",
-      "on":"ON ",
-      "off":"OFF",
+      "on":"Unmute ",
+      "off":"Mute",
       "Dark":"Dark ",
       "Light":"Light",
       "defaultTheme":"System",
@@ -5778,16 +5778,13 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
     <Style TargetType="MenuItem">
         <Setter Property="Background" Value="{DynamicResource BGColor}"/>
         <Setter Property="Foreground" Value="{DynamicResource DefaultTextColor}"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource FGColor}"/>
-        <Setter Property="Padding" Value="5"/>
+        <Setter Property="Padding" Value="2"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="MenuItem">
                     <Grid>
                         <Border x:Name="Border"
                                 Background="{TemplateBinding Background}"
-                                BorderBrush="{TemplateBinding BorderBrush}"
-                                BorderThickness="0"
                                 Padding="{TemplateBinding Padding}">
                             <Grid>
                                 <Grid.ColumnDefinitions>
@@ -5822,9 +5819,10 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
                             Focusable="False"
                             AllowsTransparency="True"
                             PopupAnimation="Fade">
-                            <Border Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"
-                                    BorderThickness="0"
-                                    CornerRadius="5">
+                            <Border Background="{DynamicResource FGColor}"
+                                    BorderThickness="0.7"
+                                    BorderBrush="{DynamicResource BGButtonColor}"
+                                    CornerRadius="0">
                                 <StackPanel>
                                     <ItemsPresenter/>
                                 </StackPanel>
@@ -5834,8 +5832,9 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
                     <ControlTemplate.Triggers>
                         <!-- Hover Effect -->
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="Border" Property="Background" Value="{DynamicResource HoverColor}"/>
+                            <Setter TargetName="Border" Property="Background" Value="{DynamicResource FGColor}"/>
                             <Setter Property="BorderBrush" Value="red"/>
+                            <Setter Property="BorderThickness" Value="60"/>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter TargetName="Border" Property="Background" Value="Transparent"/>
@@ -5847,6 +5846,13 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="ItemContainerStyle">
+            <Setter.Value>
+                <Style TargetType="MenuItem">
+                    <Setter Property="Margin" Value="0,2,0,0"/>
+                </Style>
             </Setter.Value>
         </Setter>
     </Style>
@@ -5966,60 +5972,83 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
 <!--End TabControl Style-->
 
 <!--ComboBox Style-->
-    <Style TargetType="{x:Type ComboBox}">
-        <Setter Property="Foreground" Value="{DynamicResource DefaultTextColor}"/>
-        <Setter Property="HorizontalAlignment" Value="Center"/>
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="ComboBox">
-                    <Grid>
-                        <ToggleButton 
-                            Foreground="{DynamicResource DefaultTextColor}" 
-                            Name="ToggleButton" Focusable="false"
-                            IsChecked="{Binding Path=IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
-                            Background="Transparent" BorderBrush="Transparent">
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/> <!-- Text will take up available space -->
-                                    <ColumnDefinition Width="20"/> <!-- Arrow width -->
-                                </Grid.ColumnDefinitions>
-                                <ContentPresenter Name="ContentSite" Grid.Column="0" IsHitTestVisible="False" Content="{TemplateBinding SelectionBoxItem}"
-                                                ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}" ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
-                                                Margin="6" VerticalAlignment="Center" HorizontalAlignment="Left"/>
-                                <Path x:Name="Arrow" Grid.Column="1" Fill="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center" Data="M 0 0 L 4 4 L 8 0 Z"/>
-                            </Grid>
-                        </ToggleButton>
-                        <TextBox x:Name="PART_EditableTextBox" Visibility="Hidden" IsReadOnly="{TemplateBinding IsReadOnly}"/>
-                        <Popup Name="Popup" Placement="Bottom" IsOpen="{TemplateBinding IsDropDownOpen}" AllowsTransparency="True" Focusable="True" PopupAnimation="Slide">
-                            <Grid Name="DropDown" SnapsToDevicePixels="True" MinWidth="{TemplateBinding ActualWidth}" MaxHeight="{TemplateBinding MaxDropDownHeight}">
-                                <Border x:Name="DropDownBorder" Background="{DynamicResource FGColor}"/>
-                                <ScrollViewer SnapsToDevicePixels="True">
-                                    <StackPanel IsItemsHost="True"/>
-                                </ScrollViewer>
-                            </Grid>
-                        </Popup>
-                    </Grid>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
+<Style TargetType="{x:Type ComboBox}">
+    <Setter Property="Foreground" Value="{DynamicResource DefaultTextColor}"/>
+    <Setter Property="HorizontalAlignment" Value="Center"/>
+    <Setter Property="Template">
+        <Setter.Value>
+            <ControlTemplate TargetType="ComboBox">
+                <Grid>
+                    <ToggleButton 
+                        Foreground="{DynamicResource DefaultTextColor}" 
+                        Name="ToggleButton" Focusable="false"
+                        IsChecked="{Binding Path=IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
+                        Background="Transparent" BorderBrush="Transparent">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/> <!-- Text will take up available space -->
+                                <ColumnDefinition Width="20"/> <!-- Arrow width -->
+                            </Grid.ColumnDefinitions>
+                            <ContentPresenter Name="ContentSite" Grid.Column="0" IsHitTestVisible="False" Content="{TemplateBinding SelectionBoxItem}"
+                                            ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}" ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
+                                            Margin="6" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                            <Path x:Name="Arrow" Grid.Column="1" Fill="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center" Data="M 0 0 L 4 4 L 8 0 Z"/>
+                        </Grid>
+                    </ToggleButton>
+                    <TextBox x:Name="PART_EditableTextBox" Visibility="Hidden" IsReadOnly="{TemplateBinding IsReadOnly}"/>
+                    <Popup Name="Popup" Placement="Bottom" IsOpen="{TemplateBinding IsDropDownOpen}" AllowsTransparency="True" Focusable="True" PopupAnimation="Slide">
+                        <Grid Name="DropDown" SnapsToDevicePixels="True" MinWidth="{TemplateBinding ActualWidth}" Height="Auto"> <!-- MaxHeight="{TemplateBinding MaxDropDownHeight}" -->
 
-    <Style TargetType="{x:Type ComboBoxItem}">
-        <Setter Property="Background" Value="{DynamicResource FGColor}"/>
-        <Setter Property="Foreground" Value="{DynamicResource DefaultTextColor}"/>
-    </Style>
+                            <Border x:Name="DropDownBorder" Background="{DynamicResource FGColor}"/>
+                            <ScrollViewer SnapsToDevicePixels="True">
+                                <StackPanel IsItemsHost="True"/>
+                            </ScrollViewer>
+                        </Grid>
+                    </Popup>
+                </Grid>
+            </ControlTemplate>
+        </Setter.Value>
+    </Setter>
+</Style>
 
-    <Style x:Key="CustomSeparatorStyle" TargetType="{x:Type Separator}">
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type Separator}">
-                    <Border Background="Black" Height="1" Margin="5"/>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
+<Style TargetType="{x:Type ComboBoxItem}">
+    <Setter Property="Background" Value="{DynamicResource FGColor}"/>
+    <Setter Property="Foreground" Value="{DynamicResource DefaultTextColor}"/>
+    <Setter Property="FontSize" Value="14"/>
+    <Setter Property="Margin" Value="2,0,0,0"/>
 
+
+    <Setter Property="Template">
+        <Setter.Value>
+            <ControlTemplate TargetType="{x:Type ComboBoxItem}">
+                <Border x:Name="Border" Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}">
+                    <ContentPresenter />
+                </Border>
+                <ControlTemplate.Triggers>
+                    <Trigger Property="IsHighlighted" Value="True">
+                        <Setter TargetName="Border" Property="Background" Value="{DynamicResource BGButtonColor}"/>
+                        <Setter Property="Foreground" Value="White"/>
+
+                    </Trigger>
+                </ControlTemplate.Triggers>
+            </ControlTemplate>
+        </Setter.Value>
+    </Setter>
+</Style>
+
+<Style x:Key="CustomSeparatorStyle" TargetType="{x:Type Separator}">
+    <Setter Property="Template">
+        <Setter.Value>
+            <ControlTemplate TargetType="{x:Type Separator}">
+                <Border Background="Black" Height="1" Margin="0"/>
+            </ControlTemplate>
+        </Setter.Value>
+    </Setter>
+</Style>
 <!--End ComboBox Style-->
+
 
 <!--ToggleSwitchStyle Style-->
     <Style x:Key="ToggleSwitchStyle" TargetType="CheckBox">
@@ -6113,6 +6142,7 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
                         <SolidColorBrush x:Key="FGButtonColor" Color="White" />
                         <SolidColorBrush x:Key="FGTextColor" Color="Black" />
                         <SolidColorBrush x:Key="DefaultTextColor" Color="Black"/>
+                        <SolidColorBrush x:Key="DefaultTextColor2" Color="White"/>
                         <SolidColorBrush x:Key="BorderBrush" Color="LightBlue"/>
                         <SolidColorBrush x:Key="Label" Color="LightBlue"/>
                         <SolidColorBrush x:Key="checkboxBG" Color="White"/>
@@ -6133,6 +6163,8 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
                         <SolidColorBrush x:Key="FGButtonColor" Color="White" />
                         <SolidColorBrush x:Key="FGTextColor" Color="WhiteSmoke" />
                         <SolidColorBrush x:Key="DefaultTextColor" Color="White"/>
+                        <SolidColorBrush x:Key="DefaultTextColor2" Color="White"/>
+
                         <SolidColorBrush x:Key="BorderBrush" Color="#1DB954" />
                         <SolidColorBrush x:Key="Label" Color="#3f3f3f"/>
                         <SolidColorBrush x:Key="checkboxBG" Color="#1DB954"/>
@@ -6150,17 +6182,25 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
 </Window.Resources>
 
 <Grid>
+
     <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
     </Grid.RowDefinitions>
 
-    <!--Header Section-->
+
+    <Grid>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/> <!-- Column 0: Auto width -->
+            <ColumnDefinition Width="*"/>    <!-- Column 1: Take remaining space -->
+        </Grid.ColumnDefinitions>
+
 
         <!--Menu Section-->
-            <Menu Grid.Row="0"  Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Left" BorderThickness="0">
-                
+            <Menu Grid.Row="0" Grid.Column="0" Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Left" BorderThickness="0">
+                        
                 <MenuItem IsEnabled="False">
                     <MenuItem.Icon>
                         <!--Logo-->
@@ -6174,41 +6214,52 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
             
                 </MenuItem>
 
-                 <!--Catagory Section-->
-                    <ComboBox SelectedIndex="0" Margin="0,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" Name="category"  Width="auto">
-                        <ComboBoxItem Content="All"></ComboBoxItem>
-                        <ComboBoxItem Content="Web Browsers"></ComboBoxItem>
-                        <ComboBoxItem Content="Media"></ComboBoxItem>
-                        <ComboBoxItem Content="Media Tools"></ComboBoxItem>
-                        <ComboBoxItem Content="Documents"></ComboBoxItem>
-                        <ComboBoxItem Content="Compression"></ComboBoxItem>
-                        <ComboBoxItem Content="Communication"></ComboBoxItem>
-                        <ComboBoxItem Content="File Sharing"></ComboBoxItem>
-                        <ComboBoxItem Content="Imaging"></ComboBoxItem>
-                        <ComboBoxItem Content="Gaming"></ComboBoxItem>
-                        <ComboBoxItem Content="Utilities"></ComboBoxItem>
-                        <ComboBoxItem Content="Disk Tools"></ComboBoxItem>
-                        <ComboBoxItem Content="Development"></ComboBoxItem>
-                        <ComboBoxItem Content="Security"></ComboBoxItem>
-                        <ComboBoxItem Content="Portable"></ComboBoxItem>
-                        <ComboBoxItem Content="Runtimes"></ComboBoxItem>
-                        <ComboBoxItem Content="Drivers"></ComboBoxItem>
-                    </ComboBox>
-                <!--End Catagory Section-->
-
-
                 <MenuItem Header="{Binding device}" FontFamily="arial" FontSize="13"  Margin="10,0,0,0" BorderBrush="Transparent" BorderThickness="0" VerticalAlignment="Center" HorizontalAlignment="Center">
                     <MenuItem.Icon>
                         <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
                     </MenuItem.Icon>
-                    <MenuItem Name="sysinfo" Header="System Info"/>
-                    <MenuItem Name="poweroption" Header="Power Options"/>
-                    <MenuItem Name="deviceManager" Header="Device Manager"/>
-                    <MenuItem Name="services" Header="Services"/>
-                    <MenuItem Name="network" Header="Network"/>
-                    <MenuItem Name="appsfeatures" Header="Apps-Features"/>
-                    <MenuItem Name="taskmgr" Header="Task Manager"/>
-                    <MenuItem Name="diskmgmt" Header="Disk Managment"/>
+                    <MenuItem Name="sysinfo" Header="System Info">
+                        <MenuItem.Icon>
+                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+
+                    <MenuItem Name="poweroption" Header="Power Options">
+                        <MenuItem.Icon>
+                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+
+                    <MenuItem Name="deviceManager" Header="Device Manager">
+                        <MenuItem.Icon>
+                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Name="services" Header="Services">
+                        <MenuItem.Icon>
+                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Name="network" Header="Network">
+                        <MenuItem.Icon>
+                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Name="appsfeatures" Header="Apps-Features">
+                        <MenuItem.Icon>
+                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Name="taskmgr" Header="Task Manager">
+                        <MenuItem.Icon>
+                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Name="diskmgmt" Header="Disk Managment">
+                        <MenuItem.Icon>
+                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                        </MenuItem.Icon>
+                    </MenuItem>
                 </MenuItem>
 
                 <MenuItem Header="{Binding pref}" FontFamily="arial" FontSize="13"  BorderBrush="Transparent" BorderThickness="0" VerticalAlignment="Center" HorizontalAlignment="Center">
@@ -6218,7 +6269,7 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
 
                     <MenuItem Name="save" Header="{Binding saveapps}">
                         <MenuItem.Icon>
-                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
                         </MenuItem.Icon>
                     </MenuItem>
                     <MenuItem Name="load" Header="{Binding loadapps}">
@@ -6252,7 +6303,7 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
                         <MenuItem Name="ar" Header="{Binding ar}"/>
                     </MenuItem>
 
-                  
+                
                     <MenuItem Name="ittshortcut" Header="{Binding ittlink}">
                         <MenuItem.Icon>
                             <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
@@ -6267,14 +6318,34 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
                     </MenuItem.Icon>
 
 
-                    <MenuItem Name="mas" Header="Microsoft Activation Scripts (MAS)"/>
-                    <MenuItem Name="idm" Header="IDM Activation"/>
-                    <MenuItem Name="winoffice" Header="Download Windows / Office ISO"/>
+                    <MenuItem Name="mas" Header="Microsoft Activation Scripts (MAS)">
+                        <MenuItem.Icon>
+                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Name="idm" Header="IDM Activation">
+                        <MenuItem.Icon>
+                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+
+                    <MenuItem Name="winoffice" Header="Download Windows / Office ISO">
+                        <MenuItem.Icon>
+                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+
                     <MenuItem Header="Browsers Extensions">
+                        <MenuItem.Icon>
+                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                        </MenuItem.Icon>
+                        
                         <MenuItem Name="uBlock" Header="uBlock Origin"/>
                         <MenuItem Name="unhook" Header="Unhook: Customize youtube"/>
                         <MenuItem Name="neat" Header="Neat Download Manager"/>
                     </MenuItem>
+
+                    
                 </MenuItem>
 
                 
@@ -6288,40 +6359,107 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
             </Menu>
         <!--End Menu Section-->
 
-        <!--Search Section-->
-            <Grid HorizontalAlignment="Right" Margin="0,0,15,0" Grid.Row="0"  VerticalAlignment="Center" >
-                <TextBox Padding="5"
-                                    Width="120"
-                                    VerticalAlignment="Center"
-                                    HorizontalAlignment="Left" 
-                                    Text="{Binding Text_searchInput}"
-                                    Name="searchInput" 
-                                    />
 
-                <TextBlock IsHitTestVisible="False" 
-                                    Text=""
-                                    FontFamily="Segoe MDL2 Assets" 
-                                    VerticalAlignment="Center" 
-                                    HorizontalAlignment="Left"
-                                    Margin="20"
-                                    FontSize="12"
-                                    Foreground="{DynamicResource FGTextColor}">
+        <Grid Grid.Column="1"  HorizontalAlignment="Right" Margin="0,0,20,0">
 
-                    <TextBlock.Style>
-                        <Style TargetType="{x:Type TextBlock}">
-                            <Setter Property="Visibility" Value="Hidden"/>
-                            <Style.Triggers>
-                                <DataTrigger Binding="{Binding Text, ElementName=searchInput}" Value="">
-                                    <Setter Property="Visibility" Value="Visible"/>
-                                </DataTrigger>
-                            </Style.Triggers>
-                        </Style>
-                    </TextBlock.Style>
-                </TextBlock>
-            </Grid>        
-        <!--End Search Section-->
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/> <!-- Column 0: Auto width -->
+                <ColumnDefinition Width="Auto"/>    <!-- Column 1: Take remaining space -->
+            </Grid.ColumnDefinitions>
+            
+            <!--Catagory Section-->
+                <ComboBox SelectedIndex="0" Name="category" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left" Width="auto">
+                    <ComboBoxItem Content="All"></ComboBoxItem>
+                    <Separator/>
+                    <ComboBoxItem Content="Web Browsers"></ComboBoxItem>
+                    <Separator/>
 
-    <!--End Header Section-->
+                    <ComboBoxItem Content="Media"></ComboBoxItem>
+                    <Separator/>
+
+                    <ComboBoxItem Content="Media Tools"></ComboBoxItem>
+                    <Separator/>
+
+                    <ComboBoxItem Content="Documents"></ComboBoxItem>
+                    <Separator/>
+
+                    <ComboBoxItem Content="Compression"></ComboBoxItem>
+                    <Separator/>
+
+                    <ComboBoxItem Content="Communication"></ComboBoxItem>
+                    <Separator/>
+
+                    <ComboBoxItem Content="File Sharing"></ComboBoxItem>
+                    <Separator/>
+
+                    <ComboBoxItem Content="Imaging"></ComboBoxItem>
+                    <Separator/>
+
+                    <ComboBoxItem Content="Gaming"></ComboBoxItem>
+                    <Separator/>
+
+                    <ComboBoxItem Content="Utilities"></ComboBoxItem>
+                    <Separator/>
+
+                    <ComboBoxItem Content="Disk Tools"></ComboBoxItem>
+                    <Separator/>
+
+                    <ComboBoxItem Content="Development"></ComboBoxItem>
+                    <Separator/>
+
+                    <ComboBoxItem Content="Security"></ComboBoxItem>
+                    <Separator/>
+
+                    <ComboBoxItem Content="Portable"></ComboBoxItem>
+                    <Separator/>
+
+                    <ComboBoxItem Content="Runtimes"></ComboBoxItem>
+                    <Separator/>
+
+                    <ComboBoxItem Content="Drivers"></ComboBoxItem>
+
+                </ComboBox>
+            <!--End Catagory Section-->
+
+            <!--Search Section-->
+                <Grid HorizontalAlignment="Right"  Grid.Column="1" VerticalAlignment="Center" >
+                    <TextBox Padding="5"
+                                        Width="120"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Left" 
+                                        Text="{Binding Text_searchInput}"
+                                        Name="searchInput" 
+                                        />
+
+                    <TextBlock IsHitTestVisible="False" 
+                                        Text=""
+                                        FontFamily="Segoe MDL2 Assets" 
+                                        VerticalAlignment="Center" 
+                                        HorizontalAlignment="Left"
+                                        Margin="20"
+                                        FontSize="12"
+                                        Foreground="{DynamicResource FGTextColor}">
+
+                        <TextBlock.Style>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Setter Property="Visibility" Value="Hidden"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Text, ElementName=searchInput}" Value="">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+                </Grid>        
+            <!--End Search Section-->
+        </Grid>
+
+
+
+
+    
+    </Grid>
 
         <!--TabControl-->
                 <TabControl Name="taps" TabStripPlacement="Left" Grid.Row="1"  BorderBrush="{DynamicResource FGColor}" Foreground="White" Background="Transparent">
@@ -8649,43 +8787,43 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
                 </TabControl>
 <!--End TabControl-->
 
-    <!--Footer Section-->
-            <Grid Grid.Row="2">
-                    <!--applyBtn Button-->
-                    <Button
-                    Name="applyBtn"
-                    Content="{Binding applyBtn}"
-                    HorizontalAlignment="Right"
-                    VerticalAlignment="Bottom"
-                    FontFamily="Sego UI" FontSize="15" 
-                    Width="100" Height="40" Margin="20"/>
-                <!--End applyBtn Button-->
-
-
-                <!--Install Button-->
-                    <Button
-                        Name="installBtn"
-                        FontFamily="Sego UI" FontSize="15" 
-                        Content="{Binding installBtn}"
+        <!--Footer Section-->
+                <Grid Grid.Row="2">
+                        <!--applyBtn Button-->
+                        <Button
+                        Name="applyBtn"
+                        Content="{Binding applyBtn}"
                         HorizontalAlignment="Right"
                         VerticalAlignment="Bottom"
+                        FontFamily="Sego UI" FontSize="15" 
                         Width="100" Height="40" Margin="20"/>
-                <!--End Install Button-->
-            </Grid>
+                    <!--End applyBtn Button-->
 
-            <StackPanel Orientation="Horizontal" Grid.Row="3">
-                <TextBlock Name="quotes"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Center" 
-                    TextWrapping="Wrap"
-                    Margin="10,0,0,0"
-                    FlowDirection="LeftToRight"
-                    FontWeight="Medium"
-                    FontSize="15"
-                    Width="622"
-                    />
-            </StackPanel>
-    <!--End Footer Section-->
+
+                    <!--Install Button-->
+                        <Button
+                            Name="installBtn"
+                            FontFamily="Sego UI" FontSize="15" 
+                            Content="{Binding installBtn}"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Bottom"
+                            Width="100" Height="40" Margin="20"/>
+                    <!--End Install Button-->
+                </Grid>
+
+                <StackPanel Orientation="Horizontal" Grid.Row="3">
+                    <TextBlock Name="quotes"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center" 
+                        TextWrapping="Wrap"
+                        Margin="10,0,0,0"
+                        FlowDirection="LeftToRight"
+                        FontWeight="Medium"
+                        FontSize="15"
+                        Width="622"
+                        />
+                </StackPanel>
+        <!--End Footer Section-->
 </Grid>
 </Window>
 <!--End Window-->
@@ -10822,8 +10960,8 @@ function SwitchToSystem {
                 # Add a click event handler to the button
 
                 $element.Add_Click({
-                    param([System.Object]$s)
-                    Invoke-Button $s.Name
+                    param([System.Object]$sender, $eventArgs)
+                    Invoke-Button $sender.Name
                 })
             }
 
@@ -10832,8 +10970,8 @@ function SwitchToSystem {
                 # Add a click event handler to the MenuItem
 
                 $element.Add_Click({
-                    param([System.Object]$s)
-                    Invoke-Button $s.Name
+                    param([System.Object]$sender, $eventArgs)
+                    Invoke-Button $sender.Name
                 })
             }
 
@@ -10841,13 +10979,13 @@ function SwitchToSystem {
             if ($element.GetType().Name -eq "TextBox") {
 
                 $element.Add_TextChanged({
-                    param([System.Object]$s)
-                    Invoke-Button $s.Name
+                    param([System.Object]$sender, $eventArgs)
+                    Invoke-Button $sender.Name
                 })
 
                 $element.Add_GotFocus({
-                    param([System.Object]$s)
-                    Invoke-Button $s.Name
+                    param([System.Object]$sender, $eventArgs)
+                    Invoke-Button $sender.Name
                 })
             }
 
@@ -10856,8 +10994,8 @@ function SwitchToSystem {
                     # Add a click event handler to the Ellipse
 
                     $element.add_MouseLeftButtonDown({
-                        param([System.Object]$s)
-                        Invoke-Button $s.Name
+                        param([System.Object]$sender, $eventArgs)
+                        Invoke-Button $sender.Name
                     })
             }
 
@@ -10866,8 +11004,8 @@ function SwitchToSystem {
                 # Add a click event handler to the ComboBox
 
                 $element.add_SelectionChanged({
-                    param([System.Object]$s)
-                    Invoke-Button $s.Name
+                    param([System.Object]$sender, $eventArgs)
+                    Invoke-Button $sender.Name
                 })
             }
 
@@ -10876,8 +11014,8 @@ function SwitchToSystem {
                 # Add a click event handler to the TabControl
 
                 $element.add_SelectionChanged({
-                    param([System.Object]$s)
-                    Invoke-Button $s.Name
+                    param([System.Object]$sender, $eventArgs)
+                    Invoke-Button $sender.Name
                 })
             }
 
