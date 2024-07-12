@@ -4591,7 +4591,8 @@ $sync.database.OST = '{
     "https://archive.org/download/ZackHemseyTheWay_201704/Zack%20Hemsey%20-%20The%20Way.mp3",
     "https://eta.vgmtreasurechest.com/soundtracks/cyberpunk-2077-original-game-score/zalnnwrhwh/1-03%20The%20Rebel%20Path.mp3",
     "https://archive.org/download/tvtunes_32383/HBOs%20The%20Leftovers%20Piano%20Theme%20-%20Max%20Richter.mp3",
-    "https://archive.org/download/maxrichteronthenatureofdaylight_201911/Max%20Richter%20-%20On%20the%20Nature%20of%20Daylight.mp3"
+    "https://archive.org/download/maxrichteronthenatureofdaylight_201911/Max%20Richter%20-%20On%20the%20Nature%20of%20Daylight.mp3",
+    "https://archive.org/download/InceptionSoundtrackDreamIsCollapsingHansZimmer/Inception%20Soundtrack-Dream%20is%20Collapsing%20%28Hans%20Zimmer%29.mp3"
   ]
 }
 ' | ConvertFrom-Json
