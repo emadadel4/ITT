@@ -28,7 +28,6 @@ try {
     $fullCulture = (Get-ItemPropertyValue -Path "HKCU:\Control Panel\International" -Name "LocaleName")
     # Extract the short form (before the hyphen)
     $shortCulture = $fullCulture.Split('-')[0]
-
     
     # Check if the registry key exists if not then create one
     if (-not (Test-Path $sync.registryPath))
@@ -45,30 +44,22 @@ try {
     #region Check for Langusege 
     #===========================================================================
 
-    if($shortCulture -ne "en")
-    {
-        switch ($shortCulture) {
-            "ar" {
-                Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "locales" -Value "ar" -Force 
-                $sync["window"].DataContext = $sync.database.locales.Controls.ar
+    switch ($shortCulture) {
+        "ar" {
+            $sync["window"].DataContext = $sync.database.locales.Controls.ar
 
-            }
-            "en" {
-                Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "locales" -Value "en" -Force 
-                $sync["window"].DataContext = $sync.database.locales.Controls.en
-            }
-            default {
-                # fallback to default lang
-                $sync["window"].DataContext = $sync.database.locales.Controls.en
-                Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "locales" -Value "en" -Force 
-                
-            }
+        }
+        "en" {
+            $sync["window"].DataContext = $sync.database.locales.Controls.en
+        }
+        default {
+            # fallback to default lang
+            $sync["window"].DataContext = $sync.database.locales.Controls.en
+            Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "locales" -Value "en" -Force 
+            
         }
     }
-    else
-    {
-        $sync["window"].DataContext = $sync.database.locales.Controls.$($sync.Langusege)
-    }
+    
     #===========================================================================
     #endregion Check for Langusege 
     #===========================================================================
