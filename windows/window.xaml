@@ -219,7 +219,6 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
                     TextWrapping="Wrap"
                     Margin="10,0,0,0"
                     FlowDirection="LeftToRight"
-                    Text="Hello World"
                     FontWeight="Medium"
                     FontSize="15"
                     Width="622"
