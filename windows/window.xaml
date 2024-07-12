@@ -13,17 +13,25 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
 </Window.Resources>
 
 <Grid>
+
     <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
     </Grid.RowDefinitions>
 
-    <!--Header Section-->
+
+    <Grid>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/> <!-- Column 0: Auto width -->
+            <ColumnDefinition Width="*"/>    <!-- Column 1: Take remaining space -->
+        </Grid.ColumnDefinitions>
+
 
         <!--Menu Section-->
-            <Menu Grid.Row="0"  Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Left" BorderThickness="0">
-                
+            <Menu Grid.Row="0" Grid.Column="0" Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Left" BorderThickness="0">
+                        
                 <MenuItem IsEnabled="False">
                     <MenuItem.Icon>
                         <!--Logo-->
@@ -37,41 +45,52 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
             
                 </MenuItem>
 
-                 <!--Catagory Section-->
-                    <ComboBox SelectedIndex="0" Margin="0,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" Name="category"  Width="auto">
-                        <ComboBoxItem Content="All"></ComboBoxItem>
-                        <ComboBoxItem Content="Web Browsers"></ComboBoxItem>
-                        <ComboBoxItem Content="Media"></ComboBoxItem>
-                        <ComboBoxItem Content="Media Tools"></ComboBoxItem>
-                        <ComboBoxItem Content="Documents"></ComboBoxItem>
-                        <ComboBoxItem Content="Compression"></ComboBoxItem>
-                        <ComboBoxItem Content="Communication"></ComboBoxItem>
-                        <ComboBoxItem Content="File Sharing"></ComboBoxItem>
-                        <ComboBoxItem Content="Imaging"></ComboBoxItem>
-                        <ComboBoxItem Content="Gaming"></ComboBoxItem>
-                        <ComboBoxItem Content="Utilities"></ComboBoxItem>
-                        <ComboBoxItem Content="Disk Tools"></ComboBoxItem>
-                        <ComboBoxItem Content="Development"></ComboBoxItem>
-                        <ComboBoxItem Content="Security"></ComboBoxItem>
-                        <ComboBoxItem Content="Portable"></ComboBoxItem>
-                        <ComboBoxItem Content="Runtimes"></ComboBoxItem>
-                        <ComboBoxItem Content="Drivers"></ComboBoxItem>
-                    </ComboBox>
-                <!--End Catagory Section-->
-
-
                 <MenuItem Header="{Binding device}" FontFamily="arial" FontSize="13"  Margin="10,0,0,0" BorderBrush="Transparent" BorderThickness="0" VerticalAlignment="Center" HorizontalAlignment="Center">
                     <MenuItem.Icon>
                         <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
                     </MenuItem.Icon>
-                    <MenuItem Name="sysinfo" Header="System Info"/>
-                    <MenuItem Name="poweroption" Header="Power Options"/>
-                    <MenuItem Name="deviceManager" Header="Device Manager"/>
-                    <MenuItem Name="services" Header="Services"/>
-                    <MenuItem Name="network" Header="Network"/>
-                    <MenuItem Name="appsfeatures" Header="Apps-Features"/>
-                    <MenuItem Name="taskmgr" Header="Task Manager"/>
-                    <MenuItem Name="diskmgmt" Header="Disk Managment"/>
+                    <MenuItem Name="sysinfo" Header="System Info">
+                        <MenuItem.Icon>
+                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+
+                    <MenuItem Name="poweroption" Header="Power Options">
+                        <MenuItem.Icon>
+                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+
+                    <MenuItem Name="deviceManager" Header="Device Manager">
+                        <MenuItem.Icon>
+                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Name="services" Header="Services">
+                        <MenuItem.Icon>
+                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Name="network" Header="Network">
+                        <MenuItem.Icon>
+                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Name="appsfeatures" Header="Apps-Features">
+                        <MenuItem.Icon>
+                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Name="taskmgr" Header="Task Manager">
+                        <MenuItem.Icon>
+                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Name="diskmgmt" Header="Disk Managment">
+                        <MenuItem.Icon>
+                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                        </MenuItem.Icon>
+                    </MenuItem>
                 </MenuItem>
 
                 <MenuItem Header="{Binding pref}" FontFamily="arial" FontSize="13"  BorderBrush="Transparent" BorderThickness="0" VerticalAlignment="Center" HorizontalAlignment="Center">
@@ -81,7 +100,7 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
 
                     <MenuItem Name="save" Header="{Binding saveapps}">
                         <MenuItem.Icon>
-                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
                         </MenuItem.Icon>
                     </MenuItem>
                     <MenuItem Name="load" Header="{Binding loadapps}">
@@ -115,7 +134,7 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
                         <MenuItem Name="ar" Header="{Binding ar}"/>
                     </MenuItem>
 
-                  
+                
                     <MenuItem Name="ittshortcut" Header="{Binding ittlink}">
                         <MenuItem.Icon>
                             <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
@@ -130,14 +149,34 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
                     </MenuItem.Icon>
 
 
-                    <MenuItem Name="mas" Header="Microsoft Activation Scripts (MAS)"/>
-                    <MenuItem Name="idm" Header="IDM Activation"/>
-                    <MenuItem Name="winoffice" Header="Download Windows / Office ISO"/>
+                    <MenuItem Name="mas" Header="Microsoft Activation Scripts (MAS)">
+                        <MenuItem.Icon>
+                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Name="idm" Header="IDM Activation">
+                        <MenuItem.Icon>
+                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+
+                    <MenuItem Name="winoffice" Header="Download Windows / Office ISO">
+                        <MenuItem.Icon>
+                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+
                     <MenuItem Header="Browsers Extensions">
+                        <MenuItem.Icon>
+                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                        </MenuItem.Icon>
+                        
                         <MenuItem Name="uBlock" Header="uBlock Origin"/>
                         <MenuItem Name="unhook" Header="Unhook: Customize youtube"/>
                         <MenuItem Name="neat" Header="Neat Download Manager"/>
                     </MenuItem>
+
+                    
                 </MenuItem>
 
                 
@@ -151,80 +190,147 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
             </Menu>
         <!--End Menu Section-->
 
-        <!--Search Section-->
-            <Grid HorizontalAlignment="Right" Margin="0,0,15,0" Grid.Row="0"  VerticalAlignment="Center" >
-                <TextBox Padding="5"
-                                    Width="120"
-                                    VerticalAlignment="Center"
-                                    HorizontalAlignment="Left" 
-                                    Text="{Binding Text_searchInput}"
-                                    Name="searchInput" 
-                                    />
 
-                <TextBlock IsHitTestVisible="False" 
-                                    Text=""
-                                    FontFamily="Segoe MDL2 Assets" 
-                                    VerticalAlignment="Center" 
-                                    HorizontalAlignment="Left"
-                                    Margin="20"
-                                    FontSize="12"
-                                    Foreground="{DynamicResource FGTextColor}">
+        <Grid Grid.Column="1"  HorizontalAlignment="Right" Margin="0,0,20,0">
 
-                    <TextBlock.Style>
-                        <Style TargetType="{x:Type TextBlock}">
-                            <Setter Property="Visibility" Value="Hidden"/>
-                            <Style.Triggers>
-                                <DataTrigger Binding="{Binding Text, ElementName=searchInput}" Value="">
-                                    <Setter Property="Visibility" Value="Visible"/>
-                                </DataTrigger>
-                            </Style.Triggers>
-                        </Style>
-                    </TextBlock.Style>
-                </TextBlock>
-            </Grid>        
-        <!--End Search Section-->
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/> <!-- Column 0: Auto width -->
+                <ColumnDefinition Width="Auto"/>    <!-- Column 1: Take remaining space -->
+            </Grid.ColumnDefinitions>
+            
+            <!--Catagory Section-->
+                <ComboBox SelectedIndex="0" Name="category" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left" Width="auto">
+                    <ComboBoxItem Content="All"></ComboBoxItem>
+                    <Separator/>
+                    <ComboBoxItem Content="Web Browsers"></ComboBoxItem>
+                    <Separator/>
 
-    <!--End Header Section-->
+                    <ComboBoxItem Content="Media"></ComboBoxItem>
+                    <Separator/>
+
+                    <ComboBoxItem Content="Media Tools"></ComboBoxItem>
+                    <Separator/>
+
+                    <ComboBoxItem Content="Documents"></ComboBoxItem>
+                    <Separator/>
+
+                    <ComboBoxItem Content="Compression"></ComboBoxItem>
+                    <Separator/>
+
+                    <ComboBoxItem Content="Communication"></ComboBoxItem>
+                    <Separator/>
+
+                    <ComboBoxItem Content="File Sharing"></ComboBoxItem>
+                    <Separator/>
+
+                    <ComboBoxItem Content="Imaging"></ComboBoxItem>
+                    <Separator/>
+
+                    <ComboBoxItem Content="Gaming"></ComboBoxItem>
+                    <Separator/>
+
+                    <ComboBoxItem Content="Utilities"></ComboBoxItem>
+                    <Separator/>
+
+                    <ComboBoxItem Content="Disk Tools"></ComboBoxItem>
+                    <Separator/>
+
+                    <ComboBoxItem Content="Development"></ComboBoxItem>
+                    <Separator/>
+
+                    <ComboBoxItem Content="Security"></ComboBoxItem>
+                    <Separator/>
+
+                    <ComboBoxItem Content="Portable"></ComboBoxItem>
+                    <Separator/>
+
+                    <ComboBoxItem Content="Runtimes"></ComboBoxItem>
+                    <Separator/>
+
+                    <ComboBoxItem Content="Drivers"></ComboBoxItem>
+
+                </ComboBox>
+            <!--End Catagory Section-->
+
+            <!--Search Section-->
+                <Grid HorizontalAlignment="Right"  Grid.Column="1" VerticalAlignment="Center" >
+                    <TextBox Padding="5"
+                                        Width="120"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Left" 
+                                        Text="{Binding Text_searchInput}"
+                                        Name="searchInput" 
+                                        />
+
+                    <TextBlock IsHitTestVisible="False" 
+                                        Text=""
+                                        FontFamily="Segoe MDL2 Assets" 
+                                        VerticalAlignment="Center" 
+                                        HorizontalAlignment="Left"
+                                        Margin="20"
+                                        FontSize="12"
+                                        Foreground="{DynamicResource FGTextColor}">
+
+                        <TextBlock.Style>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Setter Property="Visibility" Value="Hidden"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Text, ElementName=searchInput}" Value="">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+                </Grid>        
+            <!--End Search Section-->
+        </Grid>
+
+
+
+
+    
+    </Grid>
 
         {{Taps}}
 
-    <!--Footer Section-->
-            <Grid Grid.Row="2">
-                    <!--applyBtn Button-->
-                    <Button
-                    Name="applyBtn"
-                    Content="{Binding applyBtn}"
-                    HorizontalAlignment="Right"
-                    VerticalAlignment="Bottom"
-                    FontFamily="Sego UI" FontSize="15" 
-                    Width="100" Height="40" Margin="20"/>
-                <!--End applyBtn Button-->
-
-
-                <!--Install Button-->
-                    <Button
-                        Name="installBtn"
-                        FontFamily="Sego UI" FontSize="15" 
-                        Content="{Binding installBtn}"
+        <!--Footer Section-->
+                <Grid Grid.Row="2">
+                        <!--applyBtn Button-->
+                        <Button
+                        Name="applyBtn"
+                        Content="{Binding applyBtn}"
                         HorizontalAlignment="Right"
                         VerticalAlignment="Bottom"
+                        FontFamily="Sego UI" FontSize="15" 
                         Width="100" Height="40" Margin="20"/>
-                <!--End Install Button-->
-            </Grid>
+                    <!--End applyBtn Button-->
 
-            <StackPanel Orientation="Horizontal" Grid.Row="3">
-                <TextBlock Name="quotes"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Center" 
-                    TextWrapping="Wrap"
-                    Margin="10,0,0,0"
-                    FlowDirection="LeftToRight"
-                    FontWeight="Medium"
-                    FontSize="15"
-                    Width="622"
-                    />
-            </StackPanel>
-    <!--End Footer Section-->
+
+                    <!--Install Button-->
+                        <Button
+                            Name="installBtn"
+                            FontFamily="Sego UI" FontSize="15" 
+                            Content="{Binding installBtn}"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Bottom"
+                            Width="100" Height="40" Margin="20"/>
+                    <!--End Install Button-->
+                </Grid>
+
+                <StackPanel Orientation="Horizontal" Grid.Row="3">
+                    <TextBlock Name="quotes"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center" 
+                        TextWrapping="Wrap"
+                        Margin="10,0,0,0"
+                        FlowDirection="LeftToRight"
+                        FontWeight="Medium"
+                        FontSize="15"
+                        Width="622"
+                        />
+                </StackPanel>
+        <!--End Footer Section-->
 </Grid>
 </Window>
 <!--End Window-->
