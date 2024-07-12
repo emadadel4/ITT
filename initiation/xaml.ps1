@@ -36,26 +36,36 @@ try {
         Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "locales" -Value "$($shortCulture)" -Force 
     }
 
+
     #===========================================================================
     #region Check for Langusege 
     #===========================================================================
 
-        switch ($shortCulture) {
-            "ar" {
-                $sync["window"].DataContext = $sync.database.locales.Controls.ar
-            }
-            "en" {
-                $sync["window"].DataContext = $sync.database.locales.Controls.en
-            }
-            default {
-                # fallback to default lang
-                $sync["window"].DataContext = $sync.database.locales.Controls.en
-                Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "locales" -Value "en" -Force 
+        $sync.Langusege  = (Get-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "locales").locales
+
+        if($sync.Langusege -ne "en")
+        {
+            switch ($sync.Langusege) {
+                "ar" {
+                    $sync["window"].DataContext = $sync.database.locales.Controls.ar
+                }
+                "en" {
+                    $sync["window"].DataContext = $sync.database.locales.Controls.en
+                }
+                default {
+                    # fallback to default lang
+                    $sync["window"].DataContext = $sync.database.locales.Controls.en
+                    Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "locales" -Value "en" -Force 
+                }
             }
         }
+        else
+        {
+            $sync["window"].DataContext = $sync.database.locales.Controls.$($sync.Langusege)
+        }
 
-    $sync.isDarkMode = (Get-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "DarkMode").DarkMode
-    $sync.Langusege  = (Get-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "locales").locales
+        $sync.Langusege  = (Get-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "locales").locales
+
    
     #===========================================================================
     #endregion Check for Langusege 
@@ -65,25 +75,27 @@ try {
     #region Check Theme
     #===========================================================================
 
-    if($sync.isDarkMode -eq "true")
-    {
-        $sync['window'].Resources.MergedDictionaries.Add($sync['window'].FindResource("Dark"))
+        $sync.isDarkMode = (Get-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "DarkMode").DarkMode
 
-    }elseif ($sync.isDarkMode -eq "false") 
-    {
-        $sync['window'].Resources.MergedDictionaries.Add($sync['window'].FindResource("Light"))
-    }
-    else
-    {
-        switch ($AppsTheme) {
-            "0" {
-                $sync['window'].Resources.MergedDictionaries.Add($sync['window'].FindResource("Dark"))
-            }
-            "1" {
-                $sync['window'].Resources.MergedDictionaries.Add($sync['window'].FindResource("Light"))
+        if($sync.isDarkMode -eq "true")
+        {
+            $sync['window'].Resources.MergedDictionaries.Add($sync['window'].FindResource("Dark"))
+
+        }elseif ($sync.isDarkMode -eq "false") 
+        {
+            $sync['window'].Resources.MergedDictionaries.Add($sync['window'].FindResource("Light"))
+        }
+        else
+        {
+            switch ($AppsTheme) {
+                "0" {
+                    $sync['window'].Resources.MergedDictionaries.Add($sync['window'].FindResource("Dark"))
+                }
+                "1" {
+                    $sync['window'].Resources.MergedDictionaries.Add($sync['window'].FindResource("Light"))
+                }
             }
         }
-    }
     
     #===========================================================================
     #endregion Check Theme
