@@ -34,7 +34,7 @@ try {
     {
         New-Item -Path "HKCU:\Software\itt.emadadel" -Force *> $null
         Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "DarkMode" -Value "none" -Force 
-        Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "locales" -Value "$( $shortCulture)" -Force 
+        Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "locales" -Value "$($shortCulture)" -Force 
     }
 
     $sync.isDarkMode = (Get-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "DarkMode").DarkMode
