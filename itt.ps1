@@ -8792,7 +8792,7 @@ try {
     {
         New-Item -Path "HKCU:\Software\itt.emadadel" -Force *> $null
         Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "DarkMode" -Value "none" -Force 
-        Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "locales" -Value "en" -Force 
+        Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "locales" -Value "$( $shortCulture)" -Force 
     }
 
     $sync.isDarkMode = (Get-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "DarkMode").DarkMode
@@ -8813,7 +8813,6 @@ try {
                 # fallback to default lang
                 $sync["window"].DataContext = $sync.database.locales.Controls.en
                 Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "locales" -Value "en" -Force 
-                
             }
         }
    
