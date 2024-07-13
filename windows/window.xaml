@@ -194,8 +194,8 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
         <Grid Grid.Column="1"  HorizontalAlignment="Right" Margin="0,0,20,0">
 
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/> <!-- Column 0: Auto width -->
-                <ColumnDefinition Width="Auto"/>    <!-- Column 1: Take remaining space -->
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
             
             <!--Catagory Section-->
