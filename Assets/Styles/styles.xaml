@@ -2,13 +2,13 @@
       <Style TargetType="Button">
         <Setter Property="Background" Value="{DynamicResource FGColor}"/>
         <Setter Property="Foreground" Value="{DynamicResource DefaultTextColor}"/>
-        <Setter Property="BorderBrush" Value="red"/>
-        <Setter Property="BorderThickness" Value="11"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource BGButtonBorderBrush}"/>
+        <Setter Property="BorderThickness" Value="0.6"/>
         
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
-                    <Border CornerRadius="20" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="2" Background="{TemplateBinding Background}">
+                    <Border CornerRadius="20" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}">
                         <ContentPresenter HorizontalAlignment="Center"
                                             VerticalAlignment="Center"/>
                         
@@ -29,7 +29,8 @@
   <Style TargetType="TextBox">
     <Setter Property="Background" Value="{DynamicResource BGColor}"/>
       <Setter Property="Foreground" Value="{DynamicResource FGTextColor}"/>
-      <Setter Property="BorderThickness" Value="1.3"/>
+      <Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}"/>
+      <Setter Property="BorderThickness" Value="2"/>
       <Setter Property="Template">
           <Setter.Value>
               <ControlTemplate TargetType="TextBox">
@@ -44,7 +45,7 @@
       </Setter>
       <Style.Triggers>
               <Trigger Property="IsFocused" Value="True">
-                  <Setter Property="BorderThickness" Value="1.4"/>
+                  <Setter Property="BorderThickness" Value="2"/>
                   <Setter Property="BorderBrush" Value="{DynamicResource BGButtonColor}"/>
                   <Setter Property="Background" Value="{DynamicResource FGColor}"/>
               </Trigger>

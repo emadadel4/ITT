@@ -27,8 +27,8 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
 
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/> <!-- Column 0: Auto width -->
-            <ColumnDefinition Width="*"/>    <!-- Column 1: Take remaining space -->
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
         <!--Menu-->
@@ -257,7 +257,7 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
             <!--Search -->
                 <Grid HorizontalAlignment="Right"  Grid.Column="1" VerticalAlignment="Center" >
                     <TextBox Padding="5"
-                                        Width="120"
+                                        Width="130"
                                         VerticalAlignment="Center"
                                         HorizontalAlignment="Left" 
                                         Text="{Binding Text_searchInput}"
