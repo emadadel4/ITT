@@ -5670,10 +5670,10 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
 
 <!--Textbox Style-->
   <Style TargetType="TextBox">
-    <Setter Property="Background" Value="{DynamicResource BGColor}"/>
+    <Setter Property="Background" Value="{DynamicResource FGColor}"/>
       <Setter Property="Foreground" Value="{DynamicResource FGTextColor}"/>
       <Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}"/>
-      <Setter Property="BorderThickness" Value="2"/>
+      <Setter Property="BorderThickness" Value="0"/>
       <Setter Property="Template">
           <Setter.Value>
               <ControlTemplate TargetType="TextBox">
@@ -6146,7 +6146,7 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
                         <SolidColorBrush x:Key="FGTextColor" Color="Black" />
                         <SolidColorBrush x:Key="DefaultTextColor" Color="Black"/>
                         <SolidColorBrush x:Key="DefaultTextColor2" Color="White"/>
-                        <SolidColorBrush x:Key="BorderBrush" Color="WhiteSmoke"/>
+                        <SolidColorBrush x:Key="BorderBrush" Color="#FFB3B3B3"/>
                         <SolidColorBrush x:Key="BGButtonBorderBrush" Color="#525FE1"/>
                         <SolidColorBrush x:Key="Label" Color="LightBlue"/>
                         <SolidColorBrush x:Key="checkboxBG" Color="White"/>
