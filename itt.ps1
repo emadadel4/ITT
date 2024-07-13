@@ -5645,13 +5645,13 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
       <Style TargetType="Button">
         <Setter Property="Background" Value="{DynamicResource FGColor}"/>
         <Setter Property="Foreground" Value="{DynamicResource DefaultTextColor}"/>
-        <Setter Property="BorderBrush" Value="red"/>
-        <Setter Property="BorderThickness" Value="11"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource BGButtonBorderBrush}"/>
+        <Setter Property="BorderThickness" Value="0.6"/>
         
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
-                    <Border CornerRadius="20" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="2" Background="{TemplateBinding Background}">
+                    <Border CornerRadius="20" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}">
                         <ContentPresenter HorizontalAlignment="Center"
                                             VerticalAlignment="Center"/>
                         
@@ -5672,7 +5672,8 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
   <Style TargetType="TextBox">
     <Setter Property="Background" Value="{DynamicResource BGColor}"/>
       <Setter Property="Foreground" Value="{DynamicResource FGTextColor}"/>
-      <Setter Property="BorderThickness" Value="1.3"/>
+      <Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}"/>
+      <Setter Property="BorderThickness" Value="2"/>
       <Setter Property="Template">
           <Setter.Value>
               <ControlTemplate TargetType="TextBox">
@@ -5687,7 +5688,7 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
       </Setter>
       <Style.Triggers>
               <Trigger Property="IsFocused" Value="True">
-                  <Setter Property="BorderThickness" Value="1.4"/>
+                  <Setter Property="BorderThickness" Value="2"/>
                   <Setter Property="BorderBrush" Value="{DynamicResource BGButtonColor}"/>
                   <Setter Property="Background" Value="{DynamicResource FGColor}"/>
               </Trigger>
@@ -6145,7 +6146,8 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
                         <SolidColorBrush x:Key="FGTextColor" Color="Black" />
                         <SolidColorBrush x:Key="DefaultTextColor" Color="Black"/>
                         <SolidColorBrush x:Key="DefaultTextColor2" Color="White"/>
-                        <SolidColorBrush x:Key="BorderBrush" Color="LightBlue"/>
+                        <SolidColorBrush x:Key="BorderBrush" Color="WhiteSmoke"/>
+                        <SolidColorBrush x:Key="BGButtonBorderBrush" Color="#525FE1"/>
                         <SolidColorBrush x:Key="Label" Color="LightBlue"/>
                         <SolidColorBrush x:Key="checkboxBG" Color="White"/>
                         <SolidColorBrush x:Key="highlight" Color="blue"/>
@@ -6166,8 +6168,8 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
                         <SolidColorBrush x:Key="FGTextColor" Color="WhiteSmoke" />
                         <SolidColorBrush x:Key="DefaultTextColor" Color="White"/>
                         <SolidColorBrush x:Key="DefaultTextColor2" Color="White"/>
-
-                        <SolidColorBrush x:Key="BorderBrush" Color="#1DB954" />
+                        <SolidColorBrush x:Key="BorderBrush" Color="WhiteSmoke" />
+                        <SolidColorBrush x:Key="BGButtonBorderBrush" Color="#1DB954"/>
                         <SolidColorBrush x:Key="Label" Color="#3f3f3f"/>
                         <SolidColorBrush x:Key="checkboxBG" Color="#1DB954"/>
                         <SolidColorBrush x:Key="highlight" Color="#3cb043"/>
@@ -6198,8 +6200,8 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
 
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/> <!-- Column 0: Auto width -->
-            <ColumnDefinition Width="*"/>    <!-- Column 1: Take remaining space -->
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
         <!--Menu-->
@@ -6428,7 +6430,7 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
             <!--Search -->
                 <Grid HorizontalAlignment="Right"  Grid.Column="1" VerticalAlignment="Center" >
                     <TextBox Padding="5"
-                                        Width="120"
+                                        Width="130"
                                         VerticalAlignment="Center"
                                         HorizontalAlignment="Left" 
                                         Text="{Binding Text_searchInput}"
