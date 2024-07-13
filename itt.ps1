@@ -6138,7 +6138,7 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
                 <ResourceDictionary x:Key="Light">
                         <SolidColorBrush x:Key="BGColor" Color="White"/>
                         <SolidColorBrush x:Key="FGColor" Color="WhiteSmoke"/>
-                        <SolidColorBrush x:Key="BGButtonColor" Color="#382bf0" />
+                        <SolidColorBrush x:Key="BGButtonColor" Color="#FF6C62FC" />
                         <SolidColorBrush x:Key="FGButtonColor" Color="White" />
                         <SolidColorBrush x:Key="FGTextColor" Color="Black" />
                         <SolidColorBrush x:Key="DefaultTextColor" Color="Black"/>
@@ -6192,13 +6192,15 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
 
     <Grid>
 
+    <!--Header Section-->
+
+
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/> <!-- Column 0: Auto width -->
             <ColumnDefinition Width="*"/>    <!-- Column 1: Take remaining space -->
         </Grid.ColumnDefinitions>
 
-
-        <!--Menu Section-->
+        <!--Menu-->
             <Menu Grid.Row="0" Grid.Column="0" Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Left" BorderThickness="0">
                         
                 <MenuItem IsEnabled="False">
@@ -6357,7 +6359,7 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
 
 
             </Menu>
-        <!--End Menu Section-->
+        <!--End Menu-->
 
 
         <Grid Grid.Column="1"  HorizontalAlignment="Right" Margin="0,0,20,0">
@@ -6367,7 +6369,7 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
             
-            <!--Catagory Section-->
+            <!--Catagory-->
                 <ComboBox SelectedIndex="0" Name="category" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left" Width="auto">
                     <ComboBoxItem Content="All"></ComboBoxItem>
                     <Separator/>
@@ -6419,9 +6421,9 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
                     <ComboBoxItem Content="Drivers"></ComboBoxItem>
 
                 </ComboBox>
-            <!--End Catagory Section-->
+            <!--End Catagory-->
 
-            <!--Search Section-->
+            <!--Search -->
                 <Grid HorizontalAlignment="Right"  Grid.Column="1" VerticalAlignment="Center" >
                     <TextBox Padding="5"
                                         Width="120"
@@ -6452,12 +6454,10 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
                         </TextBlock.Style>
                     </TextBlock>
                 </Grid>        
-            <!--End Search Section-->
+            <!--End Search-->
         </Grid>
 
-
-
-
+    <!--Header Section-->
     
     </Grid>
 
