@@ -6301,13 +6301,13 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
                         <MenuItem Name="mon" Header="{Binding on}"/>
                     </MenuItem>
 
-                    <MenuItem Header="{Binding lang}">
+                    <!-- <MenuItem Header="{Binding lang}">
                             <MenuItem.Icon>
                                 <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
                             </MenuItem.Icon>
                         <MenuItem Name="en" Header="{Binding en}"/>
                         <MenuItem Name="ar" Header="{Binding ar}"/>
-                    </MenuItem>
+                    </MenuItem> -->
 
                 
                     <MenuItem Name="ittshortcut" Header="{Binding ittlink}">
@@ -8938,31 +8938,28 @@ try {
     }
 
 
-
     #===========================================================================
     #region Check for Langusege 
     #===========================================================================
        
+        Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "locales" -Value "$($shortCulture)" -Force 
+
         switch ($shortCulture) {
             "ar" {
                 $sync["window"].DataContext = $sync.database.locales.Controls.ar
                 $sync.Langusege  = "ar"
-
             }
             "en" {
                 $sync["window"].DataContext = $sync.database.locales.Controls.en
                 $sync.Langusege  = "en"
-
             }
             default {
                 # fallback to default lang
+                $sync.Langusege  = "en"
                 $sync["window"].DataContext = $sync.database.locales.Controls.en
                 Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "locales" -Value "en" -Force 
-                $sync.Langusege  = "en"
             }
         }
-        
-
    
     #===========================================================================
     #endregion Check for Langusege 
