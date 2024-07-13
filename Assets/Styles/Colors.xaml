@@ -9,7 +9,7 @@
                         <SolidColorBrush x:Key="FGTextColor" Color="Black" />
                         <SolidColorBrush x:Key="DefaultTextColor" Color="Black"/>
                         <SolidColorBrush x:Key="DefaultTextColor2" Color="White"/>
-                        <SolidColorBrush x:Key="BorderBrush" Color="WhiteSmoke"/>
+                        <SolidColorBrush x:Key="BorderBrush" Color="#FFB3B3B3"/>
                         <SolidColorBrush x:Key="BGButtonBorderBrush" Color="#525FE1"/>
                         <SolidColorBrush x:Key="Label" Color="LightBlue"/>
                         <SolidColorBrush x:Key="checkboxBG" Color="White"/>
