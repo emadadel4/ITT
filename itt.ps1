@@ -19,7 +19,7 @@ Add-Type -AssemblyName System.Windows.Forms
 $sync = [Hashtable]::Synchronized(@{})
 $sync.database = @{}
 $sync.ProcessRunning = $false
-$sync.lastupdate = "13-07-2024"
+$sync.lastupdate = "14-07-2024"
 $sync.github =   "https://github.com/emadadel4"
 $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://emadadel4.github.io"
@@ -4477,7 +4477,7 @@ $sync.database.Applications = '[
 $sync.database.locales = '{
   "Controls": {
     "en": {
-      "Welcome": "This tool offers substantial facilitation in software installation and performance enhancement. Join us to contribute to its development and enhance its completeness",
+      "Welcome": "Save time by installing multiple programs at once and boost your Windows performance. Join us in improving the tool and make it great.",
       "installBtn": "Install",
       "applyBtn": "Apply",
       "downloading": "Downloading",
@@ -8816,7 +8816,7 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
                         HorizontalAlignment="Left"
                         VerticalAlignment="Center" 
                         TextWrapping="Wrap"
-                        Margin="10,0,0,0"
+                        Padding="10"
                         FlowDirection="LeftToRight"
                         FontWeight="Medium"
                         FontSize="15"
