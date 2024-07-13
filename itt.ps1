@@ -5948,17 +5948,19 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="TabItem">
-                    <Border Name="Border" CornerRadius="15" BorderThickness="0,0,0,0" Padding="5" BorderBrush="Gainsboro"  Margin="10,5">
+                    <Border Name="Border" CornerRadius="5" BorderThickness="0,0,0,0" Padding="10" BorderBrush="Gainsboro"  Margin="5,5">
                         <ContentPresenter x:Name="ContentSite"
                         VerticalAlignment="Center"
                         HorizontalAlignment="Center"
                         ContentSource="Header"
-                        Margin="10,2"/>
+                        />
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsSelected" Value="True">
                             <Setter TargetName="Border" Property="Background" Value="{DynamicResource BGButtonColor}" />
                             <Setter Property="Foreground" Value="white" />
+                            <Setter Property="FontWeight" Value="SemiBold" />
+                            <Setter Property="FontSize" Value="100" />
                         </Trigger>
                         <Trigger Property="IsSelected" Value="False">
                             <Setter TargetName="Border" Property="Background" Value="{DynamicResource FGColor}" />
@@ -6138,7 +6140,7 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
                 <ResourceDictionary x:Key="Light">
                         <SolidColorBrush x:Key="BGColor" Color="White"/>
                         <SolidColorBrush x:Key="FGColor" Color="WhiteSmoke"/>
-                        <SolidColorBrush x:Key="BGButtonColor" Color="#FF6C62FC" />
+                        <SolidColorBrush x:Key="BGButtonColor" Color="#525FE1" />
                         <SolidColorBrush x:Key="FGButtonColor" Color="White" />
                         <SolidColorBrush x:Key="FGTextColor" Color="Black" />
                         <SolidColorBrush x:Key="DefaultTextColor" Color="Black"/>
@@ -8818,7 +8820,7 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
                         TextWrapping="Wrap"
                         Padding="10"
                         FlowDirection="LeftToRight"
-                        FontWeight="Medium"
+                        FontWeight="SemiBold"
                         FontSize="15"
                         Width="622"
                         />
