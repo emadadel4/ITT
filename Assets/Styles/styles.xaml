@@ -27,10 +27,10 @@
 
 <!--Textbox Style-->
   <Style TargetType="TextBox">
-    <Setter Property="Background" Value="{DynamicResource BGColor}"/>
+    <Setter Property="Background" Value="{DynamicResource FGColor}"/>
       <Setter Property="Foreground" Value="{DynamicResource FGTextColor}"/>
       <Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}"/>
-      <Setter Property="BorderThickness" Value="2"/>
+      <Setter Property="BorderThickness" Value="0"/>
       <Setter Property="Template">
           <Setter.Value>
               <ControlTemplate TargetType="TextBox">
