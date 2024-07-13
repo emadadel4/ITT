@@ -305,17 +305,19 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="TabItem">
-                    <Border Name="Border" CornerRadius="15" BorderThickness="0,0,0,0" Padding="5" BorderBrush="Gainsboro"  Margin="10,5">
+                    <Border Name="Border" CornerRadius="5" BorderThickness="0,0,0,0" Padding="10" BorderBrush="Gainsboro"  Margin="5,5">
                         <ContentPresenter x:Name="ContentSite"
                         VerticalAlignment="Center"
                         HorizontalAlignment="Center"
                         ContentSource="Header"
-                        Margin="10,2"/>
+                        />
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsSelected" Value="True">
                             <Setter TargetName="Border" Property="Background" Value="{DynamicResource BGButtonColor}" />
                             <Setter Property="Foreground" Value="white" />
+                            <Setter Property="FontWeight" Value="SemiBold" />
+                            <Setter Property="FontSize" Value="100" />
                         </Trigger>
                         <Trigger Property="IsSelected" Value="False">
                             <Setter TargetName="Border" Property="Background" Value="{DynamicResource FGColor}" />

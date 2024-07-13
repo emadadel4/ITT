@@ -325,7 +325,7 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
                         TextWrapping="Wrap"
                         Padding="10"
                         FlowDirection="LeftToRight"
-                        FontWeight="Medium"
+                        FontWeight="SemiBold"
                         FontSize="15"
                         Width="622"
                         />

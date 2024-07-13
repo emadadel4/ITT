@@ -4,7 +4,7 @@
                 <ResourceDictionary x:Key="Light">
                         <SolidColorBrush x:Key="BGColor" Color="White"/>
                         <SolidColorBrush x:Key="FGColor" Color="WhiteSmoke"/>
-                        <SolidColorBrush x:Key="BGButtonColor" Color="#FF6C62FC" />
+                        <SolidColorBrush x:Key="BGButtonColor" Color="#525FE1" />
                         <SolidColorBrush x:Key="FGButtonColor" Color="White" />
                         <SolidColorBrush x:Key="FGTextColor" Color="Black" />
                         <SolidColorBrush x:Key="DefaultTextColor" Color="Black"/>
