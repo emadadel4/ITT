@@ -320,7 +320,7 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
 
                 <StackPanel Orientation="Horizontal" Grid.Row="3">
                     <TextBlock Name="quotes"
-                        HorizontalAlignment="Auto"
+                        HorizontalAlignment="Left"
                         VerticalAlignment="Center" 
                         TextWrapping="Wrap"
                         Padding="10"
