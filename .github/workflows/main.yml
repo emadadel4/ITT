@@ -12,12 +12,20 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Set execution policy
+        shell: pwsh
+        run: Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process -Force
+
+      - name: Debug script path
+        shell: pwsh
+        run: Write-Host "Script path: $env:GITHUB_WORKSPACE\test.ps1"
+
       - name: Run PowerShell script
         shell: pwsh
         run: |
           $scriptPath = "$env:GITHUB_WORKSPACE\test.ps1"
           if (Test-Path $scriptPath) {
-            Start-Process -FilePath $scriptPath -Verb RunAs -Wait
+            & $scriptPath
           } else {
             Write-Error "Script $scriptPath not found."
             exit 1
