@@ -5379,6 +5379,10 @@ $sync.database.Tweaks = '[
       },
       {
         "Name": "Microsoft.ZuneVideo"
+      },
+      {
+        "Name": "Clipchamp.Clipchamp"
+
       }
     ],
     "InvokeCommand": [
