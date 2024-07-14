@@ -8937,7 +8937,6 @@ try {
         Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "locales" -Value "$($shortCulture)" -Force 
     }
 
-
     #===========================================================================
     #region Check for Langusege 
     #===========================================================================
@@ -8994,7 +8993,6 @@ try {
     #===========================================================================
     #endregion Check Theme
     #===========================================================================
-
  }
 catch [System.Management.Automation.MethodInvocationException] {
     Write-Warning "We ran into a problem with the XAML code.  Check the syntax for this control..."
