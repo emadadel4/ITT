@@ -91,31 +91,28 @@ function GenerateCheckboxes {
     foreach ($Item in $Items) {        
 
         $CleanedItem = $Item.Description -replace '[^\w\s]', '. '
-
         $Cat = $Item.category -replace '[^\w\s]', ''
 
-        $NameNoSpace = $Item.Name -replace '[^\w\s]', ''
-
-
+        # grap name of each item  
         $Content = $Item.$ContentField
 
+        #Add Tag(Cat) in Applications.json to apps items
         $Tag = if ($TagField) { "Tag=`"$($Item.$TagField)`"" } else { "" }
 
-        $adel = if ($NameField) { "Name=`"$($Item.$NameField)`"" } else { "" }
+        # Grap and add the Name form Settings.json to Toggle Settings items
+        $Name = if ($NameField) { "Name=`"$($Item.$NameField)`"" } else { "" }
 
-
-        $IsChecked = if ($IsCheckedField) { "IsChecked=`"$($Item.$IsCheckedField)`"" } else { "" }
-
+        # Add Toggle Style to Item on Settings
         $Toggle = if ($ToggleField) { "Style=`"{StaticResource ToggleSwitchStyle}`"" } else { "" }
 
-
-
+        #Checkbox the item if is true in Applications.json
+        $IsChecked = if ($IsCheckedField) { "IsChecked=`"$($Item.$IsCheckedField)`"" } else { "" }
 
         $Checkboxes += @"
 
         <StackPanel Orientation="Vertical" Width="auto" Margin="8">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="$Content" $Tag $IsChecked $Toggle $adel FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <CheckBox Content="$Content" $Tag $IsChecked $Toggle $Name FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="$Cat"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" FontSize="13" FontFamily="Sego UI Semibold" VerticalAlignment="Center" TextWrapping="Wrap" Text="$CleanedItem"/>
