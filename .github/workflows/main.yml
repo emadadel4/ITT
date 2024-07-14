@@ -12,6 +12,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
+      - name: Set up Git
+        run: |
+          git config --global user.email "emadadel1920@gmail.com"
+          git config --global user.name "emadadel"
+
       - name: Run PowerShell script and commit changes
         shell: powershell
         run: |
