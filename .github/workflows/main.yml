@@ -1,6 +1,9 @@
-name: Run PowerShell script on commit
+name: Run build script and commit changes
 
-on: [push]
+on:
+  push:
+    branches:
+      - main  # Adjust the branch as needed
 
 jobs:
   run-script:
@@ -9,7 +12,17 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Run PowerShell script
+      - name: Run PowerShell script and commit changes
         shell: powershell
         run: |
-          Start-Process powershell.exe -Verb RunAs -ArgumentList '-NoProfile -ExecutionPolicy Bypass -File /test.ps1'
+          # Run build.ps1 script
+          Start-Process powershell.exe -Verb RunAs -ArgumentList '-NoProfile -ExecutionPolicy Bypass -File build.ps1'
+
+          # Stage all changes
+          git add .
+
+          # Commit changes with a generic message
+          git commit -m "Automated build script execution"
+
+          # Push changes back to the repository
+          git push origin main  # Replace 'main' with your branch name
