@@ -19,7 +19,7 @@ Add-Type -AssemblyName System.Windows.Forms
 $sync = [Hashtable]::Synchronized(@{})
 $sync.database = @{}
 $sync.ProcessRunning = $false
-$sync.lastupdate = "14-07-2024"
+$sync.lastupdate = "15-07-2024"
 $sync.github =   "https://github.com/emadadel4"
 $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://emadadel4.github.io"
@@ -5773,96 +5773,107 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
   </Style>
 <!--End CheckBox Style-->
 
-<!--Menu Style-->
-  <Style TargetType="Menu">
-      <Setter Property="Background" Value="{DynamicResource BGColor}"/>
-      <Setter Property="Margin" Value="10"/>
-  </Style>
-<!--End Menu Style-->
+ <!-- Define the Menu Style -->
+ <Style TargetType="Menu">
+    <Setter Property="Background" Value="#FFFFFF"/>
+    <Setter Property="Foreground" Value="#000000"/>
+    <Setter Property="FontSize" Value="14"/>
+    <Setter Property="FontFamily" Value="Segoe UI"/>
+    <Setter Property="Margin" Value="5"/>
+    <Setter Property="Template">
+        <Setter.Value>
+            <ControlTemplate TargetType="Menu">
+                <Border Background="{TemplateBinding Background}" 
+                        BorderBrush="{TemplateBinding BorderBrush}" 
+                        BorderThickness="0" 
+                        CornerRadius="8">
+                    <ItemsPresenter />
+                </Border>
+            </ControlTemplate>
+        </Setter.Value>
+    </Setter>
+</Style>
 
-<!--MenuItem Style-->
-    <Style TargetType="MenuItem">
-        <Setter Property="Background" Value="{DynamicResource BGColor}"/>
-        <Setter Property="Foreground" Value="{DynamicResource DefaultTextColor}"/>
-        <Setter Property="Padding" Value="2"/>
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="MenuItem">
+<!-- Define the MenuItem Style -->
+<Style TargetType="MenuItem">
+    <Setter Property="Background" Value="Transparent"/>
+    <Setter Property="Foreground" Value="#000000"/>
+    <Setter Property="BorderBrush" Value="#000000"/>
+    <Setter Property="FontSize" Value="14"/>
+    <Setter Property="FontFamily" Value="Segoe UI"/>
+    <Setter Property="Margin" Value="2"/>
+    <Setter Property="Padding" Value="0"/>
+    <Setter Property="Template">
+        <Setter.Value>
+            <ControlTemplate TargetType="MenuItem">
+                <Border x:Name="Border"
+                        Background="{TemplateBinding Background}" 
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        HorizontalAlignment="Left"
+                        Padding="5"
+                        CornerRadius="2">
                     <Grid>
-                        <Border x:Name="Border"
-                                Background="{TemplateBinding Background}"
-                                Padding="{TemplateBinding Padding}">
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="Auto"/>
-                                </Grid.ColumnDefinitions>
-                                <!-- Icon -->
-                                <ContentPresenter Grid.Column="0"
-                                                Content="{TemplateBinding Icon}"
-                                                VerticalAlignment="Center"
-                                                Margin="0,0,5,0"/>
-                                <!-- Header -->
-                                <ContentPresenter Grid.Column="1"
-                                                Content="{TemplateBinding Header}"
-                                                VerticalAlignment="Center"/>
-                                <!-- Arrow for Submenu -->
-                                <Path x:Name="Arrow"
-                                    Grid.Column="2"
-                                    Margin="3"
-                                    HorizontalAlignment="Right"
-                                    VerticalAlignment="Center"
-                                    Data="M0,0 L4,4 L8,0 Z"
-                                    Fill="{DynamicResource DefaultTextColor}"
-                                    Visibility="Collapsed"/>
-                            </Grid>
-                        </Border>
-                        <!-- Submenu -->
-                        <Popup x:Name="SubmenuPopup"
-                            Placement="Right"
-                            IsOpen="{Binding IsSubmenuOpen, RelativeSource={RelativeSource TemplatedParent}}"
-                            Focusable="False"
-                            AllowsTransparency="True"
-                            PopupAnimation="Fade">
-                            <Border Background="{DynamicResource FGColor}"
-                                    BorderThickness="0.7"
-                                    BorderBrush="{DynamicResource BGButtonColor}"
-                                    CornerRadius="0">
-                                <StackPanel>
-                                    <ItemsPresenter/>
-                                </StackPanel>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        
+                        <!-- Icon -->
+                        <ContentPresenter Grid.Column="0" 
+                                          ContentSource="Icon" 
+                                          HorizontalAlignment="Left"
+                                          VerticalAlignment="Center"
+                                          Margin="0,0,4,0"/>
+                        
+                        <!-- Text -->
+                        <TextBlock x:Name="TextBlock"
+                                   Grid.Column="1" 
+                                   Text="{TemplateBinding Header}"
+                                   Foreground="{DynamicResource DefaultTextColor}"/>
+                        
+                        <!-- Arrow Down Indicator -->
+                        <Path x:Name="Arrow"
+                              Grid.Column="2"
+                              Data="M0,0 L4,4 L8,0 Z"
+                              Fill="{DynamicResource DefaultTextColor}"
+                              HorizontalAlignment="Center"
+                              VerticalAlignment="Center"
+                              Margin="4,0,0,0"
+                              Visibility="Collapsed"/>
+                        
+                        <!-- Popup for Submenu -->
+                        <Popup Name="PART_Popup" 
+                               Placement="Bottom" 
+                               IsOpen="{TemplateBinding IsSubmenuOpen}" 
+                               AllowsTransparency="True" 
+                               Focusable="False" 
+                               PopupAnimation="Slide">
+                            <Border Background="{DynamicResource FGColor}" 
+                                    BorderBrush="{DynamicResource BorderBrush}" 
+                                    BorderThickness="0.8"
+                                    CornerRadius="5">
+                                <StackPanel IsItemsHost="True" 
+                                            KeyboardNavigation.DirectionalNavigation="Cycle"/>
                             </Border>
                         </Popup>
                     </Grid>
-                    <ControlTemplate.Triggers>
-                        <!-- Hover Effect -->
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="Border" Property="Background" Value="{DynamicResource FGColor}"/>
-                            <Setter Property="BorderBrush" Value="red"/>
-                            <Setter Property="BorderThickness" Value="60"/>
-                        </Trigger>
-                        <Trigger Property="IsEnabled" Value="False">
-                            <Setter TargetName="Border" Property="Background" Value="Transparent"/>
-                            <Setter Property="BorderBrush" Value="Transparent"/>
-                        </Trigger>
-                        <!-- Show Arrow if Submenu Exists -->
-                        <Trigger Property="HasItems" Value="True">
-                            <Setter TargetName="Arrow" Property="Visibility" Value="Visible"/>
-                        </Trigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-        <Setter Property="ItemContainerStyle">
-            <Setter.Value>
-                <Style TargetType="MenuItem">
-                    <Setter Property="Margin" Value="0,2,0,0"/>
-                </Style>
-            </Setter.Value>
-        </Setter>
-    </Style>
-<!--End MenuItem Style-->
+                </Border>
+                <ControlTemplate.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <!-- Adjust appearance on hover if needed -->
+                        <!-- <Setter TargetName="Border" Property="Background" Value="{DynamicResource BGButtonColor}"/>
+                        <Setter TargetName="TextBlock" Property="Foreground" Value="{DynamicResource DefaultTextColor2}"/> -->
+                    </Trigger>
+                    <Trigger Property="HasItems" Value="True">
+                        <Setter TargetName="Arrow" Property="Visibility" Value="Visible"/>
+                    </Trigger>
+                </ControlTemplate.Triggers>
+            </ControlTemplate>
+        </Setter.Value>
+    </Setter>
+</Style>
+
 
 <!--ListViewItem Style-->
     <Style TargetType="ListViewItem">
@@ -5980,83 +5991,82 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
 <!--End TabControl Style-->
 
 <!--ComboBox Style-->
-<Style TargetType="{x:Type ComboBox}">
-    <Setter Property="Foreground" Value="{DynamicResource DefaultTextColor}"/>
-    <Setter Property="HorizontalAlignment" Value="Center"/>
-    <Setter Property="Template">
-        <Setter.Value>
-            <ControlTemplate TargetType="ComboBox">
-                <Grid>
-                    <ToggleButton 
-                        Foreground="{DynamicResource DefaultTextColor}" 
-                        Name="ToggleButton" Focusable="false"
-                        IsChecked="{Binding Path=IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
-                        Background="Transparent" BorderBrush="Transparent">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/> <!-- Text will take up available space -->
-                                <ColumnDefinition Width="20"/> <!-- Arrow width -->
-                            </Grid.ColumnDefinitions>
-                            <ContentPresenter Name="ContentSite" Grid.Column="0" IsHitTestVisible="False" Content="{TemplateBinding SelectionBoxItem}"
-                                            ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}" ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
-                                            Margin="6" VerticalAlignment="Center" HorizontalAlignment="Left"/>
-                            <Path x:Name="Arrow" Grid.Column="1" Fill="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center" Data="M 0 0 L 4 4 L 8 0 Z"/>
-                        </Grid>
-                    </ToggleButton>
-                    <TextBox x:Name="PART_EditableTextBox" Visibility="Hidden" IsReadOnly="{TemplateBinding IsReadOnly}"/>
-                    <Popup Name="Popup" Placement="Bottom" IsOpen="{TemplateBinding IsDropDownOpen}" AllowsTransparency="True" Focusable="True" PopupAnimation="Slide">
-                        <Grid Name="DropDown" SnapsToDevicePixels="True" MinWidth="{TemplateBinding ActualWidth}" Height="Auto"> <!-- MaxHeight="{TemplateBinding MaxDropDownHeight}" -->
+    <Style TargetType="{x:Type ComboBox}">
+        <Setter Property="Foreground" Value="{DynamicResource DefaultTextColor}"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ComboBox">
+                    <Grid>
+                        <ToggleButton 
+                            Foreground="{DynamicResource DefaultTextColor}" 
+                            Name="ToggleButton" Focusable="false"
+                            IsChecked="{Binding Path=IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
+                            Background="Transparent" BorderBrush="Transparent">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/> <!-- Text will take up available space -->
+                                    <ColumnDefinition Width="20"/> <!-- Arrow width -->
+                                </Grid.ColumnDefinitions>
+                                <ContentPresenter Name="ContentSite" Grid.Column="0" IsHitTestVisible="False" Content="{TemplateBinding SelectionBoxItem}"
+                                                ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}" ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
+                                                Margin="6" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                                <Path x:Name="Arrow" Grid.Column="1" Fill="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center" Data="M 0 0 L 4 4 L 8 0 Z"/>
+                            </Grid>
+                        </ToggleButton>
+                        <TextBox x:Name="PART_EditableTextBox" Visibility="Hidden" IsReadOnly="{TemplateBinding IsReadOnly}"/>
+                        <Popup Name="Popup" Placement="Bottom" IsOpen="{TemplateBinding IsDropDownOpen}" AllowsTransparency="True" Focusable="True" PopupAnimation="Slide">
+                            <Grid Name="DropDown" SnapsToDevicePixels="True" MinWidth="{TemplateBinding ActualWidth}" Height="Auto"> <!-- MaxHeight="{TemplateBinding MaxDropDownHeight}" -->
 
-                            <Border x:Name="DropDownBorder" Background="{DynamicResource FGColor}"/>
-                            <ScrollViewer SnapsToDevicePixels="True">
-                                <StackPanel IsItemsHost="True"/>
-                            </ScrollViewer>
-                        </Grid>
-                    </Popup>
-                </Grid>
-            </ControlTemplate>
-        </Setter.Value>
-    </Setter>
-</Style>
+                                <Border x:Name="DropDownBorder" Background="{DynamicResource FGColor}"/>
+                                <ScrollViewer SnapsToDevicePixels="True">
+                                    <StackPanel IsItemsHost="True"/>
+                                </ScrollViewer>
+                            </Grid>
+                        </Popup>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 
-<Style TargetType="{x:Type ComboBoxItem}">
-    <Setter Property="Background" Value="{DynamicResource FGColor}"/>
-    <Setter Property="Foreground" Value="{DynamicResource DefaultTextColor}"/>
-    <Setter Property="FontSize" Value="14"/>
-    <Setter Property="Margin" Value="2,0,0,0"/>
+    <Style TargetType="{x:Type ComboBoxItem}">
+        <Setter Property="Background" Value="{DynamicResource FGColor}"/>
+        <Setter Property="Foreground" Value="{DynamicResource DefaultTextColor}"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Margin" Value="2,0,0,0"/>
 
 
-    <Setter Property="Template">
-        <Setter.Value>
-            <ControlTemplate TargetType="{x:Type ComboBoxItem}">
-                <Border x:Name="Border" Background="{TemplateBinding Background}"
-                        BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="{TemplateBinding BorderThickness}">
-                    <ContentPresenter />
-                </Border>
-                <ControlTemplate.Triggers>
-                    <Trigger Property="IsHighlighted" Value="True">
-                        <Setter TargetName="Border" Property="Background" Value="{DynamicResource BGButtonColor}"/>
-                        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ComboBoxItem}">
+                    <Border x:Name="Border" Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                        <ContentPresenter />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsHighlighted" Value="True">
+                            <Setter TargetName="Border" Property="Background" Value="{DynamicResource BGButtonColor}"/>
+                            <Setter Property="Foreground" Value="White"/>
 
-                    </Trigger>
-                </ControlTemplate.Triggers>
-            </ControlTemplate>
-        </Setter.Value>
-    </Setter>
-</Style>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 
-<Style x:Key="CustomSeparatorStyle" TargetType="{x:Type Separator}">
-    <Setter Property="Template">
-        <Setter.Value>
-            <ControlTemplate TargetType="{x:Type Separator}">
-                <Border Background="Black" Height="1" Margin="0"/>
-            </ControlTemplate>
-        </Setter.Value>
-    </Setter>
-</Style>
+    <Style x:Key="CustomSeparatorStyle" TargetType="{x:Type Separator}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Separator}">
+                    <Border Background="Black" Height="1" Margin="0"/>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 <!--End ComboBox Style-->
-
 
 <!--ToggleSwitchStyle Style-->
     <Style x:Key="ToggleSwitchStyle" TargetType="CheckBox">
@@ -6225,9 +6235,9 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
             
                 </MenuItem>
 
-                <MenuItem Header="{Binding device}" FontFamily="arial" FontSize="13"  Margin="10,0,0,0" BorderBrush="Transparent" BorderThickness="0" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <MenuItem Header="{Binding device}" FontFamily="arial" FontSize="13"  Margin="10,0,0,0" BorderBrush="Transparent" BorderThickness="0" VerticalAlignment="Center" HorizontalAlignment="Left">
                     <MenuItem.Icon>
-                        <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                        <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="15" Text=""/>
                     </MenuItem.Icon>
                     <MenuItem Name="sysinfo" Header="System Info">
                         <MenuItem.Icon>
@@ -6273,9 +6283,9 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
                     </MenuItem>
                 </MenuItem>
 
-                <MenuItem Header="{Binding pref}" FontFamily="arial" FontSize="13"  BorderBrush="Transparent" BorderThickness="0" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <MenuItem Header="{Binding pref}" FontFamily="arial" FontSize="13"  BorderBrush="Transparent" BorderThickness="0" VerticalAlignment="Center" HorizontalAlignment="Left">
                     <MenuItem.Icon>
-                        <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                        <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center" Text=""/>
                     </MenuItem.Icon>
 
                     <MenuItem Name="save" Header="{Binding saveapps}">
@@ -6317,7 +6327,7 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
                 
                     <MenuItem Name="ittshortcut" Header="{Binding ittlink}">
                         <MenuItem.Icon>
-                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="15" Text=""/>
                         </MenuItem.Icon>
                     </MenuItem>
                 </MenuItem>
@@ -6325,7 +6335,7 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
 
                 <MenuItem Header="{Binding mirrorlinks}" FontFamily="arial" FontSize="13"  BorderThickness="0" VerticalAlignment="Center" HorizontalAlignment="Center">
                     <MenuItem.Icon>
-                        <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                        <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="15" Text=""/>
                     </MenuItem.Icon>
 
 
@@ -6362,7 +6372,7 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
                 
                 <MenuItem Name="dev" Header="{Binding about}" FontFamily="arial" FontSize="13"  BorderBrush="Transparent" BorderThickness="1" VerticalAlignment="Center" HorizontalAlignment="Center">
                     <MenuItem.Icon>
-                        <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                        <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="15" Text=""/>
                     </MenuItem.Icon>
                 </MenuItem>
 
@@ -8852,7 +8862,7 @@ $childXaml = '<Window
   x:Name="Window" Title="About | ITT " WindowStartupLocation = "CenterScreen" 
   Background="White"
   WindowStyle="ToolWindow"
-  Height="380" Width="300" MinHeight="380" MinWidth="300" MaxHeight="300" MaxWidth="300"  FontFamily="Console" ShowInTaskbar = "True" Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/icon.ico">
+  Height="488" Width="350" FontFamily="Console" ShowInTaskbar = "True" Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/icon.ico">
     <Grid>
 
       <Grid.RowDefinitions>
@@ -8863,11 +8873,7 @@ $childXaml = '<Window
       <StackPanel Orientation="Vertical">
           
         <!--Logo-->
-          <Ellipse Margin="0,20,0,15" VerticalAlignment="Center" HorizontalAlignment="Center" Name="about" Width="50" Height="50" ToolTip="Enad Adel">
-            <Ellipse.Fill>
-              <ImageBrush ImageSource="https://raw.githubusercontent.com/emadadel4/ITT/main/Assets/Images/logo.png" />
-            </Ellipse.Fill>
-          </Ellipse>
+              <Image Source="https://raw.githubusercontent.com/emadadel4/ITT/main/Assets/Images/logo.png" Margin="10" Height="80" Width="Auto"/>
         <!--End Logo-->
         
         <TextBlock Text="Install Tweak Tool" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center"/>
@@ -8893,7 +8899,11 @@ $childXaml = '<Window
           <TextBlock Name="ver" TextAlignment="Right">5/20/2024</TextBlock>
         </DockPanel>
         <Separator/>
-        <TextBlock  Name="sourcecode" Cursor="Hand" Margin="0,25,0,0" Text="Source Code" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+
+        <Image Source="https://raw.githubusercontent.com/emadadel4/ITT/main/Assets/Images/coffee.png" Cursor="Hand" Name="coffee" Margin="10" Height="70" Width="Auto"/>
+
+
+        <TextBlock  Name="sourcecode" Cursor="Hand" Margin="0,25,0,0" Text="Source Code" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
       </StackPanel>
     </Grid>
   </Window>
@@ -10689,6 +10699,7 @@ function About{
     $sync.about.FindName("github").add_MouseLeftButtonDown({Start-Process("https://github.com/emadadel4")})
     $sync.about.FindName("website").add_MouseLeftButtonDown({Start-Process("https://emadadel4.github.io")})
     $sync.about.FindName("sourcecode").add_MouseLeftButtonDown({Start-Process("https://github.com/emadadel4/ITT")})
+    $sync.about.FindName("coffee").add_MouseLeftButtonDown({Start-Process("https://buymeacoffee.com/emadadel")})
 
     if($sync.Langusege -eq "en")
     {
