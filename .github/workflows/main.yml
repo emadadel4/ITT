@@ -1,4 +1,4 @@
-name: Run PowerShell Script as Administrator on Commit
+name: Run PowerShell script on commit
 
 on:
   push:
@@ -7,26 +7,12 @@ on:
 
 jobs:
   run-script:
-    runs-on: windows-latest  # Runs on the latest version of Windows
+    runs-on: windows-latest
     steps:
-      - name: Checkout repository
+      - name: Checkout code
         uses: actions/checkout@v2
-      
-      - name: Set up PowerShell
-        # Uses GitHub Actions' built-in PowerShell environment
-        shell: pwsh
-      
-      - name: Execute PowerShell script as Administrator
+
+      - name: Run PowerShell script
         shell: pwsh
         run: |
-          # Define the path to your script
-          $scriptPath = "$env:GITHUB_WORKSPACE\test.ps1"
-          
-          # Check if the script file exists
-          if (Test-Path $scriptPath) {
-            # Create a new PowerShell process with elevated privileges
-            Start-Process pwsh -ArgumentList "-File $scriptPath" -Verb RunAs -Wait
-          } else {
-            Write-Error "Script file not found: $scriptPath"
-            exit 1
-          }
+          Start-Process -FilePath "$PSScriptRoot\test.ps1" -Verb RunAs -Wait
