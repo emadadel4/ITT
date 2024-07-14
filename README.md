@@ -6,8 +6,13 @@
   
 <h1 align="center">ITT (Install Tweaks Tool) 🛠️ 🚀</h1>
 
+
+
+
 <p align="center">
 <a href="https://www.buymeacoffee.com/emadadel" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="30" width="150"></a>
+  <h4 align="center"><a href="https://emadadel4.github.io/ar/itt/" target="_blank">متوفر ايضا اللغة العربية</a></h4>
+
 </p>
 
 <p align="center">
@@ -18,7 +23,6 @@
 
 <h2>Overview</h2>
 <p><strong>ITT (Install and Tweak Tool)</strong></p>
-
 - **Automated Installation**: Say goodbye to manual software installations. ITT automates the process, saving you time and effort.
 - **System Tweaks**: Customize your Windows environment with ease. ITT provides scripts to apply system tweaks for enhanced performance and usability.
 - **Developer-Friendly**: Easy-to-use and clear documentation  to add a new app or tweaks as you like, you can create a new method to download apps. Be creative. <a href="#--how-to-add-a-new-apptweakostquote">How to Add a New App</a>
@@ -100,11 +104,11 @@ or
 
 <p><strong>👤 Emad Adel</strong></p>
 
-<ul>
-<li>Telegram: <a href="https://t.me/emadadel4" target="_blank">emadadel4</a></li>
-<li>GitHub: <a href="https://github.com/emadadel4" target="_blank">emadadel4</a></li>
-<li>Website: <a href="https://emadadel4.github.io" target="_blank">Blog</a></li>
-</ul>
+<a href="https://t.me/emadadel4" target="_blank">Telegram</a>
+<a href="https://github.com/emadadel4" target="_blank">Github</a>
+<a href="https://emadadel4.github.io" target="_blank">Blog</a>
+
+
 
 <h2>Show Your Support</h2>
 
