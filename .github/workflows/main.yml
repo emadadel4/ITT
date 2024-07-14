@@ -1,32 +1,15 @@
 name: Run PowerShell script on commit
 
-on:
-  push:
-    branches:
-      - '*'
+on: [push]
 
 jobs:
   run-script:
     runs-on: windows-latest
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Set execution policy
-        shell: pwsh
-        run: Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process -Force
-
-      - name: Debug script path
-        shell: pwsh
-        run: Write-Host "Script path: $env:GITHUB_WORKSPACE\test.ps1"
-
       - name: Run PowerShell script
-        shell: pwsh
+        shell: powershell
         run: |
-          $scriptPath = "$env:GITHUB_WORKSPACE\test.ps1"
-          if (Test-Path $scriptPath) {
-            & $scriptPath
-          } else {
-            Write-Error "Script $scriptPath not found."
-            exit 1
-          }
+          Start-Process powershell.exe -Verb RunAs -ArgumentList '-NoProfile -ExecutionPolicy Bypass -File test.ps1'
