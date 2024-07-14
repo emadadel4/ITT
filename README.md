@@ -101,9 +101,9 @@ or
 <p><strong>👤 Emad Adel</strong></p>
 
 <ul>
-<li>Telegram: <a href="https://t.me/emadadel4">emadadel4</a></li>
-<li>GitHub: <a href="https://github.com/emadadel4">emadadel4</a></li>
-<li>Website: <a href="https://emadadel4.github.io" target="_blink">Blog</a></li>
+<li>Telegram: <a href="https://t.me/emadadel4" target="_blank">emadadel4</a></li>
+<li>GitHub: <a href="https://github.com/emadadel4" target="_blank">emadadel4</a></li>
+<li>Website: <a href="https://emadadel4.github.io" target="_blank">Blog</a></li>
 </ul>
 
 <h2>Show Your Support</h2>
