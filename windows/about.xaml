@@ -4,7 +4,7 @@
   x:Name="Window" Title="About | ITT " WindowStartupLocation = "CenterScreen" 
   Background="White"
   WindowStyle="ToolWindow"
-  Height="380" Width="300" MinHeight="380" MinWidth="300" MaxHeight="300" MaxWidth="300"  FontFamily="Console" ShowInTaskbar = "True" Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/icon.ico">
+  Height="488" Width="350" FontFamily="Console" ShowInTaskbar = "True" Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/icon.ico">
     <Grid>
 
       <Grid.RowDefinitions>
@@ -15,11 +15,7 @@
       <StackPanel Orientation="Vertical">
           
         <!--Logo-->
-          <Ellipse Margin="0,20,0,15" VerticalAlignment="Center" HorizontalAlignment="Center" Name="about" Width="50" Height="50" ToolTip="Enad Adel">
-            <Ellipse.Fill>
-              <ImageBrush ImageSource="https://raw.githubusercontent.com/emadadel4/ITT/main/Assets/Images/logo.png" />
-            </Ellipse.Fill>
-          </Ellipse>
+              <Image Source="https://raw.githubusercontent.com/emadadel4/ITT/main/Assets/Images/logo.png" Margin="10" Height="80" Width="Auto"/>
         <!--End Logo-->
         
         <TextBlock Text="Install Tweak Tool" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center"/>
@@ -45,7 +41,11 @@
           <TextBlock Name="ver" TextAlignment="Right">5/20/2024</TextBlock>
         </DockPanel>
         <Separator/>
-        <TextBlock  Name="sourcecode" Cursor="Hand" Margin="0,25,0,0" Text="Source Code" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+
+        <Image Source="https://raw.githubusercontent.com/emadadel4/ITT/main/Assets/Images/coffee.png" Cursor="Hand" Name="coffee" Margin="10" Height="70" Width="Auto"/>
+
+
+        <TextBlock  Name="sourcecode" Cursor="Hand" Margin="0,25,0,0" Text="Source Code" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
       </StackPanel>
     </Grid>
   </Window>

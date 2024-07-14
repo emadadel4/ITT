@@ -47,9 +47,9 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
             
                 </MenuItem>
 
-                <MenuItem Header="{Binding device}" FontFamily="arial" FontSize="13"  Margin="10,0,0,0" BorderBrush="Transparent" BorderThickness="0" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <MenuItem Header="{Binding device}" FontFamily="arial" FontSize="13"  Margin="10,0,0,0" BorderBrush="Transparent" BorderThickness="0" VerticalAlignment="Center" HorizontalAlignment="Left">
                     <MenuItem.Icon>
-                        <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                        <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="15" Text=""/>
                     </MenuItem.Icon>
                     <MenuItem Name="sysinfo" Header="System Info">
                         <MenuItem.Icon>
@@ -95,9 +95,9 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
                     </MenuItem>
                 </MenuItem>
 
-                <MenuItem Header="{Binding pref}" FontFamily="arial" FontSize="13"  BorderBrush="Transparent" BorderThickness="0" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <MenuItem Header="{Binding pref}" FontFamily="arial" FontSize="13"  BorderBrush="Transparent" BorderThickness="0" VerticalAlignment="Center" HorizontalAlignment="Left">
                     <MenuItem.Icon>
-                        <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                        <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center" Text=""/>
                     </MenuItem.Icon>
 
                     <MenuItem Name="save" Header="{Binding saveapps}">
@@ -139,7 +139,7 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
                 
                     <MenuItem Name="ittshortcut" Header="{Binding ittlink}">
                         <MenuItem.Icon>
-                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="15" Text=""/>
                         </MenuItem.Icon>
                     </MenuItem>
                 </MenuItem>
@@ -147,7 +147,7 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
 
                 <MenuItem Header="{Binding mirrorlinks}" FontFamily="arial" FontSize="13"  BorderThickness="0" VerticalAlignment="Center" HorizontalAlignment="Center">
                     <MenuItem.Icon>
-                        <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                        <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="15" Text=""/>
                     </MenuItem.Icon>
 
 
@@ -184,7 +184,7 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
                 
                 <MenuItem Name="dev" Header="{Binding about}" FontFamily="arial" FontSize="13"  BorderBrush="Transparent" BorderThickness="1" VerticalAlignment="Center" HorizontalAlignment="Center">
                     <MenuItem.Icon>
-                        <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                        <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="15" Text=""/>
                     </MenuItem.Icon>
                 </MenuItem>
 
