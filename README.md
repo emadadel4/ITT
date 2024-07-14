@@ -7,10 +7,11 @@
 <h1 align="center">ITT (Install Tweaks Tool) 🛠️ 🚀</h1>
 
 
-
+[![Discord](https://img.shields.io/badge/-Discord-7289da?style=flat&logo=discord&logoColor=white)](https://discord.gg/{https://discord.gg/3eV79KgD})
 
 <p align="center">
-<a href="https://www.buymeacoffee.com/emadadel" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="30" width="150"></a>
+<a href="https://www.buymeacoffee.com/emadadel" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="30" width="150">
+</a>
 
 </p>
 
