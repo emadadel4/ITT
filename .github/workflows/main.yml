@@ -27,7 +27,9 @@ jobs:
           git add .
 
           # Check if there are changes to commit
-          git diff-index --quiet HEAD || git commit -m "Automated build script execution"
-
-          # Push changes back to the repository
-          git push origin main  # Replace 'main' with your branch name
+          if ((git diff --cached) -ne $null) {
+            git commit -m "Automated build script execution"
+            git push origin main  # Replace 'main' with your branch name
+          } else {
+            echo "No changes to commit."
+          }
