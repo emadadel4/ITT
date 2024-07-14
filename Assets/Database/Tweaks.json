@@ -14,7 +14,7 @@
     ]
   },
   {
-    "name": "Run Disk cleanup",
+    "name": "Disk cleanup",
     "description": "Clean temporary files that are not necessary",
     "check": "false",
     "category": "Cleanup",
@@ -42,7 +42,7 @@
     ]
   },
   {
-    "name": "Fix Stutter/Lag in Games",
+    "name": "Fix Stutter in Games",
     "description": "Fix Stutter in Games Disable GameBarPresenceWriter for Windows 10 and 11",
     "check": "false",
     "category": "Performance",
