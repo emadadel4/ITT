@@ -3,7 +3,7 @@ name: Run PowerShell script on commit
 on:
   push:
     branches:
-      - main
+      - '*'
 
 jobs:
   run-script:
@@ -11,6 +11,9 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+
+      - name: Set up PowerShell environment
+        uses: microsoft/powershell@v1
 
       - name: Run PowerShell script
         shell: pwsh
