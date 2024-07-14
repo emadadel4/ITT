@@ -90,7 +90,7 @@ function GenerateCheckboxes {
 
     foreach ($Item in $Items) {        
 
-        $CleanedItem = $Item.Description -replace '[^\w\s]', ''
+        $CleanedItem = $Item.Description -replace '[^\w\s]', '. '
 
         $Cat = $Item.category -replace '[^\w\s]', ''
 
