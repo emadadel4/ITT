@@ -5774,106 +5774,105 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
 <!--End CheckBox Style-->
 
  <!-- Define the Menu Style -->
- <Style TargetType="Menu">
-    <Setter Property="Background" Value="#FFFFFF"/>
-    <Setter Property="Foreground" Value="#000000"/>
-    <Setter Property="FontSize" Value="14"/>
-    <Setter Property="FontFamily" Value="Segoe UI"/>
-    <Setter Property="Margin" Value="5"/>
-    <Setter Property="Template">
-        <Setter.Value>
-            <ControlTemplate TargetType="Menu">
-                <Border Background="{TemplateBinding Background}" 
-                        BorderBrush="{TemplateBinding BorderBrush}" 
-                        BorderThickness="0" 
-                        CornerRadius="8">
-                    <ItemsPresenter />
-                </Border>
-            </ControlTemplate>
-        </Setter.Value>
-    </Setter>
-</Style>
+    <Style TargetType="Menu">
+        <Setter Property="Background" Value="#FFFFFF"/>
+        <Setter Property="Foreground" Value="#000000"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontFamily" Value="Segoe UI"/>
+        <Setter Property="Margin" Value="5"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Menu">
+                    <Border Background="{TemplateBinding Background}" 
+                            BorderBrush="{TemplateBinding BorderBrush}" 
+                            BorderThickness="0" 
+                            CornerRadius="8">
+                        <ItemsPresenter />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 
-<!-- Define the MenuItem Style -->
-<Style TargetType="MenuItem">
-    <Setter Property="Background" Value="Transparent"/>
-    <Setter Property="Foreground" Value="#000000"/>
-    <Setter Property="BorderBrush" Value="#000000"/>
-    <Setter Property="FontSize" Value="14"/>
-    <Setter Property="FontFamily" Value="Segoe UI"/>
-    <Setter Property="Margin" Value="2"/>
-    <Setter Property="Padding" Value="0"/>
-    <Setter Property="Template">
-        <Setter.Value>
-            <ControlTemplate TargetType="MenuItem">
-                <Border x:Name="Border"
-                        Background="{TemplateBinding Background}" 
-                        BorderBrush="{TemplateBinding BorderBrush}"
-                        HorizontalAlignment="Left"
-                        Padding="5"
-                        CornerRadius="2">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="Auto"/>
-                        </Grid.ColumnDefinitions>
-                        
-                        <!-- Icon -->
-                        <ContentPresenter Grid.Column="0" 
-                                          ContentSource="Icon" 
-                                          HorizontalAlignment="Left"
-                                          VerticalAlignment="Center"
-                                          Margin="0,0,4,0"/>
-                        
-                        <!-- Text -->
-                        <TextBlock x:Name="TextBlock"
-                                   Grid.Column="1" 
-                                   Text="{TemplateBinding Header}"
-                                   Foreground="{DynamicResource DefaultTextColor}"/>
-                        
-                        <!-- Arrow Down Indicator -->
-                        <Path x:Name="Arrow"
-                              Grid.Column="2"
-                              Data="M0,0 L4,4 L8,0 Z"
-                              Fill="{DynamicResource DefaultTextColor}"
-                              HorizontalAlignment="Center"
-                              VerticalAlignment="Center"
-                              Margin="4,0,0,0"
-                              Visibility="Collapsed"/>
-                        
-                        <!-- Popup for Submenu -->
-                        <Popup Name="PART_Popup" 
-                               Placement="Bottom" 
-                               IsOpen="{TemplateBinding IsSubmenuOpen}" 
-                               AllowsTransparency="True" 
-                               Focusable="False" 
-                               PopupAnimation="Slide">
-                            <Border Background="{DynamicResource FGColor}" 
-                                    BorderBrush="{DynamicResource BorderBrush}" 
-                                    BorderThickness="0.8"
-                                    CornerRadius="5">
-                                <StackPanel IsItemsHost="True" 
-                                            KeyboardNavigation.DirectionalNavigation="Cycle"/>
-                            </Border>
-                        </Popup>
-                    </Grid>
-                </Border>
-                <ControlTemplate.Triggers>
-                    <Trigger Property="IsMouseOver" Value="True">
-                        <!-- Adjust appearance on hover if needed -->
-                        <!-- <Setter TargetName="Border" Property="Background" Value="{DynamicResource BGButtonColor}"/>
-                        <Setter TargetName="TextBlock" Property="Foreground" Value="{DynamicResource DefaultTextColor2}"/> -->
-                    </Trigger>
-                    <Trigger Property="HasItems" Value="True">
-                        <Setter TargetName="Arrow" Property="Visibility" Value="Visible"/>
-                    </Trigger>
-                </ControlTemplate.Triggers>
-            </ControlTemplate>
-        </Setter.Value>
-    </Setter>
-</Style>
-
+    <Style TargetType="MenuItem">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Foreground" Value="#000000"/>
+        <Setter Property="BorderBrush" Value="#000000"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontFamily" Value="Segoe UI"/>
+        <Setter Property="Margin" Value="2"/>
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="MenuItem">
+                    <Border x:Name="Border"
+                            Background="{TemplateBinding Background}" 
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            HorizontalAlignment="Left"
+                            Padding="5"
+                            CornerRadius="2">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            
+                            <!-- Icon -->
+                            <ContentPresenter Grid.Column="0" 
+                                            ContentSource="Icon" 
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="Center"
+                                            Margin="0,0,4,0"/>
+                            
+                            <!-- Text -->
+                            <TextBlock x:Name="TextBlock"
+                                    Grid.Column="1" 
+                                    Text="{TemplateBinding Header}"
+                                    Foreground="{DynamicResource DefaultTextColor}"/>
+                            
+                            <!-- Arrow Down Indicator -->
+                            <Path x:Name="Arrow"
+                                Grid.Column="2"
+                                Data="M0,0 L4,4 L8,0 Z"
+                                Fill="{DynamicResource DefaultTextColor}"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Margin="4,0,0,0"
+                                Visibility="Collapsed"/>
+                            
+                            <!-- Popup for Submenu -->
+                            <Popup Name="PART_Popup" 
+                                Placement="Bottom" 
+                                IsOpen="{TemplateBinding IsSubmenuOpen}" 
+                                AllowsTransparency="True" 
+                                Focusable="False" 
+                                PopupAnimation="Slide">
+                                <Border Background="{DynamicResource FGColor}" 
+                                        BorderBrush="{DynamicResource BorderBrush}" 
+                                        BorderThickness="0.8"
+                                        CornerRadius="5">
+                                    <StackPanel IsItemsHost="True" 
+                                                KeyboardNavigation.DirectionalNavigation="Cycle"/>
+                                </Border>
+                            </Popup>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <!-- Adjust appearance on hover if needed -->
+                            <!-- <Setter TargetName="Border" Property="Background" Value="{DynamicResource BGButtonColor}"/>
+                            <Setter TargetName="TextBlock" Property="Foreground" Value="{DynamicResource DefaultTextColor2}"/> -->
+                        </Trigger>
+                        <Trigger Property="HasItems" Value="True">
+                            <Setter TargetName="Arrow" Property="Visibility" Value="Visible"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+<!-- End Define the Menu Style -->
 
 <!--ListViewItem Style-->
     <Style TargetType="ListViewItem">
