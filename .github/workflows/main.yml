@@ -12,4 +12,4 @@ jobs:
       - name: Run PowerShell script
         shell: powershell
         run: |
-          Start-Process powershell.exe -Verb RunAs -ArgumentList '-NoProfile -ExecutionPolicy Bypass -File test.ps1'
+          Start-Process powershell.exe -Verb RunAs -ArgumentList '-NoProfile -ExecutionPolicy Bypass -File /test.ps1'
