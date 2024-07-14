@@ -15,4 +15,4 @@ jobs:
       - name: Run PowerShell script
         shell: pwsh
         run: |
-          Start-Process -FilePath "$PSScriptRoot\test.ps1" -Verb RunAs -Wait
+          Start-Process -FilePath "$env:GITHUB_WORKSPACE\test.ps1" -Verb RunAs -Wait
