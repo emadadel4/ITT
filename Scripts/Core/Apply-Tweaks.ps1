@@ -101,7 +101,7 @@ function Invoke-ApplyTweaks {
                         )
                     
                         # Get the current timestamp
-                        $timestamp = Get-Date -Format "HH:mm"
+                        $timestamp = Get-Date -Format "hh:mm tt"
                     
                         # Determine the color based on the log level
                         switch ($Level.ToUpper()) {
