@@ -21,7 +21,7 @@ jobs:
         shell: powershell
         run: |
           # Run build.ps1 script
-          Start-Process powershell.exe -Verb RunAs -ArgumentList '-NoProfile -ExecutionPolicy Bypass -File build.ps1'
+          Start-Process powershell.exe -Verb RunAs -ArgumentList '-NoProfile -ExecutionPolicy Bypass -File $env:GITHUB_WORKSPACE\build.ps1'
 
           # Stage all changes
           git add .
