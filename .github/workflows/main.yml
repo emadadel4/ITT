@@ -14,8 +14,8 @@ jobs:
 
       - name: Set up Git
         run: |
-          git config --global user.email "emadadel1920@gmail.com"
-          git config --global user.name "emadadel"
+          git config user.email "emadadel1920@gmail.com"
+          git config user.name "Emad Adel"
 
       - name: Run PowerShell script and commit changes
         shell: powershell
@@ -26,8 +26,8 @@ jobs:
           # Stage all changes
           git add .
 
-          # Commit changes with a generic message
-          git commit -m "Automated build script execution"
+          # Check if there are changes to commit
+          git diff-index --quiet HEAD || git commit -m "Automated build script execution"
 
           # Push changes back to the repository
           git push origin main  # Replace 'main' with your branch name
