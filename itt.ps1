@@ -9168,7 +9168,7 @@ function Invoke-ApplyTweaks {
                     
                         # Write the log message to the console with the specified color
                         Write-Host "`n` " -ForegroundColor $color
-                        Write-Host " $date" -ForegroundColor Yellow ; Write-Host " *$logMessage * " -ForegroundColor $color 
+                        Write-Host " $date" -ForegroundColor Yellow ; Write-Host " $logMessage" -ForegroundColor $color 
                         Write-Host "" -ForegroundColor $color
         
                     }
@@ -9179,12 +9179,12 @@ function Invoke-ApplyTweaks {
                             [string]$Command
                         )
                         try {
-                            Add-Log -Message "Applying $Name" -Level "INFO"
+                            Add-Log -Message "$Name" -Level "INFO"
                             Start-Process -FilePath "powershell.exe" -ArgumentList "-Command `"$Command`"" -NoNewWindow -Wait
-                            Add-Log -Message "Executed successfully." -Level "INFO"
+                            Add-Log -Message "Done." -Level "INFO"
     
                             #debug
-                            #Write-Host "Command '$Command' executed successfully."
+                            #Write-Host "Command '$Command' Done."
     
                         } catch {
                             Write-Host "Error executing command '$Command': $_"
