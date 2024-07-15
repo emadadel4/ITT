@@ -119,14 +119,9 @@ or
 
 <p><strong>👤 Emad Adel</strong></p>
 
-[![Telegram](https://img.shields.io/badge/Telegram-2CA5E0?style=flat&logo=telegram&logoColor=white)](https://t.me/emadadel4) [![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat&logo=github&logoColor=white)](https://github.com/emadadel4) [![Blog](https://img.shields.io/badge/Blog-FF5722?style=flat&logo=blogger&logoColor=white)](https://emadadel4.github.io)
+[![Telegram](https://img.shields.io/badge/Telegram-2CA5E0?style=flat&logo=telegram&logoColor=white)](https://t.me/emadadel4) [![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat&logo=github&logoColor=white)](https://github.com/emadadel4) [![Blog](https://img.shields.io/badge/Blog-FF5722?style=flat&logo=blogger&logoColor=white)](https://emadadel4.github.io) [![Discord](https://img.shields.io/badge/-Discord-7289da?style=flat&logo=discord&logoColor=white)](https://discord.gg/3eV79KgD)
 
-
-
-
-<h2>Show Your Support</h2>
-
-<p>If this project helped you, please give it a ⭐️</p>
+<p>If this project helped you, please give it a ⭐️ and join to us on discord server</p>
 <a href="https://www.buymeacoffee.com/emadadel" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>
 
 
