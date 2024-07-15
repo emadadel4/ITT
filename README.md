@@ -6,8 +6,20 @@
   
 <h1 align="center">ITT (Install Tweaks Tool) 🛠️ 🚀</h1>
 
-
-[![Discord](https://img.shields.io/badge/-Discord-7289da?style=flat&logo=discord&logoColor=white)](https://discord.gg/3eV79KgD)
+<p align="center">
+  <a href="https://t.me/emadadel4">
+    <img src="https://img.shields.io/badge/Telegram-2CA5E0?style=flat&logo=telegram&logoColor=white" alt="Telegram">
+  </a>
+  <a href="https://github.com/emadadel4">
+    <img src="https://img.shields.io/badge/GitHub-181717?style=flat&logo=github&logoColor=white" alt="GitHub">
+  </a>
+  <a href="https://emadadel4.github.io">
+    <img src="https://img.shields.io/badge/Blog-FF5722?style=flat&logo=blogger&logoColor=white" alt="Blog">
+  </a>
+  <a href="https://discord.gg/3eV79KgD">
+    <img src="https://img.shields.io/badge/-Discord-7289da?style=flat&logo=discord&logoColor=white" alt="Discord">
+  </a>
+</p>
 
 <p align="center">
 <a href="https://www.buymeacoffee.com/emadadel" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="30" width="150">
@@ -107,9 +119,8 @@ or
 
 <p><strong>👤 Emad Adel</strong></p>
 
-<a href="https://t.me/emadadel4" target="_blank">Telegram</a>
-<a href="https://github.com/emadadel4" target="_blank">Github</a>
-<a href="https://emadadel4.github.io" target="_blank">Blog</a>
+[![Telegram](https://img.shields.io/badge/Telegram-2CA5E0?style=flat&logo=telegram&logoColor=white)](https://t.me/emadadel4) [![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat&logo=github&logoColor=white)](https://github.com/emadadel4) [![Blog](https://img.shields.io/badge/Blog-FF5722?style=flat&logo=blogger&logoColor=white)](https://emadadel4.github.io)
+
 
 
 
