@@ -6,20 +6,20 @@
   
 <h1 align="center">ITT (Install Tweaks Tool) 🛠️ 🚀</h1>
 
-<p align="center">
-  <a href="https://t.me/emadadel4">
-    <img src="https://img.shields.io/badge/Telegram-2CA5E0?style=flat&logo=telegram&logoColor=white" alt="Telegram">
-  </a>
-  <a href="https://github.com/emadadel4">
-    <img src="https://img.shields.io/badge/GitHub-181717?style=flat&logo=github&logoColor=white" alt="GitHub">
-  </a>
-  <a href="https://emadadel4.github.io">
-    <img src="https://img.shields.io/badge/Blog-FF5722?style=flat&logo=blogger&logoColor=white" alt="Blog">
-  </a>
-  <a href="https://discord.gg/3eV79KgD">
-    <img src="https://img.shields.io/badge/-Discord-7289da?style=flat&logo=discord&logoColor=white" alt="Discord">
-  </a>
-</p>
+<div align="center">
+    <a href="https://t.me/emadadel4" style="margin-right: 20px;">
+        <img src="https://img.shields.io/badge/Telegram-2CA5E0?style=flat&logo=telegram&logoColor=white" alt="Telegram">
+    </a>
+    <a href="https://github.com/emadadel4" style="margin-right: 20px;">
+        <img src="https://img.shields.io/badge/GitHub-181717?style=flat&logo=github&logoColor=white" alt="GitHub">
+    </a>
+    <a href="https://emadadel4.github.io" style="margin-right: 20px;">
+        <img src="https://img.shields.io/badge/Blog-FF5722?style=flat&logo=blogger&logoColor=white" alt="Blog">
+    </a>
+    <a href="https://discord.gg/3eV79KgD" style="margin-right: 20px;">
+        <img src="https://img.shields.io/badge/-Discord-7289da?style=flat&logo=discord&logoColor=white" alt="Discord">
+    </a>
+</div>
 
 <p align="center">
 <a href="https://www.buymeacoffee.com/emadadel" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="30" width="150">
