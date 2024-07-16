@@ -19,7 +19,7 @@ Add-Type -AssemblyName System.Windows.Forms
 $sync = [Hashtable]::Synchronized(@{})
 $sync.database = @{}
 $sync.ProcessRunning = $false
-$sync.lastupdate = "15-07-2024"
+$sync.lastupdate = "16-07-2024"
 $sync.github =   "https://github.com/emadadel4"
 $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://emadadel4.github.io"
@@ -5800,7 +5800,7 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
         <Setter Property="BorderBrush" Value="#000000"/>
         <Setter Property="FontSize" Value="14"/>
         <Setter Property="FontFamily" Value="Segoe UI"/>
-        <Setter Property="Margin" Value="2"/>
+        <Setter Property="Margin" Value="1"/>
         <Setter Property="Padding" Value="0"/>
         <Setter Property="Template">
             <Setter.Value>
@@ -5988,77 +5988,92 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
 <!--End TabControl Style-->
 
 <!--ComboBox Style-->
-    <Style TargetType="{x:Type ComboBox}">
+    <Style TargetType="ComboBox">
+        <Setter Property="Background" Value="{DynamicResource FGColor}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource FGColor}"/>
         <Setter Property="Foreground" Value="{DynamicResource DefaultTextColor}"/>
-        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Padding" Value="6,3"/>
+        <Setter Property="HorizontalContentAlignment" Value="Left"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled"/>
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ComboBox">
                     <Grid>
                         <ToggleButton 
-                            Foreground="{DynamicResource DefaultTextColor}" 
-                            Name="ToggleButton" Focusable="false"
+                            Name="ToggleButton"
+                            Grid.Column="2" 
+                            Focusable="false"
                             IsChecked="{Binding Path=IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
-                            Background="Transparent" BorderBrush="Transparent">
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/> <!-- Text will take up available space -->
-                                    <ColumnDefinition Width="20"/> <!-- Arrow width -->
-                                </Grid.ColumnDefinitions>
-                                <ContentPresenter Name="ContentSite" Grid.Column="0" IsHitTestVisible="False" Content="{TemplateBinding SelectionBoxItem}"
-                                                ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}" ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
-                                                Margin="6" VerticalAlignment="Center" HorizontalAlignment="Left"/>
-                                <Path x:Name="Arrow" Grid.Column="1" Fill="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center" Data="M 0 0 L 4 4 L 8 0 Z"/>
-                            </Grid>
+                            ClickMode="Press"
+                            Background="Transparent"
+                            BorderBrush="Transparent">
+                            <ToggleButton.Template>
+                                <ControlTemplate TargetType="ToggleButton">
+                                    <Border Name="Border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                                        <Grid>
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            <Path x:Name="Arrow" Data="M 0 0 L 4 4 L 8 0 Z" Fill="{DynamicResource DefaultTextColor}" HorizontalAlignment="Right" Margin="5" VerticalAlignment="Center"/>
+                                        </Grid>
+                                    </Border>
+                                </ControlTemplate>
+                            </ToggleButton.Template>
                         </ToggleButton>
-                        <TextBox x:Name="PART_EditableTextBox" Visibility="Hidden" IsReadOnly="{TemplateBinding IsReadOnly}"/>
-                        <Popup Name="Popup" Placement="Bottom" IsOpen="{TemplateBinding IsDropDownOpen}" AllowsTransparency="True" Focusable="True" PopupAnimation="Slide">
-                            <Grid Name="DropDown" SnapsToDevicePixels="True" MinWidth="{TemplateBinding ActualWidth}" Height="Auto"> <!-- MaxHeight="{TemplateBinding MaxDropDownHeight}" -->
-
-                                <Border x:Name="DropDownBorder" Background="{DynamicResource FGColor}"/>
-                                <ScrollViewer SnapsToDevicePixels="True">
-                                    <StackPanel IsItemsHost="True"/>
+                        <ContentPresenter
+                            Name="ContentSite"
+                            IsHitTestVisible="False"
+                            Content="{TemplateBinding SelectionBoxItem}"
+                            ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
+                            ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
+                            Margin="3,3,23,3"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Left"/>
+                        <TextBox 
+                            x:Name="PART_EditableTextBox"
+                            Style="{x:Null}" 
+                            HorizontalAlignment="Left" 
+                            VerticalAlignment="Center"
+                            Margin="3,3,23,3"
+                            Focusable="True"
+                            Background="Transparent"
+                            Visibility="Hidden"
+                            IsReadOnly="{TemplateBinding IsReadOnly}"/>
+                        <Popup 
+                            Name="Popup"
+                            Placement="Bottom"
+                            IsOpen="{TemplateBinding IsDropDownOpen}"
+                            AllowsTransparency="True" 
+                            Focusable="False"
+                            PopupAnimation="Slide">
+                            <Grid 
+                                Name="DropDown"
+                                SnapsToDevicePixels="True"
+                                MinWidth="{TemplateBinding ActualWidth}"
+                                MaxHeight="{TemplateBinding MaxDropDownHeight}">
+                                <Border 
+                                    x:Name="DropDownBorder"
+                                    Background="{DynamicResource FGColor}" 
+                                    BorderBrush="Gray" 
+                                    BorderThickness="1"/>
+                                <ScrollViewer Margin="4,6,4,6" SnapsToDevicePixels="True">
+                                    <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Contained"/>
                                 </ScrollViewer>
                             </Grid>
                         </Popup>
                     </Grid>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-
-    <Style TargetType="{x:Type ComboBoxItem}">
-        <Setter Property="Background" Value="{DynamicResource FGColor}"/>
-        <Setter Property="Foreground" Value="{DynamicResource DefaultTextColor}"/>
-        <Setter Property="FontSize" Value="14"/>
-        <Setter Property="Margin" Value="2,0,0,0"/>
-
-
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type ComboBoxItem}">
-                    <Border x:Name="Border" Background="{TemplateBinding Background}"
-                            BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}">
-                        <ContentPresenter />
-                    </Border>
                     <ControlTemplate.Triggers>
-                        <Trigger Property="IsHighlighted" Value="True">
-                            <Setter TargetName="Border" Property="Background" Value="{DynamicResource BGButtonColor}"/>
-                            <Setter Property="Foreground" Value="White"/>
-
+                        <Trigger Property="HasItems" Value="false">
+                            <Setter TargetName="DropDownBorder" Property="MinHeight" Value="95"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Foreground" Value="Gray"/>
+                        </Trigger>
+                        <Trigger Property="IsGrouping" Value="true">
+                            <Setter Property="ScrollViewer.CanContentScroll" Value="false"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-
-    <Style x:Key="CustomSeparatorStyle" TargetType="{x:Type Separator}">
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type Separator}">
-                    <Border Background="Black" Height="1" Margin="0"/>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -6388,51 +6403,35 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
             <!--Catagory-->
                 <ComboBox SelectedIndex="0" Name="category" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left" Width="auto">
                     <ComboBoxItem Content="All"></ComboBoxItem>
-                    <Separator/>
                     <ComboBoxItem Content="Web Browsers"></ComboBoxItem>
-                    <Separator/>
 
                     <ComboBoxItem Content="Media"></ComboBoxItem>
-                    <Separator/>
 
                     <ComboBoxItem Content="Media Tools"></ComboBoxItem>
-                    <Separator/>
 
                     <ComboBoxItem Content="Documents"></ComboBoxItem>
-                    <Separator/>
 
                     <ComboBoxItem Content="Compression"></ComboBoxItem>
-                    <Separator/>
 
                     <ComboBoxItem Content="Communication"></ComboBoxItem>
-                    <Separator/>
 
                     <ComboBoxItem Content="File Sharing"></ComboBoxItem>
-                    <Separator/>
 
                     <ComboBoxItem Content="Imaging"></ComboBoxItem>
-                    <Separator/>
 
                     <ComboBoxItem Content="Gaming"></ComboBoxItem>
-                    <Separator/>
 
                     <ComboBoxItem Content="Utilities"></ComboBoxItem>
-                    <Separator/>
 
                     <ComboBoxItem Content="Disk Tools"></ComboBoxItem>
-                    <Separator/>
 
                     <ComboBoxItem Content="Development"></ComboBoxItem>
-                    <Separator/>
 
                     <ComboBoxItem Content="Security"></ComboBoxItem>
-                    <Separator/>
 
                     <ComboBoxItem Content="Portable"></ComboBoxItem>
-                    <Separator/>
 
                     <ComboBoxItem Content="Runtimes"></ComboBoxItem>
-                    <Separator/>
 
                     <ComboBoxItem Content="Drivers"></ComboBoxItem>
 
@@ -6442,7 +6441,7 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
             <!--Search -->
                 <Grid HorizontalAlignment="Right"  Grid.Column="1" VerticalAlignment="Center" >
                     <TextBox Padding="5"
-                                        Width="130"
+                                        Width="119"
                                         VerticalAlignment="Center"
                                         HorizontalAlignment="Left" 
                                         Text="{Binding Text_searchInput}"
