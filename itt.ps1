@@ -5650,8 +5650,8 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
       <Style TargetType="Button">
         <Setter Property="Background" Value="{DynamicResource FGColor}"/>
         <Setter Property="Foreground" Value="{DynamicResource DefaultTextColor}"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource BGButtonBorderBrush}"/>
-        <Setter Property="BorderThickness" Value="0.6"/>
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="1"/>
         
         <Setter Property="Template">
             <Setter.Value>
