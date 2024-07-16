@@ -10,7 +10,7 @@
     <a href="https://t.me/emadadel4" style="margin-right: 20px;">
         <img src="https://img.shields.io/badge/Telegram-2CA5E0?style=flat&logo=telegram&logoColor=white" alt="Telegram">
     </a>
-    <a href="https://github.com/emadadel4" style="margin-right: 20px;">
+    <a href="https://github.com/emadadel4/itt" style="margin-right: 20px;">
         <img src="https://img.shields.io/badge/GitHub-181717?style=flat&logo=github&logoColor=white" alt="GitHub">
     </a>
     <a href="https://emadadel4.github.io" style="margin-right: 20px;">
