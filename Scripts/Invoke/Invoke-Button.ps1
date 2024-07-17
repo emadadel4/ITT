@@ -39,6 +39,22 @@ function Invoke-Button {
             Set-Langusege -lang "en"
             Debug-Message $action
         }
+        "fr" {
+            Set-Langusege -lang "fr"
+            Debug-Message $action
+        }
+        "tr" {
+            Set-Langusege -lang "tr"
+            Debug-Message $action
+        }
+        "zh" {
+            Set-Langusege -lang "zh"
+            Debug-Message $action
+        }
+        "ko" {
+            Set-Langusege -lang "ko"
+            Debug-Message $action
+        }
         "save" {
             SaveItemsToJson
             Debug-Message $action
