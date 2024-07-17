@@ -4476,55 +4476,26 @@ $sync.database.Applications = '[
 ' | ConvertFrom-Json
 $sync.database.locales = '{
   "Controls": {
-    "en": {
-      "Welcome": "Save time by installing multiple programs at once and boost your Windows performance. Join us in improving the tool and make it great.",
-      "installBtn": "Install",
-      "applyBtn": "Apply",
-      "downloading": "Downloading",
-      "about":"About",
-      "mirrorLinks":"Third-party",
-      "pref":"Preferences",
-      "device":"Management",
-      "apps":"Apps",
-      "tweaks":"Tweaks",
-      "Features": "Settings",
-      "saveapps":"Save selected apps",
-      "loadapps":"Restore selected apps",
-      "music":"Music",
-      "on":"Unmute ",
-      "off":"Mute",
-      "Dark":"Dark ",
-      "Light":"Light",
-      "defaultTheme":"System",
-      "ittlink":"Create desktop shortcut",
-      "darkmode":"Theme",
-      "en":"English",
-      "ar":"عربي",
-      "lang":"Language",
-      "InstallMessage":"Do you want install selected apps",
-      "ApplyMessage":"Do you want to apply selected tweaks",
-      "installing": "Installing..",
-      "Applying": "Applying..",
-      "choseapp":"Select at least one app to install",
-      "chosetweak":"Please wait for the tweaks to be applied",
-      "Pleasewait": "Please wait, there is a process in the background.",
-      "lastupdate":"Last update",
-      "sourcecode":"Source Code",
-      "devby":"Made with ♥ by Emad Adel",
-      "exit":"Are you sure you want to close the program? If there are any installations, they will be terminated."
-    },
     "ar": {
       "Welcome": "توفر هذه الأداة تسهيلات كبيرة في عملية تثبيت البرامج وتحسين الاداء. انضم إلينا لتساهم في تطويرها وجعلها أكثر اكتمالًا",
+      "sysinfo": "معلومات النظام",
+      "PowerOptions": "خيارات الطاقة",
+      "devicemgr": "إدارة الأجهزة",
+      "services": "خدمات",
+      "networks": "شبكات",
+      "appsfeatures": "التطبيقات و الميزات",
+      "taskmgr": "مدير المهام",
+      "diskmgr": "إدارة القرص",
       "InstallBtn": "تثبيت",
       "applyBtn": "تطبيق",
       "downloading": "جارٍ التحميل",
       "about":"عن المطور",
-      "mirrorLinks":"روابط خارجية",
-      "pref":"التفضيلات",
-      "device":"إدارة الجهاز",
+      "thirdparty":"روابط خارجية",
+      "preferences":"التفضيلات",
+      "management":"إدارة الجهاز",
       "apps":"تطبيقات",
       "tweaks":"تحسينات",
-      "Features": "إعدادات",
+      "settings": "إعدادات",
       "saveapps":"حفظ البرامج المختارة",
       "loadapps":"تحميل البرامج",
       "music":"الموسيقى",
@@ -4534,10 +4505,13 @@ $sync.database.locales = '{
       "Light":"نهارا",
       "defaultTheme":"النظام",
       "ittlink":"أنشاء أختصار على سطح المكتب",
-      "darkmode":"المظهر",
-      "en":"English",
-      "ar":"عربي",
-      "lang":"اللغة",
+      "theme":"المظهر",
+      "language":"اللغة",
+      "mas":"تفعيل الويندوز",
+      "winoffice":"تنزيل ويندوز / أوفيس",
+      "idm":"تفعيل الدون لود مانجر",
+      "extensions":"أضافات المتصفحات",
+      "all": "الكل",
       "InstallMessage":"هل تريد تثبيت البرامج المختارة؟",
       "ApplyMessage":"هل تريد تطبيق التحسينات المختارة؟",
       "Applying": "جارٍ التطبيق",
@@ -4548,6 +4522,246 @@ $sync.database.locales = '{
       "sourcecode":"الشفرة المصدرية",
       "devby":"صنع بـ ♥ من قبل عماد عادل",
       "exit":"هل أنت متأكد من رغبتك في إغلاق البرنامج؟ إذا كان هناك أي تثبيتات، فسيتم إيقافها."
+    },
+    "en": {
+      "Welcome": "Save time by installing multiple programs at once and boost your Windows performance. Join us in improving the tool and make it great.",
+      "sysinfo": "System Info",
+      "PowerOptions": "Power Options",
+      "devicemgr": "Device Manager",
+      "services": "Services",
+      "networks": "Networks",
+      "appsfeatures": "Apps-Features",
+      "taskmgr": "Task Manager",
+      "diskmgr": "Disk Managment",
+      "installBtn": "Install",
+      "applyBtn": "Apply",
+      "downloading": "Downloading",
+      "about":"About",
+      "thirdparty":"Third-party",
+      "preferences":"Preferences",
+      "management":"Management",
+      "apps":"Apps",
+      "tweaks":"Tweaks",
+      "settings": "Settings",
+      "saveapps":"Save selected apps",
+      "loadapps":"Restore selected apps",
+      "music":"Music",
+      "on":"Unmute ",
+      "off":"Mute",
+      "Dark":"Dark ",
+      "Light":"Light",
+      "defaultTheme":"System",
+      "ittlink":"Create desktop shortcut",
+      "theme":"Theme",
+      "language":"Language",
+      "mas":"Microsoft Activation Scripts (MAS)",
+      "winoffice":"Download Windows / Office ISO",
+      "idm":"IDM Activation",
+      "extensions":"Browsers Extensions",
+      "all": "All",
+      "InstallMessage":"Do you want install selected apps",
+      "ApplyMessage":"Do you want to apply selected tweaks",
+      "installing": "Installing..",
+      "Applying": "Applying..",
+      "choseapp":"Select at least one app to install",
+      "chosetweak":"Please wait for the tweaks to be applied",
+      "pleasewait": "Please wait, there is a process in the background.",
+      "lastupdate":"Last update",
+      "sourcecode":"Source Code",
+      "devby":"Made with ♥ by Emad Adel",
+      "exit":"Are you sure you want to close the program? If there are any installations, they will be terminated."
+    },
+    "fr": {
+      "Welcome": "Économisez du temps en installant plusieurs programmes à la fois et améliorez les performances de votre Windows. Rejoignez-nous pour améliorer l''outil et le rendre excellent.",
+      "sysinfo": "Informations Système",
+      "PowerOptions": "Options d''Alimentation",
+      "devicemgr": "Gestionnaire de périphériques",
+      "services": "Services",
+      "networks": "Réseaux",
+      "appsfeatures": "Fonctionnalités des Applications",
+      "taskmgr": "Gestionnaire des tâches",
+      "diskmgr": "Gestion des disques",
+      "installBtn": "Installer",
+      "applyBtn": "Appliquer",
+      "downloading": "Téléchargement en cours",
+      "about": "À propos",
+      "thirdparty": "Tiers",
+      "preferences": "Préférences",
+      "management": "Gestion",
+      "apps": "Applications",
+      "tweaks": "Réglages",
+      "settings": "Paramètres",
+      "saveapps": "Enregistrer les applications sélectionnées",
+      "loadapps": "Restaurer les applications sélectionnées",
+      "music": "Musique",
+      "on": "Activer",
+      "off": "Désactiver",
+      "Dark": "Sombre",
+      "Light": "Clair",
+      "defaultTheme": "Système",
+      "ittlink": "Créer un raccourci sur le bureau",
+      "theme": "Thème",
+      "language": "Langue",
+      "mas": "Scripts d''Activation Microsoft (MAS)",
+      "winoffice": "Télécharger Windows / Office ISO",
+      "idm": "Activation IDM",
+      "extensions": "Extensions de Navigateurs",
+      "all": "Tout",
+      "InstallMessage": "Souhaitez-vous installer les applications sélectionnées",
+      "ApplyMessage": "Souhaitez-vous appliquer les ajustements sélectionnés",
+      "installing": "Installation en cours...",
+      "Applying": "Application des ajustements...",
+      "choseapp": "Sélectionnez au moins une application à installer",
+      "chosetweak": "Veuillez patienter pendant l''application des ajustements",
+      "pleasewait": "Veuillez patienter, un processus est en cours en arrière-plan.",
+      "lastupdate": "Dernière mise à jour",
+      "sourcecode": "Code Source",
+      "devby": "Créé avec ♥ par Emad Adel",
+      "exit": "Êtes-vous sûr de vouloir fermer le programme ? Toute installation en cours sera interrompue."
+    },
+    "tr": {
+      "Welcome": "Birden fazla programı tek seferde kurarak zaman kazanın ve Windows performansınızı artırın. Aracı iyileştirmemize katılın ve harika yapalım.",
+      "sysinfo": "Sistem Bilgisi",
+      "PowerOptions": "Güç Seçenekleri",
+      "devicemgr": "Cihaz Yöneticisi",
+      "services": "Hizmetler",
+      "networks": "Ağlar",
+      "appsfeatures": "Uygulamalar-Özellikler",
+      "taskmgr": "Görev Yöneticisi",
+      "diskmgr": "Disk Yönetimi",
+      "installBtn": "Yükle",
+      "applyBtn": "Uygula",
+      "downloading": "İndiriliyor",
+      "about": "Hakkında",
+      "thirdparty": "Üçüncü Taraf",
+      "preferences": "Tercihler",
+      "management": "Yönetim",
+      "apps": "Uygulamalar",
+      "tweaks": "Düzeltmeler",
+      "settings": "Ayarlar",
+      "saveapps": "Seçili uygulamaları kaydet",
+      "loadapps": "Seçili uygulamaları geri yükle",
+      "music": "Müzik",
+      "on": "Aç",
+      "off": "Kapat",
+      "Dark": "Koyu",
+      "Light": "Açık",
+      "defaultTheme": "Sistem",
+      "ittlink": "Masaüstü kısayolu oluştur",
+      "theme": "Tema",
+      "language": "Dil",
+      "mas": "Microsoft Aktivasyon Komut Dosyaları (MAS)",
+      "winoffice": "Windows / Office ISO İndir",
+      "idm": "IDM Aktivasyonu",
+      "extensions": "Tarayıcı Eklentileri",
+      "all": "Tüm",
+      "InstallMessage": "Seçilen uygulamaları yüklemek istiyor musunuz",
+      "ApplyMessage": "Seçilen düzeltmeleri uygulamak istiyor musunuz",
+      "installing": "Yükleniyor..",
+      "Applying": "Uygulanıyor..",
+      "choseapp": "Lütfen kurulacak en az bir uygulama seçin",
+      "chosetweak": "Düzeltmelerin uygulanmasını bekleyin",
+      "pleasewait": "Lütfen bekleyin, arka planda bir işlem var.",
+      "lastupdate": "Son güncelleme",
+      "sourcecode": "Kaynak Kod",
+      "devby": "Emad Adel tarafından ♥ ile yapıldı",
+      "exit": "Programı kapatmak istediğinizden emin misiniz? Eğer herhangi bir yükleme işlemi varsa, kesilecektir."
+    },
+    "zh": {
+      "Welcome": "通过一次安装多个程序节省时间并提升您的Windows性能。加入我们，改进工具，使其更加优秀。",
+      "sysinfo": "系统信息",
+      "PowerOptions": "电源选项",
+      "devicemgr": "设备管理器",
+      "services": "服务",
+      "networks": "网络",
+      "appsfeatures": "应用特性",
+      "taskmgr": "任务管理器",
+      "diskmgr": "磁盘管理",
+      "installBtn": "安装",
+      "applyBtn": "应用",
+      "downloading": "下载中",
+      "about": "关于",
+      "thirdparty": "第三方",
+      "preferences": "偏好",
+      "management": "管理",
+      "apps": "应用",
+      "tweaks": "调整",
+      "settings": "设置",
+      "saveapps": "保存选定应用",
+      "loadapps": "恢复选定应用",
+      "music": "音乐",
+      "on": "开启",
+      "off": "关闭",
+      "Dark": "深色",
+      "Light": "浅色",
+      "defaultTheme": "系统",
+      "ittlink": "创建桌面快捷方式",
+      "theme": "主题",
+      "language": "语言",
+      "mas": "Microsoft 激活脚本 (MAS)",
+      "winoffice": "下载 Windows / Office ISO",
+      "idm": "IDM 激活",
+      "extensions": "浏览器扩展",
+      "all": "都",
+      "InstallMessage": "是否要安装选定的应用",
+      "ApplyMessage": "是否要应用选定的调整",
+      "installing": "安装中..",
+      "Applying": "应用中..",
+      "choseapp": "请选择至少一款要安装的应用",
+      "chosetweak": "请等待调整应用完成",
+      "pleasewait": "请等待，后台有进程在进行中。",
+      "lastupdate": "最后更新",
+      "sourcecode": "源代码",
+      "devby": "由 Emad Adel ♥ 制作",
+      "exit": "您确定要关闭程序吗？如果有任何安装正在进行，它们将被终止。"
+    },
+    "ko": {
+      "Welcome": "여러 프로그램을 한 번에 설치하여 시간을 절약하고 Windows 성능을 향상시킵니다. 도구를 개선하고 우리와 함께 훌륭하게 만들어 보세요.",
+      "sysinfo": "시스템 정보",
+      "PowerOptions": "전원 옵션",
+      "devicemgr": "장치 관리자",
+      "services": "서비스",
+      "networks": "네트워크",
+      "appsfeatures": "앱 기능",
+      "taskmgr": "작업 관리자",
+      "diskmgr": "디스크 관리",
+      "installBtn": "설치",
+      "applyBtn": "적용",
+      "downloading": "다운로드 중",
+      "about": "정보",
+      "thirdparty": "외부",
+      "preferences": "환경 설정",
+      "management": "관리",
+      "apps": "앱",
+      "tweaks": "설정",
+      "settings": "설정",
+      "saveapps": "선택한 앱 저장",
+      "loadapps": "선택한 앱 복원",
+      "music": "음악",
+      "on": "켜기",
+      "off": "끄기",
+      "Dark": "다크",
+      "Light": "라이트",
+      "defaultTheme": "시스템",
+      "ittlink": "바탕화면 바로 가기 만들기",
+      "theme": "테마",
+      "language": "언어",
+      "mas": "Microsoft 활성화 스크립트 (MAS)",
+      "winoffice": "Windows / Office ISO 다운로드",
+      "idm": "IDM 활성화",
+      "extensions": "브라우저 확장 프로그램",
+      "all": "모두",
+      "InstallMessage": "선택한 앱을 설치하시겠습니까",
+      "ApplyMessage": "선택한 조정 사항을 적용하시겠습니까",
+      "installing": "설치 중..",
+      "Applying": "적용 중..",
+      "choseapp": "설치할 적어도 하나의 앱을 선택하십시오",
+      "chosetweak": "조정 사항 적용 대기 중",
+      "pleasewait": "배경에서 프로세스가 진행 중입니다. 잠시 기다려주세요.",
+      "lastupdate": "마지막 업데이트",
+      "sourcecode": "소스 코드",
+      "devby": "Emad Adel 제작 ♥",
+      "exit": "프로그램을 종료하시겠습니까? 진행 중인 설치가 있으면 중단됩니다."
     }
   },
   "AppsDescription": {
@@ -6248,55 +6462,55 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
             
                 </MenuItem>
 
-                <MenuItem Header="{Binding device}" FontFamily="arial" FontSize="13"  Margin="10,0,0,0" BorderBrush="Transparent" BorderThickness="0" VerticalAlignment="Center" HorizontalAlignment="Left">
+                <MenuItem Header="{Binding management}" FontFamily="arial" FontSize="13"  Margin="10,0,0,0" BorderBrush="Transparent" BorderThickness="0" VerticalAlignment="Center" HorizontalAlignment="Left">
                     <MenuItem.Icon>
                         <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="15" Text=""/>
                     </MenuItem.Icon>
-                    <MenuItem Name="sysinfo" Header="System Info">
+                    <MenuItem Name="sysinfo" Header="{Binding sysinfo}">
                         <MenuItem.Icon>
                             <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
                         </MenuItem.Icon>
                     </MenuItem>
 
-                    <MenuItem Name="poweroption" Header="Power Options">
+                    <MenuItem Name="poweroption" Header="{Binding poweroptions}">
                         <MenuItem.Icon>
                             <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
                         </MenuItem.Icon>
                     </MenuItem>
 
-                    <MenuItem Name="deviceManager" Header="Device Manager">
+                    <MenuItem Name="deviceManager" Header="{Binding devicemgr}">
                         <MenuItem.Icon>
                             <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem Name="services" Header="Services">
+                    <MenuItem Name="services" Header="{Binding services}">
                         <MenuItem.Icon>
                             <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem Name="network" Header="Network">
+                    <MenuItem Name="network" Header="{Binding networks}">
                         <MenuItem.Icon>
                             <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem Name="appsfeatures" Header="Apps-Features">
+                    <MenuItem Name="appsfeatures" Header="{Binding appsfeatures}">
                         <MenuItem.Icon>
                             <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem Name="taskmgr" Header="Task Manager">
+                    <MenuItem Name="taskmgr" Header="{Binding taskmgr}">
                         <MenuItem.Icon>
                             <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem Name="diskmgmt" Header="Disk Managment">
+                    <MenuItem Name="diskmgmt" Header="{Binding diskmgr}">
                         <MenuItem.Icon>
                             <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
                         </MenuItem.Icon>
                     </MenuItem>
                 </MenuItem>
 
-                <MenuItem Header="{Binding pref}" FontFamily="arial" FontSize="13"  BorderBrush="Transparent" BorderThickness="0" VerticalAlignment="Center" HorizontalAlignment="Left">
+                <MenuItem Header="{Binding preferences}" FontFamily="arial" FontSize="13"  BorderBrush="Transparent" BorderThickness="0" VerticalAlignment="Center" HorizontalAlignment="Left">
                     <MenuItem.Icon>
                         <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center" Text=""/>
                     </MenuItem.Icon>
@@ -6312,7 +6526,7 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
                         </MenuItem.Icon>
                     </MenuItem>
 
-                    <MenuItem Header="{Binding darkmode}">
+                    <MenuItem Header="{Binding theme}">
                         <MenuItem.Icon>
                             <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
                         </MenuItem.Icon>
@@ -6329,13 +6543,17 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
                         <MenuItem Name="mon" Header="{Binding on}"/>
                     </MenuItem>
 
-                    <!-- <MenuItem Header="{Binding lang}">
+                    <MenuItem Header="{Binding language}">
                             <MenuItem.Icon>
                                 <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
                             </MenuItem.Icon>
-                        <MenuItem Name="en" Header="{Binding en}"/>
-                        <MenuItem Name="ar" Header="{Binding ar}"/>
-                    </MenuItem> -->
+                        <MenuItem Name="ar" Header="Arabic"/>
+                        <MenuItem Name="en" Header="English"/>
+                        <MenuItem Name="fr" Header="French"/>
+                        <MenuItem Name="tr" Header="Turkish"/>
+                        <MenuItem Name="zh" Header="Chinese"/>
+                        <MenuItem Name="ko" Header="Korean"/>
+                    </MenuItem>
 
                 
                     <MenuItem Name="ittshortcut" Header="{Binding ittlink}">
@@ -6346,30 +6564,30 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
                 </MenuItem>
                 
 
-                <MenuItem Header="{Binding mirrorlinks}" FontFamily="arial" FontSize="13"  BorderThickness="0" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <MenuItem Header="{Binding thirdparty}" FontFamily="arial" FontSize="13"  BorderThickness="0" VerticalAlignment="Center" HorizontalAlignment="Center">
                     <MenuItem.Icon>
                         <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="15" Text=""/>
                     </MenuItem.Icon>
 
 
-                    <MenuItem Name="mas" Header="Microsoft Activation Scripts (MAS)">
+                    <MenuItem Name="mas" Header="{Binding mas}">
                         <MenuItem.Icon>
                             <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem Name="idm" Header="IDM Activation">
+                    <MenuItem Name="idm" Header="{Binding idm}">
                         <MenuItem.Icon>
                             <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
                         </MenuItem.Icon>
                     </MenuItem>
 
-                    <MenuItem Name="winoffice" Header="Download Windows / Office ISO">
+                    <MenuItem Name="winoffice" Header="{Binding winoffice}">
                         <MenuItem.Icon>
                             <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
                         </MenuItem.Icon>
                     </MenuItem>
 
-                    <MenuItem Header="Browsers Extensions">
+                    <MenuItem Header="{Binding extensions}">
                         <MenuItem.Icon>
                             <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
                         </MenuItem.Icon>
@@ -6403,7 +6621,9 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
             
             <!--Catagory-->
                 <ComboBox SelectedIndex="0" Name="category" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left" Width="auto">
-                    <ComboBoxItem Content="All"></ComboBoxItem>
+
+                    <ComboBoxItem Content="{Binding all}"></ComboBoxItem>
+
                     <ComboBoxItem Content="Web Browsers"></ComboBoxItem>
 
                     <ComboBoxItem Content="Media"></ComboBoxItem>
@@ -8763,7 +8983,7 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
 
                                 </ListView>
                         </TabItem>
-                        <TabItem x:Name="SettingsTab" Header="{Binding Features}" BorderBrush="{x:Null}" Background="{x:Null}">
+                        <TabItem x:Name="SettingsTab" Header="{Binding settings}" BorderBrush="{x:Null}" Background="{x:Null}">
                             <TabItem.HeaderTemplate>
                                     <DataTemplate>
                                         <StackPanel Orientation="Horizontal">
@@ -8963,6 +9183,22 @@ try {
             "en" {
                 $sync["window"].DataContext = $sync.database.locales.Controls.en
                 $sync.Langusege  = "en"
+            }
+            "fr" {
+                $sync["window"].DataContext = $sync.database.locales.Controls.fr
+                $sync.Langusege  = "fr"
+            }
+            "tr" {
+                $sync["window"].DataContext = $sync.database.locales.Controls.tr
+                $sync.Langusege  = "tr"
+            }
+            "zh" {
+                $sync["window"].DataContext = $sync.database.locales.Controls.zh
+                $sync.Langusege  = "zh"
+            }
+            "ko" {
+                $sync["window"].DataContext = $sync.database.locales.Controls.ko
+                $sync.Langusege  = "ko"
             }
             default {
                 # fallback to default lang
@@ -10492,6 +10728,22 @@ function Invoke-Button {
             Set-Langusege -lang "en"
             Debug-Message $action
         }
+        "fr" {
+            Set-Langusege -lang "fr"
+            Debug-Message $action
+        }
+        "tr" {
+            Set-Langusege -lang "tr"
+            Debug-Message $action
+        }
+        "zh" {
+            Set-Langusege -lang "zh"
+            Debug-Message $action
+        }
+        "ko" {
+            Set-Langusege -lang "ko"
+            Debug-Message $action
+        }
         "save" {
             SaveItemsToJson
             Debug-Message $action
@@ -10749,6 +11001,9 @@ function FilterByCat {
 
     param ($Cat)
 
+    $sync["window"].DataContext = $sync.database.locales.Controls.$($sync.Langusege)
+
+
     # if user on Other tab return to apps list
     $sync['window'].FindName('apps').IsSelected = $true
     $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.AppsListView.Items)
@@ -10777,7 +11032,7 @@ function FilterByCat {
         }
     }
 
-    if($Cat -eq "All")
+    if($Cat -eq $sync.database.locales.Controls.$($sync.Langusege).all)
     {
         $sync.AppsListView.Clear()
         $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.AppsListView.Items)
