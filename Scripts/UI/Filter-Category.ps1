@@ -28,6 +28,9 @@ function FilterByCat {
 
     param ($Cat)
 
+    $sync["window"].DataContext = $sync.database.locales.Controls.$($sync.Langusege)
+
+
     # if user on Other tab return to apps list
     $sync['window'].FindName('apps').IsSelected = $true
     $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.AppsListView.Items)
@@ -56,7 +59,7 @@ function FilterByCat {
         }
     }
 
-    if($Cat -eq "All")
+    if($Cat -eq $sync.database.locales.Controls.$($sync.Langusege).all)
     {
         $sync.AppsListView.Clear()
         $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.AppsListView.Items)
