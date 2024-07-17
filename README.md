@@ -7,6 +7,20 @@
 <h1 align="center">ITT (Install Tweaks Tool) 🛠️ 🚀</h1>
 
 <div align="center">
+
+![Arabic](https://img.shields.io/badge/-Arabic-green)
+![English](https://img.shields.io/badge/-English-green)
+![France](https://img.shields.io/badge/-France-blue)
+![Turkey](https://img.shields.io/badge/-Turkey-red)
+![China](https://img.shields.io/badge/-China-yellow)
+![Korea](https://img.shields.io/badge/-Korea-purple)
+![Germany](https://img.shields.io/badge/-Germany-orange)
+
+</div>
+
+
+
+<div align="center">
     <a href="https://t.me/emadadel4" style="margin-right: 20px;">
         <img src="https://img.shields.io/badge/Telegram-2CA5E0?style=flat&logo=telegram&logoColor=white" alt="Telegram">
     </a>
