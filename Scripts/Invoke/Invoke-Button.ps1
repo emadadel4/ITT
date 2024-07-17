@@ -63,6 +63,10 @@ function Invoke-Button {
             Set-Langusege -lang "ru"
             Debug-Message $action
         }
+        "es" {
+            Set-Langusege -lang "es"
+            Debug-Message $action
+        }
         "save" {
             SaveItemsToJson
             Debug-Message $action
