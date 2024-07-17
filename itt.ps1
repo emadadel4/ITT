@@ -19,7 +19,7 @@ Add-Type -AssemblyName System.Windows.Forms
 $sync = [Hashtable]::Synchronized(@{})
 $sync.database = @{}
 $sync.ProcessRunning = $false
-$sync.lastupdate = "16-07-2024"
+$sync.lastupdate = "17-07-2024"
 $sync.github =   "https://github.com/emadadel4"
 $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://emadadel4.github.io"
@@ -4482,21 +4482,21 @@ $sync.database.locales = '{
       "applyBtn": "Apply",
       "downloading": "Downloading",
       "about":"About",
-      "mirrorLinks":"Mirror Links",
+      "mirrorLinks":"Third-party",
       "pref":"Preferences",
       "device":"Management",
       "apps":"Apps",
       "tweaks":"Tweaks",
       "Features": "Settings",
-      "saveapps":"Save selected Apps",
-      "loadapps":"Load Apps",
+      "saveapps":"Save selected apps",
+      "loadapps":"Restore selected apps",
       "music":"Music",
       "on":"Unmute ",
       "off":"Mute",
       "Dark":"Dark ",
       "Light":"Light",
       "defaultTheme":"System",
-      "ittlink":"Create ITT Link",
+      "ittlink":"Create desktop shortcut",
       "darkmode":"Theme",
       "en":"English",
       "ar":"عربي",
@@ -4533,7 +4533,7 @@ $sync.database.locales = '{
       "Dark":"ليلي",
       "Light":"نهارا",
       "defaultTheme":"النظام",
-      "ittlink":"إنشاء اختصار",
+      "ittlink":"أنشاء أختصار على سطح المكتب",
       "darkmode":"المظهر",
       "en":"English",
       "ar":"عربي",
@@ -4655,7 +4655,8 @@ $sync.database.Quotes = '{
     "الحرية تأتي بثمن. وأحياناً، تكون الكلفة مرتفعة للغاية",
     "الأشياء التي نحبها أكثر، هي الأشياء التي نفقدها",
     "العالم يحاول دائمًا إقناعك بأنك لست شيئًا، ولكنك شيء",
-    "أصغر الاصوات بإمكانها أن تصبح عظيمة"
+    "أصغر الاصوات بإمكانها أن تصبح عظيمة",
+    "انت 1 ام 0"
   ]
 }
 ' | ConvertFrom-Json
@@ -6174,7 +6175,7 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
                         <SolidColorBrush x:Key="DefaultTextColor" Color="Black"/>
                         <SolidColorBrush x:Key="DefaultTextColor2" Color="White"/>
                         <SolidColorBrush x:Key="BorderBrush" Color="#FFB3B3B3"/>
-                        <SolidColorBrush x:Key="BGButtonBorderBrush" Color="#525FE1"/>
+                        <SolidColorBrush x:Key="ButtonBorder" Color="#525FE1"/>
                         <SolidColorBrush x:Key="Label" Color="LightBlue"/>
                         <SolidColorBrush x:Key="checkboxBG" Color="White"/>
                         <SolidColorBrush x:Key="highlight" Color="blue"/>
@@ -6196,7 +6197,7 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
                         <SolidColorBrush x:Key="DefaultTextColor" Color="White"/>
                         <SolidColorBrush x:Key="DefaultTextColor2" Color="White"/>
                         <SolidColorBrush x:Key="BorderBrush" Color="WhiteSmoke" />
-                        <SolidColorBrush x:Key="BGButtonBorderBrush" Color="#1DB954"/>
+                        <SolidColorBrush x:Key="ButtonBorder" Color="#1DB954"/>
                         <SolidColorBrush x:Key="Label" Color="#3f3f3f"/>
                         <SolidColorBrush x:Key="checkboxBG" Color="#1DB954"/>
                         <SolidColorBrush x:Key="highlight" Color="#3cb043"/>
