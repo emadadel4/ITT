@@ -35,19 +35,8 @@ function GetQuotes {
 
                 $fullCulture = (Get-ItemPropertyValue -Path "HKCU:\Control Panel\International" -Name "LocaleName")
                 $shortCulture = $fullCulture.Split('-')[0]
-
-                switch ($sync.Langusege)
-                {
-                    "ar" {
-                        $sync.Quotes.Text = $sync.database.locales.Controls.ar.welcome
-                    }
-                    "en" {
-                        $sync.Quotes.Text = $sync.database.locales.Controls.en.welcome
-                    }
-                    default {
-                        $sync.Quotes.Text = $sync.database.locales.Controls.en.welcome
-                    }
-                }
+                $sync.Quotes.Text = $sync.database.locales.Controls.$($sync.Langusege).welcome
+               
             })
         }
 
