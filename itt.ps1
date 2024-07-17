@@ -4476,7 +4476,7 @@ $sync.database.Applications = '[
 ' | ConvertFrom-Json
 $sync.database.locales = '{
   "Controls": {
-    "ar": {
+  "ar": {
       "Welcome": "توفر هذه الأداة تسهيلات كبيرة في عملية تثبيت البرامج وتحسين الاداء. انضم إلينا لتساهم في تطويرها وجعلها أكثر اكتمالًا",
       "sysinfo": "معلومات النظام",
       "PowerOptions": "خيارات الطاقة",
@@ -4522,8 +4522,8 @@ $sync.database.locales = '{
       "sourcecode":"الشفرة المصدرية",
       "devby":"صنع بـ ♥ من قبل عماد عادل",
       "exit":"هل أنت متأكد من رغبتك في إغلاق البرنامج؟ إذا كان هناك أي تثبيتات، فسيتم إيقافها."
-    },
-    "en": {
+  },
+  "en": {
       "Welcome": "Save time by installing multiple programs at once and boost your Windows performance. Join us in improving the tool and make it great.",
       "sysinfo": "System Info",
       "PowerOptions": "Power Options",
@@ -4570,8 +4570,8 @@ $sync.database.locales = '{
       "sourcecode":"Source Code",
       "devby":"Made with ♥ by Emad Adel",
       "exit":"Are you sure you want to close the program? If there are any installations, they will be terminated."
-    },
-    "fr": {
+  },
+  "fr": {
       "Welcome": "Économisez du temps en installant plusieurs programmes à la fois et améliorez les performances de votre Windows. Rejoignez-nous pour améliorer l''outil et le rendre excellent.",
       "sysinfo": "Informations Système",
       "PowerOptions": "Options d''Alimentation",
@@ -4618,8 +4618,8 @@ $sync.database.locales = '{
       "sourcecode": "Code Source",
       "devby": "Créé avec ♥ par Emad Adel",
       "exit": "Êtes-vous sûr de vouloir fermer le programme ? Toute installation en cours sera interrompue."
-    },
-    "tr": {
+  },
+  "tr": {
       "Welcome": "Birden fazla programı tek seferde kurarak zaman kazanın ve Windows performansınızı artırın. Aracı iyileştirmemize katılın ve harika yapalım.",
       "sysinfo": "Sistem Bilgisi",
       "PowerOptions": "Güç Seçenekleri",
@@ -4666,8 +4666,8 @@ $sync.database.locales = '{
       "sourcecode": "Kaynak Kod",
       "devby": "Emad Adel tarafından ♥ ile yapıldı",
       "exit": "Programı kapatmak istediğinizden emin misiniz? Eğer herhangi bir yükleme işlemi varsa, kesilecektir."
-    },
-    "zh": {
+  },
+  "zh": {
       "Welcome": "通过一次安装多个程序节省时间并提升您的Windows性能。加入我们，改进工具，使其更加优秀。",
       "sysinfo": "系统信息",
       "PowerOptions": "电源选项",
@@ -4714,8 +4714,8 @@ $sync.database.locales = '{
       "sourcecode": "源代码",
       "devby": "由 Emad Adel ♥ 制作",
       "exit": "您确定要关闭程序吗？如果有任何安装正在进行，它们将被终止。"
-    },
-    "ko": {
+  },
+  "ko": {
       "Welcome": "여러 프로그램을 한 번에 설치하여 시간을 절약하고 Windows 성능을 향상시킵니다. 도구를 개선하고 우리와 함께 훌륭하게 만들어 보세요.",
       "sysinfo": "시스템 정보",
       "PowerOptions": "전원 옵션",
@@ -4762,8 +4762,8 @@ $sync.database.locales = '{
       "sourcecode": "소스 코드",
       "devby": "Emad Adel 제작 ♥",
       "exit": "프로그램을 종료하시겠습니까? 진행 중인 설치가 있으면 중단됩니다."
-    },
-    "de": {
+  },
+  "de": {
       "Welcome": "Sparen Sie Zeit, indem Sie mehrere Programme gleichzeitig installieren und verbessern Sie die Leistung Ihres Windows. Helfen Sie uns dabei, das Tool zu verbessern und großartig zu machen.",
       "sysinfo": "Systeminformationen",
       "PowerOptions": "Energieoptionen",
@@ -4810,7 +4810,7 @@ $sync.database.locales = '{
       "sourcecode": "Quellcode",
       "devby": "Hergestellt mit ♥ von Emad Adel",
       "exit": "Sind Sie sicher, dass Sie das Programm schließen möchten? Falls Installationen laufen, werden sie abgebrochen."
-   },
+  },
     "ru": {
       "Welcome": "Экономьте время, устанавливая несколько программ одновременно и улучшая производительность Windows. Присоединяйтесь к нам в улучшении этого инструмента и сделайте его лучше.",
       "sysinfo": "Информация о системе",
@@ -4858,7 +4858,55 @@ $sync.database.locales = '{
       "sourcecode": "Исходный код",
       "devby": "Сделано с ♥ Emad Adel",
       "exit": "Вы уверены, что хотите закрыть программу? Если есть установки, они будут прерваны."
-    }
+  },
+  "es": {
+  "Welcome": "Ahorra tiempo instalando varios programas a la vez y mejora el rendimiento de tu Windows. Únete a nosotros para mejorar la herramienta y hacerla excelente.",
+  "sysinfo": "Información del Sistema",
+  "PowerOptions": "Opciones de Energía",
+  "devicemgr": "Administrador de Dispositivos",
+  "services": "Servicios",
+  "networks": "Redes",
+  "appsfeatures": "Aplicaciones-Características",
+  "taskmgr": "Administrador de Tareas",
+  "diskmgr": "Administración de Discos",
+  "installBtn": "Instalar",
+  "applyBtn": "Aplicar",
+  "downloading": "Descargando",
+  "about": "Acerca de",
+  "thirdparty": "Terceros",
+  "preferences": "Preferencias",
+  "management": "Gestión",
+  "apps": "Aplicaciones",
+  "tweaks": "Ajustes",
+  "settings": "Configuración",
+  "saveapps": "Guardar aplicaciones seleccionadas",
+  "loadapps": "Restaurar aplicaciones seleccionadas",
+  "music": "Música",
+  "on": "Activado ",
+  "off": "Desactivado",
+  "Dark": "Oscuro ",
+  "Light": "Claro",
+  "defaultTheme": "Sistema",
+  "ittlink": "Crear acceso directo en el escritorio",
+  "theme": "Tema",
+  "language": "Idioma",
+  "mas": "Scripts de Activación de Microsoft (MAS)",
+  "winoffice": "Descargar ISO de Windows / Office",
+  "idm": "Activación de IDM",
+  "extensions": "Extensiones de Navegadores",
+  "all": "Todo",
+  "InstallMessage": "¿Deseas instalar las aplicaciones seleccionadas?",
+  "ApplyMessage": "¿Deseas aplicar los ajustes seleccionados?",
+  "installing": "Instalando..",
+  "Applying": "Aplicando..",
+  "choseapp": "Selecciona al menos una aplicación para instalar",
+  "chosetweak": "Por favor espera mientras se aplican los ajustes",
+  "pleasewait": "Por favor espera, hay un proceso en segundo plano.",
+  "lastupdate": "Última actualización",
+  "sourcecode": "Código Fuente",
+  "devby": "Hecho con ♥ por Emad Adel",
+  "exit": "¿Estás seguro de que quieres cerrar el programa? Si hay instalaciones en curso, se cancelarán."
+  }
   },
   "AppsDescription": {
     "en": {
@@ -6651,6 +6699,8 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
                         <MenuItem Name="ko" Header="한국어"/>
                         <MenuItem Name="de" Header="Deutschland"/>
                         <MenuItem Name="ru" Header="Россия"/>
+                        <MenuItem Name="es" Header="España"/>
+
                     </MenuItem>
 
                 
@@ -9306,6 +9356,10 @@ try {
                 $sync["window"].DataContext = $sync.database.locales.Controls.ru
                 $sync.Langusege  = "ru"
             }
+            "es" {
+                $sync["window"].DataContext = $sync.database.locales.Controls.es
+                $sync.Langusege  = "es"
+            }
             default {
                 # fallback to default lang
                 $sync.Langusege  = "en"
@@ -10856,6 +10910,10 @@ function Invoke-Button {
         }
         "ru" {
             Set-Langusege -lang "ru"
+            Debug-Message $action
+        }
+        "es" {
+            Set-Langusege -lang "es"
             Debug-Message $action
         }
         "save" {
