@@ -4497,13 +4497,13 @@ $sync.database.locales = '{
       "tweaks":"تحسينات",
       "settings": "إعدادات",
       "saveapps":"حفظ البرامج المختارة",
-      "loadapps":"تحميل البرامج",
+      "loadapps":"أسترجاع البرامج المختارة",
       "music":"الموسيقى",
-      "on":"مشغل ",
-      "off":"متوقف",
-      "Dark":"ليلي",
+      "on":"تشغيل ",
+      "off":"كتم",
+      "Dark":"ليلا",
       "Light":"نهارا",
-      "defaultTheme":"النظام",
+      "defaultTheme":"استخدام إعداد النظام",
       "ittlink":"أنشاء أختصار على سطح المكتب",
       "theme":"المظهر",
       "language":"اللغة",
@@ -4550,7 +4550,7 @@ $sync.database.locales = '{
       "off":"Mute",
       "Dark":"Dark ",
       "Light":"Light",
-      "defaultTheme":"System",
+      "defaultTheme":"Use system setting",
       "ittlink":"Create desktop shortcut",
       "theme":"Theme",
       "language":"Language",
@@ -11259,19 +11259,8 @@ function GetQuotes {
 
                 $fullCulture = (Get-ItemPropertyValue -Path "HKCU:\Control Panel\International" -Name "LocaleName")
                 $shortCulture = $fullCulture.Split('-')[0]
-
-                switch ($sync.Langusege)
-                {
-                    "ar" {
-                        $sync.Quotes.Text = $sync.database.locales.Controls.ar.welcome
-                    }
-                    "en" {
-                        $sync.Quotes.Text = $sync.database.locales.Controls.en.welcome
-                    }
-                    default {
-                        $sync.Quotes.Text = $sync.database.locales.Controls.en.welcome
-                    }
-                }
+                $sync.Quotes.Text = $sync.database.locales.Controls.$($sync.Langusege).welcome
+               
             })
         }
 
