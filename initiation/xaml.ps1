@@ -51,6 +51,22 @@ try {
                 $sync["window"].DataContext = $sync.database.locales.Controls.en
                 $sync.Langusege  = "en"
             }
+            "fr" {
+                $sync["window"].DataContext = $sync.database.locales.Controls.fr
+                $sync.Langusege  = "fr"
+            }
+            "tr" {
+                $sync["window"].DataContext = $sync.database.locales.Controls.tr
+                $sync.Langusege  = "tr"
+            }
+            "zh" {
+                $sync["window"].DataContext = $sync.database.locales.Controls.zh
+                $sync.Langusege  = "zh"
+            }
+            "ko" {
+                $sync["window"].DataContext = $sync.database.locales.Controls.ko
+                $sync.Langusege  = "ko"
+            }
             default {
                 # fallback to default lang
                 $sync.Langusege  = "en"
