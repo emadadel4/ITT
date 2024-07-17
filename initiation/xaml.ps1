@@ -75,6 +75,10 @@ try {
                 $sync["window"].DataContext = $sync.database.locales.Controls.ru
                 $sync.Langusege  = "ru"
             }
+            "es" {
+                $sync["window"].DataContext = $sync.database.locales.Controls.es
+                $sync.Langusege  = "es"
+            }
             default {
                 # fallback to default lang
                 $sync.Langusege  = "en"
