@@ -47,55 +47,55 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
             
                 </MenuItem>
 
-                <MenuItem Header="{Binding device}" FontFamily="arial" FontSize="13"  Margin="10,0,0,0" BorderBrush="Transparent" BorderThickness="0" VerticalAlignment="Center" HorizontalAlignment="Left">
+                <MenuItem Header="{Binding management}" FontFamily="arial" FontSize="13"  Margin="10,0,0,0" BorderBrush="Transparent" BorderThickness="0" VerticalAlignment="Center" HorizontalAlignment="Left">
                     <MenuItem.Icon>
                         <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="15" Text=""/>
                     </MenuItem.Icon>
-                    <MenuItem Name="sysinfo" Header="System Info">
+                    <MenuItem Name="sysinfo" Header="{Binding sysinfo}">
                         <MenuItem.Icon>
                             <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
                         </MenuItem.Icon>
                     </MenuItem>
 
-                    <MenuItem Name="poweroption" Header="Power Options">
+                    <MenuItem Name="poweroption" Header="{Binding poweroptions}">
                         <MenuItem.Icon>
                             <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
                         </MenuItem.Icon>
                     </MenuItem>
 
-                    <MenuItem Name="deviceManager" Header="Device Manager">
+                    <MenuItem Name="deviceManager" Header="{Binding devicemgr}">
                         <MenuItem.Icon>
                             <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem Name="services" Header="Services">
+                    <MenuItem Name="services" Header="{Binding services}">
                         <MenuItem.Icon>
                             <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem Name="network" Header="Network">
+                    <MenuItem Name="network" Header="{Binding networks}">
                         <MenuItem.Icon>
                             <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem Name="appsfeatures" Header="Apps-Features">
+                    <MenuItem Name="appsfeatures" Header="{Binding appsfeatures}">
                         <MenuItem.Icon>
                             <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem Name="taskmgr" Header="Task Manager">
+                    <MenuItem Name="taskmgr" Header="{Binding taskmgr}">
                         <MenuItem.Icon>
                             <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem Name="diskmgmt" Header="Disk Managment">
+                    <MenuItem Name="diskmgmt" Header="{Binding diskmgr}">
                         <MenuItem.Icon>
                             <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
                         </MenuItem.Icon>
                     </MenuItem>
                 </MenuItem>
 
-                <MenuItem Header="{Binding pref}" FontFamily="arial" FontSize="13"  BorderBrush="Transparent" BorderThickness="0" VerticalAlignment="Center" HorizontalAlignment="Left">
+                <MenuItem Header="{Binding preferences}" FontFamily="arial" FontSize="13"  BorderBrush="Transparent" BorderThickness="0" VerticalAlignment="Center" HorizontalAlignment="Left">
                     <MenuItem.Icon>
                         <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center" Text=""/>
                     </MenuItem.Icon>
@@ -111,7 +111,7 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
                         </MenuItem.Icon>
                     </MenuItem>
 
-                    <MenuItem Header="{Binding darkmode}">
+                    <MenuItem Header="{Binding theme}">
                         <MenuItem.Icon>
                             <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
                         </MenuItem.Icon>
@@ -128,13 +128,17 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
                         <MenuItem Name="mon" Header="{Binding on}"/>
                     </MenuItem>
 
-                    <!-- <MenuItem Header="{Binding lang}">
+                    <MenuItem Header="{Binding language}">
                             <MenuItem.Icon>
                                 <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
                             </MenuItem.Icon>
-                        <MenuItem Name="en" Header="{Binding en}"/>
-                        <MenuItem Name="ar" Header="{Binding ar}"/>
-                    </MenuItem> -->
+                        <MenuItem Name="ar" Header="Arabic"/>
+                        <MenuItem Name="en" Header="English"/>
+                        <MenuItem Name="fr" Header="French"/>
+                        <MenuItem Name="tr" Header="Turkish"/>
+                        <MenuItem Name="zh" Header="Chinese"/>
+                        <MenuItem Name="ko" Header="Korean"/>
+                    </MenuItem>
 
                 
                     <MenuItem Name="ittshortcut" Header="{Binding ittlink}">
@@ -145,30 +149,30 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
                 </MenuItem>
                 
 
-                <MenuItem Header="{Binding mirrorlinks}" FontFamily="arial" FontSize="13"  BorderThickness="0" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <MenuItem Header="{Binding thirdparty}" FontFamily="arial" FontSize="13"  BorderThickness="0" VerticalAlignment="Center" HorizontalAlignment="Center">
                     <MenuItem.Icon>
                         <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="15" Text=""/>
                     </MenuItem.Icon>
 
 
-                    <MenuItem Name="mas" Header="Microsoft Activation Scripts (MAS)">
+                    <MenuItem Name="mas" Header="{Binding mas}">
                         <MenuItem.Icon>
                             <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem Name="idm" Header="IDM Activation">
+                    <MenuItem Name="idm" Header="{Binding idm}">
                         <MenuItem.Icon>
                             <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
                         </MenuItem.Icon>
                     </MenuItem>
 
-                    <MenuItem Name="winoffice" Header="Download Windows / Office ISO">
+                    <MenuItem Name="winoffice" Header="{Binding winoffice}">
                         <MenuItem.Icon>
                             <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
                         </MenuItem.Icon>
                     </MenuItem>
 
-                    <MenuItem Header="Browsers Extensions">
+                    <MenuItem Header="{Binding extensions}">
                         <MenuItem.Icon>
                             <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
                         </MenuItem.Icon>
@@ -202,7 +206,9 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
             
             <!--Catagory-->
                 <ComboBox SelectedIndex="0" Name="category" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left" Width="auto">
-                    <ComboBoxItem Content="All"></ComboBoxItem>
+
+                    <ComboBoxItem Content="{Binding all}"></ComboBoxItem>
+
                     <ComboBoxItem Content="Web Browsers"></ComboBoxItem>
 
                     <ComboBoxItem Content="Media"></ComboBoxItem>
