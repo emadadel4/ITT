@@ -138,9 +138,8 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
                         <MenuItem Name="tr" Header="Türkiye"/>
                         <MenuItem Name="zh" Header="中文"/>
                         <MenuItem Name="ko" Header="한국어"/>
+                        <MenuItem Name="de" Header="Deutschland"/>
                         <MenuItem Name="ru" Header="Россия"/>
-
-                        
                     </MenuItem>
 
                 
