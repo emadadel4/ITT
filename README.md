@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://techforpalestine.org/learn-more" rel="nofollow">
-    <img src="https://raw.githubusercontent.com/Safouene1/support-palestine-banner/master/StandWithPalestine.svg" alt="Ceasefire Now" style="width:20%;">
+    <img src="https://raw.githubusercontent.com/Safouene1/support-palestine-banner/master/StandWithPalestine.svg" alt="Ceasefire Now" style="width:25%;">
   </a>
 </p>
   
@@ -15,7 +15,7 @@
 ![China](https://img.shields.io/badge/-China-yellow)
 ![Korea](https://img.shields.io/badge/-Korea-purple)
 ![Germany](https://img.shields.io/badge/-Germany-orange)
-
+![Russia](https://img.shields.io/badge/-Russia-blue)
 </div>
 
 
