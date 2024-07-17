@@ -19,7 +19,7 @@ Add-Type -AssemblyName System.Windows.Forms
 $sync = [Hashtable]::Synchronized(@{})
 $sync.database = @{}
 $sync.ProcessRunning = $false
-$sync.lastupdate = "17-07-2024"
+$sync.lastupdate = "18-07-2024"
 $sync.github =   "https://github.com/emadadel4"
 $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://emadadel4.github.io"
@@ -4762,6 +4762,102 @@ $sync.database.locales = '{
       "sourcecode": "소스 코드",
       "devby": "Emad Adel 제작 ♥",
       "exit": "프로그램을 종료하시겠습니까? 진행 중인 설치가 있으면 중단됩니다."
+    },
+    "de": {
+      "Welcome": "Sparen Sie Zeit, indem Sie mehrere Programme gleichzeitig installieren und verbessern Sie die Leistung Ihres Windows. Helfen Sie uns dabei, das Tool zu verbessern und großartig zu machen.",
+      "sysinfo": "Systeminformationen",
+      "PowerOptions": "Energieoptionen",
+      "devicemgr": "Geräte-Manager",
+      "services": "Dienste",
+      "networks": "Netzwerke",
+      "appsfeatures": "Apps-Funktionen",
+      "taskmgr": "Task-Manager",
+      "diskmgr": "Festplattenverwaltung",
+      "installBtn": "Installieren",
+      "applyBtn": "Anwenden",
+      "downloading": "Herunterladen",
+      "about": "Über",
+      "thirdparty": "Drittanbieter",
+      "preferences": "Einstellungen",
+      "management": "Verwaltung",
+      "apps": "Apps",
+      "tweaks": "Anpassungen",
+      "settings": "Einstellungen",
+      "saveapps": "Ausgewählte Apps speichern",
+      "loadapps": "Ausgewählte Apps wiederherstellen",
+      "music": "Musik",
+      "on": "Stummschalten ",
+      "off": "Stummschalten",
+      "Dark": "Dunkel ",
+      "Light": "Hell",
+      "defaultTheme": "System",
+      "ittlink": "Desktop-Verknüpfung erstellen",
+      "theme": "Thema",
+      "language": "Sprache",
+      "mas": "Microsoft-Aktivierungsskripte (MAS)",
+      "winoffice": "Windows / Office ISO herunterladen",
+      "idm": "IDM-Aktivierung",
+      "extensions": "Browser-Erweiterungen",
+      "all": "Alle",
+      "InstallMessage": "Möchten Sie die ausgewählten Apps installieren?",
+      "ApplyMessage": "Möchten Sie die ausgewählten Anpassungen anwenden?",
+      "installing": "Installiere..",
+      "Applying": "Wende an..",
+      "choseapp": "Wählen Sie mindestens eine App zum Installieren aus",
+      "chosetweak": "Bitte warten Sie, bis die Anpassungen angewendet wurden",
+      "pleasewait": "Bitte warten Sie, es läuft ein Prozess im Hintergrund.",
+      "lastupdate": "Letztes Update",
+      "sourcecode": "Quellcode",
+      "devby": "Hergestellt mit ♥ von Emad Adel",
+      "exit": "Sind Sie sicher, dass Sie das Programm schließen möchten? Falls Installationen laufen, werden sie abgebrochen."
+   },
+    "ru": {
+      "Welcome": "Экономьте время, устанавливая несколько программ одновременно и улучшая производительность Windows. Присоединяйтесь к нам в улучшении этого инструмента и сделайте его лучше.",
+      "sysinfo": "Информация о системе",
+      "PowerOptions": "Питание",
+      "devicemgr": "Диспетчер устройств",
+      "services": "Службы",
+      "networks": "Сети",
+      "appsfeatures": "Особенности приложений",
+      "taskmgr": "Диспетчер задач",
+      "diskmgr": "Управление дисками",
+      "installBtn": "Установить",
+      "applyBtn": "Применить",
+      "downloading": "Загрузка",
+      "about": "О программе",
+      "thirdparty": "Сторонние приложения",
+      "preferences": "Настройки",
+      "management": "Управление",
+      "apps": "Приложения",
+      "tweaks": "Настройки",
+      "settings": "Настройки",
+      "saveapps": "Сохранить выбранные приложения",
+      "loadapps": "Восстановить выбранные приложения",
+      "music": "Музыка",
+      "on": "Включить ",
+      "off": "Выключить",
+      "Dark": "Темная ",
+      "Light": "Светлая",
+      "defaultTheme": "Системная",
+      "ittlink": "Создать ярлык на рабочем столе",
+      "theme": "Тема",
+      "language": "Язык",
+      "mas": "Скрипты активации Microsoft (MAS)",
+      "winoffice": "Скачать Windows / Office ISO",
+      "idm": "Активация IDM",
+      "extensions": "Расширения браузера",
+      "all": "Все",
+      "InstallMessage": "Хотите установить выбранные приложения?",
+      "ApplyMessage": "Хотите применить выбранные настройки?",
+      "installing": "Установка..",
+      "Applying": "Применение..",
+      "choseapp": "Выберите хотя бы одно приложение для установки",
+      "chosetweak": "Пожалуйста, подождите, пока будут применены настройки",
+      "pleasewait": "Пожалуйста, подождите, идет процесс на заднем плане.",
+      "lastupdate": "Последнее обновление",
+      "sourcecode": "Исходный код",
+      "devby": "Сделано с ♥ Emad Adel",
+      "exit": "Вы уверены, что хотите закрыть программу? Если есть установки, они будут прерваны."
     }
   },
   "AppsDescription": {
@@ -6547,12 +6643,14 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
                             <MenuItem.Icon>
                                 <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
                             </MenuItem.Icon>
-                        <MenuItem Name="ar" Header="Arabic"/>
+                        <MenuItem Name="ar" Header="عربي"/>
                         <MenuItem Name="en" Header="English"/>
-                        <MenuItem Name="fr" Header="French"/>
-                        <MenuItem Name="tr" Header="Turkish"/>
-                        <MenuItem Name="zh" Header="Chinese"/>
-                        <MenuItem Name="ko" Header="Korean"/>
+                        <MenuItem Name="fr" Header="Français"/>
+                        <MenuItem Name="tr" Header="Türkiye"/>
+                        <MenuItem Name="zh" Header="中文"/>
+                        <MenuItem Name="ko" Header="한국어"/>
+                        <MenuItem Name="de" Header="Deutschland"/>
+                        <MenuItem Name="ru" Header="Россия"/>
                     </MenuItem>
 
                 
@@ -9200,6 +9298,14 @@ try {
                 $sync["window"].DataContext = $sync.database.locales.Controls.ko
                 $sync.Langusege  = "ko"
             }
+            "de" {
+                $sync["window"].DataContext = $sync.database.locales.Controls.de
+                $sync.Langusege  = "de"
+            }
+            "ru" {
+                $sync["window"].DataContext = $sync.database.locales.Controls.ru
+                $sync.Langusege  = "ru"
+            }
             default {
                 # fallback to default lang
                 $sync.Langusege  = "en"
@@ -10742,6 +10848,14 @@ function Invoke-Button {
         }
         "ko" {
             Set-Langusege -lang "ko"
+            Debug-Message $action
+        }
+        "de" {
+            Set-Langusege -lang "de"
+            Debug-Message $action
+        }
+        "ru" {
+            Set-Langusege -lang "ru"
             Debug-Message $action
         }
         "save" {
