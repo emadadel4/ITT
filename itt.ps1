@@ -11483,10 +11483,10 @@ $onClosingEvent = {
 
 # Handle the Loaded event
 $sync["window"].Add_ContentRendered({
+    Startup
     GetQuotes | Out-Null
     PlayMusic | Out-Null
     $sync["window"].Activate()
-    Startup
 })
 
 #Close Event button
