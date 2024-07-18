@@ -4875,7 +4875,7 @@ $sync.database.locales = '{
         "devby": "Hergestellt mit ♥ von Emad Adel",
         "exit": "Sind Sie sicher, dass Sie das Programm schließen möchten? Falls Installationen laufen, werden sie abgebrochen."
     },
-      "ru": {
+    "ru": {
         "Welcome": "Экономьте время, устанавливая несколько программ одновременно и улучшая производительность Windows. Присоединяйтесь к нам в улучшении этого инструмента и сделайте его лучше.",
         "sysinfo": "Информация о системе",
         "PowerOptions": "Питание",
