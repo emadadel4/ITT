@@ -4501,6 +4501,23 @@ $sync.database.Applications = '[
     ],
     "category": "Gaming",
     "check": "false"
+  },
+  {
+    "name": "Omnify Hotspot",
+    "description": "The best virtual router to turn your PC into a WiFi hotspot  repeater WiFi hotspot allows you to create a wireless access point and share your internet Its easy to use and quick to start as you only need to give it a name and password and then connect your smartphone tablet media player ereader printer laptop and other wireless devices The network name can also include Unicode characters and Emojis",
+    "winget": "none",
+    "choco": "omnifyhotspot",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
+    "category": "File Sharing",
+    "check": "false"
   }
 ]
 ' | ConvertFrom-Json
@@ -8975,6 +8992,14 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
                 <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Gaming"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" FontSize="13" FontFamily="Sego UI Semibold" VerticalAlignment="Center" TextWrapping="Wrap" Text="Ryujinx is an opensource Nintendo Switch emulator created by gdkchan and written in C This emulator aims at providing excellent accuracy and performance a userfriendly interface and consistent builds"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+            <StackPanel Orientation="Horizontal">
+                <CheckBox Content="Omnify Hotspot" Tag="File Sharing" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="File Sharing"/>
+            </StackPanel>
+                <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" FontSize="13" FontFamily="Sego UI Semibold" VerticalAlignment="Center" TextWrapping="Wrap" Text="The best virtual router to turn your PC into a WiFi hotspot  repeater WiFi hotspot allows you to create a wireless access point and share your internet Its easy to use and quick to start as you only need to give it a name and password and then connect your smartphone tablet media player ereader printer laptop and other wireless devices The network name can also include Unicode characters and Emojis"/>
         </StackPanel>
 
                                 </ListView>
