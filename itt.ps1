@@ -4518,6 +4518,23 @@ $sync.database.Applications = '[
     ],
     "category": "File Sharing",
     "check": "false"
+  },
+  {
+    "name": "MKVToolNix",
+    "description": "MKVToolNix is a set of tools to create alter and inspect Matroska files under Linux other Unices and Windows",
+    "winget": "MoritzBunkus.MKVToolNix",
+    "choco": "mkvtoolnix",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
+    "category": "Media Tools",
+    "check": "false"
   }
 ]
 ' | ConvertFrom-Json
@@ -6370,7 +6387,7 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="TabItem">
-                    <Border Name="Border" CornerRadius="5" BorderThickness="0,0,0,0" Padding="10" BorderBrush="Gainsboro"  Margin="5,5">
+                    <Border Name="Border" CornerRadius="4" BorderThickness="0,0,0,0" Padding="8" BorderBrush="Transparent"  Margin="5,5">
                         <ContentPresenter x:Name="ContentSite"
                         VerticalAlignment="Center"
                         HorizontalAlignment="Center"
@@ -9000,6 +9017,14 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
                 <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="File Sharing"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" FontSize="13" FontFamily="Sego UI Semibold" VerticalAlignment="Center" TextWrapping="Wrap" Text="The best virtual router to turn your PC into a WiFi hotspot  repeater WiFi hotspot allows you to create a wireless access point and share your internet Its easy to use and quick to start as you only need to give it a name and password and then connect your smartphone tablet media player ereader printer laptop and other wireless devices The network name can also include Unicode characters and Emojis"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+            <StackPanel Orientation="Horizontal">
+                <CheckBox Content="MKVToolNix" Tag="Media Tools" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Media Tools"/>
+            </StackPanel>
+                <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" FontSize="13" FontFamily="Sego UI Semibold" VerticalAlignment="Center" TextWrapping="Wrap" Text="MKVToolNix is a set of tools to create alter and inspect Matroska files under Linux other Unices and Windows"/>
         </StackPanel>
 
                                 </ListView>
