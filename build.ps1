@@ -139,14 +139,10 @@ function Sync-JsonFiles {
 }
 
 function CountItems {
-
     Write-Host  "`n` $($sync.database.Applications.Count) Apps" -ForegroundColor Yellow
     Write-Host  " $($sync.database.Tweaks.Count) Tweaks" -ForegroundColor Yellow
     Write-Host  " $($sync.database.Quotes.Q.Count) Quotes" -ForegroundColor Yellow
     Write-Host  " $($sync.database.OST.Tracks.Count) Tracks `n` " -ForegroundColor Yellow
-
-
-
 }
 
 
@@ -183,7 +179,7 @@ try {
 "@
 
     AddFileContentToScript -FilePath $StartScript
-    ReplaceTextInFile -FilePath $OutputScript -TextToReplace '#{replaceme}' -ReplacementText "$(Get-Date -Format 'dd-MM-yyy')"
+    ReplaceTextInFile -FilePath $OutputScript -TextToReplace '#{replaceme}' -ReplacementText "$(Get-Date -Format 'MM/dd/yy')"
     WriteToScript -Content @"
 #===========================================================================
 #endregion End Start
