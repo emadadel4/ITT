@@ -10982,49 +10982,31 @@ function Invoke-Toogle {
     }
 }
 function PlayMusic {
-
-    Function PlayAudio($url)
-    {
-        $mediaItem =  $sync.mediaPlayer.newMedia($url)
+    # Function to play an audio track
+    function PlayAudio($url) {
+        $mediaItem = $sync.mediaPlayer.newMedia($url)
         $sync.mediaPlayer.currentPlaylist.appendItem($mediaItem)
         $sync.mediaPlayer.controls.play()
     }
 
-    # Function to shuffle the playlist
-    Function ShuffleArray
-    {
-        param([array]$array)
-
-        $count = $array.Length
-
-        for ($i = 0; $i -lt $count; $i++)
-        {
-            $randomIndex = Get-Random -Minimum $i -Maximum $count
-            $temp = $array[$i]
-            $array[$i] = $array[$randomIndex]
-            $array[$randomIndex] = $temp
-        }
-    }
-
     # Shuffle the playlist
-    ShuffleArray -array $sync.database.OST.Tracks
+    $shuffledTracks = $sync.database.OST.Tracks | Get-Random -Count $sync.database.OST.Tracks.Count
 
-    # Function to play the entire shuffled playlist
-    Function PlayShuffledPlaylist
-    {
-        foreach ($url in $sync.database.OST.Tracks)
-        {
+    # Function to play the shuffled playlist
+    function PlayShuffledPlaylist {
+        foreach ($url in $shuffledTracks) {
             PlayAudio $url
             # Wait for the track to finish playing
-            while ( $sync.mediaPlayer.playState -eq 3 -or  $sync.mediaPlayer.playState -eq 6)
-            {
+            while ($sync.mediaPlayer.playState -eq 3 -or $sync.mediaPlayer.playState -eq 6) {
                 Start-Sleep -Milliseconds 100
             }
         }
     }
 
+    # Play the shuffled playlist
     PlayShuffledPlaylist
 }
+
 function MuteMusic {
 
     $sync.mediaPlayer.settings.volume = 0
