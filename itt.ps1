@@ -10822,7 +10822,6 @@ function Invoke-ShowFile {
         Write-Warning $psitem.Exception.StackTrace
     }
 }
-
 function Invoke-ShowFile-Extensions {
    
     Param($Enabled)
@@ -11483,14 +11482,12 @@ $onClosingEvent = {
 }
 
 # Handle the Loaded event
-$sync["window"].Add_Loaded({
+$sync["window"].Add_ContentRendered({
     GetQuotes | Out-Null
     PlayMusic | Out-Null
     $sync["window"].Activate()
+    Startup
 })
-
-Startup
-
 
 #Close Event button
 $sync["window"].add_Closing($onClosingEvent)
