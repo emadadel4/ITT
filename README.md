@@ -39,6 +39,10 @@
 <a href="https://www.buymeacoffee.com/emadadel" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="30" width="150">
 </a>
 
+  <a href="https://www.patreon.com/emadadel" target="_blank">
+    <img src="https://img.shields.io/badge/Patron-blue?logo=patreon" alt="Patron" height="30">
+  </a>
+
 </p>
 
 <p align="center">
