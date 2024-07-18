@@ -9294,134 +9294,79 @@ $sync.runspace.Open()
 [xml]$XAML = $inputXML
 
 # Read the XAML file
-$reader = (New-Object System.Xml.XmlNodeReader $xaml)
-try { 
+$reader = [System.Xml.XmlNodeReader]::new($xaml)
 
-    $sync["window"] = [Windows.Markup.XamlReader]::Load( $reader )
+try {
+    $sync["window"] = [Windows.Markup.XamlReader]::Load($reader)
 
-    $AppsTheme = (Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize" -Name "AppsUseLightTheme")
-    # Get the full LocaleName from the registry
-    $fullCulture = (Get-ItemPropertyValue -Path "HKCU:\Control Panel\International" -Name "LocaleName")
-    # Extract the short form (before the hyphen)
+    # Get theme and locale settings
+    $appsTheme = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize" -Name "AppsUseLightTheme"
+    $fullCulture = Get-ItemPropertyValue -Path "HKCU:\Control Panel\International" -Name "LocaleName"
     $shortCulture = $fullCulture.Split('-')[0]
 
-    # Check if the registry key exists if not then create one
-    if (-not (Test-Path $sync.registryPath))
-    {
-        New-Item -Path "HKCU:\Software\itt.emadadel" -Force *> $null
-        Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "DarkMode" -Value "none" -Force 
-        Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "locales" -Value "$($shortCulture)" -Force 
+    # Ensure registry key exists and set defaults if necessary
+    if (-not (Test-Path "HKCU:\Software\itt.emadadel")) {
+        New-Item -Path "HKCU:\Software\itt.emadadel" -Force | Out-Null
+        Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "DarkMode" -Value "none" -Force
+        Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "locales" -Value $shortCulture -Force
     }
 
-    #===========================================================================
-    #region Check for Langusege 
-    #===========================================================================
-       
-        Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "locales" -Value "$($shortCulture)" -Force 
+    # Update locale in registry
+    Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "locales" -Value $shortCulture -Force
 
-        switch ($shortCulture) {
-            "ar" {
-                $sync["window"].DataContext = $sync.database.locales.Controls.ar
-                $sync.Langusege  = "ar"
-            }
-            "en" {
-                $sync["window"].DataContext = $sync.database.locales.Controls.en
-                $sync.Langusege  = "en"
-            }
-            "fr" {
-                $sync["window"].DataContext = $sync.database.locales.Controls.fr
-                $sync.Langusege  = "fr"
-            }
-            "tr" {
-                $sync["window"].DataContext = $sync.database.locales.Controls.tr
-                $sync.Langusege  = "tr"
-            }
-            "zh" {
-                $sync["window"].DataContext = $sync.database.locales.Controls.zh
-                $sync.Langusege  = "zh"
-            }
-            "ko" {
-                $sync["window"].DataContext = $sync.database.locales.Controls.ko
-                $sync.Langusege  = "ko"
-            }
-            "de" {
-                $sync["window"].DataContext = $sync.database.locales.Controls.de
-                $sync.Langusege  = "de"
-            }
-            "ru" {
-                $sync["window"].DataContext = $sync.database.locales.Controls.ru
-                $sync.Langusege  = "ru"
-            }
-            "es" {
-                $sync["window"].DataContext = $sync.database.locales.Controls.es
-                $sync.Langusege  = "es"
-            }
-            default {
-                # fallback to default lang
-                $sync.Langusege  = "en"
-                $sync["window"].DataContext = $sync.database.locales.Controls.en
-                Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "locales" -Value "en" -Force 
-            }
-        }
-   
-    #===========================================================================
-    #endregion Check for Langusege 
-    #===========================================================================
+    # Set language based on culture
+    switch ($shortCulture) {
+        "ar" { $locale = "ar" }
+        "en" { $locale = "en" }
+        "fr" { $locale = "fr" }
+        "tr" { $locale = "tr" }
+        "zh" { $locale = "zh" }
+        "ko" { $locale = "ko" }
+        "de" { $locale = "de" }
+        "ru" { $locale = "ru" }
+        "es" { $locale = "es" }
+        default { $locale = "en" }
+    }
+    $sync["window"].DataContext = $sync.database.locales.Controls.$locale
+    $sync.Langusege = $locale
 
-    #===========================================================================
-    #region Check Theme
-    #===========================================================================
-
-        $sync.isDarkMode = (Get-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "DarkMode").DarkMode
-
-        if($sync.isDarkMode -eq "true")
-        {
-            $sync['window'].Resources.MergedDictionaries.Add($sync['window'].FindResource("Dark"))
-
-        }elseif ($sync.isDarkMode -eq "false") 
-        {
-            $sync['window'].Resources.MergedDictionaries.Add($sync['window'].FindResource("Light"))
-        }
-        else
-        {
-            switch ($AppsTheme) {
-                "0" {
-                    $sync['window'].Resources.MergedDictionaries.Add($sync['window'].FindResource("Dark"))
-                }
-                "1" {
-                    $sync['window'].Resources.MergedDictionaries.Add($sync['window'].FindResource("Light"))
-                }
-            }
-        }
-    
-    #===========================================================================
-    #endregion Check Theme
-    #===========================================================================
- }
+    # Check theme settings
+    $sync.isDarkMode = (Get-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "DarkMode").DarkMode
+    $themeResource = if ($sync.isDarkMode -eq "true") { "Dark" }
+                     elseif ($sync.isDarkMode -eq "false") { "Light" }
+                     else {
+                         switch ($appsTheme) {
+                             "0" { "Dark" }
+                             "1" { "Light" }
+                         }
+                     }
+    $sync["window"].Resources.MergedDictionaries.Add($sync["window"].FindResource($themeResource))
+}
 catch [System.Management.Automation.MethodInvocationException] {
-    Write-Warning "We ran into a problem with the XAML code.  Check the syntax for this control..."
+    Write-Warning "Problem with the XAML code. Check syntax."
     Write-Host $error[0].Exception.Message -ForegroundColor Red
-    If ($error[0].Exception.Message -like "*button*") {
-        write-warning "Ensure your &lt;button in the `$inputXML does NOT have a Click=ButtonClick property.  PS can't handle this`n`n`n`n"
+    if ($error[0].Exception.Message -like "*button*") {
+        Write-Warning "Ensure <button> in `$inputXML does NOT have a Click=ButtonClick property. PS can't handle this."
     }
 }
 catch {
-    Write-Host "Unable to load Windows.Markup.XamlReader. Double-check syntax and ensure .net is installed."
+    Write-Host "Unable to load Windows.Markup.XamlReader. Check syntax and .NET installation."
 }
 
-# Catch controls
-$sync.AppsListView = $sync['window'].FindName("appslist")
-$sync.TweaksListView = $sync['window'].FindName("tweakslist")
-$sync.SettingsListView = $sync['window'].FindName("SettingsList")
+# List Views
+$sync.AppsListView = $sync["window"].FindName("appslist")
+$sync.TweaksListView = $sync["window"].FindName("tweakslist")
+$sync.SettingsListView = $sync["window"].FindName("SettingsList")
 $sync.currentList
 
-# Buttons
-$sync.Description = $sync['window'].FindName("description")
-$sync.Quotes = $sync['window'].FindName("quotes")
-$sync.installBtn = $sync['window'].FindName('installBtn') 
-$sync.applyBtn = $sync['window'].FindName('applyBtn') 
-$sync.category = $sync['window'].FindName('category')
-$sync.searchInput = $sync['window'].FindName('searchInput')
+# Buttons and Inputs
+$sync.Description = $sync["window"].FindName("description")
+$sync.Quotes = $sync["window"].FindName("quotes")
+$sync.InstallBtn = $sync["window"].FindName("installBtn")
+$sync.ApplyBtn = $sync["window"].FindName("applyBtn")
+$sync.Category = $sync["window"].FindName("category")
+$sync.SearchInput = $sync["window"].FindName("searchInput")
+
 #===========================================================================
 #endregion End loadXmal
 #===========================================================================
@@ -11356,123 +11301,63 @@ function SwitchToSystem {
         Write-Host "Error occurred: $_"
     }
 }
-
 #===========================================================================
-#region Select all elements with a Name attribute using XPath and iterate over them
+#region Select elements with a Name attribute using XPath and iterate over them
 #===========================================================================
 
-    # Select all elements with a Name attribute using XPath and iterate over them
-    $xaml.SelectNodes("//*[@Name]") | ForEach-Object {
-        # Assign each element to a variable in $sync dictionary
-        $sync[$($_.Name)] = $sync["window"].FindName($_.Name)
-    }
+# Select elements with a Name attribute and iterate
+$xaml.SelectNodes("//*[@Name]") | ForEach-Object {
+    $name = $_.Name
+    $element = $sync["window"].FindName($name)
 
-    # Iterate over keys in $sync dictionary
-    $sync.Keys | ForEach-Object {
-        $element = $sync[$_]
+    if ($element) {
+        $sync[$name] = $element
 
-        # Check if the element exists
-        if ($element) {
-
-            # Check if the element is a Button
-            if ($element.GetType().Name -eq "Button") {
-                # Add a click event handler to the button
-
-                $element.Add_Click({
-                    param([System.Object]$sender, $eventArgs)
-                    Invoke-Button $sender.Name
-                })
+        # Add event handlers based on element type
+        switch ($element.GetType().Name) {
+            "Button" {
+                $element.Add_Click({ Invoke-Button $args[0].Name })
             }
-
-            # Check if the element is a MenuItem
-            if ($element.GetType().Name -eq "MenuItem") {
-                # Add a click event handler to the MenuItem
-
-                $element.Add_Click({
-                    param([System.Object]$sender, $eventArgs)
-                    Invoke-Button $sender.Name
-                })
+            "MenuItem" {
+                $element.Add_Click({ Invoke-Button $args[0].Name })
             }
-
-            # Check if the element is a TextBox
-            if ($element.GetType().Name -eq "TextBox") {
-
-                $element.Add_TextChanged({
-                    param([System.Object]$sender, $eventArgs)
-                    Invoke-Button $sender.Name
-                })
-
-                $element.Add_GotFocus({
-                    param([System.Object]$sender, $eventArgs)
-                    Invoke-Button $sender.Name
-                })
+            "TextBox" {
+                $element.Add_TextChanged({ Invoke-Button $args[0].Name })
+                $element.Add_GotFocus({ Invoke-Button $args[0].Name })
             }
-
-            # Check if the element is a Ellipse
-            if ($element.GetType().Name -eq "Ellipse") {
-                    # Add a click event handler to the Ellipse
-
-                    $element.add_MouseLeftButtonDown({
-                        param([System.Object]$sender, $eventArgs)
-                        Invoke-Button $sender.Name
-                    })
+            "Ellipse" {
+                $element.add_MouseLeftButtonDown({ Invoke-Button $args[0].Name })
             }
-
-            # Check if the element is a ComboBox
-            if ($element.GetType().Name -eq "ComboBox") {
-                # Add a click event handler to the ComboBox
-
-                $element.add_SelectionChanged({
-                    param([System.Object]$sender, $eventArgs)
-                    Invoke-Button $sender.Name
-                })
+            "ComboBox" {
+                $element.add_SelectionChanged({ Invoke-Button $args[0].Name })
             }
-
-            # Check if the element is a TabControl
-            if ($element.GetType().Name -eq "TabControl") {
-                # Add a click event handler to the TabControl
-
-                $element.add_SelectionChanged({
-                    param([System.Object]$sender, $eventArgs)
-                    Invoke-Button $sender.Name
-                })
+            "TabControl" {
+                $element.add_SelectionChanged({ Invoke-Button $args[0].Name })
             }
-
-            # Check if the element is a TabControl
-            if ($element.GetType().Name -eq "CheckBox")
-            {
-                $element.IsChecked = Get-ToggleStatus -ToggleSwitch $element.Name
-
-                 $element.Add_Click({
-                    [System.Object]$Sender = $args[0]
-                    Invoke-Toogle $Sender.name
-                })
+            "CheckBox" {
+                $element.IsChecked = Get-ToggleStatus -ToggleSwitch $name
+                $element.Add_Click({ Invoke-Toogle $args[0].Name })
             }
         }
     }
+}
 #===========================================================================
-#endregion Select all elements with a Name attribute using XPath and iterate over them
+#endregion Select elements with a Name attribute using XPath and iterate over them
 #===========================================================================
 
 # Define OnClosing event handler
 $onClosingEvent = {
-    
     param($s, $c)
-    
-    $exitdialog = $sync.database.locales.Controls.$($sync.Langusege).exit
+
+    $exitDialog = $sync.database.locales.Controls.$($sync.Langusege).exit
 
     # Show confirmation message box
-    $result = [System.Windows.MessageBox]::Show($exitdialog, "Confirmation", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)
+    $result = [System.Windows.MessageBox]::Show($exitDialog, "Confirmation", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)
 
     # Check user's choice
-    if ($result -eq "Yes")
-    {
-        # Close the window and stop all runspace
+    if ($result -eq [System.Windows.MessageBoxResult]::Yes) {
         StopAllRunspace
-    }
-    else
-    {
-        # Cancel closing the window
+    } else {
         $c.Cancel = $true
     }
 }
@@ -11485,12 +11370,11 @@ $sync["window"].Add_ContentRendered({
     $sync["window"].Activate()
 })
 
-#Close Event button
+# Close Event handler
 $sync["window"].add_Closing($onClosingEvent)
 
 # Show Window
 $sync["window"].ShowDialog() | Out-Null
-
 
 #===========================================================================
 #endregion End Main Functions
