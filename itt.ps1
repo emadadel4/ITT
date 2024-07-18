@@ -19,7 +19,7 @@ Add-Type -AssemblyName System.Windows.Forms
 $sync = [Hashtable]::Synchronized(@{})
 $sync.database = @{}
 $sync.ProcessRunning = $false
-$sync.lastupdate = "18-07-2024"
+$sync.lastupdate = "07/18/24"
 $sync.github =   "https://github.com/emadadel4"
 $sync.telegram = "https://t.me/emadadel4"
 $sync.website =  "https://emadadel4.github.io"
@@ -11272,7 +11272,7 @@ function GetQuotes {
         do {
             foreach ($name in $shuffledNames) {
                 $sync.Quotes.Dispatcher.Invoke([Action]{
-                    $sync.Quotes.Text = "`".$name`""
+                    $sync.Quotes.Text = "`“.$name`”"
                 })
 
                 # Adjust the sleep time as needed
