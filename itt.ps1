@@ -28,23 +28,21 @@ $sync = [Hashtable]::Synchronized(@{
     firebaseUrl    = "https://ittools-7d9fe-default-rtdb.firebaseio.com/Users"
     isDarkMode     = $null
     Langusege      = "en"
-    mediaPlayer    = New-Object -ComObject WMPlayer.OCX
 })
 
 $currentPid = [System.Security.Principal.WindowsIdentity]::GetCurrent()
-$principal = New-Object System.Security.Principal.WindowsPrincipal($currentPid)
+$principal = [System.Security.Principal.WindowsPrincipal]$currentPid
 $administrator = [System.Security.Principal.WindowsBuiltInRole]::Administrator
 
-$newProcess = New-Object System.Diagnostics.ProcessStartInfo "PowerShell"
-
-if ($principal.IsInRole($administrator)) {
-    $Host.UI.RawUI.WindowTitle = "ITT (Install and Tweaks Tool) - Admin"
-} else {
-    $newProcess.Arguments = $myInvocation.MyCommand.Definition
-    $newProcess.Verb = "runas"
-    [System.Diagnostics.Process]::Start($newProcess)
+if (-not $principal.IsInRole($administrator)) {
+    Start-Process -FilePath "PowerShell" -ArgumentList $myInvocation.MyCommand.Definition -Verb "runas"
     exit
 }
+
+$Host.UI.RawUI.WindowTitle = "ITT (Install and Tweaks Tool) - Admin"
+
+# Initialize media player only when necessary
+$sync.mediaPlayer = New-Object -ComObject WMPlayer.OCX
 
 
 #===========================================================================
