@@ -4,7 +4,7 @@
   </a>
 </p>
   
-<h1 align="center">ITT (Install Tweaks Tool) 🛠️ 🚀</h1>
+<h1 align="center">ITT (Install Tweaks Tool) 🛠️ 🚀
 
 <div align="center">
 
@@ -18,7 +18,8 @@
 ![Russia](https://img.shields.io/badge/-Russia-blue)
 </div>
 
-&nbsp;
+
+</h1>
 
 <div align="center">
     <a href="https://t.me/emadadel4" style="margin-right: 20px;">
