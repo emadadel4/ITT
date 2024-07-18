@@ -4465,5 +4465,22 @@
     ],
     "category": "File Sharing",
     "check": "false"
+  },
+  {
+    "name": "MKVToolNix",
+    "description": "MKVToolNix is a set of tools to create alter and inspect Matroska files under Linux other Unices and Windows",
+    "winget": "MoritzBunkus.MKVToolNix",
+    "choco": "mkvtoolnix",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
+    "category": "Media Tools",
+    "check": "false"
   }
 ]
