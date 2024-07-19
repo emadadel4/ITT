@@ -6743,16 +6743,15 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
                                 <MenuItem.Icon>
                                     <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
                                 </MenuItem.Icon>
-                            <MenuItem Name="ar" Header="عربي"/>
-                            <MenuItem Name="en" Header="English"/>
-                            <MenuItem Name="fr" Header="Français"/>
-                            <MenuItem Name="tr" Header="Türkiye"/>
-                            <MenuItem Name="zh" Header="中文"/>
-                            <MenuItem Name="ko" Header="한국어"/>
-                            <MenuItem Name="de" Header="Deutschland"/>
-                            <MenuItem Name="ru" Header="Россия"/>
-                            <MenuItem Name="es" Header="España"/>
-
+                                <MenuItem Name="ar" Header="عربي" />
+                                <MenuItem Name="en" Header="English" />
+                                <MenuItem Name="fr" Header="Français" />
+                                <MenuItem Name="tr" Header="Türkçe" />
+                                <MenuItem Name="zh" Header="中文" />
+                                <MenuItem Name="ko" Header="한국어" />
+                                <MenuItem Name="de" Header="Deutsch" />
+                                <MenuItem Name="ru" Header="Русский" />
+                                <MenuItem Name="es" Header="Español" />
                         </MenuItem>
 
                     
