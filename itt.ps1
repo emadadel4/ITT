@@ -11175,7 +11175,6 @@ function Search {
         return $true  # Non-StackPanel items are always included
     }
 }
-
 function FilterByCat {
 
     param ($Cat)
