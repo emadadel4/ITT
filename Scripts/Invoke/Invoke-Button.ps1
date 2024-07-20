@@ -125,6 +125,19 @@ function Invoke-Button {
             Debug-Message $action
         }
 
+
+        # chocoloc
+         "chocoloc" {
+            Start-Process explorer.exe "C:\ProgramData\chocolatey\lib"
+            Debug-Message $action
+        }
+
+        # restore point
+        "restorepoint" {
+            RestorePoint
+            Debug-Message $action
+        }
+
         # Music
         "moff" {
             MuteMusic

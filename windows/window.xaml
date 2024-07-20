@@ -96,6 +96,18 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
                             <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center" Text=""/>
                         </MenuItem.Icon>
 
+                        <MenuItem Name="restorepoint" Header="{Binding restorepoint}">
+                            <MenuItem.Icon>
+                                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+
+                        <MenuItem Name="chocoloc" Header="{Binding chocoloc}">
+                            <MenuItem.Icon>
+                                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+
                         <MenuItem Name="save" Header="{Binding saveapps}">
                             <MenuItem.Icon>
                                 <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
@@ -142,9 +154,12 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
                     
                         <MenuItem Name="ittshortcut" Header="{Binding ittlink}">
                             <MenuItem.Icon>
-                                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="15" Text=""/>
+                                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="15" Text=""/>
                             </MenuItem.Icon>
                         </MenuItem>
+
+                   
+
                     </MenuItem>
                     
 
@@ -181,6 +196,7 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
                             <MenuItem Name="neat" Header="Neat Download Manager"/>
                         </MenuItem>
 
+                        
                         
                     </MenuItem>
 
