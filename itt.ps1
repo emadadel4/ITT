@@ -4576,6 +4576,10 @@ $sync.database.locales = '{
         "idm":"تفعيل الدون لود مانجر",
         "extensions":"أضافات المتصفحات",
         "all": "الكل",
+
+        "restorepoint": "إنشاء نقطة الاستعادة",
+        "chocoloc": "مجلد التنزيلات المحمولة",
+
         "InstallMessage":"هل تريد تثبيت البرامج المختارة؟",
         "ApplyMessage":"هل تريد تطبيق التحسينات المختارة؟",
         "Applying": "جارٍ التطبيق",
@@ -4623,6 +4627,8 @@ $sync.database.locales = '{
         "idm":"IDM Activation",
         "extensions":"Browsers Extensions",
         "all": "All",
+        "restorepoint": "Create restore point",
+        "chocoloc": "Portable Downloads Folder",
         "InstallMessage":"Do you want install selected apps",
         "ApplyMessage":"Do you want to apply selected tweaks",
         "installing": "Installing..",
@@ -4671,6 +4677,10 @@ $sync.database.locales = '{
         "idm": "Activation IDM",
         "extensions": "Extensions de Navigateurs",
         "all": "Tout",
+
+        "restorepoint": "Créer un point de restauration",
+        "chocoloc": "Dossier Téléchargements Portable",
+
         "InstallMessage": "Souhaitez-vous installer les applications sélectionnées",
         "ApplyMessage": "Souhaitez-vous appliquer les ajustements sélectionnés",
         "installing": "Installation en cours...",
@@ -4719,6 +4729,8 @@ $sync.database.locales = '{
         "idm": "IDM Aktivasyonu",
         "extensions": "Tarayıcı Eklentileri",
         "all": "Tüm",
+        "restorepoint": "Geri yükleme noktası oluştur",
+        "chocoloc": "Taşınabilir İndirilenler Klasörü",
         "InstallMessage": "Seçilen uygulamaları yüklemek istiyor musunuz",
         "ApplyMessage": "Seçilen düzeltmeleri uygulamak istiyor musunuz",
         "installing": "Yükleniyor..",
@@ -4767,6 +4779,8 @@ $sync.database.locales = '{
         "idm": "IDM 激活",
         "extensions": "浏览器扩展",
         "all": "都",
+        "restorepoint": "创建还原点",
+        "chocoloc": "便携下载文件夹",
         "InstallMessage": "是否要安装选定的应用",
         "ApplyMessage": "是否要应用选定的调整",
         "installing": "安装中..",
@@ -4815,6 +4829,8 @@ $sync.database.locales = '{
         "idm": "IDM 활성화",
         "extensions": "브라우저 확장 프로그램",
         "all": "모두",
+        "restorepoint": "복원 지점 생성",
+        "chocoloc": "휴대용 다운로드 폴더",
         "InstallMessage": "선택한 앱을 설치하시겠습니까",
         "ApplyMessage": "선택한 조정 사항을 적용하시겠습니까",
         "installing": "설치 중..",
@@ -4863,6 +4879,8 @@ $sync.database.locales = '{
         "idm": "IDM-Aktivierung",
         "extensions": "Browser-Erweiterungen",
         "all": "Alle",
+        "restorepoint": "Wiederherstellungspunkt erstellen",
+        "chocoloc": "Tragbarer Download-Ordner",
         "InstallMessage": "Möchten Sie die ausgewählten Apps installieren?",
         "ApplyMessage": "Möchten Sie die ausgewählten Anpassungen anwenden?",
         "installing": "Installiere..",
@@ -4911,6 +4929,8 @@ $sync.database.locales = '{
         "idm": "Активация IDM",
         "extensions": "Расширения браузера",
         "all": "Все",
+        "restorepoint": "Создать точку восстановления",
+        "chocoloc": "Портативная папка загрузок",
         "InstallMessage": "Хотите установить выбранные приложения?",
         "ApplyMessage": "Хотите применить выбранные настройки?",
         "installing": "Установка..",
@@ -4959,6 +4979,8 @@ $sync.database.locales = '{
     "idm": "Activación de IDM",
     "extensions": "Extensiones de Navegadores",
     "all": "Todo",
+    "restorepoint": "Crear punto de restauración",
+    "chocoloc": "Carpeta de Descargas Portátiles",
     "InstallMessage": "¿Deseas instalar las aplicaciones seleccionadas?",
     "ApplyMessage": "¿Deseas aplicar los ajustes seleccionados?",
     "installing": "Instalando..",
@@ -6711,6 +6733,18 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
                             <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center" Text=""/>
                         </MenuItem.Icon>
 
+                        <MenuItem Name="restorepoint" Header="{Binding restorepoint}">
+                            <MenuItem.Icon>
+                                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+
+                        <MenuItem Name="chocoloc" Header="{Binding chocoloc}">
+                            <MenuItem.Icon>
+                                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+
                         <MenuItem Name="save" Header="{Binding saveapps}">
                             <MenuItem.Icon>
                                 <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
@@ -6757,9 +6791,12 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
                     
                         <MenuItem Name="ittshortcut" Header="{Binding ittlink}">
                             <MenuItem.Icon>
-                                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="15" Text=""/>
+                                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="15" Text=""/>
                             </MenuItem.Icon>
                         </MenuItem>
+
+                   
+
                     </MenuItem>
                     
 
@@ -6796,6 +6833,7 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
                             <MenuItem Name="neat" Header="Neat Download Manager"/>
                         </MenuItem>
 
+                        
                         
                     </MenuItem>
 
@@ -9482,6 +9520,47 @@ function Invoke-ScriptBlock {
             [System.GC]::Collect()
         }
 }
+function RestorePoint {
+
+    Invoke-ScriptBlock -ScriptBlock {
+
+        function Add-Log {
+            param (
+                [string]$Message, # Content of Message
+                [string]$Level = "INFO" # Message Level [INFO] [ERROR] [WARNING]
+            )
+        
+            # Get the current timestamp
+            $timestamp = Get-Date -Format "hh:mm tt"
+        
+            # Determine the color based on the log level
+            switch ($Level.ToUpper()) {
+                "INFO" { $color = "Green" }
+                "WARNING" { $color = "Yellow" }
+                "ERROR" { $color = "Red" }
+                default { $color = "White" }
+            }
+        
+            # Construct the log message
+            $logMessage = "$Message"
+            $date =  "[$timestamp $Level]"
+        
+            # Write the log message to the console with the specified color
+            Write-Host "`n` " -ForegroundColor $color
+            Write-Host "$date" -ForegroundColor Yellow ; Write-Host "$logMessage" -ForegroundColor $color 
+            Write-Host "" -ForegroundColor $color
+        }
+
+        Try {
+            Add-Log -Message "Creating Restore point..." -Level "INFO"
+            Checkpoint-Computer -Description "ITT" -ErrorAction Stop
+            Add-Log -Message "Created successfully" -Level "INFO"
+        } Catch {
+            Write-Host "Failed to create a restore point. Error: $($_.Exception.Message)" -ForegroundColor Red
+        }
+    }
+}
+
 function Get-SelectedTweaks {
 
     $items = @()
@@ -10998,6 +11077,19 @@ function Invoke-Button {
             Debug-Message $action
         }
 
+
+        # chocoloc
+         "chocoloc" {
+            Start-Process explorer.exe "C:\ProgramData\chocolatey\lib"
+            Debug-Message $action
+        }
+
+        # restore point
+        "restorepoint" {
+            RestorePoint
+            Debug-Message $action
+        }
+
         # Music
         "moff" {
             MuteMusic
@@ -11064,56 +11156,6 @@ function Invoke-Toogle {
 
         "ToggleShowHidden" {Invoke-ShowFile $(Get-ToggleStatus ToggleShowHidden)}
     }
-}
-function PlayMusic {
-    # Function to play an audio track
-    function PlayAudio($url) {
-        $mediaItem = $sync.mediaPlayer.newMedia($url)
-        $sync.mediaPlayer.currentPlaylist.appendItem($mediaItem)
-        $sync.mediaPlayer.controls.play()
-    }
-
-    # Shuffle the playlist
-    $shuffledTracks = $sync.database.OST.Tracks | Get-Random -Count $sync.database.OST.Tracks.Count
-
-    # Function to play the shuffled playlist
-    function PlayShuffledPlaylist {
-        foreach ($url in $shuffledTracks) {
-            PlayAudio $url
-            # Wait for the track to finish playing
-            while ($sync.mediaPlayer.playState -eq 3 -or $sync.mediaPlayer.playState -eq 6) {
-                Start-Sleep -Milliseconds 100
-            }
-        }
-    }
-
-    # Play the shuffled playlist
-    PlayShuffledPlaylist
-}
-
-function MuteMusic {
-
-    $sync.mediaPlayer.settings.volume = 0
-}
-function UnmuteMusic {
-   
-    $sync.mediaPlayer.settings.volume = 100
-}
-function StopMusic {
-    $sync.mediaPlayer.controls.stop()
-    $sync.mediaPlayer = $null
-    $script:powershell.Dispose()
-    $sync.runspace.Dispose()
-    $sync.runspace.Close()
-}
-function StopAllRunspace {
-    $script:powershell.Dispose()
-    $sync.runspace.Dispose()
-    $sync.runspace.Close()
-    $script:powershell.Stop()
-    StopMusic
-    $newProcess.exit
-    Write-Host "Bye see you soon. :)" 
 }
 function About{
     # Load child window
@@ -11298,6 +11340,56 @@ function GetQuotes {
             }
         } while ($true)
     }
+}
+function PlayMusic {
+    # Function to play an audio track
+    function PlayAudio($url) {
+        $mediaItem = $sync.mediaPlayer.newMedia($url)
+        $sync.mediaPlayer.currentPlaylist.appendItem($mediaItem)
+        $sync.mediaPlayer.controls.play()
+    }
+
+    # Shuffle the playlist
+    $shuffledTracks = $sync.database.OST.Tracks | Get-Random -Count $sync.database.OST.Tracks.Count
+
+    # Function to play the shuffled playlist
+    function PlayShuffledPlaylist {
+        foreach ($url in $shuffledTracks) {
+            PlayAudio $url
+            # Wait for the track to finish playing
+            while ($sync.mediaPlayer.playState -eq 3 -or $sync.mediaPlayer.playState -eq 6) {
+                Start-Sleep -Milliseconds 100
+            }
+        }
+    }
+
+    # Play the shuffled playlist
+    PlayShuffledPlaylist
+}
+
+function MuteMusic {
+
+    $sync.mediaPlayer.settings.volume = 0
+}
+function UnmuteMusic {
+   
+    $sync.mediaPlayer.settings.volume = 100
+}
+function StopMusic {
+    $sync.mediaPlayer.controls.stop()
+    $sync.mediaPlayer = $null
+    $script:powershell.Dispose()
+    $sync.runspace.Dispose()
+    $sync.runspace.Close()
+}
+function StopAllRunspace {
+    $script:powershell.Dispose()
+    $sync.runspace.Dispose()
+    $sync.runspace.Close()
+    $script:powershell.Stop()
+    StopMusic
+    $newProcess.exit
+    Write-Host "Bye see you soon. :)" 
 }
 function Set-Langusege {
     param (
