@@ -10,12 +10,14 @@
 
 ![Arabic](https://img.shields.io/badge/-Arabic-green)
 ![English](https://img.shields.io/badge/-English-green)
-![France](https://img.shields.io/badge/-France-blue)
-![Turkey](https://img.shields.io/badge/-Turkey-red)
-![China](https://img.shields.io/badge/-China-yellow)
-![Korea](https://img.shields.io/badge/-Korea-purple)
-![Germany](https://img.shields.io/badge/-Germany-orange)
-![Russia](https://img.shields.io/badge/-Russia-blue)
+![Français](https://img.shields.io/badge/-Français-blue)
+![Türkçe](https://img.shields.io/badge/-Türkçe-red)
+![中文](https://img.shields.io/badge/-中文-yellow)
+![한국어](https://img.shields.io/badge/-한국어-purple)
+![Deutsch](https://img.shields.io/badge/-Deutsch-orange)
+![Русский](https://img.shields.io/badge/-Русский-blue)
+![Español](https://img.shields.io/badge/-Español-red)
+
 </div>
 
 
