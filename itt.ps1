@@ -5091,7 +5091,7 @@ $sync.database.Quotes = '{
     "الحرية تأتي بثمن. وأحياناً، تكون الكلفة مرتفعة للغاية",
     "الأشياء التي نحبها أكثر، هي الأشياء التي نفقدها",
     "أصغر الاصوات بإمكانها أن تصبح عظيمة",
-    "انت 1 ام 0",
+    "هل انت 1 ام 0",
     "حياتي جعلتني كالميت الحي لكن انعكاسي اظهر لي مازلت على قيد الحياة"
   ]
 }
@@ -5447,7 +5447,7 @@ $sync.database.Tweaks = '[
   },
   {
     "name": "Clean Taskbar",
-    "description": "Disable the (News and interests) and (People icon) Show Search icon only for Windows 10",
+    "description": "Disable the (News and interests) and (People icon) Show Search icon only for Windows 10/11",
     "check": "false",
     "category": "Performance",
     "type": "modifying",
@@ -9173,7 +9173,7 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
                 <CheckBox Content="Clean Taskbar"     FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Performance"/>
             </StackPanel>
-                <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" FontSize="13" FontFamily="Sego UI Semibold" VerticalAlignment="Center" TextWrapping="Wrap" Text="Disable the . News and interests.  and . People icon.  Show Search icon only for Windows 10"/>
+                <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" FontSize="13" FontFamily="Sego UI Semibold" VerticalAlignment="Center" TextWrapping="Wrap" Text="Disable the . News and interests.  and . People icon.  Show Search icon only for Windows 10. 11"/>
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Width="auto" Margin="8">
@@ -9927,6 +9927,7 @@ function Invoke-ApplyTweaks {
     
                         [System.Windows.MessageBox]::Show($msg, $title, [System.Windows.MessageBoxButton]::$MessageBoxButton, [System.Windows.MessageBoxImage]::$MessageBoxImage)
                     }
+
                         $applyBtn = $sync.database.locales.Controls.$($sync.Langusege).applyBtn
                         $Applying = $sync.database.locales.Controls.$($sync.Langusege).Applying
 
@@ -9936,55 +9937,23 @@ function Invoke-ApplyTweaks {
                         foreach ($app in $tweaks) {
                             switch ($app.Type) {
                                 "command" {
-                                    
-                                    foreach ($cmd in $app.Command) {
-                                        ExecuteCommand -Name $app.Name -Command $cmd
-                                    }
-
-                                    if($app.Refresh -eq "true")
-                                    {
-                                        Stop-Process -Name explorer -Force
-                                    }
+                                    $app.Command | ForEach-Object { ExecuteCommand -Name $app.Name -Command $_ }
                                 }
                                 "modifying" {
-
-                                    foreach ($mod in $app.Registry) {
-                                        Set-RegistryValue -Name $mod.Name -Type $mod.Type -Path $mod.Path -Value $mod.Value
-                                    }
-
-                                    if($app.Refresh -eq "true")
-                                    {
-                                        Stop-Process -Name explorer -Force
-                                    }
-
+                                    $app.Registry | ForEach-Object { Set-RegistryValue -Name $_.Name -Type $_.Type -Path $_.Path -Value $_.Value }
                                 }
                                 "delete" {
-
-                                    foreach ($re in $app.Registry) {
-                                        Remove-RegistryValue -RegistryPath $re.Path -Folder $re.Name
-                                    }
-
-                                    if($app.Refresh -eq "true")
-                                    {
-                                        Stop-Process -Name explorer -Force
-                                    }
+                                    $app.Registry | ForEach-Object { Remove-RegistryValue -RegistryPath $_.Path -Folder $_.Name }
                                 }
                                 "service" {
-                                    foreach ($se in $app.Service) {
-                                        Disable-Service -ServiceName $se.Name -StartupType $se.StartupType
-                                    }
+                                    $app.Service | ForEach-Object { Disable-Service -ServiceName $_.Name -StartupType $_.StartupType }
                                 }
                                 "AppxPackage" {
-
-                                    foreach ($appx in $app.removeAppxPackage) {
-                                        Uninstall-AppxPackage -Name $appx.Name
-                                    }
-
-                                    foreach ($cmd in $app.Command) {
-                                        ExecuteCommand -Command $cmd
-                                    }
+                                    $app.removeAppxPackage | ForEach-Object { Uninstall-AppxPackage -Name $_.Name }
+                                    $app.Command | ForEach-Object { ExecuteCommand -Command $_ }
                                 }
                             }
+                            if ($app.Refresh) { Stop-Process -Name explorer -Force }
                         }
 
                         # Displaying the names of the selected apps
@@ -10165,47 +10134,26 @@ Function Get-ToggleStatus {
     }    
 }
 function Get-SelectedApps {
-
     $items = @()
 
-    foreach ($item in $sync.AppsListView.Items)
-    {
-        if ($item -is [System.Windows.Controls.StackPanel]) {
-
-            foreach ($child in $item.Children) {
-                if ($child -is [System.Windows.Controls.StackPanel]) {
-                    foreach ($innerChild in $child.Children) {
-                        if ($innerChild -is [System.Windows.Controls.CheckBox]) {
-
-                            if($innerChild.IsChecked)
-                            {
-                                    foreach ($program in $sync.database.Applications)
-                                    {
-                                        if($innerChild.content -eq $program.Name)
-                                        {
-                                            $items += @{
-
-                                                Name = $program.Name
-                                                Choco = $program.Choco
-                                                Scoop = $program.Scoop
-                                                Winget = $program.winget
-                                                Default = $program.default
-
-                                                # add a new method downloader here
-                                            }
-
-                                        }
-                                    }
-                            }
-
-                        }
+    foreach ($item in $sync.AppsListView.Items) {
+        $item.Children | Where-Object { $_ -is [System.Windows.Controls.StackPanel] } | ForEach-Object {
+            $_.Children | Where-Object { $_ -is [System.Windows.Controls.CheckBox] -and $_.IsChecked } | ForEach-Object {
+                $checkboxContent = $_.Content
+                $sync.database.Applications | Where-Object { $_.Name -eq $checkboxContent } | ForEach-Object {
+                    $items += [PSCustomObject]@{
+                        Name    = $_.Name
+                        Choco   = $_.Choco
+                        Scoop   = $_.Scoop
+                        Winget  = $_.winget
+                        Default = $_.default
+                        # Add a new method downloader here
                     }
                 }
             }
         }
     }
-
-    return $items 
+    return $items
 }
 function FilteredSelectedItems {
     $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.AppsListView.Items)
@@ -10631,13 +10579,12 @@ function Invoke-Install {
                         # Clear temporary files
                         ClearTemp
     
-                        # Displaying the names of the selected apps
+                        # Display names of selected apps
                         $selectedAppNames = $selectedApps | ForEach-Object { $_.Name }
-    
+
                         # Install selected apps
-                        foreach ($app in $selectedApps)
-                        {
-                            Install-App -appName $app.Name -appChoco $app.Choco -appWinget $app.Winget
+                        $selectedApps | ForEach-Object {
+                            Install-App -appName $_.Name -appChoco $_.Choco -appWinget $_.Winget
                         }
     
                         # End ProcessRunning
@@ -10652,37 +10599,31 @@ function Invoke-Install {
             }
             else
             {
-                # Uncheck all checkboxes in $list
-                $sync.AppsListView.Dispatcher.Invoke([Action]{
-                    foreach ($item in $sync.AppsListView.Items)
-                    {
-                        foreach ($child in $item.Children) {
-                            if ($child -is [System.Windows.Controls.StackPanel]) {
-                                foreach ($innerChild in $child.Children) {
-                                    if ($innerChild -is [System.Windows.Controls.CheckBox]) {
-                    
-                                        $innerChild.IsChecked = $false
-                                        $sync.AppsListView.Clear()
-                                        $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.AppsListView.Items)
-                                        $collectionView.Filter = $null
+                # Uncheck all checkboxes in $list if user chose [NO]
+                $sync.AppsListView.Dispatcher.Invoke({
+                    foreach ($item in $sync.AppsListView.Items) {
+                        $item.Children | ForEach-Object {
+                            if ($_ -is [System.Windows.Controls.StackPanel]) {
+                                $_.Children | ForEach-Object {
+                                    if ($_ -is [System.Windows.Controls.CheckBox]) {
+                                        $_.IsChecked = $false
                                     }
                                 }
                             }
                         }
                     }
+                    $sync.AppsListView.Clear()
+                    [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.AppsListView.Items).Filter = $null
                 })
             }
-
         }
         else
         {
             # Uncheck all checkboxes in $list
             $sync.category.SelectedIndex = 0
-            $sync.AppsListView.Dispatcher.Invoke([Action]{
-                
+            $sync.AppsListView.Dispatcher.Invoke({
                 $sync.AppsListView.Clear()
-                $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.AppsListView.Items)
-                $collectionView.Filter = $null
+                [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.AppsListView.Items).Filter = $null
             })
             $localizedMessageTemplate = $sync.database.locales.Controls.$($sync.Langusege).choseapp
             [System.Windows.MessageBox]::Show("$localizedMessageTemplate", "ITT | Emad Adel", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
@@ -10691,7 +10632,6 @@ function Invoke-Install {
     catch {
         Write-Host "Error: $_"
     }
-
 }
 function WriteAText {
     param (
@@ -10792,7 +10732,9 @@ function SaveItemsToJson {
         return
     }
     $items = @()
+
     ClearFilter
+    
     foreach ($item in $sync.AppsListView.Items)
     {
         $item =  GetCheckBoxesFromStackPanel -item $item

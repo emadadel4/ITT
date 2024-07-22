@@ -364,6 +364,7 @@ function Invoke-ApplyTweaks {
     
                         [System.Windows.MessageBox]::Show($msg, $title, [System.Windows.MessageBoxButton]::$MessageBoxButton, [System.Windows.MessageBoxImage]::$MessageBoxImage)
                     }
+
                         $applyBtn = $sync.database.locales.Controls.$($sync.Langusege).applyBtn
                         $Applying = $sync.database.locales.Controls.$($sync.Langusege).Applying
 
@@ -373,55 +374,23 @@ function Invoke-ApplyTweaks {
                         foreach ($app in $tweaks) {
                             switch ($app.Type) {
                                 "command" {
-                                    
-                                    foreach ($cmd in $app.Command) {
-                                        ExecuteCommand -Name $app.Name -Command $cmd
-                                    }
-
-                                    if($app.Refresh -eq "true")
-                                    {
-                                        Stop-Process -Name explorer -Force
-                                    }
+                                    $app.Command | ForEach-Object { ExecuteCommand -Name $app.Name -Command $_ }
                                 }
                                 "modifying" {
-
-                                    foreach ($mod in $app.Registry) {
-                                        Set-RegistryValue -Name $mod.Name -Type $mod.Type -Path $mod.Path -Value $mod.Value
-                                    }
-
-                                    if($app.Refresh -eq "true")
-                                    {
-                                        Stop-Process -Name explorer -Force
-                                    }
-
+                                    $app.Registry | ForEach-Object { Set-RegistryValue -Name $_.Name -Type $_.Type -Path $_.Path -Value $_.Value }
                                 }
                                 "delete" {
-
-                                    foreach ($re in $app.Registry) {
-                                        Remove-RegistryValue -RegistryPath $re.Path -Folder $re.Name
-                                    }
-
-                                    if($app.Refresh -eq "true")
-                                    {
-                                        Stop-Process -Name explorer -Force
-                                    }
+                                    $app.Registry | ForEach-Object { Remove-RegistryValue -RegistryPath $_.Path -Folder $_.Name }
                                 }
                                 "service" {
-                                    foreach ($se in $app.Service) {
-                                        Disable-Service -ServiceName $se.Name -StartupType $se.StartupType
-                                    }
+                                    $app.Service | ForEach-Object { Disable-Service -ServiceName $_.Name -StartupType $_.StartupType }
                                 }
                                 "AppxPackage" {
-
-                                    foreach ($appx in $app.removeAppxPackage) {
-                                        Uninstall-AppxPackage -Name $appx.Name
-                                    }
-
-                                    foreach ($cmd in $app.Command) {
-                                        ExecuteCommand -Command $cmd
-                                    }
+                                    $app.removeAppxPackage | ForEach-Object { Uninstall-AppxPackage -Name $_.Name }
+                                    $app.Command | ForEach-Object { ExecuteCommand -Command $_ }
                                 }
                             }
+                            if ($app.Refresh) { Stop-Process -Name explorer -Force }
                         }
 
                         # Displaying the names of the selected apps

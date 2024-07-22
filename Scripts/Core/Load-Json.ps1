@@ -71,7 +71,9 @@ function SaveItemsToJson {
         return
     }
     $items = @()
+
     ClearFilter
+    
     foreach ($item in $sync.AppsListView.Items)
     {
         $item =  GetCheckBoxesFromStackPanel -item $item

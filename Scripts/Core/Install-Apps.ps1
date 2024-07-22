@@ -1,45 +1,24 @@
 function Get-SelectedApps {
-
     $items = @()
 
-    foreach ($item in $sync.AppsListView.Items)
-    {
-        if ($item -is [System.Windows.Controls.StackPanel]) {
-
-            foreach ($child in $item.Children) {
-                if ($child -is [System.Windows.Controls.StackPanel]) {
-                    foreach ($innerChild in $child.Children) {
-                        if ($innerChild -is [System.Windows.Controls.CheckBox]) {
-
-                            if($innerChild.IsChecked)
-                            {
-                                    foreach ($program in $sync.database.Applications)
-                                    {
-                                        if($innerChild.content -eq $program.Name)
-                                        {
-                                            $items += @{
-
-                                                Name = $program.Name
-                                                Choco = $program.Choco
-                                                Scoop = $program.Scoop
-                                                Winget = $program.winget
-                                                Default = $program.default
-
-                                                # add a new method downloader here
-                                            }
-
-                                        }
-                                    }
-                            }
-
-                        }
+    foreach ($item in $sync.AppsListView.Items) {
+        $item.Children | Where-Object { $_ -is [System.Windows.Controls.StackPanel] } | ForEach-Object {
+            $_.Children | Where-Object { $_ -is [System.Windows.Controls.CheckBox] -and $_.IsChecked } | ForEach-Object {
+                $checkboxContent = $_.Content
+                $sync.database.Applications | Where-Object { $_.Name -eq $checkboxContent } | ForEach-Object {
+                    $items += [PSCustomObject]@{
+                        Name    = $_.Name
+                        Choco   = $_.Choco
+                        Scoop   = $_.Scoop
+                        Winget  = $_.winget
+                        Default = $_.default
+                        # Add a new method downloader here
                     }
                 }
             }
         }
     }
-
-    return $items 
+    return $items
 }
 function FilteredSelectedItems {
     $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.AppsListView.Items)
@@ -465,13 +444,12 @@ function Invoke-Install {
                         # Clear temporary files
                         ClearTemp
     
-                        # Displaying the names of the selected apps
+                        # Display names of selected apps
                         $selectedAppNames = $selectedApps | ForEach-Object { $_.Name }
-    
+
                         # Install selected apps
-                        foreach ($app in $selectedApps)
-                        {
-                            Install-App -appName $app.Name -appChoco $app.Choco -appWinget $app.Winget
+                        $selectedApps | ForEach-Object {
+                            Install-App -appName $_.Name -appChoco $_.Choco -appWinget $_.Winget
                         }
     
                         # End ProcessRunning
@@ -486,37 +464,31 @@ function Invoke-Install {
             }
             else
             {
-                # Uncheck all checkboxes in $list
-                $sync.AppsListView.Dispatcher.Invoke([Action]{
-                    foreach ($item in $sync.AppsListView.Items)
-                    {
-                        foreach ($child in $item.Children) {
-                            if ($child -is [System.Windows.Controls.StackPanel]) {
-                                foreach ($innerChild in $child.Children) {
-                                    if ($innerChild -is [System.Windows.Controls.CheckBox]) {
-                    
-                                        $innerChild.IsChecked = $false
-                                        $sync.AppsListView.Clear()
-                                        $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.AppsListView.Items)
-                                        $collectionView.Filter = $null
+                # Uncheck all checkboxes in $list if user chose [NO]
+                $sync.AppsListView.Dispatcher.Invoke({
+                    foreach ($item in $sync.AppsListView.Items) {
+                        $item.Children | ForEach-Object {
+                            if ($_ -is [System.Windows.Controls.StackPanel]) {
+                                $_.Children | ForEach-Object {
+                                    if ($_ -is [System.Windows.Controls.CheckBox]) {
+                                        $_.IsChecked = $false
                                     }
                                 }
                             }
                         }
                     }
+                    $sync.AppsListView.Clear()
+                    [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.AppsListView.Items).Filter = $null
                 })
             }
-
         }
         else
         {
             # Uncheck all checkboxes in $list
             $sync.category.SelectedIndex = 0
-            $sync.AppsListView.Dispatcher.Invoke([Action]{
-                
+            $sync.AppsListView.Dispatcher.Invoke({
                 $sync.AppsListView.Clear()
-                $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.AppsListView.Items)
-                $collectionView.Filter = $null
+                [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.AppsListView.Items).Filter = $null
             })
             $localizedMessageTemplate = $sync.database.locales.Controls.$($sync.Langusege).choseapp
             [System.Windows.MessageBox]::Show("$localizedMessageTemplate", "ITT | Emad Adel", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
@@ -525,5 +497,4 @@ function Invoke-Install {
     catch {
         Write-Host "Error: $_"
     }
-
 }
