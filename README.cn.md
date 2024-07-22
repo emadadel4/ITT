@@ -5,14 +5,11 @@
 </p>
 
 <h1 align="center">ITT（安装和调整工具）🛠️ 🚀
-
 <div align="center">
 <a href="/README.md">
   <img src="https://img.shields.io/badge/-English-green" alt="English">
 </a>
 </div>
-
-
 </h1>
 
 <div align="center">
