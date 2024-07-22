@@ -3,7 +3,6 @@ function WriteAText {
         $message,
         $color
     )
-
 Write-Host " +==============================================================================+" -ForegroundColor Yellow;
 Write-Host " |                                                                              |" -ForegroundColor Yellow;
 Write-Host " |   ___ _____ _____   _____ __  __    _    ____       _    ____  _____ _       |" -ForegroundColor Yellow;
