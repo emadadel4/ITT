@@ -8,11 +8,7 @@
 
 <div align="center">
 
-
-
-<div align="center">
-
-<a href="README.ar.md">
+<a href="/README.ar.md">
   <img src="https://img.shields.io/badge/-Arabic-green" alt="Arabic">
 </a>
 <a href="/README.md">
@@ -21,26 +17,27 @@
 <a href="README.fr.md">
   <img src="https://img.shields.io/badge/-Français-blue" alt="Français">
 </a>
-<a href="README.tr.md">
+<a href="https://example.com/tr">
   <img src="https://img.shields.io/badge/-Türkçe-red" alt="Türkçe">
 </a>
-<a href="README.cn.md">
+<a href="https://example.com/zh">
   <img src="https://img.shields.io/badge/-中文-yellow" alt="中文">
 </a>
-<a href="README.ko.md">
+<a href="https://example.com/ko">
   <img src="https://img.shields.io/badge/-한국어-purple" alt="한국어">
 </a>
-<a href="README.de.md">
+<a href="https://example.com/de">
   <img src="https://img.shields.io/badge/-Deutsch-orange" alt="Deutsch">
 </a>
-<a href="README.ru.md">
+<a href="https://example.com/ru">
   <img src="https://img.shields.io/badge/-Русский-blue" alt="Русский">
 </a>
-<a href="README.es.md">
+<a href="https://example.com/es">
   <img src="https://img.shields.io/badge/-Español-red" alt="Español">
 </a>
 
 </div>
+
 
 
 </div>
