@@ -44,7 +44,6 @@
 <p align="center">
   <a target="_blank" rel="noopener noreferrer" href="https://raw.githubusercontent.com/emadadel4/ITT/main/Assets/Images/demo.PNG">
     <img src="https://raw.githubusercontent.com/emadadel4/ITT/main/Assets/Images/demo.PNG" alt="ITT Demo" style="max-width: 100%;">
-      <h4 align="center"><a href="https://emadadel4.github.io/ko/itt/" target="_blank">한국어로도 제공됩니다</a></h4>
   </a>
 </p>
 
