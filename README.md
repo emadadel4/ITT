@@ -17,22 +17,22 @@
 <a href="README.fr.md">
   <img src="https://img.shields.io/badge/-Français-blue" alt="Français">
 </a>
-<a href="https://example.com/tr">
+<a href="README.tr.md">
   <img src="https://img.shields.io/badge/-Türkçe-red" alt="Türkçe">
 </a>
-<a href="https://example.com/zh">
+<a href="README.cn.md">
   <img src="https://img.shields.io/badge/-中文-yellow" alt="中文">
 </a>
-<a href="https://example.com/ko">
+<a href="README.ko.md">
   <img src="https://img.shields.io/badge/-한국어-purple" alt="한국어">
 </a>
-<a href="https://example.com/de">
+<a href="README.de.md">
   <img src="https://img.shields.io/badge/-Deutsch-orange" alt="Deutsch">
 </a>
-<a href="https://example.com/ru">
+<a href="README.ru.md">
   <img src="https://img.shields.io/badge/-Русский-blue" alt="Русский">
 </a>
-<a href="https://example.com/es">
+<a href="README.es.md">
   <img src="https://img.shields.io/badge/-Español-red" alt="Español">
 </a>
 
