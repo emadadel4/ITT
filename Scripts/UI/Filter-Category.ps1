@@ -87,3 +87,8 @@ function FilterByCat {
         $collectionView.Filter = $null
     }
 }
+function ClearFilter {
+    $sync.AppsListView.Clear()
+    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.AppsListView.Items)
+    $collectionView.Filter = $null
+}
