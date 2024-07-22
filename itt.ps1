@@ -10134,26 +10134,47 @@ Function Get-ToggleStatus {
     }    
 }
 function Get-SelectedApps {
+
     $items = @()
 
-    foreach ($item in $sync.AppsListView.Items) {
-        $item.Children | Where-Object { $_ -is [System.Windows.Controls.StackPanel] } | ForEach-Object {
-            $_.Children | Where-Object { $_ -is [System.Windows.Controls.CheckBox] -and $_.IsChecked } | ForEach-Object {
-                $checkboxContent = $_.Content
-                $sync.database.Applications | Where-Object { $_.Name -eq $checkboxContent } | ForEach-Object {
-                    $items += [PSCustomObject]@{
-                        Name    = $_.Name
-                        Choco   = $_.Choco
-                        Scoop   = $_.Scoop
-                        Winget  = $_.winget
-                        Default = $_.default
-                        # Add a new method downloader here
+    foreach ($item in $sync.AppsListView.Items)
+    {
+        if ($item -is [System.Windows.Controls.StackPanel]) {
+
+            foreach ($child in $item.Children) {
+                if ($child -is [System.Windows.Controls.StackPanel]) {
+                    foreach ($innerChild in $child.Children) {
+                        if ($innerChild -is [System.Windows.Controls.CheckBox]) {
+
+                            if($innerChild.IsChecked)
+                            {
+                                    foreach ($program in $sync.database.Applications)
+                                    {
+                                        if($innerChild.content -eq $program.Name)
+                                        {
+                                            $items += @{
+
+                                                Name = $program.Name
+                                                Choco = $program.Choco
+                                                Scoop = $program.Scoop
+                                                Winget = $program.winget
+                                                Default = $program.default
+
+                                                # add a new method downloader here
+                                            }
+
+                                        }
+                                    }
+                            }
+
+                        }
                     }
                 }
             }
         }
     }
-    return $items
+
+    return $items 
 }
 function FilteredSelectedItems {
     $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.AppsListView.Items)
