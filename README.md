@@ -8,15 +8,40 @@
 
 <div align="center">
 
-![Arabic](https://img.shields.io/badge/-Arabic-green)
-![English](https://img.shields.io/badge/-English-green)
-![Français](https://img.shields.io/badge/-Français-blue)
-![Türkçe](https://img.shields.io/badge/-Türkçe-red)
-![中文](https://img.shields.io/badge/-中文-yellow)
-![한국어](https://img.shields.io/badge/-한국어-purple)
-![Deutsch](https://img.shields.io/badge/-Deutsch-orange)
-![Русский](https://img.shields.io/badge/-Русский-blue)
-![Español](https://img.shields.io/badge/-Español-red)
+
+
+<div align="center">
+
+<a href="/README.ar.md">
+  <img src="https://img.shields.io/badge/-Arabic-green" alt="Arabic">
+</a>
+<a href="/README.md">
+  <img src="https://img.shields.io/badge/-English-green" alt="English">
+</a>
+<a href="README.fr.md">
+  <img src="https://img.shields.io/badge/-Français-blue" alt="Français">
+</a>
+<a href="https://example.com/tr">
+  <img src="https://img.shields.io/badge/-Türkçe-red" alt="Türkçe">
+</a>
+<a href="https://example.com/zh">
+  <img src="https://img.shields.io/badge/-中文-yellow" alt="中文">
+</a>
+<a href="https://example.com/ko">
+  <img src="https://img.shields.io/badge/-한국어-purple" alt="한국어">
+</a>
+<a href="https://example.com/de">
+  <img src="https://img.shields.io/badge/-Deutsch-orange" alt="Deutsch">
+</a>
+<a href="https://example.com/ru">
+  <img src="https://img.shields.io/badge/-Русский-blue" alt="Русский">
+</a>
+<a href="https://example.com/es">
+  <img src="https://img.shields.io/badge/-Español-red" alt="Español">
+</a>
+
+</div>
+
 
 </div>
 
