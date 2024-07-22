@@ -87,8 +87,8 @@ or
 <div align="center">
   
   ## Watch the Demo
-  
-  [![Watch the video](https://img.youtube.com/vi/QTv88lchoo0/hqdefault.jpg)](https://www.youtube.com/watch?v=QTv88lchoo0)
+
+  [![Watch the video](https://img.youtube.com/vi/QmO82OTsU5c/hqdefault.jpg)](https://www.youtube.com/watch?v=QmO82OTsU5c)
 </div>
 
 <h2> 📦 How to Add a New App/Tweak/OST/Quote</h2>
