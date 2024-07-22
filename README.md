@@ -74,13 +74,6 @@
 
 </p>
 
-<p align="center">
-  <a target="_blank" rel="noopener noreferrer" href="https://raw.githubusercontent.com/emadadel4/ITT/main/Assets/Images/demo.PNG">
-    <img src="https://raw.githubusercontent.com/emadadel4/ITT/main/Assets/Images/demo.PNG" alt="ITT Demo" style="max-width: 100%;">
-      <h4 align="center"><a href="https://emadadel4.github.io/ar/itt/" target="_blank">متوفر ايضا اللغة العربية</a></h4>
-  </a>
-</p>
-
 <h2>Overview</h2>
 
 <p><strong>ITT (Install and Tweak Tool)</strong></p>
