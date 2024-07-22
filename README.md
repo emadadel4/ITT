@@ -8,10 +8,10 @@
 
 <div align="center">
 
-<a href="/README.ar.md">
+<a href="README.ar.md">
   <img src="https://img.shields.io/badge/-Arabic-green" alt="Arabic">
 </a>
-<a href="/README.md">
+<a href="README.md">
   <img src="https://img.shields.io/badge/-English-green" alt="English">
 </a>
 <a href="README.fr.md">

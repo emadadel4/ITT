@@ -5,21 +5,6 @@
 </p>
 
 <h1 align="center">ITT (Kurulum ve Ayar Aracı) 🛠️ 🚀
-
-<div align="center">
-
-![Arabic](https://img.shields.io/badge/-Arabic-green)
-![English](https://img.shields.io/badge/-English-green)
-![Français](https://img.shields.io/badge/-Français-blue)
-![Türkçe](https://img.shields.io/badge/-Türkçe-red)
-![中文](https://img.shields.io/badge/-中文-yellow)
-![한국어](https://img.shields.io/badge/-한국어-purple)
-![Deutsch](https://img.shields.io/badge/-Deutsch-orange)
-![Русский](https://img.shields.io/badge/-Русский-blue)
-![Español](https://img.shields.io/badge/-Español-red)
-
-</div>
-
 </h1>
 
 <div align="center">

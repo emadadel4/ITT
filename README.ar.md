@@ -4,12 +4,22 @@
   </a>
 </p>
 
-<h1 align="center">ITT (Installations- und Anpassungswerkzeug) 🛠️ 🚀
+<h1 align="center">ITT (أداة التثبيت وتحسين النظام) 🛠️ 🚀
+
 <div align="center">
-<a href="/README.md">
-  <img src="https://img.shields.io/badge/-English-green" alt="English">
-</a>
+
+![Arabic](https://img.shields.io/badge/-Arabic-green)
+![English](https://img.shields.io/badge/-English-green)
+![Français](https://img.shields.io/badge/-Français-blue)
+![Türkçe](https://img.shields.io/badge/-Türkçe-red)
+![中文](https://img.shields.io/badge/-中文-yellow)
+![한국어](https://img.shields.io/badge/-한국어-purple)
+![Deutsch](https://img.shields.io/badge/-Deutsch-orange)
+![Русский](https://img.shields.io/badge/-Русский-blue)
+![Español](https://img.shields.io/badge/-Español-red)
+
 </div>
+
 </h1>
 
 <div align="center">
@@ -44,100 +54,100 @@
 <p align="center">
   <a target="_blank" rel="noopener noreferrer" href="https://raw.githubusercontent.com/emadadel4/ITT/main/Assets/Images/demo.PNG">
     <img src="https://raw.githubusercontent.com/emadadel4/ITT/main/Assets/Images/demo.PNG" alt="ITT Demo" style="max-width: 100%;">
-      <h4 align="center"><a href="https://emadadel4.github.io/de/itt/" target="_blank">Auch auf Deutsch verfügbar</a></h4>
+      <h4 align="center"><a href="https://emadadel4.github.io/ar/itt/" target="_blank">متوفر أيضاً بالعربية</a></h4>
   </a>
 </p>
 
-<h2>Übersicht</h2>
+<h2>نظرة عامة</h2>
 
-<p><strong>ITT (Installations- und Anpassungswerkzeug)</strong></p>
+<p><strong>ITT (أداة التثبيت والتخصيص)</strong></p>
 
-- **Automatische Installation**: Verabschieden Sie sich von manuellen Softwareinstallationen. ITT automatisiert den Prozess, spart Zeit und Mühe.
-- **Systemanpassung**: Passen Sie Ihre Windows-Umgebung ganz einfach an. ITT bietet Skripte, um die Leistung und Benutzerfreundlichkeit zu verbessern.
-- **Entwicklerfreundlich**: Klare und benutzerfreundliche Dokumentation, um neue Anwendungen oder Anpassungen hinzuzufügen. Seien Sie kreativ. <a href="#--how-to-add-a-new-apptweakostquote">So fügen Sie eine neue Anwendung hinzu</a>
-- **Musik**: Genießen Sie beim Herunterladen von Programmen die beste Musik aus Spielen und Filmen.
+- **التثبيت التلقائي**: وداعاً للتثبيت اليدوي للبرامج. يقوم ITT بأتمتة العملية، ويوفر الوقت والجهد.
+- **تخصيص النظام**: قم بتخصيص بيئة Windows الخاصة بك بسهولة. يوفر ITT سكربتات لتحسين الأداء وسهولة الاستخدام.
+- **مناسب للمطورين**: وثائق واضحة وسهلة لإضافة تطبيقات جديدة أو تخصيصات. كن مبدعاً. <a href="#--how-to-add-a-new-apptweakostquote">كيفية إضافة تطبيق جديد</a>
+- **الموسيقى**: استمتع بأفضل الموسيقى من الألعاب والأفلام أثناء تحميل البرامج.
 
-<h2>🚀 So verwenden Sie es</h2>
+<h2>🚀 كيفية الاستخدام</h2>
 
-<h3>Unter Windows 10/11:</h3>
+<h3>على Windows 10/11:</h3>
 <ol>
-<li>Klicken Sie mit der rechten Maustaste auf das Startmenü.</li>
-<li>Wählen Sie „PowerShell“ oder „Terminal“ aus und fügen Sie einen der folgenden Befehle ein:</li>
+<li>انقر بزر الماوس الأيمن على قائمة ابدأ.</li>
+<li>اختر "PowerShell" أو "Terminal" والصق أحد الأوامر التالية:</li>
 </ol>
 
 <pre><code>irm bit.ly/emadadel | iex
 </code></pre>
 
-Oder
+أو
 
-<p>Direkt von GitHub ausführen:</p>
+<p>تشغيل مباشرة من GitHub:</p>
 
 <pre><code>irm https://raw.githubusercontent.com/emadadel4/ITT/main/itt.ps1 | iex
 </code></pre>
 
 <div align="center">
 
-  ## Demo ansehen
+  ## شاهد العرض التوضيحي
 
-  [![Video ansehen](https://img.youtube.com/vi/QmO82OTsU5c/hqdefault.jpg)](https://www.youtube.com/watch?v=QmO82OTsU5c)
+  [![شاهد الفيديو](https://img.youtube.com/vi/QmO82OTsU5c/hqdefault.jpg)](https://www.youtube.com/watch?v=QmO82OTsU5c)
 </div>
 
-<h2> 📦 So fügen Sie eine neue Anwendung/Anpassung/OST/Zitat hinzu</h2>
+<h2> 📦 كيفية إضافة تطبيق/تخصيص/موسيقى/اقتباس جديد</h2>
 <ol>
-<li><strong>Stellen Sie sicher, dass PowerShell 7 installiert ist (empfohlen)</strong></li>
-<li><strong>Forken und klonen Sie dieses Repository.</strong></li>
-<li><strong>Öffnen Sie das ITT-Verzeichnis in PowerShell als Administrator:</strong></li>
+<li><strong>تأكد من تثبيت PowerShell 7 (موصى به)</strong></li>
+<li><strong>قم بعمل Fork واستنساخ هذا المستودع.</strong></li>
+<li><strong>افتح دليل ITT في PowerShell كمسؤول:</strong></li>
 </ol>
 
 <pre><code>Set-Location "C:\Users\$env:USERNAME\Documents\Github\ITT"
 </code></pre>
 
 <ol start="4">
-<li><strong>Wählen Sie das Element aus, das Sie hinzufügen möchten.</strong></li>
+<li><strong>اختر العنصر الذي تريد إضافته.</strong></li>
 </ol>
 
-<h3>Neue Anwendung hinzufügen</h3>
+<h3>إضافة تطبيق جديد</h3>
 
 <pre><code>newApp.ps1
 </code></pre>
 
-<h3>Neue Anpassung hinzufügen</h3>
+<h3>إضافة تخصيص جديد</h3>
 
-<p><em>Hinweis: Verstehen Sie die Anpassung, die Sie hinzufügen möchten, und testen Sie sie, bevor Sie sie einreichen.</em></p>
+<p><em>ملاحظة: افهم التخصيص الذي تريد إضافته واختبره قبل تقديمه.</em></p>
 
 <pre><code>newTweak.ps1
 </code></pre>
 
-<h3>Neue Musik hinzufügen</h3>
+<h3>إضافة موسيقى جديدة</h3>
 
 <pre><code>newOST.ps1
 </code></pre>
 
-<h3>Neues Zitat hinzufügen</h3>
+<h3>إضافة اقتباس جديد</h3>
 
 <pre><code>newQuote.ps1
 </code></pre>
 
-<h3>Build</h3>
+<h3>بناء</h3>
 
 <pre><code>build.ps1
 </code></pre>
 
-<h3>Änderungen anzeigen</h3>
+<h3>عرض التغييرات</h3>
 <pre><code>itt.ps1
 </code></pre>
 
-<p><em>Vergessen Sie nicht, Ihre Änderungen vor dem Einreichen zu testen.</em></p>
+<p><em>لا تنسى اختبار التغييرات قبل تقديمها.</em></p>
 
-<h2>Entwickler</h2>
+<h2>المطور</h2>
 
 <p><strong>👤 Emad Adel</strong></p>
 
 [![Telegram](https://img.shields.io/badge/Telegram-2CA5E0?style=flat&logo=telegram&logoColor=white)](https://t.me/ittemadadel) [![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat&logo=github&logoColor=white)](https://github.com/emadadel4) [![Blog](https://img.shields.io/badge/Blog-FF5722?style=flat&logo=blogger&logoColor=white)](https://emadadel4.github.io) [![Discord](https://img.shields.io/badge/-Discord-7289da?style=flat&logo=discord&logoColor=white)](https://discord.gg/3eV79KgD)
 
-## Unterstützung 
+## الدعم
 
-<p>Wenn Ihnen dieses Projekt gefällt, geben Sie ihm ein ⭐️ und treten Sie unserem Discord-Server bei.</p>
+<p>إذا أعجبك هذا المشروع، قم بوضع ⭐️ وانضم إلى خادم Discord الخاص بنا.</p>
 
 <a href="https://www.buymeacoffee.com/emadadel" target="_blank">
   <img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174">
