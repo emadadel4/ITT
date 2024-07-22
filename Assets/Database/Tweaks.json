@@ -328,7 +328,7 @@
   },
   {
     "name": "Clean Taskbar",
-    "description": "Disable the (News and interests) and (People icon) Show Search icon only for Windows 10",
+    "description": "Disable the (News and interests) and (People icon) Show Search icon only for Windows 10/11",
     "check": "false",
     "category": "Performance",
     "type": "modifying",
