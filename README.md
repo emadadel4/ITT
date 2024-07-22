@@ -5,11 +5,7 @@
 </p>
   
 <h1 align="center">ITT (Install Tweaks Tool) 🛠️ 🚀
-<div align="center">
-<a href="/README.md">
-  <img src="https://img.shields.io/badge/-English-green" alt="English">
-</a>
-</div>
+
 <div align="center">
 
 <a href="README.ar.md">
