@@ -10134,9 +10134,7 @@ Function Get-ToggleStatus {
     }    
 }
 function Get-SelectedApps {
-
     $items = @()
-
     foreach ($item in $sync.AppsListView.Items)
     {
         if ($item -is [System.Windows.Controls.StackPanel]) {
@@ -10173,7 +10171,6 @@ function Get-SelectedApps {
             }
         }
     }
-
     return $items 
 }
 function FilteredSelectedItems {
