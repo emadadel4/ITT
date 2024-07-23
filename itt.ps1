@@ -10012,8 +10012,7 @@ function Invoke-ApplyTweaks {
 
 
                                     Get-AppxPackage "$($Name)" | Remove-AppxPackage -ErrorAction SilentlyContinue
-
-
+                                    Get-AppXProvisionedPackage -Online | where DisplayName -EQ "$($Name)" | Remove-AppxProvisionedPackage -Online
                                     Get-AppxPackage -AllUsers "$($Name)" | ForEach-Object {Add-AppxPackage -DisableDevelopmentMode -Register "$($_.InstallLocation)\AppXManifest.xml"}
 
                                     #Start-Process powershell.exe -ArgumentList "-Command `"Get-AppXProvisionedPackage -Online | where DisplayName -EQ $($Name) | Remove-AppxProvisionedPackage -Online`"" -NoNewWindow  -Wait 
