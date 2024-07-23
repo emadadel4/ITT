@@ -806,6 +806,9 @@
       },
       {
         "Name": "Microsoft.ZuneMusic"
+      },
+      {
+        "Name": "Microsoft.ZuneVideo"
       }
     ],
     "InvokeCommand": [
