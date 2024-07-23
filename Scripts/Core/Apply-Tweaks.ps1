@@ -246,11 +246,11 @@ function Invoke-ApplyTweaks {
                                         Get-AppXProvisionedPackage -Online | where DisplayName -EQ "$($Name)" | Remove-AppxProvisionedPackage -Online
                                         Get-AppxPackage -AllUsers "$($Name)" | ForEach-Object {Add-AppxPackage -DisableDevelopmentMode -Register "$($_.InstallLocation)\AppXManifest.xml"}
                                     } else {
-                                        Write-Host "$($Name) is not installed." -ForegroundColor red
+                                        Write-Host "  $($Name) is not installed." -ForegroundColor Yellow
                                     }
                                 } 
                                 catch {
-                                    Write-Host "Failed to remove $($Name). $_" -ForegroundColor red
+                                    Write-Host "  Failed to remove $($Name). $_" -ForegroundColor red
                                 }
                         }
                         
