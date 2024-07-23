@@ -949,6 +949,7 @@
     "name": "Delete Thumbnail Cache",
     "description": "removing the stored image thumbnails on your computer These thumbnails are small versions of images used by the operating system to display image previews quickly Over time the cache can become large or corrupted causing slowdowns or display issues Deleting it can free up space and resolve such issues as the system will regenerate",
     "check": "false",
+    "category": "Performance",
     "type": "command",
     "refresh": "false",
     "InvokeCommand": [
@@ -962,6 +963,7 @@
     "name": "Optimizations for Windowed Games",
     "description": "Optimizing windowed games involves a combination of system and game settings adjustments to enhance performance and ensure a smoother experience. Heres a detailed approach:",
     "check": "false",
+    "category": "Performance",
     "type": "modifying",
     "refresh": "false",
     "Registry": [
@@ -998,6 +1000,7 @@
     "name": "Old Volume Control in Windows 10",
     "description": "The old volume control in Windows 10 refers to the classic audio mixer interface that was used in earlier versions of Windows, before the modern volume control system was introduced. This interface allowed users to adjust the volume for individual applications separately, providing a more detailed and flexible approach to managing audio levels.",
     "check": "false",
+    "category": "Classic",
     "type": "modifying",
     "refresh": "false",
     "Registry": {
@@ -1018,6 +1021,7 @@
     "name": "Disable Toggle Key Sounds",
     "description": "Toggle key sounds in Windows are audio cues that play when you press the Caps Lock, Num Lock, or Scroll Lock keys. These sounds help users identify when these keys are activated or deactivated.",
     "check": "false",
+    "category": "Classic",
     "type": "modifying",
     "refresh": "false",
     "Registry": {
@@ -1029,6 +1033,20 @@
     },
     "InvokeCommand": [
       ""
+    ],
+    "UndoCommand": [
+      ""
+    ]
+  },
+  {
+    "name": "Clear Start Menu",
+    "description": "Clear all pinned apps from the start menu",
+    "check": "false",
+    "category": "Performance",
+    "type": "command",
+    "refresh": "false",
+    "InvokeCommand": [
+      "Invoke-RestMethod https://raw.githubusercontent.com/emadadel4/WindowsTweaks/main/ClearStartMenu.ps1 | Invoke-Expression"
     ],
     "UndoCommand": [
       ""
