@@ -85,7 +85,7 @@ function Get-PCInfo {
                 }
             }
         
-            Write-Host -NoNewline "`n` $totalKeys" -ForegroundColor Red
+            Write-Host -NoNewline "`n`  $totalKeys" -ForegroundColor Red
             Write-Host " devices use this tool." -ForegroundColor Yellow
         
         } | Out-Null
