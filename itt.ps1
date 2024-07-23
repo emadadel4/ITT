@@ -10302,7 +10302,7 @@ function Get-PCInfo {
             }
         
             Write-Host ""
-            Write-Host " ($totalKeys) Devices use this tool." -ForegroundColor Yellow
+            Write-Host " $totalKeys Devices use this tool." -ForegroundColor Yellow
         
         } | Out-Null
     }
