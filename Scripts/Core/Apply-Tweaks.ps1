@@ -240,9 +240,17 @@ function Invoke-ApplyTweaks {
                             )
                                 try {
                                     #powershell.exe -Command "Import-Module Appx; Get-AppxPackage -AllUsers -Name "$($Name)" | Remove-AppxPackage -ErrorAction Stop"
-                                    Start-Process powershell.exe -ArgumentList "-Command `"Import-Module Appx; Get-AppxPackage -AllUsers -Name '$($Name)' | Remove-AppxPackage -ErrorAction Stop`"" -NoNewWindow  -Wait 
-                                    Start-Process powershell.exe -ArgumentList "-Command `"Get-AppXProvisionedPackage -Online | where DisplayName -EQ $($Name) | Remove-AppxProvisionedPackage -Online`"" -NoNewWindow  -Wait 
-                                    Add-Log -Message "Successfully removed $($Name)" -Level "INFO"
+                                    #Start-Process powershell.exe -ArgumentList "-Command `"Import-Module Appx; Get-AppxPackage -AllUsers -Name '$($Name)' | Remove-AppxPackage -ErrorAction Stop`"" -NoNewWindow  -Wait 
+
+
+                                    Get-AppxPackage "$($Name)" | Remove-AppxPackage -ErrorAction SilentlyContinue
+                                    Get-AppXProvisionedPackage -Online | where DisplayName -EQ "$($Name)" | Remove-AppxProvisionedPackage -Online
+                                    Get-AppxPackage -AllUsers "$($Name)" | ForEach-Object {Add-AppxPackage -DisableDevelopmentMode -Register "$($_.InstallLocation)\AppXManifest.xml"}
+
+                                    #Start-Process powershell.exe -ArgumentList "-Command `"Get-AppXProvisionedPackage -Online | where DisplayName -EQ $($Name) | Remove-AppxProvisionedPackage -Online`"" -NoNewWindow  -Wait 
+
+
+                                    Add-Log -Message "Trying to remove $($Name)" -Level "INFO"
                                 } 
                                 catch {
                                     Write-Host "Failed to remove $($Name). $_" -ForegroundColor red
