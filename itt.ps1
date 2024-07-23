@@ -5822,7 +5822,7 @@ $sync.database.Tweaks = '[
         "Name": "Microsoft.WindowsCamera"
       },
       {
-        "Name": "microsoft.windowscommunicationsapps"
+        "Name": "Microsoft.windowscommunicationsapps"
       },
       {
         "Name": "Microsoft.WindowsFeedbackHub"
@@ -5918,10 +5918,13 @@ $sync.database.Tweaks = '[
         "Name": "Microsoft.MicrosoftStickyNotes"
       },
       {
-        "Name": "Microsoft.ZuneMusic"
+        "Name": "TikTok.TikTok_8wekyb3d8bbwe"
       },
       {
-        "Name": "Microsoft.ZuneVideo"
+        "Name": "TikTok"
+      },
+      {
+        "Name": "Microsoft.ZuneMusic"
       }
     ],
     "InvokeCommand": [
@@ -10006,18 +10009,15 @@ function Invoke-ApplyTweaks {
                                 $Name
                             )
                                 try {
-                                    #powershell.exe -Command "Import-Module Appx; Get-AppxPackage -AllUsers -Name "$($Name)" | Remove-AppxPackage -ErrorAction Stop"
-                                    #Start-Process powershell.exe -ArgumentList "-Command `"Import-Module Appx; Get-AppxPackage -AllUsers -Name '$($Name)' | Remove-AppxPackage -ErrorAction Stop`"" -NoNewWindow  -Wait 
-
-
-                                    Get-AppxPackage "$($Name)" | Remove-AppxPackage -ErrorAction SilentlyContinue
-                                    Get-AppXProvisionedPackage -Online | where DisplayName -EQ "$($Name)" | Remove-AppxProvisionedPackage -Online
-                                    Get-AppxPackage -AllUsers "$($Name)" | ForEach-Object {Add-AppxPackage -DisableDevelopmentMode -Register "$($_.InstallLocation)\AppXManifest.xml"}
-
-                                    #Start-Process powershell.exe -ArgumentList "-Command `"Get-AppXProvisionedPackage -Online | where DisplayName -EQ $($Name) | Remove-AppxProvisionedPackage -Online`"" -NoNewWindow  -Wait 
-
-
-                                    Add-Log -Message "Trying to remove $($Name)" -Level "INFO"
+                                    $checkapp = Get-AppxPackage -Name $($Name) -ErrorAction SilentlyContinue
+                                    if ($null -ne $checkapp) {
+                                        Add-Log -Message "Trying to remove $($Name)" -Level "INFO"
+                                        Get-AppxPackage "$($Name)" | Remove-AppxPackage -ErrorAction SilentlyContinue
+                                        Get-AppXProvisionedPackage -Online | where DisplayName -EQ "$($Name)" | Remove-AppxProvisionedPackage -Online
+                                        Get-AppxPackage -AllUsers "$($Name)" | ForEach-Object {Add-AppxPackage -DisableDevelopmentMode -Register "$($_.InstallLocation)\AppXManifest.xml"}
+                                    } else {
+                                        Write-Host "$($Name) is not installed." -ForegroundColor red
+                                    }
                                 } 
                                 catch {
                                     Write-Host "Failed to remove $($Name). $_" -ForegroundColor red
