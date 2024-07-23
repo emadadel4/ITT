@@ -5218,7 +5218,7 @@ $sync.database.Tweaks = '[
   },
   {
     "name": "Disable  Xbox Services",
-    "description": "This tweak disables Game Mode",
+    "description": "Disables all Xbox Services Game Mode and Optimizations for Windowed Games and fix stutter playing smooth",
     "check": "false",
     "category": "Performance",
     "type": "modifying",
@@ -5293,10 +5293,116 @@ $sync.database.Tweaks = '[
         "Type": "DWord",
         "Value": "4",
         "defaultValue": "0"
+      },
+      {
+        "Path": "HKCU:\\System\\GameConfigStore",
+        "Name": "GameDVR_FSEBehaviorMode",
+        "Type": "DWord",
+        "Value": "2",
+        "defaultValue": "0"
+      },
+      {
+        "Path": "HKCU:\\System\\GameConfigStore",
+        "Name": "GameDVR_HonorUserFSEBehaviorMode",
+        "Type": "DWord",
+        "Value": "1",
+        "defaultValue": "0"
+      },
+      {
+        "Path": "HKCU:\\System\\GameConfigStore",
+        "Name": "GameDVR_FSEBehavior",
+        "Type": "DWord",
+        "Value": "2",
+        "defaultValue": "0"
+      },
+      {
+        "Path": "HKCU:\\System\\GameConfigStore",
+        "Name": "GameDVR_DXGIHonorFSEWindowsCompatible",
+        "Type": "DWord",
+        "Value": "1",
+        "defaultValue": "0"
+      },
+      {
+        "Path": "HKCU:\\System\\GameConfigStore",
+        "Name": "GameDVR_EFSEFeatureFlags",
+        "Type": "DWord",
+        "Value": "0",
+        "defaultValue": "0"
+      },
+      {
+        "Path": "HKCU:\\System\\GameConfigStore",
+        "Name": "GameDVR_DSEBehavior",
+        "Type": "DWord",
+        "Value": "2",
+        "defaultValue": "0"
+      },
+      {
+        "Path": "HKCU:\\Software\\Microsoft\\DirectX\\UserGpuPreferences",
+        "Name": "DirectXUserGlobalSettings",
+        "Type": "String",
+        "Value": "SwapEffectUpgradeEnable=1;",
+        "defaultValue": "0"
+      },
+      {
+        "Path": "HKCU:\\Software\\Microsoft\\DirectX\\GraphicsSettings",
+        "Name": "",
+        "Type": "DWord",
+        "Value": "1",
+        "defaultValue": "0"
+      },
+      {
+        "Path": "HKCU:\\Software\\Microsoft\\DirectX\\GraphicsSettings",
+        "Name": "SwapEffectUpgradeCache",
+        "Type": "DWord",
+        "Value": "1",
+        "defaultValue": "0"
+      },
+      {
+        "Path": "HKCU:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\SoftwareProtectionPlatform",
+        "Name": "InactivityShutdownDelay",
+        "Type": "DWord",
+        "Value": "4294967295",
+        "defaultValue": "0"
+      },
+      {
+        "Path": "HKLM:\\SOFTWARE\\Microsoft\\Windows\\Dwm",
+        "Name": "OverlayTestMode",
+        "Type": "DWord",
+        "Value": "5",
+        "defaultValue": "0"
+      },
+      {
+        "Path": "HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Multimedia\\SystemProfile\\Tasks\\Games",
+        "Name": "GPU Priority",
+        "Type": "DWord",
+        "Value": "8",
+        "defaultValue": "8"
+      },
+      {
+        "Path": "HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Multimedia\\SystemProfile\\Tasks\\Games",
+        "Name": "Scheduling Category",
+        "Type": "String",
+        "Value": "High",
+        "defaultValue": "High"
+      },
+      {
+        "Path": "HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Multimedia\\SystemProfile\\Tasks\\Games",
+        "Name": "SFIO Priority",
+        "Type": "String",
+        "Value": "High",
+        "defaultValue": "High"
+      },
+      {
+        "Path": "HKLM:\\SYSTEM\\CurrentControlSet\\Control\\PriorityControl",
+        "Name": "IRQ8Priority",
+        "Type": "DWord",
+        "Value": "1",
+        "defaultValue": "0"
       }
     ],
     "InvokeCommand": [
-      ""
+      "Disable-MMAgent -MemoryCompression | Out-Null",
+      "\r\n        takeown /f C:\\Windows\\System32\\GameBarPresenceWriter.exe\r\n\r\n        takeown /f C:\\Windows\\System32\\GameBarPresenceWriter.proxy.dll\r\n\r\n        takeown /f C:\\Windows\\System32\\Windows.Gaming.UI.GameBar.dll\r\n\r\n        Start-Sleep -Seconds 1\r\n\r\n\r\n        icacls C:\\Windows\\System32\\GameBarPresenceWriter.exe /grant administrators:F\r\n\r\n        icacls C:\\Windows\\System32\\GameBarPresenceWriter.proxy.dll /grant administrators:F\r\n\r\n        icacls C:\\Windows\\System32\\Windows.Gaming.UI.GameBar.dll /grant administrators:F\r\n\r\n        Start-Sleep -Seconds 1\r\n\r\n\r\n        Rename-Item C:\\Windows\\System32\\GameBarPresenceWriter.exe -NewName GameBarPresenceWriter.exe_backup\r\n\r\n        Rename-Item C:\\Windows\\System32\\GameBarPresenceWriter.proxy.dll -NewName GameBarPresenceWriter.proxy.dll_backup\r\n\r\n        Rename-Item C:\\Windows\\System32\\Windows.Gaming.UI.GameBar.dll -NewName Windows.Gaming.UI.GameBar.dll_backup\r\n\r\n      "
     ],
     "UndoCommand": [
       ""
@@ -5816,9 +5922,6 @@ $sync.database.Tweaks = '[
       },
       {
         "Name": "Microsoft.ZuneVideo"
-      },
-      {
-        "Name": "Clipchamp.Clipchamp"
       }
     ],
     "InvokeCommand": [
@@ -6073,43 +6176,6 @@ $sync.database.Tweaks = '[
     "refresh": "false",
     "InvokeCommand": [
       "Remove-Item \"$env:LocalAppData\\Microsoft\\Windows\\Explorer\\thumbcache*\" -Force -Recurse"
-    ],
-    "UndoCommand": [
-      ""
-    ]
-  },
-  {
-    "name": "Optimizations for Windowed Games",
-    "description": "Optimizing windowed games involves a combination of system and game settings adjustments to enhance performance and ensure a smoother experience. Heres a detailed approach:",
-    "check": "false",
-    "category": "Performance",
-    "type": "modifying",
-    "refresh": "false",
-    "Registry": [
-      {
-        "Path": "HKCU:\\Software\\Microsoft\\DirectX\\UserGpuPreferences",
-        "Name": "DirectXUserGlobalSettings",
-        "Type": "String",
-        "Value": "SwapEffectUpgradeEnable=1;",
-        "defaultValue": "0"
-      },
-      {
-        "Path": "HKCU:\\Software\\Microsoft\\DirectX\\GraphicsSettings",
-        "Name": "",
-        "Type": "DWord",
-        "Value": "1",
-        "defaultValue": "0"
-      },
-      {
-        "Path": "HKCU:\\Software\\Microsoft\\DirectX\\GraphicsSettings",
-        "Name": "SwapEffectUpgradeCache",
-        "Type": "DWord",
-        "Value": "1",
-        "defaultValue": "0"
-      }
-    ],
-    "InvokeCommand": [
-      ""
     ],
     "UndoCommand": [
       ""
@@ -9231,7 +9297,7 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
                 <CheckBox Content="Disable  Xbox Services"     FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Performance"/>
             </StackPanel>
-                <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" FontSize="13" FontFamily="Sego UI Semibold" VerticalAlignment="Center" TextWrapping="Wrap" Text="This tweak disables Game Mode"/>
+                <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" FontSize="13" FontFamily="Sego UI Semibold" VerticalAlignment="Center" TextWrapping="Wrap" Text="Disables all Xbox Services Game Mode and Optimizations for Windowed Games and fix stutter playing smooth"/>
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Width="auto" Margin="8">
@@ -9360,14 +9426,6 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
                 <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Performance"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" FontSize="13" FontFamily="Sego UI Semibold" VerticalAlignment="Center" TextWrapping="Wrap" Text="removing the stored image thumbnails on your computer These thumbnails are small versions of images used by the operating system to display image previews quickly Over time the cache can become large or corrupted causing slowdowns or display issues Deleting it can free up space and resolve such issues as the system will regenerate"/>
-        </StackPanel>
-
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
-            <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Optimizations for Windowed Games"     FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Performance"/>
-            </StackPanel>
-                <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" FontSize="13" FontFamily="Sego UI Semibold" VerticalAlignment="Center" TextWrapping="Wrap" Text="Optimizing windowed games involves a combination of system and game settings adjustments to enhance performance and ensure a smoother experience.  Heres a detailed approach. "/>
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Width="auto" Margin="8">
@@ -9949,8 +10007,14 @@ function Invoke-ApplyTweaks {
                             )
                                 try {
                                     #powershell.exe -Command "Import-Module Appx; Get-AppxPackage -AllUsers -Name "$($Name)" | Remove-AppxPackage -ErrorAction Stop"
+
                                     Start-Process powershell.exe -ArgumentList "-Command `"Import-Module Appx; Get-AppxPackage -AllUsers -Name '$($Name)' | Remove-AppxPackage -ErrorAction Stop`"" -NoNewWindow  -Wait 
-                                    Start-Process powershell.exe -ArgumentList "-Command `"Get-AppXProvisionedPackage -Online | where DisplayName -EQ $($Name) | Remove-AppxProvisionedPackage -Online`"" -NoNewWindow  -Wait 
+
+                                    Get-AppxPackage -AllUsers $($Name) | ForEach-Object {Add-AppxPackage -DisableDevelopmentMode -Register "$($_.InstallLocation)\AppXManifest.xml"}
+
+                                    #Start-Process powershell.exe -ArgumentList "-Command `"Get-AppXProvisionedPackage -Online | where DisplayName -EQ $($Name) | Remove-AppxProvisionedPackage -Online`"" -NoNewWindow  -Wait 
+
+
                                     Add-Log -Message "Successfully removed $($Name)" -Level "INFO"
                                 } 
                                 catch {
