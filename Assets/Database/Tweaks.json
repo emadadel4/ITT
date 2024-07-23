@@ -99,7 +99,7 @@
   },
   {
     "name": "Disable  Xbox Services",
-    "description": "This tweak disables Game Mode",
+    "description": "Disables all Xbox Services Game Mode and Optimizations for Windowed Games and fix stutter playing smooth",
     "check": "false",
     "category": "Performance",
     "type": "modifying",
@@ -174,10 +174,116 @@
         "Type": "DWord",
         "Value": "4",
         "defaultValue": "0"
+      },
+      {
+        "Path": "HKCU:\\System\\GameConfigStore",
+        "Name": "GameDVR_FSEBehaviorMode",
+        "Type": "DWord",
+        "Value": "2",
+        "defaultValue": "0"
+      },
+      {
+        "Path": "HKCU:\\System\\GameConfigStore",
+        "Name": "GameDVR_HonorUserFSEBehaviorMode",
+        "Type": "DWord",
+        "Value": "1",
+        "defaultValue": "0"
+      },
+      {
+        "Path": "HKCU:\\System\\GameConfigStore",
+        "Name": "GameDVR_FSEBehavior",
+        "Type": "DWord",
+        "Value": "2",
+        "defaultValue": "0"
+      },
+      {
+        "Path": "HKCU:\\System\\GameConfigStore",
+        "Name": "GameDVR_DXGIHonorFSEWindowsCompatible",
+        "Type": "DWord",
+        "Value": "1",
+        "defaultValue": "0"
+      },
+      {
+        "Path": "HKCU:\\System\\GameConfigStore",
+        "Name": "GameDVR_EFSEFeatureFlags",
+        "Type": "DWord",
+        "Value": "0",
+        "defaultValue": "0"
+      },
+      {
+        "Path": "HKCU:\\System\\GameConfigStore",
+        "Name": "GameDVR_DSEBehavior",
+        "Type": "DWord",
+        "Value": "2",
+        "defaultValue": "0"
+      },
+      {
+        "Path": "HKCU:\\Software\\Microsoft\\DirectX\\UserGpuPreferences",
+        "Name": "DirectXUserGlobalSettings",
+        "Type": "String",
+        "Value": "SwapEffectUpgradeEnable=1;",
+        "defaultValue": "0"
+      },
+      {
+        "Path": "HKCU:\\Software\\Microsoft\\DirectX\\GraphicsSettings",
+        "Name": "",
+        "Type": "DWord",
+        "Value": "1",
+        "defaultValue": "0"
+      },
+      {
+        "Path": "HKCU:\\Software\\Microsoft\\DirectX\\GraphicsSettings",
+        "Name": "SwapEffectUpgradeCache",
+        "Type": "DWord",
+        "Value": "1",
+        "defaultValue": "0"
+      },
+      {
+        "Path": "HKCU:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\SoftwareProtectionPlatform",
+        "Name": "InactivityShutdownDelay",
+        "Type": "DWord",
+        "Value": "4294967295",
+        "defaultValue": "0"
+      },
+      {
+        "Path": "HKLM:\\SOFTWARE\\Microsoft\\Windows\\Dwm",
+        "Name": "OverlayTestMode",
+        "Type": "DWord",
+        "Value": "5",
+        "defaultValue": "0"
+      },
+      {
+        "Path": "HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Multimedia\\SystemProfile\\Tasks\\Games",
+        "Name": "GPU Priority",
+        "Type": "DWord",
+        "Value": "8",
+        "defaultValue": "8"
+      },
+      {
+        "Path": "HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Multimedia\\SystemProfile\\Tasks\\Games",
+        "Name": "Scheduling Category",
+        "Type": "String",
+        "Value": "High",
+        "defaultValue": "High"
+      },
+      {
+        "Path": "HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Multimedia\\SystemProfile\\Tasks\\Games",
+        "Name": "SFIO Priority",
+        "Type": "String",
+        "Value": "High",
+        "defaultValue": "High"
+      },
+      {
+        "Path": "HKLM:\\SYSTEM\\CurrentControlSet\\Control\\PriorityControl",
+        "Name": "IRQ8Priority",
+        "Type": "DWord",
+        "Value": "1",
+        "defaultValue": "0"
       }
     ],
     "InvokeCommand": [
-      ""
+      "Disable-MMAgent -MemoryCompression | Out-Null",
+      "\r\n        takeown /f C:\\Windows\\System32\\GameBarPresenceWriter.exe\r\n\r\n        takeown /f C:\\Windows\\System32\\GameBarPresenceWriter.proxy.dll\r\n\r\n        takeown /f C:\\Windows\\System32\\Windows.Gaming.UI.GameBar.dll\r\n\r\n        Start-Sleep -Seconds 1\r\n\r\n\r\n        icacls C:\\Windows\\System32\\GameBarPresenceWriter.exe /grant administrators:F\r\n\r\n        icacls C:\\Windows\\System32\\GameBarPresenceWriter.proxy.dll /grant administrators:F\r\n\r\n        icacls C:\\Windows\\System32\\Windows.Gaming.UI.GameBar.dll /grant administrators:F\r\n\r\n        Start-Sleep -Seconds 1\r\n\r\n\r\n        Rename-Item C:\\Windows\\System32\\GameBarPresenceWriter.exe -NewName GameBarPresenceWriter.exe_backup\r\n\r\n        Rename-Item C:\\Windows\\System32\\GameBarPresenceWriter.proxy.dll -NewName GameBarPresenceWriter.proxy.dll_backup\r\n\r\n        Rename-Item C:\\Windows\\System32\\Windows.Gaming.UI.GameBar.dll -NewName Windows.Gaming.UI.GameBar.dll_backup\r\n\r\n      "
     ],
     "UndoCommand": [
       ""
@@ -511,7 +617,7 @@
     ]
   },
   {
-    "name": "Remove Unnecessary Windows Apps 10/11",
+    "name": "Remove Windows 10/11 Bloatware",
     "description": "BingNews, GetHelp, Getstarted, Messaging, Microsoft3DViewer, MicrosoftOfficeHub, MicrosoftSolitaireCollection, News, Office.Lens, Office.OneNote, Office.Sway, OneConnect, People, Print3D, RemoteDesktop, SkypeApp, StorePurchaseApp, Office.Todo.List, Whiteboard, WindowsAlarms, WindowsCamera, windowscommunicationsapps, WindowsFeedbackHub, WindowsMaps, WindowsSoundRecorder, Xbox.TCUI, XboxApp, XboxGameOverlay, XboxIdentityProvider, XboxSpeechToTextOverlay, ZuneMusic, ZuneVideo, Windows.Cortana, MSPaint, Clipchamp",
     "check": "false",
     "category": "Performance",
@@ -697,9 +803,6 @@
       },
       {
         "Name": "Microsoft.ZuneVideo"
-      },
-      {
-        "Name": "Clipchamp.Clipchamp"
       }
     ],
     "InvokeCommand": [
@@ -954,43 +1057,6 @@
     "refresh": "false",
     "InvokeCommand": [
       "Remove-Item \"$env:LocalAppData\\Microsoft\\Windows\\Explorer\\thumbcache*\" -Force -Recurse"
-    ],
-    "UndoCommand": [
-      ""
-    ]
-  },
-  {
-    "name": "Optimizations for Windowed Games",
-    "description": "Optimizing windowed games involves a combination of system and game settings adjustments to enhance performance and ensure a smoother experience. Heres a detailed approach:",
-    "check": "false",
-    "category": "Performance",
-    "type": "modifying",
-    "refresh": "false",
-    "Registry": [
-      {
-        "Path": "HKCU:\\Software\\Microsoft\\DirectX\\UserGpuPreferences",
-        "Name": "DirectXUserGlobalSettings",
-        "Type": "String",
-        "Value": "SwapEffectUpgradeEnable=1;",
-        "defaultValue": "0"
-      },
-      {
-        "Path": "HKCU:\\Software\\Microsoft\\DirectX\\GraphicsSettings",
-        "Name": "",
-        "Type": "DWord",
-        "Value": "1",
-        "defaultValue": "0"
-      },
-      {
-        "Path": "HKCU:\\Software\\Microsoft\\DirectX\\GraphicsSettings",
-        "Name": "SwapEffectUpgradeCache",
-        "Type": "DWord",
-        "Value": "1",
-        "defaultValue": "0"
-      }
-    ],
-    "InvokeCommand": [
-      ""
     ],
     "UndoCommand": [
       ""
