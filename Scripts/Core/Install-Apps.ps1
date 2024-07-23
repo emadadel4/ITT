@@ -445,9 +445,9 @@ function Invoke-Install {
         
                          # Notify user of successful installation
                          UpdateUI -InstallBtn "$installBtn"
-                         Notify -title "ITT Emad Adel" -msg "Installed successfully: Portable Apps will save in C:\ProgramData\chocolatey\lib" -icon "Info" -time 30000
+                         Notify -title "ITT Emad Adel" -msg "Installed successfully" -icon "Info" -time 30000
                          Add-Log -Message "Portable Apps will save in C:\ProgramData\chocolatey\lib." -Level "INFO"
-                         #CustomMsg -title "ITT | Emad Adel" -msg "Installed successfully: Portable Apps will save in C:\ProgramData\chocolatey\lib" -MessageBoxImage "Information" -MessageBoxButton "OK"
+                         #CustomMsg -title "ITT | Emad Adel" -msg "Installed successfully" -MessageBoxImage "Information" -MessageBoxButton "OK"
                     }
 
                         # start ProcessRunning
