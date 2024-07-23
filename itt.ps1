@@ -5307,7 +5307,7 @@ $sync.database.Tweaks = '[
     "description": "Disable Data Collection",
     "check": "false",
     "category": "Privacy",
-      "type": "modifying",
+    "type": "modifying",
     "refresh": "false",
     "Registry": [
       {
@@ -5819,11 +5819,10 @@ $sync.database.Tweaks = '[
       },
       {
         "Name": "Clipchamp.Clipchamp"
-
       }
     ],
     "InvokeCommand": [
-     ""
+      ""
     ],
     "UndoCommand": [
       ""
@@ -6058,6 +6057,95 @@ $sync.database.Tweaks = '[
         "defaultValue": "0"
       }
     ],
+    "InvokeCommand": [
+      ""
+    ],
+    "UndoCommand": [
+      ""
+    ]
+  },
+  {
+    "name": "Delete Thumbnail Cache",
+    "description": "removing the stored image thumbnails on your computer These thumbnails are small versions of images used by the operating system to display image previews quickly Over time the cache can become large or corrupted causing slowdowns or display issues Deleting it can free up space and resolve such issues as the system will regenerate",
+    "check": "false",
+    "type": "command",
+    "refresh": "false",
+    "InvokeCommand": [
+      "Remove-Item \"$env:LocalAppData\\Microsoft\\Windows\\Explorer\\thumbcache*\" -Force -Recurse"
+    ],
+    "UndoCommand": [
+      ""
+    ]
+  },
+  {
+    "name": "Optimizations for Windowed Games",
+    "description": "Optimizing windowed games involves a combination of system and game settings adjustments to enhance performance and ensure a smoother experience. Heres a detailed approach:",
+    "check": "false",
+    "type": "modifying",
+    "refresh": "false",
+    "Registry": [
+      {
+        "Path": "HKCU:\\Software\\Microsoft\\DirectX\\UserGpuPreferences",
+        "Name": "DirectXUserGlobalSettings",
+        "Type": "String",
+        "Value": "SwapEffectUpgradeEnable=1;",
+        "defaultValue": "0"
+      },
+      {
+        "Path": "HKCU:\\Software\\Microsoft\\DirectX\\GraphicsSettings",
+        "Name": "",
+        "Type": "DWord",
+        "Value": "1",
+        "defaultValue": "0"
+      },
+      {
+        "Path": "HKCU:\\Software\\Microsoft\\DirectX\\GraphicsSettings",
+        "Name": "SwapEffectUpgradeCache",
+        "Type": "DWord",
+        "Value": "1",
+        "defaultValue": "0"
+      }
+    ],
+    "InvokeCommand": [
+      ""
+    ],
+    "UndoCommand": [
+      ""
+    ]
+  },
+  {
+    "name": "Old Volume Control in Windows 10",
+    "description": "The old volume control in Windows 10 refers to the classic audio mixer interface that was used in earlier versions of Windows, before the modern volume control system was introduced. This interface allowed users to adjust the volume for individual applications separately, providing a more detailed and flexible approach to managing audio levels.",
+    "check": "false",
+    "type": "modifying",
+    "refresh": "false",
+    "Registry": {
+      "Path": "HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\MTCUVC",
+      "Name": "EnableMtcUvc",
+      "Type": "DWord",
+      "Value": "0",
+      "defaultValue": "1"
+    },
+    "InvokeCommand": [
+      ""
+    ],
+    "UndoCommand": [
+      ""
+    ]
+  },
+  {
+    "name": "Disable Toggle Key Sounds",
+    "description": "Toggle key sounds in Windows are audio cues that play when you press the Caps Lock, Num Lock, or Scroll Lock keys. These sounds help users identify when these keys are activated or deactivated.",
+    "check": "false",
+    "type": "modifying",
+    "refresh": "false",
+    "Registry": {
+      "Path": "HKCU:\\Control Panel\\Accessibility\\ToggleKeys",
+      "Name": "Flags",
+      "Type": "String",
+      "Value": "58",
+      "defaultValue": "62"
+    },
     "InvokeCommand": [
       ""
     ],
@@ -9248,6 +9336,38 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" FontSize="13" FontFamily="Sego UI Semibold" VerticalAlignment="Center" TextWrapping="Wrap" Text="Recall is an upcoming preview experience exclusive to Copilot.  PCs that will help you easily find and remember things you. . ve seen using natural language. "/>
         </StackPanel>
 
+        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+            <StackPanel Orientation="Horizontal">
+                <CheckBox Content="Delete Thumbnail Cache"     FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content=""/>
+            </StackPanel>
+                <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" FontSize="13" FontFamily="Sego UI Semibold" VerticalAlignment="Center" TextWrapping="Wrap" Text="removing the stored image thumbnails on your computer These thumbnails are small versions of images used by the operating system to display image previews quickly Over time the cache can become large or corrupted causing slowdowns or display issues Deleting it can free up space and resolve such issues as the system will regenerate"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+            <StackPanel Orientation="Horizontal">
+                <CheckBox Content="Optimizations for Windowed Games"     FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content=""/>
+            </StackPanel>
+                <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" FontSize="13" FontFamily="Sego UI Semibold" VerticalAlignment="Center" TextWrapping="Wrap" Text="Optimizing windowed games involves a combination of system and game settings adjustments to enhance performance and ensure a smoother experience.  Heres a detailed approach. "/>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+            <StackPanel Orientation="Horizontal">
+                <CheckBox Content="Old Volume Control in Windows 10"     FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content=""/>
+            </StackPanel>
+                <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" FontSize="13" FontFamily="Sego UI Semibold" VerticalAlignment="Center" TextWrapping="Wrap" Text="The old volume control in Windows 10 refers to the classic audio mixer interface that was used in earlier versions of Windows.  before the modern volume control system was introduced.  This interface allowed users to adjust the volume for individual applications separately.  providing a more detailed and flexible approach to managing audio levels. "/>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+            <StackPanel Orientation="Horizontal">
+                <CheckBox Content="Disable Toggle Key Sounds"     FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content=""/>
+            </StackPanel>
+                <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" FontSize="13" FontFamily="Sego UI Semibold" VerticalAlignment="Center" TextWrapping="Wrap" Text="Toggle key sounds in Windows are audio cues that play when you press the Caps Lock.  Num Lock.  or Scroll Lock keys.  These sounds help users identify when these keys are activated or deactivated. "/>
+        </StackPanel>
+
                                 </ListView>
                         </TabItem>
                         <TabItem x:Name="SettingsTab" Header="{Binding settings}" BorderBrush="{x:Null}" Background="{x:Null}">
@@ -11117,7 +11237,6 @@ function Invoke-Toogle {
 
         "ToggleShowExt" {Invoke-ShowFile-Extensions $(Get-ToggleStatus ToggleShowExt)}
         "ToggleDarkMode" {Invoke-DarkMode $(Get-ToggleStatus ToggleDarkMode)}
-
         "ToggleShowHidden" {Invoke-ShowFile $(Get-ToggleStatus ToggleShowHidden)}
     }
 }
