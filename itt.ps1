@@ -10944,96 +10944,6 @@ function ChangeTap() {
         $sync['window'].FindName('installBtn').Visibility = "Hidden"
     }
 }
-Function Invoke-DarkMode {
-
-    Param($DarkMoveEnabled)
-    Try{
-
-        $DarkMode = (Get-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "DarkMode").DarkMode
-
-
-        if ($DarkMoveEnabled -eq $false){
-            $DarkMoveValue = 0
-
-            if($DarkMode -eq "none")
-            {
-                $sync['window'].Resources.MergedDictionaries.Add($sync['window'].FindResource("Dark"))
-            }
-        }
-        else {
-            $DarkMoveValue = 1
-
-            if($DarkMode -eq "none")
-            {
-                $sync['window'].Resources.MergedDictionaries.Add($sync['window'].FindResource("Light"))
-            }
-        }
-
-        $Path = "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize"
-        Set-ItemProperty -Path $Path -Name AppsUseLightTheme -Value $DarkMoveValue
-        Set-ItemProperty -Path $Path -Name SystemUsesLightTheme -Value $DarkMoveValue
-
-        Stop-Process -Name explorer -Force
-    }
-    Catch [System.Security.SecurityException] {
-        Write-Warning "Unable to set $Path\$Name to $Value due to a Security Exception"
-    }
-    Catch [System.Management.Automation.ItemNotFoundException] {
-        Write-Warning $psitem.Exception.ErrorRecord
-    }
-    Catch{
-        Write-Warning "Unable to set $Name due to unhandled exception"
-        Write-Warning $psitem.Exception.StackTrace
-    }
-}
-function Invoke-ShowFile {
-    Param($Enabled)
-    Try {
-        $value = if ($Enabled -eq $false) { 1 } else { 2 }
-
-        $hiddenItemsKey = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced"
-        
-        # Set registry values to show or hide hidden items
-        Set-ItemProperty -Path $hiddenItemsKey -Name Hidden -Value $value
-        Set-ItemProperty -Path $hiddenItemsKey -Name ShowSuperHidden -Value $value
-
-        Stop-Process -Name explorer -Force
-    }
-    Catch [System.Security.SecurityException] {
-        Write-Warning "Unable to set registry keys due to a Security Exception"
-    }
-    Catch [System.Management.Automation.ItemNotFoundException] {
-        Write-Warning $psitem.Exception.ErrorRecord
-    }
-    Catch {
-        Write-Warning "Unable to set registry keys due to unhandled exception"
-        Write-Warning $psitem.Exception.StackTrace
-    }
-}
-function Invoke-ShowFile-Extensions {
-   
-    Param($Enabled)
-    Try{
-        if ($Enabled -eq $false){
-            $value = 0
-        }
-        else {
-            $value = 1
-        }
-        $Path = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced"
-        Set-ItemProperty -Path $Path -Name HideFileExt -Value $value
-    }
-    Catch [System.Security.SecurityException] {
-        Write-Warning "Unable to set $Path\$Name to $Value due to a Security Exception"
-    }
-    Catch [System.Management.Automation.ItemNotFoundException] {
-        Write-Warning $psitem.Exception.ErrorRecord
-    }
-    Catch{
-        Write-Warning "Unable to set $Name due to unhandled exception"
-        Write-Warning $psitem.Exception.StackTrace
-    }
-}
 function Invoke-Button {
     Param ([string]$action)
 
@@ -11238,6 +11148,96 @@ function Invoke-Toogle {
         "ToggleShowExt" {Invoke-ShowFile-Extensions $(Get-ToggleStatus ToggleShowExt)}
         "ToggleDarkMode" {Invoke-DarkMode $(Get-ToggleStatus ToggleDarkMode)}
         "ToggleShowHidden" {Invoke-ShowFile $(Get-ToggleStatus ToggleShowHidden)}
+    }
+}
+Function Invoke-DarkMode {
+
+    Param($DarkMoveEnabled)
+    Try{
+
+        $DarkMode = (Get-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "DarkMode").DarkMode
+
+
+        if ($DarkMoveEnabled -eq $false){
+            $DarkMoveValue = 0
+
+            if($DarkMode -eq "none")
+            {
+                $sync['window'].Resources.MergedDictionaries.Add($sync['window'].FindResource("Dark"))
+            }
+        }
+        else {
+            $DarkMoveValue = 1
+
+            if($DarkMode -eq "none")
+            {
+                $sync['window'].Resources.MergedDictionaries.Add($sync['window'].FindResource("Light"))
+            }
+        }
+
+        $Path = "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize"
+        Set-ItemProperty -Path $Path -Name AppsUseLightTheme -Value $DarkMoveValue
+        Set-ItemProperty -Path $Path -Name SystemUsesLightTheme -Value $DarkMoveValue
+
+        Stop-Process -Name explorer -Force
+    }
+    Catch [System.Security.SecurityException] {
+        Write-Warning "Unable to set $Path\$Name to $Value due to a Security Exception"
+    }
+    Catch [System.Management.Automation.ItemNotFoundException] {
+        Write-Warning $psitem.Exception.ErrorRecord
+    }
+    Catch{
+        Write-Warning "Unable to set $Name due to unhandled exception"
+        Write-Warning $psitem.Exception.StackTrace
+    }
+}
+function Invoke-ShowFile {
+    Param($Enabled)
+    Try {
+        $value = if ($Enabled -eq $false) { 1 } else { 2 }
+
+        $hiddenItemsKey = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced"
+        
+        # Set registry values to show or hide hidden items
+        Set-ItemProperty -Path $hiddenItemsKey -Name Hidden -Value $value
+        Set-ItemProperty -Path $hiddenItemsKey -Name ShowSuperHidden -Value $value
+
+        Stop-Process -Name explorer -Force
+    }
+    Catch [System.Security.SecurityException] {
+        Write-Warning "Unable to set registry keys due to a Security Exception"
+    }
+    Catch [System.Management.Automation.ItemNotFoundException] {
+        Write-Warning $psitem.Exception.ErrorRecord
+    }
+    Catch {
+        Write-Warning "Unable to set registry keys due to unhandled exception"
+        Write-Warning $psitem.Exception.StackTrace
+    }
+}
+function Invoke-ShowFile-Extensions {
+   
+    Param($Enabled)
+    Try{
+        if ($Enabled -eq $false){
+            $value = 0
+        }
+        else {
+            $value = 1
+        }
+        $Path = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced"
+        Set-ItemProperty -Path $Path -Name HideFileExt -Value $value
+    }
+    Catch [System.Security.SecurityException] {
+        Write-Warning "Unable to set $Path\$Name to $Value due to a Security Exception"
+    }
+    Catch [System.Management.Automation.ItemNotFoundException] {
+        Write-Warning $psitem.Exception.ErrorRecord
+    }
+    Catch{
+        Write-Warning "Unable to set $Name due to unhandled exception"
+        Write-Warning $psitem.Exception.StackTrace
     }
 }
 function About{
