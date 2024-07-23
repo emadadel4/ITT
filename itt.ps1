@@ -5925,6 +5925,9 @@ $sync.database.Tweaks = '[
       },
       {
         "Name": "Microsoft.ZuneMusic"
+      },
+      {
+        "Name": "Microsoft.ZuneVideo"
       }
     ],
     "InvokeCommand": [
