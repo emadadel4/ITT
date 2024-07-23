@@ -13,6 +13,7 @@ Write-Host " |   | |  | |   | |   | |___| |  | |/ ___ \| |_| |  / ___ \| |_| | |
 Write-Host " |  |___| |_|   |_|   |_____|_|  |_/_/   \_\____/  /_/   \_\____/|_____|_____|  |" -ForegroundColor Yellow;
 Write-Host " |                                                                              |" -ForegroundColor Yellow;
 Write-Host " |                       Made with ♥ By Emad Adel                               |" -ForegroundColor Yellow;
+Write-Host " |                        #Stand With Palestine                                 |" -ForegroundColor Yellow;
 Write-Host " +==============================================================================+" -ForegroundColor Yellow; 
 Write-Host " `n` $message" -ForegroundColor Yellow
 Write-Host "`n` IT (Install and Tweaks Tools) is open source, You can contribute to improving the tool." -ForegroundColor Yellow
