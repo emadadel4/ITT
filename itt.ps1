@@ -5736,7 +5736,7 @@ $sync.database.Tweaks = '[
     ]
   },
   {
-    "name": "Remove Unnecessary Windows Apps 10/11",
+    "name": "Remove Windows 10/11 Bloatware",
     "description": "BingNews, GetHelp, Getstarted, Messaging, Microsoft3DViewer, MicrosoftOfficeHub, MicrosoftSolitaireCollection, News, Office.Lens, Office.OneNote, Office.Sway, OneConnect, People, Print3D, RemoteDesktop, SkypeApp, StorePurchaseApp, Office.Todo.List, Whiteboard, WindowsAlarms, WindowsCamera, windowscommunicationsapps, WindowsFeedbackHub, WindowsMaps, WindowsSoundRecorder, Xbox.TCUI, XboxApp, XboxGameOverlay, XboxIdentityProvider, XboxSpeechToTextOverlay, ZuneMusic, ZuneVideo, Windows.Cortana, MSPaint, Clipchamp",
     "check": "false",
     "category": "Performance",
@@ -9366,7 +9366,7 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
 
         <StackPanel Orientation="Vertical" Width="auto" Margin="8">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Remove Unnecessary Windows Apps 10/11"     FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <CheckBox Content="Remove Windows 10/11 Bloatware"     FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Performance"/>
             </StackPanel>
                 <TextBlock Width="500" Background="Transparent" Margin="15,5,0,10" FontSize="13" FontFamily="Sego UI Semibold" VerticalAlignment="Center" TextWrapping="Wrap" Text="BingNews.  GetHelp.  Getstarted.  Messaging.  Microsoft3DViewer.  MicrosoftOfficeHub.  MicrosoftSolitaireCollection.  News.  Office. Lens.  Office. OneNote.  Office. Sway.  OneConnect.  People.  Print3D.  RemoteDesktop.  SkypeApp.  StorePurchaseApp.  Office. Todo. List.  Whiteboard.  WindowsAlarms.  WindowsCamera.  windowscommunicationsapps.  WindowsFeedbackHub.  WindowsMaps.  WindowsSoundRecorder.  Xbox. TCUI.  XboxApp.  XboxGameOverlay.  XboxIdentityProvider.  XboxSpeechToTextOverlay.  ZuneMusic.  ZuneVideo.  Windows. Cortana.  MSPaint.  Clipchamp"/>
@@ -10007,7 +10007,6 @@ function Invoke-ApplyTweaks {
                             )
                                 try {
                                     #powershell.exe -Command "Import-Module Appx; Get-AppxPackage -AllUsers -Name "$($Name)" | Remove-AppxPackage -ErrorAction Stop"
-
                                     #Start-Process powershell.exe -ArgumentList "-Command `"Import-Module Appx; Get-AppxPackage -AllUsers -Name '$($Name)' | Remove-AppxPackage -ErrorAction Stop`"" -NoNewWindow  -Wait 
 
 
@@ -10018,7 +10017,7 @@ function Invoke-ApplyTweaks {
                                     #Start-Process powershell.exe -ArgumentList "-Command `"Get-AppXProvisionedPackage -Online | where DisplayName -EQ $($Name) | Remove-AppxProvisionedPackage -Online`"" -NoNewWindow  -Wait 
 
 
-                                    Add-Log -Message "Successfully removed $($Name)" -Level "INFO"
+                                    Add-Log -Message "Trying to remove $($Name)" -Level "INFO"
                                 } 
                                 catch {
                                     Write-Host "Failed to remove $($Name). $_" -ForegroundColor red
