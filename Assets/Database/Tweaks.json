@@ -703,7 +703,7 @@
         "Name": "Microsoft.WindowsCamera"
       },
       {
-        "Name": "microsoft.windowscommunicationsapps"
+        "Name": "Microsoft.windowscommunicationsapps"
       },
       {
         "Name": "Microsoft.WindowsFeedbackHub"
@@ -799,10 +799,13 @@
         "Name": "Microsoft.MicrosoftStickyNotes"
       },
       {
-        "Name": "Microsoft.ZuneMusic"
+        "Name": "TikTok.TikTok_8wekyb3d8bbwe"
       },
       {
-        "Name": "Microsoft.ZuneVideo"
+        "Name": "TikTok"
+      },
+      {
+        "Name": "Microsoft.ZuneMusic"
       }
     ],
     "InvokeCommand": [
