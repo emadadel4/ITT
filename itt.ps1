@@ -6120,7 +6120,7 @@ $sync.database.Tweaks = '[
     "type": "modifying",
     "refresh": "false",
     "Registry": {
-      "Path": "HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\MTCUVC",
+      "Path": "HKLM:\\Software\\Microsoft\\Windows NT\\CurrentVersion\\MTCUVC",
       "Name": "EnableMtcUvc",
       "Type": "DWord",
       "Value": "0",
