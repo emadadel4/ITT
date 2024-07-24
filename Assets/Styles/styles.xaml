@@ -1,7 +1,7 @@
 <!--Button Style-->
       <Style TargetType="Button">
-        <Setter Property="Background" Value="{DynamicResource FGColor}"/>
-        <Setter Property="Foreground" Value="{DynamicResource DefaultTextColor}"/>
+        <Setter Property="Background" Value="{DynamicResource BGButtonColor}"/>
+        <Setter Property="Foreground" Value="{DynamicResource DefaultTextColor2}"/>
         <Setter Property="BorderBrush" Value="Transparent"/>
         <Setter Property="BorderThickness" Value="1"/>
         
@@ -18,7 +18,7 @@
         </Setter>
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="{DynamicResource BGButtonColor}"/>
+                <Setter Property="Background" Value="{DynamicResource ButtonHighlightColor}"/>
                 <Setter Property="Foreground" Value="{DynamicResource FGButtonColor}"/>
             </Trigger>
         </Style.Triggers>
