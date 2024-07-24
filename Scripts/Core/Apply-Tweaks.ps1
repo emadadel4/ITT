@@ -256,11 +256,12 @@ function Invoke-ApplyTweaks {
                         
                         function UpdateUI {
         
-                            param($InstallBtn,$Description)
+                            param($ApplyBtn,$icon,$Description,$Width)
                             
                             $sync['window'].Dispatcher.Invoke([Action]{
-                                $sync.applyBtn.Content = "$InstallBtn"
-                                #$sync.Description.Text = "$Description"
+                                $sync.applyText.Text = "$ApplyBtn"
+                                $sync.applyBtn.Width = $Width
+                                $sync.applyIcon.Text = $icon
                             })
                         }
         
@@ -375,7 +376,10 @@ function Invoke-ApplyTweaks {
                             $applyBtn = $sync.database.locales.Controls.$($sync.Langusege).applyBtn
                             $Applying = $sync.database.locales.Controls.$($sync.Langusege).Applying
 
-                            UpdateUI -InstallBtn "$applying" 
+
+                            UpdateUI -ApplyBtn "$applying" -icon " " -Width "150"
+
+
                             $sync.ProcessRunning = $true
 
                             foreach ($app in $tweaks) {
@@ -403,7 +407,8 @@ function Invoke-ApplyTweaks {
 
                             # Displaying the names of the selected apps
                             $selectedAppNames = $tweaks | ForEach-Object { $_.Name }
-                            UpdateUI -InstallBtn "$applyBtn" -Description "" 
+                            UpdateUI -ApplyBtn "$applyBtn" -icon " " -Width "100"
+
                             $sync.ProcessRunning = $False
                             CustomMsg -title "ITT | Emad Adel" -msg "Done" -MessageBoxImage "Information" -MessageBoxButton "OK"
                             Finish

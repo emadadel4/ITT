@@ -89,3 +89,13 @@ $sync.InstallBtn = $sync["window"].FindName("installBtn")
 $sync.ApplyBtn = $sync["window"].FindName("applyBtn")
 $sync.Category = $sync["window"].FindName("category")
 $sync.SearchInput = $sync["window"].FindName("searchInput")
+
+
+$sync.installText = $sync["window"].FindName("installText")
+$sync.installIcon = $sync["window"].FindName("installIcon")
+
+$sync.applyText = $sync["window"].FindName("applyText")
+$sync.applyIcon = $sync["window"].FindName("applyIcon")
+
+
+

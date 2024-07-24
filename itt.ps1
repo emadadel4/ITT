@@ -4552,7 +4552,7 @@ $sync.database.locales = '{
         "diskmgr": "إدارة القرص",
         "InstallBtn": "تثبيت",
         "applyBtn": "تطبيق",
-        "downloading": "جارٍ التحميل",
+        "downloading": "جارٍ التثبيت",
         "about":"عن المطور",
         "thirdparty":"روابط خارجية",
         "preferences":"التفضيلات",
@@ -9528,8 +9528,8 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
                 Width="100" Height="40" Margin="20">
 
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <TextBlock Text="{Binding applyBtn}" Foreground="White" Margin="10,0,0,0" VerticalAlignment="Center"/>
-                    <TextBlock Text=" &#xE930;" Foreground="White" FontFamily="Segoe MDL2 Assets" FontSize="15" VerticalAlignment="Center"/>
+                    <TextBlock Name="applyText" Text="{Binding applyBtn}" Foreground="White" Margin="10,0,0,0" VerticalAlignment="Center"/>
+                    <TextBlock Name="applyIcon" Text=" &#xE930;" Foreground="White" FontFamily="Segoe MDL2 Assets" FontSize="15" VerticalAlignment="Center"/>
                 </StackPanel>
 
             </Button>
@@ -9545,8 +9545,8 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
                 Width="100" Height="40" Margin="20">
 
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <TextBlock Text="{Binding installBtn}" Foreground="White" Margin="10,0,0,0" VerticalAlignment="Center"/>
-                    <TextBlock Text=" &#xE930;" Foreground="White" FontFamily="Segoe MDL2 Assets" FontSize="15" VerticalAlignment="Center"/>
+                    <TextBlock Name="installText" Text="{Binding installBtn}" Foreground="White" Margin="10,0,0,0" VerticalAlignment="Center"/>
+                    <TextBlock Name="installIcon" Text=" &#xE930;" Foreground="White" FontFamily="Segoe MDL2 Assets" FontSize="15" VerticalAlignment="Center"/>
                 </StackPanel>
 
             </Button>
@@ -9731,6 +9731,16 @@ $sync.InstallBtn = $sync["window"].FindName("installBtn")
 $sync.ApplyBtn = $sync["window"].FindName("applyBtn")
 $sync.Category = $sync["window"].FindName("category")
 $sync.SearchInput = $sync["window"].FindName("searchInput")
+
+
+$sync.installText = $sync["window"].FindName("installText")
+$sync.installIcon = $sync["window"].FindName("installIcon")
+
+$sync.applyText = $sync["window"].FindName("applyText")
+$sync.applyIcon = $sync["window"].FindName("applyIcon")
+
+
+
 
 #===========================================================================
 #endregion End loadXmal
@@ -10062,11 +10072,12 @@ function Invoke-ApplyTweaks {
                         
                         function UpdateUI {
         
-                            param($InstallBtn,$Description)
+                            param($ApplyBtn,$icon,$Description,$Width)
                             
                             $sync['window'].Dispatcher.Invoke([Action]{
-                                $sync.applyBtn.Content = "$InstallBtn"
-                                #$sync.Description.Text = "$Description"
+                                $sync.applyText.Text = "$ApplyBtn"
+                                $sync.applyBtn.Width = $Width
+                                $sync.applyIcon.Text = $icon
                             })
                         }
         
@@ -10181,7 +10192,10 @@ function Invoke-ApplyTweaks {
                             $applyBtn = $sync.database.locales.Controls.$($sync.Langusege).applyBtn
                             $Applying = $sync.database.locales.Controls.$($sync.Langusege).Applying
 
-                            UpdateUI -InstallBtn "$applying" 
+
+                            UpdateUI -ApplyBtn "$applying" -icon " " -Width "150"
+
+
                             $sync.ProcessRunning = $true
 
                             foreach ($app in $tweaks) {
@@ -10209,7 +10223,8 @@ function Invoke-ApplyTweaks {
 
                             # Displaying the names of the selected apps
                             $selectedAppNames = $tweaks | ForEach-Object { $_.Name }
-                            UpdateUI -InstallBtn "$applyBtn" -Description "" 
+                            UpdateUI -ApplyBtn "$applyBtn" -icon " " -Width "100"
+
                             $sync.ProcessRunning = $False
                             CustomMsg -title "ITT | Emad Adel" -msg "Done" -MessageBoxImage "Information" -MessageBoxButton "OK"
                             Finish
@@ -10507,10 +10522,12 @@ function Invoke-Install {
         
                     function UpdateUI {
         
-                        param($InstallBtn,$Description)
+                        param($InstallBtn,$icon,$Description,$Width)
                        
                         $sync['window'].Dispatcher.Invoke([Action]{
-                            $sync.installBtn.Content = "$InstallBtn"
+                            $sync.installText.Text = "$InstallBtn"
+                            $sync.installBtn.Width = $Width
+                            $sync.installIcon.Text = $icon
                         })
                     }
         
@@ -10829,7 +10846,8 @@ function Invoke-Install {
                         })
         
                          # Notify user of successful installation
-                         UpdateUI -InstallBtn "$installBtn"
+                         UpdateUI -InstallBtn "$installBtn" -icon " " -Width "100"
+
                          Notify -title "ITT Emad Adel" -msg "Installed successfully" -icon "Info" -time 30000
                          Add-Log -Message "Portable Apps will save in C:\ProgramData\chocolatey\lib." -Level "INFO"
                          #CustomMsg -title "ITT | Emad Adel" -msg "Installed successfully" -MessageBoxImage "Information" -MessageBoxButton "OK"
@@ -10842,7 +10860,7 @@ function Invoke-Install {
                         $downloading = $sync.database.locales.Controls.$($sync.Langusege).downloading
             
                         # Chancge Install Content "Downloading.."
-                        UpdateUI -InstallBtn "$downloading"
+                        UpdateUI -InstallBtn "$downloading" -icon " " -Width "150"
             
                         # Clear temporary files
                         ClearTemp
