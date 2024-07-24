@@ -4576,10 +4576,9 @@ $sync.database.locales = '{
         "idm":"تفعيل الدون لود مانجر",
         "extensions":"أضافات المتصفحات",
         "all": "الكل",
-
+        "search": "بحث",
         "restorepoint": "إنشاء نقطة الاستعادة",
         "chocoloc": "مجلد التنزيلات المحمولة",
-
         "InstallMessage":"هل تريد تثبيت البرامج المختارة؟",
         "ApplyMessage":"هل تريد تطبيق التحسينات المختارة؟",
         "Applying": "جارٍ التطبيق",
@@ -4627,6 +4626,7 @@ $sync.database.locales = '{
         "idm":"IDM Activation",
         "extensions":"Browsers Extensions",
         "all": "All",
+        "search": "Search",
         "restorepoint": "Create restore point",
         "chocoloc": "Portable Downloads Folder",
         "InstallMessage":"Do you want install selected apps",
@@ -6297,10 +6297,10 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
       <Setter Property="Template">
           <Setter.Value>
               <ControlTemplate TargetType="TextBox">
-                  <Border Margin="8" Background="{TemplateBinding Background}"
+                  <Border Margin="0" Background="{TemplateBinding Background}"
                           BorderBrush="{TemplateBinding BorderBrush}"
                           BorderThickness="{TemplateBinding BorderThickness}"
-                          CornerRadius="14"> <!-- Set CornerRadius here -->
+                          CornerRadius="16">
                       <ScrollViewer x:Name="PART_ContentHost" />
                   </Border>
               </ControlTemplate>
@@ -7093,24 +7093,22 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
                 <!--End Catagory-->
 
                 <!--Search -->
-                    <Grid HorizontalAlignment="Right"  Grid.Column="1" VerticalAlignment="Center" >
-                        <TextBox Padding="5"
-                                            Width="119"
-                                            VerticalAlignment="Center"
-                                            HorizontalAlignment="Left" 
-                                            Text="{Binding Text_searchInput}"
-                                            Name="searchInput" 
-                                            />
+                    <Grid HorizontalAlignment="Right" Grid.Column="1" VerticalAlignment="Center">
+                        <TextBox Padding="8"
+                                Width="120"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Left"
+                                Text="{Binding Text_searchInput}"
+                                Name="searchInput" />
 
-                        <TextBlock IsHitTestVisible="False" 
-                                            Text=""
-                                            FontFamily="Segoe MDL2 Assets" 
-                                            VerticalAlignment="Center" 
-                                            HorizontalAlignment="Left"
-                                            Margin="20"
-                                            FontSize="12"
-                                            Foreground="{DynamicResource FGTextColor}">
-
+                        <TextBlock IsHitTestVisible="False"
+                                Text=""
+                                FontFamily="Segoe MDL2 Assets"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Left"
+                                Margin="20,0,5,0"
+                                FontSize="12"
+                                Foreground="{DynamicResource FGTextColor}">
                             <TextBlock.Style>
                                 <Style TargetType="{x:Type TextBlock}">
                                     <Setter Property="Visibility" Value="Hidden"/>
@@ -7122,8 +7120,29 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
                                 </Style>
                             </TextBlock.Style>
                         </TextBlock>
-                    </Grid>        
+
+                        <TextBlock Text="{Binding search}"
+                                IsHitTestVisible="False"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Left"
+                                Margin="38,0,0,0"
+                                Foreground="{DynamicResource FGTextColor}">
+                            <TextBlock.Style>
+                                <Style TargetType="{x:Type TextBlock}">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding IsFocused, ElementName=searchInput}" Value="True">
+                                            <Setter Property="Visibility" Value="Hidden"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding Text, ElementName=searchInput}" Value="">
+                                            <Setter Property="Visibility" Value="Visible"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+                    </Grid>
                 <!--End Search-->
+
             </Grid>
 
         <!--Header Section-->

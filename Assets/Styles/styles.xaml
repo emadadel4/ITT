@@ -34,10 +34,10 @@
       <Setter Property="Template">
           <Setter.Value>
               <ControlTemplate TargetType="TextBox">
-                  <Border Margin="8" Background="{TemplateBinding Background}"
+                  <Border Margin="0" Background="{TemplateBinding Background}"
                           BorderBrush="{TemplateBinding BorderBrush}"
                           BorderThickness="{TemplateBinding BorderThickness}"
-                          CornerRadius="14"> <!-- Set CornerRadius here -->
+                          CornerRadius="16">
                       <ScrollViewer x:Name="PART_ContentHost" />
                   </Border>
               </ControlTemplate>
