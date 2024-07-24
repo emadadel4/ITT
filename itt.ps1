@@ -6492,7 +6492,7 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
 <!--ListViewItem Style-->
     <Style TargetType="ListViewItem">
         <Setter Property="Background" Value="{DynamicResource FGColor}"/>
-        <Setter Property="Margin" Value="8,0,8,6"/>
+        <Setter Property="Margin" Value="8,0,8,9"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Padding" Value="0"/>
         <Setter Property="Template">
