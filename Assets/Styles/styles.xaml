@@ -64,7 +64,7 @@
                 <Border Padding="4" Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}"
-                        CornerRadius="0"> <!-- Set the corner radius here -->
+                        CornerRadius="0">
                     <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                       VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                 </Border>
@@ -84,7 +84,7 @@
 <!--CheckBox Style-->
   <Style TargetType="CheckBox">
       <Setter Property="Foreground" Value="{DynamicResource DefaultTextColor}"/>
-      <Setter Property="Margin" Value="0"/>
+      <Setter Property="Margin" Value="0,0,0,0"/>
       <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Template">
                 <Setter.Value>
@@ -116,7 +116,7 @@
                          <Trigger Property="IsMouseOver" Value="True">
                             <Setter Property="Background" Value="{DynamicResource highlight}"/>
                             <Setter  Property="BorderBrush" Value="{DynamicResource highlight}"/>
-                            <Setter  Property="BorderThickness" Value="1.2"/>
+                            <Setter  Property="BorderThickness" Value="0.5"/>
                         </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -229,10 +229,26 @@
 <!--ListViewItem Style-->
     <Style TargetType="ListViewItem">
         <Setter Property="Background" Value="{DynamicResource FGColor}"/>
-        <Setter Property="Margin" Value="2"/>
+        <Setter Property="Margin" Value="8,0,8,6"/>
         <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ListViewItem">
+                    <Border Background="{TemplateBinding Background}"
+                            CornerRadius="5" 
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                        <ContentPresenter HorizontalAlignment="Left"
+                                        VerticalAlignment="Center"
+                                        ContentSource="Content"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
     </Style>
 <!--End ListViewItem Style-->
+
 
 <!--Scrollbar Thumbs-->
     <Style x:Key="ScrollThumbs" TargetType="{x:Type Thumb}">
