@@ -9522,22 +9522,37 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
                 <!--applyBtn Button-->
                 <Button
                 Name="applyBtn"
-                Content="{Binding applyBtn}"
                 HorizontalAlignment="Right"
                 VerticalAlignment="Bottom"
                 FontFamily="Sego UI" FontSize="15" 
-                Width="100" Height="40" Margin="20"/>
+                Width="100" Height="40" Margin="20">
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock Text="{Binding applyBtn}" Foreground="White" Margin="10,0,0,0" VerticalAlignment="Center"/>
+                    <TextBlock Text=" &#xE930;" Foreground="White" FontFamily="Segoe MDL2 Assets" FontSize="15" VerticalAlignment="Center"/>
+                </StackPanel>
+
+            </Button>
             <!--End applyBtn Button-->
 
 
             <!--Install Button-->
                 <Button
-                    Name="installBtn"
-                    FontFamily="Sego UI" FontSize="15" 
-                    Content="{Binding installBtn}"
-                    HorizontalAlignment="Right"
-                    VerticalAlignment="Bottom"
-                    Width="100" Height="40" Margin="20"/>
+                Name="installBtn"
+                FontSize="15"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Bottom"
+                Width="100" Height="40" Margin="20">
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock Text="{Binding installBtn}" Foreground="White" Margin="10,0,0,0" VerticalAlignment="Center"/>
+                    <TextBlock Text=" &#xE930;" Foreground="White" FontFamily="Segoe MDL2 Assets" FontSize="15" VerticalAlignment="Center"/>
+                </StackPanel>
+
+            </Button>
+        <!--End Install Button-->
+
+
             <!--End Install Button-->
         </Grid>
 
@@ -10764,7 +10779,7 @@ function Invoke-Install {
         
                         Install-Choco
                         
-                        $chocoResult = $(Start-Process -FilePath "choco" -ArgumentList "install $appChoco --confirm --acceptlicense -q -r --ignore-http-cache --allowemptychecksumsecure --allowemptychecksum --usepackagecodes --ignoredetectedreboot --ignore-checksums --ignore-reboot-requests" -Wait -PassThru).ExitCode
+                        $chocoResult = $(Start-Process -FilePath "choco" -ArgumentList "install $appChoco --confirm --acceptlicense -q -r --ignore-http-cache --allowemptychecksumsecure --allowemptychecksum --usepackagecodes --ignoredetectedreboot --ignore-checksums --ignore-reboot-requests" -Wait -NoNewWindow -PassThru).ExitCode
                     
                         if ($chocoResult -ne 0) {
                             
@@ -10775,7 +10790,7 @@ function Invoke-Install {
                             Install-Winget
         
                             Start-Process -FilePath "winget" -ArgumentList "settings --enable InstallerHashOverride" -NoNewWindow -Wait -PassThru
-                            $wingetResult = $(Start-Process -FilePath "winget" -ArgumentList "install --accept-source-agreements --accept-package-agreements --id $appWinget --force -e -h --silent --exact" -Wait -PassThru).ExitCode
+                            $wingetResult = $(Start-Process -FilePath "winget" -ArgumentList "install --accept-source-agreements --accept-package-agreements --id $appWinget --force -e -h --silent --exact" -Wait -NoNewWindow -PassThru).ExitCode
         
                             # Check winget
                             if ($wingetResult -ne 0) {
