@@ -4552,7 +4552,7 @@ $sync.database.locales = '{
         "diskmgr": "إدارة القرص",
         "InstallBtn": "تثبيت",
         "applyBtn": "تطبيق",
-        "downloading": "جارٍ التحميل",
+        "downloading": "جارٍ التثبيت",
         "about":"عن المطور",
         "thirdparty":"روابط خارجية",
         "preferences":"التفضيلات",
