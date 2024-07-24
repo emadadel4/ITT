@@ -6263,8 +6263,8 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
 <Window.Resources>
     <!--Button Style-->
       <Style TargetType="Button">
-        <Setter Property="Background" Value="{DynamicResource FGColor}"/>
-        <Setter Property="Foreground" Value="{DynamicResource DefaultTextColor}"/>
+        <Setter Property="Background" Value="{DynamicResource BGButtonColor}"/>
+        <Setter Property="Foreground" Value="{DynamicResource DefaultTextColor2}"/>
         <Setter Property="BorderBrush" Value="Transparent"/>
         <Setter Property="BorderThickness" Value="1"/>
         
@@ -6281,7 +6281,7 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
         </Setter>
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="{DynamicResource BGButtonColor}"/>
+                <Setter Property="Background" Value="{DynamicResource ButtonHighlightColor}"/>
                 <Setter Property="Foreground" Value="{DynamicResource FGButtonColor}"/>
             </Trigger>
         </Style.Triggers>
@@ -6800,6 +6800,7 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
                         <SolidColorBrush x:Key="BGColor" Color="White"/>
                         <SolidColorBrush x:Key="FGColor" Color="WhiteSmoke"/>
                         <SolidColorBrush x:Key="BGButtonColor" Color="#525FE1" />
+                        <SolidColorBrush x:Key="ButtonHighlightColor" Color="#FF6C76E0" />
                         <SolidColorBrush x:Key="FGButtonColor" Color="White" />
                         <SolidColorBrush x:Key="FGTextColor" Color="Black" />
                         <SolidColorBrush x:Key="DefaultTextColor" Color="Black"/>
@@ -6823,6 +6824,7 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
                         <SolidColorBrush x:Key="FGColor" Color="#282828"/>
                         <SolidColorBrush x:Key="BGButtonColor" Color="#1DB954" />
                         <SolidColorBrush x:Key="FGButtonColor" Color="White" />
+                        <SolidColorBrush x:Key="ButtonHighlightColor" Color="#FF45D477" />
                         <SolidColorBrush x:Key="FGTextColor" Color="WhiteSmoke" />
                         <SolidColorBrush x:Key="DefaultTextColor" Color="White"/>
                         <SolidColorBrush x:Key="DefaultTextColor2" Color="White"/>
