@@ -36,10 +36,9 @@
         "idm":"تفعيل الدون لود مانجر",
         "extensions":"أضافات المتصفحات",
         "all": "الكل",
-
+        "search": "بحث",
         "restorepoint": "إنشاء نقطة الاستعادة",
         "chocoloc": "مجلد التنزيلات المحمولة",
-
         "InstallMessage":"هل تريد تثبيت البرامج المختارة؟",
         "ApplyMessage":"هل تريد تطبيق التحسينات المختارة؟",
         "Applying": "جارٍ التطبيق",
@@ -87,6 +86,7 @@
         "idm":"IDM Activation",
         "extensions":"Browsers Extensions",
         "all": "All",
+        "search": "Search",
         "restorepoint": "Create restore point",
         "chocoloc": "Portable Downloads Folder",
         "InstallMessage":"Do you want install selected apps",
