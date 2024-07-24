@@ -122,10 +122,12 @@ function Invoke-Install {
         
                     function UpdateUI {
         
-                        param($InstallBtn,$Description)
+                        param($InstallBtn,$icon,$Description,$Width)
                        
                         $sync['window'].Dispatcher.Invoke([Action]{
-                            $sync.installBtn.Content = "$InstallBtn"
+                            $sync.installText.Text = "$InstallBtn"
+                            $sync.installBtn.Width = $Width
+                            $sync.installIcon.Text = $icon
                         })
                     }
         
@@ -444,7 +446,8 @@ function Invoke-Install {
                         })
         
                          # Notify user of successful installation
-                         UpdateUI -InstallBtn "$installBtn"
+                         UpdateUI -InstallBtn "$installBtn" -icon " " -Width "100"
+
                          Notify -title "ITT Emad Adel" -msg "Installed successfully" -icon "Info" -time 30000
                          Add-Log -Message "Portable Apps will save in C:\ProgramData\chocolatey\lib." -Level "INFO"
                          #CustomMsg -title "ITT | Emad Adel" -msg "Installed successfully" -MessageBoxImage "Information" -MessageBoxButton "OK"
@@ -457,7 +460,7 @@ function Invoke-Install {
                         $downloading = $sync.database.locales.Controls.$($sync.Langusege).downloading
             
                         # Chancge Install Content "Downloading.."
-                        UpdateUI -InstallBtn "$downloading"
+                        UpdateUI -InstallBtn "$downloading" -icon " " -Width "150"
             
                         # Clear temporary files
                         ClearTemp
