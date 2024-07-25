@@ -6494,14 +6494,14 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
 <!--ListViewItem Style-->
     <Style TargetType="ListViewItem">
         <Setter Property="Background" Value="{DynamicResource FGColor}"/>
-        <Setter Property="Margin" Value="8,0,8,9"/>
+        <Setter Property="Margin" Value="3"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Padding" Value="0"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ListViewItem">
                     <Border Background="{TemplateBinding Background}"
-                            CornerRadius="5" 
+                            CornerRadius="0" 
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}">
                         <ContentPresenter HorizontalAlignment="Left"
