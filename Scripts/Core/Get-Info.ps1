@@ -33,6 +33,7 @@ function Get-PCInfo {
                     "GPU" = (Get-CimInstance -ClassName Win32_VideoController).Name
                     "CPU" = (Get-CimInstance -ClassName Win32_Processor).Name
                     "Cores" = (Get-CimInstance -ClassName Win32_Processor).NumberOfCores
+                    "Language" = "$($sync.Langusege)"
                     "Start At" = (Get-Date -Format "MM-dd-yyyy hh:mm:ss tt")
                     "Runs" = $runs
                     "AppsHistory" = $existingData.AppsHistory
@@ -53,6 +54,7 @@ function Get-PCInfo {
                     "GPU" = (Get-CimInstance -ClassName Win32_VideoController).Name
                     "CPU" = (Get-CimInstance -ClassName Win32_Processor).Name
                     "Cores" = (Get-CimInstance -ClassName Win32_Processor).NumberOfCores
+                    "Language" = "$($sync.Langusege)"
                     "Start At" = (Get-Date -Format "MM-dd-yyyy hh:mm:ss tt")
                     "runs" = $runs
                     "AppsHistory" = @{}

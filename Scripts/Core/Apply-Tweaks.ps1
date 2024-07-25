@@ -310,8 +310,9 @@ function Invoke-ApplyTweaks {
                                         "Username" = $existingData.Username
                                         "RAM" = $existingData.RAM
                                         "GPU" = $existingData.GPU
-                                        "Cores" = $existingData.Cores 
                                         "CPU" = $existingData.CPU
+                                        "Cores" = $existingData.Cores 
+                                        "Language" = $existingData.Language 
                                         "Start At" = (Get-Date -Format "MM-dd-yyyy hh:mm:ss tt")
                                         "Runs" = $existingData.Runs
                                         "AppsHistory" = $existingData.AppsHistory

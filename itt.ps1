@@ -6494,14 +6494,14 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
 <!--ListViewItem Style-->
     <Style TargetType="ListViewItem">
         <Setter Property="Background" Value="{DynamicResource FGColor}"/>
-        <Setter Property="Margin" Value="8,0,8,9"/>
+        <Setter Property="Margin" Value="3"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Padding" Value="0"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ListViewItem">
                     <Border Background="{TemplateBinding Background}"
-                            CornerRadius="5" 
+                            CornerRadius="0" 
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}">
                         <ContentPresenter HorizontalAlignment="Left"
@@ -10147,8 +10147,9 @@ function Invoke-ApplyTweaks {
                                         "Username" = $existingData.Username
                                         "RAM" = $existingData.RAM
                                         "GPU" = $existingData.GPU
-                                        "Cores" = $existingData.Cores 
                                         "CPU" = $existingData.CPU
+                                        "Cores" = $existingData.Cores 
+                                        "Language" = $existingData.Language 
                                         "Start At" = (Get-Date -Format "MM-dd-yyyy hh:mm:ss tt")
                                         "Runs" = $existingData.Runs
                                         "AppsHistory" = $existingData.AppsHistory
@@ -10321,6 +10322,7 @@ function Get-PCInfo {
                     "GPU" = (Get-CimInstance -ClassName Win32_VideoController).Name
                     "CPU" = (Get-CimInstance -ClassName Win32_Processor).Name
                     "Cores" = (Get-CimInstance -ClassName Win32_Processor).NumberOfCores
+                    "Language" = "$($sync.Langusege)"
                     "Start At" = (Get-Date -Format "MM-dd-yyyy hh:mm:ss tt")
                     "Runs" = $runs
                     "AppsHistory" = $existingData.AppsHistory
@@ -10341,6 +10343,7 @@ function Get-PCInfo {
                     "GPU" = (Get-CimInstance -ClassName Win32_VideoController).Name
                     "CPU" = (Get-CimInstance -ClassName Win32_Processor).Name
                     "Cores" = (Get-CimInstance -ClassName Win32_Processor).NumberOfCores
+                    "Language" = "$($sync.Langusege)"
                     "Start At" = (Get-Date -Format "MM-dd-yyyy hh:mm:ss tt")
                     "runs" = $runs
                     "AppsHistory" = @{}
@@ -10641,8 +10644,9 @@ function Invoke-Install {
                                     "Username" = $existingData.Username
                                     "RAM" = $existingData.RAM
                                     "GPU" = $existingData.GPU
-                                    "Cores" = $existingData.Cores 
                                     "CPU" = $existingData.CPU
+                                    "Cores" = $existingData.Cores 
+                                    "Language" = $existingData.Language 
                                     "Start At" = (Get-Date -Format "MM-dd-yyyy hh:mm:ss tt")
                                     "Runs" = $existingData.Runs
                                     "AppsHistory" = $selectedItemContent
