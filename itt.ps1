@@ -49,7 +49,7 @@ $sync.mediaPlayer = New-Object -ComObject WMPlayer.OCX
 #endregion End Start
 #===========================================================================
 #===========================================================================
-#region Begin Database /APPS/TWEEAKS/Quotes/OST
+#region Begin Database /APPS/TWEEAKS/Quotes/OST/Settings
 #===========================================================================
 $sync.database.Applications = '[
   {
@@ -6248,7 +6248,7 @@ $sync.database.Tweaks = '[
 ]
 ' | ConvertFrom-Json
 #===========================================================================
-#endregion End Database /APPS/TWEEAKS/Quotes/OST
+#endregion End Database /APPS/TWEEAKS/Quotes/OST/Settings
 #===========================================================================
 #===========================================================================
 #region Begin WPF Window
@@ -9600,7 +9600,7 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
 #endregion End WPF Window
 #===========================================================================
 #===========================================================================
-#region Begin WPF About
+#region Begin WPF About Window
 #===========================================================================
 
 $childXaml = '<Window
@@ -9656,7 +9656,7 @@ $childXaml = '<Window
   </Window>
 '
 #===========================================================================
-#endregion End WPF About
+#endregion End WPF About Window
 #===========================================================================
 #===========================================================================
 #region Begin loadXmal
@@ -11457,6 +11457,66 @@ function ITTShortcut {
     $Shortcut.Save()
 }
 
+function DisplayQuotes  {
+
+    Invoke-ScriptBlock -ScriptBlock {
+
+        # Define the path to your JSON file
+        $jsonFilePath = $sync.database.Quotes
+
+        # Function to shuffle an array
+        function ShuffleArray {
+            param (
+                [array]$Array
+            )
+            $count = $Array.Count
+            for ($i = $count - 1; $i -ge 0; $i--) {
+                $randomIndex = Get-Random -Minimum 0 -Maximum $count
+                $temp = $Array[$i]
+                $Array[$i] = $Array[$randomIndex]
+                $Array[$randomIndex] = $temp
+            }
+            return $Array
+        }
+
+        # Function to get names from the JSON file
+        function Get-NamesFromJson {
+            $jsonContent =  $jsonFilePath 
+            return $jsonContent.Q
+        }
+
+        # Get shuffled names
+        $shuffledNames = ShuffleArray -Array (Get-NamesFromJson)
+
+        # Function to display welcome text
+        function Display-WelcomeText {
+            $sync.Quotes.Dispatcher.Invoke([Action]{
+
+                $fullCulture = (Get-ItemPropertyValue -Path "HKCU:\Control Panel\International" -Name "LocaleName")
+                $shortCulture = $fullCulture.Split('-')[0]
+                $sync.Quotes.Text = $sync.database.locales.Controls.$($sync.Langusege).welcome
+               
+            })
+        }
+
+        # Display welcome text
+        Display-WelcomeText
+
+        Start-Sleep -Seconds 18
+
+        # Loop through shuffled names and display them
+        do {
+            foreach ($name in $shuffledNames) {
+                $sync.Quotes.Dispatcher.Invoke([Action]{
+                    $sync.Quotes.Text = "`“.$name`”"
+                })
+
+                # Adjust the sleep time as needed
+                Start-Sleep -Seconds 15  
+            }
+        } while ($true)
+    }
+}
 function Search {
 
     # Retrieves the search input, converts it to lowercase, and filters the list based on the input
@@ -11550,66 +11610,6 @@ function ClearFilter {
     $sync.AppsListView.Clear()
     $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.AppsListView.Items)
     $collectionView.Filter = $null
-}
-function GetQuotes {
-
-    Invoke-ScriptBlock -ScriptBlock {
-
-        # Define the path to your JSON file
-        $jsonFilePath = $sync.database.Quotes
-
-        # Function to shuffle an array
-        function ShuffleArray {
-            param (
-                [array]$Array
-            )
-            $count = $Array.Count
-            for ($i = $count - 1; $i -ge 0; $i--) {
-                $randomIndex = Get-Random -Minimum 0 -Maximum $count
-                $temp = $Array[$i]
-                $Array[$i] = $Array[$randomIndex]
-                $Array[$randomIndex] = $temp
-            }
-            return $Array
-        }
-
-        # Function to get names from the JSON file
-        function Get-NamesFromJson {
-            $jsonContent =  $jsonFilePath 
-            return $jsonContent.Q
-        }
-
-        # Get shuffled names
-        $shuffledNames = ShuffleArray -Array (Get-NamesFromJson)
-
-        # Function to display welcome text
-        function Display-WelcomeText {
-            $sync.Quotes.Dispatcher.Invoke([Action]{
-
-                $fullCulture = (Get-ItemPropertyValue -Path "HKCU:\Control Panel\International" -Name "LocaleName")
-                $shortCulture = $fullCulture.Split('-')[0]
-                $sync.Quotes.Text = $sync.database.locales.Controls.$($sync.Langusege).welcome
-               
-            })
-        }
-
-        # Display welcome text
-        Display-WelcomeText
-
-        Start-Sleep -Seconds 18
-
-        # Loop through shuffled names and display them
-        do {
-            foreach ($name in $shuffledNames) {
-                $sync.Quotes.Dispatcher.Invoke([Action]{
-                    $sync.Quotes.Text = "`“.$name`”"
-                })
-
-                # Adjust the sleep time as needed
-                Start-Sleep -Seconds 15  
-            }
-        } while ($true)
-    }
 }
 function PlayMusic {
     # Function to play an audio track
@@ -11806,7 +11806,7 @@ $onClosingEvent = {
 # Handle the Loaded event
 $sync["window"].Add_ContentRendered({
     Startup
-    GetQuotes | Out-Null
+    DisplayQuotes | Out-Null
     PlayMusic | Out-Null
     $sync["window"].Activate()
 })
