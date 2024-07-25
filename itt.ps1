@@ -11123,7 +11123,8 @@ function Invoke-Button {
     Switch -Wildcard ($action) {
 
         "installBtn" {
-            Invoke-Install 
+            $sync.SearchInput.Text = $null
+            Invoke-Install
             Debug-Message $action
         }
         "applyBtn" {
