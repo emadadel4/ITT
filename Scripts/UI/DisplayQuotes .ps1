@@ -1,4 +1,4 @@
-function GetQuotes {
+function DisplayQuotes  {
 
     Invoke-ScriptBlock -ScriptBlock {
 
