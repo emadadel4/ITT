@@ -19,7 +19,7 @@ Add-Type -AssemblyName System.Windows.Forms
 $sync = [Hashtable]::Synchronized(@{
     database       = @{}
     ProcessRunning = $false
-    lastupdate     = "07/24/24"
+    lastupdate     = "07/25/24"
     github         = "https://github.com/emadadel4"
     telegram       = "https://t.me/emadadel4"
     website        = "https://emadadel4.github.io"
@@ -5092,7 +5092,8 @@ $sync.database.Quotes = '{
     "الأشياء التي نحبها أكثر، هي الأشياء التي نفقدها",
     "أصغر الاصوات بإمكانها أن تصبح عظيمة",
     "هل انت 1 ام 0",
-    "حياتي جعلتني كالميت الحي لكن انعكاسي اظهر لي مازلت على قيد الحياة"
+    "حياتي جعلتني كالميت الحي لكن انعكاسي اظهر لي مازلت على قيد الحياة",
+    "المقاومه ما هي الا نتاج للقهر والظلم والاستبداد"
   ]
 }
 ' | ConvertFrom-Json
