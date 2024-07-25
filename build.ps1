@@ -188,7 +188,7 @@ try {
 
     WriteToScript -Content @"
 #===========================================================================
-#region Begin Database /APPS/TWEEAKS/Quotes/OST
+#region Begin Database /APPS/TWEEAKS/Quotes/OST/Settings
 #===========================================================================
 "@
 
@@ -196,7 +196,7 @@ try {
 
     WriteToScript -Content @"
 #===========================================================================
-#endregion End Database /APPS/TWEEAKS/Quotes/OST
+#endregion End Database /APPS/TWEEAKS/Quotes/OST/Settings
 #===========================================================================
 "@
 
@@ -250,7 +250,7 @@ WriteToScript -Content @"
 
 WriteToScript -Content @"
 #===========================================================================
-#region Begin WPF About
+#region Begin WPF About Window
 #===========================================================================
 
 "@
@@ -272,7 +272,7 @@ WriteToScript -Content @"
     WriteToScript -Content "`$childXaml = '$childXaml'"
     WriteToScript -Content @"
 #===========================================================================
-#endregion End WPF About
+#endregion End WPF About Window
 #===========================================================================
 "@
 
