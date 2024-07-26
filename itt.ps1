@@ -19,7 +19,7 @@ Add-Type -AssemblyName System.Windows.Forms
 $sync = [Hashtable]::Synchronized(@{
     database       = @{}
     ProcessRunning = $false
-    lastupdate     = "07/25/24"
+    lastupdate     = "07/26/24"
     github         = "https://github.com/emadadel4"
     telegram       = "https://t.me/emadadel4"
     website        = "https://emadadel4.github.io"
@@ -53,8 +53,8 @@ $sync.mediaPlayer = New-Object -ComObject WMPlayer.OCX
 #===========================================================================
 $sync.database.Applications = '[
   {
-    "Name": "Mozilla Firefox",
-    "Description": "A widely-used open-source web browser known for its speed, privacy features, and customization options.",
+    "name": "Mozilla Firefox",
+    "description": "A widely-used open-source web browser known for its speed, privacy features, and customization options.",
     "winget": "Mozilla.Firefox",
     "choco": "firefox",
     "scoop": "none",
@@ -71,8 +71,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Mozilla Firefox ESR",
-    "Description": "A widely-used open-source web browser known for its speed, privacy features, and customization options.",
+    "name": "Mozilla Firefox ESR",
+    "description": "A widely-used open-source web browser known for its speed, privacy features, and customization options.",
     "winget": "Mozilla.Firefox.ESR",
     "choco": "firefoxesr",
     "scoop": "none",
@@ -89,8 +89,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Thorium SSE3",
-    "Description": "A web browser designed for smooth and secure browsing experiences.",
+    "name": "Thorium SSE3",
+    "description": "A web browser designed for smooth and secure browsing experiences.",
     "winget": "Alex313031.Thorium",
     "choco": "thorium --params /SSE3",
     "scoop": "none",
@@ -106,8 +106,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Thorium AVX",
-    "Description": "A web browser designed for smooth and secure browsing experiences.",
+    "name": "Thorium AVX",
+    "description": "A web browser designed for smooth and secure browsing experiences.",
     "winget": "Alex313031.Thorium.AVX2",
     "choco": "thorium --params /AVX",
     "scoop": "none",
@@ -123,8 +123,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Microsoft Edge",
-    "Description": "Microsoft''s web browser built for fast and secure internet surfing, integrating seamlessly with Windows ecosystem.",
+    "name": "Microsoft Edge",
+    "description": "Microsoft''s web browser built for fast and secure internet surfing, integrating seamlessly with Windows ecosystem.",
     "winget": "Microsoft.Edge",
     "choco": "microsoft-edge",
     "scoop": "none",
@@ -140,8 +140,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Google Chrome",
-    "Description": "A popular web browser known for its speed, simplicity, and vast ecosystem of extensions.",
+    "name": "Google Chrome",
+    "description": "A popular web browser known for its speed, simplicity, and vast ecosystem of extensions.",
     "winget": "Google.Chrome",
     "choco": "googlechrome",
     "scoop": "none",
@@ -157,8 +157,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Chromium",
-    "Description": "An open-source web browser project that serves as the foundation for many browsers, including Google Chrome.",
+    "name": "Chromium",
+    "description": "An open-source web browser project that serves as the foundation for many browsers, including Google Chrome.",
     "winget": "eloston.ungoogled-chromium",
     "choco": "chromium",
     "scoop": "none",
@@ -174,8 +174,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Brave",
-    "Description": "A privacy-focused web browser that blocks ads and trackers, offering faster and safer browsing experiences.",
+    "name": "Brave",
+    "description": "A privacy-focused web browser that blocks ads and trackers, offering faster and safer browsing experiences.",
     "winget": "Brave.Brave",
     "choco": "brave",
     "scoop": "none",
@@ -191,8 +191,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Tor Browser",
-    "Description": "A web browser that prioritizes user privacy by routing internet traffic through a global network of servers, enabling anonymous browsing.",
+    "name": "Tor Browser",
+    "description": "A web browser that prioritizes user privacy by routing internet traffic through a global network of servers, enabling anonymous browsing.",
     "winget": "TorProject.TorBrowser",
     "choco": "tor-browser",
     "scoop": "none",
@@ -208,8 +208,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Opera",
-    "Description": "The Opera web browser makes the Web fast and fun, giving you a better web browser experience on any computer.",
+    "name": "Opera",
+    "description": "The Opera web browser makes the Web fast and fun, giving you a better web browser experience on any computer.",
     "winget": "Opera.Opera",
     "choco": "opera",
     "scoop": "none",
@@ -225,8 +225,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Internet Download Manager",
-    "Description": "A popular download manager tool that accelerates downloads and allows users to organize and schedule downloads efficiently.",
+    "name": "Internet Download Manager",
+    "description": "A popular download manager tool that accelerates downloads and allows users to organize and schedule downloads efficiently.",
     "winget": "Tonec.InternetDownloadManager",
     "choco": "internet-download-manager",
     "scoop": "none",
@@ -242,8 +242,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "JDownloader",
-    "Description": "JDownloader is an internet download manager.",
+    "name": "JDownloader",
+    "description": "JDownloader is an internet download manager.",
     "winget": "AppWork.JDownloader",
     "choco": "jdownloader",
     "scoop": "none",
@@ -259,8 +259,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "KLite Mega Codec Full Pack",
-    "Description": "Comprehensive collection of audio and video codecs, filters, and tools, enabling playback of various media formats.",
+    "name": "KLite Mega Codec Full Pack",
+    "description": "Comprehensive collection of audio and video codecs, filters, and tools, enabling playback of various media formats.",
     "winget": "none",
     "choco": "k-litecodecpackfull",
     "scoop": "none",
@@ -277,8 +277,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "PotPlayer",
-    "Description": "A multimedia player with a sleek interface and advanced features, supporting a wide range of audio and video formats.",
+    "name": "PotPlayer",
+    "description": "A multimedia player with a sleek interface and advanced features, supporting a wide range of audio and video formats.",
     "winget": "Daum.PotPlayer",
     "choco": "potplayer",
     "scoop": "none",
@@ -294,8 +294,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "VLC",
-    "Description": "A versatile media player capable of playing almost any multimedia file format, with support for various streaming protocols.",
+    "name": "VLC",
+    "description": "A versatile media player capable of playing almost any multimedia file format, with support for various streaming protocols.",
     "winget": "VideoLAN.VLC",
     "choco": "vlc.install",
     "scoop": "none",
@@ -312,8 +312,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Kodi",
-    "Description": "A powerful open-source media center software that allows users to organize and stream their media collections.",
+    "name": "Kodi",
+    "description": "A powerful open-source media center software that allows users to organize and stream their media collections.",
     "winget": "9NBLGGH4T892",
     "choco": "kodi",
     "scoop": "none",
@@ -329,8 +329,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Jellyfin Server",
-    "Description": "An open-source media server software that enables users to stream their media libraries across devices, providing a self-hosted alternative to commercial services.",
+    "name": "Jellyfin Server",
+    "description": "An open-source media server software that enables users to stream their media libraries across devices, providing a self-hosted alternative to commercial services.",
     "winget": "Jellyfin.Server",
     "choco": "jellyfin",
     "scoop": "none",
@@ -346,8 +346,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Winamp",
-    "Description": "A classic media player known for its customizable interface and extensive plugin support, providing a nostalgic music playback experience.",
+    "name": "Winamp",
+    "description": "A classic media player known for its customizable interface and extensive plugin support, providing a nostalgic music playback experience.",
     "winget": "Winamp.Winamp",
     "choco": "winamp",
     "scoop": "none",
@@ -363,8 +363,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Aimp",
-    "Description": "A lightweight and feature-rich audio player with support for various audio formats and customizable interface themes.",
+    "name": "Aimp",
+    "description": "A lightweight and feature-rich audio player with support for various audio formats and customizable interface themes.",
     "winget": "AIMP.AIMP",
     "choco": "aimp",
     "scoop": "none",
@@ -380,8 +380,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Spotify",
-    "Description": "Spotify is a new way to listen to music.",
+    "name": "Spotify",
+    "description": "Spotify is a new way to listen to music.",
     "winget": "Spotify.Spotify",
     "choco": "spotify",
     "scoop": "none",
@@ -397,8 +397,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "FastStone Image Viewer",
-    "Description": "FastStone Image Viewer is a fast, stable, user-friendly image browser, converter and editor ",
+    "name": "FastStone Image Viewer",
+    "description": "FastStone Image Viewer is a fast, stable, user-friendly image browser, converter and editor ",
     "winget": "FastStone.Viewer",
     "choco": "fsviewer",
     "scoop": "none",
@@ -414,8 +414,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "OpenOffice",
-    "Description": "An open-source office productivity suite offering word processing, spreadsheet, presentation, and other office tools, compatible with Microsoft Office formats.",
+    "name": "OpenOffice",
+    "description": "An open-source office productivity suite offering word processing, spreadsheet, presentation, and other office tools, compatible with Microsoft Office formats.",
     "winget": "Apache.OpenOffice",
     "choco": "openoffice",
     "scoop": "none",
@@ -431,8 +431,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "FoxitReader",
-    "Description": "A lightweight and feature-rich PDF reader with annotation, form filling, and document signing capabilities.",
+    "name": "FoxitReader",
+    "description": "A lightweight and feature-rich PDF reader with annotation, form filling, and document signing capabilities.",
     "winget": "Foxit.FoxitReader",
     "choco": "foxitreader",
     "scoop": "none",
@@ -448,8 +448,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "LibreOffice",
-    "Description": "A powerful open-source office suite providing word processing, spreadsheet, presentation, and other office tools, compatible with Microsoft Office formats.",
+    "name": "LibreOffice",
+    "description": "A powerful open-source office suite providing word processing, spreadsheet, presentation, and other office tools, compatible with Microsoft Office formats.",
     "winget": "Foxit.FoxitReader",
     "choco": "libreoffice-fresh",
     "scoop": "none",
@@ -466,8 +466,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "SumatraPDF",
-    "Description": "A lightweight and fast PDF reader with minimalistic design and focus on simplicity and speed.",
+    "name": "SumatraPDF",
+    "description": "A lightweight and fast PDF reader with minimalistic design and focus on simplicity and speed.",
     "winget": "SumatraPDF.SumatraPDF",
     "choco": "sumatrapdf.install",
     "scoop": "none",
@@ -483,8 +483,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "WinRAR",
-    "Description": "A popular file compression and archiving utility that supports various archive formats and offers advanced features such as encryption and self-extracting archives.",
+    "name": "WinRAR",
+    "description": "A popular file compression and archiving utility that supports various archive formats and offers advanced features such as encryption and self-extracting archives.",
     "winget": "RARLab.WinRAR",
     "choco": "winrar",
     "scoop": "none",
@@ -501,8 +501,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "7Zip",
-    "Description": "An open-source file archiver with a high compression ratio, supporting various archive formats and providing a powerful command-line interface.",
+    "name": "7Zip",
+    "description": "An open-source file archiver with a high compression ratio, supporting various archive formats and providing a powerful command-line interface.",
     "winget": "7zip.7zip",
     "choco": "7zip",
     "scoop": "none",
@@ -519,8 +519,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "PeaZip",
-    "Description": " PeaZip is a free cross-platform file archiver.",
+    "name": "PeaZip",
+    "description": " PeaZip is a free cross-platform file archiver.",
     "winget": "Giorgiotani.Peazip",
     "choco": "peazip",
     "scoop": "none",
@@ -536,8 +536,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Telegram Desktop",
-    "Description": "A cross-platform messaging app with a focus on speed and security, offering end-to-end encryption and a wide range of features such as group chats, file sharing, and stickers.",
+    "name": "Telegram Desktop",
+    "description": "A cross-platform messaging app with a focus on speed and security, offering end-to-end encryption and a wide range of features such as group chats, file sharing, and stickers.",
     "winget": "Telegram.TelegramDesktop",
     "choco": "telegram",
     "scoop": "none",
@@ -554,8 +554,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Signal",
-    "Description": "Fast, simple, secure. Privacy that fits in your pocket.",
+    "name": "Signal",
+    "description": "Fast, simple, secure. Privacy that fits in your pocket.",
     "winget": "OpenWhisperSystems.Signal",
     "choco": "signal",
     "scoop": "none",
@@ -571,8 +571,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Meta Messenger",
-    "Description": "A messaging app that allows users to connect with friends and family through text messages, voice calls, and video calls, offering various multimedia sharing features.",
+    "name": "Meta Messenger",
+    "description": "A messaging app that allows users to connect with friends and family through text messages, voice calls, and video calls, offering various multimedia sharing features.",
     "winget": "9WZDNCRF0083",
     "choco": "messenger",
     "scoop": "none",
@@ -588,8 +588,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Zoom",
-    "Description": "A video conferencing app that facilitates online meetings, webinars, and virtual events, allowing participants to interact through video, audio, and chat.",
+    "name": "Zoom",
+    "description": "A video conferencing app that facilitates online meetings, webinars, and virtual events, allowing participants to interact through video, audio, and chat.",
     "winget": "Zoom.ZoomRooms",
     "choco": "zoom",
     "scoop": "none",
@@ -605,8 +605,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Microsoft Teams",
-    "Description": "A collaboration platform that combines workplace chat, video meetings, file storage, and application integration, enhancing teamwork and productivity within organizations.",
+    "name": "Microsoft Teams",
+    "description": "A collaboration platform that combines workplace chat, video meetings, file storage, and application integration, enhancing teamwork and productivity within organizations.",
     "winget": "Microsoft.Teams",
     "choco": "microsoft-teams.install",
     "scoop": "none",
@@ -622,8 +622,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Discord",
-    "Description": "A VoIP application and digital distribution platform designed for creating communities and connecting gamers, providing text, voice, and video communication features.",
+    "name": "Discord",
+    "description": "A VoIP application and digital distribution platform designed for creating communities and connecting gamers, providing text, voice, and video communication features.",
     "winget": "Discord.Discord",
     "choco": "discord",
     "scoop": "none",
@@ -639,8 +639,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "TeamViewer",
-    "Description": "A remote access and support software that enables users to remotely control computers, transfer files, and collaborate online, facilitating remote work and IT support.",
+    "name": "TeamViewer",
+    "description": "A remote access and support software that enables users to remotely control computers, transfer files, and collaborate online, facilitating remote work and IT support.",
     "winget": "TeamViewer.TeamViewer",
     "choco": "teamviewer",
     "scoop": "none",
@@ -656,8 +656,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "GIMP",
-    "Description": "A free and open-source raster graphics editor used for image retouching and editing, drawing and painting, and converting between different image formats.",
+    "name": "GIMP",
+    "description": "A free and open-source raster graphics editor used for image retouching and editing, drawing and painting, and converting between different image formats.",
     "winget": "GIMP.GIMP",
     "choco": "gimp",
     "scoop": "none",
@@ -673,8 +673,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Microsoft Visual C++ Runtime - all versions",
-    "Description": "Microsoft Visual C++ Redistributable installs run-time components of Visual C++ libraries. These components are required to run C++ applications that are developed using Visual Studio and link dynamically to Visual C++ libraries.",
+    "name": "Microsoft Visual C++ Runtime - all versions",
+    "description": "Microsoft Visual C++ Redistributable installs run-time components of Visual C++ libraries. These components are required to run C++ applications that are developed using Visual Studio and link dynamically to Visual C++ libraries.",
     "winget": "none",
     "choco": "vcredist-all",
     "scoop": "none",
@@ -690,8 +690,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "DirectX",
-    "Description": "DirectX is a collection of APIs for handling tasks related to games and videos.",
+    "name": "DirectX",
+    "description": "DirectX is a collection of APIs for handling tasks related to games and videos.",
     "winget": "Microsoft.DirectX",
     "choco": "directx",
     "scoop": "none",
@@ -707,8 +707,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Microsoft Visual C++ 2005 (x86) Redistributable",
-    "Description": "A set of runtime components required to run applications developed with Microsoft Visual C++ 2005, providing libraries, DLLs, and other resources.",
+    "name": "Microsoft Visual C++ 2005 (x86) Redistributable",
+    "description": "A set of runtime components required to run applications developed with Microsoft Visual C++ 2005, providing libraries, DLLs, and other resources.",
     "winget": "none",
     "choco": "vcredist2005",
     "scoop": "none",
@@ -724,8 +724,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Microsoft Visual C++ 2005 (x64) Redistributable",
-    "Description": "A set of runtime components required to run 64-bit applications developed with Microsoft Visual C++ 2005, providing libraries, DLLs, and other resources.",
+    "name": "Microsoft Visual C++ 2005 (x64) Redistributable",
+    "description": "A set of runtime components required to run 64-bit applications developed with Microsoft Visual C++ 2005, providing libraries, DLLs, and other resources.",
     "winget": "none",
     "choco": "vcredist2005",
     "scoop": "none",
@@ -741,8 +741,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Microsoft Visual C++ 2008 (x86) Redistributable",
-    "Description": "A set of runtime components required to run applications developed with Microsoft Visual C++ 2008, providing libraries, DLLs, and other resources.",
+    "name": "Microsoft Visual C++ 2008 (x86) Redistributable",
+    "description": "A set of runtime components required to run applications developed with Microsoft Visual C++ 2008, providing libraries, DLLs, and other resources.",
     "winget": "none",
     "choco": "vcredist2008",
     "scoop": "none",
@@ -758,8 +758,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Microsoft Visual C++ 2008 (x64) Redistributable",
-    "Description": "A set of runtime components required to run 64-bit applications developed with Microsoft Visual C++ 2008, providing libraries, DLLs, and other resources.",
+    "name": "Microsoft Visual C++ 2008 (x64) Redistributable",
+    "description": "A set of runtime components required to run 64-bit applications developed with Microsoft Visual C++ 2008, providing libraries, DLLs, and other resources.",
     "winget": "none",
     "choco": "vcredist2008",
     "scoop": "none",
@@ -775,8 +775,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Microsoft Visual C++ 2010 (x86) Redistributable",
-    "Description": "A set of runtime components required to run applications developed with Microsoft Visual C++ 2010, providing libraries, DLLs, and other resources.",
+    "name": "Microsoft Visual C++ 2010 (x86) Redistributable",
+    "description": "A set of runtime components required to run applications developed with Microsoft Visual C++ 2010, providing libraries, DLLs, and other resources.",
     "winget": "none",
     "choco": "vcredist2010",
     "scoop": "none",
@@ -792,8 +792,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Microsoft Visual C++ 2010 (x64) Redistributable",
-    "Description": "A set of runtime components required to run 64-bit applications developed with Microsoft Visual C++ 2010, providing libraries, DLLs, and other resources.",
+    "name": "Microsoft Visual C++ 2010 (x64) Redistributable",
+    "description": "A set of runtime components required to run 64-bit applications developed with Microsoft Visual C++ 2010, providing libraries, DLLs, and other resources.",
     "winget": "none",
     "choco": "vcredist2010",
     "scoop": "none",
@@ -809,8 +809,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Microsoft Visual C++ 2012 (x86) Redistributable",
-    "Description": "A set of runtime components required to run applications developed with Microsoft Visual C++ 2012, providing libraries, DLLs, and other resources.",
+    "name": "Microsoft Visual C++ 2012 (x86) Redistributable",
+    "description": "A set of runtime components required to run applications developed with Microsoft Visual C++ 2012, providing libraries, DLLs, and other resources.",
     "winget": "none",
     "choco": "vcredist2012",
     "scoop": "none",
@@ -826,8 +826,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Microsoft Visual C++ 2012 (x64) Redistributable",
-    "Description": "A set of runtime components required to run 64-bit applications developed with Microsoft Visual C++ 2012, providing libraries, DLLs, and other resources.",
+    "name": "Microsoft Visual C++ 2012 (x64) Redistributable",
+    "description": "A set of runtime components required to run 64-bit applications developed with Microsoft Visual C++ 2012, providing libraries, DLLs, and other resources.",
     "winget": "none",
     "choco": "vcredist2012",
     "scoop": "none",
@@ -843,8 +843,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Microsoft Visual C++ 2013 (x86) Redistributable",
-    "Description": "A set of runtime components required to run applications developed with Microsoft Visual C++ 2013, providing libraries, DLLs, and other resources.",
+    "name": "Microsoft Visual C++ 2013 (x86) Redistributable",
+    "description": "A set of runtime components required to run applications developed with Microsoft Visual C++ 2013, providing libraries, DLLs, and other resources.",
     "winget": "none",
     "choco": "vcredist2013",
     "scoop": "none",
@@ -860,8 +860,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Microsoft Visual C++ 2013 (x64) Redistributable",
-    "Description": "A set of runtime components required to run 64-bit applications developed with Microsoft Visual C++ 2013, providing libraries, DLLs, and other resources.",
+    "name": "Microsoft Visual C++ 2013 (x64) Redistributable",
+    "description": "A set of runtime components required to run 64-bit applications developed with Microsoft Visual C++ 2013, providing libraries, DLLs, and other resources.",
     "winget": "none",
     "choco": "vcredist2013",
     "scoop": "none",
@@ -877,8 +877,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Microsoft Visual C++ 2015-2022 (x64) Redistributable",
-    "Description": "A set of runtime components required to run 64-bit applications developed with Microsoft Visual C++ 2015-2022, providing libraries, DLLs, and other resources.",
+    "name": "Microsoft Visual C++ 2015-2022 (x64) Redistributable",
+    "description": "A set of runtime components required to run 64-bit applications developed with Microsoft Visual C++ 2015-2022, providing libraries, DLLs, and other resources.",
     "winget": "none",
     "choco": "vcredist2015",
     "scoop": "none",
@@ -894,8 +894,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Microsoft Visual C++ 2015-2022  (x86) Redistributable",
-    "Description": "A set of runtime components required to run applications developed with Microsoft Visual C++ 2015-2022, providing libraries, DLLs, and other resources.",
+    "name": "Microsoft Visual C++ 2015-2022  (x86) Redistributable",
+    "description": "A set of runtime components required to run applications developed with Microsoft Visual C++ 2015-2022, providing libraries, DLLs, and other resources.",
     "winget": "none",
     "choco": "vcredist2015",
     "scoop": "none",
@@ -911,8 +911,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "NET Framework All Versions",
-    "Description": "A comprehensive and consistent programming model for building applications that have visually stunning user experiences, seamless and secure communication, and the ability to model a range of business processes.",
+    "name": "NET Framework All Versions",
+    "description": "A comprehensive and consistent programming model for building applications that have visually stunning user experiences, seamless and secure communication, and the ability to model a range of business processes.",
     "winget": "none",
     "choco": "dotnet-all",
     "scoop": "none",
@@ -928,8 +928,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "AMD Ryzen Chipset Drivers",
-    "Description": "Supports: AMD Ryzen Threadripper PRO Processor, AMD Ryzen 8000/7040/7000 Series Desktop & Mobile Processors, AMD Ryzen 5000/3rd Gen/2nd Gen Desktop & Threadripper Processors, AMD Ryzen Desktop Processor with Radeon Graphics & Mobile Processor with Radeon Graphics, 7th-Gen AMD A-Series Processors, AMD X670E/X670/B650E/B650/B350/A320/X370/X399/B450/X470/X570/B550/A520/A620/TRX40/TRX50/WRX80/WRX90 Chipsets",
+    "name": "AMD Ryzen Chipset Drivers",
+    "description": "Supports: AMD Ryzen Threadripper PRO Processor, AMD Ryzen 8000/7040/7000 Series Desktop & Mobile Processors, AMD Ryzen 5000/3rd Gen/2nd Gen Desktop & Threadripper Processors, AMD Ryzen Desktop Processor with Radeon Graphics & Mobile Processor with Radeon Graphics, 7th-Gen AMD A-Series Processors, AMD X670E/X670/B650E/B650/B350/A320/X370/X399/B450/X470/X570/B550/A520/A620/TRX40/TRX50/WRX80/WRX90 Chipsets",
     "winget": "none",
     "choco": "amd-ryzen-chipset",
     "scoop": "none",
@@ -945,8 +945,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "NVidia Display Driver",
-    "Description": "The software component that allows the operating system and installed software to communicate with and control the NVIDIA graphics processing unit (GPU).",
+    "name": "NVidia Display Driver",
+    "description": "The software component that allows the operating system and installed software to communicate with and control the NVIDIA graphics processing unit (GPU).",
     "winget": "none",
     "choco": "nvidia-display-driver",
     "scoop": "none",
@@ -962,8 +962,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "NVIDIA GeForce Experience",
-    "Description": "A cloud-based gaming service provided by NVIDIA that allows users to play video games on supported devices via a remote gaming PC hosted on NVIDIA''s servers.",
+    "name": "NVIDIA GeForce Experience",
+    "description": "A cloud-based gaming service provided by NVIDIA that allows users to play video games on supported devices via a remote gaming PC hosted on NVIDIA''s servers.",
     "winget": "Nvidia.GeForceExperience",
     "choco": "geforce-experience",
     "scoop": "none",
@@ -979,8 +979,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Msi Afterburner",
-    "Description": "MSI Afterburner is the ultimate graphics card utility, co-developed by MSI and RivaTuner teams.",
+    "name": "Msi Afterburner",
+    "description": "MSI Afterburner is the ultimate graphics card utility, co-developed by MSI and RivaTuner teams.",
     "winget": "Guru3D.Afterburner",
     "choco": "msiafterburner",
     "scoop": "none",
@@ -996,8 +996,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "NVIDIA PhysX",
-    "Description": "A physics processing unit (PPU) software development kit (SDK) offered by NVIDIA for real-time physics simulations in video games.",
+    "name": "NVIDIA PhysX",
+    "description": "A physics processing unit (PPU) software development kit (SDK) offered by NVIDIA for real-time physics simulations in video games.",
     "winget": "Nvidia.PhysXLegacy",
     "choco": "physx.legacy",
     "scoop": "none",
@@ -1013,8 +1013,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Steam",
-    "Description": "A digital distribution platform developed by Valve Corporation for purchasing and playing video games.",
+    "name": "Steam",
+    "description": "A digital distribution platform developed by Valve Corporation for purchasing and playing video games.",
     "winget": "Valve.Steam",
     "choco": "steam",
     "scoop": "none",
@@ -1030,8 +1030,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Ubisoft Connect",
-    "Description": "A digital distribution, digital rights management, multiplayer, and communications service developed by Ubisoft, providing access to Ubisoft''s games, rewards, and social features.",
+    "name": "Ubisoft Connect",
+    "description": "A digital distribution, digital rights management, multiplayer, and communications service developed by Ubisoft, providing access to Ubisoft''s games, rewards, and social features.",
     "winget": "Ubisoft.Connect",
     "choco": "ubisoft-connect",
     "scoop": "none",
@@ -1047,8 +1047,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Origin",
-    "Description": " Game store launcher",
+    "name": "Origin",
+    "description": " Game store launcher",
     "winget": "ElectronicArts.Origin",
     "choco": "origin",
     "scoop": "none",
@@ -1064,8 +1064,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Rockstar Games Launcher",
-    "Description": "Download and play the latest Rockstar Games PC titles",
+    "name": "Rockstar Games Launcher",
+    "description": "Download and play the latest Rockstar Games PC titles",
     "winget": "none",
     "choco": "rockstar-launcher",
     "scoop": "none",
@@ -1081,8 +1081,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "GameSave Manager",
-    "Description": "A utility tool that allows users to backup, restore, and transfer their game saves between different gaming platforms and directories.",
+    "name": "GameSave Manager",
+    "description": "A utility tool that allows users to backup, restore, and transfer their game saves between different gaming platforms and directories.",
     "winget": "InsaneMatt.GameSaveManager",
     "choco": "gamesavemanager",
     "scoop": "none",
@@ -1098,8 +1098,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "StreamlabsOBS",
-    "Description": "A free and open-source streaming software built on top of OBS Studio with additional features tailored for streamers, such as built-in alerts, overlays, and chat integration.",
+    "name": "StreamlabsOBS",
+    "description": "A free and open-source streaming software built on top of OBS Studio with additional features tailored for streamers, such as built-in alerts, overlays, and chat integration.",
     "winget": "Streamlabs.StreamlabsOBS",
     "choco": "streamlabs-obs",
     "scoop": "none",
@@ -1115,8 +1115,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "OBS Studio",
-    "Description": "A free and open-source software for video recording and live streaming. It offers high performance real-time video/audio capturing and mixing.",
+    "name": "OBS Studio",
+    "description": "A free and open-source software for video recording and live streaming. It offers high performance real-time video/audio capturing and mixing.",
     "winget": "OBSProject.OBSStudio",
     "choco": "obs-studio.install",
     "scoop": "none",
@@ -1132,8 +1132,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Logitech Gaming Software",
-    "Description": "Logitech Gaming Software lets you customize Logitech G gaming mice, keyboards, headsets and select wheels.",
+    "name": "Logitech Gaming Software",
+    "description": "Logitech Gaming Software lets you customize Logitech G gaming mice, keyboards, headsets and select wheels.",
     "winget": "Logitech.LGS",
     "choco": "logitechgaming",
     "scoop": "none",
@@ -1149,8 +1149,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Lively Wallpaper",
-    "Description": "A software that allows users to set animated and interactive wallpapers on their Windows desktop, providing various customization options.",
+    "name": "Lively Wallpaper",
+    "description": "A software that allows users to set animated and interactive wallpapers on their Windows desktop, providing various customization options.",
     "winget": "rocksdanister.LivelyWallpaper",
     "choco": "lively",
     "scoop": "none",
@@ -1166,8 +1166,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Playnite",
-    "Description": "Open source video game library manager and launcher with support for 3rd party libraries like Steam, GOG, Origin, Battle.net and Uplay.",
+    "name": "Playnite",
+    "description": "Open source video game library manager and launcher with support for 3rd party libraries like Steam, GOG, Origin, Battle.net and Uplay.",
     "winget": "Playnite.Playnite",
     "choco": "playnite",
     "scoop": "none",
@@ -1183,8 +1183,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Driver Easy",
-    "Description": "A driver update tool that automatically detects, downloads, and installs device drivers for the user''s computer hardware.",
+    "name": "Driver Easy",
+    "description": "A driver update tool that automatically detects, downloads, and installs device drivers for the user''s computer hardware.",
     "winget": "Easeware.DriverEasy",
     "choco": "drivereasyfree",
     "scoop": "none",
@@ -1200,8 +1200,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Intel Graphics Windows DCH",
-    "Description": "Intel Graphics Driver for Windows 10.",
+    "name": "Intel Graphics Windows DCH",
+    "description": "Intel Graphics Driver for Windows 10.",
     "winget": "none",
     "choco": "intel-graphics-driver",
     "scoop": "none",
@@ -1217,8 +1217,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Intel Driver Support Assistant",
-    "Description": "Intel Driver & Support Assistant enables you to scan computing devices for the latest drivers available from Intel.",
+    "name": "Intel Driver Support Assistant",
+    "description": "Intel Driver & Support Assistant enables you to scan computing devices for the latest drivers available from Intel.",
     "winget": "Intel.IntelDriverAndSupportAssistant",
     "choco": "intel-dsa",
     "scoop": "none",
@@ -1234,8 +1234,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Intel Network Adapter",
-    "Description": "Intel Network Adapter Drivers for Windows 10.",
+    "name": "Intel Network Adapter",
+    "description": "Intel Network Adapter Drivers for Windows 10.",
     "winget": "Intel.WiFiDrivers",
     "choco": "intel-network-drivers-win10",
     "scoop": "none",
@@ -1251,8 +1251,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Snappy Driver Installer",
-    "Description": "A free and open-source tool for updating and installing device drivers on Windows, offering offline driver updates and wide hardware support.",
+    "name": "Snappy Driver Installer",
+    "description": "A free and open-source tool for updating and installing device drivers on Windows, offering offline driver updates and wide hardware support.",
     "winget": "samlab-ws.SnappyDriverInstaller",
     "choco": "sdio",
     "scoop": "none",
@@ -1268,8 +1268,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Driver booster",
-    "Description": "Scans and identifies outdated drivers automatically, and downloads and installs the right update for you with just ONE click.",
+    "name": "Driver booster",
+    "description": "Scans and identifies outdated drivers automatically, and downloads and installs the right update for you with just ONE click.",
     "winget": "IObit.DriverBooster",
     "choco": "driverbooster",
     "scoop": "none",
@@ -1285,8 +1285,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Driver Genius",
-    "Description": "Professional driver management tool and hardware diagnostics.",
+    "name": "Driver Genius",
+    "description": "Professional driver management tool and hardware diagnostics.",
     "winget": "none",
     "choco": "drivergenius",
     "scoop": "none",
@@ -1302,8 +1302,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Display Driver Uninstaller",
-    "Description": "Utility to completely remove system drivers",
+    "name": "Display Driver Uninstaller",
+    "description": "Utility to completely remove system drivers",
     "winget": "Wagnardsoft.DisplayDriverUninstaller",
     "choco": "ddu",
     "scoop": "none",
@@ -1319,8 +1319,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Driver Store Explorer",
-    "Description": " Windows driver store utility.",
+    "name": "Driver Store Explorer",
+    "description": " Windows driver store utility.",
     "winget": "none",
     "choco": "rapr",
     "scoop": "none",
@@ -1336,8 +1336,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "1Password",
-    "Description": "A password manager that securely stores login credentials, credit card information, and other sensitive data in an encrypted vault, accessible with a single master password.",
+    "name": "1Password",
+    "description": "A password manager that securely stores login credentials, credit card information, and other sensitive data in an encrypted vault, accessible with a single master password.",
     "winget": "AgileBits.1Password",
     "choco": "1password",
     "scoop": "none",
@@ -1353,8 +1353,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "AOMEI Partition Assistant Standard",
-    "Description": "AOMEI Partition Assistant Standard allows you to realize disk upgrade/replacement, partition style conversion, OS migration and other disk managements without any difficulties.",
+    "name": "AOMEI Partition Assistant Standard",
+    "description": "AOMEI Partition Assistant Standard allows you to realize disk upgrade/replacement, partition style conversion, OS migration and other disk managements without any difficulties.",
     "winget": "AOMEI.PartitionAssistant",
     "choco": "partition-assistant-standard",
     "scoop": "none",
@@ -1370,8 +1370,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "AOMEI Backupper Standard",
-    "Description": "A backup and recovery software that enables users to create system backups, disk backups, partition backups, and file backups to protect data against system failures and data loss.",
+    "name": "AOMEI Backupper Standard",
+    "description": "A backup and recovery software that enables users to create system backups, disk backups, partition backups, and file backups to protect data against system failures and data loss.",
     "winget": "AOMEI.Backupper.Standard",
     "choco": "backupper-standard",
     "scoop": "none",
@@ -1387,8 +1387,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Recuva recover",
-    "Description": "A data recovery software that helps users retrieve accidentally deleted files, including photos, documents, videos, and more, from various storage devices such as hard drives, USB drives, and memory cards.",
+    "name": "Recuva recover",
+    "description": "A data recovery software that helps users retrieve accidentally deleted files, including photos, documents, videos, and more, from various storage devices such as hard drives, USB drives, and memory cards.",
     "winget": "Piriform.Recuva",
     "choco": "recuva",
     "scoop": "none",
@@ -1404,8 +1404,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "CCleaner",
-    "Description": "A system optimization, privacy, and cleaning tool that helps users remove unused files, clean up temporary files, and optimize their Windows PCs for better performance.",
+    "name": "CCleaner",
+    "description": "A system optimization, privacy, and cleaning tool that helps users remove unused files, clean up temporary files, and optimize their Windows PCs for better performance.",
     "winget": "SingularLabs.CCEnhancer",
     "choco": "ccleaner",
     "scoop": "none",
@@ -1421,8 +1421,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "BCUninstaller",
-    "Description": "A powerful uninstaller tool for Windows that allows users to remove unwanted programs, plugins, and Windows Store apps, along with leftover files and registry entries.",
+    "name": "BCUninstaller",
+    "description": "A powerful uninstaller tool for Windows that allows users to remove unwanted programs, plugins, and Windows Store apps, along with leftover files and registry entries.",
     "winget": "Klocman.BulkCrapUninstaller",
     "choco": "bulk-crap-uninstaller",
     "scoop": "none",
@@ -1439,8 +1439,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Easy Context Menu",
-    "Description": "To install Easy Context Menu, run the following command from the command line or from PowerShell:",
+    "name": "Easy Context Menu",
+    "description": "To install Easy Context Menu, run the following command from the command line or from PowerShell:",
     "winget": "none",
     "choco": "ecm",
     "scoop": "none",
@@ -1456,8 +1456,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "HWiNFO",
-    "Description": "A hardware information and diagnostic tool that provides detailed information about the hardware components of a computer system, including sensors, temperature, voltage, and more.",
+    "name": "HWiNFO",
+    "description": "A hardware information and diagnostic tool that provides detailed information about the hardware components of a computer system, including sensors, temperature, voltage, and more.",
     "winget": "REALiX.HWiNFO",
     "choco": "hwinfo.install",
     "scoop": "none",
@@ -1474,8 +1474,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Speccy",
-    "Description": "A system information tool that provides detailed information about the hardware and operating system of a computer, including CPU, RAM, motherboard, graphics card, and storage devices.",
+    "name": "Speccy",
+    "description": "A system information tool that provides detailed information about the hardware and operating system of a computer, including CPU, RAM, motherboard, graphics card, and storage devices.",
     "winget": "Piriform.Speccy",
     "choco": "speccy",
     "scoop": "none",
@@ -1491,8 +1491,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "FurMark",
-    "Description": "A graphics card stress testing and benchmarking utility that helps users test the stability, cooling, and performance of their GPU by rendering a highly intensive 3D graphics scene.",
+    "name": "FurMark",
+    "description": "A graphics card stress testing and benchmarking utility that helps users test the stability, cooling, and performance of their GPU by rendering a highly intensive 3D graphics scene.",
     "winget": "Geeks3D.FurMark",
     "choco": "furmark",
     "scoop": "none",
@@ -1508,8 +1508,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Hard Disk Sentinel",
-    "Description": "A hard disk monitoring and analysis software that helps users monitor the health, performance, and temperature of their hard drives, SSDs, and other storage devices.",
+    "name": "Hard Disk Sentinel",
+    "description": "A hard disk monitoring and analysis software that helps users monitor the health, performance, and temperature of their hard drives, SSDs, and other storage devices.",
     "winget": "JanosMathe.HardDiskSentinelPro",
     "choco": "hdsentinel",
     "scoop": "none",
@@ -1525,8 +1525,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "CPU-Z",
-    "Description": "A system monitoring utility that provides detailed information about the CPU, motherboard, memory, and other hardware components of a computer system.",
+    "name": "CPU-Z",
+    "description": "A system monitoring utility that provides detailed information about the CPU, motherboard, memory, and other hardware components of a computer system.",
     "winget": "CPUID.CPU-Z",
     "choco": "cpu-z",
     "scoop": "none",
@@ -1542,8 +1542,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Mem Reduct",
-    "Description": "Lightweight real-time memory management application to monitor and clean system memory on your computer.",
+    "name": "Mem Reduct",
+    "description": "Lightweight real-time memory management application to monitor and clean system memory on your computer.",
     "winget": "Henry++.MemReduct",
     "choco": "memreduct",
     "scoop": "none",
@@ -1559,8 +1559,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "HandBrake",
-    "Description": "A free and open-source video transcoder tool that converts video files from one format to another, supporting a wide range of input and output formats.",
+    "name": "HandBrake",
+    "description": "A free and open-source video transcoder tool that converts video files from one format to another, supporting a wide range of input and output formats.",
     "winget": "HandBrake.HandBrake",
     "choco": "handbrake.install",
     "scoop": "none",
@@ -1576,8 +1576,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Rufus Portable",
-    "Description": "A utility tool for creating bootable USB drives from ISO images, helping users to install or run operating systems, such as Windows, Linux, or other utilities.",
+    "name": "Rufus Portable",
+    "description": "A utility tool for creating bootable USB drives from ISO images, helping users to install or run operating systems, such as Windows, Linux, or other utilities.",
     "winget": "Rufus.Rufus",
     "choco": "rufus",
     "scoop": "none",
@@ -1594,8 +1594,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "ImgBurn",
-    "Description": "Lightweight CD / DVD burning application ",
+    "name": "ImgBurn",
+    "description": "Lightweight CD / DVD burning application ",
     "winget": "LIGHTNINGUK.ImgBurn",
     "choco": "imgburn",
     "scoop": "none",
@@ -1611,8 +1611,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Virtual CloneDrive",
-    "Description": "A free software that allows users to mount disc images as virtual drives, enabling them to access the content of ISO, BIN, and CCD files without the need for physical discs.",
+    "name": "Virtual CloneDrive",
+    "description": "A free software that allows users to mount disc images as virtual drives, enabling them to access the content of ISO, BIN, and CCD files without the need for physical discs.",
     "winget": "none",
     "choco": "virtualclonedrive",
     "scoop": "none",
@@ -1628,8 +1628,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Ultra ISO",
-    "Description": "A powerful ISO image management tool that enables users to create, edit, extract, and burn ISO files, providing a comprehensive solution for managing disk image files.",
+    "name": "Ultra ISO",
+    "description": "A powerful ISO image management tool that enables users to create, edit, extract, and burn ISO files, providing a comprehensive solution for managing disk image files.",
     "winget": "EZBSystems.UltraISO",
     "choco": "ultraiso",
     "scoop": "none",
@@ -1645,8 +1645,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Ventoy",
-    "Description": "An open-source tool for creating bootable USB drives with multiple ISO files, allowing users to boot various operating systems or utilities directly from a single USB drive.",
+    "name": "Ventoy",
+    "description": "An open-source tool for creating bootable USB drives with multiple ISO files, allowing users to boot various operating systems or utilities directly from a single USB drive.",
     "winget": "Ventoy.Ventoy",
     "choco": "ventoy",
     "scoop": "none",
@@ -1662,8 +1662,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "iVentoy",
-    "Description": "With iVentoy you can boot and install OS on multiple machines at the same time through the network.",
+    "name": "iVentoy",
+    "description": "With iVentoy you can boot and install OS on multiple machines at the same time through the network.",
     "winget": "none",
     "choco": "iventoy",
     "scoop": "none",
@@ -1679,8 +1679,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "AutoHotkey",
-    "Description": "A scripting language for automating repetitive tasks and creating macros on Windows, allowing users to customize keyboard shortcuts, remap keys, and automate mouse actions.",
+    "name": "AutoHotkey",
+    "description": "A scripting language for automating repetitive tasks and creating macros on Windows, allowing users to customize keyboard shortcuts, remap keys, and automate mouse actions.",
     "winget": "AutoHotkey.AutoHotkey",
     "choco": "autohotkey",
     "scoop": "none",
@@ -1696,8 +1696,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Rainmeter",
-    "Description": "A customizable desktop customization tool that displays customizable skins, widgets, and applets on the Windows desktop, providing users with real-time system monitoring and information.",
+    "name": "Rainmeter",
+    "description": "A customizable desktop customization tool that displays customizable skins, widgets, and applets on the Windows desktop, providing users with real-time system monitoring and information.",
     "winget": "Rainmeter.Rainmeter",
     "choco": "rainmeter",
     "scoop": "none",
@@ -1713,8 +1713,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "FxSound",
-    "Description": "An audio enhancer software that improves the sound quality of music, videos, and games on Windows PCs by providing advanced audio processing and customization options.",
+    "name": "FxSound",
+    "description": "An audio enhancer software that improves the sound quality of music, videos, and games on Windows PCs by providing advanced audio processing and customization options.",
     "winget": "FxSoundLLC.FxSound",
     "choco": "fxsound",
     "scoop": "none",
@@ -1731,8 +1731,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Vysor",
-    "Description": "A screen mirroring and remote control software that enables users to view and control Android devices from Windows PCs, allowing for easy screen sharing, app testing, and troubleshooting.",
+    "name": "Vysor",
+    "description": "A screen mirroring and remote control software that enables users to view and control Android devices from Windows PCs, allowing for easy screen sharing, app testing, and troubleshooting.",
     "winget": "Vysor.Vysor",
     "choco": "vysor",
     "scoop": "none",
@@ -1748,8 +1748,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Unified Remote",
-    "Description": "A remote control app that turns smartphones into universal remote controls for Windows, macOS, and Linux computers, allowing users to control media playback, presentations, and more.",
+    "name": "Unified Remote",
+    "description": "A remote control app that turns smartphones into universal remote controls for Windows, macOS, and Linux computers, allowing users to control media playback, presentations, and more.",
     "winget": "UnifiedIntents.UnifiedRemote",
     "choco": "unifiedremote",
     "scoop": "none",
@@ -1765,8 +1765,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "AnyDesk",
-    "Description": "A remote desktop software that allows users to access and control Windows, macOS, Linux, Android, and iOS devices from anywhere, providing secure and reliable remote access.",
+    "name": "AnyDesk",
+    "description": "A remote desktop software that allows users to access and control Windows, macOS, Linux, Android, and iOS devices from anywhere, providing secure and reliable remote access.",
     "winget": "AnyDeskSoftwareGmbH.AnyDesk",
     "choco": "anydesk",
     "scoop": "none",
@@ -1782,8 +1782,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Airdroid",
-    "Description": "AirDroid is a free and fast Android device manager app that allows you to access Android phone/tablet from computer remotely and securely. Manage SMS, files, photos and videos, WhatsApp, Line, WeChat and more on computer.",
+    "name": "Airdroid",
+    "description": "AirDroid is a free and fast Android device manager app that allows you to access Android phone/tablet from computer remotely and securely. Manage SMS, files, photos and videos, WhatsApp, Line, WeChat and more on computer.",
     "winget": "AirDroid.AirDroid",
     "choco": "airdroid",
     "scoop": "none",
@@ -1799,8 +1799,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "UltraViewer",
-    "Description": "Remote control to support your clients / partners from everywhere.",
+    "name": "UltraViewer",
+    "description": "Remote control to support your clients / partners from everywhere.",
     "winget": "DucFabulous.UltraViewer",
     "choco": "ultraviewer",
     "scoop": "none",
@@ -1816,8 +1816,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Wireless Network Watcher Portable",
-    "Description": "Wireless Network Watcher is a small utility that scans your wireless network and displays the list of all computers and devices that are currently connected to your network.",
+    "name": "Wireless Network Watcher Portable",
+    "description": "Wireless Network Watcher is a small utility that scans your wireless network and displays the list of all computers and devices that are currently connected to your network.",
     "winget": "NirSoft.WirelessNetworkWatcher",
     "choco": "wnetwatcher.portable",
     "scoop": "none",
@@ -1833,8 +1833,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "WifiInfoView",
-    "Description": "Wireless Network Watcher is a small utility that scans your wireless network and displays the list of all computers and devices that are currently connected to your network.",
+    "name": "WifiInfoView",
+    "description": "Wireless Network Watcher is a small utility that scans your wireless network and displays the list of all computers and devices that are currently connected to your network.",
     "winget": "NirSoft.WifiInfoView",
     "choco": "wifiinfoview",
     "scoop": "none",
@@ -1850,8 +1850,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "qBittorrent",
-    "Description": "A free and open-source BitTorrent client for downloading and uploading files via the BitTorrent protocol, providing users with a lightweight and feature-rich torrenting experience.",
+    "name": "qBittorrent",
+    "description": "A free and open-source BitTorrent client for downloading and uploading files via the BitTorrent protocol, providing users with a lightweight and feature-rich torrenting experience.",
     "winget": "qBittorrent.qBittorrent",
     "choco": "qbittorrent",
     "scoop": "none",
@@ -1868,8 +1868,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Google Earth Pro",
-    "Description": "Google Earth Pro on desktop is free for users with advanced feature needs. Import and export GIS data, and go back in time with historical imagery.",
+    "name": "Google Earth Pro",
+    "description": "Google Earth Pro on desktop is free for users with advanced feature needs. Import and export GIS data, and go back in time with historical imagery.",
     "winget": "Google.EarthPro",
     "choco": "googleearthpro",
     "scoop": "none",
@@ -1885,8 +1885,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "XAMPP",
-    "Description": "XAMPP is a free and open-source cross-platform web server solution stack package developed by Apache Friends, consisting mainly of the Apache HTTP Server, MariaDB database, and interpreters for scripts written in the PHP and Perl programming languages.",
+    "name": "XAMPP",
+    "description": "XAMPP is a free and open-source cross-platform web server solution stack package developed by Apache Friends, consisting mainly of the Apache HTTP Server, MariaDB database, and interpreters for scripts written in the PHP and Perl programming languages.",
     "winget": "ApacheFriends.Xampp.8.2",
     "choco": "xampp-81",
     "scoop": "none",
@@ -1902,8 +1902,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Visual Studio Professional 2022",
-    "Description": "Visual Studio Professional 2022 is an integrated development environment (IDE) from Microsoft. It is used to develop computer programs, websites, web apps, web services, and mobile apps.",
+    "name": "Visual Studio Professional 2022",
+    "description": "Visual Studio Professional 2022 is an integrated development environment (IDE) from Microsoft. It is used to develop computer programs, websites, web apps, web services, and mobile apps.",
     "winget": "Microsoft.VisualStudio.2022.Professional",
     "choco": "visualstudio2022professional",
     "scoop": "none",
@@ -1919,8 +1919,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Visual Studio Community 2022",
-    "Description": "Visual Studio Community 2022 is a free, fully-featured, and extensible IDE for individual developers, open source projects, academic research, education, and small professional teams.",
+    "name": "Visual Studio Community 2022",
+    "description": "Visual Studio Community 2022 is a free, fully-featured, and extensible IDE for individual developers, open source projects, academic research, education, and small professional teams.",
     "winget": "Microsoft.VisualStudio.2022.Community",
     "choco": "visualstudio2022community",
     "scoop": "none",
@@ -1936,8 +1936,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Unity Hub",
-    "Description": "Unity is a cross-platform game creation system developed by Unity Technologies and used to develop video games for PC, consoles, mobile",
+    "name": "Unity Hub",
+    "description": "Unity is a cross-platform game creation system developed by Unity Technologies and used to develop video games for PC, consoles, mobile",
     "winget": "Unity.UnityHub",
     "choco": "unity-hub",
     "scoop": "none",
@@ -1953,8 +1953,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Godot Engine",
-    "Description": "Godot is a feature-packed, cross-platform game engine for creating 2D and 3D games. It provides a comprehensive set of tools and features to develop games efficiently and quickly.",
+    "name": "Godot Engine",
+    "description": "Godot is a feature-packed, cross-platform game engine for creating 2D and 3D games. It provides a comprehensive set of tools and features to develop games efficiently and quickly.",
     "winget": "GodotEngine.GodotEngine",
     "choco": "godot",
     "scoop": "none",
@@ -1970,8 +1970,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Unity3D Engine",
-    "Description": "Unity is a cross-platform game creation system developed by Unity Technologies and used to develop video games for PC, consoles, mobile",
+    "name": "Unity3D Engine",
+    "description": "Unity is a cross-platform game creation system developed by Unity Technologies and used to develop video games for PC, consoles, mobile",
     "winget": "Unity.Unity.2020",
     "choco": "unity",
     "scoop": "none",
@@ -1987,8 +1987,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Blender",
-    "Description": "Blender is a free and open-source professional-grade 3D computer graphics and video compositing program.",
+    "name": "Blender",
+    "description": "Blender is a free and open-source professional-grade 3D computer graphics and video compositing program.",
     "winget": "BlenderFoundation.Blender",
     "choco": "blender",
     "scoop": "none",
@@ -2004,8 +2004,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Visual Studio Code",
-    "Description": "Visual Studio Code is a free source-code editor developed by Microsoft for Windows, Linux, and macOS. It includes support for debugging, embedded Git control, syntax highlighting, intelligent code completion, snippets, and code refactoring.",
+    "name": "Visual Studio Code",
+    "description": "Visual Studio Code is a free source-code editor developed by Microsoft for Windows, Linux, and macOS. It includes support for debugging, embedded Git control, syntax highlighting, intelligent code completion, snippets, and code refactoring.",
     "winget": "Microsoft.VisualStudioCode",
     "choco": "vscode",
     "scoop": "none",
@@ -2021,8 +2021,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Vim",
-    "Description": "Vim is an advanced text editor that seeks to provide the power of the de-facto Unix editor ''Vi'', with a more complete feature set. It''s us... Keep Reading ",
+    "name": "Vim",
+    "description": "Vim is an advanced text editor that seeks to provide the power of the de-facto Unix editor ''Vi'', with a more complete feature set. It''s us... Keep Reading ",
     "winget": "vim.vim",
     "choco": "vim",
     "scoop": "none",
@@ -2038,8 +2038,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Sublime Text 4",
-    "Description": "Sublime Text 4 - The sophisticated text editor for code, markup and prose. ",
+    "name": "Sublime Text 4",
+    "description": "Sublime Text 4 - The sophisticated text editor for code, markup and prose. ",
     "winget": "SublimeHQ.SublimeText.4",
     "choco": "sublimetext4",
     "scoop": "none",
@@ -2055,8 +2055,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Atom",
-    "Description": "Atom is a text editor that''s modern, approachable, yet hackable to the core—a tool you can customize to do anything but also use productively without ever touching a config file.",
+    "name": "Atom",
+    "description": "Atom is a text editor that''s modern, approachable, yet hackable to the core—a tool you can customize to do anything but also use productively without ever touching a config file.",
     "winget": "GitHub.Atom",
     "choco": "atom",
     "scoop": "none",
@@ -2072,8 +2072,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "InnoSetup",
-    "Description": "Inno Setup is a free installer for Windows programs. First introduced in 1997, Inno Setup today rivals and even surpasses many commercial installers in feature set and stability.",
+    "name": "InnoSetup",
+    "description": "Inno Setup is a free installer for Windows programs. First introduced in 1997, Inno Setup today rivals and even surpasses many commercial installers in feature set and stability.",
     "winget": "JRSoftware.InnoSetup",
     "choco": "innosetup",
     "scoop": "none",
@@ -2089,8 +2089,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "PyCharm Community Edition",
-    "Description": "PyCharm Community Edition is a free and open-source IDE for Python development. It provides smart code completion, code inspections, on-the-fly error highlighting, and quick-fixes.",
+    "name": "PyCharm Community Edition",
+    "description": "PyCharm Community Edition is a free and open-source IDE for Python development. It provides smart code completion, code inspections, on-the-fly error highlighting, and quick-fixes.",
     "winget": "JetBrains.PyCharm.Community",
     "choco": "pycharm-community",
     "scoop": "none",
@@ -2106,8 +2106,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "PyCharm Professional Edition",
-    "Description": "PyCharm Professional Edition is a powerful IDE for professional Python development. It includes advanced features such as database tools, web development support, and scientific tools integration.",
+    "name": "PyCharm Professional Edition",
+    "description": "PyCharm Professional Edition is a powerful IDE for professional Python development. It includes advanced features such as database tools, web development support, and scientific tools integration.",
     "winget": "JetBrains.PyCharm.Professional",
     "choco": "pycharm",
     "scoop": "none",
@@ -2123,8 +2123,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Jetbrains Rider",
-    "Description": "Rider is a cross-platform .NET IDE developed by JetBrains. It supports C#, VB.NET, F#, ASP.NET, JavaScript, TypeScript, HTML, CSS, and SQL languages and frameworks.",
+    "name": "Jetbrains Rider",
+    "description": "Rider is a cross-platform .NET IDE developed by JetBrains. It supports C#, VB.NET, F#, ASP.NET, JavaScript, TypeScript, HTML, CSS, and SQL languages and frameworks.",
     "winget": "JetBrains.Rider",
     "choco": "jetbrains-rider",
     "scoop": "none",
@@ -2140,8 +2140,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Node.js LTS",
-    "Description": "Node.js is a JavaScript runtime built on Chrome''s V8 JavaScript engine. LTS (Long Term Support) releases are supported for an extended period and provide stability for production environments.",
+    "name": "Node.js LTS",
+    "description": "Node.js is a JavaScript runtime built on Chrome''s V8 JavaScript engine. LTS (Long Term Support) releases are supported for an extended period and provide stability for production environments.",
     "winget": "OpenJS.NodeJS.LTS",
     "choco": "nodejs-lts",
     "scoop": "none",
@@ -2157,8 +2157,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Electrum-LTS",
-    "Description": "Electrum is a lightweight Bitcoin wallet focused on speed and simplicity, with support for hardware wallets and multisig functionality. LTS (Long Term Support) releases provide stability and security updates for an extended period.",
+    "name": "Electrum-LTS",
+    "description": "Electrum is a lightweight Bitcoin wallet focused on speed and simplicity, with support for hardware wallets and multisig functionality. LTS (Long Term Support) releases provide stability and security updates for an extended period.",
     "winget": "Electrum.Electrum",
     "choco": "electronim",
     "scoop": "none",
@@ -2174,8 +2174,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Hugo",
-    "Description": "Hugo is one of the most popular open-source static site generators. With its amazing speed and flexibility, Hugo makes building websites f... Keep Reading ",
+    "name": "Hugo",
+    "description": "Hugo is one of the most popular open-source static site generators. With its amazing speed and flexibility, Hugo makes building websites f... Keep Reading ",
     "winget": "Hugo.Hugo",
     "choco": "hugo",
     "scoop": "none",
@@ -2191,8 +2191,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Hugo Extended",
-    "Description": "Hugo is one of the most popular open-source static site generators. With its amazing speed and flexibility, Hugo makes building websites f... Keep Reading ",
+    "name": "Hugo Extended",
+    "description": "Hugo is one of the most popular open-source static site generators. With its amazing speed and flexibility, Hugo makes building websites f... Keep Reading ",
     "winget": "Hugo.Hugo.Extended",
     "choco": "hugo-extended",
     "scoop": "none",
@@ -2208,8 +2208,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Notepad++",
-    "Description": "Notepad++ is a free source code editor and Notepad replacement that supports several languages. It offers syntax highlighting, code folding, auto-completion, and other features for efficient code editing.",
+    "name": "Notepad++",
+    "description": "Notepad++ is a free source code editor and Notepad replacement that supports several languages. It offers syntax highlighting, code folding, auto-completion, and other features for efficient code editing.",
     "winget": "Notepad++.Notepad++",
     "choco": "notepadplusplus",
     "scoop": "none",
@@ -2225,8 +2225,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Windows Terminal",
-    "Description": "Windows Terminal is a modern terminal application for users of command-line tools and shells like Command Prompt, PowerShell, and Windows Subsystem for Linux (WSL). It provides multiple tabs, custom themes, and GPU-accelerated text rendering.",
+    "name": "Windows Terminal",
+    "description": "Windows Terminal is a modern terminal application for users of command-line tools and shells like Command Prompt, PowerShell, and Windows Subsystem for Linux (WSL). It provides multiple tabs, custom themes, and GPU-accelerated text rendering.",
     "winget": "Microsoft.WindowsTerminal",
     "choco": "microsoft-windows-terminal",
     "scoop": "none",
@@ -2242,8 +2242,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Powershell 7",
-    "Description": "PowerShell Core is a cross-platform (Windows, Linux, and macOS) automation and configuration tool/framework that works well with your existing tools and is optimized for dealing with structured data (e.g., JSON, CSV, XML, etc.), REST APIs, and object models.",
+    "name": "Powershell 7",
+    "description": "PowerShell Core is a cross-platform (Windows, Linux, and macOS) automation and configuration tool/framework that works well with your existing tools and is optimized for dealing with structured data (e.g., JSON, CSV, XML, etc.), REST APIs, and object models.",
     "winget": "Microsoft.PowerShell",
     "choco": "powershell-core",
     "scoop": "none",
@@ -2259,8 +2259,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "x64dbg Portable",
-    "Description": "An open-source x64/x32 debugger for windows.",
+    "name": "x64dbg Portable",
+    "description": "An open-source x64/x32 debugger for windows.",
     "winget": "none",
     "choco": "x64dbg.portable",
     "scoop": "none",
@@ -2276,8 +2276,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "dnSpy",
-    "Description": "dnSpy is a tool to reverse engineer .NET assemblies. It includes a decompiler, a debugger and an assembly editor (and more) and can be easily extended by writing your own extension. It uses dnlib to read and write assemblies so it can handle obfuscated assemblies (eg. malware) without crashing.",
+    "name": "dnSpy",
+    "description": "dnSpy is a tool to reverse engineer .NET assemblies. It includes a decompiler, a debugger and an assembly editor (and more) and can be easily extended by writing your own extension. It uses dnlib to read and write assemblies so it can handle obfuscated assemblies (eg. malware) without crashing.",
     "winget": "dnSpyEx.dnSpy",
     "choco": "dnspy",
     "scoop": "none",
@@ -2293,8 +2293,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Cheat Engine",
-    "Description": "Cheat Engine is an open source tool designed to help you modify single player games.",
+    "name": "Cheat Engine",
+    "description": "Cheat Engine is an open source tool designed to help you modify single player games.",
     "winget": "none",
     "choco": "cheatengine",
     "scoop": "none",
@@ -2310,8 +2310,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Python 3.9",
-    "Description": "Python is a popular high-level programming language known for its simplicity and versatility. It is used in various fields such as web development, data science, machine learning, and automation.",
+    "name": "Python 3.9",
+    "description": "Python is a popular high-level programming language known for its simplicity and versatility. It is used in various fields such as web development, data science, machine learning, and automation.",
     "winget": "Python.Python.3.9",
     "choco": "python",
     "scoop": "none",
@@ -2327,8 +2327,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Git",
-    "Description": "Git is a free and open-source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.",
+    "name": "Git",
+    "description": "Git is a free and open-source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.",
     "winget": "Git.Git",
     "choco": "git",
     "scoop": "none",
@@ -2344,8 +2344,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "GitHub Desktop",
-    "Description": "GitHub Desktop is a seamless way to contribute to projects on GitHub and GitHub Enterprise. It provides an intuitive interface for managing repositories, branching, committing, and merging code changes.",
+    "name": "GitHub Desktop",
+    "description": "GitHub Desktop is a seamless way to contribute to projects on GitHub and GitHub Enterprise. It provides an intuitive interface for managing repositories, branching, committing, and merging code changes.",
     "winget": "GitHub.GitHubDesktop",
     "choco": "github-desktop",
     "scoop": "none",
@@ -2361,8 +2361,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Docker Desktop",
-    "Description": "Docker Desktop is an easy-to-install application for Windows and macOS that enables developers to build, share, and run containerized applications and microservices locally.",
+    "name": "Docker Desktop",
+    "description": "Docker Desktop is an easy-to-install application for Windows and macOS that enables developers to build, share, and run containerized applications and microservices locally.",
     "winget": "Docker.DockerDesktop",
     "choco": "docker-desktop",
     "scoop": "none",
@@ -2378,8 +2378,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Docker Compose",
-    "Description": "Docker Compose is a tool for defining and running multi-container Docker applications. It allows you to use a YAML file to configure your application''s services, networks, and volumes.",
+    "name": "Docker Compose",
+    "description": "Docker Compose is a tool for defining and running multi-container Docker applications. It allows you to use a YAML file to configure your application''s services, networks, and volumes.",
     "winget": "Docker.DockerCompose",
     "choco": "docker-compose",
     "scoop": "none",
@@ -2395,8 +2395,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "PowerToys",
-    "Description": "PowerToys is a set of utilities for power users to tune and streamline their Windows experience for greater productivity. It includes tools like FancyZones for window management, PowerRename for batch renaming files, and more.",
+    "name": "PowerToys",
+    "description": "PowerToys is a set of utilities for power users to tune and streamline their Windows experience for greater productivity. It includes tools like FancyZones for window management, PowerRename for batch renaming files, and more.",
     "winget": "Microsoft.PowerToys",
     "choco": "powertoys",
     "scoop": "none",
@@ -2412,8 +2412,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Notion",
-    "Description": "The all-in-one workspace for your notes, tasks, wikis, and databases.",
+    "name": "Notion",
+    "description": "The all-in-one workspace for your notes, tasks, wikis, and databases.",
     "winget": "Notion.Notion",
     "choco": "notion",
     "scoop": "none",
@@ -2429,8 +2429,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "FL Studio",
-    "Description": "FL Studio is a digital audio workstation (DAW) developed by Image-Line. It allows you to compose, arrange, record, edit, mix, and master professional-quality music.",
+    "name": "FL Studio",
+    "description": "FL Studio is a digital audio workstation (DAW) developed by Image-Line. It allows you to compose, arrange, record, edit, mix, and master professional-quality music.",
     "winget": "ImageLine.FLStudio",
     "choco": "ImageLine.FLStudio",
     "scoop": "none",
@@ -2446,8 +2446,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Android Debug Bridge",
-    "Description": "Android Debug Bridge (ADB) is a command-line tool that allows you to communicate with an Android device. It is used for various debugging tasks such as installing and debugging apps.",
+    "name": "Android Debug Bridge",
+    "description": "Android Debug Bridge (ADB) is a command-line tool that allows you to communicate with an Android device. It is used for various debugging tasks such as installing and debugging apps.",
     "winget": "none",
     "choco": "adb",
     "scoop": "none",
@@ -2463,8 +2463,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Universal ADB Drivers",
-    "Description": "Universal ADB Drivers are drivers that provide compatibility with a wide range of Android devices for debugging purposes. They allow you to connect your Android device to a computer and use ADB commands.",
+    "name": "Universal ADB Drivers",
+    "description": "Universal ADB Drivers are drivers that provide compatibility with a wide range of Android devices for debugging purposes. They allow you to connect your Android device to a computer and use ADB commands.",
     "winget": "none",
     "choco": "universal-adb-drivers",
     "scoop": "none",
@@ -2480,8 +2480,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Scrcpy",
-    "Description": "Scrcpy is a free and open-source tool that allows you to display and control your Android device from a computer. It provides high-performance screen mirroring and supports various input methods.",
+    "name": "Scrcpy",
+    "description": "Scrcpy is a free and open-source tool that allows you to display and control your Android device from a computer. It provides high-performance screen mirroring and supports various input methods.",
     "winget": "Genymobile.scrcpy",
     "choco": "scrcpy",
     "scoop": "none",
@@ -2497,8 +2497,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "VirtualBox",
-    "Description": "VirtualBox is a cross-platform virtualization application. It installs on existing Intel or AMD-based computers, whether they are running Windows, Mac, Linux or Solaris operating systems. It extends the capabilities of your existing computer so that it can run multiple operating systems (inside multiple virtual machines) at the same time.",
+    "name": "VirtualBox",
+    "description": "VirtualBox is a cross-platform virtualization application. It installs on existing Intel or AMD-based computers, whether they are running Windows, Mac, Linux or Solaris operating systems. It extends the capabilities of your existing computer so that it can run multiple operating systems (inside multiple virtual machines) at the same time.",
     "winget": "Oracle.VirtualBox",
     "choco": "virtualbox",
     "scoop": "none",
@@ -2514,8 +2514,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Oh My Posh",
-    "Description": " Oh my Posh is a custom prompt engine for any shell that has the ability to adjust the prompt string with a function or variable.",
+    "name": "Oh My Posh",
+    "description": " Oh my Posh is a custom prompt engine for any shell that has the ability to adjust the prompt string with a function or variable.",
     "winget": "JanDeDobbeleer.OhMyPosh",
     "choco": "oh-my-posh",
     "scoop": "none",
@@ -2531,8 +2531,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Malwarebytes",
-    "Description": "Multiple layers of malware-crushing tech, including virus protection. Thorough malware and spyware removal. Specialized ransomware protection.",
+    "name": "Malwarebytes",
+    "description": "Multiple layers of malware-crushing tech, including virus protection. Thorough malware and spyware removal. Specialized ransomware protection.",
     "winget": "Malwarebytes.Malwarebytes",
     "choco": "malwarebytes",
     "scoop": "none",
@@ -2548,8 +2548,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Avast Free Antivirus",
-    "Description": "Avast Free Antivirus.",
+    "name": "Avast Free Antivirus",
+    "description": "Avast Free Antivirus.",
     "winget": "XPDNZJFNCR1B07",
     "scoop": "none",
     "default": [
@@ -2565,8 +2565,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Nerd Fonts - CascadiaCode",
-    "Description": "Nerd Fonts is a project that patches developer targeted fonts with a high number of glyphs (icons).",
+    "name": "Nerd Fonts - CascadiaCode",
+    "description": "Nerd Fonts is a project that patches developer targeted fonts with a high number of glyphs (icons).",
     "winget": "none",
     "choco": "nerd-fonts-cascadiacode",
     "scoop": "none",
@@ -2582,8 +2582,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Java SE Runtime Environment 8.0.411",
-    "Description": "Java allows you to play online games, chat with people around the world, calculate your mortgage interest, and view images in 3D, just to name a few. It''s also integral to the intranet applications and other e-business solutions that are the foundation of corporate computing. Please note you now need a Java License from Oracle to use unless installed for Personal Use and Development Use.",
+    "name": "Java SE Runtime Environment 8.0.411",
+    "description": "Java allows you to play online games, chat with people around the world, calculate your mortgage interest, and view images in 3D, just to name a few. It''s also integral to the intranet applications and other e-business solutions that are the foundation of corporate computing. Please note you now need a Java License from Oracle to use unless installed for Personal Use and Development Use.",
     "winget": "none",
     "choco": "jre8",
     "scoop": "none",
@@ -2599,8 +2599,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Audacity",
-    "Description": "Audacity is free, open source, cross-platform software for recording and editing sounds.",
+    "name": "Audacity",
+    "description": "Audacity is free, open source, cross-platform software for recording and editing sounds.",
     "winget": "Audacity.Audacity",
     "choco": "audacity",
     "scoop": "none",
@@ -2616,8 +2616,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "MusicBee",
-    "Description": "MusicBee makes it easy to organize, find and play music files on your computer, on portable devices and on the web.",
+    "name": "MusicBee",
+    "description": "MusicBee makes it easy to organize, find and play music files on your computer, on portable devices and on the web.",
     "winget": "MusicBee.MusicBee",
     "choco": "musicbee",
     "scoop": "none",
@@ -2633,8 +2633,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Format Factory",
-    "Description": "multifunctional media processing tools",
+    "name": "Format Factory",
+    "description": "multifunctional media processing tools",
     "winget": "none",
     "choco": "formatfactory",
     "scoop": "none",
@@ -2650,8 +2650,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Winaero Tweaker",
-    "Description": "Customize the appearance and behavior of the Windows operating system",
+    "name": "Winaero Tweaker",
+    "description": "Customize the appearance and behavior of the Windows operating system",
     "winget": "none",
     "choco": "winaero-tweaker",
     "scoop": "none",
@@ -2667,8 +2667,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Windows Subsystem for Linux WSL2",
-    "Description": "To install Windows Subsystem for Linux 2, run the following command from the command line or from PowerShell:",
+    "name": "Windows Subsystem for Linux WSL2",
+    "description": "To install Windows Subsystem for Linux 2, run the following command from the command line or from PowerShell:",
     "winget": "Microsoft.WSL",
     "choco": "wsl2",
     "scoop": "none",
@@ -2684,8 +2684,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Wamp Server 3.3.5",
-    "Description": "WampServer is a Windows web development environment. It allows you to create web applications.",
+    "name": "Wamp Server 3.3.5",
+    "description": "WampServer is a Windows web development environment. It allows you to create web applications.",
     "winget": "none",
     "choco": "wamp-server",
     "scoop": "none",
@@ -2701,8 +2701,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "MongoDB",
-    "Description": "MongoDB stores data using a flexible document data model that is similar to JSON. Documents contain one or more fields, including arrays, binary data and sub-documents. Fields can vary from document to document. This flexibility allows development teams to evolve the data model rapidly as their application requirements change.",
+    "name": "MongoDB",
+    "description": "MongoDB stores data using a flexible document data model that is similar to JSON. Documents contain one or more fields, including arrays, binary data and sub-documents. Fields can vary from document to document. This flexibility allows development teams to evolve the data model rapidly as their application requirements change.",
     "winget": "MongoDB.Server",
     "choco": "mongodb",
     "scoop": "none",
@@ -2718,8 +2718,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "MPC-BE",
-    "Description": "Media Player Classic - BE is a free and open source audio and video player for Windows.",
+    "name": "MPC-BE",
+    "description": "Media Player Classic - BE is a free and open source audio and video player for Windows.",
     "winget": " MPC-BE.MPC-BE",
     "choco": "mpc-be",
     "scoop": "none",
@@ -2735,8 +2735,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Kdenlive",
-    "Description": "A powerful non-linear video editor",
+    "name": "Kdenlive",
+    "description": "A powerful non-linear video editor",
     "winget": "KDE.Kdenlive",
     "choco": "kdenlive",
     "scoop": "none",
@@ -2752,8 +2752,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "TablePlus",
-    "Description": "Modern, native, and friendly GUI tool for relational databases: MySQL, PostgreSQL, SQLite, MongoDB, Redis, and more.",
+    "name": "TablePlus",
+    "description": "Modern, native, and friendly GUI tool for relational databases: MySQL, PostgreSQL, SQLite, MongoDB, Redis, and more.",
     "winget": "TablePlus.TablePlus",
     "choco": "tableplus",
     "scoop": "none",
@@ -2769,8 +2769,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Hosts File Editor",
-    "Description": "Hosts File Editor makes it easy to change your hosts file as well as archive multiple versions for easy retrieval.",
+    "name": "Hosts File Editor",
+    "description": "Hosts File Editor makes it easy to change your hosts file as well as archive multiple versions for easy retrieval.",
     "winget": "scottlerch.hosts-file-editor",
     "choco": "hosts.editor",
     "scoop": "none",
@@ -2786,8 +2786,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Subtitle Edit",
-    "Description": "With SE you can easily adjust a subtitle if it is out of sync with the video in several different ways. You can also use SE for making new subtitles from scratch (do use the time-line/waveform/spectrogram) or translating subtitles.",
+    "name": "Subtitle Edit",
+    "description": "With SE you can easily adjust a subtitle if it is out of sync with the video in several different ways. You can also use SE for making new subtitles from scratch (do use the time-line/waveform/spectrogram) or translating subtitles.",
     "winget": "9NWH51GWJTKN",
     "choco": "subtitleedit",
     "scoop": "none",
@@ -2803,8 +2803,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Skype",
-    "Description": "Skype - Install Skype, add your friends as contacts, then call, video call and instant message with them for free. Call people who aren''t on Skype too, at really low rates.",
+    "name": "Skype",
+    "description": "Skype - Install Skype, add your friends as contacts, then call, video call and instant message with them for free. Call people who aren''t on Skype too, at really low rates.",
     "winget": "Microsoft.Skype",
     "choco": "skype",
     "scoop": "none",
@@ -2820,8 +2820,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "FileZilla",
-    "Description": "FileZilla Client is a fast and reliable cross-platform FTP, FTPS and SFTP client with lots of useful features and an intuitive graphical user interface.",
+    "name": "FileZilla",
+    "description": "FileZilla Client is a fast and reliable cross-platform FTP, FTPS and SFTP client with lots of useful features and an intuitive graphical user interface.",
     "winget": "none",
     "choco": "filezilla",
     "scoop": "none",
@@ -2837,8 +2837,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Everything",
-    "Description": "Everything Search Engine - locate files and folders by name instantly",
+    "name": "Everything",
+    "description": "Everything Search Engine - locate files and folders by name instantly",
     "winget": "voidtools.Everything",
     "choco": "everything",
     "scoop": "none",
@@ -2854,8 +2854,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Yarn",
-    "Description": "Yarn is a package manager for the npm and bower registries with a few specific focuses.",
+    "name": "Yarn",
+    "description": "Yarn is a package manager for the npm and bower registries with a few specific focuses.",
     "winget": "Yarn.Yarn",
     "choco": "yarn",
     "scoop": "none",
@@ -2871,8 +2871,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "VMware Workstation Player",
-    "Description": "VMware Workstation Player™ is a streamlined desktop virtualization application that runs another operating system on the same computer without rebooting. VMware Workstation Player provides a simple user interface, unmatched operating system support, and portability across the VMware ecosystem.",
+    "name": "VMware Workstation Player",
+    "description": "VMware Workstation Player™ is a streamlined desktop virtualization application that runs another operating system on the same computer without rebooting. VMware Workstation Player provides a simple user interface, unmatched operating system support, and portability across the VMware ecosystem.",
     "winget": "none",
     "choco": "vmware-workstation-player",
     "scoop": "none",
@@ -2888,8 +2888,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "HDD Low Level Format Tool",
-    "Description": "Will erase, Low-Level Format and re-certify a SATA, IDE or SCSI hard disk drive with any size of up to 281 474 976 710 655 bytes.",
+    "name": "HDD Low Level Format Tool",
+    "description": "Will erase, Low-Level Format and re-certify a SATA, IDE or SCSI hard disk drive with any size of up to 281 474 976 710 655 bytes.",
     "winget": "none",
     "choco": "llftool",
     "scoop": "none",
@@ -2905,8 +2905,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "BlueStacks",
-    "Description": "Play Android Games on PC.",
+    "name": "BlueStacks",
+    "description": "Play Android Games on PC.",
     "winget": "BlueStack.BlueStacks",
     "choco": "bluestacks",
     "scoop": "none",
@@ -2922,8 +2922,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Intel Wireless Bluetooth for Windows 10 and Windows 11",
-    "Description": "Bluetooth for Windows 10 and Windows",
+    "name": "Intel Wireless Bluetooth for Windows 10 and Windows 11",
+    "description": "Bluetooth for Windows 10 and Windows",
     "winget": "none",
     "choco": "intel-bluetooth-drivers",
     "scoop": "none",
@@ -2939,8 +2939,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Office 365 Business",
-    "Description": "Microsoft 365 (formerly Office 365) is a line of subscription services offered by Microsoft as part of the Microsoft Office product line. The brand encompasses plans that allow use of the Microsoft Office software suite over the life of the subscription, as well as cloud-based software as a service products for business environments, such as hosted Exchange Server, Skype for Business Server, and SharePoint, among others. All Microsoft 365 plans include automatic updates to their respective software at no additional charge, as opposed to conventional licenses for these programs—where new versions require purchase of a new license.",
+    "name": "Office 365 Business",
+    "description": "Microsoft 365 (formerly Office 365) is a line of subscription services offered by Microsoft as part of the Microsoft Office product line. The brand encompasses plans that allow use of the Microsoft Office software suite over the life of the subscription, as well as cloud-based software as a service products for business environments, such as hosted Exchange Server, Skype for Business Server, and SharePoint, among others. All Microsoft 365 plans include automatic updates to their respective software at no additional charge, as opposed to conventional licenses for these programs—where new versions require purchase of a new license.",
     "winget": "Microsoft.Office",
     "choco": "office365business",
     "scoop": "none",
@@ -2956,8 +2956,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Bandicam",
-    "Description": "Bandicam is a closed-source screen capture and screen recording software originally developed by Bandisoft and later by Bandicam Company that can take screenshots or record screen changes. Bandicam consists of three main modes. One is the Screen Recording mode, which can be used for recording a certain area on the PC screen",
+    "name": "Bandicam",
+    "description": "Bandicam is a closed-source screen capture and screen recording software originally developed by Bandisoft and later by Bandicam Company that can take screenshots or record screen changes. Bandicam consists of three main modes. One is the Screen Recording mode, which can be used for recording a certain area on the PC screen",
     "winget": "BandicamCompany.Bandicam",
     "choco": "none",
     "scoop": "none",
@@ -2973,8 +2973,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "QQPlayer",
-    "Description": "QQPlayer media player",
+    "name": "QQPlayer",
+    "description": "QQPlayer media player",
     "winget": "Tencent.QQPlayer",
     "choco": "none",
     "scoop": "none",
@@ -2990,8 +2990,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "4K Video Downloader",
-    "Description": "4K Video Downloader allows downloading videos, playlists, channels and subtitles from YouTube, Facebook, Vimeo and other video sites in high quality.",
+    "name": "4K Video Downloader",
+    "description": "4K Video Downloader allows downloading videos, playlists, channels and subtitles from YouTube, Facebook, Vimeo and other video sites in high quality.",
     "winget": "OpenMedia.4KVideoDownloader",
     "choco": "4k-video-downloader",
     "scoop": "none",
@@ -3007,8 +3007,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Active@ Partition Recovery",
-    "Description": "Active@ Partition Recovery is a freeware toolkit that helps to recover deleted and damaged logical drives and partitions within Windows, WinPE (recovery boot disk) and Linux (recovery LiveCD) environments.",
+    "name": "Active@ Partition Recovery",
+    "description": "Active@ Partition Recovery is a freeware toolkit that helps to recover deleted and damaged logical drives and partitions within Windows, WinPE (recovery boot disk) and Linux (recovery LiveCD) environments.",
     "winget": "LSoftTechnologies.ActivePartitionRecovery",
     "choco": "none",
     "scoop": "none",
@@ -3024,8 +3024,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "HiSuite",
-    "Description": "HUAWEI HiSuite is the official Android Smart Device Manager tool,HiSuite helps users to connect their HUAWEI smartphones and tablets to PC",
+    "name": "HiSuite",
+    "description": "HUAWEI HiSuite is the official Android Smart Device Manager tool,HiSuite helps users to connect their HUAWEI smartphones and tablets to PC",
     "winget": "Huawei.HiSuite",
     "choco": "none",
     "scoop": "none",
@@ -3041,8 +3041,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Android Studio",
-    "Description": "Android Studio is the official integrated development environment for Google''s Android operating system, built on JetBrains IntelliJ IDEA software and designed specifically for Android development",
+    "name": "Android Studio",
+    "description": "Android Studio is the official integrated development environment for Google''s Android operating system, built on JetBrains IntelliJ IDEA software and designed specifically for Android development",
     "winget": "Google.AndroidStudio",
     "choco": "androidstudio",
     "scoop": "none",
@@ -3058,8 +3058,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "LibreWolf",
-    "Description": "LibreWolf is designed to increase protection against tracking and fingerprinting techniques, while also including a few security improvements. This is achieved through our privacy and security oriented settings and patches. LibreWolf also aims to remove all the telemetry, data collection and annoyances, as well as disabling anti-freedom features like DRM.",
+    "name": "LibreWolf",
+    "description": "LibreWolf is designed to increase protection against tracking and fingerprinting techniques, while also including a few security improvements. This is achieved through our privacy and security oriented settings and patches. LibreWolf also aims to remove all the telemetry, data collection and annoyances, as well as disabling anti-freedom features like DRM.",
     "winget": "LibreWolf.LibreWolf",
     "choco": "librewolf",
     "scoop": "none",
@@ -3075,8 +3075,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "Flow Launcher",
-    "Description": "Dedicated to making your workflow flow more seamless. Search everything from applications, files, bookmarks, YouTube, Twitter and more. Flow will continue to evolve, designed to be open and built with the community at heart.",
+    "name": "Flow Launcher",
+    "description": "Dedicated to making your workflow flow more seamless. Search everything from applications, files, bookmarks, YouTube, Twitter and more. Flow will continue to evolve, designed to be open and built with the community at heart.",
     "winget": "Flow-Launcher.Flow-Launcher",
     "choco": "flow-launcher",
     "scoop": "none",
@@ -3092,8 +3092,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "IconsExtract",
-    "Description": "The IconsExtract utility scans the files and folders on your computer, and extract the icons and cursors stored in EXE, DLL, OCX, CPL, and in other file types.",
+    "name": "IconsExtract",
+    "description": "The IconsExtract utility scans the files and folders on your computer, and extract the icons and cursors stored in EXE, DLL, OCX, CPL, and in other file types.",
     "winget": "none",
     "choco": "iconsext",
     "scoop": "none",
@@ -3109,8 +3109,8 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "Name": "AdGuard Home",
-    "Description": "AdGuard Home is a network-wide software for blocking ads and tracking. After you set it up, it''ll cover ALL your home devices, and you don''t need any client-side software for that.",
+    "name": "AdGuard Home",
+    "description": "AdGuard Home is a network-wide software for blocking ads and tracking. After you set it up, it''ll cover ALL your home devices, and you don''t need any client-side software for that.",
     "winget": "AdGuard.AdGuardHome",
     "choco": "adguardhome",
     "scoop": "none",
