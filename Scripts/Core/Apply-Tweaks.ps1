@@ -389,10 +389,28 @@ function Invoke-ApplyTweaks {
                                         $app.Command | ForEach-Object { ExecuteCommand -Name $app.Name -Command $_ }
                                     }
                                     "modifying" {
-                                        $app.Registry | ForEach-Object { Set-RegistryValue -Name $_.Name -Type $_.Type -Path $_.Path -Value $_.Value }
+                                        $app.Registry | ForEach-Object {
+                                             Set-RegistryValue -Name $_.Name -Type $_.Type -Path $_.Path -Value $_.Value
+                                           
+                                        }
+
+                                        if($app.Refresh -eq "true")
+                                        {
+                                            Stop-Process -Name explorer -Force
+                                            Add-Log -Message "Restarting explorer" -Level "INFO"
+                                        }
                                     }
                                     "delete" {
-                                        $app.Registry | ForEach-Object { Remove-RegistryValue -RegistryPath $_.Path -Folder $_.Name }
+                                        $app.Registry | ForEach-Object { 
+                                            Remove-RegistryValue -RegistryPath $_.Path -Folder $_.Name
+                                            
+                                        }
+
+                                        if($app.Refresh -eq "true")
+                                        {
+                                            Stop-Process -Name explorer -Force
+                                            Add-Log -Message "Restarting explorer" -Level "INFO"
+                                        }
                                     }
                                     "service" {
                                         $app.Service | ForEach-Object { Disable-Service -ServiceName $_.Name -StartupType $_.StartupType }
@@ -403,7 +421,6 @@ function Invoke-ApplyTweaks {
                                     }
                                 }
                                 
-                                Stop-Process -Name explorer -Force
                             }
 
                             # Displaying the names of the selected apps
