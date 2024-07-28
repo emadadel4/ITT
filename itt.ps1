@@ -4,7 +4,7 @@
 #      | |  | |   | |   |  _| | |\/| | / _ \ | | | |   / _ \ | | | |  _| | |         #
 #      | |  | |   | |   | |___| |  | |/ ___ \| |_| |  / ___ \| |_| | |___| |___      #
 #     |___| |_|   |_|   |_____|_|  |_/_/   \_\____/  /_/   \_\____/|_____|_____|     #
-#                Automatically generated from build don't play here                  # 
+#                Automatically generated from build don't play here :)               # 
 #                              #StandWithPalestine                                   #
 # https://github.com/emadadel4                                                       #
 # https://t.me/emadadel4                                                             #
