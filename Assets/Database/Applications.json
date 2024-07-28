@@ -4485,7 +4485,7 @@
   },
   {
     "name": "Neat Download Manager",
-    "description": "Neat Download Manager is a free 100% Internet Download Manager for Windows",
+    "description": "Neat Download Manager is a free Internet Download Manager for Windows",
     "winget": "none",
     "choco": "none",
     "scoop": "none",
