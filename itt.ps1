@@ -10434,7 +10434,7 @@ function Get-PCInfo {
             # Check if the key exists
             $existingData = Invoke-RestMethod -Uri $firebaseUrlWithKey -Method Get -ErrorAction Stop
         
-            Write-Host "  Gathering PC Info... `n` "
+            Write-Host "  PC Info... `n` "
         
             if ($existingData) {
                 # Increment runs if data exists
@@ -11121,10 +11121,10 @@ Write-Host " |   | |  | |   | |   | |___| |  | |/ ___ \| |_| |  / ___ \| |_| | |
 Write-Host " |  |___| |_|   |_|   |_____|_|  |_/_/   \_\____/  /_/   \_\____/|_____|_____|  |" -ForegroundColor Yellow;
 Write-Host " |                                                                              |" -ForegroundColor Yellow;
 Write-Host " |                       Made with ♥ By Emad Adel                               |" -ForegroundColor Yellow;
-Write-Host " |                        #Stand With Palestine                                 |" -ForegroundColor Yellow;
+Write-Host " |                          #StandWithPalestine                                 |" -ForegroundColor Yellow;
 Write-Host " +==============================================================================+" -ForegroundColor Yellow; 
 Write-Host " `n` $message" -ForegroundColor Yellow
-Write-Host "`n` IT (Install and Tweaks Tools) is open source, You can contribute to improving the tool." -ForegroundColor Yellow
+Write-Host "`n` IT (Install and Tweaks Tool) is open source, You can contribute to improving the tool." -ForegroundColor Yellow
 Write-Host " If you have trouble installing a program, report the problem on feedback links" -ForegroundColor Yellow
 Write-Host " https://github.com/emadadel4/ITT/issues" -ForegroundColor Yellow
 Write-Host " Telegram: https://t.me/ittemadadel" -ForegroundColor Yellow
