@@ -263,7 +263,7 @@ function Invoke-Install {
                             }
                         
                             $downloadPath = Join-Path -Path $downloadDir -ChildPath (Split-Path $url -Leaf)
-                            Add-Log -Message "Downloading RAR file..." -Level "INFO"
+                            Add-Log -Message "Downloading using native downloader." -Level "INFO"
                             Invoke-WebRequest -Uri $url -OutFile $downloadPath
                             Add-Log -Message "Extracting RAR file..." -Level "INFO"
                             Expand-Archive -Path $downloadPath -DestinationPath $downloadDir -Force
@@ -464,7 +464,6 @@ function Invoke-Install {
                             UpdateUI -InstallBtn "$installBtn" -icon " " -Width "100"
 
                             Notify -title "ITT Emad Adel" -msg "Installed successfully" -icon "Info" -time 30000
-                            Add-Log -Message "Portable Apps will save in C:\ProgramData\chocolatey\lib." -Level "INFO"
                             #CustomMsg -title "ITT | Emad Adel" -msg "Installed successfully" -MessageBoxImage "Information" -MessageBoxButton "OK"
                         }
                         #===========================================================================
