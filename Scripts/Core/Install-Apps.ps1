@@ -289,10 +289,12 @@ function Invoke-Install {
                         function DownloadAndInstallExe {
                             param (
                                 [string]$url,
-                                [string]$exeArgs
+                                [string]$exeArgs,
+                                [string]$outputDir,
+                                [string]$run
                             )
                         
-                            $destination = "$env:temp/setup.exe"
+                            $destination = "$env:ProgramData\$outputDir\setup.exe"
             
                             Add-Log -Message "Downloading using native downloader." -Level "INFO"
             
@@ -308,7 +310,10 @@ function Invoke-Install {
                                 }
                             }
                             
-                            Start-Process -Wait $destination -ArgumentList $exeArgs
+                            if($run -eq "yes")
+                            {
+                                Start-Process -Wait $destination -ArgumentList $exeArgs
+                            }
                         }
             
                         function Install-Winget {
@@ -497,13 +502,13 @@ function Invoke-Install {
                             }
                             else
                             {
-                                if($_.IsExcute -eq "true")
+                                if($_.default.IsExcute -eq "true")
                                 {
-                                    DownloadAndInstallExe -url  $_.default.url -exeArgs $_.default.exeArgs
+                                    DownloadAndInstallExe -url  $_.default.url -exeArgs $_.default.exeArgs -outputDir "ITT/Downloads/" -run $_.default.run
                                 }
                                 else
                                 {
-                                    DownloadAndExtractRar -url  $_.default.url -outputDir "ITT/Downloads"
+                                    DownloadAndExtractRar -url  $_.default.url -outputDir "ITT/Downloads/"
                                 }
                             }
                         }
