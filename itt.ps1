@@ -64,7 +64,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Web Browsers",
@@ -82,7 +83,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Web Browsers",
@@ -100,7 +102,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Web Browsers",
@@ -117,7 +120,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Web Browsers",
@@ -134,7 +138,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Web Browsers",
@@ -151,7 +156,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Web Browsers",
@@ -168,7 +174,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Web Browsers",
@@ -185,7 +192,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Web Browsers",
@@ -202,7 +210,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Web Browsers",
@@ -219,7 +228,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Web Browsers",
@@ -236,7 +246,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Web Browsers",
@@ -253,7 +264,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Web Browsers",
@@ -270,7 +282,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Media",
@@ -288,7 +301,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Media",
@@ -305,7 +319,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Media",
@@ -323,7 +338,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Media",
@@ -340,7 +356,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Media",
@@ -357,7 +374,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Media",
@@ -374,7 +392,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Media",
@@ -391,7 +410,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Media",
@@ -408,7 +428,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Imaging",
@@ -425,7 +446,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Documents",
@@ -442,7 +464,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Documents",
@@ -459,7 +482,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Documents",
@@ -477,7 +501,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Documents",
@@ -494,7 +519,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Compression",
@@ -512,7 +538,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Compression",
@@ -530,7 +557,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Compression",
@@ -547,7 +575,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Communication",
@@ -565,7 +594,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Communication",
@@ -582,7 +612,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Communication",
@@ -599,7 +630,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Communication",
@@ -616,7 +648,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Communication",
@@ -633,7 +666,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Communication",
@@ -650,7 +684,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "File Sharing",
@@ -667,7 +702,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Imaging",
@@ -684,7 +720,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Runtimes",
@@ -701,7 +738,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Runtimes",
@@ -718,7 +756,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Runtimes",
@@ -735,7 +774,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Runtimes",
@@ -752,7 +792,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Runtimes",
@@ -769,7 +810,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Runtimes",
@@ -786,7 +828,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Runtimes",
@@ -803,7 +846,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Runtimes",
@@ -820,7 +864,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Runtimes",
@@ -837,7 +882,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Runtimes",
@@ -854,7 +900,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Runtimes",
@@ -871,7 +918,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Runtimes",
@@ -888,7 +936,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Runtimes",
@@ -905,7 +954,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Runtimes",
@@ -922,7 +972,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Runtimes",
@@ -939,7 +990,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Drivers",
@@ -956,7 +1008,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Drivers",
@@ -973,7 +1026,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Drivers",
@@ -990,7 +1044,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Drivers",
@@ -1007,7 +1062,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Drivers",
@@ -1024,7 +1080,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Gaming",
@@ -1041,7 +1098,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Gaming",
@@ -1058,7 +1116,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Gaming",
@@ -1075,7 +1134,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Gaming",
@@ -1092,7 +1152,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Gaming",
@@ -1109,7 +1170,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Gaming",
@@ -1126,7 +1188,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Gaming",
@@ -1143,7 +1206,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Gaming",
@@ -1160,7 +1224,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Gaming",
@@ -1177,7 +1242,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Gaming",
@@ -1194,7 +1260,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Drivers",
@@ -1211,7 +1278,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Drivers",
@@ -1228,7 +1296,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Drivers",
@@ -1245,7 +1314,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Drivers",
@@ -1262,7 +1332,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Drivers",
@@ -1279,7 +1350,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Drivers",
@@ -1296,7 +1368,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Drivers",
@@ -1313,7 +1386,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Drivers",
@@ -1330,7 +1404,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Drivers",
@@ -1347,7 +1422,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Utilities",
@@ -1364,7 +1440,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Disk Tools",
@@ -1381,7 +1458,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Disk Tools",
@@ -1398,7 +1476,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Disk Tools",
@@ -1415,7 +1494,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Utilities",
@@ -1432,7 +1512,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Utilities",
@@ -1450,7 +1531,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Utilities",
@@ -1467,7 +1549,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Utilities",
@@ -1485,7 +1568,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Utilities",
@@ -1502,7 +1586,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Utilities",
@@ -1519,7 +1604,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Disk Tools",
@@ -1536,7 +1622,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Utilities",
@@ -1553,7 +1640,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Utilities",
@@ -1570,7 +1658,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Utilities",
@@ -1587,7 +1676,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Portable",
@@ -1605,7 +1695,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Development",
@@ -1622,7 +1713,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Utilities",
@@ -1639,7 +1731,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Utilities",
@@ -1656,7 +1749,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Utilities",
@@ -1673,7 +1767,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Utilities",
@@ -1690,7 +1785,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Utilities",
@@ -1707,7 +1803,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Utilities",
@@ -1724,7 +1821,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Utilities",
@@ -1742,7 +1840,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Utilities",
@@ -1759,7 +1858,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Utilities",
@@ -1776,7 +1876,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "File Sharing",
@@ -1793,7 +1894,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "File Sharing",
@@ -1810,7 +1912,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "File Sharing",
@@ -1827,7 +1930,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Portable",
@@ -1844,7 +1948,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Utilities",
@@ -1861,7 +1966,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "File Sharing",
@@ -1879,7 +1985,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Imaging",
@@ -1896,7 +2003,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Development",
@@ -1913,7 +2021,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Development",
@@ -1930,7 +2039,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Development",
@@ -1947,7 +2057,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Development",
@@ -1964,7 +2075,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Development",
@@ -1981,7 +2093,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Development",
@@ -1998,7 +2111,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Development",
@@ -2015,7 +2129,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Development",
@@ -2032,7 +2147,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Development",
@@ -2049,7 +2165,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Development",
@@ -2066,7 +2183,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Development",
@@ -2083,7 +2201,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Development",
@@ -2100,7 +2219,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Development",
@@ -2117,7 +2237,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Development",
@@ -2134,7 +2255,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Development",
@@ -2151,7 +2273,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Development",
@@ -2168,7 +2291,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Development",
@@ -2185,7 +2309,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Development",
@@ -2202,7 +2327,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Development",
@@ -2219,7 +2345,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Development",
@@ -2236,7 +2363,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Development",
@@ -2253,7 +2381,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Development",
@@ -2270,7 +2399,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Portable",
@@ -2287,7 +2417,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Development",
@@ -2304,7 +2435,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Development",
@@ -2321,7 +2453,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Development",
@@ -2338,7 +2471,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Development",
@@ -2355,7 +2489,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Development",
@@ -2372,7 +2507,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Development",
@@ -2389,7 +2525,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Development",
@@ -2406,7 +2543,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Development",
@@ -2423,7 +2561,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Development",
@@ -2440,7 +2579,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Media Tools",
@@ -2457,7 +2597,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Development",
@@ -2474,7 +2615,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Development",
@@ -2491,7 +2633,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Development",
@@ -2508,7 +2651,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Development",
@@ -2525,7 +2669,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Development",
@@ -2542,7 +2687,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Security",
@@ -2558,7 +2704,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "choco": "avastfreeantivirus",
@@ -2576,7 +2723,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Development",
@@ -2593,7 +2741,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Runtimes",
@@ -2610,7 +2759,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Media Tools",
@@ -2627,7 +2777,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Media",
@@ -2644,7 +2795,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Media Tools",
@@ -2661,7 +2813,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Utilities",
@@ -2678,7 +2831,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Development",
@@ -2695,7 +2849,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Development",
@@ -2712,7 +2867,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Development",
@@ -2729,7 +2885,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Media",
@@ -2746,7 +2903,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Media Tools",
@@ -2763,7 +2921,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Development",
@@ -2780,7 +2939,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Utilities",
@@ -2797,7 +2957,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Development",
@@ -2814,7 +2975,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Communication",
@@ -2831,7 +2993,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Development",
@@ -2848,7 +3011,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Utilities",
@@ -2865,7 +3029,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Development",
@@ -2882,7 +3047,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Development",
@@ -2899,7 +3065,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Utilities",
@@ -2916,7 +3083,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Gaming",
@@ -2933,7 +3101,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Drivers",
@@ -2950,7 +3119,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Documents",
@@ -2967,7 +3137,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Imaging",
@@ -2984,7 +3155,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Media",
@@ -3001,7 +3173,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Utilities",
@@ -3018,7 +3191,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Disk Tools",
@@ -3035,7 +3209,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Utilities",
@@ -3052,7 +3227,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Development",
@@ -3069,7 +3245,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Web Browsers",
@@ -3086,7 +3263,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Utilities",
@@ -3103,7 +3281,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Utilities",
@@ -3120,7 +3299,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Security",
@@ -3137,7 +3317,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Development",
@@ -3154,7 +3335,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Utilities",
@@ -3171,7 +3353,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "File Sharing",
@@ -3188,7 +3371,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Documents",
@@ -3205,7 +3389,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Security",
@@ -3222,7 +3407,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Disk Tools",
@@ -3239,7 +3425,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Utilities",
@@ -3256,7 +3443,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Utilities",
@@ -3273,7 +3461,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Utilities",
@@ -3290,7 +3479,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Utilities",
@@ -3307,7 +3497,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Development",
@@ -3324,7 +3515,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Drivers",
@@ -3341,7 +3533,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Development",
@@ -3358,7 +3551,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Development",
@@ -3375,7 +3569,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Imaging",
@@ -3392,7 +3587,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Utilities",
@@ -3409,7 +3605,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Development",
@@ -3426,7 +3623,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Development",
@@ -3443,7 +3641,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Development",
@@ -3460,7 +3659,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Development",
@@ -3477,7 +3677,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Media",
@@ -3494,7 +3695,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Development",
@@ -3511,7 +3713,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Documents",
@@ -3528,7 +3731,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Utilities",
@@ -3545,7 +3749,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Utilities",
@@ -3562,7 +3767,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Media",
@@ -3579,7 +3785,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Utilities",
@@ -3596,7 +3803,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Utilities",
@@ -3613,7 +3821,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "File Sharing",
@@ -3630,7 +3839,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Utilities",
@@ -3647,7 +3857,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Utilities",
@@ -3664,7 +3875,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Utilities",
@@ -3681,7 +3893,8 @@ $sync.database.Applications = '[
         "fileType": "none",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Media",
@@ -3698,7 +3911,8 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Media",
@@ -3715,7 +3929,8 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Communication",
@@ -3732,7 +3947,8 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Runtimes",
@@ -3749,7 +3965,8 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Portable",
@@ -3766,7 +3983,8 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Development",
@@ -3783,7 +4001,8 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Utilities",
@@ -3800,7 +4019,8 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Runtimes",
@@ -3817,7 +4037,8 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Runtimes",
@@ -3834,7 +4055,8 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Runtimes",
@@ -3851,7 +4073,8 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Runtimes",
@@ -3868,7 +4091,8 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Runtimes",
@@ -3885,7 +4109,8 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Communication",
@@ -3902,7 +4127,8 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Utilities",
@@ -3919,7 +4145,8 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Disk Tools",
@@ -3936,7 +4163,8 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Disk Tools",
@@ -3953,7 +4181,8 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Disk Tools",
@@ -3970,7 +4199,8 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Disk Tools",
@@ -3987,7 +4217,8 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Gaming",
@@ -4004,7 +4235,8 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Web Browsers",
@@ -4021,7 +4253,8 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Utilities",
@@ -4038,7 +4271,8 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Media Tools",
@@ -4055,7 +4289,8 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Communication",
@@ -4072,7 +4307,8 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Imaging",
@@ -4089,7 +4325,8 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Utilities",
@@ -4106,7 +4343,8 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Runtimes",
@@ -4123,7 +4361,8 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Utilities",
@@ -4140,7 +4379,8 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Runtimes",
@@ -4157,7 +4397,8 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Runtimes",
@@ -4174,7 +4415,8 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "File Sharing",
@@ -4191,7 +4433,8 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Runtimes",
@@ -4208,7 +4451,8 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "File Sharing",
@@ -4225,7 +4469,8 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Development",
@@ -4242,7 +4487,8 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Documents",
@@ -4259,7 +4505,8 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Utilities",
@@ -4276,7 +4523,8 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "File Sharing",
@@ -4293,7 +4541,8 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Utilities",
@@ -4310,7 +4559,8 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Media Tools",
@@ -4327,7 +4577,8 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Utilities",
@@ -4344,7 +4595,8 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Development",
@@ -4361,7 +4613,8 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Utilities",
@@ -4378,7 +4631,8 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "File Sharing",
@@ -4395,7 +4649,8 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Media Tools",
@@ -4412,7 +4667,8 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Media Tools",
@@ -4429,7 +4685,8 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Documents",
@@ -4446,7 +4703,8 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Utilities",
@@ -4463,7 +4721,8 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Documents",
@@ -4480,7 +4739,8 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Utilities",
@@ -4497,7 +4757,8 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Gaming",
@@ -4514,7 +4775,8 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "File Sharing",
@@ -4531,7 +4793,8 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Media Tools",
@@ -4548,7 +4811,8 @@ $sync.database.Applications = '[
         "IsExcute": "true",
         "url": "https://www.neatdownloadmanager.com/file/NeatDM_setup.exe",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Web Browsers",
@@ -4565,7 +4829,8 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "https://www.x360ce.com/files/x360ce.zip",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Web Browsers",
@@ -4582,7 +4847,8 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "https://www.x360ce.com/files/x360ce_x86.zip",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Web Browsers",
@@ -4599,7 +4865,8 @@ $sync.database.Applications = '[
         "IsExcute": "false",
         "url": "https://www.x360ce.com/files/x360ce_x64.zip",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Web Browsers",
@@ -4607,7 +4874,7 @@ $sync.database.Applications = '[
   },
   {
     "name": "Memtest64",
-    "description": "Memory hardware errors can cause major application crashes, blue-screens of death (BSODs), and data corruption. It is caused due to either faulty hardware, or bad memory timings/frequency. Memtest64 lets you test your memory without having to pull out an MS-DOS boot disk. The utility loads your physical memory with test-patterns, and can push other applications into the pagefile to free up memory for testing",
+    "description": "",
     "winget": "none",
     "choco": "none",
     "scoop": "none",
@@ -4616,7 +4883,8 @@ $sync.database.Applications = '[
         "IsExcute": "true",
         "url": "https://uk1-dl.techpowerup.com/files/Kibx5EK67f16mM4Ytnh6zw/1722251788/MemTest64.exe",
         "exeArgs": "",
-        "output": "none"
+        "output": "none",
+        "run": "no"
       }
     ],
     "category": "Web Browsers",
@@ -9400,7 +9668,7 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
                 <CheckBox Content="Memtest64" Tag="Web Browsers" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Web Browsers"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Memory hardware errors can cause major application crashes. blue.screens of death .BSODs.. and data corruption. It is caused due to either faulty hardware. or bad memory timings.frequency. Memtest64 lets you test your memory without having to pull out an MS.DOS boot disk. The utility loads your physical memory with test.patterns. and can push other applications into the pagefile to free up memory for testing"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text=""/>
         </StackPanel>
 
                                 </ListView>
@@ -10867,7 +11135,8 @@ function Invoke-Install {
                             param (
                                 [string]$url,
                                 [string]$exeArgs,
-                                [string]$outputDir
+                                [string]$outputDir,
+                                [string]$run
                             )
                         
                             $destination = "$env:ProgramData\$outputDir\setup.exe"
@@ -10886,7 +11155,10 @@ function Invoke-Install {
                                 }
                             }
                             
-                            Start-Process -Wait $destination -ArgumentList $exeArgs
+                            if($run -eq "yes")
+                            {
+                                Start-Process -Wait $destination -ArgumentList $exeArgs
+                            }
                         }
             
                         function Install-Winget {
@@ -11077,7 +11349,7 @@ function Invoke-Install {
                             {
                                 if($_.default.IsExcute -eq "true")
                                 {
-                                    DownloadAndInstallExe -url  $_.default.url -exeArgs $_.default.exeArgs -outputDir "ITT/Downloads/"
+                                    DownloadAndInstallExe -url  $_.default.url -exeArgs $_.default.exeArgs -outputDir "ITT/Downloads/" -run $_.default.run
                                     Write-Host "exe"
                                 }
                                 else
