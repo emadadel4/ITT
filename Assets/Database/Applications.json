@@ -4482,5 +4482,22 @@
     ],
     "category": "Media Tools",
     "check": "false"
+  },
+  {
+    "name": "Neat Download Manager",
+    "description": "Neat Download Manager is a free 100% Internet Download Manager for Windows",
+    "winget": "none",
+    "choco": "none",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "true",
+        "url": "https://www.neatdownloadmanager.com/file/NeatDM_setup.exe",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
+    "category": "Web Browsers",
+    "check": "false"
   }
 ]
