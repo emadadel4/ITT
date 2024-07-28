@@ -123,6 +123,7 @@ function GenerateCheckboxes {
     return $Checkboxes
 }
 
+# Process each JSON file in the specified directory
 function Sync-JsonFiles {
     param (
         [Parameter(Mandatory = $true)]
