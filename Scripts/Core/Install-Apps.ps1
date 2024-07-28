@@ -256,23 +256,35 @@ function Invoke-Install {
                                 [string]$url,
                                 [string]$outputDir
                             )
-                        
+                            
                             $downloadDir = "$env:ProgramData\$outputDir"
                             if (-not (Test-Path -Path $downloadDir)) {
                                 New-Item -ItemType Directory -Path $downloadDir | Out-Null
                             }
                         
                             $downloadPath = Join-Path -Path $downloadDir -ChildPath (Split-Path $url -Leaf)
-                        
-                            Write-Host "Downloading RAR file..." -ForegroundColor Yellow
+                            Add-Log -Message "Downloading RAR file..." -Level "INFO"
                             Invoke-WebRequest -Uri $url -OutFile $downloadPath
-                        
                             Write-Host "Extracting RAR file..." -ForegroundColor Yellow
                             Expand-Archive -Path $downloadPath -DestinationPath $downloadDir -Force
+                            Add-Log -Message "Extraction completed to $downloadDir" -Level "INFO"
                         
-                            Write-Host "Extraction completed to $downloadDir" -ForegroundColor Green
-                            Invoke-Item $downloadDir
+                            # Find the first .exe file in the extracted directory
+                            $exeFile = Get-ChildItem -Path $downloadDir -Filter *.exe -Recurse | Select-Object -First 1
+                            if ($exeFile) {
+                                # Create a shortcut to the .exe file
+                                $shortcutPath = [System.IO.Path]::Combine([System.Environment]::GetFolderPath('Desktop'), "$($exeFile.BaseName).lnk")
+                                $shell = New-Object -ComObject WScript.Shell
+                                $shortcut = $shell.CreateShortcut($shortcutPath)
+                                $shortcut.TargetPath = $exeFile.FullName
+                                $shortcut.Save()
+                        
+                                Add-Log -Message "Shortcut created on desktop: $shortcutPath" -Level "INFO"
+                            } else {
+                                Add-Log -Message "No .exe file found for shortcut creation." -Level "WARNING"
+                            }
                         }
+                        
             
                         # THIS FUNC NOT APPLY it will added soon
                         function DownloadAndInstallExe {
@@ -487,7 +499,14 @@ function Invoke-Install {
                             }
                             else
                             {
-                                DownloadAndInstallExe -url  $_.default.url -exeArgs $_.default.exeArgs
+                                if($_.IsExcute -eq "true")
+                                {
+                                    #DownloadAndInstallExe -url  $_.default.url -exeArgs $_.default.exeArgs
+                                }
+                                else
+                                {
+                                    DownloadAndExtractRar -url  $_.default.url -outputDir "ITT"
+                                }
                             }
                         }
     
