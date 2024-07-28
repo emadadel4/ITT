@@ -1,3 +1,6 @@
+
+
+
 <p align="center">
   <a href="https://techforpalestine.org/learn-more" rel="nofollow">
     <img src="https://raw.githubusercontent.com/Safouene1/support-palestine-banner/master/StandWithPalestine.svg" alt="Ceasefire Now" style="width:25%;">
@@ -7,6 +10,8 @@
 <h1 align="center">ITT (Install Tweaks Tool) 🛠️ 🚀
 
 <div align="center">
+
+
 
 <a href="README.ar.md">
   <img src="https://img.shields.io/badge/-Arabic-green" alt="Arabic">
@@ -43,6 +48,8 @@
 </div>
 
 
+
+
 </h1>
 
 <div align="center">
@@ -72,6 +79,10 @@
   <img src="https://img.shields.io/badge/Ko--fi-blue?logo=kofi" alt="Ko-fi" height="30">
 </a>
 
+<div align="center">
+  <h5>267 Apps |  27 Tweaks |  71 Quotes |  31 Tracks </h5>
+</div>
+
 </p>
 
 <p align="center">
@@ -79,6 +90,8 @@
     <img src="https://raw.githubusercontent.com/emadadel4/ITT/main/Assets/Images/demo.PNG" alt="ITT Demo" style="max-width: 100%;">
   </a>
 </p>
+
+
 
 
 <h2>Overview</h2>
