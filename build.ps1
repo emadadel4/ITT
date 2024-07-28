@@ -14,7 +14,7 @@ param (
 $sync = [Hashtable]::Synchronized(@{})
 $sync.database = @{}
 
-# Function to write content to output script
+# write content to output script
 function WriteToScript {
     param (
         [string]$Content
@@ -32,7 +32,7 @@ function WriteToScript {
 }
 
 
-# Function to Replace placeholder
+# Replace placeholder
 function ReplaceTextInFile {
     param (
         [string]$FilePath,
@@ -50,7 +50,7 @@ function ReplaceTextInFile {
     $newContent | Out-File -FilePath $FilePath -Encoding utf8
 }
 
-# Function to handle file content generation
+# handle file content generation
 function AddFileContentToScript {
     param (
         [string]$FilePath
@@ -59,7 +59,7 @@ function AddFileContentToScript {
     WriteToScript -Content $Content
 }
 
-# Function to process files in a directory
+# process files in a directory
 function ProcessDirectory {
     param (
         [string]$Directory
@@ -72,7 +72,7 @@ function ProcessDirectory {
     }
 }
 
-
+# Generate Checkboxex apps/tewaks/settings
 function GenerateCheckboxes {
     param (
         [array]$Items,
@@ -138,6 +138,7 @@ function Sync-JsonFiles {
     }
 }
 
+# Display the number of items in json files
 function CountItems {
     Write-Host  "`n` $($sync.database.Applications.Count) Apps" -ForegroundColor Yellow
     Write-Host  " $($sync.database.Tweaks.Count) Tweaks" -ForegroundColor Yellow
@@ -146,9 +147,9 @@ function CountItems {
 }
 
 
+# Write script header
 function WriteHeader {
 
-    # Write script header
     WriteToScript -Content @"
 ######################################################################################
 #      ___ _____ _____   _____ __  __    _    ____       _    ____  _____ _          #
@@ -308,7 +309,6 @@ Clear-Host
 Write-Host " `n` Successfully build " -ForegroundColor Green
 CountItems
 ./itt.ps1
-
 }
 
 catch {
