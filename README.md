@@ -1,6 +1,5 @@
 
 
-
 <p align="center">
   <a href="https://techforpalestine.org/learn-more" rel="nofollow">
     <img src="https://raw.githubusercontent.com/Safouene1/support-palestine-banner/master/StandWithPalestine.svg" alt="Ceasefire Now" style="width:25%;">
@@ -8,49 +7,43 @@
 </p>
   
 <h1 align="center">ITT (Install Tweaks Tool) 🛠️ 🚀
+</h1>
+
+<div align="center">
+  <h5>267 Apps |  27 Tweaks |  71 Quotes |  31 Tracks </h5>
+</div>
+
 
 <div align="center">
 
-
-
-<a href="README.ar.md">
-  <img src="https://img.shields.io/badge/-Arabic-green" alt="Arabic">
-</a>
-<a href="README.md">
-  <img src="https://img.shields.io/badge/-English-green" alt="English">
-</a>
-<a href="README.fr.md">
-  <img src="https://img.shields.io/badge/-Français-blue" alt="Français">
-</a>
-<a href="README.tr.md">
-  <img src="https://img.shields.io/badge/-Türkçe-red" alt="Türkçe">
-</a>
-<a href="README.cn.md">
-  <img src="https://img.shields.io/badge/-中文-yellow" alt="中文">
-</a>
-<a href="README.ko.md">
-  <img src="https://img.shields.io/badge/-한국어-purple" alt="한국어">
-</a>
-<a href="README.de.md">
-  <img src="https://img.shields.io/badge/-Deutsch-orange" alt="Deutsch">
-</a>
-<a href="README.ru.md">
-  <img src="https://img.shields.io/badge/-Русский-blue" alt="Русский">
-</a>
-<a href="README.es.md">
-  <img src="https://img.shields.io/badge/-Español-red" alt="Español">
-</a>
-
+  <a href="README.ar.md">
+    <img src="https://img.shields.io/badge/-Arabic-green" alt="Arabic">
+  </a>
+  <a href="README.md">
+    <img src="https://img.shields.io/badge/-English-green" alt="English">
+  </a>
+  <a href="README.fr.md">
+    <img src="https://img.shields.io/badge/-Français-blue" alt="Français">
+  </a>
+  <a href="README.tr.md">
+    <img src="https://img.shields.io/badge/-Türkçe-red" alt="Türkçe">
+  </a>
+  <a href="README.cn.md">
+    <img src="https://img.shields.io/badge/-中文-yellow" alt="中文">
+  </a>
+  <a href="README.ko.md">
+    <img src="https://img.shields.io/badge/-한국어-purple" alt="한국어">
+  </a>
+  <a href="README.de.md">
+    <img src="https://img.shields.io/badge/-Deutsch-orange" alt="Deutsch">
+  </a>
+  <a href="README.ru.md">
+    <img src="https://img.shields.io/badge/-Русский-blue" alt="Русский">
+  </a>
+  <a href="README.es.md">
+    <img src="https://img.shields.io/badge/-Español-red" alt="Español">
+  </a>
 </div>
-
-
-
-</div>
-
-
-
-
-</h1>
 
 <div align="center">
     <a href="https://t.me/ittemadadel" style="margin-right: 20px;">
@@ -79,10 +72,6 @@
   <img src="https://img.shields.io/badge/Ko--fi-blue?logo=kofi" alt="Ko-fi" height="30">
 </a>
 
-<div align="center">
-  <h5>267 Apps |  27 Tweaks |  71 Quotes |  31 Tracks </h5>
-</div>
-
 </p>
 
 <p align="center">
@@ -90,9 +79,6 @@
     <img src="https://raw.githubusercontent.com/emadadel4/ITT/main/Assets/Images/demo.PNG" alt="ITT Demo" style="max-width: 100%;">
   </a>
 </p>
-
-
-
 
 <h2>Overview</h2>
 
