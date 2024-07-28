@@ -1111,7 +1111,7 @@
     ]
   },
   {
-    "name": "Clear Start Menu Windows 10",
+    "name": "Clear Start Menu Windows 11",
     "description": "Clear all pinned apps from the start menu",
     "check": "false",
     "category": "Performance",
