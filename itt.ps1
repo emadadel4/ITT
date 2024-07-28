@@ -4538,19 +4538,19 @@ $sync.database.Applications = '[
   },
   {
     "name": "Neat Download Manager",
-    "description": "test",
+    "description": "Neat Download Manager is a free 100% Internet Download Manager for Windows",
     "winget": "none",
     "choco": "none",
     "scoop": "none",
     "default": [
       {
-        "IsExcute": "false",
+        "IsExcute": "true",
         "url": "https://www.neatdownloadmanager.com/file/NeatDM_setup.exe",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none"
       }
     ],
-    "category": "Media Tools",
+    "category": "Web Browsers",
     "check": "false"
   }
 ]
@@ -9286,10 +9286,10 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
 
         <StackPanel Orientation="Vertical" Width="auto" Margin="8">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Neat Download Manager" Tag="Media Tools" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Media Tools"/>
+                <CheckBox Content="Neat Download Manager" Tag="Web Browsers" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Web Browsers"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="test"/>
+                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Neat Download Manager is a free 100.  Internet Download Manager for Windows"/>
         </StackPanel>
 
                                 </ListView>
@@ -10749,7 +10749,7 @@ function Invoke-Install {
                         
                             $destination = "$env:temp/setup.exe"
             
-                            Write-Host "Downloading..." -ForegroundColor Yellow
+                            Add-Log -Message "Downloading using native downloader." -Level "INFO"
             
                             $bitsJobObj = Start-BitsTransfer -Source $url -Destination $destination
                             
@@ -10944,14 +10944,16 @@ function Invoke-Install {
                         # Install selected apps
                         $selectedApps | ForEach-Object {
 
-                            if ($_.Choco -ne "none" -and $_.Winget -ne "none")
+                            if ($_.Choco -ne "none")
                             {
-                                Install-App -appName $_.Name -appChoco $_.Choco -appWinget $_.Winget
+                                Install-App -appName $_.Name -appChoco $_.Choco
+                                
+                            }elseif ($_.Winget -ne "none") {
+                                Install-App -appName $_.Name -appWinget $_.Winget
                             }
                             else
                             {
-                                Write-Host "emad"
-                                DownloadAndInstallExe -url  $_.default.url -exeArgs "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath"
+                                DownloadAndInstallExe -url  $_.default.url -exeArgs $_.default.exeArgs
                             }
                         }
     
