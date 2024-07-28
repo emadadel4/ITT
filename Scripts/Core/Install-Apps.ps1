@@ -503,7 +503,7 @@ function Invoke-Install {
                                 }
                                 else
                                 {
-                                    DownloadAndExtractRar -url  $_.default.url -outputDir "ITT"
+                                    DownloadAndExtractRar -url  $_.default.url -outputDir "ITT/Downloads"
                                 }
                             }
                         }
