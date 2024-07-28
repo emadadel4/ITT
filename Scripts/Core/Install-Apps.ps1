@@ -499,7 +499,7 @@ function Invoke-Install {
                             {
                                 if($_.IsExcute -eq "true")
                                 {
-                                    #DownloadAndInstallExe -url  $_.default.url -exeArgs $_.default.exeArgs
+                                    DownloadAndInstallExe -url  $_.default.url -exeArgs $_.default.exeArgs
                                 }
                                 else
                                 {
