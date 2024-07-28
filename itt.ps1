@@ -4,10 +4,11 @@
 #      | |  | |   | |   |  _| | |\/| | / _ \ | | | |   / _ \ | | | |  _| | |         #
 #      | |  | |   | |   | |___| |  | |/ ___ \| |_| |  / ___ \| |_| | |___| |___      #
 #     |___| |_|   |_|   |_____|_|  |_/_/   \_\____/  /_/   \_\____/|_____|_____|     #
-#                          https://github.com/emadadel4                              #
-#                          https://t.me/emadadel4                                    #
-#                       Automatically generated from build                           # 
-#                            #Stand With Palestine                                   #
+#                Automatically generated from build don't play here                  # 
+#                              #StandWithPalestine                                   #
+# https://github.com/emadadel4                                                       #
+# https://t.me/emadadel4                                                             #
+# https://emadadel4.github.io/itt                                                    #
 ######################################################################################
 #===========================================================================
 #region Begin Start
@@ -7231,2140 +7232,2140 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
                             <TabItem.Content>
                                 <ListView Name="appslist"  Margin="0" ScrollViewer.VerticalScrollBarVisibility="Auto" BorderBrush="{x:Null}" Background="{x:Null}">
                                     
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Mozilla Firefox" Tag="Web Browsers" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Web Browsers"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Web Browsers"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A widely.used open.source web browser known for its speed. privacy features. and customization options."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A widely.used open.source web browser known for its speed. privacy features. and customization options."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Mozilla Firefox ESR" Tag="Web Browsers" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Web Browsers"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Web Browsers"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A widely.used open.source web browser known for its speed. privacy features. and customization options."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A widely.used open.source web browser known for its speed. privacy features. and customization options."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Thorium SSE3" Tag="Web Browsers" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Web Browsers"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Web Browsers"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A web browser designed for smooth and secure browsing experiences."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A web browser designed for smooth and secure browsing experiences."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Thorium AVX" Tag="Web Browsers" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Web Browsers"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Web Browsers"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A web browser designed for smooth and secure browsing experiences."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A web browser designed for smooth and secure browsing experiences."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Microsoft Edge" Tag="Web Browsers" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Web Browsers"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Web Browsers"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Microsoft..s web browser built for fast and secure internet surfing. integrating seamlessly with Windows ecosystem."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Microsoft..s web browser built for fast and secure internet surfing. integrating seamlessly with Windows ecosystem."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Google Chrome" Tag="Web Browsers" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Web Browsers"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Web Browsers"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A popular web browser known for its speed. simplicity. and vast ecosystem of extensions."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A popular web browser known for its speed. simplicity. and vast ecosystem of extensions."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Chromium" Tag="Web Browsers" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Web Browsers"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Web Browsers"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="An open.source web browser project that serves as the foundation for many browsers. including Google Chrome."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="An open.source web browser project that serves as the foundation for many browsers. including Google Chrome."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Brave" Tag="Web Browsers" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Web Browsers"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Web Browsers"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A privacy.focused web browser that blocks ads and trackers. offering faster and safer browsing experiences."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A privacy.focused web browser that blocks ads and trackers. offering faster and safer browsing experiences."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Tor Browser" Tag="Web Browsers" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Web Browsers"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Web Browsers"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A web browser that prioritizes user privacy by routing internet traffic through a global network of servers. enabling anonymous browsing."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A web browser that prioritizes user privacy by routing internet traffic through a global network of servers. enabling anonymous browsing."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Opera" Tag="Web Browsers" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Web Browsers"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Web Browsers"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="The Opera web browser makes the Web fast and fun. giving you a better web browser experience on any computer."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="The Opera web browser makes the Web fast and fun. giving you a better web browser experience on any computer."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Internet Download Manager" Tag="Web Browsers" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Web Browsers"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Web Browsers"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A popular download manager tool that accelerates downloads and allows users to organize and schedule downloads efficiently."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A popular download manager tool that accelerates downloads and allows users to organize and schedule downloads efficiently."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="JDownloader" Tag="Web Browsers" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Web Browsers"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Web Browsers"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="JDownloader is an internet download manager."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="JDownloader is an internet download manager."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="KLite Mega Codec Full Pack" Tag="Media" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Media"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Media"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Comprehensive collection of audio and video codecs. filters. and tools. enabling playback of various media formats."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Comprehensive collection of audio and video codecs. filters. and tools. enabling playback of various media formats."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="PotPlayer" Tag="Media" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Media"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Media"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A multimedia player with a sleek interface and advanced features. supporting a wide range of audio and video formats."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A multimedia player with a sleek interface and advanced features. supporting a wide range of audio and video formats."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="VLC" Tag="Media" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Media"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Media"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A versatile media player capable of playing almost any multimedia file format. with support for various streaming protocols."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A versatile media player capable of playing almost any multimedia file format. with support for various streaming protocols."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Kodi" Tag="Media" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Media"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Media"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A powerful open.source media center software that allows users to organize and stream their media collections."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A powerful open.source media center software that allows users to organize and stream their media collections."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Jellyfin Server" Tag="Media" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Media"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Media"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="An open.source media server software that enables users to stream their media libraries across devices. providing a self.hosted alternative to commercial services."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="An open.source media server software that enables users to stream their media libraries across devices. providing a self.hosted alternative to commercial services."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Winamp" Tag="Media" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Media"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Media"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A classic media player known for its customizable interface and extensive plugin support. providing a nostalgic music playback experience."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A classic media player known for its customizable interface and extensive plugin support. providing a nostalgic music playback experience."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Aimp" Tag="Media" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Media"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Media"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A lightweight and feature.rich audio player with support for various audio formats and customizable interface themes."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A lightweight and feature.rich audio player with support for various audio formats and customizable interface themes."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Spotify" Tag="Media" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Media"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Media"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Spotify is a new way to listen to music."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Spotify is a new way to listen to music."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="FastStone Image Viewer" Tag="Imaging" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Imaging"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Imaging"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="FastStone Image Viewer is a fast. stable. user.friendly image browser. converter and editor "/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="FastStone Image Viewer is a fast. stable. user.friendly image browser. converter and editor "/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="OpenOffice" Tag="Documents" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Documents"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Documents"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="An open.source office productivity suite offering word processing. spreadsheet. presentation. and other office tools. compatible with Microsoft Office formats."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="An open.source office productivity suite offering word processing. spreadsheet. presentation. and other office tools. compatible with Microsoft Office formats."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="FoxitReader" Tag="Documents" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Documents"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Documents"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A lightweight and feature.rich PDF reader with annotation. form filling. and document signing capabilities."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A lightweight and feature.rich PDF reader with annotation. form filling. and document signing capabilities."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="LibreOffice" Tag="Documents" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Documents"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Documents"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A powerful open.source office suite providing word processing. spreadsheet. presentation. and other office tools. compatible with Microsoft Office formats."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A powerful open.source office suite providing word processing. spreadsheet. presentation. and other office tools. compatible with Microsoft Office formats."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="SumatraPDF" Tag="Documents" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Documents"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Documents"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A lightweight and fast PDF reader with minimalistic design and focus on simplicity and speed."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A lightweight and fast PDF reader with minimalistic design and focus on simplicity and speed."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="WinRAR" Tag="Compression" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Compression"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Compression"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A popular file compression and archiving utility that supports various archive formats and offers advanced features such as encryption and self.extracting archives."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A popular file compression and archiving utility that supports various archive formats and offers advanced features such as encryption and self.extracting archives."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="7Zip" Tag="Compression" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Compression"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Compression"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="An open.source file archiver with a high compression ratio. supporting various archive formats and providing a powerful command.line interface."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="An open.source file archiver with a high compression ratio. supporting various archive formats and providing a powerful command.line interface."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="PeaZip" Tag="Compression" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Compression"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Compression"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text=" PeaZip is a free cross.platform file archiver."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text=" PeaZip is a free cross.platform file archiver."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Telegram Desktop" Tag="Communication" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Communication"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Communication"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A cross.platform messaging app with a focus on speed and security. offering end.to.end encryption and a wide range of features such as group chats. file sharing. and stickers."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A cross.platform messaging app with a focus on speed and security. offering end.to.end encryption and a wide range of features such as group chats. file sharing. and stickers."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Signal" Tag="Communication" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Communication"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Communication"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Fast. simple. secure. Privacy that fits in your pocket."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Fast. simple. secure. Privacy that fits in your pocket."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Meta Messenger" Tag="Communication" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Communication"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Communication"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A messaging app that allows users to connect with friends and family through text messages. voice calls. and video calls. offering various multimedia sharing features."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A messaging app that allows users to connect with friends and family through text messages. voice calls. and video calls. offering various multimedia sharing features."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Zoom" Tag="Communication" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Communication"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Communication"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A video conferencing app that facilitates online meetings. webinars. and virtual events. allowing participants to interact through video. audio. and chat."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A video conferencing app that facilitates online meetings. webinars. and virtual events. allowing participants to interact through video. audio. and chat."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Microsoft Teams" Tag="Communication" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Communication"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Communication"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A collaboration platform that combines workplace chat. video meetings. file storage. and application integration. enhancing teamwork and productivity within organizations."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A collaboration platform that combines workplace chat. video meetings. file storage. and application integration. enhancing teamwork and productivity within organizations."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Discord" Tag="Communication" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Communication"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Communication"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A VoIP application and digital distribution platform designed for creating communities and connecting gamers. providing text. voice. and video communication features."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A VoIP application and digital distribution platform designed for creating communities and connecting gamers. providing text. voice. and video communication features."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="TeamViewer" Tag="File Sharing" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="File Sharing"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="File Sharing"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A remote access and support software that enables users to remotely control computers. transfer files. and collaborate online. facilitating remote work and IT support."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A remote access and support software that enables users to remotely control computers. transfer files. and collaborate online. facilitating remote work and IT support."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="GIMP" Tag="Imaging" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Imaging"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Imaging"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A free and open.source raster graphics editor used for image retouching and editing. drawing and painting. and converting between different image formats."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A free and open.source raster graphics editor used for image retouching and editing. drawing and painting. and converting between different image formats."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Microsoft Visual C++ Runtime - all versions" Tag="Runtimes" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Runtimes"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Runtimes"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Microsoft Visual C.. Redistributable installs run.time components of Visual C.. libraries. These components are required to run C.. applications that are developed using Visual Studio and link dynamically to Visual C.. libraries."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Microsoft Visual C.. Redistributable installs run.time components of Visual C.. libraries. These components are required to run C.. applications that are developed using Visual Studio and link dynamically to Visual C.. libraries."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="DirectX" Tag="Runtimes" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Runtimes"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Runtimes"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="DirectX is a collection of APIs for handling tasks related to games and videos."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="DirectX is a collection of APIs for handling tasks related to games and videos."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Microsoft Visual C++ 2005 (x86) Redistributable" Tag="Runtimes" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Runtimes"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Runtimes"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A set of runtime components required to run applications developed with Microsoft Visual C.. 2005. providing libraries. DLLs. and other resources."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A set of runtime components required to run applications developed with Microsoft Visual C.. 2005. providing libraries. DLLs. and other resources."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Microsoft Visual C++ 2005 (x64) Redistributable" Tag="Runtimes" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Runtimes"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Runtimes"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A set of runtime components required to run 64.bit applications developed with Microsoft Visual C.. 2005. providing libraries. DLLs. and other resources."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A set of runtime components required to run 64.bit applications developed with Microsoft Visual C.. 2005. providing libraries. DLLs. and other resources."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Microsoft Visual C++ 2008 (x86) Redistributable" Tag="Runtimes" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Runtimes"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Runtimes"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A set of runtime components required to run applications developed with Microsoft Visual C.. 2008. providing libraries. DLLs. and other resources."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A set of runtime components required to run applications developed with Microsoft Visual C.. 2008. providing libraries. DLLs. and other resources."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Microsoft Visual C++ 2008 (x64) Redistributable" Tag="Runtimes" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Runtimes"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Runtimes"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A set of runtime components required to run 64.bit applications developed with Microsoft Visual C.. 2008. providing libraries. DLLs. and other resources."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A set of runtime components required to run 64.bit applications developed with Microsoft Visual C.. 2008. providing libraries. DLLs. and other resources."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Microsoft Visual C++ 2010 (x86) Redistributable" Tag="Runtimes" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Runtimes"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Runtimes"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A set of runtime components required to run applications developed with Microsoft Visual C.. 2010. providing libraries. DLLs. and other resources."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A set of runtime components required to run applications developed with Microsoft Visual C.. 2010. providing libraries. DLLs. and other resources."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Microsoft Visual C++ 2010 (x64) Redistributable" Tag="Runtimes" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Runtimes"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Runtimes"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A set of runtime components required to run 64.bit applications developed with Microsoft Visual C.. 2010. providing libraries. DLLs. and other resources."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A set of runtime components required to run 64.bit applications developed with Microsoft Visual C.. 2010. providing libraries. DLLs. and other resources."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Microsoft Visual C++ 2012 (x86) Redistributable" Tag="Runtimes" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Runtimes"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Runtimes"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A set of runtime components required to run applications developed with Microsoft Visual C.. 2012. providing libraries. DLLs. and other resources."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A set of runtime components required to run applications developed with Microsoft Visual C.. 2012. providing libraries. DLLs. and other resources."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Microsoft Visual C++ 2012 (x64) Redistributable" Tag="Runtimes" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Runtimes"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Runtimes"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A set of runtime components required to run 64.bit applications developed with Microsoft Visual C.. 2012. providing libraries. DLLs. and other resources."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A set of runtime components required to run 64.bit applications developed with Microsoft Visual C.. 2012. providing libraries. DLLs. and other resources."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Microsoft Visual C++ 2013 (x86) Redistributable" Tag="Runtimes" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Runtimes"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Runtimes"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A set of runtime components required to run applications developed with Microsoft Visual C.. 2013. providing libraries. DLLs. and other resources."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A set of runtime components required to run applications developed with Microsoft Visual C.. 2013. providing libraries. DLLs. and other resources."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Microsoft Visual C++ 2013 (x64) Redistributable" Tag="Runtimes" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Runtimes"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Runtimes"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A set of runtime components required to run 64.bit applications developed with Microsoft Visual C.. 2013. providing libraries. DLLs. and other resources."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A set of runtime components required to run 64.bit applications developed with Microsoft Visual C.. 2013. providing libraries. DLLs. and other resources."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Microsoft Visual C++ 2015-2022 (x64) Redistributable" Tag="Runtimes" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Runtimes"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Runtimes"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A set of runtime components required to run 64.bit applications developed with Microsoft Visual C.. 2015.2022. providing libraries. DLLs. and other resources."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A set of runtime components required to run 64.bit applications developed with Microsoft Visual C.. 2015.2022. providing libraries. DLLs. and other resources."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Microsoft Visual C++ 2015-2022  (x86) Redistributable" Tag="Runtimes" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Runtimes"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Runtimes"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A set of runtime components required to run applications developed with Microsoft Visual C.. 2015.2022. providing libraries. DLLs. and other resources."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A set of runtime components required to run applications developed with Microsoft Visual C.. 2015.2022. providing libraries. DLLs. and other resources."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="NET Framework All Versions" Tag="Runtimes" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Runtimes"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Runtimes"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A comprehensive and consistent programming model for building applications that have visually stunning user experiences. seamless and secure communication. and the ability to model a range of business processes."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A comprehensive and consistent programming model for building applications that have visually stunning user experiences. seamless and secure communication. and the ability to model a range of business processes."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="AMD Ryzen Chipset Drivers" Tag="Drivers" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Drivers"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Drivers"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Supports. AMD Ryzen Threadripper PRO Processor. AMD Ryzen 8000.7040.7000 Series Desktop . Mobile Processors. AMD Ryzen 5000.3rd Gen.2nd Gen Desktop . Threadripper Processors. AMD Ryzen Desktop Processor with Radeon Graphics . Mobile Processor with Radeon Graphics. 7th.Gen AMD A.Series Processors. AMD X670E.X670.B650E.B650.B350.A320.X370.X399.B450.X470.X570.B550.A520.A620.TRX40.TRX50.WRX80.WRX90 Chipsets"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Supports. AMD Ryzen Threadripper PRO Processor. AMD Ryzen 8000.7040.7000 Series Desktop . Mobile Processors. AMD Ryzen 5000.3rd Gen.2nd Gen Desktop . Threadripper Processors. AMD Ryzen Desktop Processor with Radeon Graphics . Mobile Processor with Radeon Graphics. 7th.Gen AMD A.Series Processors. AMD X670E.X670.B650E.B650.B350.A320.X370.X399.B450.X470.X570.B550.A520.A620.TRX40.TRX50.WRX80.WRX90 Chipsets"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="NVidia Display Driver" Tag="Drivers" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Drivers"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Drivers"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="The software component that allows the operating system and installed software to communicate with and control the NVIDIA graphics processing unit .GPU.."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="The software component that allows the operating system and installed software to communicate with and control the NVIDIA graphics processing unit .GPU.."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="NVIDIA GeForce Experience" Tag="Drivers" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Drivers"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Drivers"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A cloud.based gaming service provided by NVIDIA that allows users to play video games on supported devices via a remote gaming PC hosted on NVIDIA..s servers."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A cloud.based gaming service provided by NVIDIA that allows users to play video games on supported devices via a remote gaming PC hosted on NVIDIA..s servers."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Msi Afterburner" Tag="Drivers" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Drivers"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Drivers"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="MSI Afterburner is the ultimate graphics card utility. co.developed by MSI and RivaTuner teams."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="MSI Afterburner is the ultimate graphics card utility. co.developed by MSI and RivaTuner teams."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="NVIDIA PhysX" Tag="Drivers" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Drivers"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Drivers"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A physics processing unit .PPU. software development kit .SDK. offered by NVIDIA for real.time physics simulations in video games."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A physics processing unit .PPU. software development kit .SDK. offered by NVIDIA for real.time physics simulations in video games."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Steam" Tag="Gaming" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Gaming"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Gaming"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A digital distribution platform developed by Valve Corporation for purchasing and playing video games."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A digital distribution platform developed by Valve Corporation for purchasing and playing video games."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Ubisoft Connect" Tag="Gaming" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Gaming"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Gaming"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A digital distribution. digital rights management. multiplayer. and communications service developed by Ubisoft. providing access to Ubisoft..s games. rewards. and social features."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A digital distribution. digital rights management. multiplayer. and communications service developed by Ubisoft. providing access to Ubisoft..s games. rewards. and social features."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Origin" Tag="Gaming" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Gaming"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Gaming"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text=" Game store launcher"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text=" Game store launcher"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Rockstar Games Launcher" Tag="Gaming" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Gaming"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Gaming"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Download and play the latest Rockstar Games PC titles"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Download and play the latest Rockstar Games PC titles"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="GameSave Manager" Tag="Gaming" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Gaming"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Gaming"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A utility tool that allows users to backup. restore. and transfer their game saves between different gaming platforms and directories."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A utility tool that allows users to backup. restore. and transfer their game saves between different gaming platforms and directories."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="StreamlabsOBS" Tag="Gaming" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Gaming"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Gaming"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A free and open.source streaming software built on top of OBS Studio with additional features tailored for streamers. such as built.in alerts. overlays. and chat integration."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A free and open.source streaming software built on top of OBS Studio with additional features tailored for streamers. such as built.in alerts. overlays. and chat integration."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="OBS Studio" Tag="Gaming" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Gaming"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Gaming"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A free and open.source software for video recording and live streaming. It offers high performance real.time video.audio capturing and mixing."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A free and open.source software for video recording and live streaming. It offers high performance real.time video.audio capturing and mixing."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Logitech Gaming Software" Tag="Gaming" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Gaming"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Gaming"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Logitech Gaming Software lets you customize Logitech G gaming mice. keyboards. headsets and select wheels."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Logitech Gaming Software lets you customize Logitech G gaming mice. keyboards. headsets and select wheels."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Lively Wallpaper" Tag="Gaming" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Gaming"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Gaming"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A software that allows users to set animated and interactive wallpapers on their Windows desktop. providing various customization options."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A software that allows users to set animated and interactive wallpapers on their Windows desktop. providing various customization options."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Playnite" Tag="Gaming" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Gaming"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Gaming"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Open source video game library manager and launcher with support for 3rd party libraries like Steam. GOG. Origin. Battle.net and Uplay."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Open source video game library manager and launcher with support for 3rd party libraries like Steam. GOG. Origin. Battle.net and Uplay."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Driver Easy" Tag="Drivers" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Drivers"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Drivers"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A driver update tool that automatically detects. downloads. and installs device drivers for the user..s computer hardware."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A driver update tool that automatically detects. downloads. and installs device drivers for the user..s computer hardware."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Intel Graphics Windows DCH" Tag="Drivers" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Drivers"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Drivers"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Intel Graphics Driver for Windows 10."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Intel Graphics Driver for Windows 10."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Intel Driver Support Assistant" Tag="Drivers" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Drivers"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Drivers"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Intel Driver . Support Assistant enables you to scan computing devices for the latest drivers available from Intel."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Intel Driver . Support Assistant enables you to scan computing devices for the latest drivers available from Intel."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Intel Network Adapter" Tag="Drivers" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Drivers"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Drivers"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Intel Network Adapter Drivers for Windows 10."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Intel Network Adapter Drivers for Windows 10."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Snappy Driver Installer" Tag="Drivers" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Drivers"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Drivers"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A free and open.source tool for updating and installing device drivers on Windows. offering offline driver updates and wide hardware support."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A free and open.source tool for updating and installing device drivers on Windows. offering offline driver updates and wide hardware support."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Driver booster" Tag="Drivers" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Drivers"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Drivers"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Scans and identifies outdated drivers automatically. and downloads and installs the right update for you with just ONE click."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Scans and identifies outdated drivers automatically. and downloads and installs the right update for you with just ONE click."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Driver Genius" Tag="Drivers" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Drivers"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Drivers"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Professional driver management tool and hardware diagnostics."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Professional driver management tool and hardware diagnostics."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Display Driver Uninstaller" Tag="Drivers" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Drivers"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Drivers"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Utility to completely remove system drivers"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Utility to completely remove system drivers"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Driver Store Explorer" Tag="Drivers" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Drivers"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Drivers"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text=" Windows driver store utility."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text=" Windows driver store utility."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="1Password" Tag="Utilities" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Utilities"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Utilities"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A password manager that securely stores login credentials. credit card information. and other sensitive data in an encrypted vault. accessible with a single master password."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A password manager that securely stores login credentials. credit card information. and other sensitive data in an encrypted vault. accessible with a single master password."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="AOMEI Partition Assistant Standard" Tag="Disk Tools" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Disk Tools"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Disk Tools"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="AOMEI Partition Assistant Standard allows you to realize disk upgrade.replacement. partition style conversion. OS migration and other disk managements without any difficulties."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="AOMEI Partition Assistant Standard allows you to realize disk upgrade.replacement. partition style conversion. OS migration and other disk managements without any difficulties."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="AOMEI Backupper Standard" Tag="Disk Tools" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Disk Tools"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Disk Tools"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A backup and recovery software that enables users to create system backups. disk backups. partition backups. and file backups to protect data against system failures and data loss."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A backup and recovery software that enables users to create system backups. disk backups. partition backups. and file backups to protect data against system failures and data loss."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Recuva recover" Tag="Disk Tools" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Disk Tools"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Disk Tools"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A data recovery software that helps users retrieve accidentally deleted files. including photos. documents. videos. and more. from various storage devices such as hard drives. USB drives. and memory cards."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A data recovery software that helps users retrieve accidentally deleted files. including photos. documents. videos. and more. from various storage devices such as hard drives. USB drives. and memory cards."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="CCleaner" Tag="Utilities" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Utilities"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Utilities"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A system optimization. privacy. and cleaning tool that helps users remove unused files. clean up temporary files. and optimize their Windows PCs for better performance."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A system optimization. privacy. and cleaning tool that helps users remove unused files. clean up temporary files. and optimize their Windows PCs for better performance."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="BCUninstaller" Tag="Utilities" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Utilities"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Utilities"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A powerful uninstaller tool for Windows that allows users to remove unwanted programs. plugins. and Windows Store apps. along with leftover files and registry entries."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A powerful uninstaller tool for Windows that allows users to remove unwanted programs. plugins. and Windows Store apps. along with leftover files and registry entries."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Easy Context Menu" Tag="Utilities" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Utilities"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Utilities"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="To install Easy Context Menu. run the following command from the command line or from PowerShell."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="To install Easy Context Menu. run the following command from the command line or from PowerShell."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="HWiNFO" Tag="Utilities" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Utilities"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Utilities"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A hardware information and diagnostic tool that provides detailed information about the hardware components of a computer system. including sensors. temperature. voltage. and more."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A hardware information and diagnostic tool that provides detailed information about the hardware components of a computer system. including sensors. temperature. voltage. and more."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Speccy" Tag="Utilities" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Utilities"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Utilities"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A system information tool that provides detailed information about the hardware and operating system of a computer. including CPU. RAM. motherboard. graphics card. and storage devices."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A system information tool that provides detailed information about the hardware and operating system of a computer. including CPU. RAM. motherboard. graphics card. and storage devices."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="FurMark" Tag="Utilities" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Utilities"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Utilities"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A graphics card stress testing and benchmarking utility that helps users test the stability. cooling. and performance of their GPU by rendering a highly intensive 3D graphics scene."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A graphics card stress testing and benchmarking utility that helps users test the stability. cooling. and performance of their GPU by rendering a highly intensive 3D graphics scene."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Hard Disk Sentinel" Tag="Disk Tools" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Disk Tools"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Disk Tools"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A hard disk monitoring and analysis software that helps users monitor the health. performance. and temperature of their hard drives. SSDs. and other storage devices."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A hard disk monitoring and analysis software that helps users monitor the health. performance. and temperature of their hard drives. SSDs. and other storage devices."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="CPU-Z" Tag="Utilities" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Utilities"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Utilities"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A system monitoring utility that provides detailed information about the CPU. motherboard. memory. and other hardware components of a computer system."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A system monitoring utility that provides detailed information about the CPU. motherboard. memory. and other hardware components of a computer system."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Mem Reduct" Tag="Utilities" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Utilities"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Utilities"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Lightweight real.time memory management application to monitor and clean system memory on your computer."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Lightweight real.time memory management application to monitor and clean system memory on your computer."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="HandBrake" Tag="Utilities" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Utilities"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Utilities"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A free and open.source video transcoder tool that converts video files from one format to another. supporting a wide range of input and output formats."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A free and open.source video transcoder tool that converts video files from one format to another. supporting a wide range of input and output formats."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Rufus Portable" Tag="Portable" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Portable"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Portable"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A utility tool for creating bootable USB drives from ISO images. helping users to install or run operating systems. such as Windows. Linux. or other utilities."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A utility tool for creating bootable USB drives from ISO images. helping users to install or run operating systems. such as Windows. Linux. or other utilities."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="ImgBurn" Tag="Development" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Development"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Development"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Lightweight CD . DVD burning application "/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Lightweight CD . DVD burning application "/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Virtual CloneDrive" Tag="Utilities" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Utilities"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Utilities"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A free software that allows users to mount disc images as virtual drives. enabling them to access the content of ISO. BIN. and CCD files without the need for physical discs."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A free software that allows users to mount disc images as virtual drives. enabling them to access the content of ISO. BIN. and CCD files without the need for physical discs."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Ultra ISO" Tag="Utilities" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Utilities"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Utilities"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A powerful ISO image management tool that enables users to create. edit. extract. and burn ISO files. providing a comprehensive solution for managing disk image files."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A powerful ISO image management tool that enables users to create. edit. extract. and burn ISO files. providing a comprehensive solution for managing disk image files."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Ventoy" Tag="Utilities" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Utilities"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Utilities"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="An open.source tool for creating bootable USB drives with multiple ISO files. allowing users to boot various operating systems or utilities directly from a single USB drive."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="An open.source tool for creating bootable USB drives with multiple ISO files. allowing users to boot various operating systems or utilities directly from a single USB drive."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="iVentoy" Tag="Utilities" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Utilities"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Utilities"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="With iVentoy you can boot and install OS on multiple machines at the same time through the network."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="With iVentoy you can boot and install OS on multiple machines at the same time through the network."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="AutoHotkey" Tag="Utilities" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Utilities"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Utilities"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A scripting language for automating repetitive tasks and creating macros on Windows. allowing users to customize keyboard shortcuts. remap keys. and automate mouse actions."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A scripting language for automating repetitive tasks and creating macros on Windows. allowing users to customize keyboard shortcuts. remap keys. and automate mouse actions."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Rainmeter" Tag="Utilities" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Utilities"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Utilities"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A customizable desktop customization tool that displays customizable skins. widgets. and applets on the Windows desktop. providing users with real.time system monitoring and information."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A customizable desktop customization tool that displays customizable skins. widgets. and applets on the Windows desktop. providing users with real.time system monitoring and information."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="FxSound" Tag="Utilities" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Utilities"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Utilities"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="An audio enhancer software that improves the sound quality of music. videos. and games on Windows PCs by providing advanced audio processing and customization options."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="An audio enhancer software that improves the sound quality of music. videos. and games on Windows PCs by providing advanced audio processing and customization options."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Vysor" Tag="Utilities" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Utilities"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Utilities"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A screen mirroring and remote control software that enables users to view and control Android devices from Windows PCs. allowing for easy screen sharing. app testing. and troubleshooting."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A screen mirroring and remote control software that enables users to view and control Android devices from Windows PCs. allowing for easy screen sharing. app testing. and troubleshooting."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Unified Remote" Tag="Utilities" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Utilities"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Utilities"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A remote control app that turns smartphones into universal remote controls for Windows. macOS. and Linux computers. allowing users to control media playback. presentations. and more."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A remote control app that turns smartphones into universal remote controls for Windows. macOS. and Linux computers. allowing users to control media playback. presentations. and more."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="AnyDesk" Tag="File Sharing" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="File Sharing"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="File Sharing"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A remote desktop software that allows users to access and control Windows. macOS. Linux. Android. and iOS devices from anywhere. providing secure and reliable remote access."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A remote desktop software that allows users to access and control Windows. macOS. Linux. Android. and iOS devices from anywhere. providing secure and reliable remote access."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Airdroid" Tag="File Sharing" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="File Sharing"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="File Sharing"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="AirDroid is a free and fast Android device manager app that allows you to access Android phone.tablet from computer remotely and securely. Manage SMS. files. photos and videos. WhatsApp. Line. WeChat and more on computer."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="AirDroid is a free and fast Android device manager app that allows you to access Android phone.tablet from computer remotely and securely. Manage SMS. files. photos and videos. WhatsApp. Line. WeChat and more on computer."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="UltraViewer" Tag="File Sharing" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="File Sharing"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="File Sharing"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Remote control to support your clients . partners from everywhere."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Remote control to support your clients . partners from everywhere."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Wireless Network Watcher Portable" Tag="Portable" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Portable"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Portable"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Wireless Network Watcher is a small utility that scans your wireless network and displays the list of all computers and devices that are currently connected to your network."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Wireless Network Watcher is a small utility that scans your wireless network and displays the list of all computers and devices that are currently connected to your network."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="WifiInfoView" Tag="Utilities" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Utilities"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Utilities"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Wireless Network Watcher is a small utility that scans your wireless network and displays the list of all computers and devices that are currently connected to your network."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Wireless Network Watcher is a small utility that scans your wireless network and displays the list of all computers and devices that are currently connected to your network."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="qBittorrent" Tag="File Sharing" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="File Sharing"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="File Sharing"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A free and open.source BitTorrent client for downloading and uploading files via the BitTorrent protocol. providing users with a lightweight and feature.rich torrenting experience."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A free and open.source BitTorrent client for downloading and uploading files via the BitTorrent protocol. providing users with a lightweight and feature.rich torrenting experience."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Google Earth Pro" Tag="Imaging" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Imaging"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Imaging"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Google Earth Pro on desktop is free for users with advanced feature needs. Import and export GIS data. and go back in time with historical imagery."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Google Earth Pro on desktop is free for users with advanced feature needs. Import and export GIS data. and go back in time with historical imagery."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="XAMPP" Tag="Development" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Development"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Development"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="XAMPP is a free and open.source cross.platform web server solution stack package developed by Apache Friends. consisting mainly of the Apache HTTP Server. MariaDB database. and interpreters for scripts written in the PHP and Perl programming languages."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="XAMPP is a free and open.source cross.platform web server solution stack package developed by Apache Friends. consisting mainly of the Apache HTTP Server. MariaDB database. and interpreters for scripts written in the PHP and Perl programming languages."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Visual Studio Professional 2022" Tag="Development" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Development"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Development"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Visual Studio Professional 2022 is an integrated development environment .IDE. from Microsoft. It is used to develop computer programs. websites. web apps. web services. and mobile apps."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Visual Studio Professional 2022 is an integrated development environment .IDE. from Microsoft. It is used to develop computer programs. websites. web apps. web services. and mobile apps."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Visual Studio Community 2022" Tag="Development" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Development"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Development"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Visual Studio Community 2022 is a free. fully.featured. and extensible IDE for individual developers. open source projects. academic research. education. and small professional teams."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Visual Studio Community 2022 is a free. fully.featured. and extensible IDE for individual developers. open source projects. academic research. education. and small professional teams."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Unity Hub" Tag="Development" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Development"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Development"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Unity is a cross.platform game creation system developed by Unity Technologies and used to develop video games for PC. consoles. mobile"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Unity is a cross.platform game creation system developed by Unity Technologies and used to develop video games for PC. consoles. mobile"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Godot Engine" Tag="Development" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Development"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Development"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Godot is a feature.packed. cross.platform game engine for creating 2D and 3D games. It provides a comprehensive set of tools and features to develop games efficiently and quickly."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Godot is a feature.packed. cross.platform game engine for creating 2D and 3D games. It provides a comprehensive set of tools and features to develop games efficiently and quickly."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Unity3D Engine" Tag="Development" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Development"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Development"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Unity is a cross.platform game creation system developed by Unity Technologies and used to develop video games for PC. consoles. mobile"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Unity is a cross.platform game creation system developed by Unity Technologies and used to develop video games for PC. consoles. mobile"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Blender" Tag="Development" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Development"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Development"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Blender is a free and open.source professional.grade 3D computer graphics and video compositing program."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Blender is a free and open.source professional.grade 3D computer graphics and video compositing program."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Visual Studio Code" Tag="Development" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Development"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Development"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Visual Studio Code is a free source.code editor developed by Microsoft for Windows. Linux. and macOS. It includes support for debugging. embedded Git control. syntax highlighting. intelligent code completion. snippets. and code refactoring."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Visual Studio Code is a free source.code editor developed by Microsoft for Windows. Linux. and macOS. It includes support for debugging. embedded Git control. syntax highlighting. intelligent code completion. snippets. and code refactoring."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Vim" Tag="Development" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Development"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Development"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Vim is an advanced text editor that seeks to provide the power of the de.facto Unix editor ..Vi... with a more complete feature set. It..s us... Keep Reading "/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Vim is an advanced text editor that seeks to provide the power of the de.facto Unix editor ..Vi... with a more complete feature set. It..s us... Keep Reading "/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Sublime Text 4" Tag="Development" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Development"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Development"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Sublime Text 4 . The sophisticated text editor for code. markup and prose. "/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Sublime Text 4 . The sophisticated text editor for code. markup and prose. "/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Atom" Tag="Development" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Development"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Development"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Atom is a text editor that..s modern. approachable. yet hackable to the core.a tool you can customize to do anything but also use productively without ever touching a config file."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Atom is a text editor that..s modern. approachable. yet hackable to the core.a tool you can customize to do anything but also use productively without ever touching a config file."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="InnoSetup" Tag="Development" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Development"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Development"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Inno Setup is a free installer for Windows programs. First introduced in 1997. Inno Setup today rivals and even surpasses many commercial installers in feature set and stability."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Inno Setup is a free installer for Windows programs. First introduced in 1997. Inno Setup today rivals and even surpasses many commercial installers in feature set and stability."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="PyCharm Community Edition" Tag="Development" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Development"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Development"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="PyCharm Community Edition is a free and open.source IDE for Python development. It provides smart code completion. code inspections. on.the.fly error highlighting. and quick.fixes."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="PyCharm Community Edition is a free and open.source IDE for Python development. It provides smart code completion. code inspections. on.the.fly error highlighting. and quick.fixes."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="PyCharm Professional Edition" Tag="Development" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Development"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Development"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="PyCharm Professional Edition is a powerful IDE for professional Python development. It includes advanced features such as database tools. web development support. and scientific tools integration."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="PyCharm Professional Edition is a powerful IDE for professional Python development. It includes advanced features such as database tools. web development support. and scientific tools integration."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Jetbrains Rider" Tag="Development" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Development"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Development"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Rider is a cross.platform .NET IDE developed by JetBrains. It supports C.. VB.NET. F.. ASP.NET. JavaScript. TypeScript. HTML. CSS. and SQL languages and frameworks."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Rider is a cross.platform .NET IDE developed by JetBrains. It supports C.. VB.NET. F.. ASP.NET. JavaScript. TypeScript. HTML. CSS. and SQL languages and frameworks."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Node.js LTS" Tag="Development" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Development"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Development"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Node.js is a JavaScript runtime built on Chrome..s V8 JavaScript engine. LTS .Long Term Support. releases are supported for an extended period and provide stability for production environments."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Node.js is a JavaScript runtime built on Chrome..s V8 JavaScript engine. LTS .Long Term Support. releases are supported for an extended period and provide stability for production environments."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Electrum-LTS" Tag="Development" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Development"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Development"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Electrum is a lightweight Bitcoin wallet focused on speed and simplicity. with support for hardware wallets and multisig functionality. LTS .Long Term Support. releases provide stability and security updates for an extended period."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Electrum is a lightweight Bitcoin wallet focused on speed and simplicity. with support for hardware wallets and multisig functionality. LTS .Long Term Support. releases provide stability and security updates for an extended period."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Hugo" Tag="Development" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Development"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Development"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Hugo is one of the most popular open.source static site generators. With its amazing speed and flexibility. Hugo makes building websites f... Keep Reading "/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Hugo is one of the most popular open.source static site generators. With its amazing speed and flexibility. Hugo makes building websites f... Keep Reading "/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Hugo Extended" Tag="Development" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Development"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Development"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Hugo is one of the most popular open.source static site generators. With its amazing speed and flexibility. Hugo makes building websites f... Keep Reading "/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Hugo is one of the most popular open.source static site generators. With its amazing speed and flexibility. Hugo makes building websites f... Keep Reading "/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Notepad++" Tag="Development" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Development"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Development"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Notepad.. is a free source code editor and Notepad replacement that supports several languages. It offers syntax highlighting. code folding. auto.completion. and other features for efficient code editing."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Notepad.. is a free source code editor and Notepad replacement that supports several languages. It offers syntax highlighting. code folding. auto.completion. and other features for efficient code editing."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Windows Terminal" Tag="Development" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Development"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Development"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Windows Terminal is a modern terminal application for users of command.line tools and shells like Command Prompt. PowerShell. and Windows Subsystem for Linux .WSL.. It provides multiple tabs. custom themes. and GPU.accelerated text rendering."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Windows Terminal is a modern terminal application for users of command.line tools and shells like Command Prompt. PowerShell. and Windows Subsystem for Linux .WSL.. It provides multiple tabs. custom themes. and GPU.accelerated text rendering."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Powershell 7" Tag="Development" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Development"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Development"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="PowerShell Core is a cross.platform .Windows. Linux. and macOS. automation and configuration tool.framework that works well with your existing tools and is optimized for dealing with structured data .e.g.. JSON. CSV. XML. etc... REST APIs. and object models."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="PowerShell Core is a cross.platform .Windows. Linux. and macOS. automation and configuration tool.framework that works well with your existing tools and is optimized for dealing with structured data .e.g.. JSON. CSV. XML. etc... REST APIs. and object models."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="x64dbg Portable" Tag="Portable" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Portable"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Portable"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="An open.source x64.x32 debugger for windows."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="An open.source x64.x32 debugger for windows."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="dnSpy" Tag="Development" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Development"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Development"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="dnSpy is a tool to reverse engineer .NET assemblies. It includes a decompiler. a debugger and an assembly editor .and more. and can be easily extended by writing your own extension. It uses dnlib to read and write assemblies so it can handle obfuscated assemblies .eg. malware. without crashing."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="dnSpy is a tool to reverse engineer .NET assemblies. It includes a decompiler. a debugger and an assembly editor .and more. and can be easily extended by writing your own extension. It uses dnlib to read and write assemblies so it can handle obfuscated assemblies .eg. malware. without crashing."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Cheat Engine" Tag="Development" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Development"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Development"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Cheat Engine is an open source tool designed to help you modify single player games."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Cheat Engine is an open source tool designed to help you modify single player games."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Python 3.9" Tag="Development" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Development"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Development"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Python is a popular high.level programming language known for its simplicity and versatility. It is used in various fields such as web development. data science. machine learning. and automation."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Python is a popular high.level programming language known for its simplicity and versatility. It is used in various fields such as web development. data science. machine learning. and automation."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Git" Tag="Development" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Development"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Development"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Git is a free and open.source distributed version control system designed to handle everything from small to very large projects with speed and efficiency."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Git is a free and open.source distributed version control system designed to handle everything from small to very large projects with speed and efficiency."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="GitHub Desktop" Tag="Development" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Development"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Development"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="GitHub Desktop is a seamless way to contribute to projects on GitHub and GitHub Enterprise. It provides an intuitive interface for managing repositories. branching. committing. and merging code changes."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="GitHub Desktop is a seamless way to contribute to projects on GitHub and GitHub Enterprise. It provides an intuitive interface for managing repositories. branching. committing. and merging code changes."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Docker Desktop" Tag="Development" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Development"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Development"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Docker Desktop is an easy.to.install application for Windows and macOS that enables developers to build. share. and run containerized applications and microservices locally."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Docker Desktop is an easy.to.install application for Windows and macOS that enables developers to build. share. and run containerized applications and microservices locally."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Docker Compose" Tag="Development" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Development"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Development"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Docker Compose is a tool for defining and running multi.container Docker applications. It allows you to use a YAML file to configure your application..s services. networks. and volumes."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Docker Compose is a tool for defining and running multi.container Docker applications. It allows you to use a YAML file to configure your application..s services. networks. and volumes."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="PowerToys" Tag="Development" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Development"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Development"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="PowerToys is a set of utilities for power users to tune and streamline their Windows experience for greater productivity. It includes tools like FancyZones for window management. PowerRename for batch renaming files. and more."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="PowerToys is a set of utilities for power users to tune and streamline their Windows experience for greater productivity. It includes tools like FancyZones for window management. PowerRename for batch renaming files. and more."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Notion" Tag="Development" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Development"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Development"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="The all.in.one workspace for your notes. tasks. wikis. and databases."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="The all.in.one workspace for your notes. tasks. wikis. and databases."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="FL Studio" Tag="Media Tools" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Media Tools"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Media Tools"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="FL Studio is a digital audio workstation .DAW. developed by Image.Line. It allows you to compose. arrange. record. edit. mix. and master professional.quality music."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="FL Studio is a digital audio workstation .DAW. developed by Image.Line. It allows you to compose. arrange. record. edit. mix. and master professional.quality music."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Android Debug Bridge" Tag="Development" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Development"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Development"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Android Debug Bridge .ADB. is a command.line tool that allows you to communicate with an Android device. It is used for various debugging tasks such as installing and debugging apps."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Android Debug Bridge .ADB. is a command.line tool that allows you to communicate with an Android device. It is used for various debugging tasks such as installing and debugging apps."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Universal ADB Drivers" Tag="Development" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Development"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Development"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Universal ADB Drivers are drivers that provide compatibility with a wide range of Android devices for debugging purposes. They allow you to connect your Android device to a computer and use ADB commands."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Universal ADB Drivers are drivers that provide compatibility with a wide range of Android devices for debugging purposes. They allow you to connect your Android device to a computer and use ADB commands."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Scrcpy" Tag="Development" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Development"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Development"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Scrcpy is a free and open.source tool that allows you to display and control your Android device from a computer. It provides high.performance screen mirroring and supports various input methods."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Scrcpy is a free and open.source tool that allows you to display and control your Android device from a computer. It provides high.performance screen mirroring and supports various input methods."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="VirtualBox" Tag="Development" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Development"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Development"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="VirtualBox is a cross.platform virtualization application. It installs on existing Intel or AMD.based computers. whether they are running Windows. Mac. Linux or Solaris operating systems. It extends the capabilities of your existing computer so that it can run multiple operating systems .inside multiple virtual machines. at the same time."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="VirtualBox is a cross.platform virtualization application. It installs on existing Intel or AMD.based computers. whether they are running Windows. Mac. Linux or Solaris operating systems. It extends the capabilities of your existing computer so that it can run multiple operating systems .inside multiple virtual machines. at the same time."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Oh My Posh" Tag="Development" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Development"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Development"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text=" Oh my Posh is a custom prompt engine for any shell that has the ability to adjust the prompt string with a function or variable."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text=" Oh my Posh is a custom prompt engine for any shell that has the ability to adjust the prompt string with a function or variable."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Malwarebytes" Tag="Security" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Security"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Security"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Multiple layers of malware.crushing tech. including virus protection. Thorough malware and spyware removal. Specialized ransomware protection."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Multiple layers of malware.crushing tech. including virus protection. Thorough malware and spyware removal. Specialized ransomware protection."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Avast Free Antivirus" Tag="Security" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Security"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Security"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Avast Free Antivirus."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Avast Free Antivirus."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Nerd Fonts - CascadiaCode" Tag="Development" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Development"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Development"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Nerd Fonts is a project that patches developer targeted fonts with a high number of glyphs .icons.."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Nerd Fonts is a project that patches developer targeted fonts with a high number of glyphs .icons.."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Java SE Runtime Environment 8.0.411" Tag="Runtimes" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Runtimes"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Runtimes"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Java allows you to play online games. chat with people around the world. calculate your mortgage interest. and view images in 3D. just to name a few. It..s also integral to the intranet applications and other e.business solutions that are the foundation of corporate computing. Please note you now need a Java License from Oracle to use unless installed for Personal Use and Development Use."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Java allows you to play online games. chat with people around the world. calculate your mortgage interest. and view images in 3D. just to name a few. It..s also integral to the intranet applications and other e.business solutions that are the foundation of corporate computing. Please note you now need a Java License from Oracle to use unless installed for Personal Use and Development Use."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Audacity" Tag="Media Tools" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Media Tools"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Media Tools"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Audacity is free. open source. cross.platform software for recording and editing sounds."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Audacity is free. open source. cross.platform software for recording and editing sounds."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="MusicBee" Tag="Media" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Media"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Media"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="MusicBee makes it easy to organize. find and play music files on your computer. on portable devices and on the web."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="MusicBee makes it easy to organize. find and play music files on your computer. on portable devices and on the web."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Format Factory" Tag="Media Tools" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Media Tools"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Media Tools"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="multifunctional media processing tools"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="multifunctional media processing tools"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Winaero Tweaker" Tag="Utilities" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Utilities"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Utilities"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Customize the appearance and behavior of the Windows operating system"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Customize the appearance and behavior of the Windows operating system"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Windows Subsystem for Linux WSL2" Tag="Development" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Development"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Development"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="To install Windows Subsystem for Linux 2. run the following command from the command line or from PowerShell."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="To install Windows Subsystem for Linux 2. run the following command from the command line or from PowerShell."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Wamp Server 3.3.5" Tag="Development" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Development"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Development"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="WampServer is a Windows web development environment. It allows you to create web applications."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="WampServer is a Windows web development environment. It allows you to create web applications."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="MongoDB" Tag="Development" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Development"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Development"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="MongoDB stores data using a flexible document data model that is similar to JSON. Documents contain one or more fields. including arrays. binary data and sub.documents. Fields can vary from document to document. This flexibility allows development teams to evolve the data model rapidly as their application requirements change."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="MongoDB stores data using a flexible document data model that is similar to JSON. Documents contain one or more fields. including arrays. binary data and sub.documents. Fields can vary from document to document. This flexibility allows development teams to evolve the data model rapidly as their application requirements change."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="MPC-BE" Tag="Media" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Media"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Media"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Media Player Classic . BE is a free and open source audio and video player for Windows."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Media Player Classic . BE is a free and open source audio and video player for Windows."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Kdenlive" Tag="Media Tools" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Media Tools"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Media Tools"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A powerful non.linear video editor"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A powerful non.linear video editor"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="TablePlus" Tag="Development" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Development"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Development"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Modern. native. and friendly GUI tool for relational databases. MySQL. PostgreSQL. SQLite. MongoDB. Redis. and more."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Modern. native. and friendly GUI tool for relational databases. MySQL. PostgreSQL. SQLite. MongoDB. Redis. and more."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Hosts File Editor" Tag="Utilities" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Utilities"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Utilities"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Hosts File Editor makes it easy to change your hosts file as well as archive multiple versions for easy retrieval."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Hosts File Editor makes it easy to change your hosts file as well as archive multiple versions for easy retrieval."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Subtitle Edit" Tag="Development" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Development"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Development"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="With SE you can easily adjust a subtitle if it is out of sync with the video in several different ways. You can also use SE for making new subtitles from scratch .do use the time.line.waveform.spectrogram. or translating subtitles."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="With SE you can easily adjust a subtitle if it is out of sync with the video in several different ways. You can also use SE for making new subtitles from scratch .do use the time.line.waveform.spectrogram. or translating subtitles."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Skype" Tag="Communication" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Communication"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Communication"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Skype . Install Skype. add your friends as contacts. then call. video call and instant message with them for free. Call people who aren..t on Skype too. at really low rates."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Skype . Install Skype. add your friends as contacts. then call. video call and instant message with them for free. Call people who aren..t on Skype too. at really low rates."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="FileZilla" Tag="Development" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Development"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Development"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="FileZilla Client is a fast and reliable cross.platform FTP. FTPS and SFTP client with lots of useful features and an intuitive graphical user interface."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="FileZilla Client is a fast and reliable cross.platform FTP. FTPS and SFTP client with lots of useful features and an intuitive graphical user interface."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Everything" Tag="Utilities" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Utilities"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Utilities"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Everything Search Engine . locate files and folders by name instantly"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Everything Search Engine . locate files and folders by name instantly"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Yarn" Tag="Development" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Development"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Development"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Yarn is a package manager for the npm and bower registries with a few specific focuses."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Yarn is a package manager for the npm and bower registries with a few specific focuses."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="VMware Workstation Player" Tag="Development" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Development"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Development"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="VMware Workstation Player. is a streamlined desktop virtualization application that runs another operating system on the same computer without rebooting. VMware Workstation Player provides a simple user interface. unmatched operating system support. and portability across the VMware ecosystem."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="VMware Workstation Player. is a streamlined desktop virtualization application that runs another operating system on the same computer without rebooting. VMware Workstation Player provides a simple user interface. unmatched operating system support. and portability across the VMware ecosystem."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="HDD Low Level Format Tool" Tag="Utilities" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Utilities"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Utilities"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Will erase. Low.Level Format and re.certify a SATA. IDE or SCSI hard disk drive with any size of up to 281 474 976 710 655 bytes."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Will erase. Low.Level Format and re.certify a SATA. IDE or SCSI hard disk drive with any size of up to 281 474 976 710 655 bytes."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="BlueStacks" Tag="Gaming" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Gaming"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Gaming"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Play Android Games on PC."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Play Android Games on PC."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Intel Wireless Bluetooth for Windows 10 and Windows 11" Tag="Drivers" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Drivers"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Drivers"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Bluetooth for Windows 10 and Windows"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Bluetooth for Windows 10 and Windows"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Office 365 Business" Tag="Documents" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Documents"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Documents"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Microsoft 365 .formerly Office 365. is a line of subscription services offered by Microsoft as part of the Microsoft Office product line. The brand encompasses plans that allow use of the Microsoft Office software suite over the life of the subscription. as well as cloud.based software as a service products for business environments. such as hosted Exchange Server. Skype for Business Server. and SharePoint. among others. All Microsoft 365 plans include automatic updates to their respective software at no additional charge. as opposed to conventional licenses for these programs.where new versions require purchase of a new license."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Microsoft 365 .formerly Office 365. is a line of subscription services offered by Microsoft as part of the Microsoft Office product line. The brand encompasses plans that allow use of the Microsoft Office software suite over the life of the subscription. as well as cloud.based software as a service products for business environments. such as hosted Exchange Server. Skype for Business Server. and SharePoint. among others. All Microsoft 365 plans include automatic updates to their respective software at no additional charge. as opposed to conventional licenses for these programs.where new versions require purchase of a new license."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Bandicam" Tag="Imaging" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Imaging"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Imaging"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Bandicam is a closed.source screen capture and screen recording software originally developed by Bandisoft and later by Bandicam Company that can take screenshots or record screen changes. Bandicam consists of three main modes. One is the Screen Recording mode. which can be used for recording a certain area on the PC screen"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Bandicam is a closed.source screen capture and screen recording software originally developed by Bandisoft and later by Bandicam Company that can take screenshots or record screen changes. Bandicam consists of three main modes. One is the Screen Recording mode. which can be used for recording a certain area on the PC screen"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="QQPlayer" Tag="Media" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Media"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Media"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="QQPlayer media player"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="QQPlayer media player"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="4K Video Downloader" Tag="Utilities" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Utilities"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Utilities"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="4K Video Downloader allows downloading videos. playlists. channels and subtitles from YouTube. Facebook. Vimeo and other video sites in high quality."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="4K Video Downloader allows downloading videos. playlists. channels and subtitles from YouTube. Facebook. Vimeo and other video sites in high quality."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Active@ Partition Recovery" Tag="Disk Tools" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Disk Tools"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Disk Tools"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Active. Partition Recovery is a freeware toolkit that helps to recover deleted and damaged logical drives and partitions within Windows. WinPE .recovery boot disk. and Linux .recovery LiveCD. environments."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Active. Partition Recovery is a freeware toolkit that helps to recover deleted and damaged logical drives and partitions within Windows. WinPE .recovery boot disk. and Linux .recovery LiveCD. environments."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="HiSuite" Tag="Utilities" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Utilities"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Utilities"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="HUAWEI HiSuite is the official Android Smart Device Manager tool.HiSuite helps users to connect their HUAWEI smartphones and tablets to PC"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="HUAWEI HiSuite is the official Android Smart Device Manager tool.HiSuite helps users to connect their HUAWEI smartphones and tablets to PC"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Android Studio" Tag="Development" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Development"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Development"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Android Studio is the official integrated development environment for Google..s Android operating system. built on JetBrains IntelliJ IDEA software and designed specifically for Android development"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Android Studio is the official integrated development environment for Google..s Android operating system. built on JetBrains IntelliJ IDEA software and designed specifically for Android development"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="LibreWolf" Tag="Web Browsers" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Web Browsers"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Web Browsers"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="LibreWolf is designed to increase protection against tracking and fingerprinting techniques. while also including a few security improvements. This is achieved through our privacy and security oriented settings and patches. LibreWolf also aims to remove all the telemetry. data collection and annoyances. as well as disabling anti.freedom features like DRM."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="LibreWolf is designed to increase protection against tracking and fingerprinting techniques. while also including a few security improvements. This is achieved through our privacy and security oriented settings and patches. LibreWolf also aims to remove all the telemetry. data collection and annoyances. as well as disabling anti.freedom features like DRM."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Flow Launcher" Tag="Utilities" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Utilities"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Utilities"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Dedicated to making your workflow flow more seamless. Search everything from applications. files. bookmarks. YouTube. Twitter and more. Flow will continue to evolve. designed to be open and built with the community at heart."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Dedicated to making your workflow flow more seamless. Search everything from applications. files. bookmarks. YouTube. Twitter and more. Flow will continue to evolve. designed to be open and built with the community at heart."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="IconsExtract" Tag="Utilities" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Utilities"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Utilities"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="The IconsExtract utility scans the files and folders on your computer. and extract the icons and cursors stored in EXE. DLL. OCX. CPL. and in other file types."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="The IconsExtract utility scans the files and folders on your computer. and extract the icons and cursors stored in EXE. DLL. OCX. CPL. and in other file types."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="AdGuard Home" Tag="Security" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Security"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Security"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="AdGuard Home is a network.wide software for blocking ads and tracking. After you set it up. it..ll cover ALL your home devices. and you don..t need any client.side software for that."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="AdGuard Home is a network.wide software for blocking ads and tracking. After you set it up. it..ll cover ALL your home devices. and you don..t need any client.side software for that."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Burp Suite Community Edition" Tag="Development" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Development"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Development"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Burp Suite is an integrated platform for performing security testing of web applications. Its various tools work seamlessly together to support the entire testing process. from initial mapping and analysis of an application..s attack surface. through to finding and exploiting security vulnerabilities."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Burp Suite is an integrated platform for performing security testing of web applications. Its various tools work seamlessly together to support the entire testing process. from initial mapping and analysis of an application..s attack surface. through to finding and exploiting security vulnerabilities."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="CoreTemp" Tag="Utilities" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Utilities"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Utilities"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Core Temp is a compact. no fuss. small footprint. yet powerful program to monitor processor temperature and other vital information."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Core Temp is a compact. no fuss. small footprint. yet powerful program to monitor processor temperature and other vital information."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="ShareX" Tag="File Sharing" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="File Sharing"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="File Sharing"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Screen capture. file sharing and productivity tool."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Screen capture. file sharing and productivity tool."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="ONLY OFFICE" Tag="Documents" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Documents"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Documents"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="ONLYOFFICE is a project developed by experienced IT experts from Ascensio System SIA. leading IT company with headquarters in Riga. Latvia. Originally ONLYOFFICE was designed for internal team collaboration. An attempt to introduce it to a wider audience proved to be successful. ONLYOFFICE received very positive feedback from the Internet community. As a result. its functionality was considerably revised and expanded that brought about a high and stable growth of users from different countries."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="ONLYOFFICE is a project developed by experienced IT experts from Ascensio System SIA. leading IT company with headquarters in Riga. Latvia. Originally ONLYOFFICE was designed for internal team collaboration. An attempt to introduce it to a wider audience proved to be successful. ONLYOFFICE received very positive feedback from the Internet community. As a result. its functionality was considerably revised and expanded that brought about a high and stable growth of users from different countries."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="ESET Internet Security" Tag="Security" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Security"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Security"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Ideal for modern users concerned about their privacy. who actively use internet for shopping. banking. work and communication."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Ideal for modern users concerned about their privacy. who actively use internet for shopping. banking. work and communication."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="WinDirStat" Tag="Disk Tools" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Disk Tools"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Disk Tools"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="WinDirStat is a disk usage statistics viewer and cleanup tool for Microsoft Windows."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="WinDirStat is a disk usage statistics viewer and cleanup tool for Microsoft Windows."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Winmerge" Tag="Utilities" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Utilities"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Utilities"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="WinMerge is an Open Source differencing and merging tool for Windows. WinMerge can compare both  folders and files. presenting differences in a visual text format that is easy to understand and handle."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="WinMerge is an Open Source differencing and merging tool for Windows. WinMerge can compare both  folders and files. presenting differences in a visual text format that is easy to understand and handle."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Wireshark" Tag="Utilities" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Utilities"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Utilities"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Wireshark is the worlds foremost and widely.used network protocol analyzer. It lets you see whats happening on your network at a microscopic level and is the de facto .and often de jure. standard across many commercial and non.profit enterprises. government agencies. and educational institutions. Wireshark development thrives thanks to the volunteer contributions of networking experts around the globe and is the continuation of a project started by Gerald Combs in 1998."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Wireshark is the worlds foremost and widely.used network protocol analyzer. It lets you see whats happening on your network at a microscopic level and is the de facto .and often de jure. standard across many commercial and non.profit enterprises. government agencies. and educational institutions. Wireshark development thrives thanks to the volunteer contributions of networking experts around the globe and is the continuation of a project started by Gerald Combs in 1998."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="TeraCopy" Tag="Utilities" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Utilities"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Utilities"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="TeraCopy is designed to copy and move files at the maximum possible speed. It skips bad files during the copying process. and then displays them at the end of the transfer so that you can see which ones need attention. TeraCopy can automatically check the copied files for errors by calculating their CRC checksum values. It also provides a lot more information about the files being copied than its Windows counterpart. TeraCopy integrates with Windows Explorer..s right.click menu and can be set as the default copy handler."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="TeraCopy is designed to copy and move files at the maximum possible speed. It skips bad files during the copying process. and then displays them at the end of the transfer so that you can see which ones need attention. TeraCopy can automatically check the copied files for errors by calculating their CRC checksum values. It also provides a lot more information about the files being copied than its Windows counterpart. TeraCopy integrates with Windows Explorer..s right.click menu and can be set as the default copy handler."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="QuickLook" Tag="Utilities" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Utilities"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Utilities"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Quick Look is among the few features I missed from Mac OS X It enables very quick preview of file by pressing Space key while highlighting it without opening its associated application Then I decide to add this feature to Windows by myself which results this QuickLook project"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Quick Look is among the few features I missed from Mac OS X It enables very quick preview of file by pressing Space key while highlighting it without opening its associated application Then I decide to add this feature to Windows by myself which results this QuickLook project"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="RepoZ" Tag="Development" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Development"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Development"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="RepoZ provides a quick overview of the git repositories on your development machine including their current branch and a short status information It uses the repositories on your machine to create an efficient navigation widget and makes sure youll never loose track of your work along the way"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="RepoZ provides a quick overview of the git repositories on your development machine including their current branch and a short status information It uses the repositories on your machine to create an efficient navigation widget and makes sure youll never loose track of your work along the way"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Intel Graphics Command Center" Tag="Drivers" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Drivers"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Drivers"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Dont have time to mess around with settings The Intel Graphics Command Center easily finds and tunes your games complete with recommended settings for your computer Use oneclick optimization for many popular titles and instantly get the most out of your system. .Windows 10 version 1709 or higher.6th Gen Intel Core Platforms or newer.."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Dont have time to mess around with settings The Intel Graphics Command Center easily finds and tunes your games complete with recommended settings for your computer Use oneclick optimization for many popular titles and instantly get the most out of your system. .Windows 10 version 1709 or higher.6th Gen Intel Core Platforms or newer.."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Go Programming Language" Tag="Development" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Development"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Development"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Go is expressive concise clean and efficient Its concurrency mechanisms make it easy to write programs that get the most out of multicore and networked machines while its novel type system enables flexible and modular program construction Go compiles quickly to machine code yet has the convenience of garbage collection and the power of runtime reflection Its a fast statically typed compiled language that feels like a dynamically typed interpreted language"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Go is expressive concise clean and efficient Its concurrency mechanisms make it easy to write programs that get the most out of multicore and networked machines while its novel type system enables flexible and modular program construction Go compiles quickly to machine code yet has the convenience of garbage collection and the power of runtime reflection Its a fast statically typed compiled language that feels like a dynamically typed interpreted language"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Rust" Tag="Development" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Development"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Development"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Rust is a curlybrace blockstructured expression language It visually resembles the C language family but differs significantly in syntactic and semantic details Its design is oriented toward concerns of programming in the large that is of creating and maintaining boundaries  both abstract and operational  that preserve largesystem integrity availability and concurrency"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Rust is a curlybrace blockstructured expression language It visually resembles the C language family but differs significantly in syntactic and semantic details Its design is oriented toward concerns of programming in the large that is of creating and maintaining boundaries  both abstract and operational  that preserve largesystem integrity availability and concurrency"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Inkscape" Tag="Imaging" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Imaging"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Imaging"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Inkscape is an opensource vector graphics editor similar to Adobe Illustrator Corel Draw Freehand or Xara X What sets Inkscape apart is its use of Scalable Vector Graphics SVG an open XMLbased W3C standard as the native format"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Inkscape is an opensource vector graphics editor similar to Adobe Illustrator Corel Draw Freehand or Xara X What sets Inkscape apart is its use of Scalable Vector Graphics SVG an open XMLbased W3C standard as the native format"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Youtube dl" Tag="Utilities" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Utilities"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Utilities"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="outubedl is a small commandline program to download videos from YouTubecom and a few more sites It is written in Python and its not platform specific It should work in your Unix box in Windows or in Mac OS X It is released to the public domain which means you can modify it redistribute it or use it however you like"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="outubedl is a small commandline program to download videos from YouTubecom and a few more sites It is written in Python and its not platform specific It should work in your Unix box in Windows or in Mac OS X It is released to the public domain which means you can modify it redistribute it or use it however you like"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Postman" Tag="Development" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Development"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Development"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Postman helps you be more efficient while working with APIs Using Postman you can construct complex HTTP requests quickly organize them in collections and share them with your coworkers"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Postman helps you be more efficient while working with APIs Using Postman you can construct complex HTTP requests quickly organize them in collections and share them with your coworkers"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Azure CLI" Tag="Development" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Development"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Development"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="The Azure CLI is available across Azure services and is designed to get you working quickly with Azure with an emphasis on automation"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="The Azure CLI is available across Azure services and is designed to get you working quickly with Azure with an emphasis on automation"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="GameMaker-Studio" Tag="Development" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Development"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Development"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="GameMaker Studio has everything you need for games development no matter what your level or expertise"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="GameMaker Studio has everything you need for games development no matter what your level or expertise"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Charles" Tag="Development" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Development"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Development"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Charles is an HTTP proxy  HTTP monitor  Reverse Proxy that enables a developer to view all of the HTTP and SSL  HTTPS traffic between their machine and the Internet This includes requests responses and the HTTP headers which contain the cookies and caching information"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Charles is an HTTP proxy  HTTP monitor  Reverse Proxy that enables a developer to view all of the HTTP and SSL  HTTPS traffic between their machine and the Internet This includes requests responses and the HTTP headers which contain the cookies and caching information"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Windows Media Player" Tag="Media" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Media"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Media"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Media Player is designed to make listening to and watching your multimedia content more enjoyable At the heart of Media Player is a fullfeatured music library that allows you to quickly browse and play music as well as create and manage playlists All your content in the music and video folders on your PC will appear automatically in your library"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Media Player is designed to make listening to and watching your multimedia content more enjoyable At the heart of Media Player is a fullfeatured music library that allows you to quickly browse and play music as well as create and manage playlists All your content in the music and video folders on your PC will appear automatically in your library"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="espanso" Tag="Development" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Development"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Development"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A crossplatform Text Expander written in Rust"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A crossplatform Text Expander written in Rust"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Ability Office" Tag="Documents" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Documents"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Documents"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Ability Office Standard offers 3 core applications essential for home and business Word Processor Spreadsheet and Presentation in one affordable office suite It also includes a Photoalbum and quick application Launcher Just perfect for working from home allowing files to be edited and exchanged with those back in the office and absolutely ideal for students and school children"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Ability Office Standard offers 3 core applications essential for home and business Word Processor Spreadsheet and Presentation in one affordable office suite It also includes a Photoalbum and quick application Launcher Just perfect for working from home allowing files to be edited and exchanged with those back in the office and absolutely ideal for students and school children"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Winbox" Tag="Utilities" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Utilities"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Utilities"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Small utility that allows administration of MikroTik RouterOS using a fast and simple GUI"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Small utility that allows administration of MikroTik RouterOS using a fast and simple GUI"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="SearchMyFiles" Tag="Utilities" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Utilities"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Utilities"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="SearchMyFiles allows you to make a very accurate search that cannot be done with Windows search For Example You can search all files created in the last 10 minutes with size between 500 and 700 bytes"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="SearchMyFiles allows you to make a very accurate search that cannot be done with Windows search For Example You can search all files created in the last 10 minutes with size between 500 and 700 bytes"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="iTunes" Tag="Media" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Media"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Media"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="iTunes is the best way to organize and enjoy the music movies and TV shows you already have and shop for the ones you want to get Its home to Apple Music which gives you unlimited access to millions of songs curated playlists1 and Beats 1 radio hosted by Zane Lowe and a team of acclaimed DJs Enjoy all the entertainment iTunes has to offer on your Mac and PC"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="iTunes is the best way to organize and enjoy the music movies and TV shows you already have and shop for the ones you want to get Its home to Apple Music which gives you unlimited access to millions of songs curated playlists1 and Beats 1 radio hosted by Zane Lowe and a team of acclaimed DJs Enjoy all the entertainment iTunes has to offer on your Mac and PC"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="StartIsBack++" Tag="Utilities" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Utilities"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Utilities"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="StartIsBack returns Windows 10 and Windows 8 a real fully featured start menu and start button behaving exactly like the ones in Windows 7"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="StartIsBack returns Windows 10 and Windows 8 a real fully featured start menu and start button behaving exactly like the ones in Windows 7"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Advanced SystemCare Free" Tag="Utilities" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Utilities"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Utilities"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Over time your computer may accumulate with large quantities of useless temporary and duplicate files Advanced SystemCare 12 will help clean up these junk files and free up your disk space Also you can use our advanced tools to make registry clean for better use"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Over time your computer may accumulate with large quantities of useless temporary and duplicate files Advanced SystemCare 12 will help clean up these junk files and free up your disk space Also you can use our advanced tools to make registry clean for better use"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Send Anywhere" Tag="File Sharing" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="File Sharing"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="File Sharing"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Send Anywhere is a multiplatform file sharing service where users can directly share digital content in real time"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Send Anywhere is a multiplatform file sharing service where users can directly share digital content in real time"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="YUMI Legacy" Tag="Utilities" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Utilities"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Utilities"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="YUMI Your Universal Multiboot Installer is the successor to MultibootISOs It can be used to create a Multiboot USB Flash Drive containing multiple operating systems antivirus utilities disc cloning diagnostic tools and more Contrary to MultiBootISOs which used grub to boot ISO files directly from USB YUMI uses syslinux to boot extracted distributions stored on the USB device and reverts to using grub to Boot Multiple ISO files from USB if necessary"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="YUMI Your Universal Multiboot Installer is the successor to MultibootISOs It can be used to create a Multiboot USB Flash Drive containing multiple operating systems antivirus utilities disc cloning diagnostic tools and more Contrary to MultiBootISOs which used grub to boot ISO files directly from USB YUMI uses syslinux to boot extracted distributions stored on the USB device and reverts to using grub to Boot Multiple ISO files from USB if necessary"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="YUMI UEFI" Tag="Utilities" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Utilities"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Utilities"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="YUMI Your Universal Multiboot Installer is the successor to MultibootISOs It can be used to create a Multiboot USB Flash Drive containing multiple operating systems antivirus utilities disc cloning diagnostic tools and more Contrary to MultiBootISOs which used grub to boot ISO files directly from USB YUMI uses syslinux to boot extracted distributions stored on the USB device and reverts to using grub to Boot Multiple ISO files from USB if necessary"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="YUMI Your Universal Multiboot Installer is the successor to MultibootISOs It can be used to create a Multiboot USB Flash Drive containing multiple operating systems antivirus utilities disc cloning diagnostic tools and more Contrary to MultiBootISOs which used grub to boot ISO files directly from USB YUMI uses syslinux to boot extracted distributions stored on the USB device and reverts to using grub to Boot Multiple ISO files from USB if necessary"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="OP Auto Clicker" Tag="Utilities" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Utilities"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Utilities"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A fullfledged autoclicker with two modes of autoclicking at your dynamic cursor location or at a prespecified location The maximum amounts of clicked can also be set or left as infinite Hotkeys work in the background for convenience"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="A fullfledged autoclicker with two modes of autoclicking at your dynamic cursor location or at a prespecified location The maximum amounts of clicked can also be set or left as infinite Hotkeys work in the background for convenience"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Spotube" Tag="Media" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Media"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Media"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Spotube is a Flutter based lightweight spotify client It utilizes the power of Spotify  Youtubes public API  creates a hazardless performant  resource friendly User Experience"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Spotube is a Flutter based lightweight spotify client It utilizes the power of Spotify  Youtubes public API  creates a hazardless performant  resource friendly User Experience"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Audio Switcher" Tag="Media" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Media"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Media"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Easily switch the default audio device input or output on any Windows PC Vista and above Using this application you can switch output OR input sound devices at the click of a button or the press of a key I designed this application to be incredibly small and lightweight There is no bloat it does exactly what it should nothing more nothing less"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Easily switch the default audio device input or output on any Windows PC Vista and above Using this application you can switch output OR input sound devices at the click of a button or the press of a key I designed this application to be incredibly small and lightweight There is no bloat it does exactly what it should nothing more nothing less"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Microsoft Teams Classic Desktop" Tag="Communication" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Communication"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Communication"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Microsoft Teams is a messaging app for teams where all conversations meetings files and notes can be accessed by everyone all in one place Its a place for collaboration and work to happen in the open"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Microsoft Teams is a messaging app for teams where all conversations meetings files and notes can be accessed by everyone all in one place Its a place for collaboration and work to happen in the open"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Microsoft Windows SDK for Windows 10 and .NET Framework 4.7" Tag="Runtimes" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Runtimes"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Runtimes"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="The Windows 10 SDK for Windows 10 version 1809 provides the latest headers libraries metadata and tools for building Windows 10 apps NoteWindows 10 development targeting Windows 10 version 1903 or later requires Visual Studio 2017 or later This SDK will not be discovered by previous versions of Visual Studio"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="The Windows 10 SDK for Windows 10 version 1809 provides the latest headers libraries metadata and tools for building Windows 10 apps NoteWindows 10 development targeting Windows 10 version 1903 or later requires Visual Studio 2017 or later This SDK will not be discovered by previous versions of Visual Studio"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="RunAsDate Portable" Tag="Portable" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Portable"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Portable"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="RunAsDate is a small utility that allows you to run a program in the date and time that you specify This utility doesnt change the current system date and time of your computer but it only injects the datetime that you specify into the desired application"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="RunAsDate is a small utility that allows you to run a program in the date and time that you specify This utility doesnt change the current system date and time of your computer but it only injects the datetime that you specify into the desired application"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Visual Studio 2017 Build " Tag="Development" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Development"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Development"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="These Build Tools allow you to build native and managed MSBuildbased applications without requiring the Visual Studio IDE There are options to install the Visual C compilers and libraries MFC ATL and CCLI support"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="These Build Tools allow you to build native and managed MSBuildbased applications without requiring the Visual Studio IDE There are options to install the Visual C compilers and libraries MFC ATL and CCLI support"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="MSEdgeRedirect" Tag="Utilities" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Utilities"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Utilities"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="This tool filters and passes the command line arguments of Microsoft Edge processes into your default browser instead of hooking into the microsoftedge handler this should provide resiliency against future changes Additionally an Image File Execution Options mode is available to operate similarly to the Old EdgeDeflector Additional modes are planned for future versions"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="This tool filters and passes the command line arguments of Microsoft Edge processes into your default browser instead of hooking into the microsoftedge handler this should provide resiliency against future changes Additionally an Image File Execution Options mode is available to operate similarly to the Old EdgeDeflector Additional modes are planned for future versions"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="NET Desktop Runtime 5" Tag="Runtimes" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Runtimes"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Runtimes"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="NET Core is a general purpose development platform maintained by Microsoft and the NET community on GitHub It is crossplatform supporting Windows macOS and Linux and can be used in device cloud and embeddedIoT scenarios This package is required to run Windows Desktop applications with the .NET Runtime."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="NET Core is a general purpose development platform maintained by Microsoft and the NET community on GitHub It is crossplatform supporting Windows macOS and Linux and can be used in device cloud and embeddedIoT scenarios This package is required to run Windows Desktop applications with the .NET Runtime."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="NET Desktop Runtime 3" Tag="Runtimes" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Runtimes"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Runtimes"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="NET Core is a general purpose development platform maintained by Microsoft and the NET community on GitHub It is crossplatform supporting Windows macOS and Linux and can be used in device cloud and embeddedIoT scenarios This package is required to run Windows Desktop applications with the .NET Runtime."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="NET Core is a general purpose development platform maintained by Microsoft and the NET community on GitHub It is crossplatform supporting Windows macOS and Linux and can be used in device cloud and embeddedIoT scenarios This package is required to run Windows Desktop applications with the .NET Runtime."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="NET Desktop Runtime 6" Tag="Runtimes" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Runtimes"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Runtimes"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="NET Core is a general purpose development platform maintained by Microsoft and the NET community on GitHub It is crossplatform supporting Windows macOS and Linux and can be used in device cloud and embeddedIoT scenarios This package is required to run Windows Desktop applications with the .NET Runtime."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="NET Core is a general purpose development platform maintained by Microsoft and the NET community on GitHub It is crossplatform supporting Windows macOS and Linux and can be used in device cloud and embeddedIoT scenarios This package is required to run Windows Desktop applications with the .NET Runtime."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="NET Desktop Runtime 7" Tag="Runtimes" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Runtimes"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Runtimes"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="NET Core is a general purpose development platform maintained by Microsoft and the NET community on GitHub It is crossplatform supporting Windows macOS and Linux and can be used in device cloud and embeddedIoT scenarios This package is required to run Windows Desktop applications with the .NET Runtime."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="NET Core is a general purpose development platform maintained by Microsoft and the NET community on GitHub It is crossplatform supporting Windows macOS and Linux and can be used in device cloud and embeddedIoT scenarios This package is required to run Windows Desktop applications with the .NET Runtime."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="NET Desktop Runtime 8" Tag="Runtimes" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Runtimes"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Runtimes"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="NET Core is a general purpose development platform maintained by Microsoft and the NET community on GitHub It is crossplatform supporting Windows macOS and Linux and can be used in device cloud and embeddedIoT scenarios This package is required to run Windows Desktop applications with the NET Runtime"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="NET Core is a general purpose development platform maintained by Microsoft and the NET community on GitHub It is crossplatform supporting Windows macOS and Linux and can be used in device cloud and embeddedIoT scenarios This package is required to run Windows Desktop applications with the NET Runtime"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Viber" Tag="Communication" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Communication"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Communication"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Viber is a mobile application that lets you make free phone calls and send text messages to anyone who also has the application installed You can call or text any Viber user anywhere in the world for free"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Viber is a mobile application that lets you make free phone calls and send text messages to anyone who also has the application installed You can call or text any Viber user anywhere in the world for free"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="StartAllBack" Tag="Utilities" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Utilities"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Utilities"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Introducing  StartAllBack Windows 11 from a better timeline Embrace enhance unsweep classic UI from under the rug"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Introducing  StartAllBack Windows 11 from a better timeline Embrace enhance unsweep classic UI from under the rug"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="DiskGenius Free" Tag="Disk Tools" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Disk Tools"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Disk Tools"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="With powerful capabilities and userfriendly interface DiskGenius Free Edition provides a robust solution for individuals and organizations to seek efficient disk management"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="With powerful capabilities and userfriendly interface DiskGenius Free Edition provides a robust solution for individuals and organizations to seek efficient disk management"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="UNFORMAT" Tag="Disk Tools" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Disk Tools"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Disk Tools"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="UNFORMAT is a software utility created to solve almost all data loss scenarios due to logical failure It can recover deleted files on a disk or restore deleted or damaged partitions and volumes As well as recovers data after using the FORMAT command"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="UNFORMAT is a software utility created to solve almost all data loss scenarios due to logical failure It can recover deleted files on a disk or restore deleted or damaged partitions and volumes As well as recovers data after using the FORMAT command"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Active@ UNDELETE" Tag="Disk Tools" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Disk Tools"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Disk Tools"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Active UNDELETE helps you to recover deleted files and restore deleted partitions from a variety of file systems such as FAT NTFS NTFS  EFS MacOS HFS ApFS Linux ext2 ext3 ext4 ZFS Unix UFS Advanced scan algorithms help to restore files even from severely damaged disks Sophisticated userfriendly UI makes navigation through your data a breeze"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Active UNDELETE helps you to recover deleted files and restore deleted partitions from a variety of file systems such as FAT NTFS NTFS  EFS MacOS HFS ApFS Linux ext2 ext3 ext4 ZFS Unix UFS Advanced scan algorithms help to restore files even from severely damaged disks Sophisticated userfriendly UI makes navigation through your data a breeze"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="HxD Hex Editor" Tag="Disk Tools" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Disk Tools"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Disk Tools"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="HxD is a carefully designed and fast hex editor which additionally to raw disk editing and modifying of main memory RAM handles files of any size"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="HxD is a carefully designed and fast hex editor which additionally to raw disk editing and modifying of main memory RAM handles files of any size"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Epic Games Launcher" Tag="Gaming" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Gaming"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Gaming"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="The Epic Games Launcher is how you obtain the Unreal Game Engine modding tools and other Epic Games like Fortnite and the new Epic Games Store"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="The Epic Games Launcher is how you obtain the Unreal Game Engine modding tools and other Epic Games like Fortnite and the new Epic Games Store"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Vivaldi" Tag="Web Browsers" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Web Browsers"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Web Browsers"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="The new Vivaldi browser protects you from trackers blocks unwanted ads and puts you in control with unique builtin features Get Vivaldi and browse fast"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="The new Vivaldi browser protects you from trackers blocks unwanted ads and puts you in control with unique builtin features Get Vivaldi and browse fast"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Microsoft PC Manager" Tag="Utilities" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Utilities"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Utilities"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Microsoft PC manager a good way to protect your personal computer and optimize performance provides PC cleanup antivirus and Windows update making your computer safe and secure"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Microsoft PC manager a good way to protect your personal computer and optimize performance provides PC cleanup antivirus and Windows update making your computer safe and secure"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Openshot" Tag="Media Tools" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Media Tools"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Media Tools"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="OpenShot Video Editor is an awardwinning opensource video editor available on Linux Mac and Windows OpenShot can create stunning videos films and animations with an easytouse interface and rich set of features"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="OpenShot Video Editor is an awardwinning opensource video editor available on Linux Mac and Windows OpenShot can create stunning videos films and animations with an easytouse interface and rich set of features"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="WhatsApp" Tag="Communication" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Communication"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Communication"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="WhatsApp Messenger or simply WhatsApp is an American freeware crossplatform centralized messaging and voiceoverIP VoIP service owned by Facebook Inc It allows users to send text messages and voice messages make voice and video calls and share images documents user locations and other content"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="WhatsApp Messenger or simply WhatsApp is an American freeware crossplatform centralized messaging and voiceoverIP VoIP service owned by Facebook Inc It allows users to send text messages and voice messages make voice and video calls and share images documents user locations and other content"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Paint.NET" Tag="Imaging" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Imaging"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Imaging"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="PaintNET is image and photo editing software for PCs that run Windows"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="PaintNET is image and photo editing software for PCs that run Windows"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Stretchly" Tag="Utilities" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Utilities"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Utilities"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="stretchly is a crossplatform electron app that reminds you to take breaks when working on your computer By default it runs in your tray and displays a reminder window containing an idea for a microbreak for 20 seconds every 10 minutes"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="stretchly is a crossplatform electron app that reminds you to take breaks when working on your computer By default it runs in your tray and displays a reminder window containing an idea for a microbreak for 20 seconds every 10 minutes"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Microsoft Silverlight" Tag="Runtimes" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Runtimes"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Runtimes"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Silverlight is a powerful development tool for creating engaging interactive user experiences for Web and mobile applications"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Silverlight is a powerful development tool for creating engaging interactive user experiences for Web and mobile applications"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="TreeSize" Tag="Utilities" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Utilities"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Utilities"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Every hard disk is too small if you just wait long enough TreeSize Free tells you where precious disk space has gone"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Every hard disk is too small if you just wait long enough TreeSize Free tells you where precious disk space has gone"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Dot Net 3.5" Tag="Runtimes" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Runtimes"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Runtimes"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="NET is a free crossplatform opensource developer platform for building many different types of applications"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="NET is a free crossplatform opensource developer platform for building many different types of applications"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Flash Player ActiveX" Tag="Runtimes" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Runtimes"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Runtimes"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="The Adobe Flash Player is freeware software for viewing multimedia executing Rich Internet Applications and streaming video and audio content created on the Adobe Flash platform"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="The Adobe Flash Player is freeware software for viewing multimedia executing Rich Internet Applications and streaming video and audio content created on the Adobe Flash platform"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Google Drive" Tag="File Sharing" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="File Sharing"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="File Sharing"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Google Drive  All your files  everywhere Safely store your files and access them from any device Choose folders on your computer to sync with Google Drive or backup to Google Photos and access all of your content directly from your PC or Mac"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Google Drive  All your files  everywhere Safely store your files and access them from any device Choose folders on your computer to sync with Google Drive or backup to Google Photos and access all of your content directly from your PC or Mac"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Dot Net 4.5.2" Tag="Runtimes" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Runtimes"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Runtimes"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="The Microsoft NET Framework 452 is a highly compatible inplace update to the Microsoft NET Framework 4 Microsoft NET Framework 45 and Microsoft NET Framework 451"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="The Microsoft NET Framework 452 is a highly compatible inplace update to the Microsoft NET Framework 4 Microsoft NET Framework 45 and Microsoft NET Framework 451"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Dropbox" Tag="File Sharing" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="File Sharing"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="File Sharing"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Organize all your team..s content. tune out distractions. and get everyone coordinated with the world..s first smart workspace."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Organize all your team..s content. tune out distractions. and get everyone coordinated with the world..s first smart workspace."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="cURL" Tag="Development" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Development"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Development"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Command line tool and library for transferring data with URLs"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Command line tool and library for transferring data with URLs"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="PDF Creator" Tag="Documents" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Documents"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Documents"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="PDFCreator lets you convert any printable document to PDF"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="PDFCreator lets you convert any printable document to PDF"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Autoruns" Tag="Utilities" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Utilities"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Utilities"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="This utility shows you what programs are configured to run during system bootup or login"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="This utility shows you what programs are configured to run during system bootup or login"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Microsoft OneDrive" Tag="File Sharing" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="File Sharing"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="File Sharing"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Save your files and photos to OneDrive and access them from any device anywhere"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Save your files and photos to OneDrive and access them from any device anywhere"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Process Explorer" Tag="Utilities" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Utilities"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Utilities"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Process Explorer shows you information about which handles and DLLs processes have opened or loaded"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Process Explorer shows you information about which handles and DLLs processes have opened or loaded"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="FFmpeg" Tag="Media Tools" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Media Tools"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Media Tools"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="FFmpeg is a widelyused crossplatform multimedia framework which can process almost all common and many uncommon media formats It has over 1000 internal components to capture decode encode modify combine stream media and it can make use of dozens of external libraries to provide more capabilities"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="FFmpeg is a widelyused crossplatform multimedia framework which can process almost all common and many uncommon media formats It has over 1000 internal components to capture decode encode modify combine stream media and it can make use of dozens of external libraries to provide more capabilities"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="OpenVPN Connect" Tag="Utilities" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Utilities"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Utilities"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="The official OpenVPN Connect client software developed and maintained by OpenVPN Inc"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="The official OpenVPN Connect client software developed and maintained by OpenVPN Inc"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Git Large File Storage" Tag="Development" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Development"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Development"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Git Large File Storage LFS replaces large files such as audio samples videos datasets and graphics with text pointers inside Git while storing the file contents on a remote server like GitHubcom or GitHub Enterprise"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Git Large File Storage LFS replaces large files such as audio samples videos datasets and graphics with text pointers inside Git while storing the file contents on a remote server like GitHubcom or GitHub Enterprise"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Nmap" Tag="Utilities" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Utilities"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Utilities"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Nmap Network Mapper is a free and open source utility for network discovery and security auditing"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Nmap Network Mapper is a free and open source utility for network discovery and security auditing"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="UltraVNC" Tag="File Sharing" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="File Sharing"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="File Sharing"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="UltraVNC is an open source application that uses the VNC protocol to control another computer remotely over a network connection UltraVNC allows the use of a remote computer"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="UltraVNC is an open source application that uses the VNC protocol to control another computer remotely over a network connection UltraVNC allows the use of a remote computer"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Plex" Tag="Media Tools" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Media Tools"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Media Tools"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Plex is a global streaming media service and a clientserver media player platform made by Plex Inc"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Plex is a global streaming media service and a clientserver media player platform made by Plex Inc"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Plex Media Server" Tag="Media Tools" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Media Tools"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Media Tools"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Plex Media Server helps you organise your media and stream it to your devices"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Plex Media Server helps you organise your media and stream it to your devices"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Microsoft Visio Viewer" Tag="Documents" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Documents"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Documents"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="By using Microsoft Visio 2016 Viewer Visio users can freely distribute Visio drawings files with a vsdx vsdm vsd vdx vdw vstx vstm vst or vtx extension to team members partners customers or others even if the recipients do not have Visio installed on their computer"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="By using Microsoft Visio 2016 Viewer Visio users can freely distribute Visio drawings files with a vsdx vsdm vsd vdx vdw vstx vstm vst or vtx extension to team members partners customers or others even if the recipients do not have Visio installed on their computer"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Key''n''Stroke" Tag="Utilities" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Utilities"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Utilities"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="KeynStroke makes it easy for your audience to follow your actions on the screen"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="KeynStroke makes it easy for your audience to follow your actions on the screen"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Ability Office" Tag="Documents" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Documents"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Documents"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Ability Office 8 Standard complete office suite"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Ability Office 8 Standard complete office suite"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Fing" Tag="Utilities" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Utilities"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Utilities"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Fing App is a free network scanner that makes you discover all connected devices run internet speed tests and help troubleshoot network and device issues Get Fingbox for more advanced security and protection for your network"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Fing App is a free network scanner that makes you discover all connected devices run internet speed tests and help troubleshoot network and device issues Get Fingbox for more advanced security and protection for your network"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Ryujinx" Tag="Gaming" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Gaming"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Gaming"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Ryujinx is an opensource Nintendo Switch emulator created by gdkchan and written in C This emulator aims at providing excellent accuracy and performance a userfriendly interface and consistent builds"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Ryujinx is an opensource Nintendo Switch emulator created by gdkchan and written in C This emulator aims at providing excellent accuracy and performance a userfriendly interface and consistent builds"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Omnify Hotspot" Tag="File Sharing" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="File Sharing"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="File Sharing"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="The best virtual router to turn your PC into a WiFi hotspot  repeater WiFi hotspot allows you to create a wireless access point and share your internet Its easy to use and quick to start as you only need to give it a name and password and then connect your smartphone tablet media player ereader printer laptop and other wireless devices The network name can also include Unicode characters and Emojis"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="The best virtual router to turn your PC into a WiFi hotspot  repeater WiFi hotspot allows you to create a wireless access point and share your internet Its easy to use and quick to start as you only need to give it a name and password and then connect your smartphone tablet media player ereader printer laptop and other wireless devices The network name can also include Unicode characters and Emojis"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="MKVToolNix" Tag="Media Tools" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Media Tools"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Media Tools"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="MKVToolNix is a set of tools to create alter and inspect Matroska files under Linux other Unices and Windows"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="MKVToolNix is a set of tools to create alter and inspect Matroska files under Linux other Unices and Windows"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Neat Download Manager" Tag="Web Browsers" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Web Browsers"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Web Browsers"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Neat Download Manager is a free Internet Download Manager for Windows"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Neat Download Manager is a free Internet Download Manager for Windows"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="x630ce for all games" Tag="Web Browsers" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Web Browsers"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Web Browsers"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Xbox 360 Controller Emulator. allows your controller .gamepad. joystick. steering wheel. pedals. etc.. to function on your PC as an Xbox 360 controller. It allows you to remap buttons and axes and to drive cars with steering wheel and pedals or to fly planes with joystick and throttle in games like .Grand Theft Auto. or .Saints Row. . Digitally Signed"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Xbox 360 Controller Emulator. allows your controller .gamepad. joystick. steering wheel. pedals. etc.. to function on your PC as an Xbox 360 controller. It allows you to remap buttons and axes and to drive cars with steering wheel and pedals or to fly planes with joystick and throttle in games like .Grand Theft Auto. or .Saints Row. . Digitally Signed"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="x630ce x86" Tag="Web Browsers" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Web Browsers"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Web Browsers"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Xbox 360 Controller Emulator. allows your controller .gamepad. joystick. steering wheel. pedals. etc.. to function on your PC as an Xbox 360 controller. It allows you to remap buttons and axes and to drive cars with steering wheel and pedals or to fly planes with joystick and throttle in games like .Grand Theft Auto. or .Saints Row. . Digitally Signed"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Xbox 360 Controller Emulator. allows your controller .gamepad. joystick. steering wheel. pedals. etc.. to function on your PC as an Xbox 360 controller. It allows you to remap buttons and axes and to drive cars with steering wheel and pedals or to fly planes with joystick and throttle in games like .Grand Theft Auto. or .Saints Row. . Digitally Signed"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="x630ce x64" Tag="Web Browsers" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Web Browsers"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Web Browsers"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Xbox 360 Controller Emulator. allows your controller .gamepad. joystick. steering wheel. pedals. etc.. to function on your PC as an Xbox 360 controller. It allows you to remap buttons and axes and to drive cars with steering wheel and pedals or to fly planes with joystick and throttle in games like .Grand Theft Auto. or .Saints Row. . Digitally Signed"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Xbox 360 Controller Emulator. allows your controller .gamepad. joystick. steering wheel. pedals. etc.. to function on your PC as an Xbox 360 controller. It allows you to remap buttons and axes and to drive cars with steering wheel and pedals or to fly planes with joystick and throttle in games like .Grand Theft Auto. or .Saints Row. . Digitally Signed"/>
         </StackPanel>
 
                                 </ListView>
@@ -9381,220 +9382,220 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
                             </TabItem.HeaderTemplate>
                                 <ListView Name="tweakslist"  Margin="0" ScrollViewer.VerticalScrollBarVisibility="Auto" BorderBrush="{x:Null}" Background="{x:Null}">
                                     
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="System File Checker"     FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Fixer"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Fixer"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="sfc .scannow Use the System File Checker tool to repair missing or corrupted system files"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="sfc .scannow Use the System File Checker tool to repair missing or corrupted system files"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Disk cleanup"     FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Cleanup"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Cleanup"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Clean temporary files that are not necessary"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Clean temporary files that are not necessary"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Restore All Windows Services to Default"     FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Fixer"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Fixer"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="If you face a problem with some system services. you can restore all services to Default."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="If you face a problem with some system services. you can restore all services to Default."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Fix Stutter in Games"     FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Performance"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Performance"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Fix Stutter in Games Disable GameBarPresenceWriter for Windows 10 and 11"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Fix Stutter in Games Disable GameBarPresenceWriter for Windows 10 and 11"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Enable the Ultimate Performance Power Plan"     FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Performance"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Performance"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Enable the Ultimate Performance Power Plan"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Enable the Ultimate Performance Power Plan"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Reset the TCP/IP Stack"     FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Fixer"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Fixer"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="If you have an internet problem. Reset network configuration"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="If you have an internet problem. Reset network configuration"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Setup Auto login"     FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Other"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Other"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Setup auto login Windows username"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Setup auto login Windows username"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Disable  Xbox Services"     FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Performance"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Performance"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Disables all Xbox Services Game Mode and Optimizations for Windowed Games and fix stutter playing smooth"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Disables all Xbox Services Game Mode and Optimizations for Windowed Games and fix stutter playing smooth"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Disable Data Collection"     FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Privacy"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Privacy"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Disable Data Collection"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Disable Data Collection"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Disable Start Menu Ads"     FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Privacy"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Privacy"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Disable Start menu Ads and Settings"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Disable Start menu Ads and Settings"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Disable Windows Web Search"     FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Privacy"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Privacy"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Disable web search in Windows by modifying the registry settings related to Windows Search for Windows 10 and 11"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Disable web search in Windows by modifying the registry settings related to Windows Search for Windows 10 and 11"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Turn off background Apps"     FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Performance"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Performance"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Turn off background apps for Windows 10 and 11"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Turn off background apps for Windows 10 and 11"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Disable suggestions on Start Menu"     FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Privacy"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Privacy"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Disables suggestions on start menu for Windows 10 and 11"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Disables suggestions on start menu for Windows 10 and 11"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Clean Taskbar"     FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Performance"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Performance"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Disable the .News and interests. and .People icon. Show Search icon only for Windows 10.11"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Disable the .News and interests. and .People icon. Show Search icon only for Windows 10.11"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Remove Folder Shortcuts From File Explorer"     FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Other"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Other"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Remove Documents. Videos. Pictures. Desktop. Shortcuts from File Explorer"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Remove Documents. Videos. Pictures. Desktop. Shortcuts from File Explorer"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Optimize Windows Services"     FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Performance"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Performance"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Disable .Print Spooler.. .Fax.. .Diagnostic Policy.. .Downloaded Maps Manager.. .Windows Error Reporting Service.. .Remote Registry. . .Internet Connection Sharing.. .Disables Telemetry and Data. "/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Disable .Print Spooler.. .Fax.. .Diagnostic Policy.. .Downloaded Maps Manager.. .Windows Error Reporting Service.. .Remote Registry. . .Internet Connection Sharing.. .Disables Telemetry and Data. "/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Remove Windows 10/11 Bloatware"     FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Performance"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Performance"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="BingNews. GetHelp. Getstarted. Messaging. Microsoft3DViewer. MicrosoftOfficeHub. MicrosoftSolitaireCollection. News. Office.Lens. Office.OneNote. Office.Sway. OneConnect. People. Print3D. RemoteDesktop. SkypeApp. StorePurchaseApp. Office.Todo.List. Whiteboard. WindowsAlarms. WindowsCamera. windowscommunicationsapps. WindowsFeedbackHub. WindowsMaps. WindowsSoundRecorder. Xbox.TCUI. XboxApp. XboxGameOverlay. XboxIdentityProvider. XboxSpeechToTextOverlay. ZuneMusic. ZuneVideo. Windows.Cortana. MSPaint. Clipchamp"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="BingNews. GetHelp. Getstarted. Messaging. Microsoft3DViewer. MicrosoftOfficeHub. MicrosoftSolitaireCollection. News. Office.Lens. Office.OneNote. Office.Sway. OneConnect. People. Print3D. RemoteDesktop. SkypeApp. StorePurchaseApp. Office.Todo.List. Whiteboard. WindowsAlarms. WindowsCamera. windowscommunicationsapps. WindowsFeedbackHub. WindowsMaps. WindowsSoundRecorder. Xbox.TCUI. XboxApp. XboxGameOverlay. XboxIdentityProvider. XboxSpeechToTextOverlay. ZuneMusic. ZuneVideo. Windows.Cortana. MSPaint. Clipchamp"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Disable Hibernate"     FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Performance"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Performance"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Hibernate is a power.saving mode in Microsoft Windows operating systems that allows the system to save the current state of your computer to the hard disk and then power down completely."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Hibernate is a power.saving mode in Microsoft Windows operating systems that allows the system to save the current state of your computer to the hard disk and then power down completely."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Disable OneDrive"     FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Performance"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Performance"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Disabling OneDrive for Windows 10 and 11"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Disabling OneDrive for Windows 10 and 11"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Activate Windows Old Photo Viewer"     FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Classic"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Classic"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="This tweak enables the classic Windows Photo Viewer for Windows 10."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="This tweak enables the classic Windows Photo Viewer for Windows 10."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Restore Classic Context Menu Windows 11"     FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Classic"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Classic"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Restore the old context menu for Windows 11"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Restore the old context menu for Windows 11"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Remove Copilot in Windows 11"     FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Privacy"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Privacy"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Copilot in Windows provides centralized generative AI assistance to your users right from the Windows desktop Copilot in Windows appears as a side bar docked on the Windows desktop and is designed to help users get things done in Windows Copilot in Windows can perform common tasks in Windows like changing Windows settings which makes it different from the browserbased Copilot in Edge"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Copilot in Windows provides centralized generative AI assistance to your users right from the Windows desktop Copilot in Windows appears as a side bar docked on the Windows desktop and is designed to help users get things done in Windows Copilot in Windows can perform common tasks in Windows like changing Windows settings which makes it different from the browserbased Copilot in Edge"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Disable Recall Snapshots in Windows 11 24H"     FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Privacy"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Privacy"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Recall is an upcoming preview experience exclusive to Copilot. PCs that will help you easily find and remember things you..ve seen using natural language."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Recall is an upcoming preview experience exclusive to Copilot. PCs that will help you easily find and remember things you..ve seen using natural language."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Delete Thumbnail Cache"     FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Performance"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Performance"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="removing the stored image thumbnails on your computer These thumbnails are small versions of images used by the operating system to display image previews quickly Over time the cache can become large or corrupted causing slowdowns or display issues Deleting it can free up space and resolve such issues as the system will regenerate"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="removing the stored image thumbnails on your computer These thumbnails are small versions of images used by the operating system to display image previews quickly Over time the cache can become large or corrupted causing slowdowns or display issues Deleting it can free up space and resolve such issues as the system will regenerate"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Old Volume Control in Windows 10"     FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Classic"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Classic"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="The old volume control in Windows 10 refers to the classic audio mixer interface that was used in earlier versions of Windows. before the modern volume control system was introduced. This interface allowed users to adjust the volume for individual applications separately. providing a more detailed and flexible approach to managing audio levels."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="The old volume control in Windows 10 refers to the classic audio mixer interface that was used in earlier versions of Windows. before the modern volume control system was introduced. This interface allowed users to adjust the volume for individual applications separately. providing a more detailed and flexible approach to managing audio levels."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Disable Toggle Key Sounds"     FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Classic"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Classic"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Toggle key sounds in Windows are audio cues that play when you press the Caps Lock. Num Lock. or Scroll Lock keys. These sounds help users identify when these keys are activated or deactivated."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Toggle key sounds in Windows are audio cues that play when you press the Caps Lock. Num Lock. or Scroll Lock keys. These sounds help users identify when these keys are activated or deactivated."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Clear Start Menu Windows 11"     FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Performance"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Performance"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Clear all pinned apps from the start menu"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Clear all pinned apps from the start menu"/>
         </StackPanel>
 
                                 </ListView>
@@ -9610,28 +9611,28 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
                             </TabItem.HeaderTemplate>
                                 <ListView Name="SettingsList"  Margin="0" ScrollViewer.VerticalScrollBarVisibility="Auto" BorderBrush="{x:Null}" Background="{x:Null}">
                                     
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Show file extensions" Tag=""  Style="{StaticResource ToggleSwitchStyle}" Name="ToggleShowExt" FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Protection"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Protection"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Show file extensions in Windows displays the suffix at the end of file names .like .txt. .jpg. .exe.. indicating file types and helping users identify which programs can open them. simplifying file management and differentiation."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Show file extensions in Windows displays the suffix at the end of file names .like .txt. .jpg. .exe.. indicating file types and helping users identify which programs can open them. simplifying file management and differentiation."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Show Super Hidden" Tag=""  Style="{StaticResource ToggleSwitchStyle}" Name="ToggleShowHidden" FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Protection"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Protection"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Show Super Hidden displays files and folders in Windows that are hidden beyond standard hidden files. often system files to prevent accidental changes."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Show Super Hidden displays files and folders in Windows that are hidden beyond standard hidden files. often system files to prevent accidental changes."/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Dark Mode" Tag=""  Style="{StaticResource ToggleSwitchStyle}" Name="ToggleDarkMode" FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Personalize"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Personalize"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Dark Mode is a setting that changes the screen to darker colors. reducing eye strain and saving battery life on OLED screens."/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Dark Mode is a setting that changes the screen to darker colors. reducing eye strain and saving battery life on OLED screens."/>
         </StackPanel>
 
                                 </ListView>
