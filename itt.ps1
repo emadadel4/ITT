@@ -4538,7 +4538,7 @@ $sync.database.Applications = '[
   },
   {
     "name": "Neat Download Manager",
-    "description": "Neat Download Manager is a free 100% Internet Download Manager for Windows",
+    "description": "Neat Download Manager is a free Internet Download Manager for Windows",
     "winget": "none",
     "choco": "none",
     "scoop": "none",
@@ -4546,6 +4546,57 @@ $sync.database.Applications = '[
       {
         "IsExcute": "true",
         "url": "https://www.neatdownloadmanager.com/file/NeatDM_setup.exe",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
+    "category": "Web Browsers",
+    "check": "false"
+  },
+  {
+    "name": "x630ce for all games",
+    "description": "Xbox 360 Controller Emulator” allows your controller (gamepad, joystick, steering wheel, pedals, etc.) to function on your PC as an Xbox 360 controller. It allows you to remap buttons and axes and to drive cars with steering wheel and pedals or to fly planes with joystick and throttle in games like “Grand Theft Auto” or “Saints Row” • Digitally Signed",
+    "winget": "none",
+    "choco": "none",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "https://www.x360ce.com/files/x360ce.zip",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
+    "category": "Web Browsers",
+    "check": "false"
+  },
+  {
+    "name": "x630ce x86",
+    "description": "Xbox 360 Controller Emulator” allows your controller (gamepad, joystick, steering wheel, pedals, etc.) to function on your PC as an Xbox 360 controller. It allows you to remap buttons and axes and to drive cars with steering wheel and pedals or to fly planes with joystick and throttle in games like “Grand Theft Auto” or “Saints Row” • Digitally Signed",
+    "winget": "none",
+    "choco": "none",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "https://www.x360ce.com/files/x360ce_x86.zip",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none"
+      }
+    ],
+    "category": "Web Browsers",
+    "check": "false"
+  },
+  {
+    "name": "x630ce x64",
+    "description": "Xbox 360 Controller Emulator” allows your controller (gamepad, joystick, steering wheel, pedals, etc.) to function on your PC as an Xbox 360 controller. It allows you to remap buttons and axes and to drive cars with steering wheel and pedals or to fly planes with joystick and throttle in games like “Grand Theft Auto” or “Saints Row” • Digitally Signed",
+    "winget": "none",
+    "choco": "none",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "https://www.x360ce.com/files/x360ce_x64.zip",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none"
       }
@@ -9289,7 +9340,31 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
                 <CheckBox Content="Neat Download Manager" Tag="Web Browsers" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Web Browsers"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Neat Download Manager is a free 100.  Internet Download Manager for Windows"/>
+                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Neat Download Manager is a free Internet Download Manager for Windows"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+            <StackPanel Orientation="Horizontal">
+                <CheckBox Content="x630ce for all games" Tag="Web Browsers" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Web Browsers"/>
+            </StackPanel>
+                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Xbox 360 Controller Emulator.  allows your controller . gamepad.  joystick.  steering wheel.  pedals.  etc. .  to function on your PC as an Xbox 360 controller.  It allows you to remap buttons and axes and to drive cars with steering wheel and pedals or to fly planes with joystick and throttle in games like . Grand Theft Auto.  or . Saints Row.  .  Digitally Signed"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+            <StackPanel Orientation="Horizontal">
+                <CheckBox Content="x630ce x86" Tag="Web Browsers" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Web Browsers"/>
+            </StackPanel>
+                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Xbox 360 Controller Emulator.  allows your controller . gamepad.  joystick.  steering wheel.  pedals.  etc. .  to function on your PC as an Xbox 360 controller.  It allows you to remap buttons and axes and to drive cars with steering wheel and pedals or to fly planes with joystick and throttle in games like . Grand Theft Auto.  or . Saints Row.  .  Digitally Signed"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+            <StackPanel Orientation="Horizontal">
+                <CheckBox Content="x630ce x64" Tag="Web Browsers" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Web Browsers"/>
+            </StackPanel>
+                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Xbox 360 Controller Emulator.  allows your controller . gamepad.  joystick.  steering wheel.  pedals.  etc. .  to function on your PC as an Xbox 360 controller.  It allows you to remap buttons and axes and to drive cars with steering wheel and pedals or to fly planes with joystick and throttle in games like . Grand Theft Auto.  or . Saints Row.  .  Digitally Signed"/>
         </StackPanel>
 
                                 </ListView>
@@ -10722,23 +10797,35 @@ function Invoke-Install {
                                 [string]$url,
                                 [string]$outputDir
                             )
-                        
+                            
                             $downloadDir = "$env:ProgramData\$outputDir"
                             if (-not (Test-Path -Path $downloadDir)) {
                                 New-Item -ItemType Directory -Path $downloadDir | Out-Null
                             }
                         
                             $downloadPath = Join-Path -Path $downloadDir -ChildPath (Split-Path $url -Leaf)
-                        
-                            Write-Host "Downloading RAR file..." -ForegroundColor Yellow
+                            Add-Log -Message "Downloading RAR file..." -Level "INFO"
                             Invoke-WebRequest -Uri $url -OutFile $downloadPath
-                        
                             Write-Host "Extracting RAR file..." -ForegroundColor Yellow
                             Expand-Archive -Path $downloadPath -DestinationPath $downloadDir -Force
+                            Add-Log -Message "Extraction completed to $downloadDir" -Level "INFO"
                         
-                            Write-Host "Extraction completed to $downloadDir" -ForegroundColor Green
-                            Invoke-Item $downloadDir
+                            # Find the first .exe file in the extracted directory
+                            $exeFile = Get-ChildItem -Path $downloadDir -Filter *.exe -Recurse | Select-Object -First 1
+                            if ($exeFile) {
+                                # Create a shortcut to the .exe file
+                                $shortcutPath = [System.IO.Path]::Combine([System.Environment]::GetFolderPath('Desktop'), "$($exeFile.BaseName).lnk")
+                                $shell = New-Object -ComObject WScript.Shell
+                                $shortcut = $shell.CreateShortcut($shortcutPath)
+                                $shortcut.TargetPath = $exeFile.FullName
+                                $shortcut.Save()
+                        
+                                Add-Log -Message "Shortcut created on desktop: $shortcutPath" -Level "INFO"
+                            } else {
+                                Add-Log -Message "No .exe file found for shortcut creation." -Level "WARNING"
+                            }
                         }
+                        
             
                         # THIS FUNC NOT APPLY it will added soon
                         function DownloadAndInstallExe {
@@ -10953,7 +11040,14 @@ function Invoke-Install {
                             }
                             else
                             {
-                                DownloadAndInstallExe -url  $_.default.url -exeArgs $_.default.exeArgs
+                                if($_.IsExcute -eq "true")
+                                {
+                                    #DownloadAndInstallExe -url  $_.default.url -exeArgs $_.default.exeArgs
+                                }
+                                else
+                                {
+                                    DownloadAndExtractRar -url  $_.default.url -outputDir "ITT"
+                                }
                             }
                         }
     
