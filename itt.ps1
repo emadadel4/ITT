@@ -10806,7 +10806,7 @@ function Invoke-Install {
                             $downloadPath = Join-Path -Path $downloadDir -ChildPath (Split-Path $url -Leaf)
                             Add-Log -Message "Downloading RAR file..." -Level "INFO"
                             Invoke-WebRequest -Uri $url -OutFile $downloadPath
-                            Write-Host "Extracting RAR file..." -ForegroundColor Yellow
+                            Add-Log -Message "Extracting RAR file..." -Level "INFO"
                             Expand-Archive -Path $downloadPath -DestinationPath $downloadDir -Force
                             Add-Log -Message "Extraction completed to $downloadDir" -Level "INFO"
                         
@@ -10825,7 +10825,6 @@ function Invoke-Install {
                                 Add-Log -Message "No .exe file found for shortcut creation." -Level "WARNING"
                             }
                         }
-                        
             
                         # THIS FUNC NOT APPLY it will added soon
                         function DownloadAndInstallExe {
