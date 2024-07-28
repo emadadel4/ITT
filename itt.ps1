@@ -4882,7 +4882,7 @@ $sync.database.Applications = '[
       {
         "IsExcute": "true",
         "url": "https://uk1-dl.techpowerup.com/files/Kibx5EK67f16mM4Ytnh6zw/1722251788/MemTest64.exe",
-        "exeArgs": "",
+        "exeArgs": "none",
         "output": "none",
         "run": "no"
       }
