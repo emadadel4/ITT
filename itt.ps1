@@ -6232,7 +6232,7 @@ $sync.database.Tweaks = '[
     ]
   },
   {
-    "name": "Clear Start Menu Windows 10",
+    "name": "Clear Start Menu Windows 11",
     "description": "Clear all pinned apps from the start menu",
     "check": "false",
     "category": "Performance",
@@ -9491,7 +9491,7 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
 
         <StackPanel Orientation="Vertical" Width="auto" Margin="8">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Clear Start Menu Windows 10"     FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <CheckBox Content="Clear Start Menu Windows 11"     FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="Performance"/>
             </StackPanel>
                 <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Clear all pinned apps from the start menu"/>
