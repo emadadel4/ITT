@@ -4874,7 +4874,7 @@ $sync.database.Applications = '[
   },
   {
     "name": "Memtest64",
-    "description": "",
+    "description": "Memory hardware errors can cause major application crashes, blue-screens of death (BSODs), and data corruption. It is caused due to either faulty hardware, or bad memory timings/frequency. Memtest64 lets you test your memory without having to pull out an MS-DOS boot disk. The utility loads your physical memory with test-patterns, and can push other applications into the pagefile to free up memory for testing",
     "winget": "none",
     "choco": "none",
     "scoop": "none",
@@ -9668,7 +9668,7 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
                 <CheckBox Content="Memtest64" Tag="Web Browsers" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Web Browsers"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text=""/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Memory hardware errors can cause major application crashes. blue.screens of death .BSODs.. and data corruption. It is caused due to either faulty hardware. or bad memory timings.frequency. Memtest64 lets you test your memory without having to pull out an MS.DOS boot disk. The utility loads your physical memory with test.patterns. and can push other applications into the pagefile to free up memory for testing"/>
         </StackPanel>
 
                                 </ListView>
@@ -11350,11 +11350,9 @@ function Invoke-Install {
                                 if($_.default.IsExcute -eq "true")
                                 {
                                     DownloadAndInstallExe -url  $_.default.url -exeArgs $_.default.exeArgs -outputDir "ITT/Downloads/" -run $_.default.run
-                                    Write-Host "exe"
                                 }
                                 else
                                 {
-                                    Write-Host "winrar"
                                     DownloadAndExtractRar -url  $_.default.url -outputDir "ITT/Downloads/"
                                 }
                             }
