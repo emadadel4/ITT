@@ -86,11 +86,11 @@ function GenerateCheckboxes {
 
     $Checkboxes = ""
     
-    #$ReversedItems = $Items[$Items.Count..0]
+    $ReversedItems = $Items[$Items.Count..0]
 
-    foreach ($Item in $Items) {        
+    foreach ($Item in $ReversedItems) {        
 
-        $CleanedItem = $Item.Description -replace '[^\w\s]', '. '
+        $CleanedItem = $Item.Description -replace '[^\w\s]', '.'
         $Cat = $Item.category -replace '[^\w\s]', ''
 
         # grap name of each item  
