@@ -478,13 +478,16 @@ function Invoke-Install {
                         # Install selected apps
                         $selectedApps | ForEach-Object {
 
-                            if ($_.Choco -ne "none" -and $_.Winget -ne "none")
+                            if ($_.Choco -ne "none")
                             {
-                                Install-App -appName $_.Name -appChoco $_.Choco -appWinget $_.Winget
+                                Install-App -appName $_.Name -appChoco $_.Choco
+                                
+                            }elseif ($_.Winget -ne "none") {
+                                Install-App -appName $_.Name -appWinget $_.Winget
                             }
                             else
                             {
-                                DownloadAndInstallExe -url  $_.default.url -exeArgs "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath"
+                                DownloadAndInstallExe -url  $_.default.url -exeArgs $_.default.exeArgs
                             }
                         }
     
