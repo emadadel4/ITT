@@ -110,12 +110,12 @@ function GenerateCheckboxes {
 
         $Checkboxes += @"
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="8">
+        <StackPanel Orientation="Vertical" Width="auto" Margin="20">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="$Content" $Tag $IsChecked $Toggle $Name FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="15" Content="$Cat"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="$Cat"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="5,2,0,0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="$CleanedItem"/>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="$CleanedItem"/>
         </StackPanel>
 
 "@
@@ -156,10 +156,11 @@ function WriteHeader {
 #      | |  | |   | |   |  _| | |\/| | / _ \ | | | |   / _ \ | | | |  _| | |         #
 #      | |  | |   | |   | |___| |  | |/ ___ \| |_| |  / ___ \| |_| | |___| |___      #
 #     |___| |_|   |_|   |_____|_|  |_/_/   \_\____/  /_/   \_\____/|_____|_____|     #
-#                          https://github.com/emadadel4                              #
-#                          https://t.me/emadadel4                                    #
-#                       Automatically generated from build                           # 
-#                            #Stand With Palestine                                   #
+#                Automatically generated from build don't play here :)               # 
+#                              #StandWithPalestine                                   #
+# https://github.com/emadadel4                                                       #
+# https://t.me/emadadel4                                                             #
+# https://emadadel4.github.io/itt                                                    #
 ######################################################################################
 "@
 }
