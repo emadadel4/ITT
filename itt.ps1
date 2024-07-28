@@ -4604,6 +4604,23 @@ $sync.database.Applications = '[
     ],
     "category": "Web Browsers",
     "check": "false"
+  },
+  {
+    "name": "Memtest64",
+    "description": "Memory hardware errors can cause major application crashes, blue-screens of death (BSODs), and data corruption. It is caused due to either faulty hardware, or bad memory timings/frequency. Memtest64 lets you test your memory without having to pull out an MS-DOS boot disk. The utility loads your physical memory with test-patterns, and can push other applications into the pagefile to free up memory for testing",
+    "winget": "none",
+    "choco": "none",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "true",
+        "url": "https://uk1-dl.techpowerup.com/files/Kibx5EK67f16mM4Ytnh6zw/1722251788/MemTest64.exe",
+        "exeArgs": "",
+        "output": "none"
+      }
+    ],
+    "category": "Web Browsers",
+    "check": "false"
   }
 ]
 ' | ConvertFrom-Json
@@ -9378,6 +9395,14 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
                 <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Xbox 360 Controller Emulator. allows your controller .gamepad. joystick. steering wheel. pedals. etc.. to function on your PC as an Xbox 360 controller. It allows you to remap buttons and axes and to drive cars with steering wheel and pedals or to fly planes with joystick and throttle in games like .Grand Theft Auto. or .Saints Row. . Digitally Signed"/>
         </StackPanel>
 
+        <StackPanel Orientation="Vertical" Width="auto" Margin="10">
+            <StackPanel Orientation="Horizontal">
+                <CheckBox Content="Memtest64" Tag="Web Browsers" IsChecked="false"   FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="Web Browsers"/>
+            </StackPanel>
+                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Memory hardware errors can cause major application crashes. blue.screens of death .BSODs.. and data corruption. It is caused due to either faulty hardware. or bad memory timings.frequency. Memtest64 lets you test your memory without having to pull out an MS.DOS boot disk. The utility loads your physical memory with test.patterns. and can push other applications into the pagefile to free up memory for testing"/>
+        </StackPanel>
+
                                 </ListView>
                             </TabItem.Content>
                         </TabItem>
@@ -10841,10 +10866,11 @@ function Invoke-Install {
                         function DownloadAndInstallExe {
                             param (
                                 [string]$url,
-                                [string]$exeArgs
+                                [string]$exeArgs,
+                                [string]$outputDir
                             )
                         
-                            $destination = "$env:temp/setup.exe"
+                            $destination = "$env:ProgramData\$outputDir\setup.exe"
             
                             Add-Log -Message "Downloading using native downloader." -Level "INFO"
             
@@ -11049,13 +11075,15 @@ function Invoke-Install {
                             }
                             else
                             {
-                                if($_.IsExcute -eq "true")
+                                if($_.default.IsExcute -eq "true")
                                 {
-                                    DownloadAndInstallExe -url  $_.default.url -exeArgs $_.default.exeArgs
+                                    DownloadAndInstallExe -url  $_.default.url -exeArgs $_.default.exeArgs -outputDir "ITT/Downloads/"
+                                    Write-Host "exe"
                                 }
                                 else
                                 {
-                                    DownloadAndExtractRar -url  $_.default.url -outputDir "ITT/Downloads"
+                                    Write-Host "winrar"
+                                    DownloadAndExtractRar -url  $_.default.url -outputDir "ITT/Downloads/"
                                 }
                             }
                         }
