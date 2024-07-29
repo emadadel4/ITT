@@ -5084,24 +5084,5 @@
     ],
     "category": "Gaming",
     "check": "false"
-  },
-  {
-    "name": "Memtest64",
-    "description": "Memory hardware errors can cause major application crashes, blue-screens of death (BSODs), and data corruption. It is caused due to either faulty hardware, or bad memory timings/frequency. Memtest64 lets you test your memory without having to pull out an MS-DOS boot disk. The utility loads your physical memory with test-patterns, and can push other applications into the pagefile to free up memory for testing",
-    "winget": "none",
-    "choco": "none",
-    "scoop": "none",
-    "default": [
-      {
-        "IsExcute": "true",
-        "url": "https://uk1-dl.techpowerup.com/files/Kibx5EK67f16mM4Ytnh6zw/1722251788/MemTest64.exe",
-        "exeArgs": "",
-        "output": "none",
-        "shortcut": "yes",
-        "run": "no"
-      }
-    ],
-    "category": "Utilities",
-    "check": "false"
   }
 ]
