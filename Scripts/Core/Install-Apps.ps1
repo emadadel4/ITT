@@ -318,7 +318,6 @@ function Invoke-Install {
                                 if (-not (Test-Path -Path (Split-Path -Path $destination -Parent))) {
                                     New-Item -ItemType Directory -Path (Split-Path -Path $destination -Parent) | Out-Null
                                 }
-                        
                                 # Download the file
                                 Invoke-WebRequest -Uri $url -OutFile $destination
                                 Add-Log -Message "Download completed successfully." -Level "INFO"
@@ -331,13 +330,12 @@ function Invoke-Install {
                                     $shortcut.Save()
                                     Add-Log -Message "Shortcut created on desktop" -Level "INFO"
                                 }
+                                if ($run -eq "yes") {
+                                    Start-Process -Wait $destination -ArgumentList $exeArgs
+                                }
                             }
                             catch {
                                 throw "Error downloading EXE file: $_"
-                            }
-                        
-                            if ($run -eq "yes") {
-                                Start-Process -Wait $destination -ArgumentList $exeArgs
                             }
                         }
             
