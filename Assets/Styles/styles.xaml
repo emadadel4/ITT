@@ -61,10 +61,10 @@
     <Setter Property="Template">
         <Setter.Value>
             <ControlTemplate TargetType="Label">
-                <Border Padding="4" Background="{TemplateBinding Background}"
+                <Border Padding="8" Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}"
-                        CornerRadius="0">
+                        CornerRadius="5">
                     <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                       VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                 </Border>
@@ -84,7 +84,7 @@
 <!--CheckBox Style-->
   <Style TargetType="CheckBox">
       <Setter Property="Foreground" Value="{DynamicResource DefaultTextColor}"/>
-      <Setter Property="Margin" Value="0,0,0,0"/>
+      <Setter Property="Margin" Value="0"/>
       <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Template">
                 <Setter.Value>
@@ -96,10 +96,10 @@
                                 <Path x:Name="CheckMark" Width="7" Height="7" SnapsToDevicePixels="False" Stroke="blue" StrokeThickness="2" Data="M 0 3.5 L 7 3.5 M 3.5 0 L 3.5 7" Visibility="Collapsed"/>
                             </Grid>
                             <!-- Content with background -->
-                            <Border CornerRadius="0" Background="{DynamicResource checkboxBG}"
+                            <Border CornerRadius="3" Background="{DynamicResource checkboxBG}"
                                     BorderBrush="{TemplateBinding BorderBrush}"
                                     BorderThickness="{TemplateBinding BorderThickness}"
-                                    Padding="5">
+                                    Padding="10">
                                 <ContentPresenter/>
                             </Border>
                         </StackPanel>
