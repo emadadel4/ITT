@@ -253,11 +253,12 @@ function Invoke-Install {
                         # THIS FUNC NOT APPLY it will added soon
                         function DownloadAndExtractRar {
                             param (
+                                [string]$name,
                                 [string]$url,
                                 [string]$outputDir
                             )
                         
-                            $downloadDir = "$env:ProgramData\$outputDir"
+                            $downloadDir = "$env:ProgramData\$outputDir\$name"
                             if (-not (Test-Path -Path $downloadDir)) {
                                 New-Item -ItemType Directory -Path $downloadDir | Out-Null
                             }
@@ -332,15 +333,17 @@ function Invoke-Install {
                         # THIS FUNC NOT APPLY it will added soon
                         function DownloadAndInstallExe {
                             param (
+                                [string]$name,
                                 [string]$url,
                                 [string]$exeArgs,
                                 [string]$outputDir,
                                 [string]$run
                             )
                         
-                            $destination = "$env:ProgramData\$outputDir\setup.exe"
+                            $destination = "$env:ProgramData\$outputDir\$name\$name.exe"
+                            $shortcutPath = [System.IO.Path]::Combine([System.Environment]::GetFolderPath('Desktop'), "$name.lnk")
                         
-                            Add-Log -Message "Downloading using HttpClient with progress reporting." -Level "INFO"
+                            Add-Log -Message "Downloading using HttpClient" -Level "INFO"
                         
                             try {
                                 # Create the output directory if it doesn't exist
@@ -375,11 +378,17 @@ function Invoke-Install {
                                         $progressPercent = [math]::Round(($totalBytesRead / $contentLength) * 100, 2)
                                         Write-Host -NoNewline -ForegroundColor Green "`rDownload progress: $progressPercent% "
                                     }
-
+                        
                                     Add-Log -Message "`nDownload completed successfully." -Level "INFO"
+                                    
+                                    # Create a shortcut on the desktop
+                                    $shell = New-Object -ComObject WScript.Shell
+                                    $shortcut = $shell.CreateShortcut($shortcutPath)
+                                    $shortcut.TargetPath = $destination
+                                    $shortcut.Save()
+                                    
                                     Add-Log -Message "Shortcut created on desktop" -Level "INFO"
-
-
+                        
                                     $fileStream.Close()
                                     $stream.Close()
                                 } else {
@@ -398,8 +407,6 @@ function Invoke-Install {
                                 Start-Process -Wait $destination -ArgumentList $exeArgs
                             }
                         }
-                        
-                        
             
                         function Install-Winget {
             
@@ -590,11 +597,11 @@ function Invoke-Install {
                                 if($_.default.IsExcute -eq "true")
                                 {
                                     Write-Host "exe"
-                                    DownloadAndInstallExe -url  $_.default.url -exeArgs $_.default.exeArgs -outputDir "ITT\Downloads\" 
+                                    DownloadAndInstallExe -name "$($_.Name)" -url  $_.default.url -exeArgs $_.default.exeArgs -outputDir "ITT\Downloads\" 
                                 }
                                 else
                                 {
-                                    DownloadAndExtractRar -url  $_.default.url -outputDir "ITT/Downloads/" -run $_.default.run
+                                    DownloadAndExtractRar -name "$($_.Name)" -url  $_.default.url -outputDir "ITT/Downloads/" -run $_.default.run
                                 }
                             }
                         }
