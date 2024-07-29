@@ -11098,11 +11098,12 @@ function Invoke-Install {
                         # THIS FUNC NOT APPLY it will added soon
                         function DownloadAndExtractRar {
                             param (
+                                [string]$name,
                                 [string]$url,
                                 [string]$outputDir
                             )
                         
-                            $downloadDir = "$env:ProgramData\$outputDir"
+                            $downloadDir = "$env:ProgramData\$outputDir\$name"
                             if (-not (Test-Path -Path $downloadDir)) {
                                 New-Item -ItemType Directory -Path $downloadDir | Out-Null
                             }
@@ -11177,15 +11178,16 @@ function Invoke-Install {
                         # THIS FUNC NOT APPLY it will added soon
                         function DownloadAndInstallExe {
                             param (
+                                [string]$name,
                                 [string]$url,
                                 [string]$exeArgs,
                                 [string]$outputDir,
                                 [string]$run
                             )
                         
-                            $destination = "$env:ProgramData\$outputDir\setup.exe"
+                            $destination = "$env:ProgramData\$outputDir\$name\$name.exe"
                         
-                            Add-Log -Message "Downloading using HttpClient with progress reporting." -Level "INFO"
+                            Add-Log -Message "Downloading using HttpClient" -Level "INFO"
                         
                             try {
                                 # Create the output directory if it doesn't exist
@@ -11435,11 +11437,11 @@ function Invoke-Install {
                                 if($_.default.IsExcute -eq "true")
                                 {
                                     Write-Host "exe"
-                                    DownloadAndInstallExe -url  $_.default.url -exeArgs $_.default.exeArgs -outputDir "ITT\Downloads\" 
+                                    DownloadAndInstallExe -name "$($_.Name)" -url  $_.default.url -exeArgs $_.default.exeArgs -outputDir "ITT\Downloads\" 
                                 }
                                 else
                                 {
-                                    DownloadAndExtractRar -url  $_.default.url -outputDir "ITT/Downloads/" -run $_.default.run
+                                    DownloadAndExtractRar -name "$($_.Name)" -url  $_.default.url -outputDir "ITT/Downloads/" -run $_.default.run
                                 }
                             }
                         }
