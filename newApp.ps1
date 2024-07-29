@@ -16,7 +16,7 @@ $validCategories = @{
 
     1 = "API [Choco/Winget] Recommended"
 
-    2 = "Default [Native Downloader] ##It will be added in the future" 
+    2 = "Default [HttpClient]" 
 }
 
 # Prompt user to choose mothed
@@ -40,23 +40,30 @@ $userInput
 #region Native Downloader 
 #===========================================================================
 
-if($userInput -eq "Default [Native Downloader]")
+if($userInput -eq "Default [HttpClient]")
 {
 
 $AppName = Read-Host "Enter App name"
 $description = (Read-Host "Enter app description") -replace '[\W.]', ''
 
+Write-Host "example: https:/emadadel4.github.io/MemTest64.exe. or [rar]"
+$url = Read-Host "Enter URL Downloading file"
 
-$IsExcute = Read-Host "Enter file type [exe] or [Rar]"
+Write-Host "`n` "
+
+Write-Host "exe file = true"
+Write-Host "rar file = false"
+$IsExcute = Read-Host "IsExcute file? [true] or [false]"
 if ($IsExcute -eq "") { $IsExcute = "false" }  # Set default value if empty
 
-$url = Read-Host "Enter URL Downloading file [exe] or [rar]"
+$runAfterDownload = Read-Host "Run after download? [yes]/[no]"
+if ($runAfterDownload -eq "") { $runAfterDownload = "no" }  # Set default value [no] if empty
 
 $exeArgs = Read-Host "Enter Silent argmanet"
 if ($exeArgs -eq "") { $exeArgs = "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath" }  # Set default value if empty
  
-$output = Read-Host "Enter save location"
-if ($output -eq "") { $output = "ITT/Downloads" }  # Set default value if empty
+#$output = Read-Host "Enter save location"
+# if ($output -eq "") { $output = "none" }  # Set default value if empty
 
 # Define category options
 $validCategories = @{
@@ -106,7 +113,8 @@ $data = @{
             "IsExcute" = $IsExcute
             "url" = $url
             "exeArgs" = $exeArgs
-            "output" = $output
+            "output" = "none"
+            "run" = $runAfterDownload
         }
     )
     "category" = $category
@@ -127,6 +135,7 @@ $jsonString = @"
             "url": "$($data["default"][0]["url"])",
             "exeArgs": "$($data["default"][0]["exeArgs"])",
             "output": "$($data["default"][0]["output"])",
+            "run": "$($data["default"][0]["run"])"
         }
     ],
     "category": "$($data["category"])",
@@ -225,6 +234,7 @@ $data = @{
             "url" = "none"
             "exeArgs" = "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath"
             "output" = $output
+            "run" = "no"
         }
     )
     "category" = $category
@@ -245,7 +255,7 @@ $jsonString = @"
             "url": "none",
             "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
             "output": "$($data["default"][0]["output"])",
-
+            "run": "$($data["default"][0]["run"])"
         }
     ],
     "category": "$($data["category"])",
