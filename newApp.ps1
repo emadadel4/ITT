@@ -45,26 +45,102 @@ if($userInput -eq "Default [HttpClient]")
 
 $AppName = Read-Host "Enter App name"
 $description = (Read-Host "Enter app description") -replace '[\W.]', ''
-
-Write-Host "example: https:/emadadel4.github.io/MemTest64.exe. or [rar]"
 $url = Read-Host "Enter URL Downloading file"
 
-Write-Host "`n` "
+#===========================================================================
+#region Begin IsExcute
+#===========================================================================
 
-Write-Host "exe file = true"
-Write-Host "rar file = false"
-$IsExcute = Read-Host "IsExcute file? [true] or [false]"
-if ($IsExcute -eq "") { $IsExcute = "false" }  # Set default value if empty
+$IsExcute = @{
+    1 = "false"
+    2 = "true"
+}
 
-$runAfterDownload = Read-Host "Run after download? [yes]/[no]"
-if ($runAfterDownload -eq "") { $runAfterDownload = "no" }  # Set default value [no] if empty
+# Prompt user to choose Excute
+do {
+    Write-Host "Is Excute file? .exe"
+    foreach ($key in $IsExcute.Keys | Sort-Object) {
+        Write-Host "$key - $($IsExcute[$key])"
+    }
+    $choice = Read-Host "Enter the number corresponding to the option"
+    if ([int]$choice -in $IsExcute.Keys) {
+        $Excute = $IsExcute[[int]$choice]
+    } else {
+        Write-Host "Invalid choice. Please select a valid option."
+    }
+} until ([int]$choice -in $IsExcute.Keys)
 
-$shourtcut = Read-Host "create shourtcut on desktop?: [yes]/[no]"
-if ($shourtcut -eq "") { $shourtcut = "no" }  # Set default value [no] if empty
+
+
+#===========================================================================
+#endregion IsExcute
+#===========================================================================
+
+#===========================================================================
+#region Begin runAfterDownload
+#===========================================================================
+
+$runAfterDownload = @{
+    1 = "yes"
+    2 = "no"
+}
+
+# Prompt user to choose Excute
+do {
+    Write-Host "Run aftar download?"
+    foreach ($key in $runAfterDownload.Keys | Sort-Object) {
+        Write-Host "$key - $($runAfterDownload[$key])"
+    }
+    $choice = Read-Host "Enter the number corresponding to the option"
+    if ([int]$choice -in $runAfterDownload.Keys) {
+        $run = $runAfterDownload[[int]$choice]
+    } else {
+        Write-Host "Invalid choice. Please select a valid option."
+    }
+} until ([int]$choice -in $runAfterDownload.Keys)
+
+
+
+#===========================================================================
+#endregion runAfterDownload
+#===========================================================================
+
+#===========================================================================
+#region Begin CreateShourtcut
+#===========================================================================
+
+$CreateShourtcut = @{
+    1 = "yes"
+    2 = "no"
+}
+
+# Prompt user to choose Excute
+do {
+    Write-Host "Create shourtcut on desktop?"
+    foreach ($key in $CreateShourtcut.Keys | Sort-Object) {
+        Write-Host "$key - $($CreateShourtcut[$key])"
+    }
+    $choice = Read-Host "Enter the number corresponding to the option"
+    if ([int]$choice -in $CreateShourtcut.Keys) {
+        $shourtcut = $CreateShourtcut[[int]$choice]
+    } else {
+        Write-Host "Invalid choice. Please select a valid option."
+    }
+} until ([int]$choice -in $CreateShourtcut.Keys)
+
+
+
+#===========================================================================
+#endregion CreateShourtcut
+#===========================================================================
 
 $exeArgs = Read-Host "Enter Silent argmanet"
 if ($exeArgs -eq "") { $exeArgs = "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath" }  # Set default value if empty
- 
+
+#===========================================================================
+#region Begin Categories
+#===========================================================================
+
 #$output = Read-Host "Enter save location"
 # if ($output -eq "") { $output = "none" }  # Set default value if empty
 
@@ -101,8 +177,9 @@ do {
         Write-Host "Invalid choice. Please select a valid option."
     }
 } until ([int]$choice -in $validCategories.Keys)
-
-
+#===========================================================================
+#endregion Categories
+#===========================================================================
 
 # Define the data
 $data = @{
@@ -113,12 +190,12 @@ $data = @{
     "scoop" = "none"
     "default" = @(
         @{
-            "IsExcute" = $IsExcute
+            "IsExcute" = $Excute
             "url" = $url
             "exeArgs" = $exeArgs
             "output" = "none"
             "shortcut" = $shourtcut
-            "run" = $runAfterDownload
+            "run" = $run
         }
     )
     "category" = $category
