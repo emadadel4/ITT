@@ -59,6 +59,9 @@ if ($IsExcute -eq "") { $IsExcute = "false" }  # Set default value if empty
 $runAfterDownload = Read-Host "Run after download? [yes]/[no]"
 if ($runAfterDownload -eq "") { $runAfterDownload = "no" }  # Set default value [no] if empty
 
+$shourtcut = Read-Host "create shourtcut on desktop?: [yes]/[no]"
+if ($shourtcut -eq "") { $shourtcut = "no" }  # Set default value [no] if empty
+
 $exeArgs = Read-Host "Enter Silent argmanet"
 if ($exeArgs -eq "") { $exeArgs = "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath" }  # Set default value if empty
  
@@ -114,6 +117,7 @@ $data = @{
             "url" = $url
             "exeArgs" = $exeArgs
             "output" = "none"
+            "shortcut" = $shourtcut
             "run" = $runAfterDownload
         }
     )
@@ -135,6 +139,7 @@ $jsonString = @"
             "url": "$($data["default"][0]["url"])",
             "exeArgs": "$($data["default"][0]["exeArgs"])",
             "output": "$($data["default"][0]["output"])",
+            "shortcut": "$($data["default"][0]["shortcut"])",
             "run": "$($data["default"][0]["run"])"
         }
     ],
@@ -234,6 +239,7 @@ $data = @{
             "url" = "none"
             "exeArgs" = "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath"
             "output" = $output
+            "shortcut" = "no"
             "run" = "no"
         }
     )
@@ -255,6 +261,7 @@ $jsonString = @"
             "url": "none",
             "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
             "output": "$($data["default"][0]["output"])",
+            "shortcut": "$($data["default"][0]["shortcut"])"
             "run": "$($data["default"][0]["run"])"
         }
     ],
