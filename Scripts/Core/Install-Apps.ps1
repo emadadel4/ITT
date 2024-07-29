@@ -601,7 +601,7 @@ function Invoke-Install {
                                 }
                                 else
                                 {
-                                    DownloadAndExtractRar -name "$($_.Name)" -url  $_.default.url -outputDir "ITT/Downloads/" -run $_.default.run
+                                    DownloadAndExtractRar -name "$($_.Name)" -url  $_.default.url -outputDir "ITT\Downloads\" -run $_.default.run
                                 }
                             }
                         }
