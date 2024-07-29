@@ -112,10 +112,10 @@ function GenerateCheckboxes {
 
         <StackPanel Orientation="Vertical" Width="auto" Margin="10">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="$Content" $Tag $IsChecked $Toggle $Name FontWeight="Bold" FontFamily="arial" FontSize="13" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="12" Content="$Cat"/>
+                <CheckBox Content="$Content" $Tag $IsChecked $Toggle $Name FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="13" Content="$Cat"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="0" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="$CleanedItem"/>
+                <TextBlock Width="555" Background="Transparent" Margin="8" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="$CleanedItem"/>
         </StackPanel>
 
 "@
