@@ -267,26 +267,31 @@ function Invoke-Install {
                             Add-Log -Message "Downloading using Invoke-WebRequest" -Level "INFO"
                         
                             try {
-                                Invoke-WebRequest -Uri $url -OutFile $downloadPath -UseBasicParsing
-                                Write-Host "Download completed successfully." -ForegroundColor Green
-                        
-                                # Find the first .exe file in the extracted directory
-                                $exeFile = Get-ChildItem -Path $downloadDir -Filter *.exe -Recurse | Select-Object -First 1
-                                if ($exeFile) {
-                                    # Create a shortcut to the .exe file
-                                    $shortcutPath = [System.IO.Path]::Combine([System.Environment]::GetFolderPath('Desktop'), "$($exeFile.BaseName).lnk")
-                                    $shell = New-Object -ComObject WScript.Shell
-                                    $shortcut = $shell.CreateShortcut($shortcutPath)
-                                    $shortcut.TargetPath = $exeFile.FullName
-                                    $shortcut.Save()
-                            
-                                    Add-Log -Message "Shortcut created on desktop" -Level "INFO"
-                                } else {
-                                    Add-Log -Message "No .exe file found for shortcut creation." -Level "WARNING"
-                                }
-                        
-                            } catch {
+                                # Download the file using Invoke-WebRequest
+                                Invoke-WebRequest -Uri $url -OutFile $downloadPath
+                                Write-Host "`nDownload completed successfully." -ForegroundColor Green
+                            }
+                            catch {
                                 throw "Error downloading RAR file: $_"
+                            }
+                        
+                            Add-Log -Message "Extracting RAR file..." -Level "INFO"
+                            Expand-Archive -Path $downloadPath -DestinationPath $downloadDir -Force
+                            Add-Log -Message "Extraction completed to $downloadDir" -Level "INFO"
+                        
+                            # Find the first .exe file in the extracted directory
+                            $exeFile = Get-ChildItem -Path $downloadDir -Filter *.exe -Recurse | Select-Object -First 1
+                            if ($exeFile) {
+                                # Create a shortcut to the .exe file
+                                $shortcutPath = [System.IO.Path]::Combine([System.Environment]::GetFolderPath('Desktop'), "$($exeFile.BaseName).lnk")
+                                $shell = New-Object -ComObject WScript.Shell
+                                $shortcut = $shell.CreateShortcut($shortcutPath)
+                                $shortcut.TargetPath = $exeFile.FullName
+                                $shortcut.Save()
+                        
+                                Add-Log -Message "Shortcut created on desktop: $shortcutPath" -Level "INFO"
+                            } else {
+                                Add-Log -Message "No .exe file found for shortcut creation." -Level "WARNING"
                             }
                         }
             
