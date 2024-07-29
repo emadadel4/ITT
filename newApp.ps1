@@ -45,7 +45,7 @@ if($userInput -eq "Default [HttpClient]")
 
 $AppName = Read-Host "Enter App name"
 $description = (Read-Host "Enter app description") -replace '[\W.]', ''
-$url = Read-Host "Enter URL Downloading file"
+$url = Read-Host "Enter URL Download file"
 
 #===========================================================================
 #region Begin IsExcute
@@ -75,6 +75,9 @@ do {
 #===========================================================================
 #endregion IsExcute
 #===========================================================================
+
+$exeArgs = Read-Host "Enter Silent argmanet"
+if ($exeArgs -eq "") { $exeArgs = "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath" }  # Set default value if empty
 
 #===========================================================================
 #region Begin runAfterDownload
@@ -133,9 +136,6 @@ do {
 #===========================================================================
 #endregion CreateShourtcut
 #===========================================================================
-
-$exeArgs = Read-Host "Enter Silent argmanet"
-if ($exeArgs -eq "") { $exeArgs = "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath" }  # Set default value if empty
 
 #===========================================================================
 #region Begin Categories
