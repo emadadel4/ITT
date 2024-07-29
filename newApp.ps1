@@ -76,7 +76,7 @@ do {
 #endregion IsExcute
 #===========================================================================
 
-$exeArgs = Read-Host "Enter Silent argmanet"
+$exeArgs = Read-Host "Enter Silent argmanet: If not silent installation press enter to skip"
 if ($exeArgs -eq "") { $exeArgs = "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath" }  # Set default value if empty
 
 #===========================================================================
