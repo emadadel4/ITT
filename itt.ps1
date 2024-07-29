@@ -4882,7 +4882,7 @@ $sync.database.Applications = '[
       {
         "IsExcute": "true",
         "url": "https://uk1-dl.techpowerup.com/files/Kibx5EK67f16mM4Ytnh6zw/1722251788/MemTest64.exe",
-        "exeArgs": "none",
+        "exeArgs": "",
         "output": "none",
         "run": "no"
       }
@@ -11101,15 +11101,59 @@ function Invoke-Install {
                                 [string]$url,
                                 [string]$outputDir
                             )
-                            
+                        
                             $downloadDir = "$env:ProgramData\$outputDir"
                             if (-not (Test-Path -Path $downloadDir)) {
                                 New-Item -ItemType Directory -Path $downloadDir | Out-Null
                             }
                         
                             $downloadPath = Join-Path -Path $downloadDir -ChildPath (Split-Path $url -Leaf)
-                            Add-Log -Message "Downloading using native downloader." -Level "INFO"
-                            Invoke-WebRequest -Uri $url -OutFile $downloadPath
+                            Add-Log -Message "Downloading using HttpClient" -Level "INFO"
+                        
+                            try {
+                                # Create HttpClient instance
+                                $httpClient = [System.Net.Http.HttpClient]::new()
+                        
+                                # Send GET request
+                                $response = $httpClient.GetAsync($url, [System.Net.Http.HttpCompletionOption]::ResponseHeadersRead).Result
+                        
+                                if ($response.IsSuccessStatusCode) {
+                                    # Get the content stream
+                                    $stream = $response.Content.ReadAsStreamAsync().Result
+                        
+                                    # Create a FileStream to save the file
+                                    $fileStream = [System.IO.File]::Create($downloadPath)
+                                    $buffer = New-Object byte[] 8192
+                                    $totalBytesRead = 0
+                                    $contentLength = $response.Content.Headers.ContentLength
+                        
+                                    while ($true) {
+                                        $bytesRead = $stream.Read($buffer, 0, $buffer.Length)
+                                        if ($bytesRead -le 0) { break }
+                        
+                                        $fileStream.Write($buffer, 0, $bytesRead)
+                                        $totalBytesRead += $bytesRead
+                        
+                                        # Report progress in a single line
+                                        $progressPercent = [math]::Round(($totalBytesRead / $contentLength) * 100, 2)
+                                        Write-Host -NoNewline -ForegroundColor Green "`rDownload progress: $progressPercent% "
+                                    }
+                        
+                                    Write-Host "`nDownload completed successfully." -ForegroundColor Green
+                                    $fileStream.Close()
+                                    $stream.Close()
+                                } else {
+                                    throw "Failed to download file. Status code: $($response.StatusCode)"
+                                }
+                            }
+                            catch {
+                                throw "Error downloading RAR file: $_"
+                            }
+                            finally {
+                                # Clean up
+                                $httpClient.Dispose()
+                            }
+                        
                             Add-Log -Message "Extracting RAR file..." -Level "INFO"
                             Expand-Archive -Path $downloadPath -DestinationPath $downloadDir -Force
                             Add-Log -Message "Extraction completed to $downloadDir" -Level "INFO"
@@ -11124,7 +11168,7 @@ function Invoke-Install {
                                 $shortcut.TargetPath = $exeFile.FullName
                                 $shortcut.Save()
                         
-                                Add-Log -Message "Shortcut created on desktop: $shortcutPath" -Level "INFO"
+                                Add-Log -Message "Shortcut created on desktop" -Level "INFO"
                             } else {
                                 Add-Log -Message "No .exe file found for shortcut creation." -Level "WARNING"
                             }
@@ -11140,26 +11184,67 @@ function Invoke-Install {
                             )
                         
                             $destination = "$env:ProgramData\$outputDir\setup.exe"
-            
-                            Add-Log -Message "Downloading using native downloader." -Level "INFO"
-            
-                            $bitsJobObj = Start-BitsTransfer -Source $url -Destination $destination
-                            
-                            switch ($bitsJobObj.JobState) {
-                                'Transferred' {
-                                    Complete-BitsTransfer -BitsJob $bitsJobObj
-                                    break
+                        
+                            Add-Log -Message "Downloading using HttpClient with progress reporting." -Level "INFO"
+                        
+                            try {
+                                # Create the output directory if it doesn't exist
+                                if (-not (Test-Path -Path (Split-Path -Path $destination -Parent))) {
+                                    New-Item -ItemType Directory -Path (Split-Path -Path $destination -Parent) | Out-Null
                                 }
-                                'Error' {
-                                    throw 'Error downloading EXE file'
+                        
+                                # Create HttpClient instance
+                                $httpClient = [System.Net.Http.HttpClient]::new()
+                        
+                                # Send GET request
+                                $response = $httpClient.GetAsync($url, [System.Net.Http.HttpCompletionOption]::ResponseHeadersRead).Result
+                        
+                                if ($response.IsSuccessStatusCode) {
+                                    # Get the content stream
+                                    $stream = $response.Content.ReadAsStreamAsync().Result
+                        
+                                    # Create a FileStream to save the file
+                                    $fileStream = [System.IO.File]::Create($destination)
+                                    $buffer = New-Object byte[] 8192
+                                    $totalBytesRead = 0
+                                    $contentLength = $response.Content.Headers.ContentLength
+                        
+                                    while ($true) {
+                                        $bytesRead = $stream.Read($buffer, 0, $buffer.Length)
+                                        if ($bytesRead -le 0) { break }
+                        
+                                        $fileStream.Write($buffer, 0, $bytesRead)
+                                        $totalBytesRead += $bytesRead
+                        
+                                        # Report progress in a single line
+                                        $progressPercent = [math]::Round(($totalBytesRead / $contentLength) * 100, 2)
+                                        Write-Host -NoNewline -ForegroundColor Green "`rDownload progress: $progressPercent% "
+                                    }
+
+                                    Add-Log -Message "`nDownload completed successfully." -Level "INFO"
+                                    Add-Log -Message "Shortcut created on desktop" -Level "INFO"
+
+
+                                    $fileStream.Close()
+                                    $stream.Close()
+                                } else {
+                                    throw "Failed to download file. Status code: $($response.StatusCode)"
                                 }
                             }
-                            
-                            if($run -eq "yes")
-                            {
+                            catch {
+                                throw "Error downloading EXE file: $_"
+                            }
+                            finally {
+                                # Clean up
+                                $httpClient.Dispose()
+                            }
+                        
+                            if ($run -eq "yes") {
                                 Start-Process -Wait $destination -ArgumentList $exeArgs
                             }
                         }
+                        
+                        
             
                         function Install-Winget {
             
@@ -11349,11 +11434,12 @@ function Invoke-Install {
                             {
                                 if($_.default.IsExcute -eq "true")
                                 {
-                                    DownloadAndInstallExe -url  $_.default.url -exeArgs $_.default.exeArgs -outputDir "ITT/Downloads/" -run $_.default.run
+                                    Write-Host "exe"
+                                    DownloadAndInstallExe -url  $_.default.url -exeArgs $_.default.exeArgs -outputDir "ITT\Downloads\" 
                                 }
                                 else
                                 {
-                                    DownloadAndExtractRar -url  $_.default.url -outputDir "ITT/Downloads/"
+                                    DownloadAndExtractRar -url  $_.default.url -outputDir "ITT/Downloads/" -run $_.default.run
                                 }
                             }
                         }
