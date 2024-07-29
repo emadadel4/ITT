@@ -3577,7 +3577,7 @@
     "check": "false"
   },
   {
-    "name": "GameMaker-Studio",
+    "name": "GameMaker Studio",
     "description": "GameMaker Studio has everything you need for games development no matter what your level or expertise",
     "winget": "YoYoGames.GameMaker.Studio.2",
     "choco": "none",
@@ -4779,7 +4779,7 @@
         "run": "no"
       }
     ],
-    "category": "Web Browsers",
+    "category": "Gaming",
     "check": "false"
   },
   {
@@ -4797,7 +4797,7 @@
         "run": "no"
       }
     ],
-    "category": "Web Browsers",
+    "category": "Gaming",
     "check": "false"
   },
   {
@@ -4815,7 +4815,7 @@
         "run": "no"
       }
     ],
-    "category": "Web Browsers",
+    "category": "Gaming",
     "check": "false"
   },
   {
@@ -4833,7 +4833,7 @@
         "run": "no"
       }
     ],
-    "category": "Web Browsers",
+    "category": "Utilities",
     "check": "false"
   }
 ]
