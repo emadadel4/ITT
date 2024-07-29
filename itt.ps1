@@ -4812,7 +4812,7 @@ $sync.database.Applications = '[
         "url": "https://www.neatdownloadmanager.com/file/NeatDM_setup.exe",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "run": "no"
+        "run": "yes"
       }
     ],
     "category": "Web Browsers",
