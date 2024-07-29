@@ -11186,6 +11186,7 @@ function Invoke-Install {
                             )
                         
                             $destination = "$env:ProgramData\$outputDir\$name\$name.exe"
+                            $shortcutPath = [System.IO.Path]::Combine([System.Environment]::GetFolderPath('Desktop'), "$name.lnk")
                         
                             Add-Log -Message "Downloading using HttpClient" -Level "INFO"
                         
@@ -11222,11 +11223,17 @@ function Invoke-Install {
                                         $progressPercent = [math]::Round(($totalBytesRead / $contentLength) * 100, 2)
                                         Write-Host -NoNewline -ForegroundColor Green "`rDownload progress: $progressPercent% "
                                     }
-
+                        
                                     Add-Log -Message "`nDownload completed successfully." -Level "INFO"
+                                    
+                                    # Create a shortcut on the desktop
+                                    $shell = New-Object -ComObject WScript.Shell
+                                    $shortcut = $shell.CreateShortcut($shortcutPath)
+                                    $shortcut.TargetPath = $destination
+                                    $shortcut.Save()
+                                    
                                     Add-Log -Message "Shortcut created on desktop" -Level "INFO"
-
-
+                        
                                     $fileStream.Close()
                                     $stream.Close()
                                 } else {
@@ -11245,8 +11252,6 @@ function Invoke-Install {
                                 Start-Process -Wait $destination -ArgumentList $exeArgs
                             }
                         }
-                        
-                        
             
                         function Install-Winget {
             
