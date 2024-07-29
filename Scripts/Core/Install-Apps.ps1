@@ -250,7 +250,6 @@ function Invoke-Install {
                             }
                         }
             
-                        # THIS FUNC NOT APPLY it will added soon
                         function DownloadAndExtractRar {
                             param (
                                 [string]$name,
@@ -295,7 +294,6 @@ function Invoke-Install {
                             }
                         }
             
-                        # THIS FUNC NOT APPLY it will added soon
                         function DownloadAndInstallExe {
                             param (
                                 [string]$name,
@@ -337,7 +335,6 @@ function Invoke-Install {
                                 Start-Process -Wait $destination -ArgumentList $exeArgs
                             }
                         }
-                        
             
                         function Install-Winget {
             
