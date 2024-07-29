@@ -254,7 +254,8 @@ function Invoke-Install {
                             param (
                                 [string]$name,
                                 [string]$url,
-                                [string]$outputDir
+                                [string]$outputDir,
+                                [string]$shortcut
                             )
                         
                             $downloadDir = "$env:ProgramData\$outputDir\$name"
@@ -279,18 +280,21 @@ function Invoke-Install {
                             Add-Log -Message "Extraction completed to $downloadDir" -Level "INFO"
                         
                             # Find the first .exe file in the extracted directory
-                            $exeFile = Get-ChildItem -Path $downloadDir -Filter *.exe -Recurse | Select-Object -First 1
-                            if ($exeFile) {
-                                # Create a shortcut to the .exe file
-                                $shortcutPath = [System.IO.Path]::Combine([System.Environment]::GetFolderPath('Desktop'), "$($exeFile.BaseName).lnk")
-                                $shell = New-Object -ComObject WScript.Shell
-                                $shortcut = $shell.CreateShortcut($shortcutPath)
-                                $shortcut.TargetPath = $exeFile.FullName
-                                $shortcut.Save()
-                        
-                                Add-Log -Message "Shortcut created on desktop: $shortcutPath" -Level "INFO"
-                            } else {
-                                Add-Log -Message "No .exe file found for shortcut creation." -Level "WARNING"
+                            if ($shortcut -eq "yes") {
+
+                                $exeFile = Get-ChildItem -Path $downloadDir -Filter *.exe -Recurse | Select-Object -First 1
+                                if ($exeFile) {
+                                    # Create a shortcut to the .exe file
+                                    $shortcutPath = [System.IO.Path]::Combine([System.Environment]::GetFolderPath('Desktop'), "$($exeFile.BaseName).lnk")
+                                    $shell = New-Object -ComObject WScript.Shell
+                                    $shortcut = $shell.CreateShortcut($shortcutPath)
+                                    $shortcut.TargetPath = $exeFile.FullName
+                                    $shortcut.Save()
+                            
+                                    Add-Log -Message "Shortcut created on desktop: $shortcutPath" -Level "INFO"
+                                } else {
+                                    Add-Log -Message "No .exe file found for shortcut creation." -Level "WARNING"
+                                }
                             }
                         }
             
@@ -300,6 +304,7 @@ function Invoke-Install {
                                 [string]$url,
                                 [string]$exeArgs,
                                 [string]$outputDir,
+                                [string]$shortcut,
                                 [string]$run
                             )
                         
@@ -316,16 +321,16 @@ function Invoke-Install {
                         
                                 # Download the file
                                 Invoke-WebRequest -Uri $url -OutFile $destination
-                        
                                 Add-Log -Message "Download completed successfully." -Level "INFO"
                         
-                                # Create a shortcut on the desktop
-                                $shell = New-Object -ComObject WScript.Shell
-                                $shortcut = $shell.CreateShortcut($shortcutPath)
-                                $shortcut.TargetPath = $destination
-                                $shortcut.Save()
-                        
-                                Add-Log -Message "Shortcut created on desktop" -Level "INFO"
+                                if ($shortcut -eq "yes") {
+                                    # Create a shortcut on the desktop
+                                    $shell = New-Object -ComObject WScript.Shell
+                                    $shortcut = $shell.CreateShortcut($shortcutPath)
+                                    $shortcut.TargetPath = $destination
+                                    $shortcut.Save()
+                                    Add-Log -Message "Shortcut created on desktop" -Level "INFO"
+                                }
                             }
                             catch {
                                 throw "Error downloading EXE file: $_"
@@ -524,11 +529,11 @@ function Invoke-Install {
                             {
                                 if($_.default.IsExcute -eq "true")
                                 {
-                                    DownloadAndInstallExe -name "$($_.Name)" -url  $_.default.url -exeArgs $_.default.exeArgs -outputDir "ITT\Downloads\" 
+                                    DownloadAndInstallExe -name "$($_.Name)" -url  $_.default.url -exeArgs $_.default.exeArgs -outputDir "ITT\Downloads\" -run $_.default.run -shortcut $_.default.shortcut
                                 }
                                 else
                                 {
-                                    DownloadAndExtractRar -name "$($_.Name)" -url  $_.default.url -outputDir "ITT\Downloads\" -run $_.default.run
+                                    DownloadAndExtractRar -name "$($_.Name)" -url  $_.default.url -outputDir "ITT\Downloads\" -run $_.default.run -shortcut $_.default.shortcut
                                 }
                             }
                         }

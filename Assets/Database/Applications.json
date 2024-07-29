@@ -11,6 +11,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -30,6 +31,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -49,6 +51,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -67,6 +70,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -85,6 +89,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -103,6 +108,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -121,6 +127,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -139,6 +146,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -157,6 +165,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -175,6 +184,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -193,6 +203,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -211,6 +222,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -229,6 +241,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -248,6 +261,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -266,6 +280,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -285,6 +300,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -303,6 +319,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -321,6 +338,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -339,6 +357,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -357,6 +376,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -375,6 +395,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -393,6 +414,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -411,6 +433,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -429,6 +452,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -448,6 +472,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -466,6 +491,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -485,6 +511,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -504,6 +531,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -522,6 +550,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -541,6 +570,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -559,6 +589,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -577,6 +608,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -595,6 +627,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -613,6 +646,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -631,6 +665,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -649,6 +684,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -667,6 +703,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -685,6 +722,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -703,6 +741,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -721,6 +760,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -739,6 +779,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -757,6 +798,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -775,6 +817,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -793,6 +836,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -811,6 +855,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -829,6 +874,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -847,6 +893,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -865,6 +912,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -883,6 +931,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -901,6 +950,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -919,6 +969,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -937,6 +988,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -955,6 +1007,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -973,6 +1026,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -991,6 +1045,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -1009,6 +1064,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -1027,6 +1083,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -1045,6 +1102,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -1063,6 +1121,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -1081,6 +1140,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -1099,6 +1159,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -1117,6 +1178,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -1135,6 +1197,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -1153,6 +1216,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -1171,6 +1235,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -1189,6 +1254,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -1207,6 +1273,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -1225,6 +1292,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -1243,6 +1311,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -1261,6 +1330,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -1279,6 +1349,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -1297,6 +1368,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -1315,6 +1387,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -1333,6 +1406,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -1351,6 +1425,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -1369,6 +1444,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -1387,6 +1463,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -1405,6 +1482,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -1423,6 +1501,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -1441,6 +1520,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -1459,6 +1539,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -1478,6 +1559,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -1496,6 +1578,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -1515,6 +1598,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -1533,6 +1617,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -1551,6 +1636,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -1569,6 +1655,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -1587,6 +1674,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -1605,6 +1693,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -1623,6 +1712,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -1642,6 +1732,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -1660,6 +1751,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -1678,6 +1770,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -1696,6 +1789,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -1714,6 +1808,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -1732,6 +1827,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -1750,6 +1846,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -1768,6 +1865,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -1787,6 +1885,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -1805,6 +1904,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -1823,6 +1923,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -1841,6 +1942,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -1859,6 +1961,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -1877,6 +1980,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -1895,6 +1999,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -1913,6 +2018,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -1932,6 +2038,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -1950,6 +2057,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -1968,6 +2076,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -1986,6 +2095,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -2004,6 +2114,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -2022,6 +2133,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -2040,6 +2152,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -2058,6 +2171,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -2076,6 +2190,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -2094,6 +2209,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -2112,6 +2228,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -2130,6 +2247,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -2148,6 +2266,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -2166,6 +2285,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -2184,6 +2304,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -2202,6 +2323,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -2220,6 +2342,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -2238,6 +2361,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -2256,6 +2380,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -2274,6 +2399,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -2292,6 +2418,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -2310,6 +2437,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -2328,6 +2456,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -2346,6 +2475,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -2364,6 +2494,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -2382,6 +2513,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -2400,6 +2532,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -2418,6 +2551,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -2436,6 +2570,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -2454,6 +2589,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -2472,6 +2608,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -2490,6 +2627,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -2508,6 +2646,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -2526,6 +2665,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -2544,6 +2684,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -2562,6 +2703,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -2580,6 +2722,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -2598,6 +2741,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -2616,6 +2760,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -2634,6 +2779,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -2651,6 +2797,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -2670,6 +2817,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -2688,6 +2836,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -2706,6 +2855,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -2724,6 +2874,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -2742,6 +2893,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -2760,6 +2912,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -2778,6 +2931,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -2796,6 +2950,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -2814,6 +2969,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -2832,6 +2988,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -2850,6 +3007,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -2868,6 +3026,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -2886,6 +3045,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -2904,6 +3064,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -2922,6 +3083,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -2940,6 +3102,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -2958,6 +3121,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -2976,6 +3140,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -2994,6 +3159,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -3012,6 +3178,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -3030,6 +3197,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -3048,6 +3216,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -3066,6 +3235,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -3084,6 +3254,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -3102,6 +3273,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -3120,6 +3292,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -3138,6 +3311,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -3156,6 +3330,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -3174,6 +3349,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -3192,6 +3368,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -3210,6 +3387,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -3228,6 +3406,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -3246,6 +3425,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -3264,6 +3444,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -3282,6 +3463,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -3300,6 +3482,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -3318,6 +3501,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -3336,6 +3520,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -3354,6 +3539,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -3372,6 +3558,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -3390,6 +3577,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -3408,6 +3596,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -3426,6 +3615,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -3444,6 +3634,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -3462,6 +3653,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -3480,6 +3672,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -3498,6 +3691,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -3516,6 +3710,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -3534,6 +3729,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -3552,6 +3748,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -3570,6 +3767,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -3588,6 +3786,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -3606,6 +3805,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -3624,6 +3824,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -3642,6 +3843,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -3660,6 +3862,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -3678,6 +3881,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -3696,6 +3900,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -3714,6 +3919,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -3732,6 +3938,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -3750,6 +3957,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -3768,6 +3976,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -3786,6 +3995,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -3804,6 +4014,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -3822,6 +4033,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -3840,6 +4052,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -3858,6 +4071,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -3876,6 +4090,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -3894,6 +4109,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -3912,6 +4128,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -3930,6 +4147,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -3948,6 +4166,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -3966,6 +4185,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -3984,6 +4204,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -4002,6 +4223,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -4020,6 +4242,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -4038,6 +4261,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -4056,6 +4280,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -4074,6 +4299,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -4092,6 +4318,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -4110,6 +4337,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -4128,6 +4356,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -4146,6 +4375,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -4164,6 +4394,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -4182,6 +4413,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -4200,6 +4432,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -4218,6 +4451,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -4236,6 +4470,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -4254,6 +4489,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -4272,6 +4508,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -4290,6 +4527,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -4308,6 +4546,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -4326,6 +4565,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -4344,6 +4584,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -4362,6 +4603,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -4380,6 +4622,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -4398,6 +4641,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -4416,6 +4660,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -4434,6 +4679,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -4452,6 +4698,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -4470,6 +4717,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -4488,6 +4736,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -4506,6 +4755,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -4524,6 +4774,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -4542,6 +4793,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -4560,6 +4812,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -4578,6 +4831,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -4596,6 +4850,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -4614,6 +4869,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -4632,6 +4888,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -4650,6 +4907,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -4668,6 +4926,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -4686,6 +4945,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -4704,6 +4964,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -4722,6 +4983,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -4740,6 +5002,7 @@
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "no"
       }
     ],
@@ -4758,6 +5021,7 @@
         "url": "https://www.neatdownloadmanager.com/file/NeatDM_setup.exe",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "no",
         "run": "yes"
       }
     ],
@@ -4776,6 +5040,7 @@
         "url": "https://www.x360ce.com/files/x360ce.zip",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "yes",
         "run": "no"
       }
     ],
@@ -4794,6 +5059,7 @@
         "url": "https://www.x360ce.com/files/x360ce_x86.zip",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "yes",
         "run": "no"
       }
     ],
@@ -4812,6 +5078,7 @@
         "url": "https://www.x360ce.com/files/x360ce_x64.zip",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "shortcut": "yes",
         "run": "no"
       }
     ],
@@ -4830,6 +5097,7 @@
         "url": "https://uk1-dl.techpowerup.com/files/Kibx5EK67f16mM4Ytnh6zw/1722251788/MemTest64.exe",
         "exeArgs": "",
         "output": "none",
+        "shortcut": "yes",
         "run": "no"
       }
     ],
