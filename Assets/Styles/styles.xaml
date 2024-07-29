@@ -61,7 +61,7 @@
     <Setter Property="Template">
         <Setter.Value>
             <ControlTemplate TargetType="Label">
-                <Border Padding="8" Background="{TemplateBinding Background}"
+                <Border Padding="5" Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}"
                         CornerRadius="5">
@@ -99,7 +99,7 @@
                             <Border CornerRadius="3" Background="{DynamicResource checkboxBG}"
                                     BorderBrush="{TemplateBinding BorderBrush}"
                                     BorderThickness="{TemplateBinding BorderThickness}"
-                                    Padding="10">
+                                    Padding="8">
                                 <ContentPresenter/>
                             </Border>
                         </StackPanel>
