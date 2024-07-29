@@ -11441,7 +11441,6 @@ function Invoke-Install {
                             {
                                 if($_.default.IsExcute -eq "true")
                                 {
-                                    Write-Host "exe"
                                     DownloadAndInstallExe -name "$($_.Name)" -url  $_.default.url -exeArgs $_.default.exeArgs -outputDir "ITT\Downloads\" 
                                 }
                                 else
