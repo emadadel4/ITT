@@ -264,69 +264,29 @@ function Invoke-Install {
                             }
                         
                             $downloadPath = Join-Path -Path $downloadDir -ChildPath (Split-Path $url -Leaf)
-                            Add-Log -Message "Downloading using HttpClient" -Level "INFO"
+                            Add-Log -Message "Downloading using Invoke-WebRequest" -Level "INFO"
                         
                             try {
-                                # Create HttpClient instance
-                                $httpClient = [System.Net.Http.HttpClient]::new()
+                                Invoke-WebRequest -Uri $url -OutFile $downloadPath -UseBasicParsing
+                                Write-Host "Download completed successfully." -ForegroundColor Green
                         
-                                # Send GET request
-                                $response = $httpClient.GetAsync($url, [System.Net.Http.HttpCompletionOption]::ResponseHeadersRead).Result
-                        
-                                if ($response.IsSuccessStatusCode) {
-                                    # Get the content stream
-                                    $stream = $response.Content.ReadAsStreamAsync().Result
-                        
-                                    # Create a FileStream to save the file
-                                    $fileStream = [System.IO.File]::Create($downloadPath)
-                                    $buffer = New-Object byte[] 8192
-                                    $totalBytesRead = 0
-                                    $contentLength = $response.Content.Headers.ContentLength
-                        
-                                    while ($true) {
-                                        $bytesRead = $stream.Read($buffer, 0, $buffer.Length)
-                                        if ($bytesRead -le 0) { break }
-                        
-                                        $fileStream.Write($buffer, 0, $bytesRead)
-                                        $totalBytesRead += $bytesRead
-                        
-                                        # Report progress in a single line
-                                        $progressPercent = [math]::Round(($totalBytesRead / $contentLength) * 100, 2)
-                                        Write-Host -NoNewline -ForegroundColor Green "`rDownload progress: $progressPercent% "
-                                    }
-                        
-                                    Write-Host "`nDownload completed successfully." -ForegroundColor Green
-                                    $fileStream.Close()
-                                    $stream.Close()
+                                # Find the first .exe file in the extracted directory
+                                $exeFile = Get-ChildItem -Path $downloadDir -Filter *.exe -Recurse | Select-Object -First 1
+                                if ($exeFile) {
+                                    # Create a shortcut to the .exe file
+                                    $shortcutPath = [System.IO.Path]::Combine([System.Environment]::GetFolderPath('Desktop'), "$($exeFile.BaseName).lnk")
+                                    $shell = New-Object -ComObject WScript.Shell
+                                    $shortcut = $shell.CreateShortcut($shortcutPath)
+                                    $shortcut.TargetPath = $exeFile.FullName
+                                    $shortcut.Save()
+                            
+                                    Add-Log -Message "Shortcut created on desktop" -Level "INFO"
                                 } else {
-                                    throw "Failed to download file. Status code: $($response.StatusCode)"
+                                    Add-Log -Message "No .exe file found for shortcut creation." -Level "WARNING"
                                 }
-                            }
-                            catch {
+                        
+                            } catch {
                                 throw "Error downloading RAR file: $_"
-                            }
-                            finally {
-                                # Clean up
-                                $httpClient.Dispose()
-                            }
-                        
-                            Add-Log -Message "Extracting RAR file..." -Level "INFO"
-                            Expand-Archive -Path $downloadPath -DestinationPath $downloadDir -Force
-                            Add-Log -Message "Extraction completed to $downloadDir" -Level "INFO"
-                        
-                            # Find the first .exe file in the extracted directory
-                            $exeFile = Get-ChildItem -Path $downloadDir -Filter *.exe -Recurse | Select-Object -First 1
-                            if ($exeFile) {
-                                # Create a shortcut to the .exe file
-                                $shortcutPath = [System.IO.Path]::Combine([System.Environment]::GetFolderPath('Desktop'), "$($exeFile.BaseName).lnk")
-                                $shell = New-Object -ComObject WScript.Shell
-                                $shortcut = $shell.CreateShortcut($shortcutPath)
-                                $shortcut.TargetPath = $exeFile.FullName
-                                $shortcut.Save()
-                        
-                                Add-Log -Message "Shortcut created on desktop" -Level "INFO"
-                            } else {
-                                Add-Log -Message "No .exe file found for shortcut creation." -Level "WARNING"
                             }
                         }
             
@@ -343,7 +303,7 @@ function Invoke-Install {
                             $destination = "$env:ProgramData\$outputDir\$name\$name.exe"
                             $shortcutPath = [System.IO.Path]::Combine([System.Environment]::GetFolderPath('Desktop'), "$name.lnk")
                         
-                            Add-Log -Message "Downloading using HttpClient" -Level "INFO"
+                            Add-Log -Message "Downloading using Invoke-WebRequest" -Level "INFO"
                         
                             try {
                                 # Create the output directory if it doesn't exist
@@ -351,62 +311,28 @@ function Invoke-Install {
                                     New-Item -ItemType Directory -Path (Split-Path -Path $destination -Parent) | Out-Null
                                 }
                         
-                                # Create HttpClient instance
-                                $httpClient = [System.Net.Http.HttpClient]::new()
+                                # Download the file
+                                Invoke-WebRequest -Uri $url -OutFile $destination
                         
-                                # Send GET request
-                                $response = $httpClient.GetAsync($url, [System.Net.Http.HttpCompletionOption]::ResponseHeadersRead).Result
+                                Add-Log -Message "Download completed successfully." -Level "INFO"
                         
-                                if ($response.IsSuccessStatusCode) {
-                                    # Get the content stream
-                                    $stream = $response.Content.ReadAsStreamAsync().Result
+                                # Create a shortcut on the desktop
+                                $shell = New-Object -ComObject WScript.Shell
+                                $shortcut = $shell.CreateShortcut($shortcutPath)
+                                $shortcut.TargetPath = $destination
+                                $shortcut.Save()
                         
-                                    # Create a FileStream to save the file
-                                    $fileStream = [System.IO.File]::Create($destination)
-                                    $buffer = New-Object byte[] 8192
-                                    $totalBytesRead = 0
-                                    $contentLength = $response.Content.Headers.ContentLength
-                        
-                                    while ($true) {
-                                        $bytesRead = $stream.Read($buffer, 0, $buffer.Length)
-                                        if ($bytesRead -le 0) { break }
-                        
-                                        $fileStream.Write($buffer, 0, $bytesRead)
-                                        $totalBytesRead += $bytesRead
-                        
-                                        # Report progress in a single line
-                                        $progressPercent = [math]::Round(($totalBytesRead / $contentLength) * 100, 2)
-                                        Write-Host -NoNewline -ForegroundColor Green "`rDownload progress: $progressPercent% "
-                                    }
-                        
-                                    Add-Log -Message "`nDownload completed successfully." -Level "INFO"
-                                    
-                                    # Create a shortcut on the desktop
-                                    $shell = New-Object -ComObject WScript.Shell
-                                    $shortcut = $shell.CreateShortcut($shortcutPath)
-                                    $shortcut.TargetPath = $destination
-                                    $shortcut.Save()
-                                    
-                                    Add-Log -Message "Shortcut created on desktop" -Level "INFO"
-                        
-                                    $fileStream.Close()
-                                    $stream.Close()
-                                } else {
-                                    throw "Failed to download file. Status code: $($response.StatusCode)"
-                                }
+                                Add-Log -Message "Shortcut created on desktop" -Level "INFO"
                             }
                             catch {
                                 throw "Error downloading EXE file: $_"
-                            }
-                            finally {
-                                # Clean up
-                                $httpClient.Dispose()
                             }
                         
                             if ($run -eq "yes") {
                                 Start-Process -Wait $destination -ArgumentList $exeArgs
                             }
                         }
+                        
             
                         function Install-Winget {
             
