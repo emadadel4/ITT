@@ -3631,7 +3631,7 @@ $sync.database.Applications = '[
     "check": "false"
   },
   {
-    "name": "GameMaker-Studio",
+    "name": "GameMaker Studio",
     "description": "GameMaker Studio has everything you need for games development no matter what your level or expertise",
     "winget": "YoYoGames.GameMaker.Studio.2",
     "choco": "none",
@@ -4833,7 +4833,7 @@ $sync.database.Applications = '[
         "run": "no"
       }
     ],
-    "category": "Web Browsers",
+    "category": "Gaming",
     "check": "false"
   },
   {
@@ -4851,7 +4851,7 @@ $sync.database.Applications = '[
         "run": "no"
       }
     ],
-    "category": "Web Browsers",
+    "category": "Gaming",
     "check": "false"
   },
   {
@@ -4869,7 +4869,7 @@ $sync.database.Applications = '[
         "run": "no"
       }
     ],
-    "category": "Web Browsers",
+    "category": "Gaming",
     "check": "false"
   },
   {
@@ -4887,7 +4887,7 @@ $sync.database.Applications = '[
         "run": "no"
       }
     ],
-    "category": "Web Browsers",
+    "category": "Utilities",
     "check": "false"
   }
 ]
@@ -6690,7 +6690,7 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
     <Setter Property="Template">
         <Setter.Value>
             <ControlTemplate TargetType="Label">
-                <Border Padding="8" Background="{TemplateBinding Background}"
+                <Border Padding="5" Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}"
                         CornerRadius="5">
@@ -6728,7 +6728,7 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
                             <Border CornerRadius="3" Background="{DynamicResource checkboxBG}"
                                     BorderBrush="{TemplateBinding BorderBrush}"
                                     BorderThickness="{TemplateBinding BorderThickness}"
-                                    Padding="10">
+                                    Padding="8">
                                 <ContentPresenter/>
                             </Border>
                         </StackPanel>
@@ -9113,7 +9113,7 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
 
         <StackPanel Orientation="Vertical" Width="auto" Margin="10">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="GameMaker-Studio" Tag="Development" IsChecked="false"   FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <CheckBox Content="GameMaker Studio" Tag="Development" IsChecked="false"   FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="13" Content="Development"/>
             </StackPanel>
                 <TextBlock Width="555" Background="Transparent" Margin="8" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="GameMaker Studio has everything you need for games development no matter what your level or expertise"/>
@@ -9641,32 +9641,32 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
 
         <StackPanel Orientation="Vertical" Width="auto" Margin="10">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="x630ce for all games" Tag="Web Browsers" IsChecked="false"   FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="13" Content="Web Browsers"/>
+                <CheckBox Content="x630ce for all games" Tag="Gaming" IsChecked="false"   FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="13" Content="Gaming"/>
             </StackPanel>
                 <TextBlock Width="555" Background="Transparent" Margin="8" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Xbox 360 Controller Emulator. allows your controller .gamepad. joystick. steering wheel. pedals. etc.. to function on your PC as an Xbox 360 controller. It allows you to remap buttons and axes and to drive cars with steering wheel and pedals or to fly planes with joystick and throttle in games like .Grand Theft Auto. or .Saints Row. . Digitally Signed"/>
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Width="auto" Margin="10">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="x630ce x86" Tag="Web Browsers" IsChecked="false"   FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="13" Content="Web Browsers"/>
+                <CheckBox Content="x630ce x86" Tag="Gaming" IsChecked="false"   FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="13" Content="Gaming"/>
             </StackPanel>
                 <TextBlock Width="555" Background="Transparent" Margin="8" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Xbox 360 Controller Emulator. allows your controller .gamepad. joystick. steering wheel. pedals. etc.. to function on your PC as an Xbox 360 controller. It allows you to remap buttons and axes and to drive cars with steering wheel and pedals or to fly planes with joystick and throttle in games like .Grand Theft Auto. or .Saints Row. . Digitally Signed"/>
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Width="auto" Margin="10">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="x630ce x64" Tag="Web Browsers" IsChecked="false"   FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="13" Content="Web Browsers"/>
+                <CheckBox Content="x630ce x64" Tag="Gaming" IsChecked="false"   FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="13" Content="Gaming"/>
             </StackPanel>
                 <TextBlock Width="555" Background="Transparent" Margin="8" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Xbox 360 Controller Emulator. allows your controller .gamepad. joystick. steering wheel. pedals. etc.. to function on your PC as an Xbox 360 controller. It allows you to remap buttons and axes and to drive cars with steering wheel and pedals or to fly planes with joystick and throttle in games like .Grand Theft Auto. or .Saints Row. . Digitally Signed"/>
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Width="auto" Margin="10">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Memtest64" Tag="Web Browsers" IsChecked="false"   FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="13" Content="Web Browsers"/>
+                <CheckBox Content="Memtest64" Tag="Utilities" IsChecked="false"   FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8" FontSize="13" Content="Utilities"/>
             </StackPanel>
                 <TextBlock Width="555" Background="Transparent" Margin="8" FontSize="15" VerticalAlignment="Center" TextWrapping="Wrap" Text="Memory hardware errors can cause major application crashes. blue.screens of death .BSODs.. and data corruption. It is caused due to either faulty hardware. or bad memory timings.frequency. Memtest64 lets you test your memory without having to pull out an MS.DOS boot disk. The utility loads your physical memory with test.patterns. and can push other applications into the pagefile to free up memory for testing"/>
         </StackPanel>
