@@ -11661,7 +11661,7 @@ function Invoke-Install {
                             }
                         }
             
-                        function DownloadAndInstallExe {
+                        function Download-And-Install-Exe {
                             param (
                                 [string]$name,
                                 [string]$url,
@@ -11890,7 +11890,7 @@ function Invoke-Install {
                             {
                                 if($_.default.IsExcute -eq "true")
                                 {
-                                    DownloadAndInstallExe -name "$($_.Name)" -url  $_.default.url -exeArgs $_.default.exeArgs -outputDir "ITT\Downloads\" -run $_.default.run -shortcut $_.default.shortcut
+                                    Download-And-Install-Exe -name "$($_.Name)" -url  $_.default.url -exeArgs $_.default.exeArgs -outputDir "ITT\Downloads\" -run $_.default.run -shortcut $_.default.shortcut
                                 }
                                 else
                                 {
