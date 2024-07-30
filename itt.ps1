@@ -20,7 +20,7 @@ Add-Type -AssemblyName System.Windows.Forms
 $sync = [Hashtable]::Synchronized(@{
     database       = @{}
     ProcessRunning = $false
-    lastupdate     = "07/29/24"
+    lastupdate     = "07/30/24"
     github         = "https://github.com/emadadel4"
     telegram       = "https://t.me/emadadel4"
     website        = "https://emadadel4.github.io"
@@ -65,6 +65,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -85,6 +86,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -105,6 +107,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -124,6 +127,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -143,6 +147,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -162,6 +167,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -181,6 +187,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -200,6 +207,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -219,6 +227,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -238,6 +247,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -257,6 +267,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -276,6 +287,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -295,6 +307,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -315,6 +328,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -334,6 +348,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -354,6 +369,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -373,6 +389,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -392,6 +409,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -411,6 +429,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -430,6 +449,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -449,6 +469,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -468,6 +489,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -487,6 +509,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -506,6 +529,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -526,6 +550,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -545,6 +570,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -565,6 +591,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -585,6 +612,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -604,6 +632,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -624,6 +653,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -643,6 +673,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -662,6 +693,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -681,6 +713,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -700,6 +733,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -719,6 +753,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -738,6 +773,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -757,6 +793,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -776,6 +813,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -795,6 +833,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -814,6 +853,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -833,6 +873,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -852,6 +893,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -871,6 +913,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -890,6 +933,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -909,6 +953,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -928,6 +973,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -947,6 +993,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -966,6 +1013,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -985,6 +1033,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -1004,6 +1053,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -1023,6 +1073,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -1042,6 +1093,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -1061,6 +1113,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -1080,6 +1133,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -1099,6 +1153,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -1118,6 +1173,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -1137,6 +1193,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -1156,6 +1213,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -1175,6 +1233,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -1194,6 +1253,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -1213,6 +1273,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -1232,6 +1293,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -1251,6 +1313,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -1270,6 +1333,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -1289,6 +1353,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -1308,6 +1373,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -1327,6 +1393,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -1346,6 +1413,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -1365,6 +1433,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -1384,6 +1453,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -1403,6 +1473,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -1422,6 +1493,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -1441,6 +1513,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -1460,6 +1533,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -1479,6 +1553,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -1498,6 +1573,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -1517,6 +1593,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -1536,6 +1613,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -1555,6 +1633,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -1574,6 +1653,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -1593,6 +1673,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -1613,6 +1694,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -1632,6 +1714,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -1652,6 +1735,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -1671,6 +1755,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -1690,6 +1775,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -1709,6 +1795,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -1728,6 +1815,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -1747,6 +1835,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -1766,6 +1855,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -1786,6 +1876,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -1805,6 +1896,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -1824,6 +1916,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -1843,6 +1936,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -1862,6 +1956,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -1881,6 +1976,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -1900,6 +1996,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -1919,6 +2016,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -1939,6 +2037,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -1958,6 +2057,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -1977,6 +2077,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -1996,6 +2097,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -2015,6 +2117,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -2034,6 +2137,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -2053,6 +2157,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -2072,6 +2177,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -2092,6 +2198,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -2111,6 +2218,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -2130,6 +2238,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -2149,6 +2258,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -2168,6 +2278,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -2187,6 +2298,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -2206,6 +2318,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -2225,6 +2338,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -2244,6 +2358,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -2263,6 +2378,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -2282,6 +2398,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -2301,6 +2418,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -2320,6 +2438,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -2339,6 +2458,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -2358,6 +2478,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -2377,6 +2498,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -2396,6 +2518,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -2415,6 +2538,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -2434,6 +2558,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -2453,6 +2578,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -2472,6 +2598,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -2491,6 +2618,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -2510,6 +2638,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -2529,6 +2658,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -2548,6 +2678,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -2567,6 +2698,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -2586,6 +2718,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -2605,6 +2738,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -2624,6 +2758,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -2643,6 +2778,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -2662,6 +2798,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -2681,6 +2818,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -2700,6 +2838,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -2719,6 +2858,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -2738,6 +2878,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -2757,6 +2898,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -2776,6 +2918,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -2795,6 +2938,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -2814,6 +2958,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -2833,6 +2978,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -2851,6 +2997,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -2871,6 +3018,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -2890,6 +3038,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -2909,6 +3058,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -2928,6 +3078,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -2947,6 +3098,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -2966,6 +3118,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -2985,6 +3138,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -3004,6 +3158,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -3023,6 +3178,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -3042,6 +3198,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -3061,6 +3218,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -3080,6 +3238,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -3099,6 +3258,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -3118,6 +3278,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -3137,6 +3298,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -3156,6 +3318,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -3175,6 +3338,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -3194,6 +3358,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -3213,6 +3378,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -3232,6 +3398,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -3251,6 +3418,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -3270,6 +3438,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -3289,6 +3458,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -3308,6 +3478,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -3327,6 +3498,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -3346,6 +3518,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -3365,6 +3538,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -3384,6 +3558,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -3403,6 +3578,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -3422,6 +3598,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -3441,6 +3618,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -3460,6 +3638,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -3479,6 +3658,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -3498,6 +3678,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -3517,6 +3698,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -3536,6 +3718,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -3555,6 +3738,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -3574,6 +3758,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -3593,6 +3778,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -3612,6 +3798,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -3631,6 +3818,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -3650,6 +3838,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -3669,6 +3858,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -3688,6 +3878,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -3707,6 +3898,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -3726,6 +3918,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -3745,6 +3938,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -3764,6 +3958,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -3783,6 +3978,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -3802,6 +3998,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -3821,6 +4018,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -3840,6 +4038,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -3859,6 +4058,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -3878,6 +4078,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -3897,6 +4098,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -3916,6 +4118,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -3935,6 +4138,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -3954,6 +4158,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -3973,6 +4178,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -3992,6 +4198,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -4011,6 +4218,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -4030,6 +4238,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -4049,6 +4258,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -4068,6 +4278,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -4087,6 +4298,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -4106,6 +4318,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -4125,6 +4338,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -4144,6 +4358,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -4163,6 +4378,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -4182,6 +4398,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -4201,6 +4418,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -4220,6 +4438,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -4239,6 +4458,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -4258,6 +4478,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -4277,6 +4498,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -4296,6 +4518,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -4315,6 +4538,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -4334,6 +4558,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -4353,6 +4578,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -4372,6 +4598,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -4391,6 +4618,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -4410,6 +4638,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -4429,6 +4658,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -4448,6 +4678,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -4467,6 +4698,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -4486,6 +4718,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -4505,6 +4738,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -4524,6 +4758,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -4543,6 +4778,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -4562,6 +4798,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -4581,6 +4818,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -4600,6 +4838,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -4619,6 +4858,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -4638,6 +4878,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -4657,6 +4898,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -4676,6 +4918,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -4695,6 +4938,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -4714,6 +4958,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -4733,6 +4978,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -4752,6 +4998,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -4771,6 +5018,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -4790,6 +5038,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -4809,6 +5058,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -4828,6 +5078,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -4847,6 +5098,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -4866,6 +5118,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -4885,6 +5138,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -4904,6 +5158,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -4923,6 +5178,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -4942,6 +5198,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -4961,6 +5218,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -4980,6 +5238,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -4999,6 +5258,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -5018,6 +5278,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -5037,6 +5298,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -5056,6 +5318,7 @@ $sync.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "no"
       }
@@ -5075,6 +5338,7 @@ $sync.database.Applications = '[
         "url": "https://www.neatdownloadmanager.com/file/NeatDM_setup.exe",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "no",
         "run": "yes"
       }
@@ -5094,6 +5358,7 @@ $sync.database.Applications = '[
         "url": "https://www.x360ce.com/files/x360ce.zip",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "",
         "shortcut": "yes",
         "run": "no"
       }
@@ -5113,6 +5378,7 @@ $sync.database.Applications = '[
         "url": "https://www.x360ce.com/files/x360ce_x86.zip",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "x360ce_x86.exe",
         "shortcut": "yes",
         "run": "no"
       }
@@ -5132,6 +5398,7 @@ $sync.database.Applications = '[
         "url": "https://www.x360ce.com/files/x360ce_x64.zip",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
+        "exeFileName": "x360ce_x64.exe",
         "shortcut": "yes",
         "run": "no"
       }
@@ -11336,51 +11603,61 @@ function Invoke-Install {
                             }
                         }
             
-                        function DownloadAndExtractRar {
+                        function Download-And-ExtractZip {
                             param (
-                                [string]$name,
                                 [string]$url,
-                                [string]$outputDir,
-                                [string]$shortcut
+                                [string]$destinationDir = "C:\ProgramData\ITT\Downloads",
+                                [string]$Createshortcut,
+                                [string]$exeFileName,
+                                [string]$run,
+                                [string]$exeArgs
                             )
                         
-                            $downloadDir = "$env:ProgramData\$outputDir\$name"
-                            if (-not (Test-Path -Path $downloadDir)) {
-                                New-Item -ItemType Directory -Path $downloadDir | Out-Null
+                            # Ensure destination directory exists
+                            if (-not (Test-Path -Path $destinationDir)) {
+                                New-Item -ItemType Directory -Path $destinationDir -Force
                             }
                         
-                            $downloadPath = Join-Path -Path $downloadDir -ChildPath (Split-Path $url -Leaf)
-                            Add-Log -Message "Downloading using Invoke-WebRequest" -Level "INFO"
+                            # Define paths
+                            $zipFileName = [System.IO.Path]::GetFileName($url)
+                            $downloadPath = [System.IO.Path]::Combine($destinationDir, $zipFileName)
+                            $exePath = [System.IO.Path]::Combine($destinationDir, $exeFileName)
+                            
+                            # Create the shortcut name based on the .exe file name
+                            $shortcutName = [System.IO.Path]::GetFileNameWithoutExtension($exeFileName) + ".lnk"
+                            $desktopPath = [System.IO.Path]::Combine([System.Environment]::GetFolderPath('Desktop'), $shortcutName)
                         
                             try {
-                                # Download the file using Invoke-WebRequest
+                                # Download the file
+                                Write-Output "Downloading file from: $url"
                                 Invoke-WebRequest -Uri $url -OutFile $downloadPath
-                                Write-Host "`nDownload completed successfully." -ForegroundColor Green
-                            }
-                            catch {
-                                throw "Error downloading RAR file: $_"
-                            }
                         
-                            Add-Log -Message "Extracting RAR file..." -Level "INFO"
-                            Expand-Archive -Path $downloadPath -DestinationPath $downloadDir -Force
-                            Add-Log -Message "Extraction completed to $downloadDir" -Level "INFO"
+                                # Extract the file
+                                Write-Output "Extracting file to: $destinationDir"
+                                Expand-Archive -Path $downloadPath -DestinationPath $destinationDir -Force
                         
-                            # Find the first .exe file in the extracted directory
-                            if ($shortcut -eq "yes") {
-
-                                $exeFile = Get-ChildItem -Path $downloadDir -Filter *.exe -Recurse | Select-Object -First 1
-                                if ($exeFile) {
-                                    # Create a shortcut to the .exe file
-                                    $shortcutPath = [System.IO.Path]::Combine([System.Environment]::GetFolderPath('Desktop'), "$($exeFile.BaseName).lnk")
-                                    $shell = New-Object -ComObject WScript.Shell
-                                    $shortcut = $shell.CreateShortcut($shortcutPath)
-                                    $shortcut.TargetPath = $exeFile.FullName
-                                    $shortcut.Save()
-                            
-                                    Add-Log -Message "Shortcut created on desktop: $shortcutPath" -Level "INFO"
-                                } else {
-                                    Add-Log -Message "No .exe file found for shortcut creation." -Level "WARNING"
+                                #create a shortcut
+                                if ($Createshortcut -eq "yes") {
+                                    if (Test-Path -Path $exePath) {
+                                        Write-Output "Creating shortcut at: $desktopPath"
+                                        # Create a shortcut on the desktop
+                                        $shell = New-Object -ComObject WScript.Shell
+                                        $shortcut = $shell.CreateShortcut($desktopPath)
+                                        $shortcut.TargetPath = $exePath
+                                        $shortcut.Save()
+                                        Write-Output "Shortcut created successfully."
+                                    } else {
+                                        Write-Error "The specified .exe file '$exeFileName' was not found in the extracted content."
+                                    }
                                 }
+                        
+                                # Optionally run the executable
+                                if ($run -eq "yes") {
+                                    Write-Output "Starting installation"
+                                    Start-Process -FilePath $exePath -ArgumentList $exeArgs -NoNewWindow
+                                }
+                            } catch {
+                                Write-Error $_.Exception.Message
                             }
                         }
             
@@ -11617,7 +11894,7 @@ function Invoke-Install {
                                 }
                                 else
                                 {
-                                    DownloadAndExtractRar -name "$($_.Name)" -url  $_.default.url -outputDir "ITT\Downloads\" -run $_.default.run -shortcut $_.default.shortcut
+                                    Download-And-ExtractZip -url $_.default.url -shortcutName "$($_.Name)" -exeFileName $_.default.exeFileName -run $_.default.run -Createshortcut $_.default.shortcut -exeArgs $_.default.exeArgs
                                 }
                             }
                         }
