@@ -97,6 +97,11 @@
 <li>Choose "PowerShell" or "Terminal" and paste any of the following commands:</li>
 </ol>
 
+
+<pre><code>irm bit.ly/ittea | iex
+</code></pre>
+
+
 <pre><code>irm bit.ly/emadadel | iex
 </code></pre>
 
