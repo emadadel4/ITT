@@ -98,12 +98,13 @@
 </ol>
 
 
-<pre><code>irm bit.ly/ittea | iex
-</code></pre>
+<pre><code>irm bit.ly/ittea | iex</code></pre>
 
 
-<pre><code>irm bit.ly/emadadel | iex
-</code></pre>
+<pre><code>irm bit.ly/emadadel | iex</code></pre>
+
+<pre><code>irm cutt.ly/ittea | iex</code></pre>
+
 
 or
 
