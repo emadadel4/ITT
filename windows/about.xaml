@@ -35,13 +35,17 @@
           <TextBlock>Website</TextBlock>
           <TextBlock Name="website" Cursor="Hand" Text="emadadel4.github.io" TextAlignment="Right"/>
         </DockPanel>
+        <DockPanel Margin="10">
+          <TextBlock Text="Youtube"/>
+          <TextBlock Name="yt" Cursor="Hand" TextAlignment="Right">@emadadel4</TextBlock>
+        </DockPanel>
         <Separator/>
         <DockPanel Margin="10">
           <TextBlock Name="lastupdate" Text="{Binding lastupdate}"/>
           <TextBlock Name="ver" TextAlignment="Right">5/20/2024</TextBlock>
         </DockPanel>
         <Separator/>
-
+  
         <Image Source="https://raw.githubusercontent.com/emadadel4/ITT/main/Assets/Images/coffee.png" Cursor="Hand" Name="coffee" Margin="10" Height="70" Width="Auto"/>
 
 
