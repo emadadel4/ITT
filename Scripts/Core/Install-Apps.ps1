@@ -226,7 +226,7 @@ function Invoke-Install {
                                         "CPU" = $existingData.CPU
                                         "Cores" = $existingData.Cores 
                                         "Language" = $existingData.Language 
-                                        "Start At" = (Get-Date -Format "MM-dd-yyyy hh:mm:ss tt")
+                                        "Start at" = (Get-Date -Format "MM/dd/yyyy hh:mm:ss tt")
                                         "Runs" = $existingData.Runs
                                         "AppsHistory" = $selectedItemContent
                                         "TweaksHistory" = $existingData.TweaksHistory
