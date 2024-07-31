@@ -34,7 +34,7 @@ function Get-PCInfo {
                     "CPU" = (Get-CimInstance -ClassName Win32_Processor).Name
                     "Cores" = (Get-CimInstance -ClassName Win32_Processor).NumberOfCores
                     "Language" = "$($sync.Langusege)"
-                    "Start At" = (Get-Date -Format "MM-dd-yyyy hh:mm:ss tt")
+                    "Start at" = (Get-Date -Format "MM/dd/yyyy hh:mm:ss tt")
                     "Runs" = $runs
                     "AppsHistory" = $existingData.AppsHistory
                     "TweaksHistory" = $existingData.TweaksHistory
@@ -55,7 +55,7 @@ function Get-PCInfo {
                     "CPU" = (Get-CimInstance -ClassName Win32_Processor).Name
                     "Cores" = (Get-CimInstance -ClassName Win32_Processor).NumberOfCores
                     "Language" = "$($sync.Langusege)"
-                    "Start At" = (Get-Date -Format "MM-dd-yyyy hh:mm:ss tt")
+                    "Start At" = (Get-Date -Format "MM/dd/yyyy hh:mm:ss tt")
                     "runs" = $runs
                     "AppsHistory" = @{}
                     "TweaksHistory" = @{}
