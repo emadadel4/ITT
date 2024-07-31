@@ -1,5 +1,4 @@
 <!--Theme styles colors-->
-
         <!--Light mode -->
                 <ResourceDictionary x:Key="Light">
                         <SolidColorBrush x:Key="BGColor" Color="White"/>
@@ -22,7 +21,6 @@
                         <SolidColorBrush x:Key="ToggleSwitchBorderBrush" Color="black"/>
                 </ResourceDictionary>
         <!--Light mode -->
-
         <!--Dark mode-->
                 <ResourceDictionary x:Key="Dark">
                         <SolidColorBrush x:Key="BGColor" Color="#FF121212"/>
@@ -45,5 +43,4 @@
                         <SolidColorBrush x:Key="ToggleSwitchBorderBrush" Color="#c9c9c7"/>
                 </ResourceDictionary>
         <!--Dark mode -->
-
 <!--End Theme styles colors-->
