@@ -50,7 +50,7 @@
         <img src="https://img.shields.io/badge/Telegram-Join%20our%20channel-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white" alt="Join our Telegram" style="max-width: 100%;">
     </a>
     <a href="https://emadadel4.github.io" rel="nofollow">
-        <img src="https://img.shields.io/badge/Blog-Visit%20our%20blog-FF5722?style=for-the-badge&logo=blogger&logoColor=white" alt="Blog" style="max-width: 100%;">
+        <img src="https://img.shields.io/badge/blog-FF5722?style=for-the-badge&logo=blogger&logoColor=white" alt="Blog" style="max-width: 100%;">
     </a>
       <a href="https://www.youtube.com/channel/@emadadel4" rel="nofollow">
         <img src="https://img.shields.io/badge/YouTube-Subscribe-FF0000?style=for-the-badge&logo=youtube&logoColor=white" alt="Subscribe on YouTube" style="max-width: 100%;">
