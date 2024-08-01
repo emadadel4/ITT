@@ -19,28 +19,28 @@
   <a href="README.ar.md">
     <img src="https://img.shields.io/badge/-Arabic-green" alt="Arabic">
   </a>
-  <a href="README.md">
+  <a href="/Readme/README.md">
     <img src="https://img.shields.io/badge/-English-green" alt="English">
   </a>
-  <a href="README.fr.md">
+  <a href="/Readme/README.fr.md">
     <img src="https://img.shields.io/badge/-Français-blue" alt="Français">
   </a>
-  <a href="README.tr.md">
+  <a href="/Readme/README.tr.md">
     <img src="https://img.shields.io/badge/-Türkçe-red" alt="Türkçe">
   </a>
-  <a href="README.cn.md">
+  <a href="/Readme/README.cn.md">
     <img src="https://img.shields.io/badge/-中文-yellow" alt="中文">
   </a>
-  <a href="README.ko.md">
+  <a href="/Readme/README.ko.md">
     <img src="https://img.shields.io/badge/-한국어-purple" alt="한국어">
   </a>
-  <a href="README.de.md">
+  <a href="/Readme/README.de.md">
     <img src="https://img.shields.io/badge/-Deutsch-orange" alt="Deutsch">
   </a>
-  <a href="README.ru.md">
+  <a href="/Readme/README.ru.md">
     <img src="https://img.shields.io/badge/-Русский-blue" alt="Русский">
   </a>
-  <a href="README.es.md">
+  <a href="/Readme/README.es.md">
     <img src="https://img.shields.io/badge/-Español-red" alt="Español">
   </a>
 </div>
