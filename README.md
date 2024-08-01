@@ -46,17 +46,17 @@
 </div>
 
 <div align="center">
-    <a href="https://t.me/ittemadadel" style="margin-right: 20px;">
-        <img src="https://img.shields.io/badge/Telegram-2CA5E0?style=flat&logo=telegram&logoColor=white" alt="Telegram">
+    <a href="https://t.me/ittemadadel" rel="nofollow">
+        <img src="https://img.shields.io/badge/Telegram-Join%20our%20channel-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white" alt="Join our Telegram" style="max-width: 100%;">
     </a>
-    <a href="https://github.com/emadadel4/itt" style="margin-right: 20px;">
-        <img src="https://img.shields.io/badge/GitHub-181717?style=flat&logo=github&logoColor=white" alt="GitHub">
+    <a href="https://emadadel4.github.io" rel="nofollow">
+        <img src="https://img.shields.io/badge/Blog-Visit%20our%20blog-FF5722?style=for-the-badge&logo=blogger&logoColor=white" alt="Visit our Blog" style="max-width: 100%;">
     </a>
-    <a href="https://emadadel4.github.io" style="margin-right: 20px;">
-        <img src="https://img.shields.io/badge/Blog-FF5722?style=flat&logo=blogger&logoColor=white" alt="Blog">
+      <a href="https://www.youtube.com/channel/@emadadel4" rel="nofollow">
+        <img src="https://img.shields.io/badge/YouTube-Subscribe-FF0000?style=for-the-badge&logo=youtube&logoColor=white" alt="Subscribe on YouTube" style="max-width: 100%;">
     </a>
-    <a href="https://discord.gg/3eV79KgD" style="margin-right: 20px;">
-        <img src="https://img.shields.io/badge/-Discord-7289da?style=flat&logo=discord&logoColor=white" alt="Discord">
+    <a href="https://discord.gg/3eV79KgD" rel="nofollow">
+        <img src="https://img.shields.io/badge/Discord-Join%20our%20server-7289da?style=for-the-badge&logo=discord&logoColor=white" alt="Join our Discord" style="max-width: 100%;">
     </a>
 </div>
 
