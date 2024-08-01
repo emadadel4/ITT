@@ -16,10 +16,10 @@
 
 <div align="center">
 
-  <a href="README.ar.md">
+  <a href="/documents/README.ar.md">
     <img src="https://img.shields.io/badge/-Arabic-green" alt="Arabic">
   </a>
-  <a href="/documents/README.md">
+  <a href="/README.md">
     <img src="https://img.shields.io/badge/-English-green" alt="English">
   </a>
   <a href="/documents/README.fr.md">
