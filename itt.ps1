@@ -6026,7 +6026,8 @@ $sync.database.Tweaks = '[
     "type": "command",
     "refresh": "false",
     "InvokeCommand": [
-      "cleanmgr.exe /d C: /VERYLOWDISK /sagerun:1 Dism.exe /online /Cleanup-Image /StartComponentCleanup /ResetBase"
+      "cleanmgr.exe /d C: /VERYLOWDISK /sagerun:1 Dism.exe /online /Cleanup-Image /StartComponentCleanup /ResetBase",
+      "Dism.exe /online /Cleanup-Image /StartComponentCleanup /ResetBase"
     ],
     "UndoCommand": [
       ""
