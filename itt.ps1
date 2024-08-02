@@ -6027,7 +6027,9 @@ $sync.database.Tweaks = '[
     "refresh": "false",
     "InvokeCommand": [
       "cleanmgr.exe /d C: /VERYLOWDISK /sagerun:1 Dism.exe /online /Cleanup-Image /StartComponentCleanup /ResetBase",
-      "Dism.exe /online /Cleanup-Image /StartComponentCleanup /ResetBase"
+      "Dism.exe /online /Cleanup-Image /StartComponentCleanup /ResetBase",
+      "Remove-Item -Path \\\"$env:LOCALAPPDATA\\Temp\\*\\\" -Recurse -Force -ErrorAction SilentlyContinue"
+      
     ],
     "UndoCommand": [
       ""
