@@ -7755,7 +7755,7 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
                 <!--Menu-->
                     <Menu Grid.Row="0" Grid.Column="0" Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Left" BorderThickness="0">
                                 
-                        <MenuItem ToolTip="Emad Adel">
+                        <MenuItem IsEnabled="False" ToolTip="Emad Adel">
                             <MenuItem.Icon>
                                 <!--Logo-->
                                 <Ellipse Name="logo" Margin="5,5,0,0" Width="80" Height="80">
