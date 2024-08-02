@@ -114,7 +114,7 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
                             </MenuItem>
                             <MenuItem Name="load" Header="{Binding loadapps}">
                                 <MenuItem.Icon>
-                                    <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                                    <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
                                 </MenuItem.Icon>
                             </MenuItem>
 
