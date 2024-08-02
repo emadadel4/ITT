@@ -22,20 +22,22 @@ $reader = [System.Xml.XmlNodeReader]::new($xaml)
 try {
     $sync["window"] = [Windows.Markup.XamlReader]::Load($reader)
 
-    # Get theme and locale settings
-    $appsTheme = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize" -Name "AppsUseLightTheme"
-    $fullCulture = Get-ItemPropertyValue -Path "HKCU:\Control Panel\International" -Name "LocaleName"
-    $shortCulture = $fullCulture.Split('-')[0]
-
     # Ensure registry key exists and set defaults if necessary
     if (-not (Test-Path "HKCU:\Software\itt.emadadel")) {
         New-Item -Path "HKCU:\Software\itt.emadadel" -Force | Out-Null
         Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "DarkMode" -Value "none" -Force
         Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "locales" -Value $shortCulture -Force
+        Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "Music" -Value "100" -Force
     }
 
-    # Update locale in registry
-    Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "locales" -Value $shortCulture -Force
+        # Get theme & locale & Music settings
+        $appsTheme = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize" -Name "AppsUseLightTheme"
+        $fullCulture = Get-ItemPropertyValue -Path "HKCU:\Control Panel\International" -Name "LocaleName"
+        $shortCulture = $fullCulture.Split('-')[0]
+        Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "locales" -Value $shortCulture -Force
+        $sync.Music = (Get-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "Music").Music
+        $sync.mediaPlayer.settings.volume = "$($sync.Music)"
+
 
     # Set language based on culture
     switch ($shortCulture) {

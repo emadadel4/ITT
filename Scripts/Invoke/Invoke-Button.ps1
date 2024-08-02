@@ -141,11 +141,11 @@ function Invoke-Button {
 
         # Music
         "moff" {
-            MuteMusic
+            MuteMusic -Value 0
             Debug-Message $action
         }
         "mon" {
-            UnmuteMusic
+            UnmuteMusic -Value 100
             Debug-Message $action
         }
 

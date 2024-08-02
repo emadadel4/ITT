@@ -27,12 +27,14 @@ function PlayMusic {
     PlayShuffledPlaylist
 }
 function MuteMusic {
-
-    $sync.mediaPlayer.settings.volume = 0
+    param($value)
+    $sync.mediaPlayer.settings.volume = $value
+    Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "Music" -Value "$value" -Force
 }
 function UnmuteMusic {
-   
-    $sync.mediaPlayer.settings.volume = 100
+    param($value)
+    $sync.mediaPlayer.settings.volume = $value
+    Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "Music" -Value "$value" -Force
 }
 function StopMusic {
     $sync.mediaPlayer.controls.stop()

@@ -13,6 +13,7 @@ $sync = [Hashtable]::Synchronized(@{
     registryPath   = "HKCU:\Software\itt.emadadel"
     firebaseUrl    = "https://ittools-7d9fe-default-rtdb.firebaseio.com/Users"
     isDarkMode     = $null
+    Music          = "100"
     Langusege      = "en"
 })
 
@@ -29,4 +30,5 @@ $Host.UI.RawUI.WindowTitle = "ITT (Install and Tweaks Tool) - Admin"
 
 # Initialize media player only when necessary
 $sync.mediaPlayer = New-Object -ComObject WMPlayer.OCX
+
 
