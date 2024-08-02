@@ -109,7 +109,7 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
 
                             <MenuItem Name="save" Header="{Binding saveapps}">
                                 <MenuItem.Icon>
-                                    <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                                    <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
                                 </MenuItem.Icon>
                             </MenuItem>
                             <MenuItem Name="load" Header="{Binding loadapps}">
@@ -131,8 +131,16 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
                                 <MenuItem.Icon>
                                     <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
                                 </MenuItem.Icon>
-                                <MenuItem Name="moff" Header="{Binding off}"/>
-                                <MenuItem Name="mon" Header="{Binding on}"/>
+                                <MenuItem Name="moff" Header="{Binding off}">
+                                    <MenuItem.Icon>
+                                        <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                                    </MenuItem.Icon>
+                                </MenuItem>
+                                <MenuItem Name="mon" Header="{Binding on}">
+                                    <MenuItem.Icon>
+                                        <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                                    </MenuItem.Icon>
+                                </MenuItem>
                             </MenuItem>
 
                             <MenuItem Header="{Binding language}">
