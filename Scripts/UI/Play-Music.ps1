@@ -50,5 +50,5 @@ function StopAllRunspace {
     $script:powershell.Stop()
     StopMusic
     $newProcess.exit
-    Write-Host "`n` Bye see you soon. :)" 
+    Write-Host "`n` Don't forget to pray for the oppressed people and Stand with Palestine" 
 }
