@@ -6027,9 +6027,15 @@ $sync.database.Tweaks = '[
     "refresh": "false",
     "InvokeCommand": [
       "cleanmgr.exe /d C: /VERYLOWDISK /sagerun:1 Dism.exe /online /Cleanup-Image /StartComponentCleanup /ResetBase",
+      "cleanmgr.exe /d C: /sagerun:1",
+      "cleanmgr.exe /sagerun:1",
       "Dism.exe /online /Cleanup-Image /StartComponentCleanup /ResetBase",
-      "Remove-Item -Path \\\"$env:LOCALAPPDATA\\Temp\\*\\\" -Recurse -Force -ErrorAction SilentlyContinue"
-      
+      "Dism.exe /online /Cleanup-Image /StartComponentCleanup",
+      "Remove-Item -Path \\\"$env:LOCALAPPDATA\\Temp\\*\\\" -Recurse -Force -ErrorAction SilentlyContinue",
+      "Remove-Item -Path \\\"C:\\Windows\\Prefetch\\*\\\" -Recurse -Force -ErrorAction SilentlyContinue",
+      "Stop-Service -Name \\\"wuauserv\\\" -Force",
+      "Remove-Item -Path \\\"C:\\Windows\\SoftwareDistribution\\Download\\*\\\" -Recurse -Force",
+      "Start-Service -Name \\\"wuauserv\\"
     ],
     "UndoCommand": [
       ""
