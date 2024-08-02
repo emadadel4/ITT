@@ -10549,12 +10549,13 @@ $childXaml = '<Window
         </DockPanel>
         <Separator/>
         <DockPanel Margin="10">
+          <TextBlock Text="Youtube"/>
+          <TextBlock Name="yt" Cursor="Hand" TextAlignment="Right">emadadel4</TextBlock>
+        </DockPanel>
+        <Separator/>
+        <DockPanel Margin="10">
           <TextBlock>Website</TextBlock>
           <TextBlock Name="website" Cursor="Hand" Text="emadadel4.github.io" TextAlignment="Right"/>
-        </DockPanel>
-        <DockPanel Margin="10">
-          <TextBlock Text="Youtube"/>
-          <TextBlock Name="yt" Cursor="Hand" TextAlignment="Right">@emadadel4</TextBlock>
         </DockPanel>
         <Separator/>
         <DockPanel Margin="10">
