@@ -20,7 +20,7 @@ Add-Type -AssemblyName System.Windows.Forms
 $sync = [Hashtable]::Synchronized(@{
     database       = @{}
     ProcessRunning = $false
-    lastupdate     = "08/01/24"
+    lastupdate     = "08/02/24"
     github         = "https://github.com/emadadel4"
     telegram       = "https://t.me/emadadel4"
     website        = "https://emadadel4.github.io"
@@ -28,6 +28,7 @@ $sync = [Hashtable]::Synchronized(@{
     registryPath   = "HKCU:\Software\itt.emadadel"
     firebaseUrl    = "https://ittools-7d9fe-default-rtdb.firebaseio.com/Users"
     isDarkMode     = $null
+    Music          = "100"
     Langusege      = "en"
 })
 
@@ -44,6 +45,7 @@ $Host.UI.RawUI.WindowTitle = "ITT (Install and Tweaks Tool) - Admin"
 
 # Initialize media player only when necessary
 $sync.mediaPlayer = New-Object -ComObject WMPlayer.OCX
+
 
 
 #===========================================================================
@@ -5483,7 +5485,7 @@ $sync.database.locales = '{
         "saveapps":"Save selected apps",
         "loadapps":"Restore selected apps",
         "music":"Music",
-        "on":"Unmute ",
+        "on":"On ",
         "off":"Mute",
         "Dark":"Dark ",
         "Light":"Light",
@@ -7822,7 +7824,7 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
 
                             <MenuItem Name="save" Header="{Binding saveapps}">
                                 <MenuItem.Icon>
-                                    <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                                    <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
                                 </MenuItem.Icon>
                             </MenuItem>
                             <MenuItem Name="load" Header="{Binding loadapps}">
@@ -7844,8 +7846,16 @@ Height="622" Width="799" MinHeight="622" MinWidth="799"  Topmost="False"  ShowIn
                                 <MenuItem.Icon>
                                     <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
                                 </MenuItem.Icon>
-                                <MenuItem Name="moff" Header="{Binding off}"/>
-                                <MenuItem Name="mon" Header="{Binding on}"/>
+                                <MenuItem Name="moff" Header="{Binding off}">
+                                    <MenuItem.Icon>
+                                        <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                                    </MenuItem.Icon>
+                                </MenuItem>
+                                <MenuItem Name="mon" Header="{Binding on}">
+                                    <MenuItem.Icon>
+                                        <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                                    </MenuItem.Icon>
+                                </MenuItem>
                             </MenuItem>
 
                             <MenuItem Header="{Binding language}">
@@ -10590,20 +10600,22 @@ $reader = [System.Xml.XmlNodeReader]::new($xaml)
 try {
     $sync["window"] = [Windows.Markup.XamlReader]::Load($reader)
 
-    # Get theme and locale settings
-    $appsTheme = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize" -Name "AppsUseLightTheme"
-    $fullCulture = Get-ItemPropertyValue -Path "HKCU:\Control Panel\International" -Name "LocaleName"
-    $shortCulture = $fullCulture.Split('-')[0]
-
     # Ensure registry key exists and set defaults if necessary
     if (-not (Test-Path "HKCU:\Software\itt.emadadel")) {
         New-Item -Path "HKCU:\Software\itt.emadadel" -Force | Out-Null
         Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "DarkMode" -Value "none" -Force
         Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "locales" -Value $shortCulture -Force
+        Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "Music" -Value "100" -Force
     }
 
-    # Update locale in registry
-    Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "locales" -Value $shortCulture -Force
+        # Get theme & locale & Music settings
+        $appsTheme = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize" -Name "AppsUseLightTheme"
+        $fullCulture = Get-ItemPropertyValue -Path "HKCU:\Control Panel\International" -Name "LocaleName"
+        $shortCulture = $fullCulture.Split('-')[0]
+        Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "locales" -Value $shortCulture -Force
+        $sync.Music = (Get-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "Music").Music
+        $sync.mediaPlayer.settings.volume = "$($sync.Music)"
+
 
     # Set language based on culture
     switch ($shortCulture) {
@@ -12252,11 +12264,11 @@ function Invoke-Button {
 
         # Music
         "moff" {
-            MuteMusic
+            MuteMusic -Value 0
             Debug-Message $action
         }
         "mon" {
-            UnmuteMusic
+            UnmuteMusic -Value 100
             Debug-Message $action
         }
 
@@ -12633,12 +12645,14 @@ function PlayMusic {
     PlayShuffledPlaylist
 }
 function MuteMusic {
-
-    $sync.mediaPlayer.settings.volume = 0
+    param($value)
+    $sync.mediaPlayer.settings.volume = $value
+    Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "Music" -Value "$value" -Force
 }
 function UnmuteMusic {
-   
-    $sync.mediaPlayer.settings.volume = 100
+    param($value)
+    $sync.mediaPlayer.settings.volume = $value
+    Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "Music" -Value "$value" -Force
 }
 function StopMusic {
     $sync.mediaPlayer.controls.stop()
