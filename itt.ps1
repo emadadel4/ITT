@@ -7221,7 +7221,7 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
                             <!-- Default checkbox icon -->
                             <Grid Width="18" Height="18" Margin="0,0,5,0">
                                 <Ellipse Width="18" Height="18" Fill="{TemplateBinding Background}" Stroke="{TemplateBinding BorderBrush}" StrokeThickness="1"/>
-                                <Path x:Name="CheckMark" Width="7" Height="7" SnapsToDevicePixels="False" Stroke="blue" StrokeThickness="2" Data="M 0 3.5 L 7 3.5 M 3.5 0 L 3.5 7" Visibility="Collapsed"/>
+                                <Path x:Name="CheckMark" Width="7" Height="7" SnapsToDevicePixels="true" Stroke="#525FE1" StrokeThickness="1.8" Data="M 0 3.5 L 7 3.5 M 3.5 0 L 3.5 7" Visibility="Collapsed"/>
                             </Grid>
                             <!-- Content with background -->
                             <Border CornerRadius="0" Background="{DynamicResource checkboxBG}"
