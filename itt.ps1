@@ -20,7 +20,7 @@ Add-Type -AssemblyName System.Windows.Forms
 $sync = [Hashtable]::Synchronized(@{
     database       = @{}
     ProcessRunning = $false
-    lastupdate     = "08/02/24"
+    lastupdate     = "08/03/24"
     github         = "https://github.com/emadadel4"
     telegram       = "https://t.me/emadadel4"
     website        = "https://emadadel4.github.io"
@@ -5978,7 +5978,8 @@ $sync.database.Quotes = '{
     "الوحدة هي الهدوء الذي يعزلك عن العالم ويجعلك تكتشف نفسك",
     "لا يمكن لأي قوة على وجه الأرض أن تقهر روحاً متمسكة بالإيمان في الحق",
     "إذا صَرَختَ فأَسمِع وإذا ضَرَبتَ فأوجِع، فإن العَاقِبة واحِدة.",
-    "!لا يتعلق الأمر بما أريده، بل بما هو مُنصف"
+    "!لا يتعلق الأمر بما أريده، بل بما هو مُنصف",
+    "الشيء الوحيد الذي يخشونه هو أنت"
   ]
 }
 ' | ConvertFrom-Json
