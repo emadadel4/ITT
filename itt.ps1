@@ -10532,7 +10532,7 @@ $childXaml = '<Window
   x:Name="Window" Title="About | ITT " WindowStartupLocation = "CenterScreen" 
   Background="White"
   WindowStyle="ToolWindow"
-  Height="488" Width="350" FontFamily="Console" ShowInTaskbar = "True" Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/icon.ico">
+  Height="488" Width="350" MinHeight="488" MinWidth="350" MaxHeight="488" MaxWidth="350" FontFamily="Console" ShowInTaskbar = "True" Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/icon.ico">
     <Grid>
 
       <Grid.RowDefinitions>
