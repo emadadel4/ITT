@@ -53,7 +53,7 @@
     <Style TargetType="CheckBox">
         <Setter Property="Foreground" Value="{DynamicResource DefaultTextColor}"/>
         <Setter Property="Margin" Value="0"/>
-        <Setter Property="Padding" Value="10"/>
+        <Setter Property="Padding" Value="6"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Template">
                 <Setter.Value>
@@ -126,7 +126,7 @@
   <Style TargetType="Label">
     <Setter Property="Background" Value="{DynamicResource BGColor}"/>
     <Setter Property="Foreground" Value="{DynamicResource DefaultTextColor}"/>
-    <Setter Property="Padding" Value="11"/>
+    <Setter Property="Padding" Value="7.5"/>
     <Setter Property="Template">
         <Setter.Value>
             <ControlTemplate TargetType="Label">
