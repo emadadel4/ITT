@@ -7244,7 +7244,7 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter Property="Background" Value="{DynamicResource highlight}"/>
                             <Setter  Property="BorderBrush" Value="{DynamicResource highlight}"/>
-                            <Setter  Property="BorderThickness" Value="0.5"/>
+                            <Setter  Property="BorderThickness" Value="0"/>
                         </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
