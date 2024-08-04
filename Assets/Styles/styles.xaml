@@ -5,10 +5,10 @@
             From="0" To="1" Duration="0:0:0.1" />
     </Storyboard>
 
-    <Storyboard x:Key="eee">
+    <Storyboard x:Key="FadeIn">
         <DoubleAnimation
             Storyboard.TargetProperty="Opacity"
-            From="0" To="1" Duration="0:0:1.5" />
+            From="0" To="1" Duration="0:0:1.2" />
     </Storyboard>
 <!--Fade in-->
 
@@ -47,14 +47,14 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ListViewItem">
-                    <Border CornerRadius="8"
+                    <Border CornerRadius="10"
                             Padding="{TemplateBinding Padding}" 
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}">
                         <Border.Background>
                             <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                                <GradientStop Color="{DynamicResource Card}" Offset="0.0"/>
-                                <GradientStop Color="{DynamicResource Card2}" Offset="1.0"/>
+                                <GradientStop Color="{DynamicResource CardLeft}" Offset="0"/>
+                                <GradientStop Color="{DynamicResource CardRight}" Offset="1.5"/>
                             </LinearGradientBrush>
                         </Border.Background>
                         <ContentPresenter HorizontalAlignment="Left"
@@ -167,9 +167,9 @@
 <!--End Label Style-->
 
 <!--TextBlock Style-->
-  <Style TargetType="TextBlock">
-      <Setter Property="Foreground" Value="{DynamicResource FGTextColor}"/>
-  </Style>
+    <Style TargetType="TextBlock">
+        <Setter Property="Foreground" Value="{DynamicResource FGTextColor}"/>
+    </Style>
 <!--End TextBlock Style-->
 
 <!--Define the Menu Style -->
@@ -193,7 +193,7 @@
         </Setter>
         <Style.Triggers>
             <EventTrigger RoutedEvent="FrameworkElement.Loaded">
-                <BeginStoryboard Storyboard="{StaticResource eee}" />
+                <BeginStoryboard Storyboard="{StaticResource FadeIn}" />
             </EventTrigger>
         </Style.Triggers>
     </Style>
