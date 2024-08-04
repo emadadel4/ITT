@@ -51,7 +51,6 @@
         </Setter.Value>
     </Setter>
 </Style>
-
 <!--End ListViewItem Style-->
 
 <!--CheckBox Style-->
@@ -146,7 +145,6 @@
         </Setter.Value>
     </Setter>
   </Style>
-  
 <!--End Label Style-->
 
 <!--TextBlock Style-->
