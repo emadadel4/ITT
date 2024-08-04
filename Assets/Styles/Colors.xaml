@@ -19,19 +19,19 @@
                         <SolidColorBrush x:Key="ToggleSwitchEnable" Color="white"/>
                         <SolidColorBrush x:Key="ToggleSwitchDisable" Color="black"/>
                         <SolidColorBrush x:Key="ToggleSwitchBorderBrush" Color="black"/>
-                        <Color x:Key="Card">#f0f0f0</Color> <!-- Example color -->
-                        <Color x:Key="Card2">#ffffff</Color> <!-- Example color -->
+                        <Color x:Key="CardLeft">#f0f0f0</Color>
+                        <Color x:Key="Card2Right">#ffffff</Color>
 
 
                 </ResourceDictionary>
         <!--Light mode -->
         <!--Dark mode-->
                 <ResourceDictionary x:Key="Dark">
-                        <SolidColorBrush x:Key="BGColor" Color="Black"/>
+                        <SolidColorBrush x:Key="BGColor" Color="#121212"/>
                         <SolidColorBrush x:Key="FGColor" Color="#282828"/>
                         <SolidColorBrush x:Key="BGButtonColor" Color="#1DB954" />
                         <SolidColorBrush x:Key="FGButtonColor" Color="White" />
-                        <SolidColorBrush x:Key="ButtonHighlightColor" Color="#FF45D477" />
+                        <SolidColorBrush x:Key="ButtonHighlightColor" Color="#FF57E087" />
                         <SolidColorBrush x:Key="FGTextColor" Color="WhiteSmoke" />
                         <SolidColorBrush x:Key="DefaultTextColor" Color="White"/>
                         <SolidColorBrush x:Key="DefaultTextColor2" Color="White"/>
@@ -45,8 +45,8 @@
                         <SolidColorBrush x:Key="ToggleSwitchEnable" Color="white"/>
                         <SolidColorBrush x:Key="ToggleSwitchDisable" Color="#c9c9c7"/>
                         <SolidColorBrush x:Key="ToggleSwitchBorderBrush" Color="#c9c9c7"/>
-                        <Color x:Key="Card">#1DB954</Color> <!-- Example color -->
-                        <Color x:Key="Card2">Black</Color> <!-- Example color -->
+                        <Color x:Key="CardLeft">#1DB954</Color> 
+                        <Color x:Key="Card2Right">#121212</Color>
 
                 </ResourceDictionary>
         <!--Dark mode -->
