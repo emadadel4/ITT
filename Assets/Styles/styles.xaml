@@ -1,3 +1,17 @@
+<!--Fade in-->
+    <Storyboard x:Key="FadeOutStoryboard">
+        <DoubleAnimation
+            Storyboard.TargetProperty="Opacity"
+            From="0" To="1" Duration="0:0:0.1" />
+    </Storyboard>
+
+    <Storyboard x:Key="eee">
+        <DoubleAnimation
+            Storyboard.TargetProperty="Opacity"
+            From="0" To="1" Duration="0:0:1.5" />
+    </Storyboard>
+<!--Fade in-->
+
 <!--Button Style-->
       <Style TargetType="Button">
         <Setter Property="Background" Value="{DynamicResource BGButtonColor}"/>
@@ -50,6 +64,11 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Style.Triggers>
+            <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+                <BeginStoryboard Storyboard="{StaticResource FadeOutStoryboard}" />
+            </EventTrigger>
+        </Style.Triggers>
     </Style>
 <!--End ListViewItem Style-->
 
@@ -153,7 +172,7 @@
   </Style>
 <!--End TextBlock Style-->
 
- <!-- Define the Menu Style -->
+<!--Define the Menu Style -->
     <Style TargetType="Menu">
         <Setter Property="Background" Value="#FFFFFF"/>
         <Setter Property="Foreground" Value="#000000"/>
@@ -172,6 +191,11 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Style.Triggers>
+            <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+                <BeginStoryboard Storyboard="{StaticResource eee}" />
+            </EventTrigger>
+        </Style.Triggers>
     </Style>
 
     <Style TargetType="MenuItem">
