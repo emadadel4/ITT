@@ -1,0 +1,49 @@
+<Window
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  x:Name="Window" Title="Event | ITT " WindowStartupLocation = "CenterScreen" 
+  Background="White"
+  WindowStyle="ToolWindow"
+  Height="400" Width="600" ShowInTaskbar = "True" Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/icon.ico">
+
+  <ScrollViewer VerticalScrollBarVisibility="Auto" Width="Auto">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel x:Name="MainStackPanel" Orientation="Vertical">
+            <TextBlock 
+                Name="title"
+                FontSize="30"
+                Height="Auto"
+                Width="Auto"
+                Margin="10"
+                TextWrapping="Wrap"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center" />
+
+
+
+            <!--Image-->
+            <Image x:Name="TutorialImage" HorizontalAlignment="Center" VerticalAlignment="Center" Source="https://raw.githubusercontent.com/emadadel4/ITT/update/Assets/Images/thumbnail.png" Cursor="Hand" Margin="10" Height="222" Width="Auto"/>
+            <!--End Image-->
+
+            <TextBlock 
+            Name="Subtitle"
+            Text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet amet obcaecati dolorem, sit iusto consequatur, libero laudantium officia quo ea officiis nulla esse quod ex, mollitia asperiores! Accusantium, labore pariatur."
+            FontSize="20"
+            Height="Auto"
+            Width="Auto"
+            Margin="20"
+            TextWrapping="Wrap"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Left" />
+
+        </StackPanel>
+    </Grid>
+</ScrollViewer>
+
+  </Window>
+
