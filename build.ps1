@@ -274,17 +274,21 @@ WriteToScript -Content @"
     $FilePaths = @{
         
         "about" = Join-Path -Path $windows -ChildPath "about.xaml"
+        "event" = Join-Path -Path $windows -ChildPath "event.xaml"
+
     }
 
     # Read and replace placeholders in XAML content
     try {
         $childXaml = (Get-Content -Path $FilePaths["about"] -Raw) -replace "'", "''"
-
+        $EventXaml = (Get-Content -Path $FilePaths["event"] -Raw) -replace "'", "''"
     } catch {
         Write-Error "Error: $($_.Exception.Message)"
     }
    
     WriteToScript -Content "`$childXaml = '$childXaml'"
+    WriteToScript -Content "`$EventXaml = '$EventXaml'"
+
     WriteToScript -Content @"
 #===========================================================================
 #endregion End WPF About Window
