@@ -10628,7 +10628,7 @@ $EventXaml = '<Window
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <StackPanel x:Name="MainStackPanel" Orientation="Vertical">
+        <StackPanel x:Name="MainStackPanel" Height="Auto" Orientation="Vertical">
             <TextBlock 
                 Name="title"
                 FontSize="30"
@@ -10642,7 +10642,14 @@ $EventXaml = '<Window
 
 
             <!--Image-->
-            <Image x:Name="TutorialImage" HorizontalAlignment="Center" VerticalAlignment="Center" Source="https://raw.githubusercontent.com/emadadel4/ITT/update/Assets/Images/thumbnail.png" Cursor="Hand" Margin="10" Height="222" Width="Auto"/>
+            <Image x:Name="TutorialImage"
+            HorizontalAlignment="Center" 
+            VerticalAlignment="Center" 
+            Source="https://raw.githubusercontent.com/emadadel4/ITT/update/Assets/Images/thumbnail.png" 
+            Cursor="Hand" 
+            Margin="10" 
+            Height="255" 
+            Width="Auto"/>
             <!--End Image-->
 
             <TextBlock 
