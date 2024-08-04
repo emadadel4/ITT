@@ -124,7 +124,7 @@
 
 <!--Label Style-->
   <Style TargetType="Label">
-    <Setter Property="Background" Value="{DynamicResource BGColor}"/>
+    <Setter Property="Background" Value="Transparent"/>
     <Setter Property="Foreground" Value="{DynamicResource DefaultTextColor}"/>
     <Setter Property="Padding" Value="7.5"/>
     <Setter Property="Template">
