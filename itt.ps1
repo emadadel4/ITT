@@ -7409,8 +7409,8 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
                                 Placement="Bottom" 
                                 IsOpen="{TemplateBinding IsSubmenuOpen}" 
                                 AllowsTransparency="True" 
-                                Focusable="False" 
-                                PopupAnimation="Slide">
+                                Focusable="False"
+                                PopupAnimation="Fade">
                                 <Border Background="{DynamicResource FGColor}" 
                                         BorderBrush="{DynamicResource BorderBrush}" 
                                         BorderThickness="0.8"
