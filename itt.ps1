@@ -7157,7 +7157,21 @@ Background="{DynamicResource BGColor}"
 Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowInTaskbar = "True" Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/Assets/Icons/icon.ico">
 
 <Window.Resources>
-    <!--Button Style-->
+    <!--Fade in-->
+    <Storyboard x:Key="FadeOutStoryboard">
+        <DoubleAnimation
+            Storyboard.TargetProperty="Opacity"
+            From="0" To="1" Duration="0:0:0.1" />
+    </Storyboard>
+
+    <Storyboard x:Key="eee">
+        <DoubleAnimation
+            Storyboard.TargetProperty="Opacity"
+            From="0" To="1" Duration="0:0:1.5" />
+    </Storyboard>
+<!--Fade in-->
+
+<!--Button Style-->
       <Style TargetType="Button">
         <Setter Property="Background" Value="{DynamicResource BGButtonColor}"/>
         <Setter Property="Foreground" Value="{DynamicResource DefaultTextColor2}"/>
@@ -7185,31 +7199,36 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
 <!--End Button Style-->
 
 <!--ListViewItem Style-->
-<Style TargetType="ListViewItem">
-    <Setter Property="Margin" Value="10"/>
-    <Setter Property="BorderThickness" Value="0"/>
-    <Setter Property="Padding" Value="0"/>
-    <Setter Property="Template">
-        <Setter.Value>
-            <ControlTemplate TargetType="ListViewItem">
-                <Border CornerRadius="8"
-                        Padding="{TemplateBinding Padding}" 
-                        BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="{TemplateBinding BorderThickness}">
-                    <Border.Background>
-                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                            <GradientStop Color="{DynamicResource Card}" Offset="0.0"/>
-                            <GradientStop Color="{DynamicResource Card2}" Offset="1.0"/>
-                        </LinearGradientBrush>
-                    </Border.Background>
-                    <ContentPresenter HorizontalAlignment="Left"
-                                      VerticalAlignment="Center"
-                                      ContentSource="Content"/>
-                </Border>
-            </ControlTemplate>
-        </Setter.Value>
-    </Setter>
-</Style>
+    <Style TargetType="ListViewItem">
+        <Setter Property="Margin" Value="10"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ListViewItem">
+                    <Border CornerRadius="8"
+                            Padding="{TemplateBinding Padding}" 
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                <GradientStop Color="{DynamicResource Card}" Offset="0.0"/>
+                                <GradientStop Color="{DynamicResource Card2}" Offset="1.0"/>
+                            </LinearGradientBrush>
+                        </Border.Background>
+                        <ContentPresenter HorizontalAlignment="Left"
+                                        VerticalAlignment="Center"
+                                        ContentSource="Content"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+                <BeginStoryboard Storyboard="{StaticResource FadeOutStoryboard}" />
+            </EventTrigger>
+        </Style.Triggers>
+    </Style>
 <!--End ListViewItem Style-->
 
 <!--CheckBox Style-->
@@ -7312,7 +7331,7 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
   </Style>
 <!--End TextBlock Style-->
 
- <!-- Define the Menu Style -->
+<!--Define the Menu Style -->
     <Style TargetType="Menu">
         <Setter Property="Background" Value="#FFFFFF"/>
         <Setter Property="Foreground" Value="#000000"/>
@@ -7331,6 +7350,11 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Style.Triggers>
+            <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+                <BeginStoryboard Storyboard="{StaticResource eee}" />
+            </EventTrigger>
+        </Style.Triggers>
     </Style>
 
     <Style TargetType="MenuItem">
@@ -8056,7 +8080,7 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
         </Grid>
     <!--Header Section-->
     <!--TabControl-->
-        <TabControl Name="taps" TabStripPlacement="Left" Grid.Row="1"  BorderBrush="{DynamicResource FGColor}" Foreground="White" Background="Transparent">
+        <TabControl Name="taps" TabStripPlacement="Left" Grid.Row="1"  BorderBrush="Transparent" Foreground="White" Background="Transparent">
         <TabItem Name="apps" Header="{Binding apps}" BorderBrush="{x:Null}">
             <TabItem.HeaderTemplate>
                 <DataTemplate>
@@ -8067,7 +8091,7 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
                 </DataTemplate>
         </TabItem.HeaderTemplate>
             <TabItem.Content>
-                <ListView Name="appslist"  Margin="0" ScrollViewer.VerticalScrollBarVisibility="Auto" BorderBrush="{x:Null}" Background="{x:Null}">
+                <ListView Name="appslist"   Margin="0" ScrollViewer.VerticalScrollBarVisibility="Auto" BorderBrush="{x:Null}" Background="{x:Null}" >
                     
         <StackPanel Orientation="Vertical" Width="auto" Margin="10">
             <StackPanel Orientation="Horizontal">
