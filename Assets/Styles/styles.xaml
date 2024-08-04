@@ -26,27 +26,32 @@
 <!--End Button Style-->
 
 <!--ListViewItem Style-->
-    <Style TargetType="ListViewItem">
-        <Setter Property="Background" Value="{DynamicResource FGColor}"/>
-        <Setter Property="Margin" Value="2"/>
-        <Setter Property="BorderThickness" Value="0"/>
-        <Setter Property="Padding" Value="0"/>
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="ListViewItem">
-                    <Border Background="{TemplateBinding Background}"
-                            CornerRadius="0"
-                            Padding="{TemplateBinding Padding}" 
-                            BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}">
-                        <ContentPresenter HorizontalAlignment="Left"
-                                        VerticalAlignment="Center"
-                                        ContentSource="Content"/>
-                    </Border>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
+<Style TargetType="ListViewItem">
+    <Setter Property="Margin" Value="10"/>
+    <Setter Property="BorderThickness" Value="0"/>
+    <Setter Property="Padding" Value="0"/>
+    <Setter Property="Template">
+        <Setter.Value>
+            <ControlTemplate TargetType="ListViewItem">
+                <Border CornerRadius="8"
+                        Padding="{TemplateBinding Padding}" 
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="{DynamicResource Card}" Offset="0.0"/>
+                            <GradientStop Color="{DynamicResource Card2}" Offset="1.0"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <ContentPresenter HorizontalAlignment="Left"
+                                      VerticalAlignment="Center"
+                                      ContentSource="Content"/>
+                </Border>
+            </ControlTemplate>
+        </Setter.Value>
+    </Setter>
+</Style>
+
 <!--End ListViewItem Style-->
 
 <!--CheckBox Style-->

@@ -19,11 +19,15 @@
                         <SolidColorBrush x:Key="ToggleSwitchEnable" Color="white"/>
                         <SolidColorBrush x:Key="ToggleSwitchDisable" Color="black"/>
                         <SolidColorBrush x:Key="ToggleSwitchBorderBrush" Color="black"/>
+                        <Color x:Key="Card">#f0f0f0</Color> <!-- Example color -->
+                        <Color x:Key="Card2">#ffffff</Color> <!-- Example color -->
+
+
                 </ResourceDictionary>
         <!--Light mode -->
         <!--Dark mode-->
                 <ResourceDictionary x:Key="Dark">
-                        <SolidColorBrush x:Key="BGColor" Color="#FF121212"/>
+                        <SolidColorBrush x:Key="BGColor" Color="Black"/>
                         <SolidColorBrush x:Key="FGColor" Color="#282828"/>
                         <SolidColorBrush x:Key="BGButtonColor" Color="#1DB954" />
                         <SolidColorBrush x:Key="FGButtonColor" Color="White" />
@@ -35,12 +39,15 @@
                         <SolidColorBrush x:Key="ButtonBorder" Color="#1DB954"/>
                         <SolidColorBrush x:Key="Label" Color="#3f3f3f"/>
                         <SolidColorBrush x:Key="checkboxBG" Color="Transparent"/>
-                        <SolidColorBrush x:Key="highlight" Color="#3cb043"/>
+                        <SolidColorBrush x:Key="highlight" Color="#FF00FF11"/>
                         <SolidColorBrush x:Key="ToggleSwitchBG" Color="#282828"/>
                         <SolidColorBrush x:Key="ToggleSwitchFG" Color="#282828"/>
                         <SolidColorBrush x:Key="ToggleSwitchEnable" Color="white"/>
                         <SolidColorBrush x:Key="ToggleSwitchDisable" Color="#c9c9c7"/>
                         <SolidColorBrush x:Key="ToggleSwitchBorderBrush" Color="#c9c9c7"/>
+                        <Color x:Key="Card">#1DB954</Color> <!-- Example color -->
+                        <Color x:Key="Card2">Black</Color> <!-- Example color -->
+
                 </ResourceDictionary>
         <!--Dark mode -->
 <!--End Theme styles colors-->
