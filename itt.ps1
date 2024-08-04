@@ -12889,7 +12889,6 @@ function Show-Event {
                     $tutorialImage.Source = [System.Windows.Media.Imaging.BitmapImage]::new([Uri]::new($image))
                 }
             })
-        
         }
     }
 
