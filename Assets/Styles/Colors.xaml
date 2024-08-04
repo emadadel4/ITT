@@ -21,8 +21,6 @@
                         <SolidColorBrush x:Key="ToggleSwitchBorderBrush" Color="black"/>
                         <Color x:Key="CardLeft">#f0f0f0</Color>
                         <Color x:Key="Card2Right">#ffffff</Color>
-
-
                 </ResourceDictionary>
         <!--Light mode -->
         <!--Dark mode-->
@@ -47,7 +45,6 @@
                         <SolidColorBrush x:Key="ToggleSwitchBorderBrush" Color="#c9c9c7"/>
                         <Color x:Key="CardLeft">#1DB954</Color> 
                         <Color x:Key="Card2Right">#121212</Color>
-
                 </ResourceDictionary>
         <!--Dark mode -->
 <!--End Theme styles colors-->

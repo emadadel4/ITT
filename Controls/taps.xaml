@@ -1,43 +1,45 @@
-<TabControl Name="taps" TabStripPlacement="Left" Grid.Row="1"  BorderBrush="Transparent" Foreground="White" Background="Transparent">
-        <TabItem Name="apps" Header="{Binding apps}" BorderBrush="{x:Null}">
-            <TabItem.HeaderTemplate>
-                <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="" FontFamily="Segoe MDL2 Assets" FontSize="18" Margin="0,0,5,0"/>
-                        <TextBlock Text="{Binding}" FontFamily="Sego UI" FontSize="15"  Margin="0,0,5,0"/>
-                    </StackPanel>
-                </DataTemplate>
-        </TabItem.HeaderTemplate>
-            <TabItem.Content>
-                <ListView Name="appslist"   Margin="0" ScrollViewer.VerticalScrollBarVisibility="Auto" BorderBrush="{x:Null}" Background="{x:Null}" >
-                    {{Apps}}
-                </ListView>
-            </TabItem.Content>
-        </TabItem>
-        <TabItem x:Name="tweeksTab" Header="{Binding tweaks}" BorderBrush="{x:Null}" Background="{x:Null}">
-            <TabItem.HeaderTemplate>
+<!--TabControl-->
+    <TabControl Name="taps" TabStripPlacement="Left" Grid.Row="1"  BorderBrush="Transparent" Foreground="White" Background="Transparent">
+            <TabItem Name="apps" Header="{Binding apps}" BorderBrush="{x:Null}">
+                <TabItem.HeaderTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="" FontFamily="Segoe MDL2 Assets" FontSize="18" Margin="0,0,5,0"/>
+                            <TextBlock Text="" FontFamily="Segoe MDL2 Assets" FontSize="18" Margin="0,0,5,0"/>
                             <TextBlock Text="{Binding}" FontFamily="Sego UI" FontSize="15"  Margin="0,0,5,0"/>
                         </StackPanel>
                     </DataTemplate>
             </TabItem.HeaderTemplate>
-                <ListView Name="tweakslist"  Margin="0" ScrollViewer.VerticalScrollBarVisibility="Auto" BorderBrush="{x:Null}" Background="{x:Null}">
-                    {{Tweaks}}
-                </ListView>
-        </TabItem>
-        <TabItem x:Name="SettingsTab" Header="{Binding settings}" BorderBrush="{x:Null}" Background="{x:Null}">
-            <TabItem.HeaderTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="" FontFamily="Segoe MDL2 Assets" FontSize="18" Margin="0,0,5,0"/>
-                            <TextBlock Text="{Binding}" FontFamily="Sego UI" FontSize="15" Margin="0,0,5,0"/>
-                        </StackPanel>
-                    </DataTemplate>
-            </TabItem.HeaderTemplate>
-                <ListView Name="SettingsList"  Margin="0" ScrollViewer.VerticalScrollBarVisibility="Auto" BorderBrush="{x:Null}" Background="{x:Null}">
-                    {{Settings}}
-                </ListView>
-        </TabItem>
-</TabControl>
+                <TabItem.Content>
+                    <ListView Name="appslist"   Margin="0" ScrollViewer.VerticalScrollBarVisibility="Auto" BorderBrush="{x:Null}" Background="{x:Null}" >
+                        {{Apps}}
+                    </ListView>
+                </TabItem.Content>
+            </TabItem>
+            <TabItem x:Name="tweeksTab" Header="{Binding tweaks}" BorderBrush="{x:Null}" Background="{x:Null}">
+                <TabItem.HeaderTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="" FontFamily="Segoe MDL2 Assets" FontSize="18" Margin="0,0,5,0"/>
+                                <TextBlock Text="{Binding}" FontFamily="Sego UI" FontSize="15"  Margin="0,0,5,0"/>
+                            </StackPanel>
+                        </DataTemplate>
+                </TabItem.HeaderTemplate>
+                    <ListView Name="tweakslist"  Margin="0" ScrollViewer.VerticalScrollBarVisibility="Auto" BorderBrush="{x:Null}" Background="{x:Null}">
+                        {{Tweaks}}
+                    </ListView>
+            </TabItem>
+            <TabItem x:Name="SettingsTab" Header="{Binding settings}" BorderBrush="{x:Null}" Background="{x:Null}">
+                <TabItem.HeaderTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="" FontFamily="Segoe MDL2 Assets" FontSize="18" Margin="0,0,5,0"/>
+                                <TextBlock Text="{Binding}" FontFamily="Sego UI" FontSize="15" Margin="0,0,5,0"/>
+                            </StackPanel>
+                        </DataTemplate>
+                </TabItem.HeaderTemplate>
+                    <ListView Name="SettingsList"  Margin="0" ScrollViewer.VerticalScrollBarVisibility="Auto" BorderBrush="{x:Null}" Background="{x:Null}">
+                        {{Settings}}
+                    </ListView>
+            </TabItem>
+    </TabControl>
+<!--End TabControl-->
