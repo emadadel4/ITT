@@ -7210,7 +7210,6 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
         </Setter.Value>
     </Setter>
 </Style>
-
 <!--End ListViewItem Style-->
 
 <!--CheckBox Style-->
@@ -7305,7 +7304,6 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
         </Setter.Value>
     </Setter>
   </Style>
-  
 <!--End Label Style-->
 
 <!--TextBlock Style-->
