@@ -7152,7 +7152,6 @@ $inputXML = '
 <Window
 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-xmlns:sys="clr-namespace:System;assembly=mscorlib"
 x:Name="Window" Title="Install Tweak Tool #StandWithPalestine" WindowStartupLocation = "CenterScreen" 
 Background="{DynamicResource BGColor}"
 Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowInTaskbar = "True" Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/Assets/Icons/icon.ico">
