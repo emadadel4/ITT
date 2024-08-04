@@ -1,0 +1,50 @@
+<!--Search -->
+<Grid HorizontalAlignment="Right" Grid.Column="1" VerticalAlignment="Center">
+  <TextBox Padding="8"
+          Width="120"
+          VerticalAlignment="Center"
+          HorizontalAlignment="Left"
+          Text="{Binding Text_searchInput}"
+          Name="searchInput" />
+
+  <TextBlock IsHitTestVisible="False"
+          Text=""
+          FontFamily="Segoe MDL2 Assets"
+          VerticalAlignment="Center"
+          HorizontalAlignment="Left"
+          Margin="20,0,5,0"
+          FontSize="12"
+          Foreground="{DynamicResource FGTextColor}">
+      <TextBlock.Style>
+          <Style TargetType="{x:Type TextBlock}">
+              <Setter Property="Visibility" Value="Hidden"/>
+              <Style.Triggers>
+                  <DataTrigger Binding="{Binding Text, ElementName=searchInput}" Value="">
+                      <Setter Property="Visibility" Value="Visible"/>
+                  </DataTrigger>
+              </Style.Triggers>
+          </Style>
+      </TextBlock.Style>
+  </TextBlock>
+
+  <TextBlock Text="{Binding search}"
+          IsHitTestVisible="False"
+          VerticalAlignment="Center"
+          HorizontalAlignment="Left"
+          Margin="38,0,0,0"
+          Foreground="{DynamicResource FGTextColor}">
+      <TextBlock.Style>
+          <Style TargetType="{x:Type TextBlock}">
+              <Style.Triggers>
+                  <DataTrigger Binding="{Binding IsFocused, ElementName=searchInput}" Value="True">
+                      <Setter Property="Visibility" Value="Hidden"/>
+                  </DataTrigger>
+                  <DataTrigger Binding="{Binding Text, ElementName=searchInput}" Value="">
+                      <Setter Property="Visibility" Value="Visible"/>
+                  </DataTrigger>
+              </Style.Triggers>
+          </Style>
+      </TextBlock.Style>
+  </TextBlock>
+</Grid>
+<!--End Search-->

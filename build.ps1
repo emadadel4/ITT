@@ -212,7 +212,11 @@ WriteToScript -Content @"
     # Define file paths
     $FilePaths = @{
         "Xaml"    = Join-Path -Path $windows -ChildPath "window.xaml"
-        "AppXaml" = Join-Path -Path $Controls -ChildPath "taps.xaml"
+        "taps" = Join-Path -Path $Controls -ChildPath "taps.xaml"
+        "menu" = Join-Path -Path $Controls -ChildPath "menu.xaml"
+        "catagory" = Join-Path -Path $Controls -ChildPath "catagory.xaml"
+        "search" = Join-Path -Path $Controls -ChildPath "search.xaml"
+        "buttons" = Join-Path -Path $Controls -ChildPath "buttons.xaml"
         "Style"   = Join-Path -Path $Assets -ChildPath "Styles/Styles.xaml"
         "Colors"  = Join-Path -Path $Assets -ChildPath "Styles/Colors.xaml"
     }
@@ -221,14 +225,22 @@ WriteToScript -Content @"
     try {
         # Read content from files
         $XamlContent     = (Get-Content -Path $FilePaths["Xaml"] -Raw) -replace "'", "''"
-        $AppXamlContent  = Get-Content -Path $FilePaths["AppXaml"] -Raw
+        $AppXamlContent  = Get-Content -Path $FilePaths["taps"] -Raw
         $StyleContent    = Get-Content -Path $FilePaths["Style"] -Raw
         $ColorsContent   = Get-Content -Path $FilePaths["Colors"] -Raw
+        $MenuContent   = Get-Content -Path $FilePaths["menu"] -Raw
+        $ButtonsContent   = Get-Content -Path $FilePaths["buttons"] -Raw
+        $CatagoryContent   = Get-Content -Path $FilePaths["catagory"] -Raw
+        $searchContent   = Get-Content -Path $FilePaths["search"] -Raw
 
         # Replace placeholders with actual content
         $XamlContent = $XamlContent -replace "{{Taps}}", $AppXamlContent
         $XamlContent = $XamlContent -replace "{{Style}}", $StyleContent
         $XamlContent = $XamlContent -replace "{{Colors}}", $ColorsContent
+        $XamlContent = $XamlContent -replace "{{menu}}", $MenuContent
+        $XamlContent = $XamlContent -replace "{{buttons}}", $ButtonsContent
+        $XamlContent = $XamlContent -replace "{{catagory}}", $CatagoryContent
+        $XamlContent = $XamlContent -replace "{{search}}", $searchContent
 
     } catch {
         Write-Error "An error occurred while processing the XAML content: $($_.Exception.Message)"

@@ -1,0 +1,39 @@
+ <!--Catagory-->
+ <ComboBox SelectedIndex="0" Name="category" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left" Width="auto">
+
+  <ComboBoxItem Content="{Binding all}"></ComboBoxItem>
+
+  <ComboBoxItem Content="Web Browsers"></ComboBoxItem>
+
+  <ComboBoxItem Content="Media"></ComboBoxItem>
+
+  <ComboBoxItem Content="Media Tools"></ComboBoxItem>
+
+  <ComboBoxItem Content="Documents"></ComboBoxItem>
+
+  <ComboBoxItem Content="Compression"></ComboBoxItem>
+
+  <ComboBoxItem Content="Communication"></ComboBoxItem>
+
+  <ComboBoxItem Content="File Sharing"></ComboBoxItem>
+
+  <ComboBoxItem Content="Imaging"></ComboBoxItem>
+
+  <ComboBoxItem Content="Gaming"></ComboBoxItem>
+
+  <ComboBoxItem Content="Utilities"></ComboBoxItem>
+
+  <ComboBoxItem Content="Disk Tools"></ComboBoxItem>
+
+  <ComboBoxItem Content="Development"></ComboBoxItem>
+
+  <ComboBoxItem Content="Security"></ComboBoxItem>
+
+  <ComboBoxItem Content="Portable"></ComboBoxItem>
+
+  <ComboBoxItem Content="Runtimes"></ComboBoxItem>
+
+  <ComboBoxItem Content="Drivers"></ComboBoxItem>
+
+</ComboBox>
+<!--End Catagory-->
