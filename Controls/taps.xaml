@@ -1,4 +1,4 @@
-<TabControl Name="taps" TabStripPlacement="Left" Grid.Row="1"  BorderBrush="{DynamicResource FGColor}" Foreground="White" Background="Transparent">
+<TabControl Name="taps" TabStripPlacement="Left" Grid.Row="1"  BorderBrush="Transparent" Foreground="White" Background="Transparent">
         <TabItem Name="apps" Header="{Binding apps}" BorderBrush="{x:Null}">
             <TabItem.HeaderTemplate>
                 <DataTemplate>
@@ -9,7 +9,7 @@
                 </DataTemplate>
         </TabItem.HeaderTemplate>
             <TabItem.Content>
-                <ListView Name="appslist"  Margin="0" ScrollViewer.VerticalScrollBarVisibility="Auto" BorderBrush="{x:Null}" Background="{x:Null}">
+                <ListView Name="appslist"   Margin="0" ScrollViewer.VerticalScrollBarVisibility="Auto" BorderBrush="{x:Null}" Background="{x:Null}" >
                     {{Apps}}
                 </ListView>
             </TabItem.Content>
