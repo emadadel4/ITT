@@ -7736,8 +7736,6 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
                         <SolidColorBrush x:Key="ToggleSwitchBorderBrush" Color="black"/>
                         <Color x:Key="CardLeft">#f0f0f0</Color>
                         <Color x:Key="Card2Right">#ffffff</Color>
-
-
                 </ResourceDictionary>
         <!--Light mode -->
         <!--Dark mode-->
@@ -7762,7 +7760,6 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
                         <SolidColorBrush x:Key="ToggleSwitchBorderBrush" Color="#c9c9c7"/>
                         <Color x:Key="CardLeft">#1DB954</Color> 
                         <Color x:Key="Card2Right">#121212</Color>
-
                 </ResourceDictionary>
         <!--Dark mode -->
 <!--End Theme styles colors-->
@@ -10616,6 +10613,56 @@ $childXaml = '<Window
     </Grid>
   </Window>
 '
+$EventXaml = '<Window
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  x:Name="Window" Title="Event | ITT " WindowStartupLocation = "CenterScreen" 
+  Background="White"
+  WindowStyle="ToolWindow"
+  Height="400" Width="600" ShowInTaskbar = "True" Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/icon.ico">
+
+  <ScrollViewer VerticalScrollBarVisibility="Auto" Width="Auto">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel x:Name="MainStackPanel" Orientation="Vertical">
+            <TextBlock 
+                Name="title"
+                FontSize="30"
+                Height="Auto"
+                Width="Auto"
+                Margin="10"
+                TextWrapping="Wrap"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center" />
+
+
+
+            <!--Image-->
+            <Image x:Name="TutorialImage" HorizontalAlignment="Center" VerticalAlignment="Center" Source="https://raw.githubusercontent.com/emadadel4/ITT/update/Assets/Images/thumbnail.png" Cursor="Hand" Margin="10" Height="222" Width="Auto"/>
+            <!--End Image-->
+
+            <TextBlock 
+            Name="Subtitle"
+            Text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet amet obcaecati dolorem, sit iusto consequatur, libero laudantium officia quo ea officiis nulla esse quod ex, mollitia asperiores! Accusantium, labore pariatur."
+            FontSize="20"
+            Height="Auto"
+            Width="Auto"
+            Margin="20"
+            TextWrapping="Wrap"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Left" />
+
+        </StackPanel>
+    </Grid>
+</ScrollViewer>
+
+  </Window>
+
+'
 #===========================================================================
 #endregion End WPF About Window
 #===========================================================================
@@ -12793,6 +12840,75 @@ function SwitchToSystem {
         Write-Host "Error occurred: $_"
     }
 }
+function Show-Event {
+    param(
+        [string]$image,
+        [string]$title,
+        [string]$description,
+        [string]$day  # Added day parameter to handle different cases
+    )
+
+    [xml]$event = $EventXaml
+
+    $EventWindowReader = (New-Object System.Xml.XmlNodeReader $event)
+
+    $sync.event = [Windows.Markup.XamlReader]::Load($EventWindowReader)
+
+    $sync.event.title = "ITT | $title"
+
+    # Set new values
+    $titleTextBlock = $sync.event.FindName('title')
+    $subtitleTextBlock = $sync.event.FindName('Subtitle')
+    $tutorialImage = $sync.event.FindName('TutorialImage')
+    $mainStackPanel = $sync.event.FindName('MainStackPanel')
+
+    # Switch-like structure using switch statement
+    switch ($day) {
+        "Birthday" {
+            # Remove the subtitle text block
+            $mainStackPanel.Children.Remove($subtitleTextBlock)
+
+            # Update the title text block
+            $titleTextBlock.Text = "$title"
+        }
+        "NewYear" {
+            # Remove the subtitle text block and image
+            $mainStackPanel.Children.Remove($subtitleTextBlock)
+            $mainStackPanel.Children.Remove($tutorialImage)
+            # Update the title text block
+            $titleTextBlock.Text = "$title - Happy New Year!"
+        }
+        Default {
+            # Default case: update text blocks
+            $titleTextBlock.Text = "$title"
+            $mainStackPanel.Children.Remove($subtitleTextBlock)
+
+            # Lazy loading image event handler
+            $tutorialImage.add_IsVisibleChanged({
+                if ($_.IsVisible) {
+                    $tutorialImage.Source = [System.Windows.Media.Imaging.BitmapImage]::new([Uri]::new($image))
+                }
+            })
+        
+        }
+    }
+
+    # Show dialog
+    $sync.event.ShowDialog() | Out-Null
+}
+
+# Function to check current date and call Show-Event
+function Check-DateAndShowEvent {
+    $currentDate = Get-Date
+
+    if ($currentDate.Month -eq 9 -and $currentDate.Day -eq 1) {
+        Show-Event -image "https://birthday-image-url.com" -title "Birthday" -description "Celebrate your special day!" -day "Birthday"
+    } elseif ($currentDate.Month -eq 1 -and $currentDate.Day -eq 1) {
+        Show-Event -image "https://newyear-image-url.com" -title "New Year" -description "Happy New Year!" -day "NewYear"
+    } else {
+        Show-Event -image "https://raw.githubusercontent.com/emadadel4/ITT/update/Assets/Images/thumbnail.png" -title "Watch tutorial" -day "Default"
+    }
+}
 #===========================================================================
 #region Select elements with a Name attribute using XPath and iterate over them
 #===========================================================================
@@ -12860,6 +12976,7 @@ $sync["window"].Add_ContentRendered({
     DisplayQuotes | Out-Null
     PlayMusic | Out-Null
     $sync["window"].Activate()
+    Check-DateAndShowEvent
 })
 
 # Close Event handler
