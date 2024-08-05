@@ -12873,10 +12873,9 @@ function Show-Event {
     switch ($day) {
         "Birthday" {
             # Remove the subtitle text block
-            $mainStackPanel.Children.Remove($subtitleTextBlock)
-
-            # Update the title text block
             $titleTextBlock.Text = "$title"
+            $tutorialImage.Source = [System.Windows.Media.Imaging.BitmapImage]::new([Uri]::new($image))
+            $mainStackPanel.Children.Remove($subtitleTextBlock)
         }
         "NewYear" {
             # Remove the subtitle text block and image
@@ -12908,7 +12907,7 @@ function Check-DateAndShowEvent {
     $currentDate = Get-Date
 
     if ($currentDate.Month -eq 9 -and $currentDate.Day -eq 1) {
-        Show-Event -image "https://birthday-image-url.com" -title "Birthday" -description "Celebrate your special day!" -day "Birthday"
+        Show-Event -image "https://raw.githubusercontent.com/emadadel4/ITT/main/Assets/Images/happy.jpg" -title "Happy Birthday!" -description "It's my Birthday" -day "Birthday"
     } elseif ($currentDate.Month -eq 1 -and $currentDate.Day -eq 1) {
         Show-Event -image "https://newyear-image-url.com" -title "New Year" -description "Happy New Year!" -day "NewYear"
     } else {
