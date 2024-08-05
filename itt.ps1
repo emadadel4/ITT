@@ -6005,6 +6005,12 @@ $sync.database.Settings = '[
     "Name":"ToggleNumLook",
     "description": "Toggle the Num Lock key state when your computer starts.",
     "category": "Protection"
+  },
+  {
+    "Content": "Sticky Keys",
+    "Name":"ToggleStickyKeys",
+    "description": "Sticky keys is an accessibility feature of some graphical user interfaces which assists users who have physical disabilities or help users reduce repetitive strain injury.",
+    "category": "Accessibility"
   }
 ]' | ConvertFrom-Json
 $sync.database.Tweaks = '[
@@ -7143,7 +7149,7 @@ $sync.database.Tweaks = '[
     ]
   },
   {
-    "name": "Disable Homegroup",
+    "name": "Disable Homegroup Windows 10",
     "description": "Disables HomeGroup  HomeGroup is a passwordprotected home networking service that lets you share your stuff with other PCs that are currently running and connected to your network",
     "check": "false",
     "type": "service",
@@ -10480,7 +10486,7 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
 
         <StackPanel Orientation="Vertical" Width="auto" Margin="10">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Disable Homegroup"     ToolTip="Install it again to update" FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <CheckBox Content="Disable Homegroup Windows 10"     ToolTip="Install it again to update" FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content=""/>
             </StackPanel>
                 <TextBlock Width="555" Background="Transparent" Margin="8" FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="Disables HomeGroup  HomeGroup is a passwordprotected home networking service that lets you share your stuff with other PCs that are currently running and connected to your network"/>
@@ -10529,6 +10535,14 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
                 <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content="Protection"/>
             </StackPanel>
                 <TextBlock Width="555" Background="Transparent" Margin="8" FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="Toggle the Num Lock key state when your computer starts."/>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Width="auto" Margin="10">
+            <StackPanel Orientation="Horizontal">
+                <CheckBox Content="Sticky Keys" Tag=""  Style="{StaticResource ToggleSwitchStyle}" Name="ToggleStickyKeys" ToolTip="Install it again to update" FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content="Accessibility"/>
+            </StackPanel>
+                <TextBlock Width="555" Background="Transparent" Margin="8" FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="Sticky keys is an accessibility feature of some graphical user interfaces which assists users who have physical disabilities or help users reduce repetitive strain injury."/>
         </StackPanel>
 
                     </ListView>
@@ -11505,7 +11519,17 @@ Function Get-ToggleStatus {
         else{
             return $false
         }
-    }    
+    } 
+    
+    if ($ToggleSwitch -eq "ToggleStickyKeys") {
+        $StickyKeys = (Get-ItemProperty -path 'HKCU:\Control Panel\Accessibility\StickyKeys').Flags
+        if($StickyKeys -eq 58){
+            return $false
+        }
+        else{
+            return $true
+        }
+    }
 }
 function Get-SelectedApps {
     $items = @()
@@ -12476,7 +12500,7 @@ function Invoke-Toogle {
         "ToggleDarkMode" {Invoke-DarkMode $(Get-ToggleStatus ToggleDarkMode)}
         "ToggleShowHidden" {Invoke-ShowFile $(Get-ToggleStatus ToggleShowHidden)}
         "ToggleNumLook" {Invoke-NumLock $(Get-ToggleStatus ToggleNumLook)}
-
+        "ToggleStickyKeys" {Invoke-StickyKeys $(Get-ToggleStatus ToggleStickyKeys)}
     }
 }
 Function Invoke-DarkMode {
@@ -12586,6 +12610,27 @@ function Invoke-ShowFile-Extensions {
     Catch{
         Write-Warning "Unable to set $Name due to unhandled exception"
         Write-Warning $psitem.Exception.StackTrace
+    }
+}
+Function Invoke-StickyKeys {
+
+    Param($Enabled)
+    Try {
+        if ($Enabled -eq $false){
+            $value = 510
+        }
+        else {
+            $value = 58
+        }
+        $Path = "HKCU:\Control Panel\Accessibility\StickyKeys"
+        Set-ItemProperty -Path $Path -Name Flags -Value $value
+        Stop-Process -Name explorer -Force
+    }
+    Catch [System.Security.SecurityException] {
+        Write-Warning "Unable to set $Path\$Name to $Value due to a Security Exception"
+    }
+    Catch{
+        Write-Warning "Unable to set $Name due to unhandled exception"
     }
 }
 function About {
