@@ -5999,6 +5999,12 @@ $sync.database.Settings = '[
     "Name":"ToggleDarkMode",
     "description": "Dark Mode is a setting that changes the screen to darker colors, reducing eye strain and saving battery life on OLED screens.",
     "category": "Personalize"
+  },
+  {
+    "Content": "NumLook",
+    "Name":"ToggleNumLook",
+    "description": "Toggle the Num Lock key state when your computer starts.",
+    "category": "Protection"
   }
 ]' | ConvertFrom-Json
 $sync.database.Tweaks = '[
@@ -7134,6 +7140,44 @@ $sync.database.Tweaks = '[
     ],
     "UndoCommand": [
       ""
+    ]
+  },
+  {
+    "name": "Disable Homegroup",
+    "description": "Disables HomeGroup  HomeGroup is a passwordprotected home networking service that lets you share your stuff with other PCs that are currently running and connected to your network",
+    "check": "false",
+    "type": "service",
+    "refresh": "false",
+    "Service": [
+      {
+        "Name": "HomeGroupListener",
+        "StartupType": "Manual ",
+        "DefaultType": "Automatic"
+      },
+      {
+        "Name": "HomeGroupProvider",
+        "StartupType": "Manual ",
+        "DefaultType": "Automatic"
+      }
+    ]
+  },
+  {
+    "name": "e",
+    "description": "e",
+    "check": "false",
+    "type": "service",
+    "refresh": "false",
+    "Service": [
+      {
+        "Name": "a",
+        "StartupType": "Automatic",
+        "DefaultType": null
+      },
+      {
+        "Name": "eeeaaa",
+        "StartupType": "Automatic",
+        "DefaultType": null
+      }
     ]
   }
 ]
@@ -10453,6 +10497,22 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
                 <TextBlock Width="555" Background="Transparent" Margin="8" FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="Clear all pinned apps from the start menu"/>
         </StackPanel>
 
+        <StackPanel Orientation="Vertical" Width="auto" Margin="10">
+            <StackPanel Orientation="Horizontal">
+                <CheckBox Content="Disable Homegroup"     ToolTip="Install it again to update" FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content=""/>
+            </StackPanel>
+                <TextBlock Width="555" Background="Transparent" Margin="8" FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="Disables HomeGroup  HomeGroup is a passwordprotected home networking service that lets you share your stuff with other PCs that are currently running and connected to your network"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Width="auto" Margin="10">
+            <StackPanel Orientation="Horizontal">
+                <CheckBox Content="e"     ToolTip="Install it again to update" FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content=""/>
+            </StackPanel>
+                <TextBlock Width="555" Background="Transparent" Margin="8" FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="e"/>
+        </StackPanel>
+
                     </ListView>
             </TabItem>
             <TabItem x:Name="SettingsTab" Header="{Binding settings}" BorderBrush="{x:Null}" Background="{x:Null}">
@@ -10488,6 +10548,14 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
                 <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content="Personalize"/>
             </StackPanel>
                 <TextBlock Width="555" Background="Transparent" Margin="8" FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="Dark Mode is a setting that changes the screen to darker colors. reducing eye strain and saving battery life on OLED screens."/>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Width="auto" Margin="10">
+            <StackPanel Orientation="Horizontal">
+                <CheckBox Content="NumLook" Tag=""  Style="{StaticResource ToggleSwitchStyle}" Name="ToggleNumLook" ToolTip="Install it again to update" FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content="Protection"/>
+            </StackPanel>
+                <TextBlock Width="555" Background="Transparent" Margin="8" FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="Toggle the Num Lock key state when your computer starts."/>
         </StackPanel>
 
                     </ListView>
@@ -11449,6 +11517,16 @@ Function Get-ToggleStatus {
     if($ToggleSwitch -eq "ToggleShowHidden"){
         $hideextvalue = (Get-ItemPropertyValue -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "ShowSuperHidden")
         if($hideextvalue -eq 1){
+            return $true
+        }
+        else{
+            return $false
+        }
+    }
+
+    if($ToggleSwitch -eq "ToggleNumLook"){
+        $numlockvalue = (Get-ItemProperty -path 'HKCU:\Control Panel\Keyboard').InitialKeyboardIndicators
+        if($numlockvalue -eq 2){
             return $true
         }
         else{
@@ -12424,6 +12502,8 @@ function Invoke-Toogle {
         "ToggleShowExt" {Invoke-ShowFile-Extensions $(Get-ToggleStatus ToggleShowExt)}
         "ToggleDarkMode" {Invoke-DarkMode $(Get-ToggleStatus ToggleDarkMode)}
         "ToggleShowHidden" {Invoke-ShowFile $(Get-ToggleStatus ToggleShowHidden)}
+        "ToggleNumLook" {Invoke-NumLock $(Get-ToggleStatus ToggleNumLook)}
+
     }
 }
 Function Invoke-DarkMode {
@@ -12468,6 +12548,25 @@ Function Invoke-DarkMode {
         Write-Warning $psitem.Exception.StackTrace
     }
 }
+function Invoke-NumLock {
+
+    param(
+        [Parameter(Mandatory = $true)]
+        [bool]$Enabled
+    )
+
+    try {
+        $value = if ($Enabled) { 0 } else { 2 }
+
+        New-PSDrive -PSProvider Registry -Name HKU -Root HKEY_USERS -ErrorAction Stop
+        $Path = "HKU:\.Default\Control Panel\Keyboard"
+        Set-ItemProperty -Path $Path -Name InitialKeyboardIndicators -Value $value -ErrorAction Stop
+    }
+    catch {
+        Write-Warning "An error occurred: $($_.Exception.Message)"
+    }
+}
+
 function Invoke-ShowFile {
     Param($Enabled)
     Try {
