@@ -41,5 +41,15 @@ Function Get-ToggleStatus {
         else{
             return $false
         }
-    }    
+    } 
+    
+    if ($ToggleSwitch -eq "ToggleStickyKeys") {
+        $StickyKeys = (Get-ItemProperty -path 'HKCU:\Control Panel\Accessibility\StickyKeys').Flags
+        if($StickyKeys -eq 58){
+            return $false
+        }
+        else{
+            return $true
+        }
+    }
 }
