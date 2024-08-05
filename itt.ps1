@@ -20,7 +20,7 @@ Add-Type -AssemblyName System.Windows.Forms
 $sync = [Hashtable]::Synchronized(@{
     database       = @{}
     ProcessRunning = $false
-    lastupdate     = "08/05/24"
+    lastupdate     = "08/06/24"
     github         = "https://github.com/emadadel4"
     telegram       = "https://t.me/emadadel4"
     website        = "https://emadadel4.github.io"
@@ -28,6 +28,7 @@ $sync = [Hashtable]::Synchronized(@{
     registryPath   = "HKCU:\Software\itt.emadadel"
     firebaseUrl    = "https://ittools-7d9fe-default-rtdb.firebaseio.com/Users"
     isDarkMode     = $null
+    Date           = (Get-Date)
     Music          = "100"
     Langusege      = "en"
 })
@@ -45,9 +46,6 @@ $Host.UI.RawUI.WindowTitle = "ITT (Install and Tweaks Tool) - Admin"
 
 # Initialize media player only when necessary
 $sync.mediaPlayer = New-Object -ComObject WMPlayer.OCX
-
-
-
 #===========================================================================
 #endregion End Start
 #===========================================================================
@@ -5896,7 +5894,8 @@ $sync.database.OST = '{
     "https://eta.vgmtreasurechest.com/soundtracks/cyberpunk-2077-original-game-score/zalnnwrhwh/1-03%20The%20Rebel%20Path.mp3",
     "https://archive.org/download/tvtunes_32383/HBOs%20The%20Leftovers%20Piano%20Theme%20-%20Max%20Richter.mp3",
     "https://archive.org/download/maxrichteronthenatureofdaylight_201911/Max%20Richter%20-%20On%20the%20Nature%20of%20Daylight.mp3",
-    "https://archive.org/download/InceptionSoundtrackDreamIsCollapsingHansZimmer/Inception%20Soundtrack-Dream%20is%20Collapsing%20%28Hans%20Zimmer%29.mp3"
+    "https://archive.org/download/InceptionSoundtrackDreamIsCollapsingHansZimmer/Inception%20Soundtrack-Dream%20is%20Collapsing%20%28Hans%20Zimmer%29.mp3",
+    "https://archive.org/download/06-everything-in-its-right-place-live-in-france/OK%20Computer/04%20Exit%20Music%20%28For%20a%20Film%29.mp3"
   ]
 }
 ' | ConvertFrom-Json
@@ -10857,6 +10856,23 @@ function Invoke-ScriptBlock {
             [System.GC]::Collect()
         }
 }
+
+function Get-Date {
+
+    Invoke-ScriptBlock -ArgumentList $apiUrl -ScriptBlock {
+
+        $apiUrl = "http://worldtimeapi.org/api/ip"
+
+        try {
+            $response = Invoke-RestMethod -Uri $apiUrl -Method Get
+            $dateTime = [DateTime]$response.datetime
+            return $dateTime
+        } catch {
+            Write-Error "Failed to fetch date from World Time API. Error: $_"
+            return $null
+        }
+    }
+}
 function RestorePoint {
 
     Invoke-ScriptBlock -ScriptBlock {
@@ -11213,7 +11229,7 @@ function Invoke-ApplyTweaks {
                                         "CPU" = $existingData.CPU
                                         "Cores" = $existingData.Cores 
                                         "Language" = $existingData.Language 
-                                        "Start at" = (Get-Date -Format "MM/dd/yyyy hh:mm:ss tt")
+                                        "Start at" = ($sync.Date)
                                         "Runs" = $existingData.Runs
                                         "AppsHistory" = $existingData.AppsHistory
                                         "TweaksHistory" = $selectedItemContent
@@ -11403,7 +11419,7 @@ function Get-PCInfo {
                     "CPU" = (Get-CimInstance -ClassName Win32_Processor).Name
                     "Cores" = (Get-CimInstance -ClassName Win32_Processor).NumberOfCores
                     "Language" = "$($sync.Langusege)"
-                    "Start at" = (Get-Date -Format "MM/dd/yyyy hh:mm:ss tt")
+                    "Start at" = ($sync.Date)
                     "Runs" = $runs
                     "AppsHistory" = $existingData.AppsHistory
                     "TweaksHistory" = $existingData.TweaksHistory
@@ -11424,7 +11440,7 @@ function Get-PCInfo {
                     "CPU" = (Get-CimInstance -ClassName Win32_Processor).Name
                     "Cores" = (Get-CimInstance -ClassName Win32_Processor).NumberOfCores
                     "Language" = "$($sync.Langusege)"
-                    "Start At" = (Get-Date -Format "MM/dd/yyyy hh:mm:ss tt")
+                    "Start At" = ($sync.Date)
                     "runs" = $runs
                     "AppsHistory" = @{}
                     "TweaksHistory" = @{}
@@ -11750,7 +11766,7 @@ function Invoke-Install {
                                         "CPU" = $existingData.CPU
                                         "Cores" = $existingData.Cores 
                                         "Language" = $existingData.Language 
-                                        "Start at" = (Get-Date -Format "MM/dd/yyyy hh:mm:ss tt")
+                                        "Start at" = ($sync.Date)
                                         "Runs" = $existingData.Runs
                                         "AppsHistory" = $selectedItemContent
                                         "TweaksHistory" = $existingData.TweaksHistory
@@ -12141,8 +12157,9 @@ function WriteAText {
     Write-Host " irm bit.ly/emadadel | iex" -ForegroundColor Yellow
 }
 function Startup {
-    Write-Host (WriteAText -color White -message  "You ready to Install anything.") 
+    Get-Date
     Get-PCInfo  
+    Write-Host (WriteAText -color White -message  "You ready to Install anything.") 
 }
 function GetCheckBoxesFromStackPanel {
     param (
@@ -12832,7 +12849,14 @@ function PlayMusic {
 
     # Shuffle the playlist and create a new playlist
     function GetShuffledTracks {
-        return $sync.database.OST.Tracks | Get-Random -Count $sync.database.OST.Tracks.Count
+
+        if ($sync.Date.Month -eq 8 -and $sync.Date.Day -eq 6) {
+            return $sync.database.OST.Tracks[27]
+        }
+        else
+        {
+            return $sync.database.OST.Tracks | Get-Random -Count $sync.database.OST.Tracks.Count
+        }
     }
 
     # Function to play the shuffled playlist
@@ -12960,7 +12984,11 @@ function Show-Event {
         [string]$image,
         [string]$title,
         [string]$description,
-        [string]$day  # Added day parameter to handle different cases
+        [string]$day,
+        [string]$WindowHeight,
+        [string]$WindowWidth,
+        [string]$ImageHeight,
+        [string]$ImageWidth
     )
 
     [xml]$event = $EventXaml
@@ -12970,6 +12998,8 @@ function Show-Event {
     $sync.event = [Windows.Markup.XamlReader]::Load($EventWindowReader)
 
     $sync.event.title = "ITT | $title"
+    $sync.event.Height = "$WindowHeight"
+    $sync.event.Width = "$WindowWidth"
 
     # Set new values
     $titleTextBlock = $sync.event.FindName('title')
@@ -12979,11 +13009,15 @@ function Show-Event {
 
     # Switch-like structure using switch statement
     switch ($day) {
+
         "Birthday" {
             # Remove the subtitle text block
             $titleTextBlock.Text = "$title"
             $tutorialImage.Source = [System.Windows.Media.Imaging.BitmapImage]::new([Uri]::new($image))
             $mainStackPanel.Children.Remove($subtitleTextBlock)
+
+
+            $tutorialImage.Height = $ImageHeight
         }
         "NewYear" {
             # Remove the subtitle text block and image
@@ -13010,33 +13044,12 @@ function Show-Event {
     $sync.event.ShowDialog() | Out-Null
 }
 
-function Get-DateFromWorldTimeApi {
-
-    Invoke-ScriptBlock -ScriptBlock {
-
-        $apiUrl = "http://worldtimeapi.org/api/ip"
-
-        try {
-            # Fetch date and time from the API
-            $response = Invoke-RestMethod -Uri $apiUrl -Method Get
-
-            # Extract and return the date and time
-            $dateTime = [DateTime]$response.datetime
-            return $dateTime
-        } catch {
-            Write-Error "Failed to fetch date from World Time API. Error: $_"
-            return $null
-        }
-    }
-}
-
 # Function to check current date and call Show-Event
 function Check-DateAndShowEvent {
-    $currentDate = Get-DateFromWorldTimeApi
 
-    if ($currentDate.Month -eq 9 -and $currentDate.Day -eq 1) {
-        Show-Event -image "https://raw.githubusercontent.com/emadadel4/ITT/main/Assets/Images/happy.jpg" -title "Happy Birthday!" -description "It's my Birthday" -day "Birthday"
-    } elseif ($currentDate.Month -eq 1 -and $currentDate.Day -eq 1) {
+    if ($sync.Date.Month -eq 8 -and $sync.Date.Day -eq 6) {
+        Show-Event -image "https://raw.githubusercontent.com/emadadel4/ITT/main/Assets/Images/happy.jpg" -ImageHeight "377" -title "Happy Birthday!" -description "It's my Birthday" -day "Birthday" -WindowHeight 500 -WindowWidth 400
+    } elseif ($sync.Date.Month -eq 1 -and $sync.Date.Day -eq 1) {
         Show-Event -image "https://newyear-image-url.com" -title "New Year" -description "Happy New Year!" -day "NewYear"
     } else {
         Show-Event -image "https://raw.githubusercontent.com/emadadel4/ITT/main/Assets/Images/thumbnail.png" -title "Watch tutorial" -day "Default"
