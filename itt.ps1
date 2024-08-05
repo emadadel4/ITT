@@ -10580,6 +10580,7 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
       VerticalAlignment="Center" 
       TextWrapping="Wrap"
       Padding="12"
+      FontWeight="SemiBold"
       FlowDirection="LeftToRight"
       FontSize="15"
       Width="766"
