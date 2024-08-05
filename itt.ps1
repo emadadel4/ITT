@@ -10619,7 +10619,7 @@ $EventXaml = '<Window
   x:Name="Window" Title="Event | ITT " WindowStartupLocation = "CenterScreen" 
   Background="White"
   WindowStyle="ToolWindow"
-  Height="400" Width="600" ShowInTaskbar = "True" Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/icon.ico">
+  Height="400" Width="600" ShowInTaskbar = "True" Topmost="True" Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/icon.ico">
 
   <ScrollViewer VerticalScrollBarVisibility="Auto" Width="Auto">
     <Grid>
