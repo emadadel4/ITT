@@ -17,5 +17,11 @@
     "Name":"ToggleDarkMode",
     "description": "Dark Mode is a setting that changes the screen to darker colors, reducing eye strain and saving battery life on OLED screens.",
     "category": "Personalize"
+  },
+  {
+    "Content": "NumLook",
+    "Name":"ToggleNumLook",
+    "description": "Toggle the Num Lock key state when your computer starts.",
+    "category": "Protection"
   }
 ]
