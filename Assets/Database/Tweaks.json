@@ -1132,5 +1132,24 @@
     "UndoCommand": [
       ""
     ]
+  },
+  {
+    "name": "Disable Homegroup",
+    "description": "Disables HomeGroup  HomeGroup is a passwordprotected home networking service that lets you share your stuff with other PCs that are currently running and connected to your network",
+    "check": "false",
+    "type": "service",
+    "refresh": "false",
+    "Service": [
+      {
+        "Name": "HomeGroupListener",
+        "StartupType": "Manual ",
+        "DefaultType": "Automatic"
+      },
+      {
+        "Name": "HomeGroupProvider",
+        "StartupType": "Manual ",
+        "DefaultType": "Automatic"
+      }
+    ]
   }
 ]
