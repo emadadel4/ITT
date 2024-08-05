@@ -53,9 +53,35 @@ function Show-Event {
     $sync.event.ShowDialog() | Out-Null
 }
 
+function Get-DateFromWorldTimeApi {
+
+    Invoke-ScriptBlock -ScriptBlock {
+
+        $apiUrl = "http://worldtimeapi.org/api/ip"
+
+        try {
+            # Fetch date and time from the API
+            $response = Invoke-RestMethod -Uri $apiUrl -Method Get
+
+            # Extract and return the date and time
+            $dateTime = [DateTime]$response.datetime
+            return $dateTime
+        } catch {
+            Write-Error "Failed to fetch date from World Time API. Error: $_"
+            return $null
+        }
+    }
+}
+
+# Example usage
+$currentDate = Get-DateFromWorldTimeApi
+if ($currentDate) {
+    Write-Output "Current Date and Time: $currentDate"
+}
+
 # Function to check current date and call Show-Event
 function Check-DateAndShowEvent {
-    $currentDate = Get-Date
+    $currentDate = Get-DateFromWorldTimeApi
 
     if ($currentDate.Month -eq 9 -and $currentDate.Day -eq 1) {
         Show-Event -image "https://raw.githubusercontent.com/emadadel4/ITT/main/Assets/Images/happy.jpg" -title "Happy Birthday!" -description "It's my Birthday" -day "Birthday"
