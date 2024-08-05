@@ -10653,53 +10653,53 @@ $EventXaml = '<Window
   WindowStyle="ToolWindow"
   Height="400" Width="600" ShowInTaskbar = "True" Topmost="True" Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/icon.ico">
 
-  <ScrollViewer VerticalScrollBarVisibility="Auto" Width="Auto">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
+    <ScrollViewer VerticalScrollBarVisibility="Auto" Width="Auto">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
 
-        <StackPanel x:Name="MainStackPanel" Height="Auto" Orientation="Vertical">
-            <TextBlock 
-                Name="title"
-                FontSize="30"
+            <StackPanel x:Name="MainStackPanel" Height="Auto" Orientation="Vertical">
+                <TextBlock 
+                    Name="title"
+                    FontSize="30"
+                    Height="Auto"
+                    Width="Auto"
+                    Margin="10"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center" />
+
+
+
+                <!--Image-->
+                <Image x:Name="TutorialImage"
+                HorizontalAlignment="Center" 
+                VerticalAlignment="Center" 
+                Source="https://raw.githubusercontent.com/emadadel4/ITT/main/Assets/Images/thumbnail.png" 
+                Cursor="Hand" 
+                Margin="10" 
+                Height="255" 
+                Width="Auto"/>
+                <!--End Image-->
+
+                <TextBlock 
+                Name="Subtitle"
+                Text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet amet obcaecati dolorem, sit iusto consequatur, libero laudantium officia quo ea officiis nulla esse quod ex, mollitia asperiores! Accusantium, labore pariatur."
+                FontSize="20"
                 Height="Auto"
                 Width="Auto"
-                Margin="10"
+                Margin="20"
                 TextWrapping="Wrap"
                 VerticalAlignment="Center"
-                HorizontalAlignment="Center" />
+                HorizontalAlignment="Left" />
 
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
 
-
-            <!--Image-->
-            <Image x:Name="TutorialImage"
-            HorizontalAlignment="Center" 
-            VerticalAlignment="Center" 
-            Source="https://raw.githubusercontent.com/emadadel4/ITT/main/Assets/Images/thumbnail.png" 
-            Cursor="Hand" 
-            Margin="10" 
-            Height="255" 
-            Width="Auto"/>
-            <!--End Image-->
-
-            <TextBlock 
-            Name="Subtitle"
-            Text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet amet obcaecati dolorem, sit iusto consequatur, libero laudantium officia quo ea officiis nulla esse quod ex, mollitia asperiores! Accusantium, labore pariatur."
-            FontSize="20"
-            Height="Auto"
-            Width="Auto"
-            Margin="20"
-            TextWrapping="Wrap"
-            VerticalAlignment="Center"
-            HorizontalAlignment="Left" />
-
-        </StackPanel>
-    </Grid>
-</ScrollViewer>
-
-  </Window>
+</Window>
 
 '
 #===========================================================================
