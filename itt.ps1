@@ -8011,41 +8011,23 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
                     
                  <!--Catagory-->
  <ComboBox SelectedIndex="0" Name="category" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left" Width="auto">
-
   <ComboBoxItem Content="{Binding all}"></ComboBoxItem>
-
   <ComboBoxItem Content="Web Browsers"></ComboBoxItem>
-
   <ComboBoxItem Content="Media"></ComboBoxItem>
-
   <ComboBoxItem Content="Media Tools"></ComboBoxItem>
-
   <ComboBoxItem Content="Documents"></ComboBoxItem>
-
   <ComboBoxItem Content="Compression"></ComboBoxItem>
-
   <ComboBoxItem Content="Communication"></ComboBoxItem>
-
   <ComboBoxItem Content="File Sharing"></ComboBoxItem>
-
   <ComboBoxItem Content="Imaging"></ComboBoxItem>
-
   <ComboBoxItem Content="Gaming"></ComboBoxItem>
-
   <ComboBoxItem Content="Utilities"></ComboBoxItem>
-
   <ComboBoxItem Content="Disk Tools"></ComboBoxItem>
-
   <ComboBoxItem Content="Development"></ComboBoxItem>
-
   <ComboBoxItem Content="Security"></ComboBoxItem>
-
   <ComboBoxItem Content="Portable"></ComboBoxItem>
-
   <ComboBoxItem Content="Runtimes"></ComboBoxItem>
-
   <ComboBoxItem Content="Drivers"></ComboBoxItem>
-
 </ComboBox>
 <!--End Catagory-->
 
@@ -10549,53 +10531,48 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
             </TabItem>
     </TabControl>
 <!--End TabControl-->
-
         <!--Footer Section-->
-<Grid Grid.Row="2">
-  <!--applyBtn Button-->
-  <Button
-  Name="applyBtn"
-  FontSize="15" 
-  HorizontalAlignment="Right"
-  VerticalAlignment="Bottom"
-  Width="100" Height="40" Margin="20">
-  <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-      <TextBlock Name="applyText" Text="{Binding applyBtn}" Foreground="White" Margin="10,0,0,0" VerticalAlignment="Center"/>
-      <TextBlock Name="applyIcon" Text=" &#xE930;" Foreground="White" FontFamily="Segoe MDL2 Assets" FontSize="15" VerticalAlignment="Center"/>
-  </StackPanel>
-</Button>
-<!--End applyBtn Button-->
-
-
-<!--Install Button-->
-  <Button
-  Name="installBtn"
-  FontSize="15"
-  HorizontalAlignment="Right"
-  VerticalAlignment="Bottom"
-  Width="100" Height="40" Margin="20">
-  <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-      <TextBlock Name="installText" Text="{Binding installBtn}" Foreground="White" Margin="10,0,0,0" VerticalAlignment="Center"/>
-      <TextBlock Name="installIcon" Text=" &#xE930;" Foreground="White" FontFamily="Segoe MDL2 Assets" FontSize="15" VerticalAlignment="Center"/>
-  </StackPanel>
-</Button>
-<!--End Install Button-->
-
-
-<!--End Install Button-->
-</Grid>
-
-<StackPanel Orientation="Horizontal" Grid.Row="3">
-<TextBlock Name="quotes"
-  HorizontalAlignment="Left"
-  VerticalAlignment="Center" 
-  TextWrapping="Wrap"
-  Padding="10"
-  FlowDirection="LeftToRight"
-  FontSize="15"
-  Width="622"
-  />
-</StackPanel>
+  <Grid Grid.Row="2">
+    <!--applyBtn Button-->
+        <Button
+          Name="applyBtn"
+          FontSize="15" 
+          HorizontalAlignment="Right"
+          VerticalAlignment="Bottom"
+          Width="100" Height="40" Margin="20">
+          <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+              <TextBlock Name="applyText" Text="{Binding applyBtn}" Foreground="White" Margin="10,0,0,0" VerticalAlignment="Center"/>
+              <TextBlock Name="applyIcon" Text=" &#xE930;" Foreground="White" FontFamily="Segoe MDL2 Assets" FontSize="15" VerticalAlignment="Center"/>
+          </StackPanel>
+        </Button>
+    <!--End applyBtn Button-->
+    <!--Install Button-->
+      <Button
+        Name="installBtn"
+        FontSize="15"
+        HorizontalAlignment="Right"
+        VerticalAlignment="Bottom"
+        Width="100" Height="40" Margin="20">
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Name="installText" Text="{Binding installBtn}" Foreground="White" Margin="10,0,0,0" VerticalAlignment="Center"/>
+            <TextBlock Name="installIcon" Text=" &#xE930;" Foreground="White" FontFamily="Segoe MDL2 Assets" FontSize="15" VerticalAlignment="Center"/>
+        </StackPanel>
+      </Button>
+    <!--End Install Button-->
+  </Grid>
+  <!--Quotes-->
+    <StackPanel Orientation="Horizontal" Grid.Row="3">
+    <TextBlock Name="quotes"
+      HorizontalAlignment="Left"
+      VerticalAlignment="Center" 
+      TextWrapping="Wrap"
+      Padding="10"
+      FlowDirection="LeftToRight"
+      FontSize="15"
+      Width="622"
+      />
+    </StackPanel>
+  <!--End Quotes-->
 <!--End Footer Section-->
 
 </Grid>
