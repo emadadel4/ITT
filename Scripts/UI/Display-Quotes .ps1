@@ -43,7 +43,7 @@ function DisplayQuotes  {
         # Display welcome text
         Display-WelcomeText
 
-        Start-Sleep -Seconds 18
+        Start-Sleep -Seconds 20
 
         # Loop through shuffled names and display them
         do {
