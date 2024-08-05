@@ -10582,7 +10582,7 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
       Padding="12"
       FlowDirection="LeftToRight"
       FontSize="15"
-      Width="700"
+      Width="766"
       />
     </StackPanel>
   <!--End Quotes-->
@@ -12712,7 +12712,7 @@ function DisplayQuotes  {
         # Display welcome text
         Display-WelcomeText
 
-        Start-Sleep -Seconds 18
+        Start-Sleep -Seconds 20
 
         # Loop through shuffled names and display them
         do {
