@@ -10700,10 +10700,10 @@ $EventXaml = '<Window
                 <TextBlock 
                 Name="Subtitle"
                 Text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet amet obcaecati dolorem, sit iusto consequatur, libero laudantium officia quo ea officiis nulla esse quod ex, mollitia asperiores! Accusantium, labore pariatur."
-                FontSize="auto"
+                FontSize="14"
                 Height="Auto"
                 Width="Auto"
-                Margin="15"
+                Margin="10"
                 TextWrapping="Wrap"
                 VerticalAlignment="Center"
                 HorizontalAlignment="Center" />
@@ -12858,9 +12858,7 @@ function PlayMusic {
 
         PlayShuffledPlaylist
 
-        # while ($true) 
-        # {
-        # }
+       
 
     }
 }
