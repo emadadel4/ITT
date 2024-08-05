@@ -7160,25 +7160,6 @@ $sync.database.Tweaks = '[
         "DefaultType": "Automatic"
       }
     ]
-  },
-  {
-    "name": "e",
-    "description": "e",
-    "check": "false",
-    "type": "service",
-    "refresh": "false",
-    "Service": [
-      {
-        "Name": "a",
-        "StartupType": "Automatic",
-        "DefaultType": null
-      },
-      {
-        "Name": "eeeaaa",
-        "StartupType": "Automatic",
-        "DefaultType": null
-      }
-    ]
   }
 ]
 ' | ConvertFrom-Json
@@ -10503,14 +10484,6 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
                 <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content=""/>
             </StackPanel>
                 <TextBlock Width="555" Background="Transparent" Margin="8" FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="Disables HomeGroup  HomeGroup is a passwordprotected home networking service that lets you share your stuff with other PCs that are currently running and connected to your network"/>
-        </StackPanel>
-
-        <StackPanel Orientation="Vertical" Width="auto" Margin="10">
-            <StackPanel Orientation="Horizontal">
-                <CheckBox Content="e"     ToolTip="Install it again to update" FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content=""/>
-            </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="8" FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="e"/>
         </StackPanel>
 
                     </ListView>
