@@ -12922,12 +12922,6 @@ function Get-DateFromWorldTimeApi {
     }
 }
 
-# Example usage
-$currentDate = Get-DateFromWorldTimeApi
-if ($currentDate) {
-    Write-Output "Current Date and Time: $currentDate"
-}
-
 # Function to check current date and call Show-Event
 function Check-DateAndShowEvent {
     $currentDate = Get-DateFromWorldTimeApi
