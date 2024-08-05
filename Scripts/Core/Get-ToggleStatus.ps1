@@ -31,5 +31,15 @@ Function Get-ToggleStatus {
         else{
             return $false
         }
+    }
+
+    if($ToggleSwitch -eq "ToggleNumLook"){
+        $numlockvalue = (Get-ItemProperty -path 'HKCU:\Control Panel\Keyboard').InitialKeyboardIndicators
+        if($numlockvalue -eq 2){
+            return $true
+        }
+        else{
+            return $false
+        }
     }    
 }
