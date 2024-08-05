@@ -30,7 +30,6 @@
             <Image x:Name="TutorialImage"
             HorizontalAlignment="Center" 
             VerticalAlignment="Center" 
-            Source="https://raw.githubusercontent.com/emadadel4/ITT/update/Assets/Images/thumbnail.png" 
             Cursor="Hand" 
             Margin="10" 
             Height="255" 
