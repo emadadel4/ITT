@@ -5978,7 +5978,18 @@ $sync.database.Quotes = '{
     "الشيء الوحيد الذي يخشونه هو أنت",
     "أبحث عن الوسائل لمحاربة الظلم، لأحول الخوف ضد أولئك الذين يفترسون الخائفين",
     "أعتقد أن أي شيء لا يقتلك يجعلك ببساطة... أكثر غرابة",
-    "إنهم يحتاجون إليك الآن، لكن عندما لا يعودون بحاجة إليك، سيتركونك وحيداً"
+    "إنهم يحتاجون إليك الآن، لكن عندما لا يعودون بحاجة إليك، سيتركونك وحيداً",
+    "الرجل المناسب في المكان الخطأ يمكن أن يحدث فرقاً كبيراً في العالم",
+    "The right man in the wrong place can make all the difference in the world. - Half-Life 2",
+    "We''re Thieves In A World That Don''t Want Us No More. - Arthur Morgan",
+    "I Have A Plan. - Dutch Van Der Linde",
+    "In A World Without Gold, We Might Have Been Heroes!. - Blackbeard",
+    "We Are Free To Follow Our Own Path. There Are Those Who Will Take That Freedom From Us, And Too Many Of You Gladly Give It. - Ezio",
+    "Learning is knowledge, and knowledge is freedom and power. - Altaïr ",
+    "They need you right now, but when they don''t, they''ll cast you out. - Joker",
+    "I Believe That Whatever Doesn''t Kill You, Simply Makes You Stranger. - Joker",
+    "Some men just want to watch the world burn. - Alfred",
+    "You either die a hero or live long enough to see yourself become the villain. - Harvey dent"
   ]
 }
 ' | ConvertFrom-Json
