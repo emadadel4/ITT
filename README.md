@@ -60,6 +60,12 @@
     </a>
 </div>
 
+<p>
+  <p align="center">
+    <img src="https://raw.githubusercontent.com/emadadel4/ITT/main/Assets/Images/demo.PNG" alt="ITT Demo" style="max-width: 100%;">
+</p>
+</p>
+
 <h2>Overview</h2>
 
 <p><strong>ITT (Install and Tweak Tool)</strong></p>
