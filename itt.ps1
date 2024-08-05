@@ -5983,7 +5983,7 @@ $sync.database.Quotes = '{
     "We''re Thieves In A World That Don''t Want Us No More. - Arthur Morgan",
     "I Have A Plan. - Dutch Van Der Linde",
     "In A World Without Gold, We Might Have Been Heroes!. - Blackbeard",
-    "We Are Free To Follow Our Own Path. There Are Those Who Will Take That Freedom From Us, And Too Many Of You Gladly Give It. - Ezio",
+    "We Are Free To Follow Our Own Path. There Are Those Who Will Take That Freedom From Us. - Ezio",
     "Learning is knowledge, and knowledge is freedom and power. - Altaïr ",
     "They need you right now, but when they don''t, they''ll cast you out. - Joker",
     "I Believe That Whatever Doesn''t Kill You, Simply Makes You Stranger. - Joker",
@@ -10579,10 +10579,10 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
       HorizontalAlignment="Left"
       VerticalAlignment="Center" 
       TextWrapping="Wrap"
-      Padding="10"
+      Padding="12"
       FlowDirection="LeftToRight"
       FontSize="15"
-      Width="622"
+      Width="700"
       />
     </StackPanel>
   <!--End Quotes-->
