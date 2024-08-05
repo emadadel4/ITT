@@ -33,10 +33,10 @@
       HorizontalAlignment="Left"
       VerticalAlignment="Center" 
       TextWrapping="Wrap"
-      Padding="10"
+      Padding="12"
       FlowDirection="LeftToRight"
       FontSize="15"
-      Width="622"
+      Width="700"
       />
     </StackPanel>
   <!--End Quotes-->
