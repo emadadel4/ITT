@@ -5887,7 +5887,6 @@ $sync.database.OST = '{
     "https://vgmsite.com/soundtracks/assassin-s-creed-odyssey-original-game-soundtrack/kbtrtqrtyf/01.%20Legend%20of%20the%20Eagle%20Bearer%20%28Main%20Theme%29.mp3",
     "https://archive.org/download/exit-music-for-a-film-westworld-soundtrack/exit-music-for-a-film-westworld-soundtrack.mp3",
     "https://archive.org/download/ludovico-einaudi-experience-mp-3-70-k/Ludovico%20Einaudi%20-%20Experience%28MP3_70K%29.mp3",
-    "https://archive.org/download/GTASanAndreasThemeSongFull_201904/GTA%20San%20Andreas%20Theme%20Song%20Full%20%21%20%21.mp3",
     "https://archive.org/download/interstellar-soundtrack/22%20No%20Time%20for%20Caution%20%28Docking%20scene%29%201.m4a",
     "https://archive.org/download/interstellar-soundtrack/26%20Organ%20Variation.m4a",
     "https://archive.org/download/interstellar-soundtrack/25%20Tick%20Tock.m4a",
@@ -5989,7 +5988,8 @@ $sync.database.Quotes = '{
     "They need you right now, but when they don''t, they''ll cast you out. - Joker",
     "I Believe That Whatever Doesn''t Kill You, Simply Makes You Stranger. - Joker",
     "Some men just want to watch the world burn. - Alfred",
-    "You either die a hero or live long enough to see yourself become the villain. - Harvey dent"
+    "You either die a hero or live long enough to see yourself become the villain. - Harvey dent",
+    "Give a man a gun and he can rob a Bank. Give a man a Bank and he can rob the world. - Mr. Robot"
   ]
 }
 ' | ConvertFrom-Json
