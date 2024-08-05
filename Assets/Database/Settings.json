@@ -23,5 +23,11 @@
     "Name":"ToggleNumLook",
     "description": "Toggle the Num Lock key state when your computer starts.",
     "category": "Protection"
+  },
+  {
+    "Content": "Sticky Keys",
+    "Name":"ToggleStickyKeys",
+    "description": "Sticky keys is an accessibility feature of some graphical user interfaces which assists users who have physical disabilities or help users reduce repetitive strain injury.",
+    "category": "Accessibility"
   }
 ]
