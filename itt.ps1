@@ -10645,6 +10645,7 @@ $EventXaml = '<Window
             <Image x:Name="TutorialImage"
             HorizontalAlignment="Center" 
             VerticalAlignment="Center" 
+            Source="https://raw.githubusercontent.com/emadadel4/ITT/main/Assets/Images/thumbnail.png" 
             Cursor="Hand" 
             Margin="10" 
             Height="255" 
@@ -12905,17 +12906,12 @@ function Show-Event {
 function Check-DateAndShowEvent {
     $currentDate = Get-Date
 
-    if ($currentDate.Month -eq 9 -and $currentDate.Day -eq 1)
-    {
+    if ($currentDate.Month -eq 9 -and $currentDate.Day -eq 1) {
         Show-Event -image "https://raw.githubusercontent.com/emadadel4/ITT/main/Assets/Images/happy.jpg" -title "Happy Birthday!" -description "It's my Birthday" -day "Birthday"
-        
-    } elseif ($currentDate.Month -eq 1 -and $currentDate.Day -eq 1)
-    {
+    } elseif ($currentDate.Month -eq 1 -and $currentDate.Day -eq 1) {
         Show-Event -image "https://newyear-image-url.com" -title "New Year" -description "Happy New Year!" -day "NewYear"
-    } 
-    else
-    {
-        Show-Event -image "https://raw.githubusercontent.com/emadadel4/ITT/update/Assets/Images/thumbnail.png" -title "Watch tutorial" -day "Default"
+    } else {
+        Show-Event -image "https://raw.githubusercontent.com/emadadel4/ITT/main/Assets/Images/thumbnail.png" -title "Watch tutorial" -day "Default"
     }
 }
 #===========================================================================
