@@ -10700,13 +10700,13 @@ $EventXaml = '<Window
                 <TextBlock 
                 Name="Subtitle"
                 Text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet amet obcaecati dolorem, sit iusto consequatur, libero laudantium officia quo ea officiis nulla esse quod ex, mollitia asperiores! Accusantium, labore pariatur."
-                FontSize="20"
+                FontSize="auto"
                 Height="Auto"
                 Width="Auto"
-                Margin="20"
+                Margin="15"
                 TextWrapping="Wrap"
                 VerticalAlignment="Center"
-                HorizontalAlignment="Left" />
+                HorizontalAlignment="Center" />
 
             </StackPanel>
         </Grid>
@@ -10855,23 +10855,6 @@ function Invoke-ScriptBlock {
             $sync.runspace.Close()
             [System.GC]::Collect()
         }
-}
-
-function Get-Date {
-
-    Invoke-ScriptBlock -ArgumentList $apiUrl -ScriptBlock {
-
-        $apiUrl = "http://worldtimeapi.org/api/ip"
-
-        try {
-            $response = Invoke-RestMethod -Uri $apiUrl -Method Get
-            $dateTime = [DateTime]$response.datetime
-            return $dateTime
-        } catch {
-            Write-Error "Failed to fetch date from World Time API. Error: $_"
-            return $null
-        }
-    }
 }
 function RestorePoint {
 
@@ -11419,7 +11402,7 @@ function Get-PCInfo {
                     "CPU" = (Get-CimInstance -ClassName Win32_Processor).Name
                     "Cores" = (Get-CimInstance -ClassName Win32_Processor).NumberOfCores
                     "Language" = "$($sync.Langusege)"
-                    "Start at" = ($sync.Date)
+                    "Start at" = (Get-Date -Format "MM/dd/yyyy hh:mm:ss tt")
                     "Runs" = $runs
                     "AppsHistory" = $existingData.AppsHistory
                     "TweaksHistory" = $existingData.TweaksHistory
@@ -11440,7 +11423,7 @@ function Get-PCInfo {
                     "CPU" = (Get-CimInstance -ClassName Win32_Processor).Name
                     "Cores" = (Get-CimInstance -ClassName Win32_Processor).NumberOfCores
                     "Language" = "$($sync.Langusege)"
-                    "Start At" = ($sync.Date)
+                    "Start At" = (Get-Date -Format "MM/dd/yyyy hh:mm:ss tt")
                     "runs" = $runs
                     "AppsHistory" = @{}
                     "TweaksHistory" = @{}
@@ -12157,7 +12140,6 @@ function WriteAText {
     Write-Host " irm bit.ly/emadadel | iex" -ForegroundColor Yellow
 }
 function Startup {
-    Get-Date
     Get-PCInfo  
     Write-Host (WriteAText -color White -message  "You ready to Install anything.") 
 }
@@ -12840,39 +12822,47 @@ function ClearFilter {
     $collectionView.Filter = $null
 }
 function PlayMusic {
-    # Function to play an audio track
-    function PlayAudio($url) {
-        $mediaItem = $sync.mediaPlayer.newMedia($url)
-        $sync.mediaPlayer.currentPlaylist.appendItem($mediaItem)
-        $sync.mediaPlayer.controls.play()
-    }
+    
+    Invoke-ScriptBlock -ScriptBlock{
 
-    # Shuffle the playlist and create a new playlist
-    function GetShuffledTracks {
-
-        if ($sync.Date.Month -eq 8 -and $sync.Date.Day -eq 6) {
-            return $sync.database.OST.Tracks[27]
+        # Function to play an audio track
+        function PlayAudio($url) {
+            $mediaItem = $sync.mediaPlayer.newMedia($url)
+            $sync.mediaPlayer.currentPlaylist.appendItem($mediaItem)
+            $sync.mediaPlayer.controls.play()
         }
-        else
-        {
-            return $sync.database.OST.Tracks | Get-Random -Count $sync.database.OST.Tracks.Count
-        }
-    }
 
-    # Function to play the shuffled playlist
-    function PlayShuffledPlaylist {
-        $shuffledTracks = GetShuffledTracks
-        foreach ($url in $shuffledTracks) {
-            PlayAudio $url
-            # Wait for the track to finish playing
-            while ($sync.mediaPlayer.playState -in 3, 6) {
-                Start-Sleep -Milliseconds 100
+        # Shuffle the playlist and create a new playlist
+        function GetShuffledTracks {
+
+            if ($sync.Date.Month -eq 9 -and $sync.Date.Day -eq 1) {
+                return $sync.database.OST.Tracks[27]
+            }
+            else
+            {
+                return $sync.database.OST.Tracks | Get-Random -Count $sync.database.OST.Tracks.Count
             }
         }
-    }
 
-    # Play the shuffled playlist
-    PlayShuffledPlaylist
+        # Function to play the shuffled playlist
+        function PlayShuffledPlaylist {
+            $shuffledTracks = GetShuffledTracks
+            foreach ($url in $shuffledTracks) {
+                PlayAudio $url
+                # Wait for the track to finish playing
+                while ($sync.mediaPlayer.playState -in 3, 6) {
+                    Start-Sleep -Milliseconds 100
+                }
+            }
+        }
+
+        PlayShuffledPlaylist
+
+        # while ($true) 
+        # {
+        # }
+
+    }
 }
 function MuteMusic {
     param($value)
@@ -13014,9 +13004,7 @@ function Show-Event {
             # Remove the subtitle text block
             $titleTextBlock.Text = "$title"
             $tutorialImage.Source = [System.Windows.Media.Imaging.BitmapImage]::new([Uri]::new($image))
-            $mainStackPanel.Children.Remove($subtitleTextBlock)
-
-
+            $subtitleTextBlock.Text = "$description"
             $tutorialImage.Height = $ImageHeight
         }
         "NewYear" {
@@ -13046,9 +13034,8 @@ function Show-Event {
 
 # Function to check current date and call Show-Event
 function Check-DateAndShowEvent {
-
-    if ($sync.Date.Month -eq 8 -and $sync.Date.Day -eq 6) {
-        Show-Event -image "https://raw.githubusercontent.com/emadadel4/ITT/main/Assets/Images/happy.jpg" -ImageHeight "377" -title "Happy Birthday!" -description "It's my Birthday" -day "Birthday" -WindowHeight 500 -WindowWidth 400
+    if ($sync.Date.Month -eq 9 -and $sync.Date.Day -eq 1) {
+        Show-Event -image "https://raw.githubusercontent.com/emadadel4/ITT/main/Assets/Images/happy.jpg" -ImageHeight "377" -title "Happy Birthday!" -description "It's my Birthday and favorite song `n` Exit Music (For A Film) - Radiohead" -day "Birthday" -WindowHeight 588 -WindowWidth 400
     } elseif ($sync.Date.Month -eq 1 -and $sync.Date.Day -eq 1) {
         Show-Event -image "https://newyear-image-url.com" -title "New Year" -description "Happy New Year!" -day "NewYear"
     } else {
