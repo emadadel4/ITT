@@ -387,7 +387,13 @@ do {
 
         1 = "Disabled"
         2 = "Automatic"
-        3 = "Automatic"
+        4 = "Manual "
+    }
+
+    $DefaultType = @{
+
+        1 = "Disabled"
+        2 = "Automatic"
         4 = "Manual "
     }
     
@@ -405,11 +411,22 @@ do {
         }
     } until ([int]$choice -in $StartupType.Keys)
 
+    do {
+        Write-Host "What is Default Type will be?"
+        foreach ($key in $DefaultType.Keys | Sort-Object) {
+            Write-Host "$key - $($DefaultType[$key])"
+        }
+        $choice = Read-Host "Enter the number corresponding to the Key Type"
+        if ([int]$choice -in $DefaultType.Keys) {
+            $DeType = $DefaultType[[int]$choice]
+        } else {
+            Write-Host "Invalid choice. Please select a valid option."
+        }
+    } until ([int]$choice -in $DefaultType.Keys)
 
-    $Automatic = Read-Host "Enter Service Default State: You can skip this Press [Enter]"
-    if ($Automatic -eq "") { $Automatic = "Manual" }  # Set default value if empty
 
     $Names += $Name
+
 
     $continue = Read-Host "Do you want to add another Service in current Tweak ? (y/n)"
 } while ($continue -eq "y")
@@ -428,7 +445,7 @@ $data = [Ordered]@{
             [Ordered]@{
                 "Name" = $_
                 "StartupType" = $Type
-                "DefaultType" = $Automatic
+                "DefaultType" = $DeType
             }
         }
     )
