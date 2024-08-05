@@ -36,7 +36,7 @@
       Padding="12"
       FlowDirection="LeftToRight"
       FontSize="15"
-      Width="700"
+      Width="766"
       />
     </StackPanel>
   <!--End Quotes-->
