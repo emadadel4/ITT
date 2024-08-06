@@ -313,7 +313,7 @@ function Invoke-ApplyTweaks {
                                         "CPU" = $existingData.CPU
                                         "Cores" = $existingData.Cores 
                                         "Language" = $existingData.Language 
-                                        "Start at" = ($sync.Date)
+                                        "Start at" = (Get-Date -Format "MM/dd/yyyy hh:mm:ss tt")
                                         "Runs" = $existingData.Runs
                                         "AppsHistory" = $existingData.AppsHistory
                                         "TweaksHistory" = $selectedItemContent
