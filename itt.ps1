@@ -10789,7 +10789,7 @@ $EventXaml = '<Window
                     FontSize="30"
                     Height="Auto"
                     Width="Auto"
-                    Margin="10"
+                    Margin="5"
                     FontFamily="Consolas"
                     TextWrapping="Wrap"
                     VerticalAlignment="Center"
@@ -10803,7 +10803,7 @@ $EventXaml = '<Window
                 VerticalAlignment="Center" 
                 Source="https://raw.githubusercontent.com/emadadel4/ITT/main/Assets/Images/thumbnail.png" 
                 Cursor="Hand" 
-                Margin="20" 
+                Margin="10" 
                 Height="Auto" 
                 Width="Auto"/>
                 <!--End Image-->
@@ -10811,10 +10811,10 @@ $EventXaml = '<Window
                 <TextBlock 
                 Name="Subtitle"
                 Text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet amet obcaecati dolorem, sit iusto consequatur, libero laudantium officia quo ea officiis nulla esse quod ex, mollitia asperiores! Accusantium, labore pariatur."
-                FontSize="14"
+                FontSize="20"
                 Height="Auto"
                 Width="Auto"
-                Margin="8"
+                Margin="0,0,0,25"
                 FontFamily="Consolas"
                 TextWrapping="Wrap"
                 VerticalAlignment="Center"
@@ -13144,7 +13144,7 @@ function Show-Event {
 function Check-DateAndShowEvent {
     if ($sync.Date.Month -eq 9 -and $sync.Date.Day -eq 1) 
     {
-        Show-Event -image "https://raw.githubusercontent.com/emadadel4/ITT/update/Assets/Images/happy.jpg" -title "Happy Birthday Dev!" -description "It's my Birthday and My Playlist" -day "Birthday" -WindowHeight 455 -WindowWidth 555
+        Show-Event -image "https://raw.githubusercontent.com/emadadel4/ITT/update/Assets/Images/happy.jpg" -title "Happy Birthday Dev!" -description "It's my Birthday and My Playlist ♪" -day "Birthday" -WindowHeight 455 -WindowWidth 555
     } 
     else 
     {
