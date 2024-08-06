@@ -19,7 +19,7 @@
                     FontSize="30"
                     Height="Auto"
                     Width="Auto"
-                    Margin="10"
+                    Margin="5"
                     FontFamily="Consolas"
                     TextWrapping="Wrap"
                     VerticalAlignment="Center"
@@ -33,7 +33,7 @@
                 VerticalAlignment="Center" 
                 Source="https://raw.githubusercontent.com/emadadel4/ITT/main/Assets/Images/thumbnail.png" 
                 Cursor="Hand" 
-                Margin="20" 
+                Margin="10" 
                 Height="Auto" 
                 Width="Auto"/>
                 <!--End Image-->
@@ -41,10 +41,10 @@
                 <TextBlock 
                 Name="Subtitle"
                 Text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet amet obcaecati dolorem, sit iusto consequatur, libero laudantium officia quo ea officiis nulla esse quod ex, mollitia asperiores! Accusantium, labore pariatur."
-                FontSize="14"
+                FontSize="20"
                 Height="Auto"
                 Width="Auto"
-                Margin="8"
+                Margin="0,0,0,25"
                 FontFamily="Consolas"
                 TextWrapping="Wrap"
                 VerticalAlignment="Center"
