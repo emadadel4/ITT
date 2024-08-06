@@ -5993,6 +5993,18 @@ $sync.database.OST = '{
     {
       "name": "Roots - Imagine Dragons",
       "url": "https://archive.org/download/ImagineDragons_20190510_0456/Imagine%20Dragons%20-%20Roots.mp3"
+    },
+    {
+      "name": "Believer - Imagine Dragons",
+      "url": "https://archive.org/download/bunchofimaginedragons/14%20Imagine%20Dragons%20-%20Believer.mp3"
+    },
+    {
+      "name": "Thunder - Imagine Dragons",
+      "url": "https://archive.org/download/imaginedragonsmusicalbum/Imagine%20Dragons%20-%20Thunder.mp3"
+    },
+    {
+      "name": "Birds - Imagine Dragons",
+      "url": "https://archive.org/download/bunchofimaginedragons/14%20Imagine%20Dragons%20-%20Birds.mp3"
     }
   ]
 }
@@ -12935,7 +12947,7 @@ function PlayMusic {
     # Shuffle the playlist and create a new playlist
     function GetShuffledTracks {
         
-        if ($sync.Date.Month -eq 1 -and $sync.Date.Day -eq 1) {
+        if ($sync.Date.Month -eq 9 -and $sync.Date.Day -eq 1) {
 
             return $sync.database.OST.Favorite | Get-Random -Count $sync.database.OST.Favorite.Count
         }
