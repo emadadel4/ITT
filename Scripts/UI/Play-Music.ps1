@@ -1,30 +1,44 @@
 function PlayMusic {
-    # Function to play an audio track
-    function PlayAudio($url) {
-        $mediaItem = $sync.mediaPlayer.newMedia($url)
-        $sync.mediaPlayer.currentPlaylist.appendItem($mediaItem)
-        $sync.mediaPlayer.controls.play()
-    }
+    
+    Invoke-ScriptBlock -ScriptBlock{
 
-    # Shuffle the playlist and create a new playlist
-    function GetShuffledTracks {
-        return $sync.database.OST.Tracks | Get-Random -Count $sync.database.OST.Tracks.Count
-    }
+        # Function to play an audio track
+        function PlayAudio($url) {
+            $mediaItem = $sync.mediaPlayer.newMedia($url)
+            $sync.mediaPlayer.currentPlaylist.appendItem($mediaItem)
+            $sync.mediaPlayer.controls.play()
+        }
 
-    # Function to play the shuffled playlist
-    function PlayShuffledPlaylist {
-        $shuffledTracks = GetShuffledTracks
-        foreach ($url in $shuffledTracks) {
-            PlayAudio $url
-            # Wait for the track to finish playing
-            while ($sync.mediaPlayer.playState -in 3, 6) {
-                Start-Sleep -Milliseconds 100
+        # Shuffle the playlist and create a new playlist
+        function GetShuffledTracks {
+
+            if ($sync.Date.Month -eq 9 -and $sync.Date.Day -eq 1) {
+                return $sync.database.OST.Tracks[27]
+            }
+            else
+            {
+                return $sync.database.OST.Tracks | Get-Random -Count $sync.database.OST.Tracks.Count
             }
         }
-    }
 
-    # Play the shuffled playlist
-    PlayShuffledPlaylist
+        # Function to play the shuffled playlist
+        function PlayShuffledPlaylist {
+            $shuffledTracks = GetShuffledTracks
+            foreach ($url in $shuffledTracks) {
+                PlayAudio $url
+                # Wait for the track to finish playing
+                while ($sync.mediaPlayer.playState -in 3, 6) {
+                    Start-Sleep -Milliseconds 100
+                }
+            }
+        }
+
+        while ($true) 
+        {
+            PlayShuffledPlaylist
+        }
+
+    }
 }
 function MuteMusic {
     param($value)

@@ -3,7 +3,11 @@ function Show-Event {
         [string]$image,
         [string]$title,
         [string]$description,
-        [string]$day  # Added day parameter to handle different cases
+        [string]$day,
+        [string]$WindowHeight,
+        [string]$WindowWidth,
+        [string]$ImageHeight,
+        [string]$ImageWidth
     )
 
     [xml]$event = $EventXaml
@@ -13,6 +17,8 @@ function Show-Event {
     $sync.event = [Windows.Markup.XamlReader]::Load($EventWindowReader)
 
     $sync.event.title = "ITT | $title"
+    $sync.event.Height = "$WindowHeight"
+    $sync.event.Width = "$WindowWidth"
 
     # Set new values
     $titleTextBlock = $sync.event.FindName('title')
@@ -22,11 +28,12 @@ function Show-Event {
 
     # Switch-like structure using switch statement
     switch ($day) {
+
         "Birthday" {
             # Remove the subtitle text block
             $titleTextBlock.Text = "$title"
             $tutorialImage.Source = [System.Windows.Media.Imaging.BitmapImage]::new([Uri]::new($image))
-            $mainStackPanel.Children.Remove($subtitleTextBlock)
+            $subtitleTextBlock.Text = "$description"
         }
         "NewYear" {
             # Remove the subtitle text block and image
@@ -53,35 +60,14 @@ function Show-Event {
     $sync.event.ShowDialog() | Out-Null
 }
 
-function Get-DateFromWorldTimeApi {
-
-    Invoke-ScriptBlock -ScriptBlock {
-
-        $apiUrl = "http://worldtimeapi.org/api/ip"
-
-        try {
-            # Fetch date and time from the API
-            $response = Invoke-RestMethod -Uri $apiUrl -Method Get
-
-            # Extract and return the date and time
-            $dateTime = [DateTime]$response.datetime
-            return $dateTime
-        } catch {
-            Write-Error "Failed to fetch date from World Time API. Error: $_"
-            return $null
-        }
-    }
-}
-
 # Function to check current date and call Show-Event
 function Check-DateAndShowEvent {
-    $currentDate = Get-DateFromWorldTimeApi
-
-    if ($currentDate.Month -eq 9 -and $currentDate.Day -eq 1) {
-        Show-Event -image "https://raw.githubusercontent.com/emadadel4/ITT/main/Assets/Images/happy.jpg" -title "Happy Birthday!" -description "It's my Birthday" -day "Birthday"
-    } elseif ($currentDate.Month -eq 1 -and $currentDate.Day -eq 1) {
-        Show-Event -image "https://newyear-image-url.com" -title "New Year" -description "Happy New Year!" -day "NewYear"
-    } else {
-        Show-Event -image "https://raw.githubusercontent.com/emadadel4/ITT/main/Assets/Images/thumbnail.png" -title "Watch tutorial" -day "Default"
+    if ($sync.Date.Month -eq 9 -and $sync.Date.Day -eq 1) 
+    {
+        Show-Event -image "https://raw.githubusercontent.com/emadadel4/ITT/update/Assets/Images/happy.jpg" -title "Happy Birthday Dev!" -description "It's my Birthday and favorite song `n` Exit Music - Radiohead. Playing" -day "Birthday" -WindowHeight 455 -WindowWidth 555
+    } 
+    else 
+    {
+        Show-Event -image "https://raw.githubusercontent.com/emadadel4/ITT/main/Assets/Images/thumbnail.png" -title "Watch tutorial" -day "Default" -WindowHeight 455 -WindowWidth 555
     }
 }

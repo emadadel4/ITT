@@ -23,6 +23,6 @@ function WriteAText {
     Write-Host " irm bit.ly/emadadel | iex" -ForegroundColor Yellow
 }
 function Startup {
-    Write-Host (WriteAText -color White -message  "You ready to Install anything.") 
     Get-PCInfo  
+    Write-Host (WriteAText -color White -message  "You ready to Install anything.") 
 }
