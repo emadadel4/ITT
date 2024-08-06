@@ -20,6 +20,7 @@
                     Height="Auto"
                     Width="Auto"
                     Margin="10"
+                    FontFamily="Consolas"
                     TextWrapping="Wrap"
                     VerticalAlignment="Center"
                     HorizontalAlignment="Center" />
@@ -32,21 +33,22 @@
                 VerticalAlignment="Center" 
                 Source="https://raw.githubusercontent.com/emadadel4/ITT/main/Assets/Images/thumbnail.png" 
                 Cursor="Hand" 
-                Margin="10" 
-                Height="255" 
+                Margin="20" 
+                Height="Auto" 
                 Width="Auto"/>
                 <!--End Image-->
 
                 <TextBlock 
                 Name="Subtitle"
                 Text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet amet obcaecati dolorem, sit iusto consequatur, libero laudantium officia quo ea officiis nulla esse quod ex, mollitia asperiores! Accusantium, labore pariatur."
-                FontSize="20"
+                FontSize="14"
                 Height="Auto"
                 Width="Auto"
-                Margin="20"
+                Margin="8"
+                FontFamily="Consolas"
                 TextWrapping="Wrap"
                 VerticalAlignment="Center"
-                HorizontalAlignment="Left" />
+                HorizontalAlignment="Center" />
 
             </StackPanel>
         </Grid>
