@@ -20,7 +20,7 @@ Add-Type -AssemblyName System.Windows.Forms
 $sync = [Hashtable]::Synchronized(@{
     database       = @{}
     ProcessRunning = $false
-    lastupdate     = "08/06/24"
+    lastupdate     = "08/07/24"
     github         = "https://github.com/emadadel4"
     telegram       = "https://t.me/emadadel4"
     website        = "https://emadadel4.github.io"
@@ -13144,7 +13144,7 @@ function Show-Event {
 function Check-DateAndShowEvent {
     if ($sync.Date.Month -eq 9 -and $sync.Date.Day -eq 1) 
     {
-        Show-Event -image "https://raw.githubusercontent.com/emadadel4/ITT/update/Assets/Images/happy.jpg" -title "Happy Birthday Dev!" -description "It's my Birthday and favorite song `n` Exit Music - Radiohead. Playing" -day "Birthday" -WindowHeight 455 -WindowWidth 555
+        Show-Event -image "https://raw.githubusercontent.com/emadadel4/ITT/update/Assets/Images/happy.jpg" -title "Happy Birthday Dev!" -description "It's my Birthday and My Playlist" -day "Birthday" -WindowHeight 455 -WindowWidth 555
     } 
     else 
     {
