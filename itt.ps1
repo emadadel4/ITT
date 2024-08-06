@@ -13148,7 +13148,7 @@ function Check-DateAndShowEvent {
     } 
     else 
     {
-        Show-Event -image "https://raw.githubusercontent.com/emadadel4/ITT/main/Assets/Images/thumbnail.png" -title "Watch demo" -day "Default" -WindowHeight 455 -WindowWidth 555
+        Show-Event -image "https://raw.githubusercontent.com/emadadel4/ITT/main/Assets/Images/thumbnail.jpg" -title "Watch demo" -day "Default" -WindowHeight 455 -WindowWidth 555
     }
 }
 #===========================================================================
