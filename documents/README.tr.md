@@ -74,7 +74,7 @@ veya
 
   ## Demo'yu İzleyin
 
-  [![Videoyu İzleyin](https://img.youtube.com/vi/QmO82OTsU5c/hqdefault.jpg)](https://www.youtube.com/watch?v=QmO82OTsU5c)
+  [![Videoyu İzleyin](https://raw.githubusercontent.com/emadadel4/ITT/main/Assets/Images/thumbnail.jpg)](https://www.youtube.com/watch?v=QmO82OTsU5c)
 </div>
 
 <h2> 📦 Yeni Bir Uygulama/Ayar/OST/Alıntı Nasıl Eklenir</h2>

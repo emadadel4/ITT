@@ -78,7 +78,7 @@ O
 
   ## Ver Demo
 
-  [![Ver Video](https://img.youtube.com/vi/QmO82OTsU5c/hqdefault.jpg)](https://www.youtube.com/watch?v=QmO82OTsU5c)
+  [![Ver Video](https://raw.githubusercontent.com/emadadel4/ITT/main/Assets/Images/thumbnail.jpg)](https://www.youtube.com/watch?v=QmO82OTsU5c)
 </div>
 
 <h2> 📦 Cómo Agregar una Nueva Aplicación/Personalización/OST/Cita</h2>

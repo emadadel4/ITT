@@ -74,7 +74,7 @@
 
   ## Посмотреть демонстрацию
 
-  [![Посмотреть видео](https://img.youtube.com/vi/QmO82OTsU5c/hqdefault.jpg)](https://www.youtube.com/watch?v=QmO82OTsU5c)
+  [![Посмотреть видео](https://raw.githubusercontent.com/emadadel4/ITT/main/Assets/Images/thumbnail.jpg)](https://www.youtube.com/watch?v=QmO82OTsU5c)
 </div>
 
 <h2> 📦 Как добавить новое приложение/настройку/OST/цитату</h2>

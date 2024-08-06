@@ -78,7 +78,7 @@ Oder
 
   ## Demo ansehen
 
-  [![Video ansehen](https://img.youtube.com/vi/QmO82OTsU5c/hqdefault.jpg)](https://www.youtube.com/watch?v=QmO82OTsU5c)
+  [![Video ansehen](https://raw.githubusercontent.com/emadadel4/ITT/main/Assets/Images/thumbnail.jpg)](https://www.youtube.com/watch?v=QmO82OTsU5c)
 </div>
 
 <h2> 📦 So fügen Sie eine neue Anwendung/Anpassung/OST/Zitat hinzu</h2>

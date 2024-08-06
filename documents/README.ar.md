@@ -78,7 +78,7 @@
 
   ## شاهد العرض التوضيحي
 
-  [![شاهد الفيديو](https://img.youtube.com/vi/QmO82OTsU5c/hqdefault.jpg)](https://www.youtube.com/watch?v=QmO82OTsU5c)
+  [![شاهد الفيديو](https://raw.githubusercontent.com/emadadel4/ITT/main/Assets/Images/thumbnail.jpg)](https://www.youtube.com/watch?v=QmO82OTsU5c)
 </div>
 
 <h2> 📦 كيفية إضافة تطبيق/تخصيص/موسيقى/اقتباس جديد</h2>

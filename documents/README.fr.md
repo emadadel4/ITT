@@ -80,7 +80,7 @@ ou
 
   ## Regardez la Démo
 
-  [![Regardez la vidéo](https://img.youtube.com/vi/QmO82OTsU5c/hqdefault.jpg)](https://www.youtube.com/watch?v=QmO82OTsU5c)
+  [![Regardez la vidéo](https://raw.githubusercontent.com/emadadel4/ITT/main/Assets/Images/thumbnail.jpg)](https://www.youtube.com/watch?v=QmO82OTsU5c)
 </div>
 
 <h2> 📦 Comment Ajouter une Nouvelle Application/Réglage/OST/Quote</h2>
