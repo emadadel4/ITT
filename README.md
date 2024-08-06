@@ -103,7 +103,7 @@ or
   
   ## Watch the Demo
 
-  [![Watch the video](https://img.youtube.com/vi/QmO82OTsU5c/hqdefault.jpg)](https://www.youtube.com/watch?v=QmO82OTsU5c)
+  [![Watch the video](https://raw.githubusercontent.com/emadadel4/ITT/main/Assets/Images/thumbnail.png)](https://www.youtube.com/watch?v=QmO82OTsU5c)
 </div>
 
 <h2> 📦 How to Add a New App/Tweak/OST/Quote</h2>
