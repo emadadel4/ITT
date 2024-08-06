@@ -64,7 +64,7 @@ function Show-Event {
 function Check-DateAndShowEvent {
     if ($sync.Date.Month -eq 9 -and $sync.Date.Day -eq 1) 
     {
-        Show-Event -image "https://raw.githubusercontent.com/emadadel4/ITT/update/Assets/Images/happy.jpg" -title "Happy Birthday Dev!" -description "It's my Birthday and My Playlist" -day "Birthday" -WindowHeight 455 -WindowWidth 555
+        Show-Event -image "https://raw.githubusercontent.com/emadadel4/ITT/update/Assets/Images/happy.jpg" -title "Happy Birthday Dev!" -description "It's my Birthday and My Playlist ♪" -day "Birthday" -WindowHeight 455 -WindowWidth 555
     } 
     else 
     {
