@@ -5992,7 +5992,7 @@ $sync.database.OST = '{
     },
     {
       "name": "Roots - Imagine Dragons",
-      "url": "https://archive.org/download/06-everything-in-its-right-place-live-in-france/OK%20Computer/04%20Exit%20Music%20%28For%20a%20Film%29.mp3"
+      "url": "https://archive.org/download/ImagineDragons_20190510_0456/Imagine%20Dragons%20-%20Roots.mp3"
     }
   ]
 }
@@ -12935,7 +12935,7 @@ function PlayMusic {
     # Shuffle the playlist and create a new playlist
     function GetShuffledTracks {
         
-        if ($sync.Date.Month -eq 9 -and $sync.Date.Day -eq 1) {
+        if ($sync.Date.Month -eq 1 -and $sync.Date.Day -eq 1) {
 
             return $sync.database.OST.Favorite | Get-Random -Count $sync.database.OST.Favorite.Count
         }
