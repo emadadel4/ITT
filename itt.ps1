@@ -10680,6 +10680,7 @@ $EventXaml = '<Window
                     Height="Auto"
                     Width="Auto"
                     Margin="10"
+                    FontFamily="Consolas"
                     TextWrapping="Wrap"
                     VerticalAlignment="Center"
                     HorizontalAlignment="Center" />
@@ -10692,8 +10693,8 @@ $EventXaml = '<Window
                 VerticalAlignment="Center" 
                 Source="https://raw.githubusercontent.com/emadadel4/ITT/main/Assets/Images/thumbnail.png" 
                 Cursor="Hand" 
-                Margin="10" 
-                Height="255" 
+                Margin="20" 
+                Height="Auto" 
                 Width="Auto"/>
                 <!--End Image-->
 
@@ -10703,7 +10704,8 @@ $EventXaml = '<Window
                 FontSize="14"
                 Height="Auto"
                 Width="Auto"
-                Margin="10"
+                Margin="8"
+                FontFamily="Consolas"
                 TextWrapping="Wrap"
                 VerticalAlignment="Center"
                 HorizontalAlignment="Center" />
@@ -13003,7 +13005,6 @@ function Show-Event {
             $titleTextBlock.Text = "$title"
             $tutorialImage.Source = [System.Windows.Media.Imaging.BitmapImage]::new([Uri]::new($image))
             $subtitleTextBlock.Text = "$description"
-            $tutorialImage.Height = $ImageHeight
         }
         "NewYear" {
             # Remove the subtitle text block and image
@@ -13033,7 +13034,7 @@ function Show-Event {
 # Function to check current date and call Show-Event
 function Check-DateAndShowEvent {
     if ($sync.Date.Month -eq 8 -and $sync.Date.Day -eq 6) {
-        Show-Event -image "https://raw.githubusercontent.com/emadadel4/ITT/main/Assets/Images/happy.jpg" -ImageHeight "377" -title "Happy Birthday!" -description "It's my Birthday and favorite song `n` Exit Music (For A Film) - Radiohead" -day "Birthday" -WindowHeight 588 -WindowWidth 400
+        Show-Event -image "https://raw.githubusercontent.com/emadadel4/ITT/update/Assets/Images/happy.jpg" -title "Happy Birthday Dev!" -description "It's my Birthday and favorite song `n` Exit Music - Radiohead. Playing" -day "Birthday" -WindowHeight 455 -WindowWidth 555
     } elseif ($sync.Date.Month -eq 1 -and $sync.Date.Day -eq 1) {
         Show-Event -image "https://newyear-image-url.com" -title "New Year" -description "Happy New Year!" -day "NewYear"
     } else {
