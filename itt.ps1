@@ -5868,34 +5868,132 @@ $sync.database.locales = '{
 ' | ConvertFrom-Json
 $sync.database.OST = '{
   "Tracks": [
-    "https://epsilon.vgmsite.com/soundtracks/far-cry-3/iqgdbfrhtw/17.%20Further%20%28feat.%20Serena%20McKinney%29.mp3",
-    "https://dl.vgmdownloads.com/soundtracks/hollow-knight-original-soundtrack/qqrmmaqyqg/26.%20Hollow%20Knight.mp3",
-    "https://dl.vgmdownloads.com/soundtracks/assassin-s-creed-3/jgevpclfcr/01.%20Assassin%27s%20Creed%20III%20Main%20Theme.mp3",
-    "https://dl.vgmdownloads.com/soundtracks/assassins-creed-mirage-original-game-soundtrack-2023/axtwruyduh/01.%20Mirage%20Theme.mp3",
-    "https://vgmsite.com/soundtracks/assassins-creed-ezios-family-m-me-remix-2022/qdxeshajdz/01.%20Ezio%27s%20Family%20%28M%C3%B8me%20Remix%29.mp3",
-    "https://archive.org/download/GrandTheftAuto4ThemeSong_201904/Grand%20Theft%20Auto%204%20Theme%20Song.mp3",
-    "https://epsilon.vgmsite.com/soundtracks/assassin-s-creed-2/jlrprchapt/1-03%20Ezio%27s%20Family.mp3",
-    "https://epsilon.vgmsite.com/soundtracks/assassin-s-creed-2/nkantwuktr/1-01%20Earth.mp3",
-    "https://epsilon.vgmsite.com/soundtracks/mass-effect-3-gamerip-2012/nchtmgcz/304.%20End%20of%20Cycle.mp3",
-    "https://dl.vgmdownloads.com/soundtracks/somerville-2022/naszqoqnhr/01.%20Intro%20%28Somerville%20Original%20Soundtrack%29%20%28feat.%20Dominique%20Charpentier%29.mp3",
-    "https://archive.org/download/kate-chruscicka-requiem-for-a-dream-electric-violin/Kate%20Chruscicka-Requiem%20For%20A%20Dream%20%28Electric%20Violin%29.mp3",
-    "https://archive.org/download/InceptionSoundtrackHD12TimeHansZimmer/Inception%20Soundtrack%20HD%20-%20%2312%20Time%20%28Hans%20Zimmer%29.mp3",
-    "https://epsilon.vgmsite.com/soundtracks/little-nightmares-ii-original-soundtrack/bplsnxvnzm/01.%20Main%20Theme.mp3",
-    "https://dl.vgmdownloads.com/soundtracks/assassin-s-creed-3/qhigmkctpn/09.%20Trouble%20in%20Town.mp3",
-    "https://vgmsite.com/soundtracks/assassin-s-creed-odyssey-original-game-soundtrack/kbtrtqrtyf/01.%20Legend%20of%20the%20Eagle%20Bearer%20%28Main%20Theme%29.mp3",
-    "https://archive.org/download/exit-music-for-a-film-westworld-soundtrack/exit-music-for-a-film-westworld-soundtrack.mp3",
-    "https://archive.org/download/ludovico-einaudi-experience-mp-3-70-k/Ludovico%20Einaudi%20-%20Experience%28MP3_70K%29.mp3",
-    "https://archive.org/download/interstellar-soundtrack/22%20No%20Time%20for%20Caution%20%28Docking%20scene%29%201.m4a",
-    "https://archive.org/download/interstellar-soundtrack/26%20Organ%20Variation.m4a",
-    "https://archive.org/download/interstellar-soundtrack/25%20Tick%20Tock.m4a",
-    "https://archive.org/download/interstellar-soundtrack/30%20Day%20One%20%28Original%20Demo%29.m4a",
-    "https://archive.org/download/max-richter-memoryhouse/09%20November.mp3",
-    "https://archive.org/download/ZackHemseyTheWay_201704/Zack%20Hemsey%20-%20The%20Way.mp3",
-    "https://eta.vgmtreasurechest.com/soundtracks/cyberpunk-2077-original-game-score/zalnnwrhwh/1-03%20The%20Rebel%20Path.mp3",
-    "https://archive.org/download/tvtunes_32383/HBOs%20The%20Leftovers%20Piano%20Theme%20-%20Max%20Richter.mp3",
-    "https://archive.org/download/maxrichteronthenatureofdaylight_201911/Max%20Richter%20-%20On%20the%20Nature%20of%20Daylight.mp3",
-    "https://archive.org/download/InceptionSoundtrackDreamIsCollapsingHansZimmer/Inception%20Soundtrack-Dream%20is%20Collapsing%20%28Hans%20Zimmer%29.mp3",
-    "https://archive.org/download/06-everything-in-its-right-place-live-in-france/OK%20Computer/04%20Exit%20Music%20%28For%20a%20Film%29.mp3"
+    {
+      "name": "Further - Far cry-3",
+      "url": "https://epsilon.vgmsite.com/soundtracks/far-cry-3/iqgdbfrhtw/17.%20Further%20%28feat.%20Serena%20McKinney%29.mp3"
+    },
+    {
+      "name": "No Time To Die - Billie Eilish",
+      "url": "https://dl.vgmdownloads.com/soundtracks/hollow-knight-original-soundtrack/qqrmmaqyqg/26.%20Hollow%20Knight.mp3"
+    },
+    {
+      "name": "Roots - Imagine Dragons",
+      "url": "https://dl.vgmdownloads.com/soundtracks/hollow-knight-original-soundtrack/qqrmmaqyqg/26.%20Hollow%20Knight.mp3"
+    },
+    {
+      "name": "Assassin Creed Theme",
+      "url": "https://dl.vgmdownloads.com/soundtracks/assassin-s-creed-3/jgevpclfcr/01.%20Assassin%27s%20Creed%20III%20Main%20Theme.mp3"
+    },
+    {
+      "name": "Mirage Theme",
+      "url": "https://dl.vgmdownloads.com/soundtracks/assassins-creed-mirage-original-game-soundtrack-2023/axtwruyduh/01.%20Mirage%20Theme.mp3"
+    },
+    {
+      "name": "Ezio''s Family (Møme Remix)",
+      "url": "https://vgmsite.com/soundtracks/assassins-creed-ezios-family-m-me-remix-2022/qdxeshajdz/01.%20Ezio%27s%20Family%20%28M%C3%B8me%20Remix%29.mp3"
+    },
+    {
+      "name": "Grand Theft Auto 4 Theme Song",
+      "url": "https://archive.org/download/GrandTheftAuto4ThemeSong_201904/Grand%20Theft%20Auto%204%20Theme%20Song.mp3"
+    },
+    {
+      "name": "Ezio''s Family",
+      "url": "https://epsilon.vgmsite.com/soundtracks/assassin-s-creed-2/jlrprchapt/1-03%20Ezio%27s%20Family.mp3"
+    },
+    {
+      "name": "Earth - Assassin Creed",
+      "url": "https://epsilon.vgmsite.com/soundtracks/assassin-s-creed-2/nkantwuktr/1-01%20Earth.mp3"
+    },
+    {
+      "name": "End of Cycle",
+      "url": "https://epsilon.vgmsite.com/soundtracks/mass-effect-3-gamerip-2012/nchtmgcz/304.%20End%20of%20Cycle.mp3"
+    },
+    {
+      "name": "Intro (Somerville Original Soundtrack)",
+      "url": "https://dl.vgmdownloads.com/soundtracks/somerville-2022/naszqoqnhr/01.%20Intro%20%28Somerville%20Original%20Soundtrack%29%20%28feat.%20Dominique%20Charpentier%29.mp3"
+    },
+    {
+      "name": "Requiem For A Dream (Electric Violin)",
+      "url": "https://archive.org/download/kate-chruscicka-requiem-for-a-dream-electric-violin/Kate%20Chruscicka-Requiem%20For%20A%20Dream%20%28Electric%20Violin%29.mp3"
+    },
+    {
+      "name": "Time - Hans Zimmer",
+      "url": "https://archive.org/download/InceptionSoundtrackHD12TimeHansZimmer/Inception%20Soundtrack%20HD%20-%20%2312%20Time%20%28Hans%20Zimmer%29.mp3"
+    },
+    {
+      "name": "Main Theme",
+      "url": "https://epsilon.vgmsite.com/soundtracks/little-nightmares-ii-original-soundtrack/bplsnxvnzm/01.%20Main%20Theme.mp3"
+    },
+    {
+      "name": "Trouble in Town",
+      "url": "https://dl.vgmdownloads.com/soundtracks/assassin-s-creed-3/qhigmkctpn/09.%20Trouble%20in%20Town.mp3"
+    },
+    {
+      "name": "Legend of the Eagle Bearer (Main Theme)",
+      "url": "https://vgmsite.com/soundtracks/assassin-s-creed-odyssey-original-game-soundtrack/kbtrtqrtyf/01.%20Legend%20of%20the%20Eagle%20Bearer%20%28Main%20Theme%29.mp3"
+    },
+    {
+      "name": "Exit Music (For a Film) - Westworld",
+      "url": "https://archive.org/download/exit-music-for-a-film-westworld-soundtrack/exit-music-for-a-film-westworld-soundtrack.mp3"
+    },
+    {
+      "name": "Experience - Ludovico Einaudi",
+      "url": "https://archive.org/download/ludovico-einaudi-experience-mp-3-70-k/Ludovico%20Einaudi%20-%20Experience%28MP3_70K%29.mp3"
+    },
+    {
+      "name": "No Time for Caution interstellar",
+      "url": "https://archive.org/download/interstellar-soundtrack/22%20No%20Time%20for%20Caution%20%28Docking%20scene%29%201.m4a"
+    },
+    {
+      "name": "Organ Variation",
+      "url": "https://archive.org/download/interstellar-soundtrack/26%20Organ%20Variation.m4a"
+    },
+    {
+      "name": "Tick Tock",
+      "url": "https://archive.org/download/interstellar-soundtrack/25%20Tick%20Tock.m4a"
+    },
+    {
+      "name": "Day One (Original Demo)",
+      "url": "https://archive.org/download/interstellar-soundtrack/30%20Day%20One%20%28Original%20Demo%29.m4a"
+    },
+    {
+      "name": "November",
+      "url": "https://archive.org/download/max-richter-memoryhouse/09%20November.mp3"
+    },
+    {
+      "name": "The Way - Zack Hemsey",
+      "url": "https://archive.org/download/ZackHemseyTheWay_201704/Zack%20Hemsey%20-%20The%20Way.mp3"
+    },
+    {
+      "name": "The Rebel Path",
+      "url": "https://eta.vgmtreasurechest.com/soundtracks/cyberpunk-2077-original-game-score/zalnnwrhwh/1-03%20The%20Rebel%20Path.mp3"
+    },
+    {
+      "name": "HBO''s The Leftovers Piano Theme - Max Richter",
+      "url": "https://archive.org/download/tvtunes_32383/HBOs%20The%20Leftovers%20Piano%20Theme%20-%20Max%20Richter.mp3"
+    },
+    {
+      "name": "On the Nature of Daylight - Max Richter",
+      "url": "https://archive.org/download/maxrichteronthenatureofdaylight_201911/Max%20Richter%20-%20On%20the%20Nature%20of%20Daylight.mp3"
+    },
+    {
+      "name": "Dream is Collapsing (Hans Zimmer)",
+      "url": "https://archive.org/download/InceptionSoundtrackDreamIsCollapsingHansZimmer/Inception%20Soundtrack-Dream%20is%20Collapsing%20%28Hans%20Zimmer%29.mp3"
+    }
+  ],
+  "Favorite": [
+    {
+      "name": "Exit Music (For a Film) - Radiohead",
+      "url": "https://archive.org/download/06-everything-in-its-right-place-live-in-france/OK%20Computer/04%20Exit%20Music%20%28For%20a%20Film%29.mp3"
+    },
+    {
+      "name": "No Time To Die - Billie Eilish",
+      "url": "https://archive.org/download/06-everything-in-its-right-place-live-in-france/OK%20Computer/04%20Exit%20Music%20%28For%20a%20Film%29.mp3"
+    },
+    {
+      "name": "Roots - Imagine Dragons",
+      "url": "https://archive.org/download/06-everything-in-its-right-place-live-in-france/OK%20Computer/04%20Exit%20Music%20%28For%20a%20Film%29.mp3"
+    }
   ]
 }
 ' | ConvertFrom-Json
@@ -12716,15 +12814,17 @@ function DisplayQuotes  {
 
         Start-Sleep -Seconds 20
 
+
+
+
         # Loop through shuffled names and display them
         do {
             foreach ($name in $shuffledNames) {
                 $sync.Quotes.Dispatcher.Invoke([Action]{
                     $sync.Quotes.Text = "`“$name`”"
                 })
-
                 # Adjust the sleep time as needed
-                Start-Sleep -Seconds 15  
+                Start-Sleep -Seconds 15 
             }
         } while ($true)
     }
@@ -12824,46 +12924,42 @@ function ClearFilter {
     $collectionView.Filter = $null
 }
 function PlayMusic {
-    
-    Invoke-ScriptBlock -ScriptBlock{
+    # Function to play an audio track
+    function PlayAudio($track) {
 
-        # Function to play an audio track
-        function PlayAudio($url) {
-            $mediaItem = $sync.mediaPlayer.newMedia($url)
-            $sync.mediaPlayer.currentPlaylist.appendItem($mediaItem)
-            $sync.mediaPlayer.controls.play()
-        }
-
-        # Shuffle the playlist and create a new playlist
-        function GetShuffledTracks {
-
-            if ($sync.Date.Month -eq 9 -and $sync.Date.Day -eq 1) {
-                return $sync.database.OST.Tracks[27]
-            }
-            else
-            {
-                return $sync.database.OST.Tracks | Get-Random -Count $sync.database.OST.Tracks.Count
-            }
-        }
-
-        # Function to play the shuffled playlist
-        function PlayShuffledPlaylist {
-            $shuffledTracks = GetShuffledTracks
-            foreach ($url in $shuffledTracks) {
-                PlayAudio $url
-                # Wait for the track to finish playing
-                while ($sync.mediaPlayer.playState -in 3, 6) {
-                    Start-Sleep -Milliseconds 100
-                }
-            }
-        }
-
-        while ($true) 
-        {
-            PlayShuffledPlaylist
-        }
-
+        $mediaItem = $sync.mediaPlayer.newMedia($track)
+        $sync.mediaPlayer.currentPlaylist.appendItem($mediaItem)
+        $sync.mediaPlayer.controls.play()
     }
+
+    # Shuffle the playlist and create a new playlist
+    function GetShuffledTracks {
+        
+        if ($sync.Date.Month -eq 9 -and $sync.Date.Day -eq 1) {
+
+            return $sync.database.OST.Favorite | Get-Random -Count $sync.database.OST.Favorite.Count
+        }
+        else
+        {
+            return $sync.database.OST.Tracks | Get-Random -Count $sync.database.OST.Tracks.Count
+        }
+    }
+
+    # Function to play the shuffled playlist
+    function PlayShuffledPlaylist {
+        $shuffledTracks = GetShuffledTracks
+        foreach ($track in $shuffledTracks) {
+            PlayAudio -track $track.url
+            # Wait for the track to finish playing
+            while ($sync.mediaPlayer.playState -in 3, 6) {
+                Start-Sleep -Milliseconds 100
+            }
+        }
+    }
+
+    # Play the shuffled playlist
+    PlayShuffledPlaylist
+
 }
 function MuteMusic {
     param($value)

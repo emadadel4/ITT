@@ -45,15 +45,17 @@ function DisplayQuotes  {
 
         Start-Sleep -Seconds 20
 
+
+
+
         # Loop through shuffled names and display them
         do {
             foreach ($name in $shuffledNames) {
                 $sync.Quotes.Dispatcher.Invoke([Action]{
                     $sync.Quotes.Text = "`“$name`”"
                 })
-
                 # Adjust the sleep time as needed
-                Start-Sleep -Seconds 15  
+                Start-Sleep -Seconds 15 
             }
         } while ($true)
     }
