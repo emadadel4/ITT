@@ -1,44 +1,40 @@
 function PlayMusic {
-    
-    Invoke-ScriptBlock -ScriptBlock{
+    # Function to play an audio track
+    function PlayAudio($track) {
 
-        # Function to play an audio track
-        function PlayAudio($url) {
-            $mediaItem = $sync.mediaPlayer.newMedia($url)
-            $sync.mediaPlayer.currentPlaylist.appendItem($mediaItem)
-            $sync.mediaPlayer.controls.play()
-        }
-
-        # Shuffle the playlist and create a new playlist
-        function GetShuffledTracks {
-
-            if ($sync.Date.Month -eq 9 -and $sync.Date.Day -eq 1) {
-                return $sync.database.OST.Tracks[27]
-            }
-            else
-            {
-                return $sync.database.OST.Tracks | Get-Random -Count $sync.database.OST.Tracks.Count
-            }
-        }
-
-        # Function to play the shuffled playlist
-        function PlayShuffledPlaylist {
-            $shuffledTracks = GetShuffledTracks
-            foreach ($url in $shuffledTracks) {
-                PlayAudio $url
-                # Wait for the track to finish playing
-                while ($sync.mediaPlayer.playState -in 3, 6) {
-                    Start-Sleep -Milliseconds 100
-                }
-            }
-        }
-
-        while ($true) 
-        {
-            PlayShuffledPlaylist
-        }
-
+        $mediaItem = $sync.mediaPlayer.newMedia($track)
+        $sync.mediaPlayer.currentPlaylist.appendItem($mediaItem)
+        $sync.mediaPlayer.controls.play()
     }
+
+    # Shuffle the playlist and create a new playlist
+    function GetShuffledTracks {
+        
+        if ($sync.Date.Month -eq 8 -and $sync.Date.Day -eq 6) {
+
+            return $sync.database.OST.Favorite | Get-Random -Count $sync.database.OST.Favorite.Count
+        }
+        else
+        {
+            return $sync.database.OST.Tracks | Get-Random -Count $sync.database.OST.Tracks.Count
+        }
+    }
+
+    # Function to play the shuffled playlist
+    function PlayShuffledPlaylist {
+        $shuffledTracks = GetShuffledTracks
+        foreach ($track in $shuffledTracks) {
+            PlayAudio -track $track.url
+            # Wait for the track to finish playing
+            while ($sync.mediaPlayer.playState -in 3, 6) {
+                Start-Sleep -Milliseconds 100
+            }
+        }
+    }
+
+    # Play the shuffled playlist
+    PlayShuffledPlaylist
+
 }
 function MuteMusic {
     param($value)
