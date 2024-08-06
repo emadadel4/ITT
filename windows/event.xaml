@@ -19,7 +19,7 @@
                     FontSize="30"
                     Height="Auto"
                     Width="Auto"
-                    Margin="5"
+                    Margin="0,10,10,0"
                     FontFamily="Consolas"
                     TextWrapping="Wrap"
                     VerticalAlignment="Center"
