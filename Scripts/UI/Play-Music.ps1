@@ -10,7 +10,7 @@ function PlayMusic {
     # Shuffle the playlist and create a new playlist
     function GetShuffledTracks {
         
-        if ($sync.Date.Month -eq 1 -and $sync.Date.Day -eq 1) {
+        if ($sync.Date.Month -eq 9 -and $sync.Date.Day -eq 1) {
 
             return $sync.database.OST.Favorite | Get-Random -Count $sync.database.OST.Favorite.Count
         }
