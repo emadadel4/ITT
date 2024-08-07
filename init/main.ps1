@@ -64,7 +64,7 @@ $sync["window"].Add_ContentRendered({
     Startup
     DisplayQuotes | Out-Null
     PlayMusic | Out-Null
-    Check-DateAndShowEvent
+    Check-Date
 })
 
 # Close Event handler
