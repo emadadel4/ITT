@@ -44,7 +44,7 @@
 </p>
 
 <p align="center">
-  <a target="_blank" rel="noopener noreferrer" href="https://raw.githubusercontent.com/emadadel4/ITT/main/Assets/Images/demo.PNG">
+  <a target="_blank" rel="noopener noreferrer" href="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/demo.PNG">
     <img src="https://raw.githubusercontent.com/emadadel4/ITT/main/Assets/Images/demo.PNG" alt="ITT Demo" style="max-width: 100%;">
   </a>
 </p>
@@ -80,7 +80,7 @@ ou
 
   ## Regardez la Démo
 
-  [![Regardez la vidéo](https://raw.githubusercontent.com/emadadel4/ITT/main/Assets/Images/thumbnail.jpg)](https://www.youtube.com/watch?v=QmO82OTsU5c)
+  [![Regardez la vidéo](https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/thumbnail.jpg)](https://www.youtube.com/watch?v=QmO82OTsU5c)
 </div>
 
 <h2> 📦 Comment Ajouter une Nouvelle Application/Réglage/OST/Quote</h2>

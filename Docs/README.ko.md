@@ -42,8 +42,8 @@
 </p>
 
 <p align="center">
-  <a target="_blank" rel="noopener noreferrer" href="https://raw.githubusercontent.com/emadadel4/ITT/main/Assets/Images/demo.PNG">
-    <img src="https://raw.githubusercontent.com/emadadel4/ITT/main/Assets/Images/demo.PNG" alt="ITT Demo" style="max-width: 100%;">
+  <a target="_blank" rel="noopener noreferrer" href="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/demo.PNG">
+    <img src="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/demo.PNG" alt="ITT Demo" style="max-width: 100%;">
   </a>
 </p>
 
@@ -78,7 +78,7 @@
 
   ## 데모 보기
 
-  [![비디오 보기](https://raw.githubusercontent.com/emadadel4/ITT/main/Assets/Images/thumbnail.jpg)](https://www.youtube.com/watch?v=QmO82OTsU5c)
+  [![비디오 보기](https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/thumbnail.jpg)](https://www.youtube.com/watch?v=QmO82OTsU5c)
 </div>
 
 <h2> 📦 새 애플리케이션/조정/OST/인용 추가 방법</h2>

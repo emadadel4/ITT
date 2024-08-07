@@ -37,8 +37,8 @@
 </p>
 
 <p align="center">
-  <a target="_blank" rel="noopener noreferrer" href="https://raw.githubusercontent.com/emadadel4/ITT/main/Assets/Images/demo.PNG">
-    <img src="https://raw.githubusercontent.com/emadadel4/ITT/main/Assets/Images/demo.PNG" alt="ITT Demo" style="max-width: 100%;">
+  <a target="_blank" rel="noopener noreferrer" href="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/demo.PNG">
+    <img src="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/demo.PNG" alt="ITT Demo" style="max-width: 100%;">
       <h4 align="center"><a href="https://emadadel4.github.io/tr/itt/" target="_blank">Türkçe olarak da mevcuttur</a></h4>
   </a>
 </p>
@@ -74,7 +74,7 @@ veya
 
   ## Demo'yu İzleyin
 
-  [![Videoyu İzleyin](https://raw.githubusercontent.com/emadadel4/ITT/main/Assets/Images/thumbnail.jpg)](https://www.youtube.com/watch?v=QmO82OTsU5c)
+  [![Videoyu İzleyin](https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/thumbnail.jpg)](https://www.youtube.com/watch?v=QmO82OTsU5c)
 </div>
 
 <h2> 📦 Yeni Bir Uygulama/Ayar/OST/Alıntı Nasıl Eklenir</h2>
