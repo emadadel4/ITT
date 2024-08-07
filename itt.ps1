@@ -7295,7 +7295,7 @@ $sync.database.Tweaks = '[
 #endregion End Database /APPS/TWEEAKS/Quotes/OST/Settings
 #===========================================================================
 #===========================================================================
-#region Begin WPF Window
+#region Begin WPF Main Window
 #===========================================================================
 $inputXML = '
 <!--Main Window-->
@@ -7361,9 +7361,9 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}">
                         <Border.Background>
-                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
                                 <GradientStop Color="{DynamicResource CardLeft}" Offset="0"/>
-                                <GradientStop Color="{DynamicResource CardRight}" Offset="1.5"/>
+                                <GradientStop Color="{DynamicResource CardRight}" Offset="1.0"/>
                             </LinearGradientBrush>
                         </Border.Background>
                         <ContentPresenter HorizontalAlignment="Left"
@@ -10705,7 +10705,7 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
 
 '
 #===========================================================================
-#endregion End WPF Window
+#endregion End WPF Main Window
 #===========================================================================
 #===========================================================================
 #region Begin WPF About Window
