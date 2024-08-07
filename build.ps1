@@ -1,13 +1,13 @@
 param (
     [string]$OutputScript = "itt.ps1",
-    [string]$Assets = ".\Assets",
-    [string]$Controls = ".\Controls",
-    [string]$DatabaseDirectory = ".\Assets\Database",
-    [string]$StartScript = ".\initiation\start.ps1",
-    [string]$MainScript = ".\initiation\main.ps1",
+    [string]$Assets = ".\Resources",
+    [string]$Controls = ".\UI\Controls",
+    [string]$DatabaseDirectory = ".\Resources\Database",
+    [string]$StartScript = ".\init\start.ps1",
+    [string]$MainScript = ".\init\main.ps1",
     [string]$ScritsDirectory = ".\Scripts",
-    [string]$windows = ".\windows",
-    [string]$LoadXamlScript = ".\initiation\xaml.ps1"
+    [string]$windows = ".\UI\Views",
+    [string]$LoadXamlScript = ".\init\xaml.ps1"
 )
 
 # Initialize synchronized hashtable
@@ -211,7 +211,7 @@ WriteToScript -Content @"
 
     # Define file paths
     $FilePaths = @{
-        "Xaml"    = Join-Path -Path $windows -ChildPath "window.xaml"
+        "Xaml"    = Join-Path -Path $windows -ChildPath "MainWindow.xaml"
         "taps" = Join-Path -Path $Controls -ChildPath "taps.xaml"
         "menu" = Join-Path -Path $Controls -ChildPath "menu.xaml"
         "catagory" = Join-Path -Path $Controls -ChildPath "catagory.xaml"
@@ -273,8 +273,8 @@ WriteToScript -Content @"
     # Define file paths
     $FilePaths = @{
         
-        "about" = Join-Path -Path $windows -ChildPath "about.xaml"
-        "event" = Join-Path -Path $windows -ChildPath "event.xaml"
+        "about" = Join-Path -Path $windows -ChildPath "AboutWindow.xaml"
+        "event" = Join-Path -Path $windows -ChildPath "EventWindow.xaml"
 
     }
 

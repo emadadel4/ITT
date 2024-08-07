@@ -11,7 +11,7 @@ Write-Host "
 +-------------------------------------------------------------------------+
 "
     # Read existing JSON file
-    $jsonFilePath = "./Assets/Database/Quotes.json"
+    $jsonFilePath = "./Resources/Database/Quotes.json"
     $existingData = Get-Content $jsonFilePath -Raw -ErrorAction Stop | ConvertFrom-Json
 
     # Prompt for input

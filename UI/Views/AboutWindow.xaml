@@ -47,7 +47,7 @@
         </DockPanel>
         <Separator/>
   
-        <Image Source="https://raw.githubusercontent.com/emadadel4/ITT/main/Assets/Images/coffee.png" Cursor="Hand" Name="coffee" Margin="10" Height="70" Width="Auto"/>
+        <Image Source="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/coffee.png" Cursor="Hand" Name="coffee" Margin="10" Height="70" Width="Auto"/>
 
 
         <TextBlock  Name="sourcecode" Cursor="Hand" Margin="0,25,0,0" Text="Source Code" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>

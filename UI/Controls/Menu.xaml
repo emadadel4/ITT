@@ -6,7 +6,7 @@
             <!--Logo-->
             <Ellipse Name="logo" Margin="5,5,0,0" Width="80" Height="80">
                 <Ellipse.Fill>
-                    <ImageBrush ImageSource="https://raw.githubusercontent.com/emadadel4/ITT/main/Assets/Images/logo.png" />
+                    <ImageBrush ImageSource="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/logo.png" />
                 </Ellipse.Fill>
             </Ellipse>
             <!--End Logo-->

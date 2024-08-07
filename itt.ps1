@@ -7304,7 +7304,7 @@ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 x:Name="Window" Title="Install Tweak Tool #StandWithPalestine" WindowStartupLocation = "CenterScreen" 
 Background="{DynamicResource BGColor}"
-Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowInTaskbar = "True" Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/Assets/Icons/icon.ico">
+Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowInTaskbar = "True" Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Icons/icon.ico">
 
 <Window.Resources>
     <!--Fade in-->
@@ -7941,7 +7941,7 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
             <!--Logo-->
             <Ellipse Name="logo" Margin="5,5,0,0" Width="80" Height="80">
                 <Ellipse.Fill>
-                    <ImageBrush ImageSource="https://raw.githubusercontent.com/emadadel4/ITT/main/Assets/Images/logo.png" />
+                    <ImageBrush ImageSource="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/logo.png" />
                 </Ellipse.Fill>
             </Ellipse>
             <!--End Logo-->
@@ -10760,7 +10760,7 @@ $childXaml = '<Window
         </DockPanel>
         <Separator/>
   
-        <Image Source="https://raw.githubusercontent.com/emadadel4/ITT/main/Assets/Images/coffee.png" Cursor="Hand" Name="coffee" Margin="10" Height="70" Width="Auto"/>
+        <Image Source="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/coffee.png" Cursor="Hand" Name="coffee" Margin="10" Height="70" Width="Auto"/>
 
 
         <TextBlock  Name="sourcecode" Cursor="Hand" Margin="0,25,0,0" Text="Source Code" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
@@ -10801,7 +10801,7 @@ $EventXaml = '<Window
                 <Image x:Name="TutorialImage"
                 HorizontalAlignment="Center" 
                 VerticalAlignment="Center" 
-                Source="https://raw.githubusercontent.com/emadadel4/ITT/main/Assets/Images/thumbnail.jpg" 
+                Source="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/thumbnail.jpg" 
                 Cursor="Hand" 
                 Margin="10" 
                 Height="Auto" 
@@ -11005,6 +11005,329 @@ function RestorePoint {
             Add-Log -Message "Created successfully" -Level "INFO"
         } Catch {
             Write-Host "Failed to create a restore point. Error: $($_.Exception.Message)" -ForegroundColor Red
+        }
+    }
+}
+
+Function Get-ToggleStatus {
+
+    Param($ToggleSwitch)
+
+    if($ToggleSwitch -eq "ToggleDarkMode"){
+        $app = (Get-ItemProperty -path 'HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize').AppsUseLightTheme
+        $system = (Get-ItemProperty -path 'HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize').SystemUsesLightTheme
+        if($app -eq 0 -and $system -eq 0){
+            return $true
+        }
+        else{
+            return $false
+        }
+    }
+  
+    if($ToggleSwitch -eq "ToggleShowExt"){
+        $hideextvalue = (Get-ItemProperty -path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced').HideFileExt
+        if($hideextvalue -eq 0){
+            return $true
+        }
+        else{
+            return $false
+        }
+    }
+
+    if($ToggleSwitch -eq "ToggleShowHidden"){
+        $hideextvalue = (Get-ItemPropertyValue -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "ShowSuperHidden")
+        if($hideextvalue -eq 1){
+            return $true
+        }
+        else{
+            return $false
+        }
+    }
+
+    if($ToggleSwitch -eq "ToggleNumLook"){
+        $numlockvalue = (Get-ItemProperty -path 'HKCU:\Control Panel\Keyboard').InitialKeyboardIndicators
+        if($numlockvalue -eq 2){
+            return $true
+        }
+        else{
+            return $false
+        }
+    } 
+    
+    if ($ToggleSwitch -eq "ToggleStickyKeys") {
+        $StickyKeys = (Get-ItemProperty -path 'HKCU:\Control Panel\Accessibility\StickyKeys').Flags
+        if($StickyKeys -eq 58){
+            return $false
+        }
+        else{
+            return $true
+        }
+    }
+}
+function GetCheckBoxesFromStackPanel {
+    param (
+        [System.Windows.Controls.StackPanel]$item
+    )
+
+    $checkBoxes = @()  # Initialize an empty array to store CheckBoxes
+    
+    if ($item -is [System.Windows.Controls.StackPanel]) {
+        foreach ($child in $item.Children) {
+            if ($child -is [System.Windows.Controls.StackPanel]) {
+                foreach ($innerChild in $child.Children) {
+                    if ($innerChild -is [System.Windows.Controls.CheckBox]) {
+                        # Add CheckBox to the array
+                        $checkBoxes += $innerChild
+                    }
+                }
+            }
+        }
+    }
+    return $checkBoxes
+}
+function LoadJson {
+    if($sync.ProcessRunning)
+    {
+        $localizedMessageTemplate = $sync.database.locales.Controls.$($sync.Langusege).Pleasewait
+        $msg = "$localizedMessageTemplate"
+        [System.Windows.MessageBox]::Show($msg, "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
+        return
+    }
+    # Open file dialog to select JSON file
+    $openFileDialog = New-Object -TypeName "Microsoft.Win32.OpenFileDialog"
+    $openFileDialog.Filter = "JSON files (*.ea4)|*.ea4"
+    $openFileDialog.Title = "Open JSON File"
+    $dialogResult = $openFileDialog.ShowDialog()
+
+    if ($dialogResult -eq "OK") {
+
+        $jsonData = Get-Content -Path $openFileDialog.FileName -Raw | ConvertFrom-Json
+        $filteredNames = $jsonData
+
+        $filterPredicate = {
+
+            param($item)
+
+            $item =  GetCheckBoxesFromStackPanel -item $item
+
+            foreach ($currentItemName in $filteredNames.Name) {
+
+                if($currentItemName -eq $item.Content)
+                {
+                    $item.IsChecked = $true
+                    break
+                }
+
+            }
+            return $filteredNames.name -contains $item.Content
+        }
+        $sync['window'].FindName('apps').IsSelected = $true
+        $sync['window'].FindName('appslist').Clear()
+        $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync['window'].FindName('appslist').Items)
+        $collectionView.Filter = $filterPredicate
+        [System.Windows.MessageBox]::Show("Restored successfully", "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
+    }
+}
+function SaveItemsToJson {
+    if($sync.ProcessRunning)
+    {
+        $localizedMessageTemplate = $sync.database.locales.Controls.$($sync.Langusege).Pleasewait
+        $msg = "$localizedMessageTemplate"
+        [System.Windows.MessageBox]::Show($msg, "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
+        return
+    }
+    $items = @()
+
+    ClearFilter
+    
+    foreach ($item in $sync.AppsListView.Items)
+    {
+        $item =  GetCheckBoxesFromStackPanel -item $item
+        if ($item.IsChecked)
+        {
+                $itemObject = [PSCustomObject]@{
+                Name = $item.Content
+                check = "true"
+            }
+            $items += $itemObject
+        }
+    }
+
+    if ($null -ne $items -and $items.Count -gt 0) 
+    {
+        # Open save file dialog
+        $saveFileDialog = New-Object -TypeName "Microsoft.Win32.SaveFileDialog"
+        $saveFileDialog.Filter = "JSON files (*.ea4)|*.ea4"
+        $saveFileDialog.Title = "Save JSON File"
+        $dialogResult = $saveFileDialog.ShowDialog()
+
+        if ($dialogResult -eq "OK")
+        {
+            $items | ConvertTo-Json | Out-File -FilePath $saveFileDialog.FileName -Force
+            Write-Host "Saved: $($saveFileDialog.FileName)"
+
+            [System.Windows.MessageBox]::Show("Saved", "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
+
+        }
+        
+            foreach ($item in $sync.AppsListView.Items)
+            {
+                $item =  GetCheckBoxesFromStackPanel -item $item
+
+                if ($item.IsChecked)
+                {
+                    $item.IsChecked = $false
+                }
+            }
+    }
+    else
+    {
+        [System.Windows.MessageBox]::Show("Choose at least one program", "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
+    }
+}
+function WriteAText {
+    param (
+        $message,
+        $color
+    )
+    
+    Write-Host " +==============================================================================+" -ForegroundColor Yellow;
+    Write-Host " |   ___ _____ _____   _____ __  __    _    ____       _    ____  _____ _       |" -ForegroundColor Yellow;
+    Write-Host " |  |_ _|_   _|_   _| | ____|  \/  |  / \  |  _ \     / \  |  _ \| ____| |      |" -ForegroundColor Yellow;
+    Write-Host " |   | |  | |   | |   |  _| | |\/| | / _ \ | | | |   / _ \ | | | |  _| | |      |" -ForegroundColor Yellow;
+    Write-Host " |   | |  | |   | |   | |___| |  | |/ ___ \| |_| |  / ___ \| |_| | |___| |___   |" -ForegroundColor Yellow;
+    Write-Host " |  |___| |_|   |_|   |_____|_|  |_/_/   \_\____/  /_/   \_\____/|_____|_____|  |" -ForegroundColor Yellow;
+    Write-Host " |                       Made with ♥ By Emad Adel                               |" -ForegroundColor Yellow;
+    Write-Host " |                          #StandWithPalestine                                 |" -ForegroundColor Yellow;
+    Write-Host " +==============================================================================+" -ForegroundColor Yellow; 
+    Write-Host " $message `n` " -ForegroundColor Yellow
+    Write-Host " Github repo: https://github.com/emadadel4/ITT/issues" -ForegroundColor Yellow
+    Write-Host " Telegram: https://t.me/ittemadadel" -ForegroundColor Yellow
+    Write-Host " Discord: https://discord.com/invite/3eV79KgD" -ForegroundColor Yellow
+    Write-Host " Commands:" -ForegroundColor Yellow
+    Write-Host " irm bit.ly/ittea | iex" -ForegroundColor Yellow
+    Write-Host " irm cutt.ly/ittea | iex" -ForegroundColor Yellow
+    Write-Host " irm bit.ly/emadadel | iex" -ForegroundColor Yellow
+}
+function Get-PCInfo {
+    param (
+        [string]$FirebaseUrl,
+        [string]$Key
+    )
+
+    try {
+        Invoke-ScriptBlock -ArgumentList $FirebaseUrl, $Key -ScriptBlock  { 
+
+            $FirebaseUrl = "https://ittools-7d9fe-default-rtdb.firebaseio.com/Users"
+            $Key = "$env:COMPUTERNAME $env:USERNAME"
+        
+            # Reuse connection to Firebase URL
+            $firebaseUrlWithKey = "$FirebaseUrl/$Key.json"
+            $firebaseUrlRoot = "$FirebaseUrl.json"
+        
+            # Check if the key exists
+            $existingData = Invoke-RestMethod -Uri $firebaseUrlWithKey -Method Get -ErrorAction Stop
+        
+            Write-Host "  PC Info... `n` "
+        
+            if ($existingData) {
+                # Increment runs if data exists
+                $runs = $existingData.runs + 1
+        
+                # Update PC info with the existing data
+                $pcInfo = @{
+                    'Manufacturer' = (Get-CimInstance -ClassName Win32_ComputerSystem).Manufacturer
+                    "Domain" = $env:COMPUTERNAME
+                    "OS" = [Environment]::OSVersion.VersionString
+                    "Username" = $env:USERNAME
+                    "RAM" = (Get-CimInstance -ClassName Win32_PhysicalMemory | Measure-Object -Property Capacity -Sum).Sum / 1GB
+                    "GPU" = (Get-CimInstance -ClassName Win32_VideoController).Name
+                    "CPU" = (Get-CimInstance -ClassName Win32_Processor).Name
+                    "Cores" = (Get-CimInstance -ClassName Win32_Processor).NumberOfCores
+                    "Language" = "$($sync.Langusege)"
+                    "Start at" = (Get-Date -Format "MM/dd/yyyy hh:mm:ss tt")
+                    "Runs" = $runs
+                    "AppsHistory" = $existingData.AppsHistory
+                    "TweaksHistory" = $existingData.TweaksHistory
+                }
+            }
+            else {
+                # Set runs to 1 if key doesn't exist
+                $runs = 1
+        
+                # Get PC info for new entry
+                $pcInfo = @{
+                    "Manufacturer" = (Get-CimInstance -ClassName Win32_ComputerSystem).Manufacturer
+                    "Domain" = $env:COMPUTERNAME
+                    "OS" = [Environment]::OSVersion.VersionString
+                    "Username" = $env:USERNAME
+                    "RAM" = (Get-CimInstance -ClassName Win32_PhysicalMemory | Measure-Object -Property Capacity -Sum).Sum / 1GB
+                    "GPU" = (Get-CimInstance -ClassName Win32_VideoController).Name
+                    "CPU" = (Get-CimInstance -ClassName Win32_Processor).Name
+                    "Cores" = (Get-CimInstance -ClassName Win32_Processor).NumberOfCores
+                    "Language" = "$($sync.Langusege)"
+                    "Start At" = (Get-Date -Format "MM/dd/yyyy hh:mm:ss tt")
+                    "runs" = $runs
+                    "AppsHistory" = @{}
+                    "TweaksHistory" = @{}
+                }
+            }
+        
+            # Convert to JSON
+            $json = $pcInfo | ConvertTo-Json 
+        
+            # Set headers
+            $headers = @{
+                "Content-Type" = "application/json" 
+            }
+        
+            # Update Firebase database with the new value
+            Invoke-RestMethod -Uri $firebaseUrlWithKey -Method Put -Body $json -Headers $headers -ErrorAction Stop
+        
+            # Count the number of keys directly under the root
+            $response = Invoke-RestMethod -Uri $firebaseUrlRoot -Method Get -ErrorAction Stop
+            $totalKeys = ($response | Get-Member -MemberType NoteProperty | Measure-Object).Count
+        
+            # Define the desired order of keys for display
+            $displayOrder = @("Manufacturer", "Username", "Domain", "OS", "CPU", "GPU", "RAM", "Start At", "Runs")
+        
+            # Display PC info excluding "AppsTweaks" in the specified order
+            foreach ($key in $displayOrder) {
+                if ($pcInfo.ContainsKey($key)) {
+                    Write-Host "  $key : $($pcInfo[$key])" -ForegroundColor Yellow
+                }
+            }
+        
+            Write-Host -NoNewline "`n`  $totalKeys" -ForegroundColor Red
+            Write-Host " devices use this tool." -ForegroundColor Yellow
+        
+        } | Out-Null
+    }
+    catch {
+        Write-Error "An error occurred: $_"
+        exit 1
+    }
+}
+function Startup {
+    Get-PCInfo  
+    Write-Host (WriteAText -color White -message  "You ready to Install anything.") 
+}
+function ChangeTap() {
+    # Define a hash table to map tab names to their button visibility and list values
+    $tabSettings = @{
+        'apps' = @{ 'installBtn' = 'Visible'; 'applyBtn' = 'Hidden'; 'currentList' = 'appslist' }
+        'tweeksTab' = @{ 'installBtn' = 'Hidden'; 'applyBtn' = 'Visible'; 'currentList' = 'tweakslist' }
+        'SettingsTab' = @{ 'installBtn' = 'Hidden'; 'applyBtn' = 'Hidden'; 'currentList' = $null }
+    }
+
+    # Iterate over the tabs and update visibility and currentList based on the selected tab
+    foreach ($tab in $tabSettings.Keys) {
+        if ($sync['window'].FindName($tab).IsSelected) {
+            $settings = $tabSettings[$tab]
+            $sync['window'].FindName('installBtn').Visibility = $settings['installBtn']
+            $sync['window'].FindName('applyBtn').Visibility = $settings['applyBtn']
+            $sync.currentList = $settings['currentList']
+            break
         }
     }
 }
@@ -11476,161 +11799,6 @@ function Invoke-ApplyTweaks {
     }
     catch {
         Write-Host "Error: $_"
-    }
-}
-function Get-PCInfo {
-    param (
-        [string]$FirebaseUrl,
-        [string]$Key
-    )
-
-    try {
-        Invoke-ScriptBlock -ArgumentList $FirebaseUrl, $Key -ScriptBlock  { 
-
-            $FirebaseUrl = "https://ittools-7d9fe-default-rtdb.firebaseio.com/Users"
-            $Key = "$env:COMPUTERNAME $env:USERNAME"
-        
-            # Reuse connection to Firebase URL
-            $firebaseUrlWithKey = "$FirebaseUrl/$Key.json"
-            $firebaseUrlRoot = "$FirebaseUrl.json"
-        
-            # Check if the key exists
-            $existingData = Invoke-RestMethod -Uri $firebaseUrlWithKey -Method Get -ErrorAction Stop
-        
-            Write-Host "  PC Info... `n` "
-        
-            if ($existingData) {
-                # Increment runs if data exists
-                $runs = $existingData.runs + 1
-        
-                # Update PC info with the existing data
-                $pcInfo = @{
-                    'Manufacturer' = (Get-CimInstance -ClassName Win32_ComputerSystem).Manufacturer
-                    "Domain" = $env:COMPUTERNAME
-                    "OS" = [Environment]::OSVersion.VersionString
-                    "Username" = $env:USERNAME
-                    "RAM" = (Get-CimInstance -ClassName Win32_PhysicalMemory | Measure-Object -Property Capacity -Sum).Sum / 1GB
-                    "GPU" = (Get-CimInstance -ClassName Win32_VideoController).Name
-                    "CPU" = (Get-CimInstance -ClassName Win32_Processor).Name
-                    "Cores" = (Get-CimInstance -ClassName Win32_Processor).NumberOfCores
-                    "Language" = "$($sync.Langusege)"
-                    "Start at" = (Get-Date -Format "MM/dd/yyyy hh:mm:ss tt")
-                    "Runs" = $runs
-                    "AppsHistory" = $existingData.AppsHistory
-                    "TweaksHistory" = $existingData.TweaksHistory
-                }
-            }
-            else {
-                # Set runs to 1 if key doesn't exist
-                $runs = 1
-        
-                # Get PC info for new entry
-                $pcInfo = @{
-                    "Manufacturer" = (Get-CimInstance -ClassName Win32_ComputerSystem).Manufacturer
-                    "Domain" = $env:COMPUTERNAME
-                    "OS" = [Environment]::OSVersion.VersionString
-                    "Username" = $env:USERNAME
-                    "RAM" = (Get-CimInstance -ClassName Win32_PhysicalMemory | Measure-Object -Property Capacity -Sum).Sum / 1GB
-                    "GPU" = (Get-CimInstance -ClassName Win32_VideoController).Name
-                    "CPU" = (Get-CimInstance -ClassName Win32_Processor).Name
-                    "Cores" = (Get-CimInstance -ClassName Win32_Processor).NumberOfCores
-                    "Language" = "$($sync.Langusege)"
-                    "Start At" = (Get-Date -Format "MM/dd/yyyy hh:mm:ss tt")
-                    "runs" = $runs
-                    "AppsHistory" = @{}
-                    "TweaksHistory" = @{}
-                }
-            }
-        
-            # Convert to JSON
-            $json = $pcInfo | ConvertTo-Json 
-        
-            # Set headers
-            $headers = @{
-                "Content-Type" = "application/json" 
-            }
-        
-            # Update Firebase database with the new value
-            Invoke-RestMethod -Uri $firebaseUrlWithKey -Method Put -Body $json -Headers $headers -ErrorAction Stop
-        
-            # Count the number of keys directly under the root
-            $response = Invoke-RestMethod -Uri $firebaseUrlRoot -Method Get -ErrorAction Stop
-            $totalKeys = ($response | Get-Member -MemberType NoteProperty | Measure-Object).Count
-        
-            # Define the desired order of keys for display
-            $displayOrder = @("Manufacturer", "Username", "Domain", "OS", "CPU", "GPU", "RAM", "Start At", "Runs")
-        
-            # Display PC info excluding "AppsTweaks" in the specified order
-            foreach ($key in $displayOrder) {
-                if ($pcInfo.ContainsKey($key)) {
-                    Write-Host "  $key : $($pcInfo[$key])" -ForegroundColor Yellow
-                }
-            }
-        
-            Write-Host -NoNewline "`n`  $totalKeys" -ForegroundColor Red
-            Write-Host " devices use this tool." -ForegroundColor Yellow
-        
-        } | Out-Null
-    }
-    catch {
-        Write-Error "An error occurred: $_"
-        exit 1
-    }
-}
-
-Function Get-ToggleStatus {
-
-    Param($ToggleSwitch)
-
-    if($ToggleSwitch -eq "ToggleDarkMode"){
-        $app = (Get-ItemProperty -path 'HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize').AppsUseLightTheme
-        $system = (Get-ItemProperty -path 'HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize').SystemUsesLightTheme
-        if($app -eq 0 -and $system -eq 0){
-            return $true
-        }
-        else{
-            return $false
-        }
-    }
-  
-    if($ToggleSwitch -eq "ToggleShowExt"){
-        $hideextvalue = (Get-ItemProperty -path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced').HideFileExt
-        if($hideextvalue -eq 0){
-            return $true
-        }
-        else{
-            return $false
-        }
-    }
-
-    if($ToggleSwitch -eq "ToggleShowHidden"){
-        $hideextvalue = (Get-ItemPropertyValue -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "ShowSuperHidden")
-        if($hideextvalue -eq 1){
-            return $true
-        }
-        else{
-            return $false
-        }
-    }
-
-    if($ToggleSwitch -eq "ToggleNumLook"){
-        $numlockvalue = (Get-ItemProperty -path 'HKCU:\Control Panel\Keyboard').InitialKeyboardIndicators
-        if($numlockvalue -eq 2){
-            return $true
-        }
-        else{
-            return $false
-        }
-    } 
-    
-    if ($ToggleSwitch -eq "ToggleStickyKeys") {
-        $StickyKeys = (Get-ItemProperty -path 'HKCU:\Control Panel\Accessibility\StickyKeys').Flags
-        if($StickyKeys -eq 58){
-            return $false
-        }
-        else{
-            return $true
-        }
     }
 }
 function Get-SelectedApps {
@@ -12227,175 +12395,6 @@ function Invoke-Install {
         Write-Host "Error: $_"
     }
 }
-function WriteAText {
-    param (
-        $message,
-        $color
-    )
-    
-    Write-Host " +==============================================================================+" -ForegroundColor Yellow;
-    Write-Host " |   ___ _____ _____   _____ __  __    _    ____       _    ____  _____ _       |" -ForegroundColor Yellow;
-    Write-Host " |  |_ _|_   _|_   _| | ____|  \/  |  / \  |  _ \     / \  |  _ \| ____| |      |" -ForegroundColor Yellow;
-    Write-Host " |   | |  | |   | |   |  _| | |\/| | / _ \ | | | |   / _ \ | | | |  _| | |      |" -ForegroundColor Yellow;
-    Write-Host " |   | |  | |   | |   | |___| |  | |/ ___ \| |_| |  / ___ \| |_| | |___| |___   |" -ForegroundColor Yellow;
-    Write-Host " |  |___| |_|   |_|   |_____|_|  |_/_/   \_\____/  /_/   \_\____/|_____|_____|  |" -ForegroundColor Yellow;
-    Write-Host " |                       Made with ♥ By Emad Adel                               |" -ForegroundColor Yellow;
-    Write-Host " |                          #StandWithPalestine                                 |" -ForegroundColor Yellow;
-    Write-Host " +==============================================================================+" -ForegroundColor Yellow; 
-    Write-Host " $message `n` " -ForegroundColor Yellow
-    Write-Host " Github repo: https://github.com/emadadel4/ITT/issues" -ForegroundColor Yellow
-    Write-Host " Telegram: https://t.me/ittemadadel" -ForegroundColor Yellow
-    Write-Host " Discord: https://discord.com/invite/3eV79KgD" -ForegroundColor Yellow
-    Write-Host " Commands:" -ForegroundColor Yellow
-    Write-Host " irm bit.ly/ittea | iex" -ForegroundColor Yellow
-    Write-Host " irm cutt.ly/ittea | iex" -ForegroundColor Yellow
-    Write-Host " irm bit.ly/emadadel | iex" -ForegroundColor Yellow
-}
-function Startup {
-    Get-PCInfo  
-    Write-Host (WriteAText -color White -message  "You ready to Install anything.") 
-}
-function GetCheckBoxesFromStackPanel {
-    param (
-        [System.Windows.Controls.StackPanel]$item
-    )
-
-    $checkBoxes = @()  # Initialize an empty array to store CheckBoxes
-    
-    if ($item -is [System.Windows.Controls.StackPanel]) {
-        foreach ($child in $item.Children) {
-            if ($child -is [System.Windows.Controls.StackPanel]) {
-                foreach ($innerChild in $child.Children) {
-                    if ($innerChild -is [System.Windows.Controls.CheckBox]) {
-                        # Add CheckBox to the array
-                        $checkBoxes += $innerChild
-                    }
-                }
-            }
-        }
-    }
-    return $checkBoxes
-}
-function LoadJson {
-    if($sync.ProcessRunning)
-    {
-        $localizedMessageTemplate = $sync.database.locales.Controls.$($sync.Langusege).Pleasewait
-        $msg = "$localizedMessageTemplate"
-        [System.Windows.MessageBox]::Show($msg, "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
-        return
-    }
-    # Open file dialog to select JSON file
-    $openFileDialog = New-Object -TypeName "Microsoft.Win32.OpenFileDialog"
-    $openFileDialog.Filter = "JSON files (*.ea4)|*.ea4"
-    $openFileDialog.Title = "Open JSON File"
-    $dialogResult = $openFileDialog.ShowDialog()
-
-    if ($dialogResult -eq "OK") {
-
-        $jsonData = Get-Content -Path $openFileDialog.FileName -Raw | ConvertFrom-Json
-        $filteredNames = $jsonData
-
-        $filterPredicate = {
-
-            param($item)
-
-            $item =  GetCheckBoxesFromStackPanel -item $item
-
-            foreach ($currentItemName in $filteredNames.Name) {
-
-                if($currentItemName -eq $item.Content)
-                {
-                    $item.IsChecked = $true
-                    break
-                }
-
-            }
-            return $filteredNames.name -contains $item.Content
-        }
-        $sync['window'].FindName('apps').IsSelected = $true
-        $sync['window'].FindName('appslist').Clear()
-        $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync['window'].FindName('appslist').Items)
-        $collectionView.Filter = $filterPredicate
-        [System.Windows.MessageBox]::Show("Restored successfully", "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
-    }
-}
-function SaveItemsToJson {
-    if($sync.ProcessRunning)
-    {
-        $localizedMessageTemplate = $sync.database.locales.Controls.$($sync.Langusege).Pleasewait
-        $msg = "$localizedMessageTemplate"
-        [System.Windows.MessageBox]::Show($msg, "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
-        return
-    }
-    $items = @()
-
-    ClearFilter
-    
-    foreach ($item in $sync.AppsListView.Items)
-    {
-        $item =  GetCheckBoxesFromStackPanel -item $item
-        if ($item.IsChecked)
-        {
-                $itemObject = [PSCustomObject]@{
-                Name = $item.Content
-                check = "true"
-            }
-            $items += $itemObject
-        }
-    }
-
-    if ($null -ne $items -and $items.Count -gt 0) 
-    {
-        # Open save file dialog
-        $saveFileDialog = New-Object -TypeName "Microsoft.Win32.SaveFileDialog"
-        $saveFileDialog.Filter = "JSON files (*.ea4)|*.ea4"
-        $saveFileDialog.Title = "Save JSON File"
-        $dialogResult = $saveFileDialog.ShowDialog()
-
-        if ($dialogResult -eq "OK")
-        {
-            $items | ConvertTo-Json | Out-File -FilePath $saveFileDialog.FileName -Force
-            Write-Host "Saved: $($saveFileDialog.FileName)"
-
-            [System.Windows.MessageBox]::Show("Saved", "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
-
-        }
-        
-            foreach ($item in $sync.AppsListView.Items)
-            {
-                $item =  GetCheckBoxesFromStackPanel -item $item
-
-                if ($item.IsChecked)
-                {
-                    $item.IsChecked = $false
-                }
-            }
-    }
-    else
-    {
-        [System.Windows.MessageBox]::Show("Choose at least one program", "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
-    }
-}
-function ChangeTap() {
-    # Define a hash table to map tab names to their button visibility and list values
-    $tabSettings = @{
-        'apps' = @{ 'installBtn' = 'Visible'; 'applyBtn' = 'Hidden'; 'currentList' = 'appslist' }
-        'tweeksTab' = @{ 'installBtn' = 'Hidden'; 'applyBtn' = 'Visible'; 'currentList' = 'tweakslist' }
-        'SettingsTab' = @{ 'installBtn' = 'Hidden'; 'applyBtn' = 'Hidden'; 'currentList' = $null }
-    }
-
-    # Iterate over the tabs and update visibility and currentList based on the selected tab
-    foreach ($tab in $tabSettings.Keys) {
-        if ($sync['window'].FindName($tab).IsSelected) {
-            $settings = $tabSettings[$tab]
-            $sync['window'].FindName('installBtn').Visibility = $settings['installBtn']
-            $sync['window'].FindName('applyBtn').Visibility = $settings['applyBtn']
-            $sync.currentList = $settings['currentList']
-            break
-        }
-    }
-}
-
 function Invoke-Button {
     Param ([string]$action)
 
@@ -13144,11 +13143,11 @@ function Show-Event {
 function Check-DateAndShowEvent {
     if ($sync.Date.Month -eq 9 -and $sync.Date.Day -eq 1) 
     {
-        Show-Event -image "https://raw.githubusercontent.com/emadadel4/ITT/update/Assets/Images/happy.jpg" -title "Happy Birthday Dev!" -description "It's my Birthday and My Playlist ♪" -day "Birthday" -WindowHeight 455 -WindowWidth 555
+        Show-Event -image "https://raw.githubusercontent.com/emadadel4/ITT/update/Resources/Images/happy.jpg" -title "Happy Birthday Dev!" -description "It's my Birthday and My Playlist ♪" -day "Birthday" -WindowHeight 455 -WindowWidth 555
     } 
     else 
     {
-        Show-Event -image "https://raw.githubusercontent.com/emadadel4/ITT/main/Assets/Images/thumbnail.jpg" -title "Watch demo" -day "Default" -WindowHeight 455 -WindowWidth 555
+        Show-Event -image "https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/thumbnail.jpg" -title "Watch demo" -day "Default" -WindowHeight 455 -WindowWidth 555
     }
 }
 #===========================================================================
