@@ -20,7 +20,7 @@ Add-Type -AssemblyName System.Windows.Forms
 $sync = [Hashtable]::Synchronized(@{
     database       = @{}
     ProcessRunning = $false
-    lastupdate     = "08/07/24"
+    lastupdate     = "08/08/24"
     github         = "https://github.com/emadadel4"
     telegram       = "https://t.me/emadadel4"
     website        = "https://emadadel4.github.io"
@@ -6005,6 +6005,10 @@ $sync.database.OST = '{
     {
       "name": "Birds - Imagine Dragons",
       "url": "https://archive.org/download/bunchofimaginedragons/14%20Imagine%20Dragons%20-%20Birds.mp3"
+    },
+    {
+      "name": "WASTE - Kxllswxtch ",
+      "url": "https://archive.org/download/rock-playlist_202305/WASTE.mp3"
     }
   ]
 }
