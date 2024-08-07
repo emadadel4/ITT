@@ -61,7 +61,7 @@ function Show-Event {
 }
 
 # Function to check current date and call Show-Event
-function Check-DateAndShowEvent {
+function Check-Date {
     if ($sync.Date.Month -eq 9 -and $sync.Date.Day -eq 1) 
     {
         Show-Event -image "https://raw.githubusercontent.com/emadadel4/ITT/update/Resources/Images/happy.jpg" -title "Happy Birthday Dev!" -description "It's my Birthday and My Playlist ♪" -day "Birthday" -WindowHeight 455 -WindowWidth 555
