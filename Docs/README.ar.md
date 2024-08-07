@@ -43,7 +43,7 @@
 
 <p align="center">
   <a target="_blank" rel="noopener noreferrer" href="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/demo.PNG">
-    <img src="https://raw.githubusercontent.com/emadadel4/ITT/main/Assets/Images/demo.PNG" alt="ITT Demo" style="max-width: 100%;">
+    <img src="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/demo.PNG" alt="ITT Demo" style="max-width: 100%;">
   </a>
 </p>
 
