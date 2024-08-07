@@ -7932,7 +7932,7 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
                         <SolidColorBrush x:Key="ToggleSwitchDisable" Color="#c9c9c7"/>
                         <SolidColorBrush x:Key="ToggleSwitchBorderBrush" Color="#c9c9c7"/>
                         <Color x:Key="CardLeft">#1DB954</Color> 
-                        <Color x:Key="Card2Right">#121212</Color>
+                        <Color x:Key="Card2Right">Transparent</Color>
                 </ResourceDictionary>
         <!--Dark mode -->
 <!--End Theme styles colors-->
