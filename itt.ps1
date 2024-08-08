@@ -20,7 +20,7 @@ Add-Type -AssemblyName System.Windows.Forms
 $sync = [Hashtable]::Synchronized(@{
     database       = @{}
     ProcessRunning = $false
-    lastupdate     = "08/08/24"
+    lastupdate     = "08/09/24"
     github         = "https://github.com/emadadel4"
     telegram       = "https://t.me/emadadel4"
     website        = "https://emadadel4.github.io"
@@ -13033,6 +13033,9 @@ function FilterByCat {
         $sync.AppsListView.Clear()
         $collectionView.Filter = $null
     }
+    
+    # Scroll to the top
+    $sync.AppsListView.ScrollIntoView($sync.AppsListView.Items[0])
 }
 function ClearFilter {
     $sync.AppsListView.Clear()
