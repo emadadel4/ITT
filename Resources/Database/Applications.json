@@ -4313,7 +4313,7 @@
     "check": "false"
   },
   {
-    "name": "Microsoft Windows SDK for Windows 10 and .NET Framework 4.7",
+    "name": "Microsoft Windows SDK",
     "description": "The Windows 10 SDK for Windows 10 version 1809 provides the latest headers libraries metadata and tools for building Windows 10 apps NoteWindows 10 development targeting Windows 10 version 1903 or later requires Visual Studio 2017 or later This SDK will not be discovered by previous versions of Visual Studio",
     "winget": "none",
     "choco": "windows-sdk-10.1",
@@ -5350,6 +5350,63 @@
       }
     ],
     "category": "Gaming",
+    "check": "false"
+  },
+  {
+    "name": "Microsoft .NET SDK 7",
+    "description": "NET is a free crossplatform opensource developer platform for building many different types of applications",
+    "winget": "Microsoft.DotNet.SDK.7",
+    "choco": "dotnet-7.0-sdk",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none",
+        "shortcut": "no",
+        "run": "no"
+      }
+    ],
+    "category": "Runtimes",
+    "check": "false"
+  },
+  {
+    "name": "Microsoft .NET SDK 8",
+    "description": "NET is a free crossplatform opensource developer platform for building many different types of applications",
+    "winget": "Microsoft.DotNet.SDK.Preview",
+    "choco": "dotnet-sdk",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none",
+        "shortcut": "no",
+        "run": "no"
+      }
+    ],
+    "category": "Runtimes",
+    "check": "false"
+  },
+  {
+    "name": "Microsoft ASP.NET Core Runtime 7.0",
+    "description": "NET is a free crossplatform opensource developer platform for building many different types of applications",
+    "winget": "Microsoft.DotNet.AspNetCore.7",
+    "choco": "dotnet-aspnetruntime",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none",
+        "shortcut": "no",
+        "run": "no"
+      }
+    ],
+    "category": "Runtimes",
     "check": "false"
   }
 ]
