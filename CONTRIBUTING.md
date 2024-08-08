@@ -1,4 +1,4 @@
-# Contributing to ITT Project
+# Contributing to ITT
 
 Thank you for your interest in contributing to My Awesome Project! We appreciate your support and welcome contributions from the community. Please follow the guidelines below to ensure a smooth contribution process.
 
