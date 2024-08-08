@@ -338,12 +338,12 @@ $jsonString = @"
             "url": "none",
             "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
             "output": "$($data["default"][0]["output"])",
-            "shortcut": "$($data["default"][0]["shortcut"])"
+            "shortcut": "$($data["default"][0]["shortcut"])",
             "run": "$($data["default"][0]["run"])"
         }
     ],
     "category": "$($data["category"])",
-    "check": "false",
+    "check": "false"
 }
 "@
 
