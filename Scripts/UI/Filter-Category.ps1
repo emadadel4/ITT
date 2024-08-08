@@ -86,6 +86,9 @@ function FilterByCat {
         $sync.AppsListView.Clear()
         $collectionView.Filter = $null
     }
+    
+    # Scroll to the top
+    $sync.AppsListView.ScrollIntoView($sync.AppsListView.Items[0])
 }
 function ClearFilter {
     $sync.AppsListView.Clear()
