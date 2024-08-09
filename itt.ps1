@@ -5930,11 +5930,7 @@ $sync.database.OST = '{
       "url": "https://epsilon.vgmsite.com/soundtracks/far-cry-3/iqgdbfrhtw/17.%20Further%20%28feat.%20Serena%20McKinney%29.mp3"
     },
     {
-      "name": "No Time To Die - Billie Eilish",
-      "url": "https://dl.vgmdownloads.com/soundtracks/hollow-knight-original-soundtrack/qqrmmaqyqg/26.%20Hollow%20Knight.mp3"
-    },
-    {
-      "name": "Roots - Imagine Dragons",
+      "name": "Hollow Knight",
       "url": "https://dl.vgmdownloads.com/soundtracks/hollow-knight-original-soundtrack/qqrmmaqyqg/26.%20Hollow%20Knight.mp3"
     },
     {
@@ -5946,7 +5942,7 @@ $sync.database.OST = '{
       "url": "https://dl.vgmdownloads.com/soundtracks/assassins-creed-mirage-original-game-soundtrack-2023/axtwruyduh/01.%20Mirage%20Theme.mp3"
     },
     {
-      "name": "Ezio''s Family (Møme Remix)",
+      "name": "Ezio''s Family - Møme Remix",
       "url": "https://vgmsite.com/soundtracks/assassins-creed-ezios-family-m-me-remix-2022/qdxeshajdz/01.%20Ezio%27s%20Family%20%28M%C3%B8me%20Remix%29.mp3"
     },
     {
@@ -6040,10 +6036,6 @@ $sync.database.OST = '{
     {
       "name": "Grand Theft Auto V - North Yankton Memories",
       "url": "https://archive.org/download/09-no-happy-endings/05%20-%20North%20Yankton%20Memories.mp3"
-    },
-    {
-      "name": "Grand Theft Auto V - We Were Set Up",
-      "url": "https://archive.org/download/09-no-happy-endings/01%20-%20We%20Were%20Set%20Up.mp3"
     }
   ],
   "Favorite": [
@@ -13043,43 +13035,47 @@ function ClearFilter {
     $collectionView.Filter = $null
 }
 function PlayMusic {
-    # Function to play an audio track
-    function PlayAudio($track) {
 
-        $mediaItem = $sync.mediaPlayer.newMedia($track)
-        $sync.mediaPlayer.currentPlaylist.appendItem($mediaItem)
-        $sync.mediaPlayer.controls.play()
-    }
+    Invoke-ScriptBlock -ScriptBlock {
 
-    # Shuffle the playlist and create a new playlist
-    function GetShuffledTracks {
-        
-        if ($sync.Date.Month -eq 9 -and $sync.Date.Day -eq 1) {
-
-            return $sync.database.OST.Favorite | Get-Random -Count $sync.database.OST.Favorite.Count
+        # Function to play an audio track
+        function PlayAudio($track) {
+            $mediaItem = $sync.mediaPlayer.newMedia($track)
+            $sync.mediaPlayer.currentPlaylist.appendItem($mediaItem)
+            $sync.mediaPlayer.controls.play()
         }
-        else
-        {
-            return $sync.database.OST.Tracks | Get-Random -Count $sync.database.OST.Tracks.Count
-        }
-    }
 
-    # Function to play the shuffled playlist
-    function PlayShuffledPlaylist {
-        $shuffledTracks = GetShuffledTracks
-        foreach ($track in $shuffledTracks) {
-            PlayAudio -track $track.url
-            # Wait for the track to finish playing
-            while ($sync.mediaPlayer.playState -in 3, 6) {
-                Start-Sleep -Milliseconds 100
+        # Shuffle the playlist and create a new playlist
+        function GetShuffledTracks {
+            if ($sync.Date.Month -eq 9 -and $sync.Date.Day -eq 1) {
+                return $sync.database.OST.Favorite | Get-Random -Count $sync.database.OST.Favorite.Count
+            }
+            else {
+                return $sync.database.OST.Tracks | Get-Random -Count $sync.database.OST.Tracks.Count
             }
         }
+
+        # Preload and play the shuffled playlist
+        function PlayPreloadedPlaylist {
+            # Preload the shuffled playlist
+            $shuffledTracks = GetShuffledTracks
+
+            while ($true) {  # Loop indefinitely to repeat the preloaded playlist
+                foreach ($track in $shuffledTracks) {
+                    PlayAudio -track $track.url
+                    # Wait for the track to finish playing
+                    while ($sync.mediaPlayer.playState -in 3, 6) {
+                        Start-Sleep -Milliseconds 100
+                    }
+                }
+            }
+        }
+
+        # Play the preloaded playlist
+        PlayPreloadedPlaylist
     }
-
-    # Play the shuffled playlist
-    PlayShuffledPlaylist
-
 }
+
 function MuteMusic {
     param($value)
     $sync.mediaPlayer.settings.volume = $value
