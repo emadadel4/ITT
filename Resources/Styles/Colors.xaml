@@ -29,7 +29,7 @@
                         <SolidColorBrush x:Key="FGColor" Color="#212121"/>
                         <SolidColorBrush x:Key="BGButtonColor" Color="#1DB954" />
                         <SolidColorBrush x:Key="FGButtonColor" Color="White" />
-                        <SolidColorBrush x:Key="ButtonHighlightColor" Color="#5F8AAC" />
+                        <SolidColorBrush x:Key="ButtonHighlightColor" Color="#1db954" />
                         <SolidColorBrush x:Key="FGTextColor" Color="WhiteSmoke" />
                         <SolidColorBrush x:Key="DefaultTextColor" Color="White"/>
                         <SolidColorBrush x:Key="DefaultTextColor2" Color="White"/>
@@ -37,7 +37,7 @@
                         <SolidColorBrush x:Key="ButtonBorder" Color="#1DB954"/>
                         <SolidColorBrush x:Key="Label" Color="#3f3f3f"/>
                         <SolidColorBrush x:Key="checkboxBG" Color="Transparent"/>
-                        <SolidColorBrush x:Key="highlight" Color="#D4904F"/>
+                        <SolidColorBrush x:Key="highlight" Color="#0189df"/>
                         <SolidColorBrush x:Key="ToggleSwitchBG" Color="#282828"/>
                         <SolidColorBrush x:Key="ToggleSwitchFG" Color="#282828"/>
                         <SolidColorBrush x:Key="ToggleSwitchEnable" Color="white"/>
