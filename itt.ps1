@@ -7859,13 +7859,13 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
             <Setter.Value>
                 <ControlTemplate TargetType="CheckBox">
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{TemplateBinding Content}" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                        <TextBlock Text="{TemplateBinding Content}" VerticalAlignment="Center" Margin="8"/>
                         <Grid>
                             <Border Name="emad" Width="40"
                                     Height="20"
                                     Background="{DynamicResource Label}"
                                     CornerRadius="10"
-                                    Margin="0,0,5,0"
+                                    Margin="1"
                             />
                             <Border Name="ToggleSwitchButton"
                                     Width="12"
@@ -7900,15 +7900,14 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
                                                 Storyboard.TargetName="ToggleSwitchButton"
                                                 Duration="0:0:0:0.10"
                                                 From="0,0,0,0"
-                                                To="20,0,0,0">
+                                                To="22,0,0,0">
                                         </ThicknessAnimation>
                                     </Storyboard>
                                 </BeginStoryboard>
                             </Trigger.ExitActions>
                             <Setter TargetName="ToggleSwitchButton" Property="Background" Value="{DynamicResource ToggleSwitchDisable}"/>
                             <Setter TargetName="emad" Property="BorderBrush" Value="{DynamicResource ToggleSwitchBorderBrush}"/>
-                            <Setter TargetName="emad" Property="BorderThickness" Value="2"/>
-
+                            <Setter TargetName="emad" Property="BorderThickness" Value="1"/>
                         </Trigger>
                         <Trigger Property="IsChecked" Value="true">
                             <Trigger.ExitActions>
@@ -7918,7 +7917,7 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
                                         <ThicknessAnimation Storyboard.TargetProperty="Margin"
                                                 Storyboard.TargetName="ToggleSwitchButton"
                                                 Duration="0:0:0:0.10"
-                                                From="25,0,0,0"
+                                                From="22,0,0,0"
                                                 To="5,0,0,0">
                                         </ThicknessAnimation>
                                     </Storyboard>
@@ -7928,10 +7927,15 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
                             <Setter TargetName="emad" Property="Background" Value="{DynamicResource highlight}"/>
 
                         </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="ToggleSwitchButton" Property="Width" Value="13"/>
+                            <Setter TargetName="ToggleSwitchButton" Property="Height" Value="13"/>
+                        </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+
     </Style>
 <!--End ToggleSwitchStyle Style-->
     <!--Theme styles colors-->
@@ -7965,7 +7969,7 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
                         <SolidColorBrush x:Key="FGColor" Color="#212121"/>
                         <SolidColorBrush x:Key="BGButtonColor" Color="#1DB954" />
                         <SolidColorBrush x:Key="FGButtonColor" Color="White" />
-                        <SolidColorBrush x:Key="ButtonHighlightColor" Color="#5F8AAC" />
+                        <SolidColorBrush x:Key="ButtonHighlightColor" Color="#1db954" />
                         <SolidColorBrush x:Key="FGTextColor" Color="WhiteSmoke" />
                         <SolidColorBrush x:Key="DefaultTextColor" Color="White"/>
                         <SolidColorBrush x:Key="DefaultTextColor2" Color="White"/>
@@ -7973,7 +7977,7 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
                         <SolidColorBrush x:Key="ButtonBorder" Color="#1DB954"/>
                         <SolidColorBrush x:Key="Label" Color="#3f3f3f"/>
                         <SolidColorBrush x:Key="checkboxBG" Color="Transparent"/>
-                        <SolidColorBrush x:Key="highlight" Color="#D4904F"/>
+                        <SolidColorBrush x:Key="highlight" Color="#0189df"/>
                         <SolidColorBrush x:Key="ToggleSwitchBG" Color="#282828"/>
                         <SolidColorBrush x:Key="ToggleSwitchFG" Color="#282828"/>
                         <SolidColorBrush x:Key="ToggleSwitchEnable" Color="white"/>
