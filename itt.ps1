@@ -20,7 +20,7 @@ Add-Type -AssemblyName System.Windows.Forms
 $sync = [Hashtable]::Synchronized(@{
     database       = @{}
     ProcessRunning = $false
-    lastupdate     = "08/09/24"
+    lastupdate     = "08/10/24"
     github         = "https://github.com/emadadel4"
     telegram       = "https://t.me/emadadel4"
     website        = "https://emadadel4.github.io"
@@ -7436,7 +7436,7 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
                         <Border.Background>
                             <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
                                 <GradientStop Color="{DynamicResource CardLeft}" Offset="0"/>
-                                <GradientStop Color="{DynamicResource CardRight}" Offset="1.0"/>
+                                <GradientStop Color="{DynamicResource CardRight}" Offset="1.8"/>
                             </LinearGradientBrush>
                         </Border.Background>
                         <ContentPresenter HorizontalAlignment="Left"
@@ -7455,48 +7455,44 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
 <!--End ListViewItem Style-->
 
 <!--CheckBox Style-->
-    <Style TargetType="CheckBox">
-        <Setter Property="Foreground" Value="{DynamicResource DefaultTextColor}"/>
-        <Setter Property="Margin" Value="0"/>
-        <Setter Property="Padding" Value="6"/>
-        <Setter Property="BorderThickness" Value="0"/>
-        <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="CheckBox">
-                        <StackPanel Orientation="Horizontal">
-                            <!-- Default checkbox icon -->
-                            <Grid Width="18" Height="18" Margin="0,0,5,0">
-                                <Ellipse Width="18" Height="18" Fill="{TemplateBinding Background}" Stroke="{TemplateBinding BorderBrush}" StrokeThickness="1"/>
-                                <Path x:Name="CheckMark" Width="7" Height="7" SnapsToDevicePixels="true" Stroke="#525FE1" StrokeThickness="1.8" Data="M 0 3.5 L 7 3.5 M 3.5 0 L 3.5 7" Visibility="Collapsed"/>
-                            </Grid>
-                            <!-- Content with background -->
-                            <Border CornerRadius="0" Background="{DynamicResource checkboxBG}"
-                                    BorderBrush="{TemplateBinding BorderBrush}"
-                                    BorderThickness="{TemplateBinding BorderThickness}"
-                                    Padding="{TemplateBinding Padding}">
-                                <ContentPresenter/>
-                            </Border>
-                        </StackPanel>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsChecked" Value="True">
-                                <Setter TargetName="CheckMark" Property="Visibility" Value="Visible"/>
-                                <Setter Property="Background" Value="{DynamicResource BGButtonColor}"/>
-                                <Setter TargetName="CheckMark" Property="Stroke" Value="white"/>
-                                <Setter Property="BorderBrush" Value="{DynamicResource highlight}"/>
-                            </Trigger>
-                                <Trigger Property="IsChecked" Value="False">
-                                <Setter Property="Background" Value="white"/>
-                            </Trigger>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" Value="{DynamicResource highlight}"/>
-                            <Setter  Property="BorderBrush" Value="{DynamicResource highlight}"/>
-                            <Setter  Property="BorderThickness" Value="0"/>
-                        </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-    </Style>
+<Style TargetType="CheckBox">
+    <Setter Property="Foreground" Value="{DynamicResource DefaultTextColor}"/>
+    <Setter Property="Margin" Value="0"/>
+    <Setter Property="Padding" Value="6"/>
+    <Setter Property="BorderThickness" Value="1"/>
+    <Setter Property="BorderBrush" Value="black"/>
+    <Setter Property="Template">
+        <Setter.Value>
+            <ControlTemplate TargetType="CheckBox">
+                <StackPanel Orientation="Horizontal">
+                    <!-- Checkbox box -->
+                    <Border Name="CheckRadius" Width="18" Height="18" BorderBrush="{TemplateBinding BorderBrush}" CornerRadius="20" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}">
+                        <!-- Checkmark arrow inside the box -->
+                        <Path x:Name="CheckMark" Width="13" Height="13" Stretch="Uniform" Stroke="WhiteSmoke" StrokeThickness="3" Data="M 0 5 L 4 8 L 10 0" Visibility="Collapsed"/>
+                    </Border>
+                    <!-- Content beside the checkbox -->
+                    <ContentPresenter Margin="4,0,0,0" VerticalAlignment="Center"/>
+                </StackPanel>
+                <ControlTemplate.Triggers>
+                    <Trigger Property="IsChecked" Value="True">
+                        <Setter TargetName="CheckMark" Property="Visibility" Value="Visible"/>
+                        <Setter Property="Background" Value="{DynamicResource highlight}"/>
+                        <Setter Property="BorderBrush" Value="{DynamicResource highlight}"/>
+
+                    </Trigger>
+                    <Trigger Property="IsChecked" Value="False">
+                        <Setter Property="Background" Value="White"/>
+                    </Trigger>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Background" Value="{DynamicResource highlight}"/>
+                        <Setter Property="BorderBrush" Value="{DynamicResource highlight}"/>
+                    </Trigger>
+                </ControlTemplate.Triggers>
+            </ControlTemplate>
+        </Setter.Value>
+    </Setter>
+</Style>
+
 <!--End CheckBox Style-->
 
 <!--Textbox Style-->
@@ -7866,7 +7862,7 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Text="{TemplateBinding Content}" VerticalAlignment="Center" Margin="0,0,5,0"/>
                         <Grid>
-                            <Border Name="emad" Width="45"
+                            <Border Name="emad" Width="40"
                                     Height="20"
                                     Background="{DynamicResource Label}"
                                     CornerRadius="10"
@@ -7876,7 +7872,7 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
                                     Width="12"
                                     Height="12"
                                     Background="Black"
-                                    CornerRadius="12.5"
+                                    CornerRadius="50"
                                     Margin="5"
                                     HorizontalAlignment="Left"
                             />
@@ -7905,7 +7901,7 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
                                                 Storyboard.TargetName="ToggleSwitchButton"
                                                 Duration="0:0:0:0.10"
                                                 From="0,0,0,0"
-                                                To="25,0,0,0">
+                                                To="20,0,0,0">
                                         </ThicknessAnimation>
                                     </Storyboard>
                                 </BeginStoryboard>
@@ -7930,7 +7926,7 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
                                 </BeginStoryboard>
                             </Trigger.ExitActions>
                             <Setter TargetName="ToggleSwitchButton" Property="Background" Value="{DynamicResource ToggleSwitchEnable}"/>
-                            <Setter TargetName="emad" Property="Background" Value="{DynamicResource BGButtonColor}"/>
+                            <Setter TargetName="emad" Property="Background" Value="{DynamicResource highlight}"/>
 
                         </Trigger>
                     </ControlTemplate.Triggers>
@@ -7944,7 +7940,7 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
                 <ResourceDictionary x:Key="Light">
                         <SolidColorBrush x:Key="BGColor" Color="White"/>
                         <SolidColorBrush x:Key="FGColor" Color="WhiteSmoke"/>
-                        <SolidColorBrush x:Key="BGButtonColor" Color="#525FE1" />
+                        <SolidColorBrush x:Key="BGButtonColor" Color="#27A7E7" />
                         <SolidColorBrush x:Key="ButtonHighlightColor" Color="#FF6C76E0" />
                         <SolidColorBrush x:Key="FGButtonColor" Color="White" />
                         <SolidColorBrush x:Key="FGTextColor" Color="Black" />
@@ -7954,7 +7950,7 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
                         <SolidColorBrush x:Key="ButtonBorder" Color="#525FE1"/>
                         <SolidColorBrush x:Key="Label" Color="LightBlue"/>
                         <SolidColorBrush x:Key="checkboxBG" Color="Transparent"/>
-                        <SolidColorBrush x:Key="highlight" Color="blue"/>
+                        <SolidColorBrush x:Key="highlight" Color="#27A7E7"/>
                         <SolidColorBrush x:Key="ToggleSwitchBG" Color="#282828"/>
                         <SolidColorBrush x:Key="ToggleSwitchFG" Color="#282828"/>
                         <SolidColorBrush x:Key="ToggleSwitchEnable" Color="white"/>
@@ -7966,11 +7962,11 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
         <!--Light mode -->
         <!--Dark mode-->
                 <ResourceDictionary x:Key="Dark">
-                        <SolidColorBrush x:Key="BGColor" Color="#121212"/>
+                        <SolidColorBrush x:Key="BGColor" Color="#202020"/>
                         <SolidColorBrush x:Key="FGColor" Color="#282828"/>
-                        <SolidColorBrush x:Key="BGButtonColor" Color="#1DB954" />
+                        <SolidColorBrush x:Key="BGButtonColor" Color="#7661C2" />
                         <SolidColorBrush x:Key="FGButtonColor" Color="White" />
-                        <SolidColorBrush x:Key="ButtonHighlightColor" Color="#FF57E087" />
+                        <SolidColorBrush x:Key="ButtonHighlightColor" Color="#5F8AAC" />
                         <SolidColorBrush x:Key="FGTextColor" Color="WhiteSmoke" />
                         <SolidColorBrush x:Key="DefaultTextColor" Color="White"/>
                         <SolidColorBrush x:Key="DefaultTextColor2" Color="White"/>
@@ -7978,13 +7974,13 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
                         <SolidColorBrush x:Key="ButtonBorder" Color="#1DB954"/>
                         <SolidColorBrush x:Key="Label" Color="#3f3f3f"/>
                         <SolidColorBrush x:Key="checkboxBG" Color="Transparent"/>
-                        <SolidColorBrush x:Key="highlight" Color="#FF00FF11"/>
+                        <SolidColorBrush x:Key="highlight" Color="#D4904F"/>
                         <SolidColorBrush x:Key="ToggleSwitchBG" Color="#282828"/>
                         <SolidColorBrush x:Key="ToggleSwitchFG" Color="#282828"/>
                         <SolidColorBrush x:Key="ToggleSwitchEnable" Color="white"/>
                         <SolidColorBrush x:Key="ToggleSwitchDisable" Color="#c9c9c7"/>
                         <SolidColorBrush x:Key="ToggleSwitchBorderBrush" Color="#c9c9c7"/>
-                        <Color x:Key="CardLeft">#1DB954</Color> 
+                        <Color x:Key="CardLeft">#7661C2</Color> 
                         <Color x:Key="Card2Right">Transparent</Color>
                 </ResourceDictionary>
         <!--Dark mode -->
