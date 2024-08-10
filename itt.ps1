@@ -20,7 +20,7 @@ Add-Type -AssemblyName System.Windows.Forms
 $sync = [Hashtable]::Synchronized(@{
     database       = @{}
     ProcessRunning = $false
-    lastupdate     = "08/10/24"
+    lastupdate     = "08/11/24"
     github         = "https://github.com/emadadel4"
     telegram       = "https://t.me/emadadel4"
     website        = "https://emadadel4.github.io"
@@ -7961,9 +7961,9 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
         <!--Light mode -->
         <!--Dark mode-->
                 <ResourceDictionary x:Key="Dark">
-                        <SolidColorBrush x:Key="BGColor" Color="#202020"/>
-                        <SolidColorBrush x:Key="FGColor" Color="#1A3636"/>
-                        <SolidColorBrush x:Key="BGButtonColor" Color="#7661C2" />
+                        <SolidColorBrush x:Key="BGColor" Color="#191414"/>
+                        <SolidColorBrush x:Key="FGColor" Color="#212121"/>
+                        <SolidColorBrush x:Key="BGButtonColor" Color="#1DB954" />
                         <SolidColorBrush x:Key="FGButtonColor" Color="White" />
                         <SolidColorBrush x:Key="ButtonHighlightColor" Color="#5F8AAC" />
                         <SolidColorBrush x:Key="FGTextColor" Color="WhiteSmoke" />
@@ -7979,7 +7979,7 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
                         <SolidColorBrush x:Key="ToggleSwitchEnable" Color="white"/>
                         <SolidColorBrush x:Key="ToggleSwitchDisable" Color="#c9c9c7"/>
                         <SolidColorBrush x:Key="ToggleSwitchBorderBrush" Color="#c9c9c7"/>
-                        <Color x:Key="CardLeft">#7661C2</Color> 
+                        <Color x:Key="CardLeft">#1db954</Color> 
                         <Color x:Key="Card2Right">Transparent</Color>
                 </ResourceDictionary>
         <!--Dark mode -->
