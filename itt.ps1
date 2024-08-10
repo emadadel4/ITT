@@ -7962,7 +7962,7 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
         <!--Dark mode-->
                 <ResourceDictionary x:Key="Dark">
                         <SolidColorBrush x:Key="BGColor" Color="#202020"/>
-                        <SolidColorBrush x:Key="FGColor" Color="#282828"/>
+                        <SolidColorBrush x:Key="FGColor" Color="#1A3636"/>
                         <SolidColorBrush x:Key="BGButtonColor" Color="#7661C2" />
                         <SolidColorBrush x:Key="FGButtonColor" Color="White" />
                         <SolidColorBrush x:Key="ButtonHighlightColor" Color="#5F8AAC" />
