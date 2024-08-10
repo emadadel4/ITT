@@ -3,7 +3,7 @@
                 <ResourceDictionary x:Key="Light">
                         <SolidColorBrush x:Key="BGColor" Color="White"/>
                         <SolidColorBrush x:Key="FGColor" Color="WhiteSmoke"/>
-                        <SolidColorBrush x:Key="BGButtonColor" Color="#525FE1" />
+                        <SolidColorBrush x:Key="BGButtonColor" Color="#27A7E7" />
                         <SolidColorBrush x:Key="ButtonHighlightColor" Color="#FF6C76E0" />
                         <SolidColorBrush x:Key="FGButtonColor" Color="White" />
                         <SolidColorBrush x:Key="FGTextColor" Color="Black" />
@@ -13,7 +13,7 @@
                         <SolidColorBrush x:Key="ButtonBorder" Color="#525FE1"/>
                         <SolidColorBrush x:Key="Label" Color="LightBlue"/>
                         <SolidColorBrush x:Key="checkboxBG" Color="Transparent"/>
-                        <SolidColorBrush x:Key="highlight" Color="blue"/>
+                        <SolidColorBrush x:Key="highlight" Color="#27A7E7"/>
                         <SolidColorBrush x:Key="ToggleSwitchBG" Color="#282828"/>
                         <SolidColorBrush x:Key="ToggleSwitchFG" Color="#282828"/>
                         <SolidColorBrush x:Key="ToggleSwitchEnable" Color="white"/>
@@ -25,11 +25,11 @@
         <!--Light mode -->
         <!--Dark mode-->
                 <ResourceDictionary x:Key="Dark">
-                        <SolidColorBrush x:Key="BGColor" Color="#121212"/>
+                        <SolidColorBrush x:Key="BGColor" Color="#202020"/>
                         <SolidColorBrush x:Key="FGColor" Color="#282828"/>
-                        <SolidColorBrush x:Key="BGButtonColor" Color="#1DB954" />
+                        <SolidColorBrush x:Key="BGButtonColor" Color="#7661C2" />
                         <SolidColorBrush x:Key="FGButtonColor" Color="White" />
-                        <SolidColorBrush x:Key="ButtonHighlightColor" Color="#FF57E087" />
+                        <SolidColorBrush x:Key="ButtonHighlightColor" Color="#5F8AAC" />
                         <SolidColorBrush x:Key="FGTextColor" Color="WhiteSmoke" />
                         <SolidColorBrush x:Key="DefaultTextColor" Color="White"/>
                         <SolidColorBrush x:Key="DefaultTextColor2" Color="White"/>
@@ -37,13 +37,13 @@
                         <SolidColorBrush x:Key="ButtonBorder" Color="#1DB954"/>
                         <SolidColorBrush x:Key="Label" Color="#3f3f3f"/>
                         <SolidColorBrush x:Key="checkboxBG" Color="Transparent"/>
-                        <SolidColorBrush x:Key="highlight" Color="#FF00FF11"/>
+                        <SolidColorBrush x:Key="highlight" Color="#D4904F"/>
                         <SolidColorBrush x:Key="ToggleSwitchBG" Color="#282828"/>
                         <SolidColorBrush x:Key="ToggleSwitchFG" Color="#282828"/>
                         <SolidColorBrush x:Key="ToggleSwitchEnable" Color="white"/>
                         <SolidColorBrush x:Key="ToggleSwitchDisable" Color="#c9c9c7"/>
                         <SolidColorBrush x:Key="ToggleSwitchBorderBrush" Color="#c9c9c7"/>
-                        <Color x:Key="CardLeft">#1DB954</Color> 
+                        <Color x:Key="CardLeft">#7661C2</Color> 
                         <Color x:Key="Card2Right">Transparent</Color>
                 </ResourceDictionary>
         <!--Dark mode -->
