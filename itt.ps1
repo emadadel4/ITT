@@ -7455,44 +7455,43 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
 <!--End ListViewItem Style-->
 
 <!--CheckBox Style-->
-<Style TargetType="CheckBox">
-    <Setter Property="Foreground" Value="{DynamicResource DefaultTextColor}"/>
-    <Setter Property="Margin" Value="0"/>
-    <Setter Property="Padding" Value="6"/>
-    <Setter Property="BorderThickness" Value="1"/>
-    <Setter Property="BorderBrush" Value="black"/>
-    <Setter Property="Template">
-        <Setter.Value>
-            <ControlTemplate TargetType="CheckBox">
-                <StackPanel Orientation="Horizontal">
-                    <!-- Checkbox box -->
-                    <Border Name="CheckRadius" Width="18" Height="18" BorderBrush="{TemplateBinding BorderBrush}" CornerRadius="20" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}">
-                        <!-- Checkmark arrow inside the box -->
-                        <Path x:Name="CheckMark" Width="13" Height="13" Stretch="Uniform" Stroke="WhiteSmoke" StrokeThickness="3" Data="M 0 5 L 4 8 L 10 0" Visibility="Collapsed"/>
-                    </Border>
-                    <!-- Content beside the checkbox -->
-                    <ContentPresenter Margin="4,0,0,0" VerticalAlignment="Center"/>
-                </StackPanel>
-                <ControlTemplate.Triggers>
-                    <Trigger Property="IsChecked" Value="True">
-                        <Setter TargetName="CheckMark" Property="Visibility" Value="Visible"/>
-                        <Setter Property="Background" Value="{DynamicResource highlight}"/>
-                        <Setter Property="BorderBrush" Value="{DynamicResource highlight}"/>
+    <Style TargetType="CheckBox">
+        <Setter Property="Foreground" Value="{DynamicResource DefaultTextColor}"/>
+        <Setter Property="Margin" Value="0"/>
+        <Setter Property="Padding" Value="6"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="BorderBrush" Value="black"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="CheckBox">
+                    <StackPanel Orientation="Horizontal">
+                        <!-- Checkbox box -->
+                        <Border Name="CheckRadius" Width="18" Height="18" BorderBrush="{TemplateBinding BorderBrush}" CornerRadius="20" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}">
+                            <!-- Checkmark arrow inside the box -->
+                            <Path x:Name="CheckMark" Width="13" Height="13" Stretch="Uniform" Stroke="WhiteSmoke" StrokeThickness="3" Data="M 0 5 L 4 8 L 10 0" Visibility="Collapsed"/>
+                        </Border>
+                        <!-- Content beside the checkbox -->
+                        <ContentPresenter Margin="4,0,0,0" VerticalAlignment="Center"/>
+                    </StackPanel>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter TargetName="CheckMark" Property="Visibility" Value="Visible"/>
+                            <Setter Property="Background" Value="{DynamicResource highlight}"/>
+                            <Setter Property="BorderBrush" Value="{DynamicResource highlight}"/>
 
-                    </Trigger>
-                    <Trigger Property="IsChecked" Value="False">
-                        <Setter Property="Background" Value="White"/>
-                    </Trigger>
-                    <Trigger Property="IsMouseOver" Value="True">
-                        <Setter Property="Background" Value="{DynamicResource highlight}"/>
-                        <Setter Property="BorderBrush" Value="{DynamicResource highlight}"/>
-                    </Trigger>
-                </ControlTemplate.Triggers>
-            </ControlTemplate>
-        </Setter.Value>
-    </Setter>
-</Style>
-
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="False">
+                            <Setter Property="Background" Value="White"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="{DynamicResource highlight}"/>
+                            <Setter Property="BorderBrush" Value="{DynamicResource highlight}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 <!--End CheckBox Style-->
 
 <!--Textbox Style-->
