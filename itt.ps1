@@ -6078,6 +6078,10 @@ $sync.database.OST = '{
     {
       "name": "Roma - Cairokee",
       "url": "https://archive.org/download/Cairokee-Roma/07%20-%20Roma.mp3"
+    },
+    {
+      "name": "Sigrid - Everybody Knows",
+      "url": "https://archive.org/download/justiceleagueflac/Danny%20Elfman%20-%20Justice%20League%20%28Original%20Motion%20Picture%20Soundtrack%29/01%20-%20Everybody%20Knows.mp3"
     }
   ]
 }
@@ -6171,7 +6175,9 @@ $sync.database.Quotes = '{
     "I Believe That Whatever Doesn''t Kill You, Simply Makes You Stranger. - Joker",
     "Some men just want to watch the world burn. - Alfred",
     "You either die a hero or live long enough to see yourself become the villain. - Harvey dent",
-    "Give a man a gun and he can rob a Bank. Give a man a Bank and he can rob the world. - Mr. Robot"
+    "Give a man a gun and he can rob a Bank. Give a man a Bank and he can rob the world. - Mr. Robot",
+    "Everybody knows the fight was fixed.. The poor stay poor, the rich get rich",
+    "الجميع يعلم أن المعركة كانت فيلما.. الفقراء يبقون فقراء، والأغنياء يزدادون غنى"
   ]
 }
 ' | ConvertFrom-Json
