@@ -1,4 +1,4 @@
-function Set-Langusege {
+function Set-Language {
     param (
         [string]$lang  # Parameter for the language to set
     )

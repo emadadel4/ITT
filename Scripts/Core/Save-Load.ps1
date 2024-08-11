@@ -22,7 +22,7 @@ function GetCheckBoxesFromStackPanel {
 function LoadJson {
     if($sync.ProcessRunning)
     {
-        $localizedMessageTemplate = $sync.database.locales.Controls.$($sync.Langusege).Pleasewait
+        $localizedMessageTemplate = $sync.database.locales.Controls.$($sync.Language).Pleasewait
         $msg = "$localizedMessageTemplate"
         [System.Windows.MessageBox]::Show($msg, "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
         return
@@ -65,7 +65,7 @@ function LoadJson {
 function SaveItemsToJson {
     if($sync.ProcessRunning)
     {
-        $localizedMessageTemplate = $sync.database.locales.Controls.$($sync.Langusege).Pleasewait
+        $localizedMessageTemplate = $sync.database.locales.Controls.$($sync.Language).Pleasewait
         $msg = "$localizedMessageTemplate"
         [System.Windows.MessageBox]::Show($msg, "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
         return

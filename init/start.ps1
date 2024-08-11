@@ -15,7 +15,7 @@ $sync = [Hashtable]::Synchronized(@{
     isDarkMode     = $null
     Date           = (Get-Date)
     Music          = "100"
-    Langusege      = "en"
+    Language      = "en"
 })
 
 $currentPid = [System.Security.Principal.WindowsIdentity]::GetCurrent()

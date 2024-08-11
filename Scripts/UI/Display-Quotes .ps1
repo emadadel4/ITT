@@ -35,7 +35,7 @@ function DisplayQuotes  {
 
                 $fullCulture = (Get-ItemPropertyValue -Path "HKCU:\Control Panel\International" -Name "LocaleName")
                 $shortCulture = $fullCulture.Split('-')[0]
-                $sync.Quotes.Text = $sync.database.locales.Controls.$($sync.Langusege).welcome
+                $sync.Quotes.Text = $sync.database.locales.Controls.$($sync.Language).welcome
                
             })
         }

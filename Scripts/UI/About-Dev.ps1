@@ -12,7 +12,7 @@ function About {
     $sync.about.FindName("sourcecode").add_MouseLeftButtonDown({Start-Process("https://github.com/emadadel4/ITT")})
     $sync.about.FindName("coffee").add_MouseLeftButtonDown({Start-Process("https://buymeacoffee.com/emadadel")})
     # Set data context based on language
-    $locale = if ($sync.Langusege -eq "en") { "en" } else { "ar" }
+    $locale = if ($sync.Language -eq "en") { "en" } else { "ar" }
     $sync.about.DataContext = $sync.database.locales.Controls.$locale
     # Show dialog
     $sync.about.ShowDialog() | Out-Null

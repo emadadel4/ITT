@@ -33,39 +33,39 @@ function Invoke-Button {
 
         # Menu items
         "ar" {
-            Set-Langusege -lang "ar"
+            Set-Language -lang "ar"
             Debug-Message $action
         }
         "en" {
-            Set-Langusege -lang "en"
+            Set-Language -lang "en"
             Debug-Message $action
         }
         "fr" {
-            Set-Langusege -lang "fr"
+            Set-Language -lang "fr"
             Debug-Message $action
         }
         "tr" {
-            Set-Langusege -lang "tr"
+            Set-Language -lang "tr"
             Debug-Message $action
         }
         "zh" {
-            Set-Langusege -lang "zh"
+            Set-Language -lang "zh"
             Debug-Message $action
         }
         "ko" {
-            Set-Langusege -lang "ko"
+            Set-Language -lang "ko"
             Debug-Message $action
         }
         "de" {
-            Set-Langusege -lang "de"
+            Set-Language -lang "de"
             Debug-Message $action
         }
         "ru" {
-            Set-Langusege -lang "ru"
+            Set-Language -lang "ru"
             Debug-Message $action
         }
         "es" {
-            Set-Langusege -lang "es"
+            Set-Language -lang "es"
             Debug-Message $action
         }
         "save" {

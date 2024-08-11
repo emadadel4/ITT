@@ -49,7 +49,7 @@ function FilterByCat {
     )
 
     # Update DataContext
-    #$sync["window"].DataContext = $sync.database.locales.Controls.$($sync.Langusege)
+    #$sync["window"].DataContext = $sync.database.locales.Controls.$($sync.Language)
 
     # if user is on another tab, return to the apps list
     $sync['window'].FindName('apps').IsSelected = $true

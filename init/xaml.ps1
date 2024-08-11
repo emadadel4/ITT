@@ -39,7 +39,7 @@ try {
         $sync.mediaPlayer.settings.volume = "$($sync.Music)"
 
 
-    # Set language based on culture
+    # Set Language based on culture
     switch ($shortCulture) {
         "ar" { $locale = "ar" }
         "en" { $locale = "en" }
@@ -53,7 +53,7 @@ try {
         default { $locale = "en" }
     }
     $sync["window"].DataContext = $sync.database.locales.Controls.$locale
-    $sync.Langusege = $locale
+    $sync.Language = $locale
 
     # Check theme settings
     $sync.isDarkMode = (Get-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "DarkMode").DarkMode
