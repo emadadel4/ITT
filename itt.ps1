@@ -30,7 +30,7 @@ $sync = [Hashtable]::Synchronized(@{
     isDarkMode     = $null
     Date           = (Get-Date)
     Music          = "100"
-    Langusege      = "en"
+    Language      = "en"
 })
 
 $currentPid = [System.Security.Principal.WindowsIdentity]::GetCurrent()
@@ -10976,7 +10976,7 @@ try {
         $sync.mediaPlayer.settings.volume = "$($sync.Music)"
 
 
-    # Set language based on culture
+    # Set Language based on culture
     switch ($shortCulture) {
         "ar" { $locale = "ar" }
         "en" { $locale = "en" }
@@ -10990,7 +10990,7 @@ try {
         default { $locale = "en" }
     }
     $sync["window"].DataContext = $sync.database.locales.Controls.$locale
-    $sync.Langusege = $locale
+    $sync.Language = $locale
 
     # Check theme settings
     $sync.isDarkMode = (Get-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "DarkMode").DarkMode
@@ -11190,7 +11190,7 @@ function GetCheckBoxesFromStackPanel {
 function LoadJson {
     if($sync.ProcessRunning)
     {
-        $localizedMessageTemplate = $sync.database.locales.Controls.$($sync.Langusege).Pleasewait
+        $localizedMessageTemplate = $sync.database.locales.Controls.$($sync.Language).Pleasewait
         $msg = "$localizedMessageTemplate"
         [System.Windows.MessageBox]::Show($msg, "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
         return
@@ -11233,7 +11233,7 @@ function LoadJson {
 function SaveItemsToJson {
     if($sync.ProcessRunning)
     {
-        $localizedMessageTemplate = $sync.database.locales.Controls.$($sync.Langusege).Pleasewait
+        $localizedMessageTemplate = $sync.database.locales.Controls.$($sync.Language).Pleasewait
         $msg = "$localizedMessageTemplate"
         [System.Windows.MessageBox]::Show($msg, "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
         return
@@ -11346,7 +11346,7 @@ function Get-PCInfo {
                     "GPU" = (Get-CimInstance -ClassName Win32_VideoController).Name
                     "CPU" = (Get-CimInstance -ClassName Win32_Processor).Name
                     "Cores" = (Get-CimInstance -ClassName Win32_Processor).NumberOfCores
-                    "Language" = "$($sync.Langusege)"
+                    "Language" = "$($sync.Language)"
                     "Start at" = (Get-Date -Format "MM/dd/yyyy hh:mm:ss tt")
                     "Runs" = $runs
                     "AppsHistory" = $existingData.AppsHistory
@@ -11367,7 +11367,7 @@ function Get-PCInfo {
                     "GPU" = (Get-CimInstance -ClassName Win32_VideoController).Name
                     "CPU" = (Get-CimInstance -ClassName Win32_Processor).Name
                     "Cores" = (Get-CimInstance -ClassName Win32_Processor).NumberOfCores
-                    "Language" = "$($sync.Langusege)"
+                    "Language" = "$($sync.Language)"
                     "Start At" = (Get-Date -Format "MM/dd/yyyy hh:mm:ss tt")
                     "runs" = $runs
                     "AppsHistory" = @{}
@@ -11512,7 +11512,7 @@ function Invoke-ApplyTweaks {
 
         if($sync.ProcessRunning)
         {
-            $localizedMessageTemplate = $sync.database.locales.Controls.$($sync.Langusege).Pleasewait
+            $localizedMessageTemplate = $sync.database.locales.Controls.$($sync.Language).Pleasewait
             $msg = "$localizedMessageTemplate"
             [System.Windows.MessageBox]::Show($msg, "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
             return
@@ -11523,7 +11523,7 @@ function Invoke-ApplyTweaks {
 
             if($tweaks.Count -gt 0)
             {
-                $areyousuremsg = $sync.database.locales.Controls.$($sync.Langusege).ApplyMessage
+                $areyousuremsg = $sync.database.locales.Controls.$($sync.Language).ApplyMessage
                 $result = [System.Windows.MessageBox]::Show($areyousuremsg, "ITT | Emad Adel", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)
 
                 if($result -eq "Yes")
@@ -11810,8 +11810,8 @@ function Invoke-ApplyTweaks {
                             [System.Windows.MessageBox]::Show($msg, $title, [System.Windows.MessageBoxButton]::$MessageBoxButton, [System.Windows.MessageBoxImage]::$MessageBoxImage)
                         }
 
-                            $applyBtn = $sync.database.locales.Controls.$($sync.Langusege).applyBtn
-                            $Applying = $sync.database.locales.Controls.$($sync.Langusege).Applying
+                            $applyBtn = $sync.database.locales.Controls.$($sync.Language).applyBtn
+                            $Applying = $sync.database.locales.Controls.$($sync.Language).Applying
 
 
                             UpdateUI -ApplyBtn "$applying" -icon " " -Width "150"
@@ -11895,7 +11895,7 @@ function Invoke-ApplyTweaks {
                     $sync.TweaksListView.Items.Clear()
                     [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.TweaksListView.Items).Filter = $null
                 })
-                $localizedMessageTemplate = $sync.database.locales.Controls.$($sync.Langusege).chosetweak
+                $localizedMessageTemplate = $sync.database.locales.Controls.$($sync.Language).chosetweak
                 [System.Windows.MessageBox]::Show("$localizedMessageTemplate", "ITT | Emad Adel", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
             }
     }
@@ -11975,7 +11975,7 @@ function Invoke-Install {
         
         if($sync.ProcessRunning)
         {
-            $localizedMessageTemplate = $sync.database.locales.Controls.$($sync.Langusege).Pleasewait
+            $localizedMessageTemplate = $sync.database.locales.Controls.$($sync.Language).Pleasewait
             $msg = "$localizedMessageTemplate"
             [System.Windows.MessageBox]::Show($msg, "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
             return
@@ -11988,7 +11988,7 @@ function Invoke-Install {
         if($selectedApps.Count -gt 0)
         {
             # Retrieve localized messages for confirmation dialog and UI elements
-            $areyousuremsg = $sync.database.locales.Controls.$($sync.Langusege).InstallMessage
+            $areyousuremsg = $sync.database.locales.Controls.$($sync.Language).InstallMessage
             $result = [System.Windows.MessageBox]::Show($areyousuremsg, "ITT | Emad Adel", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)
 
             if($result -eq "Yes")
@@ -12416,8 +12416,8 @@ function Invoke-Install {
                         # start ProcessRunning
                         $sync.ProcessRunning = $true
                        
-                        $installBtn = $sync.database.locales.Controls.$($sync.Langusege).installBtn
-                        $downloading = $sync.database.locales.Controls.$($sync.Langusege).downloading
+                        $installBtn = $sync.database.locales.Controls.$($sync.Language).installBtn
+                        $downloading = $sync.database.locales.Controls.$($sync.Language).downloading
             
                         # Chancge Install Content "Downloading.."
                         UpdateUI -InstallBtn "$downloading" -icon " " -Width "150"
@@ -12489,7 +12489,7 @@ function Invoke-Install {
                 $sync.AppsListView.Clear()
                 [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.AppsListView.Items).Filter = $null
             })
-            $localizedMessageTemplate = $sync.database.locales.Controls.$($sync.Langusege).choseapp
+            $localizedMessageTemplate = $sync.database.locales.Controls.$($sync.Language).choseapp
             [System.Windows.MessageBox]::Show("$localizedMessageTemplate", "ITT | Emad Adel", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
         }
     }
@@ -12532,39 +12532,39 @@ function Invoke-Button {
 
         # Menu items
         "ar" {
-            Set-Langusege -lang "ar"
+            Set-Language -lang "ar"
             Debug-Message $action
         }
         "en" {
-            Set-Langusege -lang "en"
+            Set-Language -lang "en"
             Debug-Message $action
         }
         "fr" {
-            Set-Langusege -lang "fr"
+            Set-Language -lang "fr"
             Debug-Message $action
         }
         "tr" {
-            Set-Langusege -lang "tr"
+            Set-Language -lang "tr"
             Debug-Message $action
         }
         "zh" {
-            Set-Langusege -lang "zh"
+            Set-Language -lang "zh"
             Debug-Message $action
         }
         "ko" {
-            Set-Langusege -lang "ko"
+            Set-Language -lang "ko"
             Debug-Message $action
         }
         "de" {
-            Set-Langusege -lang "de"
+            Set-Language -lang "de"
             Debug-Message $action
         }
         "ru" {
-            Set-Langusege -lang "ru"
+            Set-Language -lang "ru"
             Debug-Message $action
         }
         "es" {
-            Set-Langusege -lang "es"
+            Set-Language -lang "es"
             Debug-Message $action
         }
         "save" {
@@ -12850,7 +12850,7 @@ function About {
     $sync.about.FindName("sourcecode").add_MouseLeftButtonDown({Start-Process("https://github.com/emadadel4/ITT")})
     $sync.about.FindName("coffee").add_MouseLeftButtonDown({Start-Process("https://buymeacoffee.com/emadadel")})
     # Set data context based on language
-    $locale = if ($sync.Langusege -eq "en") { "en" } else { "ar" }
+    $locale = if ($sync.Language -eq "en") { "en" } else { "ar" }
     $sync.about.DataContext = $sync.database.locales.Controls.$locale
     # Show dialog
     $sync.about.ShowDialog() | Out-Null
@@ -12917,7 +12917,7 @@ function DisplayQuotes  {
 
                 $fullCulture = (Get-ItemPropertyValue -Path "HKCU:\Control Panel\International" -Name "LocaleName")
                 $shortCulture = $fullCulture.Split('-')[0]
-                $sync.Quotes.Text = $sync.database.locales.Controls.$($sync.Langusege).welcome
+                $sync.Quotes.Text = $sync.database.locales.Controls.$($sync.Language).welcome
                
             })
         }
@@ -12993,7 +12993,7 @@ function FilterByCat {
     )
 
     # Update DataContext
-    #$sync["window"].DataContext = $sync.database.locales.Controls.$($sync.Langusege)
+    #$sync["window"].DataContext = $sync.database.locales.Controls.$($sync.Language)
 
     # if user is on another tab, return to the apps list
     $sync['window'].FindName('apps').IsSelected = $true
@@ -13107,7 +13107,7 @@ function StopAllRunspace {
     $newProcess.exit
     Write-Host "`n` Don't forget to pray for the oppressed people, Stand with Palestine" 
 }
-function Set-Langusege {
+function Set-Language {
     param (
         [string]$lang  # Parameter for the language to set
     )
@@ -13307,7 +13307,7 @@ $xaml.SelectNodes("//*[@Name]") | ForEach-Object {
 $onClosingEvent = {
     param($s, $c)
 
-    $exitDialog = $sync.database.locales.Controls.$($sync.Langusege).exit
+    $exitDialog = $sync.database.locales.Controls.$($sync.Language).exit
 
     # Show confirmation message box
     $result = [System.Windows.MessageBox]::Show($exitDialog, "Confirmation", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)
