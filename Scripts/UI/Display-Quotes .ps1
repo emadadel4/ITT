@@ -2,7 +2,7 @@ function DisplayQuotes  {
 
     Invoke-ScriptBlock -ScriptBlock {
 
-        # Define the path to your JSON file
+        # Define the JSON file path
         $jsonFilePath = $sync.database.Quotes
 
         # Function to shuffle an array
@@ -44,9 +44,6 @@ function DisplayQuotes  {
         Display-WelcomeText
 
         Start-Sleep -Seconds 20
-
-
-
 
         # Loop through shuffled names and display them
         do {
