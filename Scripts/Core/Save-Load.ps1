@@ -1,6 +1,7 @@
-function GetCheckBoxesFromStackPanel {
+# Function to get all CheckBoxes from a StackPanel
+function Get-CheckBoxesFromStackPanel {
     param (
-        [System.Windows.Controls.StackPanel]$item
+        [System.Windows.Controls.StackPanel]$item  # The StackPanel to search
     )
 
     $checkBoxes = @()  # Initialize an empty array to store CheckBoxes
@@ -10,51 +11,49 @@ function GetCheckBoxesFromStackPanel {
             if ($child -is [System.Windows.Controls.StackPanel]) {
                 foreach ($innerChild in $child.Children) {
                     if ($innerChild -is [System.Windows.Controls.CheckBox]) {
-                        # Add CheckBox to the array
-                        $checkBoxes += $innerChild
+                        $checkBoxes += $innerChild  # Add each CheckBox to the array
                     }
                 }
             }
         }
     }
-    return $checkBoxes
+    return $checkBoxes  # Return the array of CheckBoxes
 }
+
+# Function to load JSON data and update the UI
 function LoadJson {
-    if($sync.ProcessRunning)
-    {
-        $localizedMessageTemplate = $sync.database.locales.Controls.$($sync.Language).Pleasewait
-        $msg = "$localizedMessageTemplate"
+    if ($sync.ProcessRunning) {
+        $msg = $sync.database.locales.Controls.$($sync.Language).Pleasewait
         [System.Windows.MessageBox]::Show($msg, "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
         return
     }
+
     # Open file dialog to select JSON file
-    $openFileDialog = New-Object -TypeName "Microsoft.Win32.OpenFileDialog"
+    $openFileDialog = New-Object "Microsoft.Win32.OpenFileDialog"
     $openFileDialog.Filter = "JSON files (*.ea4)|*.ea4"
     $openFileDialog.Title = "Open JSON File"
     $dialogResult = $openFileDialog.ShowDialog()
 
     if ($dialogResult -eq "OK") {
-
         $jsonData = Get-Content -Path $openFileDialog.FileName -Raw | ConvertFrom-Json
-        $filteredNames = $jsonData
+        $filteredNames = $jsonData.Name
 
+        # Filter predicate to match CheckBoxes with JSON data
         $filterPredicate = {
-
             param($item)
 
-            $item =  GetCheckBoxesFromStackPanel -item $item
+            $checkBoxes = Get-CheckBoxesFromStackPanel -item $item
 
-            foreach ($currentItemName in $filteredNames.Name) {
-
-                if($currentItemName -eq $item.Content)
-                {
-                    $item.IsChecked = $true
+            foreach ($currentItemName in $filteredNames) {
+                if ($currentItemName -eq $checkBoxes.Content) {
+                    $checkBoxes.IsChecked = $true
                     break
                 }
-
             }
-            return $filteredNames.name -contains $item.Content
+            return $filteredNames -contains $checkBoxes.Content
         }
+
+        # Update UI based on the loaded JSON data
         $sync['window'].FindName('apps').IsSelected = $true
         $sync['window'].FindName('appslist').Clear()
         $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync['window'].FindName('appslist').Items)
@@ -62,60 +61,50 @@ function LoadJson {
         [System.Windows.MessageBox]::Show("Restored successfully", "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
     }
 }
+
+# Function to save selected items to a JSON file
 function SaveItemsToJson {
-    if($sync.ProcessRunning)
-    {
-        $localizedMessageTemplate = $sync.database.locales.Controls.$($sync.Language).Pleasewait
-        $msg = "$localizedMessageTemplate"
+    if ($sync.ProcessRunning) {
+        $msg = $sync.database.locales.Controls.$($sync.Language).Pleasewait
         [System.Windows.MessageBox]::Show($msg, "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
         return
     }
+
     $items = @()
 
     ClearFilter
-    
-    foreach ($item in $sync.AppsListView.Items)
-    {
-        $item =  GetCheckBoxesFromStackPanel -item $item
-        if ($item.IsChecked)
-        {
-                $itemObject = [PSCustomObject]@{
-                Name = $item.Content
+
+    foreach ($item in $sync.AppsListView.Items) {
+        $checkBoxes = Get-CheckBoxesFromStackPanel -item $item
+        if ($checkBoxes.IsChecked) {
+            $itemObject = [PSCustomObject]@{
+                Name  = $checkBoxes.Content
                 check = "true"
             }
             $items += $itemObject
         }
     }
 
-    if ($null -ne $items -and $items.Count -gt 0) 
-    {
+    if ($items.Count -gt 0) {
         # Open save file dialog
-        $saveFileDialog = New-Object -TypeName "Microsoft.Win32.SaveFileDialog"
+        $saveFileDialog = New-Object "Microsoft.Win32.SaveFileDialog"
         $saveFileDialog.Filter = "JSON files (*.ea4)|*.ea4"
         $saveFileDialog.Title = "Save JSON File"
         $dialogResult = $saveFileDialog.ShowDialog()
 
-        if ($dialogResult -eq "OK")
-        {
+        if ($dialogResult -eq "OK") {
             $items | ConvertTo-Json | Out-File -FilePath $saveFileDialog.FileName -Force
             Write-Host "Saved: $($saveFileDialog.FileName)"
-
             [System.Windows.MessageBox]::Show("Saved", "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
 
-        }
-        
-            foreach ($item in $sync.AppsListView.Items)
-            {
-                $item =  GetCheckBoxesFromStackPanel -item $item
-
-                if ($item.IsChecked)
-                {
-                    $item.IsChecked = $false
+            foreach ($item in $sync.AppsListView.Items) {
+                $checkBoxes = Get-CheckBoxesFromStackPanel -item $item
+                if ($checkBoxes.IsChecked) {
+                    $checkBoxes.IsChecked = $false  # Uncheck all CheckBoxes after saving
                 }
             }
-    }
-    else
-    {
+        }
+    } else {
         [System.Windows.MessageBox]::Show("Choose at least one program", "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
     }
 }
