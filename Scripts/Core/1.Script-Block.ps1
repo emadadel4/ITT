@@ -1,25 +1,25 @@
 function Invoke-ScriptBlock {
     param(
-        [scriptblock]$ScriptBlock,
-        [array]$ArgumentList
+        [scriptblock]$ScriptBlock,  # The script block to invoke
+        [array]$ArgumentList        # Optional arguments for the script block
     )
 
-       
-        $script:powershell = [powershell]::Create()
+    $script:powershell = [powershell]::Create()  # Create a new PowerShell instance
 
-        # Add Scriptblock and Arguments to runspace
-        $script:powershell.AddScript($ScriptBlock)
-        $script:powershell.AddArgument($ArgumentList)
-        $script:powershell.RunspacePool = $sync.runspace
+    # Add the script block and arguments to the runspace
+    $script:powershell.AddScript($ScriptBlock)
+    $script:powershell.AddArgument($ArgumentList)
+    $script:powershell.RunspacePool = $sync.runspace  # Set the runspace pool
 
-        $script:handle = $script:powershell.BeginInvoke()
+    # Begin running the script block asynchronously
+    $script:handle = $script:powershell.BeginInvoke()
 
-        if ($script:handle.IsCompleted)
-        {
-            $script:powershell.EndInvoke($script:handle)
-            $script:powershell.Dispose()
-            $sync.runspace.Dispose()
-            $sync.runspace.Close()
-            [System.GC]::Collect()
-        }
+    # If the script has completed, clean up resources
+    if ($script:handle.IsCompleted) {
+        $script:powershell.EndInvoke($script:handle)  # End the invocation
+        $script:powershell.Dispose()                  # Dispose of the PowerShell instance
+        $sync.runspace.Dispose()                      # Dispose of the runspace
+        $sync.runspace.Close()                        # Close the runspace
+        [System.GC]::Collect()                        # Force garbage collection to free memory
+    }
 }
