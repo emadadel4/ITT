@@ -1,4 +1,4 @@
-function ChangeTab {
+function ChangeTap {
     # Define a hash table to map tab names to their button visibility and list values
     $tabSettings = @{
         'apps'        = @{ 'installBtn' = 'Visible'; 'applyBtn' = 'Hidden'; 'currentList' = 'appslist' }
