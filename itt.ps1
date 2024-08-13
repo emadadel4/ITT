@@ -12943,7 +12943,7 @@ function DisplayQuotes  {
                     $sync.Quotes.Text = "`“$name`”"
                 })
                 # Adjust the sleep time as needed
-                Start-Sleep -Seconds 15 
+                Start-Sleep -Seconds 30 
             }
         } while ($true)
     }
