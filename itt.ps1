@@ -20,7 +20,7 @@ Add-Type -AssemblyName System.Windows.Forms
 $sync = [Hashtable]::Synchronized(@{
     database       = @{}
     ProcessRunning = $false
-    lastupdate     = "08/13/24"
+    lastupdate     = "08/14/24"
     github         = "https://github.com/emadadel4"
     telegram       = "https://t.me/emadadel4"
     website        = "https://emadadel4.github.io"
@@ -5571,7 +5571,7 @@ $sync.database.locales = '{
         "devby":"Made with ♥ by Emad Adel",
         "exit":"Are you sure you want to close the program? If there are any installations, they will be terminated.",
         "watchdemo": "Watch demo",
-        "myplaylist": "C''est mon anniversaire et ma playlist ♪"
+        "myplaylist": "C''est mon anniversaire et ma playlist"
     },
     "fr": {
         "Welcome": "Économisez du temps en installant plusieurs programmes à la fois et améliorez les performances de votre Windows. Rejoignez-nous pour améliorer l''outil et le rendre excellent.",
@@ -5677,7 +5677,7 @@ $sync.database.locales = '{
         "exit": "Programı kapatmak istediğinizden emin misiniz? Eğer herhangi bir yükleme işlemi varsa, kesilecektir.",
         "watchdemo": "Demo''yu İzleyin",
         "happybirthday": "Günün Kutlu Olsun Emad!",
-        "myplaylist": "这是我的生日和我的播放列表 ♪"
+        "myplaylist": "这是我的生日和我的播放列表"
     },
     "zh": {
         "Welcome": "通过一次安装多个程序节省时间并提升您的Windows性能。加入我们，改进工具，使其更加优秀。",
@@ -5782,7 +5782,7 @@ $sync.database.locales = '{
         "exit": "프로그램을 종료하시겠습니까? 진행 중인 설치가 있으면 중단됩니다.",
         "watchdemo": "데모 보기",
         "happybirthday": "생일 축하합니다 Emad!",
-        "myplaylist": "제 생일과 제 플레이리스트 ♪"
+        "myplaylist": "제 생일과 제 플레이리스트"
     },
     "de": {
         "Welcome": "Sparen Sie Zeit, indem Sie mehrere Programme gleichzeitig installieren und verbessern Sie die Leistung Ihres Windows. Helfen Sie uns dabei, das Tool zu verbessern und großartig zu machen.",
@@ -5835,7 +5835,7 @@ $sync.database.locales = '{
         "exit": "Sind Sie sicher, dass Sie das Programm schließen möchten? Falls Installationen laufen, werden sie abgebrochen.",
         "watchdemo": "Demo ansehen",
         "happybirthday": "Alles Gute zum Geburtstag, Emad!",
-        "myplaylist": "Es ist mein Geburtstag und meine Playlist ♪"
+        "myplaylist": "Es ist mein Geburtstag und meine Playlist"
     },
     "ru": {
         "Welcome": "Экономьте время, устанавливая несколько программ одновременно и улучшая производительность Windows. Присоединяйтесь к нам в улучшении этого инструмента и сделайте его лучше.",
@@ -5888,7 +5888,7 @@ $sync.database.locales = '{
         "exit": "Вы уверены, что хотите закрыть программу? Если есть установки, они будут прерваны.",
         "watchdemo": "Посмотреть демонстрацию",
         "happybirthday": "С днем рождения, Emad!",
-        "myplaylist": "Мой день рождения и мой плейлист ♪",
+        "myplaylist": "Мой день рождения и мой плейлист ♪"
     },
     "es": {
     "Welcome": "Ahorra tiempo instalando varios programas a la vez y mejora el rendimiento de tu Windows. Únete a nosotros para mejorar la herramienta y hacerla excelente.",
