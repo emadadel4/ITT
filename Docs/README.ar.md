@@ -76,7 +76,7 @@
 
 <div align="center">
 
-  ## شاهد العرض التوضيحي
+## شاهد العرض التوضيحي
 
   [![شاهد الفيديو](https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/thumbnail.jpg)](https://www.youtube.com/watch?v=QmO82OTsU5c)
 </div>
