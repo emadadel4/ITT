@@ -20,7 +20,7 @@ Add-Type -AssemblyName System.Windows.Forms
 $sync = [Hashtable]::Synchronized(@{
     database       = @{}
     ProcessRunning = $false
-    lastupdate     = "08/11/24"
+    lastupdate     = "08/13/24"
     github         = "https://github.com/emadadel4"
     telegram       = "https://t.me/emadadel4"
     website        = "https://emadadel4.github.io"
@@ -5930,10 +5930,6 @@ $sync.database.OST = '{
       "url": "https://epsilon.vgmsite.com/soundtracks/far-cry-3/iqgdbfrhtw/17.%20Further%20%28feat.%20Serena%20McKinney%29.mp3"
     },
     {
-      "name": "Hollow Knight",
-      "url": "https://dl.vgmdownloads.com/soundtracks/hollow-knight-original-soundtrack/qqrmmaqyqg/26.%20Hollow%20Knight.mp3"
-    },
-    {
       "name": "Assassin Creed Theme",
       "url": "https://dl.vgmdownloads.com/soundtracks/assassin-s-creed-3/jgevpclfcr/01.%20Assassin%27s%20Creed%20III%20Main%20Theme.mp3"
     },
@@ -6177,7 +6173,15 @@ $sync.database.Quotes = '{
     "You either die a hero or live long enough to see yourself become the villain. - Harvey dent",
     "Give a man a gun and he can rob a Bank. Give a man a Bank and he can rob the world. - Mr. Robot",
     "Everybody knows the fight was fixed.. The poor stay poor, the rich get rich",
-    "الجميع يعلم أن المعركة كانت فيلما.. الفقراء يبقون فقراء، والأغنياء يزدادون غنى"
+    "الجميع يعلم أن المعركة كانت فيلما.. الفقراء يبقون فقراء، والأغنياء يزدادون غنى",
+    "كل شيء في الحياة يأتي ويذهب، ولكن الذكريات تبقى في القلب",
+    "الأشخاص الذين نحبهم لا يغادرون، بل يتركون بصمة في قلوبنا تظل إلى الأبد",
+    "ما الحياة سوى رحلة قصيرة بين الولادة والموت، لذا لنعيشها بكل لحظة كما لو كانت الأخيرة",
+    "البرمجة ليست مجرد كتابة الأكواد، بل هي فن حل المشكلات بطرق إبداعية",
+    "البرمجة هي القدرة على تحويل الأفكار إلى واقع، قطعة من الكود في كل مرة",
+    "البرمجة ليست مجرد مهنة، بل هي شغف يدفعك لإنشاء شيء من لا شيء",
+    "كل خطأ في الكود هو فرصة للتعلم والنمو، وليس مجرد فشل",
+    "أحياناً تكون الوحدة أكثر وضوحاً عندما تكون محاطاً بأشخاص لا يشاركونك أفكارك ومشاعرك"
   ]
 }
 ' | ConvertFrom-Json
@@ -11047,29 +11051,30 @@ $sync.applyIcon = $sync["window"].FindName("applyIcon")
 #===========================================================================
 function Invoke-ScriptBlock {
     param(
-        [scriptblock]$ScriptBlock,
-        [array]$ArgumentList
+        [scriptblock]$ScriptBlock,  # The script block to invoke
+        [array]$ArgumentList        # Optional arguments for the script block
     )
 
-       
-        $script:powershell = [powershell]::Create()
+    $script:powershell = [powershell]::Create()  # Create a new PowerShell instance
 
-        # Add Scriptblock and Arguments to runspace
-        $script:powershell.AddScript($ScriptBlock)
-        $script:powershell.AddArgument($ArgumentList)
-        $script:powershell.RunspacePool = $sync.runspace
+    # Add the script block and arguments to the runspace
+    $script:powershell.AddScript($ScriptBlock)
+    $script:powershell.AddArgument($ArgumentList)
+    $script:powershell.RunspacePool = $sync.runspace  # Set the runspace pool
 
-        $script:handle = $script:powershell.BeginInvoke()
+    # Begin running the script block asynchronously
+    $script:handle = $script:powershell.BeginInvoke()
 
-        if ($script:handle.IsCompleted)
-        {
-            $script:powershell.EndInvoke($script:handle)
-            $script:powershell.Dispose()
-            $sync.runspace.Dispose()
-            $sync.runspace.Close()
-            [System.GC]::Collect()
-        }
+    # If the script has completed, clean up resources
+    if ($script:handle.IsCompleted) {
+        $script:powershell.EndInvoke($script:handle)  # End the invocation
+        $script:powershell.Dispose()                  # Dispose of the PowerShell instance
+        $sync.runspace.Dispose()                      # Dispose of the runspace
+        $sync.runspace.Close()                        # Close the runspace
+        [System.GC]::Collect()                        # Force garbage collection to free memory
+    }
 }
+
 function RestorePoint {
 
     Invoke-ScriptBlock -ScriptBlock {
@@ -11113,8 +11118,9 @@ function RestorePoint {
 
 Function Get-ToggleStatus {
 
-    Param($ToggleSwitch)
+    Param($ToggleSwitch) # Parameter to specify which toggle switch status to check
 
+    # Check status of "ToggleDarkMode"
     if($ToggleSwitch -eq "ToggleDarkMode"){
         $app = (Get-ItemProperty -path 'HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize').AppsUseLightTheme
         $system = (Get-ItemProperty -path 'HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize').SystemUsesLightTheme
@@ -11122,53 +11128,63 @@ Function Get-ToggleStatus {
             return $true
         }
         else{
+            # Return true if Sticky Keys are enabled
             return $false
         }
     }
   
+    # Check status of "ToggleShowExt" (Show File Extensions)
     if($ToggleSwitch -eq "ToggleShowExt"){
         $hideextvalue = (Get-ItemProperty -path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced').HideFileExt
         if($hideextvalue -eq 0){
             return $true
         }
         else{
+            # Return true if Sticky Keys are enabled
             return $false
         }
     }
 
+    # Check status of "ToggleShowHidden" (Show Hidden Files)
     if($ToggleSwitch -eq "ToggleShowHidden"){
         $hideextvalue = (Get-ItemPropertyValue -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "ShowSuperHidden")
         if($hideextvalue -eq 1){
             return $true
         }
         else{
+            # Return true if Sticky Keys are enabled
             return $false
         }
     }
 
+    # Check status of "ToggleNumLock"
     if($ToggleSwitch -eq "ToggleNumLook"){
         $numlockvalue = (Get-ItemProperty -path 'HKCU:\Control Panel\Keyboard').InitialKeyboardIndicators
         if($numlockvalue -eq 2){
             return $true
         }
         else{
+            # Return true if Sticky Keys are enabled
             return $false
         }
     } 
     
+    # Check status of "ToggleStickyKeys"    
     if ($ToggleSwitch -eq "ToggleStickyKeys") {
         $StickyKeys = (Get-ItemProperty -path 'HKCU:\Control Panel\Accessibility\StickyKeys').Flags
         if($StickyKeys -eq 58){
             return $false
         }
         else{
+            # Return true if Sticky Keys are enabled
             return $true
         }
     }
 }
-function GetCheckBoxesFromStackPanel {
+# Function to get all CheckBoxes from a StackPanel
+function Get-CheckBoxesFromStackPanel {
     param (
-        [System.Windows.Controls.StackPanel]$item
+        [System.Windows.Controls.StackPanel]$item  # The StackPanel to search
     )
 
     $checkBoxes = @()  # Initialize an empty array to store CheckBoxes
@@ -11178,51 +11194,49 @@ function GetCheckBoxesFromStackPanel {
             if ($child -is [System.Windows.Controls.StackPanel]) {
                 foreach ($innerChild in $child.Children) {
                     if ($innerChild -is [System.Windows.Controls.CheckBox]) {
-                        # Add CheckBox to the array
-                        $checkBoxes += $innerChild
+                        $checkBoxes += $innerChild  # Add each CheckBox to the array
                     }
                 }
             }
         }
     }
-    return $checkBoxes
+    return $checkBoxes  # Return the array of CheckBoxes
 }
+
+# Function to load JSON data and update the UI
 function LoadJson {
-    if($sync.ProcessRunning)
-    {
-        $localizedMessageTemplate = $sync.database.locales.Controls.$($sync.Language).Pleasewait
-        $msg = "$localizedMessageTemplate"
+    if ($sync.ProcessRunning) {
+        $msg = $sync.database.locales.Controls.$($sync.Language).Pleasewait
         [System.Windows.MessageBox]::Show($msg, "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
         return
     }
+
     # Open file dialog to select JSON file
-    $openFileDialog = New-Object -TypeName "Microsoft.Win32.OpenFileDialog"
+    $openFileDialog = New-Object "Microsoft.Win32.OpenFileDialog"
     $openFileDialog.Filter = "JSON files (*.ea4)|*.ea4"
     $openFileDialog.Title = "Open JSON File"
     $dialogResult = $openFileDialog.ShowDialog()
 
     if ($dialogResult -eq "OK") {
-
         $jsonData = Get-Content -Path $openFileDialog.FileName -Raw | ConvertFrom-Json
-        $filteredNames = $jsonData
+        $filteredNames = $jsonData.Name
 
+        # Filter predicate to match CheckBoxes with JSON data
         $filterPredicate = {
-
             param($item)
 
-            $item =  GetCheckBoxesFromStackPanel -item $item
+            $checkBoxes = Get-CheckBoxesFromStackPanel -item $item
 
-            foreach ($currentItemName in $filteredNames.Name) {
-
-                if($currentItemName -eq $item.Content)
-                {
-                    $item.IsChecked = $true
+            foreach ($currentItemName in $filteredNames) {
+                if ($currentItemName -eq $checkBoxes.Content) {
+                    $checkBoxes.IsChecked = $true
                     break
                 }
-
             }
-            return $filteredNames.name -contains $item.Content
+            return $filteredNames -contains $checkBoxes.Content
         }
+
+        # Update UI based on the loaded JSON data
         $sync['window'].FindName('apps').IsSelected = $true
         $sync['window'].FindName('appslist').Clear()
         $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync['window'].FindName('appslist').Items)
@@ -11230,63 +11244,54 @@ function LoadJson {
         [System.Windows.MessageBox]::Show("Restored successfully", "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
     }
 }
+
+# Function to save selected items to a JSON file
 function SaveItemsToJson {
-    if($sync.ProcessRunning)
-    {
-        $localizedMessageTemplate = $sync.database.locales.Controls.$($sync.Language).Pleasewait
-        $msg = "$localizedMessageTemplate"
+    if ($sync.ProcessRunning) {
+        $msg = $sync.database.locales.Controls.$($sync.Language).Pleasewait
         [System.Windows.MessageBox]::Show($msg, "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
         return
     }
+
     $items = @()
 
     ClearFilter
-    
-    foreach ($item in $sync.AppsListView.Items)
-    {
-        $item =  GetCheckBoxesFromStackPanel -item $item
-        if ($item.IsChecked)
-        {
-                $itemObject = [PSCustomObject]@{
-                Name = $item.Content
+
+    foreach ($item in $sync.AppsListView.Items) {
+        $checkBoxes = Get-CheckBoxesFromStackPanel -item $item
+        if ($checkBoxes.IsChecked) {
+            $itemObject = [PSCustomObject]@{
+                Name  = $checkBoxes.Content
                 check = "true"
             }
             $items += $itemObject
         }
     }
 
-    if ($null -ne $items -and $items.Count -gt 0) 
-    {
+    if ($items.Count -gt 0) {
         # Open save file dialog
-        $saveFileDialog = New-Object -TypeName "Microsoft.Win32.SaveFileDialog"
+        $saveFileDialog = New-Object "Microsoft.Win32.SaveFileDialog"
         $saveFileDialog.Filter = "JSON files (*.ea4)|*.ea4"
         $saveFileDialog.Title = "Save JSON File"
         $dialogResult = $saveFileDialog.ShowDialog()
 
-        if ($dialogResult -eq "OK")
-        {
+        if ($dialogResult -eq "OK") {
             $items | ConvertTo-Json | Out-File -FilePath $saveFileDialog.FileName -Force
             Write-Host "Saved: $($saveFileDialog.FileName)"
-
             [System.Windows.MessageBox]::Show("Saved", "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
 
-        }
-        
-            foreach ($item in $sync.AppsListView.Items)
-            {
-                $item =  GetCheckBoxesFromStackPanel -item $item
-
-                if ($item.IsChecked)
-                {
-                    $item.IsChecked = $false
+            foreach ($item in $sync.AppsListView.Items) {
+                $checkBoxes = Get-CheckBoxesFromStackPanel -item $item
+                if ($checkBoxes.IsChecked) {
+                    $checkBoxes.IsChecked = $false  # Uncheck all CheckBoxes after saving
                 }
             }
-    }
-    else
-    {
+        }
+    } else {
         [System.Windows.MessageBox]::Show("Choose at least one program", "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
     }
 }
+
 function WriteAText {
     param (
         $message,
@@ -11414,22 +11419,26 @@ function Startup {
     Get-PCInfo  
     Write-Host (WriteAText -color White -message  "You ready to Install anything.") 
 }
-function ChangeTap() {
+function ChangeTap {
     # Define a hash table to map tab names to their button visibility and list values
     $tabSettings = @{
-        'apps' = @{ 'installBtn' = 'Visible'; 'applyBtn' = 'Hidden'; 'currentList' = 'appslist' }
-        'tweeksTab' = @{ 'installBtn' = 'Hidden'; 'applyBtn' = 'Visible'; 'currentList' = 'tweakslist' }
+        'apps'        = @{ 'installBtn' = 'Visible'; 'applyBtn' = 'Hidden'; 'currentList' = 'appslist' }
+        'tweeksTab'   = @{ 'installBtn' = 'Hidden'; 'applyBtn' = 'Visible'; 'currentList' = 'tweakslist' }
         'SettingsTab' = @{ 'installBtn' = 'Hidden'; 'applyBtn' = 'Hidden'; 'currentList' = $null }
     }
 
-    # Iterate over the tabs and update visibility and currentList based on the selected tab
+    # Iterate over the tab settings
     foreach ($tab in $tabSettings.Keys) {
+        # Check if the current tab is selected
         if ($sync['window'].FindName($tab).IsSelected) {
             $settings = $tabSettings[$tab]
+            
+            # Update button visibility and currentList based on the selected tab
             $sync['window'].FindName('installBtn').Visibility = $settings['installBtn']
             $sync['window'].FindName('applyBtn').Visibility = $settings['applyBtn']
             $sync.currentList = $settings['currentList']
-            break
+            
+            break  # Exit the loop once the matching tab is found
         }
     }
 }
@@ -12884,7 +12893,7 @@ function DisplayQuotes  {
 
     Invoke-ScriptBlock -ScriptBlock {
 
-        # Define the path to your JSON file
+        # Define the JSON file path
         $jsonFilePath = $sync.database.Quotes
 
         # Function to shuffle an array
@@ -12926,9 +12935,6 @@ function DisplayQuotes  {
         Display-WelcomeText
 
         Start-Sleep -Seconds 20
-
-
-
 
         # Loop through shuffled names and display them
         do {
@@ -13052,6 +13058,8 @@ function PlayMusic {
 
         # Shuffle the playlist and create a new playlist
         function GetShuffledTracks {
+
+            # Play Favorite Music in Special Date
             if ($sync.Date.Month -eq 9 -and $sync.Date.Day -eq 1) {
                 return $sync.database.OST.Favorite | Get-Random -Count $sync.database.OST.Favorite.Count
             }
@@ -13081,30 +13089,40 @@ function PlayMusic {
     }
 }
 
+# Mute the music by setting the volume to the specified value
 function MuteMusic {
     param($value)
     $sync.mediaPlayer.settings.volume = $value
+    # Save the volume setting to the registry for persistence
     Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "Music" -Value "$value" -Force
 }
+
+# Unmute the music by setting the volume to the specified value
 function UnmuteMusic {
     param($value)
     $sync.mediaPlayer.settings.volume = $value
+    # Save the volume setting to the registry for persistence
     Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "Music" -Value "$value" -Force
 }
+
+# Stop the music and clean up resources
 function StopMusic {
-    $sync.mediaPlayer.controls.stop()
-    $sync.mediaPlayer = $null
-    $script:powershell.Dispose()
-    $sync.runspace.Dispose()
-    $sync.runspace.Close()
+    $sync.mediaPlayer.controls.stop()    # Stop the media player
+    $sync.mediaPlayer = $null            # Clear the media player object
+    $script:powershell.Dispose()         # Dispose of the PowerShell object
+    $sync.runspace.Dispose()             # Dispose of the runspace
+    $sync.runspace.Close()               # Close the runspace
 }
+
+# Stop all runspaces, stop the music, and exit the process
 function StopAllRunspace {
-    $script:powershell.Dispose()
-    $sync.runspace.Dispose()
-    $sync.runspace.Close()
-    $script:powershell.Stop()
-    StopMusic
-    $newProcess.exit
+    $script:powershell.Dispose()         # Dispose of the PowerShell object
+    $sync.runspace.Dispose()             # Dispose of the runspace
+    $sync.runspace.Close()               # Close the runspace
+    $script:powershell.Stop()            # Stop the PowerShell script
+    StopMusic                            # Stop the music and clean up resources
+    $newProcess.exit                     # Exit the process
+    # Display a message reminding to pray for the oppressed
     Write-Host "`n` Don't forget to pray for the oppressed people, Stand with Palestine" 
 }
 function Set-Language {
