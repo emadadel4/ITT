@@ -118,14 +118,13 @@ do {
         do {
             $Path = Read-Host "Enter Reg Path"
             $Name = Read-Host "Enter Value Name"
-
-            $continue = Read-Host "Do you want to add another Delete path? (y/n)"
             
+            $continue = Read-Host "Do you want to add another Delete path? (y/n)"
         }while ($continue -eq "y")
     }
 
     $Names += $Name
-    $continue = Read-Host "Do you want to add another reg Path in current Tweak? (y/n)"
+    $continue = Read-Host "Do you want to add another Path in current Tweak? (y/n)"
 } while ($continue -eq "y")
 
 
@@ -139,11 +138,11 @@ $data = @{
     "Modify" = @(
         $Names | ForEach-Object {
             @{
-                "Path" = "$Path"
-                "Name" = "$Name"
-                "Type" = "$Type"
-                "Value" = "$Value"
-                "defaultValue" = "$defaultValue"
+                "Path" = $Path
+                "Name" = $Name
+                "Type" = $Type
+                "Value" = $Value
+                "defaultValue" = $defaultValue
 
             } | Select-Object Path, Name, Type, Value, defaultValue
         }
@@ -151,8 +150,8 @@ $data = @{
     "Delete" = @(
         $Names | ForEach-Object {
             @{
-                "Path" = "$Path"
-                "Name" = "$Name"
+                "Path" = $Path
+                "Name" = $Name
             } | Select-Object Path, Name
         }
     )
