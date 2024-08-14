@@ -394,14 +394,11 @@ function Invoke-ApplyTweaks {
                                     "Registry" {
 
                                         $app.Modify | ForEach-Object {
-                                            #Set-RegistryValue -Name $_.Name -Type $_.Type -Path $_.Path -Value $_.Value
-                                            Write-Host $_.Name
+                                            Set-RegistryValue -Name $_.Name -Type $_.Type -Path $_.Path -Value $_.Value
                                         }
 
                                         $app.Delete | ForEach-Object {
-                                            #Remove-RegistryValue -RegistryPath $_.Path -Folder $_.Name
-
-                                            Write-Host $_.Name
+                                            Remove-RegistryValue -RegistryPath $_.Path -Folder $_.Name
                                         }
 
                                         if($app.Refresh -eq "true")
