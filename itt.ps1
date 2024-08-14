@@ -6355,9 +6355,9 @@ $sync.database.Tweaks = '[
     "description": "Disables all Xbox Services Game Mode and Optimizations for Windowed Games and fix stutter playing smooth",
     "check": "false",
     "category": "Performance",
-    "type": "modifying",
+    "type": "Registry",
     "refresh": "false",
-    "Registry": [
+    "Modify": [
       {
         "Path": "HKCU:\\SOFTWARE\\Microsoft\\GameBar",
         "Name": "AutoGameModeEnabled",
@@ -6547,9 +6547,9 @@ $sync.database.Tweaks = '[
     "description": "Disable Data Collection",
     "check": "false",
     "category": "Privacy",
-    "type": "modifying",
+    "type": "Registry",
     "refresh": "false",
-    "Registry": [
+    "Modify": [
       {
         "Path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\DataCollection",
         "Name": "AllowTelemetry",
@@ -6570,9 +6570,9 @@ $sync.database.Tweaks = '[
     "description": "Disable Start menu Ads and Settings",
     "check": "false",
     "category": "Privacy",
-    "type": "modifying",
+    "type": "Registry",
     "refresh": "true",
-    "Registry": [
+    "Modify": [
       {
         "Path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\AdvertisingInfo",
         "Name": "Enabled",
@@ -6611,12 +6611,12 @@ $sync.database.Tweaks = '[
   },
   {
     "name": "Disable Windows Web Search",
-    "description": "Disable web search in Windows by modifying the registry settings related to Windows Search for Windows 10 and 11",
+    "description": "Disable web search in Windows by Modify the registry settings related to Windows Search for Windows 10 and 11",
     "check": "false",
     "category": "Privacy",
-    "type": "modifying",
+    "type": "Registry",
     "refresh": "false",
-    "Registry": [
+    "Modify": [
       {
         "Path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Search",
         "Name": "BingSearchEnabled",
@@ -6637,9 +6637,9 @@ $sync.database.Tweaks = '[
     "description": "Turn off background apps for Windows 10 and 11",
     "check": "false",
     "category": "Performance",
-    "type": "modifying",
+    "type": "Registry",
     "refresh": "false",
-    "Registry": [
+    "Modify": [
       {
         "Path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\BackgroundAccessApplications",
         "Name": "GlobalUserDisabled",
@@ -6667,9 +6667,9 @@ $sync.database.Tweaks = '[
     "description": "Disables suggestions on start menu for Windows 10 and 11",
     "check": "false",
     "category": "Privacy",
-    "type": "modifying",
+    "type": "Modify",
     "refresh": "false",
-    "Registry": [
+    "Modify": [
       {
         "Path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\CloudContent",
         "Name": "DisableWindowsConsumerFeatures",
@@ -6690,9 +6690,9 @@ $sync.database.Tweaks = '[
     "description": "Disable the (News and interests) and (People icon) Show Search icon only for Windows 10/11",
     "check": "false",
     "category": "Performance",
-    "type": "modifying",
+    "type": "Registry",
     "refresh": "true",
-    "Registry": [
+    "Modify": [
       {
         "Path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Feeds",
         "Name": "ShellFeedsTaskbarViewMode",
@@ -6741,9 +6741,9 @@ $sync.database.Tweaks = '[
     "description": "Remove Documents, Videos, Pictures, Desktop. Shortcuts from File Explorer",
     "check": "false",
     "category": "Other",
-    "type": "delete",
+    "type": "Registry",
     "refresh": "false",
-    "Registry": [
+    "Delete": [
       {
         "Path": "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\MyComputer\\NameSpace\\",
         "Name": "{0DB7E03F-FC29-4DC6-9020-FF41B59E513A}"
@@ -7078,7 +7078,7 @@ $sync.database.Tweaks = '[
     "category": "Performance",
     "type": "command",
     "refresh": "false",
-    "Registry": [
+    "Modify": [
       {
         "Path": "HKLM:\\System\\CurrentControlSet\\Control\\Session Manager\\Power",
         "Name": "HibernateEnabled",
@@ -7106,9 +7106,9 @@ $sync.database.Tweaks = '[
     "description": "Disabling OneDrive for Windows 10 and 11",
     "check": "false",
     "category": "Performance",
-    "type": "modifying",
+    "type": "Registry",
     "refresh": "false",
-    "Registry": [
+    "Modify": [
       {
         "Path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\OneDrive",
         "Name": "DisableFileSyncNGSC",
@@ -7136,9 +7136,9 @@ $sync.database.Tweaks = '[
     "description": "This tweak enables the classic Windows Photo Viewer for Windows 10.",
     "check": "false",
     "category": "Classic",
-    "type": "modifying",
+    "type": "Registry",
     "refresh": "false",
-    "Registry": [
+    "Modify": [
       {
         "Path": "HKLM:\\SOFTWARE\\Microsoft\\Windows Photo Viewer\\Capabilities\\FileAssociations",
         "Name": ".jpg",
@@ -7201,9 +7201,9 @@ $sync.database.Tweaks = '[
     "description": "Restore the old context menu for Windows 11",
     "check": "false",
     "category": "Classic",
-    "type": "modifying",
+    "type": "Registry",
     "refresh": "true",
-    "Registry": [
+    "Modify": [
       {
         "Path": "HKCU:\\Software\\Classes\\CLSID\\",
         "Name": "{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}",
@@ -7231,9 +7231,9 @@ $sync.database.Tweaks = '[
     "description": "Copilot in Windows provides centralized generative AI assistance to your users right from the Windows desktop Copilot in Windows appears as a side bar docked on the Windows desktop and is designed to help users get things done in Windows Copilot in Windows can perform common tasks in Windows like changing Windows settings which makes it different from the browserbased Copilot in Edge",
     "check": "false",
     "category": "Privacy",
-    "type": "modifying",
+    "type": "Registry",
     "refresh": "true",
-    "Registry": [
+    "Modify": [
       {
         "Path": "HKCU:\\Software\\Policies\\Microsoft\\Windows\\WindowsCopilot",
         "Name": "TurnOffWindowsCopilot",
@@ -7282,9 +7282,9 @@ $sync.database.Tweaks = '[
     "description": "Recall is an upcoming preview experience exclusive to Copilot+ PCs that will help you easily find and remember things you''ve seen using natural language.",
     "check": "false",
     "category": "Privacy",
-    "type": "modifying",
+    "type": "Registry",
     "refresh": "true",
-    "Registry": [
+    "Modify": [
       {
         "Path": "HKCU:\\Software\\Policies\\Microsoft\\Windows\\WindowsAI",
         "Name": "DisableAIDataAnalysis",
@@ -7326,9 +7326,9 @@ $sync.database.Tweaks = '[
     "description": "The old volume control in Windows 10 refers to the classic audio mixer interface that was used in earlier versions of Windows, before the modern volume control system was introduced. This interface allowed users to adjust the volume for individual applications separately, providing a more detailed and flexible approach to managing audio levels.",
     "check": "false",
     "category": "Classic",
-    "type": "modifying",
+    "type": "Registry",
     "refresh": "false",
-    "Registry": {
+    "Modify": {
       "Path": "HKLM:\\Software\\Microsoft\\Windows NT\\CurrentVersion\\MTCUVC",
       "Name": "EnableMtcUvc",
       "Type": "DWord",
@@ -7347,9 +7347,9 @@ $sync.database.Tweaks = '[
     "description": "Toggle key sounds in Windows are audio cues that play when you press the Caps Lock, Num Lock, or Scroll Lock keys. These sounds help users identify when these keys are activated or deactivated.",
     "check": "false",
     "category": "Classic",
-    "type": "modifying",
+    "type": "Registry",
     "refresh": "false",
-    "Registry": {
+    "Modify": {
       "Path": "HKCU:\\Control Panel\\Accessibility\\ToggleKeys",
       "Name": "Flags",
       "Type": "String",
@@ -7394,6 +7394,38 @@ $sync.database.Tweaks = '[
         "StartupType": "Manual ",
         "DefaultType": "Automatic"
       }
+    ]
+  },
+  {
+    "name": "Remove Home and Gallery from explorer",
+    "description": "Removes the Home and Gallery from explorer and sets This PC as default",
+    "check": "false",
+    "type": "Registry",
+    "refresh": "false",
+    "Modify": [
+      {
+        "Path": "HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced",
+        "Name": "1",
+        "Type": "DWord",
+        "Value": "1",
+        "defaultValue": "1"
+      }
+    ],
+    "Delete": [
+      {
+        "Path": "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Desktop\\NameSpace",
+        "Name": "{e88865ea-0e1c-4e20-9aa6-edcd0212c87c}"
+      },
+      {
+        "Path": "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Desktop\\NameSpace",
+        "Name": "{f874310e-b6b7-47dc-bc84-b9e6b38f5903}"
+      }
+    ],
+    "InvokeCommand": [
+      ""
+    ],
+    "UndoCommand": [
+      ""
     ]
   }
 ]
@@ -10587,7 +10619,7 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
                 <CheckBox Content="Disable Windows Web Search"     ToolTip="Install it again to update" FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content="Privacy"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="8" FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="Disable web search in Windows by modifying the registry settings related to Windows Search for Windows 10 and 11"/>
+                <TextBlock Width="555" Background="Transparent" Margin="8" FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="Disable web search in Windows by Modify the registry settings related to Windows Search for Windows 10 and 11"/>
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Width="auto" Margin="10">
@@ -10724,6 +10756,14 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
                 <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content=""/>
             </StackPanel>
                 <TextBlock Width="555" Background="Transparent" Margin="8" FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="Disables HomeGroup  HomeGroup is a passwordprotected home networking service that lets you share your stuff with other PCs that are currently running and connected to your network"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Width="auto" Margin="10">
+            <StackPanel Orientation="Horizontal">
+                <CheckBox Content="Remove Home and Gallery from explorer"     ToolTip="Install it again to update" FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content=""/>
+            </StackPanel>
+                <TextBlock Width="555" Background="Transparent" Margin="8" FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="Removes the Home and Gallery from explorer and sets This PC as default"/>
         </StackPanel>
 
                     </ListView>
@@ -11490,7 +11530,8 @@ function Get-SelectedTweaks {
 
                                                 Name = $program.Name
                                                 Type = $program.Type
-                                                Registry = $program.Registry
+                                                Modify = $program.Modify
+                                                Delete = $program.Delete
                                                 Service = $program.Service
                                                 RemoveAppxPackage = $program.RemoveAppxPackage
                                                 Command = $program.InvokeCommand
@@ -11854,25 +11895,19 @@ function Invoke-ApplyTweaks {
 
                             foreach ($app in $tweaks) {
                                 switch ($app.Type) {
+
                                     "command" {
                                         $app.Command | ForEach-Object { ExecuteCommand -Name $app.Name -Command $_ }
                                     }
-                                    "modifying" {
-                                        $app.Registry | ForEach-Object {
-                                             Set-RegistryValue -Name $_.Name -Type $_.Type -Path $_.Path -Value $_.Value
-                                           
+
+                                    "Registry" {
+
+                                        $app.Modify | ForEach-Object {
+                                            Set-RegistryValue -Name $_.Name -Type $_.Type -Path $_.Path -Value $_.Value
                                         }
 
-                                        if($app.Refresh -eq "true")
-                                        {
-                                            Stop-Process -Name explorer -Force
-                                            Add-Log -Message "Restarting explorer" -Level "INFO"
-                                        }
-                                    }
-                                    "delete" {
-                                        $app.Registry | ForEach-Object { 
+                                        $app.Delete | ForEach-Object {
                                             Remove-RegistryValue -RegistryPath $_.Path -Folder $_.Name
-                                            
                                         }
 
                                         if($app.Refresh -eq "true")
