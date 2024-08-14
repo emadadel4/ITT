@@ -57,87 +57,102 @@ $Names = @()
 do {
 
 
-    $TweakType = @{
 
-        1 = "modifying"
-        2 = "delete"
+    $ActionType = @{
+        1 = "Modify"
+        2 = "Delete"
     }
     
-    # Prompt user to choose KeyType
     do {
-        Write-Host "This tweak will do?"
-        foreach ($key in $TweakType.Keys | Sort-Object) {
-            Write-Host "$key - $($TweakType[$key])"
+        Write-Host "This Tweak will do?"
+        foreach ($key in $ActionType.Keys | Sort-Object) {
+            Write-Host "$key - $($ActionType[$key])"
         }
         $choice = Read-Host "Enter the number corresponding to the Tweak Type"
-        if ([int]$choice -in $TweakType.Keys) {
-            $TType = $TweakType[[int]$choice]
+        if ([int]$choice -in $ActionType.Keys) {
+            $AType = $ActionType[[int]$choice]
         } else {
             Write-Host "Invalid choice. Please select a valid option."
         }
-    } until ([int]$choice -in $TweakType.Keys)
+    } until ([int]$choice -in $ActionType.Keys)
 
 
-    $Path = Read-Host "Enter Reg Path"
-    $Name = Read-Host "Enter Value Name"
+    if($AType -eq "Modify")
+    {
+        $Path = Read-Host "Enter Reg Path"
+        $Name = Read-Host "Enter Value Name"
 
+        $KeyType = @{
+
+            1 = "DWord"
+            2 = "Qword"
+            3 = "Binary"
+            4 = "String"
+            5 = "MultiString"
+            6 = "ExpandString"
+            7 = "LINK"
+            8 = "NONE"
+            9 = "QWORD_LITTLE_ENDIAN"
+        }
         
-    $KeyType = @{
+        # Prompt user to choose KeyType
+        do {
+            Write-Host "What is the Key type"
+            foreach ($key in $KeyType.Keys | Sort-Object) {
+                Write-Host "$key - $($KeyType[$key])"
+            }
+            $choice = Read-Host "Enter the number corresponding to the Key Type"
+            if ([int]$choice -in $KeyType.Keys) {
+                $Type = $KeyType[[int]$choice]
+            } else {
+                Write-Host "Invalid choice. Please select a valid option."
+            }
+        } until ([int]$choice -in $KeyType.Keys)
 
-        1 = "DWord"
-        2 = "Qword"
-        3 = "Binary"
-        4 = "String"
-        5 = "MultiString"
-        6 = "ExpandString"
-        7 = "LINK"
-        8 = "NONE"
-        9 = "QWORD_LITTLE_ENDIAN"
+            $Value = Read-Host "Enter Value"
+            $defaultValue = Read-Host "Enter default Value"
+
     }
-    
-    # Prompt user to choose KeyType
-    do {
-        Write-Host "What is the Key type"
-        foreach ($key in $KeyType.Keys | Sort-Object) {
-            Write-Host "$key - $($KeyType[$key])"
-        }
-        $choice = Read-Host "Enter the number corresponding to the Key Type"
-        if ([int]$choice -in $KeyType.Keys) {
-            $Type = $KeyType[[int]$choice]
-        } else {
-            Write-Host "Invalid choice. Please select a valid option."
-        }
-    } until ([int]$choice -in $KeyType.Keys)
+    else
+    {
+        do {
+            $Path = Read-Host "Enter Reg Path"
+            $Name = Read-Host "Enter Value Name"
 
-
-    $Value = Read-Host "Enter Value"
-    $defaultValue = Read-Host "Enter default Value"
+            $continue = Read-Host "Do you want to add another Delete path? (y/n)"
+        }while ($continue -eq "y")
+    }
 
     $Names += $Name
-
-
-
     $continue = Read-Host "Do you want to add another Path in current Tweak? (y/n)"
 } while ($continue -eq "y")
 
 
 # Define the data
 $data = @{
-    "name" = $TweakName
-    "description" = $description
-    "check" = "false"
-    "type" = $TType
-    "refresh" = "false"
-    "$userInput" = @(
+    "Name" = $TweakName
+    "Description" = $description
+    "Check" = "false"
+    "Type" = "Registry"
+    "Refresh" = "false"
+    "Modify" = @(
         $Names | ForEach-Object {
             @{
-                "Path" = $Path
-                "Name" = $Name
-                "Type" = $Type
-                "Value" = $Value
-                "defaultValue" = $defaultValue
+                "Path" = "$Path"
+                "Name" = "$Name"
+                "Type" = "$Type"
+                "Value" = "$Value"
+                "defaultValue" = "$defaultValue"
 
             } | Select-Object Path, Name, Type, Value, defaultValue
+        }
+    )
+    "Delete" = @(
+        $Names | ForEach-Object {
+            @{
+                "Path" = "$Path"
+                "Name" = "$Name"
+            } | Select-Object Path, Name
         }
     )
     "InvokeCommand" = @(
@@ -151,12 +166,13 @@ $data = @{
 # Convert to JSON string
 $jsonString = @"
 {
-    "name": "$($data["name"])",
-    "description": "$($data["description"])",
-    "check": "$($data["check"])",
-    "type": "$($data["type"])",
+    "Name": "$($data["Name"])",
+    "Description": "$($data["Description"])",
+    "Check": "$($data["Check"])",
+    "Type": "$($data["Type"])",
     "refresh": "$($data["refresh"])",
-    "$userInput": $($data["$userInput"] | ConvertTo-Json -Depth 100),
+    "Modify": $($data["Modify"] | ConvertTo-Json -Depth 100),
+    "Delete": $($data["Delete"] | ConvertTo-Json -Depth 100),
     "InvokeCommand": [
         ""
     ],
@@ -209,11 +225,11 @@ do {
 
 # Define the data
 $data = @{
-    "name" = $TweakName
-    "description" = $description
-    "check" = "false"
-    "type" = "AppxPackage"
-    "refresh" = "false"
+    "Name" = $TweakName
+    "Description" = $description
+    "Check" = "false"
+    "Type" = "AppxPackage"
+    "Refresh" = "false"
     "$userInput" = @(
         $Names | ForEach-Object {
             @{
@@ -232,11 +248,11 @@ $data = @{
 # Convert to JSON string
 $jsonString = @"
 {
-    "name": "$($data["name"])",
-    "description": "$($data["description"])",
-    "check": "$($data["check"])",
-    "type": "$($data["type"])",
-    "refresh": "$($data["refresh"])",
+    "Name": "$($data["Name"])",
+    "Description": "$($data["Description"])",
+    "Check": "$($data["Check"])",
+    "Type": "$($data["Type"])",
+    "Refresh": "$($data["Refresh"])",
     "$userInput": $($data["$userInput"] | ConvertTo-Json -Depth 100),
     "InvokeCommand": [
         ""
@@ -308,11 +324,11 @@ do {
 
 # Define the data
 $data = @{
-    "name" = $TweakName
-    "description" = $description
-    "check" = "false"
-    "type" = "command"
-    "refresh" = "false"
+    "Name" = $TweakName
+    "Description" = $description
+    "Check" = "false"
+    "Type" = "command"
+    "Refresh" = "false"
     "userInput" = $cmd
     "UndoCommand" = $cmd2
 
@@ -331,11 +347,11 @@ $userInputJson2 = ($data["UndoCommand"] | ForEach-Object { '"' + $_.Replace('"',
 # Convert to JSON string
 $jsonString = @"
 {
-    "name": "$($data["name"])",
-    "description": "$($data["description"])",
-    "check": "$($data["check"])",
-    "type": "$($data["type"])",
-    "refresh": "$($data["refresh"])",
+    "Name": "$($data["Name"])",
+    "Description": "$($data["Description"])",
+    "Check": "$($data["Check"])",
+    "Type": "$($data["Type"])",
+    "Refresh": "$($data["Refresh"])",
     "$userInput": [
         $userInputJson
     ],
@@ -435,11 +451,11 @@ do {
 # Define the data as an ordered hashtable
 $data = [Ordered]@{
 
-    "name" = $TweakName
-    "description" = $description
-    "check" = "false"
-    "type" = "service"
-    "refresh" = "false"
+    "Name" = $TweakName
+    "Description" = $description
+    "Check" = "false"
+    "Type" = "service"
+    "Refresh" = "false"
     "$userInput" = @(
         $Names | ForEach-Object {
             [Ordered]@{
@@ -454,11 +470,11 @@ $data = [Ordered]@{
 # Convert to JSON string
 $jsonString = @"
 {
-    "name": "$($data["name"])",
-    "description": "$($data["description"])",
-    "check": "$($data["check"])",
-    "type": "$($data["type"])",
-    "refresh": "$($data["refresh"])",
+    "Name": "$($data["Name"])",
+    "Description": "$($data["Description"])",
+    "Check": "$($data["Check"])",
+    "Type": "$($data["Type"])",
+    "Refresh": "$($data["Refresh"])",
     "$userInput": $($data["$userInput"] | ConvertTo-Json -Depth 100)
 }
 "@
