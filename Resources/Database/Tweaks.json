@@ -111,9 +111,9 @@
     "description": "Disables all Xbox Services Game Mode and Optimizations for Windowed Games and fix stutter playing smooth",
     "check": "false",
     "category": "Performance",
-    "type": "modifying",
+    "type": "Registry",
     "refresh": "false",
-    "Registry": [
+    "Modify": [
       {
         "Path": "HKCU:\\SOFTWARE\\Microsoft\\GameBar",
         "Name": "AutoGameModeEnabled",
@@ -303,9 +303,9 @@
     "description": "Disable Data Collection",
     "check": "false",
     "category": "Privacy",
-    "type": "modifying",
+    "type": "Registry",
     "refresh": "false",
-    "Registry": [
+    "Modify": [
       {
         "Path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\DataCollection",
         "Name": "AllowTelemetry",
@@ -326,9 +326,9 @@
     "description": "Disable Start menu Ads and Settings",
     "check": "false",
     "category": "Privacy",
-    "type": "modifying",
+    "type": "Registry",
     "refresh": "true",
-    "Registry": [
+    "Modify": [
       {
         "Path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\AdvertisingInfo",
         "Name": "Enabled",
@@ -367,12 +367,12 @@
   },
   {
     "name": "Disable Windows Web Search",
-    "description": "Disable web search in Windows by modifying the registry settings related to Windows Search for Windows 10 and 11",
+    "description": "Disable web search in Windows by Modify the registry settings related to Windows Search for Windows 10 and 11",
     "check": "false",
     "category": "Privacy",
-    "type": "modifying",
+    "type": "Registry",
     "refresh": "false",
-    "Registry": [
+    "Modify": [
       {
         "Path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Search",
         "Name": "BingSearchEnabled",
@@ -393,9 +393,9 @@
     "description": "Turn off background apps for Windows 10 and 11",
     "check": "false",
     "category": "Performance",
-    "type": "modifying",
+    "type": "Registry",
     "refresh": "false",
-    "Registry": [
+    "Modify": [
       {
         "Path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\BackgroundAccessApplications",
         "Name": "GlobalUserDisabled",
@@ -423,9 +423,9 @@
     "description": "Disables suggestions on start menu for Windows 10 and 11",
     "check": "false",
     "category": "Privacy",
-    "type": "modifying",
+    "type": "Modify",
     "refresh": "false",
-    "Registry": [
+    "Modify": [
       {
         "Path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\CloudContent",
         "Name": "DisableWindowsConsumerFeatures",
@@ -446,9 +446,9 @@
     "description": "Disable the (News and interests) and (People icon) Show Search icon only for Windows 10/11",
     "check": "false",
     "category": "Performance",
-    "type": "modifying",
+    "type": "Registry",
     "refresh": "true",
-    "Registry": [
+    "Modify": [
       {
         "Path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Feeds",
         "Name": "ShellFeedsTaskbarViewMode",
@@ -497,9 +497,9 @@
     "description": "Remove Documents, Videos, Pictures, Desktop. Shortcuts from File Explorer",
     "check": "false",
     "category": "Other",
-    "type": "delete",
+    "type": "Registry",
     "refresh": "false",
-    "Registry": [
+    "Delete": [
       {
         "Path": "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\MyComputer\\NameSpace\\",
         "Name": "{0DB7E03F-FC29-4DC6-9020-FF41B59E513A}"
@@ -834,7 +834,7 @@
     "category": "Performance",
     "type": "command",
     "refresh": "false",
-    "Registry": [
+    "Modify": [
       {
         "Path": "HKLM:\\System\\CurrentControlSet\\Control\\Session Manager\\Power",
         "Name": "HibernateEnabled",
@@ -862,9 +862,9 @@
     "description": "Disabling OneDrive for Windows 10 and 11",
     "check": "false",
     "category": "Performance",
-    "type": "modifying",
+    "type": "Registry",
     "refresh": "false",
-    "Registry": [
+    "Modify": [
       {
         "Path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\OneDrive",
         "Name": "DisableFileSyncNGSC",
@@ -892,9 +892,9 @@
     "description": "This tweak enables the classic Windows Photo Viewer for Windows 10.",
     "check": "false",
     "category": "Classic",
-    "type": "modifying",
+    "type": "Registry",
     "refresh": "false",
-    "Registry": [
+    "Modify": [
       {
         "Path": "HKLM:\\SOFTWARE\\Microsoft\\Windows Photo Viewer\\Capabilities\\FileAssociations",
         "Name": ".jpg",
@@ -957,9 +957,9 @@
     "description": "Restore the old context menu for Windows 11",
     "check": "false",
     "category": "Classic",
-    "type": "modifying",
+    "type": "Registry",
     "refresh": "true",
-    "Registry": [
+    "Modify": [
       {
         "Path": "HKCU:\\Software\\Classes\\CLSID\\",
         "Name": "{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}",
@@ -987,9 +987,9 @@
     "description": "Copilot in Windows provides centralized generative AI assistance to your users right from the Windows desktop Copilot in Windows appears as a side bar docked on the Windows desktop and is designed to help users get things done in Windows Copilot in Windows can perform common tasks in Windows like changing Windows settings which makes it different from the browserbased Copilot in Edge",
     "check": "false",
     "category": "Privacy",
-    "type": "modifying",
+    "type": "Registry",
     "refresh": "true",
-    "Registry": [
+    "Modify": [
       {
         "Path": "HKCU:\\Software\\Policies\\Microsoft\\Windows\\WindowsCopilot",
         "Name": "TurnOffWindowsCopilot",
@@ -1038,9 +1038,9 @@
     "description": "Recall is an upcoming preview experience exclusive to Copilot+ PCs that will help you easily find and remember things you've seen using natural language.",
     "check": "false",
     "category": "Privacy",
-    "type": "modifying",
+    "type": "Registry",
     "refresh": "true",
-    "Registry": [
+    "Modify": [
       {
         "Path": "HKCU:\\Software\\Policies\\Microsoft\\Windows\\WindowsAI",
         "Name": "DisableAIDataAnalysis",
@@ -1082,9 +1082,9 @@
     "description": "The old volume control in Windows 10 refers to the classic audio mixer interface that was used in earlier versions of Windows, before the modern volume control system was introduced. This interface allowed users to adjust the volume for individual applications separately, providing a more detailed and flexible approach to managing audio levels.",
     "check": "false",
     "category": "Classic",
-    "type": "modifying",
+    "type": "Registry",
     "refresh": "false",
-    "Registry": {
+    "Modify": {
       "Path": "HKLM:\\Software\\Microsoft\\Windows NT\\CurrentVersion\\MTCUVC",
       "Name": "EnableMtcUvc",
       "Type": "DWord",
@@ -1103,9 +1103,9 @@
     "description": "Toggle key sounds in Windows are audio cues that play when you press the Caps Lock, Num Lock, or Scroll Lock keys. These sounds help users identify when these keys are activated or deactivated.",
     "check": "false",
     "category": "Classic",
-    "type": "modifying",
+    "type": "Registry",
     "refresh": "false",
-    "Registry": {
+    "Modify": {
       "Path": "HKCU:\\Control Panel\\Accessibility\\ToggleKeys",
       "Name": "Flags",
       "Type": "String",
@@ -1150,6 +1150,38 @@
         "StartupType": "Manual ",
         "DefaultType": "Automatic"
       }
+    ]
+  },
+  {
+    "name": "Remove Home and Gallery from explorer",
+    "description": "Removes the Home and Gallery from explorer and sets This PC as default",
+    "check": "false",
+    "type": "Registry",
+    "refresh": "false",
+    "Modify": [
+      {
+        "Path": "HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced",
+        "Name": "1",
+        "Type": "DWord",
+        "Value": "1",
+        "defaultValue": "1"
+      }
+    ],
+    "Delete": [
+      {
+        "Path": "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Desktop\\NameSpace",
+        "Name": "{e88865ea-0e1c-4e20-9aa6-edcd0212c87c}"
+      },
+      {
+        "Path": "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Desktop\\NameSpace",
+        "Name": "{f874310e-b6b7-47dc-bc84-b9e6b38f5903}"
+      }
+    ],
+    "InvokeCommand": [
+      ""
+    ],
+    "UndoCommand": [
+      ""
     ]
   }
 ]
