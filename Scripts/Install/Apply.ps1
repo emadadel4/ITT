@@ -386,7 +386,7 @@ function Invoke-ApplyTweaks {
 
                             foreach ($app in $tweaks) {
                                 switch ($app.Type) {
-                                    
+
                                     "command" {
                                         $app.Command | ForEach-Object { ExecuteCommand -Name $app.Name -Command $_ }
                                     }
@@ -401,11 +401,11 @@ function Invoke-ApplyTweaks {
                                             Remove-RegistryValue -RegistryPath $_.Path -Folder $_.Name
                                         }
 
-                                        # if($app.Refresh -eq "true")
-                                        # {
-                                        #     Stop-Process -Name explorer -Force
-                                        #     Add-Log -Message "Restarting explorer" -Level "INFO"
-                                        # }
+                                        if($app.Refresh -eq "true")
+                                        {
+                                            Stop-Process -Name explorer -Force
+                                            Add-Log -Message "Restarting explorer" -Level "INFO"
+                                        }
                                     }
                                     "service" {
                                         $app.Service | ForEach-Object { Disable-Service -ServiceName $_.Name -StartupType $_.StartupType }
