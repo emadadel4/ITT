@@ -1183,29 +1183,5 @@
     "UndoCommand": [
       ""
     ]
-  },
-  {
-    "Name": "1",
-    "Description": "1",
-    "Check": "false",
-    "Type": "Registry",
-    "refresh": "false",
-    "Modify": {
-      "Path": "1",
-      "Name": "1",
-      "Type": "",
-      "Value": "",
-      "defaultValue": ""
-    },
-    "Delete": {
-      "Path": "1",
-      "Name": "1"
-    },
-    "InvokeCommand": [
-      ""
-    ],
-    "UndoCommand": [
-      ""
-    ]
   }
 ]
