@@ -91,7 +91,7 @@ function GenerateCheckboxes {
     foreach ($Item in $Items) {        
 
         $CleanedItem = $Item.Description -replace '[^\w\s]', '.'
-        $Cat = $Item.category -replace '[^\w\s]', ''
+        $Cat = $Item.Category -replace '[^\w\s]', ''
 
         # grap name of each item  
         $Content = $Item.$ContentField
@@ -246,7 +246,7 @@ WriteToScript -Content @"
         Write-Error "An error occurred while processing the XAML content: $($_.Exception.Message)"
     }
    
-    $AppsCheckboxes = GenerateCheckboxes -Items $sync.database.Applications -ContentField "Name" -TagField "category" -IsCheckedField "check"
+    $AppsCheckboxes = GenerateCheckboxes -Items $sync.database.Applications -ContentField "Name" -TagField "Category" -IsCheckedField "check"
     $TweaksCheckboxes = GenerateCheckboxes -Items $sync.database.Tweaks -ContentField "Name"
     $SettingsCheckboxes = GenerateCheckboxes -Items $sync.database.Settings -ContentField "Content" -NameField "Name" -ToggleField "Style="{StaticResource ToggleSwitchStyle}""
 
