@@ -115,24 +115,39 @@ do {
     }
     else
     {
-        $Path = Read-Host "Enter Reg Path"
-        $Name = Read-Host "Enter Value Name"
+        do {
+            $Path = Read-Host "Enter Reg Path"
+            $Name = Read-Host "Enter Value Name"
+
+            $continue = Read-Host "Do you want to add another Delete path? (y/n)"
+            
+        }while ($continue -eq "y")
     }
 
     $Names += $Name
-    $continue = Read-Host "Do you want to add another Path in current Tweak? (y/n)"
+    $continue = Read-Host "Do you want to add another reg Path in current Tweak? (y/n)"
 } while ($continue -eq "y")
 
 
-if($AType -eq "Delete")
-{
-    # Define the data
+# Define the data
 $data = @{
     "name" = $TweakName
     "description" = $description
     "check" = "false"
     "type" = "Registry"
     "refresh" = "false"
+    "Modify" = @(
+        $Names | ForEach-Object {
+            @{
+                "Path" = $Path
+                "Name" = $Name
+                "Type" = $Type
+                "Value" = $Value
+                "defaultValue" = $defaultValue
+
+            } | Select-Object Path, Name, Type, Value, defaultValue
+        }
+    )
     "Delete" = @(
         $Names | ForEach-Object {
             @{
@@ -157,6 +172,7 @@ $jsonString = @"
     "check": "$($data["check"])",
     "type": "$($data["type"])",
     "refresh": "$($data["refresh"])",
+    "Modify": $($data["Modify"] | ConvertTo-Json -Depth 100),
     "Delete": $($data["Delete"] | ConvertTo-Json -Depth 100),
     "InvokeCommand": [
         ""
@@ -166,64 +182,6 @@ $jsonString = @"
     ]
 }
 "@
-
-}
-else
-{
-
-# Define the data
-$data = @{
-    "name" = $TweakName
-    "description" = $description
-    "check" = "false"
-    "type" = "Registry"
-    "refresh" = "false"
-    "Modify" = @(
-        $Names | ForEach-Object {
-            @{
-                "Path" = $Path
-                "Name" = $Name
-                "Type" = $Type
-                "Value" = $Value
-                "defaultValue" = $defaultValue
-
-            } | Select-Object Path, Name, Type, Value, defaultValue
-        }
-    )
-    "Delete" = @(
-        @{
-            "Path" = $Path
-            "Name" = $Name
-        } | Select-Object Path, Name
-    )
-    "InvokeCommand" = @(
-        ""
-    )
-    "UndoCommand" = @(
-        ""
-    )
-}
-
-# Convert to JSON string
-$jsonString = @"
-{
-    "name": "$($data["name"])",
-    "description": "$($data["description"])",
-    "check": "$($data["check"])",
-    "type": "$($data["type"])",
-    "refresh": "$($data["refresh"])",
-    "Modify": $($data["Modify"] | ConvertTo-Json -Depth 100),
-    "InvokeCommand": [
-        ""
-    ],
-    "UndoCommand": [
-    ""
-    ]
-}
-"@
-
-}
-
 
 # Read existing JSON file
 $existingJson = Get-Content -Path "./Resources/Database/Tweaks.json" -Raw | ConvertFrom-Json -ErrorAction SilentlyContinue
