@@ -139,11 +139,11 @@ $data = @{
     "Modify" = @(
         $Names | ForEach-Object {
             @{
-                "Path" = $Path
-                "Name" = $Name
-                "Type" = $Type
-                "Value" = $Value
-                "defaultValue" = $defaultValue
+                "Path" = "$Path"
+                "Name" = "$Name"
+                "Type" = "$Type"
+                "Value" = "$Value"
+                "defaultValue" = "$defaultValue"
 
             } | Select-Object Path, Name, Type, Value, defaultValue
         }
@@ -151,8 +151,8 @@ $data = @{
     "Delete" = @(
         $Names | ForEach-Object {
             @{
-                "Path" = $Path
-                "Name" = $Name
+                "Path" = "$Path"
+                "Name" = "$Name"
             } | Select-Object Path, Name
         }
     )
