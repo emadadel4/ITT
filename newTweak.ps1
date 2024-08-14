@@ -130,11 +130,11 @@ do {
 
 # Define the data
 $data = @{
-    "name" = $TweakName
-    "description" = $description
-    "check" = "false"
-    "type" = "Registry"
-    "refresh" = "false"
+    "Name" = $TweakName
+    "Description" = $description
+    "Check" = "false"
+    "Type" = "Registry"
+    "Refresh" = "false"
     "Modify" = @(
         $Names | ForEach-Object {
             @{
@@ -166,10 +166,10 @@ $data = @{
 # Convert to JSON string
 $jsonString = @"
 {
-    "name": "$($data["name"])",
-    "description": "$($data["description"])",
-    "check": "$($data["check"])",
-    "type": "$($data["type"])",
+    "Name": "$($data["Name"])",
+    "Description": "$($data["Description"])",
+    "Check": "$($data["Check"])",
+    "Type": "$($data["Type"])",
     "refresh": "$($data["refresh"])",
     "Modify": $($data["Modify"] | ConvertTo-Json -Depth 100),
     "Delete": $($data["Delete"] | ConvertTo-Json -Depth 100),
@@ -225,11 +225,11 @@ do {
 
 # Define the data
 $data = @{
-    "name" = $TweakName
-    "description" = $description
-    "check" = "false"
-    "type" = "AppxPackage"
-    "refresh" = "false"
+    "Name" = $TweakName
+    "Description" = $description
+    "Check" = "false"
+    "Type" = "AppxPackage"
+    "Refresh" = "false"
     "$userInput" = @(
         $Names | ForEach-Object {
             @{
@@ -248,11 +248,11 @@ $data = @{
 # Convert to JSON string
 $jsonString = @"
 {
-    "name": "$($data["name"])",
-    "description": "$($data["description"])",
-    "check": "$($data["check"])",
-    "type": "$($data["type"])",
-    "refresh": "$($data["refresh"])",
+    "Name": "$($data["Name"])",
+    "Description": "$($data["Description"])",
+    "Check": "$($data["Check"])",
+    "Type": "$($data["Type"])",
+    "Refresh": "$($data["Refresh"])",
     "$userInput": $($data["$userInput"] | ConvertTo-Json -Depth 100),
     "InvokeCommand": [
         ""
@@ -324,11 +324,11 @@ do {
 
 # Define the data
 $data = @{
-    "name" = $TweakName
-    "description" = $description
-    "check" = "false"
-    "type" = "command"
-    "refresh" = "false"
+    "Name" = $TweakName
+    "Description" = $description
+    "Check" = "false"
+    "Type" = "command"
+    "Refresh" = "false"
     "userInput" = $cmd
     "UndoCommand" = $cmd2
 
@@ -347,11 +347,11 @@ $userInputJson2 = ($data["UndoCommand"] | ForEach-Object { '"' + $_.Replace('"',
 # Convert to JSON string
 $jsonString = @"
 {
-    "name": "$($data["name"])",
-    "description": "$($data["description"])",
-    "check": "$($data["check"])",
-    "type": "$($data["type"])",
-    "refresh": "$($data["refresh"])",
+    "Name": "$($data["Name"])",
+    "Description": "$($data["Description"])",
+    "Check": "$($data["Check"])",
+    "Type": "$($data["Type"])",
+    "Refresh": "$($data["Refresh"])",
     "$userInput": [
         $userInputJson
     ],
@@ -451,11 +451,11 @@ do {
 # Define the data as an ordered hashtable
 $data = [Ordered]@{
 
-    "name" = $TweakName
-    "description" = $description
-    "check" = "false"
-    "type" = "service"
-    "refresh" = "false"
+    "Name" = $TweakName
+    "Description" = $description
+    "Check" = "false"
+    "Type" = "service"
+    "Refresh" = "false"
     "$userInput" = @(
         $Names | ForEach-Object {
             [Ordered]@{
@@ -470,11 +470,11 @@ $data = [Ordered]@{
 # Convert to JSON string
 $jsonString = @"
 {
-    "name": "$($data["name"])",
-    "description": "$($data["description"])",
-    "check": "$($data["check"])",
-    "type": "$($data["type"])",
-    "refresh": "$($data["refresh"])",
+    "Name": "$($data["Name"])",
+    "Description": "$($data["Description"])",
+    "Check": "$($data["Check"])",
+    "Type": "$($data["Type"])",
+    "Refresh": "$($data["Refresh"])",
     "$userInput": $($data["$userInput"] | ConvertTo-Json -Depth 100)
 }
 "@
