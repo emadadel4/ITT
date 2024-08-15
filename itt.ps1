@@ -20,7 +20,7 @@ Add-Type -AssemblyName System.Windows.Forms
 $sync = [Hashtable]::Synchronized(@{
     database       = @{}
     ProcessRunning = $false
-    lastupdate     = "08/16/24"
+    lastupdate     = "08/14/24"
     github         = "https://github.com/emadadel4"
     telegram       = "https://t.me/emadadel4"
     website        = "https://emadadel4.github.io"
@@ -5462,25 +5462,6 @@ $sync.database.Applications = '[
     ],
     "category": "Runtimes",
     "check": "false"
-  },
-  {
-    "name": "HFS HTTP File Server",
-    "description": "You can use HFS HTTP File Server to send and receive files Its different from classic file sharing because it uses web technology to be more compatible with todays Internet It also differs from classic web servers because its very easy to use and runs right outofthe box",
-    "winget": "none",
-    "choco": "hfs",
-    "scoop": "none",
-    "default": [
-      {
-        "IsExcute": "false",
-        "url": "none",
-        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none",
-        "shortcut": "no",
-        "run": "no"
-      }
-    ],
-    "category": "File Sharing",
-    "check": "false"
   }
 ]
 ' | ConvertFrom-Json
@@ -6263,12 +6244,12 @@ $sync.database.Settings = '[
 ]' | ConvertFrom-Json
 $sync.database.Tweaks = '[
   {
-    "Name": "System File Checker",
-    "Description": "sfc /scannow Use the System File Checker tool to repair missing or corrupted system files",
-    "Check": "false",
-    "Category": "Fixer",
-    "Type": "command",
-    "Refresh": "false",
+    "name": "System File Checker",
+    "description": "sfc /scannow Use the System File Checker tool to repair missing or corrupted system files",
+    "check": "false",
+    "category": "Fixer",
+    "type": "command",
+    "refresh": "false",
     "InvokeCommand": [
       "sfc /scannow"
     ],
@@ -6277,12 +6258,12 @@ $sync.database.Tweaks = '[
     ]
   },
   {
-    "Name": "Disk cleanup",
-    "Description": "Clean temporary files that are not necessary",
-    "Check": "false",
-    "Category": "Cleanup",
-    "Type": "command",
-    "Refresh": "false",
+    "name": "Disk cleanup",
+    "description": "Clean temporary files that are not necessary",
+    "check": "false",
+    "category": "Cleanup",
+    "type": "command",
+    "refresh": "false",
     "InvokeCommand": [
       "cleanmgr.exe /d C: /VERYLOWDISK /sagerun:1 Dism.exe /online /Cleanup-Image /StartComponentCleanup /ResetBase",
       "cleanmgr.exe /d C: /sagerun:1",
@@ -6300,12 +6281,12 @@ $sync.database.Tweaks = '[
     ]
   },
   {
-    "Name": "Restore All Windows Services to Default",
-    "Description": "If you face a problem with some system services, you can restore all services to Default.",
-    "Check": "false",
-    "Category": "Fixer",
-    "Type": "command",
-    "Refresh": "false",
+    "name": "Restore All Windows Services to Default",
+    "description": "If you face a problem with some system services, you can restore all services to Default.",
+    "check": "false",
+    "category": "Fixer",
+    "type": "command",
+    "refresh": "false",
     "InvokeCommand": [
       "Invoke-RestMethod https://raw.githubusercontent.com/emadadel4/WindowsTweaks/main/restore.bat | Invoke-Expression"
     ],
@@ -6314,12 +6295,12 @@ $sync.database.Tweaks = '[
     ]
   },
   {
-    "Name": "Fix Stutter in Games",
-    "Description": "Fix Stutter in Games Disable GameBarPresenceWriter for Windows 10 and 11",
-    "Check": "false",
-    "Category": "Performance",
-    "Type": "command",
-    "Refresh": "false",
+    "name": "Fix Stutter in Games",
+    "description": "Fix Stutter in Games Disable GameBarPresenceWriter for Windows 10 and 11",
+    "check": "false",
+    "category": "Performance",
+    "type": "command",
+    "refresh": "false",
     "InvokeCommand": [
       "\r\n        takeown /f C:\\Windows\\System32\\GameBarPresenceWriter.exe\r\n\r\n        takeown /f C:\\Windows\\System32\\GameBarPresenceWriter.proxy.dll\r\n\r\n        takeown /f C:\\Windows\\System32\\Windows.Gaming.UI.GameBar.dll\r\n\r\n        Start-Sleep -Seconds 1\r\n\r\n\r\n        icacls C:\\Windows\\System32\\GameBarPresenceWriter.exe /grant administrators:F\r\n\r\n        icacls C:\\Windows\\System32\\GameBarPresenceWriter.proxy.dll /grant administrators:F\r\n\r\n        icacls C:\\Windows\\System32\\Windows.Gaming.UI.GameBar.dll /grant administrators:F\r\n\r\n        Start-Sleep -Seconds 1\r\n\r\n\r\n        Rename-Item C:\\Windows\\System32\\GameBarPresenceWriter.exe -NewName GameBarPresenceWriter.exe_backup\r\n\r\n        Rename-Item C:\\Windows\\System32\\GameBarPresenceWriter.proxy.dll -NewName GameBarPresenceWriter.proxy.dll_backup\r\n\r\n        Rename-Item C:\\Windows\\System32\\Windows.Gaming.UI.GameBar.dll -NewName Windows.Gaming.UI.GameBar.dll_backup\r\n\r\n      "
     ],
@@ -6328,12 +6309,12 @@ $sync.database.Tweaks = '[
     ]
   },
   {
-    "Name": "Enable the Ultimate Performance Power Plan",
-    "Description": "Enable the Ultimate Performance Power Plan",
-    "Check": "false",
-    "Category": "Performance",
-    "Type": "command",
-    "Refresh": "false",
+    "name": "Enable the Ultimate Performance Power Plan",
+    "description": "Enable the Ultimate Performance Power Plan",
+    "check": "false",
+    "category": "Performance",
+    "type": "command",
+    "refresh": "false",
     "InvokeCommand": [
       "powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61; Start-Process powercfg.cpl"
     ],
@@ -6342,12 +6323,12 @@ $sync.database.Tweaks = '[
     ]
   },
   {
-    "Name": "Reset the TCP/IP Stack",
-    "Description": "If you have an internet problem, Reset network configuration",
-    "Check": "false",
-    "Category": "Fixer",
-    "Type": "command",
-    "Refresh": "false",
+    "name": "Reset the TCP/IP Stack",
+    "description": "If you have an internet problem, Reset network configuration",
+    "check": "false",
+    "category": "Fixer",
+    "type": "command",
+    "refresh": "false",
     "InvokeCommand": [
       "netsh int ip reset"
     ],
@@ -6356,12 +6337,12 @@ $sync.database.Tweaks = '[
     ]
   },
   {
-    "Name": "Setup Auto login",
-    "Description": "Setup auto login Windows username",
-    "Check": "false",
-    "Category": "Other",
-    "Type": "command",
-    "Refresh": "false",
+    "name": "Setup Auto login",
+    "description": "Setup auto login Windows username",
+    "check": "false",
+    "category": "Other",
+    "type": "command",
+    "refresh": "false",
     "InvokeCommand": [
       "curl.exe -ss \"https://live.sysinternals.com/Autologon.exe\" -o $env:temp\\autologin.exe ; cmd /c $env:temp\\autologin.exe /accepteula"
     ],
@@ -6370,13 +6351,13 @@ $sync.database.Tweaks = '[
     ]
   },
   {
-    "Name": "Disable  Xbox Services",
-    "Description": "Disables all Xbox Services Game Mode and Optimizations for Windowed Games and fix stutter playing smooth",
-    "Check": "false",
-    "Category": "Performance",
-    "Type": "Registry",
-    "Refresh": "false",
-    "Modify": [
+    "name": "Disable  Xbox Services",
+    "description": "Disables all Xbox Services Game Mode and Optimizations for Windowed Games and fix stutter playing smooth",
+    "check": "false",
+    "category": "Performance",
+    "type": "modifying",
+    "refresh": "false",
+    "Registry": [
       {
         "Path": "HKCU:\\SOFTWARE\\Microsoft\\GameBar",
         "Name": "AutoGameModeEnabled",
@@ -6562,13 +6543,13 @@ $sync.database.Tweaks = '[
     ]
   },
   {
-    "Name": "Disable Data Collection",
-    "Description": "Disable Data Collection",
-    "Check": "false",
-    "Category": "Privacy",
-    "Type": "Registry",
-    "Refresh": "false",
-    "Modify": [
+    "name": "Disable Data Collection",
+    "description": "Disable Data Collection",
+    "check": "false",
+    "category": "Privacy",
+    "type": "modifying",
+    "refresh": "false",
+    "Registry": [
       {
         "Path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\DataCollection",
         "Name": "AllowTelemetry",
@@ -6585,13 +6566,13 @@ $sync.database.Tweaks = '[
     ]
   },
   {
-    "Name": "Disable Start Menu Ads",
-    "Description": "Disable Start menu Ads and Settings",
-    "Check": "false",
-    "Category": "Privacy",
-    "Type": "Registry",
-    "Refresh": "true",
-    "Modify": [
+    "name": "Disable Start Menu Ads",
+    "description": "Disable Start menu Ads and Settings",
+    "check": "false",
+    "category": "Privacy",
+    "type": "modifying",
+    "refresh": "true",
+    "Registry": [
       {
         "Path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\AdvertisingInfo",
         "Name": "Enabled",
@@ -6629,13 +6610,13 @@ $sync.database.Tweaks = '[
     ]
   },
   {
-    "Name": "Disable Windows Web Search",
-    "Description": "Disable web search in Windows by Modify the registry settings related to Windows Search for Windows 10 and 11",
-    "Check": "false",
-    "Category": "Privacy",
-    "Type": "Registry",
-    "Refresh": "false",
-    "Modify": [
+    "name": "Disable Windows Web Search",
+    "description": "Disable web search in Windows by modifying the registry settings related to Windows Search for Windows 10 and 11",
+    "check": "false",
+    "category": "Privacy",
+    "type": "modifying",
+    "refresh": "false",
+    "Registry": [
       {
         "Path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Search",
         "Name": "BingSearchEnabled",
@@ -6652,13 +6633,13 @@ $sync.database.Tweaks = '[
     ]
   },
   {
-    "Name": "Turn off background Apps",
-    "Description": "Turn off background apps for Windows 10 and 11",
-    "Check": "false",
-    "Category": "Performance",
-    "Type": "Registry",
-    "Refresh": "false",
-    "Modify": [
+    "name": "Turn off background Apps",
+    "description": "Turn off background apps for Windows 10 and 11",
+    "check": "false",
+    "category": "Performance",
+    "type": "modifying",
+    "refresh": "false",
+    "Registry": [
       {
         "Path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\BackgroundAccessApplications",
         "Name": "GlobalUserDisabled",
@@ -6682,13 +6663,13 @@ $sync.database.Tweaks = '[
     ]
   },
   {
-    "Name": "Disable suggestions on Start Menu",
-    "Description": "Disables suggestions on start menu for Windows 10 and 11",
-    "Check": "false",
-    "Category": "Privacy",
-    "Type": "Modify",
-    "Refresh": "false",
-    "Modify": [
+    "name": "Disable suggestions on Start Menu",
+    "description": "Disables suggestions on start menu for Windows 10 and 11",
+    "check": "false",
+    "category": "Privacy",
+    "type": "modifying",
+    "refresh": "false",
+    "Registry": [
       {
         "Path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\CloudContent",
         "Name": "DisableWindowsConsumerFeatures",
@@ -6705,13 +6686,13 @@ $sync.database.Tweaks = '[
     ]
   },
   {
-    "Name": "Clean Taskbar",
-    "Description": "Disable the (News and interests) and (People icon) Show Search icon only for Windows 10/11",
-    "Check": "false",
-    "Category": "Performance",
-    "Type": "Registry",
-    "Refresh": "true",
-    "Modify": [
+    "name": "Clean Taskbar",
+    "description": "Disable the (News and interests) and (People icon) Show Search icon only for Windows 10/11",
+    "check": "false",
+    "category": "Performance",
+    "type": "modifying",
+    "refresh": "true",
+    "Registry": [
       {
         "Path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Feeds",
         "Name": "ShellFeedsTaskbarViewMode",
@@ -6756,13 +6737,13 @@ $sync.database.Tweaks = '[
     ]
   },
   {
-    "Name": "Remove Folder Shortcuts From File Explorer",
-    "Description": "Remove Documents, Videos, Pictures, Desktop. Shortcuts from File Explorer",
-    "Check": "false",
-    "Category": "Other",
-    "Type": "Registry",
-    "Refresh": "false",
-    "Delete": [
+    "name": "Remove Folder Shortcuts From File Explorer",
+    "description": "Remove Documents, Videos, Pictures, Desktop. Shortcuts from File Explorer",
+    "check": "false",
+    "category": "Other",
+    "type": "delete",
+    "refresh": "false",
+    "Registry": [
       {
         "Path": "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\MyComputer\\NameSpace\\",
         "Name": "{0DB7E03F-FC29-4DC6-9020-FF41B59E513A}"
@@ -6828,12 +6809,12 @@ $sync.database.Tweaks = '[
     ]
   },
   {
-    "Name": "Optimize Windows Services",
-    "Description": "Disable (Print Spooler), (Fax), (Diagnostic Policy), (Downloaded Maps Manager), (Windows Error Reporting Service), (Remote Registry) , (Internet Connection Sharing), (Disables Telemetry and Data) ",
-    "Check": "false",
-    "Category": "Performance",
-    "Type": "service",
-    "Refresh": "false",
+    "name": "Optimize Windows Services",
+    "description": "Disable (Print Spooler), (Fax), (Diagnostic Policy), (Downloaded Maps Manager), (Windows Error Reporting Service), (Remote Registry) , (Internet Connection Sharing), (Disables Telemetry and Data) ",
+    "check": "false",
+    "category": "Performance",
+    "type": "service",
+    "refresh": "false",
     "Service": [
       {
         "Name": "Spooler",
@@ -6889,12 +6870,12 @@ $sync.database.Tweaks = '[
     ]
   },
   {
-    "Name": "Remove Windows 10/11 Bloatware",
-    "Description": "BingNews, GetHelp, Getstarted, Messaging, Microsoft3DViewer, MicrosoftOfficeHub, MicrosoftSolitaireCollection, News, Office.Lens, Office.OneNote, Office.Sway, OneConnect, People, Print3D, RemoteDesktop, SkypeApp, StorePurchaseApp, Office.Todo.List, Whiteboard, WindowsAlarms, WindowsCamera, windowscommunicationsapps, WindowsFeedbackHub, WindowsMaps, WindowsSoundRecorder, Xbox.TCUI, XboxApp, XboxGameOverlay, XboxIdentityProvider, XboxSpeechToTextOverlay, ZuneMusic, ZuneVideo, Windows.Cortana, MSPaint, Clipchamp",
-    "Check": "false",
-    "Category": "Performance",
-    "Type": "AppxPackage",
-    "Refresh": "false",
+    "name": "Remove Windows 10/11 Bloatware",
+    "description": "BingNews, GetHelp, Getstarted, Messaging, Microsoft3DViewer, MicrosoftOfficeHub, MicrosoftSolitaireCollection, News, Office.Lens, Office.OneNote, Office.Sway, OneConnect, People, Print3D, RemoteDesktop, SkypeApp, StorePurchaseApp, Office.Todo.List, Whiteboard, WindowsAlarms, WindowsCamera, windowscommunicationsapps, WindowsFeedbackHub, WindowsMaps, WindowsSoundRecorder, Xbox.TCUI, XboxApp, XboxGameOverlay, XboxIdentityProvider, XboxSpeechToTextOverlay, ZuneMusic, ZuneVideo, Windows.Cortana, MSPaint, Clipchamp",
+    "check": "false",
+    "category": "Performance",
+    "type": "AppxPackage",
+    "refresh": "false",
     "RemoveAppxPackage": [
       {
         "Name": "Microsoft.BingNews"
@@ -7091,13 +7072,13 @@ $sync.database.Tweaks = '[
     ]
   },
   {
-    "Name": "Disable Hibernate",
-    "Description": "Hibernate is a power-saving mode in Microsoft Windows operating systems that allows the system to save the current state of your computer to the hard disk and then power down completely.",
-    "Check": "false",
-    "Category": "Performance",
-    "Type": "command",
-    "Refresh": "false",
-    "Modify": [
+    "name": "Disable Hibernate",
+    "description": "Hibernate is a power-saving mode in Microsoft Windows operating systems that allows the system to save the current state of your computer to the hard disk and then power down completely.",
+    "check": "false",
+    "category": "Performance",
+    "type": "command",
+    "refresh": "false",
+    "Registry": [
       {
         "Path": "HKLM:\\System\\CurrentControlSet\\Control\\Session Manager\\Power",
         "Name": "HibernateEnabled",
@@ -7121,13 +7102,13 @@ $sync.database.Tweaks = '[
     ]
   },
   {
-    "Name": "Disable OneDrive",
-    "Description": "Disabling OneDrive for Windows 10 and 11",
-    "Check": "false",
-    "Category": "Performance",
-    "Type": "Registry",
-    "Refresh": "false",
-    "Modify": [
+    "name": "Disable OneDrive",
+    "description": "Disabling OneDrive for Windows 10 and 11",
+    "check": "false",
+    "category": "Performance",
+    "type": "modifying",
+    "refresh": "false",
+    "Registry": [
       {
         "Path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\OneDrive",
         "Name": "DisableFileSyncNGSC",
@@ -7151,13 +7132,13 @@ $sync.database.Tweaks = '[
     ]
   },
   {
-    "Name": "Activate Windows Old Photo Viewer",
-    "Description": "This tweak enables the classic Windows Photo Viewer for Windows 10.",
-    "Check": "false",
-    "Category": "Classic",
-    "Type": "Registry",
-    "Refresh": "false",
-    "Modify": [
+    "name": "Activate Windows Old Photo Viewer",
+    "description": "This tweak enables the classic Windows Photo Viewer for Windows 10.",
+    "check": "false",
+    "category": "Classic",
+    "type": "modifying",
+    "refresh": "false",
+    "Registry": [
       {
         "Path": "HKLM:\\SOFTWARE\\Microsoft\\Windows Photo Viewer\\Capabilities\\FileAssociations",
         "Name": ".jpg",
@@ -7216,13 +7197,13 @@ $sync.database.Tweaks = '[
     ]
   },
   {
-    "Name": "Restore Classic Context Menu Windows 11",
-    "Description": "Restore the old context menu for Windows 11",
-    "Check": "false",
-    "Category": "Classic",
-    "Type": "Registry",
-    "Refresh": "true",
-    "Modify": [
+    "name": "Restore Classic Context Menu Windows 11",
+    "description": "Restore the old context menu for Windows 11",
+    "check": "false",
+    "category": "Classic",
+    "type": "modifying",
+    "refresh": "true",
+    "Registry": [
       {
         "Path": "HKCU:\\Software\\Classes\\CLSID\\",
         "Name": "{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}",
@@ -7246,13 +7227,13 @@ $sync.database.Tweaks = '[
     ]
   },
   {
-    "Name": "Remove Copilot in Windows 11",
-    "Description": "Copilot in Windows provides centralized generative AI assistance to your users right from the Windows desktop Copilot in Windows appears as a side bar docked on the Windows desktop and is designed to help users get things done in Windows Copilot in Windows can perform common tasks in Windows like changing Windows settings which makes it different from the browserbased Copilot in Edge",
-    "Check": "false",
-    "Category": "Privacy",
-    "Type": "Registry",
-    "Refresh": "true",
-    "Modify": [
+    "name": "Remove Copilot in Windows 11",
+    "description": "Copilot in Windows provides centralized generative AI assistance to your users right from the Windows desktop Copilot in Windows appears as a side bar docked on the Windows desktop and is designed to help users get things done in Windows Copilot in Windows can perform common tasks in Windows like changing Windows settings which makes it different from the browserbased Copilot in Edge",
+    "check": "false",
+    "category": "Privacy",
+    "type": "modifying",
+    "refresh": "true",
+    "Registry": [
       {
         "Path": "HKCU:\\Software\\Policies\\Microsoft\\Windows\\WindowsCopilot",
         "Name": "TurnOffWindowsCopilot",
@@ -7297,13 +7278,13 @@ $sync.database.Tweaks = '[
     ]
   },
   {
-    "Name": "Disable Recall Snapshots in Windows 11 24H",
-    "Description": "Recall is an upcoming preview experience exclusive to Copilot+ PCs that will help you easily find and remember things you''ve seen using natural language.",
-    "Check": "false",
-    "Category": "Privacy",
-    "Type": "Registry",
-    "Refresh": "true",
-    "Modify": [
+    "name": "Disable Recall Snapshots in Windows 11 24H",
+    "description": "Recall is an upcoming preview experience exclusive to Copilot+ PCs that will help you easily find and remember things you''ve seen using natural language.",
+    "check": "false",
+    "category": "Privacy",
+    "type": "modifying",
+    "refresh": "true",
+    "Registry": [
       {
         "Path": "HKCU:\\Software\\Policies\\Microsoft\\Windows\\WindowsAI",
         "Name": "DisableAIDataAnalysis",
@@ -7327,12 +7308,12 @@ $sync.database.Tweaks = '[
     ]
   },
   {
-    "Name": "Delete Thumbnail Cache",
-    "Description": "removing the stored image thumbnails on your computer These thumbnails are small versions of images used by the operating system to display image previews quickly Over time the cache can become large or corrupted causing slowdowns or display issues Deleting it can free up space and resolve such issues as the system will regenerate",
-    "Check": "false",
-    "Category": "Performance",
-    "Type": "command",
-    "Refresh": "false",
+    "name": "Delete Thumbnail Cache",
+    "description": "removing the stored image thumbnails on your computer These thumbnails are small versions of images used by the operating system to display image previews quickly Over time the cache can become large or corrupted causing slowdowns or display issues Deleting it can free up space and resolve such issues as the system will regenerate",
+    "check": "false",
+    "category": "Performance",
+    "type": "command",
+    "refresh": "false",
     "InvokeCommand": [
       "Remove-Item \"$env:LocalAppData\\Microsoft\\Windows\\Explorer\\thumbcache*\" -Force -Recurse"
     ],
@@ -7341,13 +7322,13 @@ $sync.database.Tweaks = '[
     ]
   },
   {
-    "Name": "Old Volume Control in Windows 10",
-    "Description": "The old volume control in Windows 10 refers to the classic audio mixer interface that was used in earlier versions of Windows, before the modern volume control system was introduced. This interface allowed users to adjust the volume for individual applications separately, providing a more detailed and flexible approach to managing audio levels.",
-    "Check": "false",
-    "Category": "Classic",
-    "Type": "Registry",
-    "Refresh": "false",
-    "Modify": {
+    "name": "Old Volume Control in Windows 10",
+    "description": "The old volume control in Windows 10 refers to the classic audio mixer interface that was used in earlier versions of Windows, before the modern volume control system was introduced. This interface allowed users to adjust the volume for individual applications separately, providing a more detailed and flexible approach to managing audio levels.",
+    "check": "false",
+    "category": "Classic",
+    "type": "modifying",
+    "refresh": "false",
+    "Registry": {
       "Path": "HKLM:\\Software\\Microsoft\\Windows NT\\CurrentVersion\\MTCUVC",
       "Name": "EnableMtcUvc",
       "Type": "DWord",
@@ -7362,13 +7343,13 @@ $sync.database.Tweaks = '[
     ]
   },
   {
-    "Name": "Disable Toggle Key Sounds",
-    "Description": "Toggle key sounds in Windows are audio cues that play when you press the Caps Lock, Num Lock, or Scroll Lock keys. These sounds help users identify when these keys are activated or deactivated.",
-    "Check": "false",
-    "Category": "Classic",
-    "Type": "Registry",
-    "Refresh": "false",
-    "Modify": {
+    "name": "Disable Toggle Key Sounds",
+    "description": "Toggle key sounds in Windows are audio cues that play when you press the Caps Lock, Num Lock, or Scroll Lock keys. These sounds help users identify when these keys are activated or deactivated.",
+    "check": "false",
+    "category": "Classic",
+    "type": "modifying",
+    "refresh": "false",
+    "Registry": {
       "Path": "HKCU:\\Control Panel\\Accessibility\\ToggleKeys",
       "Name": "Flags",
       "Type": "String",
@@ -7383,12 +7364,12 @@ $sync.database.Tweaks = '[
     ]
   },
   {
-    "Name": "Clear Start Menu Windows 11",
-    "Description": "Clear all pinned apps from the start menu",
-    "Check": "false",
-    "Category": "Performance",
-    "Type": "command",
-    "Refresh": "false",
+    "name": "Clear Start Menu Windows 11",
+    "description": "Clear all pinned apps from the start menu",
+    "check": "false",
+    "category": "Performance",
+    "type": "command",
+    "refresh": "false",
     "InvokeCommand": [
       "Invoke-RestMethod https://raw.githubusercontent.com/emadadel4/WindowsTweaks/main/ClearStartMenu.ps1 | Invoke-Expression"
     ],
@@ -7397,11 +7378,11 @@ $sync.database.Tweaks = '[
     ]
   },
   {
-    "Name": "Disable Homegroup",
-    "Description": "Disables HomeGroup  HomeGroup is a passwordprotected home networking service that lets you share your stuff with other PCs that are currently running and connected to your network",
-    "Check": "false",
-    "Type": "service",
-    "Refresh": "false",
+    "name": "Disable Homegroup",
+    "description": "Disables HomeGroup  HomeGroup is a passwordprotected home networking service that lets you share your stuff with other PCs that are currently running and connected to your network",
+    "check": "false",
+    "type": "service",
+    "refresh": "false",
     "Service": [
       {
         "Name": "HomeGroupListener",
@@ -7413,38 +7394,6 @@ $sync.database.Tweaks = '[
         "StartupType": "Manual ",
         "DefaultType": "Automatic"
       }
-    ]
-  },
-  {
-    "Name": "Remove Home and Gallery from explorer",
-    "Description": "Removes the Home and Gallery from explorer and sets This PC as default",
-    "Check": "false",
-    "Type": "Registry",
-    "Refresh": "false",
-    "Modify": [
-      {
-        "Path": "HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced",
-        "Name": "1",
-        "Type": "DWord",
-        "Value": "1",
-        "defaultValue": "1"
-      }
-    ],
-    "Delete": [
-      {
-        "Path": "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Desktop\\NameSpace",
-        "Name": "{e88865ea-0e1c-4e20-9aa6-edcd0212c87c}"
-      },
-      {
-        "Path": "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Desktop\\NameSpace",
-        "Name": "{f874310e-b6b7-47dc-bc84-b9e6b38f5903}"
-      }
-    ],
-    "InvokeCommand": [
-      ""
-    ],
-    "UndoCommand": [
-      ""
     ]
   }
 ]
@@ -10539,14 +10488,6 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
                 <TextBlock Width="555" Background="Transparent" Margin="8" FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="NET is a free crossplatform opensource developer platform for building many different types of applications"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="10">
-            <StackPanel Orientation="Horizontal">
-                <CheckBox Content="HFS HTTP File Server" Tag="File Sharing" IsChecked="false"   ToolTip="Install it again to update" FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content="File Sharing"/>
-            </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="8" FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="You can use HFS HTTP File Server to send and receive files Its different from classic file sharing because it uses web technology to be more compatible with todays Internet It also differs from classic web servers because its very easy to use and runs right outofthe box"/>
-        </StackPanel>
-
                     </ListView>
                 </TabItem.Content>
             </TabItem>
@@ -10646,7 +10587,7 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
                 <CheckBox Content="Disable Windows Web Search"     ToolTip="Install it again to update" FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content="Privacy"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="8" FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="Disable web search in Windows by Modify the registry settings related to Windows Search for Windows 10 and 11"/>
+                <TextBlock Width="555" Background="Transparent" Margin="8" FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="Disable web search in Windows by modifying the registry settings related to Windows Search for Windows 10 and 11"/>
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Width="auto" Margin="10">
@@ -10783,14 +10724,6 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
                 <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content=""/>
             </StackPanel>
                 <TextBlock Width="555" Background="Transparent" Margin="8" FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="Disables HomeGroup  HomeGroup is a passwordprotected home networking service that lets you share your stuff with other PCs that are currently running and connected to your network"/>
-        </StackPanel>
-
-        <StackPanel Orientation="Vertical" Width="auto" Margin="10">
-            <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Remove Home and Gallery from explorer"     ToolTip="Install it again to update" FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content=""/>
-            </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="8" FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="Removes the Home and Gallery from explorer and sets This PC as default"/>
         </StackPanel>
 
                     </ListView>
@@ -11054,22 +10987,24 @@ $reader = [System.Xml.XmlNodeReader]::new($xaml)
 try {
     $sync["window"] = [Windows.Markup.XamlReader]::Load($reader)
 
-    # Get theme and locale settings
-    $appsTheme = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize" -Name "AppsUseLightTheme"
-    $fullCulture = Get-ItemPropertyValue -Path "HKCU:\Control Panel\International" -Name "LocaleName"
-    $shortCulture = $fullCulture.Split('-')[0]
-
     # Ensure registry key exists and set defaults if necessary
     if (-not (Test-Path "HKCU:\Software\itt.emadadel")) {
         New-Item -Path "HKCU:\Software\itt.emadadel" -Force | Out-Null
         Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "DarkMode" -Value "none" -Force
         Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "locales" -Value $shortCulture -Force
+        Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "Music" -Value "100" -Force
     }
 
-    # Update locale in registry
-    Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "locales" -Value $shortCulture -Force
+        # Get theme & locale & Music settings
+        $appsTheme = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize" -Name "AppsUseLightTheme"
+        $fullCulture = Get-ItemPropertyValue -Path "HKCU:\Control Panel\International" -Name "LocaleName"
+        $shortCulture = $fullCulture.Split('-')[0]
+        Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "locales" -Value $shortCulture -Force
+        $sync.Music = (Get-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "Music").Music
+        $sync.mediaPlayer.settings.volume = "$($sync.Music)"
 
-    # Set language based on culture
+
+    # Set Language based on culture
     switch ($shortCulture) {
         "ar" { $locale = "ar" }
         "en" { $locale = "en" }
@@ -11083,7 +11018,7 @@ try {
         default { $locale = "en" }
     }
     $sync["window"].DataContext = $sync.database.locales.Controls.$locale
-    $sync.Langusege = $locale
+    $sync.Language = $locale
 
     # Check theme settings
     $sync.isDarkMode = (Get-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "DarkMode").DarkMode
@@ -11131,6 +11066,7 @@ $sync.applyIcon = $sync["window"].FindName("applyIcon")
 
 
 
+
 #===========================================================================
 #endregion End loadXmal
 #===========================================================================
@@ -11139,29 +11075,30 @@ $sync.applyIcon = $sync["window"].FindName("applyIcon")
 #===========================================================================
 function Invoke-ScriptBlock {
     param(
-        [scriptblock]$ScriptBlock,
-        [array]$ArgumentList
+        [scriptblock]$ScriptBlock,  # The script block to invoke
+        [array]$ArgumentList        # Optional arguments for the script block
     )
 
-       
-        $script:powershell = [powershell]::Create()
+    $script:powershell = [powershell]::Create()  # Create a new PowerShell instance
 
-        # Add Scriptblock and Arguments to runspace
-        $script:powershell.AddScript($ScriptBlock)
-        $script:powershell.AddArgument($ArgumentList)
-        $script:powershell.RunspacePool = $sync.runspace
+    # Add the script block and arguments to the runspace
+    $script:powershell.AddScript($ScriptBlock)
+    $script:powershell.AddArgument($ArgumentList)
+    $script:powershell.RunspacePool = $sync.runspace  # Set the runspace pool
 
-        $script:handle = $script:powershell.BeginInvoke()
+    # Begin running the script block asynchronously
+    $script:handle = $script:powershell.BeginInvoke()
 
-        if ($script:handle.IsCompleted)
-        {
-            $script:powershell.EndInvoke($script:handle)
-            $script:powershell.Dispose()
-            $sync.runspace.Dispose()
-            $sync.runspace.Close()
-            [System.GC]::Collect()
-        }
+    # If the script has completed, clean up resources
+    if ($script:handle.IsCompleted) {
+        $script:powershell.EndInvoke($script:handle)  # End the invocation
+        $script:powershell.Dispose()                  # Dispose of the PowerShell instance
+        $sync.runspace.Dispose()                      # Dispose of the runspace
+        $sync.runspace.Close()                        # Close the runspace
+        [System.GC]::Collect()                        # Force garbage collection to free memory
+    }
 }
+
 function RestorePoint {
 
     Invoke-ScriptBlock -ScriptBlock {
@@ -11439,7 +11376,7 @@ function Get-PCInfo {
                     "CPU" = (Get-CimInstance -ClassName Win32_Processor).Name
                     "Cores" = (Get-CimInstance -ClassName Win32_Processor).NumberOfCores
                     "Language" = "$($sync.Language)"
-                    "Start at" = (Get-Date -Format "hh:mm:ss tt MM/dd/yyyy")
+                    "Start at" = (Get-Date -Format "MM/dd/yyyy hh:mm:ss tt")
                     "Runs" = $runs
                     "AppsHistory" = $existingData.AppsHistory
                     "TweaksHistory" = $existingData.TweaksHistory
@@ -11460,7 +11397,7 @@ function Get-PCInfo {
                     "CPU" = (Get-CimInstance -ClassName Win32_Processor).Name
                     "Cores" = (Get-CimInstance -ClassName Win32_Processor).NumberOfCores
                     "Language" = "$($sync.Language)"
-                    "Start at" = (Get-Date -Format "hh:mm:ss tt MM/dd/yyyy")
+                    "Start At" = (Get-Date -Format "MM/dd/yyyy hh:mm:ss tt")
                     "runs" = $runs
                     "AppsHistory" = @{}
                     "TweaksHistory" = @{}
@@ -11553,8 +11490,7 @@ function Get-SelectedTweaks {
 
                                                 Name = $program.Name
                                                 Type = $program.Type
-                                                Modify = $program.Modify
-                                                Delete = $program.Delete
+                                                Registry = $program.Registry
                                                 Service = $program.Service
                                                 RemoveAppxPackage = $program.RemoveAppxPackage
                                                 Command = $program.InvokeCommand
@@ -11846,7 +11782,7 @@ function Invoke-ApplyTweaks {
                                         "CPU" = $existingData.CPU
                                         "Cores" = $existingData.Cores 
                                         "Language" = $existingData.Language 
-                                        "Start at" = (Get-Date -Format "hh:mm:ss tt MM/dd/yyyy")
+                                        "Start at" = (Get-Date -Format "MM/dd/yyyy hh:mm:ss tt")
                                         "Runs" = $existingData.Runs
                                         "AppsHistory" = $existingData.AppsHistory
                                         "TweaksHistory" = $selectedItemContent
@@ -11918,19 +11854,25 @@ function Invoke-ApplyTweaks {
 
                             foreach ($app in $tweaks) {
                                 switch ($app.Type) {
-
                                     "command" {
                                         $app.Command | ForEach-Object { ExecuteCommand -Name $app.Name -Command $_ }
                                     }
-
-                                    "Registry" {
-
-                                        $app.Modify | ForEach-Object {
-                                            Set-RegistryValue -Name $_.Name -Type $_.Type -Path $_.Path -Value $_.Value
+                                    "modifying" {
+                                        $app.Registry | ForEach-Object {
+                                             Set-RegistryValue -Name $_.Name -Type $_.Type -Path $_.Path -Value $_.Value
+                                           
                                         }
 
-                                        $app.Delete | ForEach-Object {
+                                        if($app.Refresh -eq "true")
+                                        {
+                                            Stop-Process -Name explorer -Force
+                                            Add-Log -Message "Restarting explorer" -Level "INFO"
+                                        }
+                                    }
+                                    "delete" {
+                                        $app.Registry | ForEach-Object { 
                                             Remove-RegistryValue -RegistryPath $_.Path -Folder $_.Name
+                                            
                                         }
 
                                         if($app.Refresh -eq "true")
@@ -12222,7 +12164,7 @@ function Invoke-Install {
                                         "CPU" = $existingData.CPU
                                         "Cores" = $existingData.Cores 
                                         "Language" = $existingData.Language 
-                                        "Start at" = (Get-Date -Format "hh:mm:ss tt MM/dd/yyyy")
+                                        "Start at" = (Get-Date -Format "MM/dd/yyyy hh:mm:ss tt")
                                         "Runs" = $existingData.Runs
                                         "AppsHistory" = $selectedItemContent
                                         "TweaksHistory" = $existingData.TweaksHistory
