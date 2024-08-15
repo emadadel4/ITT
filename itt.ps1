@@ -13429,7 +13429,7 @@ $onClosingEvent = {
 $sync["window"].Add_ContentRendered({
     Startup
     DisplayQuotes | Out-Null
-    PlayMusic | Out-Null
+    #PlayMusic | Out-Null
     Check-Date
 })
 
