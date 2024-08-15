@@ -11053,25 +11053,38 @@ $reader = [System.Xml.XmlNodeReader]::new($xaml)
 
 try {
     $sync["window"] = [Windows.Markup.XamlReader]::Load($reader)
+}
+catch {
+    Write-Host "Unable to load Windows.Markup.XamlReader. Check syntax and .NET installation."
+}
 
-    # Ensure registry key exists and set defaults if necessary
-    if (-not (Test-Path "HKCU:\Software\itt.emadadel")) {
-        New-Item -Path "HKCU:\Software\itt.emadadel" -Force | Out-Null
-        Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "DarkMode" -Value "none" -Force
-        Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "locales" -Value $shortCulture -Force
-        Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "Music" -Value "100" -Force
-    }
+try {
 
+    #===========================================================================
+    #region Create default keys
+    #===========================================================================
+        # Ensure registry key exists and set defaults if necessary
+        if (-not (Test-Path "HKCU:\Software\itt.emadadel")) {
+            New-Item -Path "HKCU:\Software\itt.emadadel" -Force | Out-Null
+            Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "DarkMode" -Value "none" -Force
+            Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "locales" -Value $shortCulture -Force
+            Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "Music" -Value "100" -Force
+        }
         # Get theme & locale & Music settings
         $appsTheme = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize" -Name "AppsUseLightTheme"
-        $fullCulture = Get-ItemPropertyValue -Path "HKCU:\Control Panel\International" -Name "LocaleName"
+        $fullCulture = Get-ItemPropertyValue -Path "HKCU:\Control Panel\International" -Name "LocaleName"        
         $shortCulture = $fullCulture.Split('-')[0]
         Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "locales" -Value $shortCulture -Force
-        #$sync.Music = (Get-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "Music").Music
-        $sync.mediaPlayer.settings.volume = "$($sync.Music)"
+    #===========================================================================
+    #endregion Create default keys
+    #===========================================================================
+    
+    #$sync.Music = (Get-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "Music").Music
+    #$sync.mediaPlayer.settings.volume = "$($sync.Music)"
 
-
-    # Set Language based on culture
+    #===========================================================================
+    #region Set Language based on culture
+    #===========================================================================
     switch ($shortCulture) {
         "ar" { $locale = "ar" }
         "en" { $locale = "en" }
@@ -11086,8 +11099,12 @@ try {
     }
     $sync["window"].DataContext = $sync.database.locales.Controls.$locale
     $sync.Language = $locale
-
-    # Check theme settings
+    #===========================================================================
+    #endregion # Set Language based on culture
+    #===========================================================================
+    #===========================================================================
+    #region Check theme settings
+    #===========================================================================
     $sync.isDarkMode = (Get-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "DarkMode").DarkMode
     $themeResource = if ($sync.isDarkMode -eq "true") { "Dark" }
                      elseif ($sync.isDarkMode -eq "false") { "Light" }
@@ -11097,17 +11114,14 @@ try {
                              "1" { "Light" }
                          }
                      }
+
     $sync["window"].Resources.MergedDictionaries.Add($sync["window"].FindResource($themeResource))
-}
-catch [System.Management.Automation.MethodInvocationException] {
-    Write-Warning "Problem with the XAML code. Check syntax."
-    Write-Host $error[0].Exception.Message -ForegroundColor Red
-    if ($error[0].Exception.Message -like "*button*") {
-        Write-Warning "Ensure <button> in `$inputXML does NOT have a Click=ButtonClick property. PS can't handle this."
-    }
+    #===========================================================================
+    #endregion Check theme settings
+    #===========================================================================
 }
 catch {
-    Write-Host "Unable to load Windows.Markup.XamlReader. Check syntax and .NET installation."
+    Write-Host "Error: $_"
 }
 
 # List Views
