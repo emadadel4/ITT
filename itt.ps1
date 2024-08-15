@@ -20,7 +20,7 @@ Add-Type -AssemblyName System.Windows.Forms
 $sync = [Hashtable]::Synchronized(@{
     database       = @{}
     ProcessRunning = $false
-    lastupdate     = "08/15/24"
+    lastupdate     = "08/16/24"
     github         = "https://github.com/emadadel4"
     telegram       = "https://t.me/emadadel4"
     website        = "https://emadadel4.github.io"
@@ -11067,7 +11067,7 @@ try {
         $fullCulture = Get-ItemPropertyValue -Path "HKCU:\Control Panel\International" -Name "LocaleName"
         $shortCulture = $fullCulture.Split('-')[0]
         Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "locales" -Value $shortCulture -Force
-        $sync.Music = (Get-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "Music").Music
+        #$sync.Music = (Get-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "Music").Music
         $sync.mediaPlayer.settings.volume = "$($sync.Music)"
 
 
