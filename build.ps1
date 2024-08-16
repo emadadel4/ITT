@@ -115,7 +115,7 @@ function GenerateCheckboxes {
                 <CheckBox Content="$Content" $Tag $IsChecked $Toggle $Name ToolTip="Install it again to update" FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content="$Cat"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="8" FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="$CleanedItem"/>
+                <TextBlock Width="555" Background="Transparent" Margin="8" Foreground="{DynamicResource DefaultTextColor2}"  FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="$CleanedItem"/>
         </StackPanel>
 
 "@
