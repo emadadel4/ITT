@@ -20,7 +20,7 @@ Add-Type -AssemblyName System.Windows.Forms
 $sync = [Hashtable]::Synchronized(@{
     database       = @{}
     ProcessRunning = $false
-    lastupdate     = "09/01/24"
+    lastupdate     = "08/16/24"
     github         = "https://github.com/emadadel4"
     telegram       = "https://t.me/emadadel4"
     website        = "https://emadadel4.github.io"
@@ -6103,6 +6103,7 @@ $sync.database.locales = '{
         "devby":"Made with ♥ by Emad Adel",
         "exit":"Are you sure you want to close the program? If there are any installations, they will be terminated.",
         "watchdemo": "Watch demo",
+        "happybirthday": "Happy Birthday to me!",
         "myplaylist": "It''s my Birthday and My Playlist ♪"
     },
     "fr": {
