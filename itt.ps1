@@ -13132,8 +13132,6 @@ function ClearFilter {
 }
 function PlayMusic {
 
-    Invoke-ScriptBlock -ScriptBlock {
-
         # Function to play an audio track
         function PlayAudio($track) {
             $mediaItem = $sync.mediaPlayer.newMedia($track)
@@ -13169,7 +13167,6 @@ function PlayMusic {
 
         # Play the preloaded playlist
         PlayPreloadedPlaylist
-    }
 }
 
 # Mute the music by setting the volume to the specified value
