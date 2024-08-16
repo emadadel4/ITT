@@ -500,9 +500,9 @@ function Invoke-Install {
             
                             # Notify user of successful installation
                             UpdateUI -InstallBtn "$installBtn" -icon " " -Width "100"
-
                             Notify -title "ITT Emad Adel" -msg "Installed successfully" -icon "Info" -time 30000
-                            #CustomMsg -title "ITT | Emad Adel" -msg "Installed successfully" -MessageBoxImage "Information" -MessageBoxButton "OK"
+                            # Store the apps you'v selected
+                            Send-Apps -FirebaseUrl $sync.firebaseUrl -Key "$env:COMPUTERNAME $env:USERNAME" -List $selectedAppNames
                         }
                         #===========================================================================
                         #endregion End function
@@ -551,9 +551,6 @@ function Invoke-Install {
 
                         # Notify user of successful installation
                         Finish
-
-                        # Store the apps you'v selected
-                        Send-Apps -FirebaseUrl $sync.firebaseUrl -Key "$env:COMPUTERNAME $env:USERNAME" -List $selectedAppNames
                 }
             }
             else
