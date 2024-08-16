@@ -11830,6 +11830,27 @@ function Invoke-ApplyTweaks {
                                 $sync.applyIcon.Text = $icon
                             })
                         }
+
+                        function Notify {
+                            param(
+                                [string]$title,
+                                [string]$msg,
+                                [string]$icon,
+                                [Int32]$time
+                            )
+            
+                            $notification = New-Object System.Windows.Forms.NotifyIcon
+                            $notification.Icon = [System.Drawing.SystemIcons]::Information
+                            $notification.BalloonTipIcon = $icon
+                            $notification.BalloonTipText = $msg
+                            $notification.BalloonTipTitle = $title
+                            $notification.Visible = $true
+            
+                            $notification.ShowBalloonTip($time)  # Display for specified time
+            
+                            # Clean up resources
+                            $notification.Dispose()
+                        }
         
                         function Send-Tweaks {
                             param (
@@ -11989,7 +12010,7 @@ function Invoke-ApplyTweaks {
                             $sync.ProcessRunning = $False
                             Finish
                             Send-Tweaks -FirebaseUrl $sync.firebaseUrl -Key "$env:COMPUTERNAME $env:USERNAME" -List $selectedAppNames
-                            Notify -title "ITT Emad Adel" -msg "Installed successfully" -icon "Info" -time 30000
+                            Notify -title "ITT Emad Adel" -msg "Applied done" -icon "Info" -time 30000
                     }
                 }
                 else
