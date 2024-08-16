@@ -11068,7 +11068,7 @@ try {
         $shortCulture = $fullCulture.Split('-')[0]
         Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "locales" -Value $shortCulture -Force
         #$sync.Music = (Get-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "Music").Music
-        #sync.mediaPlayer.settings.volume = "$($sync.Music)"
+        #$sync.mediaPlayer.settings.volume = "$($sync.Music)"
 
 
     # Set Language based on culture
