@@ -12957,7 +12957,6 @@ function Invoke-ShowFile-Extensions {
     }
 }
 Function Invoke-StickyKeys {
-
     Param($Enabled)
     Try {
         if ($Enabled -eq $false){
