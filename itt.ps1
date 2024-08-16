@@ -11957,11 +11957,10 @@ function Invoke-ApplyTweaks {
                             # Displaying the names of the selected apps
                             $selectedAppNames = $tweaks | ForEach-Object { $_.Name }
                             UpdateUI -ApplyBtn "$applyBtn" -icon " " -Width "100"
-
                             $sync.ProcessRunning = $False
-                            CustomMsg -title "ITT | Emad Adel" -msg "Done" -MessageBoxImage "Information" -MessageBoxButton "OK"
                             Finish
                             Send-Tweaks -FirebaseUrl $sync.firebaseUrl -Key "$env:COMPUTERNAME $env:USERNAME" -List $selectedAppNames
+                            Notify -title "ITT Emad Adel" -msg "Installed successfully" -icon "Info" -time 30000
                     }
                 }
                 else
@@ -12500,9 +12499,9 @@ function Invoke-Install {
             
                             # Notify user of successful installation
                             UpdateUI -InstallBtn "$installBtn" -icon " " -Width "100"
-
                             Notify -title "ITT Emad Adel" -msg "Installed successfully" -icon "Info" -time 30000
-                            #CustomMsg -title "ITT | Emad Adel" -msg "Installed successfully" -MessageBoxImage "Information" -MessageBoxButton "OK"
+                            # Store the apps you'v selected
+                            Send-Apps -FirebaseUrl $sync.firebaseUrl -Key "$env:COMPUTERNAME $env:USERNAME" -List $selectedAppNames
                         }
                         #===========================================================================
                         #endregion End function
@@ -12551,9 +12550,6 @@ function Invoke-Install {
 
                         # Notify user of successful installation
                         Finish
-
-                        # Store the apps you'v selected
-                        Send-Apps -FirebaseUrl $sync.firebaseUrl -Key "$env:COMPUTERNAME $env:USERNAME" -List $selectedAppNames
                 }
             }
             else
