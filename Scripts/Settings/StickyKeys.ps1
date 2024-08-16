@@ -4,12 +4,16 @@ Function Invoke-StickyKeys {
     Try {
         if ($Enabled -eq $false){
             $value = 510
+            $value2 = 510
         }
         else {
             $value = 58
+            $value2 = 122
         }
         $Path = "HKCU:\Control Panel\Accessibility\StickyKeys"
+        $Path2 = "HKCU:\Control Panel\Accessibility\Keyboard Response"
         Set-ItemProperty -Path $Path -Name Flags -Value $value
+        Set-ItemProperty -Path $Path2 -Name Flags -Value $value2
         Stop-Process -Name explorer -Force
     }
     Catch [System.Security.SecurityException] {
