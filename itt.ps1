@@ -13158,13 +13158,11 @@ function PlayMusic {
             # Preload the shuffled playlist
             $shuffledTracks = GetShuffledTracks
 
-            while ($true) {  # Loop indefinitely to repeat the preloaded playlist
-                foreach ($track in $shuffledTracks) {
-                    PlayAudio -track $track.url
-                    # Wait for the track to finish playing
-                    while ($sync.mediaPlayer.playState -in 3, 6) {
-                        Start-Sleep -Milliseconds 100
-                    }
+            foreach ($track in $shuffledTracks) {
+                PlayAudio -track $track.url
+                # Wait for the track to finish playing
+                while ($sync.mediaPlayer.playState -in 3, 6) {
+                    Start-Sleep -Milliseconds 100
                 }
             }
         }
@@ -13432,7 +13430,7 @@ $onClosingEvent = {
 $sync["window"].Add_ContentRendered({
     Startup
     DisplayQuotes | Out-Null
-    #PlayMusic | Out-Null
+    PlayMusic | Out-Null
     Check-Date
 })
 
