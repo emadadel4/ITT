@@ -11053,51 +11053,6 @@ $reader = [System.Xml.XmlNodeReader]::new($xaml)
 
 try {
     $sync["window"] = [Windows.Markup.XamlReader]::Load($reader)
-
-    # Ensure registry key exists and set defaults if necessary
-    if (-not (Test-Path "HKCU:\Software\itt.emadadel")) {
-        New-Item -Path "HKCU:\Software\itt.emadadel" -Force | Out-Null
-        Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "DarkMode" -Value "none" -Force
-        Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "locales" -Value $shortCulture -Force
-        Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "Music" -Value "100" -Force
-    }
-
-        # Get theme & locale & Music settings
-        $appsTheme = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize" -Name "AppsUseLightTheme"
-        $fullCulture = Get-ItemPropertyValue -Path "HKCU:\Control Panel\International" -Name "LocaleName"
-        $shortCulture = $fullCulture.Split('-')[0]
-        Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "locales" -Value $shortCulture -Force
-        #$sync.Music = (Get-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "Music").Music
-        #$sync.mediaPlayer.settings.volume = "$($sync.Music)"
-
-
-    # Set Language based on culture
-    switch ($shortCulture) {
-        "ar" { $locale = "ar" }
-        "en" { $locale = "en" }
-        "fr" { $locale = "fr" }
-        "tr" { $locale = "tr" }
-        "zh" { $locale = "zh" }
-        "ko" { $locale = "ko" }
-        "de" { $locale = "de" }
-        "ru" { $locale = "ru" }
-        "es" { $locale = "es" }
-        default { $locale = "en" }
-    }
-    $sync["window"].DataContext = $sync.database.locales.Controls.$locale
-    $sync.Language = $locale
-
-    # Check theme settings
-    $sync.isDarkMode = (Get-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "DarkMode").DarkMode
-    $themeResource = if ($sync.isDarkMode -eq "true") { "Dark" }
-                     elseif ($sync.isDarkMode -eq "false") { "Light" }
-                     else {
-                         switch ($appsTheme) {
-                             "0" { "Dark" }
-                             "1" { "Light" }
-                         }
-                     }
-    $sync["window"].Resources.MergedDictionaries.Add($sync["window"].FindResource($themeResource))
 }
 catch [System.Management.Automation.MethodInvocationException] {
     Write-Warning "Problem with the XAML code. Check syntax."
@@ -11108,6 +11063,80 @@ catch [System.Management.Automation.MethodInvocationException] {
 }
 catch {
     Write-Host "Unable to load Windows.Markup.XamlReader. Check syntax and .NET installation."
+}
+
+try {
+    
+    #===========================================================================
+    #region Create default keys 
+    #===========================================================================
+    
+        # Ensure registry key exists and set defaults if necessary
+        if (-not (Test-Path "HKCU:\Software\itt.emadadel")) {
+            New-Item -Path "HKCU:\Software\itt.emadadel" -Force | Out-Null
+            Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "DarkMode" -Value "none" -Force
+            Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "locales" -Value $shortCulture -Force
+            Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "Music" -Value "100" -Force
+        }
+
+            # Get theme & locale & Music settings
+            $appsTheme = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize" -Name "AppsUseLightTheme"
+            $fullCulture = Get-ItemPropertyValue -Path "HKCU:\Control Panel\International" -Name "LocaleName"
+            $shortCulture = $fullCulture.Split('-')[0]
+
+            Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "locales" -Value $shortCulture -Force
+
+    #===========================================================================
+    #endregion Create default keys 
+    #===========================================================================
+
+    #$sync.Music = (Get-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "Music").Music
+    #$sync.mediaPlayer.settings.volume = "$($sync.Music)"
+
+    #===========================================================================
+    #region Set Language based on culture
+    #===========================================================================
+        
+        switch ($shortCulture) {
+            "ar" { $locale = "ar" }
+            "en" { $locale = "en" }
+            "fr" { $locale = "fr" }
+            "tr" { $locale = "tr" }
+            "zh" { $locale = "zh" }
+            "ko" { $locale = "ko" }
+            "de" { $locale = "de" }
+            "ru" { $locale = "ru" }
+            "es" { $locale = "es" }
+            default { $locale = "en" }
+        }
+        $sync["window"].DataContext = $sync.database.locales.Controls.$locale
+        $sync.Language = $locale
+
+    #===========================================================================
+    #endregion Set Language based on culture
+    #===========================================================================
+
+    #===========================================================================
+    #region Check theme settings
+    #===========================================================================
+    
+    $sync.isDarkMode = (Get-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "DarkMode").DarkMode
+    $themeResource = if ($sync.isDarkMode -eq "true") { "Dark" }
+                     elseif ($sync.isDarkMode -eq "false") { "Light" }
+                     else {
+                         switch ($appsTheme) {
+                             "0" { "Dark" }
+                             "1" { "Light" }
+                         }
+                     }
+    $sync["window"].Resources.MergedDictionaries.Add($sync["window"].FindResource($themeResource))
+    #===========================================================================
+    #endregion Check theme settings
+    #===========================================================================
+}
+catch {
+    Write-Host "Error: $_"
+    Write-Host "Error: Some keys not created or the key not found"
 }
 
 # List Views
