@@ -11142,29 +11142,30 @@ $sync.applyIcon = $sync["window"].FindName("applyIcon")
 #===========================================================================
 function Invoke-ScriptBlock {
     param(
-        [scriptblock]$ScriptBlock,
-        [array]$ArgumentList
+        [scriptblock]$ScriptBlock,  # The script block to invoke
+        [array]$ArgumentList        # Optional arguments for the script block
     )
 
-       
-        $script:powershell = [powershell]::Create()
+    $script:powershell = [powershell]::Create()  # Create a new PowerShell instance
 
-        # Add Scriptblock and Arguments to runspace
-        $script:powershell.AddScript($ScriptBlock)
-        $script:powershell.AddArgument($ArgumentList)
-        $script:powershell.RunspacePool = $sync.runspace
+    # Add the script block and arguments to the runspace
+    $script:powershell.AddScript($ScriptBlock)
+    $script:powershell.AddArgument($ArgumentList)
+    $script:powershell.RunspacePool = $sync.runspace  # Set the runspace pool
 
-        $script:handle = $script:powershell.BeginInvoke()
+    # Begin running the script block asynchronously
+    $script:handle = $script:powershell.BeginInvoke()
 
-        if ($script:handle.IsCompleted)
-        {
-            $script:powershell.EndInvoke($script:handle)
-            $script:powershell.Dispose()
-            $sync.runspace.Dispose()
-            $sync.runspace.Close()
-            [System.GC]::Collect()
-        }
+    # If the script has completed, clean up resources
+    if ($script:handle.IsCompleted) {
+        $script:powershell.EndInvoke($script:handle)  # End the invocation
+        $script:powershell.Dispose()                  # Dispose of the PowerShell instance
+        $sync.runspace.Dispose()                      # Dispose of the runspace
+        $sync.runspace.Close()                        # Close the runspace
+        [System.GC]::Collect()                        # Force garbage collection to free memory
+    }
 }
+
 function RestorePoint {
 
     Invoke-ScriptBlock -ScriptBlock {
@@ -13132,41 +13133,41 @@ function ClearFilter {
 }
 function PlayMusic {
 
-        # Function to play an audio track
-        function PlayAudio($track) {
-            $mediaItem = $sync.mediaPlayer.newMedia($track)
-            $sync.mediaPlayer.currentPlaylist.appendItem($mediaItem)
-            $sync.mediaPlayer.controls.play()
+    # Function to play an audio track
+    function PlayAudio($track) {
+        $mediaItem = $sync.mediaPlayer.newMedia($track)
+        $sync.mediaPlayer.currentPlaylist.appendItem($mediaItem)
+        $sync.mediaPlayer.controls.play()
+    }
+
+    # Shuffle the playlist and create a new playlist
+    function GetShuffledTracks {
+
+        # Play Favorite Music in Special Date
+        if ($sync.Date.Month -eq 9 -and $sync.Date.Day -eq 1) {
+            return $sync.database.OST.Favorite | Get-Random -Count $sync.database.OST.Favorite.Count
         }
+        else {
+            return $sync.database.OST.Tracks | Get-Random -Count $sync.database.OST.Tracks.Count
+        }
+    }
 
-        # Shuffle the playlist and create a new playlist
-        function GetShuffledTracks {
+    # Preload and play the shuffled playlist
+    function PlayPreloadedPlaylist {
+        # Preload the shuffled playlist
+        $shuffledTracks = GetShuffledTracks
 
-            # Play Favorite Music in Special Date
-            if ($sync.Date.Month -eq 9 -and $sync.Date.Day -eq 1) {
-                return $sync.database.OST.Favorite | Get-Random -Count $sync.database.OST.Favorite.Count
-            }
-            else {
-                return $sync.database.OST.Tracks | Get-Random -Count $sync.database.OST.Tracks.Count
+        foreach ($track in $shuffledTracks) {
+            PlayAudio -track $track.url
+            # Wait for the track to finish playing
+            while ($sync.mediaPlayer.playState -in 3, 6) {
+                Start-Sleep -Milliseconds 100
             }
         }
+    }
 
-        # Preload and play the shuffled playlist
-        function PlayPreloadedPlaylist {
-            # Preload the shuffled playlist
-            $shuffledTracks = GetShuffledTracks
-
-            foreach ($track in $shuffledTracks) {
-                PlayAudio -track $track.url
-                # Wait for the track to finish playing
-                while ($sync.mediaPlayer.playState -in 3, 6) {
-                    Start-Sleep -Milliseconds 100
-                }
-            }
-        }
-
-        # Play the preloaded playlist
-        PlayPreloadedPlaylist
+    # Play the preloaded playlist
+    PlayPreloadedPlaylist
 }
 
 # Mute the music by setting the volume to the specified value
