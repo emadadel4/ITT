@@ -11718,12 +11718,12 @@ $EventXaml = '<Window
             <StackPanel x:Name="MainStackPanel" Height="Auto" Orientation="Vertical">
                 <TextBlock 
                     Name="title"
-                    FontSize="30"
+                    FontSize="25"
                     Height="Auto"
                     Width="Auto"
                     Foreground="{DynamicResource DefaultTextColor2}"
-                    Margin="0,10,10,0"
-                    FontFamily="Consolas"
+                    Margin="0,15,15,0"
+                    FontWeight="SemiBold"
                     TextWrapping="Wrap"
                     VerticalAlignment="Center"
                     HorizontalAlignment="Center" />
@@ -11737,8 +11737,7 @@ $EventXaml = '<Window
                 Source="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/thumbnail.jpg" 
                 Cursor="Hand" 
                 Margin="10" 
-                Height="Auto" 
-                Width="Auto"/>
+                />
                 <!--End Image-->
 
                 <TextBlock 
@@ -11748,8 +11747,7 @@ $EventXaml = '<Window
                 Height="Auto"
                 Width="Auto"
                 Foreground="{DynamicResource DefaultTextColor2}"
-                Margin="0,0,0,25"
-                FontFamily="Consolas"
+                Margin="0,15,15,0"
                 TextWrapping="Wrap"
                 VerticalAlignment="Center"
                 HorizontalAlignment="Center" />
@@ -11759,12 +11757,12 @@ $EventXaml = '<Window
                 Name="DisablePopup" 
                 Height="Auto"
                 Foreground="{DynamicResource DefaultTextColor2}"
-                Text="Don''t show again" 
+                Text="Don''t show again"
                 Background="Transparent"
                 TextAlignment="Center"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
-                Margin="5" />
+                Margin="0,15,15,0"/>
 
             </StackPanel>
         </Grid>
@@ -14122,6 +14120,8 @@ function Show-Event {
             $titleTextBlock.Text = "$title"
             $tutorialImage.Source = [System.Windows.Media.Imaging.BitmapImage]::new([Uri]::new($image))
             $subtitleTextBlock.Text = "$description"
+            $sync.event.FindName('DisablePopup').Text = "Happy birthday day Emad"
+            $tutorialImage.Height = $ImageHeight
         }
         "NewYear" {
             # Remove the subtitle text block and image
@@ -14163,7 +14163,7 @@ function Check-Date {
 
     if ($sync.Date.Month -eq 9 -and $sync.Date.Day -eq 1) 
     {
-        Show-Event -image "https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/happy.jpg" -title "$happybirthday" -description "$myplaylist" -day "Birthday" -WindowHeight 455 -WindowWidth 555
+        Show-Event -image "https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/happy.jpg" -ImageHeight 200 -title "$happybirthday" -description "$myplaylist" -day "Birthday" -WindowHeight 455 -WindowWidth 555
     } 
     else 
     {
