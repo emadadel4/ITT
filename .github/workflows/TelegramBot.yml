@@ -27,7 +27,7 @@ jobs:
             update.message.reply_text(f'Run this PowerShell command:\n```\n{command}\n```', parse_mode='Markdown')
 
         def main():
-            updater = Updater(os.environ['TELEGRAM_BOT_TOKEN'])
+            updater = Updater(token=os.environ['TELEGRAM_BOT_TOKEN'], use_context=True)
             dispatcher = updater.dispatcher
 
             dispatcher.add_handler(CommandHandler('runps', run_ps))
