@@ -13,29 +13,39 @@ jobs:
       run: |
         sudo apt-get update
         sudo apt-get install -y python3 python3-pip
-        pip3 install requests
+        pip3 install python-telegram-bot
 
     - name: Run Telegram Bot Command
       run: |
         python3 - << 'EOF'
         import os
-        import requests
+        from telegram import Update
+        from telegram.ext import Updater, CommandHandler, CallbackContext
 
-        def send_message(chat_id, text):
-            token = os.environ['TELEGRAM_BOT_TOKEN']
-            url = f"https://api.telegram.org/bot{token}/sendMessage"
-            payload = {
-                "chat_id": chat_id,
-                "text": text,
-                "parse_mode": "Markdown"
-            }
-            requests.post(url, json=payload)
+        def open_itt(update: Update, context: CallbackContext) -> None:
+            command = 'irm bit.ly/ittea | iex'
+            update.message.reply_text(f'Run this PowerShell command:\n```\n{command}\n```', parse_mode='Markdown')
+
+        def error(update: Update, context: CallbackContext):
+            """Log Errors caused by Updates."""
+            logger.warning(f"Update {update} caused error {context.error}")
 
         def main():
-            # You would typically set this chat_id to the user or group you want to send the message to
-            chat_id = "1299033071"
-            command = 'irm bit.ly/ittea | iex'
-            send_message(chat_id, f'Run this PowerShell command:\n```\n{command}\n```')
+            token = os.environ['TELEGRAM_BOT_TOKEN']
+            updater = Updater(token=token, use_context=True)
+
+            dispatcher = updater.dispatcher
+
+            dispatcher.add_handler(CommandHandler('openitt', open_itt))
+
+            # Log all errors
+            dispatcher.add_error_handler(error)
+
+            # Start the Bot
+            updater.start_polling()
+
+            # Run the bot until you send a signal (e.g., Ctrl+C or termination)
+            updater.idle()
 
         if __name__ == '__main__':
             main()
