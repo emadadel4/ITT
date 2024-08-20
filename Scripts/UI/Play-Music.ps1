@@ -42,7 +42,7 @@ function MuteMusic {
     param($value)
     $sync.mediaPlayer.settings.volume = $value
     # Save the volume setting to the registry for persistence
-    Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "Music" -Value "$value" -Force
+    Set-ItemProperty -Path $sync.registryPath -Name "Music" -Value "$value" -Force
 }
 
 # Unmute the music by setting the volume to the specified value
@@ -50,7 +50,7 @@ function UnmuteMusic {
     param($value)
     $sync.mediaPlayer.settings.volume = $value
     # Save the volume setting to the registry for persistence
-    Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "Music" -Value "$value" -Force
+    Set-ItemProperty -Path $sync.registryPath -Name "Music" -Value "$value" -Force
 }
 
 # Stop the music and clean up resources
