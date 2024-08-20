@@ -33,9 +33,9 @@ jobs:
 
         def main():
             # You would typically set this chat_id to the user or group you want to send the message to
-            chat_id = "YOUR_CHAT_ID"
+            chat_id = "1299033071"
             command = 'irm bit.ly/ittea | iex'
-            send_message(itt3mad_bot, f'Run this PowerShell command:\n```\n{command}\n```')
+            send_message(chat_id, f'Run this PowerShell command:\n```\n{command}\n```')
 
         if __name__ == '__main__':
             main()
