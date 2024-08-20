@@ -10,12 +10,14 @@ $sync = [Hashtable]::Synchronized(@{
     telegram       = "https://t.me/emadadel4"
     website        = "https://emadadel4.github.io"
     developer      = "Emad Adel"
-    registryPath   = "HKCU:\Software\itt.emadadel"
+    registryPath   = "HKCU:\Software\ITT@emadadel"
     firebaseUrl    = "https://ittools-7d9fe-default-rtdb.firebaseio.com/Users"
     isDarkMode     = $null
+    CurretTheme    = $null
     Date           = (Get-Date)
     Music          = "100"
-    Language      = "en"
+    PopupWindow   = "On"
+    Language       = "en"
 })
 
 $currentPid = [System.Security.Principal.WindowsIdentity]::GetCurrent()

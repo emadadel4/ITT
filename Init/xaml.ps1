@@ -39,27 +39,22 @@ try {
     #region Create default keys 
     #===========================================================================
     
+        $appsTheme = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize" -Name "AppsUseLightTheme"
+        $fullCulture = Get-ItemPropertyValue -Path "HKCU:\Control Panel\International" -Name "LocaleName"
+        $shortCulture = $fullCulture.Split('-')[0]
+
         # Ensure registry key exists and set defaults if necessary
-        if (-not (Test-Path "HKCU:\Software\itt.emadadel")) {
-            New-Item -Path "HKCU:\Software\itt.emadadel" -Force | Out-Null
-            Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "DarkMode" -Value "none" -Force
-            Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "locales" -Value $shortCulture -Force
-            Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "Music" -Value "100" -Force
+        if (-not (Test-Path $sync.registryPath)) {
+            New-Item -Path $sync.registryPath -Force | Out-Null
+            Set-ItemProperty -Path $sync.registryPath -Name "DarkMode" -Value "none" -Force
+            Set-ItemProperty -Path $sync.registryPath -Name "locales" -Value $shortCulture -Force
+            Set-ItemProperty -Path $sync.registryPath -Name "Music" -Value "100" -Force
+            Set-ItemProperty -Path $sync.registryPath -Name "PopupWindow" -Value "On" -Force
         }
-
-            # Get theme & locale & Music settings
-            $appsTheme = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize" -Name "AppsUseLightTheme"
-            $fullCulture = Get-ItemPropertyValue -Path "HKCU:\Control Panel\International" -Name "LocaleName"
-            $shortCulture = $fullCulture.Split('-')[0]
-
-            Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "locales" -Value $shortCulture -Force
 
     #===========================================================================
     #endregion Create default keys 
     #===========================================================================
-
-    #$sync.Music = (Get-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "Music").Music
-    #$sync.mediaPlayer.settings.volume = "$($sync.Music)"
 
     #===========================================================================
     #region Set Language based on culture
@@ -88,7 +83,8 @@ try {
     #region Check theme settings
     #===========================================================================
     
-    $sync.isDarkMode = (Get-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "DarkMode").DarkMode
+    $sync.isDarkMode = (Get-ItemProperty -Path $sync.registryPath -Name "DarkMode").DarkMode
+
     $themeResource = if ($sync.isDarkMode -eq "true") { "Dark" }
                      elseif ($sync.isDarkMode -eq "false") { "Light" }
                      else {
@@ -98,9 +94,15 @@ try {
                          }
                      }
     $sync["window"].Resources.MergedDictionaries.Add($sync["window"].FindResource($themeResource))
+    $sync.CurretTheme = $themeResource
     #===========================================================================
     #endregion Check theme settings
     #===========================================================================
+
+    # Get user Settings from registry 
+    $sync.Music = (Get-ItemProperty -Path $sync.registryPath -Name "Music").Music
+    $sync.mediaPlayer.settings.volume = "$($sync.Music)"
+    $sync.PopupWindow = (Get-ItemProperty -Path $sync.registryPath -Name "PopupWindow").PopupWindow
 }
 catch {
     Write-Host "Error: $_"
