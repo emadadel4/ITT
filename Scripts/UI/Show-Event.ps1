@@ -74,7 +74,7 @@ function Check-Date {
 
     if ($sync.Date.Month -eq 9 -and $sync.Date.Day -eq 1) 
     {
-        Show-Event -image "https://raw.githubusercontent.com/emadadel4/ITT/update/Resources/Images/happy.jpg" -title "$happybirthday" -description "$myplaylist" -day "Birthday" -WindowHeight 455 -WindowWidth 555
+        Show-Event -image "https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/happy.jpg" -title "$happybirthday" -description "$myplaylist" -day "Birthday" -WindowHeight 455 -WindowWidth 555
     } 
     else 
     {
