@@ -39,14 +39,14 @@ function Switch-ToLightMode {
 function Update-Theme ($theme, $mode) {
     $sync['window'].Resources.MergedDictionaries.Clear()
     $sync['window'].Resources.MergedDictionaries.Add($theme)
-    Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "DarkMode" -Value $mode -Force
+    Set-ItemProperty -Path $sync.registryPath -Name "DarkMode" -Value $mode -Force
 
 }
 function SwitchToSystem {
 
     try {
 
-        Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "DarkMode" -Value "none" -Force
+        Set-ItemProperty -Path $sync.registryPath  -Name "DarkMode" -Value "none" -Force
 
         $AppsTheme = (Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize" -Name "AppsUseLightTheme")
 
