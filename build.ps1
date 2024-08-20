@@ -272,26 +272,48 @@ WriteToScript -Content @"
 
     # Define file paths
     $FilePaths = @{
-        
         "about" = Join-Path -Path $windows -ChildPath "AboutWindow.xaml"
-        "event" = Join-Path -Path $windows -ChildPath "EventWindow.xaml"
-
     }
 
     # Read and replace placeholders in XAML content
     try {
         $childXaml = (Get-Content -Path $FilePaths["about"] -Raw) -replace "'", "''"
-        $EventXaml = (Get-Content -Path $FilePaths["event"] -Raw) -replace "'", "''"
     } catch {
         Write-Error "Error: $($_.Exception.Message)"
     }
    
     WriteToScript -Content "`$childXaml = '$childXaml'"
-    WriteToScript -Content "`$EventXaml = '$EventXaml'"
 
     WriteToScript -Content @"
 #===========================================================================
 #endregion End WPF About Window
+#===========================================================================
+"@
+
+WriteToScript -Content @"
+#===========================================================================
+#region Begin WPF Event Window
+#===========================================================================
+
+"@
+
+    # Define file paths
+    $FilePaths = @{
+        "event" = Join-Path -Path $windows -ChildPath "EventWindow.xaml"
+    }
+
+    # Read and replace placeholders in XAML content
+    try {
+        $EventXaml = (Get-Content -Path $FilePaths["event"] -Raw) -replace "'", "''"
+    } catch {
+        Write-Error "Error: $($_.Exception.Message)"
+    }
+   
+    WriteToScript -Content "`$EventXaml = '$EventXaml'"
+
+    WriteToScript -Content @"
+#===========================================================================
+#endregion End WPF Event Window
 #===========================================================================
 "@
 

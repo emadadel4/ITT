@@ -3,7 +3,7 @@ Function Invoke-DarkMode {
     Param($DarkMoveEnabled)
     Try{
 
-        $DarkMode = (Get-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "DarkMode").DarkMode
+        $DarkMode = (Get-ItemProperty -Path $sync.registryPath -Name "DarkMode").DarkMode
 
 
         if ($DarkMoveEnabled -eq $false){

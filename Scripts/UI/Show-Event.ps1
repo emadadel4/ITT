@@ -13,9 +13,8 @@ function Show-Event {
     [xml]$event = $EventXaml
 
     $EventWindowReader = (New-Object System.Xml.XmlNodeReader $event)
-
     $sync.event = [Windows.Markup.XamlReader]::Load($EventWindowReader)
-
+    $sync["event"].Resources.MergedDictionaries.Add($sync["window"].FindResource($sync.CurretTheme))
     $sync.event.title = "ITT | $title"
     $sync.event.Height = "$WindowHeight"
     $sync.event.Width = "$WindowWidth"
@@ -56,6 +55,12 @@ function Show-Event {
         }
     }
 
+
+    $sync.event.FindName("DisablePopup").add_MouseLeftButtonDown({
+        DisablePopup
+        $sync.event.Close()
+    })
+
     # Show dialog
     $sync.event.ShowDialog() | Out-Null
 }
@@ -73,6 +78,15 @@ function Check-Date {
     } 
     else 
     {
+        if($sync.PopupWindow -eq "off")
+        {
+            return
+        }   
+
         Show-Event -image "https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/thumbnail.jpg" -title "$watchdemo" -day "Default" -WindowHeight 455 -WindowWidth 555
     }
+}
+
+function DisablePopup {
+    Set-ItemProperty -Path $sync.registryPath  -Name "PopupWindow" -Value "off" -Force
 }

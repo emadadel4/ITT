@@ -20,17 +20,19 @@ Add-Type -AssemblyName System.Windows.Forms
 $sync = [Hashtable]::Synchronized(@{
     database       = @{}
     ProcessRunning = $false
-    lastupdate     = "08/16/24"
+    lastupdate     = "08/20/24"
     github         = "https://github.com/emadadel4"
     telegram       = "https://t.me/emadadel4"
     website        = "https://emadadel4.github.io"
     developer      = "Emad Adel"
-    registryPath   = "HKCU:\Software\itt.emadadel"
+    registryPath   = "HKCU:\Software\ITT@emadadel"
     firebaseUrl    = "https://ittools-7d9fe-default-rtdb.firebaseio.com/Users"
     isDarkMode     = $null
+    CurretTheme    = $null
     Date           = (Get-Date)
     Music          = "100"
-    Language      = "en"
+    PopupWindow   = "On"
+    Language       = "en"
 })
 
 $currentPid = [System.Security.Principal.WindowsIdentity]::GetCurrent()
@@ -11691,11 +11693,18 @@ $childXaml = '<Window
     </Grid>
   </Window>
 '
+#===========================================================================
+#endregion End WPF About Window
+#===========================================================================
+#===========================================================================
+#region Begin WPF Event Window
+#===========================================================================
+
 $EventXaml = '<Window
   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
   x:Name="Window" Title="Event | ITT " WindowStartupLocation = "CenterScreen" 
-  Background="White"
+  Background="{DynamicResource BGColor}"
   WindowStyle="ToolWindow"
   Height="400" Width="600" ShowInTaskbar = "True" Topmost="True" Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/icon.ico">
 
@@ -11712,6 +11721,7 @@ $EventXaml = '<Window
                     FontSize="30"
                     Height="Auto"
                     Width="Auto"
+                    Foreground="{DynamicResource DefaultTextColor2}"
                     Margin="0,10,10,0"
                     FontFamily="Consolas"
                     TextWrapping="Wrap"
@@ -11737,11 +11747,24 @@ $EventXaml = '<Window
                 FontSize="20"
                 Height="Auto"
                 Width="Auto"
+                Foreground="{DynamicResource DefaultTextColor2}"
                 Margin="0,0,0,25"
                 FontFamily="Consolas"
                 TextWrapping="Wrap"
                 VerticalAlignment="Center"
                 HorizontalAlignment="Center" />
+
+
+                <TextBlock Width="150"
+                Name="DisablePopup" 
+                Height="Auto"
+                Foreground="{DynamicResource DefaultTextColor2}"
+                Text="Don''t show again" 
+                Background="Transparent"
+                TextAlignment="Center"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Margin="5" />
 
             </StackPanel>
         </Grid>
@@ -11751,7 +11774,7 @@ $EventXaml = '<Window
 
 '
 #===========================================================================
-#endregion End WPF About Window
+#endregion End WPF Event Window
 #===========================================================================
 #===========================================================================
 #region Begin loadXmal
@@ -11797,27 +11820,22 @@ try {
     #region Create default keys 
     #===========================================================================
     
+        $appsTheme = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize" -Name "AppsUseLightTheme"
+        $fullCulture = Get-ItemPropertyValue -Path "HKCU:\Control Panel\International" -Name "LocaleName"
+        $shortCulture = $fullCulture.Split('-')[0]
+
         # Ensure registry key exists and set defaults if necessary
-        if (-not (Test-Path "HKCU:\Software\itt.emadadel")) {
-            New-Item -Path "HKCU:\Software\itt.emadadel" -Force | Out-Null
-            Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "DarkMode" -Value "none" -Force
-            Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "locales" -Value $shortCulture -Force
-            Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "Music" -Value "100" -Force
+        if (-not (Test-Path $sync.registryPath)) {
+            New-Item -Path $sync.registryPath -Force | Out-Null
+            Set-ItemProperty -Path $sync.registryPath -Name "DarkMode" -Value "none" -Force
+            Set-ItemProperty -Path $sync.registryPath -Name "locales" -Value $shortCulture -Force
+            Set-ItemProperty -Path $sync.registryPath -Name "Music" -Value "100" -Force
+            Set-ItemProperty -Path $sync.registryPath -Name "PopupWindow" -Value "On" -Force
         }
-
-            # Get theme & locale & Music settings
-            $appsTheme = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize" -Name "AppsUseLightTheme"
-            $fullCulture = Get-ItemPropertyValue -Path "HKCU:\Control Panel\International" -Name "LocaleName"
-            $shortCulture = $fullCulture.Split('-')[0]
-
-            Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "locales" -Value $shortCulture -Force
 
     #===========================================================================
     #endregion Create default keys 
     #===========================================================================
-
-    #$sync.Music = (Get-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "Music").Music
-    #$sync.mediaPlayer.settings.volume = "$($sync.Music)"
 
     #===========================================================================
     #region Set Language based on culture
@@ -11846,7 +11864,8 @@ try {
     #region Check theme settings
     #===========================================================================
     
-    $sync.isDarkMode = (Get-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "DarkMode").DarkMode
+    $sync.isDarkMode = (Get-ItemProperty -Path $sync.registryPath -Name "DarkMode").DarkMode
+
     $themeResource = if ($sync.isDarkMode -eq "true") { "Dark" }
                      elseif ($sync.isDarkMode -eq "false") { "Light" }
                      else {
@@ -11856,9 +11875,15 @@ try {
                          }
                      }
     $sync["window"].Resources.MergedDictionaries.Add($sync["window"].FindResource($themeResource))
+    $sync.CurretTheme = $themeResource
     #===========================================================================
     #endregion Check theme settings
     #===========================================================================
+
+    # Get user Settings from registry 
+    $sync.Music = (Get-ItemProperty -Path $sync.registryPath -Name "Music").Music
+    $sync.mediaPlayer.settings.volume = "$($sync.Music)"
+    $sync.PopupWindow = (Get-ItemProperty -Path $sync.registryPath -Name "PopupWindow").PopupWindow
 }
 catch {
     Write-Host "Error: $_"
@@ -13578,7 +13603,7 @@ Function Invoke-DarkMode {
     Param($DarkMoveEnabled)
     Try{
 
-        $DarkMode = (Get-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "DarkMode").DarkMode
+        $DarkMode = (Get-ItemProperty -Path $sync.registryPath -Name "DarkMode").DarkMode
 
 
         if ($DarkMoveEnabled -eq $false){
@@ -13712,6 +13737,7 @@ function About {
     [xml]$about = $childXaml
     $childWindowReader = (New-Object System.Xml.XmlNodeReader $about)
     $sync.about = [Windows.Markup.XamlReader]::Load($childWindowReader)
+    $sync["about"].Resources.MergedDictionaries.Add($sync["window"].FindResource($sync.CurretTheme))
     # Set version and link handlers
     $sync.about.FindName('ver').Text = $sync.lastupdate
     $sync.about.FindName("telegram").add_MouseLeftButtonDown({Start-Process("https://t.me/emadadel4")})
@@ -13951,7 +13977,7 @@ function MuteMusic {
     param($value)
     $sync.mediaPlayer.settings.volume = $value
     # Save the volume setting to the registry for persistence
-    Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "Music" -Value "$value" -Force
+    Set-ItemProperty -Path $sync.registryPath -Name "Music" -Value "$value" -Force
 }
 
 # Unmute the music by setting the volume to the specified value
@@ -13959,7 +13985,7 @@ function UnmuteMusic {
     param($value)
     $sync.mediaPlayer.settings.volume = $value
     # Save the volume setting to the registry for persistence
-    Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "Music" -Value "$value" -Force
+    Set-ItemProperty -Path $sync.registryPath -Name "Music" -Value "$value" -Force
 }
 
 # Stop the music and clean up resources
@@ -13991,7 +14017,7 @@ function Set-Language {
     $sync["window"].DataContext = $sync.database.locales.Controls.$($lang)
 
     # Set registry value for the language
-    Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "locales" -Value "$lang" -Force
+    Set-ItemProperty -Path $sync.registryPath  -Name "locales" -Value "$lang" -Force
 }
 function ToggleTheme {
     
@@ -14034,14 +14060,14 @@ function Switch-ToLightMode {
 function Update-Theme ($theme, $mode) {
     $sync['window'].Resources.MergedDictionaries.Clear()
     $sync['window'].Resources.MergedDictionaries.Add($theme)
-    Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "DarkMode" -Value $mode -Force
+    Set-ItemProperty -Path $sync.registryPath -Name "DarkMode" -Value $mode -Force
 
 }
 function SwitchToSystem {
 
     try {
 
-        Set-ItemProperty -Path "HKCU:\Software\itt.emadadel" -Name "DarkMode" -Value "none" -Force
+        Set-ItemProperty -Path $sync.registryPath  -Name "DarkMode" -Value "none" -Force
 
         $AppsTheme = (Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize" -Name "AppsUseLightTheme")
 
@@ -14076,9 +14102,8 @@ function Show-Event {
     [xml]$event = $EventXaml
 
     $EventWindowReader = (New-Object System.Xml.XmlNodeReader $event)
-
     $sync.event = [Windows.Markup.XamlReader]::Load($EventWindowReader)
-
+    $sync["event"].Resources.MergedDictionaries.Add($sync["window"].FindResource($sync.CurretTheme))
     $sync.event.title = "ITT | $title"
     $sync.event.Height = "$WindowHeight"
     $sync.event.Width = "$WindowWidth"
@@ -14119,6 +14144,12 @@ function Show-Event {
         }
     }
 
+
+    $sync.event.FindName("DisablePopup").add_MouseLeftButtonDown({
+        DisablePopup
+        $sync.event.Close()
+    })
+
     # Show dialog
     $sync.event.ShowDialog() | Out-Null
 }
@@ -14136,8 +14167,17 @@ function Check-Date {
     } 
     else 
     {
+        if($sync.PopupWindow -eq "off")
+        {
+            return
+        }   
+
         Show-Event -image "https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/thumbnail.jpg" -title "$watchdemo" -day "Default" -WindowHeight 455 -WindowWidth 555
     }
+}
+
+function DisablePopup {
+    Set-ItemProperty -Path $sync.registryPath  -Name "PopupWindow" -Value "off" -Force
 }
 #===========================================================================
 #region Select elements with a Name attribute using XPath and iterate over them

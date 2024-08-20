@@ -3,6 +3,7 @@ function About {
     [xml]$about = $childXaml
     $childWindowReader = (New-Object System.Xml.XmlNodeReader $about)
     $sync.about = [Windows.Markup.XamlReader]::Load($childWindowReader)
+    $sync["about"].Resources.MergedDictionaries.Add($sync["window"].FindResource($sync.CurretTheme))
     # Set version and link handlers
     $sync.about.FindName('ver').Text = $sync.lastupdate
     $sync.about.FindName("telegram").add_MouseLeftButtonDown({Start-Process("https://t.me/emadadel4")})
