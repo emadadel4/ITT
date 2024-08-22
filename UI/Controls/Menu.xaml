@@ -3,16 +3,10 @@
                                   
     <MenuItem IsEnabled="False" ToolTip="Emad Adel">
         <MenuItem.Icon>
-            <!--Logo-->
-            <Ellipse Name="logo" Margin="5,5,0,0" Width="80" Height="80">
-                <Ellipse.Fill>
-                    <ImageBrush ImageSource="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/logo.png" />
-                </Ellipse.Fill>
-            </Ellipse>
-            <!--End Logo-->
+            <Image Source="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/logo2.png" Width="80" Height="80" Margin="5,5,0,0"/>
         </MenuItem.Icon>
-
     </MenuItem>
+    
 
     <MenuItem Header="{Binding management}" FontFamily="arial" FontSize="13"  Margin="10,0,0,0" BorderBrush="Transparent" BorderThickness="0" VerticalAlignment="Center" HorizontalAlignment="Left">
         <MenuItem.Icon>
