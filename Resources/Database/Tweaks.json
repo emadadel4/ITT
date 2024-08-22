@@ -1183,5 +1183,25 @@
     "UndoCommand": [
       ""
     ]
+  },
+  {
+    "Name": "Disable Activity History",
+    "Description": "This erases recent docs clipboard and run history",
+    "Check": "false",
+    "Type": "Registry",
+    "refresh": "false",
+    "Modify": {
+      "Path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\System",
+      "Name": "EnableActivityFeed",
+      "Type": "DWord",
+      "Value": "0",
+      "defaultValue": "1"
+    },
+    "InvokeCommand": [
+      ""
+    ],
+    "UndoCommand": [
+      ""
+    ]
   }
 ]
