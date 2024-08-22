@@ -2293,7 +2293,7 @@
     "check": "false"
   },
   {
-    "name": "Visual Studio Code",
+    "name": "VSCode",
     "description": "Visual Studio Code is a free source-code editor developed by Microsoft for Windows, Linux, and macOS. It includes support for debugging, embedded Git control, syntax highlighting, intelligent code completion, snippets, and code refactoring.",
     "winget": "Microsoft.VisualStudioCode",
     "choco": "vscode",
@@ -5939,6 +5939,234 @@
       }
     ],
     "category": "Utilities",
+    "check": "false"
+  },
+  {
+    "name": "Fork",
+    "description": "Fork  a fast and friendly git client",
+    "winget": "Fork.Fork",
+    "choco": "git-fork",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none",
+        "shortcut": "no",
+        "run": "no"
+      }
+    ],
+    "category": "Development",
+    "check": "false"
+  },
+  {
+    "name": "PulsarEdit",
+    "description": "A Communityled HyperHackable Text Editor",
+    "winget": "Pulsar-Edit.Pulsar",
+    "choco": "pulsar",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none",
+        "shortcut": "no",
+        "run": "no"
+      }
+    ],
+    "category": "Development",
+    "check": "false"
+  },
+  {
+    "name": "Shotcut",
+    "description": "Shotcut is a free open source crossplatform video editor",
+    "winget": "Meltytech.Shotcut",
+    "choco": "Shotcut",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none",
+        "shortcut": "no",
+        "run": "no"
+      }
+    ],
+    "category": "Media Tools",
+    "check": "false"
+  },
+  {
+    "name": "PaleMoon",
+    "description": "Pale Moon is an Open Source Goannabased web browser available for Microsoft Windows and Linux with other operating systems in development focusing on efficiency and ease of use",
+    "winget": "MoonchildProductions.PaleMoon",
+    "choco": "paleMoon",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none",
+        "shortcut": "no",
+        "run": "no"
+      }
+    ],
+    "category": "Web Browsers",
+    "check": "false"
+  },
+  {
+    "name": "JoyToKey",
+    "description": "enables PC game controllers to emulate the keyboard and mouse input",
+    "winget": "JTKsoftware.JoyToKey",
+    "choco": "joytokey",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none",
+        "shortcut": "no",
+        "run": "no"
+      }
+    ],
+    "category": "Gaming",
+    "check": "false"
+  },
+  {
+    "name": "Windows Auto Dark Mode",
+    "description": "Automatically switches between the dark and light theme of Windows 10 and Windows 11",
+    "winget": "Armin2208.WindowsAutoNightMode",
+    "choco": "auto-dark-mode",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none",
+        "shortcut": "no",
+        "run": "no"
+      }
+    ],
+    "category": "Utilities",
+    "check": "false"
+  },
+  {
+    "name": "Windows Firewall Control",
+    "description": "Windows Firewall Control is a powerful tool which extends the functionality of Windows Firewall and provides new extra features which makes Windows Firewall better",
+    "winget": "BiniSoft.WindowsFirewallControl",
+    "choco": "windowsfirewallcontrol",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none",
+        "shortcut": "no",
+        "run": "no"
+      }
+    ],
+    "category": "Utilities",
+    "check": "false"
+  },
+  {
+    "name": "TightVNC",
+    "description": "TightVNC is a free and Open Source remote desktop software that lets you access and control a computer over the network With its intuitive interface you can interact with the remote screen as if you were sitting in front of it You can open files launch applications and perform other actions on the remote desktop almost as if you were physically there",
+    "winget": "GlavSoft.TightVNC",
+    "choco": "TightVNC",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none",
+        "shortcut": "no",
+        "run": "no"
+      }
+    ],
+    "category": "Utilities",
+    "check": "false"
+  },
+  {
+    "name": "Python Version Manager",
+    "description": "pyenv for Windows is a simple python version management tool It lets you easily switch between multiple versions of Python",
+    "winget": "none",
+    "choco": "pyenv-win",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none",
+        "shortcut": "no",
+        "run": "no"
+      }
+    ],
+    "category": "Development",
+    "check": "false"
+  },
+  {
+    "name": "Pixi",
+    "description": "Pixi is a fast software package manager built on top of the existing conda ecosystem Spins up development environments quickly on Windows macOS and Linux Pixi supports Python R CC Rust Ruby and many other languages",
+    "winget": "prefix-dev.pixi",
+    "choco": "pixi",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none",
+        "shortcut": "no",
+        "run": "no"
+      }
+    ],
+    "category": "Development",
+    "check": "false"
+  },
+  {
+    "name": "VSCodium",
+    "description": "VSCodium is a communitydriven freelylicensed binary distribution of Microsofts VS Code",
+    "winget": "VSCodium.VSCodium",
+    "choco": "vscodium",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none",
+        "shortcut": "no",
+        "run": "no"
+      }
+    ],
+    "category": "Development",
+    "check": "false"
+  },
+  {
+    "name": "Thonny Python IDE",
+    "description": "Python IDE for beginners",
+    "winget": "AivarAnnamaa.Thonny",
+    "choco": "thonny",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none",
+        "shortcut": "no",
+        "run": "no"
+      }
+    ],
+    "category": "Development",
     "check": "false"
   }
 ]
