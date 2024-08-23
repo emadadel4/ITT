@@ -12285,7 +12285,7 @@ $childXaml = '<Window
   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
   x:Name="Window" Title="About | ITT " WindowStartupLocation = "CenterScreen" 
-  Background="White"
+  Background="{DynamicResource BGColor}"
   WindowStyle="ToolWindow"
   Height="488" Width="350" MinHeight="488" MinWidth="350" MaxHeight="488" MaxWidth="350" FontFamily="Console" ShowInTaskbar = "True" Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/icon.ico">
     <Grid>
@@ -12301,32 +12301,41 @@ $childXaml = '<Window
               <Image Source="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/logo.png" Margin="10" Height="80" Width="Auto"/>
         <!--End Logo-->
         
-        <TextBlock Text="Install Tweak Tool" FontWeight="SemiBold" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-        <TextBlock Text="{Binding devby}" Margin="0,5,0,0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <TextBlock Text="Install Tweak Tool" 
+        FontWeight="SemiBold" FontSize="20" 
+        VerticalAlignment="Center" 
+        Foreground="{DynamicResource DefaultTextColor}"
+        HorizontalAlignment="Center"/>
+
+        <TextBlock Text="{Binding devby}" 
+        Margin="0,5,0,0" 
+        Foreground="{DynamicResource DefaultTextColor2}"
+        VerticalAlignment="Center" 
+        HorizontalAlignment="Center"/>
 
         <DockPanel Margin="10">
-          <TextBlock>Telegram</TextBlock>
-          <TextBlock Name="telegram" Cursor="Hand" Text="emadadel4" TextAlignment="Right"/>
+          <TextBlock Text="Telegram" Foreground="{DynamicResource DefaultTextColor2}"/>
+          <TextBlock Name="telegram" Cursor="Hand" Text="emadadel4" Foreground="{DynamicResource DefaultTextColor2}" TextAlignment="Right"/>
         </DockPanel>
         <Separator/>
         <DockPanel Margin="10">
-          <TextBlock>Github</TextBlock>
-          <TextBlock Name="github" Cursor="Hand" Text="emadadel4" TextAlignment="Right"/>
+          <TextBlock Text="Github" Foreground="{DynamicResource DefaultTextColor2}" />
+          <TextBlock Name="github" Cursor="Hand" Text="emadadel4" Foreground="{DynamicResource DefaultTextColor2}" TextAlignment="Right"/>
         </DockPanel>
         <Separator/>
         <DockPanel Margin="10">
-          <TextBlock Text="Youtube"/>
-          <TextBlock Name="yt" Cursor="Hand" TextAlignment="Right">emadadel4</TextBlock>
+          <TextBlock Text="Youtube" Foreground="{DynamicResource DefaultTextColor2}" />
+          <TextBlock Name="yt" Cursor="Hand" Foreground="{DynamicResource DefaultTextColor2}" TextAlignment="Right">emadadel4</TextBlock>
         </DockPanel>
         <Separator/>
         <DockPanel Margin="10">
-          <TextBlock>Website</TextBlock>
-          <TextBlock Name="website" Cursor="Hand" Text="emadadel4.github.io" TextAlignment="Right"/>
+          <TextBlock Text="Website" Foreground="{DynamicResource DefaultTextColor2}"/>
+          <TextBlock Name="website" Cursor="Hand" Foreground="{DynamicResource DefaultTextColor2}" Text="emadadel4.github.io" TextAlignment="Right"/>
         </DockPanel>
         <Separator/>
         <DockPanel Margin="10">
-          <TextBlock Name="lastupdate" Text="{Binding lastupdate}"/>
-          <TextBlock Name="ver" TextAlignment="Right">5/20/2024</TextBlock>
+          <TextBlock Name="lastupdate" Foreground="{DynamicResource DefaultTextColor2}" Text="{Binding lastupdate}"/>
+          <TextBlock Name="ver" Foreground="{DynamicResource DefaultTextColor2}" TextAlignment="Right">5/20/2024</TextBlock>
         </DockPanel>
         <Separator/>
   
