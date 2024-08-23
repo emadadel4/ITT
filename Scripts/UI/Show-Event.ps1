@@ -45,8 +45,21 @@ function Show-Event {
         }
         Default {
             # Default case: update text blocks
-            $titleTextBlock.Text = "$title"
-            $mainStackPanel.Children.Remove($subtitleTextBlock)
+
+            if($sync.Language -ne "ar")
+            {
+                $subtitleTextBlock.TextAlignment = "Left"
+                $titleTextBlock.Text = "$title '$env:USERNAME'" 
+                $subtitleTextBlock.Text = "$description"
+
+            }else
+            {
+                $subtitleTextBlock.TextAlignment = "right"
+                $titleTextBlock.Text = "$title '$env:USERNAME'" 
+                $subtitleTextBlock.Text = "$description"
+            }
+
+            #$mainStackPanel.Children.Remove($subtitleTextBlock)
 
             # Lazy loading image event handler
             $tutorialImage.add_IsVisibleChanged({
@@ -73,6 +86,8 @@ function Check-Date {
     $watchdemo = $sync.database.locales.Controls.$($sync.Language).watchdemo
     $happybirthday = $sync.database.locales.Controls.$($sync.Language).happybirthday
     $myplaylist = $sync.database.locales.Controls.$($sync.Language).myplaylist
+    $subs = $sync.database.locales.Controls.$($sync.Language).Subtitle
+
 
     if ($sync.Date.Month -eq 9 -and $sync.Date.Day -eq 1) 
     {
@@ -85,7 +100,7 @@ function Check-Date {
             return
         }   
 
-        Show-Event -image "https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/thumbnail.jpg" -title "$watchdemo" -day "Default" -WindowHeight 455 -WindowWidth 555
+        Show-Event -image "https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/thumbnail.jpg" -title "$watchdemo" -description "$subs" -day "Default" -WindowHeight 455 -WindowWidth 555
     }
 }
 
