@@ -6278,9 +6278,10 @@ $sync.database.locales = '{
         "sourcecode":"الشفرة المصدرية",
         "devby":"صنع بـ ♥ من قبل عماد عادل",
         "exit":"هل أنت متأكد من رغبتك في إغلاق البرنامج؟ إذا كان هناك أي تثبيتات، فسيتم إيقافها.",
-        "watchdemo": "شاهد التجربة",
+        "watchdemo": "مرحبا بك",
         "happybirthday": "!عيد ميلاد سعيد عماد",
-        "myplaylist": "انه عيد ميلادي و قائمة الموسيقى الخاصة بي"
+        "myplaylist": "انه عيد ميلادي و قائمة الموسيقى الخاصة بي",
+        "Subtitle": "أداة اي تي تي مفتوحة المصدر يهدف هذا المشروع إلى تسهيل عملية تصطيب برامج الويندوز دفعة واحدة وتحسين أداء النظام. سواء كنت خبيرًا في البرمجة أو مستخدمًا يبحث عن تحسين تجربته على الويندوز، نرحب بمساهماتك, نتطلع لرؤية مساهماتكم وأفكاركم لجعل هذا المشروع أفضل لكل مستخدمي ويندوز. شكرًا لانضمامك إلينا"
     },
     "en": {
         "Welcome": "Save time by installing multiple programs at once and boost your Windows performance. Join us in improving the tool and make it great.",
@@ -6332,9 +6333,10 @@ $sync.database.locales = '{
         "sourcecode":"Source Code",
         "devby":"Made with ♥ by Emad Adel",
         "exit":"Are you sure you want to close the program? If there are any installations, they will be terminated.",
-        "watchdemo": "Watch demo",
+        "watchdemo": "Welcome",
         "happybirthday": "Happy Birthday to me!",
-        "myplaylist": "It''s my Birthday and My Playlist ♪"
+        "myplaylist": "It''s my Birthday and My Playlist ♪",
+        "Subtitle": "ITT tool aims to simplify the process of installing Windows programs all at once and improving system performance. Whether you are an expert in programming or a user looking to enhance your Windows experience, we welcome your contributions. We look forward to seeing your contributions and ideas to make this project better for all Windows users. Thank you for joining us."
     },
     "fr": {
         "Welcome": "Économisez du temps en installant plusieurs programmes à la fois et améliorez les performances de votre Windows. Rejoignez-nous pour améliorer l''outil et le rendre excellent.",
@@ -6385,9 +6387,10 @@ $sync.database.locales = '{
         "sourcecode": "Code Source",
         "devby": "Créé avec ♥ par Emad Adel",
         "exit": "Êtes-vous sûr de vouloir fermer le programme ? Toute installation en cours sera interrompue.",
-        "watchdemo": "Regardez la Démo",
+        "watchdemo": "Bienvenue",
         "happybirthday": "Joyeux Anniversaire Emad !",
-        "myplaylist": "Doğum Günüm ve Playlistim ♪"
+        "myplaylist": "Doğum Günüm ve Playlistim ♪",
+        "Subtitle": "ITT vise à simplifier le processus d''installation des programmes Windows en une seule fois et à améliorer les performances du système. Que vous soyez un expert en programmation ou un utilisateur cherchant à améliorer votre expérience Windows, nous accueillons vos contributions. Nous attendons avec impatience vos contributions et idées pour améliorer ce projet pour tous les utilisateurs de Windows. Merci de nous avoir rejoints."
     },
     "tr": {
         "Welcome": "Birden fazla programı tek seferde kurarak zaman kazanın ve Windows performansınızı artırın. Aracı iyileştirmemize katılın ve harika yapalım.",
@@ -6438,9 +6441,10 @@ $sync.database.locales = '{
         "sourcecode": "Kaynak Kod",
         "devby": "Emad Adel tarafından ♥ ile yapıldı",
         "exit": "Programı kapatmak istediğinizden emin misiniz? Eğer herhangi bir yükleme işlemi varsa, kesilecektir.",
-        "watchdemo": "Demo''yu İzleyin",
+        "watchdemo": "Hoş Geldiniz",
         "happybirthday": "Günün Kutlu Olsun Emad!",
-        "myplaylist": "这是我的生日和我的播放列表 ♪"
+        "myplaylist": "Bugün Benim Doğum Günüm ve Benim Çalma Listem ♪",
+        "Subtitle": "ITT aracı, Windows programlarını tek seferde yükleme sürecini basitleştirmeyi ve sistem performansını artırmayı hedefliyor. İster programlama konusunda uzman olun ister Windows deneyiminizi geliştirmek isteyen bir kullanıcı olun, katkılarınızı memnuniyetle karşılıyoruz. Bu projeyi tüm Windows kullanıcıları için daha iyi hale getirmek adına katkılarınızı ve fikirlerinizi görmek için sabırsızlanıyoruz. Bize katıldığınız için teşekkür ederiz."
     },
     "zh": {
         "Welcome": "通过一次安装多个程序节省时间并提升您的Windows性能。加入我们，改进工具，使其更加优秀。",
@@ -6491,9 +6495,10 @@ $sync.database.locales = '{
         "sourcecode": "源代码",
         "devby": "由 Emad Adel ♥ 制作",
         "exit": "您确定要关闭程序吗？如果有任何安装正在进行，它们将被终止。",
-        "watchdemo": "观看演示",
+        "watchdemo": "欢迎",
         "happybirthday": "生日快乐 Emad!",
-        "myplaylist": "这是我的生日和我的播放列表 ♪"
+        "myplaylist": "这是我的生日和我的播放列表 ♪",
+        "Subtitle": "开源的ITT工具旨在简化一次性安装Windows程序的过程，并提高系统性能。无论您是编程专家还是希望提升Windows体验的用户，我们都欢迎您的贡献。我们期待看到您的贡献和想法，以使该项目为所有Windows用户提供更好的服务。感谢您的加入。"
     },
     "ko": {
         "Welcome": "여러 프로그램을 한 번에 설치하여 시간을 절약하고 Windows 성능을 향상시킵니다. 도구를 개선하고 우리와 함께 훌륭하게 만들어 보세요.",
@@ -6544,9 +6549,10 @@ $sync.database.locales = '{
         "sourcecode": "소스 코드",
         "devby": "Emad Adel 제작 ♥",
         "exit": "프로그램을 종료하시겠습니까? 진행 중인 설치가 있으면 중단됩니다.",
-        "watchdemo": "데모 보기",
+        "watchdemo": "환영합니다",
         "happybirthday": "생일 축하합니다 Emad!",
-        "myplaylist": "제 생일과 제 플레이리스트 ♪"
+        "myplaylist": "제 생일과 제 플레이리스트 ♪",
+        "Subtitle": "오픈 소스 ITT 도구는 Windows 프로그램을 한 번에 설치하고 시스템 성능을 개선하는 과정을 간소화하는 것을 목표로 합니다. 프로그래밍 전문가이든 Windows 경험을 향상시키려는 사용자이든, 여러분의 기여를 환영합니다. 이 프로젝트를 모든 Windows 사용자에게 더 좋게 만들기 위해 여러분의 기여와 아이디어를 기대합니다. 함께 해주셔서 감사합니다."
     },
     "de": {
         "Welcome": "Sparen Sie Zeit, indem Sie mehrere Programme gleichzeitig installieren und verbessern Sie die Leistung Ihres Windows. Helfen Sie uns dabei, das Tool zu verbessern und großartig zu machen.",
@@ -6597,9 +6603,10 @@ $sync.database.locales = '{
         "sourcecode": "Quellcode",
         "devby": "Hergestellt mit ♥ von Emad Adel",
         "exit": "Sind Sie sicher, dass Sie das Programm schließen möchten? Falls Installationen laufen, werden sie abgebrochen.",
-        "watchdemo": "Demo ansehen",
+        "watchdemo": "Willkommen",
         "happybirthday": "Alles Gute zum Geburtstag, Emad!",
-        "myplaylist": "Es ist mein Geburtstag und meine Playlist ♪"
+        "myplaylist": "Es ist mein Geburtstag und meine Playlist ♪",
+        "Subtitle": "ITT zielt darauf ab, den Prozess der gleichzeitigen Installation von Windows-Programmen zu vereinfachen und die Systemleistung zu verbessern. Ob Sie ein Experte in der Programmierung oder ein Benutzer sind, der seine Windows-Erfahrung verbessern möchte, wir begrüßen Ihre Beiträge. Wir freuen uns auf Ihre Beiträge und Ideen, um dieses Projekt für alle Windows-Benutzer zu verbessern. Vielen Dank, dass Sie sich uns angeschlossen haben."
     },
     "ru": {
         "Welcome": "Экономьте время, устанавливая несколько программ одновременно и улучшая производительность Windows. Присоединяйтесь к нам в улучшении этого инструмента и сделайте его лучше.",
@@ -6650,9 +6657,10 @@ $sync.database.locales = '{
         "sourcecode": "Исходный код",
         "devby": "Сделано с ♥ Emad Adel",
         "exit": "Вы уверены, что хотите закрыть программу? Если есть установки, они будут прерваны.",
-        "watchdemo": "Посмотреть демонстрацию",
+        "watchdemo": "Добро пожаловать",
         "happybirthday": "С днем рождения, Emad!",
-        "myplaylist": "Мой день рождения и мой плейлист ♪"
+        "myplaylist": "Мой день рождения и мой плейлист ♪",
+        "Subtitle": "ITT открытым исходным кодом предназначен для упрощения процесса установки программ Windows одновременно и улучшения производительности системы. Независимо от того, являетесь ли вы экспертом в программировании или пользователем, стремящимся улучшить свой опыт работы с Windows, мы приветствуем ваши предложения. Мы с нетерпением ждем ваших предложений и идей, чтобы сделать этот проект лучше для всех пользователей Windows. Спасибо, что присоединились к нам."
     },
     "es": {
     "Welcome": "Ahorra tiempo instalando varios programas a la vez y mejora el rendimiento de tu Windows. Únete a nosotros para mejorar la herramienta y hacerla excelente.",
@@ -6703,9 +6711,10 @@ $sync.database.locales = '{
     "sourcecode": "Código Fuente",
     "devby": "Hecho con ♥ por Emad Adel",
     "exit": "¿Estás seguro de que quieres cerrar el programa? Si hay instalaciones en curso, se cancelarán.",
-    "watchdemo": "Ver Demo",
+    "watchdemo": "Bienvenido",
     "happybirthday": "¡Feliz Cumpleaños Emad!",
-    "myplaylist": "Es mi cumpleaños y mi lista de reproducción ♪"
+    "myplaylist": "Es mi cumpleaños y mi lista de reproducción ♪",
+    "Subtitle": "ITT de código abierto tiene como objetivo simplificar el proceso de instalación de programas de Windows de una sola vez y mejorar el rendimiento del sistema. Ya seas un experto en programación o un usuario que busca mejorar su experiencia en Windows, damos la bienvenida a tus contribuciones. Esperamos con interés ver tus contribuciones e ideas para mejorar este proyecto para todos los usuarios de Windows. Gracias por unirte a nosotros."
     }
   }
 }
@@ -12383,22 +12392,24 @@ $EventXaml = '<Window
                 Height="Auto"
                 Width="Auto"
                 Foreground="{DynamicResource DefaultTextColor2}"
-                Margin="0,15,15,0"
+                Margin="25,10,10,25"
                 TextWrapping="Wrap"
+                TextAlignment="Right"
                 VerticalAlignment="Center"
                 HorizontalAlignment="Center" />
 
 
-                <TextBlock Width="150"
+                <TextBlock Width="Auto"
                 Name="DisablePopup" 
                 Height="Auto"
+                Padding="25"
                 Foreground="{DynamicResource DefaultTextColor2}"
                 Text="Don''t show again"
                 Background="Transparent"
                 TextAlignment="Center"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
-                Margin="0,15,15,0"/>
+                Margin="0,0,0,0"/>
 
             </StackPanel>
         </Grid>
@@ -14768,8 +14779,21 @@ function Show-Event {
         }
         Default {
             # Default case: update text blocks
-            $titleTextBlock.Text = "$title"
-            $mainStackPanel.Children.Remove($subtitleTextBlock)
+
+            if($sync.Language -ne "ar")
+            {
+                $subtitleTextBlock.TextAlignment = "Left"
+                $titleTextBlock.Text = "$title '$env:USERNAME'" 
+                $subtitleTextBlock.Text = "$description"
+
+            }else
+            {
+                $subtitleTextBlock.TextAlignment = "right"
+                $titleTextBlock.Text = "$title '$env:USERNAME'" 
+                $subtitleTextBlock.Text = "$description"
+            }
+
+            #$mainStackPanel.Children.Remove($subtitleTextBlock)
 
             # Lazy loading image event handler
             $tutorialImage.add_IsVisibleChanged({
@@ -14796,6 +14820,8 @@ function Check-Date {
     $watchdemo = $sync.database.locales.Controls.$($sync.Language).watchdemo
     $happybirthday = $sync.database.locales.Controls.$($sync.Language).happybirthday
     $myplaylist = $sync.database.locales.Controls.$($sync.Language).myplaylist
+    $subs = $sync.database.locales.Controls.$($sync.Language).Subtitle
+
 
     if ($sync.Date.Month -eq 9 -and $sync.Date.Day -eq 1) 
     {
@@ -14808,7 +14834,7 @@ function Check-Date {
             return
         }   
 
-        Show-Event -image "https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/thumbnail.jpg" -title "$watchdemo" -day "Default" -WindowHeight 455 -WindowWidth 555
+        Show-Event -image "https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/thumbnail.jpg" -title "$watchdemo" -description "$subs" -day "Default" -WindowHeight 455 -WindowWidth 555
     }
 }
 
