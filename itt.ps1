@@ -12298,7 +12298,7 @@ $childXaml = '<Window
       <StackPanel Orientation="Vertical">
           
         <!--Logo-->
-              <Image Source="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/logo.png" Margin="10" Height="80" Width="Auto"/>
+              <Image Source="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/logo2.png" Margin="10" Height="80" Width="Auto"/>
         <!--End Logo-->
         
         <TextBlock Text="Install Tweak Tool" 
