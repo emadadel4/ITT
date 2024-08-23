@@ -45,22 +45,24 @@
                 Height="Auto"
                 Width="Auto"
                 Foreground="{DynamicResource DefaultTextColor2}"
-                Margin="0,15,15,0"
+                Margin="25,10,10,25"
                 TextWrapping="Wrap"
+                TextAlignment="Right"
                 VerticalAlignment="Center"
                 HorizontalAlignment="Center" />
 
 
-                <TextBlock Width="150"
+                <TextBlock Width="Auto"
                 Name="DisablePopup" 
                 Height="Auto"
+                Padding="25"
                 Foreground="{DynamicResource DefaultTextColor2}"
                 Text="Don't show again"
                 Background="Transparent"
                 TextAlignment="Center"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
-                Margin="0,15,15,0"/>
+                Margin="0,0,0,0"/>
 
             </StackPanel>
         </Grid>
