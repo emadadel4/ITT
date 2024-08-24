@@ -43,7 +43,6 @@ $administrator = [System.Security.Principal.WindowsBuiltInRole]::Administrator
 if (-not $principal.IsInRole($administrator))
 {
     Write-Host "Please run itt as admin"
-    Start-Process -FilePath "PowerShell" -ArgumentList $myInvocation.MyCommand.Definition -Verb "runas"
     break
 }
 
