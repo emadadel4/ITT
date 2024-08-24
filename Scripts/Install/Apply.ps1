@@ -133,11 +133,6 @@ function Invoke-ApplyTweaks {
                             try {
                                 Add-Log -Message "$Name" -Level "INFO"
                                 Start-Process -FilePath "powershell.exe" -ArgumentList "-Command `"$Command`"" -NoNewWindow -Wait
-                                Add-Log -Message "Done." -Level "INFO"
-        
-                                #debug
-                                #Write-Host "Command '$Command' Done."
-        
                             } catch {
                                 Write-Host "Error executing command '$Command': $_"
                             }
@@ -166,15 +161,12 @@ function Invoke-ApplyTweaks {
                                     }
                                 } else {
                                     Set-ItemProperty -Path $Path -Name $Name -Type $Type -Value $Value -Force -ErrorAction Stop
-                                    Add-Log -Message "$($Name) Successful applied" -Level "INFO"
                                 }
-        
                             }
                         
                             catch {
                                 Write-Error "An error occurred: $_"
                             }
-                            
                         }
         
                         function Remove-RegistryValue {
@@ -191,13 +183,8 @@ function Invoke-ApplyTweaks {
                         
                                 # Check if the registry key exists
                                 if (Test-Path "Registry::$KeyPath") {
-        
                                     # Delete the registry key and all subkeys recursively
-        
                                     Remove-Item -Path "Registry::$KeyPath" -Recurse -Force
-                                    Add-Log -Message "successful removed." -Level "INFO"
-        
-        
                                 } else {
                                     Add-Log -Message "Registry key '$KeyPath' does not exist." -Level "INFO"
                                 }
@@ -218,11 +205,8 @@ function Invoke-ApplyTweaks {
         
                                 # Check if the service exists
                                 if (Get-Service -Name $ServiceName -ErrorAction SilentlyContinue) {
-        
                                     Set-Service -Name $ServiceName -StartupType $StartupType -ErrorAction Stop
                                     Stop-Service -Name $ServiceName 
-                                    Add-Log -Message "Service '$ServiceName' disabled." -Level "INFO"
-        
                                 }
                                 else {
                                     Add-Log -Message "Service '$ServiceName' not found." -Level "INFO"
@@ -398,10 +382,7 @@ function Invoke-ApplyTweaks {
 
                             $applyBtn = $sync.database.locales.Controls.$($sync.Language).applyBtn
                             $Applying = $sync.database.locales.Controls.$($sync.Language).Applying
-
-
                             UpdateUI -ApplyBtn "$applying" -icon " " -Width "150"
-
 
                             $sync.ProcessRunning = $true
 
@@ -436,7 +417,8 @@ function Invoke-ApplyTweaks {
                                         $app.Command | ForEach-Object { ExecuteCommand -Command $_ }
                                     }
                                 }
-                                
+
+                                Add-Log -Message "Finished" -Level "INFO"
                             }
 
                             # Displaying the names of the selected apps
@@ -470,8 +452,10 @@ function Invoke-ApplyTweaks {
             }
             else
             {
-                $sync.TweaksListView.Dispatcher.Invoke([Action]{
-                    $sync.TweaksListView.Items.Clear()
+               # Uncheck all checkboxes in $list
+                $sync.category.SelectedIndex = 0
+                $sync.TweaksListView.Dispatcher.Invoke({
+                    $sync.AppsListView.Clear()
                     [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.TweaksListView.Items).Filter = $null
                 })
                 $localizedMessageTemplate = $sync.database.locales.Controls.$($sync.Language).chosetweak
