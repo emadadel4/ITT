@@ -4,7 +4,7 @@ function Set-Language {
     )
 
     # Set DataContext of the window to the specified language
-    $itt.MainWindow.DataContext = $itt.database.locales.Controls.$($lang)
+    $itt["window"].DataContext = $itt.database.locales.Controls.$($lang)
 
     # Set registry value for the language
     Set-ItemProperty -Path $itt.registryPath  -Name "locales" -Value "$lang" -Force

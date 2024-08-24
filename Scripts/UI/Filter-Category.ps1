@@ -49,7 +49,7 @@ function FilterByCat {
     )
 
     # Update DataContext
-    #$itt.MainWindow.DataContext = $itt.database.locales.Controls.$($itt.Language)
+    #$itt["window"].DataContext = $itt.database.locales.Controls.$($itt.Language)
 
     # if user is on another tab, return to the apps list
     $itt['window'].FindName('apps').IsSelected = $true

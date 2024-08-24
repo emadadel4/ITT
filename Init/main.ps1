@@ -5,7 +5,7 @@
 # Select elements with a Name attribute and iterate
 $xaml.SelectNodes("//*[@Name]") | ForEach-Object {
     $name = $_.Name
-    $element = $itt.MainWindow.FindName($name)
+    $element = $itt["window"].FindName($name)
 
     if ($element) {
         $itt[$name] = $element
@@ -60,7 +60,7 @@ $onClosingEvent = {
 }
 
 # Handle the Loaded event
-$itt.MainWindow.Add_ContentRendered({
+$itt["window"].Add_ContentRendered({
     Startup
     DisplayQuotes | Out-Null
     PlayMusic | Out-Null
@@ -68,7 +68,7 @@ $itt.MainWindow.Add_ContentRendered({
 })
 
 # Close Event handler
-$itt.MainWindow.add_Closing($onClosingEvent)
+$itt["window"].add_Closing($onClosingEvent)
 
 # Show Window
-$itt.MainWindow.ShowDialog() | Out-Null
+$itt["window"].ShowDialog() | Out-Null

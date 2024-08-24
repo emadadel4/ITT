@@ -14,7 +14,7 @@ function Show-Event {
 
     $EventWindowReader = (New-Object System.Xml.XmlNodeReader $event)
     $itt.event = [Windows.Markup.XamlReader]::Load($EventWindowReader)
-    $itt["event"].Resources.MergedDictionaries.Add($itt.MainWindow.FindResource($itt.CurretTheme))
+    $itt["event"].Resources.MergedDictionaries.Add($itt["window"].FindResource($itt.CurretTheme))
     $itt.event.title = "ITT | $title"
     $itt.event.Height = "$WindowHeight"
     $itt.event.Width = "$WindowWidth"

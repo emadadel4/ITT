@@ -12456,7 +12456,7 @@ $itt.runspace.Open()
 $reader = [System.Xml.XmlNodeReader]::new($xaml)
 
 try {
-    $itt.MainWindow = [Windows.Markup.XamlReader]::Load($reader)
+    $itt["window"] = [Windows.Markup.XamlReader]::Load($reader)
 }
 catch [System.Management.Automation.MethodInvocationException] {
     Write-Warning "Problem with the XAML code. Check syntax."
@@ -12508,7 +12508,7 @@ try {
             "es" { $locale = "es" }
             default { $locale = "en" }
         }
-        $itt.MainWindow.DataContext = $itt.database.locales.Controls.$locale
+        $itt["window"].DataContext = $itt.database.locales.Controls.$locale
         $itt.Language = $locale
 
     #===========================================================================
@@ -12529,7 +12529,7 @@ try {
                              "1" { "Light" }
                          }
                      }
-    $itt.MainWindow.Resources.MergedDictionaries.Add($itt.MainWindow.FindResource($themeResource))
+    $itt["window"].Resources.MergedDictionaries.Add($itt["window"].FindResource($themeResource))
     $itt.CurretTheme = $themeResource
     #===========================================================================
     #endregion Check theme settings
@@ -12542,7 +12542,7 @@ try {
 
     # taskbar icon
     $taskbarItemInfo = New-Object System.Windows.Shell.TaskbarItemInfo
-    $itt.MainWindow.TaskbarItemInfo = $taskbarItemInfo
+    $itt["window"].TaskbarItemInfo = $taskbarItemInfo
     $taskbarItemInfo.Overlay = $itt.icon
 }
 catch {
@@ -12551,27 +12551,27 @@ catch {
 }
 
 # List Views
-$itt.AppsListView = $itt.MainWindow.FindName("appslist")
-$itt.TweaksListView = $itt.MainWindow.FindName("tweakslist")
-$itt.SettingsListView = $itt.MainWindow.FindName("SettingsList")
+$itt.AppsListView = $itt["window"].FindName("appslist")
+$itt.TweaksListView = $itt["window"].FindName("tweakslist")
+$itt.SettingsListView = $itt["window"].FindName("SettingsList")
 $itt.currentList
 
 # Buttons and Inputs
-$itt.Description = $itt.MainWindow.FindName("description")
-$itt.Quotes = $itt.MainWindow.FindName("quotes")
-$itt.InstallBtn = $itt.MainWindow.FindName("installBtn")
-$itt.ApplyBtn = $itt.MainWindow.FindName("applyBtn")
-$itt.Category = $itt.MainWindow.FindName("category")
-$itt.SearchInput = $itt.MainWindow.FindName("searchInput")
+$itt.Description = $itt["window"].FindName("description")
+$itt.Quotes = $itt["window"].FindName("quotes")
+$itt.InstallBtn = $itt["window"].FindName("installBtn")
+$itt.ApplyBtn = $itt["window"].FindName("applyBtn")
+$itt.Category = $itt["window"].FindName("category")
+$itt.SearchInput = $itt["window"].FindName("searchInput")
 
 
-$itt.installText = $itt.MainWindow.FindName("installText")
-$itt.installIcon = $itt.MainWindow.FindName("installIcon")
+$itt.installText = $itt["window"].FindName("installText")
+$itt.installIcon = $itt["window"].FindName("installIcon")
 
-$itt.applyText = $itt.MainWindow.FindName("applyText")
-$itt.applyIcon = $itt.MainWindow.FindName("applyIcon")
+$itt.applyText = $itt["window"].FindName("applyText")
+$itt.applyIcon = $itt["window"].FindName("applyIcon")
 
-$itt.window = $itt.MainWindow
+$itt.window = $itt["window"]
 
 
 
@@ -14383,7 +14383,7 @@ function About {
     [xml]$about = $childXaml
     $childWindowReader = (New-Object System.Xml.XmlNodeReader $about)
     $itt.about = [Windows.Markup.XamlReader]::Load($childWindowReader)
-    $itt["about"].Resources.MergedDictionaries.Add($itt.MainWindow.FindResource($itt.CurretTheme))
+    $itt["about"].Resources.MergedDictionaries.Add($itt["window"].FindResource($itt.CurretTheme))
     # Set version and link handlers
     $itt.about.FindName('ver').Text = $itt.lastupdate
     $itt.about.FindName("telegram").add_MouseLeftButtonDown({Start-Process("https://t.me/emadadel4")})
@@ -14533,7 +14533,7 @@ function FilterByCat {
     )
 
     # Update DataContext
-    #$itt.MainWindow.DataContext = $itt.database.locales.Controls.$($itt.Language)
+    #$itt["window"].DataContext = $itt.database.locales.Controls.$($itt.Language)
 
     # if user is on another tab, return to the apps list
     $itt['window'].FindName('apps').IsSelected = $true
@@ -14660,7 +14660,7 @@ function Set-Language {
     )
 
     # Set DataContext of the window to the specified language
-    $itt.MainWindow.DataContext = $itt.database.locales.Controls.$($lang)
+    $itt["window"].DataContext = $itt.database.locales.Controls.$($lang)
 
     # Set registry value for the language
     Set-ItemProperty -Path $itt.registryPath  -Name "locales" -Value "$lang" -Force
@@ -14749,7 +14749,7 @@ function Show-Event {
 
     $EventWindowReader = (New-Object System.Xml.XmlNodeReader $event)
     $itt.event = [Windows.Markup.XamlReader]::Load($EventWindowReader)
-    $itt["event"].Resources.MergedDictionaries.Add($itt.MainWindow.FindResource($itt.CurretTheme))
+    $itt["event"].Resources.MergedDictionaries.Add($itt["window"].FindResource($itt.CurretTheme))
     $itt.event.title = "ITT | $title"
     $itt.event.Height = "$WindowHeight"
     $itt.event.Width = "$WindowWidth"
@@ -14849,7 +14849,7 @@ function DisablePopup {
 # Select elements with a Name attribute and iterate
 $xaml.SelectNodes("//*[@Name]") | ForEach-Object {
     $name = $_.Name
-    $element = $itt.MainWindow.FindName($name)
+    $element = $itt["window"].FindName($name)
 
     if ($element) {
         $itt[$name] = $element
@@ -14904,7 +14904,7 @@ $onClosingEvent = {
 }
 
 # Handle the Loaded event
-$itt.MainWindow.Add_ContentRendered({
+$itt["window"].Add_ContentRendered({
     Startup
     DisplayQuotes | Out-Null
     PlayMusic | Out-Null
@@ -14912,10 +14912,10 @@ $itt.MainWindow.Add_ContentRendered({
 })
 
 # Close Event handler
-$itt.MainWindow.add_Closing($onClosingEvent)
+$itt["window"].add_Closing($onClosingEvent)
 
 # Show Window
-$itt.MainWindow.ShowDialog() | Out-Null
+$itt["window"].ShowDialog() | Out-Null
 
 #===========================================================================
 #endregion End Main Functions
