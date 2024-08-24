@@ -50,13 +50,11 @@ If (([Security.Principal.WindowsIdentity]::GetCurrent()).Owner.Value -ne "S-1-5-
 
 try {
     $Host.UI.RawUI.WindowTitle = "ITT (Install and Tweaks Tool) - Admin"
+    $itt.mediaPlayer = New-Object -ComObject WMPlayer.OCX
 }
 catch {
     Write-Host "Media player not loaded because your using Windows Lite or you just disable it"
 }
-
-$itt.mediaPlayer = New-Object -ComObject WMPlayer.OCX
-
 #===========================================================================
 #endregion End Start
 #===========================================================================
