@@ -103,6 +103,11 @@ try {
     $sync.Music = (Get-ItemProperty -Path $sync.registryPath -Name "Music").Music
     $sync.mediaPlayer.settings.volume = "$($sync.Music)"
     $sync.PopupWindow = (Get-ItemProperty -Path $sync.registryPath -Name "PopupWindow").PopupWindow
+
+    # taskbar icon
+    $taskbarItemInfo = New-Object System.Windows.Shell.TaskbarItemInfo
+    $sync["window"].TaskbarItemInfo = $taskbarItemInfo
+    $taskbarItemInfo.Overlay = $sync.icon
 }
 catch {
     Write-Host "Error: $_"
@@ -129,6 +134,8 @@ $sync.installIcon = $sync["window"].FindName("installIcon")
 
 $sync.applyText = $sync["window"].FindName("applyText")
 $sync.applyIcon = $sync["window"].FindName("applyIcon")
+
+$sync.window = $sync["window"]
 
 
 
