@@ -40,19 +40,20 @@ $currentPid = [System.Security.Principal.WindowsIdentity]::GetCurrent()
 $principal = [System.Security.Principal.WindowsPrincipal]$currentPid
 $administrator = [System.Security.Principal.WindowsBuiltInRole]::Administrator
 
-if (-not $principal.IsInRole($administrator)) {
+if (-not $principal.IsInRole($administrator))
+{
+    Write-Host "Please run itt as admin"
     Start-Process -FilePath "PowerShell" -ArgumentList $myInvocation.MyCommand.Definition -Verb "runas"
     break
-}else{
-
-    Write-Host "Please run itt as admin"
-
+}
+else
+{
+    $Host.UI.RawUI.WindowTitle = "ITT (Install and Tweaks Tool) - Admin"
+    # Initialize media player only when necessary
+    $itt.mediaPlayer = New-Object -ComObject WMPlayer.OCX
 }
 
-$Host.UI.RawUI.WindowTitle = "ITT (Install and Tweaks Tool) - Admin"
 
-# Initialize media player only when necessary
-$itt.mediaPlayer = New-Object -ComObject WMPlayer.OCX
 #===========================================================================
 #endregion End Start
 #===========================================================================
