@@ -42,7 +42,7 @@ $administrator = [System.Security.Principal.WindowsBuiltInRole]::Administrator
 
 if (-not $principal.IsInRole($administrator)) {
     Start-Process -FilePath "PowerShell" -ArgumentList $myInvocation.MyCommand.Definition -Verb "runas"
-    exit
+    break
 }
 
 $Host.UI.RawUI.WindowTitle = "ITT (Install and Tweaks Tool) - Admin"
