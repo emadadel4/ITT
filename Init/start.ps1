@@ -12,6 +12,7 @@ $sync = [Hashtable]::Synchronized(@{
     developer      = "Emad Adel"
     registryPath   = "HKCU:\Software\ITT@emadadel"
     firebaseUrl    = "https://ittools-7d9fe-default-rtdb.firebaseio.com/Users"
+    icon           = "https://raw.githubusercontent.com/emadadel4/ITT/Update/Resources/Icons/icon.ico"
     isDarkMode     = $null
     CurretTheme    = $null
     Date           = (Get-Date)
