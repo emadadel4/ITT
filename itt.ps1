@@ -44,6 +44,7 @@ if (-not $principal.IsInRole($administrator))
 {
     Start-Process -FilePath "PowerShell" -ArgumentList $myInvocation.MyCommand.Definition -Verb "runas"
     break
+    exit
 }
 
 try {
