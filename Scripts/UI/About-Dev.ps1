@@ -3,7 +3,7 @@ function About {
     [xml]$about = $childXaml
     $childWindowReader = (New-Object System.Xml.XmlNodeReader $about)
     $itt.about = [Windows.Markup.XamlReader]::Load($childWindowReader)
-    $itt["about"].Resources.MergedDictionaries.Add($itt["window"].FindResource($itt.CurretTheme))
+    $itt["about"].Resources.MergedDictionaries.Add($itt.MainWindow.FindResource($itt.CurretTheme))
     # Set version and link handlers
     $itt.about.FindName('ver').Text = $itt.lastupdate
     $itt.about.FindName("telegram").add_MouseLeftButtonDown({Start-Process("https://t.me/emadadel4")})

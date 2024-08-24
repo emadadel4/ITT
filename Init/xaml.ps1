@@ -20,7 +20,7 @@ $itt.runspace.Open()
 $reader = [System.Xml.XmlNodeReader]::new($xaml)
 
 try {
-    $itt["window"] = [Windows.Markup.XamlReader]::Load($reader)
+    $itt.MainWindow = [Windows.Markup.XamlReader]::Load($reader)
 }
 catch [System.Management.Automation.MethodInvocationException] {
     Write-Warning "Problem with the XAML code. Check syntax."
@@ -72,7 +72,7 @@ try {
             "es" { $locale = "es" }
             default { $locale = "en" }
         }
-        $itt["window"].DataContext = $itt.database.locales.Controls.$locale
+        $itt.MainWindow.DataContext = $itt.database.locales.Controls.$locale
         $itt.Language = $locale
 
     #===========================================================================
@@ -93,7 +93,7 @@ try {
                              "1" { "Light" }
                          }
                      }
-    $itt["window"].Resources.MergedDictionaries.Add($itt["window"].FindResource($themeResource))
+    $itt.MainWindow.Resources.MergedDictionaries.Add($itt.MainWindow.FindResource($themeResource))
     $itt.CurretTheme = $themeResource
     #===========================================================================
     #endregion Check theme settings
@@ -106,7 +106,7 @@ try {
 
     # taskbar icon
     $taskbarItemInfo = New-Object System.Windows.Shell.TaskbarItemInfo
-    $itt["window"].TaskbarItemInfo = $taskbarItemInfo
+    $itt.MainWindow.TaskbarItemInfo = $taskbarItemInfo
     $taskbarItemInfo.Overlay = $itt.icon
 }
 catch {
@@ -115,27 +115,22 @@ catch {
 }
 
 # List Views
-$itt.AppsListView = $itt["window"].FindName("appslist")
-$itt.TweaksListView = $itt["window"].FindName("tweakslist")
-$itt.SettingsListView = $itt["window"].FindName("SettingsList")
+$itt.AppsListView = $itt.MainWindow.FindName("appslist")
+$itt.TweaksListView = $itt.MainWindow.FindName("tweakslist")
+$itt.SettingsListView = $itt.MainWindow.FindName("SettingsList")
 $itt.currentList
 
 # Buttons and Inputs
-$itt.Description = $itt["window"].FindName("description")
-$itt.Quotes = $itt["window"].FindName("quotes")
-$itt.InstallBtn = $itt["window"].FindName("installBtn")
-$itt.ApplyBtn = $itt["window"].FindName("applyBtn")
-$itt.Category = $itt["window"].FindName("category")
-$itt.SearchInput = $itt["window"].FindName("searchInput")
-
-
-$itt.installText = $itt["window"].FindName("installText")
-$itt.installIcon = $itt["window"].FindName("installIcon")
-
-$itt.applyText = $itt["window"].FindName("applyText")
-$itt.applyIcon = $itt["window"].FindName("applyIcon")
-
-$itt.window = $itt["window"]
+$itt.Description = $itt.MainWindow.FindName("description")
+$itt.Quotes = $itt.MainWindow.FindName("quotes")
+$itt.InstallBtn = $itt.MainWindow.FindName("installBtn")
+$itt.ApplyBtn = $itt.MainWindow.FindName("applyBtn")
+$itt.Category = $itt.MainWindow.FindName("category")
+$itt.SearchInput = $itt.MainWindow.FindName("searchInput")
+$itt.installText = $itt.MainWindow.FindName("installText")
+$itt.installIcon = $itt.MainWindow.FindName("installIcon")
+$itt.applyText = $itt.MainWindow.FindName("applyText")
+$itt.applyIcon = $itt.MainWindow.FindName("applyIcon")
 
 
 
