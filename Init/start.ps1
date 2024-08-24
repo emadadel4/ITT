@@ -25,12 +25,17 @@ $currentPid = [System.Security.Principal.WindowsIdentity]::GetCurrent()
 $principal = [System.Security.Principal.WindowsPrincipal]$currentPid
 $administrator = [System.Security.Principal.WindowsBuiltInRole]::Administrator
 
-if (-not $principal.IsInRole($administrator)) {
+if (-not $principal.IsInRole($administrator))
+{
     Start-Process -FilePath "PowerShell" -ArgumentList $myInvocation.MyCommand.Definition -Verb "runas"
+    break
     exit
 }
 
-$Host.UI.RawUI.WindowTitle = "ITT (Install and Tweaks Tool) - Admin"
-
-# Initialize media player only when necessary
-$itt.mediaPlayer = New-Object -ComObject WMPlayer.OCX
+try {
+    $itt.mediaPlayer = New-Object -ComObject WMPlayer.OCX
+    $Host.UI.RawUI.WindowTitle = "ITT (Install and Tweaks Tool) - Admin"
+}
+catch {
+    Write-Host "Media player not loaded because your using Windows Lite or you just disable it"
+}
