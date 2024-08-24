@@ -43,6 +43,10 @@ $administrator = [System.Security.Principal.WindowsBuiltInRole]::Administrator
 if (-not $principal.IsInRole($administrator)) {
     Start-Process -FilePath "PowerShell" -ArgumentList $myInvocation.MyCommand.Definition -Verb "runas"
     break
+}else{
+
+    Write-Host "Please run itt as admin"
+
 }
 
 $Host.UI.RawUI.WindowTitle = "ITT (Install and Tweaks Tool) - Admin"
