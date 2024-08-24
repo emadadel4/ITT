@@ -17,7 +17,7 @@
 Add-Type -AssemblyName System.Windows.Forms
 
 # Synchronized Hashtable for shared variables
-$sync = [Hashtable]::Synchronized(@{
+$itt = [Hashtable]::Synchronized(@{
     database       = @{}
     ProcessRunning = $false
     lastupdate     = "08/24/24"
@@ -48,14 +48,14 @@ if (-not $principal.IsInRole($administrator)) {
 $Host.UI.RawUI.WindowTitle = "ITT (Install and Tweaks Tool) - Admin"
 
 # Initialize media player only when necessary
-$sync.mediaPlayer = New-Object -ComObject WMPlayer.OCX
+$itt.mediaPlayer = New-Object -ComObject WMPlayer.OCX
 #===========================================================================
 #endregion End Start
 #===========================================================================
 #===========================================================================
 #region Begin Database /APPS/TWEEAKS/Quotes/OST/Settings
 #===========================================================================
-$sync.database.Applications = '[
+$itt.database.Applications = '[
   {
     "name": "Mozilla Firefox",
     "description": "A widely-used open-source web browser known for its speed, privacy features, and customization options.",
@@ -6228,7 +6228,7 @@ $sync.database.Applications = '[
   }
 ]
 ' | ConvertFrom-Json
-$sync.database.locales = '{
+$itt.database.locales = '{
   "Controls": {
     "ar": {
         "Welcome": "توفر هذه الأداة تسهيلات كبيرة في عملية تثبيت البرامج وتحسين الاداء. انضم إلينا لتساهم في تطويرها وجعلها أكثر اكتمالًا",
@@ -6720,7 +6720,7 @@ $sync.database.locales = '{
   }
 }
 ' | ConvertFrom-Json
-$sync.database.OST = '{
+$itt.database.OST = '{
   "Tracks": [
     {
       "name": "Further - Far cry-3",
@@ -6875,7 +6875,7 @@ $sync.database.OST = '{
   ]
 }
 ' | ConvertFrom-Json
-$sync.database.Quotes = '{
+$itt.database.Quotes = '{
   "Q": [
     "إما تموت بطلا، أو تعيش طويلاً حتى ترى نفسك اصبحت الشرير",
     "بعض الرجال يريدون فقط مشاهدة العالم يحترق",
@@ -6978,7 +6978,7 @@ $sync.database.Quotes = '{
   ]
 }
 ' | ConvertFrom-Json
-$sync.database.Settings = '[
+$itt.database.Settings = '[
   {
       "Content": "Show file extensions",
       "Name":"ToggleShowExt",
@@ -7011,7 +7011,7 @@ $sync.database.Settings = '[
     "category": "Accessibility"
   }
 ]' | ConvertFrom-Json
-$sync.database.Tweaks = '[
+$itt.database.Tweaks = '[
   {
     "Name": "System File Checker",
     "Description": "sfc /scannow Use the System File Checker tool to repair missing or corrupted system files",
@@ -12438,15 +12438,15 @@ $EventXaml = '<Window
 $maxthreads = [int]$env:NUMBER_OF_PROCESSORS
 
 # Create a new session state for parsing variables into our runspace
-$hashVars = New-object System.Management.Automation.Runspaces.SessionStateVariableEntry -ArgumentList 'sync',$sync,$Null
+$hashVars = New-object System.Management.Automation.Runspaces.SessionStateVariableEntry -ArgumentList 'itt',$itt,$Null
 $InitialSessionState = [System.Management.Automation.Runspaces.InitialSessionState]::CreateDefault()
 
 # Add the variable to the session state
 $InitialSessionState.Variables.Add($hashVars)
 
 # Create and open the runspace pool
-$sync.runspace = [runspacefactory]::CreateRunspacePool(1, $maxthreads, $InitialSessionState, $Host)
-$sync.runspace.Open()
+$itt.runspace = [runspacefactory]::CreateRunspacePool(1, $maxthreads, $InitialSessionState, $Host)
+$itt.runspace.Open()
 
 # Load required assembly
 [void][System.Reflection.Assembly]::LoadWithPartialName('presentationframework')
@@ -12456,7 +12456,7 @@ $sync.runspace.Open()
 $reader = [System.Xml.XmlNodeReader]::new($xaml)
 
 try {
-    $sync["window"] = [Windows.Markup.XamlReader]::Load($reader)
+    $itt["window"] = [Windows.Markup.XamlReader]::Load($reader)
 }
 catch [System.Management.Automation.MethodInvocationException] {
     Write-Warning "Problem with the XAML code. Check syntax."
@@ -12480,12 +12480,12 @@ try {
         $shortCulture = $fullCulture.Split('-')[0]
 
         # Ensure registry key exists and set defaults if necessary
-        if (-not (Test-Path $sync.registryPath)) {
-            New-Item -Path $sync.registryPath -Force | Out-Null
-            Set-ItemProperty -Path $sync.registryPath -Name "DarkMode" -Value "none" -Force
-            Set-ItemProperty -Path $sync.registryPath -Name "locales" -Value $shortCulture -Force
-            Set-ItemProperty -Path $sync.registryPath -Name "Music" -Value "100" -Force
-            Set-ItemProperty -Path $sync.registryPath -Name "PopupWindow" -Value "On" -Force
+        if (-not (Test-Path $itt.registryPath)) {
+            New-Item -Path $itt.registryPath -Force | Out-Null
+            Set-ItemProperty -Path $itt.registryPath -Name "DarkMode" -Value "none" -Force
+            Set-ItemProperty -Path $itt.registryPath -Name "locales" -Value $shortCulture -Force
+            Set-ItemProperty -Path $itt.registryPath -Name "Music" -Value "100" -Force
+            Set-ItemProperty -Path $itt.registryPath -Name "PopupWindow" -Value "On" -Force
         }
 
     #===========================================================================
@@ -12508,8 +12508,8 @@ try {
             "es" { $locale = "es" }
             default { $locale = "en" }
         }
-        $sync["window"].DataContext = $sync.database.locales.Controls.$locale
-        $sync.Language = $locale
+        $itt["window"].DataContext = $itt.database.locales.Controls.$locale
+        $itt.Language = $locale
 
     #===========================================================================
     #endregion Set Language based on culture
@@ -12519,31 +12519,31 @@ try {
     #region Check theme settings
     #===========================================================================
     
-    $sync.isDarkMode = (Get-ItemProperty -Path $sync.registryPath -Name "DarkMode").DarkMode
+    $itt.isDarkMode = (Get-ItemProperty -Path $itt.registryPath -Name "DarkMode").DarkMode
 
-    $themeResource = if ($sync.isDarkMode -eq "true") { "Dark" }
-                     elseif ($sync.isDarkMode -eq "false") { "Light" }
+    $themeResource = if ($itt.isDarkMode -eq "true") { "Dark" }
+                     elseif ($itt.isDarkMode -eq "false") { "Light" }
                      else {
                          switch ($appsTheme) {
                              "0" { "Dark" }
                              "1" { "Light" }
                          }
                      }
-    $sync["window"].Resources.MergedDictionaries.Add($sync["window"].FindResource($themeResource))
-    $sync.CurretTheme = $themeResource
+    $itt["window"].Resources.MergedDictionaries.Add($itt["window"].FindResource($themeResource))
+    $itt.CurretTheme = $themeResource
     #===========================================================================
     #endregion Check theme settings
     #===========================================================================
 
     # Get user Settings from registry 
-    $sync.Music = (Get-ItemProperty -Path $sync.registryPath -Name "Music").Music
-    $sync.mediaPlayer.settings.volume = "$($sync.Music)"
-    $sync.PopupWindow = (Get-ItemProperty -Path $sync.registryPath -Name "PopupWindow").PopupWindow
+    $itt.Music = (Get-ItemProperty -Path $itt.registryPath -Name "Music").Music
+    $itt.mediaPlayer.settings.volume = "$($itt.Music)"
+    $itt.PopupWindow = (Get-ItemProperty -Path $itt.registryPath -Name "PopupWindow").PopupWindow
 
     # taskbar icon
     $taskbarItemInfo = New-Object System.Windows.Shell.TaskbarItemInfo
-    $sync["window"].TaskbarItemInfo = $taskbarItemInfo
-    $taskbarItemInfo.Overlay = $sync.icon
+    $itt["window"].TaskbarItemInfo = $taskbarItemInfo
+    $taskbarItemInfo.Overlay = $itt.icon
 }
 catch {
     Write-Host "Error: $_"
@@ -12551,27 +12551,27 @@ catch {
 }
 
 # List Views
-$sync.AppsListView = $sync["window"].FindName("appslist")
-$sync.TweaksListView = $sync["window"].FindName("tweakslist")
-$sync.SettingsListView = $sync["window"].FindName("SettingsList")
-$sync.currentList
+$itt.AppsListView = $itt["window"].FindName("appslist")
+$itt.TweaksListView = $itt["window"].FindName("tweakslist")
+$itt.SettingsListView = $itt["window"].FindName("SettingsList")
+$itt.currentList
 
 # Buttons and Inputs
-$sync.Description = $sync["window"].FindName("description")
-$sync.Quotes = $sync["window"].FindName("quotes")
-$sync.InstallBtn = $sync["window"].FindName("installBtn")
-$sync.ApplyBtn = $sync["window"].FindName("applyBtn")
-$sync.Category = $sync["window"].FindName("category")
-$sync.SearchInput = $sync["window"].FindName("searchInput")
+$itt.Description = $itt["window"].FindName("description")
+$itt.Quotes = $itt["window"].FindName("quotes")
+$itt.InstallBtn = $itt["window"].FindName("installBtn")
+$itt.ApplyBtn = $itt["window"].FindName("applyBtn")
+$itt.Category = $itt["window"].FindName("category")
+$itt.SearchInput = $itt["window"].FindName("searchInput")
 
 
-$sync.installText = $sync["window"].FindName("installText")
-$sync.installIcon = $sync["window"].FindName("installIcon")
+$itt.installText = $itt["window"].FindName("installText")
+$itt.installIcon = $itt["window"].FindName("installIcon")
 
-$sync.applyText = $sync["window"].FindName("applyText")
-$sync.applyIcon = $sync["window"].FindName("applyIcon")
+$itt.applyText = $itt["window"].FindName("applyText")
+$itt.applyIcon = $itt["window"].FindName("applyIcon")
 
-$sync.window = $sync["window"]
+$itt.window = $itt["window"]
 
 
 
@@ -12593,7 +12593,7 @@ function Invoke-ScriptBlock {
     # Add the script block and arguments to the runspace
     $script:powershell.AddScript($ScriptBlock)
     $script:powershell.AddArgument($ArgumentList)
-    $script:powershell.RunspacePool = $sync.runspace  # Set the runspace pool
+    $script:powershell.RunspacePool = $itt.runspace  # Set the runspace pool
 
     # Begin running the script block asynchronously
     $script:handle = $script:powershell.BeginInvoke()
@@ -12602,8 +12602,8 @@ function Invoke-ScriptBlock {
     if ($script:handle.IsCompleted) {
         $script:powershell.EndInvoke($script:handle)  # End the invocation
         $script:powershell.Dispose()                  # Dispose of the PowerShell instance
-        $sync.runspace.Dispose()                      # Dispose of the runspace
-        $sync.runspace.Close()                        # Close the runspace
+        $itt.runspace.Dispose()                      # Dispose of the runspace
+        $itt.runspace.Close()                        # Close the runspace
         [System.GC]::Collect()                        # Force garbage collection to free memory
     }
 }
@@ -12738,8 +12738,8 @@ function Get-CheckBoxesFromStackPanel {
 
 # Function to load JSON data and update the UI
 function LoadJson {
-    if ($sync.ProcessRunning) {
-        $msg = $sync.database.locales.Controls.$($sync.Language).Pleasewait
+    if ($itt.ProcessRunning) {
+        $msg = $itt.database.locales.Controls.$($itt.Language).Pleasewait
         [System.Windows.MessageBox]::Show($msg, "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
         return
     }
@@ -12770,9 +12770,9 @@ function LoadJson {
         }
 
         # Update UI based on the loaded JSON data
-        $sync['window'].FindName('apps').IsSelected = $true
-        $sync['window'].FindName('appslist').Clear()
-        $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync['window'].FindName('appslist').Items)
+        $itt['window'].FindName('apps').IsSelected = $true
+        $itt['window'].FindName('appslist').Clear()
+        $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($itt['window'].FindName('appslist').Items)
         $collectionView.Filter = $filterPredicate
         [System.Windows.MessageBox]::Show("Restored successfully", "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
     }
@@ -12780,8 +12780,8 @@ function LoadJson {
 
 # Function to save selected items to a JSON file
 function SaveItemsToJson {
-    if ($sync.ProcessRunning) {
-        $msg = $sync.database.locales.Controls.$($sync.Language).Pleasewait
+    if ($itt.ProcessRunning) {
+        $msg = $itt.database.locales.Controls.$($itt.Language).Pleasewait
         [System.Windows.MessageBox]::Show($msg, "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
         return
     }
@@ -12790,7 +12790,7 @@ function SaveItemsToJson {
 
     ClearFilter
 
-    foreach ($item in $sync.AppsListView.Items) {
+    foreach ($item in $itt.AppsListView.Items) {
         $checkBoxes = Get-CheckBoxesFromStackPanel -item $item
         if ($checkBoxes.IsChecked) {
             $itemObject = [PSCustomObject]@{
@@ -12813,7 +12813,7 @@ function SaveItemsToJson {
             Write-Host "Saved: $($saveFileDialog.FileName)"
             [System.Windows.MessageBox]::Show("Saved", "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
 
-            foreach ($item in $sync.AppsListView.Items) {
+            foreach ($item in $itt.AppsListView.Items) {
                 $checkBoxes = Get-CheckBoxesFromStackPanel -item $item
                 if ($checkBoxes.IsChecked) {
                     $checkBoxes.IsChecked = $false  # Uncheck all CheckBoxes after saving
@@ -12884,7 +12884,7 @@ function Get-PCInfo {
                     "GPU" = (Get-CimInstance -ClassName Win32_VideoController).Name
                     "CPU" = (Get-CimInstance -ClassName Win32_Processor).Name
                     "Cores" = (Get-CimInstance -ClassName Win32_Processor).NumberOfCores
-                    "Language" = "$($sync.Language)"
+                    "Language" = "$($itt.Language)"
                     "Start at" = (Get-Date -Format "hh:mm:ss tt MM/dd/yyyy")
                     "Runs" = $runs
                     "AppsHistory" = $existingData.AppsHistory
@@ -12905,7 +12905,7 @@ function Get-PCInfo {
                     "GPU" = (Get-CimInstance -ClassName Win32_VideoController).Name
                     "CPU" = (Get-CimInstance -ClassName Win32_Processor).Name
                     "Cores" = (Get-CimInstance -ClassName Win32_Processor).NumberOfCores
-                    "Language" = "$($sync.Language)"
+                    "Language" = "$($itt.Language)"
                     "Start at" = (Get-Date -Format "hh:mm:ss tt MM/dd/yyyy")
                     "runs" = $runs
                     "AppsHistory" = @{}
@@ -12963,13 +12963,13 @@ function ChangeTap {
     # Iterate over the tab settings
     foreach ($tab in $tabSettings.Keys) {
         # Check if the current tab is selected
-        if ($sync['window'].FindName($tab).IsSelected) {
+        if ($itt['window'].FindName($tab).IsSelected) {
             $settings = $tabSettings[$tab]
             
             # Update button visibility and currentList based on the selected tab
-            $sync['window'].FindName('installBtn').Visibility = $settings['installBtn']
-            $sync['window'].FindName('applyBtn').Visibility = $settings['applyBtn']
-            $sync.currentList = $settings['currentList']
+            $itt['window'].FindName('installBtn').Visibility = $settings['installBtn']
+            $itt['window'].FindName('applyBtn').Visibility = $settings['applyBtn']
+            $itt.currentList = $settings['currentList']
             
             break  # Exit the loop once the matching tab is found
         }
@@ -12980,7 +12980,7 @@ function Get-SelectedTweaks {
 
     $items = @()
 
-    foreach ($item in $sync.TweaksListView.Items)
+    foreach ($item in $itt.TweaksListView.Items)
     {
         if ($item -is [System.Windows.Controls.StackPanel]) {
 
@@ -12991,7 +12991,7 @@ function Get-SelectedTweaks {
 
                             if($innerChild.IsChecked)
                             {
-                                    foreach ($program in $sync.database.Tweaks)
+                                    foreach ($program in $itt.database.Tweaks)
                                     {
                                         if($innerChild.content -eq $program.Name)
                                         {
@@ -13023,7 +13023,7 @@ function Get-SelectedTweaks {
 }
 function ShowSelectedTweaks {
     
-    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.TweaksListView.Items)
+    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($itt.TweaksListView.Items)
 
     $filterPredicate = {
        param($item)
@@ -13053,9 +13053,9 @@ function Invoke-ApplyTweaks {
 
     try {
 
-        if($sync.ProcessRunning)
+        if($itt.ProcessRunning)
         {
-            $localizedMessageTemplate = $sync.database.locales.Controls.$($sync.Language).Pleasewait
+            $localizedMessageTemplate = $itt.database.locales.Controls.$($itt.Language).Pleasewait
             $msg = "$localizedMessageTemplate"
             [System.Windows.MessageBox]::Show($msg, "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
             return
@@ -13066,7 +13066,7 @@ function Invoke-ApplyTweaks {
 
             if($tweaks.Count -gt 0)
             {
-                $areyousuremsg = $sync.database.locales.Controls.$($sync.Language).ApplyMessage
+                $areyousuremsg = $itt.database.locales.Controls.$($itt.Language).ApplyMessage
                 $result = [System.Windows.MessageBox]::Show($areyousuremsg, "ITT | Emad Adel", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)
 
                 if($result -eq "Yes")
@@ -13221,10 +13221,10 @@ function Invoke-ApplyTweaks {
         
                             param($ApplyBtn,$icon,$Description,$Width)
                             
-                            $sync['window'].Dispatcher.Invoke([Action]{
-                                $sync.applyText.Text = "$ApplyBtn"
-                                $sync.applyBtn.Width = $Width
-                                $sync.applyIcon.Text = $icon
+                            $itt['window'].Dispatcher.Invoke([Action]{
+                                $itt.applyText.Text = "$ApplyBtn"
+                                $itt.applyBtn.Width = $Width
+                                $itt.applyIcon.Text = $icon
                             })
                         }
 
@@ -13323,8 +13323,8 @@ function Invoke-ApplyTweaks {
         
                         function Finish {
         
-                            $sync.TweaksListView.Dispatcher.Invoke([Action]{
-                                foreach ($item in $sync.TweaksListView.Items)
+                            $itt.TweaksListView.Dispatcher.Invoke([Action]{
+                                foreach ($item in $itt.TweaksListView.Items)
                                 {
                                     foreach ($child in $item.Children) {
                                         if ($child -is [System.Windows.Controls.StackPanel]) {
@@ -13332,8 +13332,8 @@ function Invoke-ApplyTweaks {
                                                 if ($innerChild -is [System.Windows.Controls.CheckBox]) {
                                 
                                                     $innerChild.IsChecked = $false
-                                                    $sync.TweaksListView.Clear()
-                                                    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.TweaksListView.Items)
+                                                    $itt.TweaksListView.Clear()
+                                                    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($itt.TweaksListView.Items)
                                                     $collectionView.Filter = $null
                                                 }
                                             }
@@ -13358,11 +13358,11 @@ function Invoke-ApplyTweaks {
                             [System.Windows.MessageBox]::Show($msg, $title, [System.Windows.MessageBoxButton]::$MessageBoxButton, [System.Windows.MessageBoxImage]::$MessageBoxImage)
                         }
 
-                            $applyBtn = $sync.database.locales.Controls.$($sync.Language).applyBtn
-                            $Applying = $sync.database.locales.Controls.$($sync.Language).Applying
+                            $applyBtn = $itt.database.locales.Controls.$($itt.Language).applyBtn
+                            $Applying = $itt.database.locales.Controls.$($itt.Language).Applying
                             UpdateUI -ApplyBtn "$applying" -icon " " -Width "150"
 
-                            $sync.ProcessRunning = $true
+                            $itt.ProcessRunning = $true
 
                             foreach ($app in $tweaks) {
                                 switch ($app.Type) {
@@ -13402,17 +13402,17 @@ function Invoke-ApplyTweaks {
                             # Displaying the names of the selected apps
                             $selectedAppNames = $tweaks | ForEach-Object { $_.Name }
                             UpdateUI -ApplyBtn "$applyBtn" -icon " " -Width "100"
-                            $sync.ProcessRunning = $False
+                            $itt.ProcessRunning = $False
                             Finish
-                            Send-Tweaks -FirebaseUrl $sync.firebaseUrl -Key "$env:COMPUTERNAME $env:USERNAME" -List $selectedAppNames
+                            Send-Tweaks -FirebaseUrl $itt.firebaseUrl -Key "$env:COMPUTERNAME $env:USERNAME" -List $selectedAppNames
                             Notify -title "ITT Emad Adel" -msg "Applied done" -icon "Info" -time 30000
                     }
                 }
                 else
                 {
                     # Uncheck all checkboxes in $list if user chose [NO]
-                    $sync.TweaksListView.Dispatcher.Invoke([Action]{
-                        foreach ($item in $sync.TweaksListView.Items) {
+                    $itt.TweaksListView.Dispatcher.Invoke([Action]{
+                        foreach ($item in $itt.TweaksListView.Items) {
                             foreach ($child in $item.Children) {
                                 if ($child -is [System.Windows.Controls.StackPanel]) {
                                     foreach ($innerChild in $child.Children) {
@@ -13423,7 +13423,7 @@ function Invoke-ApplyTweaks {
                                 }
                             }
                         }
-                        $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.TweaksListView.Items)
+                        $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($itt.TweaksListView.Items)
                         $collectionView.Filter = $null
                     })
                 }
@@ -13431,12 +13431,12 @@ function Invoke-ApplyTweaks {
             else
             {
                # Uncheck all checkboxes in $list
-                $sync.category.SelectedIndex = 0
-                $sync.TweaksListView.Dispatcher.Invoke({
-                    $sync.AppsListView.Clear()
-                    [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.TweaksListView.Items).Filter = $null
+                $itt.category.SelectedIndex = 0
+                $itt.TweaksListView.Dispatcher.Invoke({
+                    $itt.AppsListView.Clear()
+                    [System.Windows.Data.CollectionViewSource]::GetDefaultView($itt.TweaksListView.Items).Filter = $null
                 })
-                $localizedMessageTemplate = $sync.database.locales.Controls.$($sync.Language).chosetweak
+                $localizedMessageTemplate = $itt.database.locales.Controls.$($itt.Language).chosetweak
                 [System.Windows.MessageBox]::Show("$localizedMessageTemplate", "ITT | Emad Adel", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
             }
     }
@@ -13446,7 +13446,7 @@ function Invoke-ApplyTweaks {
 }
 function Get-SelectedApps {
     $items = @()
-    foreach ($item in $sync.AppsListView.Items)
+    foreach ($item in $itt.AppsListView.Items)
     {
         if ($item -is [System.Windows.Controls.StackPanel]) {
 
@@ -13457,7 +13457,7 @@ function Get-SelectedApps {
 
                             if($innerChild.IsChecked)
                             {
-                                    foreach ($program in $sync.database.Applications)
+                                    foreach ($program in $itt.database.Applications)
                                     {
                                         if($innerChild.content -eq $program.Name)
                                         {
@@ -13485,7 +13485,7 @@ function Get-SelectedApps {
     return $items 
 }
 function FilteredSelectedItems {
-    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.AppsListView.Items)
+    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($itt.AppsListView.Items)
 
     $filterPredicate = {
         param($item)
@@ -13514,22 +13514,22 @@ function Invoke-Install {
     
     try {
         
-        if($sync.ProcessRunning)
+        if($itt.ProcessRunning)
         {
-            $localizedMessageTemplate = $sync.database.locales.Controls.$($sync.Language).Pleasewait
+            $localizedMessageTemplate = $itt.database.locales.Controls.$($itt.Language).Pleasewait
             $msg = "$localizedMessageTemplate"
             [System.Windows.MessageBox]::Show($msg, "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
             return
         }
     
-        $sync.category.SelectedIndex = 0
+        $itt.category.SelectedIndex = 0
         FilteredSelectedItems
         $selectedApps += Get-SelectedApps
     
         if($selectedApps.Count -gt 0)
         {
             # Retrieve localized messages for confirmation dialog and UI elements
-            $areyousuremsg = $sync.database.locales.Controls.$($sync.Language).InstallMessage
+            $areyousuremsg = $itt.database.locales.Controls.$($itt.Language).InstallMessage
             $result = [System.Windows.MessageBox]::Show($areyousuremsg, "ITT | Emad Adel", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)
 
             if($result -eq "Yes")
@@ -13573,10 +13573,10 @@ function Invoke-Install {
             
                             param($InstallBtn,$icon,$Description,$Width)
                         
-                            $sync['window'].Dispatcher.Invoke([Action]{
-                                $sync.installText.Text = "$InstallBtn"
-                                $sync.installBtn.Width = $Width
-                                $sync.installIcon.Text = $icon
+                            $itt['window'].Dispatcher.Invoke([Action]{
+                                $itt.installText.Text = "$InstallBtn"
+                                $itt.installBtn.Width = $Width
+                                $itt.installIcon.Text = $icon
                             })
                         }
             
@@ -13925,8 +13925,8 @@ function Invoke-Install {
             
                         function Finish {
             
-                            $sync.AppsListView.Dispatcher.Invoke([Action]{
-                                foreach ($item in $sync.AppsListView.Items)
+                            $itt.AppsListView.Dispatcher.Invoke([Action]{
+                                foreach ($item in $itt.AppsListView.Items)
                                 {
                                     foreach ($child in $item.Children) {
                                         if ($child -is [System.Windows.Controls.StackPanel]) {
@@ -13934,8 +13934,8 @@ function Invoke-Install {
                                                 if ($innerChild -is [System.Windows.Controls.CheckBox]) {
             
                                                     $innerChild.IsChecked = $false
-                                                    $sync.AppsListView.Clear()
-                                                    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.AppsListView.Items)
+                                                    $itt.AppsListView.Clear()
+                                                    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($itt.AppsListView.Items)
                                                     $collectionView.Filter = $null
                                                 }
                                             }
@@ -13948,17 +13948,17 @@ function Invoke-Install {
                             UpdateUI -InstallBtn "$installBtn" -icon " " -Width "100"
                             Notify -title "ITT Emad Adel" -msg "Installed successfully" -icon "Info" -time 30000
                             # Store the apps you'v selected
-                            Send-Apps -FirebaseUrl $sync.firebaseUrl -Key "$env:COMPUTERNAME $env:USERNAME" -List $selectedAppNames
+                            Send-Apps -FirebaseUrl $itt.firebaseUrl -Key "$env:COMPUTERNAME $env:USERNAME" -List $selectedAppNames
                         }
                         #===========================================================================
                         #endregion End function
                         #===========================================================================
 
                         # start ProcessRunning
-                        $sync.ProcessRunning = $true
+                        $itt.ProcessRunning = $true
                        
-                        $installBtn = $sync.database.locales.Controls.$($sync.Language).installBtn
-                        $downloading = $sync.database.locales.Controls.$($sync.Language).downloading
+                        $installBtn = $itt.database.locales.Controls.$($itt.Language).installBtn
+                        $downloading = $itt.database.locales.Controls.$($itt.Language).downloading
             
                         # Chancge Install Content "Downloading.."
                         UpdateUI -InstallBtn "$downloading" -icon " " -Width "150"
@@ -13993,7 +13993,7 @@ function Invoke-Install {
                         }
     
                         # End ProcessRunning
-                        $sync.ProcessRunning = $false
+                        $itt.ProcessRunning = $false
 
                         # Notify user of successful installation
                         Finish
@@ -14002,8 +14002,8 @@ function Invoke-Install {
             else
             {
                 # Uncheck all checkboxes in $list if user chose [NO]
-                $sync.AppsListView.Dispatcher.Invoke({
-                    foreach ($item in $sync.AppsListView.Items) {
+                $itt.AppsListView.Dispatcher.Invoke({
+                    foreach ($item in $itt.AppsListView.Items) {
                         $item.Children | ForEach-Object {
                             if ($_ -is [System.Windows.Controls.StackPanel]) {
                                 $_.Children | ForEach-Object {
@@ -14014,20 +14014,20 @@ function Invoke-Install {
                             }
                         }
                     }
-                    $sync.AppsListView.Clear()
-                    [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.AppsListView.Items).Filter = $null
+                    $itt.AppsListView.Clear()
+                    [System.Windows.Data.CollectionViewSource]::GetDefaultView($itt.AppsListView.Items).Filter = $null
                 })
             }
         }
         else
         {
             # Uncheck all checkboxes in $list
-            $sync.category.SelectedIndex = 0
-            $sync.AppsListView.Dispatcher.Invoke({
-                $sync.AppsListView.Clear()
-                [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.AppsListView.Items).Filter = $null
+            $itt.category.SelectedIndex = 0
+            $itt.AppsListView.Dispatcher.Invoke({
+                $itt.AppsListView.Clear()
+                [System.Windows.Data.CollectionViewSource]::GetDefaultView($itt.AppsListView.Items).Filter = $null
             })
-            $localizedMessageTemplate = $sync.database.locales.Controls.$($sync.Language).choseapp
+            $localizedMessageTemplate = $itt.database.locales.Controls.$($itt.Language).choseapp
             [System.Windows.MessageBox]::Show("$localizedMessageTemplate", "ITT | Emad Adel", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
         }
     }
@@ -14047,7 +14047,7 @@ function Invoke-Button {
     Switch -Wildcard ($action) {
 
         "installBtn" {
-            $sync.SearchInput.Text = $null
+            $itt.SearchInput.Text = $null
             Invoke-Install
             Debug-Message $action
         }
@@ -14059,12 +14059,12 @@ function Invoke-Button {
             ChangeTap $action
         }
         "category" {
-            FilterByCat($sync.category.SelectedItem.Content)
+            FilterByCat($itt.category.SelectedItem.Content)
             Debug-Message $action
         }
         "searchInput" {
             Search
-            $sync['window'].FindName('category').SelectedIndex = 0
+            $itt['window'].FindName('category').SelectedIndex = 0
             Debug-Message $action
         }
 
@@ -14249,7 +14249,7 @@ Function Invoke-DarkMode {
     Param($DarkMoveEnabled)
     Try{
 
-        $DarkMode = (Get-ItemProperty -Path $sync.registryPath -Name "DarkMode").DarkMode
+        $DarkMode = (Get-ItemProperty -Path $itt.registryPath -Name "DarkMode").DarkMode
 
 
         if ($DarkMoveEnabled -eq $false){
@@ -14257,7 +14257,7 @@ Function Invoke-DarkMode {
 
             if($DarkMode -eq "none")
             {
-                $sync['window'].Resources.MergedDictionaries.Add($sync['window'].FindResource("Dark"))
+                $itt['window'].Resources.MergedDictionaries.Add($itt['window'].FindResource("Dark"))
             }
         }
         else {
@@ -14265,7 +14265,7 @@ Function Invoke-DarkMode {
 
             if($DarkMode -eq "none")
             {
-                $sync['window'].Resources.MergedDictionaries.Add($sync['window'].FindResource("Light"))
+                $itt['window'].Resources.MergedDictionaries.Add($itt['window'].FindResource("Light"))
             }
         }
 
@@ -14382,21 +14382,21 @@ function About {
     # Load child window
     [xml]$about = $childXaml
     $childWindowReader = (New-Object System.Xml.XmlNodeReader $about)
-    $sync.about = [Windows.Markup.XamlReader]::Load($childWindowReader)
-    $sync["about"].Resources.MergedDictionaries.Add($sync["window"].FindResource($sync.CurretTheme))
+    $itt.about = [Windows.Markup.XamlReader]::Load($childWindowReader)
+    $itt["about"].Resources.MergedDictionaries.Add($itt["window"].FindResource($itt.CurretTheme))
     # Set version and link handlers
-    $sync.about.FindName('ver').Text = $sync.lastupdate
-    $sync.about.FindName("telegram").add_MouseLeftButtonDown({Start-Process("https://t.me/emadadel4")})
-    $sync.about.FindName("github").add_MouseLeftButtonDown({Start-Process("https://github.com/emadadel4")})
-    $sync.about.FindName("website").add_MouseLeftButtonDown({Start-Process("https://emadadel4.github.io")})
-    $sync.about.FindName("yt").add_MouseLeftButtonDown({Start-Process("https://youtube.com/@emadadel4")})
-    $sync.about.FindName("sourcecode").add_MouseLeftButtonDown({Start-Process("https://github.com/emadadel4/ITT")})
-    $sync.about.FindName("coffee").add_MouseLeftButtonDown({Start-Process("https://buymeacoffee.com/emadadel")})
+    $itt.about.FindName('ver').Text = $itt.lastupdate
+    $itt.about.FindName("telegram").add_MouseLeftButtonDown({Start-Process("https://t.me/emadadel4")})
+    $itt.about.FindName("github").add_MouseLeftButtonDown({Start-Process("https://github.com/emadadel4")})
+    $itt.about.FindName("website").add_MouseLeftButtonDown({Start-Process("https://emadadel4.github.io")})
+    $itt.about.FindName("yt").add_MouseLeftButtonDown({Start-Process("https://youtube.com/@emadadel4")})
+    $itt.about.FindName("sourcecode").add_MouseLeftButtonDown({Start-Process("https://github.com/emadadel4/ITT")})
+    $itt.about.FindName("coffee").add_MouseLeftButtonDown({Start-Process("https://buymeacoffee.com/emadadel")})
     # Set data context based on language
-    $locale = if ($sync.Language -eq "en") { "en" } else { "ar" }
-    $sync.about.DataContext = $sync.database.locales.Controls.$locale
+    $locale = if ($itt.Language -eq "en") { "en" } else { "ar" }
+    $itt.about.DataContext = $itt.database.locales.Controls.$locale
     # Show dialog
-    $sync.about.ShowDialog() | Out-Null
+    $itt.about.ShowDialog() | Out-Null
 }
 function ITTShortcut {
     # URL of the icon file
@@ -14428,7 +14428,7 @@ function DisplayQuotes  {
     Invoke-ScriptBlock -ScriptBlock {
 
         # Define the JSON file path
-        $jsonFilePath = $sync.database.Quotes
+        $jsonFilePath = $itt.database.Quotes
 
         # Function to shuffle an array
         function ShuffleArray {
@@ -14456,11 +14456,11 @@ function DisplayQuotes  {
 
         # Function to display welcome text
         function Display-WelcomeText {
-            $sync.Quotes.Dispatcher.Invoke([Action]{
+            $itt.Quotes.Dispatcher.Invoke([Action]{
 
                 $fullCulture = (Get-ItemPropertyValue -Path "HKCU:\Control Panel\International" -Name "LocaleName")
                 $shortCulture = $fullCulture.Split('-')[0]
-                $sync.Quotes.Text = $sync.database.locales.Controls.$($sync.Language).welcome
+                $itt.Quotes.Text = $itt.database.locales.Controls.$($itt.Language).welcome
                
             })
         }
@@ -14473,8 +14473,8 @@ function DisplayQuotes  {
         # Loop through shuffled names and display them
         do {
             foreach ($name in $shuffledNames) {
-                $sync.Quotes.Dispatcher.Invoke([Action]{
-                    $sync.Quotes.Text = "`“$name`”"
+                $itt.Quotes.Dispatcher.Invoke([Action]{
+                    $itt.Quotes.Text = "`“$name`”"
                 })
                 # Adjust the sleep time as needed
                 Start-Sleep -Seconds 18 
@@ -14485,9 +14485,9 @@ function DisplayQuotes  {
 function Search {
 
     # Retrieves the search input, converts it to lowercase, and filters the list based on the input
-    $filter = $sync.searchInput.Text.ToLower() -replace '[^\p{L}\p{N}]', ''
+    $filter = $itt.searchInput.Text.ToLower() -replace '[^\p{L}\p{N}]', ''
 
-    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync['window'].FindName($sync.currentList).Items)
+    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($itt['window'].FindName($itt.currentList).Items)
     
     $collectionView.Filter = {
         param($item)
@@ -14533,11 +14533,11 @@ function FilterByCat {
     )
 
     # Update DataContext
-    #$sync["window"].DataContext = $sync.database.locales.Controls.$($sync.Language)
+    #$itt["window"].DataContext = $itt.database.locales.Controls.$($itt.Language)
 
     # if user is on another tab, return to the apps list
-    $sync['window'].FindName('apps').IsSelected = $true
-    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.AppsListView.Items)
+    $itt['window'].FindName('apps').IsSelected = $true
+    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($itt.AppsListView.Items)
 
     # Define the filter predicate
     $filterPredicate = {
@@ -14562,41 +14562,41 @@ function FilterByCat {
 
     if ($validCategories -contains $Cat) {
         # Apply the filter to the collection view
-        $sync.AppsListView.Clear()
+        $itt.AppsListView.Clear()
         $collectionView.Filter = $filterPredicate
     }
     else {
         # Clear the filter if selected category is not in the predefined list
-        $sync.AppsListView.Clear()
+        $itt.AppsListView.Clear()
         $collectionView.Filter = $null
     }
     
     # Scroll to the top
-    $sync.AppsListView.ScrollIntoView($sync.AppsListView.Items[0])
+    $itt.AppsListView.ScrollIntoView($itt.AppsListView.Items[0])
 }
 function ClearFilter {
-    $sync.AppsListView.Clear()
-    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.AppsListView.Items)
+    $itt.AppsListView.Clear()
+    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($itt.AppsListView.Items)
     $collectionView.Filter = $null
 }
 function PlayMusic {
 
     # Function to play an audio track
     function PlayAudio($track) {
-        $mediaItem = $sync.mediaPlayer.newMedia($track)
-        $sync.mediaPlayer.currentPlaylist.appendItem($mediaItem)
-        $sync.mediaPlayer.controls.play()
+        $mediaItem = $itt.mediaPlayer.newMedia($track)
+        $itt.mediaPlayer.currentPlaylist.appendItem($mediaItem)
+        $itt.mediaPlayer.controls.play()
     }
 
     # Shuffle the playlist and create a new playlist
     function GetShuffledTracks {
 
         # Play Favorite Music in Special Date
-        if ($sync.Date.Month -eq 9 -and $sync.Date.Day -eq 1) {
-            return $sync.database.OST.Favorite | Get-Random -Count $sync.database.OST.Favorite.Count
+        if ($itt.Date.Month -eq 9 -and $itt.Date.Day -eq 1) {
+            return $itt.database.OST.Favorite | Get-Random -Count $itt.database.OST.Favorite.Count
         }
         else {
-            return $sync.database.OST.Tracks | Get-Random -Count $sync.database.OST.Tracks.Count
+            return $itt.database.OST.Tracks | Get-Random -Count $itt.database.OST.Tracks.Count
         }
     }
 
@@ -14608,7 +14608,7 @@ function PlayMusic {
         foreach ($track in $shuffledTracks) {
             PlayAudio -track $track.url
             # Wait for the track to finish playing
-            while ($sync.mediaPlayer.playState -in 3, 6) {
+            while ($itt.mediaPlayer.playState -in 3, 6) {
                 Start-Sleep -Milliseconds 100
             }
         }
@@ -14621,33 +14621,33 @@ function PlayMusic {
 # Mute the music by setting the volume to the specified value
 function MuteMusic {
     param($value)
-    $sync.mediaPlayer.settings.volume = $value
+    $itt.mediaPlayer.settings.volume = $value
     # Save the volume setting to the registry for persistence
-    Set-ItemProperty -Path $sync.registryPath -Name "Music" -Value "$value" -Force
+    Set-ItemProperty -Path $itt.registryPath -Name "Music" -Value "$value" -Force
 }
 
 # Unmute the music by setting the volume to the specified value
 function UnmuteMusic {
     param($value)
-    $sync.mediaPlayer.settings.volume = $value
+    $itt.mediaPlayer.settings.volume = $value
     # Save the volume setting to the registry for persistence
-    Set-ItemProperty -Path $sync.registryPath -Name "Music" -Value "$value" -Force
+    Set-ItemProperty -Path $itt.registryPath -Name "Music" -Value "$value" -Force
 }
 
 # Stop the music and clean up resources
 function StopMusic {
-    $sync.mediaPlayer.controls.stop()    # Stop the media player
-    $sync.mediaPlayer = $null            # Clear the media player object
+    $itt.mediaPlayer.controls.stop()    # Stop the media player
+    $itt.mediaPlayer = $null            # Clear the media player object
     $script:powershell.Dispose()         # Dispose of the PowerShell object
-    $sync.runspace.Dispose()             # Dispose of the runspace
-    $sync.runspace.Close()               # Close the runspace
+    $itt.runspace.Dispose()             # Dispose of the runspace
+    $itt.runspace.Close()               # Close the runspace
 }
 
 # Stop all runspaces, stop the music, and exit the process
 function StopAllRunspace {
     $script:powershell.Dispose()         # Dispose of the PowerShell object
-    $sync.runspace.Dispose()             # Dispose of the runspace
-    $sync.runspace.Close()               # Close the runspace
+    $itt.runspace.Dispose()             # Dispose of the runspace
+    $itt.runspace.Close()               # Close the runspace
     $script:powershell.Stop()            # Stop the PowerShell script
     StopMusic                            # Stop the music and clean up resources
     $newProcess.exit                     # Exit the process
@@ -14660,16 +14660,16 @@ function Set-Language {
     )
 
     # Set DataContext of the window to the specified language
-    $sync["window"].DataContext = $sync.database.locales.Controls.$($lang)
+    $itt["window"].DataContext = $itt.database.locales.Controls.$($lang)
 
     # Set registry value for the language
-    Set-ItemProperty -Path $sync.registryPath  -Name "locales" -Value "$lang" -Force
+    Set-ItemProperty -Path $itt.registryPath  -Name "locales" -Value "$lang" -Force
 }
 function ToggleTheme {
     
     try {
 
-        if ($sync.searchInput = $sync['window'].FindName('themeText').IsChecked -eq $true)
+        if ($itt.searchInput = $itt['window'].FindName('themeText').IsChecked -eq $true)
         {
             Switch-ToDarkMode
         } 
@@ -14683,13 +14683,13 @@ function ToggleTheme {
         Write-Host "Error toggling theme: $_"
     }
 
-    $sync['window'].FindName('themeText').IsChecked = -not $sync['window'].FindName('themeText').IsChecked
+    $itt['window'].FindName('themeText').IsChecked = -not $itt['window'].FindName('themeText').IsChecked
 
 }
 function Switch-ToDarkMode {
     try {
 
-        $theme = $sync['window'].FindResource("Dark")
+        $theme = $itt['window'].FindResource("Dark")
         Update-Theme $theme "true"
     } catch {
         Write-Host "Error switching to dark mode: $_"
@@ -14697,32 +14697,32 @@ function Switch-ToDarkMode {
 }
 function Switch-ToLightMode {
     try {
-        $theme = $sync['window'].FindResource("Light")
+        $theme = $itt['window'].FindResource("Light")
         Update-Theme $theme "false"
     } catch {
         Write-Host "Error switching to light mode: $_"
     }
 }
 function Update-Theme ($theme, $mode) {
-    $sync['window'].Resources.MergedDictionaries.Clear()
-    $sync['window'].Resources.MergedDictionaries.Add($theme)
-    Set-ItemProperty -Path $sync.registryPath -Name "DarkMode" -Value $mode -Force
+    $itt['window'].Resources.MergedDictionaries.Clear()
+    $itt['window'].Resources.MergedDictionaries.Add($theme)
+    Set-ItemProperty -Path $itt.registryPath -Name "DarkMode" -Value $mode -Force
 
 }
 function SwitchToSystem {
 
     try {
 
-        Set-ItemProperty -Path $sync.registryPath  -Name "DarkMode" -Value "none" -Force
+        Set-ItemProperty -Path $itt.registryPath  -Name "DarkMode" -Value "none" -Force
 
         $AppsTheme = (Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize" -Name "AppsUseLightTheme")
 
         switch ($AppsTheme) {
             "0" {
-                $sync['window'].Resources.MergedDictionaries.Add($sync['window'].FindResource("Dark"))
+                $itt['window'].Resources.MergedDictionaries.Add($itt['window'].FindResource("Dark"))
             }
             "1" {
-                $sync['window'].Resources.MergedDictionaries.Add($sync['window'].FindResource("Light"))
+                $itt['window'].Resources.MergedDictionaries.Add($itt['window'].FindResource("Light"))
             }
             Default {
                 Write-Host "Unknown theme value: $AppsTheme"
@@ -14748,17 +14748,17 @@ function Show-Event {
     [xml]$event = $EventXaml
 
     $EventWindowReader = (New-Object System.Xml.XmlNodeReader $event)
-    $sync.event = [Windows.Markup.XamlReader]::Load($EventWindowReader)
-    $sync["event"].Resources.MergedDictionaries.Add($sync["window"].FindResource($sync.CurretTheme))
-    $sync.event.title = "ITT | $title"
-    $sync.event.Height = "$WindowHeight"
-    $sync.event.Width = "$WindowWidth"
+    $itt.event = [Windows.Markup.XamlReader]::Load($EventWindowReader)
+    $itt["event"].Resources.MergedDictionaries.Add($itt["window"].FindResource($itt.CurretTheme))
+    $itt.event.title = "ITT | $title"
+    $itt.event.Height = "$WindowHeight"
+    $itt.event.Width = "$WindowWidth"
 
     # Set new values
-    $titleTextBlock = $sync.event.FindName('title')
-    $subtitleTextBlock = $sync.event.FindName('Subtitle')
-    $tutorialImage = $sync.event.FindName('TutorialImage')
-    $mainStackPanel = $sync.event.FindName('MainStackPanel')
+    $titleTextBlock = $itt.event.FindName('title')
+    $subtitleTextBlock = $itt.event.FindName('Subtitle')
+    $tutorialImage = $itt.event.FindName('TutorialImage')
+    $mainStackPanel = $itt.event.FindName('MainStackPanel')
 
     # Switch-like structure using switch statement
     switch ($day) {
@@ -14768,7 +14768,7 @@ function Show-Event {
             $titleTextBlock.Text = "$title"
             $tutorialImage.Source = [System.Windows.Media.Imaging.BitmapImage]::new([Uri]::new($image))
             $subtitleTextBlock.Text = "$description"
-            $sync.event.FindName('DisablePopup').Text = "Happy birthday day Emad"
+            $itt.event.FindName('DisablePopup').Text = "Happy birthday day Emad"
             $tutorialImage.Height = $ImageHeight
         }
         "NewYear" {
@@ -14781,7 +14781,7 @@ function Show-Event {
         Default {
             # Default case: update text blocks
 
-            if($sync.Language -ne "ar")
+            if($itt.Language -ne "ar")
             {
                 $subtitleTextBlock.TextAlignment = "Left"
                 $titleTextBlock.Text = "$title '$env:USERNAME'" 
@@ -14806,31 +14806,31 @@ function Show-Event {
     }
 
 
-    $sync.event.FindName("DisablePopup").add_MouseLeftButtonDown({
+    $itt.event.FindName("DisablePopup").add_MouseLeftButtonDown({
         DisablePopup
-        $sync.event.Close()
+        $itt.event.Close()
     })
 
     # Show dialog
-    $sync.event.ShowDialog() | Out-Null
+    $itt.event.ShowDialog() | Out-Null
 }
 
 # Function to check current date and call Show-Event
 function Check-Date {
 
-    $watchdemo = $sync.database.locales.Controls.$($sync.Language).watchdemo
-    $happybirthday = $sync.database.locales.Controls.$($sync.Language).happybirthday
-    $myplaylist = $sync.database.locales.Controls.$($sync.Language).myplaylist
-    $subs = $sync.database.locales.Controls.$($sync.Language).Subtitle
+    $watchdemo = $itt.database.locales.Controls.$($itt.Language).watchdemo
+    $happybirthday = $itt.database.locales.Controls.$($itt.Language).happybirthday
+    $myplaylist = $itt.database.locales.Controls.$($itt.Language).myplaylist
+    $subs = $itt.database.locales.Controls.$($itt.Language).Subtitle
 
 
-    if ($sync.Date.Month -eq 9 -and $sync.Date.Day -eq 1) 
+    if ($itt.Date.Month -eq 9 -and $itt.Date.Day -eq 1) 
     {
         Show-Event -image "https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/happy.jpg" -ImageHeight 200 -title "$happybirthday" -description "$myplaylist" -day "Birthday" -WindowHeight 455 -WindowWidth 555
     } 
     else 
     {
-        if($sync.PopupWindow -eq "off")
+        if($itt.PopupWindow -eq "off")
         {
             return
         }   
@@ -14840,7 +14840,7 @@ function Check-Date {
 }
 
 function DisablePopup {
-    Set-ItemProperty -Path $sync.registryPath  -Name "PopupWindow" -Value "off" -Force
+    Set-ItemProperty -Path $itt.registryPath  -Name "PopupWindow" -Value "off" -Force
 }
 #===========================================================================
 #region Select elements with a Name attribute using XPath and iterate over them
@@ -14849,10 +14849,10 @@ function DisablePopup {
 # Select elements with a Name attribute and iterate
 $xaml.SelectNodes("//*[@Name]") | ForEach-Object {
     $name = $_.Name
-    $element = $sync["window"].FindName($name)
+    $element = $itt["window"].FindName($name)
 
     if ($element) {
-        $sync[$name] = $element
+        $itt[$name] = $element
 
         # Add event handlers based on element type
         switch ($element.GetType().Name) {
@@ -14890,7 +14890,7 @@ $xaml.SelectNodes("//*[@Name]") | ForEach-Object {
 $onClosingEvent = {
     param($s, $c)
 
-    $exitDialog = $sync.database.locales.Controls.$($sync.Language).exit
+    $exitDialog = $itt.database.locales.Controls.$($itt.Language).exit
 
     # Show confirmation message box
     $result = [System.Windows.MessageBox]::Show($exitDialog, "Confirmation", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)
@@ -14904,7 +14904,7 @@ $onClosingEvent = {
 }
 
 # Handle the Loaded event
-$sync["window"].Add_ContentRendered({
+$itt["window"].Add_ContentRendered({
     Startup
     DisplayQuotes | Out-Null
     PlayMusic | Out-Null
@@ -14912,10 +14912,10 @@ $sync["window"].Add_ContentRendered({
 })
 
 # Close Event handler
-$sync["window"].add_Closing($onClosingEvent)
+$itt["window"].add_Closing($onClosingEvent)
 
 # Show Window
-$sync["window"].ShowDialog() | Out-Null
+$itt["window"].ShowDialog() | Out-Null
 
 #===========================================================================
 #endregion End Main Functions

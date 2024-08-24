@@ -10,7 +10,7 @@ function Invoke-Button {
     Switch -Wildcard ($action) {
 
         "installBtn" {
-            $sync.SearchInput.Text = $null
+            $itt.SearchInput.Text = $null
             Invoke-Install
             Debug-Message $action
         }
@@ -22,12 +22,12 @@ function Invoke-Button {
             ChangeTap $action
         }
         "category" {
-            FilterByCat($sync.category.SelectedItem.Content)
+            FilterByCat($itt.category.SelectedItem.Content)
             Debug-Message $action
         }
         "searchInput" {
             Search
-            $sync['window'].FindName('category').SelectedIndex = 0
+            $itt['window'].FindName('category').SelectedIndex = 0
             Debug-Message $action
         }
 

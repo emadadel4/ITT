@@ -2,7 +2,7 @@
 Add-Type -AssemblyName System.Windows.Forms
 
 # Synchronized Hashtable for shared variables
-$sync = [Hashtable]::Synchronized(@{
+$itt = [Hashtable]::Synchronized(@{
     database       = @{}
     ProcessRunning = $false
     lastupdate     = "#{replaceme}"
@@ -33,4 +33,4 @@ if (-not $principal.IsInRole($administrator)) {
 $Host.UI.RawUI.WindowTitle = "ITT (Install and Tweaks Tool) - Admin"
 
 # Initialize media player only when necessary
-$sync.mediaPlayer = New-Object -ComObject WMPlayer.OCX
+$itt.mediaPlayer = New-Object -ComObject WMPlayer.OCX

@@ -11,8 +11,8 @@ param (
 )
 
 # Initialize synchronized hashtable
-$sync = [Hashtable]::Synchronized(@{})
-$sync.database = @{}
+$itt = [Hashtable]::Synchronized(@{})
+$itt.database = @{}
 
 # write content to output script
 function WriteToScript {
@@ -134,17 +134,17 @@ function Sync-JsonFiles {
 
     Get-ChildItem $DatabaseDirectory | Where-Object {$_.extension -eq ".json"} | ForEach-Object {
         $json = (Get-Content $_.FullName -Raw).replace("'", "''")
-        $sync.database.$($_.BaseName) = $json | ConvertFrom-Json
-        Write-Output "`$sync.database.$($_.BaseName) = '$json' | ConvertFrom-Json" | Out-File $OutputScriptPath -Append -Encoding default
+        $itt.database.$($_.BaseName) = $json | ConvertFrom-Json
+        Write-Output "`$itt.database.$($_.BaseName) = '$json' | ConvertFrom-Json" | Out-File $OutputScriptPath -Append -Encoding default
     }
 }
 
 # Display the number of items in json files
 function CountItems {
-    Write-Host  "`n` $($sync.database.Applications.Count) Apps" -ForegroundColor Yellow
-    Write-Host  " $($sync.database.Tweaks.Count) Tweaks" -ForegroundColor Yellow
-    Write-Host  " $($sync.database.Quotes.Q.Count) Quotes" -ForegroundColor Yellow
-    Write-Host  " $($sync.database.OST.Tracks.Count) Tracks `n` " -ForegroundColor Yellow
+    Write-Host  "`n` $($itt.database.Applications.Count) Apps" -ForegroundColor Yellow
+    Write-Host  " $($itt.database.Tweaks.Count) Tweaks" -ForegroundColor Yellow
+    Write-Host  " $($itt.database.Quotes.Q.Count) Quotes" -ForegroundColor Yellow
+    Write-Host  " $($itt.database.OST.Tracks.Count) Tracks `n` " -ForegroundColor Yellow
 }
 
 
@@ -246,9 +246,9 @@ WriteToScript -Content @"
         Write-Error "An error occurred while processing the XAML content: $($_.Exception.Message)"
     }
    
-    $AppsCheckboxes = GenerateCheckboxes -Items $sync.database.Applications -ContentField "Name" -TagField "Category" -IsCheckedField "check"
-    $TweaksCheckboxes = GenerateCheckboxes -Items $sync.database.Tweaks -ContentField "Name"
-    $SettingsCheckboxes = GenerateCheckboxes -Items $sync.database.Settings -ContentField "Content" -NameField "Name" -ToggleField "Style="{StaticResource ToggleSwitchStyle}""
+    $AppsCheckboxes = GenerateCheckboxes -Items $itt.database.Applications -ContentField "Name" -TagField "Category" -IsCheckedField "check"
+    $TweaksCheckboxes = GenerateCheckboxes -Items $itt.database.Tweaks -ContentField "Name"
+    $SettingsCheckboxes = GenerateCheckboxes -Items $itt.database.Settings -ContentField "Content" -NameField "Name" -ToggleField "Style="{StaticResource ToggleSwitchStyle}""
 
 
     $XamlContent = $XamlContent -replace "{{Apps}}", $AppsCheckboxes 

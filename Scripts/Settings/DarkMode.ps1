@@ -3,7 +3,7 @@ Function Invoke-DarkMode {
     Param($DarkMoveEnabled)
     Try{
 
-        $DarkMode = (Get-ItemProperty -Path $sync.registryPath -Name "DarkMode").DarkMode
+        $DarkMode = (Get-ItemProperty -Path $itt.registryPath -Name "DarkMode").DarkMode
 
 
         if ($DarkMoveEnabled -eq $false){
@@ -11,7 +11,7 @@ Function Invoke-DarkMode {
 
             if($DarkMode -eq "none")
             {
-                $sync['window'].Resources.MergedDictionaries.Add($sync['window'].FindResource("Dark"))
+                $itt['window'].Resources.MergedDictionaries.Add($itt['window'].FindResource("Dark"))
             }
         }
         else {
@@ -19,7 +19,7 @@ Function Invoke-DarkMode {
 
             if($DarkMode -eq "none")
             {
-                $sync['window'].Resources.MergedDictionaries.Add($sync['window'].FindResource("Light"))
+                $itt['window'].Resources.MergedDictionaries.Add($itt['window'].FindResource("Light"))
             }
         }
 

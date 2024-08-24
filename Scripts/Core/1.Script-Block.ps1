@@ -9,7 +9,7 @@ function Invoke-ScriptBlock {
     # Add the script block and arguments to the runspace
     $script:powershell.AddScript($ScriptBlock)
     $script:powershell.AddArgument($ArgumentList)
-    $script:powershell.RunspacePool = $sync.runspace  # Set the runspace pool
+    $script:powershell.RunspacePool = $itt.runspace  # Set the runspace pool
 
     # Begin running the script block asynchronously
     $script:handle = $script:powershell.BeginInvoke()
@@ -18,8 +18,8 @@ function Invoke-ScriptBlock {
     if ($script:handle.IsCompleted) {
         $script:powershell.EndInvoke($script:handle)  # End the invocation
         $script:powershell.Dispose()                  # Dispose of the PowerShell instance
-        $sync.runspace.Dispose()                      # Dispose of the runspace
-        $sync.runspace.Close()                        # Close the runspace
+        $itt.runspace.Dispose()                      # Dispose of the runspace
+        $itt.runspace.Close()                        # Close the runspace
         [System.GC]::Collect()                        # Force garbage collection to free memory
     }
 }
