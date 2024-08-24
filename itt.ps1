@@ -40,9 +40,11 @@ $currentPid = [System.Security.Principal.WindowsIdentity]::GetCurrent()
 $principal = [System.Security.Principal.WindowsPrincipal]$currentPid
 $administrator = [System.Security.Principal.WindowsBuiltInRole]::Administrator
 
-if (-not $principal.IsInRole($administrator))
-{
-    Write-Host "Please run itt as admin"
+If (([Security.Principal.WindowsIdentity]::GetCurrent()).Owner.Value -ne "S-1-5-32-544") {
+    Write-Host "===========================================" -Foregroundcolor Red
+    Write-Host "-- Scripts must be run as Administrator ---" -Foregroundcolor Red
+    Write-Host "-- Right-Click Start -> Terminal(Admin) ---" -Foregroundcolor Red
+    Write-Host "===========================================" -Foregroundcolor Red
     break
 }
 
