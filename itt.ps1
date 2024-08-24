@@ -12563,19 +12563,10 @@ $itt.InstallBtn = $itt["window"].FindName("installBtn")
 $itt.ApplyBtn = $itt["window"].FindName("applyBtn")
 $itt.Category = $itt["window"].FindName("category")
 $itt.SearchInput = $itt["window"].FindName("searchInput")
-
-
 $itt.installText = $itt["window"].FindName("installText")
 $itt.installIcon = $itt["window"].FindName("installIcon")
-
 $itt.applyText = $itt["window"].FindName("applyText")
 $itt.applyIcon = $itt["window"].FindName("applyIcon")
-
-$itt.window = $itt["window"]
-
-
-
-
 #===========================================================================
 #endregion End loadXmal
 #===========================================================================
