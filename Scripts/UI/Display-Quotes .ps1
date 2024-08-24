@@ -3,7 +3,7 @@ function DisplayQuotes  {
     Invoke-ScriptBlock -ScriptBlock {
 
         # Define the JSON file path
-        $jsonFilePath = $sync.database.Quotes
+        $jsonFilePath = $itt.database.Quotes
 
         # Function to shuffle an array
         function ShuffleArray {
@@ -31,11 +31,11 @@ function DisplayQuotes  {
 
         # Function to display welcome text
         function Display-WelcomeText {
-            $sync.Quotes.Dispatcher.Invoke([Action]{
+            $itt.Quotes.Dispatcher.Invoke([Action]{
 
                 $fullCulture = (Get-ItemPropertyValue -Path "HKCU:\Control Panel\International" -Name "LocaleName")
                 $shortCulture = $fullCulture.Split('-')[0]
-                $sync.Quotes.Text = $sync.database.locales.Controls.$($sync.Language).welcome
+                $itt.Quotes.Text = $itt.database.locales.Controls.$($itt.Language).welcome
                
             })
         }
@@ -48,8 +48,8 @@ function DisplayQuotes  {
         # Loop through shuffled names and display them
         do {
             foreach ($name in $shuffledNames) {
-                $sync.Quotes.Dispatcher.Invoke([Action]{
-                    $sync.Quotes.Text = "`“$name`”"
+                $itt.Quotes.Dispatcher.Invoke([Action]{
+                    $itt.Quotes.Text = "`“$name`”"
                 })
                 # Adjust the sleep time as needed
                 Start-Sleep -Seconds 18 

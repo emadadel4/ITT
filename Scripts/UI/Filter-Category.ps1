@@ -1,9 +1,9 @@
 function Search {
 
     # Retrieves the search input, converts it to lowercase, and filters the list based on the input
-    $filter = $sync.searchInput.Text.ToLower() -replace '[^\p{L}\p{N}]', ''
+    $filter = $itt.searchInput.Text.ToLower() -replace '[^\p{L}\p{N}]', ''
 
-    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync['window'].FindName($sync.currentList).Items)
+    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($itt['window'].FindName($itt.currentList).Items)
     
     $collectionView.Filter = {
         param($item)
@@ -49,11 +49,11 @@ function FilterByCat {
     )
 
     # Update DataContext
-    #$sync["window"].DataContext = $sync.database.locales.Controls.$($sync.Language)
+    #$itt["window"].DataContext = $itt.database.locales.Controls.$($itt.Language)
 
     # if user is on another tab, return to the apps list
-    $sync['window'].FindName('apps').IsSelected = $true
-    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.AppsListView.Items)
+    $itt['window'].FindName('apps').IsSelected = $true
+    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($itt.AppsListView.Items)
 
     # Define the filter predicate
     $filterPredicate = {
@@ -78,20 +78,20 @@ function FilterByCat {
 
     if ($validCategories -contains $Cat) {
         # Apply the filter to the collection view
-        $sync.AppsListView.Clear()
+        $itt.AppsListView.Clear()
         $collectionView.Filter = $filterPredicate
     }
     else {
         # Clear the filter if selected category is not in the predefined list
-        $sync.AppsListView.Clear()
+        $itt.AppsListView.Clear()
         $collectionView.Filter = $null
     }
     
     # Scroll to the top
-    $sync.AppsListView.ScrollIntoView($sync.AppsListView.Items[0])
+    $itt.AppsListView.ScrollIntoView($itt.AppsListView.Items[0])
 }
 function ClearFilter {
-    $sync.AppsListView.Clear()
-    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.AppsListView.Items)
+    $itt.AppsListView.Clear()
+    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($itt.AppsListView.Items)
     $collectionView.Filter = $null
 }

@@ -1,6 +1,6 @@
 function Get-SelectedApps {
     $items = @()
-    foreach ($item in $sync.AppsListView.Items)
+    foreach ($item in $itt.AppsListView.Items)
     {
         if ($item -is [System.Windows.Controls.StackPanel]) {
 
@@ -11,7 +11,7 @@ function Get-SelectedApps {
 
                             if($innerChild.IsChecked)
                             {
-                                    foreach ($program in $sync.database.Applications)
+                                    foreach ($program in $itt.database.Applications)
                                     {
                                         if($innerChild.content -eq $program.Name)
                                         {
@@ -39,7 +39,7 @@ function Get-SelectedApps {
     return $items 
 }
 function FilteredSelectedItems {
-    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.AppsListView.Items)
+    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($itt.AppsListView.Items)
 
     $filterPredicate = {
         param($item)
@@ -68,22 +68,22 @@ function Invoke-Install {
     
     try {
         
-        if($sync.ProcessRunning)
+        if($itt.ProcessRunning)
         {
-            $localizedMessageTemplate = $sync.database.locales.Controls.$($sync.Language).Pleasewait
+            $localizedMessageTemplate = $itt.database.locales.Controls.$($itt.Language).Pleasewait
             $msg = "$localizedMessageTemplate"
             [System.Windows.MessageBox]::Show($msg, "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
             return
         }
     
-        $sync.category.SelectedIndex = 0
+        $itt.category.SelectedIndex = 0
         FilteredSelectedItems
         $selectedApps += Get-SelectedApps
     
         if($selectedApps.Count -gt 0)
         {
             # Retrieve localized messages for confirmation dialog and UI elements
-            $areyousuremsg = $sync.database.locales.Controls.$($sync.Language).InstallMessage
+            $areyousuremsg = $itt.database.locales.Controls.$($itt.Language).InstallMessage
             $result = [System.Windows.MessageBox]::Show($areyousuremsg, "ITT | Emad Adel", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)
 
             if($result -eq "Yes")
@@ -127,10 +127,10 @@ function Invoke-Install {
             
                             param($InstallBtn,$icon,$Description,$Width)
                         
-                            $sync['window'].Dispatcher.Invoke([Action]{
-                                $sync.installText.Text = "$InstallBtn"
-                                $sync.installBtn.Width = $Width
-                                $sync.installIcon.Text = $icon
+                            $itt['window'].Dispatcher.Invoke([Action]{
+                                $itt.installText.Text = "$InstallBtn"
+                                $itt.installBtn.Width = $Width
+                                $itt.installIcon.Text = $icon
                             })
                         }
             
@@ -479,8 +479,8 @@ function Invoke-Install {
             
                         function Finish {
             
-                            $sync.AppsListView.Dispatcher.Invoke([Action]{
-                                foreach ($item in $sync.AppsListView.Items)
+                            $itt.AppsListView.Dispatcher.Invoke([Action]{
+                                foreach ($item in $itt.AppsListView.Items)
                                 {
                                     foreach ($child in $item.Children) {
                                         if ($child -is [System.Windows.Controls.StackPanel]) {
@@ -488,8 +488,8 @@ function Invoke-Install {
                                                 if ($innerChild -is [System.Windows.Controls.CheckBox]) {
             
                                                     $innerChild.IsChecked = $false
-                                                    $sync.AppsListView.Clear()
-                                                    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.AppsListView.Items)
+                                                    $itt.AppsListView.Clear()
+                                                    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($itt.AppsListView.Items)
                                                     $collectionView.Filter = $null
                                                 }
                                             }
@@ -502,17 +502,17 @@ function Invoke-Install {
                             UpdateUI -InstallBtn "$installBtn" -icon " " -Width "100"
                             Notify -title "ITT Emad Adel" -msg "Installed successfully" -icon "Info" -time 30000
                             # Store the apps you'v selected
-                            Send-Apps -FirebaseUrl $sync.firebaseUrl -Key "$env:COMPUTERNAME $env:USERNAME" -List $selectedAppNames
+                            Send-Apps -FirebaseUrl $itt.firebaseUrl -Key "$env:COMPUTERNAME $env:USERNAME" -List $selectedAppNames
                         }
                         #===========================================================================
                         #endregion End function
                         #===========================================================================
 
                         # start ProcessRunning
-                        $sync.ProcessRunning = $true
+                        $itt.ProcessRunning = $true
                        
-                        $installBtn = $sync.database.locales.Controls.$($sync.Language).installBtn
-                        $downloading = $sync.database.locales.Controls.$($sync.Language).downloading
+                        $installBtn = $itt.database.locales.Controls.$($itt.Language).installBtn
+                        $downloading = $itt.database.locales.Controls.$($itt.Language).downloading
             
                         # Chancge Install Content "Downloading.."
                         UpdateUI -InstallBtn "$downloading" -icon " " -Width "150"
@@ -547,7 +547,7 @@ function Invoke-Install {
                         }
     
                         # End ProcessRunning
-                        $sync.ProcessRunning = $false
+                        $itt.ProcessRunning = $false
 
                         # Notify user of successful installation
                         Finish
@@ -556,8 +556,8 @@ function Invoke-Install {
             else
             {
                 # Uncheck all checkboxes in $list if user chose [NO]
-                $sync.AppsListView.Dispatcher.Invoke({
-                    foreach ($item in $sync.AppsListView.Items) {
+                $itt.AppsListView.Dispatcher.Invoke({
+                    foreach ($item in $itt.AppsListView.Items) {
                         $item.Children | ForEach-Object {
                             if ($_ -is [System.Windows.Controls.StackPanel]) {
                                 $_.Children | ForEach-Object {
@@ -568,20 +568,20 @@ function Invoke-Install {
                             }
                         }
                     }
-                    $sync.AppsListView.Clear()
-                    [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.AppsListView.Items).Filter = $null
+                    $itt.AppsListView.Clear()
+                    [System.Windows.Data.CollectionViewSource]::GetDefaultView($itt.AppsListView.Items).Filter = $null
                 })
             }
         }
         else
         {
             # Uncheck all checkboxes in $list
-            $sync.category.SelectedIndex = 0
-            $sync.AppsListView.Dispatcher.Invoke({
-                $sync.AppsListView.Clear()
-                [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.AppsListView.Items).Filter = $null
+            $itt.category.SelectedIndex = 0
+            $itt.AppsListView.Dispatcher.Invoke({
+                $itt.AppsListView.Clear()
+                [System.Windows.Data.CollectionViewSource]::GetDefaultView($itt.AppsListView.Items).Filter = $null
             })
-            $localizedMessageTemplate = $sync.database.locales.Controls.$($sync.Language).choseapp
+            $localizedMessageTemplate = $itt.database.locales.Controls.$($itt.Language).choseapp
             [System.Windows.MessageBox]::Show("$localizedMessageTemplate", "ITT | Emad Adel", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
         }
     }

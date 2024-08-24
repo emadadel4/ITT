@@ -5,10 +5,10 @@
 # Select elements with a Name attribute and iterate
 $xaml.SelectNodes("//*[@Name]") | ForEach-Object {
     $name = $_.Name
-    $element = $sync["window"].FindName($name)
+    $element = $itt["window"].FindName($name)
 
     if ($element) {
-        $sync[$name] = $element
+        $itt[$name] = $element
 
         # Add event handlers based on element type
         switch ($element.GetType().Name) {
@@ -46,7 +46,7 @@ $xaml.SelectNodes("//*[@Name]") | ForEach-Object {
 $onClosingEvent = {
     param($s, $c)
 
-    $exitDialog = $sync.database.locales.Controls.$($sync.Language).exit
+    $exitDialog = $itt.database.locales.Controls.$($itt.Language).exit
 
     # Show confirmation message box
     $result = [System.Windows.MessageBox]::Show($exitDialog, "Confirmation", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)
@@ -60,7 +60,7 @@ $onClosingEvent = {
 }
 
 # Handle the Loaded event
-$sync["window"].Add_ContentRendered({
+$itt["window"].Add_ContentRendered({
     Startup
     DisplayQuotes | Out-Null
     PlayMusic | Out-Null
@@ -68,7 +68,7 @@ $sync["window"].Add_ContentRendered({
 })
 
 # Close Event handler
-$sync["window"].add_Closing($onClosingEvent)
+$itt["window"].add_Closing($onClosingEvent)
 
 # Show Window
-$sync["window"].ShowDialog() | Out-Null
+$itt["window"].ShowDialog() | Out-Null

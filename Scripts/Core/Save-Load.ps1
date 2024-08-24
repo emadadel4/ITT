@@ -22,8 +22,8 @@ function Get-CheckBoxesFromStackPanel {
 
 # Function to load JSON data and update the UI
 function LoadJson {
-    if ($sync.ProcessRunning) {
-        $msg = $sync.database.locales.Controls.$($sync.Language).Pleasewait
+    if ($itt.ProcessRunning) {
+        $msg = $itt.database.locales.Controls.$($itt.Language).Pleasewait
         [System.Windows.MessageBox]::Show($msg, "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
         return
     }
@@ -54,9 +54,9 @@ function LoadJson {
         }
 
         # Update UI based on the loaded JSON data
-        $sync['window'].FindName('apps').IsSelected = $true
-        $sync['window'].FindName('appslist').Clear()
-        $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync['window'].FindName('appslist').Items)
+        $itt['window'].FindName('apps').IsSelected = $true
+        $itt['window'].FindName('appslist').Clear()
+        $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($itt['window'].FindName('appslist').Items)
         $collectionView.Filter = $filterPredicate
         [System.Windows.MessageBox]::Show("Restored successfully", "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
     }
@@ -64,8 +64,8 @@ function LoadJson {
 
 # Function to save selected items to a JSON file
 function SaveItemsToJson {
-    if ($sync.ProcessRunning) {
-        $msg = $sync.database.locales.Controls.$($sync.Language).Pleasewait
+    if ($itt.ProcessRunning) {
+        $msg = $itt.database.locales.Controls.$($itt.Language).Pleasewait
         [System.Windows.MessageBox]::Show($msg, "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
         return
     }
@@ -74,7 +74,7 @@ function SaveItemsToJson {
 
     ClearFilter
 
-    foreach ($item in $sync.AppsListView.Items) {
+    foreach ($item in $itt.AppsListView.Items) {
         $checkBoxes = Get-CheckBoxesFromStackPanel -item $item
         if ($checkBoxes.IsChecked) {
             $itemObject = [PSCustomObject]@{
@@ -97,7 +97,7 @@ function SaveItemsToJson {
             Write-Host "Saved: $($saveFileDialog.FileName)"
             [System.Windows.MessageBox]::Show("Saved", "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
 
-            foreach ($item in $sync.AppsListView.Items) {
+            foreach ($item in $itt.AppsListView.Items) {
                 $checkBoxes = Get-CheckBoxesFromStackPanel -item $item
                 if ($checkBoxes.IsChecked) {
                     $checkBoxes.IsChecked = $false  # Uncheck all CheckBoxes after saving

@@ -2,15 +2,15 @@
 $maxthreads = [int]$env:NUMBER_OF_PROCESSORS
 
 # Create a new session state for parsing variables into our runspace
-$hashVars = New-object System.Management.Automation.Runspaces.SessionStateVariableEntry -ArgumentList 'sync',$sync,$Null
+$hashVars = New-object System.Management.Automation.Runspaces.SessionStateVariableEntry -ArgumentList 'itt',$itt,$Null
 $InitialSessionState = [System.Management.Automation.Runspaces.InitialSessionState]::CreateDefault()
 
 # Add the variable to the session state
 $InitialSessionState.Variables.Add($hashVars)
 
 # Create and open the runspace pool
-$sync.runspace = [runspacefactory]::CreateRunspacePool(1, $maxthreads, $InitialSessionState, $Host)
-$sync.runspace.Open()
+$itt.runspace = [runspacefactory]::CreateRunspacePool(1, $maxthreads, $InitialSessionState, $Host)
+$itt.runspace.Open()
 
 # Load required assembly
 [void][System.Reflection.Assembly]::LoadWithPartialName('presentationframework')
@@ -20,7 +20,7 @@ $sync.runspace.Open()
 $reader = [System.Xml.XmlNodeReader]::new($xaml)
 
 try {
-    $sync["window"] = [Windows.Markup.XamlReader]::Load($reader)
+    $itt["window"] = [Windows.Markup.XamlReader]::Load($reader)
 }
 catch [System.Management.Automation.MethodInvocationException] {
     Write-Warning "Problem with the XAML code. Check syntax."
@@ -44,12 +44,12 @@ try {
         $shortCulture = $fullCulture.Split('-')[0]
 
         # Ensure registry key exists and set defaults if necessary
-        if (-not (Test-Path $sync.registryPath)) {
-            New-Item -Path $sync.registryPath -Force | Out-Null
-            Set-ItemProperty -Path $sync.registryPath -Name "DarkMode" -Value "none" -Force
-            Set-ItemProperty -Path $sync.registryPath -Name "locales" -Value $shortCulture -Force
-            Set-ItemProperty -Path $sync.registryPath -Name "Music" -Value "100" -Force
-            Set-ItemProperty -Path $sync.registryPath -Name "PopupWindow" -Value "On" -Force
+        if (-not (Test-Path $itt.registryPath)) {
+            New-Item -Path $itt.registryPath -Force | Out-Null
+            Set-ItemProperty -Path $itt.registryPath -Name "DarkMode" -Value "none" -Force
+            Set-ItemProperty -Path $itt.registryPath -Name "locales" -Value $shortCulture -Force
+            Set-ItemProperty -Path $itt.registryPath -Name "Music" -Value "100" -Force
+            Set-ItemProperty -Path $itt.registryPath -Name "PopupWindow" -Value "On" -Force
         }
 
     #===========================================================================
@@ -72,8 +72,8 @@ try {
             "es" { $locale = "es" }
             default { $locale = "en" }
         }
-        $sync["window"].DataContext = $sync.database.locales.Controls.$locale
-        $sync.Language = $locale
+        $itt["window"].DataContext = $itt.database.locales.Controls.$locale
+        $itt.Language = $locale
 
     #===========================================================================
     #endregion Set Language based on culture
@@ -83,31 +83,31 @@ try {
     #region Check theme settings
     #===========================================================================
     
-    $sync.isDarkMode = (Get-ItemProperty -Path $sync.registryPath -Name "DarkMode").DarkMode
+    $itt.isDarkMode = (Get-ItemProperty -Path $itt.registryPath -Name "DarkMode").DarkMode
 
-    $themeResource = if ($sync.isDarkMode -eq "true") { "Dark" }
-                     elseif ($sync.isDarkMode -eq "false") { "Light" }
+    $themeResource = if ($itt.isDarkMode -eq "true") { "Dark" }
+                     elseif ($itt.isDarkMode -eq "false") { "Light" }
                      else {
                          switch ($appsTheme) {
                              "0" { "Dark" }
                              "1" { "Light" }
                          }
                      }
-    $sync["window"].Resources.MergedDictionaries.Add($sync["window"].FindResource($themeResource))
-    $sync.CurretTheme = $themeResource
+    $itt["window"].Resources.MergedDictionaries.Add($itt["window"].FindResource($themeResource))
+    $itt.CurretTheme = $themeResource
     #===========================================================================
     #endregion Check theme settings
     #===========================================================================
 
     # Get user Settings from registry 
-    $sync.Music = (Get-ItemProperty -Path $sync.registryPath -Name "Music").Music
-    $sync.mediaPlayer.settings.volume = "$($sync.Music)"
-    $sync.PopupWindow = (Get-ItemProperty -Path $sync.registryPath -Name "PopupWindow").PopupWindow
+    $itt.Music = (Get-ItemProperty -Path $itt.registryPath -Name "Music").Music
+    $itt.mediaPlayer.settings.volume = "$($itt.Music)"
+    $itt.PopupWindow = (Get-ItemProperty -Path $itt.registryPath -Name "PopupWindow").PopupWindow
 
     # taskbar icon
     $taskbarItemInfo = New-Object System.Windows.Shell.TaskbarItemInfo
-    $sync["window"].TaskbarItemInfo = $taskbarItemInfo
-    $taskbarItemInfo.Overlay = $sync.icon
+    $itt["window"].TaskbarItemInfo = $taskbarItemInfo
+    $taskbarItemInfo.Overlay = $itt.icon
 }
 catch {
     Write-Host "Error: $_"
@@ -115,27 +115,27 @@ catch {
 }
 
 # List Views
-$sync.AppsListView = $sync["window"].FindName("appslist")
-$sync.TweaksListView = $sync["window"].FindName("tweakslist")
-$sync.SettingsListView = $sync["window"].FindName("SettingsList")
-$sync.currentList
+$itt.AppsListView = $itt["window"].FindName("appslist")
+$itt.TweaksListView = $itt["window"].FindName("tweakslist")
+$itt.SettingsListView = $itt["window"].FindName("SettingsList")
+$itt.currentList
 
 # Buttons and Inputs
-$sync.Description = $sync["window"].FindName("description")
-$sync.Quotes = $sync["window"].FindName("quotes")
-$sync.InstallBtn = $sync["window"].FindName("installBtn")
-$sync.ApplyBtn = $sync["window"].FindName("applyBtn")
-$sync.Category = $sync["window"].FindName("category")
-$sync.SearchInput = $sync["window"].FindName("searchInput")
+$itt.Description = $itt["window"].FindName("description")
+$itt.Quotes = $itt["window"].FindName("quotes")
+$itt.InstallBtn = $itt["window"].FindName("installBtn")
+$itt.ApplyBtn = $itt["window"].FindName("applyBtn")
+$itt.Category = $itt["window"].FindName("category")
+$itt.SearchInput = $itt["window"].FindName("searchInput")
 
 
-$sync.installText = $sync["window"].FindName("installText")
-$sync.installIcon = $sync["window"].FindName("installIcon")
+$itt.installText = $itt["window"].FindName("installText")
+$itt.installIcon = $itt["window"].FindName("installIcon")
 
-$sync.applyText = $sync["window"].FindName("applyText")
-$sync.applyIcon = $sync["window"].FindName("applyIcon")
+$itt.applyText = $itt["window"].FindName("applyText")
+$itt.applyIcon = $itt["window"].FindName("applyIcon")
 
-$sync.window = $sync["window"]
+$itt.window = $itt["window"]
 
 
 

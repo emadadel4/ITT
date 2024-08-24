@@ -2,7 +2,7 @@ function Get-SelectedTweaks {
 
     $items = @()
 
-    foreach ($item in $sync.TweaksListView.Items)
+    foreach ($item in $itt.TweaksListView.Items)
     {
         if ($item -is [System.Windows.Controls.StackPanel]) {
 
@@ -13,7 +13,7 @@ function Get-SelectedTweaks {
 
                             if($innerChild.IsChecked)
                             {
-                                    foreach ($program in $sync.database.Tweaks)
+                                    foreach ($program in $itt.database.Tweaks)
                                     {
                                         if($innerChild.content -eq $program.Name)
                                         {
@@ -45,7 +45,7 @@ function Get-SelectedTweaks {
 }
 function ShowSelectedTweaks {
     
-    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.TweaksListView.Items)
+    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($itt.TweaksListView.Items)
 
     $filterPredicate = {
        param($item)
@@ -75,9 +75,9 @@ function Invoke-ApplyTweaks {
 
     try {
 
-        if($sync.ProcessRunning)
+        if($itt.ProcessRunning)
         {
-            $localizedMessageTemplate = $sync.database.locales.Controls.$($sync.Language).Pleasewait
+            $localizedMessageTemplate = $itt.database.locales.Controls.$($itt.Language).Pleasewait
             $msg = "$localizedMessageTemplate"
             [System.Windows.MessageBox]::Show($msg, "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
             return
@@ -88,7 +88,7 @@ function Invoke-ApplyTweaks {
 
             if($tweaks.Count -gt 0)
             {
-                $areyousuremsg = $sync.database.locales.Controls.$($sync.Language).ApplyMessage
+                $areyousuremsg = $itt.database.locales.Controls.$($itt.Language).ApplyMessage
                 $result = [System.Windows.MessageBox]::Show($areyousuremsg, "ITT | Emad Adel", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)
 
                 if($result -eq "Yes")
@@ -243,10 +243,10 @@ function Invoke-ApplyTweaks {
         
                             param($ApplyBtn,$icon,$Description,$Width)
                             
-                            $sync['window'].Dispatcher.Invoke([Action]{
-                                $sync.applyText.Text = "$ApplyBtn"
-                                $sync.applyBtn.Width = $Width
-                                $sync.applyIcon.Text = $icon
+                            $itt['window'].Dispatcher.Invoke([Action]{
+                                $itt.applyText.Text = "$ApplyBtn"
+                                $itt.applyBtn.Width = $Width
+                                $itt.applyIcon.Text = $icon
                             })
                         }
 
@@ -345,8 +345,8 @@ function Invoke-ApplyTweaks {
         
                         function Finish {
         
-                            $sync.TweaksListView.Dispatcher.Invoke([Action]{
-                                foreach ($item in $sync.TweaksListView.Items)
+                            $itt.TweaksListView.Dispatcher.Invoke([Action]{
+                                foreach ($item in $itt.TweaksListView.Items)
                                 {
                                     foreach ($child in $item.Children) {
                                         if ($child -is [System.Windows.Controls.StackPanel]) {
@@ -354,8 +354,8 @@ function Invoke-ApplyTweaks {
                                                 if ($innerChild -is [System.Windows.Controls.CheckBox]) {
                                 
                                                     $innerChild.IsChecked = $false
-                                                    $sync.TweaksListView.Clear()
-                                                    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.TweaksListView.Items)
+                                                    $itt.TweaksListView.Clear()
+                                                    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($itt.TweaksListView.Items)
                                                     $collectionView.Filter = $null
                                                 }
                                             }
@@ -380,11 +380,11 @@ function Invoke-ApplyTweaks {
                             [System.Windows.MessageBox]::Show($msg, $title, [System.Windows.MessageBoxButton]::$MessageBoxButton, [System.Windows.MessageBoxImage]::$MessageBoxImage)
                         }
 
-                            $applyBtn = $sync.database.locales.Controls.$($sync.Language).applyBtn
-                            $Applying = $sync.database.locales.Controls.$($sync.Language).Applying
+                            $applyBtn = $itt.database.locales.Controls.$($itt.Language).applyBtn
+                            $Applying = $itt.database.locales.Controls.$($itt.Language).Applying
                             UpdateUI -ApplyBtn "$applying" -icon " " -Width "150"
 
-                            $sync.ProcessRunning = $true
+                            $itt.ProcessRunning = $true
 
                             foreach ($app in $tweaks) {
                                 switch ($app.Type) {
@@ -424,17 +424,17 @@ function Invoke-ApplyTweaks {
                             # Displaying the names of the selected apps
                             $selectedAppNames = $tweaks | ForEach-Object { $_.Name }
                             UpdateUI -ApplyBtn "$applyBtn" -icon " " -Width "100"
-                            $sync.ProcessRunning = $False
+                            $itt.ProcessRunning = $False
                             Finish
-                            Send-Tweaks -FirebaseUrl $sync.firebaseUrl -Key "$env:COMPUTERNAME $env:USERNAME" -List $selectedAppNames
+                            Send-Tweaks -FirebaseUrl $itt.firebaseUrl -Key "$env:COMPUTERNAME $env:USERNAME" -List $selectedAppNames
                             Notify -title "ITT Emad Adel" -msg "Applied done" -icon "Info" -time 30000
                     }
                 }
                 else
                 {
                     # Uncheck all checkboxes in $list if user chose [NO]
-                    $sync.TweaksListView.Dispatcher.Invoke([Action]{
-                        foreach ($item in $sync.TweaksListView.Items) {
+                    $itt.TweaksListView.Dispatcher.Invoke([Action]{
+                        foreach ($item in $itt.TweaksListView.Items) {
                             foreach ($child in $item.Children) {
                                 if ($child -is [System.Windows.Controls.StackPanel]) {
                                     foreach ($innerChild in $child.Children) {
@@ -445,7 +445,7 @@ function Invoke-ApplyTweaks {
                                 }
                             }
                         }
-                        $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.TweaksListView.Items)
+                        $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($itt.TweaksListView.Items)
                         $collectionView.Filter = $null
                     })
                 }
@@ -453,12 +453,12 @@ function Invoke-ApplyTweaks {
             else
             {
                # Uncheck all checkboxes in $list
-                $sync.category.SelectedIndex = 0
-                $sync.TweaksListView.Dispatcher.Invoke({
-                    $sync.AppsListView.Clear()
-                    [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.TweaksListView.Items).Filter = $null
+                $itt.category.SelectedIndex = 0
+                $itt.TweaksListView.Dispatcher.Invoke({
+                    $itt.AppsListView.Clear()
+                    [System.Windows.Data.CollectionViewSource]::GetDefaultView($itt.TweaksListView.Items).Filter = $null
                 })
-                $localizedMessageTemplate = $sync.database.locales.Controls.$($sync.Language).chosetweak
+                $localizedMessageTemplate = $itt.database.locales.Controls.$($itt.Language).chosetweak
                 [System.Windows.MessageBox]::Show("$localizedMessageTemplate", "ITT | Emad Adel", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
             }
     }
