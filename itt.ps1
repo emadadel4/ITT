@@ -40,17 +40,15 @@ $currentPid = [System.Security.Principal.WindowsIdentity]::GetCurrent()
 $principal = [System.Security.Principal.WindowsPrincipal]$currentPid
 $administrator = [System.Security.Principal.WindowsBuiltInRole]::Administrator
 
-If (([Security.Principal.WindowsIdentity]::GetCurrent()).Owner.Value -ne "S-1-5-32-544") {
-    Write-Host "===========================================" -Foregroundcolor Red
-    Write-Host "-- Scripts must be run as Administrator ---" -Foregroundcolor Red
-    Write-Host "-- Right-Click Start -> Terminal(Admin) ---" -Foregroundcolor Red
-    Write-Host "===========================================" -Foregroundcolor Red
+if (-not $principal.IsInRole($administrator))
+{
+    Start-Process -FilePath "PowerShell" -ArgumentList $myInvocation.MyCommand.Definition -Verb "runas"
     break
 }
 
 try {
-    $Host.UI.RawUI.WindowTitle = "ITT (Install and Tweaks Tool) - Admin"
     $itt.mediaPlayer = New-Object -ComObject WMPlayer.OCX
+    $Host.UI.RawUI.WindowTitle = "ITT (Install and Tweaks Tool) - Admin"
 }
 catch {
     Write-Host "Media player not loaded because your using Windows Lite or you just disable it"
