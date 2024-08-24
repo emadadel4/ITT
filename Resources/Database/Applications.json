@@ -6168,5 +6168,24 @@
     ],
     "category": "Development",
     "check": "false"
+  },
+  {
+    "name": "Poedit",
+    "description": "Poedit translations editor The best way to translate apps and sites",
+    "winget": "none",
+    "choco": "none",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none",
+        "shortcut": "no",
+        "run": "no"
+      }
+    ],
+    "category": "Development",
+    "check": "false"
   }
 ]
