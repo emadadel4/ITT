@@ -1,5 +1,6 @@
 param (
     [string]$OutputScript = "itt.ps1",
+    [string]$readme = "README.md",
     [string]$Assets = ".\Resources",
     [string]$Controls = ".\UI\Controls",
     [string]$DatabaseDirectory = ".\Resources\Database",
@@ -139,14 +140,47 @@ function Sync-JsonFiles {
     }
 }
 
-# Display the number of items in json files
-function CountItems {
-    Write-Host  "`n` $($itt.database.Applications.Count) Apps" -ForegroundColor Yellow
-    Write-Host  " $($itt.database.Tweaks.Count) Tweaks" -ForegroundColor Yellow
-    Write-Host  " $($itt.database.Quotes.Q.Count) Quotes" -ForegroundColor Yellow
-    Write-Host  " $($itt.database.OST.Tracks.Count) Tracks `n` " -ForegroundColor Yellow
+function Update-Readme {
+    param (
+        [string]$OriginalReadmePath = "Templates\README.md",
+        [string]$NewReadmePath = "README.md",
+        [string]$Apps,
+        [string]$Tewaks,
+        [string]$Quote,
+        [string]$Track,
+        [string]$Settings
+
+    )
+
+    # Read the content of the original README.md file
+    $readmeContent = Get-Content -Path $OriginalReadmePath -Raw
+
+    # Replace multiple placeholders with the new content
+    $updatedContent = $readmeContent -replace "#{a}", $Apps `
+    -replace "#{t}", $Tewaks `
+    -replace "#{q}", $Quote `
+    -replace "#{OST}", $Track `
+    -replace "#{s}", $Settings
+
+
+    # Write the updated content to the new README.md file
+    Set-Content -Path $NewReadmePath -Value $updatedContent
+
 }
 
+# Display the number of items in json files
+function CountItems {
+
+    Write-Host  "`n` $($itt.database.Applications.Count) Apps" -ForegroundColor Yellow
+
+    Write-Host  " $($itt.database.Tweaks.Count) Tweaks" -ForegroundColor Yellow
+    Write-Host  " $($itt.database.Quotes.Q.Count) Quotes" -ForegroundColor Yellow
+    Write-Host  " $($itt.database.OST.Tracks.Count) Tracks" -ForegroundColor Yellow
+    Write-Host  " $($itt.database.Settings.Count) Settings" -ForegroundColor Yellow
+    ReplaceTextInFile -FilePath $readme -TextToReplace '#{apps}' -ReplacementText "$(Get-Date -Format 'MM/dd/yy')"
+    Update-Readme -Apps $($itt.database.Applications.Count) -Tewaks $($itt.database.Tweaks.Count) -Quote $($itt.database.Quotes.Q.Count)  -Track $($itt.database.OST.Tracks.Count)
+
+}
 
 # Write script header
 function WriteHeader {
