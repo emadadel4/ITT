@@ -1,13 +1,9 @@
 h1: Welcome to My Application
 
-image:https://raw.githubusercontent.com/emadadel4/ITT/Update/Resources/Images/thumbnail.jpg ::link https://example.com
+image:https://raw.githubusercontent.com/emadadel4/ITT/Update/Resources/Images/thumbnail.jpg ::link https://example.com ::xName ThumbnailImage
 
-This is a simple application that demonstrates how to render different types of content from a text file.
+h1: Another Section
 
-h1: Another Heading
+This section contains additional information about the application.
 
-eeeeeeeeeeeeeeeeeeeeeeeee
-
-image:https://raw.githubusercontent.com/emadadel4/ITT/Update/Resources/Images/thumbnail.jpg ::link https://anotherexample.com
-
-aaaaaaaaaaaaaaaaaaaaaaaaaaaa
+image:https://raw.githubusercontent.com/emadadel4/ITT/Update/Resources/Images/logo.jpg ::link https://example.com ::xName LogoImage
