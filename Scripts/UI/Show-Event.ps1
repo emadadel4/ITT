@@ -101,7 +101,10 @@ function Check-Date {
     $watchdemo = $itt.database.locales.Controls.$($itt.Language).watchdemo
     $happybirthday = $itt.database.locales.Controls.$($itt.Language).happybirthday
     $myplaylist = $itt.database.locales.Controls.$($itt.Language).myplaylist
-    $subs = $itt.database.locales.Controls.$($itt.Language).Subtitle
+
+
+
+    $subs = $itt.database.locales.Updates.Keyboard
 
 
     if ($itt.Date.Month -eq 9 -and $itt.Date.Day -eq 1) 
