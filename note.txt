@@ -2,7 +2,7 @@ h1: Welcome to itt
 
 This is a simple application that demonstrates how to render different types of content from a text file.
 
-image:https://raw.githubusercontent.com/emadadel4/ITT/Update/Resources/Images/thumbnail.jpg
+image:https://raw.githubusercontent.com/emadadel4/ITT/Update/Resources/Images/thumbnail.jpg ::link "https://youtu.be/QmO82OTsU5c"
 
 h1: Another Heading
 
