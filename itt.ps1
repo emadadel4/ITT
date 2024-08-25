@@ -12582,6 +12582,7 @@ catch {
 }
 
 # List Views
+$itt.TabControl = $itt["window"].FindName("taps")
 $itt.AppsListView = $itt["window"].FindName("appslist")
 $itt.TweaksListView = $itt["window"].FindName("tweakslist")
 $itt.SettingsListView = $itt["window"].FindName("SettingsList")
@@ -14601,6 +14602,68 @@ function ClearFilter {
     $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($itt.AppsListView.Items)
     $collectionView.Filter = $null
 }
+$commonKeyEvents = {
+
+    if ($itt.ProcessRunning -eq $true) {
+        return
+    }
+
+    if (($_.Key -eq "Enter")) {
+
+        switch ($itt.currentList) {
+            "appslist" {
+                Invoke-Install                
+            }
+            "tweakslist" {
+                Invoke-ApplyTweaks
+            }
+        }
+    }
+
+    if (($_.Key -eq "S" -and $_.KeyboardDevice.Modifiers -eq "Ctrl")) {
+
+        switch ($itt.currentList) {
+            "appslist" {
+                Invoke-Install                
+            }
+            "tweakslist" {
+                Invoke-ApplyTweaks
+            }
+        }
+    }
+
+     # Quit from applaction
+     if (($_.Key -eq "X" -and $_.KeyboardDevice.Modifiers -eq "Ctrl")) {
+        $this.Close()
+    }
+
+    # Foucs on Search box
+    if (($_.Key -eq "F" -and $_.KeyboardDevice.Modifiers -eq "Ctrl")) {
+        $itt.SearchInput.Focus()
+    }
+
+    # Lost Foucs on Search box
+    if ($_.Key -eq "Escape") {
+        $itt.SearchInput.MoveFocus([System.Windows.Input.TraversalRequest]::New([System.Windows.Input.FocusNavigationDirection]::Next))
+    }
+
+
+    if ($_.Key -eq "Q" -and $_.KeyboardDevice.Modifiers -eq "Ctrl") {
+        $itt.TabControl.SelectedItem = $itt.TabControl.Items | Where-Object { $_.Name -eq "apps" }
+    }
+
+    if ($_.Key -eq "W" -and $_.KeyboardDevice.Modifiers -eq "Ctrl") {
+        $itt.TabControl.SelectedItem = $itt.TabControl.Items | Where-Object { $_.Name -eq "tweeksTab" }
+    }
+
+    if ($_.Key -eq "E" -and $_.KeyboardDevice.Modifiers -eq "Ctrl") {
+        $itt.TabControl.SelectedItem = $itt.TabControl.Items | Where-Object { $_.Name -eq "SettingsTab" }
+    }
+   
+}
+
+$itt["window"].Add_PreViewKeyDown($commonKeyEvents)
+
 function PlayMusic {
 
     # Function to play an audio track
@@ -14824,9 +14887,14 @@ function Show-Event {
                     $tutorialImage.Source = [System.Windows.Media.Imaging.BitmapImage]::new([Uri]::new($image))
                 }
             })
+
+                    
+            $tutorialImage.add_MouseLeftButtonDown({
+                Start-Process("https://youtu.be/QmO82OTsU5c")
+            })
+
         }
     }
-
 
     $itt.event.FindName("DisablePopup").add_MouseLeftButtonDown({
         DisablePopup

@@ -67,9 +67,14 @@ function Show-Event {
                     $tutorialImage.Source = [System.Windows.Media.Imaging.BitmapImage]::new([Uri]::new($image))
                 }
             })
+
+                    
+            $tutorialImage.add_MouseLeftButtonDown({
+                Start-Process("https://youtu.be/QmO82OTsU5c")
+            })
+
         }
     }
-
 
     $itt.event.FindName("DisablePopup").add_MouseLeftButtonDown({
         DisablePopup

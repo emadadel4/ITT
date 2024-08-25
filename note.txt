@@ -1,0 +1,9 @@
+h1: Welcome to My Application
+
+image:https://raw.githubusercontent.com/emadadel4/ITT/Update/Resources/Images/thumbnail.jpg ::link https://example.com ::xName ThumbnailImage
+
+h1: Another Section
+
+This section contains additional information about the application.
+
+image:https://raw.githubusercontent.com/emadadel4/ITT/Update/Resources/Images/logo.jpg ::link https://example.com ::xName LogoImage
