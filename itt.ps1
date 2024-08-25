@@ -20,7 +20,7 @@ Add-Type -AssemblyName System.Windows.Forms
 $itt = [Hashtable]::Synchronized(@{
     database       = @{}
     ProcessRunning = $false
-    lastupdate     = "08/25/24"
+    lastupdate     = "08/26/24"
     github         = "https://github.com/emadadel4"
     telegram       = "https://t.me/emadadel4"
     website        = "https://emadadel4.github.io"
@@ -14602,7 +14602,7 @@ function ClearFilter {
     $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($itt.AppsListView.Items)
     $collectionView.Filter = $null
 }
-$commonKeyEvents = {
+$KeyEvents = {
 
     if ($itt.ProcessRunning -eq $true) {
         return
@@ -14647,22 +14647,24 @@ $commonKeyEvents = {
         $itt.SearchInput.MoveFocus([System.Windows.Input.TraversalRequest]::New([System.Windows.Input.FocusNavigationDirection]::Next))
     }
 
-
+    # Swtich to Apps tap
     if ($_.Key -eq "Q" -and $_.KeyboardDevice.Modifiers -eq "Ctrl") {
         $itt.TabControl.SelectedItem = $itt.TabControl.Items | Where-Object { $_.Name -eq "apps" }
     }
 
+    # Swtich to tweaks tap
     if ($_.Key -eq "W" -and $_.KeyboardDevice.Modifiers -eq "Ctrl") {
         $itt.TabControl.SelectedItem = $itt.TabControl.Items | Where-Object { $_.Name -eq "tweeksTab" }
     }
 
+    # Swtich to settings tap
     if ($_.Key -eq "E" -and $_.KeyboardDevice.Modifiers -eq "Ctrl") {
         $itt.TabControl.SelectedItem = $itt.TabControl.Items | Where-Object { $_.Name -eq "SettingsTab" }
     }
    
 }
 
-$itt["window"].Add_PreViewKeyDown($commonKeyEvents)
+$itt["window"].Add_PreViewKeyDown($KeyEvents)
 
 function PlayMusic {
 
@@ -14900,6 +14902,16 @@ function Show-Event {
         DisablePopup
         $itt.event.Close()
     })
+
+    $KeyEvents = {
+
+        # Close
+        if ($_.Key -eq "Escape") {
+            $itt.event.Close()
+        }
+    }
+    $itt.event.Add_PreViewKeyDown($KeyEvents)
+
 
     # Show dialog
     $itt.event.ShowDialog() | Out-Null
