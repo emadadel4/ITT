@@ -10,7 +10,7 @@
 </h1>
 
 <div align="center">
-  <h5>310 App |  31 Tweaks | 5 Settings | 98 Quote |  26 Soundtrack </h5>
+  <h5> 311 App |  31 Tweaks |  Settings | 98 Quote |  26 Soundtrack </h5>
 </div>
 
 
@@ -176,6 +176,7 @@ or
 <a href="https://ko-fi.com/emadadel" target="_blank">
   <img src="https://img.shields.io/badge/Ko--fi-blue?logo=kofi" alt="Ko-fi" height="30">
 </a>
+
 
 
 
