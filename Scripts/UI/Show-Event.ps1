@@ -81,6 +81,16 @@ function Show-Event {
         $itt.event.Close()
     })
 
+    $KeyEvents = {
+
+        # Close
+        if ($_.Key -eq "Escape") {
+            $itt.event.Close()
+        }
+    }
+    $itt.event.Add_PreViewKeyDown($KeyEvents)
+
+
     # Show dialog
     $itt.event.ShowDialog() | Out-Null
 }
