@@ -1,4 +1,4 @@
-$commonKeyEvents = {
+$KeyEvents = {
 
     if ($itt.ProcessRunning -eq $true) {
         return
@@ -43,19 +43,21 @@ $commonKeyEvents = {
         $itt.SearchInput.MoveFocus([System.Windows.Input.TraversalRequest]::New([System.Windows.Input.FocusNavigationDirection]::Next))
     }
 
-
+    # Swtich to Apps tap
     if ($_.Key -eq "Q" -and $_.KeyboardDevice.Modifiers -eq "Ctrl") {
         $itt.TabControl.SelectedItem = $itt.TabControl.Items | Where-Object { $_.Name -eq "apps" }
     }
 
+    # Swtich to tweaks tap
     if ($_.Key -eq "W" -and $_.KeyboardDevice.Modifiers -eq "Ctrl") {
         $itt.TabControl.SelectedItem = $itt.TabControl.Items | Where-Object { $_.Name -eq "tweeksTab" }
     }
 
+    # Swtich to settings tap
     if ($_.Key -eq "E" -and $_.KeyboardDevice.Modifiers -eq "Ctrl") {
         $itt.TabControl.SelectedItem = $itt.TabControl.Items | Where-Object { $_.Name -eq "SettingsTab" }
     }
    
 }
 
-$itt["window"].Add_PreViewKeyDown($commonKeyEvents)
+$itt["window"].Add_PreViewKeyDown($KeyEvents)
