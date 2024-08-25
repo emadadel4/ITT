@@ -1,11 +1,13 @@
 h1: Welcome to My Application
 
-This is a simple application that demonstrates how to render different types of content from a text file.
+image:https://example.com/path/to/image1.jpg ::link https://example.com
 
-image[yr]:https://raw.githubusercontent.com/emadadel4/ITT/Update/Resources/Images/thumbnail.jpg ::link "https://youtu.be/QmO82OTsU5c"
+This is a simple application that demonstrates how to render different types of content from a text file.
 
 h1: Another Heading
 
 Here is some more text content below the second heading.
+
+image:https://example.com/path/to/image2.jpg ::link https://anotherexample.com
 
 You can add additional text and images as needed.
