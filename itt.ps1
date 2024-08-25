@@ -6740,6 +6740,9 @@ $itt.database.locales = '{
     "myplaylist": "Es mi cumpleaños y mi lista de reproducción ♪",
     "Subtitle": "ITT de código abierto tiene como objetivo simplificar el proceso de instalación de programas de Windows de una sola vez y mejorar el rendimiento del sistema. Ya seas un experto en programación o un usuario que busca mejorar su experiencia en Windows, damos la bienvenida a tus contribuciones. Esperamos con interés ver tus contribuciones e ideas para mejorar este proyecto para todos los usuarios de Windows. Gracias por unirte a nosotros."
     }
+  },
+  "Updates":{
+    "Keyboard": "Enter Key: Performs different actions depending on the current view:\n  - Apps List View: Installs selected applications.\n  - Tweaks List View: Applies selected tweaks.\n\nCtrl + S: Same action as Enter Key:\n  - Apps List View: Installs selected applications.\n  - Tweaks List View: Applies selected tweaks.\n\nCtrl + X: Closes the application.\n\nCtrl + F: Enter search mode. Press ESC to exit.\n\nCtrl + Q: Switch to the ''Apps'' tab.\n\nCtrl + W: Switch to the ''Tweaks'' tab.\n\nCtrl + E: Switch to the ''Settings'' tab."
   }
 }
 ' | ConvertFrom-Json
@@ -12392,7 +12395,7 @@ $EventXaml = '<Window
   x:Name="Window" Title="Event | ITT " WindowStartupLocation = "CenterScreen" 
   Background="{DynamicResource BGColor}"
   WindowStyle="ToolWindow"
-  Height="400" Width="600" ShowInTaskbar = "True" Topmost="True" Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/icon.ico">
+  Height="600" Width="600" ShowInTaskbar = "True" Topmost="True" Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/icon.ico">
 
     <ScrollViewer VerticalScrollBarVisibility="Auto" Width="Auto">
         <Grid>
@@ -12401,14 +12404,14 @@ $EventXaml = '<Window
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
-            <StackPanel x:Name="MainStackPanel" Height="Auto" Orientation="Vertical">
+            <StackPanel x:Name="MainStackPanel" Height="Auto" Orientation="Vertical" Margin="15">
                 <TextBlock 
                     Name="title"
                     FontSize="25"
                     Height="Auto"
                     Width="Auto"
+                    Margin="0,0,0,15"
                     Foreground="{DynamicResource DefaultTextColor2}"
-                    Margin="0,15,15,0"
                     FontWeight="SemiBold"
                     TextWrapping="Wrap"
                     VerticalAlignment="Center"
@@ -12422,7 +12425,6 @@ $EventXaml = '<Window
                 VerticalAlignment="Center" 
                 Source="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/thumbnail.jpg" 
                 Cursor="Hand" 
-                Margin="10" 
                 />
                 <!--End Image-->
 
@@ -12433,7 +12435,6 @@ $EventXaml = '<Window
                 Height="Auto"
                 Width="Auto"
                 Foreground="{DynamicResource DefaultTextColor2}"
-                Margin="25,10,10,25"
                 TextWrapping="Wrap"
                 TextAlignment="Right"
                 VerticalAlignment="Center"
@@ -12444,13 +12445,14 @@ $EventXaml = '<Window
                 Name="DisablePopup" 
                 Height="Auto"
                 Padding="25"
+                Margin="0,15,0,0"
                 Foreground="{DynamicResource DefaultTextColor2}"
                 Text="Don''t show again"
                 Background="Transparent"
                 TextAlignment="Center"
                 HorizontalAlignment="Center"
-                VerticalAlignment="Center"
-                Margin="0,0,0,0"/>
+                VerticalAlignment="Bottom"
+                />
 
             </StackPanel>
         </Grid>
@@ -14923,7 +14925,10 @@ function Check-Date {
     $watchdemo = $itt.database.locales.Controls.$($itt.Language).watchdemo
     $happybirthday = $itt.database.locales.Controls.$($itt.Language).happybirthday
     $myplaylist = $itt.database.locales.Controls.$($itt.Language).myplaylist
-    $subs = $itt.database.locales.Controls.$($itt.Language).Subtitle
+
+
+
+    $subs = $itt.database.locales.Updates.Keyboard
 
 
     if ($itt.Date.Month -eq 9 -and $itt.Date.Day -eq 1) 
