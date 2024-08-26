@@ -111,8 +111,7 @@ function Get-PCInfo {
                 }
             }
         
-            Write-Host -NoNewline "`n`  $totalKeys" -ForegroundColor Green
-            Write-Host " device use ITT." -ForegroundColor Yellow
+            Write-Host "`n`  ITT Used on $totalKeys devices and is featured on 9 sites." -ForegroundColor Yellow
         
         } | Out-Null
     }
