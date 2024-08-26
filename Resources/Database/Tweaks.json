@@ -1528,21 +1528,21 @@
     "Type": "Registry",
     "refresh": "false",
     "Modify": [
-    {
-      "Path": "HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\AutoplayHandlers",
-      "Name": "DisableAutoplay",
-      "Type": "DWord",
-      "Value": "1",
-      "defaultValue": "0"
-    },
-    {
-      "Path": "HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer",
-      "Name": "NoDriveTypeAutoRun",
-      "Type": "DWord",
-      "Value": "255",
-      "defaultValue": "255"
-    }
-  ],
+      {
+        "Path": "HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\AutoplayHandlers",
+        "Name": "DisableAutoplay",
+        "Type": "DWord",
+        "Value": "1",
+        "defaultValue": "0"
+      },
+      {
+        "Path": "HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer",
+        "Name": "NoDriveTypeAutoRun",
+        "Type": "DWord",
+        "Value": "255",
+        "defaultValue": "255"
+      }
+    ],
     "InvokeCommand": [
       ""
     ],
