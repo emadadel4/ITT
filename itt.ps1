@@ -8696,7 +8696,7 @@ $itt.database.Tweaks = '[
     "UndoCommand": [
       ""
     ]
-  },
+  }
 ]
 
 
