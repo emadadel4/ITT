@@ -1643,19 +1643,5 @@
     "UndoCommand": [
       ""
     ]
-  },
-  {
-    "Name": "TEST",
-    "Description": "TEST",
-    "Check": "false",
-    "Category": "Other",
-    "Type": "command",
-    "refresh": "false",
-    "InvokeCommand": [
-      "AAAAAAAAAAAAAAAAAAAAAAAA"
-    ],
-    "UndoCommand": [
-      ""
-    ]
   }
 ]
