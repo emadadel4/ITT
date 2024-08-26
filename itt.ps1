@@ -8697,10 +8697,7 @@ $itt.database.Tweaks = '[
       ""
     ]
   }
-]
-
-
-' | ConvertFrom-Json
+]' | ConvertFrom-Json
 #===========================================================================
 #endregion End Database /APPS/TWEEAKS/Quotes/OST/Settings
 #===========================================================================
