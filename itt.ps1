@@ -8429,6 +8429,7 @@ $itt.database.Tweaks = '[
     "Name": "Disable Homegroup",
     "Description": "Disables HomeGroup  HomeGroup is a passwordprotected home networking service that lets you share your stuff with other PCs that are currently running and connected to your network",
     "Check": "false",
+    "Category": "Privacy",
     "Type": "service",
     "Refresh": "false",
     "Service": [
@@ -8448,6 +8449,7 @@ $itt.database.Tweaks = '[
     "Name": "Remove Home and Gallery from explorer",
     "Description": "Removes the Home and Gallery from explorer and sets This PC as default",
     "Check": "false",
+    "Category": "Performance",
     "Type": "Registry",
     "Refresh": "false",
     "Modify": [
@@ -8480,6 +8482,7 @@ $itt.database.Tweaks = '[
     "Name": "Disable Activity History",
     "Description": "This erases recent docs clipboard and run history",
     "Check": "false",
+    "Category": "Privacy",
     "Type": "Registry",
     "refresh": "false",
     "Modify": {
@@ -8500,6 +8503,7 @@ $itt.database.Tweaks = '[
     "Name": "Disable Wifi-Sense",
     "Description": "Wifi Sense is a spying service that phones home all nearby scanned wifi networks and your current geo location",
     "Check": "false",
+    "Category": "Privacy",
     "Type": "Registry",
     "refresh": "false",
     "Modify": [
@@ -8509,15 +8513,75 @@ $itt.database.Tweaks = '[
         "Type": "DWord",
         "Value": "0",
         "defaultValue": "1"
+      }
+    ],
+    "InvokeCommand": [
+      ""
+    ],
+    "UndoCommand": [
+      ""
+    ]
+  },
+  {
+    "Name": "Disable Location Tracking",
+    "Description": "Disabling location tracking in Windows involves turning off features that allow the operating system and apps to determine and use your geographical location. When location tracking is disabled, Windows will no longer collect or share your location data and enhances privacy",
+    "Check": "false",
+    "Category": "Privacy",
+    "Type": "Registry",
+    "refresh": "false",
+    "Modify": [
+      {
+        "Path": "HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\CapabilityAccessManager\\ConsentStore\\location",
+        "Name": "Value",
+        "Type": "String",
+        "Value": "Deny",
+        "defaultValue": "Deny"
       },
       {
-        "Path": "HKLM:\\Software\\Microsoft\\PolicyManager\\default\\WiFi\\AllowAutoConnectToWiFiSenseHotspots",
-        "Name": "Value",
+        "Path": "HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Sensor\\Overrides\\{BFA794E4-F964-4FDB-90F6-51056BFE4B44}",
+        "Name": "SensorPermissionState",
+        "Type": "DWord",
+        "Value": "0",
+        "defaultValue": "1"
+      },
+      {
+        "Path": "HKLM:\\SYSTEM\\CurrentControlSet\\Services\\lfsvc\\Service\\Configuration",
+        "Name": "Status",
         "Type": "DWord",
         "Value": "0",
         "defaultValue": "1"
       }
     ],
+    "InvokeCommand": [
+      ""
+    ],
+    "UndoCommand": [
+      ""
+    ]
+  },
+  {
+    "Name": "Disable Autoplay and Autorun",
+    "Description": "Disabling autoplay in Windows prevents the automatic launch of media or applications when a removable device, such as a USB drive or CD, is connected to the computer. Autoplay is a feature that, by default, prompts the user to choose an action whenever a new media device is inserted, such as playing a video or opening a file",
+    "Check": "false",
+    "Category": "Protection",
+    "Type": "Registry",
+    "refresh": "false",
+    "Modify": [
+    {
+      "Path": "HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\AutoplayHandlers",
+      "Name": "DisableAutoplay",
+      "Type": "DWord",
+      "Value": "1",
+      "defaultValue": "0"
+    },
+    {
+      "Path": "HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer",
+      "Name": "NoDriveTypeAutoRun",
+      "Type": "DWord",
+      "Value": "255",
+      "defaultValue": "255"
+    }
+  ],
     "InvokeCommand": [
       ""
     ],
@@ -12172,7 +12236,7 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
         <StackPanel Orientation="Vertical" Width="auto" Margin="10">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Disable Homegroup"     ToolTip="Install it again to update" FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content="Privacy"/>
             </StackPanel>
                 <TextBlock Width="555" Background="Transparent" Margin="8" Foreground="{DynamicResource DefaultTextColor2}"  FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="Disables HomeGroup  HomeGroup is a passwordprotected home networking service that lets you share your stuff with other PCs that are currently running and connected to your network"/>
         </StackPanel>
@@ -12180,7 +12244,7 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
         <StackPanel Orientation="Vertical" Width="auto" Margin="10">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Remove Home and Gallery from explorer"     ToolTip="Install it again to update" FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content="Performance"/>
             </StackPanel>
                 <TextBlock Width="555" Background="Transparent" Margin="8" Foreground="{DynamicResource DefaultTextColor2}"  FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="Removes the Home and Gallery from explorer and sets This PC as default"/>
         </StackPanel>
@@ -12188,7 +12252,7 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
         <StackPanel Orientation="Vertical" Width="auto" Margin="10">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Disable Activity History"     ToolTip="Install it again to update" FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content="Privacy"/>
             </StackPanel>
                 <TextBlock Width="555" Background="Transparent" Margin="8" Foreground="{DynamicResource DefaultTextColor2}"  FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="This erases recent docs clipboard and run history"/>
         </StackPanel>
@@ -12196,9 +12260,25 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
         <StackPanel Orientation="Vertical" Width="auto" Margin="10">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Disable Wifi-Sense"     ToolTip="Install it again to update" FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content="Privacy"/>
             </StackPanel>
                 <TextBlock Width="555" Background="Transparent" Margin="8" Foreground="{DynamicResource DefaultTextColor2}"  FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="Wifi Sense is a spying service that phones home all nearby scanned wifi networks and your current geo location"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Width="auto" Margin="10">
+            <StackPanel Orientation="Horizontal">
+                <CheckBox Content="Disable Location Tracking"     ToolTip="Install it again to update" FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content="Privacy"/>
+            </StackPanel>
+                <TextBlock Width="555" Background="Transparent" Margin="8" Foreground="{DynamicResource DefaultTextColor2}"  FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="Disabling location tracking in Windows involves turning off features that allow the operating system and apps to determine and use your geographical location. When location tracking is disabled. Windows will no longer collect or share your location data and enhances privacy"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Width="auto" Margin="10">
+            <StackPanel Orientation="Horizontal">
+                <CheckBox Content="Disable Autoplay and Autorun"     ToolTip="Install it again to update" FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content="Protection"/>
+            </StackPanel>
+                <TextBlock Width="555" Background="Transparent" Margin="8" Foreground="{DynamicResource DefaultTextColor2}"  FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="Disabling autoplay in Windows prevents the automatic launch of media or applications when a removable device. such as a USB drive or CD. is connected to the computer. Autoplay is a feature that. by default. prompts the user to choose an action whenever a new media device is inserted. such as playing a video or opening a file"/>
         </StackPanel>
 
                     </ListView>
