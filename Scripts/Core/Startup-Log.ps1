@@ -112,7 +112,7 @@ function Get-PCInfo {
             }
         
             Write-Host -NoNewline "`n`  $totalKeys" -ForegroundColor Green
-            Write-Host " device use this tool." -ForegroundColor Yellow
+            Write-Host " device use ITT." -ForegroundColor Yellow
         
         } | Out-Null
     }
