@@ -40,9 +40,10 @@
                 <TextBlock 
                 Name="Subtitle"
                 Text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet amet obcaecati dolorem, sit iusto consequatur, libero laudantium officia quo ea officiis nulla esse quod ex, mollitia asperiores! Accusantium, labore pariatur."
-                FontSize="20"
+                FontSize="18"
                 Height="Auto"
                 Width="Auto"
+                Margin="0,15,0,0"
                 Foreground="{DynamicResource DefaultTextColor2}"
                 TextWrapping="Wrap"
                 TextAlignment="Right"
