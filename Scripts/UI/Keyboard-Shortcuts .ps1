@@ -57,6 +57,11 @@ $KeyEvents = {
     if ($_.Key -eq "E" -and $_.KeyboardDevice.Modifiers -eq "Ctrl") {
         $itt.TabControl.SelectedItem = $itt.TabControl.Items | Where-Object { $_.Name -eq "SettingsTab" }
     }
+
+    # Swtich to settings tap
+    if ($_.Key -eq "I" -and $_.KeyboardDevice.Modifiers -eq "Ctrl") {
+        About
+    }
    
 }
 
