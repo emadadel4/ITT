@@ -7345,275 +7345,6 @@ $itt.database.Tweaks = '[
     ]
   },
   {
-    "Name": "Disable Data Collection",
-    "Description": "Disable Data Collection & Telemetry",
-    "Check": "false",
-    "Category": "Privacy",
-    "Type": "Registry",
-    "Refresh": "false",
-    "Modify": [
-      {
-        "Path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\DataCollection",
-        "Name": "AllowTelemetry",
-        "Type": "DWord",
-        "Value": "0",
-        "defaultValue": "1"
-      },
-      {
-        "Path": "HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager",
-        "Name": "ContentDeliveryAllowed",
-        "Value": "0",
-        "Type": "DWord",
-        "defaultValue": "1"
-      },
-      {
-        "Path": "HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager",
-        "Name": "OemPreInstalledAppsEnabled",
-        "Value": "0",
-        "Type": "DWord",
-        "defaultValue": "1"
-      },
-      {
-        "Path": "HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager",
-        "Name": "PreInstalledAppsEnabled",
-        "Value": "0",
-        "Type": "DWord",
-        "defaultValue": "1"
-      },
-      {
-        "Path": "HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager",
-        "Name": "PreInstalledAppsEverEnabled",
-        "Value": "0",
-        "Type": "DWord",
-        "defaultValue": "1"
-      },
-      {
-        "Path": "HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager",
-        "Name": "SilentInstalledAppsEnabled",
-        "Value": "0",
-        "Type": "DWord",
-        "defaultValue": "1"
-      },
-      {
-        "Path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager",
-        "Name": "SubscribedContent-338387Enabled",
-        "Value": "0",
-        "Type": "DWord",
-        "defaultValue": "1"
-      },
-      {
-        "Path": "HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager",
-        "Name": "SubscribedContent-338388Enabled",
-        "Value": "0",
-        "Type": "DWord",
-        "defaultValue": "1"
-      },
-      {
-        "Path": "HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager",
-        "Name": "SubscribedContent-338389Enabled",
-        "Value": "0",
-        "Type": "DWord",
-        "defaultValue": "1"
-      },
-      {
-        "Path": "HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager",
-        "Name": "SubscribedContent-353698Enabled",
-        "Value": "0",
-        "Type": "DWord",
-        "defaultValue": "1"
-      },
-      {
-        "Path": "HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager",
-        "Name": "SystemPaneSuggestionsEnabled",
-        "Value": "0",
-        "Type": "DWord",
-        "defaultValue": "1"
-      },
-      {
-        "Path": "HKCU:\\SOFTWARE\\Microsoft\\Siuf\\Rules",
-        "Name": "NumberOfSIUFInPeriod",
-        "Value": "0",
-        "Type": "DWord",
-        "defaultValue": "0"
-      },
-      {
-        "Path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\DataCollection",
-        "Name": "DoNotShowFeedbackNotifications",
-        "Value": "1",
-        "Type": "DWord",
-        "defaultValue": "0"
-      },
-      {
-        "Path": "HKCU:\\SOFTWARE\\Policies\\Microsoft\\Windows\\CloudContent",
-        "Name": "DisableTailoredExperiencesWithDiagnosticData",
-        "Value": "1",
-        "Type": "DWord",
-        "defaultValue": "0"
-      },
-      {
-        "Path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\AdvertisingInfo",
-        "Name": "DisabledByGroupPolicy",
-        "Value": "1",
-        "Type": "DWord",
-        "defaultValue": "0"
-      },
-      {
-        "Path": "HKLM:\\SOFTWARE\\Microsoft\\Windows\\Windows Error Reporting",
-        "Name": "Disabled",
-        "Value": "1",
-        "Type": "DWord",
-        "defaultValue": "0"
-      },
-      {
-        "Path": "HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\DeliveryOptimization\\Config",
-        "Name": "DODownloadMode",
-        "Value": "1",
-        "Type": "DWord",
-        "defaultValue": "1"
-      },
-      {
-        "Path": "HKLM:\\SYSTEM\\CurrentControlSet\\Control\\Remote Assistance",
-        "Name": "fAllowToGetHelp",
-        "Value": "0",
-        "Type": "DWord",
-        "defaultValue": "1"
-      },
-      {
-        "Path": "HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\OperationStatusManager",
-        "Name": "EnthusiastMode",
-        "Value": "1",
-        "Type": "DWord",
-        "defaultValue": "0"
-      },
-      {
-        "Path": "HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced",
-        "Name": "ShowTaskViewButton",
-        "Value": "0",
-        "Type": "DWord",
-        "defaultValue": "1"
-      },
-      {
-        "Path": "HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\\People",
-        "Name": "PeopleBand",
-        "Value": "0",
-        "Type": "DWord",
-        "defaultValue": "1"
-      },
-      {
-        "Path": "HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced",
-        "Name": "LaunchTo",
-        "Value": "1",
-        "Type": "DWord",
-        "defaultValue": "1"
-      },
-      {
-        "Path": "HKLM:\\SYSTEM\\CurrentControlSet\\Control\\FileSystem",
-        "Name": "LongPathsEnabled",
-        "Value": "1",
-        "Type": "DWord",
-        "defaultValue": "0"
-      },
-      {
-        "_Comment": "Driver searching is a function that should be left in",
-        "Path": "HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\DriverSearching",
-        "Name": "SearchOrderConfig",
-        "Value": "1",
-        "Type": "DWord",
-        "defaultValue": "1"
-      },
-      {
-        "Path": "HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Multimedia\\SystemProfile",
-        "Name": "SystemResponsiveness",
-        "Value": "0",
-        "Type": "DWord",
-        "defaultValue": "1"
-      },
-      {
-        "Path": "HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Multimedia\\SystemProfile",
-        "Name": "NetworkThrottlingIndex",
-        "Value": "4294967295",
-        "Type": "DWord",
-        "defaultValue": "1"
-      },
-      {
-        "Path": "HKCU:\\Control Panel\\Desktop",
-        "Name": "MenuShowDelay",
-        "Value": "1",
-        "Type": "DWord",
-        "defaultValue": "1"
-      },
-      {
-        "Path": "HKCU:\\Control Panel\\Desktop",
-        "Name": "AutoEndTasks",
-        "Value": "1",
-        "Type": "DWord",
-        "defaultValue": "1"
-      },
-      {
-        "Path": "HKLM:\\SYSTEM\\CurrentControlSet\\Control\\Session Manager\\Memory Management",
-        "Name": "ClearPageFileAtShutdown",
-        "Value": "0",
-        "Type": "DWord",
-        "defaultValue": "0"
-      },
-      {
-        "Path": "HKLM:\\SYSTEM\\ControlSet001\\Services\\Ndu",
-        "Name": "Start",
-        "Value": "2",
-        "Type": "DWord",
-        "defaultValue": "1"
-      },
-      {
-        "Path": "HKCU:\\Control Panel\\Mouse",
-        "Name": "MouseHoverTime",
-        "Value": "400",
-        "Type": "String",
-        "defaultValue": "400"
-      },
-      {
-        "Path": "HKLM:\\SYSTEM\\CurrentControlSet\\Services\\LanmanServer\\Parameters",
-        "Name": "IRPStackSize",
-        "Value": "30",
-        "Type": "DWord",
-        "defaultValue": "20"
-      },
-      {
-        "Path": "HKCU:\\SOFTWARE\\Policies\\Microsoft\\Windows\\Windows Feeds",
-        "Name": "EnableFeeds",
-        "Value": "0",
-        "Type": "DWord",
-        "defaultValue": "1"
-      },
-      {
-        "Path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Feeds",
-        "Name": "ShellFeedsTaskbarViewMode",
-        "Value": "2",
-        "Type": "DWord",
-        "defaultValue": "1"
-      },
-      {
-        "Path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer",
-        "Name": "HideSCAMeetNow",
-        "Value": "1",
-        "Type": "DWord",
-        "defaultValue": "1"
-      },
-      {
-        "Path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\UserProfileEngagement",
-        "Name": "ScoobeSystemSettingEnabled",
-        "Value": "0",
-        "Type": "DWord",
-        "defaultValue": "1"
-      }
-    ],
-    "InvokeCommand": [
-      ""
-    ],
-    "UndoCommand": [
-      ""
-    ]
-  },
-  {
     "Name": "Disable Start Menu Ads",
     "Description": "Disable Start menu Ads and Settings",
     "Check": "false",
@@ -8479,52 +8210,8 @@ $itt.database.Tweaks = '[
     ]
   },
   {
-    "Name": "Disable Activity History",
-    "Description": "This erases recent docs clipboard and run history",
-    "Check": "false",
-    "Category": "Privacy",
-    "Type": "Registry",
-    "refresh": "false",
-    "Modify": {
-      "Path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\System",
-      "Name": "EnableActivityFeed",
-      "Type": "DWord",
-      "Value": "0",
-      "defaultValue": "1"
-    },
-    "InvokeCommand": [
-      ""
-    ],
-    "UndoCommand": [
-      ""
-    ]
-  },
-  {
-    "Name": "Disable Wifi-Sense",
-    "Description": "Wifi Sense is a spying service that phones home all nearby scanned wifi networks and your current geo location",
-    "Check": "false",
-    "Category": "Privacy",
-    "Type": "Registry",
-    "refresh": "false",
-    "Modify": [
-      {
-        "Path": "HKLM:\\Software\\Microsoft\\PolicyManager\\default\\WiFi\\AllowAutoConnectToWiFiSenseHotspots",
-        "Name": "Value",
-        "Type": "DWord",
-        "Value": "0",
-        "defaultValue": "1"
-      }
-    ],
-    "InvokeCommand": [
-      ""
-    ],
-    "UndoCommand": [
-      ""
-    ]
-  },
-  {
-    "Name": "Disable Location Tracking",
-    "Description": "Disabling location tracking in Windows involves turning off features that allow the operating system and apps to determine and use your geographical location. When location tracking is disabled, Windows will no longer collect or share your location data and enhances privacy",
+    "Name": "Disable all Privacy Settings",
+    "Description": "Disable Wifi-Sense & Activity History & ActivityFeed Telemetry & DataCollection",
     "Check": "false",
     "Category": "Privacy",
     "Type": "Registry",
@@ -8550,10 +8237,298 @@ $itt.database.Tweaks = '[
         "Type": "DWord",
         "Value": "0",
         "defaultValue": "1"
+      },
+      {
+        "Path": "HKLM:\\SYSTEM\\Maps",
+        "Name": "AutoUpdateEnabled",
+        "Type": "DWord",
+        "Value": "0",
+        "defaultValue": "1"
+      },
+      {
+        "Path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\System",
+        "Name": "EnableActivityFeed",
+        "Type": "DWord",
+        "Value": "0",
+        "defaultValue": "1"
+      },
+      {
+        "Path": "HKLM:\\Software\\Microsoft\\PolicyManager\\default\\WiFi\\AllowAutoConnectToWiFiSenseHotspots",
+        "Name": "Value",
+        "Type": "DWord",
+        "Value": "0",
+        "defaultValue": "1"
+      },
+      {
+        "Path": "HKLM:\\SOFTWARE\\Microsoft\\Windows\\Windows Error Reporting",
+        "Name": "Disabled",
+        "Type": "DWord",
+        "Value": "1",
+        "defaultValue": "0"
+      },
+      {
+        "Path": "HKCU:\\SOFTWARE\\Microsoft\\Windows\\Windows Error Reporting",
+        "Name": "Disabled",
+        "Type": "DWord",
+        "Value": "1",
+        "defaultValue": "0"
+      },
+      {
+        "Path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\DataCollection",
+        "Name": "AllowTelemetry",
+        "Type": "DWord",
+        "Value": "0",
+        "defaultValue": "1"
+      },
+      {
+        "Path": "HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager",
+        "Name": "ContentDeliveryAllowed",
+        "Value": "0",
+        "Type": "DWord",
+        "defaultValue": "1"
+      },
+      {
+        "Path": "HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager",
+        "Name": "OemPreInstalledAppsEnabled",
+        "Value": "0",
+        "Type": "DWord",
+        "defaultValue": "1"
+      },
+      {
+        "Path": "HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager",
+        "Name": "PreInstalledAppsEnabled",
+        "Value": "0",
+        "Type": "DWord",
+        "defaultValue": "1"
+      },
+      {
+        "Path": "HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager",
+        "Name": "PreInstalledAppsEverEnabled",
+        "Value": "0",
+        "Type": "DWord",
+        "defaultValue": "1"
+      },
+      {
+        "Path": "HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager",
+        "Name": "SilentInstalledAppsEnabled",
+        "Value": "0",
+        "Type": "DWord",
+        "defaultValue": "1"
+      },
+      {
+        "Path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager",
+        "Name": "SubscribedContent-338387Enabled",
+        "Value": "0",
+        "Type": "DWord",
+        "defaultValue": "1"
+      },
+      {
+        "Path": "HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager",
+        "Name": "SubscribedContent-338388Enabled",
+        "Value": "0",
+        "Type": "DWord",
+        "defaultValue": "1"
+      },
+      {
+        "Path": "HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager",
+        "Name": "SubscribedContent-338389Enabled",
+        "Value": "0",
+        "Type": "DWord",
+        "defaultValue": "1"
+      },
+      {
+        "Path": "HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager",
+        "Name": "SubscribedContent-353698Enabled",
+        "Value": "0",
+        "Type": "DWord",
+        "defaultValue": "1"
+      },
+      {
+        "Path": "HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager",
+        "Name": "SystemPaneSuggestionsEnabled",
+        "Value": "0",
+        "Type": "DWord",
+        "defaultValue": "1"
+      },
+      {
+        "Path": "HKCU:\\SOFTWARE\\Microsoft\\Siuf\\Rules",
+        "Name": "NumberOfSIUFInPeriod",
+        "Value": "0",
+        "Type": "DWord",
+        "defaultValue": "0"
+      },
+      {
+        "Path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\DataCollection",
+        "Name": "DoNotShowFeedbackNotifications",
+        "Value": "1",
+        "Type": "DWord",
+        "defaultValue": "0"
+      },
+      {
+        "Path": "HKCU:\\SOFTWARE\\Policies\\Microsoft\\Windows\\CloudContent",
+        "Name": "DisableTailoredExperiencesWithDiagnosticData",
+        "Value": "1",
+        "Type": "DWord",
+        "defaultValue": "0"
+      },
+      {
+        "Path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\AdvertisingInfo",
+        "Name": "DisabledByGroupPolicy",
+        "Value": "1",
+        "Type": "DWord",
+        "defaultValue": "0"
+      },
+      {
+        "Path": "HKLM:\\SOFTWARE\\Microsoft\\Windows\\Windows Error Reporting",
+        "Name": "Disabled",
+        "Value": "1",
+        "Type": "DWord",
+        "defaultValue": "0"
+      },
+      {
+        "Path": "HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\DeliveryOptimization\\Config",
+        "Name": "DODownloadMode",
+        "Value": "1",
+        "Type": "DWord",
+        "defaultValue": "1"
+      },
+      {
+        "Path": "HKLM:\\SYSTEM\\CurrentControlSet\\Control\\Remote Assistance",
+        "Name": "fAllowToGetHelp",
+        "Value": "0",
+        "Type": "DWord",
+        "defaultValue": "1"
+      },
+      {
+        "Path": "HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\OperationStatusManager",
+        "Name": "EnthusiastMode",
+        "Value": "1",
+        "Type": "DWord",
+        "defaultValue": "0"
+      },
+      {
+        "Path": "HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced",
+        "Name": "ShowTaskViewButton",
+        "Value": "0",
+        "Type": "DWord",
+        "defaultValue": "1"
+      },
+      {
+        "Path": "HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\\People",
+        "Name": "PeopleBand",
+        "Value": "0",
+        "Type": "DWord",
+        "defaultValue": "1"
+      },
+      {
+        "Path": "HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced",
+        "Name": "LaunchTo",
+        "Value": "1",
+        "Type": "DWord",
+        "defaultValue": "1"
+      },
+      {
+        "Path": "HKLM:\\SYSTEM\\CurrentControlSet\\Control\\FileSystem",
+        "Name": "LongPathsEnabled",
+        "Value": "1",
+        "Type": "DWord",
+        "defaultValue": "0"
+      },
+      {
+        "_Comment": "Driver searching is a function that should be left in",
+        "Path": "HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\DriverSearching",
+        "Name": "SearchOrderConfig",
+        "Value": "1",
+        "Type": "DWord",
+        "defaultValue": "1"
+      },
+      {
+        "Path": "HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Multimedia\\SystemProfile",
+        "Name": "SystemResponsiveness",
+        "Value": "0",
+        "Type": "DWord",
+        "defaultValue": "1"
+      },
+      {
+        "Path": "HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Multimedia\\SystemProfile",
+        "Name": "NetworkThrottlingIndex",
+        "Value": "4294967295",
+        "Type": "DWord",
+        "defaultValue": "1"
+      },
+      {
+        "Path": "HKCU:\\Control Panel\\Desktop",
+        "Name": "MenuShowDelay",
+        "Value": "1",
+        "Type": "DWord",
+        "defaultValue": "1"
+      },
+      {
+        "Path": "HKCU:\\Control Panel\\Desktop",
+        "Name": "AutoEndTasks",
+        "Value": "1",
+        "Type": "DWord",
+        "defaultValue": "1"
+      },
+      {
+        "Path": "HKLM:\\SYSTEM\\CurrentControlSet\\Control\\Session Manager\\Memory Management",
+        "Name": "ClearPageFileAtShutdown",
+        "Value": "0",
+        "Type": "DWord",
+        "defaultValue": "0"
+      },
+      {
+        "Path": "HKLM:\\SYSTEM\\ControlSet001\\Services\\Ndu",
+        "Name": "Start",
+        "Value": "2",
+        "Type": "DWord",
+        "defaultValue": "1"
+      },
+      {
+        "Path": "HKCU:\\Control Panel\\Mouse",
+        "Name": "MouseHoverTime",
+        "Value": "400",
+        "Type": "String",
+        "defaultValue": "400"
+      },
+      {
+        "Path": "HKLM:\\SYSTEM\\CurrentControlSet\\Services\\LanmanServer\\Parameters",
+        "Name": "IRPStackSize",
+        "Value": "30",
+        "Type": "DWord",
+        "defaultValue": "20"
+      },
+      {
+        "Path": "HKCU:\\SOFTWARE\\Policies\\Microsoft\\Windows\\Windows Feeds",
+        "Name": "EnableFeeds",
+        "Value": "0",
+        "Type": "DWord",
+        "defaultValue": "1"
+      },
+      {
+        "Path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Feeds",
+        "Name": "ShellFeedsTaskbarViewMode",
+        "Value": "2",
+        "Type": "DWord",
+        "defaultValue": "1"
+      },
+      {
+        "Path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer",
+        "Name": "HideSCAMeetNow",
+        "Value": "1",
+        "Type": "DWord",
+        "defaultValue": "1"
+      },
+      {
+        "Path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\UserProfileEngagement",
+        "Name": "ScoobeSystemSettingEnabled",
+        "Value": "0",
+        "Type": "DWord",
+        "defaultValue": "1"
       }
     ],
     "InvokeCommand": [
-      ""
+      "Disable-ScheduledTask -TaskName ''Microsoft\\Windows\\Application Experience\\Microsoft Compatibility Appraiser'' | Out-Null; Disable-ScheduledTask -TaskName ''Microsoft\\Windows\\Application Experience\\ProgramDataUpdater'' | Out-Null; Disable-ScheduledTask -TaskName ''Microsoft\\Windows\\Autochk\\Proxy'' | Out-Null; Disable-ScheduledTask -TaskName ''Microsoft\\Windows\\Customer Experience Improvement Program\\Consolidator'' | Out-Null; Disable-ScheduledTask -TaskName ''Microsoft\\Windows\\Customer Experience Improvement Program\\UsbCeip'' | Out-Null; Disable-ScheduledTask -TaskName ''Microsoft\\Windows\\DiskDiagnostic\\Microsoft-Windows-DiskDiagnosticDataCollector'' | Out-Null"
     ],
     "UndoCommand": [
       ""
@@ -8588,8 +8563,143 @@ $itt.database.Tweaks = '[
     "UndoCommand": [
       ""
     ]
-  }
+  },
+  {
+    "Name": "Disable SMB Server",
+    "Description": "SMB Server enables file and printer sharing over a network, allowing access to resources on remote computers as if they were local.",
+    "Check": "false",
+    "Category": "Protection",
+    "Type": "command",
+    "refresh": "false",
+    "InvokeCommand": [
+      "Set-SmbServerConfiguration -EnableSMB1Protocol $false -Force; Set-SmbServerConfiguration -EnableSMB2Protocol $false -Force"
+    ],
+    "UndoCommand": [
+      ""
+    ]
+  },
+  {
+    "Name": "Set current network profile to public",
+    "Description": "Deny file sharing, device discovery, etc.",
+    "Check": "false",
+    "Category": "Protection",
+    "Type": "command",
+    "refresh": "false",
+    "InvokeCommand": [
+      "Set-NetConnectionProfile -NetworkCategory Public"
+    ],
+    "UndoCommand": [
+      ""
+    ]
+  },
+  {
+    "Name": "Enable F8 boot menu options",
+    "Description": "Enable F8 boot menu options",
+    "Check": "false",
+    "Category": "Other",
+    "Type": "command",
+    "refresh": "false",
+    "InvokeCommand": [
+      "bcdedit /set bootmenupolicy Standard | Out-Null"
+    ],
+    "UndoCommand": [
+      ""
+    ]
+  },
+  {
+    "Name": "Disable display and sleep mode timeouts",
+    "Description": "If you use your device frequently, disable this.",
+    "Check": "false",
+    "Category": "Other",
+    "Type": "command",
+    "refresh": "false",
+    "InvokeCommand": [
+      "powercfg /X monitor-timeout-ac 0",
+      "powercfg /X monitor-timeout-dc 0",
+      "powercfg /X standby-timeout-ac 0",
+      "powercfg /X standby-timeout-dc 0"
+    ],
+    "UndoCommand": [
+      ""
+    ]
+  },
+  {
+    "Name": "Set Wallpaper desktop Quality to 100%",
+    "Description": "It''s Microsoft, what should I say!",
+    "Check": "false",
+    "Category": "Personalization",
+    "Type": "Registry",
+    "refresh": "false",
+    "Modify": [
+      {
+        "Path": "HKLM:\\System\\CurrentControlSet\\Control\\CrashControl",
+        "Name": "DisplayParameters",
+        "Type": "DWord",
+        "Value": "1",
+        "defaultValue": "0"
+      }
+    ],
+    "InvokeCommand": [
+      ""
+    ],
+    "UndoCommand": [
+      ""
+    ]
+  },
+  {
+    "Name": "Disabling Windows Transparency",
+    "Description": "Windows transparency has a significant impact on performance, disable it if you want performance",
+    "Check": "false",
+    "Category": "Performance",
+    "Type": "Registry",
+    "refresh": "false",
+    "Modify": [
+      {
+        "Path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize",
+        "Name": "EnableTransparency",
+        "Type": "DWord",
+        "Value": "0",
+        "defaultValue": "1"
+      }
+    ],
+    "InvokeCommand": [
+      ""
+    ],
+    "UndoCommand": [
+      ""
+    ]
+  },
+  {
+    "Name": "Disable scheduled defragmentation task",
+    "Description": "Defragmentation in Windows optimizes disk performance by reorganizing fragmented data, improving access times and system efficiency.",
+    "Check": "false",
+    "Category": "Performance",
+    "Type": "command",
+    "refresh": "false",
+    "InvokeCommand": [
+      "Disable-ScheduledTask -TaskName ''Microsoft\\Windows\\Defrag\\ScheduledDefrag'' | Out-Null"
+    ],
+    "UndoCommand": [
+      ""
+    ]
+  },
+  {
+    "Name": "TEST",
+    "Description": "TEST",
+    "Check": "false",
+    "Category": "Other",
+    "Type": "command",
+    "refresh": "false",
+    "InvokeCommand": [
+      "AAAAAAAAAAAAAAAAAAAAAAAA"
+    ],
+    "UndoCommand": [
+      ""
+    ]
+  },
 ]
+
+
 ' | ConvertFrom-Json
 #===========================================================================
 #endregion End Database /APPS/TWEEAKS/Quotes/OST/Settings
@@ -12083,14 +12193,6 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
 
         <StackPanel Orientation="Vertical" Width="auto" Margin="10">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Disable Data Collection"     ToolTip="Install it again to update" FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content="Privacy"/>
-            </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="8" Foreground="{DynamicResource DefaultTextColor2}"  FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="Disable Data Collection . Telemetry"/>
-        </StackPanel>
-
-        <StackPanel Orientation="Vertical" Width="auto" Margin="10">
-            <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Disable Start Menu Ads"     ToolTip="Install it again to update" FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content="Privacy"/>
             </StackPanel>
@@ -12251,26 +12353,10 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
 
         <StackPanel Orientation="Vertical" Width="auto" Margin="10">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Disable Activity History"     ToolTip="Install it again to update" FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <CheckBox Content="Disable all Privacy Settings"     ToolTip="Install it again to update" FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content="Privacy"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="8" Foreground="{DynamicResource DefaultTextColor2}"  FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="This erases recent docs clipboard and run history"/>
-        </StackPanel>
-
-        <StackPanel Orientation="Vertical" Width="auto" Margin="10">
-            <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Disable Wifi-Sense"     ToolTip="Install it again to update" FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content="Privacy"/>
-            </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="8" Foreground="{DynamicResource DefaultTextColor2}"  FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="Wifi Sense is a spying service that phones home all nearby scanned wifi networks and your current geo location"/>
-        </StackPanel>
-
-        <StackPanel Orientation="Vertical" Width="auto" Margin="10">
-            <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Disable Location Tracking"     ToolTip="Install it again to update" FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content="Privacy"/>
-            </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="8" Foreground="{DynamicResource DefaultTextColor2}"  FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="Disabling location tracking in Windows involves turning off features that allow the operating system and apps to determine and use your geographical location. When location tracking is disabled. Windows will no longer collect or share your location data and enhances privacy"/>
+                <TextBlock Width="555" Background="Transparent" Margin="8" Foreground="{DynamicResource DefaultTextColor2}"  FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="Disable Wifi.Sense . Activity History . ActivityFeed Telemetry . DataCollection"/>
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Width="auto" Margin="10">
@@ -12279,6 +12365,70 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
                 <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content="Protection"/>
             </StackPanel>
                 <TextBlock Width="555" Background="Transparent" Margin="8" Foreground="{DynamicResource DefaultTextColor2}"  FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="Disabling autoplay in Windows prevents the automatic launch of media or applications when a removable device. such as a USB drive or CD. is connected to the computer. Autoplay is a feature that. by default. prompts the user to choose an action whenever a new media device is inserted. such as playing a video or opening a file"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Width="auto" Margin="10">
+            <StackPanel Orientation="Horizontal">
+                <CheckBox Content="Disable SMB Server"     ToolTip="Install it again to update" FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content="Protection"/>
+            </StackPanel>
+                <TextBlock Width="555" Background="Transparent" Margin="8" Foreground="{DynamicResource DefaultTextColor2}"  FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="SMB Server enables file and printer sharing over a network. allowing access to resources on remote computers as if they were local."/>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Width="auto" Margin="10">
+            <StackPanel Orientation="Horizontal">
+                <CheckBox Content="Set current network profile to public"     ToolTip="Install it again to update" FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content="Protection"/>
+            </StackPanel>
+                <TextBlock Width="555" Background="Transparent" Margin="8" Foreground="{DynamicResource DefaultTextColor2}"  FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="Deny file sharing. device discovery. etc."/>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Width="auto" Margin="10">
+            <StackPanel Orientation="Horizontal">
+                <CheckBox Content="Enable F8 boot menu options"     ToolTip="Install it again to update" FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content="Other"/>
+            </StackPanel>
+                <TextBlock Width="555" Background="Transparent" Margin="8" Foreground="{DynamicResource DefaultTextColor2}"  FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="Enable F8 boot menu options"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Width="auto" Margin="10">
+            <StackPanel Orientation="Horizontal">
+                <CheckBox Content="Disable display and sleep mode timeouts"     ToolTip="Install it again to update" FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content="Other"/>
+            </StackPanel>
+                <TextBlock Width="555" Background="Transparent" Margin="8" Foreground="{DynamicResource DefaultTextColor2}"  FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="If you use your device frequently. disable this."/>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Width="auto" Margin="10">
+            <StackPanel Orientation="Horizontal">
+                <CheckBox Content="Set Wallpaper desktop Quality to 100%"     ToolTip="Install it again to update" FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content="Personalization"/>
+            </StackPanel>
+                <TextBlock Width="555" Background="Transparent" Margin="8" Foreground="{DynamicResource DefaultTextColor2}"  FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="It..s Microsoft. what should I say."/>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Width="auto" Margin="10">
+            <StackPanel Orientation="Horizontal">
+                <CheckBox Content="Disabling Windows Transparency"     ToolTip="Install it again to update" FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content="Performance"/>
+            </StackPanel>
+                <TextBlock Width="555" Background="Transparent" Margin="8" Foreground="{DynamicResource DefaultTextColor2}"  FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="Windows transparency has a significant impact on performance. disable it if you want performance"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Width="auto" Margin="10">
+            <StackPanel Orientation="Horizontal">
+                <CheckBox Content="Disable scheduled defragmentation task"     ToolTip="Install it again to update" FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content="Performance"/>
+            </StackPanel>
+                <TextBlock Width="555" Background="Transparent" Margin="8" Foreground="{DynamicResource DefaultTextColor2}"  FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="Defragmentation in Windows optimizes disk performance by reorganizing fragmented data. improving access times and system efficiency."/>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Width="auto" Margin="10">
+            <StackPanel Orientation="Horizontal">
+                <CheckBox Content="TEST"     ToolTip="Install it again to update" FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content="Other"/>
+            </StackPanel>
+                <TextBlock Width="555" Background="Transparent" Margin="8" Foreground="{DynamicResource DefaultTextColor2}"  FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="TEST"/>
         </StackPanel>
 
                     </ListView>
@@ -13480,6 +13630,7 @@ function Invoke-ApplyTweaks {
 
                                         $app.Modify | ForEach-Object {
                                             Set-RegistryValue -Name $_.Name -Type $_.Type -Path $_.Path -Value $_.Value
+                                            #$app.Command | ForEach-Object { ExecuteCommand -Name $app.Name -Command $_ }
                                         }
 
                                         $app.Delete | ForEach-Object {
@@ -13501,7 +13652,7 @@ function Invoke-ApplyTweaks {
                                     }
                                 }
 
-                                Add-Log -Message "Finished" -Level "INFO"
+                                Add-Log -Message "Finished. Some tweaks require restarting the device." -Level "INFO"
                             }
 
                             # Displaying the names of the selected apps
