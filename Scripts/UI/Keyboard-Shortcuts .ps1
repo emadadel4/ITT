@@ -29,7 +29,7 @@ $KeyEvents = {
     }
 
      # Quit from applaction
-     if (($_.Key -eq "X" -and $_.KeyboardDevice.Modifiers -eq "Ctrl")) {
+     if (($_.Key -eq "G" -and $_.KeyboardDevice.Modifiers -eq "Ctrl")) {
         $this.Close()
     }
 
