@@ -50,13 +50,12 @@ if($userInput -eq "Registry")
 $TweakName = Read-Host "Enter Tweak Name"
 $description = (Read-Host "Enter Tweak description").Trim() -replace '[^\w\s]', ''
 
+# Initialize arrays for Modify and Delete paths
+$modifyPaths = @()
+$deletePaths = @()
 
-# Read multiple AppxPackage Names
-$Names = @()
 # Read multiple AppxPackage Names
 do {
-
-
 
     $ActionType = @{
         1 = "Modify"
@@ -83,7 +82,6 @@ do {
         $Name = Read-Host "Enter Value Name"
 
         $KeyType = @{
-
             1 = "DWord"
             2 = "Qword"
             3 = "Binary"
@@ -109,9 +107,16 @@ do {
             }
         } until ([int]$choice -in $KeyType.Keys)
 
-            $Value = Read-Host "Enter Value"
-            $defaultValue = Read-Host "Enter default Value"
+        $Value = Read-Host "Enter Value"
+        $defaultValue = Read-Host "Enter default Value"
 
+        $modifyPaths += @{
+            "Path" = "$Path"
+            "Name" = "$Name"
+            "Type" = "$Type"
+            "Value" = "$Value"
+            "defaultValue" = "$defaultValue"
+        }
     }
     else
     {
@@ -119,14 +124,17 @@ do {
             $Path = Read-Host "Enter Reg Path"
             $Name = Read-Host "Enter Value Name"
 
+            $deletePaths += @{
+                "Path" = "$Path"
+                "Name" = "$Name"
+            }
+
             $continue = Read-Host "Do you want to add another Delete path? (y/n)"
         }while ($continue -eq "y")
     }
 
-    $Names += $Name
     $continue = Read-Host "Do you want to add another Path in current Tweak? (y/n)"
 } while ($continue -eq "y")
-
 
 # Define the data
 $data = @{
@@ -135,32 +143,18 @@ $data = @{
     "Check" = "false"
     "Type" = "Registry"
     "Refresh" = "false"
-    "Modify" = @(
-        $Names | ForEach-Object {
-            @{
-                "Path" = "$Path"
-                "Name" = "$Name"
-                "Type" = "$Type"
-                "Value" = "$Value"
-                "defaultValue" = "$defaultValue"
-
-            } | Select-Object Path, Name, Type, Value, defaultValue
-        }
-    )
-    "Delete" = @(
-        $Names | ForEach-Object {
-            @{
-                "Path" = "$Path"
-                "Name" = "$Name"
-            } | Select-Object Path, Name
-        }
-    )
+    "Modify" = $modifyPaths
     "InvokeCommand" = @(
         ""
     )
     "UndoCommand" = @(
         ""
     )
+}
+
+# Add Delete field only if there are entries
+if ($deletePaths.Count -gt 0) {
+    $data["Delete"] = $deletePaths
 }
 
 # Convert to JSON string
@@ -170,9 +164,8 @@ $jsonString = @"
     "Description": "$($data["Description"])",
     "Check": "$($data["Check"])",
     "Type": "$($data["Type"])",
-    "refresh": "$($data["refresh"])",
+    "Refresh": "$($data["Refresh"])",
     "Modify": $($data["Modify"] | ConvertTo-Json -Depth 100),
-    "Delete": $($data["Delete"] | ConvertTo-Json -Depth 100),
     "InvokeCommand": [
         ""
     ],
@@ -181,6 +174,11 @@ $jsonString = @"
     ]
 }
 "@
+
+# Include Delete field in JSON string if it exists
+if ($data.ContainsKey("Delete")) {
+    $jsonString = $jsonString -replace '"Delete": \[\]', '"Delete": $($data["Delete"] | ConvertTo-Json -Depth 100)'
+}
 
 # Read existing JSON file
 $existingJson = Get-Content -Path "./Resources/Database/Tweaks.json" -Raw | ConvertFrom-Json -ErrorAction SilentlyContinue
@@ -202,6 +200,7 @@ Write-Host "Added successfully, Don't forget to build and test it before commit"
 #===========================================================================
 #endregion Registry 
 #===========================================================================
+
 
 #===========================================================================
 #region RemoveAppxPackage 
