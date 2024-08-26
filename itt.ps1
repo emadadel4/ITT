@@ -8682,20 +8682,6 @@ $itt.database.Tweaks = '[
     "UndoCommand": [
       ""
     ]
-  },
-  {
-    "Name": "TEST",
-    "Description": "TEST",
-    "Check": "false",
-    "Category": "Other",
-    "Type": "command",
-    "refresh": "false",
-    "InvokeCommand": [
-      "AAAAAAAAAAAAAAAAAAAAAAAA"
-    ],
-    "UndoCommand": [
-      ""
-    ]
   }
 ]' | ConvertFrom-Json
 #===========================================================================
@@ -12418,14 +12404,6 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
                 <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content="Performance"/>
             </StackPanel>
                 <TextBlock Width="555" Background="Transparent" Margin="8" Foreground="{DynamicResource DefaultTextColor2}"  FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="Defragmentation in Windows optimizes disk performance by reorganizing fragmented data. improving access times and system efficiency."/>
-        </StackPanel>
-
-        <StackPanel Orientation="Vertical" Width="auto" Margin="10">
-            <StackPanel Orientation="Horizontal">
-                <CheckBox Content="TEST"     ToolTip="Install it again to update" FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content="Other"/>
-            </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="8" Foreground="{DynamicResource DefaultTextColor2}"  FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="TEST"/>
         </StackPanel>
 
                     </ListView>
