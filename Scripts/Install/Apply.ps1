@@ -397,6 +397,7 @@ function Invoke-ApplyTweaks {
 
                                         $app.Modify | ForEach-Object {
                                             Set-RegistryValue -Name $_.Name -Type $_.Type -Path $_.Path -Value $_.Value
+                                            #$app.Command | ForEach-Object { ExecuteCommand -Name $app.Name -Command $_ }
                                         }
 
                                         $app.Delete | ForEach-Object {
@@ -418,7 +419,7 @@ function Invoke-ApplyTweaks {
                                     }
                                 }
 
-                                Add-Log -Message "Finished" -Level "INFO"
+                                Add-Log -Message "Finished. Some tweaks require restarting the device." -Level "INFO"
                             }
 
                             # Displaying the names of the selected apps
