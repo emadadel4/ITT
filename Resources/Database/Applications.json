@@ -6187,5 +6187,43 @@
     ],
     "category": "Development",
     "check": "false"
+  },
+  {
+    "name": "Adobe Acrobat Reader",
+    "description": "Adobe Acrobat Reader DC software is the free trusted global standard for viewing printing signing sharing and annotating PDFs Its the only PDF viewer that can open and interact",
+    "winget": "Adobe.Acrobat.Reader.32-bit",
+    "choco": "adobereader",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none",
+        "shortcut": "no",
+        "run": "no"
+      }
+    ],
+    "category": "Documents",
+    "check": "false"
+  },
+  {
+    "name": "Flash Player Plugin",
+    "description": "The Adobe Flash Player is freeware software for viewing multimedia executing Rich Internet Applications and streaming video and audio content created on the Adobe Flash platform",
+    "winget": "none",
+    "choco": "flashplayerplugin",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none",
+        "shortcut": "no",
+        "run": "no"
+      }
+    ],
+    "category": "Documents",
+    "check": "false"
   }
 ]
