@@ -6225,5 +6225,24 @@
     ],
     "category": "Documents",
     "check": "false"
+  },
+  {
+    "name": "Sysinternals",
+    "description": "The Sysinternals Troubleshooting Utilities have been rolled up into a single suite of tools",
+    "winget": "none",
+    "choco": "sysinternals",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none",
+        "shortcut": "no",
+        "run": "no"
+      }
+    ],
+    "category": "Documents",
+    "check": "false"
   }
 ]
