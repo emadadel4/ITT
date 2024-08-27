@@ -10,22 +10,27 @@ Write-Host "
 |    Made with ♥  By Emad Adel                                            |
 +-------------------------------------------------------------------------+
 "
+
     # Read existing JSON file
     $jsonFilePath = "./Resources/Database/OST.json"
     $existingData = Get-Content $jsonFilePath -Raw -ErrorAction Stop | ConvertFrom-Json
 
     # Prompt for input
-    $newOST = Read-Host "Enter the URL/ Example: www.eprojects.orgfree.com/ezio_family.mp3"
+    $name = Read-Host "Enter the track name"
+    $url = Read-Host "Enter the URL (Example: www.eprojects.orgfree.com/ezio_family.mp3)"
 
     # Store input
-    $track = $newOST
+    $newTrack = @{
+        name = $name
+        url  = $url
+    }
 
     # Add new object to existing array
-    $existingData.Tracks += $track
+    $existingData.Tracks += $newTrack
 
     # Write updated JSON to file
-    $existingData | ConvertTo-Json | Out-File $jsonFilePath -ErrorAction Stop
-    Write-Host  "Added Successfully" -ForegroundColor Green
+    $existingData | ConvertTo-Json -Depth 10 | Set-Content $jsonFilePath -ErrorAction Stop
+    Write-Host "Added Successfully" -ForegroundColor Green
 
 }
 catch {
