@@ -168,6 +168,69 @@ function Update-Readme {
 
 }
 
+function NewCONTRIBUTOR {
+  
+    # Define paths
+    $gitFolder = ".git"
+    $contribFile = "CONTRIBUTORS.md"
+    $xamlFile = "Templates\about.xaml"  # Replace with your XAML file name
+    $updatedXamlFile = "UI\Views\AboutWindow.xaml"  # Replace with the new file name for updated XAML
+
+    # Function to get GitHub username from .git folder
+    function Get-GitHubUsername {
+        $configFile = Join-Path $gitFolder "config"
+        
+        if (Test-Path $configFile) {
+            $configContent = Get-Content $configFile -Raw
+            if ($configContent -match 'url\s*=\s*https?://github.com/([^/]+)/') {
+                return $matches[1]
+            }
+        }
+        return $null
+    }
+
+    # Get GitHub username
+    $username = Get-GitHubUsername
+
+    if (-not $username) {
+        Write-Error "GitHub username not found in .git/config."
+        exit 1
+    }
+
+    # Read CONTRIBUTORS.md content and ensure username is unique
+    if (Test-Path $contribFile) {
+        $contribLines = Get-Content $contribFile | ForEach-Object { $_.Trim() } | Where-Object { $_ -ne "" } | Sort-Object -Unique
+        if ($contribLines -notcontains $username) {
+            Add-Content $contribFile $username
+            $contribLines += $username
+        }
+    } else {
+        # Create CONTRIBUTORS.md if it doesn't exist and add the username
+        Set-Content $contribFile $username
+        $contribLines = @($username)
+    }
+
+    # Read the existing XAML file content
+    $xamlContent = Get-Content $xamlFile -Raw
+
+    # Generate unique TextBlock elements for each name in CONTRIBUTORS.md
+    $textBlockElements = $contribLines | ForEach-Object {
+        "<TextBlock Text='$($_)' Margin='5' Foreground='{DynamicResource DefaultTextColor2}' />"
+    }
+
+    # Join TextBlock elements with newline characters
+    $textBlockContent = $textBlockElements -join "`r`n"
+
+    # Replace #{names} in the XAML file with the TextBlock elements
+    $newXamlContent = $xamlContent -replace '#{names}', $textBlockContent
+
+    # Write the updated content to the new XAML file
+    Set-Content -Path $updatedXamlFile -Value $newXamlContent -Encoding UTF8
+
+    #Write-Output "Updated CONTRIBUTORS.md successfully."
+    
+}
+
 # Display the number of items in json files
 function CountItems {
     Write-Host  "`n` $($itt.database.Applications.Count) Apps" -ForegroundColor Yellow
@@ -314,6 +377,7 @@ WriteToScript -Content @"
     }
    
     WriteToScript -Content "`$childXaml = '$childXaml'"
+    NewCONTRIBUTOR
 
     WriteToScript -Content @"
 #===========================================================================
