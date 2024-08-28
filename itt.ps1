@@ -6286,6 +6286,25 @@ $itt.database.Applications = '[
     ],
     "category": "Documents",
     "check": "false"
+  },
+  {
+    "name": "Sysinternals",
+    "description": "The Sysinternals Troubleshooting Utilities have been rolled up into a single suite of tools",
+    "winget": "none",
+    "choco": "sysinternals",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none",
+        "shortcut": "no",
+        "run": "no"
+      }
+    ],
+    "category": "Documents",
+    "check": "false"
   }
 ]
 ' | ConvertFrom-Json
@@ -12150,6 +12169,14 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
                 <TextBlock Width="555" Background="Transparent" Margin="8" Foreground="{DynamicResource DefaultTextColor2}"  FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="The Adobe Flash Player is freeware software for viewing multimedia executing Rich Internet Applications and streaming video and audio content created on the Adobe Flash platform"/>
         </StackPanel>
 
+        <StackPanel Orientation="Vertical" Width="auto" Margin="10">
+            <StackPanel Orientation="Horizontal">
+                <CheckBox Content="Sysinternals" Tag="Documents" IsChecked="false"   ToolTip="Install it again to update" FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content="Documents"/>
+            </StackPanel>
+                <TextBlock Width="555" Background="Transparent" Margin="8" Foreground="{DynamicResource DefaultTextColor2}"  FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="The Sysinternals Troubleshooting Utilities have been rolled up into a single suite of tools"/>
+        </StackPanel>
+
                     </ListView>
                 </TabItem.Content>
             </TabItem>
@@ -12626,6 +12653,7 @@ $childXaml = '<Window
 
 
                 <TextBlock Text=''emadadel4'' Margin=''5'' Foreground=''{DynamicResource DefaultTextColor2}'' />
+<TextBlock Text=''yousefmhmd'' Margin=''5'' Foreground=''{DynamicResource DefaultTextColor2}'' />
 
               </StackPanel>
 
@@ -14723,10 +14751,10 @@ function About {
     $itt.about.FindName("github").add_MouseLeftButtonDown({Start-Process("https://github.com/emadadel4/itt")})
     $itt.about.FindName("blog").add_MouseLeftButtonDown({Start-Process("https://emadadel4.github.io")})
     $itt.about.FindName("yt").add_MouseLeftButtonDown({Start-Process("https://youtube.com/@emadadel4")})
-    # $itt.about.FindName("coffee").add_MouseLeftButtonDown({Start-Process("https://buymeacoffee.com/emadadel")})
+    $itt.about.FindName("coffee").add_MouseLeftButtonDown({Start-Process("https://buymeacoffee.com/emadadel")})
     # Set data context based on language
-    $locale = if ($itt.Language -eq "en") { "en" } else { "ar" }
-    $itt.about.DataContext = $itt.database.locales.Controls.$locale
+    #$locale = if ($itt.Language -eq "en") { "en" } else { "ar" }
+    $itt.about.DataContext = $itt.database.locales.Controls.en
     # Show dialog
     $itt.about.ShowDialog() | Out-Null
 }
