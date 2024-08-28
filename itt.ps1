@@ -20,7 +20,7 @@ Add-Type -AssemblyName System.Windows.Forms
 $itt = [Hashtable]::Synchronized(@{
     database       = @{}
     ProcessRunning = $false
-    lastupdate     = "08/27/24"
+    lastupdate     = "08/28/24"
     github         = "https://github.com/emadadel4"
     telegram       = "https://t.me/emadadel4"
     website        = "https://emadadel4.github.io"
@@ -12608,65 +12608,113 @@ $childXaml = '<Window
   x:Name="Window" Title="About | ITT " WindowStartupLocation = "CenterScreen" 
   Background="{DynamicResource BGColor}"
   WindowStyle="ToolWindow"
-  Height="488" Width="350" MinHeight="488" MinWidth="350" MaxHeight="488" MaxWidth="350" FontFamily="Console" ShowInTaskbar = "True" Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/icon.ico">
-    <Grid>
+  Height="488" Width="488" MinHeight="488" MinWidth="488" MaxHeight="488" MaxWidth="488" ShowInTaskbar = "True" Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/icon.ico">
 
+    <Grid>
       <Grid.RowDefinitions>
-        <RowDefinition Height="*"/>
         <RowDefinition Height="auto"/>
+        <RowDefinition Height="auto"/>
+        <RowDefinition Height="auto"/>
+        <RowDefinition Height="*"/>
       </Grid.RowDefinitions>
 
-      <StackPanel Orientation="Vertical">
-          
-        <!--Logo-->
-              <Image Source="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/logo2.png" Margin="10" Height="80" Width="Auto"/>
-        <!--End Logo-->
-        
-        <TextBlock Text="Install Tweak Tool" 
-        FontWeight="SemiBold" FontSize="20" 
-        VerticalAlignment="Center" 
-        Foreground="{DynamicResource DefaultTextColor}"
-        HorizontalAlignment="Center"/>
+      <StackPanel Margin="8">
 
-        <TextBlock Text="{Binding devby}" 
-        Margin="0,5,0,0" 
-        Foreground="{DynamicResource DefaultTextColor2}"
-        VerticalAlignment="Center" 
-        HorizontalAlignment="Center"/>
+        <!--Header -->
+          <Grid Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <StackPanel Orientation="Vertical">
+              <Image Source="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/logo2.png" Height="100" Width="Auto"/>
+              <TextBlock Text="{Binding devby}" 
+                Foreground="{DynamicResource DefaultTextColor2}"
+                VerticalAlignment="Center" 
+                HorizontalAlignment="Center"
+                FontSize="18"
+                Margin="0,0,0,8"
+              />
+            </StackPanel>
+          </Grid>
+        <!--Header -->
 
-        <DockPanel Margin="10">
-          <TextBlock Text="Telegram" Foreground="{DynamicResource DefaultTextColor2}"/>
-          <TextBlock Name="telegram" Cursor="Hand" Text="emadadel4" Foreground="{DynamicResource DefaultTextColor2}" TextAlignment="Right"/>
-        </DockPanel>
-        <Separator/>
-        <DockPanel Margin="10">
-          <TextBlock Text="Github" Foreground="{DynamicResource DefaultTextColor2}" />
-          <TextBlock Name="github" Cursor="Hand" Text="emadadel4" Foreground="{DynamicResource DefaultTextColor2}" TextAlignment="Right"/>
-        </DockPanel>
-        <Separator/>
-        <DockPanel Margin="10">
-          <TextBlock Text="Youtube" Foreground="{DynamicResource DefaultTextColor2}" />
-          <TextBlock Name="yt" Cursor="Hand" Foreground="{DynamicResource DefaultTextColor2}" TextAlignment="Right">emadadel4</TextBlock>
-        </DockPanel>
-        <Separator/>
-        <DockPanel Margin="10">
-          <TextBlock Text="Website" Foreground="{DynamicResource DefaultTextColor2}"/>
-          <TextBlock Name="website" Cursor="Hand" Foreground="{DynamicResource DefaultTextColor2}" Text="emadadel4.github.io" TextAlignment="Right"/>
-        </DockPanel>
-        <Separator/>
-        <DockPanel Margin="10">
-          <TextBlock Name="lastupdate" Foreground="{DynamicResource DefaultTextColor2}" Text="{Binding lastupdate}"/>
-          <TextBlock Name="ver" Foreground="{DynamicResource DefaultTextColor2}" TextAlignment="Right">5/20/2024</TextBlock>
-        </DockPanel>
-        <Separator/>
-  
-        <Image Source="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/coffee.png" Cursor="Hand" Name="coffee" Margin="10" Height="70" Width="Auto"/>
+        <!-- Contributors -->
+          <Grid Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
 
 
-        <TextBlock  Name="sourcecode" Cursor="Hand" Margin="0,25,0,0" Text="Source Code" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
-      </StackPanel>
+              <ScrollViewer VerticalScrollBarVisibility="Auto" Height="150">
+
+                
+              <StackPanel x:Name="names" Orientation="Vertical" Margin="15,0,0,0">
+
+                <TextBlock Text="Contributors"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                FontSize="16"
+                FontWeight="Bold" Margin="5"
+                Foreground=''{DynamicResource DefaultTextColor2}'' />
+
+
+                <TextBlock Text=''emadadel4'' Margin=''5'' Foreground=''{DynamicResource DefaultTextColor2}'' />
+
+              </StackPanel>
+
+
+            </ScrollViewer>
+          </Grid>
+        <!--End Contributors -->
+
+        <!--Footer -->
+          <Grid Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Margin="20">
+
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Center">
+              <Image Source="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Icons/telegram.png" 
+              Name="telegram"
+              VerticalAlignment="Bottom" 
+              HorizontalAlignment="Center" 
+              Margin="10" 
+              Height="30"
+              Cursor="Hand"
+              Width="Auto"/>
+
+              <Image Source="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Icons/youtube.png"
+              Name="yt"
+              Margin="10"
+              Height="30"
+              VerticalAlignment="Bottom"
+              HorizontalAlignment="Center"
+              Cursor="Hand"
+              Width="Auto"/>
+
+              <Image Source="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Icons/github.png" 
+              Name="github"
+              Margin="10"
+              Height="30" 
+              VerticalAlignment="Bottom"
+              HorizontalAlignment="Center"
+              Cursor="Hand"
+              Width="Auto"/>
+
+              <Image Source="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Icons/blog.png" 
+              Name="blog"
+              Margin="10" 
+              Height="30" 
+              VerticalAlignment="Bottom"
+              HorizontalAlignment="Center"
+              Cursor="Hand"
+              Width="Auto"/>
+
+
+            </StackPanel>
+          </Grid>
+        <!--End Footer -->
+
+        <Grid Grid.Row="3">
+          <Image Source="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/coffee.png" Cursor="Hand" Name="coffee" Height="50" Width="Auto"/>
+        </Grid>
+
+    </StackPanel>
+
     </Grid>
   </Window>
+
 '
 #===========================================================================
 #endregion End WPF About Window
@@ -14697,13 +14745,12 @@ function About {
     $itt.about = [Windows.Markup.XamlReader]::Load($childWindowReader)
     $itt["about"].Resources.MergedDictionaries.Add($itt["window"].FindResource($itt.CurretTheme))
     # Set version and link handlers
-    $itt.about.FindName('ver').Text = $itt.lastupdate
+    # $itt.about.FindName('ver').Text = $itt.lastupdate
     $itt.about.FindName("telegram").add_MouseLeftButtonDown({Start-Process("https://t.me/emadadel4")})
-    $itt.about.FindName("github").add_MouseLeftButtonDown({Start-Process("https://github.com/emadadel4")})
-    $itt.about.FindName("website").add_MouseLeftButtonDown({Start-Process("https://emadadel4.github.io")})
+    $itt.about.FindName("github").add_MouseLeftButtonDown({Start-Process("https://github.com/emadadel4/itt")})
+    $itt.about.FindName("blog").add_MouseLeftButtonDown({Start-Process("https://emadadel4.github.io")})
     $itt.about.FindName("yt").add_MouseLeftButtonDown({Start-Process("https://youtube.com/@emadadel4")})
-    $itt.about.FindName("sourcecode").add_MouseLeftButtonDown({Start-Process("https://github.com/emadadel4/ITT")})
-    $itt.about.FindName("coffee").add_MouseLeftButtonDown({Start-Process("https://buymeacoffee.com/emadadel")})
+    # $itt.about.FindName("coffee").add_MouseLeftButtonDown({Start-Process("https://buymeacoffee.com/emadadel")})
     # Set data context based on language
     $locale = if ($itt.Language -eq "en") { "en" } else { "ar" }
     $itt.about.DataContext = $itt.database.locales.Controls.$locale

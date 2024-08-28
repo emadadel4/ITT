@@ -4,27 +4,27 @@
   x:Name="Window" Title="About | ITT " WindowStartupLocation = "CenterScreen" 
   Background="{DynamicResource BGColor}"
   WindowStyle="ToolWindow"
-  Height="533" Width="444" ShowInTaskbar = "True" Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/icon.ico">
+  Height="488" Width="488" MinHeight="488" MinWidth="488" MaxHeight="488" MaxWidth="488" ShowInTaskbar = "True" Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/icon.ico">
 
     <Grid>
-
       <Grid.RowDefinitions>
+        <RowDefinition Height="auto"/>
         <RowDefinition Height="auto"/>
         <RowDefinition Height="auto"/>
         <RowDefinition Height="*"/>
       </Grid.RowDefinitions>
 
-      <StackPanel Margin="20">
+      <StackPanel Margin="8">
 
         <!--Header -->
           <Grid Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
             <StackPanel Orientation="Vertical">
-              <Image Source="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/logo2.png" Height="120" Width="Auto"/>
+              <Image Source="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/logo2.png" Height="100" Width="Auto"/>
               <TextBlock Text="{Binding devby}" 
                 Foreground="{DynamicResource DefaultTextColor2}"
                 VerticalAlignment="Center" 
                 HorizontalAlignment="Center"
-                FontFamily="22"
+                FontSize="18"
                 Margin="0,0,0,8"
               />
             </StackPanel>
@@ -34,10 +34,21 @@
         <!-- Contributors -->
           <Grid Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
 
-              <ScrollViewer VerticalScrollBarVisibility="Auto" Height="200">
 
-              <StackPanel x:Name="names" Orientation="Vertical">
+              <ScrollViewer VerticalScrollBarVisibility="Auto" Height="150">
 
+                
+              <StackPanel x:Name="names" Orientation="Vertical" Margin="15,0,0,0">
+
+                <TextBlock Text="Contributors"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                FontSize="16"
+                FontWeight="Bold" Margin="5"
+                Foreground='{DynamicResource DefaultTextColor2}' />
+
+
+                <TextBlock Text='emadadel4' Margin='5' Foreground='{DynamicResource DefaultTextColor2}' />
 
               </StackPanel>
 
@@ -51,6 +62,7 @@
 
             <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Center">
               <Image Source="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Icons/telegram.png" 
+              Name="telegram"
               VerticalAlignment="Bottom" 
               HorizontalAlignment="Center" 
               Margin="10" 
@@ -59,7 +71,8 @@
               Width="Auto"/>
 
               <Image Source="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Icons/youtube.png"
-               Margin="10"
+              Name="yt"
+              Margin="10"
               Height="30"
               VerticalAlignment="Bottom"
               HorizontalAlignment="Center"
@@ -67,6 +80,7 @@
               Width="Auto"/>
 
               <Image Source="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Icons/github.png" 
+              Name="github"
               Margin="10"
               Height="30" 
               VerticalAlignment="Bottom"
@@ -75,6 +89,7 @@
               Width="Auto"/>
 
               <Image Source="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Icons/blog.png" 
+              Name="blog"
               Margin="10" 
               Height="30" 
               VerticalAlignment="Bottom"
@@ -82,9 +97,15 @@
               Cursor="Hand"
               Width="Auto"/>
 
+
             </StackPanel>
           </Grid>
         <!--End Footer -->
+
+        <Grid Grid.Row="3">
+          <Image Source="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/coffee.png" Cursor="Hand" Name="coffee" Height="50" Width="Auto"/>
+        </Grid>
+
     </StackPanel>
 
     </Grid>
