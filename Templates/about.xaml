@@ -38,6 +38,7 @@
 
               <StackPanel x:Name="names" Orientation="Vertical">
 
+                #{names}
 
               </StackPanel>
 
@@ -89,4 +90,3 @@
 
     </Grid>
   </Window>
-
