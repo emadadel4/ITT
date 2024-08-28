@@ -351,6 +351,9 @@ WriteToScript -Content @"
 
     WriteToScript -Content "`$inputXML = '$XamlContent'"
 
+    NewCONTRIBUTOR
+
+
     WriteToScript -Content @"
 #===========================================================================
 #endregion End WPF Main Window
@@ -377,7 +380,6 @@ WriteToScript -Content @"
     }
    
     WriteToScript -Content "`$childXaml = '$childXaml'"
-    NewCONTRIBUTOR
 
     WriteToScript -Content @"
 #===========================================================================
