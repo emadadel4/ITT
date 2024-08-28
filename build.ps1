@@ -173,8 +173,8 @@ function NewCONTRIBUTOR {
     # Define paths
     $gitFolder = ".git"
     $contribFile = "CONTRIBUTORS.md"
-    $xamlFile = "Templates\about.xaml"  # Replace with your XAML file name
-    $updatedXamlFile = "UI\Views\AboutWindow.xaml"  # Replace with the new file name for updated XAML
+    $xamlFile = "Templates\about.xaml"
+    $updatedXamlFile = "UI\Views\AboutWindow.xaml" 
 
     # Function to get GitHub username from .git folder
     function Get-GitHubUsername {
