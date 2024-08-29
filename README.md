@@ -157,7 +157,7 @@ or
 
 <p><strong>👤 Emad Adel</strong></p>
 
-<a href="https://github.com/emadadel4/itt/graphs/contributors">
+<a href="github.com/emadadel4">
   <img src="https://avatars.githubusercontent.com/u/19177373?s=400&u=778f951797417d73bfb89d2b5704422f25dc089a&v=4" alt="Profile" width="100" height="100" style="border-radius: 100px;margin-bottom:20px;">
 </a>
 
