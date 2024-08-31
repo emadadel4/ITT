@@ -9553,7 +9553,11 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
             </MenuItem.Icon>
         </MenuItem>
 
-        
+        <MenuItem Name="majorgeeks" Header="Major Geeks">
+            <MenuItem.Icon>
+                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+            </MenuItem.Icon>
+        </MenuItem>
         
     </MenuItem>
 
@@ -14637,6 +14641,10 @@ function Invoke-Button {
         }
         "sordum" {
             Start-Process "https://www.sordum.org/" 
+            Debug-Message $action
+        }
+        "majorgeeks" {
+            Start-Process "https://www.majorgeeks.com/" 
             Debug-Message $action
         }
 
