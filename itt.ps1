@@ -12611,19 +12611,28 @@ $childXaml = '<Window
         <RowDefinition Height="*"/>
       </Grid.RowDefinitions>
 
-      <StackPanel Margin="8">
+      <StackPanel Margin="5">
 
         <!--Header -->
           <Grid Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
             <StackPanel Orientation="Vertical">
               <Image Source="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/logo2.png" Height="100" Width="Auto"/>
-              <TextBlock Text="{Binding devby}" 
+              
+              <TextBlock Text="Made with ♥ by Emad Adel" 
                 Foreground="{DynamicResource DefaultTextColor2}"
                 VerticalAlignment="Center" 
                 HorizontalAlignment="Center"
                 FontSize="18"
                 Margin="0,0,0,8"
               />
+
+              <TextBlock Text="{Binding lastupdate}" 
+              x:Name="ver"
+              Foreground="{DynamicResource DefaultTextColor2}"
+              VerticalAlignment="Center" 
+              HorizontalAlignment="Center"
+              Margin="0,0,0,8"/>
+              
             </StackPanel>
           </Grid>
         <!--Header -->
@@ -12656,7 +12665,7 @@ $childXaml = '<Window
         <!--End Contributors -->
 
         <!--Footer -->
-          <Grid Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Margin="20">
+          <Grid Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Margin="8">
 
             <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Center">
               <Image Source="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Icons/telegram.png" 
@@ -14792,16 +14801,16 @@ function About {
     $itt.about = [Windows.Markup.XamlReader]::Load($childWindowReader)
     $itt["about"].Resources.MergedDictionaries.Add($itt["window"].FindResource($itt.CurretTheme))
     # Set version and link handlers
-    # $itt.about.FindName('ver').Text = $itt.lastupdate
-    # $itt.about.FindName("telegram").add_MouseLeftButtonDown({Start-Process("https://t.me/emadadel4")})
-    # $itt.about.FindName("github").add_MouseLeftButtonDown({Start-Process("https://github.com/emadadel4/itt")})
-    # $itt.about.FindName("blog").add_MouseLeftButtonDown({Start-Process("https://emadadel4.github.io")})
-    # $itt.about.FindName("yt").add_MouseLeftButtonDown({Start-Process("https://youtube.com/@emadadel4")})
-    # $itt.about.FindName("coffee").add_MouseLeftButtonDown({Start-Process("https://buymeacoffee.com/emadadel")})
+    $itt.about.FindName('ver').Text = "Last update $($itt.lastupdate)"
+    $itt.about.FindName("telegram").add_MouseLeftButtonDown({Start-Process("https://t.me/emadadel4")})
+    $itt.about.FindName("github").add_MouseLeftButtonDown({Start-Process("https://github.com/emadadel4/itt")})
+    $itt.about.FindName("blog").add_MouseLeftButtonDown({Start-Process("https://emadadel4.github.io")})
+    $itt.about.FindName("yt").add_MouseLeftButtonDown({Start-Process("https://youtube.com/@emadadel4")})
+    $itt.about.FindName("coffee").add_MouseLeftButtonDown({Start-Process("https://buymeacoffee.com/emadadel")})
     # Set data context based on language
-    #$locale = if ($itt.Language -eq "en") { "en" } else { "ar" }
-    #$itt.about.DataContext = $itt.database.locales.Controls.en
-    # Show dialog
+    
+    $itt.about.DataContext = $itt.database.locales.Controls.en
+
     $itt.about.ShowDialog() | Out-Null
 }
 function ITTShortcut {
