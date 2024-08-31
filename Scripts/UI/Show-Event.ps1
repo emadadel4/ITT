@@ -22,44 +22,40 @@ function Show-Event {
     # Set new values
     $titleTextBlock = $itt.event.FindName('title')
     $subtitleTextBlock = $itt.event.FindName('Subtitle')
-    $tutorialImage = $itt.event.FindName('TutorialImage')
+    $tutorialImage = $itt.event.FindName('Image')
     $mainStackPanel = $itt.event.FindName('MainStackPanel')
 
     # Switch-like structure using switch statement
     switch ($day) {
 
         "Birthday" {
-            # Remove the subtitle text block
             $titleTextBlock.Text = "$title"
             $tutorialImage.Source = [System.Windows.Media.Imaging.BitmapImage]::new([Uri]::new($image))
             $subtitleTextBlock.Text = "$description"
             $itt.event.FindName('DisablePopup').Text = "Happy birthday day Emad"
             $tutorialImage.Height = $ImageHeight
+            $subtitleTextBlock.VerticalAlignment = "Center"
+            $subtitleTextBlock.HorizontalAlignment = "Center"
+            $subtitleTextBlock.FontSize = "20"
         }
         "NewYear" {
-            # Remove the subtitle text block and image
             $mainStackPanel.Children.Remove($subtitleTextBlock)
             $mainStackPanel.Children.Remove($tutorialImage)
-            # Update the title text block
             $titleTextBlock.Text = "$title - Happy New Year!"
         }
         Default {
-            # Default case: update text blocks
 
+            # Check RTL & LTR
             if($itt.Language -ne "ar")
             {
-                $subtitleTextBlock.TextAlignment = "Left"
-                $titleTextBlock.Text = "$title '$env:USERNAME'" 
+                $titleTextBlock.Text = "$title $env:USERNAME" 
                 $subtitleTextBlock.Text = "$description"
 
             }else
             {
-                $subtitleTextBlock.TextAlignment = "right"
-                $titleTextBlock.Text = "$title '$env:USERNAME'" 
+                $titleTextBlock.Text = "$env:USERNAME $title " 
                 $subtitleTextBlock.Text = "$description"
             }
-
-            #$mainStackPanel.Children.Remove($subtitleTextBlock)
 
             # Lazy loading image event handler
             $tutorialImage.add_IsVisibleChanged({
@@ -67,17 +63,19 @@ function Show-Event {
                     $tutorialImage.Source = [System.Windows.Media.Imaging.BitmapImage]::new([Uri]::new($image))
                 }
             })
-
                     
             $tutorialImage.add_MouseLeftButtonDown({
                 Start-Process("https://youtu.be/QmO82OTsU5c")
             })
-
         }
     }
 
     $itt.event.FindName("DisablePopup").add_MouseLeftButtonDown({
         DisablePopup
+        $itt.event.Close()
+    })
+
+    $itt.event.FindName("closebtn").add_MouseLeftButtonDown({
         $itt.event.Close()
     })
 
@@ -109,7 +107,7 @@ function Check-Date {
 
     if ($itt.Date.Month -eq 9 -and $itt.Date.Day -eq 1) 
     {
-        Show-Event -image "https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/happy.jpg" -ImageHeight 200 -title "$happybirthday" -description "$myplaylist" -day "Birthday" -WindowHeight 455 -WindowWidth 555
+        Show-Event -image "https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/happy.jpg" -ImageHeight 400 -title "$happybirthday" -description "$myplaylist" -day "Birthday" -WindowHeight 600 -WindowWidth 486
     } 
     else 
     {
@@ -118,7 +116,7 @@ function Check-Date {
             return
         }   
 
-        Show-Event -image "https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/thumbnail.jpg" -title "$watchdemo" -description "$subs" -day "Default" -WindowHeight 455 -WindowWidth 555
+        Show-Event -image "https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/thumbnail.jpg" -title "$watchdemo" -description "$subs" -day "Default" -WindowHeight 600 -WindowWidth 486
     }
 }
 
