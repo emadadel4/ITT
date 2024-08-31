@@ -20,7 +20,7 @@ Add-Type -AssemblyName System.Windows.Forms
 $itt = [Hashtable]::Synchronized(@{
     database       = @{}
     ProcessRunning = $false
-    lastupdate     = "08/28/24"
+    lastupdate     = "08/31/24"
     github         = "https://github.com/emadadel4"
     telegram       = "https://t.me/emadadel4"
     website        = "https://emadadel4.github.io"
@@ -8811,9 +8811,9 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}">
                         <Border.Background>
-                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="5,1">
                                 <GradientStop Color="{DynamicResource CardLeft}" Offset="0"/>
-                                <GradientStop Color="{DynamicResource CardRight}" Offset="1.8"/>
+                                <GradientStop Color="{DynamicResource CardRight}" Offset="1"/>
                             </LinearGradientBrush>
                         </Border.Background>
                         <ContentPresenter HorizontalAlignment="Left"
@@ -8930,8 +8930,6 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
     <Style TargetType="Menu">
         <Setter Property="Background" Value="#FFFFFF"/>
         <Setter Property="Foreground" Value="#000000"/>
-        <Setter Property="FontSize" Value="14"/>
-        <Setter Property="FontFamily" Value="Segoe UI"/>
         <Setter Property="Margin" Value="5"/>
         <Setter Property="Template">
             <Setter.Value>
@@ -8953,19 +8951,14 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
     </Style>
 
     <Style TargetType="MenuItem">
-        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Background" Value="{DynamicResource FGColor}"/>
         <Setter Property="Foreground" Value="#000000"/>
-        <Setter Property="BorderBrush" Value="#000000"/>
-        <Setter Property="FontSize" Value="14"/>
-        <Setter Property="FontFamily" Value="Segoe UI"/>
         <Setter Property="Margin" Value="1"/>
         <Setter Property="Padding" Value="0"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="MenuItem">
                     <Border x:Name="Border"
-                            Background="{TemplateBinding Background}" 
-                            BorderBrush="{TemplateBinding BorderBrush}"
                             HorizontalAlignment="Left"
                             Padding="5"
                             CornerRadius="2">
@@ -8985,7 +8978,7 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
                             
                             <!-- Text -->
                             <TextBlock x:Name="TextBlock"
-                                    Grid.Column="1" 
+                                    Grid.Column="1"
                                     Text="{TemplateBinding Header}"
                                     Foreground="{DynamicResource DefaultTextColor}"/>
                             
@@ -9006,9 +8999,9 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
                                 AllowsTransparency="True" 
                                 Focusable="False"
                                 PopupAnimation="Fade">
-                                <Border Background="{DynamicResource FGColor}" 
+                                <Border Background="{TemplateBinding Background}" 
                                         BorderBrush="{DynamicResource BorderBrush}" 
-                                        BorderThickness="0.8"
+                                        BorderThickness="2"
                                         CornerRadius="5">
                                     <StackPanel IsItemsHost="True" 
                                                 KeyboardNavigation.DirectionalNavigation="Cycle"/>
@@ -9330,7 +9323,7 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
                         <SolidColorBrush x:Key="ButtonBorder" Color="#525FE1"/>
                         <SolidColorBrush x:Key="Label" Color="LightBlue"/>
                         <SolidColorBrush x:Key="checkboxBG" Color="Transparent"/>
-                        <SolidColorBrush x:Key="highlight" Color="#27A7E7"/>
+                        <SolidColorBrush x:Key="highlight" Color="#098fd4"/>
                         <SolidColorBrush x:Key="ToggleSwitchBG" Color="#282828"/>
                         <SolidColorBrush x:Key="ToggleSwitchFG" Color="#282828"/>
                         <SolidColorBrush x:Key="ToggleSwitchEnable" Color="white"/>
@@ -9342,26 +9335,26 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
         <!--Light mode -->
         <!--Dark mode-->
                 <ResourceDictionary x:Key="Dark">
-                        <SolidColorBrush x:Key="BGColor" Color="#121212"/>
-                        <SolidColorBrush x:Key="FGColor" Color="#272727"/>
-                        <SolidColorBrush x:Key="BGButtonColor" Color="#0189df" />
+                        <SolidColorBrush x:Key="BGColor" Color="#2b2d31"/>
+                        <SolidColorBrush x:Key="FGColor" Color="#3c3f44"/>
+                        <SolidColorBrush x:Key="BGButtonColor" Color="#098fd4" />
                         <SolidColorBrush x:Key="FGButtonColor" Color="White" />
-                        <SolidColorBrush x:Key="ButtonHighlightColor" Color="#FF3C6EB8" />
+                        <SolidColorBrush x:Key="ButtonHighlightColor" Color="#066ca1" />
                         <SolidColorBrush x:Key="FGTextColor" Color="WhiteSmoke" />
                         <SolidColorBrush x:Key="DefaultTextColor" Color="White"/>
                         <SolidColorBrush x:Key="DefaultTextColor2" Color="#bbbbbb"/>
-                        <SolidColorBrush x:Key="BorderBrush" Color="WhiteSmoke" />
+                        <SolidColorBrush x:Key="BorderBrush" Color="#2b2d31" />
                         <SolidColorBrush x:Key="ButtonBorder" Color="#1DB954"/>
                         <SolidColorBrush x:Key="Label" Color="#3f3f3f"/>
                         <SolidColorBrush x:Key="checkboxBG" Color="Transparent"/>
-                        <SolidColorBrush x:Key="highlight" Color="#0189df"/>
+                        <SolidColorBrush x:Key="highlight" Color="#098fd4"/>
                         <SolidColorBrush x:Key="ToggleSwitchBG" Color="#282828"/>
                         <SolidColorBrush x:Key="ToggleSwitchFG" Color="#282828"/>
                         <SolidColorBrush x:Key="ToggleSwitchEnable" Color="white"/>
                         <SolidColorBrush x:Key="ToggleSwitchDisable" Color="#c9c9c7"/>
                         <SolidColorBrush x:Key="ToggleSwitchBorderBrush" Color="#c9c9c7"/>
-                        <Color x:Key="CardLeft">#272727</Color> 
-                        <Color x:Key="Card2Right">#272727</Color>
+                        <Color x:Key="CardLeft">#3c3f44</Color> 
+                        <Color x:Key="Card2Right">#2b2d31</Color>
                 </ResourceDictionary>
         <!--Dark mode -->
 <!--End Theme styles colors-->
@@ -12725,75 +12718,128 @@ $childXaml = '<Window
 #===========================================================================
 
 $EventXaml = '<Window
-  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-  x:Name="Window" Title="Event | ITT " WindowStartupLocation = "CenterScreen" 
-  Background="{DynamicResource BGColor}"
-  WindowStyle="ToolWindow"
-  Height="600" Width="600" ShowInTaskbar = "True" Topmost="True" Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/icon.ico">
-
-    <ScrollViewer VerticalScrollBarVisibility="Auto" Width="Auto">
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
-
-            <StackPanel x:Name="MainStackPanel" Height="Auto" Orientation="Vertical" Margin="15">
-                <TextBlock 
-                    Name="title"
-                    FontSize="25"
-                    Height="Auto"
-                    Width="Auto"
-                    Margin="0,0,0,15"
-                    Foreground="{DynamicResource DefaultTextColor2}"
-                    FontWeight="SemiBold"
-                    TextWrapping="Wrap"
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Center" />
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    x:Name="Window" Title="ITT | Event" 
+    WindowStartupLocation = "CenterScreen" 
+    Background="Transparent"
+    WindowStyle="None"
+    AllowsTransparency="True"
+    Height="600" Width="486"
+    ShowInTaskbar = "True"
+    Topmost="True"
+    Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/icon.ico">
 
 
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="Window.Loaded">
+            <BeginStoryboard>
+                <Storyboard>
+                    <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:0:0.5"/>
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </Window.Triggers>
 
-                <!--Image-->
-                <Image x:Name="TutorialImage"
-                HorizontalAlignment="Center" 
-                VerticalAlignment="Center" 
-                Source="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/thumbnail.jpg" 
-                Cursor="Hand" 
-                />
-                <!--End Image-->
+    <Border Background="{DynamicResource BGColor}" CornerRadius="5">
 
-                <TextBlock 
-                Name="Subtitle"
-                Text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet amet obcaecati dolorem, sit iusto consequatur, libero laudantium officia quo ea officiis nulla esse quod ex, mollitia asperiores! Accusantium, labore pariatur."
-                FontSize="18"
-                Height="Auto"
-                Width="Auto"
-                Margin="0,15,0,0"
-                Foreground="{DynamicResource DefaultTextColor2}"
-                TextWrapping="Wrap"
-                TextAlignment="Right"
-                VerticalAlignment="Center"
-                HorizontalAlignment="Center" />
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <StackPanel x:Name="MainStackPanel" Height="Auto" Orientation="Vertical" Margin="8">
+                    
+                    <!-- Title -->
+                        <Grid Row="0" Background="Transparent">
+                            
+                            <TextBlock Text="&#10006;" 
+                            Name="closebtn"
+                            HorizontalAlignment="Right" 
+                            VerticalAlignment="Top"
+                            Margin="8"
+                            Cursor="Hand"
+                            Foreground="red" />
 
 
-                <TextBlock Width="Auto"
-                Name="DisablePopup" 
-                Height="Auto"
-                Padding="25"
-                Margin="0,15,0,0"
-                Foreground="{DynamicResource DefaultTextColor2}"
-                Text="Don''t show again"
-                Background="Transparent"
-                TextAlignment="Center"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Bottom"
-                />
+                            <StackPanel Orientation="Vertical" Margin="10">
 
-            </StackPanel>
-        </Grid>
-    </ScrollViewer>
+                                <TextBlock 
+                                Name="title"
+                                Height="Auto"
+                                Width="Auto"
+                                FontSize="20"
+                                Text="What''s New"
+                                Foreground="{DynamicResource DefaultTextColor}"
+                                FontWeight="SemiBold"
+                                TextWrapping="Wrap"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Left" />
+            
+                                <TextBlock 
+                                Height="Auto"
+                                Width="Auto"
+                                Text="8/29/2024"
+                                Foreground="{DynamicResource DefaultTextColor2}"
+                                TextWrapping="Wrap"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Left" />
+            
+                            </StackPanel>
 
+                        </Grid>
+                    <!-- End Title -->
+
+                    <!-- Header -->
+                        <Grid Row="1">
+                            <ScrollViewer VerticalScrollBarVisibility="Auto" Height="500">
+                                <StackPanel Orientation="Vertical">
+                                        <!--Image-->
+                                        <Image x:Name="Image"
+                                        HorizontalAlignment="Center" 
+                                        VerticalAlignment="Center"
+                                        Height="200"
+                                        Margin="1"
+                                        Source="C:\Users\Emad Adel\Documents\GitHub\ITT\Resources\Images\thumbnail.jpg" 
+                                        Cursor="Hand" 
+                                        />
+                                        <!--End Image-->
+
+                                        <TextBlock 
+                                        Name="Subtitle"
+                                        Text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet amet obcaecati dolorem, sit iusto consequatur, libero laudantium officia quo ea officiis nulla esse quod ex, mollitia asperiores! Accusantium, labore pariatur."
+                                        Height="Auto"
+                                        Width="Auto"
+                                        Margin="0,10,0,0"
+                                        Foreground="{DynamicResource DefaultTextColor2}"
+                                        TextWrapping="Wrap"
+                                        TextAlignment="Left"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Left" />
+                                </StackPanel>
+                            </ScrollViewer>
+                        </Grid>
+                    <!-- End Header -->
+
+                    <!-- Footer -->
+                        <Grid Row="2">
+                            <TextBlock Width="Auto"
+                            Name="DisablePopup" 
+                            Foreground="{DynamicResource DefaultTextColor2}"
+                            Text="Don''t show again"
+                            Background="Transparent"
+                            TextAlignment="Center"
+                            Cursor="Hand"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            />
+                        </Grid>
+                    <!-- End Footer -->
+                </StackPanel>
+            </Grid>
+    </Border>
 </Window>
 
 '
@@ -14747,14 +14793,14 @@ function About {
     $itt["about"].Resources.MergedDictionaries.Add($itt["window"].FindResource($itt.CurretTheme))
     # Set version and link handlers
     # $itt.about.FindName('ver').Text = $itt.lastupdate
-    $itt.about.FindName("telegram").add_MouseLeftButtonDown({Start-Process("https://t.me/emadadel4")})
-    $itt.about.FindName("github").add_MouseLeftButtonDown({Start-Process("https://github.com/emadadel4/itt")})
-    $itt.about.FindName("blog").add_MouseLeftButtonDown({Start-Process("https://emadadel4.github.io")})
-    $itt.about.FindName("yt").add_MouseLeftButtonDown({Start-Process("https://youtube.com/@emadadel4")})
-    $itt.about.FindName("coffee").add_MouseLeftButtonDown({Start-Process("https://buymeacoffee.com/emadadel")})
+    # $itt.about.FindName("telegram").add_MouseLeftButtonDown({Start-Process("https://t.me/emadadel4")})
+    # $itt.about.FindName("github").add_MouseLeftButtonDown({Start-Process("https://github.com/emadadel4/itt")})
+    # $itt.about.FindName("blog").add_MouseLeftButtonDown({Start-Process("https://emadadel4.github.io")})
+    # $itt.about.FindName("yt").add_MouseLeftButtonDown({Start-Process("https://youtube.com/@emadadel4")})
+    # $itt.about.FindName("coffee").add_MouseLeftButtonDown({Start-Process("https://buymeacoffee.com/emadadel")})
     # Set data context based on language
     #$locale = if ($itt.Language -eq "en") { "en" } else { "ar" }
-    $itt.about.DataContext = $itt.database.locales.Controls.en
+    #$itt.about.DataContext = $itt.database.locales.Controls.en
     # Show dialog
     $itt.about.ShowDialog() | Out-Null
 }
@@ -15186,44 +15232,40 @@ function Show-Event {
     # Set new values
     $titleTextBlock = $itt.event.FindName('title')
     $subtitleTextBlock = $itt.event.FindName('Subtitle')
-    $tutorialImage = $itt.event.FindName('TutorialImage')
+    $tutorialImage = $itt.event.FindName('Image')
     $mainStackPanel = $itt.event.FindName('MainStackPanel')
 
     # Switch-like structure using switch statement
     switch ($day) {
 
         "Birthday" {
-            # Remove the subtitle text block
             $titleTextBlock.Text = "$title"
             $tutorialImage.Source = [System.Windows.Media.Imaging.BitmapImage]::new([Uri]::new($image))
             $subtitleTextBlock.Text = "$description"
             $itt.event.FindName('DisablePopup').Text = "Happy birthday day Emad"
             $tutorialImage.Height = $ImageHeight
+            $subtitleTextBlock.VerticalAlignment = "Center"
+            $subtitleTextBlock.HorizontalAlignment = "Center"
+            $subtitleTextBlock.FontSize = "20"
         }
         "NewYear" {
-            # Remove the subtitle text block and image
             $mainStackPanel.Children.Remove($subtitleTextBlock)
             $mainStackPanel.Children.Remove($tutorialImage)
-            # Update the title text block
             $titleTextBlock.Text = "$title - Happy New Year!"
         }
         Default {
-            # Default case: update text blocks
 
+            # Check RTL & LTR
             if($itt.Language -ne "ar")
             {
-                $subtitleTextBlock.TextAlignment = "Left"
-                $titleTextBlock.Text = "$title '$env:USERNAME'" 
+                $titleTextBlock.Text = "$title $env:USERNAME" 
                 $subtitleTextBlock.Text = "$description"
 
             }else
             {
-                $subtitleTextBlock.TextAlignment = "right"
-                $titleTextBlock.Text = "$title '$env:USERNAME'" 
+                $titleTextBlock.Text = "$env:USERNAME $title " 
                 $subtitleTextBlock.Text = "$description"
             }
-
-            #$mainStackPanel.Children.Remove($subtitleTextBlock)
 
             # Lazy loading image event handler
             $tutorialImage.add_IsVisibleChanged({
@@ -15231,17 +15273,19 @@ function Show-Event {
                     $tutorialImage.Source = [System.Windows.Media.Imaging.BitmapImage]::new([Uri]::new($image))
                 }
             })
-
                     
             $tutorialImage.add_MouseLeftButtonDown({
                 Start-Process("https://youtu.be/QmO82OTsU5c")
             })
-
         }
     }
 
     $itt.event.FindName("DisablePopup").add_MouseLeftButtonDown({
         DisablePopup
+        $itt.event.Close()
+    })
+
+    $itt.event.FindName("closebtn").add_MouseLeftButtonDown({
         $itt.event.Close()
     })
 
@@ -15273,7 +15317,7 @@ function Check-Date {
 
     if ($itt.Date.Month -eq 9 -and $itt.Date.Day -eq 1) 
     {
-        Show-Event -image "https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/happy.jpg" -ImageHeight 200 -title "$happybirthday" -description "$myplaylist" -day "Birthday" -WindowHeight 455 -WindowWidth 555
+        Show-Event -image "https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/happy.jpg" -ImageHeight 400 -title "$happybirthday" -description "$myplaylist" -day "Birthday" -WindowHeight 600 -WindowWidth 486
     } 
     else 
     {
@@ -15282,7 +15326,7 @@ function Check-Date {
             return
         }   
 
-        Show-Event -image "https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/thumbnail.jpg" -title "$watchdemo" -description "$subs" -day "Default" -WindowHeight 455 -WindowWidth 555
+        Show-Event -image "https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/thumbnail.jpg" -title "$watchdemo" -description "$subs" -day "Default" -WindowHeight 600 -WindowWidth 486
     }
 }
 
