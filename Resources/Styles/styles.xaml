@@ -52,9 +52,9 @@
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}">
                         <Border.Background>
-                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="5,1">
                                 <GradientStop Color="{DynamicResource CardLeft}" Offset="0"/>
-                                <GradientStop Color="{DynamicResource CardRight}" Offset="1.8"/>
+                                <GradientStop Color="{DynamicResource CardRight}" Offset="1"/>
                             </LinearGradientBrush>
                         </Border.Background>
                         <ContentPresenter HorizontalAlignment="Left"
@@ -171,8 +171,6 @@
     <Style TargetType="Menu">
         <Setter Property="Background" Value="#FFFFFF"/>
         <Setter Property="Foreground" Value="#000000"/>
-        <Setter Property="FontSize" Value="14"/>
-        <Setter Property="FontFamily" Value="Segoe UI"/>
         <Setter Property="Margin" Value="5"/>
         <Setter Property="Template">
             <Setter.Value>
@@ -194,19 +192,14 @@
     </Style>
 
     <Style TargetType="MenuItem">
-        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Background" Value="{DynamicResource FGColor}"/>
         <Setter Property="Foreground" Value="#000000"/>
-        <Setter Property="BorderBrush" Value="#000000"/>
-        <Setter Property="FontSize" Value="14"/>
-        <Setter Property="FontFamily" Value="Segoe UI"/>
         <Setter Property="Margin" Value="1"/>
         <Setter Property="Padding" Value="0"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="MenuItem">
                     <Border x:Name="Border"
-                            Background="{TemplateBinding Background}" 
-                            BorderBrush="{TemplateBinding BorderBrush}"
                             HorizontalAlignment="Left"
                             Padding="5"
                             CornerRadius="2">
@@ -226,7 +219,7 @@
                             
                             <!-- Text -->
                             <TextBlock x:Name="TextBlock"
-                                    Grid.Column="1" 
+                                    Grid.Column="1"
                                     Text="{TemplateBinding Header}"
                                     Foreground="{DynamicResource DefaultTextColor}"/>
                             
@@ -247,9 +240,9 @@
                                 AllowsTransparency="True" 
                                 Focusable="False"
                                 PopupAnimation="Fade">
-                                <Border Background="{DynamicResource FGColor}" 
+                                <Border Background="{TemplateBinding Background}" 
                                         BorderBrush="{DynamicResource BorderBrush}" 
-                                        BorderThickness="0.8"
+                                        BorderThickness="2"
                                         CornerRadius="5">
                                     <StackPanel IsItemsHost="True" 
                                                 KeyboardNavigation.DirectionalNavigation="Cycle"/>
