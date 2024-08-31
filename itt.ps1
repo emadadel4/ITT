@@ -9536,6 +9536,7 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
             </MenuItem.Icon>
         </MenuItem>
 
+
         <MenuItem Header="{Binding extensions}">
             <MenuItem.Icon>
                 <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
@@ -9544,6 +9545,12 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
             <MenuItem Name="uBlock" Header="uBlock Origin"/>
             <MenuItem Name="unhook" Header="Unhook: Customize youtube"/>
             <MenuItem Name="neat" Header="Neat Download Manager"/>
+        </MenuItem>
+
+        <MenuItem Name="sordum" Header="Sordum tools">
+            <MenuItem.Icon>
+                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+            </MenuItem.Icon>
         </MenuItem>
 
         
@@ -14626,6 +14633,10 @@ function Invoke-Button {
 
         "winoffice" {
             Start-Process "https://massgrave.dev/genuine-installation-media" 
+            Debug-Message $action
+        }
+        "sordum" {
+            Start-Process "https://www.sordum.org/" 
             Debug-Message $action
         }
 
