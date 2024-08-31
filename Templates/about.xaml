@@ -14,19 +14,28 @@
         <RowDefinition Height="*"/>
       </Grid.RowDefinitions>
 
-      <StackPanel Margin="8">
+      <StackPanel Margin="5">
 
         <!--Header -->
           <Grid Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
             <StackPanel Orientation="Vertical">
               <Image Source="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/logo2.png" Height="100" Width="Auto"/>
-              <TextBlock Text="{Binding devby}" 
+              
+              <TextBlock Text="Made with ♥ by Emad Adel" 
                 Foreground="{DynamicResource DefaultTextColor2}"
                 VerticalAlignment="Center" 
                 HorizontalAlignment="Center"
                 FontSize="18"
                 Margin="0,0,0,8"
               />
+
+              <TextBlock Text="{Binding lastupdate}" 
+              x:Name="ver"
+              Foreground="{DynamicResource DefaultTextColor2}"
+              VerticalAlignment="Center" 
+              HorizontalAlignment="Center"
+              Margin="0,0,0,8"/>
+              
             </StackPanel>
           </Grid>
         <!--Header -->
@@ -58,7 +67,7 @@
         <!--End Contributors -->
 
         <!--Footer -->
-          <Grid Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Margin="20">
+          <Grid Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Margin="8">
 
             <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Center">
               <Image Source="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Icons/telegram.png" 
