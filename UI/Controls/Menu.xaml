@@ -159,6 +159,7 @@
             </MenuItem.Icon>
         </MenuItem>
 
+
         <MenuItem Header="{Binding extensions}">
             <MenuItem.Icon>
                 <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
@@ -167,6 +168,12 @@
             <MenuItem Name="uBlock" Header="uBlock Origin"/>
             <MenuItem Name="unhook" Header="Unhook: Customize youtube"/>
             <MenuItem Name="neat" Header="Neat Download Manager"/>
+        </MenuItem>
+
+        <MenuItem Name="sordum" Header="Sordum tools">
+            <MenuItem.Icon>
+                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+            </MenuItem.Icon>
         </MenuItem>
 
         
