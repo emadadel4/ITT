@@ -78,12 +78,13 @@
                             <ScrollViewer VerticalScrollBarVisibility="Auto" Height="500">
                                 <StackPanel Orientation="Vertical">
                                         <!--Image-->
-                                        <Image x:Name="Image"
+                                        <Image 
+                                        Name="Image"
                                         HorizontalAlignment="Center" 
                                         VerticalAlignment="Center"
                                         Height="200"
                                         Margin="1"
-                                        Source="C:\Users\Emad Adel\Documents\GitHub\ITT\Resources\Images\thumbnail.jpg" 
+                                        Source="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/thumbnail.jpg" 
                                         Cursor="Hand" 
                                         />
                                         <!--End Image-->
