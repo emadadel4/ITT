@@ -179,6 +179,10 @@ function Invoke-Button {
             Start-Process "https://www.sordum.org/" 
             Debug-Message $action
         }
+        "majorgeeks" {
+            Start-Process "https://www.majorgeeks.com/" 
+            Debug-Message $action
+        }
 
         # Other actions
         "ittshortcut" {
