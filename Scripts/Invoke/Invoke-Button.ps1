@@ -175,6 +175,10 @@ function Invoke-Button {
             Start-Process "https://massgrave.dev/genuine-installation-media" 
             Debug-Message $action
         }
+        "sordum" {
+            Start-Process "https://www.sordum.org/" 
+            Debug-Message $action
+        }
 
         # Other actions
         "ittshortcut" {
