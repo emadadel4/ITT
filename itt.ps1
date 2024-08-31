@@ -15312,6 +15312,20 @@ function Show-Event {
         $itt.event.Close()
     })
 
+        # Handle MouseDown to detect clicks outside the child window
+        $parentWindow = $itt["window"]  # Assuming you have a reference to the parent window
+        $parentWindow.Add_MouseDown({
+            param ($sender, $e)
+            
+            # Get the position of the mouse click
+            $mousePos = $e.GetPosition($itt.event)
+    
+            # Check if the click is outside the child window
+            if ($mousePos.X -lt 0 -or $mousePos.X -gt $itt.event.Width -or $mousePos.Y -lt 0 -or $mousePos.Y -gt $itt.event.Height) {
+                $itt.event.Close()
+            }
+        })
+
     $KeyEvents = {
 
         # Close
