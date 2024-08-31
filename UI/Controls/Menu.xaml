@@ -176,7 +176,11 @@
             </MenuItem.Icon>
         </MenuItem>
 
-        
+        <MenuItem Name="majorgeeks" Header="Major Geeks">
+            <MenuItem.Icon>
+                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+            </MenuItem.Icon>
+        </MenuItem>
         
     </MenuItem>
 
