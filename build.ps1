@@ -275,7 +275,7 @@ try {
 "@
 
     AddFileContentToScript -FilePath $StartScript
-    ReplaceTextInFile -FilePath $OutputScript -TextToReplace '#{replaceme}' -ReplacementText "$(Get-Date -Format 'MM/dd/yy')"
+    ReplaceTextInFile -FilePath $OutputScript -TextToReplace '#{replaceme}' -ReplacementText "$(Get-Date -Format 'MM/dd/yyy')"
     WriteToScript -Content @"
 #===========================================================================
 #endregion End Start
