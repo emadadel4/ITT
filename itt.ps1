@@ -20,7 +20,7 @@ Add-Type -AssemblyName System.Windows.Forms
 $itt = [Hashtable]::Synchronized(@{
     database       = @{}
     ProcessRunning = $false
-    lastupdate     = "09/01/24"
+    lastupdate     = "09/01/2024"
     github         = "https://github.com/emadadel4"
     telegram       = "https://t.me/emadadel4"
     website        = "https://emadadel4.github.io"
@@ -12782,7 +12782,8 @@ $EventXaml = '<Window
                                 VerticalAlignment="Center"
                                 HorizontalAlignment="Left" />
             
-                                <TextBlock 
+                                <TextBlock
+                                Name="date" 
                                 Height="Auto"
                                 Width="Auto"
                                 Text="8/29/2024"
@@ -15091,8 +15092,8 @@ function PlayMusic {
         foreach ($track in $shuffledTracks) {
             PlayAudio -track $track.url
             # Wait for the track to finish playing
-            while ($itt.mediaPlayer.playState -in 3, 6) {
-                Start-Sleep -Milliseconds 100
+            while ($itt.mediaPlayer.playState -in 1) {
+                Start-Sleep -Milliseconds 500
             }
         }
     }
@@ -15243,6 +15244,8 @@ function Show-Event {
     $tutorialImage = $itt.event.FindName('Image')
     $mainStackPanel = $itt.event.FindName('MainStackPanel')
 
+    $itt.event.FindName('date').Text = $itt.lastupdate
+
     # Switch-like structure using switch statement
     switch ($day) {
 
@@ -15304,6 +15307,9 @@ function Show-Event {
         }
     }
     $itt.event.Add_PreViewKeyDown($KeyEvents)
+    
+
+
 
 
     # Show dialog
