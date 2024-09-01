@@ -10,7 +10,7 @@
 </h1>
 
 <div align="center">
-  <h5> 314 App |  37 Tweaks | 5 Settings | 98 Quote |  26 Soundtrack </h5>
+  <h5> 314 App |  37 Tweaks | 5 Settings | 98 Quote |  24 Soundtrack </h5>
 </div>
 
 
