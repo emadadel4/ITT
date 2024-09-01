@@ -7,7 +7,7 @@
     WindowStyle="None"
     AllowsTransparency="True"
     Height="600" Width="486"
-    ShowInTaskbar = "True"
+    ShowInTaskbar = "False"
     Topmost="True"
     Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/icon.ico">
 
