@@ -25,6 +25,8 @@ function Show-Event {
     $tutorialImage = $itt.event.FindName('Image')
     $mainStackPanel = $itt.event.FindName('MainStackPanel')
 
+    $itt.event.FindName('date').Text = $itt.lastupdate
+
     # Switch-like structure using switch statement
     switch ($day) {
 
@@ -86,6 +88,9 @@ function Show-Event {
         }
     }
     $itt.event.Add_PreViewKeyDown($KeyEvents)
+    
+
+
 
 
     # Show dialog
