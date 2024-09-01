@@ -20,7 +20,7 @@ Add-Type -AssemblyName System.Windows.Forms
 $sync = [Hashtable]::Synchronized(@{
     database       = @{}
     ProcessRunning = $false
-    lastupdate     = "08/16/24"
+    lastupdate     = "09/01/24"
     github         = "https://github.com/emadadel4"
     telegram       = "https://t.me/emadadel4"
     website        = "https://emadadel4.github.io"
@@ -6584,10 +6584,6 @@ $sync.database.OST = '{
     {
       "name": "Hans Zimmer - Dream is Collapsing",
       "url": "https://archive.org/download/InceptionSoundtrackDreamIsCollapsingHansZimmer/Inception%20Soundtrack-Dream%20is%20Collapsing%20%28Hans%20Zimmer%29.mp3"
-    },
-    {
-      "name": "Grand Theft Auto V - North Yankton Memories",
-      "url": "https://archive.org/download/09-no-happy-endings/05%20-%20North%20Yankton%20Memories.mp3"
     }
   ],
   "Favorite": [
