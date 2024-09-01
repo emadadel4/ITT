@@ -6846,14 +6846,6 @@ $itt.database.OST = '{
       "url": "https://archive.org/download/InceptionSoundtrackHD12TimeHansZimmer/Inception%20Soundtrack%20HD%20-%20%2312%20Time%20%28Hans%20Zimmer%29.mp3"
     },
     {
-      "name": "Little Nightmares - Main Theme",
-      "url": "https://epsilon.vgmsite.com/soundtracks/little-nightmares-ii-original-soundtrack/bplsnxvnzm/01.%20Main%20Theme.mp3"
-    },
-    {
-      "name": "Assassin''s creed III - Trouble in Town",
-      "url": "https://dl.vgmdownloads.com/soundtracks/assassin-s-creed-3/qhigmkctpn/09.%20Trouble%20in%20Town.mp3"
-    },
-    {
       "name": "Assassin''s creed - Legend of the Eagle Bearer",
       "url": "https://vgmsite.com/soundtracks/assassin-s-creed-odyssey-original-game-soundtrack/kbtrtqrtyf/01.%20Legend%20of%20the%20Eagle%20Bearer%20%28Main%20Theme%29.mp3"
     },
