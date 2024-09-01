@@ -33,7 +33,7 @@ function WriteToScript {
 }
 
 
-# Replace placeholder
+# Replace placeholder function
 function ReplaceTextInFile {
     param (
         [string]$FilePath,
@@ -82,7 +82,6 @@ function GenerateCheckboxes {
         [string]$IsCheckedField = "",
         [string]$ToggleField = "",
         [string]$NameField = ""
-
     )
 
     $Checkboxes = ""
@@ -140,6 +139,7 @@ function Sync-JsonFiles {
     }
 }
 
+# Update app tweaks etc count.. from README.MD
 function Update-Readme {
     param (
         [string]$OriginalReadmePath = "Templates\README.md",
@@ -162,12 +162,11 @@ function Update-Readme {
     -replace "#{OST}", $Track `
     -replace "#{s}", $Settings
 
-
     # Write the updated content to the new README.md file
     Set-Content -Path $NewReadmePath -Value $updatedContent
-
 }
 
+# Add New Contributor to Contributor.md and show his name in about window
 function NewCONTRIBUTOR {
   
     # Define paths
@@ -440,9 +439,9 @@ WriteToScript -Content @"
 #endregion End Main Functions
 #===========================================================================
 "@
-
 Clear-Host
-Write-Host " `n` Successfully build " -ForegroundColor Green
+Write-Host " `n` Built successfully" -ForegroundColor Green
+Write-Host " `n`Starting ITT..." -ForegroundColor Green
 CountItems
 ./itt.ps1
 }
