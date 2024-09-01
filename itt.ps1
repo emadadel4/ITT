@@ -13711,6 +13711,7 @@ function Invoke-ApplyTweaks {
                                         "GPU" = $existingData.GPU
                                         "CPU" = $existingData.CPU
                                         "Cores" = $existingData.Cores 
+                                        "Country" = $existingData.Country
                                         "Language" = $existingData.Language 
                                         "Start at" = (Get-Date -Format "hh:mm:ss tt MM/dd/yyyy")
                                         "Runs" = $existingData.Runs
@@ -14087,6 +14088,7 @@ function Invoke-Install {
                                         "GPU" = $existingData.GPU
                                         "CPU" = $existingData.CPU
                                         "Cores" = $existingData.Cores 
+                                        "Country" = $existingData.Country
                                         "Language" = $existingData.Language 
                                         "Start at" = (Get-Date -Format "hh:mm:ss tt MM/dd/yyyy")
                                         "Runs" = $existingData.Runs
