@@ -6826,10 +6826,6 @@ $itt.database.OST = '{
       "url": "https://archive.org/download/GrandTheftAuto4ThemeSong_201904/Grand%20Theft%20Auto%204%20Theme%20Song.mp3"
     },
     {
-      "name": "Assassin Creed II - Ezio''s Family",
-      "url": "https://epsilon.vgmsite.com/soundtracks/assassin-s-creed-2/jlrprchapt/1-03%20Ezio%27s%20Family.mp3"
-    },
-    {
       "name": "Assassin Creed II - Earth",
       "url": "https://epsilon.vgmsite.com/soundtracks/assassin-s-creed-2/nkantwuktr/1-01%20Earth.mp3"
     },
@@ -6908,6 +6904,10 @@ $itt.database.OST = '{
     {
       "name": "Hans Zimmer - Dream is Collapsing",
       "url": "https://archive.org/download/InceptionSoundtrackDreamIsCollapsingHansZimmer/Inception%20Soundtrack-Dream%20is%20Collapsing%20%28Hans%20Zimmer%29.mp3"
+    },
+    {
+      "name": "Assassin Creed II - Ezio''s Family",
+      "url": "https://epsilon.vgmsite.com/soundtracks/assassin-s-creed-2/jlrprchapt/1-03%20Ezio%27s%20Family.mp3"
     }
   ],
   "Favorite": [
