@@ -20,7 +20,7 @@ Add-Type -AssemblyName System.Windows.Forms
 $itt = [Hashtable]::Synchronized(@{
     database       = @{}
     ProcessRunning = $false
-    lastupdate     = "08/31/24"
+    lastupdate     = "09/01/24"
     github         = "https://github.com/emadadel4"
     telegram       = "https://t.me/emadadel4"
     website        = "https://emadadel4.github.io"
@@ -12746,7 +12746,7 @@ $EventXaml = '<Window
     WindowStyle="None"
     AllowsTransparency="True"
     Height="600" Width="486"
-    ShowInTaskbar = "True"
+    ShowInTaskbar = "False"
     Topmost="True"
     Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/icon.ico">
 
