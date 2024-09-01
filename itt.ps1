@@ -15271,11 +15271,10 @@ function Show-Event {
             $subtitleTextBlock.VerticalAlignment = "Center"
             $subtitleTextBlock.HorizontalAlignment = "Center"
             $subtitleTextBlock.FontSize = "20"
-        }
-        "NewYear" {
-            $mainStackPanel.Children.Remove($subtitleTextBlock)
-            $mainStackPanel.Children.Remove($tutorialImage)
-            $titleTextBlock.Text = "$title - Happy New Year!"
+
+            $itt.event.FindName("DisablePopup").add_MouseLeftButtonDown({
+                $itt.event.FindName("DisablePopup").Text = "Thank you :)"
+            })
         }
         Default {
 
@@ -15301,18 +15300,17 @@ function Show-Event {
             $tutorialImage.add_MouseLeftButtonDown({
                 Start-Process("https://youtu.be/QmO82OTsU5c")
             })
+
+            $itt.event.FindName("DisablePopup").add_MouseLeftButtonDown({
+                DisablePopup
+                $itt.event.Close()
+            })
         }
     }
-
-    $itt.event.FindName("DisablePopup").add_MouseLeftButtonDown({
-        DisablePopup
-        $itt.event.Close()
-    })
 
     $itt.event.FindName("closebtn").add_MouseLeftButtonDown({
         $itt.event.Close()
     })
-
 
     $KeyEvents = {
 
@@ -15334,11 +15332,7 @@ function Check-Date {
     $watchdemo = $itt.database.locales.Controls.$($itt.Language).watchdemo
     $happybirthday = $itt.database.locales.Controls.$($itt.Language).happybirthday
     $myplaylist = $itt.database.locales.Controls.$($itt.Language).myplaylist
-
-
-
     $subs = $itt.database.locales.Updates.Keyboard
-
 
     if ($itt.Date.Month -eq 9 -and $itt.Date.Day -eq 1) 
     {
