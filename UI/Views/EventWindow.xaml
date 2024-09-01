@@ -59,7 +59,8 @@
                                 VerticalAlignment="Center"
                                 HorizontalAlignment="Left" />
             
-                                <TextBlock 
+                                <TextBlock
+                                Name="date" 
                                 Height="Auto"
                                 Width="Auto"
                                 Text="8/29/2024"
