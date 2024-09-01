@@ -27,6 +27,9 @@ function Get-PCInfo {
         Invoke-ScriptBlock -ArgumentList $FirebaseUrl, $Key -ScriptBlock  { 
 
             $FirebaseUrl = "https://ittools-7d9fe-default-rtdb.firebaseio.com/Users"
+            $c = Invoke-RestMethod -Uri "https://ipinfo.io/json"
+            
+
             $Key = "$env:COMPUTERNAME $env:USERNAME"
         
             # Reuse connection to Firebase URL
@@ -48,10 +51,11 @@ function Get-PCInfo {
                     "Domain" = $env:COMPUTERNAME
                     "OS" = [Environment]::OSVersion.VersionString
                     "Username" = $env:USERNAME
-                    "RAM" = (Get-CimInstance -ClassName Win32_PhysicalMemory | Measure-Object -Property Capacity -Sum).Sum / 1GB
+                    "RAM" = "$((Get-CimInstance -ClassName Win32_PhysicalMemory | Measure-Object -Property Capacity -Sum).Sum / 1GB)GB"
                     "GPU" = (Get-CimInstance -ClassName Win32_VideoController).Name
                     "CPU" = (Get-CimInstance -ClassName Win32_Processor).Name
                     "Cores" = (Get-CimInstance -ClassName Win32_Processor).NumberOfCores
+                    "Country" = $c.country
                     "Language" = "$($itt.Language)"
                     "Start at" = (Get-Date -Format "hh:mm:ss tt MM/dd/yyyy")
                     "Runs" = $runs
@@ -69,10 +73,11 @@ function Get-PCInfo {
                     "Domain" = $env:COMPUTERNAME
                     "OS" = [Environment]::OSVersion.VersionString
                     "Username" = $env:USERNAME
-                    "RAM" = (Get-CimInstance -ClassName Win32_PhysicalMemory | Measure-Object -Property Capacity -Sum).Sum / 1GB
+                    "RAM" = "$((Get-CimInstance -ClassName Win32_PhysicalMemory | Measure-Object -Property Capacity -Sum).Sum / 1GB)GB"
                     "GPU" = (Get-CimInstance -ClassName Win32_VideoController).Name
                     "CPU" = (Get-CimInstance -ClassName Win32_Processor).Name
                     "Cores" = (Get-CimInstance -ClassName Win32_Processor).NumberOfCores
+                    "Country" = $c.country
                     "Language" = "$($itt.Language)"
                     "Start at" = (Get-Date -Format "hh:mm:ss tt MM/dd/yyyy")
                     "runs" = $runs
@@ -97,7 +102,7 @@ function Get-PCInfo {
             $totalKeys = ($response | Get-Member -MemberType NoteProperty | Measure-Object).Count
         
             # Define the desired order of keys for display
-            $displayOrder = @("Manufacturer", "Username", "Domain", "OS", "CPU", "GPU", "RAM", "Start At", "Runs")
+            $displayOrder = @("Manufacturer", "Username", "OS", "CPU", "GPU", "RAM", "Start At", "Runs")
         
             # Display PC info excluding "AppsTweaks" in the specified order
             foreach ($key in $displayOrder) {
@@ -107,6 +112,9 @@ function Get-PCInfo {
             }
         
             Write-Host "`n`  ITT Used on $totalKeys devices and is featured on 9 sites." -ForegroundColor Yellow
+
+            # Force garbage collection to free memory
+            [System.GC]::Collect()                       
         
         } | Out-Null
     }
