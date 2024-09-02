@@ -20,7 +20,7 @@ Add-Type -AssemblyName System.Windows.Forms
 $itt = [Hashtable]::Synchronized(@{
     database       = @{}
     ProcessRunning = $false
-    lastupdate     = "09/01/2024"
+    lastupdate     = "09/02/2024"
     github         = "https://github.com/emadadel4"
     telegram       = "https://t.me/emadadel4"
     website        = "https://emadadel4.github.io"
@@ -12596,7 +12596,7 @@ $childXaml = '<Window
   x:Name="Window" Title="About | ITT " WindowStartupLocation = "CenterScreen" 
   Background="{DynamicResource BGColor}"
   WindowStyle="ToolWindow"
-  Height="488" Width="488" MinHeight="488" MinWidth="488" MaxHeight="488" MaxWidth="488" ShowInTaskbar = "True" Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/icon.ico">
+  Height="488" Width="350" ShowInTaskbar = "True" Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/icon.ico">
 
     <Grid>
       <Grid.RowDefinitions>
@@ -12606,19 +12606,19 @@ $childXaml = '<Window
         <RowDefinition Height="*"/>
       </Grid.RowDefinitions>
 
-      <StackPanel Margin="5">
+      <StackPanel Margin="2">
 
         <!--Header -->
           <Grid Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
             <StackPanel Orientation="Vertical">
-              <Image Source="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/logo2.png" Height="100" Width="Auto"/>
+              <Image Source="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/logo2.png" Height="130" Width="Auto"/>
               
               <TextBlock Text="Made with ♥ by Emad Adel" 
                 Foreground="{DynamicResource DefaultTextColor2}"
                 VerticalAlignment="Center" 
                 HorizontalAlignment="Center"
                 FontSize="18"
-                Margin="0,0,0,8"
+                Margin="0,0,0,0"
               />
 
               <TextBlock Text="{Binding lastupdate}" 
@@ -12626,7 +12626,7 @@ $childXaml = '<Window
               Foreground="{DynamicResource DefaultTextColor2}"
               VerticalAlignment="Center" 
               HorizontalAlignment="Center"
-              Margin="0,0,0,8"/>
+              Margin="0,0,0,0"/>
               
             </StackPanel>
           </Grid>
@@ -12643,9 +12643,10 @@ $childXaml = '<Window
 
                 <TextBlock Text="Contributors"
                 VerticalAlignment="Center"
-                HorizontalAlignment="Center"
-                FontSize="16"
-                FontWeight="Bold" Margin="5"
+                HorizontalAlignment="Left"
+                FontSize="15"
+                FontWeight="SemiBold" 
+                Margin="0,10,0,0"
                 Foreground=''{DynamicResource DefaultTextColor2}'' />
 
 
@@ -12655,12 +12656,13 @@ $childXaml = '<Window
               </StackPanel>
 
 
+
             </ScrollViewer>
           </Grid>
         <!--End Contributors -->
 
         <!--Footer -->
-          <Grid Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Margin="8">
+          <Grid Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Margin="0,0,0,10">
 
             <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Center">
               <Image Source="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Icons/telegram.png" 
