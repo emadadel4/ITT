@@ -15,6 +15,9 @@
 #===========================================================================
 # Load DLLs
 Add-Type -AssemblyName System.Windows.Forms
+Add-Type -AssemblyName PresentationFramework
+Add-Type -AssemblyName PresentationCore
+Add-Type -AssemblyName WindowsBase
 
 # Synchronized Hashtable for shared variables
 $itt = [Hashtable]::Synchronized(@{
@@ -12871,8 +12874,6 @@ $InitialSessionState.Variables.Add($hashVars)
 $itt.runspace = [runspacefactory]::CreateRunspacePool(1, $maxthreads, $InitialSessionState, $Host)
 $itt.runspace.Open()
 
-# Load required assembly
-[void][System.Reflection.Assembly]::LoadWithPartialName('presentationframework')
 [xml]$XAML = $inputXML
 
 # Read the XAML file
