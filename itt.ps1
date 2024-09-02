@@ -9364,7 +9364,7 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
                                   
     <MenuItem IsEnabled="False" ToolTip="Emad Adel">
         <MenuItem.Icon>
-            <Image Source="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/logo2.png" Width="80" Height="80" Margin="5,5,0,0"/>
+            <Image Source="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/logo2.png" Width="100" Height="Auto" Margin="5,5,0,0"/>
         </MenuItem.Icon>
     </MenuItem>
     
