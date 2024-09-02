@@ -214,7 +214,7 @@ function NewCONTRIBUTOR {
 
     # Generate unique TextBlock elements for each name in CONTRIBUTORS.md
     $textBlockElements = $contribLines | ForEach-Object {
-        "<TextBlock Text='$($_)' Margin='5' Foreground='{DynamicResource DefaultTextColor2}' />"
+        "<TextBlock Text='$($_)' Margin='1' Foreground='{DynamicResource DefaultTextColor2}' />"
     }
 
     # Join TextBlock elements with newline characters
