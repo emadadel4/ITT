@@ -12617,7 +12617,7 @@ $childXaml = '<Window
                 Foreground="{DynamicResource DefaultTextColor2}"
                 VerticalAlignment="Center" 
                 HorizontalAlignment="Center"
-                FontSize="18"
+                FontSize="15"
                 Margin="0,0,0,0"
               />
 
