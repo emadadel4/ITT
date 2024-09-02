@@ -6817,10 +6817,6 @@ $itt.database.OST = '{
       "url": "https://dl.vgmdownloads.com/soundtracks/assassin-s-creed-3/jgevpclfcr/01.%20Assassin%27s%20Creed%20III%20Main%20Theme.mp3"
     },
     {
-      "name": "Mirage Theme",
-      "url": "https://dl.vgmdownloads.com/soundtracks/assassins-creed-mirage-original-game-soundtrack-2023/axtwruyduh/01.%20Mirage%20Theme.mp3"
-    },
-    {
       "name": "Ezio''s Family - Møme Remix",
       "url": "https://vgmsite.com/soundtracks/assassins-creed-ezios-family-m-me-remix-2022/qdxeshajdz/01.%20Ezio%27s%20Family%20%28M%C3%B8me%20Remix%29.mp3"
     },
@@ -6875,10 +6871,6 @@ $itt.database.OST = '{
     {
       "name": "Max Richter - November",
       "url": "https://archive.org/download/max-richter-memoryhouse/09%20November.mp3"
-    },
-    {
-      "name": "Zack Hemsey - The Way",
-      "url": "https://archive.org/download/ZackHemseyTheWay_201704/Zack%20Hemsey%20-%20The%20Way.mp3"
     },
     {
       "name": "Cyberpunk - Rebel Path",
