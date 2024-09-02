@@ -1,5 +1,8 @@
 # Load DLLs
 Add-Type -AssemblyName System.Windows.Forms
+Add-Type -AssemblyName PresentationFramework
+Add-Type -AssemblyName PresentationCore
+Add-Type -AssemblyName WindowsBase
 
 # Synchronized Hashtable for shared variables
 $itt = [Hashtable]::Synchronized(@{
