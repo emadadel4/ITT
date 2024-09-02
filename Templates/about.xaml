@@ -54,7 +54,7 @@
                 HorizontalAlignment="Left"
                 FontSize="15"
                 FontWeight="SemiBold" 
-                Margin="0,10,0,0"
+                Margin="0,10,0,10"
                 Foreground='{DynamicResource DefaultTextColor2}' />
 
 
