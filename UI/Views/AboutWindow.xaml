@@ -54,12 +54,12 @@
                 HorizontalAlignment="Left"
                 FontSize="15"
                 FontWeight="SemiBold" 
-                Margin="0,10,0,0"
+                Margin="0,10,0,10"
                 Foreground='{DynamicResource DefaultTextColor2}' />
 
 
-                <TextBlock Text='emadadel4' Margin='5' Foreground='{DynamicResource DefaultTextColor2}' />
-<TextBlock Text='yousefmhmd' Margin='5' Foreground='{DynamicResource DefaultTextColor2}' />
+                <TextBlock Text='emadadel4' Margin='1' Foreground='{DynamicResource DefaultTextColor2}' />
+<TextBlock Text='yousefmhmd' Margin='1' Foreground='{DynamicResource DefaultTextColor2}' />
 
               </StackPanel>
 
