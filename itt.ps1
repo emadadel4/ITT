@@ -8748,7 +8748,37 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
             Storyboard.TargetProperty="Opacity"
             From="0" To="1" Duration="0:0:1.2" />
     </Storyboard>
+
+
+    <!-- Define the FadeOut and FadeIn animations with looping -->
+    <Storyboard x:Key="FadeOutInLoopStoryboard">
+        <!-- Fade Out Animation -->
+        <DoubleAnimation
+            Storyboard.TargetProperty="Opacity"
+            From="1.0"
+            To="0.0"
+            Duration="0:0:1" />
+        <!-- Fade In Animation -->
+        <DoubleAnimation
+            Storyboard.TargetProperty="Opacity"
+            From="0.0"
+            To="1.0"
+            Duration="0:0:1"
+            BeginTime="0:0:1" />
+    </Storyboard>
+
 <!--Fade in-->
+
+
+<!--Image Style-->
+<Style TargetType="Image">
+    <Style.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <BeginStoryboard Storyboard="{StaticResource FadeIn}" />
+        </EventTrigger>
+    </Style.Triggers>
+</Style>
+<!--End Image Style-->
 
 <!--Button Style-->
       <Style TargetType="Button">
@@ -8924,7 +8954,7 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
         </Setter>
         <Style.Triggers>
             <EventTrigger RoutedEvent="FrameworkElement.Loaded">
-                <BeginStoryboard Storyboard="{StaticResource FadeIn}" />
+                <!-- <BeginStoryboard Storyboard="{StaticResource FadeIn}" /> -->
             </EventTrigger>
         </Style.Triggers>
     </Style>
