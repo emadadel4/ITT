@@ -3,7 +3,7 @@
                                   
     <MenuItem IsEnabled="False" ToolTip="Emad Adel">
         <MenuItem.Icon>
-            <Image Source="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/logo2.png" Width="100" Height="Auto" Margin="5,5,0,0"/>
+            <Image Source="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/logo2.png" Width="70" Height="Auto" Margin="5,5,0,0"/>
         </MenuItem.Icon>
     </MenuItem>
     
