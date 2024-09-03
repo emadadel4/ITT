@@ -23,7 +23,7 @@ Add-Type -AssemblyName WindowsBase
 $itt = [Hashtable]::Synchronized(@{
     database       = @{}
     ProcessRunning = $false
-    lastupdate     = "09/02/2024"
+    lastupdate     = "09/03/2024"
     github         = "https://github.com/emadadel4"
     telegram       = "https://t.me/emadadel4"
     website        = "https://emadadel4.github.io"
@@ -9389,7 +9389,7 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
                                   
     <MenuItem IsEnabled="False" ToolTip="Emad Adel">
         <MenuItem.Icon>
-            <Image Source="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/logo2.png" Width="100" Height="Auto" Margin="5,5,0,0"/>
+            <Image Source="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/logo2.png" Width="70" Height="Auto" Margin="5,5,0,0"/>
         </MenuItem.Icon>
     </MenuItem>
     
