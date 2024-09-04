@@ -62,8 +62,6 @@ $onClosingEvent = {
 # Handle the Loaded event
 $itt["window"].Add_Loaded({
     Startup
-    DisplayQuotes | Out-Null
-    PlayMusic | Out-Null
     Check-Date
 })
 
