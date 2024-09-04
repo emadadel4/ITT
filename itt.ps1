@@ -23,7 +23,7 @@ Add-Type -AssemblyName WindowsBase
 $itt = [Hashtable]::Synchronized(@{
     database       = @{}
     ProcessRunning = $false
-    lastupdate     = "09/03/2024"
+    lastupdate     = "09/04/2024"
     github         = "https://github.com/emadadel4"
     telegram       = "https://t.me/emadadel4"
     website        = "https://emadadel4.github.io"
@@ -13526,49 +13526,38 @@ function ChangeTap {
 }
 
 function Get-SelectedTweaks {
-
     $items = @()
+    
+    $itt.TweaksListView.Items |
+        Where-Object { $_ -is [System.Windows.Controls.StackPanel] } |
+        ForEach-Object {
+            $_.Children |
+                Where-Object { $_ -is [System.Windows.Controls.StackPanel] } |
+                ForEach-Object {
+                    $_.Children |
+                        Where-Object { $_ -is [System.Windows.Controls.CheckBox] -and $_.IsChecked } |
+                        ForEach-Object {
+                            $checkbox = $_
+                            $tweak = $itt.database.Tweaks | Where-Object { $_.Name -eq $checkbox.Content }
 
-    foreach ($item in $itt.TweaksListView.Items)
-    {
-        if ($item -is [System.Windows.Controls.StackPanel]) {
-
-            foreach ($child in $item.Children) {
-                if ($child -is [System.Windows.Controls.StackPanel]) {
-                    foreach ($innerChild in $child.Children) {
-                        if ($innerChild -is [System.Windows.Controls.CheckBox]) {
-
-                            if($innerChild.IsChecked)
-                            {
-                                    foreach ($program in $itt.database.Tweaks)
-                                    {
-                                        if($innerChild.content -eq $program.Name)
-                                        {
-                                            $items += @{
-
-                                                Name = $program.Name
-                                                Type = $program.Type
-                                                Modify = $program.Modify
-                                                Delete = $program.Delete
-                                                Service = $program.Service
-                                                RemoveAppxPackage = $program.RemoveAppxPackage
-                                                Command = $program.InvokeCommand
-                                                Refresh = $program.refresh
-                                                # add a new method tweak here
-
-                                            }
-
-                                        }
-                                    }
+                            if ($tweak) {
+                                $items += @{
+                                    Name                = $tweak.Name
+                                    Type                = $tweak.Type
+                                    Modify              = $tweak.Modify
+                                    Delete              = $tweak.Delete
+                                    Service             = $tweak.Service
+                                    RemoveAppxPackage   = $tweak.RemoveAppxPackage
+                                    Command             = $tweak.InvokeCommand
+                                    Refresh             = $tweak.Refresh
+                                    # Add a new method tweak here
+                                }
                             }
-
                         }
-                    }
                 }
-            }
         }
-    }
-    return $items 
+    
+    return $items
 }
 function ShowSelectedTweaks {
     
@@ -13997,43 +13986,34 @@ function Invoke-ApplyTweaks {
 }
 function Get-SelectedApps {
     $items = @()
-    foreach ($item in $itt.AppsListView.Items)
-    {
-        if ($item -is [System.Windows.Controls.StackPanel]) {
+    
+    $itt.AppsListView.Items |
+        Where-Object { $_ -is [System.Windows.Controls.StackPanel] } |
+        ForEach-Object {
+            $_.Children |
+                Where-Object { $_ -is [System.Windows.Controls.StackPanel] } |
+                ForEach-Object {
+                    $_.Children |
+                        Where-Object { $_ -is [System.Windows.Controls.CheckBox] -and $_.IsChecked } |
+                        ForEach-Object {
+                            $checkbox = $_
+                            $app = $itt.database.Applications | Where-Object { $_.Name -eq $checkbox.Content }
 
-            foreach ($child in $item.Children) {
-                if ($child -is [System.Windows.Controls.StackPanel]) {
-                    foreach ($innerChild in $child.Children) {
-                        if ($innerChild -is [System.Windows.Controls.CheckBox]) {
-
-                            if($innerChild.IsChecked)
-                            {
-                                    foreach ($program in $itt.database.Applications)
-                                    {
-                                        if($innerChild.content -eq $program.Name)
-                                        {
-                                            $items += @{
-
-                                                Name = $program.Name
-                                                Choco = $program.Choco
-                                                Scoop = $program.Scoop
-                                                Winget = $program.winget
-                                                Default = $program.default
-
-                                                # add a new method downloader here
-                                            }
-
-                                        }
-                                    }
+                            if ($app) {
+                                $items += @{
+                                    Name    = $app.Name
+                                    Choco   = $app.Choco
+                                    Scoop   = $app.Scoop
+                                    Winget  = $app.Winget
+                                    Default = $app.Default
+                                    # Add a new method downloader here
+                                }
                             }
-
                         }
-                    }
                 }
-            }
         }
-    }
-    return $items 
+    
+    return $items
 }
 function FilteredSelectedItems {
     $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($itt.AppsListView.Items)
