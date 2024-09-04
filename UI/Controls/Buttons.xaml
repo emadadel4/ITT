@@ -37,7 +37,6 @@
       Text="#StandWithPalestine"
       FontWeight="SemiBold"
       FlowDirection="LeftToRight"
-      FontSize="15"
       Width="766"
       />
     </StackPanel>
