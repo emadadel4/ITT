@@ -1,3 +1,5 @@
+
+# Invoke Event Window WPF
 function Show-Event {
     param(
         [string]$image,
@@ -88,10 +90,6 @@ function Show-Event {
         }
     }
     $itt.event.Add_PreViewKeyDown($KeyEvents)
-    
-
-
-
 
     # Show dialog
     $itt.event.ShowDialog() | Out-Null
@@ -116,6 +114,7 @@ function Check-Date {
     }
 }
 
+# Save Current State event
 function DisablePopup {
     Set-ItemProperty -Path $itt.registryPath  -Name "PopupWindow" -Value "off" -Force
 }
