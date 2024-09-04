@@ -1,42 +1,33 @@
 function Get-SelectedApps {
     $items = @()
-    foreach ($item in $itt.AppsListView.Items)
-    {
-        if ($item -is [System.Windows.Controls.StackPanel]) {
+    
+    $itt.AppsListView.Items |
+        Where-Object { $_ -is [System.Windows.Controls.StackPanel] } |
+        ForEach-Object {
+            $_.Children |
+                Where-Object { $_ -is [System.Windows.Controls.StackPanel] } |
+                ForEach-Object {
+                    $_.Children |
+                        Where-Object { $_ -is [System.Windows.Controls.CheckBox] -and $_.IsChecked } |
+                        ForEach-Object {
+                            $checkbox = $_
+                            $app = $itt.database.Applications | Where-Object { $_.Name -eq $checkbox.Content }
 
-            foreach ($child in $item.Children) {
-                if ($child -is [System.Windows.Controls.StackPanel]) {
-                    foreach ($innerChild in $child.Children) {
-                        if ($innerChild -is [System.Windows.Controls.CheckBox]) {
-
-                            if($innerChild.IsChecked)
-                            {
-                                    foreach ($program in $itt.database.Applications)
-                                    {
-                                        if($innerChild.content -eq $program.Name)
-                                        {
-                                            $items += @{
-
-                                                Name = $program.Name
-                                                Choco = $program.Choco
-                                                Scoop = $program.Scoop
-                                                Winget = $program.winget
-                                                Default = $program.default
-
-                                                # add a new method downloader here
-                                            }
-
-                                        }
-                                    }
+                            if ($app) {
+                                $items += @{
+                                    Name    = $app.Name
+                                    Choco   = $app.Choco
+                                    Scoop   = $app.Scoop
+                                    Winget  = $app.Winget
+                                    Default = $app.Default
+                                    # Add a new method downloader here
+                                }
                             }
-
                         }
-                    }
                 }
-            }
         }
-    }
-    return $items 
+    
+    return $items
 }
 function FilteredSelectedItems {
     $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($itt.AppsListView.Items)

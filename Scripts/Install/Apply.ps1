@@ -1,47 +1,36 @@
 function Get-SelectedTweaks {
-
     $items = @()
+    
+    $itt.TweaksListView.Items |
+        Where-Object { $_ -is [System.Windows.Controls.StackPanel] } |
+        ForEach-Object {
+            $_.Children |
+                Where-Object { $_ -is [System.Windows.Controls.StackPanel] } |
+                ForEach-Object {
+                    $_.Children |
+                        Where-Object { $_ -is [System.Windows.Controls.CheckBox] -and $_.IsChecked } |
+                        ForEach-Object {
+                            $checkbox = $_
+                            $tweak = $itt.database.Tweaks | Where-Object { $_.Name -eq $checkbox.Content }
 
-    foreach ($item in $itt.TweaksListView.Items)
-    {
-        if ($item -is [System.Windows.Controls.StackPanel]) {
-
-            foreach ($child in $item.Children) {
-                if ($child -is [System.Windows.Controls.StackPanel]) {
-                    foreach ($innerChild in $child.Children) {
-                        if ($innerChild -is [System.Windows.Controls.CheckBox]) {
-
-                            if($innerChild.IsChecked)
-                            {
-                                    foreach ($program in $itt.database.Tweaks)
-                                    {
-                                        if($innerChild.content -eq $program.Name)
-                                        {
-                                            $items += @{
-
-                                                Name = $program.Name
-                                                Type = $program.Type
-                                                Modify = $program.Modify
-                                                Delete = $program.Delete
-                                                Service = $program.Service
-                                                RemoveAppxPackage = $program.RemoveAppxPackage
-                                                Command = $program.InvokeCommand
-                                                Refresh = $program.refresh
-                                                # add a new method tweak here
-
-                                            }
-
-                                        }
-                                    }
+                            if ($tweak) {
+                                $items += @{
+                                    Name                = $tweak.Name
+                                    Type                = $tweak.Type
+                                    Modify              = $tweak.Modify
+                                    Delete              = $tweak.Delete
+                                    Service             = $tweak.Service
+                                    RemoveAppxPackage   = $tweak.RemoveAppxPackage
+                                    Command             = $tweak.InvokeCommand
+                                    Refresh             = $tweak.Refresh
+                                    # Add a new method tweak here
+                                }
                             }
-
                         }
-                    }
                 }
-            }
         }
-    }
-    return $items 
+    
+    return $items
 }
 function ShowSelectedTweaks {
     
