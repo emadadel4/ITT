@@ -14055,7 +14055,7 @@ function Invoke-Install {
     
         $itt.category.SelectedIndex = 0
         FilteredSelectedItems
-        $selectedApps += Get-SelectedApps
+        $selectedApps = Get-SelectedApps
     
         if($selectedApps.Count -gt 0)
         {
