@@ -12596,7 +12596,6 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
       Text="#StandWithPalestine"
       FontWeight="SemiBold"
       FlowDirection="LeftToRight"
-      FontSize="15"
       Width="766"
       />
     </StackPanel>
