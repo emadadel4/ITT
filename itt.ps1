@@ -15,6 +15,9 @@
 #===========================================================================
 # Load DLLs
 Add-Type -AssemblyName System.Windows.Forms
+Add-Type -AssemblyName PresentationFramework
+Add-Type -AssemblyName PresentationCore
+Add-Type -AssemblyName WindowsBase
 
 # Synchronized Hashtable for shared variables
 $itt = [Hashtable]::Synchronized(@{
@@ -27,6 +30,7 @@ $itt = [Hashtable]::Synchronized(@{
     developer      = "Emad Adel"
     registryPath   = "HKCU:\Software\ITT@emadadel"
     firebaseUrl    = "https://ittools-7d9fe-default-rtdb.firebaseio.com/Users"
+    icon           = "https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Icons/icon.ico"
     isDarkMode     = $null
     CurretTheme    = $null
     Date           = (Get-Date)
@@ -39,15 +43,19 @@ $currentPid = [System.Security.Principal.WindowsIdentity]::GetCurrent()
 $principal = [System.Security.Principal.WindowsPrincipal]$currentPid
 $administrator = [System.Security.Principal.WindowsBuiltInRole]::Administrator
 
-if (-not $principal.IsInRole($administrator)) {
+if (-not $principal.IsInRole($administrator))
+{
     Start-Process -FilePath "PowerShell" -ArgumentList $myInvocation.MyCommand.Definition -Verb "runas"
     exit
 }
 
-$Host.UI.RawUI.WindowTitle = "ITT (Install and Tweaks Tool) - Admin"
-
-# Initialize media player only when necessary
-$itt.mediaPlayer = New-Object -ComObject WMPlayer.OCX
+try {
+    $itt.mediaPlayer = New-Object -ComObject WMPlayer.OCX
+    $Host.UI.RawUI.WindowTitle = "ITT (Install and Tweaks Tool) - Admin"
+}
+catch {
+    Write-Host "Media player not loaded because your using Windows Lite or you just disable it"
+}
 #===========================================================================
 #endregion End Start
 #===========================================================================
@@ -12628,7 +12636,7 @@ $childXaml = '<Window
         <!--Header -->
           <Grid Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
             <StackPanel Orientation="Vertical">
-              <Image Source="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/logo.png" Height="130" Width="Auto"/>
+              <Image Source="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/logo2.png" Height="130" Width="Auto"/>
               
               <TextBlock Text="Made with ♥ by Emad Adel" 
                 Foreground="{DynamicResource DefaultTextColor2}"
@@ -12888,8 +12896,6 @@ $InitialSessionState.Variables.Add($hashVars)
 $itt.runspace = [runspacefactory]::CreateRunspacePool(1, $maxthreads, $InitialSessionState, $Host)
 $itt.runspace.Open()
 
-# Load required assembly
-[void][System.Reflection.Assembly]::LoadWithPartialName('presentationframework')
 [xml]$XAML = $inputXML
 
 # Read the XAML file
@@ -12979,6 +12985,11 @@ try {
     $itt.Music = (Get-ItemProperty -Path $itt.registryPath -Name "Music").Music
     $itt.mediaPlayer.settings.volume = "$($itt.Music)"
     $itt.PopupWindow = (Get-ItemProperty -Path $itt.registryPath -Name "PopupWindow").PopupWindow
+
+    # taskbar icon
+    $taskbarItemInfo = New-Object System.Windows.Shell.TaskbarItemInfo
+    $itt["window"].TaskbarItemInfo = $taskbarItemInfo
+    $taskbarItemInfo.Overlay = $itt.icon
 }
 catch {
     Write-Host "Error: $_"
@@ -12986,6 +12997,7 @@ catch {
 }
 
 # List Views
+$itt.TabControl = $itt["window"].FindName("taps")
 $itt.AppsListView = $itt["window"].FindName("appslist")
 $itt.TweaksListView = $itt["window"].FindName("tweakslist")
 $itt.SettingsListView = $itt["window"].FindName("SettingsList")
@@ -12998,17 +13010,10 @@ $itt.InstallBtn = $itt["window"].FindName("installBtn")
 $itt.ApplyBtn = $itt["window"].FindName("applyBtn")
 $itt.Category = $itt["window"].FindName("category")
 $itt.SearchInput = $itt["window"].FindName("searchInput")
-
-
 $itt.installText = $itt["window"].FindName("installText")
 $itt.installIcon = $itt["window"].FindName("installIcon")
-
 $itt.applyText = $itt["window"].FindName("applyText")
 $itt.applyIcon = $itt["window"].FindName("applyIcon")
-
-
-
-
 #===========================================================================
 #endregion End loadXmal
 #===========================================================================

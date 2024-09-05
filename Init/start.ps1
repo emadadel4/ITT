@@ -1,5 +1,8 @@
 # Load DLLs
 Add-Type -AssemblyName System.Windows.Forms
+Add-Type -AssemblyName PresentationFramework
+Add-Type -AssemblyName PresentationCore
+Add-Type -AssemblyName WindowsBase
 
 # Synchronized Hashtable for shared variables
 $itt = [Hashtable]::Synchronized(@{
@@ -12,6 +15,7 @@ $itt = [Hashtable]::Synchronized(@{
     developer      = "Emad Adel"
     registryPath   = "HKCU:\Software\ITT@emadadel"
     firebaseUrl    = "https://ittools-7d9fe-default-rtdb.firebaseio.com/Users"
+    icon           = "https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Icons/icon.ico"
     isDarkMode     = $null
     CurretTheme    = $null
     Date           = (Get-Date)
@@ -24,12 +28,16 @@ $currentPid = [System.Security.Principal.WindowsIdentity]::GetCurrent()
 $principal = [System.Security.Principal.WindowsPrincipal]$currentPid
 $administrator = [System.Security.Principal.WindowsBuiltInRole]::Administrator
 
-if (-not $principal.IsInRole($administrator)) {
+if (-not $principal.IsInRole($administrator))
+{
     Start-Process -FilePath "PowerShell" -ArgumentList $myInvocation.MyCommand.Definition -Verb "runas"
     exit
 }
 
-$Host.UI.RawUI.WindowTitle = "ITT (Install and Tweaks Tool) - Admin"
-
-# Initialize media player only when necessary
-$itt.mediaPlayer = New-Object -ComObject WMPlayer.OCX
+try {
+    $itt.mediaPlayer = New-Object -ComObject WMPlayer.OCX
+    $Host.UI.RawUI.WindowTitle = "ITT (Install and Tweaks Tool) - Admin"
+}
+catch {
+    Write-Host "Media player not loaded because your using Windows Lite or you just disable it"
+}
