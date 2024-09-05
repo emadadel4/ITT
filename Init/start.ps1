@@ -20,7 +20,7 @@ $itt = [Hashtable]::Synchronized(@{
     CurretTheme    = $null
     Date           = (Get-Date)
     Music          = "100"
-    PopupWindow   = "On"
+    PopupWindow    = "On"
     Language       = "en"
 })
 
