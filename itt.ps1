@@ -12636,7 +12636,7 @@ $childXaml = '<Window
         <!--Header -->
           <Grid Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
             <StackPanel Orientation="Vertical">
-              <Image Source="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/logo2.png" Height="130" Width="Auto"/>
+              <Image Source="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/logo.png" Height="130" Width="Auto"/>
               
               <TextBlock Text="Made with ♥ by Emad Adel" 
                 Foreground="{DynamicResource DefaultTextColor2}"
