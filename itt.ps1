@@ -15,9 +15,6 @@
 #===========================================================================
 # Load DLLs
 Add-Type -AssemblyName System.Windows.Forms
-Add-Type -AssemblyName PresentationFramework
-Add-Type -AssemblyName PresentationCore
-Add-Type -AssemblyName WindowsBase
 
 # Synchronized Hashtable for shared variables
 $itt = [Hashtable]::Synchronized(@{
@@ -30,7 +27,6 @@ $itt = [Hashtable]::Synchronized(@{
     developer      = "Emad Adel"
     registryPath   = "HKCU:\Software\ITT@emadadel"
     firebaseUrl    = "https://ittools-7d9fe-default-rtdb.firebaseio.com/Users"
-    icon           = "https://raw.githubusercontent.com/emadadel4/ITT/Update/Resources/Icons/icon.ico"
     isDarkMode     = $null
     CurretTheme    = $null
     Date           = (Get-Date)
@@ -43,19 +39,15 @@ $currentPid = [System.Security.Principal.WindowsIdentity]::GetCurrent()
 $principal = [System.Security.Principal.WindowsPrincipal]$currentPid
 $administrator = [System.Security.Principal.WindowsBuiltInRole]::Administrator
 
-if (-not $principal.IsInRole($administrator))
-{
+if (-not $principal.IsInRole($administrator)) {
     Start-Process -FilePath "PowerShell" -ArgumentList $myInvocation.MyCommand.Definition -Verb "runas"
     exit
 }
 
-try {
-    $itt.mediaPlayer = New-Object -ComObject WMPlayer.OCX
-    $Host.UI.RawUI.WindowTitle = "ITT (Install and Tweaks Tool) - Admin"
-}
-catch {
-    Write-Host "Media player not loaded because your using Windows Lite or you just disable it"
-}
+$Host.UI.RawUI.WindowTitle = "ITT (Install and Tweaks Tool) - Admin"
+
+# Initialize media player only when necessary
+$itt.mediaPlayer = New-Object -ComObject WMPlayer.OCX
 #===========================================================================
 #endregion End Start
 #===========================================================================
@@ -9389,10 +9381,16 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
                                   
     <MenuItem IsEnabled="False" ToolTip="Emad Adel">
         <MenuItem.Icon>
-            <Image Source="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/logo2.png" Width="70" Height="Auto" Margin="5,5,0,0"/>
+            <!--Logo-->
+            <Ellipse Name="logo" Margin="5,5,0,0" Width="80" Height="80">
+                <Ellipse.Fill>
+                    <ImageBrush ImageSource="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/logo.png" />
+                </Ellipse.Fill>
+            </Ellipse>
+            <!--End Logo-->
         </MenuItem.Icon>
+
     </MenuItem>
-    
 
     <MenuItem Header="{Binding management}" FontFamily="arial" FontSize="13"  Margin="10,0,0,0" BorderBrush="Transparent" BorderThickness="0" VerticalAlignment="Center" HorizontalAlignment="Left">
         <MenuItem.Icon>
@@ -9545,7 +9543,6 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
             </MenuItem.Icon>
         </MenuItem>
 
-
         <MenuItem Header="{Binding extensions}">
             <MenuItem.Icon>
                 <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
@@ -9556,17 +9553,7 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
             <MenuItem Name="neat" Header="Neat Download Manager"/>
         </MenuItem>
 
-        <MenuItem Name="sordum" Header="Sordum tools">
-            <MenuItem.Icon>
-                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
-            </MenuItem.Icon>
-        </MenuItem>
-
-        <MenuItem Name="majorgeeks" Header="Major Geeks">
-            <MenuItem.Icon>
-                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
-            </MenuItem.Icon>
-        </MenuItem>
+        
         
     </MenuItem>
 
@@ -9665,18 +9652,18 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
     <!--Header Section-->
 
         <!--TabControl-->
-    <TabControl Name="taps" TabStripPlacement="Left" Grid.Row="1"  BorderBrush="Transparent" Height="Auto" Width="Auto" Foreground="White" Background="Transparent">
-            <TabItem Name="apps" Header="{Binding apps}" BorderBrush="{x:Null}" >
+    <TabControl Name="taps" TabStripPlacement="Left" Grid.Row="1"  BorderBrush="Transparent" Foreground="White" Background="Transparent">
+            <TabItem Name="apps" Header="{Binding apps}" BorderBrush="{x:Null}">
                 <TabItem.HeaderTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="" FontFamily="Segoe MDL2 Assets" FontSize="18" Margin="0,0,5,0"/>
-                            <TextBlock Text="{Binding}"  FontSize="15"  Margin="0,0,5,0"/>
+                            <TextBlock Text="{Binding}" FontFamily="Sego UI" FontSize="15"  Margin="0,0,5,0"/>
                         </StackPanel>
                     </DataTemplate>
             </TabItem.HeaderTemplate>
                 <TabItem.Content>
-                    <ListView Name="appslist" Margin="0" ScrollViewer.VerticalScrollBarVisibility="Auto" Width="Auto" Height="Auto" BorderBrush="{x:Null}" Background="{x:Null}" >
+                    <ListView Name="appslist"   Margin="0" ScrollViewer.VerticalScrollBarVisibility="Auto" BorderBrush="{x:Null}" Background="{x:Null}" >
                         
         <StackPanel Orientation="Vertical" Width="auto" Margin="10">
             <StackPanel Orientation="Horizontal">
@@ -12198,11 +12185,11 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="" FontFamily="Segoe MDL2 Assets" FontSize="18" Margin="0,0,5,0"/>
-                                <TextBlock Text="{Binding}"  FontSize="15"  Margin="0,0,5,0"/>
+                                <TextBlock Text="{Binding}" FontFamily="Sego UI" FontSize="15"  Margin="0,0,5,0"/>
                             </StackPanel>
                         </DataTemplate>
                 </TabItem.HeaderTemplate>
-                    <ListView Name="tweakslist"  Margin="0" ScrollViewer.VerticalScrollBarVisibility="Auto" Width="Auto" Height="Auto" BorderBrush="{x:Null}" Background="{x:Null}">
+                    <ListView Name="tweakslist"  Margin="0" ScrollViewer.VerticalScrollBarVisibility="Auto" BorderBrush="{x:Null}" Background="{x:Null}">
                         
         <StackPanel Orientation="Vertical" Width="auto" Margin="10">
             <StackPanel Orientation="Horizontal">
@@ -12507,11 +12494,11 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="" FontFamily="Segoe MDL2 Assets" FontSize="18" Margin="0,0,5,0"/>
-                                <TextBlock Text="{Binding}"  FontSize="15" Margin="0,0,5,0"/>
+                                <TextBlock Text="{Binding}" FontFamily="Sego UI" FontSize="15" Margin="0,0,5,0"/>
                             </StackPanel>
                         </DataTemplate>
                 </TabItem.HeaderTemplate>
-                    <ListView Name="SettingsList"  Margin="0" ScrollViewer.VerticalScrollBarVisibility="Auto" Width="Auto" Height="Auto" BorderBrush="{x:Null}" Background="{x:Null}">
+                    <ListView Name="SettingsList"  Margin="0" ScrollViewer.VerticalScrollBarVisibility="Auto" BorderBrush="{x:Null}" Background="{x:Null}">
                         
         <StackPanel Orientation="Vertical" Width="auto" Margin="10">
             <StackPanel Orientation="Horizontal">
@@ -12593,9 +12580,9 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
       VerticalAlignment="Center" 
       TextWrapping="Wrap"
       Padding="12"
-      Text="#StandWithPalestine"
       FontWeight="SemiBold"
       FlowDirection="LeftToRight"
+      FontSize="15"
       Width="766"
       />
     </StackPanel>
@@ -12896,6 +12883,8 @@ $InitialSessionState.Variables.Add($hashVars)
 $itt.runspace = [runspacefactory]::CreateRunspacePool(1, $maxthreads, $InitialSessionState, $Host)
 $itt.runspace.Open()
 
+# Load required assembly
+[void][System.Reflection.Assembly]::LoadWithPartialName('presentationframework')
 [xml]$XAML = $inputXML
 
 # Read the XAML file
@@ -12985,11 +12974,6 @@ try {
     $itt.Music = (Get-ItemProperty -Path $itt.registryPath -Name "Music").Music
     $itt.mediaPlayer.settings.volume = "$($itt.Music)"
     $itt.PopupWindow = (Get-ItemProperty -Path $itt.registryPath -Name "PopupWindow").PopupWindow
-
-    # taskbar icon
-    $taskbarItemInfo = New-Object System.Windows.Shell.TaskbarItemInfo
-    $itt["window"].TaskbarItemInfo = $taskbarItemInfo
-    $taskbarItemInfo.Overlay = $itt.icon
 }
 catch {
     Write-Host "Error: $_"
@@ -12997,7 +12981,6 @@ catch {
 }
 
 # List Views
-$itt.TabControl = $itt["window"].FindName("taps")
 $itt.AppsListView = $itt["window"].FindName("appslist")
 $itt.TweaksListView = $itt["window"].FindName("tweakslist")
 $itt.SettingsListView = $itt["window"].FindName("SettingsList")
@@ -13010,10 +12993,17 @@ $itt.InstallBtn = $itt["window"].FindName("installBtn")
 $itt.ApplyBtn = $itt["window"].FindName("applyBtn")
 $itt.Category = $itt["window"].FindName("category")
 $itt.SearchInput = $itt["window"].FindName("searchInput")
+
+
 $itt.installText = $itt["window"].FindName("installText")
 $itt.installIcon = $itt["window"].FindName("installIcon")
+
 $itt.applyText = $itt["window"].FindName("applyText")
 $itt.applyIcon = $itt["window"].FindName("applyIcon")
+
+
+
+
 #===========================================================================
 #endregion End loadXmal
 #===========================================================================
@@ -13526,38 +13516,49 @@ function ChangeTap {
 }
 
 function Get-SelectedTweaks {
-    $items = @()
-    
-    $itt.TweaksListView.Items |
-        Where-Object { $_ -is [System.Windows.Controls.StackPanel] } |
-        ForEach-Object {
-            $_.Children |
-                Where-Object { $_ -is [System.Windows.Controls.StackPanel] } |
-                ForEach-Object {
-                    $_.Children |
-                        Where-Object { $_ -is [System.Windows.Controls.CheckBox] -and $_.IsChecked } |
-                        ForEach-Object {
-                            $checkbox = $_
-                            $tweak = $itt.database.Tweaks | Where-Object { $_.Name -eq $checkbox.Content }
 
-                            if ($tweak) {
-                                $items += @{
-                                    Name                = $tweak.Name
-                                    Type                = $tweak.Type
-                                    Modify              = $tweak.Modify
-                                    Delete              = $tweak.Delete
-                                    Service             = $tweak.Service
-                                    RemoveAppxPackage   = $tweak.RemoveAppxPackage
-                                    Command             = $tweak.InvokeCommand
-                                    Refresh             = $tweak.Refresh
-                                    # Add a new method tweak here
-                                }
+    $items = @()
+
+    foreach ($item in $itt.TweaksListView.Items)
+    {
+        if ($item -is [System.Windows.Controls.StackPanel]) {
+
+            foreach ($child in $item.Children) {
+                if ($child -is [System.Windows.Controls.StackPanel]) {
+                    foreach ($innerChild in $child.Children) {
+                        if ($innerChild -is [System.Windows.Controls.CheckBox]) {
+
+                            if($innerChild.IsChecked)
+                            {
+                                    foreach ($program in $itt.database.Tweaks)
+                                    {
+                                        if($innerChild.content -eq $program.Name)
+                                        {
+                                            $items += @{
+
+                                                Name = $program.Name
+                                                Type = $program.Type
+                                                Modify = $program.Modify
+                                                Delete = $program.Delete
+                                                Service = $program.Service
+                                                RemoveAppxPackage = $program.RemoveAppxPackage
+                                                Command = $program.InvokeCommand
+                                                Refresh = $program.refresh
+                                                # add a new method tweak here
+
+                                            }
+
+                                        }
+                                    }
                             }
+
                         }
+                    }
                 }
+            }
         }
-    
-    return $items
+    }
+    return $items 
 }
 function ShowSelectedTweaks {
     
@@ -13649,6 +13650,11 @@ function Invoke-ApplyTweaks {
                             try {
                                 Add-Log -Message "$Name" -Level "INFO"
                                 Start-Process -FilePath "powershell.exe" -ArgumentList "-Command `"$Command`"" -NoNewWindow -Wait
+                                Add-Log -Message "Done." -Level "INFO"
+        
+                                #debug
+                                #Write-Host "Command '$Command' Done."
+        
                             } catch {
                                 Write-Host "Error executing command '$Command': $_"
                             }
@@ -13677,12 +13683,15 @@ function Invoke-ApplyTweaks {
                                     }
                                 } else {
                                     Set-ItemProperty -Path $Path -Name $Name -Type $Type -Value $Value -Force -ErrorAction Stop
+                                    Add-Log -Message "$($Name) Successful applied" -Level "INFO"
                                 }
+        
                             }
                         
                             catch {
                                 Write-Error "An error occurred: $_"
                             }
+                            
                         }
         
                         function Remove-RegistryValue {
@@ -13699,8 +13708,13 @@ function Invoke-ApplyTweaks {
                         
                                 # Check if the registry key exists
                                 if (Test-Path "Registry::$KeyPath") {
+        
                                     # Delete the registry key and all subkeys recursively
+        
                                     Remove-Item -Path "Registry::$KeyPath" -Recurse -Force
+                                    Add-Log -Message "successful removed." -Level "INFO"
+        
+        
                                 } else {
                                     Add-Log -Message "Registry key '$KeyPath' does not exist." -Level "INFO"
                                 }
@@ -13721,8 +13735,11 @@ function Invoke-ApplyTweaks {
         
                                 # Check if the service exists
                                 if (Get-Service -Name $ServiceName -ErrorAction SilentlyContinue) {
+        
                                     Set-Service -Name $ServiceName -StartupType $StartupType -ErrorAction Stop
                                     Stop-Service -Name $ServiceName 
+                                    Add-Log -Message "Service '$ServiceName' disabled." -Level "INFO"
+        
                                 }
                                 else {
                                     Add-Log -Message "Service '$ServiceName' not found." -Level "INFO"
@@ -13834,7 +13851,6 @@ function Invoke-ApplyTweaks {
                                         "GPU" = $existingData.GPU
                                         "CPU" = $existingData.CPU
                                         "Cores" = $existingData.Cores 
-                                        "Country" = $existingData.Country
                                         "Language" = $existingData.Language 
                                         "Start at" = (Get-Date -Format "hh:mm:ss tt MM/dd/yyyy")
                                         "Runs" = $existingData.Runs
@@ -13899,7 +13915,10 @@ function Invoke-ApplyTweaks {
 
                             $applyBtn = $itt.database.locales.Controls.$($itt.Language).applyBtn
                             $Applying = $itt.database.locales.Controls.$($itt.Language).Applying
+
+
                             UpdateUI -ApplyBtn "$applying" -icon " " -Width "150"
+
 
                             $itt.ProcessRunning = $true
 
@@ -13914,7 +13933,6 @@ function Invoke-ApplyTweaks {
 
                                         $app.Modify | ForEach-Object {
                                             Set-RegistryValue -Name $_.Name -Type $_.Type -Path $_.Path -Value $_.Value
-                                            #$app.Command | ForEach-Object { ExecuteCommand -Name $app.Name -Command $_ }
                                         }
 
                                         $app.Delete | ForEach-Object {
@@ -13935,8 +13953,7 @@ function Invoke-ApplyTweaks {
                                         $app.Command | ForEach-Object { ExecuteCommand -Command $_ }
                                     }
                                 }
-
-                                Add-Log -Message "Finished. Some tweaks require restarting the device." -Level "INFO"
+                                
                             }
 
                             # Displaying the names of the selected apps
@@ -13970,10 +13987,8 @@ function Invoke-ApplyTweaks {
             }
             else
             {
-               # Uncheck all checkboxes in $list
-                $itt.category.SelectedIndex = 0
-                $itt.TweaksListView.Dispatcher.Invoke({
-                    $itt.AppsListView.Clear()
+                $itt.TweaksListView.Dispatcher.Invoke([Action]{
+                    $itt.TweaksListView.Items.Clear()
                     [System.Windows.Data.CollectionViewSource]::GetDefaultView($itt.TweaksListView.Items).Filter = $null
                 })
                 $localizedMessageTemplate = $itt.database.locales.Controls.$($itt.Language).chosetweak
@@ -13986,34 +14001,43 @@ function Invoke-ApplyTweaks {
 }
 function Get-SelectedApps {
     $items = @()
-    
-    $itt.AppsListView.Items |
-        Where-Object { $_ -is [System.Windows.Controls.StackPanel] } |
-        ForEach-Object {
-            $_.Children |
-                Where-Object { $_ -is [System.Windows.Controls.StackPanel] } |
-                ForEach-Object {
-                    $_.Children |
-                        Where-Object { $_ -is [System.Windows.Controls.CheckBox] -and $_.IsChecked } |
-                        ForEach-Object {
-                            $checkbox = $_
-                            $app = $itt.database.Applications | Where-Object { $_.Name -eq $checkbox.Content }
+    foreach ($item in $itt.AppsListView.Items)
+    {
+        if ($item -is [System.Windows.Controls.StackPanel]) {
 
-                            if ($app) {
-                                $items += @{
-                                    Name    = $app.Name
-                                    Choco   = $app.Choco
-                                    Scoop   = $app.Scoop
-                                    Winget  = $app.Winget
-                                    Default = $app.Default
-                                    # Add a new method downloader here
-                                }
+            foreach ($child in $item.Children) {
+                if ($child -is [System.Windows.Controls.StackPanel]) {
+                    foreach ($innerChild in $child.Children) {
+                        if ($innerChild -is [System.Windows.Controls.CheckBox]) {
+
+                            if($innerChild.IsChecked)
+                            {
+                                    foreach ($program in $itt.database.Applications)
+                                    {
+                                        if($innerChild.content -eq $program.Name)
+                                        {
+                                            $items += @{
+
+                                                Name = $program.Name
+                                                Choco = $program.Choco
+                                                Scoop = $program.Scoop
+                                                Winget = $program.winget
+                                                Default = $program.default
+
+                                                # add a new method downloader here
+                                            }
+
+                                        }
+                                    }
                             }
+
                         }
+                    }
                 }
+            }
         }
-    
-    return $items
+    }
+    return $items 
 }
 function FilteredSelectedItems {
     $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($itt.AppsListView.Items)
@@ -14055,7 +14079,7 @@ function Invoke-Install {
     
         $itt.category.SelectedIndex = 0
         FilteredSelectedItems
-        $selectedApps = Get-SelectedApps
+        $selectedApps += Get-SelectedApps
     
         if($selectedApps.Count -gt 0)
         {
@@ -14202,7 +14226,6 @@ function Invoke-Install {
                                         "GPU" = $existingData.GPU
                                         "CPU" = $existingData.CPU
                                         "Cores" = $existingData.Cores 
-                                        "Country" = $existingData.Country
                                         "Language" = $existingData.Language 
                                         "Start at" = (Get-Date -Format "hh:mm:ss tt MM/dd/yyyy")
                                         "Runs" = $existingData.Runs
@@ -14744,14 +14767,6 @@ function Invoke-Button {
             Start-Process "https://massgrave.dev/genuine-installation-media" 
             Debug-Message $action
         }
-        "sordum" {
-            Start-Process "https://www.sordum.org/" 
-            Debug-Message $action
-        }
-        "majorgeeks" {
-            Start-Process "https://www.majorgeeks.com/" 
-            Debug-Message $action
-        }
 
         # Other actions
         "ittshortcut" {
@@ -14962,6 +14977,65 @@ function ITTShortcut {
     $Shortcut.Save()
 }
 
+function DisplayQuotes  {
+
+    Invoke-ScriptBlock -ScriptBlock {
+
+        # Define the JSON file path
+        $jsonFilePath = $itt.database.Quotes
+
+        # Function to shuffle an array
+        function ShuffleArray {
+            param (
+                [array]$Array
+            )
+            $count = $Array.Count
+            for ($i = $count - 1; $i -ge 0; $i--) {
+                $randomIndex = Get-Random -Minimum 0 -Maximum $count
+                $temp = $Array[$i]
+                $Array[$i] = $Array[$randomIndex]
+                $Array[$randomIndex] = $temp
+            }
+            return $Array
+        }
+
+        # Function to get names from the JSON file
+        function Get-NamesFromJson {
+            $jsonContent =  $jsonFilePath 
+            return $jsonContent.Q
+        }
+
+        # Get shuffled names
+        $shuffledNames = ShuffleArray -Array (Get-NamesFromJson)
+
+        # Function to display welcome text
+        function Display-WelcomeText {
+            $itt.Quotes.Dispatcher.Invoke([Action]{
+
+                $fullCulture = (Get-ItemPropertyValue -Path "HKCU:\Control Panel\International" -Name "LocaleName")
+                $shortCulture = $fullCulture.Split('-')[0]
+                $itt.Quotes.Text = $itt.database.locales.Controls.$($itt.Language).welcome
+               
+            })
+        }
+
+        # Display welcome text
+        Display-WelcomeText
+
+        Start-Sleep -Seconds 20
+
+        # Loop through shuffled names and display them
+        do {
+            foreach ($name in $shuffledNames) {
+                $itt.Quotes.Dispatcher.Invoke([Action]{
+                    $itt.Quotes.Text = "`“$name`”"
+                })
+                # Adjust the sleep time as needed
+                Start-Sleep -Seconds 18 
+            }
+        } while ($true)
+    }
+}
 function Search {
 
     # Retrieves the search input, converts it to lowercase, and filters the list based on the input
@@ -15127,6 +15201,45 @@ $KeyEvents = {
 }
 
 $itt["window"].Add_PreViewKeyDown($KeyEvents)
+
+function PlayMusic {
+
+    # Function to play an audio track
+    function PlayAudio($track) {
+        $mediaItem = $itt.mediaPlayer.newMedia($track)
+        $itt.mediaPlayer.currentPlaylist.appendItem($mediaItem)
+        $itt.mediaPlayer.controls.play()
+    }
+
+    # Shuffle the playlist and create a new playlist
+    function GetShuffledTracks {
+
+        # Play Favorite Music in Special Date
+        if ($itt.Date.Month -eq 9 -and $itt.Date.Day -eq 1) {
+            return $itt.database.OST.Favorite | Get-Random -Count $itt.database.OST.Favorite.Count
+        }
+        else {
+            return $itt.database.OST.Tracks | Get-Random -Count $itt.database.OST.Tracks.Count
+        }
+    }
+
+    # Preload and play the shuffled playlist
+    function PlayPreloadedPlaylist {
+        # Preload the shuffled playlist
+        $shuffledTracks = GetShuffledTracks
+
+        foreach ($track in $shuffledTracks) {
+            PlayAudio -track $track.url
+            # Wait for the track to finish playing
+            while ($itt.mediaPlayer.playState -in 3, 6) {
+                Start-Sleep -Milliseconds 100
+            }
+        }
+    }
+
+    # Play the preloaded playlist
+    PlayPreloadedPlaylist
+}
 
 # Mute the music by setting the volume to the specified value
 function MuteMusic {

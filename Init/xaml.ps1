@@ -12,6 +12,8 @@ $InitialSessionState.Variables.Add($hashVars)
 $itt.runspace = [runspacefactory]::CreateRunspacePool(1, $maxthreads, $InitialSessionState, $Host)
 $itt.runspace.Open()
 
+# Load required assembly
+[void][System.Reflection.Assembly]::LoadWithPartialName('presentationframework')
 [xml]$XAML = $inputXML
 
 # Read the XAML file
@@ -101,11 +103,6 @@ try {
     $itt.Music = (Get-ItemProperty -Path $itt.registryPath -Name "Music").Music
     $itt.mediaPlayer.settings.volume = "$($itt.Music)"
     $itt.PopupWindow = (Get-ItemProperty -Path $itt.registryPath -Name "PopupWindow").PopupWindow
-
-    # taskbar icon
-    $taskbarItemInfo = New-Object System.Windows.Shell.TaskbarItemInfo
-    $itt["window"].TaskbarItemInfo = $taskbarItemInfo
-    $taskbarItemInfo.Overlay = $itt.icon
 }
 catch {
     Write-Host "Error: $_"
@@ -113,7 +110,6 @@ catch {
 }
 
 # List Views
-$itt.TabControl = $itt["window"].FindName("taps")
 $itt.AppsListView = $itt["window"].FindName("appslist")
 $itt.TweaksListView = $itt["window"].FindName("tweakslist")
 $itt.SettingsListView = $itt["window"].FindName("SettingsList")
@@ -126,7 +122,13 @@ $itt.InstallBtn = $itt["window"].FindName("installBtn")
 $itt.ApplyBtn = $itt["window"].FindName("applyBtn")
 $itt.Category = $itt["window"].FindName("category")
 $itt.SearchInput = $itt["window"].FindName("searchInput")
+
+
 $itt.installText = $itt["window"].FindName("installText")
 $itt.installIcon = $itt["window"].FindName("installIcon")
+
 $itt.applyText = $itt["window"].FindName("applyText")
 $itt.applyIcon = $itt["window"].FindName("applyIcon")
+
+
+

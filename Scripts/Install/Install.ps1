@@ -1,33 +1,42 @@
 function Get-SelectedApps {
     $items = @()
-    
-    $itt.AppsListView.Items |
-        Where-Object { $_ -is [System.Windows.Controls.StackPanel] } |
-        ForEach-Object {
-            $_.Children |
-                Where-Object { $_ -is [System.Windows.Controls.StackPanel] } |
-                ForEach-Object {
-                    $_.Children |
-                        Where-Object { $_ -is [System.Windows.Controls.CheckBox] -and $_.IsChecked } |
-                        ForEach-Object {
-                            $checkbox = $_
-                            $app = $itt.database.Applications | Where-Object { $_.Name -eq $checkbox.Content }
+    foreach ($item in $itt.AppsListView.Items)
+    {
+        if ($item -is [System.Windows.Controls.StackPanel]) {
 
-                            if ($app) {
-                                $items += @{
-                                    Name    = $app.Name
-                                    Choco   = $app.Choco
-                                    Scoop   = $app.Scoop
-                                    Winget  = $app.Winget
-                                    Default = $app.Default
-                                    # Add a new method downloader here
-                                }
+            foreach ($child in $item.Children) {
+                if ($child -is [System.Windows.Controls.StackPanel]) {
+                    foreach ($innerChild in $child.Children) {
+                        if ($innerChild -is [System.Windows.Controls.CheckBox]) {
+
+                            if($innerChild.IsChecked)
+                            {
+                                    foreach ($program in $itt.database.Applications)
+                                    {
+                                        if($innerChild.content -eq $program.Name)
+                                        {
+                                            $items += @{
+
+                                                Name = $program.Name
+                                                Choco = $program.Choco
+                                                Scoop = $program.Scoop
+                                                Winget = $program.winget
+                                                Default = $program.default
+
+                                                # add a new method downloader here
+                                            }
+
+                                        }
+                                    }
                             }
+
                         }
+                    }
                 }
+            }
         }
-    
-    return $items
+    }
+    return $items 
 }
 function FilteredSelectedItems {
     $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($itt.AppsListView.Items)
@@ -69,7 +78,7 @@ function Invoke-Install {
     
         $itt.category.SelectedIndex = 0
         FilteredSelectedItems
-        $selectedApps = Get-SelectedApps
+        $selectedApps += Get-SelectedApps
     
         if($selectedApps.Count -gt 0)
         {
@@ -216,7 +225,6 @@ function Invoke-Install {
                                         "GPU" = $existingData.GPU
                                         "CPU" = $existingData.CPU
                                         "Cores" = $existingData.Cores 
-                                        "Country" = $existingData.Country
                                         "Language" = $existingData.Language 
                                         "Start at" = (Get-Date -Format "hh:mm:ss tt MM/dd/yyyy")
                                         "Runs" = $existingData.Runs

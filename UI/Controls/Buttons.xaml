@@ -34,9 +34,9 @@
       VerticalAlignment="Center" 
       TextWrapping="Wrap"
       Padding="12"
-      Text="#StandWithPalestine"
       FontWeight="SemiBold"
       FlowDirection="LeftToRight"
+      FontSize="15"
       Width="766"
       />
     </StackPanel>
