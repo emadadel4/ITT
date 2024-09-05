@@ -15,22 +15,18 @@
 #===========================================================================
 # Load DLLs
 Add-Type -AssemblyName System.Windows.Forms
-Add-Type -AssemblyName PresentationFramework
-Add-Type -AssemblyName PresentationCore
-Add-Type -AssemblyName WindowsBase
 
 # Synchronized Hashtable for shared variables
-$itt = [Hashtable]::Synchronized(@{
+$sync = [Hashtable]::Synchronized(@{
     database       = @{}
     ProcessRunning = $false
-    lastupdate     = "09/04/2024"
+    lastupdate     = "08/21/24"
     github         = "https://github.com/emadadel4"
     telegram       = "https://t.me/emadadel4"
     website        = "https://emadadel4.github.io"
     developer      = "Emad Adel"
     registryPath   = "HKCU:\Software\ITT@emadadel"
     firebaseUrl    = "https://ittools-7d9fe-default-rtdb.firebaseio.com/Users"
-    icon           = "https://raw.githubusercontent.com/emadadel4/ITT/Update/Resources/Icons/icon.ico"
     isDarkMode     = $null
     CurretTheme    = $null
     Date           = (Get-Date)
@@ -43,26 +39,22 @@ $currentPid = [System.Security.Principal.WindowsIdentity]::GetCurrent()
 $principal = [System.Security.Principal.WindowsPrincipal]$currentPid
 $administrator = [System.Security.Principal.WindowsBuiltInRole]::Administrator
 
-if (-not $principal.IsInRole($administrator))
-{
+if (-not $principal.IsInRole($administrator)) {
     Start-Process -FilePath "PowerShell" -ArgumentList $myInvocation.MyCommand.Definition -Verb "runas"
     exit
 }
 
-try {
-    $itt.mediaPlayer = New-Object -ComObject WMPlayer.OCX
-    $Host.UI.RawUI.WindowTitle = "ITT (Install and Tweaks Tool) - Admin"
-}
-catch {
-    Write-Host "Media player not loaded because your using Windows Lite or you just disable it"
-}
+$Host.UI.RawUI.WindowTitle = "ITT (Install and Tweaks Tool) - Admin"
+
+# Initialize media player only when necessary
+$sync.mediaPlayer = New-Object -ComObject WMPlayer.OCX
 #===========================================================================
 #endregion End Start
 #===========================================================================
 #===========================================================================
 #region Begin Database /APPS/TWEEAKS/Quotes/OST/Settings
 #===========================================================================
-$itt.database.Applications = '[
+$sync.database.Applications = '[
   {
     "name": "Mozilla Firefox",
     "description": "A widely-used open-source web browser known for its speed, privacy features, and customization options.",
@@ -2357,7 +2349,7 @@ $itt.database.Applications = '[
     "check": "false"
   },
   {
-    "name": "VSCode",
+    "name": "Visual Studio Code",
     "description": "Visual Studio Code is a free source-code editor developed by Microsoft for Windows, Linux, and macOS. It includes support for debugging, embedded Git control, syntax highlighting, intelligent code completion, snippets, and code refactoring.",
     "winget": "Microsoft.VisualStudioCode",
     "choco": "vscode",
@@ -6004,314 +5996,10 @@ $itt.database.Applications = '[
     ],
     "category": "Utilities",
     "check": "false"
-  },
-  {
-    "name": "Fork",
-    "description": "Fork  a fast and friendly git client",
-    "winget": "Fork.Fork",
-    "choco": "git-fork",
-    "scoop": "none",
-    "default": [
-      {
-        "IsExcute": "false",
-        "url": "none",
-        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none",
-        "shortcut": "no",
-        "run": "no"
-      }
-    ],
-    "category": "Development",
-    "check": "false"
-  },
-  {
-    "name": "PulsarEdit",
-    "description": "A Communityled HyperHackable Text Editor",
-    "winget": "Pulsar-Edit.Pulsar",
-    "choco": "pulsar",
-    "scoop": "none",
-    "default": [
-      {
-        "IsExcute": "false",
-        "url": "none",
-        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none",
-        "shortcut": "no",
-        "run": "no"
-      }
-    ],
-    "category": "Development",
-    "check": "false"
-  },
-  {
-    "name": "Shotcut",
-    "description": "Shotcut is a free open source crossplatform video editor",
-    "winget": "Meltytech.Shotcut",
-    "choco": "Shotcut",
-    "scoop": "none",
-    "default": [
-      {
-        "IsExcute": "false",
-        "url": "none",
-        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none",
-        "shortcut": "no",
-        "run": "no"
-      }
-    ],
-    "category": "Media Tools",
-    "check": "false"
-  },
-  {
-    "name": "PaleMoon",
-    "description": "Pale Moon is an Open Source Goannabased web browser available for Microsoft Windows and Linux with other operating systems in development focusing on efficiency and ease of use",
-    "winget": "MoonchildProductions.PaleMoon",
-    "choco": "paleMoon",
-    "scoop": "none",
-    "default": [
-      {
-        "IsExcute": "false",
-        "url": "none",
-        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none",
-        "shortcut": "no",
-        "run": "no"
-      }
-    ],
-    "category": "Web Browsers",
-    "check": "false"
-  },
-  {
-    "name": "JoyToKey",
-    "description": "enables PC game controllers to emulate the keyboard and mouse input",
-    "winget": "JTKsoftware.JoyToKey",
-    "choco": "joytokey",
-    "scoop": "none",
-    "default": [
-      {
-        "IsExcute": "false",
-        "url": "none",
-        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none",
-        "shortcut": "no",
-        "run": "no"
-      }
-    ],
-    "category": "Gaming",
-    "check": "false"
-  },
-  {
-    "name": "Windows Auto Dark Mode",
-    "description": "Automatically switches between the dark and light theme of Windows 10 and Windows 11",
-    "winget": "Armin2208.WindowsAutoNightMode",
-    "choco": "auto-dark-mode",
-    "scoop": "none",
-    "default": [
-      {
-        "IsExcute": "false",
-        "url": "none",
-        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none",
-        "shortcut": "no",
-        "run": "no"
-      }
-    ],
-    "category": "Utilities",
-    "check": "false"
-  },
-  {
-    "name": "Windows Firewall Control",
-    "description": "Windows Firewall Control is a powerful tool which extends the functionality of Windows Firewall and provides new extra features which makes Windows Firewall better",
-    "winget": "BiniSoft.WindowsFirewallControl",
-    "choco": "windowsfirewallcontrol",
-    "scoop": "none",
-    "default": [
-      {
-        "IsExcute": "false",
-        "url": "none",
-        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none",
-        "shortcut": "no",
-        "run": "no"
-      }
-    ],
-    "category": "Utilities",
-    "check": "false"
-  },
-  {
-    "name": "TightVNC",
-    "description": "TightVNC is a free and Open Source remote desktop software that lets you access and control a computer over the network With its intuitive interface you can interact with the remote screen as if you were sitting in front of it You can open files launch applications and perform other actions on the remote desktop almost as if you were physically there",
-    "winget": "GlavSoft.TightVNC",
-    "choco": "TightVNC",
-    "scoop": "none",
-    "default": [
-      {
-        "IsExcute": "false",
-        "url": "none",
-        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none",
-        "shortcut": "no",
-        "run": "no"
-      }
-    ],
-    "category": "Utilities",
-    "check": "false"
-  },
-  {
-    "name": "Python Version Manager",
-    "description": "pyenv for Windows is a simple python version management tool It lets you easily switch between multiple versions of Python",
-    "winget": "none",
-    "choco": "pyenv-win",
-    "scoop": "none",
-    "default": [
-      {
-        "IsExcute": "false",
-        "url": "none",
-        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none",
-        "shortcut": "no",
-        "run": "no"
-      }
-    ],
-    "category": "Development",
-    "check": "false"
-  },
-  {
-    "name": "Pixi",
-    "description": "Pixi is a fast software package manager built on top of the existing conda ecosystem Spins up development environments quickly on Windows macOS and Linux Pixi supports Python R CC Rust Ruby and many other languages",
-    "winget": "prefix-dev.pixi",
-    "choco": "pixi",
-    "scoop": "none",
-    "default": [
-      {
-        "IsExcute": "false",
-        "url": "none",
-        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none",
-        "shortcut": "no",
-        "run": "no"
-      }
-    ],
-    "category": "Development",
-    "check": "false"
-  },
-  {
-    "name": "VSCodium",
-    "description": "VSCodium is a communitydriven freelylicensed binary distribution of Microsofts VS Code",
-    "winget": "VSCodium.VSCodium",
-    "choco": "vscodium",
-    "scoop": "none",
-    "default": [
-      {
-        "IsExcute": "false",
-        "url": "none",
-        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none",
-        "shortcut": "no",
-        "run": "no"
-      }
-    ],
-    "category": "Development",
-    "check": "false"
-  },
-  {
-    "name": "Thonny Python IDE",
-    "description": "Python IDE for beginners",
-    "winget": "AivarAnnamaa.Thonny",
-    "choco": "thonny",
-    "scoop": "none",
-    "default": [
-      {
-        "IsExcute": "false",
-        "url": "none",
-        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none",
-        "shortcut": "no",
-        "run": "no"
-      }
-    ],
-    "category": "Development",
-    "check": "false"
-  },
-  {
-    "name": "Poedit",
-    "description": "Poedit translations editor The best way to translate apps and sites",
-    "winget": "none",
-    "choco": "none",
-    "scoop": "none",
-    "default": [
-      {
-        "IsExcute": "false",
-        "url": "none",
-        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none",
-        "shortcut": "no",
-        "run": "no"
-      }
-    ],
-    "category": "Development",
-    "check": "false"
-  },
-  {
-    "name": "Adobe Acrobat Reader",
-    "description": "Adobe Acrobat Reader DC software is the free trusted global standard for viewing printing signing sharing and annotating PDFs Its the only PDF viewer that can open and interact",
-    "winget": "Adobe.Acrobat.Reader.32-bit",
-    "choco": "adobereader",
-    "scoop": "none",
-    "default": [
-      {
-        "IsExcute": "false",
-        "url": "none",
-        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none",
-        "shortcut": "no",
-        "run": "no"
-      }
-    ],
-    "category": "Documents",
-    "check": "false"
-  },
-  {
-    "name": "Flash Player Plugin",
-    "description": "The Adobe Flash Player is freeware software for viewing multimedia executing Rich Internet Applications and streaming video and audio content created on the Adobe Flash platform",
-    "winget": "none",
-    "choco": "flashplayerplugin",
-    "scoop": "none",
-    "default": [
-      {
-        "IsExcute": "false",
-        "url": "none",
-        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none",
-        "shortcut": "no",
-        "run": "no"
-      }
-    ],
-    "category": "Documents",
-    "check": "false"
-  },
-  {
-    "name": "Sysinternals",
-    "description": "The Sysinternals Troubleshooting Utilities have been rolled up into a single suite of tools",
-    "winget": "none",
-    "choco": "sysinternals",
-    "scoop": "none",
-    "default": [
-      {
-        "IsExcute": "false",
-        "url": "none",
-        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none",
-        "shortcut": "no",
-        "run": "no"
-      }
-    ],
-    "category": "Documents",
-    "check": "false"
   }
 ]
 ' | ConvertFrom-Json
-$itt.database.locales = '{
+$sync.database.locales = '{
   "Controls": {
     "ar": {
         "Welcome": "توفر هذه الأداة تسهيلات كبيرة في عملية تثبيت البرامج وتحسين الاداء. انضم إلينا لتساهم في تطويرها وجعلها أكثر اكتمالًا",
@@ -6362,10 +6050,9 @@ $itt.database.locales = '{
         "sourcecode":"الشفرة المصدرية",
         "devby":"صنع بـ ♥ من قبل عماد عادل",
         "exit":"هل أنت متأكد من رغبتك في إغلاق البرنامج؟ إذا كان هناك أي تثبيتات، فسيتم إيقافها.",
-        "watchdemo": "مرحبا بك",
+        "watchdemo": "شاهد التجربة",
         "happybirthday": "!عيد ميلاد سعيد عماد",
-        "myplaylist": "انه عيد ميلادي و قائمة الموسيقى الخاصة بي",
-        "Subtitle": "أداة اي تي تي مفتوحة المصدر يهدف هذا المشروع إلى تسهيل عملية تصطيب برامج الويندوز دفعة واحدة وتحسين أداء النظام. سواء كنت خبيرًا في البرمجة أو مستخدمًا يبحث عن تحسين تجربته على الويندوز، نرحب بمساهماتك, نتطلع لرؤية مساهماتكم وأفكاركم لجعل هذا المشروع أفضل لكل مستخدمي ويندوز. شكرًا لانضمامك إلينا"
+        "myplaylist": "انه عيد ميلادي و قائمة الموسيقى الخاصة بي"
     },
     "en": {
         "Welcome": "Save time by installing multiple programs at once and boost your Windows performance. Join us in improving the tool and make it great.",
@@ -6417,10 +6104,9 @@ $itt.database.locales = '{
         "sourcecode":"Source Code",
         "devby":"Made with ♥ by Emad Adel",
         "exit":"Are you sure you want to close the program? If there are any installations, they will be terminated.",
-        "watchdemo": "Welcome",
+        "watchdemo": "Watch demo",
         "happybirthday": "Happy Birthday to me!",
-        "myplaylist": "It''s my Birthday and My Playlist ♪",
-        "Subtitle": "ITT tool aims to simplify the process of installing Windows programs all at once and improving system performance. Whether you are an expert in programming or a user looking to enhance your Windows experience, we welcome your contributions. We look forward to seeing your contributions and ideas to make this project better for all Windows users. Thank you for joining us."
+        "myplaylist": "It''s my Birthday and My Playlist ♪"
     },
     "fr": {
         "Welcome": "Économisez du temps en installant plusieurs programmes à la fois et améliorez les performances de votre Windows. Rejoignez-nous pour améliorer l''outil et le rendre excellent.",
@@ -6471,10 +6157,9 @@ $itt.database.locales = '{
         "sourcecode": "Code Source",
         "devby": "Créé avec ♥ par Emad Adel",
         "exit": "Êtes-vous sûr de vouloir fermer le programme ? Toute installation en cours sera interrompue.",
-        "watchdemo": "Bienvenue",
+        "watchdemo": "Regardez la Démo",
         "happybirthday": "Joyeux Anniversaire Emad !",
-        "myplaylist": "Doğum Günüm ve Playlistim ♪",
-        "Subtitle": "ITT vise à simplifier le processus d''installation des programmes Windows en une seule fois et à améliorer les performances du système. Que vous soyez un expert en programmation ou un utilisateur cherchant à améliorer votre expérience Windows, nous accueillons vos contributions. Nous attendons avec impatience vos contributions et idées pour améliorer ce projet pour tous les utilisateurs de Windows. Merci de nous avoir rejoints."
+        "myplaylist": "Doğum Günüm ve Playlistim ♪"
     },
     "tr": {
         "Welcome": "Birden fazla programı tek seferde kurarak zaman kazanın ve Windows performansınızı artırın. Aracı iyileştirmemize katılın ve harika yapalım.",
@@ -6525,10 +6210,9 @@ $itt.database.locales = '{
         "sourcecode": "Kaynak Kod",
         "devby": "Emad Adel tarafından ♥ ile yapıldı",
         "exit": "Programı kapatmak istediğinizden emin misiniz? Eğer herhangi bir yükleme işlemi varsa, kesilecektir.",
-        "watchdemo": "Hoş Geldiniz",
+        "watchdemo": "Demo''yu İzleyin",
         "happybirthday": "Günün Kutlu Olsun Emad!",
-        "myplaylist": "Bugün Benim Doğum Günüm ve Benim Çalma Listem ♪",
-        "Subtitle": "ITT aracı, Windows programlarını tek seferde yükleme sürecini basitleştirmeyi ve sistem performansını artırmayı hedefliyor. İster programlama konusunda uzman olun ister Windows deneyiminizi geliştirmek isteyen bir kullanıcı olun, katkılarınızı memnuniyetle karşılıyoruz. Bu projeyi tüm Windows kullanıcıları için daha iyi hale getirmek adına katkılarınızı ve fikirlerinizi görmek için sabırsızlanıyoruz. Bize katıldığınız için teşekkür ederiz."
+        "myplaylist": "这是我的生日和我的播放列表 ♪"
     },
     "zh": {
         "Welcome": "通过一次安装多个程序节省时间并提升您的Windows性能。加入我们，改进工具，使其更加优秀。",
@@ -6579,10 +6263,9 @@ $itt.database.locales = '{
         "sourcecode": "源代码",
         "devby": "由 Emad Adel ♥ 制作",
         "exit": "您确定要关闭程序吗？如果有任何安装正在进行，它们将被终止。",
-        "watchdemo": "欢迎",
+        "watchdemo": "观看演示",
         "happybirthday": "生日快乐 Emad!",
-        "myplaylist": "这是我的生日和我的播放列表 ♪",
-        "Subtitle": "开源的ITT工具旨在简化一次性安装Windows程序的过程，并提高系统性能。无论您是编程专家还是希望提升Windows体验的用户，我们都欢迎您的贡献。我们期待看到您的贡献和想法，以使该项目为所有Windows用户提供更好的服务。感谢您的加入。"
+        "myplaylist": "这是我的生日和我的播放列表 ♪"
     },
     "ko": {
         "Welcome": "여러 프로그램을 한 번에 설치하여 시간을 절약하고 Windows 성능을 향상시킵니다. 도구를 개선하고 우리와 함께 훌륭하게 만들어 보세요.",
@@ -6633,10 +6316,9 @@ $itt.database.locales = '{
         "sourcecode": "소스 코드",
         "devby": "Emad Adel 제작 ♥",
         "exit": "프로그램을 종료하시겠습니까? 진행 중인 설치가 있으면 중단됩니다.",
-        "watchdemo": "환영합니다",
+        "watchdemo": "데모 보기",
         "happybirthday": "생일 축하합니다 Emad!",
-        "myplaylist": "제 생일과 제 플레이리스트 ♪",
-        "Subtitle": "오픈 소스 ITT 도구는 Windows 프로그램을 한 번에 설치하고 시스템 성능을 개선하는 과정을 간소화하는 것을 목표로 합니다. 프로그래밍 전문가이든 Windows 경험을 향상시키려는 사용자이든, 여러분의 기여를 환영합니다. 이 프로젝트를 모든 Windows 사용자에게 더 좋게 만들기 위해 여러분의 기여와 아이디어를 기대합니다. 함께 해주셔서 감사합니다."
+        "myplaylist": "제 생일과 제 플레이리스트 ♪"
     },
     "de": {
         "Welcome": "Sparen Sie Zeit, indem Sie mehrere Programme gleichzeitig installieren und verbessern Sie die Leistung Ihres Windows. Helfen Sie uns dabei, das Tool zu verbessern und großartig zu machen.",
@@ -6687,10 +6369,9 @@ $itt.database.locales = '{
         "sourcecode": "Quellcode",
         "devby": "Hergestellt mit ♥ von Emad Adel",
         "exit": "Sind Sie sicher, dass Sie das Programm schließen möchten? Falls Installationen laufen, werden sie abgebrochen.",
-        "watchdemo": "Willkommen",
+        "watchdemo": "Demo ansehen",
         "happybirthday": "Alles Gute zum Geburtstag, Emad!",
-        "myplaylist": "Es ist mein Geburtstag und meine Playlist ♪",
-        "Subtitle": "ITT zielt darauf ab, den Prozess der gleichzeitigen Installation von Windows-Programmen zu vereinfachen und die Systemleistung zu verbessern. Ob Sie ein Experte in der Programmierung oder ein Benutzer sind, der seine Windows-Erfahrung verbessern möchte, wir begrüßen Ihre Beiträge. Wir freuen uns auf Ihre Beiträge und Ideen, um dieses Projekt für alle Windows-Benutzer zu verbessern. Vielen Dank, dass Sie sich uns angeschlossen haben."
+        "myplaylist": "Es ist mein Geburtstag und meine Playlist ♪"
     },
     "ru": {
         "Welcome": "Экономьте время, устанавливая несколько программ одновременно и улучшая производительность Windows. Присоединяйтесь к нам в улучшении этого инструмента и сделайте его лучше.",
@@ -6741,10 +6422,9 @@ $itt.database.locales = '{
         "sourcecode": "Исходный код",
         "devby": "Сделано с ♥ Emad Adel",
         "exit": "Вы уверены, что хотите закрыть программу? Если есть установки, они будут прерваны.",
-        "watchdemo": "Добро пожаловать",
+        "watchdemo": "Посмотреть демонстрацию",
         "happybirthday": "С днем рождения, Emad!",
-        "myplaylist": "Мой день рождения и мой плейлист ♪",
-        "Subtitle": "ITT открытым исходным кодом предназначен для упрощения процесса установки программ Windows одновременно и улучшения производительности системы. Независимо от того, являетесь ли вы экспертом в программировании или пользователем, стремящимся улучшить свой опыт работы с Windows, мы приветствуем ваши предложения. Мы с нетерпением ждем ваших предложений и идей, чтобы сделать этот проект лучше для всех пользователей Windows. Спасибо, что присоединились к нам."
+        "myplaylist": "Мой день рождения и мой плейлист ♪"
     },
     "es": {
     "Welcome": "Ahorra tiempo instalando varios programas a la vez y mejora el rendimiento de tu Windows. Únete a nosotros para mejorar la herramienta y hacerla excelente.",
@@ -6795,18 +6475,14 @@ $itt.database.locales = '{
     "sourcecode": "Código Fuente",
     "devby": "Hecho con ♥ por Emad Adel",
     "exit": "¿Estás seguro de que quieres cerrar el programa? Si hay instalaciones en curso, se cancelarán.",
-    "watchdemo": "Bienvenido",
+    "watchdemo": "Ver Demo",
     "happybirthday": "¡Feliz Cumpleaños Emad!",
-    "myplaylist": "Es mi cumpleaños y mi lista de reproducción ♪",
-    "Subtitle": "ITT de código abierto tiene como objetivo simplificar el proceso de instalación de programas de Windows de una sola vez y mejorar el rendimiento del sistema. Ya seas un experto en programación o un usuario que busca mejorar su experiencia en Windows, damos la bienvenida a tus contribuciones. Esperamos con interés ver tus contribuciones e ideas para mejorar este proyecto para todos los usuarios de Windows. Gracias por unirte a nosotros."
+    "myplaylist": "Es mi cumpleaños y mi lista de reproducción ♪"
     }
-  },
-  "Updates":{
-    "Keyboard": "Enter Key: Performs different actions depending on the current view:\n  - Apps List View: Installs selected applications.\n  - Tweaks List View: Applies selected tweaks.\n\nCtrl + S: Same action as Enter Key:\n  - Apps List View: Installs selected applications.\n  - Tweaks List View: Applies selected tweaks.\n\nCtrl + G: Closes the application.\n\nCtrl + F: Enter search mode. Press ESC to exit.\n\nCtrl + Q: Switch to the ''Apps'' tab.\n\nCtrl + W: Switch to the ''Tweaks'' tab.\n\nCtrl + E: Switch to the ''Settings'' tab."
   }
 }
 ' | ConvertFrom-Json
-$itt.database.OST = '{
+$sync.database.OST = '{
   "Tracks": [
     {
       "name": "Further - Far cry-3",
@@ -6817,12 +6493,24 @@ $itt.database.OST = '{
       "url": "https://dl.vgmdownloads.com/soundtracks/assassin-s-creed-3/jgevpclfcr/01.%20Assassin%27s%20Creed%20III%20Main%20Theme.mp3"
     },
     {
+      "name": "Mirage Theme",
+      "url": "https://dl.vgmdownloads.com/soundtracks/assassins-creed-mirage-original-game-soundtrack-2023/axtwruyduh/01.%20Mirage%20Theme.mp3"
+    },
+    {
       "name": "Ezio''s Family - Møme Remix",
       "url": "https://vgmsite.com/soundtracks/assassins-creed-ezios-family-m-me-remix-2022/qdxeshajdz/01.%20Ezio%27s%20Family%20%28M%C3%B8me%20Remix%29.mp3"
     },
     {
       "name": "Grand Theft Auto 4 Theme Song",
       "url": "https://archive.org/download/GrandTheftAuto4ThemeSong_201904/Grand%20Theft%20Auto%204%20Theme%20Song.mp3"
+    },
+    {
+      "name": "Assassin Creed II - Ezio''s Family",
+      "url": "https://epsilon.vgmsite.com/soundtracks/assassin-s-creed-2/jlrprchapt/1-03%20Ezio%27s%20Family.mp3"
+    },
+    {
+      "name": "Assassin Creed II - Earth",
+      "url": "https://epsilon.vgmsite.com/soundtracks/assassin-s-creed-2/nkantwuktr/1-01%20Earth.mp3"
     },
     {
       "name": "Mass Effect-3 - End of Cycle",
@@ -6839,6 +6527,14 @@ $itt.database.OST = '{
     {
       "name": "Hans Zimmer - Time",
       "url": "https://archive.org/download/InceptionSoundtrackHD12TimeHansZimmer/Inception%20Soundtrack%20HD%20-%20%2312%20Time%20%28Hans%20Zimmer%29.mp3"
+    },
+    {
+      "name": "Little Nightmares - Main Theme",
+      "url": "https://epsilon.vgmsite.com/soundtracks/little-nightmares-ii-original-soundtrack/bplsnxvnzm/01.%20Main%20Theme.mp3"
+    },
+    {
+      "name": "Assassin''s creed III - Trouble in Town",
+      "url": "https://dl.vgmdownloads.com/soundtracks/assassin-s-creed-3/qhigmkctpn/09.%20Trouble%20in%20Town.mp3"
     },
     {
       "name": "Assassin''s creed - Legend of the Eagle Bearer",
@@ -6873,6 +6569,10 @@ $itt.database.OST = '{
       "url": "https://archive.org/download/max-richter-memoryhouse/09%20November.mp3"
     },
     {
+      "name": "Zack Hemsey - The Way",
+      "url": "https://archive.org/download/ZackHemseyTheWay_201704/Zack%20Hemsey%20-%20The%20Way.mp3"
+    },
+    {
       "name": "Cyberpunk - Rebel Path",
       "url": "https://eta.vgmtreasurechest.com/soundtracks/cyberpunk-2077-original-game-score/zalnnwrhwh/1-03%20The%20Rebel%20Path.mp3"
     },
@@ -6881,12 +6581,12 @@ $itt.database.OST = '{
       "url": "https://archive.org/download/tvtunes_32383/HBOs%20The%20Leftovers%20Piano%20Theme%20-%20Max%20Richter.mp3"
     },
     {
-      "name": "Hans Zimmer - Dream is Collapsing",
-      "url": "https://archive.org/download/InceptionSoundtrackDreamIsCollapsingHansZimmer/Inception%20Soundtrack-Dream%20is%20Collapsing%20%28Hans%20Zimmer%29.mp3"
+      "name": "Max Richter - On the Nature of Daylight",
+      "url": "https://archive.org/download/maxrichteronthenatureofdaylight_201911/Max%20Richter%20-%20On%20the%20Nature%20of%20Daylight.mp3"
     },
     {
-      "name": "Assassin Creed II - Ezio''s Family",
-      "url": "https://epsilon.vgmsite.com/soundtracks/assassin-s-creed-2/jlrprchapt/1-03%20Ezio%27s%20Family.mp3"
+      "name": "Hans Zimmer - Dream is Collapsing",
+      "url": "https://archive.org/download/InceptionSoundtrackDreamIsCollapsingHansZimmer/Inception%20Soundtrack-Dream%20is%20Collapsing%20%28Hans%20Zimmer%29.mp3"
     }
   ],
   "Favorite": [
@@ -6937,7 +6637,7 @@ $itt.database.OST = '{
   ]
 }
 ' | ConvertFrom-Json
-$itt.database.Quotes = '{
+$sync.database.Quotes = '{
   "Q": [
     "إما تموت بطلا، أو تعيش طويلاً حتى ترى نفسك اصبحت الشرير",
     "بعض الرجال يريدون فقط مشاهدة العالم يحترق",
@@ -7040,7 +6740,7 @@ $itt.database.Quotes = '{
   ]
 }
 ' | ConvertFrom-Json
-$itt.database.Settings = '[
+$sync.database.Settings = '[
   {
       "Content": "Show file extensions",
       "Name":"ToggleShowExt",
@@ -7073,7 +6773,7 @@ $itt.database.Settings = '[
     "category": "Accessibility"
   }
 ]' | ConvertFrom-Json
-$itt.database.Tweaks = '[
+$sync.database.Tweaks = '[
   {
     "Name": "System File Checker",
     "Description": "sfc /scannow Use the System File Checker tool to repair missing or corrupted system files",
@@ -7363,18 +7063,34 @@ $itt.database.Tweaks = '[
         "Type": "DWord",
         "Value": "1",
         "defaultValue": "0"
-      },
-      {
-        "Path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\CloudContent",
-        "Name": "DisableWindowsConsumerFeatures",
-        "Type": "DWord",
-        "Value": "1",
-        "defaultValue": "0"
       }
     ],
     "InvokeCommand": [
       "Disable-MMAgent -MemoryCompression | Out-Null",
       "\r\n        takeown /f C:\\Windows\\System32\\GameBarPresenceWriter.exe\r\n\r\n        takeown /f C:\\Windows\\System32\\GameBarPresenceWriter.proxy.dll\r\n\r\n        takeown /f C:\\Windows\\System32\\Windows.Gaming.UI.GameBar.dll\r\n\r\n        Start-Sleep -Seconds 1\r\n\r\n\r\n        icacls C:\\Windows\\System32\\GameBarPresenceWriter.exe /grant administrators:F\r\n\r\n        icacls C:\\Windows\\System32\\GameBarPresenceWriter.proxy.dll /grant administrators:F\r\n\r\n        icacls C:\\Windows\\System32\\Windows.Gaming.UI.GameBar.dll /grant administrators:F\r\n\r\n        Start-Sleep -Seconds 1\r\n\r\n\r\n        Rename-Item C:\\Windows\\System32\\GameBarPresenceWriter.exe -NewName GameBarPresenceWriter.exe_backup\r\n\r\n        Rename-Item C:\\Windows\\System32\\GameBarPresenceWriter.proxy.dll -NewName GameBarPresenceWriter.proxy.dll_backup\r\n\r\n        Rename-Item C:\\Windows\\System32\\Windows.Gaming.UI.GameBar.dll -NewName Windows.Gaming.UI.GameBar.dll_backup\r\n\r\n      "
+    ],
+    "UndoCommand": [
+      ""
+    ]
+  },
+  {
+    "Name": "Disable Data Collection",
+    "Description": "Disable Data Collection",
+    "Check": "false",
+    "Category": "Privacy",
+    "Type": "Registry",
+    "Refresh": "false",
+    "Modify": [
+      {
+        "Path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\DataCollection",
+        "Name": "AllowTelemetry",
+        "Type": "DWord",
+        "Value": "0",
+        "defaultValue": "1"
+      }
+    ],
+    "InvokeCommand": [
+      ""
     ],
     "UndoCommand": [
       ""
@@ -8196,7 +7912,6 @@ $itt.database.Tweaks = '[
     "Name": "Disable Homegroup",
     "Description": "Disables HomeGroup  HomeGroup is a passwordprotected home networking service that lets you share your stuff with other PCs that are currently running and connected to your network",
     "Check": "false",
-    "Category": "Privacy",
     "Type": "service",
     "Refresh": "false",
     "Service": [
@@ -8216,7 +7931,6 @@ $itt.database.Tweaks = '[
     "Name": "Remove Home and Gallery from explorer",
     "Description": "Removes the Home and Gallery from explorer and sets This PC as default",
     "Check": "false",
-    "Category": "Performance",
     "Type": "Registry",
     "Refresh": "false",
     "Modify": [
@@ -8244,482 +7958,9 @@ $itt.database.Tweaks = '[
     "UndoCommand": [
       ""
     ]
-  },
-  {
-    "Name": "Disable all Privacy Settings",
-    "Description": "Disable Wifi-Sense & Activity History & ActivityFeed Telemetry & DataCollection",
-    "Check": "false",
-    "Category": "Privacy",
-    "Type": "Registry",
-    "refresh": "false",
-    "Modify": [
-      {
-        "Path": "HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\CapabilityAccessManager\\ConsentStore\\location",
-        "Name": "Value",
-        "Type": "String",
-        "Value": "Deny",
-        "defaultValue": "Deny"
-      },
-      {
-        "Path": "HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Sensor\\Overrides\\{BFA794E4-F964-4FDB-90F6-51056BFE4B44}",
-        "Name": "SensorPermissionState",
-        "Type": "DWord",
-        "Value": "0",
-        "defaultValue": "1"
-      },
-      {
-        "Path": "HKLM:\\SYSTEM\\CurrentControlSet\\Services\\lfsvc\\Service\\Configuration",
-        "Name": "Status",
-        "Type": "DWord",
-        "Value": "0",
-        "defaultValue": "1"
-      },
-      {
-        "Path": "HKLM:\\SYSTEM\\Maps",
-        "Name": "AutoUpdateEnabled",
-        "Type": "DWord",
-        "Value": "0",
-        "defaultValue": "1"
-      },
-      {
-        "Path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\System",
-        "Name": "EnableActivityFeed",
-        "Type": "DWord",
-        "Value": "0",
-        "defaultValue": "1"
-      },
-      {
-        "Path": "HKLM:\\Software\\Microsoft\\PolicyManager\\default\\WiFi\\AllowAutoConnectToWiFiSenseHotspots",
-        "Name": "Value",
-        "Type": "DWord",
-        "Value": "0",
-        "defaultValue": "1"
-      },
-      {
-        "Path": "HKLM:\\SOFTWARE\\Microsoft\\Windows\\Windows Error Reporting",
-        "Name": "Disabled",
-        "Type": "DWord",
-        "Value": "1",
-        "defaultValue": "0"
-      },
-      {
-        "Path": "HKCU:\\SOFTWARE\\Microsoft\\Windows\\Windows Error Reporting",
-        "Name": "Disabled",
-        "Type": "DWord",
-        "Value": "1",
-        "defaultValue": "0"
-      },
-      {
-        "Path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\DataCollection",
-        "Name": "AllowTelemetry",
-        "Type": "DWord",
-        "Value": "0",
-        "defaultValue": "1"
-      },
-      {
-        "Path": "HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager",
-        "Name": "ContentDeliveryAllowed",
-        "Value": "0",
-        "Type": "DWord",
-        "defaultValue": "1"
-      },
-      {
-        "Path": "HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager",
-        "Name": "OemPreInstalledAppsEnabled",
-        "Value": "0",
-        "Type": "DWord",
-        "defaultValue": "1"
-      },
-      {
-        "Path": "HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager",
-        "Name": "PreInstalledAppsEnabled",
-        "Value": "0",
-        "Type": "DWord",
-        "defaultValue": "1"
-      },
-      {
-        "Path": "HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager",
-        "Name": "PreInstalledAppsEverEnabled",
-        "Value": "0",
-        "Type": "DWord",
-        "defaultValue": "1"
-      },
-      {
-        "Path": "HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager",
-        "Name": "SilentInstalledAppsEnabled",
-        "Value": "0",
-        "Type": "DWord",
-        "defaultValue": "1"
-      },
-      {
-        "Path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager",
-        "Name": "SubscribedContent-338387Enabled",
-        "Value": "0",
-        "Type": "DWord",
-        "defaultValue": "1"
-      },
-      {
-        "Path": "HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager",
-        "Name": "SubscribedContent-338388Enabled",
-        "Value": "0",
-        "Type": "DWord",
-        "defaultValue": "1"
-      },
-      {
-        "Path": "HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager",
-        "Name": "SubscribedContent-338389Enabled",
-        "Value": "0",
-        "Type": "DWord",
-        "defaultValue": "1"
-      },
-      {
-        "Path": "HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager",
-        "Name": "SubscribedContent-353698Enabled",
-        "Value": "0",
-        "Type": "DWord",
-        "defaultValue": "1"
-      },
-      {
-        "Path": "HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager",
-        "Name": "SystemPaneSuggestionsEnabled",
-        "Value": "0",
-        "Type": "DWord",
-        "defaultValue": "1"
-      },
-      {
-        "Path": "HKCU:\\SOFTWARE\\Microsoft\\Siuf\\Rules",
-        "Name": "NumberOfSIUFInPeriod",
-        "Value": "0",
-        "Type": "DWord",
-        "defaultValue": "0"
-      },
-      {
-        "Path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\DataCollection",
-        "Name": "DoNotShowFeedbackNotifications",
-        "Value": "1",
-        "Type": "DWord",
-        "defaultValue": "0"
-      },
-      {
-        "Path": "HKCU:\\SOFTWARE\\Policies\\Microsoft\\Windows\\CloudContent",
-        "Name": "DisableTailoredExperiencesWithDiagnosticData",
-        "Value": "1",
-        "Type": "DWord",
-        "defaultValue": "0"
-      },
-      {
-        "Path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\AdvertisingInfo",
-        "Name": "DisabledByGroupPolicy",
-        "Value": "1",
-        "Type": "DWord",
-        "defaultValue": "0"
-      },
-      {
-        "Path": "HKLM:\\SOFTWARE\\Microsoft\\Windows\\Windows Error Reporting",
-        "Name": "Disabled",
-        "Value": "1",
-        "Type": "DWord",
-        "defaultValue": "0"
-      },
-      {
-        "Path": "HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\DeliveryOptimization\\Config",
-        "Name": "DODownloadMode",
-        "Value": "1",
-        "Type": "DWord",
-        "defaultValue": "1"
-      },
-      {
-        "Path": "HKLM:\\SYSTEM\\CurrentControlSet\\Control\\Remote Assistance",
-        "Name": "fAllowToGetHelp",
-        "Value": "0",
-        "Type": "DWord",
-        "defaultValue": "1"
-      },
-      {
-        "Path": "HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\OperationStatusManager",
-        "Name": "EnthusiastMode",
-        "Value": "1",
-        "Type": "DWord",
-        "defaultValue": "0"
-      },
-      {
-        "Path": "HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced",
-        "Name": "ShowTaskViewButton",
-        "Value": "0",
-        "Type": "DWord",
-        "defaultValue": "1"
-      },
-      {
-        "Path": "HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\\People",
-        "Name": "PeopleBand",
-        "Value": "0",
-        "Type": "DWord",
-        "defaultValue": "1"
-      },
-      {
-        "Path": "HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced",
-        "Name": "LaunchTo",
-        "Value": "1",
-        "Type": "DWord",
-        "defaultValue": "1"
-      },
-      {
-        "Path": "HKLM:\\SYSTEM\\CurrentControlSet\\Control\\FileSystem",
-        "Name": "LongPathsEnabled",
-        "Value": "1",
-        "Type": "DWord",
-        "defaultValue": "0"
-      },
-      {
-        "_Comment": "Driver searching is a function that should be left in",
-        "Path": "HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\DriverSearching",
-        "Name": "SearchOrderConfig",
-        "Value": "1",
-        "Type": "DWord",
-        "defaultValue": "1"
-      },
-      {
-        "Path": "HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Multimedia\\SystemProfile",
-        "Name": "SystemResponsiveness",
-        "Value": "0",
-        "Type": "DWord",
-        "defaultValue": "1"
-      },
-      {
-        "Path": "HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Multimedia\\SystemProfile",
-        "Name": "NetworkThrottlingIndex",
-        "Value": "4294967295",
-        "Type": "DWord",
-        "defaultValue": "1"
-      },
-      {
-        "Path": "HKCU:\\Control Panel\\Desktop",
-        "Name": "MenuShowDelay",
-        "Value": "1",
-        "Type": "DWord",
-        "defaultValue": "1"
-      },
-      {
-        "Path": "HKCU:\\Control Panel\\Desktop",
-        "Name": "AutoEndTasks",
-        "Value": "1",
-        "Type": "DWord",
-        "defaultValue": "1"
-      },
-      {
-        "Path": "HKLM:\\SYSTEM\\CurrentControlSet\\Control\\Session Manager\\Memory Management",
-        "Name": "ClearPageFileAtShutdown",
-        "Value": "0",
-        "Type": "DWord",
-        "defaultValue": "0"
-      },
-      {
-        "Path": "HKLM:\\SYSTEM\\ControlSet001\\Services\\Ndu",
-        "Name": "Start",
-        "Value": "2",
-        "Type": "DWord",
-        "defaultValue": "1"
-      },
-      {
-        "Path": "HKCU:\\Control Panel\\Mouse",
-        "Name": "MouseHoverTime",
-        "Value": "400",
-        "Type": "String",
-        "defaultValue": "400"
-      },
-      {
-        "Path": "HKLM:\\SYSTEM\\CurrentControlSet\\Services\\LanmanServer\\Parameters",
-        "Name": "IRPStackSize",
-        "Value": "30",
-        "Type": "DWord",
-        "defaultValue": "20"
-      },
-      {
-        "Path": "HKCU:\\SOFTWARE\\Policies\\Microsoft\\Windows\\Windows Feeds",
-        "Name": "EnableFeeds",
-        "Value": "0",
-        "Type": "DWord",
-        "defaultValue": "1"
-      },
-      {
-        "Path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Feeds",
-        "Name": "ShellFeedsTaskbarViewMode",
-        "Value": "2",
-        "Type": "DWord",
-        "defaultValue": "1"
-      },
-      {
-        "Path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer",
-        "Name": "HideSCAMeetNow",
-        "Value": "1",
-        "Type": "DWord",
-        "defaultValue": "1"
-      },
-      {
-        "Path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\UserProfileEngagement",
-        "Name": "ScoobeSystemSettingEnabled",
-        "Value": "0",
-        "Type": "DWord",
-        "defaultValue": "1"
-      }
-    ],
-    "InvokeCommand": [
-      "Disable-ScheduledTask -TaskName ''Microsoft\\Windows\\Application Experience\\Microsoft Compatibility Appraiser'' | Out-Null; Disable-ScheduledTask -TaskName ''Microsoft\\Windows\\Application Experience\\ProgramDataUpdater'' | Out-Null; Disable-ScheduledTask -TaskName ''Microsoft\\Windows\\Autochk\\Proxy'' | Out-Null; Disable-ScheduledTask -TaskName ''Microsoft\\Windows\\Customer Experience Improvement Program\\Consolidator'' | Out-Null; Disable-ScheduledTask -TaskName ''Microsoft\\Windows\\Customer Experience Improvement Program\\UsbCeip'' | Out-Null; Disable-ScheduledTask -TaskName ''Microsoft\\Windows\\DiskDiagnostic\\Microsoft-Windows-DiskDiagnosticDataCollector'' | Out-Null"
-    ],
-    "UndoCommand": [
-      ""
-    ]
-  },
-  {
-    "Name": "Disable Autoplay and Autorun",
-    "Description": "Disabling autoplay in Windows prevents the automatic launch of media or applications when a removable device, such as a USB drive or CD, is connected to the computer. Autoplay is a feature that, by default, prompts the user to choose an action whenever a new media device is inserted, such as playing a video or opening a file",
-    "Check": "false",
-    "Category": "Protection",
-    "Type": "Registry",
-    "refresh": "false",
-    "Modify": [
-      {
-        "Path": "HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\AutoplayHandlers",
-        "Name": "DisableAutoplay",
-        "Type": "DWord",
-        "Value": "1",
-        "defaultValue": "0"
-      },
-      {
-        "Path": "HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer",
-        "Name": "NoDriveTypeAutoRun",
-        "Type": "DWord",
-        "Value": "255",
-        "defaultValue": "255"
-      }
-    ],
-    "InvokeCommand": [
-      ""
-    ],
-    "UndoCommand": [
-      ""
-    ]
-  },
-  {
-    "Name": "Disable SMB Server",
-    "Description": "SMB Server enables file and printer sharing over a network, allowing access to resources on remote computers as if they were local.",
-    "Check": "false",
-    "Category": "Protection",
-    "Type": "command",
-    "refresh": "false",
-    "InvokeCommand": [
-      "Set-SmbServerConfiguration -EnableSMB1Protocol $false -Force; Set-SmbServerConfiguration -EnableSMB2Protocol $false -Force"
-    ],
-    "UndoCommand": [
-      ""
-    ]
-  },
-  {
-    "Name": "Set current network profile to public",
-    "Description": "Deny file sharing, device discovery, etc.",
-    "Check": "false",
-    "Category": "Protection",
-    "Type": "command",
-    "refresh": "false",
-    "InvokeCommand": [
-      "Set-NetConnectionProfile -NetworkCategory Public"
-    ],
-    "UndoCommand": [
-      ""
-    ]
-  },
-  {
-    "Name": "Enable F8 boot menu options",
-    "Description": "Enable F8 boot menu options",
-    "Check": "false",
-    "Category": "Other",
-    "Type": "command",
-    "refresh": "false",
-    "InvokeCommand": [
-      "bcdedit /set bootmenupolicy Standard | Out-Null"
-    ],
-    "UndoCommand": [
-      ""
-    ]
-  },
-  {
-    "Name": "Disable display and sleep mode timeouts",
-    "Description": "If you use your device frequently, disable this.",
-    "Check": "false",
-    "Category": "Other",
-    "Type": "command",
-    "refresh": "false",
-    "InvokeCommand": [
-      "powercfg /X monitor-timeout-ac 0",
-      "powercfg /X monitor-timeout-dc 0",
-      "powercfg /X standby-timeout-ac 0",
-      "powercfg /X standby-timeout-dc 0"
-    ],
-    "UndoCommand": [
-      ""
-    ]
-  },
-  {
-    "Name": "Set Wallpaper desktop Quality to 100%",
-    "Description": "It''s Microsoft, what should I say!",
-    "Check": "false",
-    "Category": "Personalization",
-    "Type": "Registry",
-    "refresh": "false",
-    "Modify": [
-      {
-        "Path": "HKLM:\\System\\CurrentControlSet\\Control\\CrashControl",
-        "Name": "DisplayParameters",
-        "Type": "DWord",
-        "Value": "1",
-        "defaultValue": "0"
-      }
-    ],
-    "InvokeCommand": [
-      ""
-    ],
-    "UndoCommand": [
-      ""
-    ]
-  },
-  {
-    "Name": "Disabling Windows Transparency",
-    "Description": "Windows transparency has a significant impact on performance, disable it if you want performance",
-    "Check": "false",
-    "Category": "Performance",
-    "Type": "Registry",
-    "refresh": "false",
-    "Modify": [
-      {
-        "Path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize",
-        "Name": "EnableTransparency",
-        "Type": "DWord",
-        "Value": "0",
-        "defaultValue": "1"
-      }
-    ],
-    "InvokeCommand": [
-      ""
-    ],
-    "UndoCommand": [
-      ""
-    ]
-  },
-  {
-    "Name": "Disable scheduled defragmentation task",
-    "Description": "Defragmentation in Windows optimizes disk performance by reorganizing fragmented data, improving access times and system efficiency.",
-    "Check": "false",
-    "Category": "Performance",
-    "Type": "command",
-    "refresh": "false",
-    "InvokeCommand": [
-      "Disable-ScheduledTask -TaskName ''Microsoft\\Windows\\Defrag\\ScheduledDefrag'' | Out-Null"
-    ],
-    "UndoCommand": [
-      ""
-    ]
   }
-]' | ConvertFrom-Json
+]
+' | ConvertFrom-Json
 #===========================================================================
 #endregion End Database /APPS/TWEEAKS/Quotes/OST/Settings
 #===========================================================================
@@ -8748,37 +7989,7 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
             Storyboard.TargetProperty="Opacity"
             From="0" To="1" Duration="0:0:1.2" />
     </Storyboard>
-
-
-    <!-- Define the FadeOut and FadeIn animations with looping -->
-    <Storyboard x:Key="FadeOutInLoopStoryboard">
-        <!-- Fade Out Animation -->
-        <DoubleAnimation
-            Storyboard.TargetProperty="Opacity"
-            From="1.0"
-            To="0.0"
-            Duration="0:0:1" />
-        <!-- Fade In Animation -->
-        <DoubleAnimation
-            Storyboard.TargetProperty="Opacity"
-            From="0.0"
-            To="1.0"
-            Duration="0:0:1"
-            BeginTime="0:0:1" />
-    </Storyboard>
-
 <!--Fade in-->
-
-
-<!--Image Style-->
-<Style TargetType="Image">
-    <Style.Triggers>
-        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
-            <BeginStoryboard Storyboard="{StaticResource FadeIn}" />
-        </EventTrigger>
-    </Style.Triggers>
-</Style>
-<!--End Image Style-->
 
 <!--Button Style-->
       <Style TargetType="Button">
@@ -8939,6 +8150,8 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
     <Style TargetType="Menu">
         <Setter Property="Background" Value="#FFFFFF"/>
         <Setter Property="Foreground" Value="#000000"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontFamily" Value="Segoe UI"/>
         <Setter Property="Margin" Value="5"/>
         <Setter Property="Template">
             <Setter.Value>
@@ -8954,20 +8167,25 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
         </Setter>
         <Style.Triggers>
             <EventTrigger RoutedEvent="FrameworkElement.Loaded">
-                <!-- <BeginStoryboard Storyboard="{StaticResource FadeIn}" /> -->
+                <BeginStoryboard Storyboard="{StaticResource FadeIn}" />
             </EventTrigger>
         </Style.Triggers>
     </Style>
 
     <Style TargetType="MenuItem">
-        <Setter Property="Background" Value="{DynamicResource FGColor}"/>
+        <Setter Property="Background" Value="Transparent"/>
         <Setter Property="Foreground" Value="#000000"/>
+        <Setter Property="BorderBrush" Value="#000000"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontFamily" Value="Segoe UI"/>
         <Setter Property="Margin" Value="1"/>
         <Setter Property="Padding" Value="0"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="MenuItem">
                     <Border x:Name="Border"
+                            Background="{TemplateBinding Background}" 
+                            BorderBrush="{TemplateBinding BorderBrush}"
                             HorizontalAlignment="Left"
                             Padding="5"
                             CornerRadius="2">
@@ -8987,7 +8205,7 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
                             
                             <!-- Text -->
                             <TextBlock x:Name="TextBlock"
-                                    Grid.Column="1"
+                                    Grid.Column="1" 
                                     Text="{TemplateBinding Header}"
                                     Foreground="{DynamicResource DefaultTextColor}"/>
                             
@@ -9008,9 +8226,9 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
                                 AllowsTransparency="True" 
                                 Focusable="False"
                                 PopupAnimation="Fade">
-                                <Border Background="{TemplateBinding Background}" 
+                                <Border Background="{DynamicResource FGColor}" 
                                         BorderBrush="{DynamicResource BorderBrush}" 
-                                        BorderThickness="2"
+                                        BorderThickness="0.8"
                                         CornerRadius="5">
                                     <StackPanel IsItemsHost="True" 
                                                 KeyboardNavigation.DirectionalNavigation="Cycle"/>
@@ -9332,7 +8550,7 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
                         <SolidColorBrush x:Key="ButtonBorder" Color="#525FE1"/>
                         <SolidColorBrush x:Key="Label" Color="LightBlue"/>
                         <SolidColorBrush x:Key="checkboxBG" Color="Transparent"/>
-                        <SolidColorBrush x:Key="highlight" Color="#098fd4"/>
+                        <SolidColorBrush x:Key="highlight" Color="#27A7E7"/>
                         <SolidColorBrush x:Key="ToggleSwitchBG" Color="#282828"/>
                         <SolidColorBrush x:Key="ToggleSwitchFG" Color="#282828"/>
                         <SolidColorBrush x:Key="ToggleSwitchEnable" Color="white"/>
@@ -9344,26 +8562,26 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
         <!--Light mode -->
         <!--Dark mode-->
                 <ResourceDictionary x:Key="Dark">
-                        <SolidColorBrush x:Key="BGColor" Color="#2b2d31"/>
-                        <SolidColorBrush x:Key="FGColor" Color="#3c3f44"/>
-                        <SolidColorBrush x:Key="BGButtonColor" Color="#098fd4" />
+                        <SolidColorBrush x:Key="BGColor" Color="#121212"/>
+                        <SolidColorBrush x:Key="FGColor" Color="#272727"/>
+                        <SolidColorBrush x:Key="BGButtonColor" Color="#0189df" />
                         <SolidColorBrush x:Key="FGButtonColor" Color="White" />
-                        <SolidColorBrush x:Key="ButtonHighlightColor" Color="#066ca1" />
+                        <SolidColorBrush x:Key="ButtonHighlightColor" Color="#FF3C6EB8" />
                         <SolidColorBrush x:Key="FGTextColor" Color="WhiteSmoke" />
                         <SolidColorBrush x:Key="DefaultTextColor" Color="White"/>
                         <SolidColorBrush x:Key="DefaultTextColor2" Color="#bbbbbb"/>
-                        <SolidColorBrush x:Key="BorderBrush" Color="#2b2d31" />
+                        <SolidColorBrush x:Key="BorderBrush" Color="WhiteSmoke" />
                         <SolidColorBrush x:Key="ButtonBorder" Color="#1DB954"/>
                         <SolidColorBrush x:Key="Label" Color="#3f3f3f"/>
                         <SolidColorBrush x:Key="checkboxBG" Color="Transparent"/>
-                        <SolidColorBrush x:Key="highlight" Color="#098fd4"/>
+                        <SolidColorBrush x:Key="highlight" Color="#0189df"/>
                         <SolidColorBrush x:Key="ToggleSwitchBG" Color="#282828"/>
                         <SolidColorBrush x:Key="ToggleSwitchFG" Color="#282828"/>
                         <SolidColorBrush x:Key="ToggleSwitchEnable" Color="white"/>
                         <SolidColorBrush x:Key="ToggleSwitchDisable" Color="#c9c9c7"/>
                         <SolidColorBrush x:Key="ToggleSwitchBorderBrush" Color="#c9c9c7"/>
-                        <Color x:Key="CardLeft">#3c3f44</Color> 
-                        <Color x:Key="Card2Right">#2b2d31</Color>
+                        <Color x:Key="CardLeft">#272727</Color> 
+                        <Color x:Key="Card2Right">#272727</Color>
                 </ResourceDictionary>
         <!--Dark mode -->
 <!--End Theme styles colors-->
@@ -9389,10 +8607,16 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
                                   
     <MenuItem IsEnabled="False" ToolTip="Emad Adel">
         <MenuItem.Icon>
-            <Image Source="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/logo2.png" Width="70" Height="Auto" Margin="5,5,0,0"/>
+            <!--Logo-->
+            <Ellipse Name="logo" Margin="5,5,0,0" Width="80" Height="80">
+                <Ellipse.Fill>
+                    <ImageBrush ImageSource="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/logo.png" />
+                </Ellipse.Fill>
+            </Ellipse>
+            <!--End Logo-->
         </MenuItem.Icon>
+
     </MenuItem>
-    
 
     <MenuItem Header="{Binding management}" FontFamily="arial" FontSize="13"  Margin="10,0,0,0" BorderBrush="Transparent" BorderThickness="0" VerticalAlignment="Center" HorizontalAlignment="Left">
         <MenuItem.Icon>
@@ -9545,7 +8769,6 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
             </MenuItem.Icon>
         </MenuItem>
 
-
         <MenuItem Header="{Binding extensions}">
             <MenuItem.Icon>
                 <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
@@ -9556,17 +8779,7 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
             <MenuItem Name="neat" Header="Neat Download Manager"/>
         </MenuItem>
 
-        <MenuItem Name="sordum" Header="Sordum tools">
-            <MenuItem.Icon>
-                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
-            </MenuItem.Icon>
-        </MenuItem>
-
-        <MenuItem Name="majorgeeks" Header="Major Geeks">
-            <MenuItem.Icon>
-                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
-            </MenuItem.Icon>
-        </MenuItem>
+        
         
     </MenuItem>
 
@@ -9665,18 +8878,18 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
     <!--Header Section-->
 
         <!--TabControl-->
-    <TabControl Name="taps" TabStripPlacement="Left" Grid.Row="1"  BorderBrush="Transparent" Height="Auto" Width="Auto" Foreground="White" Background="Transparent">
-            <TabItem Name="apps" Header="{Binding apps}" BorderBrush="{x:Null}" >
+    <TabControl Name="taps" TabStripPlacement="Left" Grid.Row="1"  BorderBrush="Transparent" Foreground="White" Background="Transparent">
+            <TabItem Name="apps" Header="{Binding apps}" BorderBrush="{x:Null}">
                 <TabItem.HeaderTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="" FontFamily="Segoe MDL2 Assets" FontSize="18" Margin="0,0,5,0"/>
-                            <TextBlock Text="{Binding}"  FontSize="15"  Margin="0,0,5,0"/>
+                            <TextBlock Text="{Binding}" FontFamily="Sego UI" FontSize="15"  Margin="0,0,5,0"/>
                         </StackPanel>
                     </DataTemplate>
             </TabItem.HeaderTemplate>
                 <TabItem.Content>
-                    <ListView Name="appslist" Margin="0" ScrollViewer.VerticalScrollBarVisibility="Auto" Width="Auto" Height="Auto" BorderBrush="{x:Null}" Background="{x:Null}" >
+                    <ListView Name="appslist"   Margin="0" ScrollViewer.VerticalScrollBarVisibility="Auto" BorderBrush="{x:Null}" Background="{x:Null}" >
                         
         <StackPanel Orientation="Vertical" Width="auto" Margin="10">
             <StackPanel Orientation="Horizontal">
@@ -10592,7 +9805,7 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
 
         <StackPanel Orientation="Vertical" Width="auto" Margin="10">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="VSCode" Tag="Development" IsChecked="false"   ToolTip="Install it again to update" FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <CheckBox Content="Visual Studio Code" Tag="Development" IsChecked="false"   ToolTip="Install it again to update" FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content="Development"/>
             </StackPanel>
                 <TextBlock Width="555" Background="Transparent" Margin="8" Foreground="{DynamicResource DefaultTextColor2}"  FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="Visual Studio Code is a free source.code editor developed by Microsoft for Windows. Linux. and macOS. It includes support for debugging. embedded Git control. syntax highlighting. intelligent code completion. snippets. and code refactoring."/>
@@ -12062,134 +11275,6 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
                 <TextBlock Width="555" Background="Transparent" Margin="8" Foreground="{DynamicResource DefaultTextColor2}"  FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="An open source crossplatform alternative to AirDrop"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Width="auto" Margin="10">
-            <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Fork" Tag="Development" IsChecked="false"   ToolTip="Install it again to update" FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content="Development"/>
-            </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="8" Foreground="{DynamicResource DefaultTextColor2}"  FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="Fork  a fast and friendly git client"/>
-        </StackPanel>
-
-        <StackPanel Orientation="Vertical" Width="auto" Margin="10">
-            <StackPanel Orientation="Horizontal">
-                <CheckBox Content="PulsarEdit" Tag="Development" IsChecked="false"   ToolTip="Install it again to update" FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content="Development"/>
-            </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="8" Foreground="{DynamicResource DefaultTextColor2}"  FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="A Communityled HyperHackable Text Editor"/>
-        </StackPanel>
-
-        <StackPanel Orientation="Vertical" Width="auto" Margin="10">
-            <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Shotcut" Tag="Media Tools" IsChecked="false"   ToolTip="Install it again to update" FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content="Media Tools"/>
-            </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="8" Foreground="{DynamicResource DefaultTextColor2}"  FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="Shotcut is a free open source crossplatform video editor"/>
-        </StackPanel>
-
-        <StackPanel Orientation="Vertical" Width="auto" Margin="10">
-            <StackPanel Orientation="Horizontal">
-                <CheckBox Content="PaleMoon" Tag="Web Browsers" IsChecked="false"   ToolTip="Install it again to update" FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content="Web Browsers"/>
-            </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="8" Foreground="{DynamicResource DefaultTextColor2}"  FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="Pale Moon is an Open Source Goannabased web browser available for Microsoft Windows and Linux with other operating systems in development focusing on efficiency and ease of use"/>
-        </StackPanel>
-
-        <StackPanel Orientation="Vertical" Width="auto" Margin="10">
-            <StackPanel Orientation="Horizontal">
-                <CheckBox Content="JoyToKey" Tag="Gaming" IsChecked="false"   ToolTip="Install it again to update" FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content="Gaming"/>
-            </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="8" Foreground="{DynamicResource DefaultTextColor2}"  FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="enables PC game controllers to emulate the keyboard and mouse input"/>
-        </StackPanel>
-
-        <StackPanel Orientation="Vertical" Width="auto" Margin="10">
-            <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Windows Auto Dark Mode" Tag="Utilities" IsChecked="false"   ToolTip="Install it again to update" FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content="Utilities"/>
-            </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="8" Foreground="{DynamicResource DefaultTextColor2}"  FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="Automatically switches between the dark and light theme of Windows 10 and Windows 11"/>
-        </StackPanel>
-
-        <StackPanel Orientation="Vertical" Width="auto" Margin="10">
-            <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Windows Firewall Control" Tag="Utilities" IsChecked="false"   ToolTip="Install it again to update" FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content="Utilities"/>
-            </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="8" Foreground="{DynamicResource DefaultTextColor2}"  FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="Windows Firewall Control is a powerful tool which extends the functionality of Windows Firewall and provides new extra features which makes Windows Firewall better"/>
-        </StackPanel>
-
-        <StackPanel Orientation="Vertical" Width="auto" Margin="10">
-            <StackPanel Orientation="Horizontal">
-                <CheckBox Content="TightVNC" Tag="Utilities" IsChecked="false"   ToolTip="Install it again to update" FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content="Utilities"/>
-            </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="8" Foreground="{DynamicResource DefaultTextColor2}"  FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="TightVNC is a free and Open Source remote desktop software that lets you access and control a computer over the network With its intuitive interface you can interact with the remote screen as if you were sitting in front of it You can open files launch applications and perform other actions on the remote desktop almost as if you were physically there"/>
-        </StackPanel>
-
-        <StackPanel Orientation="Vertical" Width="auto" Margin="10">
-            <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Python Version Manager" Tag="Development" IsChecked="false"   ToolTip="Install it again to update" FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content="Development"/>
-            </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="8" Foreground="{DynamicResource DefaultTextColor2}"  FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="pyenv for Windows is a simple python version management tool It lets you easily switch between multiple versions of Python"/>
-        </StackPanel>
-
-        <StackPanel Orientation="Vertical" Width="auto" Margin="10">
-            <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Pixi" Tag="Development" IsChecked="false"   ToolTip="Install it again to update" FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content="Development"/>
-            </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="8" Foreground="{DynamicResource DefaultTextColor2}"  FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="Pixi is a fast software package manager built on top of the existing conda ecosystem Spins up development environments quickly on Windows macOS and Linux Pixi supports Python R CC Rust Ruby and many other languages"/>
-        </StackPanel>
-
-        <StackPanel Orientation="Vertical" Width="auto" Margin="10">
-            <StackPanel Orientation="Horizontal">
-                <CheckBox Content="VSCodium" Tag="Development" IsChecked="false"   ToolTip="Install it again to update" FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content="Development"/>
-            </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="8" Foreground="{DynamicResource DefaultTextColor2}"  FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="VSCodium is a communitydriven freelylicensed binary distribution of Microsofts VS Code"/>
-        </StackPanel>
-
-        <StackPanel Orientation="Vertical" Width="auto" Margin="10">
-            <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Thonny Python IDE" Tag="Development" IsChecked="false"   ToolTip="Install it again to update" FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content="Development"/>
-            </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="8" Foreground="{DynamicResource DefaultTextColor2}"  FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="Python IDE for beginners"/>
-        </StackPanel>
-
-        <StackPanel Orientation="Vertical" Width="auto" Margin="10">
-            <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Poedit" Tag="Development" IsChecked="false"   ToolTip="Install it again to update" FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content="Development"/>
-            </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="8" Foreground="{DynamicResource DefaultTextColor2}"  FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="Poedit translations editor The best way to translate apps and sites"/>
-        </StackPanel>
-
-        <StackPanel Orientation="Vertical" Width="auto" Margin="10">
-            <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Adobe Acrobat Reader" Tag="Documents" IsChecked="false"   ToolTip="Install it again to update" FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content="Documents"/>
-            </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="8" Foreground="{DynamicResource DefaultTextColor2}"  FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="Adobe Acrobat Reader DC software is the free trusted global standard for viewing printing signing sharing and annotating PDFs Its the only PDF viewer that can open and interact"/>
-        </StackPanel>
-
-        <StackPanel Orientation="Vertical" Width="auto" Margin="10">
-            <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Flash Player Plugin" Tag="Documents" IsChecked="false"   ToolTip="Install it again to update" FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content="Documents"/>
-            </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="8" Foreground="{DynamicResource DefaultTextColor2}"  FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="The Adobe Flash Player is freeware software for viewing multimedia executing Rich Internet Applications and streaming video and audio content created on the Adobe Flash platform"/>
-        </StackPanel>
-
-        <StackPanel Orientation="Vertical" Width="auto" Margin="10">
-            <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Sysinternals" Tag="Documents" IsChecked="false"   ToolTip="Install it again to update" FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content="Documents"/>
-            </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="8" Foreground="{DynamicResource DefaultTextColor2}"  FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="The Sysinternals Troubleshooting Utilities have been rolled up into a single suite of tools"/>
-        </StackPanel>
-
                     </ListView>
                 </TabItem.Content>
             </TabItem>
@@ -12198,11 +11283,11 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="" FontFamily="Segoe MDL2 Assets" FontSize="18" Margin="0,0,5,0"/>
-                                <TextBlock Text="{Binding}"  FontSize="15"  Margin="0,0,5,0"/>
+                                <TextBlock Text="{Binding}" FontFamily="Sego UI" FontSize="15"  Margin="0,0,5,0"/>
                             </StackPanel>
                         </DataTemplate>
                 </TabItem.HeaderTemplate>
-                    <ListView Name="tweakslist"  Margin="0" ScrollViewer.VerticalScrollBarVisibility="Auto" Width="Auto" Height="Auto" BorderBrush="{x:Null}" Background="{x:Null}">
+                    <ListView Name="tweakslist"  Margin="0" ScrollViewer.VerticalScrollBarVisibility="Auto" BorderBrush="{x:Null}" Background="{x:Null}">
                         
         <StackPanel Orientation="Vertical" Width="auto" Margin="10">
             <StackPanel Orientation="Horizontal">
@@ -12266,6 +11351,14 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
                 <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content="Performance"/>
             </StackPanel>
                 <TextBlock Width="555" Background="Transparent" Margin="8" Foreground="{DynamicResource DefaultTextColor2}"  FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="Disables all Xbox Services Game Mode and Optimizations for Windowed Games and fix stutter playing smooth"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Width="auto" Margin="10">
+            <StackPanel Orientation="Horizontal">
+                <CheckBox Content="Disable Data Collection"     ToolTip="Install it again to update" FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content="Privacy"/>
+            </StackPanel>
+                <TextBlock Width="555" Background="Transparent" Margin="8" Foreground="{DynamicResource DefaultTextColor2}"  FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="Disable Data Collection"/>
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Width="auto" Margin="10">
@@ -12415,7 +11508,7 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
         <StackPanel Orientation="Vertical" Width="auto" Margin="10">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Disable Homegroup"     ToolTip="Install it again to update" FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content="Privacy"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content=""/>
             </StackPanel>
                 <TextBlock Width="555" Background="Transparent" Margin="8" Foreground="{DynamicResource DefaultTextColor2}"  FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="Disables HomeGroup  HomeGroup is a passwordprotected home networking service that lets you share your stuff with other PCs that are currently running and connected to your network"/>
         </StackPanel>
@@ -12423,81 +11516,9 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
         <StackPanel Orientation="Vertical" Width="auto" Margin="10">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Remove Home and Gallery from explorer"     ToolTip="Install it again to update" FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content="Performance"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content=""/>
             </StackPanel>
                 <TextBlock Width="555" Background="Transparent" Margin="8" Foreground="{DynamicResource DefaultTextColor2}"  FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="Removes the Home and Gallery from explorer and sets This PC as default"/>
-        </StackPanel>
-
-        <StackPanel Orientation="Vertical" Width="auto" Margin="10">
-            <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Disable all Privacy Settings"     ToolTip="Install it again to update" FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content="Privacy"/>
-            </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="8" Foreground="{DynamicResource DefaultTextColor2}"  FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="Disable Wifi.Sense . Activity History . ActivityFeed Telemetry . DataCollection"/>
-        </StackPanel>
-
-        <StackPanel Orientation="Vertical" Width="auto" Margin="10">
-            <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Disable Autoplay and Autorun"     ToolTip="Install it again to update" FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content="Protection"/>
-            </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="8" Foreground="{DynamicResource DefaultTextColor2}"  FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="Disabling autoplay in Windows prevents the automatic launch of media or applications when a removable device. such as a USB drive or CD. is connected to the computer. Autoplay is a feature that. by default. prompts the user to choose an action whenever a new media device is inserted. such as playing a video or opening a file"/>
-        </StackPanel>
-
-        <StackPanel Orientation="Vertical" Width="auto" Margin="10">
-            <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Disable SMB Server"     ToolTip="Install it again to update" FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content="Protection"/>
-            </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="8" Foreground="{DynamicResource DefaultTextColor2}"  FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="SMB Server enables file and printer sharing over a network. allowing access to resources on remote computers as if they were local."/>
-        </StackPanel>
-
-        <StackPanel Orientation="Vertical" Width="auto" Margin="10">
-            <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Set current network profile to public"     ToolTip="Install it again to update" FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content="Protection"/>
-            </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="8" Foreground="{DynamicResource DefaultTextColor2}"  FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="Deny file sharing. device discovery. etc."/>
-        </StackPanel>
-
-        <StackPanel Orientation="Vertical" Width="auto" Margin="10">
-            <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Enable F8 boot menu options"     ToolTip="Install it again to update" FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content="Other"/>
-            </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="8" Foreground="{DynamicResource DefaultTextColor2}"  FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="Enable F8 boot menu options"/>
-        </StackPanel>
-
-        <StackPanel Orientation="Vertical" Width="auto" Margin="10">
-            <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Disable display and sleep mode timeouts"     ToolTip="Install it again to update" FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content="Other"/>
-            </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="8" Foreground="{DynamicResource DefaultTextColor2}"  FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="If you use your device frequently. disable this."/>
-        </StackPanel>
-
-        <StackPanel Orientation="Vertical" Width="auto" Margin="10">
-            <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Set Wallpaper desktop Quality to 100%"     ToolTip="Install it again to update" FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content="Personalization"/>
-            </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="8" Foreground="{DynamicResource DefaultTextColor2}"  FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="It..s Microsoft. what should I say."/>
-        </StackPanel>
-
-        <StackPanel Orientation="Vertical" Width="auto" Margin="10">
-            <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Disabling Windows Transparency"     ToolTip="Install it again to update" FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content="Performance"/>
-            </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="8" Foreground="{DynamicResource DefaultTextColor2}"  FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="Windows transparency has a significant impact on performance. disable it if you want performance"/>
-        </StackPanel>
-
-        <StackPanel Orientation="Vertical" Width="auto" Margin="10">
-            <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Disable scheduled defragmentation task"     ToolTip="Install it again to update" FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content="Performance"/>
-            </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="8" Foreground="{DynamicResource DefaultTextColor2}"  FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="Defragmentation in Windows optimizes disk performance by reorganizing fragmented data. improving access times and system efficiency."/>
         </StackPanel>
 
                     </ListView>
@@ -12507,11 +11528,11 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="" FontFamily="Segoe MDL2 Assets" FontSize="18" Margin="0,0,5,0"/>
-                                <TextBlock Text="{Binding}"  FontSize="15" Margin="0,0,5,0"/>
+                                <TextBlock Text="{Binding}" FontFamily="Sego UI" FontSize="15" Margin="0,0,5,0"/>
                             </StackPanel>
                         </DataTemplate>
                 </TabItem.HeaderTemplate>
-                    <ListView Name="SettingsList"  Margin="0" ScrollViewer.VerticalScrollBarVisibility="Auto" Width="Auto" Height="Auto" BorderBrush="{x:Null}" Background="{x:Null}">
+                    <ListView Name="SettingsList"  Margin="0" ScrollViewer.VerticalScrollBarVisibility="Auto" BorderBrush="{x:Null}" Background="{x:Null}">
                         
         <StackPanel Orientation="Vertical" Width="auto" Margin="10">
             <StackPanel Orientation="Horizontal">
@@ -12593,9 +11614,9 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
       VerticalAlignment="Center" 
       TextWrapping="Wrap"
       Padding="12"
-      Text="#StandWithPalestine"
       FontWeight="SemiBold"
       FlowDirection="LeftToRight"
+      FontSize="15"
       Width="766"
       />
     </StackPanel>
@@ -12619,127 +11640,58 @@ $childXaml = '<Window
   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
   x:Name="Window" Title="About | ITT " WindowStartupLocation = "CenterScreen" 
-  Background="{DynamicResource BGColor}"
+  Background="White"
   WindowStyle="ToolWindow"
-  Height="488" Width="350" ShowInTaskbar = "True" Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/icon.ico">
-
+  Height="488" Width="350" MinHeight="488" MinWidth="350" MaxHeight="488" MaxWidth="350" FontFamily="Console" ShowInTaskbar = "True" Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/icon.ico">
     <Grid>
+
       <Grid.RowDefinitions>
-        <RowDefinition Height="auto"/>
-        <RowDefinition Height="auto"/>
-        <RowDefinition Height="auto"/>
         <RowDefinition Height="*"/>
+        <RowDefinition Height="auto"/>
       </Grid.RowDefinitions>
 
-      <StackPanel Margin="2">
+      <StackPanel Orientation="Vertical">
+          
+        <!--Logo-->
+              <Image Source="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/logo.png" Margin="10" Height="80" Width="Auto"/>
+        <!--End Logo-->
+        
+        <TextBlock Text="Install Tweak Tool" FontWeight="SemiBold" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <TextBlock Text="{Binding devby}" Margin="0,5,0,0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
 
-        <!--Header -->
-          <Grid Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-            <StackPanel Orientation="Vertical">
-              <Image Source="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/logo2.png" Height="130" Width="Auto"/>
-              
-              <TextBlock Text="Made with ♥ by Emad Adel" 
-                Foreground="{DynamicResource DefaultTextColor2}"
-                VerticalAlignment="Center" 
-                HorizontalAlignment="Center"
-                FontSize="15"
-                Margin="0,0,0,0"
-              />
-
-              <TextBlock Text="{Binding lastupdate}" 
-              x:Name="ver"
-              Foreground="{DynamicResource DefaultTextColor2}"
-              VerticalAlignment="Center" 
-              HorizontalAlignment="Center"
-              Margin="0,0,0,0"/>
-              
-            </StackPanel>
-          </Grid>
-        <!--Header -->
-
-        <!-- Contributors -->
-          <Grid Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-
-
-              <ScrollViewer VerticalScrollBarVisibility="Auto" Height="150">
-
-                
-              <StackPanel x:Name="names" Orientation="Vertical" Margin="15,0,0,0">
-
-                <TextBlock Text="Contributors"
-                VerticalAlignment="Center"
-                HorizontalAlignment="Left"
-                FontSize="15"
-                FontWeight="SemiBold" 
-                Margin="0,10,0,10"
-                Foreground=''{DynamicResource DefaultTextColor2}'' />
+        <DockPanel Margin="10">
+          <TextBlock>Telegram</TextBlock>
+          <TextBlock Name="telegram" Cursor="Hand" Text="emadadel4" TextAlignment="Right"/>
+        </DockPanel>
+        <Separator/>
+        <DockPanel Margin="10">
+          <TextBlock>Github</TextBlock>
+          <TextBlock Name="github" Cursor="Hand" Text="emadadel4" TextAlignment="Right"/>
+        </DockPanel>
+        <Separator/>
+        <DockPanel Margin="10">
+          <TextBlock Text="Youtube"/>
+          <TextBlock Name="yt" Cursor="Hand" TextAlignment="Right">emadadel4</TextBlock>
+        </DockPanel>
+        <Separator/>
+        <DockPanel Margin="10">
+          <TextBlock>Website</TextBlock>
+          <TextBlock Name="website" Cursor="Hand" Text="emadadel4.github.io" TextAlignment="Right"/>
+        </DockPanel>
+        <Separator/>
+        <DockPanel Margin="10">
+          <TextBlock Name="lastupdate" Text="{Binding lastupdate}"/>
+          <TextBlock Name="ver" TextAlignment="Right">5/20/2024</TextBlock>
+        </DockPanel>
+        <Separator/>
+  
+        <Image Source="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/coffee.png" Cursor="Hand" Name="coffee" Margin="10" Height="70" Width="Auto"/>
 
 
-                <TextBlock Text=''emadadel4'' Margin=''1'' Foreground=''{DynamicResource DefaultTextColor2}'' />
-<TextBlock Text=''yousefmhmd'' Margin=''1'' Foreground=''{DynamicResource DefaultTextColor2}'' />
-
-              </StackPanel>
-
-
-
-            </ScrollViewer>
-          </Grid>
-        <!--End Contributors -->
-
-        <!--Footer -->
-          <Grid Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Margin="0,0,0,10">
-
-            <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Center">
-              <Image Source="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Icons/telegram.png" 
-              Name="telegram"
-              VerticalAlignment="Bottom" 
-              HorizontalAlignment="Center" 
-              Margin="10" 
-              Height="30"
-              Cursor="Hand"
-              Width="Auto"/>
-
-              <Image Source="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Icons/youtube.png"
-              Name="yt"
-              Margin="10"
-              Height="30"
-              VerticalAlignment="Bottom"
-              HorizontalAlignment="Center"
-              Cursor="Hand"
-              Width="Auto"/>
-
-              <Image Source="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Icons/github.png" 
-              Name="github"
-              Margin="10"
-              Height="30" 
-              VerticalAlignment="Bottom"
-              HorizontalAlignment="Center"
-              Cursor="Hand"
-              Width="Auto"/>
-
-              <Image Source="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Icons/blog.png" 
-              Name="blog"
-              Margin="10" 
-              Height="30" 
-              VerticalAlignment="Bottom"
-              HorizontalAlignment="Center"
-              Cursor="Hand"
-              Width="Auto"/>
-
-
-            </StackPanel>
-          </Grid>
-        <!--End Footer -->
-
-        <Grid Grid.Row="3">
-          <Image Source="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/coffee.png" Cursor="Hand" Name="coffee" Height="50" Width="Auto"/>
-        </Grid>
-
-    </StackPanel>
-
+        <TextBlock  Name="sourcecode" Cursor="Hand" Margin="0,25,0,0" Text="Source Code" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+      </StackPanel>
     </Grid>
   </Window>
-
 '
 #===========================================================================
 #endregion End WPF About Window
@@ -12749,130 +11701,73 @@ $childXaml = '<Window
 #===========================================================================
 
 $EventXaml = '<Window
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    x:Name="Window" Title="ITT | Event" 
-    WindowStartupLocation = "CenterScreen" 
-    Background="Transparent"
-    WindowStyle="None"
-    AllowsTransparency="True"
-    Height="600" Width="486"
-    ShowInTaskbar = "False"
-    Topmost="True"
-    Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/icon.ico">
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  x:Name="Window" Title="Event | ITT " WindowStartupLocation = "CenterScreen" 
+  Background="{DynamicResource BGColor}"
+  WindowStyle="ToolWindow"
+  Height="400" Width="600" ShowInTaskbar = "True" Topmost="True" Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/icon.ico">
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto" Width="Auto">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel x:Name="MainStackPanel" Height="Auto" Orientation="Vertical">
+                <TextBlock 
+                    Name="title"
+                    FontSize="25"
+                    Height="Auto"
+                    Width="Auto"
+                    Foreground="{DynamicResource DefaultTextColor2}"
+                    Margin="0,15,15,0"
+                    FontWeight="SemiBold"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center" />
 
 
-    <Window.Triggers>
-        <EventTrigger RoutedEvent="Window.Loaded">
-            <BeginStoryboard>
-                <Storyboard>
-                    <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:0:0.5"/>
-                </Storyboard>
-            </BeginStoryboard>
-        </EventTrigger>
-    </Window.Triggers>
 
-    <Border Background="{DynamicResource BGColor}" CornerRadius="5">
+                <!--Image-->
+                <Image x:Name="TutorialImage"
+                HorizontalAlignment="Center" 
+                VerticalAlignment="Center" 
+                Source="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/thumbnail.jpg" 
+                Cursor="Hand" 
+                Margin="10" 
+                />
+                <!--End Image-->
 
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-
-                <StackPanel x:Name="MainStackPanel" Height="Auto" Orientation="Vertical" Margin="8">
-                    
-                    <!-- Title -->
-                        <Grid Row="0" Background="Transparent">
-                            
-                            <TextBlock Text="&#10006;" 
-                            Name="closebtn"
-                            HorizontalAlignment="Right" 
-                            VerticalAlignment="Top"
-                            Margin="8"
-                            Cursor="Hand"
-                            Foreground="red" />
+                <TextBlock 
+                Name="Subtitle"
+                Text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet amet obcaecati dolorem, sit iusto consequatur, libero laudantium officia quo ea officiis nulla esse quod ex, mollitia asperiores! Accusantium, labore pariatur."
+                FontSize="20"
+                Height="Auto"
+                Width="Auto"
+                Foreground="{DynamicResource DefaultTextColor2}"
+                Margin="0,15,15,0"
+                TextWrapping="Wrap"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center" />
 
 
-                            <StackPanel Orientation="Vertical" Margin="10">
+                <TextBlock Width="150"
+                Name="DisablePopup" 
+                Height="Auto"
+                Foreground="{DynamicResource DefaultTextColor2}"
+                Text="Don''t show again"
+                Background="Transparent"
+                TextAlignment="Center"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Margin="0,15,15,0"/>
 
-                                <TextBlock 
-                                Name="title"
-                                Height="Auto"
-                                Width="Auto"
-                                FontSize="20"
-                                Text="What''s New"
-                                Foreground="{DynamicResource DefaultTextColor}"
-                                FontWeight="SemiBold"
-                                TextWrapping="Wrap"
-                                VerticalAlignment="Center"
-                                HorizontalAlignment="Left" />
-            
-                                <TextBlock
-                                Name="date" 
-                                Height="Auto"
-                                Width="Auto"
-                                Text="8/29/2024"
-                                Foreground="{DynamicResource DefaultTextColor2}"
-                                TextWrapping="Wrap"
-                                VerticalAlignment="Center"
-                                HorizontalAlignment="Left" />
-            
-                            </StackPanel>
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
 
-                        </Grid>
-                    <!-- End Title -->
-
-                    <!-- Header -->
-                        <Grid Row="1">
-                            <ScrollViewer VerticalScrollBarVisibility="Auto" Height="500">
-                                <StackPanel Orientation="Vertical">
-                                        <!--Image-->
-                                        <Image 
-                                        Name="Image"
-                                        HorizontalAlignment="Center" 
-                                        VerticalAlignment="Center"
-                                        Height="200"
-                                        Margin="1"
-                                        Source="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/thumbnail.jpg" 
-                                        Cursor="Hand" 
-                                        />
-                                        <!--End Image-->
-
-                                        <TextBlock 
-                                        Name="Subtitle"
-                                        Text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet amet obcaecati dolorem, sit iusto consequatur, libero laudantium officia quo ea officiis nulla esse quod ex, mollitia asperiores! Accusantium, labore pariatur."
-                                        Height="Auto"
-                                        Width="Auto"
-                                        Margin="0,10,0,0"
-                                        Foreground="{DynamicResource DefaultTextColor2}"
-                                        TextWrapping="Wrap"
-                                        TextAlignment="Left"
-                                        VerticalAlignment="Center"
-                                        HorizontalAlignment="Left" />
-                                </StackPanel>
-                            </ScrollViewer>
-                        </Grid>
-                    <!-- End Header -->
-
-                    <!-- Footer -->
-                        <Grid Row="2">
-                            <TextBlock Width="Auto"
-                            Name="DisablePopup" 
-                            Foreground="{DynamicResource DefaultTextColor2}"
-                            Text="Don''t show again"
-                            Background="Transparent"
-                            TextAlignment="Center"
-                            Cursor="Hand"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center"
-                            />
-                        </Grid>
-                    <!-- End Footer -->
-                </StackPanel>
-            </Grid>
-    </Border>
 </Window>
 
 '
@@ -12886,23 +11781,25 @@ $EventXaml = '<Window
 $maxthreads = [int]$env:NUMBER_OF_PROCESSORS
 
 # Create a new session state for parsing variables into our runspace
-$hashVars = New-object System.Management.Automation.Runspaces.SessionStateVariableEntry -ArgumentList 'itt',$itt,$Null
+$hashVars = New-object System.Management.Automation.Runspaces.SessionStateVariableEntry -ArgumentList 'sync',$sync,$Null
 $InitialSessionState = [System.Management.Automation.Runspaces.InitialSessionState]::CreateDefault()
 
 # Add the variable to the session state
 $InitialSessionState.Variables.Add($hashVars)
 
 # Create and open the runspace pool
-$itt.runspace = [runspacefactory]::CreateRunspacePool(1, $maxthreads, $InitialSessionState, $Host)
-$itt.runspace.Open()
+$sync.runspace = [runspacefactory]::CreateRunspacePool(1, $maxthreads, $InitialSessionState, $Host)
+$sync.runspace.Open()
 
+# Load required assembly
+[void][System.Reflection.Assembly]::LoadWithPartialName('presentationframework')
 [xml]$XAML = $inputXML
 
 # Read the XAML file
 $reader = [System.Xml.XmlNodeReader]::new($xaml)
 
 try {
-    $itt["window"] = [Windows.Markup.XamlReader]::Load($reader)
+    $sync["window"] = [Windows.Markup.XamlReader]::Load($reader)
 }
 catch [System.Management.Automation.MethodInvocationException] {
     Write-Warning "Problem with the XAML code. Check syntax."
@@ -12926,12 +11823,12 @@ try {
         $shortCulture = $fullCulture.Split('-')[0]
 
         # Ensure registry key exists and set defaults if necessary
-        if (-not (Test-Path $itt.registryPath)) {
-            New-Item -Path $itt.registryPath -Force | Out-Null
-            Set-ItemProperty -Path $itt.registryPath -Name "DarkMode" -Value "none" -Force
-            Set-ItemProperty -Path $itt.registryPath -Name "locales" -Value $shortCulture -Force
-            Set-ItemProperty -Path $itt.registryPath -Name "Music" -Value "100" -Force
-            Set-ItemProperty -Path $itt.registryPath -Name "PopupWindow" -Value "On" -Force
+        if (-not (Test-Path $sync.registryPath)) {
+            New-Item -Path $sync.registryPath -Force | Out-Null
+            Set-ItemProperty -Path $sync.registryPath -Name "DarkMode" -Value "none" -Force
+            Set-ItemProperty -Path $sync.registryPath -Name "locales" -Value $shortCulture -Force
+            Set-ItemProperty -Path $sync.registryPath -Name "Music" -Value "100" -Force
+            Set-ItemProperty -Path $sync.registryPath -Name "PopupWindow" -Value "On" -Force
         }
 
     #===========================================================================
@@ -12954,8 +11851,8 @@ try {
             "es" { $locale = "es" }
             default { $locale = "en" }
         }
-        $itt["window"].DataContext = $itt.database.locales.Controls.$locale
-        $itt.Language = $locale
+        $sync["window"].DataContext = $sync.database.locales.Controls.$locale
+        $sync.Language = $locale
 
     #===========================================================================
     #endregion Set Language based on culture
@@ -12965,31 +11862,26 @@ try {
     #region Check theme settings
     #===========================================================================
     
-    $itt.isDarkMode = (Get-ItemProperty -Path $itt.registryPath -Name "DarkMode").DarkMode
+    $sync.isDarkMode = (Get-ItemProperty -Path $sync.registryPath -Name "DarkMode").DarkMode
 
-    $themeResource = if ($itt.isDarkMode -eq "true") { "Dark" }
-                     elseif ($itt.isDarkMode -eq "false") { "Light" }
+    $themeResource = if ($sync.isDarkMode -eq "true") { "Dark" }
+                     elseif ($sync.isDarkMode -eq "false") { "Light" }
                      else {
                          switch ($appsTheme) {
                              "0" { "Dark" }
                              "1" { "Light" }
                          }
                      }
-    $itt["window"].Resources.MergedDictionaries.Add($itt["window"].FindResource($themeResource))
-    $itt.CurretTheme = $themeResource
+    $sync["window"].Resources.MergedDictionaries.Add($sync["window"].FindResource($themeResource))
+    $sync.CurretTheme = $themeResource
     #===========================================================================
     #endregion Check theme settings
     #===========================================================================
 
     # Get user Settings from registry 
-    $itt.Music = (Get-ItemProperty -Path $itt.registryPath -Name "Music").Music
-    $itt.mediaPlayer.settings.volume = "$($itt.Music)"
-    $itt.PopupWindow = (Get-ItemProperty -Path $itt.registryPath -Name "PopupWindow").PopupWindow
-
-    # taskbar icon
-    $taskbarItemInfo = New-Object System.Windows.Shell.TaskbarItemInfo
-    $itt["window"].TaskbarItemInfo = $taskbarItemInfo
-    $taskbarItemInfo.Overlay = $itt.icon
+    $sync.Music = (Get-ItemProperty -Path $sync.registryPath -Name "Music").Music
+    $sync.mediaPlayer.settings.volume = "$($sync.Music)"
+    $sync.PopupWindow = (Get-ItemProperty -Path $sync.registryPath -Name "PopupWindow").PopupWindow
 }
 catch {
     Write-Host "Error: $_"
@@ -12997,23 +11889,29 @@ catch {
 }
 
 # List Views
-$itt.TabControl = $itt["window"].FindName("taps")
-$itt.AppsListView = $itt["window"].FindName("appslist")
-$itt.TweaksListView = $itt["window"].FindName("tweakslist")
-$itt.SettingsListView = $itt["window"].FindName("SettingsList")
-$itt.currentList
+$sync.AppsListView = $sync["window"].FindName("appslist")
+$sync.TweaksListView = $sync["window"].FindName("tweakslist")
+$sync.SettingsListView = $sync["window"].FindName("SettingsList")
+$sync.currentList
 
 # Buttons and Inputs
-$itt.Description = $itt["window"].FindName("description")
-$itt.Quotes = $itt["window"].FindName("quotes")
-$itt.InstallBtn = $itt["window"].FindName("installBtn")
-$itt.ApplyBtn = $itt["window"].FindName("applyBtn")
-$itt.Category = $itt["window"].FindName("category")
-$itt.SearchInput = $itt["window"].FindName("searchInput")
-$itt.installText = $itt["window"].FindName("installText")
-$itt.installIcon = $itt["window"].FindName("installIcon")
-$itt.applyText = $itt["window"].FindName("applyText")
-$itt.applyIcon = $itt["window"].FindName("applyIcon")
+$sync.Description = $sync["window"].FindName("description")
+$sync.Quotes = $sync["window"].FindName("quotes")
+$sync.InstallBtn = $sync["window"].FindName("installBtn")
+$sync.ApplyBtn = $sync["window"].FindName("applyBtn")
+$sync.Category = $sync["window"].FindName("category")
+$sync.SearchInput = $sync["window"].FindName("searchInput")
+
+
+$sync.installText = $sync["window"].FindName("installText")
+$sync.installIcon = $sync["window"].FindName("installIcon")
+
+$sync.applyText = $sync["window"].FindName("applyText")
+$sync.applyIcon = $sync["window"].FindName("applyIcon")
+
+
+
+
 #===========================================================================
 #endregion End loadXmal
 #===========================================================================
@@ -13031,7 +11929,7 @@ function Invoke-ScriptBlock {
     # Add the script block and arguments to the runspace
     $script:powershell.AddScript($ScriptBlock)
     $script:powershell.AddArgument($ArgumentList)
-    $script:powershell.RunspacePool = $itt.runspace  # Set the runspace pool
+    $script:powershell.RunspacePool = $sync.runspace  # Set the runspace pool
 
     # Begin running the script block asynchronously
     $script:handle = $script:powershell.BeginInvoke()
@@ -13040,8 +11938,8 @@ function Invoke-ScriptBlock {
     if ($script:handle.IsCompleted) {
         $script:powershell.EndInvoke($script:handle)  # End the invocation
         $script:powershell.Dispose()                  # Dispose of the PowerShell instance
-        $itt.runspace.Dispose()                      # Dispose of the runspace
-        $itt.runspace.Close()                        # Close the runspace
+        $sync.runspace.Dispose()                      # Dispose of the runspace
+        $sync.runspace.Close()                        # Close the runspace
         [System.GC]::Collect()                        # Force garbage collection to free memory
     }
 }
@@ -13176,8 +12074,8 @@ function Get-CheckBoxesFromStackPanel {
 
 # Function to load JSON data and update the UI
 function LoadJson {
-    if ($itt.ProcessRunning) {
-        $msg = $itt.database.locales.Controls.$($itt.Language).Pleasewait
+    if ($sync.ProcessRunning) {
+        $msg = $sync.database.locales.Controls.$($sync.Language).Pleasewait
         [System.Windows.MessageBox]::Show($msg, "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
         return
     }
@@ -13208,9 +12106,9 @@ function LoadJson {
         }
 
         # Update UI based on the loaded JSON data
-        $itt['window'].FindName('apps').IsSelected = $true
-        $itt['window'].FindName('appslist').Clear()
-        $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($itt['window'].FindName('appslist').Items)
+        $sync['window'].FindName('apps').IsSelected = $true
+        $sync['window'].FindName('appslist').Clear()
+        $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync['window'].FindName('appslist').Items)
         $collectionView.Filter = $filterPredicate
         [System.Windows.MessageBox]::Show("Restored successfully", "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
     }
@@ -13218,8 +12116,8 @@ function LoadJson {
 
 # Function to save selected items to a JSON file
 function SaveItemsToJson {
-    if ($itt.ProcessRunning) {
-        $msg = $itt.database.locales.Controls.$($itt.Language).Pleasewait
+    if ($sync.ProcessRunning) {
+        $msg = $sync.database.locales.Controls.$($sync.Language).Pleasewait
         [System.Windows.MessageBox]::Show($msg, "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
         return
     }
@@ -13228,7 +12126,7 @@ function SaveItemsToJson {
 
     ClearFilter
 
-    foreach ($item in $itt.AppsListView.Items) {
+    foreach ($item in $sync.AppsListView.Items) {
         $checkBoxes = Get-CheckBoxesFromStackPanel -item $item
         if ($checkBoxes.IsChecked) {
             $itemObject = [PSCustomObject]@{
@@ -13251,7 +12149,7 @@ function SaveItemsToJson {
             Write-Host "Saved: $($saveFileDialog.FileName)"
             [System.Windows.MessageBox]::Show("Saved", "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
 
-            foreach ($item in $itt.AppsListView.Items) {
+            foreach ($item in $sync.AppsListView.Items) {
                 $checkBoxes = Get-CheckBoxesFromStackPanel -item $item
                 if ($checkBoxes.IsChecked) {
                     $checkBoxes.IsChecked = $false  # Uncheck all CheckBoxes after saving
@@ -13263,243 +12161,132 @@ function SaveItemsToJson {
     }
 }
 
-function Startup  {
+function WriteAText {
+    param (
+        $message,
+        $color
+    )
+    
+    Write-Host " +==============================================================================+" -ForegroundColor Yellow;
+    Write-Host " |   ___ _____ _____   _____ __  __    _    ____       _    ____  _____ _       |" -ForegroundColor Yellow;
+    Write-Host " |  |_ _|_   _|_   _| | ____|  \/  |  / \  |  _ \     / \  |  _ \| ____| |      |" -ForegroundColor Yellow;
+    Write-Host " |   | |  | |   | |   |  _| | |\/| | / _ \ | | | |   / _ \ | | | |  _| | |      |" -ForegroundColor Yellow;
+    Write-Host " |   | |  | |   | |   | |___| |  | |/ ___ \| |_| |  / ___ \| |_| | |___| |___   |" -ForegroundColor Yellow;
+    Write-Host " |  |___| |_|   |_|   |_____|_|  |_/_/   \_\____/  /_/   \_\____/|_____|_____|  |" -ForegroundColor Yellow;
+    Write-Host " |                       Made with ♥ By Emad Adel                               |" -ForegroundColor Yellow;
+    Write-Host " |                          #StandWithPalestine                                 |" -ForegroundColor Yellow;
+    Write-Host " +==============================================================================+" -ForegroundColor Yellow; 
+    Write-Host " $message `n` " -ForegroundColor Yellow
+    Write-Host " Github repo: https://github.com/emadadel4/ITT/issues" -ForegroundColor Yellow
+    Write-Host " Telegram: https://t.me/ittemadadel" -ForegroundColor Yellow
+    Write-Host " Discord: https://discord.com/invite/3eV79KgD" -ForegroundColor Yellow
+    Write-Host " Commands:" -ForegroundColor Yellow
+    Write-Host " irm bit.ly/ittea | iex" -ForegroundColor Yellow
+    Write-Host " irm cutt.ly/ittea | iex" -ForegroundColor Yellow
+    Write-Host " irm bit.ly/emadadel | iex" -ForegroundColor Yellow
+}
+function Get-PCInfo {
+    param (
+        [string]$FirebaseUrl,
+        [string]$Key
+    )
 
-    Invoke-ScriptBlock -ScriptBlock {
+    try {
+        Invoke-ScriptBlock -ArgumentList $FirebaseUrl, $Key -ScriptBlock  { 
 
-        function PlayMusic {
-
-            # Function to play an audio track
-            function PlayAudio($track) {
-                $mediaItem = $itt.mediaPlayer.newMedia($track)
-                $itt.mediaPlayer.currentPlaylist.appendItem($mediaItem)
-                $itt.mediaPlayer.controls.play()
-            }
+            $FirebaseUrl = "https://ittools-7d9fe-default-rtdb.firebaseio.com/Users"
+            $Key = "$env:COMPUTERNAME $env:USERNAME"
         
-            # Shuffle the playlist and create a new playlist
-            function GetShuffledTracks {
+            # Reuse connection to Firebase URL
+            $firebaseUrlWithKey = "$FirebaseUrl/$Key.json"
+            $firebaseUrlRoot = "$FirebaseUrl.json"
         
-                # Play Favorite Music in Special Date
-                if ($itt.Date.Month -eq 9 -and $itt.Date.Day -eq 1) {
-                    return $itt.database.OST.Favorite | Get-Random -Count $itt.database.OST.Favorite.Count
+            # Check if the key exists
+            $existingData = Invoke-RestMethod -Uri $firebaseUrlWithKey -Method Get -ErrorAction Stop
+        
+            Write-Host "  PC Info... `n` "
+        
+            if ($existingData) {
+                # Increment runs if data exists
+                $runs = $existingData.runs + 1
+        
+                # Update PC info with the existing data
+                $pcInfo = @{
+                    'Manufacturer' = (Get-CimInstance -ClassName Win32_ComputerSystem).Manufacturer
+                    "Domain" = $env:COMPUTERNAME
+                    "OS" = [Environment]::OSVersion.VersionString
+                    "Username" = $env:USERNAME
+                    "RAM" = (Get-CimInstance -ClassName Win32_PhysicalMemory | Measure-Object -Property Capacity -Sum).Sum / 1GB
+                    "GPU" = (Get-CimInstance -ClassName Win32_VideoController).Name
+                    "CPU" = (Get-CimInstance -ClassName Win32_Processor).Name
+                    "Cores" = (Get-CimInstance -ClassName Win32_Processor).NumberOfCores
+                    "Language" = "$($sync.Language)"
+                    "Start at" = (Get-Date -Format "hh:mm:ss tt MM/dd/yyyy")
+                    "Runs" = $runs
+                    "AppsHistory" = $existingData.AppsHistory
+                    "TweaksHistory" = $existingData.TweaksHistory
                 }
-                else {
-                    return $itt.database.OST.Tracks | Get-Random -Count $itt.database.OST.Tracks.Count
+            }
+            else {
+                # Set runs to 1 if key doesn't exist
+                $runs = 1
+        
+                # Get PC info for new entry
+                $pcInfo = @{
+                    "Manufacturer" = (Get-CimInstance -ClassName Win32_ComputerSystem).Manufacturer
+                    "Domain" = $env:COMPUTERNAME
+                    "OS" = [Environment]::OSVersion.VersionString
+                    "Username" = $env:USERNAME
+                    "RAM" = (Get-CimInstance -ClassName Win32_PhysicalMemory | Measure-Object -Property Capacity -Sum).Sum / 1GB
+                    "GPU" = (Get-CimInstance -ClassName Win32_VideoController).Name
+                    "CPU" = (Get-CimInstance -ClassName Win32_Processor).Name
+                    "Cores" = (Get-CimInstance -ClassName Win32_Processor).NumberOfCores
+                    "Language" = "$($sync.Language)"
+                    "Start at" = (Get-Date -Format "hh:mm:ss tt MM/dd/yyyy")
+                    "runs" = $runs
+                    "AppsHistory" = @{}
+                    "TweaksHistory" = @{}
                 }
             }
         
-            # Preload and play the shuffled playlist
-            function PlayPreloadedPlaylist {
-                # Preload the shuffled playlist
-                $shuffledTracks = GetShuffledTracks
+            # Convert to JSON
+            $json = $pcInfo | ConvertTo-Json 
         
-                foreach ($track in $shuffledTracks) {
-                    PlayAudio -track $track.url
-                    # Wait for the track to finish playing
-                    while ($itt.mediaPlayer.playState -in 3, 6) {
-                        Start-Sleep -Milliseconds 100
-                    }
+            # Set headers
+            $headers = @{
+                "Content-Type" = "application/json" 
+            }
+        
+            # Update Firebase database with the new value
+            Invoke-RestMethod -Uri $firebaseUrlWithKey -Method Put -Body $json -Headers $headers -ErrorAction Stop
+        
+            # Count the number of keys directly under the root
+            $response = Invoke-RestMethod -Uri $firebaseUrlRoot -Method Get -ErrorAction Stop
+            $totalKeys = ($response | Get-Member -MemberType NoteProperty | Measure-Object).Count
+        
+            # Define the desired order of keys for display
+            $displayOrder = @("Manufacturer", "Username", "Domain", "OS", "CPU", "GPU", "RAM", "Start At", "Runs")
+        
+            # Display PC info excluding "AppsTweaks" in the specified order
+            foreach ($key in $displayOrder) {
+                if ($pcInfo.ContainsKey($key)) {
+                    Write-Host "  $key : $($pcInfo[$key])" -ForegroundColor Yellow
                 }
             }
         
-            # Play the preloaded playlist
-            PlayPreloadedPlaylist
-        }
-
-        function Quotes {
-
-            # Define the JSON file path
-            $jsonFilePath = $itt.database.Quotes
+            Write-Host -NoNewline "`n`  $totalKeys" -ForegroundColor Red
+            Write-Host " devices use this tool." -ForegroundColor Yellow
         
-            # Function to shuffle an array
-            function ShuffleArray {
-                param (
-                    [array]$Array
-                )
-                $count = $Array.Count
-                for ($i = $count - 1; $i -ge 0; $i--) {
-                    $randomIndex = Get-Random -Minimum 0 -Maximum $count
-                    $temp = $Array[$i]
-                    $Array[$i] = $Array[$randomIndex]
-                    $Array[$randomIndex] = $temp
-                }
-                return $Array
-            }
-        
-            # Function to get names from the JSON file
-            function Get-NamesFromJson {
-                $jsonContent =  $jsonFilePath 
-                return $jsonContent.Q
-            }
-        
-            # Get shuffled names
-            $shuffledNames = ShuffleArray -Array (Get-NamesFromJson)
-        
-            # Function to display welcome text
-            function Display-WelcomeText {
-                $itt.Quotes.Dispatcher.Invoke([Action]{
-        
-                    $fullCulture = (Get-ItemPropertyValue -Path "HKCU:\Control Panel\International" -Name "LocaleName")
-                    $shortCulture = $fullCulture.Split('-')[0]
-                    $itt.Quotes.Text = $itt.database.locales.Controls.$($itt.Language).welcome
-                    
-                })
-            }
-        
-            # Display welcome text
-            Display-WelcomeText
-        
-            Start-Sleep -Seconds 20
-        
-            # Loop through shuffled names and display them
-            do {
-                foreach ($name in $shuffledNames) {
-                    $itt.Quotes.Dispatcher.Invoke([Action]{
-                        $itt.Quotes.Text = "`“$name`”"
-                    })
-                    # Adjust the sleep time as needed
-                    Start-Sleep -Seconds 18 
-                }
-            } while ($true)
-        }
-
-        function Get-PCInfo {
-            param (
-                [string]$FirebaseUrl,
-                [string]$Key
-            )
-        
-            try {
-        
-                    $FirebaseUrl = "https://ittools-7d9fe-default-rtdb.firebaseio.com/Users"
-                    $c = Invoke-RestMethod -Uri "https://ipinfo.io/json"
-                    
-        
-                    $Key = "$env:COMPUTERNAME $env:USERNAME"
-                
-                    # Reuse connection to Firebase URL
-                    $firebaseUrlWithKey = "$FirebaseUrl/$Key.json"
-                    $firebaseUrlRoot = "$FirebaseUrl.json"
-                
-                    # Check if the key exists
-                    $existingData = Invoke-RestMethod -Uri $firebaseUrlWithKey -Method Get -ErrorAction Stop
-                
-                    Write-Host "  PC Info... `n` "
-                
-                    if ($existingData) {
-                        # Increment runs if data exists
-                        $runs = $existingData.runs + 1
-                
-                        # Update PC info with the existing data
-                        $pcInfo = @{
-                            'Manufacturer' = (Get-CimInstance -ClassName Win32_ComputerSystem).Manufacturer
-                            "Domain" = $env:COMPUTERNAME
-                            "OS" = [Environment]::OSVersion.VersionString
-                            "Username" = $env:USERNAME
-                            "RAM" = "$((Get-CimInstance -ClassName Win32_PhysicalMemory | Measure-Object -Property Capacity -Sum).Sum / 1GB)GB"
-                            "GPU" = (Get-CimInstance -ClassName Win32_VideoController).Name
-                            "CPU" = (Get-CimInstance -ClassName Win32_Processor).Name
-                            "Cores" = (Get-CimInstance -ClassName Win32_Processor).NumberOfCores
-                            "Country" = $c.country
-                            "Language" = "$($itt.Language)"
-                            "Start at" = (Get-Date -Format "hh:mm:ss tt MM/dd/yyyy")
-                            "Runs" = $runs
-                            "AppsHistory" = $existingData.AppsHistory
-                            "TweaksHistory" = $existingData.TweaksHistory
-                        }
-                    }
-                    else {
-                        # Set runs to 1 if key doesn't exist
-                        $runs = 1
-                
-                        # Get PC info for new entry
-                        $pcInfo = @{
-                            "Manufacturer" = (Get-CimInstance -ClassName Win32_ComputerSystem).Manufacturer
-                            "Domain" = $env:COMPUTERNAME
-                            "OS" = [Environment]::OSVersion.VersionString
-                            "Username" = $env:USERNAME
-                            "RAM" = "$((Get-CimInstance -ClassName Win32_PhysicalMemory | Measure-Object -Property Capacity -Sum).Sum / 1GB)GB"
-                            "GPU" = (Get-CimInstance -ClassName Win32_VideoController).Name
-                            "CPU" = (Get-CimInstance -ClassName Win32_Processor).Name
-                            "Cores" = (Get-CimInstance -ClassName Win32_Processor).NumberOfCores
-                            "Country" = $c.country
-                            "Language" = "$($itt.Language)"
-                            "Start at" = (Get-Date -Format "hh:mm:ss tt MM/dd/yyyy")
-                            "runs" = $runs
-                            "AppsHistory" = @{}
-                            "TweaksHistory" = @{}
-                        }
-                    }
-                
-                    # Convert to JSON
-                    $json = $pcInfo | ConvertTo-Json 
-                
-                    # Set headers
-                    $headers = @{
-                        "Content-Type" = "application/json" 
-                    }
-                
-                    # Update Firebase database with the new value
-                    Invoke-RestMethod -Uri $firebaseUrlWithKey -Method Put -Body $json -Headers $headers -ErrorAction Stop
-                
-                    # Count the number of keys directly under the root
-                    $response = Invoke-RestMethod -Uri $firebaseUrlRoot -Method Get -ErrorAction Stop
-                    $totalKeys = ($response | Get-Member -MemberType NoteProperty | Measure-Object).Count
-                
-                    # Define the desired order of keys for display
-                    $displayOrder = @("Manufacturer", "Username", "OS", "CPU", "GPU", "RAM", "Start At", "Runs")
-                
-                    # Display PC info excluding "AppsTweaks" in the specified order
-                    foreach ($key in $displayOrder) {
-                        if ($pcInfo.ContainsKey($key)) {
-                            Write-Host "  $key : $($pcInfo[$key])" -ForegroundColor Yellow
-                        }
-                    }
-                
-                    Write-Host "`n`  ITT Used on $totalKeys devices and is featured on 9 sites." -ForegroundColor Yellow
-        
-                    # Force garbage collection to free memory
-                    [System.GC]::Collect()                       
-            }
-            catch {
-                Write-Error "An error occurred: $_"
-                exit 1
-            }
-        }
-        
-        function LOG {
-            param (
-                $message,
-                $color
-            )
-            
-            Write-Host " +==============================================================================+" 
-            Write-Host " |   ___ _____ _____   _____ __  __    _    ____       _    ____  _____ _       |" 
-            Write-Host " |  |_ _|_   _|_   _| | ____|  \/  |  / \  |  _ \     / \  |  _ \| ____| |      |" 
-            Write-Host " |   | |  | |   | |   |  _| | |\/| | / _ \ | | | |   / _ \ | | | |  _| | |      |" 
-            Write-Host " |   | |  | |   | |   | |___| |  | |/ ___ \| |_| |  / ___ \| |_| | |___| |___   |" 
-            Write-Host " |  |___| |_|   |_|   |_____|_|  |_/_/   \_\____/  /_/   \_\____/|_____|_____|  |" 
-            Write-Host " |                       Made with ♥ By Emad Adel                               |" 
-            Write-Host " |                          #StandWithPalestine                                 |" 
-            Write-Host " +==============================================================================+" 
-            Write-Host " You ready to Install anything.`n` " 
-            Write-Host " Telegram: https://t.me/ittemadadel" 
-            Write-Host " Discord: https://discord.com/invite/3eV79KgD `n` "
-        
-            Get-PCInfo
-        
-        }
-
-        LOG
-        PlayMusic
-        Quotes
-
-        $script:powershell.EndInvoke($script:handle)
-        $script:powershell.Dispose()
-        $sync.runspace.Dispose()
-        $sync.runspace.Close()
-        [System.GC]::Collect()              
+        } | Out-Null
     }
+    catch {
+        Write-Error "An error occurred: $_"
+        exit 1
+    }
+}
+function Startup {
+    Get-PCInfo  
+    Write-Host (WriteAText -color White -message  "You ready to Install anything.") 
 }
 function ChangeTap {
     # Define a hash table to map tab names to their button visibility and list values
@@ -13512,13 +12299,13 @@ function ChangeTap {
     # Iterate over the tab settings
     foreach ($tab in $tabSettings.Keys) {
         # Check if the current tab is selected
-        if ($itt['window'].FindName($tab).IsSelected) {
+        if ($sync['window'].FindName($tab).IsSelected) {
             $settings = $tabSettings[$tab]
             
             # Update button visibility and currentList based on the selected tab
-            $itt['window'].FindName('installBtn').Visibility = $settings['installBtn']
-            $itt['window'].FindName('applyBtn').Visibility = $settings['applyBtn']
-            $itt.currentList = $settings['currentList']
+            $sync['window'].FindName('installBtn').Visibility = $settings['installBtn']
+            $sync['window'].FindName('applyBtn').Visibility = $settings['applyBtn']
+            $sync.currentList = $settings['currentList']
             
             break  # Exit the loop once the matching tab is found
         }
@@ -13526,42 +12313,53 @@ function ChangeTap {
 }
 
 function Get-SelectedTweaks {
-    $items = @()
-    
-    $itt.TweaksListView.Items |
-        Where-Object { $_ -is [System.Windows.Controls.StackPanel] } |
-        ForEach-Object {
-            $_.Children |
-                Where-Object { $_ -is [System.Windows.Controls.StackPanel] } |
-                ForEach-Object {
-                    $_.Children |
-                        Where-Object { $_ -is [System.Windows.Controls.CheckBox] -and $_.IsChecked } |
-                        ForEach-Object {
-                            $checkbox = $_
-                            $tweak = $itt.database.Tweaks | Where-Object { $_.Name -eq $checkbox.Content }
 
-                            if ($tweak) {
-                                $items += @{
-                                    Name                = $tweak.Name
-                                    Type                = $tweak.Type
-                                    Modify              = $tweak.Modify
-                                    Delete              = $tweak.Delete
-                                    Service             = $tweak.Service
-                                    RemoveAppxPackage   = $tweak.RemoveAppxPackage
-                                    Command             = $tweak.InvokeCommand
-                                    Refresh             = $tweak.Refresh
-                                    # Add a new method tweak here
-                                }
+    $items = @()
+
+    foreach ($item in $sync.TweaksListView.Items)
+    {
+        if ($item -is [System.Windows.Controls.StackPanel]) {
+
+            foreach ($child in $item.Children) {
+                if ($child -is [System.Windows.Controls.StackPanel]) {
+                    foreach ($innerChild in $child.Children) {
+                        if ($innerChild -is [System.Windows.Controls.CheckBox]) {
+
+                            if($innerChild.IsChecked)
+                            {
+                                    foreach ($program in $sync.database.Tweaks)
+                                    {
+                                        if($innerChild.content -eq $program.Name)
+                                        {
+                                            $items += @{
+
+                                                Name = $program.Name
+                                                Type = $program.Type
+                                                Modify = $program.Modify
+                                                Delete = $program.Delete
+                                                Service = $program.Service
+                                                RemoveAppxPackage = $program.RemoveAppxPackage
+                                                Command = $program.InvokeCommand
+                                                Refresh = $program.refresh
+                                                # add a new method tweak here
+
+                                            }
+
+                                        }
+                                    }
                             }
+
                         }
+                    }
                 }
+            }
         }
-    
-    return $items
+    }
+    return $items 
 }
 function ShowSelectedTweaks {
     
-    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($itt.TweaksListView.Items)
+    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.TweaksListView.Items)
 
     $filterPredicate = {
        param($item)
@@ -13591,9 +12389,9 @@ function Invoke-ApplyTweaks {
 
     try {
 
-        if($itt.ProcessRunning)
+        if($sync.ProcessRunning)
         {
-            $localizedMessageTemplate = $itt.database.locales.Controls.$($itt.Language).Pleasewait
+            $localizedMessageTemplate = $sync.database.locales.Controls.$($sync.Language).Pleasewait
             $msg = "$localizedMessageTemplate"
             [System.Windows.MessageBox]::Show($msg, "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
             return
@@ -13604,7 +12402,7 @@ function Invoke-ApplyTweaks {
 
             if($tweaks.Count -gt 0)
             {
-                $areyousuremsg = $itt.database.locales.Controls.$($itt.Language).ApplyMessage
+                $areyousuremsg = $sync.database.locales.Controls.$($sync.Language).ApplyMessage
                 $result = [System.Windows.MessageBox]::Show($areyousuremsg, "ITT | Emad Adel", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)
 
                 if($result -eq "Yes")
@@ -13649,6 +12447,11 @@ function Invoke-ApplyTweaks {
                             try {
                                 Add-Log -Message "$Name" -Level "INFO"
                                 Start-Process -FilePath "powershell.exe" -ArgumentList "-Command `"$Command`"" -NoNewWindow -Wait
+                                Add-Log -Message "Done." -Level "INFO"
+        
+                                #debug
+                                #Write-Host "Command '$Command' Done."
+        
                             } catch {
                                 Write-Host "Error executing command '$Command': $_"
                             }
@@ -13677,12 +12480,15 @@ function Invoke-ApplyTweaks {
                                     }
                                 } else {
                                     Set-ItemProperty -Path $Path -Name $Name -Type $Type -Value $Value -Force -ErrorAction Stop
+                                    Add-Log -Message "$($Name) Successful applied" -Level "INFO"
                                 }
+        
                             }
                         
                             catch {
                                 Write-Error "An error occurred: $_"
                             }
+                            
                         }
         
                         function Remove-RegistryValue {
@@ -13699,8 +12505,13 @@ function Invoke-ApplyTweaks {
                         
                                 # Check if the registry key exists
                                 if (Test-Path "Registry::$KeyPath") {
+        
                                     # Delete the registry key and all subkeys recursively
+        
                                     Remove-Item -Path "Registry::$KeyPath" -Recurse -Force
+                                    Add-Log -Message "successful removed." -Level "INFO"
+        
+        
                                 } else {
                                     Add-Log -Message "Registry key '$KeyPath' does not exist." -Level "INFO"
                                 }
@@ -13721,8 +12532,11 @@ function Invoke-ApplyTweaks {
         
                                 # Check if the service exists
                                 if (Get-Service -Name $ServiceName -ErrorAction SilentlyContinue) {
+        
                                     Set-Service -Name $ServiceName -StartupType $StartupType -ErrorAction Stop
                                     Stop-Service -Name $ServiceName 
+                                    Add-Log -Message "Service '$ServiceName' disabled." -Level "INFO"
+        
                                 }
                                 else {
                                     Add-Log -Message "Service '$ServiceName' not found." -Level "INFO"
@@ -13759,10 +12573,10 @@ function Invoke-ApplyTweaks {
         
                             param($ApplyBtn,$icon,$Description,$Width)
                             
-                            $itt['window'].Dispatcher.Invoke([Action]{
-                                $itt.applyText.Text = "$ApplyBtn"
-                                $itt.applyBtn.Width = $Width
-                                $itt.applyIcon.Text = $icon
+                            $sync['window'].Dispatcher.Invoke([Action]{
+                                $sync.applyText.Text = "$ApplyBtn"
+                                $sync.applyBtn.Width = $Width
+                                $sync.applyIcon.Text = $icon
                             })
                         }
 
@@ -13834,7 +12648,6 @@ function Invoke-ApplyTweaks {
                                         "GPU" = $existingData.GPU
                                         "CPU" = $existingData.CPU
                                         "Cores" = $existingData.Cores 
-                                        "Country" = $existingData.Country
                                         "Language" = $existingData.Language 
                                         "Start at" = (Get-Date -Format "hh:mm:ss tt MM/dd/yyyy")
                                         "Runs" = $existingData.Runs
@@ -13862,8 +12675,8 @@ function Invoke-ApplyTweaks {
         
                         function Finish {
         
-                            $itt.TweaksListView.Dispatcher.Invoke([Action]{
-                                foreach ($item in $itt.TweaksListView.Items)
+                            $sync.TweaksListView.Dispatcher.Invoke([Action]{
+                                foreach ($item in $sync.TweaksListView.Items)
                                 {
                                     foreach ($child in $item.Children) {
                                         if ($child -is [System.Windows.Controls.StackPanel]) {
@@ -13871,8 +12684,8 @@ function Invoke-ApplyTweaks {
                                                 if ($innerChild -is [System.Windows.Controls.CheckBox]) {
                                 
                                                     $innerChild.IsChecked = $false
-                                                    $itt.TweaksListView.Clear()
-                                                    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($itt.TweaksListView.Items)
+                                                    $sync.TweaksListView.Clear()
+                                                    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.TweaksListView.Items)
                                                     $collectionView.Filter = $null
                                                 }
                                             }
@@ -13897,11 +12710,14 @@ function Invoke-ApplyTweaks {
                             [System.Windows.MessageBox]::Show($msg, $title, [System.Windows.MessageBoxButton]::$MessageBoxButton, [System.Windows.MessageBoxImage]::$MessageBoxImage)
                         }
 
-                            $applyBtn = $itt.database.locales.Controls.$($itt.Language).applyBtn
-                            $Applying = $itt.database.locales.Controls.$($itt.Language).Applying
+                            $applyBtn = $sync.database.locales.Controls.$($sync.Language).applyBtn
+                            $Applying = $sync.database.locales.Controls.$($sync.Language).Applying
+
+
                             UpdateUI -ApplyBtn "$applying" -icon " " -Width "150"
 
-                            $itt.ProcessRunning = $true
+
+                            $sync.ProcessRunning = $true
 
                             foreach ($app in $tweaks) {
                                 switch ($app.Type) {
@@ -13914,7 +12730,6 @@ function Invoke-ApplyTweaks {
 
                                         $app.Modify | ForEach-Object {
                                             Set-RegistryValue -Name $_.Name -Type $_.Type -Path $_.Path -Value $_.Value
-                                            #$app.Command | ForEach-Object { ExecuteCommand -Name $app.Name -Command $_ }
                                         }
 
                                         $app.Delete | ForEach-Object {
@@ -13935,24 +12750,23 @@ function Invoke-ApplyTweaks {
                                         $app.Command | ForEach-Object { ExecuteCommand -Command $_ }
                                     }
                                 }
-
-                                Add-Log -Message "Finished. Some tweaks require restarting the device." -Level "INFO"
+                                
                             }
 
                             # Displaying the names of the selected apps
                             $selectedAppNames = $tweaks | ForEach-Object { $_.Name }
                             UpdateUI -ApplyBtn "$applyBtn" -icon " " -Width "100"
-                            $itt.ProcessRunning = $False
+                            $sync.ProcessRunning = $False
                             Finish
-                            Send-Tweaks -FirebaseUrl $itt.firebaseUrl -Key "$env:COMPUTERNAME $env:USERNAME" -List $selectedAppNames
+                            Send-Tweaks -FirebaseUrl $sync.firebaseUrl -Key "$env:COMPUTERNAME $env:USERNAME" -List $selectedAppNames
                             Notify -title "ITT Emad Adel" -msg "Applied done" -icon "Info" -time 30000
                     }
                 }
                 else
                 {
                     # Uncheck all checkboxes in $list if user chose [NO]
-                    $itt.TweaksListView.Dispatcher.Invoke([Action]{
-                        foreach ($item in $itt.TweaksListView.Items) {
+                    $sync.TweaksListView.Dispatcher.Invoke([Action]{
+                        foreach ($item in $sync.TweaksListView.Items) {
                             foreach ($child in $item.Children) {
                                 if ($child -is [System.Windows.Controls.StackPanel]) {
                                     foreach ($innerChild in $child.Children) {
@@ -13963,20 +12777,18 @@ function Invoke-ApplyTweaks {
                                 }
                             }
                         }
-                        $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($itt.TweaksListView.Items)
+                        $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.TweaksListView.Items)
                         $collectionView.Filter = $null
                     })
                 }
             }
             else
             {
-               # Uncheck all checkboxes in $list
-                $itt.category.SelectedIndex = 0
-                $itt.TweaksListView.Dispatcher.Invoke({
-                    $itt.AppsListView.Clear()
-                    [System.Windows.Data.CollectionViewSource]::GetDefaultView($itt.TweaksListView.Items).Filter = $null
+                $sync.TweaksListView.Dispatcher.Invoke([Action]{
+                    $sync.TweaksListView.Items.Clear()
+                    [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.TweaksListView.Items).Filter = $null
                 })
-                $localizedMessageTemplate = $itt.database.locales.Controls.$($itt.Language).chosetweak
+                $localizedMessageTemplate = $sync.database.locales.Controls.$($sync.Language).chosetweak
                 [System.Windows.MessageBox]::Show("$localizedMessageTemplate", "ITT | Emad Adel", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
             }
     }
@@ -13986,37 +12798,46 @@ function Invoke-ApplyTweaks {
 }
 function Get-SelectedApps {
     $items = @()
-    
-    $itt.AppsListView.Items |
-        Where-Object { $_ -is [System.Windows.Controls.StackPanel] } |
-        ForEach-Object {
-            $_.Children |
-                Where-Object { $_ -is [System.Windows.Controls.StackPanel] } |
-                ForEach-Object {
-                    $_.Children |
-                        Where-Object { $_ -is [System.Windows.Controls.CheckBox] -and $_.IsChecked } |
-                        ForEach-Object {
-                            $checkbox = $_
-                            $app = $itt.database.Applications | Where-Object { $_.Name -eq $checkbox.Content }
+    foreach ($item in $sync.AppsListView.Items)
+    {
+        if ($item -is [System.Windows.Controls.StackPanel]) {
 
-                            if ($app) {
-                                $items += @{
-                                    Name    = $app.Name
-                                    Choco   = $app.Choco
-                                    Scoop   = $app.Scoop
-                                    Winget  = $app.Winget
-                                    Default = $app.Default
-                                    # Add a new method downloader here
-                                }
+            foreach ($child in $item.Children) {
+                if ($child -is [System.Windows.Controls.StackPanel]) {
+                    foreach ($innerChild in $child.Children) {
+                        if ($innerChild -is [System.Windows.Controls.CheckBox]) {
+
+                            if($innerChild.IsChecked)
+                            {
+                                    foreach ($program in $sync.database.Applications)
+                                    {
+                                        if($innerChild.content -eq $program.Name)
+                                        {
+                                            $items += @{
+
+                                                Name = $program.Name
+                                                Choco = $program.Choco
+                                                Scoop = $program.Scoop
+                                                Winget = $program.winget
+                                                Default = $program.default
+
+                                                # add a new method downloader here
+                                            }
+
+                                        }
+                                    }
                             }
+
                         }
+                    }
                 }
+            }
         }
-    
-    return $items
+    }
+    return $items 
 }
 function FilteredSelectedItems {
-    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($itt.AppsListView.Items)
+    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.AppsListView.Items)
 
     $filterPredicate = {
         param($item)
@@ -14045,22 +12866,22 @@ function Invoke-Install {
     
     try {
         
-        if($itt.ProcessRunning)
+        if($sync.ProcessRunning)
         {
-            $localizedMessageTemplate = $itt.database.locales.Controls.$($itt.Language).Pleasewait
+            $localizedMessageTemplate = $sync.database.locales.Controls.$($sync.Language).Pleasewait
             $msg = "$localizedMessageTemplate"
             [System.Windows.MessageBox]::Show($msg, "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
             return
         }
     
-        $itt.category.SelectedIndex = 0
+        $sync.category.SelectedIndex = 0
         FilteredSelectedItems
-        $selectedApps = Get-SelectedApps
+        $selectedApps += Get-SelectedApps
     
         if($selectedApps.Count -gt 0)
         {
             # Retrieve localized messages for confirmation dialog and UI elements
-            $areyousuremsg = $itt.database.locales.Controls.$($itt.Language).InstallMessage
+            $areyousuremsg = $sync.database.locales.Controls.$($sync.Language).InstallMessage
             $result = [System.Windows.MessageBox]::Show($areyousuremsg, "ITT | Emad Adel", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)
 
             if($result -eq "Yes")
@@ -14104,10 +12925,10 @@ function Invoke-Install {
             
                             param($InstallBtn,$icon,$Description,$Width)
                         
-                            $itt['window'].Dispatcher.Invoke([Action]{
-                                $itt.installText.Text = "$InstallBtn"
-                                $itt.installBtn.Width = $Width
-                                $itt.installIcon.Text = $icon
+                            $sync['window'].Dispatcher.Invoke([Action]{
+                                $sync.installText.Text = "$InstallBtn"
+                                $sync.installBtn.Width = $Width
+                                $sync.installIcon.Text = $icon
                             })
                         }
             
@@ -14202,7 +13023,6 @@ function Invoke-Install {
                                         "GPU" = $existingData.GPU
                                         "CPU" = $existingData.CPU
                                         "Cores" = $existingData.Cores 
-                                        "Country" = $existingData.Country
                                         "Language" = $existingData.Language 
                                         "Start at" = (Get-Date -Format "hh:mm:ss tt MM/dd/yyyy")
                                         "Runs" = $existingData.Runs
@@ -14457,8 +13277,8 @@ function Invoke-Install {
             
                         function Finish {
             
-                            $itt.AppsListView.Dispatcher.Invoke([Action]{
-                                foreach ($item in $itt.AppsListView.Items)
+                            $sync.AppsListView.Dispatcher.Invoke([Action]{
+                                foreach ($item in $sync.AppsListView.Items)
                                 {
                                     foreach ($child in $item.Children) {
                                         if ($child -is [System.Windows.Controls.StackPanel]) {
@@ -14466,8 +13286,8 @@ function Invoke-Install {
                                                 if ($innerChild -is [System.Windows.Controls.CheckBox]) {
             
                                                     $innerChild.IsChecked = $false
-                                                    $itt.AppsListView.Clear()
-                                                    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($itt.AppsListView.Items)
+                                                    $sync.AppsListView.Clear()
+                                                    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.AppsListView.Items)
                                                     $collectionView.Filter = $null
                                                 }
                                             }
@@ -14480,17 +13300,17 @@ function Invoke-Install {
                             UpdateUI -InstallBtn "$installBtn" -icon " " -Width "100"
                             Notify -title "ITT Emad Adel" -msg "Installed successfully" -icon "Info" -time 30000
                             # Store the apps you'v selected
-                            Send-Apps -FirebaseUrl $itt.firebaseUrl -Key "$env:COMPUTERNAME $env:USERNAME" -List $selectedAppNames
+                            Send-Apps -FirebaseUrl $sync.firebaseUrl -Key "$env:COMPUTERNAME $env:USERNAME" -List $selectedAppNames
                         }
                         #===========================================================================
                         #endregion End function
                         #===========================================================================
 
                         # start ProcessRunning
-                        $itt.ProcessRunning = $true
+                        $sync.ProcessRunning = $true
                        
-                        $installBtn = $itt.database.locales.Controls.$($itt.Language).installBtn
-                        $downloading = $itt.database.locales.Controls.$($itt.Language).downloading
+                        $installBtn = $sync.database.locales.Controls.$($sync.Language).installBtn
+                        $downloading = $sync.database.locales.Controls.$($sync.Language).downloading
             
                         # Chancge Install Content "Downloading.."
                         UpdateUI -InstallBtn "$downloading" -icon " " -Width "150"
@@ -14525,7 +13345,7 @@ function Invoke-Install {
                         }
     
                         # End ProcessRunning
-                        $itt.ProcessRunning = $false
+                        $sync.ProcessRunning = $false
 
                         # Notify user of successful installation
                         Finish
@@ -14534,8 +13354,8 @@ function Invoke-Install {
             else
             {
                 # Uncheck all checkboxes in $list if user chose [NO]
-                $itt.AppsListView.Dispatcher.Invoke({
-                    foreach ($item in $itt.AppsListView.Items) {
+                $sync.AppsListView.Dispatcher.Invoke({
+                    foreach ($item in $sync.AppsListView.Items) {
                         $item.Children | ForEach-Object {
                             if ($_ -is [System.Windows.Controls.StackPanel]) {
                                 $_.Children | ForEach-Object {
@@ -14546,20 +13366,20 @@ function Invoke-Install {
                             }
                         }
                     }
-                    $itt.AppsListView.Clear()
-                    [System.Windows.Data.CollectionViewSource]::GetDefaultView($itt.AppsListView.Items).Filter = $null
+                    $sync.AppsListView.Clear()
+                    [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.AppsListView.Items).Filter = $null
                 })
             }
         }
         else
         {
             # Uncheck all checkboxes in $list
-            $itt.category.SelectedIndex = 0
-            $itt.AppsListView.Dispatcher.Invoke({
-                $itt.AppsListView.Clear()
-                [System.Windows.Data.CollectionViewSource]::GetDefaultView($itt.AppsListView.Items).Filter = $null
+            $sync.category.SelectedIndex = 0
+            $sync.AppsListView.Dispatcher.Invoke({
+                $sync.AppsListView.Clear()
+                [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.AppsListView.Items).Filter = $null
             })
-            $localizedMessageTemplate = $itt.database.locales.Controls.$($itt.Language).choseapp
+            $localizedMessageTemplate = $sync.database.locales.Controls.$($sync.Language).choseapp
             [System.Windows.MessageBox]::Show("$localizedMessageTemplate", "ITT | Emad Adel", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
         }
     }
@@ -14579,7 +13399,7 @@ function Invoke-Button {
     Switch -Wildcard ($action) {
 
         "installBtn" {
-            $itt.SearchInput.Text = $null
+            $sync.SearchInput.Text = $null
             Invoke-Install
             Debug-Message $action
         }
@@ -14591,12 +13411,12 @@ function Invoke-Button {
             ChangeTap $action
         }
         "category" {
-            FilterByCat($itt.category.SelectedItem.Content)
+            FilterByCat($sync.category.SelectedItem.Content)
             Debug-Message $action
         }
         "searchInput" {
             Search
-            $itt['window'].FindName('category').SelectedIndex = 0
+            $sync['window'].FindName('category').SelectedIndex = 0
             Debug-Message $action
         }
 
@@ -14744,14 +13564,6 @@ function Invoke-Button {
             Start-Process "https://massgrave.dev/genuine-installation-media" 
             Debug-Message $action
         }
-        "sordum" {
-            Start-Process "https://www.sordum.org/" 
-            Debug-Message $action
-        }
-        "majorgeeks" {
-            Start-Process "https://www.majorgeeks.com/" 
-            Debug-Message $action
-        }
 
         # Other actions
         "ittshortcut" {
@@ -14789,7 +13601,7 @@ Function Invoke-DarkMode {
     Param($DarkMoveEnabled)
     Try{
 
-        $DarkMode = (Get-ItemProperty -Path $itt.registryPath -Name "DarkMode").DarkMode
+        $DarkMode = (Get-ItemProperty -Path $sync.registryPath -Name "DarkMode").DarkMode
 
 
         if ($DarkMoveEnabled -eq $false){
@@ -14797,7 +13609,7 @@ Function Invoke-DarkMode {
 
             if($DarkMode -eq "none")
             {
-                $itt['window'].Resources.MergedDictionaries.Add($itt['window'].FindResource("Dark"))
+                $sync['window'].Resources.MergedDictionaries.Add($sync['window'].FindResource("Dark"))
             }
         }
         else {
@@ -14805,7 +13617,7 @@ Function Invoke-DarkMode {
 
             if($DarkMode -eq "none")
             {
-                $itt['window'].Resources.MergedDictionaries.Add($itt['window'].FindResource("Light"))
+                $sync['window'].Resources.MergedDictionaries.Add($sync['window'].FindResource("Light"))
             }
         }
 
@@ -14922,20 +13734,21 @@ function About {
     # Load child window
     [xml]$about = $childXaml
     $childWindowReader = (New-Object System.Xml.XmlNodeReader $about)
-    $itt.about = [Windows.Markup.XamlReader]::Load($childWindowReader)
-    $itt["about"].Resources.MergedDictionaries.Add($itt["window"].FindResource($itt.CurretTheme))
+    $sync.about = [Windows.Markup.XamlReader]::Load($childWindowReader)
+    $sync["about"].Resources.MergedDictionaries.Add($sync["window"].FindResource($sync.CurretTheme))
     # Set version and link handlers
-    $itt.about.FindName('ver').Text = "Last update $($itt.lastupdate)"
-    $itt.about.FindName("telegram").add_MouseLeftButtonDown({Start-Process("https://t.me/emadadel4")})
-    $itt.about.FindName("github").add_MouseLeftButtonDown({Start-Process("https://github.com/emadadel4/itt")})
-    $itt.about.FindName("blog").add_MouseLeftButtonDown({Start-Process("https://emadadel4.github.io")})
-    $itt.about.FindName("yt").add_MouseLeftButtonDown({Start-Process("https://youtube.com/@emadadel4")})
-    $itt.about.FindName("coffee").add_MouseLeftButtonDown({Start-Process("https://buymeacoffee.com/emadadel")})
+    $sync.about.FindName('ver').Text = $sync.lastupdate
+    $sync.about.FindName("telegram").add_MouseLeftButtonDown({Start-Process("https://t.me/emadadel4")})
+    $sync.about.FindName("github").add_MouseLeftButtonDown({Start-Process("https://github.com/emadadel4")})
+    $sync.about.FindName("website").add_MouseLeftButtonDown({Start-Process("https://emadadel4.github.io")})
+    $sync.about.FindName("yt").add_MouseLeftButtonDown({Start-Process("https://youtube.com/@emadadel4")})
+    $sync.about.FindName("sourcecode").add_MouseLeftButtonDown({Start-Process("https://github.com/emadadel4/ITT")})
+    $sync.about.FindName("coffee").add_MouseLeftButtonDown({Start-Process("https://buymeacoffee.com/emadadel")})
     # Set data context based on language
-    
-    $itt.about.DataContext = $itt.database.locales.Controls.en
-
-    $itt.about.ShowDialog() | Out-Null
+    $locale = if ($sync.Language -eq "en") { "en" } else { "ar" }
+    $sync.about.DataContext = $sync.database.locales.Controls.$locale
+    # Show dialog
+    $sync.about.ShowDialog() | Out-Null
 }
 function ITTShortcut {
     # URL of the icon file
@@ -14962,12 +13775,71 @@ function ITTShortcut {
     $Shortcut.Save()
 }
 
+function DisplayQuotes  {
+
+    Invoke-ScriptBlock -ScriptBlock {
+
+        # Define the JSON file path
+        $jsonFilePath = $sync.database.Quotes
+
+        # Function to shuffle an array
+        function ShuffleArray {
+            param (
+                [array]$Array
+            )
+            $count = $Array.Count
+            for ($i = $count - 1; $i -ge 0; $i--) {
+                $randomIndex = Get-Random -Minimum 0 -Maximum $count
+                $temp = $Array[$i]
+                $Array[$i] = $Array[$randomIndex]
+                $Array[$randomIndex] = $temp
+            }
+            return $Array
+        }
+
+        # Function to get names from the JSON file
+        function Get-NamesFromJson {
+            $jsonContent =  $jsonFilePath 
+            return $jsonContent.Q
+        }
+
+        # Get shuffled names
+        $shuffledNames = ShuffleArray -Array (Get-NamesFromJson)
+
+        # Function to display welcome text
+        function Display-WelcomeText {
+            $sync.Quotes.Dispatcher.Invoke([Action]{
+
+                $fullCulture = (Get-ItemPropertyValue -Path "HKCU:\Control Panel\International" -Name "LocaleName")
+                $shortCulture = $fullCulture.Split('-')[0]
+                $sync.Quotes.Text = $sync.database.locales.Controls.$($sync.Language).welcome
+               
+            })
+        }
+
+        # Display welcome text
+        Display-WelcomeText
+
+        Start-Sleep -Seconds 20
+
+        # Loop through shuffled names and display them
+        do {
+            foreach ($name in $shuffledNames) {
+                $sync.Quotes.Dispatcher.Invoke([Action]{
+                    $sync.Quotes.Text = "`“$name`”"
+                })
+                # Adjust the sleep time as needed
+                Start-Sleep -Seconds 18 
+            }
+        } while ($true)
+    }
+}
 function Search {
 
     # Retrieves the search input, converts it to lowercase, and filters the list based on the input
-    $filter = $itt.searchInput.Text.ToLower() -replace '[^\p{L}\p{N}]', ''
+    $filter = $sync.searchInput.Text.ToLower() -replace '[^\p{L}\p{N}]', ''
 
-    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($itt['window'].FindName($itt.currentList).Items)
+    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync['window'].FindName($sync.currentList).Items)
     
     $collectionView.Filter = {
         param($item)
@@ -15013,11 +13885,11 @@ function FilterByCat {
     )
 
     # Update DataContext
-    #$itt["window"].DataContext = $itt.database.locales.Controls.$($itt.Language)
+    #$sync["window"].DataContext = $sync.database.locales.Controls.$($sync.Language)
 
     # if user is on another tab, return to the apps list
-    $itt['window'].FindName('apps').IsSelected = $true
-    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($itt.AppsListView.Items)
+    $sync['window'].FindName('apps').IsSelected = $true
+    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.AppsListView.Items)
 
     # Define the filter predicate
     $filterPredicate = {
@@ -15042,122 +13914,92 @@ function FilterByCat {
 
     if ($validCategories -contains $Cat) {
         # Apply the filter to the collection view
-        $itt.AppsListView.Clear()
+        $sync.AppsListView.Clear()
         $collectionView.Filter = $filterPredicate
     }
     else {
         # Clear the filter if selected category is not in the predefined list
-        $itt.AppsListView.Clear()
+        $sync.AppsListView.Clear()
         $collectionView.Filter = $null
     }
     
     # Scroll to the top
-    $itt.AppsListView.ScrollIntoView($itt.AppsListView.Items[0])
+    $sync.AppsListView.ScrollIntoView($sync.AppsListView.Items[0])
 }
 function ClearFilter {
-    $itt.AppsListView.Clear()
-    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($itt.AppsListView.Items)
+    $sync.AppsListView.Clear()
+    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($sync.AppsListView.Items)
     $collectionView.Filter = $null
 }
-$KeyEvents = {
+function PlayMusic {
 
-    if ($itt.ProcessRunning -eq $true) {
-        return
+    # Function to play an audio track
+    function PlayAudio($track) {
+        $mediaItem = $sync.mediaPlayer.newMedia($track)
+        $sync.mediaPlayer.currentPlaylist.appendItem($mediaItem)
+        $sync.mediaPlayer.controls.play()
     }
 
-    if (($_.Key -eq "Enter")) {
+    # Shuffle the playlist and create a new playlist
+    function GetShuffledTracks {
 
-        switch ($itt.currentList) {
-            "appslist" {
-                Invoke-Install                
-            }
-            "tweakslist" {
-                Invoke-ApplyTweaks
+        # Play Favorite Music in Special Date
+        if ($sync.Date.Month -eq 9 -and $sync.Date.Day -eq 1) {
+            return $sync.database.OST.Favorite | Get-Random -Count $sync.database.OST.Favorite.Count
+        }
+        else {
+            return $sync.database.OST.Tracks | Get-Random -Count $sync.database.OST.Tracks.Count
+        }
+    }
+
+    # Preload and play the shuffled playlist
+    function PlayPreloadedPlaylist {
+        # Preload the shuffled playlist
+        $shuffledTracks = GetShuffledTracks
+
+        foreach ($track in $shuffledTracks) {
+            PlayAudio -track $track.url
+            # Wait for the track to finish playing
+            while ($sync.mediaPlayer.playState -in 3, 6) {
+                Start-Sleep -Milliseconds 100
             }
         }
     }
 
-    if (($_.Key -eq "S" -and $_.KeyboardDevice.Modifiers -eq "Ctrl")) {
-
-        switch ($itt.currentList) {
-            "appslist" {
-                Invoke-Install                
-            }
-            "tweakslist" {
-                Invoke-ApplyTweaks
-            }
-        }
-    }
-
-     # Quit from applaction
-     if (($_.Key -eq "G" -and $_.KeyboardDevice.Modifiers -eq "Ctrl")) {
-        $this.Close()
-    }
-
-    # Foucs on Search box
-    if (($_.Key -eq "F" -and $_.KeyboardDevice.Modifiers -eq "Ctrl")) {
-        $itt.SearchInput.Focus()
-    }
-
-    # Lost Foucs on Search box
-    if ($_.Key -eq "Escape") {
-        $itt.SearchInput.MoveFocus([System.Windows.Input.TraversalRequest]::New([System.Windows.Input.FocusNavigationDirection]::Next))
-    }
-
-    # Swtich to Apps tap
-    if ($_.Key -eq "Q" -and $_.KeyboardDevice.Modifiers -eq "Ctrl") {
-        $itt.TabControl.SelectedItem = $itt.TabControl.Items | Where-Object { $_.Name -eq "apps" }
-    }
-
-    # Swtich to tweaks tap
-    if ($_.Key -eq "W" -and $_.KeyboardDevice.Modifiers -eq "Ctrl") {
-        $itt.TabControl.SelectedItem = $itt.TabControl.Items | Where-Object { $_.Name -eq "tweeksTab" }
-    }
-
-    # Swtich to settings tap
-    if ($_.Key -eq "E" -and $_.KeyboardDevice.Modifiers -eq "Ctrl") {
-        $itt.TabControl.SelectedItem = $itt.TabControl.Items | Where-Object { $_.Name -eq "SettingsTab" }
-    }
-
-    # Swtich to settings tap
-    if ($_.Key -eq "I" -and $_.KeyboardDevice.Modifiers -eq "Ctrl") {
-        About
-    }
-   
+    # Play the preloaded playlist
+    PlayPreloadedPlaylist
 }
-
-$itt["window"].Add_PreViewKeyDown($KeyEvents)
 
 # Mute the music by setting the volume to the specified value
 function MuteMusic {
     param($value)
-    $itt.mediaPlayer.settings.volume = $value
+    $sync.mediaPlayer.settings.volume = $value
     # Save the volume setting to the registry for persistence
-    Set-ItemProperty -Path $itt.registryPath -Name "Music" -Value "$value" -Force
+    Set-ItemProperty -Path $sync.registryPath -Name "Music" -Value "$value" -Force
 }
 
 # Unmute the music by setting the volume to the specified value
 function UnmuteMusic {
     param($value)
-    $itt.mediaPlayer.settings.volume = $value
+    $sync.mediaPlayer.settings.volume = $value
     # Save the volume setting to the registry for persistence
-    Set-ItemProperty -Path $itt.registryPath -Name "Music" -Value "$value" -Force
+    Set-ItemProperty -Path $sync.registryPath -Name "Music" -Value "$value" -Force
 }
 
 # Stop the music and clean up resources
 function StopMusic {
-    $itt.mediaPlayer.controls.stop()    # Stop the media player
-    $itt.mediaPlayer = $null            # Clear the media player object
+    $sync.mediaPlayer.controls.stop()    # Stop the media player
+    $sync.mediaPlayer = $null            # Clear the media player object
     $script:powershell.Dispose()         # Dispose of the PowerShell object
-    $itt.runspace.Dispose()             # Dispose of the runspace
-    $itt.runspace.Close()               # Close the runspace
+    $sync.runspace.Dispose()             # Dispose of the runspace
+    $sync.runspace.Close()               # Close the runspace
 }
 
 # Stop all runspaces, stop the music, and exit the process
 function StopAllRunspace {
     $script:powershell.Dispose()         # Dispose of the PowerShell object
-    $itt.runspace.Dispose()             # Dispose of the runspace
-    $itt.runspace.Close()               # Close the runspace
+    $sync.runspace.Dispose()             # Dispose of the runspace
+    $sync.runspace.Close()               # Close the runspace
     $script:powershell.Stop()            # Stop the PowerShell script
     StopMusic                            # Stop the music and clean up resources
     $newProcess.exit                     # Exit the process
@@ -15170,16 +14012,16 @@ function Set-Language {
     )
 
     # Set DataContext of the window to the specified language
-    $itt["window"].DataContext = $itt.database.locales.Controls.$($lang)
+    $sync["window"].DataContext = $sync.database.locales.Controls.$($lang)
 
     # Set registry value for the language
-    Set-ItemProperty -Path $itt.registryPath  -Name "locales" -Value "$lang" -Force
+    Set-ItemProperty -Path $sync.registryPath  -Name "locales" -Value "$lang" -Force
 }
 function ToggleTheme {
     
     try {
 
-        if ($itt.searchInput = $itt['window'].FindName('themeText').IsChecked -eq $true)
+        if ($sync.searchInput = $sync['window'].FindName('themeText').IsChecked -eq $true)
         {
             Switch-ToDarkMode
         } 
@@ -15193,13 +14035,13 @@ function ToggleTheme {
         Write-Host "Error toggling theme: $_"
     }
 
-    $itt['window'].FindName('themeText').IsChecked = -not $itt['window'].FindName('themeText').IsChecked
+    $sync['window'].FindName('themeText').IsChecked = -not $sync['window'].FindName('themeText').IsChecked
 
 }
 function Switch-ToDarkMode {
     try {
 
-        $theme = $itt['window'].FindResource("Dark")
+        $theme = $sync['window'].FindResource("Dark")
         Update-Theme $theme "true"
     } catch {
         Write-Host "Error switching to dark mode: $_"
@@ -15207,32 +14049,32 @@ function Switch-ToDarkMode {
 }
 function Switch-ToLightMode {
     try {
-        $theme = $itt['window'].FindResource("Light")
+        $theme = $sync['window'].FindResource("Light")
         Update-Theme $theme "false"
     } catch {
         Write-Host "Error switching to light mode: $_"
     }
 }
 function Update-Theme ($theme, $mode) {
-    $itt['window'].Resources.MergedDictionaries.Clear()
-    $itt['window'].Resources.MergedDictionaries.Add($theme)
-    Set-ItemProperty -Path $itt.registryPath -Name "DarkMode" -Value $mode -Force
+    $sync['window'].Resources.MergedDictionaries.Clear()
+    $sync['window'].Resources.MergedDictionaries.Add($theme)
+    Set-ItemProperty -Path $sync.registryPath -Name "DarkMode" -Value $mode -Force
 
 }
 function SwitchToSystem {
 
     try {
 
-        Set-ItemProperty -Path $itt.registryPath  -Name "DarkMode" -Value "none" -Force
+        Set-ItemProperty -Path $sync.registryPath  -Name "DarkMode" -Value "none" -Force
 
         $AppsTheme = (Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize" -Name "AppsUseLightTheme")
 
         switch ($AppsTheme) {
             "0" {
-                $itt['window'].Resources.MergedDictionaries.Add($itt['window'].FindResource("Dark"))
+                $sync['window'].Resources.MergedDictionaries.Add($sync['window'].FindResource("Dark"))
             }
             "1" {
-                $itt['window'].Resources.MergedDictionaries.Add($itt['window'].FindResource("Light"))
+                $sync['window'].Resources.MergedDictionaries.Add($sync['window'].FindResource("Light"))
             }
             Default {
                 Write-Host "Unknown theme value: $AppsTheme"
@@ -15243,8 +14085,6 @@ function SwitchToSystem {
         Write-Host "Error occurred: $_"
     }
 }
-
-# Invoke Event Window WPF
 function Show-Event {
     param(
         [string]$image,
@@ -15260,50 +14100,40 @@ function Show-Event {
     [xml]$event = $EventXaml
 
     $EventWindowReader = (New-Object System.Xml.XmlNodeReader $event)
-    $itt.event = [Windows.Markup.XamlReader]::Load($EventWindowReader)
-    $itt["event"].Resources.MergedDictionaries.Add($itt["window"].FindResource($itt.CurretTheme))
-    $itt.event.title = "ITT | $title"
-    $itt.event.Height = "$WindowHeight"
-    $itt.event.Width = "$WindowWidth"
+    $sync.event = [Windows.Markup.XamlReader]::Load($EventWindowReader)
+    $sync["event"].Resources.MergedDictionaries.Add($sync["window"].FindResource($sync.CurretTheme))
+    $sync.event.title = "ITT | $title"
+    $sync.event.Height = "$WindowHeight"
+    $sync.event.Width = "$WindowWidth"
 
     # Set new values
-    $titleTextBlock = $itt.event.FindName('title')
-    $subtitleTextBlock = $itt.event.FindName('Subtitle')
-    $tutorialImage = $itt.event.FindName('Image')
-    $mainStackPanel = $itt.event.FindName('MainStackPanel')
-
-    $itt.event.FindName('date').Text = $itt.lastupdate
+    $titleTextBlock = $sync.event.FindName('title')
+    $subtitleTextBlock = $sync.event.FindName('Subtitle')
+    $tutorialImage = $sync.event.FindName('TutorialImage')
+    $mainStackPanel = $sync.event.FindName('MainStackPanel')
 
     # Switch-like structure using switch statement
     switch ($day) {
 
         "Birthday" {
+            # Remove the subtitle text block
             $titleTextBlock.Text = "$title"
             $tutorialImage.Source = [System.Windows.Media.Imaging.BitmapImage]::new([Uri]::new($image))
             $subtitleTextBlock.Text = "$description"
-            $itt.event.FindName('DisablePopup').Text = "Happy birthday day Emad"
+            $sync.event.FindName('DisablePopup').Text = "Happy birthday day Emad"
             $tutorialImage.Height = $ImageHeight
-            $subtitleTextBlock.VerticalAlignment = "Center"
-            $subtitleTextBlock.HorizontalAlignment = "Center"
-            $subtitleTextBlock.FontSize = "20"
-
-            $itt.event.FindName("DisablePopup").add_MouseLeftButtonDown({
-                $itt.event.FindName("DisablePopup").Text = "Thank you :)"
-            })
+        }
+        "NewYear" {
+            # Remove the subtitle text block and image
+            $mainStackPanel.Children.Remove($subtitleTextBlock)
+            $mainStackPanel.Children.Remove($tutorialImage)
+            # Update the title text block
+            $titleTextBlock.Text = "$title - Happy New Year!"
         }
         Default {
-
-            # Check RTL & LTR
-            if($itt.Language -ne "ar")
-            {
-                $titleTextBlock.Text = "$title $env:USERNAME" 
-                $subtitleTextBlock.Text = "$description"
-
-            }else
-            {
-                $titleTextBlock.Text = "$env:USERNAME $title " 
-                $subtitleTextBlock.Text = "$description"
-            }
+            # Default case: update text blocks
+            $titleTextBlock.Text = "$title"
+            $mainStackPanel.Children.Remove($subtitleTextBlock)
 
             # Lazy loading image event handler
             $tutorialImage.add_IsVisibleChanged({
@@ -15311,57 +14141,43 @@ function Show-Event {
                     $tutorialImage.Source = [System.Windows.Media.Imaging.BitmapImage]::new([Uri]::new($image))
                 }
             })
-                    
-            $tutorialImage.add_MouseLeftButtonDown({
-                Start-Process("https://youtu.be/QmO82OTsU5c")
-            })
-
-            $itt.event.FindName("DisablePopup").add_MouseLeftButtonDown({
-                DisablePopup
-                $itt.event.Close()
-            })
         }
     }
 
-    $itt.event.FindName("closebtn").add_MouseLeftButtonDown({
-        $itt.event.Close()
+
+    $sync.event.FindName("DisablePopup").add_MouseLeftButtonDown({
+        DisablePopup
+        $sync.event.Close()
     })
 
-    $KeyEvents = {
-
-        # Close
-        if ($_.Key -eq "Escape") {
-            $itt.event.Close()
-        }
-    }
-    $itt.event.Add_PreViewKeyDown($KeyEvents)
-
     # Show dialog
-    $itt.event.ShowDialog() | Out-Null
+    $sync.event.ShowDialog() | Out-Null
 }
 
 # Function to check current date and call Show-Event
 function Check-Date {
 
-    $watchdemo = $itt.database.locales.Controls.$($itt.Language).watchdemo
-    $happybirthday = $itt.database.locales.Controls.$($itt.Language).happybirthday
-    $myplaylist = $itt.database.locales.Controls.$($itt.Language).myplaylist
-    $subs = $itt.database.locales.Updates.Keyboard
+    $watchdemo = $sync.database.locales.Controls.$($sync.Language).watchdemo
+    $happybirthday = $sync.database.locales.Controls.$($sync.Language).happybirthday
+    $myplaylist = $sync.database.locales.Controls.$($sync.Language).myplaylist
 
-    if ($itt.Date.Month -eq 9 -and $itt.Date.Day -eq 1) 
+    if ($sync.Date.Month -eq 9 -and $sync.Date.Day -eq 1) 
     {
-        Show-Event -image "https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/happy.jpg" -ImageHeight 400 -title "$happybirthday" -description "$myplaylist" -day "Birthday" -WindowHeight 600 -WindowWidth 486
+        Show-Event -image "https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/happy.jpg" -ImageHeight 200 -title "$happybirthday" -description "$myplaylist" -day "Birthday" -WindowHeight 455 -WindowWidth 555
     } 
     else 
     {
-        if($itt.PopupWindow -eq "off") {return}   
-        Show-Event -image "https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/thumbnail.jpg" -title "$watchdemo" -description "$subs" -day "Default" -WindowHeight 600 -WindowWidth 486
+        if($sync.PopupWindow -eq "off")
+        {
+            return
+        }   
+
+        Show-Event -image "https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/thumbnail.jpg" -title "$watchdemo" -day "Default" -WindowHeight 455 -WindowWidth 555
     }
 }
 
-# Save Current State event
 function DisablePopup {
-    Set-ItemProperty -Path $itt.registryPath  -Name "PopupWindow" -Value "off" -Force
+    Set-ItemProperty -Path $sync.registryPath  -Name "PopupWindow" -Value "off" -Force
 }
 #===========================================================================
 #region Select elements with a Name attribute using XPath and iterate over them
@@ -15370,10 +14186,10 @@ function DisablePopup {
 # Select elements with a Name attribute and iterate
 $xaml.SelectNodes("//*[@Name]") | ForEach-Object {
     $name = $_.Name
-    $element = $itt["window"].FindName($name)
+    $element = $sync["window"].FindName($name)
 
     if ($element) {
-        $itt[$name] = $element
+        $sync[$name] = $element
 
         # Add event handlers based on element type
         switch ($element.GetType().Name) {
@@ -15411,7 +14227,7 @@ $xaml.SelectNodes("//*[@Name]") | ForEach-Object {
 $onClosingEvent = {
     param($s, $c)
 
-    $exitDialog = $itt.database.locales.Controls.$($itt.Language).exit
+    $exitDialog = $sync.database.locales.Controls.$($sync.Language).exit
 
     # Show confirmation message box
     $result = [System.Windows.MessageBox]::Show($exitDialog, "Confirmation", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)
@@ -15425,16 +14241,18 @@ $onClosingEvent = {
 }
 
 # Handle the Loaded event
-$itt["window"].Add_Loaded({
+$sync["window"].Add_ContentRendered({
     Startup
+    DisplayQuotes | Out-Null
+    PlayMusic | Out-Null
     Check-Date
 })
 
 # Close Event handler
-$itt["window"].add_Closing($onClosingEvent)
+$sync["window"].add_Closing($onClosingEvent)
 
 # Show Window
-$itt["window"].ShowDialog() | Out-Null
+$sync["window"].ShowDialog() | Out-Null
 
 #===========================================================================
 #endregion End Main Functions
