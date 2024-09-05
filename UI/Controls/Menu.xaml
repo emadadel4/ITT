@@ -1,12 +1,12 @@
  <!--Menu-->
-  <Menu Grid.Row="0" Grid.Column="0" Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Left" BorderThickness="0">
-                                  
+<Menu Grid.Row="0" Grid.Column="0" Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Left" BorderThickness="0">
+                                
     <MenuItem IsEnabled="False" ToolTip="Emad Adel">
         <MenuItem.Icon>
             <Image Source="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/logo.png" Width="70" Height="Auto" Margin="5,5,0,0"/>
         </MenuItem.Icon>
     </MenuItem>
-    
+
 
     <MenuItem Header="{Binding management}" FontFamily="arial" FontSize="13"  Margin="10,0,0,0" BorderBrush="Transparent" BorderThickness="0" VerticalAlignment="Center" HorizontalAlignment="Left">
         <MenuItem.Icon>
@@ -124,7 +124,7 @@
                 <MenuItem Name="es" Header="Español" />
         </MenuItem>
 
-    
+
         <MenuItem Name="ittshortcut" Header="{Binding ittlink}">
             <MenuItem.Icon>
                 <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="15" Text=""/>
@@ -134,7 +134,7 @@
 
 
     </MenuItem>
-    
+
 
     <MenuItem Header="{Binding thirdparty}" FontFamily="arial" FontSize="13"  BorderThickness="0" VerticalAlignment="Center" HorizontalAlignment="Center">
         <MenuItem.Icon>
@@ -184,7 +184,7 @@
         
     </MenuItem>
 
-    
+
     <MenuItem Name="dev" Header="{Binding about}" FontFamily="arial" FontSize="13"  BorderBrush="Transparent" BorderThickness="1" VerticalAlignment="Center" HorizontalAlignment="Center">
         <MenuItem.Icon>
             <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="15" Text=""/>
@@ -192,5 +192,5 @@
     </MenuItem>
 
 
-  </Menu>
+</Menu>
 <!--End Menu-->
