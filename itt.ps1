@@ -13521,49 +13521,38 @@ function ChangeTap {
 }
 
 function Get-SelectedTweaks {
-
     $items = @()
+    
+    $itt.TweaksListView.Items |
+        Where-Object { $_ -is [System.Windows.Controls.StackPanel] } |
+        ForEach-Object {
+            $_.Children |
+                Where-Object { $_ -is [System.Windows.Controls.StackPanel] } |
+                ForEach-Object {
+                    $_.Children |
+                        Where-Object { $_ -is [System.Windows.Controls.CheckBox] -and $_.IsChecked } |
+                        ForEach-Object {
+                            $checkbox = $_
+                            $tweak = $itt.database.Tweaks | Where-Object { $_.Name -eq $checkbox.Content }
 
-    foreach ($item in $itt.TweaksListView.Items)
-    {
-        if ($item -is [System.Windows.Controls.StackPanel]) {
-
-            foreach ($child in $item.Children) {
-                if ($child -is [System.Windows.Controls.StackPanel]) {
-                    foreach ($innerChild in $child.Children) {
-                        if ($innerChild -is [System.Windows.Controls.CheckBox]) {
-
-                            if($innerChild.IsChecked)
-                            {
-                                    foreach ($program in $itt.database.Tweaks)
-                                    {
-                                        if($innerChild.content -eq $program.Name)
-                                        {
-                                            $items += @{
-
-                                                Name = $program.Name
-                                                Type = $program.Type
-                                                Modify = $program.Modify
-                                                Delete = $program.Delete
-                                                Service = $program.Service
-                                                RemoveAppxPackage = $program.RemoveAppxPackage
-                                                Command = $program.InvokeCommand
-                                                Refresh = $program.refresh
-                                                # add a new method tweak here
-
-                                            }
-
-                                        }
-                                    }
+                            if ($tweak) {
+                                $items += @{
+                                    Name                = $tweak.Name
+                                    Type                = $tweak.Type
+                                    Modify              = $tweak.Modify
+                                    Delete              = $tweak.Delete
+                                    Service             = $tweak.Service
+                                    RemoveAppxPackage   = $tweak.RemoveAppxPackage
+                                    Command             = $tweak.InvokeCommand
+                                    Refresh             = $tweak.Refresh
+                                    # Add a new method tweak here
+                                }
                             }
-
                         }
-                    }
                 }
-            }
         }
-    }
-    return $items 
+    
+    return $items
 }
 function ShowSelectedTweaks {
     
@@ -13653,13 +13642,8 @@ function Invoke-ApplyTweaks {
                                 [string]$Command
                             )
                             try {
-                                Add-Log -Message "$Name" -Level "INFO"
+                                #Add-Log -Message "$Name" -Level "INFO"
                                 Start-Process -FilePath "powershell.exe" -ArgumentList "-Command `"$Command`"" -NoNewWindow -Wait
-                                Add-Log -Message "Done." -Level "INFO"
-        
-                                #debug
-                                #Write-Host "Command '$Command' Done."
-        
                             } catch {
                                 Write-Host "Error executing command '$Command': $_"
                             }
@@ -13682,21 +13666,18 @@ function Invoke-ApplyTweaks {
                                     # Try to create the registry path
                                     try {
                                         New-Item -Path $Path -Name $Name -Type $Type -Value $Value -Force -ErrorAction Stop | Out-Null
-                                        Add-Log -Message "Registry path created successfully." -Level "INFO"
+                                        #Add-Log -Message "Registry path created successfully." -Level "INFO"
                                     } catch {
                                         Add-Log -Message "Failed to create registry path: $_" -Level "ERROR"
                                     }
                                 } else {
                                     Set-ItemProperty -Path $Path -Name $Name -Type $Type -Value $Value -Force -ErrorAction Stop
-                                    Add-Log -Message "$($Name) Successful applied" -Level "INFO"
                                 }
-        
                             }
                         
                             catch {
                                 Write-Error "An error occurred: $_"
                             }
-                            
                         }
         
                         function Remove-RegistryValue {
@@ -13713,13 +13694,8 @@ function Invoke-ApplyTweaks {
                         
                                 # Check if the registry key exists
                                 if (Test-Path "Registry::$KeyPath") {
-        
                                     # Delete the registry key and all subkeys recursively
-        
                                     Remove-Item -Path "Registry::$KeyPath" -Recurse -Force
-                                    Add-Log -Message "successful removed." -Level "INFO"
-        
-        
                                 } else {
                                     Add-Log -Message "Registry key '$KeyPath' does not exist." -Level "INFO"
                                 }
@@ -13736,15 +13712,10 @@ function Invoke-ApplyTweaks {
                             )
         
                             try {
-        
-        
                                 # Check if the service exists
                                 if (Get-Service -Name $ServiceName -ErrorAction SilentlyContinue) {
-        
                                     Set-Service -Name $ServiceName -StartupType $StartupType -ErrorAction Stop
                                     Stop-Service -Name $ServiceName 
-                                    Add-Log -Message "Service '$ServiceName' disabled." -Level "INFO"
-        
                                 }
                                 else {
                                     Add-Log -Message "Service '$ServiceName' not found." -Level "INFO"
@@ -13856,6 +13827,7 @@ function Invoke-ApplyTweaks {
                                         "GPU" = $existingData.GPU
                                         "CPU" = $existingData.CPU
                                         "Cores" = $existingData.Cores 
+                                        "Country" = $existingData.Country
                                         "Language" = $existingData.Language 
                                         "Start at" = (Get-Date -Format "hh:mm:ss tt MM/dd/yyyy")
                                         "Runs" = $existingData.Runs
@@ -13920,12 +13892,12 @@ function Invoke-ApplyTweaks {
 
                             $applyBtn = $itt.database.locales.Controls.$($itt.Language).applyBtn
                             $Applying = $itt.database.locales.Controls.$($itt.Language).Applying
-
-
                             UpdateUI -ApplyBtn "$applying" -icon " " -Width "150"
 
-
                             $itt.ProcessRunning = $true
+
+                            Add-Log -Message "$($tweaks.name)..." -Level "INFO"
+
 
                             foreach ($app in $tweaks) {
                                 switch ($app.Type) {
@@ -13938,6 +13910,7 @@ function Invoke-ApplyTweaks {
 
                                         $app.Modify | ForEach-Object {
                                             Set-RegistryValue -Name $_.Name -Type $_.Type -Path $_.Path -Value $_.Value
+                                            #$app.Command | ForEach-Object { ExecuteCommand -Name $app.Name -Command $_ }
                                         }
 
                                         $app.Delete | ForEach-Object {
@@ -13958,7 +13931,8 @@ function Invoke-ApplyTweaks {
                                         $app.Command | ForEach-Object { ExecuteCommand -Command $_ }
                                     }
                                 }
-                                
+
+                                Add-Log -Message "Finished, Some tweaks require restarting" -Level "INFO"
                             }
 
                             # Displaying the names of the selected apps
@@ -13992,8 +13966,10 @@ function Invoke-ApplyTweaks {
             }
             else
             {
-                $itt.TweaksListView.Dispatcher.Invoke([Action]{
-                    $itt.TweaksListView.Items.Clear()
+               # Uncheck all checkboxes in $list
+                $itt.category.SelectedIndex = 0
+                $itt.TweaksListView.Dispatcher.Invoke({
+                    $itt.AppsListView.Clear()
                     [System.Windows.Data.CollectionViewSource]::GetDefaultView($itt.TweaksListView.Items).Filter = $null
                 })
                 $localizedMessageTemplate = $itt.database.locales.Controls.$($itt.Language).chosetweak
@@ -14006,43 +13982,34 @@ function Invoke-ApplyTweaks {
 }
 function Get-SelectedApps {
     $items = @()
-    foreach ($item in $itt.AppsListView.Items)
-    {
-        if ($item -is [System.Windows.Controls.StackPanel]) {
+    
+    $itt.AppsListView.Items |
+        Where-Object { $_ -is [System.Windows.Controls.StackPanel] } |
+        ForEach-Object {
+            $_.Children |
+                Where-Object { $_ -is [System.Windows.Controls.StackPanel] } |
+                ForEach-Object {
+                    $_.Children |
+                        Where-Object { $_ -is [System.Windows.Controls.CheckBox] -and $_.IsChecked } |
+                        ForEach-Object {
+                            $checkbox = $_
+                            $app = $itt.database.Applications | Where-Object { $_.Name -eq $checkbox.Content }
 
-            foreach ($child in $item.Children) {
-                if ($child -is [System.Windows.Controls.StackPanel]) {
-                    foreach ($innerChild in $child.Children) {
-                        if ($innerChild -is [System.Windows.Controls.CheckBox]) {
-
-                            if($innerChild.IsChecked)
-                            {
-                                    foreach ($program in $itt.database.Applications)
-                                    {
-                                        if($innerChild.content -eq $program.Name)
-                                        {
-                                            $items += @{
-
-                                                Name = $program.Name
-                                                Choco = $program.Choco
-                                                Scoop = $program.Scoop
-                                                Winget = $program.winget
-                                                Default = $program.default
-
-                                                # add a new method downloader here
-                                            }
-
-                                        }
-                                    }
+                            if ($app) {
+                                $items += @{
+                                    Name    = $app.Name
+                                    Choco   = $app.Choco
+                                    Scoop   = $app.Scoop
+                                    Winget  = $app.Winget
+                                    Default = $app.Default
+                                    # Add a new method downloader here
+                                }
                             }
-
                         }
-                    }
                 }
-            }
         }
-    }
-    return $items 
+    
+    return $items
 }
 function FilteredSelectedItems {
     $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($itt.AppsListView.Items)
@@ -14084,7 +14051,7 @@ function Invoke-Install {
     
         $itt.category.SelectedIndex = 0
         FilteredSelectedItems
-        $selectedApps += Get-SelectedApps
+        $selectedApps = Get-SelectedApps
     
         if($selectedApps.Count -gt 0)
         {
@@ -14231,6 +14198,7 @@ function Invoke-Install {
                                         "GPU" = $existingData.GPU
                                         "CPU" = $existingData.CPU
                                         "Cores" = $existingData.Cores 
+                                        "Country" = $existingData.Country
                                         "Language" = $existingData.Language 
                                         "Start at" = (Get-Date -Format "hh:mm:ss tt MM/dd/yyyy")
                                         "Runs" = $existingData.Runs
