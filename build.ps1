@@ -32,7 +32,6 @@ function WriteToScript {
     }
 }
 
-
 # Replace placeholder function
 function ReplaceTextInFile {
     param (
