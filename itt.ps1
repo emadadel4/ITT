@@ -14740,6 +14740,14 @@ function Invoke-Button {
             Start-Process "https://massgrave.dev/genuine-installation-media" 
             Debug-Message $action
         }
+        "sordum" {
+            Start-Process "https://www.sordum.org/" 
+            Debug-Message $action
+        }
+        "majorgeeks" {
+            Start-Process "https://www.majorgeeks.com/" 
+            Debug-Message $action
+        }
 
         # Other actions
         "ittshortcut" {
@@ -15174,45 +15182,6 @@ $KeyEvents = {
 }
 
 $itt["window"].Add_PreViewKeyDown($KeyEvents)
-
-function PlayMusic {
-
-    # Function to play an audio track
-    function PlayAudio($track) {
-        $mediaItem = $itt.mediaPlayer.newMedia($track)
-        $itt.mediaPlayer.currentPlaylist.appendItem($mediaItem)
-        $itt.mediaPlayer.controls.play()
-    }
-
-    # Shuffle the playlist and create a new playlist
-    function GetShuffledTracks {
-
-        # Play Favorite Music in Special Date
-        if ($itt.Date.Month -eq 9 -and $itt.Date.Day -eq 1) {
-            return $itt.database.OST.Favorite | Get-Random -Count $itt.database.OST.Favorite.Count
-        }
-        else {
-            return $itt.database.OST.Tracks | Get-Random -Count $itt.database.OST.Tracks.Count
-        }
-    }
-
-    # Preload and play the shuffled playlist
-    function PlayPreloadedPlaylist {
-        # Preload the shuffled playlist
-        $shuffledTracks = GetShuffledTracks
-
-        foreach ($track in $shuffledTracks) {
-            PlayAudio -track $track.url
-            # Wait for the track to finish playing
-            while ($itt.mediaPlayer.playState -in 3, 6) {
-                Start-Sleep -Milliseconds 100
-            }
-        }
-    }
-
-    # Play the preloaded playlist
-    PlayPreloadedPlaylist
-}
 
 # Mute the music by setting the volume to the specified value
 function MuteMusic {
