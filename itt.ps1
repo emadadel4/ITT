@@ -35,7 +35,7 @@ $itt = [Hashtable]::Synchronized(@{
     CurretTheme    = $null
     Date           = (Get-Date)
     Music          = "100"
-    PopupWindow   = "On"
+    PopupWindow    = "On"
     Language       = "en"
 })
 
@@ -9385,200 +9385,200 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
             </Grid.ColumnDefinitions>
 
                  <!--Menu-->
-  <Menu Grid.Row="0" Grid.Column="0" Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Left" BorderThickness="0">
-                                  
-    <MenuItem IsEnabled="False" ToolTip="Emad Adel">
-        <MenuItem.Icon>
-            <Image Source="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/logo.png" Width="70" Height="Auto" Margin="5,5,0,0"/>
-        </MenuItem.Icon>
-    </MenuItem>
-    
-
-    <MenuItem Header="{Binding management}" FontFamily="arial" FontSize="13"  Margin="10,0,0,0" BorderBrush="Transparent" BorderThickness="0" VerticalAlignment="Center" HorizontalAlignment="Left">
-        <MenuItem.Icon>
-            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="15" Text=""/>
-        </MenuItem.Icon>
-        <MenuItem Name="sysinfo" Header="{Binding sysinfo}">
+    <Menu Grid.Row="0" Grid.Column="0" Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Left" BorderThickness="0">
+                                    
+        <MenuItem IsEnabled="False" ToolTip="Emad Adel">
             <MenuItem.Icon>
-                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <Image Source="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/logo.png" Width="70" Height="Auto" Margin="5,5,0,0"/>
             </MenuItem.Icon>
         </MenuItem>
 
-        <MenuItem Name="poweroption" Header="{Binding poweroptions}">
-            <MenuItem.Icon>
-                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
-            </MenuItem.Icon>
-        </MenuItem>
 
-        <MenuItem Name="deviceManager" Header="{Binding devicemgr}">
+        <MenuItem Header="{Binding management}" FontFamily="arial" FontSize="13"  Margin="10,0,0,0" BorderBrush="Transparent" BorderThickness="0" VerticalAlignment="Center" HorizontalAlignment="Left">
             <MenuItem.Icon>
-                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="15" Text=""/>
             </MenuItem.Icon>
-        </MenuItem>
-        <MenuItem Name="services" Header="{Binding services}">
-            <MenuItem.Icon>
-                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
-            </MenuItem.Icon>
-        </MenuItem>
-        <MenuItem Name="network" Header="{Binding networks}">
-            <MenuItem.Icon>
-                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
-            </MenuItem.Icon>
-        </MenuItem>
-        <MenuItem Name="appsfeatures" Header="{Binding appsfeatures}">
-            <MenuItem.Icon>
-                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
-            </MenuItem.Icon>
-        </MenuItem>
-        <MenuItem Name="taskmgr" Header="{Binding taskmgr}">
-            <MenuItem.Icon>
-                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
-            </MenuItem.Icon>
-        </MenuItem>
-        <MenuItem Name="diskmgmt" Header="{Binding diskmgr}">
-            <MenuItem.Icon>
-                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
-            </MenuItem.Icon>
-        </MenuItem>
-    </MenuItem>
-
-    <MenuItem Header="{Binding preferences}" FontFamily="arial" FontSize="13"  BorderBrush="Transparent" BorderThickness="0" VerticalAlignment="Center" HorizontalAlignment="Left">
-        <MenuItem.Icon>
-            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center" Text=""/>
-        </MenuItem.Icon>
-
-        <MenuItem Name="restorepoint" Header="{Binding restorepoint}">
-            <MenuItem.Icon>
-                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
-            </MenuItem.Icon>
-        </MenuItem>
-
-        <MenuItem Name="chocoloc" Header="{Binding chocoloc}">
-            <MenuItem.Icon>
-                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
-            </MenuItem.Icon>
-        </MenuItem>
-
-        <MenuItem Name="save" Header="{Binding saveapps}">
-            <MenuItem.Icon>
-                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
-            </MenuItem.Icon>
-        </MenuItem>
-        <MenuItem Name="load" Header="{Binding loadapps}">
-            <MenuItem.Icon>
-                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
-            </MenuItem.Icon>
-        </MenuItem>
-
-        <MenuItem Header="{Binding theme}">
-            <MenuItem.Icon>
-                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
-            </MenuItem.Icon>
-            <MenuItem Name="systheme" Header="{Binding defaultTheme}"/>
-            <MenuItem Name="Dark" Header="{Binding Dark}"/>
-            <MenuItem Name="Light" Header="{Binding Light}"/>
-        </MenuItem>
-
-        <MenuItem Header="{Binding music}">
-            <MenuItem.Icon>
-                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
-            </MenuItem.Icon>
-            <MenuItem Name="moff" Header="{Binding off}">
+            <MenuItem Name="sysinfo" Header="{Binding sysinfo}">
                 <MenuItem.Icon>
-                    <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                    <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
                 </MenuItem.Icon>
             </MenuItem>
-            <MenuItem Name="mon" Header="{Binding on}">
+
+            <MenuItem Name="poweroption" Header="{Binding poweroptions}">
                 <MenuItem.Icon>
-                    <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                    <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                </MenuItem.Icon>
+            </MenuItem>
+
+            <MenuItem Name="deviceManager" Header="{Binding devicemgr}">
+                <MenuItem.Icon>
+                    <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Name="services" Header="{Binding services}">
+                <MenuItem.Icon>
+                    <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Name="network" Header="{Binding networks}">
+                <MenuItem.Icon>
+                    <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Name="appsfeatures" Header="{Binding appsfeatures}">
+                <MenuItem.Icon>
+                    <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Name="taskmgr" Header="{Binding taskmgr}">
+                <MenuItem.Icon>
+                    <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Name="diskmgmt" Header="{Binding diskmgr}">
+                <MenuItem.Icon>
+                    <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
                 </MenuItem.Icon>
             </MenuItem>
         </MenuItem>
 
-        <MenuItem Header="{Binding language}">
+        <MenuItem Header="{Binding preferences}" FontFamily="arial" FontSize="13"  BorderBrush="Transparent" BorderThickness="0" VerticalAlignment="Center" HorizontalAlignment="Left">
+            <MenuItem.Icon>
+                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center" Text=""/>
+            </MenuItem.Icon>
+
+            <MenuItem Name="restorepoint" Header="{Binding restorepoint}">
                 <MenuItem.Icon>
-                    <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                    <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
                 </MenuItem.Icon>
-                <MenuItem Name="ar" Header="عربي" />
-                <MenuItem Name="en" Header="English" />
-                <MenuItem Name="fr" Header="Français" />
-                <MenuItem Name="tr" Header="Türkçe" />
-                <MenuItem Name="zh" Header="中文" />
-                <MenuItem Name="ko" Header="한국어" />
-                <MenuItem Name="de" Header="Deutsch" />
-                <MenuItem Name="ru" Header="Русский" />
-                <MenuItem Name="es" Header="Español" />
+            </MenuItem>
+
+            <MenuItem Name="chocoloc" Header="{Binding chocoloc}">
+                <MenuItem.Icon>
+                    <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                </MenuItem.Icon>
+            </MenuItem>
+
+            <MenuItem Name="save" Header="{Binding saveapps}">
+                <MenuItem.Icon>
+                    <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Name="load" Header="{Binding loadapps}">
+                <MenuItem.Icon>
+                    <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                </MenuItem.Icon>
+            </MenuItem>
+
+            <MenuItem Header="{Binding theme}">
+                <MenuItem.Icon>
+                    <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                </MenuItem.Icon>
+                <MenuItem Name="systheme" Header="{Binding defaultTheme}"/>
+                <MenuItem Name="Dark" Header="{Binding Dark}"/>
+                <MenuItem Name="Light" Header="{Binding Light}"/>
+            </MenuItem>
+
+            <MenuItem Header="{Binding music}">
+                <MenuItem.Icon>
+                    <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                </MenuItem.Icon>
+                <MenuItem Name="moff" Header="{Binding off}">
+                    <MenuItem.Icon>
+                        <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Name="mon" Header="{Binding on}">
+                    <MenuItem.Icon>
+                        <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
+
+            <MenuItem Header="{Binding language}">
+                    <MenuItem.Icon>
+                        <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                    </MenuItem.Icon>
+                    <MenuItem Name="ar" Header="عربي" />
+                    <MenuItem Name="en" Header="English" />
+                    <MenuItem Name="fr" Header="Français" />
+                    <MenuItem Name="tr" Header="Türkçe" />
+                    <MenuItem Name="zh" Header="中文" />
+                    <MenuItem Name="ko" Header="한국어" />
+                    <MenuItem Name="de" Header="Deutsch" />
+                    <MenuItem Name="ru" Header="Русский" />
+                    <MenuItem Name="es" Header="Español" />
+            </MenuItem>
+
+
+            <MenuItem Name="ittshortcut" Header="{Binding ittlink}">
+                <MenuItem.Icon>
+                    <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="15" Text=""/>
+                </MenuItem.Icon>
+            </MenuItem>
+
+
+
         </MenuItem>
 
-    
-        <MenuItem Name="ittshortcut" Header="{Binding ittlink}">
+
+        <MenuItem Header="{Binding thirdparty}" FontFamily="arial" FontSize="13"  BorderThickness="0" VerticalAlignment="Center" HorizontalAlignment="Center">
             <MenuItem.Icon>
-                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="15" Text=""/>
+                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="15" Text=""/>
             </MenuItem.Icon>
-        </MenuItem>
 
 
+            <MenuItem Name="mas" Header="{Binding mas}">
+                <MenuItem.Icon>
+                    <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Name="idm" Header="{Binding idm}">
+                <MenuItem.Icon>
+                    <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                </MenuItem.Icon>
+            </MenuItem>
 
-    </MenuItem>
-    
-
-    <MenuItem Header="{Binding thirdparty}" FontFamily="arial" FontSize="13"  BorderThickness="0" VerticalAlignment="Center" HorizontalAlignment="Center">
-        <MenuItem.Icon>
-            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="15" Text=""/>
-        </MenuItem.Icon>
-
-
-        <MenuItem Name="mas" Header="{Binding mas}">
-            <MenuItem.Icon>
-                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
-            </MenuItem.Icon>
-        </MenuItem>
-        <MenuItem Name="idm" Header="{Binding idm}">
-            <MenuItem.Icon>
-                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
-            </MenuItem.Icon>
-        </MenuItem>
-
-        <MenuItem Name="winoffice" Header="{Binding winoffice}">
-            <MenuItem.Icon>
-                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
-            </MenuItem.Icon>
-        </MenuItem>
+            <MenuItem Name="winoffice" Header="{Binding winoffice}">
+                <MenuItem.Icon>
+                    <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                </MenuItem.Icon>
+            </MenuItem>
 
 
-        <MenuItem Header="{Binding extensions}">
-            <MenuItem.Icon>
-                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
-            </MenuItem.Icon>
+            <MenuItem Header="{Binding extensions}">
+                <MenuItem.Icon>
+                    <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                </MenuItem.Icon>
+                
+                <MenuItem Name="uBlock" Header="uBlock Origin"/>
+                <MenuItem Name="unhook" Header="Unhook: Customize youtube"/>
+                <MenuItem Name="neat" Header="Neat Download Manager"/>
+            </MenuItem>
+
+            <MenuItem Name="sordum" Header="Sordum tools">
+                <MenuItem.Icon>
+                    <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                </MenuItem.Icon>
+            </MenuItem>
+
+            <MenuItem Name="majorgeeks" Header="Major Geeks">
+                <MenuItem.Icon>
+                    <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                </MenuItem.Icon>
+            </MenuItem>
             
-            <MenuItem Name="uBlock" Header="uBlock Origin"/>
-            <MenuItem Name="unhook" Header="Unhook: Customize youtube"/>
-            <MenuItem Name="neat" Header="Neat Download Manager"/>
         </MenuItem>
 
-        <MenuItem Name="sordum" Header="Sordum tools">
+
+        <MenuItem Name="dev" Header="{Binding about}" FontFamily="arial" FontSize="13"  BorderBrush="Transparent" BorderThickness="1" VerticalAlignment="Center" HorizontalAlignment="Center">
             <MenuItem.Icon>
-                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="15" Text=""/>
             </MenuItem.Icon>
         </MenuItem>
 
-        <MenuItem Name="majorgeeks" Header="Major Geeks">
-            <MenuItem.Icon>
-                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
-            </MenuItem.Icon>
-        </MenuItem>
-        
-    </MenuItem>
 
-    
-    <MenuItem Name="dev" Header="{Binding about}" FontFamily="arial" FontSize="13"  BorderBrush="Transparent" BorderThickness="1" VerticalAlignment="Center" HorizontalAlignment="Center">
-        <MenuItem.Icon>
-            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="15" Text=""/>
-        </MenuItem.Icon>
-    </MenuItem>
-
-
-  </Menu>
+    </Menu>
 <!--End Menu-->
 
             <Grid Grid.Column="1"  HorizontalAlignment="Right" Margin="0,0,20,0">
@@ -9610,54 +9610,54 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
 <!--End Catagory-->
 
                 <!--Search -->
-<Grid HorizontalAlignment="Right" Grid.Column="1" VerticalAlignment="Center">
-  <TextBox Padding="8"
-          Width="120"
-          VerticalAlignment="Center"
-          HorizontalAlignment="Left"
-          Text="{Binding Text_searchInput}"
-          Name="searchInput" />
+    <Grid HorizontalAlignment="Right" Grid.Column="1" VerticalAlignment="Center">
+    <TextBox Padding="8"
+            Width="120"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Left"
+            Text="{Binding Text_searchInput}"
+            Name="searchInput" />
 
-  <TextBlock IsHitTestVisible="False"
-          Text=""
-          FontFamily="Segoe MDL2 Assets"
-          VerticalAlignment="Center"
-          HorizontalAlignment="Left"
-          Margin="20,0,5,0"
-          FontSize="12"
-          Foreground="{DynamicResource FGTextColor}">
-      <TextBlock.Style>
-          <Style TargetType="{x:Type TextBlock}">
-              <Setter Property="Visibility" Value="Hidden"/>
-              <Style.Triggers>
-                  <DataTrigger Binding="{Binding Text, ElementName=searchInput}" Value="">
-                      <Setter Property="Visibility" Value="Visible"/>
-                  </DataTrigger>
-              </Style.Triggers>
-          </Style>
-      </TextBlock.Style>
-  </TextBlock>
+    <TextBlock IsHitTestVisible="False"
+            Text=""
+            FontFamily="Segoe MDL2 Assets"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Left"
+            Margin="20,0,5,0"
+            FontSize="12"
+            Foreground="{DynamicResource FGTextColor}">
+        <TextBlock.Style>
+            <Style TargetType="{x:Type TextBlock}">
+                <Setter Property="Visibility" Value="Hidden"/>
+                <Style.Triggers>
+                    <DataTrigger Binding="{Binding Text, ElementName=searchInput}" Value="">
+                        <Setter Property="Visibility" Value="Visible"/>
+                    </DataTrigger>
+                </Style.Triggers>
+            </Style>
+        </TextBlock.Style>
+    </TextBlock>
 
-  <TextBlock Text="{Binding search}"
-          IsHitTestVisible="False"
-          VerticalAlignment="Center"
-          HorizontalAlignment="Left"
-          Margin="38,0,0,0"
-          Foreground="{DynamicResource FGTextColor}">
-      <TextBlock.Style>
-          <Style TargetType="{x:Type TextBlock}">
-              <Style.Triggers>
-                  <DataTrigger Binding="{Binding IsFocused, ElementName=searchInput}" Value="True">
-                      <Setter Property="Visibility" Value="Hidden"/>
-                  </DataTrigger>
-                  <DataTrigger Binding="{Binding Text, ElementName=searchInput}" Value="">
-                      <Setter Property="Visibility" Value="Visible"/>
-                  </DataTrigger>
-              </Style.Triggers>
-          </Style>
-      </TextBlock.Style>
-  </TextBlock>
-</Grid>
+    <TextBlock Text="{Binding search}"
+            IsHitTestVisible="False"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Left"
+            Margin="38,0,0,0"
+            Foreground="{DynamicResource FGTextColor}">
+        <TextBlock.Style>
+            <Style TargetType="{x:Type TextBlock}">
+                <Style.Triggers>
+                    <DataTrigger Binding="{Binding IsFocused, ElementName=searchInput}" Value="True">
+                        <Setter Property="Visibility" Value="Hidden"/>
+                    </DataTrigger>
+                    <DataTrigger Binding="{Binding Text, ElementName=searchInput}" Value="">
+                        <Setter Property="Visibility" Value="Visible"/>
+                    </DataTrigger>
+                </Style.Triggers>
+            </Style>
+        </TextBlock.Style>
+    </TextBlock>
+    </Grid>
 <!--End Search-->
 
             </Grid>
