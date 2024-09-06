@@ -12947,7 +12947,7 @@ $EventXaml = '<Window
 
                     <!-- Header -->
                         <Grid Row="1">
-                            <ScrollViewer VerticalScrollBarVisibility="Auto" Height="466">
+                            <ScrollViewer VerticalScrollBarVisibility="Auto" Height="366">
                                 <StackPanel Orientation="Vertical">
                                         <!--Image-->
                                         <Image 
@@ -12987,6 +12987,7 @@ $EventXaml = '<Window
                             TextAlignment="Center"
                             Cursor="Hand"
                             Padding="15"
+                            Height="Auto"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
                             />
