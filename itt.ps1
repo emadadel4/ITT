@@ -15214,7 +15214,7 @@ $KeyEvents = {
     }
 
     # Mute
-    if ($_.Key -eq "N" -and $_.KeyboardDevice.Modifiers -eq "Shift") {
+    if ($_.Key -eq "F" -and $_.KeyboardDevice.Modifiers -eq "Shift") {
         MuteMusic
     }
 
