@@ -14209,6 +14209,7 @@ function Invoke-Install {
             return
         }
 
+        # Clear Search Input
         $itt.SearchInput.Text = ""
 
     
@@ -15321,6 +15322,7 @@ $KeyEvents = {
     # Lost Foucs on Search box
     if ($_.Key -eq "Escape") {
         $itt.SearchInput.MoveFocus([System.Windows.Input.TraversalRequest]::New([System.Windows.Input.FocusNavigationDirection]::Next))
+        $itt.SearchInput.Text = ""
     }
 
     # Swtich to Apps tap
