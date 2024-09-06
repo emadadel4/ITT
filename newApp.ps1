@@ -44,7 +44,7 @@ if($userInput -eq "Default [HttpClient]")
 {
 
 $AppName = Read-Host "Enter App name"
-$description = (Read-Host "Enter app description") -replace '[\W.]', ''
+$description = [regex]::Replace((Read-Host "Enter app description").Trim(), "[^\w\s]", "")
 $url = Read-Host "Enter URL Download file"
 
 #===========================================================================
