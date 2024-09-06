@@ -75,7 +75,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -96,7 +96,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -117,7 +117,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -137,7 +137,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -157,7 +157,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -177,7 +177,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -197,7 +197,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -217,7 +217,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -237,7 +237,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -257,7 +257,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -277,7 +277,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -297,7 +297,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -317,7 +317,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -338,7 +338,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -358,7 +358,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -379,7 +379,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -399,7 +399,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -419,7 +419,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -439,7 +439,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -459,7 +459,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -479,7 +479,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -499,7 +499,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -519,7 +519,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -539,7 +539,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -560,7 +560,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -580,7 +580,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -601,7 +601,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -622,7 +622,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -642,7 +642,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -663,7 +663,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -683,7 +683,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -703,7 +703,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -723,7 +723,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -743,7 +743,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -763,7 +763,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -783,7 +783,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -803,7 +803,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -823,7 +823,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -843,7 +843,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -863,7 +863,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -883,7 +883,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -903,7 +903,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -923,7 +923,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -943,7 +943,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -963,7 +963,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -983,7 +983,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -1003,7 +1003,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -1023,7 +1023,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -1043,7 +1043,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -1063,7 +1063,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -1083,7 +1083,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -1103,7 +1103,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -1123,7 +1123,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -1143,7 +1143,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -1163,7 +1163,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -1183,7 +1183,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -1203,7 +1203,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -1223,7 +1223,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -1243,7 +1243,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -1263,7 +1263,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -1283,7 +1283,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -1303,7 +1303,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -1323,7 +1323,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -1343,7 +1343,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -1363,7 +1363,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -1383,7 +1383,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -1403,7 +1403,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -1423,7 +1423,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -1443,7 +1443,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -1463,7 +1463,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -1483,7 +1483,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -1503,7 +1503,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -1523,7 +1523,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -1543,7 +1543,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -1563,7 +1563,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -1583,7 +1583,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -1603,7 +1603,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -1623,7 +1623,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -1643,7 +1643,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -1663,7 +1663,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -1683,7 +1683,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -1704,7 +1704,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -1724,7 +1724,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -1745,7 +1745,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -1765,7 +1765,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -1785,7 +1785,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -1805,7 +1805,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -1825,7 +1825,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -1845,7 +1845,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -1865,7 +1865,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -1886,7 +1886,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -1906,7 +1906,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -1926,7 +1926,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -1946,7 +1946,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -1966,7 +1966,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -1986,7 +1986,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -2006,7 +2006,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -2026,7 +2026,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -2047,7 +2047,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -2067,7 +2067,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -2087,7 +2087,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -2107,7 +2107,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -2127,7 +2127,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -2147,7 +2147,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -2167,7 +2167,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -2187,7 +2187,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -2208,7 +2208,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -2228,7 +2228,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -2248,7 +2248,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -2268,7 +2268,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -2288,7 +2288,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -2308,7 +2308,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -2328,7 +2328,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -2348,7 +2348,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -2368,7 +2368,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -2388,7 +2388,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -2408,7 +2408,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -2428,7 +2428,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -2448,7 +2448,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -2468,7 +2468,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -2488,7 +2488,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -2508,7 +2508,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -2528,7 +2528,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -2548,7 +2548,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -2568,7 +2568,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -2588,7 +2588,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -2608,7 +2608,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -2628,7 +2628,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -2648,7 +2648,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -2668,7 +2668,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -2688,7 +2688,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -2708,7 +2708,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -2728,7 +2728,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -2748,7 +2748,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -2768,7 +2768,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -2788,7 +2788,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -2808,7 +2808,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -2828,7 +2828,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -2848,7 +2848,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -2868,7 +2868,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -2888,7 +2888,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -2908,7 +2908,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -2928,7 +2928,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -2948,7 +2948,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -2968,7 +2968,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -2988,7 +2988,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -3007,7 +3007,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -3028,7 +3028,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -3048,7 +3048,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -3068,7 +3068,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -3088,7 +3088,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -3108,7 +3108,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -3128,7 +3128,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -3148,7 +3148,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -3168,7 +3168,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -3188,7 +3188,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -3208,7 +3208,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -3228,7 +3228,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -3248,7 +3248,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -3268,7 +3268,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -3288,7 +3288,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -3308,7 +3308,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -3328,7 +3328,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -3348,7 +3348,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -3368,7 +3368,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -3388,7 +3388,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -3408,7 +3408,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -3428,7 +3428,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -3448,7 +3448,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -3468,7 +3468,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -3488,7 +3488,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -3508,7 +3508,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -3528,7 +3528,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -3548,7 +3548,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -3568,7 +3568,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -3588,7 +3588,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -3608,7 +3608,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -3628,7 +3628,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -3648,7 +3648,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -3668,7 +3668,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -3688,7 +3688,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -3708,7 +3708,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -3728,7 +3728,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -3748,7 +3748,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -3768,7 +3768,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -3788,7 +3788,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -3808,7 +3808,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -3828,7 +3828,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -3848,7 +3848,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -3868,7 +3868,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -3888,7 +3888,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -3908,7 +3908,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -3928,7 +3928,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -3948,7 +3948,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -3968,7 +3968,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -3988,7 +3988,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -4008,7 +4008,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -4028,7 +4028,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -4048,7 +4048,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -4068,7 +4068,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -4088,7 +4088,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -4108,7 +4108,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -4128,7 +4128,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -4148,7 +4148,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -4168,7 +4168,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -4188,7 +4188,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -4208,7 +4208,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -4228,7 +4228,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -4248,7 +4248,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -4268,7 +4268,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -4288,7 +4288,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -4308,7 +4308,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -4328,7 +4328,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -4348,7 +4348,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -4368,7 +4368,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -4388,7 +4388,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -4408,7 +4408,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -4428,7 +4428,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -4448,7 +4448,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -4468,7 +4468,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -4488,7 +4488,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -4508,7 +4508,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -4528,7 +4528,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -4548,7 +4548,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -4568,7 +4568,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -4588,7 +4588,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -4608,7 +4608,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -4628,7 +4628,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -4648,7 +4648,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -4668,7 +4668,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -4688,7 +4688,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -4708,7 +4708,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -4728,7 +4728,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -4748,7 +4748,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -4768,7 +4768,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -4788,7 +4788,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -4808,7 +4808,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -4828,7 +4828,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -4848,7 +4848,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -4868,7 +4868,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -4888,7 +4888,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -4908,7 +4908,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -4928,7 +4928,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -4948,7 +4948,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -4968,7 +4968,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -4988,7 +4988,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -5008,7 +5008,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -5028,7 +5028,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -5048,7 +5048,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -5068,7 +5068,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -5088,7 +5088,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -5108,7 +5108,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -5128,7 +5128,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -5148,7 +5148,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -5168,7 +5168,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -5188,7 +5188,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -5208,7 +5208,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -5228,7 +5228,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -5248,7 +5248,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -5268,7 +5268,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -5288,7 +5288,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -5308,7 +5308,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -5328,7 +5328,7 @@ $itt.database.Applications = '[
         "url": "none",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "no"
       }
@@ -5348,7 +5348,7 @@ $itt.database.Applications = '[
         "url": "https://www.neatdownloadmanager.com/file/NeatDM_setup.exe",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "no",
         "run": "yes"
       }
@@ -5368,7 +5368,7 @@ $itt.database.Applications = '[
         "url": "https://www.x360ce.com/files/x360ce.zip",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "",
+        "launcher": "none",
         "shortcut": "yes",
         "run": "no"
       }
@@ -5388,7 +5388,7 @@ $itt.database.Applications = '[
         "url": "https://www.x360ce.com/files/x360ce_x86.zip",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "x360ce_x86.exe",
+        "launcher": "x360ce_x86.exe",
         "shortcut": "yes",
         "run": "no"
       }
@@ -5408,7 +5408,7 @@ $itt.database.Applications = '[
         "url": "https://www.x360ce.com/files/x360ce_x64.zip",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
-        "exeFileName": "x360ce_x64.exe",
+        "launcher": "x360ce_x64.exe",
         "shortcut": "yes",
         "run": "no"
       }
@@ -6307,6 +6307,26 @@ $itt.database.Applications = '[
       }
     ],
     "category": "Documents",
+    "check": "false"
+  },
+  {
+    "name": "SelfishNet",
+    "description": "Control your internet bandwidth with SelfishNet V3, ARP Spoofing application.",
+    "winget": "none",
+    "choco": "none",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "true",
+        "url": "https://github.com/nov0caina/SelfishNetV3/releases/download/SelfishNetV3.0.0/SelfishNetV3.0.0_Installer.zip",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none",
+        "launcher": "none",
+        "shortcut": "no",
+        "run": "no"
+      }
+    ],
+    "category": "Utilities",
     "check": "false"
   }
 ]
@@ -12199,6 +12219,14 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
                 <TextBlock Width="555" Background="Transparent" Margin="8" Foreground="{DynamicResource DefaultTextColor2}"  FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="The Sysinternals Troubleshooting Utilities have been rolled up into a single suite of tools"/>
         </StackPanel>
 
+        <StackPanel Orientation="Vertical" Width="auto" Margin="10">
+            <StackPanel Orientation="Horizontal">
+                <CheckBox Content="SelfishNet" Tag="Utilities" IsChecked="false"   ToolTip="Install it again to update" FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content="Utilities"/>
+            </StackPanel>
+                <TextBlock Width="555" Background="Transparent" Margin="8" Foreground="{DynamicResource DefaultTextColor2}"  FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="Control your internet bandwidth with SelfishNet V3. ARP Spoofing application."/>
+        </StackPanel>
+
                     </ListView>
                 </TabItem.Content>
             </TabItem>
@@ -14529,7 +14557,7 @@ function Invoke-Install {
                                 }
                                 else
                                 {
-                                    Download-And-ExtractZip -url $_.default.url -shortcutName "$($_.Name)" -exeFileName $_.default.exeFileName -run $_.default.run -Createshortcut $_.default.shortcut -exeArgs $_.default.exeArgs
+                                    Download-And-ExtractZip -url $_.default.url -shortcutName "$($_.Name)" -exeFileName $_.default.launcher -run $_.default.run -Createshortcut $_.default.shortcut -exeArgs $_.default.exeArgs
                                 }
                             }
                         }
