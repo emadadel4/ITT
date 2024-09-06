@@ -30,7 +30,7 @@ function LoadJson {
 
     # Open file dialog to select JSON file
     $openFileDialog = New-Object "Microsoft.Win32.OpenFileDialog"
-    $openFileDialog.Filter = "JSON files (*.ea4)|*.ea4"
+    $openFileDialog.Filter = "JSON files (*.itt)|*.itt"
     $openFileDialog.Title = "Open JSON File"
     $dialogResult = $openFileDialog.ShowDialog()
 
@@ -88,7 +88,7 @@ function SaveItemsToJson {
     if ($items.Count -gt 0) {
         # Open save file dialog
         $saveFileDialog = New-Object "Microsoft.Win32.SaveFileDialog"
-        $saveFileDialog.Filter = "JSON files (*.ea4)|*.ea4"
+        $saveFileDialog.Filter = "JSON files (*.itt)|*.itt"
         $saveFileDialog.Title = "Save JSON File"
         $dialogResult = $saveFileDialog.ShowDialog()
 
