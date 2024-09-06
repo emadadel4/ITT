@@ -1608,7 +1608,7 @@
     ]
   },
   {
-    "Name": "Disabling Windows Transparency",
+    "Name": "Disable Windows Transparency",
     "Description": "Windows transparency has a significant impact on performance, disable it if you want performance",
     "Check": "false",
     "Category": "Performance",
