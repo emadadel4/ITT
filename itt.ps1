@@ -5366,6 +5366,7 @@ $itt.database.Applications = '[
       {
         "IsExcute": "false",
         "url": "https://www.x360ce.com/files/x360ce.zip",
+        "extinction": "zip",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
         "launcher": "none",
@@ -5386,6 +5387,7 @@ $itt.database.Applications = '[
       {
         "IsExcute": "false",
         "url": "https://www.x360ce.com/files/x360ce_x86.zip",
+        "extinction": "zip",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
         "launcher": "x360ce_x86.exe",
@@ -5406,6 +5408,7 @@ $itt.database.Applications = '[
       {
         "IsExcute": "false",
         "url": "https://www.x360ce.com/files/x360ce_x64.zip",
+        "extinction": "zip",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
         "launcher": "x360ce_x64.exe",
@@ -6319,11 +6322,12 @@ $itt.database.Applications = '[
       {
         "IsExcute": "true",
         "url": "https://github.com/nov0caina/SelfishNetV3/releases/download/SelfishNetV3.0.0/SelfishNetV3.0.0_Installer.zip",
-        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "extinction": "msi",
+        "exeArgs": "/quiet",
         "output": "none",
-        "launcher": "none",
+        "launcher": "SelfishNetV3_Installer.msi",
         "shortcut": "no",
-        "run": "no"
+        "run": "yes"
       }
     ],
     "category": "Utilities",
@@ -14328,13 +14332,14 @@ function Invoke-Install {
                             param (
                                 [string]$name,
                                 [string]$url,
+                                [string]$type,
                                 [string]$exeArgs,
                                 [string]$outputDir,
                                 [string]$shortcut,
                                 [string]$run
                             )
                         
-                            $destination = "$env:ProgramData\$outputDir\$name\$name.exe"
+                            $destination = "$env:ProgramData\$outputDir\$name\$name.$type"
                             $shortcutPath = [System.IO.Path]::Combine([System.Environment]::GetFolderPath('Desktop'), "$name.lnk")
                         
                             Add-Log -Message "Downloading using Invoke-WebRequest" -Level "INFO"
@@ -14346,7 +14351,7 @@ function Invoke-Install {
                                 }
                                 # Download the file
                                 Invoke-WebRequest -Uri $url -OutFile $destination
-                                Add-Log -Message "Download completed successfully." -Level "INFO"
+                                Add-Log -Message "Downloaded any saved in $destination " -Level "INFO"
                         
                                 if ($shortcut -eq "yes") {
                                     # Create a shortcut on the desktop
@@ -14553,7 +14558,7 @@ function Invoke-Install {
                             {
                                 if($_.default.IsExcute -eq "true")
                                 {
-                                    Download-And-Install-Exe -name "$($_.Name)" -url  $_.default.url -exeArgs $_.default.exeArgs -outputDir "ITT\Downloads\" -run $_.default.run -shortcut $_.default.shortcut
+                                    Download-And-Install-Exe -name "$($_.Name)" -url  $_.default.url -type $_.default.extinction -exeArgs $_.default.exeArgs -outputDir "ITT\Downloads\" -run $_.default.run -shortcut $_.default.shortcut
                                 }
                                 else
                                 {
