@@ -70,15 +70,22 @@ function SaveItemsToJson {
         return
     }
 
-    $items = @()
-
     ClearFilter
+
+    # Convert the applications list to a dictionary for faster lookups
+    $appsDictionary = @{}
+    foreach ($app in $itt.database.Applications) {
+        $appsDictionary[$app.Name] = $app
+    }
+
+    # Initialize the items list as a specific type
+    $items = @()
 
     foreach ($item in $itt.AppsListView.Items) {
         $checkBoxes = Get-CheckBoxesFromStackPanel -item $item
         if ($checkBoxes.IsChecked) {
-            $app = $itt.database.Applications | Where-Object { $_.Name -eq $checkBoxes.Content }
-            
+            $app = $appsDictionary[$checkBoxes.Content]
+
             if ($app) {
                 $itemObject = [PSCustomObject]@{
                     Name   = $checkBoxes.Content
@@ -110,7 +117,13 @@ function SaveItemsToJson {
                 }
             }
         }
+
+        
     } else {
         [System.Windows.MessageBox]::Show("Choose at least one program", "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
     }
+
+    # Clear Search input
+    $itt.SearchInput.Text = ""
+
 }
