@@ -74,13 +74,13 @@ $KeyEvents = {
     }
 
     # Mute
-    if ($_.Key -eq "F" -and $_.KeyboardDevice.Modifiers -eq "Shift") {
+    if ($_.Key -eq "M" -and $_.KeyboardDevice.Modifiers -eq "Shift") {
         MuteMusic -Value 0
 
     }
 
     # Music ON 
-    if ($_.Key -eq "N" -and $_.KeyboardDevice.Modifiers -eq "Shift") {
+    if ($_.Key -eq "F" -and $_.KeyboardDevice.Modifiers -eq "Shift") {
         UnmuteMusic -Value 100
     }
 
