@@ -13413,7 +13413,7 @@ function SaveItemsToJson {
         [System.Windows.MessageBox]::Show("Choose at least one program", "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
     }
 
-
+    # Clear Search input
     $itt.SearchInput.Text = ""
 
 }
@@ -14208,6 +14208,9 @@ function Invoke-Install {
             [System.Windows.MessageBox]::Show($msg, "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
             return
         }
+
+        $itt.SearchInput.Text = ""
+
     
         $itt.category.SelectedIndex = 0
         FilteredSelectedItems
