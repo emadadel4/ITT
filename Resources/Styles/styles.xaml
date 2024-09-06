@@ -242,36 +242,46 @@
                             
                             <!-- Icon -->
                             <ContentPresenter Grid.Column="0" 
-                                            ContentSource="Icon" 
-                                            HorizontalAlignment="Left"
-                                            VerticalAlignment="Center"
-                                            Margin="0,0,4,0"/>
+                                              ContentSource="Icon" 
+                                              HorizontalAlignment="Left"
+                                              VerticalAlignment="Center"
+                                              Margin="0,0,4,0"/>
                             
-                            <!-- Text -->
+                            <!-- Text (MenuItem Header) -->
                             <TextBlock x:Name="TextBlock"
-                                    Grid.Column="1"
-                                    Text="{TemplateBinding Header}"
-                                    Foreground="{DynamicResource DefaultTextColor}"/>
+                                       Grid.Column="1"
+                                       Text="{TemplateBinding Header}"
+                                       Foreground="{DynamicResource DefaultTextColor}"
+                                       VerticalAlignment="Center"/>
+                            
+                            <!-- Shortcut Key (InputGestureText) -->
+                            <TextBlock x:Name="ShortcutText"
+                                       Grid.Column="2"
+                                       Text="{TemplateBinding InputGestureText}"
+                                       Foreground="{DynamicResource DefaultTextColor}"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Right"
+                                       Margin="5,0"/>
                             
                             <!-- Arrow Down Indicator -->
                             <Path x:Name="Arrow"
-                                Grid.Column="2"
-                                Data="M0,0 L4,4 L8,0 Z"
-                                Fill="{DynamicResource DefaultTextColor}"
-                                HorizontalAlignment="Center"
-                                VerticalAlignment="Center"
-                                Margin="4,0,0,0"
-                                Visibility="Collapsed"/>
+                                  Grid.Column="2"
+                                  Data="M0,0 L4,4 L8,0 Z"
+                                  Fill="{DynamicResource DefaultTextColor}"
+                                  HorizontalAlignment="Center"
+                                  VerticalAlignment="Center"
+                                  Margin="4,0,0,0"
+                                  Visibility="Collapsed"/>
                             
                             <!-- Popup for Submenu -->
                             <Popup Name="PART_Popup" 
-                                Placement="Bottom" 
-                                IsOpen="{TemplateBinding IsSubmenuOpen}" 
-                                AllowsTransparency="True" 
-                                Focusable="False"
-                                PopupAnimation="Fade">
+                                   Placement="Bottom" 
+                                   IsOpen="{TemplateBinding IsSubmenuOpen}" 
+                                   AllowsTransparency="True" 
+                                   Focusable="False"
+                                   PopupAnimation="Fade">
                                 <Border Background="{TemplateBinding Background}" 
-                                        BorderBrush="{DynamicResource BorderBrush}" 
+                                        BorderBrush="{DynamicResource BorderBrush}"     
                                         BorderThickness="2"
                                         CornerRadius="5">
                                     <StackPanel IsItemsHost="True" 
@@ -283,8 +293,6 @@
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
                             <!-- Adjust appearance on hover if needed -->
-                            <!-- <Setter TargetName="Border" Property="Background" Value="{DynamicResource BGButtonColor}"/>
-                            <Setter TargetName="TextBlock" Property="Foreground" Value="{DynamicResource DefaultTextColor2}"/> -->
                         </Trigger>
                         <Trigger Property="HasItems" Value="True">
                             <Setter TargetName="Arrow" Property="Visibility" Value="Visible"/>
@@ -294,6 +302,7 @@
             </Setter.Value>
         </Setter>
     </Style>
+
 <!-- End Define the Menu Style -->
 
 <!--Scrollbar Thumbs-->
