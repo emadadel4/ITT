@@ -79,6 +79,9 @@ do {
 $exeArgs = Read-Host "Enter Silent argmanet: If not silent installation press enter to skip"
 if ($exeArgs -eq "") { $exeArgs = "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath" }  # Set default value if empty
 
+$launcher = Read-Host "Enter Launcher name [file.exe]"
+if ($launcher -eq "") { $launcher = "none" }  # Set default value if empty
+
 #===========================================================================
 #region Begin runAfterDownload
 #===========================================================================
@@ -141,9 +144,6 @@ do {
 #region Begin Categories
 #===========================================================================
 
-#$output = Read-Host "Enter save location"
-# if ($output -eq "") { $output = "none" }  # Set default value if empty
-
 # Define category options
 $validCategories = @{
     1 = "Web Browsers"
@@ -194,6 +194,7 @@ $data = @{
             "url" = $url
             "exeArgs" = $exeArgs
             "output" = "none"
+            "launcher" = $launcher
             "shortcut" = $shourtcut
             "run" = $run
         }
@@ -216,6 +217,7 @@ $jsonString = @"
             "url": "$($data["default"][0]["url"])",
             "exeArgs": "$($data["default"][0]["exeArgs"])",
             "output": "$($data["default"][0]["output"])",
+            "launcher": "$($data["default"][0]["launcher"])",
             "shortcut": "$($data["default"][0]["shortcut"])",
             "run": "$($data["default"][0]["run"])"
         }
