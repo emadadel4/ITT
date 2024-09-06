@@ -62,7 +62,46 @@ $KeyEvents = {
     if ($_.Key -eq "I" -and $_.KeyboardDevice.Modifiers -eq "Ctrl") {
         About
     }
-   
+
+    # SaveItemsToJson
+    if ($_.Key -eq "S" -and $_.KeyboardDevice.Modifiers -eq "Shift") {
+        SaveItemsToJson
+    }
+
+    # LoadJson
+    if ($_.Key -eq "D" -and $_.KeyboardDevice.Modifiers -eq "Shift") {
+        LoadJson
+    }
+
+    # Mute
+    if ($_.Key -eq "F" -and $_.KeyboardDevice.Modifiers -eq "Shift") {
+        MuteMusic
+    }
+
+    # Music ON 
+    if ($_.Key -eq "N" -and $_.KeyboardDevice.Modifiers -eq "Shift") {
+        UnmuteMusic
+    }
+
+    # Mute
+    if ($_.Key -eq "N" -and $_.KeyboardDevice.Modifiers -eq "Shift") {
+        StopMusic
+    }
+
+    # Choco Folder
+    if ($_.Key -eq "P" -and $_.KeyboardDevice.Modifiers -eq "Shift") {
+        Start-Process explorer.exe "C:\ProgramData\chocolatey\lib"
+    }
+
+    # Restore point 
+    if ($_.Key -eq "Q" -and $_.KeyboardDevice.Modifiers -eq "Shift") {
+        Start-Process explorer.exe "C:\ProgramData\chocolatey\lib"
+    }
+
+    # ITT Shortcut 
+    if ($_.Key -eq "I" -and $_.KeyboardDevice.Modifiers -eq "Shift") {
+        ITTShortcut
+    }
 }
 
 $itt["window"].Add_PreViewKeyDown($KeyEvents)
