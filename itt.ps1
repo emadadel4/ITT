@@ -13105,12 +13105,23 @@ try {
     #endregion Check theme settings
     #===========================================================================
 
-    # Get user Settings from registry 
+    #===========================================================================
+    #region Get user Settings from registry
+    #===========================================================================
     $itt.Music = (Get-ItemProperty -Path $itt.registryPath -Name "Music").Music
     $itt.mediaPlayer.settings.volume = "$($itt.Music)"
-    $itt.PopupWindow = (Get-ItemProperty -Path $itt.registryPath -Name "PopupWindow").PopupWindow
 
-    # taskbar icon
+    switch($itt.Music){
+        "100" { $itt["window"].title = "Install Tweak Tool #StandWithPalestine 🔊"}
+        "0" {$itt["window"].title = "Install Tweak Tool #StandWithPalestine 🔈"}
+    }
+
+    $itt.PopupWindow = (Get-ItemProperty -Path $itt.registryPath -Name "PopupWindow").PopupWindow
+    #===========================================================================
+    #endregion Get user Settings from registry
+    #===========================================================================
+    
+    # init taskbar icon
     $taskbarItemInfo = New-Object System.Windows.Shell.TaskbarItemInfo
     $itt["window"].TaskbarItemInfo = $taskbarItemInfo
     $taskbarItemInfo.Overlay = $itt.icon
@@ -15354,6 +15365,8 @@ function MuteMusic {
     $itt.mediaPlayer.settings.volume = $value
     # Save the volume setting to the registry for persistence
     Set-ItemProperty -Path $itt.registryPath -Name "Music" -Value "$value" -Force
+    $itt["window"].title = "Install Tweak Tool #StandWithPalestine 🔈"
+
 }
 
 # Unmute the music by setting the volume to the specified value
@@ -15362,6 +15375,8 @@ function UnmuteMusic {
     $itt.mediaPlayer.settings.volume = $value
     # Save the volume setting to the registry for persistence
     Set-ItemProperty -Path $itt.registryPath -Name "Music" -Value "$value" -Force
+    $itt["window"].title = "Install Tweak Tool #StandWithPalestine 🔊"
+
 }
 
 # Stop the music and clean up resources
