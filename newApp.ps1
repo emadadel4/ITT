@@ -47,6 +47,26 @@ $AppName = Read-Host "Enter App name"
 $description = (Read-Host "Enter app description") -replace '[\W.]', ''
 $url = Read-Host "Enter URL Download file"
 
+$Extinction = @{
+    1 = "exe"
+    2 = "msi"
+    3 = "rar"
+    4 = "zip"
+}
+# Prompt user to choose Excute
+do {
+    Write-Host "What extension is this file?"
+    foreach ($key in $Extinction.Keys | Sort-Object) {
+        Write-Host "$key - $($Extinction[$key])"
+    }
+    $choice = Read-Host "Enter the number corresponding to the option"
+    if ([int]$choice -in $Extinction.Keys) {
+        $type = $Extinction[[int]$choice]
+    } else {
+        Write-Host "Invalid choice. Please select a valid option."
+    }
+} until ([int]$choice -in $Extinction.Keys)
+
 #===========================================================================
 #region Begin IsExcute
 #===========================================================================
@@ -192,6 +212,7 @@ $data = @{
         @{
             "IsExcute" = $Excute
             "url" = $url
+            "extinction" = $type
             "exeArgs" = $exeArgs
             "output" = "none"
             "launcher" = $launcher
@@ -215,6 +236,7 @@ $jsonString = @"
         {
             "IsExcute": "$($data["default"][0]["IsExcute"])",
             "url": "$($data["default"][0]["url"])",
+            "extinction": "$($data["default"][0]["extinction"])",
             "exeArgs": "$($data["default"][0]["exeArgs"])",
             "output": "$($data["default"][0]["output"])",
             "launcher": "$($data["default"][0]["launcher"])",
