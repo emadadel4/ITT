@@ -304,13 +304,14 @@ function Invoke-Install {
                             param (
                                 [string]$name,
                                 [string]$url,
+                                [string]$extinction,
                                 [string]$exeArgs,
                                 [string]$outputDir,
                                 [string]$shortcut,
                                 [string]$run
                             )
                         
-                            $destination = "$env:ProgramData\$outputDir\$name\$name.exe"
+                            $destination = "$env:ProgramData\$outputDir\$name\$name.$extinction"
                             $shortcutPath = [System.IO.Path]::Combine([System.Environment]::GetFolderPath('Desktop'), "$name.lnk")
                         
                             Add-Log -Message "Downloading using Invoke-WebRequest" -Level "INFO"
@@ -322,7 +323,7 @@ function Invoke-Install {
                                 }
                                 # Download the file
                                 Invoke-WebRequest -Uri $url -OutFile $destination
-                                Add-Log -Message "Download completed successfully." -Level "INFO"
+                                Add-Log -Message "Downloaded any saved in $destination " -Level "INFO"
                         
                                 if ($shortcut -eq "yes") {
                                     # Create a shortcut on the desktop
@@ -529,7 +530,7 @@ function Invoke-Install {
                             {
                                 if($_.default.IsExcute -eq "true")
                                 {
-                                    Download-And-Install-Exe -name "$($_.Name)" -url  $_.default.url -exeArgs $_.default.exeArgs -outputDir "ITT\Downloads\" -run $_.default.run -shortcut $_.default.shortcut
+                                    Download-And-Install-Exe -name "$($_.Name)" -url  $_.default.url -type $_.default.extinction -exeArgs $_.default.exeArgs -outputDir "ITT\Downloads\" -run $_.default.run -shortcut $_.default.shortcut
                                 }
                                 else
                                 {
