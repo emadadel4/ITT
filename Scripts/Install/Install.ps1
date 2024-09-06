@@ -533,7 +533,7 @@ function Invoke-Install {
                                 }
                                 else
                                 {
-                                    Download-And-ExtractZip -url $_.default.url -shortcutName "$($_.Name)" -exeFileName $_.default.exeFileName -run $_.default.run -Createshortcut $_.default.shortcut -exeArgs $_.default.exeArgs
+                                    Download-And-ExtractZip -url $_.default.url -shortcutName "$($_.Name)" -exeFileName $_.default.launcher -run $_.default.run -Createshortcut $_.default.shortcut -exeArgs $_.default.exeArgs
                                 }
                             }
                         }
