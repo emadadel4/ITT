@@ -5302,6 +5302,7 @@
       {
         "IsExcute": "false",
         "url": "https://www.x360ce.com/files/x360ce.zip",
+        "extinction": "zip",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
         "launcher": "none",
@@ -5322,6 +5323,7 @@
       {
         "IsExcute": "false",
         "url": "https://www.x360ce.com/files/x360ce_x86.zip",
+        "extinction": "zip",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
         "launcher": "x360ce_x86.exe",
@@ -5342,6 +5344,7 @@
       {
         "IsExcute": "false",
         "url": "https://www.x360ce.com/files/x360ce_x64.zip",
+        "extinction": "zip",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
         "launcher": "x360ce_x64.exe",
@@ -6255,11 +6258,12 @@
       {
         "IsExcute": "true",
         "url": "https://github.com/nov0caina/SelfishNetV3/releases/download/SelfishNetV3.0.0/SelfishNetV3.0.0_Installer.zip",
-        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "extinction": "msi",
+        "exeArgs": "/quiet",
         "output": "none",
-        "launcher": "none",
+        "launcher": "SelfishNetV3_Installer.msi",
         "shortcut": "no",
-        "run": "no"
+        "run": "yes"
       }
     ],
     "category": "Utilities",
