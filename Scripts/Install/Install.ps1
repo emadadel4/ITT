@@ -304,14 +304,14 @@ function Invoke-Install {
                             param (
                                 [string]$name,
                                 [string]$url,
-                                [string]$extinction,
+                                [string]$type,
                                 [string]$exeArgs,
                                 [string]$outputDir,
                                 [string]$shortcut,
                                 [string]$run
                             )
                         
-                            $destination = "$env:ProgramData\$outputDir\$name\$name.$extinction"
+                            $destination = "$env:ProgramData\$outputDir\$name\$name.$type"
                             $shortcutPath = [System.IO.Path]::Combine([System.Environment]::GetFolderPath('Desktop'), "$name.lnk")
                         
                             Add-Log -Message "Downloading using Invoke-WebRequest" -Level "INFO"
