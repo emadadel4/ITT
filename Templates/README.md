@@ -77,14 +77,14 @@
 
 <h2>🚀 Usage</h2>
 
-> [!WARNING]  
-Do not download the script from any site , run it from known commands only
 <h3>On Windows 10/11:</h3>
 <ol>
 <li>Right-click on the Start menu.</li>
 <li>Choose "PowerShell" or "Terminal" and paste any of the following commands:</li>
 </ol>
 
+> [!WARNING]  
+Do not download the script from any other site. Run it using known official commands from this GitHub repository only.
 
 <pre><code>irm bit.ly/ittea | iex</code></pre>
 
