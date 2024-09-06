@@ -23,7 +23,7 @@ Add-Type -AssemblyName WindowsBase
 $itt = [Hashtable]::Synchronized(@{
     database       = @{}
     ProcessRunning = $false
-    lastupdate     = "09/05/2024"
+    lastupdate     = "09/06/2024"
     github         = "https://github.com/emadadel4"
     telegram       = "https://t.me/emadadel4"
     website        = "https://emadadel4.github.io"
@@ -6802,8 +6802,8 @@ $itt.database.locales = '{
     }
   },
   "Updates":{
-    "Keyboard": "Enter Key: Performs different actions depending on the current view:\n  - Apps List View: Installs selected applications.\n  - Tweaks List View: Applies selected tweaks.\n\nCtrl + S: Same action as Enter Key:\n  - Apps List View: Installs selected applications.\n  - Tweaks List View: Applies selected tweaks.\n\nCtrl + G: Closes the application.\n\nCtrl + F: Enter search mode. Press ESC to exit.\n\nCtrl + Q: Switch to the ''Apps'' tab.\n\nCtrl + W: Switch to the ''Tweaks'' tab.\n\nCtrl + E: Switch to the ''Settings'' tab."
-  }
+    "Keyboard": "Enter Key: Performs different actions depending on the current view:\n  - Apps List View: Installs selected applications.\n  - Tweaks List View: Applies selected tweaks.\n\nCtrl + S: Same action as Enter Key:\n  - Apps List View: Installs selected applications.\n  - Tweaks List View: Applies selected tweaks.\n\nCtrl + G: Closes the application.\n\nCtrl + F: Enter search mode. Press ESC to exit.\n\nCtrl + Q: Switch to the ''Apps'' tab.\n\nCtrl + W: Switch to the ''Tweaks'' tab.\n\nCtrl + E: Switch to the ''Settings'' tab.\n\nShift + S: Save items to JSON file.\n\nShift + D: Load items from JSON file.\n\nShift + F: Mute music.\n\nShift + N: Play music.\n\nShift + P: Open Choco folder in File Explorer.\n\nShift + Q: Restore point.\n\nShift + I: ITT Shortcut."
+    }
 }
 ' | ConvertFrom-Json
 $itt.database.OST = '{
@@ -8980,36 +8980,46 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
                             
                             <!-- Icon -->
                             <ContentPresenter Grid.Column="0" 
-                                            ContentSource="Icon" 
-                                            HorizontalAlignment="Left"
-                                            VerticalAlignment="Center"
-                                            Margin="0,0,4,0"/>
+                                              ContentSource="Icon" 
+                                              HorizontalAlignment="Left"
+                                              VerticalAlignment="Center"
+                                              Margin="0,0,4,0"/>
                             
-                            <!-- Text -->
+                            <!-- Text (MenuItem Header) -->
                             <TextBlock x:Name="TextBlock"
-                                    Grid.Column="1"
-                                    Text="{TemplateBinding Header}"
-                                    Foreground="{DynamicResource DefaultTextColor}"/>
+                                       Grid.Column="1"
+                                       Text="{TemplateBinding Header}"
+                                       Foreground="{DynamicResource DefaultTextColor}"
+                                       VerticalAlignment="Center"/>
+                            
+                            <!-- Shortcut Key (InputGestureText) -->
+                            <TextBlock x:Name="ShortcutText"
+                                       Grid.Column="2"
+                                       Text="{TemplateBinding InputGestureText}"
+                                       Foreground="{DynamicResource DefaultTextColor}"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Right"
+                                       Margin="5,0"/>
                             
                             <!-- Arrow Down Indicator -->
                             <Path x:Name="Arrow"
-                                Grid.Column="2"
-                                Data="M0,0 L4,4 L8,0 Z"
-                                Fill="{DynamicResource DefaultTextColor}"
-                                HorizontalAlignment="Center"
-                                VerticalAlignment="Center"
-                                Margin="4,0,0,0"
-                                Visibility="Collapsed"/>
+                                  Grid.Column="2"
+                                  Data="M0,0 L4,4 L8,0 Z"
+                                  Fill="{DynamicResource DefaultTextColor}"
+                                  HorizontalAlignment="Center"
+                                  VerticalAlignment="Center"
+                                  Margin="4,0,0,0"
+                                  Visibility="Collapsed"/>
                             
                             <!-- Popup for Submenu -->
                             <Popup Name="PART_Popup" 
-                                Placement="Bottom" 
-                                IsOpen="{TemplateBinding IsSubmenuOpen}" 
-                                AllowsTransparency="True" 
-                                Focusable="False"
-                                PopupAnimation="Fade">
+                                   Placement="Bottom" 
+                                   IsOpen="{TemplateBinding IsSubmenuOpen}" 
+                                   AllowsTransparency="True" 
+                                   Focusable="False"
+                                   PopupAnimation="Fade">
                                 <Border Background="{TemplateBinding Background}" 
-                                        BorderBrush="{DynamicResource BorderBrush}" 
+                                        BorderBrush="{DynamicResource BorderBrush}"     
                                         BorderThickness="2"
                                         CornerRadius="5">
                                     <StackPanel IsItemsHost="True" 
@@ -9021,8 +9031,6 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
                             <!-- Adjust appearance on hover if needed -->
-                            <!-- <Setter TargetName="Border" Property="Background" Value="{DynamicResource BGButtonColor}"/>
-                            <Setter TargetName="TextBlock" Property="Foreground" Value="{DynamicResource DefaultTextColor2}"/> -->
                         </Trigger>
                         <Trigger Property="HasItems" Value="True">
                             <Setter TargetName="Arrow" Property="Visibility" Value="Visible"/>
@@ -9032,6 +9040,7 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
             </Setter.Value>
         </Setter>
     </Style>
+
 <!-- End Define the Menu Style -->
 
 <!--Scrollbar Thumbs-->
@@ -9447,24 +9456,24 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
                 <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center" Text=""/>
             </MenuItem.Icon>
 
-            <MenuItem Name="restorepoint" Header="{Binding restorepoint}">
+            <MenuItem Name="restorepoint" InputGestureText="Shift+Q" Header="{Binding restorepoint}">
                 <MenuItem.Icon>
                     <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
                 </MenuItem.Icon>
             </MenuItem>
 
-            <MenuItem Name="chocoloc" Header="{Binding chocoloc}">
+            <MenuItem Name="chocoloc" Header="{Binding chocoloc}" InputGestureText="Shift+P">
                 <MenuItem.Icon>
                     <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
                 </MenuItem.Icon>
             </MenuItem>
 
-            <MenuItem Name="save" Header="{Binding saveapps}">
+            <MenuItem Name="save" InputGestureText="Shift+S" Header="{Binding saveapps}">
                 <MenuItem.Icon>
                     <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
                 </MenuItem.Icon>
             </MenuItem>
-            <MenuItem Name="load" Header="{Binding loadapps}">
+            <MenuItem Name="load" InputGestureText="Shift+D" Header="{Binding loadapps}">
                 <MenuItem.Icon>
                     <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
                 </MenuItem.Icon>
@@ -9483,12 +9492,12 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
                 <MenuItem.Icon>
                     <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
                 </MenuItem.Icon>
-                <MenuItem Name="moff" Header="{Binding off}">
+                <MenuItem Name="moff" Header="{Binding off}" InputGestureText="Shift+F">
                     <MenuItem.Icon>
                         <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem Name="mon" Header="{Binding on}">
+                <MenuItem Name="mon" Header="{Binding on}" InputGestureText="Shift+N">
                     <MenuItem.Icon>
                         <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
                     </MenuItem.Icon>
@@ -9511,7 +9520,7 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
             </MenuItem>
 
 
-            <MenuItem Name="ittshortcut" Header="{Binding ittlink}">
+            <MenuItem Name="ittshortcut" Header="{Binding ittlink}" InputGestureText="Shift+I">
                 <MenuItem.Icon>
                     <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="15" Text=""/>
                 </MenuItem.Icon>
@@ -13184,7 +13193,7 @@ function LoadJson {
 
     # Open file dialog to select JSON file
     $openFileDialog = New-Object "Microsoft.Win32.OpenFileDialog"
-    $openFileDialog.Filter = "JSON files (*.ea4)|*.ea4"
+    $openFileDialog.Filter = "JSON files (*.itt)|*.itt"
     $openFileDialog.Title = "Open JSON File"
     $dialogResult = $openFileDialog.ShowDialog()
 
@@ -13242,7 +13251,7 @@ function SaveItemsToJson {
     if ($items.Count -gt 0) {
         # Open save file dialog
         $saveFileDialog = New-Object "Microsoft.Win32.SaveFileDialog"
-        $saveFileDialog.Filter = "JSON files (*.ea4)|*.ea4"
+        $saveFileDialog.Filter = "JSON files (*.itt)|*.itt"
         $saveFileDialog.Title = "Save JSON File"
         $dialogResult = $saveFileDialog.ShowDialog()
 
@@ -15183,7 +15192,46 @@ $KeyEvents = {
     if ($_.Key -eq "I" -and $_.KeyboardDevice.Modifiers -eq "Ctrl") {
         About
     }
-   
+
+    # SaveItemsToJson
+    if ($_.Key -eq "S" -and $_.KeyboardDevice.Modifiers -eq "Shift") {
+        SaveItemsToJson
+    }
+
+    # LoadJson
+    if ($_.Key -eq "D" -and $_.KeyboardDevice.Modifiers -eq "Shift") {
+        LoadJson
+    }
+
+    # Mute
+    if ($_.Key -eq "F" -and $_.KeyboardDevice.Modifiers -eq "Shift") {
+        MuteMusic
+    }
+
+    # Music ON 
+    if ($_.Key -eq "N" -and $_.KeyboardDevice.Modifiers -eq "Shift") {
+        UnmuteMusic
+    }
+
+    # Mute
+    if ($_.Key -eq "N" -and $_.KeyboardDevice.Modifiers -eq "Shift") {
+        StopMusic
+    }
+
+    # Choco Folder
+    if ($_.Key -eq "P" -and $_.KeyboardDevice.Modifiers -eq "Shift") {
+        Start-Process explorer.exe "C:\ProgramData\chocolatey\lib"
+    }
+
+    # Restore point 
+    if ($_.Key -eq "Q" -and $_.KeyboardDevice.Modifiers -eq "Shift") {
+        Start-Process explorer.exe "C:\ProgramData\chocolatey\lib"
+    }
+
+    # ITT Shortcut 
+    if ($_.Key -eq "I" -and $_.KeyboardDevice.Modifiers -eq "Shift") {
+        ITTShortcut
+    }
 }
 
 $itt["window"].Add_PreViewKeyDown($KeyEvents)
