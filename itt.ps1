@@ -15573,7 +15573,7 @@ function Check-Date {
     else 
     {
         if($itt.PopupWindow -eq "off") {return}   
-        Show-Event -image "https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/thumbnail.jpg" -title "$watchdemo" -description "$subs" -day "Default" -WindowHeight 600 -WindowWidth 486
+        Show-Event -image "https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/thumbnail.jpg" -title "$watchdemo" -description "$subs" -day "Default" -WindowHeight 500 -WindowWidth 486
     }
 }
 
