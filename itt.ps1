@@ -12635,6 +12635,7 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
       VerticalAlignment="Center" 
       TextWrapping="Wrap"
       Padding="12"
+      FontSize="14"
       Text="#StandWithPalestine"
       FontWeight="SemiBold"
       FlowDirection="LeftToRight"
