@@ -77,6 +77,8 @@
 
 <h2>🚀 Usage</h2>
 
+> [!WARNING]  
+Do not download the script from any site , run it from known commands only
 <h3>On Windows 10/11:</h3>
 <ol>
 <li>Right-click on the Start menu.</li>
