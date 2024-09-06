@@ -47,6 +47,10 @@ $AppName = Read-Host "Enter App name"
 $description = (Read-Host "Enter app description") -replace '[\W.]', ''
 $url = Read-Host "Enter URL Download file"
 
+#===========================================================================
+#region Begin Extinction Prompt
+#===========================================================================
+
 $Extinction = @{
     1 = "exe"
     2 = "msi"
@@ -68,7 +72,11 @@ do {
 } until ([int]$choice -in $Extinction.Keys)
 
 #===========================================================================
-#region Begin IsExcute
+#endregion Extinction
+#===========================================================================
+
+#===========================================================================
+#region Begin IsExcute Prompt
 #===========================================================================
 
 $IsExcute = @{
@@ -96,14 +104,8 @@ do {
 #endregion IsExcute
 #===========================================================================
 
-$exeArgs = Read-Host "Enter Silent argmanet: If not silent installation press enter to skip"
-if ($exeArgs -eq "") { $exeArgs = "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath" }  # Set default value if empty
-
-$launcher = Read-Host "Enter Launcher name [file.exe]"
-if ($launcher -eq "") { $launcher = "none" }  # Set default value if empty
-
 #===========================================================================
-#region Begin runAfterDownload
+#region Begin runAfterDownload Prompt
 #===========================================================================
 
 $runAfterDownload = @{
@@ -132,7 +134,25 @@ do {
 #===========================================================================
 
 #===========================================================================
-#region Begin CreateShourtcut
+#region Args/launcher/type Prompt
+#===========================================================================
+
+# Prompt the user to enter a silent argument for installation
+$exeArgs = Read-Host "Enter Silent argmanet: If not silent installation press enter to skip"
+if ($exeArgs -eq "") { $exeArgs = "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath" }  # Set default value if empty
+
+# Prompt the user to enter the launcher name (e.g., the executable file)
+$launcher = Read-Host "Enter Launcher name [file.exe]"
+if ($launcher -eq "") { $launcher = "none" }  # Set default value if empty
+
+# Check if the installation type is MSI, in which case override the arguments with MSI-specific ones
+if($type -eq "msi") {$exeArgs = "/quiet"} # Set default for msi
+#===========================================================================
+#endregion Args/launcher/type
+#===========================================================================
+
+#===========================================================================
+#region Begin CreateShourtcut Prompt
 #===========================================================================
 
 $CreateShourtcut = @{
@@ -161,7 +181,7 @@ do {
 #===========================================================================
 
 #===========================================================================
-#region Begin Categories
+#region Begin Categories Prompt
 #===========================================================================
 
 # Define category options
