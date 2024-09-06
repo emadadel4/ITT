@@ -77,11 +77,17 @@ function SaveItemsToJson {
     foreach ($item in $itt.AppsListView.Items) {
         $checkBoxes = Get-CheckBoxesFromStackPanel -item $item
         if ($checkBoxes.IsChecked) {
-            $itemObject = [PSCustomObject]@{
-                Name  = $checkBoxes.Content
-                check = "true"
+            $app = $itt.database.Applications | Where-Object { $_.Name -eq $checkBoxes.Content }
+            
+            if ($app) {
+                $itemObject = [PSCustomObject]@{
+                    Name   = $checkBoxes.Content
+                    check  = "true"
+                    choco  = $app.choco
+                    winget = $app.winget
+                }
+                $items += $itemObject
             }
-            $items += $itemObject
         }
     }
 
