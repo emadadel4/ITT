@@ -6826,7 +6826,7 @@ $itt.database.locales = '{
     }
   },
   "Updates":{
-    "Keyboard": "Enter Key: Performs different actions depending on the current view:\n  - Apps List View: Installs selected applications.\n  - Tweaks List View: Applies selected tweaks.\n\nCtrl + S: Same action as Enter Key:\n  - Apps List View: Installs selected applications.\n  - Tweaks List View: Applies selected tweaks.\n\nCtrl + G: Closes the application.\n\nCtrl + F: Enter search mode. Press ESC to exit.\n\nCtrl + Q: Switch to the ''Apps'' tab.\n\nCtrl + W: Switch to the ''Tweaks'' tab.\n\nCtrl + E: Switch to the ''Settings'' tab.\n\nShift + S: Save items to JSON file.\n\nShift + D: Load items from JSON file.\n\nShift + F: Mute music.\n\nShift + N: Play music.\n\nShift + P: Open Choco folder in File Explorer.\n\nShift + Q: Restore point.\n\nShift + I: ITT Shortcut."
+    "Keyboard": "Enter Key: Performs different actions depending on the current view:\n  - Apps List View: Installs selected applications.\n  - Tweaks List View: Applies selected tweaks.\n\nCtrl + S: Same action as Enter Key:\n  - Apps List View: Installs selected applications.\n  - Tweaks List View: Applies selected tweaks.\n\nCtrl + G: Closes the application.\n\nCtrl + F: Enter search mode. Press ESC to exit.\n\nCtrl + Q: Switch to the ''Apps'' tab.\n\nCtrl + W: Switch to the ''Tweaks'' tab.\n\nCtrl + E: Switch to the ''Settings'' tab.\n\nShift + S: Save items to JSON file.\n\nShift + D: Load items from JSON file.\n\nShift + M: Mute music.\n\nShift + F: Play music.\n\nShift + P: Open Choco folder in File Explorer.\n\nShift + Q: Restore point.\n\nShift + I: ITT Shortcut."
     }
 }
 ' | ConvertFrom-Json
@@ -15332,13 +15332,13 @@ $KeyEvents = {
     }
 
     # Mute
-    if ($_.Key -eq "F" -and $_.KeyboardDevice.Modifiers -eq "Shift") {
+    if ($_.Key -eq "M" -and $_.KeyboardDevice.Modifiers -eq "Shift") {
         MuteMusic -Value 0
 
     }
 
     # Music ON 
-    if ($_.Key -eq "N" -and $_.KeyboardDevice.Modifiers -eq "Shift") {
+    if ($_.Key -eq "F" -and $_.KeyboardDevice.Modifiers -eq "Shift") {
         UnmuteMusic -Value 100
     }
 
