@@ -15213,11 +15213,6 @@ $KeyEvents = {
         UnmuteMusic
     }
 
-    # Mute
-    if ($_.Key -eq "F" -and $_.KeyboardDevice.Modifiers -eq "Shift") {
-        MuteMusic
-    }
-
     # Choco Folder
     if ($_.Key -eq "P" -and $_.KeyboardDevice.Modifiers -eq "Shift") {
         Start-Process explorer.exe "C:\ProgramData\chocolatey\lib"
