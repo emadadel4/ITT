@@ -6364,7 +6364,7 @@ $itt.database.locales = '{
         "off":"كتم",
         "Dark":"ليلا",
         "Light":"نهارا",
-        "defaultTheme":"استخدام إعداد النظام",
+        "defaultTheme":"مزامنة مع النظام",
         "ittlink":"أنشاء أختصار على سطح المكتب",
         "theme":"المظهر",
         "language":"اللغة",
