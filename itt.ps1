@@ -6332,27 +6332,6 @@ $itt.database.Applications = '[
     ],
     "category": "Utilities",
     "check": "false"
-  },
-  {
-    "name": "e",
-    "description": "Whats up",
-    "winget": "none",
-    "choco": "none",
-    "scoop": "none",
-    "default": [
-      {
-        "IsExcute": "false",
-        "url": "e",
-        "extinction": "exe",
-        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-        "output": "none",
-        "launcher": "1",
-        "shortcut": "yes",
-        "run": "yes"
-      }
-    ],
-    "category": "Web Browsers",
-    "check": "false"
   }
 ]
 ' | ConvertFrom-Json
@@ -12251,14 +12230,6 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
                 <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content="Utilities"/>
             </StackPanel>
                 <TextBlock Width="555" Background="Transparent" Margin="8" Foreground="{DynamicResource DefaultTextColor2}"  FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="Control your internet bandwidth with SelfishNet V3 ARP Spoofing application"/>
-        </StackPanel>
-
-        <StackPanel Orientation="Vertical" Width="auto" Margin="10">
-            <StackPanel Orientation="Horizontal">
-                <CheckBox Content="e" Tag="Web Browsers" IsChecked="false"   ToolTip="Install it again to update" FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content="Web Browsers"/>
-            </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="8" Foreground="{DynamicResource DefaultTextColor2}"  FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="Whats up"/>
         </StackPanel>
 
                     </ListView>
