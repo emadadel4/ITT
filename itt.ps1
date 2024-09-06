@@ -15215,7 +15215,7 @@ $KeyEvents = {
 
     # Mute
     if ($_.Key -eq "N" -and $_.KeyboardDevice.Modifiers -eq "Shift") {
-        StopMusic
+        MuteMusic
     }
 
     # Choco Folder
