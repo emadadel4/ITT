@@ -66,6 +66,10 @@ function Invoke-Install {
             [System.Windows.MessageBox]::Show($msg, "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
             return
         }
+
+        # Clear Search Input
+        $itt.SearchInput.Text = ""
+
     
         $itt.category.SelectedIndex = 0
         FilteredSelectedItems
