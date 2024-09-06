@@ -75,12 +75,13 @@ $KeyEvents = {
 
     # Mute
     if ($_.Key -eq "F" -and $_.KeyboardDevice.Modifiers -eq "Shift") {
-        MuteMusic
+        MuteMusic -Value 0
+
     }
 
     # Music ON 
     if ($_.Key -eq "N" -and $_.KeyboardDevice.Modifiers -eq "Shift") {
-        UnmuteMusic
+        UnmuteMusic -Value 100
     }
 
     # Choco Folder
@@ -90,7 +91,7 @@ $KeyEvents = {
 
     # Restore point 
     if ($_.Key -eq "Q" -and $_.KeyboardDevice.Modifiers -eq "Shift") {
-        Start-Process explorer.exe "C:\ProgramData\chocolatey\lib"
+        RestorePoint
     }
 
     # ITT Shortcut 
