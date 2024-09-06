@@ -12893,7 +12893,7 @@ $EventXaml = '<Window
 
     
 
-    <Border Background="{DynamicResource BGColor}" CornerRadius="5">
+    <Border Background="{DynamicResource BGColor}" BorderBrush="{DynamicResource FGColor}" BorderThickness="4" CornerRadius="10">
 
             <Grid>
                 <Grid.RowDefinitions>
@@ -12947,7 +12947,7 @@ $EventXaml = '<Window
 
                     <!-- Header -->
                         <Grid Row="1">
-                            <ScrollViewer VerticalScrollBarVisibility="Auto" Height="500">
+                            <ScrollViewer VerticalScrollBarVisibility="Auto" Height="466">
                                 <StackPanel Orientation="Vertical">
                                         <!--Image-->
                                         <Image 
@@ -12986,6 +12986,7 @@ $EventXaml = '<Window
                             Background="Transparent"
                             TextAlignment="Center"
                             Cursor="Hand"
+                            Padding="15"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
                             />
