@@ -61,24 +61,24 @@
                 <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center" Text=""/>
             </MenuItem.Icon>
 
-            <MenuItem Name="restorepoint" Header="{Binding restorepoint}">
+            <MenuItem Name="restorepoint" InputGestureText="Shift+Q" Header="{Binding restorepoint}">
                 <MenuItem.Icon>
                     <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
                 </MenuItem.Icon>
             </MenuItem>
 
-            <MenuItem Name="chocoloc" Header="{Binding chocoloc}">
+            <MenuItem Name="chocoloc" Header="{Binding chocoloc}" InputGestureText="Shift+P">
                 <MenuItem.Icon>
                     <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
                 </MenuItem.Icon>
             </MenuItem>
 
-            <MenuItem Name="save" Header="{Binding saveapps}">
+            <MenuItem Name="save" InputGestureText="Shift+S" Header="{Binding saveapps}">
                 <MenuItem.Icon>
                     <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
                 </MenuItem.Icon>
             </MenuItem>
-            <MenuItem Name="load" Header="{Binding loadapps}">
+            <MenuItem Name="load" InputGestureText="Shift+D" Header="{Binding loadapps}">
                 <MenuItem.Icon>
                     <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
                 </MenuItem.Icon>
@@ -97,12 +97,12 @@
                 <MenuItem.Icon>
                     <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
                 </MenuItem.Icon>
-                <MenuItem Name="moff" Header="{Binding off}">
+                <MenuItem Name="moff" Header="{Binding off}" InputGestureText="Shift+F">
                     <MenuItem.Icon>
                         <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem Name="mon" Header="{Binding on}">
+                <MenuItem Name="mon" Header="{Binding on}" InputGestureText="Shift+N">
                     <MenuItem.Icon>
                         <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
                     </MenuItem.Icon>
@@ -125,7 +125,7 @@
             </MenuItem>
 
 
-            <MenuItem Name="ittshortcut" Header="{Binding ittlink}">
+            <MenuItem Name="ittshortcut" Header="{Binding ittlink}" InputGestureText="Shift+I">
                 <MenuItem.Icon>
                     <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="15" Text=""/>
                 </MenuItem.Icon>
