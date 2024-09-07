@@ -23,7 +23,7 @@ Add-Type -AssemblyName WindowsBase
 $itt = [Hashtable]::Synchronized(@{
     database       = @{}
     ProcessRunning = $false
-    lastupdate     = "09/06/2024"
+    lastupdate     = "09/07/2024"
     github         = "https://github.com/emadadel4"
     telegram       = "https://t.me/emadadel4"
     website        = "https://emadadel4.github.io"
@@ -15626,8 +15626,6 @@ function DisablePopup {
 #===========================================================================
 #region Select elements with a Name attribute using XPath and iterate over them
 #===========================================================================
-
-# Select elements with a Name attribute and iterate
 $xaml.SelectNodes("//*[@Name]") | ForEach-Object {
     $name = $_.Name
     $element = $itt["window"].FindName($name)
