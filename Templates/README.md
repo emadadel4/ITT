@@ -108,12 +108,15 @@ or
   [![Watch the video](https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/thumbnail.jpg)](https://www.youtube.com/watch?v=QmO82OTsU5c)
 </div>
 
-<h2> 📦 How to Add a New App/Tweak/OST/Quote</h2>
-<ol>
-<li><strong>Make sure you have PowerShell 7 installed (recommended) for building</strong></li>
-<li><strong>Fork the repository and clone it.</strong></li>
-<li><strong>Open the ITT directory in PowerShell run as administrator:</strong></li>
-</ol>
+
+
+# 💡 How to Contribute
+
+1. **Make sure you have PowerShell 7 installed (recommended) for building.**
+
+2. **Fork the repository and clone it.**
+
+3. **Open the ITT directory in PowerShell run as administrator:**
 
 <pre><code>Set-Location "C:\Users\$env:USERNAME\Documents\Github\ITT"
 </code></pre>
