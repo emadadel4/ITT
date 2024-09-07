@@ -110,7 +110,7 @@ or
 
 
 
-## 💡 How to Contribute
+# 💡 How to Contribute
 
 1. **Make sure you have PowerShell 7 installed (recommended) for building.**
 
