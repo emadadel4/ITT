@@ -29,3 +29,5 @@ The best way to financially support Palestine is by donating directly to one of 
 - 📰 Resist propaganda:
     - Educate yourself and others on the Israeli threat.
     - Check out common misbeliefs.
+
+### If you can't lift the injustice, at least tell everyone about it.
