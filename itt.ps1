@@ -23,7 +23,7 @@ Add-Type -AssemblyName WindowsBase
 $itt = [Hashtable]::Synchronized(@{
     database       = @{}
     ProcessRunning = $false
-    lastupdate     = "09/08/2024"
+    lastupdate     = "09/09/2024"
     github         = "https://github.com/emadadel4"
     telegram       = "https://t.me/emadadel4"
     website        = "https://emadadel4.github.io"
@@ -7063,7 +7063,8 @@ $itt.database.Quotes = '{
     "أحياناً تكون الوحدة أكثر وضوحاً عندما تكون محاطاً بأشخاص لا يشاركونك أفكارك ومشاعرك",
     "تم تخدير الشعوب بعد أن سرقوا أموالهم, بتوظيف الدين لإقناع الفقراء بإنهم سيدخلون الجنة قبل الغني",
     "اذا كنت لا تستطيع رفع الظلم ، على الأقل أخبر الجميع عنه",
-    "If you can''t lift the injustice, at least tell everyone about it."
+    "If you can''t lift the injustice, at least tell everyone about it.",
+    "Live together, die alone"
   ]
 }
 ' | ConvertFrom-Json
