@@ -7064,7 +7064,8 @@ $itt.database.Quotes = '{
     "تم تخدير الشعوب بعد أن سرقوا أموالهم, بتوظيف الدين لإقناع الفقراء بإنهم سيدخلون الجنة قبل الغني",
     "اذا كنت لا تستطيع رفع الظلم ، على الأقل أخبر الجميع عنه",
     "If you can''t lift the injustice, at least tell everyone about it.",
-    "Live together, die alone"
+    "Live together, die alone",
+    "نعيش معًا، او الموت وحيدا"
   ]
 }
 ' | ConvertFrom-Json
