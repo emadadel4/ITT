@@ -63,10 +63,11 @@ function Check {
 
 }
 
-function Native {
 #===========================================================================
 #region Native Downloader 
 #===========================================================================
+function Native {
+
 
 if($userInput -eq "Default [HttpClient]")
 {
@@ -311,15 +312,17 @@ $updatedJson | Out-File -FilePath $json -Encoding utf8
 
 Write-Host "Added successfully, Don't forget to build and test it before commit" -ForegroundColor Green 
 }
+
+}
 #===========================================================================
 #endregion Native Downloader 
 #===========================================================================
-}
 
-function API {
 #===========================================================================
 #region API 
 #===========================================================================
+function API {
+
         $Name = Read-Host "Enter app name"
         $Description = [regex]::Replace((Read-Host "Enter app description").Trim(), "[^\w\s]", "")
 
@@ -438,10 +441,11 @@ function API {
 
     Write-Host "Added successfully, Don't forget to build and test it before commit" -ForegroundColor Green 
         
+
+}
 #===========================================================================
 #endregion API 
 #===========================================================================
-}
 
 if($userInput -eq "API [Choco/Winget] Recommended")
 {
