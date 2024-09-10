@@ -225,9 +225,6 @@ function NewCONTRIBUTOR {
 
     # Write the updated content to the new XAML file
     Set-Content -Path $updatedXamlFile -Value $newXamlContent -Encoding UTF8
-
-    #Write-Output "Updated CONTRIBUTORS.md successfully."
-    
 }
 
 # Display the number of items in json files
@@ -320,9 +317,9 @@ WriteToScript -Content @"
         $AppXamlContent  = Get-Content -Path $FilePaths["taps"] -Raw
         $StyleContent    = Get-Content -Path $FilePaths["Style"] -Raw
         $ColorsContent   = Get-Content -Path $FilePaths["Colors"] -Raw
-        $MenuContent   = Get-Content -Path $FilePaths["menu"] -Raw
-        $ButtonsContent   = Get-Content -Path $FilePaths["buttons"] -Raw
-        $CatagoryContent   = Get-Content -Path $FilePaths["catagory"] -Raw
+        $MenuContent     = Get-Content -Path $FilePaths["menu"] -Raw
+        $ButtonsContent  = Get-Content -Path $FilePaths["buttons"] -Raw
+        $CatagoryContent = Get-Content -Path $FilePaths["catagory"] -Raw
         $searchContent   = Get-Content -Path $FilePaths["search"] -Raw
 
         # Replace placeholders with actual content
@@ -349,6 +346,7 @@ WriteToScript -Content @"
 
     WriteToScript -Content "`$inputXML = '$XamlContent'"
 
+    # Signup a new CONTRIBUTOR
     NewCONTRIBUTOR
 
 
