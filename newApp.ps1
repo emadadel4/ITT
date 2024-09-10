@@ -1,4 +1,7 @@
-try {
+param (
+    [string]$json = "./Resources/Database/Applications.json"
+)
+
 Clear-Host
 Write-Host "
 +-------------------------------------------------------------------------+
@@ -36,6 +39,31 @@ do {
 # Read User Input.
 $userInput
 
+function Check {
+    param (
+        [string]$choco,
+        [string]$winget
+    )
+    
+    $jsonContent = Get-Content -Path $json -Raw | ConvertFrom-Json
+
+    foreach ($item in $jsonContent) 
+    {
+        if ($item.choco -eq $choco)
+        {
+            Write-Host "($choco) already exists!" -ForegroundColor Yellow
+            exit
+
+        } elseif ($item.winget -eq $winget) 
+        {
+            Write-Host "($winget) already exists!" -ForegroundColor Yellow
+            exit
+        }
+    }
+
+}
+
+function Native {
 #===========================================================================
 #region Native Downloader 
 #===========================================================================
@@ -270,7 +298,7 @@ $jsonString = @"
 "@
 
 # Read existing JSON file
-$existingJson = Get-Content -Path "./Resources/Database/Applications.json" | ConvertFrom-Json
+$existingJson = Get-Content -Path $json | ConvertFrom-Json
 
 # Append new data to existing JSON
 $existingJson += $jsonString | ConvertFrom-Json
@@ -279,138 +307,147 @@ $existingJson += $jsonString | ConvertFrom-Json
 $updatedJson = $existingJson | ConvertTo-Json -Depth 100
 
 # Output to file
-$updatedJson | Out-File -FilePath "./Resources/Database/Applications.json" -Encoding utf8
+$updatedJson | Out-File -FilePath $json -Encoding utf8
 
 Write-Host "Added successfully, Don't forget to build and test it before commit" -ForegroundColor Green 
 }
 #===========================================================================
 #endregion Native Downloader 
 #===========================================================================
+}
 
+function API {
 #===========================================================================
 #region API 
 #===========================================================================
-if($userInput -eq "API [Choco/Winget] Recommended")
-{
-    $Name = Read-Host "Enter app name"
-    $Description = [regex]::Replace((Read-Host "Enter app description").Trim(), "[^\w\s]", "")
+        $Name = Read-Host "Enter app name"
+        $Description = [regex]::Replace((Read-Host "Enter app description").Trim(), "[^\w\s]", "")
 
-    $choco = (Read-Host "Enter Chocolatey package name").Trim()  # Remove leading and trailing spaces
-    if ($choco -eq "") { $choco = "none" }  # Set default value if empty
+        $choco = Read-Host "Enter Chocolatey package name"
+        if ($choco -eq "") { $choco = "none" }  # Set default value if empty
 
-    $winget = (Read-Host "Enter Winget package name (default: none)").Trim()  # Remove leading and trailing spaces
-    if ($winget -eq "") { $winget = "none" }  # Set default value if empty
+        # Check choco packge already exists
+        Check -choco $choco
 
-    $scoop = (Read-Host "Enter Scoop package name (default: none)").Trim()  # Remove leading and trailing spaces
-    if ($scoop -eq "") { $scoop = "none" }  # Set default value if empty
+        $winget = (Read-Host "Enter Winget package name (Enter to skip)").Trim()  # Remove leading and trailing spaces
+        if ($winget -eq "") { $winget = "none" }  # Set default value if empty
 
-    $output = "none" # default value is none
+        # Check winget packge already exists
+        Check -winget $winget
+
+        $scoop = (Read-Host "Enter Scoop package name (Enter to skip)").Trim()  # Remove leading and trailing spaces
+        if ($scoop -eq "") { $scoop = "none" }  # Set default value if empty
+
+        $output = "none" # default value is none
+
+        # Define category options
+        $validCategories = @{
+            1 = "Web Browsers"
+            2 = "Media"
+            3 = "Media Tools"
+            4 = "Documents"
+            5 = "Compression"
+            6 = "Communication"
+            7 = "Gaming"
+            8 = "Imaging"
+            9 = "Drivers"
+            10 = "Utilities"
+            11 = "Disk Tools"
+            12 = "File Sharing"
+            13 = "Development"
+            14 = "Runtimes"
+            15 = "Portable"
+            16 = "Security"
+        }
+
+        # Prompt user to choose category
+        do {
+            Write-Host "Which category this app will be?:"
+            foreach ($key in $validCategories.Keys | Sort-Object) {
+                Write-Host "$key - $($validCategories[$key])"
+            }
+            $choice = Read-Host "Enter the number corresponding to the category"
+            if ([int]$choice -in $validCategories.Keys) {
+                $category = $validCategories[[int]$choice]
+            } else {
+                Write-Host "Invalid choice. Please select a valid option."
+            }
+        } until ([int]$choice -in $validCategories.Keys)
+
+            # Remove "choco install" from $choco if it exists
+            $choco = ($choco -replace "choco install", "" -replace ",,", ",").Trim()
+            $winget = $winget.Split('--id=')[-1].Trim()
+            $winget = $winget.Replace("-e", "").Trim()
 
 
-    # Define category options
-    $validCategories = @{
-        1 = "Web Browsers"
-        2 = "Media"
-        3 = "Media Tools"
-        4 = "Documents"
-        5 = "Compression"
-        6 = "Communication"
-        7 = "Gaming"
-        8 = "Imaging"
-        9 = "Drivers"
-        10 = "Utilities"
-        11 = "Disk Tools"
-        12 = "File Sharing"
-        13 = "Development"
-        14 = "Runtimes"
-        15 = "Portable"
-        16 = "Security"
+    # Define the data
+    $data = @{
+        "name" = $Name
+        "description" = $Description
+        "winget" = $winget
+        "choco" = $choco
+        "scoop" = $scoop
+        "default" = @(
+            @{
+                "IsExcute" = "false"
+                "url" = "none"
+                "exeArgs" = "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath"
+                "output" = $output
+                "shortcut" = "no"
+                "run" = "no"
+            }
+        )
+        "category" = $category
+        "check" = "false"
     }
 
-    # Prompt user to choose category
-    do {
-        Write-Host "Which category this app will be?:"
-        foreach ($key in $validCategories.Keys | Sort-Object) {
-            Write-Host "$key - $($validCategories[$key])"
-        }
-        $choice = Read-Host "Enter the number corresponding to the category"
-        if ([int]$choice -in $validCategories.Keys) {
-            $category = $validCategories[[int]$choice]
-        } else {
-            Write-Host "Invalid choice. Please select a valid option."
-        }
-    } until ([int]$choice -in $validCategories.Keys)
-
-        # Remove "choco install" from $choco if it exists
-        $choco = ($choco -replace "choco install", "" -replace ",,", ",").Trim()
-        $winget = $winget.Split('--id=')[-1].Trim()
-        $winget = $winget.Replace("-e", "").Trim()
-
-
-# Define the data
-$data = @{
-    "name" = $Name
-    "description" = $Description
-    "winget" = $winget
-    "choco" = $choco
-    "scoop" = $scoop
-    "default" = @(
-        @{
-            "IsExcute" = "false"
-            "url" = "none"
-            "exeArgs" = "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath"
-            "output" = $output
-            "shortcut" = "no"
-            "run" = "no"
-        }
-    )
-    "category" = $category
-    "check" = "false"
-}
-
-# Convert to JSON string
-$jsonString = @"
-{
-    "name": "$($data["name"])",
-    "description": "$($data["description"])",
-    "winget": "$($data["winget"])",
-    "choco": "$($data["choco"])",
-    "scoop": "$($data["scoop"])",
-    "default": [
-        {
-            "IsExcute": "false",
-            "url": "none",
-            "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
-            "output": "$($data["default"][0]["output"])",
-            "shortcut": "$($data["default"][0]["shortcut"])",
-            "run": "$($data["default"][0]["run"])"
-        }
-    ],
-    "category": "$($data["category"])",
-    "check": "false"
-}
+    # Convert to JSON string
+    $jsonString = @"
+    {
+        "name": "$($data["name"])",
+        "description": "$($data["description"])",
+        "winget": "$($data["winget"])",
+        "choco": "$($data["choco"])",
+        "scoop": "$($data["scoop"])",
+        "default": [
+            {
+                "IsExcute": "false",
+                "url": "none",
+                "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+                "output": "$($data["default"][0]["output"])",
+                "shortcut": "$($data["default"][0]["shortcut"])",
+                "run": "$($data["default"][0]["run"])"
+            }
+        ],
+        "category": "$($data["category"])",
+        "check": "false"
+    }
 "@
 
-# Read existing JSON file
-$existingJson = Get-Content -Path "./Resources/Database/Applications.json" | ConvertFrom-Json
+    # Read existing JSON file
+    $existingJson = Get-Content -Path $json | ConvertFrom-Json
 
-# Append new data to existing JSON
-$existingJson += $jsonString | ConvertFrom-Json
+    # Append new data to existing JSON
+    $existingJson += $jsonString | ConvertFrom-Json
 
-# Convert to JSON string
-$updatedJson = $existingJson | ConvertTo-Json -Depth 100
+    # Convert to JSON string
+    $updatedJson = $existingJson | ConvertTo-Json -Depth 100
 
-# Output to file
-$updatedJson | Out-File -FilePath "./Resources/Database/Applications.json" -Encoding utf8
+    # Output to file
+    $updatedJson | Out-File -FilePath $json -Encoding utf8
 
-Write-Host "Added successfully, Don't forget to build and test it before commit" -ForegroundColor Green 
-    
-}
+    Write-Host "Added successfully, Don't forget to build and test it before commit" -ForegroundColor Green 
+        
 #===========================================================================
 #endregion API 
 #===========================================================================
-    
 }
-catch {
-    Write-Host "An error occurred: $_"
+
+if($userInput -eq "API [Choco/Winget] Recommended")
+{
+    API
+
+}else
+{
+    Native
 }
