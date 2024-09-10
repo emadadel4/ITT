@@ -210,21 +210,24 @@ function Invoke-ApplyTweaks {
                             param (
                                 $Name
                             )
-                                try {
-                                    $checkapp = Get-AppxPackage -Name $($Name) -ErrorAction SilentlyContinue
-                                    if ($null -ne $checkapp) {
-                                        Add-Log -Message "Trying to remove $($Name)" -Level "INFO"
-                                        Get-AppxPackage "$($Name)" | Remove-AppxPackage -ErrorAction SilentlyContinue
-                                        Get-AppXProvisionedPackage -Online | where DisplayName -EQ "$($Name)" | Remove-AppxProvisionedPackage -Online
-                                        Get-AppxPackage -AllUsers "$($Name)" | ForEach-Object {Add-AppxPackage -DisableDevelopmentMode -Register "$($_.InstallLocation)\AppXManifest.xml"}
-                                    } else {
-                                        Write-Host "  $($Name) is not installed." -ForegroundColor Yellow
-                                    }
-                                } 
-                                catch {
-                                    Write-Host "  Failed to remove $($Name). $_" -ForegroundColor red
+                               
+                            try {
+                                Add-Log -Message "Trying to remove $($Name)" -Level "INFO"
+                                Get-AppxPackage "*$Name*" | Remove-AppxPackage -ErrorAction SilentlyContinue
+                                Get-AppxProvisionedPackage -Online | Where-Object DisplayName -like "*$Name*" | Remove-AppxProvisionedPackage -Online -ErrorAction SilentlyContinue
+                            } catch [System.Exception] {
+                                if ($psitem.Exception.Message -like "*The requested operation requires elevation*") {
+                                    Write-Warning "Unable to uninstall $name"
+                                } else {
+                                    Write-Warning "Unable to uninstall $name"
+                                    Write-Warning $psitem.Exception.StackTrace
                                 }
+                            } catch {
+                                Write-Warning "Unable to uninstall $name"
+                                Write-Warning $psitem.Exception.StackTrace
+                            }
                         }
+                           
                         
                         function UpdateUI {
         
