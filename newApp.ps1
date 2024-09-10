@@ -167,7 +167,7 @@ do {
 
 # Prompt the user to enter a silent argument for installation
 $exeArgs = Read-Host "Enter Silent argmanet: If not silent installation press enter to skip"
-if ($exeArgs -eq "") { $exeArgs = "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath" }  # Set default value if empty
+if ($exeArgs -eq "") { $exeArgs = "/verysilent" }  # Set default value if empty
 
 # Prompt the user to enter the launcher name (e.g., the executable file)
 $launcher = Read-Host "Enter Launcher name [file.exe]"
