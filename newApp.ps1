@@ -170,7 +170,7 @@ $exeArgs = Read-Host "Enter Silent argmanet: If not silent installation press en
 if ($exeArgs -eq "") { $exeArgs = "/verysilent" }  # Set default value if empty
 
 # Prompt the user to enter the launcher name (e.g., the executable file)
-$launcher = Read-Host "Enter Launcher name [file.exe]"
+$launcher = Read-Host "Enter Launcher name [filename.exe]"
 if ($launcher -eq "") { $launcher = "none" }  # Set default value if empty
 
 # Check if the installation type is MSI, in which case override the arguments with MSI-specific ones
