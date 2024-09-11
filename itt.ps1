@@ -13929,12 +13929,8 @@ function Invoke-ApplyTweaks {
                                
                             try {
                                 Add-Log -Message "Trying to remove $($Name)" -Level "INFO"
-                                Start-Process -FilePath "powershell" -ArgumentList {
-                                    Get-AppxPackage "*$Name*" | Remove-AppxPackage -ErrorAction SilentlyContinue
-                                } -NoNewWindow -Wait -PassThru
-
-                                # Get-AppxPackage "*$Name*" | Remove-AppxPackage -ErrorAction SilentlyContinue
-                                # Get-AppxProvisionedPackage -Online | Where-Object DisplayName -like "*$Name*" | Remove-AppxProvisionedPackage -Online -ErrorAction SilentlyContinue
+                                Get-AppxPackage "*$Name*" | Remove-AppxPackage -ErrorAction SilentlyContinue
+                                Get-AppxProvisionedPackage -Online | Where-Object DisplayName -like "*$Name*" | Remove-AppxProvisionedPackage -Online -ErrorAction SilentlyContinue
                             } catch {
                                 #Write-Warning "Unable to uninstall $name"
                                 #Write-Warning $psitem.Exception.StackTrace
