@@ -13901,18 +13901,9 @@ function Invoke-ApplyTweaks {
                                 Add-Log -Message "Trying to remove $($Name)" -Level "INFO"
                                 #Get-AppxPackage "*$Name*" | Remove-AppxPackage -ErrorAction SilentlyContinue
                                 Start-Process powershell -ArgumentList '-NoProfile -Command "Get-AppxPackage \"*$Name*\" | Remove-AppxPackage -ErrorAction SilentlyContinue"' -NoNewWindow -Verb RunAs
-
                                 #Get-AppxProvisionedPackage -Online | Where-Object DisplayName -like "*$Name*" | Remove-AppxProvisionedPackage -Online -ErrorAction SilentlyContinue
-                            } catch [System.Exception] {
-                                if ($psitem.Exception.Message -like "*The requested operation requires elevation*") {
-                                    Write-Warning "Unable to uninstall $name"
-                                } else {
-                                    Write-Warning "Unable to uninstall $name"
-                                    Write-Warning $psitem.Exception.StackTrace
-                                }
                             } catch {
-                                Write-Warning "Unable to uninstall $name"
-                                Write-Warning $psitem.Exception.StackTrace
+                                Write-Host "$name not installed"
                             }
                         }
                            
