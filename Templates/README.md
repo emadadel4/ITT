@@ -2,7 +2,7 @@
 
 <p align="center">
   <a href="Support.md" rel="nofollow">
-    <img src="https://raw.githubusercontent.com/Safouene1/support-palestine-banner/master/StandWithPalestine.svg" alt="Ceasefire Now" style="width:35%;">
+    <img src="https://raw.githubusercontent.com/Safouene1/support-palestine-banner/master/StandWithPalestine.svg" alt="Ceasefire Now" style="width:80%;">
   </a>
 </p>
   
