@@ -630,7 +630,31 @@
         "Name": "Microsoft.GetHelp"
       },
       {
+        "Name": "Microsoft.AppConnector"
+      },
+      {
+        "Name": "Microsoft.BingFinance"
+      },
+      {
         "Name": "Microsoft.XboxGamingOverlay"
+      },
+      {
+        "Name": "Microsoft.BingTranslator"
+      },
+      {
+        "Name": "Microsoft.BingHealthAndFitness"
+      },
+      {
+        "Name": "Microsoft.BingTravel"
+      },
+      {
+        "Name": "Microsoft.MinecraftUWP"
+      },
+      {
+        "Name": "Microsoft.GamingServices"
+      },
+      {
+        "Name": "Microsoft.BingFoodAndDrink"
       },
       {
         "Name": "Microsoft.BingWeather"
@@ -802,6 +826,12 @@
       },
       {
         "Name": "Microsoft.ZuneVideo"
+      },
+      {
+        "Name": "Microsoft.NetworkSpeedTest"
+      },
+      {
+        "Name": "Microsoft.ScreenSketch"
       }
     ],
     "InvokeCommand": [
