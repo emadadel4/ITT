@@ -90,8 +90,9 @@ function GenerateCheckboxes {
     foreach ($Item in $Items) {        
 
         $CleanedItem = $Item.Description -replace "[^\w\s’]", '' 
-
         $Cat = $Item.Category -replace '[^\w\s]', ''
+        
+        $Emad = $Item.name -replace '[^a-zA-Z0-9]', ''
 
         # grap name of each item  
         $Content = $Item.$ContentField
@@ -100,7 +101,7 @@ function GenerateCheckboxes {
         $Tag = if ($TagField) { "Tag=`"$($Item.$TagField)`"" } else { "" }
 
         # Grap and add the Name form Settings.json to Toggle Settings items
-        $Name = if ($NameField) { "Name=`"$($Item.$NameField)`"" } else { "" }
+        $Name = if ($Emad) { "Name=`"$Emad`"" } else { "" }
 
         # Add Toggle Style to Item on Settings
         $Toggle = if ($ToggleField) { "Style=`"{StaticResource ToggleSwitchStyle}`"" } else { "" }
@@ -112,7 +113,7 @@ function GenerateCheckboxes {
 
         <StackPanel Orientation="Vertical" Width="auto" Margin="10">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="$Content" $Tag $IsChecked $Toggle $Name ToolTip="Install it again to update" FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <CheckBox Content="$Content" $Tag $IsChecked $Toggle $Name FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content="$Cat"/>
             </StackPanel>
                 <TextBlock Width="555" Background="Transparent" Margin="8" Foreground="{DynamicResource DefaultTextColor2}"  FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="$CleanedItem"/>
@@ -349,8 +350,8 @@ WriteToScript -Content @"
         Write-Error "An error occurred while processing the XAML content: $($_.Exception.Message)"
     }
    
-    $AppsCheckboxes = GenerateCheckboxes -Items $itt.database.Applications -ContentField "Name" -TagField "Category" -IsCheckedField "check"
-    $TweaksCheckboxes = GenerateCheckboxes -Items $itt.database.Tweaks -ContentField "Name"
+    $AppsCheckboxes = GenerateCheckboxes -Items $itt.database.Applications -ContentField "Name" -NameField "Name" -TagField "Category" -IsCheckedField "check"
+    $TweaksCheckboxes = GenerateCheckboxes -Items $itt.database.Tweaks -ContentField "Name" -NameField "Name" 
     $SettingsCheckboxes = GenerateCheckboxes -Items $itt.database.Settings -ContentField "Content" -NameField "Name" -ToggleField "Style="{StaticResource ToggleSwitchStyle}""
 
 
