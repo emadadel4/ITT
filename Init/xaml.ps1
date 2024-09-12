@@ -8,6 +8,41 @@ $InitialSessionState = [System.Management.Automation.Runspaces.InitialSessionSta
 # Add the variable to the session state
 $InitialSessionState.Variables.Add($hashVars)
 
+$desiredFunctions = @(
+    
+'Invoke-Tweaks',
+'Remove-Registry',
+'Set-Registry',
+'Invoke-Install' , 
+'Install-App' , 
+'InvokeCommand' ,
+'Add-Log',
+'Disable-Service',
+'Uninstall-AppxPackage',
+'Get-SelectedApps',
+'Finish',
+'Message',
+'Notify',
+'UpdateUI',
+'Download-And-Install-Exe',
+'Download-And-ExtractZip',
+'Install-Choco',
+'ExecuteCommand',
+'Set-RegistryValue',
+'Remove-RegistryValue',
+'Disable-Service',
+'Uninstall-AppxPackage',
+'Get-SelectedApps'
+)
+
+$functions = Get-ChildItem function:\ | Where-Object { $_.Name -in $desiredFunctions }
+foreach ($function in $functions) {
+    $functionDefinition = Get-Content function:\$($function.name)
+    $functionEntry = New-Object System.Management.Automation.Runspaces.SessionStateFunctionEntry -ArgumentList $($function.name), $functionDefinition
+    $initialSessionState.Commands.Add($functionEntry)
+    Write-Output "Added function: $($function.Name)"
+}
+
 # Create and open the runspace pool
 $itt.runspace = [runspacefactory]::CreateRunspacePool(1, $maxthreads, $InitialSessionState, $Host)
 $itt.runspace.Open()
