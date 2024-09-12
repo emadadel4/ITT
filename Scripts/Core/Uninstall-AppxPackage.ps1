@@ -1,5 +1,10 @@
 function Uninstall-AppxPackage  {
-        
+    
+    <#
+    .Example
+        Uninstall-AppxPackage -Name "Microsoft.BingNews"
+    #>
+
     param (
         $Name
     )

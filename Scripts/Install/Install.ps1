@@ -7,6 +7,8 @@ function Invoke-Install {
         return
     }
 
+    Show-Selected -ListView "AppsListView" -Mode "Filter"
+
    if($selectedApps.Count -eq 0)
    {
        Message -key "choseapp" -icon "Warning"
@@ -16,7 +18,10 @@ function Invoke-Install {
     $areyousuremsg = $itt.database.locales.Controls.$($itt.Language).InstallMessage
     $result = [System.Windows.MessageBox]::Show($areyousuremsg, "ITT | Emad Adel", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)
 
-   if($result -eq "no") {return}
+   if($result -eq "no") {
+        Show-Selected -ListView "AppsListView" -Mode "Default"
+        return
+    }
 
     Invoke-ScriptBlock -ArgumentList $selectedApps -ScriptBlock {
 
@@ -68,6 +73,8 @@ function Invoke-ApplyTweaks {
         return
     }
 
+    Show-Selected -ListView "TweaksListView" -Mode "Filter"
+
    if($selectedApps.Count -eq 0)
    {
        Message -key "choseapp" -icon "Warning"
@@ -77,7 +84,11 @@ function Invoke-ApplyTweaks {
     $areyousuremsg = $itt.database.locales.Controls.$($itt.Language).InstallMessage
     $result = [System.Windows.MessageBox]::Show($areyousuremsg, "ITT | Emad Adel", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)
 
-   if($result -eq "no") {return}
+   if($result -eq "no") 
+    {
+        Show-Selected -ListView "TweaksListView" -Mode "Default"
+        return
+    }
 
     Invoke-ScriptBlock -ArgumentList $selectedApps -ScriptBlock {
 

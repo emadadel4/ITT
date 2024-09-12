@@ -1,4 +1,10 @@
 function ExecuteCommand {
+
+    <#
+    .Example
+        ExecuteCommand -Name "Itemname" -Command "Welcome to itt"
+    #>
+
     param (
         [string]$Name,
         [string]$Command

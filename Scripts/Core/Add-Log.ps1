@@ -1,4 +1,15 @@
 function Add-Log {
+
+    <#
+    .Options
+    INFO
+    WARNING
+    ERROR
+
+    .Example
+        Add-Log -Message "ARE YOU 0 OR 1?" -Level "WARNING"
+    #>
+
     param (
         [string]$Message, # Content of Message
         [string]$Level = "INFO" # Message Level [INFO] [ERROR] [WARNING]
