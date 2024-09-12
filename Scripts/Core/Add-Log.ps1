@@ -31,7 +31,6 @@ function Add-Log {
     $date =  "[$timestamp $Level]"
 
     # Write the log message to the console with the specified color
-    Write-Host "`n` " -ForegroundColor $color
     Write-Host "$date" -ForegroundColor Yellow ; Write-Host "$logMessage" -ForegroundColor $color 
     Write-Host "" -ForegroundColor $color
 
