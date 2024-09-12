@@ -1,5 +1,6 @@
 function Notify {
 
+    <#
     .Example
         Notify -title "ITT" -msg "Hello world!" -icon "Information" -time "3000"
     #>
