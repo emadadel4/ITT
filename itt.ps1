@@ -8801,33 +8801,6 @@ function RestorePoint {
 
     Invoke-ScriptBlock -ScriptBlock {
 
-        function Add-Log {
-            param (
-                [string]$Message, # Content of Message
-                [string]$Level = "INFO" # Message Level [INFO] [ERROR] [WARNING]
-            )
-        
-            # Get the current timestamp
-            $timestamp = Get-Date -Format "hh:mm tt"
-        
-            # Determine the color based on the log level
-            switch ($Level.ToUpper()) {
-                "INFO" { $color = "Green" }
-                "WARNING" { $color = "Yellow" }
-                "ERROR" { $color = "Red" }
-                default { $color = "White" }
-            }
-        
-            # Construct the log message
-            $logMessage = "$Message"
-            $date =  "[$timestamp $Level]"
-        
-            # Write the log message to the console with the specified color
-            Write-Host "`n` " -ForegroundColor $color
-            Write-Host "$date" -ForegroundColor Yellow ; Write-Host "$logMessage" -ForegroundColor $color 
-            Write-Host "" -ForegroundColor $color
-        }
-
         Try {
             Add-Log -Message "Creating Restore point..." -Level "INFO"
             Checkpoint-Computer -Description "ITT" -ErrorAction Stop
@@ -8907,93 +8880,6 @@ function Finish {
 
     Notify -title "$title" -msg "$msg" -icon "Info" -time 30000
 }
-function Get-CheckBoxes {
-
-    Param(
-        [string]$mode
-    )
-
-    $Output =@()
-
-    # Retrieve all checkboxes
-    $CheckBoxes = $itt.GetEnumerator() | Where-Object { $_.Value -is [System.Windows.Controls.CheckBox] }
-
-    foreach ($CheckBox in $CheckBoxes) {
-
-        # Check if the checkbox is checked
-        if ($CheckBox.Value.IsChecked -eq $true) {
-
-            # Define the mode (can be "Install" or "Tweaks")
-            $checkboxName = $CheckBox.Name
-
-            # Determine the correct database to search based on the mode
-            switch ($mode) {
-                "Install" {
-                    # For Install mode, search the Applications database
-                    $app = $itt.database.Applications | Where-Object { 
-                        ($_."name" -replace ' ', '') -eq $checkboxName
-                    }
-
-                    if ($null -ne $app) {
-                        # Add the application details to the output
-                        $feature = [PsCustomObject]@{
-                            name = "$($app.name)"
-                            winget = "$($app.winget)"
-                            choco  = "$($app.choco)"
-                        }
-
-                        # Add the feature to the output mode
-                        $Output += $feature
-                    } else {
-                        Write-Host "Application not found for: $($CheckBox.Name)"
-                    }
-                }
-
-                "Tweaks" {
-                    # For Tweaks mode, search the Tweaks database
-                    $app = $itt.database.Tweaks | Where-Object { 
-                        ($_."name" -replace ' ', '') -eq $checkboxName
-                    }
-
-                    if ($null -ne $app) {
-                        # Add the tweak details to the output
-                        $tweak = [PsCustomObject]@{
-                            Content        = "$($app.Name)"
-                            Type           = "$($app.Type)"
-                            Category       = "$($app.Category)"
-                            Modify         = "$($app.Modify)"
-                            Delete         = "$($app.Delete)"
-
-
-                            ##
-                            Path            = "$($app.Modify.Path)"
-                            RegType         = "$($app.Modify.Type)"
-                            Name            = "$($app.Modify.Name)"
-                            Value           = "$($app.Modify.Value)"
-                            defaultValue    = "$($app.Modify.defaultValue)"
-
-                            InvokeCommand   = $app.InvokeCommand -join "; "  # Join commands with "; " if there are multiple
-                            UndoCommand     = $app.UndoCommand -join "; "    # Handle undo commands
-                        }
-
-                        # Add the tweak to the output mode
-                        $Output += $tweak
-                    } else {
-                        Write-Host "Tweak not found for: $($CheckBox.Name)"
-                    }
-                }
-
-                default {
-                    Write-Host "Unknown mode: $mode"
-                }
-            }
-
-        }
-    }
-
-    return $Output
-}
-
 function Get-SelectedItems {
     param (
         [string]$Mode
@@ -9066,7 +8952,6 @@ function Get-SelectedItems {
 
     return $items
 }
-
 Function Get-ToggleStatus {
 
     Param($ToggleSwitch) # Parameter to specify which toggle switch status to check
@@ -11004,110 +10889,109 @@ function ClearFilter {
     $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($itt.AppsListView.Items)
     $collectionView.Filter = $null
 }
-# $KeyEvents = {
+$KeyEvents = {
 
-#     if ($itt.ProcessRunning -eq $true) {
-#         return
-#     }
+    if ($itt.ProcessRunning -eq $true) {
+        return
+    }
 
-#     if (($_.Key -eq "Enter")) {
+    if (($_.Key -eq "Enter")) {
 
-#         switch ($itt.currentList) {
-#             "appslist" {
-#                 Invoke-Install                
-#             }
-#             "tweakslist" {
-#                 Invoke-ApplyTweaks
-#             }
-#         }
-#     }
+        switch ($itt.currentList) {
+            "appslist" {
+                Invoke-Install                
+            }
+            "tweakslist" {
+                Invoke-ApplyTweaks
+            }
+        }
+    }
 
-#     if (($_.Key -eq "S" -and $_.KeyboardDevice.Modifiers -eq "Ctrl")) {
+    if (($_.Key -eq "S" -and $_.KeyboardDevice.Modifiers -eq "Ctrl")) {
 
-#         switch ($itt.currentList) {
-#             "appslist" {
-#                 Invoke-Install                
-#             }
-#             "tweakslist" {
-#                 Invoke-ApplyTweaks
-#             }
-#         }
-#     }
+        switch ($itt.currentList) {
+            "appslist" {
+                Invoke-Install                
+            }
+            "tweakslist" {
+                Invoke-ApplyTweaks
+            }
+        }
+    }
 
-#      # Quit from applaction
-#      if (($_.Key -eq "G" -and $_.KeyboardDevice.Modifiers -eq "Ctrl")) {
-#         $this.Close()
-#     }
+     # Quit from applaction
+     if (($_.Key -eq "G" -and $_.KeyboardDevice.Modifiers -eq "Ctrl")) {
+        $this.Close()
+    }
 
-#     # Foucs on Search box
-#     if (($_.Key -eq "F" -and $_.KeyboardDevice.Modifiers -eq "Ctrl")) {
-#         $itt.SearchInput.Focus()
-#     }
+    # Foucs on Search box
+    if (($_.Key -eq "F" -and $_.KeyboardDevice.Modifiers -eq "Ctrl")) {
+        $itt.SearchInput.Focus()
+    }
 
-#     # Lost Foucs on Search box
-#     if ($_.Key -eq "Escape") {
-#         $itt.SearchInput.MoveFocus([System.Windows.Input.TraversalRequest]::New([System.Windows.Input.FocusNavigationDirection]::Next))
-#         $itt.SearchInput.Text = ""
-#     }
+    # Lost Foucs on Search box
+    if ($_.Key -eq "Escape") {
+        $itt.SearchInput.MoveFocus([System.Windows.Input.TraversalRequest]::New([System.Windows.Input.FocusNavigationDirection]::Next))
+        $itt.SearchInput.Text = ""
+    }
 
-#     # Swtich to Apps tap
-#     if ($_.Key -eq "Q" -and $_.KeyboardDevice.Modifiers -eq "Ctrl") {
-#         $itt.TabControl.SelectedItem = $itt.TabControl.Items | Where-Object { $_.Name -eq "apps" }
-#     }
+    # Swtich to Apps tap
+    if ($_.Key -eq "Q" -and $_.KeyboardDevice.Modifiers -eq "Ctrl") {
+        $itt.TabControl.SelectedItem = $itt.TabControl.Items | Where-Object { $_.Name -eq "apps" }
+    }
 
-#     # Swtich to tweaks tap
-#     if ($_.Key -eq "W" -and $_.KeyboardDevice.Modifiers -eq "Ctrl") {
-#         $itt.TabControl.SelectedItem = $itt.TabControl.Items | Where-Object { $_.Name -eq "tweeksTab" }
-#     }
+    # Swtich to tweaks tap
+    if ($_.Key -eq "W" -and $_.KeyboardDevice.Modifiers -eq "Ctrl") {
+        $itt.TabControl.SelectedItem = $itt.TabControl.Items | Where-Object { $_.Name -eq "tweeksTab" }
+    }
 
-#     # Swtich to settings tap
-#     if ($_.Key -eq "E" -and $_.KeyboardDevice.Modifiers -eq "Ctrl") {
-#         $itt.TabControl.SelectedItem = $itt.TabControl.Items | Where-Object { $_.Name -eq "SettingsTab" }
-#     }
+    # Swtich to settings tap
+    if ($_.Key -eq "E" -and $_.KeyboardDevice.Modifiers -eq "Ctrl") {
+        $itt.TabControl.SelectedItem = $itt.TabControl.Items | Where-Object { $_.Name -eq "SettingsTab" }
+    }
 
-#     # Swtich to settings tap
-#     if ($_.Key -eq "I" -and $_.KeyboardDevice.Modifiers -eq "Ctrl") {
-#         About
-#     }
+    # Swtich to settings tap
+    if ($_.Key -eq "I" -and $_.KeyboardDevice.Modifiers -eq "Ctrl") {
+        About
+    }
 
-#     # SaveItemsToJson
-#     if ($_.Key -eq "S" -and $_.KeyboardDevice.Modifiers -eq "Shift") {
-#         SaveItemsToJson
-#     }
+    # SaveItemsToJson
+    if ($_.Key -eq "S" -and $_.KeyboardDevice.Modifiers -eq "Shift") {
+        SaveItemsToJson
+    }
 
-#     # LoadJson
-#     if ($_.Key -eq "D" -and $_.KeyboardDevice.Modifiers -eq "Shift") {
-#         LoadJson
-#     }
+    # LoadJson
+    if ($_.Key -eq "D" -and $_.KeyboardDevice.Modifiers -eq "Shift") {
+        LoadJson
+    }
 
-#     # Mute
-#     if ($_.Key -eq "M" -and $_.KeyboardDevice.Modifiers -eq "Shift") {
-#         MuteMusic -Value 0
+    # Mute
+    if ($_.Key -eq "M" -and $_.KeyboardDevice.Modifiers -eq "Shift") {
+        MuteMusic -Value 0
 
-#     }
+    }
 
-#     # Music ON 
-#     if ($_.Key -eq "F" -and $_.KeyboardDevice.Modifiers -eq "Shift") {
-#         UnmuteMusic -Value 100
-#     }
+    # Music ON 
+    if ($_.Key -eq "F" -and $_.KeyboardDevice.Modifiers -eq "Shift") {
+        UnmuteMusic -Value 100
+    }
 
-#     # Choco Folder
-#     if ($_.Key -eq "P" -and $_.KeyboardDevice.Modifiers -eq "Shift") {
-#         Start-Process explorer.exe "C:\ProgramData\chocolatey\lib"
-#     }
+    # Choco Folder
+    if ($_.Key -eq "P" -and $_.KeyboardDevice.Modifiers -eq "Shift") {
+        Start-Process explorer.exe "C:\ProgramData\chocolatey\lib"
+    }
 
-#     # Restore point 
-#     if ($_.Key -eq "Q" -and $_.KeyboardDevice.Modifiers -eq "Shift") {
-#         RestorePoint
-#     }
+    # Restore point 
+    if ($_.Key -eq "Q" -and $_.KeyboardDevice.Modifiers -eq "Shift") {
+        RestorePoint
+    }
 
-#     # ITT Shortcut 
-#     if ($_.Key -eq "I" -and $_.KeyboardDevice.Modifiers -eq "Shift") {
-#         ITTShortcut
-#     }
-# }
+    # ITT Shortcut 
+    if ($_.Key -eq "I" -and $_.KeyboardDevice.Modifiers -eq "Shift") {
+        ITTShortcut
+    }
+}
 
-# $itt["window"].Add_PreViewKeyDown($KeyEvents)
 
 function Message {
 
@@ -15920,6 +15804,9 @@ $itt["window"].Add_Loaded({
 
 # Close Event handler
 $itt["window"].add_Closing($onClosingEvent)
+
+# Keyboard shortcut
+$itt["window"].Add_PreViewKeyDown($KeyEvents)
 
 # Show Window
 $itt["window"].ShowDialog() | Out-Null
