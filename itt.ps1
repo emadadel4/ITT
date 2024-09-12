@@ -10416,26 +10416,22 @@ function Invoke-ApplyTweaks {
 
         $itt.ProcessRunning = $true
         UpdateUI -Button "ApplyBtn" -ButtonText "applyText" -Content "Applying" -TextIcon "applyIcon" -Icon "  " -Width "120"
+        Add-Log -Message $selectedApps.Name -Level "INFO" 
 
         foreach ($tweak in $selectedApps) {
 
             switch ($tweak.Type) {        
         
                 "command" {
-                    Write-Host $tweak.Name
                     $tweak.Command | ForEach-Object { ExecuteCommand -Name $tweak.Name -Command $_ }
                 }
                 "Registry" {
-                    Write-Host $tweak.Name
-
                     $tweak.Modify | ForEach-Object {
                         Set-RegistryValue -Name $_.Name -Type $_.Type -Path $_.Path -Value $_.Value
                     }
-
                     $tweak.Delete | ForEach-Object {
                         Remove-Registry -RegistryPath $_.Path -Folder $_.Name
                     }
-
                     if($tweak.Refresh -eq "true")
                     {
                         Stop-Process -Name explorer -Force
@@ -10443,7 +10439,6 @@ function Invoke-ApplyTweaks {
                     }
                 }
                 "AppxPackage" {
-                    Write-Host $tweak.Name
                     $tweak.removeAppxPackage | ForEach-Object { Uninstall-AppxPackage -Name $_.Name }
                 }
                 "service" {
@@ -15685,7 +15680,6 @@ $InitialSessionState = [System.Management.Automation.Runspaces.InitialSessionSta
 $InitialSessionState.Variables.Add($hashVars)
 
 $desiredFunctions = @(
-    
 'Invoke-Tweaks',
 'Remove-Registry',
 'Set-Registry',
@@ -15715,7 +15709,9 @@ foreach ($function in $functions) {
     $functionDefinition = Get-Content function:\$($function.name)
     $functionEntry = New-Object System.Management.Automation.Runspaces.SessionStateFunctionEntry -ArgumentList $($function.name), $functionDefinition
     $initialSessionState.Commands.Add($functionEntry)
-    Write-Output "Added function: $($function.Name)"
+
+    # debug
+    #Write-Output "Added function: $($function.Name)"
 }
 
 # Create and open the runspace pool

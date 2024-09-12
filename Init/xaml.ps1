@@ -9,7 +9,6 @@ $InitialSessionState = [System.Management.Automation.Runspaces.InitialSessionSta
 $InitialSessionState.Variables.Add($hashVars)
 
 $desiredFunctions = @(
-    
 'Invoke-Tweaks',
 'Remove-Registry',
 'Set-Registry',
@@ -39,7 +38,9 @@ foreach ($function in $functions) {
     $functionDefinition = Get-Content function:\$($function.name)
     $functionEntry = New-Object System.Management.Automation.Runspaces.SessionStateFunctionEntry -ArgumentList $($function.name), $functionDefinition
     $initialSessionState.Commands.Add($functionEntry)
-    Write-Output "Added function: $($function.Name)"
+
+    # debug
+    #Write-Output "Added function: $($function.Name)"
 }
 
 # Create and open the runspace pool
