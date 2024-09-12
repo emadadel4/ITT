@@ -9442,7 +9442,7 @@ function Download-And-Install-Exe {
         throw "Error downloading EXE file: $_"
     }
 }
-function Remove-RegistryValue {
+function Remove-Registry {
     param (
         [Parameter(Mandatory=$true)]
         [string]$RegistryPath,
@@ -10389,7 +10389,6 @@ function Invoke-Install {
         Finish -ListView "AppsListView"
     }
 }
-
 
 function Invoke-ApplyTweaks {
     
@@ -15696,7 +15695,6 @@ $desiredFunctions = @(
 'Add-Log',
 'Disable-Service',
 'Uninstall-AppxPackage',
-'Get-SelectedApps',
 'Finish',
 'Message',
 'Notify',
@@ -15706,7 +15704,7 @@ $desiredFunctions = @(
 'Install-Choco',
 'ExecuteCommand',
 'Set-RegistryValue',
-'Remove-RegistryValue',
+'Remove-Registry',
 'Disable-Service',
 'Uninstall-AppxPackage',
 'Remove-Registry'
