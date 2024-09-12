@@ -2,7 +2,7 @@
 
 <p align="center">
   <a href="Support.md" rel="nofollow">
-    <img src="https://raw.githubusercontent.com/Safouene1/support-palestine-banner/master/StandWithPalestine.svg" alt="Ceasefire Now" style="width:45%;">
+    <img src="https://raw.githubusercontent.com/Safouene1/support-palestine-banner/master/StandWithPalestine.svg" alt="Ceasefire Now" style="width:40%;">
   </a>
 </p>
   
@@ -10,7 +10,7 @@
 </h1>
 
 <div align="center">
-  <h5> 315 App |  37 Tweaks | 5 Settings | 103 Quote |  20 Soundtrack </h5>
+  <h5> 315 App |  36 Tweaks | 5 Settings | 103 Quote |  20 Soundtrack </h5>
 </div>
 
 

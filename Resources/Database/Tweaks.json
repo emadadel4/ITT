@@ -1,19 +1,5 @@
 [
   {
-    "Name": "System File Checker",
-    "Description": "sfc /scannow Use the System File Checker tool to repair missing or corrupted system files",
-    "Check": "false",
-    "Category": "Fixer",
-    "Type": "command",
-    "Refresh": "false",
-    "InvokeCommand": [
-      "sfc /scannow"
-    ],
-    "UndoCommand": [
-      ""
-    ]
-  },
-  {
     "Name": "Disk cleanup",
     "Description": "Clean temporary files that are not necessary",
     "Check": "false",

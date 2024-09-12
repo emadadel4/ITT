@@ -101,4 +101,3 @@ $KeyEvents = {
     }
 }
 
-$itt["window"].Add_PreViewKeyDown($KeyEvents)

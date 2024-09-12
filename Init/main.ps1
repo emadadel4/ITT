@@ -66,5 +66,8 @@ $itt["window"].Add_Loaded({
 # Close Event handler
 $itt["window"].add_Closing($onClosingEvent)
 
+# Keyboard shortcut
+$itt["window"].Add_PreViewKeyDown($KeyEvents)
+
 # Show Window
 $itt["window"].ShowDialog() | Out-Null

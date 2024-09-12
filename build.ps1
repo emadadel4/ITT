@@ -292,6 +292,19 @@ try {
 #===========================================================================
 "@
 
+    # Write Main section
+    WriteToScript -Content @"
+#===========================================================================
+#region Begin Main Functions
+#===========================================================================
+"@
+    ProcessDirectory -Directory $ScritsDirectory
+    WriteToScript -Content @"
+#===========================================================================
+#endregion End Main Functions
+#===========================================================================
+"@
+
 WriteToScript -Content @"
 #===========================================================================
 #region Begin WPF Main Window
@@ -426,14 +439,14 @@ WriteToScript -Content @"
     # Write Main section
     WriteToScript -Content @"
 #===========================================================================
-#region Begin Main Functions
+#region Begin Main
 #===========================================================================
 "@
-    ProcessDirectory -Directory $ScritsDirectory
+    #ProcessDirectory -Directory $ScritsDirectory
     AddFileContentToScript -FilePath $MainScript
     WriteToScript -Content @"
 #===========================================================================
-#endregion End Main Functions
+#endregion End Main
 #===========================================================================
 "@
 Clear-Host
