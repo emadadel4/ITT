@@ -59,7 +59,6 @@ function Invoke-Install {
     }
 }
 
-
 function Invoke-ApplyTweaks {
     
     $selectedApps = Get-SelectedItems -Mode "Tweaks"
