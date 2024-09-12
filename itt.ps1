@@ -9820,7 +9820,7 @@ function Uninstall-AppxPackage  {
     #>
 
     param (
-        [string]$Name
+        $Name
     )
        
     try {
@@ -10625,7 +10625,6 @@ $KeyEvents = {
 function Message {
 
     <#
-
     Icons list
     Warning
     Question
@@ -10642,6 +10641,7 @@ function Message {
 }
 function Notify {
 
+    <#
     .Example
         Notify -title "ITT" -msg "Hello world!" -icon "Information" -time "3000"
     #>
@@ -10905,11 +10905,10 @@ function DisablePopup {
     Set-ItemProperty -Path $itt.registryPath  -Name "PopupWindow" -Value "off" -Force
 }
 function UpdateUI {
-    <#
 
+    <#
     .Example
         #UpdateUI -Button "InstallBtn" -ButtonText "installText" -Content "downloading" -TextIcon "installIcon" -Icon "  " -Width "150"
-        
     #>
 
     param(
