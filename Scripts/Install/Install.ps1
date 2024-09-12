@@ -20,6 +20,7 @@ function Invoke-Install {
 
    if($result -eq "no") {
         Show-Selected -ListView "AppsListView" -Mode "Default"
+        Clear-Item -ListView "AppsListView"
         return
     }
 
@@ -87,6 +88,7 @@ function Invoke-ApplyTweaks {
    if($result -eq "no") 
     {
         Show-Selected -ListView "TweaksListView" -Mode "Default"
+        Clear-Item -ListView "TweaksListView"
         return
     }
 
