@@ -8867,6 +8867,36 @@ function ExecuteCommand {
         Write-Host "Error executing command '$Command': $_"
     }
 }
+function Finish {
+
+    param (
+       [string]$ListView,
+       [string]$title = "ITT Emad Adel",
+       [string]$msg = "Installed successfully",
+       [string]$icon = "Info"
+    )
+
+    $itt.$ListView.Dispatcher.Invoke([Action]{
+        foreach ($item in $itt.$ListView.Items)
+        {
+            foreach ($child in $item.Children) {
+                if ($child -is [System.Windows.Controls.StackPanel]) {
+                    foreach ($innerChild in $child.Children) {
+                        if ($innerChild -is [System.Windows.Controls.CheckBox]) {
+
+                            $innerChild.IsChecked = $false
+                            $itt.$ListView.Clear()
+                            $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($itt.$ListView.Items)
+                            $collectionView.Filter = $null
+                        }
+                    }
+                }
+            }
+        }
+    })
+
+    Notify -title "$title" -msg "$msg" -icon "Info" -time 30000
+}
 function Show-Selected {
 
     <#
@@ -8916,40 +8946,10 @@ function Show-Selected {
         Default {
             $itt.$ListView.Clear()
             [System.Windows.Data.CollectionViewSource]::GetDefaultView($itt.$ListView.Items).Filter = $null
+            $itt.category.SelectedIndex = 0
         }
     }
 }
-function Finish {
-
-    param (
-       [string]$ListView,
-       [string]$title = "ITT Emad Adel",
-       [string]$msg = "Installed successfully",
-       [string]$icon = "Info"
-    )
-
-    $itt.AppsListView.Dispatcher.Invoke([Action]{
-        foreach ($item in $itt.$ListView.Items)
-        {
-            foreach ($child in $item.Children) {
-                if ($child -is [System.Windows.Controls.StackPanel]) {
-                    foreach ($innerChild in $child.Children) {
-                        if ($innerChild -is [System.Windows.Controls.CheckBox]) {
-
-                            $innerChild.IsChecked = $false
-                            $itt.$ListView.Clear()
-                            $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($itt.$ListView.Items)
-                            $collectionView.Filter = $null
-                        }
-                    }
-                }
-            }
-        }
-    })
-
-    Notify -title "$title" -msg "$msg" -icon "Info" -time 30000
-}
-
 function Clear-Item {
     param (
         $ListView
@@ -8971,6 +8971,8 @@ function Clear-Item {
         $itt.$ListView.Clear()
         [System.Windows.Data.CollectionViewSource]::GetDefaultView($itt.$ListView.Items).Filter = $null
     })
+
+    $itt.category.SelectedIndex = 0
     
 }
 function Get-SelectedItems {
@@ -9991,6 +9993,7 @@ function Invoke-ApplyTweaks {
         $itt.ProcessRunning = $false
         UpdateUI -Button "ApplyBtn" -ButtonText "applyText" -Content "applyBtn" -TextIcon "installIcon" -Icon "  "
         Finish -ListView "TweaksListView"
+        Add-Log -Message "Finished, Some tweaks require restarting" -Level "INFO"
     }
 }
 function Invoke-Button {
@@ -10217,10 +10220,9 @@ Function Invoke-DarkMode {
 
         $DarkMode = (Get-ItemProperty -Path $itt.registryPath -Name "DarkMode").DarkMode
 
-
         if ($DarkMoveEnabled -eq $false){
             $DarkMoveValue = 0
-
+            Add-Log -Message "Dark Mode Enabled" -Level "WARNING"
             if($DarkMode -eq "none")
             {
                 $itt['window'].Resources.MergedDictionaries.Add($itt['window'].FindResource("Dark"))
@@ -10228,7 +10230,7 @@ Function Invoke-DarkMode {
         }
         else {
             $DarkMoveValue = 1
-
+            Add-Log -Message "Light Mode Enabled" -Level "WARNING"
             if($DarkMode -eq "none")
             {
                 $itt['window'].Resources.MergedDictionaries.Add($itt['window'].FindResource("Light"))
@@ -10238,7 +10240,6 @@ Function Invoke-DarkMode {
         $Path = "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize"
         Set-ItemProperty -Path $Path -Name AppsUseLightTheme -Value $DarkMoveValue
         Set-ItemProperty -Path $Path -Name SystemUsesLightTheme -Value $DarkMoveValue
-
         Stop-Process -Name explorer -Force
     }
     Catch [System.Security.SecurityException] {
@@ -10331,6 +10332,7 @@ Function Invoke-StickyKeys {
         else {
             $value = 58
             $value2 = 122
+            Add-Log -Message "This Setting require a restart" -Level "INFO"
         }
         $Path = "HKCU:\Control Panel\Accessibility\StickyKeys"
         $Path2 = "HKCU:\Control Panel\Accessibility\Keyboard Response"
@@ -10344,6 +10346,7 @@ Function Invoke-StickyKeys {
     Catch{
         Write-Warning "Unable to set $Name due to unhandled exception"
     }
+
 }
 function About {
     # Load child window
