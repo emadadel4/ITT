@@ -9,6 +9,7 @@ Function Invoke-StickyKeys {
         else {
             $value = 58
             $value2 = 122
+            Add-Log -Message "This Setting require a restart" -Level "INFO"
         }
         $Path = "HKCU:\Control Panel\Accessibility\StickyKeys"
         $Path2 = "HKCU:\Control Panel\Accessibility\Keyboard Response"
@@ -22,4 +23,5 @@ Function Invoke-StickyKeys {
     Catch{
         Write-Warning "Unable to set $Name due to unhandled exception"
     }
+
 }

@@ -81,7 +81,6 @@ function Show-Selected {
         }
     }
 }
-
 function Clear-Item {
     param (
         $ListView

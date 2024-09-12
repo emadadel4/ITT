@@ -5,10 +5,9 @@ Function Invoke-DarkMode {
 
         $DarkMode = (Get-ItemProperty -Path $itt.registryPath -Name "DarkMode").DarkMode
 
-
         if ($DarkMoveEnabled -eq $false){
             $DarkMoveValue = 0
-
+            Add-Log -Message "Dark Mode Enabled" -Level "WARNING"
             if($DarkMode -eq "none")
             {
                 $itt['window'].Resources.MergedDictionaries.Add($itt['window'].FindResource("Dark"))
@@ -16,7 +15,7 @@ Function Invoke-DarkMode {
         }
         else {
             $DarkMoveValue = 1
-
+            Add-Log -Message "Light Mode Enabled" -Level "WARNING"
             if($DarkMode -eq "none")
             {
                 $itt['window'].Resources.MergedDictionaries.Add($itt['window'].FindResource("Light"))
@@ -26,7 +25,6 @@ Function Invoke-DarkMode {
         $Path = "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize"
         Set-ItemProperty -Path $Path -Name AppsUseLightTheme -Value $DarkMoveValue
         Set-ItemProperty -Path $Path -Name SystemUsesLightTheme -Value $DarkMoveValue
-
         Stop-Process -Name explorer -Force
     }
     Catch [System.Security.SecurityException] {
