@@ -1,13 +1,18 @@
 function Message {
 
     <#
+
+    Icons list
+    Warning
+    Question
+    
     .EXAMPLE Usge
-        Message -key "Welcome"
+        Message -key "Welcome" -icon "Warning"
     #>
     
-    param($key)
+    param($key,$icon)
 
     $localizedMessageTemplate = $itt.database.locales.Controls.$($itt.Language).$($key)
     $msg = "$localizedMessageTemplate"
-    [System.Windows.MessageBox]::Show($msg, "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
+    [System.Windows.MessageBox]::Show($msg, "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::$icon)
 }

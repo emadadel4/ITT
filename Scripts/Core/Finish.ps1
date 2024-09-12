@@ -1,7 +1,14 @@
 function Finish {
 
+    param (
+       [string]$ListView,
+       [string]$title = "ITT Emad Adel",
+       [string]$msg = "Installed successfully",
+       [string]$icon = "Info"
+    )
+
     $itt.AppsListView.Dispatcher.Invoke([Action]{
-        foreach ($item in $itt.AppsListView.Items)
+        foreach ($item in $itt.$ListView.Items)
         {
             foreach ($child in $item.Children) {
                 if ($child -is [System.Windows.Controls.StackPanel]) {
@@ -9,8 +16,8 @@ function Finish {
                         if ($innerChild -is [System.Windows.Controls.CheckBox]) {
 
                             $innerChild.IsChecked = $false
-                            $itt.AppsListView.Clear()
-                            $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($itt.AppsListView.Items)
+                            $itt.$ListView.Clear()
+                            $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($itt.$ListView.Items)
                             $collectionView.Filter = $null
                         }
                     }
@@ -19,5 +26,5 @@ function Finish {
         }
     })
 
-    Notify -title "ITT Emad Adel" -msg "Installed successfully" -icon "Info" -time 30000
+    Notify -title "$title" -msg "$msg" -icon "Info" -time 30000
 }

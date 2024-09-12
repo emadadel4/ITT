@@ -32,7 +32,7 @@ $desiredFunctions = @(
 'Remove-RegistryValue',
 'Disable-Service',
 'Uninstall-AppxPackage',
-'Get-SelectedApps'
+'Remove-Registry'
 )
 
 $functions = Get-ChildItem function:\ | Where-Object { $_.Name -in $desiredFunctions }
