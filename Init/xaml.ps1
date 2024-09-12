@@ -19,7 +19,6 @@ $desiredFunctions = @(
 'Add-Log',
 'Disable-Service',
 'Uninstall-AppxPackage',
-'Get-SelectedApps',
 'Finish',
 'Message',
 'Notify',
@@ -29,7 +28,7 @@ $desiredFunctions = @(
 'Install-Choco',
 'ExecuteCommand',
 'Set-RegistryValue',
-'Remove-RegistryValue',
+'Remove-Registry',
 'Disable-Service',
 'Uninstall-AppxPackage',
 'Remove-Registry'
