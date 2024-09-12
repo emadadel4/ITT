@@ -1,4 +1,4 @@
-function Remove-RegistryValue {
+function Remove-Registry {
     param (
         [Parameter(Mandatory=$true)]
         [string]$RegistryPath,
