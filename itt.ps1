@@ -14,8 +14,6 @@
 #region Begin Start
 #===========================================================================
 # Load DLLs
-Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope Process -Force
-
 Add-Type -AssemblyName System.Windows.Forms
 Add-Type -AssemblyName PresentationFramework
 Add-Type -AssemblyName PresentationCore
