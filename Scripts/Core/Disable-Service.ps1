@@ -1,4 +1,5 @@
 function Disable-Service {
+    
     <#
     .SYNOPSIS
     Disables a specified service by changing its startup type and stopping it.

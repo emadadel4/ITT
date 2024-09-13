@@ -1,4 +1,5 @@
 function ExecuteCommand {
+    
     <#
     .SYNOPSIS
     Executes a PowerShell command in a new process.
