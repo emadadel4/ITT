@@ -607,6 +607,18 @@
         "Name": "Microsoft.BingNews"
       },
       {
+        "Name": "Microsoft.WindowsCamera"
+      },
+      {
+        "Name": " Microsoft.Getstarted"
+      },
+      {
+        "Name": "Microsoft.MicrosoftEdge.Stable"
+      },
+      {
+        "Name": "Microsoft.MicrosoftEdgeDevToolsClient"
+      },
+      {
         "Name": "Microsoft.BingWeather_1.0.6.0_x64__8wekyb3d8bbwe"
       },
       {
@@ -712,6 +724,9 @@
         "Name": "Microsoft.WindowsFeedbackHub"
       },
       {
+        "Name": "Microsoft.Wallet"
+      },
+      {
         "Name": "Microsoft.WindowsMaps"
       },
       {
@@ -806,9 +821,6 @@
       },
       {
         "Name": "TikTok"
-      },
-      {
-        "Name": "Microsoft.ZuneMusic"
       },
       {
         "Name": "Microsoft.ZuneVideo"
