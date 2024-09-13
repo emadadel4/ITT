@@ -7382,9 +7382,7 @@ $itt.database.Tweaks = '[
       }
     ],
     "InvokeCommand": [
-      "
-         DISM /Online /Remove-Capability /CapabilityName:Microsoft.Windows.MSPaint~~~~0.0.1.0
-      "
+      "\r\n         DISM /Online /Remove-Capability /CapabilityName:Microsoft.Windows.MSPaint~~~~0.0.1.0\r\n      "
     ],
     "UndoCommand": [
       ""
@@ -8781,8 +8779,20 @@ $itt.database.Tweaks = '[
     "UndoCommand": [
       ""
     ]
+  },
+  {
+    "Name": "Enable NET 3.5",
+    "Description": "Some old games and applications require .NET Framework 3.5.",
+    "Check": "false",
+    "Type": "command",
+    "Refresh": "false",
+    "InvokeCommand": [
+      "DISM /Online /Enable-Feature /FeatureName:NetFx3 /All"
+    ],
+    "UndoCommand": []
   }
-]' | ConvertFrom-Json
+]
+' | ConvertFrom-Json
 #===========================================================================
 #endregion End Database /APPS/TWEEAKS/Quotes/OST/Settings
 #===========================================================================
@@ -15641,6 +15651,14 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
                 <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content="Performance"/>
             </StackPanel>
                 <TextBlock Width="555" Background="Transparent" Margin="8" Foreground="{DynamicResource DefaultTextColor2}"  FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="Defragmentation in Windows optimizes disk performance by reorganizing fragmented data improving access times and system efficiency"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Width="auto" Margin="10">
+            <StackPanel Orientation="Horizontal">
+                <CheckBox Content="Enable NET 3.5"     ToolTip="Install it again to update" FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content=""/>
+            </StackPanel>
+                <TextBlock Width="555" Background="Transparent" Margin="8" Foreground="{DynamicResource DefaultTextColor2}"  FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="Some old games and applications require NET Framework 35"/>
         </StackPanel>
 
                     </ListView>
