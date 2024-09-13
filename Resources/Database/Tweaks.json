@@ -757,6 +757,9 @@
         "Name": "Microsoft.Windows.Cortana"
       },
       {
+        "Name": "Microsoft.ScreenSketch"
+      },
+      {
         "Name": "Microsoft.Windows.DevHome"
       },
       {
@@ -767,6 +770,12 @@
       },
       {
         "Name": "Microsoft.Getstarted"
+      },
+      {
+        "Name": "Microsoft.ZuneMusic"
+      },
+      {
+        "Name": "Microsoft.ZuneVideo"
       },
       {
         "Name": "EclipseManager"
@@ -823,13 +832,7 @@
         "Name": "TikTok"
       },
       {
-        "Name": "Microsoft.ZuneVideo"
-      },
-      {
         "Name": "Microsoft.NetworkSpeedTest"
-      },
-      {
-        "Name": "Microsoft.ScreenSketch"
       }
     ],
     "InvokeCommand": [
