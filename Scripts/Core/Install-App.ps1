@@ -7,7 +7,13 @@ function Install-App {
     )
 
     Install-Choco
-    
+
+        $chocoApp = Join-Path "C:\ProgramData\chocolatey\lib\$appName"
+
+        if(Test-Path $chocoApp){
+            Remove-Item -Path $chocoApp -Force -Recurse
+        }
+        
     $chocoResult = $(Start-Process -FilePath "choco" -ArgumentList "install $appChoco --confirm --acceptlicense -q -r --ignore-http-cache --allowemptychecksumsecure --allowemptychecksum --usepackagecodes --ignoredetectedreboot --ignore-checksums --ignore-reboot-requests" -Wait -NoNewWindow -PassThru).ExitCode
 
     if ($chocoResult -ne 0) {
