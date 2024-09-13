@@ -7151,6 +7151,234 @@ $itt.database.Tweaks = '[
     "RemoveAppxPackage": [
       {
         "Name": "Microsoft.BingNews"
+      },
+      {
+        "Name": "Microsoft.WindowsCamera"
+      },
+      {
+        "Name": " Microsoft.Getstarted"
+      },
+      {
+        "Name": "Microsoft.MicrosoftEdge.Stable"
+      },
+      {
+        "Name": "Microsoft.MicrosoftEdgeDevToolsClient"
+      },
+      {
+        "Name": "Microsoft.BingWeather_1.0.6.0_x64__8wekyb3d8bbwe"
+      },
+      {
+        "Name": "MicrosoftWindows.Client.WebExperience_cw5n1h2txyewy"
+      },
+      {
+        "Name": "Microsoft.GetHelp"
+      },
+      {
+        "Name": "Microsoft.AppConnector"
+      },
+      {
+        "Name": "Microsoft.BingFinance"
+      },
+      {
+        "Name": "Microsoft.XboxGamingOverlay"
+      },
+      {
+        "Name": "Microsoft.BingTranslator"
+      },
+      {
+        "Name": "Microsoft.BingHealthAndFitness"
+      },
+      {
+        "Name": "Microsoft.BingTravel"
+      },
+      {
+        "Name": "Microsoft.MinecraftUWP"
+      },
+      {
+        "Name": "Microsoft.GamingServices"
+      },
+      {
+        "Name": "Microsoft.BingFoodAndDrink"
+      },
+      {
+        "Name": "Microsoft.BingWeather"
+      },
+      {
+        "Name": "Microsoft.Messaging"
+      },
+      {
+        "Name": "Microsoft.Microsoft3DViewer"
+      },
+      {
+        "Name": "Microsoft.MicrosoftOfficeHub"
+      },
+      {
+        "Name": "Microsoft.MicrosoftSolitaireCollection"
+      },
+      {
+        "Name": "Microsoft.NetworkSpeedTest"
+      },
+      {
+        "Name": "Microsoft.News"
+      },
+      {
+        "Name": "Microsoft.549981C3F5F10"
+      },
+      {
+        "Name": "Microsoft.Office.Lens"
+      },
+      {
+        "Name": "Microsoft.Office.OneNote"
+      },
+      {
+        "Name": "Microsoft.Office.Sway"
+      },
+      {
+        "Name": "Microsoft.OneConnect"
+      },
+      {
+        "Name": "Microsoft.People"
+      },
+      {
+        "Name": "Microsoft.Print3D"
+      },
+      {
+        "Name": "Microsoft.RemoteDesktop"
+      },
+      {
+        "Name": "Microsoft.SkypeApp"
+      },
+      {
+        "Name": "Microsoft.StorePurchaseApp"
+      },
+      {
+        "Name": "Microsoft.Office.Todo.List"
+      },
+      {
+        "Name": "Microsoft.Whiteboard"
+      },
+      {
+        "Name": "Microsoft.WindowsAlarms"
+      },
+      {
+        "Name": "Microsoft.WindowsCamera"
+      },
+      {
+        "Name": "Microsoft.windowscommunicationsapps"
+      },
+      {
+        "Name": "Microsoft.WindowsFeedbackHub"
+      },
+      {
+        "Name": "Microsoft.Wallet"
+      },
+      {
+        "Name": "Microsoft.WindowsMaps"
+      },
+      {
+        "Name": "Microsoft.YourPhone"
+      },
+      {
+        "Name": "Microsoft.WindowsSoundRecorder"
+      },
+      {
+        "Name": "Microsoft.Xbox.TCUI"
+      },
+      {
+        "Name": "Microsoft.XboxApp"
+      },
+      {
+        "Name": "Microsoft.XboxGameOverlay"
+      },
+      {
+        "Name": "Microsoft.GamingApp"
+      },
+      {
+        "Name": "Microsoft.XboxIdentityProvider"
+      },
+      {
+        "Name": "Microsoft.XboxSpeechToTextOverlay"
+      },
+      {
+        "Name": "Microsoft.Windows.Cortana"
+      },
+      {
+        "Name": "Microsoft.ScreenSketch"
+      },
+      {
+        "Name": "Microsoft.Windows.DevHome"
+      },
+      {
+        "Name": "Microsoft.MixedReality.Portal"
+      },
+      {
+        "Name": "Microsoft.MSPaint"
+      },
+      {
+        "Name": "Microsoft.Getstarted"
+      },
+      {
+        "Name": "Microsoft.ZuneMusic"
+      },
+      {
+        "Name": "Microsoft.ZuneVideo"
+      },
+      {
+        "Name": "EclipseManager"
+      },
+      {
+        "Name": "ActiproSoftwareLLC"
+      },
+      {
+        "Name": "AdobeSystemsIncorporated.AdobePhotoshopExpress"
+      },
+      {
+        "Name": "Duolingo-LearnLanguagesforFree"
+      },
+      {
+        "Name": "PandoraMediaInc"
+      },
+      {
+        "Name": "CandyCrush"
+      },
+      {
+        "Name": "BubbleWitch3Saga"
+      },
+      {
+        "Name": "Wunderlist"
+      },
+      {
+        "Name": "Flipboard"
+      },
+      {
+        "Name": "Twitter"
+      },
+      {
+        "Name": "Facebook"
+      },
+      {
+        "Name": "Minecraft"
+      },
+      {
+        "Name": "Royal Revolt"
+      },
+      {
+        "Name": "Sway"
+      },
+      {
+        "Name": "Microsoft.549981"
+      },
+      {
+        "Name": "Microsoft.MicrosoftStickyNotes"
+      },
+      {
+        "Name": "TikTok.TikTok_8wekyb3d8bbwe"
+      },
+      {
+        "Name": "TikTok"
+      },
+      {
+        "Name": "Microsoft.NetworkSpeedTest"
       }
     ],
     "InvokeCommand": [
@@ -10242,11 +10470,11 @@ function Invoke-ApplyTweaks {
                     }
                 }
                 "AppxPackage" {
-                    #$tweak.removeAppxPackage | ForEach-Object { Uninstall-AppxPackage -Name $_.Name }
+                    $tweak.removeAppxPackage | ForEach-Object { Uninstall-AppxPackage -Name $_.Name }
                     $tweak.Command | ForEach-Object {
                         ExecuteCommand -Name $tweak.Name -Command $tweak.Command 
                         # debug
-                        Write-Host $tweak.Command
+                        #Write-Host $tweak.Command
                     }
                 }
                 "service" {
