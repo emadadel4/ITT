@@ -5282,6 +5282,7 @@
       {
         "IsExcute": "true",
         "url": "https://www.neatdownloadmanager.com/file/NeatDM_setup.exe",
+        "extinction": "exe",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
         "launcher": "none",
