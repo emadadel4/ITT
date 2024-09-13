@@ -23,6 +23,20 @@
     ]
   },
   {
+    "Name": "Clear Start Menu Windows 10/11",
+    "Description": "Clear all pinned apps from the start menu",
+    "Check": "false",
+    "Category": "Performance",
+    "Type": "command",
+    "Refresh": "false",
+    "InvokeCommand": [
+      "Invoke-RestMethod https://raw.githubusercontent.com/emadadel4/WindowsTweaks/main/ClearStartMenu.ps1 | Invoke-Expression"
+    ],
+    "UndoCommand": [
+      ""
+    ]
+  },
+  {
     "Name": "Restore All Windows Services to Default",
     "Description": "If you face a problem with some system services, you can restore all services to Default.",
     "Check": "false",
@@ -1129,20 +1143,6 @@
     },
     "InvokeCommand": [
       ""
-    ],
-    "UndoCommand": [
-      ""
-    ]
-  },
-  {
-    "Name": "Clear Start Menu Windows 11",
-    "Description": "Clear all pinned apps from the start menu",
-    "Check": "false",
-    "Category": "Performance",
-    "Type": "command",
-    "Refresh": "false",
-    "InvokeCommand": [
-      "Invoke-RestMethod https://raw.githubusercontent.com/emadadel4/WindowsTweaks/main/ClearStartMenu.ps1 | Invoke-Expression"
     ],
     "UndoCommand": [
       ""
