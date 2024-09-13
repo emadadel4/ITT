@@ -7861,6 +7861,9 @@ $itt.database.Tweaks = '[
         "Name": "Microsoft.Windows.Cortana"
       },
       {
+        "Name": "Microsoft.ScreenSketch"
+      },
+      {
         "Name": "Microsoft.Windows.DevHome"
       },
       {
@@ -7871,6 +7874,12 @@ $itt.database.Tweaks = '[
       },
       {
         "Name": "Microsoft.Getstarted"
+      },
+      {
+        "Name": "Microsoft.ZuneMusic"
+      },
+      {
+        "Name": "Microsoft.ZuneVideo"
       },
       {
         "Name": "EclipseManager"
@@ -7927,13 +7936,7 @@ $itt.database.Tweaks = '[
         "Name": "TikTok"
       },
       {
-        "Name": "Microsoft.ZuneVideo"
-      },
-      {
         "Name": "Microsoft.NetworkSpeedTest"
-      },
-      {
-        "Name": "Microsoft.ScreenSketch"
       }
     ],
     "InvokeCommand": [
