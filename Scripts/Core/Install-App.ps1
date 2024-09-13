@@ -30,7 +30,7 @@ function Install-App {
 
     Install-Choco
 
-    if(Test-Path "C:\ProgramData\chocolatey\lib"){
+    if(Test-Path "C:\ProgramData\chocolatey\lib\$appChoco"){
         Remove-Item -Path "C:\ProgramData\chocolatey\lib\$appChoco" -Force -Recurse
         # debug
         #Add-Log -Message "C:\ProgramData\chocolatey\lib\$appChoco" -Level "INFO"
