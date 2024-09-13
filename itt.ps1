@@ -23,7 +23,7 @@ Add-Type -AssemblyName WindowsBase
 $itt = [Hashtable]::Synchronized(@{
     database       = @{}
     ProcessRunning = $false
-    lastupdate     = "09/13/2024"
+    lastupdate     = "09/14/2024"
     github         = "https://github.com/emadadel4"
     telegram       = "https://t.me/emadadel4"
     website        = "https://emadadel4.github.io"
@@ -7128,6 +7128,20 @@ $itt.database.Tweaks = '[
     ]
   },
   {
+    "Name": "Clear Start Menu Windows 10/11",
+    "Description": "Clear all pinned apps from the start menu",
+    "Check": "false",
+    "Category": "Performance",
+    "Type": "command",
+    "Refresh": "false",
+    "InvokeCommand": [
+      "Invoke-RestMethod https://raw.githubusercontent.com/emadadel4/WindowsTweaks/main/ClearStartMenu.ps1 | Invoke-Expression"
+    ],
+    "UndoCommand": [
+      ""
+    ]
+  },
+  {
     "Name": "Restore All Windows Services to Default",
     "Description": "If you face a problem with some system services, you can restore all services to Default.",
     "Check": "false",
@@ -8234,20 +8248,6 @@ $itt.database.Tweaks = '[
     },
     "InvokeCommand": [
       ""
-    ],
-    "UndoCommand": [
-      ""
-    ]
-  },
-  {
-    "Name": "Clear Start Menu Windows 11",
-    "Description": "Clear all pinned apps from the start menu",
-    "Check": "false",
-    "Category": "Performance",
-    "Type": "command",
-    "Refresh": "false",
-    "InvokeCommand": [
-      "Invoke-RestMethod https://raw.githubusercontent.com/emadadel4/WindowsTweaks/main/ClearStartMenu.ps1 | Invoke-Expression"
     ],
     "UndoCommand": [
       ""
@@ -15358,6 +15358,14 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
 
         <StackPanel Orientation="Vertical" Width="auto" Margin="10">
             <StackPanel Orientation="Horizontal">
+                <CheckBox Content="Clear Start Menu Windows 10/11"     ToolTip="Install it again to update" FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content="Performance"/>
+            </StackPanel>
+                <TextBlock Width="555" Background="Transparent" Margin="8" Foreground="{DynamicResource DefaultTextColor2}"  FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="Clear all pinned apps from the start menu"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Width="auto" Margin="10">
+            <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Restore All Windows Services to Default"     ToolTip="Install it again to update" FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content="Fixer"/>
             </StackPanel>
@@ -15538,14 +15546,6 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
                 <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content="Classic"/>
             </StackPanel>
                 <TextBlock Width="555" Background="Transparent" Margin="8" Foreground="{DynamicResource DefaultTextColor2}"  FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="Toggle key sounds in Windows are audio cues that play when you press the Caps Lock Num Lock or Scroll Lock keys These sounds help users identify when these keys are activated or deactivated"/>
-        </StackPanel>
-
-        <StackPanel Orientation="Vertical" Width="auto" Margin="10">
-            <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Clear Start Menu Windows 11"     ToolTip="Install it again to update" FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content="Performance"/>
-            </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="8" Foreground="{DynamicResource DefaultTextColor2}"  FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="Clear all pinned apps from the start menu"/>
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Width="auto" Margin="10">
