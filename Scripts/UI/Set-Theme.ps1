@@ -1,4 +1,14 @@
 function ToggleTheme {
+
+    <#
+        .SYNOPSIS
+        Toggles the application's theme between dark and light modes based on the state of the `themeText` checkbox control.
+
+        .DESCRIPTION
+        The `ToggleTheme` function checks the state of a UI checkbox named `themeText` to determine whether the application should be switched to dark or light mode. 
+        If the checkbox is checked, the function activates dark mode; if unchecked, it activates light mode. 
+        The checkbox state is then updated to reflect the new theme setting. Error handling is included to manage and report any issues that occur during the theme switching process.
+    #>
     
     try {
 
