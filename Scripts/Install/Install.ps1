@@ -109,6 +109,8 @@ function Invoke-ApplyTweaks {
 
         foreach ($tweak in $selectedApps) {
 
+            Add-Log -Message $tweak.Name -Level "INFO" 
+
             switch ($tweak.Type) {        
         
                 "command" {
@@ -117,11 +119,9 @@ function Invoke-ApplyTweaks {
                 "Registry" {
                     $tweak.Modify | ForEach-Object {
                         Set-Registry -Name $_.Name -Type $_.Type -Path $_.Path -Value $_.Value
-                        Add-Log -Message $tweak.Name -Level "INFO" 
                     }
                     $tweak.Delete | ForEach-Object {
                         Remove-Registry -RegistryPath $_.Path -Folder $_.Name
-                        Add-Log -Message $tweak.Name -Level "INFO" 
                     }
                     if($tweak.Refresh -eq "true")
                     {
@@ -133,7 +133,6 @@ function Invoke-ApplyTweaks {
                     $tweak.removeAppxPackage | ForEach-Object { Uninstall-AppxPackage -Name $_.Name }
                 }
                 "service" {
-                    Write-Host $tweak.Name
                     $tweak.Service | ForEach-Object { Disable-Service -ServiceName $_.Name -StartupType $_.StartupType }
                 }
             }
