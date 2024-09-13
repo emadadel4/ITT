@@ -23,7 +23,7 @@ Add-Type -AssemblyName WindowsBase
 $itt = [Hashtable]::Synchronized(@{
     database       = @{}
     ProcessRunning = $false
-    lastupdate     = "09/12/2024"
+    lastupdate     = "09/13/2024"
     github         = "https://github.com/emadadel4"
     telegram       = "https://t.me/emadadel4"
     website        = "https://emadadel4.github.io"
@@ -5346,6 +5346,7 @@ $itt.database.Applications = '[
       {
         "IsExcute": "true",
         "url": "https://www.neatdownloadmanager.com/file/NeatDM_setup.exe",
+        "extinction": "exe",
         "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
         "output": "none",
         "launcher": "none",
@@ -7104,20 +7105,6 @@ $itt.database.Settings = '[
 ]' | ConvertFrom-Json
 $itt.database.Tweaks = '[
   {
-    "Name": "System File Checker",
-    "Description": "sfc /scannow Use the System File Checker tool to repair missing or corrupted system files",
-    "Check": "false",
-    "Category": "Fixer",
-    "Type": "command",
-    "Refresh": "false",
-    "InvokeCommand": [
-      "sfc /scannow"
-    ],
-    "UndoCommand": [
-      ""
-    ]
-  },
-  {
     "Name": "Disk cleanup",
     "Description": "Clean temporary files that are not necessary",
     "Check": "false",
@@ -7725,6 +7712,18 @@ $itt.database.Tweaks = '[
         "Name": "Microsoft.BingNews"
       },
       {
+        "Name": "Microsoft.WindowsCamera"
+      },
+      {
+        "Name": " Microsoft.Getstarted"
+      },
+      {
+        "Name": "Microsoft.MicrosoftEdge.Stable"
+      },
+      {
+        "Name": "Microsoft.MicrosoftEdgeDevToolsClient"
+      },
+      {
         "Name": "Microsoft.BingWeather_1.0.6.0_x64__8wekyb3d8bbwe"
       },
       {
@@ -7830,6 +7829,9 @@ $itt.database.Tweaks = '[
         "Name": "Microsoft.WindowsFeedbackHub"
       },
       {
+        "Name": "Microsoft.Wallet"
+      },
+      {
         "Name": "Microsoft.WindowsMaps"
       },
       {
@@ -7860,6 +7862,9 @@ $itt.database.Tweaks = '[
         "Name": "Microsoft.Windows.Cortana"
       },
       {
+        "Name": "Microsoft.ScreenSketch"
+      },
+      {
         "Name": "Microsoft.Windows.DevHome"
       },
       {
@@ -7870,6 +7875,12 @@ $itt.database.Tweaks = '[
       },
       {
         "Name": "Microsoft.Getstarted"
+      },
+      {
+        "Name": "Microsoft.ZuneMusic"
+      },
+      {
+        "Name": "Microsoft.ZuneVideo"
       },
       {
         "Name": "EclipseManager"
@@ -7926,16 +7937,7 @@ $itt.database.Tweaks = '[
         "Name": "TikTok"
       },
       {
-        "Name": "Microsoft.ZuneMusic"
-      },
-      {
-        "Name": "Microsoft.ZuneVideo"
-      },
-      {
         "Name": "Microsoft.NetworkSpeedTest"
-      },
-      {
-        "Name": "Microsoft.ScreenSketch"
       }
     ],
     "InvokeCommand": [
@@ -8781,6 +8783,2271 @@ $itt.database.Tweaks = '[
 ]' | ConvertFrom-Json
 #===========================================================================
 #endregion End Database /APPS/TWEEAKS/Quotes/OST/Settings
+#===========================================================================
+#===========================================================================
+#region Begin Main Functions
+#===========================================================================
+function Invoke-ScriptBlock {
+    param(
+        [scriptblock]$ScriptBlock,  # The script block to invoke
+        [array]$ArgumentList        # Optional arguments for the script block
+    )
+
+    $script:powershell = [powershell]::Create()  # Create a new PowerShell instance
+
+    # Add the script block and arguments to the runspace
+    $script:powershell.AddScript($ScriptBlock)
+    $script:powershell.AddArgument($ArgumentList)
+    $script:powershell.RunspacePool = $itt.runspace  # Set the runspace pool
+
+    # Begin running the script block asynchronously
+    $script:handle = $script:powershell.BeginInvoke()
+
+    # If the script has completed, clean up resources
+    if ($script:handle.IsCompleted) {
+        $script:powershell.EndInvoke($script:handle)  # End the invocation
+        $script:powershell.Dispose()                  # Dispose of the PowerShell instance
+        $itt.runspace.Dispose()                      # Dispose of the runspace
+        $itt.runspace.Close()                        # Close the runspace
+        [System.GC]::Collect()                        # Force garbage collection to free memory
+    }
+}
+
+function RestorePoint {
+
+    Invoke-ScriptBlock -ScriptBlock {
+
+        Try {
+            Add-Log -Message "Creating Restore point..." -Level "INFO"
+            Checkpoint-Computer -Description "ITT" -ErrorAction Stop
+            Add-Log -Message "Created successfully" -Level "INFO"
+        } Catch {
+            Write-Host "Failed to create a restore point. Error: $($_.Exception.Message)" -ForegroundColor Red
+        }
+    }
+}
+
+function Add-Log {
+
+    <#
+    .Options
+    INFO
+    WARNING
+    ERROR
+
+    .Example
+        Add-Log -Message "ARE YOU 0 OR 1?" -Level "WARNING"
+    #>
+
+    param (
+        [string]$Message, # Content of Message
+        [string]$Level = "INFO" # Message Level [INFO] [ERROR] [WARNING]
+    )
+
+    # Get the current timestamp
+    $timestamp = Get-Date -Format "hh:mm tt"
+
+    # Determine the color based on the log level
+    switch ($Level.ToUpper()) {
+        "INFO" { $color = "White" }
+        "WARNING" { $color = "Yellow" }
+        "ERROR" { $color = "Red" }
+        default { $color = "White" }
+    }
+
+    # Construct the log message
+    $logMessage = "$Message"
+    $date =  "[$timestamp $Level]"
+
+    # Write the log message to the console with the specified color
+    Write-Host "$date" -ForegroundColor Yellow ; Write-Host "$logMessage" -ForegroundColor $color 
+    Write-Host "" -ForegroundColor $color
+
+}
+function Disable-Service {
+    
+    param(
+        $ServiceName,
+        $StartupType
+    )
+
+    try {
+
+
+        # Check if the service exists
+        if (Get-Service -Name $ServiceName -ErrorAction SilentlyContinue) {
+            Set-Service -Name $ServiceName -StartupType $StartupType -ErrorAction Stop
+            Stop-Service -Name $ServiceName 
+            Add-Log -Message "Service '$ServiceName' disabled." -Level "INFO"
+        }
+        else {
+            Add-Log -Message "Service '$ServiceName' not found." -Level "INFO"
+        }
+    }
+    catch
+    {
+        Write-Host "Failed to disable service '$ServiceName'. Error: $_" -ForegroundColor Red
+    }
+}
+function ExecuteCommand {
+
+    <#
+    .Example
+        ExecuteCommand -Name "Itemname" -Command "Welcome to itt"
+    #>
+
+    param (
+        [string]$Name,
+        [string]$Command
+    )
+    try {
+        #Add-Log -Message "$Name" -Level "INFO"
+        Start-Process -FilePath "powershell.exe" -ArgumentList "-Command `"$Command`"" -NoNewWindow -Wait
+    } catch {
+        Write-Host "Error executing command '$Command': $_"
+    }
+}
+function Finish {
+
+    param (
+       [string]$ListView,
+       [string]$title = "ITT Emad Adel",
+       [string]$msg = "Installed successfully",
+       [string]$icon = "Info"
+    )
+
+    $itt.$ListView.Dispatcher.Invoke([Action]{
+        foreach ($item in $itt.$ListView.Items)
+        {
+            foreach ($child in $item.Children) {
+                if ($child -is [System.Windows.Controls.StackPanel]) {
+                    foreach ($innerChild in $child.Children) {
+                        if ($innerChild -is [System.Windows.Controls.CheckBox]) {
+
+                            $innerChild.IsChecked = $false
+                            $itt.$ListView.Clear()
+                            $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($itt.$ListView.Items)
+                            $collectionView.Filter = $null
+                        }
+                    }
+                }
+            }
+        }
+    })
+
+    Notify -title "$title" -msg "$msg" -icon "Info" -time 30000
+}
+function Show-Selected {
+
+    <#
+    .Options
+    AppsListView
+    TweaksListView
+
+    .Example
+        Show-Selected -ListView "AppsListView"
+    #>
+
+    param (
+        [string]$ListView,
+        [string]$mode
+     )
+
+    switch ($mode) {
+
+        "Filter"{
+
+            $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($itt.$ListView.Items)
+
+            $filterPredicate = {
+                param($item)
+        
+                if ($item -is [System.Windows.Controls.StackPanel]) {
+                    foreach ($child in $item.Children) {
+                        if ($child -is [System.Windows.Controls.StackPanel]) {
+                            foreach ($innerChild in $child.Children) {
+                                if ($innerChild -is [System.Windows.Controls.CheckBox]) {
+                                    # Check if the CheckBox is checked
+                                    $itemTag = $innerChild.IsChecked
+                                    return $itemTag
+                                }
+                            }
+                        }
+                    }
+                }
+        
+                # Return $true if no CheckBox found (to include all items)
+                return $true
+            }
+        
+            $collectionView.Filter = $filterPredicate
+
+        }
+        Default {
+            $itt.$ListView.Clear()
+            [System.Windows.Data.CollectionViewSource]::GetDefaultView($itt.$ListView.Items).Filter = $null
+            $itt.category.SelectedIndex = 0
+        }
+    }
+}
+function Clear-Item {
+    param (
+        $ListView
+    )
+
+     # Uncheck all checkboxes in $list if user chose [NO]
+     $itt.$ListView.Dispatcher.Invoke({
+        foreach ($item in $itt.$ListView.Items) {
+            $item.Children | ForEach-Object {
+                if ($_ -is [System.Windows.Controls.StackPanel]) {
+                    $_.Children | ForEach-Object {
+                        if ($_ -is [System.Windows.Controls.CheckBox]) {
+                            $_.IsChecked = $false
+                        }
+                    }
+                }
+            }
+        }
+        $itt.$ListView.Clear()
+        [System.Windows.Data.CollectionViewSource]::GetDefaultView($itt.$ListView.Items).Filter = $null
+    })
+
+    $itt.category.SelectedIndex = 0
+    
+}
+function Get-SelectedItems {
+    param (
+        [string]$Mode
+    )
+
+    $items = @()
+
+    switch ($Mode) {
+        "Apps" {
+            $itt.AppsListView.Items |
+                Where-Object { $_ -is [System.Windows.Controls.StackPanel] } |
+                ForEach-Object {
+                    $_.Children |
+                        Where-Object { $_ -is [System.Windows.Controls.StackPanel] } |
+                        ForEach-Object {
+                            $_.Children |
+                                Where-Object { $_ -is [System.Windows.Controls.CheckBox] -and $_.IsChecked } |
+                                ForEach-Object {
+                                    $checkbox = $_
+                                    $app = $itt.database.Applications | Where-Object { $_.Name -eq $checkbox.Content }
+
+                                    if ($app) {
+                                        $items += @{
+                                            Name    = $app.Name
+                                            Choco   = $app.Choco
+                                            Scoop   = $app.Scoop
+                                            Winget  = $app.Winget
+                                            Default = $app.Default
+                                            # Add a new method downloader here
+                                        }
+                                    }
+                                }
+                        }
+                }
+        }
+        "Tweaks" {
+            $itt.TweaksListView.Items |
+                Where-Object { $_ -is [System.Windows.Controls.StackPanel] } |
+                ForEach-Object {
+                    $_.Children |
+                        Where-Object { $_ -is [System.Windows.Controls.StackPanel] } |
+                        ForEach-Object {
+                            $_.Children |
+                                Where-Object { $_ -is [System.Windows.Controls.CheckBox] -and $_.IsChecked } |
+                                ForEach-Object {
+                                    $checkbox = $_
+                                    $tweak = $itt.database.Tweaks | Where-Object { $_.Name -eq $checkbox.Content }
+
+                                    if ($tweak) {
+                                        $items += @{
+                                            Name                = $tweak.Name
+                                            Type                = $tweak.Type
+                                            Modify              = $tweak.Modify
+                                            Delete              = $tweak.Delete
+                                            Service             = $tweak.Service
+                                            RemoveAppxPackage   = $tweak.RemoveAppxPackage
+                                            Command             = $tweak.InvokeCommand
+                                            Refresh             = $tweak.Refresh
+                                            # Add a new method tweak here
+                                        }
+                                    }
+                                }
+                        }
+                }
+        }
+        default {
+            Write-Error "Invalid Mode specified. Please choose 'Apps' or 'Tweaks'."
+        }
+    }
+
+    return $items
+}
+Function Get-ToggleStatus {
+
+    Param($ToggleSwitch) # Parameter to specify which toggle switch status to check
+
+    # Check status of "ToggleDarkMode"
+    if($ToggleSwitch -eq "ToggleDarkMode"){
+        $app = (Get-ItemProperty -path 'HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize').AppsUseLightTheme
+        $system = (Get-ItemProperty -path 'HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize').SystemUsesLightTheme
+        if($app -eq 0 -and $system -eq 0){
+            return $true
+        }
+        else{
+            # Return true if Sticky Keys are enabled
+            return $false
+        }
+    }
+  
+    # Check status of "ToggleShowExt" (Show File Extensions)
+    if($ToggleSwitch -eq "ToggleShowExt"){
+        $hideextvalue = (Get-ItemProperty -path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced').HideFileExt
+        if($hideextvalue -eq 0){
+            return $true
+        }
+        else{
+            # Return true if Sticky Keys are enabled
+            return $false
+        }
+    }
+
+    # Check status of "ToggleShowHidden" (Show Hidden Files)
+    if($ToggleSwitch -eq "ToggleShowHidden"){
+        $hideextvalue = (Get-ItemPropertyValue -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "ShowSuperHidden")
+        if($hideextvalue -eq 1){
+            return $true
+        }
+        else{
+            # Return true if Sticky Keys are enabled
+            return $false
+        }
+    }
+
+    # Check status of "ToggleNumLock"
+    if($ToggleSwitch -eq "ToggleNumLook"){
+        $numlockvalue = (Get-ItemProperty -path 'HKCU:\Control Panel\Keyboard').InitialKeyboardIndicators
+        if($numlockvalue -eq 2){
+            return $true
+        }
+        else{
+            # Return true if Sticky Keys are enabled
+            return $false
+        }
+    } 
+    
+    # Check status of "ToggleStickyKeys"    
+    if ($ToggleSwitch -eq "ToggleStickyKeys") {
+        $StickyKeys = (Get-ItemProperty -path 'HKCU:\Control Panel\Accessibility\StickyKeys').Flags
+        if($StickyKeys -eq 58){
+            return $false
+        }
+        else{
+            # Return true if Sticky Keys are enabled
+            return $true
+        }
+    }
+}
+function Download-And-ExtractZip {
+    param (
+        [string]$url,
+        [string]$destinationDir = "C:\ProgramData\ITT\Downloads",
+        [string]$Createshortcut,
+        [string]$exeFileName,
+        [string]$run,
+        [string]$exeArgs
+    )
+
+    # Ensure destination directory exists
+    if (-not (Test-Path -Path $destinationDir)) {
+        New-Item -ItemType Directory -Path $destinationDir -Force
+    }
+
+    # Define paths
+    $zipFileName = [System.IO.Path]::GetFileName($url)
+    $downloadPath = [System.IO.Path]::Combine($destinationDir, $zipFileName)
+    $exePath = [System.IO.Path]::Combine($destinationDir, $exeFileName)
+    
+    # Create the shortcut name based on the .exe file name
+    $shortcutName = [System.IO.Path]::GetFileNameWithoutExtension($exeFileName) + ".lnk"
+    $desktopPath = [System.IO.Path]::Combine([System.Environment]::GetFolderPath('Desktop'), $shortcutName)
+
+    try {
+
+        Add-Log -Message "Downloading using Invoke-WebRequest" -Level "INFO"
+        Invoke-WebRequest -Uri $url -OutFile $downloadPath
+
+        # Extract the file
+        Write-Output "Extracting file to: $destinationDir"
+        Expand-Archive -Path $downloadPath -DestinationPath $destinationDir -Force
+
+        #create a shortcut
+        if ($Createshortcut -eq "yes") {
+            if (Test-Path -Path $exePath) {
+                Write-Output "Creating shortcut at: $desktopPath"
+                # Create a shortcut on the desktop
+                $shell = New-Object -ComObject WScript.Shell
+                $shortcut = $shell.CreateShortcut($desktopPath)
+                $shortcut.TargetPath = $exePath
+                $shortcut.Save()
+                Write-Output "Shortcut created successfully."
+            } else {
+                Write-Error "The specified .exe file '$exeFileName' was not found in the extracted content."
+            }
+        }
+
+        # Optionally run the executable
+        if ($run -eq "yes") {
+            Write-Output "Starting installation"
+            Start-Process -FilePath $exePath -ArgumentList $exeArgs -NoNewWindow
+        }
+    } catch {
+        Write-Error $_.Exception.Message
+    }
+}
+
+function Download-And-Install-Exe {
+    param (
+        [string]$name,
+        [string]$url,
+        [string]$type,
+        [string]$exeArgs,
+        [string]$outputDir,
+        [string]$shortcut,
+        [string]$run
+    )
+
+    $destination = "$env:ProgramData\$outputDir\$name\$name.$type"
+    $shortcutPath = [System.IO.Path]::Combine([System.Environment]::GetFolderPath('Desktop'), "$name.lnk")
+    Add-Log -Message "Downloading using Invoke-WebRequest" -Level "INFO"
+
+    try {
+        # Create the output directory if it doesn't exist
+        if (-not (Test-Path -Path (Split-Path -Path $destination -Parent))) {
+            New-Item -ItemType Directory -Path (Split-Path -Path $destination -Parent) | Out-Null
+        }
+        # Download the file
+        Invoke-WebRequest -Uri $url -OutFile $destination
+        Add-Log -Message "Downloaded any saved in $destination " -Level "INFO"
+
+        if ($shortcut -eq "yes") {
+            # Create a shortcut on the desktop
+            $shell = New-Object -ComObject WScript.Shell
+            $shortcut = $shell.CreateShortcut($shortcutPath)
+            $shortcut.TargetPath = $destination
+            $shortcut.Save()
+            Add-Log -Message "Shortcut created on desktop" -Level "INFO"
+        }
+        if ($run -eq "yes") {
+            Start-Process -Wait $destination -ArgumentList $exeArgs
+        }
+    }
+    catch {
+        throw "Error downloading EXE file: $_"
+    }
+}
+
+function Install-App {
+    param (
+        [string]$appName,
+        [string]$appChoco,
+        [string]$appWinget
+    )
+
+    Install-Choco
+
+        $chocoApp = Join-Path "C:\ProgramData\chocolatey\lib\$appName"
+
+        if(Test-Path $chocoApp){
+            Remove-Item -Path $chocoApp -Force -Recurse
+        }
+        
+    $chocoResult = $(Start-Process -FilePath "choco" -ArgumentList "install $appChoco --confirm --acceptlicense -q -r --ignore-http-cache --allowemptychecksumsecure --allowemptychecksum --usepackagecodes --ignoredetectedreboot --ignore-checksums --ignore-reboot-requests" -Wait -NoNewWindow -PassThru).ExitCode
+
+    if ($chocoResult -ne 0) {
+
+        Add-Log -Message "Chocolatey installation failed for $appName." -Level "INFO"
+        Add-Log -Message "Attempting to install $appName using Winget." -Level "INFO"
+
+        #Install Winget if not install on Device
+        Install-Winget
+
+        Start-Process -FilePath "winget" -ArgumentList "settings --enable InstallerHashOverride" -NoNewWindow -Wait -PassThru
+        $wingetResult = $(Start-Process -FilePath "winget" -ArgumentList "install --accept-source-agreements --accept-package-agreements --id $appWinget --force -e -h --silent --exact" -Wait -NoNewWindow -PassThru).ExitCode
+
+        # Check winget
+        if ($wingetResult -ne 0) {
+            Add-Log -Message "Winget installation failed for $appName. Please install $appName manually." -Level "ERROR"
+            UpdateUI -Button "installBtn" -ButtonText "installText" -Content "Install" -Icon "installIcon" -TextIcon "" -Width "100"
+        } 
+        else
+        {
+            Add-Log -Message " $appName installed successfully using Winget." -Level "INFO"
+            UpdateUI -Button "installBtn" -ButtonText "installText" -Content "Install" -Icon "installIcon" -TextIcon "" -Width "100"
+        }
+    }
+    else
+    {
+        Add-Log -Message "Installed $appName successfully using Chocolatey." -Level "INFO"
+    }
+}
+function Install-Choco {
+    # Check if Chocolatey is installed
+    if (-not (Get-Command choco -ErrorAction SilentlyContinue))
+    {
+        Add-Log -Message "Installing Chocolatey for the first time, It won't take minutes :)" -Level "INFO"
+        Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1')) *> $null
+        Add-Log -Message "Attempting to install $appName using Chocolatey..." -Level "INFO"
+    }
+}
+
+function Install-Winget {
+
+    $versionVCLibs = "14.00"
+    $versionUIXamlMinor = "2.8"
+    $versionUIXamlPatch = "2.8.6"
+
+    function Get-OSArchitecture {
+    $is64Bit = $env:PROCESSOR_ARCHITEW6432 -eq "AMD64"
+    $architecture = if ($is64Bit) { "64-bit" } else { "32-bit" }
+    return $architecture
+    }
+
+    if (Get-OSArchitecture -eq "64-bit") {
+    $fileVCLibs = "https://aka.ms/Microsoft.VCLibs.x64.${versionVCLibs}.Desktop.appx"
+    $fileUIXaml = "https://github.com/microsoft/microsoft-ui-xaml/releases/download/v${versionUIXamlPatch}/Microsoft.UI.Xaml.${versionUIXamlMinor}.x64.appx"
+    } 
+    else
+    {
+    $fileVCLibs = "https://aka.ms/Microsoft.VCLibs.x86.${versionVCLibs}.Desktop.appx"
+    $fileUIXaml = "https://github.com/microsoft/microsoft-ui-xaml/releases/download/v${versionUIXamlPatch}/Microsoft.UI.Xaml.${versionUIXamlMinor}.x86.appx"
+    }
+
+    Try {
+    
+        if (Get-Command winget -ErrorAction SilentlyContinue) {
+            Write-Host "winget is installed on this system."
+            return
+        } 
+    
+        Write-Host "Downloading Microsoft.VCLibs Dependency..."
+        Invoke-WebRequest -Uri $fileVCLibs -OutFile $ENV:TEMP\Microsoft.VCLibs.x64.Desktop.appx
+        Write-Host "Downloading Microsoft.UI.Xaml Dependency...`n"
+        Invoke-WebRequest -Uri $fileUIXaml -OutFile $ENV:TEMP\Microsoft.UI.Xaml.x64.appx
+    
+        # Install Microsoft.VCLibs
+        Add-AppxPackage -Path "$ENV:TEMP\Microsoft.VCLibs.x64.Desktop.appx"
+    
+        # Install Microsoft.UI.Xaml
+        Add-AppxPackage -Path "$ENV:TEMP\Microsoft.UI.Xaml.x64.appx"
+    
+        $msiPath = "$env:TEMP\winget.msixbundle"
+        $url = "https://github.com/microsoft/winget-cli/releases/latest/download/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle"
+        Invoke-WebRequest -Uri $url -OutFile $msiPath
+    
+        # Install the Microsoft Store App Installer silently
+        Add-AppxPackage -Path $msiPath -ErrorAction Stop
+    
+        # Wait for the installation to complete
+        Start-Sleep -Seconds 2
+    
+        # Add winget to the system environment variable 'Path' if not already present
+        $wingetPath = "$env:ProgramFiles\WindowsApps\Microsoft.DesktopAppInstaller_1.11.12371.0_x64__8wekyb3d8bbwe"
+        $pathVariable = [Environment]::GetEnvironmentVariable("Path", "Machine")
+        if (-not ($pathVariable -split ";" | Where-Object {$_ -eq $wingetPath})) {
+            $newPath = "$pathVariable;$wingetPath"
+            [Environment]::SetEnvironmentVariable("Path", $newPath, "Machine")
+        }
+    
+        $ENV:PATH = [System.Environment]::GetEnvironmentVariable("Path", "Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path", "User")
+    
+    }
+    Catch {
+        throw [WingetFailedInstall]::new('Failed to install prerequisites')
+    }
+}
+function Download-And-ExtractZip {
+    param (
+        [string]$url,
+        [string]$destinationDir = "C:\ProgramData\ITT\Downloads",
+        [string]$Createshortcut,
+        [string]$exeFileName,
+        [string]$run,
+        [string]$exeArgs
+    )
+
+    # Ensure destination directory exists
+    if (-not (Test-Path -Path $destinationDir)) {
+        New-Item -ItemType Directory -Path $destinationDir -Force
+    }
+
+    # Define paths
+    $zipFileName = [System.IO.Path]::GetFileName($url)
+    $downloadPath = [System.IO.Path]::Combine($destinationDir, $zipFileName)
+    $exePath = [System.IO.Path]::Combine($destinationDir, $exeFileName)
+    
+    # Create the shortcut name based on the .exe file name
+    $shortcutName = [System.IO.Path]::GetFileNameWithoutExtension($exeFileName) + ".lnk"
+    $desktopPath = [System.IO.Path]::Combine([System.Environment]::GetFolderPath('Desktop'), $shortcutName)
+
+    try {
+        Add-Log -Message "Downloading using Invoke-WebRequest" -Level "INFO"
+        Invoke-WebRequest -Uri $url -OutFile $downloadPath
+
+        # Extract the file
+        Write-Output "Extracting file to: $destinationDir"
+        Expand-Archive -Path $downloadPath -DestinationPath $destinationDir -Force
+
+        #create a shortcut
+        if ($Createshortcut -eq "yes") {
+            if (Test-Path -Path $exePath) {
+                Write-Output "Creating shortcut at: $desktopPath"
+                # Create a shortcut on the desktop
+                $shell = New-Object -ComObject WScript.Shell
+                $shortcut = $shell.CreateShortcut($desktopPath)
+                $shortcut.TargetPath = $exePath
+                $shortcut.Save()
+                Write-Output "Shortcut created successfully."
+            } else {
+                Write-Error "The specified .exe file '$exeFileName' was not found in the extracted content."
+            }
+        }
+
+        # Optionally run the executable
+        if ($run -eq "yes") {
+            Write-Output "Starting installation"
+            Start-Process -FilePath $exePath -ArgumentList $exeArgs -NoNewWindow
+        }
+    } catch {
+        Write-Error $_.Exception.Message
+    }
+}
+
+function Download-And-Install-Exe {
+    param (
+        [string]$name,
+        [string]$url,
+        [string]$type,
+        [string]$exeArgs,
+        [string]$outputDir,
+        [string]$shortcut,
+        [string]$run
+    )
+
+    $destination = "$env:ProgramData\$outputDir\$name\$name.$type"
+    $shortcutPath = [System.IO.Path]::Combine([System.Environment]::GetFolderPath('Desktop'), "$name.lnk")
+
+    Add-Log -Message "Downloading using Invoke-WebRequest" -Level "INFO"
+
+    try {
+        # Create the output directory if it doesn't exist
+        if (-not (Test-Path -Path (Split-Path -Path $destination -Parent))) {
+            New-Item -ItemType Directory -Path (Split-Path -Path $destination -Parent) | Out-Null
+        }
+        # Download the file
+        Invoke-WebRequest -Uri $url -OutFile $destination
+        Add-Log -Message "Downloaded any saved in $destination " -Level "INFO"
+
+        if ($shortcut -eq "yes") {
+            # Create a shortcut on the desktop
+            $shell = New-Object -ComObject WScript.Shell
+            $shortcut = $shell.CreateShortcut($shortcutPath)
+            $shortcut.TargetPath = $destination
+            $shortcut.Save()
+            Add-Log -Message "Shortcut created on desktop" -Level "INFO"
+        }
+        if ($run -eq "yes") {
+            Start-Process -Wait $destination -ArgumentList $exeArgs
+        }
+    }
+    catch {
+        throw "Error downloading EXE file: $_"
+    }
+}
+function Remove-Registry {
+    param (
+        [Parameter(Mandatory=$true)]
+        [string]$RegistryPath,
+        [Parameter(Mandatory=$true)]
+        [string]$Folder
+    )
+
+    try {
+        # Combine the registry path and folder to create the full registry key path
+        $KeyPath = "$RegistryPath\\$Folder"
+
+        # Check if the registry key exists
+        if (Test-Path "Registry::$KeyPath") {
+            # Delete the registry key and all subkeys recursively
+            Remove-Item -Path "Registry::$KeyPath" -Recurse -Force
+        } else {
+            Add-Log -Message "Registry key '$KeyPath' does not exist." -Level "INFO"
+        }
+    }
+    catch {
+        Write-Host "An error occurred: $_" -ForegroundColor red
+    }
+}
+# Function to get all CheckBoxes from a StackPanel
+function Get-CheckBoxesFromStackPanel {
+    param (
+        [System.Windows.Controls.StackPanel]$item  # The StackPanel to search
+    )
+
+    $checkBoxes = @()  # Initialize an empty array to store CheckBoxes
+    
+    if ($item -is [System.Windows.Controls.StackPanel]) {
+        foreach ($child in $item.Children) {
+            if ($child -is [System.Windows.Controls.StackPanel]) {
+                foreach ($innerChild in $child.Children) {
+                    if ($innerChild -is [System.Windows.Controls.CheckBox]) {
+                        $checkBoxes += $innerChild  # Add each CheckBox to the array
+                    }
+                }
+            }
+        }
+    }
+    return $checkBoxes  # Return the array of CheckBoxes
+}
+
+# Function to load JSON data and update the UI
+function LoadJson {
+    if ($itt.ProcessRunning) {
+        $msg = $itt.database.locales.Controls.$($itt.Language).Pleasewait
+        [System.Windows.MessageBox]::Show($msg, "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
+        return
+    }
+
+    # Open file dialog to select JSON file
+    $openFileDialog = New-Object "Microsoft.Win32.OpenFileDialog"
+    $openFileDialog.Filter = "JSON files (*.itt)|*.itt"
+    $openFileDialog.Title = "Open JSON File"
+    $dialogResult = $openFileDialog.ShowDialog()
+
+    if ($dialogResult -eq "OK") {
+        $jsonData = Get-Content -Path $openFileDialog.FileName -Raw | ConvertFrom-Json
+        $filteredNames = $jsonData.Name
+
+        # Filter predicate to match CheckBoxes with JSON data
+        $filterPredicate = {
+            param($item)
+
+            $checkBoxes = Get-CheckBoxesFromStackPanel -item $item
+
+            foreach ($currentItemName in $filteredNames) {
+                if ($currentItemName -eq $checkBoxes.Content) {
+                    $checkBoxes.IsChecked = $true
+                    break
+                }
+            }
+            return $filteredNames -contains $checkBoxes.Content
+        }
+
+        # Update UI based on the loaded JSON data
+        $itt['window'].FindName('apps').IsSelected = $true
+        $itt['window'].FindName('appslist').Clear()
+        $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($itt['window'].FindName('appslist').Items)
+        $collectionView.Filter = $filterPredicate
+        [System.Windows.MessageBox]::Show("Restored successfully", "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
+    }
+}
+
+# Function to save selected items to a JSON file
+function SaveItemsToJson {
+    if ($itt.ProcessRunning) {
+        $msg = $itt.database.locales.Controls.$($itt.Language).Pleasewait
+        [System.Windows.MessageBox]::Show($msg, "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
+        return
+    }
+
+    ClearFilter
+
+    # Convert the applications list to a dictionary for faster lookups
+    $appsDictionary = @{}
+    foreach ($app in $itt.database.Applications) {
+        $appsDictionary[$app.Name] = $app
+    }
+
+    # Initialize the items list as a specific type
+    $items = @()
+
+    foreach ($item in $itt.AppsListView.Items) {
+        $checkBoxes = Get-CheckBoxesFromStackPanel -item $item
+        if ($checkBoxes.IsChecked) {
+            $app = $appsDictionary[$checkBoxes.Content]
+
+            if ($app) {
+                $itemObject = [PSCustomObject]@{
+                    Name   = $checkBoxes.Content
+                    check  = "true"
+                    choco  = $app.choco
+                    winget = $app.winget
+                }
+                $items += $itemObject
+            }
+        }
+    }
+
+    if ($items.Count -gt 0) {
+        # Open save file dialog
+        $saveFileDialog = New-Object "Microsoft.Win32.SaveFileDialog"
+        $saveFileDialog.Filter = "JSON files (*.itt)|*.itt"
+        $saveFileDialog.Title = "Save JSON File"
+        $dialogResult = $saveFileDialog.ShowDialog()
+
+        if ($dialogResult -eq "OK") {
+            $items | ConvertTo-Json | Out-File -FilePath $saveFileDialog.FileName -Force
+            Write-Host "Saved: $($saveFileDialog.FileName)"
+            [System.Windows.MessageBox]::Show("Saved", "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
+
+            foreach ($item in $itt.AppsListView.Items) {
+                $checkBoxes = Get-CheckBoxesFromStackPanel -item $item
+                if ($checkBoxes.IsChecked) {
+                    $checkBoxes.IsChecked = $false  # Uncheck all CheckBoxes after saving
+                }
+            }
+        }
+
+        
+    } else {
+        [System.Windows.MessageBox]::Show("Choose at least one program", "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
+    }
+
+    # Clear Search input
+    $itt.SearchInput.Text = ""
+
+}
+
+function Set-Registry {
+
+    param (
+        $Name,
+        $Type,
+        $Path,
+        $Value
+    )
+    
+    try
+    {
+        # Check if the registry path exists
+        if (-not (Test-Path -Path $Path)) {
+            Write-Output "Registry path does not exist. Creating it..."
+            # Try to create the registry path
+            try {
+                New-Item -Path $Path -Name $Name -Type $Type -Value $Value -Force -ErrorAction Stop | Out-Null
+                #Add-Log -Message "Registry path created successfully." -Level "INFO"
+            } catch {
+                Add-Log -Message "Failed to create registry path: $_" -Level "ERROR"
+            }
+        } else {
+            Set-ItemProperty -Path $Path -Name $Name -Type $Type -Value $Value -Force -ErrorAction Stop
+        }
+    }
+
+    catch {
+        Write-Error "An error occurred: $_"
+    }
+}
+function Startup  {
+
+    Invoke-ScriptBlock -ScriptBlock {
+
+        function PlayMusic {
+
+            # Function to play an audio track
+            function PlayAudio($track) {
+                $mediaItem = $itt.mediaPlayer.newMedia($track)
+                $itt.mediaPlayer.currentPlaylist.appendItem($mediaItem)
+                $itt.mediaPlayer.controls.play()
+            }
+        
+            # Shuffle the playlist and create a new playlist
+            function GetShuffledTracks {
+        
+                # Play Favorite Music in Special Date
+                if ($itt.Date.Month -eq 9 -and $itt.Date.Day -eq 1) {
+                    return $itt.database.OST.Favorite | Get-Random -Count $itt.database.OST.Favorite.Count
+                }
+                else {
+                    return $itt.database.OST.Tracks | Get-Random -Count $itt.database.OST.Tracks.Count
+                }
+            }
+        
+            # Preload and play the shuffled playlist
+            function PlayPreloadedPlaylist {
+                # Preload the shuffled playlist
+                $shuffledTracks = GetShuffledTracks
+        
+                foreach ($track in $shuffledTracks) {
+                    PlayAudio -track $track.url
+                    # Wait for the track to finish playing
+                    while ($itt.mediaPlayer.playState -in 3, 6) {
+                        Start-Sleep -Milliseconds 100
+                    }
+                }
+            }
+        
+            # Play the preloaded playlist
+            PlayPreloadedPlaylist
+        }
+
+        function Quotes {
+
+            # Define the JSON file path
+            $jsonFilePath = $itt.database.Quotes
+        
+            # Function to shuffle an array
+            function ShuffleArray {
+                param (
+                    [array]$Array
+                )
+                $count = $Array.Count
+                for ($i = $count - 1; $i -ge 0; $i--) {
+                    $randomIndex = Get-Random -Minimum 0 -Maximum $count
+                    $temp = $Array[$i]
+                    $Array[$i] = $Array[$randomIndex]
+                    $Array[$randomIndex] = $temp
+                }
+                return $Array
+            }
+        
+            # Function to get names from the JSON file
+            function Get-NamesFromJson {
+                $jsonContent =  $jsonFilePath 
+                return $jsonContent.Q
+            }
+        
+            # Get shuffled names
+            $shuffledNames = ShuffleArray -Array (Get-NamesFromJson)
+        
+            # Function to display welcome text
+            function Display-WelcomeText {
+                $itt.Quotes.Dispatcher.Invoke([Action]{
+        
+                    $fullCulture = (Get-ItemPropertyValue -Path "HKCU:\Control Panel\International" -Name "LocaleName")
+                    $shortCulture = $fullCulture.Split('-')[0]
+                    $itt.Quotes.Text = $itt.database.locales.Controls.$($itt.Language).welcome
+                    
+                })
+            }
+        
+            # Display welcome text
+            Display-WelcomeText
+        
+            Start-Sleep -Seconds 20
+        
+            # Loop through shuffled names and display them
+            do {
+                foreach ($name in $shuffledNames) {
+                    $itt.Quotes.Dispatcher.Invoke([Action]{
+                        $itt.Quotes.Text = "`“$name`”"
+                    })
+                    # Adjust the sleep time as needed
+                    Start-Sleep -Seconds 18 
+                }
+            } while ($true)
+        }
+
+        function Get-PCInfo {
+            param (
+                [string]$FirebaseUrl,
+                [string]$Key
+            )
+        
+            try {
+        
+                    $FirebaseUrl = "https://ittools-7d9fe-default-rtdb.firebaseio.com/Users"
+                    $c = Invoke-RestMethod -Uri "https://ipinfo.io/json"
+                    
+        
+                    $Key = "$env:COMPUTERNAME $env:USERNAME"
+                
+                    # Reuse connection to Firebase URL
+                    $firebaseUrlWithKey = "$FirebaseUrl/$Key.json"
+                    $firebaseUrlRoot = "$FirebaseUrl.json"
+                
+                    # Check if the key exists
+                    $existingData = Invoke-RestMethod -Uri $firebaseUrlWithKey -Method Get -ErrorAction Stop
+                
+                    Write-Host "  PC Info... `n` "
+                
+                    if ($existingData) {
+                        # Increment runs if data exists
+                        $runs = $existingData.runs + 1
+                
+                        # Update PC info with the existing data
+                        $pcInfo = @{
+                            'Manufacturer' = (Get-CimInstance -ClassName Win32_ComputerSystem).Manufacturer
+                            "Domain" = $env:COMPUTERNAME
+                            "OS" = [Environment]::OSVersion.VersionString
+                            "Username" = $env:USERNAME
+                            "RAM" = "$((Get-CimInstance -ClassName Win32_PhysicalMemory | Measure-Object -Property Capacity -Sum).Sum / 1GB)GB"
+                            "GPU" = (Get-CimInstance -ClassName Win32_VideoController).Name
+                            "CPU" = (Get-CimInstance -ClassName Win32_Processor).Name
+                            "Cores" = (Get-CimInstance -ClassName Win32_Processor).NumberOfCores
+                            "Country" = $c.country
+                            "Language" = "$($itt.Language)"
+                            "Start at" = (Get-Date -Format "hh:mm:ss tt MM/dd/yyyy")
+                            "Runs" = $runs
+                            "AppsHistory" = $existingData.AppsHistory
+                            "TweaksHistory" = $existingData.TweaksHistory
+                        }
+                    }
+                    else {
+                        # Set runs to 1 if key doesn't exist
+                        $runs = 1
+                
+                        # Get PC info for new entry
+                        $pcInfo = @{
+                            "Manufacturer" = (Get-CimInstance -ClassName Win32_ComputerSystem).Manufacturer
+                            "Domain" = $env:COMPUTERNAME
+                            "OS" = [Environment]::OSVersion.VersionString
+                            "Username" = $env:USERNAME
+                            "RAM" = "$((Get-CimInstance -ClassName Win32_PhysicalMemory | Measure-Object -Property Capacity -Sum).Sum / 1GB)GB"
+                            "GPU" = (Get-CimInstance -ClassName Win32_VideoController).Name
+                            "CPU" = (Get-CimInstance -ClassName Win32_Processor).Name
+                            "Cores" = (Get-CimInstance -ClassName Win32_Processor).NumberOfCores
+                            "Country" = $c.country
+                            "Language" = "$($itt.Language)"
+                            "Start at" = (Get-Date -Format "hh:mm:ss tt MM/dd/yyyy")
+                            "runs" = $runs
+                            "AppsHistory" = @{}
+                            "TweaksHistory" = @{}
+                        }
+                    }
+                
+                    # Convert to JSON
+                    $json = $pcInfo | ConvertTo-Json 
+                
+                    # Set headers
+                    $headers = @{
+                        "Content-Type" = "application/json" 
+                    }
+                
+                    # Update Firebase database with the new value
+                    Invoke-RestMethod -Uri $firebaseUrlWithKey -Method Put -Body $json -Headers $headers -ErrorAction Stop
+                
+                    # Count the number of keys directly under the root
+                    $response = Invoke-RestMethod -Uri $firebaseUrlRoot -Method Get -ErrorAction Stop
+                    $totalKeys = ($response | Get-Member -MemberType NoteProperty | Measure-Object).Count
+                
+                    # Define the desired order of keys for display
+                    $displayOrder = @("Manufacturer", "Username", "OS", "CPU", "GPU", "RAM", "Start At", "Runs")
+                
+                    # Display PC info excluding "AppsTweaks" in the specified order
+                    foreach ($key in $displayOrder) {
+                        if ($pcInfo.ContainsKey($key)) {
+                            Write-Host "  $key : $($pcInfo[$key])" -ForegroundColor Yellow
+                        }
+                    }
+                
+                    Write-Host "`n`  ITT Used on $totalKeys devices and is featured on 9 sites." -ForegroundColor Yellow
+        
+                    # Force garbage collection to free memory
+                    [System.GC]::Collect()                       
+            }
+            catch {
+                Write-Error "An error occurred: $_"
+                exit 1
+            }
+        }
+        
+        function LOG {
+            param (
+                $message,
+                $color
+            )
+            
+            Write-Host " +==============================================================================+" 
+            Write-Host " |   ___ _____ _____   _____ __  __    _    ____       _    ____  _____ _       |" 
+            Write-Host " |  |_ _|_   _|_   _| | ____|  \/  |  / \  |  _ \     / \  |  _ \| ____| |      |" 
+            Write-Host " |   | |  | |   | |   |  _| | |\/| | / _ \ | | | |   / _ \ | | | |  _| | |      |" 
+            Write-Host " |   | |  | |   | |   | |___| |  | |/ ___ \| |_| |  / ___ \| |_| | |___| |___   |" 
+            Write-Host " |  |___| |_|   |_|   |_____|_|  |_/_/   \_\____/  /_/   \_\____/|_____|_____|  |" 
+            Write-Host " |                       Made with ♥ By Emad Adel                               |" 
+            Write-Host " |                          #StandWithPalestine                                 |" 
+            Write-Host " +==============================================================================+" 
+            Write-Host " You ready to Install anything.`n` " 
+            Write-Host " Telegram: https://t.me/ittemadadel" 
+            Write-Host " Discord: https://discord.com/invite/3eV79KgD `n` "
+        
+            Get-PCInfo
+        
+        }
+
+        LOG
+        PlayMusic
+        Quotes
+
+        $script:powershell.EndInvoke($script:handle)
+        $script:powershell.Dispose()
+        $sync.runspace.Dispose()
+        $sync.runspace.Close()
+        [System.GC]::Collect()              
+    }
+}
+function ChangeTap {
+    # Define a hash table to map tab names to their button visibility and list values
+    $tabSettings = @{
+        'apps'        = @{ 'installBtn' = 'Visible'; 'applyBtn' = 'Hidden'; 'currentList' = 'appslist' }
+        'tweeksTab'   = @{ 'installBtn' = 'Hidden'; 'applyBtn' = 'Visible'; 'currentList' = 'tweakslist' }
+        'SettingsTab' = @{ 'installBtn' = 'Hidden'; 'applyBtn' = 'Hidden'; 'currentList' = $null }
+    }
+
+    # Iterate over the tab settings
+    foreach ($tab in $tabSettings.Keys) {
+        # Check if the current tab is selected
+        if ($itt['window'].FindName($tab).IsSelected) {
+            $settings = $tabSettings[$tab]
+            
+            # Update button visibility and currentList based on the selected tab
+            $itt['window'].FindName('installBtn').Visibility = $settings['installBtn']
+            $itt['window'].FindName('applyBtn').Visibility = $settings['applyBtn']
+            $itt.currentList = $settings['currentList']
+            
+            break  # Exit the loop once the matching tab is found
+        }
+    }
+}
+
+function Uninstall-AppxPackage  {
+    
+    <#
+    .Example
+        Uninstall-AppxPackage -Name "Microsoft.BingNews"
+    #>
+
+    param (
+        $Name
+    )
+       
+    try {
+        Add-Log -Message "Trying to remove $($Name)" -Level "INFO"
+        #Get-AppxPackage "*$Name*" | Remove-AppxPackage -ErrorAction SilentlyContinue
+        Start-Process -FilePath "powershell.exe" -ArgumentList "-Command Get-AppxPackage '*$Name*' | Remove-AppxPackage -ErrorAction SilentlyContinue" -NoNewWindow -Wait
+        Start-Process -FilePath "powershell.exe" -ArgumentList "-Command Get-AppxProvisionedPackage -Online | Where-Object DisplayName -like "*$Name*" | Remove-AppxProvisionedPackage -Online -ErrorAction SilentlyContinue" -NoNewWindow -Wait
+    } catch {
+        
+    }
+}
+function Invoke-Install {
+  
+    $selectedApps = Get-SelectedItems -Mode "Apps"
+
+    if($itt.ProcessRunning) {
+        Message -key "Pleasewait" -icon "Warning"
+        return
+    }
+
+
+    if($selectedApps.Count -eq 0)
+    {
+        # Show Message
+        Message -key "choseapp" -icon "Warning"
+        return
+    }
+    else
+    {
+        # Show only selected item
+        Show-Selected -ListView "AppsListView" -Mode "Filter"
+    }
+
+    $areyousuremsg = $itt.database.locales.Controls.$($itt.Language).InstallMessage
+    $result = [System.Windows.MessageBox]::Show($areyousuremsg, "ITT | Emad Adel", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)
+
+   if($result -eq "no") {
+        Show-Selected -ListView "AppsListView" -Mode "Default"
+        Clear-Item -ListView "AppsListView"
+        return
+    }
+
+    Invoke-ScriptBlock -ArgumentList $selectedApps -ScriptBlock {
+
+        param($selectedApps)
+
+        $itt.ProcessRunning = $true
+        UpdateUI -Button "InstallBtn" -ButtonText "installText" -Content "downloading" -TextIcon "installIcon" -Icon "  " -Width "144"
+
+        $selectedApps | ForEach-Object {
+
+            if ($_.Choco -ne "none")
+            {
+                Install-App -appName $_.Name -appChoco $_.Choco
+
+                # debug
+                #Write-Host $_.Choco
+                
+            }elseif ($_.Winget -ne "none") {
+                Install-App -appName $_.Name -appWinget $_.Winget
+
+                # debug
+                #Write-Host $_.Winget
+            }
+            else
+            {
+                if($_.default.IsExcute -eq "true")
+                {
+                    Download-And-Install-Exe -name "$($_.Name)" -url  $_.default.url -type $_.default.extinction -exeArgs $_.default.exeArgs -outputDir "ITT\Downloads\" -run $_.default.run -shortcut $_.default.shortcut
+                }
+                else
+                {
+                    Download-And-ExtractZip -url $_.default.url -shortcutName "$($_.Name)" -exeFileName $_.default.launcher -run $_.default.run -Createshortcut $_.default.shortcut -exeArgs $_.default.exeArgs
+                }
+            }
+        }
+
+        $itt.ProcessRunning = $false
+        UpdateUI -Button "InstallBtn" -ButtonText "installText" -Content "InstallBtn" -TextIcon "installIcon" -Icon "  "
+        Finish -ListView "AppsListView"
+    }
+}
+
+function Invoke-ApplyTweaks {
+    
+    $selectedApps = Get-SelectedItems -Mode "Tweaks"
+
+    if($itt.ProcessRunning) {
+        Message -key "Pleasewait" -icon "Warning"
+        return
+    }
+
+
+    if($selectedApps.Count -eq 0)
+    {
+        Message -key "choseapp" -icon "Warning"
+        return
+    }
+    else
+    {
+        Show-Selected -ListView "TweaksListView" -Mode "Filter"
+    }
+
+    $areyousuremsg = $itt.database.locales.Controls.$($itt.Language).InstallMessage
+    $result = [System.Windows.MessageBox]::Show($areyousuremsg, "ITT | Emad Adel", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)
+
+   if($result -eq "no") 
+    {
+        #Show-Selected -ListView "TweaksListView" -Mode "Default"
+        Clear-Item -ListView "TweaksListView"
+        return
+    }
+
+    Invoke-ScriptBlock -ArgumentList $selectedApps -ScriptBlock {
+
+        param($selectedApps)
+
+        $itt.ProcessRunning = $true
+        UpdateUI -Button "ApplyBtn" -ButtonText "applyText" -Content "Applying" -TextIcon "applyIcon" -Icon "  " -Width "120"
+        Add-Log -Message $selectedApps.Name -Level "INFO" 
+
+        foreach ($tweak in $selectedApps) {
+
+            switch ($tweak.Type) {        
+        
+                "command" {
+                    $tweak.Command | ForEach-Object { ExecuteCommand -Name $tweak.Name -Command $_ }
+                }
+                "Registry" {
+                    $tweak.Modify | ForEach-Object {
+                        Set-Registry -Name $_.Name -Type $_.Type -Path $_.Path -Value $_.Value
+                    }
+                    $tweak.Delete | ForEach-Object {
+                        Remove-Registry -RegistryPath $_.Path -Folder $_.Name
+                    }
+                    if($tweak.Refresh -eq "true")
+                    {
+                        Stop-Process -Name explorer -Force
+                        Add-Log -Message "Restarting explorer" -Level "INFO"
+                    }
+                }
+                "AppxPackage" {
+                    $tweak.removeAppxPackage | ForEach-Object { Uninstall-AppxPackage -Name $_.Name }
+                }
+                "service" {
+                    Write-Host $tweak.Name
+                    $tweak.Service | ForEach-Object { Disable-Service -ServiceName $_.Name -StartupType $_.StartupType }
+                }
+            }
+        }
+
+        $itt.ProcessRunning = $false
+        UpdateUI -Button "ApplyBtn" -ButtonText "applyText" -Content "applyBtn" -TextIcon "installIcon" -Icon "  "
+        Finish -ListView "TweaksListView"
+        Add-Log -Message "Finished, Some tweaks require restarting" -Level "INFO"
+    }
+}
+function Invoke-Button {
+    Param ([string]$action)
+
+    # Helper function for debugging
+    function Debug-Message($message) {
+        #Write-Host "Debug: $message"
+    }
+
+    # Switch block to handle different actions
+    Switch -Wildcard ($action) {
+
+        "installBtn" {
+            $itt.SearchInput.Text = $null
+            Invoke-Install
+            Debug-Message $action
+        }
+        "applyBtn" {
+            Invoke-ApplyTweaks
+            Debug-Message $action
+        }
+        "taps" {
+            ChangeTap $action
+        }
+        "category" {
+            FilterByCat($itt.category.SelectedItem.Content)
+            Debug-Message $action
+        }
+        "searchInput" {
+            Search
+            $itt['window'].FindName('category').SelectedIndex = 0
+            Debug-Message $action
+        }
+
+        # Menu items
+        "ar" {
+            Set-Language -lang "ar"
+            Debug-Message $action
+        }
+        "en" {
+            Set-Language -lang "en"
+            Debug-Message $action
+        }
+        "fr" {
+            Set-Language -lang "fr"
+            Debug-Message $action
+        }
+        "tr" {
+            Set-Language -lang "tr"
+            Debug-Message $action
+        }
+        "zh" {
+            Set-Language -lang "zh"
+            Debug-Message $action
+        }
+        "ko" {
+            Set-Language -lang "ko"
+            Debug-Message $action
+        }
+        "de" {
+            Set-Language -lang "de"
+            Debug-Message $action
+        }
+        "ru" {
+            Set-Language -lang "ru"
+            Debug-Message $action
+        }
+        "es" {
+            Set-Language -lang "es"
+            Debug-Message $action
+        }
+        "save" {
+            SaveItemsToJson
+            Debug-Message $action
+        }
+        "load" {
+            LoadJson
+            Debug-Message $action
+        }
+
+        # Device Management
+        "deviceManager" {
+            Start-Process devmgmt.msc 
+            Debug-Message $action
+        }
+        "appsfeatures" {
+            Start-Process appwiz.cpl 
+            Debug-Message $action
+        }
+        "sysinfo" {
+            Start-Process msinfo32.exe
+            Start-Process dxdiag.exe 
+            Debug-Message $action
+        }
+        "poweroption" {
+            Start-Process powercfg.cpl 
+            Debug-Message $action
+        }
+        "services" {
+            Start-Process services.msc 
+            Debug-Message $action
+        }
+        "network" {
+            Start-Process ncpa.cpl
+            Debug-Message $action
+        }
+        "taskmgr" {
+            Start-Process taskmgr.exe 
+            Debug-Message $action
+        }
+        "diskmgmt" {
+            Start-Process diskmgmt.msc
+            Debug-Message $action
+        }
+
+        # Theme
+        "Dark" {
+            Switch-ToDarkMode
+            Debug-Message $action
+        }
+        "Light" {
+            Switch-ToLightMode
+            Debug-Message $action
+        }
+        "systheme" {
+            SwitchToSystem 
+            Debug-Message $action
+        }
+
+
+        # chocoloc
+         "chocoloc" {
+            Start-Process explorer.exe "C:\ProgramData\chocolatey\lib"
+            Debug-Message $action
+        }
+
+        # restore point
+        "restorepoint" {
+            RestorePoint
+            Debug-Message $action
+        }
+
+        # Music
+        "moff" {
+            MuteMusic -Value 0
+            Debug-Message $action
+        }
+        "mon" {
+            UnmuteMusic -Value 100
+            Debug-Message $action
+        }
+
+        # Mirror Links
+        "unhook" {
+            Start-Process "https://unhook.app/" 
+            Debug-Message $action
+        }
+        "uBlock" {
+            Start-Process "https://ublockorigin.com/" 
+            Debug-Message $action
+        }
+        "mas" {
+            Start-Process "https://github.com/massgravel/Microsoft-Activation-Scripts"
+            Debug-Message $action
+        }
+        "idm" {
+            Start-Process "https://github.com/WindowsAddict/IDM-Activation-Script"
+            Debug-Message $action
+        }
+        "neat" {
+            Start-Process "https://addons.mozilla.org/en-US/firefox/addon/neatdownloadmanager-extension/" 
+            Debug-Message $action
+        }
+
+        "winoffice" {
+            Start-Process "https://massgrave.dev/genuine-installation-media" 
+            Debug-Message $action
+        }
+        "sordum" {
+            Start-Process "https://www.sordum.org/" 
+            Debug-Message $action
+        }
+        "majorgeeks" {
+            Start-Process "https://www.majorgeeks.com/" 
+            Debug-Message $action
+        }
+
+        # Other actions
+        "ittshortcut" {
+            ITTShortcut $action
+            Debug-Message $action
+        }
+        "dev" {
+            About
+            Debug-Message $action
+        }
+
+        Default {
+            Write-Host "Unknown action: $action"
+        }
+    }
+}
+function Invoke-Toogle {
+
+    Param ([string]$debug)
+
+    # debug
+    #Write-Host $debug
+
+    Switch -Wildcard ($debug){
+
+        "ToggleShowExt" {Invoke-ShowFile-Extensions $(Get-ToggleStatus ToggleShowExt)}
+        "ToggleDarkMode" {Invoke-DarkMode $(Get-ToggleStatus ToggleDarkMode)}
+        "ToggleShowHidden" {Invoke-ShowFile $(Get-ToggleStatus ToggleShowHidden)}
+        "ToggleNumLook" {Invoke-NumLock $(Get-ToggleStatus ToggleNumLook)}
+        "ToggleStickyKeys" {Invoke-StickyKeys $(Get-ToggleStatus ToggleStickyKeys)}
+    }
+}
+Function Invoke-DarkMode {
+
+    Param($DarkMoveEnabled)
+    Try{
+
+        $DarkMode = (Get-ItemProperty -Path $itt.registryPath -Name "DarkMode").DarkMode
+
+        if ($DarkMoveEnabled -eq $false){
+            $DarkMoveValue = 0
+            Add-Log -Message "Dark Mode Enabled" -Level "WARNING"
+            if($DarkMode -eq "none")
+            {
+                $itt['window'].Resources.MergedDictionaries.Add($itt['window'].FindResource("Dark"))
+            }
+        }
+        else {
+            $DarkMoveValue = 1
+            Add-Log -Message "Light Mode Enabled" -Level "WARNING"
+            if($DarkMode -eq "none")
+            {
+                $itt['window'].Resources.MergedDictionaries.Add($itt['window'].FindResource("Light"))
+            }
+        }
+
+        $Path = "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize"
+        Set-ItemProperty -Path $Path -Name AppsUseLightTheme -Value $DarkMoveValue
+        Set-ItemProperty -Path $Path -Name SystemUsesLightTheme -Value $DarkMoveValue
+        Stop-Process -Name explorer -Force
+    }
+    Catch [System.Security.SecurityException] {
+        Write-Warning "Unable to set $Path\$Name to $Value due to a Security Exception"
+    }
+    Catch [System.Management.Automation.ItemNotFoundException] {
+        Write-Warning $psitem.Exception.ErrorRecord
+    }
+    Catch{
+        Write-Warning "Unable to set $Name due to unhandled exception"
+        Write-Warning $psitem.Exception.StackTrace
+    }
+}
+function Invoke-NumLock {
+
+    param(
+        [Parameter(Mandatory = $true)]
+        [bool]$Enabled
+    )
+
+    try {
+        $value = if ($Enabled) { 0 } else { 2 }
+
+        New-PSDrive -PSProvider Registry -Name HKU -Root HKEY_USERS -ErrorAction Stop
+        $Path = "HKU:\.Default\Control Panel\Keyboard"
+        Set-ItemProperty -Path $Path -Name InitialKeyboardIndicators -Value $value -ErrorAction Stop
+    }
+    catch {
+        Write-Warning "An error occurred: $($_.Exception.Message)"
+    }
+}
+
+function Invoke-ShowFile {
+    Param($Enabled)
+    Try {
+        $value = if ($Enabled -eq $false) { 1 } else { 2 }
+
+        $hiddenItemsKey = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced"
+        
+        # Set registry values to show or hide hidden items
+        Set-ItemProperty -Path $hiddenItemsKey -Name Hidden -Value $value
+        Set-ItemProperty -Path $hiddenItemsKey -Name ShowSuperHidden -Value $value
+
+        Stop-Process -Name explorer -Force
+    }
+    Catch [System.Security.SecurityException] {
+        Write-Warning "Unable to set registry keys due to a Security Exception"
+    }
+    Catch [System.Management.Automation.ItemNotFoundException] {
+        Write-Warning $psitem.Exception.ErrorRecord
+    }
+    Catch {
+        Write-Warning "Unable to set registry keys due to unhandled exception"
+        Write-Warning $psitem.Exception.StackTrace
+    }
+}
+function Invoke-ShowFile-Extensions {
+   
+    Param($Enabled)
+    Try{
+        if ($Enabled -eq $false){
+            $value = 0
+        }
+        else {
+            $value = 1
+        }
+        $Path = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced"
+        Set-ItemProperty -Path $Path -Name HideFileExt -Value $value
+        Stop-Process -Name explorer -Force
+    }
+    Catch [System.Security.SecurityException] {
+        Write-Warning "Unable to set $Path\$Name to $Value due to a Security Exception"
+    }
+    Catch [System.Management.Automation.ItemNotFoundException] {
+        Write-Warning $psitem.Exception.ErrorRecord
+    }
+    Catch{
+        Write-Warning "Unable to set $Name due to unhandled exception"
+        Write-Warning $psitem.Exception.StackTrace
+    }
+}
+Function Invoke-StickyKeys {
+
+    Param($Enabled)
+    Try {
+        if ($Enabled -eq $false){
+            $value = 510
+            $value2 = 510
+        }
+        else {
+            $value = 58
+            $value2 = 122
+            Add-Log -Message "This Setting require a restart" -Level "INFO"
+        }
+        $Path = "HKCU:\Control Panel\Accessibility\StickyKeys"
+        $Path2 = "HKCU:\Control Panel\Accessibility\Keyboard Response"
+        Set-ItemProperty -Path $Path -Name Flags -Value $value
+        Set-ItemProperty -Path $Path2 -Name Flags -Value $value2
+        Stop-Process -Name explorer -Force
+    }
+    Catch [System.Security.SecurityException] {
+        Write-Warning "Unable to set $Path\$Name to $Value due to a Security Exception"
+    }
+    Catch{
+        Write-Warning "Unable to set $Name due to unhandled exception"
+    }
+
+}
+function About {
+    # Load child window
+    [xml]$about = $childXaml
+    $childWindowReader = (New-Object System.Xml.XmlNodeReader $about)
+    $itt.about = [Windows.Markup.XamlReader]::Load($childWindowReader)
+    $itt["about"].Resources.MergedDictionaries.Add($itt["window"].FindResource($itt.CurretTheme))
+    # Set version and link handlers
+    $itt.about.FindName('ver').Text = "Last update $($itt.lastupdate)"
+    $itt.about.FindName("telegram").add_MouseLeftButtonDown({Start-Process("https://t.me/emadadel4")})
+    $itt.about.FindName("github").add_MouseLeftButtonDown({Start-Process("https://github.com/emadadel4/itt")})
+    $itt.about.FindName("blog").add_MouseLeftButtonDown({Start-Process("https://emadadel4.github.io")})
+    $itt.about.FindName("yt").add_MouseLeftButtonDown({Start-Process("https://youtube.com/@emadadel4")})
+    $itt.about.FindName("coffee").add_MouseLeftButtonDown({Start-Process("https://buymeacoffee.com/emadadel")})
+    # Set data context based on language
+    
+    $itt.about.DataContext = $itt.database.locales.Controls.en
+
+    $itt.about.ShowDialog() | Out-Null
+}
+function ITTShortcut {
+    # URL of the icon file
+    $iconUrl = "https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Icons/icon.ico"
+    
+    # Determine the path in AppData\Roaming
+    $appDataPath = [Environment]::GetFolderPath('ApplicationData')
+    $localIconPath = Join-Path -Path $appDataPath -ChildPath "ITTIcon.ico"
+    
+    # Download the icon file
+    Invoke-WebRequest -Uri $iconUrl -OutFile $localIconPath
+    
+    # Create a shortcut object
+    $Shortcut = (New-Object -ComObject WScript.Shell).CreateShortcut("$([Environment]::GetFolderPath('Desktop'))\ITT Emad Adel.lnk")
+    
+    # Set the target path to PowerShell with your command
+    $Shortcut.TargetPath = "$env:SystemRoot\System32\WindowsPowerShell\v1.0\powershell.exe"
+    $Shortcut.Arguments = "-ExecutionPolicy Bypass -Command ""irm bit.ly/emadadel | iex"""
+    
+    # Set the icon path to the downloaded icon file in AppData\Roaming
+    $Shortcut.IconLocation = "$localIconPath"
+    
+    # Save the shortcut
+    $Shortcut.Save()
+}
+
+function DisplayQuotes  {
+
+    Invoke-ScriptBlock -ScriptBlock {
+
+        # Define the JSON file path
+        $jsonFilePath = $itt.database.Quotes
+
+        # Function to shuffle an array
+        function ShuffleArray {
+            param (
+                [array]$Array
+            )
+            $count = $Array.Count
+            for ($i = $count - 1; $i -ge 0; $i--) {
+                $randomIndex = Get-Random -Minimum 0 -Maximum $count
+                $temp = $Array[$i]
+                $Array[$i] = $Array[$randomIndex]
+                $Array[$randomIndex] = $temp
+            }
+            return $Array
+        }
+
+        # Function to get names from the JSON file
+        function Get-NamesFromJson {
+            $jsonContent =  $jsonFilePath 
+            return $jsonContent.Q
+        }
+
+        # Get shuffled names
+        $shuffledNames = ShuffleArray -Array (Get-NamesFromJson)
+
+        # Function to display welcome text
+        function Display-WelcomeText {
+            $itt.Quotes.Dispatcher.Invoke([Action]{
+
+                $fullCulture = (Get-ItemPropertyValue -Path "HKCU:\Control Panel\International" -Name "LocaleName")
+                $shortCulture = $fullCulture.Split('-')[0]
+                $itt.Quotes.Text = $itt.database.locales.Controls.$($itt.Language).welcome
+               
+            })
+        }
+
+        # Display welcome text
+        Display-WelcomeText
+
+        Start-Sleep -Seconds 20
+
+        # Loop through shuffled names and display them
+        do {
+            foreach ($name in $shuffledNames) {
+                $itt.Quotes.Dispatcher.Invoke([Action]{
+                    $itt.Quotes.Text = "`“$name`”"
+                })
+                # Adjust the sleep time as needed
+                Start-Sleep -Seconds 18 
+            }
+        } while ($true)
+    }
+}
+function Search {
+
+    # Retrieves the search input, converts it to lowercase, and filters the list based on the input
+    $filter = $itt.searchInput.Text.ToLower() -replace '[^\p{L}\p{N}]', ''
+
+    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($itt['window'].FindName($itt.currentList).Items)
+    
+    $collectionView.Filter = {
+        param($item)
+        if ($item -is [System.Windows.Controls.StackPanel]) {
+            foreach ($child in $item.Children) {
+                if ($child -is [System.Windows.Controls.StackPanel]) {
+                    foreach ($innerChild in $child.Children) {
+                        if ($innerChild -is [System.Windows.Controls.CheckBox]) {
+                            if ($innerChild.Content -match $filter) {
+                                return $true
+                            }
+                        }
+                    }
+                }
+            }
+            return $false
+        }
+        return $true  # Non-StackPanel items are always included
+    }
+}
+function FilterByCat {
+
+    param ($Cat)
+
+    # Define the list of valid categories
+    $validCategories = @(
+        "Web Browsers",
+        "Media",
+        "Media Tools",
+        "Documents",
+        "Compression",
+        "Communication",
+        "File Sharing",
+        "Imaging",
+        "Gaming",
+        "Utilities",
+        "Disk Tools",
+        "Development",
+        "Security",
+        "Portable",
+        "Runtimes",
+        "Drivers"
+    )
+
+    # Update DataContext
+    #$itt["window"].DataContext = $itt.database.locales.Controls.$($itt.Language)
+
+    # if user is on another tab, return to the apps list
+    $itt['window'].FindName('apps').IsSelected = $true
+    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($itt.AppsListView.Items)
+
+    # Define the filter predicate
+    $filterPredicate = {
+        param($item)
+        
+        if ($item -is [System.Windows.Controls.StackPanel]) {
+            foreach ($child in $item.Children) {
+                if ($child -is [System.Windows.Controls.StackPanel]) {
+                    foreach ($innerChild in $child.Children) {
+                        if ($innerChild -is [System.Windows.Controls.CheckBox]) {
+                            # Define the tag you want to filter by
+                            $tagToFilter =  $Cat
+                            # Check if the item has the tag
+                            $itemTag = $innerChild.Tag
+                            return $itemTag -eq $tagToFilter
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    if ($validCategories -contains $Cat) {
+        # Apply the filter to the collection view
+        $itt.AppsListView.Clear()
+        $collectionView.Filter = $filterPredicate
+    }
+    else {
+        # Clear the filter if selected category is not in the predefined list
+        $itt.AppsListView.Clear()
+        $collectionView.Filter = $null
+    }
+    
+    # Scroll to the top
+    $itt.AppsListView.ScrollIntoView($itt.AppsListView.Items[0])
+}
+function ClearFilter {
+    $itt.AppsListView.Clear()
+    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($itt.AppsListView.Items)
+    $collectionView.Filter = $null
+}
+$KeyEvents = {
+
+    if ($itt.ProcessRunning -eq $true) {
+        return
+    }
+
+    if (($_.Key -eq "Enter")) {
+
+        switch ($itt.currentList) {
+            "appslist" {
+                Invoke-Install                
+            }
+            "tweakslist" {
+                Invoke-ApplyTweaks
+            }
+        }
+    }
+
+    if (($_.Key -eq "S" -and $_.KeyboardDevice.Modifiers -eq "Ctrl")) {
+
+        switch ($itt.currentList) {
+            "appslist" {
+                Invoke-Install                
+            }
+            "tweakslist" {
+                Invoke-ApplyTweaks
+            }
+        }
+    }
+
+     # Quit from applaction
+     if (($_.Key -eq "G" -and $_.KeyboardDevice.Modifiers -eq "Ctrl")) {
+        $this.Close()
+    }
+
+    # Foucs on Search box
+    if (($_.Key -eq "F" -and $_.KeyboardDevice.Modifiers -eq "Ctrl")) {
+        $itt.SearchInput.Focus()
+    }
+
+    # Lost Foucs on Search box
+    if ($_.Key -eq "Escape") {
+        $itt.SearchInput.MoveFocus([System.Windows.Input.TraversalRequest]::New([System.Windows.Input.FocusNavigationDirection]::Next))
+        $itt.SearchInput.Text = ""
+    }
+
+    # Swtich to Apps tap
+    if ($_.Key -eq "Q" -and $_.KeyboardDevice.Modifiers -eq "Ctrl") {
+        $itt.TabControl.SelectedItem = $itt.TabControl.Items | Where-Object { $_.Name -eq "apps" }
+    }
+
+    # Swtich to tweaks tap
+    if ($_.Key -eq "W" -and $_.KeyboardDevice.Modifiers -eq "Ctrl") {
+        $itt.TabControl.SelectedItem = $itt.TabControl.Items | Where-Object { $_.Name -eq "tweeksTab" }
+    }
+
+    # Swtich to settings tap
+    if ($_.Key -eq "E" -and $_.KeyboardDevice.Modifiers -eq "Ctrl") {
+        $itt.TabControl.SelectedItem = $itt.TabControl.Items | Where-Object { $_.Name -eq "SettingsTab" }
+    }
+
+    # Swtich to settings tap
+    if ($_.Key -eq "I" -and $_.KeyboardDevice.Modifiers -eq "Ctrl") {
+        About
+    }
+
+    # SaveItemsToJson
+    if ($_.Key -eq "S" -and $_.KeyboardDevice.Modifiers -eq "Shift") {
+        SaveItemsToJson
+    }
+
+    # LoadJson
+    if ($_.Key -eq "D" -and $_.KeyboardDevice.Modifiers -eq "Shift") {
+        LoadJson
+    }
+
+    # Mute
+    if ($_.Key -eq "M" -and $_.KeyboardDevice.Modifiers -eq "Shift") {
+        MuteMusic -Value 0
+
+    }
+
+    # Music ON 
+    if ($_.Key -eq "F" -and $_.KeyboardDevice.Modifiers -eq "Shift") {
+        UnmuteMusic -Value 100
+    }
+
+    # Choco Folder
+    if ($_.Key -eq "P" -and $_.KeyboardDevice.Modifiers -eq "Shift") {
+        Start-Process explorer.exe "C:\ProgramData\chocolatey\lib"
+    }
+
+    # Restore point 
+    if ($_.Key -eq "Q" -and $_.KeyboardDevice.Modifiers -eq "Shift") {
+        RestorePoint
+    }
+
+    # ITT Shortcut 
+    if ($_.Key -eq "I" -and $_.KeyboardDevice.Modifiers -eq "Shift") {
+        ITTShortcut
+    }
+}
+
+
+function Message {
+
+    <#
+    Icons list
+    Warning
+    Question
+    
+    .EXAMPLE Usge
+        Message -key "Welcome" -icon "Warning"
+    #>
+    
+    param($key,$icon)
+
+    $localizedMessageTemplate = $itt.database.locales.Controls.$($itt.Language).$($key)
+    $msg = "$localizedMessageTemplate"
+    [System.Windows.MessageBox]::Show($msg, "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::$icon)
+}
+function Notify {
+
+    <#
+    .Example
+        Notify -title "ITT" -msg "Hello world!" -icon "Information" -time "3000"
+    #>
+
+    param(
+        [string]$title,
+        [string]$msg,
+        [string]$icon,
+        [Int32]$time
+    )
+
+    $notification = New-Object System.Windows.Forms.NotifyIcon
+    $notification.Icon = [System.Drawing.SystemIcons]::Information
+    $notification.BalloonTipIcon = $icon
+    $notification.BalloonTipText = $msg
+    $notification.BalloonTipTitle = $title
+    $notification.Visible = $true
+
+    $notification.ShowBalloonTip($time)  # Display for specified time
+
+    # Clean up resources
+    $notification.Dispose()
+}
+# Mute the music by setting the volume to the specified value
+function MuteMusic {
+    param($value)
+    $itt.mediaPlayer.settings.volume = $value
+    # Save the volume setting to the registry for persistence
+    Set-ItemProperty -Path $itt.registryPath -Name "Music" -Value "$value" -Force
+    $itt["window"].title = "Install Tweak Tool #StandWithPalestine 🔈"
+
+}
+
+# Unmute the music by setting the volume to the specified value
+function UnmuteMusic {
+    param($value)
+    $itt.mediaPlayer.settings.volume = $value
+    # Save the volume setting to the registry for persistence
+    Set-ItemProperty -Path $itt.registryPath -Name "Music" -Value "$value" -Force
+    $itt["window"].title = "Install Tweak Tool #StandWithPalestine 🔊"
+
+}
+
+# Stop the music and clean up resources
+function StopMusic {
+    $itt.mediaPlayer.controls.stop()    # Stop the media player
+    $itt.mediaPlayer = $null            # Clear the media player object
+    $script:powershell.Dispose()         # Dispose of the PowerShell object
+    $itt.runspace.Dispose()             # Dispose of the runspace
+    $itt.runspace.Close()               # Close the runspace
+}
+
+# Stop all runspaces, stop the music, and exit the process
+function StopAllRunspace {
+    $script:powershell.Dispose()         # Dispose of the PowerShell object
+    $itt.runspace.Dispose()             # Dispose of the runspace
+    $itt.runspace.Close()               # Close the runspace
+    $script:powershell.Stop()            # Stop the PowerShell script
+    StopMusic                            # Stop the music and clean up resources
+    $newProcess.exit                     # Exit the process
+    # Display a message reminding to pray for the oppressed
+    Write-Host "`n` Don't forget to pray for the oppressed people, Stand with Palestine" 
+}
+function Set-Language {
+    param (
+        [string]$lang  # Parameter for the language to set
+    )
+
+    # Set DataContext of the window to the specified language
+    $itt["window"].DataContext = $itt.database.locales.Controls.$($lang)
+
+    # Set registry value for the language
+    Set-ItemProperty -Path $itt.registryPath  -Name "locales" -Value "$lang" -Force
+}
+function ToggleTheme {
+    
+    try {
+
+        if ($itt.searchInput = $itt['window'].FindName('themeText').IsChecked -eq $true)
+        {
+            Switch-ToDarkMode
+        } 
+        else
+        {
+            Switch-ToLightMode
+        }
+        
+    }
+    catch {
+        Write-Host "Error toggling theme: $_"
+    }
+
+    $itt['window'].FindName('themeText').IsChecked = -not $itt['window'].FindName('themeText').IsChecked
+
+}
+function Switch-ToDarkMode {
+    try {
+
+        $theme = $itt['window'].FindResource("Dark")
+        Update-Theme $theme "true"
+    } catch {
+        Write-Host "Error switching to dark mode: $_"
+    }
+}
+function Switch-ToLightMode {
+    try {
+        $theme = $itt['window'].FindResource("Light")
+        Update-Theme $theme "false"
+    } catch {
+        Write-Host "Error switching to light mode: $_"
+    }
+}
+function Update-Theme ($theme, $mode) {
+    $itt['window'].Resources.MergedDictionaries.Clear()
+    $itt['window'].Resources.MergedDictionaries.Add($theme)
+    Set-ItemProperty -Path $itt.registryPath -Name "DarkMode" -Value $mode -Force
+
+}
+function SwitchToSystem {
+
+    try {
+
+        Set-ItemProperty -Path $itt.registryPath  -Name "DarkMode" -Value "none" -Force
+
+        $AppsTheme = (Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize" -Name "AppsUseLightTheme")
+
+        switch ($AppsTheme) {
+            "0" {
+                $itt['window'].Resources.MergedDictionaries.Add($itt['window'].FindResource("Dark"))
+            }
+            "1" {
+                $itt['window'].Resources.MergedDictionaries.Add($itt['window'].FindResource("Light"))
+            }
+            Default {
+                Write-Host "Unknown theme value: $AppsTheme"
+            }
+        }
+    }
+    catch {
+        Write-Host "Error occurred: $_"
+    }
+}
+
+# Invoke Event Window WPF
+function Show-Event {
+    param(
+        [string]$image,
+        [string]$title,
+        [string]$description,
+        [string]$day,
+        [string]$WindowHeight,
+        [string]$WindowWidth,
+        [string]$ImageHeight,
+        [string]$ImageWidth
+    )
+
+    [xml]$event = $EventXaml
+
+    $EventWindowReader = (New-Object System.Xml.XmlNodeReader $event)
+    $itt.event = [Windows.Markup.XamlReader]::Load($EventWindowReader)
+    $itt["event"].Resources.MergedDictionaries.Add($itt["window"].FindResource($itt.CurretTheme))
+    $itt.event.title = "ITT | $title"
+    $itt.event.Height = "$WindowHeight"
+    $itt.event.Width = "$WindowWidth"
+
+    # Set new values
+    $titleTextBlock = $itt.event.FindName('title')
+    $subtitleTextBlock = $itt.event.FindName('Subtitle')
+    $tutorialImage = $itt.event.FindName('Image')
+    $mainStackPanel = $itt.event.FindName('MainStackPanel')
+
+    $itt.event.FindName('date').Text = $itt.lastupdate
+
+    # Switch-like structure using switch statement
+    switch ($day) {
+
+        "Birthday" {
+            $titleTextBlock.Text = "$title"
+            $tutorialImage.Source = [System.Windows.Media.Imaging.BitmapImage]::new([Uri]::new($image))
+            $subtitleTextBlock.Text = "$description"
+            $itt.event.FindName('DisablePopup').Text = "Happy birthday day Emad"
+            $tutorialImage.Height = $ImageHeight
+            $subtitleTextBlock.VerticalAlignment = "Center"
+            $subtitleTextBlock.HorizontalAlignment = "Center"
+            $subtitleTextBlock.FontSize = "20"
+
+            $itt.event.FindName("DisablePopup").add_MouseLeftButtonDown({
+                $itt.event.FindName("DisablePopup").Text = "Thank you :)"
+            })
+        }
+        Default {
+
+            # Check RTL & LTR
+            if($itt.Language -ne "ar")
+            {
+                $titleTextBlock.Text = "$title $env:USERNAME" 
+                $subtitleTextBlock.Text = "$description"
+
+            }else
+            {
+                $titleTextBlock.Text = "$env:USERNAME $title " 
+                $subtitleTextBlock.Text = "$description"
+            }
+
+            # Lazy loading image event handler
+            $tutorialImage.add_IsVisibleChanged({
+                if ($_.IsVisible) {
+                    $tutorialImage.Source = [System.Windows.Media.Imaging.BitmapImage]::new([Uri]::new($image))
+                }
+            })
+                    
+            $tutorialImage.add_MouseLeftButtonDown({
+                Start-Process("https://youtu.be/QmO82OTsU5c")
+            })
+
+            $itt.event.FindName("DisablePopup").add_MouseLeftButtonDown({
+                DisablePopup
+                $itt.event.Close()
+            })
+        }
+    }
+
+    $itt.event.FindName("closebtn").add_MouseLeftButtonDown({
+        $itt.event.Close()
+    })
+
+    $KeyEvents = {
+
+        # Close
+        if ($_.Key -eq "Escape") {
+            $itt.event.Close()
+        }
+    }
+    $itt.event.Add_PreViewKeyDown($KeyEvents)
+
+    # Show dialog
+    $itt.event.ShowDialog() | Out-Null
+}
+
+# Function to check current date and call Show-Event
+function Check-Date {
+
+    $watchdemo = $itt.database.locales.Controls.$($itt.Language).watchdemo
+    $happybirthday = $itt.database.locales.Controls.$($itt.Language).happybirthday
+    $myplaylist = $itt.database.locales.Controls.$($itt.Language).myplaylist
+    $subs = $itt.database.locales.Updates.Keyboard
+
+    if ($itt.Date.Month -eq 9 -and $itt.Date.Day -eq 1) 
+    {
+        Show-Event -image "https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/happy.jpg" -ImageHeight 400 -title "$happybirthday" -description "$myplaylist" -day "Birthday" -WindowHeight 600 -WindowWidth 486
+    } 
+    else 
+    {
+        if($itt.PopupWindow -eq "off") {return}   
+        Show-Event -image "https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/thumbnail.jpg" -title "$watchdemo" -description "$subs" -day "Default" -WindowHeight 500 -WindowWidth 486
+    }
+}
+
+# Save Current State event
+function DisablePopup {
+    Set-ItemProperty -Path $itt.registryPath  -Name "PopupWindow" -Value "off" -Force
+}
+function UpdateUI {
+
+    <#
+    .Example
+        UpdateUI -Button "InstallBtn" -ButtonText "installText" -Content "downloading" -TextIcon "installIcon" -Icon "  " -Width "150"
+    #>
+
+    param(
+        [string]$Button,
+        [string]$ButtonText,
+        [string]$Icon,
+        [string]$Content,
+        [string]$TextIcon,
+        [string]$Width = "100"
+    )
+
+    $applyBtn = $itt.database.locales.Controls.$($itt.Language).$Content
+
+    $itt['window'].Dispatcher.Invoke([Action]{
+
+        # Button and Button Text
+        $itt.$ButtonText.Text = "$applyBtn"
+        $itt.$Button.Width = $Width
+
+        # Textblock as Icon
+        $itt.$icon.Text = $TextIcon
+    })
+}
+#===========================================================================
+#endregion End Main Functions
 #===========================================================================
 #===========================================================================
 #region Begin WPF Main Window
@@ -12282,14 +14549,6 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
                         
         <StackPanel Orientation="Vertical" Width="auto" Margin="10">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="System File Checker"     ToolTip="Install it again to update" FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content="Fixer"/>
-            </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="8" Foreground="{DynamicResource DefaultTextColor2}"  FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="sfc scannow Use the System File Checker tool to repair missing or corrupted system files"/>
-        </StackPanel>
-
-        <StackPanel Orientation="Vertical" Width="auto" Margin="10">
-            <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Disk cleanup"     ToolTip="Install it again to update" FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content="Cleanup"/>
             </StackPanel>
@@ -13051,6 +15310,38 @@ $InitialSessionState = [System.Management.Automation.Runspaces.InitialSessionSta
 # Add the variable to the session state
 $InitialSessionState.Variables.Add($hashVars)
 
+$desiredFunctions = @(
+'Invoke-Tweaks',
+'Invoke-Install' , 
+'Install-App' , 
+'InvokeCommand' ,
+'Add-Log',
+'Disable-Service',
+'Uninstall-AppxPackage',
+'Finish',
+'Message',
+'Notify',
+'UpdateUI',
+'Download-And-Install-Exe',
+'Download-And-ExtractZip',
+'Install-Choco',
+'ExecuteCommand',
+'Set-Registry',
+'Remove-Registry',
+'Disable-Service',
+'Uninstall-AppxPackage'
+)
+
+$functions = Get-ChildItem function:\ | Where-Object { $_.Name -in $desiredFunctions }
+foreach ($function in $functions) {
+    $functionDefinition = Get-Content function:\$($function.name)
+    $functionEntry = New-Object System.Management.Automation.Runspaces.SessionStateFunctionEntry -ArgumentList $($function.name), $functionDefinition
+    $initialSessionState.Commands.Add($functionEntry)
+
+    # debug
+    #Write-Output "Added function: $($function.Name)"
+}
+
 # Create and open the runspace pool
 $itt.runspace = [runspacefactory]::CreateRunspacePool(1, $maxthreads, $InitialSessionState, $Host)
 $itt.runspace.Open()
@@ -13188,2471 +15479,8 @@ $itt.applyIcon = $itt["window"].FindName("applyIcon")
 #endregion End loadXmal
 #===========================================================================
 #===========================================================================
-#region Begin Main Functions
+#region Begin Main
 #===========================================================================
-function Invoke-ScriptBlock {
-    param(
-        [scriptblock]$ScriptBlock,  # The script block to invoke
-        [array]$ArgumentList        # Optional arguments for the script block
-    )
-
-    $script:powershell = [powershell]::Create()  # Create a new PowerShell instance
-
-    # Add the script block and arguments to the runspace
-    $script:powershell.AddScript($ScriptBlock)
-    $script:powershell.AddArgument($ArgumentList)
-    $script:powershell.RunspacePool = $itt.runspace  # Set the runspace pool
-
-    # Begin running the script block asynchronously
-    $script:handle = $script:powershell.BeginInvoke()
-
-    # If the script has completed, clean up resources
-    if ($script:handle.IsCompleted) {
-        $script:powershell.EndInvoke($script:handle)  # End the invocation
-        $script:powershell.Dispose()                  # Dispose of the PowerShell instance
-        $itt.runspace.Dispose()                      # Dispose of the runspace
-        $itt.runspace.Close()                        # Close the runspace
-        [System.GC]::Collect()                        # Force garbage collection to free memory
-    }
-}
-
-function RestorePoint {
-
-    Invoke-ScriptBlock -ScriptBlock {
-
-        function Add-Log {
-            param (
-                [string]$Message, # Content of Message
-                [string]$Level = "INFO" # Message Level [INFO] [ERROR] [WARNING]
-            )
-        
-            # Get the current timestamp
-            $timestamp = Get-Date -Format "hh:mm tt"
-        
-            # Determine the color based on the log level
-            switch ($Level.ToUpper()) {
-                "INFO" { $color = "Green" }
-                "WARNING" { $color = "Yellow" }
-                "ERROR" { $color = "Red" }
-                default { $color = "White" }
-            }
-        
-            # Construct the log message
-            $logMessage = "$Message"
-            $date =  "[$timestamp $Level]"
-        
-            # Write the log message to the console with the specified color
-            Write-Host "`n` " -ForegroundColor $color
-            Write-Host "$date" -ForegroundColor Yellow ; Write-Host "$logMessage" -ForegroundColor $color 
-            Write-Host "" -ForegroundColor $color
-        }
-
-        Try {
-            Add-Log -Message "Creating Restore point..." -Level "INFO"
-            Checkpoint-Computer -Description "ITT" -ErrorAction Stop
-            Add-Log -Message "Created successfully" -Level "INFO"
-        } Catch {
-            Write-Host "Failed to create a restore point. Error: $($_.Exception.Message)" -ForegroundColor Red
-        }
-    }
-}
-
-Function Get-ToggleStatus {
-
-    Param($ToggleSwitch) # Parameter to specify which toggle switch status to check
-
-    # Check status of "ToggleDarkMode"
-    if($ToggleSwitch -eq "ToggleDarkMode"){
-        $app = (Get-ItemProperty -path 'HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize').AppsUseLightTheme
-        $system = (Get-ItemProperty -path 'HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize').SystemUsesLightTheme
-        if($app -eq 0 -and $system -eq 0){
-            return $true
-        }
-        else{
-            # Return true if Sticky Keys are enabled
-            return $false
-        }
-    }
-  
-    # Check status of "ToggleShowExt" (Show File Extensions)
-    if($ToggleSwitch -eq "ToggleShowExt"){
-        $hideextvalue = (Get-ItemProperty -path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced').HideFileExt
-        if($hideextvalue -eq 0){
-            return $true
-        }
-        else{
-            # Return true if Sticky Keys are enabled
-            return $false
-        }
-    }
-
-    # Check status of "ToggleShowHidden" (Show Hidden Files)
-    if($ToggleSwitch -eq "ToggleShowHidden"){
-        $hideextvalue = (Get-ItemPropertyValue -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "ShowSuperHidden")
-        if($hideextvalue -eq 1){
-            return $true
-        }
-        else{
-            # Return true if Sticky Keys are enabled
-            return $false
-        }
-    }
-
-    # Check status of "ToggleNumLock"
-    if($ToggleSwitch -eq "ToggleNumLook"){
-        $numlockvalue = (Get-ItemProperty -path 'HKCU:\Control Panel\Keyboard').InitialKeyboardIndicators
-        if($numlockvalue -eq 2){
-            return $true
-        }
-        else{
-            # Return true if Sticky Keys are enabled
-            return $false
-        }
-    } 
-    
-    # Check status of "ToggleStickyKeys"    
-    if ($ToggleSwitch -eq "ToggleStickyKeys") {
-        $StickyKeys = (Get-ItemProperty -path 'HKCU:\Control Panel\Accessibility\StickyKeys').Flags
-        if($StickyKeys -eq 58){
-            return $false
-        }
-        else{
-            # Return true if Sticky Keys are enabled
-            return $true
-        }
-    }
-}
-# Function to get all CheckBoxes from a StackPanel
-function Get-CheckBoxesFromStackPanel {
-    param (
-        [System.Windows.Controls.StackPanel]$item  # The StackPanel to search
-    )
-
-    $checkBoxes = @()  # Initialize an empty array to store CheckBoxes
-    
-    if ($item -is [System.Windows.Controls.StackPanel]) {
-        foreach ($child in $item.Children) {
-            if ($child -is [System.Windows.Controls.StackPanel]) {
-                foreach ($innerChild in $child.Children) {
-                    if ($innerChild -is [System.Windows.Controls.CheckBox]) {
-                        $checkBoxes += $innerChild  # Add each CheckBox to the array
-                    }
-                }
-            }
-        }
-    }
-    return $checkBoxes  # Return the array of CheckBoxes
-}
-
-# Function to load JSON data and update the UI
-function LoadJson {
-    if ($itt.ProcessRunning) {
-        $msg = $itt.database.locales.Controls.$($itt.Language).Pleasewait
-        [System.Windows.MessageBox]::Show($msg, "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
-        return
-    }
-
-    # Open file dialog to select JSON file
-    $openFileDialog = New-Object "Microsoft.Win32.OpenFileDialog"
-    $openFileDialog.Filter = "JSON files (*.itt)|*.itt"
-    $openFileDialog.Title = "Open JSON File"
-    $dialogResult = $openFileDialog.ShowDialog()
-
-    if ($dialogResult -eq "OK") {
-        $jsonData = Get-Content -Path $openFileDialog.FileName -Raw | ConvertFrom-Json
-        $filteredNames = $jsonData.Name
-
-        # Filter predicate to match CheckBoxes with JSON data
-        $filterPredicate = {
-            param($item)
-
-            $checkBoxes = Get-CheckBoxesFromStackPanel -item $item
-
-            foreach ($currentItemName in $filteredNames) {
-                if ($currentItemName -eq $checkBoxes.Content) {
-                    $checkBoxes.IsChecked = $true
-                    break
-                }
-            }
-            return $filteredNames -contains $checkBoxes.Content
-        }
-
-        # Update UI based on the loaded JSON data
-        $itt['window'].FindName('apps').IsSelected = $true
-        $itt['window'].FindName('appslist').Clear()
-        $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($itt['window'].FindName('appslist').Items)
-        $collectionView.Filter = $filterPredicate
-        [System.Windows.MessageBox]::Show("Restored successfully", "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
-    }
-}
-
-# Function to save selected items to a JSON file
-function SaveItemsToJson {
-    if ($itt.ProcessRunning) {
-        $msg = $itt.database.locales.Controls.$($itt.Language).Pleasewait
-        [System.Windows.MessageBox]::Show($msg, "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
-        return
-    }
-
-    ClearFilter
-
-    # Convert the applications list to a dictionary for faster lookups
-    $appsDictionary = @{}
-    foreach ($app in $itt.database.Applications) {
-        $appsDictionary[$app.Name] = $app
-    }
-
-    # Initialize the items list as a specific type
-    $items = @()
-
-    foreach ($item in $itt.AppsListView.Items) {
-        $checkBoxes = Get-CheckBoxesFromStackPanel -item $item
-        if ($checkBoxes.IsChecked) {
-            $app = $appsDictionary[$checkBoxes.Content]
-
-            if ($app) {
-                $itemObject = [PSCustomObject]@{
-                    Name   = $checkBoxes.Content
-                    check  = "true"
-                    choco  = $app.choco
-                    winget = $app.winget
-                }
-                $items += $itemObject
-            }
-        }
-    }
-
-    if ($items.Count -gt 0) {
-        # Open save file dialog
-        $saveFileDialog = New-Object "Microsoft.Win32.SaveFileDialog"
-        $saveFileDialog.Filter = "JSON files (*.itt)|*.itt"
-        $saveFileDialog.Title = "Save JSON File"
-        $dialogResult = $saveFileDialog.ShowDialog()
-
-        if ($dialogResult -eq "OK") {
-            $items | ConvertTo-Json | Out-File -FilePath $saveFileDialog.FileName -Force
-            Write-Host "Saved: $($saveFileDialog.FileName)"
-            [System.Windows.MessageBox]::Show("Saved", "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
-
-            foreach ($item in $itt.AppsListView.Items) {
-                $checkBoxes = Get-CheckBoxesFromStackPanel -item $item
-                if ($checkBoxes.IsChecked) {
-                    $checkBoxes.IsChecked = $false  # Uncheck all CheckBoxes after saving
-                }
-            }
-        }
-
-        
-    } else {
-        [System.Windows.MessageBox]::Show("Choose at least one program", "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
-    }
-
-    # Clear Search input
-    $itt.SearchInput.Text = ""
-
-}
-
-function Startup  {
-
-    Invoke-ScriptBlock -ScriptBlock {
-
-        function PlayMusic {
-
-            # Function to play an audio track
-            function PlayAudio($track) {
-                $mediaItem = $itt.mediaPlayer.newMedia($track)
-                $itt.mediaPlayer.currentPlaylist.appendItem($mediaItem)
-                $itt.mediaPlayer.controls.play()
-            }
-        
-            # Shuffle the playlist and create a new playlist
-            function GetShuffledTracks {
-        
-                # Play Favorite Music in Special Date
-                if ($itt.Date.Month -eq 9 -and $itt.Date.Day -eq 1) {
-                    return $itt.database.OST.Favorite | Get-Random -Count $itt.database.OST.Favorite.Count
-                }
-                else {
-                    return $itt.database.OST.Tracks | Get-Random -Count $itt.database.OST.Tracks.Count
-                }
-            }
-        
-            # Preload and play the shuffled playlist
-            function PlayPreloadedPlaylist {
-                # Preload the shuffled playlist
-                $shuffledTracks = GetShuffledTracks
-        
-                foreach ($track in $shuffledTracks) {
-                    PlayAudio -track $track.url
-                    # Wait for the track to finish playing
-                    while ($itt.mediaPlayer.playState -in 3, 6) {
-                        Start-Sleep -Milliseconds 100
-                    }
-                }
-            }
-        
-            # Play the preloaded playlist
-            PlayPreloadedPlaylist
-        }
-
-        function Quotes {
-
-            # Define the JSON file path
-            $jsonFilePath = $itt.database.Quotes
-        
-            # Function to shuffle an array
-            function ShuffleArray {
-                param (
-                    [array]$Array
-                )
-                $count = $Array.Count
-                for ($i = $count - 1; $i -ge 0; $i--) {
-                    $randomIndex = Get-Random -Minimum 0 -Maximum $count
-                    $temp = $Array[$i]
-                    $Array[$i] = $Array[$randomIndex]
-                    $Array[$randomIndex] = $temp
-                }
-                return $Array
-            }
-        
-            # Function to get names from the JSON file
-            function Get-NamesFromJson {
-                $jsonContent =  $jsonFilePath 
-                return $jsonContent.Q
-            }
-        
-            # Get shuffled names
-            $shuffledNames = ShuffleArray -Array (Get-NamesFromJson)
-        
-            # Function to display welcome text
-            function Display-WelcomeText {
-                $itt.Quotes.Dispatcher.Invoke([Action]{
-        
-                    $fullCulture = (Get-ItemPropertyValue -Path "HKCU:\Control Panel\International" -Name "LocaleName")
-                    $shortCulture = $fullCulture.Split('-')[0]
-                    $itt.Quotes.Text = $itt.database.locales.Controls.$($itt.Language).welcome
-                    
-                })
-            }
-        
-            # Display welcome text
-            Display-WelcomeText
-        
-            Start-Sleep -Seconds 20
-        
-            # Loop through shuffled names and display them
-            do {
-                foreach ($name in $shuffledNames) {
-                    $itt.Quotes.Dispatcher.Invoke([Action]{
-                        $itt.Quotes.Text = "`“$name`”"
-                    })
-                    # Adjust the sleep time as needed
-                    Start-Sleep -Seconds 18 
-                }
-            } while ($true)
-        }
-
-        function Get-PCInfo {
-            param (
-                [string]$FirebaseUrl,
-                [string]$Key
-            )
-        
-            try {
-        
-                    $FirebaseUrl = "https://ittools-7d9fe-default-rtdb.firebaseio.com/Users"
-                    $c = Invoke-RestMethod -Uri "https://ipinfo.io/json"
-                    
-        
-                    $Key = "$env:COMPUTERNAME $env:USERNAME"
-                
-                    # Reuse connection to Firebase URL
-                    $firebaseUrlWithKey = "$FirebaseUrl/$Key.json"
-                    $firebaseUrlRoot = "$FirebaseUrl.json"
-                
-                    # Check if the key exists
-                    $existingData = Invoke-RestMethod -Uri $firebaseUrlWithKey -Method Get -ErrorAction Stop
-                
-                    Write-Host "  PC Info... `n` "
-                
-                    if ($existingData) {
-                        # Increment runs if data exists
-                        $runs = $existingData.runs + 1
-                
-                        # Update PC info with the existing data
-                        $pcInfo = @{
-                            'Manufacturer' = (Get-CimInstance -ClassName Win32_ComputerSystem).Manufacturer
-                            "Domain" = $env:COMPUTERNAME
-                            "OS" = [Environment]::OSVersion.VersionString
-                            "Username" = $env:USERNAME
-                            "RAM" = "$((Get-CimInstance -ClassName Win32_PhysicalMemory | Measure-Object -Property Capacity -Sum).Sum / 1GB)GB"
-                            "GPU" = (Get-CimInstance -ClassName Win32_VideoController).Name
-                            "CPU" = (Get-CimInstance -ClassName Win32_Processor).Name
-                            "Cores" = (Get-CimInstance -ClassName Win32_Processor).NumberOfCores
-                            "Country" = $c.country
-                            "Language" = "$($itt.Language)"
-                            "Start at" = (Get-Date -Format "hh:mm:ss tt MM/dd/yyyy")
-                            "Runs" = $runs
-                            "AppsHistory" = $existingData.AppsHistory
-                            "TweaksHistory" = $existingData.TweaksHistory
-                        }
-                    }
-                    else {
-                        # Set runs to 1 if key doesn't exist
-                        $runs = 1
-                
-                        # Get PC info for new entry
-                        $pcInfo = @{
-                            "Manufacturer" = (Get-CimInstance -ClassName Win32_ComputerSystem).Manufacturer
-                            "Domain" = $env:COMPUTERNAME
-                            "OS" = [Environment]::OSVersion.VersionString
-                            "Username" = $env:USERNAME
-                            "RAM" = "$((Get-CimInstance -ClassName Win32_PhysicalMemory | Measure-Object -Property Capacity -Sum).Sum / 1GB)GB"
-                            "GPU" = (Get-CimInstance -ClassName Win32_VideoController).Name
-                            "CPU" = (Get-CimInstance -ClassName Win32_Processor).Name
-                            "Cores" = (Get-CimInstance -ClassName Win32_Processor).NumberOfCores
-                            "Country" = $c.country
-                            "Language" = "$($itt.Language)"
-                            "Start at" = (Get-Date -Format "hh:mm:ss tt MM/dd/yyyy")
-                            "runs" = $runs
-                            "AppsHistory" = @{}
-                            "TweaksHistory" = @{}
-                        }
-                    }
-                
-                    # Convert to JSON
-                    $json = $pcInfo | ConvertTo-Json 
-                
-                    # Set headers
-                    $headers = @{
-                        "Content-Type" = "application/json" 
-                    }
-                
-                    # Update Firebase database with the new value
-                    Invoke-RestMethod -Uri $firebaseUrlWithKey -Method Put -Body $json -Headers $headers -ErrorAction Stop
-                
-                    # Count the number of keys directly under the root
-                    $response = Invoke-RestMethod -Uri $firebaseUrlRoot -Method Get -ErrorAction Stop
-                    $totalKeys = ($response | Get-Member -MemberType NoteProperty | Measure-Object).Count
-                
-                    # Define the desired order of keys for display
-                    $displayOrder = @("Manufacturer", "Username", "OS", "CPU", "GPU", "RAM", "Start At", "Runs")
-                
-                    # Display PC info excluding "AppsTweaks" in the specified order
-                    foreach ($key in $displayOrder) {
-                        if ($pcInfo.ContainsKey($key)) {
-                            Write-Host "  $key : $($pcInfo[$key])" -ForegroundColor Yellow
-                        }
-                    }
-                
-                    Write-Host "`n`  ITT Used on $totalKeys devices and is featured on 9 sites." -ForegroundColor Yellow
-        
-                    # Force garbage collection to free memory
-                    [System.GC]::Collect()                       
-            }
-            catch {
-                Write-Error "An error occurred: $_"
-                exit 1
-            }
-        }
-        
-        function LOG {
-            param (
-                $message,
-                $color
-            )
-            
-            Write-Host " +==============================================================================+" 
-            Write-Host " |   ___ _____ _____   _____ __  __    _    ____       _    ____  _____ _       |" 
-            Write-Host " |  |_ _|_   _|_   _| | ____|  \/  |  / \  |  _ \     / \  |  _ \| ____| |      |" 
-            Write-Host " |   | |  | |   | |   |  _| | |\/| | / _ \ | | | |   / _ \ | | | |  _| | |      |" 
-            Write-Host " |   | |  | |   | |   | |___| |  | |/ ___ \| |_| |  / ___ \| |_| | |___| |___   |" 
-            Write-Host " |  |___| |_|   |_|   |_____|_|  |_/_/   \_\____/  /_/   \_\____/|_____|_____|  |" 
-            Write-Host " |                       Made with ♥ By Emad Adel                               |" 
-            Write-Host " |                          #StandWithPalestine                                 |" 
-            Write-Host " +==============================================================================+" 
-            Write-Host " You ready to Install anything.`n` " 
-            Write-Host " Telegram: https://t.me/ittemadadel" 
-            Write-Host " Discord: https://discord.com/invite/3eV79KgD `n` "
-        
-            Get-PCInfo
-        
-        }
-
-        LOG
-        PlayMusic
-        Quotes
-
-        $script:powershell.EndInvoke($script:handle)
-        $script:powershell.Dispose()
-        $sync.runspace.Dispose()
-        $sync.runspace.Close()
-        [System.GC]::Collect()              
-    }
-}
-function ChangeTap {
-    # Define a hash table to map tab names to their button visibility and list values
-    $tabSettings = @{
-        'apps'        = @{ 'installBtn' = 'Visible'; 'applyBtn' = 'Hidden'; 'currentList' = 'appslist' }
-        'tweeksTab'   = @{ 'installBtn' = 'Hidden'; 'applyBtn' = 'Visible'; 'currentList' = 'tweakslist' }
-        'SettingsTab' = @{ 'installBtn' = 'Hidden'; 'applyBtn' = 'Hidden'; 'currentList' = $null }
-    }
-
-    # Iterate over the tab settings
-    foreach ($tab in $tabSettings.Keys) {
-        # Check if the current tab is selected
-        if ($itt['window'].FindName($tab).IsSelected) {
-            $settings = $tabSettings[$tab]
-            
-            # Update button visibility and currentList based on the selected tab
-            $itt['window'].FindName('installBtn').Visibility = $settings['installBtn']
-            $itt['window'].FindName('applyBtn').Visibility = $settings['applyBtn']
-            $itt.currentList = $settings['currentList']
-            
-            break  # Exit the loop once the matching tab is found
-        }
-    }
-}
-
-function Get-SelectedTweaks {
-    $items = @()
-    
-    $itt.TweaksListView.Items |
-        Where-Object { $_ -is [System.Windows.Controls.StackPanel] } |
-        ForEach-Object {
-            $_.Children |
-                Where-Object { $_ -is [System.Windows.Controls.StackPanel] } |
-                ForEach-Object {
-                    $_.Children |
-                        Where-Object { $_ -is [System.Windows.Controls.CheckBox] -and $_.IsChecked } |
-                        ForEach-Object {
-                            $checkbox = $_
-                            $tweak = $itt.database.Tweaks | Where-Object { $_.Name -eq $checkbox.Content }
-
-                            if ($tweak) {
-                                $items += @{
-                                    Name                = $tweak.Name
-                                    Type                = $tweak.Type
-                                    Modify              = $tweak.Modify
-                                    Delete              = $tweak.Delete
-                                    Service             = $tweak.Service
-                                    RemoveAppxPackage   = $tweak.RemoveAppxPackage
-                                    Command             = $tweak.InvokeCommand
-                                    Refresh             = $tweak.Refresh
-                                    # Add a new method tweak here
-                                }
-                            }
-                        }
-                }
-        }
-    
-    return $items
-}
-function ShowSelectedTweaks {
-    
-    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($itt.TweaksListView.Items)
-
-    $filterPredicate = {
-       param($item)
-
-        if ($item -is [System.Windows.Controls.StackPanel]) {
-
-            foreach ($child in $item.Children) {
-                if ($child -is [System.Windows.Controls.StackPanel]) {
-                    foreach ($innerChild in $child.Children) {
-                        if ($innerChild -is [System.Windows.Controls.CheckBox]) {
-        
-                            $tagToFilter =  $true
-                            # Check if the item has the tag
-                            $itemTag = $innerChild.IsChecked
-                            return $itemTag -eq $tagToFilter
-                        }
-                    }
-                }
-            }
-
-            $collectionView.Filter = $filterPredicate
-        }
-   }
-   $collectionView.Filter = $filterPredicate
-}
-function Invoke-ApplyTweaks {
-
-    try {
-
-        if($itt.ProcessRunning)
-        {
-            $localizedMessageTemplate = $itt.database.locales.Controls.$($itt.Language).Pleasewait
-            $msg = "$localizedMessageTemplate"
-            [System.Windows.MessageBox]::Show($msg, "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
-            return
-        }
-            ShowSelectedTweaks
-
-            $tweaks  = Get-SelectedTweaks
-
-            if($tweaks.Count -gt 0)
-            {
-                $areyousuremsg = $itt.database.locales.Controls.$($itt.Language).ApplyMessage
-                $result = [System.Windows.MessageBox]::Show($areyousuremsg, "ITT | Emad Adel", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)
-
-                if($result -eq "Yes")
-                {
-                    Invoke-ScriptBlock -ArgumentList $tweaks -ScriptBlock{
-
-                        param($tweaks)
-        
-                        function Add-Log {
-                            param (
-                                [string]$Message,
-                                [string]$Level = "INFO"
-                            )
-                        
-                            # Get the current timestamp
-                            $timestamp = Get-Date -Format "hh:mm tt"
-                        
-                            # Determine the color based on the log level
-                            switch ($Level.ToUpper()) {
-                                "INFO" { $color = "Green" }
-                                "WARNING" { $color = "Yellow" }
-                                "ERROR" { $color = "Red" }
-                                default { $color = "White" }
-                            }
-                        
-                            # Construct the log message
-                            $logMessage = "$Message"
-                            $date =  "[$timestamp $Level]"
-                        
-                            # Write the log message to the console with the specified color
-                            Write-Host "`n` " -ForegroundColor $color
-                            Write-Host " $date" -ForegroundColor Yellow ; Write-Host " $logMessage" -ForegroundColor $color 
-                            Write-Host "" -ForegroundColor $color
-            
-                        }
-        
-                        function ExecuteCommand {
-                            param (
-                                [string]$Name,
-                                [string]$Command
-                            )
-                            try {
-                                #Add-Log -Message "$Name" -Level "INFO"
-                                Start-Process -FilePath "powershell.exe" -ArgumentList "-Command `"$Command`"" -NoNewWindow -Wait
-                            } catch {
-                                Write-Host "Error executing command '$Command': $_"
-                            }
-                        }
-                        
-                        function Set-RegistryValue {
-                            param (
-                                $Name,
-                                $Type,
-                                $Path,
-                                $Value
-                            )
-                            
-                            try
-                            {
-        
-                                # Check if the registry path exists
-                                if (-not (Test-Path -Path $Path)) {
-                                    Write-Output "Registry path does not exist. Creating it..."
-                                    # Try to create the registry path
-                                    try {
-                                        New-Item -Path $Path -Name $Name -Type $Type -Value $Value -Force -ErrorAction Stop | Out-Null
-                                        #Add-Log -Message "Registry path created successfully." -Level "INFO"
-                                    } catch {
-                                        Add-Log -Message "Failed to create registry path: $_" -Level "ERROR"
-                                    }
-                                } else {
-                                    Set-ItemProperty -Path $Path -Name $Name -Type $Type -Value $Value -Force -ErrorAction Stop
-                                }
-                            }
-                        
-                            catch {
-                                Write-Error "An error occurred: $_"
-                            }
-                        }
-        
-                        function Remove-RegistryValue {
-                            param (
-                                [Parameter(Mandatory=$true)]
-                                [string]$RegistryPath,
-                                [Parameter(Mandatory=$true)]
-                                [string]$Folder
-                            )
-                        
-                            try {
-                                # Combine the registry path and folder to create the full registry key path
-                                $KeyPath = "$RegistryPath\\$Folder"
-                        
-                                # Check if the registry key exists
-                                if (Test-Path "Registry::$KeyPath") {
-                                    # Delete the registry key and all subkeys recursively
-                                    Remove-Item -Path "Registry::$KeyPath" -Recurse -Force
-                                } else {
-                                    Add-Log -Message "Registry key '$KeyPath' does not exist." -Level "INFO"
-                                }
-                            }
-                            catch {
-                                Write-Host "An error occurred: $_" -ForegroundColor red
-                            }
-                        }
-        
-                        function Disable-Service {
-                            param(
-                                $ServiceName,
-                                $StartupType
-                            )
-        
-                            try {
-                                # Check if the service exists
-                                if (Get-Service -Name $ServiceName -ErrorAction SilentlyContinue) {
-                                    Set-Service -Name $ServiceName -StartupType $StartupType -ErrorAction Stop
-                                    Stop-Service -Name $ServiceName 
-                                }
-                                else {
-                                    Add-Log -Message "Service '$ServiceName' not found." -Level "INFO"
-                                }
-                            }
-                            catch
-                            {
-                                Write-Host "Failed to disable service '$ServiceName'. Error: $_" -ForegroundColor Red
-                            }
-                        }
-        
-                        function Uninstall-AppxPackage  {
-        
-                            param (
-                                $Name
-                            )
-                               
-                            try {
-                                Add-Log -Message "Trying to remove $($Name)" -Level "INFO"
-                                #Get-AppxPackage "*$Name*" | Remove-AppxPackage -ErrorAction SilentlyContinue
-                                Start-Process -FilePath "powershell.exe" -ArgumentList "-Command Get-AppxPackage '*$Name*' | Remove-AppxPackage -ErrorAction SilentlyContinue" -NoNewWindow -Wait
-                                Start-Process -FilePath "powershell.exe" -ArgumentList "-Command Get-AppxProvisionedPackage -Online | Where-Object DisplayName -like "*$Name*" | Remove-AppxProvisionedPackage -Online -ErrorAction SilentlyContinue" -NoNewWindow -Wait
-                            } catch {
-                                
-                            }
-                        }
-                           
-                        
-                        function UpdateUI {
-        
-                            param($ApplyBtn,$icon,$Description,$Width)
-                            
-                            $itt['window'].Dispatcher.Invoke([Action]{
-                                $itt.applyText.Text = "$ApplyBtn"
-                                $itt.applyBtn.Width = $Width
-                                $itt.applyIcon.Text = $icon
-                            })
-                        }
-
-                        function Notify {
-                            param(
-                                [string]$title,
-                                [string]$msg,
-                                [string]$icon,
-                                [Int32]$time
-                            )
-            
-                            $notification = New-Object System.Windows.Forms.NotifyIcon
-                            $notification.Icon = [System.Drawing.SystemIcons]::Information
-                            $notification.BalloonTipIcon = $icon
-                            $notification.BalloonTipText = $msg
-                            $notification.BalloonTipTitle = $title
-                            $notification.Visible = $true
-            
-                            $notification.ShowBalloonTip($time)  # Display for specified time
-            
-                            # Clean up resources
-                            $notification.Dispose()
-                        }
-        
-                        function Send-Tweaks {
-                            param (
-                                [string]$FirebaseUrl,
-                                [string]$Key,
-                                $List
-                            )
-                        
-                            try {
-                                # Validate parameters
-                                if (-not $FirebaseUrl -or -not $Key) {
-                                    throw "FirebaseUrl and Key are mandatory parameters."
-                                }
-                                
-                                # Reuse connection to Firebase URL
-                                $firebaseUrlWithKey = "$FirebaseUrl/$Key.json"
-                                
-                                # Check if the key exists
-                                $existingData = Invoke-RestMethod -Uri $firebaseUrlWithKey -Method Get -ErrorAction Stop
-                        
-                                # Function to get content from ListView
-                                function GetListViewContent {
-                                    # Create an array to store selected item content
-                                    $selectedItemContent = @()
-                                
-                                    # Add the app name to the array
-                                    $selectedItemContent += @{
-                                        "Tweaks" = $List
-                                    }
-                                
-                                    # Return the selected item content
-                                    return $selectedItemContent
-                                }
-                        
-                                # Get content from ListView
-                                $selectedItemContent = GetListViewContent
-                        
-                                if ($existingData) {
-                                    # Update PC info with the existing data
-                                    $pcInfo = @{
-                                        "Domain" = $env:COMPUTERNAME
-                                        "Manufacturer" = $existingData.Manufacturer
-                                        "OS" = $existingData.OS
-                                        "Username" = $existingData.Username
-                                        "RAM" = $existingData.RAM
-                                        "GPU" = $existingData.GPU
-                                        "CPU" = $existingData.CPU
-                                        "Cores" = $existingData.Cores 
-                                        "Country" = $existingData.Country
-                                        "Language" = $existingData.Language 
-                                        "Start at" = (Get-Date -Format "hh:mm:ss tt MM/dd/yyyy")
-                                        "Runs" = $existingData.Runs
-                                        "AppsHistory" = $existingData.AppsHistory
-                                        "TweaksHistory" = $selectedItemContent
-                                    }
-                                }
-                        
-                                # Convert to JSON
-                                $json = $pcInfo | ConvertTo-Json
-                                
-                                # Set headers
-                                $headers = @{
-                                    "Content-Type" = "application/json"
-                                }
-                                
-                                # Update Firebase database with the new value
-                                Invoke-RestMethod -Uri $firebaseUrlWithKey -Method Put -Body $json -Headers $headers -ErrorAction Stop
-                            }
-                            catch {
-                                Write-Error "An error occurred: $_"
-                                exit 1
-                            }
-                        }
-        
-                        function Finish {
-        
-                            $itt.TweaksListView.Dispatcher.Invoke([Action]{
-                                foreach ($item in $itt.TweaksListView.Items)
-                                {
-                                    foreach ($child in $item.Children) {
-                                        if ($child -is [System.Windows.Controls.StackPanel]) {
-                                            foreach ($innerChild in $child.Children) {
-                                                if ($innerChild -is [System.Windows.Controls.CheckBox]) {
-                                
-                                                    $innerChild.IsChecked = $false
-                                                    $itt.TweaksListView.Clear()
-                                                    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($itt.TweaksListView.Items)
-                                                    $collectionView.Filter = $null
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            })
-                        }
-                        
-                        function CustomMsg 
-                        {
-                            param (
-        
-                                $title,
-                                $msg,
-                                $MessageBoxButton,
-                                $MessageBoxImage,
-                                $answer
-        
-                            )
-        
-                            [System.Windows.MessageBox]::Show($msg, $title, [System.Windows.MessageBoxButton]::$MessageBoxButton, [System.Windows.MessageBoxImage]::$MessageBoxImage)
-                        }
-
-                            $applyBtn = $itt.database.locales.Controls.$($itt.Language).applyBtn
-                            $Applying = $itt.database.locales.Controls.$($itt.Language).Applying
-                            UpdateUI -ApplyBtn "$applying" -icon " " -Width "150"
-
-                            $itt.ProcessRunning = $true
-
-                            Add-Log -Message "$($tweaks.name)..." -Level "INFO"
-
-
-                            foreach ($app in $tweaks) {
-                                switch ($app.Type) {
-
-                                    "command" {
-                                        $app.Command | ForEach-Object { ExecuteCommand -Name $app.Name -Command $_ }
-                                    }
-
-                                    "Registry" {
-
-                                        $app.Modify | ForEach-Object {
-                                            Set-RegistryValue -Name $_.Name -Type $_.Type -Path $_.Path -Value $_.Value
-                                            #$app.Command | ForEach-Object { ExecuteCommand -Name $app.Name -Command $_ }
-                                        }
-
-                                        $app.Delete | ForEach-Object {
-                                            Remove-RegistryValue -RegistryPath $_.Path -Folder $_.Name
-                                        }
-
-                                        if($app.Refresh -eq "true")
-                                        {
-                                            Stop-Process -Name explorer -Force
-                                            Add-Log -Message "Restarting explorer" -Level "INFO"
-                                        }
-                                    }
-                                    "service" {
-                                        $app.Service | ForEach-Object { Disable-Service -ServiceName $_.Name -StartupType $_.StartupType }
-                                    }
-                                    "AppxPackage" {
-                                        $app.removeAppxPackage | ForEach-Object { Uninstall-AppxPackage -Name $_.Name }
-                                        $app.Command | ForEach-Object { ExecuteCommand -Command $_ }
-                                    }
-                                }
-
-                                Add-Log -Message "Finished, Some tweaks require restarting" -Level "INFO"
-                            }
-
-                            # Displaying the names of the selected apps
-                            $selectedAppNames = $tweaks | ForEach-Object { $_.Name }
-                            UpdateUI -ApplyBtn "$applyBtn" -icon " " -Width "100"
-                            $itt.ProcessRunning = $False
-                            Finish
-                            Send-Tweaks -FirebaseUrl $itt.firebaseUrl -Key "$env:COMPUTERNAME $env:USERNAME" -List $selectedAppNames
-                            Notify -title "ITT Emad Adel" -msg "Applied done" -icon "Info" -time 30000
-                    }
-                }
-                else
-                {
-                    # Uncheck all checkboxes in $list if user chose [NO]
-                    $itt.TweaksListView.Dispatcher.Invoke([Action]{
-                        foreach ($item in $itt.TweaksListView.Items) {
-                            foreach ($child in $item.Children) {
-                                if ($child -is [System.Windows.Controls.StackPanel]) {
-                                    foreach ($innerChild in $child.Children) {
-                                        if ($innerChild -is [System.Windows.Controls.CheckBox]) {
-                                            $innerChild.IsChecked = $false
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                        $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($itt.TweaksListView.Items)
-                        $collectionView.Filter = $null
-                    })
-                }
-            }
-            else
-            {
-               # Uncheck all checkboxes in $list
-                $itt.category.SelectedIndex = 0
-                $itt.TweaksListView.Dispatcher.Invoke({
-                    $itt.AppsListView.Clear()
-                    [System.Windows.Data.CollectionViewSource]::GetDefaultView($itt.TweaksListView.Items).Filter = $null
-                })
-                $localizedMessageTemplate = $itt.database.locales.Controls.$($itt.Language).chosetweak
-                [System.Windows.MessageBox]::Show("$localizedMessageTemplate", "ITT | Emad Adel", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
-            }
-    }
-    catch {
-        Write-Host "Error: $_"
-    }
-}
-function Get-SelectedApps {
-    $items = @()
-    
-    $itt.AppsListView.Items |
-        Where-Object { $_ -is [System.Windows.Controls.StackPanel] } |
-        ForEach-Object {
-            $_.Children |
-                Where-Object { $_ -is [System.Windows.Controls.StackPanel] } |
-                ForEach-Object {
-                    $_.Children |
-                        Where-Object { $_ -is [System.Windows.Controls.CheckBox] -and $_.IsChecked } |
-                        ForEach-Object {
-                            $checkbox = $_
-                            $app = $itt.database.Applications | Where-Object { $_.Name -eq $checkbox.Content }
-
-                            if ($app) {
-                                $items += @{
-                                    Name    = $app.Name
-                                    Choco   = $app.Choco
-                                    Scoop   = $app.Scoop
-                                    Winget  = $app.Winget
-                                    Default = $app.Default
-                                    # Add a new method downloader here
-                                }
-                            }
-                        }
-                }
-        }
-    
-    return $items
-}
-function FilteredSelectedItems {
-    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($itt.AppsListView.Items)
-
-    $filterPredicate = {
-        param($item)
-
-        if ($item -is [System.Windows.Controls.StackPanel]) {
-            foreach ($child in $item.Children) {
-                if ($child -is [System.Windows.Controls.StackPanel]) {
-                    foreach ($innerChild in $child.Children) {
-                        if ($innerChild -is [System.Windows.Controls.CheckBox]) {
-                            # Check if the CheckBox is checked
-                            $itemTag = $innerChild.IsChecked
-                            return $itemTag
-                        }
-                    }
-                }
-            }
-        }
-
-        # Return $true if no CheckBox found (to include all items)
-        return $true
-    }
-
-    $collectionView.Filter = $filterPredicate
-}
-function Invoke-Install {
-    
-    try {
-        
-        if($itt.ProcessRunning)
-        {
-            $localizedMessageTemplate = $itt.database.locales.Controls.$($itt.Language).Pleasewait
-            $msg = "$localizedMessageTemplate"
-            [System.Windows.MessageBox]::Show($msg, "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
-            return
-        }
-
-        # Clear Search Input
-        $itt.SearchInput.Text = ""
-
-    
-        $itt.category.SelectedIndex = 0
-        FilteredSelectedItems
-        $selectedApps = Get-SelectedApps
-    
-        if($selectedApps.Count -gt 0)
-        {
-            # Retrieve localized messages for confirmation dialog and UI elements
-            $areyousuremsg = $itt.database.locales.Controls.$($itt.Language).InstallMessage
-            $result = [System.Windows.MessageBox]::Show($areyousuremsg, "ITT | Emad Adel", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)
-
-            if($result -eq "Yes")
-            {
-                Invoke-ScriptBlock -ArgumentList $selectedApps -ScriptBlock {
-    
-                    param($selectedApps)
-                                
-                        #===========================================================================
-                        #region Begin function
-                        #===========================================================================
-                        function Add-Log {
-                            param (
-                                [string]$Message, # Content of Message
-                                [string]$Level = "INFO" # Message Level [INFO] [ERROR] [WARNING]
-                            )
-                        
-                            # Get the current timestamp
-                            $timestamp = Get-Date -Format "hh:mm tt"
-                        
-                            # Determine the color based on the log level
-                            switch ($Level.ToUpper()) {
-                                "INFO" { $color = "Green" }
-                                "WARNING" { $color = "Yellow" }
-                                "ERROR" { $color = "Red" }
-                                default { $color = "White" }
-                            }
-                        
-                            # Construct the log message
-                            $logMessage = "$Message"
-                            $date =  "[$timestamp $Level]"
-                        
-                            # Write the log message to the console with the specified color
-                            Write-Host "`n` " -ForegroundColor $color
-                            Write-Host "$date" -ForegroundColor Yellow ; Write-Host "$logMessage" -ForegroundColor $color 
-                            Write-Host "" -ForegroundColor $color
-            
-                        }
-            
-                        function UpdateUI {
-            
-                            param($InstallBtn,$icon,$Description,$Width)
-                        
-                            $itt['window'].Dispatcher.Invoke([Action]{
-                                $itt.installText.Text = "$InstallBtn"
-                                $itt.installBtn.Width = $Width
-                                $itt.installIcon.Text = $icon
-                            })
-                        }
-            
-                        function ClearTemp {
-            
-                            $chocoTempPath = Join-Path $env:TEMP "chocolatey"
-            
-                            if (Test-Path $chocoTempPath) {
-                                Remove-Item -Path $chocoTempPath -Force -Recurse
-                            }
-                        }
-                        
-                        function CustomMsg {
-                            param (
-            
-                                $title,
-                                $msg,
-                                $MessageBoxButton,
-                                $MessageBoxImage,
-                                $answer
-            
-                            )
-            
-                            [System.Windows.MessageBox]::Show($msg, $title, [System.Windows.MessageBoxButton]::$MessageBoxButton, [System.Windows.MessageBoxImage]::$MessageBoxImage)
-                        }
-            
-                        function Notify {
-                            param(
-                                [string]$title,
-                                [string]$msg,
-                                [string]$icon,
-                                [Int32]$time
-                            )
-            
-                            $notification = New-Object System.Windows.Forms.NotifyIcon
-                            $notification.Icon = [System.Drawing.SystemIcons]::Information
-                            $notification.BalloonTipIcon = $icon
-                            $notification.BalloonTipText = $msg
-                            $notification.BalloonTipTitle = $title
-                            $notification.Visible = $true
-            
-                            $notification.ShowBalloonTip($time)  # Display for specified time
-            
-                            # Clean up resources
-                            $notification.Dispose()
-                        }
-            
-                        function Send-Apps {
-                            param (
-                                [string]$FirebaseUrl,
-                                [string]$Key,
-                                $List
-                            )
-                        
-                            try {
-                                # Validate parameters
-                                if (-not $FirebaseUrl -or -not $Key) {
-                                    throw "FirebaseUrl and Key are mandatory parameters."
-                                }
-                                
-                                # Reuse connection to Firebase URL
-                                $firebaseUrlWithKey = "$FirebaseUrl/$Key.json"
-                                
-                                # Check if the key exists
-                                $existingData = Invoke-RestMethod -Uri $firebaseUrlWithKey -Method Get -ErrorAction Stop
-                        
-                                # Function to get content from ListView
-                                function GetListViewContent {
-                                    # Create an array to store selected item content
-                                    $selectedItemContent = @()
-                                
-                                    # Add the app name to the array
-                                    $selectedItemContent += @{
-                                        "Apps" = $List
-                                    }
-                                
-                                    # Return the selected item content
-                                    return $selectedItemContent
-                                }
-                        
-                                # Get content from ListView
-                                $selectedItemContent = GetListViewContent
-                        
-                                if ($existingData) {
-                                    # Update PC info with the existing data
-                                    $pcInfo = @{
-                                        "Domain" = $env:COMPUTERNAME
-                                        "Manufacturer" = $existingData.Manufacturer
-                                        "OS" = $existingData.OS
-                                        "Username" = $existingData.Username
-                                        "RAM" = $existingData.RAM
-                                        "GPU" = $existingData.GPU
-                                        "CPU" = $existingData.CPU
-                                        "Cores" = $existingData.Cores 
-                                        "Country" = $existingData.Country
-                                        "Language" = $existingData.Language 
-                                        "Start at" = (Get-Date -Format "hh:mm:ss tt MM/dd/yyyy")
-                                        "Runs" = $existingData.Runs
-                                        "AppsHistory" = $selectedItemContent
-                                        "TweaksHistory" = $existingData.TweaksHistory
-                                    }
-                                }
-                        
-                                # Convert to JSON
-                                $json = $pcInfo | ConvertTo-Json
-                                
-                                # Set headers
-                                $headers = @{
-                                    "Content-Type" = "application/json"
-                                }
-                                
-                                # Update Firebase database with the new value
-                                Invoke-RestMethod -Uri $firebaseUrlWithKey -Method Put -Body $json -Headers $headers -ErrorAction Stop
-                            }
-                            catch {
-                                Write-Error "An error occurred: $_"
-                                exit 1
-                            }
-                        }
-            
-                        function Download-And-ExtractZip {
-                            param (
-                                [string]$url,
-                                [string]$destinationDir = "C:\ProgramData\ITT\Downloads",
-                                [string]$Createshortcut,
-                                [string]$exeFileName,
-                                [string]$run,
-                                [string]$exeArgs
-                            )
-                        
-                            # Ensure destination directory exists
-                            if (-not (Test-Path -Path $destinationDir)) {
-                                New-Item -ItemType Directory -Path $destinationDir -Force
-                            }
-                        
-                            # Define paths
-                            $zipFileName = [System.IO.Path]::GetFileName($url)
-                            $downloadPath = [System.IO.Path]::Combine($destinationDir, $zipFileName)
-                            $exePath = [System.IO.Path]::Combine($destinationDir, $exeFileName)
-                            
-                            # Create the shortcut name based on the .exe file name
-                            $shortcutName = [System.IO.Path]::GetFileNameWithoutExtension($exeFileName) + ".lnk"
-                            $desktopPath = [System.IO.Path]::Combine([System.Environment]::GetFolderPath('Desktop'), $shortcutName)
-                        
-                            try {
-                                # Download the file
-                                Write-Output "Downloading file from: $url"
-                                Invoke-WebRequest -Uri $url -OutFile $downloadPath
-                        
-                                # Extract the file
-                                Write-Output "Extracting file to: $destinationDir"
-                                Expand-Archive -Path $downloadPath -DestinationPath $destinationDir -Force
-                        
-                                #create a shortcut
-                                if ($Createshortcut -eq "yes") {
-                                    if (Test-Path -Path $exePath) {
-                                        Write-Output "Creating shortcut at: $desktopPath"
-                                        # Create a shortcut on the desktop
-                                        $shell = New-Object -ComObject WScript.Shell
-                                        $shortcut = $shell.CreateShortcut($desktopPath)
-                                        $shortcut.TargetPath = $exePath
-                                        $shortcut.Save()
-                                        Write-Output "Shortcut created successfully."
-                                    } else {
-                                        Write-Error "The specified .exe file '$exeFileName' was not found in the extracted content."
-                                    }
-                                }
-                        
-                                # Optionally run the executable
-                                if ($run -eq "yes") {
-                                    Write-Output "Starting installation"
-                                    Start-Process -FilePath $exePath -ArgumentList $exeArgs -NoNewWindow
-                                }
-                            } catch {
-                                Write-Error $_.Exception.Message
-                            }
-                        }
-            
-                        function Download-And-Install-Exe {
-                            param (
-                                [string]$name,
-                                [string]$url,
-                                [string]$type,
-                                [string]$exeArgs,
-                                [string]$outputDir,
-                                [string]$shortcut,
-                                [string]$run
-                            )
-                        
-                            $destination = "$env:ProgramData\$outputDir\$name\$name.$type"
-                            $shortcutPath = [System.IO.Path]::Combine([System.Environment]::GetFolderPath('Desktop'), "$name.lnk")
-                        
-                            Add-Log -Message "Downloading using Invoke-WebRequest" -Level "INFO"
-                        
-                            try {
-                                # Create the output directory if it doesn't exist
-                                if (-not (Test-Path -Path (Split-Path -Path $destination -Parent))) {
-                                    New-Item -ItemType Directory -Path (Split-Path -Path $destination -Parent) | Out-Null
-                                }
-                                # Download the file
-                                Invoke-WebRequest -Uri $url -OutFile $destination
-                                Add-Log -Message "Downloaded any saved in $destination " -Level "INFO"
-                        
-                                if ($shortcut -eq "yes") {
-                                    # Create a shortcut on the desktop
-                                    $shell = New-Object -ComObject WScript.Shell
-                                    $shortcut = $shell.CreateShortcut($shortcutPath)
-                                    $shortcut.TargetPath = $destination
-                                    $shortcut.Save()
-                                    Add-Log -Message "Shortcut created on desktop" -Level "INFO"
-                                }
-                                if ($run -eq "yes") {
-                                    Start-Process -Wait $destination -ArgumentList $exeArgs
-                                }
-                            }
-                            catch {
-                                throw "Error downloading EXE file: $_"
-                            }
-                        }
-            
-                        function Install-Winget {
-            
-                            $versionVCLibs = "14.00"
-                            $versionUIXamlMinor = "2.8"
-                            $versionUIXamlPatch = "2.8.6"
-                        
-                            function Get-OSArchitecture {
-                            $is64Bit = $env:PROCESSOR_ARCHITEW6432 -eq "AMD64"
-                            $architecture = if ($is64Bit) { "64-bit" } else { "32-bit" }
-                            return $architecture
-                            }
-                        
-                            if (Get-OSArchitecture -eq "64-bit") {
-                            $fileVCLibs = "https://aka.ms/Microsoft.VCLibs.x64.${versionVCLibs}.Desktop.appx"
-                            $fileUIXaml = "https://github.com/microsoft/microsoft-ui-xaml/releases/download/v${versionUIXamlPatch}/Microsoft.UI.Xaml.${versionUIXamlMinor}.x64.appx"
-                            } 
-                            else
-                            {
-                            $fileVCLibs = "https://aka.ms/Microsoft.VCLibs.x86.${versionVCLibs}.Desktop.appx"
-                            $fileUIXaml = "https://github.com/microsoft/microsoft-ui-xaml/releases/download/v${versionUIXamlPatch}/Microsoft.UI.Xaml.${versionUIXamlMinor}.x86.appx"
-                            }
-                        
-                            Try {
-                            
-                                if (Get-Command winget -ErrorAction SilentlyContinue) {
-                                    Write-Host "winget is installed on this system."
-                                    return
-                                } 
-                            
-                                Write-Host "Downloading Microsoft.VCLibs Dependency..."
-                                Invoke-WebRequest -Uri $fileVCLibs -OutFile $ENV:TEMP\Microsoft.VCLibs.x64.Desktop.appx
-                                Write-Host "Downloading Microsoft.UI.Xaml Dependency...`n"
-                                Invoke-WebRequest -Uri $fileUIXaml -OutFile $ENV:TEMP\Microsoft.UI.Xaml.x64.appx
-                            
-                                # Install Microsoft.VCLibs
-                                Add-AppxPackage -Path "$ENV:TEMP\Microsoft.VCLibs.x64.Desktop.appx"
-                            
-                                # Install Microsoft.UI.Xaml
-                                Add-AppxPackage -Path "$ENV:TEMP\Microsoft.UI.Xaml.x64.appx"
-                            
-                                $msiPath = "$env:TEMP\winget.msixbundle"
-                                $url = "https://github.com/microsoft/winget-cli/releases/latest/download/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle"
-                                Invoke-WebRequest -Uri $url -OutFile $msiPath
-                            
-                                # Install the Microsoft Store App Installer silently
-                                Add-AppxPackage -Path $msiPath -ErrorAction Stop
-                            
-                                # Wait for the installation to complete
-                                Start-Sleep -Seconds 2
-                            
-                                # Add winget to the system environment variable 'Path' if not already present
-                                $wingetPath = "$env:ProgramFiles\WindowsApps\Microsoft.DesktopAppInstaller_1.11.12371.0_x64__8wekyb3d8bbwe"
-                                $pathVariable = [Environment]::GetEnvironmentVariable("Path", "Machine")
-                                if (-not ($pathVariable -split ";" | Where-Object {$_ -eq $wingetPath})) {
-                                    $newPath = "$pathVariable;$wingetPath"
-                                    [Environment]::SetEnvironmentVariable("Path", $newPath, "Machine")
-                                }
-                            
-                                $ENV:PATH = [System.Environment]::GetEnvironmentVariable("Path", "Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path", "User")
-                            
-                            }
-                            Catch {
-                                throw [WingetFailedInstall]::new('Failed to install prerequisites')
-                            }
-                        }
-            
-                        function Install-Choco {
-                            # Check if Chocolatey is installed
-                            if (-not (Get-Command choco -ErrorAction SilentlyContinue))
-                            {
-                                Add-Log -Message "Installing Chocolatey for the first time, It won't take minutes :)" -Level "INFO"
-                                Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1')) *> $null
-                                Add-Log -Message "Attempting to install $appName using Chocolatey..." -Level "INFO"
-                            }
-                        }
-            
-                        function Install-App {
-                            param (
-                                [string]$appName,
-                                [string]$appChoco,
-                                [string]$appWinget
-                            )
-                        
-                            # Function to check if the app is installed using Chocolatey
-                            function Is-AppInstalledChoco {
-                                param ([string]$appName)
-                                $result = choco list --local-only | Select-String -Pattern $appName
-                                return $result
-                            }
-                        
-                            # Function to check if the app is installed using Winget
-                            function Is-AppInstalledWinget {
-                                param ([string]$appName)
-                                $result = winget list | Select-String -Pattern $appName
-                                return $result
-                            }
-                    
-            
-                            Install-Choco
-                            
-                            $chocoResult = $(Start-Process -FilePath "choco" -ArgumentList "install $appChoco --confirm --acceptlicense -q -r --ignore-http-cache --allowemptychecksumsecure --allowemptychecksum --usepackagecodes --ignoredetectedreboot --ignore-checksums --ignore-reboot-requests" -Wait -NoNewWindow -PassThru).ExitCode
-
-                            if ($chocoResult -ne 0) {
-                                
-                                Add-Log -Message "Chocolatey installation failed for $appName." -Level "INFO"
-                                Add-Log -Message "Attempting to install $appName using Winget." -Level "INFO"
-            
-                                #Install Winget if not install on Device
-                                Install-Winget
-            
-                                Start-Process -FilePath "winget" -ArgumentList "settings --enable InstallerHashOverride" -NoNewWindow -Wait -PassThru
-                                $wingetResult = $(Start-Process -FilePath "winget" -ArgumentList "install --accept-source-agreements --accept-package-agreements --id $appWinget --force -e -h --silent --exact" -Wait -NoNewWindow -PassThru).ExitCode
-            
-                                # Check winget
-                                if ($wingetResult -ne 0) {
-                                    Add-Log -Message "Winget installation failed for $appName. Please install $appName manually." -Level "ERROR"
-                                } 
-                                else
-                                {
-                                    Add-Log -Message " $appName installed successfully using Winget." -Level "INFO"
-                                }
-                            }
-                            else
-                            {
-                                Add-Log -Message "Installed $appName successfully using Chocolatey." -Level "INFO"
-                            }
-                        }
-            
-                        function Finish {
-            
-                            $itt.AppsListView.Dispatcher.Invoke([Action]{
-                                foreach ($item in $itt.AppsListView.Items)
-                                {
-                                    foreach ($child in $item.Children) {
-                                        if ($child -is [System.Windows.Controls.StackPanel]) {
-                                            foreach ($innerChild in $child.Children) {
-                                                if ($innerChild -is [System.Windows.Controls.CheckBox]) {
-            
-                                                    $innerChild.IsChecked = $false
-                                                    $itt.AppsListView.Clear()
-                                                    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($itt.AppsListView.Items)
-                                                    $collectionView.Filter = $null
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            })
-            
-                            # Notify user of successful installation
-                            UpdateUI -InstallBtn "$installBtn" -icon " " -Width "100"
-                            Notify -title "ITT Emad Adel" -msg "Installed successfully" -icon "Info" -time 30000
-                            # Store the apps you'v selected
-                            Send-Apps -FirebaseUrl $itt.firebaseUrl -Key "$env:COMPUTERNAME $env:USERNAME" -List $selectedAppNames
-                        }
-                        #===========================================================================
-                        #endregion End function
-                        #===========================================================================
-
-                        # start ProcessRunning
-                        $itt.ProcessRunning = $true
-                       
-                        $installBtn = $itt.database.locales.Controls.$($itt.Language).installBtn
-                        $downloading = $itt.database.locales.Controls.$($itt.Language).downloading
-            
-                        # Chancge Install Content "Downloading.."
-                        UpdateUI -InstallBtn "$downloading" -icon " " -Width "150"
-            
-                        # Clear temporary files
-                        ClearTemp
-    
-                        # Display names of selected apps
-                        $selectedAppNames = $selectedApps | ForEach-Object { $_.Name }
-
-                        # Install selected apps
-                        $selectedApps | ForEach-Object {
-
-                            if ($_.Choco -ne "none")
-                            {
-                                Install-App -appName $_.Name -appChoco $_.Choco
-                                
-                            }elseif ($_.Winget -ne "none") {
-                                Install-App -appName $_.Name -appWinget $_.Winget
-                            }
-                            else
-                            {
-                                if($_.default.IsExcute -eq "true")
-                                {
-                                    Download-And-Install-Exe -name "$($_.Name)" -url  $_.default.url -type $_.default.extinction -exeArgs $_.default.exeArgs -outputDir "ITT\Downloads\" -run $_.default.run -shortcut $_.default.shortcut
-                                }
-                                else
-                                {
-                                    Download-And-ExtractZip -url $_.default.url -shortcutName "$($_.Name)" -exeFileName $_.default.launcher -run $_.default.run -Createshortcut $_.default.shortcut -exeArgs $_.default.exeArgs
-                                }
-                            }
-                        }
-    
-                        # End ProcessRunning
-                        $itt.ProcessRunning = $false
-
-                        # Notify user of successful installation
-                        Finish
-                }
-            }
-            else
-            {
-                # Uncheck all checkboxes in $list if user chose [NO]
-                $itt.AppsListView.Dispatcher.Invoke({
-                    foreach ($item in $itt.AppsListView.Items) {
-                        $item.Children | ForEach-Object {
-                            if ($_ -is [System.Windows.Controls.StackPanel]) {
-                                $_.Children | ForEach-Object {
-                                    if ($_ -is [System.Windows.Controls.CheckBox]) {
-                                        $_.IsChecked = $false
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    $itt.AppsListView.Clear()
-                    [System.Windows.Data.CollectionViewSource]::GetDefaultView($itt.AppsListView.Items).Filter = $null
-                })
-            }
-        }
-        else
-        {
-            # Uncheck all checkboxes in $list
-            $itt.category.SelectedIndex = 0
-            $itt.AppsListView.Dispatcher.Invoke({
-                $itt.AppsListView.Clear()
-                [System.Windows.Data.CollectionViewSource]::GetDefaultView($itt.AppsListView.Items).Filter = $null
-            })
-            $localizedMessageTemplate = $itt.database.locales.Controls.$($itt.Language).choseapp
-            [System.Windows.MessageBox]::Show("$localizedMessageTemplate", "ITT | Emad Adel", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
-        }
-    }
-    catch {
-        Write-Host "Error: $_"
-    }
-}
-function Invoke-Button {
-    Param ([string]$action)
-
-    # Helper function for debugging
-    function Debug-Message($message) {
-        #Write-Host "Debug: $message"
-    }
-
-    # Switch block to handle different actions
-    Switch -Wildcard ($action) {
-
-        "installBtn" {
-            $itt.SearchInput.Text = $null
-            Invoke-Install
-            Debug-Message $action
-        }
-        "applyBtn" {
-            Invoke-ApplyTweaks
-            Debug-Message $action
-        }
-        "taps" {
-            ChangeTap $action
-        }
-        "category" {
-            FilterByCat($itt.category.SelectedItem.Content)
-            Debug-Message $action
-        }
-        "searchInput" {
-            Search
-            $itt['window'].FindName('category').SelectedIndex = 0
-            Debug-Message $action
-        }
-
-        # Menu items
-        "ar" {
-            Set-Language -lang "ar"
-            Debug-Message $action
-        }
-        "en" {
-            Set-Language -lang "en"
-            Debug-Message $action
-        }
-        "fr" {
-            Set-Language -lang "fr"
-            Debug-Message $action
-        }
-        "tr" {
-            Set-Language -lang "tr"
-            Debug-Message $action
-        }
-        "zh" {
-            Set-Language -lang "zh"
-            Debug-Message $action
-        }
-        "ko" {
-            Set-Language -lang "ko"
-            Debug-Message $action
-        }
-        "de" {
-            Set-Language -lang "de"
-            Debug-Message $action
-        }
-        "ru" {
-            Set-Language -lang "ru"
-            Debug-Message $action
-        }
-        "es" {
-            Set-Language -lang "es"
-            Debug-Message $action
-        }
-        "save" {
-            SaveItemsToJson
-            Debug-Message $action
-        }
-        "load" {
-            LoadJson
-            Debug-Message $action
-        }
-
-        # Device Management
-        "deviceManager" {
-            Start-Process devmgmt.msc 
-            Debug-Message $action
-        }
-        "appsfeatures" {
-            Start-Process appwiz.cpl 
-            Debug-Message $action
-        }
-        "sysinfo" {
-            Start-Process msinfo32.exe
-            Start-Process dxdiag.exe 
-            Debug-Message $action
-        }
-        "poweroption" {
-            Start-Process powercfg.cpl 
-            Debug-Message $action
-        }
-        "services" {
-            Start-Process services.msc 
-            Debug-Message $action
-        }
-        "network" {
-            Start-Process ncpa.cpl
-            Debug-Message $action
-        }
-        "taskmgr" {
-            Start-Process taskmgr.exe 
-            Debug-Message $action
-        }
-        "diskmgmt" {
-            Start-Process diskmgmt.msc
-            Debug-Message $action
-        }
-
-        # Theme
-        "Dark" {
-            Switch-ToDarkMode
-            Debug-Message $action
-        }
-        "Light" {
-            Switch-ToLightMode
-            Debug-Message $action
-        }
-        "systheme" {
-            SwitchToSystem 
-            Debug-Message $action
-        }
-
-
-        # chocoloc
-         "chocoloc" {
-            Start-Process explorer.exe "C:\ProgramData\chocolatey\lib"
-            Debug-Message $action
-        }
-
-        # restore point
-        "restorepoint" {
-            RestorePoint
-            Debug-Message $action
-        }
-
-        # Music
-        "moff" {
-            MuteMusic -Value 0
-            Debug-Message $action
-        }
-        "mon" {
-            UnmuteMusic -Value 100
-            Debug-Message $action
-        }
-
-        # Mirror Links
-        "unhook" {
-            Start-Process "https://unhook.app/" 
-            Debug-Message $action
-        }
-        "uBlock" {
-            Start-Process "https://ublockorigin.com/" 
-            Debug-Message $action
-        }
-        "mas" {
-            Start-Process "https://github.com/massgravel/Microsoft-Activation-Scripts"
-            Debug-Message $action
-        }
-        "idm" {
-            Start-Process "https://github.com/WindowsAddict/IDM-Activation-Script"
-            Debug-Message $action
-        }
-        "neat" {
-            Start-Process "https://addons.mozilla.org/en-US/firefox/addon/neatdownloadmanager-extension/" 
-            Debug-Message $action
-        }
-
-        "winoffice" {
-            Start-Process "https://massgrave.dev/genuine-installation-media" 
-            Debug-Message $action
-        }
-        "sordum" {
-            Start-Process "https://www.sordum.org/" 
-            Debug-Message $action
-        }
-        "majorgeeks" {
-            Start-Process "https://www.majorgeeks.com/" 
-            Debug-Message $action
-        }
-
-        # Other actions
-        "ittshortcut" {
-            ITTShortcut $action
-            Debug-Message $action
-        }
-        "dev" {
-            About
-            Debug-Message $action
-        }
-
-        Default {
-            Write-Host "Unknown action: $action"
-        }
-    }
-}
-function Invoke-Toogle {
-
-    Param ([string]$debug)
-
-    # debug
-    #Write-Host $debug
-
-    Switch -Wildcard ($debug){
-
-        "ToggleShowExt" {Invoke-ShowFile-Extensions $(Get-ToggleStatus ToggleShowExt)}
-        "ToggleDarkMode" {Invoke-DarkMode $(Get-ToggleStatus ToggleDarkMode)}
-        "ToggleShowHidden" {Invoke-ShowFile $(Get-ToggleStatus ToggleShowHidden)}
-        "ToggleNumLook" {Invoke-NumLock $(Get-ToggleStatus ToggleNumLook)}
-        "ToggleStickyKeys" {Invoke-StickyKeys $(Get-ToggleStatus ToggleStickyKeys)}
-    }
-}
-Function Invoke-DarkMode {
-
-    Param($DarkMoveEnabled)
-    Try{
-
-        $DarkMode = (Get-ItemProperty -Path $itt.registryPath -Name "DarkMode").DarkMode
-
-
-        if ($DarkMoveEnabled -eq $false){
-            $DarkMoveValue = 0
-
-            if($DarkMode -eq "none")
-            {
-                $itt['window'].Resources.MergedDictionaries.Add($itt['window'].FindResource("Dark"))
-            }
-        }
-        else {
-            $DarkMoveValue = 1
-
-            if($DarkMode -eq "none")
-            {
-                $itt['window'].Resources.MergedDictionaries.Add($itt['window'].FindResource("Light"))
-            }
-        }
-
-        $Path = "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize"
-        Set-ItemProperty -Path $Path -Name AppsUseLightTheme -Value $DarkMoveValue
-        Set-ItemProperty -Path $Path -Name SystemUsesLightTheme -Value $DarkMoveValue
-
-        Stop-Process -Name explorer -Force
-    }
-    Catch [System.Security.SecurityException] {
-        Write-Warning "Unable to set $Path\$Name to $Value due to a Security Exception"
-    }
-    Catch [System.Management.Automation.ItemNotFoundException] {
-        Write-Warning $psitem.Exception.ErrorRecord
-    }
-    Catch{
-        Write-Warning "Unable to set $Name due to unhandled exception"
-        Write-Warning $psitem.Exception.StackTrace
-    }
-}
-function Invoke-NumLock {
-
-    param(
-        [Parameter(Mandatory = $true)]
-        [bool]$Enabled
-    )
-
-    try {
-        $value = if ($Enabled) { 0 } else { 2 }
-
-        New-PSDrive -PSProvider Registry -Name HKU -Root HKEY_USERS -ErrorAction Stop
-        $Path = "HKU:\.Default\Control Panel\Keyboard"
-        Set-ItemProperty -Path $Path -Name InitialKeyboardIndicators -Value $value -ErrorAction Stop
-    }
-    catch {
-        Write-Warning "An error occurred: $($_.Exception.Message)"
-    }
-}
-
-function Invoke-ShowFile {
-    Param($Enabled)
-    Try {
-        $value = if ($Enabled -eq $false) { 1 } else { 2 }
-
-        $hiddenItemsKey = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced"
-        
-        # Set registry values to show or hide hidden items
-        Set-ItemProperty -Path $hiddenItemsKey -Name Hidden -Value $value
-        Set-ItemProperty -Path $hiddenItemsKey -Name ShowSuperHidden -Value $value
-
-        Stop-Process -Name explorer -Force
-    }
-    Catch [System.Security.SecurityException] {
-        Write-Warning "Unable to set registry keys due to a Security Exception"
-    }
-    Catch [System.Management.Automation.ItemNotFoundException] {
-        Write-Warning $psitem.Exception.ErrorRecord
-    }
-    Catch {
-        Write-Warning "Unable to set registry keys due to unhandled exception"
-        Write-Warning $psitem.Exception.StackTrace
-    }
-}
-function Invoke-ShowFile-Extensions {
-   
-    Param($Enabled)
-    Try{
-        if ($Enabled -eq $false){
-            $value = 0
-        }
-        else {
-            $value = 1
-        }
-        $Path = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced"
-        Set-ItemProperty -Path $Path -Name HideFileExt -Value $value
-    }
-    Catch [System.Security.SecurityException] {
-        Write-Warning "Unable to set $Path\$Name to $Value due to a Security Exception"
-    }
-    Catch [System.Management.Automation.ItemNotFoundException] {
-        Write-Warning $psitem.Exception.ErrorRecord
-    }
-    Catch{
-        Write-Warning "Unable to set $Name due to unhandled exception"
-        Write-Warning $psitem.Exception.StackTrace
-    }
-}
-Function Invoke-StickyKeys {
-
-    Param($Enabled)
-    Try {
-        if ($Enabled -eq $false){
-            $value = 510
-            $value2 = 510
-        }
-        else {
-            $value = 58
-            $value2 = 122
-        }
-        $Path = "HKCU:\Control Panel\Accessibility\StickyKeys"
-        $Path2 = "HKCU:\Control Panel\Accessibility\Keyboard Response"
-        Set-ItemProperty -Path $Path -Name Flags -Value $value
-        Set-ItemProperty -Path $Path2 -Name Flags -Value $value2
-        Stop-Process -Name explorer -Force
-    }
-    Catch [System.Security.SecurityException] {
-        Write-Warning "Unable to set $Path\$Name to $Value due to a Security Exception"
-    }
-    Catch{
-        Write-Warning "Unable to set $Name due to unhandled exception"
-    }
-}
-function About {
-    # Load child window
-    [xml]$about = $childXaml
-    $childWindowReader = (New-Object System.Xml.XmlNodeReader $about)
-    $itt.about = [Windows.Markup.XamlReader]::Load($childWindowReader)
-    $itt["about"].Resources.MergedDictionaries.Add($itt["window"].FindResource($itt.CurretTheme))
-    # Set version and link handlers
-    $itt.about.FindName('ver').Text = "Last update $($itt.lastupdate)"
-    $itt.about.FindName("telegram").add_MouseLeftButtonDown({Start-Process("https://t.me/emadadel4")})
-    $itt.about.FindName("github").add_MouseLeftButtonDown({Start-Process("https://github.com/emadadel4/itt")})
-    $itt.about.FindName("blog").add_MouseLeftButtonDown({Start-Process("https://emadadel4.github.io")})
-    $itt.about.FindName("yt").add_MouseLeftButtonDown({Start-Process("https://youtube.com/@emadadel4")})
-    $itt.about.FindName("coffee").add_MouseLeftButtonDown({Start-Process("https://buymeacoffee.com/emadadel")})
-    # Set data context based on language
-    
-    $itt.about.DataContext = $itt.database.locales.Controls.en
-
-    $itt.about.ShowDialog() | Out-Null
-}
-function ITTShortcut {
-    # URL of the icon file
-    $iconUrl = "https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Icons/icon.ico"
-    
-    # Determine the path in AppData\Roaming
-    $appDataPath = [Environment]::GetFolderPath('ApplicationData')
-    $localIconPath = Join-Path -Path $appDataPath -ChildPath "ITTIcon.ico"
-    
-    # Download the icon file
-    Invoke-WebRequest -Uri $iconUrl -OutFile $localIconPath
-    
-    # Create a shortcut object
-    $Shortcut = (New-Object -ComObject WScript.Shell).CreateShortcut("$([Environment]::GetFolderPath('Desktop'))\ITT Emad Adel.lnk")
-    
-    # Set the target path to PowerShell with your command
-    $Shortcut.TargetPath = "$env:SystemRoot\System32\WindowsPowerShell\v1.0\powershell.exe"
-    $Shortcut.Arguments = "-ExecutionPolicy Bypass -Command ""irm bit.ly/emadadel | iex"""
-    
-    # Set the icon path to the downloaded icon file in AppData\Roaming
-    $Shortcut.IconLocation = "$localIconPath"
-    
-    # Save the shortcut
-    $Shortcut.Save()
-}
-
-function DisplayQuotes  {
-
-    Invoke-ScriptBlock -ScriptBlock {
-
-        # Define the JSON file path
-        $jsonFilePath = $itt.database.Quotes
-
-        # Function to shuffle an array
-        function ShuffleArray {
-            param (
-                [array]$Array
-            )
-            $count = $Array.Count
-            for ($i = $count - 1; $i -ge 0; $i--) {
-                $randomIndex = Get-Random -Minimum 0 -Maximum $count
-                $temp = $Array[$i]
-                $Array[$i] = $Array[$randomIndex]
-                $Array[$randomIndex] = $temp
-            }
-            return $Array
-        }
-
-        # Function to get names from the JSON file
-        function Get-NamesFromJson {
-            $jsonContent =  $jsonFilePath 
-            return $jsonContent.Q
-        }
-
-        # Get shuffled names
-        $shuffledNames = ShuffleArray -Array (Get-NamesFromJson)
-
-        # Function to display welcome text
-        function Display-WelcomeText {
-            $itt.Quotes.Dispatcher.Invoke([Action]{
-
-                $fullCulture = (Get-ItemPropertyValue -Path "HKCU:\Control Panel\International" -Name "LocaleName")
-                $shortCulture = $fullCulture.Split('-')[0]
-                $itt.Quotes.Text = $itt.database.locales.Controls.$($itt.Language).welcome
-               
-            })
-        }
-
-        # Display welcome text
-        Display-WelcomeText
-
-        Start-Sleep -Seconds 20
-
-        # Loop through shuffled names and display them
-        do {
-            foreach ($name in $shuffledNames) {
-                $itt.Quotes.Dispatcher.Invoke([Action]{
-                    $itt.Quotes.Text = "`“$name`”"
-                })
-                # Adjust the sleep time as needed
-                Start-Sleep -Seconds 18 
-            }
-        } while ($true)
-    }
-}
-function Search {
-
-    # Retrieves the search input, converts it to lowercase, and filters the list based on the input
-    $filter = $itt.searchInput.Text.ToLower() -replace '[^\p{L}\p{N}]', ''
-
-    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($itt['window'].FindName($itt.currentList).Items)
-    
-    $collectionView.Filter = {
-        param($item)
-        if ($item -is [System.Windows.Controls.StackPanel]) {
-            foreach ($child in $item.Children) {
-                if ($child -is [System.Windows.Controls.StackPanel]) {
-                    foreach ($innerChild in $child.Children) {
-                        if ($innerChild -is [System.Windows.Controls.CheckBox]) {
-                            if ($innerChild.Content -match $filter) {
-                                return $true
-                            }
-                        }
-                    }
-                }
-            }
-            return $false
-        }
-        return $true  # Non-StackPanel items are always included
-    }
-}
-function FilterByCat {
-
-    param ($Cat)
-
-    # Define the list of valid categories
-    $validCategories = @(
-        "Web Browsers",
-        "Media",
-        "Media Tools",
-        "Documents",
-        "Compression",
-        "Communication",
-        "File Sharing",
-        "Imaging",
-        "Gaming",
-        "Utilities",
-        "Disk Tools",
-        "Development",
-        "Security",
-        "Portable",
-        "Runtimes",
-        "Drivers"
-    )
-
-    # Update DataContext
-    #$itt["window"].DataContext = $itt.database.locales.Controls.$($itt.Language)
-
-    # if user is on another tab, return to the apps list
-    $itt['window'].FindName('apps').IsSelected = $true
-    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($itt.AppsListView.Items)
-
-    # Define the filter predicate
-    $filterPredicate = {
-        param($item)
-        
-        if ($item -is [System.Windows.Controls.StackPanel]) {
-            foreach ($child in $item.Children) {
-                if ($child -is [System.Windows.Controls.StackPanel]) {
-                    foreach ($innerChild in $child.Children) {
-                        if ($innerChild -is [System.Windows.Controls.CheckBox]) {
-                            # Define the tag you want to filter by
-                            $tagToFilter =  $Cat
-                            # Check if the item has the tag
-                            $itemTag = $innerChild.Tag
-                            return $itemTag -eq $tagToFilter
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    if ($validCategories -contains $Cat) {
-        # Apply the filter to the collection view
-        $itt.AppsListView.Clear()
-        $collectionView.Filter = $filterPredicate
-    }
-    else {
-        # Clear the filter if selected category is not in the predefined list
-        $itt.AppsListView.Clear()
-        $collectionView.Filter = $null
-    }
-    
-    # Scroll to the top
-    $itt.AppsListView.ScrollIntoView($itt.AppsListView.Items[0])
-}
-function ClearFilter {
-    $itt.AppsListView.Clear()
-    $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($itt.AppsListView.Items)
-    $collectionView.Filter = $null
-}
-$KeyEvents = {
-
-    if ($itt.ProcessRunning -eq $true) {
-        return
-    }
-
-    if (($_.Key -eq "Enter")) {
-
-        switch ($itt.currentList) {
-            "appslist" {
-                Invoke-Install                
-            }
-            "tweakslist" {
-                Invoke-ApplyTweaks
-            }
-        }
-    }
-
-    if (($_.Key -eq "S" -and $_.KeyboardDevice.Modifiers -eq "Ctrl")) {
-
-        switch ($itt.currentList) {
-            "appslist" {
-                Invoke-Install                
-            }
-            "tweakslist" {
-                Invoke-ApplyTweaks
-            }
-        }
-    }
-
-     # Quit from applaction
-     if (($_.Key -eq "G" -and $_.KeyboardDevice.Modifiers -eq "Ctrl")) {
-        $this.Close()
-    }
-
-    # Foucs on Search box
-    if (($_.Key -eq "F" -and $_.KeyboardDevice.Modifiers -eq "Ctrl")) {
-        $itt.SearchInput.Focus()
-    }
-
-    # Lost Foucs on Search box
-    if ($_.Key -eq "Escape") {
-        $itt.SearchInput.MoveFocus([System.Windows.Input.TraversalRequest]::New([System.Windows.Input.FocusNavigationDirection]::Next))
-        $itt.SearchInput.Text = ""
-    }
-
-    # Swtich to Apps tap
-    if ($_.Key -eq "Q" -and $_.KeyboardDevice.Modifiers -eq "Ctrl") {
-        $itt.TabControl.SelectedItem = $itt.TabControl.Items | Where-Object { $_.Name -eq "apps" }
-    }
-
-    # Swtich to tweaks tap
-    if ($_.Key -eq "W" -and $_.KeyboardDevice.Modifiers -eq "Ctrl") {
-        $itt.TabControl.SelectedItem = $itt.TabControl.Items | Where-Object { $_.Name -eq "tweeksTab" }
-    }
-
-    # Swtich to settings tap
-    if ($_.Key -eq "E" -and $_.KeyboardDevice.Modifiers -eq "Ctrl") {
-        $itt.TabControl.SelectedItem = $itt.TabControl.Items | Where-Object { $_.Name -eq "SettingsTab" }
-    }
-
-    # Swtich to settings tap
-    if ($_.Key -eq "I" -and $_.KeyboardDevice.Modifiers -eq "Ctrl") {
-        About
-    }
-
-    # SaveItemsToJson
-    if ($_.Key -eq "S" -and $_.KeyboardDevice.Modifiers -eq "Shift") {
-        SaveItemsToJson
-    }
-
-    # LoadJson
-    if ($_.Key -eq "D" -and $_.KeyboardDevice.Modifiers -eq "Shift") {
-        LoadJson
-    }
-
-    # Mute
-    if ($_.Key -eq "M" -and $_.KeyboardDevice.Modifiers -eq "Shift") {
-        MuteMusic -Value 0
-
-    }
-
-    # Music ON 
-    if ($_.Key -eq "F" -and $_.KeyboardDevice.Modifiers -eq "Shift") {
-        UnmuteMusic -Value 100
-    }
-
-    # Choco Folder
-    if ($_.Key -eq "P" -and $_.KeyboardDevice.Modifiers -eq "Shift") {
-        Start-Process explorer.exe "C:\ProgramData\chocolatey\lib"
-    }
-
-    # Restore point 
-    if ($_.Key -eq "Q" -and $_.KeyboardDevice.Modifiers -eq "Shift") {
-        RestorePoint
-    }
-
-    # ITT Shortcut 
-    if ($_.Key -eq "I" -and $_.KeyboardDevice.Modifiers -eq "Shift") {
-        ITTShortcut
-    }
-}
-
-$itt["window"].Add_PreViewKeyDown($KeyEvents)
-
-# Mute the music by setting the volume to the specified value
-function MuteMusic {
-    param($value)
-    $itt.mediaPlayer.settings.volume = $value
-    # Save the volume setting to the registry for persistence
-    Set-ItemProperty -Path $itt.registryPath -Name "Music" -Value "$value" -Force
-    $itt["window"].title = "Install Tweak Tool #StandWithPalestine 🔈"
-
-}
-
-# Unmute the music by setting the volume to the specified value
-function UnmuteMusic {
-    param($value)
-    $itt.mediaPlayer.settings.volume = $value
-    # Save the volume setting to the registry for persistence
-    Set-ItemProperty -Path $itt.registryPath -Name "Music" -Value "$value" -Force
-    $itt["window"].title = "Install Tweak Tool #StandWithPalestine 🔊"
-
-}
-
-# Stop the music and clean up resources
-function StopMusic {
-    $itt.mediaPlayer.controls.stop()    # Stop the media player
-    $itt.mediaPlayer = $null            # Clear the media player object
-    $script:powershell.Dispose()         # Dispose of the PowerShell object
-    $itt.runspace.Dispose()             # Dispose of the runspace
-    $itt.runspace.Close()               # Close the runspace
-}
-
-# Stop all runspaces, stop the music, and exit the process
-function StopAllRunspace {
-    $script:powershell.Dispose()         # Dispose of the PowerShell object
-    $itt.runspace.Dispose()             # Dispose of the runspace
-    $itt.runspace.Close()               # Close the runspace
-    $script:powershell.Stop()            # Stop the PowerShell script
-    StopMusic                            # Stop the music and clean up resources
-    $newProcess.exit                     # Exit the process
-    # Display a message reminding to pray for the oppressed
-    Write-Host "`n` Don't forget to pray for the oppressed people, Stand with Palestine" 
-}
-function Set-Language {
-    param (
-        [string]$lang  # Parameter for the language to set
-    )
-
-    # Set DataContext of the window to the specified language
-    $itt["window"].DataContext = $itt.database.locales.Controls.$($lang)
-
-    # Set registry value for the language
-    Set-ItemProperty -Path $itt.registryPath  -Name "locales" -Value "$lang" -Force
-}
-function ToggleTheme {
-    
-    try {
-
-        if ($itt.searchInput = $itt['window'].FindName('themeText').IsChecked -eq $true)
-        {
-            Switch-ToDarkMode
-        } 
-        else
-        {
-            Switch-ToLightMode
-        }
-        
-    }
-    catch {
-        Write-Host "Error toggling theme: $_"
-    }
-
-    $itt['window'].FindName('themeText').IsChecked = -not $itt['window'].FindName('themeText').IsChecked
-
-}
-function Switch-ToDarkMode {
-    try {
-
-        $theme = $itt['window'].FindResource("Dark")
-        Update-Theme $theme "true"
-    } catch {
-        Write-Host "Error switching to dark mode: $_"
-    }
-}
-function Switch-ToLightMode {
-    try {
-        $theme = $itt['window'].FindResource("Light")
-        Update-Theme $theme "false"
-    } catch {
-        Write-Host "Error switching to light mode: $_"
-    }
-}
-function Update-Theme ($theme, $mode) {
-    $itt['window'].Resources.MergedDictionaries.Clear()
-    $itt['window'].Resources.MergedDictionaries.Add($theme)
-    Set-ItemProperty -Path $itt.registryPath -Name "DarkMode" -Value $mode -Force
-
-}
-function SwitchToSystem {
-
-    try {
-
-        Set-ItemProperty -Path $itt.registryPath  -Name "DarkMode" -Value "none" -Force
-
-        $AppsTheme = (Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize" -Name "AppsUseLightTheme")
-
-        switch ($AppsTheme) {
-            "0" {
-                $itt['window'].Resources.MergedDictionaries.Add($itt['window'].FindResource("Dark"))
-            }
-            "1" {
-                $itt['window'].Resources.MergedDictionaries.Add($itt['window'].FindResource("Light"))
-            }
-            Default {
-                Write-Host "Unknown theme value: $AppsTheme"
-            }
-        }
-    }
-    catch {
-        Write-Host "Error occurred: $_"
-    }
-}
-
-# Invoke Event Window WPF
-function Show-Event {
-    param(
-        [string]$image,
-        [string]$title,
-        [string]$description,
-        [string]$day,
-        [string]$WindowHeight,
-        [string]$WindowWidth,
-        [string]$ImageHeight,
-        [string]$ImageWidth
-    )
-
-    [xml]$event = $EventXaml
-
-    $EventWindowReader = (New-Object System.Xml.XmlNodeReader $event)
-    $itt.event = [Windows.Markup.XamlReader]::Load($EventWindowReader)
-    $itt["event"].Resources.MergedDictionaries.Add($itt["window"].FindResource($itt.CurretTheme))
-    $itt.event.title = "ITT | $title"
-    $itt.event.Height = "$WindowHeight"
-    $itt.event.Width = "$WindowWidth"
-
-    # Set new values
-    $titleTextBlock = $itt.event.FindName('title')
-    $subtitleTextBlock = $itt.event.FindName('Subtitle')
-    $tutorialImage = $itt.event.FindName('Image')
-    $mainStackPanel = $itt.event.FindName('MainStackPanel')
-
-    $itt.event.FindName('date').Text = $itt.lastupdate
-
-    # Switch-like structure using switch statement
-    switch ($day) {
-
-        "Birthday" {
-            $titleTextBlock.Text = "$title"
-            $tutorialImage.Source = [System.Windows.Media.Imaging.BitmapImage]::new([Uri]::new($image))
-            $subtitleTextBlock.Text = "$description"
-            $itt.event.FindName('DisablePopup').Text = "Happy birthday day Emad"
-            $tutorialImage.Height = $ImageHeight
-            $subtitleTextBlock.VerticalAlignment = "Center"
-            $subtitleTextBlock.HorizontalAlignment = "Center"
-            $subtitleTextBlock.FontSize = "20"
-
-            $itt.event.FindName("DisablePopup").add_MouseLeftButtonDown({
-                $itt.event.FindName("DisablePopup").Text = "Thank you :)"
-            })
-        }
-        Default {
-
-            # Check RTL & LTR
-            if($itt.Language -ne "ar")
-            {
-                $titleTextBlock.Text = "$title $env:USERNAME" 
-                $subtitleTextBlock.Text = "$description"
-
-            }else
-            {
-                $titleTextBlock.Text = "$env:USERNAME $title " 
-                $subtitleTextBlock.Text = "$description"
-            }
-
-            # Lazy loading image event handler
-            $tutorialImage.add_IsVisibleChanged({
-                if ($_.IsVisible) {
-                    $tutorialImage.Source = [System.Windows.Media.Imaging.BitmapImage]::new([Uri]::new($image))
-                }
-            })
-                    
-            $tutorialImage.add_MouseLeftButtonDown({
-                Start-Process("https://youtu.be/QmO82OTsU5c")
-            })
-
-            $itt.event.FindName("DisablePopup").add_MouseLeftButtonDown({
-                DisablePopup
-                $itt.event.Close()
-            })
-        }
-    }
-
-    $itt.event.FindName("closebtn").add_MouseLeftButtonDown({
-        $itt.event.Close()
-    })
-
-    $KeyEvents = {
-
-        # Close
-        if ($_.Key -eq "Escape") {
-            $itt.event.Close()
-        }
-    }
-    $itt.event.Add_PreViewKeyDown($KeyEvents)
-
-    # Show dialog
-    $itt.event.ShowDialog() | Out-Null
-}
-
-# Function to check current date and call Show-Event
-function Check-Date {
-
-    $watchdemo = $itt.database.locales.Controls.$($itt.Language).watchdemo
-    $happybirthday = $itt.database.locales.Controls.$($itt.Language).happybirthday
-    $myplaylist = $itt.database.locales.Controls.$($itt.Language).myplaylist
-    $subs = $itt.database.locales.Updates.Keyboard
-
-    if ($itt.Date.Month -eq 9 -and $itt.Date.Day -eq 1) 
-    {
-        Show-Event -image "https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/happy.jpg" -ImageHeight 400 -title "$happybirthday" -description "$myplaylist" -day "Birthday" -WindowHeight 600 -WindowWidth 486
-    } 
-    else 
-    {
-        if($itt.PopupWindow -eq "off") {return}   
-        Show-Event -image "https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/thumbnail.jpg" -title "$watchdemo" -description "$subs" -day "Default" -WindowHeight 500 -WindowWidth 486
-    }
-}
-
-# Save Current State event
-function DisablePopup {
-    Set-ItemProperty -Path $itt.registryPath  -Name "PopupWindow" -Value "off" -Force
-}
 #===========================================================================
 #region Select elements with a Name attribute using XPath and iterate over them
 #===========================================================================
@@ -15721,9 +15549,12 @@ $itt["window"].Add_Loaded({
 # Close Event handler
 $itt["window"].add_Closing($onClosingEvent)
 
+# Keyboard shortcut
+$itt["window"].Add_PreViewKeyDown($KeyEvents)
+
 # Show Window
 $itt["window"].ShowDialog() | Out-Null
 
 #===========================================================================
-#endregion End Main Functions
+#endregion End Main
 #===========================================================================
