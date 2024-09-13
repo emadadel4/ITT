@@ -277,9 +277,7 @@
       }
     ],
     "InvokeCommand": [
-      "
-         DISM /Online /Remove-Capability /CapabilityName:Microsoft.Windows.MSPaint~~~~0.0.1.0
-      "
+      "\r\n         DISM /Online /Remove-Capability /CapabilityName:Microsoft.Windows.MSPaint~~~~0.0.1.0\r\n      "
     ],
     "UndoCommand": [
       ""
@@ -1676,5 +1674,16 @@
     "UndoCommand": [
       ""
     ]
+  },
+  {
+    "Name": "Enable NET 3.5",
+    "Description": "Some old games and applications require .NET Framework 3.5.",
+    "Check": "false",
+    "Type": "command",
+    "Refresh": "false",
+    "InvokeCommand": [
+      "DISM /Online /Enable-Feature /FeatureName:NetFx3 /All"
+    ],
+    "UndoCommand": []
   }
 ]
