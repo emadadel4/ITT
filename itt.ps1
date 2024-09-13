@@ -10031,7 +10031,7 @@ function Invoke-ApplyTweaks {
 
    if($result -eq "no") 
     {
-        #Show-Selected -ListView "TweaksListView" -Mode "Default"
+        Show-Selected -ListView "TweaksListView" -Mode "Default"
         Clear-Item -ListView "TweaksListView"
         return
     }
