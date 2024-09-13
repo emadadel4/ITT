@@ -1,4 +1,19 @@
 function ITTShortcut {
+
+    <#
+        .SYNOPSIS
+        Creates a desktop shortcut for launching a PowerShell script with a custom icon.
+
+        .DESCRIPTION
+        The `ITTShortcut` function creates a shortcut on the user's desktop that points to a PowerShell executable with a specified command.
+        It downloads a custom icon from a specified URL, saves it to the `AppData\Roaming` folder, and sets this icon for the shortcut.
+        The PowerShell script specified in the shortcut executes a command to run a script from a provided URL.
+
+        .NOTES
+        - Ensure that you have internet access to download the icon.
+        - The command executed by the shortcut should be valid and accessible.
+    #>
+
     # URL of the icon file
     $iconUrl = "https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Icons/icon.ico"
     
