@@ -8,11 +8,11 @@ function Install-App {
 
     Install-Choco
 
-        $chocoApp = Join-Path "C:\ProgramData\chocolatey\lib\$appName"
-
-        if(Test-Path $chocoApp){
-            Remove-Item -Path $chocoApp -Force -Recurse
-        }
+    if(Test-Path "C:\ProgramData\chocolatey\lib"){
+        Remove-Item -Path "C:\ProgramData\chocolatey\lib\$appChoco" -Force -Recurse
+        # debug
+        #Add-Log -Message "C:\ProgramData\chocolatey\lib\$appChoco" -Level "INFO"
+    }
         
     $chocoResult = $(Start-Process -FilePath "choco" -ArgumentList "install $appChoco --confirm --acceptlicense -q -r --ignore-http-cache --allowemptychecksumsecure --allowemptychecksum --usepackagecodes --ignoredetectedreboot --ignore-checksums --ignore-reboot-requests" -Wait -NoNewWindow -PassThru).ExitCode
 
