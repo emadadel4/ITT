@@ -19,10 +19,10 @@ function UpdateUI {
     $itt['window'].Dispatcher.Invoke([Action]{
 
         # Button and Button Text
-        $itt.$ButtonText.Text = "$applyBtn"
         $itt.$Button.Width = $Width
+        $itt.$ButtonText.Text = "$applyBtn"
 
         # Textblock as Icon
-        $itt.$icon.Text = $TextIcon
+        $itt.$TextIcon.Text = "$icon"
     })
 }

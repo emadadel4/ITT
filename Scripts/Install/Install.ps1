@@ -139,7 +139,7 @@ function Invoke-ApplyTweaks {
         }
 
         $itt.ProcessRunning = $false
-        UpdateUI -Button "ApplyBtn" -ButtonText "applyText" -Content "applyBtn" -TextIcon "installIcon" -Icon "  "
+        UpdateUI -Button "ApplyBtn" -ButtonText "applyText" -Content "applyBtn" -TextIcon "applyIcon" -Icon "  "
         Finish -ListView "TweaksListView"
         Add-Log -Message "Finished, Some tweaks require restarting" -Level "INFO"
     }
