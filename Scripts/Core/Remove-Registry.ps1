@@ -1,5 +1,5 @@
 function Remove-Registry {
-    
+
     <#
         .SYNOPSIS
         Deletes a specified registry key and all its subkeys.
@@ -16,11 +16,6 @@ function Remove-Registry {
         .EXAMPLE
         Remove-Registry -RegistryPath "HKCU\Software\MyCompany" -Folder "MyApp"
         Deletes the registry key "MyApp" located under "HKCU\Software\MyCompany" and all of its subkeys.
-
-        .NOTES
-        File Name      : Remove-Registry.ps1
-        Author          : Your Name
-        Prerequisite    : Ensure you have the necessary permissions to modify the registry.
     #>
 
     param (
