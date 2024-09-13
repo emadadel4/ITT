@@ -10,8 +10,6 @@ $InitialSessionState.Variables.Add($hashVars)
 
 $desiredFunctions = @(
 'Invoke-Tweaks',
-'Remove-Registry',
-'Set-Registry',
 'Invoke-Install' , 
 'Install-App' , 
 'InvokeCommand' ,
@@ -26,11 +24,10 @@ $desiredFunctions = @(
 'Download-And-ExtractZip',
 'Install-Choco',
 'ExecuteCommand',
-'Set-RegistryValue',
+'Set-Registry',
 'Remove-Registry',
 'Disable-Service',
-'Uninstall-AppxPackage',
-'Remove-Registry'
+'Uninstall-AppxPackage'
 )
 
 $functions = Get-ChildItem function:\ | Where-Object { $_.Name -in $desiredFunctions }

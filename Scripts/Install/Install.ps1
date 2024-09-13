@@ -109,7 +109,7 @@ function Invoke-ApplyTweaks {
                 }
                 "Registry" {
                     $tweak.Modify | ForEach-Object {
-                        Set-RegistryValue -Name $_.Name -Type $_.Type -Path $_.Path -Value $_.Value
+                        Set-Registry -Name $_.Name -Type $_.Type -Path $_.Path -Value $_.Value
                     }
                     $tweak.Delete | ForEach-Object {
                         Remove-Registry -RegistryPath $_.Path -Folder $_.Name
