@@ -2,27 +2,29 @@ function Set-Registry {
 
     param (
         $Name,
-        $Path,
         $Type,
+        $Path,
         $Value
     )
-
-    try {
-        if(!(Test-Path 'HKU:\')) {New-PSDrive -PSProvider Registry -Name HKU -Root HKEY_USERS}
-
-        If (!(Test-Path $Path)) {
-            Write-Host "$Path was not found, Creating..."
-            New-Item -Path $Path -Force -ErrorAction Stop | Out-Null
+    
+    try
+    {
+        # Check if the registry path exists
+        if (-not (Test-Path -Path $Path)) {
+            Write-Output "Registry path does not exist. Creating it..."
+            # Try to create the registry path
+            try {
+                New-Item -Path $Path -Name $Name -Type $Type -Value $Value -Force -ErrorAction Stop | Out-Null
+                #Add-Log -Message "Registry path created successfully." -Level "INFO"
+            } catch {
+                Add-Log -Message "Failed to create registry path: $_" -Level "ERROR"
+            }
+        } else {
+            Set-ItemProperty -Path $Path -Name $Name -Type $Type -Value $Value -Force -ErrorAction Stop
         }
+    }
 
-        Write-Host "Set $Path\$Name to $Value"
-        Set-ItemProperty -Path $Path -Name $Name -Type $Type -Value $Value -Force -ErrorAction Stop | Out-Null
-    } catch [System.Security.SecurityException] {
-        Write-Warning "Unable to set $Path\$Name to $Value due to a Security Exception"
-    } catch [System.Management.Automation.ItemNotFoundException] {
-        Write-Warning $psitem.Exception.ErrorRecord
-    } catch {
-        Write-Warning "Unable to set $Name due to unhandled exception"
-        Write-Warning $psitem.Exception.StackTrace
+    catch {
+        Write-Error "An error occurred: $_"
     }
 }
