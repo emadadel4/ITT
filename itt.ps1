@@ -23,7 +23,7 @@ Add-Type -AssemblyName WindowsBase
 $itt = [Hashtable]::Synchronized(@{
     database       = @{}
     ProcessRunning = $false
-    lastupdate     = "09/12/2024"
+    lastupdate     = "09/13/2024"
     github         = "https://github.com/emadadel4"
     telegram       = "https://t.me/emadadel4"
     website        = "https://emadadel4.github.io"
@@ -8848,6 +8848,31 @@ function Add-Log {
     Write-Host "" -ForegroundColor $color
 
 }
+function Disable-Service {
+    
+    param(
+        $ServiceName,
+        $StartupType
+    )
+
+    try {
+
+
+        # Check if the service exists
+        if (Get-Service -Name $ServiceName -ErrorAction SilentlyContinue) {
+            Set-Service -Name $ServiceName -StartupType $StartupType -ErrorAction Stop
+            Stop-Service -Name $ServiceName 
+            Add-Log -Message "Service '$ServiceName' disabled." -Level "INFO"
+        }
+        else {
+            Add-Log -Message "Service '$ServiceName' not found." -Level "INFO"
+        }
+    }
+    catch
+    {
+        Write-Host "Failed to disable service '$ServiceName'. Error: $_" -ForegroundColor Red
+    }
+}
 function ExecuteCommand {
 
     <#
@@ -9575,6 +9600,34 @@ function SaveItemsToJson {
 
 }
 
+function Set-Registry {
+
+    param (
+        $Name,
+        $Path,
+        $Type,
+        $Value
+    )
+
+    try {
+        if(!(Test-Path 'HKU:\')) {New-PSDrive -PSProvider Registry -Name HKU -Root HKEY_USERS}
+
+        If (!(Test-Path $Path)) {
+            Write-Host "$Path was not found, Creating..."
+            New-Item -Path $Path -Force -ErrorAction Stop | Out-Null
+        }
+
+        Write-Host "Set $Path\$Name to $Value"
+        Set-ItemProperty -Path $Path -Name $Name -Type $Type -Value $Value -Force -ErrorAction Stop | Out-Null
+    } catch [System.Security.SecurityException] {
+        Write-Warning "Unable to set $Path\$Name to $Value due to a Security Exception"
+    } catch [System.Management.Automation.ItemNotFoundException] {
+        Write-Warning $psitem.Exception.ErrorRecord
+    } catch {
+        Write-Warning "Unable to set $Name due to unhandled exception"
+        Write-Warning $psitem.Exception.StackTrace
+    }
+}
 function Startup  {
 
     Invoke-ScriptBlock -ScriptBlock {
@@ -9968,7 +10021,7 @@ function Invoke-ApplyTweaks {
                 }
                 "Registry" {
                     $tweak.Modify | ForEach-Object {
-                        Set-RegistryValue -Name $_.Name -Type $_.Type -Path $_.Path -Value $_.Value
+                        Set-Registry -Name $_.Name -Type $_.Type -Path $_.Path -Value $_.Value
                     }
                     $tweak.Delete | ForEach-Object {
                         Remove-Registry -RegistryPath $_.Path -Folder $_.Name
@@ -15227,8 +15280,6 @@ $InitialSessionState.Variables.Add($hashVars)
 
 $desiredFunctions = @(
 'Invoke-Tweaks',
-'Remove-Registry',
-'Set-Registry',
 'Invoke-Install' , 
 'Install-App' , 
 'InvokeCommand' ,
@@ -15243,11 +15294,10 @@ $desiredFunctions = @(
 'Download-And-ExtractZip',
 'Install-Choco',
 'ExecuteCommand',
-'Set-RegistryValue',
+'Set-Registry',
 'Remove-Registry',
 'Disable-Service',
-'Uninstall-AppxPackage',
-'Remove-Registry'
+'Uninstall-AppxPackage'
 )
 
 $functions = Get-ChildItem function:\ | Where-Object { $_.Name -in $desiredFunctions }
