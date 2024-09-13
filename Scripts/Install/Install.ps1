@@ -208,7 +208,7 @@ function Invoke-ApplyTweaks {
                     $tweak.Command | ForEach-Object {
                         ExecuteCommand -Name $tweak.Name -Command $tweak.Command 
                         # debug
-                        Write-Host $tweak.Command
+                        #Write-Host $tweak.Command
                     }
                 }
                 "service" {
