@@ -106,7 +106,6 @@ function Invoke-ApplyTweaks {
 
         $itt.ProcessRunning = $true
         UpdateUI -Button "ApplyBtn" -ButtonText "applyText" -Content "Applying" -TextIcon "applyIcon" -Icon "  " -Width "120"
-        Add-Log -Message $selectedApps.Name -Level "INFO" 
 
         foreach ($tweak in $selectedApps) {
 
@@ -118,9 +117,11 @@ function Invoke-ApplyTweaks {
                 "Registry" {
                     $tweak.Modify | ForEach-Object {
                         Set-Registry -Name $_.Name -Type $_.Type -Path $_.Path -Value $_.Value
+                        Add-Log -Message $tweak.Name -Level "INFO" 
                     }
                     $tweak.Delete | ForEach-Object {
                         Remove-Registry -RegistryPath $_.Path -Folder $_.Name
+                        Add-Log -Message $tweak.Name -Level "INFO" 
                     }
                     if($tweak.Refresh -eq "true")
                     {
