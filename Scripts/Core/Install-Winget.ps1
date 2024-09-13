@@ -1,5 +1,36 @@
 function Install-Winget {
 
+    <#
+        .SYNOPSIS
+        Installs the Windows Package Manager (`winget`) and its dependencies.
+
+        .DESCRIPTION
+        This function installs `winget` by first checking if it is already installed on the system. If not, it downloads and installs the necessary dependencies:
+        1. `Microsoft.VCLibs` package.
+        2. `Microsoft.UI.Xaml` package.
+        3. The `Microsoft Store App Installer` which includes `winget`.
+
+        It also ensures that the `winget` path is added to the system environment variables if it is not already present.
+
+        .PARAMETER None
+        This function does not require any parameters.
+
+        .EXAMPLE
+        Install-Winget
+
+        .EXAMPLE
+        If you want to run this function in a PowerShell script, just call `Install-Winget`. This will download and install `winget` and its prerequisites if they are not already installed on the system.
+
+        .NOTES
+        - The function determines the OS architecture (32-bit or 64-bit) and selects the appropriate package URLs for `Microsoft.VCLibs` and `Microsoft.UI.Xaml`.
+        - It checks for the existence of `winget` using `Get-Command`. If `winget` is found, the function exits without making changes.
+        - It downloads the necessary `.appx` packages and installs them using `Add-AppxPackage`.
+        - It downloads and installs the `Microsoft Store App Installer` which includes `winget`.
+        - The function attempts to add the `winget` path to the system environment variables if it is not already included.
+        - The function includes error handling to throw a custom exception if the installation of prerequisites fails.
+    #>
+
+
     $versionVCLibs = "14.00"
     $versionUIXamlMinor = "2.8"
     $versionUIXamlPatch = "2.8.6"

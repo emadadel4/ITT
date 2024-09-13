@@ -1,4 +1,5 @@
 function Install-Choco {
+    
     <#
     .SYNOPSIS
     Installs Chocolatey if it is not already installed on the system.

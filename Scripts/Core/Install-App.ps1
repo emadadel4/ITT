@@ -1,5 +1,6 @@
 
 function Install-App {
+    
      <#
     .SYNOPSIS
     Installs an application using Chocolatey or Winget based on availability and installation status.

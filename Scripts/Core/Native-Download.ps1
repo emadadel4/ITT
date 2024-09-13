@@ -1,4 +1,5 @@
 function Download-And-ExtractZip {
+    
     <#
     .SYNOPSIS
     Downloads a ZIP file from a URL, extracts its contents to a specified directory, and optionally creates a shortcut and runs an executable.
@@ -119,7 +120,7 @@ function Download-And-Install-Exe {
     Downloads the executable from the specified URL, saves it to `C:\ProgramData\Installers\ExampleApp\ExampleApp.exe`, creates a shortcut to the executable on the desktop, and runs the executable with the `/silent` argument.
 
     #>
-    
+
     param (
         [string]$name,
         [string]$url,
