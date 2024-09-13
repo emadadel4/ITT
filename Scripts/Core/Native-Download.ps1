@@ -1,4 +1,34 @@
 function Download-And-ExtractZip {
+    <#
+    .SYNOPSIS
+    Downloads a ZIP file from a URL, extracts its contents to a specified directory, and optionally creates a shortcut and runs an executable.
+
+    .DESCRIPTION
+    This function downloads a ZIP file from the provided URL, extracts the contents to a specified destination directory, and optionally creates a shortcut to an executable file on the desktop. It can also run the executable with optional arguments. The function includes error handling and logging to track the process.
+
+    .PARAMETER url
+    The URL of the ZIP file to be downloaded. This is a required parameter.
+
+    .PARAMETER destinationDir
+    The directory where the ZIP file will be downloaded and extracted. The default is "C:\ProgramData\ITT\Downloads".
+
+    .PARAMETER Createshortcut
+    Specifies whether to create a shortcut to the executable file. Accepts "yes" or "no". Default is not specified.
+
+    .PARAMETER exeFileName
+    The name of the executable file to create a shortcut for. This parameter is required if `Createshortcut` is set to "yes".
+
+    .PARAMETER run
+    Specifies whether to run the executable after extraction. Accepts "yes" or "no". Default is not specified.
+
+    .PARAMETER exeArgs
+    Arguments to be passed to the executable when it is run. This parameter is optional.
+
+    .EXAMPLE
+    Download-And-ExtractZip -url "http://example.com/file.zip" -destinationDir "C:\Temp" -Createshortcut "yes" -exeFileName "setup.exe" -run "yes" -exeArgs "/silent"
+    Downloads the ZIP file from the specified URL, extracts it to "C:\Temp", creates a shortcut to "setup.exe" on the desktop, and runs the executable with the "/silent" argument.
+    #>
+    
     param (
         [string]$url,
         [string]$destinationDir = "C:\ProgramData\ITT\Downloads",
