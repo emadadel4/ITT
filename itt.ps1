@@ -7142,6 +7142,27 @@ $itt.database.Tweaks = '[
     ]
   },
   {
+    "Name": "Remove Windows 10/11 Bloatware",
+    "Description": "BingNews, GetHelp, Getstarted, Messaging, Microsoft3DViewer, MicrosoftOfficeHub, MicrosoftSolitaireCollection, News, Office.Lens, Office.OneNote, Office.Sway, OneConnect, People, Print3D, RemoteDesktop, SkypeApp, StorePurchaseApp, Office.Todo.List, Whiteboard, WindowsAlarms, WindowsCamera, windowscommunicationsapps, WindowsFeedbackHub, WindowsMaps, WindowsSoundRecorder, Xbox.TCUI, XboxApp, XboxGameOverlay, XboxIdentityProvider, XboxSpeechToTextOverlay, ZuneMusic, ZuneVideo, Windows.Cortana, MSPaint, Clipchamp",
+    "Check": "false",
+    "Category": "Performance",
+    "Type": "AppxPackage",
+    "Refresh": "false",
+    "RemoveAppxPackage": [
+      {
+        "Name": "Microsoft.BingNews"
+      }
+    ],
+    "InvokeCommand": [
+      "
+         DISM /Online /Remove-Capability /CapabilityName:Microsoft.Windows.MSPaint~~~~0.0.1.0
+      "
+    ],
+    "UndoCommand": [
+      ""
+    ]
+  },
+  {
     "Name": "Restore All Windows Services to Default",
     "Description": "If you face a problem with some system services, you can restore all services to Default.",
     "Check": "false",
@@ -7705,253 +7726,6 @@ $itt.database.Tweaks = '[
         "Name": "DiagTrack",
         "StartupType": "Disabled",
         "DefaultType": "Manual"
-      }
-    ],
-    "InvokeCommand": [
-      ""
-    ],
-    "UndoCommand": [
-      ""
-    ]
-  },
-  {
-    "Name": "Remove Windows 10/11 Bloatware",
-    "Description": "BingNews, GetHelp, Getstarted, Messaging, Microsoft3DViewer, MicrosoftOfficeHub, MicrosoftSolitaireCollection, News, Office.Lens, Office.OneNote, Office.Sway, OneConnect, People, Print3D, RemoteDesktop, SkypeApp, StorePurchaseApp, Office.Todo.List, Whiteboard, WindowsAlarms, WindowsCamera, windowscommunicationsapps, WindowsFeedbackHub, WindowsMaps, WindowsSoundRecorder, Xbox.TCUI, XboxApp, XboxGameOverlay, XboxIdentityProvider, XboxSpeechToTextOverlay, ZuneMusic, ZuneVideo, Windows.Cortana, MSPaint, Clipchamp",
-    "Check": "false",
-    "Category": "Performance",
-    "Type": "AppxPackage",
-    "Refresh": "false",
-    "RemoveAppxPackage": [
-      {
-        "Name": "Microsoft.BingNews"
-      },
-      {
-        "Name": "Microsoft.WindowsCamera"
-      },
-      {
-        "Name": " Microsoft.Getstarted"
-      },
-      {
-        "Name": "Microsoft.MicrosoftEdge.Stable"
-      },
-      {
-        "Name": "Microsoft.MicrosoftEdgeDevToolsClient"
-      },
-      {
-        "Name": "Microsoft.BingWeather_1.0.6.0_x64__8wekyb3d8bbwe"
-      },
-      {
-        "Name": "MicrosoftWindows.Client.WebExperience_cw5n1h2txyewy"
-      },
-      {
-        "Name": "Microsoft.GetHelp"
-      },
-      {
-        "Name": "Microsoft.AppConnector"
-      },
-      {
-        "Name": "Microsoft.BingFinance"
-      },
-      {
-        "Name": "Microsoft.XboxGamingOverlay"
-      },
-      {
-        "Name": "Microsoft.BingTranslator"
-      },
-      {
-        "Name": "Microsoft.BingHealthAndFitness"
-      },
-      {
-        "Name": "Microsoft.BingTravel"
-      },
-      {
-        "Name": "Microsoft.MinecraftUWP"
-      },
-      {
-        "Name": "Microsoft.GamingServices"
-      },
-      {
-        "Name": "Microsoft.BingFoodAndDrink"
-      },
-      {
-        "Name": "Microsoft.BingWeather"
-      },
-      {
-        "Name": "Microsoft.Messaging"
-      },
-      {
-        "Name": "Microsoft.Microsoft3DViewer"
-      },
-      {
-        "Name": "Microsoft.MicrosoftOfficeHub"
-      },
-      {
-        "Name": "Microsoft.MicrosoftSolitaireCollection"
-      },
-      {
-        "Name": "Microsoft.NetworkSpeedTest"
-      },
-      {
-        "Name": "Microsoft.News"
-      },
-      {
-        "Name": "Microsoft.549981C3F5F10"
-      },
-      {
-        "Name": "Microsoft.Office.Lens"
-      },
-      {
-        "Name": "Microsoft.Office.OneNote"
-      },
-      {
-        "Name": "Microsoft.Office.Sway"
-      },
-      {
-        "Name": "Microsoft.OneConnect"
-      },
-      {
-        "Name": "Microsoft.People"
-      },
-      {
-        "Name": "Microsoft.Print3D"
-      },
-      {
-        "Name": "Microsoft.RemoteDesktop"
-      },
-      {
-        "Name": "Microsoft.SkypeApp"
-      },
-      {
-        "Name": "Microsoft.StorePurchaseApp"
-      },
-      {
-        "Name": "Microsoft.Office.Todo.List"
-      },
-      {
-        "Name": "Microsoft.Whiteboard"
-      },
-      {
-        "Name": "Microsoft.WindowsAlarms"
-      },
-      {
-        "Name": "Microsoft.WindowsCamera"
-      },
-      {
-        "Name": "Microsoft.windowscommunicationsapps"
-      },
-      {
-        "Name": "Microsoft.WindowsFeedbackHub"
-      },
-      {
-        "Name": "Microsoft.Wallet"
-      },
-      {
-        "Name": "Microsoft.WindowsMaps"
-      },
-      {
-        "Name": "Microsoft.YourPhone"
-      },
-      {
-        "Name": "Microsoft.WindowsSoundRecorder"
-      },
-      {
-        "Name": "Microsoft.Xbox.TCUI"
-      },
-      {
-        "Name": "Microsoft.XboxApp"
-      },
-      {
-        "Name": "Microsoft.XboxGameOverlay"
-      },
-      {
-        "Name": "Microsoft.GamingApp"
-      },
-      {
-        "Name": "Microsoft.XboxIdentityProvider"
-      },
-      {
-        "Name": "Microsoft.XboxSpeechToTextOverlay"
-      },
-      {
-        "Name": "Microsoft.Windows.Cortana"
-      },
-      {
-        "Name": "Microsoft.ScreenSketch"
-      },
-      {
-        "Name": "Microsoft.Windows.DevHome"
-      },
-      {
-        "Name": "Microsoft.MixedReality.Portal"
-      },
-      {
-        "Name": "Microsoft.MSPaint"
-      },
-      {
-        "Name": "Microsoft.Getstarted"
-      },
-      {
-        "Name": "Microsoft.ZuneMusic"
-      },
-      {
-        "Name": "Microsoft.ZuneVideo"
-      },
-      {
-        "Name": "EclipseManager"
-      },
-      {
-        "Name": "ActiproSoftwareLLC"
-      },
-      {
-        "Name": "AdobeSystemsIncorporated.AdobePhotoshopExpress"
-      },
-      {
-        "Name": "Duolingo-LearnLanguagesforFree"
-      },
-      {
-        "Name": "PandoraMediaInc"
-      },
-      {
-        "Name": "CandyCrush"
-      },
-      {
-        "Name": "BubbleWitch3Saga"
-      },
-      {
-        "Name": "Wunderlist"
-      },
-      {
-        "Name": "Flipboard"
-      },
-      {
-        "Name": "Twitter"
-      },
-      {
-        "Name": "Facebook"
-      },
-      {
-        "Name": "Minecraft"
-      },
-      {
-        "Name": "Royal Revolt"
-      },
-      {
-        "Name": "Sway"
-      },
-      {
-        "Name": "Microsoft.549981"
-      },
-      {
-        "Name": "Microsoft.MicrosoftStickyNotes"
-      },
-      {
-        "Name": "TikTok.TikTok_8wekyb3d8bbwe"
-      },
-      {
-        "Name": "TikTok"
-      },
-      {
-        "Name": "Microsoft.NetworkSpeedTest"
       }
     ],
     "InvokeCommand": [
@@ -10452,7 +10226,7 @@ function Invoke-ApplyTweaks {
             switch ($tweak.Type) {        
         
                 "command" {
-                    $tweak.Command | ForEach-Object { ExecuteCommand -Name $tweak.Name -Command $_ }
+                    $tweak.Command | ForEach-Object { ExecuteCommand -Name $tweak.Name -Command $tweak.Command}
                 }
                 "Registry" {
                     $tweak.Modify | ForEach-Object {
@@ -10468,7 +10242,12 @@ function Invoke-ApplyTweaks {
                     }
                 }
                 "AppxPackage" {
-                    $tweak.removeAppxPackage | ForEach-Object { Uninstall-AppxPackage -Name $_.Name }
+                    #$tweak.removeAppxPackage | ForEach-Object { Uninstall-AppxPackage -Name $_.Name }
+                    $tweak.Command | ForEach-Object {
+                        ExecuteCommand -Name $tweak.Name -Command $tweak.Command 
+                        # debug
+                        Write-Host $tweak.Command
+                    }
                 }
                 "service" {
                     $tweak.Service | ForEach-Object { Disable-Service -ServiceName $_.Name -StartupType $_.StartupType }
@@ -15366,6 +15145,14 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
 
         <StackPanel Orientation="Vertical" Width="auto" Margin="10">
             <StackPanel Orientation="Horizontal">
+                <CheckBox Content="Remove Windows 10/11 Bloatware"     ToolTip="Install it again to update" FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content="Performance"/>
+            </StackPanel>
+                <TextBlock Width="555" Background="Transparent" Margin="8" Foreground="{DynamicResource DefaultTextColor2}"  FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="BingNews GetHelp Getstarted Messaging Microsoft3DViewer MicrosoftOfficeHub MicrosoftSolitaireCollection News OfficeLens OfficeOneNote OfficeSway OneConnect People Print3D RemoteDesktop SkypeApp StorePurchaseApp OfficeTodoList Whiteboard WindowsAlarms WindowsCamera windowscommunicationsapps WindowsFeedbackHub WindowsMaps WindowsSoundRecorder XboxTCUI XboxApp XboxGameOverlay XboxIdentityProvider XboxSpeechToTextOverlay ZuneMusic ZuneVideo WindowsCortana MSPaint Clipchamp"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Width="auto" Margin="10">
+            <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Restore All Windows Services to Default"     ToolTip="Install it again to update" FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content="Fixer"/>
             </StackPanel>
@@ -15466,14 +15253,6 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
                 <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content="Performance"/>
             </StackPanel>
                 <TextBlock Width="555" Background="Transparent" Margin="8" Foreground="{DynamicResource DefaultTextColor2}"  FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="Disable Print Spooler Fax Diagnostic Policy Downloaded Maps Manager Windows Error Reporting Service Remote Registry  Internet Connection Sharing Disables Telemetry and Data "/>
-        </StackPanel>
-
-        <StackPanel Orientation="Vertical" Width="auto" Margin="10">
-            <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Remove Windows 10/11 Bloatware"     ToolTip="Install it again to update" FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content="Performance"/>
-            </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="8" Foreground="{DynamicResource DefaultTextColor2}"  FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="BingNews GetHelp Getstarted Messaging Microsoft3DViewer MicrosoftOfficeHub MicrosoftSolitaireCollection News OfficeLens OfficeOneNote OfficeSway OneConnect People Print3D RemoteDesktop SkypeApp StorePurchaseApp OfficeTodoList Whiteboard WindowsAlarms WindowsCamera windowscommunicationsapps WindowsFeedbackHub WindowsMaps WindowsSoundRecorder XboxTCUI XboxApp XboxGameOverlay XboxIdentityProvider XboxSpeechToTextOverlay ZuneMusic ZuneVideo WindowsCortana MSPaint Clipchamp"/>
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Width="auto" Margin="10">
