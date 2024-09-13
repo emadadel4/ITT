@@ -8788,6 +8788,29 @@ $itt.database.Tweaks = '[
 #region Begin Main Functions
 #===========================================================================
 function Invoke-ScriptBlock {
+    <#
+        .SYNOPSIS
+        Executes a given script block asynchronously within a specified runspace.
+
+        .DESCRIPTION
+        This function creates a new PowerShell instance to execute a provided script block asynchronously. It accepts an optional array of arguments to pass to the script block and manages the runspace and PowerShell instance resources. The function ensures that resources are properly disposed of after the script block completes execution.
+
+        .PARAMETER ScriptBlock
+        The script block to be executed. This parameter is mandatory and must be of type `[scriptblock]`.
+
+        .PARAMETER ArgumentList
+        An optional array of arguments to be passed to the script block. This parameter allows for dynamic input to the script block.
+
+        .EXAMPLE
+        Invoke-ScriptBlock -ScriptBlock { param($arg1) Write-Output $arg1 } -ArgumentList @("Hello, World!")
+        Executes the script block that outputs the provided argument "Hello, World!" asynchronously.
+
+        .NOTES
+        - The function uses a custom runspace (`$itt.runspace`) for execution. Ensure that this runspace is correctly configured and available in the script's context.
+        - Proper disposal of the PowerShell instance and runspace is handled to prevent resource leaks.
+        - Garbage collection is explicitly invoked to free up memory after execution.
+    #>
+
     param(
         [scriptblock]$ScriptBlock,  # The script block to invoke
         [array]$ArgumentList        # Optional arguments for the script block
@@ -8815,6 +8838,18 @@ function Invoke-ScriptBlock {
 
 function RestorePoint {
 
+    <#
+        .SYNOPSIS
+        Creates a system restore point on the local computer.
+
+        .DESCRIPTION
+        This function creates a system restore point using the Checkpoint-Computer cmdlet. It logs the process of creating the restore point and handles any errors that occur during the creation. If the restore point creation fails, an error message is displayed.
+
+        .EXAMPLE
+        RestorePoint
+        Creates a restore point and logs the success or failure of the operation.
+    #>
+
     Invoke-ScriptBlock -ScriptBlock {
 
         Try {
@@ -8829,14 +8864,35 @@ function RestorePoint {
 
 function Add-Log {
 
-    <#
-    .Options
-    INFO
-    WARNING
-    ERROR
+   <#
+        .SYNOPSIS
+        Logs a message to the console with a specified severity level and color.
 
-    .Example
+        .DESCRIPTION
+        This function writes a log message to the console with a timestamp and specified severity level. The message's color varies based on the log level (INFO, WARNING, ERROR) to help differentiate the severity of log entries. The function also handles default colors for any unspecified levels.
+
+        .PARAMETER Message
+        The content of the log message to be displayed. This parameter is required.
+
+        .PARAMETER Level
+        The severity level of the message. Options are:
+        - INFO (default): Standard informational messages.
+        - WARNING: Warnings that indicate potential issues.
+        - ERROR: Error messages indicating critical issues.
+
+        .OPTIONS
+        INFO
+        WARNING
+        ERROR
+
+        .EXAMPLE
         Add-Log -Message "ARE YOU 0 OR 1?" -Level "WARNING"
+        Logs the message "ARE YOU 0 OR 1?" to the console with a yellow color indicating a warning.
+
+        .NOTES
+        - The `Level` parameter is case-insensitive and can be specified in any case format.
+        - The default color for log messages is white if the level is not specified or does not match predefined options.
+        - The function uses `Write-Host` for output, which may not be suitable for all logging scenarios (e.g., persistent logs).
     #>
 
     param (
@@ -8866,6 +8922,23 @@ function Add-Log {
 }
 function Disable-Service {
     
+    <#
+    .SYNOPSIS
+    Disables a specified service by changing its startup type and stopping it.
+
+    .DESCRIPTION
+    This function disables a Windows service by first changing its startup type to the specified value, then stopping the service if it is running. The function logs the outcome of the operation, including whether the service was found and successfully disabled or if an error occurred.
+
+    .PARAMETER ServiceName
+    The name of the service to be disabled. This is a required parameter.
+
+    .PARAMETER StartupType
+    The desired startup type for the service. Common values include 'Disabled', 'Manual', and 'Automatic'. This is a required parameter.
+
+    .EXAMPLE
+    Disable-Service -ServiceName "wuauserv" -StartupType "Disabled"
+    #>
+
     param(
         $ServiceName,
         $StartupType
@@ -8890,10 +8963,23 @@ function Disable-Service {
     }
 }
 function ExecuteCommand {
-
+    
     <#
-    .Example
-        ExecuteCommand -Name "Itemname" -Command "Welcome to itt"
+    .SYNOPSIS
+    Executes a PowerShell command in a new process.
+
+    .DESCRIPTION
+    This function starts a new PowerShell process to execute the specified command. It waits for the command to complete before returning control to the caller. The function handles any errors that occur during the execution of the command and outputs an error message if needed.
+
+    .PARAMETER Name
+    An optional name or identifier for the command being executed. This parameter is currently not used in the function but could be used for logging or tracking purposes.
+
+    .PARAMETER Command
+    The PowerShell command to be executed. This parameter is required.
+
+    .EXAMPLE
+    ExecuteCommand -Name "Greeting" -Command "Write-Output 'Welcome to ITT'"
+    Executes the PowerShell command `Write-Output 'Welcome to ITT'` in a new PowerShell process.
     #>
 
     param (
@@ -8908,6 +8994,35 @@ function ExecuteCommand {
     }
 }
 function Finish {
+
+    <#
+        .SYNOPSIS
+        Clears checkboxes in a specified ListView and displays a notification.
+
+        .DESCRIPTION
+        This function iterates through the items in a specified ListView, unchecks any CheckBox controls within it, and clears the ListView. After clearing the ListView, it uses the `Notify` function to display a notification with a given title, message, and icon.
+
+        .PARAMETER ListView
+        The name of the ListView control within the `$itt` object that needs to be processed. This parameter is required.
+
+        .PARAMETER title
+        The title for the notification message. Defaults to "ITT Emad Adel" if not specified.
+
+        .PARAMETER msg
+        The message content for the notification. Defaults to "Installed successfully" if not specified.
+
+        .PARAMETER icon
+        The icon to be used in the notification. Defaults to "Info" if not specified.
+
+        .EXAMPLE
+        Finish -ListView "myListView" -title "Process Completed" -msg "All items have been processed" -icon "Success"
+        Clears all checkboxes in the ListView named "myListView" and displays a notification with the title "Process Completed", message "All items have been processed", and icon "Success".
+
+        .NOTES
+        - Ensure that the `Notify` function is implemented and available in your script to handle notification display.
+        - The function assumes the `$itt` object and its `ListView` are properly initialized and accessible.
+        - The notification duration is set to 30 seconds (`30000` milliseconds).
+    #>
 
     param (
        [string]$ListView,
@@ -8939,13 +9054,38 @@ function Finish {
 }
 function Show-Selected {
 
-    <#
-    .Options
-    AppsListView
-    TweaksListView
+   <#
+        .SYNOPSIS
+        Filters or clears items in a specified ListView based on their selection status.
 
-    .Example
-        Show-Selected -ListView "AppsListView"
+        .DESCRIPTION
+        This function provides functionality to either filter the items in a specified ListView to show only those with selected checkboxes or to clear the filter and reset the ListView. It handles two modes:
+        - `Filter`: Filters items based on whether their checkboxes are selected.
+        - Default: Clears the ListView and resets the filter.
+
+        .PARAMETER ListView
+        The name of the ListView control within the `$itt` object to be processed. This parameter is required.
+
+        .PARAMETER mode
+        The mode of operation for the function. Options include:
+        - `Filter`: Applies a filter to show only items with selected checkboxes.
+        - Default: Clears any applied filter and resets the ListView.
+
+        .OPTIONS
+        AppsListView
+        TweaksListView
+
+        .EXAMPLE
+        Show-Selected -ListView "AppsListView" -mode "Filter"
+        Filters the "AppsListView" to display only the items where the associated checkbox is selected.
+
+        .EXAMPLE
+        Show-Selected -ListView "TweaksListView"
+        Clears the filter on the "TweaksListView" and resets the ListView to show all items.
+
+        .NOTES
+        - Ensure the `$itt` object and its `ListView` are properly initialized and accessible.
+        - The `mode` parameter determines whether to apply a filter or reset the ListView. If not specified, the function defaults to clearing the ListView.
     #>
 
     param (
@@ -8991,6 +9131,27 @@ function Show-Selected {
     }
 }
 function Clear-Item {
+
+    <#
+        .SYNOPSIS
+        Unchecks all checkboxes in a specified ListView and clears the ListView.
+
+        .DESCRIPTION
+        This function iterates through all items in a specified ListView, unchecking any CheckBox controls within those items. After unchecking the checkboxes, it clears the ListView and removes any applied filters. It also resets the category selection to the first item.
+
+        .PARAMETER ListView
+        The name of the ListView control within the `$itt` object that needs to be processed. This parameter is required.
+
+        .EXAMPLE
+        Clear-Item -ListView "AppsListView"
+        Unchecks all checkboxes in the "AppsListView", clears the ListView, and resets the category selection.
+
+        .NOTES
+        - The function assumes that the `$itt` object and its `ListView` are properly initialized and accessible.
+        - The `Dispatcher.Invoke` method is used to ensure that UI changes are made on the UI thread, which is necessary for interacting with WPF controls.
+        - The `category.SelectedIndex` is set to 0, which resets the category dropdown or selection to its initial state.
+    #>
+
     param (
         $ListView
     )
@@ -9016,6 +9177,33 @@ function Clear-Item {
     
 }
 function Get-SelectedItems {
+
+    <#
+        .SYNOPSIS
+        Retrieves selected items from the ListView based on the specified mode.
+
+        .DESCRIPTION
+        This function collects information about selected items from a ListView, depending on the mode specified. It extracts data from the ListView items that have checkboxes that are checked and returns this information in a structured format.
+
+        .PARAMETER Mode
+        Specifies the mode for item retrieval. Options include:
+        - `Apps`: Retrieves information about selected applications from the `AppsListView`.
+        - `Tweaks`: Retrieves information about selected tweaks from the `TweaksListView`.
+
+        .EXAMPLE
+        Get-SelectedItems -Mode "Apps"
+        Retrieves and returns a list of selected applications from the `AppsListView`.
+
+        .EXAMPLE
+        Get-SelectedItems -Mode "Tweaks"
+        Retrieves and returns a list of selected tweaks from the `TweaksListView`.
+
+        .NOTES
+        - The function relies on the `$itt` object, which must be initialized and accessible within the scope of the function.
+        - The function processes items from the ListView by iterating through nested StackPanel controls and their child CheckBox controls.
+        - The resulting items are returned as an array of hashtables, with each hashtable containing details about the selected item based on the mode.
+    #>
+
     param (
         [string]$Mode
     )
@@ -9089,6 +9277,41 @@ function Get-SelectedItems {
 }
 Function Get-ToggleStatus {
 
+    <#
+        .SYNOPSIS
+        Checks the status of various system toggle switches based on the provided parameter.
+
+        .DESCRIPTION
+        This function retrieves and returns the status of specific system toggle switches, such as Dark Mode, file extension visibility, hidden files visibility, Num Lock, and Sticky Keys. The status is determined by querying the Windows Registry for relevant settings.
+
+        .PARAMETER ToggleSwitch
+        Specifies which toggle switch status to check. The following values are supported:
+        - `ToggleDarkMode`: Checks if Dark Mode is enabled.
+        - `ToggleShowExt`: Checks if file extensions are set to be shown.
+        - `ToggleShowHidden`: Checks if hidden files are set to be shown.
+        - `ToggleNumLock`: Checks if Num Lock is enabled.
+        - `ToggleStickyKeys`: Checks if Sticky Keys is enabled.
+
+        .RETURN
+        - Returns `$true` if the specified toggle switch is enabled according to the criteria.
+        - Returns `$false` if the toggle switch is disabled or if the check does not match the criteria.
+
+        .EXAMPLE
+        Get-ToggleStatus -ToggleSwitch "ToggleDarkMode"
+        Checks if Dark Mode is enabled on the system and returns `$true` if it is.
+
+        .EXAMPLE
+        Get-ToggleStatus -ToggleSwitch "ToggleShowExt"
+        Checks if file extensions are shown in the File Explorer and returns `$true` if they are.
+
+        .NOTES
+        - The function relies on querying specific registry paths to determine the status of the toggle switches.
+        - The function uses registry values to determine the state of settings related to the specified toggle switches.
+        - Ensure that you have appropriate permissions to access the registry paths used by this function.
+        - The function includes error handling to return `$false` if the registry values do not match the expected criteria for the toggle switches.
+    #>
+
+
     Param($ToggleSwitch) # Parameter to specify which toggle switch status to check
 
     # Check status of "ToggleDarkMode"
@@ -9152,106 +9375,30 @@ Function Get-ToggleStatus {
         }
     }
 }
-function Download-And-ExtractZip {
-    param (
-        [string]$url,
-        [string]$destinationDir = "C:\ProgramData\ITT\Downloads",
-        [string]$Createshortcut,
-        [string]$exeFileName,
-        [string]$run,
-        [string]$exeArgs
-    )
-
-    # Ensure destination directory exists
-    if (-not (Test-Path -Path $destinationDir)) {
-        New-Item -ItemType Directory -Path $destinationDir -Force
-    }
-
-    # Define paths
-    $zipFileName = [System.IO.Path]::GetFileName($url)
-    $downloadPath = [System.IO.Path]::Combine($destinationDir, $zipFileName)
-    $exePath = [System.IO.Path]::Combine($destinationDir, $exeFileName)
-    
-    # Create the shortcut name based on the .exe file name
-    $shortcutName = [System.IO.Path]::GetFileNameWithoutExtension($exeFileName) + ".lnk"
-    $desktopPath = [System.IO.Path]::Combine([System.Environment]::GetFolderPath('Desktop'), $shortcutName)
-
-    try {
-
-        Add-Log -Message "Downloading using Invoke-WebRequest" -Level "INFO"
-        Invoke-WebRequest -Uri $url -OutFile $downloadPath
-
-        # Extract the file
-        Write-Output "Extracting file to: $destinationDir"
-        Expand-Archive -Path $downloadPath -DestinationPath $destinationDir -Force
-
-        #create a shortcut
-        if ($Createshortcut -eq "yes") {
-            if (Test-Path -Path $exePath) {
-                Write-Output "Creating shortcut at: $desktopPath"
-                # Create a shortcut on the desktop
-                $shell = New-Object -ComObject WScript.Shell
-                $shortcut = $shell.CreateShortcut($desktopPath)
-                $shortcut.TargetPath = $exePath
-                $shortcut.Save()
-                Write-Output "Shortcut created successfully."
-            } else {
-                Write-Error "The specified .exe file '$exeFileName' was not found in the extracted content."
-            }
-        }
-
-        # Optionally run the executable
-        if ($run -eq "yes") {
-            Write-Output "Starting installation"
-            Start-Process -FilePath $exePath -ArgumentList $exeArgs -NoNewWindow
-        }
-    } catch {
-        Write-Error $_.Exception.Message
-    }
-}
-
-function Download-And-Install-Exe {
-    param (
-        [string]$name,
-        [string]$url,
-        [string]$type,
-        [string]$exeArgs,
-        [string]$outputDir,
-        [string]$shortcut,
-        [string]$run
-    )
-
-    $destination = "$env:ProgramData\$outputDir\$name\$name.$type"
-    $shortcutPath = [System.IO.Path]::Combine([System.Environment]::GetFolderPath('Desktop'), "$name.lnk")
-    Add-Log -Message "Downloading using Invoke-WebRequest" -Level "INFO"
-
-    try {
-        # Create the output directory if it doesn't exist
-        if (-not (Test-Path -Path (Split-Path -Path $destination -Parent))) {
-            New-Item -ItemType Directory -Path (Split-Path -Path $destination -Parent) | Out-Null
-        }
-        # Download the file
-        Invoke-WebRequest -Uri $url -OutFile $destination
-        Add-Log -Message "Downloaded any saved in $destination " -Level "INFO"
-
-        if ($shortcut -eq "yes") {
-            # Create a shortcut on the desktop
-            $shell = New-Object -ComObject WScript.Shell
-            $shortcut = $shell.CreateShortcut($shortcutPath)
-            $shortcut.TargetPath = $destination
-            $shortcut.Save()
-            Add-Log -Message "Shortcut created on desktop" -Level "INFO"
-        }
-        if ($run -eq "yes") {
-            Start-Process -Wait $destination -ArgumentList $exeArgs
-        }
-    }
-    catch {
-        throw "Error downloading EXE file: $_"
-    }
-}
 
 function Install-App {
+    
+     <#
+    .SYNOPSIS
+    Installs an application using Chocolatey or Winget based on availability and installation status.
+
+    .DESCRIPTION
+    This function attempts to install a specified application using Chocolatey. If the Chocolatey installation fails, it falls back to using Winget to install the application. The function also handles some cleanup tasks related to Chocolatey and logs the results of the installation process.
+
+    .PARAMETER appName
+    The name of the application to be installed. This parameter is used for logging and status messages.
+
+    .PARAMETER appChoco
+    The package name of the application as recognized by Chocolatey. This parameter is used to perform the installation via Chocolatey.
+
+    .PARAMETER appWinget
+    The package identifier for the application as recognized by Winget. This parameter is used to perform the installation via Winget if Chocolatey fails.
+
+    .EXAMPLE
+    Install-App -appName "Google Chrome" -appChoco "googlechrome" -appWinget "Google.Chrome"
+    Attempts to install Google Chrome using Chocolatey. If the installation fails, it attempts to install it using Winget.
+    #>
+
     param (
         [string]$appName,
         [string]$appChoco,
@@ -9260,7 +9407,7 @@ function Install-App {
 
     Install-Choco
 
-    if(Test-Path "C:\ProgramData\chocolatey\lib"){
+    if(Test-Path "C:\ProgramData\chocolatey\lib\$appChoco"){
         Remove-Item -Path "C:\ProgramData\chocolatey\lib\$appChoco" -Force -Recurse
         # debug
         #Add-Log -Message "C:\ProgramData\chocolatey\lib\$appChoco" -Level "INFO"
@@ -9296,7 +9443,19 @@ function Install-App {
     }
 }
 function Install-Choco {
-    # Check if Chocolatey is installed
+    
+    <#
+    .SYNOPSIS
+    Installs Chocolatey if it is not already installed on the system.
+
+    .DESCRIPTION
+    This function checks if Chocolatey is installed on the system by attempting to retrieve the `choco` command. If Chocolatey is not found, it proceeds to install Chocolatey using a web-based installation script. The function also logs the process of installing Chocolatey.
+
+    .EXAMPLE
+    Install-Choco
+    Checks if Chocolatey is installed, and if not, installs it.
+    #>
+
     if (-not (Get-Command choco -ErrorAction SilentlyContinue))
     {
         Add-Log -Message "Installing Chocolatey for the first time, It won't take minutes :)" -Level "INFO"
@@ -9306,6 +9465,37 @@ function Install-Choco {
 }
 
 function Install-Winget {
+
+    <#
+        .SYNOPSIS
+        Installs the Windows Package Manager (`winget`) and its dependencies.
+
+        .DESCRIPTION
+        This function installs `winget` by first checking if it is already installed on the system. If not, it downloads and installs the necessary dependencies:
+        1. `Microsoft.VCLibs` package.
+        2. `Microsoft.UI.Xaml` package.
+        3. The `Microsoft Store App Installer` which includes `winget`.
+
+        It also ensures that the `winget` path is added to the system environment variables if it is not already present.
+
+        .PARAMETER None
+        This function does not require any parameters.
+
+        .EXAMPLE
+        Install-Winget
+
+        .EXAMPLE
+        If you want to run this function in a PowerShell script, just call `Install-Winget`. This will download and install `winget` and its prerequisites if they are not already installed on the system.
+
+        .NOTES
+        - The function determines the OS architecture (32-bit or 64-bit) and selects the appropriate package URLs for `Microsoft.VCLibs` and `Microsoft.UI.Xaml`.
+        - It checks for the existence of `winget` using `Get-Command`. If `winget` is found, the function exits without making changes.
+        - It downloads the necessary `.appx` packages and installs them using `Add-AppxPackage`.
+        - It downloads and installs the `Microsoft Store App Installer` which includes `winget`.
+        - The function attempts to add the `winget` path to the system environment variables if it is not already included.
+        - The function includes error handling to throw a custom exception if the installation of prerequisites fails.
+    #>
+
 
     $versionVCLibs = "14.00"
     $versionUIXamlMinor = "2.8"
@@ -9371,6 +9561,37 @@ function Install-Winget {
     }
 }
 function Download-And-ExtractZip {
+    
+    <#
+    .SYNOPSIS
+    Downloads a ZIP file from a URL, extracts its contents to a specified directory, and optionally creates a shortcut and runs an executable.
+
+    .DESCRIPTION
+    This function downloads a ZIP file from the provided URL, extracts the contents to a specified destination directory, and optionally creates a shortcut to an executable file on the desktop. It can also run the executable with optional arguments. The function includes error handling and logging to track the process.
+
+    .PARAMETER url
+    The URL of the ZIP file to be downloaded. This is a required parameter.
+
+    .PARAMETER destinationDir
+    The directory where the ZIP file will be downloaded and extracted. The default is "C:\ProgramData\ITT\Downloads".
+
+    .PARAMETER Createshortcut
+    Specifies whether to create a shortcut to the executable file. Accepts "yes" or "no". Default is not specified.
+
+    .PARAMETER exeFileName
+    The name of the executable file to create a shortcut for. This parameter is required if `Createshortcut` is set to "yes".
+
+    .PARAMETER run
+    Specifies whether to run the executable after extraction. Accepts "yes" or "no". Default is not specified.
+
+    .PARAMETER exeArgs
+    Arguments to be passed to the executable when it is run. This parameter is optional.
+
+    .EXAMPLE
+    Download-And-ExtractZip -url "http://example.com/file.zip" -destinationDir "C:\Temp" -Createshortcut "yes" -exeFileName "setup.exe" -run "yes" -exeArgs "/silent"
+    Downloads the ZIP file from the specified URL, extracts it to "C:\Temp", creates a shortcut to "setup.exe" on the desktop, and runs the executable with the "/silent" argument.
+    #>
+
     param (
         [string]$url,
         [string]$destinationDir = "C:\ProgramData\ITT\Downloads",
@@ -9428,6 +9649,40 @@ function Download-And-ExtractZip {
 }
 
 function Download-And-Install-Exe {
+    <#
+    .SYNOPSIS
+    Downloads an executable file from a URL, optionally creates a shortcut on the desktop, and runs the executable.
+
+    .DESCRIPTION
+    This function downloads an executable file from the specified URL to a designated output directory. Optionally, it can create a shortcut to the executable file on the desktop and run the executable with provided arguments. The function includes error handling and logging to track the process.
+
+    .PARAMETER name
+    The name of the executable file to be downloaded. This is used to define the destination path and the shortcut name.
+
+    .PARAMETER url
+    The URL of the executable file to be downloaded. This parameter is required.
+
+    .PARAMETER type
+    The file extension of the executable file (e.g., "exe"). This helps in naming the file correctly upon download.
+
+    .PARAMETER exeArgs
+    Arguments to be passed to the executable when it is run. This parameter is optional.
+
+    .PARAMETER outputDir
+    The directory where the executable file will be downloaded. This is a subdirectory under `$env:ProgramData`. This parameter is required.
+
+    .PARAMETER shortcut
+    Specifies whether to create a shortcut to the executable on the desktop. Accepts "yes" or "no". Default is "no".
+
+    .PARAMETER run
+    Specifies whether to run the executable after downloading. Accepts "yes" or "no". Default is "no".
+
+    .EXAMPLE
+    Download-And-Install-Exe -name "ExampleApp" -url "http://example.com/exampleapp.exe" -type "exe" -exeArgs "/silent" -outputDir "Installers" -shortcut "yes" -run "yes"
+    Downloads the executable from the specified URL, saves it to `C:\ProgramData\Installers\ExampleApp\ExampleApp.exe`, creates a shortcut to the executable on the desktop, and runs the executable with the `/silent` argument.
+
+    #>
+
     param (
         [string]$name,
         [string]$url,
@@ -9469,6 +9724,25 @@ function Download-And-Install-Exe {
     }
 }
 function Remove-Registry {
+
+    <#
+        .SYNOPSIS
+        Deletes a specified registry key and all its subkeys.
+
+        .DESCRIPTION
+        This function removes a registry key and its associated subkeys from the Windows registry. It combines the provided registry path and folder name to form the full registry key path and deletes it if it exists. The function includes error handling to manage any issues that occur during the deletion process.
+
+        .PARAMETER RegistryPath
+        The base path of the registry where the key is located. This parameter is mandatory.
+
+        .PARAMETER Folder
+        The name of the registry key (folder) to be deleted. This parameter is mandatory.
+
+        .EXAMPLE
+        Remove-Registry -RegistryPath "HKCU\Software\MyCompany" -Folder "MyApp"
+        Deletes the registry key "MyApp" located under "HKCU\Software\MyCompany" and all of its subkeys.
+    #>
+
     param (
         [Parameter(Mandatory=$true)]
         [string]$RegistryPath,
@@ -9623,6 +9897,29 @@ function SaveItemsToJson {
 }
 
 function Set-Registry {
+    <#
+        .SYNOPSIS
+        Sets or creates a registry value at a specified path.
+
+        .DESCRIPTION
+        This function sets a registry value at a given path. If the specified registry path does not exist, the function attempts to create the path and set the value. It handles different registry value types and includes error handling to manage potential issues during the process.
+
+        .PARAMETER Name
+        The name of the registry value to set or create. This parameter is required.
+
+        .PARAMETER Type
+        The type of the registry value. Common types include `String`, `DWord`, `QWord`, etc. This parameter is required.
+
+        .PARAMETER Path
+        The full path of the registry key where the value is to be set. This parameter is required.
+
+        .PARAMETER Value
+        The value to be set for the registry key. This parameter is required.
+
+        .EXAMPLE
+        Set-Registry -Name "ExampleValue" -Type "String" -Path "HKCU\Software\MyCompany" -Value "ExampleData"
+        Sets the registry value named "ExampleValue" to "ExampleData" under "HKCU\Software\MyCompany". If the path does not exist, it attempts to create it.
+    #>
 
     param (
         $Name,
@@ -9891,7 +10188,24 @@ function Startup  {
     }
 }
 function ChangeTap {
-    # Define a hash table to map tab names to their button visibility and list values
+    <#
+        .SYNOPSIS
+        Updates the visibility of buttons and sets the current list based on the selected tab.
+
+        .DESCRIPTION
+        This function manages the visibility of buttons and the selection of lists based on which tab is currently selected in a user interface. It uses a hash table to map tab names to their corresponding button visibility settings and list values. The function iterates through the tabs and updates the UI elements accordingly.
+
+        .EXAMPLE
+        ChangeTap
+        Updates the visibility of the 'installBtn' and 'applyBtn' and sets the 'currentList' property based on the currently selected tab.
+
+        .PARAMETER None
+        This function does not take any parameters. It operates on predefined UI elements and settings.
+
+        .NOTES
+        Ensure that the `$itt['window']` object and its method `FindName` are correctly implemented and available in the context where this function is used. The function relies on these objects to access and modify UI elements.
+    #>
+    
     $tabSettings = @{
         'apps'        = @{ 'installBtn' = 'Visible'; 'applyBtn' = 'Hidden'; 'currentList' = 'appslist' }
         'tweeksTab'   = @{ 'installBtn' = 'Hidden'; 'applyBtn' = 'Visible'; 'currentList' = 'tweakslist' }
@@ -9915,10 +10229,24 @@ function ChangeTap {
 }
 
 function Uninstall-AppxPackage  {
-    
     <#
-    .Example
+        .SYNOPSIS
+        Uninstalls an AppX package and removes any provisioned package references.
+
+        .DESCRIPTION
+        This function uninstalls a specified AppX package from the current user profile and removes any provisioned package references from the system. It uses PowerShell commands to handle both the removal of the AppX package and any associated provisioned package. Logging is used to track the process.
+
+        .PARAMETER Name
+        The name or partial name of the AppX package to be uninstalled. This parameter is required.
+
+        .EXAMPLE
         Uninstall-AppxPackage -Name "Microsoft.BingNews"
+        Attempts to remove the AppX package with a display name that includes "Microsoft.BingNews" from the current user profile and any provisioned package references from the system.
+
+        .NOTES
+        - Ensure that the `$Name` parameter correctly matches the display name or part of the display name of the AppX package you wish to uninstall.
+        - The function runs PowerShell commands in a new process to handle the removal operations.
+        - Add-Log should be implemented in your script or module to handle logging appropriately.
     #>
 
     param (
@@ -9935,6 +10263,42 @@ function Uninstall-AppxPackage  {
     }
 }
 function Invoke-Install {
+
+    <#
+        .SYNOPSIS
+        Handles the installation of selected applications by invoking the appropriate installation methods.
+
+        .DESCRIPTION
+        The `Invoke-Install` function manages the process of installing applications based on user selection. It performs the following tasks:
+        1. Checks if there are any selected applications to install.
+        2. Displays a warning message if no applications are selected or if a process is already running.
+        3. Shows a confirmation dialog to the user asking for permission to proceed with the installation.
+        4. If confirmed, it filters the list view to show only selected items and starts the installation process.
+        5. Updates the UI to reflect the installation status.
+        6. Executes installation commands for applications using Chocolatey (`Choco`), Winget, or custom download methods.
+        7. Updates the UI once the installation is complete and finishes the process.
+
+        .PARAMETER None
+        This function does not require any parameters.
+
+        .EXAMPLE
+        Invoke-Install
+
+        .EXAMPLE
+        To use this function in your script, simply call `Invoke-Install`. This will process the selected items for installation, check user confirmation, and execute the appropriate installation commands based on the type of application.
+
+        .NOTES
+        - The function starts by checking the count of selected applications using `Get-SelectedItems` with mode "Apps".
+        - It uses a message box to confirm if the user wants to proceed with the installation.
+        - The function updates the UI to reflect the installation status, including a button change and text update.
+        - It installs applications using:
+        - Chocolatey, if a `Choco` identifier is provided.
+        - Winget, if a `Winget` identifier is provided.
+        - Custom download methods (`Download-And-Install-Exe` or `Download-And-ExtractZip`) for applications with default settings.
+        - The function handles UI updates and cleanup operations post-installation using `UpdateUI` and `Finish`.
+        - The `Invoke-ScriptBlock` function is used to execute the installation commands asynchronously.
+    #>
+
   
     $selectedApps = Get-SelectedItems -Mode "Apps"
 
@@ -10007,6 +10371,44 @@ function Invoke-Install {
 }
 
 function Invoke-ApplyTweaks {
+
+    <#
+        .SYNOPSIS
+        Handles the application of selected tweaks by executing the relevant commands, registry modifications, and other operations.
+
+        .DESCRIPTION
+        The `Invoke-ApplyTweaks` function manages the process of applying selected tweaks based on user selection. It performs the following tasks:
+        1. Retrieves the list of selected tweaks using `Get-SelectedItems` with mode "Tweaks".
+        2. Displays a warning message if a process is already running or if no tweaks are selected.
+        3. Filters the list view to show only selected items and asks for user confirmation to proceed with applying tweaks.
+        4. If confirmed, it starts the application of the selected tweaks.
+        5. Executes the appropriate tweak operations based on the type of tweak (e.g., commands, registry modifications, Appx package removal, service management).
+        6. Updates the UI to reflect the progress and completion of the tweak application.
+        7. Finishes the process and logs a message indicating that some tweaks may require a restart.
+
+        .PARAMETER None
+        This function does not require any parameters.
+
+        .EXAMPLE
+        Invoke-ApplyTweaks
+
+        .EXAMPLE
+        To use this function in your script, call `Invoke-ApplyTweaks`. This will process the selected tweaks, ask for confirmation, and apply them according to their type.
+
+        .NOTES
+        - The function starts by checking the count of selected tweaks using `Get-SelectedItems` with mode "Tweaks".
+        - It uses a message box to confirm if the user wants to proceed with applying the tweaks.
+        - The function updates the UI to reflect the application status, including a button change and text update.
+        - It applies tweaks by:
+        - Executing commands specified in the tweak settings.
+        - Modifying or deleting registry entries as per the tweak configuration.
+        - Uninstalling Appx packages if specified.
+        - Disabling services if required.
+        - The function handles UI updates and cleanup operations post-application using `UpdateUI` and `Finish`.
+        - The `Invoke-ScriptBlock` function is used to execute the tweak application commands asynchronously.
+        - Additional logging is performed to track the status of the operation and provide feedback.
+    #>
+
     
     $selectedApps = Get-SelectedItems -Mode "Tweaks"
 
@@ -10081,6 +10483,37 @@ function Invoke-ApplyTweaks {
     }
 }
 function Invoke-Button {
+
+    <#
+        .SYNOPSIS
+        Handles various button actions and commands based on the specified action parameter.
+
+        .DESCRIPTION
+        The `Invoke-Button` function executes different actions depending on the input parameter. It manages operations such as installing apps, applying tweaks, changing themes, opening system utilities, and managing language settings. This function is designed to be used with UI elements where each button triggers a specific action.
+
+        .PARAMETER action
+        A string specifying the action to perform. The action can be one of several predefined values representing different operations, such as installing apps, applying tweaks, opening system utilities, changing themes, or managing language settings.
+
+        .EXAMPLE
+        Invoke-Button -action "installBtn"
+
+        .EXAMPLE
+        Invoke-Button -action "Dark"
+
+        .EXAMPLE
+        Invoke-Button -action "sysinfo"
+
+        .NOTES
+        - The function uses a `Switch` statement to handle different actions based on the `$action` parameter.
+        - For UI-related actions, such as installing apps or applying tweaks, it calls `Invoke-Install` or `Invoke-ApplyTweaks`.
+        - For system utilities and settings, it uses `Start-Process` to open tools like Device Manager, Task Manager, or disk management utilities.
+        - For language settings, it invokes the `Set-Language` function with the specified language code.
+        - For theme changes, it calls functions like `Switch-ToDarkMode` or `Switch-ToLightMode`.
+        - For managing audio settings, it calls `MuteMusic` or `UnmuteMusic`.
+        - For opening URLs related to tools or scripts, it uses `Start-Process` with the URL as an argument.
+        - The `Debug-Message` function is used for internal debugging and can be uncommented for logging purposes.
+    #>
+
     Param ([string]$action)
 
     # Helper function for debugging
@@ -10283,6 +10716,29 @@ function Invoke-Button {
 }
 function Invoke-Toogle {
 
+    <#
+        .SYNOPSIS
+        Toggles various system settings based on the specified debug parameter.
+
+        .DESCRIPTION
+        The `Invoke-Toogle` function manages system settings such as showing file extensions, toggling dark mode, showing hidden files, and managing keyboard settings. It determines the current state of the setting and invokes the appropriate functions to toggle or apply the changes.
+
+        .PARAMETER debug
+        A string specifying the setting to toggle. The value should match one of the predefined toggle names, such as "ToggleShowExt" or "ToggleDarkMode". The function uses this parameter to determine which setting to check and change.
+
+        .EXAMPLE
+        Invoke-Toogle -debug "ToggleShowExt"
+
+        .EXAMPLE
+        Invoke-Toogle -debug "ToggleDarkMode"
+
+        .NOTES
+        - The function uses a `Switch` statement to handle different toggle actions based on the `$debug` parameter.
+        - It calls `Get-ToggleStatus` to retrieve the current state of the specified setting and then calls the corresponding function to apply the toggle.
+        - The `Invoke-ShowFile-Extensions`, `Invoke-DarkMode`, `Invoke-ShowFile`, `Invoke-NumLock`, and `Invoke-StickyKeys` functions are used to modify the respective settings.
+        - The debug parameter is primarily used for testing and development purposes. Uncommenting the `Write-Host` line can provide additional output for debugging.
+    #>
+
     Param ([string]$debug)
 
     # debug
@@ -10298,6 +10754,33 @@ function Invoke-Toogle {
     }
 }
 Function Invoke-DarkMode {
+
+    <#
+        .SYNOPSIS
+        Toggles the Windows theme between Dark Mode and Light Mode based on the provided setting.
+
+        .DESCRIPTION
+        The `Invoke-DarkMode` function enables or disables Dark Mode for Windows based on the `$DarkModeEnabled` parameter.
+        - If `$DarkModeEnabled` is `$true`, it sets the system to Dark Mode.
+        - If `$DarkModeEnabled` is `$false`, it sets the system to Light Mode.
+        The function updates the application's theme resources accordingly and restarts the Windows Explorer process to apply the changes.
+
+        .PARAMETER DarkModeEnabled
+        A boolean value indicating whether Dark Mode should be enabled (`$true`) or Light Mode should be enabled (`$false`).
+
+        .EXAMPLE
+            Invoke-DarkMode -DarkModeEnabled $true
+        This example sets the Windows theme to Dark Mode.
+
+        .EXAMPLE
+            Invoke-DarkMode -DarkModeEnabled $false
+        This example sets the Windows theme to Light Mode.
+
+        .NOTES
+        - The function modifies registry settings related to Windows themes.
+        - It restarts Windows Explorer to apply the theme changes.
+        - Error handling is included for security exceptions and item not found exceptions.
+    #>
 
     Param($DarkMoveEnabled)
     Try{
@@ -10339,6 +10822,32 @@ Function Invoke-DarkMode {
 }
 function Invoke-NumLock {
 
+    <#
+        .SYNOPSIS
+        Toggles the Num Lock state on the system by modifying registry settings.
+
+        .DESCRIPTION
+        The `Invoke-NumLock` function sets the state of the Num Lock key based on the `$Enabled` parameter.
+        - If `$Enabled` is `$true`, Num Lock is enabled.
+        - If `$Enabled` is `$false`, Num Lock is disabled.
+        The function modifies the registry settings under `HKU\.Default\Control Panel\Keyboard` to achieve this.
+
+        .PARAMETER Enabled
+        A boolean value that determines whether Num Lock should be enabled (`$true`) or disabled (`$false`).
+
+        .EXAMPLE
+            Invoke-NumLock -Enabled $true
+        This example enables Num Lock.
+
+        .EXAMPLE
+            Invoke-NumLock -Enabled $false
+        This example disables Num Lock.
+
+        .NOTES
+        - Requires administrative privileges to modify registry settings.
+        - The registry path used is for the default user profile and may not affect the currently logged-in user.
+    #>
+
     param(
         [Parameter(Mandatory = $true)]
         [bool]$Enabled
@@ -10357,6 +10866,32 @@ function Invoke-NumLock {
 }
 
 function Invoke-ShowFile {
+
+    <#
+        .SYNOPSIS
+        Toggles the visibility of hidden files and folders in Windows Explorer.
+
+        .DESCRIPTION
+        The `Invoke-ShowFile` function updates the Windows registry to show or hide hidden files and folders in Windows Explorer based on the `$Enabled` parameter.
+        - If `$Enabled` is `$true`, hidden items and super-hidden items (e.g., system files) are shown.
+        - If `$Enabled` is `$false`, these items are hidden.
+
+        .PARAMETER Enabled
+        A boolean value that determines whether hidden files and folders should be shown (`$true`) or hidden (`$false`).
+
+        .EXAMPLE
+            Invoke-ShowFile -Enabled $true
+        This example makes hidden files and folders visible in Windows Explorer.
+
+        .EXAMPLE
+            Invoke-ShowFile -Enabled $false
+        This example hides hidden files and folders in Windows Explorer.
+
+        .NOTES
+        - The function requires restarting Windows Explorer to apply the changes.
+        - Administrative privileges might be required depending on system configuration.
+    #>
+
     Param($Enabled)
     Try {
         $value = if ($Enabled -eq $false) { 1 } else { 2 }
@@ -10381,6 +10916,31 @@ function Invoke-ShowFile {
     }
 }
 function Invoke-ShowFile-Extensions {
+
+    <#
+        .SYNOPSIS
+        Toggles the visibility of file extensions in Windows Explorer.
+
+        .DESCRIPTION
+        The `Invoke-ShowFile-Extensions` function updates the Windows registry to show or hide file extensions for known file types in Windows Explorer based on the `$Enabled` parameter.
+        - If `$Enabled` is `$true`, file extensions are shown.
+        - If `$Enabled` is `$false`, file extensions are hidden.
+
+        .PARAMETER Enabled
+        A boolean value that determines whether file extensions should be shown (`$true`) or hidden (`$false`).
+
+        .EXAMPLE
+            Invoke-ShowFile-Extensions -Enabled $true
+        This example makes file extensions visible in Windows Explorer.
+
+        .EXAMPLE
+            Invoke-ShowFile-Extensions -Enabled $false
+        This example hides file extensions in Windows Explorer.
+
+        .NOTES
+        - The function requires restarting Windows Explorer to apply the changes.
+        - Administrative privileges might be required depending on system configuration.
+    #>
    
     Param($Enabled)
     Try{
@@ -10406,6 +10966,32 @@ function Invoke-ShowFile-Extensions {
     }
 }
 Function Invoke-StickyKeys {
+
+     <#
+        .SYNOPSIS
+        Toggles Sticky Keys functionality in Windows.
+
+        .DESCRIPTION
+        The `Invoke-StickyKeys` function updates the Windows registry settings to enable or disable Sticky Keys based on the `$Enabled` parameter.
+        - If `$Enabled` is `$true`, Sticky Keys is enabled with a specific configuration.
+        - If `$Enabled` is `$false`, Sticky Keys is disabled with a different configuration.
+        - Note: Enabling Sticky Keys may require restarting Windows Explorer.
+
+        .PARAMETER Enabled
+        A boolean value that determines whether Sticky Keys should be enabled (`$true`) or disabled (`$false`).
+
+        .EXAMPLE
+            Invoke-StickyKeys -Enabled $true
+        This example enables Sticky Keys with the specified configuration and prompts for a restart of Windows Explorer.
+
+        .EXAMPLE
+            Invoke-StickyKeys -Enabled $false
+        This example disables Sticky Keys with the specified configuration and prompts for a restart of Windows Explorer.
+
+        .NOTES
+        - The function requires restarting Windows Explorer to apply the changes.
+        - Administrative privileges might be required depending on system configuration.
+    #>
 
     Param($Enabled)
     Try {
@@ -10452,6 +11038,21 @@ function About {
     $itt.about.ShowDialog() | Out-Null
 }
 function ITTShortcut {
+
+    <#
+        .SYNOPSIS
+        Creates a desktop shortcut for launching a PowerShell script with a custom icon.
+
+        .DESCRIPTION
+        The `ITTShortcut` function creates a shortcut on the user's desktop that points to a PowerShell executable with a specified command.
+        It downloads a custom icon from a specified URL, saves it to the `AppData\Roaming` folder, and sets this icon for the shortcut.
+        The PowerShell script specified in the shortcut executes a command to run a script from a provided URL.
+
+        .NOTES
+        - Ensure that you have internet access to download the icon.
+        - The command executed by the shortcut should be valid and accessible.
+    #>
+
     # URL of the icon file
     $iconUrl = "https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Icons/icon.ico"
     
@@ -10537,6 +11138,25 @@ function DisplayQuotes  {
 }
 function Search {
 
+    <#
+        .SYNOPSIS
+        Filters items in the current list view based on the search input.
+
+        .DESCRIPTION
+        The `Search` function retrieves the text from the search input, converts it to lowercase, and removes any non-alphanumeric characters. It then applies a filter to the items in the currently displayed list view based on the search input. The filter checks if the search input matches any checkbox content within stack panels in the list view.
+
+        .EXAMPLE
+        Search
+
+        .NOTES
+        - The function operates on the `searchInput` property of the `$itt` object, which is expected to be a text input control where users enter their search query.
+        - The function uses the `CollectionViewSource` class to get the default view of the items in the current list view and applies a filter to it.
+        - The filter logic iterates through the children of each `StackPanel` item, looking for `CheckBox` controls. If the content of a checkbox matches the search input, the item is included in the filtered view.
+        - Non-`StackPanel` items are always included in the filtered view.
+        - This function relies on the `$itt.currentList` property to determine which list view to filter. Ensure that `$itt.currentList` correctly references the ID of the current list view control.
+    #>
+
+
     # Retrieves the search input, converts it to lowercase, and filters the list based on the input
     $filter = $itt.searchInput.Text.ToLower() -replace '[^\p{L}\p{N}]', ''
 
@@ -10562,6 +11182,28 @@ function Search {
     }
 }
 function FilterByCat {
+
+    <#
+        .SYNOPSIS
+        Filters the items in the Apps list view based on the selected category.
+
+        .DESCRIPTION
+        The `FilterByCat` function filters the items displayed in the Apps list view based on a specified category. It updates the view to show only those items that match the selected category. If the selected category is not valid, it clears the filter and displays all items. The function also ensures that the Apps tab is selected and scrolls to the top of the list view after applying the filter.
+
+        .PARAMETER Cat
+        The category to filter by. Must be one of the predefined valid categories.
+
+        .EXAMPLE
+        FilterByCat -Cat "Media"
+
+        .NOTES
+        - The function operates on the `AppsListView` control within the `$itt` object.
+        - The `validCategories` array contains the list of categories that the function recognizes as valid. If the provided category does not match one of these, the filter is cleared.
+        - The filter predicate is based on checking the `Tag` property of `CheckBox` controls within `StackPanel` items to determine if they match the selected category.
+        - If the selected category is valid, the function applies the filter to the `CollectionView` of the `AppsListView`. If not, it removes the filter and shows all items.
+        - The `ScrollIntoView` method is used to ensure that the list view scrolls to the top after applying the filter.
+    #>
+
 
     param ($Cat)
 
@@ -10628,6 +11270,23 @@ function FilterByCat {
     $itt.AppsListView.ScrollIntoView($itt.AppsListView.Items[0])
 }
 function ClearFilter {
+
+    <#
+        .SYNOPSIS
+        Clears the filter applied to the Apps list view.
+
+        .DESCRIPTION
+        The `ClearFilter` function removes any filtering that has been applied to the items in the Apps list view. It clears the list view and resets the filter, making all items in the list view visible. This function is typically used when you want to display all items without any filtering constraints.
+
+        .EXAMPLE
+        ClearFilter
+
+        .NOTES
+        - The function operates on the `AppsListView` control within the `$itt` object.
+        - The `Clear()` method is called on the `AppsListView` to remove any items currently displayed. This is followed by resetting the `Filter` property of the `CollectionView` associated with the `AppsListView` to `$null`, effectively removing any applied filter and showing all items.
+        - This function is useful for resetting the view to its default state, especially after applying a category filter or other types of filters.
+    #>
+
     $itt.AppsListView.Clear()
     $collectionView = [System.Windows.Data.CollectionViewSource]::GetDefaultView($itt.AppsListView.Items)
     $collectionView.Filter = $null
@@ -10738,13 +11397,35 @@ $KeyEvents = {
 
 function Message {
 
-    <#
-    Icons list
-    Warning
-    Question
-    
-    .EXAMPLE Usge
-        Message -key "Welcome" -icon "Warning"
+  <#
+        .SYNOPSIS
+            Displays a localized message box to the user with a specified icon.
+
+        .DESCRIPTION
+            The `Message` function shows a message box with a localized message based on the provided key and icon type.
+            It retrieves the message text from a localization database and displays it using the Windows MessageBox class.
+            The icon type determines the visual representation of the message box, which can be "Warning" or "Question".
+
+        .PARAMETER key
+            The key used to retrieve the localized message from the `itt.database.locales.Controls` object.
+            This key should correspond to a valid entry in the localization database for the current language.
+
+        .PARAMETER icon
+            The type of icon to be displayed in the message box. Valid values are:
+            - "Warning" for a warning icon
+            - "Question" for a question icon
+
+        .EXAMPLE
+            Message -key "Welcome" -icon "Warning"
+            Displays a message box with the message associated with the "Welcome" key and a warning icon.
+
+        .EXAMPLE
+            Message -key "ConfirmAction" -icon "Question"
+            Displays a message box with the message associated with the "ConfirmAction" key and a question icon.
+
+        .NOTES
+            Ensure that the `itt.database.locales.Controls` object is properly populated with localization data and that the specified keys exist for the current language.
+
     #>
     
     param($key,$icon)
@@ -10756,8 +11437,37 @@ function Message {
 function Notify {
 
     <#
-    .Example
-        Notify -title "ITT" -msg "Hello world!" -icon "Information" -time "3000"
+        .SYNOPSIS
+        Displays a balloon tip notification in the system tray with a customizable title, message, icon, and duration.
+
+        .DESCRIPTION
+        The `Notify` function creates a balloon tip notification using the system tray's notification area. 
+        This function is useful for displaying temporary alerts or messages to the user. 
+        It allows you to specify the notification's title, message, icon type, and how long the balloon tip should be displayed.
+
+        .PARAMETER title
+        The title of the notification balloon. This appears as the header of the balloon tip.
+
+        .PARAMETER msg
+        The main message text of the notification balloon.
+
+        .PARAMETER icon
+        The icon to be displayed in the notification balloon. Should be one of the standard `System.Windows.Forms.NotifyIcon` icon types such as "Information", "Warning", or "Error".
+
+        .PARAMETER time
+        The duration (in milliseconds) for which the balloon tip will be displayed.
+
+        .EXAMPLE
+        Notify -title "ITT" -msg "Hello world!" -icon "Information" -time 3000
+        Displays a notification balloon with the title "ITT" and the message "Hello world!" with an informational icon for 3 seconds.
+
+        .EXAMPLE
+        Notify -title "Warning" -msg "Please check your settings." -icon "Warning" -time 5000
+        Displays a notification balloon with the title "Warning" and the message "Please check your settings." with a warning icon for 5 seconds.
+
+        .NOTES
+        - The `icon` parameter should match one of the standard `System.Windows.Forms.NotifyIcon` types.
+        - The `notification` object is disposed of after showing the balloon tip to free up system resources.
     #>
 
     param(
@@ -10781,6 +11491,33 @@ function Notify {
 }
 # Mute the music by setting the volume to the specified value
 function MuteMusic {
+
+    <#
+        .SYNOPSIS
+        Adjusts the volume of the media player and saves the setting for persistence.
+
+        .DESCRIPTION
+        The `MuteMusic` function sets the volume of the media player to a specified level and saves this volume setting to the registry. 
+        This ensures that the volume level is persisted even after restarting the application or the system. 
+        The function also updates the window's title to indicate the current state.
+
+        .PARAMETER value
+        The volume level to set. It should be an integer value between 0 (muted) and 100 (full volume). The function uses this value to adjust the media player's volume and to store the setting in the registry.
+
+        .EXAMPLE
+        MuteMusic -value 0
+        Sets the media player's volume to 0 (muted) and updates the window title to indicate the volume level.
+
+        .EXAMPLE
+        MuteMusic -value 50
+        Sets the media player's volume to 50% and updates the window title to indicate the current volume level.
+
+        .NOTES
+        - The volume value should be an integer between 0 and 100.
+        - The volume setting is saved to the registry at the path specified by `$itt.registryPath` under the "Music" key.
+        - Ensure that `$itt.mediaPlayer.settings.volume` and `$itt.registryPath` are properly initialized in your environment.
+    #>
+
     param($value)
     $itt.mediaPlayer.settings.volume = $value
     # Save the volume setting to the registry for persistence
@@ -10820,6 +11557,31 @@ function StopAllRunspace {
     Write-Host "`n` Don't forget to pray for the oppressed people, Stand with Palestine" 
 }
 function Set-Language {
+
+    <#
+        .SYNOPSIS
+        Sets the application's language and updates the registry with the selected language.
+
+        .DESCRIPTION
+        The `Set-Language` function updates the application's language settings by changing the `DataContext` of the main window to the specified language. 
+        It also saves the selected language to the registry to ensure that the language preference is preserved across sessions.
+
+        .PARAMETER lang
+        A string representing the language code to set. This code should correspond to a valid language entry in the application's locale database. For example, "en" for English, "fr" for French, etc.
+
+        .EXAMPLE
+        Set-Language -lang "en"
+        Sets the application's language to English and updates the registry to reflect this choice.
+
+        .EXAMPLE
+        Set-Language -lang "fr"
+        Changes the application's language to French and saves this preference in the registry.
+
+        .NOTES
+        - Ensure that the specified language code exists in `$itt.database.locales.Controls`.
+        - The registry path for saving the language setting is defined by `$itt.registryPath`.
+    #>
+
     param (
         [string]$lang  # Parameter for the language to set
     )
@@ -10831,6 +11593,16 @@ function Set-Language {
     Set-ItemProperty -Path $itt.registryPath  -Name "locales" -Value "$lang" -Force
 }
 function ToggleTheme {
+
+    <#
+        .SYNOPSIS
+        Toggles the application's theme between dark and light modes based on the state of the `themeText` checkbox control.
+
+        .DESCRIPTION
+        The `ToggleTheme` function checks the state of a UI checkbox named `themeText` to determine whether the application should be switched to dark or light mode. 
+        If the checkbox is checked, the function activates dark mode; if unchecked, it activates light mode. 
+        The checkbox state is then updated to reflect the new theme setting. Error handling is included to manage and report any issues that occur during the theme switching process.
+    #>
     
     try {
 
@@ -11021,9 +11793,38 @@ function DisablePopup {
 function UpdateUI {
 
     <#
-    .Example
-        UpdateUI -Button "InstallBtn" -ButtonText "installText" -Content "downloading" -TextIcon "installIcon" -Icon "  " -Width "150"
+        .SYNOPSIS
+        Updates the user interface elements, including a button's width, text, and associated icons.
+
+        .DESCRIPTION
+        The `UpdateUI` function is designed to modify various UI components within the application. 
+        It updates the width and text of a specified button, changes the text of a related text block, and sets the icon for another text block. 
+        This function is typically used to reflect different states of the application, such as during installations or other processes.
+
+        .PARAMETER Button
+        Specifies the name of the button element to be updated.
+
+        .PARAMETER ButtonText
+        Specifies the name of the text block associated with the button whose text will be updated.
+
+        .PARAMETER Icon
+        Specifies the icon to be set in the text block.
+
+        .PARAMETER Content
+        Specifies the content to be displayed as button text. This content is localized based on the application's current language setting.
+
+        .PARAMETER TextIcon
+        Specifies the name of the text block where the icon will be displayed.
+
+        .PARAMETER Width
+        Specifies the width to set for the button. The default value is "100".
+
+        .EXAMPLE
+            UpdateUI -Button "InstallBtn" -ButtonText "installText" -Content "downloading" -TextIcon "installIcon" -Icon "  " -Width "150"
+        This example updates the UI by setting the width of the "InstallBtn" button to 150, changing the text of the "installText" text block to "downloading", 
+        and setting the icon for the "installIcon" text block to "  ".
     #>
+
 
     param(
         [string]$Button,
@@ -14932,7 +15733,7 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
       Text="#StandWithPalestine"
       FontWeight="SemiBold"
       FlowDirection="LeftToRight"
-      Width="766"
+      Width="700"
       />
     </StackPanel>
   <!--End Quotes-->
