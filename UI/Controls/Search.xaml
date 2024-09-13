@@ -1,7 +1,7 @@
 <!--Search -->
     <Grid HorizontalAlignment="Right" Grid.Column="1" VerticalAlignment="Center">
     <TextBox Padding="8"
-            Width="120"
+            Width="100"
             VerticalAlignment="Center"
             HorizontalAlignment="Left"
             Text="{Binding Text_searchInput}"
