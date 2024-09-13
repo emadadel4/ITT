@@ -11881,7 +11881,6 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
 
 <!--Fade in-->
 
-
 <!--Image Style-->
 <Style TargetType="Image">
     <Style.Triggers>
@@ -11927,7 +11926,7 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ListViewItem">
-                    <Border CornerRadius="10"
+                    <Border CornerRadius="5"
                             Padding="{TemplateBinding Padding}" 
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}">
@@ -12004,7 +12003,7 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
                   <Border Margin="0" Background="{TemplateBinding Background}"
                           BorderBrush="{TemplateBinding BorderBrush}"
                           BorderThickness="{TemplateBinding BorderThickness}"
-                          CornerRadius="16">
+                          CornerRadius="15">
                       <ScrollViewer x:Name="PART_ContentHost" />
                   </Border>
               </ControlTemplate>
@@ -12237,7 +12236,7 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="TabItem">
-                    <Border Name="Border" CornerRadius="4" BorderThickness="0,0,0,0" Padding="8" BorderBrush="Transparent"  Margin="5,5">
+                    <Border Name="Border" CornerRadius="8" BorderThickness="0,0,0,0" Padding="8" BorderBrush="Transparent"  Margin="5,5">
                         <ContentPresenter x:Name="ContentSite"
                         VerticalAlignment="Center"
                         HorizontalAlignment="Center"
@@ -12733,7 +12732,7 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
                 <!--Search -->
     <Grid HorizontalAlignment="Right" Grid.Column="1" VerticalAlignment="Center">
     <TextBox Padding="8"
-            Width="120"
+            Width="100"
             VerticalAlignment="Center"
             HorizontalAlignment="Left"
             Text="{Binding Text_searchInput}"
