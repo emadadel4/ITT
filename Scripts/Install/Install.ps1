@@ -188,7 +188,7 @@ function Invoke-ApplyTweaks {
             switch ($tweak.Type) {        
         
                 "command" {
-                    $tweak.Command | ForEach-Object { ExecuteCommand -Name $tweak.Name -Command $_ }
+                    $tweak.Command | ForEach-Object { ExecuteCommand -Name $tweak.Name -Command $tweak.Command}
                 }
                 "Registry" {
                     $tweak.Modify | ForEach-Object {
@@ -205,6 +205,11 @@ function Invoke-ApplyTweaks {
                 }
                 "AppxPackage" {
                     $tweak.removeAppxPackage | ForEach-Object { Uninstall-AppxPackage -Name $_.Name }
+                    $tweak.Command | ForEach-Object {
+                        ExecuteCommand -Name $tweak.Name -Command $tweak.Command 
+                        # debug
+                        Write-Host $tweak.Command
+                    }
                 }
                 "service" {
                     $tweak.Service | ForEach-Object { Disable-Service -ServiceName $_.Name -StartupType $_.StartupType }
