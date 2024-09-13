@@ -28,7 +28,7 @@ function Download-And-ExtractZip {
     Download-And-ExtractZip -url "http://example.com/file.zip" -destinationDir "C:\Temp" -Createshortcut "yes" -exeFileName "setup.exe" -run "yes" -exeArgs "/silent"
     Downloads the ZIP file from the specified URL, extracts it to "C:\Temp", creates a shortcut to "setup.exe" on the desktop, and runs the executable with the "/silent" argument.
     #>
-    
+
     param (
         [string]$url,
         [string]$destinationDir = "C:\ProgramData\ITT\Downloads",
@@ -86,6 +86,40 @@ function Download-And-ExtractZip {
 }
 
 function Download-And-Install-Exe {
+    <#
+    .SYNOPSIS
+    Downloads an executable file from a URL, optionally creates a shortcut on the desktop, and runs the executable.
+
+    .DESCRIPTION
+    This function downloads an executable file from the specified URL to a designated output directory. Optionally, it can create a shortcut to the executable file on the desktop and run the executable with provided arguments. The function includes error handling and logging to track the process.
+
+    .PARAMETER name
+    The name of the executable file to be downloaded. This is used to define the destination path and the shortcut name.
+
+    .PARAMETER url
+    The URL of the executable file to be downloaded. This parameter is required.
+
+    .PARAMETER type
+    The file extension of the executable file (e.g., "exe"). This helps in naming the file correctly upon download.
+
+    .PARAMETER exeArgs
+    Arguments to be passed to the executable when it is run. This parameter is optional.
+
+    .PARAMETER outputDir
+    The directory where the executable file will be downloaded. This is a subdirectory under `$env:ProgramData`. This parameter is required.
+
+    .PARAMETER shortcut
+    Specifies whether to create a shortcut to the executable on the desktop. Accepts "yes" or "no". Default is "no".
+
+    .PARAMETER run
+    Specifies whether to run the executable after downloading. Accepts "yes" or "no". Default is "no".
+
+    .EXAMPLE
+    Download-And-Install-Exe -name "ExampleApp" -url "http://example.com/exampleapp.exe" -type "exe" -exeArgs "/silent" -outputDir "Installers" -shortcut "yes" -run "yes"
+    Downloads the executable from the specified URL, saves it to `C:\ProgramData\Installers\ExampleApp\ExampleApp.exe`, creates a shortcut to the executable on the desktop, and runs the executable with the `/silent` argument.
+
+    #>
+    
     param (
         [string]$name,
         [string]$url,
