@@ -1,5 +1,22 @@
 $KeyEvents = {
 
+    <#
+        .DESCRIPTION
+            How to add a new shortcut
+
+        .PARAMETER A
+            replace A With you latter you want
+
+        .PARAMETER Ctrl
+            replace Ctrl With you latter you want
+
+        .EXAMPLE
+            if (($_.Key -eq "A" -and $_.KeyboardDevice.Modifiers -eq "Ctrl")) {
+
+                # your code here
+            }      
+    #>
+
     if ($itt.ProcessRunning -eq $true) {
         return
     }
