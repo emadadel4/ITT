@@ -11882,13 +11882,13 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
 <!--Fade in-->
 
 <!--Image Style-->
-<Style TargetType="Image">
-    <Style.Triggers>
-        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
-            <BeginStoryboard Storyboard="{StaticResource FadeIn}" />
-        </EventTrigger>
-    </Style.Triggers>
-</Style>
+    <Style TargetType="Image">
+        <Style.Triggers>
+            <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+                <BeginStoryboard Storyboard="{StaticResource FadeIn}" />
+            </EventTrigger>
+        </Style.Triggers>
+    </Style>
 <!--End Image Style-->
 
 <!--Button Style-->
