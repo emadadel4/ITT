@@ -224,6 +224,12 @@ function Invoke-Button {
             About
             Debug-Message $action
         }
+        # Reset-Preferences
+
+        "reset"{
+            Reset-Preferences
+            Debug-Message $action
+        }
 
         Default {
             Write-Host "Unknown action: $action"

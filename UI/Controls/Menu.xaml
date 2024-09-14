@@ -131,6 +131,12 @@
                 </MenuItem.Icon>
             </MenuItem>
 
+             <MenuItem Name="reset" Header="{Binding reset}">
+                <MenuItem.Icon>
+                    <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="15" Text=""/>
+                </MenuItem.Icon>
+            </MenuItem>
+
 
 
         </MenuItem>
