@@ -83,7 +83,7 @@
 <li>Choose "PowerShell" or "Terminal" and paste any of the following commands:</li>
 </ol>
 
-> [!WARNING]  
+> [!CAUTION]  
 Only run the script using official commands from this GitHub repository, and avoid downloading it from other sites.
 
 <pre><code>irm bit.ly/ittea | iex</code></pre>
