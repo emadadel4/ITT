@@ -6367,6 +6367,7 @@ $itt.database.locales = '{
         "Light":"نهارا",
         "defaultTheme":"استخدم إعدادات النظام",
         "ittlink":"أنشاء أختصار على سطح المكتب",
+        "reset":"الوضع الافتراضي",
         "theme":"المظهر",
         "language":"اللغة",
         "mas":"تفعيل الويندوز",
@@ -6421,6 +6422,8 @@ $itt.database.locales = '{
         "Light":"Light",
         "defaultTheme":"Use system setting",
         "ittlink":"Create desktop shortcut",
+        "reset":"Reset Preferences",
+        "reopen":"Please reopen ITT again.",
         "theme":"Theme",
         "language":"Language",
         "mas":"Microsoft Activation Scripts (MAS)",
@@ -6473,9 +6476,11 @@ $itt.database.locales = '{
         "on": "Activer",
         "off": "Désactiver",
         "Dark": "Sombre",
+        "reset": "Réinitialiser les préférences",
         "Light": "Clair",
         "defaultTheme": "Système",
         "ittlink": "Créer un raccourci sur le bureau",
+        "reopen": "Veuillez rouvrir ITT à nouveau.",
         "theme": "Thème",
         "language": "Langue",
         "mas": "Scripts d''Activation Microsoft (MAS)",
@@ -6527,9 +6532,11 @@ $itt.database.locales = '{
         "on": "Aç",
         "off": "Kapat",
         "Dark": "Koyu",
+        "reset": "Tercihleri Sıfırla",
         "Light": "Açık",
         "defaultTheme": "Sistem",
         "ittlink": "Masaüstü kısayolu oluştur",
+        "reopen": "Lütfen ITT''yi tekrar açın.",
         "theme": "Tema",
         "language": "Dil",
         "mas": "Microsoft Aktivasyon Komut Dosyaları (MAS)",
@@ -6580,10 +6587,12 @@ $itt.database.locales = '{
         "music": "音乐",
         "on": "开启",
         "off": "关闭",
+        "reset": "重置偏好设置",
         "Dark": "深色",
         "Light": "浅色",
         "defaultTheme": "系统",
         "ittlink": "创建桌面快捷方式",
+        "reopen": "请重新打开ITT。",
         "theme": "主题",
         "language": "语言",
         "mas": "Microsoft 激活脚本 (MAS)",
@@ -6633,11 +6642,13 @@ $itt.database.locales = '{
         "loadapps": "선택한 앱 복원",
         "music": "음악",
         "on": "켜기",
+        "reset": "환경 설정 초기화",
         "off": "끄기",
         "Dark": "다크",
         "Light": "라이트",
         "defaultTheme": "시스템",
         "ittlink": "바탕화면 바로 가기 만들기",
+        "reopen": "ITT를 다시 열어주세요.",
         "theme": "테마",
         "language": "언어",
         "mas": "Microsoft 활성화 스크립트 (MAS)",
@@ -6687,11 +6698,13 @@ $itt.database.locales = '{
         "loadapps": "Ausgewählte Apps wiederherstellen",
         "music": "Musik",
         "on": "Stummschalten ",
+        "reset": "Einstellungen zurücksetzen",
         "off": "Stummschalten",
         "Dark": "Dunkel ",
         "Light": "Hell",
         "defaultTheme": "System",
         "ittlink": "Desktop-Verknüpfung erstellen",
+        "reopen": "Bitte öffnen Sie ITT erneut.",
         "theme": "Thema",
         "language": "Sprache",
         "mas": "Microsoft-Aktivierungsskripte (MAS)",
@@ -6741,11 +6754,13 @@ $itt.database.locales = '{
         "loadapps": "Восстановить выбранные приложения",
         "music": "Музыка",
         "on": "Включить ",
+        "reset": "Сбросить настройки",
         "off": "Выключить",
         "Dark": "Темная ",
         "Light": "Светлая",
         "defaultTheme": "Системная",
         "ittlink": "Создать ярлык на рабочем столе",
+        "reopen": "Пожалуйста, снова откройте ITT.",
         "theme": "Тема",
         "language": "Язык",
         "mas": "Скрипты активации Microsoft (MAS)",
@@ -6795,11 +6810,13 @@ $itt.database.locales = '{
     "loadapps": "Restaurar aplicaciones seleccionadas",
     "music": "Música",
     "on": "Activado ",
+    "reset": "Restablecer preferencias",
     "off": "Desactivado",
     "Dark": "Oscuro ",
     "Light": "Claro",
     "defaultTheme": "Sistema",
     "ittlink": "Crear acceso directo en el escritorio",
+    "reopen": "Por favor, vuelva a abrir ITT.",
     "theme": "Tema",
     "language": "Idioma",
     "mas": "Scripts de Activación de Microsoft (MAS)",
@@ -9745,6 +9762,34 @@ function Remove-Registry {
         Write-Host "An error occurred: $_" -ForegroundColor red
     }
 }
+function Reset-Preferences {
+
+    <#
+        .SYNOPSIS
+        Resets user preferences for music volume and popup window settings.
+
+        .DESCRIPTION
+        This function resets the preferences by updating the registry values for the music volume and popup window settings. 
+        It writes the provided values to the specified registry path and switches to the system's default settings.
+
+        .PARAMETER music
+        Sets the music volume preference. Default is "100".
+
+        .PARAMETER PopupWindow
+        Sets the popup window visibility. Default is "on".
+    #>
+
+    param (
+        [string]$music = "100",
+        [string]$PopupWindow = "on"
+    )
+
+    Set-ItemProperty -Path $itt.registryPath  -Name "PopupWindow" -Value $PopupWindow -Force
+    Set-ItemProperty -Path $itt.registryPath  -Name "Music" -Value $music -Force
+    SwitchToSystem
+
+    Message -key "reopen" -icon "Information"
+}
 # Function to get all CheckBoxes from a StackPanel
 function Get-CheckBoxesFromStackPanel {
     param (
@@ -10690,6 +10735,12 @@ function Invoke-Button {
         }
         "dev" {
             About
+            Debug-Message $action
+        }
+        # Reset-Preferences
+
+        "reset"{
+            Reset-Preferences
             Debug-Message $action
         }
 
@@ -12633,6 +12684,12 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
             <MenuItem Name="ittshortcut" Header="{Binding ittlink}" InputGestureText="Shift+I">
                 <MenuItem.Icon>
                     <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="15" Text=""/>
+                </MenuItem.Icon>
+            </MenuItem>
+
+             <MenuItem Name="reset" Header="{Binding reset}">
+                <MenuItem.Icon>
+                    <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="15" Text=""/>
                 </MenuItem.Icon>
             </MenuItem>
 
