@@ -84,7 +84,7 @@
 </ol>
 
 > [!WARNING]  
-Do not download the script from any other site. Run it using known official commands from this GitHub repository only.
+Run the script using only official commands from this GitHub repository.
 
 <pre><code>irm bit.ly/ittea | iex</code></pre>
 
