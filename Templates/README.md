@@ -1,5 +1,4 @@
 
-
 <p align="center">
   <a href="Support.md" rel="nofollow">
     <img src="https://raw.githubusercontent.com/Safouene1/support-palestine-banner/master/StandWithPalestine.svg" alt="Ceasefire Now" style="width:40%;">
@@ -12,7 +11,6 @@
 <div align="center">
   <h5> #{a} App |  #{t} Tweaks | #{s} Settings | #{q} Quote |  #{OST} Soundtrack </h5>
 </div>
-
 
 <div align="center">
 
@@ -59,7 +57,7 @@
         <img src="https://img.shields.io/badge/Blog-FF5722?style=flat&logo=blogger&logoColor=white" alt="Blog" height="25">
     </a>
     <a href="https://www.reddit.com/ittea" style="margin-right: 20px;">
-      <img src="https://img.shields.io/badge/Blog-FF5722?style=flat&logo=reddit&logoColor=white" alt="reddit" height="25">
+      <img src="https://img.shields.io/badge/reddit-FF5722?style=flat&logo=reddit&logoColor=white" alt="reddit" height="25">
     </a>
 </div>
 
@@ -91,11 +89,9 @@ Only run the script using official commands from this GitHub repository, and avo
 
 <pre><code>irm bit.ly/ittea | iex</code></pre>
 
-
 <pre><code>irm bit.ly/emadadel | iex</code></pre>
 
 <pre><code>irm cutt.ly/ittea | iex</code></pre>
-
 
 or
 
@@ -106,12 +102,10 @@ or
 
 <div align="center">
   
-  ## Watch Demo
+## Watch Demo
 
   [![Watch the video](https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/thumbnail.jpg)](https://www.youtube.com/watch?v=QmO82OTsU5c)
 </div>
-
-
 
 # 💡 How to Contribute
 
@@ -169,20 +163,17 @@ or
   <img src="https://avatars.githubusercontent.com/u/19177373?s=400&u=778f951797417d73bfb89d2b5704422f25dc089a&v=4" alt="Profile" width="100" height="100" style="border-radius: 100px;margin-bottom:20px;">
 </a>
 
-
 [![Telegram](https://img.shields.io/badge/Telegram-2CA5E0?style=flat&logo=telegram&logoColor=white)](https://t.me/ittemadadel) [![Blog](https://img.shields.io/badge/Blog-FF5722?style=flat&logo=blogger&logoColor=white)](https://emadadel4.github.io) [![Discord](https://img.shields.io/badge/-Discord-7289da?style=flat&logo=discord&logoColor=white)](https://discord.gg/3eV79KgD)  <a href="https://www.youtube.com/@emadadel4" style="margin-right: 20px;">
         <img src="https://img.shields.io/badge/YouTube-FF0000?style=flat&logo=youtube&logoColor=white" alt="YouTube">
 </a>
-
 
 ## 👨‍💻 Contributors
 
 [![Contributors](https://contrib.rocks/image?repo=emadadel4/itt)](https://github.com/emadadel4/itt/graphs/contributors)
 
-## Support 
+## Support
 
 <p>If this project helped you, please give it a ⭐️ and join to us on discord server</p>
-
 
 <a href="https://www.buymeacoffee.com/emadadel" target="_blank">
   <img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174">
