@@ -23,7 +23,7 @@ Add-Type -AssemblyName WindowsBase
 $itt = [Hashtable]::Synchronized(@{
     database       = @{}
     ProcessRunning = $false
-    lastupdate     = "09/15/2024"
+    lastupdate     = "09/16/2024"
     github         = "https://github.com/emadadel4"
     telegram       = "https://t.me/emadadel4"
     website        = "https://emadadel4.github.io"
