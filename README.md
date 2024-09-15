@@ -58,6 +58,9 @@
     <a href="https://emadadel4.github.io" style="margin-right: 20px;">
         <img src="https://img.shields.io/badge/Blog-FF5722?style=flat&logo=blogger&logoColor=white" alt="Blog" height="25">
     </a>
+   <a href="https://www.reddit.com/mod/ittea" style="margin-right: 20px;">
+        <img src="https://img.shields.io/badge/Blog-FF5722?style=flat&logo=reddit&logoColor=white" alt="reddit" height="25">
+    </a>
 </div>
 
 <p>
