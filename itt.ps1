@@ -10274,7 +10274,7 @@ function ChangeTap {
     $tabSettings = @{
         'apps'        = @{ 'installBtn' = 'Visible'; 'applyBtn' = 'Hidden'; 'currentList' = 'appslist' }
         'tweeksTab'   = @{ 'installBtn' = 'Hidden'; 'applyBtn' = 'Visible'; 'currentList' = 'tweakslist' }
-        'SettingsTab' = @{ 'installBtn' = 'Hidden'; 'applyBtn' = 'Hidden'; 'currentList' = $null }
+        'SettingsTab' = @{ 'installBtn' = 'Hidden'; 'applyBtn' = 'Hidden'; 'currentList' = 'SettingsList' }
     }
 
     # Iterate over the tab settings
@@ -10287,6 +10287,9 @@ function ChangeTap {
             $itt['window'].FindName('installBtn').Visibility = $settings['installBtn']
             $itt['window'].FindName('applyBtn').Visibility = $settings['applyBtn']
             $itt.currentList = $settings['currentList']
+
+            # Debug
+            #Add-Log -Message $settings['currentList'] -Level "INFO"
             
             break  # Exit the loop once the matching tab is found
         }
@@ -12769,12 +12772,12 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
                 <MenuItem.Icon>
                     <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
                 </MenuItem.Icon>
-                <MenuItem Name="moff" Header="{Binding off}" InputGestureText="Shift+F">
+                <MenuItem Name="moff" Header="{Binding off}" InputGestureText="Shift+N">
                     <MenuItem.Icon>
                         <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem Name="mon" Header="{Binding on}" InputGestureText="Shift+N">
+                <MenuItem Name="mon" Header="{Binding on}" InputGestureText="Shift+F">
                     <MenuItem.Icon>
                         <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
                     </MenuItem.Icon>
