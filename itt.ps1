@@ -23,7 +23,7 @@ Add-Type -AssemblyName WindowsBase
 $itt = [Hashtable]::Synchronized(@{
     database       = @{}
     ProcessRunning = $false
-    lastupdate     = "09/14/2024"
+    lastupdate     = "09/15/2024"
     github         = "https://github.com/emadadel4"
     telegram       = "https://t.me/emadadel4"
     website        = "https://emadadel4.github.io"
@@ -7366,7 +7366,10 @@ $itt.database.Tweaks = '[
       }
     ],
     "InvokeCommand": [
-      "\r\n         DISM /Online /Remove-Capability /CapabilityName:Microsoft.Windows.MSPaint~~~~0.0.1.0\r\n      "
+      "
+        DISM /Online /Remove-Capability /CapabilityName:Microsoft.Windows.MSPaint~~~~0.0.1.0
+        Invoke-RestMethod https://raw.githubusercontent.com/emadadel4/WindowsTweaks/main/ClearStartMenu.ps1 | Invoke-Expression
+      "
     ],
     "UndoCommand": [
       ""
@@ -11327,6 +11330,23 @@ function ClearFilter {
     $collectionView.Filter = $null
 }
 $KeyEvents = {
+
+    <#
+        .DESCRIPTION
+            How to add a new shortcut
+
+        .PARAMETER A
+            replace A With you latter you want
+
+        .PARAMETER Ctrl
+            replace Ctrl With you latter you want
+
+        .EXAMPLE
+            if (($_.Key -eq "A" -and $_.KeyboardDevice.Modifiers -eq "Ctrl")) {
+
+                # your code here
+            }      
+    #>
 
     if ($itt.ProcessRunning -eq $true) {
         return
