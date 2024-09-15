@@ -23,6 +23,25 @@
     ]
   },
   {
+    "Name": "System File Checker",
+    "Description": "sfc /scannow Use the System File Checker tool to repair missing or corrupted system files",
+    "Check": "false",
+    "Category": "Fixer",
+    "Type": "command",
+    "Refresh": "false",
+    "InvokeCommand": [
+      "
+        Chkdsk /scan
+        sfc /scannow
+        DISM /Online /Cleanup-Image /Restorehealth
+        sfc /scannow
+      "
+    ],
+    "UndoCommand": [
+      ""
+    ]
+  },
+  {
     "Name": "Clear Start Menu Windows 10/11",
     "Description": "Clear all pinned apps from the start menu",
     "Check": "false",
