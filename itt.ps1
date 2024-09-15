@@ -7118,6 +7118,25 @@ $itt.database.Tweaks = '[
     ]
   },
   {
+    "Name": "System File Checker",
+    "Description": "sfc /scannow Use the System File Checker tool to repair missing or corrupted system files",
+    "Check": "false",
+    "Category": "Fixer",
+    "Type": "command",
+    "Refresh": "false",
+    "InvokeCommand": [
+      "
+        Chkdsk /scan
+        sfc /scannow
+        DISM /Online /Cleanup-Image /Restorehealth
+        sfc /scannow
+      "
+    ],
+    "UndoCommand": [
+      ""
+    ]
+  },
+  {
     "Name": "Clear Start Menu Windows 10/11",
     "Description": "Clear all pinned apps from the start menu",
     "Check": "false",
@@ -15491,6 +15510,14 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
                 <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content="Cleanup"/>
             </StackPanel>
                 <TextBlock Width="555" Background="Transparent" Margin="8" Foreground="{DynamicResource DefaultTextColor2}"  FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="Clean temporary files that are not necessary"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Width="auto" Margin="10">
+            <StackPanel Orientation="Horizontal">
+                <CheckBox Content="System File Checker"     ToolTip="Install it again to update" FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content="Fixer"/>
+            </StackPanel>
+                <TextBlock Width="555" Background="Transparent" Margin="8" Foreground="{DynamicResource DefaultTextColor2}"  FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="sfc scannow Use the System File Checker tool to repair missing or corrupted system files"/>
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Width="auto" Margin="10">
