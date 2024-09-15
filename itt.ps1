@@ -8940,7 +8940,7 @@ function Add-Log {
     $date =  "[$timestamp $Level]"
 
     # Write the log message to the console with the specified color
-    Write-Host "  $date" -ForegroundColor $color ; Write-Host "  $logMessage" -ForegroundColor $color 
+    Write-Host " $date" -ForegroundColor $color ; Write-Host " $logMessage" -ForegroundColor $color 
     Write-Host "" -ForegroundColor $color
 
 }
@@ -12160,33 +12160,63 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
     </Style>
 <!--End CheckBox Style-->
 
-<!--Textbox Style-->
-  <Style TargetType="TextBox">
+<!--SearchBox Style-->
+<Style x:Key="SearchBox" TargetType="TextBox">
     <Setter Property="Background" Value="{DynamicResource FGColor}"/>
-      <Setter Property="Foreground" Value="{DynamicResource FGTextColor}"/>
-      <Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}"/>
-      <Setter Property="BorderThickness" Value="0"/>
-      <Setter Property="Template">
-          <Setter.Value>
-              <ControlTemplate TargetType="TextBox">
-                  <Border Margin="0" Background="{TemplateBinding Background}"
-                          BorderBrush="{TemplateBinding BorderBrush}"
-                          BorderThickness="{TemplateBinding BorderThickness}"
-                          CornerRadius="15">
-                      <ScrollViewer x:Name="PART_ContentHost" />
-                  </Border>
-              </ControlTemplate>
-          </Setter.Value>
-      </Setter>
-      <Style.Triggers>
-              <Trigger Property="IsFocused" Value="True">
-                  <Setter Property="BorderThickness" Value="2"/>
-                  <Setter Property="BorderBrush" Value="{DynamicResource BGButtonColor}"/>
-                  <Setter Property="Background" Value="{DynamicResource FGColor}"/>
-              </Trigger>
-          </Style.Triggers>
-  </Style>
-<!--End Textbox Style-->
+    <Setter Property="Foreground" Value="{DynamicResource FGTextColor}"/>
+    <Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}"/>
+    <Setter Property="BorderThickness" Value="0"/>
+    <Setter Property="Padding" Value="8"/>
+    <Setter Property="Template">
+        <Setter.Value>
+            <ControlTemplate TargetType="TextBox">
+                <Border Margin="0" Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="15">
+                    <Grid>
+                        <ScrollViewer x:Name="PART_ContentHost" />
+                      <StackPanel Orientation="Horizontal">
+
+                        <!-- Icon -->
+                        <TextBlock x:Name="SearchIcon"
+                            Foreground="Gray" 
+                            Text=""
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Left"
+                            Margin="10,0,0,0"
+                            FontFamily="Segoe MDL2 Assets"
+                            IsHitTestVisible="False"/>
+
+                        <!-- Hint Search Text -->
+                        <TextBlock x:Name="SearchHintText"
+                            Foreground="Gray" 
+                            Text="{Binding search}"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Left"
+                            Margin="10,0,0,0"
+                            IsHitTestVisible="False"/>
+                      </StackPanel>
+                    </Grid>
+                </Border>
+                <ControlTemplate.Triggers>
+                    <Trigger Property="IsKeyboardFocusWithin" Value="True">
+                        <Setter TargetName="SearchHintText" Property="Visibility" Value="Collapsed"/>
+                        <Setter TargetName="SearchIcon" Property="Visibility" Value="Collapsed"/>
+                    </Trigger>
+                </ControlTemplate.Triggers>
+            </ControlTemplate>
+        </Setter.Value>
+    </Setter>
+    <Style.Triggers>
+        <Trigger Property="IsKeyboardFocusWithin" Value="True">
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="BorderBrush" Value="{DynamicResource BGButtonColor}"/>
+            <Setter Property="Background" Value="{DynamicResource FGColor}"/>
+        </Trigger>
+    </Style.Triggers>
+</Style>
+<!--End SearchBox Style-->
 
 <!--Label Style-->
   <Style TargetType="Label">
@@ -12905,55 +12935,16 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
 <!--End Catagory-->
 
                 <!--Search -->
-    <Grid HorizontalAlignment="Right" Grid.Column="1" VerticalAlignment="Center">
+<Grid HorizontalAlignment="Right" Grid.Column="1" VerticalAlignment="Center">
     <TextBox Padding="8"
             Width="100"
             VerticalAlignment="Center"
             HorizontalAlignment="Left"
-            Text="{Binding Text_searchInput}"
+            Style="{StaticResource SearchBox}"
             Name="searchInput" />
-
-    <TextBlock IsHitTestVisible="False"
-            Text=""
-            FontFamily="Segoe MDL2 Assets"
-            VerticalAlignment="Center"
-            HorizontalAlignment="Left"
-            Margin="20,0,5,0"
-            FontSize="12"
-            Foreground="{DynamicResource FGTextColor}">
-        <TextBlock.Style>
-            <Style TargetType="{x:Type TextBlock}">
-                <Setter Property="Visibility" Value="Hidden"/>
-                <Style.Triggers>
-                    <DataTrigger Binding="{Binding Text, ElementName=searchInput}" Value="">
-                        <Setter Property="Visibility" Value="Visible"/>
-                    </DataTrigger>
-                </Style.Triggers>
-            </Style>
-        </TextBlock.Style>
-    </TextBlock>
-
-    <TextBlock Text="{Binding search}"
-            IsHitTestVisible="False"
-            VerticalAlignment="Center"
-            HorizontalAlignment="Left"
-            Margin="38,0,0,0"
-            Foreground="{DynamicResource FGTextColor}">
-        <TextBlock.Style>
-            <Style TargetType="{x:Type TextBlock}">
-                <Style.Triggers>
-                    <DataTrigger Binding="{Binding IsFocused, ElementName=searchInput}" Value="True">
-                        <Setter Property="Visibility" Value="Hidden"/>
-                    </DataTrigger>
-                    <DataTrigger Binding="{Binding Text, ElementName=searchInput}" Value="">
-                        <Setter Property="Visibility" Value="Visible"/>
-                    </DataTrigger>
-                </Style.Triggers>
-            </Style>
-        </TextBlock.Style>
-    </TextBlock>
-    </Grid>
+</Grid>
 <!--End Search-->
+
 
             </Grid>
         </Grid>
