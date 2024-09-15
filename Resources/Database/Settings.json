@@ -29,5 +29,11 @@
     "Name":"ToggleStickyKeys",
     "description": "Sticky keys is an accessibility feature of some graphical user interfaces which assists users who have physical disabilities or help users reduce repetitive strain injury.",
     "category": "Accessibility"
+  },
+  {
+    "Content": "Mouse Acceleration",
+    "Name":"MouseAcceleration",
+    "description": "Cursor movement is affected by the speed of your physical mouse movements",
+    "category": "Accessibility"
   }
 ]

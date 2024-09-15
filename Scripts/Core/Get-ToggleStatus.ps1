@@ -97,4 +97,17 @@ Function Get-ToggleStatus {
             return $true
         }
     }
+
+    # Check status of "MouseAcceleration"    
+    if($ToggleSwitch -eq "MouseAcceleration") {
+        $Speed = (Get-ItemProperty -path 'HKCU:\Control Panel\Mouse').MouseSpeed
+        $Threshold1 = (Get-ItemProperty -path 'HKCU:\Control Panel\Mouse').MouseThreshold1
+        $Threshold2 = (Get-ItemProperty -path 'HKCU:\Control Panel\Mouse').MouseThreshold2
+
+        if($Speed -eq 1 -and $Threshold1 -eq 6 -and $Threshold2 -eq 10) {
+            return $true
+        } else {
+            return $false
+        }
+    }
 }

@@ -35,5 +35,7 @@ function Invoke-Toogle {
         "ToggleShowHidden" {Invoke-ShowFile $(Get-ToggleStatus ToggleShowHidden)}
         "ToggleNumLook" {Invoke-NumLock $(Get-ToggleStatus ToggleNumLook)}
         "ToggleStickyKeys" {Invoke-StickyKeys $(Get-ToggleStatus ToggleStickyKeys)}
+        "MouseAcceleration" {Invoke-MouseAcceleration $(Get-ToggleStatus MouseAcceleration)}
+
     }
 }
