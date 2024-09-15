@@ -54,10 +54,10 @@
         <img src="https://img.shields.io/badge/-Discord-7289da?style=flat&logo=discord&logoColor=white" alt="Discord" height="25">
     </a>
     <a href="https://emadadel4.github.io" style="margin-right: 20px;">
-        <img src="https://img.shields.io/badge/Blog-FF5722?style=flat&logo=blogger&logoColor=white" alt="Blog" height="25">
+        <img src="https://img.shields.io/badge/Blog-0000?style=flat&logo=blogger&logoColor=white" alt="Blog" height="25">
     </a>
     <a href="https://www.reddit.com/ittea" style="margin-right: 20px;">
-      <img src="https://img.shields.io/badge/reddit-FF5722?style=flat&logo=reddit&logoColor=white" alt="reddit" height="25">
+      <img src="https://img.shields.io/badge/Reddit-FFf?style=flat&logo=reddit&logoColor=black" alt="reddit" height="25">
     </a>
 </div>
 
