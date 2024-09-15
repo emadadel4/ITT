@@ -97,12 +97,12 @@
                 <MenuItem.Icon>
                     <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
                 </MenuItem.Icon>
-                <MenuItem Name="moff" Header="{Binding off}" InputGestureText="Shift+F">
+                <MenuItem Name="moff" Header="{Binding off}" InputGestureText="Shift+N">
                     <MenuItem.Icon>
                         <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem Name="mon" Header="{Binding on}" InputGestureText="Shift+N">
+                <MenuItem Name="mon" Header="{Binding on}" InputGestureText="Shift+F">
                     <MenuItem.Icon>
                         <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
                     </MenuItem.Icon>
