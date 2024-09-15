@@ -7085,6 +7085,12 @@ $itt.database.Settings = '[
     "Name":"ToggleStickyKeys",
     "description": "Sticky keys is an accessibility feature of some graphical user interfaces which assists users who have physical disabilities or help users reduce repetitive strain injury.",
     "category": "Accessibility"
+  },
+  {
+    "Content": "Mouse Acceleration",
+    "Name":"MouseAcceleration",
+    "description": "Cursor movement is affected by the speed of your physical mouse movements",
+    "category": "Accessibility"
   }
 ]' | ConvertFrom-Json
 $itt.database.Tweaks = '[
@@ -9373,6 +9379,19 @@ Function Get-ToggleStatus {
             return $true
         }
     }
+
+    # Check status of "MouseAcceleration"    
+    if($ToggleSwitch -eq "MouseAcceleration") {
+        $Speed = (Get-ItemProperty -path 'HKCU:\Control Panel\Mouse').MouseSpeed
+        $Threshold1 = (Get-ItemProperty -path 'HKCU:\Control Panel\Mouse').MouseThreshold1
+        $Threshold2 = (Get-ItemProperty -path 'HKCU:\Control Panel\Mouse').MouseThreshold2
+
+        if($Speed -eq 1 -and $Threshold1 -eq 6 -and $Threshold2 -eq 10) {
+            return $true
+        } else {
+            return $false
+        }
+    }
 }
 
 function Install-App {
@@ -10789,6 +10808,8 @@ function Invoke-Toogle {
         "ToggleShowHidden" {Invoke-ShowFile $(Get-ToggleStatus ToggleShowHidden)}
         "ToggleNumLook" {Invoke-NumLock $(Get-ToggleStatus ToggleNumLook)}
         "ToggleStickyKeys" {Invoke-StickyKeys $(Get-ToggleStatus ToggleStickyKeys)}
+        "MouseAcceleration" {Invoke-MouseAcceleration $(Get-ToggleStatus MouseAcceleration)}
+
     }
 }
 Function Invoke-DarkMode {
@@ -10856,6 +10877,62 @@ Function Invoke-DarkMode {
     Catch{
         Write-Warning "Unable to set $Name due to unhandled exception"
         Write-Warning $psitem.Exception.StackTrace
+    }
+}
+function Invoke-MouseAcceleration {
+
+    <#
+        .SYNOPSIS
+        Toggles mouse acceleration settings on or off.
+
+        .DESCRIPTION
+        This function allows you to enable or disable mouse acceleration by adjusting the related registry settings. 
+        If the `$Mouse` parameter is set to `$false`, mouse acceleration is enabled with default values. 
+        If it is set to `$true`, mouse acceleration is disabled. Additionally, you can specify custom values for 
+        `MouseSpeed`, `Threshold1`, and `Threshold2`.
+
+        .EXAMPLE
+        # Disables mouse acceleration
+        MouseAcceleration -Mouse $true
+
+        # Enables mouse acceleration with default values
+        MouseAcceleration -Mouse $false
+
+        # Enables mouse acceleration with custom values
+        MouseAcceleration -Mouse $false -MouseSpeed 1 -Threshold1 4 -Threshold2 8
+
+        # Disables mouse acceleration and logs actions
+        MouseAcceleration -Mouse $true -Path "HKCU:\Control Panel\Mouse"
+    #>
+
+    param (
+        $Mouse,
+        $Speed = 0,
+        $Threshold1  = 0,
+        $Threshold2  = 0,
+        [string]$Path = "HKCU:\Control Panel\Mouse"
+    )
+
+    try {
+        if($Mouse -eq $false)
+        {
+            Add-Log -Message "Enabled" -LEVEL "INFO"
+            $Speed = 1
+            $Threshold1 = 6
+            $Threshold2 = 10
+        }else {
+            $Speed = 0
+            $Threshold1 = 0
+            $Threshold2 = 0
+            Add-Log -Message "Disabled" -LEVEL "INFO"
+        }
+
+        Set-ItemProperty -Path $Path -Name MouseSpeed -Value $Speed
+        Set-ItemProperty -Path $Path -Name MouseThreshold1 -Value $Threshold1
+        Set-ItemProperty -Path $Path -Name MouseThreshold2 -Value $Threshold2
+    }
+    catch {
+        Add-Log -Message "Unable  set valuse" -LEVEL "ERROR"
     }
 }
 function Invoke-NumLock {
@@ -15755,6 +15832,14 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
                 <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content="Accessibility"/>
             </StackPanel>
                 <TextBlock Width="555" Background="Transparent" Margin="8" Foreground="{DynamicResource DefaultTextColor2}"  FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="Sticky keys is an accessibility feature of some graphical user interfaces which assists users who have physical disabilities or help users reduce repetitive strain injury"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Width="auto" Margin="10">
+            <StackPanel Orientation="Horizontal">
+                <CheckBox Content="Mouse Acceleration" Tag=""  Style="{StaticResource ToggleSwitchStyle}" Name="MouseAcceleration" ToolTip="Install it again to update" FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content="Accessibility"/>
+            </StackPanel>
+                <TextBlock Width="555" Background="Transparent" Margin="8" Foreground="{DynamicResource DefaultTextColor2}"  FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="Cursor movement is affected by the speed of your physical mouse movements"/>
         </StackPanel>
 
                     </ListView>
