@@ -56,7 +56,7 @@
     <a href="https://emadadel4.github.io" style="margin-right: 20px;">
         <img src="https://img.shields.io/badge/Blog-0000?style=flat&logo=blogger&logoColor=white" alt="Blog" height="25">
     </a>
-    <a href="https://www.reddit.com/ittea" style="margin-right: 20px;">
+    <a href="https://www.reddit.com/r/ittea/" style="margin-right: 20px;">
       <img src="https://img.shields.io/badge/Reddit-FFf?style=flat&logo=reddit&logoColor=black" alt="reddit" height="25">
     </a>
 </div>
