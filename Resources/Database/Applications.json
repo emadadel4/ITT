@@ -2653,7 +2653,7 @@
     "check": "false"
   },
   {
-    "name": "Python 3.9",
+    "name": "Python 3.12.6",
     "description": "Python is a popular high-level programming language known for its simplicity and versatility. It is used in various fields such as web development, data science, machine learning, and automation.",
     "winget": "Python.Python.3.9",
     "choco": "python",
