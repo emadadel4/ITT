@@ -29,9 +29,6 @@ function Set-Taskbar {
 
             "done" {
                 $itt["window"].taskbarItemInfo.Overlay = "https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Icons/done.png"
-                Start-Sleep -Seconds 5
-                $itt["window"].taskbarItemInfo.Overlay = "https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Icons/icon.ico"
-
             }
 
             "logo" {
