@@ -9063,6 +9063,23 @@ function Finish {
        [string]$icon = "Info"
     )
 
+    
+    switch($ListView)
+    {
+        "TweaksListView" {
+            UpdateUI -Button "InstallBtn" -ButtonText "installText" -Content "InstallBtn" -TextIcon "installIcon" -Icon "  "
+        }
+
+        "TweaksListView" {
+            UpdateUI -Button "ApplyBtn" -ButtonText "applyText" -Content "applyBtn" -TextIcon "applyIcon" -Icon "  "
+            Add-Log -Message "Finished, Some tweaks require restarting" -Level "INFO"
+        }
+    }
+
+    $itt["window"].Dispatcher.Invoke([action]{ Set-Taskbar -progress "None" -value 0.01 -icon "done" })
+    Notify -title "$title" -msg "$msg" -icon "Info" -time 30000
+
+    # Clear 
     $itt.$ListView.Dispatcher.Invoke([Action]{
         foreach ($item in $itt.$ListView.Items)
         {
@@ -9082,9 +9099,6 @@ function Finish {
         }
     })
 
-    $itt["window"].Dispatcher.Invoke([action]{ Set-Taskbar -progress "None" -value 0.01 -icon "done" })
-    Notify -title "$title" -msg "$msg" -icon "Info" -time 30000
-    
 }
 function Show-Selected {
 
@@ -9476,12 +9490,11 @@ function Install-App {
         # Check winget
         if ($wingetResult -ne 0) {
             Add-Log -Message "Winget installation failed for $appName. Please install $appName manually." -Level "ERROR"
-            UpdateUI -Button "installBtn" -ButtonText "installText" -Content "Install" -Icon "installIcon" -TextIcon "" -Width "100"
+            $itt["window"].Dispatcher.Invoke([action]{ Set-Taskbar -progress "Error" -value 0.01 -icon "Error" })
         } 
         else
         {
             Add-Log -Message " $appName installed successfully using Winget." -Level "INFO"
-            UpdateUI -Button "installBtn" -ButtonText "installText" -Content "Install" -Icon "installIcon" -TextIcon "" -Width "100"
         }
     }
     else
@@ -10337,9 +10350,18 @@ function Set-Taskbar {
 
             "done" {
                 $itt["window"].taskbarItemInfo.Overlay = "https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Icons/done.png"
+                Start-Sleep -Seconds 2
+                $itt["window"].taskbarItemInfo.Overlay = "https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Icons/icon.ico"
+
             }
 
             "logo" {
+                $itt["window"].taskbarItemInfo.Overlay = "https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Icons/icon.ico"
+            }
+
+            "error" {
+                $itt["window"].taskbarItemInfo.Overlay = "https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Icons/error.png"
+                Start-Sleep -Seconds 2
                 $itt["window"].taskbarItemInfo.Overlay = "https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Icons/icon.ico"
             }
         }
@@ -10481,10 +10503,9 @@ function Invoke-Install {
                 }
             }
         }
-
-        $itt.ProcessRunning = $false
-        UpdateUI -Button "InstallBtn" -ButtonText "installText" -Content "InstallBtn" -TextIcon "installIcon" -Icon "  "
+        
         Finish -ListView "AppsListView"
+        $itt.ProcessRunning = $false
     }
 }
 
@@ -10602,10 +10623,9 @@ function Invoke-ApplyTweaks {
             }
         }
 
-        $itt.ProcessRunning = $false
-        UpdateUI -Button "ApplyBtn" -ButtonText "applyText" -Content "applyBtn" -TextIcon "applyIcon" -Icon "  "
         Finish -ListView "TweaksListView"
-        Add-Log -Message "Finished, Some tweaks require restarting" -Level "INFO"
+        $itt.ProcessRunning = $false
+
     }
 }
 function Invoke-Button {
