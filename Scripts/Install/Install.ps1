@@ -181,6 +181,9 @@ function Invoke-ApplyTweaks {
         $itt.ProcessRunning = $true
         UpdateUI -Button "ApplyBtn" -ButtonText "applyText" -Content "Applying" -TextIcon "applyIcon" -Icon "  " -Width "120"
 
+        $itt["window"].Dispatcher.Invoke([action]{ Set-Taskbar -progress "Indeterminate" -value 0.01 -icon "logo" })
+
+
         foreach ($tweak in $selectedApps) {
 
             Add-Log -Message $tweak.Name -Level "INFO" 

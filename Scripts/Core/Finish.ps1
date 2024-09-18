@@ -55,7 +55,9 @@ function Finish {
         }
     })
 
+    $itt["window"].Dispatcher.Invoke([action]{ Set-Taskbar -progress "None" -value 0.01 -icon "done" })
     Notify -title "$title" -msg "$msg" -icon "Info" -time 30000
+    
 }
 function Show-Selected {
 
