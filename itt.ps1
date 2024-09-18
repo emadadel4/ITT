@@ -23,7 +23,7 @@ Add-Type -AssemblyName WindowsBase
 $itt = [Hashtable]::Synchronized(@{
     database       = @{}
     ProcessRunning = $false
-    lastupdate     = "09/17/2024"
+    lastupdate     = "09/18/2024"
     github         = "https://github.com/emadadel4"
     telegram       = "https://t.me/emadadel4"
     website        = "https://emadadel4.github.io"
@@ -7102,16 +7102,22 @@ $itt.database.Tweaks = '[
     "Type": "command",
     "Refresh": "false",
     "InvokeCommand": [
-      "cleanmgr.exe /d C: /VERYLOWDISK /sagerun:1 Dism.exe /online /Cleanup-Image /StartComponentCleanup /ResetBase",
-      "cleanmgr.exe /d C: /sagerun:1",
-      "cleanmgr.exe /sagerun:1",
-      "Dism.exe /online /Cleanup-Image /StartComponentCleanup /ResetBase",
-      "Dism.exe /online /Cleanup-Image /StartComponentCleanup",
-      "Remove-Item -Path \\\"$env:LOCALAPPDATA\\Temp\\*\\\" -Recurse -Force -ErrorAction SilentlyContinue",
-      "Remove-Item -Path \\\"C:\\Windows\\Prefetch\\*\\\" -Recurse -Force -ErrorAction SilentlyContinue",
-      "Stop-Service -Name \\\"wuauserv\\\" -Force",
-      "Remove-Item -Path \\\"C:\\Windows\\SoftwareDistribution\\Download\\*\\\" -Recurse -Force",
-      "Start-Service -Name \\\"wuauserv\\"
+      "
+        Remove-Item -Path \"$env:LOCALAPPDATA\\Temp\\*\" -Recurse -Force -ErrorAction SilentlyContinue
+        Remove-Item -Path \"C:\\Windows\\Prefetch\\*\" -Recurse -Force -ErrorAction SilentlyContinue
+        Stop-Service -Name wuauserv -Force
+        takeown /f C:\\Windows\\SoftwareDistribution\\Download /r /d y
+        icacls C:\\Windows\\SoftwareDistribution\\Download /grant administrators:F /t
+        Remove-Item -Path \"C:\\Windows\\SoftwareDistribution\\Download\\*\" -Recurse -Force -ErrorAction SilentlyContinue
+        cleanmgr.exe /d C: /VERYLOWDISK /sagerun:1 Dism.exe /online /Cleanup-Image /StartComponentCleanup /ResetBase
+        cleanmgr.exe /d C: /sagerun:1
+        cleanmgr.exe /sagerun:1
+        Dism.exe /online /Cleanup-Image /StartComponentCleanup /ResetBase
+        Dism.exe /online /Cleanup-Image /StartComponentCleanup
+        cleanmgr.exe /d C: /VERYLOWDISK
+        Dism.exe /online /Cleanup-Image /StartComponentCleanup /ResetBase
+        Start-Service -Name wuauserv
+      "
     ],
     "UndoCommand": [
       ""
