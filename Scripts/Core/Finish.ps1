@@ -39,7 +39,7 @@ function Finish {
     
     switch($ListView)
     {
-        "TweaksListView" {
+        "AppsListView" {
             UpdateUI -Button "InstallBtn" -ButtonText "installText" -Content "InstallBtn" -TextIcon "installIcon" -Icon "  "
         }
 
