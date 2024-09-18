@@ -2717,7 +2717,7 @@ $itt.database.Applications = '[
     "check": "false"
   },
   {
-    "name": "Python 3.9",
+    "name": "Python 3.12.6",
     "description": "Python is a popular high-level programming language known for its simplicity and versatility. It is used in various fields such as web development, data science, machine learning, and automation.",
     "winget": "Python.Python.3.9",
     "choco": "python",
@@ -14109,7 +14109,7 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
 
         <StackPanel Orientation="Vertical" Width="auto" Margin="10">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Python 3.9" Tag="Development" IsChecked="false"   ToolTip="Install it again to update" FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <CheckBox Content="Python 3.12.6" Tag="Development" IsChecked="false"   ToolTip="Install it again to update" FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content="Development"/>
             </StackPanel>
                 <TextBlock Width="555" Background="Transparent" Margin="8" Foreground="{DynamicResource DefaultTextColor2}"  FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="Python is a popular highlevel programming language known for its simplicity and versatility It is used in various fields such as web development data science machine learning and automation"/>
