@@ -100,10 +100,9 @@ function Invoke-Install {
                 }
             }
         }
-
-        $itt.ProcessRunning = $false
-        UpdateUI -Button "InstallBtn" -ButtonText "installText" -Content "InstallBtn" -TextIcon "installIcon" -Icon "  "
+        
         Finish -ListView "AppsListView"
+        $itt.ProcessRunning = $false
     }
 }
 
@@ -221,9 +220,8 @@ function Invoke-ApplyTweaks {
             }
         }
 
-        $itt.ProcessRunning = $false
-        UpdateUI -Button "ApplyBtn" -ButtonText "applyText" -Content "applyBtn" -TextIcon "applyIcon" -Icon "  "
         Finish -ListView "TweaksListView"
-        Add-Log -Message "Finished, Some tweaks require restarting" -Level "INFO"
+        $itt.ProcessRunning = $false
+
     }
 }

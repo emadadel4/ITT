@@ -36,6 +36,23 @@ function Finish {
        [string]$icon = "Info"
     )
 
+    
+    switch($ListView)
+    {
+        "TweaksListView" {
+            UpdateUI -Button "InstallBtn" -ButtonText "installText" -Content "InstallBtn" -TextIcon "installIcon" -Icon "  "
+        }
+
+        "TweaksListView" {
+            UpdateUI -Button "ApplyBtn" -ButtonText "applyText" -Content "applyBtn" -TextIcon "applyIcon" -Icon "  "
+            Add-Log -Message "Finished, Some tweaks require restarting" -Level "INFO"
+        }
+    }
+
+    $itt["window"].Dispatcher.Invoke([action]{ Set-Taskbar -progress "None" -value 0.01 -icon "done" })
+    Notify -title "$title" -msg "$msg" -icon "Info" -time 30000
+
+    # Clear 
     $itt.$ListView.Dispatcher.Invoke([Action]{
         foreach ($item in $itt.$ListView.Items)
         {
@@ -55,9 +72,6 @@ function Finish {
         }
     })
 
-    $itt["window"].Dispatcher.Invoke([action]{ Set-Taskbar -progress "None" -value 0.01 -icon "done" })
-    Notify -title "$title" -msg "$msg" -icon "Info" -time 30000
-    
 }
 function Show-Selected {
 

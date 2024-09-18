@@ -52,12 +52,11 @@ function Install-App {
         # Check winget
         if ($wingetResult -ne 0) {
             Add-Log -Message "Winget installation failed for $appName. Please install $appName manually." -Level "ERROR"
-            UpdateUI -Button "installBtn" -ButtonText "installText" -Content "Install" -Icon "installIcon" -TextIcon "" -Width "100"
+            $itt["window"].Dispatcher.Invoke([action]{ Set-Taskbar -progress "Error" -value 0.01 -icon "Error" })
         } 
         else
         {
             Add-Log -Message " $appName installed successfully using Winget." -Level "INFO"
-            UpdateUI -Button "installBtn" -ButtonText "installText" -Content "Install" -Icon "installIcon" -TextIcon "" -Width "100"
         }
     }
     else
