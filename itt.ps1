@@ -7052,7 +7052,9 @@ $itt.database.Quotes = '{
     "Live together, die alone",
     "نعيش معًا، او الموت وحيدا",
     "لم يهتم أحد بمن أكون، حتى ارتديت القناع",
-    "No one cared who I was, until I put on the mask -Bane"
+    "No one cared who I was, until I put on the mask -Bane",
+    "Peace has cost you your strength. Victory has defeated you -Bane",
+    "Why Do We Fall? So That We Can Learn To Pick Ourselves Up -Alfred"
   ]
 }
 ' | ConvertFrom-Json
