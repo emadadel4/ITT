@@ -12187,14 +12187,14 @@ Height="700" Width="955" MinHeight="600" MinWidth="800" Topmost="False"  ShowInT
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ListViewItem">
-                    <Border CornerRadius="5"
+                    <Border CornerRadius="0"
                             Padding="{TemplateBinding Padding}" 
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}">
                         <Border.Background>
-                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
-                                <GradientStop Color="{DynamicResource CardLeft}" Offset="0"/>
-                                <GradientStop Color="{DynamicResource CardRight}" Offset="1.8"/>
+                            <LinearGradientBrush StartPoint="1,5" EndPoint="5,5">
+                                <GradientStop Color="{DynamicResource CardLeft}" Offset="1"/>
+                                <GradientStop Color="{DynamicResource CardRight}" Offset="1"/>
                             </LinearGradientBrush>
                         </Border.Background>
                         <ContentPresenter HorizontalAlignment="Left"
@@ -12217,8 +12217,8 @@ Height="700" Width="955" MinHeight="600" MinWidth="800" Topmost="False"  ShowInT
         <Setter Property="Foreground" Value="{DynamicResource DefaultTextColor}"/>
         <Setter Property="Margin" Value="0"/>
         <Setter Property="Padding" Value="6"/>
-        <Setter Property="BorderThickness" Value="1"/>
-        <Setter Property="BorderBrush" Value="black"/>
+        <Setter Property="BorderThickness" Value="1.5"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource BGButtonColor}"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="CheckBox">
