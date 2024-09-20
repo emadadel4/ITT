@@ -12106,7 +12106,7 @@ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 x:Name="Window" Title="Install Tweak Tool #StandWithPalestine" WindowStartupLocation = "CenterScreen" 
 Background="{DynamicResource BGColor}"
-Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowInTaskbar = "True" Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Icons/icon.ico">
+Height="700" Width="955" MinHeight="600" MinWidth="800" Topmost="False"  ShowInTaskbar = "True" Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Icons/icon.ico">
 
 <Window.Resources>
     <!--Fade in-->
@@ -12253,61 +12253,61 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
 <!--End CheckBox Style-->
 
 <!--SearchBox Style-->
-<Style x:Key="SearchBox" TargetType="TextBox">
-    <Setter Property="Background" Value="{DynamicResource FGColor}"/>
-    <Setter Property="Foreground" Value="{DynamicResource FGTextColor}"/>
-    <Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}"/>
-    <Setter Property="BorderThickness" Value="0"/>
-    <Setter Property="Padding" Value="8"/>
-    <Setter Property="Template">
-        <Setter.Value>
-            <ControlTemplate TargetType="TextBox">
-                <Border Margin="0" Background="{TemplateBinding Background}"
-                        BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="{TemplateBinding BorderThickness}"
-                        CornerRadius="15">
-                    <Grid>
-                        <ScrollViewer x:Name="PART_ContentHost" />
-                      <StackPanel Orientation="Horizontal">
+    <Style x:Key="SearchBox" TargetType="TextBox">
+        <Setter Property="Background" Value="{DynamicResource FGColor}"/>
+        <Setter Property="Foreground" Value="{DynamicResource FGTextColor}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Padding" Value="8"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TextBox">
+                    <Border Margin="0" Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="15">
+                        <Grid>
+                            <ScrollViewer x:Name="PART_ContentHost" />
+                        <StackPanel Orientation="Horizontal">
 
-                        <!-- Icon -->
-                        <TextBlock x:Name="SearchIcon"
-                            Foreground="Gray" 
-                            Text=""
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Left"
-                            Margin="10,0,0,0"
-                            FontFamily="Segoe MDL2 Assets"
-                            IsHitTestVisible="False"/>
+                            <!-- Icon -->
+                            <TextBlock x:Name="SearchIcon"
+                                Foreground="Gray" 
+                                Text=""
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Left"
+                                Margin="10,0,0,0"
+                                FontFamily="Segoe MDL2 Assets"
+                                IsHitTestVisible="False"/>
 
-                        <!-- Hint Search Text -->
-                        <TextBlock x:Name="SearchHintText"
-                            Foreground="Gray" 
-                            Text="{Binding search}"
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Left"
-                            Margin="10,0,0,0"
-                            IsHitTestVisible="False"/>
-                      </StackPanel>
-                    </Grid>
-                </Border>
-                <ControlTemplate.Triggers>
-                    <Trigger Property="IsKeyboardFocusWithin" Value="True">
-                        <Setter TargetName="SearchHintText" Property="Visibility" Value="Collapsed"/>
-                        <Setter TargetName="SearchIcon" Property="Visibility" Value="Collapsed"/>
-                    </Trigger>
-                </ControlTemplate.Triggers>
-            </ControlTemplate>
-        </Setter.Value>
-    </Setter>
-    <Style.Triggers>
-        <Trigger Property="IsKeyboardFocusWithin" Value="True">
-            <Setter Property="BorderThickness" Value="2"/>
-            <Setter Property="BorderBrush" Value="{DynamicResource BGButtonColor}"/>
-            <Setter Property="Background" Value="{DynamicResource FGColor}"/>
-        </Trigger>
-    </Style.Triggers>
-</Style>
+                            <!-- Hint Search Text -->
+                            <TextBlock x:Name="SearchHintText"
+                                Foreground="Gray" 
+                                Text="{Binding search}"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Left"
+                                Margin="10,0,0,0"
+                                IsHitTestVisible="False"/>
+                        </StackPanel>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsKeyboardFocusWithin" Value="True">
+                            <Setter TargetName="SearchHintText" Property="Visibility" Value="Collapsed"/>
+                            <Setter TargetName="SearchIcon" Property="Visibility" Value="Collapsed"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsKeyboardFocusWithin" Value="True">
+                <Setter Property="BorderThickness" Value="2"/>
+                <Setter Property="BorderBrush" Value="{DynamicResource BGButtonColor}"/>
+                <Setter Property="Background" Value="{DynamicResource FGColor}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
 <!--End SearchBox Style-->
 
 <!--Label Style-->
