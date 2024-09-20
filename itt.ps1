@@ -7050,7 +7050,9 @@ $itt.database.Quotes = '{
     "اذا كنت لا تستطيع رفع الظلم ، على الأقل أخبر الجميع عنه",
     "If you can''t lift the injustice, at least tell everyone about it.",
     "Live together, die alone",
-    "نعيش معًا، او الموت وحيدا"
+    "نعيش معًا، او الموت وحيدا",
+    "لم يهتم أحد بمن أكون، حتى ارتديت القناع",
+    "No one cared who I was, until I put on the mask -Bane"
   ]
 }
 ' | ConvertFrom-Json
