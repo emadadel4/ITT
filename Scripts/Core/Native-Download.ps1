@@ -1,4 +1,4 @@
-function Download-And-ExtractZip {
+function Start-DownloadAndUnzip {
     
     <#
     .SYNOPSIS
@@ -26,7 +26,7 @@ function Download-And-ExtractZip {
     Arguments to be passed to the executable when it is run. This parameter is optional.
 
     .EXAMPLE
-    Download-And-ExtractZip -url "http://example.com/file.zip" -destinationDir "C:\Temp" -Createshortcut "yes" -exeFileName "setup.exe" -run "yes" -exeArgs "/silent"
+    Start-DownloadAndUnzip -url "http://example.com/file.zip" -destinationDir "C:\Temp" -Createshortcut "yes" -exeFileName "setup.exe" -run "yes" -exeArgs "/silent"
     Downloads the ZIP file from the specified URL, extracts it to "C:\Temp", creates a shortcut to "setup.exe" on the desktop, and runs the executable with the "/silent" argument.
     #>
 
@@ -86,7 +86,7 @@ function Download-And-ExtractZip {
     }
 }
 
-function Download-And-Install-Exe {
+function Start-DownloadAndInstallExe {
     <#
     .SYNOPSIS
     Downloads an executable file from a URL, optionally creates a shortcut on the desktop, and runs the executable.
@@ -116,7 +116,7 @@ function Download-And-Install-Exe {
     Specifies whether to run the executable after downloading. Accepts "yes" or "no". Default is "no".
 
     .EXAMPLE
-    Download-And-Install-Exe -name "ExampleApp" -url "http://example.com/exampleapp.exe" -type "exe" -exeArgs "/silent" -outputDir "Installers" -shortcut "yes" -run "yes"
+    Start-DownloadAndInstallExe -name "ExampleApp" -url "http://example.com/exampleapp.exe" -type "exe" -exeArgs "/silent" -outputDir "Installers" -shortcut "yes" -run "yes"
     Downloads the executable from the specified URL, saves it to `C:\ProgramData\Installers\ExampleApp\ExampleApp.exe`, creates a shortcut to the executable on the desktop, and runs the executable with the `/silent` argument.
 
     #>

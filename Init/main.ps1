@@ -60,7 +60,7 @@ $onClosingEvent = {
 # Handle the Loaded event
 $itt["window"].Add_Loaded({
     Startup
-    Check-Date
+    Get-DateStatus
 })
 
 # Close Event handler

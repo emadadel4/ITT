@@ -25,7 +25,7 @@ function Show-Event {
     $titleTextBlock = $itt.event.FindName('title')
     $subtitleTextBlock = $itt.event.FindName('Subtitle')
     $tutorialImage = $itt.event.FindName('Image')
-    $mainStackPanel = $itt.event.FindName('MainStackPanel')
+    #$mainStackPanel = $itt.event.FindName('MainStackPanel')
 
     $itt.event.FindName('date').Text = $itt.lastupdate
 
@@ -96,7 +96,7 @@ function Show-Event {
 }
 
 # Function to check current date and call Show-Event
-function Check-Date {
+function Get-DateStatus {
 
     $watchdemo = $itt.database.locales.Controls.$($itt.Language).watchdemo
     $happybirthday = $itt.database.locales.Controls.$($itt.Language).happybirthday

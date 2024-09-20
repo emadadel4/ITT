@@ -30,18 +30,18 @@ function DisplayQuotes  {
         $shuffledNames = ShuffleArray -Array (Get-NamesFromJson)
 
         # Function to display welcome text
-        function Display-WelcomeText {
+        function Show-WelcomeText {
             $itt.Quotes.Dispatcher.Invoke([Action]{
 
-                $fullCulture = (Get-ItemPropertyValue -Path "HKCU:\Control Panel\International" -Name "LocaleName")
-                $shortCulture = $fullCulture.Split('-')[0]
+                #$fullCulture = (Get-ItemPropertyValue -Path "HKCU:\Control Panel\International" -Name "LocaleName")
+                #$shortCulture = $fullCulture.Split('-')[0]
                 $itt.Quotes.Text = $itt.database.locales.Controls.$($itt.Language).welcome
                
             })
         }
 
         # Display welcome text
-        Display-WelcomeText
+        Show-WelcomeText
 
         Start-Sleep -Seconds 20
 
