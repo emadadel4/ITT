@@ -9620,7 +9620,7 @@ function Install-Winget {
         throw [WingetFailedInstall]::new('Failed to install prerequisites')
     }
 }
-function Download-And-ExtractZip {
+function Start-DownloadAndUnzip {
     
     <#
     .SYNOPSIS
@@ -9648,7 +9648,7 @@ function Download-And-ExtractZip {
     Arguments to be passed to the executable when it is run. This parameter is optional.
 
     .EXAMPLE
-    Download-And-ExtractZip -url "http://example.com/file.zip" -destinationDir "C:\Temp" -Createshortcut "yes" -exeFileName "setup.exe" -run "yes" -exeArgs "/silent"
+    Start-DownloadAndUnzip -url "http://example.com/file.zip" -destinationDir "C:\Temp" -Createshortcut "yes" -exeFileName "setup.exe" -run "yes" -exeArgs "/silent"
     Downloads the ZIP file from the specified URL, extracts it to "C:\Temp", creates a shortcut to "setup.exe" on the desktop, and runs the executable with the "/silent" argument.
     #>
 
@@ -9708,7 +9708,7 @@ function Download-And-ExtractZip {
     }
 }
 
-function Download-And-Install-Exe {
+function Start-DownloadAndInstallExe {
     <#
     .SYNOPSIS
     Downloads an executable file from a URL, optionally creates a shortcut on the desktop, and runs the executable.
@@ -9738,7 +9738,7 @@ function Download-And-Install-Exe {
     Specifies whether to run the executable after downloading. Accepts "yes" or "no". Default is "no".
 
     .EXAMPLE
-    Download-And-Install-Exe -name "ExampleApp" -url "http://example.com/exampleapp.exe" -type "exe" -exeArgs "/silent" -outputDir "Installers" -shortcut "yes" -run "yes"
+    Start-DownloadAndInstallExe -name "ExampleApp" -url "http://example.com/exampleapp.exe" -type "exe" -exeArgs "/silent" -outputDir "Installers" -shortcut "yes" -run "yes"
     Downloads the executable from the specified URL, saves it to `C:\ProgramData\Installers\ExampleApp\ExampleApp.exe`, creates a shortcut to the executable on the desktop, and runs the executable with the `/silent` argument.
 
     #>
@@ -10110,18 +10110,18 @@ function Startup  {
             $shuffledNames = ShuffleArray -Array (Get-NamesFromJson)
         
             # Function to display welcome text
-            function Display-WelcomeText {
+            function Show-WelcomeText {
                 $itt.Quotes.Dispatcher.Invoke([Action]{
         
-                    $fullCulture = (Get-ItemPropertyValue -Path "HKCU:\Control Panel\International" -Name "LocaleName")
-                    $shortCulture = $fullCulture.Split('-')[0]
+                    #$fullCulture = (Get-ItemPropertyValue -Path "HKCU:\Control Panel\International" -Name "LocaleName")
+                    #$shortCulture = $fullCulture.Split('-')[0]
                     $itt.Quotes.Text = $itt.database.locales.Controls.$($itt.Language).welcome
                     
                 })
             }
         
             # Display welcome text
-            Display-WelcomeText
+            Show-WelcomeText
         
             Start-Sleep -Seconds 20
         
@@ -10447,7 +10447,7 @@ function Invoke-Install {
         - It installs applications using:
         - Chocolatey, if a `Choco` identifier is provided.
         - Winget, if a `Winget` identifier is provided.
-        - Custom download methods (`Download-And-Install-Exe` or `Download-And-ExtractZip`) for applications with default settings.
+        - Custom download methods (`Start-DownloadAndInstallExe` or `Start-DownloadAndUnzip`) for applications with default settings.
         - The function handles UI updates and cleanup operations post-installation using `UpdateUI` and `Finish`.
         - The `Invoke-ScriptBlock` function is used to execute the installation commands asynchronously.
     #>
@@ -10509,11 +10509,11 @@ function Invoke-Install {
             {
                 if($_.default.IsExcute -eq "true")
                 {
-                    Download-And-Install-Exe -name "$($_.Name)" -url  $_.default.url -type $_.default.extinction -exeArgs $_.default.exeArgs -outputDir "ITT\Downloads\" -run $_.default.run -shortcut $_.default.shortcut
+                    Start-DownloadAndInstallExe -name "$($_.Name)" -url  $_.default.url -type $_.default.extinction -exeArgs $_.default.exeArgs -outputDir "ITT\Downloads\" -run $_.default.run -shortcut $_.default.shortcut
                 }
                 else
                 {
-                    Download-And-ExtractZip -url $_.default.url -shortcutName "$($_.Name)" -exeFileName $_.default.launcher -run $_.default.run -Createshortcut $_.default.shortcut -exeArgs $_.default.exeArgs
+                    Start-DownloadAndUnzip -url $_.default.url -shortcutName "$($_.Name)" -exeFileName $_.default.launcher -run $_.default.run -Createshortcut $_.default.shortcut -exeArgs $_.default.exeArgs
                 }
             }
         }
@@ -11338,18 +11338,18 @@ function DisplayQuotes  {
         $shuffledNames = ShuffleArray -Array (Get-NamesFromJson)
 
         # Function to display welcome text
-        function Display-WelcomeText {
+        function Show-WelcomeText {
             $itt.Quotes.Dispatcher.Invoke([Action]{
 
-                $fullCulture = (Get-ItemPropertyValue -Path "HKCU:\Control Panel\International" -Name "LocaleName")
-                $shortCulture = $fullCulture.Split('-')[0]
+                #$fullCulture = (Get-ItemPropertyValue -Path "HKCU:\Control Panel\International" -Name "LocaleName")
+                #$shortCulture = $fullCulture.Split('-')[0]
                 $itt.Quotes.Text = $itt.database.locales.Controls.$($itt.Language).welcome
                
             })
         }
 
         # Display welcome text
-        Display-WelcomeText
+        Show-WelcomeText
 
         Start-Sleep -Seconds 20
 
@@ -11943,7 +11943,7 @@ function Show-Event {
     $titleTextBlock = $itt.event.FindName('title')
     $subtitleTextBlock = $itt.event.FindName('Subtitle')
     $tutorialImage = $itt.event.FindName('Image')
-    $mainStackPanel = $itt.event.FindName('MainStackPanel')
+    #$mainStackPanel = $itt.event.FindName('MainStackPanel')
 
     $itt.event.FindName('date').Text = $itt.lastupdate
 
@@ -12014,7 +12014,7 @@ function Show-Event {
 }
 
 # Function to check current date and call Show-Event
-function Check-Date {
+function Get-DateStatus {
 
     $watchdemo = $itt.database.locales.Controls.$($itt.Language).watchdemo
     $happybirthday = $itt.database.locales.Controls.$($itt.Language).happybirthday
@@ -16395,8 +16395,8 @@ $desiredFunctions = @(
 'Message',
 'Notify',
 'UpdateUI',
-'Download-And-Install-Exe',
-'Download-And-ExtractZip',
+'Start-DownloadAndInstallExe',
+'Start-DownloadAndUnzip',
 'Install-Choco',
 'ExecuteCommand',
 'Set-Registry',
@@ -16617,7 +16617,7 @@ $onClosingEvent = {
 # Handle the Loaded event
 $itt["window"].Add_Loaded({
     Startup
-    Check-Date
+    Get-DateStatus
 })
 
 # Close Event handler
