@@ -23,7 +23,7 @@ Add-Type -AssemblyName WindowsBase
 $itt = [Hashtable]::Synchronized(@{
     database       = @{}
     ProcessRunning = $false
-    lastupdate     = "09/18/2024"
+    lastupdate     = "09/20/2024"
     github         = "https://github.com/emadadel4"
     telegram       = "https://t.me/emadadel4"
     website        = "https://emadadel4.github.io"
@@ -10875,6 +10875,11 @@ function Invoke-Button {
             Debug-Message $action
         }
 
+        "shelltube"{
+            Start-Process -FilePath "powershell" -ArgumentList "irm https://raw.githubusercontent.com/emadadel4/ShellTube/main/st.ps1 | iex"
+            Debug-Message $action
+        }
+
         Default {
             Write-Host "Unknown action: $action"
         }
@@ -12977,6 +12982,12 @@ Height="622" Width="900" MinHeight="622" MinWidth="900"  Topmost="False"  ShowIn
             <MenuItem Name="majorgeeks" Header="Major Geeks">
                 <MenuItem.Icon>
                     <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
+                </MenuItem.Icon>
+            </MenuItem>
+
+            <MenuItem Name="shelltube" Header="ShellTube">
+                <MenuItem.Icon>
+                    <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
                 </MenuItem.Icon>
             </MenuItem>
             
