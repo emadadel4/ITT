@@ -12527,7 +12527,7 @@ Height="700" Width="955" MinHeight="600" MinWidth="800" Topmost="False"  ShowInT
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="TabItem">
-                    <Border Name="Border" CornerRadius="8" BorderThickness="0,0,0,0" Padding="8" BorderBrush="Transparent"  Margin="5,5">
+                    <Border Name="Border" CornerRadius="5" BorderThickness="0,0,0,0" Padding="8" BorderBrush="Transparent"  Margin="5,5">
                         <ContentPresenter x:Name="ContentSite"
                         VerticalAlignment="Center"
                         HorizontalAlignment="Center"
