@@ -231,6 +231,11 @@ function Invoke-Button {
             Debug-Message $action
         }
 
+        "shelltube"{
+            Start-Process -FilePath "powershell" -ArgumentList "irm https://raw.githubusercontent.com/emadadel4/ShellTube/main/st.ps1 | iex"
+            Debug-Message $action
+        }
+
         Default {
             Write-Host "Unknown action: $action"
         }
