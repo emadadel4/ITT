@@ -9278,11 +9278,10 @@ function Get-SelectedItems {
 
                                     if ($app) {
                                         $items += @{
-                                            Name    = $app.Name
-                                            Choco   = $app.Choco
-                                            Scoop   = $app.Scoop
-                                            Winget  = $app.Winget
-                                            Default = $app.Default
+                                            Name    = $app.name
+                                            Choco   = $app.choco
+                                            Winget  = $app.winget
+                                            Default = $app.default
                                             # Add a new method downloader here
                                         }
                                     }
@@ -9489,21 +9488,21 @@ function Install-App {
         Install-Winget
 
         Start-Process -FilePath "winget" -ArgumentList "settings --enable InstallerHashOverride" -NoNewWindow -Wait -PassThru
-        $wingetResult = $(Start-Process -FilePath "winget" -ArgumentList "install --accept-source-agreements --accept-package-agreements --id $appWinget --force -e -h --silent --exact" -Wait -NoNewWindow -PassThru).ExitCode
+        $wingetResult = $(Start-Process -FilePath "winget" -ArgumentList "install --id $appWinget --silent --accept-source-agreements --accept-package-agreements --force" -Wait -NoNewWindow -PassThru).ExitCode
 
         # Check winget
         if ($wingetResult -ne 0) {
-            Add-Log -Message "Winget installation failed for $appName. Please install $appName manually." -Level "ERROR"
+            Add-Log -Message "Winget Installation Failed for ($appName). report the issue in the ITT repository to resolve this problem." -Level "ERROR"
             $itt["window"].Dispatcher.Invoke([action]{ Set-Taskbar -progress "Error" -value 0.01 -icon "Error" })
         } 
         else
         {
-            Add-Log -Message " $appName installed successfully using Winget." -Level "INFO"
+            Add-Log -Message "($appName) Successfully Installed Using Winget." -Level "INFO"
         }
     }
     else
     {
-        Add-Log -Message "Installed $appName successfully using Chocolatey." -Level "INFO"
+        Add-Log -Message "($appName) Successfully Installed Using Chocolatey." -Level "INFO"
     }
 }
 function Install-Choco {
@@ -9697,6 +9696,7 @@ function Start-DownloadAndUnzip {
                 $shortcut.TargetPath = $exePath
                 $shortcut.Save()
                 Write-Output "Shortcut created successfully."
+                Add-Log -Message "Saved in $downloadPath" -Level "INFO"
             } else {
                 Write-Error "The specified .exe file '$exeFileName' was not found in the extracted content."
             }
@@ -9777,6 +9777,7 @@ function Start-DownloadAndInstallExe {
             $shortcut = $shell.CreateShortcut($shortcutPath)
             $shortcut.TargetPath = $destination
             $shortcut.Save()
+            Add-Log -Message "Saved in $downloadPath" -Level "INFO"
             Add-Log -Message "Shortcut created on desktop" -Level "INFO"
         }
         if ($run -eq "yes") {
@@ -10503,18 +10504,12 @@ function Invoke-Install {
 
         $selectedApps | ForEach-Object {
 
-            if ($_.Choco -ne "none")
+            if ($_.Winget -ne "none" -or $_.Choco -ne "none")
             {
-                Install-App -appName $_.Name -appChoco $_.Choco
+                Install-App -appName $_.Name -appWinget $_.Winget -appChoco $_.Choco
 
-                # debug
-                #Write-Host $_.Choco
-                
-            }elseif ($_.Winget -ne "none") {
-                Install-App -appName $_.Name -appWinget $_.Winget
-
-                # debug
-                #Write-Host $_.Winget
+                # Debug
+                #Write-Host $_.Winget $_.Choco
             }
             else
             {
