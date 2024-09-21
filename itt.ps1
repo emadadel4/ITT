@@ -9473,6 +9473,7 @@ function Install-App {
 
     if(Test-Path "C:\ProgramData\chocolatey\lib\$appChoco"){
         Remove-Item -Path "C:\ProgramData\chocolatey\lib\$appChoco" -Force -Recurse
+        Remove-Item -Path "$env:TEMP\chocolatey" -Force -Recurse
         # debug
         #Add-Log -Message "C:\ProgramData\chocolatey\lib\$appChoco" -Level "INFO"
     }
