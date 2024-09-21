@@ -75,18 +75,12 @@ function Invoke-Install {
 
         $selectedApps | ForEach-Object {
 
-            if ($_.Choco -ne "none")
+            if ($_.Winget -ne "none" -or $_.Choco -ne "none")
             {
-                Install-App -appName $_.Name -appChoco $_.Choco
+                Install-App -appName $_.Name -appWinget $_.Winget -appChoco $_.Choco
 
-                # debug
-                #Write-Host $_.Choco
-                
-            }elseif ($_.Winget -ne "none") {
-                Install-App -appName $_.Name -appWinget $_.Winget
-
-                # debug
-                #Write-Host $_.Winget
+                # Debug
+                #Write-Host $_.Winget $_.Choco
             }
             else
             {

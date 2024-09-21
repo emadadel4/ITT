@@ -48,11 +48,10 @@ function Get-SelectedItems {
 
                                     if ($app) {
                                         $items += @{
-                                            Name    = $app.Name
-                                            Choco   = $app.Choco
-                                            Scoop   = $app.Scoop
-                                            Winget  = $app.Winget
-                                            Default = $app.Default
+                                            Name    = $app.name
+                                            Choco   = $app.choco
+                                            Winget  = $app.winget
+                                            Default = $app.default
                                             # Add a new method downloader here
                                         }
                                     }

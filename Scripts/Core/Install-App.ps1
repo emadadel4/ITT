@@ -47,20 +47,20 @@ function Install-App {
         Install-Winget
 
         Start-Process -FilePath "winget" -ArgumentList "settings --enable InstallerHashOverride" -NoNewWindow -Wait -PassThru
-        $wingetResult = $(Start-Process -FilePath "winget" -ArgumentList "install --accept-source-agreements --accept-package-agreements --id $appWinget --force -e -h --silent --exact" -Wait -NoNewWindow -PassThru).ExitCode
+        $wingetResult = $(Start-Process -FilePath "winget" -ArgumentList "install --id $appWinget --silent --accept-source-agreements --accept-package-agreements --force" -Wait -NoNewWindow -PassThru).ExitCode
 
         # Check winget
         if ($wingetResult -ne 0) {
-            Add-Log -Message "Winget installation failed for $appName. Please install $appName manually." -Level "ERROR"
+            Add-Log -Message "Winget Installation Failed for ($appName). report the issue in the ITT repository to resolve this problem." -Level "ERROR"
             $itt["window"].Dispatcher.Invoke([action]{ Set-Taskbar -progress "Error" -value 0.01 -icon "Error" })
         } 
         else
         {
-            Add-Log -Message " $appName installed successfully using Winget." -Level "INFO"
+            Add-Log -Message "($appName) Successfully Installed Using Winget." -Level "INFO"
         }
     }
     else
     {
-        Add-Log -Message "Installed $appName successfully using Chocolatey." -Level "INFO"
+        Add-Log -Message "($appName) Successfully Installed Using Chocolatey." -Level "INFO"
     }
 }
