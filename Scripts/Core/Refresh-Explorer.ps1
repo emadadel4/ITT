@@ -8,12 +8,4 @@ function Refresh-Explorer {
 
     # Restart the Explorer process
     Stop-Process -Name explorer -Force
-
-    # Refresh Windows Explorer
-    $shell = New-Object -ComObject Shell.Application
-    $shell.Windows() | Where-Object { $_.Name -eq 'File Explorer' } | ForEach-Object { $_.Refresh() }
-
-    # Refresh the desktop
-    $desktop = New-Object -ComObject Shell.Application
-    $desktop.NameSpace(0).Self.InvokeVerb('Refresh')
 }
