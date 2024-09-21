@@ -202,8 +202,8 @@ function Invoke-ApplyTweaks {
                     }
                     if($tweak.Refresh -eq "true")
                     {
-                        Stop-Process -Name explorer -Force
                         Add-Log -Message "Restarting explorer" -Level "INFO"
+                        Refresh-Explorer
                     }
                 }
                 "AppxPackage" {
@@ -222,6 +222,5 @@ function Invoke-ApplyTweaks {
 
         Finish -ListView "TweaksListView"
         $itt.ProcessRunning = $false
-
     }
 }

@@ -32,10 +32,11 @@ function Invoke-ShowFile-Extensions {
         }
         else {
             $value = 1
+            Add-Log -Message "This Setting require a restart" -Level "INFO"
         }
         $Path = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced"
         Set-ItemProperty -Path $Path -Name HideFileExt -Value $value
-        Stop-Process -Name explorer -Force
+        Refresh-Explorer
     }
     Catch [System.Security.SecurityException] {
         Write-Warning "Unable to set $Path\$Name to $Value due to a Security Exception"

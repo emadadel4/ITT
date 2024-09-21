@@ -23,7 +23,7 @@ Add-Type -AssemblyName WindowsBase
 $itt = [Hashtable]::Synchronized(@{
     database       = @{}
     ProcessRunning = $false
-    lastupdate     = "09/20/2024"
+    lastupdate     = "09/21/2024"
     github         = "https://github.com/emadadel4"
     telegram       = "https://t.me/emadadel4"
     website        = "https://emadadel4.github.io"
@@ -9787,6 +9787,25 @@ function Start-DownloadAndInstallExe {
         throw "Error downloading EXE file: $_"
     }
 }
+function Refresh-Explorer {
+    
+    # Stop the Explorer process
+    Stop-Process -Name explorer -Force
+
+    # Wait a moment to ensure the process has stopped
+    Start-Sleep -Seconds 1
+
+    # Restart the Explorer process
+    Stop-Process -Name explorer -Force
+
+    # Refresh Windows Explorer
+    $shell = New-Object -ComObject Shell.Application
+    $shell.Windows() | Where-Object { $_.Name -eq 'File Explorer' } | ForEach-Object { $_.Refresh() }
+
+    # Refresh the desktop
+    $desktop = New-Object -ComObject Shell.Application
+    $desktop.NameSpace(0).Self.InvokeVerb('Refresh')
+}
 function Remove-Registry {
 
     <#
@@ -10369,14 +10388,10 @@ function Set-Taskbar {
 
             "done" {
                 $itt["window"].taskbarItemInfo.Overlay = "https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Icons/done.png"
-                Start-Sleep -Seconds 2
-                $itt["window"].taskbarItemInfo.Overlay = "https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Icons/icon.ico"
-
             }
             "logo" {
                 $itt["window"].taskbarItemInfo.Overlay = "https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Icons/icon.ico"
             }
-
             "error" {
                 $itt["window"].taskbarItemInfo.Overlay = "https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Icons/error.png"
                 Start-Sleep -Seconds 2
@@ -10623,8 +10638,8 @@ function Invoke-ApplyTweaks {
                     }
                     if($tweak.Refresh -eq "true")
                     {
-                        Stop-Process -Name explorer -Force
                         Add-Log -Message "Restarting explorer" -Level "INFO"
+                        Refresh-Explorer
                     }
                 }
                 "AppxPackage" {
@@ -10643,7 +10658,6 @@ function Invoke-ApplyTweaks {
 
         Finish -ListView "TweaksListView"
         $itt.ProcessRunning = $false
-
     }
 }
 function Invoke-Button {
@@ -10984,7 +10998,7 @@ Function Invoke-DarkMode {
         $Path = "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize"
         Set-ItemProperty -Path $Path -Name AppsUseLightTheme -Value $DarkMoveValue
         Set-ItemProperty -Path $Path -Name SystemUsesLightTheme -Value $DarkMoveValue
-        Stop-Process -Name explorer -Force
+        Refresh-Explorer
     }
     Catch [System.Security.SecurityException] {
         Write-Warning "Unable to set $Path\$Name to $Value due to a Security Exception"
@@ -11134,8 +11148,7 @@ function Invoke-ShowFile {
         # Set registry values to show or hide hidden items
         Set-ItemProperty -Path $hiddenItemsKey -Name Hidden -Value $value
         Set-ItemProperty -Path $hiddenItemsKey -Name ShowSuperHidden -Value $value
-
-        Stop-Process -Name explorer -Force
+        Refresh-Explorer
     }
     Catch [System.Security.SecurityException] {
         Write-Warning "Unable to set registry keys due to a Security Exception"
@@ -11182,10 +11195,11 @@ function Invoke-ShowFile-Extensions {
         }
         else {
             $value = 1
+            Add-Log -Message "This Setting require a restart" -Level "INFO"
         }
         $Path = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced"
         Set-ItemProperty -Path $Path -Name HideFileExt -Value $value
-        Stop-Process -Name explorer -Force
+        Refresh-Explorer
     }
     Catch [System.Security.SecurityException] {
         Write-Warning "Unable to set $Path\$Name to $Value due to a Security Exception"
@@ -11235,13 +11249,13 @@ Function Invoke-StickyKeys {
         else {
             $value = 58
             $value2 = 122
-            Add-Log -Message "This Setting require a restart" -Level "INFO"
         }
         $Path = "HKCU:\Control Panel\Accessibility\StickyKeys"
         $Path2 = "HKCU:\Control Panel\Accessibility\Keyboard Response"
         Set-ItemProperty -Path $Path -Name Flags -Value $value
         Set-ItemProperty -Path $Path2 -Name Flags -Value $value2
-        Stop-Process -Name explorer -Force
+        Refresh-Explorer
+        Add-Log -Message "This Setting require a restart" -Level "INFO"
     }
     Catch [System.Security.SecurityException] {
         Write-Warning "Unable to set $Path\$Name to $Value due to a Security Exception"
@@ -16407,7 +16421,8 @@ $desiredFunctions = @(
 'Remove-Registry',
 'Disable-Service',
 'Uninstall-AppxPackage',
-'Set-Taskbar'
+'Set-Taskbar',
+'Refresh-Explorer'
 )
 
 $functions = Get-ChildItem function:\ | Where-Object { $_.Name -in $desiredFunctions }

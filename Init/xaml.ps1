@@ -28,7 +28,8 @@ $desiredFunctions = @(
 'Remove-Registry',
 'Disable-Service',
 'Uninstall-AppxPackage',
-'Set-Taskbar'
+'Set-Taskbar',
+'Refresh-Explorer'
 )
 
 $functions = Get-ChildItem function:\ | Where-Object { $_.Name -in $desiredFunctions }

@@ -34,8 +34,7 @@ function Invoke-ShowFile {
         # Set registry values to show or hide hidden items
         Set-ItemProperty -Path $hiddenItemsKey -Name Hidden -Value $value
         Set-ItemProperty -Path $hiddenItemsKey -Name ShowSuperHidden -Value $value
-
-        Stop-Process -Name explorer -Force
+        Refresh-Explorer
     }
     Catch [System.Security.SecurityException] {
         Write-Warning "Unable to set registry keys due to a Security Exception"
