@@ -71,6 +71,7 @@ function Start-DownloadAndUnzip {
                 $shortcut.TargetPath = $exePath
                 $shortcut.Save()
                 Write-Output "Shortcut created successfully."
+                Add-Log -Message "Saved in $downloadPath" -Level "INFO"
             } else {
                 Write-Error "The specified .exe file '$exeFileName' was not found in the extracted content."
             }
@@ -151,6 +152,7 @@ function Start-DownloadAndInstallExe {
             $shortcut = $shell.CreateShortcut($shortcutPath)
             $shortcut.TargetPath = $destination
             $shortcut.Save()
+            Add-Log -Message "Saved in $downloadPath" -Level "INFO"
             Add-Log -Message "Shortcut created on desktop" -Level "INFO"
         }
         if ($run -eq "yes") {
