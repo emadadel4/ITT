@@ -1,1 +1,1 @@
-irm https://github.com/emadadel4/itt/releases/latest/download/ittea.ps1 | iex
+https://github.com/emadadel4/itt/releases/latest/download/ittea.ps1
