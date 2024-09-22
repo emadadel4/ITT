@@ -8,6 +8,7 @@ if (-not $principal.IsInRole($administratorRole)) {
     $powershellcmd = if (Get-Command pwsh -ErrorAction SilentlyContinue) { "pwsh" } else { "powershell" }
     $processCmd = if (Get-Command wt.exe -ErrorAction SilentlyContinue) { "wt.exe" } else { $powershellcmd }
     Start-Process $processCmd -ArgumentList "$powershellcmd -ExecutionPolicy Bypass -NoProfile -Command `"irm $script | iex`"" -Verb RunAs
+    exit
 } else {
     # Run the script directly if already elevated
     Invoke-RestMethod $script | Invoke-Expression
