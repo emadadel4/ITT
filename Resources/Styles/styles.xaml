@@ -162,7 +162,7 @@
                             <!-- Icon -->
                             <TextBlock x:Name="SearchIcon"
                                 Foreground="Gray" 
-                                Text=""
+                                Text="&#xF78B;"
                                 VerticalAlignment="Center"
                                 HorizontalAlignment="Left"
                                 Margin="10,0,0,0"

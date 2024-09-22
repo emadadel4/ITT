@@ -4,7 +4,7 @@
                 <TabItem.HeaderTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="" FontFamily="Segoe MDL2 Assets" FontSize="18" Margin="0,0,5,0"/>
+                            <TextBlock Text="&#xE74C;" FontFamily="Segoe MDL2 Assets" FontSize="18" Margin="0,0,5,0"/>
                             <TextBlock Text="{Binding}"  FontSize="15"  Margin="0,0,5,0"/>
                         </StackPanel>
                     </DataTemplate>
@@ -19,7 +19,7 @@
                 <TabItem.HeaderTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="" FontFamily="Segoe MDL2 Assets" FontSize="18" Margin="0,0,5,0"/>
+                                <TextBlock Text="&#xEC4A;" FontFamily="Segoe MDL2 Assets" FontSize="18" Margin="0,0,5,0"/>
                                 <TextBlock Text="{Binding}"  FontSize="15"  Margin="0,0,5,0"/>
                             </StackPanel>
                         </DataTemplate>
@@ -32,7 +32,7 @@
                 <TabItem.HeaderTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="" FontFamily="Segoe MDL2 Assets" FontSize="18" Margin="0,0,5,0"/>
+                                <TextBlock Text="&#xE713;" FontFamily="Segoe MDL2 Assets" FontSize="18" Margin="0,0,5,0"/>
                                 <TextBlock Text="{Binding}"  FontSize="15" Margin="0,0,5,0"/>
                             </StackPanel>
                         </DataTemplate>
