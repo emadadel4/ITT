@@ -1,9 +1,7 @@
 name: Release 
-
 permissions:
   contents: write
   actions: read
-
 on:
   push:
     branches:
