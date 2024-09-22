@@ -21,9 +21,10 @@ jobs:
       - name: Run build script
         shell: pwsh
         run: |
-          $env:TERM = "dumb"  # Avoid issues with terminal/console manipulation
-          ./build.ps1         # Run the build script
+          $env:TERM = "dumb"  # Avoid terminal interaction issues
+          pwsh -NoProfile -Command "./build.ps1"
         continue-on-error: false
+      
 
 
       - name: Set Version to Todays Date
