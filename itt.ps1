@@ -8,7 +8,13 @@ if (-not $principal.IsInRole($administratorRole)) {
     $powershellcmd = if (Get-Command pwsh -ErrorAction SilentlyContinue) { "pwsh" } else { "powershell" }
     $processCmd = if (Get-Command wt.exe -ErrorAction SilentlyContinue) { "wt.exe" } else { $powershellcmd }
     # Elevate the process using RunAs
-    Start-Process $processCmd -ArgumentList "$powershellcmd -ExecutionPolicy Bypass -NoProfile -Command `"irm $script | iex`"" -Verb RunAs
+
+    #Start-Process $processCmd -ArgumentList "$powershellcmd -ExecutionPolicy Bypass -NoProfile -Command `"irm $script | iex`"" -Verb RunAs
+
+    Start-Process -FilePath "PowerShell" -ArgumentList "irm $script | iex" -Verb "runas"
+
+
+
 } else {
     # Run the script directly if already elevated
     Invoke-RestMethod $script | Invoke-Expression
