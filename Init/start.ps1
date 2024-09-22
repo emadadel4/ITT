@@ -24,6 +24,16 @@ $itt = [Hashtable]::Synchronized(@{
     Language       = "en"
 })
 
+$currentPid = [System.Security.Principal.WindowsIdentity]::GetCurrent()
+$principal = [System.Security.Principal.WindowsPrincipal]$currentPid
+$administrator = [System.Security.Principal.WindowsBuiltInRole]::Administrator
+
+if (-not $principal.IsInRole($administrator))
+{
+    Start-Process -FilePath "PowerShell" -ArgumentList $myInvocation.MyCommand.Definition -Verb "runas"
+    exit
+}
+
 try {
     $itt.mediaPlayer = New-Object -ComObject WMPlayer.OCX
     $Host.UI.RawUI.WindowTitle = "ITT (Install and Tweaks Tool) - Admin"
