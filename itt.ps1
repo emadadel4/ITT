@@ -1,19 +1,16 @@
 $url = "https://github.com/emadadel4/itt/releases/latest/download/ittea.ps1"
 
-$currentIdentity = [System.Security.Principal.WindowsIdentity]::GetCurrent()
-$principal = New-Object System.Security.Principal.WindowsPrincipal($currentIdentity)
-$administratorRole = [System.Security.Principal.WindowsBuiltInRole]::Administrator
+$script = Invoke-RestMethod $url
 
-$script = $url
+# Elevate Shell if necessary
+if (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
+    Write-Output "Winutil needs to be run as Administrator. Attempting to relaunch."
 
-if (-not $principal.IsInRole($administratorRole)) {
-    # Determine which PowerShell version and terminal to use
     $powershellcmd = if (Get-Command pwsh -ErrorAction SilentlyContinue) { "pwsh" } else { "powershell" }
     $processCmd = if (Get-Command wt.exe -ErrorAction SilentlyContinue) { "wt.exe" } else { $powershellcmd }
 
-    # Elevate the process using RunAs
-    Start-Process $processCmd -ArgumentList "$powershellcmd -ExecutionPolicy Bypass -NoProfile -Command `"irm $script | iex`"" -Verb RunAs
-} else {
-    # Run the script directly if already elevated
-    irm $script | iex
+    Start-Process $processCmd -ArgumentList "$powershellcmd -ExecutionPolicy Bypass -NoProfile -Command $(Invoke-Expression $script)" -Verb RunAs
+}
+else{
+    Invoke-Expression $script
 }
