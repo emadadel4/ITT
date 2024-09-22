@@ -1,0 +1,39 @@
+name: Delete st.ps1 on Push
+
+on:
+  push:
+    branches:
+      - main  # Change this if needed
+
+permissions:
+  contents: write  # Ensure GITHUB_TOKEN has write permissions
+
+jobs:
+  delete_file:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Check out the repository
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Step 2: Remove the file if it exists
+      - name: Remove st.ps1 if it exists
+        run: |
+          if [ -f "ittea.ps1" ]; then
+            git rm ittea.ps1
+          fi
+
+      # Step 3: Commit the changes
+      - name: Commit changes
+        run: |
+          git config --global user.name "emadadel4"
+          git config --global user.email "emadadel4@users.noreply.github.com"
+          git commit -m "Delete ittea.ps1 if exists" || echo "No changes to commit"
+
+      # Step 4: Push the changes using GITHUB_TOKEN
+      - name: Push changes
+        run: |
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
