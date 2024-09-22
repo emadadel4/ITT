@@ -23,7 +23,7 @@ Add-Type -AssemblyName WindowsBase
 $itt = [Hashtable]::Synchronized(@{
     database       = @{}
     ProcessRunning = $false
-    lastupdate     = "09/21/2024"
+    lastupdate     = "09/22/2024"
     github         = "https://github.com/emadadel4"
     telegram       = "https://t.me/emadadel4"
     website        = "https://emadadel4.github.io"
@@ -10882,7 +10882,7 @@ function Invoke-Button {
         }
 
         "shelltube"{
-            Start-Process -FilePath "powershell" -ArgumentList "irm https://raw.githubusercontent.com/emadadel4/ShellTube/main/st.ps1 | iex"
+            Start-Process -FilePath "powershell" -ArgumentList "irm https://github.com/emadadel4/shelltube/releases/latest/download/st.ps1 | iex"
             Debug-Message $action
         }
 
