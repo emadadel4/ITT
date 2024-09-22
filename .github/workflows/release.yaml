@@ -50,15 +50,6 @@ jobs:
           name: shelltube
           path: ./ittea.ps1
 
-      # - name: Generate Release Notes
-      #   id: generate_notes
-      #   uses: release-drafter/release-drafter@v6
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      #   with:
-      #     config-name: release-drafter.yml
-      #     version: ${{ env.VERSION }} # Pass the version variable
-
       - name: Create and Upload Release
         id: create_release
         uses: softprops/action-gh-release@v2
