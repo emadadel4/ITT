@@ -17,7 +17,9 @@ jobs:
 
       - name: Compile project
         shell: pwsh
-        run: ./build.ps1
+        run: |
+          $env:TERM = "dumb"
+          ./build.ps1
         continue-on-error: false
 
       - name: Set Version to Todays Date
