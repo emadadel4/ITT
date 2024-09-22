@@ -48,7 +48,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: shelltube
-          path: ./itt.ps1
+          path: ./ittea.ps1
 
       # - name: Generate Release Notes
       #   id: generate_notes
@@ -68,7 +68,7 @@ jobs:
           body: |
             ${{ steps.generate_notes.outputs.body }}
           append_body: false
-          files: ./itt.ps1
+          files: ./ittea.ps1
           prerelease: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

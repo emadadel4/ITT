@@ -1,5 +1,5 @@
 param (
-    [string]$OutputScript = "itt.ps1",
+    [string]$OutputScript = "ittea.ps1",
     [string]$readme = "README.md",
     [string]$Assets = ".\Resources",
     [string]$Controls = ".\UI\Controls",
@@ -453,7 +453,7 @@ Clear-Host
 Write-Host " `n` Built successfully" -ForegroundColor Green
 Write-Host " `n`Starting ITT..." -ForegroundColor Green
 CountItems
-./itt.ps1
+./ittea.ps1
 }
 
 catch {
