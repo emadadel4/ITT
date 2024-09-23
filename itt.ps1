@@ -23,11 +23,13 @@ Add-Type -AssemblyName WindowsBase
 $itt = [Hashtable]::Synchronized(@{
     database       = @{}
     ProcessRunning = $false
+    developer      = "Emad Adel"
     lastupdate     = "09/23/2024"
     github         = "https://github.com/emadadel4"
     telegram       = "https://t.me/emadadel4"
-    website        = "https://emadadel4.github.io"
-    developer      = "Emad Adel"
+    blog           = "https://emadadel4.github.io"
+    youtube        = "https://youtube.com/@emadadel4"
+    buymeacoffee   = "https://buymeacoffee.com/emadadel"
     registryPath   = "HKCU:\Software\ITT@emadadel"
     firebaseUrl    = "https://ittools-7d9fe-default-rtdb.firebaseio.com/Users"
     icon           = "https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Icons/icon.ico"
@@ -11261,11 +11263,11 @@ function About {
     $itt["about"].Resources.MergedDictionaries.Add($itt["window"].FindResource($itt.CurretTheme))
     # Set version and link handlers
     $itt.about.FindName('ver').Text = "Last update $($itt.lastupdate)"
-    $itt.about.FindName("telegram").add_MouseLeftButtonDown({Start-Process("https://t.me/emadadel4")})
-    $itt.about.FindName("github").add_MouseLeftButtonDown({Start-Process("https://github.com/emadadel4/itt")})
-    $itt.about.FindName("blog").add_MouseLeftButtonDown({Start-Process("https://emadadel4.github.io")})
-    $itt.about.FindName("yt").add_MouseLeftButtonDown({Start-Process("https://youtube.com/@emadadel4")})
-    $itt.about.FindName("coffee").add_MouseLeftButtonDown({Start-Process("https://buymeacoffee.com/emadadel")})
+    $itt.about.FindName("telegram").add_MouseLeftButtonDown({Start-Process($itt.telegram)})
+    $itt.about.FindName("github").add_MouseLeftButtonDown({Start-Process($itt.github)})
+    $itt.about.FindName("blog").add_MouseLeftButtonDown({Start-Process($itt.blog)})
+    $itt.about.FindName("yt").add_MouseLeftButtonDown({Start-Process($itt.youtube)})
+    $itt.about.FindName("coffee").add_MouseLeftButtonDown({Start-Process($itt.buymeacoffee)})
     # Set data context based on language
     
     $itt.about.DataContext = $itt.database.locales.Controls.en
