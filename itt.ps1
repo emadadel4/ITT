@@ -11256,22 +11256,27 @@ Function Invoke-StickyKeys {
 
 }
 function About {
-    # Load child window
+
+    # init child window
     [xml]$about = $childXaml
     $childWindowReader = (New-Object System.Xml.XmlNodeReader $about)
     $itt.about = [Windows.Markup.XamlReader]::Load($childWindowReader)
+
+    # Get main style theme
     $itt["about"].Resources.MergedDictionaries.Add($itt["window"].FindResource($itt.CurretTheme))
-    # Set version and link handlers
+
+    # Set Events on Click
     $itt.about.FindName('ver').Text = "Last update $($itt.lastupdate)"
     $itt.about.FindName("telegram").add_MouseLeftButtonDown({Start-Process($itt.telegram)})
     $itt.about.FindName("github").add_MouseLeftButtonDown({Start-Process($itt.github)})
     $itt.about.FindName("blog").add_MouseLeftButtonDown({Start-Process($itt.blog)})
     $itt.about.FindName("yt").add_MouseLeftButtonDown({Start-Process($itt.youtube)})
     $itt.about.FindName("coffee").add_MouseLeftButtonDown({Start-Process($itt.buymeacoffee)})
-    # Set data context based on language
     
+    # Set data context language
     $itt.about.DataContext = $itt.database.locales.Controls.en
 
+    # Show window
     $itt.about.ShowDialog() | Out-Null
 }
 function ITTShortcut {
@@ -11291,7 +11296,7 @@ function ITTShortcut {
     #>
 
     # URL of the icon file
-    $iconUrl = "https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Icons/icon.ico"
+    $iconUrl = $itt.icon
     
     # Determine the path in AppData\Roaming
     $appDataPath = [Environment]::GetFolderPath('ApplicationData')
