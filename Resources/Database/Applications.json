@@ -6269,5 +6269,24 @@
     ],
     "category": "Utilities",
     "check": "false"
+  },
+  {
+    "name": "NTLite",
+    "description": "Integrate updates drivers automate Windows and application setup speedup Windows deployment process and have it all set for the next time",
+    "winget": "Nlitesoft.NTLite",
+    "choco": "ntlite-free",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none",
+        "shortcut": "no",
+        "run": "no"
+      }
+    ],
+    "category": "Drivers",
+    "check": "false"
   }
 ]
