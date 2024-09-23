@@ -23,7 +23,7 @@ Add-Type -AssemblyName WindowsBase
 $itt = [Hashtable]::Synchronized(@{
     database       = @{}
     ProcessRunning = $false
-    lastupdate     = "09/22/2024"
+    lastupdate     = "09/23/2024"
     github         = "https://github.com/emadadel4"
     telegram       = "https://t.me/emadadel4"
     website        = "https://emadadel4.github.io"
@@ -11806,7 +11806,7 @@ function StopAllRunspace {
     StopMusic                            # Stop the music and clean up resources
     $newProcess.exit                     # Exit the process
     # Display a message reminding to pray for the oppressed
-    Write-Host "`n` Don't forget to pray for the oppressed people, Stand with Palestine" 
+    Write-Host "`n` Don't forget to pray for your oppressed brothers in Palestine and around the world." 
 }
 function Set-Language {
 
