@@ -62,6 +62,4 @@ function StopAllRunspace {
     $script:powershell.Stop()            # Stop the PowerShell script
     StopMusic                            # Stop the music and clean up resources
     $newProcess.exit                     # Exit the process
-    # Display a message reminding to pray for the oppressed
-    Write-Host "`n` Don't forget to pray for your oppressed brothers in Palestine and around the world." 
 }
