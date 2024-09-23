@@ -15963,6 +15963,7 @@ Height="700" Width="955" MinHeight="600" MinWidth="800" Topmost="False"  ShowInT
       Text="&#xEFA9;"
       Name="QuoteIcon"
       Margin="15,0,0,0"
+      FontSize="18"
       TextAlignment="Center"
       HorizontalAlignment="Center"
       VerticalAlignment="Center"
