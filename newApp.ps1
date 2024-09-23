@@ -396,6 +396,7 @@ function API {
                 "url" = "none"
                 "exeArgs" = "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath"
                 "output" = $output
+                "launcher" = "none"
                 "shortcut" = "no"
                 "run" = "no"
             }
@@ -418,6 +419,7 @@ function API {
                 "url": "none",
                 "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
                 "output": "$($data["default"][0]["output"])",
+                "launcher": "$($data["default"][0]["launcher"])",
                 "shortcut": "$($data["default"][0]["shortcut"])",
                 "run": "$($data["default"][0]["run"])"
             }
