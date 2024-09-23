@@ -6335,6 +6335,25 @@ $itt.database.Applications = '[
     ],
     "category": "Utilities",
     "check": "false"
+  },
+  {
+    "name": "NTLite",
+    "description": "Integrate updates drivers automate Windows and application setup speedup Windows deployment process and have it all set for the next time",
+    "winget": "Nlitesoft.NTLite",
+    "choco": "ntlite-free",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none",
+        "shortcut": "no",
+        "run": "no"
+      }
+    ],
+    "category": "Drivers",
+    "check": "false"
   }
 ]
 ' | ConvertFrom-Json
@@ -15542,6 +15561,14 @@ Height="700" Width="955" MinHeight="600" MinWidth="800" Topmost="False"  ShowInT
                 <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content="Utilities"/>
             </StackPanel>
                 <TextBlock Width="555" Background="Transparent" Margin="8" Foreground="{DynamicResource DefaultTextColor2}"  FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="Control your internet bandwidth with SelfishNet V3 ARP Spoofing application"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Width="auto" Margin="10">
+            <StackPanel Orientation="Horizontal">
+                <CheckBox Content="NTLite" Tag="Drivers" IsChecked="false"   ToolTip="Install it again to update. If there is an issue with the program, please report the problem on the GitHub repository." FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content="Drivers"/>
+            </StackPanel>
+                <TextBlock Width="555" Background="Transparent" Margin="8" Foreground="{DynamicResource DefaultTextColor2}"  FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="Integrate updates drivers automate Windows and application setup speedup Windows deployment process and have it all set for the next time"/>
         </StackPanel>
 
                     </ListView>
