@@ -85,7 +85,7 @@ function Startup  {
             # Display welcome text
             Show-WelcomeText
         
-            Start-Sleep -Seconds 20
+            Start-Sleep -Seconds 28
         
             # Loop through shuffled names and display them
             do {
