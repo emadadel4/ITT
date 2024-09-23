@@ -71,3 +71,12 @@ $itt["window"].Add_PreViewKeyDown($KeyEvents)
 
 # Show Window
 $itt["window"].ShowDialog() | Out-Null
+
+
+$script:powershell.Dispose()        
+$itt.runspace.Dispose()             
+$itt.runspace.Close()          
+[System.GC]::Collect()    
+$script:powershell.Stop()          
+$newProcess.exit 
+Write-Host "`n` Don't forget to pray for your oppressed brothers in Palestine and around the world." 
