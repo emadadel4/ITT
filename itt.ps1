@@ -56,7 +56,7 @@ try {
     $Host.UI.RawUI.WindowTitle = "ITT (Install and Tweaks Tool) - Admin"
 }
 catch {
-    Write-Warning "Media player not loaded because your using Windows Lite or you just disable it"
+    Write-Warning "Media player not loaded because you're using Windows Lite or have disabled it."
 }
 #===========================================================================
 #endregion End Start
