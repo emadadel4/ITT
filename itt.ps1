@@ -24,7 +24,7 @@ $itt = [Hashtable]::Synchronized(@{
     database       = @{}
     ProcessRunning = $false
     developer      = "Emad Adel"
-    lastupdate     = "09/23/2024"
+    lastupdate     = "09/24/2024"
     github         = "https://github.com/emadadel4/itt"
     telegram       = "https://t.me/emadadel4"
     blog           = "https://emadadel4.github.io"
@@ -12318,7 +12318,7 @@ Height="700" Width="955" MinHeight="600" MinWidth="800" Topmost="False"  ShowInT
     </Style>
 <!--End TextBlock Style-->
 
-<!--Define the Menu Style -->
+<!-- Menu Style -->
     <Style TargetType="Menu">
         <Setter Property="Background" Value="#FFFFFF"/>
         <Setter Property="Foreground" Value="#000000"/>
@@ -12352,7 +12352,8 @@ Height="700" Width="955" MinHeight="600" MinWidth="800" Topmost="False"  ShowInT
                 <ControlTemplate TargetType="MenuItem">
                     <Border x:Name="Border"
                             HorizontalAlignment="Left"
-                            Padding="5"
+                            VerticalAlignment="Center"
+                            Padding="8"
                             CornerRadius="2">
                         <Grid>
                             <Grid.ColumnDefinitions>
@@ -12363,10 +12364,10 @@ Height="700" Width="955" MinHeight="600" MinWidth="800" Topmost="False"  ShowInT
                             
                             <!-- Icon -->
                             <ContentPresenter Grid.Column="0" 
-                                              ContentSource="Icon" 
-                                              HorizontalAlignment="Left"
-                                              VerticalAlignment="Center"
-                                              Margin="0,0,4,0"/>
+                                ContentSource="Icon"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                Margin="0,0,4,0"/>
                             
                             <!-- Text (MenuItem Header) -->
                             <TextBlock x:Name="TextBlock"
@@ -12391,22 +12392,24 @@ Height="700" Width="955" MinHeight="600" MinWidth="800" Topmost="False"  ShowInT
                                   Fill="{DynamicResource DefaultTextColor}"
                                   HorizontalAlignment="Center"
                                   VerticalAlignment="Center"
+                                  
                                   Margin="4,0,0,0"
+                                  
                                   Visibility="Collapsed"/>
                             
                             <!-- Popup for Submenu -->
                             <Popup Name="PART_Popup" 
-                                   Placement="Bottom" 
+                                   Placement="Right" 
                                    IsOpen="{TemplateBinding IsSubmenuOpen}" 
                                    AllowsTransparency="True" 
                                    Focusable="False"
-                                   PopupAnimation="Fade">
+                                   PopupAnimation="None">
                                 <Border Background="{TemplateBinding Background}" 
                                         BorderBrush="{DynamicResource BorderBrush}"     
                                         BorderThickness="2"
                                         CornerRadius="5">
                                     <StackPanel IsItemsHost="True" 
-                                                KeyboardNavigation.DirectionalNavigation="Cycle"/>
+                                                KeyboardNavigation.DirectionalNavigation="Continue"/>
                                 </Border>
                             </Popup>
                         </Grid>
@@ -12414,6 +12417,8 @@ Height="700" Width="955" MinHeight="600" MinWidth="800" Topmost="False"  ShowInT
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
                             <!-- Adjust appearance on hover if needed -->
+                            <Setter TargetName="Border" Property="Background" Value="{DynamicResource BGButtonColor}"/>
+                            <Setter TargetName="TextBlock" Property="Foreground" Value="{DynamicResource FGButtonColor}"/>
                         </Trigger>
                         <Trigger Property="HasItems" Value="True">
                             <Setter TargetName="Arrow" Property="Visibility" Value="Visible"/>
@@ -12424,7 +12429,7 @@ Height="700" Width="955" MinHeight="600" MinWidth="800" Topmost="False"  ShowInT
         </Setter>
     </Style>
 
-<!-- End Define the Menu Style -->
+<!-- End Menu Style -->
 
 <!--Scrollbar Thumbs-->
     <Style x:Key="ScrollThumbs" TargetType="{x:Type Thumb}">
