@@ -76,6 +76,7 @@ function Startup  {
         
                     #$fullCulture = (Get-ItemPropertyValue -Path "HKCU:\Control Panel\International" -Name "LocaleName")
                     #$shortCulture = $fullCulture.Split('-')[0]
+                    $itt.QuoteIcon.Text = ""
                     $itt.Quotes.Text = $itt.database.locales.Controls.$($itt.Language).welcome
                     
                 })
@@ -90,6 +91,7 @@ function Startup  {
             do {
                 foreach ($name in $shuffledNames) {
                     $itt.Quotes.Dispatcher.Invoke([Action]{
+                        $itt.QuoteIcon.Text = ""
                         $itt.Quotes.Text = "`“$name`”"
                     })
                     # Adjust the sleep time as needed

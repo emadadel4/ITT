@@ -28,13 +28,23 @@
     <!--End Install Button-->
   </Grid>
   <!--Quotes-->
-    <StackPanel Orientation="Horizontal" Grid.Row="3">
+    <StackPanel Orientation="Horizontal" Grid.Row="3" Background="Transparent">
+
+      <TextBlock
+      Text="&#xEFA9;"
+      Name="QuoteIcon"
+      Margin="15,0,0,0"
+      TextAlignment="Center"
+      HorizontalAlignment="Center"
+      VerticalAlignment="Center"
+      FontFamily="Segoe MDL2 Assets"
+      />
+
     <TextBlock Name="quotes"
       HorizontalAlignment="Left"
       VerticalAlignment="Center" 
       TextWrapping="Wrap"
       Padding="8"
-      FontSize="13"
       Text="#StandWithPalestine"
       FontWeight="SemiBold"
       FlowDirection="LeftToRight"
