@@ -11821,8 +11821,6 @@ function StopAllRunspace {
     $script:powershell.Stop()            # Stop the PowerShell script
     StopMusic                            # Stop the music and clean up resources
     $newProcess.exit                     # Exit the process
-    # Display a message reminding to pray for the oppressed
-    Write-Host "`n` Don't forget to pray for your oppressed brothers in Palestine and around the world." 
 }
 function Set-Language {
 
@@ -16651,6 +16649,15 @@ $itt["window"].Add_PreViewKeyDown($KeyEvents)
 
 # Show Window
 $itt["window"].ShowDialog() | Out-Null
+
+
+$script:powershell.Dispose()        
+$itt.runspace.Dispose()             
+$itt.runspace.Close()          
+[System.GC]::Collect()    
+$script:powershell.Stop()          
+$newProcess.exit 
+Write-Host "`n` Don't forget to pray for your oppressed brothers in Palestine and around the world." 
 
 #===========================================================================
 #endregion End Main
