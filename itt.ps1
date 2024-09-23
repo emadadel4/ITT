@@ -6396,7 +6396,7 @@ $itt.database.locales = '{
         "Subtitle": "أداة اي تي تي مفتوحة المصدر يهدف هذا المشروع إلى تسهيل عملية تصطيب برامج الويندوز دفعة واحدة وتحسين أداء النظام. سواء كنت خبيرًا في البرمجة أو مستخدمًا يبحث عن تحسين تجربته على الويندوز، نرحب بمساهماتك, نتطلع لرؤية مساهماتكم وأفكاركم لجعل هذا المشروع أفضل لكل مستخدمي ويندوز. شكرًا لانضمامك إلينا"
     },
     "en": {
-        "Welcome": "Save time by installing multiple programs at once and boost your Windows performance. Join us in improving the tool and make it great.",
+        "Welcome": "Save time by installing multiple programs at once and boost your Windows performance. Join us in improving the tool and make it great. You can add your favorite music and apps.",
         "sysinfo": "System Info",
         "PowerOptions": "Power Options",
         "devicemgr": "Device Manager",
@@ -10209,7 +10209,7 @@ function Startup  {
             # Display welcome text
             Show-WelcomeText
         
-            Start-Sleep -Seconds 20
+            Start-Sleep -Seconds 28
         
             # Loop through shuffled names and display them
             do {
@@ -16522,7 +16522,6 @@ $itt.installText = $itt["window"].FindName("installText")
 $itt.installIcon = $itt["window"].FindName("installIcon")
 $itt.applyText = $itt["window"].FindName("applyText")
 $itt.applyIcon = $itt["window"].FindName("applyIcon")
-
 $itt.QuoteIcon = $itt["window"].FindName("QuoteIcon")
 
 #===========================================================================
