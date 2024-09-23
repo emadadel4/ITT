@@ -7118,7 +7118,6 @@ $itt.database.Tweaks = '[
         cleanmgr.exe /d C: /VERYLOWDISK /sagerun:1 Dism.exe /online /Cleanup-Image /StartComponentCleanup /ResetBase
         cleanmgr.exe /d C: /sagerun:1
         cleanmgr.exe /sagerun:1
-        Dism.exe /online /Cleanup-Image /StartComponentCleanup /ResetBase
         Dism.exe /online /Cleanup-Image /StartComponentCleanup
         cleanmgr.exe /d C: /VERYLOWDISK
         Dism.exe /online /Cleanup-Image /StartComponentCleanup /ResetBase
