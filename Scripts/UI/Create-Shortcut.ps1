@@ -15,7 +15,7 @@ function ITTShortcut {
     #>
 
     # URL of the icon file
-    $iconUrl = "https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Icons/icon.ico"
+    $iconUrl = $itt.icon
     
     # Determine the path in AppData\Roaming
     $appDataPath = [Environment]::GetFolderPath('ApplicationData')
