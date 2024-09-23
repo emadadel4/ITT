@@ -8,11 +8,13 @@ Add-Type -AssemblyName WindowsBase
 $itt = [Hashtable]::Synchronized(@{
     database       = @{}
     ProcessRunning = $false
+    developer      = "Emad Adel"
     lastupdate     = "#{replaceme}"
     github         = "https://github.com/emadadel4"
     telegram       = "https://t.me/emadadel4"
-    website        = "https://emadadel4.github.io"
-    developer      = "Emad Adel"
+    blog           = "https://emadadel4.github.io"
+    youtube        = "https://youtube.com/@emadadel4"
+    buymeacoffee   = "https://buymeacoffee.com/emadadel"
     registryPath   = "HKCU:\Software\ITT@emadadel"
     firebaseUrl    = "https://ittools-7d9fe-default-rtdb.firebaseio.com/Users"
     icon           = "https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Icons/icon.ico"
