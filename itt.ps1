@@ -9792,22 +9792,24 @@ function Start-DownloadAndInstallExe {
     }
 }
 function Refresh-Explorer {
-    
-    Invoke-ScriptBlock -ScriptBlock {
 
-        $itt.ProcessRunning = $true
-
-        # Stop the Explorer process
-        Stop-Process -Name explorer -Force
-
-        # Wait a moment to ensure the process has stopped
-        Start-Sleep -Seconds 1
-
-        # Restart the Explorer process
-        Stop-Process -Name explorer -Force
-
-        $itt.ProcessRunning = $false
+    if($itt.ProcessRunning) {
+        Message -key "Pleasewait" -icon "Warning"
+        return
     }
+
+    $itt.ProcessRunning = $true
+
+    # Check if explorer is not running and start it if needed
+    Stop-Process -Name explorer -Force
+    Start-Sleep -Seconds 1
+
+    if (-not (Get-Process -Name explorer -ErrorAction SilentlyContinue)) {
+        Start-Process explorer.exe -Verb RunAs
+    }
+
+    $itt.ProcessRunning = $false
+
 }
 function Remove-Registry {
 
