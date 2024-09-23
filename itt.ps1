@@ -10200,6 +10200,7 @@ function Startup  {
         
                     #$fullCulture = (Get-ItemPropertyValue -Path "HKCU:\Control Panel\International" -Name "LocaleName")
                     #$shortCulture = $fullCulture.Split('-')[0]
+                    $itt.QuoteIcon.Text = ""
                     $itt.Quotes.Text = $itt.database.locales.Controls.$($itt.Language).welcome
                     
                 })
@@ -10214,6 +10215,7 @@ function Startup  {
             do {
                 foreach ($name in $shuffledNames) {
                     $itt.Quotes.Dispatcher.Invoke([Action]{
+                        $itt.QuoteIcon.Text = ""
                         $itt.Quotes.Text = "`“$name`”"
                     })
                     # Adjust the sleep time as needed
@@ -11327,65 +11329,6 @@ function ITTShortcut {
     $Shortcut.Save()
 }
 
-function DisplayQuotes  {
-
-    Invoke-ScriptBlock -ScriptBlock {
-
-        # Define the JSON file path
-        $jsonFilePath = $itt.database.Quotes
-
-        # Function to shuffle an array
-        function ShuffleArray {
-            param (
-                [array]$Array
-            )
-            $count = $Array.Count
-            for ($i = $count - 1; $i -ge 0; $i--) {
-                $randomIndex = Get-Random -Minimum 0 -Maximum $count
-                $temp = $Array[$i]
-                $Array[$i] = $Array[$randomIndex]
-                $Array[$randomIndex] = $temp
-            }
-            return $Array
-        }
-
-        # Function to get names from the JSON file
-        function Get-NamesFromJson {
-            $jsonContent =  $jsonFilePath 
-            return $jsonContent.Q
-        }
-
-        # Get shuffled names
-        $shuffledNames = ShuffleArray -Array (Get-NamesFromJson)
-
-        # Function to display welcome text
-        function Show-WelcomeText {
-            $itt.Quotes.Dispatcher.Invoke([Action]{
-
-                #$fullCulture = (Get-ItemPropertyValue -Path "HKCU:\Control Panel\International" -Name "LocaleName")
-                #$shortCulture = $fullCulture.Split('-')[0]
-                $itt.Quotes.Text = $itt.database.locales.Controls.$($itt.Language).welcome
-               
-            })
-        }
-
-        # Display welcome text
-        Show-WelcomeText
-
-        Start-Sleep -Seconds 20
-
-        # Loop through shuffled names and display them
-        do {
-            foreach ($name in $shuffledNames) {
-                $itt.Quotes.Dispatcher.Invoke([Action]{
-                    $itt.Quotes.Text = "`“$name`”"
-                })
-                # Adjust the sleep time as needed
-                Start-Sleep -Seconds 18 
-            }
-        } while ($true)
-    }
-}
 function Search {
 
     <#
@@ -16014,13 +15957,23 @@ Height="700" Width="955" MinHeight="600" MinWidth="800" Topmost="False"  ShowInT
     <!--End Install Button-->
   </Grid>
   <!--Quotes-->
-    <StackPanel Orientation="Horizontal" Grid.Row="3">
+    <StackPanel Orientation="Horizontal" Grid.Row="3" Background="Transparent">
+
+      <TextBlock
+      Text="&#xEFA9;"
+      Name="QuoteIcon"
+      Margin="15,0,0,0"
+      TextAlignment="Center"
+      HorizontalAlignment="Center"
+      VerticalAlignment="Center"
+      FontFamily="Segoe MDL2 Assets"
+      />
+
     <TextBlock Name="quotes"
       HorizontalAlignment="Left"
       VerticalAlignment="Center" 
       TextWrapping="Wrap"
       Padding="8"
-      FontSize="13"
       Text="#StandWithPalestine"
       FontWeight="SemiBold"
       FlowDirection="LeftToRight"
@@ -16569,6 +16522,9 @@ $itt.installText = $itt["window"].FindName("installText")
 $itt.installIcon = $itt["window"].FindName("installIcon")
 $itt.applyText = $itt["window"].FindName("applyText")
 $itt.applyIcon = $itt["window"].FindName("applyIcon")
+
+$itt.QuoteIcon = $itt["window"].FindName("QuoteIcon")
+
 #===========================================================================
 #endregion End loadXmal
 #===========================================================================
