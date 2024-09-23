@@ -34,6 +34,7 @@
       Text="&#xEFA9;"
       Name="QuoteIcon"
       Margin="15,0,0,0"
+      FontSize="18"
       TextAlignment="Center"
       HorizontalAlignment="Center"
       VerticalAlignment="Center"
