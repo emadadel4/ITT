@@ -188,7 +188,7 @@ or
 
 
 <h2>
-<a href="https://www.palestinercs.org/en" target="blank">
+<a href="https://www.palestinercs.org/en/Donation" target="blank">
 Deliver humanitarian aid directly to Palastine.
 </a>
 </h2>
