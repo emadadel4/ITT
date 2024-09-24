@@ -49,12 +49,12 @@ function Check {
 
     foreach ($item in $jsonContent) 
     {
-        if ($item.choco -eq $choco)
+        if ($item.choco -eq $choco -and $item.choco -ne "none")
         {
             Write-Host "($choco) already exists!" -ForegroundColor Yellow
             exit
 
-        } elseif ($item.winget -eq $winget) 
+        } elseif ($item.winget -eq $winget -and $item.winget -ne "none") 
         {
             Write-Host "($winget) already exists!" -ForegroundColor Yellow
             exit
@@ -329,11 +329,17 @@ function API {
         $choco = Read-Host "Enter Chocolatey package name"
         if ($choco -eq "") { $choco = "none" }  # Set default value if empty
 
+        # Remove "choco install" from $choco if it exists
+        $choco = ($choco -replace "choco install", "" -replace ",,", ",").Trim()
+
         # Check choco packge already exists
         Check -choco $choco
 
         $winget = (Read-Host "Enter Winget package name (Enter to skip)").Trim()  # Remove leading and trailing spaces
         if ($winget -eq "") { $winget = "none" }  # Set default value if empty
+
+        $winget = $winget.Split('--id=')[-1].Trim()
+        $winget = $winget.Replace("-e", "").Trim()
 
         # Check winget packge already exists
         Check -winget $winget
@@ -377,10 +383,7 @@ function API {
             }
         } until ([int]$choice -in $validCategories.Keys)
 
-            # Remove "choco install" from $choco if it exists
-            $choco = ($choco -replace "choco install", "" -replace ",,", ",").Trim()
-            $winget = $winget.Split('--id=')[-1].Trim()
-            $winget = $winget.Replace("-e", "").Trim()
+      
 
 
     # Define the data
