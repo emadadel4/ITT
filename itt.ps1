@@ -16188,7 +16188,7 @@ Height="700" Width="955" MinHeight="600" MinWidth="800" Topmost="False"  ShowInT
 <Grid Row="2" Background="Transparent">
 
   <Grid.ColumnDefinitions>
-    <ColumnDefinition Width="800"/>
+    <ColumnDefinition Width="644"/>
     <ColumnDefinition Width="*"/>
   </Grid.ColumnDefinitions>
 
