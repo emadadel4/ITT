@@ -161,11 +161,22 @@ or
 [![Contributors](https://contrib.rocks/image?repo=emadadel4/itt)](https://github.com/emadadel4/itt/graphs/contributors)
 
 
-<img src="https://raw.githubusercontent.com/Safouene1/support-palestine-banner/master/StandWithPalestine.svg" alt="Ceasefire Now" style="width:35%;">
+
+## Support Palestine
+
+  <a href="Support.md" rel="nofollow">
+    <img src="https://raw.githubusercontent.com/Safouene1/support-palestine-banner/master/StandWithPalestine.svg" alt="Ceasefire Now" style="width:40%;">
+  </a>
 
 <a href="https://www.palestinercs.org/en/Donation" target="blank">
 Deliver humanitarian aid directly to Palastine.
 </a>
+
+<a href="Support.md" target="blank">
+Other way to support
+</a>
+
+<br>
 
  Video is more acurate than 100% of the western mainstream Media and news outlets
 
