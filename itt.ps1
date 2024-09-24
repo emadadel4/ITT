@@ -16006,7 +16006,6 @@ Height="700" Width="955" MinHeight="600" MinWidth="800" Topmost="False"  ShowInT
               <Button
               Name="applyBtn"
               FontSize="15" 
-              IsEnabled="False"
               HorizontalAlignment="Right"
               VerticalAlignment="Bottom"
               Width="100" Height="40" Margin="20">
