@@ -6388,5 +6388,65 @@
     ],
     "category": "Utilities",
     "check": "false"
+  },
+  {
+    "name": "Multimark down",
+    "description": "1",
+    "winget": "none",
+    "choco": "multimarkdown",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none",
+        "launcher": "none",
+        "shortcut": "no",
+        "run": "no"
+      }
+    ],
+    "category": "Utilities",
+    "check": "false"
+  },
+  {
+    "name": "PCSX2 Emulator",
+    "description": "PCSX2 is a free and opensource PlayStation 2 PS2 emulator Its purpose is to emulate the PS2s hardware",
+    "winget": "none",
+    "choco": "pcsx2.portable",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none",
+        "launcher": "none",
+        "shortcut": "no",
+        "run": "no"
+      }
+    ],
+    "category": "Portable",
+    "check": "false"
+  },
+  {
+    "name": "RetroArch",
+    "description": "RetroArch is a frontend for emulators game engines and media players It enables you to run classic games on a wide range of computers and consoles through its slick graphical interface",
+    "winget": "Libretro.RetroArch",
+    "choco": "retroarch",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none",
+        "launcher": "none",
+        "shortcut": "no",
+        "run": "no"
+      }
+    ],
+    "category": "Gaming",
+    "check": "false"
   }
 ]
