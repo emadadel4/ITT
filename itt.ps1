@@ -6457,7 +6457,7 @@ $itt.database.Applications = '[
   },
   {
     "name": "Multimark down",
-    "description": "1",
+    "description": "MultiMarkdown or MMD, is a tool to help turn minimally marked-up plain text into well formatted documents, including HTML, PDF",
     "winget": "none",
     "choco": "multimarkdown",
     "scoop": "none",
@@ -15781,7 +15781,7 @@ Height="700" Width="955" MinHeight="600" MinWidth="800" Topmost="False"  ShowInT
                 <CheckBox Content="Multimark down" Tag="Utilities" IsChecked="false"   ToolTip="Install it again to update. If there is an issue with the program, please report the problem on the GitHub repository." FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content="Utilities"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="8" Foreground="{DynamicResource DefaultTextColor2}"  FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="1"/>
+                <TextBlock Width="555" Background="Transparent" Margin="8" Foreground="{DynamicResource DefaultTextColor2}"  FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="MultiMarkdown or MMD is a tool to help turn minimally markedup plain text into well formatted documents including HTML PDF"/>
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Width="auto" Margin="10">
