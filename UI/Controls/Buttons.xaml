@@ -1,15 +1,46 @@
 
 
-<Grid Row="2" Background="Transparent">
+<Grid Row="2">
 
   <Grid.ColumnDefinitions>
-    <ColumnDefinition Width="644"/>
+    <ColumnDefinition Width="auto"/>
     <ColumnDefinition Width="*"/>
   </Grid.ColumnDefinitions>
 
 
+     <!-- Buttons -->
+     <Grid Column="1">
+      <!--applyBtn Button-->
+            <Button
+            Name="applyBtn"
+            FontSize="15" 
+            HorizontalAlignment="Right"
+            VerticalAlignment="Bottom"
+            Width="100" Height="40" Margin="20">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock Name="applyText" Text="{Binding applyBtn}" Foreground="White" Margin="10,0,0,0" VerticalAlignment="Center"/>
+                <TextBlock Name="applyIcon" Text=" &#xE930;" Foreground="White" FontFamily="Segoe MDL2 Assets" FontSize="15" VerticalAlignment="Center"/>
+            </StackPanel>
+          </Button>
+      <!--End applyBtn Button-->
+      <!--Install Button-->
+        <Button
+          Name="installBtn"
+          FontSize="15"
+          HorizontalAlignment="Right"
+          VerticalAlignment="Bottom"
+          Width="100" Height="40" Margin="20">
+          <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+              <TextBlock Name="installText" Text="{Binding installBtn}" Foreground="White" Margin="10,0,0,0" VerticalAlignment="Center"/>
+              <TextBlock Name="installIcon" Text=" &#xE930;" Foreground="White" FontFamily="Segoe MDL2 Assets" FontSize="15" VerticalAlignment="Center"/>
+          </StackPanel>
+        </Button>
+      <!--End Install Button-->
+    </Grid>
+  <!-- Buttons -->
+   
     <!-- Quote Text & Icon -->
-      <Grid Column="0" Background="Transparent">
+      <Grid Column="0">
 
         <StackPanel Orientation="Horizontal">
 
@@ -32,42 +63,13 @@
             Text="#StandWithPalestine"
             FontWeight="SemiBold"
             FlowDirection="LeftToRight"
-            Width="700"
+            Width="555"
           />
 
         </StackPanel>
       </Grid>
     <!-- Quote Text & Icon -->
 
-    <!-- Buttons -->
-      <Grid Column="1" Background="Transparent">
-        <!--applyBtn Button-->
-              <Button
-              Name="applyBtn"
-              FontSize="15" 
-              HorizontalAlignment="Right"
-              VerticalAlignment="Bottom"
-              Width="100" Height="40" Margin="20">
-              <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                  <TextBlock Name="applyText" Text="{Binding applyBtn}" Foreground="White" Margin="10,0,0,0" VerticalAlignment="Center"/>
-                  <TextBlock Name="applyIcon" Text=" &#xE930;" Foreground="White" FontFamily="Segoe MDL2 Assets" FontSize="15" VerticalAlignment="Center"/>
-              </StackPanel>
-            </Button>
-        <!--End applyBtn Button-->
-        <!--Install Button-->
-          <Button
-            Name="installBtn"
-            FontSize="15"
-            HorizontalAlignment="Right"
-            VerticalAlignment="Bottom"
-            Width="100" Height="40" Margin="20">
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <TextBlock Name="installText" Text="{Binding installBtn}" Foreground="White" Margin="10,0,0,0" VerticalAlignment="Center"/>
-                <TextBlock Name="installIcon" Text=" &#xE930;" Foreground="White" FontFamily="Segoe MDL2 Assets" FontSize="15" VerticalAlignment="Center"/>
-            </StackPanel>
-          </Button>
-        <!--End Install Button-->
-      </Grid>
-    <!-- Buttons -->
+ 
 
 </Grid>
