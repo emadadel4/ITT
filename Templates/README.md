@@ -155,43 +155,17 @@ or
 
 <p><em>Remember to test your changes before committing.</em></p>
 
-<h2>Developer</h2>
-
-<p><strong>👨‍💻 Emad Adel</strong></p>
-
-<a href="https://github.com/emadadel4">
-  <img src="https://avatars.githubusercontent.com/u/19177373?s=400&u=778f951797417d73bfb89d2b5704422f25dc089a&v=4" alt="Profile" width="100" height="100" style="border-radius: 100px;margin-bottom:20px;">
-</a>
-
-[![Telegram](https://img.shields.io/badge/Telegram-2CA5E0?style=flat&logo=telegram&logoColor=white)](https://t.me/ittemadadel) [![Blog](https://img.shields.io/badge/Blog-FF5722?style=flat&logo=blogger&logoColor=white)](https://emadadel4.github.io) [![Discord](https://img.shields.io/badge/-Discord-7289da?style=flat&logo=discord&logoColor=white)](https://discord.gg/3eV79KgD)  <a href="https://www.youtube.com/@emadadel4" style="margin-right: 20px;">
-        <img src="https://img.shields.io/badge/YouTube-FF0000?style=flat&logo=youtube&logoColor=white" alt="YouTube">
-</a>
 
 ## 👨‍💻 Contributors
 
 [![Contributors](https://contrib.rocks/image?repo=emadadel4/itt)](https://github.com/emadadel4/itt/graphs/contributors)
 
-## Support
 
-<p>If this project helped you, please give it a ⭐️ and join to us on discord server</p>
+<img src="https://raw.githubusercontent.com/Safouene1/support-palestine-banner/master/StandWithPalestine.svg" alt="Ceasefire Now" style="width:40%;">
 
-<a href="https://www.buymeacoffee.com/emadadel" target="_blank">
-  <img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174">
-</a>
-<a href="https://www.patreon.com/emadadel" target="_blank">
-  <img src="https://img.shields.io/badge/Patron-blue?logo=patreon" alt="Patron" height="30">
-</a>
-<a href="https://ko-fi.com/emadadel" target="_blank">
-  <img src="https://img.shields.io/badge/Ko--fi-blue?logo=kofi" alt="Ko-fi" height="30">
-</a>
-
-
-
-<h2>
 <a href="https://www.palestinercs.org/en/Donation" target="blank">
 Deliver humanitarian aid directly to Palastine.
 </a>
-</h2>
 
  Video is more acurate than 100% of the western mainstream Media and news outlets
 
