@@ -24,7 +24,7 @@ $itt = [Hashtable]::Synchronized(@{
     database       = @{}
     ProcessRunning = $false
     developer      = "Emad Adel"
-    lastupdate     = "09/24/2024"
+    lastupdate     = "09/23/2024"
     github         = "https://github.com/emadadel4/itt"
     telegram       = "https://t.me/emadadel4"
     blog           = "https://emadadel4.github.io"
@@ -6873,7 +6873,7 @@ $itt.database.OST = '{
   "Tracks": [
     {
       "name": "Further - Far cry-3",
-      "url": "https://eta.vgmtreasurechest.com/soundtracks/far-cry-3/iqgdbfrhtw/17.%20Further%20%28feat.%20Serena%20McKinney%29.mp3"
+      "url": "https://epsilon.vgmsite.com/soundtracks/far-cry-3/iqgdbfrhtw/17.%20Further%20%28feat.%20Serena%20McKinney%29.mp3"
     },
     {
       "name": "Grand Theft Auto 4 Theme Song",
@@ -6881,11 +6881,11 @@ $itt.database.OST = '{
     },
     {
       "name": "Mass Effect-3 - End of Cycle",
-      "url": "https://vgmsite.com/soundtracks/mass-effect-3-extended-cut/eyophevp/02.%20An%20End%2C%20Once%20And%20For%20All%20%28Extended%20Cut%29.mp3"
+      "url": "https://epsilon.vgmsite.com/soundtracks/mass-effect-3-gamerip-2012/nchtmgcz/304.%20End%20of%20Cycle.mp3"
     },
     {
       "name": "Intro (Somerville Original Soundtrack)",
-      "url": "https://kappa.vgmsite.com/soundtracks/somerville-2022/naszqoqnhr/01.%20Intro%20%28Somerville%20Original%20Soundtrack%29%20%28feat.%20Dominique%20Charpentier%29.mp3"
+      "url": "https://dl.vgmdownloads.com/soundtracks/somerville-2022/naszqoqnhr/01.%20Intro%20%28Somerville%20Original%20Soundtrack%29%20%28feat.%20Dominique%20Charpentier%29.mp3"
     },
     {
       "name": "Kate Chruscicka - Requiem For A Dream",
@@ -6917,7 +6917,7 @@ $itt.database.OST = '{
     },
     {
       "name": "Assassin Creed II - Ezio''s Family",
-      "url": "https://archive.org/download/jesper-kyd-assassins-creed-ii-original-game-soundtrack/1-03%20Ezio%27s%20Family.mp3"
+      "url": "https://epsilon.vgmsite.com/soundtracks/assassin-s-creed-2/jlrprchapt/1-03%20Ezio%27s%20Family.mp3"
     }
   ],
   "Favorite": [
@@ -12318,7 +12318,7 @@ Height="700" Width="955" MinHeight="600" MinWidth="800" Topmost="False"  ShowInT
     </Style>
 <!--End TextBlock Style-->
 
-<!-- Menu Style -->
+<!--Define the Menu Style -->
     <Style TargetType="Menu">
         <Setter Property="Background" Value="#FFFFFF"/>
         <Setter Property="Foreground" Value="#000000"/>
@@ -12352,8 +12352,7 @@ Height="700" Width="955" MinHeight="600" MinWidth="800" Topmost="False"  ShowInT
                 <ControlTemplate TargetType="MenuItem">
                     <Border x:Name="Border"
                             HorizontalAlignment="Left"
-                            VerticalAlignment="Center"
-                            Padding="8"
+                            Padding="5"
                             CornerRadius="2">
                         <Grid>
                             <Grid.ColumnDefinitions>
@@ -12364,10 +12363,10 @@ Height="700" Width="955" MinHeight="600" MinWidth="800" Topmost="False"  ShowInT
                             
                             <!-- Icon -->
                             <ContentPresenter Grid.Column="0" 
-                                ContentSource="Icon"
-                                HorizontalAlignment="Left"
-                                VerticalAlignment="Center"
-                                Margin="0,0,4,0"/>
+                                              ContentSource="Icon" 
+                                              HorizontalAlignment="Left"
+                                              VerticalAlignment="Center"
+                                              Margin="0,0,4,0"/>
                             
                             <!-- Text (MenuItem Header) -->
                             <TextBlock x:Name="TextBlock"
@@ -12392,24 +12391,22 @@ Height="700" Width="955" MinHeight="600" MinWidth="800" Topmost="False"  ShowInT
                                   Fill="{DynamicResource DefaultTextColor}"
                                   HorizontalAlignment="Center"
                                   VerticalAlignment="Center"
-                                  
                                   Margin="4,0,0,0"
-                                  
                                   Visibility="Collapsed"/>
                             
                             <!-- Popup for Submenu -->
                             <Popup Name="PART_Popup" 
-                                   Placement="Right" 
+                                   Placement="Bottom" 
                                    IsOpen="{TemplateBinding IsSubmenuOpen}" 
                                    AllowsTransparency="True" 
                                    Focusable="False"
-                                   PopupAnimation="None">
+                                   PopupAnimation="Fade">
                                 <Border Background="{TemplateBinding Background}" 
                                         BorderBrush="{DynamicResource BorderBrush}"     
                                         BorderThickness="2"
                                         CornerRadius="5">
                                     <StackPanel IsItemsHost="True" 
-                                                KeyboardNavigation.DirectionalNavigation="Continue"/>
+                                                KeyboardNavigation.DirectionalNavigation="Cycle"/>
                                 </Border>
                             </Popup>
                         </Grid>
@@ -12417,8 +12414,6 @@ Height="700" Width="955" MinHeight="600" MinWidth="800" Topmost="False"  ShowInT
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
                             <!-- Adjust appearance on hover if needed -->
-                            <Setter TargetName="Border" Property="Background" Value="{DynamicResource BGButtonColor}"/>
-                            <Setter TargetName="TextBlock" Property="Foreground" Value="{DynamicResource FGButtonColor}"/>
                         </Trigger>
                         <Trigger Property="HasItems" Value="True">
                             <Setter TargetName="Arrow" Property="Visibility" Value="Visible"/>
@@ -12429,7 +12424,7 @@ Height="700" Width="955" MinHeight="600" MinWidth="800" Topmost="False"  ShowInT
         </Setter>
     </Style>
 
-<!-- End Menu Style -->
+<!-- End Define the Menu Style -->
 
 <!--Scrollbar Thumbs-->
     <Style x:Key="ScrollThumbs" TargetType="{x:Type Thumb}">
