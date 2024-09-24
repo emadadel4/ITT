@@ -185,3 +185,8 @@ or
   <img src="https://img.shields.io/badge/Ko--fi-blue?logo=kofi" alt="Ko-fi" height="30">
 </a>
 
+
+### Video is more acurate than 100% of the western mainstream Media and news outlets
+
+[![Play Video](https://img.youtube.com/vi/UcyNg1B8FJI/0.jpg)](https://www.youtube.com/watch?v=UcyNg1B8FJI)
+
