@@ -6391,7 +6391,7 @@
   },
   {
     "name": "Multimark down",
-    "description": "1",
+    "description": "MultiMarkdown or MMD, is a tool to help turn minimally marked-up plain text into well formatted documents, including HTML, PDF",
     "winget": "none",
     "choco": "multimarkdown",
     "scoop": "none",
