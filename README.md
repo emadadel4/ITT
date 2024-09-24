@@ -164,6 +164,7 @@ or
 
 ## Support Palestine
 
+<div>
 <a href="https://www.palestinercs.org/en/Donation" target="blank">
 Deliver humanitarian aid directly to Palastine.
 </a>
@@ -171,6 +172,7 @@ Deliver humanitarian aid directly to Palastine.
 <a href="Support.md" target="blank">
 Other way to support
 </a>
+</div>
 
 
  Video is more acurate than 100% of the western mainstream Media and news outlets
