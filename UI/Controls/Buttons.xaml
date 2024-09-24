@@ -45,7 +45,6 @@
               <Button
               Name="applyBtn"
               FontSize="15" 
-              IsEnabled="False"
               HorizontalAlignment="Right"
               VerticalAlignment="Bottom"
               Width="100" Height="40" Margin="20">
