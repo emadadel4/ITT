@@ -3,7 +3,7 @@
 <Grid Row="2" Background="Transparent">
 
   <Grid.ColumnDefinitions>
-    <ColumnDefinition Width="800"/>
+    <ColumnDefinition Width="644"/>
     <ColumnDefinition Width="*"/>
   </Grid.ColumnDefinitions>
 
