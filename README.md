@@ -164,18 +164,23 @@ or
 
 ## Support Palestine
 
-<div>
 <a href="https://www.palestinercs.org/en/Donation" target="blank">
-Deliver humanitarian aid directly to Palastine.
-</a>
+Deliver humanitarian aid directly to Palestine.
+</a><br>
 
 <a href="Support.md" target="blank">
 Other way to support
 </a>
-</div>
 
 
  Video is more acurate than 100% of the western mainstream Media and news outlets
 
 [![Play Video](https://img.youtube.com/vi/UcyNg1B8FJI/0.jpg)](https://www.youtube.com/watch?v=UcyNg1B8FJI)
+
+
+<p align="center">
+  <a href="Support.md" rel="nofollow">
+    <img src="https://raw.githubusercontent.com/Safouene1/support-palestine-banner/master/StandWithPalestine.svg" alt="Ceasefire Now" style="width:40%;">
+  </a>
+</p>
 
