@@ -161,7 +161,7 @@ or
 [![Contributors](https://contrib.rocks/image?repo=emadadel4/itt)](https://github.com/emadadel4/itt/graphs/contributors)
 
 
-<img src="https://raw.githubusercontent.com/Safouene1/support-palestine-banner/master/StandWithPalestine.svg" alt="Ceasefire Now" style="width:40%;">
+<img src="https://raw.githubusercontent.com/Safouene1/support-palestine-banner/master/StandWithPalestine.svg" alt="Ceasefire Now" style="width:35%;">
 
 <a href="https://www.palestinercs.org/en/Donation" target="blank">
 Deliver humanitarian aid directly to Palastine.
