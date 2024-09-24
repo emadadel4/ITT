@@ -6288,5 +6288,105 @@
     ],
     "category": "Drivers",
     "check": "false"
+  },
+  {
+    "name": "Olive Video Editor",
+    "description": "Olive is a free nonlinear video editor for Windows",
+    "winget": "OliveTeam.OliveVideoEditor",
+    "choco": "olive",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none",
+        "launcher": "none",
+        "shortcut": "no",
+        "run": "no"
+      }
+    ],
+    "category": "Media Tools",
+    "check": "false"
+  },
+  {
+    "name": "Mark Text",
+    "description": "A simple and elegant opensource markdown editor that focused on speed and usability",
+    "winget": "MarkText.MarkText",
+    "choco": "marktext.portable",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none",
+        "launcher": "none",
+        "shortcut": "no",
+        "run": "no"
+      }
+    ],
+    "category": "Portable",
+    "check": "false"
+  },
+  {
+    "name": "pCloud Drive",
+    "description": "pCloud is a file hosting service also called cloud storage or online storage founded in Switzerland in 2013",
+    "winget": "pCloudAG.pCloudDrive",
+    "choco": "pcloud",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none",
+        "launcher": "none",
+        "shortcut": "no",
+        "run": "no"
+      }
+    ],
+    "category": "File Sharing",
+    "check": "false"
+  },
+  {
+    "name": "Hurl",
+    "description": "Hurl is a command line tool that runs HTTP requests defined in a simple plain text format",
+    "winget": "Orange-OpenSource.Hurl",
+    "choco": "hurl",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none",
+        "launcher": "none",
+        "shortcut": "no",
+        "run": "no"
+      }
+    ],
+    "category": "Utilities",
+    "check": "false"
+  },
+  {
+    "name": "File Hash Generator",
+    "description": "Compute and save MD5 SHA1 SHA2 RIPEMD hashes and CRC1632 checksums for multiple files Calculate hashes and checksums for the whole file or just specified bytes",
+    "winget": "BinaryMark.FileHashGenerator",
+    "choco": "file-hash-generator",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none",
+        "launcher": "none",
+        "shortcut": "no",
+        "run": "no"
+      }
+    ],
+    "category": "Utilities",
+    "check": "false"
   }
 ]
