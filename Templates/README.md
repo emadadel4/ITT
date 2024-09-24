@@ -185,7 +185,6 @@ or
   <img src="https://img.shields.io/badge/Ko--fi-blue?logo=kofi" alt="Ko-fi" height="30">
 </a>
 
-<hr>
 
 
 <h2>
