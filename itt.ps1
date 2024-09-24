@@ -6873,7 +6873,7 @@ $itt.database.OST = '{
   "Tracks": [
     {
       "name": "Further - Far cry-3",
-      "url": "https://epsilon.vgmsite.com/soundtracks/far-cry-3/iqgdbfrhtw/17.%20Further%20%28feat.%20Serena%20McKinney%29.mp3"
+      "url": "https://eta.vgmtreasurechest.com/soundtracks/far-cry-3/iqgdbfrhtw/17.%20Further%20%28feat.%20Serena%20McKinney%29.mp3"
     },
     {
       "name": "Grand Theft Auto 4 Theme Song",
