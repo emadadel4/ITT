@@ -51,6 +51,9 @@ function Set-Taskbar {
             "error" {
                 $itt["window"].taskbarItemInfo.Overlay = "https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Icons/error.png"
             }
-        }
+            default{
+                $itt["window"].taskbarItemInfo.Overlay = "https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Icons/done.png"
+            }
+        }   
     }
 }
