@@ -10297,7 +10297,7 @@ function Set-Taskbar {
                 $itt["window"].taskbarItemInfo.Overlay = "https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Icons/error.png"
             }
             default{
-                $itt["window"].taskbarItemInfo.Overlay = "https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Icons/done.png"
+                $itt["window"].taskbarItemInfo.Overlay = "https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Icons/icon.ico"
             }
         }   
     }
@@ -16777,9 +16777,8 @@ try {
     #===========================================================================
     
     # init taskbar icon
-    $taskbarItemInfo = New-Object System.Windows.Shell.TaskbarItemInfo
-    $itt["window"].TaskbarItemInfo = $taskbarItemInfo
-    $taskbarItemInfo.Overlay = $itt.icon
+    $itt["window"].TaskbarItemInfo = New-Object System.Windows.Shell.TaskbarItemInfo
+    Set-Taskbar -progress "None" -icon "logo"
 }
 catch {
     Write-Host "Error: $_"
