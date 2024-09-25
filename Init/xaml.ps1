@@ -148,9 +148,8 @@ try {
     #===========================================================================
     
     # init taskbar icon
-    $taskbarItemInfo = New-Object System.Windows.Shell.TaskbarItemInfo
-    $itt["window"].TaskbarItemInfo = $taskbarItemInfo
-    $taskbarItemInfo.Overlay = $itt.icon
+    $itt["window"].TaskbarItemInfo = New-Object System.Windows.Shell.TaskbarItemInfo
+    Set-Taskbar -progress "None" -icon "logo"
 }
 catch {
     Write-Host "Error: $_"
