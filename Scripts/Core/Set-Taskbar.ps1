@@ -50,8 +50,6 @@ function Set-Taskbar {
             }
             "error" {
                 $itt["window"].taskbarItemInfo.Overlay = "https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Icons/error.png"
-                Start-Sleep -Seconds 2
-                $itt["window"].taskbarItemInfo.Overlay = "https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Icons/icon.ico"
             }
         }
     }
