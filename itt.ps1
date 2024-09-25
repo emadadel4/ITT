@@ -24,7 +24,7 @@ $itt = [Hashtable]::Synchronized(@{
     database       = @{}
     ProcessRunning = $false
     developer      = "Emad Adel"
-    lastupdate     = "09/24/2024"
+    lastupdate     = "09/25/2024"
     github         = "https://github.com/emadadel4/itt"
     telegram       = "https://t.me/emadadel4"
     blog           = "https://emadadel4.github.io"
@@ -10295,8 +10295,6 @@ function Set-Taskbar {
             }
             "error" {
                 $itt["window"].taskbarItemInfo.Overlay = "https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Icons/error.png"
-                Start-Sleep -Seconds 2
-                $itt["window"].taskbarItemInfo.Overlay = "https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Icons/icon.ico"
             }
         }
     }
@@ -12247,7 +12245,12 @@ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 x:Name="Window" Title="Install Tweak Tool #StandWithPalestine" WindowStartupLocation = "CenterScreen" 
 Background="{DynamicResource BGColor}"
-Height="700" Width="1000" MinHeight="600" MinWidth="800" Topmost="False"  ShowInTaskbar = "True" Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Icons/icon.ico">
+Height="700" Width="1000" 
+MinHeight="600" 
+MinWidth="800" 
+Topmost="False"  
+ShowInTaskbar = "True" 
+Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Icons/icon.ico">
 
 <Window.Resources>
     <!--Fade in-->
