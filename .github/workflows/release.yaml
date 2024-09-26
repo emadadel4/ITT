@@ -71,7 +71,13 @@ jobs:
           name: Release ${{ env.VERSION }}
           body: |
             ## Usage this Release
+
             <pre><code>irm https://github.com/emadadel4/ITT/releases/download/${{ env.VERSION }}/itt.ps1 | iex</code></pre>
+
+            > **INFO:**  
+            <small>It recommend to run it using terminal </small>
+
+            <hr>
 
             ## Latest Release
             <pre><code>irm https://raw.githubusercontent.com/emadadel4/ITT/refs/heads/main/itt.ps1 | iex</code></pre>
