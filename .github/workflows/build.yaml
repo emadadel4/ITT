@@ -13,9 +13,21 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
-    - name: Run build.ps1 as Admin
+    - name: Run build.ps1
       run: |
         Start-Process pwsh -ArgumentList '-NoProfile -ExecutionPolicy Bypass -File ./build.ps1' -Verb RunAs
+      shell: pwsh
+
+    - name: Upload itt.ps1
+      run: |
+        $scriptPath = './itt.ps1'
+        if (Test-Path $scriptPath) {
+          git add $scriptPath
+          git commit -m "update"
+          git push origin main
+        } else {
+          Write-Host "The file itt.ps1 does not exist."
+        }
       shell: pwsh
 
     - name: Use GITHUB_TOKEN (if needed)
