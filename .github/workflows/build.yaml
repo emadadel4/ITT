@@ -13,18 +13,15 @@ jobs:
   build-runspace:
     runs-on: windows-latest
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-      
-      - name: Run build script
-        shell: pwsh
-        run: |
-          try {
-            $env:TERM = "dumb"
-            ./build.ps1
-          } catch {
-            Write-Error "Build failed: $($_.Exception.Message)"
-          }
-        continue-on-error: false
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+    
+    - name: Run build script
+      shell: pwsh
+      run: |
+        $env:TERM = "dumb"  # Avoid terminal interaction issues
+        pwsh -NoProfile -Command "Set-ExecutionPolicy Unrestricted -Scope Process -Force; ./build.ps1"
+      continue-on-error: false
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
