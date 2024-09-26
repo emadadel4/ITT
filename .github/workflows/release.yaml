@@ -1,4 +1,4 @@
-name: Update Script
+name: Build 
 
 permissions:
   contents: write
@@ -10,7 +10,7 @@ on:
       - update  
 
 jobs:
-  build-runspace:
+  build:
     runs-on: windows-latest
     steps:
       - name: Checkout Repository
