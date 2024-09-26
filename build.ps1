@@ -459,7 +459,7 @@ WriteToScript -Content @"
 "@
 
 CountItems
-Write-Host " `n` Built successfully" -ForegroundColor Green
+Write-Host " `n` Build successfully" -ForegroundColor Green
 
 if($Debug)
 {
