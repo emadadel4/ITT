@@ -32,7 +32,7 @@ jobs:
       - name: Commit and Push Changes
         run: |
           git add ./itt.ps1
-          git commit -m "Update itt.ps1 to version $env:VERSION" || echo "No changes to commit"
+          git commit -m "Update"
           git push origin update
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
