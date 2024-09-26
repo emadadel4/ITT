@@ -70,6 +70,8 @@ jobs:
           tag_name: ${{ env.VERSION }}
           name: Release ${{ env.VERSION }}
           body: |
+            ## Changes
+            ${{ env.COMMIT_MESSAGE }} ${{ env.GITHUB_HANDLE }} (#${{ env.COMMIT_HASH }})
             <pre><code>irm bit.ly/ittea | iex</code></pre>
           append_body: false
           prerelease: false
