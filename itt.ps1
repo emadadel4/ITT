@@ -9252,6 +9252,7 @@ function Finish {
     {
         "AppsListView" {
             UpdateUI -Button "InstallBtn" -ButtonText "installText" -Content "InstallBtn" -TextIcon "installIcon" -Icon "  "
+            Add-Log -Message "If you experience any issues while installing a program, `n` please report the problem on the project page." -Level "INFO"
         }
 
         "TweaksListView" {
