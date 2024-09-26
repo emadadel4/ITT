@@ -16,8 +16,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-
-      - name: Set Version to Todays Date
+      - name: Set Version to Today's Date
         id: extract_version
         run: |
           $version = (Get-Date -Format "yy.MM.dd")
@@ -42,6 +41,13 @@ jobs:
           } else {
             Write-Host "Tag $env:VERSION already exists, skipping tag creation"
           }
+        shell: pwsh
+
+      - name: Ensure UTF-8 Encoding for PowerShell Script
+        run: |
+          # Read the original PowerShell script and ensure it's saved in UTF-8
+          $content = Get-Content -Path ./itt.ps1 -Raw
+          Set-Content -Path ./itt.ps1 -Value $content -Encoding utf8
         shell: pwsh
 
       - name: Upload st.ps1 as artifact
