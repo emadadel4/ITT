@@ -457,17 +457,23 @@ WriteToScript -Content @"
 #endregion End Main
 #===========================================================================
 "@
+
+
 Write-Host " `n` Built successfully" -ForegroundColor Green
+
+if($Debug)
+{
+    Write-Host " `n`Starting ITT..." -ForegroundColor Green
+    $script = "& '$ProjectDir\$OutputScript'"
+    $pwsh = if (Get-Command pwsh -ErrorAction SilentlyContinue) { "pwsh" } else { "powershell" }
+    $wt = if (Get-Command wt.exe -ErrorAction SilentlyContinue) { "wt.exe" } else { $pwsh }
+    Start-Process $wt -ArgumentList "$pwsh -NoProfile -Command $script"
+}
+
+
 }
 
 catch {
     Write-Error "An error occurred: $_"
 }
 
-if($Debug)
-{
-    $script = "& '$ProjectDir\$OutputScript'"
-    $pwsh = if (Get-Command pwsh -ErrorAction SilentlyContinue) { "pwsh" } else { "powershell" }
-    $wt = if (Get-Command wt.exe -ErrorAction SilentlyContinue) { "wt.exe" } else { $pwsh }
-    Start-Process $wt -ArgumentList "$pwsh -NoProfile -Command $script"
-}
