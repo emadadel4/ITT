@@ -75,12 +75,17 @@ jobs:
             <pre><code>irm https://github.com/emadadel4/ITT/releases/download/${{ env.VERSION }}/itt.ps1 | iex</code></pre>
 
             > **INFO:**  
-            <small>It recommend to run it using terminal </small>
+            <small>It is recommended to run this command in the terminal.</small>
 
             <hr>
 
             ## Latest Release
             <pre><code>irm https://raw.githubusercontent.com/emadadel4/ITT/refs/heads/main/itt.ps1 | iex</code></pre>
+
+            > [!CAUTION]  
+            Only run using official commands from this GitHub repository, and avoid downloading it from other sites.
+
+
           files: ./itt.ps1
           append_body: false
           prerelease: false
