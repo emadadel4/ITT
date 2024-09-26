@@ -35,7 +35,6 @@ function Finish {
        [string]$msg = "Installed successfully",
        [string]$icon = "Info"
     )
-
     
     switch($ListView)
     {
