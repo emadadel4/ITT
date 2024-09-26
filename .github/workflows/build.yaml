@@ -34,3 +34,5 @@ jobs:
           Write-Host "The file itt.ps1 does not exist."
         }
       shell: pwsh
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
