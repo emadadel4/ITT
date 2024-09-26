@@ -1,0 +1,11 @@
+change-template: |
+  - $TITLE @$AUTHOR
+version: ${{ version }}
+tag-template: "v${{ version }}"
+categories:
+  - title: "Features"
+    labels:
+      - "feature"
+  - title: "Bug Fixes"
+    labels:
+      - "bug"
