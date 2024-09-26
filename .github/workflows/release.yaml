@@ -7,7 +7,7 @@ permissions:
 on:
   push:
     branches:
-      - main  
+      - update  
 
 jobs:
   build:
@@ -43,7 +43,7 @@ jobs:
           echo "VERSION=$version" >> $env:GITHUB_ENV
         shell: pwsh
 
-        
+
       - name: Create Tag
         id: create_tag
         run: |
