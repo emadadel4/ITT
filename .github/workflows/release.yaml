@@ -83,7 +83,7 @@ jobs:
             <pre><code>irm https://raw.githubusercontent.com/emadadel4/ITT/refs/heads/main/itt.ps1 | iex</code></pre>
 
             > [!CAUTION]  
-            Only run using official commands from this GitHub repository, and avoid downloading it from other sites.
+            Only run using official commands from this GitHub repository, and avoid download it from other sites.
 
 
           files: ./itt.ps1
