@@ -1,4 +1,4 @@
-name: Build
+name: Build Script
 
 on:
   push:
@@ -13,11 +13,12 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
-    - name: Set up PowerShell
-      uses: actions/setup-powershell@v1
+    - name: Install PowerShell 7
+      uses: pwsh/pwsh@v7
 
-    - name: Run build.ps1
-      run: ./build.ps1
+    - name: Run build.ps1 as Admin
+      run: |
+        Start-Process pwsh -ArgumentList '-NoProfile -ExecutionPolicy Bypass -File ./build.ps1' -Verb RunAs
       shell: pwsh
 
     - name: Use GITHUB_TOKEN (if needed)
