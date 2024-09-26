@@ -70,7 +70,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           config-name: release-drafter.yml
-          version: ${{ env.VERSION }} 
+          version: ${{ env.VERSION }}
 
       - name: Create and Upload Release
         id: create_release
