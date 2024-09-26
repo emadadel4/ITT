@@ -7,7 +7,7 @@ permissions:
 on:
   push:
     branches:
-      - update  
+      - main  
 
 jobs:
   build:
