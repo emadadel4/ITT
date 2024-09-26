@@ -1,0 +1,25 @@
+name: Build
+
+permissions:
+  contents: write
+  actions: read
+
+on:
+    push:
+      branches:
+        - main
+
+jobs:
+  build-runspace:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Build
+        shell: pwsh
+        run: |
+          Set-ExecutionPolicy Unrestricted -Scope Process -Force; ./Compile.ps1
+        continue-on-error: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
