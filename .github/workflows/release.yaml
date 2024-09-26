@@ -31,12 +31,12 @@ jobs:
         run: |
           git add ./itt.ps1
           git commit -m "update"
-          git push origin main
+          git push origin main  # Make sure to push to main
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         shell: pwsh
 
-      - name: Set Version to Todays Date
+      - name: Set Version to Today's Date
         id: extract_version
         run: |
           $version = (Get-Date -Format "yy/MM/dd")
