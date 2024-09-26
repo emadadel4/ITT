@@ -30,7 +30,7 @@ jobs:
       - name: Commit and Push Changes
         run: |
           git add -f ./itt.ps1
-          git add -f ./README.md
+          git add ./README.md
           git commit -m "update"
           git push origin main
         env:
