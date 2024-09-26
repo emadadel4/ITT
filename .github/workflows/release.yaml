@@ -24,7 +24,7 @@ jobs:
       - name: Configure Git
         run: |
           git config --global user.email "itt-action@noreply.github.com"
-          git config --global user.name "itt-action"
+          git config --global user.name "emadadel4"
         shell: pwsh
 
       - name: Commit and Push Changes
@@ -80,7 +80,7 @@ jobs:
           name: Release ${{ env.VERSION }}
           body: |
             **Latest Commit:**
-            - Title: ${{ env.COMMIT_TITLE }}
+            - Message: ${{ env.COMMIT_MESSAGE }}
             - Author: ${{ env.COMMIT_AUTHOR }}
             <pre><code>irm bit.ly/ittea | iex</code></pre>
           append_body: false
