@@ -28,11 +28,9 @@ jobs:
         $scriptPath = './itt.ps1'
         if (Test-Path $scriptPath) {
           git add $scriptPath
-          git commit -m "update"
-          git push origin main
+          git commit -m "Update itt.ps1" || echo "No changes to commit"
+          git push "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/emadadel4/ITT.git" main
         } else {
           Write-Host "The file itt.ps1 does not exist."
         }
       shell: pwsh
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
