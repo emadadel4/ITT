@@ -16,25 +16,25 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      # - name: Run build.ps1
-      #   run: |
-      #     Start-Process pwsh -ArgumentList '-ExecutionPolicy Bypass -File ./build.ps1' -Verb RunAs -Wait
-      #   shell: pwsh
+      - name: Run build.ps1
+        run: |
+          Start-Process pwsh -ArgumentList '-ExecutionPolicy Bypass -File ./build.ps1' -Verb RunAs -Wait
+        shell: pwsh
 
-      # - name: Configure Git
-      #   run: |
-      #     git config --global user.email "itt-action@noreply.github.com"
-      #     git config --global user.name "itt-action"
-      #   shell: pwsh
+      - name: Configure Git
+        run: |
+          git config --global user.email "itt-action@noreply.github.com"
+          git config --global user.name "itt-action"
+        shell: pwsh
 
-      # - name: Commit and Push Changes
-      #   run: |
-      #     git add -f ./itt.ps1
-      #     git commit -m "update"
-      #     git push origin main
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      #   shell: pwsh
+      - name: Commit and Push Changes
+        run: |
+          git add -f ./itt.ps1
+          git commit -m "update"
+          git push origin main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        shell: pwsh
 
       - name: Set Version to Todays Date
         id: extract_version
