@@ -1,27 +1,27 @@
 name: Build
 
-permissions:
-  contents: write
-  actions: read
-
 on:
-    push:
-      branches:
-        - main
+  push:
+    branches:
+      - main
 
 jobs:
-  build-runspace:
+  build:
     runs-on: windows-latest
-    steps:
 
-    - name: Checkout Repository
-      uses: actions/checkout@v4
-    
-    - name: Run build script
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up PowerShell
+      uses: actions/setup-powershell@v1
+
+    - name: Run build.ps1
+      run: ./build.ps1
       shell: pwsh
-      run: |
-        $env:TERM = "dumb"  # Avoid terminal interaction issues
-        pwsh -NoProfile -Command "Set-ExecutionPolicy Unrestricted -Scope Process -Force; ./build.ps1"
-      continue-on-error: false
+
+    - name: Use GITHUB_TOKEN (if needed)
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        echo "Using GITHUB_TOKEN for further operations"
