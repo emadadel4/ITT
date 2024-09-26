@@ -144,14 +144,11 @@ or
 <pre><code>newQuote.ps1
 </code></pre>
 
-<h3>Build</h3>
+<h3>Build and run</h3>
 
-<pre><code>build.ps1
+<pre><code>build.ps1 -debug
 </code></pre>
 
-<h3>See Your Changes</h3>
-<pre><code>itt.ps1
-</code></pre>
 
 <p><em>Remember to test your changes before committing.</em></p>
 
