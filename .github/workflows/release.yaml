@@ -36,6 +36,12 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         shell: pwsh
 
+      - name: Set Version to Todays Date
+        id: extract_version
+        run: |
+          $version = (Get-Date -Format "yy.MM.dd")
+          echo "VERSION=$version" >> $env:GITHUB_ENV
+        shell: pwsh
 
       - name: Create Tag
         id: create_tag
