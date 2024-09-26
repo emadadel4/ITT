@@ -8,7 +8,10 @@ param (
     [string]$MainScript = ".\init\main.ps1",
     [string]$ScritsDirectory = ".\Scripts",
     [string]$windows = ".\UI\Views",
-    [string]$LoadXamlScript = ".\init\xaml.ps1"
+    [string]$LoadXamlScript = ".\init\xaml.ps1",
+    [switch]$Debug,
+    [string]$ProjectDir = $PSScriptRoot
+
 )
 
 # Initialize synchronized hashtable
@@ -454,13 +457,17 @@ WriteToScript -Content @"
 #endregion End Main
 #===========================================================================
 "@
-Clear-Host
 Write-Host " `n` Built successfully" -ForegroundColor Green
-Write-Host " `n`Starting ITT..." -ForegroundColor Green
-CountItems
-./itt.ps1
 }
 
 catch {
     Write-Error "An error occurred: $_"
+}
+
+if($Debug)
+{
+    $script = "& '$ProjectDir\$OutputScript'"
+    $pwsh = if (Get-Command pwsh -ErrorAction SilentlyContinue) { "pwsh" } else { "powershell" }
+    $wt = if (Get-Command wt.exe -ErrorAction SilentlyContinue) { "wt.exe" } else { $pwsh }
+    Start-Process $wt -ArgumentList "$pwsh -NoProfile -Command $script"
 }

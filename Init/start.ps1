@@ -38,7 +38,7 @@ if (-not $principal.IsInRole($administrator))
 
 try {
     $itt.mediaPlayer = New-Object -ComObject WMPlayer.OCX
-    $Host.UI.RawUI.WindowTitle = "ITT (Install and Tweaks Tool) - #StandWithPalestine"
+    $Host.UI.RawUI.WindowTitle = "ITT - #StandWithPalestine"
 }
 catch {
     Write-Warning "Media player not loaded because you're using Windows Lite or have disabled it."
