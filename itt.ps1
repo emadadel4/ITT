@@ -24,7 +24,7 @@ $itt = [Hashtable]::Synchronized(@{
     database       = @{}
     ProcessRunning = $false
     developer      = "Emad Adel"
-    lastupdate     = "09/26/2024"
+    lastupdate     = "#{replaceme}"
     github         = "https://github.com/emadadel4/itt"
     telegram       = "https://t.me/emadadel4"
     blog           = "https://emadadel4.github.io"
@@ -58,9 +58,3 @@ try {
 catch {
     Write-Warning "Media player not loaded because you're using Windows Lite or have disabled it."
 }
-#===========================================================================
-#endregion End Start
-#===========================================================================
-#===========================================================================
-#region Begin Database /APPS/TWEEAKS/Quotes/OST/Settings
-#===========================================================================
