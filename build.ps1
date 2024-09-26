@@ -56,7 +56,7 @@ function AddFileContentToScript {
         [string]$FilePath
     )
     $Content = Get-Content -Path $FilePath -Raw
-    WriteToScript -Content $Content -Encoding utf8
+    WriteToScript -Content $Content
 }
 
 # process files in a directory
@@ -67,7 +67,7 @@ function ProcessDirectory {
     
     Get-ChildItem $Directory -Recurse -File | ForEach-Object {
         if ($_.DirectoryName -ne $Directory) {
-            AddFileContentToScript -FilePath $_.FullName -Encoding utf8
+            AddFileContentToScript -FilePath $_.FullName
         }
     }
 }
@@ -140,7 +140,7 @@ function Sync-JsonFiles {
     Get-ChildItem $DatabaseDirectory | Where-Object {$_.extension -eq ".json"} | ForEach-Object {
         $json = (Get-Content $_.FullName -Raw).replace("'", "''")
         $itt.database.$($_.BaseName) = $json | ConvertFrom-Json
-        Write-Output "`$itt.database.$($_.BaseName) = '$json' | ConvertFrom-Json" | Out-File $OutputScriptPath -Append -Encoding utf8
+        Write-Output "`$itt.database.$($_.BaseName) = '$json' | ConvertFrom-Json" | Out-File $OutputScriptPath -Append -Encoding default
     }
 }
 
