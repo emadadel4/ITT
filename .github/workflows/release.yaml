@@ -1,4 +1,4 @@
-name: Release 
+name: Update Script
 
 permissions:
   contents: write
@@ -23,47 +23,17 @@ jobs:
           echo "VERSION=$version" >> $env:GITHUB_ENV
         shell: pwsh
 
-      - name: Create Tag
-        id: create_tag
+      - name: Configure Git
         run: |
-          $tagExists = git tag -l $env:VERSION
-          if ($tagExists -eq "") {
-            git tag $env:VERSION
-            if ($LASTEXITCODE -ne 0) {
-              Write-Error "Failed to create tag $env:VERSION"
-              exit 1
-            }
-            git push origin $env:VERSION
-            if ($LASTEXITCODE -ne 0) {
-              Write-Error "Failed to push tag $env:VERSION"
-              exit 1
-            }
-          } else {
-            Write-Host "Tag $env:VERSION already exists, skipping tag creation"
-          }
+          git config --global user.email "itt-action@noreply.github.com"
+          git config --global user.name "itt-action"
         shell: pwsh
 
-      - name: Ensure UTF-8 Encoding for PowerShell Script
+      - name: Commit and Push Changes
         run: |
-          # Read the original PowerShell script and ensure it's saved in UTF-8
-          $content = Get-Content -Path ./itt.ps1 -Raw
-          Set-Content -Path ./itt.ps1 -Value $content -Encoding utf8
-        shell: pwsh
-
-      - name: Upload st.ps1 as artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: shelltube
-          path: ./itt.ps1
-
-      - name: Create and Upload Release
-        id: create_release
-        uses: softprops/action-gh-release@v2
-        with:
-          tag_name: ${{ env.VERSION }}
-          name: Release ${{ env.VERSION }}
-          append_body: false
-          files: ./itt.ps1
-          prerelease: false
+          git add ./itt.ps1
+          git commit -m "Update itt.ps1 to version $env:VERSION" || echo "No changes to commit"
+          git push origin update
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        shell: pwsh
