@@ -18,6 +18,11 @@ jobs:
         Start-Process pwsh -ArgumentList '-NoProfile -ExecutionPolicy Bypass -File ./build.ps1' -Verb RunAs
       shell: pwsh
 
+    - name: Configure Git
+      run: |
+        git config --global user.email "emadadel4@users.noreply.github.com"
+        git config --global user.name "emadadel4"
+
     - name: Upload itt.ps1
       run: |
         $scriptPath = './itt.ps1'
@@ -29,9 +34,5 @@ jobs:
           Write-Host "The file itt.ps1 does not exist."
         }
       shell: pwsh
-
-    - name: Use GITHUB_TOKEN (if needed)
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      run: |
-        echo "Using GITHUB_TOKEN for further operations"
