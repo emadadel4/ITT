@@ -16,11 +16,16 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Run build script
+      - name: Install PowerShell 7
+        uses: actions/setup-pwsh@v2
+        with:
+          pwsh-version: '7.x'
+      
+      - name: Run build script with PowerShell 7
         shell: pwsh
         run: |
-          $env:TERM = "dumb"  # Avoid terminal interaction issues
-          pwsh -NoProfile -Command "./build.ps1"
+          $env:TERM = "dumb"
+          pwsh -NoProfile -Command "Set-ExecutionPolicy Bypass -Scope Process -Force; ./build.ps1"  
         continue-on-error: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
