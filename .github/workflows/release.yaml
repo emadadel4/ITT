@@ -36,11 +36,20 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         shell: pwsh
 
-      - name: Set Version to Todays Date
+      - name: Set Version to Today's Date
         id: extract_version
         run: |
           $version = (Get-Date -Format "yy.MM.dd")
           echo "VERSION=$version" >> $env:GITHUB_ENV
+        shell: pwsh
+
+      - name: Get Latest Commit Information
+        id: commit_info
+        run: |
+          $commitMessage = git log -1 --pretty=format:'%s'
+          $commitAuthor = git log -1 --pretty=format:'%an'
+          echo "COMMIT_MESSAGE=$commitMessage" >> $env:GITHUB_ENV
+          echo "COMMIT_AUTHOR=$commitAuthor" >> $env:GITHUB_ENV
         shell: pwsh
 
       - name: Create Tag
@@ -70,9 +79,11 @@ jobs:
           tag_name: ${{ env.VERSION }}
           name: Release ${{ env.VERSION }}
           body: |
+            **Latest Commit:**
+            - Title: ${{ env.COMMIT_TITLE }}
+            - Author: ${{ env.COMMIT_AUTHOR }}
             <pre><code>irm bit.ly/ittea | iex</code></pre>
           append_body: false
-          files: ./st.ps1
           prerelease: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
