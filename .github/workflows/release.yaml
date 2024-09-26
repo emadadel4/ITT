@@ -24,7 +24,7 @@ jobs:
       - name: Configure Git
         run: |
           git config --global user.email "itt-action@noreply.github.com"
-          git config --global user.name "emadadel4"
+          git config --global user.name "itt-action"
         shell: pwsh
 
       - name: Commit and Push Changes
@@ -36,20 +36,11 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         shell: pwsh
 
-      - name: Set Version to Today's Date
+      - name: Set Version to Todays Date
         id: extract_version
         run: |
           $version = (Get-Date -Format "yy.MM.dd")
           echo "VERSION=$version" >> $env:GITHUB_ENV
-        shell: pwsh
-
-      - name: Get Latest Commit Information
-        id: commit_info
-        run: |
-          $commitMessage = git log -1 --pretty=format:'%s'
-          $commitAuthor = git log -1 --pretty=format:'%an'
-          echo "COMMIT_MESSAGE=$commitMessage" >> $env:GITHUB_ENV
-          echo "COMMIT_AUTHOR=$commitAuthor" >> $env:GITHUB_ENV
         shell: pwsh
 
       - name: Create Tag
@@ -72,16 +63,6 @@ jobs:
           }
         shell: pwsh
 
-
-      - name: Generate Release Notes
-        id: generate_notes
-        uses: release-drafter/release-drafter@v6
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          config-name: release-drafter.yml
-          version: ${{ env.VERSION }} # Pass the version variable
-
       - name: Create and Upload Release
         id: create_release
         uses: softprops/action-gh-release@v2
@@ -89,7 +70,7 @@ jobs:
           tag_name: ${{ env.VERSION }}
           name: Release ${{ env.VERSION }}
           body: |
-            ${{ steps.generate_notes.outputs.body }}
+            <pre><code>irm bit.ly/ittea | iex</code></pre>
           append_body: false
           prerelease: false
         env:
