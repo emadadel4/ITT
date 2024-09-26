@@ -20,8 +20,8 @@ jobs:
 
     - name: Configure Git
       run: |
-        git config --global user.email "itt-action@noreply.github.com"
-        git config --global user.name "itt-action"
+        git config --global user.email "19177373+emadadel4@noreply.github.com"
+        git config --global user.name "emadadel4"
 
     - name: Upload itt.ps1
       run: |
