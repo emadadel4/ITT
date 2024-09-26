@@ -43,7 +43,6 @@ jobs:
           echo "VERSION=$version" >> $env:GITHUB_ENV
         shell: pwsh
 
-
       - name: Create Tag
         id: create_tag
         run: |
@@ -63,7 +62,6 @@ jobs:
             Write-Host "Tag $env:VERSION already exists, skipping tag creation"
           }
         shell: pwsh
-
 
       - name: Create and Upload Release
         id: create_release
