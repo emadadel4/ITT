@@ -13,9 +13,6 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
-    - name: Install PowerShell 7
-      uses: pwsh/pwsh@v7
-
     - name: Run build.ps1 as Admin
       run: |
         Start-Process pwsh -ArgumentList '-NoProfile -ExecutionPolicy Bypass -File ./build.ps1' -Verb RunAs
