@@ -79,9 +79,8 @@ jobs:
           tag_name: ${{ env.VERSION }}
           name: Release ${{ env.VERSION }}
           body: |
-            **Latest Commit:**
-            - Message: ${{ env.COMMIT_MESSAGE }}
-            - Author: ${{ env.COMMIT_AUTHOR }}
+            **Changes:**
+            ${env.COMMIT_MESSAGE} by @${{ env.USERNAME }} (${{ env.COMMIT_HASH }})
             <pre><code>irm bit.ly/ittea | iex</code></pre>
           append_body: false
           prerelease: false
