@@ -16,11 +16,9 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Set Version to Today's Date
-        id: extract_version
+      - name: Run build.ps1
         run: |
-          $version = (Get-Date -Format "yy.MM.dd")
-          echo "VERSION=$version" >> $env:GITHUB_ENV
+          Start-Process pwsh -ArgumentList '-NoProfile -ExecutionPolicy Bypass -File ./build.ps1' -Verb RunAs
         shell: pwsh
 
       - name: Configure Git
