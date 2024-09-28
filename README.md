@@ -164,21 +164,31 @@ or
 
 <a href="https://www.palestinercs.org/en/Donation" target="blank">
 Donate to the Palestinian Red Crescent
-</a><br>
-
-<a href="Support.md" target="blank">
-Other way to support
 </a>
+
+<div style="display: flex; gap: 1px;">
+Other way to support
+<a href="/docs/Supportar.md" target="blank">
+English
+</a>
+<a href="/docs/Support.md" target="blank">
+عربي
+</a>
+</div>
+
+
+
+
 
 ### I recommend watching these videos.
 
 <div align="center">
 
 <div style="display: flex; gap: 10px;">
-  <a href="https://www.youtube.com/watch?v=UcyNg1B8FJI">
+  <a href="https://www.youtube.com/watch?v=UcyNg1B8FJI" target="blank">
     <img src="https://img.youtube.com/vi/UcyNg1B8FJI/0.jpg" alt="Play Video" style="width: 300px;">
   </a>
-  <a href="https://youtu.be/UMT85frWneI">
+  <a href="https://youtu.be/UMT85frWneI" target="blank">
     <img src="https://img.youtube.com/vi/UMT85frWneI/0.jpg" alt="Play Video" style="width: 300px;">
   </a>
 </div>
