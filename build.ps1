@@ -15,17 +15,6 @@ param (
 
 )
 
-# Open Project using VS CODE
-if ($code)
-{
-    if (Get-Command code -ErrorAction SilentlyContinue) {
-        code "$ProjectDir"
-        break
-    } else {
-        Write-Host "Please install Visual Studio Code and try again. You can install it using ITT"
-        break
-    }
-}
 
 # Initialize synchronized hashtable
 $itt = [Hashtable]::Synchronized(@{})
