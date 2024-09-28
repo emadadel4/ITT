@@ -27,15 +27,15 @@ jobs:
           git config --global user.name "itt-action"
         shell: pwsh
 
-      - name: Commit and Push Changes
-        run: |
-          git add ./itt.ps1
-          git add ./README.md
-          git commit -m "update"
-          git push origin main
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        shell: pwsh
+      # - name: Commit and Push Changes
+      #   run: |
+      #     git add ./itt.ps1
+      #     git add ./README.md
+      #     git commit -m "update"
+      #     git push origin main
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #   shell: pwsh
 
       - name: Set Version to Todays Date
         id: extract_version
