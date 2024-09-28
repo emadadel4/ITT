@@ -166,7 +166,7 @@ or
 Donate to the Palestinian Red Crescent
 </a>
 
-<div style="display: flex; gap: 1px;">
+<div style="display: flex; gap: 5px;">
 Other way to support
 <a href="/docs/Supportar.md" target="blank">
 English
