@@ -10,9 +10,22 @@ param (
     [string]$windows = ".\UI\Views",
     [string]$LoadXamlScript = ".\init\xaml.ps1",
     [switch]$Debug,
+    [switch]$code,
     [string]$ProjectDir = $PSScriptRoot
 
 )
+
+# Open Project using VS CODE
+if ($code)
+{
+    if (Get-Command code -ErrorAction SilentlyContinue) {
+        code "$ProjectDir"
+        break
+    } else {
+        Write-Host "Please install Visual Studio Code and try again. You can install it using ITT"
+        break
+    }
+}
 
 # Initialize synchronized hashtable
 $itt = [Hashtable]::Synchronized(@{})
@@ -468,8 +481,10 @@ if($Debug)
     $pwsh = if (Get-Command pwsh -ErrorAction SilentlyContinue) { "pwsh" } else { "powershell" }
     $wt = if (Get-Command wt.exe -ErrorAction SilentlyContinue) { "wt.exe" } else { $pwsh }
     Start-Process $wt -ArgumentList "$pwsh -NoProfile -Command $script"
-}
 
+    # debug
+    Write-Host $ProjectDir
+}
 
 }
 
