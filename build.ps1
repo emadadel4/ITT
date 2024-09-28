@@ -15,7 +15,6 @@ param (
 
 )
 
-
 # Initialize synchronized hashtable
 $itt = [Hashtable]::Synchronized(@{})
 $itt.database = @{}
