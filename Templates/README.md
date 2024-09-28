@@ -182,9 +182,9 @@ English
 
 ### I recommend watching these videos.
 
-<div align="center">
+<div align="left">
 
-<div style="display: flex; gap: 10px;">
+<div>
   <a href="https://www.youtube.com/watch?v=UcyNg1B8FJI" target="blank">
     <img src="https://img.youtube.com/vi/UcyNg1B8FJI/0.jpg" alt="Play Video" style="width: 300px;">
   </a>
