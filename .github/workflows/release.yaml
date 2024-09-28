@@ -16,10 +16,10 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Run build.ps1
-        run: |
-          Start-Process pwsh -ArgumentList '-ExecutionPolicy Bypass -File ./build.ps1' -Verb RunAs -Wait
-        shell: pwsh
+      # - name: Run build.ps1
+      #   run: |
+      #     Start-Process pwsh -ArgumentList '-ExecutionPolicy Bypass -File ./build.ps1' -Verb RunAs -Wait
+      #   shell: pwsh
 
       - name: Configure Git
         run: |
