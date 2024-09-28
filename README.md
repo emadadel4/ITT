@@ -168,10 +168,10 @@ Donate to the Palestinian Red Crescent
 
 <div style="display: flex; gap: 5px;">
 Other way to support
-<a href="/docs/Supportar.md" target="blank">
+<a href="/docs/Support.md" target="blank">
 English
 </a>
-<a href="/docs/Support.md" target="blank">
+<a href="/docs/Supportar.md" target="blank">
 عربي
 </a>
 </div>
