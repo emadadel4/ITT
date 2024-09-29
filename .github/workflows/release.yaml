@@ -76,7 +76,7 @@ jobs:
             <pre><code>irm https://github.com/emadadel4/ITT/releases/download/${{ env.VERSION }}/itt.ps1 | iex</code></pre>
 
             > **Note:**  
-            ## Run this command using terminal (Recommended).
+            ### Run this command using terminal (Recommended).
 
             <hr>
 
