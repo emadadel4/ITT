@@ -21,7 +21,7 @@ function Invoke-Button {
 
         .NOTES
         - The function uses a `Switch` statement to handle different actions based on the `$action` parameter.
-        - For UI-related actions, such as installing apps or applying tweaks, it calls `Invoke-Install` or `Invoke-ApplyTweaks`.
+        - For UI-related actions, such as installing apps or applying tweaks, it calls `Invoke-Install` or `Invoke-Apply`.
         - For system utilities and settings, it uses `Start-Process` to open tools like Device Manager, Task Manager, or disk management utilities.
         - For language settings, it invokes the `Set-Language` function with the specified language code.
         - For theme changes, it calls functions like `Switch-ToDarkMode` or `Switch-ToLightMode`.
@@ -46,7 +46,7 @@ function Invoke-Button {
             Debug-Message $action
         }
         "applyBtn" {
-            Invoke-ApplyTweaks
+            Invoke-Apply
             Debug-Message $action
         }
         "taps" {

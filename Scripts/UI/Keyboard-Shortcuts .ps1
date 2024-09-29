@@ -28,7 +28,7 @@ $KeyEvents = {
                 Invoke-Install                
             }
             "tweakslist" {
-                Invoke-ApplyTweaks
+                Invoke-Apply
             }
         }
     }
@@ -40,7 +40,7 @@ $KeyEvents = {
                 Invoke-Install                
             }
             "tweakslist" {
-                Invoke-ApplyTweaks
+                Invoke-Apply
             }
         }
     }
