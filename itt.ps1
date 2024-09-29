@@ -24,7 +24,7 @@ $itt = [Hashtable]::Synchronized(@{
     database       = @{}
     ProcessRunning = $false
     developer      = "Emad Adel"
-    lastupdate     = "09/28/2024"
+    lastupdate     = "09/30/2024"
     github         = "https://github.com/emadadel4/itt"
     telegram       = "https://t.me/emadadel4"
     blog           = "https://emadadel4.github.io"
@@ -10722,14 +10722,14 @@ function Invoke-Install {
     }
 }
 
-function Invoke-ApplyTweaks {
+function Invoke-Apply {
 
     <#
         .SYNOPSIS
         Handles the application of selected tweaks by executing the relevant commands, registry modifications, and other operations.
 
         .DESCRIPTION
-        The `Invoke-ApplyTweaks` function manages the process of applying selected tweaks based on user selection. It performs the following tasks:
+        The `Invoke-Apply` function manages the process of applying selected tweaks based on user selection. It performs the following tasks:
         1. Retrieves the list of selected tweaks using `Get-SelectedItems` with mode "Tweaks".
         2. Displays a warning message if a process is already running or if no tweaks are selected.
         3. Filters the list view to show only selected items and asks for user confirmation to proceed with applying tweaks.
@@ -10742,10 +10742,10 @@ function Invoke-ApplyTweaks {
         This function does not require any parameters.
 
         .EXAMPLE
-        Invoke-ApplyTweaks
+        Invoke-Apply
 
         .EXAMPLE
-        To use this function in your script, call `Invoke-ApplyTweaks`. This will process the selected tweaks, ask for confirmation, and apply them according to their type.
+        To use this function in your script, call `Invoke-Apply`. This will process the selected tweaks, ask for confirmation, and apply them according to their type.
 
         .NOTES
         - The function starts by checking the count of selected tweaks using `Get-SelectedItems` with mode "Tweaks".
@@ -10863,7 +10863,7 @@ function Invoke-Button {
 
         .NOTES
         - The function uses a `Switch` statement to handle different actions based on the `$action` parameter.
-        - For UI-related actions, such as installing apps or applying tweaks, it calls `Invoke-Install` or `Invoke-ApplyTweaks`.
+        - For UI-related actions, such as installing apps or applying tweaks, it calls `Invoke-Install` or `Invoke-Apply`.
         - For system utilities and settings, it uses `Start-Process` to open tools like Device Manager, Task Manager, or disk management utilities.
         - For language settings, it invokes the `Set-Language` function with the specified language code.
         - For theme changes, it calls functions like `Switch-ToDarkMode` or `Switch-ToLightMode`.
@@ -10888,7 +10888,7 @@ function Invoke-Button {
             Debug-Message $action
         }
         "applyBtn" {
-            Invoke-ApplyTweaks
+            Invoke-Apply
             Debug-Message $action
         }
         "taps" {
@@ -11694,7 +11694,7 @@ $KeyEvents = {
                 Invoke-Install                
             }
             "tweakslist" {
-                Invoke-ApplyTweaks
+                Invoke-Apply
             }
         }
     }
@@ -11706,7 +11706,7 @@ $KeyEvents = {
                 Invoke-Install                
             }
             "tweakslist" {
-                Invoke-ApplyTweaks
+                Invoke-Apply
             }
         }
     }
