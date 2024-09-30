@@ -71,7 +71,7 @@ jobs:
           tag_name: ${{ env.VERSION }}
           name: Release ${{ env.VERSION }}
           body: |
-            ## Use this Release
+            ## This Release
 
             <pre><code>irm https://github.com/emadadel4/ITT/releases/download/${{ env.VERSION }}/itt.ps1 | iex</code></pre>
 
