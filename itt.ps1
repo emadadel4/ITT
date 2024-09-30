@@ -24,7 +24,7 @@ $itt = [Hashtable]::Synchronized(@{
     database       = @{}
     ProcessRunning = $false
     developer      = "Emad Adel"
-    lastupdate     = "09/30/2024"
+    lastupdate     = "10/01/2024"
     github         = "https://github.com/emadadel4/itt"
     telegram       = "https://t.me/emadadel4"
     blog           = "https://emadadel4.github.io"
@@ -9970,24 +9970,12 @@ function Start-DownloadAndInstallExe {
     }
 }
 function Refresh-Explorer {
-
-    if($itt.ProcessRunning) {
-        Message -key "Pleasewait" -icon "Warning"
-        return
-    }
-
-    $itt.ProcessRunning = $true
-
     # Check if explorer is not running and start it if needed
     Stop-Process -Name explorer -Force
     Start-Sleep -Seconds 1
-
     if (-not (Get-Process -Name explorer -ErrorAction SilentlyContinue)) {
         Start-Process explorer.exe -Verb RunAs
     }
-
-    $itt.ProcessRunning = $false
-
 }
 function Remove-Registry {
 
