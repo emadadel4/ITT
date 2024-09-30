@@ -11,6 +11,9 @@ Write-Host "
 |    | |  | |   | |   | |_| / ___ \| |/ ___ \| |_) / ___ \ ___) | |___    |
 |   |___| |_|   |_|   |____/_/   \_\_/_/   \_\____/_/   \_\____/|_____|   |
 |    Made with ♥  By Emad Adel                                            |
+|                                                                         |
+|  Choco https://community.chocolatey.org/packages                        |
+|  Winget https://winget.run/                                             |
 +-------------------------------------------------------------------------+
 "
 $validCategories = @{
