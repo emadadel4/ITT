@@ -39,6 +39,8 @@ $itt = [Hashtable]::Synchronized(@{
     Music          = "100"
     PopupWindow    = "On"
     Language       = "en"
+    ittDir         = "$env:localappdata\itt\"
+
 })
 
 $currentPid = [System.Security.Principal.WindowsIdentity]::GetCurrent()
@@ -58,6 +60,12 @@ try {
 catch {
     Write-Warning "Media player not loaded because you're using Windows Lite or have disabled it."
 }
+
+# trace the script 
+$logdir = $itt.ittDir
+$timestamp = Get-Date -Format "yyyy-MM-dd"
+[System.IO.Directory]::CreateDirectory("$logdir") | Out-Null
+Start-Transcript -Path "$logdir\logs\log_$timestamp.log" -Append -NoClobber | Out-Null
 #===========================================================================
 #endregion End Start
 #===========================================================================
@@ -11453,13 +11461,10 @@ function ITTShortcut {
 
     # URL of the icon file
     $iconUrl = $itt.icon
-    
-    # Determine the path in AppData\Roaming
-    $appDataPath = [Environment]::GetFolderPath('ApplicationData')
-    $localIconPath = Join-Path -Path $appDataPath -ChildPath "ITTIcon.ico"
+    $dir = $itt.ittDir
     
     # Download the icon file
-    Invoke-WebRequest -Uri $iconUrl -OutFile $localIconPath
+    Invoke-WebRequest -Uri $iconUrl -OutFile $itt.ittDir
     
     # Create a shortcut object
     $Shortcut = (New-Object -ComObject WScript.Shell).CreateShortcut("$([Environment]::GetFolderPath('Desktop'))\ITT Emad Adel.lnk")
@@ -11469,7 +11474,7 @@ function ITTShortcut {
     $Shortcut.Arguments = "-ExecutionPolicy Bypass -Command ""irm bit.ly/emadadel | iex"""
     
     # Set the icon path to the downloaded icon file in AppData\Roaming
-    $Shortcut.IconLocation = "$localIconPath"
+    $Shortcut.IconLocation = "$itt.ittDir"
     
     # Save the shortcut
     $Shortcut.Save()
@@ -16859,7 +16864,7 @@ $itt.runspace.Close()
 $script:powershell.Stop()          
 $newProcess.exit 
 Write-Host "`n` Don't forget to pray for your oppressed brothers in Palestine and around the world." 
-
+Stop-Transcript
 #===========================================================================
 #endregion End Main
 #===========================================================================
