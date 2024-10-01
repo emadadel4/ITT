@@ -27,7 +27,16 @@ function Invoke-ShowFile {
 
     Param($Enabled)
     Try {
-        $value = if ($Enabled -eq $false) { 1 } else { 2 }
+        if ($Enabled -eq $false)
+        { 
+           $value = 1
+           Add-Log -Message "Show hidden files , folders etc.." -Level "Apply"
+        } 
+        else 
+        { 
+            $value = 2
+            Add-Log -Message "Don't Show hidden files , folders etc.." -Level "Disabled"
+        }
 
         $hiddenItemsKey = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced"
         

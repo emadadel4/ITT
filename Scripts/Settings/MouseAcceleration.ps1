@@ -35,7 +35,7 @@ function Invoke-MouseAcceleration {
     try {
         if($Mouse -eq $false)
         {
-            Add-Log -Message "Enabled" -LEVEL "INFO"
+            Add-Log -Message "Mouse Acceleration" -LEVEL "Apply"
             $Speed = 1
             $Threshold1 = 6
             $Threshold2 = 10
@@ -43,7 +43,7 @@ function Invoke-MouseAcceleration {
             $Speed = 0
             $Threshold1 = 0
             $Threshold2 = 0
-            Add-Log -Message "Disabled" -LEVEL "INFO"
+            Add-Log -Message "Mouse Acceleration" -LEVEL "Disabled"
         }
 
         Set-ItemProperty -Path $Path -Name MouseSpeed -Value $Speed

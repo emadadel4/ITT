@@ -42,7 +42,7 @@ Function Invoke-DarkMode {
         }
         else {
             $DarkMoveValue = 1
-            Add-Log -Message "Light Mode Disabled" -Level "Apply"
+            Add-Log -Message "Light Mode Disabled" -Level "Disabled"
             if($DarkMode -eq "none")
             {
                 $itt['window'].Resources.MergedDictionaries.Add($itt['window'].FindResource("Light"))

@@ -31,10 +31,12 @@ Function Invoke-StickyKeys {
         if ($Enabled -eq $false){
             $value = 510
             $value2 = 510
+            Add-Log -Message "Sticky Keys" -Level "Apply"
         }
         else {
             $value = 58
             $value2 = 122
+            Add-Log -Message "Sticky Keys" -Level "Disabled"
         }
         $Path = "HKCU:\Control Panel\Accessibility\StickyKeys"
         $Path2 = "HKCU:\Control Panel\Accessibility\Keyboard Response"

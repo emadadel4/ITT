@@ -23,6 +23,8 @@ function Add-Log {
         "ERROR" { $icon = "X" }
         "Installed" { $icon = "√" }
         "Apply" { $icon = "√" }
+        "Disabled" { $icon = "X" }
+        "Enabled" { $icon = "√" }
         default { $icon = "!" }
     }
 

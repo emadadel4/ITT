@@ -39,7 +39,7 @@ function Invoke-NumLock {
         } 
         else
         { 
-            Add-Log -Message "Numlock Disabled" -Level "Apply"
+            Add-Log -Message "Numlock Disabled" -Level "Disabled"
              $value = 0
         }
 
