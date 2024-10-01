@@ -9114,6 +9114,8 @@ function Add-Log {
         "ERROR" { $icon = "X" }
         "Installed" { $icon = "√" }
         "Apply" { $icon = "√" }
+        "Disabled" { $icon = "X" }
+        "Enabled" { $icon = "√" }
         default { $icon = "!" }
     }
 
@@ -11145,7 +11147,7 @@ Function Invoke-DarkMode {
         }
         else {
             $DarkMoveValue = 1
-            Add-Log -Message "Light Mode Disabled" -Level "Apply"
+            Add-Log -Message "Light Mode Disabled" -Level "Disabled"
             if($DarkMode -eq "none")
             {
                 $itt['window'].Resources.MergedDictionaries.Add($itt['window'].FindResource("Light"))
@@ -11205,7 +11207,7 @@ function Invoke-MouseAcceleration {
     try {
         if($Mouse -eq $false)
         {
-            Add-Log -Message "Enabled" -LEVEL "INFO"
+            Add-Log -Message "Mouse Acceleration" -LEVEL "Apply"
             $Speed = 1
             $Threshold1 = 6
             $Threshold2 = 10
@@ -11213,7 +11215,7 @@ function Invoke-MouseAcceleration {
             $Speed = 0
             $Threshold1 = 0
             $Threshold2 = 0
-            Add-Log -Message "Disabled" -LEVEL "INFO"
+            Add-Log -Message "Mouse Acceleration" -LEVEL "Disabled"
         }
 
         Set-ItemProperty -Path $Path -Name MouseSpeed -Value $Speed
@@ -11240,11 +11242,11 @@ function Invoke-NumLock {
         A boolean value that determines whether Num Lock should be enabled (`$true`) or disabled (`$false`).
 
         .EXAMPLE
-            Invoke-NumLock -Enabled $true
+        Invoke-NumLock -Enabled $true
         This example enables Num Lock.
 
         .EXAMPLE
-            Invoke-NumLock -Enabled $false
+        Invoke-NumLock -Enabled $false
         This example disables Num Lock.
 
         .NOTES
@@ -11265,7 +11267,7 @@ function Invoke-NumLock {
         } 
         else
         { 
-            Add-Log -Message "Numlock Disabled" -Level "Apply"
+            Add-Log -Message "Numlock Disabled" -Level "Disabled"
              $value = 0
         }
 
@@ -11309,7 +11311,16 @@ function Invoke-ShowFile {
 
     Param($Enabled)
     Try {
-        $value = if ($Enabled -eq $false) { 1 } else { 2 }
+        if ($Enabled -eq $false)
+        { 
+           $value = 1
+           Add-Log -Message "Show hidden files , folders etc.." -Level "Apply"
+        } 
+        else 
+        { 
+            $value = 2
+            Add-Log -Message "Don't Show hidden files , folders etc.." -Level "Disabled"
+        }
 
         $hiddenItemsKey = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced"
         
@@ -11360,10 +11371,11 @@ function Invoke-ShowFile-Extensions {
     Try{
         if ($Enabled -eq $false){
             $value = 0
+            Add-Log -Message "Hidden extensions" -Level "Apply"
         }
         else {
             $value = 1
-            Add-Log -Message "This Setting require a restart" -Level "INFO"
+            Add-Log -Message "Hidden extensions" -Level "Disabled"
         }
         $Path = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced"
         Set-ItemProperty -Path $Path -Name HideFileExt -Value $value
@@ -11413,10 +11425,12 @@ Function Invoke-StickyKeys {
         if ($Enabled -eq $false){
             $value = 510
             $value2 = 510
+            Add-Log -Message "Sticky Keys" -Level "Apply"
         }
         else {
             $value = 58
             $value2 = 122
+            Add-Log -Message "Sticky Keys" -Level "Disabled"
         }
         $Path = "HKCU:\Control Panel\Accessibility\StickyKeys"
         $Path2 = "HKCU:\Control Panel\Accessibility\Keyboard Response"
