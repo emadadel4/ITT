@@ -11464,12 +11464,14 @@ function ITTShortcut {
 
     # URL of the icon file
     $iconUrl = $itt.icon
-    $dir = $itt.ittDir
-    $dirIcon = Join-Path -Path $itt.ittDir -ChildPath "icon.ico"
-
+    
+    # Determine the path in AppData\Roaming
+    $appDataPath = [Environment]::GetFolderPath('ApplicationData')
+    $localIconPath = Join-Path -Path $appDataPath -ChildPath "ITTIcon.ico"
+    
     # Download the icon file
-    Invoke-WebRequest -Uri $iconUrl -OutFile $dirIcon
-
+    Invoke-WebRequest -Uri $iconUrl -OutFile $localIconPath
+    
     # Create a shortcut object
     $Shortcut = (New-Object -ComObject WScript.Shell).CreateShortcut("$([Environment]::GetFolderPath('Desktop'))\ITT Emad Adel.lnk")
     
@@ -11478,8 +11480,7 @@ function ITTShortcut {
     $Shortcut.Arguments = "-ExecutionPolicy Bypass -Command ""irm bit.ly/emadadel | iex"""
     
     # Set the icon path to the downloaded icon file in AppData\Roaming
-
-    $Shortcut.IconLocation = $dirIcon
+    $Shortcut.IconLocation = "$localIconPath"
     
     # Save the shortcut
     $Shortcut.Save()
