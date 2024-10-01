@@ -11258,11 +11258,22 @@ function Invoke-NumLock {
     )
 
     try {
-        $value = if ($Enabled) { 0 } else { 2 }
+        if ($Enabled -eq $false)
+        { 
+            Add-Log -Message "Numlock Enabled" -Level "Apply"
+            $value = 2 
+        } 
+        else
+        { 
+            Add-Log -Message "Numlock Disabled" -Level "Apply"
+             $value = 0
+        }
 
         New-PSDrive -PSProvider Registry -Name HKU -Root HKEY_USERS -ErrorAction Stop
         $Path = "HKU:\.Default\Control Panel\Keyboard"
+        $Path2 = "HKCU:\Control Panel\Keyboard"
         Set-ItemProperty -Path $Path -Name InitialKeyboardIndicators -Value $value -ErrorAction Stop
+        Set-ItemProperty -Path $Path2 -Name InitialKeyboardIndicators -Value $value -ErrorAction Stop
     }
     catch {
         Write-Warning "An error occurred: $($_.Exception.Message)"
