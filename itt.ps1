@@ -9101,8 +9101,8 @@ function Add-Log {
         "INFO" { $icon = "!" }
         "WARNING" { $icon = "!" }
         "ERROR" { $icon = "X" }
-        "Installed" { $icon = "✔" }
-        "Apply" { $icon = "✔" }
+        "Installed" { $icon = [char]0x2713 }
+        "Apply" { $icon = [char]0x2713 }
         default { $icon = "!" }
     }
 
