@@ -9099,11 +9099,11 @@ function Add-Log {
 
     switch ($Level.ToUpper()) {
         "INFO" { $icon = "!" }
-        "WARNING" { $icon = "!" }
+        "WARNING" { $icon = [char]0x21 }
         "ERROR" { $icon = "X" }
         "Installed" { $icon = [char]0x2713 }
         "Apply" { $icon = [char]0x2713 }
-        default { $icon = "!" }
+        default { $icon = [char]0x21 }
     }
 
     # Construct the log message
