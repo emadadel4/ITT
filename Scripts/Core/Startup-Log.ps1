@@ -189,11 +189,11 @@ function Startup  {
                     # Display PC info excluding "AppsTweaks" in the specified order
                     foreach ($key in $displayOrder) {
                         if ($pcInfo.ContainsKey($key)) {
-                            Write-Host "  $key : $($pcInfo[$key])" -ForegroundColor Yellow
+                            Write-Host "  $key : $($pcInfo[$key])" -ForegroundColor White
                         }
                     }
                 
-                    Write-Host "`n`  ITT Used on $totalKeys devices and is featured on 9 sites `n` " -ForegroundColor Yellow
+                    Write-Host "`n` ♢ ITT Used on $totalKeys devices ♢" -ForegroundColor White
         
                     # Force garbage collection to free memory
                     [System.GC]::Collect()                       
@@ -216,7 +216,7 @@ function Startup  {
             Write-Host " |   | |  | |   | |   |  _| | |\/| | / _ \ | | | |   / _ \ | | | |  _| | |      |" 
             Write-Host " |   | |  | |   | |   | |___| |  | |/ ___ \| |_| |  / ___ \| |_| | |___| |___   |" 
             Write-Host " |  |___| |_|   |_|   |_____|_|  |_/_/   \_\____/  /_/   \_\____/|_____|_____|  |" 
-            Write-Host " |                       Made with ♥ By Emad Adel                               |" 
+            Write-Host " |                       Made with ♡ By Emad Adel                               |" 
             Write-Host " |                          #StandWithPalestine                                 |" 
             Write-Host " +==============================================================================+" 
             Write-Host " You ready to Install anything.`n` " 

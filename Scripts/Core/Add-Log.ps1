@@ -9,7 +9,7 @@ function Add-Log {
 
     # Determine the color based on the log level
     switch ($Level.ToUpper()) {
-        "INFO" { $color = "Yellow" }
+        "INFO" { $color = "White" }
         "WARNING" { $color = "Yellow" }
         "ERROR" { $color = "Red" }
         "Installed" { $color = "White" }
@@ -21,8 +21,8 @@ function Add-Log {
         "INFO" { $icon = "!" }
         "WARNING" { $icon = "!" }
         "ERROR" { $icon = "X" }
-        "Installed" { $icon = "✓" }
-        "Apply" { $icon = "✓" }
+        "Installed" { $icon = "✔ " }
+        "Apply" { $icon = "✔ " }
         default { $icon = "!" }
     }
 
