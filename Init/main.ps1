@@ -80,3 +80,4 @@ $itt.runspace.Close()
 $script:powershell.Stop()          
 $newProcess.exit 
 Write-Host "`n` Don't forget to pray for your oppressed brothers in Palestine and around the world." 
+Stop-Transcript
