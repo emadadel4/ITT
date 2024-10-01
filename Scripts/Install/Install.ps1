@@ -180,7 +180,7 @@ function Invoke-Apply {
 
         foreach ($tweak in $selectedApps) {
 
-            Add-Log -Message $tweak.Name -Level "INFO" 
+            Add-Log -Message $tweak.Name -Level "Apply" 
 
             switch ($tweak.Type) {        
         
@@ -196,7 +196,7 @@ function Invoke-Apply {
                     }
                     if($tweak.Refresh -eq "true")
                     {
-                        Add-Log -Message "Restarting explorer" -Level "INFO"
+                        Add-Log -Message "Restarting explorer" -Level "Apply"
                         Refresh-Explorer
                     }
                 }

@@ -193,7 +193,7 @@ function Startup  {
                         }
                     }
                 
-                    Write-Host "`n`  ITT Used on $totalKeys devices and is featured on 9 sites." -ForegroundColor Yellow
+                    Write-Host "`n`  ITT Used on $totalKeys devices and is featured on 9 sites `n` " -ForegroundColor Yellow
         
                     # Force garbage collection to free memory
                     [System.GC]::Collect()                       
