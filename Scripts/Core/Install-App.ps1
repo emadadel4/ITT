@@ -1,25 +1,25 @@
 
 function Install-App {
     
-     <#
-    .SYNOPSIS
-    Installs an application using Chocolatey or Winget based on availability and installation status.
+    <#
+        .SYNOPSIS
+        Installs an application using Chocolatey or Winget based on availability and installation status.
 
-    .DESCRIPTION
-    This function attempts to install a specified application using Chocolatey. If the Chocolatey installation fails, it falls back to using Winget to install the application. The function also handles some cleanup tasks related to Chocolatey and logs the results of the installation process.
+        .DESCRIPTION
+        This function attempts to install a specified application using Chocolatey. If the Chocolatey installation fails, it falls back to using Winget to install the application. The function also handles some cleanup tasks related to Chocolatey and logs the results of the installation process.
 
-    .PARAMETER appName
-    The name of the application to be installed. This parameter is used for logging and status messages.
+        .PARAMETER appName
+        The name of the application to be installed. This parameter is used for logging and status messages.
 
-    .PARAMETER appChoco
-    The package name of the application as recognized by Chocolatey. This parameter is used to perform the installation via Chocolatey.
+        .PARAMETER appChoco
+        The package name of the application as recognized by Chocolatey. This parameter is used to perform the installation via Chocolatey.
 
-    .PARAMETER appWinget
-    The package identifier for the application as recognized by Winget. This parameter is used to perform the installation via Winget if Chocolatey fails.
+        .PARAMETER appWinget
+        The package identifier for the application as recognized by Winget. This parameter is used to perform the installation via Winget if Chocolatey fails.
 
-    .EXAMPLE
-    Install-App -appName "Google Chrome" -appChoco "googlechrome" -appWinget "Google.Chrome"
-    Attempts to install Google Chrome using Chocolatey. If the installation fails, it attempts to install it using Winget.
+        .EXAMPLE
+        Install-App -appName "Google Chrome" -appChoco "googlechrome" -appWinget "Google.Chrome"
+        Attempts to install Google Chrome using Chocolatey. If the installation fails, it attempts to install it using Winget.
     #>
 
     param (
