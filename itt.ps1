@@ -9101,8 +9101,8 @@ function Add-Log {
         "INFO" { $icon = "!" }
         "WARNING" { $icon = "!" }
         "ERROR" { $icon = "X" }
-        "Installed" { $icon = "✔ " }
-        "Apply" { $icon = "✔ " }
+        "Installed" { $icon = "!" }
+        "Apply" { $icon = "!" }
         default { $icon = "!" }
     }
 
@@ -10462,7 +10462,7 @@ function Startup  {
                         }
                     }
                 
-                    Write-Host "`n` ♢ ITT Used on $totalKeys devices ♢" -ForegroundColor White
+                    Write-Host "`n` ITT Used on $totalKeys devices " -ForegroundColor White
         
                     # Force garbage collection to free memory
                     [System.GC]::Collect()                       
