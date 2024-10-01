@@ -20,7 +20,7 @@ function ITTShortcut {
     $dirIcon = Join-Path -Path $itt.ittDir -ChildPath "icon.ico"
 
     # Download the icon file
-    Invoke-WebRequest -Uri $iconUrl -OutFile $($itt.ittDir)
+    Invoke-WebRequest -Uri $iconUrl -OutFile $dir
 
     # Create a shortcut object
     $Shortcut = (New-Object -ComObject WScript.Shell).CreateShortcut("$([Environment]::GetFolderPath('Desktop'))\ITT Emad Adel.lnk")
