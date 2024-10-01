@@ -21,8 +21,8 @@ function Add-Log {
         "INFO" { $icon = "!" }
         "WARNING" { $icon = "!" }
         "ERROR" { $icon = "X" }
-        "Installed" { $icon = "✔ " }
-        "Apply" { $icon = "✔ " }
+        "Installed" { $icon = "√" }
+        "Apply" { $icon = "√" }
         default { $icon = "!" }
     }
 
