@@ -9229,7 +9229,8 @@ function Finish {
     {
         "AppsListView" {
             UpdateUI -Button "InstallBtn" -ButtonText "installText" -Content "InstallBtn" -TextIcon "installIcon" -Icon "  "
-            Add-Log -Message "If you experience any issues while installing a program, `n` please report the problem on the project page." -Level "INFO"
+            Add-Log -Message "Installs have finished" -Level "Installed"
+            Add-Log -Message "If you experience any issues while installing a program, `n` please report the problem." -Level "INFO"
         }
 
         "TweaksListView" {
@@ -9635,7 +9636,7 @@ function Install-App {
         #Add-Log -Message "C:\ProgramData\chocolatey\lib\$appChoco" -Level "INFO"
     }
         
-    $chocoResult = $(Start-Process -FilePath "choco" -ArgumentList "install $appChoco --confirm --acceptlicense -q -r --ignore-http-cache --allowemptychecksumsecure --allowemptychecksum --usepackagecodes --ignoredetectedreboot --ignore-checksums --ignore-reboot-requests" -Wait -NoNewWindow -PassThru).ExitCode
+    $chocoResult = $(Start-Process -FilePath "choco" -ArgumentList "install $appChoco --confirm --acceptlicense -q -r --ignore-http-cache --allowemptychecksumsecure --allowemptychecksum --usepackagecodes --ignoredetectedreboot --ignore-checksums --ignore-reboot-requests --limitoutput" -Wait -NoNewWindow -PassThru).ExitCode
 
     if ($chocoResult -ne 0) {
 
@@ -9655,12 +9656,12 @@ function Install-App {
         } 
         else
         {
-            Add-Log -Message "($appName) Successfully Installed Using Winget." -Level "INFO"
+            Add-Log -Message "($appName) Successfully Installed Using Winget." -Level "Installed"
         }
     }
     else
     {
-        Add-Log -Message "($appName) Successfully Installed Using Chocolatey." -Level "INFO"
+        Add-Log -Message "($appName) Successfully Installed Using Chocolatey." -Level "Installed"
     }
 }
 function Install-Choco {
@@ -10462,7 +10463,7 @@ function Startup  {
                         }
                     }
                 
-                    Write-Host "`n` ITT Used on $totalKeys devices " -ForegroundColor White
+                    Write-Host "`n` ITT Used on $totalKeys devices `n` " -ForegroundColor White
         
                     # Force garbage collection to free memory
                     [System.GC]::Collect()                       
@@ -11125,7 +11126,7 @@ Function Invoke-DarkMode {
 
         if ($DarkMoveEnabled -eq $false){
             $DarkMoveValue = 0
-            Add-Log -Message "Dark Mode Enabled" -Level "INFO"
+            Add-Log -Message "Dark Mode Enabled" -Level "Apply"
             if($DarkMode -eq "none")
             {
                 $itt['window'].Resources.MergedDictionaries.Add($itt['window'].FindResource("Dark"))
@@ -11133,7 +11134,7 @@ Function Invoke-DarkMode {
         }
         else {
             $DarkMoveValue = 1
-            Add-Log -Message "Light Mode Enabled" -Level "INFO"
+            Add-Log -Message "Light Mode Disabled" -Level "Apply"
             if($DarkMode -eq "none")
             {
                 $itt['window'].Resources.MergedDictionaries.Add($itt['window'].FindResource("Light"))
