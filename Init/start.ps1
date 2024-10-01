@@ -46,8 +46,11 @@ catch {
     Write-Warning "Media player not loaded because you're using Windows Lite or have disabled it."
 }
 
+if (-not (Test-Path -Path $itt.ittDir)) {
+    New-Item -ItemType Directory -Path $itt.ittDir -Force | Out-Null
+}
+
 # trace the script 
 $logdir = $itt.ittDir
 $timestamp = Get-Date -Format "yyyy-MM-dd"
-[System.IO.Directory]::CreateDirectory("$logdir") | Out-Null
 Start-Transcript -Path "$logdir\logs\log_$timestamp.log" -Append -NoClobber | Out-Null
