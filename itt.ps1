@@ -9089,7 +9089,7 @@ function Add-Log {
 
     # Determine the color based on the log level
     switch ($Level.ToUpper()) {
-        "INFO" { $color = "Yellow" }
+        "INFO" { $color = "White" }
         "WARNING" { $color = "Yellow" }
         "ERROR" { $color = "Red" }
         "Installed" { $color = "White" }
@@ -9234,7 +9234,7 @@ function Finish {
 
         "TweaksListView" {
             UpdateUI -Button "ApplyBtn" -ButtonText "applyText" -Content "applyBtn" -TextIcon "applyIcon" -Icon "  "
-            Add-Log -Message "Finished, Some tweaks require restarting" -Level "INFO"
+            Add-Log -Message "Finished, Some tweaks require restarting" -Level "WARNING"
         }
     }
 
@@ -10458,11 +10458,11 @@ function Startup  {
                     # Display PC info excluding "AppsTweaks" in the specified order
                     foreach ($key in $displayOrder) {
                         if ($pcInfo.ContainsKey($key)) {
-                            Write-Host "  $key : $($pcInfo[$key])" -ForegroundColor Yellow
+                            Write-Host "  $key : $($pcInfo[$key])" -ForegroundColor White
                         }
                     }
                 
-                    Write-Host "`n`  ITT Used on $totalKeys devices and is featured on 9 sites `n` " -ForegroundColor Yellow
+                    Write-Host "`n`  ITT Used on $totalKeys devices and is featured on 9 sites." -ForegroundColor White
         
                     # Force garbage collection to free memory
                     [System.GC]::Collect()                       
@@ -10485,7 +10485,7 @@ function Startup  {
             Write-Host " |   | |  | |   | |   |  _| | |\/| | / _ \ | | | |   / _ \ | | | |  _| | |      |" 
             Write-Host " |   | |  | |   | |   | |___| |  | |/ ___ \| |_| |  / ___ \| |_| | |___| |___   |" 
             Write-Host " |  |___| |_|   |_|   |_____|_|  |_/_/   \_\____/  /_/   \_\____/|_____|_____|  |" 
-            Write-Host " |                       Made with ♥ By Emad Adel                               |" 
+            Write-Host " |                       Made with ♡ By Emad Adel                               |" 
             Write-Host " |                          #StandWithPalestine                                 |" 
             Write-Host " +==============================================================================+" 
             Write-Host " You ready to Install anything.`n` " 
