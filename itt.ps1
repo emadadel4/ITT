@@ -39,7 +39,7 @@ $itt = [Hashtable]::Synchronized(@{
     Music          = "100"
     PopupWindow    = "On"
     Language       = "en"
-    ittDir         = "$env:localappdata\itt\"
+    ittDir         = "$env:localappdata\itt"
 
 })
 
@@ -11462,7 +11462,10 @@ function ITTShortcut {
     # URL of the icon file
     $iconUrl = $itt.icon
     $dir = $itt.ittDir
-    
+    $dirIcon = Join-Path -Path $itt.ittDir -ChildPath "icon.ico"
+
+
+
     # Download the icon file
     Invoke-WebRequest -Uri $iconUrl -OutFile $itt.ittDir
     
@@ -11474,7 +11477,8 @@ function ITTShortcut {
     $Shortcut.Arguments = "-ExecutionPolicy Bypass -Command ""irm bit.ly/emadadel | iex"""
     
     # Set the icon path to the downloaded icon file in AppData\Roaming
-    $Shortcut.IconLocation = "$itt.ittDir"
+
+    $Shortcut.IconLocation = $dirIcon
     
     # Save the shortcut
     $Shortcut.Save()
