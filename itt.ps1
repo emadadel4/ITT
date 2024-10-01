@@ -39,7 +39,7 @@ $itt = [Hashtable]::Synchronized(@{
     Music          = "100"
     PopupWindow    = "On"
     Language       = "en"
-    ittDir         = "$env:localappdata\itt"
+    ittDir         = "$env:localappdata\itt\"
 
 })
 
@@ -11467,7 +11467,10 @@ function ITTShortcut {
 
 
     # Download the icon file
-    Invoke-WebRequest -Uri $iconUrl -OutFile $itt.ittDir
+    Invoke-WebRequest -Uri $iconUrl -OutFile $($itt.ittDir)
+
+
+    
     
     # Create a shortcut object
     $Shortcut = (New-Object -ComObject WScript.Shell).CreateShortcut("$([Environment]::GetFolderPath('Desktop'))\ITT Emad Adel.lnk")
