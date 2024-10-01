@@ -37,7 +37,7 @@ function Install-App {
         #Add-Log -Message "C:\ProgramData\chocolatey\lib\$appChoco" -Level "INFO"
     }
         
-    $chocoResult = $(Start-Process -FilePath "choco" -ArgumentList "install $appChoco --confirm --acceptlicense -q -r --ignore-http-cache --allowemptychecksumsecure --allowemptychecksum --usepackagecodes --ignoredetectedreboot --ignore-checksums --ignore-reboot-requests" -Wait -NoNewWindow -PassThru).ExitCode
+    $chocoResult = $(Start-Process -FilePath "choco" -ArgumentList "install $appChoco --confirm --acceptlicense -q -r --ignore-http-cache --allowemptychecksumsecure --allowemptychecksum --usepackagecodes --ignoredetectedreboot --ignore-checksums --ignore-reboot-requests --limitoutput" -Wait -NoNewWindow -PassThru).ExitCode
 
     if ($chocoResult -ne 0) {
 
@@ -57,11 +57,11 @@ function Install-App {
         } 
         else
         {
-            Add-Log -Message "($appName) Successfully Installed Using Winget." -Level "INFO"
+            Add-Log -Message "($appName) Successfully Installed Using Winget." -Level "Installed"
         }
     }
     else
     {
-        Add-Log -Message "($appName) Successfully Installed Using Chocolatey." -Level "INFO"
+        Add-Log -Message "($appName) Successfully Installed Using Chocolatey." -Level "Installed"
     }
 }
