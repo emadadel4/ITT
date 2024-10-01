@@ -11139,7 +11139,7 @@ Function Invoke-DarkMode {
 
         if ($DarkMoveEnabled -eq $false){
             $DarkMoveValue = 0
-            Add-Log -Message "Dark Mode Enabled" -Level "Apply"
+            Add-Log -Message "Dark Mode" -Level "Apply"
             if($DarkMode -eq "none")
             {
                 $itt['window'].Resources.MergedDictionaries.Add($itt['window'].FindResource("Dark"))
@@ -11147,7 +11147,7 @@ Function Invoke-DarkMode {
         }
         else {
             $DarkMoveValue = 1
-            Add-Log -Message "Light Mode Disabled" -Level "Disabled"
+            Add-Log -Message "Light Mode" -Level "Disabled"
             if($DarkMode -eq "none")
             {
                 $itt['window'].Resources.MergedDictionaries.Add($itt['window'].FindResource("Light"))
@@ -11157,7 +11157,6 @@ Function Invoke-DarkMode {
         $Path = "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize"
         Set-ItemProperty -Path $Path -Name AppsUseLightTheme -Value $DarkMoveValue
         Set-ItemProperty -Path $Path -Name SystemUsesLightTheme -Value $DarkMoveValue
-        Refresh-Explorer
     }
     Catch [System.Security.SecurityException] {
         Write-Warning "Unable to set $Path\$Name to $Value due to a Security Exception"
