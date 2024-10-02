@@ -156,7 +156,7 @@
 
                     <!-- Header -->
                         <Grid Row="1">
-                            <ScrollViewer VerticalScrollBarVisibility="Auto" Height="366">
+                            <ScrollViewer Name="ScrollViewer" VerticalScrollBarVisibility="Auto" Height="375">
                                 <StackPanel Orientation="Vertical">
                                         <!--Image-->
                                         <Image 
@@ -175,6 +175,7 @@
                                         Text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet amet obcaecati dolorem, sit iusto consequatur, libero laudantium officia quo ea officiis nulla esse quod ex, mollitia asperiores! Accusantium, labore pariatur."
                                         Height="Auto"
                                         Width="Auto"
+                                        Visibility="Visible"
                                         Margin="0,10,0,0"
                                         Foreground="{DynamicResource DefaultTextColor2}"
                                         TextWrapping="Wrap"
@@ -197,6 +198,7 @@
                             Cursor="Hand"
                             Padding="15"
                             Height="Auto"
+                            Visibility="Visible"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
                             />

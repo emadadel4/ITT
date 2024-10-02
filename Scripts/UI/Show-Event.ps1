@@ -21,11 +21,17 @@ function Show-Event {
     $itt.event.Height = "$WindowHeight"
     $itt.event.Width = "$WindowWidth"
 
+
+
+
     # Set new values
     $titleTextBlock = $itt.event.FindName('title')
     $subtitleTextBlock = $itt.event.FindName('Subtitle')
     $tutorialImage = $itt.event.FindName('Image')
     #$mainStackPanel = $itt.event.FindName('MainStackPanel')
+    $ScrollViewer = $itt.event.FindName('ScrollViewer')
+    $DisablePopup = $itt.event.FindName('DisablePopup')
+    
 
     $itt.event.FindName('date').Text = $itt.lastupdate
 
@@ -36,15 +42,25 @@ function Show-Event {
             $titleTextBlock.Text = "$title"
             $tutorialImage.Source = [System.Windows.Media.Imaging.BitmapImage]::new([Uri]::new($image))
             $subtitleTextBlock.Text = "$description"
-            $itt.event.FindName('DisablePopup').Text = "Happy birthday day Emad"
+            $DisablePopup.Text = "Happy birthday day Emad"
             $tutorialImage.Height = $ImageHeight
             $subtitleTextBlock.VerticalAlignment = "Center"
             $subtitleTextBlock.HorizontalAlignment = "Center"
             $subtitleTextBlock.FontSize = "20"
+            $ScrollViewer.Height = "466"
 
             $itt.event.FindName("DisablePopup").add_MouseLeftButtonDown({
                 $itt.event.FindName("DisablePopup").Text = "Thank you :)"
             })
+        }
+        "OctoPair" {
+            $titleTextBlock.Text = "$title"
+            $tutorialImage.Source = [System.Windows.Media.Imaging.BitmapImage]::new([Uri]::new($image))
+            $tutorialImage.Height = $ImageHeight
+            $subtitleTextBlock.Visibility = "Hidden"
+            $subtitleTextBlock.Visibility = "Hidden"
+            $DisablePopup.Visibility = "Hidden"
+            $ScrollViewer.Height = "NaN"
         }
         Default {
 
@@ -109,8 +125,8 @@ function Get-DateStatus {
     } 
     elseif ($itt.Date.Month -eq 10 -and $itt.Date.Day -eq 7 -or $itt.Date.Day -eq 8 ) 
     {
-        Show-Event -image "https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/happy.jpg" -ImageHeight 400 -title "$happybirthday" -description "$myplaylist" -day "Birthday" -WindowHeight 600 -WindowWidth 486 
-    } 
+        Show-Event -image "https://raw.githubusercontent.com/emadadel4/ITT/refs/heads/main/Resources/Images/OctoPair.jpg" -ImageHeight 500 -title "Celebrating" -description "Celebrating the anniversary of OctoPair 7-8" -day "OctoPair" -WindowHeight 655 -WindowWidth 400 
+    }else 
     {
         if($itt.PopupWindow -eq "off") {return}   
         Show-Event -image "https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/thumbnail.jpg" -title "$watchdemo" -description "$subs" -day "Default" -WindowHeight 500 -WindowWidth 486
