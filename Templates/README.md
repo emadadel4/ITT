@@ -5,7 +5,7 @@
   </a>
 </p>
   
-<h1 align="center">ITT (Install Tweaks Tool) 🛠️ 🚀
+<h1 align="center">🔻 ITT (Install Tweaks Tool) 🔻
 </h1>
 
 <div align="center">
