@@ -24,7 +24,7 @@ $itt = [Hashtable]::Synchronized(@{
     database       = @{}
     ProcessRunning = $false
     developer      = "Emad Adel"
-    lastupdate     = "10/01/2024"
+    lastupdate     = "10/02/2024"
     github         = "https://github.com/emadadel4/itt"
     telegram       = "https://t.me/emadadel4"
     blog           = "https://emadadel4.github.io"
@@ -12082,11 +12082,17 @@ function Show-Event {
     $itt.event.Height = "$WindowHeight"
     $itt.event.Width = "$WindowWidth"
 
+
+
+
     # Set new values
     $titleTextBlock = $itt.event.FindName('title')
     $subtitleTextBlock = $itt.event.FindName('Subtitle')
     $tutorialImage = $itt.event.FindName('Image')
     #$mainStackPanel = $itt.event.FindName('MainStackPanel')
+    $ScrollViewer = $itt.event.FindName('ScrollViewer')
+    $DisablePopup = $itt.event.FindName('DisablePopup')
+    
 
     $itt.event.FindName('date').Text = $itt.lastupdate
 
@@ -12097,15 +12103,25 @@ function Show-Event {
             $titleTextBlock.Text = "$title"
             $tutorialImage.Source = [System.Windows.Media.Imaging.BitmapImage]::new([Uri]::new($image))
             $subtitleTextBlock.Text = "$description"
-            $itt.event.FindName('DisablePopup').Text = "Happy birthday day Emad"
+            $DisablePopup.Text = "Happy birthday day Emad"
             $tutorialImage.Height = $ImageHeight
             $subtitleTextBlock.VerticalAlignment = "Center"
             $subtitleTextBlock.HorizontalAlignment = "Center"
             $subtitleTextBlock.FontSize = "20"
+            $ScrollViewer.Height = "466"
 
             $itt.event.FindName("DisablePopup").add_MouseLeftButtonDown({
                 $itt.event.FindName("DisablePopup").Text = "Thank you :)"
             })
+        }
+        "OctoPair" {
+            $titleTextBlock.Text = "$title"
+            $tutorialImage.Source = [System.Windows.Media.Imaging.BitmapImage]::new([Uri]::new($image))
+            $tutorialImage.Height = $ImageHeight
+            $subtitleTextBlock.Visibility = "Hidden"
+            $subtitleTextBlock.Visibility = "Hidden"
+            $DisablePopup.Visibility = "Hidden"
+            $ScrollViewer.Height = "NaN"
         }
         Default {
 
@@ -12168,7 +12184,10 @@ function Get-DateStatus {
     {
         Show-Event -image "https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/happy.jpg" -ImageHeight 400 -title "$happybirthday" -description "$myplaylist" -day "Birthday" -WindowHeight 600 -WindowWidth 486
     } 
-    else 
+    elseif ($itt.Date.Month -eq 10 -and $itt.Date.Day -eq 7 -or $itt.Date.Day -eq 8 ) 
+    {
+        Show-Event -image "https://raw.githubusercontent.com/emadadel4/ITT/refs/heads/main/Resources/Images/OctoPair.jpg" -ImageHeight 500 -title "Celebrating" -description "Celebrating the anniversary of OctoPair 7-8" -day "OctoPair" -WindowHeight 655 -WindowWidth 400 
+    }else 
     {
         if($itt.PopupWindow -eq "off") {return}   
         Show-Event -image "https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/thumbnail.jpg" -title "$watchdemo" -description "$subs" -day "Default" -WindowHeight 500 -WindowWidth 486
@@ -16570,7 +16589,7 @@ $EventXaml = '<Window
 
                     <!-- Header -->
                         <Grid Row="1">
-                            <ScrollViewer VerticalScrollBarVisibility="Auto" Height="366">
+                            <ScrollViewer Name="ScrollViewer" VerticalScrollBarVisibility="Auto" Height="375">
                                 <StackPanel Orientation="Vertical">
                                         <!--Image-->
                                         <Image 
@@ -16589,6 +16608,7 @@ $EventXaml = '<Window
                                         Text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet amet obcaecati dolorem, sit iusto consequatur, libero laudantium officia quo ea officiis nulla esse quod ex, mollitia asperiores! Accusantium, labore pariatur."
                                         Height="Auto"
                                         Width="Auto"
+                                        Visibility="Visible"
                                         Margin="0,10,0,0"
                                         Foreground="{DynamicResource DefaultTextColor2}"
                                         TextWrapping="Wrap"
@@ -16611,6 +16631,7 @@ $EventXaml = '<Window
                             Cursor="Hand"
                             Padding="15"
                             Height="Auto"
+                            Visibility="Visible"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
                             />
