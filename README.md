@@ -200,3 +200,8 @@ English
   If you can't lift the injustice, at least tell everyone about it.
 </h3>
 
+
+<h2>🔑 Keywords</h2>
+
+`itt, Install Tweaks Tool, windows10debloater, windows11debloater, windows-optimization, Application Installation, System Optimization, Windows Tools, Automation, System Customization, Software Updates, Silent Installers, PowerShell Scripts, Developer Tools, Windows Applications, windows-tweaks, disable-windows-updates, activator-windows, windows-optimization-tool`
+
