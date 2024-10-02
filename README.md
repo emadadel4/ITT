@@ -180,7 +180,7 @@ English
 
 
 
-### Recommend watching these videos.
+### Recommended videos.
 
 <div align="left">
 
