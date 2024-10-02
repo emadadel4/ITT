@@ -203,4 +203,4 @@ English
 
 <h2>🔑 Keywords</h2>
 
-`itt, Install Tweaks Tool, windows10debloater, windows11debloater, windows-optimization, Application Installation, System Optimization, Windows Tools, Automation, System Customization, Software Updates, Silent Installers, PowerShell Scripts, Developer Tools, Windows Applications, windows-tweaks, disable-windows-updates, activator-windows, windows-optimization-tool`
+`itt, Install Tweaks Tool, windows10debloater, windows11debloater, windows-optimization, Application Installation, System Optimization, Windows Tools, Automation, System Customization, Software Updates, Silent Installers, PowerShell Scripts, Developer Tools, Windows Applications, windows-tweaks, disable-windows-updates, activator-windows, windows-optimization-tool, tweaks, tweaker, Privacy, Security,  privacy-policy `
