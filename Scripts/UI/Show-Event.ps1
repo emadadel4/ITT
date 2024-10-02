@@ -107,7 +107,10 @@ function Get-DateStatus {
     {
         Show-Event -image "https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/happy.jpg" -ImageHeight 400 -title "$happybirthday" -description "$myplaylist" -day "Birthday" -WindowHeight 600 -WindowWidth 486
     } 
-    else 
+    elseif ($itt.Date.Month -eq 10 -and $itt.Date.Day -eq 7 -or $itt.Date.Day -eq 8 ) 
+    {
+        Show-Event -image "https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/happy.jpg" -ImageHeight 400 -title "$happybirthday" -description "$myplaylist" -day "Birthday" -WindowHeight 600 -WindowWidth 486 
+    } 
     {
         if($itt.PopupWindow -eq "off") {return}   
         Show-Event -image "https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/thumbnail.jpg" -title "$watchdemo" -description "$subs" -day "Default" -WindowHeight 500 -WindowWidth 486
