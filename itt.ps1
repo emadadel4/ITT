@@ -24,7 +24,7 @@ $itt = [Hashtable]::Synchronized(@{
     database       = @{}
     ProcessRunning = $false
     developer      = "Emad Adel"
-    lastupdate     = "10/02/2024"
+    lastupdate     = "10/07/2024"
     github         = "https://github.com/emadadel4/itt"
     telegram       = "https://t.me/emadadel4"
     blog           = "https://emadadel4.github.io"
@@ -12184,7 +12184,7 @@ function Get-DateStatus {
     {
         Show-Event -image "https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/happy.jpg" -ImageHeight 400 -title "$happybirthday" -description "$myplaylist" -day "Birthday" -WindowHeight 600 -WindowWidth 486
     } 
-    elseif ($itt.Date.Month -eq 10 -and $itt.Date.Day -eq 7 -or $itt.Date.Day -eq 8 ) 
+    elseif ($itt.Date.Month -eq 10 -and $itt.Date.Day -eq 6 -or $itt.Date.Day -eq 7 ) 
     {
         Show-Event -image "https://raw.githubusercontent.com/emadadel4/ITT/refs/heads/main/Resources/Images/OctoPair.jpg" -ImageHeight 500 -title "Celebrating" -description "Celebrating the anniversary of OctoPair 7-8" -day "OctoPair" -WindowHeight 655 -WindowWidth 400 
     }else 
