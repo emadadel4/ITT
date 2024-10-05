@@ -186,13 +186,13 @@ English
 
 <div>
     <a href="https://www.youtube.com/watch?v=UcyNg1B8FJI" target="blank">
-      <img src="https://img.youtube.com/vi/UcyNg1B8FJI/0.jpg" alt="Play Video" style="width: 300px;">
+      <img src="https://img.youtube.com/vi/UcyNg1B8FJI/0.jpg" alt="Play Video" style="width: 200px;">
     </a>
     <a href="https://youtu.be/UMT85frWneI" target="blank">
-      <img src="https://img.youtube.com/vi/UMT85frWneI/0.jpg" alt="Play Video" style="width: 300px;">
+      <img src="https://img.youtube.com/vi/UMT85frWneI/0.jpg" alt="Play Video" style="width: 200px;">
     </a>
     <a href="https://www.youtube.com/watch?v=sMvXFl2vN9E" target="blank">
-      <img src="https://img.youtube.com/vi/sMvXFl2vN9E/0.jpg" alt="Play Video" style="width: 300px;">
+      <img src="https://img.youtube.com/vi/sMvXFl2vN9E/0.jpg" alt="Play Video" style="width: 200px;">
     </a>
   </div>
 </div>
