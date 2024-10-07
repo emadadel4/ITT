@@ -7316,6 +7316,12 @@ $itt.database.OST = '{
       "name": "Sigrid - Everybody Knows",
       "url": "https://archive.org/download/justiceleagueflac/Danny%20Elfman%20-%20Justice%20League%20%28Original%20Motion%20Picture%20Soundtrack%29/01%20-%20Everybody%20Knows.mp3"
     }
+  ],
+  "Otobers":[
+   {
+      "name": "Rajieen",
+      "url": "https://emadadel4.github.io/sounds/Rajieen.mp3"
+   }
   ]
 }
 ' | ConvertFrom-Json
@@ -10761,9 +10767,15 @@ function Startup  {
         
                 # Play Favorite Music in Special Date
                 if ($itt.Date.Month -eq 9 -and $itt.Date.Day -eq 1) {
+
                     return $itt.database.OST.Favorite | Get-Random -Count $itt.database.OST.Favorite.Count
+
+                }elseif($itt.Date.Month -eq 10 -and $itt.Date.Day -eq 6 -or $itt.Date.Day -eq 7)
+                {
+                    return $itt.database.OST.Otobers | Get-Random -Count $itt.database.OST.Otobers.Count
                 }
-                else {
+                else
+                {
                     return $itt.database.OST.Tracks | Get-Random -Count $itt.database.OST.Tracks.Count
                 }
             }
