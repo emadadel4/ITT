@@ -61,24 +61,20 @@ function Startup  {
                 return $Array
             }
         
-            # Function to get names from the JSON file
-            function Get-NamesFromJson {
-                $jsonContent =  $jsonFilePath 
-                return $jsonContent.Q
+            # Function to get quotes from the JSON file
+            function Get-QuotesFromJson {
+                $jsonContent = $jsonFilePath
+                return $jsonContent.Quotes
             }
         
-            # Get shuffled names
-            $shuffledNames = ShuffleArray -Array (Get-NamesFromJson)
+            # Get shuffled quotes
+            $shuffledQuotes = ShuffleArray -Array (Get-QuotesFromJson)
         
             # Function to display welcome text
             function Show-WelcomeText {
                 $itt.Quotes.Dispatcher.Invoke([Action]{
-        
-                    #$fullCulture = (Get-ItemPropertyValue -Path "HKCU:\Control Panel\International" -Name "LocaleName")
-                    #$shortCulture = $fullCulture.Split('-')[0]
                     $itt.QuoteIcon.Text = ""
                     $itt.Quotes.Text = $itt.database.locales.Controls.$($itt.Language).welcome
-                    
                 })
             }
         
@@ -86,19 +82,49 @@ function Startup  {
             Show-WelcomeText
         
             Start-Sleep -Seconds 28
-        
-            # Loop through shuffled names and display them
+
+            # Loop through shuffled quotes and display them
             do {
-                foreach ($name in $shuffledNames) {
+                foreach ($quote in $shuffledQuotes) {
                     $itt.Quotes.Dispatcher.Invoke([Action]{
-                        $itt.QuoteIcon.Text = ""
-                        $itt.Quotes.Text = "`“$name`”"
+
+                        # Display icon based on the 'type' of the quote
+                        switch ($quote.type) {
+                            "quote" { 
+                                $itt.QuoteIcon.Text = ""  # Icon for quotes
+                            }
+                            "info" { 
+                                $itt.QuoteIcon.Text = ""  # Icon for info
+                            }
+                            "music" {
+                                $itt.QuoteIcon.Text = ""  # Icon for music 
+                            }
+                            "Cautton"
+                            {
+                                $itt.QuoteIcon.Text = ""  # Fallback icon
+                            }
+                            Default {
+                                $itt.QuoteIcon.Text = ""  # Fallback icon
+                            }
+                        }
+
+                        # Check if the quote has a 'name' field, else use just the 'text'
+                        $quoteText = if ($quote.name) {
+                            "`“$($quote.text)`” ― $($quote.name)"
+                        } else {
+                            "`“$($quote.text)`”"
+                        }
+
+                        # Display the quote text
+                        $itt.Quotes.Text = $quoteText
                     })
-                    # Adjust the sleep time as needed
+
+                    # sleep time 
                     Start-Sleep -Seconds 18 
                 }
             } while ($true)
         }
+        
 
         function Get-PCInfo {
             param (
