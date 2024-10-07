@@ -7323,10 +7323,6 @@ $itt.database.OST = '{
     "url": "https://emadadel4.github.io/sounds/Falstiny.mp3"
    },
    {
-    "name": "اخويا فلسطيني - مصطفى النسر",
-    "url": "https://emadadel4.github.io/sounds/Mostafa.Elnesr.mp3"
-   },
-   {
     "name": "تلك قضية - كايروكي",
     "url": "https://emadadel4.github.io/sounds/Telk Qadeya.mp3"
    },
@@ -13478,16 +13474,13 @@ Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Icons/icon.
                                     
         <MenuItem IsEnabled="False" ToolTip="Emad Adel">
             <MenuItem.Icon>
-
                 <Image Source="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/ps.png" Width="90" Height="Auto" Margin="5,5,0,0">
                     <Image.Effect>
                         <DropShadowEffect Color="#027a3d" BlurRadius="5" ShadowDepth="0" Opacity="0.5"/>
                     </Image.Effect>
                 </Image>
-
             </MenuItem.Icon>
         </MenuItem>
-
 
         <MenuItem Header="{Binding management}" FontFamily="arial" FontSize="13"  Margin="10,0,0,0" BorderBrush="Transparent" BorderThickness="0" VerticalAlignment="Center" HorizontalAlignment="Left">
             <MenuItem.Icon>
