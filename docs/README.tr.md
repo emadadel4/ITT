@@ -31,8 +31,14 @@ ITT (Kurulum ve Ayar Aracı) 🛠️ 🚀
 <li>"PowerShell" veya "Terminal" seçin ve aşağıdaki komutlardan birini yapıştırın:</li>
 </ol>
 
-<pre><code>irm bit.ly/emadadel | iex
-</code></pre>
+**Dikkat**  
+Bu depo'dan resmi komutları kullanarak betiği çalıştırın. Bu taşınabilir bir betik değildir, bu yüzden başka sitelerden indirmenizi tavsiye ederim.
+
+<pre><code>irm bit.ly/ittea | iex</code></pre>
+
+<pre><code>irm bit.ly/emadadel | iex</code></pre>
+
+<pre><code>irm cutt.ly/ittea | iex</code></pre>
 
 veya
 
@@ -84,13 +90,9 @@ veya
 <pre><code>newQuote.ps1
 </code></pre>
 
-<h3>Derleme</h3>
+<h3>Derle ve çalıştır</h3>
 
 <pre><code>build.ps1
-</code></pre>
-
-<h3>Değişikliklerinizi Görün</h3>
-<pre><code>itt.ps1
 </code></pre>
 
 <p><em>Değişikliklerinizi validate etmeden önce test ettiğinizden emin olun.</em></p>

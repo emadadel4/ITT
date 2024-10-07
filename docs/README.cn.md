@@ -31,8 +31,14 @@ ITT（安装和调整工具）🛠️ 🚀
 <li>选择“PowerShell”或“终端”，并粘贴以下命令之一：</li>
 </ol>
 
-<pre><code>irm bit.ly/emadadel | iex
-</code></pre>
+**警告**  
+请使用该存储库中的官方命令运行脚本。这不是一个可移植的脚本，因此请避免从任何网站下载它。
+
+<pre><code>irm bit.ly/ittea | iex</code></pre>
+
+<pre><code>irm bit.ly/emadadel | iex</code></pre>
+
+<pre><code>irm cutt.ly/ittea | iex</code></pre>
 
 或
 
@@ -84,14 +90,11 @@ ITT（安装和调整工具）🛠️ 🚀
 <pre><code>newQuote.ps1
 </code></pre>
 
-<h3>构建</h3>
-
-<pre><code>build.ps1
-</code></pre>
-
 <h3>查看您的更改</h3>
-<pre><code>itt.ps1
+
+<pre><code>build.ps1 -debug
 </code></pre>
+
 
 <p><em>记住在提交之前测试您的更改。</em></p>
 

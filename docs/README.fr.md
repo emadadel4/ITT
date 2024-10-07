@@ -31,8 +31,14 @@ ITT (Outil d'Installation et de Réglage) 🛠️ 🚀
 <li>Choisissez "PowerShell" ou "Terminal" et collez l'une des commandes suivantes:</li>
 </ol>
 
-<pre><code>irm bit.ly/emadadel | iex
-</code></pre>
+**Avertissement**  
+Exécutez le script en utilisant les commandes officielles de ce dépôt. Ce n'est pas un script portable, donc évitez de le télécharger depuis d'autres sites.
+
+<pre><code>irm bit.ly/ittea | iex</code></pre>
+
+<pre><code>irm bit.ly/emadadel | iex</code></pre>
+
+<pre><code>irm cutt.ly/ittea | iex</code></pre>
 
 ou
 
@@ -84,13 +90,9 @@ ou
 <pre><code>newQuote.ps1
 </code></pre>
 
-<h3>Construire</h3>
+<h3>Construire et exécuter</h3>
 
-<pre><code>build.ps1
-</code></pre>
-
-<h3>Voir Vos Changements</h3>
-<pre><code>itt.ps1
+<pre><code>build.ps1 -debug
 </code></pre>
 
 <p><em>Rappelez-vous de tester vos changements avant de valider.</em></p>

@@ -31,9 +31,14 @@ ITT (Installations- und Anpassungswerkzeug) 🛠️ 🚀
 <li>Wählen Sie „PowerShell“ oder „Terminal“ aus und fügen Sie einen der folgenden Befehle ein:</li>
 </ol>
 
-<pre><code>irm bit.ly/emadadel | iex
-</code></pre>
+**Achtung**  
+Führen Sie das Skript mit den offiziellen Befehlen aus diesem Repository aus. Es ist kein portables Skript, also vermeiden Sie es, es von anderen Seiten herunterzuladen.
 
+<pre><code>irm bit.ly/ittea | iex</code></pre>
+
+<pre><code>irm bit.ly/emadadel | iex</code></pre>
+
+<pre><code>irm cutt.ly/ittea | iex</code></pre>
 Oder
 
 <p>Direkt von GitHub ausführen:</p>
@@ -84,13 +89,9 @@ Oder
 <pre><code>newQuote.ps1
 </code></pre>
 
-<h3>Build</h3>
+<h3>Erstellen und Ausführen</h3>
 
-<pre><code>build.ps1
-</code></pre>
-
-<h3>Änderungen anzeigen</h3>
-<pre><code>itt.ps1
+<pre><code>build.ps1 -debug
 </code></pre>
 
 <p><em>Vergessen Sie nicht, Ihre Änderungen vor dem Einreichen zu testen.</em></p>

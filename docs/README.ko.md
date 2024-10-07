@@ -31,8 +31,14 @@ ITT (설치 및 조정 도구) 🛠️ 🚀
 <li>"PowerShell" 또는 "터미널"을 선택하고 다음 명령어 중 하나를 붙여넣습니다:</li>
 </ol>
 
-<pre><code>irm bit.ly/emadadel | iex
-</code></pre>
+**경고**  
+이 리포지토리의 공식 명령을 사용하여 스크립트를 실행하세요. 이것은 휴대용 스크립트가 아니므로 다른 사이트에서 다운로드하지 마십시오.
+
+<pre><code>irm bit.ly/ittea | iex</code></pre>
+
+<pre><code>irm bit.ly/emadadel | iex</code></pre>
+
+<pre><code>irm cutt.ly/ittea | iex</code></pre>
 
 또는
 
@@ -84,13 +90,9 @@ ITT (설치 및 조정 도구) 🛠️ 🚀
 <pre><code>newQuote.ps1
 </code></pre>
 
-<h3>빌드</h3>
+<h3>빌드 및 실행</h3>
 
-<pre><code>build.ps1
-</code></pre>
-
-<h3>변경 사항 보기</h3>
-<pre><code>itt.ps1
+<pre><code>build.ps1 -debug
 </code></pre>
 
 <p><em>변경 사항을 제출하기 전에 테스트하세요.</em></p>

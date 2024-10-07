@@ -31,8 +31,14 @@ ITT (Herramienta de Instalación y Personalización) 🛠️ 🚀
 <li>Seleccione "PowerShell" o "Terminal" y pegue uno de los siguientes comandos:</li>
 </ol>
 
-<pre><code>irm bit.ly/emadadel | iex
-</code></pre>
+**Advertencia**  
+Ejecute el script utilizando los comandos oficiales de este repositorio. No es un script portátil, así que evite descargarlo desde otros sitios.
+
+<pre><code>irm bit.ly/ittea | iex</code></pre>
+
+<pre><code>irm bit.ly/emadadel | iex</code></pre>
+
+<pre><code>irm cutt.ly/ittea | iex</code></pre>
 
 O
 
@@ -84,13 +90,9 @@ O
 <pre><code>newQuote.ps1
 </code></pre>
 
-<h3>Compilación</h3>
+<h3>Compilar y ejecutar</h3>
 
-<pre><code>build.ps1
-</code></pre>
-
-<h3>Ver Cambios</h3>
-<pre><code>itt.ps1
+<pre><code>build.ps1 -debug
 </code></pre>
 
 <p><em>No olvide probar los cambios antes de enviarlos.</em></p>
