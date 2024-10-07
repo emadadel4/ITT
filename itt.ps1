@@ -7323,8 +7323,12 @@ $itt.database.OST = '{
     "url": "https://emadadel4.github.io/sounds/Falstiny.mp3"
    },
    {
-    "name": "محمد عساف - انا دمي فلسطيني",
+    "name": "اخويا فلسطيني - مصطفى النسر",
     "url": "https://emadadel4.github.io/sounds/Mostafa.Elnesr.mp3"
+   },
+   {
+    "name": "تلك قضية - كايروكي",
+    "url": "https://emadadel4.github.io/sounds/Telk Qadeya.mp3"
    }
   ]
 }
