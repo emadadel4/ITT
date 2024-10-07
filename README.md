@@ -50,7 +50,7 @@
     <a href="https://t.me/ittemadadel" style="margin-right: 20px;">
         <img src="https://img.shields.io/badge/Telegram-2CA5E0?style=flat&logo=telegram&logoColor=white" alt="Telegram" height="25">
     </a>
-    <a href="https://discord.gg/3eV79KgD" style="margin-right: 20px;">
+    <a href="https://discord.gg/63m34EE6mX" style="margin-right: 20px;">
         <img src="https://img.shields.io/badge/-Discord-7289da?style=flat&logo=discord&logoColor=white" alt="Discord" height="25">
     </a>
     <a href="https://emadadel4.github.io" style="margin-right: 20px;">
