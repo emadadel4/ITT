@@ -14,49 +14,49 @@
 
 <div align="center">
 
-  <a href="/docs/README.ar.md" target="_blink">
+  <a href="/docs/README.ar.md" target="_blank">
     <img src="https://img.shields.io/badge/-Arabic-green" alt="Arabic">
   </a>
   <a href="/README.md">
     <img src="https://img.shields.io/badge/-English-green" alt="English">
   </a>
-  <a href="/docs/README.fr.md" target="_blink">
+  <a href="/docs/README.fr.md" target="_blank">
     <img src="https://img.shields.io/badge/-Français-blue" alt="Français">
   </a>
-  <a href="/docs/README.tr.md" target="_blink">
+  <a href="/docs/README.tr.md" target="_blank">
     <img src="https://img.shields.io/badge/-Türkçe-red" alt="Türkçe">
   </a>
-  <a href="/docs/README.cn.md" target="_blink">
+  <a href="/docs/README.cn.md" target="_blank">
     <img src="https://img.shields.io/badge/-中文-yellow" alt="中文">
   </a>
-  <a href="/docs/README.ko.md" target="_blink">
+  <a href="/docs/README.ko.md" target="_blank">
     <img src="https://img.shields.io/badge/-한국어-purple" alt="한국어">
   </a>
-  <a href="/docs/README.de.md" target="_blink">
+  <a href="/docs/README.de.md" target="_blank">
     <img src="https://img.shields.io/badge/-Deutsch-orange" alt="Deutsch">
   </a>
-  <a href="/docs/README.ru.md" target="_blink">
+  <a href="/docs/README.ru.md" target="_blank">
     <img src="https://img.shields.io/badge/-Русский-blue" alt="Русский">
   </a>
-  <a href="/docs/README.es.md" target="_blink">
+  <a href="/docs/README.es.md" target="_blank">
     <img src="https://img.shields.io/badge/-Español-red" alt="Español">
   </a>
 </div>
 
 <div align="center">
-   <a href="https://www.youtube.com/@emadadel4" style="margin-right: 20px;">
+   <a href="https://www.youtube.com/@emadadel4" target="_blank" style="margin-right: 20px;">
         <img src="https://img.shields.io/badge/YouTube-FF0000?style=flat&logo=youtube&logoColor=white" alt="YouTube" height="25">
     </a>
-    <a href="https://t.me/ittemadadel" style="margin-right: 20px;">
+    <a href="https://t.me/ittemadadel" target="_blank" style="margin-right: 20px;">
         <img src="https://img.shields.io/badge/Telegram-2CA5E0?style=flat&logo=telegram&logoColor=white" alt="Telegram" height="25">
     </a>
-    <a href="https://discord.gg/63m34EE6mX" style="margin-right: 20px;">
+    <a href="https://discord.gg/63m34EE6mX" target="_blank" style="margin-right: 20px;">
         <img src="https://img.shields.io/badge/-Discord-7289da?style=flat&logo=discord&logoColor=white" alt="Discord" height="25">
     </a>
-    <a href="https://emadadel4.github.io" style="margin-right: 20px;">
+    <a href="https://emadadel4.github.io" target="_blank" style="margin-right: 20px;">
         <img src="https://img.shields.io/badge/Blog-0000?style=flat&logo=blogger&logoColor=white" alt="Blog" height="25">
     </a>
-    <a href="https://www.reddit.com/r/ittea/" style="margin-right: 20px;">
+    <a href="https://www.reddit.com/r/ittea/" target="_blank" style="margin-right: 20px;">
       <img src="https://img.shields.io/badge/Reddit-FFf?style=flat&logo=reddit&logoColor=black" alt="reddit" height="25">
     </a>
 </div>
