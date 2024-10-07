@@ -83,12 +83,9 @@ function Invoke-Install {
 
                 # Some packages won't install until the package folder is removed.
                 $chocoFolder = Join-Path $env:ProgramData "chocolatey\lib\$($_.Choco)"
-                if(Test-Path $chocoFolder){
-                        
-                    Remove-Item -Path "$chocoFolder" -Recurse -Force
-                    Remove-Item -Path "$chocoFolder.install" -Recurse -Force
-                    Remove-Item -Path "$env:TEMP\chocolatey" -Recurse -Force
-                }
+                Remove-Item -Path "$chocoFolder" -Recurse -Force
+                Remove-Item -Path "$chocoFolder.install" -Recurse -Force
+                Remove-Item -Path "$env:TEMP\chocolatey" -Recurse -Force
 
                 Install-App -appName $_.Name -appWinget $_.Winget -appChoco $_.Choco
 
