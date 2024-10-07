@@ -246,7 +246,7 @@ function CountItems {
     Write-Host  " $($itt.database.OST.Tracks.Count) Tracks" -ForegroundColor Yellow
     Write-Host  " $($itt.database.Settings.Count) Settings" -ForegroundColor Yellow
     Write-Host  " $(($itt.database.locales.Controls.PSObject.Properties | Measure-Object).Count) Localization" -ForegroundColor Yellow
-    Update-Readme -Apps $($itt.database.Applications.Count) -Tewaks $($itt.database.Tweaks.Count) -Quote $($itt.database.Quotes.Q.Count)  -Track $($itt.database.OST.Tracks.Count) -Settings $($itt.database.Settings.Count) -Localization $(($itt.database.locales.Controls.PSObject.Properties | Measure-Object).Count)
+    Update-Readme -Apps $($itt.database.Applications.Count) -Tewaks $($itt.database.Tweaks.Count) -Quote $($itt.database.Quotes.Quotes.Count)  -Track $($itt.database.OST.Tracks.Count) -Settings $($itt.database.Settings.Count) -Localization $(($itt.database.locales.Controls.PSObject.Properties | Measure-Object).Count)
 }
 
 # Write script header
