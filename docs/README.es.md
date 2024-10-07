@@ -4,42 +4,9 @@
   </a>
 </p>
 
-<h1 align="center">ITT (Herramienta de Instalación y Personalización) 🛠️ 🚀
-<div align="center">
-<a href="/README.md">
-  <img src="https://img.shields.io/badge/-English-green" alt="English">
-</a>
-</div>
+<h1 align="center">
+ITT (Herramienta de Instalación y Personalización) 🛠️ 🚀
 </h1>
-
-<div align="center">
-   <a href="https://www.youtube.com/@emadadel4" style="margin-right: 20px;">
-        <img src="https://img.shields.io/badge/YouTube-FF0000?style=flat&logo=youtube&logoColor=white" alt="YouTube" height="30">
-    </a>
-    <a href="https://t.me/ittemadadel" style="margin-right: 20px;">
-        <img src="https://img.shields.io/badge/Telegram-2CA5E0?style=flat&logo=telegram&logoColor=white" alt="Telegram" height="30">
-    </a>
-    <a href="https://emadadel4.github.io" style="margin-right: 20px;">
-        <img src="https://img.shields.io/badge/Blog-FF5722?style=flat&logo=blogger&logoColor=white" alt="Blog" height="30">
-    </a>
-    <a href="https://discord.gg/3eV79KgD" style="margin-right: 20px;">
-        <img src="https://img.shields.io/badge/-Discord-7289da?style=flat&logo=discord&logoColor=white" alt="Discord" height="30">
-    </a>
-</div>
-
-<p align="center">
-<a href="https://www.buymeacoffee.com/emadadel" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="30" width="150">
-</a>
-
-  <a href="https://www.patreon.com/emadadel" target="_blank">
-    <img src="https://img.shields.io/badge/Patron-blue?logo=patreon" alt="Patron" height="30">
-  </a>
-
-  <a href="https://ko-fi.com/emadadel" target="_blank">
-  <img src="https://img.shields.io/badge/Ko--fi-blue?logo=kofi" alt="Ko-fi" height="30">
-</a>
-
-</p>
 
 <p align="center">
   <a target="_blank" rel="noopener noreferrer" href="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/demo.PNG">
