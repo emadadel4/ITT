@@ -16,9 +16,15 @@ function Startup  {
         
                 # Play Favorite Music in Special Date
                 if ($itt.Date.Month -eq 9 -and $itt.Date.Day -eq 1) {
+
                     return $itt.database.OST.Favorite | Get-Random -Count $itt.database.OST.Favorite.Count
+
+                }elseif($itt.Date.Month -eq 10 -and $itt.Date.Day -eq 6 -or $itt.Date.Day -eq 7)
+                {
+                    return $itt.database.OST.Otobers | Get-Random -Count $itt.database.OST.Otobers.Count
                 }
-                else {
+                else
+                {
                     return $itt.database.OST.Tracks | Get-Random -Count $itt.database.OST.Tracks.Count
                 }
             }
