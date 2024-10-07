@@ -240,9 +240,10 @@ function NewCONTRIBUTOR {
 function CountItems {
     Write-Host  "`n` $($itt.database.Applications.Count) Apps" -ForegroundColor Yellow
     Write-Host  " $($itt.database.Tweaks.Count) Tweaks" -ForegroundColor Yellow
-    Write-Host  " $($itt.database.Quotes.Q.Count) Quotes" -ForegroundColor Yellow
+    Write-Host  " $($itt.database.Quotes.Quotes.Count) Quotes" -ForegroundColor Yellow
     Write-Host  " $($itt.database.OST.Tracks.Count) Tracks" -ForegroundColor Yellow
     Write-Host  " $($itt.database.Settings.Count) Settings" -ForegroundColor Yellow
+    Write-Host  " $(($itt.database.locales.Controls.PSObject.Properties | Measure-Object).Count) Localization" -ForegroundColor Yellow
     Update-Readme -Apps $($itt.database.Applications.Count) -Tewaks $($itt.database.Tweaks.Count) -Quote $($itt.database.Quotes.Q.Count)  -Track $($itt.database.OST.Tracks.Count) -Settings $($itt.database.Settings.Count)
 }
 
