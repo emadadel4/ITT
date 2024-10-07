@@ -16834,7 +16834,7 @@ Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Icons/icon.
             Text="#StandWithPalestine"
             FontWeight="SemiBold"
             FlowDirection="LeftToRight"
-            Width="555"
+            Width="611"
           />
 
         </StackPanel>
