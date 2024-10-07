@@ -9,7 +9,7 @@
 </h1>
 
 <div align="center">
-  <h5> 333 App |  38 Tweaks | 6 Settings | 0 Quote |  12 Soundtrack | 9 Localization </h5>
+  <h5> 333 App |  38 Tweaks | 6 Settings | 93 Quote |  12 Soundtrack | 9 Localization </h5>
 </div>
 
 <div align="center">
