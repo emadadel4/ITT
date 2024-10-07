@@ -262,11 +262,5 @@ function Startup  {
         LOG
         PlayMusic
         Quotes
-
-        $script:powershell.EndInvoke($script:handle)
-        $script:powershell.Dispose()
-        $sync.runspace.Dispose()
-        $sync.runspace.Close()
-        [System.GC]::Collect()              
     }
 }
