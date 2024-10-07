@@ -157,7 +157,8 @@ function Update-Readme {
         [string]$Tewaks,
         [string]$Quote,
         [string]$Track,
-        [string]$Settings
+        [string]$Settings,
+        [string]$Localization
 
     )
 
@@ -169,7 +170,8 @@ function Update-Readme {
     -replace "#{t}", $Tewaks `
     -replace "#{q}", $Quote `
     -replace "#{OST}", $Track `
-    -replace "#{s}", $Settings
+    -replace "#{s}", $Settings `
+    -replace "#{loc}", $Localization
 
     # Write the updated content to the new README.md file
     Set-Content -Path $NewReadmePath -Value $updatedContent
@@ -244,7 +246,7 @@ function CountItems {
     Write-Host  " $($itt.database.OST.Tracks.Count) Tracks" -ForegroundColor Yellow
     Write-Host  " $($itt.database.Settings.Count) Settings" -ForegroundColor Yellow
     Write-Host  " $(($itt.database.locales.Controls.PSObject.Properties | Measure-Object).Count) Localization" -ForegroundColor Yellow
-    Update-Readme -Apps $($itt.database.Applications.Count) -Tewaks $($itt.database.Tweaks.Count) -Quote $($itt.database.Quotes.Q.Count)  -Track $($itt.database.OST.Tracks.Count) -Settings $($itt.database.Settings.Count)
+    Update-Readme -Apps $($itt.database.Applications.Count) -Tewaks $($itt.database.Tweaks.Count) -Quote $($itt.database.Quotes.Q.Count)  -Track $($itt.database.OST.Tracks.Count) -Settings $($itt.database.Settings.Count) -Localization $(($itt.database.locales.Controls.PSObject.Properties | Measure-Object).Count)
 }
 
 # Write script header

@@ -9,7 +9,7 @@
 </h1>
 
 <div align="center">
-  <h5> #{a} App |  #{t} Tweaks | #{s} Settings | #{q} Quote |  #{OST} Soundtrack </h5>
+  <h5> #{a} App |  #{t} Tweaks | #{s} Settings | #{q} Quote |  #{OST} Soundtrack | #{loc} Localization </h5>
 </div>
 
 <div align="center">
