@@ -748,7 +748,7 @@ $itt.database.Applications = '[
     "name": "Discord",
     "description": "A VoIP application and digital distribution platform designed for creating communities and connecting gamers, providing text, voice, and video communication features.",
     "winget": "Discord.Discord",
-    "choco": "discord",
+    "choco": "discord.install",
     "scoop": "none",
     "default": [
       {
