@@ -29,14 +29,7 @@ function Install-App {
     )
 
     Install-Choco
-
-    if(Test-Path "C:\ProgramData\chocolatey\lib\$appChoco"){
-        Remove-Item -Path "C:\ProgramData\chocolatey\lib\$appChoco" -Force -Recurse
-        Remove-Item -Path "$env:TEMP\chocolatey" -Force -Recurse
-        # debug
-        #Add-Log -Message "C:\ProgramData\chocolatey\lib\$appChoco" -Level "INFO"
-    }
-        
+            
     $chocoResult = $(Start-Process -FilePath "choco" -ArgumentList "install $appChoco --confirm --acceptlicense -q -r --ignore-http-cache --allowemptychecksumsecure --allowemptychecksum --usepackagecodes --ignoredetectedreboot --ignore-checksums --ignore-reboot-requests --limitoutput" -Wait -NoNewWindow -PassThru).ExitCode
 
     if ($chocoResult -ne 0) {
