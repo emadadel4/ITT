@@ -85,7 +85,7 @@
 </ol>
 
 > [!CAUTION]  
-Run the script using official commands from this repository. It's not a portable script, so avoid downloading it from other sites.
+Run the script using official commands from this repository. It's not a portable script, so avoid download it from any sites.
 
 <pre><code>irm bit.ly/ittea | iex</code></pre>
 
