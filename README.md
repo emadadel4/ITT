@@ -191,6 +191,9 @@ English
     <a href="https://www.youtube.com/watch?v=sMvXFl2vN9E" target="blank">
       <img src="https://img.youtube.com/vi/sMvXFl2vN9E/0.jpg" alt="Play Video" style="width: 200px;">
     </a>
+   <a href="https://youtu.be/aVZDOUMAZXI" target="blank">
+      <img src="https://img.youtube.com/vi/aVZDOUMAZXI/0.jpg" alt="Play Video" style="width: 200px;">
+    </a>
   </div>
 </div>
 
