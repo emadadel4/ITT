@@ -73,14 +73,30 @@ function Invoke-Install {
         UpdateUI -Button "InstallBtn" -ButtonText "installText" -Content "downloading" -TextIcon "installIcon" -Icon "  " -Width "144"
         $itt["window"].Dispatcher.Invoke([action]{ Set-Taskbar -progress "Indeterminate" -value 0.01 -icon "logo" })
 
+
+  
+
         $selectedApps | ForEach-Object {
 
             if ($_.Winget -ne "none" -or $_.Choco -ne "none")
             {
+
+                # Some packages won't install until the package folder is removed.
+                $chocoFolder = Join-Path $env:ProgramData "chocolatey\lib\$($_.Choco)"
+                if(Test-Path $chocoFolder){
+                        
+                    Remove-Item -Path "$chocoFolder" -Recurse -Force
+                    Remove-Item -Path "$chocoFolder.install" -Recurse -Force
+                    Remove-Item -Path "$env:TEMP\chocolatey" -Recurse -Force
+                }
+
                 Install-App -appName $_.Name -appWinget $_.Winget -appChoco $_.Choco
 
                 # Debug
                 #Write-Host $_.Winget $_.Choco
+                #Write-Host  $chocoFolder
+
+               
             }
             else
             {
