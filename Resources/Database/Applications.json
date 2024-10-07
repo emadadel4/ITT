@@ -6628,5 +6628,25 @@
     ],
     "category": "Development",
     "check": "false"
+  },
+  {
+    "name": "Win32 OpenSSH",
+    "description": "OpenSSH is a complete implementation of the SSH protocol version 2 for secure remote login command execution and file transfer",
+    "winget": "Microsoft.OpenSSH.Beta",
+    "choco": "openssh",
+    "scoop": "none",
+    "default": [
+      {
+        "IsExcute": "false",
+        "url": "none",
+        "exeArgs": "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath",
+        "output": "none",
+        "launcher": "none",
+        "shortcut": "no",
+        "run": "no"
+      }
+    ],
+    "category": "Utilities",
+    "check": "false"
   }
 ]
