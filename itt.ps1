@@ -11025,7 +11025,7 @@ function Startup  {
             Write-Host " +==============================================================================+" 
             Write-Host " You ready to Install anything.`n` " 
             Write-Host " Telegram: https://t.me/ittemadadel" 
-            Write-Host " Discord: https://discord.com/invite/3eV79KgD `n` "
+            Write-Host " Discord: https://discord.gg/63m34EE6mX `n` "
         
             Get-PCInfo
         
