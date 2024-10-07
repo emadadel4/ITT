@@ -11025,12 +11025,6 @@ function Startup  {
         LOG
         PlayMusic
         Quotes
-
-        $script:powershell.EndInvoke($script:handle)
-        $script:powershell.Dispose()
-        $sync.runspace.Dispose()
-        $sync.runspace.Close()
-        [System.GC]::Collect()              
     }
 }
 function ChangeTap {
@@ -13484,7 +13478,13 @@ Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Icons/icon.
                                     
         <MenuItem IsEnabled="False" ToolTip="Emad Adel">
             <MenuItem.Icon>
-                <Image Source="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/ps.png" Width="70" Height="Auto" Margin="5,5,0,0"/>
+
+                <Image Source="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/ps.png" Width="90" Height="Auto" Margin="5,5,0,0">
+                    <Image.Effect>
+                        <DropShadowEffect Color="#027a3d" BlurRadius="5" ShadowDepth="0" Opacity="0.5"/>
+                    </Image.Effect>
+                </Image>
+
             </MenuItem.Icon>
         </MenuItem>
 
