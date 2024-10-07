@@ -17,9 +17,6 @@
   <a href="/docs/README.ar.md">
     <img src="https://img.shields.io/badge/-Arabic-green" alt="Arabic">
   </a>
-  <a href="/README.md">
-    <img src="https://img.shields.io/badge/-English-green" alt="English">
-  </a>
   <a href="/docs/README.fr.md">
     <img src="https://img.shields.io/badge/-Français-blue" alt="Français">
   </a>
