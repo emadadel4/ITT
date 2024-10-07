@@ -13484,7 +13484,7 @@ Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Icons/icon.
                                     
         <MenuItem IsEnabled="False" ToolTip="Emad Adel">
             <MenuItem.Icon>
-                <Image Source="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/logo.png" Width="70" Height="Auto" Margin="5,5,0,0"/>
+                <Image Source="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/ps.png" Width="70" Height="Auto" Margin="5,5,0,0"/>
             </MenuItem.Icon>
         </MenuItem>
 
