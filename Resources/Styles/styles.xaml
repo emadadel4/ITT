@@ -12,13 +12,13 @@
         <DoubleAnimation
             Storyboard.TargetProperty="Opacity"
             From="0.0" To="1.0"
-            Duration="0:0:0.2" /> <!-- Fade out duration -->
+            Duration="0:0:01" /> <!-- Fade out duration -->
         
         <!-- Fade In -->
         <DoubleAnimation
             Storyboard.TargetProperty="Opacity"
             From="1.0" To="0.0"
-            Duration="0:0:0.8"
+            Duration="0:0:0.9"
             BeginTime="0:0:05" /> <!-- Start fade in after 21 seconds -->
     </Storyboard>
 <!--Logo Fade in-->
