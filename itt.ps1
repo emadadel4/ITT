@@ -13140,7 +13140,7 @@ Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Icons/icon.
                                 <Border Background="{TemplateBinding Background}" 
                                         BorderBrush="{DynamicResource BorderBrush}"     
                                         BorderThickness="2"
-                                        CornerRadius="5">
+                                        CornerRadius="0">
                                     <StackPanel IsItemsHost="True" 
                                                 KeyboardNavigation.DirectionalNavigation="Continue"/>
                                 </Border>
@@ -13149,10 +13149,10 @@ Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Icons/icon.
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="Border" Property="Background" Value="{DynamicResource HighlightBackground}"/>
-                            <Setter TargetName="TextBlock" Property="Foreground" Value="{DynamicResource HighlightTextColor}"/>
-                            <Setter TargetName="ShortcutText" Property="Foreground" Value="{DynamicResource HighlightTextColor}"/>
-                            <Setter TargetName="Arrow" Property="Fill" Value="{DynamicResource HighlightTextColor}"/>
+                            <Setter TargetName="Border" Property="Background" Value="{DynamicResource ButtonHighlightColor}"/>
+                            <Setter TargetName="TextBlock" Property="Foreground" Value="White"/>
+                            <Setter TargetName="ShortcutText" Property="Foreground" Value="White"/>
+                            <Setter TargetName="Arrow" Property="Fill" Value="White"/>
                         </Trigger>
                         <Trigger Property="HasItems" Value="True">
                             <Setter TargetName="Arrow" Property="Visibility" Value="Visible"/>
