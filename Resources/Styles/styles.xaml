@@ -324,9 +324,9 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <!-- Adjust appearance on hover if needed -->
-                            <Setter TargetName="Border" Property="Background" Value="{DynamicResource BGButtonColor}"/>
-                            <Setter TargetName="TextBlock" Property="Foreground" Value="{DynamicResource FGButtonColor}"/>
+                            <!-- Adjust appearance on hover, I just disabled it for now -->
+                            <!-- <Setter TargetName="Border" Property="Background" Value="{DynamicResource BGButtonColor}"/>
+                            <Setter TargetName="TextBlock" Property="Foreground" Value="{DynamicResource FGButtonColor}"/> -->
                         </Trigger>
                         <Trigger Property="HasItems" Value="True">
                             <Setter TargetName="Arrow" Property="Visibility" Value="Visible"/>
