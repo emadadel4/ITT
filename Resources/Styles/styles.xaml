@@ -11,23 +11,15 @@
         <!-- Fade Out -->
         <DoubleAnimation
             Storyboard.TargetProperty="Opacity"
-            From="1.0" To="0.5"
-            Duration="0:0:0.25" /> <!-- Fade out duration -->
-        
-        <!-- Hold the image at 0 opacity for 20 seconds -->
-        <DoubleAnimation
-    
-            Storyboard.TargetProperty="Opacity"
-            From="0.0" To="0.0"
-            Duration="0:0:15" 
-            BeginTime="0:0:0.25"/> <!-- Start holding time after fade out -->
+            From="0.0" To="1.0"
+            Duration="0:0:0.2" /> <!-- Fade out duration -->
         
         <!-- Fade In -->
         <DoubleAnimation
             Storyboard.TargetProperty="Opacity"
-            From="0.0" To="1.0"
-            Duration="0:0:2"
-            BeginTime="0:0:0.25" /> <!-- Start fade in after 21 seconds -->
+            From="1.0" To="0.0"
+            Duration="0:0:0.8"
+            BeginTime="0:0:05" /> <!-- Start fade in after 21 seconds -->
     </Storyboard>
 <!--Logo Fade in-->
 
