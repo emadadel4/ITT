@@ -12804,21 +12804,40 @@ ShowInTaskbar = "True"
 Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Icons/icon.ico">
 
 <Window.Resources>
-    <!--Fade in-->
+    <!--Listview Fade in-->
     <Storyboard x:Key="FadeOutStoryboard">
         <DoubleAnimation
             Storyboard.TargetProperty="Opacity"
             From="0" To="1" Duration="0:0:0.1" />
     </Storyboard>
+<!--Listview Fade in-->
 
-    <Storyboard x:Key="FadeIn">
+<!--Logo Fade in-->
+    <Storyboard x:Key="Logo" RepeatBehavior="Forever">
+        <!-- Fade Out -->
         <DoubleAnimation
             Storyboard.TargetProperty="Opacity"
-            From="0" To="1" Duration="0:0:1.2" />
+            From="1.0" To="0.5"
+            Duration="0:0:0.25" /> <!-- Fade out duration -->
+        
+        <!-- Hold the image at 0 opacity for 20 seconds -->
+        <DoubleAnimation
+    
+            Storyboard.TargetProperty="Opacity"
+            From="0.0" To="0.0"
+            Duration="0:0:15" 
+            BeginTime="0:0:0.25"/> <!-- Start holding time after fade out -->
+        
+        <!-- Fade In -->
+        <DoubleAnimation
+            Storyboard.TargetProperty="Opacity"
+            From="0.0" To="1.0"
+            Duration="0:0:2"
+            BeginTime="0:0:0.25" /> <!-- Start fade in after 21 seconds -->
     </Storyboard>
+<!--Logo Fade in-->
 
-
-    <!-- Define the FadeOut and FadeIn animations with looping -->
+<!-- Define the FadeOut and FadeIn animations with looping -->
     <Storyboard x:Key="FadeOutInLoopStoryboard">
         <!-- Fade Out Animation -->
         <DoubleAnimation
@@ -12834,14 +12853,13 @@ Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Icons/icon.
             Duration="0:0:1"
             BeginTime="0:0:1" />
     </Storyboard>
-
-<!--Fade in-->
+<!-- Define the FadeOut and FadeIn animations with looping -->
 
 <!--Image Style-->
     <Style TargetType="Image">
         <Style.Triggers>
             <EventTrigger RoutedEvent="FrameworkElement.Loaded">
-                <BeginStoryboard Storyboard="{StaticResource FadeIn}" />
+                <BeginStoryboard Storyboard="{StaticResource Logo}" />
             </EventTrigger>
         </Style.Triggers>
     </Style>
@@ -13499,7 +13517,7 @@ Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Icons/icon.
                  <!--Menu-->
     <Menu Grid.Row="0" Grid.Column="0" Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Left" BorderThickness="0">
                                     
-        <MenuItem IsEnabled="False" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" ToolTip="Emad Adel">
+        <MenuItem Background="Transparent" BorderBrush="Transparent" BorderThickness="0" IsEnabled="False" ToolTip="Emad Adel">
             <MenuItem.Icon>
                 <Image Source="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/ps.png" Width="90" Height="Auto" Margin="5,5,0,0">
                     <Image.Effect>
