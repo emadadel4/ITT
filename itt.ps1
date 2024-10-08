@@ -13061,35 +13061,39 @@ Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Icons/icon.
         <Setter Property="Foreground" Value="#000000"/>
         <Setter Property="Margin" Value="1"/>
         <Setter Property="Padding" Value="0"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}"/>
+        <Setter Property="BorderThickness" Value="0.5"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="MenuItem">
                     <Border x:Name="Border"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Center"
+
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
                             Padding="8"
-                            CornerRadius="2">
+                            CornerRadius="0">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto"/>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
-                            
+    
                             <!-- Icon -->
                             <ContentPresenter Grid.Column="0" 
-                                ContentSource="Icon"
-                                HorizontalAlignment="Left"
-                                VerticalAlignment="Center"
-                                Margin="0,0,4,0"/>
-                            
+                                              ContentSource="Icon"
+                                              HorizontalAlignment="Left"
+                                              VerticalAlignment="Center"
+                                              Margin="0,0,4,0"/>
+    
                             <!-- Text (MenuItem Header) -->
                             <TextBlock x:Name="TextBlock"
                                        Grid.Column="1"
                                        Text="{TemplateBinding Header}"
                                        Foreground="{DynamicResource DefaultTextColor}"
-                                       VerticalAlignment="Center"/>
-                            
+                                       VerticalAlignment="Center"
+                                       Margin="0"/>
+    
                             <!-- Shortcut Key (InputGestureText) -->
                             <TextBlock x:Name="ShortcutText"
                                        Grid.Column="2"
@@ -13098,24 +13102,21 @@ Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Icons/icon.
                                        VerticalAlignment="Center"
                                        HorizontalAlignment="Right"
                                        Margin="5,0"/>
-                            
-                            <!-- Arrow Down Indicator -->
+    
+                            <!-- Arrow Down Indicator for Submenus -->
                             <Path x:Name="Arrow"
                                   Grid.Column="2"
                                   Data="M0,0 L4,4 L8,0 Z"
                                   Fill="{DynamicResource DefaultTextColor}"
                                   HorizontalAlignment="Center"
                                   VerticalAlignment="Center"
-                                  
-                                  Margin="4,0,0,0"
-                                  
-                                  Visibility="Collapsed"/>
-                            
+                                  Visibility="Collapsed"
+                                  Margin="4,0,0,0"/>
+    
                             <!-- Popup for Submenu -->
                             <Popup Name="PART_Popup" 
                                    Placement="Right" 
-                                   IsOpen="{TemplateBinding IsSubmenuOpen}" 
-                                   AllowsTransparency="True" 
+                                   IsOpen="{Binding IsSubmenuOpen, RelativeSource={RelativeSource TemplatedParent}}"                                   AllowsTransparency="True" 
                                    Focusable="False"
                                    PopupAnimation="None">
                                 <Border Background="{TemplateBinding Background}" 
@@ -13130,9 +13131,10 @@ Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Icons/icon.
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <!-- Adjust appearance on hover, I just disabled it for now -->
-                            <!-- <Setter TargetName="Border" Property="Background" Value="{DynamicResource BGButtonColor}"/>
-                            <Setter TargetName="TextBlock" Property="Foreground" Value="{DynamicResource FGButtonColor}"/> -->
+                            <Setter TargetName="Border" Property="Background" Value="{DynamicResource HighlightBackground}"/>
+                            <Setter TargetName="TextBlock" Property="Foreground" Value="{DynamicResource HighlightTextColor}"/>
+                            <Setter TargetName="ShortcutText" Property="Foreground" Value="{DynamicResource HighlightTextColor}"/>
+                            <Setter TargetName="Arrow" Property="Fill" Value="{DynamicResource HighlightTextColor}"/>
                         </Trigger>
                         <Trigger Property="HasItems" Value="True">
                             <Setter TargetName="Arrow" Property="Visibility" Value="Visible"/>
@@ -13142,7 +13144,6 @@ Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Icons/icon.
             </Setter.Value>
         </Setter>
     </Style>
-
 <!-- End Menu Style -->
 
 <!--Scrollbar Thumbs-->
@@ -13498,7 +13499,7 @@ Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Icons/icon.
                  <!--Menu-->
     <Menu Grid.Row="0" Grid.Column="0" Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Left" BorderThickness="0">
                                     
-        <MenuItem IsEnabled="False" ToolTip="Emad Adel">
+        <MenuItem IsEnabled="False" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" ToolTip="Emad Adel">
             <MenuItem.Icon>
                 <Image Source="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/ps.png" Width="90" Height="Auto" Margin="5,5,0,0">
                     <Image.Effect>
