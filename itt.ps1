@@ -24,7 +24,7 @@ $itt = [Hashtable]::Synchronized(@{
     database       = @{}
     ProcessRunning = $false
     developer      = "Emad Adel"
-    lastupdate     = "10/07/2024"
+    lastupdate     = "10/08/2024"
     github         = "https://github.com/emadadel4/itt"
     telegram       = "https://t.me/emadadel4"
     blog           = "https://emadadel4.github.io"
@@ -13130,9 +13130,9 @@ Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Icons/icon.
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <!-- Adjust appearance on hover if needed -->
-                            <Setter TargetName="Border" Property="Background" Value="{DynamicResource BGButtonColor}"/>
-                            <Setter TargetName="TextBlock" Property="Foreground" Value="{DynamicResource FGButtonColor}"/>
+                            <!-- Adjust appearance on hover, I just disabled it for now -->
+                            <!-- <Setter TargetName="Border" Property="Background" Value="{DynamicResource BGButtonColor}"/>
+                            <Setter TargetName="TextBlock" Property="Foreground" Value="{DynamicResource FGButtonColor}"/> -->
                         </Trigger>
                         <Trigger Property="HasItems" Value="True">
                             <Setter TargetName="Arrow" Property="Visibility" Value="Visible"/>
