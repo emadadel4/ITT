@@ -24,7 +24,7 @@ $itt = [Hashtable]::Synchronized(@{
     database       = @{}
     ProcessRunning = $false
     developer      = "Emad Adel"
-    lastupdate     = "10/08/2024"
+    lastupdate     = "10/09/2024"
     github         = "https://github.com/emadadel4/itt"
     telegram       = "https://t.me/emadadel4"
     blog           = "https://emadadel4.github.io"
@@ -9402,7 +9402,7 @@ $itt.database.Tweaks = '[
     "Name": "Enable F8 boot menu options",
     "Description": "Enable F8 boot menu options",
     "Check": "false",
-    "Category": "Other",
+    "Category": "BIOS",
     "Type": "command",
     "refresh": "false",
     "InvokeCommand": [
@@ -9414,9 +9414,9 @@ $itt.database.Tweaks = '[
   },
   {
     "Name": "Disable display and sleep mode timeouts",
-    "Description": "If you use your device frequently, disable this.",
+    "Description": "If you frequently use your device, disable this.",
     "Check": "false",
-    "Category": "Other",
+    "Category": "Power",
     "Type": "command",
     "refresh": "false",
     "InvokeCommand": [
@@ -9495,6 +9495,7 @@ $itt.database.Tweaks = '[
     "Name": "Enable NET 3.5",
     "Description": "Some old games and applications require .NET Framework 3.5.",
     "Check": "false",
+    "Category": "Runtimes",
     "Type": "command",
     "Refresh": "false",
     "InvokeCommand": [
@@ -16721,7 +16722,7 @@ Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Icons/icon.
         <StackPanel Orientation="Vertical" Width="auto" Margin="10">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Enable F8 boot menu options"      FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content="Other"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content="BIOS"/>
             </StackPanel>
                 <TextBlock Width="555" Background="Transparent" Margin="8" Foreground="{DynamicResource DefaultTextColor2}"  FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="Enable F8 boot menu options"/>
         </StackPanel>
@@ -16729,9 +16730,9 @@ Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Icons/icon.
         <StackPanel Orientation="Vertical" Width="auto" Margin="10">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Disable display and sleep mode timeouts"      FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content="Other"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content="Power"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="8" Foreground="{DynamicResource DefaultTextColor2}"  FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="If you use your device frequently disable this"/>
+                <TextBlock Width="555" Background="Transparent" Margin="8" Foreground="{DynamicResource DefaultTextColor2}"  FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="If you frequently use your device disable this"/>
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Width="auto" Margin="10">
@@ -16761,7 +16762,7 @@ Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Icons/icon.
         <StackPanel Orientation="Vertical" Width="auto" Margin="10">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="Enable NET 3.5"      FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content=""/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content="Runtimes"/>
             </StackPanel>
                 <TextBlock Width="555" Background="Transparent" Margin="8" Foreground="{DynamicResource DefaultTextColor2}"  FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="Some old games and applications require NET Framework 35"/>
         </StackPanel>
