@@ -5,7 +5,11 @@
   </a>
 </p>
   
-<h1 align="center">🔻 ITT (Install Tweaks Tool) 🔻
+<h1 align="center">
+🔻 ITT (Install Tweaks Tool) 🔻
+
+<small style="font-size: 18px;">Launch Anytime, Anywhere!</small>
+
 </h1>
 
 <div align="center">
