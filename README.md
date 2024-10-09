@@ -5,16 +5,11 @@
   </a>
 </p>
   
-<h1 align="center">
-🔻 ITT (Install Tweaks Tool) 🔻
+<h1 align="center">🔻 ITT (Install Tweaks Tool) 🔻 </h1>
 
-<p>
-   <small>
+<h3 align="center">
    Run It Anytime, Anywhere!
-   </small>
-</p>
-
-</h1>
+</h3>
 
 <div align="center">
   <h5> 334 App |  38 Tweaks | 6 Settings | 93 Quote |  12 Soundtrack | 9 Localization </h5>
