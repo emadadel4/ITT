@@ -59,9 +59,9 @@
 </div>
 
 <p>
-  <p align="center">
-    <img src="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/demo.PNG" alt="ITT Demo" style="max-width: 100%;">
-</p>
+<div align="center">
+    <img src="https://raw.githubusercontent.com/emadadel4/ITT/refs/heads/main/Resources/Images/gitt.gif" alt="My GIF">
+</div>
 </p>
 
 <h2>Overview</h2>
