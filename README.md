@@ -8,9 +8,11 @@
 <h1 align="center">
 🔻 ITT (Install Tweaks Tool) 🔻
 
-<small style="text-align: center;">
-    Run It Anytime, Anywhere!
-</small>
+<p>
+   <small>
+   Run It Anytime, Anywhere!
+   </small>
+</p>
 
 </h1>
 
