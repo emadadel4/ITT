@@ -59,12 +59,10 @@
 </div>
 
 <p>
-<div align="center">
-    <img src="https://raw.githubusercontent.com/emadadel4/ITT/refs/heads/main/Resources/Images/gitt.gif" alt="My GIF">
-</div>
+  <p align="center">
+    <img src="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/demo.PNG" alt="ITT Demo" style="max-width: 100%;">
 </p>
-
-
+</p>
 
 <h2>Overview</h2>
 
@@ -187,13 +185,13 @@ English
     <a href="https://www.youtube.com/watch?v=UcyNg1B8FJI" target="blank">
       <img src="https://img.youtube.com/vi/UcyNg1B8FJI/0.jpg" alt="Play Video" style="width: 200px;">
     </a>
+    <a href="https://www.youtube.com/watch?v=kx5kanvn_ug" target="blank">
+      <img src="https://img.youtube.com/vi/kx5kanvn_ug/0.jpg" alt="Play Video" style="width: 200px;">
+    </a>
     <a href="https://youtu.be/UMT85frWneI" target="blank">
       <img src="https://img.youtube.com/vi/UMT85frWneI/0.jpg" alt="Play Video" style="width: 200px;">
     </a>
-    <a href="https://www.youtube.com/watch?v=sMvXFl2vN9E" target="blank">
-      <img src="https://img.youtube.com/vi/sMvXFl2vN9E/0.jpg" alt="Play Video" style="width: 200px;">
-    </a>
-   <a href="https://youtu.be/aVZDOUMAZXI" target="blank">
+    <a href="https://youtu.be/aVZDOUMAZXI" target="blank">
       <img src="https://img.youtube.com/vi/aVZDOUMAZXI/0.jpg" alt="Play Video" style="width: 200px;">
     </a>
   </div>
