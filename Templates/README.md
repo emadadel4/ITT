@@ -5,16 +5,14 @@
   </a>
 </p>
   
-<h1 align="center">
-🔻 ITT (Install Tweaks Tool) 🔻
+<h1 align="center">🔻 ITT (Install Tweaks Tool) 🔻 </h1>
 
-<small style="font-size: 18px;">Launch Anytime, Anywhere!</small>
+<h3 align="center">
+   Launch Anytime, Anywhere!
+</h3>
 
-</h1>
+<br>
 
-<div align="center">
-  <h5> #{a} App |  #{t} Tweaks | #{s} Settings | #{q} Quote |  #{OST} Soundtrack | #{loc} Localization </h5>
-</div>
 
 <div align="center">
 
@@ -44,6 +42,7 @@
   </a>
 </div>
 
+
 <div align="center">
    <a href="https://www.youtube.com/@emadadel4" target="_blank" style="margin-right: 20px;">
         <img src="https://img.shields.io/badge/YouTube-FF0000?style=flat&logo=youtube&logoColor=white" alt="YouTube" height="25">
@@ -61,6 +60,12 @@
       <img src="https://img.shields.io/badge/Reddit-FFf?style=flat&logo=reddit&logoColor=black" alt="reddit" height="25">
     </a>
 </div>
+
+<div align="center">
+  <h5> #{a} App |  #{t} Tweaks | #{s} Settings | #{q} Quote |  #{OST} Soundtrack | #{loc} Localization </h5>
+</div>
+
+<br>
 
 <p>
 <div align="center">
