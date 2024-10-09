@@ -1615,7 +1615,7 @@
     "Name": "Enable F8 boot menu options",
     "Description": "Enable F8 boot menu options",
     "Check": "false",
-    "Category": "Other",
+    "Category": "BIOS",
     "Type": "command",
     "refresh": "false",
     "InvokeCommand": [
@@ -1627,9 +1627,9 @@
   },
   {
     "Name": "Disable display and sleep mode timeouts",
-    "Description": "If you use your device frequently, disable this.",
+    "Description": "If you frequently use your device, disable this.",
     "Check": "false",
-    "Category": "Other",
+    "Category": "Power",
     "Type": "command",
     "refresh": "false",
     "InvokeCommand": [
@@ -1708,6 +1708,7 @@
     "Name": "Enable NET 3.5",
     "Description": "Some old games and applications require .NET Framework 3.5.",
     "Check": "false",
+    "Category": "Runtimes",
     "Type": "command",
     "Refresh": "false",
     "InvokeCommand": [
