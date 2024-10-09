@@ -11,9 +11,6 @@
    Launch Anytime, Anywhere!
 </h3>
 
-<div align="center">
-  <h5> 334 App |  38 Tweaks | 6 Settings | 93 Quote |  12 Soundtrack | 9 Localization </h5>
-</div>
 
 <div align="center">
 
@@ -43,6 +40,7 @@
   </a>
 </div>
 
+
 <div align="center">
    <a href="https://www.youtube.com/@emadadel4" target="_blank" style="margin-right: 20px;">
         <img src="https://img.shields.io/badge/YouTube-FF0000?style=flat&logo=youtube&logoColor=white" alt="YouTube" height="25">
@@ -60,6 +58,11 @@
       <img src="https://img.shields.io/badge/Reddit-FFf?style=flat&logo=reddit&logoColor=black" alt="reddit" height="25">
     </a>
 </div>
+
+<div align="center">
+  <h5> 334 App |  38 Tweaks | 6 Settings | 93 Quote |  12 Soundtrack | 9 Localization </h5>
+</div>
+
 
 <p>
 <div align="center">
