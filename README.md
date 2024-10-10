@@ -115,7 +115,7 @@ or
 
 # 💡 How to Contribute
 
-1. **Make sure you have PowerShell 7 installed (recommended) for building.**
+1. **Make sure you have PowerShell 7 installed (recommended) for building. Install it using "ITT"**
 
 2. **Fork the repository and clone it.**
 
