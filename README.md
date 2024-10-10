@@ -62,7 +62,7 @@
 </div>
 
 <div align="center">
-  <h5> 334 App |  38 Tweaks | 6 Settings | 93 Quote |  12 Soundtrack | 9 Localization </h5>
+  <h5> 334 App |  38 Tweaks | 6 Settings | 93 Quote |  13 Soundtrack | 9 Localization </h5>
 </div>
 
 <br>
