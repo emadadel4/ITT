@@ -9,6 +9,10 @@ function Startup  {
                 $mediaItem = $itt.mediaPlayer.newMedia($track)
                 $itt.mediaPlayer.currentPlaylist.appendItem($mediaItem)
                 $itt.mediaPlayer.controls.play()
+
+                # debug
+                #$currentFileName = $itt.mediaPlayer.currentMedia.name
+                #Write-Host "Currently playing: $currentFileName"
             }
         
             # Shuffle the playlist and create a new playlist
