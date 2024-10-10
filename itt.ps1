@@ -7248,7 +7248,7 @@ $itt.database.OST = '{
     },
     {
       "name": "Grand Theft Auto 4 Theme Song",
-      "url": "https://archive.org/download/GrandTheftAuto4ThemeSong_201904/Grand%20Theft%20Auto%204%20Theme%20Song.mp3"
+      "url": "https://emadadel4.github.io/sounds/Michael Hunter - Soviet Connection — the Theme from Grand Theft Auto IV.mp3"
     },
     {
       "name": "Mass Effect-3 - End of Cycle",
@@ -7260,7 +7260,7 @@ $itt.database.OST = '{
     },
     {
       "name": "Kate Chruscicka - Requiem For A Dream",
-      "url": "https://archive.org/download/kate-chruscicka-requiem-for-a-dream-electric-violin/Kate%20Chruscicka-Requiem%20For%20A%20Dream%20%28Electric%20Violin%29.mp3"
+      "url": "https://emadadel4.github.io/sounds/Kate Chruscicka - Requiem for a Dream.mp3"
     },
     {
       "name": "Hans Zimmer - Time",
@@ -10794,6 +10794,10 @@ function Startup  {
                 $mediaItem = $itt.mediaPlayer.newMedia($track)
                 $itt.mediaPlayer.currentPlaylist.appendItem($mediaItem)
                 $itt.mediaPlayer.controls.play()
+
+                # debug
+                #$currentFileName = $itt.mediaPlayer.currentMedia.name
+                #Write-Host "Currently playing: $currentFileName"
             }
         
             # Shuffle the playlist and create a new playlist
@@ -10821,27 +10825,15 @@ function Startup  {
         
                 foreach ($track in $shuffledTracks) {
                     PlayAudio -track $track.url
-
-     
-
                     # Wait for the track to finish playing
                     while ($itt.mediaPlayer.playState -in 3, 6) {
                         Start-Sleep -Milliseconds 100
-
-                        # Get the current playing media file name
-                        $currentFileName = $itt.mediaPlayer.currentMedia.name
-                        Write-Host "Currently playing: $currentFileName"
                     }
                 }
             }
         
             # Play the preloaded playlist
             PlayPreloadedPlaylist
-            $currentFileName = $itt.mediaPlayer.currentMedia.name
-            Write-Host "Currently playing: $currentFileName"
-
-     
-
         }
 
         function Quotes {
