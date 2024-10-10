@@ -363,7 +363,7 @@
   },
   {
     "Name": "Restore All Windows Services to Default",
-    "Description": "If you face a problem with some system services, you can restore all services to Default.",
+    "Description": "If you face a problem with some system services, you can restore all services to Default",
     "Check": "false",
     "Category": "Fixer",
     "Type": "command",
@@ -824,7 +824,7 @@
   },
   {
     "Name": "Optimize Windows Services",
-    "Description": "Disable (Print Spooler), (Fax), (Diagnostic Policy), (Downloaded Maps Manager), (Windows Error Reporting Service), (Remote Registry) , (Internet Connection Sharing), (Disables Telemetry and Data) ",
+    "Description": "Disable (Print Spooler), (Fax), (Diagnostic Policy), (Downloaded Maps Manager), (Windows Error Reporting Service), (Remote Registry) , (Internet Connection Sharing), (Disables Telemetry and Data)",
     "Check": "false",
     "Category": "Performance",
     "Type": "service",
@@ -885,7 +885,7 @@
   },
   {
     "Name": "Disable Hibernate",
-    "Description": "Hibernate is a power-saving mode in Microsoft Windows operating systems that allows the system to save the current state of your computer to the hard disk and then power down completely.",
+    "Description": "Hibernate is a power-saving mode in Microsoft Windows operating systems that allows the system to save the current state of your computer to the hard disk and then power down completely",
     "Check": "false",
     "Category": "Performance",
     "Type": "command",
@@ -1585,7 +1585,7 @@
   },
   {
     "Name": "Disable SMB Server",
-    "Description": "SMB Server enables file and printer sharing over a network, allowing access to resources on remote computers as if they were local.",
+    "Description": "SMB Server enables file and printer sharing over a network, allowing access to resources on remote computers as if they were local",
     "Check": "false",
     "Category": "Protection",
     "Type": "command",
@@ -1692,7 +1692,7 @@
   },
   {
     "Name": "Disable scheduled defragmentation task",
-    "Description": "Defragmentation in Windows optimizes disk performance by reorganizing fragmented data, improving access times and system efficiency.",
+    "Description": "Defragmentation in Windows optimizes disk performance by reorganizing fragmented data, improving access times and system efficiency",
     "Check": "false",
     "Category": "Performance",
     "Type": "command",
