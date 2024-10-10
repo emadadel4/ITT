@@ -7287,8 +7287,8 @@ $itt.database.OST = '{
       "url": "https://archive.org/download/jesper-kyd-assassins-creed-ii-original-game-soundtrack/1-03%20Ezio%27s%20Family.mp3"
     },
     {
-      "name": "محمد عساف - انا دمي فلسطيني",
-      "url": "https://emadadel4.github.io/sounds/Falstiny.mp3"
+      "name": "تلك قضية - كايروكي",
+      "url": "https://emadadel4.github.io/sounds/Telk Qadeya.mp3"
      }
   ],
   "Favorite": [
