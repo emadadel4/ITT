@@ -7283,10 +7283,6 @@ $itt.database.OST = '{
       "url": "https://eta.vgmtreasurechest.com/soundtracks/cyberpunk-2077-original-game-score/zalnnwrhwh/1-03%20The%20Rebel%20Path.mp3"
     },
     {
-      "name": "Max Richter - Leftovers Piano Theme",
-      "url": "https://emadadel4.github.io/sounds/The Leftovers  The Departure Suite.mp3"
-    },
-    {
       "name": "Assassin Creed II - Ezio''s Family",
       "url": "https://archive.org/download/jesper-kyd-assassins-creed-ii-original-game-soundtrack/1-03%20Ezio%27s%20Family.mp3"
     },
