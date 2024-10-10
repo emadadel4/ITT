@@ -10,10 +10,7 @@
 <h3 align="center">
    Launch Anytime, Anywhere!
 </h3>
-
 <br>
-
-
 <div align="center">
 
   <a href="/docs/README.ar.md">
@@ -42,7 +39,6 @@
   </a>
 </div>
 
-
 <div align="center">
    <a href="https://www.youtube.com/@emadadel4" target="_blank" style="margin-right: 20px;">
         <img src="https://img.shields.io/badge/YouTube-FF0000?style=flat&logo=youtube&logoColor=white" alt="YouTube" height="25">
@@ -65,13 +61,17 @@
   <h5> #{a} App |  #{t} Tweaks | #{s} Settings | #{q} Quote |  #{OST} Soundtrack | #{loc} Localization </h5>
 </div>
 
-<br>
+
+<p align="center" dir="auto">
+    <a target="_blank" rel="noopener noreferrer nofollow" href="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/demo.PNG"><img src="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/demo.PNG" alt="ITT Demo" style="max-width: 100%;"></a>
+</p>
 
 <p>
 <div align="center">
     <img src="https://raw.githubusercontent.com/emadadel4/ITT/refs/heads/main/Resources/Images/gitt.gif" alt="My GIF">
 </div>
 </p>
+
 
 <h2>Overview</h2>
 
