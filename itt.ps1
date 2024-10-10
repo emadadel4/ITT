@@ -7264,19 +7264,31 @@ $itt.database.OST = '{
     },
     {
       "name": "Hans Zimmer - Time",
-      "url": "https://archive.org/download/InceptionSoundtrackHD12TimeHansZimmer/Inception%20Soundtrack%20HD%20-%20%2312%20Time%20%28Hans%20Zimmer%29.mp3"
+      "url": "https://emadadel4.github.io/sounds/Hans Zimmer - Time.mp3"
     },
     {
       "name": "Westworld - Exit Music (For a Film)",
-      "url": "https://archive.org/download/exit-music-for-a-film-westworld-soundtrack/exit-music-for-a-film-westworld-soundtrack.mp3"
+      "url": "https://emadadel4.github.io/sounds/Ramin Djawadi - Exit Music (For a Film).mp3"
+    },
+    {
+      "name": "Homelander in Hallway",
+      "url": "https://emadadel4.github.io/sounds/Homelander in Hallway.mp3"
+    },
+    {
+      "name": "Grand Theft Auto San Andreas Official Theme",
+      "url": "https://emadadel4.github.io/sounds/Grand Theft Auto_ San Andreas (Official Theme Song)"
+    },
+    {
+      "name": "1.0_8-whatsyourask.m4p",
+      "url": "https://emadadel4.github.io/sounds/1.0_8-whatsyourask.m4p.mp3"
     },
     {
       "name": "Ludovico Einaudi - Experience",
-      "url": "https://archive.org/download/ludovico-einaudi-experience-mp-3-70-k/Ludovico%20Einaudi%20-%20Experience%28MP3_70K%29.mp3"
+      "url": "https://emadadel4.github.io/sounds/Ludovico Einaudi, Daniel Hope, I Virtuosi Italiani - Experience.mp3"
     },
     {
       "name": "Hans Zimmer - No Time for Caution ",
-      "url": "https://archive.org/download/interstellar-soundtrack/22%20No%20Time%20for%20Caution%20%28Docking%20scene%29%201.m4a"
+      "url": "https://emadadel4.github.io/sounds/Hans Zimmer - No Time for Caution.mp3"
     },
     {
       "name": "Cyberpunk - Rebel Path",
@@ -7284,7 +7296,7 @@ $itt.database.OST = '{
     },
     {
       "name": "Assassin Creed II - Ezio''s Family",
-      "url": "https://archive.org/download/jesper-kyd-assassins-creed-ii-original-game-soundtrack/1-03%20Ezio%27s%20Family.mp3"
+      "url": "https://emadadel4.github.io/sounds/Jesper Kyd, Assassin''s Creed - Ezio''s Family.mp3"
     },
     {
       "name": "تلك قضية - كايروكي",
@@ -10809,15 +10821,27 @@ function Startup  {
         
                 foreach ($track in $shuffledTracks) {
                     PlayAudio -track $track.url
+
+     
+
                     # Wait for the track to finish playing
                     while ($itt.mediaPlayer.playState -in 3, 6) {
                         Start-Sleep -Milliseconds 100
+
+                        # Get the current playing media file name
+                        $currentFileName = $itt.mediaPlayer.currentMedia.name
+                        Write-Host "Currently playing: $currentFileName"
                     }
                 }
             }
         
             # Play the preloaded playlist
             PlayPreloadedPlaylist
+            $currentFileName = $itt.mediaPlayer.currentMedia.name
+            Write-Host "Currently playing: $currentFileName"
+
+     
+
         }
 
         function Quotes {
