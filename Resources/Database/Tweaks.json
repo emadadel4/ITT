@@ -945,7 +945,7 @@
   },
   {
     "Name": "Activate Windows Old Photo Viewer",
-    "Description": "This tweak enables the classic Windows Photo Viewer for Windows 10.",
+    "Description": "This tweak enables the classic Windows Photo Viewer for Windows 10",
     "Check": "false",
     "Category": "Classic",
     "Type": "Registry",
@@ -1091,7 +1091,7 @@
   },
   {
     "Name": "Disable Recall Snapshots in Windows 11 24H",
-    "Description": "Recall is an upcoming preview experience exclusive to Copilot+ PCs that will help you easily find and remember things you've seen using natural language.",
+    "Description": "Recall is an upcoming preview experience exclusive to Copilot+ PCs that will help you easily find and remember things you've seen using natural language",
     "Check": "false",
     "Category": "Privacy",
     "Type": "Registry",
@@ -1135,7 +1135,7 @@
   },
   {
     "Name": "Old Volume Control in Windows 10",
-    "Description": "The old volume control in Windows 10 refers to the classic audio mixer interface that was used in earlier versions of Windows, before the modern volume control system was introduced. This interface allowed users to adjust the volume for individual applications separately, providing a more detailed and flexible approach to managing audio levels.",
+    "Description": "The old volume control in Windows 10 refers to the classic audio mixer interface that was used in earlier versions of Windows, before the modern volume control system was introduced. This interface allowed users to adjust the volume for individual applications separately, providing a more detailed and flexible approach to managing audio levels",
     "Check": "false",
     "Category": "Classic",
     "Type": "Registry",
@@ -1156,7 +1156,7 @@
   },
   {
     "Name": "Disable Toggle Key Sounds",
-    "Description": "Toggle key sounds in Windows are audio cues that play when you press the Caps Lock, Num Lock, or Scroll Lock keys. These sounds help users identify when these keys are activated or deactivated.",
+    "Description": "Toggle key sounds in Windows are audio cues that play when you press the Caps Lock, Num Lock, or Scroll Lock keys. These sounds help users identify when these keys are activated or deactivated",
     "Check": "false",
     "Category": "Classic",
     "Type": "Registry",
@@ -1599,7 +1599,7 @@
   },
   {
     "Name": "Set current network profile to public",
-    "Description": "Deny file sharing, device discovery, etc.",
+    "Description": "Deny file sharing, device discovery, etc",
     "Check": "false",
     "Category": "Protection",
     "Type": "command",
@@ -1627,7 +1627,7 @@
   },
   {
     "Name": "Disable display and sleep mode timeouts",
-    "Description": "If you frequently use your device, disable this.",
+    "Description": "If you frequently use your device, disable this",
     "Check": "false",
     "Category": "Power",
     "Type": "command",
@@ -1706,7 +1706,7 @@
   },
   {
     "Name": "Enable NET 3.5",
-    "Description": "Some old games and applications require .NET Framework 3.5.",
+    "Description": "Some old games and applications require .NET Framework 3.5",
     "Check": "false",
     "Category": "Runtimes",
     "Type": "command",
