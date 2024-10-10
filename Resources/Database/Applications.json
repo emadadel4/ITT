@@ -689,7 +689,7 @@
   },
   {
     "name": "TeamViewer",
-    "description": "A remote access and support software that enables users to remotely control computers, transfer files, and collaborate online, facilitating remote work and IT support.",
+    "description": "A remote access and support software that enables users to remotely control computers, transfer files, and collaborate online, facilitating remote work and IT support",
     "winget": "TeamViewer.TeamViewer",
     "choco": "teamviewer",
     "scoop": "none",
@@ -3454,7 +3454,7 @@
   },
   {
     "name": "4K Video Downloader",
-    "description": "4K Video Downloader allows downloading videos, playlists, channels and subtitles from YouTube, Facebook, Vimeo and other video sites in high quality.",
+    "description": "4K Video Downloader allows downloading videos, playlists, channels and subtitles from YouTube, Facebook, Vimeo and other video sites in high quality",
     "winget": "OpenMedia.4KVideoDownloader",
     "choco": "4k-video-downloader",
     "scoop": "none",
@@ -3634,7 +3634,7 @@
   },
   {
     "name": "CoreTemp",
-    "description": "Core Temp is a compact, no fuss, small footprint, yet powerful program to monitor processor temperature and other vital information.",
+    "description": "Core Temp is a compact, no fuss, small footprint, yet powerful program to monitor processor temperature and other vital information",
     "winget": "ALCPU.CoreTemp",
     "choco": "coretemp",
     "scoop": "none",
@@ -4874,7 +4874,7 @@
   },
   {
     "name": "Dropbox",
-    "description": "Organize all your team's content, tune out distractions, and get everyone coordinated with the world's first smart workspace.",
+    "description": "Organize all your team's content, tune out distractions, and get everyone coordinated with the world's first smart workspace",
     "winget": "Dropbox.Dropbox",
     "choco": "dropbox",
     "scoop": "none",
