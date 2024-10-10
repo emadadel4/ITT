@@ -94,14 +94,14 @@ function GenerateCheckboxes {
 
     foreach ($Item in $Items) {        
 
-        $CleanedItem = $Item.Description -replace "[^\w\s’]", '' 
+        $CleanedDescription = $Item.Description -replace '[^\w\s.]', ''
 
-        $Cat = $Item.Category -replace '[^\w\s]', ''
+        $CleanedCategory = $Item.Category -replace '[^\w\s]', ''
 
         # grap name of each item  
         $Content = $Item.$ContentField
 
-        #Add Tag(Cat) in Applications.json to apps items
+        # Tag(Cat) in Applications.json to apps items
         $Tag = if ($TagField) { "Tag=`"$($Item.$TagField)`"" } else { "" }
 
         # Tips
@@ -122,9 +122,9 @@ function GenerateCheckboxes {
         <StackPanel Orientation="Vertical" Width="auto" Margin="10">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="$Content" $Tag $IsChecked $Toggle $Name $Tips FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content="$Cat"/>
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content="$CleanedCategory"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="8" Foreground="{DynamicResource DefaultTextColor2}"  FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="$CleanedItem"/>
+                <TextBlock Width="555" Background="Transparent" Margin="8" Foreground="{DynamicResource DefaultTextColor2}"  FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="$CleanedDescription."/>
         </StackPanel>
 
 "@
