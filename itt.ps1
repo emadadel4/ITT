@@ -8,7 +8,7 @@
 #                              #StandWithPalestine                                   #
 # https://github.com/emadadel4                                                       #
 # https://t.me/emadadel4                                                             #
-# https://emadadel4.github.io/itt                                                    #
+# https://emadadel4.github.io/posts/itt                                              #
 ######################################################################################
 #===========================================================================
 #region Begin Start
@@ -11994,7 +11994,7 @@ Function Invoke-StickyKeys {
 function About {
 
     # init child window
-    [xml]$about = $childXaml
+    [xml]$about = $AboutWindowXaml
     $childWindowReader = (New-Object System.Xml.XmlNodeReader $about)
     $itt.about = [Windows.Markup.XamlReader]::Load($childWindowReader)
 
@@ -12618,7 +12618,7 @@ function Show-Event {
         [string]$ImageWidth
     )
 
-    [xml]$event = $EventXaml
+    [xml]$event = $EventWindowXaml
 
     $EventWindowReader = (New-Object System.Xml.XmlNodeReader $event)
     $itt.event = [Windows.Markup.XamlReader]::Load($EventWindowReader)
@@ -12806,7 +12806,7 @@ function UpdateUI {
 #===========================================================================
 #region Begin WPF Main Window
 #===========================================================================
-$inputXML = '
+$MainWindowXaml = '
 <!--Main Window-->
 <Window
 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -16937,7 +16937,7 @@ Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Icons/icon.
 #region Begin WPF About Window
 #===========================================================================
 
-$childXaml = '<Window
+$AboutWindowXaml = '<Window
   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
   x:Name="Window" Title="About | ITT " WindowStartupLocation = "CenterScreen" 
@@ -17070,7 +17070,7 @@ $childXaml = '<Window
 #region Begin WPF Event Window
 #===========================================================================
 
-$EventXaml = '<Window
+$EventWindowXaml = '<Window
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     x:Name="Window" Title="ITT | Event" 
@@ -17336,7 +17336,7 @@ foreach ($function in $functions) {
 $itt.runspace = [runspacefactory]::CreateRunspacePool(1, $maxthreads, $InitialSessionState, $Host)
 $itt.runspace.Open()
 
-[xml]$XAML = $inputXML
+[xml]$XAML = $MainWindowXaml
 
 # Read the XAML file
 $reader = [System.Xml.XmlNodeReader]::new($xaml)
@@ -17348,7 +17348,7 @@ catch [System.Management.Automation.MethodInvocationException] {
     Write-Warning "Problem with the XAML code. Check syntax."
     Write-Host $error[0].Exception.Message -ForegroundColor Red
     if ($error[0].Exception.Message -like "*button*") {
-        Write-Warning "Ensure <button> in `$inputXML does NOT have a Click=ButtonClick property. PS can't handle this."
+        Write-Warning "Ensure <button> in `$MainWindowXaml does NOT have a Click=ButtonClick property. PS can't handle this."
     }
 }
 catch {
