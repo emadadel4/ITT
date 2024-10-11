@@ -255,7 +255,7 @@ function Startup  {
             Write-Host " |                       Made with ♡ By Emad Adel                               |" 
             Write-Host " |                          #StandWithPalestine                                 |" 
             Write-Host " +==============================================================================+" 
-            Write-Host " You ready to Install anything.`n` " 
+            Write-Host " Launch Anytime, Anywhere! `n` " 
             Write-Host " Telegram: https://t.me/ittemadadel" 
             Write-Host " Discord: https://discord.gg/63m34EE6mX `n` "
         
