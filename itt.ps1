@@ -11286,7 +11286,7 @@ function Invoke-Apply {
     #>
 
     
-    $selectedApps = Get-SelectedItems -Mode "Tweaks"
+    $selectedTweaks = Get-SelectedItems -Mode "Tweaks"
 
     if($itt.ProcessRunning) {
         Message -key "Pleasewait" -icon "Warning"
@@ -11294,7 +11294,7 @@ function Invoke-Apply {
     }
 
 
-    if($selectedApps.Count -eq 0)
+    if($selectedTweaks.Count -eq 0)
     {
         Message -key "chosetweak" -icon "Warning"
         return
@@ -11314,9 +11314,9 @@ function Invoke-Apply {
         return
     }
 
-    Invoke-ScriptBlock -ArgumentList $selectedApps -ScriptBlock {
+    Invoke-ScriptBlock -ArgumentList $selectedTweaks -ScriptBlock {
 
-        param($selectedApps)
+        param($selectedTweaks)
 
         $itt.ProcessRunning = $true
         UpdateUI -Button "ApplyBtn" -ButtonText "applyText" -Content "Applying" -TextIcon "applyIcon" -Icon "  " -Width "120"
@@ -11324,7 +11324,7 @@ function Invoke-Apply {
         $itt["window"].Dispatcher.Invoke([action]{ Set-Taskbar -progress "Indeterminate" -value 0.01 -icon "logo" })
 
 
-        foreach ($tweak in $selectedApps) {
+        foreach ($tweak in $selectedTweaks) {
 
             Add-Log -Message $tweak.Name -Level "Apply" 
 
