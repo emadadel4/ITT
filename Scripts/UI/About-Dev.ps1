@@ -1,7 +1,7 @@
 function About {
 
     # init child window
-    [xml]$about = $childXaml
+    [xml]$about = $AboutWindowXaml
     $childWindowReader = (New-Object System.Xml.XmlNodeReader $about)
     $itt.about = [Windows.Markup.XamlReader]::Load($childWindowReader)
 
