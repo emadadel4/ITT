@@ -31,7 +31,7 @@ function MuteMusic {
     $itt.mediaPlayer.settings.volume = $value
     # Save the volume setting to the registry for persistence
     Set-ItemProperty -Path $itt.registryPath -Name "Music" -Value "$value" -Force
-    $itt["window"].title = "Install Tweak Tool #StandWithPalestine 🔈"
+    $itt["window"].title = "Install Tweaks Tool #StandWithPalestine 🔈"
 
 }
 
@@ -41,7 +41,7 @@ function UnmuteMusic {
     $itt.mediaPlayer.settings.volume = $value
     # Save the volume setting to the registry for persistence
     Set-ItemProperty -Path $itt.registryPath -Name "Music" -Value "$value" -Force
-    $itt["window"].title = "Install Tweak Tool #StandWithPalestine 🔊"
+    $itt["window"].title = "Install Tweaks Tool #StandWithPalestine 🔊"
 
 }
 
