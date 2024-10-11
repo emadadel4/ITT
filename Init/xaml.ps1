@@ -46,7 +46,7 @@ foreach ($function in $functions) {
 $itt.runspace = [runspacefactory]::CreateRunspacePool(1, $maxthreads, $InitialSessionState, $Host)
 $itt.runspace.Open()
 
-[xml]$XAML = $inputXML
+[xml]$XAML = $MainWindowXaml
 
 # Read the XAML file
 $reader = [System.Xml.XmlNodeReader]::new($xaml)
@@ -58,7 +58,7 @@ catch [System.Management.Automation.MethodInvocationException] {
     Write-Warning "Problem with the XAML code. Check syntax."
     Write-Host $error[0].Exception.Message -ForegroundColor Red
     if ($error[0].Exception.Message -like "*button*") {
-        Write-Warning "Ensure <button> in `$inputXML does NOT have a Click=ButtonClick property. PS can't handle this."
+        Write-Warning "Ensure <button> in `$MainWindowXaml does NOT have a Click=ButtonClick property. PS can't handle this."
     }
 }
 catch {
