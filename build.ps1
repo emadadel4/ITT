@@ -221,7 +221,7 @@ function NewCONTRIBUTOR {
     }
 
     # Read the existing XAML file content
-    $xamlContent = Get-Content $xamlFile -Raw
+    $MainXamlContent = Get-Content $xamlFile -Raw
 
     # Generate unique TextBlock elements for each name in CONTRIBUTORS.md
     $textBlockElements = $contribLines | ForEach-Object {
@@ -232,7 +232,7 @@ function NewCONTRIBUTOR {
     $textBlockContent = $textBlockElements -join "`r`n"
 
     # Replace #{names} in the XAML file with the TextBlock elements
-    $newXamlContent = $xamlContent -replace '#{names}', $textBlockContent
+    $newXamlContent = $MainXamlContent -replace '#{names}', $textBlockContent
 
     # Write the updated content to the new XAML file
     Set-Content -Path $updatedXamlFile -Value $newXamlContent -Encoding UTF8
@@ -240,14 +240,21 @@ function NewCONTRIBUTOR {
 
 # Display the number of items in json files
 function CountItems {
-    Write-Host  "`n` $($itt.database.Applications.Count) Apps" -ForegroundColor Yellow
-    Write-Host  " $($itt.database.Tweaks.Count) Tweaks" -ForegroundColor Yellow
-    Write-Host  " $($itt.database.Quotes.Quotes.Count) Quotes" -ForegroundColor Yellow
-    Write-Host  " $($itt.database.OST.Tracks.Count) Tracks" -ForegroundColor Yellow
-    Write-Host  " $($itt.database.Settings.Count) Settings" -ForegroundColor Yellow
-    Write-Host  " $(($itt.database.locales.Controls.PSObject.Properties | Measure-Object).Count) Localization" -ForegroundColor Yellow
-    Update-Readme -Apps $($itt.database.Applications.Count) -Tewaks $($itt.database.Tweaks.Count) -Quote $($itt.database.Quotes.Quotes.Count)  -Track $($itt.database.OST.Tracks.Count) -Settings $($itt.database.Settings.Count) -Localization $(($itt.database.locales.Controls.PSObject.Properties | Measure-Object).Count)
+    # Store the counts in variables for reuse
+    $appsCount = $itt.database.Applications.Count
+    $tweaksCount = $itt.database.Tweaks.Count
+    $quotesCount = $itt.database.Quotes.Quotes.Count
+    $tracksCount = $itt.database.OST.Tracks.Count
+    $settingsCount = $itt.database.Settings.Count
+    $localizationCount = ($itt.database.locales.Controls.PSObject.Properties | Measure-Object).Count
+
+    # Output all the counts in one call
+    Write-Host "`n$appsCount Apps`n$tweaksCount Tweaks`n$quotesCount Quotes`n$tracksCount Tracks`n$settingsCount Settings`n$localizationCount Localization" -ForegroundColor Yellow
+
+    # Update the readme with the new counts
+    Update-Readme -Apps $appsCount -Tweaks $tweaksCount -Quote $quotesCount -Track $tracksCount -Settings $settingsCount -Localization $localizationCount
 }
+
 
 # Write script header
 function WriteHeader {
@@ -263,7 +270,7 @@ function WriteHeader {
 #                              #StandWithPalestine                                   #
 # https://github.com/emadadel4                                                       #
 # https://t.me/emadadel4                                                             #
-# https://emadadel4.github.io/itt                                                    #
+# https://emadadel4.github.io/posts/itt                                              #
 ######################################################################################
 "@
 }
@@ -325,7 +332,7 @@ WriteToScript -Content @"
 
     # Define file paths
     $FilePaths = @{
-        "Xaml"    = Join-Path -Path $windows -ChildPath "MainWindow.xaml"
+        "MainWindow"    = Join-Path -Path $windows -ChildPath "MainWindow.xaml"
         "taps" = Join-Path -Path $Controls -ChildPath "taps.xaml"
         "menu" = Join-Path -Path $Controls -ChildPath "menu.xaml"
         "catagory" = Join-Path -Path $Controls -ChildPath "catagory.xaml"
@@ -338,23 +345,23 @@ WriteToScript -Content @"
     # Read and replace placeholders in XAML content
     try {
         # Read content from files
-        $XamlContent     = (Get-Content -Path $FilePaths["Xaml"] -Raw) -replace "'", "''"
+        $MainXamlContent     = (Get-Content -Path $FilePaths["MainWindow"] -Raw) -replace "'", "''"
         $AppXamlContent  = Get-Content -Path $FilePaths["taps"] -Raw
-        $StyleContent    = Get-Content -Path $FilePaths["Style"] -Raw
-        $ColorsContent   = Get-Content -Path $FilePaths["Colors"] -Raw
-        $MenuContent     = Get-Content -Path $FilePaths["menu"] -Raw
-        $ButtonsContent  = Get-Content -Path $FilePaths["buttons"] -Raw
-        $CatagoryContent = Get-Content -Path $FilePaths["catagory"] -Raw
-        $searchContent   = Get-Content -Path $FilePaths["search"] -Raw
+        $StyleXamlContent    = Get-Content -Path $FilePaths["Style"] -Raw
+        $ColorsXamlContent   = Get-Content -Path $FilePaths["Colors"] -Raw
+        $MenuXamlContent     = Get-Content -Path $FilePaths["menu"] -Raw
+        $ButtonsXamlContent  = Get-Content -Path $FilePaths["buttons"] -Raw
+        $CatagoryXamlContent = Get-Content -Path $FilePaths["catagory"] -Raw
+        $searchXamlContent   = Get-Content -Path $FilePaths["search"] -Raw
 
         # Replace placeholders with actual content
-        $XamlContent = $XamlContent -replace "{{Taps}}", $AppXamlContent
-        $XamlContent = $XamlContent -replace "{{Style}}", $StyleContent
-        $XamlContent = $XamlContent -replace "{{Colors}}", $ColorsContent
-        $XamlContent = $XamlContent -replace "{{menu}}", $MenuContent
-        $XamlContent = $XamlContent -replace "{{buttons}}", $ButtonsContent
-        $XamlContent = $XamlContent -replace "{{catagory}}", $CatagoryContent
-        $XamlContent = $XamlContent -replace "{{search}}", $searchContent
+        $MainXamlContent = $MainXamlContent -replace "{{Taps}}", $AppXamlContent
+        $MainXamlContent = $MainXamlContent -replace "{{Style}}", $StyleXamlContent
+        $MainXamlContent = $MainXamlContent -replace "{{Colors}}", $ColorsXamlContent
+        $MainXamlContent = $MainXamlContent -replace "{{menu}}", $MenuXamlContent
+        $MainXamlContent = $MainXamlContent -replace "{{buttons}}", $ButtonsXamlContent
+        $MainXamlContent = $MainXamlContent -replace "{{catagory}}", $CatagoryXamlContent
+        $MainXamlContent = $MainXamlContent -replace "{{search}}", $searchXamlContent
 
     } catch {
         Write-Error "An error occurred while processing the XAML content: $($_.Exception.Message)"
@@ -365,11 +372,11 @@ WriteToScript -Content @"
     $SettingsCheckboxes = GenerateCheckboxes -Items $itt.database.Settings -ContentField "Content" -NameField "Name" -ToggleField "Style="{StaticResource ToggleSwitchStyle}""
 
 
-    $XamlContent = $XamlContent -replace "{{Apps}}", $AppsCheckboxes 
-    $XamlContent = $XamlContent -replace "{{Tweaks}}", $TweaksCheckboxes 
-    $XamlContent = $XamlContent -replace "{{Settings}}", $SettingsCheckboxes 
+    $MainXamlContent = $MainXamlContent -replace "{{Apps}}", $AppsCheckboxes 
+    $MainXamlContent = $MainXamlContent -replace "{{Tweaks}}", $TweaksCheckboxes 
+    $MainXamlContent = $MainXamlContent -replace "{{Settings}}", $SettingsCheckboxes 
 
-    WriteToScript -Content "`$inputXML = '$XamlContent'"
+    WriteToScript -Content "`$MainWindowXaml = '$MainXamlContent'"
 
     # Signup a new CONTRIBUTOR
     NewCONTRIBUTOR
@@ -395,12 +402,12 @@ WriteToScript -Content @"
 
     # Read and replace placeholders in XAML content
     try {
-        $childXaml = (Get-Content -Path $FilePaths["about"] -Raw) -replace "'", "''"
+        $AboutWindowXamlContent = (Get-Content -Path $FilePaths["about"] -Raw) -replace "'", "''"
     } catch {
         Write-Error "Error: $($_.Exception.Message)"
     }
    
-    WriteToScript -Content "`$childXaml = '$childXaml'"
+    WriteToScript -Content "`$AboutWindowXaml = '$AboutWindowXamlContent'"
 
     WriteToScript -Content @"
 #===========================================================================
@@ -422,12 +429,12 @@ WriteToScript -Content @"
 
     # Read and replace placeholders in XAML content
     try {
-        $EventXaml = (Get-Content -Path $FilePaths["event"] -Raw) -replace "'", "''"
+        $EventWindowXamlContent = (Get-Content -Path $FilePaths["event"] -Raw) -replace "'", "''"
     } catch {
         Write-Error "Error: $($_.Exception.Message)"
     }
    
-    WriteToScript -Content "`$EventXaml = '$EventXaml'"
+    WriteToScript -Content "`$EventWindowXaml = '$EventWindowXamlContent'"
 
     WriteToScript -Content @"
 #===========================================================================
@@ -474,7 +481,7 @@ if($Debug)
     Start-Process $wt -ArgumentList "$pwsh -NoProfile -Command $script"
 
     # debug
-    Write-Host $ProjectDir
+    #Write-Host $ProjectDir
 }
 
 }
