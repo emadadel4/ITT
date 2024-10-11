@@ -10155,7 +10155,7 @@ function Install-App {
 
     if ($chocoResult -ne 0) {
 
-        Add-Log -Message "Chocolatey installation failed for $appName." -Level "INFO"
+        Add-Log -Message "Chocolatey installation failed for $appName." -Level "ERROR"
         Add-Log -Message "Attempting to install $appName using Winget." -Level "INFO"
 
         #Install Winget if not install on Device
