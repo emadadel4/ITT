@@ -168,6 +168,11 @@ or
 
 ## Support Palestine
 
+<image src="
+https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExYmY0ZWE5cnd5djVoaG12OHVteWI0Nm1zMzlpZGtxM2JwZmNwdG9iMCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/iUNO3pXpfqiZ8JQ1Jo/giphy.webp" >
+</a>
+
+
 <a href="https://www.palestinercs.org/en/Donation" target="blank">
 Donate to the Palestinian Red Crescent
 </a>
@@ -206,9 +211,11 @@ English
   </div>
 </div>
 
+
 <h3 align="center">
   If you can't lift the injustice, at least tell everyone about it.
 </h3>
+
 
 
 <h2>🔑 Keywords</h2>
