@@ -171,7 +171,7 @@ function Invoke-Apply {
         Show-Selected -ListView "TweaksListView" -Mode "Filter"
     }
 
-    $areyousuremsg = $itt.database.locales.Controls.$($itt.Language).InstallMessage
+    $areyousuremsg = $itt.database.locales.Controls.$($itt.Language).ApplyMessage
     $result = [System.Windows.MessageBox]::Show($areyousuremsg, "ITT | Emad Adel", [System.Windows.MessageBoxButton]::YesNo, [System.Windows.MessageBoxImage]::Question)
 
    if($result -eq "no") 
