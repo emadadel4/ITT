@@ -12458,7 +12458,7 @@ function MuteMusic {
     $itt.mediaPlayer.settings.volume = $value
     # Save the volume setting to the registry for persistence
     Set-ItemProperty -Path $itt.registryPath -Name "Music" -Value "$value" -Force
-    $itt["window"].title = "Install Tweak Tool #StandWithPalestine 🔈"
+    $itt["window"].title = "Install Tweaks Tool #StandWithPalestine 🔈"
 
 }
 
@@ -12468,7 +12468,7 @@ function UnmuteMusic {
     $itt.mediaPlayer.settings.volume = $value
     # Save the volume setting to the registry for persistence
     Set-ItemProperty -Path $itt.registryPath -Name "Music" -Value "$value" -Force
-    $itt["window"].title = "Install Tweak Tool #StandWithPalestine 🔊"
+    $itt["window"].title = "Install Tweaks Tool #StandWithPalestine 🔊"
 
 }
 
@@ -17428,8 +17428,8 @@ try {
     $itt.mediaPlayer.settings.volume = "$($itt.Music)"
 
     switch($itt.Music){
-        "100" { $itt["window"].title = "Install Tweak Tool #StandWithPalestine 🔊"}
-        "0" {$itt["window"].title = "Install Tweak Tool #StandWithPalestine 🔈"}
+        "100" { $itt["window"].title = "Install Tweaks Tool #StandWithPalestine 🔊"}
+        "0" {$itt["window"].title = "Install Tweaks Tool #StandWithPalestine 🔈"}
     }
 
     $itt.PopupWindow = (Get-ItemProperty -Path $itt.registryPath -Name "PopupWindow").PopupWindow
