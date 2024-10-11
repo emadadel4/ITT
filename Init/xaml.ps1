@@ -138,8 +138,8 @@ try {
     $itt.mediaPlayer.settings.volume = "$($itt.Music)"
 
     switch($itt.Music){
-        "100" { $itt["window"].title = "Install Tweak Tool #StandWithPalestine 🔊"}
-        "0" {$itt["window"].title = "Install Tweak Tool #StandWithPalestine 🔈"}
+        "100" { $itt["window"].title = "Install Tweaks Tool #StandWithPalestine 🔊"}
+        "0" {$itt["window"].title = "Install Tweaks Tool #StandWithPalestine 🔈"}
     }
 
     $itt.PopupWindow = (Get-ItemProperty -Path $itt.registryPath -Name "PopupWindow").PopupWindow
