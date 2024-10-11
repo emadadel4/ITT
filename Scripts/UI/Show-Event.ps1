@@ -12,7 +12,7 @@ function Show-Event {
         [string]$ImageWidth
     )
 
-    [xml]$event = $EventXaml
+    [xml]$event = $EventWindowXaml
 
     $EventWindowReader = (New-Object System.Xml.XmlNodeReader $event)
     $itt.event = [Windows.Markup.XamlReader]::Load($EventWindowReader)
