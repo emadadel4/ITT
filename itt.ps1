@@ -3990,8 +3990,8 @@ $itt.database.Applications = '[
     "check": "false"
   },
   {
-    "name": "Youtube dl",
-    "description": "outubedl is a small commandline program to download videos from YouTubecom and a few more sites It is written in Python and its not platform specific It should work in your Unix box in Windows or in Mac OS X It is released to the public domain which means you can modify it redistribute it or use it however you like",
+    "name": "Youtube Dl",
+    "description": "youtubedl is a small commandline program to download videos from YouTubecom and a few more sites It is written in Python and its not platform specific It should work in your Unix box in Windows or in Mac OS X It is released to the public domain which means you can modify it redistribute it or use it however you like",
     "winget": "youtube-dl.youtube-dl",
     "choco": "yt-dlp",
     "scoop": "none",
@@ -11040,7 +11040,7 @@ function Startup  {
             Write-Host " |                       Made with ♡ By Emad Adel                               |" 
             Write-Host " |                          #StandWithPalestine                                 |" 
             Write-Host " +==============================================================================+" 
-            Write-Host " You ready to Install anything.`n` " 
+            Write-Host " Launch Anytime, Anywhere! `n` " 
             Write-Host " Telegram: https://t.me/ittemadadel" 
             Write-Host " Discord: https://discord.gg/63m34EE6mX `n` "
         
@@ -15355,10 +15355,10 @@ Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Icons/icon.
 
         <StackPanel Orientation="Vertical" Width="auto" Margin="10">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Youtube dl" Tag="Utilities" IsChecked="false"   ToolTip="Install it again to update. If there is an issue with the program, please report the problem on the GitHub repository." FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <CheckBox Content="Youtube Dl" Tag="Utilities" IsChecked="false"   ToolTip="Install it again to update. If there is an issue with the program, please report the problem on the GitHub repository." FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content="Utilities"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="8" Foreground="{DynamicResource DefaultTextColor2}"  FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="outubedl is a small commandline program to download videos from YouTubecom and a few more sites It is written in Python and its not platform specific It should work in your Unix box in Windows or in Mac OS X It is released to the public domain which means you can modify it redistribute it or use it however you like."/>
+                <TextBlock Width="555" Background="Transparent" Margin="8" Foreground="{DynamicResource DefaultTextColor2}"  FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="youtubedl is a small commandline program to download videos from YouTubecom and a few more sites It is written in Python and its not platform specific It should work in your Unix box in Windows or in Mac OS X It is released to the public domain which means you can modify it redistribute it or use it however you like."/>
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Width="auto" Margin="10">
