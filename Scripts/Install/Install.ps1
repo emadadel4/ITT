@@ -163,7 +163,7 @@ function Invoke-Apply {
 
     if($selectedApps.Count -eq 0)
     {
-        Message -key "choseapp" -icon "Warning"
+        Message -key "chosetweak" -icon "Warning"
         return
     }
     else
