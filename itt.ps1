@@ -24,7 +24,7 @@ $itt = [Hashtable]::Synchronized(@{
     database       = @{}
     ProcessRunning = $false
     developer      = "Emad Adel"
-    lastupdate     = "10/10/2024"
+    lastupdate     = "10/11/2024"
     github         = "https://github.com/emadadel4/itt"
     telegram       = "https://t.me/emadadel4"
     blog           = "https://emadadel4.github.io"
@@ -3993,7 +3993,7 @@ $itt.database.Applications = '[
     "name": "Youtube dl",
     "description": "outubedl is a small commandline program to download videos from YouTubecom and a few more sites It is written in Python and its not platform specific It should work in your Unix box in Windows or in Mac OS X It is released to the public domain which means you can modify it redistribute it or use it however you like",
     "winget": "youtube-dl.youtube-dl",
-    "choco": "youtube-dl",
+    "choco": "yt-dlp",
     "scoop": "none",
     "default": [
       {
