@@ -28,7 +28,7 @@ try {
   }
 
   # Define the file name based on the theme name
-  $fileName = "$themeFolderPath\$($themeName -replace ' ', '_').xaml"
+  $fileName = "$themeFolderPath\$($themeName -replace '_', '' -replace ' ', '' -replace '[^\w]', '').xaml"
 
   # Generate the ResourceDictionary content
   $resourceDictionary = @"
