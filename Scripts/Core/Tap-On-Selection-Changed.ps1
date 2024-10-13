@@ -35,7 +35,7 @@ function ChangeTap {
             $itt.currentList = $settings['currentList']
 
             # Debug
-            #Add-Log -Message $settings['currentList'] -Level "INFO"
+            if($Debug) { Add-Log -Message $settings['currentList'] -Level "INFO"}
             
             break  # Exit the loop once the matching tab is found
         }
