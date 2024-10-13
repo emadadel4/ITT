@@ -88,14 +88,14 @@ try {
         try {
             # Attempt to get existing registry values
             $itt.Theme = (Get-ItemProperty -Path $itt.registryPath -Name "Theme" -ErrorAction Stop).Theme
-            $itt.CurretTheme = (Get-ItemProperty -Path $itt.registryPath -Name "UserTheme").UserTheme
+            $itt.CurretTheme = (Get-ItemProperty -Path $itt.registryPath -Name "UserTheme" -ErrorAction Stop).UserTheme
             $itt.Locales = (Get-ItemProperty -Path $itt.registryPath -Name "locales" -ErrorAction Stop).locales
             $itt.Music = (Get-ItemProperty -Path $itt.registryPath -Name "Music" -ErrorAction Stop).Music
             $itt.PopupWindow = (Get-ItemProperty -Path $itt.registryPath -Name "PopupWindow" -ErrorAction Stop).PopupWindow 
         }
         catch {
             # Creating missing registry keys
-            Add-Log -Message "An error occurred. Creating missing registry keys..." -Level "INFO"
+            if($Debug) {Add-Log -Message "An error occurred. Creating missing registry keys..." -Level "INFO"}
             New-ItemProperty -Path $itt.registryPath -Name "Theme" -Value "default" -PropertyType String -Force *> $Null
             New-ItemProperty -Path $itt.registryPath -Name "UserTheme" -Value "none" -PropertyType String -Force *> $Null
             New-ItemProperty -Path $itt.registryPath -Name "locales" -Value $shortCulture -PropertyType String -Force *> $Null
@@ -167,8 +167,16 @@ try {
         }
         catch {
             # Fall back to default theme if there error
-            $itt["window"].Resources.MergedDictionaries.Add($itt["window"].FindResource("Light"))
-            $itt.CurretTheme = "Light"
+            $fallback = switch($appsTheme)
+            {
+                "0" { "Dark" }
+                "1" { "Light" }
+            }
+
+            Set-ItemProperty -Path $itt.registryPath -Name "Theme" -Value "default" -Force
+            Set-ItemProperty -Path $itt.registryPath -Name "UserTheme" -Value "none" -Force
+            $itt["window"].Resources.MergedDictionaries.Add($itt["window"].FindResource($fallback))
+            $itt.CurretTheme = $fallback
         }
 
     #===========================================================================
