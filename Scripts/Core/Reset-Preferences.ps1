@@ -17,7 +17,7 @@ function Reset-Preferences {
 
     param (
         [string]$music = "100",
-        [string]$PopupWindow = "on"
+        [string]$PopupWindow = "on",
         [string]$UserTheme = "none"
     )
 
