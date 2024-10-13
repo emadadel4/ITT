@@ -30,11 +30,11 @@ function Invoke-Button {
         - The `Debug-Message` function is used for internal debugging and can be uncommented for logging purposes.
     #>
 
-    Param ([string]$action)
+    Param ([string]$action,[string]$Content)
 
     # Helper function for debugging
-    function Debug-Message($message) {
-        #Write-Host "Debug: $message"
+    function Debug-Message {
+        if($Debug) {  Add-Log "Name:$action Content:$Content" -Level "INFO"  }
     }
 
     # Switch block to handle different actions
@@ -43,14 +43,14 @@ function Invoke-Button {
         "installBtn" {
             $itt.SearchInput.Text = $null
             Invoke-Install
-            Debug-Message $action
+            Debug-Message
         }
         "applyBtn" {
             Invoke-Apply
-            Debug-Message $action
+            Debug-Message 
         }
         "taps" {
-            ChangeTap $action
+            ChangeTap
         }
         "category" {
             FilterByCat($itt.category.SelectedItem.Content)
@@ -59,68 +59,68 @@ function Invoke-Button {
         "searchInput" {
             Search
             $itt['window'].FindName('category').SelectedIndex = 0
-            Debug-Message $action
+            Debug-Message
         }
 
         # Menu items
         "ar" {
             Set-Language -lang "ar"
-            Debug-Message $action
+            Debug-Message
         }
         "en" {
             Set-Language -lang "en"
-            Debug-Message $action
+            Debug-Message
         }
         "fr" {
             Set-Language -lang "fr"
-            Debug-Message $action
+            Debug-Message
         }
         "tr" {
             Set-Language -lang "tr"
-            Debug-Message $action
+            Debug-Message
         }
         "zh" {
             Set-Language -lang "zh"
-            Debug-Message $action
+            Debug-Message
         }
         "ko" {
             Set-Language -lang "ko"
-            Debug-Message $action
+            Debug-Message
         }
         "de" {
             Set-Language -lang "de"
-            Debug-Message $action
+            Debug-Message
         }
         "ru" {
             Set-Language -lang "ru"
-            Debug-Message $action
+            Debug-Message
         }
         "es" {
             Set-Language -lang "es"
-            Debug-Message $action
+            Debug-Message
         }
         "save" {
             SaveItemsToJson
-            Debug-Message $action
+            Debug-Message
         }
         "load" {
             LoadJson
-            Debug-Message $action
+            Debug-Message
         }
 
         # Device Management
         "deviceManager" {
             Start-Process devmgmt.msc 
-            Debug-Message $action
+            Debug-Message
         }
         "appsfeatures" {
             Start-Process appwiz.cpl 
-            Debug-Message $action
+            Debug-Message
         }
         "sysinfo" {
             Start-Process msinfo32.exe
             Start-Process dxdiag.exe 
-            Debug-Message $action
+            Debug-Message
         }
         "poweroption" {
             Start-Process powercfg.cpl 
@@ -143,19 +143,13 @@ function Invoke-Button {
             Debug-Message $action
         }
 
-        # Theme
-        "Dark" {
-            Switch-ToDarkMode
-            Debug-Message $action
-        }
-        "Light" {
-            Switch-ToLightMode
-            Debug-Message $action
-        }
         "systheme" {
             SwitchToSystem 
-            Debug-Message $action
+            Debug-Message
         }
+
+        #{themes}
+
 
 
         # chocoloc
