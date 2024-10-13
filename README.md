@@ -135,9 +135,15 @@ or
 
 <h3>Add a New Tweak</h3>
 
+<pre><code>newTweak.ps1
+</code></pre>
+
 <p><em>Note: Ensure you understand the tweak you are adding and test it before committing.</em></p>
 
-<pre><code>newTweak.ps1
+<h3>Create your own theme</h3>
+
+
+<pre><code>newTheme.ps1
 </code></pre>
 
 <h3>Add a New Soundtrack</h3>
