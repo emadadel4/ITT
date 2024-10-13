@@ -17447,7 +17447,7 @@ try {
         }
         catch {
             # Creating missing registry keys
-            Add-Log -Message "An error occurred. Creating missing registry keys..." -Level "INFO"
+            if($Debug) {Add-Log -Message "An error occurred. Creating missing registry keys..." -Level "INFO"}
             New-ItemProperty -Path $itt.registryPath -Name "Theme" -Value "default" -PropertyType String -Force *> $Null
             New-ItemProperty -Path $itt.registryPath -Name "UserTheme" -Value "none" -PropertyType String -Force *> $Null
             New-ItemProperty -Path $itt.registryPath -Name "locales" -Value $shortCulture -PropertyType String -Force *> $Null
