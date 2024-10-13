@@ -4,18 +4,19 @@ param (
     [string]$Assets = ".\Resources",
     [string]$Controls = ".\UI\Controls",
     [string]$DatabaseDirectory = ".\Resources\Database",
-    [string]$StartScript = ".\init\start.ps1",
-    [string]$MainScript = ".\init\main.ps1",
+    [string]$StartScript = ".\Initialize\start.ps1",
+    [string]$MainScript = ".\Initialize\main.ps1",
     [string]$ScritsDirectory = ".\Scripts",
     [string]$windows = ".\UI\Views",
-    [string]$LoadXamlScript = ".\init\xaml.ps1",
+    [string]$LoadXamlScript = ".\Initialize\xaml.ps1",
+    [string]$Themes = "Themes",
     [switch]$Debug,
     [switch]$code,
     [string]$ProjectDir = $PSScriptRoot
 
 )
 
-# Initialize synchronized hashtable
+# Initializeialize synchronized hashtable
 $itt = [Hashtable]::Synchronized(@{})
 $itt.database = @{}
 
@@ -121,15 +122,55 @@ function GenerateCheckboxes {
 
         <StackPanel Orientation="Vertical" Width="auto" Margin="10">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="$Content" $Tag $IsChecked $Toggle $Name $Tips FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource DefaultTextColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <CheckBox Content="$Content" $Tag $IsChecked $Toggle $Name $Tips FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource TextColorSecondaryColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content="$CleanedCategory"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="8" Foreground="{DynamicResource DefaultTextColor2}"  FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="$CleanedDescription."/>
+                <TextBlock Width="555" Background="Transparent" Margin="8" Foreground="{DynamicResource TextColorSecondaryColor2}"  FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="$CleanedDescription."/>
         </StackPanel>
 
 "@
     }
     return $Checkboxes
+}
+
+# Generate themes menu items
+function Generate-MenuItems {
+    param (
+        [string]$ThemesPath  # Path to the themes folder
+    )
+
+    # Validate the path
+    if (-Not (Test-Path $ThemesPath)) {
+        Write-Host "The specified path does not exist: $ThemesPath"
+        return
+    }
+
+    # Generate MenuItem entries for each file in the themes folder
+    $menuItems = Get-ChildItem -Path $ThemesPath -File | ForEach-Object {
+        # Read the content of each file
+        $content = Get-Content $_.FullName -Raw  # Read the entire file content
+
+        # Use regex to extract content inside curly braces for Header
+        if ($content -match '\{(.*?)\}') {
+            $header = $matches[1]  # Extracted content inside {}
+        } else {
+            $header = "Unknown"  # Fallback if no match is found
+        }
+
+        # Use regex to extract x:Key value for Header2
+        if ($content -match 'x:Key="(.*?)"') {
+            $name = $matches[1]  # Extracted x:Key value
+        } else {
+            $header2 = "No Key"  # Fallback if no x:Key is found
+        }
+
+        # Create MenuItem entry with the extracted headers
+        "<MenuItem Name=`"$name`" Header=`"$header`"/>"
+    }
+
+    # Join the MenuItems into a single string
+    $menuItemsOutput = $menuItems -join "`n"
+    return $menuItemsOutput
 }
 
 # Process each JSON file in the specified directory
@@ -225,7 +266,7 @@ function NewCONTRIBUTOR {
 
     # Generate unique TextBlock elements for each name in CONTRIBUTORS.md
     $textBlockElements = $contribLines | ForEach-Object {
-        "<TextBlock Text='$($_)' Margin='1' Foreground='{DynamicResource DefaultTextColor2}' />"
+        "<TextBlock Text='$($_)' Margin='1' Foreground='{DynamicResource TextColorSecondaryColor2}' />"
     }
 
     # Join TextBlock elements with newline characters
@@ -255,6 +296,44 @@ function CountItems {
     Update-Readme -Apps $appsCount -Tweaks $tweaksCount -Quote $quotesCount -Track $tracksCount -Settings $settingsCount -Localization $localizationCount
 }
 
+function Generate-Themes-Invoke {
+    param (
+        [string]$ThemesPath = $Themes,      
+        [string]$OutputScript = $OutputScript
+    )
+
+    # Validate the paths
+    if (-Not (Test-Path $ThemesPath)) {
+        Write-Host "The specified themes path does not exist: $ThemesPath"
+        return
+    }
+
+    if (-Not (Test-Path $OutputScript)) {
+        Write-Host "The specified output script path does not exist: $OutputScript"
+        return
+    }
+
+    # Generate MenuItem entries for each file in the themes folder
+    $menuItems = Get-ChildItem -Path $ThemesPath -File | ForEach-Object {
+        $filename = [System.IO.Path]::GetFileNameWithoutExtension($_.Name)  # Get filename without extension
+
+        $Key = $filename -replace , '[^\w]', ''
+        
+        # Create the MenuItem entry with a script block
+        "
+        ""$Key""{
+            Set-Theme -Theme `$action`
+            Debug-Message
+        }
+        "
+    }
+
+    # Join the menu items into a single string
+    $menuItemsOutput = $menuItems -join "`n"
+
+    # Replace the specified text in the output script
+    ReplaceTextInFile -FilePath $OutputScript -TextToReplace '#{themes}' -ReplacementText $menuItemsOutput
+}
 
 # Write script header
 function WriteHeader {
@@ -338,8 +417,8 @@ WriteToScript -Content @"
         "catagory" = Join-Path -Path $Controls -ChildPath "catagory.xaml"
         "search" = Join-Path -Path $Controls -ChildPath "search.xaml"
         "buttons" = Join-Path -Path $Controls -ChildPath "buttons.xaml"
-        "Style"   = Join-Path -Path $Assets -ChildPath "Styles/Styles.xaml"
-        "Colors"  = Join-Path -Path $Assets -ChildPath "Styles/Colors.xaml"
+        "Style"   = Join-Path -Path $Assets -ChildPath "Themes/Styles.xaml"
+        "Colors"  = Join-Path -Path $Assets -ChildPath "Themes/Colors.xaml"
     }
 
     # Read and replace placeholders in XAML content
@@ -375,8 +454,21 @@ WriteToScript -Content @"
     $MainXamlContent = $MainXamlContent -replace "{{Apps}}", $AppsCheckboxes 
     $MainXamlContent = $MainXamlContent -replace "{{Tweaks}}", $TweaksCheckboxes 
     $MainXamlContent = $MainXamlContent -replace "{{Settings}}", $SettingsCheckboxes 
+    $MainXamlContent = $MainXamlContent -replace "{{ThemesKeys}}", (Generate-MenuItems -ThemesPath "Themes")
 
-    WriteToScript -Content "`$MainWindowXaml = '$MainXamlContent'"
+
+        $ThemeFilesContent = Get-ChildItem -Path "$Themes" -File | 
+        ForEach-Object { Get-Content $_.FullName -Raw } | 
+        Out-String
+
+        $MainXamlContent = $MainXamlContent -replace "{{CustomThemes}}", $ThemeFilesContent 
+
+        # Menu Item Control
+        Generate-Themes-Invoke
+
+        # Final output
+        WriteToScript -Content "`$MainWindowXaml = '$MainXamlContent'"
+
 
     # Signup a new CONTRIBUTOR
     NewCONTRIBUTOR
@@ -470,18 +562,15 @@ WriteToScript -Content @"
 "@
 
 CountItems
-Write-Host " `n` Build successfully" -ForegroundColor Green
+Write-Host " `n`Build successfully" -ForegroundColor Green
 
 if($Debug)
 {
-    Write-Host " `n`Starting ITT..." -ForegroundColor Green
+    Write-Host " `n`Debug mode..." -ForegroundColor Green
     $script = "& '$ProjectDir\$OutputScript'"
     $pwsh = if (Get-Command pwsh -ErrorAction SilentlyContinue) { "pwsh" } else { "powershell" }
     $wt = if (Get-Command wt.exe -ErrorAction SilentlyContinue) { "wt.exe" } else { $pwsh }
-    Start-Process $wt -ArgumentList "$pwsh -NoProfile -Command $script"
-
-    # debug
-    #Write-Host $ProjectDir
+    Start-Process $wt -ArgumentList "$pwsh -NoProfile -Command $script -Debug"
 }
 
 }

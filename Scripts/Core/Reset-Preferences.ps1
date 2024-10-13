@@ -18,10 +18,13 @@ function Reset-Preferences {
     param (
         [string]$music = "100",
         [string]$PopupWindow = "on"
+        [string]$UserTheme = "none"
     )
 
     Set-ItemProperty -Path $itt.registryPath  -Name "PopupWindow" -Value $PopupWindow -Force
     Set-ItemProperty -Path $itt.registryPath  -Name "Music" -Value $music -Force
+    Set-ItemProperty -Path $itt.registryPath  -Name "UserTheme" -Value $UserTheme -Force
+
     SwitchToSystem
 
     Message -key "reopen" -icon "Information"

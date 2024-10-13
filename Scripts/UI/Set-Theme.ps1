@@ -41,22 +41,22 @@ function Switch-ToDarkMode {
 function Switch-ToLightMode {
     try {
         $theme = $itt['window'].FindResource("Light")
-        Update-Theme $theme "false"
+        Update-Theme $theme "Light"
     } catch {
         Write-Host "Error switching to light mode: $_"
     }
 }
-function Update-Theme ($theme, $mode) {
+function Update-Theme ($theme) {
     $itt['window'].Resources.MergedDictionaries.Clear()
     $itt['window'].Resources.MergedDictionaries.Add($theme)
-    Set-ItemProperty -Path $itt.registryPath -Name "DarkMode" -Value $mode -Force
+    Set-ItemProperty -Path $itt.registryPath -Name "Theme" -Value "$theme" -Force
 
 }
 function SwitchToSystem {
 
     try {
 
-        Set-ItemProperty -Path $itt.registryPath  -Name "DarkMode" -Value "none" -Force
+        Set-ItemProperty -Path $itt.registryPath  -Name "Theme" -Value "default" -Force
 
         $AppsTheme = (Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize" -Name "AppsUseLightTheme")
 
@@ -74,5 +74,28 @@ function SwitchToSystem {
     }
     catch {
         Write-Host "Error occurred: $_"
+    }
+}
+
+function Set-Theme {
+    param (
+        [string]$Theme
+    )
+
+    Switch($Theme)
+    {
+        "Light"{
+            $itt['window'].Resources.MergedDictionaries.Add($itt['window'].FindResource("Light"))
+            Set-ItemProperty -Path $itt.registryPath -Name "Theme" -Value "Light" -Force
+        }
+        "Dark"{
+            $itt['window'].Resources.MergedDictionaries.Add($itt['window'].FindResource("Dark"))
+            Set-ItemProperty -Path $itt.registryPath -Name "Theme" -Value "Dark" -Force
+        }
+        default{
+            $itt['window'].Resources.MergedDictionaries.Add($itt['window'].FindResource("$Theme"))
+            Set-ItemProperty -Path $itt.registryPath -Name "Theme" -Value "Custom" -Force
+            Set-ItemProperty -Path $itt.registryPath -Name "UserTheme" -Value "$Theme" -Force
+        }
     }
 }

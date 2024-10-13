@@ -33,8 +33,8 @@
             </Style>
             <Style x:Key="{x:Type ScrollBar}" TargetType="{x:Type ScrollBar}">
                 <Setter Property="Stylus.IsFlicksEnabled" Value="false" />
-                <Setter Property="Foreground" Value="{DynamicResource BGButtonColor}" />
-                <Setter Property="Background" Value="{DynamicResource FGColor}" />
+                <Setter Property="Foreground" Value="{DynamicResource PrimaryButtonForeground}" />
+                <Setter Property="Background" Value="{DynamicResource SecondaryPrimaryBackgroundColor}" />
                 <Setter Property="Width" Value="8" />
                 <Setter Property="Template">
                     <Setter.Value>
@@ -102,7 +102,7 @@
 
     
 
-    <Border Background="{DynamicResource BGColor}" BorderBrush="{DynamicResource FGColor}" BorderThickness="4" CornerRadius="10">
+    <Border Background="{DynamicResource PrimaryBackgroundColor}" BorderBrush="{DynamicResource SecondaryPrimaryBackgroundColor}" BorderThickness="4" CornerRadius="10">
 
             <Grid>
                 <Grid.RowDefinitions>
@@ -133,7 +133,7 @@
                                 Width="Auto"
                                 FontSize="20"
                                 Text="What's New"
-                                Foreground="{DynamicResource DefaultTextColor}"
+                                Foreground="{DynamicResource TextColorSecondaryColor}"
                                 FontWeight="SemiBold"
                                 TextWrapping="Wrap"
                                 VerticalAlignment="Center"
@@ -144,7 +144,7 @@
                                 Height="Auto"
                                 Width="Auto"
                                 Text="8/29/2024"
-                                Foreground="{DynamicResource DefaultTextColor2}"
+                                Foreground="{DynamicResource TextColorSecondaryColor2}"
                                 TextWrapping="Wrap"
                                 VerticalAlignment="Center"
                                 HorizontalAlignment="Left" />
@@ -177,7 +177,7 @@
                                         Width="Auto"
                                         Visibility="Visible"
                                         Margin="0,10,0,0"
-                                        Foreground="{DynamicResource DefaultTextColor2}"
+                                        Foreground="{DynamicResource TextColorSecondaryColor2}"
                                         TextWrapping="Wrap"
                                         TextAlignment="Left"
                                         VerticalAlignment="Center"
@@ -191,7 +191,7 @@
                         <Grid Row="2">
                             <TextBlock Width="Auto"
                             Name="DisablePopup" 
-                            Foreground="{DynamicResource DefaultTextColor2}"
+                            Foreground="{DynamicResource TextColorSecondaryColor2}"
                             Text="Don't show again"
                             Background="Transparent"
                             TextAlignment="Center"

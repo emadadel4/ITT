@@ -92,8 +92,7 @@
                     <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text=""/>
                 </MenuItem.Icon>
                 <MenuItem Name="systheme" Header="{Binding defaultTheme}"/>
-                <MenuItem Name="Dark" Header="{Binding Dark}"/>
-                <MenuItem Name="Light" Header="{Binding Light}"/>
+                {{ThemesKeys}}
             </MenuItem>
 
             <MenuItem Header="{Binding music}">
