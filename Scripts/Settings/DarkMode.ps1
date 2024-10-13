@@ -35,12 +35,18 @@ Function Invoke-DarkMode {
         if ($DarkMoveEnabled -eq $false){
             $DarkMoveValue = 0
             Add-Log -Message "Dark Mode" -Level "Apply"
-            $itt['window'].Resources.MergedDictionaries.Add($itt['window'].FindResource("Dark"))
+            if($Theme -eq "default")
+            {
+                $itt['window'].Resources.MergedDictionaries.Add($itt['window'].FindResource("Dark"))
+            }
         }
         else {
             $DarkMoveValue = 1
             Add-Log -Message "Light Mode" -Level "Disabled"
-            $itt['window'].Resources.MergedDictionaries.Add($itt['window'].FindResource("Light"))
+            if($Theme -eq "default")
+            {
+                $itt['window'].Resources.MergedDictionaries.Add($itt['window'].FindResource("Light"))
+            }
         }
 
         $Path = "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize"
