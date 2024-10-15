@@ -1,0 +1,24 @@
+name: Build
+
+permissions:
+  contents: write
+  actions: read
+
+on:
+  workflow_dispatch: 
+
+jobs:
+  build-runspace:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Build project
+        shell: pwsh
+        run: |
+          Set-ExecutionPolicy Bypass -Scope Process -Force; ./build.ps1
+        continue-on-error: false 
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
