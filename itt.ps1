@@ -29,7 +29,7 @@ $itt = [Hashtable]::Synchronized(@{
     database       = @{}
     ProcessRunning = $false
     developer      = "Emad Adel"
-    lastupdate     = "10/13/2024"
+    lastupdate     = "10/15/2024"
     github         = "https://github.com/emadadel4/itt"
     telegram       = "https://t.me/emadadel4"
     blog           = "https://emadadel4.github.io"
@@ -11056,9 +11056,9 @@ function Startup  {
         
         }
 
-        LOG
-        PlayMusic
-        Quotes
+        #LOG
+        #PlayMusic
+        #Quotes
     }
 }
 function ChangeTap {
@@ -12646,144 +12646,14 @@ function Set-Theme {
         }
     }
 }
-
-# Invoke Event Window WPF
 function Show-Event {
-    param(
-        [string]$image,
-        [string]$title,
-        [string]$description,
-        [string]$day,
-        [string]$WindowHeight,
-        [string]$WindowWidth,
-        [string]$ImageHeight,
-        [string]$ImageWidth
-    )
-
     [xml]$event = $EventWindowXaml
-
     $EventWindowReader = (New-Object System.Xml.XmlNodeReader $event)
     $itt.event = [Windows.Markup.XamlReader]::Load($EventWindowReader)
-    $itt["event"].Resources.MergedDictionaries.Add($itt["window"].FindResource($itt.CurretTheme))
-    $itt.event.title = "ITT | $title"
-    $itt.event.Height = "$WindowHeight"
-    $itt.event.Width = "$WindowWidth"
-
-
-
-
-    # Set new values
-    $titleTextBlock = $itt.event.FindName('title')
-    $subtitleTextBlock = $itt.event.FindName('Subtitle')
-    $tutorialImage = $itt.event.FindName('Image')
-    #$mainStackPanel = $itt.event.FindName('MainStackPanel')
-    $ScrollViewer = $itt.event.FindName('ScrollViewer')
-    $DisablePopup = $itt.event.FindName('DisablePopup')
-    
-
-    $itt.event.FindName('date').Text = $itt.lastupdate
-
-    # Switch-like structure using switch statement
-    switch ($day) {
-
-        "Birthday" {
-            $titleTextBlock.Text = "$title"
-            $tutorialImage.Source = [System.Windows.Media.Imaging.BitmapImage]::new([Uri]::new($image))
-            $subtitleTextBlock.Text = "$description"
-            $DisablePopup.Text = "Happy birthday day Emad"
-            $tutorialImage.Height = $ImageHeight
-            $subtitleTextBlock.VerticalAlignment = "Center"
-            $subtitleTextBlock.HorizontalAlignment = "Center"
-            $subtitleTextBlock.FontSize = "20"
-            $ScrollViewer.Height = "466"
-
-            $itt.event.FindName("DisablePopup").add_MouseLeftButtonDown({
-                $itt.event.FindName("DisablePopup").Text = "Thank you :)"
-            })
-        }
-        "OctoPair" {
-            $titleTextBlock.Text = "$title"
-            $tutorialImage.Source = [System.Windows.Media.Imaging.BitmapImage]::new([Uri]::new($image))
-            $tutorialImage.Height = $ImageHeight
-            $subtitleTextBlock.Visibility = "Hidden"
-            $subtitleTextBlock.Visibility = "Hidden"
-            $DisablePopup.Visibility = "Hidden"
-            $ScrollViewer.Height = "NaN"
-        }
-        Default {
-
-            # Check RTL & LTR
-            if($itt.Language -ne "ar")
-            {
-                $titleTextBlock.Text = "$title $env:USERNAME" 
-                $subtitleTextBlock.Text = "$description"
-
-            }else
-            {
-                $titleTextBlock.Text = "$env:USERNAME $title " 
-                $subtitleTextBlock.Text = "$description"
-            }
-
-            # Lazy loading image event handler
-            $tutorialImage.add_IsVisibleChanged({
-                if ($_.IsVisible) {
-                    $tutorialImage.Source = [System.Windows.Media.Imaging.BitmapImage]::new([Uri]::new($image))
-                }
-            })
-                    
-            $tutorialImage.add_MouseLeftButtonDown({
-                Start-Process("https://youtu.be/QmO82OTsU5c")
-            })
-
-            $itt.event.FindName("DisablePopup").add_MouseLeftButtonDown({
-                DisablePopup
-                $itt.event.Close()
-            })
-        }
-    }
-
-    $itt.event.FindName("closebtn").add_MouseLeftButtonDown({
-        $itt.event.Close()
-    })
-
-    $KeyEvents = {
-
-        # Close
-        if ($_.Key -eq "Escape") {
-            $itt.event.Close()
-        }
-    }
-    $itt.event.Add_PreViewKeyDown($KeyEvents)
+    $itt.event.Resources.MergedDictionaries.Add($itt["window"].FindResource($itt.CurretTheme))
 
     # Show dialog
     $itt.event.ShowDialog() | Out-Null
-}
-
-# Function to check current date and call Show-Event
-function Get-DateStatus {
-
-    $watchdemo = $itt.database.locales.Controls.$($itt.Language).watchdemo
-    $happybirthday = $itt.database.locales.Controls.$($itt.Language).happybirthday
-    $myplaylist = $itt.database.locales.Controls.$($itt.Language).myplaylist
-    $subs = $itt.database.locales.Updates.Keyboard
-
-    if ($itt.Date.Month -eq 9 -and $itt.Date.Day -eq 1) 
-    {
-        Show-Event -image "https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/happy.jpg" -ImageHeight 400 -title "$happybirthday" -description "$myplaylist" -day "Birthday" -WindowHeight 600 -WindowWidth 486
-    } 
-    elseif ($itt.Date.Month -eq 10 -and $itt.Date.Day -eq 6 -or $itt.Date.Day -eq 7 ) 
-    {
-        Show-Event -image "https://raw.githubusercontent.com/emadadel4/ITT/refs/heads/main/Resources/Images/OctoPair.jpg" -ImageHeight 500 -title "Celebrating" -description "Celebrating the anniversary of OctoPair 7-8" -day "OctoPair" -WindowHeight 655 -WindowWidth 400 
-    }else 
-    {
-        if($itt.PopupWindow -eq "off") {return}   
-        Show-Event -image "https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/thumbnail.jpg" -title "$watchdemo" -description "$subs" -day "Default" -WindowHeight 500 -WindowWidth 486
-    }
-}
-
-# Save Current State event
-function DisablePopup {
-    Set-ItemProperty -Path $itt.registryPath  -Name "PopupWindow" -Value "off" -Force
 }
 function UpdateUI {
 
@@ -17240,112 +17110,94 @@ $EventWindowXaml = '<Window
         </EventTrigger>
     </Window.Triggers>
 
-    
 
     <Border Background="{DynamicResource PrimaryBackgroundColor}" BorderBrush="{DynamicResource SecondaryPrimaryBackgroundColor}" BorderThickness="4" CornerRadius="10">
 
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
+    <Grid>
 
-                <StackPanel x:Name="MainStackPanel" Height="Auto" Orientation="Vertical" Margin="8">
-                    
-                    <!-- Title -->
-                        <Grid Row="0" Background="Transparent">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel x:Name="MainStackPanel" Height="Auto" Background="Transparent" Orientation="Vertical" Margin="15">
+            
+                <!-- Title -->
+                <Grid Row="0" Background="Transparent">
                             
-                            <TextBlock Text="&#10006;" 
-                            Name="closebtn"
-                            HorizontalAlignment="Right" 
-                            VerticalAlignment="Top"
-                            Margin="8"
-                            Cursor="Hand"
-                            Foreground="red" />
+                    <TextBlock Text="&#10006;" 
+                    Name="closebtn"
+                    HorizontalAlignment="Right" 
+                    VerticalAlignment="Top"
+                    Margin="0"
+                    Cursor="Hand"
+                    Foreground="red" />
 
 
-                            <StackPanel Orientation="Vertical" Margin="10">
+                    <StackPanel Orientation="Vertical" Margin="0">
 
-                                <TextBlock 
-                                Name="title"
-                                Height="Auto"
-                                Width="Auto"
-                                FontSize="20"
-                                Text="What''s New"
-                                Foreground="{DynamicResource TextColorSecondaryColor}"
-                                FontWeight="SemiBold"
-                                TextWrapping="Wrap"
-                                VerticalAlignment="Center"
-                                HorizontalAlignment="Left" />
-            
-                                <TextBlock
-                                Name="date" 
-                                Height="Auto"
-                                Width="Auto"
-                                Text="8/29/2024"
-                                Foreground="{DynamicResource TextColorSecondaryColor2}"
-                                TextWrapping="Wrap"
-                                VerticalAlignment="Center"
-                                HorizontalAlignment="Left" />
-            
-                            </StackPanel>
+                        <TextBlock 
+                        Name="title"
+                        Height="Auto"
+                        Width="Auto"
+                        FontSize="20"
+                        Text="What''s New"
+                        Foreground="{DynamicResource TextColorSecondaryColor}"
+                        FontWeight="SemiBold"
+                        TextWrapping="Wrap"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Left" />
+    
+                        <TextBlock
+                        Name="date" 
+                        Height="Auto"
+                        Width="Auto"
+                        Text="8/29/2024"
+                        Foreground="{DynamicResource TextColorSecondaryColor2}"
+                        TextWrapping="Wrap"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Left" />
+    
+                    </StackPanel>
 
-                        </Grid>
-                    <!-- End Title -->
+                </Grid>
+            <!-- End Title -->
 
-                    <!-- Header -->
-                        <Grid Row="1">
-                            <ScrollViewer Name="ScrollViewer" VerticalScrollBarVisibility="Auto" Height="375">
-                                <StackPanel Orientation="Vertical">
-                                        <!--Image-->
-                                        <Image 
-                                        Name="Image"
-                                        HorizontalAlignment="Center" 
-                                        VerticalAlignment="Center"
-                                        Height="200"
-                                        Margin="1"
-                                        Source="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/thumbnail.jpg" 
-                                        Cursor="Hand" 
-                                        />
-                                        <!--End Image-->
+            </StackPanel>
 
-                                        <TextBlock 
-                                        Name="Subtitle"
-                                        Text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet amet obcaecati dolorem, sit iusto consequatur, libero laudantium officia quo ea officiis nulla esse quod ex, mollitia asperiores! Accusantium, labore pariatur."
-                                        Height="Auto"
-                                        Width="Auto"
-                                        Visibility="Visible"
-                                        Margin="0,10,0,0"
-                                        Foreground="{DynamicResource TextColorSecondaryColor2}"
-                                        TextWrapping="Wrap"
-                                        TextAlignment="Left"
-                                        VerticalAlignment="Center"
-                                        HorizontalAlignment="Left" />
-                                </StackPanel>
-                            </ScrollViewer>
-                        </Grid>
-                    <!-- End Header -->
+        <Grid Row="1" Background="Transparent" Margin="0">
+            <ScrollViewer Name="ScrollViewer" VerticalScrollBarVisibility="Auto" Height="Auto">
+                <StackPanel Margin="20" Orientation="Vertical">
 
-                    <!-- Footer -->
-                        <Grid Row="2">
-                            <TextBlock Width="Auto"
-                            Name="DisablePopup" 
-                            Foreground="{DynamicResource TextColorSecondaryColor2}"
-                            Text="Don''t show again"
-                            Background="Transparent"
-                            TextAlignment="Center"
-                            Cursor="Hand"
-                            Padding="15"
-                            Height="Auto"
-                            Visibility="Visible"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center"
-                            />
-                        </Grid>
-                    <!-- End Footer -->
+                    <TextBlock Text=''Watch demo'' Margin=''0,0,0,12'' FontSize=''18'' FontWeight=''Bold'' Foreground=''{DynamicResource PrimaryButtonForeground}'' TextWrapping=''Wrap''/>
+<TextBlock Text=''Create yor own theme!'' Margin=''0,0,0,12'' FontSize=''18'' FontWeight=''Bold'' Foreground=''{DynamicResource PrimaryButtonForeground}'' TextWrapping=''Wrap''/>
+
+
+                    <TextBlock Text=''TextBlock'' FontSize=''30'' Margin=''5'' Foreground=''OrangeRed'' />
+
                 </StackPanel>
-            </Grid>
+            </ScrollViewer>
+        </Grid>
+
+        <Grid Row="2" Background="Transparent">
+                <TextBlock 
+                Name="DisablePopup" 
+                Foreground="{DynamicResource TextColorSecondaryColor2}"
+                Text="Don''t show again"
+                Background="Transparent"
+                TextAlignment="Center"
+                Cursor="Hand"
+                Padding="15"
+                Visibility="Visible"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                />
+        </Grid>
+    </Grid>
+
+
     </Border>
 </Window>
 
@@ -17655,7 +17507,8 @@ $onClosingEvent = {
 # Handle the Loaded event
 $itt["window"].Add_Loaded({
     Startup
-    Get-DateStatus
+    Show-Event
+    #Get-DateStatus
 })
 
 # Close Event handler
