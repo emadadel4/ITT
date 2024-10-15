@@ -11056,9 +11056,9 @@ function Startup  {
         
         }
 
-        #LOG
-        #PlayMusic
-        #Quotes
+        LOG
+        PlayMusic
+        Quotes
     }
 }
 function ChangeTap {
@@ -12647,10 +12647,24 @@ function Set-Theme {
     }
 }
 function Show-Event {
+
+
     [xml]$event = $EventWindowXaml
     $EventWindowReader = (New-Object System.Xml.XmlNodeReader $event)
     $itt.event = [Windows.Markup.XamlReader]::Load($EventWindowReader)
     $itt.event.Resources.MergedDictionaries.Add($itt["window"].FindResource($itt.CurretTheme))
+
+
+    $itt.event.FindName('date').Text = $itt.date
+    $CloseBtn = $itt.event.FindName('closebtn')
+
+    #{title}
+
+    #{contorlshandler}
+
+    $CloseBtn.add_MouseLeftButtonDown({
+        $itt.event.Close()
+    })
 
     # Show dialog
     $itt.event.ShowDialog() | Out-Null
@@ -17170,13 +17184,7 @@ $EventWindowXaml = '<Window
         <Grid Row="1" Background="Transparent" Margin="0">
             <ScrollViewer Name="ScrollViewer" VerticalScrollBarVisibility="Auto" Height="Auto">
                 <StackPanel Margin="20" Orientation="Vertical">
-
-                    <TextBlock Text=''Watch demo'' Margin=''0,0,0,12'' FontSize=''18'' FontWeight=''Bold'' Foreground=''{DynamicResource PrimaryButtonForeground}'' TextWrapping=''Wrap''/>
-<TextBlock Text=''Create yor own theme!'' Margin=''0,0,0,12'' FontSize=''18'' FontWeight=''Bold'' Foreground=''{DynamicResource PrimaryButtonForeground}'' TextWrapping=''Wrap''/>
-
-
-                    <TextBlock Text=''TextBlock'' FontSize=''30'' Margin=''5'' Foreground=''OrangeRed'' />
-
+                    UpdateContent
                 </StackPanel>
             </ScrollViewer>
         </Grid>
