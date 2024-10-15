@@ -18,6 +18,16 @@ function Show-Event {
         $itt.event.Close()
     })
 
+    $itt.event.FindName('DisablePopup').add_MouseLeftButtonDown({
+        DisablePopup
+        $itt.event.Close()
+    })
+
     # Show dialog
+    if($itt.PopupWindow -eq "off") {return}   
     $itt.event.ShowDialog() | Out-Null
+}
+
+function DisablePopup {
+    Set-ItemProperty -Path $itt.registryPath  -Name "PopupWindow" -Value "off" -Force
 }
