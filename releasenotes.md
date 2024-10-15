@@ -1,4 +1,4 @@
-## New Update!
+## New Update
 
 ### Watch demo
 
