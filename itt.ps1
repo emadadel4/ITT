@@ -12658,9 +12658,40 @@ function Show-Event {
     $itt.event.FindName('date').Text = $itt.date
     $CloseBtn = $itt.event.FindName('closebtn')
 
-    #{title}
+        $itt.event.FindName('title').text = 'New Update!
+'.Trim()
 
-    #{contorlshandler}
+    
+       $itt.event.FindName('shell').add_MouseLeftButtonDown({
+
+            if('False'){
+                Write-Host "https://github.com/emadadel4/shelltube"
+                Write-Host "shell"
+            }
+
+            Start-Process('https://github.com/emadadel4/shelltube')
+        })
+    
+       $itt.event.FindName('adel').add_MouseLeftButtonDown({
+
+            if('False'){
+                Write-Host "https://raw.githubusercontent.com/emadadel4/ITT/refs/heads/update/Resources/Images/customtheme.jpg"
+                Write-Host "adel"
+            }
+
+            Start-Process('https://raw.githubusercontent.com/emadadel4/ITT/refs/heads/update/Resources/Images/customtheme.jpg')
+        })
+    
+       $itt.event.FindName('emad').add_MouseLeftButtonDown({
+
+            if('False'){
+                Write-Host "https://www.youtube.com/watch?v=QmO82OTsU5c"
+                Write-Host "emad"
+            }
+
+            Start-Process('https://www.youtube.com/watch?v=QmO82OTsU5c')
+        })
+    
 
     $CloseBtn.add_MouseLeftButtonDown({
         $itt.event.Close()
@@ -17184,7 +17215,107 @@ $EventWindowXaml = '<Window
         <Grid Row="1" Background="Transparent" Margin="0">
             <ScrollViewer Name="ScrollViewer" VerticalScrollBarVisibility="Auto" Height="Auto">
                 <StackPanel Margin="20" Orientation="Vertical">
-                    UpdateContent
+                    <TextBlock Text=''Watch demo'' FontSize=''20'' Margin=''0,18,0,18'' FontWeight=''Bold'' Foreground=''{DynamicResource PrimaryButtonForeground}'' TextWrapping=''Wrap''/>
+<Image x:Name=''emad'' Source=''https://raw.githubusercontent.com/emadadel4/ITT/refs/heads/main/Resources/Images/thumbnail.jpg'' Cursor=''Hand'' Margin=''0,0,0,0'' Height=''Auto'' Width=''400''/>
+<TextBlock Text='' • Keyboard Shortcut:'' FontSize=''20'' Margin=''0,18,0,18'' Foreground=''{DynamicResource PrimaryButtonForeground}'' FontWeight=''bold'' TextWrapping=''Wrap''/>
+
+                
+                <StackPanel Orientation=''Vertical''>
+                    <TextBlock Text=''• Ctrl + F: Enter search mode. Press ESC to exit.'' Margin=''15,0,0,0'' FontSize=''15'' Foreground=''{DynamicResource TextColorSecondaryColor2}'' TextWrapping=''Wrap''/>
+                </StackPanel>
+                
+                
+
+                
+                <StackPanel Orientation=''Vertical''>
+                    <TextBlock Text=''• Ctrl + Q: Switch to the apps tab.'' Margin=''15,0,0,0'' FontSize=''15'' Foreground=''{DynamicResource TextColorSecondaryColor2}'' TextWrapping=''Wrap''/>
+                </StackPanel>
+                
+                
+
+                
+                <StackPanel Orientation=''Vertical''>
+                    <TextBlock Text=''• Ctrl + W: Switch to the Tweaks tab.'' Margin=''15,0,0,0'' FontSize=''15'' Foreground=''{DynamicResource TextColorSecondaryColor2}'' TextWrapping=''Wrap''/>
+                </StackPanel>
+                
+                
+
+                
+                <StackPanel Orientation=''Vertical''>
+                    <TextBlock Text=''• Ctrl + E: Switch to the Settings tab.'' Margin=''15,0,0,0'' FontSize=''15'' Foreground=''{DynamicResource TextColorSecondaryColor2}'' TextWrapping=''Wrap''/>
+                </StackPanel>
+                
+                
+
+                
+                <StackPanel Orientation=''Vertical''>
+                    <TextBlock Text=''• Ctrl + S: Install selected apps also apply selected tweaks.'' Margin=''15,0,0,0'' FontSize=''15'' Foreground=''{DynamicResource TextColorSecondaryColor2}'' TextWrapping=''Wrap''/>
+                </StackPanel>
+                
+                
+
+                
+                <StackPanel Orientation=''Vertical''>
+                    <TextBlock Text=''• Shift + S: Save items to JSON file.'' Margin=''15,0,0,0'' FontSize=''15'' Foreground=''{DynamicResource TextColorSecondaryColor2}'' TextWrapping=''Wrap''/>
+                </StackPanel>
+                
+                
+
+                
+                <StackPanel Orientation=''Vertical''>
+                    <TextBlock Text=''• Shift + D: Load items save file.'' Margin=''15,0,0,0'' FontSize=''15'' Foreground=''{DynamicResource TextColorSecondaryColor2}'' TextWrapping=''Wrap''/>
+                </StackPanel>
+                
+                
+
+                
+                <StackPanel Orientation=''Vertical''>
+                    <TextBlock Text=''• Shift + M: Mute music.'' Margin=''15,0,0,0'' FontSize=''15'' Foreground=''{DynamicResource TextColorSecondaryColor2}'' TextWrapping=''Wrap''/>
+                </StackPanel>
+                
+                
+
+                
+                <StackPanel Orientation=''Vertical''>
+                    <TextBlock Text=''• Shift + F: Play music.'' Margin=''15,0,0,0'' FontSize=''15'' Foreground=''{DynamicResource TextColorSecondaryColor2}'' TextWrapping=''Wrap''/>
+                </StackPanel>
+                
+                
+
+                
+                <StackPanel Orientation=''Vertical''>
+                    <TextBlock Text=''• Shift + P: Open Choco folder in File Explorer.'' Margin=''15,0,0,0'' FontSize=''15'' Foreground=''{DynamicResource TextColorSecondaryColor2}'' TextWrapping=''Wrap''/>
+                </StackPanel>
+                
+                
+
+                
+                <StackPanel Orientation=''Vertical''>
+                    <TextBlock Text=''• Shift + Q: Restore point.'' Margin=''15,0,0,0'' FontSize=''15'' Foreground=''{DynamicResource TextColorSecondaryColor2}'' TextWrapping=''Wrap''/>
+                </StackPanel>
+                
+                
+
+                
+                <StackPanel Orientation=''Vertical''>
+                    <TextBlock Text=''• Shift + I: ITT Shortcut.'' Margin=''15,0,0,0'' FontSize=''15'' Foreground=''{DynamicResource TextColorSecondaryColor2}'' TextWrapping=''Wrap''/>
+                </StackPanel>
+                
+                
+
+                
+                <StackPanel Orientation=''Vertical''>
+                    <TextBlock Text=''• Ctrl + G: Closes the application.'' Margin=''15,0,0,0'' FontSize=''15'' Foreground=''{DynamicResource TextColorSecondaryColor2}'' TextWrapping=''Wrap''/>
+                </StackPanel>
+                
+                
+<TextBlock Text=''Create Yor own Theme'' FontSize=''20'' Margin=''0,18,0,18'' FontWeight=''Bold'' Foreground=''{DynamicResource PrimaryButtonForeground}'' TextWrapping=''Wrap''/>
+<Image x:Name=''adel'' Source=''https://raw.githubusercontent.com/emadadel4/ITT/refs/heads/update/Resources/Images/customtheme.jpg'' Cursor=''Hand'' Margin=''0,0,0,0'' Height=''Auto'' Width=''400''/>
+<TextBlock Text=''Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa odio enim nulla, at repellat eum animi minus non autem est sunt ut, itaque ad iure eos officiis sequi atque odit? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sapiente officia autem atque odio deserunt commodi fuga maiores, error dolor obcaecati nobis ipsum! Qui optio ipsam necessitatibus quam earum, nam aperiam.'' FontSize=''15'' Margin=''8''  Foreground=''{DynamicResource TextColorSecondaryColor2}''  TextWrapping=''Wrap''/>
+<TextBlock Text=''Download any youtube video!'' FontSize=''20'' Margin=''0,18,0,18'' FontWeight=''Bold'' Foreground=''{DynamicResource PrimaryButtonForeground}'' TextWrapping=''Wrap''/>
+<Image x:Name=''shell'' Source=''https://raw.githubusercontent.com/emadadel4/ShellTube/main/demo.jpg'' Cursor=''Hand'' Margin=''0,0,0,0'' Height=''Auto'' Width=''400''/>
+<TextBlock Text=''Shelltube is simple way to downnload videos and playlist from youtube just Launch it and start download your video you can Launch it from Third-party menu.'' FontSize=''15'' Margin=''8''  Foreground=''{DynamicResource TextColorSecondaryColor2}''  TextWrapping=''Wrap''/>
+
                 </StackPanel>
             </ScrollViewer>
         </Grid>
