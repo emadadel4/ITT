@@ -1,0 +1,35 @@
+## New Update!
+
+
+### Watch demo
+
+![itt.xName:emad [https://www.youtube.com/watch?v=QmO82OTsU5c]](http://localhost:1313/thumbnail.jpg)
+
+##### Keyboard Shortcut:
+
+- Ctrl + F: Enter search mode. Press ESC to exit.
+- Ctrl + Q: Switch to the apps tab.
+- Ctrl + W: Switch to the Tweaks tab.
+- Ctrl + E: Switch to the Settings tab.
+- Ctrl + S: Install selected apps also apply selected tweaks.
+- Shift + S: Save items to JSON file.
+- Shift + D: Load items save file.
+- Shift + M: Mute music.
+- Shift + F: Play music.
+- Shift + P: Open Choco folder in File Explorer.
+- Shift + Q: Restore point.
+- Shift + I: ITT Shortcut.
+- Ctrl + G: Closes the application.
+
+### Create Yor own Theme
+
+![itt.xName:adel [http://localhost:1313/customtheme.jpg]](http://localhost:1313/customtheme.jpg)
+
+#### Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa odio enim nulla, at repellat eum animi minus non autem est sunt ut, itaque ad iure eos officiis sequi atque odit? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sapiente officia autem atque odio deserunt commodi fuga maiores, error dolor obcaecati nobis ipsum! Qui optio ipsam necessitatibus quam earum, nam aperiam.
+
+### Download any youtube video!
+
+![itt.xName:shell [https://github.com/emadadel4/shelltube]](http://localhost:1313/shell.jpg)
+
+#### Shelltube is simple way to downnload videos and playlist from youtube just Launch it and start download your video you can Launch it from Third-party menu.
+
