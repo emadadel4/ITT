@@ -2,7 +2,7 @@
 
 ### Watch demo
 
-![itt.xName:emad [https://www.youtube.com/watch?v=QmO82OTsU5c]](https://raw.githubusercontent.com/emadadel4/ITT/refs/heads/main/Resources/Images/thumbnail.jpg)
+![itt.xName:ytv [https://www.youtube.com/watch?v=QmO82OTsU5c]](https://raw.githubusercontent.com/emadadel4/ITT/refs/heads/main/Resources/Images/thumbnail.jpg)
 
 ##### Keyboard Shortcut:
 
@@ -22,7 +22,7 @@
 
 ### Create Yor own Theme
 
-![itt.xName:adel [https://github.com/emadadel4/itt?tab=readme-ov-file#-how-to-contribute]](https://raw.githubusercontent.com/emadadel4/ITT/refs/heads/update/Resources/Images/customtheme.jpg)
+![itt.xName:contribute [https://github.com/emadadel4/itt?tab=readme-ov-file#-how-to-contribute]](https://raw.githubusercontent.com/emadadel4/ITT/refs/heads/update/Resources/Images/customtheme.jpg)
 
 #### Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa odio enim nulla, at repellat eum animi minus non autem est sunt ut, itaque ad iure eos officiis sequi atque odit? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sapiente officia autem atque odio deserunt commodi fuga maiores, error dolor obcaecati nobis ipsum! Qui optio ipsam necessitatibus quam earum, nam aperiam.
 
