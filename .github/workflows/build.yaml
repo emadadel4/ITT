@@ -26,11 +26,11 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Commit 'itt' file
+      - name: Commit 'itt.ps1' file
         run: |
           git config --global user.name "emadadel4"
           git config --global user.email "19177373+emadadel4@users.noreply.github.com"
-          git add itt
+          git add itt.ps1
           git commit -m "Update"
           git push
         env:
