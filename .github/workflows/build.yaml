@@ -5,10 +5,10 @@ permissions:
   actions: read
 
 on:
-    workflow_dispatch:
-    push:
-      branches:
-        - update
+  workflow_dispatch:
+  push:
+    branches:
+      - update
 
 jobs:
   build-runspace:
@@ -26,12 +26,19 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Commit 'itt.ps1' file
+      - name: Check if releasenotes.md has changes
+        id: check_changes
+        run: |
+          git fetch origin
+          git diff --name-only HEAD~1 HEAD | grep 'releasenotes.md' || echo "No changes in releasenotes.md" > /dev/null
+
+      - name: Commit 'itt' file if releasenotes.md has changed
+        if: success() && steps.check_changes.outputs.has_changed == 'true'
         run: |
           git config --global user.name "emadadel4"
           git config --global user.email "19177373+emadadel4@users.noreply.github.com"
-          git add itt.ps1
-          git commit -m "Update" -f
+          git add itt
+          git commit -m "update"
           git push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
