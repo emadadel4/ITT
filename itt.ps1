@@ -12662,12 +12662,12 @@ function Show-Event {
 '.Trim()
 
     
-       $itt.event.FindName('contribute').add_MouseLeftButtonDown({
-            Start-Process('https://github.com/emadadel4/itt?tab=readme-ov-file#-how-to-contribute')
-        })
-    
        $itt.event.FindName('ytv').add_MouseLeftButtonDown({
             Start-Process('https://www.youtube.com/watch?v=QmO82OTsU5c')
+        })
+    
+       $itt.event.FindName('contribute').add_MouseLeftButtonDown({
+            Start-Process('https://github.com/emadadel4/itt?tab=readme-ov-file#-how-to-contribute')
         })
     
        $itt.event.FindName('shell').add_MouseLeftButtonDown({
@@ -13465,7 +13465,7 @@ Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Icons/icon.
   <SolidColorBrush x:Key="BorderBrush" Color="#2b2d31" />
   <SolidColorBrush x:Key="ButtonBorderColor" Color="#1DB954"/>
   <SolidColorBrush x:Key="Label" Color="#3f3f3f"/>
-  <SolidColorBrush x:Key="HighlightColor" Color="#FFB80000"/>
+  <SolidColorBrush x:Key="HighlightColor" Color="#FFD10D0D"/>
   <SolidColorBrush x:Key="ToggleSwitchBackgroundColor" Color="#282828"/>
   <SolidColorBrush x:Key="ToggleSwitchForegroundColor" Color="#282828"/>
   <SolidColorBrush x:Key="ToggleSwitchEnableColor" Color="white"/>
