@@ -17159,7 +17159,7 @@ $EventWindowXaml = '<Window
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
 
-            <StackPanel x:Name="MainStackPanel" Height="Auto" Background="Transparent" Orientation="Vertical" Margin="15">
+            <StackPanel x:Name="MainStackPanel" Height="Auto" Background="Transparent" Orientation="Vertical" Margin="10">
             
                 <!-- Title -->
                 <Grid Row="0" Background="Transparent">
