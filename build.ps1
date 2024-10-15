@@ -637,12 +637,6 @@ foreach ($name  in $global:imageLinkMap.Keys) {
     
     $EventHandler += "
        `$itt.event.FindName('$name').add_MouseLeftButtonDown({
-
-            if('$debug'){
-                Write-Host ""$url""
-                Write-Host ""$name""
-            }
-
             Start-Process('$url')
         })`
     "
