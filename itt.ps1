@@ -40,7 +40,7 @@ $itt = [Hashtable]::Synchronized(@{
     icon           = "https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Icons/icon.ico"
     Theme          = "default"
     CurretTheme    = "default"
-    Date           = (Get-Date)
+    Date           = (Get-Date -Format "MM/dd/yyy")
     Music          = "100"
     PopupWindow    = "On"
     Language       = "en"
@@ -12666,12 +12666,12 @@ function Show-Event {
             Start-Process('https://github.com/emadadel4/itt?tab=readme-ov-file#-how-to-contribute')
         })
     
-       $itt.event.FindName('ytv').add_MouseLeftButtonDown({
-            Start-Process('https://www.youtube.com/watch?v=QmO82OTsU5c')
-        })
-    
        $itt.event.FindName('shell').add_MouseLeftButtonDown({
             Start-Process('https://github.com/emadadel4/shelltube')
+        })
+    
+       $itt.event.FindName('ytv').add_MouseLeftButtonDown({
+            Start-Process('https://www.youtube.com/watch?v=QmO82OTsU5c')
         })
     
 
@@ -17207,7 +17207,7 @@ $EventWindowXaml = '<Window
         <Grid Row="1" Background="Transparent" Margin="0">
             <ScrollViewer Name="ScrollViewer" VerticalScrollBarVisibility="Auto" Height="Auto">
                 <StackPanel Margin="20" Orientation="Vertical">
-                    <TextBlock Text=''Watch demo'' FontSize=''20'' Margin=''0,18,0,18'' FontWeight=''Bold'' Foreground=''{DynamicResource PrimaryButtonForeground}'' TextWrapping=''Wrap''/>
+                    <TextBlock Text=''How to use it'' FontSize=''20'' Margin=''0,18,0,18'' FontWeight=''Bold'' Foreground=''{DynamicResource PrimaryButtonForeground}'' TextWrapping=''Wrap''/>
 <Image x:Name=''ytv'' Source=''https://raw.githubusercontent.com/emadadel4/ITT/refs/heads/main/Resources/Images/thumbnail.jpg'' Cursor=''Hand'' Margin=''0,0,0,0'' Height=''Auto'' Width=''400''/>
 <TextBlock Text='' • Keyboard Shortcut:'' FontSize=''20'' Margin=''0,18,0,18'' Foreground=''{DynamicResource PrimaryButtonForeground}'' FontWeight=''bold'' TextWrapping=''Wrap''/>
 
@@ -17303,7 +17303,7 @@ $EventWindowXaml = '<Window
                 
 <TextBlock Text=''Create Yor own Theme'' FontSize=''20'' Margin=''0,18,0,18'' FontWeight=''Bold'' Foreground=''{DynamicResource PrimaryButtonForeground}'' TextWrapping=''Wrap''/>
 <Image x:Name=''contribute'' Source=''https://raw.githubusercontent.com/emadadel4/ITT/refs/heads/update/Resources/Images/customtheme.jpg'' Cursor=''Hand'' Margin=''0,0,0,0'' Height=''Auto'' Width=''400''/>
-<TextBlock Text=''Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa odio enim nulla, at repellat eum animi minus non autem est sunt ut, itaque ad iure eos officiis sequi atque odit? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sapiente officia autem atque odio deserunt commodi fuga maiores, error dolor obcaecati nobis ipsum! Qui optio ipsam necessitatibus quam earum, nam aperiam.'' FontSize=''15'' Margin=''8''  Foreground=''{DynamicResource TextColorSecondaryColor2}''  TextWrapping=''Wrap''/>
+<TextBlock Text=''Contribute and create your own theme, add your favorite apps, and even music. Click on the image above to see how to contribute.'' FontSize=''15'' Margin=''8''  Foreground=''{DynamicResource TextColorSecondaryColor2}''  TextWrapping=''Wrap''/>
 <TextBlock Text=''Download any youtube video!'' FontSize=''20'' Margin=''0,18,0,18'' FontWeight=''Bold'' Foreground=''{DynamicResource PrimaryButtonForeground}'' TextWrapping=''Wrap''/>
 <Image x:Name=''shell'' Source=''https://raw.githubusercontent.com/emadadel4/ShellTube/main/demo.jpg'' Cursor=''Hand'' Margin=''0,0,0,0'' Height=''Auto'' Width=''400''/>
 <TextBlock Text=''Shelltube is simple way to downnload videos and playlist from youtube just Launch it and start download your video you can Launch it from Third-party section.'' FontSize=''15'' Margin=''8''  Foreground=''{DynamicResource TextColorSecondaryColor2}''  TextWrapping=''Wrap''/>
