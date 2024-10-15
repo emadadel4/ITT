@@ -5,7 +5,10 @@ permissions:
   actions: read
 
 on:
-  workflow_dispatch: 
+    workflow_dispatch:
+    push:
+      branches:
+        - update
 
 jobs:
   build-runspace:
