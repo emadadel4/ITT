@@ -26,7 +26,7 @@
 
 #### Contribute and create your own theme, add your favorite apps, and even music. Click on the image above to see how to contribute.
 
-### Download any youtube video!
+### Download any Youtube video
 
 ![itt.xName:shell [https://github.com/emadadel4/shelltube]](https://raw.githubusercontent.com/emadadel4/ShellTube/main/demo.jpg)
 
