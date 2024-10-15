@@ -12,7 +12,10 @@ param (
     [string]$Themes = "Themes",
     [switch]$Debug,
     [switch]$code,
-    [string]$ProjectDir = $PSScriptRoot
+    [string]$ProjectDir = $PSScriptRoot,
+    [string]$localNodePath = "releasenotes.md",
+    [string]$NoteUrl = "http://localhost:1313/releasenotes.md"
+
 
 )
 
@@ -335,6 +338,61 @@ function Generate-Themes-Invoke {
     ReplaceTextInFile -FilePath $OutputScript -TextToReplace '#{themes}' -ReplacementText $menuItemsOutput
 }
 
+$global:emad = @{}
+$global:extractedContent = ""
+$global:imageLinkMap = @{}
+
+function ConvertTo-Xaml {
+    param (
+        [string]$text,
+        [string]$HeadlineFontSize = 20,
+        [string]$DescriptionFontSize = 15
+
+    )
+
+    # Initialize XAML as an empty string
+    $xaml = ""
+
+    # Process each line of the input text
+    foreach ($line in $text -split "`n") {
+        switch -Regex ($line) {
+            "!\[itt\.xName:(.+?)\s*\[(.+?)\]\]\((.+?)\)" {
+                $xaml += "<Image x:Name=''$($matches[1].Trim())'' Source=''$($matches[3].Trim())'' Cursor=''Hand'' Margin=''0,0,0,0'' Height=''Auto'' Width=''400''/>`n"
+                $link = $matches[2].Trim()   # Extract the link from inside the brackets
+                $name = $matches[1].Trim()   # Extract the xName after 'tt.xName:'
+                $global:imageLinkMap[$name] = $link
+            }
+            "^## (.+)" { # Event title
+                $global:extractedContent += $matches[1].Trim() + "`n"
+            }
+            "^### (.+)" { # Headline 
+                $text = $matches[1].Trim()
+                $xaml += "<TextBlock Text=''$text'' FontSize=''$HeadlineFontSize'' Margin=''0,18,0,18'' FontWeight=''Bold'' Foreground=''{DynamicResource PrimaryButtonForeground}'' TextWrapping=''Wrap''/>`n"
+            }
+            "^##### (.+)" { ##### Headline
+                $text = $matches[1].Trim()  
+                $xaml += "<TextBlock Text='' • $text'' FontSize=''$HeadlineFontSize'' Margin=''0,18,0,18'' Foreground=''{DynamicResource PrimaryButtonForeground}'' FontWeight=''bold'' TextWrapping=''Wrap''/>`n" 
+            }
+            "^#### (.+)" { #### Description
+                $text = $matches[1].Trim()  
+                $xaml += "<TextBlock Text=''$text'' FontSize=''$DescriptionFontSize'' Margin=''8''  Foreground=''{DynamicResource TextColorSecondaryColor2}''  TextWrapping=''Wrap''/>`n" 
+            }
+            "^- (.+)" { # - Lists
+                $text = $matches[1].Trim()  
+                $xaml += "
+                
+                <StackPanel Orientation=''Vertical''>
+                    <TextBlock Text=''• $text'' Margin=''15,0,0,0'' FontSize=''$DescriptionFontSize'' Foreground=''{DynamicResource TextColorSecondaryColor2}'' TextWrapping=''Wrap''/>
+                </StackPanel>
+                
+                `n" 
+            }
+        }
+    }
+
+    return $xaml
+}
+
 # Write script header
 function WriteHeader {
 
@@ -526,6 +584,18 @@ WriteToScript -Content @"
         Write-Error "Error: $($_.Exception.Message)"
     }
    
+
+        # debug offline local file
+        # $textContent = Get-Content -Path $textFilePath -Raw
+        # $xamlContent = ConvertTo-Xaml -text $textContent
+        # # Write-Host $xamlContent
+
+        $response = Invoke-WebRequest -Uri $NoteUrl
+        $textContent = $response.Content
+        $xamlContent = ConvertTo-Xaml -text $textContent
+    
+        $EventWindowXamlContent = $EventWindowXamlContent -replace "UpdateContent", $xamlContent
+
     WriteToScript -Content "`$EventWindowXaml = '$EventWindowXamlContent'"
 
     WriteToScript -Content @"
@@ -560,6 +630,33 @@ WriteToScript -Content @"
 #endregion End Main
 #===========================================================================
 "@
+
+foreach ($name  in $global:imageLinkMap.Keys) {
+
+    $url = $global:imageLinkMap[$name]
+    
+    $EventHandler += "
+       `$itt.event.FindName('$name').add_MouseLeftButtonDown({
+
+            if('$debug'){
+                Write-Host ""$url""
+                Write-Host ""$name""
+            }
+
+            Start-Process('$url')
+        })`
+    "
+}
+
+$EventTitle = @"
+    `$itt.event.FindName('title').text = '$global:extractedContent'`.Trim()
+"@
+
+
+ReplaceTextInFile -FilePath $OutputScript -TextToReplace '#{contorlshandler}' -ReplacementText $EventHandler
+ReplaceTextInFile -FilePath $OutputScript -TextToReplace '#{title}' -ReplacementText $EventTitle 
+
+
 
 CountItems
 Write-Host " `n`Build successfully" -ForegroundColor Green
