@@ -3,7 +3,7 @@
 
 ### Watch demo
 
-![itt.xName:emad [https://www.youtube.com/watch?v=QmO82OTsU5c]](http://localhost:1313/thumbnail.jpg)
+![itt.xName:emad [https://www.youtube.com/watch?v=QmO82OTsU5c]](https://raw.githubusercontent.com/emadadel4/ITT/refs/heads/main/Resources/Images/thumbnail.jpg)
 
 ##### Keyboard Shortcut:
 
@@ -23,13 +23,13 @@
 
 ### Create Yor own Theme
 
-![itt.xName:adel [http://localhost:1313/customtheme.jpg]](http://localhost:1313/customtheme.jpg)
+![itt.xName:adel [https://raw.githubusercontent.com/emadadel4/ITT/refs/heads/update/Resources/Images/customtheme.jpg]](https://raw.githubusercontent.com/emadadel4/ITT/refs/heads/update/Resources/Images/customtheme.jpg)
 
 #### Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa odio enim nulla, at repellat eum animi minus non autem est sunt ut, itaque ad iure eos officiis sequi atque odit? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sapiente officia autem atque odio deserunt commodi fuga maiores, error dolor obcaecati nobis ipsum! Qui optio ipsam necessitatibus quam earum, nam aperiam.
 
 ### Download any youtube video!
 
-![itt.xName:shell [https://github.com/emadadel4/shelltube]](http://localhost:1313/shell.jpg)
+![itt.xName:shell [https://github.com/emadadel4/shelltube]](https://raw.githubusercontent.com/emadadel4/ShellTube/main/demo.jpg)
 
 #### Shelltube is simple way to downnload videos and playlist from youtube just Launch it and start download your video you can Launch it from Third-party menu.
 
