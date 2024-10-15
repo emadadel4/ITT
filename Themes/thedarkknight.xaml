@@ -10,7 +10,7 @@
   <SolidColorBrush x:Key="BorderBrush" Color="#2b2d31" />
   <SolidColorBrush x:Key="ButtonBorderColor" Color="#1DB954"/>
   <SolidColorBrush x:Key="Label" Color="#3f3f3f"/>
-  <SolidColorBrush x:Key="HighlightColor" Color="#FFB80000"/>
+  <SolidColorBrush x:Key="HighlightColor" Color="#FFD10D0D"/>
   <SolidColorBrush x:Key="ToggleSwitchBackgroundColor" Color="#282828"/>
   <SolidColorBrush x:Key="ToggleSwitchForegroundColor" Color="#282828"/>
   <SolidColorBrush x:Key="ToggleSwitchEnableColor" Color="white"/>
