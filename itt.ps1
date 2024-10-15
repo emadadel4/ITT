@@ -29,7 +29,7 @@ $itt = [Hashtable]::Synchronized(@{
     database       = @{}
     ProcessRunning = $false
     developer      = "Emad Adel"
-    lastupdate     = "10/13/2024"
+    lastupdate     = "10/15/2024"
     github         = "https://github.com/emadadel4/itt"
     telegram       = "https://t.me/emadadel4"
     blog           = "https://emadadel4.github.io"
@@ -40,7 +40,7 @@ $itt = [Hashtable]::Synchronized(@{
     icon           = "https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Icons/icon.ico"
     Theme          = "default"
     CurretTheme    = "default"
-    Date           = (Get-Date)
+    Date           = (Get-Date -Format "MM/dd/yyy")
     Music          = "100"
     PopupWindow    = "On"
     Language       = "en"
@@ -12646,142 +12646,49 @@ function Set-Theme {
         }
     }
 }
-
-# Invoke Event Window WPF
 function Show-Event {
-    param(
-        [string]$image,
-        [string]$title,
-        [string]$description,
-        [string]$day,
-        [string]$WindowHeight,
-        [string]$WindowWidth,
-        [string]$ImageHeight,
-        [string]$ImageWidth
-    )
+
 
     [xml]$event = $EventWindowXaml
-
     $EventWindowReader = (New-Object System.Xml.XmlNodeReader $event)
     $itt.event = [Windows.Markup.XamlReader]::Load($EventWindowReader)
-    $itt["event"].Resources.MergedDictionaries.Add($itt["window"].FindResource($itt.CurretTheme))
-    $itt.event.title = "ITT | $title"
-    $itt.event.Height = "$WindowHeight"
-    $itt.event.Width = "$WindowWidth"
+    $itt.event.Resources.MergedDictionaries.Add($itt["window"].FindResource($itt.CurretTheme))
 
 
+    $itt.event.FindName('date').Text = $itt.date
+    $CloseBtn = $itt.event.FindName('closebtn')
 
+        $itt.event.FindName('title').text = 'New Update!
+'.Trim()
 
-    # Set new values
-    $titleTextBlock = $itt.event.FindName('title')
-    $subtitleTextBlock = $itt.event.FindName('Subtitle')
-    $tutorialImage = $itt.event.FindName('Image')
-    #$mainStackPanel = $itt.event.FindName('MainStackPanel')
-    $ScrollViewer = $itt.event.FindName('ScrollViewer')
-    $DisablePopup = $itt.event.FindName('DisablePopup')
+    
+       $itt.event.FindName('contribute').add_MouseLeftButtonDown({
+            Start-Process('https://github.com/emadadel4/itt?tab=readme-ov-file#-how-to-contribute')
+        })
+    
+       $itt.event.FindName('shell').add_MouseLeftButtonDown({
+            Start-Process('https://github.com/emadadel4/shelltube')
+        })
+    
+       $itt.event.FindName('ytv').add_MouseLeftButtonDown({
+            Start-Process('https://www.youtube.com/watch?v=QmO82OTsU5c')
+        })
     
 
-    $itt.event.FindName('date').Text = $itt.lastupdate
-
-    # Switch-like structure using switch statement
-    switch ($day) {
-
-        "Birthday" {
-            $titleTextBlock.Text = "$title"
-            $tutorialImage.Source = [System.Windows.Media.Imaging.BitmapImage]::new([Uri]::new($image))
-            $subtitleTextBlock.Text = "$description"
-            $DisablePopup.Text = "Happy birthday day Emad"
-            $tutorialImage.Height = $ImageHeight
-            $subtitleTextBlock.VerticalAlignment = "Center"
-            $subtitleTextBlock.HorizontalAlignment = "Center"
-            $subtitleTextBlock.FontSize = "20"
-            $ScrollViewer.Height = "466"
-
-            $itt.event.FindName("DisablePopup").add_MouseLeftButtonDown({
-                $itt.event.FindName("DisablePopup").Text = "Thank you :)"
-            })
-        }
-        "OctoPair" {
-            $titleTextBlock.Text = "$title"
-            $tutorialImage.Source = [System.Windows.Media.Imaging.BitmapImage]::new([Uri]::new($image))
-            $tutorialImage.Height = $ImageHeight
-            $subtitleTextBlock.Visibility = "Hidden"
-            $subtitleTextBlock.Visibility = "Hidden"
-            $DisablePopup.Visibility = "Hidden"
-            $ScrollViewer.Height = "NaN"
-        }
-        Default {
-
-            # Check RTL & LTR
-            if($itt.Language -ne "ar")
-            {
-                $titleTextBlock.Text = "$title $env:USERNAME" 
-                $subtitleTextBlock.Text = "$description"
-
-            }else
-            {
-                $titleTextBlock.Text = "$env:USERNAME $title " 
-                $subtitleTextBlock.Text = "$description"
-            }
-
-            # Lazy loading image event handler
-            $tutorialImage.add_IsVisibleChanged({
-                if ($_.IsVisible) {
-                    $tutorialImage.Source = [System.Windows.Media.Imaging.BitmapImage]::new([Uri]::new($image))
-                }
-            })
-                    
-            $tutorialImage.add_MouseLeftButtonDown({
-                Start-Process("https://youtu.be/QmO82OTsU5c")
-            })
-
-            $itt.event.FindName("DisablePopup").add_MouseLeftButtonDown({
-                DisablePopup
-                $itt.event.Close()
-            })
-        }
-    }
-
-    $itt.event.FindName("closebtn").add_MouseLeftButtonDown({
+    $CloseBtn.add_MouseLeftButtonDown({
         $itt.event.Close()
     })
 
-    $KeyEvents = {
-
-        # Close
-        if ($_.Key -eq "Escape") {
-            $itt.event.Close()
-        }
-    }
-    $itt.event.Add_PreViewKeyDown($KeyEvents)
+    $itt.event.FindName('DisablePopup').add_MouseLeftButtonDown({
+        DisablePopup
+        $itt.event.Close()
+    })
 
     # Show dialog
+    if($itt.PopupWindow -eq "off") {return}   
     $itt.event.ShowDialog() | Out-Null
 }
 
-# Function to check current date and call Show-Event
-function Get-DateStatus {
-
-    $watchdemo = $itt.database.locales.Controls.$($itt.Language).watchdemo
-    $happybirthday = $itt.database.locales.Controls.$($itt.Language).happybirthday
-    $myplaylist = $itt.database.locales.Controls.$($itt.Language).myplaylist
-    $subs = $itt.database.locales.Updates.Keyboard
-
-    if ($itt.Date.Month -eq 9 -and $itt.Date.Day -eq 1) 
-    {
-        Show-Event -image "https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/happy.jpg" -ImageHeight 400 -title "$happybirthday" -description "$myplaylist" -day "Birthday" -WindowHeight 600 -WindowWidth 486
-    } 
-    elseif ($itt.Date.Month -eq 10 -and $itt.Date.Day -eq 6 -or $itt.Date.Day -eq 7 ) 
-    {
-        Show-Event -image "https://raw.githubusercontent.com/emadadel4/ITT/refs/heads/main/Resources/Images/OctoPair.jpg" -ImageHeight 500 -title "Celebrating" -description "Celebrating the anniversary of OctoPair 7-8" -day "OctoPair" -WindowHeight 655 -WindowWidth 400 
-    }else 
-    {
-        if($itt.PopupWindow -eq "off") {return}   
-        Show-Event -image "https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/thumbnail.jpg" -title "$watchdemo" -description "$subs" -day "Default" -WindowHeight 500 -WindowWidth 486
-    }
-}
-
-# Save Current State event
 function DisablePopup {
     Set-ItemProperty -Path $itt.registryPath  -Name "PopupWindow" -Value "off" -Force
 }
@@ -17240,112 +17147,188 @@ $EventWindowXaml = '<Window
         </EventTrigger>
     </Window.Triggers>
 
-    
 
     <Border Background="{DynamicResource PrimaryBackgroundColor}" BorderBrush="{DynamicResource SecondaryPrimaryBackgroundColor}" BorderThickness="4" CornerRadius="10">
 
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
+    <Grid>
 
-                <StackPanel x:Name="MainStackPanel" Height="Auto" Orientation="Vertical" Margin="8">
-                    
-                    <!-- Title -->
-                        <Grid Row="0" Background="Transparent">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel x:Name="MainStackPanel" Height="Auto" Background="Transparent" Orientation="Vertical" Margin="10">
+            
+                <!-- Title -->
+                <Grid Row="0" Background="Transparent">
                             
-                            <TextBlock Text="&#10006;" 
-                            Name="closebtn"
-                            HorizontalAlignment="Right" 
-                            VerticalAlignment="Top"
-                            Margin="8"
-                            Cursor="Hand"
-                            Foreground="red" />
+                    <TextBlock Text="&#10006;" 
+                    Name="closebtn"
+                    HorizontalAlignment="Right" 
+                    VerticalAlignment="Top"
+                    Margin="0"
+                    Cursor="Hand"
+                    Foreground="red" />
 
 
-                            <StackPanel Orientation="Vertical" Margin="10">
+                    <StackPanel Orientation="Vertical" Margin="0">
 
-                                <TextBlock 
-                                Name="title"
-                                Height="Auto"
-                                Width="Auto"
-                                FontSize="20"
-                                Text="What''s New"
-                                Foreground="{DynamicResource TextColorSecondaryColor}"
-                                FontWeight="SemiBold"
-                                TextWrapping="Wrap"
-                                VerticalAlignment="Center"
-                                HorizontalAlignment="Left" />
-            
-                                <TextBlock
-                                Name="date" 
-                                Height="Auto"
-                                Width="Auto"
-                                Text="8/29/2024"
-                                Foreground="{DynamicResource TextColorSecondaryColor2}"
-                                TextWrapping="Wrap"
-                                VerticalAlignment="Center"
-                                HorizontalAlignment="Left" />
-            
-                            </StackPanel>
+                        <TextBlock 
+                        Name="title"
+                        Height="Auto"
+                        Width="Auto"
+                        FontSize="20"
+                        Text="What''s New"
+                        Foreground="{DynamicResource TextColorSecondaryColor}"
+                        FontWeight="SemiBold"
+                        TextWrapping="Wrap"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Left" />
+    
+                        <TextBlock
+                        Name="date" 
+                        Height="Auto"
+                        Width="Auto"
+                        Text="8/29/2024"
+                        Foreground="{DynamicResource TextColorSecondaryColor2}"
+                        TextWrapping="Wrap"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Left" />
+    
+                    </StackPanel>
 
-                        </Grid>
-                    <!-- End Title -->
+                </Grid>
+            <!-- End Title -->
 
-                    <!-- Header -->
-                        <Grid Row="1">
-                            <ScrollViewer Name="ScrollViewer" VerticalScrollBarVisibility="Auto" Height="375">
-                                <StackPanel Orientation="Vertical">
-                                        <!--Image-->
-                                        <Image 
-                                        Name="Image"
-                                        HorizontalAlignment="Center" 
-                                        VerticalAlignment="Center"
-                                        Height="200"
-                                        Margin="1"
-                                        Source="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/thumbnail.jpg" 
-                                        Cursor="Hand" 
-                                        />
-                                        <!--End Image-->
+            </StackPanel>
 
-                                        <TextBlock 
-                                        Name="Subtitle"
-                                        Text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet amet obcaecati dolorem, sit iusto consequatur, libero laudantium officia quo ea officiis nulla esse quod ex, mollitia asperiores! Accusantium, labore pariatur."
-                                        Height="Auto"
-                                        Width="Auto"
-                                        Visibility="Visible"
-                                        Margin="0,10,0,0"
-                                        Foreground="{DynamicResource TextColorSecondaryColor2}"
-                                        TextWrapping="Wrap"
-                                        TextAlignment="Left"
-                                        VerticalAlignment="Center"
-                                        HorizontalAlignment="Left" />
-                                </StackPanel>
-                            </ScrollViewer>
-                        </Grid>
-                    <!-- End Header -->
+        <Grid Row="1" Background="Transparent" Margin="0">
+            <ScrollViewer Name="ScrollViewer" VerticalScrollBarVisibility="Auto" Height="Auto">
+                <StackPanel Margin="20" Orientation="Vertical">
+                    <TextBlock Text=''How to use it'' FontSize=''20'' Margin=''0,18,0,18'' FontWeight=''Bold'' Foreground=''{DynamicResource PrimaryButtonForeground}'' TextWrapping=''Wrap''/>
+<Image x:Name=''ytv'' Source=''https://raw.githubusercontent.com/emadadel4/ITT/refs/heads/main/Resources/Images/thumbnail.jpg'' Cursor=''Hand'' Margin=''0,0,0,0'' Height=''Auto'' Width=''400''/>
+<TextBlock Text='' • Keyboard Shortcut:'' FontSize=''20'' Margin=''0,18,0,18'' Foreground=''{DynamicResource PrimaryButtonForeground}'' FontWeight=''bold'' TextWrapping=''Wrap''/>
 
-                    <!-- Footer -->
-                        <Grid Row="2">
-                            <TextBlock Width="Auto"
-                            Name="DisablePopup" 
-                            Foreground="{DynamicResource TextColorSecondaryColor2}"
-                            Text="Don''t show again"
-                            Background="Transparent"
-                            TextAlignment="Center"
-                            Cursor="Hand"
-                            Padding="15"
-                            Height="Auto"
-                            Visibility="Visible"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center"
-                            />
-                        </Grid>
-                    <!-- End Footer -->
+                
+                <StackPanel Orientation=''Vertical''>
+                    <TextBlock Text=''• Ctrl + F: Enter search mode. Press ESC to exit.'' Margin=''15,0,0,0'' FontSize=''15'' Foreground=''{DynamicResource TextColorSecondaryColor2}'' TextWrapping=''Wrap''/>
                 </StackPanel>
-            </Grid>
+                
+                
+
+                
+                <StackPanel Orientation=''Vertical''>
+                    <TextBlock Text=''• Ctrl + Q: Switch to the apps tab.'' Margin=''15,0,0,0'' FontSize=''15'' Foreground=''{DynamicResource TextColorSecondaryColor2}'' TextWrapping=''Wrap''/>
+                </StackPanel>
+                
+                
+
+                
+                <StackPanel Orientation=''Vertical''>
+                    <TextBlock Text=''• Ctrl + W: Switch to the Tweaks tab.'' Margin=''15,0,0,0'' FontSize=''15'' Foreground=''{DynamicResource TextColorSecondaryColor2}'' TextWrapping=''Wrap''/>
+                </StackPanel>
+                
+                
+
+                
+                <StackPanel Orientation=''Vertical''>
+                    <TextBlock Text=''• Ctrl + E: Switch to the Settings tab.'' Margin=''15,0,0,0'' FontSize=''15'' Foreground=''{DynamicResource TextColorSecondaryColor2}'' TextWrapping=''Wrap''/>
+                </StackPanel>
+                
+                
+
+                
+                <StackPanel Orientation=''Vertical''>
+                    <TextBlock Text=''• Ctrl + S: Install selected apps also apply selected tweaks.'' Margin=''15,0,0,0'' FontSize=''15'' Foreground=''{DynamicResource TextColorSecondaryColor2}'' TextWrapping=''Wrap''/>
+                </StackPanel>
+                
+                
+
+                
+                <StackPanel Orientation=''Vertical''>
+                    <TextBlock Text=''• Shift + S: Save items to JSON file.'' Margin=''15,0,0,0'' FontSize=''15'' Foreground=''{DynamicResource TextColorSecondaryColor2}'' TextWrapping=''Wrap''/>
+                </StackPanel>
+                
+                
+
+                
+                <StackPanel Orientation=''Vertical''>
+                    <TextBlock Text=''• Shift + D: Load items save file.'' Margin=''15,0,0,0'' FontSize=''15'' Foreground=''{DynamicResource TextColorSecondaryColor2}'' TextWrapping=''Wrap''/>
+                </StackPanel>
+                
+                
+
+                
+                <StackPanel Orientation=''Vertical''>
+                    <TextBlock Text=''• Shift + M: Mute music.'' Margin=''15,0,0,0'' FontSize=''15'' Foreground=''{DynamicResource TextColorSecondaryColor2}'' TextWrapping=''Wrap''/>
+                </StackPanel>
+                
+                
+
+                
+                <StackPanel Orientation=''Vertical''>
+                    <TextBlock Text=''• Shift + F: Play music.'' Margin=''15,0,0,0'' FontSize=''15'' Foreground=''{DynamicResource TextColorSecondaryColor2}'' TextWrapping=''Wrap''/>
+                </StackPanel>
+                
+                
+
+                
+                <StackPanel Orientation=''Vertical''>
+                    <TextBlock Text=''• Shift + P: Open Choco folder in File Explorer.'' Margin=''15,0,0,0'' FontSize=''15'' Foreground=''{DynamicResource TextColorSecondaryColor2}'' TextWrapping=''Wrap''/>
+                </StackPanel>
+                
+                
+
+                
+                <StackPanel Orientation=''Vertical''>
+                    <TextBlock Text=''• Shift + Q: Restore point.'' Margin=''15,0,0,0'' FontSize=''15'' Foreground=''{DynamicResource TextColorSecondaryColor2}'' TextWrapping=''Wrap''/>
+                </StackPanel>
+                
+                
+
+                
+                <StackPanel Orientation=''Vertical''>
+                    <TextBlock Text=''• Shift + I: ITT Shortcut.'' Margin=''15,0,0,0'' FontSize=''15'' Foreground=''{DynamicResource TextColorSecondaryColor2}'' TextWrapping=''Wrap''/>
+                </StackPanel>
+                
+                
+
+                
+                <StackPanel Orientation=''Vertical''>
+                    <TextBlock Text=''• Ctrl + G: Closes the application.'' Margin=''15,0,0,0'' FontSize=''15'' Foreground=''{DynamicResource TextColorSecondaryColor2}'' TextWrapping=''Wrap''/>
+                </StackPanel>
+                
+                
+<TextBlock Text=''Create Yor own Theme'' FontSize=''20'' Margin=''0,18,0,18'' FontWeight=''Bold'' Foreground=''{DynamicResource PrimaryButtonForeground}'' TextWrapping=''Wrap''/>
+<Image x:Name=''contribute'' Source=''https://raw.githubusercontent.com/emadadel4/ITT/refs/heads/update/Resources/Images/customtheme.jpg'' Cursor=''Hand'' Margin=''0,0,0,0'' Height=''Auto'' Width=''400''/>
+<TextBlock Text=''Contribute and create your own theme, add your favorite apps, and even music. Click on the image above to see how to contribute.'' FontSize=''15'' Margin=''8''  Foreground=''{DynamicResource TextColorSecondaryColor2}''  TextWrapping=''Wrap''/>
+<TextBlock Text=''Download any youtube video!'' FontSize=''20'' Margin=''0,18,0,18'' FontWeight=''Bold'' Foreground=''{DynamicResource PrimaryButtonForeground}'' TextWrapping=''Wrap''/>
+<Image x:Name=''shell'' Source=''https://raw.githubusercontent.com/emadadel4/ShellTube/main/demo.jpg'' Cursor=''Hand'' Margin=''0,0,0,0'' Height=''Auto'' Width=''400''/>
+<TextBlock Text=''Shelltube is simple way to downnload videos and playlist from youtube just Launch it and start download your video you can Launch it from Third-party section.'' FontSize=''15'' Margin=''8''  Foreground=''{DynamicResource TextColorSecondaryColor2}''  TextWrapping=''Wrap''/>
+
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
+
+        <Grid Row="2" Background="Transparent">
+                <TextBlock 
+                Name="DisablePopup" 
+                Foreground="{DynamicResource TextColorSecondaryColor2}"
+                Text="Don''t show again"
+                Background="Transparent"
+                TextAlignment="Center"
+                Cursor="Hand"
+                Padding="15"
+                Visibility="Visible"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                />
+        </Grid>
+    </Grid>
+
+
     </Border>
 </Window>
 
@@ -17655,7 +17638,8 @@ $onClosingEvent = {
 # Handle the Loaded event
 $itt["window"].Add_Loaded({
     Startup
-    Get-DateStatus
+    Show-Event
+    #Get-DateStatus
 })
 
 # Close Event handler

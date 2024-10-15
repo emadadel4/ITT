@@ -1,0 +1,39 @@
+name: Build
+
+permissions:
+  contents: write
+  actions: read
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - releasenotes.md
+    branches:
+      - main  
+
+jobs:
+  build-runspace:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Build project
+        shell: pwsh
+        run: |
+          Set-ExecutionPolicy Bypass -Scope Process -Force; ./build.ps1
+        continue-on-error: false 
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Commit 'itt' file
+        run: |
+          git config --global user.name "emadadel4"
+          git config --global user.email "19177373+emadadel4@users.noreply.github.com"
+          git add itt.ps1
+          git commit -m "update"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
