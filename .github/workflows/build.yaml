@@ -10,7 +10,7 @@ on:
     paths:
       - releasenotes.md
     branches:
-      - update  
+      - main  
 
 jobs:
   build-runspace:
