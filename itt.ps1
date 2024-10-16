@@ -29,7 +29,7 @@ $itt = [Hashtable]::Synchronized(@{
     database       = @{}
     ProcessRunning = $false
     developer      = "Emad Adel"
-    lastupdate     = "10/15/2024"
+    lastupdate     = "10/16/2024"
     github         = "https://github.com/emadadel4/itt"
     telegram       = "https://t.me/emadadel4"
     blog           = "https://emadadel4.github.io"
@@ -7759,6 +7759,10 @@ $itt.database.Quotes = '{
     {
       "type": "quote",
       "text": "كل خطأ في الكود هو فرصة للتعلم والنمو، وليس مجرد فشل"
+    },
+    {
+      "type": "quote",
+      "text": "The devil is sitting on the throne with his assistants (USA)"
     }
   ]
 }
