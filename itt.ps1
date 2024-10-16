@@ -12666,16 +12666,16 @@ function Show-Event {
 '.Trim()
 
     
-       $itt.event.FindName('ytv').add_MouseLeftButtonDown({
-            Start-Process('https://www.youtube.com/watch?v=QmO82OTsU5c')
-        })
-    
        $itt.event.FindName('shell').add_MouseLeftButtonDown({
             Start-Process('https://github.com/emadadel4/shelltube')
         })
     
        $itt.event.FindName('contribute').add_MouseLeftButtonDown({
             Start-Process('https://github.com/emadadel4/itt?tab=readme-ov-file#-how-to-contribute')
+        })
+    
+       $itt.event.FindName('ytv').add_MouseLeftButtonDown({
+            Start-Process('https://www.youtube.com/watch?v=QmO82OTsU5c')
         })
     
 
@@ -17213,7 +17213,7 @@ $EventWindowXaml = '<Window
                 <StackPanel Margin="20" Orientation="Vertical">
                     <TextBlock Text=''Watch demo'' FontSize=''20'' Margin=''0,18,0,18'' FontWeight=''Bold'' Foreground=''{DynamicResource PrimaryButtonForeground}'' TextWrapping=''Wrap''/>
 <Image x:Name=''ytv'' Source=''https://raw.githubusercontent.com/emadadel4/ITT/refs/heads/main/Resources/Images/thumbnail.jpg'' Cursor=''Hand'' Margin=''0,0,0,0'' Height=''Auto'' Width=''400''/>
-<TextBlock Text='' • keyboard Shortcuts:'' FontSize=''20'' Margin=''0,18,0,18'' Foreground=''{DynamicResource PrimaryButtonForeground}'' FontWeight=''bold'' TextWrapping=''Wrap''/>
+<TextBlock Text='' • Keyboard Shortcuts:'' FontSize=''20'' Margin=''0,18,0,18'' Foreground=''{DynamicResource PrimaryButtonForeground}'' FontWeight=''bold'' TextWrapping=''Wrap''/>
 
                 
                 <StackPanel Orientation=''Vertical''>
@@ -17307,7 +17307,7 @@ $EventWindowXaml = '<Window
                 
 <TextBlock Text=''Create your own theme'' FontSize=''20'' Margin=''0,18,0,18'' FontWeight=''Bold'' Foreground=''{DynamicResource PrimaryButtonForeground}'' TextWrapping=''Wrap''/>
 <Image x:Name=''contribute'' Source=''https://raw.githubusercontent.com/emadadel4/ITT/refs/heads/update/Resources/Images/customtheme.jpg'' Cursor=''Hand'' Margin=''0,0,0,0'' Height=''Auto'' Width=''400''/>
-<TextBlock Text=''Contribute and create your own theme, add your favorite apps, and even music. Click on the image above to see how to contribute.'' FontSize=''15'' Margin=''8''  Foreground=''{DynamicResource TextColorSecondaryColor2}''  TextWrapping=''Wrap''/>
+<TextBlock Text=''Contribute and create your own theme, add your favorite apps, music. Click on the image above to see how to contribute.'' FontSize=''15'' Margin=''8''  Foreground=''{DynamicResource TextColorSecondaryColor2}''  TextWrapping=''Wrap''/>
 <TextBlock Text=''Download any Youtube video'' FontSize=''20'' Margin=''0,18,0,18'' FontWeight=''Bold'' Foreground=''{DynamicResource PrimaryButtonForeground}'' TextWrapping=''Wrap''/>
 <Image x:Name=''shell'' Source=''https://raw.githubusercontent.com/emadadel4/ShellTube/main/demo.jpg'' Cursor=''Hand'' Margin=''0,0,0,0'' Height=''Auto'' Width=''400''/>
 <TextBlock Text=''Shelltube is simple way to downnload videos and playlist from youtube just Launch it and start download your video you can Launch it from Third-party section.'' FontSize=''15'' Margin=''8''  Foreground=''{DynamicResource TextColorSecondaryColor2}''  TextWrapping=''Wrap''/>
