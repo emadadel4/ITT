@@ -18,6 +18,7 @@ Write-Host "
         # Available options
         1 = "quote"
         2 = "info" 
+        3 = "music"
     }
     
     # Prompt user to choose mothed
