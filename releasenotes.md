@@ -4,7 +4,7 @@
 
 ![itt.xName:ytv [https://www.youtube.com/watch?v=QmO82OTsU5c]](https://raw.githubusercontent.com/emadadel4/ITT/refs/heads/main/Resources/Images/thumbnail.jpg)
 
-##### keyboard Shortcuts:
+##### Keyboard Shortcuts:
 
 - Ctrl + F: Enter search mode. Press ESC to exit.
 - Ctrl + Q: Switch to the apps tab.
@@ -24,7 +24,7 @@
 
 ![itt.xName:contribute [https://github.com/emadadel4/itt?tab=readme-ov-file#-how-to-contribute]](https://raw.githubusercontent.com/emadadel4/ITT/refs/heads/update/Resources/Images/customtheme.jpg)
 
-#### Contribute and create your own theme, add your favorite apps, and even music. Click on the image above to see how to contribute.
+#### Contribute and create your own theme, add your favorite apps, music. Click on the image above to see how to contribute.
 
 ### Download any Youtube video
 
