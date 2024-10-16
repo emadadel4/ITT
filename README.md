@@ -43,7 +43,7 @@
    <a href="https://www.youtube.com/@emadadel4" target="_blank" style="margin-right: 20px;">
         <img src="https://img.shields.io/badge/YouTube-FF0000?style=flat&logo=youtube&logoColor=white" alt="YouTube" height="25">
     </a>
-    <a href="https://t.me/ittemadadel_Bot" target="_blank" style="margin-right: 20px;">
+    <a href="https://t.me/ittemadadel" target="_blank" style="margin-right: 20px;">
         <img src="https://img.shields.io/badge/Telegram-2CA5E0?style=flat&logo=telegram&logoColor=white" alt="Telegram" height="25">
     </a>
     <a href="https://discord.gg/63m34EE6mX" target="_blank" style="margin-right: 20px;">
@@ -58,7 +58,7 @@
 </div>
 
 <div align="center">
-  <h5> 334 App |   Tweaks | 6 Settings | 93 Quote |  15 Soundtrack | 9 Localization </h5>
+  <h5> 334 App |   Tweaks | 6 Settings | 94 Quote |  15 Soundtrack | 9 Localization </h5>
 </div>
 
 
@@ -115,9 +115,9 @@ or
 
 # 💡 How to Contribute
 
-1. **Make sure you have PowerShell 7 installed (recommended) for building.** It is available in ITT.
+1. **Make sure you have PowerShell 7 installed (recommended) for building. Install it using "ITT"**
 
-2. **Fork the repository and clone it using [ Github desktop](https://desktop.github.com/download/).** It is available in ITT.
+2. **Fork the repository and clone it.**
 
 3. **Open the ITT directory in PowerShell run as administrator:**
 
