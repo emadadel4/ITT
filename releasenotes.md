@@ -1,6 +1,6 @@
 ## New Update!
 
-### How to use it
+### Watch demo
 
 ![itt.xName:ytv [https://www.youtube.com/watch?v=QmO82OTsU5c]](https://raw.githubusercontent.com/emadadel4/ITT/refs/heads/main/Resources/Images/thumbnail.jpg)
 
