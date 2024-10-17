@@ -65,16 +65,13 @@ function Invoke-Install {
         return
     }
 
-    Invoke-ScriptBlock -ArgumentList $selectedApps -ScriptBlock {
+    Invoke-ScriptBlock -ArgumentList $selectedApps -debug $debug -ScriptBlock {
 
-        param($selectedApps)
+        param($selectedApps ,$debug)
 
         $itt.ProcessRunning = $true
         UpdateUI -Button "InstallBtn" -ButtonText "installText" -Content "downloading" -TextIcon "installIcon" -Icon "  " -Width "144"
         $itt["window"].Dispatcher.Invoke([action]{ Set-Taskbar -progress "Indeterminate" -value 0.01 -icon "logo" })
-
-
-  
 
         $selectedApps | ForEach-Object {
 
@@ -87,13 +84,10 @@ function Invoke-Install {
                 Remove-Item -Path "$chocoFolder.install" -Recurse -Force
                 Remove-Item -Path "$env:TEMP\chocolatey" -Recurse -Force
 
+                # Debug
+                if($debug){Write-Host $_.Winget $_.Choco}
                 Install-App -appName $_.Name -appWinget $_.Winget -appChoco $_.Choco
 
-                # Debug
-                #Write-Host $_.Winget $_.Choco
-                #Write-Host  $chocoFolder
-
-               
             }
             else
             {
@@ -203,9 +197,11 @@ function Invoke-Apply {
                 "Registry" {
                     $tweak.Modify | ForEach-Object {
                         Set-Registry -Name $_.Name -Type $_.Type -Path $_.Path -Value $_.Value
+                        if($debug){-Name $_.Name -Type $_.Type -Path $_.Path -Value $_.Value}
                     }
                     $tweak.Delete | ForEach-Object {
                         Remove-Registry -RegistryPath $_.Path -Folder $_.Name
+                        if($debug){$_.Path -Folder $_.Name}
                     }
                     if($tweak.Refresh -eq "true")
                     {
@@ -217,8 +213,9 @@ function Invoke-Apply {
                     $tweak.removeAppxPackage | ForEach-Object { Uninstall-AppxPackage -Name $_.Name }
                     $tweak.Command | ForEach-Object {
                         ExecuteCommand -Name $tweak.Name -Command $tweak.Command 
+
                         # debug
-                        #Write-Host $tweak.Command
+                        if($debug){Write-Host $tweak.Command}
                     }
                 }
                 "service" {
