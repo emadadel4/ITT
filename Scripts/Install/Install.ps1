@@ -197,11 +197,11 @@ function Invoke-Apply {
                 "Registry" {
                     $tweak.Modify | ForEach-Object {
                         Set-Registry -Name $_.Name -Type $_.Type -Path $_.Path -Value $_.Value
-                        if($debug){-Name $_.Name -Type $_.Type -Path $_.Path -Value $_.Value}
+                        if($debug){Write-Host -Name $_.Name -Type $_.Type -Path $_.Path -Value $_.Value}
                     }
                     $tweak.Delete | ForEach-Object {
                         Remove-Registry -RegistryPath $_.Path -Folder $_.Name
-                        if($debug){$_.Path -Folder $_.Name}
+                        if($debug){Write-Host $_.Path -Folder $_.Name}
                     }
                     if($tweak.Refresh -eq "true")
                     {
