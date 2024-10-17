@@ -28,7 +28,7 @@ $itt = [Hashtable]::Synchronized(@{
     Date           = (Get-Date -Format "MM/dd/yyy")
     Music          = "100"
     PopupWindow    = "On"
-    Language       = "en"
+    Language       = "default"
     ittDir         = "$env:localappdata\itt\"
 
 })
