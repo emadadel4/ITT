@@ -6788,7 +6788,8 @@ $itt.database.locales = '{
         "exit":"هل أنت متأكد من رغبتك في إغلاق البرنامج؟ إذا كان هناك أي تثبيتات، فسيتم إيقافها.",
         "watchdemo": "مرحبا بك",
         "happybirthday": "!عيد ميلاد سعيد عماد",
-        "myplaylist": "انه عيد ميلادي و قائمة الموسيقى الخاصة بي"
+        "myplaylist": "انه عيد ميلادي و قائمة الموسيقى الخاصة بي",
+        "OneAppReq": "يرجى اختيار تطبيق واحد على الاقل لحفظه"
     },
     "en": {
         "Welcome": "Save time by installing multiple programs at once and boost your Windows performance. Join us in improving this tool and making it better. You can also add your favorite music, apps, and tweaks.",
@@ -6844,7 +6845,8 @@ $itt.database.locales = '{
         "exit":"Are you sure you want to close the program? If there are any installations, they will be terminated.",
         "watchdemo": "Welcome",
         "happybirthday": "Happy Birthday to me!",
-        "myplaylist": "It''s my Birthday and My Playlist ♪"
+        "myplaylist": "It''s my Birthday and My Playlist ♪",
+        "OneAppReq": "Choose at least one app to save it"
     },
     "fr": {
         "Welcome": "Économisez du temps en installant plusieurs programmes à la fois et améliorez les performances de votre Windows. Rejoignez-nous pour améliorer l''outil et le rendre excellent.",
@@ -10666,7 +10668,7 @@ function SaveItemsToJson {
 
         
     } else {
-        [System.Windows.MessageBox]::Show("Choose at least one program", "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
+        Message -key "OneAppReq" -icon "Information"
     }
 
     # Clear Search input
@@ -11183,7 +11185,7 @@ function Invoke-Install {
     if($selectedApps.Count -eq 0)
     {
         # Show Message
-        Message -key "choseapp" -icon "Warning"
+        Message -key "choseapp" -icon "Information"
         return
     }
     else
@@ -11293,7 +11295,7 @@ function Invoke-Apply {
 
     if($selectedTweaks.Count -eq 0)
     {
-        Message -key "chosetweak" -icon "Warning"
+        Message -key "chosetweak" -icon "Information"
         return
     }
     else
@@ -12355,6 +12357,7 @@ function Message {
             The type of icon to be displayed in the message box. Valid values are:
             - "Warning" for a warning icon
             - "Question" for a question icon
+            - "Information" for Information icon
 
         .EXAMPLE
             Message -key "Welcome" -icon "Warning"
@@ -12652,12 +12655,12 @@ function Show-Event {
                 Start-Process('https://github.com/emadadel4/itt?tab=readme-ov-file#-how-to-contribute')
             })
         
-        $itt.event.FindName('ytv').add_MouseLeftButtonDown({
-                Start-Process('https://www.youtube.com/watch?v=QmO82OTsU5c')
-            })
-        
         $itt.event.FindName('shell').add_MouseLeftButtonDown({
                 Start-Process('https://github.com/emadadel4/shelltube')
+            })
+        
+        $itt.event.FindName('ytv').add_MouseLeftButtonDown({
+                Start-Process('https://www.youtube.com/watch?v=QmO82OTsU5c')
             })
         
 
