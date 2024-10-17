@@ -47,7 +47,7 @@ function Invoke-Install {
     if($selectedApps.Count -eq 0)
     {
         # Show Message
-        Message -key "choseapp" -icon "Warning"
+        Message -key "choseapp" -icon "Information"
         return
     }
     else
@@ -157,7 +157,7 @@ function Invoke-Apply {
 
     if($selectedTweaks.Count -eq 0)
     {
-        Message -key "chosetweak" -icon "Warning"
+        Message -key "chosetweak" -icon "Information"
         return
     }
     else
