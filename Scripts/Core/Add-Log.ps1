@@ -18,7 +18,7 @@ function Add-Log {
     }
 
     switch ($Level.ToUpper()) {
-        "INFO" { $icon = "!" }
+        "INFO" { $icon = "+" }
         "WARNING" { $icon = "!" }
         "ERROR" { $icon = "X" }
         "Installed" { $icon = "√" }
