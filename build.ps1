@@ -14,7 +14,7 @@ param (
     [switch]$code,
     [string]$ProjectDir = $PSScriptRoot,
     [string]$localNodePath = "releasenotes.md",
-    [string]$NoteUrl = "https://raw.githubusercontent.com/emadadel4/ITT/refs/heads/main/releasenotes.md"
+    [string]$NoteUrl = "https://raw.githubusercontent.com/emadadel4/ITT/refs/heads/main/Changelog.md"
 
 
 )
