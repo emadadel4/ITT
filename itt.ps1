@@ -6778,7 +6778,7 @@ $itt.database.locales = '{
         "chocoloc": "مجلد التنزيلات المحمولة",
         "InstallMessage":"هل تريد تثبيت البرامج التالية",
         "ApplyMessage":"هل تريد تطبيق التحسينات التالية",
-        "Applying": "جارٍ التطبيق",
+        "Applying": "جارٍي التطبيق",
         "Pleasewait": "يرجى الانتظار، يوجد عملية في الخلفية",
         "choseapp":"اختر على الأقل تطبيقًا لتثبيته",
         "chosetweak":"يرجى الانتظار حتى يتم تطبيق التحسينات",
@@ -12644,22 +12644,9 @@ function Show-Event {
     $itt.event.FindName('date').Text = $itt.date
     $CloseBtn = $itt.event.FindName('closebtn')
 
-            $itt.event.FindName('title').text = 'New Update!
-'.Trim()
+    #{title}
 
-    
-        $itt.event.FindName('contribute').add_MouseLeftButtonDown({
-                Start-Process('https://github.com/emadadel4/itt?tab=readme-ov-file#-how-to-contribute')
-            })
-        
-        $itt.event.FindName('ytv').add_MouseLeftButtonDown({
-                Start-Process('https://www.youtube.com/watch?v=QmO82OTsU5c')
-            })
-        
-        $itt.event.FindName('shell').add_MouseLeftButtonDown({
-                Start-Process('https://github.com/emadadel4/shelltube')
-            })
-        
+    #{contorlshandler}
 
     $CloseBtn.add_MouseLeftButtonDown({
         $itt.event.Close()
@@ -16918,4 +16905,3 @@ Stop-Transcript
 #===========================================================================
 #endregion End Main
 #===========================================================================
-
