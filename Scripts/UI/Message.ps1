@@ -1,6 +1,6 @@
 function Message {
 
-  <#
+    <#
         .SYNOPSIS
             Displays a localized message box to the user with a specified icon.
 
@@ -29,11 +29,9 @@ function Message {
 
         .NOTES
             Ensure that the `itt.database.locales.Controls` object is properly populated with localization data and that the specified keys exist for the current language.
-
     #>
     
     param($key,$icon)
-
     $localizedMessageTemplate = $itt.database.locales.Controls.$($itt.Language).$($key)
     $msg = "$localizedMessageTemplate"
     [System.Windows.MessageBox]::Show($msg, "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::$icon)
