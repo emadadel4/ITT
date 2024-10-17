@@ -12670,12 +12670,12 @@ function Show-Event {
             Start-Process('https://github.com/emadadel4/itt?tab=readme-ov-file#-how-to-contribute')
         })
     
-       $itt.event.FindName('shell').add_MouseLeftButtonDown({
-            Start-Process('https://github.com/emadadel4/shelltube')
-        })
-    
        $itt.event.FindName('ytv').add_MouseLeftButtonDown({
             Start-Process('https://www.youtube.com/watch?v=QmO82OTsU5c')
+        })
+    
+       $itt.event.FindName('shell').add_MouseLeftButtonDown({
+            Start-Process('https://github.com/emadadel4/shelltube')
         })
     
 
