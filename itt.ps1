@@ -43,7 +43,7 @@ $itt = [Hashtable]::Synchronized(@{
     Date           = (Get-Date -Format "MM/dd/yyy")
     Music          = "100"
     PopupWindow    = "On"
-    Language       = "en"
+    Language       = "default"
     ittDir         = "$env:localappdata\itt\"
 
 })
@@ -12659,16 +12659,16 @@ function Show-Event {
 '.Trim()
 
     
-        $itt.event.FindName('contribute').add_MouseLeftButtonDown({
-                Start-Process('https://github.com/emadadel4/itt?tab=readme-ov-file#-how-to-contribute')
-            })
-        
         $itt.event.FindName('ytv').add_MouseLeftButtonDown({
                 Start-Process('https://www.youtube.com/watch?v=QmO82OTsU5c')
             })
         
         $itt.event.FindName('shell').add_MouseLeftButtonDown({
                 Start-Process('https://github.com/emadadel4/shelltube')
+            })
+        
+        $itt.event.FindName('contribute').add_MouseLeftButtonDown({
+                Start-Process('https://github.com/emadadel4/itt?tab=readme-ov-file#-how-to-contribute')
             })
         
 
@@ -16623,7 +16623,7 @@ foreach ($function in $functions) {
     $initialSessionState.Commands.Add($functionEntry)
 
     # debug
-    #Write-Output "Added function: $($function.Name)"
+    if($Debug){Write-Output "Added function: $($function.Name)"}
 }
 
 # Create and open the runspace pool
@@ -16664,7 +16664,7 @@ try {
             New-Item -Path $itt.registryPath -Force | Out-Null
             Set-ItemProperty -Path $itt.registryPath -Name "Theme" -Value "default" -Force
             Set-ItemProperty -Path $itt.registryPath -Name "UserTheme" -Value "none" -Force
-            Set-ItemProperty -Path $itt.registryPath -Name "locales" -Value $shortCulture -Force
+            Set-ItemProperty -Path $itt.registryPath -Name "locales" -Value "default" -Force
             Set-ItemProperty -Path $itt.registryPath -Name "Music" -Value "100" -Force
             Set-ItemProperty -Path $itt.registryPath -Name "PopupWindow" -Value "On" -Force
         }
@@ -16682,7 +16682,7 @@ try {
             if($Debug) {Add-Log -Message "An error occurred. Creating missing registry keys..." -Level "INFO"}
             New-ItemProperty -Path $itt.registryPath -Name "Theme" -Value "default" -PropertyType String -Force *> $Null
             New-ItemProperty -Path $itt.registryPath -Name "UserTheme" -Value "none" -PropertyType String -Force *> $Null
-            New-ItemProperty -Path $itt.registryPath -Name "locales" -Value $shortCulture -PropertyType String -Force *> $Null
+            New-ItemProperty -Path $itt.registryPath -Name "locales" -Value "default" -PropertyType String -Force *> $Null
             New-ItemProperty -Path $itt.registryPath -Name "Music" -Value "100" -PropertyType String -Force *> $Null
             New-ItemProperty -Path $itt.registryPath -Name "PopupWindow" -Value "On" -PropertyType String -Force *> $Null
         }
@@ -16695,20 +16695,47 @@ try {
     #region Set Language based on culture
     #===========================================================================
         
-        switch ($shortCulture) {
-            "ar" { $locale = "ar" }
-            "en" { $locale = "en" }
-            "fr" { $locale = "fr" }
-            "tr" { $locale = "tr" }
-            "zh" { $locale = "zh" }
-            "ko" { $locale = "ko" }
-            "de" { $locale = "de" }
-            "ru" { $locale = "ru" }
-            "es" { $locale = "es" }
-            default { $locale = "en" }
+        try {
+            
+            switch ($itt.Locales) {
+
+                "default" {
+                    
+                    switch($shortCulture)
+                    {
+                        "ar" { $locale = "ar" }
+                        "en" { $locale = "en" }
+                        "fr" { $locale = "fr" }
+                        "tr" { $locale = "tr" }
+                        "zh" { $locale = "zh" }
+                        "ko" { $locale = "ko" }
+                        "de" { $locale = "de" }
+                        "ru" { $locale = "ru" }
+                        "es" { $locale = "es" }
+                        default { $locale = "en" }
+                    
+                    }
+    
+                }
+                "ar" { $locale = "ar" }
+                "en" { $locale = "en" }
+                "fr" { $locale = "fr" }
+                "tr" { $locale = "tr" }
+                "zh" { $locale = "zh" }
+                "ko" { $locale = "ko" }
+                "de" { $locale = "de" }
+                "ru" { $locale = "ru" }
+                "es" { $locale = "es" }
+                default { $locale = "en" }
+            }
+            $itt["window"].DataContext = $itt.database.locales.Controls.$locale
+            $itt.Language = $locale
         }
-        $itt["window"].DataContext = $itt.database.locales.Controls.$locale
-        $itt.Language = $locale
+        catch {
+
+            # fallbak to en lang
+            $itt["window"].DataContext = $itt.database.locales.Controls.en
+        }
 
     #===========================================================================
     #endregion Set Language based on culture
@@ -16719,8 +16746,6 @@ try {
     #===========================================================================
 
         try {
-
-
 
             $themeResource = switch($itt.Theme)
             {
@@ -16741,7 +16766,6 @@ try {
                         "0" { "Dark" }
                         "1" { "Light" }
                     }
-                    
 
                 }
             }
