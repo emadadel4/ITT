@@ -4,7 +4,7 @@
     <img src="https://raw.githubusercontent.com/Safouene1/support-palestine-banner/master/StandWithPalestine.svg" alt="Ceasefire Now" style="width:40%;">
   </a>
 </p>
-
+  
 <h1 align="center">🔻 ITT (Install Tweaks Tool) 🔻 </h1>
 
 <h3 align="center">
@@ -90,7 +90,7 @@
 <li>Choose "PowerShell" or "Terminal" and paste any of the following commands:</li>
 </ol>
 
-> [!CAUTION]
+> [!CAUTION]  
 Run the script using official commands from this repository. It's not a portable script, so avoid download it from any sites.
 
 <pre><code>irm bit.ly/ittea | iex</code></pre>
@@ -107,7 +107,7 @@ or
 </code></pre>
 
 <div align="center">
-
+  
 ## Watch Demo
 
   [![Watch the video](https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Images/thumbnail.jpg)](https://www.youtube.com/watch?v=QmO82OTsU5c)
@@ -222,3 +222,4 @@ English
 <h2>🔑 Keywords</h2>
 
 `itt, Install Tweaks Tool, windows10debloater, windows11debloater, windows-optimization, Application Installation, System Optimization, Windows Tools, Automation, System Customization, Software Updates, Silent Installers, PowerShell Scripts, Developer Tools, Game-engine, godotengine, godot, Windows Applications, windows-tweaks, disable-windows-updates, Open-Source, activator-windows, windows-optimization-tool, tweaks, tweaker, Privacy, StandWithPalestine, Security, privacy-policy, choco, winget, download, emadadel, emadadel4`
+
