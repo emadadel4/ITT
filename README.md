@@ -58,7 +58,7 @@
 </div>
 
 <div align="center">
-  <h5> 334 App |  38 Tweaks | 6 Settings | 0 Quote |  15 Soundtrack | #{loc} Localization </h5>
+  <h5> 334 App |  38 Tweaks | 6 Settings | 94 Quote |  15 Soundtrack | 9 Localization </h5>
 </div>
 
 
