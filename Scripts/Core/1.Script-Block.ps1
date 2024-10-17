@@ -24,7 +24,8 @@ function Invoke-ScriptBlock {
 
     param(
         [scriptblock]$ScriptBlock,  # The script block to invoke
-        [array]$ArgumentList        # Optional arguments for the script block
+        [array]$ArgumentList,
+        $Debug   
     )
 
     $script:powershell = [powershell]::Create()  # Create a new PowerShell instance
@@ -32,6 +33,7 @@ function Invoke-ScriptBlock {
     # Add the script block and arguments to the runspace
     $script:powershell.AddScript($ScriptBlock)
     $script:powershell.AddArgument($ArgumentList)
+    $script:powershell.AddArgument($Debug)
     $script:powershell.RunspacePool = $itt.runspace  # Set the runspace pool
 
     # Begin running the script block asynchronously
