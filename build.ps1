@@ -22,6 +22,26 @@ param (
 # Initializeialize synchronized hashtable
 $itt = [Hashtable]::Synchronized(@{})
 $itt.database = @{}
+$imageLinkMap = @{}
+$global:extractedContent = ""
+
+
+function Update-Progress {
+    param (
+        [Parameter(Mandatory, position=0)]
+        [string]$Status,
+
+        [Parameter(Mandatory, position=1)]
+        [ValidateRange(0,100)]
+        [int]$PercentComplete ,
+
+        [Parameter(position=2)]
+        [string]$Activity = "Building"
+    )
+
+    Write-Progress -Activity $Activity -Status $Status -PercentComplete $PercentComplete 
+
+}
 
 # write content to output script
 function WriteToScript {
@@ -48,6 +68,9 @@ function ReplaceTextInFile {
         [string]$ReplacementText
     )
 
+    Write-Host "Replace Placeholder" -ForegroundColor Yellow
+    Update-Progress "$($MyInvocation.MyCommand.Name)" 30
+    
     # Read the content of the file
     $content = Get-Content $FilePath
 
@@ -63,6 +86,7 @@ function AddFileContentToScript {
     param (
         [string]$FilePath
     )
+    
     $Content = Get-Content -Path $FilePath -Raw
     WriteToScript -Content $Content
 }
@@ -93,87 +117,34 @@ function GenerateCheckboxes {
     )
 
     $Checkboxes = ""
-    
-    #$ReversedItems = $Items[$Items.Count..0]
 
-    foreach ($Item in $Items) {        
-
+    foreach ($Item in $Items) {
+        # Clean description and category to remove special characters
         $CleanedDescription = $Item.Description -replace '[^\w\s.]', ''
-
         $CleanedCategory = $Item.Category -replace '[^\w\s]', ''
 
-        # grap name of each item  
+        # Get content from the specified content field
         $Content = $Item.$ContentField
 
-        # Tag(Cat) in Applications.json to apps items
+        # Optional attributes for CheckBox based on fields
         $Tag = if ($TagField) { "Tag=`"$($Item.$TagField)`"" } else { "" }
-
-        # Tips
         $Tips = if ($TipsField) { "ToolTip=`"Install it again to update. If there is an issue with the program, please report the problem on the GitHub repository.`"" } else { "" }
-
-
-        # Grap and add the Name form Settings.json to Toggle Settings items
         $Name = if ($NameField) { "Name=`"$($Item.$NameField)`"" } else { "" }
-
-        # Add Toggle Style to Item on Settings
         $Toggle = if ($ToggleField) { "Style=`"{StaticResource ToggleSwitchStyle}`"" } else { "" }
-
-        #Checkbox the item if is true in Applications.json
         $IsChecked = if ($IsCheckedField) { "IsChecked=`"$($Item.$IsCheckedField)`"" } else { "" }
 
+        # Build the CheckBox and its container
         $Checkboxes += @"
-
         <StackPanel Orientation="Vertical" Width="auto" Margin="10">
             <StackPanel Orientation="Horizontal">
                 <CheckBox Content="$Content" $Tag $IsChecked $Toggle $Name $Tips FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource TextColorSecondaryColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content="$CleanedCategory"/>
+                <Label HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="13" Content="$CleanedCategory"/>
             </StackPanel>
-                <TextBlock Width="555" Background="Transparent" Margin="8" Foreground="{DynamicResource TextColorSecondaryColor2}"  FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="$CleanedDescription."/>
+            <TextBlock Width="555" Background="Transparent" Margin="8" Foreground="{DynamicResource TextColorSecondaryColor2}" FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Text="$CleanedDescription."/>
         </StackPanel>
-
 "@
     }
     return $Checkboxes
-}
-
-# Generate themes menu items
-function Generate-MenuItems {
-    param (
-        [string]$ThemesPath  # Path to the themes folder
-    )
-
-    # Validate the path
-    if (-Not (Test-Path $ThemesPath)) {
-        Write-Host "The specified path does not exist: $ThemesPath"
-        return
-    }
-
-    # Generate MenuItem entries for each file in the themes folder
-    $menuItems = Get-ChildItem -Path $ThemesPath -File | ForEach-Object {
-        # Read the content of each file
-        $content = Get-Content $_.FullName -Raw  # Read the entire file content
-
-        # Use regex to extract content inside curly braces for Header
-        if ($content -match '\{(.*?)\}') {
-            $header = $matches[1]  # Extracted content inside {}
-        } else {
-            $header = "Unknown"  # Fallback if no match is found
-        }
-
-        # Use regex to extract x:Key value for Header2
-        if ($content -match 'x:Key="(.*?)"') {
-            $name = $matches[1]  # Extracted x:Key value
-        } else {
-            $header2 = "No Key"  # Fallback if no x:Key is found
-        }
-
-        # Create MenuItem entry with the extracted headers
-        "<MenuItem Name=`"$name`" Header=`"$header`"/>"
-    }
-
-    # Join the MenuItems into a single string
-    $menuItemsOutput = $menuItems -join "`n"
-    return $menuItemsOutput
 }
 
 # Process each JSON file in the specified directory
@@ -229,6 +200,10 @@ function NewCONTRIBUTOR {
     $contribFile = "CONTRIBUTORS.md"
     $xamlFile = "Templates\about.xaml"
     $updatedXamlFile = "UI\Views\AboutWindow.xaml" 
+
+
+    Update-Progress "Check for new contributor " 40
+
 
     # Function to get GitHub username from .git folder
     function Get-GitHubUsername {
@@ -299,49 +274,6 @@ function CountItems {
     Update-Readme -Apps $appsCount -Tweaks $tweaksCount -Quote $quotesCount -Track $tracksCount -Settings $settingsCount -Localization $localizationCount
 }
 
-function Generate-Themes-Invoke {
-    param (
-        [string]$ThemesPath = $Themes,      
-        [string]$OutputScript = $OutputScript
-    )
-
-    # Validate the paths
-    if (-Not (Test-Path $ThemesPath)) {
-        Write-Host "The specified themes path does not exist: $ThemesPath"
-        return
-    }
-
-    if (-Not (Test-Path $OutputScript)) {
-        Write-Host "The specified output script path does not exist: $OutputScript"
-        return
-    }
-
-    # Generate MenuItem entries for each file in the themes folder
-    $menuItems = Get-ChildItem -Path $ThemesPath -File | ForEach-Object {
-        $filename = [System.IO.Path]::GetFileNameWithoutExtension($_.Name)  # Get filename without extension
-
-        $Key = $filename -replace , '[^\w]', ''
-        
-        # Create the MenuItem entry with a script block
-        "
-        ""$Key""{
-            Set-Theme -Theme `$action`
-            Debug-Message
-        }
-        "
-    }
-
-    # Join the menu items into a single string
-    $menuItemsOutput = $menuItems -join "`n"
-
-    # Replace the specified text in the output script
-    ReplaceTextInFile -FilePath $OutputScript -TextToReplace '#{themes}' -ReplacementText $menuItemsOutput
-}
-
-$global:emad = @{}
-$global:extractedContent = ""
-$global:imageLinkMap = @{}
-
 function ConvertTo-Xaml {
     param (
         [string]$text,
@@ -349,6 +281,8 @@ function ConvertTo-Xaml {
         [string]$DescriptionFontSize = 15
 
     )
+
+    Write-Host "Generate Events Window Content...." -ForegroundColor Yellow
 
     # Initialize XAML as an empty string
     $xaml = ""
@@ -360,7 +294,7 @@ function ConvertTo-Xaml {
                 $xaml += "<Image x:Name=''$($matches[1].Trim())'' Source=''$($matches[3].Trim())'' Cursor=''Hand'' Margin=''0,0,0,0'' Height=''Auto'' Width=''400''/>`n"
                 $link = $matches[2].Trim()   # Extract the link from inside the brackets
                 $name = $matches[1].Trim()   # Extract the xName after 'tt.xName:'
-                $global:imageLinkMap[$name] = $link
+                $imageLinkMap[$name] = $link
             }
             "^## (.+)" { # Event title
                 $global:extractedContent += $matches[1].Trim() + "`n"
@@ -391,6 +325,117 @@ function ConvertTo-Xaml {
     }
 
     return $xaml
+}
+
+function GenerateThemesInvoke   {
+    param (
+        [string]$ThemesPath = "Themes", # Path to the themes directory
+        [string]$ITTFilePath = "itt.ps1" # Path to the ITT file
+    )
+
+    Update-Progress "$($MyInvocation.MyCommand.Name)" 50
+
+    try {
+        # Get menu items from files in the specified Themes directory
+        $menuItems = Get-ChildItem -Path $ThemesPath -File | ForEach-Object {
+            $filename = [System.IO.Path]::GetFileNameWithoutExtension($_.Name) # Get filename without extension
+            $Key = $filename -replace '[^\w]', '' # Remove non-word characters
+
+            # Create the MenuItem block
+            @"
+            "$Key" {
+                Set-Theme -Theme `$action
+                Debug-Message
+            }
+"@
+        }
+
+        # Read content from the ITT file
+        $itta = Get-Content -Path $ITTFilePath -Raw
+
+        # Join the menu items with newlines and replace placeholder in the file content
+        $menuItemsOutput = $menuItems -join "`n"
+        $itta = $itta -replace '#{themes}', $menuItemsOutput
+
+        # Write updated content back to the ITT file
+        Set-Content -Path $ITTFilePath -Value $itta
+        Write-Host "Generate themes click events...." -ForegroundColor Yellow
+
+    } catch {
+        Write-Error "An error occurred: $($_.Exception.Message)"
+    }
+}
+
+# Generate themes menu items
+function GenerateThemesKeys {
+    param (
+        [string]$ThemesPath = "Themes"
+    )
+
+    # Validate the path
+    if (-Not (Test-Path $ThemesPath)) {
+        Write-Host "The specified path does not exist: $ThemesPath"
+        return
+    }
+
+    # Generate MenuItem entries for each file in the themes folder
+    $menuItems = Get-ChildItem -Path $ThemesPath -File | ForEach-Object {
+        # Read the content of each file
+        $content = Get-Content $_.FullName -Raw  # Read the entire file content
+
+        # Use regex to extract content inside curly braces for Header
+        if ($content -match '\{(.*?)\}') {
+            $header = $matches[1]  # Extracted content inside {}
+        } else {
+            $header = "Unknown"  # Fallback if no match is found
+        }
+
+        # Use regex to extract x:Key value for Header2
+        if ($content -match 'x:Key="(.*?)"') {
+            $name = $matches[1]  # Extracted x:Key value
+        } else {
+            $header2 = "No Key"  # Fallback if no x:Key is found
+        }
+
+        # Create MenuItem entry with the extracted headers
+        "<MenuItem Name=`"$name`" Header=`"$header`"/>"
+    }
+
+    # Join the MenuItems into a single string
+    $menuItemsOutput = $menuItems -join "`n"
+    return $menuItemsOutput
+}
+
+function GenerateClickEventHandlers {
+    param (
+        [string]$ITTFilePath = "itt.ps1"
+    )
+
+    Write-Host "Generate Click Event Handlers" -ForegroundColor Yellow
+    Update-Progress "$($MyInvocation.MyCommand.Name)" 90
+
+    foreach ($name  in $imageLinkMap.Keys) {
+
+        $url = $imageLinkMap[$name]
+        
+        $EventHandler += "
+        `$itt.event.FindName('$name').add_MouseLeftButtonDown({
+                Start-Process('$url')
+            })`
+        "
+    }
+
+    $EventTitle = @"
+        `$itt.event.FindName('title').text = '$global:extractedContent'`.Trim()
+"@
+
+    $itta = Get-Content -Path $ITTFilePath -Raw
+    $menuItemsOutput = $menuItems -join "`n"
+    $itta = $itta -replace '#{contorlshandler}', $EventHandler
+
+    $itta = $itta -replace '#{title}', $EventTitle
+
+    Set-Content -Path $ITTFilePath -Value $itta
 }
 
 # Write script header
@@ -455,6 +500,9 @@ try {
 #===========================================================================
 "@
     ProcessDirectory -Directory $ScritsDirectory
+
+    GenerateThemesInvoke
+
     WriteToScript -Content @"
 #===========================================================================
 #endregion End Main Functions
@@ -508,25 +556,20 @@ WriteToScript -Content @"
     $TweaksCheckboxes = GenerateCheckboxes -Items $itt.database.Tweaks -ContentField "Name"
     $SettingsCheckboxes = GenerateCheckboxes -Items $itt.database.Settings -ContentField "Content" -NameField "Name" -ToggleField "Style="{StaticResource ToggleSwitchStyle}""
 
-
     $MainXamlContent = $MainXamlContent -replace "{{Apps}}", $AppsCheckboxes 
     $MainXamlContent = $MainXamlContent -replace "{{Tweaks}}", $TweaksCheckboxes 
     $MainXamlContent = $MainXamlContent -replace "{{Settings}}", $SettingsCheckboxes 
-    $MainXamlContent = $MainXamlContent -replace "{{ThemesKeys}}", (Generate-MenuItems -ThemesPath "Themes")
+    $MainXamlContent = $MainXamlContent -replace "{{ThemesKeys}}", (GenerateThemesKeys)
 
+    # Get xaml files from Themes and put it inside MainXamlContent
+    $ThemeFilesContent = Get-ChildItem -Path "$Themes" -File | 
+    ForEach-Object { Get-Content $_.FullName -Raw } | 
+    Out-String
 
-        $ThemeFilesContent = Get-ChildItem -Path "$Themes" -File | 
-        ForEach-Object { Get-Content $_.FullName -Raw } | 
-        Out-String
+    $MainXamlContent = $MainXamlContent -replace "{{CustomThemes}}", $ThemeFilesContent 
 
-        $MainXamlContent = $MainXamlContent -replace "{{CustomThemes}}", $ThemeFilesContent 
-
-        # Menu Item Control
-        Generate-Themes-Invoke
-
-        # Final output
-        WriteToScript -Content "`$MainWindowXaml = '$MainXamlContent'"
-
+    # Final output
+    WriteToScript -Content "`$MainWindowXaml = '$MainXamlContent'"
 
     # Signup a new CONTRIBUTOR
     NewCONTRIBUTOR
@@ -580,10 +623,6 @@ WriteToScript -Content @"
     # Read and replace placeholders in XAML content
     try {
         $EventWindowXamlContent = (Get-Content -Path $FilePaths["event"] -Raw) -replace "'", "''"
-    } catch {
-        Write-Error "Error: $($_.Exception.Message)"
-    }
-   
 
         # debug offline local file
         # $textContent = Get-Content -Path $textFilePath -Raw
@@ -593,10 +632,13 @@ WriteToScript -Content @"
         $response = Invoke-WebRequest -Uri $NoteUrl
         $textContent = $response.Content
         $xamlContent = ConvertTo-Xaml -text $textContent
-    
         $EventWindowXamlContent = $EventWindowXamlContent -replace "UpdateContent", $xamlContent
+        WriteToScript -Content "`$EventWindowXaml = '$EventWindowXamlContent'"
+        
+    } catch {
+        Write-Error "Error: $($_.Exception.Message)"
+    }
 
-    WriteToScript -Content "`$EventWindowXaml = '$EventWindowXamlContent'"
 
     WriteToScript -Content @"
 #===========================================================================
@@ -631,24 +673,10 @@ WriteToScript -Content @"
 #===========================================================================
 "@
 
-foreach ($name  in $global:imageLinkMap.Keys) {
-
-    $url = $global:imageLinkMap[$name]
-    
-    $EventHandler += "
-       `$itt.event.FindName('$name').add_MouseLeftButtonDown({
-            Start-Process('$url')
-        })`
-    "
-}
-
-$EventTitle = @"
-    `$itt.event.FindName('title').text = '$global:extractedContent'`.Trim()
-"@
 
 
-ReplaceTextInFile -FilePath $OutputScript -TextToReplace '#{contorlshandler}' -ReplacementText $EventHandler
-ReplaceTextInFile -FilePath $OutputScript -TextToReplace '#{title}' -ReplacementText $EventTitle 
+
+GenerateClickEventHandlers
 
 
 
