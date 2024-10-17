@@ -11516,18 +11516,7 @@ function Invoke-Button {
             Debug-Message
         }
 
-                    "Dark" {
-                Set-Theme -Theme $action
-                Debug-Message
-            }
-            "Light" {
-                Set-Theme -Theme $action
-                Debug-Message
-            }
-            "thedarkknight" {
-                Set-Theme -Theme $action
-                Debug-Message
-            }
+        #{themes}
 
 
 
@@ -12340,7 +12329,7 @@ $KeyEvents = {
 
 function Message {
 
-  <#
+    <#
         .SYNOPSIS
             Displays a localized message box to the user with a specified icon.
 
@@ -12369,11 +12358,9 @@ function Message {
 
         .NOTES
             Ensure that the `itt.database.locales.Controls` object is properly populated with localization data and that the specified keys exist for the current language.
-
     #>
     
     param($key,$icon)
-
     $localizedMessageTemplate = $itt.database.locales.Controls.$($itt.Language).$($key)
     $msg = "$localizedMessageTemplate"
     [System.Windows.MessageBox]::Show($msg, "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::$icon)
@@ -12647,22 +12634,9 @@ function Show-Event {
     $itt.event.FindName('date').Text = $itt.date
     $CloseBtn = $itt.event.FindName('closebtn')
 
-            $itt.event.FindName('title').text = 'New Update!
-'.Trim()
+    #{title}
 
-    
-        $itt.event.FindName('contribute').add_MouseLeftButtonDown({
-                Start-Process('https://github.com/emadadel4/itt?tab=readme-ov-file#-how-to-contribute')
-            })
-        
-        $itt.event.FindName('shell').add_MouseLeftButtonDown({
-                Start-Process('https://github.com/emadadel4/shelltube')
-            })
-        
-        $itt.event.FindName('ytv').add_MouseLeftButtonDown({
-                Start-Process('https://www.youtube.com/watch?v=QmO82OTsU5c')
-            })
-        
+    #{contorlshandler}
 
     $CloseBtn.add_MouseLeftButtonDown({
         $itt.event.Close()
@@ -12738,7 +12712,6 @@ function UpdateUI {
         $itt.$TextIcon.Text = "$icon"
     })
 }
-
 #===========================================================================
 #endregion End Main Functions
 #===========================================================================
@@ -16921,4 +16894,3 @@ Stop-Transcript
 #===========================================================================
 #endregion End Main
 #===========================================================================
-
