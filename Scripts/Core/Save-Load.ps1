@@ -120,7 +120,7 @@ function SaveItemsToJson {
 
         
     } else {
-        [System.Windows.MessageBox]::Show("Choose at least one program", "ITT", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
+        Message -key "OneAppReq" -icon "Information"
     }
 
     # Clear Search input
