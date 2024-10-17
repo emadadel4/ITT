@@ -17,6 +17,7 @@ function Message {
             The type of icon to be displayed in the message box. Valid values are:
             - "Warning" for a warning icon
             - "Question" for a question icon
+            - "Information" for Information icon
 
         .EXAMPLE
             Message -key "Welcome" -icon "Warning"
