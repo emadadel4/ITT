@@ -11516,7 +11516,18 @@ function Invoke-Button {
             Debug-Message
         }
 
-        #{themes}
+                    "Dark" {
+                Set-Theme -Theme $action
+                Debug-Message
+            }
+            "Light" {
+                Set-Theme -Theme $action
+                Debug-Message
+            }
+            "thedarkknight" {
+                Set-Theme -Theme $action
+                Debug-Message
+            }
 
 
 
@@ -12634,9 +12645,22 @@ function Show-Event {
     $itt.event.FindName('date').Text = $itt.date
     $CloseBtn = $itt.event.FindName('closebtn')
 
-    #{title}
+            $itt.event.FindName('title').text = 'New Update!
+'.Trim()
 
-    #{contorlshandler}
+    
+        $itt.event.FindName('contribute').add_MouseLeftButtonDown({
+                Start-Process('https://github.com/emadadel4/itt?tab=readme-ov-file#-how-to-contribute')
+            })
+        
+        $itt.event.FindName('shell').add_MouseLeftButtonDown({
+                Start-Process('https://github.com/emadadel4/shelltube')
+            })
+        
+        $itt.event.FindName('ytv').add_MouseLeftButtonDown({
+                Start-Process('https://www.youtube.com/watch?v=QmO82OTsU5c')
+            })
+        
 
     $CloseBtn.add_MouseLeftButtonDown({
         $itt.event.Close()
@@ -12712,6 +12736,7 @@ function UpdateUI {
         $itt.$TextIcon.Text = "$icon"
     })
 }
+
 #===========================================================================
 #endregion End Main Functions
 #===========================================================================
@@ -16894,3 +16919,4 @@ Stop-Transcript
 #===========================================================================
 #endregion End Main
 #===========================================================================
+
