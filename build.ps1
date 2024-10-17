@@ -167,29 +167,43 @@ function Sync-JsonFiles {
 function Update-Readme {
     param (
         [string]$OriginalReadmePath = "Templates\README.md",
-        [string]$NewReadmePath = "README.md",
-        [string]$Apps,
-        [string]$Tewaks,
-        [string]$Quote,
-        [string]$Track,
-        [string]$Settings,
-        [string]$Localization
-
+        [string]$NewReadmePath = "README.md"
     )
 
     # Read the content of the original README.md file
     $readmeContent = Get-Content -Path $OriginalReadmePath -Raw
 
-    # Replace multiple placeholders with the new content
-    $updatedContent = $readmeContent -replace "#{a}", $Apps `
-    -replace "#{t}", $Tewaks `
-    -replace "#{q}", $Quote `
-    -replace "#{OST}", $Track `
-    -replace "#{s}", $Settings `
-    -replace "#{loc}", $Localization
+    # Prepare values for the placeholders
+    $applicationsCount = $itt.database.Applications.Count
+    $tweaksCount = $itt.database.Tweaks.Count
+    $quotesCount = $itt.database.Quotes.Quotes.Count
+    $tracksCount = $itt.database.OST.Tracks.Count
+    $settingsCount = $itt.database.Settings.Count
+    $localesCount = ($itt.database.locales.Controls.PSObject.Properties | Measure-Object).Count
+
+    # Create a hashtable for placeholders and their replacements
+    $placeholders = @{
+        "#{a}" = $applicationsCount
+        "#{t}" = $tweaksCount
+        "#{q}" = $quotesCount
+        "#{OST}" = $tracksCount
+        "#{s}" = $settingsCount
+        "#{loc}" = $localesCount
+    }
+
+    # Replace placeholders in a single pass
+    $updatedContent = $readmeContent
+    foreach ($key in $placeholders.Keys) {
+        $updatedContent = $updatedContent -replace [regex]::Escape($key), $placeholders[$key]
+    }
 
     # Write the updated content to the new README.md file
-    Set-Content -Path $NewReadmePath -Value $updatedContent
+    Set-Content -Path $NewReadmePath -Value $updatedContent -Encoding UTF8
+
+    Write-Host `n`
+
+    # Output the counts to the console in one go
+    Write-Host "Apps $applicationsCount`nTweaks $tweaksCount`nQuotes $quotesCount`nTracks $tracksCount`nSettings $settingsCount`nLocales $localesCount" -ForegroundColor Yellow
 }
 
 # Add New Contributor to Contributor.md and show his name in about window
@@ -201,9 +215,7 @@ function NewCONTRIBUTOR {
     $xamlFile = "Templates\about.xaml"
     $updatedXamlFile = "UI\Views\AboutWindow.xaml" 
 
-
-    Update-Progress "Check for new contributor " 40
-
+    Update-Progress "Check for new contributor..." 40
 
     # Function to get GitHub username from .git folder
     function Get-GitHubUsername {
@@ -229,7 +241,7 @@ function NewCONTRIBUTOR {
     # Read CONTRIBUTORS.md content and ensure username is unique
     if (Test-Path $contribFile) {
         $contribLines = Get-Content $contribFile | ForEach-Object { $_.Trim() } | Where-Object { $_ -ne "" } | Sort-Object -Unique
-        if ($contribLines -notcontains $username) {
+        if ($username -notin $contribLines) {
             Add-Content $contribFile $username
             $contribLines += $username
         }
@@ -242,36 +254,19 @@ function NewCONTRIBUTOR {
     # Read the existing XAML file content
     $MainXamlContent = Get-Content $xamlFile -Raw
 
+    # Create a StringBuilder for TextBlock elements
+    $stringBuilder = New-Object System.Text.StringBuilder
+
     # Generate unique TextBlock elements for each name in CONTRIBUTORS.md
-    $textBlockElements = $contribLines | ForEach-Object {
-        "<TextBlock Text='$($_)' Margin='1' Foreground='{DynamicResource TextColorSecondaryColor2}' />"
+    foreach ($name in $contribLines) {
+        [void]$stringBuilder.AppendLine("<TextBlock Text='$name' Margin='1' Foreground='{DynamicResource TextColorSecondaryColor2}' />")
     }
 
-    # Join TextBlock elements with newline characters
-    $textBlockContent = $textBlockElements -join "`r`n"
-
     # Replace #{names} in the XAML file with the TextBlock elements
-    $newXamlContent = $MainXamlContent -replace '#{names}', $textBlockContent
+    $newXamlContent = $MainXamlContent -replace '#{names}', $stringBuilder.ToString()
 
     # Write the updated content to the new XAML file
     Set-Content -Path $updatedXamlFile -Value $newXamlContent -Encoding UTF8
-}
-
-# Display the number of items in json files
-function CountItems {
-    # Store the counts in variables for reuse
-    $appsCount = $itt.database.Applications.Count
-    $tweaksCount = $itt.database.Tweaks.Count
-    $quotesCount = $itt.database.Quotes.Quotes.Count
-    $tracksCount = $itt.database.OST.Tracks.Count
-    $settingsCount = $itt.database.Settings.Count
-    $localizationCount = ($itt.database.locales.Controls.PSObject.Properties | Measure-Object).Count
-
-    # Output all the counts in one call
-    Write-Host "`n$appsCount Apps`n$tweaksCount Tweaks`n$quotesCount Quotes`n$tracksCount Tracks`n$settingsCount Settings`n$localizationCount Localization" -ForegroundColor Yellow
-
-    # Update the readme with the new counts
-    Update-Readme -Apps $appsCount -Tweaks $tweaksCount -Quote $quotesCount -Track $tracksCount -Settings $settingsCount -Localization $localizationCount
 }
 
 function ConvertTo-Xaml {
@@ -282,7 +277,7 @@ function ConvertTo-Xaml {
 
     )
 
-    Write-Host "Generate Events Window Content...." -ForegroundColor Yellow
+    Write-Host "Generate Events Window Content..." -ForegroundColor Yellow
 
     # Initialize XAML as an empty string
     $xaml = ""
@@ -378,40 +373,33 @@ function GenerateThemesKeys {
         return
     }
 
+    # Create a StringBuilder for better performance on string concatenation
+    $stringBuilder = New-Object System.Text.StringBuilder
+
     # Generate MenuItem entries for each file in the themes folder
-    $menuItems = Get-ChildItem -Path $ThemesPath -File | ForEach-Object {
+    Get-ChildItem -Path $ThemesPath -File | ForEach-Object {
         # Read the content of each file
-        $content = Get-Content $_.FullName -Raw  # Read the entire file content
+        $content = Get-Content $_.FullName -Raw
 
-        # Use regex to extract content inside curly braces for Header
-        if ($content -match '\{(.*?)\}') {
-            $header = $matches[1]  # Extracted content inside {}
-        } else {
-            $header = "Unknown"  # Fallback if no match is found
-        }
+        # Use regex to extract content inside curly braces for Header and x:Key value
+        $header = if ($content -match '\{(.*?)\}') { $matches[1] } else { "Unknown" }
+        $name = if ($content -match 'x:Key="(.*?)"') { $matches[1] } else { "No Key" }
 
-        # Use regex to extract x:Key value for Header2
-        if ($content -match 'x:Key="(.*?)"') {
-            $name = $matches[1]  # Extracted x:Key value
-        } else {
-            $header2 = "No Key"  # Fallback if no x:Key is found
-        }
-
-        # Create MenuItem entry with the extracted headers
-        "<MenuItem Name=`"$name`" Header=`"$header`"/>"
+        # Append the MenuItem entry to the StringBuilder
+        $null = $stringBuilder.AppendFormat("<MenuItem Name=`"{0}`" Header=`"{1}`"/>`n", $name, $header)
     }
 
-    # Join the MenuItems into a single string
-    $menuItemsOutput = $menuItems -join "`n"
-    return $menuItemsOutput
+    # Convert StringBuilder to string and return the output
+    return $stringBuilder.ToString().TrimEnd("`n".ToCharArray())  # Remove the trailing newline
 }
+
 
 function GenerateClickEventHandlers {
     param (
         [string]$ITTFilePath = "itt.ps1"
     )
 
-    Write-Host "Generate Click Event Handlers" -ForegroundColor Yellow
+    Write-Host "Generate Click Event Handlers..." -ForegroundColor Yellow
     Update-Progress "$($MyInvocation.MyCommand.Name)" 90
 
     foreach ($name  in $imageLinkMap.Keys) {
@@ -680,7 +668,7 @@ GenerateClickEventHandlers
 
 
 
-CountItems
+Update-Readme
 Write-Host " `n`Build successfully" -ForegroundColor Green
 
 if($Debug)
