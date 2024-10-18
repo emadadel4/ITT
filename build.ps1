@@ -13,7 +13,7 @@ param (
     [switch]$Debug,
     [switch]$code,
     [string]$ProjectDir = $PSScriptRoot,
-    [string]$localNodePath = "releasenotes.md",
+    [string]$localNodePath = "Changelog.md",
     [string]$NoteUrl = "https://raw.githubusercontent.com/emadadel4/ITT/refs/heads/main/Changelog.md"
 
 
@@ -22,7 +22,7 @@ param (
 # Initializeialize synchronized hashtable
 $itt = [Hashtable]::Synchronized(@{})
 $itt.database = @{}
-$imageLinkMap = @{}
+$global:imageLinkMap = @{}
 $global:extractedContent = ""
 
 
@@ -289,7 +289,7 @@ function ConvertTo-Xaml {
                 $xaml += "<Image x:Name=''$($matches[1].Trim())'' Source=''$($matches[3].Trim())'' Cursor=''Hand'' Margin=''0,0,0,0'' Height=''Auto'' Width=''400''/>`n"
                 $link = $matches[2].Trim()   # Extract the link from inside the brackets
                 $name = $matches[1].Trim()   # Extract the xName after 'tt.xName:'
-                $imageLinkMap[$name] = $link
+                $global:imageLinkMap[$name] = $link
             }
             "^## (.+)" { # Event title
                 $global:extractedContent += $matches[1].Trim() + "`n"
@@ -320,45 +320,6 @@ function ConvertTo-Xaml {
     }
 
     return $xaml
-}
-
-function GenerateThemesInvoke   {
-    param (
-        [string]$ThemesPath = "Themes", # Path to the themes directory
-        [string]$ITTFilePath = "itt.ps1" # Path to the ITT file
-    )
-
-    Update-Progress "$($MyInvocation.MyCommand.Name)" 50
-
-    try {
-        # Get menu items from files in the specified Themes directory
-        $menuItems = Get-ChildItem -Path $ThemesPath -File | ForEach-Object {
-            $filename = [System.IO.Path]::GetFileNameWithoutExtension($_.Name) # Get filename without extension
-            $Key = $filename -replace '[^\w]', '' # Remove non-word characters
-
-            # Create the MenuItem block
-            @"
-            "$Key" {
-                Set-Theme -Theme `$action
-                Debug-Message
-            }
-"@
-        }
-
-        # Read content from the ITT file
-        $itta = Get-Content -Path $ITTFilePath -Raw
-
-        # Join the menu items with newlines and replace placeholder in the file content
-        $menuItemsOutput = $menuItems -join "`n"
-        $itta = $itta -replace '#{themes}', $menuItemsOutput
-
-        # Write updated content back to the ITT file
-        Set-Content -Path $ITTFilePath -Value $itta
-        Write-Host "Generate themes click events...." -ForegroundColor Yellow
-
-    } catch {
-        Write-Error "An error occurred: $($_.Exception.Message)"
-    }
 }
 
 # Generate themes menu items
@@ -395,35 +356,66 @@ function GenerateThemesKeys {
 
 
 function GenerateClickEventHandlers {
-    param (
-        [string]$ITTFilePath = "itt.ps1"
-    )
-
-    Write-Host "Generate Click Event Handlers..." -ForegroundColor Yellow
-    Update-Progress "$($MyInvocation.MyCommand.Name)" 90
-
-    foreach ($name  in $imageLinkMap.Keys) {
-
-        $url = $imageLinkMap[$name]
-        
-        $EventHandler += "
-        `$itt.event.FindName('$name').add_MouseLeftButtonDown({
-                Start-Process('$url')
-            })`
-        "
+    
+    $FilePaths = @{
+        "EventWindowScript" = Join-Path -Path "functions" -ChildPath "Show-Event.ps1"
     }
 
-    $EventTitle = @"
-        `$itt.event.FindName('title').text = '$global:extractedContent'`.Trim()
+        $EventWindowScript  = Get-Content -Path $FilePaths["EventWindowScript"] -Raw
+
+        foreach ($name  in $global:imageLinkMap.Keys) 
+        {
+
+            $url = $imageLinkMap[$name]
+
+            $EventHandler += "
+            `$itt.event.FindName('$name').add_MouseLeftButtonDown({
+                    Start-Process('$url')
+                })`
+            "
+        }
+
+        $EventWindowScript = $EventWindowScript -replace '#{contorlshandler}', $EventHandler
+        WriteToScript -Content $EventWindowScript
+
+}
+
+function GenerateInvokeButtons {
+   
+    
+    $FilePaths = @{
+        "Invoke" = Join-Path -Path "functions" -ChildPath "Invoke-Button.ps1"
+    }
+
+    try {
+
+
+        # Read the content of the Invoke-Button.ps1 file
+        $InvokeContent = Get-Content -Path $FilePaths["Invoke"] -Raw
+
+        $menuItems = Get-ChildItem -Path "Themes" -File | ForEach-Object {
+            $filename = [System.IO.Path]::GetFileNameWithoutExtension($_.Name) # Get filename without extension
+            $Key = $filename -replace '[^\w]', '' # Remove non-word characters
+
+            # Create the MenuItem block
+            @"
+            "$Key" {
+                Set-Theme -Theme `$action
+                Debug-Message
+            }
 "@
+        }
 
-    $itta = Get-Content -Path $ITTFilePath -Raw
-    $menuItemsOutput = $menuItems -join "`n"
-    $itta = $itta -replace '#{contorlshandler}', $EventHandler
+        # Join the menu items with newlines and replace placeholder in the file content
+        $menuItemsOutput = $menuItems -join "`n"
+        $InvokeContent = $InvokeContent -replace '#{themes}', "$menuItemsOutput"
+        WriteToScript -Content $InvokeContent
 
-    $itta = $itta -replace '#{title}', $EventTitle
+    }
+    catch
+    {
 
-    Set-Content -Path $ITTFilePath -Value $itta
+    }
 }
 
 # Write script header
@@ -487,9 +479,13 @@ try {
 #region Begin Main Functions
 #===========================================================================
 "@
+
+
+    GenerateInvokeButtons
+
     ProcessDirectory -Directory $ScritsDirectory
 
-    GenerateThemesInvoke
+
 
     WriteToScript -Content @"
 #===========================================================================
@@ -613,13 +609,11 @@ WriteToScript -Content @"
         $EventWindowXamlContent = (Get-Content -Path $FilePaths["event"] -Raw) -replace "'", "''"
 
         # debug offline local file
-        # $textContent = Get-Content -Path $textFilePath -Raw
-        # $xamlContent = ConvertTo-Xaml -text $textContent
-        # # Write-Host $xamlContent
-
-        $response = Invoke-WebRequest -Uri $NoteUrl
-        $textContent = $response.Content
+        $textContent = Get-Content -Path $localNodePath -Raw
         $xamlContent = ConvertTo-Xaml -text $textContent
+        GenerateClickEventHandlers
+
+        
         $EventWindowXamlContent = $EventWindowXamlContent -replace "UpdateContent", $xamlContent
         WriteToScript -Content "`$EventWindowXaml = '$EventWindowXamlContent'"
         
@@ -660,13 +654,6 @@ WriteToScript -Content @"
 #endregion End Main
 #===========================================================================
 "@
-
-
-
-
-GenerateClickEventHandlers
-
-
 
 Update-Readme
 Write-Host " `n`Build successfully" -ForegroundColor Green
