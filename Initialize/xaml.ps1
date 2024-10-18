@@ -9,8 +9,6 @@ $InitialSessionState = [System.Management.Automation.Runspaces.InitialSessionSta
 $InitialSessionState.Variables.Add($hashVars)
 
 $desiredFunctions = @(
-'Invoke-Tweaks',
-'Invoke-Install' , 
 'Install-App' , 
 'InvokeCommand' ,
 'Add-Log',
@@ -34,13 +32,15 @@ $desiredFunctions = @(
 
 $functions = Get-ChildItem function:\ | Where-Object { $_.Name -in $desiredFunctions }
 foreach ($function in $functions) {
-    $functionDefinition = Get-Content function:\$($function.name)
-    $functionEntry = New-Object System.Management.Automation.Runspaces.SessionStateFunctionEntry -ArgumentList $($function.name), $functionDefinition
+    # Directly retrieve the function definition
+    $functionDefinition = (Get-Command $function.Name).ScriptBlock.ToString()
+    $functionEntry = New-Object System.Management.Automation.Runspaces.SessionStateFunctionEntry -ArgumentList $($function.Name), $functionDefinition
     $initialSessionState.Commands.Add($functionEntry)
 
     # debug
-    if($Debug){Write-Output "Added function: $($function.Name)"}
+    if ($Debug) { Write-Output "Added function: $($function.Name)" }
 }
+
 
 # Create and open the runspace pool
 $itt.runspace = [runspacefactory]::CreateRunspacePool(1, $maxthreads, $InitialSessionState, $Host)
@@ -53,16 +53,9 @@ $reader = [System.Xml.XmlNodeReader]::new($xaml)
 
 try {
     $itt["window"] = [Windows.Markup.XamlReader]::Load($reader)
-}
-catch [System.Management.Automation.MethodInvocationException] {
-    Write-Warning "Problem with the XAML code. Check syntax."
-    Write-Host $error[0].Exception.Message -ForegroundColor Red
-    if ($error[0].Exception.Message -like "*button*") {
-        Write-Warning "Ensure <button> in `$MainWindowXaml does NOT have a Click=ButtonClick property. PS can't handle this."
-    }
-}
-catch {
-    Write-Host "Unable to load Windows.Markup.XamlReader. Check syntax and .NET installation."
+}catch{
+    Write-Host $_.Exception.Message # Capture the error message
+    exit
 }
 
 try {
