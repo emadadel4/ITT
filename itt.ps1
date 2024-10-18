@@ -16244,21 +16244,21 @@ function Show-Event {
     $CloseBtn = $itt.event.FindName('closebtn')
 
     
-        $itt.event.FindName('title').text = 'New Update!
+        $itt.event.FindName('title').text = 'Welcome!
 '.Trim()  # Set the title text
         
 
     
+            $itt.event.FindName('shell').add_MouseLeftButtonDown({
+                    Start-Process('https://github.com/emadadel4/shelltube')  # Start the process to open the URL when clicked
+                })
+            
             $itt.event.FindName('ytv').add_MouseLeftButtonDown({
                     Start-Process('https://www.youtube.com/watch?v=QmO82OTsU5c')  # Start the process to open the URL when clicked
                 })
             
             $itt.event.FindName('contribute').add_MouseLeftButtonDown({
                     Start-Process('https://github.com/emadadel4/itt?tab=readme-ov-file#-how-to-contribute')  # Start the process to open the URL when clicked
-                })
-            
-            $itt.event.FindName('shell').add_MouseLeftButtonDown({
-                    Start-Process('https://github.com/emadadel4/shelltube')  # Start the process to open the URL when clicked
                 })
             
 
