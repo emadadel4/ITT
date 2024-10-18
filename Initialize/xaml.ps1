@@ -49,7 +49,7 @@ $itt.runspace.Open()
 [xml]$XAML = $MainWindowXaml
 
 # Read the XAML file
-$reader = [System.Xml.XmlNodeReader]::new($xaml)
+$reader = [System.Xml.XmlNodeReader] $xaml
 
 try {
     $itt["window"] = [Windows.Markup.XamlReader]::Load($reader)
