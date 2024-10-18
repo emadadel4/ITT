@@ -357,66 +357,94 @@ function GenerateThemesKeys {
 
 function GenerateClickEventHandlers {
     
-    $FilePaths = @{
-        "EventWindowScript" = Join-Path -Path "functions" -ChildPath "Show-Event.ps1"
-    }
+    try {
+        
+        # Define file paths for scripts and templates
+        $FilePaths = @{
+            "EventWindowScript" = Join-Path -Path "Templates" -ChildPath "Show-Event.ps1"
+        }
 
+        # Read the content of the event window script file
         $EventWindowScript  = Get-Content -Path $FilePaths["EventWindowScript"] -Raw
 
+        # Initialize an empty string to hold event handler code
+        $EventHandler = ""
+
+        # Loop through each key in the global image link map
         foreach ($name  in $global:imageLinkMap.Keys) 
         {
-
+            # Get the URL corresponding to the current image link name
             $url = $imageLinkMap[$name]
 
+            # Append a mouse click event handler for each image link
             $EventHandler += "
             `$itt.event.FindName('$name').add_MouseLeftButtonDown({
-                    Start-Process('$url')
+                    Start-Process('$url')  # Start the process to open the URL when clicked
                 })`
             "
         }
 
-        $EventWindowScript = $EventWindowScript -replace '#{contorlshandler}', $EventHandler
-        WriteToScript -Content $EventWindowScript
+        # Create the event title assignment using the extracted content
+        $EventTitle = "
+        `$itt.event.FindName('title').text = '$global:extractedContent'`.Trim()  # Set the title text
+        "
 
+        # Replace placeholders in the event window script with actual event handlers and title
+        $EventWindowScript = $EventWindowScript -replace '#{contorlshandler}', $EventHandler
+        $EventWindowScript = $EventWindowScript -replace '#{title}', $EventTitle
+
+        # Write the modified content back to the script
+        WriteToScript -Content $EventWindowScript
+    }
+    catch {
+        Write-Host $_.Exception.Message # Capture the error message
+    }
 }
 
+
+# This func Generate 
 function GenerateInvokeButtons {
    
-    
+    # Define file paths for the Invoke button template
     $FilePaths = @{
-        "Invoke" = Join-Path -Path "functions" -ChildPath "Invoke-Button.ps1"
+        "Invoke" = Join-Path -Path "Templates" -ChildPath "Invoke-Button.ps1"
     }
 
     try {
-
-
         # Read the content of the Invoke-Button.ps1 file
         $InvokeContent = Get-Content -Path $FilePaths["Invoke"] -Raw
 
+        # Get all theme files in the Themes directory and create menu items
         $menuItems = Get-ChildItem -Path "Themes" -File | ForEach-Object {
-            $filename = [System.IO.Path]::GetFileNameWithoutExtension($_.Name) # Get filename without extension
-            $Key = $filename -replace '[^\w]', '' # Remove non-word characters
+            # Get the filename without its extension
+            $filename = [System.IO.Path]::GetFileNameWithoutExtension($_.Name)
 
-            # Create the MenuItem block
+            # Remove non-word characters to create a valid key
+            $Key = $filename -replace '[^\w]', ''
+
+            # Create a MenuItem block for each theme
             @"
             "$Key" {
-                Set-Theme -Theme `$action
-                Debug-Message
+                Set-Theme -Theme `$action  # Call the Set-Theme function with the selected theme
+                Debug-Message  # Output a debug message for tracking
             }
 "@
         }
 
-        # Join the menu items with newlines and replace placeholder in the file content
+        # Join the menu items with newlines
         $menuItemsOutput = $menuItems -join "`n"
+        
+        # Replace the #{themes} placeholder in the Invoke content with the generated menu items
         $InvokeContent = $InvokeContent -replace '#{themes}', "$menuItemsOutput"
+        
+        # Write the modified content back to the script
         WriteToScript -Content $InvokeContent
-
     }
-    catch
-    {
-
+    catch {
+        Write-Host $_.Exception.Message # Capture the error message
     }
 }
+
 
 # Write script header
 function WriteHeader {
