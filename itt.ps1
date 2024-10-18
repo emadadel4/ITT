@@ -13380,7 +13380,7 @@ Icon="https://raw.githubusercontent.com/emadadel4/ITT/main/Resources/Icons/icon.
                 <SolidColorBrush x:Key="PrimaryButtonHighlight" Color="White" />
                 <SolidColorBrush x:Key="TextColorPrimary" Color="Black" />
                 <SolidColorBrush x:Key="TextColorSecondaryColor" Color="Black"/>
-                <SolidColorBrush x:Key="TextColorSecondaryColor2" Color="Black"/>
+                <SolidColorBrush x:Key="TextColorSecondaryColor2" Color="#4B5361"/>
                 <SolidColorBrush x:Key="BorderBrush" Color="#FFB3B3B3"/>
                 <SolidColorBrush x:Key="ButtonBorderColor" Color="#525FE1"/>
                 <SolidColorBrush x:Key="Label" Color="LightBlue"/>
@@ -16624,7 +16624,7 @@ $itt.runspace.Open()
 [xml]$XAML = $MainWindowXaml
 
 # Read the XAML file
-$reader = [System.Xml.XmlNodeReader]::new($xaml)
+$reader = [System.Xml.XmlNodeReader] $xaml
 
 try {
     $itt["window"] = [Windows.Markup.XamlReader]::Load($reader)
